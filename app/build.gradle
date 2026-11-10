@@ -66,6 +66,12 @@ android {
             dimension = "default"
             applicationId = "com.eddyizm.play.tempus"
         }
+
+        // Independent installable HomeMusic-themed client. It uses its own package ID.
+        homemusic {
+            dimension = "default"
+            applicationId = "com.playinspirits.homemusic"
+        }
     }
 
     buildTypes {
@@ -95,6 +101,11 @@ android {
 
     sourceSets {
         play {
+            java.srcDirs += ['src/tempus/java']
+            kotlin.srcDirs += ['src/tempus/java']
+            res.srcDirs += ['src/tempus/res']
+        }
+        homemusic {
             java.srcDirs += ['src/tempus/java']
             kotlin.srcDirs += ['src/tempus/java']
             res.srcDirs += ['src/tempus/res']
@@ -152,6 +163,7 @@ dependencies {
     implementation libs.media3.datasource.okhttp
     tempusImplementation libs.media3.cast
     playImplementation libs.media3.cast
+    homemusicImplementation libs.media3.cast
 
     // Route picker. Pulled in transitively by the Cast SDK for the tempus flavor
     // already; declared here at the same version so the degoogled flavor has it too.
