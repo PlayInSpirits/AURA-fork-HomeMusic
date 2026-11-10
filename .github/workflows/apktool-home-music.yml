@@ -1,4 +1,4 @@
-name: Prepare HomeMusic APK for UI-only rebuild
+name: Build HomeMusic Redesign APK
 
 on:
   push:
@@ -6,27 +6,40 @@ on:
       - homemusic-apktool-redesign
     paths:
       - .github/workflows/apktool-home-music.yml
+      - tools/patch_home_music.py
   workflow_dispatch:
 
 permissions:
   contents: read
 
 jobs:
-  decode:
+  build:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout sources
+        uses: actions/checkout@v4
+
       - name: Set up Java
         uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: '21'
 
-      - name: Install Apktool and ZIP
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Install Apktool and Android build tools
+        shell: bash
         run: |
+          set -euo pipefail
           sudo apt-get update
           sudo apt-get install -y apktool zip unzip
+          yes | sdkmanager --licenses >/dev/null || true
+          sdkmanager "build-tools;36.0.0" "platforms;android-36"
+          echo "ANDROID_HOME=$ANDROID_HOME"
+          "$ANDROID_HOME/build-tools/36.0.0/apksigner" version
 
-      - name: Download official HomeMusic 1.14.7
+      - name: Download and verify official HomeMusic 1.14.7
         shell: bash
         run: |
           set -euo pipefail
@@ -35,32 +48,87 @@ jobs:
             -o HomeMusic-original.apk
           echo '72176dcf191cdbf5a5ea8e99ecc1cb2017fbaf842386ab2ae1436b5537d9a852  HomeMusic-original.apk' | sha256sum -c -
 
-      - name: Decode APK using Apktool
+      - name: Decode original APK
+        run: apktool d -f HomeMusic-original.apk -o decoded
+
+      - name: Apply HomeMusic UI redesign
+        run: python3 tools/patch_home_music.py decoded
+
+      - name: Rebuild APK resources and bytecode
         shell: bash
         run: |
           set -euo pipefail
-          apktool --version
-          apktool d -f HomeMusic-original.apk -o decoded
-          echo 'Decoded app metadata:'
-          grep -nE 'package=|versionCode=|versionName=|minSdkVersion=|targetSdkVersion=' decoded/AndroidManifest.xml | head -20 || true
-          echo 'Important UI resources:'
-          find decoded/res -maxdepth 2 -type f \
-            | grep -E '/(layout|layout-land|values|drawable|mipmap)' \
-            | sort | head -180 || true
-          echo 'Decoded summary:'
-          find decoded -type f | wc -l
-          du -sh decoded
+          apktool b decoded -o HomeMusic-Redesign-unsigned.apk
+          test -s HomeMusic-Redesign-unsigned.apk
+          ls -lh HomeMusic-Redesign-unsigned.apk
 
-      - name: Package decoded project
+      - name: Align and sign test APK
+        shell: bash
         run: |
-          zip -qr -9 HomeMusic-apktool-decoded.zip decoded HomeMusic-original.apk
-          sha256sum HomeMusic-apktool-decoded.zip
-          ls -lh HomeMusic-apktool-decoded.zip
+          set -euo pipefail
+          BT="$ANDROID_HOME/build-tools/36.0.0"
+          "$BT/zipalign" -p -f 4 HomeMusic-Redesign-unsigned.apk HomeMusic-Redesign-aligned.apk
+          keytool -genkeypair -v \
+            -keystore homemusic-redesign-preview.keystore \
+            -storepass android -alias homemusic-redesign -keypass android \
+            -keyalg RSA -keysize 2048 -validity 10000 \
+            -dname "CN=HomeMusic Redesign Preview,O=PlayInSpirits,C=US"
+          "$BT/apksigner" sign \
+            --ks homemusic-redesign-preview.keystore \
+            --ks-key-alias homemusic-redesign \
+            --ks-pass pass:android --key-pass pass:android \
+            --out HomeMusic-Redesign.apk HomeMusic-Redesign-aligned.apk
+          "$BT/apksigner" verify --verbose --print-certs HomeMusic-Redesign.apk
+          "$BT/aapt" dump badging HomeMusic-Redesign.apk | head -1
+          sha256sum HomeMusic-Redesign.apk
+          ls -lh HomeMusic-Redesign.apk
 
-      - name: Upload decoded APK project
+      - name: Prepare editable Apktool project
+        shell: bash
+        run: |
+          cat > BUILD_RU.txt <<'EOF'
+          HomeMusic Redesign 1.14.7 — Apktool project
+
+          Это декодированный Apktool-проект оригинального HomeMusic 1.14.7.
+          Исходный DEX/Smali-код авторизации, Hub, запросов к серверу,
+          загрузок и воспроизведения не переписывался. Изменены только
+          ресурсы оформления и один строковый дефолт акцентного цвета.
+
+          Сборка на Windows:
+          1. Установить JDK 17 или 21, Apktool и Android SDK Build Tools.
+          2. Открыть PowerShell в каталоге проекта.
+          3. Выполнить: apktool b decoded -o HomeMusic-unsigned.apk
+          4. Выполнить: zipalign -p -f 4 HomeMusic-unsigned.apk HomeMusic-aligned.apk
+          5. Подписать: apksigner sign --ks YOUR-KEYSTORE.jks --out HomeMusic.apk HomeMusic-aligned.apk
+
+          Для первого тестирования можно создать ключ:
+          keytool -genkeypair -keystore YOUR-KEYSTORE.jks -alias homemusic -keyalg RSA -keysize 2048 -validity 10000
+
+          APK из CI подписан временным тестовым ключом. Его нельзя установить
+          поверх официального APK с другой подписью. Перед установкой preview
+          нужно удалить официальный HomeMusic; локальные данные приложения
+          (настройки/кэш/оффлайн-загрузки) могут быть удалены. Серверная
+          музыкальная библиотека и аккаунт на Hub от этого не удаляются.
+
+          Для следующих обновлений сохраняйте один и тот же собственный ключ.
+          Google-вход может потребовать SHA-1 нового сертификата в OAuth-конфигурации.
+          EOF
+          zip -qr -9 HomeMusic-Redesign-apktool-project.zip decoded tools/patch_home_music.py BUILD_RU.txt HomeMusic-original.apk
+          sha256sum HomeMusic-Redesign-apktool-project.zip
+          ls -lh HomeMusic-Redesign-apktool-project.zip
+
+      - name: Upload signed APK
         uses: actions/upload-artifact@v4
         with:
-          name: HomeMusic-apktool-decoded
-          path: HomeMusic-apktool-decoded.zip
+          name: HomeMusic-Redesign-APK
+          path: HomeMusic-Redesign.apk
           if-no-files-found: error
-          retention-days: 7
+          retention-days: 14
+
+      - name: Upload editable Apktool project
+        uses: actions/upload-artifact@v4
+        with:
+          name: HomeMusic-Redesign-apktool-project
+          path: HomeMusic-Redesign-apktool-project.zip
+          if-no-files-found: error
+          retention-days: 14
