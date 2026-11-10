@@ -1,0 +1,45 @@
+name: Publish verified HomeMusic Redesign APK
+
+on:
+  push:
+    branches:
+      - homemusic-apktool-redesign
+    paths:
+      - .github/workflows/publish-existing-homemusic-preview.yml
+  workflow_dispatch:
+
+permissions:
+  actions: read
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download verified APK from successful build
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          gh run download 42923780158 \
+            --repo "${GITHUB_REPOSITORY}" \
+            --name "HomeMusic-Redesign-APK" \
+            --dir release-assets
+          test -s release-assets/HomeMusic-Redesign.apk
+          sha256sum release-assets/HomeMusic-Redesign.apk
+          echo "Expected SHA-256:"
+          echo "b035f6c242e4a6cce45b15bcd2ad76f7571ebf4fdd2e6917e482b453d442e327"
+          echo "b035f6c242e4a6cce45b15bcd2ad76f7571ebf4fdd2e6917e482b453d442e327  release-assets/HomeMusic-Redesign.apk" | sha256sum -c -
+
+      - name: Publish verified APK to GitHub Releases
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          gh release create homemusic-redesign-1.14.7-preview \
+            release-assets/HomeMusic-Redesign.apk \
+            --repo "${GITHUB_REPOSITORY}" \
+            --title "HomeMusic Redesign 1.14.7 Preview" \
+            --target homemusic-apktool-redesign \
+            --prerelease \
+            --notes "Preview-сборка HomeMusic 1.14.7 с обновлённым оформлением. Штатный package ID app.homemusic сохранён. Байткод исходного приложения не переписывался; изменены ресурсы интерфейса. APK подписан тестовым ключом CI, поэтому не устанавливается поверх официального APK с другой подписью. Перед установкой удалите официальную версию. Локальные данные приложения могут быть потеряны. Работа с конкретной конфигурацией HomeMusic Hub требует проверки на телефоне."
