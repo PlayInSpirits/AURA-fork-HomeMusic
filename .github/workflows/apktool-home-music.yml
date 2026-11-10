@@ -1,0 +1,66 @@
+name: Prepare HomeMusic APK for UI-only rebuild
+
+on:
+  push:
+    branches:
+      - homemusic-apktool-redesign
+    paths:
+      - .github/workflows/apktool-home-music.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  decode:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Install Apktool and ZIP
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y apktool zip unzip
+
+      - name: Download official HomeMusic 1.14.7
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -fL --retry 3 --retry-delay 2 \
+            'https://github.com/justman-1/HomeMusic-public/releases/download/v1.14.7/HomeMusic.apk' \
+            -o HomeMusic-original.apk
+          echo '72176dcf191cdbf5a5ea8e99ecc1cb2017fbaf842386ab2ae1436b5537d9a852  HomeMusic-original.apk' | sha256sum -c -
+
+      - name: Decode APK using Apktool
+        shell: bash
+        run: |
+          set -euo pipefail
+          apktool --version
+          apktool d -f HomeMusic-original.apk -o decoded
+          echo 'Decoded app metadata:'
+          grep -nE 'package=|versionCode=|versionName=|minSdkVersion=|targetSdkVersion=' decoded/AndroidManifest.xml | head -20 || true
+          echo 'Important UI resources:'
+          find decoded/res -maxdepth 2 -type f \
+            | grep -E '/(layout|layout-land|values|drawable|mipmap)' \
+            | sort | head -180 || true
+          echo 'Decoded summary:'
+          find decoded -type f | wc -l
+          du -sh decoded
+
+      - name: Package decoded project
+        run: |
+          zip -qr -9 HomeMusic-apktool-decoded.zip decoded HomeMusic-original.apk
+          sha256sum HomeMusic-apktool-decoded.zip
+          ls -lh HomeMusic-apktool-decoded.zip
+
+      - name: Upload decoded APK project
+        uses: actions/upload-artifact@v4
+        with:
+          name: HomeMusic-apktool-decoded
+          path: HomeMusic-apktool-decoded.zip
+          if-no-files-found: error
+          retention-days: 7
