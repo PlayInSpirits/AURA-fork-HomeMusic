@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   build:
@@ -120,6 +120,28 @@ jobs:
           zip -qr -9 HomeMusic-Redesign-apktool-project.zip decoded tools/patch_home_music.py BUILD_RU.txt HomeMusic-original.apk
           sha256sum HomeMusic-Redesign-apktool-project.zip
           ls -lh HomeMusic-Redesign-apktool-project.zip
+
+      - name: Publish APK to GitHub Releases
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: homemusic-redesign-1.14.7-preview
+          name: HomeMusic Redesign 1.14.7 Preview
+          target_commitish: homemusic-apktool-redesign
+          prerelease: true
+          draft: false
+          overwrite_files: true
+          files: HomeMusic-Redesign.apk
+          body: |
+            Preview-сборка HomeMusic 1.14.7 с обновлённым оформлением.
+
+            - Сохранён исходный package ID: app.homemusic.
+            - Исходный код приложения (DEX/Smali) не переписывался; изменены ресурсы интерфейса.
+            - Сохранены штатные экраны входа и регистрации HomeMusic.
+            - APK подписан временным тестовым ключом CI. Он не устанавливается поверх официального APK с другой подписью.
+            - Перед установкой удалите официальную версию. Локальные данные приложения могут быть потеряны.
+            - Это preview: работа с конкретной конфигурацией HomeMusic Hub не проверялась на физическом телефоне.
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload signed APK
         uses: actions/upload-artifact@v4
