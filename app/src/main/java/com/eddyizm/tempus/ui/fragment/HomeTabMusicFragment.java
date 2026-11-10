@@ -192,6 +192,12 @@ public class HomeTabMusicFragment extends Fragment implements ClickCallback {
     }
 
     private void init() {
+        bind.homeQuickSearch.setOnClickListener(v ->
+                activity.navController.navigate(R.id.action_homeFragment_to_searchFragment));
+        bind.homeQuickMix.setOnClickListener(v -> bind.discoveryTextViewClickable.performClick());
+        bind.homeQuickLibrary.setOnClickListener(v -> activity.navController.navigate(R.id.libraryFragment));
+        bind.homeQuickDownloads.setOnClickListener(v -> activity.navController.navigate(R.id.downloadFragment));
+
         bind.discoveryTextViewRefreshable.setOnLongClickListener(v -> {
             homeViewModel.refreshDiscoverySongSample(getViewLifecycleOwner());
             return true;
@@ -1267,6 +1273,9 @@ public class HomeTabMusicFragment extends Fragment implements ClickCallback {
         if (bind.homeSyncStarredArtistsCard.getVisibility() == View.VISIBLE) {
             desired.add(bind.homeSyncStarredArtistsCard);
         }
+
+        // Keep quick access pinned above the reorderable discovery sections.
+        desired.add(bind.homeQuickAccess);
 
         for (HomeSector sector : homeViewModel.getHomeSectorList()) {
             if (!sector.isVisible()) continue;
