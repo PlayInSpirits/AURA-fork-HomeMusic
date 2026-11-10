@@ -25,18 +25,18 @@ jobs:
           distribution: temurin
           java-version: '21'
 
-      - name: Set up Android SDK
-        uses: android-actions/setup-android@v3
-
       - name: Install Apktool and Android build tools
         shell: bash
         run: |
           set -euo pipefail
           sudo apt-get update
           sudo apt-get install -y apktool zip unzip
-          yes | sdkmanager --licenses >/dev/null || true
-          sdkmanager "build-tools;36.0.0" "platforms;android-36"
-          echo "ANDROID_HOME=$ANDROID_HOME"
+          export ANDROID_HOME="/usr/local/lib/android/sdk"
+          export ANDROID_SDK_ROOT="$ANDROID_HOME"
+          SDKMANAGER="$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager"
+          yes | "$SDKMANAGER" --sdk_root="$ANDROID_HOME" --licenses >/dev/null 2>&1 || true
+          "$SDKMANAGER" --sdk_root="$ANDROID_HOME" "build-tools;36.0.0" "platforms;android-36"
+          echo "ANDROID_HOME=$ANDROID_HOME" >> "$GITHUB_ENV"
           "$ANDROID_HOME/build-tools/36.0.0/apksigner" version
 
       - name: Download and verify official HomeMusic 1.14.7
