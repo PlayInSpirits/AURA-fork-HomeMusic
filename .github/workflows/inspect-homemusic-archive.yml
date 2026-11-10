@@ -1,0 +1,48 @@
+name: Extract HomeMusic decompilation archive
+
+on:
+  push:
+    branches:
+      - inspect-homemusic-archive
+    paths:
+      - .github/workflows/inspect-homemusic-archive.yml
+      - HomeMusic.rar
+
+permissions:
+  contents: read
+
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out archive
+        uses: actions/checkout@v4
+
+      - name: Install 7-Zip
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y p7zip-full
+
+      - name: Extract RAR
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p recovered
+          7z l HomeMusic.rar
+          7z x -y HomeMusic.rar -orecovered
+          echo "Extracted file count:"
+          find recovered -type f | wc -l
+          echo "Extracted size:"
+          du -sh recovered
+          find recovered -type f -printf '%P\t%s bytes\n' | sort > recovered_manifest.txt
+          sed -n '1,160p' recovered_manifest.txt
+
+      - name: Upload recovered sources
+        uses: actions/upload-artifact@v4
+        with:
+          name: HomeMusic-decompiled-source
+          path: |
+            recovered/
+            recovered_manifest.txt
+          if-no-files-found: error
+          retention-days: 7
