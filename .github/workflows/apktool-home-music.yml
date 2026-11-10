@@ -30,7 +30,11 @@ jobs:
         run: |
           set -euo pipefail
           sudo apt-get update
-          sudo apt-get install -y apktool zip unzip
+          sudo apt-get install -y zip unzip
+          curl -fL --retry 3 --retry-delay 2 \
+            'https://github.com/iBotPeaches/Apktool/releases/download/v3.0.3/apktool_3.0.3.jar' \
+            -o apktool.jar
+          java -jar apktool.jar --version
           export ANDROID_HOME="/usr/local/lib/android/sdk"
           export ANDROID_SDK_ROOT="$ANDROID_HOME"
           SDKMANAGER="$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager"
@@ -49,7 +53,7 @@ jobs:
           echo '72176dcf191cdbf5a5ea8e99ecc1cb2017fbaf842386ab2ae1436b5537d9a852  HomeMusic-original.apk' | sha256sum -c -
 
       - name: Decode original APK
-        run: apktool d -f HomeMusic-original.apk -o decoded
+        run: java -jar apktool.jar d -f HomeMusic-original.apk -o decoded
 
       - name: Apply HomeMusic UI redesign
         run: python3 tools/patch_home_music.py decoded
@@ -58,7 +62,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          apktool b decoded -o HomeMusic-Redesign-unsigned.apk
+          java -jar apktool.jar b decoded -o HomeMusic-Redesign-unsigned.apk
           test -s HomeMusic-Redesign-unsigned.apk
           ls -lh HomeMusic-Redesign-unsigned.apk
 
