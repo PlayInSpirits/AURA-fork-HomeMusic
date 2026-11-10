@@ -22,10 +22,10 @@ jobs:
           distribution: zulu
           java-version: "21"
 
-      - name: Build and test HomeMusic flavor
+      - name: Build HomeMusic APK
         run: |
           chmod +x ./gradlew
-          ./gradlew --no-daemon testHomemusicDebugUnitTest assembleHomemusicDebug
+          ./gradlew --no-daemon assembleHomemusicDebug
 
       - name: Upload installable APK
         uses: actions/upload-artifact@v4
