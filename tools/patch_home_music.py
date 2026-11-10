@@ -194,7 +194,7 @@ drawable.mkdir(parents=True, exist_ok=True)
 (drawable / "hm_login_background.xml").write_text(
     '''<?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
-    <gradient android:type="linear" android:angle="270" android:startColor="?attr/colorSurfaceVariant" android:centerColor="?attr/colorBackground" android:endColor="?attr/colorSurface" />
+    <gradient android:type="linear" android:angle="270" android:startColor="?attr/colorSurfaceVariant" android:centerColor="?attr/colorPrimaryContainer" android:endColor="?attr/colorSurface" />
 </shape>
 ''', encoding="utf-8")
 (drawable / "hm_login_card.xml").write_text(
