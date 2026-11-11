@@ -190,10 +190,16 @@ def patch_about_settings(res,decoded):
 
     f=decoded/'smali/vb4.smali'
     s=f.read_text(encoding='utf-8')
-    old='const-string v3, "1.14.7"'
-    if s.count(old)!=1:
-        raise RuntimeError('Hard-coded About version 1.14.7 not found uniquely in vb4.smali')
-    s=s.replace(old,'const-string v3, "AURA 0.4"',1)
+    about_old='const-string v3, "1.14.7"'
+    update_old='const-string v2, "1.14.7"'
+    if s.count(about_old)!=1 or s.count(update_old)!=1:
+        raise RuntimeError('Expected About and HomeMusic settings version literals were not found uniquely')
+    s=s.replace(about_old,'const-string v3, "AURA 0.4"',1)
+    s=s.replace(update_old,'const-string v2, "AURA 0.4"',1)
+    update_code='    const/16 v0, 0x2b'
+    if s.count(update_code)!=1:
+        raise RuntimeError('HomeMusic settings versionCode literal not found uniquely')
+    s=s.replace(update_code,'    const/16 v0, 0x190',1)
     f.write_text(s,encoding='utf-8')
 
 def patch_hub_preferences(res):
@@ -411,7 +417,7 @@ def main():
     about_xml=(res/'xml/global_preferences.xml').read_text(encoding='utf-8')
     if 'settings_support_summary' in about_xml or 'undraw_thanks' in about_xml or 'undraw_page' in about_xml: raise RuntimeError('Support/unDraw preferences were not fully removed')
     version_smali=(decoded/'smali/vb4.smali').read_text(encoding='utf-8')
-    if '1.14.7' in version_smali or 'AURA 0.4' not in version_smali: raise RuntimeError('About screen version is not AURA 0.4')
+    if '1.14.7' in version_smali or version_smali.count('AURA 0.4')<2 or 'const/16 v0, 0x190' not in version_smali: raise RuntimeError('About/HomeMusic settings version is not AURA 0.4 (400)')
     ru_strings=(res/'values-ru/strings.xml').read_text(encoding='utf-8')
     if 'https://github.com/PlayInSpirits/HomeMusic-Fork' not in ru_strings: raise RuntimeError('AURA GitHub link is not set in Russian strings')
     if 'AURA (HomeMusic)' not in ru_strings: raise RuntimeError('HomeMusic settings category was not renamed to AURA')

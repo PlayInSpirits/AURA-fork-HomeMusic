@@ -55,6 +55,9 @@ jobs:
         run: |
           java -jar apktool.jar d -f build/HomeMusic-original.apk -o build/decoded
           python tools/patch_aura.py build/decoded assets/aura_logo.png
+          grep -F 'const-string v3, "AURA 0.4"' build/decoded/smali/vb4.smali
+          grep -F 'const-string v2, "AURA 0.4"' build/decoded/smali/vb4.smali
+          grep -F 'const/16 v0, 0x190' build/decoded/smali/vb4.smali
 
       - name: Rebuild, align and sign
         env:
