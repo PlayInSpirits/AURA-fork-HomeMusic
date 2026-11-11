@@ -17,7 +17,32 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  cleanup-obsolete-cloud-runs:
+    if: ${{ contains(github.event.head_commit.message || '', '[actions-cleanup-only]') }}
+    runs-on: [self-hosted, windows, x64]
+    steps:
+      - name: Delete obsolete GitHub-hosted workflow runs
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+            const runIds = [43096632613, 43096813486, 43097352545];
+            for (const run_id of runIds) {
+              try {
+                await github.rest.actions.deleteWorkflowRun({ owner, repo, run_id });
+                core.info(`Deleted obsolete GitHub-hosted workflow run ${run_id}`);
+              } catch (error) {
+                if (error.status === 404) {
+                  core.info(`Workflow run ${run_id} is already absent`);
+                } else {
+                  core.error(`Could not delete workflow run ${run_id}: HTTP ${error.status}`);
+                  throw error;
+                }
+              }
+            }
+
   build:
+    if: ${{ !contains(github.event.head_commit.message || '', '[actions-cleanup-only]') }}
     runs-on: [self-hosted, windows, x64]
     defaults:
       run:
