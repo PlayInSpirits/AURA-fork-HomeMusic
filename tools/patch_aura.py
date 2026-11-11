@@ -115,7 +115,7 @@ def drawables(res):
 
 def patch_aura_islands(res):
     f=res/'layout/activity_main.xml'; t=xml(f)
-    nav=next((n for n in t.getroot().iter() if n.tag.split('}')[-1]=='BottomNavigationView'),None)
+    nav=next((n for n in t.getroot().iter() if n.tag.endswith('BottomNavigationView')),None)
     if nav is None: raise RuntimeError('BottomNavigationView missing from activity_main.xml')
     for k,v in {'layout_gravity':'bottom|center_horizontal','layout_width':'match_parent','layout_height':'66dp','layout_marginStart':'15dp','layout_marginEnd':'15dp','layout_marginBottom':'12dp','paddingStart':'9dp','paddingEnd':'9dp','elevation':'14dp','background':'@drawable/aura_bottom_nav_island','clipToPadding':'false'}.items(): nav.set(a(k),v)
     for k,v in {'itemIconSize':'23dp','itemHorizontalTranslationEnabled':'false','labelVisibilityMode':'labeled','itemActiveIndicatorColor':'#3abdadff','itemRippleColor':'#33bdadff'}.items(): nav.set(p(k),v)
