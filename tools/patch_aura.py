@@ -472,6 +472,73 @@ def patch_search_ui(res):
         raise RuntimeError(f'SearchBar/SearchView structure incomplete: {found}')
     save(t,f)
 
+
+def patch_search_to_hub(decoded):
+    helper=decoded/'smali/app/homemusic/AURAVersion.smali'
+    h=helper.read_text(encoding='utf-8')
+    if '.field public static pendingSearch:Z' not in h:
+        marker='.super Ljava/lang/Object;\n'
+        if h.count(marker)!=1: raise RuntimeError('AURAVersion superclass marker not found')
+        h=h.replace(marker,marker+'\n.field public static pendingSearch:Z\n',1)
+    helper.write_text(h,encoding='utf-8')
+
+    toolbar=decoded/'smali/com/eddyizm/tempus/ui/fragment/ToolbarFragment.smali'
+    t=toolbar.read_text(encoding='utf-8')
+    start=t.index('.method public final N(Landroid/view/MenuItem;)Z')
+    end=t.index('.end method',start)
+    method=t[start:end]
+    old='''    if-ne v0, v1, :cond_0
+
+    .line 11
+    .line 12
+    iget-object p0, p0, Lcom/eddyizm/tempus/ui/fragment/ToolbarFragment;->m0:Lcom/eddyizm/tempus/ui/activity/MainActivity;'''
+    new='''    if-ne v0, v1, :cond_0
+
+    const/4 v0, 0x1
+    sput-boolean v0, Lapp/homemusic/AURAVersion;->pendingSearch:Z
+
+    .line 11
+    .line 12
+    iget-object p0, p0, Lcom/eddyizm/tempus/ui/fragment/ToolbarFragment;->m0:Lcom/eddyizm/tempus/ui/activity/MainActivity;'''
+    if method.count(old)!=1: raise RuntimeError('Could not find unique toolbar search navigation branch')
+    method=method.replace(old,new,1)
+    if method.count('const p1, 0x7f0a0535')!=1: raise RuntimeError('Expected one native SearchFragment destination')
+    method=method.replace('const p1, 0x7f0a0535','const p1, 0x7f0a02ed',1)
+    t=t[:start]+method+t[end:]
+    toolbar.write_text(t,encoding='utf-8')
+
+    hub=decoded/'smali/com/eddyizm/tempus/homemusic/HubFragment.smali'
+    h=hub.read_text(encoding='utf-8')
+    start=h.index('.method public final T(Landroid/view/View;Landroid/os/Bundle;)V')
+    end=h.index('.end method',start)
+    method=h[start:end]
+    old='''    :cond_f
+    invoke-virtual {p0, p1}, Lcom/eddyizm/tempus/homemusic/HubFragment;->j0(Ljava/lang/String;)V'''
+    new='''    :cond_f
+    sget-boolean v8, Lapp/homemusic/AURAVersion;->pendingSearch:Z
+    if-eqz v8, :cond_aura_search_existing_done
+    const/4 v8, 0x0
+    sput-boolean v8, Lapp/homemusic/AURAVersion;->pendingSearch:Z
+    const-string p1, "/search"
+    :cond_aura_search_existing_done
+    invoke-virtual {p0, p1}, Lcom/eddyizm/tempus/homemusic/HubFragment;->j0(Ljava/lang/String;)V'''
+    if method.count(old)!=1: raise RuntimeError('Could not find existing Hub WebView route restoration point')
+    method=method.replace(old,new,1)
+    old='''    :cond_11
+    invoke-virtual {p0, v3, v2}, Lcom/eddyizm/tempus/homemusic/HubFragment;->h0(Ljava/lang/String;Z)V'''
+    new='''    :cond_11
+    sget-boolean v8, Lapp/homemusic/AURAVersion;->pendingSearch:Z
+    if-eqz v8, :cond_aura_search_default_done
+    const/4 v8, 0x0
+    sput-boolean v8, Lapp/homemusic/AURAVersion;->pendingSearch:Z
+    const-string v3, "/search"
+    :cond_aura_search_default_done
+    invoke-virtual {p0, v3, v2}, Lcom/eddyizm/tempus/homemusic/HubFragment;->h0(Ljava/lang/String;Z)V'''
+    if method.count(old)!=1: raise RuntimeError('Could not find initial Hub route loading point')
+    method=method.replace(old,new,1)
+    h=h[:start]+method+h[end:]
+    hub.write_text(h,encoding='utf-8')
+
 def patch_github_updater(decoded):
     helper=decoded/'smali/app/homemusic/AURAVersion.smali'
     if not helper.exists():
@@ -859,7 +926,7 @@ def main():
       'md_theme_light_background':'#fff7f7fc','md_theme_light_onBackground':'#ff191922','md_theme_light_surface':'#fffcfbff','md_theme_light_onSurface':'#ff191922','md_theme_light_surfaceVariant':'#fff0eef6','md_theme_light_onSurfaceVariant':'#ff625f72','md_theme_light_primary':'#ff6652d9','md_theme_light_onPrimary':'#ffffffff','md_theme_light_primaryContainer':'#ffe9e5ff','md_theme_light_onPrimaryContainer':'#ff21154f','md_theme_light_secondary':'#ff007f89','md_theme_light_onSecondary':'#ffffffff','md_theme_light_secondaryContainer':'#ffd1f5f5','md_theme_light_onSecondaryContainer':'#ff00363d','md_theme_light_tertiary':'#ffc64b78','md_theme_light_onTertiary':'#ffffffff','md_theme_light_tertiaryContainer':'#ffffdbe8','md_theme_light_onTertiaryContainer':'#ff4e102e','md_theme_light_outline':'#ff7d7788','dividerColor':'#ffe6e2f0','titleTextColor':'#ff191922','subtitleTextColor':'#ff666477','hub_background':'#ff111320','hub_text':'#fff5f2ff','homemusic_danger':'#ffce486d','widget_icon_tint_active':'#ff6652d9'})
     colors(res/'values/colors.xml',{'md_theme_dark_background':'#ff0d0e18','md_theme_dark_onBackground':'#fff4f1ff','md_theme_dark_surface':'#ff131522','md_theme_dark_onSurface':'#fff4f1ff','md_theme_dark_surfaceVariant':'#ff272839','md_theme_dark_onSurfaceVariant':'#ffb9b5cf','md_theme_dark_primary':'#ffbdadff','md_theme_dark_onPrimary':'#ff241858','md_theme_dark_primaryContainer':'#ff382f6d','md_theme_dark_onPrimaryContainer':'#fff0eaff','md_theme_dark_secondary':'#ff79d9df','md_theme_dark_onSecondary':'#ff00363d','md_theme_dark_secondaryContainer':'#ff15464d','md_theme_dark_onSecondaryContainer':'#ffb9f7fb','md_theme_dark_tertiary':'#ffff9fc3','md_theme_dark_onTertiary':'#ff4e102e','md_theme_dark_tertiaryContainer':'#ff643148','md_theme_dark_onTertiaryContainer':'#ffffdbe8','md_theme_dark_outline':'#ffaaa5bc'})
     if (res/'values-night/colors.xml').exists(): colors(res/'values-night/colors.xml',{'dividerColor':'#ff343448','titleTextColor':'#fff4f1ff','subtitleTextColor':'#ffb9b5cf','widget_bg':'#e51a1b2d','widget_icon_tint':'#ffffffff','widget_icon_tint_active':'#ffbdadff','widget_subtitle':'#ffc6c2d8','widget_title':'#ffffffff'})
-    strings(res);login_refs=patch_login_server(decoded);drawables(res);generate_aurora(res);create_player_state_drawables(res);patch_logo(res,logo);patch_vectors(res);patch_theme(res);patch_aura_islands(res);patch_initial_preferences(res);patch_main_menu(res);patch_toolbar_menu_null_guard(decoded);patch_about_settings(res,decoded);patch_hub_preferences(res);patch_hub_defaults(decoded);patch_hub_native_ui(res);patch_search_ui(res);patch_github_updater(decoded);patch_updater_external_asset(decoded);patch_hub_web_background(decoded);patch_screen_backgrounds(res);patch_toolbar(res);patch_home_mix_layout(res);patch_player_controls(res);patch_smali(decoded);patch_home_scroll_background(res);version(decoded)
+    strings(res);login_refs=patch_login_server(decoded);drawables(res);generate_aurora(res);create_player_state_drawables(res);patch_logo(res,logo);patch_vectors(res);patch_theme(res);patch_aura_islands(res);patch_initial_preferences(res);patch_main_menu(res);patch_toolbar_menu_null_guard(decoded);patch_about_settings(res,decoded);patch_hub_preferences(res);patch_hub_defaults(decoded);patch_hub_native_ui(res);patch_search_ui(res);patch_search_to_hub(decoded);patch_github_updater(decoded);patch_updater_external_asset(decoded);patch_hub_web_background(decoded);patch_screen_backgrounds(res);patch_toolbar(res);patch_home_mix_layout(res);patch_player_controls(res);patch_smali(decoded);patch_home_scroll_background(res);version(decoded)
     manifest=(decoded/'AndroidManifest.xml').read_text(encoding='utf-8')
     if 'package="app.homemusic"' not in manifest: raise RuntimeError('HomeMusic package ID changed')
     for file,ids in {'layout/fragment_homemusic_login.xml':['hm_login_server','hm_login_primary','hm_login_code','hm_login_google'],'layout/fragment_home_tab_music.xml':['home_discover_sector','home_similar_tracks_sector','home_radio_artist_sector']}.items():
@@ -915,6 +982,8 @@ def main():
         raise RuntimeError('AURA SearchView back navigation and dark background are missing')
     if 'aura-assistant-composer' not in hub_smali or 'removeCatalogShortcuts' not in hub_smali or 'keepTabsVisible' not in hub_smali:
         raise RuntimeError('Hub Assistant composer, Catalog shortcuts or navigation restoration are missing')
+    if 'pendingSearch' not in (decoded/'smali/app/homemusic/AURAVersion.smali').read_text(encoding='utf-8') or 'const p1, 0x7f0a02ed' not in (decoded/'smali/com/eddyizm/tempus/ui/fragment/ToolbarFragment.smali').read_text(encoding='utf-8'):
+        raise RuntimeError('Main search is not routed to the Hub catalog')
     aurora=(res/'drawable/aura_aurora_background.xml').read_text(encoding='utf-8')
     if 'android:duration="240"' not in aurora or aurora.count('<item')<60:
         raise RuntimeError('Dynamic My Wave aurora animation is incomplete')
