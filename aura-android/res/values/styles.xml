@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <resources>
     <style name="AlertDialog.AppCompat" parent="@style/Base.AlertDialog.AppCompat" />
     <style name="AlertDialog.AppCompat.Light" parent="@style/Base.AlertDialog.AppCompat.Light" />
@@ -21,12 +21,12 @@
         <item name="android:windowEnterAnimation">@anim/mtrl_bottom_sheet_slide_in</item>
         <item name="android:windowExitAnimation">@anim/mtrl_bottom_sheet_slide_out</item>
     </style>
-    <style name="AppTheme" parent="@style/Theme.Material3.Light.NoActionBar">
+    <style name="AppTheme" parent="@style/Theme.Material3.Dark.NoActionBar">
         <item name="android:colorBackground">@color/md_theme_light_background</item>
         <item name="android:scrollbars">none</item>
-        <item name="android:statusBarColor">?colorSurface</item>
-        <item name="android:navigationBarColor">?colorSurface</item>
-        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:statusBarColor">@color/md_theme_light_surface</item>
+        <item name="android:navigationBarColor">@color/md_theme_light_surface</item>
+        <item name="android:windowLightStatusBar">false</item>
         <item name="colorError">@color/md_theme_light_error</item>
         <item name="colorErrorContainer">@color/md_theme_light_errorContainer</item>
         <item name="colorOnBackground">@color/md_theme_light_onBackground</item>
@@ -56,7 +56,7 @@
         <item name="snackbarButtonStyle">@style/Widget.App.Snackbar.Button</item>
         <item name="snackbarStyle">@style/Widget.App.Snackbar</item>
         <item name="snackbarTextViewStyle">@style/Widget.App.Snackbar.TextView</item>
-    </style>
+    <item name="android:windowBackground">@drawable/aura_home_background</item><item name="android:textColorPrimary">@color/md_theme_light_onSurface</item><item name="android:textColorSecondary">@color/md_theme_light_onSurfaceVariant</item></style>
     <style name="AppTheme.SplashScreen" parent="@style/Theme.SplashScreen">
         <item name="postSplashScreenTheme">@style/AppTheme</item>
         <item name="windowSplashScreenAnimatedIcon">@drawable/ui_splash_screen</item>

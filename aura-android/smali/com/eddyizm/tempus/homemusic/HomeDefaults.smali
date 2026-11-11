@@ -210,7 +210,7 @@
     move-result v4
 
     .line 24
-    const/4 v5, 0x5
+    const/4 v5, 0x6
 
     .line 25
     if-lt v4, v5, :cond_1
@@ -638,6 +638,12 @@
     .line 229
     .line 230
     :cond_d
+    const-string v12, "homemusic_hub_url"
+    const-string v13, "http://192.168.1.129:8080"
+    invoke-interface {v6, v12, v13}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
+    const-string v12, "homemusic_hub_local_url"
+    const-string v13, "http://192.168.1.129:8080"
+    invoke-interface {v6, v12, v13}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
     invoke-interface {v6, v3, v5}, Landroid/content/SharedPreferences$Editor;->putInt(Ljava/lang/String;I)Landroid/content/SharedPreferences$Editor;
 
     .line 231

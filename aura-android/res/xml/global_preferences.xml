@@ -1,9 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+<?xml version='1.0' encoding='utf-8'?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
     <com.eddyizm.tempus.util.ClickablePreferenceCategory android:key="homemusic_category" app:title="@string/homemusic_settings_title">
-        <EditTextPreference android:singleLine="true" android:title="@string/homemusic_settings_hub_url" android:key="homemusic_hub_url" android:dialogTitle="@string/homemusic_settings_hub_url" android:dialogMessage="@string/homemusic_settings_hub_url_dialog" />
-        <EditTextPreference android:singleLine="true" android:title="@string/homemusic_settings_hub_local_url" android:key="homemusic_hub_local_url" android:dialogTitle="@string/homemusic_settings_hub_local_url" android:dialogMessage="@string/homemusic_settings_hub_local_url_dialog" />
+        <EditTextPreference android:singleLine="true" android:title="@string/homemusic_settings_hub_url" android:key="homemusic_hub_url" android:dialogTitle="@string/homemusic_settings_hub_url" android:dialogMessage="@string/homemusic_settings_hub_url_dialog" android:defaultValue="http://192.168.1.129:8080" />
+        <EditTextPreference android:singleLine="true" android:title="@string/homemusic_settings_hub_local_url" android:key="homemusic_hub_local_url" android:dialogTitle="@string/homemusic_settings_hub_local_url" android:dialogMessage="@string/homemusic_settings_hub_local_url_dialog" android:defaultValue="http://192.168.1.129:8080" />
         <Preference android:title="@string/homemusic_settings_google" android:key="homemusic_google" app:isPreferenceVisible="false" />
         <Preference android:title="@string/homemusic_settings_admin" android:key="homemusic_admin" android:summary="@string/homemusic_settings_admin_summary" app:isPreferenceVisible="false" />
         <SwitchPreference android:title="@string/homemusic_settings_economy" android:key="homemusic_traffic_economy" android:summary="@string/homemusic_settings_economy_summary" android:defaultValue="true" />

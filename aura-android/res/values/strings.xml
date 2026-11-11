@@ -438,9 +438,9 @@ Tap to hide"</string>
     <string name="homemusic_settings_google_unlink_ok">Отвязать</string>
     <string name="homemusic_settings_google_unlinked">Google-аккаунт отвязан</string>
     <string name="homemusic_settings_hub_local_url">Домашний адрес Хаба</string>
-    <string name="homemusic_settings_hub_local_url_dialog">Используется, когда отвечает (дома по Wi-Fi). Оставьте пустым, чтобы всегда ходить через интернет</string>
+    <string name="homemusic_settings_hub_local_url_dialog">Домашний адрес Хаба по Wi-Fi: http://192.168.1.129:8080</string>
     <string name="homemusic_settings_hub_url">Адрес Хаба</string>
-    <string name="homemusic_settings_hub_url_dialog">Адрес Хаба через интернет, например https://146.103.112.215:8445</string>
+    <string name="homemusic_settings_hub_url_dialog">Адрес Хаба через интернет: http://192.168.1.129:8080</string>
     <string name="homemusic_settings_leave">Выйти</string>
     <string name="homemusic_settings_local_none">Не используется</string>
     <string name="homemusic_settings_mix_offline">Микс дня на телефон</string>

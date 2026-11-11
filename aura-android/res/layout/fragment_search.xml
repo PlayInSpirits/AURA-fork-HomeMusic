@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout android:background="?colorSurface" android:layout_width="match_parent" android:layout_height="match_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+<?xml version='1.0' encoding='utf-8'?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:background="@drawable/aura_home_background" android:layout_width="match_parent" android:layout_height="match_parent">
     <androidx.core.widget.NestedScrollView android:id="@id/search_result_nested_scroll_view" android:layout_width="match_parent" android:layout_height="match_parent" app:layout_behavior="@string/searchbar_scrolling_view_behavior">
         <LinearLayout android:orientation="vertical" android:id="@id/search_result_layout" android:paddingTop="64.0dp" android:paddingBottom="@dimen/global_padding_bottom" android:layout_width="match_parent" android:layout_height="wrap_content">
             <LinearLayout android:orientation="vertical" android:id="@id/search_artist_sector" android:paddingBottom="8.0dp" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content">

@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent" android:layout_height="match_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+<?xml version='1.0' encoding='utf-8'?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent" android:layout_height="match_parent" android:background="@drawable/aura_home_background">
     <androidx.core.widget.NestedScrollView android:id="@id/home_podcast_sector" android:layout_width="match_parent" android:layout_height="match_parent" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent">
         <LinearLayout android:orientation="vertical" android:paddingBottom="@dimen/global_padding_bottom" android:layout_width="match_parent" android:layout_height="match_parent">
             <TextView android:textStyle="bold" android:textColor="?colorPrimary" android:id="@id/podcast_channels_pre_text_view" android:background="?selectableItemBackground" android:paddingTop="16.0dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/home_subtitle_new_podcast_channel" android:textAllCaps="true" android:paddingStart="16.0dp" android:paddingEnd="16.0dp" style="@style/TitleMedium" />
