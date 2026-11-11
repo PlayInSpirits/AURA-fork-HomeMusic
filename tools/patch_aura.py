@@ -117,7 +117,7 @@ def patch_aura_islands(res):
     f=res/'layout/activity_main.xml'; t=xml(f)
     nav=next((n for n in t.getroot().iter() if n.tag.endswith('BottomNavigationView')),None)
     if nav is None: raise RuntimeError('BottomNavigationView missing from activity_main.xml')
-    for k,v in {'layout_gravity':'bottom|center_horizontal','layout_width':'match_parent','layout_height':'66dp','layout_marginStart':'15dp','layout_marginEnd':'15dp','layout_marginBottom':'12dp','paddingStart':'9dp','paddingEnd':'9dp','elevation':'14dp','background':'@drawable/aura_bottom_nav_island','clipToPadding':'false'}.items(): nav.set(a(k),v)
+    for k,v in {'layout_gravity':'bottom|center_horizontal','layout_width':'match_parent','layout_height':'66dp','layout_marginStart':'15dp','layout_marginEnd':'15dp','layout_marginBottom':'14dp','paddingStart':'9dp','paddingEnd':'9dp','elevation':'14dp','background':'@drawable/aura_bottom_nav_island','clipToPadding':'false'}.items(): nav.set(a(k),v)
     for k,v in {'itemIconSize':'23dp','itemHorizontalTranslationEnabled':'false','labelVisibilityMode':'labeled','itemRippleColor':'#33bdadff'}.items(): nav.set(p(k),v)
     save(t,f)
     d=res/'drawable'; d.mkdir(parents=True,exist_ok=True)
@@ -267,6 +267,17 @@ def patch_about_settings(res,decoded):
             a('action'):'android.intent.action.VIEW',
             a('data'):'@string/aura_contact_author_link'
         })
+    upstream=next((node for node in list(about) if node.get(a('key'))=='aura_upstream_project'),None)
+    if upstream is None:
+        upstream=ET.SubElement(about,'Preference',{
+            a('key'):'aura_upstream_project',
+            p('title'):'@string/aura_upstream_project_title'
+        })
+        ET.SubElement(upstream,'intent',{
+            a('action'):'android.intent.action.VIEW',
+            a('data'):'@string/aura_upstream_project_link'
+        })
+
     check_update_rows=[]
     for parent in root.iter():
         for child in list(parent):
@@ -287,12 +298,14 @@ def patch_about_settings(res,decoded):
       'settings_github_link':'https://github.com/PlayInSpirits/HomeMusic-Fork',
       'settings_github_summary':'AURA source code and releases',
       'settings_github_title':'GitHub',
-      'settings_version_summary':'AURA pr0.7-1',
+      'settings_version_summary':'AURA pr0.71-2',
       'settings_version_title':'AURA version',
       'homemusic_settings_title':'AURA (HomeMusic)',
       'aura_contact_author_title':'Contact the fork author',
       'aura_contact_author_summary':'Telegram: Play_in_Spirits',
-      'aura_contact_author_link':'https://t.me/Play_in_Spirits'
+      'aura_contact_author_link':'https://t.me/Play_in_Spirits',
+      'aura_upstream_project_title':'HomeMusic-public',
+      'aura_upstream_project_link':'https://github.com/justman-1/HomeMusic-public'
     }
     ru_values={
       'settings_about_summary':'AURA — независимый Android-форк клиента HomeMusic.',
@@ -300,12 +313,14 @@ def patch_about_settings(res,decoded):
       'settings_github_link':'https://github.com/PlayInSpirits/HomeMusic-Fork',
       'settings_github_summary':'Исходный код и релизы AURA',
       'settings_github_title':'GitHub',
-      'settings_version_summary':'AURA pr0.7-1',
+      'settings_version_summary':'AURA pr0.71-2',
       'settings_version_title':'Версия AURA',
       'homemusic_settings_title':'AURA (HomeMusic)',
       'aura_contact_author_title':'Связаться с автором форка',
       'aura_contact_author_summary':'Telegram: Play_in_Spirits',
-      'aura_contact_author_link':'https://t.me/Play_in_Spirits'
+      'aura_contact_author_link':'https://t.me/Play_in_Spirits',
+      'aura_upstream_project_title':'HomeMusic-public',
+      'aura_upstream_project_link':'https://github.com/justman-1/HomeMusic-public'
     }
     for filename,values in [
         (res/'values/strings.xml',base_values),
@@ -702,26 +717,51 @@ def patch_hub_web_background(decoded):
       card.style.setProperty('display','none','important');
     });
   }
+  function activeHubTab() {
+    var nav = document.querySelector('nav[aria-label="Разделы"]');
+    if (!nav) return '';
+    var selected = nav.querySelector('[aria-current="page"],[aria-selected="true"],[data-state="active"],.active');
+    return selected ? (selected.innerText || selected.textContent || '').replace(/\\s+/g,' ').trim().toLowerCase() : '';
+  }
+  function isAssistantTab() {
+    var tab = activeHubTab();
+    if (tab) return /(ассистент|assistant)/i.test(tab);
+    return /assistant/.test(routeText());
+  }
+  function setComposerVisible(node, visible) {
+    if (!node) return;
+    if (visible) node.style.removeProperty('display');
+    else node.style.setProperty('display','none','important');
+  }
   function liftAssistantComposer() {
-    if (!/assistant/.test(routeText())) return;
-    var main = document.querySelector('main');
+    var assistantTab = isAssistantTab();
+    var candidates = [];
     document.querySelectorAll('button,a,[role="button"]').forEach(function (el) {
-      var label = (el.innerText || el.textContent || '').replace(/\s+/g,' ').trim();
+      var label = (el.innerText || el.textContent || '').replace(/\\s+/g,' ').trim();
       if (!/(сообщени[ея] ассистенту|написать ассистенту|send.*assistant|message.*assistant)/i.test(label)) return;
       el.classList.add('aura-assistant-action');
-      var form = el.closest('form');
-      var shell = form || el.parentElement;
-      if (shell) shell.classList.add('aura-assistant-composer');
-      if (form && main && form.parentElement !== main) main.appendChild(form);
+      var shell = el.closest('form,[class*="assistant"],[class*="composer"]') || el.parentElement;
+      if (!shell) return;
+      shell.classList.add('aura-assistant-composer');
+      if (candidates.indexOf(shell) === -1) candidates.push(shell);
     });
-    var input = document.querySelector('textarea[placeholder],input[placeholder]');
-    if (input) {
-      var form = input.closest('form') || input.parentElement;
-      if (form) {
-        form.classList.add('aura-assistant-composer');
-        if (main && form.parentElement !== main) main.appendChild(form);
-      }
+
+    var roots = Array.prototype.slice.call(document.querySelectorAll('.aura-assistant-composer'));
+    candidates.forEach(function (node) {
+      if (roots.indexOf(node) === -1) roots.push(node);
+    });
+    if (!assistantTab) {
+      roots.forEach(function (node) { setComposerVisible(node, false); });
+      return;
     }
+
+    var topLevel = roots.filter(function (node) {
+      return !roots.some(function (other) { return other !== node && other.contains(node); });
+    });
+    var keeper = topLevel[0] || null;
+    roots.forEach(function (node) {
+      setComposerVisible(node, !!keeper && (node === keeper || keeper.contains(node)));
+    });
   }
   function recoverLayout() {
     addStyle();
@@ -894,7 +934,7 @@ def patch_smali(decoded):
     f.write_text(s,encoding='utf-8')
 
 def version(decoded):
-    f=decoded/'apktool.yml';s=f.read_text(encoding='utf-8');s=re.sub(r'(?m)^  versionCode: .*?$','  versionCode: 7001',s);s=re.sub(r'(?m)^  versionName: .*?$','  versionName: "pr0.7-1"',s);f.write_text(s,encoding='utf-8')
+    f=decoded/'apktool.yml';s=f.read_text(encoding='utf-8');s=re.sub(r'(?m)^  versionCode: .*?$','  versionCode: 7102',s);s=re.sub(r'(?m)^  versionName: .*?$','  versionName: "pr0.71-2"',s);f.write_text(s,encoding='utf-8')
 
 def main():
     if len(sys.argv)<2: raise SystemExit('Usage: patch_aura.py decoded [logo.png]')
@@ -936,8 +976,8 @@ def main():
     if defaults.count('http://192.168.1.129:8080')!=2: raise RuntimeError('One-time Hub URL migration is incomplete')
     if 'Theme.Material3.Dark.NoActionBar' not in (res/'values/styles.xml').read_text(encoding='utf-8'): raise RuntimeError('Dark AURA theme was not applied')
     apktool_text=(decoded/'apktool.yml').read_text(encoding='utf-8')
-    if 'versionCode: 7001' not in apktool_text or 'versionName: "pr0.7-1"' not in apktool_text:
-        raise RuntimeError('AURA pr0.7-1 manifest version is not set')
+    if 'versionCode: 7102' not in apktool_text or 'versionName: "pr0.71-2"' not in apktool_text:
+        raise RuntimeError('AURA pr0.71-2 manifest version is not set')
     updater=(decoded/'smali/com/eddyizm/tempus/homemusic/HubUpdater.smali').read_text(encoding='utf-8')
     if '1.14.7' in updater or '0x2b' in updater or updater.count('Lapp/homemusic/AURAVersion;->versionCode')!=2:
         raise RuntimeError('GitHub updater still contains original HomeMusic version constants')
@@ -951,6 +991,8 @@ def main():
         raise RuntimeError('Hub sub-navigation must stay visible')
     if 'aura_contact_author' not in about_xml or 'https://t.me/Play_in_Spirits' not in ru_strings:
         raise RuntimeError('Telegram contact preference is missing')
+    if 'aura_upstream_project' not in about_xml or 'HomeMusic-public' not in ru_strings or 'https://github.com/justman-1/HomeMusic-public' not in ru_strings:
+        raise RuntimeError('Clickable HomeMusic-public link is missing from About')
     menu_tree=xml(res/'menu/main_page_menu.xml').getroot()
     menu_ids=[node.get(a('id')) for node in list(menu_tree)]
     if menu_ids.index('@id/action_settings') < menu_ids.index('@id/action_search'):
@@ -979,5 +1021,5 @@ def main():
     if 'tabIndicatorAnimationMode' not in hub_layout or 'aura_hub_tabs_background' not in hub_layout:
         raise RuntimeError('Native Hub tabs are not using AURA styling')
 
-    print(f'AURA pr0.7-1: dynamic PackageInfo versionName/versionCode; GitHub latest.json update feed; Telegram contact in About; Settings action moved right of Search; Hub tabs, Assistant composer and Catalog use unified styling; SearchView has an explicit back arrow; My Wave uses a multi-phase aurora animation; MediaRoute item hidden and null-guarded; Hub URLs, login, authentication, playback and My Wave preserved ({login_refs} login references).')
+    print(f'AURA pr0.71-2: dynamic PackageInfo versionName/versionCode; GitHub latest.json update feed; Telegram contact in About; Settings action moved right of Search; Hub tabs, Assistant composer and Catalog use unified styling; SearchView has an explicit back arrow; My Wave uses a multi-phase aurora animation; MediaRoute item hidden and null-guarded; Hub URLs, login, authentication, playback and My Wave preserved ({login_refs} login references).')
 if __name__=='__main__': main()
