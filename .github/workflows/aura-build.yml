@@ -1,6 +1,11 @@
 name: Build AURA Android
 
 "on":
+  push:
+    branches: [main]
+    paths-ignore:
+      - 'aura-android/**'
+      - 'app/latest.json'
   workflow_dispatch:
 
 permissions:
@@ -64,7 +69,31 @@ jobs:
           grep -F 'aura_wave_play_button' build/decoded/res/layout/homemusic_home_mixes.xml
           grep -F 'android:duration="240"' build/decoded/res/drawable/aura_aurora_background.xml
 
-      - name: Rebuild, align and sign with the permanent AURA key
+      - name: Rebuild and verify unsigned package
+        run: |
+          set -euo pipefail
+          java -jar apktool.jar b build/decoded -o build/AURA-pr7.0-1-unsigned.apk
+          zipalign -f -p 4 build/AURA-pr7.0-1-unsigned.apk build/AURA-pr7.0-1-aligned.apk
+          aapt dump badging build/AURA-pr7.0-1-aligned.apk | tee build/badging-unsigned.txt
+          grep -F "package: name='app.homemusic'" build/badging-unsigned.txt
+          grep -F "versionName='pr7.0-1'" build/badging-unsigned.txt
+          grep -F "versionCode='7001'" build/badging-unsigned.txt
+          grep -F "application-label:'AURA'" build/badging-unsigned.txt
+
+      - name: Check for permanent signing key
+        id: signing_key
+        env:
+          AURA_KEYSTORE_BASE64: ${{ secrets.AURA_KEYSTORE_BASE64 }}
+        run: |
+          if [ -n "$AURA_KEYSTORE_BASE64" ]; then
+            echo "configured=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "configured=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::Validation build passed. Release publication is waiting for the permanent AURA signing key. Run tools/configure-signing.ps1 once from Windows."
+          fi
+
+      - name: Sign APK with the permanent AURA key
+        if: steps.signing_key.outputs.configured == 'true'
         env:
           AURA_KEYSTORE_BASE64: ${{ secrets.AURA_KEYSTORE_BASE64 }}
           AURA_KEYSTORE_PASSWORD: ${{ secrets.AURA_KEYSTORE_PASSWORD }}
@@ -72,8 +101,8 @@ jobs:
           AURA_KEY_PASSWORD: ${{ secrets.AURA_KEY_PASSWORD }}
         run: |
           set -euo pipefail
-          if [ -z "$AURA_KEYSTORE_BASE64" ] || [ -z "$AURA_KEYSTORE_PASSWORD" ] || [ -z "$AURA_KEY_ALIAS" ]; then
-            echo "::error::Persistent signing key is not configured. Run tools/configure-signing.ps1 once from Windows."
+          if [ -z "$AURA_KEYSTORE_PASSWORD" ] || [ -z "$AURA_KEY_ALIAS" ]; then
+            echo "::error::Permanent signing secrets are incomplete."
             exit 1
           fi
           echo "$AURA_KEYSTORE_BASE64" | base64 --decode > build/aura-release.jks
@@ -81,9 +110,6 @@ jobs:
           KEY_ALIAS="$AURA_KEY_ALIAS"
           KEY_PASS="${AURA_KEY_PASSWORD:-$AURA_KEYSTORE_PASSWORD}"
           keytool -list -keystore build/aura-release.jks -alias "$KEY_ALIAS" -storepass "$STORE_PASS" >/dev/null
-
-          java -jar apktool.jar b build/decoded -o build/AURA-pr7.0-1-unsigned.apk
-          zipalign -f -p 4 build/AURA-pr7.0-1-unsigned.apk build/AURA-pr7.0-1-aligned.apk
           apksigner sign --ks build/aura-release.jks --ks-pass "pass:$STORE_PASS" --key-pass "pass:$KEY_PASS" --ks-key-alias "$KEY_ALIAS" --out build/AURA-pr7.0-1.apk build/AURA-pr7.0-1-aligned.apk
           apksigner verify --verbose --print-certs build/AURA-pr7.0-1.apk | tee build/signature.txt
           aapt dump badging build/AURA-pr7.0-1.apk | tee build/badging.txt
@@ -93,6 +119,7 @@ jobs:
           grep -F "application-label:'AURA'" build/badging.txt
 
       - name: Prepare GitHub update feed and source archive
+        if: steps.signing_key.outputs.configured == 'true'
         run: |
           set -euo pipefail
           rm -rf aura-android
@@ -107,7 +134,6 @@ jobs:
 
           This is a complete decompiled/rebuildable project, not the upstream Kotlin/Java Gradle source repository.
           EOF
-
           APK_SIZE=$(stat -c '%s' build/AURA-pr7.0-1.apk)
           APK_SHA256=$(sha256sum build/AURA-pr7.0-1.apk | awk '{print $1}')
           APK_URL="https://github.com/${GITHUB_REPOSITORY}/releases/download/pr7.0-1/AURA-pr7.0-1.apk"
@@ -141,6 +167,7 @@ jobs:
           (cd build && zip -qr AURA-pr7.0-1-source.zip source)
 
       - name: Publish GitHub pre-release
+        if: steps.signing_key.outputs.configured == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
@@ -150,7 +177,7 @@ jobs:
             - Нижняя навигация оформлена как плавающая стеклянная панель.
             - В каталоге Хаба убраны дублирующие «Моя волна» и «Микс дня», панель Ассистента не перекрывает подсказки и элементы плеера.
             - Настройки чистой установки: очередь 50 треков, случайный fallback и синхронизация избранного/очереди включены, экономия трафика выключена.
-            - Обновлён загрузчик APK: разрешены проверенные GitHub release assets репозитория AURA; размер и SHA-256 проверяются.
+            - Обновлён загрузчик APK: разрешены GitHub release assets репозитория AURA; размер и SHA-256 проверяются.
             - APK подписан новым постоянным ключом AURA. Все последующие версии должны собираться тем же ключом.
         run: |
           set -euo pipefail
@@ -162,6 +189,7 @@ jobs:
           fi
 
       - name: Publish decoded Android source and update feed
+        if: steps.signing_key.outputs.configured == 'true'
         run: |
           set -euo pipefail
           git config user.name "github-actions[bot]"
