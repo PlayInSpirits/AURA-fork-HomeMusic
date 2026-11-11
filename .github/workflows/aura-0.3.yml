@@ -1,0 +1,96 @@
+name: Build AURA 0.3
+
+"on":
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout AURA sources
+        uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Install Android build tools
+        run: |
+          yes | sdkmanager --licenses >/dev/null || true
+          sdkmanager "platform-tools" "build-tools;35.0.0"
+          echo "$ANDROID_HOME/build-tools/35.0.0" >> "$GITHUB_PATH"
+
+      - name: Install Apktool 3.0.3
+        run: |
+          curl -fsSL https://github.com/iBotPeaches/Apktool/releases/download/v3.0.3/apktool_3.0.3.jar -o apktool.jar
+          echo "dbf930b076c6b9be08d57c449cacefc3bdd6b71ebd59b3066fc0e1f5b14f9423  apktool.jar" | sha256sum -c -
+
+      - name: Install Python image libraries
+        run: python -m pip install --disable-pip-version-check pillow numpy
+
+      - name: Download original HomeMusic APK
+        run: |
+          mkdir -p build
+          curl -fL https://github.com/justman-1/HomeMusic-public/releases/download/v1.14.7/HomeMusic.apk -o build/HomeMusic-original.apk
+          echo "72176dcf191cdbf5a5ea8e99ecc1cb2017fbaf842386ab2ae1436b5537d9a852  build/HomeMusic-original.apk" | sha256sum -c -
+
+      - name: Decode and apply AURA patch
+        run: |
+          java -jar apktool.jar d -f build/HomeMusic-original.apk -o build/decoded
+          python tools/patch_aura.py build/decoded assets/aura_logo.png
+
+      - name: Rebuild, align and sign
+        env:
+          AURA_KEYSTORE_BASE64: ${{ secrets.AURA_KEYSTORE_BASE64 }}
+          AURA_KEYSTORE_PASSWORD: ${{ secrets.AURA_KEYSTORE_PASSWORD }}
+          AURA_KEY_ALIAS: ${{ secrets.AURA_KEY_ALIAS }}
+          AURA_KEY_PASSWORD: ${{ secrets.AURA_KEY_PASSWORD }}
+        run: |
+          java -jar apktool.jar b build/decoded -o build/AURA-0.3-unsigned.apk
+          zipalign -f -p 4 build/AURA-0.3-unsigned.apk build/AURA-0.3-aligned.apk
+          if [ -n "$AURA_KEYSTORE_BASE64" ]; then
+            echo "$AURA_KEYSTORE_BASE64" | base64 --decode > build/aura-signing.jks
+            STORE_PASS="$AURA_KEYSTORE_PASSWORD"
+            KEY_ALIAS="$AURA_KEY_ALIAS"
+            KEY_PASS="${AURA_KEY_PASSWORD:-$AURA_KEYSTORE_PASSWORD}"
+          else
+            keytool -genkeypair -noprompt -keystore build/aura-signing.jks -storepass aura-temp-pass -keypass aura-temp-pass -alias aura-temp -keyalg RSA -keysize 2048 -validity 10000 -dname "CN=AURA 0.3, OU=HomeMusic, O=AURA, C=SE"
+            STORE_PASS=aura-temp-pass
+            KEY_PASS=aura-temp-pass
+            KEY_ALIAS=aura-temp
+          fi
+          apksigner sign --ks build/aura-signing.jks --ks-pass "pass:$STORE_PASS" --key-pass "pass:$KEY_PASS" --ks-key-alias "$KEY_ALIAS" --out build/AURA-0.3.apk build/AURA-0.3-aligned.apk
+          apksigner verify --verbose build/AURA-0.3.apk
+          aapt dump badging build/AURA-0.3.apk | tee build/badging.txt
+          grep -F "package: name='app.homemusic'" build/badging.txt
+          grep -F "versionName='0.3'" build/badging.txt
+          grep -F "application-label:'AURA'" build/badging.txt
+
+      - name: Package reproducible source
+        run: |
+          mkdir -p build/source
+          cp README.md LICENSE HomeMusic.rar build/source/
+          cp -R tools assets .github build/source/
+          (cd build && zip -qr AURA-0.3-source.zip source)
+
+      - name: Publish GitHub pre-release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          if gh release view v0.3 >/dev/null 2>&1; then
+            gh release upload v0.3 build/AURA-0.3.apk build/AURA-0.3-source.zip --clobber
+            gh release edit v0.3 --title "AURA 0.3" --notes "Визуальный редизайн Android-клиента HomeMusic. Пакет app.homemusic; вход, серверные API и функции HomeMusic сохранены." --prerelease
+          else
+            gh release create v0.3 build/AURA-0.3.apk build/AURA-0.3-source.zip --target "$GITHUB_SHA" --title "AURA 0.3" --notes "Визуальный редизайн Android-клиента HomeMusic. Пакет app.homemusic; вход, серверные API и функции HomeMusic сохранены." --prerelease
+          fi
