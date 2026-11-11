@@ -101,13 +101,12 @@ jobs:
             exit 1
           fi
           for tool in aapt zipalign apksigner; do
-            if [ ! -f "$BUILD_TOOLS_DIR/$tool.exe" ] && [ ! -f "$BUILD_TOOLS_DIR/$tool" ]; then
+            if [ ! -f "$BUILD_TOOLS_DIR/$tool.exe" ] && [ ! -f "$BUILD_TOOLS_DIR/$tool" ] && [ ! -f "$BUILD_TOOLS_DIR/$tool.bat" ]; then
               echo "::error::Android build-tools package is incomplete: missing $tool in $BUILD_TOOLS_DIR."
               exit 1
             fi
           done
 
-          export PATH="$BUILD_TOOLS_DIR:$PATH"
           SDK_ROOT_WIN="$(cygpath -w "$SDK_ROOT_UNIX")"
           BUILD_TOOLS_WIN="$(cygpath -w "$BUILD_TOOLS_DIR")"
           printf 'ANDROID_HOME=%s\n' "$SDK_ROOT_WIN" >> "$GITHUB_ENV"
@@ -120,9 +119,9 @@ jobs:
           echo "Using Android SDK: $SDK_ROOT_WIN"
           echo "Using Android build-tools: $(basename "$BUILD_TOOLS_DIR")"
           echo "Using Java: $JAVA_HOME_WIN"
-          aapt version
-          zipalign -h >/dev/null 2>&1 || true
-          apksigner version
+          "$BUILD_TOOLS_DIR/aapt.exe" version
+          "$BUILD_TOOLS_DIR/zipalign.exe" -h >/dev/null 2>&1 || true
+          "$BUILD_TOOLS_DIR/apksigner.bat" version
 
       - name: Install Apktool 3.0.3
         run: |
