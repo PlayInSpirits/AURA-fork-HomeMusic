@@ -113,17 +113,61 @@ def drawables(res):
     for n,x in files.items(): (d/n).write_text('<?xml version="1.0" encoding="utf-8"?>\n'+x,encoding='utf-8')
 
 
+def patch_bottom_nav_resources(res):
+    d=res/'drawable'; d.mkdir(parents=True,exist_ok=True)
+    color=res/'color'; color.mkdir(parents=True,exist_ok=True)
+    icons={
+      'aura_nav_home.xml':'<vector xmlns:android="http://schemas.android.com/apk/res/android" android:width="24dp" android:height="24dp" android:viewportWidth="24" android:viewportHeight="24"><path android:fillColor="#ffffffff" android:pathData="M3,10.8L12,3.5L21,10.8H19V20H13.5V14H10.5V20H5V10.8Z"/></vector>',
+      'aura_nav_library.xml':'<vector xmlns:android="http://schemas.android.com/apk/res/android" android:width="24dp" android:height="24dp" android:viewportWidth="24" android:viewportHeight="24"><path android:fillColor="#00000000" android:strokeColor="#ffffffff" android:strokeWidth="2" android:strokeLineCap="round" android:pathData="M5,4H19V20H5Z M10,4V20 M13,8H16 M13,12H16 M13,16H16"/></vector>',
+      'aura_nav_hub.xml':'<vector xmlns:android="http://schemas.android.com/apk/res/android" android:width="24dp" android:height="24dp" android:viewportWidth="24" android:viewportHeight="24"><path android:fillColor="#00000000" android:strokeColor="#ffffffff" android:strokeWidth="2" android:strokeLineCap="round" android:pathData="M6,6L18,6L12,18Z"/><path android:fillColor="#ffffffff" android:pathData="M6,2.8A3.2,3.2 0,1 0,6 9.2A3.2,3.2 0,1 0,6 2.8M18,2.8A3.2,3.2 0,1 0,18 9.2A3.2,3.2 0,1 0,18 2.8M12,14.8A3.2,3.2 0,1 0,12 21.2A3.2,3.2 0,1 0,12 14.8"/></vector>',
+      'aura_nav_download.xml':'<vector xmlns:android="http://schemas.android.com/apk/res/android" android:width="24dp" android:height="24dp" android:viewportWidth="24" android:viewportHeight="24"><path android:fillColor="#ffffffff" android:pathData="M11,3H13V13.1L16.4,9.7L17.8,11.1L12,16.9L6.2,11.1L7.6,9.7L11,13.1Z M4,18H20V21H4Z"/></vector>'
+    }
+    for name,content in icons.items():
+        (d/name).write_text('<?xml version="1.0" encoding="utf-8"?>'+chr(10)+content,encoding='utf-8')
+    (color/'aura_bottom_nav_tint.xml').write_text('''<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_checked="true" android:color="#ffbdadff"/>
+    <item android:color="#ffb9b5cf"/>
+</selector>
+''',encoding='utf-8')
+    menu_icons={
+      'homeFragment':'@drawable/aura_nav_home',
+      'libraryFragment':'@drawable/aura_nav_library',
+      'hubFragment':'@drawable/aura_nav_hub',
+      'downloadFragment':'@drawable/aura_nav_download'
+    }
+    for rel in ('menu/bottom_nav_menu.xml','menu-land/bottom_nav_menu.xml'):
+        f=res/rel
+        if not f.exists(): continue
+        t=xml(f)
+        for node in t.getroot().iter():
+            key=node.get(a('id'))
+            if key:
+                key=key.rsplit('/',1)[-1]
+                if key in menu_icons: node.set(a('icon'),menu_icons[key])
+        save(t,f)
+
+    land=res/'layout-land/activity_main.xml'
+    if land.exists():
+        t=xml(land)
+        nav=next((n for n in t.getroot().iter() if n.tag.endswith('BottomNavigationView')),None)
+        if nav is not None:
+            nav.set(p('itemIconTint'),'@color/aura_bottom_nav_tint')
+            nav.set(p('itemTextColor'),'@color/aura_bottom_nav_tint')
+            nav.set(p('itemIconSize'),'24dp')
+            save(t,land)
+
 def patch_aura_islands(res):
     f=res/'layout/activity_main.xml'; t=xml(f)
     nav=next((n for n in t.getroot().iter() if n.tag.endswith('BottomNavigationView')),None)
     if nav is None: raise RuntimeError('BottomNavigationView missing from activity_main.xml')
-    for k,v in {'layout_gravity':'bottom|center_horizontal','layout_width':'match_parent','layout_height':'66dp','layout_marginStart':'15dp','layout_marginEnd':'15dp','layout_marginBottom':'14dp','paddingStart':'9dp','paddingEnd':'9dp','elevation':'14dp','background':'@drawable/aura_bottom_nav_island','clipToPadding':'false'}.items(): nav.set(a(k),v)
-    for k,v in {'itemIconSize':'23dp','itemHorizontalTranslationEnabled':'false','labelVisibilityMode':'labeled','itemRippleColor':'#33bdadff'}.items(): nav.set(p(k),v)
+    for k,v in {'layout_gravity':'bottom|center_horizontal','layout_width':'match_parent','layout_height':'82dp','layout_marginStart':'15dp','layout_marginEnd':'15dp','layout_marginBottom':'22dp','paddingStart':'9dp','paddingEnd':'9dp','elevation':'16dp','background':'@drawable/aura_bottom_nav_island','clipToPadding':'false'}.items(): nav.set(a(k),v)
+    for k,v in {'itemIconSize':'24dp','itemHorizontalTranslationEnabled':'false','labelVisibilityMode':'labeled','itemRippleColor':'#33bdadff','itemIconTint':'@color/aura_bottom_nav_tint','itemTextColor':'@color/aura_bottom_nav_tint'}.items(): nav.set(p(k),v)
     save(t,f)
     d=res/'drawable'; d.mkdir(parents=True,exist_ok=True)
     (d/'aura_bottom_nav_island.xml').write_text('''<?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-  <item><shape android:shape="rectangle"><gradient android:angle="0" android:startColor="#e62b2948" android:centerColor="#e51d293b" android:endColor="#e513303c"/><corners android:radius="28dp"/><stroke android:width="1dp" android:color="#66bdadff"/></shape></item>
+  <item><shape android:shape="rectangle"><gradient android:angle="0" android:startColor="#ff302e4c" android:centerColor="#ff202d43" android:endColor="#ff183643"/><corners android:radius="28dp"/><stroke android:width="1dp" android:color="#88bdadff"/></shape></item>
   <item android:left="2dp" android:top="2dp" android:right="2dp"><shape android:shape="rectangle"><corners android:radius="26dp"/><solid android:color="#12ffffff"/></shape></item>
 </layer-list>
 ''',encoding='utf-8')
@@ -298,13 +342,13 @@ def patch_about_settings(res,decoded):
       'settings_github_link':'https://github.com/PlayInSpirits/HomeMusic-Fork',
       'settings_github_summary':'AURA source code and releases',
       'settings_github_title':'GitHub',
-      'settings_version_summary':'AURA pr0.71-2',
+      'settings_version_summary':'AURA pr0.72-3',
       'settings_version_title':'AURA version',
       'homemusic_settings_title':'AURA (HomeMusic)',
       'aura_contact_author_title':'Contact the fork author',
       'aura_contact_author_summary':'Telegram: Play_in_Spirits',
       'aura_contact_author_link':'https://t.me/Play_in_Spirits',
-      'aura_upstream_project_title':'HomeMusic-public',
+      'aura_upstream_project_title':'Original HomeMusic application',
       'aura_upstream_project_link':'https://github.com/justman-1/HomeMusic-public'
     }
     ru_values={
@@ -313,13 +357,13 @@ def patch_about_settings(res,decoded):
       'settings_github_link':'https://github.com/PlayInSpirits/HomeMusic-Fork',
       'settings_github_summary':'Исходный код и релизы AURA',
       'settings_github_title':'GitHub',
-      'settings_version_summary':'AURA pr0.71-2',
+      'settings_version_summary':'AURA pr0.72-3',
       'settings_version_title':'Версия AURA',
       'homemusic_settings_title':'AURA (HomeMusic)',
       'aura_contact_author_title':'Связаться с автором форка',
       'aura_contact_author_summary':'Telegram: Play_in_Spirits',
       'aura_contact_author_link':'https://t.me/Play_in_Spirits',
-      'aura_upstream_project_title':'HomeMusic-public',
+      'aura_upstream_project_title':'Оригинальное приложение HomeMusic',
       'aura_upstream_project_link':'https://github.com/justman-1/HomeMusic-public'
     }
     for filename,values in [
@@ -564,6 +608,34 @@ def patch_github_updater(decoded):
     move-result-object p2''','Updater latest-version toast')
     s=replace_once(s,'    const-string v4, "1.14.7"','''    invoke-static {p1}, Lapp/homemusic/AURAVersion;->versionName(Landroid/content/Context;)Ljava/lang/String;
     move-result-object v4''','Updater update-dialog installed version')
+    f.write_text(s,encoding='utf-8')
+
+def patch_updater_redirects(decoded):
+    f=decoded/'smali/com/eddyizm/tempus/homemusic/HubUpdater.smali'
+    s=f.read_text(encoding='utf-8')
+    start=s.index('.method private static final updateHttp_delegate$lambda$0()Lo83;')
+    end=s.index('.end method',start)
+    method=s[start:end]
+    old='''    const/4 v1, 0x0
+
+    .line 14
+    iput-boolean v1, v0, Ln83;->i:Z
+
+    .line 15
+    .line 16
+    iput-boolean v1, v0, Ln83;->j:Z'''
+    new='''    const/4 v1, 0x1
+
+    .line 14
+    iput-boolean v1, v0, Ln83;->i:Z
+
+    .line 15
+    .line 16
+    iput-boolean v1, v0, Ln83;->j:Z'''
+    if method.count(old)!=1:
+        raise RuntimeError('Updater redirect flags insertion point was not found uniquely')
+    method=method.replace(old,new,1)
+    s=s[:start]+method+s[end:]
     f.write_text(s,encoding='utf-8')
 
 def patch_hub_preferences(res):
@@ -870,15 +942,194 @@ def patch_home_mix_layout(res):
     cards={x.get(a('id')):x for x in root}
     wave=cards.get('@id/homemusic_wave_card'); mix=cards.get('@id/homemusic_mix_card')
     if wave is None or mix is None: raise RuntimeError('HomeMusic My Wave / Mix cards not found')
-    for k,v in {'layout_width':'match_parent','layout_height':'wrap_content','layout_weight':'0','layout_marginLeft':'0dp','layout_marginRight':'0dp','layout_marginTop':'0dp','layout_marginBottom':'0dp','foreground':'?attr/selectableItemBackgroundBorderless','clickable':'true','focusable':'true'}.items(): wave.set(a(k),v)
-    for k,v in {'cardBackgroundColor':'#00000000','cardCornerRadius':'0dp','cardElevation':'0dp','strokeWidth':'0dp','strokeColor':'#00000000','rippleColor':'#22bdadff'}.items(): wave.set(p(k),v)
+    wave.attrib.pop(a('id'),None)
+    for k,v in {'layout_width':'match_parent','layout_height':'wrap_content','layout_weight':'0','layout_marginLeft':'0dp','layout_marginRight':'0dp','layout_marginTop':'0dp','layout_marginBottom':'0dp','foreground':'@android:color/transparent','clickable':'false','focusable':'false'}.items(): wave.set(a(k),v)
+    for k,v in {'cardBackgroundColor':'#00000000','cardCornerRadius':'0dp','cardElevation':'0dp','strokeWidth':'0dp','strokeColor':'#00000000','rippleColor':'#00000000'}.items(): wave.set(p(k),v)
     content=list(wave)[0]; content.clear()
     for k,v in {'orientation':'vertical','gravity':'center','paddingLeft':'12dp','paddingRight':'12dp','paddingTop':'22dp','paddingBottom':'20dp','minHeight':'176dp','layout_width':'match_parent','layout_height':'wrap_content','background':'@android:color/transparent'}.items(): content.set(a(k),v)
     ET.SubElement(content,'TextView',{a('layout_width'):'match_parent',a('layout_height'):'wrap_content',a('gravity'):'center',a('text'):'@string/homemusic_wave_title',a('textColor'):'#ffffffff',a('textSize'):'29sp',a('fontFamily'):'sans-serif-black',a('textStyle'):'bold',a('letterSpacing'):'0.12',a('textAllCaps'):'true',a('maxLines'):'1',a('includeFontPadding'):'false'})
-    button=ET.SubElement(content,'FrameLayout',{a('layout_width'):'78dp',a('layout_height'):'78dp',a('layout_marginTop'):'17dp',a('layout_gravity'):'center',a('background'):'@drawable/aura_wave_play_button',a('contentDescription'):'@string/home_title_radio_station',a('importantForAccessibility'):'no'})
+    button=ET.SubElement(content,'FrameLayout',{a('id'):'@id/homemusic_wave_card',a('layout_width'):'78dp',a('layout_height'):'78dp',a('layout_marginTop'):'17dp',a('layout_gravity'):'center',a('background'):'@drawable/aura_wave_play_button',a('foreground'):'?attr/selectableItemBackgroundBorderless',a('clickable'):'true',a('focusable'):'true',a('contentDescription'):'@string/home_title_radio_station',a('importantForAccessibility'):'no'})
     ET.SubElement(button,'ImageView',{a('layout_width'):'30dp',a('layout_height'):'30dp',a('layout_gravity'):'center',a('src'):'@drawable/aura_wave_play_icon',a('contentDescription'):'@null'})
+    d=res/'drawable'; d.mkdir(parents=True,exist_ok=True)
+    anim=res/'anim'; anim.mkdir(parents=True,exist_ok=True)
+    (anim/'aura_wave_button_press.xml').write_text('''<?xml version="1.0" encoding="utf-8"?>
+<scale xmlns:android="http://schemas.android.com/apk/res/android"
+    android:duration="110"
+    android:fromXScale="1.0"
+    android:toXScale="0.9"
+    android:fromYScale="1.0"
+    android:toYScale="0.9"
+    android:pivotX="50%"
+    android:pivotY="50%"
+    android:repeatCount="1"
+    android:repeatMode="reverse"/>
+''',encoding='utf-8')
+    (d/'aura_wave_pause_icon.xml').write_text('''<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android" android:width="32dp" android:height="32dp" android:viewportWidth="24" android:viewportHeight="24">
+  <path android:fillColor="#ffffffff" android:pathData="M6.5,5H10V19H6.5Z M14,5H17.5V19H14Z"/>
+</vector>
+''',encoding='utf-8')
     mix.set(a('visibility'),'gone')
     save(t,f)
+
+def patch_wave_button_behavior(decoded):
+    helper=decoded/'smali/app/homemusic/AURAVersion.smali'
+    h=helper.read_text(encoding='utf-8')
+    marker='.super Ljava/lang/Object;'+chr(10)
+    if h.count(marker)!=1: raise RuntimeError('AURAVersion superclass marker not found for My Wave state')
+    for field in ('.field public static waveStarted:Z','.field public static wavePlaying:Z'):
+        if field not in h:
+            h=h.replace(marker,marker+field+chr(10),1)
+            marker=marker+field+chr(10)
+    helper.write_text(h,encoding='utf-8')
+
+    listener=decoded/'smali/app/homemusic/AURAWaveToggleClickListener.smali'
+    listener.write_text('''.class public final Lapp/homemusic/AURAWaveToggleClickListener;
+.super Ljava/lang/Object;
+.implements Landroid/view/View$OnClickListener;
+
+.field private final delegate:Landroid/view/View$OnClickListener;
+
+.method public constructor <init>(Landroid/view/View$OnClickListener;)V
+    .locals 0
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+    iput-object p1, p0, Lapp/homemusic/AURAWaveToggleClickListener;->delegate:Landroid/view/View$OnClickListener;
+    return-void
+.end method
+
+.method public onClick(Landroid/view/View;)V
+    .locals 2
+    sget-boolean v0, Lapp/homemusic/AURAVersion;->waveStarted:Z
+    if-nez v0, :toggle_playback
+    const/4 v0, 0x1
+    sput-boolean v0, Lapp/homemusic/AURAVersion;->waveStarted:Z
+    sput-boolean v0, Lapp/homemusic/AURAVersion;->wavePlaying:Z
+    invoke-static {p1}, Lapp/homemusic/AURAWaveToggleClickListener;->syncIcon(Landroid/view/View;)V
+    invoke-static {p1}, Lapp/homemusic/AURAWaveToggleClickListener;->pressAnimation(Landroid/view/View;)V
+    iget-object v1, p0, Lapp/homemusic/AURAWaveToggleClickListener;->delegate:Landroid/view/View$OnClickListener;
+    if-eqz v1, :done
+    invoke-interface {v1, p1}, Landroid/view/View$OnClickListener;->onClick(Landroid/view/View;)V
+    return-void
+
+    :toggle_playback
+    sget-boolean v0, Lapp/homemusic/AURAVersion;->wavePlaying:Z
+    xor-int/lit8 v0, v0, 0x1
+    sput-boolean v0, Lapp/homemusic/AURAVersion;->wavePlaying:Z
+    invoke-static {p1}, Lapp/homemusic/AURAWaveToggleClickListener;->syncIcon(Landroid/view/View;)V
+    invoke-static {p1}, Lapp/homemusic/AURAWaveToggleClickListener;->pressAnimation(Landroid/view/View;)V
+    invoke-static {p1, v0}, Lapp/homemusic/AURAWaveToggleClickListener;->dispatchPlaybackKey(Landroid/view/View;Z)V
+    :done
+    return-void
+.end method
+
+.method public static syncIcon(Landroid/view/View;)V
+    .locals 5
+    invoke-virtual {p0}, Landroid/view/View;->getContext()Landroid/content/Context;
+    move-result-object v0
+    invoke-virtual {v0}, Landroid/content/Context;->getPackageName()Ljava/lang/String;
+    move-result-object v1
+    sget-boolean v2, Lapp/homemusic/AURAVersion;->wavePlaying:Z
+    if-eqz v2, :play_icon
+    const-string v2, "aura_wave_pause_icon"
+    goto :resolve_icon
+    :play_icon
+    const-string v2, "aura_wave_play_icon"
+    :resolve_icon
+    invoke-virtual {v0}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+    move-result-object v3
+    const-string v4, "drawable"
+    invoke-virtual {v3, v2, v4, v1}, Landroid/content/res/Resources;->getIdentifier(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)I
+    move-result v4
+    if-eqz v4, :sync_done
+    move-object v2, p0
+    check-cast v2, Landroid/view/ViewGroup;
+    const/4 v3, 0x0
+    invoke-virtual {v2, v3}, Landroid/view/ViewGroup;->getChildAt(I)Landroid/view/View;
+    move-result-object v2
+    instance-of v3, v2, Landroid/widget/ImageView;
+    if-eqz v3, :sync_done
+    check-cast v2, Landroid/widget/ImageView;
+    invoke-virtual {v2, v4}, Landroid/widget/ImageView;->setImageResource(I)V
+    :sync_done
+    return-void
+.end method
+
+.method private static pressAnimation(Landroid/view/View;)V
+    .locals 5
+    invoke-virtual {p0}, Landroid/view/View;->getContext()Landroid/content/Context;
+    move-result-object v0
+    invoke-virtual {v0}, Landroid/content/Context;->getPackageName()Ljava/lang/String;
+    move-result-object v1
+    invoke-virtual {v0}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+    move-result-object v2
+    const-string v3, "aura_wave_button_press"
+    const-string v4, "anim"
+    invoke-virtual {v2, v3, v4, v1}, Landroid/content/res/Resources;->getIdentifier(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)I
+    move-result v4
+    if-eqz v4, :animation_done
+    invoke-static {v0, v4}, Landroid/view/animation/AnimationUtils;->loadAnimation(Landroid/content/Context;I)Landroid/view/animation/Animation;
+    move-result-object v4
+    invoke-virtual {p0, v4}, Landroid/view/View;->startAnimation(Landroid/view/animation/Animation;)V
+    :animation_done
+    return-void
+.end method
+
+.method private static dispatchPlaybackKey(Landroid/view/View;Z)V
+    .locals 4
+    invoke-virtual {p0}, Landroid/view/View;->getContext()Landroid/content/Context;
+    move-result-object v0
+    const-string v1, "audio"
+    invoke-virtual {v0, v1}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
+    move-result-object v0
+    if-eqz v0, :dispatch_done
+    check-cast v0, Landroid/media/AudioManager;
+    const/16 v1, 0x7f
+    if-eqz p1, :media_key_ready
+    const/16 v1, 0x7e
+    :media_key_ready
+    new-instance v2, Landroid/view/KeyEvent;
+    const/4 v3, 0x0
+    invoke-direct {v2, v3, v1}, Landroid/view/KeyEvent;-><init>(II)V
+    invoke-virtual {v0, v2}, Landroid/media/AudioManager;->dispatchMediaKeyEvent(Landroid/view/KeyEvent;)V
+    new-instance v2, Landroid/view/KeyEvent;
+    const/4 v3, 0x1
+    invoke-direct {v2, v3, v1}, Landroid/view/KeyEvent;-><init>(II)V
+    invoke-virtual {v0, v2}, Landroid/media/AudioManager;->dispatchMediaKeyEvent(Landroid/view/KeyEvent;)V
+    :dispatch_done
+    return-void
+.end method
+''',encoding='utf-8')
+
+    f=decoded/'smali/cp1.smali'
+    s=f.read_text(encoding='utf-8')
+    old='''    new-instance v6, Lgo1;
+
+    .line 1368
+    .line 1369
+    invoke-direct {v6, v0, v2}, Lgo1;-><init>(Lcp1;I)V
+
+    .line 1370
+    .line 1371
+    .line 1372
+    invoke-virtual {v5, v6}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V'''
+    new='''    new-instance v6, Lgo1;
+
+    .line 1368
+    .line 1369
+    invoke-direct {v6, v0, v2}, Lgo1;-><init>(Lcp1;I)V
+
+    new-instance v7, Lapp/homemusic/AURAWaveToggleClickListener;
+    invoke-direct {v7, v6}, Lapp/homemusic/AURAWaveToggleClickListener;-><init>(Landroid/view/View$OnClickListener;)V
+
+    .line 1370
+    .line 1371
+    .line 1372
+    invoke-virtual {v5, v7}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
+    invoke-static {v5}, Lapp/homemusic/AURAWaveToggleClickListener;->syncIcon(Landroid/view/View;)V'''
+    if s.count(old)!=1:
+        raise RuntimeError('My Wave click listener insertion point was not found uniquely in cp1.smali')
+    s=s.replace(old,new,1)
+    f.write_text(s,encoding='utf-8')
 
 def patch_player_controls(res):
     specs={'inner_fragment_player_controller.xml':{'player_remote_toggle'},'player_header_bottom_sheet.xml':{'player_header_remote_button','placeholder_left_view'}}
@@ -934,7 +1185,7 @@ def patch_smali(decoded):
     f.write_text(s,encoding='utf-8')
 
 def version(decoded):
-    f=decoded/'apktool.yml';s=f.read_text(encoding='utf-8');s=re.sub(r'(?m)^  versionCode: .*?$','  versionCode: 7102',s);s=re.sub(r'(?m)^  versionName: .*?$','  versionName: "pr0.71-2"',s);f.write_text(s,encoding='utf-8')
+    f=decoded/'apktool.yml';s=f.read_text(encoding='utf-8');s=re.sub(r'(?m)^  versionCode: .*?$','  versionCode: 7203',s);s=re.sub(r'(?m)^  versionName: .*?$','  versionName: "pr0.72-3"',s);f.write_text(s,encoding='utf-8')
 
 def main():
     if len(sys.argv)<2: raise SystemExit('Usage: patch_aura.py decoded [logo.png]')
@@ -944,7 +1195,7 @@ def main():
       'md_theme_light_background':'#fff7f7fc','md_theme_light_onBackground':'#ff191922','md_theme_light_surface':'#fffcfbff','md_theme_light_onSurface':'#ff191922','md_theme_light_surfaceVariant':'#fff0eef6','md_theme_light_onSurfaceVariant':'#ff625f72','md_theme_light_primary':'#ff6652d9','md_theme_light_onPrimary':'#ffffffff','md_theme_light_primaryContainer':'#ffe9e5ff','md_theme_light_onPrimaryContainer':'#ff21154f','md_theme_light_secondary':'#ff007f89','md_theme_light_onSecondary':'#ffffffff','md_theme_light_secondaryContainer':'#ffd1f5f5','md_theme_light_onSecondaryContainer':'#ff00363d','md_theme_light_tertiary':'#ffc64b78','md_theme_light_onTertiary':'#ffffffff','md_theme_light_tertiaryContainer':'#ffffdbe8','md_theme_light_onTertiaryContainer':'#ff4e102e','md_theme_light_outline':'#ff7d7788','dividerColor':'#ffe6e2f0','titleTextColor':'#ff191922','subtitleTextColor':'#ff666477','hub_background':'#ff111320','hub_text':'#fff5f2ff','homemusic_danger':'#ffce486d','widget_icon_tint_active':'#ff6652d9'})
     colors(res/'values/colors.xml',{'md_theme_dark_background':'#ff0d0e18','md_theme_dark_onBackground':'#fff4f1ff','md_theme_dark_surface':'#ff131522','md_theme_dark_onSurface':'#fff4f1ff','md_theme_dark_surfaceVariant':'#ff272839','md_theme_dark_onSurfaceVariant':'#ffb9b5cf','md_theme_dark_primary':'#ffbdadff','md_theme_dark_onPrimary':'#ff241858','md_theme_dark_primaryContainer':'#ff382f6d','md_theme_dark_onPrimaryContainer':'#fff0eaff','md_theme_dark_secondary':'#ff79d9df','md_theme_dark_onSecondary':'#ff00363d','md_theme_dark_secondaryContainer':'#ff15464d','md_theme_dark_onSecondaryContainer':'#ffb9f7fb','md_theme_dark_tertiary':'#ffff9fc3','md_theme_dark_onTertiary':'#ff4e102e','md_theme_dark_tertiaryContainer':'#ff643148','md_theme_dark_onTertiaryContainer':'#ffffdbe8','md_theme_dark_outline':'#ffaaa5bc'})
     if (res/'values-night/colors.xml').exists(): colors(res/'values-night/colors.xml',{'dividerColor':'#ff343448','titleTextColor':'#fff4f1ff','subtitleTextColor':'#ffb9b5cf','widget_bg':'#e51a1b2d','widget_icon_tint':'#ffffffff','widget_icon_tint_active':'#ffbdadff','widget_subtitle':'#ffc6c2d8','widget_title':'#ffffffff'})
-    strings(res);login_refs=patch_login_server(decoded);drawables(res);generate_aurora(res);create_player_state_drawables(res);patch_logo(res,logo);patch_vectors(res);patch_theme(res);patch_aura_islands(res);patch_initial_preferences(res);patch_main_menu(res);patch_toolbar_menu_null_guard(decoded);patch_about_settings(res,decoded);patch_hub_preferences(res);patch_hub_defaults(decoded);patch_hub_native_ui(res);patch_search_ui(res);patch_search_to_hub(decoded);patch_github_updater(decoded);patch_updater_external_asset(decoded);patch_hub_web_background(decoded);patch_screen_backgrounds(res);patch_toolbar(res);patch_home_mix_layout(res);patch_player_controls(res);patch_smali(decoded);patch_home_scroll_background(res);version(decoded)
+    strings(res);login_refs=patch_login_server(decoded);drawables(res);generate_aurora(res);create_player_state_drawables(res);patch_logo(res,logo);patch_vectors(res);patch_theme(res);patch_bottom_nav_resources(res);patch_aura_islands(res);patch_initial_preferences(res);patch_main_menu(res);patch_toolbar_menu_null_guard(decoded);patch_about_settings(res,decoded);patch_hub_preferences(res);patch_hub_defaults(decoded);patch_hub_native_ui(res);patch_search_ui(res);patch_search_to_hub(decoded);patch_github_updater(decoded);patch_updater_redirects(decoded);patch_updater_external_asset(decoded);patch_hub_web_background(decoded);patch_screen_backgrounds(res);patch_toolbar(res);patch_home_mix_layout(res);patch_wave_button_behavior(decoded);patch_player_controls(res);patch_smali(decoded);patch_home_scroll_background(res);version(decoded)
     manifest=(decoded/'AndroidManifest.xml').read_text(encoding='utf-8')
     if 'package="app.homemusic"' not in manifest: raise RuntimeError('HomeMusic package ID changed')
     for file,ids in {'layout/fragment_homemusic_login.xml':['hm_login_server','hm_login_primary','hm_login_code','hm_login_google'],'layout/fragment_home_tab_music.xml':['home_discover_sector','home_similar_tracks_sector','home_radio_artist_sector']}.items():
@@ -976,11 +1227,14 @@ def main():
     if defaults.count('http://192.168.1.129:8080')!=2: raise RuntimeError('One-time Hub URL migration is incomplete')
     if 'Theme.Material3.Dark.NoActionBar' not in (res/'values/styles.xml').read_text(encoding='utf-8'): raise RuntimeError('Dark AURA theme was not applied')
     apktool_text=(decoded/'apktool.yml').read_text(encoding='utf-8')
-    if 'versionCode: 7102' not in apktool_text or 'versionName: "pr0.71-2"' not in apktool_text:
-        raise RuntimeError('AURA pr0.71-2 manifest version is not set')
+    if 'versionCode: 7203' not in apktool_text or 'versionName: "pr0.72-3"' not in apktool_text:
+        raise RuntimeError('AURA pr0.72-3 manifest version is not set')
     updater=(decoded/'smali/com/eddyizm/tempus/homemusic/HubUpdater.smali').read_text(encoding='utf-8')
     if '1.14.7' in updater or '0x2b' in updater or updater.count('Lapp/homemusic/AURAVersion;->versionCode')!=2:
         raise RuntimeError('GitHub updater still contains original HomeMusic version constants')
+    updater_method=updater[updater.index('.method private static final updateHttp_delegate$lambda$0()Lo83;'):updater.index('.end method',updater.index('.method private static final updateHttp_delegate$lambda$0()Lo83;'))]
+    if 'const/4 v1, 0x1' not in updater_method or 'iput-boolean v1, v0, Ln83;->i:Z' not in updater_method or 'iput-boolean v1, v0, Ln83;->j:Z' not in updater_method:
+        raise RuntimeError('AURA updater must follow HTTP and HTTPS redirects')
     rr1_text=(decoded/'smali/rr1.smali').read_text(encoding='utf-8')
     if 'https://raw.githubusercontent.com/PlayInSpirits/HomeMusic-Fork/main' not in rr1_text or '"/app/latest.json"' not in rr1_text:
         raise RuntimeError('GitHub latest.json update feed is not configured')
@@ -991,8 +1245,8 @@ def main():
         raise RuntimeError('Hub sub-navigation must stay visible')
     if 'aura_contact_author' not in about_xml or 'https://t.me/Play_in_Spirits' not in ru_strings:
         raise RuntimeError('Telegram contact preference is missing')
-    if 'aura_upstream_project' not in about_xml or 'HomeMusic-public' not in ru_strings or 'https://github.com/justman-1/HomeMusic-public' not in ru_strings:
-        raise RuntimeError('Clickable HomeMusic-public link is missing from About')
+    if 'aura_upstream_project' not in about_xml or 'Оригинальное приложение HomeMusic' not in ru_strings or 'https://github.com/justman-1/HomeMusic-public' not in ru_strings:
+        raise RuntimeError('Renamed clickable original HomeMusic link is missing from About')
     menu_tree=xml(res/'menu/main_page_menu.xml').getroot()
     menu_ids=[node.get(a('id')) for node in list(menu_tree)]
     if menu_ids.index('@id/action_settings') < menu_ids.index('@id/action_search'):
@@ -1004,6 +1258,19 @@ def main():
         raise RuntimeError('Hub Assistant composer, Catalog shortcuts or navigation restoration are missing')
     if 'pendingSearch' not in (decoded/'smali/app/homemusic/AURAVersion.smali').read_text(encoding='utf-8') or 'const p1, 0x7f0a02ed' not in (decoded/'smali/com/eddyizm/tempus/ui/fragment/ToolbarFragment.smali').read_text(encoding='utf-8'):
         raise RuntimeError('Main search is not routed to the Hub catalog')
+    wave_helper=(decoded/'smali/app/homemusic/AURAVersion.smali').read_text(encoding='utf-8')
+    wave_click=(decoded/'smali/app/homemusic/AURAWaveToggleClickListener.smali').read_text(encoding='utf-8')
+    if 'waveStarted:Z' not in wave_helper or 'wavePlaying:Z' not in wave_helper or 'dispatchMediaKeyEvent' not in wave_click:
+        raise RuntimeError('My Wave must launch once per process and toggle media playback afterwards')
+    wave_layout=(res/'layout/homemusic_home_mixes.xml').read_text(encoding='utf-8')
+    if 'android:id="@id/homemusic_wave_card"' not in wave_layout or 'android:clickable="false"' not in wave_layout or not (res/'drawable/aura_wave_pause_icon.xml').exists():
+        raise RuntimeError('My Wave click target must be the round button and include a pause icon')
+    nav_layout=(res/'layout/activity_main.xml').read_text(encoding='utf-8')
+    if 'android:layout_height="82dp"' not in nav_layout or 'aura_bottom_nav_tint' not in nav_layout:
+        raise RuntimeError('Bottom navigation must have sufficient height and explicit icon/text tint')
+    nav_menu=(res/'menu/bottom_nav_menu.xml').read_text(encoding='utf-8')
+    if any(name not in nav_menu for name in ('aura_nav_home','aura_nav_library','aura_nav_hub','aura_nav_download')):
+        raise RuntimeError('Custom AURA bottom navigation icons are incomplete')
     aurora=(res/'drawable/aura_aurora_background.xml').read_text(encoding='utf-8')
     if 'android:duration="240"' not in aurora or aurora.count('<item')<60:
         raise RuntimeError('Dynamic My Wave aurora animation is incomplete')
@@ -1021,5 +1288,5 @@ def main():
     if 'tabIndicatorAnimationMode' not in hub_layout or 'aura_hub_tabs_background' not in hub_layout:
         raise RuntimeError('Native Hub tabs are not using AURA styling')
 
-    print(f'AURA pr0.71-2: dynamic PackageInfo versionName/versionCode; GitHub latest.json update feed; Telegram contact in About; Settings action moved right of Search; Hub tabs, Assistant composer and Catalog use unified styling; SearchView has an explicit back arrow; My Wave uses a multi-phase aurora animation; MediaRoute item hidden and null-guarded; Hub URLs, login, authentication, playback and My Wave preserved ({login_refs} login references).')
+    print(f'AURA pr0.72-3: dynamic PackageInfo versionName/versionCode; GitHub latest.json update feed; Telegram contact in About; Settings action moved right of Search; Hub tabs, Assistant composer and Catalog use unified styling; SearchView has an explicit back arrow; My Wave uses a multi-phase aurora animation; MediaRoute item hidden and null-guarded; Hub URLs, login, authentication, playback and My Wave preserved ({login_refs} login references).')
 if __name__=='__main__': main()

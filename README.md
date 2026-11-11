@@ -4,7 +4,7 @@
   <p>Форк Android-приложения <a href="https://github.com/justman-1/HomeMusic-public">HomeMusic-public</a>.</p>
   <p>
     Полные исходники Android-проекта для сборки: <code>aura-android/</code>.<br />
-    Сборка: <a href="https://github.com/PlayInSpirits/HomeMusic-Fork/releases/tag/pr0.71-2"><strong>AURA pr0.71-2</strong></a>.<br />
+    Сборка: <a href="https://github.com/PlayInSpirits/HomeMusic-Fork/releases/tag/pr0.72-3"><strong>AURA pr0.72-3</strong></a>.<br />
     Лицензия: <a href="LICENSE">GPL-3.0</a>.
   </p>
 </div>
