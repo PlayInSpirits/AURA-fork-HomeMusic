@@ -1846,8 +1846,8 @@ def main():
         sync_method)
     if restored_start_write:
         raise RuntimeError('Restored Media3 items must not automatically mark My Wave as started')
-    player_empty_start=sync_method.find(':player_empty')
-    player_empty_end=sync_method.find(':update_icon',player_empty_start)
+    player_empty_start=sync_method.find('\\n:player_empty\\n')
+    player_empty_end=sync_method.find('\\n:update_icon\\n',player_empty_start)
     if player_empty_start < 0 or player_empty_end < 0:
         raise RuntimeError('Media3 player-empty state branch is missing')
     player_empty_block=sync_method[player_empty_start:player_empty_end]
