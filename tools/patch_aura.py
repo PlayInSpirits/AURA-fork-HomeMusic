@@ -161,10 +161,11 @@ def patch_smali(decoded):
     move-result-object v70
     invoke-virtual/range {v70 .. v70}, Landroid/view/View;->getBackground()Landroid/graphics/drawable/Drawable;
     move-result-object v70
-    instance-of v71, v70, Landroid/graphics/drawable/AnimationDrawable;
-    if-eqz v71, :cond_aura_animation_done
-    check-cast v70, Landroid/graphics/drawable/AnimationDrawable;
-    invoke-virtual/range {v70 .. v70}, Landroid/graphics/drawable/AnimationDrawable;->start()V
+    move-object/from16 v14, v70
+    instance-of v15, v14, Landroid/graphics/drawable/AnimationDrawable;
+    if-eqz v15, :cond_aura_animation_done
+    check-cast v14, Landroid/graphics/drawable/AnimationDrawable;
+    invoke-virtual/range {v14 .. v14}, Landroid/graphics/drawable/AnimationDrawable;->start()V
     :cond_aura_animation_done'''
     s,n=pattern.subn(repl,s,count=1)
     if n!=1: raise RuntimeError('Unable to locate original My Wave insertion point in cp1.smali')
