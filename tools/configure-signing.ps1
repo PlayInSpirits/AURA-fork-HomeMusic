@@ -30,6 +30,10 @@ if ($LASTEXITCODE -ne 0) { throw "Could not set AURA_KEY_ALIAS." }
 $Password | gh secret set AURA_KEY_PASSWORD --repo $Repository
 if ($LASTEXITCODE -ne 0) { throw "Could not set AURA_KEY_PASSWORD." }
 
+$Description = 'Форк Android-приложения для личного музыкального сервиса «HomeMusic». Работа форка не отличается от оригинала. Подробная инструкция работы Android-приложения указана у официального автора проекта https://github.com/justman-1/HomeMusic-public.'
+gh repo edit $Repository --description $Description
+if ($LASTEXITCODE -ne 0) { Write-Warning "Could not update repository About description automatically." }
+
 Write-Host "Persistent signing key created and GitHub Actions secrets configured."
 Write-Host "Keep this folder safe and back it up securely: $Root"
 Write-Host "Do not delete, regenerate, or commit either file."
