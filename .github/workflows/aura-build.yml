@@ -228,8 +228,18 @@ jobs:
           KEY_ALIAS="$AURA_KEY_ALIAS"
           KEY_PASS="${AURA_KEY_PASSWORD:-$AURA_KEYSTORE_PASSWORD}"
           keytool -list -keystore build/aura-release.jks -alias "$KEY_ALIAS" -storepass "$STORE_PASS" >/dev/null
-          apksigner sign --ks build/aura-release.jks --ks-pass "pass:$STORE_PASS" --key-pass "pass:$KEY_PASS" --ks-key-alias "$KEY_ALIAS" --out build/AURA-0.75.apk build/AURA-0.75-aligned.apk
-          apksigner verify --verbose --print-certs build/AURA-0.75.apk | tee build/signature.txt
+
+          # On Windows, apksigner is shipped as apksigner.bat and Git Bash
+          # does not resolve .bat files as Unix commands. Invoke the bundled JAR.
+          SDK_ROOT_UNIX="$(cygpath -u "$ANDROID_HOME")"
+          BUILD_TOOLS_VERSION="$(find "$SDK_ROOT_UNIX/build-tools" -mindepth 1 -maxdepth 1 -type d | sort -V | tail -n 1)"
+          APKSIGNER_JAR="$SDK_ROOT_UNIX/build-tools/$BUILD_TOOLS_VERSION/lib/apksigner.jar"
+          if [ ! -f "$APKSIGNER_JAR" ]; then
+            echo "::error::Android apksigner JAR not found: $APKSIGNER_JAR"
+            exit 1
+          fi
+          java -jar "$APKSIGNER_JAR" sign --ks build/aura-release.jks --ks-pass "pass:$STORE_PASS" --key-pass "pass:$KEY_PASS" --ks-key-alias "$KEY_ALIAS" --out build/AURA-0.75.apk build/AURA-0.75-aligned.apk
+          java -jar "$APKSIGNER_JAR" verify --verbose --print-certs build/AURA-0.75.apk | tee build/signature.txt
           aapt dump badging build/AURA-0.75.apk | tee build/badging.txt
           grep -F "package: name='app.homemusic'" build/badging.txt
           grep -F "versionName='v0.75-1'" build/badging.txt
