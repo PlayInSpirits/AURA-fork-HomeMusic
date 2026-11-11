@@ -1591,11 +1591,11 @@ def main():
     service_smali=(decoded/'smali/com/eddyizm/tempus/service/MediaService.smali').read_text(encoding='utf-8')
     if 'Lapp/homemusic/AURAWavePlaybackListener;->attach(Lqi3;)V' not in service_smali or 'Lqi3;->h0()Z' not in playback_sync or 'AURAVersion;->waveButton:Landroid/view/View;' not in playback_sync:
         raise RuntimeError('My Wave is not synchronized to actual Media3 player callbacks')
-    if 'AURAWavePlaybackListener;->syncCurrent()V' not in cp1_method or 'AURAVersion;->waveButton:Landroid/view/View;' not in cp1_method:
-        raise RuntimeError('My Wave view does not synchronize immediately after being created')
     circle_touch=(decoded/'smali/app/homemusic/AURAWaveCircleTouchListener.smali').read_text(encoding='utf-8')
     cp1_text=(decoded/'smali/cp1.smali').read_text(encoding='utf-8')
     cp1_method=cp1_text[cp1_text.index('.method public final H(Landroid/view/LayoutInflater;Landroid/view/ViewGroup;Landroid/os/Bundle;)Landroid/view/View;'):cp1_text.index('.end method',cp1_text.index('.method public final H(Landroid/view/LayoutInflater;Landroid/view/ViewGroup;Landroid/os/Bundle;)Landroid/view/View;'))]
+    if 'AURAWavePlaybackListener;->syncCurrent()V' not in cp1_method or 'AURAVersion;->waveButton:Landroid/view/View;' not in cp1_method:
+        raise RuntimeError('My Wave view does not synchronize immediately after being created')
     if 'insideCircle' not in circle_touch or 'performClick()Z' not in circle_touch or 'setOnTouchListener' not in cp1_method:
         raise RuntimeError('My Wave must accept taps only inside the circular button')
     if '    .locals 77' not in cp1_method or 'move/from16 v76, v7' not in cp1_method or 'move/from16 v7, v76' not in cp1_method:
