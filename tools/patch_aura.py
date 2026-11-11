@@ -205,7 +205,7 @@ def patch_updater_external_asset(decoded):
     .line 70
     const-string v4, "/app/artifacts/"
 '''
-    s=once(s,old,new,'GitHub APK URL allow-list')
+    s=replace_once(s,old,new,'GitHub APK URL allow-list')
     f.write_text(s,encoding='utf-8')
 def patch_main_menu(res):
     f=res/'menu/main_page_menu.xml'
