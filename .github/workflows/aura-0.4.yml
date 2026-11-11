@@ -104,11 +104,11 @@ jobs:
           git add aura-android
           if ! git diff --cached --quiet; then
             git commit -m "Publish complete AURA 0.4 Android source"
-            git push origin HEAD:main
-            git push origin HEAD:pre-release
-            git tag -f v0.4 HEAD
-            git push --force origin refs/tags/v0.4
           fi
+          git push origin HEAD:main
+          git push --force origin HEAD:pre-release
+          git tag -f v0.4 HEAD
+          git push --force origin refs/tags/v0.4
 
       - name: Package reproducible source
         run: |
