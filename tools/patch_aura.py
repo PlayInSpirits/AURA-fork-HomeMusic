@@ -151,6 +151,7 @@ def patch_smali(decoded):
     pattern=re.compile(r'(?s)    invoke-virtual \{v1, v0\}, Landroid/view/ViewGroup;->indexOfChild\(Landroid/view/View;\)I\s+\.line 1425\s+\.line 1426\s+\.line 1427\s+move-result v0\s+\.line 1428\s+add-int/2addr v0, v7\s+\.line 1429\s+invoke-virtual \{v1, v2, v0\}, Landroid/view/ViewGroup;->addView\(Landroid/view/View;I\)V')
     repl='''    const/4 v0, 0x0
     invoke-virtual {v1, v2, v0}, Landroid/view/ViewGroup;->addView(Landroid/view/View;I)V
+    check-cast v2, Landroid/view/ViewGroup;
     move-object/from16 v70, v2
     const/16 v71, 0x0
     invoke-virtual/range {v70 .. v71}, Landroid/view/ViewGroup;->getChildAt(I)Landroid/view/View;
