@@ -25,66 +25,98 @@ jobs:
       - name: Checkout AURA sources
         uses: actions/checkout@v4
 
-      - name: Set up Java
-        uses: actions/setup-java@v4
-        with:
-          distribution: temurin
-          java-version: '21'
-
-      - name: Install Android SDK and build tools (Windows)
-        shell: powershell
+      - name: Configure installed Java 17 and Android SDK
         run: |
-          $ErrorActionPreference = 'Stop'
+          set -euo pipefail
 
-          $javaHome = $env:JAVA_HOME
-          if ([string]::IsNullOrWhiteSpace($javaHome)) { throw 'JAVA_HOME was not set by setup-java.' }
-          $javaExe = Join-Path $javaHome 'bin\java.exe'
-          if (-not (Test-Path -LiteralPath $javaExe)) { throw "Java executable not found: $javaExe" }
+          # The self-hosted runner already has JDK 17 and Android SDK installed.
+          # Use those installations instead of downloading a second JDK/SDK.
+          if [ -n "${JAVA_HOME:-}" ]; then
+            JAVA_HOME_UNIX="$(cygpath -u "$JAVA_HOME")"
+            export PATH="$JAVA_HOME_UNIX/bin:$PATH"
+          else
+            JAVA_EXE="$(command -v java.exe || command -v java || true)"
+            if [ -z "$JAVA_EXE" ]; then
+              echo "::error::Java was not found on the self-hosted runner PATH."
+              exit 1
+            fi
+            JAVA_EXE_UNIX="$(cygpath -u "$JAVA_EXE" 2>/dev/null || printf '%s' "$JAVA_EXE")"
+            JAVA_HOME_UNIX="$(cd "$(dirname "$JAVA_EXE_UNIX")/.." && pwd -P)"
+            export PATH="$JAVA_HOME_UNIX/bin:$PATH"
+          fi
 
-          $javaBin = Join-Path $javaHome 'bin'
-          $env:Path = "$javaBin;$env:Path"
-          Add-Content -Path $env:GITHUB_PATH -Value $javaBin -Encoding ASCII
-          Write-Host "Using Java from $javaHome"
-          & $javaExe -version
-          if ($LASTEXITCODE -ne 0) { throw 'Java runtime check failed.' }
+          java -version
+          JAVA_SPEC="$(java -XshowSettings:properties -version 2>&1 | sed -n 's/^[[:space:]]*java.specification.version = //p' | head -n 1)"
+          JAVA_MAJOR="${JAVA_SPEC%%.*}"
+          if [ -z "$JAVA_MAJOR" ] || [ "$JAVA_MAJOR" -lt 17 ]; then
+            echo "::error::AURA build requires JDK 17 or newer; detected '${JAVA_SPEC:-unknown}'."
+            exit 1
+          fi
+          if [ ! -f "$JAVA_HOME_UNIX/bin/keytool.exe" ] && [ ! -f "$JAVA_HOME_UNIX/bin/keytool" ]; then
+            echo "::error::keytool was not found. Configure JAVA_HOME to a full JDK 17 installation."
+            exit 1
+          fi
 
-          $sdkBase = $env:RUNNER_TOOL_CACHE
-          if ([string]::IsNullOrWhiteSpace($sdkBase)) { $sdkBase = $env:RUNNER_TEMP }
-          $sdkRoot = Join-Path $sdkBase 'android-sdk'
-          $cmdlineRoot = Join-Path $sdkRoot 'cmdline-tools\latest'
-          $sdkManager = Join-Path $cmdlineRoot 'bin\sdkmanager.bat'
+          JAVA_HOME_WIN="$(cygpath -w "$JAVA_HOME_UNIX")"
+          printf 'JAVA_HOME=%s\n' "$JAVA_HOME_WIN" >> "$GITHUB_ENV"
+          printf '%s\n' "$(cygpath -w "$JAVA_HOME_UNIX/bin")" >> "$GITHUB_PATH"
 
-          if (-not (Test-Path $sdkManager)) {
-            $zipPath = Join-Path $env:RUNNER_TEMP 'android-commandlinetools-12266719.zip'
-            $extractDir = Join-Path $env:RUNNER_TEMP 'android-commandlinetools-12266719'
-            $downloadUrl = 'https://dl.google.com/android/repository/commandlinetools-win-12266719_latest.zip'
+          # Resolve the existing SDK from standard Windows locations or environment.
+          SDK_ROOT_UNIX=""
+          for sdk_candidate in "${ANDROID_SDK_ROOT:-}" "${ANDROID_HOME:-}" \
+            "${LOCALAPPDATA:-}/Android/Sdk" \
+            "${USERPROFILE:-}/AppData/Local/Android/Sdk" \
+            "C:/Android/Sdk"; do
+            [ -n "$sdk_candidate" ] || continue
+            sdk_path="$(cygpath -u "$sdk_candidate" 2>/dev/null || printf '%s' "$sdk_candidate")"
+            if [ -d "$sdk_path/build-tools" ]; then
+              SDK_ROOT_UNIX="$(cd "$sdk_path" && pwd -P)"
+              break
+            fi
+          done
 
-            New-Item -ItemType Directory -Force -Path $sdkRoot | Out-Null
-            Remove-Item -LiteralPath $extractDir -Recurse -Force -ErrorAction SilentlyContinue
-            Invoke-WebRequest -Uri $downloadUrl -OutFile $zipPath
-            Expand-Archive -LiteralPath $zipPath -DestinationPath $extractDir -Force
+          # If the SDK root is not exposed, derive it from an already-PATHed zipalign.
+          if [ -z "$SDK_ROOT_UNIX" ]; then
+            ZIPALIGN_CMD="$(command -v zipalign.exe || command -v zipalign || true)"
+            if [ -n "$ZIPALIGN_CMD" ]; then
+              ZIPALIGN_PATH="$(cygpath -u "$ZIPALIGN_CMD" 2>/dev/null || printf '%s' "$ZIPALIGN_CMD")"
+              SDK_ROOT_UNIX="$(cd "$(dirname "$(dirname "$(dirname "$ZIPALIGN_PATH")")")" && pwd -P)"
+            fi
+          fi
 
-            $sourceTools = Join-Path $extractDir 'cmdline-tools'
-            if (-not (Test-Path (Join-Path $sourceTools 'bin\sdkmanager.bat'))) {
-              throw 'Android command-line tools archive has an unexpected structure.'
-            }
-            New-Item -ItemType Directory -Force -Path $cmdlineRoot | Out-Null
-            Copy-Item -Path (Join-Path $sourceTools '*') -Destination $cmdlineRoot -Recurse -Force
-          }
+          if [ -z "$SDK_ROOT_UNIX" ] || [ ! -d "$SDK_ROOT_UNIX/build-tools" ]; then
+            echo "::error::Android SDK with build-tools was not found. Set ANDROID_HOME or ANDROID_SDK_ROOT for the Windows runner account."
+            exit 1
+          fi
 
-          $env:ANDROID_HOME = $sdkRoot
-          $env:ANDROID_SDK_ROOT = $sdkRoot
-          $licenseAnswers = (1..50 | ForEach-Object { 'y' }) -join "`r`n"
-          $licenseAnswers | & $sdkManager "--sdk_root=$sdkRoot" --licenses
-          if ($LASTEXITCODE -ne 0) { throw 'Android SDK license acceptance failed.' }
+          BUILD_TOOLS_DIR="$(find "$SDK_ROOT_UNIX/build-tools" -mindepth 1 -maxdepth 1 -type d | sort -V | tail -n 1)"
+          if [ -z "$BUILD_TOOLS_DIR" ]; then
+            echo "::error::No Android build-tools package is installed under $SDK_ROOT_UNIX/build-tools."
+            exit 1
+          fi
+          for tool in aapt zipalign apksigner; do
+            if [ ! -f "$BUILD_TOOLS_DIR/$tool.exe" ] && [ ! -f "$BUILD_TOOLS_DIR/$tool" ]; then
+              echo "::error::Android build-tools package is incomplete: missing $tool in $BUILD_TOOLS_DIR."
+              exit 1
+            fi
+          done
 
-          & $sdkManager "--sdk_root=$sdkRoot" 'platform-tools' 'build-tools;35.0.0'
-          if ($LASTEXITCODE -ne 0) { throw 'Android SDK build-tools installation failed.' }
+          export PATH="$BUILD_TOOLS_DIR:$PATH"
+          SDK_ROOT_WIN="$(cygpath -w "$SDK_ROOT_UNIX")"
+          BUILD_TOOLS_WIN="$(cygpath -w "$BUILD_TOOLS_DIR")"
+          printf 'ANDROID_HOME=%s\n' "$SDK_ROOT_WIN" >> "$GITHUB_ENV"
+          printf 'ANDROID_SDK_ROOT=%s\n' "$SDK_ROOT_WIN" >> "$GITHUB_ENV"
+          printf '%s\n' "$BUILD_TOOLS_WIN" >> "$GITHUB_PATH"
+          if [ -d "$SDK_ROOT_UNIX/platform-tools" ]; then
+            printf '%s\n' "$(cygpath -w "$SDK_ROOT_UNIX/platform-tools")" >> "$GITHUB_PATH"
+          fi
 
-          Add-Content -Path $env:GITHUB_ENV -Value "ANDROID_HOME=$sdkRoot" -Encoding ASCII
-          Add-Content -Path $env:GITHUB_ENV -Value "ANDROID_SDK_ROOT=$sdkRoot" -Encoding ASCII
-          Add-Content -Path $env:GITHUB_PATH -Value (Join-Path $sdkRoot 'platform-tools') -Encoding ASCII
-          Add-Content -Path $env:GITHUB_PATH -Value (Join-Path $sdkRoot 'build-tools\35.0.0') -Encoding ASCII
+          echo "Using Android SDK: $SDK_ROOT_WIN"
+          echo "Using Android build-tools: $(basename "$BUILD_TOOLS_DIR")"
+          echo "Using Java: $JAVA_HOME_WIN"
+          aapt version
+          zipalign -h >/dev/null 2>&1 || true
+          apksigner version
 
       - name: Install Apktool 3.0.3
         run: |
@@ -264,7 +296,6 @@ jobs:
                 tag_name: tag,
                 target_commitish: 'main',
                 name: '0.75.1',
-                body,
                 draft: false,
                 prerelease: true
               }));
@@ -274,7 +305,6 @@ jobs:
               owner, repo,
               release_id: release.id,
               name: '0.75.1',
-              body,
               draft: false,
               prerelease: true
             });
