@@ -438,7 +438,7 @@ def patch_hub_web_background(decoded):
     indexes=[i for i,line in enumerate(lines) if 'const-string v8,' in line and '__HOMEMUSIC_EMBEDDED__' in line]
     if len(indexes)!=1:
         raise RuntimeError(f'Expected one embedded Hub style script, found {len(indexes)}')
-    script=r\'''(function () {
+    script=r'''(function () {
   if (window.__AURA_HUB_STYLE__) return;
   window.__AURA_HUB_STYLE__ = true;
   var css = [
@@ -495,9 +495,9 @@ def patch_hub_web_background(decoded):
   window.addEventListener('hm:unauthorized', function () {
     try { HomeMusicAndroid.onUnauthorized(); } catch (e) {}
   });
-})();\'''
+})();'''
     lines[indexes[0]]='    const-string v8, '+json.dumps(script,ensure_ascii=True)
-    f.write_text('\\n'.join(lines)+'\\n',encoding='utf-8')
+    f.write_text('\n'.join(lines)+'\n',encoding='utf-8')
 
 def patch_vectors(res):
     d=res/'drawable'
@@ -590,7 +590,7 @@ def patch_smali(decoded):
     if n!=1: raise RuntimeError('Unable to locate original My Wave insertion point in cp1.smali')
     f.write_text(s,encoding='utf-8')
 def version(decoded):
-    f=decoded/'apktool.yml';s=f.read_text(encoding='utf-8');s=re.sub(r'(?m)^  versionCode: .*?$','  versionCode: 400',s);s=re.sub(r'(?m)^  versionName: .*?$','  versionName: "0.4"',s);f.write_text(s,encoding='utf-8')
+    f=decoded/'apktool.yml';s=f.read_text(encoding='utf-8');s=re.sub(r'(?m)^  versionCode: .*?$','  versionCode: 501',s);s=re.sub(r'(?m)^  versionName: .*?$','  versionName: "0.5-1"',s);f.write_text(s,encoding='utf-8')
 
 def main():
     if len(sys.argv)<2: raise SystemExit('Usage: patch_aura.py decoded [logo.png]')
@@ -600,7 +600,7 @@ def main():
       'md_theme_light_background':'#fff7f7fc','md_theme_light_onBackground':'#ff191922','md_theme_light_surface':'#fffcfbff','md_theme_light_onSurface':'#ff191922','md_theme_light_surfaceVariant':'#fff0eef6','md_theme_light_onSurfaceVariant':'#ff625f72','md_theme_light_primary':'#ff6652d9','md_theme_light_onPrimary':'#ffffffff','md_theme_light_primaryContainer':'#ffe9e5ff','md_theme_light_onPrimaryContainer':'#ff21154f','md_theme_light_secondary':'#ff007f89','md_theme_light_onSecondary':'#ffffffff','md_theme_light_secondaryContainer':'#ffd1f5f5','md_theme_light_onSecondaryContainer':'#ff00363d','md_theme_light_tertiary':'#ffc64b78','md_theme_light_onTertiary':'#ffffffff','md_theme_light_tertiaryContainer':'#ffffdbe8','md_theme_light_onTertiaryContainer':'#ff4e102e','md_theme_light_outline':'#ff7d7788','dividerColor':'#ffe6e2f0','titleTextColor':'#ff191922','subtitleTextColor':'#ff666477','hub_background':'#ff111320','hub_text':'#fff5f2ff','homemusic_danger':'#ffce486d','widget_icon_tint_active':'#ff6652d9'})
     colors(res/'values/colors.xml',{'md_theme_dark_background':'#ff0d0e18','md_theme_dark_onBackground':'#fff4f1ff','md_theme_dark_surface':'#ff131522','md_theme_dark_onSurface':'#fff4f1ff','md_theme_dark_surfaceVariant':'#ff272839','md_theme_dark_onSurfaceVariant':'#ffb9b5cf','md_theme_dark_primary':'#ffbdadff','md_theme_dark_onPrimary':'#ff241858','md_theme_dark_primaryContainer':'#ff382f6d','md_theme_dark_onPrimaryContainer':'#fff0eaff','md_theme_dark_secondary':'#ff79d9df','md_theme_dark_onSecondary':'#ff00363d','md_theme_dark_secondaryContainer':'#ff15464d','md_theme_dark_onSecondaryContainer':'#ffb9f7fb','md_theme_dark_tertiary':'#ffff9fc3','md_theme_dark_onTertiary':'#ff4e102e','md_theme_dark_tertiaryContainer':'#ff643148','md_theme_dark_onTertiaryContainer':'#ffffdbe8','md_theme_dark_outline':'#ffaaa5bc'})
     if (res/'values-night/colors.xml').exists(): colors(res/'values-night/colors.xml',{'dividerColor':'#ff343448','titleTextColor':'#fff4f1ff','subtitleTextColor':'#ffb9b5cf','widget_bg':'#e51a1b2d','widget_icon_tint':'#ffffffff','widget_icon_tint_active':'#ffbdadff','widget_subtitle':'#ffc6c2d8','widget_title':'#ffffffff'})
-    strings(res);login_refs=patch_login_server(decoded);drawables(res);generate_aurora(res);create_player_state_drawables(res);patch_logo(res,logo);patch_vectors(res);patch_theme(res);patch_main_menu(res);patch_toolbar_menu_null_guard(decoded);patch_about_settings(res,decoded);patch_hub_preferences(res);patch_hub_defaults(decoded);patch_hub_web_background(decoded);patch_screen_backgrounds(res);patch_toolbar(res);patch_home_mix_layout(res);patch_player_controls(res);patch_smali(decoded);patch_home_scroll_background(res);version(decoded)
+    strings(res);login_refs=patch_login_server(decoded);drawables(res);generate_aurora(res);create_player_state_drawables(res);patch_logo(res,logo);patch_vectors(res);patch_theme(res);patch_main_menu(res);patch_toolbar_menu_null_guard(decoded);patch_about_settings(res,decoded);patch_hub_preferences(res);patch_hub_defaults(decoded);patch_hub_native_ui(res);patch_github_updater(decoded);patch_hub_web_background(decoded);patch_screen_backgrounds(res);patch_toolbar(res);patch_home_mix_layout(res);patch_player_controls(res);patch_smali(decoded);patch_home_scroll_background(res);version(decoded)
     manifest=(decoded/'AndroidManifest.xml').read_text(encoding='utf-8')
     if 'package="app.homemusic"' not in manifest: raise RuntimeError('HomeMusic package ID changed')
     for file,ids in {'layout/fragment_homemusic_login.xml':['hm_login_server','hm_login_primary','hm_login_code','hm_login_google'],'layout/fragment_home_tab_music.xml':['home_discover_sector','home_similar_tracks_sector','home_radio_artist_sector']}.items():
@@ -616,7 +616,7 @@ def main():
     about_xml=(res/'xml/global_preferences.xml').read_text(encoding='utf-8')
     if 'settings_support_summary' in about_xml or 'undraw_thanks' in about_xml or 'undraw_page' in about_xml: raise RuntimeError('Support/unDraw preferences were not fully removed')
     version_smali=(decoded/'smali/vb4.smali').read_text(encoding='utf-8')
-    if '1.14.7' in version_smali or version_smali.count('AURA 0.4')<2 or 'const/16 v0, 0x190' not in version_smali: raise RuntimeError('About/HomeMusic settings version is not AURA 0.4 (400)')
+    if '1.14.7' in version_smali or 'AURA 0.4' in version_smali or 'Lapp/homemusic/AURAVersion;->versionName' not in version_smali or 'Lapp/homemusic/AURAVersion;->versionCodeInt' not in version_smali: raise RuntimeError('About/HomeMusic settings must read PackageInfo dynamically')
     ru_strings=(res/'values-ru/strings.xml').read_text(encoding='utf-8')
     base_strings=(res/'values/strings.xml').read_text(encoding='utf-8')
     if 'https://github.com/PlayInSpirits/HomeMusic-Fork' not in ru_strings: raise RuntimeError('AURA GitHub link is not set in Russian strings')
@@ -626,6 +626,29 @@ def main():
     defaults=(decoded/'smali/com/eddyizm/tempus/homemusic/HomeDefaults.smali').read_text(encoding='utf-8')
     if defaults.count('http://192.168.1.129:8080')!=2: raise RuntimeError('One-time Hub URL migration is incomplete')
     if 'Theme.Material3.Dark.NoActionBar' not in (res/'values/styles.xml').read_text(encoding='utf-8'): raise RuntimeError('Dark AURA theme was not applied')
+    apktool_text=(decoded/'apktool.yml').read_text(encoding='utf-8')
+    if 'versionCode: 501' not in apktool_text or 'versionName: "0.5-1"' not in apktool_text:
+        raise RuntimeError('AURA 0.5-1 manifest version is not set')
+    updater=(decoded/'smali/com/eddyizm/tempus/homemusic/HubUpdater.smali').read_text(encoding='utf-8')
+    if '1.14.7' in updater or '0x2b' in updater or updater.count('Lapp/homemusic/AURAVersion;->versionCode')!=2:
+        raise RuntimeError('GitHub updater still contains original HomeMusic version constants')
+    rr1_text=(decoded/'smali/rr1.smali').read_text(encoding='utf-8')
+    if 'https://raw.githubusercontent.com/PlayInSpirits/HomeMusic-Fork/main' not in rr1_text or '"/app/latest.json"' not in rr1_text:
+        raise RuntimeError('GitHub latest.json update feed is not configured')
+    hub_smali=(decoded/'smali/com/eddyizm/tempus/homemusic/HubFragment.smali').read_text(encoding='utf-8')
+    if '__AURA_HUB_STYLE__' not in hub_smali or 'auraHubEnter' not in hub_smali:
+        raise RuntimeError('AURA Hub styling and animations were not installed')
+    if 'nav[aria-label="Разделы"]{display:none!important}' in hub_smali:
+        raise RuntimeError('Hub sub-navigation must stay visible')
+    if 'aura_contact_author' not in about_xml or 'https://t.me/Play_in_Spirits' not in ru_strings:
+        raise RuntimeError('Telegram contact preference is missing')
+    menu_tree=xml(res/'menu/main_page_menu.xml').getroot()
+    menu_ids=[node.get(a('id')) for node in list(menu_tree)]
+    if menu_ids.index('@id/action_settings') < menu_ids.index('@id/action_search'):
+        raise RuntimeError('Settings action is not rightmost in the toolbar')
+    hub_layout=(res/'layout/fragment_hub.xml').read_text(encoding='utf-8')
+    if 'tabIndicatorAnimationMode' not in hub_layout or 'aura_hub_tabs_background' not in hub_layout:
+        raise RuntimeError('Native Hub tabs are not using AURA styling')
 
-    print(f'AURA 0.4: unified dark aurora theme applied; MediaRoute item retained but hidden and guarded against null; search shown in its toolbar slot; About screen branded/versioned as AURA 0.4; Support and unDraw removed; both HomeMusic Hub URLs migrated to http://192.168.1.129:8080; login default remains http://192.168.1.129:4533 ({login_refs} references); My Wave promoted; Mix of Day and remote-play controls hidden; original auth and playback flows preserved.')
+    print(f'AURA 0.5-1: dynamic PackageInfo versionName/versionCode; GitHub latest.json update feed; Telegram contact in About; Settings action moved right of Search; Hub tabs and WebView unified dark aurora styling with transitions; MediaRoute item hidden and null-guarded; Hub URLs, login, authentication, playback and My Wave preserved ({login_refs} login references).')
 if __name__=='__main__': main()
