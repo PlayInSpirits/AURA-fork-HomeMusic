@@ -605,8 +605,8 @@ def patch_hub_web_background(decoded):
   var css = [
     ':root{color-scheme:dark;--aura-text:#f4f1ff;--aura-muted:#beb9d2;--aura-violet:#bdadff;--aura-cyan:#79d9df;--aura-line:rgba(189,173,255,.18)}',
     'html,body{min-height:100%;background:radial-gradient(ellipse at 12% 0%,rgba(93,65,150,.22),transparent 42%),radial-gradient(ellipse at 92% 28%,rgba(30,132,145,.14),transparent 38%),#0d0e18!important;color:var(--aura-text)!important}',
-    'body{font-family:system-ui,-apple-system,Roboto,sans-serif!important;padding-bottom:calc(112px + env(safe-area-inset-bottom))!important}',
-    'main{padding:14px 14px calc(152px + env(safe-area-inset-bottom))!important;background:transparent!important;min-height:100vh}',
+    'body{font-family:system-ui,-apple-system,Roboto,sans-serif!important;padding-bottom:calc(210px + env(safe-area-inset-bottom))!important}',
+    'main{padding:14px 14px calc(196px + env(safe-area-inset-bottom))!important;background:transparent!important;min-height:100vh}',
     'nav[aria-label="Разделы"]{display:flex!important;visibility:visible!important;opacity:1!important;position:sticky;top:0;z-index:15;gap:7px;max-width:100%;overflow-x:auto;white-space:nowrap;padding:9px 12px!important;background:rgba(17,18,34,.96)!important;border-bottom:1px solid var(--aura-line)!important;backdrop-filter:blur(16px)}',
     'nav[aria-label="Разделы"] a,nav[aria-label="Разделы"] button,nav[aria-label="Разделы"] [role="tab"]{flex:0 0 auto;min-height:38px;padding:8px 13px!important;border:1px solid transparent!important;border-radius:14px!important;color:var(--aura-muted)!important;background:rgba(255,255,255,.035)!important;transition:background .22s ease,border-color .22s ease,color .22s ease,transform .22s ease}',
     'nav[aria-label="Разделы"] [aria-current="page"],nav[aria-label="Разделы"] [aria-selected="true"],nav[aria-label="Разделы"] .active{color:var(--aura-text)!important;background:linear-gradient(110deg,rgba(129,98,201,.34),rgba(38,139,150,.24))!important;border-color:rgba(189,173,255,.34)!important}',
@@ -620,7 +620,7 @@ def patch_hub_web_background(decoded):
     '::-webkit-scrollbar{width:7px;height:7px}::-webkit-scrollbar-thumb{background:rgba(189,173,255,.28);border-radius:8px}',
     '.aura-hub-enter{animation:auraHubEnter .34s cubic-bezier(.2,.7,.25,1) both}',
     '@keyframes auraHubEnter{from{opacity:.35;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}',
-    '.aura-assistant-composer{position:sticky!important;bottom:calc(104px + env(safe-area-inset-bottom))!important;z-index:30!important;margin-top:14px!important;padding:12px!important;background:rgba(17,18,34,.97)!important;border:1px solid var(--aura-line)!important;border-radius:18px!important;backdrop-filter:blur(18px)!important;box-shadow:0 -8px 26px rgba(0,0,0,.32)!important}',
+    '.aura-assistant-composer{position:relative!important;bottom:auto!important;z-index:2!important;display:block!important;clear:both!important;margin:18px 0 14px!important;padding:12px!important;background:rgba(17,18,34,.94)!important;border:1px solid var(--aura-line)!important;border-radius:18px!important;backdrop-filter:blur(18px)!important;box-shadow:0 8px 24px rgba(0,0,0,.25)!important}',
     '.aura-assistant-action{display:inline-flex!important;align-items:center!important;justify-content:center!important;min-height:44px!important;padding:10px 16px!important;border:1px solid rgba(189,173,255,.34)!important;border-radius:14px!important;background:linear-gradient(110deg,#59458f,#176e79)!important;color:#fff!important;box-shadow:0 7px 20px rgba(0,0,0,.22)!important}',
     '@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}'
   ].join('');
@@ -649,28 +649,33 @@ def patch_hub_web_background(decoded):
     nav.style.setProperty('opacity','1','important');
   }
   function removeCatalogShortcuts() {
-    if (!/catalog/.test(routeText())) return;
     var labels = /^(моя волна|микс дня|my wave|daily mix)$/i;
-    document.querySelectorAll('button,a,[role="button"]').forEach(function (el) {
+    document.querySelectorAll('button,a,[role="button"],[role="tab"],h1,h2,h3,span').forEach(function (el) {
       var label = (el.innerText || el.textContent || '').replace(/\s+/g,' ').trim();
       if (!labels.test(label)) return;
-      var card = el.closest('article,[data-slot="card"],.card,[class*="Card"]') || el;
+      var card = el.closest('article,[data-slot="card"],.card,[class*="Card"],[class*="card"]') || el.parentElement || el;
       card.style.setProperty('display','none','important');
     });
   }
   function liftAssistantComposer() {
     if (!/assistant/.test(routeText())) return;
+    var main = document.querySelector('main');
     document.querySelectorAll('button,a,[role="button"]').forEach(function (el) {
       var label = (el.innerText || el.textContent || '').replace(/\s+/g,' ').trim();
       if (!/(сообщени[ея] ассистенту|написать ассистенту|send.*assistant|message.*assistant)/i.test(label)) return;
       el.classList.add('aura-assistant-action');
-      var shell = el.closest('form') || el.parentElement;
+      var form = el.closest('form');
+      var shell = form || el.parentElement;
       if (shell) shell.classList.add('aura-assistant-composer');
+      if (form && main && form.parentElement !== main) main.appendChild(form);
     });
     var input = document.querySelector('textarea[placeholder],input[placeholder]');
     if (input) {
       var form = input.closest('form') || input.parentElement;
-      if (form) form.classList.add('aura-assistant-composer');
+      if (form) {
+        form.classList.add('aura-assistant-composer');
+        if (main && form.parentElement !== main) main.appendChild(form);
+      }
     }
   }
   function recoverLayout() {
@@ -707,6 +712,7 @@ def patch_hub_web_background(decoded):
   window.addEventListener('hashchange',scheduleLayout);
   window.addEventListener('popstate',scheduleLayout);
   window.addEventListener('pageshow',scheduleLayout);
+  window.addEventListener('focus',scheduleLayout);
   document.addEventListener('visibilitychange',function () {
     if (document.visibilityState === 'visible') scheduleLayout();
   });
