@@ -12,7 +12,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: aura-pr7-release
+  group: aura-release-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
