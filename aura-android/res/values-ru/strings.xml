@@ -458,7 +458,7 @@
     <string name="menu_add_to_playlist_button">В плейлист</string>
     <string name="menu_add_to_queue_button">В очередь</string>
     <string name="menu_download_all_button">Скачать всё</string>
-    <string name="menu_download_label">Скачанное</string>
+    <string name="menu_download_label">Загрузки</string>
     <string name="menu_edit_playlist_button">Изменить</string>
     <string name="menu_edit_playlist_details_button">Редактировать сведения</string>
     <string name="menu_filter_all">Все</string>
@@ -991,4 +991,4 @@
     <string name="widget_placeholder_subtitle">Открыть Tempus</string>
     <string name="widget_time_duration_placeholder">0:00</string>
     <string name="widget_time_elapsed_placeholder">0:00</string>
-<string name="homemusic_settings_title">AURA (HomeMusic)</string><string name="aura_contact_author_title">Связаться с автором форка</string><string name="aura_contact_author_summary">Telegram: Play_in_Spirits</string><string name="aura_contact_author_link">https://t.me/Play_in_Spirits</string><string name="aura_upstream_project_title">Оригинальное приложение HomeMusic</string><string name="aura_upstream_project_link">https://github.com/justman-1/HomeMusic-public</string></resources>
+<string name="homemusic_menu_hub">Хаб</string><string name="homemusic_settings_title">AURA (HomeMusic)</string><string name="aura_contact_author_title">Связаться с автором форка</string><string name="aura_contact_author_summary">Telegram: Play_in_Spirits</string><string name="aura_contact_author_link">https://t.me/Play_in_Spirits</string><string name="aura_upstream_project_title">Оригинальное приложение HomeMusic</string><string name="aura_upstream_project_link">https://github.com/justman-1/HomeMusic-public</string></resources>

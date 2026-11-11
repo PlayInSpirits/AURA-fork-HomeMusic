@@ -2720,6 +2720,11 @@
     .line 1371
     .line 1372
     invoke-virtual {v5, v7}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
+
+    new-instance v8, Lapp/homemusic/AURAWaveCircleTouchListener;
+    invoke-direct {v8}, Lapp/homemusic/AURAWaveCircleTouchListener;-><init>()V
+    invoke-virtual {v5, v8}, Landroid/view/View;->setOnTouchListener(Landroid/view/View$OnTouchListener;)V
+
     invoke-static {v5}, Lapp/homemusic/AURAWaveToggleClickListener;->syncIcon(Landroid/view/View;)V
 
     .line 1373

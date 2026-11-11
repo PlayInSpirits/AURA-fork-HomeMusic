@@ -391,7 +391,7 @@ Tap to hide"</string>
     <string name="homemusic_login_user">Имя</string>
     <string name="homemusic_login_user_or_email">Имя или почта</string>
     <string name="homemusic_login_wrong">Неверное имя или пароль</string>
-    <string name="homemusic_menu_hub">Хаб</string>
+    <string name="homemusic_menu_hub">Hub</string>
     <string name="homemusic_mix_building">Собираем…</string>
     <string name="homemusic_mix_none">Появится утром</string>
     <string name="homemusic_mix_onboarding">Выберите исполнителей</string>
@@ -687,7 +687,7 @@ Only confirm if this code matches the other phone."</string>
     <string name="menu_add_to_playlist_button">Add to playlist</string>
     <string name="menu_add_to_queue_button">Add to queue</string>
     <string name="menu_download_all_button">Download all</string>
-    <string name="menu_download_label">Download</string>
+    <string name="menu_download_label">Downloads</string>
     <string name="menu_edit_playlist_button">Edit playlist</string>
     <string name="menu_edit_playlist_details_button">Edit details</string>
     <string name="menu_filter_all">All</string>

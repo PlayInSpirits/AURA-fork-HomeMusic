@@ -3,12 +3,12 @@
   "versionName": "pr0.72-3",
   "url": "https://github.com/PlayInSpirits/HomeMusic-Fork/releases/download/pr0.72-3/AURA-pr0.72-3.apk",
   "size": 22114073,
-  "sha256": "7c64247c7f89537982ebe9051076e74437389cbc78861e912d7cd7313dc5ef43",
-  "notes": "Обновлён хотбар; «Моя волна» теперь ищет треки один раз за запуск приложения и переключает воспроизведение; в разделе «О приложении» переименована ссылка на оригинальное приложение HomeMusic.",
+  "sha256": "2bfb719ed2e03dcb474060336f1a0dbf9f9719fdff0b306a42085eb38f236a65",
+  "notes": "Хотбар: читаемые иконки и подписи; «Моя волна»: один поиск за запуск, затем воспроизведение/пауза; «О приложении»: «Оригинальное приложение HomeMusic».",
   "patches": [],
   "full": {
     "url": "https://github.com/PlayInSpirits/HomeMusic-Fork/releases/download/pr0.72-3/AURA-pr0.72-3.apk",
     "size": 22114073,
-    "sha256": "7c64247c7f89537982ebe9051076e74437389cbc78861e912d7cd7313dc5ef43"
+    "sha256": "2bfb719ed2e03dcb474060336f1a0dbf9f9719fdff0b306a42085eb38f236a65"
   }
 }

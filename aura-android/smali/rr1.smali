@@ -3179,7 +3179,7 @@
     move-result-object v1
 
     .line 17
-    const/4 v2, 0x0
+    const/4 v2, 0x1
 
     .line 18
     iput-boolean v2, v1, Ln83;->i:Z
