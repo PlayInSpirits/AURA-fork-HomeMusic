@@ -117,17 +117,30 @@ def patch_bottom_nav_resources(res):
     d=res/'drawable'; d.mkdir(parents=True,exist_ok=True)
     color=res/'color'; color.mkdir(parents=True,exist_ok=True)
     icons={
-      'aura_nav_home.xml':'<vector xmlns:android="http://schemas.android.com/apk/res/android" android:width="24dp" android:height="24dp" android:viewportWidth="24" android:viewportHeight="24"><path android:fillColor="#ffffffff" android:pathData="M3,10.8L12,3.5L21,10.8H19V20H13.5V14H10.5V20H5V10.8Z"/></vector>',
-      'aura_nav_library.xml':'<vector xmlns:android="http://schemas.android.com/apk/res/android" android:width="24dp" android:height="24dp" android:viewportWidth="24" android:viewportHeight="24"><path android:fillColor="#00000000" android:strokeColor="#ffffffff" android:strokeWidth="2" android:strokeLineCap="round" android:pathData="M5,4H19V20H5Z M10,4V20 M13,8H16 M13,12H16 M13,16H16"/></vector>',
-      'aura_nav_hub.xml':'<vector xmlns:android="http://schemas.android.com/apk/res/android" android:width="24dp" android:height="24dp" android:viewportWidth="24" android:viewportHeight="24"><path android:fillColor="#00000000" android:strokeColor="#ffffffff" android:strokeWidth="2" android:strokeLineCap="round" android:pathData="M6,6L18,6L12,18Z"/><path android:fillColor="#ffffffff" android:pathData="M6,2.8A3.2,3.2 0,1 0,6 9.2A3.2,3.2 0,1 0,6 2.8M18,2.8A3.2,3.2 0,1 0,18 9.2A3.2,3.2 0,1 0,18 2.8M12,14.8A3.2,3.2 0,1 0,12 21.2A3.2,3.2 0,1 0,12 14.8"/></vector>',
-      'aura_nav_download.xml':'<vector xmlns:android="http://schemas.android.com/apk/res/android" android:width="24dp" android:height="24dp" android:viewportWidth="24" android:viewportHeight="24"><path android:fillColor="#ffffffff" android:pathData="M11,3H13V13.1L16.4,9.7L17.8,11.1L12,16.9L6.2,11.1L7.6,9.7L11,13.1Z M4,18H20V21H4Z"/></vector>'
+      'aura_nav_home.xml':'''<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android" android:width="24dp" android:height="24dp" android:viewportWidth="24" android:viewportHeight="24">
+    <path android:fillColor="#ffffffff" android:pathData="M12,3.2L2.7,11h2.8v9h5v-6h3v6h5v-9h2.8Z"/>
+</vector>''',
+      'aura_nav_library.xml':'''<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android" android:width="24dp" android:height="24dp" android:viewportWidth="24" android:viewportHeight="24">
+    <path android:fillColor="#00000000" android:strokeColor="#ffffffff" android:strokeWidth="2" android:strokeLineCap="round" android:strokeLineJoin="round" android:pathData="M5,3.8h14a2,2 0,0 1,2 2v14.4H6a3,3 0,0 1,-3 -3V5.8a2,2 0,0 1,2 -2z M7,8h10 M7,12h10 M7,16h7"/>
+</vector>''',
+      'aura_nav_hub.xml':'''<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android" android:width="24dp" android:height="24dp" android:viewportWidth="24" android:viewportHeight="24">
+    <path android:fillColor="#00000000" android:strokeColor="#ffffffff" android:strokeWidth="2" android:strokeLineCap="round" android:pathData="M7,7L17,7 M8.5,9L11,16 M15.5,9L13,16"/>
+    <path android:fillColor="#ffffffff" android:pathData="M7,3.5a3.5,3.5 0,1 0,0 7a3.5,3.5 0,1 0,0 -7 M17,3.5a3.5,3.5 0,1 0,0 7a3.5,3.5 0,1 0,0 -7 M12,13.5a3.5,3.5 0,1 0,0 7a3.5,3.5 0,1 0,0 -7"/>
+</vector>''',
+      'aura_nav_download.xml':'''<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android" android:width="24dp" android:height="24dp" android:viewportWidth="24" android:viewportHeight="24">
+    <path android:fillColor="#ffffffff" android:pathData="M11,3h2v9.2l3.1,-3.1 1.4,1.4L12,16 6.5,10.5l1.4,-1.4 3.1,3.1Z M4,18h16v3H4Z"/>
+</vector>'''
     }
     for name,content in icons.items():
-        (d/name).write_text('<?xml version="1.0" encoding="utf-8"?>'+chr(10)+content,encoding='utf-8')
+        (d/name).write_text(content,encoding='utf-8')
     (color/'aura_bottom_nav_tint.xml').write_text('''<?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_checked="true" android:color="#ffbdadff"/>
-    <item android:color="#ffb9b5cf"/>
+    <item android:state_checked="true" android:color="#ffffffff"/>
+    <item android:color="#ffd8d5f1"/>
 </selector>
 ''',encoding='utf-8')
     menu_icons={
@@ -147,6 +160,30 @@ def patch_bottom_nav_resources(res):
                 if key in menu_icons: node.set(a('icon'),menu_icons[key])
         save(t,f)
 
+    labels={
+      res/'values/strings.xml':{
+        'menu_home_label':'Home',
+        'menu_library_label':'Library',
+        'homemusic_menu_hub':'Hub',
+        'menu_download_label':'Downloads'
+      },
+      res/'values-ru/strings.xml':{
+        'menu_home_label':'Главная',
+        'menu_library_label':'Библиотека',
+        'homemusic_menu_hub':'Хаб',
+        'menu_download_label':'Загрузки'
+      }
+    }
+    for f,values in labels.items():
+        if not f.exists(): continue
+        t=xml(f)
+        nodes={node.get('name'):node for node in t.getroot().findall('string')}
+        for name,value in values.items():
+            node=nodes.get(name)
+            if node is None: node=ET.SubElement(t.getroot(),'string',{'name':name})
+            node.text=value
+        save(t,f)
+
     land=res/'layout-land/activity_main.xml'
     if land.exists():
         t=xml(land)
@@ -154,21 +191,21 @@ def patch_bottom_nav_resources(res):
         if nav is not None:
             nav.set(p('itemIconTint'),'@color/aura_bottom_nav_tint')
             nav.set(p('itemTextColor'),'@color/aura_bottom_nav_tint')
-            nav.set(p('itemIconSize'),'24dp')
+            nav.set(p('itemIconSize'),'25dp')
             save(t,land)
 
 def patch_aura_islands(res):
     f=res/'layout/activity_main.xml'; t=xml(f)
     nav=next((n for n in t.getroot().iter() if n.tag.endswith('BottomNavigationView')),None)
     if nav is None: raise RuntimeError('BottomNavigationView missing from activity_main.xml')
-    for k,v in {'layout_gravity':'bottom|center_horizontal','layout_width':'match_parent','layout_height':'82dp','layout_marginStart':'15dp','layout_marginEnd':'15dp','layout_marginBottom':'22dp','paddingStart':'9dp','paddingEnd':'9dp','elevation':'16dp','background':'@drawable/aura_bottom_nav_island','clipToPadding':'false'}.items(): nav.set(a(k),v)
-    for k,v in {'itemIconSize':'24dp','itemHorizontalTranslationEnabled':'false','labelVisibilityMode':'labeled','itemRippleColor':'#33bdadff','itemIconTint':'@color/aura_bottom_nav_tint','itemTextColor':'@color/aura_bottom_nav_tint'}.items(): nav.set(p(k),v)
+    for k,v in {'layout_gravity':'bottom|center_horizontal','layout_width':'match_parent','layout_height':'70dp','layout_marginStart':'14dp','layout_marginEnd':'14dp','layout_marginBottom':'16dp','paddingStart':'8dp','paddingEnd':'8dp','paddingTop':'4dp','paddingBottom':'4dp','elevation':'16dp','background':'@drawable/aura_bottom_nav_island','clipToPadding':'false'}.items(): nav.set(a(k),v)
+    for k,v in {'itemIconSize':'25dp','itemHorizontalTranslationEnabled':'false','labelVisibilityMode':'labeled','itemPaddingTop':'4dp','itemPaddingBottom':'4dp','itemRippleColor':'#44bdadff','itemIconTint':'@color/aura_bottom_nav_tint','itemTextColor':'@color/aura_bottom_nav_tint'}.items(): nav.set(p(k),v)
     save(t,f)
     d=res/'drawable'; d.mkdir(parents=True,exist_ok=True)
     (d/'aura_bottom_nav_island.xml').write_text('''<?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-  <item><shape android:shape="rectangle"><gradient android:angle="0" android:startColor="#ff302e4c" android:centerColor="#ff202d43" android:endColor="#ff183643"/><corners android:radius="28dp"/><stroke android:width="1dp" android:color="#88bdadff"/></shape></item>
-  <item android:left="2dp" android:top="2dp" android:right="2dp"><shape android:shape="rectangle"><corners android:radius="26dp"/><solid android:color="#12ffffff"/></shape></item>
+  <item><shape android:shape="rectangle"><gradient android:angle="0" android:startColor="#ff554b78" android:centerColor="#ff345575" android:endColor="#ff286b70"/><corners android:radius="24dp"/><stroke android:width="1dp" android:color="#99ddd5ff"/></shape></item>
+  <item android:left="2dp" android:top="2dp" android:right="2dp" android:bottom="2dp"><shape android:shape="rectangle"><corners android:radius="22dp"/><solid android:color="#18ffffff"/></shape></item>
 </layer-list>
 ''',encoding='utf-8')
     (d/'aura_wave_play_button.xml').write_text('''<?xml version="1.0" encoding="utf-8"?>
@@ -595,6 +632,25 @@ def patch_github_updater(decoded):
     if method.count(old)!=1:
         raise RuntimeError('Updater feed URL insertion point was not found uniquely')
     method=method.replace(old,new,1)
+    redirect_old='''    const/4 v2, 0x0
+
+    .line 18
+    iput-boolean v2, v1, Ln83;->i:Z
+
+    .line 19
+    .line 20
+    iput-boolean v2, v1, Ln83;->j:Z'''
+    redirect_new='''    const/4 v2, 0x1
+
+    .line 18
+    iput-boolean v2, v1, Ln83;->i:Z
+
+    .line 19
+    .line 20
+    iput-boolean v2, v1, Ln83;->j:Z'''
+    if method.count(redirect_old)!=1:
+        raise RuntimeError('GitHub feed redirect flags insertion point was not found uniquely')
+    method=method.replace(redirect_old,redirect_new,1)
     s=s[:start]+method+s[end:]
     f.write_text(s,encoding='utf-8')
 
@@ -1100,6 +1156,101 @@ def patch_wave_button_behavior(decoded):
 .end method
 ''',encoding='utf-8')
 
+    circle=decoded/'smali/app/homemusic/AURAWaveCircleTouchListener.smali'
+    circle.write_text('''.class public final Lapp/homemusic/AURAWaveCircleTouchListener;
+.super Ljava/lang/Object;
+.implements Landroid/view/View$OnTouchListener;
+
+.field private tracking:Z
+
+.method public constructor <init>()V
+    .locals 0
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+    return-void
+.end method
+
+.method public onTouch(Landroid/view/View;Landroid/view/MotionEvent;)Z
+    .locals 3
+    invoke-virtual {p2}, Landroid/view/MotionEvent;->getActionMasked()I
+    move-result v0
+    if-nez v0, :not_down
+    invoke-static {p1, p2}, Lapp/homemusic/AURAWaveCircleTouchListener;->insideCircle(Landroid/view/View;Landroid/view/MotionEvent;)Z
+    move-result v1
+    iput-boolean v1, p0, Lapp/homemusic/AURAWaveCircleTouchListener;->tracking:Z
+    invoke-virtual {p1, v1}, Landroid/view/View;->setPressed(Z)V
+    const/4 v0, 0x1
+    return v0
+
+:not_down
+    const/4 v1, 0x1
+    if-ne v0, v1, :move_or_cancel
+    iget-boolean v1, p0, Lapp/homemusic/AURAWaveCircleTouchListener;->tracking:Z
+    invoke-static {p1, p2}, Lapp/homemusic/AURAWaveCircleTouchListener;->insideCircle(Landroid/view/View;Landroid/view/MotionEvent;)Z
+    move-result v2
+    and-int/2addr v1, v2
+    const/4 v2, 0x0
+    iput-boolean v2, p0, Lapp/homemusic/AURAWaveCircleTouchListener;->tracking:Z
+    invoke-virtual {p1, v2}, Landroid/view/View;->setPressed(Z)V
+    if-eqz v1, :handled
+    invoke-virtual {p1}, Landroid/view/View;->performClick()Z
+:handled
+    const/4 v0, 0x1
+    return v0
+
+:move_or_cancel
+    const/4 v1, 0x2
+    if-ne v0, v1, :cancel
+    iget-boolean v1, p0, Lapp/homemusic/AURAWaveCircleTouchListener;->tracking:Z
+    invoke-static {p1, p2}, Lapp/homemusic/AURAWaveCircleTouchListener;->insideCircle(Landroid/view/View;Landroid/view/MotionEvent;)Z
+    move-result v2
+    and-int/2addr v1, v2
+    invoke-virtual {p1, v1}, Landroid/view/View;->setPressed(Z)V
+    const/4 v0, 0x1
+    return v0
+
+:cancel
+    const/4 v1, 0x0
+    iput-boolean v1, p0, Lapp/homemusic/AURAWaveCircleTouchListener;->tracking:Z
+    invoke-virtual {p1, v1}, Landroid/view/View;->setPressed(Z)V
+    const/4 v0, 0x1
+    return v0
+.end method
+
+.method private static insideCircle(Landroid/view/View;Landroid/view/MotionEvent;)Z
+    .locals 8
+    invoke-virtual {p0}, Landroid/view/View;->getWidth()I
+    move-result v0
+    invoke-virtual {p0}, Landroid/view/View;->getHeight()I
+    move-result v1
+    invoke-static {v0, v1}, Ljava/lang/Math;->min(II)I
+    move-result v2
+    int-to-float v2, v2
+    const/high16 v3, 0x3f000000
+    mul-float/2addr v2, v3
+    int-to-float v4, v0
+    mul-float/2addr v4, v3
+    int-to-float v5, v1
+    mul-float/2addr v5, v3
+    invoke-virtual {p1}, Landroid/view/MotionEvent;->getX()F
+    move-result v6
+    sub-float/2addr v6, v4
+    invoke-virtual {p1}, Landroid/view/MotionEvent;->getY()F
+    move-result v7
+    sub-float/2addr v7, v5
+    mul-float/2addr v6, v6
+    mul-float/2addr v7, v7
+    add-float/2addr v6, v7
+    mul-float v2, v2, v2
+    cmpl-float v6, v6, v2
+    if-lez v6, :inside
+    const/4 v0, 0x0
+    return v0
+:inside
+    const/4 v0, 0x1
+    return v0
+.end method
+''',encoding='utf-8')
+
     f=decoded/'smali/cp1.smali'
     s=f.read_text(encoding='utf-8')
     old='''    new-instance v6, Lgo1;
@@ -1125,6 +1276,11 @@ def patch_wave_button_behavior(decoded):
     .line 1371
     .line 1372
     invoke-virtual {v5, v7}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
+
+    new-instance v8, Lapp/homemusic/AURAWaveCircleTouchListener;
+    invoke-direct {v8}, Lapp/homemusic/AURAWaveCircleTouchListener;-><init>()V
+    invoke-virtual {v5, v8}, Landroid/view/View;->setOnTouchListener(Landroid/view/View$OnTouchListener;)V
+
     invoke-static {v5}, Lapp/homemusic/AURAWaveToggleClickListener;->syncIcon(Landroid/view/View;)V'''
     if s.count(old)!=1:
         raise RuntimeError('My Wave click listener insertion point was not found uniquely in cp1.smali')
@@ -1238,6 +1394,9 @@ def main():
     rr1_text=(decoded/'smali/rr1.smali').read_text(encoding='utf-8')
     if 'https://raw.githubusercontent.com/PlayInSpirits/HomeMusic-Fork/main' not in rr1_text or '"/app/latest.json"' not in rr1_text:
         raise RuntimeError('GitHub latest.json update feed is not configured')
+    feed_method=rr1_text[rr1_text.index('.method public static final n()Lcom/eddyizm/tempus/homemusic/HubAppRelease;'):rr1_text.index('.end method',rr1_text.index('.method public static final n()Lcom/eddyizm/tempus/homemusic/HubAppRelease;'))]
+    if 'const/4 v2, 0x1' not in feed_method or 'iput-boolean v2, v1, Ln83;->i:Z' not in feed_method or 'iput-boolean v2, v1, Ln83;->j:Z' not in feed_method:
+        raise RuntimeError('AURA GitHub latest.json HTTP client must follow redirects')
     hub_smali=(decoded/'smali/com/eddyizm/tempus/homemusic/HubFragment.smali').read_text(encoding='utf-8')
     if '__AURA_HUB_STYLE__' not in hub_smali or 'auraHubEnter' not in hub_smali:
         raise RuntimeError('AURA Hub styling and animations were not installed')
@@ -1262,12 +1421,18 @@ def main():
     wave_click=(decoded/'smali/app/homemusic/AURAWaveToggleClickListener.smali').read_text(encoding='utf-8')
     if 'waveStarted:Z' not in wave_helper or 'wavePlaying:Z' not in wave_helper or 'dispatchMediaKeyEvent' not in wave_click:
         raise RuntimeError('My Wave must launch once per process and toggle media playback afterwards')
+    circle_touch=(decoded/'smali/app/homemusic/AURAWaveCircleTouchListener.smali').read_text(encoding='utf-8')
+    if 'insideCircle' not in circle_touch or 'performClick()Z' not in circle_touch or 'setOnTouchListener' not in (decoded/'smali/cp1.smali').read_text(encoding='utf-8'):
+        raise RuntimeError('My Wave must accept taps only inside the circular button')
     wave_layout=(res/'layout/homemusic_home_mixes.xml').read_text(encoding='utf-8')
     if 'android:id="@id/homemusic_wave_card"' not in wave_layout or 'android:clickable="false"' not in wave_layout or not (res/'drawable/aura_wave_pause_icon.xml').exists():
         raise RuntimeError('My Wave click target must be the round button and include a pause icon')
     nav_layout=(res/'layout/activity_main.xml').read_text(encoding='utf-8')
-    if 'android:layout_height="82dp"' not in nav_layout or 'aura_bottom_nav_tint' not in nav_layout:
-        raise RuntimeError('Bottom navigation must have sufficient height and explicit icon/text tint')
+    if 'android:layout_height="70dp"' not in nav_layout or 'aura_bottom_nav_tint' not in nav_layout or 'android:layout_marginBottom="16dp"' not in nav_layout:
+        raise RuntimeError('Bottom navigation layout and icon/text tint are incomplete')
+    nav_bg=(res/'drawable/aura_bottom_nav_island.xml').read_text(encoding='utf-8')
+    if '#ff554b78' not in nav_bg or '#ff286b70' not in nav_bg:
+        raise RuntimeError('AURA bottom navigation must retain a distinct violet/teal panel background')
     nav_menu=(res/'menu/bottom_nav_menu.xml').read_text(encoding='utf-8')
     if any(name not in nav_menu for name in ('aura_nav_home','aura_nav_library','aura_nav_hub','aura_nav_download')):
         raise RuntimeError('Custom AURA bottom navigation icons are incomplete')
