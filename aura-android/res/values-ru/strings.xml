@@ -377,7 +377,7 @@
     <string name="lan_connecting">Подключение…</string>
     <string name="lan_connection_error">Не получилось. Проверьте связь, связывание телефонов, адрес сервера и доступ к трекам.</string>
     <string name="lan_controlled_device">Управляемое устройство</string>
-    <string name="lan_controller_role">Пульт</string>
+    <string name="lan_controller_role">Sharing</string>
     <string name="lan_controller_summary">Найти другой телефон и управлять музыкой на нём.</string>
     <string name="lan_controlling">%1$s · Отключить пульт</string>
     <string name="lan_device_name">Название устройства</string>
@@ -420,7 +420,7 @@
     <string name="lan_reconnecting">Переподключение… Музыка на другом телефоне продолжает играть.</string>
     <string name="lan_release_control">Отключить пульт</string>
     <string name="lan_release_summary">Музыка на другом телефоне продолжит играть.</string>
-    <string name="lan_remote_active">Пульт</string>
+    <string name="lan_remote_active">Sharing</string>
     <string name="lan_response_error">Соединение открылось, но телефон не ответил на связывание. Включите на нём «Разрешить связывание» и попробуйте ещё раз.</string>
     <string name="lan_revoke">Отозвать доступ</string>
     <string name="lan_revoke_hint">Нажмите, чтобы отозвать доступ</string>
@@ -432,7 +432,7 @@
     <string name="lan_select_receiver">Выберите, чтобы связаться или управлять.</string>
     <string name="lan_server_mismatch">На обоих телефонах должен быть один и тот же адрес музыкального сервера.</string>
     <string name="lan_this_device">Это устройство</string>
-    <string name="lan_title">Пульт</string>
+    <string name="lan_title">Sharing</string>
     <string name="lan_tls_error">Не удалось установить защищённое соединение. Обновите HomeMusic на обоих телефонах и попробуйте ещё раз.</string>
     <string name="lan_transferring">Передаю очередь на другой телефон…</string>
     <string name="lan_unknown_device">Неизвестное устройство</string>
@@ -885,7 +885,7 @@
     <string name="settings_title_ui">Интерфейс</string>
     <string name="settings_track_number">Показывать номер трека</string>
     <string name="settings_track_number_summary">Отображать порядковый номер воспроизводимого трека.</string>
-    <string name="settings_version_summary">AURA 0.6-1</string>
+    <string name="settings_version_summary">AURA pr0.7-1</string>
     <string name="settings_version_title">Версия AURA</string>
     <string name="settings_wifi_only_summary">Спрашивать разрешение перед стримингом в мобильной сети.</string>
     <string name="settings_wifi_only_title">Предупреждение Только Wi-Fi</string>

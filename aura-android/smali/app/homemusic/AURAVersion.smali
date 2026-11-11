@@ -1,6 +1,8 @@
 .class public final Lapp/homemusic/AURAVersion;
 .super Ljava/lang/Object;
 
+.field public static pendingSearch:Z
+
 .method public static versionName(Landroid/content/Context;)Ljava/lang/String;
     .locals 3
     invoke-virtual {p0}, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;

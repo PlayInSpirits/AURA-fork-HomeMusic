@@ -2814,22 +2814,18 @@
     .line 1424
     const/4 v0, 0x0
     invoke-virtual {v1, v2, v0}, Landroid/view/ViewGroup;->addView(Landroid/view/View;I)V
-    check-cast v2, Landroid/view/ViewGroup;
-    move-object/from16 v70, v2
-    const/16 v71, 0x0
-    invoke-virtual/range {v70 .. v71}, Landroid/view/ViewGroup;->getChildAt(I)Landroid/view/View;
-    move-result-object v70
-    check-cast v70, Landroid/view/ViewGroup;
-    const/16 v71, 0x0
-    invoke-virtual/range {v70 .. v71}, Landroid/view/ViewGroup;->getChildAt(I)Landroid/view/View;
-    move-result-object v70
-    invoke-virtual/range {v70 .. v70}, Landroid/view/View;->getBackground()Landroid/graphics/drawable/Drawable;
-    move-result-object v70
-    move-object/from16 v14, v70
+    invoke-virtual {v1}, Landroid/view/View;->getRootView()Landroid/view/View;
+    move-result-object v14
+    const v15, 0x7f0a0263
+    invoke-virtual {v14, v15}, Landroid/view/View;->findViewById(I)Landroid/view/View;
+    move-result-object v14
+    if-eqz v14, :cond_aura_animation_done
+    invoke-virtual {v14}, Landroid/view/View;->getBackground()Landroid/graphics/drawable/Drawable;
+    move-result-object v14
     instance-of v15, v14, Landroid/graphics/drawable/AnimationDrawable;
     if-eqz v15, :cond_aura_animation_done
     check-cast v14, Landroid/graphics/drawable/AnimationDrawable;
-    invoke-virtual/range {v14 .. v14}, Landroid/graphics/drawable/AnimationDrawable;->start()V
+    invoke-virtual {v14}, Landroid/graphics/drawable/AnimationDrawable;->start()V
     :cond_aura_animation_done
 
     .line 1430

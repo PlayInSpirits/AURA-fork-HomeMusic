@@ -768,6 +768,9 @@
     .line 10
     if-ne v0, v1, :cond_0
 
+    const/4 v0, 0x1
+    sput-boolean v0, Lapp/homemusic/AURAVersion;->pendingSearch:Z
+
     .line 11
     .line 12
     iget-object p0, p0, Lcom/eddyizm/tempus/ui/fragment/ToolbarFragment;->m0:Lcom/eddyizm/tempus/ui/activity/MainActivity;
@@ -778,7 +781,7 @@
 
     .line 15
     .line 16
-    const p1, 0x7f0a0535
+    const p1, 0x7f0a02ed
 
     .line 17
     .line 18

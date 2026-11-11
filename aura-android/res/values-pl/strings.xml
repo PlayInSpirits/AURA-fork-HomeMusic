@@ -376,7 +376,7 @@ Naciśnij aby ukryć"</string>
     <string name="lan_connecting">Łączenie…</string>
     <string name="lan_connection_error">Operacja nieudana. Sprawdź połączenie, parowanie, adres serwera i dostęp do każdego utworu.</string>
     <string name="lan_controlled_device">Sterowane urządzenie</string>
-    <string name="lan_controller_role">Urządzenie zdalnego sterowania</string>
+    <string name="lan_controller_role">Sharing</string>
     <string name="lan_controller_summary">Znajdź telefon odbierający i steruj odtwarzaniem jego muzyki.</string>
     <string name="lan_controlling">%1$s · Zwolnij sterowanie</string>
     <string name="lan_device_name">Nazwa urządzenia</string>
@@ -419,7 +419,7 @@ Only confirm if this code matches the other phone."</string>
     <string name="lan_reconnecting">Ponowne łączenie… Odtwarzanie jest kontynuowane na odbiorniku.</string>
     <string name="lan_release_control">Zwolnij zdalne sterowanie</string>
     <string name="lan_release_summary">Odtwarzanie jest kontynuowane na odbiorniku.</string>
-    <string name="lan_remote_active">Zdalne sterowanie</string>
+    <string name="lan_remote_active">Sharing</string>
     <string name="lan_response_error">Połączenie otwarte, ale odpowiedzi parowania brakuje lub została odrzucona. Włącz “Udostępnienie do sparowania” na odbiorniku i spróbuj ponownie.</string>
     <string name="lan_revoke">Odbierz dostęp</string>
     <string name="lan_revoke_hint">Stuknij, aby odebrać dostęp</string>
@@ -431,7 +431,7 @@ Only confirm if this code matches the other phone."</string>
     <string name="lan_select_receiver">Wybierz, aby sparować lub przejąć sterowanie.</string>
     <string name="lan_server_mismatch">Oba telefony muszą używać tego samego adresu serwera muzyki.</string>
     <string name="lan_this_device">To urządznie</string>
-    <string name="lan_title">Zdalny odtwarzacz</string>
+    <string name="lan_title">Sharing</string>
     <string name="lan_tls_error">Bezpieczne połączenie nieudane podczas wymiany certyfikatu. Zaktualizuj Tempus na obu telefonach i spróbuj ponownie.</string>
     <string name="lan_transferring">Ładowanie kolejki na innym telefonie…</string>
     <string name="lan_unknown_device">Nieznane urządzenie</string>

@@ -513,8 +513,8 @@ Tap to hide"</string>
     <string name="homemusic_wave_empty">Волне пока нечего предложить</string>
     <string name="homemusic_wave_failed">Хаб недоступен — волна не запустилась</string>
     <string name="homemusic_wave_starting">Собираем волну…</string>
-    <string name="homemusic_wave_subtitle">Музыка, которая звучит в твоём ритме</string>
-    <string name="homemusic_wave_title">Моя волна</string>
+    <string name="homemusic_wave_subtitle" />
+    <string name="homemusic_wave_title">МОЯ ВОЛНА</string>
     <string name="ic_media_route_learn_more_accessibility">Learn how to cast</string>
     <string name="in_progress">In progress</string>
     <string name="indeterminate">Partially checked</string>
@@ -587,7 +587,7 @@ Tap to hide"</string>
     <string name="lan_connecting">Connecting…</string>
     <string name="lan_connection_error">The operation failed. Check the connection, pairing, server address and access to every track.</string>
     <string name="lan_controlled_device">Controlled device</string>
-    <string name="lan_controller_role">Controller</string>
+    <string name="lan_controller_role">Sharing</string>
     <string name="lan_controller_summary">Find a receiving phone and control its music.</string>
     <string name="lan_controlling">%1$s · Release control</string>
     <string name="lan_device_name">Device name</string>
@@ -630,7 +630,7 @@ Only confirm if this code matches the other phone."</string>
     <string name="lan_reconnecting">Reconnecting… Playback continues on the receiver.</string>
     <string name="lan_release_control">Release remote control</string>
     <string name="lan_release_summary">Playback continues on the receiver.</string>
-    <string name="lan_remote_active">Remote control</string>
+    <string name="lan_remote_active">Sharing</string>
     <string name="lan_response_error">Connection opened, but the pairing response was missing or rejected. Enable “Make available for pairing” on the receiver and try again.</string>
     <string name="lan_revoke">Revoke access</string>
     <string name="lan_revoke_hint">Tap to revoke access</string>
@@ -642,7 +642,7 @@ Only confirm if this code matches the other phone."</string>
     <string name="lan_select_receiver">Select to pair or take control.</string>
     <string name="lan_server_mismatch">Both phones must use the same music server address.</string>
     <string name="lan_this_device">This device</string>
-    <string name="lan_title">Remote player</string>
+    <string name="lan_title">Sharing</string>
     <string name="lan_tls_error">Secure connection failed during the certificate exchange. Update Tempus on both phones and try again.</string>
     <string name="lan_transferring">Loading the queue on the other phone…</string>
     <string name="lan_unknown_device">Unknown device</string>
@@ -1146,7 +1146,7 @@ Currently in use: %2$s MiB"</string>
     <string name="settings_title_ui">UI</string>
     <string name="settings_track_number">Show track number</string>
     <string name="settings_track_number_summary">If enabled, shows the track number of the song being played.</string>
-    <string name="settings_version_summary">AURA 0.6-1</string>
+    <string name="settings_version_summary">AURA pr0.7-1</string>
     <string name="settings_version_title">AURA version</string>
     <string name="settings_wifi_only_summary">Ask for user confirmation before streaming over mobile network.</string>
     <string name="settings_wifi_only_title">Stream via Wi-Fi only alert</string>

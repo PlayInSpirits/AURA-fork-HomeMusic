@@ -7,8 +7,8 @@ sdkInfo:
   minSdkVersion: 24
   targetSdkVersion: 37
 versionInfo:
-  versionCode: 601
-  versionName: "0.6-1"
+  versionCode: 7001
+  versionName: "pr0.7-1"
 resourcesInfo:
   packageId: 127
 doNotCompress:

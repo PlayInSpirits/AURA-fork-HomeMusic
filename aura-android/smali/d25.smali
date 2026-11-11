@@ -1668,21 +1668,22 @@
     .line 62
     :goto_1
     invoke-virtual {p0}, Lcom/eddyizm/tempus/homemusic/HubUpdateFile;->getUrl()Ljava/lang/String;
-
-    .line 63
-    .line 64
-    .line 65
     move-result-object p0
-
-    .line 66
+    const-string v1, "apk"
+    invoke-virtual {p1, v1}, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
+    move-result v1
+    if-eqz v1, :cond_aura_hub_artifact
+    const-string v1, "https://github.com/PlayInSpirits/HomeMusic-Fork/releases/download/"
+    invoke-virtual {p0, v1}, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z
+    move-result v1
+    if-eqz v1, :cond_aura_hub_artifact
+    const-string v1, ".apk"
+    invoke-virtual {p0, v1}, Ljava/lang/String;->endsWith(Ljava/lang/String;)Z
+    move-result p0
+    return p0
+    :cond_aura_hub_artifact
     const-string v1, "-"
-
-    .line 67
-    .line 68
     const-string v3, "."
-
-    .line 69
-    .line 70
     const-string v4, "/app/artifacts/"
 
     .line 71

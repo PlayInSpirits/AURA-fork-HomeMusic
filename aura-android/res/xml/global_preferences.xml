@@ -57,8 +57,8 @@
     </com.eddyizm.tempus.util.ClickablePreferenceCategory>
     <com.eddyizm.tempus.util.ClickablePreferenceCategory app:title="@string/settings_title_players">
         <SwitchPreference android:title="@string/settings_continuous_play_title" android:key="continuous_play" android:summary="@string/settings_continuous_play_summary" android:defaultValue="true" />
-        <SeekBarPreference android:max="100" android:title="@string/settings_number_tracks_keep_in_queue" android:key="number_tracks_keep_in_queue" android:summary="@string/settings_number_tracks_keep_in_queue_summary" android:defaultValue="30" app:adjustable="true" app:min="20" app:showSeekBarValue="true" />
-        <SwitchPreference android:title="@string/settings_fallback_to_random_tracks_title" android:key="fallback_to_random_tracks" android:summary="@string/settings_fallback_to_random_tracks_summary" android:defaultValue="false" />
+        <SeekBarPreference android:max="100" android:title="@string/settings_number_tracks_keep_in_queue" android:key="number_tracks_keep_in_queue" android:summary="@string/settings_number_tracks_keep_in_queue_summary" android:defaultValue="50" app:adjustable="true" app:min="20" app:showSeekBarValue="true" />
+        <SwitchPreference android:title="@string/settings_fallback_to_random_tracks_title" android:key="fallback_to_random_tracks" android:summary="@string/settings_fallback_to_random_tracks_summary" android:defaultValue="true" />
         <ListPreference app:defaultValue="[heartID]" app:dialogTitle="@string/settings_custom_command_first_button" app:entries="@array/custom_commands_titles" app:entryValues="@array/custom_commands_values" app:key="custom_command_first_button" app:title="@string/settings_custom_command_first_button" app:useSimpleSummaryProvider="true" />
         <ListPreference app:defaultValue="[repeatID]" app:dialogTitle="@string/settings_custom_command_second_button" app:entries="@array/custom_commands_titles" app:entryValues="@array/custom_commands_values" app:key="custom_command_second_button" app:title="@string/settings_custom_command_second_button" app:useSimpleSummaryProvider="true" />
         <SeekBarPreference android:max="4" android:key="min_star_rating" app:defaultValue="0" app:min="0" app:seekBarIncrement="1" app:showSeekBarValue="true" app:summary="@string/settings_summary_skip_min_star_rating" app:title="@string/settings_title_skip_min_star_rating" />
@@ -75,7 +75,7 @@
         <SwitchPreference android:title="@string/settings_wifi_only_title" android:key="wifi_only" android:summary="@string/settings_wifi_only_summary" android:defaultValue="false" />
         <SwitchPreference android:title="@string/settings_download_wifi_only_title" android:key="download_wifi_only" android:summary="@string/settings_download_wifi_only_summary" android:defaultValue="false" />
         <SwitchPreference android:title="@string/settings_data_saving_mode_title" android:key="data_saving_mode" android:summary="@string/settings_data_saving_mode_summary" android:defaultValue="false" />
-        <SwitchPreference android:title="@string/settings_sync_starred_tracks_for_offline_use_title" android:key="sync_starred_tracks_for_offline_use" android:summary="@string/settings_sync_starred_tracks_for_offline_use_summary" android:defaultValue="false" />
+        <SwitchPreference android:title="@string/settings_sync_starred_tracks_for_offline_use_title" android:key="sync_starred_tracks_for_offline_use" android:summary="@string/settings_sync_starred_tracks_for_offline_use_summary" android:defaultValue="true" />
         <SwitchPreference android:title="@string/settings_sync_starred_albums_for_offline_use_title" android:key="sync_starred_albums_for_offline_use" android:summary="@string/settings_sync_starred_albums_for_offline_use_summary" android:defaultValue="false" />
         <SwitchPreference android:title="@string/settings_sync_starred_artists_for_offline_use_title" android:key="sync_starred_artists_for_offline_use" android:summary="@string/settings_sync_starred_artists_for_offline_use_summary" android:defaultValue="false" />
         <ListPreference app:defaultValue="60" app:dialogTitle="@string/settings_song_preload_buffer" app:entries="@array/song_preload_buffer_titles" app:entryValues="@array/song_preload_buffer_values" app:key="song_preload_buffer" app:summary="@string/settings_song_preload_buffer_summary" app:title="@string/settings_song_preload_buffer" />
@@ -113,7 +113,7 @@
         </PreferenceCategory>
         <PreferenceCategory app:title="@string/settings_title_syncing">
             <Preference app:selectable="false" app:summary="@string/settings_summary_syncing" />
-            <SwitchPreference android:title="@string/settings_queue_syncing_title" android:key="queue_syncing" android:summary="@string/settings_queue_syncing_summary" android:defaultValue="false" />
+            <SwitchPreference android:title="@string/settings_queue_syncing_title" android:key="queue_syncing" android:summary="@string/settings_queue_syncing_summary" android:defaultValue="true" />
             <ListPreference app:defaultValue="5" app:dialogTitle="@string/settings_queue_syncing_countdown" app:entries="@array/queue_syncing_countdown_titles" app:entryValues="@array/queue_syncing_countdown_values" app:key="queue_syncing_countdown" app:title="@string/settings_queue_syncing_countdown" app:useSimpleSummaryProvider="true" />
         </PreferenceCategory>
     </com.eddyizm.tempus.util.ClickablePreferenceCategory>

@@ -295,7 +295,7 @@
     <string name="lan_connecting">Collegamento…</string>
     <string name="lan_connection_error">Operazione non riuscita. Verifica collegamento, abbinamento, indirizzo del server e accesso a tutti i brani.</string>
     <string name="lan_controlled_device">Dispositivo controllato</string>
-    <string name="lan_controller_role">Telecomando</string>
+    <string name="lan_controller_role">Sharing</string>
     <string name="lan_controller_summary">Cerca un telefono ricevente e controlla la sua musica.</string>
     <string name="lan_controlling">%1$s · Lascia controllo</string>
     <string name="lan_device_name">Nome dispositivo</string>
@@ -338,7 +338,7 @@ Conferma solo se il codice corrisponde a quello sull’altro telefono."</string>
     <string name="lan_reconnecting">Riconnessione… La musica continua sul ricevente.</string>
     <string name="lan_release_control">Lascia il controllo remoto</string>
     <string name="lan_release_summary">La riproduzione sul ricevente continua.</string>
-    <string name="lan_remote_active">Controllo remoto</string>
+    <string name="lan_remote_active">Sharing</string>
     <string name="lan_response_error">Connessione aperta, ma risposta di abbinamento non ricevuta o rifiutata. Sul ricevente attiva “Rendi disponibile per abbinamento” e riprova.</string>
     <string name="lan_revoke">Revoca accesso</string>
     <string name="lan_revoke_hint">Tocca per revocare l’accesso</string>
@@ -350,7 +350,7 @@ Conferma solo se il codice corrisponde a quello sull’altro telefono."</string>
     <string name="lan_select_receiver">Seleziona per abbinare o prendere il controllo.</string>
     <string name="lan_server_mismatch">I telefoni devono usare lo stesso indirizzo del server musicale.</string>
     <string name="lan_this_device">Questo dispositivo</string>
-    <string name="lan_title">Player remoto</string>
+    <string name="lan_title">Sharing</string>
     <string name="lan_tls_error">Connessione sicura non riuscita durante lo scambio dei certificati. Aggiorna Tempus su entrambi i telefoni e riprova.</string>
     <string name="lan_transferring">Caricamento della coda sull’altro telefono…</string>
     <string name="lan_unknown_device">Dispositivo sconosciuto</string>
