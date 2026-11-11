@@ -21,7 +21,7 @@ def colors(path, values):
         n.text=v
     save(t,path)
 def strings(res):
-    changes={'app_name':'AURA','homemusic_login_title':'AURA','homemusic_wave_subtitle':'Музыка, которая звучит в твоём ритме','homemusic_login_server_helper':'Это локальный сервер, если нужно - замени на свой глобальный сервер','homemusic_login_server_bad':'Это не адрес сервера: например, http://192.168.1.129:4533','homemusic_settings_hub_url_dialog':'Адрес Хаба через интернет: http://192.168.1.129:8080','homemusic_settings_hub_local_url_dialog':'Домашний адрес Хаба по Wi-Fi: http://192.168.1.129:8080'}
+    changes={'app_name':'AURA','homemusic_login_title':'AURA','homemusic_wave_title':'МОЯ ВОЛНА','homemusic_wave_subtitle':'','homemusic_login_server_helper':'Это локальный сервер, если нужно - замени на свой глобальный сервер','homemusic_login_server_bad':'Это не адрес сервера: например, http://192.168.1.129:4533','homemusic_settings_hub_url_dialog':'Адрес Хаба через интернет: http://192.168.1.129:8080','homemusic_settings_hub_local_url_dialog':'Домашний адрес Хаба по Wi-Fi: http://192.168.1.129:8080'}
     for f in [res/'values/strings.xml',*res.glob('values-*/strings.xml')]:
         if not f.exists(): continue
         t=xml(f); nodes={x.get('name'):x for x in t.getroot().findall('string')}
@@ -91,7 +91,7 @@ def generate_aurora(res,count=60):
         player+=sweep[...,None]*np.array((43,94,157),np.float32)[None,None,:]*.7
         player*=vignette[...,None]
         Image.fromarray(np.clip(player,0,255).astype('uint8'),'RGB').filter(ImageFilter.GaussianBlur(1.25)).save(d/f'aura_player_aurora_{f:02d}.png',optimize=True)
-    items='\n'.join(f' <item android:drawable="@drawable/aura_aurora_{i:02d}" android:duration="50" />' for i in range(count))
+    items='\n'.join(f' <item android:drawable="@drawable/aura_aurora_{i:02d}" android:duration="240" />' for i in range(count))
     (res/'drawable/aura_aurora_background.xml').write_text(f'<?xml version="1.0" encoding="utf-8"?>\n<animation-list xmlns:android="http://schemas.android.com/apk/res/android" android:oneshot="false">\n{items}\n</animation-list>',encoding='utf-8')
     for name,seq in [('aura_player_play_transition.xml',range(0,10)),('aura_player_pause_transition.xml',range(10,0,-1))]:
         items='\n'.join(f' <item android:drawable="@drawable/aura_player_aurora_{i:02d}" android:duration="85" />' for i in seq)
@@ -112,6 +112,101 @@ def drawables(res):
     'aura_player_state_bg.xml':'<animated-selector xmlns:android="http://schemas.android.com/apk/res/android"><item android:id="@+id/aura_player_idle" android:drawable="@drawable/aura_player_gradient"/><item android:id="@+id/aura_player_playing" android:state_checked="true" android:drawable="@drawable/aura_player_gradient"/><transition android:fromId="@id/aura_player_idle" android:toId="@id/aura_player_playing" android:drawable="@drawable/aura_player_play_transition"/><transition android:fromId="@id/aura_player_playing" android:toId="@id/aura_player_idle" android:drawable="@drawable/aura_player_pause_transition"/></animated-selector>'}
     for n,x in files.items(): (d/n).write_text('<?xml version="1.0" encoding="utf-8"?>\n'+x,encoding='utf-8')
 
+
+def patch_aura_islands(res):
+    f=res/'layout/activity_main.xml'; t=xml(f)
+    nav=next((n for n in t.getroot().iter() if n.tag.split('}')[-1]=='BottomNavigationView'),None)
+    if nav is None: raise RuntimeError('BottomNavigationView missing from activity_main.xml')
+    for k,v in {'layout_gravity':'bottom|center_horizontal','layout_width':'match_parent','layout_height':'66dp','layout_marginStart':'15dp','layout_marginEnd':'15dp','layout_marginBottom':'12dp','paddingStart':'9dp','paddingEnd':'9dp','elevation':'14dp','background':'@drawable/aura_bottom_nav_island','clipToPadding':'false'}.items(): nav.set(a(k),v)
+    for k,v in {'itemIconSize':'23dp','itemHorizontalTranslationEnabled':'false','labelVisibilityMode':'labeled','itemActiveIndicatorColor':'#3abdadff','itemRippleColor':'#33bdadff'}.items(): nav.set(p(k),v)
+    save(t,f)
+    d=res/'drawable'; d.mkdir(parents=True,exist_ok=True)
+    (d/'aura_bottom_nav_island.xml').write_text('''<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+  <item><shape android:shape="rectangle"><gradient android:angle="0" android:startColor="#e62b2948" android:centerColor="#e51d293b" android:endColor="#e513303c"/><corners android:radius="28dp"/><stroke android:width="1dp" android:color="#66bdadff"/></shape></item>
+  <item android:left="2dp" android:top="2dp" android:right="2dp"><shape android:shape="rectangle"><corners android:radius="26dp"/><solid android:color="#12ffffff"/></shape></item>
+</layer-list>
+''',encoding='utf-8')
+    (d/'aura_wave_play_button.xml').write_text('''<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+  <item><shape android:shape="oval"><gradient android:angle="315" android:startColor="#e77d5ce5" android:centerColor="#e24c72bb" android:endColor="#e1289eaa"/><stroke android:width="1dp" android:color="#99ffffff"/></shape></item>
+  <item android:left="2dp" android:top="2dp" android:right="2dp" android:bottom="2dp"><shape android:shape="oval"><solid android:color="#18ffffff"/></shape></item>
+</layer-list>
+''',encoding='utf-8')
+    (d/'aura_wave_play_icon.xml').write_text('''<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android" android:width="32dp" android:height="32dp" android:viewportWidth="24" android:viewportHeight="24">
+  <path android:fillColor="#ffffffff" android:pathData="M8,5.6C8,4.85 8.82,4.39 9.46,4.78L19.1,10.68C19.7,11.05 19.7,11.95 19.1,12.32L9.46,18.22C8.82,18.61 8,18.15 8,17.4Z"/>
+</vector>
+''',encoding='utf-8')
+
+def patch_initial_preferences(res):
+    f=res/'xml/global_preferences.xml'; t=xml(f)
+    desired={'number_tracks_keep_in_queue':'50','fallback_to_random_tracks':'true','data_saving_mode':'false','sync_starred_tracks_for_offline_use':'true','queue_syncing':'true'}
+    found=set()
+    for node in t.getroot().iter():
+        key=node.get(a('key'))
+        if key not in desired: continue
+        value=desired[key]
+        if node.get(a('defaultValue')) is not None: node.set(a('defaultValue'),value)
+        elif node.get(p('defaultValue')) is not None: node.set(p('defaultValue'),value)
+        else: node.set(a('defaultValue'),value)
+        found.add(key)
+    if found!=set(desired): raise RuntimeError(f'Could not apply all AURA first-install defaults: {sorted(found)}')
+    save(t,f)
+    for f in [res/'values/strings.xml',*res.glob('values-*/strings.xml')]:
+        if not f.exists(): continue
+        st=xml(f); changed=False
+        for node in st.getroot().findall('string'):
+            if node.get('name') in ('lan_title','lan_controller_role','lan_remote_active'):
+                node.text='Sharing'; changed=True
+        if changed: save(st,f)
+
+def patch_updater_external_asset(decoded):
+    f=decoded/'smali/d25.smali'; s=f.read_text(encoding='utf-8')
+    old='''    invoke-virtual {p0}, Lcom/eddyizm/tempus/homemusic/HubUpdateFile;->getUrl()Ljava/lang/String;
+
+    .line 64
+    .line 65
+    move-result-object p0
+
+    .line 66
+    const-string v1, "-"
+
+    .line 67
+    .line 68
+    const-string v3, "."
+
+    .line 69
+    .line 70
+    const-string v4, "/app/artifacts/"
+'''
+    new='''    invoke-virtual {p0}, Lcom/eddyizm/tempus/homemusic/HubUpdateFile;->getUrl()Ljava/lang/String;
+    move-result-object p0
+    const-string v1, "apk"
+    invoke-virtual {p1, v1}, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
+    move-result v1
+    if-eqz v1, :cond_aura_hub_artifact
+    const-string v1, "https://github.com/PlayInSpirits/HomeMusic-Fork/releases/download/"
+    invoke-virtual {p0, v1}, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z
+    move-result v1
+    if-eqz v1, :cond_aura_hub_artifact
+    const-string v1, ".apk"
+    invoke-virtual {p0, v1}, Ljava/lang/String;->endsWith(Ljava/lang/String;)Z
+    move-result p0
+    return p0
+    :cond_aura_hub_artifact
+    const-string v1, "-"
+
+    .line 67
+    .line 68
+    const-string v3, "."
+
+    .line 69
+    .line 70
+    const-string v4, "/app/artifacts/"
+'''
+    s=once(s,old,new,'GitHub APK URL allow-list')
+    f.write_text(s,encoding='utf-8')
 def patch_main_menu(res):
     f=res/'menu/main_page_menu.xml'
     t=xml(f); root=t.getroot()
@@ -214,7 +309,7 @@ def patch_about_settings(res,decoded):
       'settings_github_link':'https://github.com/PlayInSpirits/HomeMusic-Fork',
       'settings_github_summary':'AURA source code and releases',
       'settings_github_title':'GitHub',
-      'settings_version_summary':'AURA 0.6-1',
+      'settings_version_summary':'AURA pr7.0-1',
       'settings_version_title':'AURA version',
       'homemusic_settings_title':'AURA (HomeMusic)',
       'aura_contact_author_title':'Contact the fork author',
@@ -227,7 +322,7 @@ def patch_about_settings(res,decoded):
       'settings_github_link':'https://github.com/PlayInSpirits/HomeMusic-Fork',
       'settings_github_summary':'Исходный код и релизы AURA',
       'settings_github_title':'GitHub',
-      'settings_version_summary':'AURA 0.6-1',
+      'settings_version_summary':'AURA pr7.0-1',
       'settings_version_title':'Версия AURA',
       'homemusic_settings_title':'AURA (HomeMusic)',
       'aura_contact_author_title':'Связаться с автором форка',
@@ -675,23 +770,25 @@ def patch_logo(res,logo):
     (res/'drawable/ic_launcher_background.xml').write_text('''<?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle"><gradient android:type="linear" android:angle="315" android:startColor="#ff35246e" android:centerColor="#ff17162b" android:endColor="#ff062a38"/></shape>''',encoding='utf-8')
 
+
 def patch_home_mix_layout(res):
     f=res/'layout/homemusic_home_mixes.xml'; t=xml(f); root=t.getroot()
-    root.set(a('orientation'),'vertical'); root.set(a('paddingLeft'),'16dp'); root.set(a('paddingRight'),'16dp'); root.set(a('paddingTop'),'18dp'); root.set(a('paddingBottom'),'14dp')
-    cards={x.get(a('id')):x for x in root}; wave=cards.get('@id/homemusic_wave_card'); mix=cards.get('@id/homemusic_mix_card')
+    root.set(a('orientation'),'vertical')
+    root.set(a('paddingLeft'),'18dp'); root.set(a('paddingRight'),'18dp')
+    root.set(a('paddingTop'),'12dp'); root.set(a('paddingBottom'),'10dp')
+    cards={x.get(a('id')):x for x in root}
+    wave=cards.get('@id/homemusic_wave_card'); mix=cards.get('@id/homemusic_mix_card')
     if wave is None or mix is None: raise RuntimeError('HomeMusic My Wave / Mix cards not found')
-    for k,v in {'layout_width':'match_parent','layout_height':'wrap_content','layout_weight':'0','layout_marginLeft':'0dp','layout_marginRight':'0dp','layout_marginTop':'0dp','layout_marginBottom':'0dp','foreground':'?attr/selectableItemBackground'}.items(): wave.set(a(k),v)
-    for k,v in {'cardBackgroundColor':'#ff18182a','cardCornerRadius':'28dp','cardElevation':'0dp','strokeWidth':'1dp','strokeColor':'#4dffffff','rippleColor':'#33ffffff'}.items(): wave.set(p(k),v)
-    content=list(wave)[0]
-    for k,v in {'orientation':'horizontal','gravity':'center_vertical','padding':'22dp','minHeight':'164dp','background':'@drawable/aura_aurora_background'}.items(): content.set(a(k),v)
-    content.clear()
-    for k,v in {'orientation':'horizontal','gravity':'center_vertical','padding':'22dp','minHeight':'164dp','layout_width':'match_parent','layout_height':'wrap_content','background':'@drawable/aura_aurora_background'}.items(): content.set(a(k),v)
-    ET.SubElement(content,'ImageView',{a('layout_width'):'54dp',a('layout_height'):'54dp',a('src'):'@drawable/aura_logo',a('contentDescription'):'@string/homemusic_wave_title',a('importantForAccessibility'):'no',a('layout_marginEnd'):'16dp'})
-    col=ET.SubElement(content,'LinearLayout',{a('orientation'):'vertical',a('layout_width'):'0dp',a('layout_height'):'wrap_content',a('layout_weight'):'1',a('gravity'):'center_vertical'})
-    ET.SubElement(col,'TextView',{a('layout_width'):'match_parent',a('layout_height'):'wrap_content',a('text'):'@string/homemusic_wave_title',a('textColor'):'#ffffffff',a('textSize'):'23sp',a('fontFamily'):'sans-serif-medium',a('letterSpacing'):'0.01',a('maxLines'):'1'})
-    ET.SubElement(col,'TextView',{a('layout_width'):'match_parent',a('layout_height'):'wrap_content',a('layout_marginTop'):'5dp',a('text'):'@string/homemusic_wave_subtitle',a('textColor'):'#d9ffffff',a('textSize'):'13sp',a('maxLines'):'2',a('ellipsize'):'end'})
-    ET.SubElement(content,'ImageView',{a('layout_width'):'26dp',a('layout_height'):'26dp',a('src'):'@drawable/aura_arrow_right',a('contentDescription'):'@string/homemusic_wave_title',a('layout_marginStart'):'8dp'})
-    mix.set(a('visibility'),'gone'); save(t,f)
+    for k,v in {'layout_width':'match_parent','layout_height':'wrap_content','layout_weight':'0','layout_marginLeft':'0dp','layout_marginRight':'0dp','layout_marginTop':'0dp','layout_marginBottom':'0dp','foreground':'?attr/selectableItemBackgroundBorderless','clickable':'true','focusable':'true'}.items(): wave.set(a(k),v)
+    for k,v in {'cardBackgroundColor':'#00000000','cardCornerRadius':'0dp','cardElevation':'0dp','strokeWidth':'0dp','strokeColor':'#00000000','rippleColor':'#22bdadff'}.items(): wave.set(p(k),v)
+    content=list(wave)[0]; content.clear()
+    for k,v in {'orientation':'vertical','gravity':'center','paddingLeft':'12dp','paddingRight':'12dp','paddingTop':'22dp','paddingBottom':'20dp','minHeight':'176dp','layout_width':'match_parent','layout_height':'wrap_content','background':'@android:color/transparent'}.items(): content.set(a(k),v)
+    ET.SubElement(content,'TextView',{a('layout_width'):'match_parent',a('layout_height'):'wrap_content',a('gravity'):'center',a('text'):'@string/homemusic_wave_title',a('textColor'):'#ffffffff',a('textSize'):'29sp',a('fontFamily'):'sans-serif-black',a('textStyle'):'bold',a('letterSpacing'):'0.12',a('textAllCaps'):'true',a('maxLines'):'1',a('includeFontPadding'):'false'})
+    button=ET.SubElement(content,'FrameLayout',{a('layout_width'):'78dp',a('layout_height'):'78dp',a('layout_marginTop'):'17dp',a('layout_gravity'):'center',a('background'):'@drawable/aura_wave_play_button',a('contentDescription'):'@string/home_title_radio_station',a('importantForAccessibility'):'no'})
+    ET.SubElement(button,'ImageView',{a('layout_width'):'30dp',a('layout_height'):'30dp',a('layout_gravity'):'center',a('src'):'@drawable/aura_wave_play_icon',a('contentDescription'):'@null'})
+    mix.set(a('visibility'),'gone')
+    save(t,f)
+
 def patch_player_controls(res):
     specs={'inner_fragment_player_controller.xml':{'player_remote_toggle'},'player_header_bottom_sheet.xml':{'player_header_remote_button','placeholder_left_view'}}
     for fn,ids in specs.items():
@@ -712,39 +809,41 @@ def patch_toolbar(res):
         if tag=='MaterialToolbar': n.set(a('background'),'@drawable/aura_toolbar_gradient')
         if tag=='TextView' and n.get(a('text'))=='@string/app_name': n.set(a('textSize'),'22sp');n.set(a('fontFamily'),'sans-serif-medium')
     save(t,f)
+
 def patch_home_scroll_background(res):
-    f=res/'layout/fragment_home_tab_music.xml';t=xml(f)
-    t.getroot().set(a('background'),'@drawable/aura_home_background')
-    child=t.getroot().find('LinearLayout')
-    if child is not None: child.set(a('paddingTop'),'4dp')
+    f=res/'layout/fragment_home_tab_music.xml'; t=xml(f)
+    root=t.getroot(); root.set(a('background'),'@drawable/aura_aurora_background')
+    child=root.find('LinearLayout')
+    if child is not None:
+        child.set(a('paddingTop'),'8dp')
+        child.set(a('background'),'@android:color/transparent')
     save(t,f)
+
+
 def patch_smali(decoded):
     f=decoded/'smali/cp1.smali';s=f.read_text(encoding='utf-8')
     pattern=re.compile(r'(?s)    invoke-virtual \{v1, v0\}, Landroid/view/ViewGroup;->indexOfChild\(Landroid/view/View;\)I\s+\.line 1425\s+\.line 1426\s+\.line 1427\s+move-result v0\s+\.line 1428\s+add-int/2addr v0, v7\s+\.line 1429\s+invoke-virtual \{v1, v2, v0\}, Landroid/view/ViewGroup;->addView\(Landroid/view/View;I\)V')
     repl='''    const/4 v0, 0x0
     invoke-virtual {v1, v2, v0}, Landroid/view/ViewGroup;->addView(Landroid/view/View;I)V
-    check-cast v2, Landroid/view/ViewGroup;
-    move-object/from16 v70, v2
-    const/16 v71, 0x0
-    invoke-virtual/range {v70 .. v71}, Landroid/view/ViewGroup;->getChildAt(I)Landroid/view/View;
+    invoke-virtual {v1}, Landroid/view/View;->getRootView()Landroid/view/View;
     move-result-object v70
-    check-cast v70, Landroid/view/ViewGroup;
-    const/16 v71, 0x0
-    invoke-virtual/range {v70 .. v71}, Landroid/view/ViewGroup;->getChildAt(I)Landroid/view/View;
+    const v71, 0x7f0a0263
+    invoke-virtual {v70, v71}, Landroid/view/View;->findViewById(I)Landroid/view/View;
     move-result-object v70
-    invoke-virtual/range {v70 .. v70}, Landroid/view/View;->getBackground()Landroid/graphics/drawable/Drawable;
+    if-eqz v70, :cond_aura_animation_done
+    invoke-virtual {v70}, Landroid/view/View;->getBackground()Landroid/graphics/drawable/Drawable;
     move-result-object v70
-    move-object/from16 v14, v70
-    instance-of v15, v14, Landroid/graphics/drawable/AnimationDrawable;
-    if-eqz v15, :cond_aura_animation_done
-    check-cast v14, Landroid/graphics/drawable/AnimationDrawable;
-    invoke-virtual/range {v14 .. v14}, Landroid/graphics/drawable/AnimationDrawable;->start()V
+    instance-of v71, v70, Landroid/graphics/drawable/AnimationDrawable;
+    if-eqz v71, :cond_aura_animation_done
+    check-cast v70, Landroid/graphics/drawable/AnimationDrawable;
+    invoke-virtual {v70}, Landroid/graphics/drawable/AnimationDrawable;->start()V
     :cond_aura_animation_done'''
     s,n=pattern.subn(repl,s,count=1)
     if n!=1: raise RuntimeError('Unable to locate original My Wave insertion point in cp1.smali')
     f.write_text(s,encoding='utf-8')
+
 def version(decoded):
-    f=decoded/'apktool.yml';s=f.read_text(encoding='utf-8');s=re.sub(r'(?m)^  versionCode: .*?$','  versionCode: 601',s);s=re.sub(r'(?m)^  versionName: .*?$','  versionName: "0.6-1"',s);f.write_text(s,encoding='utf-8')
+    f=decoded/'apktool.yml';s=f.read_text(encoding='utf-8');s=re.sub(r'(?m)^  versionCode: .*?$','  versionCode: 7001',s);s=re.sub(r'(?m)^  versionName: .*?$','  versionName: "pr7.0-1"',s);f.write_text(s,encoding='utf-8')
 
 def main():
     if len(sys.argv)<2: raise SystemExit('Usage: patch_aura.py decoded [logo.png]')
@@ -754,7 +853,7 @@ def main():
       'md_theme_light_background':'#fff7f7fc','md_theme_light_onBackground':'#ff191922','md_theme_light_surface':'#fffcfbff','md_theme_light_onSurface':'#ff191922','md_theme_light_surfaceVariant':'#fff0eef6','md_theme_light_onSurfaceVariant':'#ff625f72','md_theme_light_primary':'#ff6652d9','md_theme_light_onPrimary':'#ffffffff','md_theme_light_primaryContainer':'#ffe9e5ff','md_theme_light_onPrimaryContainer':'#ff21154f','md_theme_light_secondary':'#ff007f89','md_theme_light_onSecondary':'#ffffffff','md_theme_light_secondaryContainer':'#ffd1f5f5','md_theme_light_onSecondaryContainer':'#ff00363d','md_theme_light_tertiary':'#ffc64b78','md_theme_light_onTertiary':'#ffffffff','md_theme_light_tertiaryContainer':'#ffffdbe8','md_theme_light_onTertiaryContainer':'#ff4e102e','md_theme_light_outline':'#ff7d7788','dividerColor':'#ffe6e2f0','titleTextColor':'#ff191922','subtitleTextColor':'#ff666477','hub_background':'#ff111320','hub_text':'#fff5f2ff','homemusic_danger':'#ffce486d','widget_icon_tint_active':'#ff6652d9'})
     colors(res/'values/colors.xml',{'md_theme_dark_background':'#ff0d0e18','md_theme_dark_onBackground':'#fff4f1ff','md_theme_dark_surface':'#ff131522','md_theme_dark_onSurface':'#fff4f1ff','md_theme_dark_surfaceVariant':'#ff272839','md_theme_dark_onSurfaceVariant':'#ffb9b5cf','md_theme_dark_primary':'#ffbdadff','md_theme_dark_onPrimary':'#ff241858','md_theme_dark_primaryContainer':'#ff382f6d','md_theme_dark_onPrimaryContainer':'#fff0eaff','md_theme_dark_secondary':'#ff79d9df','md_theme_dark_onSecondary':'#ff00363d','md_theme_dark_secondaryContainer':'#ff15464d','md_theme_dark_onSecondaryContainer':'#ffb9f7fb','md_theme_dark_tertiary':'#ffff9fc3','md_theme_dark_onTertiary':'#ff4e102e','md_theme_dark_tertiaryContainer':'#ff643148','md_theme_dark_onTertiaryContainer':'#ffffdbe8','md_theme_dark_outline':'#ffaaa5bc'})
     if (res/'values-night/colors.xml').exists(): colors(res/'values-night/colors.xml',{'dividerColor':'#ff343448','titleTextColor':'#fff4f1ff','subtitleTextColor':'#ffb9b5cf','widget_bg':'#e51a1b2d','widget_icon_tint':'#ffffffff','widget_icon_tint_active':'#ffbdadff','widget_subtitle':'#ffc6c2d8','widget_title':'#ffffffff'})
-    strings(res);login_refs=patch_login_server(decoded);drawables(res);generate_aurora(res);create_player_state_drawables(res);patch_logo(res,logo);patch_vectors(res);patch_theme(res);patch_main_menu(res);patch_toolbar_menu_null_guard(decoded);patch_about_settings(res,decoded);patch_hub_preferences(res);patch_hub_defaults(decoded);patch_hub_native_ui(res);patch_search_ui(res);patch_github_updater(decoded);patch_hub_web_background(decoded);patch_screen_backgrounds(res);patch_toolbar(res);patch_home_mix_layout(res);patch_player_controls(res);patch_smali(decoded);patch_home_scroll_background(res);version(decoded)
+    strings(res);login_refs=patch_login_server(decoded);drawables(res);generate_aurora(res);create_player_state_drawables(res);patch_logo(res,logo);patch_vectors(res);patch_theme(res);patch_aura_islands(res);patch_initial_preferences(res);patch_main_menu(res);patch_toolbar_menu_null_guard(decoded);patch_about_settings(res,decoded);patch_hub_preferences(res);patch_hub_defaults(decoded);patch_hub_native_ui(res);patch_search_ui(res);patch_github_updater(decoded);patch_updater_external_asset(decoded);patch_hub_web_background(decoded);patch_screen_backgrounds(res);patch_toolbar(res);patch_home_mix_layout(res);patch_player_controls(res);patch_smali(decoded);patch_home_scroll_background(res);version(decoded)
     manifest=(decoded/'AndroidManifest.xml').read_text(encoding='utf-8')
     if 'package="app.homemusic"' not in manifest: raise RuntimeError('HomeMusic package ID changed')
     for file,ids in {'layout/fragment_homemusic_login.xml':['hm_login_server','hm_login_primary','hm_login_code','hm_login_google'],'layout/fragment_home_tab_music.xml':['home_discover_sector','home_similar_tracks_sector','home_radio_artist_sector']}.items():
@@ -786,7 +885,7 @@ def main():
     if defaults.count('http://192.168.1.129:8080')!=2: raise RuntimeError('One-time Hub URL migration is incomplete')
     if 'Theme.Material3.Dark.NoActionBar' not in (res/'values/styles.xml').read_text(encoding='utf-8'): raise RuntimeError('Dark AURA theme was not applied')
     apktool_text=(decoded/'apktool.yml').read_text(encoding='utf-8')
-    if 'versionCode: 601' not in apktool_text or 'versionName: "0.6-1"' not in apktool_text:
+    if 'versionCode: 7001' not in apktool_text or 'versionName: "pr7.0-1"' not in apktool_text:
         raise RuntimeError('AURA 0.6-1 manifest version is not set')
     updater=(decoded/'smali/com/eddyizm/tempus/homemusic/HubUpdater.smali').read_text(encoding='utf-8')
     if '1.14.7' in updater or '0x2b' in updater or updater.count('Lapp/homemusic/AURAVersion;->versionCode')!=2:
@@ -811,7 +910,7 @@ def main():
     if 'aura-assistant-composer' not in hub_smali or 'removeCatalogShortcuts' not in hub_smali or 'keepTabsVisible' not in hub_smali:
         raise RuntimeError('Hub Assistant composer, Catalog shortcuts or navigation restoration are missing')
     aurora=(res/'drawable/aura_aurora_background.xml').read_text(encoding='utf-8')
-    if 'android:duration="50"' not in aurora or aurora.count('<item')<60:
+    if 'android:duration="240"' not in aurora or aurora.count('<item')<60:
         raise RuntimeError('Dynamic My Wave aurora animation is incomplete')
 
     if (res/'drawable/ic_splash_logo.xml').exists() or not (res/'drawable-nodpi/ic_splash_logo.png').exists():
@@ -827,5 +926,5 @@ def main():
     if 'tabIndicatorAnimationMode' not in hub_layout or 'aura_hub_tabs_background' not in hub_layout:
         raise RuntimeError('Native Hub tabs are not using AURA styling')
 
-    print(f'AURA 0.6-1: dynamic PackageInfo versionName/versionCode; GitHub latest.json update feed; Telegram contact in About; Settings action moved right of Search; Hub tabs, Assistant composer and Catalog use unified styling; SearchView has an explicit back arrow; My Wave uses a multi-phase aurora animation; MediaRoute item hidden and null-guarded; Hub URLs, login, authentication, playback and My Wave preserved ({login_refs} login references).')
+    print(f'AURA pr7.0-1: dynamic PackageInfo versionName/versionCode; GitHub latest.json update feed; Telegram contact in About; Settings action moved right of Search; Hub tabs, Assistant composer and Catalog use unified styling; SearchView has an explicit back arrow; My Wave uses a multi-phase aurora animation; MediaRoute item hidden and null-guarded; Hub URLs, login, authentication, playback and My Wave preserved ({login_refs} login references).')
 if __name__=='__main__': main()
