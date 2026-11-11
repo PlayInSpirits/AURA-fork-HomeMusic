@@ -885,7 +885,7 @@
     <string name="settings_title_ui">Интерфейс</string>
     <string name="settings_track_number">Показывать номер трека</string>
     <string name="settings_track_number_summary">Отображать порядковый номер воспроизводимого трека.</string>
-    <string name="settings_version_summary">AURA pr0.72-4</string>
+    <string name="settings_version_summary">AURA pr0.73-4</string>
     <string name="settings_version_title">Версия AURA</string>
     <string name="settings_wifi_only_summary">Спрашивать разрешение перед стримингом в мобильной сети.</string>
     <string name="settings_wifi_only_title">Предупреждение Только Wi-Fi</string>
@@ -991,4 +991,4 @@
     <string name="widget_placeholder_subtitle">Открыть Tempus</string>
     <string name="widget_time_duration_placeholder">0:00</string>
     <string name="widget_time_elapsed_placeholder">0:00</string>
-<string name="homemusic_menu_hub">Хаб</string><string name="homemusic_settings_title">AURA (HomeMusic)</string><string name="aura_contact_author_title">Связаться с автором форка</string><string name="aura_contact_author_summary">Telegram: Play_in_Spirits</string><string name="aura_contact_author_link">https://t.me/Play_in_Spirits</string><string name="aura_upstream_project_title">Оригинальное приложение HomeMusic</string><string name="aura_upstream_project_link">https://github.com/justman-1/HomeMusic-public</string></resources>
+<string name="homemusic_menu_hub">Хаб</string><string name="homemusic_settings_version">%1$s</string><string name="homemusic_settings_title">AURA (HomeMusic)</string><string name="aura_contact_author_title">Связаться с автором форка</string><string name="aura_contact_author_summary">Telegram: Play_in_Spirits</string><string name="aura_contact_author_link">https://t.me/Play_in_Spirits</string><string name="aura_upstream_project_title">Оригинальное приложение HomeMusic</string><string name="aura_upstream_project_link">https://github.com/justman-1/HomeMusic-public</string></resources>

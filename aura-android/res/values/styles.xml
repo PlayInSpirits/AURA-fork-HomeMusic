@@ -5165,4 +5165,4 @@
     <style name="Widget.Support.CoordinatorLayout" parent="@android:style/Widget">
         <item name="statusBarBackground">#000000</item>
     </style>
-</resources>
+<style name="AURA.BottomNavigation.ActiveIndicator" parent="@style/Widget.Material3.BottomNavigationView.ActiveIndicator"><item name="android:height">40dp</item><item name="android:width">54dp</item><item name="android:color">#ffdcd4ff</item><item name="marginHorizontal">5dp</item></style></resources>

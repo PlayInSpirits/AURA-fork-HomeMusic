@@ -3389,10 +3389,7 @@
 
     .line 228
     .line 229
-    invoke-virtual {v5}, Lkc1;->Z()Landroid/content/Context;
-    move-result-object v0
-    invoke-static {v0}, Lapp/homemusic/AURAVersion;->versionCodeInt(Landroid/content/Context;)I
-    move-result v0
+    const/4 v0, 0x0
 
     .line 230
     .line 231
@@ -3411,25 +3408,7 @@
 
     .line 236
     .line 237
-    filled-new-array {v2, v0}, [Ljava/lang/Object;
-
-    .line 238
-    .line 239
-    .line 240
-    move-result-object v0
-
-    .line 241
-    const v2, 0x7f130226
-
-    .line 242
-    .line 243
-    .line 244
-    invoke-virtual {v5, v2, v0}, Lkc1;->t(I[Ljava/lang/Object;)Ljava/lang/String;
-
-    .line 245
-    .line 246
-    .line 247
-    move-result-object v0
+    move-object v0, v2
 
     .line 248
     invoke-virtual {p0, v0}, Landroidx/preference/Preference;->x(Ljava/lang/CharSequence;)V
