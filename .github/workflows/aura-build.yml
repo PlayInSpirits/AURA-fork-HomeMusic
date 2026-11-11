@@ -9,6 +9,7 @@ name: Build AURA Android
   workflow_dispatch:
 
 permissions:
+  actions: write
   contents: write
 
 concurrency:
@@ -17,8 +18,33 @@ concurrency:
 
 jobs:
   build:
-    runs-on: self-hosted
+    runs-on: [self-hosted, windows, x64]
+    defaults:
+      run:
+        shell: bash
     steps:
+      - name: Cancel obsolete GitHub-hosted builds
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const runIds = [43096632613, 43096813486, 43097352545];
+            for (const run_id of runIds) {
+              try {
+                await github.rest.actions.cancelWorkflowRun({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  run_id
+                });
+                core.info(`Cancellation requested for obsolete run ${run_id}`);
+              } catch (error) {
+                if ([404, 409, 422].includes(error.status)) {
+                  core.warning(`Run ${run_id} was already finished or could not be cancelled (HTTP ${error.status}).`);
+                } else {
+                  throw error;
+                }
+              }
+            }
+
       - name: Checkout AURA sources
         uses: actions/checkout@v4
 
@@ -28,21 +54,57 @@ jobs:
           distribution: temurin
           java-version: '21'
 
-      - name: Set up Android SDK
-        uses: android-actions/setup-android@v3
-        with:
-          packages: platform-tools
-
-      - name: Install Android build tools
+      - name: Install Android SDK and build tools (Windows)
+        shell: powershell
         run: |
-          yes | sdkmanager --licenses >/dev/null || true
-          sdkmanager "platform-tools" "build-tools;35.0.0"
-          echo "$ANDROID_HOME/build-tools/35.0.0" >> "$GITHUB_PATH"
+          $ErrorActionPreference = 'Stop'
+          $sdkBase = $env:RUNNER_TOOL_CACHE
+          if ([string]::IsNullOrWhiteSpace($sdkBase)) { $sdkBase = $env:RUNNER_TEMP }
+          $sdkRoot = Join-Path $sdkBase 'android-sdk'
+          $cmdlineRoot = Join-Path $sdkRoot 'cmdline-tools\latest'
+          $sdkManager = Join-Path $cmdlineRoot 'bin\sdkmanager.bat'
+
+          if (-not (Test-Path $sdkManager)) {
+            $zipPath = Join-Path $env:RUNNER_TEMP 'android-commandlinetools-12266719.zip'
+            $extractDir = Join-Path $env:RUNNER_TEMP 'android-commandlinetools-12266719'
+            $downloadUrl = 'https://dl.google.com/android/repository/commandlinetools-win-12266719_latest.zip'
+
+            New-Item -ItemType Directory -Force -Path $sdkRoot | Out-Null
+            Remove-Item -LiteralPath $extractDir -Recurse -Force -ErrorAction SilentlyContinue
+            Invoke-WebRequest -Uri $downloadUrl -OutFile $zipPath
+            Expand-Archive -LiteralPath $zipPath -DestinationPath $extractDir -Force
+
+            $sourceTools = Join-Path $extractDir 'cmdline-tools'
+            if (-not (Test-Path (Join-Path $sourceTools 'bin\sdkmanager.bat'))) {
+              throw 'Android command-line tools archive has an unexpected structure.'
+            }
+            New-Item -ItemType Directory -Force -Path $cmdlineRoot | Out-Null
+            Copy-Item -Path (Join-Path $sourceTools '*') -Destination $cmdlineRoot -Recurse -Force
+          }
+
+          $env:ANDROID_HOME = $sdkRoot
+          $env:ANDROID_SDK_ROOT = $sdkRoot
+          $licenseAnswers = (1..50 | ForEach-Object { 'y' }) -join "`r`n"
+          $licenseAnswers | & $sdkManager "--sdk_root=$sdkRoot" --licenses
+          if ($LASTEXITCODE -ne 0) { throw 'Android SDK license acceptance failed.' }
+
+          & $sdkManager "--sdk_root=$sdkRoot" 'platform-tools' 'build-tools;35.0.0'
+          if ($LASTEXITCODE -ne 0) { throw 'Android SDK build-tools installation failed.' }
+
+          Add-Content -Path $env:GITHUB_ENV -Value "ANDROID_HOME=$sdkRoot" -Encoding ASCII
+          Add-Content -Path $env:GITHUB_ENV -Value "ANDROID_SDK_ROOT=$sdkRoot" -Encoding ASCII
+          Add-Content -Path $env:GITHUB_PATH -Value (Join-Path $sdkRoot 'platform-tools') -Encoding ASCII
+          Add-Content -Path $env:GITHUB_PATH -Value (Join-Path $sdkRoot 'build-tools\35.0.0') -Encoding ASCII
 
       - name: Install Apktool 3.0.3
         run: |
           curl -fsSL https://github.com/iBotPeaches/Apktool/releases/download/v3.0.3/apktool_3.0.3.jar -o apktool.jar
           echo "dbf930b076c6b9be08d57c449cacefc3bdd6b71ebd59b3066fc0e1f5b14f9423  apktool.jar" | sha256sum -c -
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
 
       - name: Install Python image libraries
         run: python -m pip install --disable-pip-version-check pillow numpy
@@ -134,7 +196,7 @@ jobs:
 
           This is a complete decompiled/rebuildable project, not the upstream Kotlin/Java Gradle source repository.
           EOF
-          APK_SIZE=$(stat -c '%s' build/AURA-0.75.apk)
+          APK_SIZE=$(python -c "from pathlib import Path; print(Path('build/AURA-0.75.apk').stat().st_size)")
           APK_SHA256=$(sha256sum build/AURA-0.75.apk | awk '{print $1}')
           APK_URL="https://github.com/${GITHUB_REPOSITORY}/releases/download/v0.75.1/AURA-0.75.apk"
           cat > app/latest.json <<EOF
@@ -164,7 +226,15 @@ jobs:
           PY
           cp README.md LICENSE build/source/
           cp -R tools assets .github aura-android app build/source/
-          (cd build && zip -qr AURA-0.75-source.zip source)
+          python - <<'PY'
+          from pathlib import Path
+          from zipfile import ZIP_DEFLATED, ZipFile
+          base = Path("build")
+          with ZipFile(base / "AURA-0.75-source.zip", "w", ZIP_DEFLATED, compresslevel=9) as archive:
+              for item in (base / "source").rglob("*"):
+                  if item.is_file():
+                      archive.write(item, item.relative_to(base))
+          PY
 
       - name: Publish decoded Android source and update feed
         if: steps.signing_key.outputs.configured == 'true'
@@ -181,19 +251,68 @@ jobs:
           git tag -f v0.75.1 HEAD
           git push --force origin refs/tags/v0.75.1
 
-      - name: Create AURA pre-release
+      - name: Create AURA pre-release and upload files
         if: steps.signing_key.outputs.configured == 'true'
-        env:
-          GH_TOKEN: ${{ github.token }}
-          GH_REPO: ${{ github.repository }}
-          RELEASE_NOTES: |
-            ### **AURA v0.75-1**
-            - APK подписан тем же постоянным ключом AURA, что и предыдущие релизы; данные приложения сохраняются при обновлении поверх установленной версии.
-        run: |
-          set -euo pipefail
-          if gh release view v0.75.1 >/dev/null 2>&1; then
-            gh release edit v0.75.1 --title "0.75.1" --notes "$RELEASE_NOTES" --prerelease
-            gh release upload v0.75.1 build/AURA-0.75.apk build/AURA-0.75-source.zip --clobber
-          else
-            gh release create v0.75.1 build/AURA-0.75.apk build/AURA-0.75-source.zip --title "0.75.1" --notes "$RELEASE_NOTES" --prerelease
-          fi
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const { owner, repo } = context.repo;
+            const tag = 'v0.75.1';
+            const body = [
+              '### **AURA v0.75-1**',
+              '- APK подписан постоянным ключом AURA; установка поверх предыдущей версии сохраняет данные приложения.'
+            ].join('\n');
+
+            let release;
+            try {
+              ({ data: release } = await github.rest.repos.getReleaseByTag({ owner, repo, tag }));
+            } catch (error) {
+              if (error.status !== 404) throw error;
+              ({ data: release } = await github.rest.repos.createRelease({
+                owner, repo,
+                tag_name: tag,
+                target_commitish: 'main',
+                name: '0.75.1',
+                body,
+                draft: false,
+                prerelease: true
+              }));
+            }
+
+            await github.rest.repos.updateRelease({
+              owner, repo,
+              release_id: release.id,
+              name: '0.75.1',
+              body,
+              draft: false,
+              prerelease: true
+            });
+
+            const assets = [
+              { path: 'build/AURA-0.75.apk', name: 'AURA-0.75.apk', contentType: 'application/vnd.android.package-archive' },
+              { path: 'build/AURA-0.75-source.zip', name: 'AURA-0.75-source.zip', contentType: 'application/zip' }
+            ];
+            const existing = await github.paginate(github.rest.repos.listReleaseAssets, {
+              owner, repo, release_id: release.id, per_page: 100
+            });
+
+            for (const asset of assets) {
+              for (const previous of existing.filter(item => item.name === asset.name)) {
+                await github.rest.repos.deleteReleaseAsset({
+                  owner, repo, asset_id: previous.id
+                });
+              }
+              const data = fs.readFileSync(asset.path);
+              await github.rest.repos.uploadReleaseAsset({
+                owner, repo,
+                release_id: release.id,
+                name: asset.name,
+                data,
+                headers: {
+                  'content-type': asset.contentType,
+                  'content-length': data.length
+                }
+              });
+              core.info(`Uploaded ${asset.name} (${data.length} bytes)`);
+            }
