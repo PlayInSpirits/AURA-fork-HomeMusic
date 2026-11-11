@@ -1842,12 +1842,12 @@ def main():
         raise RuntimeError('Media3 observer is missing lower-button and dismissed-sheet playback roles')
     sync_method=playback_sync[playback_sync.index('.method public static syncFromPlayer(Lqi3;)V'):playback_sync.index('.end method',playback_sync.index('.method public static syncFromPlayer(Lqi3;)V'))]
     restored_start_write=re.search(
-        r'const/4\\s+(v\\d+),\\s*0x1\\s+sput-boolean\\s+\\1,\\s*Lapp/homemusic/AURAVersion;->waveStarted:Z',
+        r'const/4\s+(v\d+),\s*0x1\s+sput-boolean\s+\1,\s*Lapp/homemusic/AURAVersion;->waveStarted:Z',
         sync_method)
     if restored_start_write:
         raise RuntimeError('Restored Media3 items must not automatically mark My Wave as started')
     if not re.search(
-        r'const/4\\s+(v\\d+),\\s*0x0\\s+sput-boolean\\s+\\1,\\s*Lapp/homemusic/AURAVersion;->waveStarted:Z',
+        r'const/4\s+(v\d+),\s*0x0\s+sput-boolean\s+\1,\s*Lapp/homemusic/AURAVersion;->waveStarted:Z',
         sync_method):
         raise RuntimeError('An empty Media3 player must clear My Wave started state')
     ti3_text=(decoded/'smali/ti3.smali').read_text(encoding='utf-8')
