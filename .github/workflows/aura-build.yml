@@ -232,8 +232,8 @@ jobs:
           # On Windows, apksigner is shipped as apksigner.bat and Git Bash
           # does not resolve .bat files as Unix commands. Invoke the bundled JAR.
           SDK_ROOT_UNIX="$(cygpath -u "$ANDROID_HOME")"
-          BUILD_TOOLS_VERSION="$(find "$SDK_ROOT_UNIX/build-tools" -mindepth 1 -maxdepth 1 -type d | sort -V | tail -n 1)"
-          APKSIGNER_JAR="$SDK_ROOT_UNIX/build-tools/$BUILD_TOOLS_VERSION/lib/apksigner.jar"
+          BUILD_TOOLS_DIR="$(find "$SDK_ROOT_UNIX/build-tools" -mindepth 1 -maxdepth 1 -type d | sort -V | tail -n 1)"
+          APKSIGNER_JAR="$BUILD_TOOLS_DIR/lib/apksigner.jar"
           if [ ! -f "$APKSIGNER_JAR" ]; then
             echo "::error::Android apksigner JAR not found: $APKSIGNER_JAR"
             exit 1
