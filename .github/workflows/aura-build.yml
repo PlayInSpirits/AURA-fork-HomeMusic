@@ -20,7 +20,7 @@ jobs:
     runs-on: [self-hosted, windows, x64]
     defaults:
       run:
-        shell: '"C:\\Program Files\\Git\\bin\\bash.exe" --noprofile --norc -eo pipefail {0}'
+        shell: 'C:\\PROGRA~1\\Git\\bin\\bash.exe --noprofile --norc -eo pipefail {0}'
     steps:
       - name: Checkout AURA sources
         uses: actions/checkout@v4
@@ -33,7 +33,6 @@ jobs:
           # Use those installations instead of downloading a second JDK/SDK.
           if [ -n "${JAVA_HOME:-}" ]; then
             JAVA_HOME_UNIX="$(cygpath -u "$JAVA_HOME")"
-            export PATH="$JAVA_HOME_UNIX/bin:$PATH"
           else
             JAVA_EXE="$(command -v java.exe || command -v java || true)"
             if [ -z "$JAVA_EXE" ]; then
@@ -42,11 +41,18 @@ jobs:
             fi
             JAVA_EXE_UNIX="$(cygpath -u "$JAVA_EXE" 2>/dev/null || printf '%s' "$JAVA_EXE")"
             JAVA_HOME_UNIX="$(cd "$(dirname "$JAVA_EXE_UNIX")/.." && pwd -P)"
-            export PATH="$JAVA_HOME_UNIX/bin:$PATH"
           fi
 
-          java -version
-          JAVA_SPEC="$(java -XshowSettings:properties -version 2>&1 | sed -n 's/^[[:space:]]*java.specification.version = //p' | head -n 1)"
+          JAVA_RUNTIME="$JAVA_HOME_UNIX/bin/java.exe"
+          if [ ! -f "$JAVA_RUNTIME" ]; then
+            JAVA_RUNTIME="$JAVA_HOME_UNIX/bin/java"
+          fi
+          if [ ! -f "$JAVA_RUNTIME" ]; then
+            echo "::error::JDK executable not found under $JAVA_HOME_UNIX/bin."
+            exit 1
+          fi
+          "$JAVA_RUNTIME" -version
+          JAVA_SPEC="$("$JAVA_RUNTIME" -XshowSettings:properties -version 2>&1 | sed -n 's/^[[:space:]]*java.specification.version = //p' | head -n 1)"
           JAVA_MAJOR="${JAVA_SPEC%%.*}"
           if [ -z "$JAVA_MAJOR" ] || [ "$JAVA_MAJOR" -lt 17 ]; then
             echo "::error::AURA build requires JDK 17 or newer; detected '${JAVA_SPEC:-unknown}'."
