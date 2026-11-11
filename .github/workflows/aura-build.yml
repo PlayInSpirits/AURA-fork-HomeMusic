@@ -37,7 +37,22 @@ jobs:
                 });
                 core.info(`Cancellation requested for obsolete run ${run_id}`);
               } catch (error) {
-                if ([404, 409, 422].includes(error.status)) {
+                if (error.status === 409) {
+                  try {
+                    await github.rest.actions.forceCancelWorkflowRun({
+                      owner: context.repo.owner,
+                      repo: context.repo.repo,
+                      run_id
+                    });
+                    core.info(`Force-cancellation requested for obsolete run ${run_id}`);
+                  } catch (forceError) {
+                    if ([404, 409, 422].includes(forceError.status)) {
+                      core.warning(`Run ${run_id} could not be force-cancelled (HTTP ${forceError.status}).`);
+                    } else {
+                      throw forceError;
+                    }
+                  }
+                } else if ([404, 422].includes(error.status)) {
                   core.warning(`Run ${run_id} was already finished or could not be cancelled (HTTP ${error.status}).`);
                 } else {
                   throw error;
@@ -58,6 +73,26 @@ jobs:
         shell: powershell
         run: |
           $ErrorActionPreference = 'Stop'
+
+          $javaHome = $env:JAVA_HOME
+          if ([string]::IsNullOrWhiteSpace($javaHome)) { throw 'JAVA_HOME was not set by setup-java.' }
+          $javaExe = Join-Path $javaHome 'bin\java.exe'
+          if (-not (Test-Path -LiteralPath $javaExe)) { throw "Java executable not found: $javaExe" }
+
+          $validPath = @()
+          foreach ($entry in ($env:Path -split ';')) {
+            $candidate = $entry.Trim().Trim('"')
+            if (-not [string]::IsNullOrWhiteSpace($candidate) -and (Test-Path -LiteralPath $candidate -ErrorAction SilentlyContinue)) {
+              $validPath += $candidate
+            }
+          }
+          $javaBin = Join-Path $javaHome 'bin'
+          $env:Path = (@($javaBin) + $validPath | Select-Object -Unique) -join ';'
+          Add-Content -Path $env:GITHUB_ENV -Value "PATH=$env:Path" -Encoding ASCII
+          Write-Host "Using Java from $javaHome"
+          & $javaExe -version
+          if ($LASTEXITCODE -ne 0) { throw 'Java runtime check failed.' }
+
           $sdkBase = $env:RUNNER_TOOL_CACHE
           if ([string]::IsNullOrWhiteSpace($sdkBase)) { $sdkBase = $env:RUNNER_TEMP }
           $sdkRoot = Join-Path $sdkBase 'android-sdk'
