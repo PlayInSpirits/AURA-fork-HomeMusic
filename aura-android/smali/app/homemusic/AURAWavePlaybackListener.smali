@@ -36,6 +36,28 @@
     return-void
 .end method
 
+.method public static markBottomPlaybackInteraction()V
+    .locals 1
+    # The collapsed player header only exposes its Play/Pause toggle when a
+    # media item exists. A real tap means the user chose the restored track.
+    const/4 v0, 0x1
+    sput-boolean v0, Lapp/homemusic/AURAVersion;->waveStarted:Z
+    return-void
+.end method
+
+.method public static resetWaveState()V
+    .locals 1
+    const/4 v0, 0x0
+    sput-boolean v0, Lapp/homemusic/AURAVersion;->waveStarted:Z
+    sput-boolean v0, Lapp/homemusic/AURAVersion;->wavePending:Z
+    sput-boolean v0, Lapp/homemusic/AURAVersion;->wavePlaying:Z
+    sget-object v0, Lapp/homemusic/AURAVersion;->waveButton:Landroid/view/View;
+    if-eqz v0, :reset_done
+    invoke-static {v0}, Lapp/homemusic/AURAWaveToggleClickListener;->syncIcon(Landroid/view/View;)V
+:reset_done
+    return-void
+.end method
+
 .method public static syncCurrent()V
     .locals 1
     sget-object v0, Lis3;->c:Lcom/eddyizm/tempus/service/MediaService;
@@ -54,15 +76,23 @@
     invoke-interface {p0}, Lqi3;->a()Lgn2;
     move-result-object v0
     if-eqz v0, :no_current_item
-    const/4 v1, 0x1
-    sput-boolean v1, Lapp/homemusic/AURAVersion;->waveStarted:Z
     invoke-interface {p0}, Lqi3;->h0()Z
     move-result v1
     sput-boolean v1, Lapp/homemusic/AURAVersion;->wavePlaying:Z
     goto :update_icon
+
 :no_current_item
+    sget-boolean v1, Lapp/homemusic/AURAVersion;->wavePending:Z
+    if-eqz v1, :player_empty
+    const/4 v1, 0x1
+    sput-boolean v1, Lapp/homemusic/AURAVersion;->wavePlaying:Z
+    goto :update_icon
+
+:player_empty
     const/4 v1, 0x0
     sput-boolean v1, Lapp/homemusic/AURAVersion;->wavePlaying:Z
+    sput-boolean v1, Lapp/homemusic/AURAVersion;->waveStarted:Z
+
 :update_icon
     sget-object v2, Lapp/homemusic/AURAVersion;->waveButton:Landroid/view/View;
     if-eqz v2, :sync_done

@@ -2919,6 +2919,8 @@
 .method public final J()V
     .locals 1
 
+    invoke-static {p0}, Lapp/homemusic/AURAHomeAnimation;->stop(Lkc1;)V
+
     .line 1
     const/4 v0, 0x1
 

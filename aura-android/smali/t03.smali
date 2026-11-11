@@ -601,7 +601,7 @@
 
     .line 41
     :goto_1
-    const v7, -0x3361d2af    # -8.293031E7f
+    const v7, -0x3361d2af    # -8.2930312E7f
 
     .line 42
     .line 43

@@ -200,6 +200,7 @@
     .line 34
     :cond_0
     invoke-static {}, Lu52;->f()V
+    invoke-static {}, Lapp/homemusic/AURAWavePlaybackListener;->resetWaveState()V
 
     .line 35
     .line 36

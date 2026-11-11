@@ -2399,7 +2399,7 @@
     move-result v3
 
     .line 98
-    const v9, -0x3361d2af    # -8.293031E7f
+    const v9, -0x3361d2af    # -8.2930312E7f
 
     .line 99
     .line 100

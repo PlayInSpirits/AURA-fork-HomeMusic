@@ -357,7 +357,7 @@
     move-result v0
 
     .line 5
-    const v1, -0x3361d2af    # -8.293031E7f
+    const v1, -0x3361d2af    # -8.2930312E7f
 
     .line 6
     .line 7
@@ -1053,7 +1053,7 @@
     move-result v2
 
     .line 9
-    const v3, -0x3361d2af    # -8.293031E7f
+    const v3, -0x3361d2af    # -8.2930312E7f
 
     .line 10
     .line 11

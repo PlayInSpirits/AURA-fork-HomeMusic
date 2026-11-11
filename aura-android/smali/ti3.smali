@@ -226,6 +226,7 @@
 
     .line 93
     :pswitch_4
+    invoke-static {}, Lapp/homemusic/AURAWavePlaybackListener;->markBottomPlaybackInteraction()V
     invoke-static {}, Lu52;->c()Lv52;
 
     .line 94

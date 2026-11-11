@@ -7547,7 +7547,7 @@
     move-result v12
 
     .line 216
-    const v13, -0x3361d2af    # -8.293031E7f
+    const v13, -0x3361d2af    # -8.2930312E7f
 
     .line 217
     .line 218

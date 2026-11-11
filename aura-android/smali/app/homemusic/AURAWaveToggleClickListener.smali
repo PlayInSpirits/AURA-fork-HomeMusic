@@ -14,16 +14,36 @@
 .method public onClick(Landroid/view/View;)V
     .locals 4
     invoke-static {p1}, Lapp/homemusic/AURAWaveToggleClickListener;->pressAnimation(Landroid/view/View;)V
+
+    # A fresh process starts with waveStarted=false. The first tap on the
+    # upper My Wave button must request a new wave, even if Media3 restored
+    # the previous single track in the background.
+    sget-boolean v0, Lapp/homemusic/AURAVersion;->waveStarted:Z
+    if-nez v0, :toggle_existing
+
+:launch_wave
+    const/4 v0, 0x1
+    sput-boolean v0, Lapp/homemusic/AURAVersion;->waveStarted:Z
+    sput-boolean v0, Lapp/homemusic/AURAVersion;->wavePending:Z
+    sput-boolean v0, Lapp/homemusic/AURAVersion;->wavePlaying:Z
+    invoke-static {p1}, Lapp/homemusic/AURAWaveToggleClickListener;->syncIcon(Landroid/view/View;)V
+    iget-object v1, p0, Lapp/homemusic/AURAWaveToggleClickListener;->delegate:Landroid/view/View$OnClickListener;
+    if-eqz v1, :done
+    invoke-interface {v1, p1}, Landroid/view/View$OnClickListener;->onClick(Landroid/view/View;)V
+:done
+    return-void
+
+    # After a user has started My Wave or explicitly used the lower player,
+    # the upper button becomes Play/Pause for the currently selected track.
+:toggle_existing
     sget-object v0, Lis3;->c:Lcom/eddyizm/tempus/service/MediaService;
-    if-eqz v0, :no_current_player
+    if-eqz v0, :no_current_item
     invoke-virtual {v0}, Lcom/eddyizm/tempus/service/MediaService;->b()Lqi3;
     move-result-object v0
-    if-eqz v0, :no_current_player
+    if-eqz v0, :no_current_item
     invoke-interface {v0}, Lqi3;->a()Lgn2;
     move-result-object v1
-    if-eqz v1, :no_current_player
-    const/4 v1, 0x1
-    sput-boolean v1, Lapp/homemusic/AURAVersion;->waveStarted:Z
+    if-eqz v1, :no_current_item
     invoke-interface {v0}, Lqi3;->h0()Z
     move-result v1
     if-eqz v1, :play_current
@@ -37,26 +57,15 @@
     invoke-static {p1, v1}, Lapp/homemusic/AURAWaveToggleClickListener;->dispatchPlaybackKey(Landroid/view/View;Z)V
     return-void
 
-:no_current_player
-    sget-boolean v0, Lapp/homemusic/AURAVersion;->waveStarted:Z
-    if-eqz v0, :launch_wave
-    sget-boolean v1, Lapp/homemusic/AURAVersion;->wavePlaying:Z
-    xor-int/lit8 v1, v1, 0x1
-    sput-boolean v1, Lapp/homemusic/AURAVersion;->wavePlaying:Z
-    invoke-static {p1}, Lapp/homemusic/AURAWaveToggleClickListener;->syncIcon(Landroid/view/View;)V
-    invoke-static {p1, v1}, Lapp/homemusic/AURAWaveToggleClickListener;->dispatchPlaybackKey(Landroid/view/View;Z)V
-    return-void
-
-:launch_wave
-    const/4 v0, 0x1
+:no_current_item
+    # Keep the first request in flight, rather than firing "collecting My Wave"
+    # again. If the player is really empty and no request is pending, restart.
+    sget-boolean v0, Lapp/homemusic/AURAVersion;->wavePending:Z
+    if-nez v0, :done
+    const/4 v0, 0x0
     sput-boolean v0, Lapp/homemusic/AURAVersion;->waveStarted:Z
     sput-boolean v0, Lapp/homemusic/AURAVersion;->wavePlaying:Z
-    invoke-static {p1}, Lapp/homemusic/AURAWaveToggleClickListener;->syncIcon(Landroid/view/View;)V
-    iget-object v1, p0, Lapp/homemusic/AURAWaveToggleClickListener;->delegate:Landroid/view/View$OnClickListener;
-    if-eqz v1, :done
-    invoke-interface {v1, p1}, Landroid/view/View$OnClickListener;->onClick(Landroid/view/View;)V
-:done
-    return-void
+    goto :launch_wave
 .end method
 
 .method public static syncIcon(Landroid/view/View;)V

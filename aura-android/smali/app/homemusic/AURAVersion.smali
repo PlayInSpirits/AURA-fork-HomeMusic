@@ -3,6 +3,7 @@
 .field public static waveStarted:Z
 .field public static wavePlaying:Z
 .field public static waveButton:Landroid/view/View;
+.field public static wavePending:Z
 
 .field public static pendingSearch:Z
 

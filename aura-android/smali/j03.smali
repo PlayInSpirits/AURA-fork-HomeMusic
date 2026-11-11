@@ -129,7 +129,7 @@
     move-result v3
 
     .line 11
-    const v4, -0x3361d2af    # -8.293031E7f
+    const v4, -0x3361d2af    # -8.2930312E7f
 
     .line 12
     .line 13
@@ -1681,7 +1681,7 @@
     move-result v1
 
     .line 7
-    const v2, -0x3361d2af    # -8.293031E7f
+    const v2, -0x3361d2af    # -8.2930312E7f
 
     .line 8
     .line 9
@@ -2464,7 +2464,7 @@
     move-result v1
 
     .line 7
-    const v2, -0x3361d2af    # -8.293031E7f
+    const v2, -0x3361d2af    # -8.2930312E7f
 
     .line 8
     .line 9
