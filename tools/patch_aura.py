@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 from __future__ import annotations
-import math, re, shutil, sys, xml.etree.ElementTree as ET
+import json, math, re, shutil, sys, xml.etree.ElementTree as ET
 from pathlib import Path
 
 A='http://schemas.android.com/apk/res/android'; P='http://schemas.android.com/apk/res-auto'
@@ -9,6 +9,10 @@ def a(k): return '{%s}%s'%(A,k)
 def p(k): return '{%s}%s'%(P,k)
 def xml(path): return ET.parse(path)
 def save(tree,path): tree.write(path,encoding='utf-8',xml_declaration=True)
+def replace_once(text,old,new,label):
+    n=text.count(old)
+    if n!=1: raise RuntimeError(f'{label}: expected one match, got {n}')
+    return text.replace(old,new,1)
 def colors(path, values):
     t=xml(path); nodes={x.get('name'):x for x in t.getroot().findall('color')}
     for k,v in values.items():
@@ -100,11 +104,18 @@ def patch_main_menu(res):
     route.attrib.pop(p('actionProviderClass'),None)
     route.attrib.pop(p('actionViewClass'),None)
     search=next((node for node in list(root) if node.get(a('id'))=='@id/action_search'),None)
-    if search is None: raise RuntimeError('Main toolbar search action missing')
-    root.remove(search)
-    search.set(a('visible'),'true')
-    search.set(p('showAsAction'),'always')
+    settings=next((node for node in list(root) if node.get(a('id'))=='@id/action_settings'),None)
+    if search is None or settings is None:
+        raise RuntimeError('Search and Settings toolbar actions must both exist')
+    for item in (search,settings):
+        root.remove(item)
+        item.set(a('visible'),'true')
+        item.set(p('showAsAction'),'always')
     root.append(search)
+    root.append(settings)
+    ids=[node.get(a('id')) for node in list(root)]
+    if ids.index('@id/action_settings') < ids.index('@id/action_search'):
+        raise RuntimeError('Settings action must be the rightmost toolbar item')
     if not any(node.get(a('id'))=='@id/media_route_menu_item' and node.get(a('visible'))=='false' for node in root):
         raise RuntimeError('Hidden MediaRoute menu item is required by ToolbarFragment')
     save(t,f)
@@ -133,7 +144,8 @@ def patch_about_settings(res,decoded):
     f=res/'xml/global_preferences.xml'
     t=xml(f)
     about=next((node for node in t.getroot().iter() if node.get(p('title'))=='@string/settings_about_title'),None)
-    if about is None: raise RuntimeError('About preference category not found')
+    if about is None:
+        raise RuntimeError('About preference category not found')
     removed=set()
     for node in list(about):
         summary=node.get(p('summary'),'')
@@ -143,64 +155,118 @@ def patch_about_settings(res,decoded):
             about.remove(node)
     if len(removed)!=2:
         raise RuntimeError(f'Expected Support and unDraw preferences to be removed; removed={sorted(removed)}')
+
+    contact=next((node for node in list(about) if node.get(a('key'))=='aura_contact_author'),None)
+    if contact is None:
+        contact=ET.SubElement(about,'Preference',{
+            a('key'):'aura_contact_author',
+            p('title'):'@string/aura_contact_author_title',
+            p('summary'):'@string/aura_contact_author_summary'
+        })
+        ET.SubElement(contact,'intent',{
+            a('action'):'android.intent.action.VIEW',
+            a('data'):'@string/aura_contact_author_link'
+        })
     save(t,f)
 
-    repo_url='https://github.com/PlayInSpirits/HomeMusic-Fork'
-    for sf in [res/'values/strings.xml',*res.glob('values-*/strings.xml')]:
-        st=xml(sf); nodes={x.get('name'):x for x in st.getroot().findall('string')}
-        if 'settings_github_link' in nodes: nodes['settings_github_link'].text=repo_url
-        if 'homemusic_settings_title' in nodes: nodes['homemusic_settings_title'].text='AURA (HomeMusic)'
-        if 'settings_version_summary' in nodes: nodes['settings_version_summary'].text='AURA 0.4'
-        save(st,sf)
-
-    defaults={
-      'settings_about_summary':'AURA is an Android port of the HomeMusic client.',
+    base_values={
+      'settings_about_summary':'AURA is an independent Android fork of HomeMusic.',
       'settings_about_title':'About AURA',
       'settings_github_link':'https://github.com/PlayInSpirits/HomeMusic-Fork',
       'settings_github_summary':'AURA source code and releases',
       'settings_github_title':'GitHub',
-      'settings_version_summary':'AURA 0.4',
+      'settings_version_summary':'AURA 0.5-1',
       'settings_version_title':'AURA version',
-      'homemusic_settings_title':'AURA (HomeMusic)'
+      'homemusic_settings_title':'AURA (HomeMusic)',
+      'aura_contact_author_title':'Contact the fork author',
+      'aura_contact_author_summary':'Telegram: Play_in_Spirits',
+      'aura_contact_author_link':'https://t.me/Play_in_Spirits'
     }
-    f=res/'values/strings.xml'
-    t=xml(f)
-    nodes={x.get('name'):x for x in t.getroot().findall('string')}
-    for name,value in defaults.items():
-        if name in nodes: nodes[name].text=value
-    save(t,f)
-
-    ru=res/'values-ru/strings.xml'
-    if ru.exists():
-        t=xml(ru)
-        nodes={x.get('name'):x for x in t.getroot().findall('string')}
-        localized={
-          'settings_about_summary':'AURA — Android-порт клиента HomeMusic.',
-          'settings_about_title':'О приложении AURA',
-          'settings_github_link':'https://github.com/PlayInSpirits/HomeMusic-Fork',
-          'settings_github_summary':'Исходный код и релизы AURA',
-          'settings_github_title':'GitHub',
-          'settings_version_summary':'AURA 0.4',
-          'settings_version_title':'Версия AURA',
-          'homemusic_settings_title':'AURA (HomeMusic)'
-        }
-        for name,value in localized.items():
-            if name in nodes: nodes[name].text=value
-        save(t,ru)
+    ru_values={
+      'settings_about_summary':'AURA — независимый Android-форк клиента HomeMusic.',
+      'settings_about_title':'О приложении AURA',
+      'settings_github_link':'https://github.com/PlayInSpirits/HomeMusic-Fork',
+      'settings_github_summary':'Исходный код и релизы AURA',
+      'settings_github_title':'GitHub',
+      'settings_version_summary':'AURA 0.5-1',
+      'settings_version_title':'Версия AURA',
+      'homemusic_settings_title':'AURA (HomeMusic)',
+      'aura_contact_author_title':'Связаться с автором форка',
+      'aura_contact_author_summary':'Telegram: Play_in_Spirits',
+      'aura_contact_author_link':'https://t.me/Play_in_Spirits'
+    }
+    for filename,values in [
+        (res/'values/strings.xml',base_values),
+        (res/'values-ru/strings.xml',ru_values)
+    ]:
+        st=xml(filename)
+        nodes={x.get('name'):x for x in st.getroot().findall('string')}
+        for name,value in values.items():
+            node=nodes.get(name)
+            if node is None:
+                node=ET.SubElement(st.getroot(),'string',{'name':name})
+            node.text=value
+        save(st,filename)
 
     f=decoded/'smali/vb4.smali'
     s=f.read_text(encoding='utf-8')
-    about_old='const-string v3, "1.14.7"'
-    update_old='const-string v2, "1.14.7"'
-    if s.count(about_old)!=1 or s.count(update_old)!=1:
-        raise RuntimeError('Expected About and HomeMusic settings version literals were not found uniquely')
-    s=s.replace(about_old,'const-string v3, "AURA 0.4"',1)
-    s=s.replace(update_old,'const-string v2, "AURA 0.4"',1)
-    update_code='    const/16 v0, 0x2b'
-    if s.count(update_code)!=1:
-        raise RuntimeError('HomeMusic settings versionCode literal not found uniquely')
-    s=s.replace(update_code,'    const/16 v0, 0x190',1)
+    s=replace_once(s,'const-string v3, "1.14.7"','''invoke-virtual {v1}, Lkc1;->Z()Landroid/content/Context;
+    move-result-object v3
+    invoke-static {v3}, Lapp/homemusic/AURAVersion;->versionName(Landroid/content/Context;)Ljava/lang/String;
+    move-result-object v3''','About versionName')
+    s=replace_once(s,'    const/16 v0, 0x2b','''    invoke-virtual {v5}, Lkc1;->Z()Landroid/content/Context;
+    move-result-object v0
+    invoke-static {v0}, Lapp/homemusic/AURAVersion;->versionCodeInt(Landroid/content/Context;)I
+    move-result v0''','HomeMusic settings versionCode')
+    s=replace_once(s,'const-string v2, "1.14.7"','''invoke-virtual {v5}, Lkc1;->Z()Landroid/content/Context;
+    move-result-object v2
+    invoke-static {v2}, Lapp/homemusic/AURAVersion;->versionName(Landroid/content/Context;)Ljava/lang/String;
+    move-result-object v2''','HomeMusic settings versionName')
     f.write_text(s,encoding='utf-8')
+
+    helper=decoded/'smali/app/homemusic/AURAVersion.smali'
+    helper.parent.mkdir(parents=True,exist_ok=True)
+    helper.write_text('''.class public final Lapp/homemusic/AURAVersion;
+.super Ljava/lang/Object;
+
+.method public static versionName(Landroid/content/Context;)Ljava/lang/String;
+    .locals 3
+    invoke-virtual {p0}, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
+    move-result-object v0
+    invoke-virtual {p0}, Landroid/content/Context;->getPackageName()Ljava/lang/String;
+    move-result-object v1
+    const/4 v2, 0x0
+    invoke-virtual {v0, v1, v2}, Landroid/content/pm/PackageManager;->getPackageInfo(Ljava/lang/String;I)Landroid/content/pm/PackageInfo;
+    move-result-object v0
+    iget-object v0, v0, Landroid/content/pm/PackageInfo;->versionName:Ljava/lang/String;
+    if-eqz v0, :fallback
+    return-object v0
+:fallback
+    const-string v0, "unknown"
+    return-object v0
+.end method
+
+.method public static versionCodeInt(Landroid/content/Context;)I
+    .locals 3
+    invoke-virtual {p0}, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
+    move-result-object v0
+    invoke-virtual {p0}, Landroid/content/Context;->getPackageName()Ljava/lang/String;
+    move-result-object v1
+    const/4 v2, 0x0
+    invoke-virtual {v0, v1, v2}, Landroid/content/pm/PackageManager;->getPackageInfo(Ljava/lang/String;I)Landroid/content/pm/PackageInfo;
+    move-result-object v0
+    iget v0, v0, Landroid/content/pm/PackageInfo;->versionCode:I
+    return v0
+.end method
+
+.method public static versionCode(Landroid/content/Context;)J
+    .locals 2
+    invoke-static {p0}, Lapp/homemusic/AURAVersion;->versionCodeInt(Landroid/content/Context;)I
+    move-result v0
+    int-to-long v0, v0
+    return-wide v0
+.end method
+''',encoding='utf-8')
 
 def patch_hub_preferences(res):
     f=res/'xml/global_preferences.xml'; t=xml(f)
