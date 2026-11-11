@@ -163,24 +163,8 @@ def patch_initial_preferences(res):
 
 def patch_updater_external_asset(decoded):
     f=decoded/'smali/d25.smali'; s=f.read_text(encoding='utf-8')
-    old='''    invoke-virtual {p0}, Lcom/eddyizm/tempus/homemusic/HubUpdateFile;->getUrl()Ljava/lang/String;
-
-    .line 64
-    .line 65
-    move-result-object p0
-
-    .line 66
-    const-string v1, "-"
-
-    .line 67
-    .line 68
-    const-string v3, "."
-
-    .line 69
-    .line 70
-    const-string v4, "/app/artifacts/"
-'''
-    new='''    invoke-virtual {p0}, Lcom/eddyizm/tempus/homemusic/HubUpdateFile;->getUrl()Ljava/lang/String;
+    pattern=re.compile(r'(?s)    invoke-virtual \\{p0\\}, Lcom/eddyizm/tempus/homemusic/HubUpdateFile;->getUrl\\(\\)Ljava/lang/String;.*?    const-string v4, "/app/artifacts/"')
+    replacement='''    invoke-virtual {p0}, Lcom/eddyizm/tempus/homemusic/HubUpdateFile;->getUrl()Ljava/lang/String;
     move-result-object p0
     const-string v1, "apk"
     invoke-virtual {p1, v1}, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
@@ -196,16 +180,10 @@ def patch_updater_external_asset(decoded):
     return p0
     :cond_aura_hub_artifact
     const-string v1, "-"
-
-    .line 67
-    .line 68
     const-string v3, "."
-
-    .line 69
-    .line 70
-    const-string v4, "/app/artifacts/"
-'''
-    s=replace_once(s,old,new,'GitHub APK URL allow-list')
+    const-string v4, "/app/artifacts/"'''
+    s,n=pattern.subn(replacement,s,count=1)
+    if n!=1: raise RuntimeError(f'GitHub APK URL allow-list: expected one stable URL section, got {n}')
     f.write_text(s,encoding='utf-8')
 def patch_main_menu(res):
     f=res/'menu/main_page_menu.xml'
