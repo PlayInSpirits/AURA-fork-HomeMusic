@@ -1925,7 +1925,7 @@
     move-result-object v0
 
     .line 548
-    const-string v3, "1.14.7"
+    const-string v3, "AURA 0.4"
 
     .line 549
     .line 550
@@ -3386,7 +3386,7 @@
 
     .line 228
     .line 229
-    const/16 v0, 0x2b
+    const/16 v0, 0x190
 
     .line 230
     .line 231
@@ -3398,7 +3398,7 @@
     move-result-object v0
 
     .line 235
-    const-string v2, "1.14.7"
+    const-string v2, "AURA 0.4"
 
     .line 236
     .line 237

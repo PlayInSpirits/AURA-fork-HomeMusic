@@ -711,7 +711,7 @@ Dəyişiklik yenidən başladıqdan sonra görünəcək"</string>
     <string name="settings_equalizer_select">İstifadə ediləcək ekvalayzeri seç</string>
     <string name="settings_fallback_to_random_tracks_summary">Bənzər mahnılar olmadıqda təsadüfi mahnılar səsləndir</string>
     <string name="settings_fallback_to_random_tracks_title">Alternativ olaraq təsadüfi mahnılar</string>
-    <string name="settings_github_link">https://github.com/eddyizm/tempus</string>
+    <string name="settings_github_link">https://github.com/PlayInSpirits/HomeMusic-Fork</string>
     <string name="settings_github_summary">Tərtibatı izlə</string>
     <string name="settings_github_title">Github</string>
     <string name="settings_github_update">Yeniləmələr</string>

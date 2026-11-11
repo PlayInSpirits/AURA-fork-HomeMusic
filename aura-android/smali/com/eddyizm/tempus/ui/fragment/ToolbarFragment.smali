@@ -96,6 +96,8 @@
     .line 17
     move-result-object v0
 
+    if-eqz v0, :cond_0
+
     .line 18
     const v1, 0x7f130587
 

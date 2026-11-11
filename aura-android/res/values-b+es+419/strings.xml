@@ -477,7 +477,7 @@ Presiona para ocultar"</string>
     <string name="settings_enable_drawer_on_landscape_summary">Permite el uso del panel lateral en modo vertical</string>
     <string name="settings_equalizer_dialog_title">Ecualizadores</string>
     <string name="settings_equalizer_select">Selecciona un ecualizador para usar</string>
-    <string name="settings_github_link">https://github.com/eddyizm/tempus</string>
+    <string name="settings_github_link">https://github.com/PlayInSpirits/HomeMusic-Fork</string>
     <string name="settings_github_summary">Sigue el desarrollo</string>
     <string name="settings_github_title">GitHub</string>
     <string name="settings_github_update">Actualizaciones</string>
@@ -580,7 +580,7 @@ Se está usando: %2$s MiB"</string>
     <string name="settings_title_ui">Interfaz de Usuario</string>
     <string name="settings_track_number">Mostrar número de pista</string>
     <string name="settings_track_number_summary">Si está activado, mostrará el número de pista (en el álbum) de la canción que estás escuchando.</string>
-    <string name="settings_version_summary">3.1.0</string>
+    <string name="settings_version_summary">AURA 0.4</string>
     <string name="settings_version_title">Versión</string>
     <string name="settings_wifi_only_summary">Preguntar por confirmanción antes de transmitir usando datos mobiles.</string>
     <string name="settings_wifi_only_title">Alerta de transmitir usando solamente Wi-Fi</string>

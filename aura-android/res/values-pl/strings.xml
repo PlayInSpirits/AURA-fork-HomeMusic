@@ -779,7 +779,7 @@ Efekty będą widoczne po restarcie"</string>
     <string name="settings_equalizer_select">Wybierz equalizer do użycia</string>
     <string name="settings_fallback_to_random_tracks_summary">Odtwarzaj zastępczo losowe piosenki jeśli podobne utwory nie są dostępne</string>
     <string name="settings_fallback_to_random_tracks_title">Zastąpienie losowymi utworami</string>
-    <string name="settings_github_link">https://github.com/eddyizm/tempus</string>
+    <string name="settings_github_link">https://github.com/PlayInSpirits/HomeMusic-Fork</string>
     <string name="settings_github_summary">Śledź tworzenie aplikacji</string>
     <string name="settings_github_title">GitHub</string>
     <string name="settings_github_update">Aktualizacje</string>
@@ -888,7 +888,7 @@ Aktualnie w użyciu: %2$s MiB"</string>
     <string name="settings_title_ui">Interfejs</string>
     <string name="settings_track_number">Pokaż numer utworu</string>
     <string name="settings_track_number_summary">Jeżeli włączone, pokazuje numer utworu piosenki która jest odtwarzana.</string>
-    <string name="settings_version_summary">3.1.0</string>
+    <string name="settings_version_summary">AURA 0.4</string>
     <string name="settings_version_title">Wersja</string>
     <string name="settings_wifi_only_summary">Pytaj o potwierdzenie od użytkownika przed strumieniowaniem przez sieć komórkową.</string>
     <string name="settings_wifi_only_title">Alert o strumieniowaniu tylko przez Wi-Fi</string>

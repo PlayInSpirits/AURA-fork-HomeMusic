@@ -647,7 +647,7 @@ Efektuak berrabiaraztean ikusiko dira"</string>
     <string name="settings_equalizer_select">Hautatu erabili beharreko ekualizadorea</string>
     <string name="settings_fallback_to_random_tracks_summary">Erreproduzitu ausazko abestiak antzeko abestirik ez dagoenean</string>
     <string name="settings_fallback_to_random_tracks_title">Ausazko abestietara jo</string>
-    <string name="settings_github_link">https://github.com/eddyizm/tempus</string>
+    <string name="settings_github_link">https://github.com/PlayInSpirits/HomeMusic-Fork</string>
     <string name="settings_github_summary">Garapenaren jarraipena egin</string>
     <string name="settings_github_title">Github</string>
     <string name="settings_github_update">Eguneraketak</string>
@@ -753,7 +753,7 @@ Erabilita: %2$s MiB"</string>
     <string name="settings_title_ui">Interfazea</string>
     <string name="settings_track_number">Abesti-zenbakia erakutsi</string>
     <string name="settings_track_number_summary">Gaituta badago, erreproduzitzen ari den abestiaren zenbakia erakusten du.</string>
-    <string name="settings_version_summary">3.1.0</string>
+    <string name="settings_version_summary">AURA 0.4</string>
     <string name="settings_version_title">Bertsioa</string>
     <string name="settings_wifi_only_summary">Erabiltzailearen berrespena eskatu sare mugikorraren bidez erreproduzitu aurretik.</string>
     <string name="settings_wifi_only_title">Wi-Fi bidez soilik erreproduzitzeko abisua</string>

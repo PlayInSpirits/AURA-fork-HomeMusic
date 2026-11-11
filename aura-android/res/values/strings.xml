@@ -448,7 +448,7 @@ Tap to hide"</string>
     <string name="homemusic_settings_mix_offline_summary">Песни сегодняшнего микса скачиваются в «Скачанное», когда телефон на зарядке и в безлимитном Wi-Fi; при смене микса прошлые убираются (кроме понравившихся и скачанных вами). Микс играет без мобильного трафика</string>
     <string name="homemusic_settings_smart_shuffle">Умное перемешивание в режимах</string>
     <string name="homemusic_settings_smart_shuffle_summary">Кнопка перемешивания в плейлисте и «Понравившихся» проходит три режима: порядок, перемешивание, умное — с рекомендациями между вашими песнями. Выключено — только первые два</string>
-    <string name="homemusic_settings_title">HomeMusic</string>
+    <string name="homemusic_settings_title">AURA (HomeMusic)</string>
     <string name="homemusic_settings_traffic">Мобильный трафик плеера</string>
     <string name="homemusic_settings_traffic_hint">Считается только в сети с лимитом. Нажмите, чтобы обновить</string>
     <string name="homemusic_settings_traffic_summary">"Сегодня: %1$s (песни %2$s, начала следующих %3$s)
@@ -973,8 +973,8 @@ The effects will be visible on restart"</string>
     <string name="server_unreachable_dialog_positive_button">Continue anyway</string>
     <string name="server_unreachable_dialog_summary">The requested server is unavailable. If you choose to continue this dialog will not appear for the next hour.</string>
     <string name="server_unreachable_dialog_title">Server unreachable</string>
-    <string name="settings_about_summary">Tempus is an open source and lightweight music client for Subsonic, designed and built natively for Android.</string>
-    <string name="settings_about_title">About</string>
+    <string name="settings_about_summary">AURA is an Android port of the HomeMusic client.</string>
+    <string name="settings_about_title">About AURA</string>
     <string name="settings_album_detail">Show album detail</string>
     <string name="settings_album_detail_summary">If enabled, show the album details like genre, song count etc. on the album page</string>
     <string name="settings_album_year">Show album year</string>
@@ -1036,9 +1036,9 @@ The effects will be visible on restart"</string>
     <string name="settings_equalizer_select">Select an equalizer to use</string>
     <string name="settings_fallback_to_random_tracks_summary">Play random songs as a fallback when similar tracks are unavailable</string>
     <string name="settings_fallback_to_random_tracks_title">Fallback to random tracks</string>
-    <string name="settings_github_link">https://github.com/eddyizm/tempus</string>
-    <string name="settings_github_summary">Follow the development</string>
-    <string name="settings_github_title">Github</string>
+    <string name="settings_github_link">https://github.com/PlayInSpirits/HomeMusic-Fork</string>
+    <string name="settings_github_summary">AURA source code and releases</string>
+    <string name="settings_github_title">GitHub</string>
     <string name="settings_github_update">Updates</string>
     <string name="settings_github_update_summary">If using the github version, by default app will check for new apk release. Toggle to disable automatic github checks</string>
     <string name="settings_github_update_title">Check github for release updates</string>
@@ -1146,8 +1146,8 @@ Currently in use: %2$s MiB"</string>
     <string name="settings_title_ui">UI</string>
     <string name="settings_track_number">Show track number</string>
     <string name="settings_track_number_summary">If enabled, shows the track number of the song being played.</string>
-    <string name="settings_version_summary">3.1.0</string>
-    <string name="settings_version_title">Version</string>
+    <string name="settings_version_summary">AURA 0.4</string>
+    <string name="settings_version_title">AURA version</string>
     <string name="settings_wifi_only_summary">Ask for user confirmation before streaming over mobile network.</string>
     <string name="settings_wifi_only_title">Stream via Wi-Fi only alert</string>
     <string name="share_bottom_sheet_copy_link">Copy link</string>

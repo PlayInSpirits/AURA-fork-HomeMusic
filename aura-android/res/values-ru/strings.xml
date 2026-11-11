@@ -717,8 +717,8 @@
     <string name="server_unreachable_dialog_positive_button">Продолжить</string>
     <string name="server_unreachable_dialog_summary">Доступна скачанная музыка. Если продолжить, следующая проверка будет через час.</string>
     <string name="server_unreachable_dialog_title">Нет связи с сервером</string>
-    <string name="settings_about_summary">Tempus - лёгкий open-source клиент Subsonic для Android.</string>
-    <string name="settings_about_title">О приложении</string>
+    <string name="settings_about_summary">AURA — Android-порт клиента HomeMusic.</string>
+    <string name="settings_about_title">О приложении AURA</string>
     <string name="settings_album_detail">Подробности об альбоме</string>
     <string name="settings_album_detail_summary">Показывать жанр, кол-во треков и т.д. на странице альбома.</string>
     <string name="settings_album_year">Показывать год альбома</string>
@@ -780,8 +780,8 @@
     <string name="settings_equalizer_select">Выбрать эквалайзер</string>
     <string name="settings_fallback_to_random_tracks_summary">Играть случайные треки, если недоступны похожие.</string>
     <string name="settings_fallback_to_random_tracks_title">Фоллбэк на случайные треки</string>
-    <string name="settings_github_link">https://github.com/eddyizm/tempus</string>
-    <string name="settings_github_summary">Следить за разработкой</string>
+    <string name="settings_github_link">https://github.com/PlayInSpirits/HomeMusic-Fork</string>
+    <string name="settings_github_summary">Исходный код и релизы AURA</string>
     <string name="settings_github_title">GitHub</string>
     <string name="settings_github_update">Обновления</string>
     <string name="settings_github_update_summary">Автоматически проверять наличие новых APK на GitHub.</string>
@@ -885,8 +885,8 @@
     <string name="settings_title_ui">Интерфейс</string>
     <string name="settings_track_number">Показывать номер трека</string>
     <string name="settings_track_number_summary">Отображать порядковый номер воспроизводимого трека.</string>
-    <string name="settings_version_summary">3.1.0</string>
-    <string name="settings_version_title">Версия</string>
+    <string name="settings_version_summary">AURA 0.4</string>
+    <string name="settings_version_title">Версия AURA</string>
     <string name="settings_wifi_only_summary">Спрашивать разрешение перед стримингом в мобильной сети.</string>
     <string name="settings_wifi_only_title">Предупреждение Только Wi-Fi</string>
     <string name="share_bottom_sheet_copy_link">Копировать ссылку</string>

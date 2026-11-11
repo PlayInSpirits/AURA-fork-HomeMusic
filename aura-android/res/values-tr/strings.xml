@@ -483,7 +483,7 @@ Değişiklikler yeniden başlatıldığında görülecek"</string>
     <string name="settings_delete_download_storage_summary">Devam ederseniz tüm kayıtlı öğeler geri alınamaz şekilde silinecektir.</string>
     <string name="settings_delete_download_storage_title">Kayıtlı öğeleri sil</string>
     <string name="settings_download_storage_title">İndirme depolaması</string>
-    <string name="settings_github_link">https://github.com/eddyizm/tempus</string>
+    <string name="settings_github_link">https://github.com/PlayInSpirits/HomeMusic-Fork</string>
     <string name="settings_github_summary">Gelişmeleri takip et</string>
     <string name="settings_github_title">Github</string>
     <string name="settings_image_size">Görsel çözünürlüğünü ayarla</string>
@@ -544,7 +544,7 @@ Değişiklikler yeniden başlatıldığında görülecek"</string>
     <string name="settings_title_transcoding">Dönüştürme</string>
     <string name="settings_title_transcoding_download">Dönüştürme İndir</string>
     <string name="settings_title_ui">Arayüz</string>
-    <string name="settings_version_summary">3.1.0</string>
+    <string name="settings_version_summary">AURA 0.4</string>
     <string name="settings_version_title">Sürüm</string>
     <string name="settings_wifi_only_summary">Mobil ağ üzerinden yayın yapmadan önce kullanıcı onayı iste.</string>
     <string name="settings_wifi_only_title">Yalnızca Wi-Fi ile yayın uyarısı</string>

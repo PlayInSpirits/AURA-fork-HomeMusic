@@ -634,7 +634,7 @@ Les changements seront visibles au redémarrage de l'app"</string>
     <string name="settings_equalizer_select">Sélectionner un égaliseur à utiliser</string>
     <string name="settings_fallback_to_random_tracks_summary">"Lire des titres aléatoires si aucun titre similaire n'est disponible"</string>
     <string name="settings_fallback_to_random_tracks_title">Continuer avec des titres aléatoires</string>
-    <string name="settings_github_link">https://github.com/eddyizm/tempus</string>
+    <string name="settings_github_link">https://github.com/PlayInSpirits/HomeMusic-Fork</string>
     <string name="settings_github_summary">Suivre le développement</string>
     <string name="settings_github_title">Github</string>
     <string name="settings_github_update">Mises à jour</string>
