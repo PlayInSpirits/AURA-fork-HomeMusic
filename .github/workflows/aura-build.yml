@@ -9,97 +9,19 @@ name: Build AURA Android
   workflow_dispatch:
 
 permissions:
-  actions: write
   contents: write
 
 concurrency:
-  group: aura-release-${{ github.ref }}
+  group: aura-release-self-hosted-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
-  cleanup-obsolete-cloud-runs:
-    if: ${{ contains(github.event.head_commit.message || '', '[actions-cleanup-only]') }}
-    runs-on: [self-hosted, windows, x64]
-    steps:
-      - name: Delete obsolete GitHub-hosted workflow runs
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const { owner, repo } = context.repo;
-            const runIds = [43096632613, 43096813486, 43097352545];
-            for (const run_id of runIds) {
-              try {
-                await github.rest.actions.deleteWorkflowRun({ owner, repo, run_id });
-                core.info(`Deleted obsolete GitHub-hosted workflow run ${run_id}`);
-              } catch (error) {
-                if (error.status === 404) {
-                  core.info(`Workflow run ${run_id} is already absent`);
-                } else {
-                  core.error(`Could not delete workflow run ${run_id}: HTTP ${error.status}`);
-                  throw error;
-                }
-              }
-            }
-
   build:
-    if: ${{ !contains(github.event.head_commit.message || '', '[actions-cleanup-only]') }}
     runs-on: [self-hosted, windows, x64]
     defaults:
       run:
         shell: bash
     steps:
-      - name: Cancel obsolete GitHub-hosted builds
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const { owner, repo } = context.repo;
-            const runIds = [43096632613, 43096813486, 43097352545];
-            for (const run_id of runIds) {
-              let cancellationRequested = false;
-              try {
-                await github.rest.actions.cancelWorkflowRun({ owner, repo, run_id });
-                cancellationRequested = true;
-                core.info(`Cancellation requested for obsolete run ${run_id}`);
-              } catch (error) {
-                if (error.status === 409) {
-                  try {
-                    await github.request(
-                      'POST /repos/{owner}/{repo}/actions/runs/{run_id}/force-cancel',
-                      { owner, repo, run_id }
-                    );
-                    cancellationRequested = true;
-                    core.info(`Force-cancellation requested for obsolete run ${run_id}`);
-                  } catch (forceError) {
-                    if ([404, 409, 422].includes(forceError.status)) {
-                      core.warning(`Run ${run_id} could not be force-cancelled (HTTP ${forceError.status}).`);
-                    } else {
-                      throw forceError;
-                    }
-                  }
-                } else if ([404, 422].includes(error.status)) {
-                  core.warning(`Run ${run_id} was already finished or could not be cancelled (HTTP ${error.status}).`);
-                } else {
-                  throw error;
-                }
-              }
-
-              if (cancellationRequested) {
-                let current;
-                for (let attempt = 0; attempt < 12; attempt++) {
-                  const response = await github.rest.actions.getWorkflowRun({ owner, repo, run_id });
-                  current = response.data;
-                  if (current.status === 'completed') break;
-                  await new Promise(resolve => setTimeout(resolve, 1500));
-                }
-                if (current?.status === 'completed' && current?.conclusion === 'cancelled') {
-                  await github.rest.actions.deleteWorkflowRun({ owner, repo, run_id });
-                  core.info(`Cancelled and deleted obsolete run ${run_id}`);
-                } else {
-                  core.warning(`Run ${run_id} did not reach cancelled state; latest status: ${current?.status || 'unknown'}.`);
-                }
-              }
-            }
-
       - name: Checkout AURA sources
         uses: actions/checkout@v4
 
@@ -119,16 +41,9 @@ jobs:
           $javaExe = Join-Path $javaHome 'bin\java.exe'
           if (-not (Test-Path -LiteralPath $javaExe)) { throw "Java executable not found: $javaExe" }
 
-          $validPath = @()
-          foreach ($entry in ($env:Path -split ';')) {
-            $candidate = $entry.Trim().Trim('"')
-            if (-not [string]::IsNullOrWhiteSpace($candidate) -and (Test-Path -LiteralPath $candidate -ErrorAction SilentlyContinue)) {
-              $validPath += $candidate
-            }
-          }
           $javaBin = Join-Path $javaHome 'bin'
-          $env:Path = (@($javaBin) + $validPath | Select-Object -Unique) -join ';'
-          Add-Content -Path $env:GITHUB_ENV -Value "PATH=$env:Path" -Encoding ASCII
+          $env:Path = "$javaBin;$env:Path"
+          Add-Content -Path $env:GITHUB_PATH -Value $javaBin -Encoding ASCII
           Write-Host "Using Java from $javaHome"
           & $javaExe -version
           if ($LASTEXITCODE -ne 0) { throw 'Java runtime check failed.' }
