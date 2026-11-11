@@ -20,7 +20,7 @@ jobs:
     runs-on: [self-hosted, windows, x64]
     defaults:
       run:
-        shell: bash
+        shell: '"C:\\Program Files\\Git\\bin\\bash.exe" --noprofile --norc -eo pipefail {0}'
     steps:
       - name: Checkout AURA sources
         uses: actions/checkout@v4
@@ -281,11 +281,6 @@ jobs:
             const fs = require('fs');
             const { owner, repo } = context.repo;
             const tag = 'v0.75.1';
-            const body = [
-              '### **AURA v0.75-1**',
-              '- APK подписан постоянным ключом AURA; установка поверх предыдущей версии сохраняет данные приложения.'
-            ].join('\n');
-
             let release;
             try {
               ({ data: release } = await github.rest.repos.getReleaseByTag({ owner, repo, tag }));
