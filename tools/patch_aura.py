@@ -85,18 +85,116 @@ def drawables(res):
 def patch_main_menu(res):
     f=res/'menu/main_page_menu.xml'
     t=xml(f); root=t.getroot()
-    items=list(root)
-    for node in items:
-        if node.get(a('id'))=='@id/media_route_menu_item':
-            root.remove(node)
+    route=next((node for node in list(root) if node.get(a('id'))=='@id/media_route_menu_item'),None)
+    if route is None:
+        route=ET.Element('item',{
+            a('id'):'@id/media_route_menu_item',
+            a('title'):'@string/media_route_menu_title',
+            a('visible'):'false',
+            p('showAsAction'):'never'
+        })
+        root.insert(0,route)
+    else:
+        route.set(a('visible'),'false')
+        route.set(p('showAsAction'),'never')
+    route.attrib.pop(p('actionProviderClass'),None)
+    route.attrib.pop(p('actionViewClass'),None)
     search=next((node for node in list(root) if node.get(a('id'))=='@id/action_search'),None)
     if search is None: raise RuntimeError('Main toolbar search action missing')
     root.remove(search)
+    search.set(a('visible'),'true')
     search.set(p('showAsAction'),'always')
     root.append(search)
-    if any(node.get(a('id'))=='@id/media_route_menu_item' for node in root):
-        raise RuntimeError('Cast menu item was not removed')
+    if not any(node.get(a('id'))=='@id/media_route_menu_item' and node.get(a('visible'))=='false' for node in root):
+        raise RuntimeError('Hidden MediaRoute menu item is required by ToolbarFragment')
     save(t,f)
+
+def patch_toolbar_menu_null_guard(decoded):
+    f=decoded/'smali/com/eddyizm/tempus/ui/fragment/ToolbarFragment.smali'
+    s=f.read_text(encoding='utf-8')
+    anchor='''    move-result-object v0
+
+    .line 18
+    const v1, 0x7f130587
+'''
+    replacement='''    move-result-object v0
+
+    if-eqz v0, :cond_0
+
+    .line 18
+    const v1, 0x7f130587
+'''
+    if s.count(anchor)!=1:
+        raise RuntimeError('ToolbarFragment route-item null-guard insertion point not found uniquely')
+    s=s.replace(anchor,replacement,1)
+    f.write_text(s,encoding='utf-8')
+
+def patch_about_settings(res,decoded):
+    f=res/'xml/global_preferences.xml'
+    t=xml(f)
+    about=next((node for node in t.getroot().iter() if node.get(p('title'))=='@string/settings_about_title'),None)
+    if about is None: raise RuntimeError('About preference category not found')
+    removed=set()
+    for node in list(about):
+        summary=node.get(p('summary'),'')
+        title=node.get(p('title'),'')
+        if summary in ('@string/settings_support_summary','@string/undraw_thanks') or title in ('@string/settings_support_title','@string/undraw_page'):
+            removed.add(summary or title)
+            about.remove(node)
+    if len(removed)!=2:
+        raise RuntimeError(f'Expected Support and unDraw preferences to be removed; removed={sorted(removed)}')
+    save(t,f)
+
+    repo_url='https://github.com/PlayInSpirits/HomeMusic-Fork'
+    for sf in [res/'values/strings.xml',*res.glob('values-*/strings.xml')]:
+        st=xml(sf); nodes={x.get('name'):x for x in st.getroot().findall('string')}
+        if 'settings_github_link' in nodes: nodes['settings_github_link'].text=repo_url
+        if 'homemusic_settings_title' in nodes: nodes['homemusic_settings_title'].text='AURA (HomeMusic)'
+        if 'settings_version_summary' in nodes: nodes['settings_version_summary'].text='AURA 0.4'
+        save(st,sf)
+
+    defaults={
+      'settings_about_summary':'AURA is an Android port of the HomeMusic client.',
+      'settings_about_title':'About AURA',
+      'settings_github_link':'https://github.com/PlayInSpirits/HomeMusic-Fork',
+      'settings_github_summary':'AURA source code and releases',
+      'settings_github_title':'GitHub',
+      'settings_version_summary':'AURA 0.4',
+      'settings_version_title':'AURA version',
+      'homemusic_settings_title':'AURA (HomeMusic)'
+    }
+    f=res/'values/strings.xml'
+    t=xml(f)
+    nodes={x.get('name'):x for x in t.getroot().findall('string')}
+    for name,value in defaults.items():
+        if name in nodes: nodes[name].text=value
+    save(t,f)
+
+    ru=res/'values-ru/strings.xml'
+    if ru.exists():
+        t=xml(ru)
+        nodes={x.get('name'):x for x in t.getroot().findall('string')}
+        localized={
+          'settings_about_summary':'AURA — Android-порт клиента HomeMusic.',
+          'settings_about_title':'О приложении AURA',
+          'settings_github_link':'https://github.com/PlayInSpirits/HomeMusic-Fork',
+          'settings_github_summary':'Исходный код и релизы AURA',
+          'settings_github_title':'GitHub',
+          'settings_version_summary':'AURA 0.4',
+          'settings_version_title':'Версия AURA',
+          'homemusic_settings_title':'AURA (HomeMusic)'
+        }
+        for name,value in localized.items():
+            if name in nodes: nodes[name].text=value
+        save(t,ru)
+
+    f=decoded/'smali/vb4.smali'
+    s=f.read_text(encoding='utf-8')
+    old='const-string v3, "1.14.7"'
+    if s.count(old)!=1:
+        raise RuntimeError('Hard-coded About version 1.14.7 not found uniquely in vb4.smali')
+    s=s.replace(old,'const-string v3, "AURA 0.4"',1)
+    f.write_text(s,encoding='utf-8')
 
 def patch_hub_preferences(res):
     f=res/'xml/global_preferences.xml'; t=xml(f)
@@ -297,7 +395,7 @@ def main():
       'md_theme_light_background':'#fff7f7fc','md_theme_light_onBackground':'#ff191922','md_theme_light_surface':'#fffcfbff','md_theme_light_onSurface':'#ff191922','md_theme_light_surfaceVariant':'#fff0eef6','md_theme_light_onSurfaceVariant':'#ff625f72','md_theme_light_primary':'#ff6652d9','md_theme_light_onPrimary':'#ffffffff','md_theme_light_primaryContainer':'#ffe9e5ff','md_theme_light_onPrimaryContainer':'#ff21154f','md_theme_light_secondary':'#ff007f89','md_theme_light_onSecondary':'#ffffffff','md_theme_light_secondaryContainer':'#ffd1f5f5','md_theme_light_onSecondaryContainer':'#ff00363d','md_theme_light_tertiary':'#ffc64b78','md_theme_light_onTertiary':'#ffffffff','md_theme_light_tertiaryContainer':'#ffffdbe8','md_theme_light_onTertiaryContainer':'#ff4e102e','md_theme_light_outline':'#ff7d7788','dividerColor':'#ffe6e2f0','titleTextColor':'#ff191922','subtitleTextColor':'#ff666477','hub_background':'#ff111320','hub_text':'#fff5f2ff','homemusic_danger':'#ffce486d','widget_icon_tint_active':'#ff6652d9'})
     colors(res/'values/colors.xml',{'md_theme_dark_background':'#ff0d0e18','md_theme_dark_onBackground':'#fff4f1ff','md_theme_dark_surface':'#ff131522','md_theme_dark_onSurface':'#fff4f1ff','md_theme_dark_surfaceVariant':'#ff272839','md_theme_dark_onSurfaceVariant':'#ffb9b5cf','md_theme_dark_primary':'#ffbdadff','md_theme_dark_onPrimary':'#ff241858','md_theme_dark_primaryContainer':'#ff382f6d','md_theme_dark_onPrimaryContainer':'#fff0eaff','md_theme_dark_secondary':'#ff79d9df','md_theme_dark_onSecondary':'#ff00363d','md_theme_dark_secondaryContainer':'#ff15464d','md_theme_dark_onSecondaryContainer':'#ffb9f7fb','md_theme_dark_tertiary':'#ffff9fc3','md_theme_dark_onTertiary':'#ff4e102e','md_theme_dark_tertiaryContainer':'#ff643148','md_theme_dark_onTertiaryContainer':'#ffffdbe8','md_theme_dark_outline':'#ffaaa5bc'})
     if (res/'values-night/colors.xml').exists(): colors(res/'values-night/colors.xml',{'dividerColor':'#ff343448','titleTextColor':'#fff4f1ff','subtitleTextColor':'#ffb9b5cf','widget_bg':'#e51a1b2d','widget_icon_tint':'#ffffffff','widget_icon_tint_active':'#ffbdadff','widget_subtitle':'#ffc6c2d8','widget_title':'#ffffffff'})
-    strings(res);login_refs=patch_login_server(decoded);drawables(res);generate_aurora(res);create_player_state_drawables(res);patch_logo(res,logo);patch_vectors(res);patch_theme(res);patch_main_menu(res);patch_hub_preferences(res);patch_hub_defaults(decoded);patch_hub_web_background(decoded);patch_screen_backgrounds(res);patch_toolbar(res);patch_home_mix_layout(res);patch_player_controls(res);patch_smali(decoded);patch_home_scroll_background(res);version(decoded)
+    strings(res);login_refs=patch_login_server(decoded);drawables(res);generate_aurora(res);create_player_state_drawables(res);patch_logo(res,logo);patch_vectors(res);patch_theme(res);patch_main_menu(res);patch_toolbar_menu_null_guard(decoded);patch_about_settings(res,decoded);patch_hub_preferences(res);patch_hub_defaults(decoded);patch_hub_web_background(decoded);patch_screen_backgrounds(res);patch_toolbar(res);patch_home_mix_layout(res);patch_player_controls(res);patch_smali(decoded);patch_home_scroll_background(res);version(decoded)
     manifest=(decoded/'AndroidManifest.xml').read_text(encoding='utf-8')
     if 'package="app.homemusic"' not in manifest: raise RuntimeError('HomeMusic package ID changed')
     for file,ids in {'layout/fragment_homemusic_login.xml':['hm_login_server','hm_login_primary','hm_login_code','hm_login_google'],'layout/fragment_home_tab_music.xml':['home_discover_sector','home_similar_tracks_sector','home_radio_artist_sector']}.items():
@@ -307,12 +405,21 @@ def main():
     if 'http://192.168.1.129:4533' not in (decoded/'smali/fo1.smali').read_text(encoding='utf-8'): raise RuntimeError('Local HomeMusic server default not patched')
     if 'https://146.103.112.215:8444' in ''.join(x.read_text(encoding='utf-8') for x in decoded.rglob('*.smali')): raise RuntimeError('Old public HomeMusic server URL remains in smali')
     menu=(res/'menu/main_page_menu.xml').read_text(encoding='utf-8')
-    if 'media_route_menu_item' in menu or '@id/action_search' not in menu: raise RuntimeError('Main toolbar cast/search action layout is incorrect')
+    if 'media_route_menu_item' not in menu or 'android:visible="false"' not in menu or '@id/action_search' not in menu: raise RuntimeError('Hidden MediaRoute item / visible search action layout is incorrect')
+    toolbar=(decoded/'smali/com/eddyizm/tempus/ui/fragment/ToolbarFragment.smali').read_text(encoding='utf-8')
+    if 'if-eqz v0, :cond_0' not in toolbar: raise RuntimeError('ToolbarFragment null guard is missing')
+    about_xml=(res/'xml/global_preferences.xml').read_text(encoding='utf-8')
+    if 'settings_support_summary' in about_xml or 'undraw_thanks' in about_xml or 'undraw_page' in about_xml: raise RuntimeError('Support/unDraw preferences were not fully removed')
+    version_smali=(decoded/'smali/vb4.smali').read_text(encoding='utf-8')
+    if '1.14.7' in version_smali or 'AURA 0.4' not in version_smali: raise RuntimeError('About screen version is not AURA 0.4')
+    ru_strings=(res/'values-ru/strings.xml').read_text(encoding='utf-8')
+    if 'https://github.com/PlayInSpirits/HomeMusic-Fork' not in ru_strings: raise RuntimeError('AURA GitHub link is not set in Russian strings')
+    if 'AURA (HomeMusic)' not in ru_strings: raise RuntimeError('HomeMusic settings category was not renamed to AURA')
     prefs=(res/'xml/global_preferences.xml').read_text(encoding='utf-8')
     if prefs.count('http://192.168.1.129:8080')<2: raise RuntimeError('Both Hub preference defaults are not present')
     defaults=(decoded/'smali/com/eddyizm/tempus/homemusic/HomeDefaults.smali').read_text(encoding='utf-8')
     if defaults.count('http://192.168.1.129:8080')!=2: raise RuntimeError('One-time Hub URL migration is incomplete')
     if 'Theme.Material3.Dark.NoActionBar' not in (res/'values/styles.xml').read_text(encoding='utf-8'): raise RuntimeError('Dark AURA theme was not applied')
 
-    print(f'AURA 0.4: unified dark aurora theme applied; cast action removed and search moved to its slot; both HomeMusic Hub URLs migrated to http://192.168.1.129:8080; login default remains http://192.168.1.129:4533 ({login_refs} references); My Wave promoted; Mix of Day and remote-play controls hidden; original auth and playback flows preserved.')
+    print(f'AURA 0.4: unified dark aurora theme applied; MediaRoute item retained but hidden and guarded against null; search shown in its toolbar slot; About screen branded/versioned as AURA 0.4; Support and unDraw removed; both HomeMusic Hub URLs migrated to http://192.168.1.129:8080; login default remains http://192.168.1.129:4533 ({login_refs} references); My Wave promoted; Mix of Day and remote-play controls hidden; original auth and playback flows preserved.')
 if __name__=='__main__': main()

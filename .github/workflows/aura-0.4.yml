@@ -124,7 +124,7 @@ jobs:
         run: |
           if gh release view v0.4 >/dev/null 2>&1; then
             gh release upload v0.4 build/AURA-0.4.apk build/AURA-0.4-source.zip --clobber
-            gh release edit v0.4 --title "AURA 0.4" --notes "Визуальный редизайн Android-клиента HomeMusic. Пакет app.homemusic; вход, серверные API и функции HomeMusic сохранены." --prerelease
+            gh release edit v0.4 --title "AURA 0.4" --notes "Исправлен сбой ToolbarFragment в главном меню; пункт трансляции скрыт без удаления служебного ID; версия в «О приложении» обновлена до AURA 0.4; ссылка GitHub переведена на HomeMusic-Fork; убраны «Поддержка» и unDraw; вход и функции HomeMusic сохранены." --prerelease
           else
-            gh release create v0.4 build/AURA-0.4.apk build/AURA-0.4-source.zip --target "$GITHUB_SHA" --title "AURA 0.4" --notes "Визуальный редизайн Android-клиента HomeMusic. Пакет app.homemusic; вход, серверные API и функции HomeMusic сохранены." --prerelease
+            gh release create v0.4 build/AURA-0.4.apk build/AURA-0.4-source.zip --target "$GITHUB_SHA" --title "AURA 0.4" --notes "Исправлен сбой ToolbarFragment в главном меню; пункт трансляции скрыт без удаления служебного ID; версия в «О приложении» обновлена до AURA 0.4; ссылка GitHub переведена на HomeMusic-Fork; убраны «Поддержка» и unDraw; вход и функции HomeMusic сохранены." --prerelease
           fi
