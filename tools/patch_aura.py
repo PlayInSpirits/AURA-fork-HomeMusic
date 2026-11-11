@@ -1846,7 +1846,15 @@ def main():
         sync_method)
     if restored_start_write:
         raise RuntimeError('Restored Media3 items must not automatically mark My Wave as started')
-    player_empty_label=re.search(r'(?m)^[ \\t]*:player_empty[ \\t]*\\r?    if 'const/4 v1, 0x0' not in player_empty_block or 'sput-boolean v1, Lapp/homemusic/AURAVersion;->waveStarted:Z' not in player_empty_block:
+    player_empty_label=re.search(r'(?m)^[ \t]*:player_empty[ \t]*\r?$',sync_method)
+    if not player_empty_label:
+        raise RuntimeError('Media3 player-empty state branch is missing')
+    update_icon_tail=sync_method[player_empty_label.end():]
+    update_icon_label=re.search(r'(?m)^[ \t]*:update_icon[ \t]*\r?$',update_icon_tail)
+    if not update_icon_label:
+        raise RuntimeError('Media3 player-empty state branch has no update target')
+    player_empty_block=update_icon_tail[:update_icon_label.start()]
+    if 'const/4 v1, 0x0' not in player_empty_block or 'sput-boolean v1, Lapp/homemusic/AURAVersion;->waveStarted:Z' not in player_empty_block:
         raise RuntimeError('An empty Media3 player must clear My Wave started state')
     ti3_text=(decoded/'smali/ti3.smali').read_text(encoding='utf-8')
     wt_text=(decoded/'smali/wt.smali').read_text(encoding='utf-8')
