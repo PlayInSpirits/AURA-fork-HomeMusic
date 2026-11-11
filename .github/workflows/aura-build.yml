@@ -72,12 +72,12 @@ jobs:
       - name: Rebuild and verify unsigned package
         run: |
           set -euo pipefail
-          java -jar apktool.jar b build/decoded -o build/AURA-pr0.72-4-unsigned.apk
-          zipalign -f -p 4 build/AURA-pr0.72-4-unsigned.apk build/AURA-pr0.72-4-aligned.apk
-          aapt dump badging build/AURA-pr0.72-4-aligned.apk | tee build/badging-unsigned.txt
+          java -jar apktool.jar b build/decoded -o build/AURA-pr0.73-4-unsigned.apk
+          zipalign -f -p 4 build/AURA-pr0.73-4-unsigned.apk build/AURA-pr0.73-4-aligned.apk
+          aapt dump badging build/AURA-pr0.73-4-aligned.apk | tee build/badging-unsigned.txt
           grep -F "package: name='app.homemusic'" build/badging-unsigned.txt
-          grep -F "versionName='pr0.72-4'" build/badging-unsigned.txt
-          grep -F "versionCode='7204'" build/badging-unsigned.txt
+          grep -F "versionName='pr0.73-4'" build/badging-unsigned.txt
+          grep -F "versionCode='7304'" build/badging-unsigned.txt
           grep -F "application: label='AURA'" build/badging-unsigned.txt
 
       - name: Check for permanent signing key
@@ -110,12 +110,12 @@ jobs:
           KEY_ALIAS="$AURA_KEY_ALIAS"
           KEY_PASS="${AURA_KEY_PASSWORD:-$AURA_KEYSTORE_PASSWORD}"
           keytool -list -keystore build/aura-release.jks -alias "$KEY_ALIAS" -storepass "$STORE_PASS" >/dev/null
-          apksigner sign --ks build/aura-release.jks --ks-pass "pass:$STORE_PASS" --key-pass "pass:$KEY_PASS" --ks-key-alias "$KEY_ALIAS" --out build/AURA-pr0.72-4.apk build/AURA-pr0.72-4-aligned.apk
-          apksigner verify --verbose --print-certs build/AURA-pr0.72-4.apk | tee build/signature.txt
-          aapt dump badging build/AURA-pr0.72-4.apk | tee build/badging.txt
+          apksigner sign --ks build/aura-release.jks --ks-pass "pass:$STORE_PASS" --key-pass "pass:$KEY_PASS" --ks-key-alias "$KEY_ALIAS" --out build/AURA-pr0.73-4.apk build/AURA-pr0.73-4-aligned.apk
+          apksigner verify --verbose --print-certs build/AURA-pr0.73-4.apk | tee build/signature.txt
+          aapt dump badging build/AURA-pr0.73-4.apk | tee build/badging.txt
           grep -F "package: name='app.homemusic'" build/badging.txt
-          grep -F "versionName='pr0.72-4'" build/badging.txt
-          grep -F "versionCode='7204'" build/badging.txt
+          grep -F "versionName='pr0.73-4'" build/badging.txt
+          grep -F "versionCode='7304'" build/badging.txt
           grep -F "application: label='AURA'" build/badging.txt
 
       - name: Prepare GitHub update feed and source archive
@@ -126,21 +126,21 @@ jobs:
           mkdir -p aura-android app build/source
           cp -a build/decoded/. aura-android/
           cat > aura-android/README.md <<'EOF'
-          # AURA pr0.72-4 Android project
+          # AURA pr0.73-4 Android project
 
-          Complete decoded Apktool project used to build AURA pr0.72-4.
+          Complete decoded Apktool project used to build AURA pr0.73-4.
           Includes Android resources, assets, native libraries and Smali sources.
-          Build with Apktool 3.0.3: `java -jar apktool.jar b aura-android -o AURA-pr0.72-4-unsigned.apk`.
+          Build with Apktool 3.0.3: `java -jar apktool.jar b aura-android -o AURA-pr0.73-4-unsigned.apk`.
 
           This is a complete decompiled/rebuildable project, not the upstream Kotlin/Java Gradle source repository.
           EOF
-          APK_SIZE=$(stat -c '%s' build/AURA-pr0.72-4.apk)
-          APK_SHA256=$(sha256sum build/AURA-pr0.72-4.apk | awk '{print $1}')
-          APK_URL="https://github.com/${GITHUB_REPOSITORY}/releases/download/pr0.72-4/AURA-pr0.72-4.apk"
+          APK_SIZE=$(stat -c '%s' build/AURA-pr0.73-4.apk)
+          APK_SHA256=$(sha256sum build/AURA-pr0.73-4.apk | awk '{print $1}')
+          APK_URL="https://github.com/${GITHUB_REPOSITORY}/releases/download/pr0.73-4/AURA-pr0.73-4.apk"
           cat > app/latest.json <<EOF
           {
-            "versionCode": 7204,
-            "versionName": "pr0.72-4",
+            "versionCode": 7304,
+            "versionName": "pr0.73-4",
             "url": "$APK_URL",
             "size": $APK_SIZE,
             "sha256": "$APK_SHA256",
@@ -156,7 +156,7 @@ jobs:
           python - <<'PY'
           import json, pathlib
           data=json.loads(pathlib.Path("app/latest.json").read_text(encoding="utf-8"))
-          assert data["versionName"] == "pr0.72-4" and data["versionCode"] == 7204
+          assert data["versionName"] == "pr0.73-4" and data["versionCode"] == 7304
           assert data["url"] == data["full"]["url"]
           assert len(data["sha256"]) == 64 and len(data["full"]["sha256"]) == 64
           assert data["size"] > 0 and data["size"] == data["full"]["size"]
@@ -164,7 +164,7 @@ jobs:
           PY
           cp README.md LICENSE build/source/
           cp -R tools assets .github aura-android app build/source/
-          (cd build && zip -qr AURA-pr0.72-4-source.zip source)
+          (cd build && zip -qr AURA-pr0.73-4-source.zip source)
 
       - name: Publish decoded Android source and update feed
         if: steps.signing_key.outputs.configured == 'true'
@@ -174,14 +174,14 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add aura-android app/latest.json assets
           if ! git diff --cached --quiet; then
-            git commit -m "Publish AURA pr0.72-4 Android source and update feed"
+            git commit -m "Publish AURA pr0.73-4 Android source and update feed"
           fi
           git push origin HEAD:main
           git push --force origin HEAD:pre-release
-          git tag -f pr0.72-4 HEAD
-          git push --force origin refs/tags/pr0.72-4
+          git tag -f pr0.73-4 HEAD
+          git push --force origin refs/tags/pr0.73-4
 
-      - name: Replace the existing AURA pre-release
+      - name: Create AURA pre-release
         if: steps.signing_key.outputs.configured == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
@@ -191,12 +191,9 @@ jobs:
             - APK подписан тем же постоянным ключом AURA, что и предыдущие релизы; данные приложения сохраняются при обновлении поверх установленной версии.
         run: |
           set -euo pipefail
-          if ! gh release view pr0.72-3 >/dev/null 2>&1; then
-            echo "::error::The existing pr0.72-3 pre-release was not found; refusing to create a separate release."
-            exit 1
+          if gh release view pr0.73-4 >/dev/null 2>&1; then
+            gh release edit pr0.73-4 --title "AURA pr0.73-4" --notes "$RELEASE_NOTES" --prerelease
+            gh release upload pr0.73-4 build/AURA-pr0.73-4.apk build/AURA-pr0.73-4-source.zip --clobber
+          else
+            gh release create pr0.73-4 build/AURA-pr0.73-4.apk build/AURA-pr0.73-4-source.zip --title "AURA pr0.73-4" --notes "$RELEASE_NOTES" --prerelease
           fi
-          gh release edit pr0.72-3 --tag pr0.72-4 --title "AURA pr0.72-4" --notes "$RELEASE_NOTES" --prerelease
-          gh release upload pr0.72-4 build/AURA-pr0.72-4.apk build/AURA-pr0.72-4-source.zip --clobber
-          gh release delete-asset pr0.72-4 AURA-pr0.72-3.apk --yes
-          gh release delete-asset pr0.72-4 AURA-pr0.72-3-source.zip --yes
-          git push origin :refs/tags/pr0.72-3

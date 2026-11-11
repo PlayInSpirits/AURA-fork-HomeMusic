@@ -118,30 +118,29 @@ def patch_bottom_nav_resources(res):
     color=res/'color'; color.mkdir(parents=True,exist_ok=True)
     icons={
       'aura_nav_home.xml':'''<?xml version="1.0" encoding="utf-8"?>
-<vector xmlns:android="http://schemas.android.com/apk/res/android" android:width="24dp" android:height="24dp" android:viewportWidth="24" android:viewportHeight="24">
-    <path android:fillColor="#ffffffff" android:pathData="M12,3L2,11.5H5V21H10V14.5H14V21H19V11.5H22Z"/>
+<vector xmlns:android="http://schemas.android.com/apk/res/android" android:width="26dp" android:height="26dp" android:viewportWidth="24" android:viewportHeight="24">
+    <path android:fillColor="#00000000" android:strokeColor="#ffffffff" android:strokeWidth="1.9" android:strokeLineCap="round" android:strokeLineJoin="round" android:pathData="M3.5,10.5L12,3.5L20.5,10.5V20H14.5V14H9.5V20H3.5Z"/>
 </vector>''',
       'aura_nav_library.xml':'''<?xml version="1.0" encoding="utf-8"?>
-<vector xmlns:android="http://schemas.android.com/apk/res/android" android:width="24dp" android:height="24dp" android:viewportWidth="24" android:viewportHeight="24">
-    <path android:fillColor="#ffffffff" android:pathData="M3,5.5C3,4.1 4.1,3 5.5,3H11V20H5.5C4.1,20 3,18.9 3,17.5Z"/>
-    <path android:fillColor="#ffffffff" android:pathData="M13,3H18.5C19.9,3 21,4.1 21,5.5V17.5C21,18.9 19.9,20 18.5,20H13Z"/>
+<vector xmlns:android="http://schemas.android.com/apk/res/android" android:width="26dp" android:height="26dp" android:viewportWidth="24" android:viewportHeight="24">
+    <path android:fillColor="#00000000" android:strokeColor="#ffffffff" android:strokeWidth="1.8" android:strokeLineCap="round" android:strokeLineJoin="round" android:pathData="M12,7.1C9.5,5.3 6.3,4.9 3.5,5.9V18.7C6.4,17.8 9.5,18.2 12,20C14.5,18.2 17.6,17.8 20.5,18.7V5.9C17.7,4.9 14.5,5.3 12,7.1Z M12,7.1V20 M6.2,9.1C7.8,8.8 9.4,9.1 10.8,10 M6.2,12.1C7.8,11.8 9.4,12.1 10.8,13 M17.8,9.1C16.2,8.8 14.6,9.1 13.2,10 M17.8,12.1C16.2,11.8 14.6,12.1 13.2,13"/>
 </vector>''',
       'aura_nav_hub.xml':'''<?xml version="1.0" encoding="utf-8"?>
-<vector xmlns:android="http://schemas.android.com/apk/res/android" android:width="24dp" android:height="24dp" android:viewportWidth="24" android:viewportHeight="24">
-    <path android:fillColor="#00000000" android:strokeColor="#ffffffff" android:strokeWidth="2" android:strokeLineCap="round" android:pathData="M6,7L18,7 M7.5,9L11,16 M16.5,9L13,16"/>
-    <path android:fillColor="#ffffffff" android:pathData="M6,3.5a3.5,3.5 0,1 0,0 7a3.5,3.5 0,1 0,0 -7 M18,3.5a3.5,3.5 0,1 0,0 7a3.5,3.5 0,1 0,0 -7 M12,13.5a3.5,3.5 0,1 0,0 7a3.5,3.5 0,1 0,0 -7"/>
+<vector xmlns:android="http://schemas.android.com/apk/res/android" android:width="26dp" android:height="26dp" android:viewportWidth="24" android:viewportHeight="24">
+    <path android:fillColor="#00000000" android:strokeColor="#ffffffff" android:strokeWidth="1.8" android:strokeLineCap="round" android:pathData="M7,7L17,7 M8.5,9L11,15 M15.5,9L13,15"/>
+    <path android:fillColor="#00000000" android:strokeColor="#ffffffff" android:strokeWidth="1.8" android:pathData="M4,4.5A3,3 0,1 0,10 4.5A3,3 0,1 0,4 4.5 M14,4.5A3,3 0,1 0,20 4.5A3,3 0,1 0,14 4.5 M9,18A3,3 0,1 0,15 18A3,3 0,1 0,9 18"/>
 </vector>''',
       'aura_nav_download.xml':'''<?xml version="1.0" encoding="utf-8"?>
-<vector xmlns:android="http://schemas.android.com/apk/res/android" android:width="24dp" android:height="24dp" android:viewportWidth="24" android:viewportHeight="24">
-    <path android:fillColor="#ffffffff" android:pathData="M11,3H13V12.2L16.5,8.7L18,10.2L12,16.2L6,10.2L7.5,8.7L11,12.2Z M4,18H20V21H4Z"/>
+<vector xmlns:android="http://schemas.android.com/apk/res/android" android:width="26dp" android:height="26dp" android:viewportWidth="24" android:viewportHeight="24">
+    <path android:fillColor="#00000000" android:strokeColor="#ffffffff" android:strokeWidth="1.9" android:strokeLineCap="round" android:strokeLineJoin="round" android:pathData="M12,3.5V15 M7.5,11L12,15.5L16.5,11 M4,17V19.5C4,20.3 4.7,21 5.5,21H18.5C19.3,21 20,20.3 20,19.5V17"/>
 </vector>'''
     }
     for name,content in icons.items():
         (d/name).write_text(content,encoding='utf-8')
     (color/'aura_bottom_nav_tint.xml').write_text('''<?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_checked="true" android:color="#ffffe7ff"/>
-    <item android:color="#ffd9edf4"/>
+    <item android:state_checked="true" android:color="#ff292343"/>
+    <item android:color="#ffe0e5f4"/>
 </selector>
 ''',encoding='utf-8')
     menu_icons={
@@ -191,8 +190,9 @@ def patch_bottom_nav_resources(res):
         nav=next((n for n in t.getroot().iter() if n.tag.endswith('BottomNavigationView')),None)
         if nav is not None:
             nav.set(p('itemIconTint'),'@color/aura_bottom_nav_tint')
-            nav.set(p('itemTextColor'),'@color/aura_bottom_nav_tint')
-            nav.set(p('itemIconSize'),'25dp')
+            nav.set(p('labelVisibilityMode'),'unlabeled')
+            nav.set(p('itemIconSize'),'26dp')
+            nav.set(p('itemActiveIndicatorStyle'),'@style/AURA.BottomNavigation.ActiveIndicator')
             save(t,land)
 
 def patch_aura_islands(res):
@@ -200,13 +200,26 @@ def patch_aura_islands(res):
     nav=next((n for n in t.getroot().iter() if n.tag.endswith('BottomNavigationView')),None)
     if nav is None: raise RuntimeError('BottomNavigationView missing from activity_main.xml')
     for k,v in {'layout_gravity':'bottom|center_horizontal','layout_width':'match_parent','layout_height':'76dp','layout_marginStart':'14dp','layout_marginEnd':'14dp','layout_marginBottom':'18dp','paddingStart':'8dp','paddingEnd':'8dp','paddingTop':'3dp','paddingBottom':'3dp','elevation':'18dp','background':'@drawable/aura_bottom_nav_island','clipToPadding':'false'}.items(): nav.set(a(k),v)
-    for k,v in {'itemIconSize':'24dp','itemHorizontalTranslationEnabled':'false','labelVisibilityMode':'labeled','itemPaddingTop':'3dp','itemPaddingBottom':'3dp','itemRippleColor':'#55bdadff','itemIconTint':'@color/aura_bottom_nav_tint','itemTextColor':'@color/aura_bottom_nav_tint'}.items(): nav.set(p(k),v)
+    for k,v in {'itemIconSize':'26dp','itemHorizontalTranslationEnabled':'false','labelVisibilityMode':'unlabeled','itemPaddingTop':'10dp','itemPaddingBottom':'10dp','itemRippleColor':'#447fddda','itemIconTint':'@color/aura_bottom_nav_tint','itemActiveIndicatorStyle':'@style/AURA.BottomNavigation.ActiveIndicator'}.items(): nav.set(p(k),v)
+    nav.attrib.pop(p('itemTextColor'),None)
     save(t,f)
+    style_file=res/'values/styles.xml'
+    style_tree=xml(style_file)
+    style_root=style_tree.getroot()
+    indicator=next((x for x in style_root.findall('style') if x.get('name')=='AURA.BottomNavigation.ActiveIndicator'),None)
+    if indicator is None:
+        indicator=ET.SubElement(style_root,'style',{'name':'AURA.BottomNavigation.ActiveIndicator','parent':'@style/Widget.Material3.BottomNavigationView.ActiveIndicator'})
+    style_values={'android:height':'40dp','android:width':'54dp','android:color':'#ffdcd4ff','marginHorizontal':'5dp'}
+    for name,value in style_values.items():
+        item=next((x for x in indicator.findall('item') if x.get('name')==name),None)
+        if item is None: item=ET.SubElement(indicator,'item',{'name':name})
+        item.text=value
+    save(style_tree,style_file)
     d=res/'drawable'; d.mkdir(parents=True,exist_ok=True)
     (d/'aura_bottom_nav_island.xml').write_text('''<?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-  <item><shape android:shape="rectangle"><gradient android:angle="0" android:startColor="#ff66538f" android:centerColor="#ff3f638b" android:endColor="#ff287d83"/><corners android:radius="24dp"/><stroke android:width="1dp" android:color="#e0e0ffff"/></shape></item>
-  <item android:left="2dp" android:top="2dp" android:right="2dp" android:bottom="2dp"><shape android:shape="rectangle"><corners android:radius="22dp"/><solid android:color="#18ffffff"/></shape></item>
+  <item><shape android:shape="rectangle"><gradient android:angle="0" android:startColor="#ee22283e" android:centerColor="#ee25384b" android:endColor="#ee19434a"/><corners android:radius="28dp"/><stroke android:width="1dp" android:color="#669bb3c8"/></shape></item>
+  <item android:left="2dp" android:top="2dp" android:right="2dp" android:bottom="2dp"><shape android:shape="rectangle"><corners android:radius="26dp"/><solid android:color="#12ffffff"/></shape></item>
 </layer-list>
 ''',encoding='utf-8')
     (d/'aura_wave_play_button.xml').write_text('''<?xml version="1.0" encoding="utf-8"?>
@@ -380,7 +393,8 @@ def patch_about_settings(res,decoded):
       'settings_github_link':'https://github.com/PlayInSpirits/HomeMusic-Fork',
       'settings_github_summary':'AURA source code and releases',
       'settings_github_title':'GitHub',
-      'settings_version_summary':'AURA pr0.72-4',
+      'settings_version_summary':'AURA pr0.73-4',
+      'homemusic_settings_version':'%1$s',
       'settings_version_title':'AURA version',
       'homemusic_settings_title':'AURA (HomeMusic)',
       'aura_contact_author_title':'Contact the fork author',
@@ -395,7 +409,8 @@ def patch_about_settings(res,decoded):
       'settings_github_link':'https://github.com/PlayInSpirits/HomeMusic-Fork',
       'settings_github_summary':'Исходный код и релизы AURA',
       'settings_github_title':'GitHub',
-      'settings_version_summary':'AURA pr0.72-4',
+      'settings_version_summary':'AURA pr0.73-4',
+      'homemusic_settings_version':'%1$s',
       'settings_version_title':'Версия AURA',
       'homemusic_settings_title':'AURA (HomeMusic)',
       'aura_contact_author_title':'Связаться с автором форка',
@@ -423,14 +438,30 @@ def patch_about_settings(res,decoded):
     move-result-object v3
     invoke-static {v3}, Lapp/homemusic/AURAVersion;->versionName(Landroid/content/Context;)Ljava/lang/String;
     move-result-object v3''','About versionName')
-    s=replace_once(s,'    const/16 v0, 0x2b','''    invoke-virtual {v5}, Lkc1;->Z()Landroid/content/Context;
-    move-result-object v0
-    invoke-static {v0}, Lapp/homemusic/AURAVersion;->versionCodeInt(Landroid/content/Context;)I
-    move-result v0''','HomeMusic settings versionCode')
+    s=replace_once(s,'    const/16 v0, 0x2b','    nop','Do not display the HomeMusic versionCode')
     s=replace_once(s,'const-string v2, "1.14.7"','''invoke-virtual {v5}, Lkc1;->Z()Landroid/content/Context;
     move-result-object v2
     invoke-static {v2}, Lapp/homemusic/AURAVersion;->versionName(Landroid/content/Context;)Ljava/lang/String;
     move-result-object v2''','HomeMusic settings versionName')
+    s=replace_once(s,'''    filled-new-array {v2, v0}, [Ljava/lang/Object;
+
+    .line 238
+    .line 239
+    .line 240
+    move-result-object v0
+
+    .line 241
+    const v2, 0x7f130226
+
+    .line 242
+    .line 243
+    .line 244
+    invoke-virtual {v5, v2, v0}, Lkc1;->t(I[Ljava/lang/Object;)Ljava/lang/String;
+
+    .line 245
+    .line 246
+    .line 247
+    move-result-object v0''','''    move-object v0, v2''','HomeMusic settings display versionName only')
     f.write_text(s,encoding='utf-8')
 
     helper=decoded/'smali/app/homemusic/AURAVersion.smali'
@@ -1354,7 +1385,7 @@ def patch_smali(decoded):
     f.write_text(s,encoding='utf-8')
 
 def version(decoded):
-    f=decoded/'apktool.yml';s=f.read_text(encoding='utf-8');s=re.sub(r'(?m)^  versionCode: .*?$','  versionCode: 7204',s);s=re.sub(r'(?m)^  versionName: .*?$','  versionName: "pr0.72-4"',s);f.write_text(s,encoding='utf-8')
+    f=decoded/'apktool.yml';s=f.read_text(encoding='utf-8');s=re.sub(r'(?m)^  versionCode: .*?$','  versionCode: 7304',s);s=re.sub(r'(?m)^  versionName: .*?$','  versionName: "pr0.73-4"',s);f.write_text(s,encoding='utf-8')
 
 def main():
     if len(sys.argv)<2: raise SystemExit('Usage: patch_aura.py decoded [logo.png]')
@@ -1380,7 +1411,7 @@ def main():
     about_xml=(res/'xml/global_preferences.xml').read_text(encoding='utf-8')
     if 'settings_support_summary' in about_xml or 'undraw_thanks' in about_xml or 'undraw_page' in about_xml: raise RuntimeError('Support/unDraw preferences were not fully removed')
     version_smali=(decoded/'smali/vb4.smali').read_text(encoding='utf-8')
-    if '1.14.7' in version_smali or 'AURA 0.4' in version_smali or 'Lapp/homemusic/AURAVersion;->versionName' not in version_smali or 'Lapp/homemusic/AURAVersion;->versionCodeInt' not in version_smali: raise RuntimeError('About/HomeMusic settings must read PackageInfo dynamically')
+    if '1.14.7' in version_smali or 'AURA 0.4' in version_smali or 'Lapp/homemusic/AURAVersion;->versionName' not in version_smali or 'Lapp/homemusic/AURAVersion;->versionCodeInt' in version_smali: raise RuntimeError('About/HomeMusic settings must display versionName only; versionCode must not be shown')
     ru_strings=(res/'values-ru/strings.xml').read_text(encoding='utf-8')
     base_strings=(res/'values/strings.xml').read_text(encoding='utf-8')
     if 'https://github.com/PlayInSpirits/HomeMusic-Fork' not in ru_strings: raise RuntimeError('AURA GitHub link is not set in Russian strings')
@@ -1396,8 +1427,8 @@ def main():
     if defaults.count('http://192.168.1.129:8080')!=2: raise RuntimeError('One-time Hub URL migration is incomplete')
     if 'Theme.Material3.Dark.NoActionBar' not in (res/'values/styles.xml').read_text(encoding='utf-8'): raise RuntimeError('Dark AURA theme was not applied')
     apktool_text=(decoded/'apktool.yml').read_text(encoding='utf-8')
-    if 'versionCode: 7204' not in apktool_text or 'versionName: "pr0.72-4"' not in apktool_text:
-        raise RuntimeError('AURA pr0.72-4 manifest version is not set')
+    if 'versionCode: 7304' not in apktool_text or 'versionName: "pr0.73-4"' not in apktool_text:
+        raise RuntimeError('AURA pr0.73-4 manifest version is not set')
     updater=(decoded/'smali/com/eddyizm/tempus/homemusic/HubUpdater.smali').read_text(encoding='utf-8')
     if '1.14.7' in updater or '0x2b' in updater or updater.count('Lapp/homemusic/AURAVersion;->versionCode')!=2:
         raise RuntimeError('GitHub updater still contains original HomeMusic version constants')
@@ -1445,14 +1476,22 @@ def main():
     if 'android:id="@id/homemusic_wave_card"' not in wave_layout or 'android:clickable="false"' not in wave_layout or not (res/'drawable/aura_wave_pause_icon.xml').exists():
         raise RuntimeError('My Wave click target must be the round button and include a pause icon')
     nav_layout=(res/'layout/activity_main.xml').read_text(encoding='utf-8')
-    if 'android:layout_height="76dp"' not in nav_layout or 'aura_bottom_nav_tint' not in nav_layout or 'android:layout_marginBottom="18dp"' not in nav_layout:
-        raise RuntimeError('Bottom navigation layout and icon/text tint are incomplete')
+    if 'android:layout_height="76dp"' not in nav_layout or 'aura_bottom_nav_tint' not in nav_layout or 'android:layout_marginBottom="18dp"' not in nav_layout or 'labelVisibilityMode="unlabeled"' not in nav_layout or 'AURA.BottomNavigation.ActiveIndicator' not in nav_layout:
+        raise RuntimeError('Bottom navigation must be icon-only with the modern active indicator')
     nav_bg=(res/'drawable/aura_bottom_nav_island.xml').read_text(encoding='utf-8')
     if '#ff66538f' not in nav_bg or '#ff287d83' not in nav_bg:
         raise RuntimeError('AURA bottom navigation must retain a distinct violet/teal panel background')
     nav_menu=(res/'menu/bottom_nav_menu.xml').read_text(encoding='utf-8')
     if any(name not in nav_menu for name in ('aura_nav_home','aura_nav_library','aura_nav_hub','aura_nav_download')):
         raise RuntimeError('Custom AURA bottom navigation icons are incomplete')
+    if 'android:strokeWidth="1.8"' not in (res/'drawable/aura_nav_library.xml').read_text(encoding='utf-8'):
+        raise RuntimeError('Library must use the new outlined book icon')
+    indicator_style=(res/'values/styles.xml').read_text(encoding='utf-8')
+    if 'AURA.BottomNavigation.ActiveIndicator' not in indicator_style or 'labelVisibilityMode="unlabeled"' not in nav_layout:
+        raise RuntimeError('Modern icon-only bottom navigation style is incomplete')
+    landscape_nav=res/'layout-land/activity_main.xml'
+    if landscape_nav.exists() and 'unlabeled' not in landscape_nav.read_text(encoding='utf-8'):
+        raise RuntimeError('Landscape bottom navigation labels must also be hidden')
     aurora=(res/'drawable/aura_aurora_background.xml').read_text(encoding='utf-8')
     if 'android:duration="240"' not in aurora or aurora.count('<item')<60:
         raise RuntimeError('Dynamic My Wave aurora animation is incomplete')
@@ -1470,5 +1509,5 @@ def main():
     if 'tabIndicatorAnimationMode' not in hub_layout or 'aura_hub_tabs_background' not in hub_layout:
         raise RuntimeError('Native Hub tabs are not using AURA styling')
 
-    print(f'AURA pr0.72-4: dynamic PackageInfo versionName/versionCode; GitHub latest.json update feed; Telegram contact in About; Settings action moved right of Search; Hub tabs, Assistant composer and Catalog use unified styling; SearchView has an explicit back arrow; My Wave uses a multi-phase aurora animation; MediaRoute item hidden and null-guarded; Hub URLs, login, authentication, playback and My Wave preserved ({login_refs} login references).')
+    print(f'AURA pr0.73-4: dynamic PackageInfo versionName/versionCode; GitHub latest.json update feed; Telegram contact in About; Settings action moved right of Search; Hub tabs, Assistant composer and Catalog use unified styling; SearchView has an explicit back arrow; My Wave uses a multi-phase aurora animation; MediaRoute item hidden and null-guarded; Hub URLs, login, authentication, playback and My Wave preserved ({login_refs} login references).')
 if __name__=='__main__': main()
