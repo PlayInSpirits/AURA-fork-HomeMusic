@@ -10,16 +10,18 @@ if (-not (Get-Command keytool -ErrorAction SilentlyContinue)) { throw "Install a
 gh auth status --hostname github.com | Out-Null
 if ($LASTEXITCODE -ne 0) { throw "Authenticate first with: gh auth login" }
 New-Item -ItemType Directory -Force -Path $Root | Out-Null
-if (Test-Path $KeyStore) { throw "Signing key already exists at $KeyStore. Never overwrite or regenerate it." }
-
-$random = New-Object byte[] 48
-$rng = [System.Security.Cryptography.RandomNumberGenerator]::Create()
-$rng.GetBytes($random); $rng.Dispose()
-$Password = [Convert]::ToBase64String($random).Replace("+","A").Replace("/","B").TrimEnd("=")
-
-& keytool -genkeypair -noprompt -keystore $KeyStore -storepass $Password -keypass $Password -alias $Alias -keyalg RSA -keysize 4096 -validity 10000 -dname "CN=AURA Release, OU=Android, O=PlayInSpirits, C=SE"
-if ($LASTEXITCODE -ne 0) { throw "keytool failed to generate the signing key." }
-Set-Content -Path $PasswordFile -Value $Password -NoNewline -Encoding ASCII
+if (Test-Path $KeyStore) {
+    if (-not (Test-Path $PasswordFile)) { throw "The existing keystore has no matching password file. Do not generate a replacement key." }
+    $Password = (Get-Content -Path $PasswordFile -Raw).Trim()
+} else {
+    $random = New-Object byte[] 48
+    $rng = [System.Security.Cryptography.RandomNumberGenerator]::Create()
+    $rng.GetBytes($random); $rng.Dispose()
+    $Password = [Convert]::ToBase64String($random).Replace("+","A").Replace("/","B").TrimEnd("=")
+    & keytool -genkeypair -noprompt -keystore $KeyStore -storepass $Password -keypass $Password -alias $Alias -keyalg RSA -keysize 4096 -validity 10000 -dname "CN=AURA Release, OU=Android, O=PlayInSpirits, C=SE"
+    if ($LASTEXITCODE -ne 0) { throw "keytool failed to generate the signing key." }
+    Set-Content -Path $PasswordFile -Value $Password -NoNewline -Encoding ASCII
+}
 $Base64 = [Convert]::ToBase64String([IO.File]::ReadAllBytes($KeyStore))
 $Base64 | gh secret set AURA_KEYSTORE_BASE64 --repo $Repository
 if ($LASTEXITCODE -ne 0) { throw "Could not set AURA_KEYSTORE_BASE64." }
