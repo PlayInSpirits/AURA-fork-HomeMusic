@@ -6,6 +6,8 @@ name: Build AURA Android
     paths-ignore:
       - 'aura-android/**'
       - 'app/latest.json'
+      - 'assets/aura_logo_144.png'
+      - 'assets/icons/**'
   workflow_dispatch:
 
 permissions:
@@ -21,6 +23,50 @@ jobs:
     steps:
       - name: Checkout AURA sources
         uses: actions/checkout@v4
+
+      - name: Update previous pre-release summaries (oldest to newest)
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          NOTES_03=$(cat <<'EOF'
+          - Первый редизайн Android-клиента: тёмная тема AURA и главный экран с акцентом на «Мою волну».
+          EOF
+          )
+          gh release edit v0.3 --title "AURA 0.3-2" --notes "$NOTES_03"
+          sleep 2
+          NOTES_04=$(cat <<'EOF'
+          - Обновлён раздел «О приложении» и добавлена прямая ссылка на репозиторий AURA.
+          - В интерфейсе скрыта кнопка трансляции на внешние устройства.
+          EOF
+          )
+          gh release edit v0.4 --title "AURA 0.4-2" --notes "$NOTES_04"
+          sleep 2
+          NOTES_05=$(cat <<'EOF'
+          - Добавлен контакт автора в Telegram.
+          - Добавлена проверка обновлений AURA через GitHub.
+          - Раздел «Хаб» получил единое оформление AURA.
+          EOF
+          )
+          gh release edit v0.5-1 --title "AURA 0.5-1" --notes "$NOTES_05"
+
+      - name: Remove inherited Tempus version tags
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          refs=$(gh api --paginate "repos/${GITHUB_REPOSITORY}/git/matching-refs/tags/" --jq '.[].ref')
+          while IFS= read -r ref; do
+            [ -n "$ref" ] || continue
+            tag="${ref#refs/tags/}"
+            case "$tag" in
+              v3.*|v4.*|list|homemusic-redesign-1.14.7-preview)
+                echo "Removing inherited tag: $tag"
+                gh api --silent --method DELETE "repos/${GITHUB_REPOSITORY}/git/refs/tags/${tag}"
+                ;;
+            esac
+          done <<< "$refs"
 
       - name: Set up Java
         uses: actions/setup-java@v4
@@ -73,25 +119,25 @@ jobs:
           AURA_KEY_ALIAS: ${{ secrets.AURA_KEY_ALIAS }}
           AURA_KEY_PASSWORD: ${{ secrets.AURA_KEY_PASSWORD }}
         run: |
-          java -jar apktool.jar b build/decoded -o build/AURA-0.5-2-unsigned.apk
-          zipalign -f -p 4 build/AURA-0.5-2-unsigned.apk build/AURA-0.5-2-aligned.apk
+          java -jar apktool.jar b build/decoded -o build/AURA-0.6-1-unsigned.apk
+          zipalign -f -p 4 build/AURA-0.6-1-unsigned.apk build/AURA-0.6-1-aligned.apk
           if [ -n "$AURA_KEYSTORE_BASE64" ]; then
             echo "$AURA_KEYSTORE_BASE64" | base64 --decode > build/aura-signing.jks
             STORE_PASS="$AURA_KEYSTORE_PASSWORD"
             KEY_ALIAS="$AURA_KEY_ALIAS"
             KEY_PASS="${AURA_KEY_PASSWORD:-$AURA_KEYSTORE_PASSWORD}"
           else
-            keytool -genkeypair -noprompt -keystore build/aura-signing.jks -storepass aura-temp-pass -keypass aura-temp-pass -alias aura-temp -keyalg RSA -keysize 2048 -validity 10000 -dname "CN=AURA 0.5-2, OU=HomeMusic, O=AURA, C=SE"
+            keytool -genkeypair -noprompt -keystore build/aura-signing.jks -storepass aura-temp-pass -keypass aura-temp-pass -alias aura-temp -keyalg RSA -keysize 2048 -validity 10000 -dname "CN=AURA 0.6-1, OU=HomeMusic, O=AURA, C=SE"
             STORE_PASS=aura-temp-pass
             KEY_PASS=aura-temp-pass
             KEY_ALIAS=aura-temp
           fi
-          apksigner sign --ks build/aura-signing.jks --ks-pass "pass:$STORE_PASS" --key-pass "pass:$KEY_PASS" --ks-key-alias "$KEY_ALIAS" --out build/AURA-0.5-2.apk build/AURA-0.5-2-aligned.apk
-          apksigner verify --verbose build/AURA-0.5-2.apk
-          aapt dump badging build/AURA-0.5-2.apk | tee build/badging.txt
+          apksigner sign --ks build/aura-signing.jks --ks-pass "pass:$STORE_PASS" --key-pass "pass:$KEY_PASS" --ks-key-alias "$KEY_ALIAS" --out build/AURA-0.6-1.apk build/AURA-0.6-1-aligned.apk
+          apksigner verify --verbose build/AURA-0.6-1.apk
+          aapt dump badging build/AURA-0.6-1.apk | tee build/badging.txt
           grep -F "package: name='app.homemusic'" build/badging.txt
-          grep -F "versionName='0.5-2'" build/badging.txt
-          grep -F "versionCode='502'" build/badging.txt
+          grep -F "versionName='0.6-1'" build/badging.txt
+          grep -F "versionCode='601'" build/badging.txt
           grep -F "application-label:'AURA'" build/badging.txt
 
       - name: Prepare GitHub update feed and source archive
@@ -100,21 +146,21 @@ jobs:
           mkdir -p aura-android app build/source
           cp -a build/decoded/. aura-android/
           cat > aura-android/README.md <<'EOF'
-          # AURA 0.5-2 Android project
+          # AURA 0.6-1 Android project
 
-          Complete decoded Apktool project used to build AURA 0.5-2.
+          Complete decoded Apktool project used to build AURA 0.6-1.
           Includes Android resources, assets, native libraries and Smali sources.
-          Build with Apktool 3.0.3: `java -jar apktool.jar b aura-android -o AURA-0.5-2-unsigned.apk`.
+          Build with Apktool 3.0.3: `java -jar apktool.jar b aura-android -o AURA-0.6-1-unsigned.apk`.
 
           This is a complete decompiled/rebuildable project, not the upstream Kotlin/Java Gradle source repository.
           EOF
-          APK_SIZE=$(stat -c '%s' build/AURA-0.5-2.apk)
-          APK_SHA256=$(sha256sum build/AURA-0.5-2.apk | awk '{print $1}')
-          APK_URL="https://github.com/${GITHUB_REPOSITORY}/releases/download/v0.5-2/AURA-0.5-2.apk"
+          APK_SIZE=$(stat -c '%s' build/AURA-0.6-1.apk)
+          APK_SHA256=$(sha256sum build/AURA-0.6-1.apk | awk '{print $1}')
+          APK_URL="https://github.com/${GITHUB_REPOSITORY}/releases/download/v0.6-1/AURA-0.6-1.apk"
           cat > app/latest.json <<EOF
           {
-            "versionCode": 502,
-            "versionName": "0.5-2",
+            "versionCode": 601,
+            "versionName": "0.6-1",
             "url": "$APK_URL",
             "size": $APK_SIZE,
             "sha256": "$APK_SHA256",
@@ -129,52 +175,31 @@ jobs:
           EOF
           cp README.md LICENSE HomeMusic.rar build/source/
           cp -R tools assets .github aura-android app build/source/
-          (cd build && zip -qr AURA-0.5-2-source.zip source)
+          (cd build && zip -qr AURA-0.6-1-source.zip source)
 
       - name: Publish GitHub pre-release
         env:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
           RELEASE_NOTES: |
-            - Градиент «Моей волны» получил многослойное движение с разными траекториями.
-            - В каталоге Хаба убраны дублирующие карточки «Моя волна» и «Микс дня».
-            - Панель сообщения Ассистента вынесена выше области плеера и оформлена в стиле AURA.
+            - Обновлены фирменный логотип AURA, значок приложения и экран запуска.
+            - «О приложении» переименовано, а «Проверить обновления» вынесено под этот раздел.
         run: |
-          if gh release view v0.5-2 >/dev/null 2>&1; then
-            gh release upload v0.5-2 build/AURA-0.5-2.apk build/AURA-0.5-2-source.zip --clobber
-            gh release edit v0.5-2 --title "AURA 0.5-2" --notes "$RELEASE_NOTES" --prerelease
+          if gh release view v0.6-1 >/dev/null 2>&1; then
+            gh release upload v0.6-1 build/AURA-0.6-1.apk build/AURA-0.6-1-source.zip --clobber
+            gh release edit v0.6-1 --title "AURA 0.6-1" --notes "$RELEASE_NOTES" --prerelease
           else
-            gh release create v0.5-2 build/AURA-0.5-2.apk build/AURA-0.5-2-source.zip --target "$GITHUB_SHA" --title "AURA 0.5-2" --notes "$RELEASE_NOTES" --prerelease
+            gh release create v0.6-1 build/AURA-0.6-1.apk build/AURA-0.6-1-source.zip --target "$GITHUB_SHA" --title "AURA 0.6-1" --notes "$RELEASE_NOTES" --prerelease
           fi
-          NOTES_03=$(cat <<'EOF'
-          - Фирменная тёмная тема AURA и обновлённый главный экран с карточкой «Моя волна».
-          - Единое оформление музыкального плеера при сохранении функций HomeMusic.
-          EOF
-          )
-          gh release edit v0.3 --title "AURA 0.3-2" --notes "$NOTES_03"
-          NOTES_04=$(cat <<'EOF'
-          - Обновлён экран «О приложении»: бренд AURA и ссылка на репозиторий форка.
-          - Пункт трансляции на внешние устройства скрыт.
-          EOF
-          )
-          gh release edit v0.4 --title "AURA 0.4-2" --notes "$NOTES_04"
-          NOTES_05=$(cat <<'EOF'
-          - Добавлен контакт автора форка через Telegram в разделе «О приложении».
-          - Проверка обновлений приложения переведена на GitHub-репозиторий AURA.
-          - Раздел «Хаб» получил единое тёмное оформление.
-          EOF
-          )
-          gh release edit v0.5-1 --title "AURA 0.5-1" --notes "$NOTES_05"
-
       - name: Publish decoded Android source and update feed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add aura-android app/latest.json
+          git add aura-android app/latest.json assets
           if ! git diff --cached --quiet; then
-            git commit -m "Publish AURA 0.5-2 Android source and update feed"
+            git commit -m "Publish AURA 0.6-1 Android source and update feed"
           fi
           git push origin HEAD:main
           git push --force origin HEAD:pre-release
-          git tag -f v0.5-2 HEAD
-          git push --force origin refs/tags/v0.5-2
+          git tag -f v0.6-1 HEAD
+          git push --force origin refs/tags/v0.6-1

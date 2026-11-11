@@ -172,6 +172,7 @@ def patch_about_settings(res,decoded):
     about=next((node for node in t.getroot().iter() if node.get(p('title'))=='@string/settings_about_title'),None)
     if about is None:
         raise RuntimeError('About preference category not found')
+    root=t.getroot()
     removed=set()
     for node in list(about):
         summary=node.get(p('summary'),'')
@@ -193,15 +194,27 @@ def patch_about_settings(res,decoded):
             a('action'):'android.intent.action.VIEW',
             a('data'):'@string/aura_contact_author_link'
         })
+    check_update_rows=[]
+    for parent in root.iter():
+        for child in list(parent):
+            if child.get(a('key'))=='homemusic_check_update':
+                check_update_rows.append((parent,child))
+    if len(check_update_rows)!=1:
+        raise RuntimeError(f'Expected one Check for updates row, found {len(check_update_rows)}')
+    if about not in list(root):
+        raise RuntimeError('About category must be a top-level preference group')
+    parent,check_update=check_update_rows[0]
+    parent.remove(check_update)
+    root.insert(list(root).index(about)+1,check_update)
     save(t,f)
 
     base_values={
       'settings_about_summary':'AURA is an independent Android fork of HomeMusic.',
-      'settings_about_title':'About AURA',
+      'settings_about_title':'About',
       'settings_github_link':'https://github.com/PlayInSpirits/HomeMusic-Fork',
       'settings_github_summary':'AURA source code and releases',
       'settings_github_title':'GitHub',
-      'settings_version_summary':'AURA 0.5-2',
+      'settings_version_summary':'AURA 0.6-1',
       'settings_version_title':'AURA version',
       'homemusic_settings_title':'AURA (HomeMusic)',
       'aura_contact_author_title':'Contact the fork author',
@@ -210,11 +223,11 @@ def patch_about_settings(res,decoded):
     }
     ru_values={
       'settings_about_summary':'AURA — независимый Android-форк клиента HomeMusic.',
-      'settings_about_title':'О приложении AURA',
+      'settings_about_title':'О приложении',
       'settings_github_link':'https://github.com/PlayInSpirits/HomeMusic-Fork',
       'settings_github_summary':'Исходный код и релизы AURA',
       'settings_github_title':'GitHub',
-      'settings_version_summary':'AURA 0.5-2',
+      'settings_version_summary':'AURA 0.6-1',
       'settings_version_title':'Версия AURA',
       'homemusic_settings_title':'AURA (HomeMusic)',
       'aura_contact_author_title':'Связаться с автором форка',
@@ -482,7 +495,7 @@ def patch_hub_web_background(decoded):
     f=decoded/'smali/com/eddyizm/tempus/homemusic/HubFragment.smali'
     s=f.read_text(encoding='utf-8')
     lines=s.splitlines()
-    indexes=[i for i,line in enumerate(lines) if 'const-string v8,' in line and '__AURA_HUB_STYLE__' in line]
+    indexes=[i for i,line in enumerate(lines) if 'const-string v8,' in line and '__HOMEMUSIC_EMBEDDED__' in line]
     if len(indexes)!=1:
         raise RuntimeError(f'Expected one embedded Hub style script, found {len(indexes)}')
     script=r'''(function () {
@@ -615,16 +628,47 @@ def patch_vectors(res):
     for name,data in paths.items():
         (d/name).write_text(f'''<?xml version="1.0" encoding="utf-8"?>\n<vector xmlns:android="http://schemas.android.com/apk/res/android" android:width="24dp" android:height="24dp" android:viewportWidth="24" android:viewportHeight="24"><path android:fillColor="#00000000" android:strokeColor="?attr/colorControlNormal" android:strokeWidth="1.9" android:strokeLineCap="round" android:strokeLineJoin="round" android:pathData="{data}"/></vector>''',encoding='utf-8')
 def patch_logo(res,logo):
-    from PIL import Image
-    d=res/'drawable-nodpi'; d.mkdir(exist_ok=True)
-    shutil.copy2(logo,d/'aura_logo.png'); shutil.copy2(logo,d/'ic_toolbar_tempo.png')
-    im=Image.open(logo).convert('RGBA'); im.thumbnail((148,148),Image.Resampling.LANCZOS)
-    launcher=Image.new('RGBA',(224,224),(0,0,0,0)); launcher.alpha_composite(im,((224-im.width)//2,(224-im.height)//2)); launcher.save(d/'ic_launcher_foreground.png',optimize=True)
-    for n in ['ic_toolbar_tempo.xml','ic_launcher_foreground.xml']:
-        f=res/'drawable'/n
-        if f.exists(): f.unlink()
-    (res/'drawable/ic_launcher_background.xml').write_text('''<?xml version="1.0" encoding="utf-8"?>\n<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle"><gradient android:type="linear" android:angle="315" android:startColor="#ff35246e" android:centerColor="#ff17162b" android:endColor="#ff062a38"/></shape>''',encoding='utf-8')
-    (res/'drawable/ic_launcher_monochrome.xml').write_text('''<?xml version="1.0" encoding="utf-8"?>\n<vector xmlns:android="http://schemas.android.com/apk/res/android" android:width="108dp" android:height="108dp" android:viewportWidth="108" android:viewportHeight="108"><path android:fillColor="#ffffffff" android:pathData="M17,57c9,0 9,-11 18,-11s9,11 18,11 9,-11 18,-11 9,11 18,11v10c-9,0 -9,-11 -18,-11s-9,11 -18,11 -9,-11 -18,-11 -9,11 -18,11zM17,77c9,0 9,-11 18,-11s9,11 18,11 9,-11 18,-11 9,11 18,11v10c-9,0 -9,-11 -18,-11s-9,11 -18,11 -9,-11 -18,-11 -9,11 -18,11z"/></vector>''',encoding='utf-8')
+    from PIL import Image, ImageFilter
+    d=res/'drawable-nodpi'
+    d.mkdir(parents=True,exist_ok=True)
+    master=Image.open(logo).convert('RGBA')
+    shutil.copy2(logo,d/'aura_logo.png')
+    shutil.copy2(logo,d/'ic_toolbar_tempo.png')
+    repo_root=Path(__file__).resolve().parents[1]
+    assets=repo_root/'assets'
+    icons=assets/'icons'
+    icons.mkdir(parents=True,exist_ok=True)
+
+    def export_icon(size):
+        image=master.resize((size,size),Image.Resampling.LANCZOS)
+        return image.filter(ImageFilter.UnsharpMask(radius=0.55,percent=115,threshold=2))
+
+    for size in (24,32,36,48,72,96,144,192,256,512):
+        export_icon(size).save(icons/f'aura-{size}.png',optimize=True)
+    export_icon(144).save(assets/'aura_logo_144.png',optimize=True)
+
+    foreground=export_icon(168)
+    launcher=Image.new('RGBA',(224,224),(0,0,0,0))
+    launcher.alpha_composite(foreground,((224-foreground.width)//2,(224-foreground.height)//2))
+    launcher.save(d/'ic_launcher_foreground.png',optimize=True)
+
+    monochrome=Image.new('RGBA',master.size,(255,255,255,0))
+    monochrome.putalpha(master.getchannel('A'))
+    monochrome.resize((224,224),Image.Resampling.LANCZOS).save(d/'ic_launcher_monochrome.png',optimize=True)
+
+    old_splash=res/'drawable/ic_splash_logo.xml'
+    if old_splash.exists():
+        old_splash.unlink()
+    export_icon(256).save(d/'ic_splash_logo.png',optimize=True)
+
+    for name in ('ic_toolbar_tempo.xml','ic_launcher_foreground.xml','ic_launcher_monochrome.xml'):
+        old=res/'drawable'/name
+        if old.exists():
+            old.unlink()
+
+    (res/'drawable/ic_launcher_background.xml').write_text('''<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle"><gradient android:type="linear" android:angle="315" android:startColor="#ff35246e" android:centerColor="#ff17162b" android:endColor="#ff062a38"/></shape>''',encoding='utf-8')
+
 def patch_home_mix_layout(res):
     f=res/'layout/homemusic_home_mixes.xml'; t=xml(f); root=t.getroot()
     root.set(a('orientation'),'vertical'); root.set(a('paddingLeft'),'16dp'); root.set(a('paddingRight'),'16dp'); root.set(a('paddingTop'),'18dp'); root.set(a('paddingBottom'),'14dp')
@@ -694,7 +738,7 @@ def patch_smali(decoded):
     if n!=1: raise RuntimeError('Unable to locate original My Wave insertion point in cp1.smali')
     f.write_text(s,encoding='utf-8')
 def version(decoded):
-    f=decoded/'apktool.yml';s=f.read_text(encoding='utf-8');s=re.sub(r'(?m)^  versionCode: .*?$','  versionCode: 502',s);s=re.sub(r'(?m)^  versionName: .*?$','  versionName: "0.5-2"',s);f.write_text(s,encoding='utf-8')
+    f=decoded/'apktool.yml';s=f.read_text(encoding='utf-8');s=re.sub(r'(?m)^  versionCode: .*?$','  versionCode: 601',s);s=re.sub(r'(?m)^  versionName: .*?$','  versionName: "0.6-1"',s);f.write_text(s,encoding='utf-8')
 
 def main():
     if len(sys.argv)<2: raise SystemExit('Usage: patch_aura.py decoded [logo.png]')
@@ -726,13 +770,18 @@ def main():
     if 'https://github.com/PlayInSpirits/HomeMusic-Fork' not in ru_strings: raise RuntimeError('AURA GitHub link is not set in Russian strings')
     if 'AURA (HomeMusic)' not in ru_strings and 'AURA (HomeMusic)' not in base_strings: raise RuntimeError('HomeMusic settings category was not renamed to AURA')
     prefs=(res/'xml/global_preferences.xml').read_text(encoding='utf-8')
+    pref_root=xml(res/'xml/global_preferences.xml').getroot()
+    pref_children=list(pref_root)
+    about_category=next((node for node in pref_children if node.get(p('title'))=='@string/settings_about_title'),None)
+    if about_category is None or pref_children.index(about_category)+1>=len(pref_children) or pref_children[pref_children.index(about_category)+1].get(a('key'))!='homemusic_check_update':
+        raise RuntimeError('Check for updates must be directly below About')
     if prefs.count('http://192.168.1.129:8080')<2: raise RuntimeError('Both Hub preference defaults are not present')
     defaults=(decoded/'smali/com/eddyizm/tempus/homemusic/HomeDefaults.smali').read_text(encoding='utf-8')
     if defaults.count('http://192.168.1.129:8080')!=2: raise RuntimeError('One-time Hub URL migration is incomplete')
     if 'Theme.Material3.Dark.NoActionBar' not in (res/'values/styles.xml').read_text(encoding='utf-8'): raise RuntimeError('Dark AURA theme was not applied')
     apktool_text=(decoded/'apktool.yml').read_text(encoding='utf-8')
-    if 'versionCode: 502' not in apktool_text or 'versionName: "0.5-2"' not in apktool_text:
-        raise RuntimeError('AURA 0.5-2 manifest version is not set')
+    if 'versionCode: 601' not in apktool_text or 'versionName: "0.6-1"' not in apktool_text:
+        raise RuntimeError('AURA 0.6-1 manifest version is not set')
     updater=(decoded/'smali/com/eddyizm/tempus/homemusic/HubUpdater.smali').read_text(encoding='utf-8')
     if '1.14.7' in updater or '0x2b' in updater or updater.count('Lapp/homemusic/AURAVersion;->versionCode')!=2:
         raise RuntimeError('GitHub updater still contains original HomeMusic version constants')
@@ -759,9 +808,18 @@ def main():
     if 'android:duration="50"' not in aurora or aurora.count('<item')<60:
         raise RuntimeError('Dynamic My Wave aurora animation is incomplete')
 
+    if (res/'drawable/ic_splash_logo.xml').exists() or not (res/'drawable-nodpi/ic_splash_logo.png').exists():
+        raise RuntimeError('Old HomeMusic splash logo is still present or AURA splash image is missing')
+    if (res/'drawable/ic_launcher_monochrome.xml').exists() or not (res/'drawable-nodpi/ic_launcher_monochrome.png').exists():
+        raise RuntimeError('Old launcher monochrome artwork is still present or AURA icon is missing')
+    if not (res/'drawable-nodpi/ic_launcher_foreground.png').exists() or not (root/'assets/aura_logo_144.png').exists():
+        raise RuntimeError('AURA launcher / README logo export is missing')
+    if not all((root/'assets/icons'/f'aura-{size}.png').exists() for size in (24,32,36,48,72,96,144,192,256,512)):
+        raise RuntimeError('One or more AURA icon size exports are missing')
+
     hub_layout=(res/'layout/fragment_hub.xml').read_text(encoding='utf-8')
     if 'tabIndicatorAnimationMode' not in hub_layout or 'aura_hub_tabs_background' not in hub_layout:
         raise RuntimeError('Native Hub tabs are not using AURA styling')
 
-    print(f'AURA 0.5-2: dynamic PackageInfo versionName/versionCode; GitHub latest.json update feed; Telegram contact in About; Settings action moved right of Search; Hub tabs, Assistant composer and Catalog use unified styling; SearchView has an explicit back arrow; My Wave uses a multi-phase aurora animation; MediaRoute item hidden and null-guarded; Hub URLs, login, authentication, playback and My Wave preserved ({login_refs} login references).')
+    print(f'AURA 0.6-1: dynamic PackageInfo versionName/versionCode; GitHub latest.json update feed; Telegram contact in About; Settings action moved right of Search; Hub tabs, Assistant composer and Catalog use unified styling; SearchView has an explicit back arrow; My Wave uses a multi-phase aurora animation; MediaRoute item hidden and null-guarded; Hub URLs, login, authentication, playback and My Wave preserved ({login_refs} login references).')
 if __name__=='__main__': main()
