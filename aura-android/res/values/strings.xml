@@ -1146,7 +1146,7 @@ Currently in use: %2$s MiB"</string>
     <string name="settings_title_ui">UI</string>
     <string name="settings_track_number">Show track number</string>
     <string name="settings_track_number_summary">If enabled, shows the track number of the song being played.</string>
-    <string name="settings_version_summary">AURA pr0.71-2</string>
+    <string name="settings_version_summary">AURA pr0.72-3</string>
     <string name="settings_version_title">AURA version</string>
     <string name="settings_wifi_only_summary">Ask for user confirmation before streaming over mobile network.</string>
     <string name="settings_wifi_only_title">Stream via Wi-Fi only alert</string>
@@ -1255,4 +1255,4 @@ Currently in use: %2$s MiB"</string>
     <string name="widget_placeholder_subtitle">Open Tempus</string>
     <string name="widget_time_duration_placeholder">0:00</string>
     <string name="widget_time_elapsed_placeholder">0:00</string>
-<string name="aura_contact_author_title">Contact the fork author</string><string name="aura_contact_author_summary">Telegram: Play_in_Spirits</string><string name="aura_contact_author_link">https://t.me/Play_in_Spirits</string><string name="aura_upstream_project_title">HomeMusic-public</string><string name="aura_upstream_project_link">https://github.com/justman-1/HomeMusic-public</string></resources>
+<string name="aura_contact_author_title">Contact the fork author</string><string name="aura_contact_author_summary">Telegram: Play_in_Spirits</string><string name="aura_contact_author_link">https://t.me/Play_in_Spirits</string><string name="aura_upstream_project_title">Original HomeMusic application</string><string name="aura_upstream_project_link">https://github.com/justman-1/HomeMusic-public</string></resources>

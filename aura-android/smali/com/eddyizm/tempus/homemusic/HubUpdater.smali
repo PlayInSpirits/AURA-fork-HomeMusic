@@ -5195,7 +5195,7 @@
 
     .line 12
     .line 13
-    const/4 v1, 0x0
+    const/4 v1, 0x1
 
     .line 14
     iput-boolean v1, v0, Ln83;->i:Z

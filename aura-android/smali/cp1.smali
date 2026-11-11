@@ -2713,10 +2713,14 @@
     .line 1369
     invoke-direct {v6, v0, v2}, Lgo1;-><init>(Lcp1;I)V
 
+    new-instance v7, Lapp/homemusic/AURAWaveToggleClickListener;
+    invoke-direct {v7, v6}, Lapp/homemusic/AURAWaveToggleClickListener;-><init>(Landroid/view/View$OnClickListener;)V
+
     .line 1370
     .line 1371
     .line 1372
-    invoke-virtual {v5, v6}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
+    invoke-virtual {v5, v7}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
+    invoke-static {v5}, Lapp/homemusic/AURAWaveToggleClickListener;->syncIcon(Landroid/view/View;)V
 
     .line 1373
     .line 1374

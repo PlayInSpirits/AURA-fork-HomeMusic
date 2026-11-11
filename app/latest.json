@@ -1,14 +1,14 @@
 {
-  "versionCode": 7102,
-  "versionName": "pr0.71-2",
-  "url": "https://github.com/PlayInSpirits/HomeMusic-Fork/releases/download/pr0.71-2/AURA-pr0.71-2.apk",
-  "size": 22113519,
-  "sha256": "6df025c6244957038120bc6ef7fea92666d3705cc0fa5b7d69cee61b5dd03f15",
-  "notes": "Обновлён главный экран «Моя волна», замедлен многослойный градиент, нижняя панель оформлена как плавающий островок, исправлены панель Ассистента, дубликаты в каталоге и ссылка загрузки обновления.",
+  "versionCode": 7203,
+  "versionName": "pr0.72-3",
+  "url": "https://github.com/PlayInSpirits/HomeMusic-Fork/releases/download/pr0.72-3/AURA-pr0.72-3.apk",
+  "size": 22114073,
+  "sha256": "7c64247c7f89537982ebe9051076e74437389cbc78861e912d7cd7313dc5ef43",
+  "notes": "Обновлён хотбар; «Моя волна» теперь ищет треки один раз за запуск приложения и переключает воспроизведение; в разделе «О приложении» переименована ссылка на оригинальное приложение HomeMusic.",
   "patches": [],
   "full": {
-    "url": "https://github.com/PlayInSpirits/HomeMusic-Fork/releases/download/pr0.71-2/AURA-pr0.71-2.apk",
-    "size": 22113519,
-    "sha256": "6df025c6244957038120bc6ef7fea92666d3705cc0fa5b7d69cee61b5dd03f15"
+    "url": "https://github.com/PlayInSpirits/HomeMusic-Fork/releases/download/pr0.72-3/AURA-pr0.72-3.apk",
+    "size": 22114073,
+    "sha256": "7c64247c7f89537982ebe9051076e74437389cbc78861e912d7cd7313dc5ef43"
   }
 }

@@ -1,5 +1,7 @@
 .class public final Lapp/homemusic/AURAVersion;
 .super Ljava/lang/Object;
+.field public static waveStarted:Z
+.field public static wavePlaying:Z
 
 .field public static pendingSearch:Z
 
