@@ -10,6 +10,7 @@ name: Build AURA Android
 
 permissions:
   contents: write
+  administration: write
 
 concurrency:
   group: aura-pr7-release
@@ -21,6 +22,15 @@ jobs:
     steps:
       - name: Checkout AURA sources
         uses: actions/checkout@v4
+
+      - name: Set GitHub repository About description
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          DESCRIPTION='Форк Android-приложения для личного музыкального сервиса «HomeMusic». Работа форка не отличается от оригинала. Подробная инструкция работы Android-приложения указана у официального автора проекта HomeMusic-public: https://github.com/justman-1/HomeMusic-public.'
+          gh repo edit "$GH_REPO" --description "$DESCRIPTION"
 
       - name: Set up Java
         uses: actions/setup-java@v4
@@ -78,7 +88,7 @@ jobs:
           grep -F "package: name='app.homemusic'" build/badging-unsigned.txt
           grep -F "versionName='pr0.7-1'" build/badging-unsigned.txt
           grep -F "versionCode='7001'" build/badging-unsigned.txt
-          grep -F "application-label:'AURA'" build/badging-unsigned.txt
+          grep -F "application: label='AURA'" build/badging-unsigned.txt
 
       - name: Check for permanent signing key
         id: signing_key
@@ -116,7 +126,7 @@ jobs:
           grep -F "package: name='app.homemusic'" build/badging.txt
           grep -F "versionName='pr0.7-1'" build/badging.txt
           grep -F "versionCode='7001'" build/badging.txt
-          grep -F "application-label:'AURA'" build/badging.txt
+          grep -F "application: label='AURA'" build/badging.txt
 
       - name: Prepare GitHub update feed and source archive
         if: steps.signing_key.outputs.configured == 'true'
