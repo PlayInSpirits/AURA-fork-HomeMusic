@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:paddingBottom="4.0dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingEnd="8.0dp"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:card_view="http://schemas.android.com/apk/res-auto">
+    <androidx.cardview.widget.CardView android:layout_gravity="center" android:id="@id/card_view" android:layout_width="120.0dp" android:layout_height="54.0dp" card_view:cardCornerRadius="4.0dp" card_view:cardElevation="2.0dp" card_view:cardPreventCornerOverlap="false" card_view:cardUseCompatPadding="true">
+        <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="match_parent">
+            <View android:background="?colorPrimary" android:layout_width="6.0dp" android:layout_height="match_parent" />
+            <TextView android:gravity="center" android:layout_gravity="center" android:id="@id/year_label" android:layout_width="match_parent" android:layout_height="match_parent" android:text="@string/label_placeholder" android:textAlignment="gravity" android:paddingStart="8.0dp" style="@style/LabelMedium" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</LinearLayout>

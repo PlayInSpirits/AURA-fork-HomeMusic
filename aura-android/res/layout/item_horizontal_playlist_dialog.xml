@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout android:orientation="horizontal" android:background="?selectableItemBackground" android:clipChildren="false" android:layout_width="match_parent" android:layout_height="wrap_content" android:paddingStart="16.0dp" android:paddingEnd="16.0dp"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:ellipsize="marquee" android:id="@id/playlist_dialog_title_text_view" android:paddingTop="8.0dp" android:layout_width="0.0dp" android:layout_height="wrap_content" android:singleLine="true" android:paddingStart="12.0dp" android:paddingEnd="12.0dp" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" style="@style/LabelMedium" />
+    <TextView android:ellipsize="marquee" android:id="@id/playlist_dialog_count_text_view" android:paddingBottom="8.0dp" android:layout_width="0.0dp" android:layout_height="wrap_content" android:paddingStart="12.0dp" android:paddingEnd="12.0dp" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@id/playlist_dialog_title_text_view" style="@style/LabelSmall" />
+</androidx.constraintlayout.widget.ConstraintLayout>

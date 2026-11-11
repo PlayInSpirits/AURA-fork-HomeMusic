@@ -1,0 +1,25 @@
+.class public final Lcom/eddyizm/tempus/lan/LanConnectionFailure;
+.super Ljava/lang/Exception;
+.source "r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189"
+
+
+# instance fields
+.field public final n:Lr42;
+
+
+# direct methods
+.method public constructor <init>(Lr42;Ljava/lang/Exception;)V
+    .locals 0
+
+    .line 1
+    invoke-direct {p0, p2}, Ljava/lang/Exception;-><init>(Ljava/lang/Throwable;)V
+
+    .line 2
+    .line 3
+    .line 4
+    iput-object p1, p0, Lcom/eddyizm/tempus/lan/LanConnectionFailure;->n:Lr42;
+
+    .line 5
+    .line 6
+    return-void
+.end method

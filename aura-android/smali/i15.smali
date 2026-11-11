@@ -1,0 +1,43 @@
+.class public abstract Li15;
+.super Ljava/lang/Object;
+.source "r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189"
+
+
+# static fields
+.field public static final a:Ljava/lang/String;
+
+.field public static final b:J
+
+
+# direct methods
+.method static constructor <clinit>()V
+    .locals 2
+
+    .line 1
+    const-string v0, "UnfinishedWorkListener"
+
+    .line 2
+    .line 3
+    invoke-static {v0}, Lcx;->i(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 4
+    .line 5
+    .line 6
+    move-result-object v0
+
+    .line 7
+    sput-object v0, Li15;->a:Ljava/lang/String;
+
+    .line 8
+    .line 9
+    const-wide/32 v0, 0x36ee80
+
+    .line 10
+    .line 11
+    .line 12
+    sput-wide v0, Li15;->b:J
+
+    .line 13
+    .line 14
+    return-void
+.end method

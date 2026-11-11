@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout android:background="?colorSurface" android:layout_width="match_parent" android:layout_height="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.core.widget.NestedScrollView android:id="@id/search_result_nested_scroll_view" android:layout_width="match_parent" android:layout_height="match_parent" app:layout_behavior="@string/searchbar_scrolling_view_behavior">
+        <LinearLayout android:orientation="vertical" android:id="@id/search_result_layout" android:paddingTop="64.0dp" android:paddingBottom="@dimen/global_padding_bottom" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <LinearLayout android:orientation="vertical" android:id="@id/search_artist_sector" android:paddingBottom="8.0dp" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <TextView android:paddingTop="20.0dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/search_title_artist" android:paddingStart="16.0dp" android:paddingEnd="16.0dp" style="@style/TitleLarge" />
+                <androidx.recyclerview.widget.RecyclerView android:id="@id/search_result_artist_recycler_view" android:paddingTop="8.0dp" android:paddingBottom="8.0dp" android:clipToPadding="false" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginTop="8.0dp" android:layout_marginBottom="8.0dp" android:paddingStart="16.0dp" android:paddingEnd="8.0dp" />
+            </LinearLayout>
+            <LinearLayout android:orientation="vertical" android:id="@id/search_album_sector" android:paddingBottom="8.0dp" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <TextView android:paddingTop="20.0dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/search_title_album" android:paddingStart="16.0dp" android:paddingEnd="16.0dp" style="@style/TitleLarge" />
+                <androidx.recyclerview.widget.RecyclerView android:id="@id/search_result_album_recycler_view" android:paddingTop="8.0dp" android:paddingBottom="8.0dp" android:clipToPadding="false" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginTop="8.0dp" android:layout_marginBottom="8.0dp" android:paddingStart="16.0dp" android:paddingEnd="8.0dp" />
+            </LinearLayout>
+            <LinearLayout android:orientation="vertical" android:id="@id/search_song_sector" android:paddingBottom="8.0dp" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <TextView android:paddingTop="20.0dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/search_title_song" android:paddingStart="16.0dp" android:paddingEnd="16.0dp" style="@style/TitleLarge" />
+                <androidx.recyclerview.widget.RecyclerView android:id="@id/search_result_tracks_recycler_view" android:paddingTop="8.0dp" android:paddingBottom="8.0dp" android:clipToPadding="false" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginTop="8.0dp" android:layout_marginBottom="8.0dp" />
+                <TextView android:textAppearance="@style/TextAppearance.AppCompat.Small" android:textSize="16.0sp" android:textStyle="bold" android:id="@id/allSongs" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/search_all_songs_loading" android:paddingStart="16.0dp" />
+                <androidx.recyclerview.widget.RecyclerView android:id="@id/allsongsview" android:layout_width="match_parent" android:layout_height="match_parent" />
+            </LinearLayout>
+            <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/emptyResponseContainer" android:paddingTop="@dimen/_150sdp" android:visibility="gone" android:layout_width="match_parent" android:layout_height="match_parent">
+                <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ui_empty_response" android:scaleType="centerInside" android:adjustViewBounds="true" android:maxWidth="240.0dp" android:maxHeight="240.0dp" />
+                <TextView android:paddingTop="12.0dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/search_title_empty_response" style="@style/LabelMedium" />
+                <TextView android:gravity="center_horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/search_description_empty_response" android:paddingStart="6.0dp" android:paddingEnd="6.0dp" style="@style/LabelSmall" />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+    <com.google.android.material.appbar.AppBarLayout android:background="?colorSurface" android:layout_width="match_parent" android:layout_height="wrap_content" android:elevation="0.0dp">
+        <com.google.android.material.search.SearchBar android:id="@id/search_bar" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="@string/search_hint" app:backgroundTint="?colorSurfaceContainer" app:elevation="0.0dp" />
+    </com.google.android.material.appbar.AppBarLayout>
+    <com.google.android.material.search.SearchView android:id="@id/search_view" android:fitsSystemWindows="false" android:layout_width="match_parent" android:layout_height="match_parent" android:hint="@string/search_hint" app:backgroundTint="?colorSurface" app:elevation="0.0dp" app:layout_anchor="@id/search_bar">
+        <ScrollView android:background="?colorSurface" android:paddingBottom="@dimen/global_padding_bottom" android:scrollbars="none" android:layout_width="match_parent" android:layout_height="match_parent">
+            <LinearLayout android:orientation="vertical" android:id="@id/search_view_suggestion_container" android:layout_width="match_parent" android:layout_height="wrap_content" />
+        </ScrollView>
+    </com.google.android.material.search.SearchView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="download_refresh_removed">
+        <item quantity="one">%d çatışmayan yükləmə silindi.</item>
+        <item quantity="other">%d çatışmayan yükləmə silindi.</item>
+    </plurals>
+    <plurals name="exo_controls_fastforward_by_amount_description">
+        <item quantity="one">%d saniyə irəli çəkin</item>
+        <item quantity="other">%d saniyə irəli çəkin</item>
+    </plurals>
+    <plurals name="exo_controls_rewind_by_amount_description">
+        <item quantity="one">%d saniyə geri çəkin</item>
+        <item quantity="other">%d saniyə geri çəkin</item>
+    </plurals>
+    <plurals name="home_sync_starred_albums_count">
+        <item quantity="one">Sinxronlaşdırılacaq %d albom</item>
+        <item quantity="other">Sinxronlaşdırılacaq %d albom</item>
+    </plurals>
+    <plurals name="home_sync_starred_artists_count">
+        <item quantity="one">Sinxronlaşdırılacaq %d ifaçı</item>
+        <item quantity="other">Sinxronlaşdırılacaq %d ifaçı</item>
+    </plurals>
+    <plurals name="home_sync_starred_songs_count">
+        <item quantity="one">%d mahnı sinxronlaşdırılmalıdır</item>
+        <item quantity="other">%d mahnı sinxronlaşdırılmalıdır</item>
+    </plurals>
+    <plurals name="mtrl_badge_content_description">
+        <item quantity="one">%d yeni bildiriş</item>
+        <item quantity="other">%d yeni bildiriş</item>
+    </plurals>
+    <plurals name="notification_tracks_downloaded">
+        <item quantity="one">1 mahnı yükləndi</item>
+        <item quantity="other">%d mahnı yükləndi</item>
+    </plurals>
+    <plurals name="notification_tracks_failed">
+        <item quantity="one">1 mahnının yüklənməsi alınmadı</item>
+        <item quantity="other">%d mahnının yüklənməsi alınmadı</item>
+    </plurals>
+    <plurals name="notification_tracks_saved">
+        <item quantity="one">1 mahnı saxlanıldı</item>
+        <item quantity="other">%d mahnı saxlanıldı</item>
+    </plurals>
+    <plurals name="playlist_sync_downloading">
+        <item quantity="one">%d trek endirilir</item>
+        <item quantity="other">%d trek endirilir</item>
+    </plurals>
+    <plurals name="songs_download_started">
+        <item quantity="one">%d mahnı yüklənir</item>
+        <item quantity="other">%d mahnı yüklənir</item>
+    </plurals>
+</resources>
