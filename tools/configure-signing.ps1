@@ -23,13 +23,13 @@ if (Test-Path $KeyStore) {
     Set-Content -Path $PasswordFile -Value $Password -NoNewline -Encoding ASCII
 }
 $Base64 = [Convert]::ToBase64String([IO.File]::ReadAllBytes($KeyStore))
-$Base64 | gh secret set AURA_KEYSTORE_BASE64 --repo $Repository
+gh secret set AURA_KEYSTORE_BASE64 --repo $Repository --body "$Base64"
 if ($LASTEXITCODE -ne 0) { throw "Could not set AURA_KEYSTORE_BASE64." }
-$Password | gh secret set AURA_KEYSTORE_PASSWORD --repo $Repository
+gh secret set AURA_KEYSTORE_PASSWORD --repo $Repository --body "$Password"
 if ($LASTEXITCODE -ne 0) { throw "Could not set AURA_KEYSTORE_PASSWORD." }
-$Alias | gh secret set AURA_KEY_ALIAS --repo $Repository
+gh secret set AURA_KEY_ALIAS --repo $Repository --body "$Alias"
 if ($LASTEXITCODE -ne 0) { throw "Could not set AURA_KEY_ALIAS." }
-$Password | gh secret set AURA_KEY_PASSWORD --repo $Repository
+gh secret set AURA_KEY_PASSWORD --repo $Repository --body "$Password"
 if ($LASTEXITCODE -ne 0) { throw "Could not set AURA_KEY_PASSWORD." }
 
 $Description = 'Форк Android-приложения для личного музыкального сервиса «HomeMusic». Работа форка не отличается от оригинала. Подробная инструкция работы Android-приложения указана у официального автора проекта HomeMusic-public: https://github.com/justman-1/HomeMusic-public.'
