@@ -118,21 +118,20 @@ def patch_bottom_nav_resources(res):
     color=res/'color'; color.mkdir(parents=True,exist_ok=True)
     icons={
       'aura_nav_home.xml':'''<?xml version="1.0" encoding="utf-8"?>
-<vector xmlns:android="http://schemas.android.com/apk/res/android" android:width="26dp" android:height="26dp" android:viewportWidth="24" android:viewportHeight="24">
-    <path android:fillColor="#00000000" android:strokeColor="#ffffffff" android:strokeWidth="1.9" android:strokeLineCap="round" android:strokeLineJoin="round" android:pathData="M3.5,10.5L12,3.5L20.5,10.5V20H14.5V14H9.5V20H3.5Z"/>
+<vector xmlns:android="http://schemas.android.com/apk/res/android" android:width="24dp" android:height="24dp" android:viewportWidth="24" android:viewportHeight="24">
+  <path android:fillColor="#ffffffff" android:pathData="M10,20V14H14V20H19V11H22L12,3L2,11H5V20Z"/>
 </vector>''',
       'aura_nav_library.xml':'''<?xml version="1.0" encoding="utf-8"?>
-<vector xmlns:android="http://schemas.android.com/apk/res/android" android:width="26dp" android:height="26dp" android:viewportWidth="24" android:viewportHeight="24">
-    <path android:fillColor="#00000000" android:strokeColor="#ffffffff" android:strokeWidth="1.8" android:strokeLineCap="round" android:strokeLineJoin="round" android:pathData="M12,7.1C9.5,5.3 6.3,4.9 3.5,5.9V18.7C6.4,17.8 9.5,18.2 12,20C14.5,18.2 17.6,17.8 20.5,18.7V5.9C17.7,4.9 14.5,5.3 12,7.1Z M12,7.1V20 M6.2,9.1C7.8,8.8 9.4,9.1 10.8,10 M6.2,12.1C7.8,11.8 9.4,12.1 10.8,13 M17.8,9.1C16.2,8.8 14.6,9.1 13.2,10 M17.8,12.1C16.2,11.8 14.6,12.1 13.2,13"/>
+<vector xmlns:android="http://schemas.android.com/apk/res/android" android:width="24dp" android:height="24dp" android:viewportWidth="24" android:viewportHeight="24">
+  <path android:fillColor="#ffffffff" android:pathData="M19,3H6C4.9,3 4,3.9 4,5V19C4,20.1 4.9,21 6,21H19C20.1,21 21,20.1 21,19V5C21,3.9 20.1,3 19,3ZM19,19H6V5H19V19ZM8,8H17V10H8V8ZM8,12H17V14H8V12ZM8,16H14V18H8V16Z"/>
 </vector>''',
       'aura_nav_hub.xml':'''<?xml version="1.0" encoding="utf-8"?>
-<vector xmlns:android="http://schemas.android.com/apk/res/android" android:width="26dp" android:height="26dp" android:viewportWidth="24" android:viewportHeight="24">
-    <path android:fillColor="#00000000" android:strokeColor="#ffffffff" android:strokeWidth="1.8" android:strokeLineCap="round" android:pathData="M7,7L17,7 M8.5,9L11,15 M15.5,9L13,15"/>
-    <path android:fillColor="#00000000" android:strokeColor="#ffffffff" android:strokeWidth="1.8" android:pathData="M4,4.5A3,3 0,1 0,10 4.5A3,3 0,1 0,4 4.5 M14,4.5A3,3 0,1 0,20 4.5A3,3 0,1 0,14 4.5 M9,18A3,3 0,1 0,15 18A3,3 0,1 0,9 18"/>
+<vector xmlns:android="http://schemas.android.com/apk/res/android" android:width="24dp" android:height="24dp" android:viewportWidth="24" android:viewportHeight="24">
+  <path android:fillColor="#ffffffff" android:pathData="M17,16C16.24,16 15.56,16.3 15.04,16.77L8.92,13.21C9.03,12.82 9.1,12.42 9.1,12C9.1,11.58 9.03,11.18 8.92,10.79L15.04,7.23C15.56,7.7 16.24,8 17,8C18.66,8 20,6.66 20,5C20,3.34 18.66,2 17,2C15.34,2 14,3.34 14,5C14,5.24 14.03,5.47 14.08,5.69L7.96,9.25C7.43,8.48 6.54,8 5.5,8C3.84,8 2.5,9.34 2.5,11C2.5,12.66 3.84,14 5.5,14C6.54,14 7.43,13.52 7.96,12.75L14.08,16.31C14.03,16.53 14,16.76 14,17C14,18.66 15.34,20 17,20C18.66,20 20,18.66 20,17C20,16.45 19.55,16 19,16Z"/>
 </vector>''',
       'aura_nav_download.xml':'''<?xml version="1.0" encoding="utf-8"?>
-<vector xmlns:android="http://schemas.android.com/apk/res/android" android:width="26dp" android:height="26dp" android:viewportWidth="24" android:viewportHeight="24">
-    <path android:fillColor="#00000000" android:strokeColor="#ffffffff" android:strokeWidth="1.9" android:strokeLineCap="round" android:strokeLineJoin="round" android:pathData="M12,3.5V15 M7.5,11L12,15.5L16.5,11 M4,17V19.5C4,20.3 4.7,21 5.5,21H18.5C19.3,21 20,20.3 20,19.5V17"/>
+<vector xmlns:android="http://schemas.android.com/apk/res/android" android:width="24dp" android:height="24dp" android:viewportWidth="24" android:viewportHeight="24">
+  <path android:fillColor="#ffffffff" android:pathData="M5,20H19V18H5V20ZM13,3H11V13.17L7.41,9.59L6,11L12,17L18,11L16.59,9.59L13,13.17V3Z"/>
 </vector>'''
     }
     for name,content in icons.items():
@@ -144,10 +143,10 @@ def patch_bottom_nav_resources(res):
 </selector>
 ''',encoding='utf-8')
     menu_icons={
-      'homeFragment':'@drawable/aura_nav_home',
-      'libraryFragment':'@drawable/aura_nav_library',
-      'hubFragment':'@drawable/aura_nav_hub',
-      'downloadFragment':'@drawable/aura_nav_download'
+      'homeFragment':('@drawable/aura_nav_home','@string/menu_home_label'),
+      'libraryFragment':('@drawable/aura_nav_library','@string/menu_library_label'),
+      'hubFragment':('@drawable/aura_nav_hub','@string/homemusic_menu_hub'),
+      'downloadFragment':('@drawable/aura_nav_download','@string/menu_download_label')
     }
     for rel in ('menu/bottom_nav_menu.xml','menu-land/bottom_nav_menu.xml'):
         f=res/rel
@@ -155,33 +154,13 @@ def patch_bottom_nav_resources(res):
         t=xml(f)
         for node in t.getroot().iter():
             key=node.get(a('id'))
-            if key:
-                key=key.rsplit('/',1)[-1]
-                if key in menu_icons: node.set(a('icon'),menu_icons[key])
-        save(t,f)
-
-    labels={
-      res/'values/strings.xml':{
-        'menu_home_label':'Home',
-        'menu_library_label':'Library',
-        'homemusic_menu_hub':'Hub',
-        'menu_download_label':'Downloads'
-      },
-      res/'values-ru/strings.xml':{
-        'menu_home_label':'Главная',
-        'menu_library_label':'Библиотека',
-        'homemusic_menu_hub':'Хаб',
-        'menu_download_label':'Загрузки'
-      }
-    }
-    for f,values in labels.items():
-        if not f.exists(): continue
-        t=xml(f)
-        nodes={node.get('name'):node for node in t.getroot().findall('string')}
-        for name,value in values.items():
-            node=nodes.get(name)
-            if node is None: node=ET.SubElement(t.getroot(),'string',{'name':name})
-            node.text=value
+            if not key: continue
+            key=key.rsplit('/',1)[-1]
+            if key in menu_icons:
+                icon,description=menu_icons[key]
+                node.set(a('icon'),icon)
+                node.set(a('title'),'')
+                node.set(p('contentDescription'),description)
         save(t,f)
 
     land=res/'layout-land/activity_main.xml'
@@ -199,7 +178,7 @@ def patch_aura_islands(res):
     f=res/'layout/activity_main.xml'; t=xml(f)
     nav=next((n for n in t.getroot().iter() if n.tag.endswith('BottomNavigationView')),None)
     if nav is None: raise RuntimeError('BottomNavigationView missing from activity_main.xml')
-    for k,v in {'layout_gravity':'bottom|center_horizontal','layout_width':'match_parent','layout_height':'76dp','layout_marginStart':'14dp','layout_marginEnd':'14dp','layout_marginBottom':'18dp','paddingStart':'8dp','paddingEnd':'8dp','paddingTop':'3dp','paddingBottom':'3dp','elevation':'18dp','background':'@drawable/aura_bottom_nav_island','clipToPadding':'false'}.items(): nav.set(a(k),v)
+    for k,v in {'layout_gravity':'bottom|center_horizontal','layout_width':'match_parent','layout_height':'76dp','layout_marginStart':'14dp','layout_marginEnd':'14dp','layout_marginBottom':'20dp','paddingStart':'8dp','paddingEnd':'8dp','paddingTop':'3dp','paddingBottom':'3dp','elevation':'18dp','background':'@drawable/aura_bottom_nav_island','clipToPadding':'false'}.items(): nav.set(a(k),v)
     for k,v in {'itemIconSize':'26dp','itemHorizontalTranslationEnabled':'false','labelVisibilityMode':'unlabeled','itemPaddingTop':'10dp','itemPaddingBottom':'10dp','itemRippleColor':'#447fddda','itemIconTint':'@color/aura_bottom_nav_tint','itemActiveIndicatorStyle':'@style/AURA.BottomNavigation.ActiveIndicator'}.items(): nav.set(p(k),v)
     nav.attrib.pop(p('itemTextColor'),None)
     save(t,f)
@@ -393,7 +372,7 @@ def patch_about_settings(res,decoded):
       'settings_github_link':'https://github.com/PlayInSpirits/HomeMusic-Fork',
       'settings_github_summary':'AURA source code and releases',
       'settings_github_title':'GitHub',
-      'settings_version_summary':'AURA pr0.73-4',
+      'settings_version_summary':'AURA pr0.74-1',
       'homemusic_settings_version':'%1$s',
       'settings_version_title':'AURA version',
       'homemusic_settings_title':'AURA (HomeMusic)',
@@ -409,7 +388,7 @@ def patch_about_settings(res,decoded):
       'settings_github_link':'https://github.com/PlayInSpirits/HomeMusic-Fork',
       'settings_github_summary':'Исходный код и релизы AURA',
       'settings_github_title':'GitHub',
-      'settings_version_summary':'AURA pr0.73-4',
+      'settings_version_summary':'AURA pr0.74-1',
       'homemusic_settings_version':'%1$s',
       'settings_version_title':'Версия AURA',
       'homemusic_settings_title':'AURA (HomeMusic)',
@@ -1065,7 +1044,7 @@ def patch_wave_button_behavior(decoded):
     h=helper.read_text(encoding='utf-8')
     marker='.super Ljava/lang/Object;'+chr(10)
     if h.count(marker)!=1: raise RuntimeError('AURAVersion superclass marker not found for My Wave state')
-    for field in ('.field public static waveStarted:Z','.field public static wavePlaying:Z'):
+    for field in ('.field public static waveStarted:Z','.field public static wavePlaying:Z','.field public static waveButton:Landroid/view/View;'):
         if field not in h:
             h=h.replace(marker,marker+field+chr(10),1)
             marker=marker+field+chr(10)
@@ -1086,32 +1065,56 @@ def patch_wave_button_behavior(decoded):
 .end method
 
 .method public onClick(Landroid/view/View;)V
-    .locals 2
+    .locals 4
+    invoke-static {p1}, Lapp/homemusic/AURAWaveToggleClickListener;->pressAnimation(Landroid/view/View;)V
+    sget-object v0, Lis3;->c:Lcom/eddyizm/tempus/service/MediaService;
+    if-eqz v0, :no_current_player
+    invoke-virtual {v0}, Lcom/eddyizm/tempus/service/MediaService;->b()Lqi3;
+    move-result-object v0
+    if-eqz v0, :no_current_player
+    invoke-interface {v0}, Lqi3;->a()Lgn2;
+    move-result-object v1
+    if-eqz v1, :no_current_player
+    const/4 v1, 0x1
+    sput-boolean v1, Lapp/homemusic/AURAVersion;->waveStarted:Z
+    invoke-interface {v0}, Lqi3;->h0()Z
+    move-result v1
+    if-eqz v1, :play_current
+    const/4 v1, 0x0
+    goto :dispatch_current
+:play_current
+    const/4 v1, 0x1
+:dispatch_current
+    sput-boolean v1, Lapp/homemusic/AURAVersion;->wavePlaying:Z
+    invoke-static {p1}, Lapp/homemusic/AURAWaveToggleClickListener;->syncIcon(Landroid/view/View;)V
+    invoke-static {p1, v1}, Lapp/homemusic/AURAWaveToggleClickListener;->dispatchPlaybackKey(Landroid/view/View;Z)V
+    return-void
+
+:no_current_player
     sget-boolean v0, Lapp/homemusic/AURAVersion;->waveStarted:Z
-    if-nez v0, :toggle_playback
+    if-eqz v0, :launch_wave
+    sget-boolean v1, Lapp/homemusic/AURAVersion;->wavePlaying:Z
+    xor-int/lit8 v1, v1, 0x1
+    sput-boolean v1, Lapp/homemusic/AURAVersion;->wavePlaying:Z
+    invoke-static {p1}, Lapp/homemusic/AURAWaveToggleClickListener;->syncIcon(Landroid/view/View;)V
+    invoke-static {p1, v1}, Lapp/homemusic/AURAWaveToggleClickListener;->dispatchPlaybackKey(Landroid/view/View;Z)V
+    return-void
+
+:launch_wave
     const/4 v0, 0x1
     sput-boolean v0, Lapp/homemusic/AURAVersion;->waveStarted:Z
     sput-boolean v0, Lapp/homemusic/AURAVersion;->wavePlaying:Z
     invoke-static {p1}, Lapp/homemusic/AURAWaveToggleClickListener;->syncIcon(Landroid/view/View;)V
-    invoke-static {p1}, Lapp/homemusic/AURAWaveToggleClickListener;->pressAnimation(Landroid/view/View;)V
     iget-object v1, p0, Lapp/homemusic/AURAWaveToggleClickListener;->delegate:Landroid/view/View$OnClickListener;
     if-eqz v1, :done
     invoke-interface {v1, p1}, Landroid/view/View$OnClickListener;->onClick(Landroid/view/View;)V
-    return-void
-
-    :toggle_playback
-    sget-boolean v0, Lapp/homemusic/AURAVersion;->wavePlaying:Z
-    xor-int/lit8 v0, v0, 0x1
-    sput-boolean v0, Lapp/homemusic/AURAVersion;->wavePlaying:Z
-    invoke-static {p1}, Lapp/homemusic/AURAWaveToggleClickListener;->syncIcon(Landroid/view/View;)V
-    invoke-static {p1}, Lapp/homemusic/AURAWaveToggleClickListener;->pressAnimation(Landroid/view/View;)V
-    invoke-static {p1, v0}, Lapp/homemusic/AURAWaveToggleClickListener;->dispatchPlaybackKey(Landroid/view/View;Z)V
-    :done
+:done
     return-void
 .end method
 
 .method public static syncIcon(Landroid/view/View;)V
     .locals 5
+    if-eqz p0, :sync_done
     invoke-virtual {p0}, Landroid/view/View;->getContext()Landroid/content/Context;
     move-result-object v0
     invoke-virtual {v0}, Landroid/content/Context;->getPackageName()Ljava/lang/String;
@@ -1120,9 +1123,9 @@ def patch_wave_button_behavior(decoded):
     if-eqz v2, :play_icon
     const-string v2, "aura_wave_pause_icon"
     goto :resolve_icon
-    :play_icon
+:play_icon
     const-string v2, "aura_wave_play_icon"
-    :resolve_icon
+:resolve_icon
     invoke-virtual {v0}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
     move-result-object v3
     const-string v4, "drawable"
@@ -1138,7 +1141,7 @@ def patch_wave_button_behavior(decoded):
     if-eqz v3, :sync_done
     check-cast v2, Landroid/widget/ImageView;
     invoke-virtual {v2, v4}, Landroid/widget/ImageView;->setImageResource(I)V
-    :sync_done
+:sync_done
     return-void
 .end method
 
@@ -1158,7 +1161,7 @@ def patch_wave_button_behavior(decoded):
     invoke-static {v0, v4}, Landroid/view/animation/AnimationUtils;->loadAnimation(Landroid/content/Context;I)Landroid/view/animation/Animation;
     move-result-object v4
     invoke-virtual {p0, v4}, Landroid/view/View;->startAnimation(Landroid/view/animation/Animation;)V
-    :animation_done
+:animation_done
     return-void
 .end method
 
@@ -1174,7 +1177,7 @@ def patch_wave_button_behavior(decoded):
     const/16 v1, 0x7f
     if-eqz p1, :media_key_ready
     const/16 v1, 0x7e
-    :media_key_ready
+:media_key_ready
     new-instance v2, Landroid/view/KeyEvent;
     const/4 v3, 0x0
     invoke-direct {v2, v3, v1}, Landroid/view/KeyEvent;-><init>(II)V
@@ -1183,10 +1186,127 @@ def patch_wave_button_behavior(decoded):
     const/4 v3, 0x1
     invoke-direct {v2, v3, v1}, Landroid/view/KeyEvent;-><init>(II)V
     invoke-virtual {v0, v2}, Landroid/media/AudioManager;->dispatchMediaKeyEvent(Landroid/view/KeyEvent;)V
-    :dispatch_done
+:dispatch_done
     return-void
 .end method
 ''',encoding='utf-8')
+
+    observer=decoded/'smali/app/homemusic/AURAWavePlaybackListener.smali'
+    observer.write_text('''.class public final Lapp/homemusic/AURAWavePlaybackListener;
+.super Ljava/lang/Object;
+.implements Loi3;
+
+.field private static trackedPlayer:Lqi3;
+.field private static observer:Loi3;
+.field private final player:Lqi3;
+
+.method public constructor <init>(Lqi3;)V
+    .locals 0
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+    iput-object p1, p0, Lapp/homemusic/AURAWavePlaybackListener;->player:Lqi3;
+    return-void
+.end method
+
+.method public static attach(Lqi3;)V
+    .locals 3
+    if-eqz p0, :attach_done
+    sget-object v0, Lapp/homemusic/AURAWavePlaybackListener;->trackedPlayer:Lqi3;
+    if-ne v0, p0, :replace_observer
+    invoke-static {p0}, Lapp/homemusic/AURAWavePlaybackListener;->syncFromPlayer(Lqi3;)V
+    return-void
+:replace_observer
+    if-eqz v0, :new_observer
+    sget-object v1, Lapp/homemusic/AURAWavePlaybackListener;->observer:Loi3;
+    if-eqz v1, :new_observer
+    invoke-interface {v0, v1}, Lqi3;->r0(Loi3;)V
+:new_observer
+    new-instance v0, Lapp/homemusic/AURAWavePlaybackListener;
+    invoke-direct {v0, p0}, Lapp/homemusic/AURAWavePlaybackListener;-><init>(Lqi3;)V
+    sput-object v0, Lapp/homemusic/AURAWavePlaybackListener;->observer:Loi3;
+    sput-object p0, Lapp/homemusic/AURAWavePlaybackListener;->trackedPlayer:Lqi3;
+    invoke-interface {p0, v0}, Lqi3;->v(Loi3;)V
+    invoke-static {p0}, Lapp/homemusic/AURAWavePlaybackListener;->syncFromPlayer(Lqi3;)V
+:attach_done
+    return-void
+.end method
+
+.method public static syncCurrent()V
+    .locals 1
+    sget-object v0, Lis3;->c:Lcom/eddyizm/tempus/service/MediaService;
+    if-eqz v0, :sync_current_done
+    invoke-virtual {v0}, Lcom/eddyizm/tempus/service/MediaService;->b()Lqi3;
+    move-result-object v0
+    if-eqz v0, :sync_current_done
+    invoke-static {v0}, Lapp/homemusic/AURAWavePlaybackListener;->syncFromPlayer(Lqi3;)V
+:sync_current_done
+    return-void
+.end method
+
+.method public static syncFromPlayer(Lqi3;)V
+    .locals 3
+    if-eqz p0, :sync_done
+    invoke-interface {p0}, Lqi3;->a()Lgn2;
+    move-result-object v0
+    if-eqz v0, :no_current_item
+    const/4 v1, 0x1
+    sput-boolean v1, Lapp/homemusic/AURAVersion;->waveStarted:Z
+    invoke-interface {p0}, Lqi3;->h0()Z
+    move-result v1
+    sput-boolean v1, Lapp/homemusic/AURAVersion;->wavePlaying:Z
+    goto :update_icon
+:no_current_item
+    const/4 v1, 0x0
+    sput-boolean v1, Lapp/homemusic/AURAVersion;->wavePlaying:Z
+:update_icon
+    sget-object v2, Lapp/homemusic/AURAVersion;->waveButton:Landroid/view/View;
+    if-eqz v2, :sync_done
+    invoke-static {v2}, Lapp/homemusic/AURAWaveToggleClickListener;->syncIcon(Landroid/view/View;)V
+:sync_done
+    return-void
+.end method
+
+.method public V(Z)V
+    .locals 1
+    iget-object v0, p0, Lapp/homemusic/AURAWavePlaybackListener;->player:Lqi3;
+    invoke-static {v0}, Lapp/homemusic/AURAWavePlaybackListener;->syncFromPlayer(Lqi3;)V
+    return-void
+.end method
+
+.method public q(Z)V
+    .locals 1
+    iget-object v0, p0, Lapp/homemusic/AURAWavePlaybackListener;->player:Lqi3;
+    invoke-static {v0}, Lapp/homemusic/AURAWavePlaybackListener;->syncFromPlayer(Lqi3;)V
+    return-void
+.end method
+
+.method public v(I)V
+    .locals 1
+    iget-object v0, p0, Lapp/homemusic/AURAWavePlaybackListener;->player:Lqi3;
+    invoke-static {v0}, Lapp/homemusic/AURAWavePlaybackListener;->syncFromPlayer(Lqi3;)V
+    return-void
+.end method
+
+.method public t(ILgn2;)V
+    .locals 1
+    iget-object v0, p0, Lapp/homemusic/AURAWavePlaybackListener;->player:Lqi3;
+    invoke-static {v0}, Lapp/homemusic/AURAWavePlaybackListener;->syncFromPlayer(Lqi3;)V
+    return-void
+.end method
+''',encoding='utf-8')
+
+    service=decoded/'smali/com/eddyizm/tempus/service/MediaService.smali'
+    service_text=service.read_text(encoding='utf-8')
+    service_anchor='''    invoke-interface {p1, v0}, Lqi3;->v(Loi3;)V
+
+    .line 71'''
+    service_replacement='''    invoke-interface {p1, v0}, Lqi3;->v(Loi3;)V
+
+    invoke-static {p1}, Lapp/homemusic/AURAWavePlaybackListener;->attach(Lqi3;)V
+
+    .line 71'''
+    if service_text.count(service_anchor)!=1:
+        raise RuntimeError('MediaService player-observer attachment point not found uniquely')
+    service.write_text(service_text.replace(service_anchor,service_replacement,1),encoding='utf-8')
 
     circle=decoded/'smali/app/homemusic/AURAWaveCircleTouchListener.smali'
     circle.write_text('''.class public final Lapp/homemusic/AURAWaveCircleTouchListener;
@@ -1322,7 +1442,9 @@ def patch_wave_button_behavior(decoded):
     invoke-direct {v8}, Lapp/homemusic/AURAWaveCircleTouchListener;-><init>()V
     invoke-virtual {v5, v8}, Landroid/view/View;->setOnTouchListener(Landroid/view/View$OnTouchListener;)V
 
+    sput-object v5, Lapp/homemusic/AURAVersion;->waveButton:Landroid/view/View;
     invoke-static {v5}, Lapp/homemusic/AURAWaveToggleClickListener;->syncIcon(Landroid/view/View;)V
+    invoke-static {}, Lapp/homemusic/AURAWavePlaybackListener;->syncCurrent()V
     move/from16 v7, v76'''
     if method.count(old)!=1:
         raise RuntimeError('My Wave click-listener insertion point was not found uniquely in cp1.H')
@@ -1385,7 +1507,7 @@ def patch_smali(decoded):
     f.write_text(s,encoding='utf-8')
 
 def version(decoded):
-    f=decoded/'apktool.yml';s=f.read_text(encoding='utf-8');s=re.sub(r'(?m)^  versionCode: .*?$','  versionCode: 7304',s);s=re.sub(r'(?m)^  versionName: .*?$','  versionName: "pr0.73-4"',s);f.write_text(s,encoding='utf-8')
+    f=decoded/'apktool.yml';s=f.read_text(encoding='utf-8');s=re.sub(r'(?m)^  versionCode: .*?$','  versionCode: 7401',s);s=re.sub(r'(?m)^  versionName: .*?$','  versionName: "pr0.74-1"',s);f.write_text(s,encoding='utf-8')
 
 def main():
     if len(sys.argv)<2: raise SystemExit('Usage: patch_aura.py decoded [logo.png]')
@@ -1427,8 +1549,8 @@ def main():
     if defaults.count('http://192.168.1.129:8080')!=2: raise RuntimeError('One-time Hub URL migration is incomplete')
     if 'Theme.Material3.Dark.NoActionBar' not in (res/'values/styles.xml').read_text(encoding='utf-8'): raise RuntimeError('Dark AURA theme was not applied')
     apktool_text=(decoded/'apktool.yml').read_text(encoding='utf-8')
-    if 'versionCode: 7304' not in apktool_text or 'versionName: "pr0.73-4"' not in apktool_text:
-        raise RuntimeError('AURA pr0.73-4 manifest version is not set')
+    if 'versionCode: 7401' not in apktool_text or 'versionName: "pr0.74-1"' not in apktool_text:
+        raise RuntimeError('AURA pr0.74-1 manifest version is not set')
     updater=(decoded/'smali/com/eddyizm/tempus/homemusic/HubUpdater.smali').read_text(encoding='utf-8')
     if '1.14.7' in updater or '0x2b' in updater or updater.count('Lapp/homemusic/AURAVersion;->versionCode')!=2:
         raise RuntimeError('GitHub updater still contains original HomeMusic version constants')
@@ -1463,8 +1585,14 @@ def main():
         raise RuntimeError('Main search is not routed to the Hub catalog')
     wave_helper=(decoded/'smali/app/homemusic/AURAVersion.smali').read_text(encoding='utf-8')
     wave_click=(decoded/'smali/app/homemusic/AURAWaveToggleClickListener.smali').read_text(encoding='utf-8')
-    if 'waveStarted:Z' not in wave_helper or 'wavePlaying:Z' not in wave_helper or 'dispatchMediaKeyEvent' not in wave_click:
-        raise RuntimeError('My Wave must launch once per process and toggle media playback afterwards')
+    if 'waveStarted:Z' not in wave_helper or 'wavePlaying:Z' not in wave_helper or 'dispatchMediaKeyEvent' not in wave_click or 'MediaService;->b()Lqi3;' not in wave_click or 'Lqi3;->a()Lgn2;' not in wave_click or 'Lqi3;->h0()Z' not in wave_click:
+        raise RuntimeError('My Wave must toggle an existing Media3 item instead of launching another radio')
+    playback_sync=(decoded/'smali/app/homemusic/AURAWavePlaybackListener.smali').read_text(encoding='utf-8')
+    service_smali=(decoded/'smali/com/eddyizm/tempus/service/MediaService.smali').read_text(encoding='utf-8')
+    if 'Lapp/homemusic/AURAWavePlaybackListener;->attach(Lqi3;)V' not in service_smali or 'Lqi3;->h0()Z' not in playback_sync or 'AURAVersion;->waveButton:Landroid/view/View;' not in playback_sync:
+        raise RuntimeError('My Wave is not synchronized to actual Media3 player callbacks')
+    if 'AURAWavePlaybackListener;->syncCurrent()V' not in cp1_method or 'AURAVersion;->waveButton:Landroid/view/View;' not in cp1_method:
+        raise RuntimeError('My Wave view does not synchronize immediately after being created')
     circle_touch=(decoded/'smali/app/homemusic/AURAWaveCircleTouchListener.smali').read_text(encoding='utf-8')
     cp1_text=(decoded/'smali/cp1.smali').read_text(encoding='utf-8')
     cp1_method=cp1_text[cp1_text.index('.method public final H(Landroid/view/LayoutInflater;Landroid/view/ViewGroup;Landroid/os/Bundle;)Landroid/view/View;'):cp1_text.index('.end method',cp1_text.index('.method public final H(Landroid/view/LayoutInflater;Landroid/view/ViewGroup;Landroid/os/Bundle;)Landroid/view/View;'))]
@@ -1476,7 +1604,7 @@ def main():
     if 'android:id="@id/homemusic_wave_card"' not in wave_layout or 'android:clickable="false"' not in wave_layout or not (res/'drawable/aura_wave_pause_icon.xml').exists():
         raise RuntimeError('My Wave click target must be the round button and include a pause icon')
     nav_layout=(res/'layout/activity_main.xml').read_text(encoding='utf-8')
-    if 'android:layout_height="76dp"' not in nav_layout or 'aura_bottom_nav_tint' not in nav_layout or 'android:layout_marginBottom="18dp"' not in nav_layout or 'labelVisibilityMode="unlabeled"' not in nav_layout or 'AURA.BottomNavigation.ActiveIndicator' not in nav_layout:
+    if 'android:layout_height="76dp"' not in nav_layout or 'aura_bottom_nav_tint' not in nav_layout or 'android:layout_marginBottom="20dp"' not in nav_layout or 'labelVisibilityMode="unlabeled"' not in nav_layout or 'AURA.BottomNavigation.ActiveIndicator' not in nav_layout:
         raise RuntimeError('Bottom navigation must be icon-only with the modern active indicator')
     nav_bg=(res/'drawable/aura_bottom_nav_island.xml').read_text(encoding='utf-8')
     if '#ee22283e' not in nav_bg or '#ee19434a' not in nav_bg:
@@ -1484,8 +1612,15 @@ def main():
     nav_menu=(res/'menu/bottom_nav_menu.xml').read_text(encoding='utf-8')
     if any(name not in nav_menu for name in ('aura_nav_home','aura_nav_library','aura_nav_hub','aura_nav_download')):
         raise RuntimeError('Custom AURA bottom navigation icons are incomplete')
-    if 'android:strokeWidth="1.8"' not in (res/'drawable/aura_nav_library.xml').read_text(encoding='utf-8'):
-        raise RuntimeError('Library must use the new outlined book icon')
+    if 'android:pathData="M19,3H6C4.9,3 4,3.9 4,5V19' not in (res/'drawable/aura_nav_library.xml').read_text(encoding='utf-8'):
+        raise RuntimeError('Library must use the simplified recognizable book icon')
+    for menu_file in ('menu/bottom_nav_menu.xml','menu-land/bottom_nav_menu.xml'):
+        menu_path=res/menu_file
+        if menu_path.exists():
+            menu_root=xml(menu_path).getroot()
+            for menu_item in menu_root:
+                if menu_item.get(a('title')) not in ('',None) or not menu_item.get(p('contentDescription')):
+                    raise RuntimeError(f'{menu_file}: bottom navigation must have no visible text titles and keep accessibility descriptions')
     indicator_style=(res/'values/styles.xml').read_text(encoding='utf-8')
     if 'AURA.BottomNavigation.ActiveIndicator' not in indicator_style or 'labelVisibilityMode="unlabeled"' not in nav_layout:
         raise RuntimeError('Modern icon-only bottom navigation style is incomplete')
@@ -1509,5 +1644,5 @@ def main():
     if 'tabIndicatorAnimationMode' not in hub_layout or 'aura_hub_tabs_background' not in hub_layout:
         raise RuntimeError('Native Hub tabs are not using AURA styling')
 
-    print(f'AURA pr0.73-4: icon-only Material 3 bottom navigation with modern active indicator and open-book library icon; UI displays versionName only; GitHub update feed, Hub, authentication and My Wave preserved ({login_refs} login references).')
+    print(f'AURA pr0.74-1: icon-only Material 3 bottom navigation with modern active indicator and open-book library icon; UI displays versionName only; GitHub update feed, Hub, authentication and My Wave preserved ({login_refs} login references).')
 if __name__=='__main__': main()
