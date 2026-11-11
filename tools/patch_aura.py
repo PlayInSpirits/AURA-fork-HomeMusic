@@ -354,21 +354,27 @@ def patch_search_ui(res):
     f=res/'layout/fragment_search.xml'
     t=xml(f); root=t.getroot()
     root.set(a('background'),'@drawable/aura_home_background')
+    found={'appbar':False,'bar':False,'view':False}
     for n in root.iter():
         tag=n.tag.split('}')[-1]
-        if tag=='AppBarLayout':
+        if tag.endswith('AppBarLayout'):
+            found['appbar']=True
             n.set(a('background'),'@drawable/aura_toolbar_gradient')
-        elif tag=='SearchBar':
+        elif tag.endswith('SearchBar'):
+            found['bar']=True
             n.set(a('background'),'@drawable/aura_toolbar_gradient')
             n.set(p('backgroundTint'),'@color/md_theme_dark_surface')
-        elif tag=='SearchView':
+        elif tag.endswith('SearchView'):
+            found['view']=True
             n.set(a('background'),'@drawable/aura_home_background')
-            n.set(p('backgroundTint'),'@color/md_theme_dark_surface')
+            n.set(p('backgroundTint'),'@color/md_theme_dark_background')
             n.set(p('hideNavigationIcon'),'false')
             n.set(p('navigationIcon'),'@drawable/ic_arrow_back')
             n.set(p('navigationIconTint'),'#fff4f1ff')
-        elif tag=='ScrollView':
+        elif tag.endswith('ScrollView'):
             n.set(a('background'),'@drawable/aura_home_background')
+    if not all(found.values()):
+        raise RuntimeError(f'SearchBar/SearchView structure incomplete: {found}')
     save(t,f)
 
 def patch_github_updater(decoded):
