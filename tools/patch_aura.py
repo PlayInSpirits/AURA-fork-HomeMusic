@@ -268,6 +268,83 @@ def patch_about_settings(res,decoded):
 .end method
 ''',encoding='utf-8')
 
+def patch_hub_native_ui(res):
+    f=res/'layout/fragment_hub.xml'
+    t=xml(f); root=t.getroot()
+    tabs=next((node for node in root.iter() if node.get(a('id'))=='@id/hub_tabs'),None)
+    if tabs is None:
+        raise RuntimeError('Hub TabLayout was not found')
+    row=next((node for node in root.iter() if tabs in list(node)),None)
+    if row is not None:
+        row.set(a('background'),'?colorSurface')
+        row.set(a('paddingHorizontal'),'4dp')
+        row.set(a('paddingTop'),'4dp')
+        row.set(a('paddingBottom'),'4dp')
+    tabs.set(a('background'),'@drawable/aura_hub_tabs_background')
+    tabs.set(a('layout_marginStart'),'8dp')
+    tabs.set(a('layout_marginEnd'),'8dp')
+    tabs.set(a('layout_marginTop'),'3dp')
+    tabs.set(a('layout_marginBottom'),'3dp')
+    tabs.set(a('clipToPadding'),'false')
+    for key,value in {
+      'tabMode':'scrollable',
+      'tabGravity':'center',
+      'tabIndicatorColor':'#ffbdadff',
+      'tabIndicatorHeight':'3dp',
+      'tabIndicatorFullWidth':'false',
+      'tabIndicatorAnimationMode':'elastic',
+      'tabSelectedTextColor':'#fff4f1ff',
+      'tabTextColor':'#ffb9b5cf',
+      'tabRippleColor':'#33bdadff',
+      'tabPaddingStart':'12dp',
+      'tabPaddingEnd':'12dp'
+    }.items():
+        tabs.set(p(key),value)
+    save(t,f)
+    drawable=res/'drawable/aura_hub_tabs_background.xml'
+    drawable.parent.mkdir(parents=True,exist_ok=True)
+    drawable.write_text('''<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
+    <gradient android:angle="0" android:startColor="#ee211b38" android:endColor="#ee10252f" />
+    <corners android:radius="18dp" />
+    <stroke android:width="1dp" android:color="#44bdadff" />
+</shape>
+''',encoding='utf-8')
+
+def patch_github_updater(decoded):
+    helper=decoded/'smali/app/homemusic/AURAVersion.smali'
+    if not helper.exists():
+        raise RuntimeError('AURAVersion helper must be installed before patching updater')
+    f=decoded/'smali/rr1.smali'
+    s=f.read_text(encoding='utf-8')
+    start=s.index('.method public static final n()Lcom/eddyizm/tempus/homemusic/HubAppRelease;')
+    end=s.index('.end method',start)
+    method=s[start:end]
+    old='''    invoke-static {}, Lrr1;->c()Ljava/lang/String;
+
+    .line 2
+    .line 3
+    .line 4
+    move-result-object v0'''
+    new='''    const-string v0, "https://raw.githubusercontent.com/PlayInSpirits/HomeMusic-Fork/main"'''
+    if method.count(old)!=1:
+        raise RuntimeError('Updater feed URL insertion point was not found uniquely')
+    method=method.replace(old,new,1)
+    s=s[:start]+method+s[end:]
+    f.write_text(s,encoding='utf-8')
+
+    f=decoded/'smali/com/eddyizm/tempus/homemusic/HubUpdater.smali'
+    s=f.read_text(encoding='utf-8')
+    s=replace_once(s,'    const-wide/16 v5, 0x2b','''    invoke-static {p0}, Lapp/homemusic/AURAVersion;->versionCode(Landroid/content/Context;)J
+    move-result-wide v5''','Updater current versionCode (worker)')
+    s=replace_once(s,'    const-wide/16 v6, 0x2b','''    invoke-static {p0}, Lapp/homemusic/AURAVersion;->versionCode(Landroid/content/Context;)J
+    move-result-wide v6''','Updater current versionCode (callback)')
+    s=replace_once(s,'    const-string p2, "1.14.7"','''    invoke-static {p0}, Lapp/homemusic/AURAVersion;->versionName(Landroid/content/Context;)Ljava/lang/String;
+    move-result-object p2''','Updater latest-version toast')
+    s=replace_once(s,'    const-string v4, "1.14.7"','''    invoke-static {p1}, Lapp/homemusic/AURAVersion;->versionName(Landroid/content/Context;)Ljava/lang/String;
+    move-result-object v4''','Updater update-dialog installed version')
+    f.write_text(s,encoding='utf-8')
+
 def patch_hub_preferences(res):
     f=res/'xml/global_preferences.xml'; t=xml(f)
     found=set()
@@ -357,14 +434,70 @@ def patch_screen_backgrounds(res):
 def patch_hub_web_background(decoded):
     f=decoded/'smali/com/eddyizm/tempus/homemusic/HubFragment.smali'
     s=f.read_text(encoding='utf-8')
-    old=r"\'main{padding-bottom:16px!important}\';"
-    new=r"\'main{padding-bottom:16px!important}\' +\n            \'html,body{background:#0d0e18!important;color:#f4f1ff!important}\';"
-    if old not in s:
-        if "html,body{background:#0d0e18!important" not in s:
-            raise RuntimeError('Embedded Hub CSS insertion point not found')
-    else:
-        s=s.replace(old,new,1)
-    f.write_text(s,encoding='utf-8')
+    lines=s.splitlines()
+    indexes=[i for i,line in enumerate(lines) if 'const-string v8,' in line and '__HOMEMUSIC_EMBEDDED__' in line]
+    if len(indexes)!=1:
+        raise RuntimeError(f'Expected one embedded Hub style script, found {len(indexes)}')
+    script=r\'''(function () {
+  if (window.__AURA_HUB_STYLE__) return;
+  window.__AURA_HUB_STYLE__ = true;
+  var css = [
+    ':root{color-scheme:dark;--aura-text:#f4f1ff;--aura-muted:#beb9d2;--aura-violet:#bdadff;--aura-cyan:#79d9df;--aura-line:rgba(189,173,255,.18)}',
+    'html,body{min-height:100%;background:radial-gradient(ellipse at 12% 0%,rgba(93,65,150,.22),transparent 42%),radial-gradient(ellipse at 92% 28%,rgba(30,132,145,.14),transparent 38%),#0d0e18!important;color:var(--aura-text)!important}',
+    'body{font-family:system-ui,-apple-system,Roboto,sans-serif!important}main{padding:14px 14px 24px!important;background:transparent!important}',
+    'nav[aria-label="Разделы"]{display:flex!important;position:sticky;top:0;z-index:5;gap:7px;max-width:100%;overflow-x:auto;white-space:nowrap;padding:9px 12px!important;background:rgba(17,18,34,.92)!important;border-bottom:1px solid var(--aura-line)!important;backdrop-filter:blur(16px)}',
+    'nav[aria-label="Разделы"] a,nav[aria-label="Разделы"] button,nav[aria-label="Разделы"] [role="tab"]{flex:0 0 auto;min-height:38px;padding:8px 13px!important;border:1px solid transparent!important;border-radius:14px!important;color:var(--aura-muted)!important;background:rgba(255,255,255,.035)!important;transition:background .22s ease,border-color .22s ease,color .22s ease,transform .22s ease}',
+    'nav[aria-label="Разделы"] [aria-current="page"],nav[aria-label="Разделы"] [aria-selected="true"],nav[aria-label="Разделы"] .active{color:var(--aura-text)!important;background:linear-gradient(110deg,rgba(129,98,201,.34),rgba(38,139,150,.24))!important;border-color:rgba(189,173,255,.34)!important}',
+    'article,[data-slot="card"],[class*="Card"],[class*="rounded-xl"],[class*="rounded-2xl"],.card{background:linear-gradient(145deg,rgba(31,30,53,.92),rgba(17,28,42,.9))!important;border:1px solid var(--aura-line)!important;border-radius:18px!important;box-shadow:0 10px 28px rgba(0,0,0,.2)!important;color:var(--aura-text)!important}',
+    'h1,h2,h3,h4,strong{color:#fff!important}p,label,small,li{color:var(--aura-muted)}',
+    'button,[role="button"],a[data-slot="button"]{border-radius:14px!important;transition:transform .2s ease,box-shadow .2s ease,background .2s ease,border-color .2s ease!important}',
+    'button:not(:disabled):hover,[role="button"]:hover,a[data-slot="button"]:hover{transform:translateY(-1px);box-shadow:0 7px 20px rgba(0,0,0,.22)}',
+    'input,select,textarea{background:rgba(10,12,24,.82)!important;color:var(--aura-text)!important;border-color:rgba(189,173,255,.25)!important;border-radius:13px!important;transition:border-color .2s ease,box-shadow .2s ease!important}',
+    'input:focus,select:focus,textarea:focus{border-color:var(--aura-violet)!important;box-shadow:0 0 0 3px rgba(189,173,255,.12)!important;outline:none!important}',
+    'a{color:var(--aura-cyan)}hr{border-color:var(--aura-line)!important}img{border-radius:12px}',
+    '::-webkit-scrollbar{width:7px;height:7px}::-webkit-scrollbar-thumb{background:rgba(189,173,255,.28);border-radius:8px}',
+    '.aura-hub-enter{animation:auraHubEnter .34s cubic-bezier(.2,.7,.25,1) both}',
+    '@keyframes auraHubEnter{from{opacity:.35;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}',
+    '@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}'
+  ].join('');
+  function addStyle() {
+    if (!document.getElementById('aura-hub-style')) {
+      var style = document.createElement('style');
+      style.id = 'aura-hub-style';
+      style.textContent = css;
+      (document.head || document.documentElement).appendChild(style);
+    }
+  }
+  function animatePage() {
+    var main = document.querySelector('main');
+    if (!main || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    main.classList.remove('aura-hub-enter');
+    void main.offsetWidth;
+    main.classList.add('aura-hub-enter');
+  }
+  function start() {
+    addStyle();
+    animatePage();
+    if (document.body && window.MutationObserver) {
+      var pending = false;
+      var observer = new MutationObserver(function (records) {
+        var changed = records.some(function (record) { return record.addedNodes && record.addedNodes.length; });
+        if (!changed || pending) return;
+        pending = true;
+        requestAnimationFrame(function () { pending = false; animatePage(); });
+      });
+      observer.observe(document.body, {childList:true, subtree:true});
+    }
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start, {once:true});
+  else start();
+  window.addEventListener('popstate', animatePage);
+  window.addEventListener('hm:unauthorized', function () {
+    try { HomeMusicAndroid.onUnauthorized(); } catch (e) {}
+  });
+})();\'''
+    lines[indexes[0]]='    const-string v8, '+json.dumps(script,ensure_ascii=True)
+    f.write_text('\\n'.join(lines)+'\\n',encoding='utf-8')
 
 def patch_vectors(res):
     d=res/'drawable'
