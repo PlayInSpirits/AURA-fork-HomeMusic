@@ -1146,7 +1146,7 @@ Currently in use: %2$s MiB"</string>
     <string name="settings_title_ui">UI</string>
     <string name="settings_track_number">Show track number</string>
     <string name="settings_track_number_summary">If enabled, shows the track number of the song being played.</string>
-    <string name="settings_version_summary">AURA pr0.72-3</string>
+    <string name="settings_version_summary">AURA pr0.72-4</string>
     <string name="settings_version_title">AURA version</string>
     <string name="settings_wifi_only_summary">Ask for user confirmation before streaming over mobile network.</string>
     <string name="settings_wifi_only_title">Stream via Wi-Fi only alert</string>

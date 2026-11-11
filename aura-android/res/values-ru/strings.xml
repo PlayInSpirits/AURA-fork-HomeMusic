@@ -885,7 +885,7 @@
     <string name="settings_title_ui">Интерфейс</string>
     <string name="settings_track_number">Показывать номер трека</string>
     <string name="settings_track_number_summary">Отображать порядковый номер воспроизводимого трека.</string>
-    <string name="settings_version_summary">AURA pr0.72-3</string>
+    <string name="settings_version_summary">AURA pr0.72-4</string>
     <string name="settings_version_title">Версия AURA</string>
     <string name="settings_wifi_only_summary">Спрашивать разрешение перед стримингом в мобильной сети.</string>
     <string name="settings_wifi_only_title">Предупреждение Только Wi-Fi</string>

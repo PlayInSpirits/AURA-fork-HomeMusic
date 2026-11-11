@@ -86,7 +86,7 @@
 
 # virtual methods
 .method public final H(Landroid/view/LayoutInflater;Landroid/view/ViewGroup;Landroid/os/Bundle;)Landroid/view/View;
-    .locals 76
+    .locals 77
 
     .line 1
     move-object/from16 v0, p0
@@ -2713,6 +2713,7 @@
     .line 1369
     invoke-direct {v6, v0, v2}, Lgo1;-><init>(Lcp1;I)V
 
+    move/from16 v76, v7
     new-instance v7, Lapp/homemusic/AURAWaveToggleClickListener;
     invoke-direct {v7, v6}, Lapp/homemusic/AURAWaveToggleClickListener;-><init>(Landroid/view/View$OnClickListener;)V
 
@@ -2726,6 +2727,7 @@
     invoke-virtual {v5, v8}, Landroid/view/View;->setOnTouchListener(Landroid/view/View$OnTouchListener;)V
 
     invoke-static {v5}, Lapp/homemusic/AURAWaveToggleClickListener;->syncIcon(Landroid/view/View;)V
+    move/from16 v7, v76
 
     .line 1373
     .line 1374
