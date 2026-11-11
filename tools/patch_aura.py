@@ -44,33 +44,59 @@ def patch_login_server(decoded):
         raise RuntimeError(f'Expected at least 5 default HomeMusic server references; updated {replaced}')
     return replaced
 
-def generate_aurora(res,count=48):
+def generate_aurora(res,count=60):
     import numpy as np
     from PIL import Image,ImageFilter
     d=res/'drawable-nodpi'; d.mkdir(parents=True,exist_ok=True)
-    w,h=480,230; yy,xx=np.mgrid[0:h,0:w].astype(np.float32); xx/=w-1; yy/=h-1
-    base=np.zeros((h,w,3),np.float32); base[:]=[18,18,34]
-    palette=[(104,72,224),(220,66,142),(22,166,190),(244,132,82)]
+    w,h=480,230
+    yy,xx=np.mgrid[0:h,0:w].astype(np.float32); xx/=w-1; yy/=h-1
+    base=np.zeros((h,w,3),np.float32); base[:]=[15,16,31]
+    palette=[(112,78,226),(220,68,154),(27,174,192),(246,139,91),(53,119,218)]
+    def blend(c1,c2,mix):
+        return np.asarray(c1,dtype=np.float32)*(1.0-mix)+np.asarray(c2,dtype=np.float32)*mix
     for f in range(count):
-        phase=2*math.pi*f/count; image=base.copy()
-        blobs=[(.22+.13*math.sin(phase),.36+.10*math.cos(phase*.8),.36,.78,palette[0]),(.76+.10*math.cos(phase+1.2),.55+.11*math.sin(phase*1.1),.34,.82,palette[1]),(.52+.13*math.sin(phase+2.1),.12+.10*math.cos(phase*.7),.28,.48,palette[2]),(.92-.08*math.sin(phase+.4),.88+.05*math.cos(phase),.26,.56,palette[3])]
-        for cx,cy,sx,sy,c in blobs:
-            glow=np.exp(-(((xx-cx)/sx)**2+((yy-cy)/sy)**2)*3)*.72
-            image+=glow[...,None]*np.array(c,np.float32)[None,None,:]
-        vignette=np.clip(1-.25*(((xx-.5)/.75)**2+((yy-.5)/.85)**2),.58,1); image*=vignette[...,None]
-        Image.fromarray(np.clip(image,0,255).astype('uint8'),'RGB').filter(ImageFilter.GaussianBlur(1.2)).save(d/f'aura_aurora_{f:02d}.png',optimize=True)
-        # Player frames use the same dark aurora palette to keep white controls readable.
-        light=np.zeros((h,w,3),np.float32); light[:]=[18,18,34]
-        pblobs=[(.22+.13*math.sin(phase),.36+.10*math.cos(phase*.8),.36,.78,(104,72,224)),(.76+.10*math.cos(phase+1.2),.55+.11*math.sin(phase*1.1),.34,.82,(220,66,142)),(.52+.13*math.sin(phase+2.1),.12+.10*math.cos(phase*.7),.28,.48,(22,166,190)),(.92-.08*math.sin(phase+.4),.88+.05*math.cos(phase),.26,.56,(244,132,82))]
-        for cx,cy,sx,sy,c in pblobs:
-            glow=np.exp(-(((xx-cx)/sx)**2+((yy-cy)/sy)**2)*3)*.56
-            light+=glow[...,None]*np.array(c,np.float32)[None,None,:]
-        Image.fromarray(np.clip(light,0,255).astype('uint8'),'RGB').filter(ImageFilter.GaussianBlur(1.2)).save(d/f'aura_player_aurora_{f:02d}.png',optimize=True)
-    items='\n'.join(f' <item android:drawable="@drawable/aura_aurora_{i:02d}" android:duration="66" />' for i in range(count))
+        phase=2*math.pi*f/count
+        p1=phase
+        p2=2*phase+0.85
+        p3=3*phase+2.10
+        p4=4*phase+0.45
+        colors=[
+            blend(palette[0],palette[4],0.5+0.5*math.sin(p2)),
+            blend(palette[1],palette[2],0.5+0.5*math.sin(p3)),
+            blend(palette[2],palette[4],0.5+0.5*math.cos(p1+0.7)),
+            blend(palette[3],palette[1],0.5+0.5*math.sin(p4+1.1))
+        ]
+        blobs=[
+            (.19+.15*math.sin(p1),.34+.12*math.cos(p2),.37,.77,colors[0],.66+.12*math.sin(p3)),
+            (.78+.12*math.cos(p2+1.1),.56+.13*math.sin(p3),.34,.82,colors[1],.64+.14*math.cos(p1)),
+            (.50+.16*math.sin(p3+1.8),.16+.10*math.cos(p1),.29,.52,colors[2],.61+.12*math.sin(p2)),
+            (.89-.09*math.sin(p4+.4),.84+.07*math.cos(p2),.27,.57,colors[3],.58+.13*math.cos(p3))
+        ]
+        image=base.copy()
+        for cx,cy,sx,sy,color,strength in blobs:
+            glow=np.exp(-(((xx-cx)/sx)**2+((yy-cy)/sy)**2)*3)*strength
+            image+=glow[...,None]*color[None,None,:]
+        sweep_x=.50+.28*math.sin(p2)
+        sweep_y=.48+.22*math.cos(p1)
+        sweep=np.exp(-(((xx-sweep_x)/.72)**2+((yy-sweep_y)/.18)**2)*2.2)*.16
+        image+=sweep[...,None]*np.array((48,116,190),np.float32)[None,None,:]
+        vignette=np.clip(1-.24*(((xx-.5)/.76)**2+((yy-.5)/.86)**2),.58,1)
+        image*=vignette[...,None]
+        Image.fromarray(np.clip(image,0,255).astype('uint8'),'RGB').filter(ImageFilter.GaussianBlur(1.25)).save(d/f'aura_aurora_{f:02d}.png',optimize=True)
+
+        player=base.copy()
+        for cx,cy,sx,sy,color,strength in blobs:
+            glow=np.exp(-(((xx-cx)/sx)**2+((yy-cy)/sy)**2)*3)*(strength*.55)
+            player+=glow[...,None]*color[None,None,:]
+        player+=sweep[...,None]*np.array((43,94,157),np.float32)[None,None,:]*.7
+        player*=vignette[...,None]
+        Image.fromarray(np.clip(player,0,255).astype('uint8'),'RGB').filter(ImageFilter.GaussianBlur(1.25)).save(d/f'aura_player_aurora_{f:02d}.png',optimize=True)
+    items='\n'.join(f' <item android:drawable="@drawable/aura_aurora_{i:02d}" android:duration="50" />' for i in range(count))
     (res/'drawable/aura_aurora_background.xml').write_text(f'<?xml version="1.0" encoding="utf-8"?>\n<animation-list xmlns:android="http://schemas.android.com/apk/res/android" android:oneshot="false">\n{items}\n</animation-list>',encoding='utf-8')
     for name,seq in [('aura_player_play_transition.xml',range(0,10)),('aura_player_pause_transition.xml',range(10,0,-1))]:
         items='\n'.join(f' <item android:drawable="@drawable/aura_player_aurora_{i:02d}" android:duration="85" />' for i in seq)
         (res/'drawable'/name).write_text(f'<?xml version="1.0" encoding="utf-8"?>\n<animation-list xmlns:android="http://schemas.android.com/apk/res/android" android:oneshot="true">\n{items}\n</animation-list>',encoding='utf-8')
+
 def create_player_state_drawables(res):
     d=res/'drawable'
     for name,seq in [('aura_player_play_transition.xml',range(0,10)),('aura_player_pause_transition.xml',range(10,0,-1))]:
@@ -175,7 +201,7 @@ def patch_about_settings(res,decoded):
       'settings_github_link':'https://github.com/PlayInSpirits/HomeMusic-Fork',
       'settings_github_summary':'AURA source code and releases',
       'settings_github_title':'GitHub',
-      'settings_version_summary':'AURA 0.5-1',
+      'settings_version_summary':'AURA 0.5-2',
       'settings_version_title':'AURA version',
       'homemusic_settings_title':'AURA (HomeMusic)',
       'aura_contact_author_title':'Contact the fork author',
@@ -188,7 +214,7 @@ def patch_about_settings(res,decoded):
       'settings_github_link':'https://github.com/PlayInSpirits/HomeMusic-Fork',
       'settings_github_summary':'Исходный код и релизы AURA',
       'settings_github_title':'GitHub',
-      'settings_version_summary':'AURA 0.5-1',
+      'settings_version_summary':'AURA 0.5-2',
       'settings_version_title':'Версия AURA',
       'homemusic_settings_title':'AURA (HomeMusic)',
       'aura_contact_author_title':'Связаться с автором форка',
@@ -310,6 +336,27 @@ def patch_hub_native_ui(res):
     <stroke android:width="1dp" android:color="#44bdadff" />
 </shape>
 ''',encoding='utf-8')
+
+def patch_search_ui(res):
+    f=res/'layout/fragment_search.xml'
+    t=xml(f); root=t.getroot()
+    root.set(a('background'),'@drawable/aura_home_background')
+    for n in root.iter():
+        tag=n.tag.split('}')[-1]
+        if tag=='AppBarLayout':
+            n.set(a('background'),'@drawable/aura_toolbar_gradient')
+        elif tag=='SearchBar':
+            n.set(a('background'),'@drawable/aura_toolbar_gradient')
+            n.set(p('backgroundTint'),'@color/md_theme_dark_surface')
+        elif tag=='SearchView':
+            n.set(a('background'),'@drawable/aura_home_background')
+            n.set(p('backgroundTint'),'@color/md_theme_dark_surface')
+            n.set(p('hideNavigationIcon'),'false')
+            n.set(p('navigationIcon'),'@drawable/ic_arrow_back')
+            n.set(p('navigationIconTint'),'#fff4f1ff')
+        elif tag=='ScrollView':
+            n.set(a('background'),'@drawable/aura_home_background')
+    save(t,f)
 
 def patch_github_updater(decoded):
     helper=decoded/'smali/app/homemusic/AURAVersion.smali'
@@ -435,7 +482,7 @@ def patch_hub_web_background(decoded):
     f=decoded/'smali/com/eddyizm/tempus/homemusic/HubFragment.smali'
     s=f.read_text(encoding='utf-8')
     lines=s.splitlines()
-    indexes=[i for i,line in enumerate(lines) if 'const-string v8,' in line and '__HOMEMUSIC_EMBEDDED__' in line]
+    indexes=[i for i,line in enumerate(lines) if 'const-string v8,' in line and '__AURA_HUB_STYLE__' in line]
     if len(indexes)!=1:
         raise RuntimeError(f'Expected one embedded Hub style script, found {len(indexes)}')
     script=r'''(function () {
@@ -444,8 +491,9 @@ def patch_hub_web_background(decoded):
   var css = [
     ':root{color-scheme:dark;--aura-text:#f4f1ff;--aura-muted:#beb9d2;--aura-violet:#bdadff;--aura-cyan:#79d9df;--aura-line:rgba(189,173,255,.18)}',
     'html,body{min-height:100%;background:radial-gradient(ellipse at 12% 0%,rgba(93,65,150,.22),transparent 42%),radial-gradient(ellipse at 92% 28%,rgba(30,132,145,.14),transparent 38%),#0d0e18!important;color:var(--aura-text)!important}',
-    'body{font-family:system-ui,-apple-system,Roboto,sans-serif!important}main{padding:14px 14px 24px!important;background:transparent!important}',
-    'nav[aria-label="Разделы"]{display:flex!important;position:sticky;top:0;z-index:5;gap:7px;max-width:100%;overflow-x:auto;white-space:nowrap;padding:9px 12px!important;background:rgba(17,18,34,.92)!important;border-bottom:1px solid var(--aura-line)!important;backdrop-filter:blur(16px)}',
+    'body{font-family:system-ui,-apple-system,Roboto,sans-serif!important;padding-bottom:calc(112px + env(safe-area-inset-bottom))!important}',
+    'main{padding:14px 14px calc(152px + env(safe-area-inset-bottom))!important;background:transparent!important;min-height:100vh}',
+    'nav[aria-label="Разделы"]{display:flex!important;visibility:visible!important;opacity:1!important;position:sticky;top:0;z-index:15;gap:7px;max-width:100%;overflow-x:auto;white-space:nowrap;padding:9px 12px!important;background:rgba(17,18,34,.96)!important;border-bottom:1px solid var(--aura-line)!important;backdrop-filter:blur(16px)}',
     'nav[aria-label="Разделы"] a,nav[aria-label="Разделы"] button,nav[aria-label="Разделы"] [role="tab"]{flex:0 0 auto;min-height:38px;padding:8px 13px!important;border:1px solid transparent!important;border-radius:14px!important;color:var(--aura-muted)!important;background:rgba(255,255,255,.035)!important;transition:background .22s ease,border-color .22s ease,color .22s ease,transform .22s ease}',
     'nav[aria-label="Разделы"] [aria-current="page"],nav[aria-label="Разделы"] [aria-selected="true"],nav[aria-label="Разделы"] .active{color:var(--aura-text)!important;background:linear-gradient(110deg,rgba(129,98,201,.34),rgba(38,139,150,.24))!important;border-color:rgba(189,173,255,.34)!important}',
     'article,[data-slot="card"],[class*="Card"],[class*="rounded-xl"],[class*="rounded-2xl"],.card{background:linear-gradient(145deg,rgba(31,30,53,.92),rgba(17,28,42,.9))!important;border:1px solid var(--aura-line)!important;border-radius:18px!important;box-shadow:0 10px 28px rgba(0,0,0,.2)!important;color:var(--aura-text)!important}',
@@ -458,15 +506,19 @@ def patch_hub_web_background(decoded):
     '::-webkit-scrollbar{width:7px;height:7px}::-webkit-scrollbar-thumb{background:rgba(189,173,255,.28);border-radius:8px}',
     '.aura-hub-enter{animation:auraHubEnter .34s cubic-bezier(.2,.7,.25,1) both}',
     '@keyframes auraHubEnter{from{opacity:.35;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}',
+    '.aura-assistant-composer{position:sticky!important;bottom:calc(104px + env(safe-area-inset-bottom))!important;z-index:30!important;margin-top:14px!important;padding:12px!important;background:rgba(17,18,34,.97)!important;border:1px solid var(--aura-line)!important;border-radius:18px!important;backdrop-filter:blur(18px)!important;box-shadow:0 -8px 26px rgba(0,0,0,.32)!important}',
+    '.aura-assistant-action{display:inline-flex!important;align-items:center!important;justify-content:center!important;min-height:44px!important;padding:10px 16px!important;border:1px solid rgba(189,173,255,.34)!important;border-radius:14px!important;background:linear-gradient(110deg,#59458f,#176e79)!important;color:#fff!important;box-shadow:0 7px 20px rgba(0,0,0,.22)!important}',
     '@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}'
   ].join('');
+  function routeText() {
+    return ((location.pathname || '') + ' ' + (location.hash || '')).toLowerCase();
+  }
   function addStyle() {
-    if (!document.getElementById('aura-hub-style')) {
-      var style = document.createElement('style');
-      style.id = 'aura-hub-style';
-      style.textContent = css;
-      (document.head || document.documentElement).appendChild(style);
-    }
+    if (document.getElementById('aura-hub-style')) return;
+    var style = document.createElement('style');
+    style.id = 'aura-hub-style';
+    style.textContent = css;
+    (document.head || document.documentElement).appendChild(style);
   }
   function animatePage() {
     var main = document.querySelector('main');
@@ -475,24 +527,76 @@ def patch_hub_web_background(decoded):
     void main.offsetWidth;
     main.classList.add('aura-hub-enter');
   }
-  function start() {
-    addStyle();
-    animatePage();
-    if (document.body && window.MutationObserver) {
-      var pending = false;
-      var observer = new MutationObserver(function (records) {
-        var changed = records.some(function (record) { return record.addedNodes && record.addedNodes.length; });
-        if (!changed || pending) return;
-        pending = true;
-        requestAnimationFrame(function () { pending = false; animatePage(); });
-      });
-      observer.observe(document.body, {childList:true, subtree:true});
+  function keepTabsVisible() {
+    var nav = document.querySelector('nav[aria-label="Разделы"]');
+    if (!nav) return;
+    nav.style.setProperty('display','flex','important');
+    nav.style.setProperty('visibility','visible','important');
+    nav.style.setProperty('opacity','1','important');
+  }
+  function removeCatalogShortcuts() {
+    if (!/catalog/.test(routeText())) return;
+    var labels = /^(моя волна|микс дня|my wave|daily mix)$/i;
+    document.querySelectorAll('button,a,[role="button"]').forEach(function (el) {
+      var label = (el.innerText || el.textContent || '').replace(/\s+/g,' ').trim();
+      if (!labels.test(label)) return;
+      var card = el.closest('article,[data-slot="card"],.card,[class*="Card"]') || el;
+      card.style.setProperty('display','none','important');
+    });
+  }
+  function liftAssistantComposer() {
+    if (!/assistant/.test(routeText())) return;
+    document.querySelectorAll('button,a,[role="button"]').forEach(function (el) {
+      var label = (el.innerText || el.textContent || '').replace(/\s+/g,' ').trim();
+      if (!/(сообщени[ея] ассистенту|написать ассистенту|send.*assistant|message.*assistant)/i.test(label)) return;
+      el.classList.add('aura-assistant-action');
+      var shell = el.closest('form') || el.parentElement;
+      if (shell) shell.classList.add('aura-assistant-composer');
+    });
+    var input = document.querySelector('textarea[placeholder],input[placeholder]');
+    if (input) {
+      var form = input.closest('form') || input.parentElement;
+      if (form) form.classList.add('aura-assistant-composer');
     }
   }
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start, {once:true});
+  function recoverLayout() {
+    addStyle();
+    keepTabsVisible();
+    removeCatalogShortcuts();
+    liftAssistantComposer();
+  }
+  var pending = false;
+  function scheduleLayout() {
+    if (pending) return;
+    pending = true;
+    requestAnimationFrame(function () {
+      pending = false;
+      recoverLayout();
+      animatePage();
+    });
+  }
+  function start() {
+    recoverLayout();
+    animatePage();
+    if (document.documentElement && window.MutationObserver) {
+      var observer = new MutationObserver(function (records) {
+        var changed = records.some(function (record) {
+          return record.addedNodes && record.addedNodes.length;
+        });
+        if (changed) scheduleLayout();
+      });
+      observer.observe(document.documentElement,{childList:true,subtree:true});
+    }
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded',start,{once:true});
   else start();
-  window.addEventListener('popstate', animatePage);
-  window.addEventListener('hm:unauthorized', function () {
+  window.addEventListener('hashchange',scheduleLayout);
+  window.addEventListener('popstate',scheduleLayout);
+  window.addEventListener('pageshow',scheduleLayout);
+  document.addEventListener('visibilitychange',function () {
+    if (document.visibilityState === 'visible') scheduleLayout();
+  });
+  window.addEventListener('hm:unauthorized',function () {
     try { HomeMusicAndroid.onUnauthorized(); } catch (e) {}
   });
 })();'''
@@ -590,7 +694,7 @@ def patch_smali(decoded):
     if n!=1: raise RuntimeError('Unable to locate original My Wave insertion point in cp1.smali')
     f.write_text(s,encoding='utf-8')
 def version(decoded):
-    f=decoded/'apktool.yml';s=f.read_text(encoding='utf-8');s=re.sub(r'(?m)^  versionCode: .*?$','  versionCode: 501',s);s=re.sub(r'(?m)^  versionName: .*?$','  versionName: "0.5-1"',s);f.write_text(s,encoding='utf-8')
+    f=decoded/'apktool.yml';s=f.read_text(encoding='utf-8');s=re.sub(r'(?m)^  versionCode: .*?$','  versionCode: 502',s);s=re.sub(r'(?m)^  versionName: .*?$','  versionName: "0.5-2"',s);f.write_text(s,encoding='utf-8')
 
 def main():
     if len(sys.argv)<2: raise SystemExit('Usage: patch_aura.py decoded [logo.png]')
@@ -600,7 +704,7 @@ def main():
       'md_theme_light_background':'#fff7f7fc','md_theme_light_onBackground':'#ff191922','md_theme_light_surface':'#fffcfbff','md_theme_light_onSurface':'#ff191922','md_theme_light_surfaceVariant':'#fff0eef6','md_theme_light_onSurfaceVariant':'#ff625f72','md_theme_light_primary':'#ff6652d9','md_theme_light_onPrimary':'#ffffffff','md_theme_light_primaryContainer':'#ffe9e5ff','md_theme_light_onPrimaryContainer':'#ff21154f','md_theme_light_secondary':'#ff007f89','md_theme_light_onSecondary':'#ffffffff','md_theme_light_secondaryContainer':'#ffd1f5f5','md_theme_light_onSecondaryContainer':'#ff00363d','md_theme_light_tertiary':'#ffc64b78','md_theme_light_onTertiary':'#ffffffff','md_theme_light_tertiaryContainer':'#ffffdbe8','md_theme_light_onTertiaryContainer':'#ff4e102e','md_theme_light_outline':'#ff7d7788','dividerColor':'#ffe6e2f0','titleTextColor':'#ff191922','subtitleTextColor':'#ff666477','hub_background':'#ff111320','hub_text':'#fff5f2ff','homemusic_danger':'#ffce486d','widget_icon_tint_active':'#ff6652d9'})
     colors(res/'values/colors.xml',{'md_theme_dark_background':'#ff0d0e18','md_theme_dark_onBackground':'#fff4f1ff','md_theme_dark_surface':'#ff131522','md_theme_dark_onSurface':'#fff4f1ff','md_theme_dark_surfaceVariant':'#ff272839','md_theme_dark_onSurfaceVariant':'#ffb9b5cf','md_theme_dark_primary':'#ffbdadff','md_theme_dark_onPrimary':'#ff241858','md_theme_dark_primaryContainer':'#ff382f6d','md_theme_dark_onPrimaryContainer':'#fff0eaff','md_theme_dark_secondary':'#ff79d9df','md_theme_dark_onSecondary':'#ff00363d','md_theme_dark_secondaryContainer':'#ff15464d','md_theme_dark_onSecondaryContainer':'#ffb9f7fb','md_theme_dark_tertiary':'#ffff9fc3','md_theme_dark_onTertiary':'#ff4e102e','md_theme_dark_tertiaryContainer':'#ff643148','md_theme_dark_onTertiaryContainer':'#ffffdbe8','md_theme_dark_outline':'#ffaaa5bc'})
     if (res/'values-night/colors.xml').exists(): colors(res/'values-night/colors.xml',{'dividerColor':'#ff343448','titleTextColor':'#fff4f1ff','subtitleTextColor':'#ffb9b5cf','widget_bg':'#e51a1b2d','widget_icon_tint':'#ffffffff','widget_icon_tint_active':'#ffbdadff','widget_subtitle':'#ffc6c2d8','widget_title':'#ffffffff'})
-    strings(res);login_refs=patch_login_server(decoded);drawables(res);generate_aurora(res);create_player_state_drawables(res);patch_logo(res,logo);patch_vectors(res);patch_theme(res);patch_main_menu(res);patch_toolbar_menu_null_guard(decoded);patch_about_settings(res,decoded);patch_hub_preferences(res);patch_hub_defaults(decoded);patch_hub_native_ui(res);patch_github_updater(decoded);patch_hub_web_background(decoded);patch_screen_backgrounds(res);patch_toolbar(res);patch_home_mix_layout(res);patch_player_controls(res);patch_smali(decoded);patch_home_scroll_background(res);version(decoded)
+    strings(res);login_refs=patch_login_server(decoded);drawables(res);generate_aurora(res);create_player_state_drawables(res);patch_logo(res,logo);patch_vectors(res);patch_theme(res);patch_main_menu(res);patch_toolbar_menu_null_guard(decoded);patch_about_settings(res,decoded);patch_hub_preferences(res);patch_hub_defaults(decoded);patch_hub_native_ui(res);patch_search_ui(res);patch_github_updater(decoded);patch_hub_web_background(decoded);patch_screen_backgrounds(res);patch_toolbar(res);patch_home_mix_layout(res);patch_player_controls(res);patch_smali(decoded);patch_home_scroll_background(res);version(decoded)
     manifest=(decoded/'AndroidManifest.xml').read_text(encoding='utf-8')
     if 'package="app.homemusic"' not in manifest: raise RuntimeError('HomeMusic package ID changed')
     for file,ids in {'layout/fragment_homemusic_login.xml':['hm_login_server','hm_login_primary','hm_login_code','hm_login_google'],'layout/fragment_home_tab_music.xml':['home_discover_sector','home_similar_tracks_sector','home_radio_artist_sector']}.items():
@@ -627,8 +731,8 @@ def main():
     if defaults.count('http://192.168.1.129:8080')!=2: raise RuntimeError('One-time Hub URL migration is incomplete')
     if 'Theme.Material3.Dark.NoActionBar' not in (res/'values/styles.xml').read_text(encoding='utf-8'): raise RuntimeError('Dark AURA theme was not applied')
     apktool_text=(decoded/'apktool.yml').read_text(encoding='utf-8')
-    if 'versionCode: 501' not in apktool_text or 'versionName: "0.5-1"' not in apktool_text:
-        raise RuntimeError('AURA 0.5-1 manifest version is not set')
+    if 'versionCode: 502' not in apktool_text or 'versionName: "0.5-2"' not in apktool_text:
+        raise RuntimeError('AURA 0.5-2 manifest version is not set')
     updater=(decoded/'smali/com/eddyizm/tempus/homemusic/HubUpdater.smali').read_text(encoding='utf-8')
     if '1.14.7' in updater or '0x2b' in updater or updater.count('Lapp/homemusic/AURAVersion;->versionCode')!=2:
         raise RuntimeError('GitHub updater still contains original HomeMusic version constants')
@@ -646,9 +750,18 @@ def main():
     menu_ids=[node.get(a('id')) for node in list(menu_tree)]
     if menu_ids.index('@id/action_settings') < menu_ids.index('@id/action_search'):
         raise RuntimeError('Settings action is not rightmost in the toolbar')
+    search_layout=(res/'layout/fragment_search.xml').read_text(encoding='utf-8')
+    if 'hideNavigationIcon' not in search_layout or 'ic_arrow_back' not in search_layout or 'aura_home_background' not in search_layout:
+        raise RuntimeError('AURA SearchView back navigation and dark background are missing')
+    if 'aura-assistant-composer' not in hub_smali or 'removeCatalogShortcuts' not in hub_smali or 'keepTabsVisible' not in hub_smali:
+        raise RuntimeError('Hub Assistant composer, Catalog shortcuts or navigation restoration are missing')
+    aurora=(res/'drawable/aura_aurora_background.xml').read_text(encoding='utf-8')
+    if 'android:duration="50"' not in aurora or aurora.count('<item')<60:
+        raise RuntimeError('Dynamic My Wave aurora animation is incomplete')
+
     hub_layout=(res/'layout/fragment_hub.xml').read_text(encoding='utf-8')
     if 'tabIndicatorAnimationMode' not in hub_layout or 'aura_hub_tabs_background' not in hub_layout:
         raise RuntimeError('Native Hub tabs are not using AURA styling')
 
-    print(f'AURA 0.5-1: dynamic PackageInfo versionName/versionCode; GitHub latest.json update feed; Telegram contact in About; Settings action moved right of Search; Hub tabs and WebView unified dark aurora styling with transitions; MediaRoute item hidden and null-guarded; Hub URLs, login, authentication, playback and My Wave preserved ({login_refs} login references).')
+    print(f'AURA 0.5-2: dynamic PackageInfo versionName/versionCode; GitHub latest.json update feed; Telegram contact in About; Settings action moved right of Search; Hub tabs, Assistant composer and Catalog use unified styling; SearchView has an explicit back arrow; My Wave uses a multi-phase aurora animation; MediaRoute item hidden and null-guarded; Hub URLs, login, authentication, playback and My Wave preserved ({login_refs} login references).')
 if __name__=='__main__': main()
