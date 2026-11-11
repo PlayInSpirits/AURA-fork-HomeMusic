@@ -4,4 +4,4 @@
 
 Форк Android-клиента HomeMusic: [исходный проект](https://github.com/justman-1/HomeMusic-public).
 
-Лицензия — GPL-3.0.
+Сборка: AURA 0.3. Лицензия — GPL-3.0.
