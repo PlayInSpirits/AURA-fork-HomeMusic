@@ -163,7 +163,7 @@ def patch_initial_preferences(res):
 
 def patch_updater_external_asset(decoded):
     f=decoded/'smali/d25.smali'; s=f.read_text(encoding='utf-8')
-    pattern=re.compile(r'(?s)    invoke-virtual \\{p0\\}, Lcom/eddyizm/tempus/homemusic/HubUpdateFile;->getUrl\\(\\)Ljava/lang/String;.*?    const-string v4, "/app/artifacts/"')
+    pattern=re.compile(r'(?s)    invoke-virtual \{p0\}, Lcom/eddyizm/tempus/homemusic/HubUpdateFile;->getUrl\(\)Ljava/lang/String;.*?    const-string v4, "/app/artifacts/"')
     replacement='''    invoke-virtual {p0}, Lcom/eddyizm/tempus/homemusic/HubUpdateFile;->getUrl()Ljava/lang/String;
     move-result-object p0
     const-string v1, "apk"
