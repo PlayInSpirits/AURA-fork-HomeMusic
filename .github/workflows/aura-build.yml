@@ -128,10 +128,39 @@ jobs:
           curl -fsSL https://github.com/iBotPeaches/Apktool/releases/download/v3.0.3/apktool_3.0.3.jar -o apktool.jar
           echo "dbf930b076c6b9be08d57c449cacefc3bdd6b71ebd59b3066fc0e1f5b14f9423  apktool.jar" | sha256sum -c -
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
+      - name: Configure Python 3.12 without PowerShell scripts
+        run: |
+          set -euo pipefail
+
+          PYTHON_CMD="$(command -v python.exe || command -v python || true)"
+          if [ -n "$PYTHON_CMD" ] && "$PYTHON_CMD" -c 'import sys; raise SystemExit(0 if sys.version_info >= (3, 12) else 1)'; then
+            PYTHON_BIN="$(cygpath -u "$PYTHON_CMD" 2>/dev/null || printf '%s' "$PYTHON_CMD")"
+            PYTHON_DIR="$(cd "$(dirname "$PYTHON_BIN")" && pwd -P)"
+            echo "Using installed Python: $PYTHON_BIN"
+            if ! "$PYTHON_BIN" -m pip --version >/dev/null 2>&1; then
+              "$PYTHON_BIN" -m ensurepip --upgrade
+            fi
+          else
+            echo "Python 3.12+ was not found; installing the official embeddable Python 3.12.10 package."
+            PYTHON_DIR="$RUNNER_TEMP/aura-python-3.12.10"
+            PYTHON_DIR="$(cygpath -u "$PYTHON_DIR" 2>/dev/null || printf '%s' "$PYTHON_DIR")"
+            PYTHON_ZIP="$RUNNER_TEMP/python-3.12.10-embed-amd64.zip"
+            PYTHON_ZIP="$(cygpath -u "$PYTHON_ZIP" 2>/dev/null || printf '%s' "$PYTHON_ZIP")"
+            mkdir -p "$PYTHON_DIR"
+            curl -fL https://www.python.org/ftp/python/3.12.10/python-3.12.10-embed-amd64.zip -o "$PYTHON_ZIP"
+            unzip -q -o "$PYTHON_ZIP" -d "$PYTHON_DIR"
+            if ! grep -qx 'import site' "$PYTHON_DIR/python312._pth"; then
+              printf '\nimport site\n' >> "$PYTHON_DIR/python312._pth"
+            fi
+            curl -fL https://bootstrap.pypa.io/get-pip.py -o "$PYTHON_DIR/get-pip.py"
+            "$PYTHON_DIR/python.exe" "$PYTHON_DIR/get-pip.py" --no-warn-script-location
+            PYTHON_BIN="$PYTHON_DIR/python.exe"
+            printf '%s\n' "$(cygpath -w "$PYTHON_DIR")" >> "$GITHUB_PATH"
+          fi
+
+          "$PYTHON_BIN" --version
+          "$PYTHON_BIN" -m pip --version
+
 
       - name: Install Python image libraries
         run: python -m pip install --disable-pip-version-check pillow numpy
