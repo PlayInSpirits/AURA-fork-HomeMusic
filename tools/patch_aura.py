@@ -287,7 +287,7 @@ def patch_about_settings(res,decoded):
       'settings_github_link':'https://github.com/PlayInSpirits/HomeMusic-Fork',
       'settings_github_summary':'AURA source code and releases',
       'settings_github_title':'GitHub',
-      'settings_version_summary':'AURA pr7.0-1',
+      'settings_version_summary':'AURA pr0.7-1',
       'settings_version_title':'AURA version',
       'homemusic_settings_title':'AURA (HomeMusic)',
       'aura_contact_author_title':'Contact the fork author',
@@ -300,7 +300,7 @@ def patch_about_settings(res,decoded):
       'settings_github_link':'https://github.com/PlayInSpirits/HomeMusic-Fork',
       'settings_github_summary':'Исходный код и релизы AURA',
       'settings_github_title':'GitHub',
-      'settings_version_summary':'AURA pr7.0-1',
+      'settings_version_summary':'AURA pr0.7-1',
       'settings_version_title':'Версия AURA',
       'homemusic_settings_title':'AURA (HomeMusic)',
       'aura_contact_author_title':'Связаться с автором форка',
@@ -894,7 +894,7 @@ def patch_smali(decoded):
     f.write_text(s,encoding='utf-8')
 
 def version(decoded):
-    f=decoded/'apktool.yml';s=f.read_text(encoding='utf-8');s=re.sub(r'(?m)^  versionCode: .*?$','  versionCode: 7001',s);s=re.sub(r'(?m)^  versionName: .*?$','  versionName: "pr7.0-1"',s);f.write_text(s,encoding='utf-8')
+    f=decoded/'apktool.yml';s=f.read_text(encoding='utf-8');s=re.sub(r'(?m)^  versionCode: .*?$','  versionCode: 7001',s);s=re.sub(r'(?m)^  versionName: .*?$','  versionName: "pr0.7-1"',s);f.write_text(s,encoding='utf-8')
 
 def main():
     if len(sys.argv)<2: raise SystemExit('Usage: patch_aura.py decoded [logo.png]')
@@ -936,8 +936,8 @@ def main():
     if defaults.count('http://192.168.1.129:8080')!=2: raise RuntimeError('One-time Hub URL migration is incomplete')
     if 'Theme.Material3.Dark.NoActionBar' not in (res/'values/styles.xml').read_text(encoding='utf-8'): raise RuntimeError('Dark AURA theme was not applied')
     apktool_text=(decoded/'apktool.yml').read_text(encoding='utf-8')
-    if 'versionCode: 7001' not in apktool_text or 'versionName: "pr7.0-1"' not in apktool_text:
-        raise RuntimeError('AURA 0.6-1 manifest version is not set')
+    if 'versionCode: 7001' not in apktool_text or 'versionName: "pr0.7-1"' not in apktool_text:
+        raise RuntimeError('AURA pr0.7-1 manifest version is not set')
     updater=(decoded/'smali/com/eddyizm/tempus/homemusic/HubUpdater.smali').read_text(encoding='utf-8')
     if '1.14.7' in updater or '0x2b' in updater or updater.count('Lapp/homemusic/AURAVersion;->versionCode')!=2:
         raise RuntimeError('GitHub updater still contains original HomeMusic version constants')
@@ -979,5 +979,5 @@ def main():
     if 'tabIndicatorAnimationMode' not in hub_layout or 'aura_hub_tabs_background' not in hub_layout:
         raise RuntimeError('Native Hub tabs are not using AURA styling')
 
-    print(f'AURA pr7.0-1: dynamic PackageInfo versionName/versionCode; GitHub latest.json update feed; Telegram contact in About; Settings action moved right of Search; Hub tabs, Assistant composer and Catalog use unified styling; SearchView has an explicit back arrow; My Wave uses a multi-phase aurora animation; MediaRoute item hidden and null-guarded; Hub URLs, login, authentication, playback and My Wave preserved ({login_refs} login references).')
+    print(f'AURA pr0.7-1: dynamic PackageInfo versionName/versionCode; GitHub latest.json update feed; Telegram contact in About; Settings action moved right of Search; Hub tabs, Assistant composer and Catalog use unified styling; SearchView has an explicit back arrow; My Wave uses a multi-phase aurora animation; MediaRoute item hidden and null-guarded; Hub URLs, login, authentication, playback and My Wave preserved ({login_refs} login references).')
 if __name__=='__main__': main()
