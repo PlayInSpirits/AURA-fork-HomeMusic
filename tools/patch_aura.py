@@ -438,7 +438,7 @@ def patch_about_settings(res,decoded):
     move-result-object v3
     invoke-static {v3}, Lapp/homemusic/AURAVersion;->versionName(Landroid/content/Context;)Ljava/lang/String;
     move-result-object v3''','About versionName')
-    s=replace_once(s,'    const/16 v0, 0x2b','    nop','Do not display the HomeMusic versionCode')
+    s=replace_once(s,'    const/16 v0, 0x2b','    const/4 v0, 0x0','HomeMusic settings: keep versionCode out of the visible version label')
     s=replace_once(s,'const-string v2, "1.14.7"','''invoke-virtual {v5}, Lkc1;->Z()Landroid/content/Context;
     move-result-object v2
     invoke-static {v2}, Lapp/homemusic/AURAVersion;->versionName(Landroid/content/Context;)Ljava/lang/String;
@@ -1479,8 +1479,8 @@ def main():
     if 'android:layout_height="76dp"' not in nav_layout or 'aura_bottom_nav_tint' not in nav_layout or 'android:layout_marginBottom="18dp"' not in nav_layout or 'labelVisibilityMode="unlabeled"' not in nav_layout or 'AURA.BottomNavigation.ActiveIndicator' not in nav_layout:
         raise RuntimeError('Bottom navigation must be icon-only with the modern active indicator')
     nav_bg=(res/'drawable/aura_bottom_nav_island.xml').read_text(encoding='utf-8')
-    if '#ff66538f' not in nav_bg or '#ff287d83' not in nav_bg:
-        raise RuntimeError('AURA bottom navigation must retain a distinct violet/teal panel background')
+    if '#ee22283e' not in nav_bg or '#ee19434a' not in nav_bg:
+        raise RuntimeError('AURA bottom navigation must retain its dark modern capsule background')
     nav_menu=(res/'menu/bottom_nav_menu.xml').read_text(encoding='utf-8')
     if any(name not in nav_menu for name in ('aura_nav_home','aura_nav_library','aura_nav_hub','aura_nav_download')):
         raise RuntimeError('Custom AURA bottom navigation icons are incomplete')
@@ -1509,5 +1509,5 @@ def main():
     if 'tabIndicatorAnimationMode' not in hub_layout or 'aura_hub_tabs_background' not in hub_layout:
         raise RuntimeError('Native Hub tabs are not using AURA styling')
 
-    print(f'AURA pr0.73-4: dynamic PackageInfo versionName/versionCode; GitHub latest.json update feed; Telegram contact in About; Settings action moved right of Search; Hub tabs, Assistant composer and Catalog use unified styling; SearchView has an explicit back arrow; My Wave uses a multi-phase aurora animation; MediaRoute item hidden and null-guarded; Hub URLs, login, authentication, playback and My Wave preserved ({login_refs} login references).')
+    print(f'AURA pr0.73-4: icon-only Material 3 bottom navigation with modern active indicator and open-book library icon; UI displays versionName only; GitHub update feed, Hub, authentication and My Wave preserved ({login_refs} login references).')
 if __name__=='__main__': main()
