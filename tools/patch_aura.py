@@ -118,7 +118,7 @@ def patch_aura_islands(res):
     nav=next((n for n in t.getroot().iter() if n.tag.endswith('BottomNavigationView')),None)
     if nav is None: raise RuntimeError('BottomNavigationView missing from activity_main.xml')
     for k,v in {'layout_gravity':'bottom|center_horizontal','layout_width':'match_parent','layout_height':'66dp','layout_marginStart':'15dp','layout_marginEnd':'15dp','layout_marginBottom':'12dp','paddingStart':'9dp','paddingEnd':'9dp','elevation':'14dp','background':'@drawable/aura_bottom_nav_island','clipToPadding':'false'}.items(): nav.set(a(k),v)
-    for k,v in {'itemIconSize':'23dp','itemHorizontalTranslationEnabled':'false','labelVisibilityMode':'labeled','itemActiveIndicatorColor':'#3abdadff','itemRippleColor':'#33bdadff'}.items(): nav.set(p(k),v)
+    for k,v in {'itemIconSize':'23dp','itemHorizontalTranslationEnabled':'false','labelVisibilityMode':'labeled','itemRippleColor':'#33bdadff'}.items(): nav.set(p(k),v)
     save(t,f)
     d=res/'drawable'; d.mkdir(parents=True,exist_ok=True)
     (d/'aura_bottom_nav_island.xml').write_text('''<?xml version="1.0" encoding="utf-8"?>
@@ -877,17 +877,17 @@ def patch_smali(decoded):
     repl='''    const/4 v0, 0x0
     invoke-virtual {v1, v2, v0}, Landroid/view/ViewGroup;->addView(Landroid/view/View;I)V
     invoke-virtual {v1}, Landroid/view/View;->getRootView()Landroid/view/View;
-    move-result-object v70
-    const v71, 0x7f0a0263
-    invoke-virtual {v70, v71}, Landroid/view/View;->findViewById(I)Landroid/view/View;
-    move-result-object v70
-    if-eqz v70, :cond_aura_animation_done
-    invoke-virtual {v70}, Landroid/view/View;->getBackground()Landroid/graphics/drawable/Drawable;
-    move-result-object v70
-    instance-of v71, v70, Landroid/graphics/drawable/AnimationDrawable;
-    if-eqz v71, :cond_aura_animation_done
-    check-cast v70, Landroid/graphics/drawable/AnimationDrawable;
-    invoke-virtual {v70}, Landroid/graphics/drawable/AnimationDrawable;->start()V
+    move-result-object v14
+    const v15, 0x7f0a0263
+    invoke-virtual {v14, v15}, Landroid/view/View;->findViewById(I)Landroid/view/View;
+    move-result-object v14
+    if-eqz v14, :cond_aura_animation_done
+    invoke-virtual {v14}, Landroid/view/View;->getBackground()Landroid/graphics/drawable/Drawable;
+    move-result-object v14
+    instance-of v15, v14, Landroid/graphics/drawable/AnimationDrawable;
+    if-eqz v15, :cond_aura_animation_done
+    check-cast v14, Landroid/graphics/drawable/AnimationDrawable;
+    invoke-virtual {v14}, Landroid/graphics/drawable/AnimationDrawable;->start()V
     :cond_aura_animation_done'''
     s,n=pattern.subn(repl,s,count=1)
     if n!=1: raise RuntimeError('Unable to locate original My Wave insertion point in cp1.smali')
