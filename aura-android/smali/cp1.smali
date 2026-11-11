@@ -2726,7 +2726,9 @@
     invoke-direct {v8}, Lapp/homemusic/AURAWaveCircleTouchListener;-><init>()V
     invoke-virtual {v5, v8}, Landroid/view/View;->setOnTouchListener(Landroid/view/View$OnTouchListener;)V
 
+    sput-object v5, Lapp/homemusic/AURAVersion;->waveButton:Landroid/view/View;
     invoke-static {v5}, Lapp/homemusic/AURAWaveToggleClickListener;->syncIcon(Landroid/view/View;)V
+    invoke-static {}, Lapp/homemusic/AURAWavePlaybackListener;->syncCurrent()V
     move/from16 v7, v76
 
     .line 1373

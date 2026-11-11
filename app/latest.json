@@ -1,14 +1,14 @@
 {
-  "versionCode": 7304,
-  "versionName": "pr0.73-4",
-  "url": "https://github.com/PlayInSpirits/HomeMusic-Fork/releases/download/pr0.73-4/AURA-pr0.73-4.apk",
+  "versionCode": 7401,
+  "versionName": "pr0.74-1",
+  "url": "https://github.com/PlayInSpirits/HomeMusic-Fork/releases/download/pr0.74-1/AURA-pr0.74-1.apk",
   "size": 22114073,
-  "sha256": "f1cf0c59ec3052e003067b982750df6bbf855f1e93613000d03218c1695ee1ae",
+  "sha256": "57270dce911f436223c4a4145c1f97acacd66e9b2b1672ea923f51553949da09",
   "notes": "",
   "patches": [],
   "full": {
-    "url": "https://github.com/PlayInSpirits/HomeMusic-Fork/releases/download/pr0.73-4/AURA-pr0.73-4.apk",
+    "url": "https://github.com/PlayInSpirits/HomeMusic-Fork/releases/download/pr0.74-1/AURA-pr0.74-1.apk",
     "size": 22114073,
-    "sha256": "f1cf0c59ec3052e003067b982750df6bbf855f1e93613000d03218c1695ee1ae"
+    "sha256": "57270dce911f436223c4a4145c1f97acacd66e9b2b1672ea923f51553949da09"
   }
 }

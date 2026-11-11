@@ -4351,6 +4351,8 @@
     .line 70
     invoke-interface {p1, v0}, Lqi3;->v(Loi3;)V
 
+    invoke-static {p1}, Lapp/homemusic/AURAWavePlaybackListener;->attach(Lqi3;)V
+
     .line 71
     .line 72
     .line 73
