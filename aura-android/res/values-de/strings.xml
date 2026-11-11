@@ -719,7 +719,7 @@ Zum Ausblenden tippen"</string>
     <string name="settings_equalizer_select">Equalizer auswählen</string>
     <string name="settings_fallback_to_random_tracks_summary">Spielt zufällige Titel, wenn keine ähnlichen Titel verfügbar sind</string>
     <string name="settings_fallback_to_random_tracks_title">Auf zufällige Titel zurückgreifen</string>
-    <string name="settings_github_link">https://github.com/PlayInSpirits/HomeMusic-Fork</string>
+    <string name="settings_github_link">https://github.com/eddyizm/tempus</string>
     <string name="settings_github_summary">Folge der Entwicklung</string>
     <string name="settings_github_title">GitHub</string>
     <string name="settings_github_update">Aktualisierungen</string>
@@ -830,7 +830,7 @@ Wenn das Format auf \"Original\" eingestellt ist, hat die Änderung der Bitrate 
     <string name="settings_title_ui">Oberfläche</string>
     <string name="settings_track_number">Titelnummer anzeigen</string>
     <string name="settings_track_number_summary">Wenn aktiviert, wird die Titelnummer des aktuell gespielten Titels angezeigt.</string>
-    <string name="settings_version_summary">AURA 0.4</string>
+    <string name="settings_version_summary">3.1.0</string>
     <string name="settings_version_title">Version</string>
     <string name="settings_wifi_only_summary">Warnung anzeigen, wenn über Mobilfunk gestreamt wird</string>
     <string name="settings_wifi_only_title">Nur über WLAN streamen</string>

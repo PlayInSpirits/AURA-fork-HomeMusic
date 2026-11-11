@@ -1925,7 +1925,10 @@
     move-result-object v0
 
     .line 548
-    const-string v3, "AURA 0.4"
+    invoke-virtual {v1}, Lkc1;->Z()Landroid/content/Context;
+    move-result-object v3
+    invoke-static {v3}, Lapp/homemusic/AURAVersion;->versionName(Landroid/content/Context;)Ljava/lang/String;
+    move-result-object v3
 
     .line 549
     .line 550
@@ -3386,7 +3389,10 @@
 
     .line 228
     .line 229
-    const/16 v0, 0x190
+    invoke-virtual {v5}, Lkc1;->Z()Landroid/content/Context;
+    move-result-object v0
+    invoke-static {v0}, Lapp/homemusic/AURAVersion;->versionCodeInt(Landroid/content/Context;)I
+    move-result v0
 
     .line 230
     .line 231
@@ -3398,7 +3404,10 @@
     move-result-object v0
 
     .line 235
-    const-string v2, "AURA 0.4"
+    invoke-virtual {v5}, Lkc1;->Z()Landroid/content/Context;
+    move-result-object v2
+    invoke-static {v2}, Lapp/homemusic/AURAVersion;->versionName(Landroid/content/Context;)Ljava/lang/String;
+    move-result-object v2
 
     .line 236
     .line 237

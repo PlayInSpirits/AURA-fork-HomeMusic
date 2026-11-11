@@ -544,7 +544,7 @@ Efectele vor fi vizibile la restart"</string>
     <string name="settings_download_folder_cleared">Folderul de descărcare a fost golit.</string>
     <string name="settings_download_folder_set">Folderul de descărcare a fost setat</string>
     <string name="settings_download_storage_title">Stocare descărcare</string>
-    <string name="settings_github_link">https://github.com/PlayInSpirits/HomeMusic-Fork</string>
+    <string name="settings_github_link">https://github.com/eddyizm/tempus</string>
     <string name="settings_github_summary">Urmăriți dezvoltarea</string>
     <string name="settings_github_title">Github</string>
     <string name="settings_github_update">Actualizări</string>
@@ -619,7 +619,7 @@ Actual în uz: %2$s MiB"</string>
     <string name="settings_title_transcoding">Transcodare</string>
     <string name="settings_title_transcoding_download">Descărcare Transcodare</string>
     <string name="settings_title_ui">UI</string>
-    <string name="settings_version_summary">AURA 0.4</string>
+    <string name="settings_version_summary">3.1.0</string>
     <string name="settings_version_title">Versiune</string>
     <string name="settings_wifi_only_summary">Cere confirmarea utilizatorului înainte de streaming pe rețeaua mobilă.</string>
     <string name="settings_wifi_only_title">Alerta stream numai Wi-Fi</string>

@@ -382,7 +382,7 @@ Os efeitos serão visíveis ao reiniciar"</string>
     <string name="settings_delete_download_storage_summary">O processo resultará na exclusão irreversível de todos os itens salvos.</string>
     <string name="settings_delete_download_storage_title">Excluir itens salvos</string>
     <string name="settings_download_storage_title">Armazenamento dos downloads</string>
-    <string name="settings_github_link">https://github.com/PlayInSpirits/HomeMusic-Fork</string>
+    <string name="settings_github_link">https://github.com/eddyizm/tempus</string>
     <string name="settings_github_summary">Acompanhe o desenvolvimento</string>
     <string name="settings_github_title">Github</string>
     <string name="settings_image_size">Definir resolução da imagem</string>

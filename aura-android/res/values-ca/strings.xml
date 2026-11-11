@@ -634,7 +634,7 @@ Els efectes seran visibles quan reinicieu l'aplicació."</string>
     <string name="settings_enable_drawer_on_landscape_summary">Desbloqueja el menú lateral del mode horitzontal en mode vertical.</string>
     <string name="settings_equalizer_dialog_title">Equalitzadors</string>
     <string name="settings_equalizer_select">"Seleccioneu l'equalitzador que voleu utilitzar"</string>
-    <string name="settings_github_link">https://github.com/PlayInSpirits/HomeMusic-Fork</string>
+    <string name="settings_github_link">https://github.com/eddyizm/tempus</string>
     <string name="settings_github_summary">Seguiu el desenvolupament</string>
     <string name="settings_github_title">Github</string>
     <string name="settings_github_update">Actualitzacions</string>
@@ -736,7 +736,7 @@ Si s'estableix «Format de transcodificació per a les baixades» en «Baixada d
     <string name="settings_title_ui">"Interfície d'usuari"</string>
     <string name="settings_track_number">Mostra el número de pista</string>
     <string name="settings_track_number_summary">"Si s'habilita, mostra el número de pista de la cançó en reproducció."</string>
-    <string name="settings_version_summary">AURA 0.4</string>
+    <string name="settings_version_summary">3.1.0</string>
     <string name="settings_version_title">Versió</string>
     <string name="settings_wifi_only_summary">"Demana la confirmació de l'usuari abans d'iniciar la transmissió per la xarxa mòbil."</string>
     <string name="settings_wifi_only_title">Alerta de transmissió només per wifi</string>

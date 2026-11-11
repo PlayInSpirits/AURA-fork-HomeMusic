@@ -703,7 +703,7 @@
     <string name="settings_equalizer_select">使用するイコライザーを選択</string>
     <string name="settings_fallback_to_random_tracks_summary">似たトラックが見つからない場合、代わりにランダムな曲を再生します</string>
     <string name="settings_fallback_to_random_tracks_title">ランダムトラックへのフォールバック</string>
-    <string name="settings_github_link">https://github.com/PlayInSpirits/HomeMusic-Fork</string>
+    <string name="settings_github_link">https://github.com/eddyizm/tempus</string>
     <string name="settings_github_summary">開発の進捗を見る</string>
     <string name="settings_github_title">GitHub</string>
     <string name="settings_github_update">アップデート</string>
@@ -812,7 +812,7 @@ ReplayGainには-6を推奨します。これはクリッピング防止機能�
     <string name="settings_title_ui">UI</string>
     <string name="settings_track_number">トラック番号を表示</string>
     <string name="settings_track_number_summary">有効にすると、再生中の曲のトラック番号が表示されます。</string>
-    <string name="settings_version_summary">AURA 0.4</string>
+    <string name="settings_version_summary">3.1.0</string>
     <string name="settings_version_title">バージョン</string>
     <string name="settings_wifi_only_summary">モバイルネットワークでストリーミングする前に確認します。</string>
     <string name="settings_wifi_only_title">Wi-Fi以外でのストリーミング警告</string>

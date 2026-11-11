@@ -522,7 +522,7 @@
     <string name="settings_download_folder_cleared">下載資料夾已清除。</string>
     <string name="settings_download_folder_set">已設定下載資料夾</string>
     <string name="settings_download_storage_title">下載儲存</string>
-    <string name="settings_github_link">https://github.com/PlayInSpirits/HomeMusic-Fork</string>
+    <string name="settings_github_link">https://github.com/eddyizm/tempus</string>
     <string name="settings_github_summary">關注開發進展</string>
     <string name="settings_github_title">Github</string>
     <string name="settings_github_update">更新</string>
@@ -595,7 +595,7 @@
     <string name="settings_title_transcoding">轉碼</string>
     <string name="settings_title_transcoding_download">轉碼下載</string>
     <string name="settings_title_ui">界面</string>
-    <string name="settings_version_summary">AURA 0.4</string>
+    <string name="settings_version_summary">3.1.0</string>
     <string name="settings_version_title">版本</string>
     <string name="settings_wifi_only_summary">在通過行動網路進行流式傳輸之前請求使用者確認。</string>
     <string name="settings_wifi_only_title">提示僅通過 Wi-Fi 進行流式傳輸</string>

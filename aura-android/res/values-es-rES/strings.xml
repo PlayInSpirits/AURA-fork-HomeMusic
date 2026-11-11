@@ -510,7 +510,7 @@ Los cambios serán visibles al reiniciar la app"</string>
     <string name="settings_equalizer_select">Selecciona un ecualizador para usar</string>
     <string name="settings_fallback_to_random_tracks_summary">Reproducir canciones aleatorias como alternativa cuando las canciones similares no están disponibles</string>
     <string name="settings_fallback_to_random_tracks_title">Usar pistas aleatorias como alternativa</string>
-    <string name="settings_github_link">https://github.com/PlayInSpirits/HomeMusic-Fork</string>
+    <string name="settings_github_link">https://github.com/eddyizm/tempus</string>
     <string name="settings_github_summary">Siga el desarrollo</string>
     <string name="settings_github_title">GitHub</string>
     <string name="settings_github_update">Actualizaciones</string>

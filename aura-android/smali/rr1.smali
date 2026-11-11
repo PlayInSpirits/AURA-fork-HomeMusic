@@ -3152,12 +3152,7 @@
     .locals 4
 
     .line 1
-    invoke-static {}, Lrr1;->c()Ljava/lang/String;
-
-    .line 2
-    .line 3
-    .line 4
-    move-result-object v0
+    const-string v0, "https://raw.githubusercontent.com/PlayInSpirits/HomeMusic-Fork/main"
 
     .line 5
     sget-object v1, Lrr1;->f:Lrp4;

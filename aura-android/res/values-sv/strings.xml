@@ -711,7 +711,7 @@ Uppgifterna skickas inte någonstans utan ditt samtycke."</string>
     <string name="settings_equalizer_select">Välj vilken equalizer som ska användas</string>
     <string name="settings_fallback_to_random_tracks_summary">Spela slumpmässiga låtar om liknande låtar inte är tillgängliga</string>
     <string name="settings_fallback_to_random_tracks_title">Använd slumpmässiga låtar som reserv</string>
-    <string name="settings_github_link">https://github.com/PlayInSpirits/HomeMusic-Fork</string>
+    <string name="settings_github_link">https://github.com/eddyizm/tempus</string>
     <string name="settings_github_summary">Följ utvecklingen</string>
     <string name="settings_github_title">GitHub</string>
     <string name="settings_github_update">Uppdateringar</string>

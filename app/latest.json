@@ -1,0 +1,14 @@
+{
+  "versionCode": 501,
+  "versionName": "0.5-1",
+  "url": "https://github.com/PlayInSpirits/HomeMusic-Fork/releases/download/v0.5-1/AURA-0.5-1.apk",
+  "size": 21431244,
+  "sha256": "7f88fc3d76a6a05b33877e1e4078368385c8734bf9564e604c9aff20923d0ab7",
+  "notes": "Единый стиль Хаба, проверка обновлений через GitHub, динамическая версия и контакт автора в Telegram.",
+  "patches": [],
+  "full": {
+    "url": "https://github.com/PlayInSpirits/HomeMusic-Fork/releases/download/v0.5-1/AURA-0.5-1.apk",
+    "size": 21431244,
+    "sha256": "7f88fc3d76a6a05b33877e1e4078368385c8734bf9564e604c9aff20923d0ab7"
+  }
+}

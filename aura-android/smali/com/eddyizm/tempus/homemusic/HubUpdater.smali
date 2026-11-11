@@ -280,7 +280,8 @@
     move-result-wide v3
 
     .line 23
-    const-wide/16 v5, 0x2b
+    invoke-static {p0}, Lapp/homemusic/AURAVersion;->versionCode(Landroid/content/Context;)J
+    move-result-wide v5
 
     .line 24
     .line 25
@@ -751,7 +752,8 @@
     move-result-wide v4
 
     .line 95
-    const-wide/16 v6, 0x2b
+    invoke-static {p0}, Lapp/homemusic/AURAVersion;->versionCode(Landroid/content/Context;)J
+    move-result-wide v6
 
     .line 96
     .line 97
@@ -829,7 +831,8 @@
 
     .line 132
     .line 133
-    const-string p2, "1.14.7"
+    invoke-static {p0}, Lapp/homemusic/AURAVersion;->versionName(Landroid/content/Context;)Ljava/lang/String;
+    move-result-object p2
 
     .line 134
     .line 135
@@ -4760,7 +4763,8 @@
 
     .line 68
     :cond_4
-    const-string v4, "1.14.7"
+    invoke-static {p1}, Lapp/homemusic/AURAVersion;->versionName(Landroid/content/Context;)Ljava/lang/String;
+    move-result-object v4
 
     .line 69
     .line 70
