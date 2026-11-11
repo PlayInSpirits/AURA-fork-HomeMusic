@@ -146,6 +146,8 @@ jobs:
           else
             gh release create v0.5-1 build/AURA-0.5-1.apk build/AURA-0.5-1-source.zip --target "$GITHUB_SHA" --title "AURA 0.5-1" --notes "$RELEASE_NOTES" --prerelease
           fi
+          gh release edit v0.3 --title "AURA 0.3-2"
+          gh release edit v0.4 --title "AURA 0.4-2"
 
       - name: Publish decoded Android source and update feed
         run: |
