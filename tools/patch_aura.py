@@ -17,7 +17,7 @@ def colors(path, values):
         n.text=v
     save(t,path)
 def strings(res):
-    changes={'app_name':'AURA','homemusic_login_title':'AURA','homemusic_wave_subtitle':'Музыка, которая звучит в твоём ритме','homemusic_login_server_helper':'Это локальный сервер, если нужно - замени на свой глобальный сервер','homemusic_login_server_bad':'Это не адрес сервера: например, http://192.168.1.129:4533'}
+    changes={'app_name':'AURA','homemusic_login_title':'AURA','homemusic_wave_subtitle':'Музыка, которая звучит в твоём ритме','homemusic_login_server_helper':'Это локальный сервер, если нужно - замени на свой глобальный сервер','homemusic_login_server_bad':'Это не адрес сервера: например, http://192.168.1.129:4533','homemusic_settings_hub_url_dialog':'Адрес Хаба через интернет: http://192.168.1.129:8080','homemusic_settings_hub_local_url_dialog':'Домашний адрес Хаба по Wi-Fi: http://192.168.1.129:8080'}
     for f in [res/'values/strings.xml',*res.glob('values-*/strings.xml')]:
         if not f.exists(): continue
         t=xml(f); nodes={x.get('name'):x for x in t.getroot().findall('string')}
@@ -55,11 +55,11 @@ def generate_aurora(res,count=48):
             image+=glow[...,None]*np.array(c,np.float32)[None,None,:]
         vignette=np.clip(1-.25*(((xx-.5)/.75)**2+((yy-.5)/.85)**2),.58,1); image*=vignette[...,None]
         Image.fromarray(np.clip(image,0,255).astype('uint8'),'RGB').filter(ImageFilter.GaussianBlur(1.2)).save(d/f'aura_aurora_{f:02d}.png',optimize=True)
-        # A light pastel version is used for the player so dark text remains readable.
-        light=np.zeros((h,w,3),np.float32); light[:]=[246,244,253]
-        pblobs=[(.22+.13*math.sin(phase),.36+.10*math.cos(phase*.8),.36,.78,(164,145,255)),(.76+.10*math.cos(phase+1.2),.55+.11*math.sin(phase*1.1),.34,.82,(255,164,194)),(.52+.13*math.sin(phase+2.1),.12+.10*math.cos(phase*.7),.28,.48,(127,218,226)),(.92-.08*math.sin(phase+.4),.88+.05*math.cos(phase),.26,.56,(255,207,164))]
+        # Player frames use the same dark aurora palette to keep white controls readable.
+        light=np.zeros((h,w,3),np.float32); light[:]=[18,18,34]
+        pblobs=[(.22+.13*math.sin(phase),.36+.10*math.cos(phase*.8),.36,.78,(104,72,224)),(.76+.10*math.cos(phase+1.2),.55+.11*math.sin(phase*1.1),.34,.82,(220,66,142)),(.52+.13*math.sin(phase+2.1),.12+.10*math.cos(phase*.7),.28,.48,(22,166,190)),(.92-.08*math.sin(phase+.4),.88+.05*math.cos(phase),.26,.56,(244,132,82))]
         for cx,cy,sx,sy,c in pblobs:
-            glow=np.exp(-(((xx-cx)/sx)**2+((yy-cy)/sy)**2)*3)*.23
+            glow=np.exp(-(((xx-cx)/sx)**2+((yy-cy)/sy)**2)*3)*.56
             light+=glow[...,None]*np.array(c,np.float32)[None,None,:]
         Image.fromarray(np.clip(light,0,255).astype('uint8'),'RGB').filter(ImageFilter.GaussianBlur(1.2)).save(d/f'aura_player_aurora_{f:02d}.png',optimize=True)
     items='\n'.join(f' <item android:drawable="@drawable/aura_aurora_{i:02d}" android:duration="66" />' for i in range(count))
@@ -75,12 +75,127 @@ def create_player_state_drawables(res):
 def drawables(res):
     d=res/'drawable'; d.mkdir(parents=True,exist_ok=True)
     files={
-    'aura_home_background.xml':'<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle"><gradient android:type="linear" android:angle="315" android:startColor="#fff9f7ff" android:centerColor="#fff5f6fc" android:endColor="#fff0f9fa"/></shape>',
-    'aura_toolbar_gradient.xml':'<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle"><gradient android:type="linear" android:angle="0" android:startColor="#fffaf9ff" android:endColor="#fff2fafb"/></shape>',
-    'aura_player_gradient.xml':'<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle"><gradient android:type="linear" android:angle="315" android:startColor="#fff7f4ff" android:centerColor="#fff0f9fb" android:endColor="#fffff4f7"/></shape>',
+    'aura_home_background.xml':'<layer-list xmlns:android="http://schemas.android.com/apk/res/android"><item><shape android:shape="rectangle"><gradient android:type="linear" android:angle="315" android:startColor="#ff241b43" android:centerColor="#ff131a31" android:endColor="#ff071e2b"/></shape></item><item><shape android:shape="rectangle"><gradient android:type="linear" android:angle="0" android:startColor="#552c1d70" android:centerColor="#221c4d66" android:endColor="#001d4c66"/></shape></item><item><shape android:shape="rectangle"><gradient android:type="linear" android:angle="90" android:startColor="#001f9aa8" android:centerColor="#001e8794" android:endColor="#3329154f"/></shape></item></layer-list>',
+    'aura_toolbar_gradient.xml':'<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle"><gradient android:type="linear" android:angle="0" android:startColor="#ff171629" android:endColor="#ff10222e"/></shape>',
+    'aura_player_gradient.xml':'<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle"><gradient android:type="linear" android:angle="315" android:startColor="#ff21183f" android:centerColor="#ff121c31" android:endColor="#ff082631"/></shape>',
     'aura_arrow_right.xml':'<vector xmlns:android="http://schemas.android.com/apk/res/android" android:width="24dp" android:height="24dp" android:viewportWidth="24" android:viewportHeight="24"><path android:fillColor="#ffffffff" android:pathData="M5,11h11.2l-4.9,-4.9L12.7,4.7 20,12l-7.3,7.3 -1.4,-1.4 4.9,-4.9H5z"/></vector>',
     'aura_player_state_bg.xml':'<animated-selector xmlns:android="http://schemas.android.com/apk/res/android"><item android:id="@+id/aura_player_idle" android:drawable="@drawable/aura_player_gradient"/><item android:id="@+id/aura_player_playing" android:state_checked="true" android:drawable="@drawable/aura_player_gradient"/><transition android:fromId="@id/aura_player_idle" android:toId="@id/aura_player_playing" android:drawable="@drawable/aura_player_play_transition"/><transition android:fromId="@id/aura_player_playing" android:toId="@id/aura_player_idle" android:drawable="@drawable/aura_player_pause_transition"/></animated-selector>'}
     for n,x in files.items(): (d/n).write_text('<?xml version="1.0" encoding="utf-8"?>\n'+x,encoding='utf-8')
+
+def patch_main_menu(res):
+    f=res/'menu/main_page_menu.xml'
+    t=xml(f); root=t.getroot()
+    items=list(root)
+    for node in items:
+        if node.get(a('id'))=='@id/media_route_menu_item':
+            root.remove(node)
+    search=next((node for node in list(root) if node.get(a('id'))=='@id/action_search'),None)
+    if search is None: raise RuntimeError('Main toolbar search action missing')
+    root.remove(search)
+    search.set(p('showAsAction'),'always')
+    root.append(search)
+    if any(node.get(a('id'))=='@id/media_route_menu_item' for node in root):
+        raise RuntimeError('Cast menu item was not removed')
+    save(t,f)
+
+def patch_hub_preferences(res):
+    f=res/'xml/global_preferences.xml'; t=xml(f)
+    found=set()
+    for node in t.getroot().iter():
+        key=node.get(a('key'))
+        if key in ('homemusic_hub_url','homemusic_hub_local_url'):
+            node.set(a('defaultValue'),'http://192.168.1.129:8080')
+            found.add(key)
+    if found!={'homemusic_hub_url','homemusic_hub_local_url'}:
+        raise RuntimeError(f'Expected both HomeMusic Hub URL preferences; found {sorted(found)}')
+    save(t,f)
+
+def patch_hub_defaults(decoded):
+    f=decoded/'smali/com/eddyizm/tempus/homemusic/HomeDefaults.smali'
+    s=f.read_text(encoding='utf-8')
+    marker='    invoke-interface {v6, v3, v5}, Landroid/content/SharedPreferences$Editor;->putInt(Ljava/lang/String;I)Landroid/content/SharedPreferences$Editor;'
+    if s.count(marker)!=1: raise RuntimeError('HomeMusic defaults migration marker not found uniquely')
+    if 'homemusic_hub_local_url' in s:
+        raise RuntimeError('Hub URL migration already exists; refusing duplicate migration')
+    old='    const/4 v5, 0x5'
+    if s.count(old)!=1: raise RuntimeError('HomeMusic defaults version is not the expected v5')
+    s=s.replace(old,'    const/4 v5, 0x6',1)
+    inject='''    const-string v12, "homemusic_hub_url"
+    const-string v13, "http://192.168.1.129:8080"
+    invoke-interface {v6, v12, v13}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
+    const-string v12, "homemusic_hub_local_url"
+    const-string v13, "http://192.168.1.129:8080"
+    invoke-interface {v6, v12, v13}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
+'''
+    s=s.replace(marker,inject+marker,1)
+    f.write_text(s,encoding='utf-8')
+
+def patch_theme(res):
+    values=res/'values/colors.xml'
+    colors(values,{
+      'md_theme_light_background':'#ff0d0e18','md_theme_light_onBackground':'#fff4f1ff',
+      'md_theme_light_surface':'#ff131522','md_theme_light_onSurface':'#fff4f1ff',
+      'md_theme_light_surfaceVariant':'#ff272839','md_theme_light_onSurfaceVariant':'#ffb9b5cf',
+      'md_theme_light_primary':'#ffbdadff','md_theme_light_onPrimary':'#ff241858',
+      'md_theme_light_primaryContainer':'#ff382f6d','md_theme_light_onPrimaryContainer':'#fff0eaff',
+      'md_theme_light_secondary':'#ff79d9df','md_theme_light_onSecondary':'#ff00363d',
+      'md_theme_light_secondaryContainer':'#ff15464d','md_theme_light_onSecondaryContainer':'#ffb9f7fb',
+      'md_theme_light_tertiary':'#ffff9fc3','md_theme_light_onTertiary':'#ff4e102e',
+      'md_theme_light_tertiaryContainer':'#ff643148','md_theme_light_onTertiaryContainer':'#ffffdbe8',
+      'md_theme_light_outline':'#ffaaa5bc','dividerColor':'#ff343448',
+      'titleTextColor':'#fff4f1ff','subtitleTextColor':'#ffb9b5cf',
+      'widget_bg':'#e51a1b2d','widget_icon_tint':'#ffffffff',
+      'widget_icon_tint_active':'#ffbdadff','widget_subtitle':'#ffc6c2d8','widget_title':'#ffffffff',
+      'hub_background':'#ff0d0e18','hub_text':'#fff4f1ff'})
+    if (res/'values-night/colors.xml').exists():
+        colors(res/'values-night/colors.xml',{
+          'dividerColor':'#ff343448','titleTextColor':'#fff4f1ff','subtitleTextColor':'#ffb9b5cf',
+          'widget_bg':'#e51a1b2d','widget_icon_tint':'#ffffffff',
+          'widget_icon_tint_active':'#ffbdadff','widget_subtitle':'#ffc6c2d8','widget_title':'#ffffffff'})
+    f=res/'values/styles.xml'; t=xml(f)
+    app=next((n for n in t.getroot().findall('style') if n.get('name')=='AppTheme'),None)
+    if app is None: raise RuntimeError('AppTheme not found')
+    app.set('parent','@style/Theme.Material3.Dark.NoActionBar')
+    wanted={
+      'android:colorBackground':'@color/md_theme_light_background',
+      'android:windowBackground':'@drawable/aura_home_background',
+      'android:windowLightStatusBar':'false',
+      'android:textColorPrimary':'@color/md_theme_light_onSurface',
+      'android:textColorSecondary':'@color/md_theme_light_onSurfaceVariant',
+      'android:statusBarColor':'@color/md_theme_light_surface',
+      'android:navigationBarColor':'@color/md_theme_light_surface'
+    }
+    for item_name,value in wanted.items():
+        n=next((x for x in app.findall('item') if x.get('name')==item_name),None)
+        if n is None: n=ET.SubElement(app,'item',{'name':item_name})
+        n.text=value
+    save(t,f)
+
+def patch_screen_backgrounds(res):
+    files=[
+      'layout/activity_main.xml','layout/fragment_home.xml','layout/fragment_home_tab_music.xml',
+      'layout/fragment_home_tab_radio.xml','layout/fragment_home_tab_podcast.xml',
+      'layout/fragment_library.xml','layout/fragment_search.xml','layout/fragment_settings.xml',
+      'layout/fragment_hub.xml','layout/fragment_download.xml','layout/fragment_directory.xml',
+      'layout/fragment_index.xml','layout/fragment_landing.xml'
+    ]
+    for rel in files:
+        f=res/rel
+        if not f.exists(): continue
+        t=xml(f); t.getroot().set(a('background'),'@drawable/aura_home_background'); save(t,f)
+
+def patch_hub_web_background(decoded):
+    f=decoded/'smali/com/eddyizm/tempus/homemusic/HubFragment.smali'
+    s=f.read_text(encoding='utf-8')
+    old=r"\'main{padding-bottom:16px!important}\';"
+    new=r"\'main{padding-bottom:16px!important}\' +\n            \'html,body{background:#0d0e18!important;color:#f4f1ff!important}\';"
+    if old not in s:
+        if "html,body{background:#0d0e18!important" not in s:
+            raise RuntimeError('Embedded Hub CSS insertion point not found')
+    else:
+        s=s.replace(old,new,1)
+    f.write_text(s,encoding='utf-8')
+
 def patch_vectors(res):
     d=res/'drawable'
     paths={
@@ -172,7 +287,7 @@ def patch_smali(decoded):
     if n!=1: raise RuntimeError('Unable to locate original My Wave insertion point in cp1.smali')
     f.write_text(s,encoding='utf-8')
 def version(decoded):
-    f=decoded/'apktool.yml';s=f.read_text(encoding='utf-8');s=re.sub(r'(?m)^  versionCode: .*?$','  versionCode: 300',s);s=re.sub(r'(?m)^  versionName: .*?$','  versionName: "0.3"',s);f.write_text(s,encoding='utf-8')
+    f=decoded/'apktool.yml';s=f.read_text(encoding='utf-8');s=re.sub(r'(?m)^  versionCode: .*?$','  versionCode: 400',s);s=re.sub(r'(?m)^  versionName: .*?$','  versionName: "0.4"',s);f.write_text(s,encoding='utf-8')
 
 def main():
     if len(sys.argv)<2: raise SystemExit('Usage: patch_aura.py decoded [logo.png]')
@@ -182,7 +297,7 @@ def main():
       'md_theme_light_background':'#fff7f7fc','md_theme_light_onBackground':'#ff191922','md_theme_light_surface':'#fffcfbff','md_theme_light_onSurface':'#ff191922','md_theme_light_surfaceVariant':'#fff0eef6','md_theme_light_onSurfaceVariant':'#ff625f72','md_theme_light_primary':'#ff6652d9','md_theme_light_onPrimary':'#ffffffff','md_theme_light_primaryContainer':'#ffe9e5ff','md_theme_light_onPrimaryContainer':'#ff21154f','md_theme_light_secondary':'#ff007f89','md_theme_light_onSecondary':'#ffffffff','md_theme_light_secondaryContainer':'#ffd1f5f5','md_theme_light_onSecondaryContainer':'#ff00363d','md_theme_light_tertiary':'#ffc64b78','md_theme_light_onTertiary':'#ffffffff','md_theme_light_tertiaryContainer':'#ffffdbe8','md_theme_light_onTertiaryContainer':'#ff4e102e','md_theme_light_outline':'#ff7d7788','dividerColor':'#ffe6e2f0','titleTextColor':'#ff191922','subtitleTextColor':'#ff666477','hub_background':'#ff111320','hub_text':'#fff5f2ff','homemusic_danger':'#ffce486d','widget_icon_tint_active':'#ff6652d9'})
     colors(res/'values/colors.xml',{'md_theme_dark_background':'#ff0d0e18','md_theme_dark_onBackground':'#fff4f1ff','md_theme_dark_surface':'#ff131522','md_theme_dark_onSurface':'#fff4f1ff','md_theme_dark_surfaceVariant':'#ff272839','md_theme_dark_onSurfaceVariant':'#ffb9b5cf','md_theme_dark_primary':'#ffbdadff','md_theme_dark_onPrimary':'#ff241858','md_theme_dark_primaryContainer':'#ff382f6d','md_theme_dark_onPrimaryContainer':'#fff0eaff','md_theme_dark_secondary':'#ff79d9df','md_theme_dark_onSecondary':'#ff00363d','md_theme_dark_secondaryContainer':'#ff15464d','md_theme_dark_onSecondaryContainer':'#ffb9f7fb','md_theme_dark_tertiary':'#ffff9fc3','md_theme_dark_onTertiary':'#ff4e102e','md_theme_dark_tertiaryContainer':'#ff643148','md_theme_dark_onTertiaryContainer':'#ffffdbe8','md_theme_dark_outline':'#ffaaa5bc'})
     if (res/'values-night/colors.xml').exists(): colors(res/'values-night/colors.xml',{'dividerColor':'#ff343448','titleTextColor':'#fff4f1ff','subtitleTextColor':'#ffb9b5cf','widget_bg':'#e51a1b2d','widget_icon_tint':'#ffffffff','widget_icon_tint_active':'#ffbdadff','widget_subtitle':'#ffc6c2d8','widget_title':'#ffffffff'})
-    strings(res);login_refs=patch_login_server(decoded);drawables(res);generate_aurora(res);create_player_state_drawables(res);patch_logo(res,logo);patch_vectors(res);patch_toolbar(res);patch_home_mix_layout(res);patch_player_controls(res);patch_smali(decoded);patch_home_scroll_background(res);version(decoded)
+    strings(res);login_refs=patch_login_server(decoded);drawables(res);generate_aurora(res);create_player_state_drawables(res);patch_logo(res,logo);patch_vectors(res);patch_theme(res);patch_main_menu(res);patch_hub_preferences(res);patch_hub_defaults(decoded);patch_hub_web_background(decoded);patch_screen_backgrounds(res);patch_toolbar(res);patch_home_mix_layout(res);patch_player_controls(res);patch_smali(decoded);patch_home_scroll_background(res);version(decoded)
     manifest=(decoded/'AndroidManifest.xml').read_text(encoding='utf-8')
     if 'package="app.homemusic"' not in manifest: raise RuntimeError('HomeMusic package ID changed')
     for file,ids in {'layout/fragment_homemusic_login.xml':['hm_login_server','hm_login_primary','hm_login_code','hm_login_google'],'layout/fragment_home_tab_music.xml':['home_discover_sector','home_similar_tracks_sector','home_radio_artist_sector']}.items():
@@ -191,5 +306,13 @@ def main():
             if '@id/'+ident not in text: raise RuntimeError(f'Missing original ID: {file} / {ident}')
     if 'http://192.168.1.129:4533' not in (decoded/'smali/fo1.smali').read_text(encoding='utf-8'): raise RuntimeError('Local HomeMusic server default not patched')
     if 'https://146.103.112.215:8444' in ''.join(x.read_text(encoding='utf-8') for x in decoded.rglob('*.smali')): raise RuntimeError('Old public HomeMusic server URL remains in smali')
-    print(f'AURA 0.3: HomeMusic UI rebrand and aurora theme applied; login default changed to http://192.168.1.129:4533 ({login_refs} references); My Wave promoted, Mix of Day and remote-play controls hidden; network/auth code otherwise preserved.')
+    menu=(res/'menu/main_page_menu.xml').read_text(encoding='utf-8')
+    if 'media_route_menu_item' in menu or '@id/action_search' not in menu: raise RuntimeError('Main toolbar cast/search action layout is incorrect')
+    prefs=(res/'xml/global_preferences.xml').read_text(encoding='utf-8')
+    if prefs.count('http://192.168.1.129:8080')<2: raise RuntimeError('Both Hub preference defaults are not present')
+    defaults=(decoded/'smali/com/eddyizm/tempus/homemusic/HomeDefaults.smali').read_text(encoding='utf-8')
+    if defaults.count('http://192.168.1.129:8080')!=2: raise RuntimeError('One-time Hub URL migration is incomplete')
+    if 'Theme.Material3.Dark.NoActionBar' not in (res/'values/styles.xml').read_text(encoding='utf-8'): raise RuntimeError('Dark AURA theme was not applied')
+
+    print(f'AURA 0.4: unified dark aurora theme applied; cast action removed and search moved to its slot; both HomeMusic Hub URLs migrated to http://192.168.1.129:8080; login default remains http://192.168.1.129:4533 ({login_refs} references); My Wave promoted; Mix of Day and remote-play controls hidden; original auth and playback flows preserved.')
 if __name__=='__main__': main()
