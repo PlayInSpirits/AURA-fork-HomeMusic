@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animated-selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/aura_player_idle"
+        android:drawable="@drawable/aura_player_gradient"/>
+    <item
+        android:state_checked="true"
+        android:id="@+id/aura_player_playing"
+        android:drawable="@drawable/aura_player_gradient"/>
+    <transition
+        android:drawable="@drawable/aura_player_play_transition"
+        android:toId="@+id/aura_player_playing"
+        android:fromId="@+id/aura_player_idle"/>
+    <transition
+        android:drawable="@drawable/aura_player_pause_transition"
+        android:toId="@+id/aura_player_idle"
+        android:fromId="@+id/aura_player_playing"/>
+</animated-selector>

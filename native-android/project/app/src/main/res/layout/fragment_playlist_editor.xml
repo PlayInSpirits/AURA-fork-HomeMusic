@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:background="?attr/colorSurface"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:menu="@menu/playlist_editor_menu"
+        app:navigationContentDescription="@string/playlist_editor_dialog_negative_button"
+        app:navigationIcon="@drawable/ic_close"
+        app:title="@string/playlist_editor_dialog_title"/>
+    <TextView
+        android:paddingBottom="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/playlist_editor_hint"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        style="@style/LabelSmall"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/playlist_song_recycler_view"
+        android:paddingBottom="@dimen/global_padding_bottom"
+        android:clipToPadding="false"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+</LinearLayout>

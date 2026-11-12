@@ -1,0 +1,17 @@
+package defpackage;
+
+/* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
+/* JADX INFO: loaded from: classes.dex */
+public final /* synthetic */ class bw extends ig1 implements wf1 {
+    public static final bw n = new bw(2, cw.class, "createSegment", "createSegment(JLkotlinx/coroutines/channels/ChannelSegment;)Lkotlinx/coroutines/channels/ChannelSegment;", 1);
+
+    @Override // defpackage.wf1
+    public final Object invoke(Object obj, Object obj2) {
+        long jLongValue = ((Number) obj).longValue();
+        k10 k10Var = (k10) obj2;
+        k10 k10Var2 = cw.a;
+        aw awVar = k10Var.g;
+        awVar.getClass();
+        return new k10(jLongValue, k10Var, awVar, 0);
+    }
+}
