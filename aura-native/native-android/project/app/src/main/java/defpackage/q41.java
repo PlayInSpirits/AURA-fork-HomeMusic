@@ -2949,7 +2949,7 @@ public final class q41 implements Handler.Callback, mo2, dw4, c55 {
         int i;
         int iA;
         long jK;
-        ?? r26;
+        char r26;
         long j2;
         boolean z2;
         boolean z3;
@@ -2973,31 +2973,31 @@ public final class q41 implements Handler.Callback, mo2, dw4, c55 {
         boolean z9;
         boolean z10;
         long j7;
-        ?? r24;
-        ?? r20;
-        ?? r11;
+        long r24;
+        boolean r20;
+        cu4 r11;
         mt2 mt2Var3;
-        ?? r25;
-        ?? r12;
-        ?? r21;
-        ?? r27;
+        long r25;
+        p41 r12;
+        boolean r21;
+        char r27;
         long j8;
         mt2 mt2Var4;
         Object obj;
-        ?? r9;
+        boolean r9;
         long j9;
-        ?? r10;
+        int r10;
         boolean z11;
         char c;
-        ?? r28;
-        ?? r29;
-        ?? r22;
-        ?? r13;
-        ?? r8;
+        char r28;
+        long r29;
+        boolean r22;
+        p41 r13;
+        cu4 r8;
         cu4 cu4Var3;
         oo2 oo2Var;
-        ?? r210;
-        ?? r211;
+        char r210;
+        long r211;
         boolean z12;
         p41 p41Var;
         long j10;
@@ -3005,9 +3005,9 @@ public final class q41 implements Handler.Callback, mo2, dw4, c55 {
         Object obj2;
         boolean z13;
         long j11;
-        ?? r14;
-        ?? r212;
-        ?? r213;
+        int r14;
+        char r212;
+        long r213;
         ph3 ph3Var = this.V;
         p41 p41Var2 = this.j0;
         ro2 ro2Var = this.F;
@@ -3224,7 +3224,7 @@ public final class q41 implements Handler.Callback, mo2, dw4, c55 {
             r24 = j12;
         }
         mt2 mt2Var7 = o41Var.a;
-        ?? r15 = o41Var.c;
+        long r15 = o41Var.c;
         boolean z18 = o41Var.d;
         long jY = o41Var.b;
         boolean z19 = (this.V.b.equals(mt2Var7) && jY == this.V.s) ? false : true;
@@ -3266,10 +3266,10 @@ public final class q41 implements Handler.Callback, mo2, dw4, c55 {
             }
             ez3[] ez3VarArr = this.n;
             int length = ez3VarArr.length;
-            ?? r16 = 0;
-            while (r16 < length) {
+            int streamIndex = 0;
+            while (streamIndex < length) {
                 try {
-                    ez3 ez3Var = ez3VarArr[r16];
+                    ez3 ez3Var = ez3VarArr[streamIndex];
                     kq kqVar = (kq) ez3Var.e;
                     if (!Objects.equals(kqVar.C, cu4Var2)) {
                         kqVar.C = cu4Var2;
@@ -3280,7 +3280,7 @@ public final class q41 implements Handler.Callback, mo2, dw4, c55 {
                         kqVar2.C = cu4Var2;
                         kqVar2.y();
                     }
-                    r16++;
+                    streamIndex++;
                 } catch (Throwable th3) {
                     th = th3;
                     r11 = cu4Var2;
