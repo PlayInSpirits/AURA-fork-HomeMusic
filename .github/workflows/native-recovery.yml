@@ -104,8 +104,10 @@ jobs:
           root = Path("recovery/downloads")
           for name, wanted in expected.items():
               p = root / name
-              actual = sha256(p.read_bytes()).hexdigest()
-              if actual != wanted: raise SystemExit(f"SHA-256 mismatch for {name}: {actual}")
+              actual = sha256(p.read_bytes()).hexdigest().strip().lower()
+              wanted = wanted.strip().lower()
+              if actual != wanted:
+                  raise SystemExit(f"SHA-256 mismatch for {name}: actual={actual!r} expected={wanted!r} actual_len={len(actual)} expected_len={len(wanted)}")
               print(f"Verified {name}: {actual} ({p.stat().st_size} bytes)")
           PY
 
