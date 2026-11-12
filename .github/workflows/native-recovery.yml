@@ -117,6 +117,48 @@ jobs:
           print("AURA 0.75.1 digest source: GitHub release asset metadata")
           PY
 
+      - name: Verify installed AURA identity and signing certificate
+        env:
+          AURA_KEYSTORE_BASE64: \${{ secrets.AURA_KEYSTORE_BASE64 }}
+          AURA_KEYSTORE_PASSWORD: \${{ secrets.AURA_KEYSTORE_PASSWORD }}
+          AURA_KEY_ALIAS: \${{ secrets.AURA_KEY_ALIAS }}
+        run: |
+          set -euo pipefail
+          AAPT_UNIX="$(cygpath -u "$AURA_AAPT")"
+          "$AAPT_UNIX" dump badging recovery/downloads/AURA-0.75.1.apk > recovery/aura-0751-badging.txt
+          grep -F "package: name='app.homemusic' versionCode='7501' versionName='v0.75-1'" recovery/aura-0751-badging.txt
+          if [ -z "$AURA_KEYSTORE_BASE64" ] || [ -z "$AURA_KEYSTORE_PASSWORD" ] || [ -z "$AURA_KEY_ALIAS" ]; then
+            echo "::error::Permanent AURA signing key secrets are unavailable; cannot approve update compatibility."
+            exit 1
+          fi
+          printf '%s' "$AURA_KEYSTORE_BASE64" | base64 --decode > recovery/aura-release-key.jks
+          SDK_ROOT_UNIX="$(cygpath -u "$ANDROID_HOME")"
+          BUILD_TOOLS_DIR="$(find "$SDK_ROOT_UNIX/build-tools" -mindepth 1 -maxdepth 1 -type d | sort -V | tail -n 1)"
+          APKSIGNER_JAR="$BUILD_TOOLS_DIR/lib/apksigner.jar"
+          [ -f "$APKSIGNER_JAR" ] || { echo "::error::apksigner.jar is missing."; exit 1; }
+          JAVA_HOME_UNIX="$(cygpath -u "$JAVA_HOME")"
+          JAVA_RUNTIME="$JAVA_HOME_UNIX/bin/java.exe"
+          KEYTOOL="$JAVA_HOME_UNIX/bin/keytool.exe"
+          "$JAVA_RUNTIME" -jar "$APKSIGNER_JAR" verify --verbose --print-certs recovery/downloads/AURA-0.75.1.apk > recovery/aura-0751-signature.txt
+          "$KEYTOOL" -list -v -keystore recovery/aura-release-key.jks -alias "$AURA_KEY_ALIAS" -storepass "$AURA_KEYSTORE_PASSWORD" > recovery/aura-key-certificate.txt
+          "$AURA_PYTHON" - <<'PY'
+          from pathlib import Path
+          import re
+          apk=Path("recovery/aura-0751-signature.txt").read_text(encoding="utf-8",errors="replace")
+          key=Path("recovery/aura-key-certificate.txt").read_text(encoding="utf-8",errors="replace")
+          apk_match=re.search(r"Signer #1 certificate SHA-256 digest:\s*([0-9a-fA-F:]+)",apk)
+          key_match=re.search(r"SHA256:\s*([0-9a-fA-F:]+)",key)
+          if not apk_match or not key_match:
+              raise SystemExit("Unable to read APK or keystore SHA-256 signing certificate fingerprint.")
+          apk_fp=apk_match.group(1).replace(":","").lower()
+          key_fp=key_match.group(1).replace(":","").lower()
+          if apk_fp != key_fp:
+              raise SystemExit(f"AURA 0.75.1 signing certificate does not match permanent key: apk={apk_fp}, key={key_fp}")
+          print("AURA 0.75.1 package/version verified and signer matches the permanent AURA release key.")
+          print("Signing certificate SHA-256:",apk_fp)
+          PY
+          rm -f recovery/aura-release-key.jks recovery/aura-key-certificate.txt
+
       - name: Download and verify JADX 1.5.6
         run: |
           set -euo pipefail
