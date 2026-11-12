@@ -26,7 +26,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public final class rs3 {
-    public static final rs3 a = new Object();
+    public static final rs3 a = new rs3();
     public static final ExecutorService b = Executors.newSingleThreadExecutor(new ps3(0));
     public static final AtomicInteger c = new AtomicInteger(0);
     public static volatile ux d;
@@ -47,113 +47,89 @@ public final class rs3 {
      * Converted monitor instructions to comments
      * Lifted jumps to return sites
      */
-    public final void a(Context object, qs3 object2, int n16) {
-        Throwable throwable22;
-        Object object3;
-        Object object4;
-        Object object5;
-        Object object6;
-        Uri uri;
-        block38: {
-            block39: {
-                uri = ((qs3)object2).a;
-                object6 = au0.D((Context)object);
-                object5 = new xi4(10);
-                object4 = Collections.EMPTY_MAP;
-                try {
-                    object3 = new ii0(uri, 0L, 1, null, (Map)object4, 0L, -1L, null, 0);
-                    object4 = ((xi4)object5).d((ii0)object3);
-                    object6.getClass();
-                    if (nd0.a(((se4)object6).i((String)object4)) != -1L || ((se4)object6).g(0L, 1L, (String)object4) <= 0L) break block38;
-                    object3 = f;
-                    // MONITORENTER : object3
-                    boolean bl5 = ((HashSet)object3).add(object4);
-                    // MONITOREXIT : object3
-                    if (bl5) {
-                        object3 = new StringBuilder("Head of ");
-                        ((StringBuilder)object3).append((String)object4);
-                        ((StringBuilder)object3).append(" has no length, loading it again");
-                        Log.d((String)"QueuePreloader", (String)((StringBuilder)object3).toString());
-                        ((se4)object6).m((String)object4);
-                    }
-                    break block38;
+    public final void a(Context context, qs3 request, int generation) {
+        Uri uri = request.a;
+
+        // Probe the existing cache entry. If its content length is unknown,
+        // enqueue a fresh HEAD request once for this resource.
+        try {
+            se4 headDataSource = au0.D(context);
+            xi4 headRequestFactory = new xi4(10);
+            ii0 headRequest = new ii0(
+                    uri, 0L, 1, null, Collections.EMPTY_MAP, 0L, -1L, null, 0);
+            String cacheKey = headRequestFactory.d(headRequest);
+
+            if (nd0.a(headDataSource.i(cacheKey)) == -1L
+                    && headDataSource.g(0L, 1L, cacheKey) > 0L) {
+                boolean shouldReload;
+                synchronized (f) {
+                    shouldReload = f.add(cacheKey);
                 }
-                catch (Exception exception) {}
-                break block39;
-                catch (Exception exception) {
-                    // empty catch block
+                if (shouldReload) {
+                    Log.d("QueuePreloader",
+                            "Head of " + cacheKey + " has no length, loading it again");
+                    headDataSource.m(cacheKey);
                 }
             }
-            object3 = new StringBuilder("Could not check the head of ");
-            ((StringBuilder)object3).append(uri);
-            ((StringBuilder)object3).append(": ");
-            ((StringBuilder)object3).append(object6);
-            Log.d((String)"QueuePreloader", (String)((StringBuilder)object3).toString());
+        } catch (Exception exception) {
+            Log.d("QueuePreloader",
+                    "Could not check the head of " + uri + ": " + exception);
         }
-        object6 = Collections.EMPTY_MAP;
-        long l16 = ((qs3)object2).b;
-        if (ot1.d(uri)) {
-            object6 = Collections.singletonMap("X-HomeMusic-Prefetch", "1");
-            object6.getClass();
-        } else {
-            object6 = v01.n;
+
+        Map headers = ot1.d(uri)
+                ? Collections.singletonMap("X-HomeMusic-Prefetch", "1")
+                : v01.n;
+        ii0 mediaRequest = new ii0(
+                uri, 0L, 1, null, headers, 0L, request.b, null, 0);
+
+        se4 upstreamDataSource;
+        bi0 cacheProvider;
+        Context applicationContext;
+        se4 cacheDataSource;
+        synchronized (au0.class) {
+            upstreamDataSource = au0.B(context);
+            cacheProvider = au0.x();
+            applicationContext = context.getApplicationContext();
+            cacheProvider.getClass();
+            cacheDataSource = au0.B(context);
+            cacheDataSource.getClass();
         }
-        object6 = new ii0(uri, 0L, 1, null, (Map)object6, 0L, l16, null, 0);
-        // MONITORENTER : au0.class
-        object4 = au0.B((Context)object);
-        object3 = new xi4(10);
-        bi0 bi02 = au0.x();
-        object5 = object.getApplicationContext();
-        bi02.getClass();
-        object = au0.B((Context)object);
-        object.getClass();
-        // MONITOREXIT : au0.class
-        object5 = new qx(new zj0((Context)object5, ((om1)bi02).m()), (se4)object);
-        object4.getClass();
-        object = new jx((se4)object4);
-        object = new ux(new lx((se4)object4, (ci0)object5, new kp(false), (jx)object, (px)object3, 0), (ii0)object6, null, null);
-        // MONITORENTER : this
-        int n17 = c.get();
-        if (n17 != n16) {
-            // MONITOREXIT : this
-            return;
-        }
-        d = object;
-        // MONITOREXIT : this
-        ((ux)object).a();
-        l16 = ((qs3)object2).b;
-        object2 = new StringBuilder("Pre-cached ");
-        ((StringBuilder)object2).append(l16);
-        ((StringBuilder)object2).append(" bytes of ");
-        ((StringBuilder)object2).append(uri);
-        Log.d((String)"QueuePreloader", (String)((StringBuilder)object2).toString());
-        // MONITORENTER : this
-        if (d != object) return;
-        d = null;
-        return;
-        {
-            catch (Throwable throwable22) {
-            }
-            catch (Exception exception) {}
-            {
-                object6 = new StringBuilder("Pre-cache aborted for ");
-                ((StringBuilder)object6).append(uri);
-                ((StringBuilder)object6).append(": ");
-                ((StringBuilder)object6).append(exception);
-                Log.d((String)"QueuePreloader", (String)((StringBuilder)object6).toString());
-            }
-            // MONITORENTER : this
-            if (d != object) {
-                // MONITOREXIT : this
+
+        ci0 cacheFactory = new qx(
+                new zj0(applicationContext, ((om1) cacheProvider).m()),
+                cacheDataSource);
+        upstreamDataSource.getClass();
+        jx cacheWriter = new jx(upstreamDataSource);
+        lx cachePipeline = new lx(
+                upstreamDataSource,
+                cacheFactory,
+                new kp(false),
+                cacheWriter,
+                new xi4(10),
+                0);
+        ux preloader = new ux(cachePipeline, mediaRequest, null, null);
+
+        synchronized (this) {
+            if (c.get() != generation) {
                 return;
             }
-            d = null;
-            return;
+            d = preloader;
         }
-        // MONITORENTER : this
-        if (d != object) throw throwable22;
-        d = null;
-        throw throwable22;
+
+        try {
+            preloader.a();
+            Log.d("QueuePreloader",
+                    "Pre-cached " + request.b + " bytes of " + uri);
+        } catch (Exception exception) {
+            Log.d("QueuePreloader",
+                    "Pre-cache aborted for " + uri + ": " + exception);
+        } finally {
+            synchronized (this) {
+                if (d == preloader) {
+                    d = null;
+                }
+            }
+        }
     }
 
     public final void b() {
