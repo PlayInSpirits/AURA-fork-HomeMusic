@@ -36,7 +36,7 @@ jobs:
           path: source-native
           fetch-depth: 0
 
-      - name: Copy the complete source tree
+      - name: Copy and verify every tracked file
         run: |
           set -euo pipefail
           [ "$GITHUB_REF" = "refs/heads/main" ] || { echo "::error::Import must target main."; exit 1; }
@@ -45,32 +45,38 @@ jobs:
           echo "Source commit: $SOURCE_SHA"
           TRACKED_COUNT="$(git -C source-native ls-files | wc -l | tr -d ' ')"
           echo "Tracked source files: $TRACKED_COUNT"
+
           mkdir -p aura-native
           cp -a source-native/. aura-native/
           rm -rf aura-native/.git
-          ACTUAL_COUNT="$(find aura-native -type f | wc -l | tr -d ' ')"
-          echo "Copied regular files: $ACTUAL_COUNT"
-          if [ "$ACTUAL_COUNT" -lt "$TRACKED_COUNT" ]; then
-            echo "::error::Copied file count is below the tracked file count."
-            exit 1
-          fi
+
+          VERIFIED_COUNT=0
+          while IFS= read -r -d '' FILE; do
+            if [ ! -e "aura-native/$FILE" ]; then
+              echo "::error::Missing copied file: $FILE"
+              exit 1
+            fi
+            if ! cmp -s "source-native/$FILE" "aura-native/$FILE"; then
+              echo "::error::Content mismatch: $FILE"
+              exit 1
+            fi
+            VERIFIED_COUNT=$((VERIFIED_COUNT + 1))
+          done < <(git -C source-native ls-files -z)
+          echo "Verified byte-identical tracked files: $VERIFIED_COUNT"
+          [ "$VERIFIED_COUNT" -eq "$TRACKED_COUNT" ] || { echo "::error::Tracked file count mismatch."; exit 1; }
+
           TOO_LARGE="$(find aura-native -type f -size +99M -print || true)"
           if [ -n "$TOO_LARGE" ]; then
-            echo "::error::GitHub rejects individual files around 100 MB; oversized files were not committed:"
+            echo "::error::GitHub rejects individual files around 100 MB; oversized files need Git LFS:"
             printf '%s\\n' "$TOO_LARGE"
             exit 1
           fi
-          cat > aura-native/IMPORT-SOURCE.txt <<EOF
-          Imported from branch: native-v0.10.1
-          Source commit: $SOURCE_SHA
-          Destination: main/aura-native/
-          Import method: complete checkout copy; Git metadata excluded.
-          Original native-v0.10.1 branch is preserved.
-          EOF
-          git add --all -- aura-native
+
+          printf 'Imported from branch: native-v0.10.1\\nSource commit: %s\\nDestination: main/aura-native/\\nOriginal native-v0.10.1 branch is preserved.\\n' "$SOURCE_SHA" > aura-native/IMPORT-SOURCE.txt
+          git add -f --all -- aura-native
           if git diff --cached --quiet; then
-            echo "::error::No files were staged for import."
-            exit 1
+            echo "The current copy is already present; no changes to commit."
+            exit 0
           fi
           git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" commit -m "Import complete native-v0.10.1 project under aura-native"
           git push origin HEAD:refs/heads/main
