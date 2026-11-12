@@ -272,7 +272,7 @@ jobs:
 
           root_build=project/"build.gradle"
           root_source=root_build.read_text(encoding="utf-8")
-          root_updated, nagp=re.subn(r"com\\.android\\.tools\\.build:gradle:[0-9.]+","com.android.tools.build:gradle:9.4.0",root_source,count=1)
+          root_updated, nagp=re.subn(r"com\.android\.tools\.build:gradle:[0-9.]+","com.android.tools.build:gradle:9.4.0",root_source,count=1)
           if nagp != 1:
               raise SystemExit("Could not update recovered Android Gradle Plugin to 9.4.0 for compileSdk 37.")
           root_build.write_text(root_updated,encoding="utf-8",newline="\n")
