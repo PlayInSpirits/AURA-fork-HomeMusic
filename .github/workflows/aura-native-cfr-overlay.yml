@@ -1,0 +1,110 @@
+name: Apply CFR alternatives to native AURA
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'aura-native-cfr-overlay.trigger'
+  workflow_dispatch:
+
+permissions:
+  actions: read
+  contents: write
+
+concurrency:
+  group: aura-native-cfr-main-overlay
+  cancel-in-progress: false
+
+jobs:
+  overlay:
+    name: Apply selected CFR classes and push to main
+    runs-on: [self-hosted, windows, x64]
+    defaults:
+      run:
+        shell: 'C:\\PROGRA~1\\Git\\bin\\bash.exe --noprofile --norc -eo pipefail {0}'
+
+    steps:
+      - name: Fetch exact main ref without wildcard refs
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          MAIN_DIR="$(cygpath -u "$RUNNER_TEMP")/aura-native-main-cfr"
+          rm -rf "$MAIN_DIR"
+          mkdir -p "$MAIN_DIR"
+          AUTH_HEADER="AUTHORIZATION: basic $(printf 'x-access-token:%s' "$GH_TOKEN" | base64 | tr -d '\\r\\n')"
+          git -C "$MAIN_DIR" init -q
+          git -C "$MAIN_DIR" remote add origin "https://github.com/$GITHUB_REPOSITORY"
+          git -C "$MAIN_DIR" -c http.extraheader="$AUTH_HEADER" fetch --no-tags --depth=1 origin +refs/heads/main:refs/remotes/origin/main
+          git -C "$MAIN_DIR" checkout -q -B main refs/remotes/origin/main
+          test -f "$MAIN_DIR/aura-native/native-android/project/settings.gradle"
+          echo "Fetched main at $(git -C "$MAIN_DIR" rev-parse HEAD)"
+
+      - name: Download verified JADX/CFR recovery artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: aura-native-recovery
+          path: ${{ runner.temp }}/aura-native-recovery-artifact
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.repository }}
+          run-id: 43147516314
+
+      - name: Apply eight selected clean CFR classes
+        shell: powershell
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $mainDir = Join-Path $env:RUNNER_TEMP 'aura-native-main-cfr'
+          $artifactRoot = Join-Path $env:RUNNER_TEMP 'aura-native-recovery-artifact'
+          $cfrFolder = Get-ChildItem -Path $artifactRoot -Directory -Filter 'cfr-aura-0751' -Recurse |
+            Select-Object -First 1
+          if (-not $cfrFolder) {
+            throw "The recovery artifact does not contain cfr-aura-0751."
+          }
+
+          $destination = Join-Path $mainDir 'aura-native/native-android/project/app/src/main/java/defpackage'
+          if (-not (Test-Path $destination)) {
+            throw "Recovered Java package directory is missing: $destination"
+          }
+
+          $targets = @('a0', 'ad3', 'b31', 'c72', 'en1', 'ey', 'f22', 'f31')
+          $unresolved = '\?\?\s+[A-Za-z_$][\w$]*'
+          foreach ($name in $targets) {
+            $source = Join-Path $cfrFolder.FullName ($name + '.java')
+            $target = Join-Path $destination ($name + '.java')
+            if (-not (Test-Path $source) -or -not (Test-Path $target)) {
+              throw "Required CFR or recovered Java file is missing: $name"
+            }
+            $java = [System.IO.File]::ReadAllText($source)
+            if ($java -match $unresolved -or $java -match '(?m)^\s*void\s+var[\w$]*') {
+              throw "CFR output for $name still contains an unresolved Java declaration."
+            }
+            if ($java -match '(?m)^\s*package\s+') {
+              throw "Unexpected package declaration in default-package CFR class $name."
+            }
+            $java = "package defpackage;" + [Environment]::NewLine + [Environment]::NewLine + $java
+            [System.IO.File]::WriteAllText($target, $java, [System.Text.UTF8Encoding]::new($false))
+            Write-Host "Applied CFR class $name"
+          }
+
+          & git -C $mainDir config user.name 'github-actions[bot]'
+          & git -C $mainDir config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          & git -C $mainDir config core.longpaths true
+          & git -C $mainDir add -- aura-native/native-android/project/app/src/main/java/defpackage
+          & git -C $mainDir diff --cached --quiet
+          $diffExit = $LASTEXITCODE
+          if ($diffExit -eq 0) {
+            Write-Host 'CFR overlay produced no differences.'
+            exit 0
+          }
+          if ($diffExit -ne 1) {
+            throw "git diff failed with exit code $diffExit"
+          }
+          & git -C $mainDir commit -m 'Apply selected CFR fallbacks to native source'
+          if ($LASTEXITCODE -ne 0) { throw 'CFR overlay commit failed.' }
+
+          $auth = 'AUTHORIZATION: basic ' + [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes('x-access-token:' + $env:GH_TOKEN))
+          & git -C $mainDir -c "http.extraheader=$auth" push origin HEAD:refs/heads/main
+          if ($LASTEXITCODE -ne 0) { throw 'CFR overlay push to main failed.' }
+          Write-Host 'CFR source overlay committed to main; native build workflow will run on the changed files.'
