@@ -603,14 +603,14 @@ public final class f22 extends kw3 implements ow3 {
     	at jadx.core.dex.visitors.typeinference.FixTypesVisitor.visit(FixTypesVisitor.java:94)
      */
     public final void r(cx3 cx3Var, int i) {
-        ?? r3;
-        ?? r12;
+        e22 r3;
+        boolean r12;
         boolean z;
-        ?? r13;
-        ?? r14;
+        boolean r13;
+        boolean r14;
         cx3 cx3Var2;
         boolean z2;
-        ?? r4;
+        e22 r4;
         int iL;
         char c;
         float fSignum;
@@ -631,9 +631,9 @@ public final class f22 extends kw3 implements ow3 {
             this.w = cx3Var.a;
         }
         int i3 = (1 << ((i * 8) + 8)) - 1;
-        ?? r2 = this.c;
+        cx3 r2 = this.c;
         e22 e22Var = this.m;
-        if (r2 != 0) {
+        if (r2 != null) {
             View view = r2.a;
             if (view.getParent() != null) {
                 if (i2 == 2 || this.n == 2) {
@@ -699,7 +699,7 @@ public final class f22 extends kw3 implements ow3 {
                 float[] fArr = this.b;
                 o(fArr);
                 char c3 = c2;
-                ?? r15 = c;
+                boolean r15 = false;
                 b22 b22Var = new b22(this, r2, i2, fArr[c], fArr[1], fSignum2, fSignum, iL, r2);
                 RecyclerView recyclerView2 = this.r;
                 e22Var.getClass();
@@ -719,14 +719,14 @@ public final class f22 extends kw3 implements ow3 {
                 cx3Var2 = null;
                 r14 = r15;
             } else {
-                r14 = 0;
+                r14 = false;
                 if (view == this.w) {
                     cx3Var2 = null;
                     this.w = null;
                 } else {
                     cx3Var2 = null;
                 }
-                ?? r5 = e22Var;
+                e22 r5 = e22Var;
                 r5.a(this.r, r2);
                 z2 = false;
                 r4 = r5;
@@ -737,7 +737,7 @@ public final class f22 extends kw3 implements ow3 {
             r12 = r14;
         } else {
             r3 = e22Var;
-            r12 = 0;
+            r12 = false;
             z = false;
         }
         if (cx3Var != null) {
@@ -752,14 +752,10 @@ public final class f22 extends kw3 implements ow3 {
                 view2.performHapticFeedback(r12 == true ? 1 : 0);
             }
         }
-        ?? parent = this.r.getParent();
-        if (parent != 0) {
-            if (this.c != null) {
-                r13 = r12;
-                r13 = 1;
-            }
-            r13 = r12;
-            parent.requestDisallowInterceptTouchEvent(r13);
+        android.view.ViewParent parent = this.r.getParent();
+        if (parent != null) {
+            boolean disallowIntercept = this.c != null || r12;
+            parent.requestDisallowInterceptTouchEvent(disallowIntercept);
         }
         if (!z) {
             this.r.getLayoutManager().f = true;
