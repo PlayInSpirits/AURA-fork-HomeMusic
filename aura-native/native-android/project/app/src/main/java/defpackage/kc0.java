@@ -508,7 +508,7 @@ public final class kc0 extends jc0 {
     /* JADX WARN: Type inference failed for: r9v12 */
     /* JADX WARN: Type inference failed for: r9v9 */
     public final void Q() {
-        ?? r21;
+        int[] r21;
         int i;
         int i2;
         int i3;
@@ -522,7 +522,7 @@ public final class kc0 extends jc0 {
         int i5;
         int i6;
         boolean zS;
-        ?? r12;
+        boolean r12;
         int i7;
         boolean z4;
         boolean z5;
@@ -533,20 +533,20 @@ public final class kc0 extends jc0 {
         int i9;
         boolean z8;
         int iMax;
-        ?? r9;
-        ?? r17;
+        int r9;
+        boolean r17;
         boolean z9;
         int iMax2;
-        ?? r0;
+        boolean r0;
         boolean z10;
         boolean z11;
-        ?? r1;
+        boolean r1;
         int i10;
         boolean z12;
-        ?? r2;
+        boolean r2;
         boolean z13;
-        ?? r3;
-        ?? r4;
+        boolean r3;
+        boolean r4;
         int i11;
         int iMax3;
         int iMax4;
@@ -772,8 +772,8 @@ public final class kc0 extends jc0 {
             while (true) {
                 if (i40 < size5) {
                     jc0 jc0Var11 = (jc0) arrayList2.get(i40);
-                    ?? r5 = r21[0];
-                    ?? r6 = r21[1];
+                    int r5 = r21[0];
+                    int r6 = r21[1];
                     int[] iArr3 = jc0Var11.o0;
                     int i41 = i40;
                     if (gi1.a0(r5, r6, iArr3[0], iArr3[1])) {
@@ -802,9 +802,9 @@ public final class kc0 extends jc0 {
                         int i43 = i42;
                         jc0 jc0Var12 = (jc0) arrayList2.get(i42);
                         int i44 = iMax8;
-                        ?? r7 = r21[0];
+                        int r7 = r21[0];
                         int i45 = i22;
-                        ?? r8 = r21[1];
+                        int r8 = r21[1];
                         int i46 = iMax7;
                         int[] iArr4 = jc0Var12.o0;
                         int i47 = i23;
@@ -1251,7 +1251,7 @@ public final class kc0 extends jc0 {
                                                                     H(iMax2);
                                                                     r21[r9] = r9;
                                                                     r4 = r9;
-                                                                    z10 = r4 == true ? 1 : 0;
+                                                                    z10 = r4;
                                                                 } else {
                                                                     r0 = r17;
                                                                 }
@@ -1261,7 +1261,7 @@ public final class kc0 extends jc0 {
                                                                         r3 = r0;
                                                                         z13 = z10;
                                                                         if (o() > i) {
-                                                                            this.D0 = r9;
+                                                                            this.D0 = true;
                                                                             r21[0] = r9;
                                                                             K(i);
                                                                             ?? r10 = r9;
@@ -1399,7 +1399,7 @@ public final class kc0 extends jc0 {
                                                                 H(iMax2);
                                                                 r21[r9] = r9;
                                                                 r4 = r9;
-                                                                z10 = r4 == true ? 1 : 0;
+                                                                z10 = r4;
                                                             } else {
                                                                 r0 = r17;
                                                             }
@@ -1409,7 +1409,7 @@ public final class kc0 extends jc0 {
                                                                     r3 = r0;
                                                                     z13 = z10;
                                                                     if (o() > i) {
-                                                                        this.D0 = r9;
+                                                                        this.D0 = true;
                                                                         r21[0] = r9;
                                                                         K(i);
                                                                         ?? r11 = r9;
@@ -1566,7 +1566,7 @@ public final class kc0 extends jc0 {
                                                             H(iMax2);
                                                             r21[r9] = r9;
                                                             r4 = r9;
-                                                            z10 = r4 == true ? 1 : 0;
+                                                            z10 = r4;
                                                         } else {
                                                             r0 = r17;
                                                         }
@@ -1576,7 +1576,7 @@ public final class kc0 extends jc0 {
                                                                 r3 = r0;
                                                                 z13 = z10;
                                                                 if (o() > i) {
-                                                                    this.D0 = r9;
+                                                                    this.D0 = true;
                                                                     r21[0] = r9;
                                                                     K(i);
                                                                     ?? r13 = r9;
@@ -1728,7 +1728,7 @@ public final class kc0 extends jc0 {
                                                                 H(iMax2);
                                                                 r21[r9] = r9;
                                                                 r4 = r9;
-                                                                z10 = r4 == true ? 1 : 0;
+                                                                z10 = r4;
                                                             } else {
                                                                 r0 = r17;
                                                             }
@@ -1738,7 +1738,7 @@ public final class kc0 extends jc0 {
                                                                     r3 = r0;
                                                                     z13 = z10;
                                                                     if (o() > i) {
-                                                                        this.D0 = r9;
+                                                                        this.D0 = true;
                                                                         r21[0] = r9;
                                                                         K(i);
                                                                         ?? r14 = r9;
@@ -1909,7 +1909,7 @@ public final class kc0 extends jc0 {
                                     H(iMax2);
                                     r21[r9] = r9;
                                     r4 = r9;
-                                    z10 = r4 == true ? 1 : 0;
+                                    z10 = r4;
                                 } else {
                                     r0 = r17;
                                 }
@@ -1919,7 +1919,7 @@ public final class kc0 extends jc0 {
                                         r3 = r0;
                                         z13 = z10;
                                         if (o() > i) {
-                                            this.D0 = r9;
+                                            this.D0 = true;
                                             r21[0] = r9;
                                             K(i);
                                             ?? r15 = r9;
@@ -1982,7 +1982,7 @@ public final class kc0 extends jc0 {
                                 hb0Var = hb0Var3;
                                 z4 = z12;
                             }
-                            z5 = r12 == true ? 1 : 0;
+                            z5 = r12;
                             this.p0 = arrayList10;
                             if (z5) {
                                 r21[0] = i4;
@@ -2200,7 +2200,7 @@ public final class kc0 extends jc0 {
                                     H(iMax2);
                                     r21[r9] = r9;
                                     r4 = r9;
-                                    z10 = r4 == true ? 1 : 0;
+                                    z10 = r4;
                                 } else {
                                     r0 = r17;
                                 }
@@ -2210,7 +2210,7 @@ public final class kc0 extends jc0 {
                                         r3 = r0;
                                         z13 = z10;
                                         if (o() > i) {
-                                            this.D0 = r9;
+                                            this.D0 = true;
                                             r21[0] = r9;
                                             K(i);
                                             ?? r16 = r9;
@@ -2267,7 +2267,7 @@ public final class kc0 extends jc0 {
                                 hb0Var = hb0Var3;
                                 z4 = z12;
                             }
-                            z5 = r12 == true ? 1 : 0;
+                            z5 = r12;
                             this.p0 = arrayList11;
                             if (z5) {
                                 r21[0] = i4;
@@ -2454,7 +2454,7 @@ public final class kc0 extends jc0 {
                                 H(iMax2);
                                 r21[r9] = r9;
                                 r4 = r9;
-                                z10 = r4 == true ? 1 : 0;
+                                z10 = r4;
                             } else {
                                 r0 = r17;
                             }
@@ -2464,7 +2464,7 @@ public final class kc0 extends jc0 {
                                     r3 = r0;
                                     z13 = z10;
                                     if (o() > i) {
-                                        this.D0 = r9;
+                                        this.D0 = true;
                                         r21[0] = r9;
                                         K(i);
                                         ?? r18 = r9;
@@ -2521,7 +2521,7 @@ public final class kc0 extends jc0 {
                             hb0Var = hb0Var3;
                             z4 = z12;
                         }
-                        z5 = r12 == true ? 1 : 0;
+                        z5 = r12;
                         this.p0 = arrayList12;
                         if (z5) {
                             r21[0] = i4;
@@ -2701,7 +2701,7 @@ public final class kc0 extends jc0 {
                 H(iMax2);
                 r21[r9] = r9;
                 r4 = r9;
-                z10 = r4 == true ? 1 : 0;
+                z10 = r4;
             } else {
                 r0 = r17;
             }
@@ -2711,7 +2711,7 @@ public final class kc0 extends jc0 {
                     r3 = r0;
                     z13 = z10;
                     if (o() > i) {
-                        this.D0 = r9;
+                        this.D0 = true;
                         r21[0] = r9;
                         K(i);
                         ?? r19 = r9;
@@ -2768,7 +2768,7 @@ public final class kc0 extends jc0 {
             hb0Var = hb0Var3;
             z4 = z12;
         }
-        z5 = r12 == true ? 1 : 0;
+        z5 = r12;
         this.p0 = arrayList13;
         if (z5) {
             r21[0] = i4;
