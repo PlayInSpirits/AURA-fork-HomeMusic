@@ -352,18 +352,45 @@ jobs:
                       group,artifact=stem.split("_",1)
                   elif stem.startswith("kotlinx_coroutines_"):
                       group="org.jetbrains.kotlinx"
-                      artifact=stem[len("kotlinx_coroutines_"):]
+                      artifact="kotlinx-coroutines-"+stem[len("kotlinx_coroutines_"):]
                   else:
                       continue
                   if (group,artifact) in seen or artifact == "viewbinding":
                       continue
                   seen.add((group,artifact))
                   dependencies.append((group,artifact,version))
-          # Media3 has no embedded *.version marker in this APK; keep its recovered source package for now.
+          # Media3 has no embedded *.version marker in this APK; keep its recovered source package.
           media3=Path("recovery/gradle-export-aura-0751/app/src/main/java/androidx/media3")
           media3_target=app_sources/"androidx/media3"
           if media3.is_dir():
               shutil.copytree(media3,media3_target,dirs_exist_ok=True)
+
+          # JADX emits an illegal explicit static initializer for the ExoPlayer interface.
+          # Keep the exact runtime calculation, but move it into a Java 8-compatible static method.
+          exoplayer=media3_target/"exoplayer/ExoPlayer.java"
+          if exoplayer.is_file():
+              exo_source=exoplayer.read_text(encoding="utf-8")
+              illegal_block=(
+                  "    public static final int a;\n\n"
+                  "    static {\n"
+                  "        String str = f35.a;\n"
+                  "        String strU = rr2.U(Build.DEVICE);\n"
+                  "        a = (strU.contains(\\"emulator\\") || strU.contains(\\"emu64a\\") || strU.contains(\\"emu64x\\") || strU.contains(\\"generic\\")) ? 30000 : 10000;\n"
+                  "    }"
+              )
+              legal_block=(
+                  "    int a = getDefaultBufferSize();\n\n"
+                  "    static int getDefaultBufferSize() {\n"
+                  "        String str = f35.a;\n"
+                  "        String strU = rr2.U(Build.DEVICE);\n"
+                  "        return (strU.contains(\\"emulator\\") || strU.contains(\\"emu64a\\") || strU.contains(\\"emu64x\\") || strU.contains(\\"generic\\")) ? 30000 : 10000;\n"
+                  "    }"
+              )
+              if illegal_block not in exo_source:
+                  raise SystemExit("Could not locate ExoPlayer interface initializer for safe Java repair.")
+              exoplayer.write_text(exo_source.replace(illegal_block,legal_block,1),encoding="utf-8",newline="\n")
+              print("Repaired ExoPlayer interface initializer without changing its calculated value.")
+
           app_build=project/"app/build.gradle"
           build_text=app_build.read_text(encoding="utf-8")
           dep_block="dependencies {\n"
