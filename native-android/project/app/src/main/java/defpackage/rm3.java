@@ -467,17 +467,21 @@ public class rm3 implements u74, f51, eg1, ak2 {
     public k51 E(Object... objArr) {
         Constructor constructorD;
         synchronized (((AtomicBoolean) this.o)) {
-            if (!((AtomicBoolean) this.o).get()) {
-                try {
-                    constructorD = ((mj0) this.n).d();
-                } catch (ClassNotFoundException unused) {
-                    ((AtomicBoolean) this.o).set(true);
-                    constructorD = null;
-                } catch (Exception e) {
-                    throw new RuntimeException("Error instantiating extension", e);
+            try {
+                if (!((AtomicBoolean) this.o).get()) {
+                    try {
+                        constructorD = ((mj0) this.n).d();
+                    } catch (ClassNotFoundException unused) {
+                        ((AtomicBoolean) this.o).set(true);
+                        constructorD = null;
+                    } catch (Exception e) {
+                        throw new RuntimeException("Error instantiating extension", e);
+                    }
                 }
+                constructorD = null;
+            } catch (Throwable th) {
+                throw th;
             }
-            constructorD = null;
         }
         if (constructorD == null) {
             return null;

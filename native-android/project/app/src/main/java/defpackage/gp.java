@@ -91,36 +91,40 @@ public final class gp extends q42 implements gf1 {
                 jx3 jx3Var = new jx3();
                 rq1 rq1Var2 = mq1Var.o;
                 synchronized (rq1Var2.J) {
-                    synchronized (rq1Var2) {
-                        try {
-                            pb4 pb4Var2 = rq1Var2.E;
-                            pb4 pb4Var3 = new pb4();
-                            pb4Var2.getClass();
-                            for (int i3 = 0; i3 < 10; i3++) {
-                                if (((1 << i3) & pb4Var2.a) != 0) {
-                                    pb4Var3.b(i3, pb4Var2.b[i3]);
-                                }
-                            }
-                            for (int i4 = 0; i4 < 10; i4++) {
-                                if (((1 << i4) & pb4Var.a) != 0) {
-                                    pb4Var3.b(i4, pb4Var.b[i4]);
-                                }
-                            }
-                            jx3Var.n = pb4Var3;
-                            jA = ((long) pb4Var3.a()) - ((long) pb4Var2.a());
-                            yq1VarArr = (jA == 0 || rq1Var2.o.isEmpty()) ? null : (yq1[]) rq1Var2.o.values().toArray(new yq1[0]);
-                            pb4 pb4Var4 = (pb4) jx3Var.n;
-                            pb4Var4.getClass();
-                            rq1Var2.E = pb4Var4;
-                            fr4.c(rq1Var2.w, rq1Var2.p + " onSettings", new gp(i2, rq1Var2, jx3Var));
-                        } catch (Throwable th) {
-                            throw th;
-                        }
-                    }
                     try {
-                        rq1Var2.J.b((pb4) jx3Var.n);
-                    } catch (IOException e2) {
-                        rq1Var2.f(e2);
+                        synchronized (rq1Var2) {
+                            try {
+                                pb4 pb4Var2 = rq1Var2.E;
+                                pb4 pb4Var3 = new pb4();
+                                pb4Var2.getClass();
+                                for (int i3 = 0; i3 < 10; i3++) {
+                                    if (((1 << i3) & pb4Var2.a) != 0) {
+                                        pb4Var3.b(i3, pb4Var2.b[i3]);
+                                    }
+                                }
+                                for (int i4 = 0; i4 < 10; i4++) {
+                                    if (((1 << i4) & pb4Var.a) != 0) {
+                                        pb4Var3.b(i4, pb4Var.b[i4]);
+                                    }
+                                }
+                                jx3Var.n = pb4Var3;
+                                jA = ((long) pb4Var3.a()) - ((long) pb4Var2.a());
+                                yq1VarArr = (jA == 0 || rq1Var2.o.isEmpty()) ? null : (yq1[]) rq1Var2.o.values().toArray(new yq1[0]);
+                                pb4 pb4Var4 = (pb4) jx3Var.n;
+                                pb4Var4.getClass();
+                                rq1Var2.E = pb4Var4;
+                                fr4.c(rq1Var2.w, rq1Var2.p + " onSettings", new gp(i2, rq1Var2, jx3Var));
+                            } catch (Throwable th) {
+                                throw th;
+                            }
+                        }
+                        try {
+                            rq1Var2.J.b((pb4) jx3Var.n);
+                        } catch (IOException e2) {
+                            rq1Var2.f(e2);
+                        }
+                    } catch (Throwable th2) {
+                        throw th2;
                     }
                     break;
                 }
