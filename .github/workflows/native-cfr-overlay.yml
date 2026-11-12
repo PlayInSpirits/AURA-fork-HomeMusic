@@ -70,7 +70,7 @@ jobs:
         with:
           name: aura-native-recovery
           path: native/recovery-input
-          github-token: \${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           repository: PlayInSpirits/AURA-fork-HomeMusic
           run-id: 43147516314
 
