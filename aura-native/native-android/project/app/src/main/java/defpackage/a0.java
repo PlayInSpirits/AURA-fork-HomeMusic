@@ -58,8 +58,8 @@ public final /* synthetic */ class a0 implements Runnable {
     @Override // java.lang.Runnable
     public final void run() {
         Object obj;
-        ?? r4;
-        ?? r3;
+        Object r4;
+        Object r3;
         af4 af4Var;
         int i = this.n;
         int i2 = 2;
