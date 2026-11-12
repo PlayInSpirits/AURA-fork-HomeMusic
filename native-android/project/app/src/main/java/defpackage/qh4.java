@@ -9,6 +9,10 @@ import org.chromium.support_lib_boundary.WebSettingsBoundaryInterface;
 public final class qh4 implements Parcelable.ClassLoaderCreator {
     public final /* synthetic */ int a;
 
+    public /* synthetic */ qh4(int i) {
+        this.a = i;
+    }
+
     public static rh4 a(Parcel parcel, ClassLoader classLoader) {
         if (classLoader == null) {
             classLoader = qh4.class.getClassLoader();

@@ -79,6 +79,10 @@ public final class uy3 {
         }
     }
 
+    /* JADX WARN: Bottom block not found for handler: all -> 0x009e */
+    /*
+        Code decompiled incorrectly, please refer to instructions dump.
+    */
     public final void c() {
         Set set = this.a;
         if (set == null) {
@@ -128,31 +132,26 @@ public final class uy3 {
         f13 f13Var2 = this.c;
         if (f13Var2.p != 0) {
             Trace.beginSection("Compose:onRemembered");
-            try {
-                Set set2 = this.a;
-                if (set2 != null) {
-                    Object[] objArr = f13Var2.n;
-                    int i3 = f13Var2.p;
-                    for (int i4 = 0; i4 < i3; i4++) {
-                        wg1 wg1Var = (wg1) objArr[i4];
-                        vy3 vy3Var2 = wg1Var.a;
-                        set2.remove(vy3Var2);
-                        try {
-                            vy3Var2.d();
-                        } catch (Throwable th3) {
-                            x80 x80Var2 = this.b;
-                            if (x80Var2 != null) {
-                                si0.T(th3, new fa(i, x80Var2, wg1Var));
-                            }
-                            throw th3;
+            Set set2 = this.a;
+            if (set2 != null) {
+                Object[] objArr = f13Var2.n;
+                int i3 = f13Var2.p;
+                for (int i4 = 0; i4 < i3; i4++) {
+                    wg1 wg1Var = (wg1) objArr[i4];
+                    vy3 vy3Var2 = wg1Var.a;
+                    set2.remove(vy3Var2);
+                    try {
+                        vy3Var2.d();
+                    } catch (Throwable th3) {
+                        x80 x80Var2 = this.b;
+                        if (x80Var2 != null) {
+                            si0.T(th3, new fa(i, x80Var2, wg1Var));
                         }
+                        throw th3;
                     }
                 }
-                Trace.endSection();
-            } catch (Throwable th4) {
-                Trace.endSection();
-                throw th4;
             }
+            Trace.endSection();
         }
     }
 
