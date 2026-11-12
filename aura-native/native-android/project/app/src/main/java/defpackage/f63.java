@@ -361,9 +361,9 @@ public abstract class f63 extends cf2 implements pi2, q62 {
             cx2VarA0 = A0();
             for (cx2 cx2VarD1 = D0(zF); cx2VarD1 != null && (cx2VarD1.q & 128) != 0; cx2VarD1 = cx2VarD1.s) {
                 if ((cx2VarD1.p & 128) != 0) {
-                    ?? C = cx2VarD1;
-                    ?? f13Var = 0;
-                    while (C != 0) {
+                    cx2 C = cx2VarD1;
+                    f13 f13Var = null;
+                    while (C != null) {
                         if (C instanceof yi2) {
                             ((yi2) C).a(this.p);
                         } else if ((C.p & 128) != 0 && (C instanceof fo0)) {
@@ -378,12 +378,12 @@ public abstract class f63 extends cf2 implements pi2, q62 {
                                         f13Var = f13Var;
                                         C = cx2Var;
                                     } else {
-                                        if (f13Var == 0) {
+                                        if (f13Var == null) {
                                             f13Var = new f13(new cx2[16]);
                                         }
-                                        if (C != 0) {
+                                        if (C != null) {
                                             f13Var.b(C);
-                                            C = 0;
+                                            C = null;
                                         }
                                         f13Var.b(cx2Var);
                                     }
@@ -441,9 +441,9 @@ public abstract class f63 extends cf2 implements pi2, q62 {
         }
         for (cx2 cx2VarD0 = D0(zF); cx2VarD0 != null && (cx2VarD0.q & 4194304) != 0; cx2VarD0 = cx2VarD0.s) {
             if ((cx2VarD0.p & 4194304) != 0) {
-                ?? C = cx2VarD0;
-                ?? f13Var = 0;
-                while (C != 0) {
+                cx2 C = cx2VarD0;
+                f13 f13Var = null;
+                while (C != null) {
                     if (C instanceof o62) {
                         ((o62) C).e(this);
                     } else if ((C.p & 4194304) != 0 && (C instanceof fo0)) {
@@ -458,12 +458,12 @@ public abstract class f63 extends cf2 implements pi2, q62 {
                                     f13Var = f13Var;
                                     C = cx2Var;
                                 } else {
-                                    if (f13Var == 0) {
+                                    if (f13Var == null) {
                                         f13Var = new f13(new cx2[16]);
                                     }
-                                    if (C != 0) {
+                                    if (C != null) {
                                         f13Var.b(C);
-                                        C = 0;
+                                        C = null;
                                     }
                                     f13Var.b(cx2Var);
                                 }
@@ -570,7 +570,7 @@ public abstract class f63 extends cf2 implements pi2, q62 {
     /* JADX WARN: Type inference failed for: r4v8 */
     /* JADX WARN: Type inference failed for: r4v9, types: [f13] */
     public final void Q0(cx2 cx2Var, e63 e63Var, long j, fm1 fm1Var, int i, boolean z, float f, boolean z2) {
-        ?? C;
+        cx2 C;
         if (cx2Var == null) {
             H0(e63Var, j, fm1Var, i, z);
             return;
@@ -582,9 +582,9 @@ public abstract class f63 extends cf2 implements pi2, q62 {
         int i2 = i;
         char c = 3;
         if (i2 == 3 || i2 == 4) {
-            ?? r3 = cx2Var;
-            ?? f13Var = 0;
-            while (r3 != 0) {
+            cx2 r3 = cx2Var;
+            f13 f13Var = null;
+            while (r3 != null) {
                 int i3 = 0;
                 if (r3 instanceof rn3) {
                     int i4 = e35.o;
@@ -667,12 +667,12 @@ public abstract class f63 extends cf2 implements pi2, q62 {
                                 f13Var = f13Var;
                                 C = cx2Var2;
                             } else {
-                                if (f13Var == 0) {
+                                if (f13Var == null) {
                                     f13Var = new f13(new cx2[16]);
                                 }
-                                if (C != 0) {
+                                if (C != null) {
                                     f13Var.b(C);
-                                    C = 0;
+                                    C = null;
                                 }
                                 f13Var.b(cx2Var2);
                             }
@@ -875,9 +875,9 @@ public abstract class f63 extends cf2 implements pi2, q62 {
                 if (zF || (cx2VarA0 = cx2VarA0.r) != null) {
                     for (cx2 cx2VarD0 = D0(zF); cx2VarD0 != null && (cx2VarD0.q & 4) != 0; cx2VarD0 = cx2VarD0.s) {
                         if ((cx2VarD0.p & 4) != 0) {
-                            ?? C = cx2VarD0;
-                            ?? f13Var = 0;
-                            while (C != 0) {
+                            cx2 C = cx2VarD0;
+                            f13 f13Var = null;
+                            while (C != null) {
                                 if (C instanceof rv0) {
                                     ((rv0) C).y();
                                 } else if ((C.p & 4) != 0 && (C instanceof fo0)) {
@@ -892,12 +892,12 @@ public abstract class f63 extends cf2 implements pi2, q62 {
                                                 f13Var = f13Var;
                                                 C = cx2Var;
                                             } else {
-                                                if (f13Var == 0) {
+                                                if (f13Var == null) {
                                                     f13Var = new f13(new cx2[16]);
                                                 }
-                                                if (C != 0) {
+                                                if (C != null) {
                                                     f13Var.b(C);
-                                                    C = 0;
+                                                    C = null;
                                                 }
                                                 f13Var.b(cx2Var);
                                             }
