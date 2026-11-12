@@ -79,7 +79,6 @@ public final class uy3 {
         }
     }
 
-    /* JADX WARN: Bottom block not found for handler: all -> 0x0061 */
     /* JADX WARN: Bottom block not found for handler: all -> 0x009e */
     /*
         Code decompiled incorrectly, please refer to instructions dump.
@@ -94,36 +93,41 @@ public final class uy3 {
         int i = 4;
         if (f13Var.p != 0) {
             Trace.beginSection("Compose:onForgotten");
-            x03 x03Var = this.h;
-            int i2 = f13Var.p;
-            while (true) {
-                i2--;
-                if (-1 >= i2) {
-                    break;
-                }
-                Object obj = f13Var.n[i2];
-                try {
-                    if (obj instanceof wg1) {
-                        vy3 vy3Var = ((wg1) obj).a;
-                        set.remove(vy3Var);
-                        vy3Var.c();
+            try {
+                x03 x03Var = this.h;
+                int i2 = f13Var.p;
+                while (true) {
+                    i2--;
+                    if (-1 >= i2) {
+                        break;
                     }
-                    if (obj instanceof u70) {
-                        if (x03Var == null || !x03Var.c(obj)) {
-                            ((u70) obj).b();
-                        } else {
-                            ((u70) obj).a();
+                    Object obj = f13Var.n[i2];
+                    try {
+                        if (obj instanceof wg1) {
+                            vy3 vy3Var = ((wg1) obj).a;
+                            set.remove(vy3Var);
+                            vy3Var.c();
                         }
+                        if (obj instanceof u70) {
+                            if (x03Var == null || !x03Var.c(obj)) {
+                                ((u70) obj).b();
+                            } else {
+                                ((u70) obj).a();
+                            }
+                        }
+                    } catch (Throwable th) {
+                        x80 x80Var = this.b;
+                        if (x80Var != null) {
+                            si0.T(th, new fa(i, x80Var, obj));
+                        }
+                        throw th;
                     }
-                } catch (Throwable th) {
-                    x80 x80Var = this.b;
-                    if (x80Var != null) {
-                        si0.T(th, new fa(i, x80Var, obj));
-                    }
-                    throw th;
                 }
+                Trace.endSection();
+            } catch (Throwable th2) {
+                Trace.endSection();
+                throw th2;
             }
-            Trace.endSection();
         }
         f13 f13Var2 = this.c;
         if (f13Var2.p != 0) {
@@ -138,12 +142,12 @@ public final class uy3 {
                     set2.remove(vy3Var2);
                     try {
                         vy3Var2.d();
-                    } catch (Throwable th2) {
+                    } catch (Throwable th3) {
                         x80 x80Var2 = this.b;
                         if (x80Var2 != null) {
-                            si0.T(th2, new fa(i, x80Var2, wg1Var));
+                            si0.T(th3, new fa(i, x80Var2, wg1Var));
                         }
-                        throw th2;
+                        throw th3;
                     }
                 }
             }
