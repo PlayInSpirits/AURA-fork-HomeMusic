@@ -18,13 +18,39 @@ java.lang.NullPointerException: Cannot invoke "java.util.List.iterator()" becaus
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public abstract class x05 {
+    // JADX could not reconstruct the R8-optimized enum hierarchy. Keep the
+    // constant identity, source name and ordinal in a Java-compatible base.
+    private final String enumName;
+    private final int enumOrdinal;
+
+    protected x05() {
+        this("", -1);
+    }
+
+    protected x05(String name, int ordinal) {
+        this.enumName = name;
+        this.enumOrdinal = ordinal;
+    }
+
+    public final String name() {
+        return this.enumName;
+    }
+
+    public final int ordinal() {
+        return this.enumOrdinal;
+    }
+
+    @Override
+    public final String toString() {
+        return this.enumName;
+    }
     public static final t05 n;
     public static final u05 o;
     public static final x05 p;
     public static final /* synthetic */ x05[] q;
 
     static {
-        x05 x05Var = new x05() { // from class: s05
+        x05 x05Var = new x05("JAVA6", 0) { // from class: s05
             @Override // defpackage.x05
             public final Type a(Type type) {
                 return new a(1, type);
@@ -63,7 +89,15 @@ public abstract class x05 {
     }
 
     public static x05 valueOf(String str) {
-        return (x05) Enum.valueOf(x05.class, str);
+        if (str == null) {
+            throw new NullPointerException("name");
+        }
+        for (x05 value : q) {
+            if (value.enumName.equals(str)) {
+                return value;
+            }
+        }
+        throw new IllegalArgumentException("No enum constant defpackage.x05." + str);
     }
 
     public static x05[] values() {
