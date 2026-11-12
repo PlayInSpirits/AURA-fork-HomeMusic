@@ -51,30 +51,26 @@ jobs:
           printf '%s\n' "$(cygpath -w "$JAVA_HOME_UNIX/bin")" >> "$GITHUB_PATH"
 
           PYTHON_CMD="$(command -v python.exe || command -v python || true)"
-          if [ -z "$PYTHON_CMD" ]; then
-            echo "::error::Python is not available to bootstrap the portable runtime."
-            exit 1
-          fi
-          if "$PYTHON_CMD" -c 'import sys; raise SystemExit(0 if sys.version_info >= (3, 12) else 1)'; then
+          PYTHON_BIN_UNIX=""
+          if [ -n "$PYTHON_CMD" ] && "$PYTHON_CMD" -c 'import sys; raise SystemExit(0 if sys.version_info >= (3, 12) else 1)'; then
             PYTHON_BIN_UNIX="$(cygpath -u "$PYTHON_CMD" 2>/dev/null || printf '%s' "$PYTHON_CMD")"
           else
-            echo "Bootstrapping portable Python 3.12.10 (no PowerShell scripts or pip required)."
+            echo "Bootstrapping portable Python 3.12.10 with Windows PowerShell archive extraction."
             PYTHON_DIR="$RUNNER_TEMP/aura-python-3.12.10"
             PYTHON_ZIP="$RUNNER_TEMP/python-3.12.10-embed-amd64.zip"
             PYTHON_DIR="$(cygpath -u "$PYTHON_DIR")"
             PYTHON_ZIP="$(cygpath -u "$PYTHON_ZIP")"
             mkdir -p "$PYTHON_DIR"
             curl.exe -fL --retry 3 "https://www.python.org/ftp/python/3.12.10/python-3.12.10-embed-amd64.zip" -o "$(cygpath -w "$PYTHON_ZIP")"
-            unzip -q -o "$PYTHON_ZIP" -d "$PYTHON_DIR"
+            PYTHON_DIR_WIN="$(cygpath -w "$PYTHON_DIR")"
+            PYTHON_ZIP_WIN="$(cygpath -w "$PYTHON_ZIP")"
+            powershell.exe -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command "Expand-Archive -LiteralPath '$PYTHON_ZIP_WIN' -DestinationPath '$PYTHON_DIR_WIN' -Force; Add-Content -LiteralPath '$PYTHON_DIR_WIN\\python312._pth' -Value 'import site'"
             PYTHON_BIN_UNIX="$PYTHON_DIR/python.exe"
             [ -f "$PYTHON_BIN_UNIX" ] || { echo "::error::Portable Python extraction failed."; exit 1; }
-            if ! grep -qx 'import site' "$PYTHON_DIR/python312._pth"; then
-              printf '\nimport site\n' >> "$PYTHON_DIR/python312._pth"
-            fi
-            printf '%s\n' "$(cygpath -w "$PYTHON_DIR")" >> "$GITHUB_PATH"
+            printf '%s\\n' "$PYTHON_DIR_WIN" >> "$GITHUB_PATH"
           fi
           "$PYTHON_BIN_UNIX" -c 'import sys; print(sys.version); raise SystemExit(0 if sys.version_info >= (3, 12) else 1)'
-          printf 'AURA_PYTHON=%s\n' "$PYTHON_BIN_UNIX" >> "$GITHUB_ENV"
+          printf 'AURA_PYTHON=%s\\n' "$PYTHON_BIN_UNIX" >> "$GITHUB_ENV"
 
           SDK_ROOT_UNIX=""
           for candidate in "$ANDROID_SDK_ROOT" "$ANDROID_HOME" "$LOCALAPPDATA/Android/Sdk" "$USERPROFILE/AppData/Local/Android/Sdk" "C:/Android"; do
