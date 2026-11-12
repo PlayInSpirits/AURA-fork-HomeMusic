@@ -83,7 +83,7 @@ public final class sc5 {
             String[] strArr = (String[]) Arrays.copyOf(new String[]{"workspec"}, 1);
             jy4 jy4Var = s12VarI.b;
             kd3 kd3VarG = jy4Var.g(strArr);
-            ?? r4 = (String[]) kd3VarG.n;
+            String[] r4 = (String[]) kd3VarG.n;
             int[] iArr = (int[]) kd3VarG.o;
             r4.getClass();
             iArr.getClass();
