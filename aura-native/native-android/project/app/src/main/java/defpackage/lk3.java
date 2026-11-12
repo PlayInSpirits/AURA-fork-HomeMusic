@@ -181,203 +181,222 @@ public final class lk3 {
      * Enabled unnecessary exception pruning
      * Enabled aggressive exception aggregation
      */
-    public static lk3 r(int n16, Bundle object) {
-        void var1_4;
-        void var34_70;
-        void var31_49;
-        void var30_59;
-        void var27_20;
-        void var25_31;
-        void var24_16;
-        boolean bl5;
-        int n17;
-        int n18;
-        Object object2;
-        Object object3;
-        Object object4;
-        int n19;
-        int n26;
-        Object object5;
-        int n27;
-        Object object6;
-        Object object7;
-        Object object8;
-        IBinder iBinder = object.getBinder(o0);
-        if (iBinder instanceof kk3) {
-            return ((kk3)iBinder).e;
+    public static lk3 r(int version, Bundle bundle) {
+        IBinder cachedBinder = bundle.getBinder(o0);
+        if (cachedBinder instanceof kk3) {
+            return ((kk3) cachedBinder).e;
         }
-        Bundle bundle = object.getBundle(a0);
-        Object var24_7 = null;
-        Object var25_22 = null;
-        if (bundle == null) {
-            Object var24_8 = null;
-        } else {
-            void var25_26;
-            void var24_12;
-            block34: {
-                object8 = bundle.getString(PlaybackException.s);
-                object7 = bundle.getString(PlaybackException.t);
-                object6 = bundle.getString(PlaybackException.u);
-                if (!TextUtils.isEmpty((CharSequence)object7)) {
-                    try {
-                        void var25_24;
-                        Class<?> clazz = Class.forName((String)object7, true, PlaybackException.class.getClassLoader());
-                        if (Throwable.class.isAssignableFrom(clazz)) {
-                            Throwable throwable = (Throwable)clazz.getConstructor(String.class).newInstance(object6);
-                        }
-                        void var24_10 = var25_24;
-                        if (var25_24 != null) break block34;
+
+        PlaybackException playbackException = null;
+        Bundle errorBundle = bundle.getBundle(a0);
+        if (errorBundle != null) {
+            String errorMessage = errorBundle.getString(PlaybackException.s);
+            String errorClassName = errorBundle.getString(PlaybackException.t);
+            String errorDetail = errorBundle.getString(PlaybackException.u);
+            Throwable cause = null;
+            if (!TextUtils.isEmpty(errorClassName)) {
+                try {
+                    Class<?> errorClass = Class.forName(
+                            errorClassName, true, PlaybackException.class.getClassLoader());
+                    if (Throwable.class.isAssignableFrom(errorClass)) {
+                        cause = (Throwable) errorClass
+                                .getConstructor(String.class)
+                                .newInstance(errorDetail);
                     }
-                    catch (Throwable throwable) {
-                        RemoteException remoteException = new RemoteException((String)object6);
-                        break block34;
-                    }
-                    RemoteException remoteException = new RemoteException((String)object6);
+                } catch (Throwable ignored) {
+                    cause = null;
+                }
+                if (cause == null) {
+                    cause = new RemoteException(errorDetail);
                 }
             }
-            n27 = bundle.getInt(PlaybackException.q, 1000);
-            Bundle bundle2 = f35.n(bundle.getBundle(PlaybackException.v));
-            if (bundle2 == null) {
-                Bundle bundle3 = Bundle.EMPTY;
+            int errorCode = errorBundle.getInt(PlaybackException.q, 1000);
+            Bundle errorExtras = f35.n(errorBundle.getBundle(PlaybackException.v));
+            if (errorExtras == null) {
+                errorExtras = Bundle.EMPTY;
             }
-            PlaybackException playbackException = new PlaybackException((String)object8, (Throwable)var24_12, n27, (Bundle)var25_26, bundle.getLong(PlaybackException.r, SystemClock.elapsedRealtime()));
+            playbackException = new PlaybackException(
+                    errorMessage,
+                    cause,
+                    errorCode,
+                    errorExtras,
+                    errorBundle.getLong(PlaybackException.r, SystemClock.elapsedRealtime()));
         }
-        int n28 = object.getInt(c0, 0);
-        Bundle bundle4 = object.getBundle(b0);
-        if (bundle4 == null) {
-            za4 za42 = za4.l;
-        } else {
-            za4 za43 = za4.b(bundle4);
-        }
-        object8 = object.getBundle(d0);
-        object8 = object8 == null ? za4.k : pi3.c((Bundle)object8);
-        Bundle bundle5 = object.getBundle(e0);
-        if (bundle5 == null) {
-            pi3 pi32 = za4.k;
-        } else {
-            pi3 pi33 = pi3.c(bundle5);
-        }
-        int n29 = object.getInt(f0, 0);
-        object6 = object.getBundle(I);
-        object6 = object6 == null ? qh3.d : new qh3(object6.getFloat(qh3.e, 1.0f), object6.getFloat(qh3.f, 1.0f));
-        int n36 = object.getInt(J, 0);
-        boolean bl6 = object.getBoolean(K, false);
-        Bundle bundle6 = object.getBundle(L);
-        if (bundle6 == null) {
-            object7 = cu4.a;
-        } else {
-            void var31_44;
-            void var30_55;
-            object7 = new tb4(7);
-            IBinder iBinder2 = bundle6.getBinder(cu4.b);
-            if (iBinder2 == null) {
-                object7 = yw1.o;
-                object7 = gy3.r;
-            } else {
-                object7 = hw.f((eg1)object7, iw.a(iBinder2));
-            }
-            object5 = new tb4(8);
-            IBinder iBinder3 = bundle6.getBinder(cu4.c);
-            if (iBinder3 == null) {
-                vw1 vw12 = yw1.o;
-                gy3 gy32 = gy3.r;
-            } else {
-                gy3 gy33 = hw.f((eg1)object5, iw.a(iBinder3));
-            }
-            Object object9 = object5 = (Object)bundle6.getIntArray(cu4.d);
-            if (object5 == null) {
-                n26 = ((gy3)object7).q;
-                int[] nArray = new int[n26];
-                for (n27 = 0; n27 < n26; ++n27) {
-                    nArray[n27] = n27;
+
+        int mediaItemIndex = bundle.getInt(c0, 0);
+        Bundle audioAttributesBundle = bundle.getBundle(b0);
+        za4 audioAttributes = audioAttributesBundle == null
+                ? za4.l : za4.b(audioAttributesBundle);
+
+        Bundle currentMetadataBundle = bundle.getBundle(d0);
+        pi3 currentMetadata = currentMetadataBundle == null
+                ? za4.k : pi3.c(currentMetadataBundle);
+
+        Bundle nextMetadataBundle = bundle.getBundle(e0);
+        pi3 nextMetadata = nextMetadataBundle == null
+                ? za4.k : pi3.c(nextMetadataBundle);
+
+        int repeatMode = bundle.getInt(f0, 0);
+        Bundle playbackParametersBundle = bundle.getBundle(I);
+        qh3 playbackParameters = playbackParametersBundle == null
+                ? qh3.d
+                : new qh3(
+                        playbackParametersBundle.getFloat(qh3.e, 1.0f),
+                        playbackParametersBundle.getFloat(qh3.f, 1.0f));
+
+        int playbackState = bundle.getInt(J, 0);
+        boolean playWhenReady = bundle.getBoolean(K, false);
+
+        Bundle cueBundle = bundle.getBundle(L);
+        cu4 cues = cu4.a;
+        if (cueBundle != null) {
+            eg1 firstBinderAdapter = new tb4(7);
+            IBinder firstBinder = cueBundle.getBinder(cu4.b);
+            gy3 firstCueGroup = firstBinder == null
+                    ? gy3.r : (gy3) hw.f(firstBinderAdapter, iw.a(firstBinder));
+
+            eg1 secondBinderAdapter = new tb4(8);
+            IBinder secondBinder = cueBundle.getBinder(cu4.c);
+            gy3 secondCueGroup = secondBinder == null
+                    ? gy3.r : (gy3) hw.f(secondBinderAdapter, iw.a(secondBinder));
+
+            int[] cueIndices = cueBundle.getIntArray(cu4.d);
+            if (cueIndices == null) {
+                cueIndices = new int[firstCueGroup.q];
+                for (int index = 0; index < cueIndices.length; index++) {
+                    cueIndices[index] = index;
                 }
             }
-            object7 = new au4((gy3)object7, (gy3)var30_55, (int[])var31_44);
+            cues = new au4(firstCueGroup, secondCueGroup, cueIndices);
         }
-        n26 = object.getInt(n0, 0);
-        Bundle bundle7 = object.getBundle(M);
-        if (bundle7 == null) {
-            s55 s552 = s55.d;
+
+        int currentWindowIndex = bundle.getInt(n0, 0);
+
+        Bundle subtitleBundle = bundle.getBundle(M);
+        s55 subtitleParameters = subtitleBundle == null
+                ? s55.d
+                : new s55(
+                        subtitleBundle.getInt(s55.e, 0),
+                        subtitleBundle.getFloat(s55.g, 1.0f),
+                        subtitleBundle.getInt(s55.f, 0));
+
+        Bundle trackSelectionBundle = bundle.getBundle(N);
+        do2 trackSelectionParameters = trackSelectionBundle == null
+                ? do2.K : do2.b(trackSelectionBundle);
+
+        float volume = bundle.getFloat(O, 1.0f);
+        float playbackSpeed = bundle.getFloat(P, 1.0f);
+        int audioSessionId = bundle.getInt(p0, 0);
+
+        Bundle deviceInfoBundle = bundle.getBundle(Q);
+        il deviceInfo = deviceInfoBundle == null ? il.i : il.a(deviceInfoBundle);
+
+        Bundle playlistMetadataBundle = bundle.getBundle(g0);
+        jg0 playlistMetadata;
+        if (playlistMetadataBundle == null) {
+            playlistMetadata = jg0.d;
         } else {
-            n27 = bundle7.getInt(s55.e, 0);
-            n19 = bundle7.getInt(s55.f, 0);
-            s55 s553 = new s55(n27, bundle7.getFloat(s55.g, 1.0f), n19);
-        }
-        Bundle bundle8 = object.getBundle(N);
-        if (bundle8 == null) {
-            do2 do22 = do2.K;
-        } else {
-            do2 do23 = do2.b(bundle8);
-        }
-        float f16 = object.getFloat(O, 1.0f);
-        float f17 = object.getFloat(P, 1.0f);
-        n19 = object.getInt(p0, 0);
-        object5 = object.getBundle(Q);
-        object5 = object5 == null ? il.i : il.a((Bundle)object5);
-        Bundle bundle9 = object.getBundle(g0);
-        if (bundle9 == null) {
-            object4 = jg0.d;
-        } else {
-            object3 = bundle9.getParcelableArrayList(jg0.e);
-            if (object3 == null) {
-                object4 = gy3.r;
+            ArrayList playlistItems =
+                    playlistMetadataBundle.getParcelableArrayList(jg0.e);
+            java.util.List parsedItems;
+            if (playlistItems == null) {
+                parsedItems = gy3.r;
             } else {
-                object4 = yw1.j();
-                for (n27 = 0; n27 < object3.size(); ++n27) {
-                    object2 = (Bundle)object3.get(n27);
-                    object2.getClass();
-                    ((pw1)object4).c(ig0.a((Bundle)object2));
+                uw1 itemBuilder = yw1.j();
+                for (int index = 0; index < playlistItems.size(); index++) {
+                    Bundle itemBundle = (Bundle) playlistItems.get(index);
+                    itemBundle.getClass();
+                    itemBuilder.c(ig0.a(itemBundle));
                 }
-                object4 = ((uw1)object4).f();
+                parsedItems = itemBuilder.f();
             }
-            object4 = new jg0(bundle9.getLong(jg0.f), (List)object4);
+            playlistMetadata = new jg0(
+                    playlistMetadataBundle.getLong(jg0.f), parsedItems);
         }
-        Bundle bundle10 = object.getBundle(R);
-        if (bundle10 == null) {
-            hp0 hp02 = hp0.e;
-        } else {
-            n27 = bundle10.getInt(hp0.f, 0);
-            n18 = bundle10.getInt(hp0.g, 0);
-            n17 = bundle10.getInt(hp0.h, 0);
-            String string = bundle10.getString(hp0.i);
-            object2 = new x20(n27);
-            ((x20)object2).b = n18;
-            ((x20)object2).c = n17;
-            bl5 = n27 != 0 || string == null;
-            rr2.l(bl5);
-            ((x20)object2).d = string;
-            hp0 hp03 = ((x20)object2).b();
+
+        Bundle deviceVolumeBundle = bundle.getBundle(R);
+        hp0 deviceVolume = hp0.e;
+        if (deviceVolumeBundle != null) {
+            int deviceId = deviceVolumeBundle.getInt(hp0.f, 0);
+            int minVolume = deviceVolumeBundle.getInt(hp0.g, 0);
+            int maxVolume = deviceVolumeBundle.getInt(hp0.h, 0);
+            String deviceName = deviceVolumeBundle.getString(hp0.i);
+            x20 deviceVolumeBuilder = new x20(deviceId);
+            deviceVolumeBuilder.b = minVolume;
+            deviceVolumeBuilder.c = maxVolume;
+            rr2.l(deviceId != 0 || deviceName == null);
+            deviceVolumeBuilder.d = deviceName;
+            deviceVolume = deviceVolumeBuilder.b();
         }
-        n27 = object.getInt(S, 0);
-        boolean bl7 = object.getBoolean(T, false);
-        boolean bl8 = object.getBoolean(U, false);
-        n17 = object.getInt(V, 1);
-        int n37 = object.getInt(W, 0);
-        n18 = object.getInt(X, 1);
-        bl5 = object.getBoolean(Y, false);
-        boolean bl9 = object.getBoolean(Z, false);
-        object2 = object.getBundle(h0);
-        object2 = object2 == null ? do2.K : do2.b((Bundle)object2);
-        long l16 = n16 < 4 ? 0L : 5000L;
-        long l17 = object.getLong(i0, l16);
-        l16 = n16 < 4 ? 0L : 15000L;
-        long l18 = object.getLong(j0, l16);
-        l16 = n16 < 4 ? 0L : 3000L;
-        l16 = object.getLong(k0, l16);
-        object3 = object.getBundle(m0);
-        if (object3 == null) {
-            object3 = jw4.b;
-        } else {
-            object3 = (object3 = object3.getParcelableArrayList(jw4.c)) == null ? gy3.r : hw.f(new tb4(12), (List)object3);
-            object3 = new jw4((List)object3);
+
+        int deviceVolumeFlags = bundle.getInt(S, 0);
+        boolean shuffleEnabled = bundle.getBoolean(T, false);
+        boolean deviceVolumeMuted = bundle.getBoolean(U, false);
+        int audioContentType = bundle.getInt(V, 1);
+        int audioFlags = bundle.getInt(W, 0);
+        int audioUsage = bundle.getInt(X, 1);
+        boolean audioSpatializationEnabled = bundle.getBoolean(Y, false);
+        boolean audioOffloadEnabled = bundle.getBoolean(Z, false);
+
+        Bundle repeatParametersBundle = bundle.getBundle(h0);
+        do2 repeatParameters = repeatParametersBundle == null
+                ? do2.K : do2.b(repeatParametersBundle);
+
+        long defaultPosition = version < 4 ? 0L : 5000L;
+        long position = bundle.getLong(i0, defaultPosition);
+        long defaultBufferedPosition = version < 4 ? 0L : 15000L;
+        long bufferedPosition = bundle.getLong(j0, defaultBufferedPosition);
+        long defaultDuration = version < 4 ? 0L : 3000L;
+        long duration = bundle.getLong(k0, defaultDuration);
+
+        Bundle mediaMetadataBundle = bundle.getBundle(m0);
+        jw4 mediaMetadata = jw4.b;
+        if (mediaMetadataBundle != null) {
+            ArrayList metadataItems =
+                    mediaMetadataBundle.getParcelableArrayList(jw4.c);
+            java.util.List parsedMetadata = metadataItems == null
+                    ? gy3.r : (java.util.List) hw.f(new tb4(12), metadataItems);
+            mediaMetadata = new jw4(parsedMetadata);
         }
-        Bundle bundle11 = object.getBundle(l0);
-        if (bundle11 == null) {
-            cw4 cw42 = cw4.J;
-            return new lk3((PlaybackException)var24_16, n28, (za4)var25_31, (pi3)object8, (pi3)var27_20, n29, (qh3)object6, n36, bl6, (s55)var30_59, (cu4)object7, n26, (do2)var31_49, f16, f17, (il)object5, n19, (jg0)object4, (hp0)var34_70, n27, bl7, bl8, n17, n37, n18, bl5, bl9, (do2)object2, l17, l18, l16, (jw4)object3, (cw4)var1_4);
-        }
-        cw4 cw43 = cw4.b(bundle11);
-        return new lk3((PlaybackException)var24_16, n28, (za4)var25_31, (pi3)object8, (pi3)var27_20, n29, (qh3)object6, n36, bl6, (s55)var30_59, (cu4)object7, n26, (do2)var31_49, f16, f17, (il)object5, n19, (jg0)object4, (hp0)var34_70, n27, bl7, bl8, n17, n37, n18, bl5, bl9, (do2)object2, l17, l18, l16, (jw4)object3, (cw4)var1_4);
+
+        Bundle videoSizeBundle = bundle.getBundle(l0);
+        cw4 videoSize = videoSizeBundle == null
+                ? cw4.J : cw4.b(videoSizeBundle);
+
+        return new lk3(
+                playbackException,
+                mediaItemIndex,
+                audioAttributes,
+                currentMetadata,
+                nextMetadata,
+                repeatMode,
+                playbackParameters,
+                playbackState,
+                playWhenReady,
+                subtitleParameters,
+                cues,
+                currentWindowIndex,
+                trackSelectionParameters,
+                volume,
+                playbackSpeed,
+                deviceInfo,
+                audioSessionId,
+                playlistMetadata,
+                deviceVolume,
+                deviceVolumeFlags,
+                shuffleEnabled,
+                deviceVolumeMuted,
+                audioContentType,
+                audioFlags,
+                audioUsage,
+                audioSpatializationEnabled,
+                audioOffloadEnabled,
+                repeatParameters,
+                position,
+                bufferedPosition,
+                duration,
+                mediaMetadata,
+                videoSize);
     }
 
     public final lk3 a(il il5) {
