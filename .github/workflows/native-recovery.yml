@@ -51,8 +51,30 @@ jobs:
           printf '%s\n' "$(cygpath -w "$JAVA_HOME_UNIX/bin")" >> "$GITHUB_PATH"
 
           PYTHON_CMD="$(command -v python.exe || command -v python || true)"
-          [ -n "$PYTHON_CMD" ] || { echo "::error::Python 3.12 is not available."; exit 1; }
-          "$PYTHON_CMD" -c 'import sys; print(sys.version); raise SystemExit(0 if sys.version_info >= (3, 12) else 1)'
+          if [ -z "$PYTHON_CMD" ]; then
+            echo "::error::Python is not available to bootstrap the portable runtime."
+            exit 1
+          fi
+          if "$PYTHON_CMD" -c 'import sys; raise SystemExit(0 if sys.version_info >= (3, 12) else 1)'; then
+            PYTHON_BIN_UNIX="$(cygpath -u "$PYTHON_CMD" 2>/dev/null || printf '%s' "$PYTHON_CMD")"
+          else
+            echo "Bootstrapping portable Python 3.12.10 (no PowerShell scripts or pip required)."
+            PYTHON_DIR="$RUNNER_TEMP/aura-python-3.12.10"
+            PYTHON_ZIP="$RUNNER_TEMP/python-3.12.10-embed-amd64.zip"
+            PYTHON_DIR="$(cygpath -u "$PYTHON_DIR")"
+            PYTHON_ZIP="$(cygpath -u "$PYTHON_ZIP")"
+            mkdir -p "$PYTHON_DIR"
+            curl.exe -fL --retry 3 "https://www.python.org/ftp/python/3.12.10/python-3.12.10-embed-amd64.zip" -o "$(cygpath -w "$PYTHON_ZIP")"
+            unzip -q -o "$PYTHON_ZIP" -d "$PYTHON_DIR"
+            PYTHON_BIN_UNIX="$PYTHON_DIR/python.exe"
+            [ -f "$PYTHON_BIN_UNIX" ] || { echo "::error::Portable Python extraction failed."; exit 1; }
+            if ! grep -qx 'import site' "$PYTHON_DIR/python312._pth"; then
+              printf '\nimport site\n' >> "$PYTHON_DIR/python312._pth"
+            fi
+            printf '%s\n' "$(cygpath -w "$PYTHON_DIR")" >> "$GITHUB_PATH"
+          fi
+          "$PYTHON_BIN_UNIX" -c 'import sys; print(sys.version); raise SystemExit(0 if sys.version_info >= (3, 12) else 1)'
+          printf 'AURA_PYTHON=%s\n' "$PYTHON_BIN_UNIX" >> "$GITHUB_ENV"
 
           SDK_ROOT_UNIX=""
           for candidate in "$ANDROID_SDK_ROOT" "$ANDROID_HOME" "$LOCALAPPDATA/Android/Sdk" "$USERPROFILE/AppData/Local/Android/Sdk" "C:/Android"; do
@@ -75,7 +97,7 @@ jobs:
           curl.exe -fL --retry 3 --retry-delay 2 "https://github.com/justman-1/HomeMusic-public/releases/download/v1.14.7/HomeMusic.apk" -o recovery/downloads/HomeMusic-1.14.7.apk
           curl.exe -fL --retry 3 --retry-delay 2 "https://github.com/PlayInSpirits/HomeMusic-Fork/releases/download/v0.30.2/AURA-0.30.apk" -o recovery/downloads/AURA-0.30.2.apk
           curl.exe -fL --retry 3 --retry-delay 2 "https://github.com/PlayInSpirits/HomeMusic-Fork/releases/download/v0.75.1/AURA-0.75.apk" -o recovery/downloads/AURA-0.75.1.apk
-          python - <<'PY'
+          "$AURA_PYTHON" - <<'PY'
           from hashlib import sha256
           from pathlib import Path
           expected = {
