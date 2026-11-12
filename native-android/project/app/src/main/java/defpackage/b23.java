@@ -26,6 +26,10 @@ import org.chromium.support_lib_boundary.WebSettingsBoundaryInterface;
 public final class b23 implements Parcelable.Creator {
     public final /* synthetic */ int a;
 
+    public /* synthetic */ b23(int i) {
+        this.a = i;
+    }
+
     @Override // android.os.Parcelable.Creator
     public final Object createFromParcel(Parcel parcel) {
         ArrayList arrayList;

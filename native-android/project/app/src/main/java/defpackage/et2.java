@@ -5,6 +5,10 @@ package defpackage;
 public final /* synthetic */ class et2 implements it2, wc0 {
     public final /* synthetic */ j60 n;
 
+    public /* synthetic */ et2(j60 j60Var) {
+        this.n = j60Var;
+    }
+
     @Override // defpackage.wc0
     public void accept(Object obj) {
         this.n.h((al3) obj);

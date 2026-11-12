@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    android:versionCode="7501"
-    android:versionName="v0.75-1"
+    android:versionCode="7502"
+    android:versionName="v0.10.1"
     android:compileSdkVersion="37"
     android:compileSdkVersionCodename="17"
     package="app.homemusic"
