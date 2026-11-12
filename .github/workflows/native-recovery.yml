@@ -229,7 +229,8 @@ jobs:
           PY
           java -jar recovery/tools/apktool_3.0.3.jar d -f recovery/downloads/AURA-0.75.1.apk -o recovery/apktool-aura-0751
 
-      - name: Generate alternate Java reference with dex2jar and CFR
+      - name: Generate optional alternate Java reference with dex2jar and CFR
+        continue-on-error: true
         run: |
           set -euo pipefail
           mkdir -p recovery/tools/dex2jar recovery/cfr-aura-0751
