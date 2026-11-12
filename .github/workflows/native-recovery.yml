@@ -117,7 +117,7 @@ jobs:
         run: |
           set -euo pipefail
           curl.exe -fL --retry 3 "https://github.com/skylot/jadx/releases/download/v1.5.6/jadx-1.5.6.zip" -o recovery/tools/jadx-1.5.6.zip
-          python - <<'PY'
+          "$AURA_PYTHON" - <<'PY'
           from hashlib import sha256
           from pathlib import Path
           from zipfile import ZipFile
@@ -151,7 +151,7 @@ jobs:
         run: |
           set -euo pipefail
           curl.exe -fL --retry 3 "https://github.com/iBotPeaches/Apktool/releases/download/v3.0.3/apktool_3.0.3.jar" -o recovery/tools/apktool_3.0.3.jar
-          python - <<'PY'
+          "$AURA_PYTHON" - <<'PY'
           from hashlib import sha256
           from pathlib import Path
           p=Path("recovery/tools/apktool_3.0.3.jar")
@@ -164,7 +164,7 @@ jobs:
 
       - name: Write recovery inventory
         run: |
-          python - <<'PY'
+          "$AURA_PYTHON" - <<'PY'
           from pathlib import Path
           import json
           root=Path("recovery")
