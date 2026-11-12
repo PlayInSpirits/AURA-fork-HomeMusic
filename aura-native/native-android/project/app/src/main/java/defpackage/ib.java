@@ -58,7 +58,7 @@ public final /* synthetic */ class ib implements wf1 {
         int i12;
         ArrayList arrayList3;
         List list2;
-        ?? arrayList4;
+        List arrayList4;
         Object obj3;
         qc3 qc3Var;
         f82 f82Var3;
@@ -95,7 +95,7 @@ public final /* synthetic */ class ib implements wf1 {
                 return j15Var;
             case 2:
                 h72 h72Var = (h72) obj5;
-                ?? r9 = (wf1) obj4;
+                wf1 r9 = (wf1) obj4;
                 rg1 rg1Var = (rg1) obj;
                 int iIntValue3 = ((Integer) obj2).intValue();
                 if (rg1Var.K(iIntValue3 & 1, (iIntValue3 & 3) != 2)) {
