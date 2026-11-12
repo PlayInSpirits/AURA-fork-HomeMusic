@@ -35,7 +35,7 @@ public abstract class qe4 extends fq {
     /* JADX WARN: Type inference failed for: r7v6 */
     /* JADX WARN: Type inference failed for: r7v7 */
     public static ArrayList Z0(pe4 pe4Var, zt4 zt4Var, bu4 bu4Var) {
-        ?? r7;
+        int r7;
         long j;
         cu4 cu4Var = pe4Var.w;
         if (cu4Var instanceof le4) {
@@ -46,13 +46,12 @@ public abstract class qe4 extends fq {
         int i = 0;
         while (i < cu4Var.o()) {
             int i2 = pe4Var.A;
-            if (i2 == -1) {
-                r7 = i2;
-                r7 = z;
-            }
-            r7 = i2;
+            // Smali shows the -1 case is normalized to zero before comparing
+            // the current window index. The DEX register is reused for an int,
+            // not for a boolean (JADX merged two incompatible SSA versions).
+            r7 = i2 == -1 ? 0 : i2;
             boolean z2 = true;
-            boolean z3 = r7 == i ? true : z;
+            boolean z3 = r7 == i;
             cu4Var.n(i, bu4Var);
             uw1 uw1VarJ = yw1.j();
             int i3 = bu4Var.m;
