@@ -11,9 +11,6 @@ public final class VideoInfo {
     private List<VideoConversion> conversions;
     private String id;
 
-    public VideoInfo() {
-    }
-
     public final List<AudioTrack> getAudioTracks() {
         return this.audioTracks;
     }
@@ -30,19 +27,19 @@ public final class VideoInfo {
         return this.id;
     }
 
-    public final void setAudioTracks(List<AudioTrack> r1) {
-        this.audioTracks = r1;
+    public final void setAudioTracks(List<AudioTrack> list) {
+        this.audioTracks = list;
     }
 
-    public final void setCaptions(List<Captions> r1) {
-        this.captions = r1;
+    public final void setCaptions(List<Captions> list) {
+        this.captions = list;
     }
 
-    public final void setConversions(List<VideoConversion> r1) {
-        this.conversions = r1;
+    public final void setConversions(List<VideoConversion> list) {
+        this.conversions = list;
     }
 
-    public final void setId(String r1) {
-        this.id = r1;
+    public final void setId(String str) {
+        this.id = str;
     }
 }

@@ -10,16 +10,14 @@ public final class fs3 implements vw2 {
     public final Context a;
     public final Class b;
 
-    public fs3(Context r1, Class r2) {
-        this.a = r1;
-        this.b = r2;
+    public fs3(Context context, Class cls) {
+        this.a = context;
+        this.b = cls;
     }
 
     @Override // defpackage.vw2
-    public final uw2 a(na4 r5) {
-        Class r2 = this.b;
-        uw2 r1 = r5.f(File.class, r2);
-        uw2 r6 = r5.f(Uri.class, r2);
-        return new hs3(this.a, r1, r6, r2);
+    public final uw2 a(na4 na4Var) {
+        Class cls = this.b;
+        return new hs3(this.a, na4Var.f(File.class, cls), na4Var.f(Uri.class, cls), cls);
     }
 }

@@ -1,7 +1,6 @@
 package defpackage;
 
 import android.content.Context;
-import java.util.Iterator;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.Executor;
 
@@ -15,71 +14,54 @@ public final class v53 {
     public int d;
     public boolean e;
 
-    public v53(Context r4) {
-        Executor r0 = uo.t();
-        this.a = r0;
+    public v53(Context context) {
+        Executor executorT = uo.t();
+        this.a = executorT;
         this.b = new CopyOnWriteArrayList();
         this.c = new Object();
         this.d = 0;
-        r0.execute(new ur2(6, this, r4));
+        executorT.execute(new ur2(6, this, context));
     }
 
-    public static synchronized v53 a(Context r2) {
-        monitor-enter(v53.class);
-    L7:
-        th = move-exception;
-        throw th;
-    L5:
-        if (f != null) goto L9;
-        f = new v53(r2);     // Catch: Throwable -> L7
-    L9:
-        v53 r3 = f;     // Catch: Throwable -> L7
-        monitor-exit(v53.class);
-        return r3;
+    public static synchronized v53 a(Context context) {
+        try {
+            if (f == null) {
+                f = new v53(context);
+            }
+        } catch (Throwable th) {
+            throw th;
+        }
+        return f;
     }
 
     public final int b() {
-        Object r0 = this.c;
-        monitor-enter(r0);
-        int r1 = this.d;     // Catch: Throwable -> L7
-        monitor-exit(r0);     // Catch: Throwable -> L7
-        return r1;
-    L7:
-        th = move-exception;
-        throw th;
+        int i;
+        synchronized (this.c) {
+            i = this.d;
+        }
+        return i;
     }
 
-    public final void c(int r5) {
-        CopyOnWriteArrayList r0 = this.b;
-        Iterator r1 = r0.iterator();
-    L4:
-        if (r1.hasNext() == false) goto L8;
-        u53 r2 = (u53) r1.next();
-        if (r2.a.get() != null) goto L4;
-        r0.remove(r2);
-        goto L4
-    L8:
-        Object r3 = this.c;
-        monitor-enter(r3);
-    L16:
-        th = move-exception;
-        throw th;
-    L11:
-        if (this.e == true) goto L13;
-    L18:
-        this.e = true;     // Catch: Throwable -> L16
-        this.d = r5;     // Catch: Throwable -> L16
-        Iterator r4 = this.b.iterator();     // Catch: Throwable -> L16
-        monitor-exit(r3);     // Catch: Throwable -> L16
-    L21:
-        if (r4.hasNext() == false) goto L23;
-        u53 r6 = (u53) r4.next();
-        r6.b.execute(new qa1(24, r6));
-        goto L21
-    L23:
-        return;
-    L13:
-        if (this.d != r5) goto L18;
-        monitor-exit(r3);     // Catch: Throwable -> L16
+    public final void c(int i) {
+        CopyOnWriteArrayList<u53> copyOnWriteArrayList = this.b;
+        for (u53 u53Var : copyOnWriteArrayList) {
+            if (u53Var.a.get() == null) {
+                copyOnWriteArrayList.remove(u53Var);
+            }
+        }
+        synchronized (this.c) {
+            try {
+                if (this.e && this.d == i) {
+                    return;
+                }
+                this.e = true;
+                this.d = i;
+                for (u53 u53Var2 : this.b) {
+                    u53Var2.b.execute(new qa1(24, u53Var2));
+                }
+            } catch (Throwable th) {
+                throw th;
+            }
+        }
     }
 }

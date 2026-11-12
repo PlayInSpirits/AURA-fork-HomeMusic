@@ -7,17 +7,17 @@ import java.util.concurrent.atomic.AtomicReference;
 public final class dc1 extends r5 {
     public final /* synthetic */ AtomicReference a;
 
-    public dc1(AtomicReference r1) {
-        this.a = r1;
+    public dc1(AtomicReference atomicReference) {
+        this.a = atomicReference;
     }
 
     @Override // defpackage.r5
-    public final void a(Object r1) {
-        r5 r0 = (r5) this.a.get();
-        if (r0 == null) goto L6;
-        r0.a(r1);
-        return;
-    L6:
-        kf2.o("Operation cannot be started before fragment is in created state");
+    public final void a(Object obj) {
+        r5 r5Var = (r5) this.a.get();
+        if (r5Var != null) {
+            r5Var.a(obj);
+        } else {
+            kf2.o("Operation cannot be started before fragment is in created state");
+        }
     }
 }

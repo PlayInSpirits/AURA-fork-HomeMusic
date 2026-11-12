@@ -7,8 +7,8 @@ import android.widget.PopupWindow;
 public final class zu2 implements PopupWindow.OnDismissListener {
     public final /* synthetic */ av2 n;
 
-    public zu2(av2 r1) {
-        this.n = r1;
+    public zu2(av2 av2Var) {
+        this.n = av2Var;
     }
 
     @Override // android.widget.PopupWindow.OnDismissListener

@@ -6,31 +6,23 @@ public final class ap0 {
     public final long a;
     public final long b;
 
-    public ap0(long r1, long r3) {
-        this.a = r1;
-        this.b = r3;
+    public ap0(long j, long j2) {
+        this.a = j;
+        this.b = j2;
     }
 
-    public final boolean equals(Object r5) {
-        if (this != r5) goto L5;
-        return true;
-    L5:
-        if ((r5 instanceof ap0) == false) goto L17;
-        ap0 r6 = (ap0) r5;
-        long r0 = r6.a;
-        if (n02.a(this.a, r0) == true) goto L11;
-        return false;
-    L11:
-        if (this.b != r6.b) goto L14;
-        return true;
-    L14:
-        return false;
-    L17:
-        return false;
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof ap0)) {
+            return false;
+        }
+        ap0 ap0Var = (ap0) obj;
+        return n02.a(this.a, ap0Var.a) && this.b == ap0Var.b;
     }
 
     public final int hashCode() {
-        int r0 = Long.hashCode(this.a) * 31;
-        return Long.hashCode(this.b) + r0;
+        return Long.hashCode(this.b) + (Long.hashCode(this.a) * 31);
     }
 }

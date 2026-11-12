@@ -6,8 +6,8 @@ public final class m9 {
     public final byte[] a;
     public final int b;
 
-    public m9(int r1, byte[] r2) {
-        this.a = r2;
-        this.b = r1;
+    public m9(int i, byte[] bArr) {
+        this.a = bArr;
+        this.b = i;
     }
 }

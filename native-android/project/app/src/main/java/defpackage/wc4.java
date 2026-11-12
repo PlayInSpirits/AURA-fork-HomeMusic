@@ -5,7 +5,7 @@ package defpackage;
 public final /* synthetic */ class wc4 {
     public final /* synthetic */ xc4 a;
 
-    public /* synthetic */ wc4(xc4 r1) {
-        this.a = r1;
+    public /* synthetic */ wc4(xc4 xc4Var) {
+        this.a = xc4Var;
     }
 }

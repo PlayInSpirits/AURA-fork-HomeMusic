@@ -11,56 +11,54 @@ import java.util.Map;
 public final class vf5 extends cg5 {
     public final wg5 b;
 
-    public vf5(wg5 r2) {
+    public vf5(wg5 wg5Var) {
         super(1);
-        this.b = r2;
+        this.b = wg5Var;
     }
 
     @Override // defpackage.cg5
-    public final void a(Status r2) {
-        this.b.g(r2);     // Catch: IllegalStateException -> L4
-        return;
-    L4:
-        e = move-exception;
-        Log.w("ApiCallRunner", "Exception reporting failure", e);
+    public final void a(Status status) {
+        try {
+            this.b.g(status);
+        } catch (IllegalStateException e) {
+            Log.w("ApiCallRunner", "Exception reporting failure", e);
+        }
     }
 
     @Override // defpackage.cg5
-    public final void b(Exception r4) {
-        Status r0 = new Status(10, b11.o(r4.getClass().getSimpleName(), ": ", r4.getLocalizedMessage()), null, null);
-        this.b.g(r0);     // Catch: IllegalStateException -> L5
-        return;
-    L5:
-        e = move-exception;
-        Log.w("ApiCallRunner", "Exception reporting failure", e);
+    public final void b(Exception exc) {
+        try {
+            this.b.g(new Status(10, b11.o(exc.getClass().getSimpleName(), ": ", exc.getLocalizedMessage()), null, null));
+        } catch (IllegalStateException e) {
+            Log.w("ApiCallRunner", "Exception reporting failure", e);
+        }
     }
 
     @Override // defpackage.cg5
-    public final void c(gf5 r6) {
-        wg5 r0 = this.b;     // Catch: RuntimeException -> L12
-        me r7 = r6.f;     // Catch: RuntimeException -> L12
-        r0.getClass();     // Catch: RuntimeException -> L12
-        r0.f(r7);     // Catch: RemoteException -> L6 DeadObjectException -> L9 RuntimeException -> L12
-        return;
-    L9:
-        e = move-exception;
-        r0.g(new Status(8, e.getLocalizedMessage(), null, null));     // Catch: RuntimeException -> L12
-        throw e;     // Catch: RuntimeException -> L12
-    L6:
-        e = move-exception;
-        r0.g(new Status(8, e.getLocalizedMessage(), null, null));     // Catch: RuntimeException -> L12
-        return;
-    L12:
-        e = move-exception;
-        b(e);
+    public final void c(gf5 gf5Var) throws DeadObjectException {
+        try {
+            wg5 wg5Var = this.b;
+            me meVar = gf5Var.f;
+            wg5Var.getClass();
+            try {
+                wg5Var.f(meVar);
+            } catch (DeadObjectException e) {
+                wg5Var.g(new Status(8, e.getLocalizedMessage(), null, null));
+                throw e;
+            } catch (RemoteException e2) {
+                wg5Var.g(new Status(8, e2.getLocalizedMessage(), null, null));
+            }
+        } catch (RuntimeException e3) {
+            b(e3);
+        }
     }
 
     @Override // defpackage.cg5
-    public final void d(xc5 r2, boolean r3) {
-        Boolean r4 = Boolean.valueOf(r3);
-        Map r0 = (Map) r2.o;
-        wg5 r1 = this.b;
-        r0.put(r1, r4);
-        r1.a(new cf5(r2, r1));
+    public final void d(xc5 xc5Var, boolean z) {
+        Boolean boolValueOf = Boolean.valueOf(z);
+        Map map = (Map) xc5Var.o;
+        wg5 wg5Var = this.b;
+        map.put(wg5Var, boolValueOf);
+        wg5Var.a(new cf5(xc5Var, wg5Var));
     }
 }

@@ -10,9 +10,9 @@ public final class uu2 extends e5 implements ActionProvider.VisibilityListener {
     public om1 c;
     public final ActionProvider d;
 
-    public uu2(xu2 r1, Context r2, ActionProvider r3) {
-        super(r2);
-        this.d = r3;
+    public uu2(xu2 xu2Var, Context context, ActionProvider actionProvider) {
+        super(context);
+        this.d = actionProvider;
     }
 
     @Override // defpackage.e5
@@ -31,8 +31,8 @@ public final class uu2 extends e5 implements ActionProvider.VisibilityListener {
     }
 
     @Override // defpackage.e5
-    public final View d(tu2 r1) {
-        return this.d.onCreateActionView(r1);
+    public final View d(tu2 tu2Var) {
+        return this.d.onCreateActionView(tu2Var);
     }
 
     @Override // defpackage.e5
@@ -41,8 +41,8 @@ public final class uu2 extends e5 implements ActionProvider.VisibilityListener {
     }
 
     @Override // defpackage.e5
-    public final void f(en4 r1) {
-        this.d.onPrepareSubMenu(r1);
+    public final void f(en4 en4Var) {
+        this.d.onPrepareSubMenu(en4Var);
     }
 
     @Override // defpackage.e5
@@ -51,18 +51,18 @@ public final class uu2 extends e5 implements ActionProvider.VisibilityListener {
     }
 
     @Override // defpackage.e5
-    public final void h(om1 r1) {
-        this.c = r1;
+    public final void h(om1 om1Var) {
+        this.c = om1Var;
         this.d.setVisibilityListener(this);
     }
 
     @Override // android.view.ActionProvider.VisibilityListener
-    public final void onActionProviderVisibilityChanged(boolean r1) {
-        om1 r0 = this.c;
-        if (r0 == null) goto L6;
-        qu2 r2 = ((tu2) r0.o).n;
-        r2.h = true;
-        r2.p(true);
-        return;
+    public final void onActionProviderVisibilityChanged(boolean z) {
+        om1 om1Var = this.c;
+        if (om1Var != null) {
+            qu2 qu2Var = ((tu2) om1Var.o).n;
+            qu2Var.h = true;
+            qu2Var.p(true);
+        }
     }
 }

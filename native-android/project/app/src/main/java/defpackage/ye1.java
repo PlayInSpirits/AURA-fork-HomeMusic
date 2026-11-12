@@ -6,10 +6,10 @@ public final class ye1 extends RuntimeException {
     public final ze1 n;
     public final Throwable o;
 
-    public ye1(ze1 r1, Throwable r2) {
-        super(r2);
-        this.n = r1;
-        this.o = r2;
+    public ye1(ze1 ze1Var, Throwable th) {
+        super(th);
+        this.n = ze1Var;
+        this.o = th;
     }
 
     @Override // java.lang.Throwable

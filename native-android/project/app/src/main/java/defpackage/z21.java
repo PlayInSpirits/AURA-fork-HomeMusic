@@ -10,8 +10,8 @@ public final class z21 extends MediaDataSource {
     public long n;
     public final /* synthetic */ e31 o;
 
-    public z21(e31 r1) {
-        this.o = r1;
+    public z21(e31 e31Var) {
+        this.o = e31Var;
     }
 
     @Override // java.io.Closeable, java.lang.AutoCloseable
@@ -20,39 +20,38 @@ public final class z21 extends MediaDataSource {
 
     @Override // android.media.MediaDataSource
     public final long getSize() {
-        return -1;
+        return -1L;
     }
 
     @Override // android.media.MediaDataSource
-    public final int readAt(long r9, byte[] r11, int r12, int r13) {
-        e31 r0 = this.o;
-        DataInputStream r1 = r0.n;
-        if (r13 != 0) goto L7;
-        return 0;
-    L7:
-        if (r9 >= 0) goto L27;
-    L15:
-        return -1;
-    L27:
-        long r6 = this.n;     // Catch: IOException -> L26
-        if (r6 == r9) goto L18;
-        if (r6 >= 0) goto L14;
-    L16:
-        r0.f(r9);     // Catch: IOException -> L26
-        this.n = r9;     // Catch: IOException -> L26
-        goto L18
-    L14:
-        if (r9 < (r6 + ((long) r1.available()))) goto L16;
-    L18:
-        if (r13 <= r1.available()) goto L20;
-        r13 = r1.available();     // Catch: IOException -> L26
-    L20:
-        int r10 = r0.read(r11, r12, r13);     // Catch: IOException -> L26
-        if (r10 < 0) goto L24;
-        this.n += (long) r10;     // Catch: IOException -> L26
-        return r10;
-    L24:
-        this.n = -1;
+    public final int readAt(long j, byte[] bArr, int i, int i2) {
+        e31 e31Var = this.o;
+        DataInputStream dataInputStream = e31Var.n;
+        if (i2 == 0) {
+            return 0;
+        }
+        if (j >= 0) {
+            try {
+                long j2 = this.n;
+                if (j2 != j) {
+                    if (j2 < 0 || j < j2 + ((long) dataInputStream.available())) {
+                        e31Var.f(j);
+                        this.n = j;
+                    }
+                }
+                if (i2 > dataInputStream.available()) {
+                    i2 = dataInputStream.available();
+                }
+                int i3 = e31Var.read(bArr, i, i2);
+                if (i3 >= 0) {
+                    this.n += (long) i3;
+                    return i3;
+                }
+            } catch (IOException unused) {
+            }
+            this.n = -1L;
+            return -1;
+        }
         return -1;
     }
 }

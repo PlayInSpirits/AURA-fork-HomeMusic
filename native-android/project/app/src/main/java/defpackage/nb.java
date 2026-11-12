@@ -7,7 +7,7 @@ import java.util.Set;
 public final class nb implements qd0 {
     public final Set b;
 
-    public nb(Set r1) {
-        this.b = r1;
+    public nb(Set set) {
+        this.b = set;
     }
 }

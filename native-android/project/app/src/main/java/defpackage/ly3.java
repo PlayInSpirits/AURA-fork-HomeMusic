@@ -6,278 +6,254 @@ import java.util.Objects;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class ly3 extends bx1 {
-    public static final ly3 t = null;
+    public static final ly3 t = new ly3(0, null, new Object[0]);
     public final transient Object q;
     public final transient Object[] r;
     public final transient int s;
 
-    static {
-        t = new ly3(0, null, new Object[0]);
+    public ly3(int i, Object obj, Object[] objArr) {
+        this.q = obj;
+        this.r = objArr;
+        this.s = i;
     }
 
-    public ly3(int r1, Object r2, Object[] r3) {
-        this.q = r2;
-        this.r = r3;
-        this.s = r1;
+    public static ly3 g(int i, Object[] objArr, ue1 ue1Var) {
+        if (i == 0) {
+            return t;
+        }
+        if (i == 1) {
+            Objects.requireNonNull(objArr[0]);
+            Objects.requireNonNull(objArr[1]);
+            return new ly3(1, null, objArr);
+        }
+        rr2.t(i, objArr.length >> 1);
+        Object objH = h(objArr, i, jx1.i(i), 0);
+        if (objH instanceof Object[]) {
+            Object[] objArr2 = (Object[]) objH;
+            ax1 ax1Var = (ax1) objArr2[2];
+            if (ue1Var == null) {
+                throw ax1Var.a();
+            }
+            ue1Var.q = ax1Var;
+            Object obj = objArr2[0];
+            int iIntValue = ((Integer) objArr2[1]).intValue();
+            objArr = Arrays.copyOf(objArr, iIntValue * 2);
+            objH = obj;
+            i = iIntValue;
+        }
+        return new ly3(i, objH, objArr);
     }
 
-    public static ly3 g(int r4, Object[] r5, ue1 r6) {
-        if (r4 != 0) goto L6;
-        return t;
-    L6:
-        if (r4 != 1) goto L9;
-        Objects.requireNonNull(r5[0]);
-        Objects.requireNonNull(r5[1]);
-        return new ly3(1, null, r5);
-    L9:
-        rr2.t(r4, r5.length >> 1);
-        Object r2 = h(r5, r4, jx1.i(r4), 0);
-        if ((r2 instanceof Object[]) == false) goto L17;
-        Object[] r3 = (Object[]) r2;
-        ax1 r7 = (ax1) r3[2];
-        if (r6 == null) goto L15;
-        r6.q = r7;
-        Object r8 = r3[0];
-        int r9 = ((Integer) r3[1]).intValue();
-        r5 = Arrays.copyOf(r5, r9 * 2);
-        r2 = r8;
-        r4 = r9;
-        goto L17
-    L15:
-        throw r7.a();
-    L17:
-        return new ly3(r4, r2, r5);
+    public static Object h(Object[] objArr, int i, int i2, int i3) {
+        ax1 ax1Var = null;
+        if (i == 1) {
+            Objects.requireNonNull(objArr[i3]);
+            Objects.requireNonNull(objArr[i3 ^ 1]);
+            return null;
+        }
+        int i4 = i2 - 1;
+        int i5 = 0;
+        if (i2 <= 128) {
+            byte[] bArr = new byte[i2];
+            Arrays.fill(bArr, (byte) -1);
+            int i6 = 0;
+            while (i5 < i) {
+                int i7 = (i5 * 2) + i3;
+                int i8 = (i6 * 2) + i3;
+                Object obj = objArr[i7];
+                Objects.requireNonNull(obj);
+                Object obj2 = objArr[i7 ^ 1];
+                Objects.requireNonNull(obj2);
+                int iT = g12.T(obj.hashCode());
+                while (true) {
+                    int i9 = iT & i4;
+                    int i10 = bArr[i9] & 255;
+                    if (i10 == 255) {
+                        bArr[i9] = (byte) i8;
+                        if (i6 < i5) {
+                            objArr[i8] = obj;
+                            objArr[i8 ^ 1] = obj2;
+                        }
+                        i6++;
+                        break;
+                    }
+                    if (obj.equals(objArr[i10])) {
+                        int i11 = i10 ^ 1;
+                        Object obj3 = objArr[i11];
+                        Objects.requireNonNull(obj3);
+                        ax1Var = new ax1(obj, obj2, obj3);
+                        objArr[i11] = obj2;
+                        break;
+                    }
+                    iT = i9 + 1;
+                }
+                i5++;
+            }
+            return i6 == i ? bArr : new Object[]{bArr, Integer.valueOf(i6), ax1Var};
+        }
+        if (i2 <= 32768) {
+            short[] sArr = new short[i2];
+            Arrays.fill(sArr, (short) -1);
+            int i12 = 0;
+            while (i5 < i) {
+                int i13 = (i5 * 2) + i3;
+                int i14 = (i12 * 2) + i3;
+                Object obj4 = objArr[i13];
+                Objects.requireNonNull(obj4);
+                Object obj5 = objArr[i13 ^ 1];
+                Objects.requireNonNull(obj5);
+                int iT2 = g12.T(obj4.hashCode());
+                while (true) {
+                    int i15 = iT2 & i4;
+                    int i16 = sArr[i15] & 65535;
+                    if (i16 == 65535) {
+                        sArr[i15] = (short) i14;
+                        if (i12 < i5) {
+                            objArr[i14] = obj4;
+                            objArr[i14 ^ 1] = obj5;
+                        }
+                        i12++;
+                        break;
+                    }
+                    if (obj4.equals(objArr[i16])) {
+                        int i17 = i16 ^ 1;
+                        Object obj6 = objArr[i17];
+                        Objects.requireNonNull(obj6);
+                        ax1Var = new ax1(obj4, obj5, obj6);
+                        objArr[i17] = obj5;
+                        break;
+                    }
+                    iT2 = i15 + 1;
+                }
+                i5++;
+            }
+            return i12 == i ? sArr : new Object[]{sArr, Integer.valueOf(i12), ax1Var};
+        }
+        int[] iArr = new int[i2];
+        Arrays.fill(iArr, -1);
+        int i18 = 0;
+        while (i5 < i) {
+            int i19 = (i5 * 2) + i3;
+            int i20 = (i18 * 2) + i3;
+            Object obj7 = objArr[i19];
+            Objects.requireNonNull(obj7);
+            Object obj8 = objArr[i19 ^ 1];
+            Objects.requireNonNull(obj8);
+            int iT3 = g12.T(obj7.hashCode());
+            while (true) {
+                int i21 = iT3 & i4;
+                int i22 = iArr[i21];
+                if (i22 == -1) {
+                    iArr[i21] = i20;
+                    if (i18 < i5) {
+                        objArr[i20] = obj7;
+                        objArr[i20 ^ 1] = obj8;
+                    }
+                    i18++;
+                    break;
+                }
+                if (obj7.equals(objArr[i22])) {
+                    int i23 = i22 ^ 1;
+                    Object obj9 = objArr[i23];
+                    Objects.requireNonNull(obj9);
+                    ax1Var = new ax1(obj7, obj8, obj9);
+                    objArr[i23] = obj8;
+                    break;
+                }
+                iT3 = i21 + 1;
+            }
+            i5++;
+        }
+        return i18 == i ? iArr : new Object[]{iArr, Integer.valueOf(i18), ax1Var};
     }
 
-    public static Object h(Object[] r12, int r13, int r14, int r15) {
-        ax1 r0 = null;
-        if (r13 != 1) goto L6;
-        Objects.requireNonNull(r12[r15]);
-        Objects.requireNonNull(r12[r15 ^ 1]);
-        return null;
-    L6:
-        int r2 = r14 - 1;
-        int r5 = 0;
-        if (r14 > 128) goto L27;
-        byte[] r16 = new byte[r14];
-        Arrays.fill(r16, (byte) -1);
-        int r3 = 0;
-    L9:
-        if (r5 >= r13) goto L22;
-        int r4 = (r5 * 2) + r15;
-        int r6 = (r3 * 2) + r15;
-        Object r7 = r12[r4];
-        Objects.requireNonNull(r7);
-        Object r8 = r12[r4 ^ 1];
-        Objects.requireNonNull(r8);
-        int r9 = g12.T(r7.hashCode());
-    L11:
-        int r10 = r9 & r2;
-        int r11 = r16[r10] & 255;
-        if (r11 == 255) goto L13;
-        if (r7.equals(r12[r11]) == true) goto L19;
-        r9 = r10 + 1;
-        goto L11
-    L19:
-        int r17 = r11 ^ 1;
-        Object r18 = r12[r17];
-        Objects.requireNonNull(r18);
-        r0 = new ax1(r7, r8, r18);
-        r12[r17] = r8;
-    L20:
-        r5 = r5 + 1;
-        goto L9
-    L13:
-        r16[r10] = (byte) r6;
-        if (r3 >= r5) goto L16;
-        r12[r6] = r7;
-        r12[r6 ^ 1] = r8;
-    L16:
-        r3 = r3 + 1;
-        goto L20
-    L22:
-        if (r3 != r13) goto L25;
-        return r16;
-    L25:
-        return new Object[]{r16, Integer.valueOf(r3), r0};
-    L27:
-        if (r14 > 32768) goto L46;
-        short[] r19 = new short[r14];
-        Arrays.fill(r19, -1);
-        int r20 = 0;
-    L29:
-        if (r5 >= r13) goto L42;
-        int r21 = (r5 * 2) + r15;
-        int r22 = (r20 * 2) + r15;
-        Object r23 = r12[r21];
-        Objects.requireNonNull(r23);
-        Object r24 = r12[r21 ^ 1];
-        Objects.requireNonNull(r24);
-        int r25 = g12.T(r23.hashCode());
-    L31:
-        int r26 = r25 & r2;
-        int r27 = r19[r26] & 65535;
-        if (r27 == 65535) goto L33;
-        if (r23.equals(r12[r27]) == true) goto L39;
-        r25 = r26 + 1;
-        goto L31
-    L39:
-        int r28 = r27 ^ 1;
-        Object r29 = r12[r28];
-        Objects.requireNonNull(r29);
-        r0 = new ax1(r23, r24, r29);
-        r12[r28] = r24;
-    L40:
-        r5 = r5 + 1;
-        goto L29
-    L33:
-        r19[r26] = (short) r22;
-        if (r20 >= r5) goto L36;
-        r12[r22] = r23;
-        r12[r22 ^ 1] = r24;
-    L36:
-        r20 = r20 + 1;
-        goto L40
-    L42:
-        if (r20 != r13) goto L45;
-        return r19;
-    L45:
-        return new Object[]{r19, Integer.valueOf(r20), r0};
-    L46:
-        int[] r110 = new int[r14];
-        Arrays.fill(r110, -1);
-        int r30 = 0;
-    L47:
-        if (r5 >= r13) goto L60;
-        int r31 = (r5 * 2) + r15;
-        int r32 = (r30 * 2) + r15;
-        Object r33 = r12[r31];
-        Objects.requireNonNull(r33);
-        Object r34 = r12[r31 ^ 1];
-        Objects.requireNonNull(r34);
-        int r35 = g12.T(r33.hashCode());
-    L49:
-        int r36 = r35 & r2;
-        int r111 = r110[r36];
-        if (r111 == (-1)) goto L51;
-        if (r33.equals(r12[r111]) == true) goto L57;
-        r35 = r36 + 1;
-        goto L49
-    L57:
-        int r37 = r111 ^ 1;
-        Object r38 = r12[r37];
-        Objects.requireNonNull(r38);
-        r0 = new ax1(r33, r34, r38);
-        r12[r37] = r34;
-    L58:
-        r5 = r5 + 1;
-        goto L47
-    L51:
-        r110[r36] = r32;
-        if (r30 >= r5) goto L54;
-        r12[r32] = r33;
-        r12[r32 ^ 1] = r34;
-    L54:
-        r30 = r30 + 1;
-        goto L58
-    L60:
-        if (r30 != r13) goto L63;
-        return r110;
-    L63:
-        return new Object[]{r110, Integer.valueOf(r30), r0};
-    }
-
-    public static Object i(Object r3, Object[] r4, int r5, int r6, Object r7) {
-        if (r7 != null) goto L5;
-        return null;
-    L5:
-        if (r5 != 1) goto L10;
-        Object r8 = r4[r6];
-        Objects.requireNonNull(r8);
-        if (r8.equals(r7) == false) goto L37;
-        Object r9 = r4[r6 ^ 1];
-        Objects.requireNonNull(r9);
-        return r9;
-    L37:
-        return null;
-    L10:
-        if (r3 != null) goto L13;
-        return null;
-    L13:
-        if ((r3 instanceof byte[]) == false) goto L24;
-        byte[] r10 = (byte[]) r3;
-        int r11 = r10.length - 1;
-        int r12 = g12.T(r7.hashCode());
-    L15:
-        int r13 = r12 & r11;
-        int r1 = r10[r13] & 255;
-        if (r1 == 255) goto L52;
-        if (r7.equals(r4[r1]) == true) goto L21;
-        r12 = r13 + 1;
-        goto L15
-    L21:
-        return r4[r1 ^ 1];
-    L52:
-        return null;
-    L24:
-        if ((r3 instanceof short[]) == false) goto L34;
-        short[] r14 = (short[]) r3;
-        int r15 = r14.length - 1;
-        int r16 = g12.T(r7.hashCode());
-    L26:
-        int r17 = r16 & r15;
-        int r2 = r14[r17] & 65535;
-        if (r2 == 65535) goto L53;
-        if (r7.equals(r4[r2]) == true) goto L32;
-        r16 = r17 + 1;
-        goto L26
-    L32:
-        return r4[r2 ^ 1];
-    L53:
-        return null;
-    L34:
-        int[] r18 = (int[]) r3;
-        int r19 = r18.length - 1;
-        int r20 = g12.T(r7.hashCode());
-    L35:
-        int r21 = r20 & r19;
-        int r22 = r18[r21];
-        if (r22 == (-1)) goto L54;
-        if (r7.equals(r4[r22]) == true) goto L42;
-        r20 = r21 + 1;
-        goto L35
-    L42:
-        return r4[r22 ^ 1];
-    L54:
-        return null;
+    public static Object i(Object obj, Object[] objArr, int i, int i2, Object obj2) {
+        if (obj2 == null) {
+            return null;
+        }
+        if (i == 1) {
+            Object obj3 = objArr[i2];
+            Objects.requireNonNull(obj3);
+            if (!obj3.equals(obj2)) {
+                return null;
+            }
+            Object obj4 = objArr[i2 ^ 1];
+            Objects.requireNonNull(obj4);
+            return obj4;
+        }
+        if (obj == null) {
+            return null;
+        }
+        if (obj instanceof byte[]) {
+            byte[] bArr = (byte[]) obj;
+            int length = bArr.length - 1;
+            int iT = g12.T(obj2.hashCode());
+            while (true) {
+                int i3 = iT & length;
+                int i4 = bArr[i3] & 255;
+                if (i4 == 255) {
+                    return null;
+                }
+                if (obj2.equals(objArr[i4])) {
+                    return objArr[i4 ^ 1];
+                }
+                iT = i3 + 1;
+            }
+        } else if (obj instanceof short[]) {
+            short[] sArr = (short[]) obj;
+            int length2 = sArr.length - 1;
+            int iT2 = g12.T(obj2.hashCode());
+            while (true) {
+                int i5 = iT2 & length2;
+                int i6 = sArr[i5] & 65535;
+                if (i6 == 65535) {
+                    return null;
+                }
+                if (obj2.equals(objArr[i6])) {
+                    return objArr[i6 ^ 1];
+                }
+                iT2 = i5 + 1;
+            }
+        } else {
+            int[] iArr = (int[]) obj;
+            int length3 = iArr.length - 1;
+            int iT3 = g12.T(obj2.hashCode());
+            while (true) {
+                int i7 = iT3 & length3;
+                int i8 = iArr[i7];
+                if (i8 == -1) {
+                    return null;
+                }
+                if (obj2.equals(objArr[i8])) {
+                    return objArr[i8 ^ 1];
+                }
+                iT3 = i7 + 1;
+            }
+        }
     }
 
     @Override // defpackage.bx1
     public final iy3 c() {
-        int r2 = this.s;
-        return new iy3(this, this.r, 0, r2);
+        return new iy3(this, this.r, 0, this.s);
     }
 
     @Override // defpackage.bx1
     public final jy3 d() {
-        int r2 = this.s;
-        return new jy3(this, new ky3(this.r, 0, r2));
+        return new jy3(this, new ky3(this.r, 0, this.s));
     }
 
     @Override // defpackage.bx1
     public final rw1 e() {
-        int r2 = this.s;
-        return new ky3(this.r, 1, r2);
+        return new ky3(this.r, 1, this.s);
     }
 
     @Override // defpackage.bx1, java.util.Map
-    public final Object get(Object r4) {
-        int r0 = this.s;
-        Object r3 = i(this.q, this.r, r0, 0, r4);
-        if (r3 != null) goto L6;
-        return null;
-    L6:
-        return r3;
+    public final Object get(Object obj) {
+        Object objI = i(this.q, this.r, this.s, 0, obj);
+        if (objI == null) {
+            return null;
+        }
+        return objI;
     }
 
     @Override // java.util.Map

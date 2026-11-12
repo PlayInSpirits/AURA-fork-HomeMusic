@@ -7,37 +7,21 @@ import javax.net.ssl.X509TrustManager;
 /* JADX INFO: loaded from: classes.dex */
 public final class i62 implements X509TrustManager {
     @Override // javax.net.ssl.X509TrustManager
-    public final void checkClientTrusted(X509Certificate[] r1, String r2) {
-        r1.getClass();
-        r2.getClass();
-        if (r1.length != 0) goto L5;
-        boolean r0 = true;
-    L6:
-        if (r0 == true) goto L8;
-        return;
-    L8:
-        kf2.n("Failed requirement.");
-        return;
-    L5:
-        r0 = false;
-        goto L6
+    public final void checkClientTrusted(X509Certificate[] x509CertificateArr, String str) {
+        x509CertificateArr.getClass();
+        str.getClass();
+        if (x509CertificateArr.length == 0) {
+            kf2.n("Failed requirement.");
+        }
     }
 
     @Override // javax.net.ssl.X509TrustManager
-    public final void checkServerTrusted(X509Certificate[] r1, String r2) {
-        r1.getClass();
-        r2.getClass();
-        if (r1.length != 0) goto L5;
-        boolean r0 = true;
-    L6:
-        if (r0 == true) goto L8;
-        return;
-    L8:
-        kf2.n("Failed requirement.");
-        return;
-    L5:
-        r0 = false;
-        goto L6
+    public final void checkServerTrusted(X509Certificate[] x509CertificateArr, String str) {
+        x509CertificateArr.getClass();
+        str.getClass();
+        if (x509CertificateArr.length == 0) {
+            kf2.n("Failed requirement.");
+        }
     }
 
     @Override // javax.net.ssl.X509TrustManager

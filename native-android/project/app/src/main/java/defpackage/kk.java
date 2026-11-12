@@ -8,20 +8,17 @@ public final class kk implements vw2 {
     public final /* synthetic */ int a;
     public final AssetManager b;
 
-    public /* synthetic */ kk(AssetManager r1, int r2) {
-        this.a = r2;
-        this.b = r1;
+    public /* synthetic */ kk(AssetManager assetManager, int i) {
+        this.a = i;
+        this.b = assetManager;
     }
 
     @Override // defpackage.vw2
-    public final uw2 a(na4 r3) {
-        switch(this.a) {
-            case 0: goto L7;
-            default: goto L5;
-        };
-    L5:
-        return new lk(0, this.b, this);
-    L7:
+    public final uw2 a(na4 na4Var) {
+        switch (this.a) {
+            case 0:
+                break;
+        }
         return new lk(0, this.b, this);
     }
 }

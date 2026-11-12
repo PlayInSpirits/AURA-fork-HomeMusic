@@ -8,6 +8,7 @@ import android.view.View;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import org.chromium.support_lib_boundary.WebSettingsBoundaryInterface;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
@@ -18,135 +19,129 @@ public final class sz implements Runnable {
     public final /* synthetic */ Object q;
     public final /* synthetic */ Object r;
 
-    public sz(View r2, ta5 r3, qr2 r4, ValueAnimator r5) {
+    public sz(View view, ta5 ta5Var, qr2 qr2Var, ValueAnimator valueAnimator) {
         this.n = 4;
-        this.o = r2;
-        this.p = r3;
-        this.q = r4;
-        this.r = r5;
+        this.o = view;
+        this.p = ta5Var;
+        this.q = qr2Var;
+        this.r = valueAnimator;
     }
 
     @Override // java.lang.Runnable
     public final void run() {
-        int r0 = this.n;
-        int r2 = 1;
-        int r4 = 0;
-        Object r5 = this.r;
-        Object r6 = this.q;
-        Object r7 = this.p;
-        Object r11 = this.o;
-        switch(r0) {
-            case 0: goto L51;
-            case 1: goto L43;
-            case 2: goto L14;
-            case 3: goto L6;
-            default: goto L4;
-        };
-    L4:
-        pa5.i((View) r11, (ta5) r7, (qr2) r6);
-        ((ValueAnimator) r5).start();
-        return;
-    L6:
-        String r8 = (String) r7;
-        pz1 r9 = (pz1) r5;
-        oj2 r12 = (oj2) ((pn2) r9.o).r.get(((Messenger) ((hg3) r11).o).getBinder());
-        if (r12 != null) goto L9;
-        xa3.s("getMediaItem for callback that isn't registered id=", r8, "MBServiceCompat");
-        return;
-    L9:
-        pn2 r1 = (pn2) r9.o;
-        nj2 r3 = new nj2(r8, (v14) r6, r4);
-        r1.s = r12;
-        r1.e(r8, r3);
-        r1.s = null;
-        if (r3.b() == true) goto L70;
-        kf2.o(xa3.g("onLoadItem must call detach() or sendResult() before returning for id=", r8));
-        return;
-    L70:
-        return;
-    L14:
-        String r10 = (String) r7;
-        pz1 r13 = (pz1) r5;
-        oj2 r14 = (oj2) ((pn2) r13.o).r.get(((Messenger) ((hg3) r11).o).getBinder());
-        if (r14 != null) goto L17;
-        xa3.s("removeSubscription for callback that isn't registered id=", r10, "MBServiceCompat");
-        return;
-    L17:
-        HashMap r15 = r14.f;
-        pn2 r16 = (pn2) r13.o;
-        IBinder r17 = (IBinder) r6;
-        if (r17 == null) goto L20;
-        List r18 = (List) r15.get(r10);     // Catch: Throwable -> L24
-        if (r18 == null) goto L37;
-        Iterator r19 = r18.iterator();     // Catch: Throwable -> L24
-    L30:
-        if (r19.hasNext() == false) goto L35;
-        if (r17 != ((ld3) r19.next()).a) goto L30;
-        r19.remove();     // Catch: Throwable -> L24
-        r4 = 1;
-        goto L30
-    L35:
-        if (r18.isEmpty() == false) goto L37;
-        r15.remove(r10);     // Catch: Throwable -> L24
-    L37:
-        r16.s = r14;
-        r16.f(r10);
-        r16.s = null;
-        r2 = r4;
-    L38:
-        if (r2 != 0) goto L72;
-        l93.q0("MBServiceCompat", "removeSubscription called for " + r10 + " which is not subscribed");
-        return;
-    L72:
-        return;
-    L20:
-        if (r15.remove(r10) != null) goto L23;
-        r2 = 0;
-    L23:
-        r16.s = r14;
-        r16.f(r10);
-        r16.s = null;
-    L24:
-        th = move-exception;
-        r16.s = r14;
-        r16.f(r10);
-        r16.s = null;
-        throw th;
-    L43:
-        bq4 r20 = (bq4) r5;
-    L44:
-        oi r21 = ((pn2) r20.q).r;
-        if (r4 >= r21.p) goto L50;
-        oj2 r22 = (oj2) r21.j(r4);
-        if (r22.d.equals((ms2) r11) == false) goto L49;
-        r20.o(r22, (String) r7, (Bundle) r6);
-    L49:
-        r4 = r4 + 1;
-        goto L44
-    L50:
-        return;
-    L51:
-        uz r23 = (uz) ((d34) r5).o;
-        tu2 r24 = (tu2) r7;
-        tz r110 = (tz) r11;
-        if (r110 == null) goto L55;
-        r23.M = true;
-        r110.b.c(false);
-        r23.M = false;
-    L55:
-        if (r24.isEnabled() == true) goto L57;
-        return;
-    L57:
-        if (r24.hasSubMenu() == false) goto L74;
-        ((qu2) r6).q(r24, null, 4);
-        return;
+        int i;
+        int i2 = this.n;
+        int i3 = 0;
+        Object obj = this.r;
+        Object obj2 = this.q;
+        Object obj3 = this.p;
+        Object obj4 = this.o;
+        switch (i2) {
+            case 0:
+                uz uzVar = (uz) ((d34) obj).o;
+                tu2 tu2Var = (tu2) obj3;
+                tz tzVar = (tz) obj4;
+                if (tzVar != null) {
+                    uzVar.M = true;
+                    tzVar.b.c(false);
+                    uzVar.M = false;
+                }
+                if (tu2Var.isEnabled() && tu2Var.hasSubMenu()) {
+                    ((qu2) obj2).q(tu2Var, null, 4);
+                    return;
+                }
+                return;
+            case 1:
+                bq4 bq4Var = (bq4) obj;
+                while (true) {
+                    oi oiVar = ((pn2) bq4Var.q).r;
+                    if (i3 >= oiVar.p) {
+                        return;
+                    }
+                    oj2 oj2Var = (oj2) oiVar.j(i3);
+                    if (oj2Var.d.equals((ms2) obj4)) {
+                        bq4Var.o(oj2Var, (String) obj3, (Bundle) obj2);
+                    }
+                    i3++;
+                }
+                break;
+            case 2:
+                String str = (String) obj3;
+                pz1 pz1Var = (pz1) obj;
+                oj2 oj2Var2 = (oj2) ((pn2) pz1Var.o).r.get(((Messenger) ((hg3) obj4).o).getBinder());
+                if (oj2Var2 == null) {
+                    xa3.s("removeSubscription for callback that isn't registered id=", str, "MBServiceCompat");
+                    return;
+                }
+                HashMap map = oj2Var2.f;
+                pn2 pn2Var = (pn2) pz1Var.o;
+                IBinder iBinder = (IBinder) obj2;
+                try {
+                    if (iBinder == null) {
+                        i = map.remove(str) == null ? 0 : 1;
+                        pn2Var.s = oj2Var2;
+                        pn2Var.f(str);
+                        pn2Var.s = null;
+                    } else {
+                        List list = (List) map.get(str);
+                        if (list != null) {
+                            Iterator it = list.iterator();
+                            while (it.hasNext()) {
+                                if (iBinder == ((ld3) it.next()).a) {
+                                    it.remove();
+                                    i3 = 1;
+                                }
+                            }
+                            if (list.isEmpty()) {
+                                map.remove(str);
+                            }
+                        }
+                        pn2Var.s = oj2Var2;
+                        pn2Var.f(str);
+                        pn2Var.s = null;
+                        i = i3;
+                    }
+                    if (i == 0) {
+                        l93.q0("MBServiceCompat", "removeSubscription called for " + str + " which is not subscribed");
+                        return;
+                    }
+                    return;
+                } catch (Throwable th) {
+                    pn2Var.s = oj2Var2;
+                    pn2Var.f(str);
+                    pn2Var.s = null;
+                    throw th;
+                }
+            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
+                String str2 = (String) obj3;
+                pz1 pz1Var2 = (pz1) obj;
+                oj2 oj2Var3 = (oj2) ((pn2) pz1Var2.o).r.get(((Messenger) ((hg3) obj4).o).getBinder());
+                if (oj2Var3 == null) {
+                    xa3.s("getMediaItem for callback that isn't registered id=", str2, "MBServiceCompat");
+                    return;
+                }
+                pn2 pn2Var2 = (pn2) pz1Var2.o;
+                nj2 nj2Var = new nj2(str2, (v14) obj2, i3);
+                pn2Var2.s = oj2Var3;
+                pn2Var2.e(str2, nj2Var);
+                pn2Var2.s = null;
+                if (nj2Var.b()) {
+                    return;
+                }
+                kf2.o(xa3.g("onLoadItem must call detach() or sendResult() before returning for id=", str2));
+                return;
+            default:
+                pa5.i((View) obj4, (ta5) obj3, (qr2) obj2);
+                ((ValueAnimator) obj).start();
+                return;
+        }
     }
 
-    public /* synthetic */ sz(Object r1, Object r2, Object r3, Object r4, int r5) {
-        this.n = r5;
-        this.r = r1;
-        this.o = r2;
-        this.p = r3;
-        this.q = r4;
+    public /* synthetic */ sz(Object obj, Object obj2, Object obj3, Object obj4, int i) {
+        this.n = i;
+        this.r = obj;
+        this.o = obj2;
+        this.p = obj3;
+        this.q = obj4;
     }
 }

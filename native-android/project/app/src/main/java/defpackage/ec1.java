@@ -7,23 +7,16 @@ import android.os.Bundle;
 public final class ec1 extends ic1 {
     public final /* synthetic */ kc1 a;
 
-    public ec1(kc1 r1) {
-        this.a = r1;
+    public ec1(kc1 kc1Var) {
+        this.a = kc1Var;
     }
 
     @Override // defpackage.ic1
     public final void a() {
-        kc1 r2 = this.a;
-        ((xm2) r2.g0.o).a();
-        e54.b(r2);
-        Bundle r0 = r2.o;
-        if (r0 == null) goto L5;
-        Bundle r1 = r0.getBundle("registryState");
-    L6:
-        r2.g0.s(r1);
-        return;
-    L5:
-        r1 = null;
-        goto L6
+        kc1 kc1Var = this.a;
+        ((xm2) kc1Var.g0.o).a();
+        e54.b(kc1Var);
+        Bundle bundle = kc1Var.o;
+        kc1Var.g0.s(bundle != null ? bundle.getBundle("registryState") : null);
     }
 }

@@ -1,6 +1,5 @@
 package defpackage;
 
-import android.content.Context;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -15,118 +14,92 @@ import java.util.ArrayList;
 public final class j20 extends z41 {
     public final /* synthetic */ Chip D;
 
-    public j20(Chip r1, Chip r2) {
-        this.D = r1;
-        super(r2);
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public j20(Chip chip, Chip chip2) {
+        super(chip2);
+        this.D = chip;
     }
 
     @Override // defpackage.z41
-    public final int n(float r2, float r3) {
-        Rect r0 = Chip.K;
-        Chip r1 = this.D;
-        if (r1.d() == true) goto L5;
-        return 0;
-    L5:
-        if (Chip.a(r1).contains(r2, r3) == false) goto L10;
-        return 1;
-    L10:
-        return 0;
+    public final int n(float f, float f2) {
+        Rect rect = Chip.K;
+        Chip chip = this.D;
+        return (chip.d() && chip.getCloseIconTouchBounds().contains(f, f2)) ? 1 : 0;
     }
 
     @Override // defpackage.z41
-    public final void o(ArrayList r2) {
-        r2.add(0);
-        Rect r0 = Chip.K;
-        Chip r1 = this.D;
-        if (r1.d() == false) goto L12;
-        k20 r3 = r1.r;
-        if (r3 != null) goto L7;
-        return;
-    L7:
-        if (r3.X == true) goto L9;
-        return;
-    L9:
-        if (r1.u == null) goto L15;
-        r2.add(1);
-        return;
-    L15:
-        return;
+    public final void o(ArrayList arrayList) {
+        k20 k20Var;
+        arrayList.add(0);
+        Rect rect = Chip.K;
+        Chip chip = this.D;
+        if (!chip.d() || (k20Var = chip.r) == null || !k20Var.X || chip.u == null) {
+            return;
+        }
+        arrayList.add(1);
     }
 
     @Override // defpackage.z41
-    public final boolean s(int r2, int r3, Bundle r4) {
-        boolean r0 = false;
-        if (r3 != 16) goto L16;
-        Chip r1 = this.D;
-        if (r2 != 0) goto L9;
-        return r1.performClick();
-    L9:
-        if (r2 != 1) goto L16;
-        r1.playSoundEffect(0);
-        View.OnClickListener r5 = r1.u;
-        if (r5 == null) goto L14;
-        r5.onClick(r1);
-        r0 = true;
-    L14:
-        if (r1.G == false) goto L16;
-        r1.F.x(1, 1);
-    L16:
-        return r0;
+    public final boolean s(int i, int i2, Bundle bundle) {
+        boolean z = false;
+        if (i2 == 16) {
+            Chip chip = this.D;
+            if (i == 0) {
+                return chip.performClick();
+            }
+            if (i == 1) {
+                chip.playSoundEffect(0);
+                View.OnClickListener onClickListener = chip.u;
+                if (onClickListener != null) {
+                    onClickListener.onClick(chip);
+                    z = true;
+                }
+                if (chip.G) {
+                    chip.F.x(1, 1);
+                }
+            }
+        }
+        return z;
     }
 
     @Override // defpackage.z41
-    public final void t(v3 r3) {
-        AccessibilityNodeInfo r0 = r3.a;
-        Chip r2 = this.D;
-        k20 r1 = r2.r;
-        if (r1 != null) goto L5;
-    L7:
-        boolean r4 = false;
-    L8:
-        r0.setCheckable(r4);
-        r0.setClickable(r2.isClickable());
-        r3.i(r2.getAccessibilityClassName());
-        r3.n(r2.getText());
-        return;
-    L5:
-        if (r1.d0 == false) goto L7;
-        r4 = true;
-        goto L8
+    public final void t(v3 v3Var) {
+        AccessibilityNodeInfo accessibilityNodeInfo = v3Var.a;
+        Chip chip = this.D;
+        k20 k20Var = chip.r;
+        accessibilityNodeInfo.setCheckable(k20Var != null && k20Var.d0);
+        accessibilityNodeInfo.setClickable(chip.isClickable());
+        v3Var.i(chip.getAccessibilityClassName());
+        v3Var.n(chip.getText());
     }
 
     @Override // defpackage.z41
-    public final void u(int r5, v3 r6) {
-        AccessibilityNodeInfo r0 = r6.a;
-        CharSequence r2 = "";
-        if (r5 != 1) goto L13;
-        Chip r4 = this.D;
-        CharSequence r7 = r4.getCloseIconContentDescription();
-        if (r7 == null) goto L7;
-        r0.setContentDescription(r7);
-    L11:
-        r0.setBoundsInParent(Chip.b(r4));
-        r6.b(o3.g);
-        r0.setEnabled(r4.isEnabled());
-        return;
-    L7:
-        CharSequence r8 = r4.getText();
-        Context r1 = r4.getContext();
-        if (TextUtils.isEmpty(r8) == true) goto L10;
-        r2 = r8;
-    L10:
-        r0.setContentDescription(r1.getString(R.string.mtrl_chip_close_icon_content_description, new Object[]{r2}).trim());
-        goto L11
-    L13:
-        r0.setContentDescription("");
-        r0.setBoundsInParent(Chip.K);
+    public final void u(int i, v3 v3Var) {
+        AccessibilityNodeInfo accessibilityNodeInfo = v3Var.a;
+        if (i != 1) {
+            accessibilityNodeInfo.setContentDescription("");
+            accessibilityNodeInfo.setBoundsInParent(Chip.K);
+            return;
+        }
+        Chip chip = this.D;
+        CharSequence closeIconContentDescription = chip.getCloseIconContentDescription();
+        if (closeIconContentDescription != null) {
+            accessibilityNodeInfo.setContentDescription(closeIconContentDescription);
+        } else {
+            CharSequence text = chip.getText();
+            accessibilityNodeInfo.setContentDescription(chip.getContext().getString(R.string.mtrl_chip_close_icon_content_description, TextUtils.isEmpty(text) ? "" : text).trim());
+        }
+        accessibilityNodeInfo.setBoundsInParent(chip.getCloseIconTouchBoundsInt());
+        v3Var.b(o3.g);
+        accessibilityNodeInfo.setEnabled(chip.isEnabled());
     }
 
     @Override // defpackage.z41
-    public final void v(int r2, boolean r3) {
-        if (r2 != 1) goto L6;
-        Chip r1 = this.D;
-        r1.A = r3;
-        r1.refreshDrawableState();
-        return;
+    public final void v(int i, boolean z) {
+        if (i == 1) {
+            Chip chip = this.D;
+            chip.A = z;
+            chip.refreshDrawableState();
+        }
     }
 }

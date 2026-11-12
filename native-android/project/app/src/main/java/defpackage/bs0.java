@@ -8,19 +8,19 @@ public final class bs0 implements x44 {
     public final /* synthetic */ y44 n;
     public final ds0 o;
 
-    public bs0(y44 r1, ds0 r2) {
-        this.n = r1;
-        this.o = r2;
+    public bs0(y44 y44Var, ds0 ds0Var) {
+        this.n = y44Var;
+        this.o = ds0Var;
     }
 
     @Override // defpackage.x44
-    public final c12 a(String r1, gf1 r2) {
-        return this.n.a(r1, r2);
+    public final c12 a(String str, gf1 gf1Var) {
+        return this.n.a(str, gf1Var);
     }
 
     @Override // defpackage.x44
-    public final boolean b(Object r1) {
-        return this.n.b(r1);
+    public final boolean b(Object obj) {
+        return this.n.b(obj);
     }
 
     @Override // defpackage.x44
@@ -29,7 +29,7 @@ public final class bs0 implements x44 {
     }
 
     @Override // defpackage.x44
-    public final Object d(String r1) {
-        return this.n.d(r1);
+    public final Object d(String str) {
+        return this.n.d(str);
     }
 }

@@ -5,8 +5,8 @@ package defpackage;
 public final class v12 extends u22 {
     public final if1 u;
 
-    public v12(if1 r1) {
-        this.u = r1;
+    public v12(if1 if1Var) {
+        this.u = if1Var;
     }
 
     @Override // defpackage.u22
@@ -15,7 +15,7 @@ public final class v12 extends u22 {
     }
 
     @Override // defpackage.u22
-    public final void s(Throwable r1) {
-        this.u.invoke(r1);
+    public final void s(Throwable th) {
+        this.u.invoke(th);
     }
 }

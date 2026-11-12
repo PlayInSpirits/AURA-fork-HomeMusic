@@ -8,29 +8,23 @@ import java.util.HashSet;
 public final class kf4 implements ta0 {
     public final /* synthetic */ mf4 a;
 
-    public kf4(mf4 r1) {
-        this.a = r1;
+    public kf4(mf4 mf4Var) {
+        this.a = mf4Var;
     }
 
     @Override // defpackage.ta0
-    public final void a(boolean r4) {
+    public final void a(boolean z) {
+        ArrayList arrayList;
         e35.m();
-        mf4 r0 = this.a;
-        monitor-enter(r0);
-        ArrayList r1 = new ArrayList((HashSet) this.a.q);     // Catch: Throwable -> L10
-        monitor-exit(r0);     // Catch: Throwable -> L10
-        int r3 = r1.size();
-        int r2 = 0;
-    L7:
-        if (r2 >= r3) goto L9;
-        Object r5 = r1.get(r2);
-        r2 = r2 + 1;
-        ((ta0) r5).a(r4);
-        goto L7
-    L9:
-        return;
-    L10:
-        th = move-exception;
-        throw th;
+        synchronized (this.a) {
+            arrayList = new ArrayList((HashSet) this.a.q);
+        }
+        int size = arrayList.size();
+        int i = 0;
+        while (i < size) {
+            Object obj = arrayList.get(i);
+            i++;
+            ((ta0) obj).a(z);
+        }
     }
 }

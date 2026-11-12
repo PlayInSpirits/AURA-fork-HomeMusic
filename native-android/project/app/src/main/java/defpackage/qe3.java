@@ -6,32 +6,25 @@ public final class qe3 extends bf3 {
     public final float c;
     public final float d;
 
-    public qe3(float r2, float r3) {
+    public qe3(float f, float f2) {
         super(1);
-        this.c = r2;
-        this.d = r3;
+        this.c = f;
+        this.d = f2;
     }
 
-    public final boolean equals(Object r5) {
-        if (this != r5) goto L6;
-        return true;
-    L6:
-        if ((r5 instanceof qe3) == true) goto L8;
-        return false;
-    L8:
-        qe3 r6 = (qe3) r5;
-        if (Float.compare(this.c, r6.c) == 0) goto L12;
-        return false;
-    L12:
-        if (Float.compare(this.d, r6.d) == 0) goto L14;
-        return false;
-    L14:
-        return true;
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof qe3)) {
+            return false;
+        }
+        qe3 qe3Var = (qe3) obj;
+        return Float.compare(this.c, qe3Var.c) == 0 && Float.compare(this.d, qe3Var.d) == 0;
     }
 
     public final int hashCode() {
-        int r0 = Float.hashCode(this.c) * 31;
-        return Float.hashCode(this.d) + r0;
+        return Float.hashCode(this.d) + (Float.hashCode(this.c) * 31);
     }
 
     public final String toString() {

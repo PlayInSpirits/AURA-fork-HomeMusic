@@ -6,22 +6,19 @@ public final class nj4 extends b02 {
     public int n;
     public final /* synthetic */ mj4 o;
 
-    public nj4(mj4 r1) {
-        this.o = r1;
+    public nj4(mj4 mj4Var) {
+        this.o = mj4Var;
     }
 
     @Override // java.util.Iterator
     public final boolean hasNext() {
-        if (this.n >= this.o.e()) goto L6;
-        return true;
-    L6:
-        return false;
+        return this.n < this.o.e();
     }
 
     @Override // defpackage.b02
     public final int nextInt() {
-        int r0 = this.n;
-        this.n = r0 + 1;
-        return this.o.c(r0);
+        int i = this.n;
+        this.n = i + 1;
+        return this.o.c(i);
     }
 }

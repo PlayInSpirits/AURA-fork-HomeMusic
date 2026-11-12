@@ -7,7 +7,7 @@ import android.view.View;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class v65 extends View {
-    public static final t65 z = null;
+    public static final t65 z = new t65(0);
     public final qv0 n;
     public final nz o;
     public final mz p;
@@ -21,15 +21,11 @@ public final class v65 extends View {
     public float x;
     public float y;
 
-    static {
-        z = new t65(0);
-    }
-
-    public v65(qv0 r2, nz r3, mz r4) {
-        super(r2.getContext());
-        this.n = r2;
-        this.o = r3;
-        this.p = r4;
+    public v65(qv0 qv0Var, nz nzVar, mz mzVar) {
+        super(qv0Var.getContext());
+        this.n = qv0Var;
+        this.o = nzVar;
+        this.p = mzVar;
         setOutlineProvider(z);
         this.s = true;
         this.t = gb.b;
@@ -41,104 +37,99 @@ public final class v65 extends View {
     }
 
     @Override // android.view.View
-    public final void dispatchDraw(Canvas r19) {
-        float r2 = this.x;
-        mz r7 = this.p;
-        nz r8 = this.o;
-        if (r2 <= 0.0f) goto L5;
-    L13:
-        int r0 = r19.save();
-        r19.translate(this.x, this.y);
-        aa r3 = r8.a;
-        Canvas r9 = r3.a;
-        r3.a = r19;
-        oo0 r10 = this.t;
-        r62 r11 = this.u;
-        float r12 = getWidth();
-        float r13 = getHeight();
-        long r14 = Float.floatToRawIntBits(r12);
-        long r4 = (4294967295L & ((long) Float.floatToRawIntBits(r13))) | (r14 << 32);
-        sj1 r6 = this.w;
-        if1 r15 = this.v;
-        oo0 r16 = r7.O().h();
-        r62 r17 = r7.O().i();
-        jz r18 = r7.O().g();
-        long r1 = r7.O().j();
-        sj1 r20 = (sj1) r7.O().p;
-        i61 r5 = r7.O();
-        r5.r(r10);
-        r5.s(r11);
-        r5.q(r3);
-        r5.t(r4);
-        r5.p = r6;
-        r3.e();
-        r15.invoke(r7);     // Catch: Throwable -> L18
-        r3.k();
-        i61 r21 = r7.O();
-        r21.r(r16);
-        r21.s(r17);
-        r21.q(r18);
-        r21.t(r1);
-        r21.p = r20;
-        r8.a.a = r9;
-        r19.restoreToCount(r0);
-    L16:
+    public final void dispatchDraw(Canvas canvas) {
+        float f = this.x;
+        mz mzVar = this.p;
+        nz nzVar = this.o;
+        if (f > 0.0f || this.y > 0.0f) {
+            int iSave = canvas.save();
+            canvas.translate(this.x, this.y);
+            aa aaVar = nzVar.a;
+            Canvas canvas2 = aaVar.a;
+            aaVar.a = canvas;
+            oo0 oo0Var = this.t;
+            r62 r62Var = this.u;
+            float width = getWidth();
+            long jFloatToRawIntBits = (4294967295L & ((long) Float.floatToRawIntBits(getHeight()))) | (Float.floatToRawIntBits(width) << 32);
+            sj1 sj1Var = this.w;
+            if1 if1Var = this.v;
+            oo0 oo0VarH = mzVar.O().h();
+            r62 r62VarI = mzVar.O().i();
+            jz jzVarG = mzVar.O().g();
+            long j = mzVar.O().j();
+            sj1 sj1Var2 = (sj1) mzVar.O().p;
+            i61 i61VarO = mzVar.O();
+            i61VarO.r(oo0Var);
+            i61VarO.s(r62Var);
+            i61VarO.q(aaVar);
+            i61VarO.t(jFloatToRawIntBits);
+            i61VarO.p = sj1Var;
+            aaVar.e();
+            try {
+                if1Var.invoke(mzVar);
+                aaVar.k();
+                i61 i61VarO2 = mzVar.O();
+                i61VarO2.r(oo0VarH);
+                i61VarO2.s(r62VarI);
+                i61VarO2.q(jzVarG);
+                i61VarO2.t(j);
+                i61VarO2.p = sj1Var2;
+                nzVar.a.a = canvas2;
+                canvas.restoreToCount(iSave);
+            } catch (Throwable th) {
+                aaVar.k();
+                i61 i61VarO3 = mzVar.O();
+                i61VarO3.r(oo0VarH);
+                i61VarO3.s(r62VarI);
+                i61VarO3.q(jzVarG);
+                i61VarO3.t(j);
+                i61VarO3.p = sj1Var2;
+                throw th;
+            }
+        } else {
+            aa aaVar2 = nzVar.a;
+            Canvas canvas3 = aaVar2.a;
+            aaVar2.a = canvas;
+            oo0 oo0Var2 = this.t;
+            r62 r62Var2 = this.u;
+            float width2 = getWidth();
+            long jFloatToRawIntBits2 = (4294967295L & ((long) Float.floatToRawIntBits(getHeight()))) | (Float.floatToRawIntBits(width2) << 32);
+            sj1 sj1Var3 = this.w;
+            if1 if1Var2 = this.v;
+            oo0 oo0VarH2 = mzVar.O().h();
+            r62 r62VarI2 = mzVar.O().i();
+            jz jzVarG2 = mzVar.O().g();
+            long j2 = mzVar.O().j();
+            sj1 sj1Var4 = (sj1) mzVar.O().p;
+            i61 i61VarO4 = mzVar.O();
+            i61VarO4.r(oo0Var2);
+            i61VarO4.s(r62Var2);
+            i61VarO4.q(aaVar2);
+            i61VarO4.t(jFloatToRawIntBits2);
+            i61VarO4.p = sj1Var3;
+            aaVar2.e();
+            try {
+                if1Var2.invoke(mzVar);
+                aaVar2.k();
+                i61 i61VarO5 = mzVar.O();
+                i61VarO5.r(oo0VarH2);
+                i61VarO5.s(r62VarI2);
+                i61VarO5.q(jzVarG2);
+                i61VarO5.t(j2);
+                i61VarO5.p = sj1Var4;
+                nzVar.a.a = canvas3;
+            } catch (Throwable th2) {
+                aaVar2.k();
+                i61 i61VarO6 = mzVar.O();
+                i61VarO6.r(oo0VarH2);
+                i61VarO6.s(r62VarI2);
+                i61VarO6.q(jzVarG2);
+                i61VarO6.t(j2);
+                i61VarO6.p = sj1Var4;
+                throw th2;
+            }
+        }
         this.q = false;
-        return;
-    L18:
-        th = move-exception;
-        r3.k();
-        i61 r22 = r7.O();
-        r22.r(r16);
-        r22.s(r17);
-        r22.q(r18);
-        r22.t(r1);
-        r22.p = r20;
-        throw th;
-    L5:
-        if (this.y > 0.0f) goto L13;
-        aa r23 = r8.a;
-        Canvas r24 = r23.a;
-        r23.a = r19;
-        oo0 r25 = this.t;
-        r62 r26 = this.u;
-        float r110 = getWidth();
-        float r111 = getHeight();
-        long r112 = Float.floatToRawIntBits(r110);
-        long r27 = (4294967295L & ((long) Float.floatToRawIntBits(r111))) | (r112 << 32);
-        sj1 r28 = this.w;
-        if1 r113 = this.v;
-        oo0 r114 = r7.O().h();
-        r62 r115 = r7.O().i();
-        jz r116 = r7.O().g();
-        long r117 = r7.O().j();
-        sj1 r29 = (sj1) r7.O().p;
-        i61 r30 = r7.O();
-        r30.r(r25);
-        r30.s(r26);
-        r30.q(r23);
-        r30.t(r27);
-        r30.p = r28;
-        r23.e();
-        r113.invoke(r7);     // Catch: Throwable -> L10
-        r23.k();
-        i61 r31 = r7.O();
-        r31.r(r114);
-        r31.s(r115);
-        r31.q(r116);
-        r31.t(r117);
-        r31.p = r29;
-        r8.a.a = r24;
-    L10:
-        th = move-exception;
-        r23.k();
-        i61 r32 = r7.O();
-        r32.r(r114);
-        r32.s(r115);
-        r32.q(r116);
-        r32.t(r117);
-        r32.p = r29;
-        throw th;
     }
 
     @Override // android.view.View
@@ -164,24 +155,25 @@ public final class v65 extends View {
 
     @Override // android.view.View
     public final void invalidate() {
-        if (this.q == true) goto L6;
+        if (this.q) {
+            return;
+        }
         this.q = true;
         super.invalidate();
-        return;
     }
 
     @Override // android.view.View
-    public final void onLayout(boolean r1, int r2, int r3, int r4, int r5) {
+    public final void onLayout(boolean z2, int i, int i2, int i3, int i4) {
     }
 
-    public final void setCanUseCompositingLayer$ui_graphics(boolean r2) {
-        if (this.s == r2) goto L6;
-        this.s = r2;
-        invalidate();
-        return;
+    public final void setCanUseCompositingLayer$ui_graphics(boolean z2) {
+        if (this.s != z2) {
+            this.s = z2;
+            invalidate();
+        }
     }
 
-    public final void setInvalidated(boolean r1) {
-        this.q = r1;
+    public final void setInvalidated(boolean z2) {
+        this.q = z2;
     }
 }

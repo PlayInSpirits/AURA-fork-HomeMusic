@@ -14,7 +14,6 @@ import com.eddyizm.tempus.App;
 import com.eddyizm.tempus.interfaces.StarCallback;
 import com.eddyizm.tempus.subsonic.base.ApiResponse;
 import com.eddyizm.tempus.subsonic.models.ArtistID3;
-import com.eddyizm.tempus.subsonic.models.ArtistWithAlbumsID3;
 import com.eddyizm.tempus.subsonic.models.Bookmarks;
 import com.eddyizm.tempus.subsonic.models.InternetRadioStation;
 import java.io.File;
@@ -42,101 +41,89 @@ public final class hd5 implements z30, Callback, e01, in4, wa3 {
     public Object o;
     public Object p;
 
-    public hd5(pn4 r17) {
+    public hd5(pn4 pn4Var) {
+        gr1 gr1VarB;
+        dz4 dz4VarA;
+        dz4 dz4VarA2;
         this.n = 19;
-        this.o = r17;
-        ok1 r2 = new ok1();
-        r2.a(Date.class, new r01());
-        r2.a(Bookmarks.class, new lt());
-        r2.j = true;
-        ArrayList r3 = r2.e;
-        int r4 = r3.size();
-        ArrayList r5 = r2.f;
-        ArrayList r12 = new ArrayList((r5.size() + r4) + 3);
-        r12.addAll(r3);
-        Collections.reverse(r12);
-        ArrayList r6 = new ArrayList(r5);
-        Collections.reverse(r6);
-        r12.addAll(r6);
-        int r7 = r2.g;
-        int r8 = r2.h;
-        ak0 r9 = bk0.b;
-        boolean r10 = gk4.a;
-        if (r7 == 2) goto L12;
-        if (r8 == 2) goto L12;
-        dz4 r11 = r9.a(r7, r8);
-        if (r10 == false) goto L8;
-        dz4 r13 = gk4.c.a(r7, r8);
-        dz4 r14 = gk4.b.a(r7, r8);
-    L9:
-        r12.add(r11);
-        if (r10 == false) goto L12;
-        r12.add(r13);
-        r12.add(r14);
-        goto L12
-    L8:
-        r14 = null;
-        r13 = null;
-    L12:
-        u21 r15 = r2.a;
-        int r16 = r2.c;
-        HashMap r18 = new HashMap(r2.d);
-        boolean r19 = r2.i;
-        boolean r20 = r2.j;
-        boolean r110 = r2.k;
-        int r111 = r2.b;
-        new ArrayList(r3);
-        new ArrayList(r5);
-        nk1 r21 = new nk1(r15, r16, r18, r19, r20, r110, r111, r12, r2.l, r2.m, new ArrayList(r2.n));
-        Retrofit.Builder r22 = new Retrofit.Builder();
-        String r1 = r17.j();
-        if (r1 == null) goto L15;
-        String r112 = qm4.K0(r1).toString();
-    L16:
-        if (r112 != null) goto L31;
-        r112 = "";
-    L31:
-        fr1 r23 = new fr1();     // Catch: IllegalArgumentException -> L20
-        r23.e(null, r112);     // Catch: IllegalArgumentException -> L20
-        gr1 r24 = r23.b();     // Catch: IllegalArgumentException -> L20
-    L21:
-        if (r24 != null) goto L23;
-    L25:
-        r112 = "https://localhost/rest/";
-    L26:
-        Retrofit.Builder r25 = r22.baseUrl(r112).addConverterFactory(GsonConverterFactory.create(r21));
-        cx r26 = new cx();
-        rx r27 = new rx(r26);
-        r26.a = 2592000;
-        n83 r28 = new n83();
-        r28.a(2, TimeUnit.MINUTES);
-        TimeUnit r29 = TimeUnit.SECONDS;
-        r28.b(20, r29);
-        r28.z = ze5.b(30, r29);
-        r28.A = ze5.b(30, r29);
-        dr1 r30 = new dr1();
-        r30.b = cr1.n;
-        r28.c.add(r30);
-        r28.c.add(r27);
-        File r31 = App.a().getCacheDir();
-        r31.getClass();
-        r28.l = new hx(r31);
-        SSLSocketFactory r32 = x30.b;
-        if (r32 == null) goto L29;
-        r28.c(r32, x30.a);
-    L29:
-        Retrofit r33 = r25.client(new o83(r28)).build();
-        r33.getClass();
-        this.p = (f84) r33.create(f84.class);
-        return;
-    L23:
-        if (r24.d.length() <= 0) goto L25;
-    L20:
-        r24 = null;
-        goto L21
-    L15:
-        r112 = null;
-        goto L16
+        this.o = pn4Var;
+        ok1 ok1Var = new ok1();
+        ok1Var.a(Date.class, new r01());
+        ok1Var.a(Bookmarks.class, new lt());
+        ok1Var.j = true;
+        ArrayList arrayList = ok1Var.e;
+        int size = arrayList.size();
+        ArrayList arrayList2 = ok1Var.f;
+        ArrayList arrayList3 = new ArrayList(arrayList2.size() + size + 3);
+        arrayList3.addAll(arrayList);
+        Collections.reverse(arrayList3);
+        ArrayList arrayList4 = new ArrayList(arrayList2);
+        Collections.reverse(arrayList4);
+        arrayList3.addAll(arrayList4);
+        int i = ok1Var.g;
+        int i2 = ok1Var.h;
+        ak0 ak0Var = bk0.b;
+        boolean z = gk4.a;
+        if (i != 2 && i2 != 2) {
+            dz4 dz4VarA3 = ak0Var.a(i, i2);
+            if (z) {
+                dz4VarA2 = gk4.c.a(i, i2);
+                dz4VarA = gk4.b.a(i, i2);
+            } else {
+                dz4VarA = null;
+                dz4VarA2 = null;
+            }
+            arrayList3.add(dz4VarA3);
+            if (z) {
+                arrayList3.add(dz4VarA2);
+                arrayList3.add(dz4VarA);
+            }
+        }
+        u21 u21Var = ok1Var.a;
+        int i3 = ok1Var.c;
+        HashMap map = new HashMap(ok1Var.d);
+        boolean z2 = ok1Var.i;
+        boolean z3 = ok1Var.j;
+        boolean z4 = ok1Var.k;
+        int i4 = ok1Var.b;
+        new ArrayList(arrayList);
+        new ArrayList(arrayList2);
+        nk1 nk1Var = new nk1(u21Var, i3, map, z2, z3, z4, i4, arrayList3, ok1Var.l, ok1Var.m, new ArrayList(ok1Var.n));
+        Retrofit.Builder builder = new Retrofit.Builder();
+        String strJ = pn4Var.j();
+        String string = strJ != null ? qm4.K0(strJ).toString() : null;
+        string = string == null ? "" : string;
+        try {
+            fr1 fr1Var = new fr1();
+            fr1Var.e(null, string);
+            gr1VarB = fr1Var.b();
+        } catch (IllegalArgumentException unused) {
+            gr1VarB = null;
+        }
+        Retrofit.Builder builderAddConverterFactory = builder.baseUrl((gr1VarB == null || gr1VarB.d.length() <= 0) ? "https://localhost/rest/" : string).addConverterFactory(GsonConverterFactory.create(nk1Var));
+        cx cxVar = new cx();
+        rx rxVar = new rx(cxVar);
+        cxVar.a = 2592000;
+        n83 n83Var = new n83();
+        n83Var.a(2L, TimeUnit.MINUTES);
+        TimeUnit timeUnit = TimeUnit.SECONDS;
+        n83Var.b(20L, timeUnit);
+        n83Var.z = ze5.b(30L, timeUnit);
+        n83Var.A = ze5.b(30L, timeUnit);
+        dr1 dr1Var = new dr1();
+        dr1Var.b = cr1.n;
+        n83Var.c.add(dr1Var);
+        n83Var.c.add(rxVar);
+        File cacheDir = App.a().getCacheDir();
+        cacheDir.getClass();
+        n83Var.l = new hx(cacheDir);
+        SSLSocketFactory sSLSocketFactory = x30.b;
+        if (sSLSocketFactory != null) {
+            n83Var.c(sSLSocketFactory, x30.a);
+        }
+        Retrofit retrofitBuild = builderAddConverterFactory.client(new o83(n83Var)).build();
+        retrofitBuild.getClass();
+        this.p = (f84) retrofitBuild.create(f84.class);
     }
 
     @Override // defpackage.e01
@@ -146,114 +133,82 @@ public final class hd5 implements z30, Callback, e01, in4, wa3 {
 
     @Override // defpackage.in4
     public jn4 apply() {
-        o72 r0 = (o72) this.o;
-        h72 r1 = i();
-        if (r1 == null) goto L6;
-        r0.d(r1, false);
-    L6:
-        return r0.f(this.p);
+        o72 o72Var = (o72) this.o;
+        h72 h72VarI = i();
+        if (h72VarI != null) {
+            o72Var.d(h72VarI, false);
+        }
+        return o72Var.f(this.p);
     }
 
     @Override // defpackage.e01
-    public boolean b(CharSequence r4, int r5, int r6, k05 r7) {
-        if ((r7.c & 4) <= 0) goto L6;
-        return true;
-    L6:
-        if (((q15) this.o) == null) goto L8;
-    L12:
+    public boolean b(CharSequence charSequence, int i, int i2, k05 k05Var) {
+        if ((k05Var.c & 4) > 0) {
+            return true;
+        }
+        if (((q15) this.o) == null) {
+            this.o = new q15(charSequence instanceof Spannable ? (Spannable) charSequence : new SpannableString(charSequence));
+        }
         ((om0) this.p).getClass();
-        l05 r8 = new l05(r7);
-        ((q15) this.o).setSpan(r8, r5, r6, 33);
+        ((q15) this.o).setSpan(new l05(k05Var), i, i2, 33);
         return true;
-    L8:
-        if ((r4 instanceof Spannable) == false) goto L10;
-        Spannable r9 = (Spannable) r4;
-    L11:
-        this.o = new q15(r9);
-        goto L12
-    L10:
-        r9 = new SpannableString(r4);
-        goto L11
     }
 
     @Override // defpackage.wa3
-    public List c(Integer r4) {
-        List r0 = ((wa3) this.o).c(null);
-        lg4 r3 = (lg4) this.p;
-        int r1 = r3.v;
-        if (r1 >= 0) goto L6;
-        return r0;
-    L6:
-        return q40.G0(gh0.d(r3, r4, r1, Integer.valueOf(r3.E(r3.b, r1))), r0);
+    public List c(Integer num) {
+        List listC = ((wa3) this.o).c(null);
+        lg4 lg4Var = (lg4) this.p;
+        int i = lg4Var.v;
+        return i < 0 ? listC : q40.G0(gh0.d(lg4Var, num, i, Integer.valueOf(lg4Var.E(lg4Var.b, i))), listC);
     }
 
     @Override // defpackage.in4
     public void cancel() {
-        h72 r0 = i();
-        if (r0 == null) goto L5;
-        ef3 r1 = r0.f;
-    L6:
-        if (r1 == null) goto L9;
-        o72.c((o72) this.o, this.p);
-        return;
-    L9:
-        return;
-    L5:
-        r1 = null;
-        goto L6
+        h72 h72VarI = i();
+        if ((h72VarI != null ? h72VarI.f : null) != null) {
+            o72.c((o72) this.o, this.p);
+        }
     }
 
     @Override // defpackage.in4
     public boolean d() {
-        h72 r0 = i();
-        if (r0 == null) goto L8;
-        ef3 r1 = r0.f;
-        if (r1 != null) goto L7;
-        return true;
-    L7:
-        return r1.c();
-    L8:
-        return true;
+        ef3 ef3Var;
+        h72 h72VarI = i();
+        if (h72VarI == null || (ef3Var = h72VarI.f) == null) {
+            return true;
+        }
+        return ef3Var.c();
     }
 
     @Override // defpackage.in4
-    public boolean e(bt2 r5) {
-        h72 r4 = i();
-        if1 r0 = null;
-        if (r4 == null) goto L5;
-        ef3 r1 = r4.f;
-    L6:
-        if (r1 != null) goto L8;
-        return true;
-    L8:
-        if (r1.c() == true) goto L28;
-        ch4 r2 = ya4.t();
-        if (r2 == null) goto L12;
-        r0 = r2.e();
-    L12:
-        ch4 r3 = ya4.z(r2);
-        boolean r6 = r1.e(r5);     // Catch: Throwable -> L16
-        ya4.H(r2, r3, r0);
-        return r6;
-    L16:
-        th = move-exception;
-        r4.getClass();     // Catch: Throwable -> L19
-        throw th;     // Catch: Throwable -> L19
-    L19:
-        th = move-exception;
-        ya4.H(r2, r3, r0);
-        throw th;
-    L28:
-        return true;
-    L5:
-        r1 = null;
-        goto L6
+    public boolean e(bt2 bt2Var) {
+        h72 h72VarI = i();
+        ef3 ef3Var = h72VarI != null ? h72VarI.f : null;
+        if (ef3Var == null || ef3Var.c()) {
+            return true;
+        }
+        ch4 ch4VarT = ya4.t();
+        if1 if1VarE = ch4VarT != null ? ch4VarT.e() : null;
+        ch4 ch4VarZ = ya4.z(ch4VarT);
+        try {
+            boolean zE = ef3Var.e(bt2Var);
+            ya4.H(ch4VarT, ch4VarZ, if1VarE);
+            return zE;
+        } catch (Throwable th) {
+            try {
+                h72VarI.getClass();
+                throw th;
+            } catch (Throwable th2) {
+                ya4.H(ch4VarT, ch4VarZ, if1VarE);
+                throw th2;
+            }
+        }
     }
 
-    public void f(ValueAnimator r3) {
-        xi4 r0 = new xi4(8);
-        r3.addListener((pl4) this.p);
-        ((ArrayList) this.o).add(r0);
+    public void f(ValueAnimator valueAnimator) {
+        xi4 xi4Var = new xi4(8);
+        valueAnimator.addListener((pl4) this.p);
+        ((ArrayList) this.o).add(xi4Var);
     }
 
     @Override // defpackage.wa3
@@ -261,335 +216,281 @@ public final class hd5 implements z30, Callback, e01, in4, wa3 {
         return ((wa3) this.o).g();
     }
 
-    public Object h(xn3 r3) {
-        HashMap r0 = (HashMap) this.p;
-        jk1 r1 = (jk1) r0.get(r3);
-        if (r1 != null) goto L5;
-        r1 = new jk1(r3);
-        r0.put(r3, r1);
-    L6:
-        jk1 r4 = r1.d;
-        r4.c = r1.c;
-        r1.c.d = r4;
-        jk1 r2 = (jk1) this.o;
-        r1.d = r2;
-        jk1 r5 = r2.c;
-        r1.c = r5;
-        r5.d = r1;
-        r1.d.c = r1;
-        ArrayList r6 = r1.b;
-        if (r6 == null) goto L9;
-        int r7 = r6.size();
-    L10:
-        if (r7 > 0) goto L12;
+    public Object h(xn3 xn3Var) {
+        HashMap map = (HashMap) this.p;
+        jk1 jk1Var = (jk1) map.get(xn3Var);
+        if (jk1Var == null) {
+            jk1Var = new jk1(xn3Var);
+            map.put(xn3Var, jk1Var);
+        } else {
+            xn3Var.a();
+        }
+        jk1 jk1Var2 = jk1Var.d;
+        jk1Var2.c = jk1Var.c;
+        jk1Var.c.d = jk1Var2;
+        jk1 jk1Var3 = (jk1) this.o;
+        jk1Var.d = jk1Var3;
+        jk1 jk1Var4 = jk1Var3.c;
+        jk1Var.c = jk1Var4;
+        jk1Var4.d = jk1Var;
+        jk1Var.d.c = jk1Var;
+        ArrayList arrayList = jk1Var.b;
+        int size = arrayList != null ? arrayList.size() : 0;
+        if (size > 0) {
+            return jk1Var.b.remove(size - 1);
+        }
         return null;
-    L12:
-        return r1.b.remove(r7 - 1);
-    L9:
-        r7 = 0;
-        goto L10
-    L5:
-        r3.a();
-        goto L6
     }
 
     public h72 i() {
-        o72 r0 = (o72) this.o;
-        c72 r2 = (c72) r0.w.g(this.p);
-        if (r2 != null) goto L5;
+        o72 o72Var = (o72) this.o;
+        c72 c72Var = (c72) o72Var.w.g(this.p);
+        if (c72Var != null) {
+            return (h72) o72Var.s.g(c72Var);
+        }
         return null;
-    L5:
-        return (h72) r0.s.g(r2);
     }
 
-    public ArrayList j(String r3) {
-        w24 r1 = w24.b(1, "SELECT DISTINCT tag FROM worktag WHERE work_spec_id=?");
-        r1.h(1, r3);
-        WorkDatabase_Impl r2 = (WorkDatabase_Impl) this.o;
-        r2.b();
-        Cursor r4 = xl.H(r2, r1);
-        ArrayList r5 = new ArrayList(r4.getCount());     // Catch: Throwable -> L8
-    L5:
-        if (r4.moveToNext() == false) goto L10;
-        r5.add(r4.getString(0));     // Catch: Throwable -> L8
-        goto L5
-    L10:
-        r4.close();
-        r1.j();
-        return r5;
-    L8:
-        th = move-exception;
-        r4.close();
-        r1.j();
-        throw th;
+    public ArrayList j(String str) {
+        w24 w24VarB = w24.b(1, "SELECT DISTINCT tag FROM worktag WHERE work_spec_id=?");
+        w24VarB.h(1, str);
+        WorkDatabase_Impl workDatabase_Impl = (WorkDatabase_Impl) this.o;
+        workDatabase_Impl.b();
+        Cursor cursorH = xl.H(workDatabase_Impl, w24VarB);
+        try {
+            ArrayList arrayList = new ArrayList(cursorH.getCount());
+            while (cursorH.moveToNext()) {
+                arrayList.add(cursorH.getString(0));
+            }
+            cursorH.close();
+            w24VarB.j();
+            return arrayList;
+        } catch (Throwable th) {
+            cursorH.close();
+            w24VarB.j();
+            throw th;
+        }
     }
 
-    public void k(xn3 r4, Object r5) {
-        HashMap r0 = (HashMap) this.p;
-        jk1 r1 = (jk1) r0.get(r4);
-        if (r1 != null) goto L5;
-        r1 = new jk1(r4);
-        r1.d = r1;
-        jk1 r3 = (jk1) this.o;
-        r1.d = r3.d;
-        r1.c = r3;
-        r3.d = r1;
-        r1.d.c = r1;
-        r0.put(r4, r1);
-    L7:
-        if (r1.b != null) goto L9;
-        r1.b = new ArrayList();
-    L9:
-        r1.b.add(r5);
-        return;
-    L5:
-        r4.a();
-        goto L7
+    public void k(xn3 xn3Var, Object obj) {
+        HashMap map = (HashMap) this.p;
+        jk1 jk1Var = (jk1) map.get(xn3Var);
+        if (jk1Var == null) {
+            jk1Var = new jk1(xn3Var);
+            jk1Var.d = jk1Var;
+            jk1 jk1Var2 = (jk1) this.o;
+            jk1Var.d = jk1Var2.d;
+            jk1Var.c = jk1Var2;
+            jk1Var2.d = jk1Var;
+            jk1Var.d.c = jk1Var;
+            map.put(xn3Var, jk1Var);
+        } else {
+            xn3Var.a();
+        }
+        if (jk1Var.b == null) {
+            jk1Var.b = new ArrayList();
+        }
+        jk1Var.b.add(obj);
     }
 
     public Object l() {
-        jk1 r0 = (jk1) this.o;
-        jk1 r1 = r0.d;
-    L3:
-        boolean r2 = r1.equals(r0);
-        Object r3 = r1.a;
-        Object r4 = null;
-        if (r2 == true) goto L14;
-        ArrayList r5 = r1.b;
-        if (r5 == null) goto L8;
-        int r6 = r5.size();
-    L9:
-        if (r6 <= 0) goto L11;
-        r4 = r1.b.remove(r6 - 1);
-    L11:
-        if (r4 != null) goto L12;
-        jk1 r7 = r1.d;
-        r7.c = r1.c;
-        r1.c.d = r7;
-        ((HashMap) this.p).remove(r3);
-        ((xn3) r3).a();
-        r1 = r1.d;
-        goto L3
-    L12:
-        return r4;
-    L8:
-        r6 = 0;
-        goto L9
-    L14:
-        return null;
+        jk1 jk1Var = (jk1) this.o;
+        jk1 jk1Var2 = jk1Var.d;
+        while (true) {
+            boolean zEquals = jk1Var2.equals(jk1Var);
+            Object obj = jk1Var2.a;
+            if (zEquals) {
+                return null;
+            }
+            ArrayList arrayList = jk1Var2.b;
+            int size = arrayList != null ? arrayList.size() : 0;
+            Object objRemove = size > 0 ? jk1Var2.b.remove(size - 1) : null;
+            if (objRemove != null) {
+                return objRemove;
+            }
+            jk1 jk1Var3 = jk1Var2.d;
+            jk1Var3.c = jk1Var2.c;
+            jk1Var2.c.d = jk1Var3;
+            ((HashMap) this.p).remove(obj);
+            ((xn3) obj).a();
+            jk1Var2 = jk1Var2.d;
+        }
     }
 
-    public Call m(String r12, int r13, int r14, int r15, int r16) {
+    public Call m(String str, int i, int i2, int i3, int i4) {
         Log.d("BrowsingClient", "search3()");
-        return ((f84) this.p).a(((pn4) this.o).f(), r12, r13, r14, r15, 0, r16, 0, ud3.k());
+        return ((f84) this.p).a(((pn4) this.o).f(), str, i, i2, i3, 0, i4, 0, ud3.k());
     }
 
     @Override // retrofit2.Callback
-    public void onFailure(Call r2, Throwable r3) {
-        switch(this.n) {
-            case 2: goto L10;
-            case 8: goto L8;
-            case 17: goto L6;
-            default: goto L4;
-        };
-    L4:
-        new Thread(new jq3((hh3) this.p, (k03) this.o)).start();
-        return;
-    L6:
-        ((lm3) this.o).g();
-        return;
-    L8:
-        d34.r((l61) this.o, (StarCallback) this.p);
-        return;
-    L10:
-        ArtistID3 r4 = kb4.g((String) this.o, null);
-        if (r4 == null) goto L14;
-        ((k03) this.p).k(r4);
-        return;
+    public void onFailure(Call call, Throwable th) {
+        switch (this.n) {
+            case 2:
+                ArtistID3 artistID3G = kb4.g((String) this.o, null);
+                if (artistID3G != null) {
+                    ((k03) this.p).k(artistID3G);
+                }
+                break;
+            case 8:
+                d34.r((l61) this.o, (StarCallback) this.p);
+                break;
+            case 17:
+                ((lm3) this.o).g();
+                break;
+            default:
+                new Thread(new jq3((hh3) this.p, (k03) this.o)).start();
+                break;
+        }
     }
 
     @Override // retrofit2.Callback
-    public void onResponse(Call r4, Response r5) {
-        switch(this.n) {
-            case 2: goto L30;
-            case 8: goto L20;
-            case 17: goto L15;
-            default: goto L4;
-        };
-    L4:
-        k03 r6 = (k03) this.o;
-        hh3 r3 = (hh3) this.p;
-        if (r5.isSuccessful() == true) goto L7;
-    L13:
-        new Thread(new jq3(r3, r6)).start();
-        return;
-    L7:
-        if (r5.body() == null) goto L13;
-        if (((ApiResponse) r5.body()).getSubsonicResponse().getInternetRadioStations() == null) goto L13;
-        if (((ApiResponse) r5.body()).getSubsonicResponse().getInternetRadioStations().getInternetRadioStations() == null) goto L13;
-        List<InternetRadioStation> r7 = ((ApiResponse) r5.body()).getSubsonicResponse().getInternetRadioStations().getInternetRadioStations();
-        new Thread(new jq3(3, r7)).start();
-        new Thread(new ur2(r3, r7, r6)).start();
-        return;
-    L15:
-        lm3 r8 = (lm3) this.o;
-        if (mm3.f(r5) == false) goto L18;
-        ((mm3) this.p).g();
-        r8.onSuccess();
-        return;
-    L18:
-        r8.g();
-        return;
-    L20:
-        l61 r9 = (l61) this.o;
-        StarCallback r10 = (StarCallback) this.p;
-        if (r5.isSuccessful() == false) goto L26;
-        if (d34.w(r5) == true) goto L26;
-        n61.a(r9);
-        r10.onSuccess();
-        return;
-    L26:
-        if (d34.w(r5) == false) goto L28;
-        n61.j(r9);
-        r10.onRefused();
-        return;
-    L28:
-        d34.r(r9, r10);
-        return;
-    L30:
-        String r11 = (String) this.o;
-        if (r5.isSuccessful() == true) goto L33;
-    L35:
-        ArtistWithAlbumsID3 r12 = null;
-    L36:
-        ArtistID3 r13 = kb4.g(r11, r12);
-        if (r13 == null) goto L44;
-        ((k03) this.p).k(r13);
-        return;
-    L44:
-        return;
-    L33:
-        if (r5.body() == null) goto L35;
-        r12 = ((ApiResponse) r5.body()).getSubsonicResponse().getArtist();
-        goto L36
+    public void onResponse(Call call, Response response) {
+        switch (this.n) {
+            case 2:
+                ArtistID3 artistID3G = kb4.g((String) this.o, (!response.isSuccessful() || response.body() == null) ? null : ((ApiResponse) response.body()).getSubsonicResponse().getArtist());
+                if (artistID3G != null) {
+                    ((k03) this.p).k(artistID3G);
+                }
+                break;
+            case 8:
+                l61 l61Var = (l61) this.o;
+                StarCallback starCallback = (StarCallback) this.p;
+                if (response.isSuccessful() && !d34.w(response)) {
+                    n61.a(l61Var);
+                    starCallback.onSuccess();
+                } else if (!d34.w(response)) {
+                    d34.r(l61Var, starCallback);
+                } else {
+                    n61.j(l61Var);
+                    starCallback.onRefused();
+                }
+                break;
+            case 17:
+                lm3 lm3Var = (lm3) this.o;
+                if (!mm3.f(response)) {
+                    lm3Var.g();
+                } else {
+                    ((mm3) this.p).g();
+                    lm3Var.onSuccess();
+                }
+                break;
+            default:
+                k03 k03Var = (k03) this.o;
+                hh3 hh3Var = (hh3) this.p;
+                if (!response.isSuccessful() || response.body() == null || ((ApiResponse) response.body()).getSubsonicResponse().getInternetRadioStations() == null || ((ApiResponse) response.body()).getSubsonicResponse().getInternetRadioStations().getInternetRadioStations() == null) {
+                    new Thread(new jq3(hh3Var, k03Var)).start();
+                } else {
+                    List<InternetRadioStation> internetRadioStations = ((ApiResponse) response.body()).getSubsonicResponse().getInternetRadioStations().getInternetRadioStations();
+                    new Thread(new jq3(3, internetRadioStations)).start();
+                    new Thread(new ur2(hh3Var, internetRadioStations, k03Var)).start();
+                }
+                break;
+        }
     }
 
     public String toString() {
-        switch(this.n) {
-            case 10: goto L6;
-            default: goto L5;
-        };
-    L6:
-        StringBuilder r0 = new StringBuilder("GroupedLinkedMap( ");
-        jk1 r5 = (jk1) this.o;
-        jk1 r1 = r5.c;
-        boolean r3 = false;
-    L8:
-        if (r1.equals(r5) == true) goto L14;
-        r0.append('{');
-        r0.append(r1.a);
-        r0.append(':');
-        ArrayList r4 = r1.b;
-        if (r4 == null) goto L12;
-        int r6 = r4.size();
-    L13:
-        r0.append(r6);
-        r0.append("}, ");
-        r1 = r1.c;
-        r3 = true;
-        goto L8
-    L12:
-        r6 = 0;
-        goto L13
-    L14:
-        if (r3 == false) goto L16;
-        r0.delete(r0.length() - 2, r0.length());
-    L16:
-        r0.append(" )");
-        return r0.toString();
-    L5:
-        return super.toString();
+        switch (this.n) {
+            case 10:
+                StringBuilder sb = new StringBuilder("GroupedLinkedMap( ");
+                jk1 jk1Var = (jk1) this.o;
+                jk1 jk1Var2 = jk1Var.c;
+                boolean z = false;
+                while (!jk1Var2.equals(jk1Var)) {
+                    sb.append('{');
+                    sb.append(jk1Var2.a);
+                    sb.append(':');
+                    ArrayList arrayList = jk1Var2.b;
+                    sb.append(arrayList != null ? arrayList.size() : 0);
+                    sb.append("}, ");
+                    jk1Var2 = jk1Var2.c;
+                    z = true;
+                }
+                if (z) {
+                    sb.delete(sb.length() - 2, sb.length());
+                }
+                sb.append(" )");
+                return sb.toString();
+            default:
+                return super.toString();
+        }
     }
 
-    public /* synthetic */ hd5(Object r1, Object r2, boolean r3, int r4) {
-        this.n = r4;
-        this.p = r1;
-        this.o = r2;
+    public /* synthetic */ hd5(Object obj, Object obj2, boolean z, int i) {
+        this.n = i;
+        this.p = obj;
+        this.o = obj2;
     }
 
-    public /* synthetic */ hd5(int r1, Object r2, Object r3) {
-        this.n = r1;
-        this.o = r2;
-        this.p = r3;
+    public /* synthetic */ hd5(int i, Object obj, Object obj2) {
+        this.n = i;
+        this.o = obj;
+        this.p = obj2;
     }
 
-    public hd5(int r2) {
-        this.n = r2;
-        switch(r2) {
-            case 20: goto L10;
-            case 21: goto L4;
-            case 22: goto L8;
-            case 23: goto L6;
-            default: goto L4;
-        };
-    L4:
-        this.o = new jk1(null);
-        this.p = new HashMap();
-        return;
-    L6:
-        ej1 r3 = ej1.c;
-        this.o = new SparseIntArray();
-        this.p = r3;
-        return;
-    L8:
-        this.o = new f13(new Reference[16]);
-        this.p = new ReferenceQueue();
-        return;
-    L10:
-        this.o = new ArrayList();
-        this.p = new pl4();
+    public hd5(int i) {
+        this.n = i;
+        switch (i) {
+            case 20:
+                this.o = new ArrayList();
+                this.p = new pl4();
+                break;
+            case 21:
+            default:
+                this.o = new jk1(null);
+                this.p = new HashMap();
+                break;
+            case 22:
+                this.o = new f13(new Reference[16]);
+                this.p = new ReferenceQueue();
+                break;
+            case 23:
+                ej1 ej1Var = ej1.c;
+                this.o = new SparseIntArray();
+                this.p = ej1Var;
+                break;
+        }
     }
 
-    public hd5(WorkDatabase_Impl r3) {
+    public hd5(WorkDatabase_Impl workDatabase_Impl) {
         this.n = 0;
-        this.o = r3;
-        this.p = new vo0(r3, 6);
-        new aq4(r3, 20);
+        this.o = workDatabase_Impl;
+        this.p = new vo0(workDatabase_Impl, 6);
+        new aq4(workDatabase_Impl, 20);
     }
 
-    public hd5(s24 r2) {
+    public hd5(s24 s24Var) {
         this.n = 11;
-        this.o = r2;
-        Set r3 = Collections.newSetFromMap(new IdentityHashMap());
-        r3.getClass();
-        this.p = r3;
+        this.o = s24Var;
+        Set setNewSetFromMap = Collections.newSetFromMap(new IdentityHashMap());
+        setNewSetFromMap.getClass();
+        this.p = setNewSetFromMap;
     }
 
-    public hd5(Context r2) {
+    public hd5(Context context) {
         this.n = 1;
-        this.o = r2;
+        this.o = context;
     }
 
-    public hd5(MediaCodec.CryptoInfo r2) {
+    public hd5(MediaCodec.CryptoInfo cryptoInfo) {
         this.n = 5;
-        this.o = r2;
+        this.o = cryptoInfo;
         this.p = new MediaCodec.CryptoInfo.Pattern(0, 0);
     }
 
-    public hd5(gy3 r2, int[] r3) {
+    public hd5(gy3 gy3Var, int[] iArr) {
         this.n = 15;
-        this.o = yw1.k(r2);
-        this.p = r3;
+        this.o = yw1.k(gy3Var);
+        this.p = iArr;
     }
 
-    public hd5(String r2, Bundle r3) {
+    public hd5(String str, Bundle bundle) {
         this.n = 13;
-        if (r2 == null) goto L6;
-        this.o = r2;
-        this.p = r3;
-        return;
-    L6:
-        kf2.n("The root id in BrowserRoot cannot be null. Use null for BrowserRoot instead");
-        throw null;
+        if (str != null) {
+            this.o = str;
+            this.p = bundle;
+        } else {
+            kf2.n("The root id in BrowserRoot cannot be null. Use null for BrowserRoot instead");
+            throw null;
+        }
     }
 }

@@ -7,45 +7,30 @@ public final class ly2 {
     public final int b;
     public final float c;
 
-    public ly2(int r1, float r2, int r3) {
-        this.a = r1;
-        this.b = r3;
-        this.c = r2;
+    public ly2(int i, float f, int i2) {
+        this.a = i;
+        this.b = i2;
+        this.c = f;
     }
 
-    public static ly2 a(int r3) {
-        int r0 = (r3 >> 13) & 7;
-        if (r0 != 0) goto L6;
-        return null;
-    L6:
-        int r1 = (r3 >> 10) & 7;
-        int r2 = r3 & 511;
-        if ((r3 & 512) == 0) goto L9;
-        int r4 = -1;
-    L11:
-        return new ly2(r0, (r2 * r4) / 10.0f, r1);
-    L9:
-        r4 = 1;
-        goto L11
+    public static ly2 a(int i) {
+        int i2 = (i >> 13) & 7;
+        if (i2 == 0) {
+            return null;
+        }
+        return new ly2(i2, ((i & 511) * ((i & 512) != 0 ? -1 : 1)) / 10.0f, (i >> 10) & 7);
     }
 
-    public final boolean equals(Object r4) {
-        if ((r4 instanceof ly2) == true) goto L5;
-        return false;
-    L5:
-        ly2 r5 = (ly2) r4;
-        if (this.a == r5.a) goto L8;
-    L13:
-        return false;
-    L8:
-        if (this.b != r5.b) goto L13;
-        if (Float.compare(this.c, r5.c) != 0) goto L13;
-        return true;
+    public final boolean equals(Object obj) {
+        if (!(obj instanceof ly2)) {
+            return false;
+        }
+        ly2 ly2Var = (ly2) obj;
+        return this.a == ly2Var.a && this.b == ly2Var.b && Float.compare(this.c, ly2Var.c) == 0;
     }
 
     public final int hashCode() {
-        int r0 = ((this.a * 31) + this.b) * 31;
-        return Float.hashCode(this.c) + r0;
+        return Float.hashCode(this.c) + (((this.a * 31) + this.b) * 31);
     }
 
     public final String toString() {

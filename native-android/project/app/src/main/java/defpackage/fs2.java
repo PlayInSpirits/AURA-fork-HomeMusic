@@ -7,25 +7,24 @@ public final /* synthetic */ class fs2 implements ks2 {
     public final /* synthetic */ ls2 o;
     public final /* synthetic */ int p;
 
-    public /* synthetic */ fs2(ls2 r1, int r2, int r3) {
-        this.n = r3;
-        this.o = r1;
-        this.p = r2;
+    public /* synthetic */ fs2(ls2 ls2Var, int i, int i2) {
+        this.n = i2;
+        this.o = ls2Var;
+        this.p = i;
     }
 
     @Override // defpackage.ks2
-    public final void b(fr2 r2) {
-        int r3 = this.n;
-        int r0 = this.p;
-        ls2 r1 = this.o;
-        switch(r3) {
-            case 0: goto L6;
-            default: goto L4;
-        };
-    L4:
-        r1.g.s.s(f92.u(r0));
-        return;
-    L6:
-        r1.g.s.p0(f92.s(r0));
+    public final void b(fr2 fr2Var) {
+        int i = this.n;
+        int i2 = this.p;
+        ls2 ls2Var = this.o;
+        switch (i) {
+            case 0:
+                ls2Var.g.s.p0(f92.s(i2));
+                break;
+            default:
+                ls2Var.g.s.s(f92.u(i2));
+                break;
+        }
     }
 }

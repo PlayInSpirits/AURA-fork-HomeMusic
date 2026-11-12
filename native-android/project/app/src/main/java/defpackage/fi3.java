@@ -12,20 +12,19 @@ public final class fi3 {
     public boolean d;
     public vp4 e;
     public boolean f;
-    public long g;
+    public long g = 15000;
     public final f55 h;
 
-    public fi3(Context r4, e55 r5) {
-        this.a = r4.getApplicationContext();
-        this.b = r5;
-        this.g = 15000;
-        f55 r6 = new f55();
-        Range r7 = new Range(Double.valueOf(0.0d), Double.valueOf(1.0d));
-        r6.d = r7;
-        r6.c = ((Double) r7.getUpper()).doubleValue();
-        r6.a = -9223372036854775807L;
-        r6.b = -9223372036854775807L;
-        this.h = r6;
+    public fi3(Context context, e55 e55Var) {
+        this.a = context.getApplicationContext();
+        this.b = e55Var;
+        f55 f55Var = new f55();
+        Range range = new Range(Double.valueOf(0.0d), Double.valueOf(1.0d));
+        f55Var.d = range;
+        f55Var.c = ((Double) range.getUpper()).doubleValue();
+        f55Var.a = -9223372036854775807L;
+        f55Var.b = -9223372036854775807L;
+        this.h = f55Var;
         this.e = vp4.a;
     }
 }

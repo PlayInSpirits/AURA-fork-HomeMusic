@@ -12,7 +12,7 @@ import java.util.Date;
 /* JADX INFO: loaded from: classes.dex */
 public final class PodcastEpisode implements Parcelable {
     public static final int $stable = 8;
-    public static final Parcelable.Creator<PodcastEpisode> CREATOR = null;
+    public static final Parcelable.Creator<PodcastEpisode> CREATOR = new b23(17);
     private String album;
     private String artist;
     private String artistId;
@@ -44,157 +44,8 @@ public final class PodcastEpisode implements Parcelable {
     private String type;
     private Integer year;
 
-    static {
-        CREATOR = new b23(17);
-    }
-
-    public /* synthetic */ PodcastEpisode(String r26, String r27, boolean r28, String r29, String r30, String r31, Integer r32, String r33, String r34, Long r35, String r36, String r37, Integer r38, Integer r39, String r40, boolean r41, Date r42, String r43, String r44, String r45, String r46, String r47, String r48, Date r49, int r50, xj0 r51) {
-        if ((r50 & 1) == 0) goto L5;
-        String r1 = null;
-    L7:
-        if ((r50 & 2) == 0) goto L9;
-        String r3 = null;
-    L11:
-        if ((r50 & 4) == 0) goto L13;
-        boolean r4 = false;
-    L15:
-        if ((r50 & 8) == 0) goto L17;
-        String r6 = null;
-    L19:
-        if ((r50 & 16) == 0) goto L21;
-        String r7 = null;
-    L23:
-        if ((r50 & 32) == 0) goto L25;
-        String r8 = null;
-    L27:
-        if ((r50 & 64) == 0) goto L29;
-        Integer r9 = null;
-    L31:
-        if ((r50 & 128) == 0) goto L33;
-        String r10 = null;
-    L35:
-        if ((r50 & 256) == 0) goto L37;
-        String r11 = null;
-    L39:
-        if ((r50 & 512) == 0) goto L41;
-        Long r12 = null;
-    L43:
-        if ((r50 & 1024) == 0) goto L45;
-        String r13 = null;
-    L47:
-        if ((r50 & 2048) == 0) goto L49;
-        String r14 = null;
-    L51:
-        if ((r50 & 4096) == 0) goto L53;
-        Integer r15 = null;
-    L55:
-        if ((r50 & 8192) == 0) goto L57;
-        Integer r2 = null;
-    L59:
-        if ((r50 & 16384) == 0) goto L61;
-        String r5 = null;
-    L63:
-        if ((r50 & 32768) == 0) goto L65;
-        boolean r16 = false;
-    L67:
-        if ((r50 & 65536) == 0) goto L69;
-        Date r17 = null;
-    L71:
-        if ((r50 & 131072) == 0) goto L73;
-        String r18 = null;
-    L75:
-        if ((r50 & 262144) == 0) goto L77;
-        String r19 = null;
-    L79:
-        if ((r50 & 524288) == 0) goto L81;
-        String r20 = null;
-    L83:
-        if ((r50 & 1048576) == 0) goto L85;
-        String r21 = null;
-    L87:
-        if ((r50 & 2097152) == 0) goto L89;
-        String r22 = null;
-    L91:
-        if ((r50 & 4194304) == 0) goto L93;
-        String r23 = null;
-    L95:
-        if ((r50 & 8388608) == 0) goto L98;
-        Date r52 = null;
-    L99:
-        this(r1, r3, r4, r6, r7, r8, r9, r10, r11, r12, r13, r14, r15, r2, r5, r16, r17, r18, r19, r20, r21, r22, r23, r52);
-        return;
-    L98:
-        r52 = r49;
-        goto L99
-    L93:
-        r23 = r48;
-        goto L95
-    L89:
-        r22 = r47;
-        goto L91
-    L85:
-        r21 = r46;
-        goto L87
-    L81:
-        r20 = r45;
-        goto L83
-    L77:
-        r19 = r44;
-        goto L79
-    L73:
-        r18 = r43;
-        goto L75
-    L69:
-        r17 = r42;
-        goto L71
-    L65:
-        r16 = r41;
-        goto L67
-    L61:
-        r5 = r40;
-        goto L63
-    L57:
-        r2 = r39;
-        goto L59
-    L53:
-        r15 = r38;
-        goto L55
-    L49:
-        r14 = r37;
-        goto L51
-    L45:
-        r13 = r36;
-        goto L47
-    L41:
-        r12 = r35;
-        goto L43
-    L37:
-        r11 = r34;
-        goto L39
-    L33:
-        r10 = r33;
-        goto L35
-    L29:
-        r9 = r32;
-        goto L31
-    L25:
-        r8 = r31;
-        goto L27
-    L21:
-        r7 = r30;
-        goto L23
-    L17:
-        r6 = r29;
-        goto L19
-    L13:
-        r4 = r28;
-        goto L15
-    L9:
-        r3 = r27;
-        goto L11
-    L5:
-        r1 = r26;
-        goto L7
+    public /* synthetic */ PodcastEpisode(String str, String str2, boolean z, String str3, String str4, String str5, Integer num, String str6, String str7, Long l, String str8, String str9, Integer num2, Integer num3, String str10, boolean z2, Date date, String str11, String str12, String str13, String str14, String str15, String str16, Date date2, int i, xj0 xj0Var) {
+        this((i & 1) != 0 ? null : str, (i & 2) != 0 ? null : str2, (i & 4) != 0 ? false : z, (i & 8) != 0 ? null : str3, (i & 16) != 0 ? null : str4, (i & 32) != 0 ? null : str5, (i & 64) != 0 ? null : num, (i & 128) != 0 ? null : str6, (i & 256) != 0 ? null : str7, (i & 512) != 0 ? null : l, (i & 1024) != 0 ? null : str8, (i & 2048) != 0 ? null : str9, (i & 4096) != 0 ? null : num2, (i & 8192) != 0 ? null : num3, (i & 16384) != 0 ? null : str10, (i & 32768) != 0 ? false : z2, (i & 65536) != 0 ? null : date, (i & 131072) != 0 ? null : str11, (i & 262144) != 0 ? null : str12, (i & 524288) != 0 ? null : str13, (i & 1048576) != 0 ? null : str14, (i & 2097152) != 0 ? null : str15, (i & 4194304) != 0 ? null : str16, (i & 8388608) != 0 ? null : date2);
     }
 
     @Override // android.os.Parcelable
@@ -298,209 +149,180 @@ public final class PodcastEpisode implements Parcelable {
         return this.isVideo;
     }
 
-    public final void setAlbum(String r1) {
-        this.album = r1;
+    public final void setAlbum(String str) {
+        this.album = str;
     }
 
-    public final void setArtist(String r1) {
-        this.artist = r1;
+    public final void setArtist(String str) {
+        this.artist = str;
     }
 
-    public final void setArtistId(String r1) {
-        this.artistId = r1;
+    public final void setArtistId(String str) {
+        this.artistId = str;
     }
 
-    public final void setBitrate(Integer r1) {
-        this.bitrate = r1;
+    public final void setBitrate(Integer num) {
+        this.bitrate = num;
     }
 
-    public final void setChannelId(String r1) {
-        this.channelId = r1;
+    public final void setChannelId(String str) {
+        this.channelId = str;
     }
 
-    public final void setContentType(String r1) {
-        this.contentType = r1;
+    public final void setContentType(String str) {
+        this.contentType = str;
     }
 
-    public final void setCoverArtId(String r1) {
-        this.coverArtId = r1;
+    public final void setCoverArtId(String str) {
+        this.coverArtId = str;
     }
 
-    public final void setCreated(Date r1) {
-        this.created = r1;
+    public final void setCreated(Date date) {
+        this.created = date;
     }
 
-    public final void setDescription(String r1) {
-        this.description = r1;
+    public final void setDescription(String str) {
+        this.description = str;
     }
 
-    public final void setDir(boolean r1) {
-        this.isDir = r1;
+    public final void setDir(boolean z) {
+        this.isDir = z;
     }
 
-    public final void setDuration(Integer r1) {
-        this.duration = r1;
+    public final void setDuration(Integer num) {
+        this.duration = num;
     }
 
-    public final void setGenre(String r1) {
-        this.genre = r1;
+    public final void setGenre(String str) {
+        this.genre = str;
     }
 
-    public final void setId(String r1) {
-        this.id = r1;
+    public final void setId(String str) {
+        this.id = str;
     }
 
-    public final void setParentId(String r1) {
-        this.parentId = r1;
+    public final void setParentId(String str) {
+        this.parentId = str;
     }
 
-    public final void setPath(String r1) {
-        this.path = r1;
+    public final void setPath(String str) {
+        this.path = str;
     }
 
-    public final void setPublishDate(Date r1) {
-        this.publishDate = r1;
+    public final void setPublishDate(Date date) {
+        this.publishDate = date;
     }
 
-    public final void setSize(Long r1) {
-        this.size = r1;
+    public final void setSize(Long l) {
+        this.size = l;
     }
 
-    public final void setStatus(String r1) {
-        this.status = r1;
+    public final void setStatus(String str) {
+        this.status = str;
     }
 
-    public final void setStreamId(String r1) {
-        this.streamId = r1;
+    public final void setStreamId(String str) {
+        this.streamId = str;
     }
 
-    public final void setSuffix(String r1) {
-        this.suffix = r1;
+    public final void setSuffix(String str) {
+        this.suffix = str;
     }
 
-    public final void setTitle(String r1) {
-        this.title = r1;
+    public final void setTitle(String str) {
+        this.title = str;
     }
 
-    public final void setType(String r1) {
-        this.type = r1;
+    public final void setType(String str) {
+        this.type = str;
     }
 
-    public final void setVideo(boolean r1) {
-        this.isVideo = r1;
+    public final void setVideo(boolean z) {
+        this.isVideo = z;
     }
 
-    public final void setYear(Integer r1) {
-        this.year = r1;
+    public final void setYear(Integer num) {
+        this.year = num;
     }
 
     @Override // android.os.Parcelable
-    public final void writeToParcel(Parcel r5, int r6) {
-        r5.getClass();
-        r5.writeString(this.id);
-        r5.writeString(this.parentId);
-        r5.writeInt(this.isDir ? 1 : 0);
-        r5.writeString(this.title);
-        r5.writeString(this.album);
-        r5.writeString(this.artist);
-        Integer r7 = this.year;
-        if (r7 != null) goto L5;
-        r5.writeInt(0);
-    L6:
-        r5.writeString(this.genre);
-        r5.writeString(this.coverArtId);
-        Long r8 = this.size;
-        if (r8 != null) goto L9;
-        r5.writeInt(0);
-    L10:
-        r5.writeString(this.contentType);
-        r5.writeString(this.suffix);
-        Integer r9 = this.duration;
-        if (r9 != null) goto L13;
-        r5.writeInt(0);
-    L14:
-        Integer r10 = this.bitrate;
-        if (r10 != null) goto L17;
-        r5.writeInt(0);
-    L18:
-        r5.writeString(this.path);
-        r5.writeInt(this.isVideo ? 1 : 0);
-        r5.writeSerializable(this.created);
-        r5.writeString(this.artistId);
-        r5.writeString(this.type);
-        r5.writeString(this.streamId);
-        r5.writeString(this.channelId);
-        r5.writeString(this.description);
-        r5.writeString(this.status);
-        r5.writeSerializable(this.publishDate);
-        return;
-    L17:
-        xa3.q(r5, 1, r10);
-        goto L18
-    L13:
-        xa3.q(r5, 1, r9);
-        goto L14
-    L9:
-        r5.writeInt(1);
-        r5.writeLong(r8.longValue());
-        goto L10
-    L5:
-        xa3.q(r5, 1, r7);
-        goto L6
+    public final void writeToParcel(Parcel parcel, int i) {
+        parcel.getClass();
+        parcel.writeString(this.id);
+        parcel.writeString(this.parentId);
+        parcel.writeInt(this.isDir ? 1 : 0);
+        parcel.writeString(this.title);
+        parcel.writeString(this.album);
+        parcel.writeString(this.artist);
+        Integer num = this.year;
+        if (num == null) {
+            parcel.writeInt(0);
+        } else {
+            xa3.q(parcel, 1, num);
+        }
+        parcel.writeString(this.genre);
+        parcel.writeString(this.coverArtId);
+        Long l = this.size;
+        if (l == null) {
+            parcel.writeInt(0);
+        } else {
+            parcel.writeInt(1);
+            parcel.writeLong(l.longValue());
+        }
+        parcel.writeString(this.contentType);
+        parcel.writeString(this.suffix);
+        Integer num2 = this.duration;
+        if (num2 == null) {
+            parcel.writeInt(0);
+        } else {
+            xa3.q(parcel, 1, num2);
+        }
+        Integer num3 = this.bitrate;
+        if (num3 == null) {
+            parcel.writeInt(0);
+        } else {
+            xa3.q(parcel, 1, num3);
+        }
+        parcel.writeString(this.path);
+        parcel.writeInt(this.isVideo ? 1 : 0);
+        parcel.writeSerializable(this.created);
+        parcel.writeString(this.artistId);
+        parcel.writeString(this.type);
+        parcel.writeString(this.streamId);
+        parcel.writeString(this.channelId);
+        parcel.writeString(this.description);
+        parcel.writeString(this.status);
+        parcel.writeSerializable(this.publishDate);
     }
 
-    public PodcastEpisode(String r1, String r2, boolean r3, String r4, String r5, String r6, Integer r7, String r8, String r9, Long r10, String r11, String r12, Integer r13, Integer r14, String r15, boolean r16, Date r17, String r18, String r19, String r20, String r21, String r22, String r23, Date r24) {
-        this.id = r1;
-        this.parentId = r2;
-        this.isDir = r3;
-        this.title = r4;
-        this.album = r5;
-        this.artist = r6;
-        this.year = r7;
-        this.genre = r8;
-        this.coverArtId = r9;
-        this.size = r10;
-        this.contentType = r11;
-        this.suffix = r12;
-        this.duration = r13;
-        this.bitrate = r14;
-        this.path = r15;
-        this.isVideo = r16;
-        this.created = r17;
-        this.artistId = r18;
-        this.type = r19;
-        this.streamId = r20;
-        this.channelId = r21;
-        this.description = r22;
-        this.status = r23;
-        this.publishDate = r24;
+    public PodcastEpisode(String str, String str2, boolean z, String str3, String str4, String str5, Integer num, String str6, String str7, Long l, String str8, String str9, Integer num2, Integer num3, String str10, boolean z2, Date date, String str11, String str12, String str13, String str14, String str15, String str16, Date date2) {
+        this.id = str;
+        this.parentId = str2;
+        this.isDir = z;
+        this.title = str3;
+        this.album = str4;
+        this.artist = str5;
+        this.year = num;
+        this.genre = str6;
+        this.coverArtId = str7;
+        this.size = l;
+        this.contentType = str8;
+        this.suffix = str9;
+        this.duration = num2;
+        this.bitrate = num3;
+        this.path = str10;
+        this.isVideo = z2;
+        this.created = date;
+        this.artistId = str11;
+        this.type = str12;
+        this.streamId = str13;
+        this.channelId = str14;
+        this.description = str15;
+        this.status = str16;
+        this.publishDate = date2;
     }
 
     public PodcastEpisode() {
-        String r1 = null;
-        String r2 = null;
-        boolean r3 = false;
-        String r4 = null;
-        String r5 = null;
-        String r6 = null;
-        Integer r7 = null;
-        String r8 = null;
-        String r9 = null;
-        Long r10 = null;
-        String r11 = null;
-        String r12 = null;
-        Integer r13 = null;
-        Integer r14 = null;
-        String r15 = null;
-        boolean r16 = false;
-        Date r17 = null;
-        String r18 = null;
-        String r19 = null;
-        String r20 = null;
-        String r21 = null;
-        String r22 = null;
-        String r23 = null;
-        Date r24 = null;
-        this(r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r20, r21, r22, r23, r24, 16777215, null);
+        this(null, null, false, null, null, null, null, null, null, null, null, null, null, null, null, false, null, null, null, null, null, null, null, null, 16777215, null);
     }
 }

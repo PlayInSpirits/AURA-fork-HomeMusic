@@ -7,7 +7,7 @@ public interface q44 {
 
     void s();
 
-    int t(gp3 r1, cj0 r2, int r3);
+    int t(gp3 gp3Var, cj0 cj0Var, int i);
 
-    int u(long r1);
+    int u(long j);
 }

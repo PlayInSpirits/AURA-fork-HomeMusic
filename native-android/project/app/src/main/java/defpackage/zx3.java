@@ -8,18 +8,18 @@ import android.util.Log;
 public final class zx3 {
     public final /* synthetic */ ay3 a;
 
-    public zx3(ay3 r1) {
-        this.a = r1;
+    public zx3(ay3 ay3Var) {
+        this.a = ay3Var;
     }
 
-    public static void a(String r2, Bundle r3) {
-        Log.d("MediaRouteProviderProxy", "Error: " + r2 + ", data: " + r3);
+    public static void a(String str, Bundle bundle) {
+        Log.d("MediaRouteProviderProxy", "Error: " + str + ", data: " + bundle);
     }
 
-    public final void b(Bundle r2) {
-        String r0 = r2.getString("groupableTitle");
-        ay3 r1 = this.a;
-        r1.h = r0;
-        r1.i = r2.getString("transferableTitle");
+    public final void b(Bundle bundle) {
+        String string = bundle.getString("groupableTitle");
+        ay3 ay3Var = this.a;
+        ay3Var.h = string;
+        ay3Var.i = bundle.getString("transferableTitle");
     }
 }

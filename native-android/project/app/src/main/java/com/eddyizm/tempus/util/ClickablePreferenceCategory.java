@@ -13,19 +13,19 @@ import defpackage.ss1;
 public class ClickablePreferenceCategory extends PreferenceCategory {
     public ss1 j0;
 
-    public ClickablePreferenceCategory(Context r1, AttributeSet r2) {
-        super(r1, r2);
-        if (this.D == true) goto L6;
-        this.D = true;
-        h();
-        return;
+    public ClickablePreferenceCategory(Context context, AttributeSet attributeSet) {
+        super(context, attributeSet);
+        if (!this.D) {
+            this.D = true;
+            h();
+        }
     }
 
     @Override // androidx.preference.PreferenceCategory, androidx.preference.Preference
-    public final void l(rp3 r3) {
-        super.l(r3);
-        View r4 = r3.a;
-        r4.setClickable(true);
-        r4.setOnClickListener(new p6(8, this));
+    public final void l(rp3 rp3Var) {
+        super.l(rp3Var);
+        View view = rp3Var.a;
+        view.setClickable(true);
+        view.setOnClickListener(new p6(8, this));
     }
 }

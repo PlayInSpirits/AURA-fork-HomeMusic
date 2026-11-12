@@ -10,196 +10,169 @@ import com.eddyizm.tempus.model.Download;
 import com.eddyizm.tempus.service.DownloaderService;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class fu0 implements jt0 {
     public final Context a;
-    public final AtomicInteger b;
-    public final AtomicInteger c;
-    public long d;
-    public long e;
-    public float f;
+    public final AtomicInteger b = new AtomicInteger(0);
+    public final AtomicInteger c = new AtomicInteger(0);
+    public long d = 0;
+    public long e = 0;
+    public float f = 0.0f;
 
-    public fu0(DownloaderService r3) {
-        this.b = new AtomicInteger(0);
-        this.c = new AtomicInteger(0);
-        this.d = 0;
-        this.e = 0;
-        this.f = 0.0f;
-        this.a = r3.getApplicationContext();
+    public fu0(DownloaderService downloaderService) {
+        this.a = downloaderService.getApplicationContext();
     }
 
-    public static void h(ns0 r3) {
-        String r4 = r3.a.n;
-        if (DownloaderService.z.containsKey(r4) == true) goto L16;
-        byte[] r0 = eu0.c;
-        pb0 r1 = new pb0(AppDatabase.y().w(), r4, 1);
-        Thread r2 = new Thread(r1);
-        r2.start();
-        String r5 = null;
-        r2.join();     // Catch: InterruptedException -> L7
-        Download r6 = (Download) r1.q;     // Catch: InterruptedException -> L7
-    L9:
-        if (r6 == null) goto L11;
-        r5 = r6.getTitle();
-    L11:
-        if (r5 == null) goto L17;
-        DownloaderService.z.put(r4, r5);
-        return;
-    L17:
-        return;
-    L7:
-        e = move-exception;
-        e.printStackTrace();
-        r6 = null;
-        goto L9
+    public static void h(ns0 ns0Var) {
+        Download download;
+        String str = ns0Var.a.n;
+        if (DownloaderService.z.containsKey(str)) {
+            return;
+        }
+        byte[] bArr = eu0.c;
+        pb0 pb0Var = new pb0(AppDatabase.y().w(), str, 1);
+        Thread thread = new Thread(pb0Var);
+        thread.start();
+        try {
+            thread.join();
+            download = (Download) pb0Var.q;
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+            download = null;
+        }
+        String title = download != null ? download.getTitle() : null;
+        if (title != null) {
+            DownloaderService.z.put(str, title);
+        }
     }
 
     @Override // defpackage.jt0
-    public final void b(lt0 r7, ns0 r8) {
-        boolean r0 = Arrays.equals(r8.a.t, eu0.c);
-        int r1 = r8.b;
-        if (r0 == false) goto L10;
-        if (r1 != 3) goto L7;
-        eu0.h(r8);
-        return;
-    L7:
-        if (r1 != 4) goto L33;
-        eu0.e.remove(r8.a.n);
-        return;
-    L33:
-        return;
-    L10:
-        if (r1 != 0) goto L12;
-        i(r7);
-        j(r7);
-        h(r8);
-        return;
-    L12:
-        if (r1 == 2) goto L29;
-        if (r1 == 3) goto L17;
-        if (r1 != 4) goto L35;
-        eu0.e.remove(r8.a.n);
-        this.c.incrementAndGet();
-        int r9 = this.b.get();
-        DownloaderService.y = this.c.get() + r9;
-    L19:
-        if (r7.l.stream().noneMatch(new c7(12)) == false) goto L34;
-        Context r10 = this.a;
-        int r11 = this.b.get();
-        int r2 = this.c.get();
-        if (r11 <= 0) goto L24;
-        if (r2 != 0) goto L24;
-        String r12 = r10.getResources().getQuantityString(R.plurals.notification_tracks_downloaded, r11, new Object[]{Integer.valueOf(r11)});
-        Notification r13 = g(R.drawable.ic_check_circle, r10.getString(R.string.notification_downloads_complete), r12);
-    L27:
-        ((NotificationManager) r10.getSystemService("notification")).notify(2, r13);
-        this.b.set(0);
-        this.c.set(0);
-        this.f = 0.0f;
-        DownloaderService.w = 0.0f;
-        DownloaderService.x = 0;
-        DownloaderService.y = 0;
-        DownloaderService.z.clear();
-        this.d = 0;
-        this.e = 0;
-        return;
-    L24:
-        if (r11 <= 0) goto L26;
-        String r14 = r10.getString(R.string.notification_download_mixed_result, new Object[]{Integer.valueOf(r11), Integer.valueOf(r2)});
-        r13 = g(R.drawable.ic_check_circle, r10.getString(R.string.notification_downloads_complete), r14);
-        goto L27
-    L26:
-        String r15 = r10.getResources().getQuantityString(R.plurals.notification_tracks_failed, r2, new Object[]{Integer.valueOf(r2)});
-        r13 = g(R.drawable.ic_error, r10.getString(R.string.notification_download_failed), r15);
-        goto L27
-    L34:
-        return;
-    L35:
-        return;
-    L17:
-        this.b.incrementAndGet();
-        DownloaderService.y = this.b.get();
-        eu0.h(r8);
-        goto L19
-    L29:
-        i(r7);
-        j(r7);
-        h(r8);
+    public final void b(lt0 lt0Var, ns0 ns0Var) {
+        Notification notificationG;
+        boolean zEquals = Arrays.equals(ns0Var.a.t, eu0.c);
+        int i = ns0Var.b;
+        if (zEquals) {
+            if (i == 3) {
+                eu0.h(ns0Var);
+                return;
+            } else {
+                if (i == 4) {
+                    eu0.e.remove(ns0Var.a.n);
+                    return;
+                }
+                return;
+            }
+        }
+        if (i == 0) {
+            i(lt0Var);
+            j(lt0Var);
+            h(ns0Var);
+            return;
+        }
+        if (i == 2) {
+            i(lt0Var);
+            j(lt0Var);
+            h(ns0Var);
+            return;
+        }
+        if (i == 3) {
+            this.b.incrementAndGet();
+            DownloaderService.y = this.b.get();
+            eu0.h(ns0Var);
+        } else {
+            if (i != 4) {
+                return;
+            }
+            eu0.e.remove(ns0Var.a.n);
+            this.c.incrementAndGet();
+            DownloaderService.y = this.c.get() + this.b.get();
+        }
+        if (lt0Var.l.stream().noneMatch(new c7(12))) {
+            Context context = this.a;
+            int i2 = this.b.get();
+            int i3 = this.c.get();
+            if (i2 > 0 && i3 == 0) {
+                notificationG = g(R.drawable.ic_check_circle, context.getString(R.string.notification_downloads_complete), context.getResources().getQuantityString(R.plurals.notification_tracks_downloaded, i2, Integer.valueOf(i2)));
+            } else if (i2 > 0) {
+                notificationG = g(R.drawable.ic_check_circle, context.getString(R.string.notification_downloads_complete), context.getString(R.string.notification_download_mixed_result, Integer.valueOf(i2), Integer.valueOf(i3)));
+            } else {
+                notificationG = g(R.drawable.ic_error, context.getString(R.string.notification_download_failed), context.getResources().getQuantityString(R.plurals.notification_tracks_failed, i3, Integer.valueOf(i3)));
+            }
+            ((NotificationManager) context.getSystemService("notification")).notify(2, notificationG);
+            this.b.set(0);
+            this.c.set(0);
+            this.f = 0.0f;
+            DownloaderService.w = 0.0f;
+            DownloaderService.x = 0;
+            DownloaderService.y = 0;
+            DownloaderService.z.clear();
+            this.d = 0L;
+            this.e = 0L;
+        }
     }
 
     @Override // defpackage.jt0
-    public final void d(ns0 r4) {
-        byte[] r3 = eu0.c;
-        String r5 = r4.a.n;
-        new Thread(new qt0(AppDatabase.y().w(), r5, 0)).start();
-        HashMap r6 = eu0.d;
-        tt0 r7 = r4.a;
-        r6.remove(r7.n);
-        eu0.e.remove(r7.n);
+    public final void d(ns0 ns0Var) {
+        byte[] bArr = eu0.c;
+        new Thread(new qt0(AppDatabase.y().w(), ns0Var.a.n, 0)).start();
+        HashMap map = eu0.d;
+        tt0 tt0Var = ns0Var.a;
+        map.remove(tt0Var.n);
+        eu0.e.remove(tt0Var.n);
     }
 
-    public final Notification g(int r3, String r4, String r5) {
-        s63 r0 = new s63(this.a, "download_channel");
-        r0.e = s63.b(r4);
-        r0.f = s63.b(r5);
-        r0.v.icon = r3;
-        r0.c(2, false);
-        r0.c(16, false);
-        r0.w = true;
-        r0.i = 0;
-        r0.c(8, true);
-        return r0.a();
+    public final Notification g(int i, String str, String str2) {
+        s63 s63Var = new s63(this.a, "download_channel");
+        s63Var.e = s63.b(str);
+        s63Var.f = s63.b(str2);
+        s63Var.v.icon = i;
+        s63Var.c(2, false);
+        s63Var.c(16, false);
+        s63Var.w = true;
+        s63Var.i = 0;
+        s63Var.c(8, true);
+        return s63Var.a();
     }
 
-    public final void i(lt0 r3) {
-        int r4 = (int) r3.l.stream().filter(new c7(13)).count();
-        if (r4 <= DownloaderService.x) goto L7;
-        DownloaderService.x = r4;
-        return;
-    L7:
-        if (DownloaderService.x > 0) goto L9;
-        return;
-    L9:
-        if (DownloaderService.y >= DownloaderService.x) goto L11;
-        return;
-    L11:
-        if (r4 != 1) goto L16;
+    public final void i(lt0 lt0Var) {
+        int iCount = (int) lt0Var.l.stream().filter(new c7(13)).count();
+        if (iCount > DownloaderService.x) {
+            DownloaderService.x = iCount;
+            return;
+        }
+        if (DownloaderService.x <= 0 || DownloaderService.y < DownloaderService.x || iCount != 1) {
+            return;
+        }
         DownloaderService.x = 0;
         DownloaderService.y = 0;
         this.b.set(0);
         this.c.set(0);
         DownloaderService.z.clear();
-        return;
     }
 
-    public final void j(lt0 r10) {
-        long r0 = SystemClock.elapsedRealtime();
-        Iterator r11 = r10.l.iterator();
-        long r4 = 0;
-    L4:
-        if (r11.hasNext() == false) goto L8;
-        ns0 r6 = (ns0) r11.next();
-        if (Arrays.equals(r6.a.t, eu0.c) == true) goto L4;
-        r4 = r4 + r6.h.a;
-        goto L4
-    L8:
-        long r7 = this.e;
-        if (r7 <= 0) goto L13;
-        long r2 = r0 - r7;
-        if (r2 <= 500) goto L14;
-        this.f = ((r4 - this.d) * 1000.0f) / r2;
-        this.d = r4;
-        this.e = r0;
-    L14:
+    public final void j(lt0 lt0Var) {
+        long jElapsedRealtime = SystemClock.elapsedRealtime();
+        long j = 0;
+        for (ns0 ns0Var : lt0Var.l) {
+            if (!Arrays.equals(ns0Var.a.t, eu0.c)) {
+                j += ns0Var.h.a;
+            }
+        }
+        long j2 = this.e;
+        if (j2 > 0) {
+            long j3 = jElapsedRealtime - j2;
+            if (j3 > 500) {
+                this.f = ((j - this.d) * 1000.0f) / j3;
+                this.d = j;
+                this.e = jElapsedRealtime;
+            }
+        } else {
+            this.d = j;
+            this.e = jElapsedRealtime;
+        }
         DownloaderService.w = this.f;
-        return;
-    L13:
-        this.d = r4;
-        this.e = r0;
-        goto L14
     }
 }

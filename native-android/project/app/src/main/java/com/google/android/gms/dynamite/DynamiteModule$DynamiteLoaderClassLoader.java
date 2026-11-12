@@ -4,7 +4,4 @@ package com.google.android.gms.dynamite;
 /* JADX INFO: loaded from: classes.dex */
 public class DynamiteModule$DynamiteLoaderClassLoader {
     public static ClassLoader sClassLoader;
-
-    public DynamiteModule$DynamiteLoaderClassLoader() {
-    }
 }

@@ -7,57 +7,48 @@ public final class x82 extends cx2 implements g94 {
     public s82 C;
     public boolean D;
     public h64 E;
-    public final u82 F;
+    public final u82 F = new u82(this, 0);
     public u82 G;
 
-    public x82(gf1 r1, s82 r2, boolean r3) {
-        this.B = r1;
-        this.C = r2;
-        this.D = r3;
-        this.F = new u82(this, 0);
+    public x82(gf1 gf1Var, s82 s82Var, boolean z) {
+        this.B = gf1Var;
+        this.C = s82Var;
+        this.D = z;
         q0();
     }
 
     @Override // defpackage.g94
-    public final void c0(q94 r8) {
-        c42[] r0 = o94.a;
-        p94 r1 = n94.m;
-        c42[] r2 = o94.a;
-        c42 r3 = r2[6];
-        Boolean r4 = Boolean.TRUE;
-        r1.getClass();
-        r8.a(r1, r4);
-        u82 r5 = this.F;
-        r8.a(n94.L, r5);
-        h64 r6 = this.E;
-        if (r6 == null) goto L13;
-        p94 r7 = n94.u;
-        c42 r9 = r2[12];
-        r7.getClass();
-        r8.a(r7, r6);
-        u82 r10 = this.G;
-        if (r10 == null) goto L7;
-        r8.a(d94.f, new w2(null, r10));
-    L7:
-        v82 r11 = new v82(this, 2);
-        r8.a(d94.B, new w2(null, new kl3(7, r11)));
-        s82 r12 = this.C;
-        boolean r13 = r12.b;
-        lm0 r14 = r12.a;
-        if (r13 == false) goto L10;
-        o40 r15 = new o40(r14.n(), 1);
-    L11:
-        p94 r16 = n94.f;
-        c42 r17 = r2[24];
-        r16.getClass();
-        r8.a(r16, r15);
-        return;
-    L10:
-        r15 = new o40(1, r14.n());
-        goto L11
-    L13:
-        h12.Q("scrollAxisRange");
-        throw null;
+    public final void c0(q94 q94Var) {
+        c42[] c42VarArr = o94.a;
+        p94 p94Var = n94.m;
+        c42[] c42VarArr2 = o94.a;
+        c42 c42Var = c42VarArr2[6];
+        Boolean bool = Boolean.TRUE;
+        p94Var.getClass();
+        q94Var.a(p94Var, bool);
+        q94Var.a(n94.L, this.F);
+        h64 h64Var = this.E;
+        if (h64Var == null) {
+            h12.Q("scrollAxisRange");
+            throw null;
+        }
+        p94 p94Var2 = n94.u;
+        c42 c42Var2 = c42VarArr2[12];
+        p94Var2.getClass();
+        q94Var.a(p94Var2, h64Var);
+        u82 u82Var = this.G;
+        if (u82Var != null) {
+            q94Var.a(d94.f, new w2(null, u82Var));
+        }
+        q94Var.a(d94.B, new w2(null, new kl3(7, new v82(this, 2))));
+        s82 s82Var = this.C;
+        boolean z = s82Var.b;
+        lm0 lm0Var = s82Var.a;
+        o40 o40Var = z ? new o40(lm0Var.n(), 1) : new o40(1, lm0Var.n());
+        p94 p94Var3 = n94.f;
+        c42 c42Var3 = c42VarArr2[24];
+        p94Var3.getClass();
+        q94Var.a(p94Var3, o40Var);
     }
 
     @Override // defpackage.cx2
@@ -67,13 +58,6 @@ public final class x82 extends cx2 implements g94 {
 
     public final void q0() {
         this.E = new h64(new v82(this, 0), new v82(this, 1));
-        if (this.D == false) goto L5;
-        u82 r0 = new u82(this, 1);
-    L6:
-        this.G = r0;
-        return;
-    L5:
-        r0 = null;
-        goto L6
+        this.G = this.D ? new u82(this, 1) : null;
     }
 }

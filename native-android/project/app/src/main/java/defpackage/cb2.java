@@ -9,15 +9,15 @@ public final class cb2 extends jq {
 
     @Override // defpackage.jq
     public final void a() {
-        if (this.g == 0) goto L5;
-        return;
-    L5:
-        if (this.b <= 0) goto L7;
-        kf2.n("Rounded corners are not supported in contiguous indeterminate animation.");
-        return;
-    L7:
-        if (this.c.length >= 3) goto L14;
-        kf2.n("Contiguous indeterminate animation must be used with 3 or more indicator colors.");
-        return;
+        if (this.g == 0) {
+            if (this.b > 0) {
+                kf2.n("Rounded corners are not supported in contiguous indeterminate animation.");
+            } else {
+                if (this.c.length >= 3) {
+                    return;
+                }
+                kf2.n("Contiguous indeterminate animation must be used with 3 or more indicator colors.");
+            }
+        }
     }
 }

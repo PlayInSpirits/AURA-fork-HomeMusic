@@ -9,47 +9,41 @@ public final class o71 extends ac1 {
     public final boolean o;
     public long p;
 
-    public o71(ej4 r1, long r2, boolean r4) {
-        super(r1);
-        this.n = r2;
-        this.o = r4;
+    public o71(ej4 ej4Var, long j, boolean z) {
+        super(ej4Var);
+        this.n = j;
+        this.o = z;
     }
 
     @Override // defpackage.ac1, defpackage.ej4
-    public final long read(tv r10, long r11) {
-        r10.getClass();
-        long r0 = this.p;
-        long r2 = this.n;
-        if (r0 <= r2) goto L6;
-        r11 = 0;
-    L11:
-        long r12 = super.read(r10, r11);
-        if (r12 == (-1)) goto L14;
-        this.p += r12;
-    L14:
-        long r4 = this.p;
-        if (r4 >= r2) goto L17;
-        if (r12 != (-1)) goto L17;
-    L19:
-        if (r12 <= 0) goto L23;
-        if (r4 <= r2) goto L23;
-        long r13 = r10.o - (r4 - r2);
-        tv r1 = new tv();
-        r1.p(r10);
-        r10.L(r1, r13);
-        r1.b();
-    L23:
-        throw new IOException("expected " + r2 + " bytes but got " + this.p);
-    L17:
-        if (r4 > r2) goto L19;
-        return r12;
-    L6:
-        if (this.o == false) goto L11;
-        long r3 = r2 - r0;
-        if (r3 != 0) goto L10;
-        return -1;
-    L10:
-        r11 = Math.min(r11, r3);
-        goto L11
+    public final long read(tv tvVar, long j) throws IOException {
+        tvVar.getClass();
+        long j2 = this.p;
+        long j3 = this.n;
+        if (j2 > j3) {
+            j = 0;
+        } else if (this.o) {
+            long j4 = j3 - j2;
+            if (j4 == 0) {
+                return -1L;
+            }
+            j = Math.min(j, j4);
+        }
+        long j5 = super.read(tvVar, j);
+        if (j5 != -1) {
+            this.p += j5;
+        }
+        long j6 = this.p;
+        if ((j6 >= j3 || j5 != -1) && j6 <= j3) {
+            return j5;
+        }
+        if (j5 > 0 && j6 > j3) {
+            long j7 = tvVar.o - (j6 - j3);
+            tv tvVar2 = new tv();
+            tvVar2.p(tvVar);
+            tvVar.L(tvVar2, j7);
+            tvVar2.b();
+        }
+        throw new IOException("expected " + j3 + " bytes but got " + this.p);
     }
 }

@@ -8,25 +8,22 @@ public final class w40 implements aa4 {
     public final /* synthetic */ int a;
     public final /* synthetic */ Object b;
 
-    public /* synthetic */ w40(int r1, Object r2) {
-        this.a = r1;
-        this.b = r2;
+    public /* synthetic */ w40(int i, Object obj) {
+        this.a = i;
+        this.b = obj;
     }
 
     @Override // defpackage.aa4
     public final Iterator iterator() {
-        int r0 = this.a;
-        Object r1 = this.b;
-        switch(r0) {
-            case 0: goto L9;
-            case 1: goto L7;
-            default: goto L5;
-        };
-    L5:
-        return new fb2((String) r1);
-    L7:
-        return (Iterator) r1;
-    L9:
-        return ((Iterable) r1).iterator();
+        int i = this.a;
+        Object obj = this.b;
+        switch (i) {
+            case 0:
+                return ((Iterable) obj).iterator();
+            case 1:
+                return (Iterator) obj;
+            default:
+                return new fb2((String) obj);
+        }
     }
 }

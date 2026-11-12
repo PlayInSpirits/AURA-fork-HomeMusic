@@ -6,35 +6,33 @@ public final class a82 implements xr0 {
     public final /* synthetic */ int a;
     public final /* synthetic */ Object b;
 
-    public /* synthetic */ a82(int r1, Object r2) {
-        this.a = r1;
-        this.b = r2;
+    public /* synthetic */ a82(int i, Object obj) {
+        this.a = i;
+        this.b = obj;
     }
 
     @Override // defpackage.xr0
     public final void a() {
-        int r0 = this.a;
-        Object r3 = this.b;
-        switch(r0) {
-            case 0: goto L11;
-            case 1: goto L6;
-            default: goto L4;
-        };
-    L4:
-        l82 r4 = (l82) r3;
-        r4.f = true;
-        r4.d = 0;
-        r4.c();
-        return;
-    L6:
-        q82 r5 = (q82) r3;
-        ll r1 = r5.c;
-        if (r1 == null) goto L9;
-        r1.o = false;
-    L9:
-        r5.c = null;
-        return;
-    L11:
-        ((b82) r3).c = null;
+        int i = this.a;
+        Object obj = this.b;
+        switch (i) {
+            case 0:
+                ((b82) obj).c = null;
+                break;
+            case 1:
+                q82 q82Var = (q82) obj;
+                ll llVar = q82Var.c;
+                if (llVar != null) {
+                    llVar.o = false;
+                }
+                q82Var.c = null;
+                break;
+            default:
+                l82 l82Var = (l82) obj;
+                l82Var.f = true;
+                l82Var.d = 0;
+                l82Var.c();
+                break;
+        }
     }
 }

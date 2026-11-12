@@ -8,19 +8,19 @@ import android.media.AudioTrack$StreamEventCallback;
 public final class zm extends AudioTrack$StreamEventCallback {
     public final /* synthetic */ jv3 a;
 
-    public zm(jv3 r1) {
-        this.a = r1;
+    public zm(jv3 jv3Var) {
+        this.a = jv3Var;
     }
 
-    public final void onDataRequest(AudioTrack r1, int r2) {
+    public final void onDataRequest(AudioTrack audioTrack, int i) {
         ((an) this.a.p).i.f(-1, new kf2(7));
     }
 
-    public final void onPresentationEnded(AudioTrack r2) {
+    public final void onPresentationEnded(AudioTrack audioTrack) {
         ((an) this.a.p).i.f(-1, new kf2(8));
     }
 
-    public final void onTearDown(AudioTrack r2) {
+    public final void onTearDown(AudioTrack audioTrack) {
         ((an) this.a.p).i.f(-1, new kf2(7));
     }
 }

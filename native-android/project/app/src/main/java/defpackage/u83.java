@@ -11,63 +11,48 @@ public final class u83 {
     public final v83 d;
     public boolean e;
 
-    public u83(v83 r2, w83 r3) {
-        r2.getClass();
-        boolean r0 = r2.b;
-        this.a = r3;
-        this.b = r0;
-        this.d = r2;
+    public u83(v83 v83Var, w83 w83Var) {
+        v83Var.getClass();
+        boolean z = v83Var.b;
+        this.a = w83Var;
+        this.b = z;
+        this.d = v83Var;
         this.e = true;
     }
 
     public final void a() {
-        bq4 r0 = this.c;
-        if (r0 != null) goto L5;
-        return;
-    L5:
-        if (((LinkedHashSet) r0.p).remove(this) == false) goto L17;
-        w33 r1 = (w33) r0.o;
-        r1.getClass();
-        if (this == r1.f) goto L10;
-    L14:
-        r1.d.remove(this);
-        r1.e.remove(this);
+        bq4 bq4Var = this.c;
+        if (bq4Var == null || !((LinkedHashSet) bq4Var.p).remove(this)) {
+            return;
+        }
+        w33 w33Var = (w33) bq4Var.o;
+        w33Var.getClass();
+        if (this == w33Var.f) {
+            if (w33Var.g == -1) {
+                this.d.getClass();
+            }
+            w33Var.f = null;
+            w33Var.g = 0;
+            w33Var.h = null;
+        }
+        w33Var.d.remove(this);
+        w33Var.e.remove(this);
         this.c = null;
-        r1.b();
-        return;
-    L10:
-        if (r1.g != (-1)) goto L13;
-        this.d.getClass();
-    L13:
-        r1.f = null;
-        r1.g = 0;
-        r1.h = null;
-        goto L14
+        w33Var.b();
     }
 
-    public final void b(boolean r2) {
-        this.e = r2;
-        if (r2 == true) goto L5;
-    L7:
-        boolean r3 = false;
-    L9:
-        if (this.b == r3) goto L19;
-        this.b = r3;
-        bq4 r1 = this.c;
-        if (r1 == null) goto L17;
-        w33 r4 = (w33) r1.o;
-        if (r4 == null) goto L18;
-        r4.b();
-        return;
-    L18:
-        return;
-    L17:
-        return;
-    L19:
-        return;
-    L5:
-        if (this.d.b == false) goto L7;
-        r3 = true;
-        goto L9
+    public final void b(boolean z) {
+        w33 w33Var;
+        this.e = z;
+        boolean z2 = z && this.d.b;
+        if (this.b == z2) {
+            return;
+        }
+        this.b = z2;
+        bq4 bq4Var = this.c;
+        if (bq4Var == null || (w33Var = (w33) bq4Var.o) == null) {
+            return;
+        }
+        w33Var.b();
     }
 }

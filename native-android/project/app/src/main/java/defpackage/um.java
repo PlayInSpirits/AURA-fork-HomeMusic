@@ -7,15 +7,14 @@ import android.media.AudioTrack;
 /* JADX INFO: loaded from: classes.dex */
 public final class um {
     public final AudioTrack a;
-    public final AudioTimestamp b;
+    public final AudioTimestamp b = new AudioTimestamp();
     public long c;
     public long d;
     public long e;
     public boolean f;
     public long g;
 
-    public um(AudioTrack r1) {
-        this.a = r1;
-        this.b = new AudioTimestamp();
+    public um(AudioTrack audioTrack) {
+        this.a = audioTrack;
     }
 }

@@ -48,42 +48,36 @@ import java.util.Set;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class MixOfflineWorker extends Worker {
-    public static final Object e = null;
+    public static final Object e = new Object();
 
-    static {
-        e = new Object();
-    }
-
-    public MixOfflineWorker(Context r1, WorkerParameters r2) {
-        r1.getClass();
-        r2.getClass();
-        super(r1, r2);
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public MixOfflineWorker(Context context, WorkerParameters workerParameters) {
+        super(context, workerParameters);
+        context.getClass();
+        workerParameters.getClass();
     }
 
     @Override // androidx.work.Worker
     public final nc2 d() {
-        if (xa3.u("homemusic_mix_offline", true) == false) goto L27;
-        if (pt0.c() == false) goto L27;
-        if (ud3.o() == null) goto L12;
-        return new mc2();
-    L12:
-        if (jp1.b() == true) goto L14;
-        Object r0 = e;     // Catch: Exception -> L23
-        monitor-enter(r0);     // Catch: Exception -> L23
-        nc2 r3 = e();     // Catch: Throwable -> L20
-        monitor-exit(r0);     // Catch: Exception -> L23
-        return r3;
-    L20:
-        th = move-exception;
-        throw th;     // Catch: Exception -> L23
-    L23:
-        e = move-exception;
-        Log.d("MixOffline", "mix download: " + e.getMessage());
-        return new lc2();
-    L14:
-        return new lc2();
-    L27:
-        return new mc2();
+        nc2 nc2VarE;
+        if (!xa3.u("homemusic_mix_offline", true) || !pt0.c()) {
+            return new mc2();
+        }
+        if (ud3.o() != null) {
+            return new mc2();
+        }
+        if (jp1.b()) {
+            return new lc2();
+        }
+        try {
+            synchronized (e) {
+                nc2VarE = e();
+            }
+            return nc2VarE;
+        } catch (Exception e2) {
+            Log.d("MixOffline", "mix download: " + e2.getMessage());
+            return new lc2();
+        }
     }
 
     /* JADX WARN: Multi-variable type inference failed */
@@ -92,241 +86,198 @@ public final class MixOfflineWorker extends Worker {
     /* JADX WARN: Type inference failed for: r6v2 */
     /* JADX WARN: Type inference failed for: r6v3, types: [java.lang.Iterable, java.util.List] */
     /* JADX WARN: Type inference failed for: r6v9, types: [u01] */
-    public final nc2 e() {
-        int r1 = 0;
-        HubMix r0 = ((HubMixToday) rr1.d(new or1(0), new or1(1))).getMix();
-        if (r0 == null) goto L5;
-        String r2 = r0.getNdPlaylistId();
-        if (r2 == null) goto L164;
-        if (qm4.u0(r2) == false) goto L12;
-        r2 = null;
-    L12:
-        if (r2 == null) goto L164;
-        pn4 r4 = App.f(false);
-        ApiResponse r3 = (ApiResponse) r4.g().F(r2).execute().body();
-        if (r3 == null) goto L28;
-        SubsonicResponse r5 = r3.getSubsonicResponse();
-        if (r5 == null) goto L28;
-        PlaylistWithSongs r6 = r5.getPlaylist();
-        if (r6 == null) goto L28;
-        List<Child> r7 = r6.getEntries();
-        if (r7 == null) goto L28;
-        ?? r8 = new ArrayList();
-        Iterator r9 = r7.iterator();
-    L24:
-        if (r9.hasNext() == false) goto L29;
-        Object r10 = r9.next();
-        if (ot1.c(((Child) r10).getId()) == true) goto L24;
-        r8.add(r10);
-    L29:
-        if (r8 != 0) goto L32;
-        r8 = u01.n;
-    L32:
-        if (r8.isEmpty() == true) goto L34;
-        ApiResponse r11 = (ApiResponse) r4.a().s().execute().body();
-        if (r11 == null) goto L162;
-        SubsonicResponse r12 = r11.getSubsonicResponse();
-        if (r12 == null) goto L162;
-        Starred2 r13 = r12.getStarred2();
-        if (r13 == null) goto L162;
-        List<Child> r14 = r13.getSongs();
-        if (r14 == null) goto L162;
-        ArrayList r15 = new ArrayList(r40.k0(r14, 10));
-        Iterator r16 = r14.iterator();
-    L45:
-        if (r16.hasNext() == false) goto L47;
-        r15.add(((Child) r16.next()).getId());
-        goto L45
-    L47:
-        Set r17 = q40.T0(r15);
-        Context r18 = this.a;
-        eu0 r19 = au0.w(r18);
-        ow2 r110 = gi1.E();
-        Set r111 = r110.b;
-        ArrayList r112 = new ArrayList(r40.k0(r8, 10));
-        Iterator r113 = r8.iterator();
-    L49:
-        if (r113.hasNext() == false) goto L51;
-        r112.add(((Child) r113.next()).getId());
-        goto L49
-    L51:
-        Set r114 = r111;
-        ArrayList r115 = q40.G0(r112, r114);
-        ArrayList r116 = new ArrayList();
-        int r117 = r115.size();
-    L52:
-        if (r1 >= r117) goto L56;
-        Object r20 = r115.get(r1);
-        r1 = r1 + 1;
-        r19.getClass();
-        if (eu0.d((String) r20) == false) goto L52;
-        r116.add(r20);
-        goto L52
-    L56:
-        Set r21 = q40.T0(r116);
-        long r118 = r0.getId();
-        Set r22 = q40.T0(r112);
-        ArrayList r119 = new ArrayList();
-        Iterator r120 = r114.iterator();
-    L58:
-        if (r120.hasNext() == false) goto L65;
-        Object r23 = r120.next();
-        String r24 = (String) r23;
-        if (r22.contains(r24) == true) goto L58;
-        if (r17.contains(r24) == true) goto L58;
-        r119.add(r23);
-        goto L58
-    L65:
-        ArrayList r25 = new ArrayList();
-        Iterator r26 = r114.iterator();
-    L67:
-        if (r26.hasNext() == false) goto L72;
-        Object r27 = r26.next();
-        if (r22.contains((String) r27) == false) goto L67;
-        r25.add(r27);
-        goto L67
-    L72:
-        if (r110.a != r118) goto L74;
-        Set r28 = r110.c;
-    L75:
-        ArrayList r29 = new ArrayList();
-        int r30 = r112.size();
-        int r121 = 0;
-    L76:
-        if (r121 >= r30) goto L83;
-        Object r122 = r112.get(r121);
-        r121 = r121 + 1;
-        HubMix r123 = r0;
-        String r31 = (String) r122;
-        if (r21.contains(r31) == true) goto L82;
-        if (r28.contains(r31) == true) goto L82;
-        r29.add(r122);
-    L82:
-        r0 = r123;
-        goto L76
-    L83:
-        HubMix r124 = r0;
-        List r32 = q40.t0(r29);
-        Set r33 = q40.T0(r25);
-        ow2 r34 = new ow2(r118, r33, r28);
-        Log.i("MixOffline", "mix " + r124.getId() + ": download " + r32.size() + ", remove " + r119.size() + ", kept " + r33.size());
-        r19.getClass();
-        ss0 r35 = AppDatabase.y().w();
-        int r36 = r119.size();
-        int r37 = 0;
-    L84:
-        if (r37 >= r36) goto L93;
-        int r125 = r37 + 1;
-        pb0 r38 = new pb0(r35, (String) r119.get(r37), 1);
-        Thread r126 = new Thread(r38);
-        r126.start();
-        r126.join();     // Catch: InterruptedException -> L88
-        Download r39 = (Download) r38.q;     // Catch: InterruptedException -> L88
-    L90:
-        if (r39 == null) goto L91;
-        r19.e(gi1.G(r39), r39);
-    L91:
-        r37 = r125;
-    L88:
-        e = move-exception;
-        e.printStackTrace();
-        r39 = null;
-        goto L90
-    L93:
-        gi1.V(r34);
-        int r40 = lg2.W(r40.k0(r8, 10));
-        if (r40 >= 16) goto L96;
-        r40 = 16;
-    L96:
-        LinkedHashMap r41 = new LinkedHashMap(r40);
-        Iterator r42 = r8.iterator();
-    L98:
-        if (r42.hasNext() == false) goto L100;
-        Object r43 = r42.next();
-        r41.put(((Child) r43).getId(), r43);
-        goto L98
-    L100:
-        File r44 = r18.getExternalFilesDir(null);
-        if (r44 != null) goto L103;
-        r44 = r18.getFilesDir();
-    L103:
-        Iterator r45 = r32.iterator();
-    L105:
-        if (r45.hasNext() == false) goto L160;
-        String r46 = (String) r45.next();
-        Child r47 = (Child) r41.get(r46);
-        if (r47 == null) goto L105;
-        if (b() == true) goto L158;
-        if (jp1.b() == true) goto L158;
-        if (eu0.e.contains(r46) == true) goto L105;
-        long r127 = r44.getUsableSpace();
-        Long r128 = r47.getSize();
-        if (r128 == null) goto L119;
-        long r129 = r128.longValue();
-    L121:
-        if ((r127 - r129) < 2147483648L) goto L155;
-        ow2 r130 = new ow2(r34.a, kb4.Q(r34.b, r46), kb4.Q(r34.c, r46));
-        gi1.V(r130);
-        if (r19.b(gi1.G(r47), new Download(r47), true) == false) goto L125;
-        long r131 = System.currentTimeMillis() + 300000;
-    L128:
-        if (System.currentTimeMillis() >= r131) goto L146;
-        Integer r48 = eu0.c(r46);
-        if (r48 != null) goto L133;
-    L134:
-        if (r48 == null) goto L140;
-        if (r48.intValue() != 4) goto L140;
-    L145:
-        r34 = r130;
-    L140:
-        if (b() == true) goto L146;
-        if (jp1.b() == true) goto L146;
-        Thread.sleep(1000);
-        goto L128
-    L133:
-        if (r48.intValue() == 3) goto L145;
-    L146:
-        pb0 r49 = new pb0(AppDatabase.y().w(), r46, 1);
-        Thread r50 = new Thread(r49);
-        r50.start();
-        r50.join();     // Catch: InterruptedException -> L149
-        Download r51 = (Download) r49.q;     // Catch: InterruptedException -> L149
-    L151:
-        if (r51 == null) goto L153;
-        r19.e(gi1.G(r51), r51);
-    L153:
-        LinkedHashSet r52 = kb4.K(r130.b, r46);
-        LinkedHashSet r132 = kb4.K(r130.c, r46);
-        App.b().getClass();
-        App.c().edit().putString("homemusic_mix_offline_state", q40.B0(gb.P(new String[]{String.valueOf(r130.a), q40.B0(r52, ",", null, null, null, 62), q40.B0(r132, ",", null, null, null, 62)}), "\n", null, null, null, 62)).apply();
-        return new lc2();
-    L149:
-        e = move-exception;
-        e.printStackTrace();
-        r51 = null;
-        goto L151
-    L125:
-        return new lc2();
-    L155:
-        Log.i("MixOffline", "mix: no room left");
-        return new mc2();
-    L119:
-        r129 = 0;
-    L158:
-        return new lc2();
-    L160:
-        return new mc2();
-    L74:
-        r28 = z01.n;
-    L162:
-        return new lc2();
-    L34:
-        return new mc2();
-    L28:
-        r8 = 0;
-    L164:
-        return new mc2();
-    L5:
+    public final nc2 e() throws InterruptedException {
+        List<Child> arrayList;
+        SubsonicResponse subsonicResponse;
+        Starred2 starred2;
+        List<Child> songs;
+        Download download;
+        Download download2;
+        SubsonicResponse subsonicResponse2;
+        PlaylistWithSongs playlist;
+        List<Child> entries;
+        int i = 0;
+        HubMix mix = ((HubMixToday) rr1.d(new or1(0), new or1(1))).getMix();
+        if (mix == null) {
+            return new mc2();
+        }
+        String ndPlaylistId = mix.getNdPlaylistId();
+        if (ndPlaylistId != null) {
+            if (qm4.u0(ndPlaylistId)) {
+                ndPlaylistId = null;
+            }
+            if (ndPlaylistId != null) {
+                pn4 pn4VarF = App.f(false);
+                ApiResponse apiResponse = (ApiResponse) pn4VarF.g().F(ndPlaylistId).execute().body();
+                if (apiResponse == null || (subsonicResponse2 = apiResponse.getSubsonicResponse()) == null || (playlist = subsonicResponse2.getPlaylist()) == null || (entries = playlist.getEntries()) == null) {
+                    arrayList = null;
+                } else {
+                    arrayList = new ArrayList();
+                    for (Object obj : entries) {
+                        if (!ot1.c(((Child) obj).getId())) {
+                            arrayList.add(obj);
+                        }
+                    }
+                }
+                if (arrayList == null) {
+                    arrayList = u01.n;
+                }
+                if (arrayList.isEmpty()) {
+                    return new mc2();
+                }
+                ApiResponse apiResponse2 = (ApiResponse) pn4VarF.a().s().execute().body();
+                if (apiResponse2 == null || (subsonicResponse = apiResponse2.getSubsonicResponse()) == null || (starred2 = subsonicResponse.getStarred2()) == null || (songs = starred2.getSongs()) == null) {
+                    return new lc2();
+                }
+                ArrayList arrayList2 = new ArrayList(r40.k0(songs, 10));
+                Iterator it = songs.iterator();
+                while (it.hasNext()) {
+                    arrayList2.add(((Child) it.next()).getId());
+                }
+                Set setT0 = q40.T0(arrayList2);
+                Context context = this.a;
+                eu0 eu0VarW = au0.w(context);
+                ow2 ow2VarE = gi1.E();
+                Set set = ow2VarE.b;
+                ArrayList arrayList3 = new ArrayList(r40.k0(arrayList, 10));
+                Iterator it2 = arrayList.iterator();
+                while (it2.hasNext()) {
+                    arrayList3.add(((Child) it2.next()).getId());
+                }
+                Set set2 = set;
+                ArrayList arrayListG0 = q40.G0(arrayList3, set2);
+                ArrayList arrayList4 = new ArrayList();
+                int size = arrayListG0.size();
+                while (i < size) {
+                    Object obj2 = arrayListG0.get(i);
+                    i++;
+                    eu0VarW.getClass();
+                    if (eu0.d((String) obj2)) {
+                        arrayList4.add(obj2);
+                    }
+                }
+                Set setT1 = q40.T0(arrayList4);
+                long id = mix.getId();
+                Set setT2 = q40.T0(arrayList3);
+                ArrayList arrayList5 = new ArrayList();
+                for (Object obj3 : set2) {
+                    String str = (String) obj3;
+                    if (!setT2.contains(str) && !setT0.contains(str)) {
+                        arrayList5.add(obj3);
+                    }
+                }
+                ArrayList arrayList6 = new ArrayList();
+                for (Object obj4 : set2) {
+                    if (setT2.contains((String) obj4)) {
+                        arrayList6.add(obj4);
+                    }
+                }
+                Set set3 = ow2VarE.a == id ? ow2VarE.c : z01.n;
+                ArrayList arrayList7 = new ArrayList();
+                int size2 = arrayList3.size();
+                int i2 = 0;
+                while (i2 < size2) {
+                    Object obj5 = arrayList3.get(i2);
+                    i2++;
+                    HubMix hubMix = mix;
+                    String str2 = (String) obj5;
+                    if (!setT1.contains(str2) && !set3.contains(str2)) {
+                        arrayList7.add(obj5);
+                    }
+                    mix = hubMix;
+                }
+                HubMix hubMix2 = mix;
+                List<String> listT0 = q40.t0(arrayList7);
+                Set setT3 = q40.T0(arrayList6);
+                ow2 ow2Var = new ow2(id, setT3, set3);
+                Log.i("MixOffline", "mix " + hubMix2.getId() + ": download " + listT0.size() + ", remove " + arrayList5.size() + ", kept " + setT3.size());
+                eu0VarW.getClass();
+                ss0 ss0VarW = AppDatabase.y().w();
+                int size3 = arrayList5.size();
+                int i3 = 0;
+                while (i3 < size3) {
+                    int i4 = i3 + 1;
+                    pb0 pb0Var = new pb0(ss0VarW, (String) arrayList5.get(i3), 1);
+                    Thread thread = new Thread(pb0Var);
+                    thread.start();
+                    try {
+                        thread.join();
+                        download2 = (Download) pb0Var.q;
+                    } catch (InterruptedException e2) {
+                        e2.printStackTrace();
+                        download2 = null;
+                    }
+                    if (download2 != null) {
+                        eu0VarW.e(gi1.G(download2), download2);
+                    }
+                    i3 = i4;
+                }
+                gi1.V(ow2Var);
+                int iW = lg2.W(r40.k0(arrayList, 10));
+                if (iW < 16) {
+                    iW = 16;
+                }
+                LinkedHashMap linkedHashMap = new LinkedHashMap(iW);
+                for (Object obj6 : arrayList) {
+                    linkedHashMap.put(((Child) obj6).getId(), obj6);
+                }
+                File externalFilesDir = context.getExternalFilesDir(null);
+                if (externalFilesDir == null) {
+                    externalFilesDir = context.getFilesDir();
+                }
+                for (String str3 : listT0) {
+                    Child child = (Child) linkedHashMap.get(str3);
+                    if (child != null) {
+                        if (b() || jp1.b()) {
+                            return new lc2();
+                        }
+                        if (!eu0.e.contains(str3)) {
+                            long usableSpace = externalFilesDir.getUsableSpace();
+                            Long size4 = child.getSize();
+                            if (usableSpace - (size4 != null ? size4.longValue() : 0L) < 2147483648L) {
+                                Log.i("MixOffline", "mix: no room left");
+                                return new mc2();
+                            }
+                            ow2 ow2Var2 = new ow2(ow2Var.a, kb4.Q(ow2Var.b, str3), kb4.Q(ow2Var.c, str3));
+                            gi1.V(ow2Var2);
+                            if (!eu0VarW.b(gi1.G(child), new Download(child), true)) {
+                                return new lc2();
+                            }
+                            long jCurrentTimeMillis = System.currentTimeMillis() + 300000;
+                            while (true) {
+                                if (System.currentTimeMillis() < jCurrentTimeMillis) {
+                                    Integer numC = eu0.c(str3);
+                                    if ((numC != null && numC.intValue() == 3) || (numC != null && numC.intValue() == 4)) {
+                                        ow2Var = ow2Var2;
+                                    } else if (!b() && !jp1.b()) {
+                                        Thread.sleep(1000L);
+                                    }
+                                }
+                                pb0 pb0Var2 = new pb0(AppDatabase.y().w(), str3, 1);
+                                Thread thread2 = new Thread(pb0Var2);
+                                thread2.start();
+                                try {
+                                    thread2.join();
+                                    download = (Download) pb0Var2.q;
+                                } catch (InterruptedException e3) {
+                                    e3.printStackTrace();
+                                    download = null;
+                                }
+                                if (download != null) {
+                                    eu0VarW.e(gi1.G(download), download);
+                                }
+                                LinkedHashSet linkedHashSetK = kb4.K(ow2Var2.b, str3);
+                                LinkedHashSet linkedHashSetK2 = kb4.K(ow2Var2.c, str3);
+                                App.b().getClass();
+                                App.c().edit().putString("homemusic_mix_offline_state", q40.B0(gb.P(String.valueOf(ow2Var2.a), q40.B0(linkedHashSetK, ",", null, null, null, 62), q40.B0(linkedHashSetK2, ",", null, null, null, 62)), "\n", null, null, null, 62)).apply();
+                                return new lc2();
+                            }
+                        }
+                    }
+                }
+                return new mc2();
+            }
+        }
         return new mc2();
     }
 }

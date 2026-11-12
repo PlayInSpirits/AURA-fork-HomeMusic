@@ -22,24 +22,18 @@ import defpackage.vr1;
 public abstract class AppDatabase extends s24 {
     public static AppDatabase k;
 
-    public AppDatabase() {
-    }
-
     public static synchronized AppDatabase y() {
-        monitor-enter(AppDatabase.class);
-    L7:
-        th = move-exception;
-        throw th;
-    L5:
-        if (k != null) goto L9;
-        q24 r1 = vr1.i(App.a(), AppDatabase.class, "tempo_db");     // Catch: Throwable -> L7
-        r1.p = false;     // Catch: Throwable -> L7
-        r1.q = true;     // Catch: Throwable -> L7
-        k = (AppDatabase) r1.b();     // Catch: Throwable -> L7
-    L9:
-        AppDatabase r2 = k;     // Catch: Throwable -> L7
-        monitor-exit(AppDatabase.class);
-        return r2;
+        try {
+            if (k == null) {
+                q24 q24VarI = vr1.i(App.a(), AppDatabase.class, "tempo_db");
+                q24VarI.p = false;
+                q24VarI.q = true;
+                k = (AppDatabase) q24VarI.b();
+            }
+        } catch (Throwable th) {
+            throw th;
+        }
+        return k;
     }
 
     public abstract rf2 A();

@@ -8,47 +8,43 @@ import java.util.List;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final /* synthetic */ class xn2 implements Runnable {
-    public final /* synthetic */ int n;
+    public final /* synthetic */ int n = 1;
     public final /* synthetic */ bj2 o;
     public final /* synthetic */ int p;
     public final /* synthetic */ int q;
     public final /* synthetic */ List r;
 
-    public /* synthetic */ xn2(bj2 r2, int r3, int r4, ArrayList r5) {
-        this.n = 1;
-        this.o = r2;
-        this.p = r3;
-        this.q = r4;
-        this.r = r5;
+    public /* synthetic */ xn2(bj2 bj2Var, int i, int i2, ArrayList arrayList) {
+        this.o = bj2Var;
+        this.p = i;
+        this.q = i2;
+        this.r = arrayList;
     }
 
     @Override // java.lang.Runnable
     public final void run() {
-        int r0 = this.n;
-        List r2 = this.r;
-        int r3 = this.q;
-        int r4 = this.p;
-        bj2 r7 = this.o;
-        switch(r0) {
-            case 0: goto L6;
-            default: goto L4;
-        };
-    L4:
-        int r5 = r3 + 1;
-        r7.P(r4, r5);
-        r7.w0(((ArrayList) r2).subList(r4, r5));
-        return;
-    L6:
-        ArrayList r1 = gi1.M(r2);
-        new Handler(Looper.getMainLooper()).post(new xn2(r7, r4, r3, r1));
-        new vs3().c(r2, true, 0);
+        int i = this.n;
+        List list = this.r;
+        int i2 = this.q;
+        int i3 = this.p;
+        bj2 bj2Var = this.o;
+        switch (i) {
+            case 0:
+                new Handler(Looper.getMainLooper()).post(new xn2(bj2Var, i3, i2, gi1.M(list)));
+                new vs3().c(list, true, 0);
+                break;
+            default:
+                int i4 = i2 + 1;
+                bj2Var.P(i3, i4);
+                bj2Var.w0(((ArrayList) list).subList(i3, i4));
+                break;
+        }
     }
 
-    public /* synthetic */ xn2(List r2, bj2 r3, int r4, int r5) {
-        this.n = 0;
-        this.r = r2;
-        this.o = r3;
-        this.p = r4;
-        this.q = r5;
+    public /* synthetic */ xn2(List list, bj2 bj2Var, int i, int i2) {
+        this.r = list;
+        this.o = bj2Var;
+        this.p = i;
+        this.q = i2;
     }
 }

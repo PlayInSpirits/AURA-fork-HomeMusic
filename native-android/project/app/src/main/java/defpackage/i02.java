@@ -8,24 +8,15 @@ public final class i02 extends b02 {
     public boolean p;
     public int q;
 
-    public i02(int r3, int r4, int r5) {
-        this.n = r5;
-        this.o = r4;
-        boolean r0 = false;
-        if (r5 <= 0) goto L6;
-        if (r3 > r4) goto L8;
-    L5:
-        r0 = true;
-    L8:
-        this.p = r0;
-        if (r0 == true) goto L12;
-        r3 = r4;
-    L12:
-        this.q = r3;
-        return;
-    L6:
-        if (r3 < r4) goto L8;
-        goto L8
+    public i02(int i, int i2, int i3) {
+        this.n = i3;
+        this.o = i2;
+        boolean z = false;
+        if (i3 <= 0 ? i >= i2 : i <= i2) {
+            z = true;
+        }
+        this.p = z;
+        this.q = z ? i : i2;
     }
 
     @Override // java.util.Iterator
@@ -35,15 +26,15 @@ public final class i02 extends b02 {
 
     @Override // defpackage.b02
     public final int nextInt() {
-        int r0 = this.q;
-        if (r0 == this.o) goto L5;
-        this.q = this.n + r0;
-        return r0;
-    L5:
-        if (this.p == false) goto L8;
-        this.p = false;
-        return r0;
-    L8:
+        int i = this.q;
+        if (i != this.o) {
+            this.q = this.n + i;
+            return i;
+        }
+        if (this.p) {
+            this.p = false;
+            return i;
+        }
         tb4.k();
         return 0;
     }

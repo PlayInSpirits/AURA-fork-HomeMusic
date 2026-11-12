@@ -10,135 +10,124 @@ import java.util.ArrayList;
 public final class a22 implements qw3 {
     public final /* synthetic */ f22 a;
 
-    public a22(f22 r1) {
-        this.a = r1;
+    public a22(f22 f22Var) {
+        this.a = f22Var;
     }
 
     @Override // defpackage.qw3
-    public final void a(MotionEvent r9) {
-        f22 r8 = this.a;
-        g5 r0 = r8.s;
-        r8.x.onTouchEvent(r9);
-        VelocityTracker r1 = r8.t;
-        if (r1 == null) goto L6;
-        r1.addMovement(r9);
-    L6:
-        if (r8.l == (-1)) goto L39;
-        int r2 = r9.getActionMasked();
-        int r3 = r9.findPointerIndex(r8.l);
-        if (r3 < 0) goto L11;
-        r8.k(r2, r3, r9);
-    L11:
-        cx3 r4 = r8.c;
-        if (r4 == null) goto L40;
-        int r5 = 0;
-        if (r2 != 1) goto L17;
-    L35:
-        r8.r(null, 0);
-        r8.l = -1;
-        return;
-    L17:
-        if (r2 != 2) goto L19;
-        if (r3 < 0) goto L38;
-        r8.s(r8.o, r3, r9);
-        r8.q(r4);
-        r8.r.removeCallbacks(r0);
-        r0.run();
-        r8.r.invalidate();
-        return;
-    L38:
-        return;
-    L19:
-        if (r2 != 3) goto L21;
-        VelocityTracker r10 = r8.t;
-        if (r10 == null) goto L35;
-        r10.clear();
-        goto L35
-    L21:
-        if (r2 != 6) goto L41;
-        int r6 = r9.getActionIndex();
-        if (r9.getPointerId(r6) != r8.l) goto L37;
-        if (r6 != 0) goto L27;
-        r5 = 1;
-    L27:
-        r8.l = r9.getPointerId(r5);
-        r8.s(r8.o, r6, r9);
-        return;
-    L37:
-        return;
-    L41:
-        return;
-    L40:
-        return;
+    public final void a(MotionEvent motionEvent) {
+        f22 f22Var = this.a;
+        g5 g5Var = f22Var.s;
+        f22Var.x.onTouchEvent(motionEvent);
+        VelocityTracker velocityTracker = f22Var.t;
+        if (velocityTracker != null) {
+            velocityTracker.addMovement(motionEvent);
+        }
+        if (f22Var.l == -1) {
+            return;
+        }
+        int actionMasked = motionEvent.getActionMasked();
+        int iFindPointerIndex = motionEvent.findPointerIndex(f22Var.l);
+        if (iFindPointerIndex >= 0) {
+            f22Var.k(actionMasked, iFindPointerIndex, motionEvent);
+        }
+        cx3 cx3Var = f22Var.c;
+        if (cx3Var == null) {
+            return;
+        }
+        if (actionMasked != 1) {
+            if (actionMasked == 2) {
+                if (iFindPointerIndex >= 0) {
+                    f22Var.s(f22Var.o, iFindPointerIndex, motionEvent);
+                    f22Var.q(cx3Var);
+                    f22Var.r.removeCallbacks(g5Var);
+                    g5Var.run();
+                    f22Var.r.invalidate();
+                    return;
+                }
+                return;
+            }
+            if (actionMasked != 3) {
+                if (actionMasked != 6) {
+                    return;
+                }
+                int actionIndex = motionEvent.getActionIndex();
+                if (motionEvent.getPointerId(actionIndex) == f22Var.l) {
+                    f22Var.l = motionEvent.getPointerId(actionIndex == 0 ? 1 : 0);
+                    f22Var.s(f22Var.o, actionIndex, motionEvent);
+                    return;
+                }
+                return;
+            }
+            VelocityTracker velocityTracker2 = f22Var.t;
+            if (velocityTracker2 != null) {
+                velocityTracker2.clear();
+            }
+        }
+        f22Var.r(null, 0);
+        f22Var.l = -1;
     }
 
     @Override // defpackage.qw3
-    public final boolean d(MotionEvent r9) {
-        f22 r8 = this.a;
-        r8.x.onTouchEvent(r9);
-        int r0 = r9.getActionMasked();
-        b22 r1 = null;
-        if (r0 != 0) goto L24;
-        r8.l = r9.getPointerId(0);
-        r8.d = r9.getX();
-        r8.e = r9.getY();
-        VelocityTracker r2 = r8.t;
-        if (r2 == null) goto L7;
-        r2.recycle();
-    L7:
-        r8.t = VelocityTracker.obtain();
-        if (r8.c != null) goto L33;
-        ArrayList r3 = r8.p;
-        if (r3.isEmpty() == true) goto L18;
-        View r4 = r8.n(r9);
-        int r5 = r3.size() - 1;
-    L13:
-        if (r5 < 0) goto L18;
-        b22 r6 = (b22) r3.get(r5);
-        if (r6.e.a == r4) goto L16;
-        r5 = r5 - 1;
-        goto L13
-    L16:
-        r1 = r6;
-    L18:
-        if (r1 == null) goto L33;
-        cx3 r7 = r1.e;
-        r8.d -= r1.i;
-        r8.e -= r1.j;
-        r8.m(r7, true);
-        if (r8.a.remove(r7.a) == false) goto L22;
-        r8.m.a(r8.r, r7);
-    L22:
-        r8.r(r7, r1.f);
-        r8.s(r8.o, 0, r9);
-    L33:
-        VelocityTracker r10 = r8.t;
-        if (r10 == null) goto L37;
-        r10.addMovement(r9);
-    L37:
-        if (r8.c == null) goto L39;
-        return true;
-    L39:
-        return false;
-    L24:
-        if (r0 == 3) goto L32;
-        if (r0 == 1) goto L32;
-        int r11 = r8.l;
-        if (r11 == (-1)) goto L33;
-        int r12 = r9.findPointerIndex(r11);
-        if (r12 < 0) goto L33;
-        r8.k(r0, r12, r9);
-    L32:
-        r8.l = -1;
-        r8.r(null, 0);
-        goto L33
+    public final boolean d(MotionEvent motionEvent) {
+        int iFindPointerIndex;
+        f22 f22Var = this.a;
+        f22Var.x.onTouchEvent(motionEvent);
+        int actionMasked = motionEvent.getActionMasked();
+        b22 b22Var = null;
+        if (actionMasked == 0) {
+            f22Var.l = motionEvent.getPointerId(0);
+            f22Var.d = motionEvent.getX();
+            f22Var.e = motionEvent.getY();
+            VelocityTracker velocityTracker = f22Var.t;
+            if (velocityTracker != null) {
+                velocityTracker.recycle();
+            }
+            f22Var.t = VelocityTracker.obtain();
+            if (f22Var.c == null) {
+                ArrayList arrayList = f22Var.p;
+                if (!arrayList.isEmpty()) {
+                    View viewN = f22Var.n(motionEvent);
+                    for (int size = arrayList.size() - 1; size >= 0; size--) {
+                        b22 b22Var2 = (b22) arrayList.get(size);
+                        if (b22Var2.e.a == viewN) {
+                            b22Var = b22Var2;
+                            break;
+                        }
+                    }
+                }
+                if (b22Var != null) {
+                    cx3 cx3Var = b22Var.e;
+                    f22Var.d -= b22Var.i;
+                    f22Var.e -= b22Var.j;
+                    f22Var.m(cx3Var, true);
+                    if (f22Var.a.remove(cx3Var.a)) {
+                        f22Var.m.a(f22Var.r, cx3Var);
+                    }
+                    f22Var.r(cx3Var, b22Var.f);
+                    f22Var.s(f22Var.o, 0, motionEvent);
+                }
+            }
+        } else if (actionMasked == 3 || actionMasked == 1) {
+            f22Var.l = -1;
+            f22Var.r(null, 0);
+        } else {
+            int i = f22Var.l;
+            if (i != -1 && (iFindPointerIndex = motionEvent.findPointerIndex(i)) >= 0) {
+                f22Var.k(actionMasked, iFindPointerIndex, motionEvent);
+            }
+        }
+        VelocityTracker velocityTracker2 = f22Var.t;
+        if (velocityTracker2 != null) {
+            velocityTracker2.addMovement(motionEvent);
+        }
+        return f22Var.c != null;
     }
 
     @Override // defpackage.qw3
-    public final void e(boolean r2) {
-        if (r2 == true) goto L4;
-        return;
-    L4:
-        this.a.r(null, 0);
+    public final void e(boolean z) {
+        if (z) {
+            this.a.r(null, 0);
+        }
     }
 }

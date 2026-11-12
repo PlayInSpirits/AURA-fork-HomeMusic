@@ -14,462 +14,375 @@ public final class s85 extends im4 {
     public c05 r;
 
     @Override // defpackage.im4
-    public final void a(long r3) {
-        this.g = r3;
-        int r4 = 0;
-        if (r3 == 0) goto L5;
-        boolean r5 = true;
-    L6:
-        this.p = r5;
-        wy2 r6 = this.q;
-        if (r6 == null) goto L9;
-        r4 = r6.e;
-    L9:
-        this.o = r4;
-        return;
-    L5:
-        r5 = false;
-        goto L6
+    public final void a(long j) {
+        this.g = j;
+        this.p = j != 0;
+        wy2 wy2Var = this.q;
+        this.o = wy2Var != null ? wy2Var.e : 0;
     }
 
     @Override // defpackage.im4
-    public final long b(be3 r12) {
-        int r1 = 0;
-        byte r0 = r12.a[0];
-        if ((r0 & 1) != 1) goto L6;
-        return -1;
-    L6:
-        ew4 r2 = this.n;
-        r2.getClass();
-        boolean r3 = ((ox1[]) r2.s)[(r0 >> 1) & (255 >>> (8 - r2.o))].o;
-        wy2 r4 = (wy2) r2.p;
-        if (r3 == true) goto L9;
-        int r5 = r4.e;
-    L11:
-        if (this.p == false) goto L13;
-        r1 = (this.o + r5) / 4;
-    L13:
-        long r6 = r1;
-        byte[] r7 = r12.a;
-        int r8 = r7.length;
-        int r9 = r12.c + 4;
-        if (r8 >= r9) goto L16;
-        byte[] r10 = Arrays.copyOf(r7, r9);
-        r12.L(r10.length, r10);
-    L17:
-        byte[] r11 = r12.a;
-        int r13 = r12.c;
-        r11[r13 - 4] = (byte) (r6 & 255);
-        r11[r13 - 3] = (byte) ((r6 >>> 8) & 255);
-        r11[r13 - 2] = (byte) ((r6 >>> 16) & 255);
-        r11[r13 - 1] = (byte) ((r6 >>> 24) & 255);
+    public final long b(be3 be3Var) {
+        byte b = be3Var.a[0];
+        if ((b & 1) == 1) {
+            return -1L;
+        }
+        ew4 ew4Var = this.n;
+        ew4Var.getClass();
+        boolean z = ((ox1[]) ew4Var.s)[(b >> 1) & (255 >>> (8 - ew4Var.o))].o;
+        wy2 wy2Var = (wy2) ew4Var.p;
+        int i = !z ? wy2Var.e : wy2Var.f;
+        long j = this.p ? (this.o + i) / 4 : 0;
+        byte[] bArr = be3Var.a;
+        int length = bArr.length;
+        int i2 = be3Var.c + 4;
+        if (length < i2) {
+            byte[] bArrCopyOf = Arrays.copyOf(bArr, i2);
+            be3Var.L(bArrCopyOf.length, bArrCopyOf);
+        } else {
+            be3Var.M(i2);
+        }
+        byte[] bArr2 = be3Var.a;
+        int i3 = be3Var.c;
+        bArr2[i3 - 4] = (byte) (j & 255);
+        bArr2[i3 - 3] = (byte) ((j >>> 8) & 255);
+        bArr2[i3 - 2] = (byte) ((j >>> 16) & 255);
+        bArr2[i3 - 1] = (byte) ((j >>> 24) & 255);
         this.p = true;
-        this.o = r5;
-        return r6;
-    L16:
-        r12.M(r9);
-        goto L17
-    L9:
-        r5 = r4.f;
-        goto L11
+        this.o = i;
+        return j;
     }
 
+    /* JADX WARN: Code duplicated, block: B:166:0x03ae A[RETURN] */
+    /* JADX WARN: Code duplicated, block: B:168:0x03b1  */
     /* JADX WARN: Type inference failed for: r1v48, types: [byte[], java.io.Serializable] */
     /* JADX WARN: Type inference failed for: r8v1, types: [byte[], java.io.Serializable, java.lang.Object] */
     @Override // defpackage.im4
-    public final boolean c(be3 r25, long r26, rf2 r28) {
-        if (this.n == null) goto L6;
-        ((tb1) r28.n).getClass();
-        return false;
-    L6:
-        wy2 r6 = this.q;
-        int r5 = 4;
-        int r7 = -1;
-        if (r6 != null) goto L17;
-        zz1.N(1, r25, false);
-        r25.s();
-        int r4 = r25.A();
-        int r8 = r25.s();
-        int r9 = r25.o();
-        if (r9 > 0) goto L11;
-        r9 = -1;
-    L11:
-        int r10 = r25.o();
-        if (r10 <= 0) goto L15;
-        r7 = r10;
-    L15:
-        r25.o();
-        int r11 = r25.A();
-        int r12 = (int) Math.pow(2.0d, r11 & 15);
-        int r13 = (int) Math.pow(2.0d, (r11 & 240) >> 4);
-        r25.A();
-        ?? r1 = Arrays.copyOf(r25.a, r25.c);
-        wy2 r14 = new wy2();
-        r14.a = r4;
-        r14.b = r8;
-        r14.c = r9;
-        r14.d = r7;
-        r14.e = r12;
-        r14.f = r13;
-        r14.g = r1;
-        this.q = r14;
-    L16:
-        ew4 r15 = null;
-    L164:
-        this.n = r15;
-        if (r15 != null) goto L168;
+    public final boolean c(be3 be3Var, long j, rf2 rf2Var) throws ParserException {
+        ew4 ew4Var;
+        if (this.n != null) {
+            ((tb1) rf2Var.n).getClass();
+            return false;
+        }
+        wy2 wy2Var = this.q;
+        int i = 4;
+        if (wy2Var != null) {
+            c05 c05Var = this.r;
+            if (c05Var == null) {
+                this.r = zz1.C(be3Var, true, true);
+            } else {
+                int i2 = be3Var.c;
+                ?? r8 = new byte[i2];
+                System.arraycopy(be3Var.a, 0, r8, 0, i2);
+                int i3 = wy2Var.a;
+                int i4 = 5;
+                zz1.N(5, be3Var, false);
+                int iA = be3Var.A() + 1;
+                h00 h00Var = new h00(be3Var.a);
+                int i5 = 8;
+                h00Var.t(be3Var.b * 8);
+                int i6 = 0;
+                while (true) {
+                    int i7 = 16;
+                    if (i6 < iA) {
+                        int i8 = i5;
+                        if (h00Var.i(24) != 5653314) {
+                            throw ParserException.a(null, "expected code book to start with [0x56, 0x43, 0x42] at " + ((h00Var.d * 8) + h00Var.e));
+                        }
+                        int i9 = h00Var.i(16);
+                        int i10 = h00Var.i(24);
+                        if (h00Var.h()) {
+                            h00Var.t(i4);
+                            int i11 = 0;
+                            while (i11 < i10) {
+                                int i12 = 0;
+                                for (int i13 = i10 - i11; i13 > 0; i13 >>>= 1) {
+                                    i12++;
+                                }
+                                i11 += h00Var.i(i12);
+                            }
+                        } else {
+                            boolean zH = h00Var.h();
+                            for (int i14 = 0; i14 < i10; i14++) {
+                                if (!zH) {
+                                    h00Var.t(i4);
+                                } else if (h00Var.h()) {
+                                    h00Var.t(i4);
+                                }
+                            }
+                        }
+                        int i15 = h00Var.i(4);
+                        if (i15 > 2) {
+                            throw ParserException.a(null, "lookup type greater than 2 not decodable: " + i15);
+                        }
+                        if (i15 == 1 || i15 == 2) {
+                            h00Var.t(32);
+                            h00Var.t(32);
+                            int i16 = h00Var.i(4) + 1;
+                            h00Var.t(1);
+                            h00Var.t((int) ((i15 == 1 ? i9 != 0 ? (long) Math.floor(Math.pow(i10, 1.0d / ((double) i9))) : 0L : ((long) i9) * ((long) i10)) * ((long) i16)));
+                        }
+                        i6++;
+                        i5 = i8;
+                        i4 = 5;
+                    } else {
+                        int i17 = i5;
+                        int i18 = 6;
+                        int i19 = h00Var.i(6) + 1;
+                        for (int i20 = 0; i20 < i19; i20++) {
+                            if (h00Var.i(16) != 0) {
+                                throw ParserException.a(null, "placeholder of time domain transforms not zeroed out");
+                            }
+                        }
+                        int i21 = 1;
+                        int i22 = h00Var.i(6) + 1;
+                        int i23 = 0;
+                        while (true) {
+                            int i24 = 3;
+                            if (i23 >= i22) {
+                                int i25 = h00Var.i(i18) + 1;
+                                int i26 = 0;
+                                while (i26 < i25) {
+                                    if (h00Var.i(16) > 2) {
+                                        throw ParserException.a(null, "residueType greater than 2 is not decodable");
+                                    }
+                                    h00Var.t(24);
+                                    h00Var.t(24);
+                                    h00Var.t(24);
+                                    int i27 = h00Var.i(i18) + 1;
+                                    int i28 = 8;
+                                    h00Var.t(8);
+                                    int[] iArr = new int[i27];
+                                    for (int i29 = 0; i29 < i27; i29++) {
+                                        iArr[i29] = ((h00Var.h() ? h00Var.i(5) : 0) * 8) + h00Var.i(3);
+                                    }
+                                    int i30 = 0;
+                                    while (i30 < i27) {
+                                        int i31 = 0;
+                                        while (i31 < i28) {
+                                            if ((iArr[i30] & (1 << i31)) != 0) {
+                                                h00Var.t(i28);
+                                            }
+                                            i31++;
+                                            i28 = 8;
+                                        }
+                                        i30++;
+                                        i28 = 8;
+                                    }
+                                    i26++;
+                                    i18 = 6;
+                                }
+                                int i32 = h00Var.i(i18) + 1;
+                                for (int i33 = 0; i33 < i32; i33++) {
+                                    int i34 = h00Var.i(16);
+                                    if (i34 != 0) {
+                                        l93.F("VorbisUtil", "mapping type other than 0 not supported: " + i34);
+                                    } else {
+                                        int i35 = h00Var.h() ? h00Var.i(4) + 1 : 1;
+                                        if (h00Var.h()) {
+                                            int i36 = h00Var.i(8) + 1;
+                                            for (int i37 = 0; i37 < i36; i37++) {
+                                                int i38 = i3 - 1;
+                                                int i39 = 0;
+                                                for (int i40 = i38; i40 > 0; i40 >>>= 1) {
+                                                    i39++;
+                                                }
+                                                h00Var.t(i39);
+                                                int i41 = 0;
+                                                while (i38 > 0) {
+                                                    i41++;
+                                                    i38 >>>= 1;
+                                                }
+                                                h00Var.t(i41);
+                                            }
+                                        }
+                                        if (h00Var.i(2) != 0) {
+                                            throw ParserException.a(null, "to reserved bits must be zero after mapping coupling steps");
+                                        }
+                                        if (i35 > 1) {
+                                            for (int i42 = 0; i42 < i3; i42++) {
+                                                h00Var.t(4);
+                                            }
+                                        }
+                                        for (int i43 = 0; i43 < i35; i43++) {
+                                            h00Var.t(8);
+                                            h00Var.t(8);
+                                            h00Var.t(8);
+                                        }
+                                    }
+                                }
+                                int i44 = h00Var.i(6);
+                                int i45 = i44 + 1;
+                                ox1[] ox1VarArr = new ox1[i45];
+                                for (int i46 = 0; i46 < i45; i46++) {
+                                    boolean zH2 = h00Var.h();
+                                    h00Var.i(16);
+                                    h00Var.i(16);
+                                    h00Var.i(8);
+                                    ox1VarArr[i46] = new ox1(2, zH2);
+                                }
+                                if (!h00Var.h()) {
+                                    throw ParserException.a(null, "framing bit after modes not set as expected");
+                                }
+                                int i47 = 0;
+                                while (i44 > 0) {
+                                    i47++;
+                                    i44 >>>= 1;
+                                }
+                                ew4Var = new ew4(wy2Var, c05Var, r8, ox1VarArr, i47, 7);
+                                break;
+                            }
+                            int i48 = h00Var.i(i7);
+                            if (i48 == 0) {
+                                int i49 = i17;
+                                h00Var.t(i49);
+                                h00Var.t(16);
+                                h00Var.t(16);
+                                h00Var.t(6);
+                                h00Var.t(i49);
+                                int i50 = h00Var.i(4) + 1;
+                                int i51 = 0;
+                                while (i51 < i50) {
+                                    h00Var.t(i49);
+                                    i51++;
+                                    i49 = 8;
+                                }
+                            } else {
+                                if (i48 != i21) {
+                                    throw ParserException.a(null, "floor type greater than 1 not decodable: " + i48);
+                                }
+                                int i52 = h00Var.i(5);
+                                int[] iArr2 = new int[i52];
+                                int i53 = -1;
+                                for (int i54 = 0; i54 < i52; i54++) {
+                                    int i55 = h00Var.i(i);
+                                    iArr2[i54] = i55;
+                                    if (i55 > i53) {
+                                        i53 = i55;
+                                    }
+                                }
+                                int i56 = i53 + 1;
+                                int[] iArr3 = new int[i56];
+                                int i57 = 0;
+                                while (i57 < i56) {
+                                    iArr3[i57] = h00Var.i(i24) + 1;
+                                    int i58 = h00Var.i(2);
+                                    int i59 = i17;
+                                    if (i58 > 0) {
+                                        h00Var.t(i59);
+                                    }
+                                    int[] iArr4 = iArr3;
+                                    int i60 = 0;
+                                    for (int i61 = 1; i60 < (i61 << i58); i61 = 1) {
+                                        h00Var.t(i59);
+                                        i60++;
+                                        i59 = 8;
+                                    }
+                                    i57++;
+                                    iArr3 = iArr4;
+                                    i17 = 8;
+                                    i24 = 3;
+                                }
+                                int[] iArr5 = iArr3;
+                                h00Var.t(2);
+                                int i62 = h00Var.i(4);
+                                int i63 = 0;
+                                int i64 = 0;
+                                for (int i65 = 0; i65 < i52; i65++) {
+                                    i63 += iArr5[iArr2[i65]];
+                                    while (i64 < i63) {
+                                        h00Var.t(i62);
+                                        i64++;
+                                    }
+                                }
+                            }
+                            i23++;
+                            i17 = 8;
+                            i18 = 6;
+                            i = 4;
+                            i7 = 16;
+                            i21 = 1;
+                        }
+                    }
+                }
+            }
+            this.n = ew4Var;
+            if (ew4Var == null) {
+                return true;
+            }
+            wy2 wy2Var2 = (wy2) ew4Var.p;
+            ArrayList arrayList = new ArrayList();
+            arrayList.add((byte[]) wy2Var2.g);
+            arrayList.add((byte[]) ew4Var.r);
+            qv2 qv2VarW = zz1.w(yw1.l((String[]) ((c05) ew4Var.q).n));
+            sb1 sb1Var = new sb1();
+            sb1Var.l = lw2.m("audio/ogg");
+            sb1Var.m = lw2.m("audio/vorbis");
+            sb1Var.h = wy2Var2.d;
+            sb1Var.i = wy2Var2.c;
+            sb1Var.E = wy2Var2.a;
+            sb1Var.F = wy2Var2.b;
+            sb1Var.p = arrayList;
+            sb1Var.k = qv2VarW;
+            rf2Var.n = new tb1(sb1Var);
+            return true;
+        }
+        zz1.N(1, be3Var, false);
+        be3Var.s();
+        int iA2 = be3Var.A();
+        int iS = be3Var.s();
+        int iO = be3Var.o();
+        if (iO <= 0) {
+            iO = -1;
+        }
+        int iO2 = be3Var.o();
+        int i66 = iO2 > 0 ? iO2 : -1;
+        be3Var.o();
+        int iA3 = be3Var.A();
+        int iPow = (int) Math.pow(2.0d, iA3 & 15);
+        int iPow2 = (int) Math.pow(2.0d, (iA3 & 240) >> 4);
+        be3Var.A();
+        ?? CopyOf = Arrays.copyOf(be3Var.a, be3Var.c);
+        wy2 wy2Var3 = new wy2();
+        wy2Var3.a = iA2;
+        wy2Var3.b = iS;
+        wy2Var3.c = iO;
+        wy2Var3.d = i66;
+        wy2Var3.e = iPow;
+        wy2Var3.f = iPow2;
+        wy2Var3.g = CopyOf;
+        this.q = wy2Var3;
+        ew4Var = null;
+        this.n = ew4Var;
+        if (ew4Var == null) {
+            return true;
+        }
+        wy2 wy2Var4 = (wy2) ew4Var.p;
+        ArrayList arrayList2 = new ArrayList();
+        arrayList2.add((byte[]) wy2Var4.g);
+        arrayList2.add((byte[]) ew4Var.r);
+        qv2 qv2VarW2 = zz1.w(yw1.l((String[]) ((c05) ew4Var.q).n));
+        sb1 sb1Var2 = new sb1();
+        sb1Var2.l = lw2.m("audio/ogg");
+        sb1Var2.m = lw2.m("audio/vorbis");
+        sb1Var2.h = wy2Var4.d;
+        sb1Var2.i = wy2Var4.c;
+        sb1Var2.E = wy2Var4.a;
+        sb1Var2.F = wy2Var4.b;
+        sb1Var2.p = arrayList2;
+        sb1Var2.k = qv2VarW2;
+        rf2Var.n = new tb1(sb1Var2);
         return true;
-    L168:
-        wy2 r0 = (wy2) r15.p;
-        ArrayList r2 = new ArrayList();
-        r2.add((byte[]) r0.g);
-        r2.add((byte[]) r15.r);
-        qv2 r3 = zz1.w(yw1.l((String[]) ((c05) r15.q).n));
-        sb1 r16 = new sb1();
-        r16.l = lw2.m("audio/ogg");
-        r16.m = lw2.m("audio/vorbis");
-        r16.h = r0.d;
-        r16.i = r0.c;
-        r16.E = r0.a;
-        r16.F = r0.b;
-        r16.p = r2;
-        r16.k = r3;
-        r28.n = new tb1(r16);
-        return true;
-    L17:
-        c05 r17 = this.r;
-        if (r17 != null) goto L20;
-        this.r = zz1.C(r25, true, true);
-        goto L16
-    L20:
-        int r18 = r25.c;
-        ?? r19 = new byte[r18];
-        System.arraycopy(r25.a, 0, r19, 0, r18);
-        int r20 = r6.a;
-        int r110 = 5;
-        zz1.N(5, r25, false);
-        int r111 = r25.A() + 1;
-        h00 r112 = new h00(r25.a);
-        int r113 = 8;
-        r112.t(r25.b * 8);
-        int r21 = 0;
-    L21:
-        int r114 = 16;
-        if (r21 >= r111) goto L58;
-        int r27 = r113;
-        if (r112.i(24) != 5653314) goto L57;
-        int r22 = r112.i(16);
-        int r23 = r112.i(24);
-        if (r112.h() == true) goto L35;
-        boolean r115 = r112.h();
-        int r116 = 0;
-    L28:
-        if (r116 >= r23) goto L41;
-        if (r115 == true) goto L31;
-        r112.t(r110);
-    L34:
-        r116 = r116 + 1;
-        goto L28
-    L31:
-        if (r112.h() == false) goto L34;
-        r112.t(r110);
-    L41:
-        int r117 = r112.i(4);
-        if (r117 > 2) goto L55;
-        if (r117 == 1) goto L46;
-        if (r117 == 2) goto L46;
-    L53:
-        r21 = r21 + 1;
-        r113 = r27;
-        r110 = 5;
-    L46:
-        r112.t(32);
-        r112.t(32);
-        int r118 = r112.i(4) + 1;
-        r112.t(1);
-        if (r117 != 1) goto L51;
-        if (r22 == 0) goto L50;
-        long r24 = (long) Math.floor(Math.pow(r23, 1.0d / ((double) r22)));
-    L52:
-        r112.t((int) (r24 * ((long) r118)));
-        goto L53
-    L50:
-        r24 = 0;
-        goto L52
-    L51:
-        r24 = r22 * ((long) r23);
-        goto L52
-    L55:
-        throw ParserException.a(null, "lookup type greater than 2 not decodable: " + r117);
-    L35:
-        r112.t(r110);
-        int r119 = 0;
-    L36:
-        if (r119 >= r23) goto L41;
-        int r120 = r23 - r119;
-        int r121 = 0;
-    L38:
-        if (r120 <= 0) goto L40;
-        r121 = r121 + 1;
-        r120 = r120 >>> 1;
-        goto L38
-    L40:
-        r119 = r119 + r112.i(r121);
-        goto L36
-    L57:
-        throw ParserException.a(null, "expected code book to start with [0x56, 0x43, 0x42] at " + ((r112.d * 8) + r112.e));
-    L58:
-        int r29 = r113;
-        int r30 = 6;
-        int r31 = r112.i(6) + 1;
-        int r122 = 0;
-    L59:
-        if (r122 >= r31) goto L65;
-        if (r112.i(16) != 0) goto L64;
-        r122 = r122 + 1;
-        goto L59
-    L64:
-        throw ParserException.a(null, "placeholder of time domain transforms not zeroed out");
-    L65:
-        int r123 = 1;
-        int r32 = r112.i(6) + 1;
-        int r124 = 0;
-    L66:
-        int r125 = 3;
-        if (r124 >= r32) goto L99;
-        int r33 = r112.i(r114);
-        if (r33 == 0) goto L95;
-        if (r33 != r123) goto L94;
-        int r34 = r112.i(5);
-        int[] r126 = new int[r34];
-        int r35 = 0;
-        int r127 = -1;
-    L72:
-        if (r35 >= r34) goto L77;
-        int r128 = r112.i(r5);
-        r126[r35] = r128;
-        if (r128 <= r127) goto L76;
-        r127 = r128;
-    L76:
-        r35 = r35 + 1;
-        goto L72
-    L77:
-        int r129 = r127 + 1;
-        int[] r36 = new int[r129];
-        int r130 = 0;
-    L78:
-        if (r130 >= r129) goto L87;
-        int r131 = 1;
-        r36[r130] = r112.i(r125) + 1;
-        int r210 = r112.i(2);
-        int r132 = r29;
-        if (r210 <= 0) goto L82;
-        r112.t(r132);
-    L82:
-        int[] r211 = r36;
-        int r37 = 0;
-    L84:
-        if (r37 >= (r131 << r210)) goto L86;
-        r112.t(r132);
-        r37 = r37 + 1;
-        r132 = 8;
-        r131 = 1;
-        goto L84
-    L86:
-        r130 = r130 + 1;
-        r36 = r211;
-        r29 = 8;
-        r125 = 3;
-        goto L78
-    L87:
-        int[] r212 = r36;
-        r112.t(2);
-        int r38 = r112.i(4);
-        int r39 = 0;
-        int r133 = 0;
-        int r134 = 0;
-    L88:
-        if (r39 >= r34) goto L98;
-        r133 = r133 + r212[r126[r39]];
-    L90:
-        if (r134 >= r133) goto L92;
-        r112.t(r38);
-        r134 = r134 + 1;
-        goto L90
-    L92:
-        r39 = r39 + 1;
-    L98:
-        r124 = r124 + 1;
-        r29 = 8;
-        r30 = 6;
-        r5 = 4;
-        r114 = 16;
-        r123 = 1;
-        goto L66
-    L94:
-        throw ParserException.a(null, "floor type greater than 1 not decodable: " + r33);
-    L95:
-        int r135 = r29;
-        r112.t(r135);
-        r112.t(16);
-        r112.t(16);
-        r112.t(6);
-        r112.t(r135);
-        int r40 = r112.i(4) + 1;
-        int r41 = 0;
-    L96:
-        if (r41 >= r40) goto L98;
-        r112.t(r135);
-        r41 = r41 + 1;
-        r135 = 8;
-        goto L96
-    L99:
-        int r42 = r112.i(r30) + 1;
-        int r43 = 0;
-    L100:
-        if (r43 >= r42) goto L122;
-        if (r112.i(16) > 2) goto L121;
-        r112.t(24);
-        r112.t(24);
-        r112.t(24);
-        int r136 = r112.i(r30) + 1;
-        int r137 = 8;
-        r112.t(8);
-        int[] r44 = new int[r136];
-        int r138 = 0;
-    L104:
-        if (r138 >= r136) goto L110;
-        int r139 = r112.i(3);
-        if (r112.h() == false) goto L108;
-        int r140 = r112.i(5);
-    L109:
-        r44[r138] = (r140 * 8) + r139;
-        r138 = r138 + 1;
-        goto L104
-    L108:
-        r140 = 0;
-        goto L109
-    L110:
-        int r141 = 0;
-    L111:
-        if (r141 >= r136) goto L119;
-        int r142 = 0;
-    L113:
-        if (r142 >= r137) goto L118;
-        if ((r44[r141] & (1 << r142)) == 0) goto L117;
-        r112.t(r137);
-    L117:
-        r142 = r142 + 1;
-        r137 = 8;
-        goto L113
-    L118:
-        r141 = r141 + 1;
-        r137 = 8;
-        goto L111
-    L119:
-        r43 = r43 + 1;
-        r30 = 6;
-        goto L100
-    L121:
-        throw ParserException.a(null, "residueType greater than 2 is not decodable");
-    L122:
-        int r45 = r112.i(r30) + 1;
-        int r46 = 0;
-    L123:
-        if (r46 >= r45) goto L155;
-        int r47 = r112.i(16);
-        if (r47 == 0) goto L128;
-        l93.F("VorbisUtil", "mapping type other than 0 not supported: " + r47);
-    L152:
-        r46 = r46 + 1;
-        goto L123
-    L128:
-        if (r112.h() == false) goto L130;
-        int r48 = r112.i(4) + 1;
-    L132:
-        if (r112.h() == false) goto L143;
-        int r49 = r112.i(8) + 1;
-        int r143 = 0;
-    L134:
-        if (r143 >= r49) goto L143;
-        int r144 = r20 - 1;
-        int r145 = r144;
-        int r146 = 0;
-    L136:
-        if (r145 <= 0) goto L138;
-        r146 = r146 + 1;
-        r145 = r145 >>> 1;
-        goto L136
-    L138:
-        r112.t(r146);
-        int r147 = 0;
-    L139:
-        if (r144 <= 0) goto L141;
-        r147 = r147 + 1;
-        r144 = r144 >>> 1;
-        goto L139
-    L141:
-        r112.t(r147);
-        r143 = r143 + 1;
-    L143:
-        if (r112.i(2) != 0) goto L154;
-        if (r48 <= 1) goto L149;
-        int r50 = 0;
-    L147:
-        if (r50 >= r20) goto L149;
-        r112.t(4);
-        r50 = r50 + 1;
-    L149:
-        int r51 = 0;
-    L150:
-        if (r51 >= r48) goto L152;
-        r112.t(8);
-        r112.t(8);
-        r112.t(8);
-        r51 = r51 + 1;
-        goto L150
-    L154:
-        throw ParserException.a(null, "to reserved bits must be zero after mapping coupling steps");
-    L130:
-        r48 = 1;
-        goto L132
-    L155:
-        int r52 = r112.i(6);
-        int r53 = r52 + 1;
-        ox1[] r54 = new ox1[r53];
-        int r55 = 0;
-    L156:
-        if (r55 >= r53) goto L159;
-        boolean r56 = r112.h();
-        r112.i(16);
-        r112.i(16);
-        r112.i(8);
-        r54[r55] = new ox1(2, r56);
-        r55 = r55 + 1;
-        goto L156
-    L159:
-        if (r112.h() == false) goto L171;
-        int r148 = 0;
-    L161:
-        if (r52 <= 0) goto L163;
-        r148 = r148 + 1;
-        r52 = r52 >>> 1;
-        goto L161
-    L163:
-        r15 = new ew4(r6, r17, r19, r54, r148, 7);
-        goto L164
-    L171:
-        throw ParserException.a(null, "framing bit after modes not set as expected");
     }
 
     @Override // defpackage.im4
-    public final void d(boolean r1) {
-        super.d(r1);
-        if (r1 == false) goto L5;
-        this.n = null;
-        this.q = null;
-        this.r = null;
-    L5:
+    public final void d(boolean z) {
+        super.d(z);
+        if (z) {
+            this.n = null;
+            this.q = null;
+            this.r = null;
+        }
         this.o = 0;
         this.p = false;
     }

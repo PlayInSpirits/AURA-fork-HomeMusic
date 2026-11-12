@@ -8,11 +8,11 @@ public final class j64 {
     public final k02 c;
     public final f63 d;
 
-    public j64(i94 r1, int r2, k02 r3, f63 r4) {
-        this.a = r1;
-        this.b = r2;
-        this.c = r3;
-        this.d = r4;
+    public j64(i94 i94Var, int i, k02 k02Var, f63 f63Var) {
+        this.a = i94Var;
+        this.b = i;
+        this.c = k02Var;
+        this.d = f63Var;
     }
 
     public final String toString() {

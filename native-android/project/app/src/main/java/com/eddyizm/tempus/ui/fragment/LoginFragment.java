@@ -16,9 +16,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import app.homemusic.R;
 import com.eddyizm.tempus.App;
 import com.eddyizm.tempus.database.AppDatabase;
+import com.eddyizm.tempus.homemusic.HubAuthOptions;
 import com.eddyizm.tempus.interfaces.ClickCallback;
 import com.eddyizm.tempus.model.Server;
 import com.eddyizm.tempus.ui.activity.MainActivity;
+import com.eddyizm.tempus.ui.fragment.LoginFragment;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.button.MaterialButton;
@@ -29,7 +31,6 @@ import defpackage.a65;
 import defpackage.b11;
 import defpackage.b75;
 import defpackage.bd1;
-import defpackage.bo1;
 import defpackage.bq4;
 import defpackage.co1;
 import defpackage.d8;
@@ -37,6 +38,7 @@ import defpackage.e75;
 import defpackage.eo1;
 import defpackage.fo1;
 import defpackage.gb;
+import defpackage.gf1;
 import defpackage.gh0;
 import defpackage.gp3;
 import defpackage.i30;
@@ -64,12 +66,12 @@ import defpackage.ud3;
 import defpackage.uo;
 import defpackage.wd1;
 import defpackage.x;
-import defpackage.xn1;
 import defpackage.zd0;
 import defpackage.zn1;
 import java.util.Iterator;
 import java.util.Objects;
 import java.util.WeakHashMap;
+import org.chromium.support_lib_boundary.WebSettingsBoundaryInterface;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
@@ -79,206 +81,613 @@ public class LoginFragment extends kc1 implements ClickCallback {
     public se2 n0;
     public zd0 o0;
 
-    public LoginFragment() {
-    }
-
     @Override // defpackage.kc1
-    public final void F(Bundle r1) {
-        super.F(r1);
+    public final void F(Bundle bundle) {
+        super.F(bundle);
         d0();
     }
 
     @Override // defpackage.kc1
-    public final void G(Menu r1, MenuInflater r2) {
+    public final void G(Menu menu, MenuInflater menuInflater) {
     }
 
     @Override // defpackage.kc1
-    public final View H(LayoutInflater r37, ViewGroup r38, Bundle r39) {
-        this.m0 = (MainActivity) l();
-        r37.getClass();
-        View r3 = r37.inflate(R.layout.fragment_homemusic_login, r38, false);
-        int r5 = R.id.hm_login_account_step;
-        LinearLayout r9 = (LinearLayout) uo.s(r3, R.id.hm_login_account_step);
-        if (r9 == null) goto L81;
-        r5 = R.id.hm_login_code;
-        TextInputEditText r10 = (TextInputEditText) uo.s(r3, R.id.hm_login_code);
-        if (r10 == null) goto L81;
-        r5 = R.id.hm_login_code_layout;
-        TextInputLayout r11 = (TextInputLayout) uo.s(r3, R.id.hm_login_code_layout);
-        if (r11 == null) goto L81;
-        r5 = R.id.hm_login_email;
-        TextInputEditText r12 = (TextInputEditText) uo.s(r3, R.id.hm_login_email);
-        if (r12 == null) goto L81;
-        r5 = R.id.hm_login_email_layout;
-        TextInputLayout r13 = (TextInputLayout) uo.s(r3, R.id.hm_login_email_layout);
-        if (r13 == null) goto L81;
-        r5 = R.id.hm_login_email_switch;
-        MaterialButton r14 = (MaterialButton) uo.s(r3, R.id.hm_login_email_switch);
-        if (r14 == null) goto L81;
-        r5 = R.id.hm_login_error;
-        TextView r15 = (TextView) uo.s(r3, R.id.hm_login_error);
-        if (r15 == null) goto L81;
-        r5 = R.id.hm_login_google;
-        MaterialButton r16 = (MaterialButton) uo.s(r3, R.id.hm_login_google);
-        if (r16 == null) goto L81;
-        r5 = R.id.hm_login_hint;
-        TextView r17 = (TextView) uo.s(r3, R.id.hm_login_hint);
-        if (r17 == null) goto L81;
-        r5 = R.id.hm_login_password;
-        TextInputEditText r18 = (TextInputEditText) uo.s(r3, R.id.hm_login_password);
-        if (r18 == null) goto L81;
-        r5 = R.id.hm_login_password2;
-        TextInputEditText r19 = (TextInputEditText) uo.s(r3, R.id.hm_login_password2);
-        if (r19 == null) goto L81;
-        r5 = R.id.hm_login_password2_layout;
-        TextInputLayout r20 = (TextInputLayout) uo.s(r3, R.id.hm_login_password2_layout);
-        if (r20 == null) goto L81;
-        r5 = R.id.hm_login_password_layout;
-        TextInputLayout r21 = (TextInputLayout) uo.s(r3, R.id.hm_login_password_layout);
-        if (r21 == null) goto L81;
-        r5 = R.id.hm_login_primary;
-        MaterialButton r22 = (MaterialButton) uo.s(r3, R.id.hm_login_primary);
-        if (r22 == null) goto L81;
-        r5 = R.id.hm_login_progress;
-        LinearProgressIndicator r23 = (LinearProgressIndicator) uo.s(r3, R.id.hm_login_progress);
-        if (r23 == null) goto L81;
-        r5 = R.id.hm_login_resend;
-        MaterialButton r24 = (MaterialButton) uo.s(r3, R.id.hm_login_resend);
-        if (r24 == null) goto L81;
-        ScrollView r8 = (ScrollView) r3;
-        r5 = R.id.hm_login_server;
-        TextInputEditText r26 = (TextInputEditText) uo.s(r3, R.id.hm_login_server);
-        if (r26 == null) goto L81;
-        r5 = R.id.hm_login_server_default;
-        TextView r27 = (TextView) uo.s(r3, R.id.hm_login_server_default);
-        if (r27 == null) goto L81;
-        r5 = R.id.hm_login_server_label;
-        TextView r28 = (TextView) uo.s(r3, R.id.hm_login_server_label);
-        if (r28 == null) goto L81;
-        r5 = R.id.hm_login_server_layout;
-        TextInputLayout r29 = (TextInputLayout) uo.s(r3, R.id.hm_login_server_layout);
-        if (r29 == null) goto L81;
-        r5 = R.id.hm_login_server_row;
-        LinearLayout r30 = (LinearLayout) uo.s(r3, R.id.hm_login_server_row);
-        if (r30 == null) goto L81;
-        r5 = R.id.hm_login_server_step;
-        LinearLayout r31 = (LinearLayout) uo.s(r3, R.id.hm_login_server_step);
-        if (r31 == null) goto L81;
-        r5 = R.id.hm_login_subtitle;
-        TextView r32 = (TextView) uo.s(r3, R.id.hm_login_subtitle);
-        if (r32 == null) goto L81;
-        r5 = R.id.hm_login_switch;
-        MaterialButton r33 = (MaterialButton) uo.s(r3, R.id.hm_login_switch);
-        if (r33 == null) goto L81;
-        r5 = R.id.hm_login_user;
-        TextInputEditText r34 = (TextInputEditText) uo.s(r3, R.id.hm_login_user);
-        if (r34 == null) goto L81;
-        r5 = R.id.hm_login_user_layout;
-        TextInputLayout r35 = (TextInputLayout) uo.s(r3, R.id.hm_login_user_layout);
-        if (r35 == null) goto L81;
-        uc1 r7 = new uc1(r8, r9, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r20, r21, r22, r23, r24, r8, r26, r27, r28, r29, r30, r31, r32, r33, r34, r35);
-        final fo1 r110 = new fo1(this, r7);
-        mj0 r6 = new mj0(28);
-        WeakHashMap r4 = j65.a;
-        a65.c(r8, r6);
-        r26.setText("http://192.168.1.129:4533");
-        r26.addTextChangedListener(new eo1(r110, 0));
-        final int r25 = 5;
-        r27.setOnClickListener(new xn1(r110, r25));
-        Iterator r36 = gb.P(new TextInputEditText[]{r10, r34, r18, r19}).iterator();
-    L55:
-        final int r40 = 2;
-        if (r36.hasNext() == false) goto L58;
-        TextInputEditText r41 = (TextInputEditText) r36.next();
-        r41.getClass();
-        r41.addTextChangedListener(new eo1(r110, r40));
-        goto L55
-    L58:
-        final int r42 = 1;
-        r12.addTextChangedListener(new eo1(r110, r42));
-        final int r111 = 0;
-        r12.setOnEditorActionListener(new zn1(r111, new bo1(r110, r111)));
-        r26.setOnEditorActionListener(new zn1(r111, new bo1(r110, r42)));
-        r18.setOnEditorActionListener(new zn1(r111, new bo1(r110, r40)));
-        final int r43 = 3;
-        r19.setOnEditorActionListener(new zn1(r111, new bo1(r110, r43)));
-        final int r44 = 6;
-        View.OnClickListener r45 = new xn1(r110, r44);
-        r7.o.setOnClickListener(r45);
-        View.OnClickListener r46 = new xn1(r110, r111);
-        r7.v.setOnClickListener(r46);
-        View.OnClickListener r47 = new xn1(r110, r42);
-        r7.y.setOnClickListener(r47);
-        View.OnClickListener r48 = new xn1(r110, r40);
-        r7.g.setOnClickListener(r48);
-        View.OnClickListener r49 = new xn1(r110, r43);
-        r7.q.setOnClickListener(r49);
-        final int r50 = 4;
-        View.OnClickListener r51 = new xn1(r110, r50);
-        r7.i.setOnClickListener(r51);
-        int r112 = 14;
-        ((s24) AppDatabase.y().G().n).i().a(new String[]{"server"}, new o54(r112)).e(v(), new wd1(new x(16, r110), r40));
-        X().i().a(v(), (bd1) r110.k);
-        r110.s(co1.n);
-        ScrollView r52 = r7.a;
-        if (r52 == null) goto L61;
-        return r52;
-    L61:
-        nc1 r53 = X();
-        e75 r54 = r53.d();
-        b75 r55 = gh0.r(r53);
-        bq4 r56 = new bq4(r54, r55, b11.e(r53, r55));
-        i30 r57 = kx3.a(se2.class);
-        String r58 = r57.b();
-        if (r58 == null) goto L79;
-        this.n0 = (se2) r56.l(r57, "androidx.lifecycle.ViewModelProvider.DefaultKey:".concat(r58));
-        View r1 = r37.inflate(R.layout.fragment_login, r38, false);
-        int r2 = R.id.app_bar_layout;
-        AppBarLayout r113 = (AppBarLayout) uo.s(r1, R.id.app_bar_layout);
-        if (r113 == null) goto L77;
-        r2 = R.id.new_login_button;
-        MaterialButton r114 = (MaterialButton) uo.s(r1, R.id.new_login_button);
-        if (r114 == null) goto L77;
-        r2 = R.id.no_server_added_text_view;
-        TextView r115 = (TextView) uo.s(r1, R.id.no_server_added_text_view);
-        if (r115 == null) goto L77;
-        r2 = R.id.server_info_sector;
-        ConstraintLayout r116 = (ConstraintLayout) uo.s(r1, R.id.server_info_sector);
-        if (r116 == null) goto L77;
-        r2 = R.id.server_list_recycler_view;
-        RecyclerView r117 = (RecyclerView) uo.s(r1, R.id.server_list_recycler_view);
-        if (r117 == null) goto L77;
-        r2 = R.id.toolbar;
-        MaterialToolbar r118 = (MaterialToolbar) uo.s(r1, R.id.toolbar);
-        if (r118 == null) goto L77;
-        LinearLayout r119 = (LinearLayout) r1;
-        this.l0 = new ml3(r119, r113, r114, r115, r116, r117, r118);
-        this.m0.o(r118);
-        ((AppBarLayout) this.l0.a).a(new u7(7, this));
-        RecyclerView r59 = (RecyclerView) this.l0.e;
-        Z();
-        r59.setLayoutManager(new LinearLayoutManager(1));
-        ((RecyclerView) this.l0.e).setHasFixedSize(true);
-        zd0 r60 = new zd0(this);
-        this.o0 = r60;
-        ((RecyclerView) this.l0.e).setAdapter(r60);
-        ((s24) ((na4) this.n0.c.o).n).i().a(new String[]{"server"}, new o54(r112)).e(v(), new d8(r112, this));
-        ViewGroup.MarginLayoutParams r61 = (ViewGroup.MarginLayoutParams) ((MaterialButton) this.l0.b).getLayoutParams();
-        int r62 = r61.bottomMargin;
-        MaterialButton r63 = (MaterialButton) this.l0.b;
-        q31 r64 = new q31(r62, r42, r61);
-        WeakHashMap r65 = j65.a;
-        a65.c(r63, r64);
-        ((MaterialButton) this.l0.b).setOnClickListener(new p6(24, this));
-        return r119;
-    L77:
-        nz2.n("Missing required view with ID: ".concat(r1.getResources().getResourceName(r2)));
-        return null;
-    L79:
-        kf2.n("Local and anonymous classes can not be ViewModels");
-        return null;
-    L81:
-        nz2.n("Missing required view with ID: ".concat(r3.getResources().getResourceName(r5)));
+    public final View H(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
+        final int i;
+        this.m0 = (MainActivity) e();
+        layoutInflater.getClass();
+        View viewInflate = layoutInflater.inflate(R.layout.fragment_homemusic_login, viewGroup, false);
+        int i2 = R.id.hm_login_account_step;
+        LinearLayout linearLayout = (LinearLayout) uo.s(viewInflate, R.id.hm_login_account_step);
+        if (linearLayout != null) {
+            i2 = R.id.hm_login_code;
+            TextInputEditText textInputEditText = (TextInputEditText) uo.s(viewInflate, R.id.hm_login_code);
+            if (textInputEditText != null) {
+                i2 = R.id.hm_login_code_layout;
+                TextInputLayout textInputLayout = (TextInputLayout) uo.s(viewInflate, R.id.hm_login_code_layout);
+                if (textInputLayout != null) {
+                    i2 = R.id.hm_login_email;
+                    TextInputEditText textInputEditText2 = (TextInputEditText) uo.s(viewInflate, R.id.hm_login_email);
+                    if (textInputEditText2 != null) {
+                        i2 = R.id.hm_login_email_layout;
+                        TextInputLayout textInputLayout2 = (TextInputLayout) uo.s(viewInflate, R.id.hm_login_email_layout);
+                        if (textInputLayout2 != null) {
+                            i2 = R.id.hm_login_email_switch;
+                            MaterialButton materialButton = (MaterialButton) uo.s(viewInflate, R.id.hm_login_email_switch);
+                            if (materialButton != null) {
+                                i2 = R.id.hm_login_error;
+                                TextView textView = (TextView) uo.s(viewInflate, R.id.hm_login_error);
+                                if (textView != null) {
+                                    i2 = R.id.hm_login_google;
+                                    MaterialButton materialButton2 = (MaterialButton) uo.s(viewInflate, R.id.hm_login_google);
+                                    if (materialButton2 != null) {
+                                        i2 = R.id.hm_login_hint;
+                                        TextView textView2 = (TextView) uo.s(viewInflate, R.id.hm_login_hint);
+                                        if (textView2 != null) {
+                                            i2 = R.id.hm_login_password;
+                                            TextInputEditText textInputEditText3 = (TextInputEditText) uo.s(viewInflate, R.id.hm_login_password);
+                                            if (textInputEditText3 != null) {
+                                                i2 = R.id.hm_login_password2;
+                                                TextInputEditText textInputEditText4 = (TextInputEditText) uo.s(viewInflate, R.id.hm_login_password2);
+                                                if (textInputEditText4 != null) {
+                                                    i2 = R.id.hm_login_password2_layout;
+                                                    TextInputLayout textInputLayout3 = (TextInputLayout) uo.s(viewInflate, R.id.hm_login_password2_layout);
+                                                    if (textInputLayout3 != null) {
+                                                        i2 = R.id.hm_login_password_layout;
+                                                        TextInputLayout textInputLayout4 = (TextInputLayout) uo.s(viewInflate, R.id.hm_login_password_layout);
+                                                        if (textInputLayout4 != null) {
+                                                            i2 = R.id.hm_login_primary;
+                                                            MaterialButton materialButton3 = (MaterialButton) uo.s(viewInflate, R.id.hm_login_primary);
+                                                            if (materialButton3 != null) {
+                                                                i2 = R.id.hm_login_progress;
+                                                                LinearProgressIndicator linearProgressIndicator = (LinearProgressIndicator) uo.s(viewInflate, R.id.hm_login_progress);
+                                                                if (linearProgressIndicator != null) {
+                                                                    i2 = R.id.hm_login_resend;
+                                                                    MaterialButton materialButton4 = (MaterialButton) uo.s(viewInflate, R.id.hm_login_resend);
+                                                                    if (materialButton4 != null) {
+                                                                        ScrollView scrollView = (ScrollView) viewInflate;
+                                                                        i2 = R.id.hm_login_server;
+                                                                        TextInputEditText textInputEditText5 = (TextInputEditText) uo.s(viewInflate, R.id.hm_login_server);
+                                                                        if (textInputEditText5 != null) {
+                                                                            i2 = R.id.hm_login_server_default;
+                                                                            TextView textView3 = (TextView) uo.s(viewInflate, R.id.hm_login_server_default);
+                                                                            if (textView3 != null) {
+                                                                                i2 = R.id.hm_login_server_label;
+                                                                                TextView textView4 = (TextView) uo.s(viewInflate, R.id.hm_login_server_label);
+                                                                                if (textView4 != null) {
+                                                                                    i2 = R.id.hm_login_server_layout;
+                                                                                    TextInputLayout textInputLayout5 = (TextInputLayout) uo.s(viewInflate, R.id.hm_login_server_layout);
+                                                                                    if (textInputLayout5 != null) {
+                                                                                        i2 = R.id.hm_login_server_row;
+                                                                                        LinearLayout linearLayout2 = (LinearLayout) uo.s(viewInflate, R.id.hm_login_server_row);
+                                                                                        if (linearLayout2 != null) {
+                                                                                            i2 = R.id.hm_login_server_step;
+                                                                                            LinearLayout linearLayout3 = (LinearLayout) uo.s(viewInflate, R.id.hm_login_server_step);
+                                                                                            if (linearLayout3 != null) {
+                                                                                                i2 = R.id.hm_login_subtitle;
+                                                                                                TextView textView5 = (TextView) uo.s(viewInflate, R.id.hm_login_subtitle);
+                                                                                                if (textView5 != null) {
+                                                                                                    i2 = R.id.hm_login_switch;
+                                                                                                    MaterialButton materialButton5 = (MaterialButton) uo.s(viewInflate, R.id.hm_login_switch);
+                                                                                                    if (materialButton5 != null) {
+                                                                                                        i2 = R.id.hm_login_user;
+                                                                                                        TextInputEditText textInputEditText6 = (TextInputEditText) uo.s(viewInflate, R.id.hm_login_user);
+                                                                                                        if (textInputEditText6 != null) {
+                                                                                                            i2 = R.id.hm_login_user_layout;
+                                                                                                            TextInputLayout textInputLayout6 = (TextInputLayout) uo.s(viewInflate, R.id.hm_login_user_layout);
+                                                                                                            if (textInputLayout6 != null) {
+                                                                                                                uc1 uc1Var = new uc1(scrollView, linearLayout, textInputEditText, textInputLayout, textInputEditText2, textInputLayout2, materialButton, textView, materialButton2, textView2, textInputEditText3, textInputEditText4, textInputLayout3, textInputLayout4, materialButton3, linearProgressIndicator, materialButton4, scrollView, textInputEditText5, textView3, textView4, textInputLayout5, linearLayout2, linearLayout3, textView5, materialButton5, textInputEditText6, textInputLayout6);
+                                                                                                                final fo1 fo1Var = new fo1(this, uc1Var);
+                                                                                                                mj0 mj0Var = new mj0(28);
+                                                                                                                WeakHashMap weakHashMap = j65.a;
+                                                                                                                a65.c(scrollView, mj0Var);
+                                                                                                                textInputEditText5.setText("http://192.168.1.129:4533");
+                                                                                                                textInputEditText5.addTextChangedListener(new eo1(fo1Var, 0));
+                                                                                                                final int i3 = 5;
+                                                                                                                textView3.setOnClickListener(new View.OnClickListener() { // from class: xn1
+                                                                                                                    @Override // android.view.View.OnClickListener
+                                                                                                                    public final void onClick(View view) {
+                                                                                                                        String googleClientId;
+                                                                                                                        int i4 = i3;
+                                                                                                                        fo1 fo1Var2 = fo1Var;
+                                                                                                                        switch (i4) {
+                                                                                                                            case 0:
+                                                                                                                                fo1Var2.s(co1.n);
+                                                                                                                                break;
+                                                                                                                            case 1:
+                                                                                                                                co1 co1Var = (co1) fo1Var2.d;
+                                                                                                                                co1 co1Var2 = co1.o;
+                                                                                                                                if (co1Var == co1Var2) {
+                                                                                                                                    co1Var2 = co1.p;
+                                                                                                                                }
+                                                                                                                                fo1Var2.s(co1Var2);
+                                                                                                                                break;
+                                                                                                                            case 2:
+                                                                                                                                fo1Var2.s(co1.q);
+                                                                                                                                break;
+                                                                                                                            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
+                                                                                                                                fo1Var2.q();
+                                                                                                                                break;
+                                                                                                                            case 4:
+                                                                                                                                HubAuthOptions hubAuthOptions = (HubAuthOptions) fo1Var2.i;
+                                                                                                                                if (hubAuthOptions != null && (googleClientId = hubAuthOptions.getGoogleClientId()) != null && !fo1Var2.a) {
+                                                                                                                                    fo1Var2.r(true);
+                                                                                                                                    ud3.M(((LoginFragment) fo1Var2.b).X(), googleClientId, new zh0(29, fo1Var2));
+                                                                                                                                    break;
+                                                                                                                                }
+                                                                                                                                break;
+                                                                                                                            case 5:
+                                                                                                                                ((uc1) fo1Var2.c).r.setText("http://192.168.1.129:4533");
+                                                                                                                                break;
+                                                                                                                            default:
+                                                                                                                                fo1Var2.m();
+                                                                                                                                break;
+                                                                                                                        }
+                                                                                                                    }
+                                                                                                                });
+                                                                                                                Iterator it = gb.P(textInputEditText, textInputEditText6, textInputEditText3, textInputEditText4).iterator();
+                                                                                                                while (true) {
+                                                                                                                    i = 2;
+                                                                                                                    if (!it.hasNext()) {
+                                                                                                                        break;
+                                                                                                                    }
+                                                                                                                    TextInputEditText textInputEditText7 = (TextInputEditText) it.next();
+                                                                                                                    textInputEditText7.getClass();
+                                                                                                                    textInputEditText7.addTextChangedListener(new eo1(fo1Var, i));
+                                                                                                                }
+                                                                                                                final int i4 = 1;
+                                                                                                                textInputEditText2.addTextChangedListener(new eo1(fo1Var, i4));
+                                                                                                                final int i5 = 0;
+                                                                                                                textInputEditText2.setOnEditorActionListener(new zn1(i5, new gf1() { // from class: bo1
+                                                                                                                    @Override // defpackage.gf1
+                                                                                                                    public final Object invoke() {
+                                                                                                                        int i6 = i5;
+                                                                                                                        j15 j15Var = j15.a;
+                                                                                                                        fo1 fo1Var2 = fo1Var;
+                                                                                                                        switch (i6) {
+                                                                                                                            case 0:
+                                                                                                                                if (((String) fo1Var2.h) == null) {
+                                                                                                                                    fo1Var2.m();
+                                                                                                                                }
+                                                                                                                                break;
+                                                                                                                            case 1:
+                                                                                                                                fo1Var2.m();
+                                                                                                                                break;
+                                                                                                                            case 2:
+                                                                                                                                if (((co1) fo1Var2.d) == co1.o) {
+                                                                                                                                    fo1Var2.m();
+                                                                                                                                }
+                                                                                                                                break;
+                                                                                                                            default:
+                                                                                                                                fo1Var2.m();
+                                                                                                                                break;
+                                                                                                                        }
+                                                                                                                        return j15Var;
+                                                                                                                    }
+                                                                                                                }));
+                                                                                                                textInputEditText5.setOnEditorActionListener(new zn1(i5, new gf1() { // from class: bo1
+                                                                                                                    @Override // defpackage.gf1
+                                                                                                                    public final Object invoke() {
+                                                                                                                        int i6 = i4;
+                                                                                                                        j15 j15Var = j15.a;
+                                                                                                                        fo1 fo1Var2 = fo1Var;
+                                                                                                                        switch (i6) {
+                                                                                                                            case 0:
+                                                                                                                                if (((String) fo1Var2.h) == null) {
+                                                                                                                                    fo1Var2.m();
+                                                                                                                                }
+                                                                                                                                break;
+                                                                                                                            case 1:
+                                                                                                                                fo1Var2.m();
+                                                                                                                                break;
+                                                                                                                            case 2:
+                                                                                                                                if (((co1) fo1Var2.d) == co1.o) {
+                                                                                                                                    fo1Var2.m();
+                                                                                                                                }
+                                                                                                                                break;
+                                                                                                                            default:
+                                                                                                                                fo1Var2.m();
+                                                                                                                                break;
+                                                                                                                        }
+                                                                                                                        return j15Var;
+                                                                                                                    }
+                                                                                                                }));
+                                                                                                                textInputEditText3.setOnEditorActionListener(new zn1(i5, new gf1() { // from class: bo1
+                                                                                                                    @Override // defpackage.gf1
+                                                                                                                    public final Object invoke() {
+                                                                                                                        int i6 = i;
+                                                                                                                        j15 j15Var = j15.a;
+                                                                                                                        fo1 fo1Var2 = fo1Var;
+                                                                                                                        switch (i6) {
+                                                                                                                            case 0:
+                                                                                                                                if (((String) fo1Var2.h) == null) {
+                                                                                                                                    fo1Var2.m();
+                                                                                                                                }
+                                                                                                                                break;
+                                                                                                                            case 1:
+                                                                                                                                fo1Var2.m();
+                                                                                                                                break;
+                                                                                                                            case 2:
+                                                                                                                                if (((co1) fo1Var2.d) == co1.o) {
+                                                                                                                                    fo1Var2.m();
+                                                                                                                                }
+                                                                                                                                break;
+                                                                                                                            default:
+                                                                                                                                fo1Var2.m();
+                                                                                                                                break;
+                                                                                                                        }
+                                                                                                                        return j15Var;
+                                                                                                                    }
+                                                                                                                }));
+                                                                                                                final int i6 = 3;
+                                                                                                                textInputEditText4.setOnEditorActionListener(new zn1(i5, new gf1() { // from class: bo1
+                                                                                                                    @Override // defpackage.gf1
+                                                                                                                    public final Object invoke() {
+                                                                                                                        int i7 = i6;
+                                                                                                                        j15 j15Var = j15.a;
+                                                                                                                        fo1 fo1Var2 = fo1Var;
+                                                                                                                        switch (i7) {
+                                                                                                                            case 0:
+                                                                                                                                if (((String) fo1Var2.h) == null) {
+                                                                                                                                    fo1Var2.m();
+                                                                                                                                }
+                                                                                                                                break;
+                                                                                                                            case 1:
+                                                                                                                                fo1Var2.m();
+                                                                                                                                break;
+                                                                                                                            case 2:
+                                                                                                                                if (((co1) fo1Var2.d) == co1.o) {
+                                                                                                                                    fo1Var2.m();
+                                                                                                                                }
+                                                                                                                                break;
+                                                                                                                            default:
+                                                                                                                                fo1Var2.m();
+                                                                                                                                break;
+                                                                                                                        }
+                                                                                                                        return j15Var;
+                                                                                                                    }
+                                                                                                                }));
+                                                                                                                final int i7 = 6;
+                                                                                                                uc1Var.o.setOnClickListener(new View.OnClickListener() { // from class: xn1
+                                                                                                                    @Override // android.view.View.OnClickListener
+                                                                                                                    public final void onClick(View view) {
+                                                                                                                        String googleClientId;
+                                                                                                                        int i8 = i7;
+                                                                                                                        fo1 fo1Var2 = fo1Var;
+                                                                                                                        switch (i8) {
+                                                                                                                            case 0:
+                                                                                                                                fo1Var2.s(co1.n);
+                                                                                                                                break;
+                                                                                                                            case 1:
+                                                                                                                                co1 co1Var = (co1) fo1Var2.d;
+                                                                                                                                co1 co1Var2 = co1.o;
+                                                                                                                                if (co1Var == co1Var2) {
+                                                                                                                                    co1Var2 = co1.p;
+                                                                                                                                }
+                                                                                                                                fo1Var2.s(co1Var2);
+                                                                                                                                break;
+                                                                                                                            case 2:
+                                                                                                                                fo1Var2.s(co1.q);
+                                                                                                                                break;
+                                                                                                                            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
+                                                                                                                                fo1Var2.q();
+                                                                                                                                break;
+                                                                                                                            case 4:
+                                                                                                                                HubAuthOptions hubAuthOptions = (HubAuthOptions) fo1Var2.i;
+                                                                                                                                if (hubAuthOptions != null && (googleClientId = hubAuthOptions.getGoogleClientId()) != null && !fo1Var2.a) {
+                                                                                                                                    fo1Var2.r(true);
+                                                                                                                                    ud3.M(((LoginFragment) fo1Var2.b).X(), googleClientId, new zh0(29, fo1Var2));
+                                                                                                                                    break;
+                                                                                                                                }
+                                                                                                                                break;
+                                                                                                                            case 5:
+                                                                                                                                ((uc1) fo1Var2.c).r.setText("http://192.168.1.129:4533");
+                                                                                                                                break;
+                                                                                                                            default:
+                                                                                                                                fo1Var2.m();
+                                                                                                                                break;
+                                                                                                                        }
+                                                                                                                    }
+                                                                                                                });
+                                                                                                                uc1Var.v.setOnClickListener(new View.OnClickListener() { // from class: xn1
+                                                                                                                    @Override // android.view.View.OnClickListener
+                                                                                                                    public final void onClick(View view) {
+                                                                                                                        String googleClientId;
+                                                                                                                        int i8 = i5;
+                                                                                                                        fo1 fo1Var2 = fo1Var;
+                                                                                                                        switch (i8) {
+                                                                                                                            case 0:
+                                                                                                                                fo1Var2.s(co1.n);
+                                                                                                                                break;
+                                                                                                                            case 1:
+                                                                                                                                co1 co1Var = (co1) fo1Var2.d;
+                                                                                                                                co1 co1Var2 = co1.o;
+                                                                                                                                if (co1Var == co1Var2) {
+                                                                                                                                    co1Var2 = co1.p;
+                                                                                                                                }
+                                                                                                                                fo1Var2.s(co1Var2);
+                                                                                                                                break;
+                                                                                                                            case 2:
+                                                                                                                                fo1Var2.s(co1.q);
+                                                                                                                                break;
+                                                                                                                            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
+                                                                                                                                fo1Var2.q();
+                                                                                                                                break;
+                                                                                                                            case 4:
+                                                                                                                                HubAuthOptions hubAuthOptions = (HubAuthOptions) fo1Var2.i;
+                                                                                                                                if (hubAuthOptions != null && (googleClientId = hubAuthOptions.getGoogleClientId()) != null && !fo1Var2.a) {
+                                                                                                                                    fo1Var2.r(true);
+                                                                                                                                    ud3.M(((LoginFragment) fo1Var2.b).X(), googleClientId, new zh0(29, fo1Var2));
+                                                                                                                                    break;
+                                                                                                                                }
+                                                                                                                                break;
+                                                                                                                            case 5:
+                                                                                                                                ((uc1) fo1Var2.c).r.setText("http://192.168.1.129:4533");
+                                                                                                                                break;
+                                                                                                                            default:
+                                                                                                                                fo1Var2.m();
+                                                                                                                                break;
+                                                                                                                        }
+                                                                                                                    }
+                                                                                                                });
+                                                                                                                uc1Var.y.setOnClickListener(new View.OnClickListener() { // from class: xn1
+                                                                                                                    @Override // android.view.View.OnClickListener
+                                                                                                                    public final void onClick(View view) {
+                                                                                                                        String googleClientId;
+                                                                                                                        int i8 = i4;
+                                                                                                                        fo1 fo1Var2 = fo1Var;
+                                                                                                                        switch (i8) {
+                                                                                                                            case 0:
+                                                                                                                                fo1Var2.s(co1.n);
+                                                                                                                                break;
+                                                                                                                            case 1:
+                                                                                                                                co1 co1Var = (co1) fo1Var2.d;
+                                                                                                                                co1 co1Var2 = co1.o;
+                                                                                                                                if (co1Var == co1Var2) {
+                                                                                                                                    co1Var2 = co1.p;
+                                                                                                                                }
+                                                                                                                                fo1Var2.s(co1Var2);
+                                                                                                                                break;
+                                                                                                                            case 2:
+                                                                                                                                fo1Var2.s(co1.q);
+                                                                                                                                break;
+                                                                                                                            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
+                                                                                                                                fo1Var2.q();
+                                                                                                                                break;
+                                                                                                                            case 4:
+                                                                                                                                HubAuthOptions hubAuthOptions = (HubAuthOptions) fo1Var2.i;
+                                                                                                                                if (hubAuthOptions != null && (googleClientId = hubAuthOptions.getGoogleClientId()) != null && !fo1Var2.a) {
+                                                                                                                                    fo1Var2.r(true);
+                                                                                                                                    ud3.M(((LoginFragment) fo1Var2.b).X(), googleClientId, new zh0(29, fo1Var2));
+                                                                                                                                    break;
+                                                                                                                                }
+                                                                                                                                break;
+                                                                                                                            case 5:
+                                                                                                                                ((uc1) fo1Var2.c).r.setText("http://192.168.1.129:4533");
+                                                                                                                                break;
+                                                                                                                            default:
+                                                                                                                                fo1Var2.m();
+                                                                                                                                break;
+                                                                                                                        }
+                                                                                                                    }
+                                                                                                                });
+                                                                                                                uc1Var.g.setOnClickListener(new View.OnClickListener() { // from class: xn1
+                                                                                                                    @Override // android.view.View.OnClickListener
+                                                                                                                    public final void onClick(View view) {
+                                                                                                                        String googleClientId;
+                                                                                                                        int i8 = i;
+                                                                                                                        fo1 fo1Var2 = fo1Var;
+                                                                                                                        switch (i8) {
+                                                                                                                            case 0:
+                                                                                                                                fo1Var2.s(co1.n);
+                                                                                                                                break;
+                                                                                                                            case 1:
+                                                                                                                                co1 co1Var = (co1) fo1Var2.d;
+                                                                                                                                co1 co1Var2 = co1.o;
+                                                                                                                                if (co1Var == co1Var2) {
+                                                                                                                                    co1Var2 = co1.p;
+                                                                                                                                }
+                                                                                                                                fo1Var2.s(co1Var2);
+                                                                                                                                break;
+                                                                                                                            case 2:
+                                                                                                                                fo1Var2.s(co1.q);
+                                                                                                                                break;
+                                                                                                                            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
+                                                                                                                                fo1Var2.q();
+                                                                                                                                break;
+                                                                                                                            case 4:
+                                                                                                                                HubAuthOptions hubAuthOptions = (HubAuthOptions) fo1Var2.i;
+                                                                                                                                if (hubAuthOptions != null && (googleClientId = hubAuthOptions.getGoogleClientId()) != null && !fo1Var2.a) {
+                                                                                                                                    fo1Var2.r(true);
+                                                                                                                                    ud3.M(((LoginFragment) fo1Var2.b).X(), googleClientId, new zh0(29, fo1Var2));
+                                                                                                                                    break;
+                                                                                                                                }
+                                                                                                                                break;
+                                                                                                                            case 5:
+                                                                                                                                ((uc1) fo1Var2.c).r.setText("http://192.168.1.129:4533");
+                                                                                                                                break;
+                                                                                                                            default:
+                                                                                                                                fo1Var2.m();
+                                                                                                                                break;
+                                                                                                                        }
+                                                                                                                    }
+                                                                                                                });
+                                                                                                                uc1Var.q.setOnClickListener(new View.OnClickListener() { // from class: xn1
+                                                                                                                    @Override // android.view.View.OnClickListener
+                                                                                                                    public final void onClick(View view) {
+                                                                                                                        String googleClientId;
+                                                                                                                        int i8 = i6;
+                                                                                                                        fo1 fo1Var2 = fo1Var;
+                                                                                                                        switch (i8) {
+                                                                                                                            case 0:
+                                                                                                                                fo1Var2.s(co1.n);
+                                                                                                                                break;
+                                                                                                                            case 1:
+                                                                                                                                co1 co1Var = (co1) fo1Var2.d;
+                                                                                                                                co1 co1Var2 = co1.o;
+                                                                                                                                if (co1Var == co1Var2) {
+                                                                                                                                    co1Var2 = co1.p;
+                                                                                                                                }
+                                                                                                                                fo1Var2.s(co1Var2);
+                                                                                                                                break;
+                                                                                                                            case 2:
+                                                                                                                                fo1Var2.s(co1.q);
+                                                                                                                                break;
+                                                                                                                            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
+                                                                                                                                fo1Var2.q();
+                                                                                                                                break;
+                                                                                                                            case 4:
+                                                                                                                                HubAuthOptions hubAuthOptions = (HubAuthOptions) fo1Var2.i;
+                                                                                                                                if (hubAuthOptions != null && (googleClientId = hubAuthOptions.getGoogleClientId()) != null && !fo1Var2.a) {
+                                                                                                                                    fo1Var2.r(true);
+                                                                                                                                    ud3.M(((LoginFragment) fo1Var2.b).X(), googleClientId, new zh0(29, fo1Var2));
+                                                                                                                                    break;
+                                                                                                                                }
+                                                                                                                                break;
+                                                                                                                            case 5:
+                                                                                                                                ((uc1) fo1Var2.c).r.setText("http://192.168.1.129:4533");
+                                                                                                                                break;
+                                                                                                                            default:
+                                                                                                                                fo1Var2.m();
+                                                                                                                                break;
+                                                                                                                        }
+                                                                                                                    }
+                                                                                                                });
+                                                                                                                final int i8 = 4;
+                                                                                                                uc1Var.i.setOnClickListener(new View.OnClickListener() { // from class: xn1
+                                                                                                                    @Override // android.view.View.OnClickListener
+                                                                                                                    public final void onClick(View view) {
+                                                                                                                        String googleClientId;
+                                                                                                                        int i9 = i8;
+                                                                                                                        fo1 fo1Var2 = fo1Var;
+                                                                                                                        switch (i9) {
+                                                                                                                            case 0:
+                                                                                                                                fo1Var2.s(co1.n);
+                                                                                                                                break;
+                                                                                                                            case 1:
+                                                                                                                                co1 co1Var = (co1) fo1Var2.d;
+                                                                                                                                co1 co1Var2 = co1.o;
+                                                                                                                                if (co1Var == co1Var2) {
+                                                                                                                                    co1Var2 = co1.p;
+                                                                                                                                }
+                                                                                                                                fo1Var2.s(co1Var2);
+                                                                                                                                break;
+                                                                                                                            case 2:
+                                                                                                                                fo1Var2.s(co1.q);
+                                                                                                                                break;
+                                                                                                                            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
+                                                                                                                                fo1Var2.q();
+                                                                                                                                break;
+                                                                                                                            case 4:
+                                                                                                                                HubAuthOptions hubAuthOptions = (HubAuthOptions) fo1Var2.i;
+                                                                                                                                if (hubAuthOptions != null && (googleClientId = hubAuthOptions.getGoogleClientId()) != null && !fo1Var2.a) {
+                                                                                                                                    fo1Var2.r(true);
+                                                                                                                                    ud3.M(((LoginFragment) fo1Var2.b).X(), googleClientId, new zh0(29, fo1Var2));
+                                                                                                                                    break;
+                                                                                                                                }
+                                                                                                                                break;
+                                                                                                                            case 5:
+                                                                                                                                ((uc1) fo1Var2.c).r.setText("http://192.168.1.129:4533");
+                                                                                                                                break;
+                                                                                                                            default:
+                                                                                                                                fo1Var2.m();
+                                                                                                                                break;
+                                                                                                                        }
+                                                                                                                    }
+                                                                                                                });
+                                                                                                                int i9 = 14;
+                                                                                                                ((s24) AppDatabase.y().G().n).i().a(new String[]{"server"}, new o54(i9)).e(v(), new wd1(new x(16, fo1Var), i));
+                                                                                                                X().i().a(v(), (bd1) fo1Var.k);
+                                                                                                                fo1Var.s(co1.n);
+                                                                                                                ScrollView scrollView2 = uc1Var.a;
+                                                                                                                if (scrollView2 != null) {
+                                                                                                                    return scrollView2;
+                                                                                                                }
+                                                                                                                nc1 nc1VarX = X();
+                                                                                                                e75 e75VarD = nc1VarX.d();
+                                                                                                                b75 b75VarR = gh0.r(nc1VarX);
+                                                                                                                bq4 bq4Var = new bq4(e75VarD, b75VarR, b11.e(nc1VarX, b75VarR));
+                                                                                                                i30 i30VarA = kx3.a(se2.class);
+                                                                                                                String strB = i30VarA.b();
+                                                                                                                if (strB == null) {
+                                                                                                                    kf2.n("Local and anonymous classes can not be ViewModels");
+                                                                                                                    return null;
+                                                                                                                }
+                                                                                                                this.n0 = (se2) bq4Var.l(i30VarA, "androidx.lifecycle.ViewModelProvider.DefaultKey:".concat(strB));
+                                                                                                                View viewInflate2 = layoutInflater.inflate(R.layout.fragment_login, viewGroup, false);
+                                                                                                                int i10 = R.id.app_bar_layout;
+                                                                                                                AppBarLayout appBarLayout = (AppBarLayout) uo.s(viewInflate2, R.id.app_bar_layout);
+                                                                                                                if (appBarLayout != null) {
+                                                                                                                    i10 = R.id.new_login_button;
+                                                                                                                    MaterialButton materialButton6 = (MaterialButton) uo.s(viewInflate2, R.id.new_login_button);
+                                                                                                                    if (materialButton6 != null) {
+                                                                                                                        i10 = R.id.no_server_added_text_view;
+                                                                                                                        TextView textView6 = (TextView) uo.s(viewInflate2, R.id.no_server_added_text_view);
+                                                                                                                        if (textView6 != null) {
+                                                                                                                            i10 = R.id.server_info_sector;
+                                                                                                                            ConstraintLayout constraintLayout = (ConstraintLayout) uo.s(viewInflate2, R.id.server_info_sector);
+                                                                                                                            if (constraintLayout != null) {
+                                                                                                                                i10 = R.id.server_list_recycler_view;
+                                                                                                                                RecyclerView recyclerView = (RecyclerView) uo.s(viewInflate2, R.id.server_list_recycler_view);
+                                                                                                                                if (recyclerView != null) {
+                                                                                                                                    i10 = R.id.toolbar;
+                                                                                                                                    MaterialToolbar materialToolbar = (MaterialToolbar) uo.s(viewInflate2, R.id.toolbar);
+                                                                                                                                    if (materialToolbar != null) {
+                                                                                                                                        LinearLayout linearLayout4 = (LinearLayout) viewInflate2;
+                                                                                                                                        this.l0 = new ml3(linearLayout4, appBarLayout, materialButton6, textView6, constraintLayout, recyclerView, materialToolbar);
+                                                                                                                                        this.m0.o(materialToolbar);
+                                                                                                                                        ((AppBarLayout) this.l0.a).a(new u7(7, this));
+                                                                                                                                        RecyclerView recyclerView2 = (RecyclerView) this.l0.e;
+                                                                                                                                        Z();
+                                                                                                                                        recyclerView2.setLayoutManager(new LinearLayoutManager(1));
+                                                                                                                                        ((RecyclerView) this.l0.e).setHasFixedSize(true);
+                                                                                                                                        zd0 zd0Var = new zd0(this);
+                                                                                                                                        this.o0 = zd0Var;
+                                                                                                                                        ((RecyclerView) this.l0.e).setAdapter(zd0Var);
+                                                                                                                                        ((s24) ((na4) this.n0.c.o).n).i().a(new String[]{"server"}, new o54(i9)).e(v(), new d8(i9, this));
+                                                                                                                                        ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) ((MaterialButton) this.l0.b).getLayoutParams();
+                                                                                                                                        int i11 = marginLayoutParams.bottomMargin;
+                                                                                                                                        MaterialButton materialButton7 = (MaterialButton) this.l0.b;
+                                                                                                                                        q31 q31Var = new q31(i11, i4, marginLayoutParams);
+                                                                                                                                        WeakHashMap weakHashMap2 = j65.a;
+                                                                                                                                        a65.c(materialButton7, q31Var);
+                                                                                                                                        ((MaterialButton) this.l0.b).setOnClickListener(new p6(24, this));
+                                                                                                                                        return linearLayout4;
+                                                                                                                                    }
+                                                                                                                                }
+                                                                                                                            }
+                                                                                                                        }
+                                                                                                                    }
+                                                                                                                }
+                                                                                                                nz2.n("Missing required view with ID: ".concat(viewInflate2.getResources().getResourceName(i10)));
+                                                                                                                return null;
+                                                                                                            }
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        nz2.n("Missing required view with ID: ".concat(viewInflate.getResources().getResourceName(i2)));
         return null;
     }
 
@@ -289,57 +698,49 @@ public class LoginFragment extends kc1 implements ClickCallback {
     }
 
     @Override // defpackage.kc1
-    public final boolean N(MenuItem r2) {
-        if (r2.getItemId() != R.id.action_add) goto L6;
+    public final boolean N(MenuItem menuItem) {
+        if (menuItem.getItemId() != R.id.action_add) {
+            return false;
+        }
         new ra4().m0(this.m0.k(), null);
         return true;
-    L6:
-        return false;
     }
 
     @Override // com.eddyizm.tempus.interfaces.ClickCallback
-    public final void onServerClick(Bundle r11) {
-        Server r12 = (Server) r11.getParcelable("server_object");
-        String r0 = r12.getServerId();
-        String r1 = r12.getAddress();
-        String r2 = r12.getLocalAddress();
-        String r3 = r12.getUsername();
-        String r4 = r12.getPassword();
-        boolean r5 = r12.isLowSecurity();
-        String r13 = r12.getClientCert();
-        String r6 = ud3.u();
-        if (Objects.equals(r6, r1) == false) goto L5;
-    L8:
-        boolean r7 = true;
-    L9:
-        ud3.w0(r0);
-        ud3.v0(r1);
-        ud3.n0(r2);
-        if (r7 == true) goto L12;
-        ud3.m0(r1);
-    L12:
-        ud3.D0(r3);
-        ud3.q0(r4);
-        ud3.o0(r5);
-        ud3.h0(r13);
+    public final void onServerClick(Bundle bundle) {
+        Server server = (Server) bundle.getParcelable("server_object");
+        String serverId = server.getServerId();
+        String address = server.getAddress();
+        String localAddress = server.getLocalAddress();
+        String username = server.getUsername();
+        String password = server.getPassword();
+        boolean zIsLowSecurity = server.isLowSecurity();
+        String clientCert = server.getClientCert();
+        String strU = ud3.u();
+        boolean z = Objects.equals(strU, address) || Objects.equals(strU, localAddress);
+        ud3.w0(serverId);
+        ud3.v0(address);
+        ud3.n0(localAddress);
+        if (!z) {
+            ud3.m0(address);
+        }
+        ud3.D0(username);
+        ud3.q0(password);
+        ud3.o0(zIsLowSecurity);
+        ud3.h0(clientCert);
         App.f(true);
-        ie2 r14 = new ie2(this);
-        pn4 r10 = App.f(false);
-        if (r10.c != null) goto L15;
-        r10.c = new gp3(r10, 21);
-    L15:
-        r10.c.u().enqueue(new rm2(23, r14));
-        return;
-    L5:
-        if (Objects.equals(r6, r2) == true) goto L8;
-        r7 = false;
-        goto L9
+        ie2 ie2Var = new ie2(this);
+        pn4 pn4VarF = App.f(false);
+        if (pn4VarF.c == null) {
+            pn4VarF.c = new gp3(pn4VarF, 21);
+        }
+        pn4VarF.c.u().enqueue(new rm2(23, ie2Var));
     }
 
     @Override // com.eddyizm.tempus.interfaces.ClickCallback
-    public final void onServerLongClick(Bundle r2) {
-        ra4 r0 = new ra4();
-        r0.c0(r2);
-        r0.m0(this.m0.k(), null);
+    public final void onServerLongClick(Bundle bundle) {
+        ra4 ra4Var = new ra4();
+        ra4Var.c0(bundle);
+        ra4Var.m0(this.m0.k(), null);
     }
 }

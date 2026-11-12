@@ -10,12 +10,13 @@ public final class ol3 extends cx3 {
     public final lv4 u;
     public final /* synthetic */ zd0 v;
 
-    public ol3(zd0 r3, lv4 r4) {
-        this.v = r3;
-        super((ConstraintLayout) r4.n);
-        this.u = r4;
-        ((TextView) r4.t).setSelected(true);
-        ((ImageView) r4.s).setOnClickListener(new bj3(6, this));
-        ((ImageView) r4.r).setOnTouchListener(new s7(7, this));
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public ol3(zd0 zd0Var, lv4 lv4Var) {
+        super((ConstraintLayout) lv4Var.n);
+        this.v = zd0Var;
+        this.u = lv4Var;
+        ((TextView) lv4Var.t).setSelected(true);
+        ((ImageView) lv4Var.s).setOnClickListener(new bj3(6, this));
+        ((ImageView) lv4Var.r).setOnTouchListener(new s7(7, this));
     }
 }

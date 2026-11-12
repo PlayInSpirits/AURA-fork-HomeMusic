@@ -16,19 +16,11 @@ public final class ho2 {
     public int A;
     public boolean B;
     public final Context a;
-    public final Executor b;
     public final nm0 c;
     public final PlaybackSession d;
-    public final long e;
-    public final bu4 f;
-    public final zt4 g;
-    public final HashMap h;
-    public final HashMap i;
     public String j;
     public PlaybackMetrics.Builder k;
     public int l;
-    public int m;
-    public int n;
     public PlaybackException o;
     public ue1 p;
     public ue1 q;
@@ -41,45 +33,49 @@ public final class ho2 {
     public boolean x;
     public int y;
     public int z;
+    public final Executor b = uo.t();
+    public final bu4 f = new bu4();
+    public final zt4 g = new zt4();
+    public final HashMap i = new HashMap();
+    public final HashMap h = new HashMap();
+    public final long e = SystemClock.elapsedRealtime();
+    public int m = 0;
+    public int n = 0;
 
-    public ho2(Context r1, PlaybackSession r2) {
-        this.a = r1.getApplicationContext();
-        this.d = r2;
-        this.b = uo.t();
-        this.f = new bu4();
-        this.g = new zt4();
-        this.i = new HashMap();
-        this.h = new HashMap();
-        this.e = SystemClock.elapsedRealtime();
-        this.m = 0;
-        this.n = 0;
-        nm0 r3 = new nm0();
-        this.c = r3;
-        r3.d = this;
+    public ho2(Context context, PlaybackSession playbackSession) {
+        this.a = context.getApplicationContext();
+        this.d = playbackSession;
+        nm0 nm0Var = new nm0();
+        this.c = nm0Var;
+        nm0Var.d = this;
     }
 
-    public final boolean a(ue1 r2) {
-        if (r2 == null) goto L14;
-        String r3 = (String) r2.q;
-        nm0 r1 = this.c;
-        monitor-enter(r1);
-        String r0 = r1.f;     // Catch: Throwable -> L11
-        monitor-exit(r1);
-        if (r3.equals(r0) == false) goto L18;
-        return true;
-    L18:
-        return false;
-    L11:
-        th = move-exception;
-        throw th;
-    L14:
-        return false;
+    public final boolean a(ue1 ue1Var) {
+        String str;
+        if (ue1Var == null) {
+            return false;
+        }
+        String str2 = (String) ue1Var.q;
+        nm0 nm0Var = this.c;
+        synchronized (nm0Var) {
+            str = nm0Var.f;
+        }
+        return str2.equals(str);
     }
 
     public final void b() {
-        PlaybackMetrics.Builder r0 = this.k;
-        if (r0 != null) goto L5;
-    L21:
+        PlaybackMetrics.Builder builder = this.k;
+        if (builder != null && this.B) {
+            builder.setAudioUnderrunCount(this.A);
+            this.k.setVideoFramesDropped(this.y);
+            this.k.setVideoFramesPlayed(this.z);
+            Long l = (Long) this.h.get(this.j);
+            this.k.setNetworkTransferDurationMillis(l == null ? 0L : l.longValue());
+            Long l2 = (Long) this.i.get(this.j);
+            this.k.setNetworkBytesRead(l2 == null ? 0L : l2.longValue());
+            this.k.setStreamSource((l2 == null || l2.longValue() <= 0) ? 0 : 1);
+            this.b.execute(new ws1(26, this, this.k.build()));
+        }
         this.k = null;
         this.j = null;
         this.A = 0;
@@ -89,179 +85,113 @@ public final class ho2 {
         this.t = null;
         this.u = null;
         this.B = false;
-        return;
-    L5:
-        if (this.B == false) goto L21;
-        fo2.w(r0, this.A);
-        fo2.y(this.k, this.y);
-        fo2.A(this.k, this.z);
-        Long r1 = (Long) this.h.get(this.j);
-        PlaybackMetrics.Builder r2 = this.k;
-        if (r1 != null) goto L9;
-        long r5 = 0;
-    L10:
-        fo2.p(r2, r5);
-        Long r3 = (Long) this.i.get(this.j);
-        PlaybackMetrics.Builder r4 = this.k;
-        if (r3 != null) goto L13;
-        long r6 = 0;
-    L14:
-        fo2.x(r4, r6);
-        PlaybackMetrics.Builder r7 = this.k;
-        if (r3 != null) goto L17;
-    L19:
-        int r8 = 0;
-    L20:
-        fo2.B(r7, r8);
-        this.b.execute(new ws1(26, this, fo2.i(this.k)));
-        goto L21
-    L17:
-        if (r3.longValue() <= 0) goto L19;
-        r8 = 1;
-        goto L20
-    L13:
-        r6 = r3.longValue();
-        goto L14
-    L9:
-        r5 = r1.longValue();
-        goto L10
     }
 
-    public final void c(cu4 r9, mt2 r10) {
-        PlaybackMetrics.Builder r0 = this.k;
-        if (r10 == null) goto L34;
-        int r11 = r9.b(r10.a);
-        if (r11 != (-1)) goto L8;
-        return;
-    L8:
-        zt4 r1 = this.g;
-        int r2 = 0;
-        r9.f(r11, r1, false);
-        int r12 = r1.c;
-        bu4 r3 = this.f;
-        r9.n(r12, r3);
-        bn2 r13 = r3.b.b;
-        int r14 = 2;
-        if (r13 == null) goto L19;
-        int r15 = f35.J(r13.a, r13.b);
-        if (r15 == 0) goto L18;
-        if (r15 == 1) goto L17;
-        if (r15 == 2) goto L16;
-        r2 = 1;
-        goto L19
-    L16:
-        r2 = 4;
-        goto L19
-    L17:
-        r2 = 5;
-        goto L19
-    L18:
-        r2 = 3;
-    L19:
-        fo2.C(r0, r2);
-        if (r3.l == (-9223372036854775807L)) goto L29;
-        if (r3.j == true) goto L29;
-        if (r3.h == true) goto L29;
-        if (r3.a() == true) goto L29;
-        fo2.z(r0, f35.i0(r3.l));
-    L29:
-        if (r3.a() == true) goto L32;
-        r14 = 1;
-    L32:
-        fo2.D(r0, r14);
+    public final void c(cu4 cu4Var, mt2 mt2Var) {
+        int iB;
+        PlaybackMetrics.Builder builder = this.k;
+        if (mt2Var == null || (iB = cu4Var.b(mt2Var.a)) == -1) {
+            return;
+        }
+        zt4 zt4Var = this.g;
+        int i = 0;
+        cu4Var.f(iB, zt4Var, false);
+        int i2 = zt4Var.c;
+        bu4 bu4Var = this.f;
+        cu4Var.n(i2, bu4Var);
+        bn2 bn2Var = bu4Var.b.b;
+        if (bn2Var != null) {
+            int iJ = f35.J(bn2Var.a, bn2Var.b);
+            if (iJ == 0) {
+                i = 3;
+            } else if (iJ != 1) {
+                i = iJ != 2 ? 1 : 4;
+            } else {
+                i = 5;
+            }
+        }
+        builder.setStreamType(i);
+        if (bu4Var.l != -9223372036854775807L && !bu4Var.j && !bu4Var.h && !bu4Var.a()) {
+            builder.setMediaDurationMillis(f35.i0(bu4Var.l));
+        }
+        builder.setPlaybackType(bu4Var.a() ? 2 : 1);
         this.B = true;
-        return;
     }
 
-    public final void d(q9 r1, String r2) {
-        mt2 r3 = r1.d;
-        if (r3 == null) goto L7;
-        if (r3.b() == false) goto L7;
-    L10:
-        this.h.remove(r2);
-        this.i.remove(r2);
-        return;
-    L7:
-        if (r2.equals(this.j) == false) goto L10;
-        b();
-        goto L10
+    public final void d(q9 q9Var, String str) {
+        mt2 mt2Var = q9Var.d;
+        if ((mt2Var == null || !mt2Var.b()) && str.equals(this.j)) {
+            b();
+        }
+        this.h.remove(str);
+        this.i.remove(str);
     }
 
-    public final void e(int r3, long r4, tb1 r6, int r7) {
-        TrackChangeEvent.Builder r5 = fo2.n(go2.g(r3), r4 - this.e);
-        if (r6 == null) goto L48;
-        hd0.r(r5);
-        if (r7 == 1) goto L11;
-        int r0 = 3;
-        if (r7 == 2) goto L12;
-        if (r7 == 3) goto L10;
-        r0 = 1;
-        goto L12
-    L10:
-        r0 = 4;
-    L12:
-        hd0.s(r5, r0);
-        String r8 = r6.m;
-        if (r8 == null) goto L15;
-        hd0.t(r5, r8);
-    L15:
-        String r9 = r6.n;
-        if (r9 == null) goto L18;
-        hd0.z(r5, r9);
-    L18:
-        String r10 = r6.k;
-        if (r10 == null) goto L21;
-        hd0.B(r5, r10);
-    L21:
-        int r11 = r6.j;
-        if (r11 == (-1)) goto L24;
-        hd0.y(r5, r11);
-    L24:
-        int r12 = r6.u;
-        if (r12 == (-1)) goto L27;
-        hd0.A(r5, r12);
-    L27:
-        int r13 = r6.v;
-        if (r13 == (-1)) goto L30;
-        hd0.C(r5, r13);
-    L30:
-        int r14 = r6.F;
-        if (r14 == (-1)) goto L33;
-        hd0.D(r5, r14);
-    L33:
-        int r15 = r6.G;
-        if (r15 == (-1)) goto L36;
-        go2.p(r5, r15);
-    L36:
-        String r16 = r6.d;
-        if (r16 == null) goto L45;
-        String r1 = f35.a;
-        String[] r17 = r16.split("-", -1);
-        String r2 = r17[0];
-        if (r17.length < 2) goto L41;
-        String r18 = r17[1];
-    L42:
-        Pair r19 = Pair.create(r2, r18);
-        go2.q(r5, (String) r19.first);
-        Object r20 = r19.second;
-        if (r20 == null) goto L45;
-        go2.C(r5, (String) r20);
-        goto L45
-    L41:
-        r18 = null;
-    L45:
-        float r21 = r6.y;
-        if (r21 == (-1.0f)) goto L49;
-        go2.o(r5, r21);
-    L49:
+    public final void e(int i, long j, tb1 tb1Var, int i2) {
+        int i3;
+        TrackChangeEvent.Builder timeSinceCreatedMillis = go2.g(i).setTimeSinceCreatedMillis(j - this.e);
+        if (tb1Var != null) {
+            timeSinceCreatedMillis.setTrackState(1);
+            if (i2 != 1) {
+                i3 = 3;
+                if (i2 != 2) {
+                    i3 = i2 != 3 ? 1 : 4;
+                }
+            } else {
+                i3 = 2;
+            }
+            timeSinceCreatedMillis.setTrackChangeReason(i3);
+            String str = tb1Var.m;
+            if (str != null) {
+                timeSinceCreatedMillis.setContainerMimeType(str);
+            }
+            String str2 = tb1Var.n;
+            if (str2 != null) {
+                timeSinceCreatedMillis.setSampleMimeType(str2);
+            }
+            String str3 = tb1Var.k;
+            if (str3 != null) {
+                timeSinceCreatedMillis.setCodecName(str3);
+            }
+            int i4 = tb1Var.j;
+            if (i4 != -1) {
+                timeSinceCreatedMillis.setBitrate(i4);
+            }
+            int i5 = tb1Var.u;
+            if (i5 != -1) {
+                timeSinceCreatedMillis.setWidth(i5);
+            }
+            int i6 = tb1Var.v;
+            if (i6 != -1) {
+                timeSinceCreatedMillis.setHeight(i6);
+            }
+            int i7 = tb1Var.F;
+            if (i7 != -1) {
+                timeSinceCreatedMillis.setChannelCount(i7);
+            }
+            int i8 = tb1Var.G;
+            if (i8 != -1) {
+                timeSinceCreatedMillis.setAudioSampleRate(i8);
+            }
+            String str4 = tb1Var.d;
+            if (str4 != null) {
+                String str5 = f35.a;
+                String[] strArrSplit = str4.split("-", -1);
+                Pair pairCreate = Pair.create(strArrSplit[0], strArrSplit.length >= 2 ? strArrSplit[1] : null);
+                timeSinceCreatedMillis.setLanguage((String) pairCreate.first);
+                Object obj = pairCreate.second;
+                if (obj != null) {
+                    timeSinceCreatedMillis.setLanguageRegion((String) obj);
+                }
+            }
+            float f = tb1Var.y;
+            if (f != -1.0f) {
+                timeSinceCreatedMillis.setVideoFrameRate(f);
+            }
+        } else {
+            timeSinceCreatedMillis.setTrackState(0);
+        }
         this.B = true;
-        this.b.execute(new ws1(23, this, hd0.l(r5)));
-        return;
-    L11:
-        r0 = 2;
-        goto L12
-    L48:
-        go2.n(r5);
-        goto L49
+        this.b.execute(new ws1(23, this, timeSinceCreatedMillis.build()));
     }
 }

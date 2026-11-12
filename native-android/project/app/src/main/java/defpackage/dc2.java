@@ -7,15 +7,15 @@ import android.content.DialogInterface;
 public final class dc2 implements DialogInterface.OnClickListener {
     public final /* synthetic */ ec2 n;
 
-    public dc2(ec2 r1) {
-        this.n = r1;
+    public dc2(ec2 ec2Var) {
+        this.n = ec2Var;
     }
 
     @Override // android.content.DialogInterface.OnClickListener
-    public final void onClick(DialogInterface r1, int r2) {
-        ec2 r0 = this.n;
-        r0.J0 = r2;
-        r0.I0 = -1;
-        r1.dismiss();
+    public final void onClick(DialogInterface dialogInterface, int i) {
+        ec2 ec2Var = this.n;
+        ec2Var.J0 = i;
+        ec2Var.I0 = -1;
+        dialogInterface.dismiss();
     }
 }

@@ -4,7 +4,7 @@ package defpackage;
 /* JADX INFO: loaded from: classes.dex */
 public final class d54 implements b75 {
     @Override // defpackage.b75
-    public final x65 c(i30 r1, f03 r2) {
+    public final x65 c(i30 i30Var, f03 f03Var) {
         return new g54();
     }
 }

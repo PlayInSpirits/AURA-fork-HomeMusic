@@ -6,42 +6,39 @@ public final class l84 {
     public final o84 a;
     public final o84 b;
 
-    public l84(o84 r1, o84 r2) {
-        this.a = r1;
-        this.b = r2;
+    public l84(o84 o84Var, o84 o84Var2) {
+        this.a = o84Var;
+        this.b = o84Var2;
     }
 
-    public final boolean equals(Object r5) {
-        if (this != r5) goto L6;
-        return true;
-    L6:
-        if (r5 != null) goto L8;
-    L15:
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj != null && l84.class == obj.getClass()) {
+            l84 l84Var = (l84) obj;
+            if (this.a.equals(l84Var.a) && this.b.equals(l84Var.b)) {
+                return true;
+            }
+        }
         return false;
-    L8:
-        if (l84.class != r5.getClass()) goto L15;
-        l84 r6 = (l84) r5;
-        if (this.a.equals(r6.a) == false) goto L15;
-        if (this.b.equals(r6.b) == false) goto L15;
-        return true;
     }
 
     public final int hashCode() {
-        int r0 = this.a.hashCode() * 31;
-        return this.b.hashCode() + r0;
+        return this.b.hashCode() + (this.a.hashCode() * 31);
     }
 
     public final String toString() {
-        StringBuilder r0 = new StringBuilder("[");
-        o84 r1 = this.a;
-        r0.append(r1);
-        o84 r3 = this.b;
-        if (r1.equals(r3) == false) goto L5;
-        String r4 = "";
-    L7:
-        return b11.q(r0, r4, "]");
-    L5:
-        r4 = ", " + r3;
-        goto L7
+        String str;
+        StringBuilder sb = new StringBuilder("[");
+        o84 o84Var = this.a;
+        sb.append(o84Var);
+        o84 o84Var2 = this.b;
+        if (o84Var.equals(o84Var2)) {
+            str = "";
+        } else {
+            str = ", " + o84Var2;
+        }
+        return b11.q(sb, str, "]");
     }
 }

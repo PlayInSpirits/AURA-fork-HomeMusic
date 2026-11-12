@@ -5,26 +5,20 @@ package defpackage;
 public final class on4 extends cd4 implements ll4 {
     @Override // defpackage.ll4
     public final Object getValue() {
-        monitor-enter(this);
-        Object[] r0 = this.u;     // Catch: Throwable -> L6
-        r0.getClass();     // Catch: Throwable -> L6
-        Integer r1 = Integer.valueOf(((Number) r0[((int) ((this.v + ((long) ((int) ((o() + ((long) this.x)) - this.v)))) - 1)) & (r0.length - 1)]).intValue());     // Catch: Throwable -> L6
-        monitor-exit(this);
-        return r1;
-    L6:
-        th = move-exception;
-        throw th;
+        Integer numValueOf;
+        synchronized (this) {
+            Object[] objArr = this.u;
+            objArr.getClass();
+            numValueOf = Integer.valueOf(((Number) objArr[((int) ((this.v + ((long) ((int) ((o() + ((long) this.x)) - this.v)))) - 1)) & (objArr.length - 1)]).intValue());
+        }
+        return numValueOf;
     }
 
-    public final void w(int r8) {
-        monitor-enter(this);
-        Object[] r0 = this.u;     // Catch: Throwable -> L6
-        r0.getClass();     // Catch: Throwable -> L6
-        q(Integer.valueOf(((Number) r0[((int) ((this.v + ((long) ((int) ((o() + ((long) this.x)) - this.v)))) - 1)) & (r0.length - 1)]).intValue() + r8));     // Catch: Throwable -> L6
-        monitor-exit(this);
-        return;
-    L6:
-        th = move-exception;
-        throw th;
+    public final void w(int i) {
+        synchronized (this) {
+            Object[] objArr = this.u;
+            objArr.getClass();
+            q(Integer.valueOf(((Number) objArr[((int) ((this.v + ((long) ((int) ((o() + ((long) this.x)) - this.v)))) - 1)) & (objArr.length - 1)]).intValue() + i));
+        }
     }
 }

@@ -9,31 +9,25 @@ public final class ed5 implements Callable {
     public final /* synthetic */ w24 a;
     public final /* synthetic */ fd5 b;
 
-    public ed5(fd5 r1, w24 r2) {
-        this.b = r1;
-        this.a = r2;
+    public ed5(fd5 fd5Var, w24 w24Var) {
+        this.b = fd5Var;
+        this.a = w24Var;
     }
 
     @Override // java.util.concurrent.Callable
     public final Object call() {
-        Cursor r2 = xl.H(this.b.a, this.a);
-    L9:
-        th = move-exception;
-        r2.close();
-        throw th;
-    L4:
-        if (r2.moveToFirst() == false) goto L11;
-        boolean r0 = false;
-        if (r2.getInt(0) == 0) goto L8;
-        r0 = true;
-    L8:
-        Boolean r1 = Boolean.valueOf(r0);     // Catch: Throwable -> L9
-    L12:
-        r2.close();
-        return r1;
-    L11:
-        r1 = Boolean.FALSE;     // Catch: Throwable -> L9
-        goto L12
+        Boolean boolValueOf;
+        Cursor cursorH = xl.H(this.b.a, this.a);
+        try {
+            if (cursorH.moveToFirst()) {
+                boolValueOf = Boolean.valueOf(cursorH.getInt(0) != 0);
+            } else {
+                boolValueOf = Boolean.FALSE;
+            }
+            return boolValueOf;
+        } finally {
+            cursorH.close();
+        }
     }
 
     public final void finalize() {

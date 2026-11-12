@@ -12,39 +12,33 @@ public final class yl4 implements ci0 {
     public Uri p;
     public Map q;
 
-    public yl4(ci0 r1) {
-        r1.getClass();
-        this.n = r1;
+    public yl4(ci0 ci0Var) {
+        ci0Var.getClass();
+        this.n = ci0Var;
         this.p = Uri.EMPTY;
         this.q = Collections.EMPTY_MAP;
     }
 
     @Override // defpackage.ci0
-    public final long b(ii0 r4) {
-        ci0 r0 = this.n;
-        this.p = r4.a;
+    public final long b(ii0 ii0Var) {
+        ci0 ci0Var = this.n;
+        this.p = ii0Var.a;
         this.q = Collections.EMPTY_MAP;
-        long r1 = r0.b(r4);     // Catch: Throwable -> L9
-        Uri r5 = r0.m();
-        if (r5 == null) goto L7;
-        this.p = r5;
-    L7:
-        this.q = r0.j();
-        return r1;
-    L9:
-        th = move-exception;
-        Uri r2 = r0.m();
-        if (r2 == null) goto L13;
-        this.p = r2;
-    L13:
-        this.q = r0.j();
-        throw th;
+        try {
+            return ci0Var.b(ii0Var);
+        } finally {
+            Uri uriM = ci0Var.m();
+            if (uriM != null) {
+                this.p = uriM;
+            }
+            this.q = ci0Var.j();
+        }
     }
 
     @Override // defpackage.ci0
-    public final void c(rw4 r1) {
-        r1.getClass();
-        this.n.c(r1);
+    public final void c(rw4 rw4Var) {
+        rw4Var.getClass();
+        this.n.c(rw4Var);
     }
 
     @Override // defpackage.ci0
@@ -63,11 +57,11 @@ public final class yl4 implements ci0 {
     }
 
     @Override // defpackage.wh0
-    public final int read(byte[] r3, int r4, int r5) {
-        int r6 = this.n.read(r3, r4, r5);
-        if (r6 == (-1)) goto L5;
-        this.o += (long) r6;
-    L5:
-        return r6;
+    public final int read(byte[] bArr, int i, int i2) {
+        int i3 = this.n.read(bArr, i, i2);
+        if (i3 != -1) {
+            this.o += (long) i3;
+        }
+        return i3;
     }
 }

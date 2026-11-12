@@ -3,37 +3,33 @@ package defpackage;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class ea3 extends e22 {
-    public static final ea3 f = null;
-
-    static {
-        f = new ea3(0, 3, 1);
-    }
+    public static final ea3 f = new ea3(0, 3, 1);
 
     @Override // defpackage.e22
-    public final void d(x20 r7, bi r8, lg4 r9, uy3 r10, wa3 r11) {
-        ig4 r0 = (ig4) r7.d(1);
-        mg1 r2 = (mg1) r7.d(0);
-        p71 r12 = (p71) r7.d(2);
-        lg4 r3 = r0.e();
-        if (r11 != null) goto L16;
-        hd5 r4 = null;
-    L9:
-        if (r12.e.w0() == true) goto L11;
-        l80.a("FixupList has pending fixup operations that were not realized. Were there mismatched insertNode() and endNodeInsert() calls?");     // Catch: Throwable -> L5
-    L11:
-        r12.d.v0(r8, r3, r10, r4);     // Catch: Throwable -> L5
-        r3.e(true);
-        r9.d();
-        r2.getClass();
-        r9.A(r0, r0.a(r2));
-        r9.k();
-        return;
-    L5:
-        th = move-exception;
-        r3.e(false);
-        throw th;
-    L16:
-        r4 = new hd5(16, r11, r9);     // Catch: Throwable -> L5
-        goto L9
+    public final void d(x20 x20Var, bi biVar, lg4 lg4Var, uy3 uy3Var, wa3 wa3Var) {
+        hd5 hd5Var;
+        ig4 ig4Var = (ig4) x20Var.d(1);
+        mg1 mg1Var = (mg1) x20Var.d(0);
+        p71 p71Var = (p71) x20Var.d(2);
+        lg4 lg4VarE = ig4Var.e();
+        if (wa3Var != null) {
+            try {
+                hd5Var = new hd5(16, wa3Var, lg4Var);
+            } catch (Throwable th) {
+                lg4VarE.e(false);
+                throw th;
+            }
+        } else {
+            hd5Var = null;
+        }
+        if (!p71Var.e.w0()) {
+            l80.a("FixupList has pending fixup operations that were not realized. Were there mismatched insertNode() and endNodeInsert() calls?");
+        }
+        p71Var.d.v0(biVar, lg4VarE, uy3Var, hd5Var);
+        lg4VarE.e(true);
+        lg4Var.d();
+        mg1Var.getClass();
+        lg4Var.A(ig4Var, ig4Var.a(mg1Var));
+        lg4Var.k();
     }
 }

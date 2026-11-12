@@ -5,66 +5,49 @@ package defpackage;
 public final class ul0 {
     public final long a;
     public final long b;
-    public long c;
-    public long d;
-    public long e;
-    public long f;
-    public long g;
-    public long h;
-    public float i;
-    public float j;
-    public float k;
-    public long l;
-    public long m;
-    public long n;
+    public long c = -9223372036854775807L;
+    public long d = -9223372036854775807L;
+    public long f = -9223372036854775807L;
+    public long g = -9223372036854775807L;
+    public float j = 0.97f;
+    public float i = 1.03f;
+    public float k = 1.0f;
+    public long l = -9223372036854775807L;
+    public long e = -9223372036854775807L;
+    public long h = -9223372036854775807L;
+    public long m = -9223372036854775807L;
+    public long n = -9223372036854775807L;
 
-    public ul0(long r1, long r3) {
-        this.a = r1;
-        this.b = r3;
-        this.c = -9223372036854775807L;
-        this.d = -9223372036854775807L;
-        this.f = -9223372036854775807L;
-        this.g = -9223372036854775807L;
-        this.j = 0.97f;
-        this.i = 1.03f;
-        this.k = 1.0f;
-        this.l = -9223372036854775807L;
-        this.e = -9223372036854775807L;
-        this.h = -9223372036854775807L;
-        this.m = -9223372036854775807L;
-        this.n = -9223372036854775807L;
+    public ul0(long j, long j2) {
+        this.a = j;
+        this.b = j2;
     }
 
     public final void a() {
-        long r0 = this.c;
-        if (r0 == (-9223372036854775807L)) goto L18;
-        long r4 = this.d;
-        if (r4 != (-9223372036854775807L)) goto L20;
-        long r5 = this.f;
-        if (r5 != (-9223372036854775807L)) goto L10;
-    L12:
-        r4 = this.g;
-        if (r4 != (-9223372036854775807L)) goto L15;
-    L17:
-        r4 = r0;
-        goto L20
-    L15:
-        if (r0 <= r4) goto L17;
-    L10:
-        if (r0 >= r5) goto L12;
-        r0 = r5;
-    L20:
-        if (this.e != r4) goto L22;
-        return;
-    L22:
-        this.e = r4;
-        this.h = r4;
+        long j;
+        long j2 = this.c;
+        if (j2 != -9223372036854775807L) {
+            j = this.d;
+            if (j == -9223372036854775807L) {
+                long j3 = this.f;
+                if (j3 != -9223372036854775807L && j2 < j3) {
+                    j2 = j3;
+                }
+                j = this.g;
+                if (j == -9223372036854775807L || j2 <= j) {
+                    j = j2;
+                }
+            }
+        } else {
+            j = -9223372036854775807L;
+        }
+        if (this.e == j) {
+            return;
+        }
+        this.e = j;
+        this.h = j;
         this.m = -9223372036854775807L;
         this.n = -9223372036854775807L;
         this.l = -9223372036854775807L;
-        return;
-    L18:
-        r4 = -9223372036854775807L;
-        goto L20
     }
 }

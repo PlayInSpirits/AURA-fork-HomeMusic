@@ -6,31 +6,24 @@ public final class fs1 {
     public final int a;
     public final String b;
 
-    public fs1(int r1, String r2) {
-        this.a = r1;
-        this.b = r2;
+    public fs1(int i, String str) {
+        this.a = i;
+        this.b = str;
     }
 
-    public final boolean equals(Object r3) {
-        if (this != r3) goto L5;
-        return true;
-    L5:
-        if ((r3 instanceof fs1) == false) goto L16;
-        fs1 r4 = (fs1) r3;
-        if (this.a == r4.a) goto L11;
-        return false;
-    L11:
-        if (this.b.equals(r4.b) == true) goto L14;
-        return false;
-    L14:
-        return true;
-    L16:
-        return false;
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof fs1)) {
+            return false;
+        }
+        fs1 fs1Var = (fs1) obj;
+        return this.a == fs1Var.a && this.b.equals(fs1Var.b);
     }
 
     public final int hashCode() {
-        int r0 = Integer.hashCode(this.a) * 31;
-        return this.b.hashCode() + r0;
+        return this.b.hashCode() + (Integer.hashCode(this.a) * 31);
     }
 
     public final String toString() {

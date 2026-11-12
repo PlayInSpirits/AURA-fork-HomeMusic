@@ -10,24 +10,18 @@ public final class na1 {
     public String b;
     public List c;
 
-    public final boolean equals(Object r5) {
-        if (this != r5) goto L6;
-        return true;
-    L6:
-        if ((r5 instanceof na1) == true) goto L8;
-        return false;
-    L8:
-        na1 r6 = (na1) r5;
-        if (Objects.equals(this.a, r6.a) == true) goto L11;
-    L15:
-        return false;
-    L11:
-        if (Objects.equals(this.b, r6.b) == false) goto L15;
-        if (Objects.equals(this.c, r6.c) == false) goto L15;
-        return true;
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof na1)) {
+            return false;
+        }
+        na1 na1Var = (na1) obj;
+        return Objects.equals(this.a, na1Var.a) && Objects.equals(this.b, na1Var.b) && Objects.equals(this.c, na1Var.c);
     }
 
     public final int hashCode() {
-        return Objects.hash(new Object[]{this.a, this.b, this.c});
+        return Objects.hash(this.a, this.b, this.c);
     }
 }

@@ -6,31 +6,31 @@ public final class mk1 extends ja4 {
     public bz4 a;
 
     @Override // defpackage.bz4
-    public final Object a(l32 r1) {
-        bz4 r0 = this.a;
-        if (r0 != null) goto L5;
+    public final Object a(l32 l32Var) {
+        bz4 bz4Var = this.a;
+        if (bz4Var != null) {
+            return bz4Var.a(l32Var);
+        }
         kf2.o("Adapter for type with cyclic dependency has been used before dependency has been resolved");
         return null;
-    L5:
-        return r0.a(r1);
     }
 
     @Override // defpackage.bz4
-    public final void b(q32 r1, Object r2) {
-        bz4 r0 = this.a;
-        if (r0 == null) goto L6;
-        r0.b(r1, r2);
-        return;
-    L6:
-        kf2.o("Adapter for type with cyclic dependency has been used before dependency has been resolved");
+    public final void b(q32 q32Var, Object obj) {
+        bz4 bz4Var = this.a;
+        if (bz4Var != null) {
+            bz4Var.b(q32Var, obj);
+        } else {
+            kf2.o("Adapter for type with cyclic dependency has been used before dependency has been resolved");
+        }
     }
 
     @Override // defpackage.ja4
     public final bz4 c() {
-        bz4 r0 = this.a;
-        if (r0 == null) goto L5;
-        return r0;
-    L5:
+        bz4 bz4Var = this.a;
+        if (bz4Var != null) {
+            return bz4Var;
+        }
         kf2.o("Adapter for type with cyclic dependency has been used before dependency has been resolved");
         return null;
     }

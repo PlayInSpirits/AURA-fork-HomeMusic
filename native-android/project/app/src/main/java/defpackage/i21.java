@@ -5,9 +5,9 @@ package defpackage;
 public final class i21 extends j21 {
     public final gu4 p;
 
-    public i21(long r1, gu4 r3) {
-        super(r1);
-        this.p = r3;
+    public i21(long j, gu4 gu4Var) {
+        super(j);
+        this.p = gu4Var;
     }
 
     @Override // java.lang.Runnable

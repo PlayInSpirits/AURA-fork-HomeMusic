@@ -9,69 +9,63 @@ public final class eo1 implements TextWatcher {
     public final /* synthetic */ int n;
     public final /* synthetic */ fo1 o;
 
-    public /* synthetic */ eo1(fo1 r1, int r2) {
-        this.n = r2;
-        this.o = r1;
+    public /* synthetic */ eo1(fo1 fo1Var, int i) {
+        this.n = i;
+        this.o = fo1Var;
     }
 
-    private final void a(int r1, int r2, int r3, CharSequence r4) {
+    private final void a(int i, int i2, int i3, CharSequence charSequence) {
     }
 
-    private final void b(int r1, int r2, int r3, CharSequence r4) {
+    private final void b(int i, int i2, int i3, CharSequence charSequence) {
     }
 
-    private final void c(int r1, int r2, int r3, CharSequence r4) {
+    private final void c(int i, int i2, int i3, CharSequence charSequence) {
     }
 
-    private final void d(int r1, int r2, int r3, CharSequence r4) {
+    private final void d(int i, int i2, int i3, CharSequence charSequence) {
     }
 
-    private final void e(int r1, int r2, int r3, CharSequence r4) {
+    private final void e(int i, int i2, int i3, CharSequence charSequence) {
     }
 
-    private final void f(int r1, int r2, int r3, CharSequence r4) {
-    }
-
-    @Override // android.text.TextWatcher
-    public final void afterTextChanged(Editable r2) {
-        int r0 = this.n;
-        fo1 r1 = this.o;
-        switch(r0) {
-            case 0: goto L14;
-            case 1: goto L6;
-            default: goto L4;
-        };
-    L4:
-        r1.e();
-        return;
-    L6:
-        r1.e();
-        if (((String) r1.h) != null) goto L9;
-        return;
-    L9:
-        if (h12.c(qm4.K0(String.valueOf(r2)).toString(), (String) r1.h) == true) goto L17;
-        r1.h = null;
-        co1 r3 = (co1) r1.d;
-        co1 r4 = co1.q;
-        if (r3 != r4) goto L18;
-        r1.s(r4);
-        return;
-    L18:
-        return;
-    L17:
-        return;
-    L14:
-        r1.x();
-        r1.e();
+    private final void f(int i, int i2, int i3, CharSequence charSequence) {
     }
 
     @Override // android.text.TextWatcher
-    public final void beforeTextChanged(CharSequence r1, int r2, int r3, int r4) {
-        int r0 = this.n;
+    public final void afterTextChanged(Editable editable) {
+        int i = this.n;
+        fo1 fo1Var = this.o;
+        switch (i) {
+            case 0:
+                fo1Var.x();
+                fo1Var.e();
+                break;
+            case 1:
+                fo1Var.e();
+                if (((String) fo1Var.h) != null && !h12.c(qm4.K0(String.valueOf(editable)).toString(), (String) fo1Var.h)) {
+                    fo1Var.h = null;
+                    co1 co1Var = (co1) fo1Var.d;
+                    co1 co1Var2 = co1.q;
+                    if (co1Var == co1Var2) {
+                        fo1Var.s(co1Var2);
+                    }
+                    break;
+                }
+                break;
+            default:
+                fo1Var.e();
+                break;
+        }
     }
 
     @Override // android.text.TextWatcher
-    public final void onTextChanged(CharSequence r1, int r2, int r3, int r4) {
-        int r0 = this.n;
+    public final void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
+        int i4 = this.n;
+    }
+
+    @Override // android.text.TextWatcher
+    public final void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
+        int i4 = this.n;
     }
 }

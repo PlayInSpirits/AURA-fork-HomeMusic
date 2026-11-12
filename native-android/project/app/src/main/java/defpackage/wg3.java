@@ -7,17 +7,17 @@ import android.media.MediaRouter;
 public final class wg3 extends oq2 {
     public final MediaRouter.RouteInfo a;
 
-    public wg3(MediaRouter.RouteInfo r1) {
-        this.a = r1;
+    public wg3(MediaRouter.RouteInfo routeInfo) {
+        this.a = routeInfo;
     }
 
     @Override // defpackage.oq2
-    public final void f(int r1) {
-        this.a.requestSetVolume(r1);
+    public final void f(int i) {
+        this.a.requestSetVolume(i);
     }
 
     @Override // defpackage.oq2
-    public final void i(int r1) {
-        this.a.requestUpdateVolume(r1);
+    public final void i(int i) {
+        this.a.requestUpdateVolume(i);
     }
 }

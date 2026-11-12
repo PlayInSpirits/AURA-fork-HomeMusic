@@ -10,67 +10,46 @@ public final class ox4 extends a13 {
     public if1 s;
     public final long t;
 
-    public ox4(a13 r8, if1 r9, if1 r10, boolean r11, boolean r12) {
-        o54 r0 = jh4.a;
-        if (r8 == null) goto L6;
-        if1 r1 = r8.y();
-        if (r1 == null) goto L6;
-    L7:
-        if1 r5 = jh4.k(r9, r1, r11);
-        if (r8 == null) goto L11;
-        if1 r13 = r8.i();
-        if (r13 == null) goto L11;
-    L12:
-        if1 r6 = jh4.l(r10, r13);
-        super(0, gh4.r, r5, r6);
-        this.o = r8;
-        this.p = r11;
-        this.q = r12;
+    /* JADX WARN: Illegal instructions before constructor call */
+    public ox4(a13 a13Var, if1 if1Var, if1 if1Var2, boolean z, boolean z2) {
+        if1 if1VarI;
+        if1 if1VarE;
+        o54 o54Var = jh4.a;
+        super(0L, gh4.r, jh4.k(if1Var, (a13Var == null || (if1VarE = a13Var.e()) == null) ? jh4.j.e : if1VarE, z), jh4.l(if1Var2, (a13Var == null || (if1VarI = a13Var.i()) == null) ? jh4.j.f : if1VarI));
+        this.o = a13Var;
+        this.p = z;
+        this.q = z2;
         this.r = this.e;
         this.s = this.f;
         this.t = te5.m();
-        return;
-    L11:
-        r13 = jh4.j.f;
-    L6:
-        r1 = jh4.j.e;
-        goto L7
     }
 
     @Override // defpackage.a13
-    public final void B(x03 r1) {
+    public final void B(x03 x03Var) {
         te5.Q();
         throw null;
     }
 
     @Override // defpackage.a13
-    public final a13 C(if1 r9, if1 r10) {
-        if1 r4 = jh4.k(r9, this.r, true);
-        if1 r5 = jh4.l(r10, this.s);
-        if (this.p == true) goto L7;
-        return new ox4(D().C(null, r5), r4, r5, false, true);
-    L7:
-        return D().C(r4, r5);
+    public final a13 C(if1 if1Var, if1 if1Var2) {
+        if1 if1VarK = jh4.k(if1Var, this.r, true);
+        if1 if1VarL = jh4.l(if1Var2, this.s);
+        return !this.p ? new ox4(D().C(null, if1VarL), if1VarK, if1VarL, false, true) : D().C(if1VarK, if1VarL);
     }
 
     public final a13 D() {
-        a13 r0 = this.o;
-        if (r0 == null) goto L5;
-        return r0;
-    L5:
-        return jh4.j;
+        a13 a13Var = this.o;
+        return a13Var == null ? jh4.j : a13Var;
     }
 
     @Override // defpackage.a13, defpackage.ch4
     public final void c() {
+        a13 a13Var;
         this.c = true;
-        if (this.q == false) goto L8;
-        a13 r1 = this.o;
-        if (r1 == null) goto L9;
-        r1.c();
-        return;
-    L9:
-        return;
+        if (!this.q || (a13Var = this.o) == null) {
+            return;
+        }
+        a13Var.c();
     }
 
     @Override // defpackage.ch4
@@ -121,34 +100,31 @@ public final class ox4 extends a13 {
     }
 
     @Override // defpackage.a13, defpackage.ch4
-    public final void n(rl4 r1) {
-        D().n(r1);
+    public final void n(rl4 rl4Var) {
+        D().n(rl4Var);
     }
 
     @Override // defpackage.ch4
-    public final void r(gh4 r1) {
+    public final void r(gh4 gh4Var) {
         te5.Q();
         throw null;
     }
 
     @Override // defpackage.ch4
-    public final void s(long r1) {
+    public final void s(long j) {
         te5.Q();
         throw null;
     }
 
     @Override // defpackage.a13, defpackage.ch4
-    public final void t(int r1) {
-        D().t(r1);
+    public final void t(int i) {
+        D().t(i);
     }
 
     @Override // defpackage.a13, defpackage.ch4
-    public final ch4 u(if1 r3) {
-        if1 r4 = jh4.k(r3, this.r, true);
-        if (this.p == true) goto L7;
-        return jh4.g(D().u(null), r4, true);
-    L7:
-        return D().u(r4);
+    public final ch4 u(if1 if1Var) {
+        if1 if1VarK = jh4.k(if1Var, this.r, true);
+        return !this.p ? jh4.g(D().u(null), if1VarK, true) : D().u(if1VarK);
     }
 
     @Override // defpackage.a13
@@ -162,7 +138,8 @@ public final class ox4 extends a13 {
     }
 
     @Override // defpackage.a13
-    public final if1 y() {
+    /* JADX INFO: renamed from: y */
+    public final if1 e() {
         return this.r;
     }
 }

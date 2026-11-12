@@ -11,14 +11,14 @@ import retrofit2.http.QueryMap;
 /* JADX INFO: loaded from: classes.dex */
 public interface hd4 {
     @GET("deleteShare")
-    Call<ApiResponse> a(@QueryMap Map<String, String> r1, @Query("id") String r2);
+    Call<ApiResponse> a(@QueryMap Map<String, String> map, @Query("id") String str);
 
     @GET("getShares")
-    Call<ApiResponse> b(@QueryMap Map<String, String> r1);
+    Call<ApiResponse> b(@QueryMap Map<String, String> map);
 
     @GET("createShare")
-    Call<ApiResponse> c(@QueryMap Map<String, String> r1, @Query("id") String r2, @Query("description") String r3, @Query("expires") Long r4);
+    Call<ApiResponse> c(@QueryMap Map<String, String> map, @Query("id") String str, @Query("description") String str2, @Query("expires") Long l);
 
     @GET("updateShare")
-    Call<ApiResponse> d(@QueryMap Map<String, String> r1, @Query("id") String r2, @Query("description") String r3, @Query("expires") Long r4);
+    Call<ApiResponse> d(@QueryMap Map<String, String> map, @Query("id") String str, @Query("description") String str2, @Query("expires") Long l);
 }

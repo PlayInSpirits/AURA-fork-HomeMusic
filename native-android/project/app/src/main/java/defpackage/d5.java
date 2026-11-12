@@ -25,15 +25,15 @@ public abstract class d5 {
 
     public abstract boolean h();
 
-    public abstract void i(View r1);
+    public abstract void i(View view);
 
-    public abstract void j(int r1);
+    public abstract void j(int i);
 
-    public abstract void k(CharSequence r1);
+    public abstract void k(CharSequence charSequence);
 
-    public abstract void l(int r1);
+    public abstract void l(int i);
 
-    public abstract void n(CharSequence r1);
+    public abstract void n(CharSequence charSequence);
 
-    public abstract void o(boolean r1);
+    public abstract void o(boolean z);
 }

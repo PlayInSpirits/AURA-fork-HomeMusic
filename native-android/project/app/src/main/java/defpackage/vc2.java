@@ -13,16 +13,15 @@ public final class vc2 extends AbstractList implements RandomAccess, Serializabl
     public final List n;
     public final eg1 o;
 
-    public vc2(eg1 r1, List r2) {
-        r2.getClass();
-        this.n = r2;
-        this.o = r1;
+    public vc2(eg1 eg1Var, List list) {
+        list.getClass();
+        this.n = list;
+        this.o = eg1Var;
     }
 
     @Override // java.util.AbstractList, java.util.List
-    public final Object get(int r2) {
-        Object r3 = this.n.get(r2);
-        return this.o.mo77apply(r3);
+    public final Object get(int i) {
+        return this.o.mo77apply(this.n.get(i));
     }
 
     @Override // java.util.AbstractCollection, java.util.Collection, java.util.List
@@ -36,19 +35,18 @@ public final class vc2 extends AbstractList implements RandomAccess, Serializabl
     }
 
     @Override // java.util.AbstractList, java.util.List
-    public final ListIterator listIterator(int r3) {
-        return new uc2(this, this.n.listIterator(r3), 0);
+    public final ListIterator listIterator(int i) {
+        return new uc2(this, this.n.listIterator(i), 0);
     }
 
     @Override // java.util.AbstractList, java.util.List
-    public final Object remove(int r2) {
-        Object r3 = this.n.remove(r2);
-        return this.o.mo77apply(r3);
+    public final Object remove(int i) {
+        return this.o.mo77apply(this.n.remove(i));
     }
 
     @Override // java.util.AbstractList
-    public final void removeRange(int r1, int r2) {
-        this.n.subList(r1, r2).clear();
+    public final void removeRange(int i, int i2) {
+        this.n.subList(i, i2).clear();
     }
 
     @Override // java.util.AbstractCollection, java.util.Collection, java.util.List

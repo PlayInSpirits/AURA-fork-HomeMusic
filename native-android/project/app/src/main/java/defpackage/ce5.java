@@ -7,9 +7,9 @@ public final class ce5 {
     public final byte[] b;
     public final boolean c;
 
-    public ce5(int r1, boolean r2, byte[] r3) {
-        this.a = r1;
-        this.b = r3;
-        this.c = r2;
+    public ce5(int i, boolean z, byte[] bArr) {
+        this.a = i;
+        this.b = bArr;
+        this.c = z;
     }
 }

@@ -12,26 +12,20 @@ import app.homemusic.R;
 public final class ng extends RatingBar {
     public final wo0 n;
 
-    public ng(Context r2, AttributeSet r3) {
-        super(r2, r3, R.attr.ratingBarStyle);
+    public ng(Context context, AttributeSet attributeSet) {
+        super(context, attributeSet, R.attr.ratingBarStyle);
         gt4.a(this, getContext());
-        wo0 r4 = new wo0(this);
-        this.n = r4;
-        r4.C(r3, R.attr.ratingBarStyle);
+        wo0 wo0Var = new wo0(this);
+        this.n = wo0Var;
+        wo0Var.C(attributeSet, R.attr.ratingBarStyle);
     }
 
     @Override // android.widget.RatingBar, android.widget.AbsSeekBar, android.widget.ProgressBar, android.view.View
-    public final synchronized void onMeasure(int r2, int r3) {
-        monitor-enter(this);
-        super.onMeasure(r2, r3);     // Catch: Throwable -> L7
-        Bitmap r4 = (Bitmap) this.n.o;     // Catch: Throwable -> L7
-        if (r4 == null) goto L9;
-        setMeasuredDimension(View.resolveSizeAndState(r4.getWidth() * getNumStars(), r2, 0), getMeasuredHeight());     // Catch: Throwable -> L7
-    L9:
-        monitor-exit(this);
-        return;
-    L7:
-        th = move-exception;
-        throw th;
+    public final synchronized void onMeasure(int i, int i2) {
+        super.onMeasure(i, i2);
+        Bitmap bitmap = (Bitmap) this.n.o;
+        if (bitmap != null) {
+            setMeasuredDimension(View.resolveSizeAndState(bitmap.getWidth() * getNumStars(), i, 0), getMeasuredHeight());
+        }
     }
 }

@@ -9,29 +9,30 @@ public final class kh2 extends LinearLayoutManager {
     public final /* synthetic */ int E;
     public final /* synthetic */ nh2 F;
 
-    public kh2(nh2 r1, int r2, int r3) {
-        this.F = r1;
-        this.E = r3;
-        super(r2);
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public kh2(nh2 nh2Var, int i, int i2) {
+        super(i);
+        this.F = nh2Var;
+        this.E = i2;
     }
 
     @Override // androidx.recyclerview.widget.LinearLayoutManager, defpackage.mw3
-    public final void C0(RecyclerView r2, int r3) {
-        pz r0 = new pz(r2.getContext());
-        r0.a = r3;
-        D0(r0);
+    public final void C0(RecyclerView recyclerView, int i) {
+        pz pzVar = new pz(recyclerView.getContext());
+        pzVar.a = i;
+        D0(pzVar);
     }
 
     @Override // androidx.recyclerview.widget.LinearLayoutManager
-    public final void F0(yw3 r4, int[] r5) {
-        nh2 r6 = this.F;
-        RecyclerView r0 = r6.t0;
-        if (this.E != 0) goto L6;
-        r5[0] = r0.getWidth();
-        r5[1] = r6.t0.getWidth();
-        return;
-    L6:
-        r5[0] = r0.getHeight();
-        r5[1] = r6.t0.getHeight();
+    public final void F0(yw3 yw3Var, int[] iArr) {
+        nh2 nh2Var = this.F;
+        RecyclerView recyclerView = nh2Var.t0;
+        if (this.E == 0) {
+            iArr[0] = recyclerView.getWidth();
+            iArr[1] = nh2Var.t0.getWidth();
+        } else {
+            iArr[0] = recyclerView.getHeight();
+            iArr[1] = nh2Var.t0.getHeight();
+        }
     }
 }

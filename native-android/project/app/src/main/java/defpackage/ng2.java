@@ -5,18 +5,18 @@ package defpackage;
 public final class ng2 extends fz0 {
     public final float k0;
 
-    public ng2(float r2) {
+    public ng2(float f) {
         super(0);
-        this.k0 = r2 - 0.001f;
+        this.k0 = f - 0.001f;
     }
 
     @Override // defpackage.fz0
-    public final void j(float r8, float r9, float r10, kc4 r11) {
-        double r7 = this.k0;
-        float r12 = (float) ((Math.sqrt(2.0d) * r7) / 2.0d);
-        float r2 = (float) Math.sqrt(Math.pow(r7, 2.0d) - Math.pow(r12, 2.0d));
-        r11.d(r9 - r12, ((float) (-((Math.sqrt(2.0d) * r7) - r7))) + r2, 270.0f, 0.0f);
-        r11.c(r9, (float) (-((Math.sqrt(2.0d) * r7) - r7)));
-        r11.c(r9 + r12, ((float) (-((Math.sqrt(2.0d) * r7) - r7))) + r2);
+    public final void j(float f, float f2, float f3, kc4 kc4Var) {
+        double d = this.k0;
+        float fSqrt = (float) ((Math.sqrt(2.0d) * d) / 2.0d);
+        float fSqrt2 = (float) Math.sqrt(Math.pow(d, 2.0d) - Math.pow(fSqrt, 2.0d));
+        kc4Var.d(f2 - fSqrt, ((float) (-((Math.sqrt(2.0d) * d) - d))) + fSqrt2, 270.0f, 0.0f);
+        kc4Var.c(f2, (float) (-((Math.sqrt(2.0d) * d) - d)));
+        kc4Var.c(f2 + fSqrt, ((float) (-((Math.sqrt(2.0d) * d) - d))) + fSqrt2);
     }
 }

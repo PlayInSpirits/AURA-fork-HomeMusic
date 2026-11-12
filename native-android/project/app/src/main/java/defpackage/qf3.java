@@ -9,117 +9,92 @@ public final class qf3 extends w1 {
     public final /* synthetic */ int n;
     public final lf3 o;
 
-    public /* synthetic */ qf3(int r1, lf3 r2) {
-        this.n = r1;
-        this.o = r2;
+    public /* synthetic */ qf3(int i, lf3 lf3Var) {
+        this.n = i;
+        this.o = lf3Var;
     }
 
     @Override // defpackage.w1
     public final int a() {
-        switch(this.n) {
-            case 0: goto L7;
-            default: goto L5;
-        };
-    L5:
-        return this.o.r;
-    L7:
+        switch (this.n) {
+            case 0:
+                break;
+        }
         return this.o.r;
     }
 
     @Override // java.util.AbstractCollection, java.util.Collection, java.util.Set
-    public final boolean add(Object r1) {
-        switch(this.n) {
-            case 0: goto L6;
-            default: goto L5;
-        };
-    L6:
-        Map.Entry r2 = (Map.Entry) r1;
-        throw new UnsupportedOperationException();
-    L5:
-        throw new UnsupportedOperationException();
+    public final boolean add(Object obj) {
+        switch (this.n) {
+            case 0:
+                throw new UnsupportedOperationException();
+            default:
+                throw new UnsupportedOperationException();
+        }
     }
 
     @Override // java.util.AbstractCollection, java.util.Collection, java.util.Set
     public final void clear() {
-        switch(this.n) {
-            case 0: goto L6;
-            default: goto L4;
-        };
-    L4:
-        this.o.clear();
-        return;
-    L6:
-        this.o.clear();
+        switch (this.n) {
+            case 0:
+                this.o.clear();
+                break;
+            default:
+                this.o.clear();
+                break;
+        }
     }
 
     @Override // java.util.AbstractCollection, java.util.Collection, java.util.Set
-    public final boolean contains(Object r3) {
-        switch(this.n) {
-            case 0: goto L7;
-            default: goto L5;
-        };
-    L5:
-        return this.o.containsKey(r3);
-    L7:
-        if ((r3 instanceof Map.Entry) == false) goto L21;
-        Map.Entry r4 = (Map.Entry) r3;
-        Object r0 = r4.getKey();
-        lf3 r2 = this.o;
-        Object r1 = r2.get(r0);
-        if (r1 == null) goto L13;
-        return r1.equals(r4.getValue());
-    L13:
-        if (r4.getValue() == null) goto L15;
-        return false;
-    L15:
-        if (r2.containsKey(r4.getKey()) == false) goto L20;
-        return true;
-    L20:
-        return false;
-    L21:
-        return false;
+    public final boolean contains(Object obj) {
+        switch (this.n) {
+            case 0:
+                if (!(obj instanceof Map.Entry)) {
+                    return false;
+                }
+                Map.Entry entry = (Map.Entry) obj;
+                Object key = entry.getKey();
+                lf3 lf3Var = this.o;
+                Object obj2 = lf3Var.get(key);
+                if (obj2 != null) {
+                    return obj2.equals(entry.getValue());
+                }
+                return entry.getValue() == null && lf3Var.containsKey(entry.getKey());
+            default:
+                return this.o.containsKey(obj);
+        }
     }
 
     @Override // java.util.AbstractCollection, java.util.Collection, java.lang.Iterable, java.util.Set
     public final Iterator iterator() {
-        switch(this.n) {
-            case 0: goto L10;
-            default: goto L4;
-        };
-    L4:
-        yx4[] r2 = new yx4[8];
-        int r3 = 0;
-    L5:
-        if (r3 >= 8) goto L8;
-        r2[r3] = new zx4(1);
-        r3 = r3 + 1;
-        goto L5
-    L8:
-        return new sf3(this.o, r2);
-    L10:
-        return new rf3(this.o);
+        switch (this.n) {
+            case 0:
+                return new rf3(this.o);
+            default:
+                yx4[] yx4VarArr = new yx4[8];
+                for (int i = 0; i < 8; i++) {
+                    yx4VarArr[i] = new zx4(1);
+                }
+                return new sf3(this.o, yx4VarArr);
+        }
     }
 
     @Override // java.util.AbstractCollection, java.util.Collection, java.util.Set
-    public final boolean remove(Object r3) {
-        switch(this.n) {
-            case 0: goto L9;
-            default: goto L4;
-        };
-    L4:
-        lf3 r2 = this.o;
-        if (r2.containsKey(r3) == false) goto L13;
-        r2.remove(r3);
-        return true;
-    L13:
-        return false;
-    L9:
-        if ((r3 instanceof Map.Entry) == false) goto L14;
-        Map.Entry r4 = (Map.Entry) r3;
-        Object r0 = r4.getKey();
-        Object r5 = r4.getValue();
-        return this.o.remove(r0, r5);
-    L14:
-        return false;
+    public final boolean remove(Object obj) {
+        switch (this.n) {
+            case 0:
+                if (!(obj instanceof Map.Entry)) {
+                    return false;
+                }
+                Map.Entry entry = (Map.Entry) obj;
+                return this.o.remove(entry.getKey(), entry.getValue());
+            default:
+                lf3 lf3Var = this.o;
+                if (!lf3Var.containsKey(obj)) {
+                    return false;
+                }
+                lf3Var.remove(obj);
+                return true;
+        }
     }
 }

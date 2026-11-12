@@ -8,8 +8,8 @@ import java.util.ArrayList;
 public class hj extends hd {
     public final k03 c;
 
-    public hj(Application r2) {
-        super(r2);
+    public hj(Application application) {
+        super(application);
         this.c = new k03(new ArrayList());
     }
 }

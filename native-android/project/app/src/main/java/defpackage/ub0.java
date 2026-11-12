@@ -12,33 +12,23 @@ public final class ub0 {
     public float c;
     public float d;
 
-    public final void a(Context r4, AttributeSet r5) {
-        TypedArray r6 = r4.obtainStyledAttributes(r5, kt3.g);
-        int r7 = r6.getIndexCount();
-        int r0 = 0;
-    L3:
-        if (r0 >= r7) goto L16;
-        int r1 = r6.getIndex(r0);
-        if (r1 != 1) goto L7;
-        this.c = r6.getFloat(r1, this.c);
-    L15:
-        r0 = r0 + 1;
-        goto L3
-    L7:
-        if (r1 != 0) goto L10;
-        int r2 = r6.getInt(r1, this.a);
-        this.a = r2;
-        this.a = wb0.d[r2];
-        goto L15
-    L10:
-        if (r1 != 4) goto L13;
-        this.b = r6.getInt(r1, this.b);
-        goto L15
-    L13:
-        if (r1 != 3) goto L15;
-        this.d = r6.getFloat(r1, this.d);
-        goto L15
-    L16:
-        r6.recycle();
+    public final void a(Context context, AttributeSet attributeSet) {
+        TypedArray typedArrayObtainStyledAttributes = context.obtainStyledAttributes(attributeSet, kt3.g);
+        int indexCount = typedArrayObtainStyledAttributes.getIndexCount();
+        for (int i = 0; i < indexCount; i++) {
+            int index = typedArrayObtainStyledAttributes.getIndex(i);
+            if (index == 1) {
+                this.c = typedArrayObtainStyledAttributes.getFloat(index, this.c);
+            } else if (index == 0) {
+                int i2 = typedArrayObtainStyledAttributes.getInt(index, this.a);
+                this.a = i2;
+                this.a = wb0.d[i2];
+            } else if (index == 4) {
+                this.b = typedArrayObtainStyledAttributes.getInt(index, this.b);
+            } else if (index == 3) {
+                this.d = typedArrayObtainStyledAttributes.getFloat(index, this.d);
+            }
+        }
+        typedArrayObtainStyledAttributes.recycle();
     }
 }

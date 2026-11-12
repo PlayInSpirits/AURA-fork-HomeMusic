@@ -17,83 +17,73 @@ public final class vh1 extends Drawable implements Animatable {
     public boolean o;
     public boolean p;
     public boolean q;
-    public boolean r;
     public int s;
-    public final int t;
     public boolean u;
     public Paint v;
     public Rect w;
+    public boolean r = true;
+    public final int t = -1;
 
-    public vh1(pd r2) {
-        this.r = true;
-        this.t = -1;
-        this.n = r2;
+    public vh1(pd pdVar) {
+        this.n = pdVar;
     }
 
     public final void a() {
         h12.d("You cannot start a recycled Drawable. Ensure thatyou clear any references to the Drawable when clearing the corresponding request.", !this.q);
-        bi1 r0 = (bi1) this.n.b;
-        if (r0.a.l.c != 1) goto L7;
-        invalidateSelf();
-        return;
-    L7:
-        if (this.o == true) goto L24;
+        bi1 bi1Var = (bi1) this.n.b;
+        if (bi1Var.a.l.c == 1) {
+            invalidateSelf();
+            return;
+        }
+        if (this.o) {
+            return;
+        }
         this.o = true;
-        ArrayList r2 = r0.c;
-        if (r0.j == false) goto L11;
-        kf2.o("Cannot subscribe to a cleared frame loader");
-        return;
-    L11:
-        if (r2.contains(this) == true) goto L20;
-        boolean r3 = r2.isEmpty();
-        r2.add(this);
-        if (r3 == true) goto L15;
-    L18:
+        ArrayList arrayList = bi1Var.c;
+        if (bi1Var.j) {
+            kf2.o("Cannot subscribe to a cleared frame loader");
+            return;
+        }
+        if (arrayList.contains(this)) {
+            kf2.o("Cannot subscribe twice in a row");
+            return;
+        }
+        boolean zIsEmpty = arrayList.isEmpty();
+        arrayList.add(this);
+        if (zIsEmpty && !bi1Var.f) {
+            bi1Var.f = true;
+            bi1Var.j = false;
+            bi1Var.a();
+        }
         invalidateSelf();
-        return;
-    L15:
-        if (r0.f == true) goto L18;
-        r0.f = true;
-        r0.j = false;
-        r0.a();
-        goto L18
-    L20:
-        kf2.o("Cannot subscribe twice in a row");
-        return;
     }
 
     @Override // android.graphics.drawable.Drawable
-    public final void draw(Canvas r6) {
-        if (this.q == false) goto L6;
-        return;
-    L6:
-        if (this.u == false) goto L11;
-        int r0 = getIntrinsicWidth();
-        int r1 = getIntrinsicHeight();
-        Rect r2 = getBounds();
-        if (this.w != null) goto L10;
-        this.w = new Rect();
-    L10:
-        Gravity.apply(119, r0, r1, r2, this.w);
-        this.u = false;
-    L11:
-        bi1 r3 = (bi1) this.n.b;
-        zh1 r4 = r3.i;
-        if (r4 == null) goto L14;
-        Bitmap r5 = r4.t;
-    L16:
-        if (this.w != null) goto L18;
-        this.w = new Rect();
-    L18:
-        Rect r7 = this.w;
-        if (this.v != null) goto L21;
-        this.v = new Paint(2);
-    L21:
-        r6.drawBitmap(r5, null, r7, this.v);
-        return;
-    L14:
-        r5 = r3.l;
-        goto L16
+    public final void draw(Canvas canvas) {
+        if (this.q) {
+            return;
+        }
+        if (this.u) {
+            int intrinsicWidth = getIntrinsicWidth();
+            int intrinsicHeight = getIntrinsicHeight();
+            Rect bounds = getBounds();
+            if (this.w == null) {
+                this.w = new Rect();
+            }
+            Gravity.apply(119, intrinsicWidth, intrinsicHeight, bounds, this.w);
+            this.u = false;
+        }
+        bi1 bi1Var = (bi1) this.n.b;
+        zh1 zh1Var = bi1Var.i;
+        Bitmap bitmap = zh1Var != null ? zh1Var.t : bi1Var.l;
+        if (this.w == null) {
+            this.w = new Rect();
+        }
+        Rect rect = this.w;
+        if (this.v == null) {
+            this.v = new Paint(2);
+        }
+        canvas.drawBitmap(bitmap, (Rect) null, rect, this.v);
     }
 
     @Override // android.graphics.drawable.Drawable
@@ -122,64 +112,63 @@ public final class vh1 extends Drawable implements Animatable {
     }
 
     @Override // android.graphics.drawable.Drawable
-    public final void onBoundsChange(Rect r1) {
-        super.onBoundsChange(r1);
+    public final void onBoundsChange(Rect rect) {
+        super.onBoundsChange(rect);
         this.u = true;
     }
 
     @Override // android.graphics.drawable.Drawable
-    public final void setAlpha(int r3) {
-        if (this.v != null) goto L5;
-        this.v = new Paint(2);
-    L5:
-        this.v.setAlpha(r3);
+    public final void setAlpha(int i) {
+        if (this.v == null) {
+            this.v = new Paint(2);
+        }
+        this.v.setAlpha(i);
     }
 
     @Override // android.graphics.drawable.Drawable
-    public final void setColorFilter(ColorFilter r3) {
-        if (this.v != null) goto L5;
-        this.v = new Paint(2);
-    L5:
-        this.v.setColorFilter(r3);
+    public final void setColorFilter(ColorFilter colorFilter) {
+        if (this.v == null) {
+            this.v = new Paint(2);
+        }
+        this.v.setColorFilter(colorFilter);
     }
 
     @Override // android.graphics.drawable.Drawable
-    public final boolean setVisible(boolean r4, boolean r5) {
+    public final boolean setVisible(boolean z, boolean z2) {
         h12.d("Cannot change the visibility of a recycled resource. Ensure that you unset the Drawable from your View before changing the View's visibility.", !this.q);
-        this.r = r4;
-        if (r4 == true) goto L8;
-        this.o = false;
-        bi1 r1 = (bi1) this.n.b;
-        ArrayList r2 = r1.c;
-        r2.remove(this);
-        if (r2.isEmpty() == false) goto L11;
-        r1.f = false;
-    L11:
-        return super.setVisible(r4, r5);
-    L8:
-        if (this.p == false) goto L11;
-        a();
-        goto L11
+        this.r = z;
+        if (!z) {
+            this.o = false;
+            bi1 bi1Var = (bi1) this.n.b;
+            ArrayList arrayList = bi1Var.c;
+            arrayList.remove(this);
+            if (arrayList.isEmpty()) {
+                bi1Var.f = false;
+            }
+        } else if (this.p) {
+            a();
+        }
+        return super.setVisible(z, z2);
     }
 
     @Override // android.graphics.drawable.Animatable
     public final void start() {
         this.p = true;
         this.s = 0;
-        if (this.r == false) goto L6;
-        a();
-        return;
+        if (this.r) {
+            a();
+        }
     }
 
     @Override // android.graphics.drawable.Animatable
     public final void stop() {
         this.p = false;
         this.o = false;
-        bi1 r1 = (bi1) this.n.b;
-        ArrayList r2 = r1.c;
-        r2.remove(this);
-        if (r2.isEmpty() == false) goto L6;
-        r1.f = false;
-        return;
+        bi1 bi1Var = (bi1) this.n.b;
+        ArrayList arrayList = bi1Var.c;
+        arrayList.remove(this);
+        if (arrayList.isEmpty()) {
+            bi1Var.f = false;
+        }
     }
 }

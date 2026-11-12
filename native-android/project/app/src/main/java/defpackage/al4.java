@@ -12,25 +12,25 @@ public final class al4 implements a83 {
     public final /* synthetic */ xj c;
     public final /* synthetic */ k03 d;
 
-    public al4(ArrayList r1, CountDownLatch r2, xj r3, k03 r4) {
-        this.a = r1;
-        this.b = r2;
-        this.c = r3;
-        this.d = r4;
+    public al4(ArrayList arrayList, CountDownLatch countDownLatch, xj xjVar, k03 k03Var) {
+        this.a = arrayList;
+        this.b = countDownLatch;
+        this.c = xjVar;
+        this.d = k03Var;
     }
 
     @Override // defpackage.a83
-    public final void b(Object r6) {
-        List r7 = (List) r6;
-        ArrayList r0 = this.a;
-        if (r7 == null) goto L5;
-        r0.addAll(r7);
-    L5:
-        CountDownLatch r8 = this.b;
-        r8.countDown();
-        if (r8.getCount() != 0) goto L9;
-        this.c.e(r0);
-        this.d.j(this);
-        return;
+    public final void b(Object obj) {
+        List list = (List) obj;
+        ArrayList arrayList = this.a;
+        if (list != null) {
+            arrayList.addAll(list);
+        }
+        CountDownLatch countDownLatch = this.b;
+        countDownLatch.countDown();
+        if (countDownLatch.getCount() == 0) {
+            this.c.e(arrayList);
+            this.d.j(this);
+        }
     }
 }

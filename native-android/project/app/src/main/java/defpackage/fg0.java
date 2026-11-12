@@ -17,8 +17,8 @@ public final class fg0 {
     public final hd5 j;
 
     public fg0() {
-        MediaCodec.CryptoInfo r0 = new MediaCodec.CryptoInfo();
-        this.i = r0;
-        this.j = new hd5(r0);
+        MediaCodec.CryptoInfo cryptoInfo = new MediaCodec.CryptoInfo();
+        this.i = cryptoInfo;
+        this.j = new hd5(cryptoInfo);
     }
 }

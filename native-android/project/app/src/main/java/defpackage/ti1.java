@@ -6,8 +6,8 @@ public final class ti1 {
     public final wq2 a;
     public final boolean b;
 
-    public ti1(wq2 r1, wq2 r2, boolean r3) {
-        this.a = r2;
-        this.b = r3;
+    public ti1(wq2 wq2Var, wq2 wq2Var2, boolean z) {
+        this.a = wq2Var2;
+        this.b = z;
     }
 }

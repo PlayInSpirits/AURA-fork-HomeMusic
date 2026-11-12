@@ -12,67 +12,56 @@ public final class nk2 implements Handler.Callback {
     public final Handler n;
     public final /* synthetic */ ok2 o;
 
-    public nk2(ok2 r1, ak2 r2) {
-        this.o = r1;
-        Handler r3 = f35.p(this);
-        this.n = r3;
-        r2.v(this, r3);
+    public nk2(ok2 ok2Var, ak2 ak2Var) {
+        this.o = ok2Var;
+        Handler handlerP = f35.p(this);
+        this.n = handlerP;
+        ak2Var.v(this, handlerP);
     }
 
-    public final void a(long r7) {
-        ok2 r0 = this.o;
-        rf2 r1 = r0.W0;
-        if (this == r0.G1) goto L5;
-        return;
-    L5:
-        if (r0.a0 != null) goto L8;
-        return;
-    L8:
-        if (r7 != Long.MAX_VALUE) goto L30;
-        r0.H0 = true;
-        return;
-    L30:
-        r0.D0(r7);     // Catch: ExoPlaybackException -> L27
-        s55 r6 = r0.B1;     // Catch: ExoPlaybackException -> L27
-        if (r6.equals(s55.d) == false) goto L14;
-    L16:
-        r0.J0.e++;     // Catch: ExoPlaybackException -> L27
-        e55 r8 = r0.Z0;     // Catch: ExoPlaybackException -> L27
-        if (r8.e == 3) goto L19;
-        boolean r3 = true;
-    L20:
-        r8.e = 3;     // Catch: ExoPlaybackException -> L27
-        r8.l.getClass();     // Catch: ExoPlaybackException -> L27
-        r8.g = f35.Q(SystemClock.elapsedRealtime());     // Catch: ExoPlaybackException -> L27
-        if (r3 == false) goto L25;
-        Surface r9 = r0.l1;     // Catch: ExoPlaybackException -> L27
-        if (r9 == null) goto L25;
-        r1.j(r9);     // Catch: ExoPlaybackException -> L27
-        r0.o1 = true;     // Catch: ExoPlaybackException -> L27
-    L25:
-        r0.i0(r7);     // Catch: ExoPlaybackException -> L27
-        return;
-    L19:
-        r3 = false;
-        goto L20
-    L14:
-        if (r6.equals(r0.C1) == true) goto L16;
-        r0.C1 = r6;     // Catch: ExoPlaybackException -> L27
-        r1.o(r6);     // Catch: ExoPlaybackException -> L27
-    L27:
-        e = move-exception;
-        r0.I0 = e;
+    public final void a(long j) {
+        Surface surface;
+        ok2 ok2Var = this.o;
+        rf2 rf2Var = ok2Var.W0;
+        if (this != ok2Var.G1 || ok2Var.a0 == null) {
+            return;
+        }
+        if (j == Long.MAX_VALUE) {
+            ok2Var.H0 = true;
+            return;
+        }
+        try {
+            ok2Var.D0(j);
+            s55 s55Var = ok2Var.B1;
+            if (!s55Var.equals(s55.d) && !s55Var.equals(ok2Var.C1)) {
+                ok2Var.C1 = s55Var;
+                rf2Var.o(s55Var);
+            }
+            ok2Var.J0.e++;
+            e55 e55Var = ok2Var.Z0;
+            boolean z = e55Var.e != 3;
+            e55Var.e = 3;
+            e55Var.l.getClass();
+            e55Var.g = f35.Q(SystemClock.elapsedRealtime());
+            if (z && (surface = ok2Var.l1) != null) {
+                rf2Var.j(surface);
+                ok2Var.o1 = true;
+            }
+            ok2Var.i0(j);
+        } catch (ExoPlaybackException e) {
+            ok2Var.I0 = e;
+        }
     }
 
     @Override // android.os.Handler.Callback
-    public final boolean handleMessage(Message r7) {
-        if (r7.what == 0) goto L6;
-        return false;
-    L6:
-        int r0 = r7.arg1;
-        int r8 = r7.arg2;
-        String r1 = f35.a;
-        a(((((long) r0) & 4294967295L) << 32) | (4294967295L & ((long) r8)));
+    public final boolean handleMessage(Message message) {
+        if (message.what != 0) {
+            return false;
+        }
+        int i = message.arg1;
+        int i2 = message.arg2;
+        String str = f35.a;
+        a(((((long) i) & 4294967295L) << 32) | (4294967295L & ((long) i2)));
         return true;
     }
 }

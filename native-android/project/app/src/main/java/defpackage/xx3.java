@@ -15,49 +15,47 @@ public final class xx3 implements IBinder.DeathRecipient {
     public final Messenger a;
     public final b9 b;
     public final Messenger c;
-    public int d;
-    public int e;
     public int f;
     public int g;
-    public final SparseArray h;
     public final /* synthetic */ cy3 i;
+    public int d = 1;
+    public int e = 1;
+    public final SparseArray h = new SparseArray();
 
-    public xx3(cy3 r1, Messenger r2) {
-        this.i = r1;
-        this.d = 1;
-        this.e = 1;
-        this.h = new SparseArray();
-        this.a = r2;
-        b9 r3 = new b9(this);
-        this.b = r3;
-        this.c = new Messenger(r3);
+    public xx3(cy3 cy3Var, Messenger messenger) {
+        this.i = cy3Var;
+        this.a = messenger;
+        b9 b9Var = new b9(this);
+        this.b = b9Var;
+        this.c = new Messenger(b9Var);
     }
 
-    public final void a(int r7) {
-        int r2 = this.d;
-        this.d = r2 + 1;
-        b(5, r2, r7, null, null);
+    public final void a(int i) {
+        int i2 = this.d;
+        this.d = i2 + 1;
+        b(5, i2, i, null, null);
     }
 
-    public final boolean b(int r2, int r3, int r4, Bundle r5, Bundle r6) {
-        Message r0 = Message.obtain();
-        r0.what = r2;
-        r0.arg1 = r3;
-        r0.arg2 = r4;
-        r0.obj = r5;
-        r0.setData(r6);
-        r0.replyTo = this.c;
-        this.a.send(r0);     // Catch: RemoteException -> L6 DeadObjectException -> L12
-        return true;
-    L6:
-        e = move-exception;
-        if (r2 == 2) goto L15;
-        Log.e("MediaRouteProviderProxy", "Could not send message to service.", e);
-        return false;
-    L15:
-        return false;
-    L16:
-        return false;
+    public final boolean b(int i, int i2, int i3, Bundle bundle, Bundle bundle2) {
+        Message messageObtain = Message.obtain();
+        messageObtain.what = i;
+        messageObtain.arg1 = i2;
+        messageObtain.arg2 = i3;
+        messageObtain.obj = bundle;
+        messageObtain.setData(bundle2);
+        messageObtain.replyTo = this.c;
+        try {
+            this.a.send(messageObtain);
+            return true;
+        } catch (DeadObjectException unused) {
+            return false;
+        } catch (RemoteException e) {
+            if (i == 2) {
+                return false;
+            }
+            Log.e("MediaRouteProviderProxy", "Could not send message to service.", e);
+            return false;
+        }
     }
 
     @Override // android.os.IBinder.DeathRecipient
@@ -65,19 +63,19 @@ public final class xx3 implements IBinder.DeathRecipient {
         this.i.w.post(new wx3(this, 1));
     }
 
-    public final void c(int r7, int r8) {
-        Bundle r5 = new Bundle();
-        r5.putInt("volume", r8);
-        int r2 = this.d;
-        this.d = r2 + 1;
-        b(7, r2, r7, null, r5);
+    public final void c(int i, int i2) {
+        Bundle bundle = new Bundle();
+        bundle.putInt("volume", i2);
+        int i3 = this.d;
+        this.d = i3 + 1;
+        b(7, i3, i, null, bundle);
     }
 
-    public final void d(int r7, int r8) {
-        Bundle r5 = new Bundle();
-        r5.putInt("volume", r8);
-        int r2 = this.d;
-        this.d = r2 + 1;
-        b(8, r2, r7, null, r5);
+    public final void d(int i, int i2) {
+        Bundle bundle = new Bundle();
+        bundle.putInt("volume", i2);
+        int i3 = this.d;
+        this.d = i3 + 1;
+        b(8, i3, i, null, bundle);
     }
 }

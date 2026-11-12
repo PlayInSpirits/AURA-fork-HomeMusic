@@ -14,136 +14,133 @@ import java.util.Arrays;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class rw implements t04 {
-    public static final pa f = null;
-    public static final qw g = null;
+    public static final pa f = new pa(24);
+    public static final qw g = new qw(0);
     public final Context a;
     public final ArrayList b;
-    public final qw c;
-    public final pa d;
     public final rm3 e;
+    public final pa d = f;
+    public final qw c = g;
 
-    static {
-        f = new pa(24);
-        g = new qw(0);
+    public rw(Context context, ArrayList arrayList, zs zsVar, qj0 qj0Var) {
+        this.a = context.getApplicationContext();
+        this.b = arrayList;
+        this.e = new rm3(zsVar, qj0Var, false);
     }
 
-    public rw(Context r1, ArrayList r2, zs r3, qj0 r4) {
-        this.a = r1.getApplicationContext();
-        this.b = r2;
-        this.d = f;
-        this.e = new rm3(r3, r4, false);
-        this.c = g;
-    }
-
-    public static int d(ci1 r5, int r6, int r7) {
-        int r0 = Math.min(r5.g / r7, r5.f / r6);
-        if (r0 != 0) goto L5;
-        int r1 = 0;
-    L6:
-        int r2 = Math.max(1, r1);
-        if (Log.isLoggable("BufferGifDecoder", 2) == false) goto L10;
-        if (r2 <= 1) goto L10;
-        StringBuilder r8 = b11.t("Downsampling GIF, sampleSize: ", ", target dimens: [", r2, r6, "x");
-        r8.append(r7);
-        r8.append("], actual dimens: [");
-        r8.append(r5.f);
-        r8.append("x");
-        r8.append(r5.g);
-        r8.append("]");
-        Log.v("BufferGifDecoder", r8.toString());
-    L10:
-        return r2;
-    L5:
-        r1 = Integer.highestOneBit(r0);
-        goto L6
+    public static int d(ci1 ci1Var, int i, int i2) {
+        int iMin = Math.min(ci1Var.g / i2, ci1Var.f / i);
+        int iMax = Math.max(1, iMin == 0 ? 0 : Integer.highestOneBit(iMin));
+        if (Log.isLoggable("BufferGifDecoder", 2) && iMax > 1) {
+            StringBuilder sbT = b11.t("Downsampling GIF, sampleSize: ", ", target dimens: [", iMax, i, "x");
+            sbT.append(i2);
+            sbT.append("], actual dimens: [");
+            sbT.append(ci1Var.f);
+            sbT.append("x");
+            sbT.append(ci1Var.g);
+            sbT.append("]");
+            Log.v("BufferGifDecoder", sbT.toString());
+        }
+        return iMax;
     }
 
     @Override // defpackage.t04
-    public final boolean a(Object r2, db3 r3) {
-        ByteBuffer r4 = (ByteBuffer) r2;
-        if (((Boolean) r3.c(ei1.b)).booleanValue() == false) goto L5;
-        return false;
-    L5:
-        if (kb4.C(this.b, r4) != ImageHeaderParser$ImageType.GIF) goto L10;
-        return true;
-    L10:
-        return false;
+    public final boolean a(Object obj, db3 db3Var) {
+        return !((Boolean) db3Var.c(ei1.b)).booleanValue() && kb4.C(this.b, (ByteBuffer) obj) == ImageHeaderParser$ImageType.GIF;
     }
 
     @Override // defpackage.t04
-    public final q04 b(Object r8, int r9, int r10, db3 r11) {
-        ByteBuffer r2 = (ByteBuffer) r8;
-        qw r12 = this.c;
-        monitor-enter(r12);
-        di1 r0 = (di1) r12.a.poll();     // Catch: Throwable -> L8
-        if (r0 != null) goto L7;
-        r0 = new di1();     // Catch: Throwable -> L8
-    L7:
-        di1 r5 = r0;
-        r5.b = null;     // Catch: Throwable -> L8
-        Arrays.fill(r5.a, (byte) 0);     // Catch: Throwable -> L8
-        r5.c = new ci1();     // Catch: Throwable -> L8
-        r5.d = 0;     // Catch: Throwable -> L8
-        ByteBuffer r1 = r2.asReadOnlyBuffer();     // Catch: Throwable -> L8
-        r5.b = r1;     // Catch: Throwable -> L8
-        r1.position(0);     // Catch: Throwable -> L8
-        r5.b.order(ByteOrder.LITTLE_ENDIAN);     // Catch: Throwable -> L8
-        monitor-exit(r12);
-        wh1 r7 = c(r2, r9, r10, r5, r11);     // Catch: Throwable -> L16
-        this.c.a(r5);
-        return r7;
-    L16:
-        th = move-exception;
-        this.c.a(r5);
-        throw th;
-    L8:
-        th = move-exception;
-        throw th;
+    public final q04 b(Object obj, int i, int i2, db3 db3Var) {
+        di1 di1Var;
+        ByteBuffer byteBuffer = (ByteBuffer) obj;
+        qw qwVar = this.c;
+        synchronized (qwVar) {
+            try {
+                di1 di1Var2 = (di1) qwVar.a.poll();
+                if (di1Var2 == null) {
+                    di1Var2 = new di1();
+                }
+                di1Var = di1Var2;
+                di1Var.b = null;
+                Arrays.fill(di1Var.a, (byte) 0);
+                di1Var.c = new ci1();
+                di1Var.d = 0;
+                ByteBuffer byteBufferAsReadOnlyBuffer = byteBuffer.asReadOnlyBuffer();
+                di1Var.b = byteBufferAsReadOnlyBuffer;
+                byteBufferAsReadOnlyBuffer.position(0);
+                di1Var.b.order(ByteOrder.LITTLE_ENDIAN);
+            } catch (Throwable th) {
+                throw th;
+            }
+        }
+        try {
+            return c(byteBuffer, i, i2, di1Var, db3Var);
+        } finally {
+            this.c.a(di1Var);
+        }
     }
 
-    public final wh1 c(ByteBuffer r15, int r16, int r17, di1 r18, db3 r19) {
-        int r0 = ee2.b;
-        long r3 = SystemClock.elapsedRealtimeNanos();
-        ci1 r1 = r18.b();     // Catch: Throwable -> L12
-        if (r1.c <= 0) goto L28;
-        if (r1.b != 0) goto L28;
-        if (r19.c(ei1.a) != vi0.o) goto L14;
-        Bitmap.Config r6 = Bitmap.Config.RGB_565;     // Catch: Throwable -> L12
-    L15:
-        int r8 = d(r1, r16, r17);     // Catch: Throwable -> L12
-        pa r9 = this.d;     // Catch: Throwable -> L12
-        rm3 r10 = this.e;     // Catch: Throwable -> L12
-        r9.getClass();     // Catch: Throwable -> L12
-        vk4 r11 = new vk4(r10, r1, r15, r8);     // Catch: Throwable -> L12
-        r11.c(r6);     // Catch: Throwable -> L12
-        r11.k = (r11.k + 1) % r11.l.c;     // Catch: Throwable -> L12
-        Bitmap r13 = r11.b();     // Catch: Throwable -> L12
-        if (r13 == null) goto L18;
-        wh1 r14 = new wh1(new vh1(new pd(2, new bi1(a.a(this.a), r11, r16, r17, r13))), 0);     // Catch: Throwable -> L12
-        if (Log.isLoggable("BufferGifDecoder", 2) == false) goto L26;
-        Log.v("BufferGifDecoder", "Decoded GIF from stream in " + ee2.a(r3));
-    L26:
-        return r14;
-    L18:
-        if (Log.isLoggable("BufferGifDecoder", 2) == false) goto L30;
-        StringBuilder r110 = new StringBuilder("Decoded GIF from stream in ");
-    L20:
-        r110.append(ee2.a(r3));
-        Log.v("BufferGifDecoder", r110.toString());
-        return null;
-    L30:
-        return null;
-    L14:
-        r6 = Bitmap.Config.ARGB_8888;     // Catch: Throwable -> L12
-    L28:
-        if (Log.isLoggable("BufferGifDecoder", 2) == false) goto L30;
-        r110 = new StringBuilder("Decoded GIF from stream in ");
-    L12:
-        th = move-exception;
-        if (Log.isLoggable("BufferGifDecoder", 2) == false) goto L37;
-        Log.v("BufferGifDecoder", "Decoded GIF from stream in " + ee2.a(r3));
-        throw th;
-    L37:
-        throw th;
+    /* JADX WARN: Undo finally extract visitor
+    java.lang.NullPointerException: Cannot invoke "Object.hashCode()" because "this.second" is null
+    	at jadx.core.utils.Pair.hashCode(Pair.java:35)
+    	at java.base/java.util.HashMap.hash(HashMap.java:338)
+    	at java.base/java.util.HashMap.getNode(HashMap.java:568)
+    	at java.base/java.util.HashMap.containsKey(HashMap.java:594)
+    	at jadx.core.dex.visitors.finaly.traverser.state.TraverserGlobalCommonState.hasBlocksBeenCached(TraverserGlobalCommonState.java:35)
+    	at jadx.core.dex.visitors.finaly.traverser.handlers.MergePathActivePathTraverserHandler.handle(MergePathActivePathTraverserHandler.java:174)
+    	at jadx.core.dex.visitors.finaly.traverser.handlers.AbstractActivePathTraverserHandler.process(AbstractActivePathTraverserHandler.java:19)
+    	at jadx.core.dex.visitors.finaly.traverser.TraverserController.processHandlerImplementations(TraverserController.java:43)
+    	at jadx.core.dex.visitors.finaly.traverser.TraverserController.advance(TraverserController.java:156)
+    	at jadx.core.dex.visitors.finaly.traverser.TraverserController.process(TraverserController.java:79)
+    	at jadx.core.dex.visitors.finaly.MarkFinallyVisitor.findCommonInsns(MarkFinallyVisitor.java:404)
+    	at jadx.core.dex.visitors.finaly.MarkFinallyVisitor.extractFinally(MarkFinallyVisitor.java:284)
+    	at jadx.core.dex.visitors.finaly.MarkFinallyVisitor.processTryBlock(MarkFinallyVisitor.java:202)
+    	at jadx.core.dex.visitors.finaly.MarkFinallyVisitor.visit(MarkFinallyVisitor.java:135)
+     */
+    public final wh1 c(ByteBuffer byteBuffer, int i, int i2, di1 di1Var, db3 db3Var) {
+        StringBuilder sb;
+        int i3 = ee2.b;
+        long jElapsedRealtimeNanos = SystemClock.elapsedRealtimeNanos();
+        try {
+            ci1 ci1VarB = di1Var.b();
+            if (ci1VarB.c > 0 && ci1VarB.b == 0) {
+                Bitmap.Config config = db3Var.c(ei1.a) == vi0.o ? Bitmap.Config.RGB_565 : Bitmap.Config.ARGB_8888;
+                int iD = d(ci1VarB, i, i2);
+                pa paVar = this.d;
+                rm3 rm3Var = this.e;
+                paVar.getClass();
+                vk4 vk4Var = new vk4(rm3Var, ci1VarB, byteBuffer, iD);
+                vk4Var.c(config);
+                vk4Var.k = (vk4Var.k + 1) % vk4Var.l.c;
+                Bitmap bitmapB = vk4Var.b();
+                if (bitmapB == null) {
+                    if (Log.isLoggable("BufferGifDecoder", 2)) {
+                        sb = new StringBuilder("Decoded GIF from stream in ");
+                        sb.append(ee2.a(jElapsedRealtimeNanos));
+                        Log.v("BufferGifDecoder", sb.toString());
+                        return null;
+                    }
+                    return null;
+                }
+                wh1 wh1Var = new wh1(new vh1(new pd(2, new bi1(a.a(this.a), vk4Var, i, i2, bitmapB))), 0);
+                if (Log.isLoggable("BufferGifDecoder", 2)) {
+                    Log.v("BufferGifDecoder", "Decoded GIF from stream in " + ee2.a(jElapsedRealtimeNanos));
+                }
+                return wh1Var;
+            }
+            if (Log.isLoggable("BufferGifDecoder", 2)) {
+                sb = new StringBuilder("Decoded GIF from stream in ");
+                sb.append(ee2.a(jElapsedRealtimeNanos));
+                Log.v("BufferGifDecoder", sb.toString());
+                return null;
+            }
+            return null;
+        } catch (Throwable th) {
+            if (!Log.isLoggable("BufferGifDecoder", 2)) {
+                throw th;
+            }
+            Log.v("BufferGifDecoder", "Decoded GIF from stream in " + ee2.a(jElapsedRealtimeNanos));
+            throw th;
+        }
     }
 }

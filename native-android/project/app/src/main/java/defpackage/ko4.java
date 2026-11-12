@@ -13,29 +13,26 @@ public class ko4 extends pp0 {
     public DialogInterface.OnCancelListener C0;
     public AlertDialog D0;
 
-    public ko4() {
-    }
-
     @Override // defpackage.pp0
-    public final Dialog j0(Bundle r2) {
-        Dialog r3 = this.B0;
-        if (r3 != null) goto L9;
+    public final Dialog j0(Bundle bundle) {
+        Dialog dialog = this.B0;
+        if (dialog != null) {
+            return dialog;
+        }
         this.s0 = false;
-        if (this.D0 != null) goto L8;
-        Context r0 = n();
-        ji2.m(r0);
-        this.D0 = new AlertDialog.Builder(r0).create();
-    L8:
+        if (this.D0 == null) {
+            Context contextN = n();
+            ji2.m(contextN);
+            this.D0 = new AlertDialog.Builder(contextN).create();
+        }
         return this.D0;
-    L9:
-        return r3;
     }
 
     @Override // defpackage.pp0, android.content.DialogInterface.OnCancelListener
-    public final void onCancel(DialogInterface r1) {
-        DialogInterface.OnCancelListener r0 = this.C0;
-        if (r0 == null) goto L6;
-        r0.onCancel(r1);
-        return;
+    public final void onCancel(DialogInterface dialogInterface) {
+        DialogInterface.OnCancelListener onCancelListener = this.C0;
+        if (onCancelListener != null) {
+            onCancelListener.onCancel(dialogInterface);
+        }
     }
 }

@@ -15,31 +15,25 @@ public final class sz2 extends q1 implements vb2 {
 
     @Override // defpackage.q1, defpackage.u1
     public final Map e() {
-        Map r0 = this.r;
-        if ((r0 instanceof NavigableMap) == false) goto L7;
-        return new h1(this, (NavigableMap) r0);
-    L7:
-        if ((r0 instanceof SortedMap) == false) goto L11;
-        return new k1(this, (SortedMap) r0);
-    L11:
-        return new f1(this, r0);
+        Map map = this.r;
+        if (map instanceof NavigableMap) {
+            return new h1(this, (NavigableMap) map);
+        }
+        return map instanceof SortedMap ? new k1(this, (SortedMap) map) : new f1(this, map);
     }
 
     @Override // defpackage.q1, defpackage.u1
     public final Set g() {
-        Map r0 = this.r;
-        if ((r0 instanceof NavigableMap) == false) goto L7;
-        return new i1(this, (NavigableMap) r0);
-    L7:
-        if ((r0 instanceof SortedMap) == false) goto L11;
-        return new l1(this, (SortedMap) r0);
-    L11:
-        return new g1(this, r0);
+        Map map = this.r;
+        if (map instanceof NavigableMap) {
+            return new i1(this, (NavigableMap) map);
+        }
+        return map instanceof SortedMap ? new l1(this, (SortedMap) map) : new g1(this, map);
     }
 
     @Override // defpackage.q1, defpackage.qz2
-    public final Collection get(Object r1) {
-        return (List) super.get(r1);
+    public final Collection get(Object obj) {
+        return (List) super.get(obj);
     }
 
     @Override // defpackage.q1
@@ -48,11 +42,8 @@ public final class sz2 extends q1 implements vb2 {
     }
 
     @Override // defpackage.q1
-    public final Collection k(Object r3, Collection r4) {
-        List r5 = (List) r4;
-        if ((r5 instanceof RandomAccess) == false) goto L7;
-        return new j1(this, r3, r5, null);
-    L7:
-        return new o1(this, r3, r5, null);
+    public final Collection k(Object obj, Collection collection) {
+        List list = (List) collection;
+        return list instanceof RandomAccess ? new j1(this, obj, list, null) : new o1(this, obj, list, null);
     }
 }

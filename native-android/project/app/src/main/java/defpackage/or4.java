@@ -23,187 +23,187 @@ public final class or4 extends Canvas {
     public Canvas a;
 
     public final Canvas a() {
-        Canvas r0 = this.a;
-        if (r0 == null) goto L5;
-        return r0;
-    L5:
+        Canvas canvas = this.a;
+        if (canvas != null) {
+            return canvas;
+        }
         dz1.c("Text drawing wrapper is missing a Canvas!");
         er1.a();
         return null;
     }
 
     @Override // android.graphics.Canvas
-    public final boolean clipOutPath(Path r1) {
-        return tn.v(a(), r1);
+    public final boolean clipOutPath(Path path) {
+        return a().clipOutPath(path);
     }
 
     @Override // android.graphics.Canvas
-    public final boolean clipOutRect(RectF r1) {
-        return tn.x(a(), r1);
+    public final boolean clipOutRect(RectF rectF) {
+        return a().clipOutRect(rectF);
     }
 
     @Override // android.graphics.Canvas
-    public final boolean clipPath(Path r1, Region.Op r2) {
-        return a().clipPath(r1, r2);
+    public final boolean clipPath(Path path, Region.Op op) {
+        return a().clipPath(path, op);
     }
 
     @Override // android.graphics.Canvas
-    public final boolean clipRect(RectF r1, Region.Op r2) {
-        return a().clipRect(r1, r2);
+    public final boolean clipRect(RectF rectF, Region.Op op) {
+        return a().clipRect(rectF, op);
     }
 
     @Override // android.graphics.Canvas
-    public final void concat(Matrix r1) {
-        a().concat(r1);
+    public final void concat(Matrix matrix) {
+        a().concat(matrix);
     }
 
     @Override // android.graphics.Canvas
     public final void disableZ() {
-        kz.f(a());
+        a().disableZ();
     }
 
     @Override // android.graphics.Canvas
-    public final void drawARGB(int r1, int r2, int r3, int r4) {
-        a().drawARGB(r1, r2, r3, r4);
+    public final void drawARGB(int i, int i2, int i3, int i4) {
+        a().drawARGB(i, i2, i3, i4);
     }
 
     @Override // android.graphics.Canvas
-    public final void drawArc(RectF r1, float r2, float r3, boolean r4, Paint r5) {
-        a().drawArc(r1, r2, r3, r4, r5);
+    public final void drawArc(RectF rectF, float f, float f2, boolean z, Paint paint) {
+        a().drawArc(rectF, f, f2, z, paint);
     }
 
     @Override // android.graphics.Canvas
-    public final void drawBitmap(Bitmap r1, float r2, float r3, Paint r4) {
-        a().drawBitmap(r1, r2, r3, r4);
+    public final void drawBitmap(Bitmap bitmap, float f, float f2, Paint paint) {
+        a().drawBitmap(bitmap, f, f2, paint);
     }
 
     @Override // android.graphics.Canvas
-    public final void drawBitmapMesh(Bitmap r1, int r2, int r3, float[] r4, int r5, int[] r6, int r7, Paint r8) {
-        a().drawBitmapMesh(r1, r2, r3, r4, r5, r6, r7, r8);
+    public final void drawBitmapMesh(Bitmap bitmap, int i, int i2, float[] fArr, int i3, int[] iArr, int i4, Paint paint) {
+        a().drawBitmapMesh(bitmap, i, i2, fArr, i3, iArr, i4, paint);
     }
 
     @Override // android.graphics.Canvas
-    public final void drawCircle(float r1, float r2, float r3, Paint r4) {
-        a().drawCircle(r1, r2, r3, r4);
+    public final void drawCircle(float f, float f2, float f3, Paint paint) {
+        a().drawCircle(f, f2, f3, paint);
     }
 
     @Override // android.graphics.Canvas
-    public final void drawColor(int r1) {
-        a().drawColor(r1);
+    public final void drawColor(int i) {
+        a().drawColor(i);
     }
 
     @Override // android.graphics.Canvas
-    public final void drawDoubleRoundRect(RectF r1, float r2, float r3, RectF r4, float r5, float r6, Paint r7) {
-        kz.i(a(), r1, r2, r3, r4, r5, r6, r7);
+    public final void drawDoubleRoundRect(RectF rectF, float f, float f2, RectF rectF2, float f3, float f4, Paint paint) {
+        a().drawDoubleRoundRect(rectF, f, f2, rectF2, f3, f4, paint);
     }
 
     @Override // android.graphics.Canvas
-    public final void drawGlyphs(int[] r1, int r2, float[] r3, int r4, int r5, Font r6, Paint r7) {
-        db.s(a(), r1, r2, r3, r4, r5, r6, r7);
+    public final void drawGlyphs(int[] iArr, int i, float[] fArr, int i2, int i3, Font font, Paint paint) {
+        a().drawGlyphs(iArr, i, fArr, i2, i3, font, paint);
     }
 
     @Override // android.graphics.Canvas
-    public final void drawLine(float r1, float r2, float r3, float r4, Paint r5) {
-        a().drawLine(r1, r2, r3, r4, r5);
+    public final void drawLine(float f, float f2, float f3, float f4, Paint paint) {
+        a().drawLine(f, f2, f3, f4, paint);
     }
 
     @Override // android.graphics.Canvas
-    public final void drawLines(float[] r1, int r2, int r3, Paint r4) {
-        a().drawLines(r1, r2, r3, r4);
+    public final void drawLines(float[] fArr, int i, int i2, Paint paint) {
+        a().drawLines(fArr, i, i2, paint);
     }
 
     @Override // android.graphics.Canvas
-    public final void drawOval(RectF r1, Paint r2) {
-        a().drawOval(r1, r2);
+    public final void drawOval(RectF rectF, Paint paint) {
+        a().drawOval(rectF, paint);
     }
 
     @Override // android.graphics.Canvas
-    public final void drawPaint(Paint r1) {
-        a().drawPaint(r1);
+    public final void drawPaint(Paint paint) {
+        a().drawPaint(paint);
     }
 
     @Override // android.graphics.Canvas
-    public final void drawPatch(NinePatch r1, Rect r2, Paint r3) {
-        db.q(a(), r1, r2, r3);
+    public final void drawPatch(NinePatch ninePatch, Rect rect, Paint paint) {
+        a().drawPatch(ninePatch, rect, paint);
     }
 
     @Override // android.graphics.Canvas
-    public final void drawPath(Path r1, Paint r2) {
-        a().drawPath(r1, r2);
+    public final void drawPath(Path path, Paint paint) {
+        a().drawPath(path, paint);
     }
 
     @Override // android.graphics.Canvas
-    public final void drawPicture(Picture r1) {
-        a().drawPicture(r1);
+    public final void drawPicture(Picture picture) {
+        a().drawPicture(picture);
     }
 
     @Override // android.graphics.Canvas
-    public final void drawPoint(float r1, float r2, Paint r3) {
-        a().drawPoint(r1, r2, r3);
+    public final void drawPoint(float f, float f2, Paint paint) {
+        a().drawPoint(f, f2, paint);
     }
 
     @Override // android.graphics.Canvas
-    public final void drawPoints(float[] r1, int r2, int r3, Paint r4) {
-        a().drawPoints(r1, r2, r3, r4);
+    public final void drawPoints(float[] fArr, int i, int i2, Paint paint) {
+        a().drawPoints(fArr, i, i2, paint);
     }
 
     @Override // android.graphics.Canvas
-    public final void drawPosText(char[] r1, int r2, int r3, float[] r4, Paint r5) {
-        a().drawPosText(r1, r2, r3, r4, r5);
+    public final void drawPosText(char[] cArr, int i, int i2, float[] fArr, Paint paint) {
+        a().drawPosText(cArr, i, i2, fArr, paint);
     }
 
     @Override // android.graphics.Canvas
-    public final void drawRGB(int r1, int r2, int r3) {
-        a().drawRGB(r1, r2, r3);
+    public final void drawRGB(int i, int i2, int i3) {
+        a().drawRGB(i, i2, i3);
     }
 
     @Override // android.graphics.Canvas
-    public final void drawRect(RectF r1, Paint r2) {
-        a().drawRect(r1, r2);
+    public final void drawRect(RectF rectF, Paint paint) {
+        a().drawRect(rectF, paint);
     }
 
     @Override // android.graphics.Canvas
-    public final void drawRenderNode(RenderNode r1) {
-        kz.k(a(), r1);
+    public final void drawRenderNode(RenderNode renderNode) {
+        a().drawRenderNode(renderNode);
     }
 
     @Override // android.graphics.Canvas
-    public final void drawRoundRect(RectF r1, float r2, float r3, Paint r4) {
-        a().drawRoundRect(r1, r2, r3, r4);
+    public final void drawRoundRect(RectF rectF, float f, float f2, Paint paint) {
+        a().drawRoundRect(rectF, f, f2, paint);
     }
 
     @Override // android.graphics.Canvas
-    public final void drawText(char[] r1, int r2, int r3, float r4, float r5, Paint r6) {
-        a().drawText(r1, r2, r3, r4, r5, r6);
+    public final void drawText(char[] cArr, int i, int i2, float f, float f2, Paint paint) {
+        a().drawText(cArr, i, i2, f, f2, paint);
     }
 
     @Override // android.graphics.Canvas
-    public final void drawTextOnPath(char[] r1, int r2, int r3, Path r4, float r5, float r6, Paint r7) {
-        a().drawTextOnPath(r1, r2, r3, r4, r5, r6, r7);
+    public final void drawTextOnPath(char[] cArr, int i, int i2, Path path, float f, float f2, Paint paint) {
+        a().drawTextOnPath(cArr, i, i2, path, f, f2, paint);
     }
 
     @Override // android.graphics.Canvas
-    public final void drawTextRun(char[] r1, int r2, int r3, int r4, int r5, float r6, float r7, boolean r8, Paint r9) {
-        a().drawTextRun(r1, r2, r3, r4, r5, r6, r7, r8, r9);
+    public final void drawTextRun(char[] cArr, int i, int i2, int i3, int i4, float f, float f2, boolean z, Paint paint) {
+        a().drawTextRun(cArr, i, i2, i3, i4, f, f2, z, paint);
     }
 
     @Override // android.graphics.Canvas
-    public final void drawVertices(Canvas.VertexMode r1, int r2, float[] r3, int r4, float[] r5, int r6, int[] r7, int r8, short[] r9, int r10, int r11, Paint r12) {
-        a().drawVertices(r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, r11, r12);
+    public final void drawVertices(Canvas.VertexMode vertexMode, int i, float[] fArr, int i2, float[] fArr2, int i3, int[] iArr, int i4, short[] sArr, int i5, int i6, Paint paint) {
+        a().drawVertices(vertexMode, i, fArr, i2, fArr2, i3, iArr, i4, sArr, i5, i6, paint);
     }
 
     @Override // android.graphics.Canvas
     public final void enableZ() {
-        kz.u(a());
+        a().enableZ();
     }
 
     @Override // android.graphics.Canvas
-    public final boolean getClipBounds(Rect r4) {
-        boolean r3 = a().getClipBounds(r4);
-        if (r3 == false) goto L5;
-        r4.set(0, 0, r4.width(), Integer.MAX_VALUE);
-    L5:
-        return r3;
+    public final boolean getClipBounds(Rect rect) {
+        boolean clipBounds = a().getClipBounds(rect);
+        if (clipBounds) {
+            rect.set(0, 0, rect.width(), Integer.MAX_VALUE);
+        }
+        return clipBounds;
     }
 
     @Override // android.graphics.Canvas
@@ -222,8 +222,8 @@ public final class or4 extends Canvas {
     }
 
     @Override // android.graphics.Canvas
-    public final void getMatrix(Matrix r1) {
-        a().getMatrix(r1);
+    public final void getMatrix(Matrix matrix) {
+        a().getMatrix(matrix);
     }
 
     @Override // android.graphics.Canvas
@@ -252,8 +252,8 @@ public final class or4 extends Canvas {
     }
 
     @Override // android.graphics.Canvas
-    public final boolean quickReject(RectF r1, Canvas.EdgeType r2) {
-        return a().quickReject(r1, r2);
+    public final boolean quickReject(RectF rectF, Canvas.EdgeType edgeType) {
+        return a().quickReject(rectF, edgeType);
     }
 
     @Override // android.graphics.Canvas
@@ -262,13 +262,13 @@ public final class or4 extends Canvas {
     }
 
     @Override // android.graphics.Canvas
-    public final void restoreToCount(int r1) {
-        a().restoreToCount(r1);
+    public final void restoreToCount(int i) {
+        a().restoreToCount(i);
     }
 
     @Override // android.graphics.Canvas
-    public final void rotate(float r1) {
-        a().rotate(r1);
+    public final void rotate(float f) {
+        a().rotate(f);
     }
 
     @Override // android.graphics.Canvas
@@ -277,287 +277,287 @@ public final class or4 extends Canvas {
     }
 
     @Override // android.graphics.Canvas
-    public final int saveLayer(RectF r1, Paint r2, int r3) {
-        return a().saveLayer(r1, r2, r3);
+    public final int saveLayer(RectF rectF, Paint paint, int i) {
+        return a().saveLayer(rectF, paint, i);
     }
 
     @Override // android.graphics.Canvas
-    public final int saveLayerAlpha(RectF r1, int r2, int r3) {
-        return a().saveLayerAlpha(r1, r2, r3);
+    public final int saveLayerAlpha(RectF rectF, int i, int i2) {
+        return a().saveLayerAlpha(rectF, i, i2);
     }
 
     @Override // android.graphics.Canvas
-    public final void scale(float r1, float r2) {
-        a().scale(r1, r2);
+    public final void scale(float f, float f2) {
+        a().scale(f, f2);
     }
 
     @Override // android.graphics.Canvas
-    public final void setBitmap(Bitmap r1) {
-        a().setBitmap(r1);
+    public final void setBitmap(Bitmap bitmap) {
+        a().setBitmap(bitmap);
     }
 
     @Override // android.graphics.Canvas
-    public final void setDensity(int r1) {
-        a().setDensity(r1);
+    public final void setDensity(int i) {
+        a().setDensity(i);
     }
 
     @Override // android.graphics.Canvas
-    public final void setDrawFilter(DrawFilter r1) {
-        a().setDrawFilter(r1);
+    public final void setDrawFilter(DrawFilter drawFilter) {
+        a().setDrawFilter(drawFilter);
     }
 
     @Override // android.graphics.Canvas
-    public final void setMatrix(Matrix r1) {
-        a().setMatrix(r1);
+    public final void setMatrix(Matrix matrix) {
+        a().setMatrix(matrix);
     }
 
     @Override // android.graphics.Canvas
-    public final void skew(float r1, float r2) {
-        a().skew(r1, r2);
+    public final void skew(float f, float f2) {
+        a().skew(f, f2);
     }
 
     @Override // android.graphics.Canvas
-    public final void translate(float r1, float r2) {
-        a().translate(r1, r2);
+    public final void translate(float f, float f2) {
+        a().translate(f, f2);
     }
 
     @Override // android.graphics.Canvas
-    public final void drawArc(float r1, float r2, float r3, float r4, float r5, float r6, boolean r7, Paint r8) {
-        a().drawArc(r1, r2, r3, r4, r5, r6, r7, r8);
+    public final void drawArc(float f, float f2, float f3, float f4, float f5, float f6, boolean z, Paint paint) {
+        a().drawArc(f, f2, f3, f4, f5, f6, z, paint);
     }
 
     @Override // android.graphics.Canvas
-    public final void drawBitmap(Bitmap r1, Rect r2, RectF r3, Paint r4) {
-        a().drawBitmap(r1, r2, r3, r4);
+    public final void drawBitmap(Bitmap bitmap, Rect rect, RectF rectF, Paint paint) {
+        a().drawBitmap(bitmap, rect, rectF, paint);
     }
 
     @Override // android.graphics.Canvas
-    public final void drawColor(long r1) {
-        kz.g(a(), r1);
+    public final void drawColor(long j) {
+        a().drawColor(j);
     }
 
     @Override // android.graphics.Canvas
-    public final void drawDoubleRoundRect(RectF r1, float[] r2, RectF r3, float[] r4, Paint r5) {
-        kz.j(a(), r1, r2, r3, r4, r5);
+    public final void drawDoubleRoundRect(RectF rectF, float[] fArr, RectF rectF2, float[] fArr2, Paint paint) {
+        a().drawDoubleRoundRect(rectF, fArr, rectF2, fArr2, paint);
     }
 
     @Override // android.graphics.Canvas
-    public final void drawLines(float[] r1, Paint r2) {
-        a().drawLines(r1, r2);
+    public final void drawLines(float[] fArr, Paint paint) {
+        a().drawLines(fArr, paint);
     }
 
     @Override // android.graphics.Canvas
-    public final void drawOval(float r1, float r2, float r3, float r4, Paint r5) {
-        a().drawOval(r1, r2, r3, r4, r5);
+    public final void drawOval(float f, float f2, float f3, float f4, Paint paint) {
+        a().drawOval(f, f2, f3, f4, paint);
     }
 
     @Override // android.graphics.Canvas
-    public final void drawPatch(NinePatch r1, RectF r2, Paint r3) {
-        db.r(a(), r1, r2, r3);
+    public final void drawPatch(NinePatch ninePatch, RectF rectF, Paint paint) {
+        a().drawPatch(ninePatch, rectF, paint);
     }
 
     @Override // android.graphics.Canvas
-    public final void drawPicture(Picture r1, RectF r2) {
-        a().drawPicture(r1, r2);
+    public final void drawPicture(Picture picture, RectF rectF) {
+        a().drawPicture(picture, rectF);
     }
 
     @Override // android.graphics.Canvas
-    public final void drawPoints(float[] r1, Paint r2) {
-        a().drawPoints(r1, r2);
+    public final void drawPoints(float[] fArr, Paint paint) {
+        a().drawPoints(fArr, paint);
     }
 
     @Override // android.graphics.Canvas
-    public final void drawPosText(String r1, float[] r2, Paint r3) {
-        a().drawPosText(r1, r2, r3);
+    public final void drawPosText(String str, float[] fArr, Paint paint) {
+        a().drawPosText(str, fArr, paint);
     }
 
     @Override // android.graphics.Canvas
-    public final void drawRect(Rect r1, Paint r2) {
-        a().drawRect(r1, r2);
+    public final void drawRect(Rect rect, Paint paint) {
+        a().drawRect(rect, paint);
     }
 
     @Override // android.graphics.Canvas
-    public final void drawRoundRect(float r1, float r2, float r3, float r4, float r5, float r6, Paint r7) {
-        a().drawRoundRect(r1, r2, r3, r4, r5, r6, r7);
+    public final void drawRoundRect(float f, float f2, float f3, float f4, float f5, float f6, Paint paint) {
+        a().drawRoundRect(f, f2, f3, f4, f5, f6, paint);
     }
 
     @Override // android.graphics.Canvas
-    public final void drawText(String r1, float r2, float r3, Paint r4) {
-        a().drawText(r1, r2, r3, r4);
+    public final void drawText(String str, float f, float f2, Paint paint) {
+        a().drawText(str, f, f2, paint);
     }
 
     @Override // android.graphics.Canvas
-    public final void drawTextOnPath(String r1, Path r2, float r3, float r4, Paint r5) {
-        a().drawTextOnPath(r1, r2, r3, r4, r5);
+    public final void drawTextOnPath(String str, Path path, float f, float f2, Paint paint) {
+        a().drawTextOnPath(str, path, f, f2, paint);
     }
 
     @Override // android.graphics.Canvas
-    public final void drawTextRun(CharSequence r1, int r2, int r3, int r4, int r5, float r6, float r7, boolean r8, Paint r9) {
-        a().drawTextRun(r1, r2, r3, r4, r5, r6, r7, r8, r9);
+    public final void drawTextRun(CharSequence charSequence, int i, int i2, int i3, int i4, float f, float f2, boolean z, Paint paint) {
+        a().drawTextRun(charSequence, i, i2, i3, i4, f, f2, z, paint);
     }
 
     @Override // android.graphics.Canvas
-    public final boolean clipOutRect(Rect r1) {
-        return tn.w(a(), r1);
+    public final boolean clipOutRect(Rect rect) {
+        return a().clipOutRect(rect);
     }
 
     @Override // android.graphics.Canvas
-    public final boolean clipPath(Path r1) {
-        return a().clipPath(r1);
+    public final boolean clipPath(Path path) {
+        return a().clipPath(path);
     }
 
     @Override // android.graphics.Canvas
-    public final boolean clipRect(Rect r1, Region.Op r2) {
-        return a().clipRect(r1, r2);
+    public final boolean clipRect(Rect rect, Region.Op op) {
+        return a().clipRect(rect, op);
     }
 
     @Override // android.graphics.Canvas
-    public final void drawBitmap(Bitmap r1, Rect r2, Rect r3, Paint r4) {
-        a().drawBitmap(r1, r2, r3, r4);
+    public final void drawBitmap(Bitmap bitmap, Rect rect, Rect rect2, Paint paint) {
+        a().drawBitmap(bitmap, rect, rect2, paint);
     }
 
     @Override // android.graphics.Canvas
-    public final void drawPicture(Picture r1, Rect r2) {
-        a().drawPicture(r1, r2);
+    public final void drawPicture(Picture picture, Rect rect) {
+        a().drawPicture(picture, rect);
     }
 
     @Override // android.graphics.Canvas
-    public final void drawRect(float r1, float r2, float r3, float r4, Paint r5) {
-        a().drawRect(r1, r2, r3, r4, r5);
+    public final void drawRect(float f, float f2, float f3, float f4, Paint paint) {
+        a().drawRect(f, f2, f3, f4, paint);
     }
 
     @Override // android.graphics.Canvas
-    public final void drawText(String r1, int r2, int r3, float r4, float r5, Paint r6) {
-        a().drawText(r1, r2, r3, r4, r5, r6);
+    public final void drawText(String str, int i, int i2, float f, float f2, Paint paint) {
+        a().drawText(str, i, i2, f, f2, paint);
     }
 
     @Override // android.graphics.Canvas
-    public final boolean quickReject(RectF r1) {
-        return l3.z(a(), r1);
+    public final boolean quickReject(RectF rectF) {
+        return a().quickReject(rectF);
     }
 
     @Override // android.graphics.Canvas
-    public final int saveLayer(RectF r1, Paint r2) {
-        return a().saveLayer(r1, r2);
+    public final int saveLayer(RectF rectF, Paint paint) {
+        return a().saveLayer(rectF, paint);
     }
 
     @Override // android.graphics.Canvas
-    public final int saveLayerAlpha(RectF r1, int r2) {
-        return a().saveLayerAlpha(r1, r2);
+    public final int saveLayerAlpha(RectF rectF, int i) {
+        return a().saveLayerAlpha(rectF, i);
     }
 
     @Override // android.graphics.Canvas
-    public final boolean clipRect(RectF r1) {
-        return a().clipRect(r1);
+    public final boolean clipRect(RectF rectF) {
+        return a().clipRect(rectF);
     }
 
     @Override // android.graphics.Canvas
-    public final void drawBitmap(int[] r1, int r2, int r3, float r4, float r5, int r6, int r7, boolean r8, Paint r9) {
-        a().drawBitmap(r1, r2, r3, r4, r5, r6, r7, r8, r9);
+    public final void drawBitmap(int[] iArr, int i, int i2, float f, float f2, int i3, int i4, boolean z, Paint paint) {
+        a().drawBitmap(iArr, i, i2, f, f2, i3, i4, z, paint);
     }
 
     @Override // android.graphics.Canvas
-    public final void drawColor(int r1, PorterDuff.Mode r2) {
-        a().drawColor(r1, r2);
+    public final void drawColor(int i, PorterDuff.Mode mode) {
+        a().drawColor(i, mode);
     }
 
     @Override // android.graphics.Canvas
-    public final void drawText(CharSequence r1, int r2, int r3, float r4, float r5, Paint r6) {
-        a().drawText(r1, r2, r3, r4, r5, r6);
+    public final void drawText(CharSequence charSequence, int i, int i2, float f, float f2, Paint paint) {
+        a().drawText(charSequence, i, i2, f, f2, paint);
     }
 
     @Override // android.graphics.Canvas
-    public final void drawTextRun(MeasuredText r1, int r2, int r3, int r4, int r5, float r6, float r7, boolean r8, Paint r9) {
-        kz.l(a(), r1, r2, r3, r4, r5, r6, r7, r8, r9);
+    public final void drawTextRun(MeasuredText measuredText, int i, int i2, int i3, int i4, float f, float f2, boolean z, Paint paint) {
+        a().drawTextRun(measuredText, i, i2, i3, i4, f, f2, z, paint);
     }
 
     @Override // android.graphics.Canvas
-    public final int saveLayer(float r1, float r2, float r3, float r4, Paint r5, int r6) {
-        return a().saveLayer(r1, r2, r3, r4, r5, r6);
+    public final int saveLayer(float f, float f2, float f3, float f4, Paint paint, int i) {
+        return a().saveLayer(f, f2, f3, f4, paint, i);
     }
 
     @Override // android.graphics.Canvas
-    public final int saveLayerAlpha(float r1, float r2, float r3, float r4, int r5, int r6) {
-        return a().saveLayerAlpha(r1, r2, r3, r4, r5, r6);
+    public final int saveLayerAlpha(float f, float f2, float f3, float f4, int i, int i2) {
+        return a().saveLayerAlpha(f, f2, f3, f4, i, i2);
     }
 
     @Override // android.graphics.Canvas
-    public final boolean clipOutRect(float r1, float r2, float r3, float r4) {
-        return tn.t(a(), r1, r2, r3, r4);
+    public final boolean clipOutRect(float f, float f2, float f3, float f4) {
+        return a().clipOutRect(f, f2, f3, f4);
     }
 
     @Override // android.graphics.Canvas
-    public final boolean clipRect(Rect r1) {
-        return a().clipRect(r1);
+    public final boolean clipRect(Rect rect) {
+        return a().clipRect(rect);
     }
 
     @Override // android.graphics.Canvas
-    public final void drawBitmap(int[] r1, int r2, int r3, int r4, int r5, int r6, int r7, boolean r8, Paint r9) {
-        a().drawBitmap(r1, r2, r3, r4, r5, r6, r7, r8, r9);
+    public final void drawBitmap(int[] iArr, int i, int i2, int i3, int i4, int i5, int i6, boolean z, Paint paint) {
+        a().drawBitmap(iArr, i, i2, i3, i4, i5, i6, z, paint);
     }
 
     @Override // android.graphics.Canvas
-    public final void drawColor(int r1, BlendMode r2) {
-        z9.j(a(), r1, r2);
+    public final void drawColor(int i, BlendMode blendMode) {
+        a().drawColor(i, blendMode);
     }
 
     @Override // android.graphics.Canvas
-    public final boolean quickReject(Path r1, Canvas.EdgeType r2) {
-        return a().quickReject(r1, r2);
+    public final boolean quickReject(Path path, Canvas.EdgeType edgeType) {
+        return a().quickReject(path, edgeType);
     }
 
     @Override // android.graphics.Canvas
-    public final int saveLayer(float r1, float r2, float r3, float r4, Paint r5) {
-        return a().saveLayer(r1, r2, r3, r4, r5);
+    public final int saveLayer(float f, float f2, float f3, float f4, Paint paint) {
+        return a().saveLayer(f, f2, f3, f4, paint);
     }
 
     @Override // android.graphics.Canvas
-    public final int saveLayerAlpha(float r1, float r2, float r3, float r4, int r5) {
-        return a().saveLayerAlpha(r1, r2, r3, r4, r5);
+    public final int saveLayerAlpha(float f, float f2, float f3, float f4, int i) {
+        return a().saveLayerAlpha(f, f2, f3, f4, i);
     }
 
     @Override // android.graphics.Canvas
-    public final boolean clipRect(float r1, float r2, float r3, float r4, Region.Op r5) {
-        return a().clipRect(r1, r2, r3, r4, r5);
+    public final boolean clipRect(float f, float f2, float f3, float f4, Region.Op op) {
+        return a().clipRect(f, f2, f3, f4, op);
     }
 
     @Override // android.graphics.Canvas
-    public final void drawBitmap(Bitmap r1, Matrix r2, Paint r3) {
-        a().drawBitmap(r1, r2, r3);
+    public final void drawBitmap(Bitmap bitmap, Matrix matrix, Paint paint) {
+        a().drawBitmap(bitmap, matrix, paint);
     }
 
     @Override // android.graphics.Canvas
-    public final boolean quickReject(Path r1) {
-        return l3.y(a(), r1);
+    public final boolean quickReject(Path path) {
+        return a().quickReject(path);
     }
 
     @Override // android.graphics.Canvas
-    public final boolean clipOutRect(int r1, int r2, int r3, int r4) {
-        return tn.u(a(), r1, r2, r3, r4);
+    public final boolean clipOutRect(int i, int i2, int i3, int i4) {
+        return a().clipOutRect(i, i2, i3, i4);
     }
 
     @Override // android.graphics.Canvas
-    public final boolean clipRect(float r1, float r2, float r3, float r4) {
-        return a().clipRect(r1, r2, r3, r4);
+    public final boolean clipRect(float f, float f2, float f3, float f4) {
+        return a().clipRect(f, f2, f3, f4);
     }
 
     @Override // android.graphics.Canvas
-    public final void drawColor(long r1, BlendMode r3) {
-        kz.h(a(), r1, r3);
+    public final void drawColor(long j, BlendMode blendMode) {
+        a().drawColor(j, blendMode);
     }
 
     @Override // android.graphics.Canvas
-    public final boolean clipRect(int r1, int r2, int r3, int r4) {
-        return a().clipRect(r1, r2, r3, r4);
+    public final boolean clipRect(int i, int i2, int i3, int i4) {
+        return a().clipRect(i, i2, i3, i4);
     }
 
     @Override // android.graphics.Canvas
-    public final boolean quickReject(float r1, float r2, float r3, float r4, Canvas.EdgeType r5) {
-        return a().quickReject(r1, r2, r3, r4, r5);
+    public final boolean quickReject(float f, float f2, float f3, float f4, Canvas.EdgeType edgeType) {
+        return a().quickReject(f, f2, f3, f4, edgeType);
     }
 
     @Override // android.graphics.Canvas
-    public final boolean quickReject(float r1, float r2, float r3, float r4) {
-        return l3.x(a(), r1, r2, r3, r4);
+    public final boolean quickReject(float f, float f2, float f3, float f4) {
+        return a().quickReject(f, f2, f3, f4);
     }
 }

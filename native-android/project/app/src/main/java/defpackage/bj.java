@@ -12,22 +12,22 @@ public class bj extends hd {
     public k03 f;
     public ArtistID3 g;
 
-    public bj(Application r2) {
-        super(r2);
+    public bj(Application application) {
+        super(application);
         this.e = new k03(null);
         this.c = new pa(12);
         this.d = new d34(25);
     }
 
     public final ad2 c() {
-        if (this.f != null) goto L6;
-        String r0 = this.g.getId();
-        pa r1 = this.c;
-        r1.getClass();
-        k03 r2 = new k03();
-        r1.w(r0, new xj(r2, 0));
-        this.f = r2;
-    L6:
+        if (this.f == null) {
+            String id = this.g.getId();
+            pa paVar = this.c;
+            paVar.getClass();
+            k03 k03Var = new k03();
+            paVar.w(id, new xj(k03Var, 0));
+            this.f = k03Var;
+        }
         return this.f;
     }
 }

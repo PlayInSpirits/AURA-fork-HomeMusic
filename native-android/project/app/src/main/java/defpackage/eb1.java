@@ -5,18 +5,10 @@ package defpackage;
 public final class eb1 {
     public final int a;
 
-    public /* synthetic */ eb1(int r1) {
-        this.a = r1;
-    }
-
-    public final boolean equals(Object r2) {
-        if ((r2 instanceof eb1) == false) goto L11;
-        int r3 = ((eb1) r2).a;
-        if (this.a == r3) goto L9;
-        return false;
-    L9:
-        return true;
-    L11:
+    public final boolean equals(Object obj) {
+        if (obj instanceof eb1) {
+            return this.a == ((eb1) obj).a;
+        }
         return false;
     }
 
@@ -25,13 +17,10 @@ public final class eb1 {
     }
 
     public final String toString() {
-        int r1 = this.a;
-        if (r1 != 0) goto L7;
-        return "Normal";
-    L7:
-        if (r1 != 1) goto L10;
-        return "Italic";
-    L10:
-        return "Invalid";
+        int i = this.a;
+        if (i == 0) {
+            return "Normal";
+        }
+        return i == 1 ? "Italic" : "Invalid";
     }
 }

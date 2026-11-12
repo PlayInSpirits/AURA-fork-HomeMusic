@@ -8,23 +8,22 @@ public final class h7 implements StarCallback {
     public final /* synthetic */ int n;
     public final /* synthetic */ j7 o;
 
-    public /* synthetic */ h7(j7 r1, int r2) {
-        this.n = r2;
-        this.o = r1;
+    public /* synthetic */ h7(j7 j7Var, int i) {
+        this.n = i;
+        this.o = j7Var;
     }
 
     @Override // com.eddyizm.tempus.interfaces.StarCallback
     public final void onError() {
-        int r0 = this.n;
-        j7 r3 = this.o;
-        switch(r0) {
-            case 0: goto L6;
-            default: goto L4;
-        };
-    L4:
-        r3.e.J(null, r3.g.getId(), true, null);
-        return;
-    L6:
-        r3.e.J(null, r3.g.getId(), false, null);
+        int i = this.n;
+        j7 j7Var = this.o;
+        switch (i) {
+            case 0:
+                j7Var.e.J(null, j7Var.g.getId(), false, null);
+                break;
+            default:
+                j7Var.e.J(null, j7Var.g.getId(), true, null);
+                break;
+        }
     }
 }

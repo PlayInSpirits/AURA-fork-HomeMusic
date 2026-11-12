@@ -16,6 +16,7 @@ import com.eddyizm.tempus.subsonic.models.InternetRadioStation;
 import com.eddyizm.tempus.ui.activity.MainActivity;
 import com.eddyizm.tempus.ui.fragment.PlaylistPageFragment;
 import com.eddyizm.tempus.ui.fragment.bottomsheetdialog.PlaylistRowBottomSheetDialog;
+import org.chromium.support_lib_boundary.WebSettingsBoundaryInterface;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
@@ -23,111 +24,92 @@ public final /* synthetic */ class vr implements DialogInterface.OnClickListener
     public final /* synthetic */ int n;
     public final /* synthetic */ Object o;
 
-    public /* synthetic */ vr(int r1, Object r2) {
-        this.n = r1;
-        this.o = r2;
+    public /* synthetic */ vr(int i, Object obj) {
+        this.n = i;
+        this.o = obj;
     }
 
     @Override // android.content.DialogInterface.OnClickListener
-    public final void onClick(DialogInterface r3, int r4) {
-        int r5 = this.n;
-        MainActivity r6 = null;
-        byte r0 = 0;
-        Object r2 = this.o;
-        switch(r5) {
-            case 0: goto L39;
-            case 1: goto L35;
-            case 2: goto L29;
-            case 3: goto L27;
-            case 4: goto L18;
-            case 5: goto L16;
-            case 6: goto L6;
-            default: goto L4;
-        };
-    L4:
-        ou3 r7 = (ou3) r2;
-        r7.C0.c((int) ((RatingBar) r7.B0.o).getRating());
-        return;
-    L6:
-        gu3 r8 = ((eu3) r2).C0;
-        InternetRadioStation r9 = r8.d;
-        if (r9 != null) goto L9;
-        return;
-    L9:
-        if (r9.getId() == null) goto L43;
-        r8.g.k(null);
-        r8.f.k(Boolean.FALSE);
-        boolean r10 = r8.e;
-        hh3 r11 = r8.c;
-        InternetRadioStation r1 = r8.d;
-        if (r10 == false) goto L14;
-        String r12 = r1.getId();
-        fu3 r13 = new fu3(r8, 0);
-        r11.getClass();
-        new Thread(new ur2(16, r12, r13)).start();
-        return;
-    L14:
-        String r14 = r1.getId();
-        r11.getClass();
-        xc5 r15 = App.f(false).d();
-        r15.getClass();
-        Log.d("InternetRadioClient", "deleteInternetRadioStation()");
-        ((x02) r15.p).c(((pn4) r15.o).f(), r14).enqueue(new si1(19, r8));
-        return;
-    L43:
-        return;
-    L16:
-        PlaylistRowBottomSheetDialog r16 = (PlaylistRowBottomSheetDialog) r2;
-        Context r17 = r16.Z().getApplicationContext();
-        r16.h0();
-        r16.B0.b(r16.C0.getId(), new vj(r17, r0));
-        return;
-    L18:
-        PlaylistPageFragment r18 = (PlaylistPageFragment) r2;
-        r18.n0.k.k(Boolean.FALSE);
-        if (r18.n() == null) goto L21;
-        Toast.makeText(r18.n(), R.string.playlist_error_not_found_toast, 0).show();
-    L21:
-        MainActivity r19 = r18.m0;
-        if (r19 == null) goto L44;
-        v23 r20 = r19.T;
-        if (r20 == null) goto L45;
-        r20.o();
-        return;
-    L45:
-        return;
-    L44:
-        return;
-    L27:
-        nc1 r21 = (nc1) r2;
-        r21.startActivity(new Intent(r21, LanPlaybackActivity.class));
-        return;
-    L29:
-        nc1 r22 = ((vb4) r2).l();
-        if ((r22 instanceof MainActivity) == false) goto L32;
-        r6 = (MainActivity) r22;
-    L32:
-        if (r6 == null) goto L46;
-        String r23 = ud3.E();
-        io1.a.execute(new ws1(r0, r23, r6));
-        return;
-    L46:
-        return;
-    L35:
-        DefaultErrorActivity r24 = (DefaultErrorActivity) r2;
-        int r25 = DefaultErrorActivity.N;
-        String r26 = sg0.b(r24, r24.getIntent());
-        ClipboardManager r27 = (ClipboardManager) r24.getSystemService("clipboard");
-        if (r27 == null) goto L47;
-        r27.setPrimaryClip(ClipData.newPlainText(r24.getString(R.string.customactivityoncrash_error_activity_error_details_clipboard_label), r26));
-        Toast.makeText(r24, R.string.customactivityoncrash_error_activity_error_details_copied, 0).show();
-        return;
-    L47:
-        return;
-    L39:
-        Intent r28 = new Intent();
-        r28.addFlags(268435456);
-        r28.setAction("android.settings.IGNORE_BATTERY_OPTIMIZATION_SETTINGS");
-        ((xr) r2).g0(r28);
+    public final void onClick(DialogInterface dialogInterface, int i) {
+        v23 v23Var;
+        int i2 = this.n;
+        byte b = 0;
+        Object obj = this.o;
+        switch (i2) {
+            case 0:
+                Intent intent = new Intent();
+                intent.addFlags(268435456);
+                intent.setAction("android.settings.IGNORE_BATTERY_OPTIMIZATION_SETTINGS");
+                ((xr) obj).g0(intent);
+                break;
+            case 1:
+                DefaultErrorActivity defaultErrorActivity = (DefaultErrorActivity) obj;
+                int i3 = DefaultErrorActivity.N;
+                String strB = sg0.b(defaultErrorActivity, defaultErrorActivity.getIntent());
+                ClipboardManager clipboardManager = (ClipboardManager) defaultErrorActivity.getSystemService("clipboard");
+                if (clipboardManager != null) {
+                    clipboardManager.setPrimaryClip(ClipData.newPlainText(defaultErrorActivity.getString(R.string.customactivityoncrash_error_activity_error_details_clipboard_label), strB));
+                    Toast.makeText(defaultErrorActivity, R.string.customactivityoncrash_error_activity_error_details_copied, 0).show();
+                }
+                break;
+            case 2:
+                nc1 nc1VarE = ((vb4) obj).e();
+                MainActivity mainActivity = nc1VarE instanceof MainActivity ? (MainActivity) nc1VarE : null;
+                if (mainActivity != null) {
+                    io1.a.execute(new ws1(b, ud3.E(), mainActivity));
+                }
+                break;
+            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
+                nc1 nc1Var = (nc1) obj;
+                nc1Var.startActivity(new Intent(nc1Var, (Class<?>) LanPlaybackActivity.class));
+                break;
+            case 4:
+                PlaylistPageFragment playlistPageFragment = (PlaylistPageFragment) obj;
+                playlistPageFragment.n0.k.k(Boolean.FALSE);
+                if (playlistPageFragment.n() != null) {
+                    Toast.makeText(playlistPageFragment.n(), R.string.playlist_error_not_found_toast, 0).show();
+                }
+                MainActivity mainActivity2 = playlistPageFragment.m0;
+                if (mainActivity2 != null && (v23Var = mainActivity2.T) != null) {
+                    v23Var.o();
+                    break;
+                }
+                break;
+            case 5:
+                PlaylistRowBottomSheetDialog playlistRowBottomSheetDialog = (PlaylistRowBottomSheetDialog) obj;
+                Context applicationContext = playlistRowBottomSheetDialog.Z().getApplicationContext();
+                playlistRowBottomSheetDialog.h0();
+                playlistRowBottomSheetDialog.B0.b(playlistRowBottomSheetDialog.C0.getId(), new vj(applicationContext, b));
+                break;
+            case 6:
+                gu3 gu3Var = ((eu3) obj).C0;
+                InternetRadioStation internetRadioStation = gu3Var.d;
+                if (internetRadioStation != null && internetRadioStation.getId() != null) {
+                    gu3Var.g.k(null);
+                    gu3Var.f.k(Boolean.FALSE);
+                    boolean z = gu3Var.e;
+                    hh3 hh3Var = gu3Var.c;
+                    InternetRadioStation internetRadioStation2 = gu3Var.d;
+                    if (!z) {
+                        String id = internetRadioStation2.getId();
+                        hh3Var.getClass();
+                        xc5 xc5VarD = App.f(false).d();
+                        xc5VarD.getClass();
+                        Log.d("InternetRadioClient", "deleteInternetRadioStation()");
+                        ((x02) xc5VarD.p).c(((pn4) xc5VarD.o).f(), id).enqueue(new si1(19, gu3Var));
+                    } else {
+                        String id2 = internetRadioStation2.getId();
+                        fu3 fu3Var = new fu3(gu3Var, 0);
+                        hh3Var.getClass();
+                        new Thread(new ur2(16, id2, fu3Var)).start();
+                    }
+                    break;
+                }
+                break;
+            default:
+                ou3 ou3Var = (ou3) obj;
+                ou3Var.C0.c((int) ((RatingBar) ou3Var.B0.o).getRating());
+                break;
+        }
     }
 }

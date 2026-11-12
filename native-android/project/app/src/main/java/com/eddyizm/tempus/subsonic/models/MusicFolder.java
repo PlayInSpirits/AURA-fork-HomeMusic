@@ -9,22 +9,12 @@ import defpackage.xj0;
 /* JADX INFO: loaded from: classes.dex */
 public final class MusicFolder implements Parcelable {
     public static final int $stable = 8;
-    public static final Parcelable.Creator<MusicFolder> CREATOR = null;
+    public static final Parcelable.Creator<MusicFolder> CREATOR = new hz0(29);
     private String id;
     private String name;
 
-    static {
-        CREATOR = new hz0(29);
-    }
-
-    public /* synthetic */ MusicFolder(String r2, String r3, int r4, xj0 r5) {
-        if ((r4 & 1) == 0) goto L6;
-        r2 = null;
-    L6:
-        if ((r4 & 2) == 0) goto L8;
-        r3 = null;
-    L8:
-        this(r2, r3);
+    public /* synthetic */ MusicFolder(String str, String str2, int i, xj0 xj0Var) {
+        this((i & 1) != 0 ? null : str, (i & 2) != 0 ? null : str2);
     }
 
     @Override // android.os.Parcelable
@@ -40,29 +30,28 @@ public final class MusicFolder implements Parcelable {
         return this.name;
     }
 
-    public final void setId(String r1) {
-        this.id = r1;
+    public final void setId(String str) {
+        this.id = str;
     }
 
-    public final void setName(String r1) {
-        this.name = r1;
+    public final void setName(String str) {
+        this.name = str;
     }
 
     @Override // android.os.Parcelable
-    public final void writeToParcel(Parcel r1, int r2) {
-        r1.getClass();
-        r1.writeString(this.id);
-        r1.writeString(this.name);
+    public final void writeToParcel(Parcel parcel, int i) {
+        parcel.getClass();
+        parcel.writeString(this.id);
+        parcel.writeString(this.name);
     }
 
-    public MusicFolder(String r1, String r2) {
-        this.id = r1;
-        this.name = r2;
+    public MusicFolder(String str, String str2) {
+        this.id = str;
+        this.name = str2;
     }
 
     /* JADX WARN: Multi-variable type inference failed */
     public MusicFolder() {
-        Object[] r0 = 0 == true ? 1 : 0;
-        this(null, r0, 3, 0 == true ? 1 : 0);
+        this(null, 0 == true ? 1 : 0, 3, 0 == true ? 1 : 0);
     }
 }

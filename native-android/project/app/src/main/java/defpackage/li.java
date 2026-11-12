@@ -10,17 +10,17 @@ import java.util.Set;
 public final class li implements Set {
     public final /* synthetic */ oi n;
 
-    public li(oi r1) {
-        this.n = r1;
+    public li(oi oiVar) {
+        this.n = oiVar;
     }
 
     @Override // java.util.Set, java.util.Collection
-    public final boolean add(Object r1) {
+    public final boolean add(Object obj) {
         throw new UnsupportedOperationException();
     }
 
     @Override // java.util.Set, java.util.Collection
-    public final boolean addAll(Collection r1) {
+    public final boolean addAll(Collection collection) {
         throw new UnsupportedOperationException();
     }
 
@@ -30,55 +30,41 @@ public final class li implements Set {
     }
 
     @Override // java.util.Set, java.util.Collection
-    public final boolean contains(Object r1) {
-        return this.n.containsKey(r1);
+    public final boolean contains(Object obj) {
+        return this.n.containsKey(obj);
     }
 
     @Override // java.util.Set, java.util.Collection
-    public final boolean containsAll(Collection r1) {
-        return this.n.k(r1);
+    public final boolean containsAll(Collection collection) {
+        return this.n.k(collection);
     }
 
     @Override // java.util.Set, java.util.Collection
-    public final boolean equals(Object r3) {
-        oi r0 = this.n;
-        if (this != r3) goto L6;
-        return true;
-    L6:
-        if ((r3 instanceof Set) == false) goto L14;
-        Set r4 = (Set) r3;
-        if (r0.p != r4.size()) goto L20;
-        if (r0.k(r4) == false) goto L21;
-        return true;
-    L21:
-        return false;
-    L20:
-        return false;
-    L22:
-        return false;
-    L14:
-        return false;
+    public final boolean equals(Object obj) {
+        oi oiVar = this.n;
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof Set)) {
+            return false;
+        }
+        Set set = (Set) obj;
+        try {
+            return oiVar.p == set.size() && oiVar.k(set);
+        } catch (ClassCastException | NullPointerException unused) {
+            return false;
+        }
     }
 
     @Override // java.util.Set, java.util.Collection
     public final int hashCode() {
-        oi r4 = this.n;
-        int r0 = r4.p - 1;
-        int r2 = 0;
-    L3:
-        if (r0 < 0) goto L9;
-        Object r3 = r4.f(r0);
-        if (r3 != null) goto L7;
-        int r5 = 0;
-    L8:
-        r2 = r2 + r5;
-        r0 = r0 - 1;
-        goto L3
-    L7:
-        r5 = r3.hashCode();
-        goto L8
-    L9:
-        return r2;
+        oi oiVar = this.n;
+        int iHashCode = 0;
+        for (int i = oiVar.p - 1; i >= 0; i--) {
+            Object objF = oiVar.f(i);
+            iHashCode += objF == null ? 0 : objF.hashCode();
+        }
+        return iHashCode;
     }
 
     @Override // java.util.Set, java.util.Collection
@@ -92,38 +78,31 @@ public final class li implements Set {
     }
 
     @Override // java.util.Set, java.util.Collection
-    public final boolean remove(Object r1) {
-        oi r0 = this.n;
-        int r2 = r0.d(r1);
-        if (r2 < 0) goto L6;
-        r0.h(r2);
+    public final boolean remove(Object obj) {
+        oi oiVar = this.n;
+        int iD = oiVar.d(obj);
+        if (iD < 0) {
+            return false;
+        }
+        oiVar.h(iD);
         return true;
-    L6:
-        return false;
     }
 
     @Override // java.util.Set, java.util.Collection
-    public final boolean removeAll(Collection r1) {
-        return this.n.l(r1);
+    public final boolean removeAll(Collection collection) {
+        return this.n.l(collection);
     }
 
     @Override // java.util.Set, java.util.Collection
-    public final boolean retainAll(Collection r4) {
-        oi r3 = this.n;
-        int r0 = r3.p;
-        int r1 = r0 - 1;
-    L3:
-        if (r1 < 0) goto L9;
-        if (r4.contains(r3.f(r1)) == true) goto L7;
-        r3.h(r1);
-    L7:
-        r1 = r1 - 1;
-        goto L3
-    L9:
-        if (r0 == r3.p) goto L12;
-        return true;
-    L12:
-        return false;
+    public final boolean retainAll(Collection collection) {
+        oi oiVar = this.n;
+        int i = oiVar.p;
+        for (int i2 = i - 1; i2 >= 0; i2--) {
+            if (!collection.contains(oiVar.f(i2))) {
+                oiVar.h(i2);
+            }
+        }
+        return i != oiVar.p;
     }
 
     @Override // java.util.Set, java.util.Collection
@@ -132,37 +111,29 @@ public final class li implements Set {
     }
 
     @Override // java.util.Set, java.util.Collection
-    public final Object[] toArray(Object[] r4) {
-        oi r3 = this.n;
-        int r0 = r3.p;
-        if (r4.length >= r0) goto L5;
-        r4 = (Object[]) Array.newInstance(r4.getClass().getComponentType(), r0);
-    L5:
-        int r1 = 0;
-    L6:
-        if (r1 >= r0) goto L9;
-        r4[r1] = r3.f(r1);
-        r1 = r1 + 1;
-        goto L6
-    L9:
-        if (r4.length <= r0) goto L11;
-        r4[r0] = null;
-    L11:
-        return r4;
+    public final Object[] toArray(Object[] objArr) {
+        oi oiVar = this.n;
+        int i = oiVar.p;
+        if (objArr.length < i) {
+            objArr = (Object[]) Array.newInstance(objArr.getClass().getComponentType(), i);
+        }
+        for (int i2 = 0; i2 < i; i2++) {
+            objArr[i2] = oiVar.f(i2);
+        }
+        if (objArr.length > i) {
+            objArr[i] = null;
+        }
+        return objArr;
     }
 
     @Override // java.util.Set, java.util.Collection
     public final Object[] toArray() {
-        oi r4 = this.n;
-        int r0 = r4.p;
-        Object[] r1 = new Object[r0];
-        int r2 = 0;
-    L3:
-        if (r2 >= r0) goto L5;
-        r1[r2] = r4.f(r2);
-        r2 = r2 + 1;
-        goto L3
-    L5:
-        return r1;
+        oi oiVar = this.n;
+        int i = oiVar.p;
+        Object[] objArr = new Object[i];
+        for (int i2 = 0; i2 < i; i2++) {
+            objArr[i2] = oiVar.f(i2);
+        }
+        return objArr;
     }
 }

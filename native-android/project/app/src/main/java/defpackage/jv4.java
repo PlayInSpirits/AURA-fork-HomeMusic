@@ -37,260 +37,268 @@ public final class jv4 implements View.OnLongClickListener, View.OnHoverListener
 
     /* JADX WARN: Type inference failed for: r0v0, types: [iv4] */
     /* JADX WARN: Type inference failed for: r0v1, types: [iv4] */
-    public jv4(View r4, CharSequence r5) {
-        final int r1 = 0;
-        this.q = new iv4(this, r1);
-        final int r2 = 1;
-        this.r = new iv4(this, r2);
-        this.n = r4;
-        this.o = r5;
-        ViewConfiguration r6 = ViewConfiguration.get(r4.getContext());
-        Method r0 = n65.a;
-        if (Build.VERSION.SDK_INT < 28) goto L5;
-        int r7 = ne.n(r6);
-    L6:
-        this.p = r7;
+    public jv4(View view, CharSequence charSequence) {
+        final int i = 0;
+        this.q = new Runnable(this) { // from class: iv4
+            public final /* synthetic */ jv4 o;
+
+            {
+                this.o = this;
+            }
+
+            @Override // java.lang.Runnable
+            public final void run() {
+                int i2 = i;
+                jv4 jv4Var = this.o;
+                switch (i2) {
+                    case 0:
+                        jv4Var.c(false);
+                        break;
+                    default:
+                        jv4Var.a();
+                        break;
+                }
+            }
+        };
+        final int i2 = 1;
+        this.r = new Runnable(this) { // from class: iv4
+            public final /* synthetic */ jv4 o;
+
+            {
+                this.o = this;
+            }
+
+            @Override // java.lang.Runnable
+            public final void run() {
+                int i3 = i2;
+                jv4 jv4Var = this.o;
+                switch (i3) {
+                    case 0:
+                        jv4Var.c(false);
+                        break;
+                    default:
+                        jv4Var.a();
+                        break;
+                }
+            }
+        };
+        this.n = view;
+        this.o = charSequence;
+        ViewConfiguration viewConfiguration = ViewConfiguration.get(view.getContext());
+        Method method = n65.a;
+        this.p = Build.VERSION.SDK_INT >= 28 ? ne.n(viewConfiguration) : viewConfiguration.getScaledTouchSlop() / 2;
         this.w = true;
-        r4.setOnLongClickListener(this);
-        r4.setOnHoverListener(this);
-        return;
-    L5:
-        r7 = r6.getScaledTouchSlop() / 2;
-        goto L6
+        view.setOnLongClickListener(this);
+        view.setOnHoverListener(this);
     }
 
-    public static void b(jv4 r3) {
-        jv4 r0 = x;
-        if (r0 == null) goto L5;
-        r0.n.removeCallbacks(r0.q);
-    L5:
-        x = r3;
-        if (r3 == null) goto L9;
-        r3.n.postDelayed(r3.q, ViewConfiguration.getLongPressTimeout());
-        return;
+    public static void b(jv4 jv4Var) {
+        jv4 jv4Var2 = x;
+        if (jv4Var2 != null) {
+            jv4Var2.n.removeCallbacks(jv4Var2.q);
+        }
+        x = jv4Var;
+        if (jv4Var != null) {
+            jv4Var.n.postDelayed(jv4Var.q, ViewConfiguration.getLongPressTimeout());
+        }
     }
 
     public final void a() {
-        jv4 r0 = y;
-        View r1 = this.n;
-        if (r0 != this) goto L12;
-        y = null;
-        lv4 r2 = this.u;
-        if (r2 == null) goto L10;
-        View r3 = (View) r2.o;
-        if (r3.getParent() == null) goto L9;
-        ((WindowManager) ((Context) r2.n).getSystemService("window")).removeView(r3);
-    L9:
-        this.u = null;
-        this.w = true;
-        r1.removeOnAttachStateChangeListener(this);
-        goto L12
-    L10:
-        Log.e("TooltipCompatHandler", "sActiveHandler.mPopup == null");
-    L12:
-        if (x != this) goto L14;
-        b(null);
-    L14:
-        r1.removeCallbacks(this.r);
+        jv4 jv4Var = y;
+        View view = this.n;
+        if (jv4Var == this) {
+            y = null;
+            lv4 lv4Var = this.u;
+            if (lv4Var != null) {
+                View view2 = (View) lv4Var.o;
+                if (view2.getParent() != null) {
+                    ((WindowManager) ((Context) lv4Var.n).getSystemService("window")).removeView(view2);
+                }
+                this.u = null;
+                this.w = true;
+                view.removeOnAttachStateChangeListener(this);
+            } else {
+                Log.e("TooltipCompatHandler", "sActiveHandler.mPopup == null");
+            }
+        }
+        if (x == this) {
+            b(null);
+        }
+        view.removeCallbacks(this.r);
     }
 
-    public final void c(boolean r22) {
-        View r1 = this.n;
-        if (r1.isAttachedToWindow() == true) goto L5;
-        return;
-    L5:
-        b(null);
-        jv4 r2 = y;
-        if (r2 == null) goto L8;
-        r2.a();
-    L8:
-        y = this;
-        this.v = r22;
-        lv4 r3 = new lv4(r1.getContext());
-        View r4 = (View) r3.o;
-        Context r5 = (Context) r3.n;
-        this.u = r3;
-        int r6 = this.s;
-        int r7 = this.t;
-        boolean r8 = this.v;
-        WindowManager.LayoutParams r9 = (WindowManager.LayoutParams) r3.q;
-        if (r4.getParent() != null) goto L11;
-    L13:
-        ((TextView) r3.p).setText(this.o);
-        int[] r10 = (int[]) r3.t;
-        int[] r11 = (int[]) r3.s;
-        Rect r12 = (Rect) r3.r;
-        r9.token = r1.getApplicationWindowToken();
-        int r13 = r5.getResources().getDimensionPixelOffset(R.dimen.tooltip_precise_anchor_threshold);
-        if (r1.getWidth() >= r13) goto L18;
-        r6 = r1.getWidth() / 2;
-    L18:
-        if (r1.getHeight() < r13) goto L20;
-        int r14 = r5.getResources().getDimensionPixelOffset(R.dimen.tooltip_precise_anchor_extra_offset);
-        int r15 = r7 + r14;
-        int r16 = r7 - r14;
-    L21:
-        r9.gravity = 49;
-        Resources r17 = r5.getResources();
-        if (r8 == false) goto L25;
-        int r18 = R.dimen.tooltip_y_offset_touch;
-    L26:
-        int r19 = r17.getDimensionPixelOffset(r18);
-        View r110 = r1.getRootView();
-        ViewGroup.LayoutParams r111 = r110.getLayoutParams();
-        int r112 = r6;
-        if ((r111 instanceof WindowManager.LayoutParams) == true) goto L29;
-    L31:
-        Context r20 = r1.getContext();
-    L33:
-        if ((r20 instanceof ContextWrapper) == false) goto L38;
-        if ((r20 instanceof Activity) == true) goto L36;
-        r20 = ((ContextWrapper) r20).getBaseContext();
-        goto L33
-    L36:
-        r110 = ((Activity) r20).getWindow().getDecorView();
-    L38:
-        if (r110 != null) goto L40;
-        Log.e("TooltipPopup", "Cannot find app view");
-        int r113 = 1;
-    L59:
-        ((WindowManager) r5.getSystemService("window")).addView(r4, r9);
-        r1.addOnAttachStateChangeListener(this);
-        if (this.v == false) goto L62;
-        long r21 = 2500;
-    L67:
-        iv4 r0 = this.r;
-        r1.removeCallbacks(r0);
-        r1.postDelayed(r0, r21);
-        return;
-    L62:
-        WeakHashMap r23 = j65.a;
-        if ((r1.getWindowSystemUiVisibility() & 1) != r113) goto L66;
-        long r24 = ViewConfiguration.getLongPressTimeout();
-        long r25 = 3000;
-    L65:
-        r21 = r25 - r24;
-        goto L67
-    L66:
-        r24 = ViewConfiguration.getLongPressTimeout();
-        r25 = 15000;
-        goto L65
-    L40:
-        r110.getWindowVisibleDisplayFrame(r12);
-        if (r12.left < 0) goto L43;
-    L49:
-        int r114 = 0;
-        r113 = 1;
-    L50:
-        r110.getLocationOnScreen(r10);
-        r1.getLocationOnScreen(r11);
-        int r26 = r11[r114] - r10[r114];
-        r11[r114] = r26;
-        r11[r113] = r11[r113] - r10[r113];
-        r9.x = (r26 + r112) - (r110.getWidth() / 2);
-        int r27 = View.MeasureSpec.makeMeasureSpec(r114, r114);
-        r4.measure(r27, r27);
-        int r28 = r4.getMeasuredHeight();
-        int r29 = r11[r113];
-        int r30 = ((r29 + r16) - r19) - r28;
-        int r31 = (r29 + r15) + r19;
-        if (r8 == false) goto L56;
-        if (r30 < 0) goto L54;
-        r9.y = r30;
-        goto L59
-    L54:
-        r9.y = r31;
-        goto L59
-    L56:
-        if ((r28 + r31) > r12.height()) goto L58;
-        r9.y = r31;
-        goto L59
-    L58:
-        r9.y = r30;
-        goto L59
-    L43:
-        if (r12.top >= 0) goto L49;
-        Resources r115 = r5.getResources();
-        r113 = 1;
-        int r32 = r115.getIdentifier("status_bar_height", "dimen", "android");
-        if (r32 == 0) goto L47;
-        int r33 = r115.getDimensionPixelSize(r32);
-    L48:
-        DisplayMetrics r34 = r115.getDisplayMetrics();
-        r114 = 0;
-        r12.set(0, r33, r34.widthPixels, r34.heightPixels);
-        goto L50
-    L47:
-        r33 = 0;
-        goto L48
-    L29:
-        if (((WindowManager.LayoutParams) r111).type != 2) goto L31;
-    L25:
-        r18 = R.dimen.tooltip_y_offset_non_touch;
-        goto L26
-    L20:
-        r15 = r1.getHeight();
-        r16 = 0;
-        goto L21
-    L11:
-        if (r4.getParent() == null) goto L13;
-        ((WindowManager) r5.getSystemService("window")).removeView(r4);
-        goto L13
+    public final void c(boolean z) {
+        int height;
+        int i;
+        int i2;
+        int i3;
+        long longPressTimeout;
+        long j;
+        long j2;
+        View view = this.n;
+        if (view.isAttachedToWindow()) {
+            b(null);
+            jv4 jv4Var = y;
+            if (jv4Var != null) {
+                jv4Var.a();
+            }
+            y = this;
+            this.v = z;
+            lv4 lv4Var = new lv4(view.getContext());
+            View view2 = (View) lv4Var.o;
+            Context context = (Context) lv4Var.n;
+            this.u = lv4Var;
+            int width = this.s;
+            int i4 = this.t;
+            boolean z2 = this.v;
+            WindowManager.LayoutParams layoutParams = (WindowManager.LayoutParams) lv4Var.q;
+            if (view2.getParent() != null && view2.getParent() != null) {
+                ((WindowManager) context.getSystemService("window")).removeView(view2);
+            }
+            ((TextView) lv4Var.p).setText(this.o);
+            int[] iArr = (int[]) lv4Var.t;
+            int[] iArr2 = (int[]) lv4Var.s;
+            Rect rect = (Rect) lv4Var.r;
+            layoutParams.token = view.getApplicationWindowToken();
+            int dimensionPixelOffset = context.getResources().getDimensionPixelOffset(R.dimen.tooltip_precise_anchor_threshold);
+            if (view.getWidth() < dimensionPixelOffset) {
+                width = view.getWidth() / 2;
+            }
+            if (view.getHeight() >= dimensionPixelOffset) {
+                int dimensionPixelOffset2 = context.getResources().getDimensionPixelOffset(R.dimen.tooltip_precise_anchor_extra_offset);
+                height = i4 + dimensionPixelOffset2;
+                i = i4 - dimensionPixelOffset2;
+            } else {
+                height = view.getHeight();
+                i = 0;
+            }
+            layoutParams.gravity = 49;
+            int dimensionPixelOffset3 = context.getResources().getDimensionPixelOffset(z2 ? R.dimen.tooltip_y_offset_touch : R.dimen.tooltip_y_offset_non_touch);
+            View rootView = view.getRootView();
+            ViewGroup.LayoutParams layoutParams2 = rootView.getLayoutParams();
+            int i5 = width;
+            if (!(layoutParams2 instanceof WindowManager.LayoutParams) || ((WindowManager.LayoutParams) layoutParams2).type != 2) {
+                for (Context context2 = view.getContext(); context2 instanceof ContextWrapper; context2 = ((ContextWrapper) context2).getBaseContext()) {
+                    if (context2 instanceof Activity) {
+                        rootView = ((Activity) context2).getWindow().getDecorView();
+                        break;
+                    }
+                }
+            }
+            if (rootView == null) {
+                Log.e("TooltipPopup", "Cannot find app view");
+                i3 = 1;
+            } else {
+                rootView.getWindowVisibleDisplayFrame(rect);
+                if (rect.left >= 0 || rect.top >= 0) {
+                    i2 = 0;
+                    i3 = 1;
+                } else {
+                    Resources resources = context.getResources();
+                    i3 = 1;
+                    int identifier = resources.getIdentifier("status_bar_height", "dimen", "android");
+                    int dimensionPixelSize = identifier != 0 ? resources.getDimensionPixelSize(identifier) : 0;
+                    DisplayMetrics displayMetrics = resources.getDisplayMetrics();
+                    i2 = 0;
+                    rect.set(0, dimensionPixelSize, displayMetrics.widthPixels, displayMetrics.heightPixels);
+                }
+                rootView.getLocationOnScreen(iArr);
+                view.getLocationOnScreen(iArr2);
+                int i6 = iArr2[i2] - iArr[i2];
+                iArr2[i2] = i6;
+                iArr2[i3] = iArr2[i3] - iArr[i3];
+                layoutParams.x = (i6 + i5) - (rootView.getWidth() / 2);
+                int iMakeMeasureSpec = View.MeasureSpec.makeMeasureSpec(i2, i2);
+                view2.measure(iMakeMeasureSpec, iMakeMeasureSpec);
+                int measuredHeight = view2.getMeasuredHeight();
+                int i7 = iArr2[i3];
+                int i8 = ((i7 + i) - dimensionPixelOffset3) - measuredHeight;
+                int i9 = i7 + height + dimensionPixelOffset3;
+                if (z2) {
+                    if (i8 >= 0) {
+                        layoutParams.y = i8;
+                    } else {
+                        layoutParams.y = i9;
+                    }
+                } else if (measuredHeight + i9 <= rect.height()) {
+                    layoutParams.y = i9;
+                } else {
+                    layoutParams.y = i8;
+                }
+            }
+            ((WindowManager) context.getSystemService("window")).addView(view2, layoutParams);
+            view.addOnAttachStateChangeListener(this);
+            if (this.v) {
+                j2 = 2500;
+            } else {
+                WeakHashMap weakHashMap = j65.a;
+                if ((view.getWindowSystemUiVisibility() & 1) == i3) {
+                    longPressTimeout = ViewConfiguration.getLongPressTimeout();
+                    j = 3000;
+                } else {
+                    longPressTimeout = ViewConfiguration.getLongPressTimeout();
+                    j = 15000;
+                }
+                j2 = j - longPressTimeout;
+            }
+            iv4 iv4Var = this.r;
+            view.removeCallbacks(iv4Var);
+            view.postDelayed(iv4Var, j2);
+        }
     }
 
+    /* JADX WARN: Code duplicated, block: B:29:0x0066  */
     @Override // android.view.View.OnHoverListener
-    public final boolean onHover(View r4, MotionEvent r5) {
-        if (this.u != null) goto L5;
-    L7:
-        View r6 = this.n;
-        AccessibilityManager r1 = (AccessibilityManager) r6.getContext().getSystemService("accessibility");
-        if (r1.isEnabled() == true) goto L10;
-    L12:
-        int r2 = r5.getAction();
-        if (r2 == 7) goto L20;
-        if (r2 != 10) goto L30;
-        this.w = true;
-        a();
+    public final boolean onHover(View view, MotionEvent motionEvent) {
+        if (this.u == null || !this.v) {
+            View view2 = this.n;
+            AccessibilityManager accessibilityManager = (AccessibilityManager) view2.getContext().getSystemService("accessibility");
+            if (!accessibilityManager.isEnabled() || !accessibilityManager.isTouchExplorationEnabled()) {
+                int action = motionEvent.getAction();
+                if (action != 7) {
+                    if (action == 10) {
+                        this.w = true;
+                        a();
+                        return false;
+                    }
+                } else if (view2.isEnabled() && this.u == null) {
+                    int x2 = (int) motionEvent.getX();
+                    int y2 = (int) motionEvent.getY();
+                    if (this.w) {
+                        this.s = x2;
+                        this.t = y2;
+                        this.w = false;
+                        b(this);
+                    } else {
+                        int iAbs = Math.abs(x2 - this.s);
+                        int i = this.p;
+                        if (iAbs > i || Math.abs(y2 - this.t) > i) {
+                            this.s = x2;
+                            this.t = y2;
+                            this.w = false;
+                            b(this);
+                        }
+                    }
+                }
+            }
+        }
         return false;
-    L30:
-        return false;
-    L20:
-        if (r6.isEnabled() == false) goto L30;
-        if (this.u != null) goto L30;
-        int r7 = (int) r5.getX();
-        int r8 = (int) r5.getY();
-        if (this.w == true) goto L29;
-        int r3 = Math.abs(r7 - this.s);
-        int r9 = this.p;
-        if (r3 > r9) goto L29;
-        if (Math.abs(r8 - this.t) <= r9) goto L30;
-    L29:
-        this.s = r7;
-        this.t = r8;
-        this.w = false;
-        b(this);
-        goto L30
-    L10:
-        if (r1.isTouchExplorationEnabled() == false) goto L12;
-    L5:
-        if (this.v == false) goto L7;
-        goto L7
     }
 
     @Override // android.view.View.OnLongClickListener
-    public final boolean onLongClick(View r2) {
-        this.s = r2.getWidth() / 2;
-        this.t = r2.getHeight() / 2;
+    public final boolean onLongClick(View view) {
+        this.s = view.getWidth() / 2;
+        this.t = view.getHeight() / 2;
         c(true);
         return true;
     }
 
     @Override // android.view.View.OnAttachStateChangeListener
-    public final void onViewAttachedToWindow(View r1) {
+    public final void onViewAttachedToWindow(View view) {
     }
 
     @Override // android.view.View.OnAttachStateChangeListener
-    public final void onViewDetachedFromWindow(View r1) {
+    public final void onViewDetachedFromWindow(View view) {
         a();
     }
 }

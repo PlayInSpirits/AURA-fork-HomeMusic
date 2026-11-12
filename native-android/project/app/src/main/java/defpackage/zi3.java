@@ -10,25 +10,24 @@ public final class zi3 implements StarCallback {
     public final /* synthetic */ Child o;
     public final /* synthetic */ aj3 p;
 
-    public /* synthetic */ zi3(aj3 r1, Child r2, int r3) {
-        this.n = r3;
-        this.p = r1;
-        this.o = r2;
+    public /* synthetic */ zi3(aj3 aj3Var, Child child, int i) {
+        this.n = i;
+        this.p = aj3Var;
+        this.o = child;
     }
 
     @Override // com.eddyizm.tempus.interfaces.StarCallback
     public final void onError() {
-        int r0 = this.n;
-        Child r2 = this.o;
-        aj3 r3 = this.p;
-        switch(r0) {
-            case 0: goto L6;
-            default: goto L4;
-        };
-    L4:
-        r3.g.J(r2.getId(), null, true, null);
-        return;
-    L6:
-        r3.g.J(r2.getId(), null, false, null);
+        int i = this.n;
+        Child child = this.o;
+        aj3 aj3Var = this.p;
+        switch (i) {
+            case 0:
+                aj3Var.g.J(child.getId(), null, false, null);
+                break;
+            default:
+                aj3Var.g.J(child.getId(), null, true, null);
+                break;
+        }
     }
 }

@@ -15,196 +15,165 @@ public final class t23 extends r23 implements Iterable, x32 {
     public int y;
     public String z;
 
-    public t23(u23 r2) {
-        super(r2);
+    public t23(u23 u23Var) {
+        super(u23Var);
         this.x = new mj4(0);
     }
 
     @Override // defpackage.r23
-    public final p23 e(ik r2) {
-        return i(r2, false, this);
+    public final p23 e(ik ikVar) {
+        return i(ikVar, false, this);
     }
 
     @Override // defpackage.r23
-    public final boolean equals(Object r5) {
-        if (this == r5) goto L20;
-        if (r5 != null) goto L6;
-        return false;
-    L6:
-        if ((r5 instanceof t23) == true) goto L9;
-        return false;
-    L9:
-        if (super.equals(r5) == false) goto L28;
-        mj4 r0 = this.x;
-        int r1 = r0.e();
-        t23 r6 = (t23) r5;
-        mj4 r2 = r6.x;
-        if (r1 == r2.e()) goto L13;
-        return false;
-    L13:
-        if (this.y != r6.y) goto L30;
-        Iterator r4 = ((gb0) fa4.b0(new x0(2, r0))).iterator();
-    L16:
-        if (r4.hasNext() == false) goto L27;
-        r23 r7 = (r23) r4.next();
-        if (r7.equals(r2.b(r7.u)) == true) goto L16;
-        return false;
-    L27:
-        return true;
-    L30:
-        return false;
-    L28:
-        return false;
-    L20:
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || !(obj instanceof t23) || !super.equals(obj)) {
+            return false;
+        }
+        mj4 mj4Var = this.x;
+        int iE = mj4Var.e();
+        t23 t23Var = (t23) obj;
+        mj4 mj4Var2 = t23Var.x;
+        if (iE != mj4Var2.e() || this.y != t23Var.y) {
+            return false;
+        }
+        for (r23 r23Var : (gb0) fa4.b0(new x0(2, mj4Var))) {
+            if (!r23Var.equals(mj4Var2.b(r23Var.u))) {
+                return false;
+            }
+        }
         return true;
     }
 
     @Override // defpackage.r23
-    public final void f(Context r3, AttributeSet r4) {
-        super.f(r3, r4);
-        TypedArray r5 = r3.getResources().obtainAttributes(r4, zs3.d);
-        r5.getClass();
-        int r0 = r5.getResourceId(0, 0);
-        if (r0 == this.u) goto L14;
-        this.y = r0;
+    public final void f(Context context, AttributeSet attributeSet) {
+        String strValueOf;
+        super.f(context, attributeSet);
+        TypedArray typedArrayObtainAttributes = context.getResources().obtainAttributes(attributeSet, zs3.d);
+        typedArrayObtainAttributes.getClass();
+        int resourceId = typedArrayObtainAttributes.getResourceId(0, 0);
+        if (resourceId == this.u) {
+            throw new IllegalArgumentException(("Start destination " + resourceId + " cannot use the same id as the graph " + this).toString());
+        }
+        this.y = resourceId;
         this.z = null;
-        if (r0 > 16777215) goto L15;
-        String r6 = String.valueOf(r0);
-    L11:
-        this.z = r6;
-        r5.recycle();
-        return;
-    L15:
-        r6 = r3.getResources().getResourceName(r0);     // Catch: Resources.NotFoundException -> L9
-    L10:
-        r6.getClass();
-    L9:
-        r6 = String.valueOf(r0);
-        goto L10
-    L14:
-        throw new IllegalArgumentException(("Start destination " + r0 + " cannot use the same id as the graph " + this).toString());
+        if (resourceId <= 16777215) {
+            strValueOf = String.valueOf(resourceId);
+        } else {
+            try {
+                strValueOf = context.getResources().getResourceName(resourceId);
+            } catch (Resources.NotFoundException unused) {
+                strValueOf = String.valueOf(resourceId);
+            }
+            strValueOf.getClass();
+        }
+        this.z = strValueOf;
+        typedArrayObtainAttributes.recycle();
     }
 
-    public final void g(r23 r5) {
-        r5.getClass();
-        int r0 = r5.u;
-        String r1 = r5.v;
-        if (r0 != 0) goto L8;
-        if (r1 != null) goto L8;
-        kf2.n("Destinations must have an id or route. Call setId(), setRoute(), or include an android:id or app:route in your navigation XML.");
-        return;
-    L8:
-        String r2 = this.v;
-        if (r2 == null) goto L16;
-        if (h12.c(r1, r2) == false) goto L16;
-        nz2.v("Destination ", r5, " cannot have the same route as graph ", this);
-        return;
-    L16:
-        if (r0 == this.u) goto L28;
-        mj4 r3 = this.x;
-        r23 r4 = (r23) r3.b(r0);
-        if (r4 != r5) goto L21;
-        return;
-    L21:
-        if (r5.o != null) goto L26;
-        if (r4 == null) goto L24;
-        r4.o = null;
-    L24:
-        r5.o = this;
-        r3.d(r5.u, r5);
-        return;
-    L26:
-        kf2.o("Destination already has a parent set. Call NavGraph.remove() to remove the previous parent.");
-        return;
-    L28:
-        nz2.v("Destination ", r5, " cannot have the same id as graph ", this);
+    public final void g(r23 r23Var) {
+        r23Var.getClass();
+        int i = r23Var.u;
+        String str = r23Var.v;
+        if (i == 0 && str == null) {
+            kf2.n("Destinations must have an id or route. Call setId(), setRoute(), or include an android:id or app:route in your navigation XML.");
+            return;
+        }
+        String str2 = this.v;
+        if (str2 != null && h12.c(str, str2)) {
+            nz2.v("Destination ", r23Var, " cannot have the same route as graph ", this);
+            return;
+        }
+        if (i == this.u) {
+            nz2.v("Destination ", r23Var, " cannot have the same id as graph ", this);
+            return;
+        }
+        mj4 mj4Var = this.x;
+        r23 r23Var2 = (r23) mj4Var.b(i);
+        if (r23Var2 == r23Var) {
+            return;
+        }
+        if (r23Var.o != null) {
+            kf2.o("Destination already has a parent set. Call NavGraph.remove() to remove the previous parent.");
+            return;
+        }
+        if (r23Var2 != null) {
+            r23Var2.o = null;
+        }
+        r23Var.o = this;
+        mj4Var.d(r23Var.u, r23Var);
     }
 
-    public final r23 h(int r6, r23 r7, r23 r8, boolean r9) {
-        mj4 r0 = this.x;
-        r23 r1 = (r23) r0.b(r6);
-        if (r8 != null) goto L5;
-        if (r1 == null) goto L12;
-        return r1;
-    L12:
-        if (r9 == false) goto L25;
-        Iterator r2 = ((gb0) fa4.b0(new x0(2, r0))).iterator();
-    L15:
-        if (r2.hasNext() == false) goto L24;
-        r23 r3 = (r23) r2.next();
-        if ((r3 instanceof t23) == true) goto L19;
-    L21:
-        r1 = null;
-    L22:
-        if (r1 == null) goto L15;
-    L19:
-        if (r3.equals(r7) == true) goto L21;
-        r1 = ((t23) r3).h(r6, this, r8, true);
-        goto L22
-    L24:
-        r1 = null;
-    L25:
-        if (r1 != null) goto L33;
-        t23 r4 = this.o;
-        if (r4 != null) goto L29;
-    L32:
-        return null;
-    L29:
-        if (r4.equals(r7) == true) goto L32;
-        t23 r10 = this.o;
-        r10.getClass();
-        return r10.h(r6, this, r8, r9);
-    L33:
-        return r1;
-    L5:
-        if (h12.c(r1, r8) == true) goto L7;
-    L9:
-        r1 = null;
-        goto L12
-    L7:
-        if (h12.c(r1.o, r8.o) == false) goto L9;
-        return r1;
+    public final r23 h(int i, r23 r23Var, r23 r23Var2, boolean z) {
+        mj4 mj4Var = this.x;
+        r23 r23VarH = (r23) mj4Var.b(i);
+        if (r23Var2 != null) {
+            if (h12.c(r23VarH, r23Var2) && h12.c(r23VarH.o, r23Var2.o)) {
+                return r23VarH;
+            }
+            r23VarH = null;
+        } else if (r23VarH != null) {
+            return r23VarH;
+        }
+        if (z) {
+            Iterator it = ((gb0) fa4.b0(new x0(2, mj4Var))).iterator();
+            do {
+                if (!it.hasNext()) {
+                    r23VarH = null;
+                    break;
+                }
+                r23 r23Var3 = (r23) it.next();
+                r23VarH = (!(r23Var3 instanceof t23) || r23Var3.equals(r23Var)) ? null : ((t23) r23Var3).h(i, this, r23Var2, true);
+            } while (r23VarH == null);
+        }
+        if (r23VarH != null) {
+            return r23VarH;
+        }
+        t23 t23Var = this.o;
+        if (t23Var == null || t23Var.equals(r23Var)) {
+            return null;
+        }
+        t23 t23Var2 = this.o;
+        t23Var2.getClass();
+        return t23Var2.h(i, this, r23Var2, z);
     }
 
     @Override // defpackage.r23
     public final int hashCode() {
-        int r0 = this.y;
-        mj4 r5 = this.x;
-        int r1 = r5.e();
-        int r2 = 0;
-    L3:
-        if (r2 >= r1) goto L5;
-        int r3 = r5.c(r2);
-        r0 = (((r0 * 31) + r3) * 31) + ((r23) r5.f(r2)).hashCode();
-        r2 = r2 + 1;
-        goto L3
-    L5:
-        return r0;
+        int iC = this.y;
+        mj4 mj4Var = this.x;
+        int iE = mj4Var.e();
+        for (int i = 0; i < iE; i++) {
+            iC = (((iC * 31) + mj4Var.c(i)) * 31) + ((r23) mj4Var.f(i)).hashCode();
+        }
+        return iC;
     }
 
-    public final p23 i(ik r7, boolean r8, t23 r9) {
-        p23 r0 = super.e(r7);
-        ArrayList r1 = new ArrayList();
-        s23 r2 = new s23(this);
-    L3:
-        p23 r4 = null;
-        if (r2.hasNext() == false) goto L10;
-        r23 r3 = (r23) r2.next();
-        if (h12.c(r3, r9) == true) goto L8;
-        r4 = r3.e(r7);
-    L8:
-        if (r4 == null) goto L3;
-        r1.add(r4);
-        goto L3
-    L10:
-        p23 r5 = (p23) q40.E0(r1);
-        t23 r6 = this.o;
-        if (r6 == null) goto L17;
-        if (r8 == false) goto L17;
-        if (r6.equals(r9) == true) goto L17;
-        r4 = r6.i(r7, true, this);
-    L17:
-        return (p23) q40.E0(ti.i0(new p23[]{r0, r5, r4}));
+    public final p23 i(ik ikVar, boolean z, t23 t23Var) {
+        p23 p23VarI;
+        p23 p23VarE = super.e(ikVar);
+        ArrayList arrayList = new ArrayList();
+        s23 s23Var = new s23(this);
+        while (true) {
+            p23VarI = null;
+            if (!s23Var.hasNext()) {
+                break;
+            }
+            r23 r23Var = (r23) s23Var.next();
+            p23VarI = h12.c(r23Var, t23Var) ? null : r23Var.e(ikVar);
+            if (p23VarI != null) {
+                arrayList.add(p23VarI);
+            }
+        }
+        p23 p23Var = (p23) q40.E0(arrayList);
+        t23 t23Var2 = this.o;
+        if (t23Var2 != null && z && !t23Var2.equals(t23Var)) {
+            p23VarI = t23Var2.i(ikVar, true, this);
+        }
+        return (p23) q40.E0(ti.i0(new p23[]{p23VarE, p23Var, p23VarI}));
     }
 
     @Override // java.lang.Iterable
@@ -214,23 +183,22 @@ public final class t23 extends r23 implements Iterable, x32 {
 
     @Override // defpackage.r23
     public final String toString() {
-        StringBuilder r0 = new StringBuilder();
-        r0.append(super.toString());
-        r23 r1 = h(this.y, this, null, false);
-        r0.append(" startDestination=");
-        if (r1 != null) goto L8;
-        String r2 = this.z;
-        if (r2 == null) goto L7;
-        r0.append(r2);
-    L10:
-        return r0.toString();
-    L7:
-        r0.append("0x" + Integer.toHexString(this.y));
-        goto L10
-    L8:
-        r0.append("{");
-        r0.append(r1.toString());
-        r0.append("}");
-        goto L10
+        StringBuilder sb = new StringBuilder();
+        sb.append(super.toString());
+        r23 r23VarH = h(this.y, this, null, false);
+        sb.append(" startDestination=");
+        if (r23VarH == null) {
+            String str = this.z;
+            if (str != null) {
+                sb.append(str);
+            } else {
+                sb.append("0x" + Integer.toHexString(this.y));
+            }
+        } else {
+            sb.append("{");
+            sb.append(r23VarH.toString());
+            sb.append("}");
+        }
+        return sb.toString();
     }
 }

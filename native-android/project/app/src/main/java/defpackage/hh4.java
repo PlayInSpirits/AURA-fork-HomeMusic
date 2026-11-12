@@ -7,29 +7,28 @@ public final /* synthetic */ class hh4 implements if1 {
     public final /* synthetic */ if1 o;
     public final /* synthetic */ if1 p;
 
-    public /* synthetic */ hh4(if1 r1, if1 r2, int r3) {
-        this.n = r3;
-        this.o = r1;
-        this.p = r2;
+    public /* synthetic */ hh4(if1 if1Var, if1 if1Var2, int i) {
+        this.n = i;
+        this.o = if1Var;
+        this.p = if1Var2;
     }
 
     @Override // defpackage.if1
-    public final Object invoke(Object r4) {
-        int r0 = this.n;
-        j15 r1 = j15.a;
-        if1 r2 = this.p;
-        if1 r3 = this.o;
-        switch(r0) {
-            case 0: goto L6;
-            default: goto L4;
-        };
-    L4:
-        r3.invoke(r4);
-        r2.invoke(r4);
-        return r1;
-    L6:
-        r3.invoke(r4);
-        r2.invoke(r4);
-        return r1;
+    public final Object invoke(Object obj) {
+        int i = this.n;
+        j15 j15Var = j15.a;
+        if1 if1Var = this.p;
+        if1 if1Var2 = this.o;
+        switch (i) {
+            case 0:
+                if1Var2.invoke(obj);
+                if1Var.invoke(obj);
+                break;
+            default:
+                if1Var2.invoke(obj);
+                if1Var.invoke(obj);
+                break;
+        }
+        return j15Var;
     }
 }

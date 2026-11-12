@@ -15,10 +15,9 @@ import java.util.WeakHashMap;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class o65 {
-    public static final c22 x = null;
+    public static final c22 x = new c22(3);
     public int a;
     public int b;
-    public int c;
     public float[] d;
     public float[] e;
     public float[] f;
@@ -38,503 +37,413 @@ public final class o65 {
     public View t;
     public boolean u;
     public final ViewGroup v;
-    public final wu4 w;
+    public int c = -1;
+    public final wu4 w = new wu4(4, this);
 
-    static {
-        x = new c22(3);
-    }
-
-    public o65(Context r3, ViewGroup r4, hw r5) {
-        this.c = -1;
-        this.w = new wu4(4, this);
-        if (r5 == null) goto L6;
-        this.v = r4;
-        this.s = r5;
-        ViewConfiguration r6 = ViewConfiguration.get(r3);
-        int r7 = (int) ((r3.getResources().getDisplayMetrics().density * 20.0f) + 0.5f);
-        this.p = r7;
-        this.o = r7;
-        this.b = r6.getScaledTouchSlop();
-        this.m = r6.getScaledMaximumFlingVelocity();
-        this.n = r6.getScaledMinimumFlingVelocity();
-        this.r = new OverScroller(r3, x);
-        return;
-    L6:
-        kf2.n("Callback may not be null");
-        throw null;
+    public o65(Context context, ViewGroup viewGroup, hw hwVar) {
+        if (hwVar == null) {
+            kf2.n("Callback may not be null");
+            throw null;
+        }
+        this.v = viewGroup;
+        this.s = hwVar;
+        ViewConfiguration viewConfiguration = ViewConfiguration.get(context);
+        int i = (int) ((context.getResources().getDisplayMetrics().density * 20.0f) + 0.5f);
+        this.p = i;
+        this.o = i;
+        this.b = viewConfiguration.getScaledTouchSlop();
+        this.m = viewConfiguration.getScaledMaximumFlingVelocity();
+        this.n = viewConfiguration.getScaledMinimumFlingVelocity();
+        this.r = new OverScroller(context, x);
     }
 
     public final void a() {
         this.c = -1;
-        float[] r0 = this.d;
-        if (r0 == null) goto L6;
-        Arrays.fill(r0, 0.0f);
-        Arrays.fill(this.e, 0.0f);
-        Arrays.fill(this.f, 0.0f);
-        Arrays.fill(this.g, 0.0f);
-        Arrays.fill(this.h, 0);
-        Arrays.fill(this.i, 0);
-        Arrays.fill(this.j, 0);
-        this.k = 0;
-    L6:
-        VelocityTracker r1 = this.l;
-        if (r1 == null) goto L10;
-        r1.recycle();
-        this.l = null;
-        return;
+        float[] fArr = this.d;
+        if (fArr != null) {
+            Arrays.fill(fArr, 0.0f);
+            Arrays.fill(this.e, 0.0f);
+            Arrays.fill(this.f, 0.0f);
+            Arrays.fill(this.g, 0.0f);
+            Arrays.fill(this.h, 0);
+            Arrays.fill(this.i, 0);
+            Arrays.fill(this.j, 0);
+            this.k = 0;
+        }
+        VelocityTracker velocityTracker = this.l;
+        if (velocityTracker != null) {
+            velocityTracker.recycle();
+            this.l = null;
+        }
     }
 
-    public final void b(View r3, int r4) {
-        ViewParent r0 = r3.getParent();
-        ViewGroup r1 = this.v;
-        if (r0 != r1) goto L6;
-        this.t = r3;
-        this.c = r4;
-        this.s.y(r3, r4);
+    public final void b(View view, int i) {
+        ViewParent parent = view.getParent();
+        ViewGroup viewGroup = this.v;
+        if (parent != viewGroup) {
+            nz2.A(viewGroup, ")", "captureChildView: parameter must be a descendant of the ViewDragHelper's tracked parent view (");
+            return;
+        }
+        this.t = view;
+        this.c = i;
+        this.s.y(view, i);
         p(1);
-        return;
-    L6:
-        nz2.A(r1, ")", "captureChildView: parameter must be a descendant of the ViewDragHelper's tracked parent view (");
     }
 
-    public final boolean c(float r3, float r4, int r5, int r6) {
-        float r7 = Math.abs(r3);
-        float r8 = Math.abs(r4);
-        if ((this.h[r5] & r6) == r6) goto L5;
-        return false;
-    L5:
-        if ((this.q & r6) != 0) goto L7;
-        return false;
-    L7:
-        if ((this.j[r5] & r6) != r6) goto L9;
-        return false;
-    L9:
-        if ((this.i[r5] & r6) == r6) goto L28;
-        float r0 = this.b;
-        if (r7 > r0) goto L16;
-        if (r8 > r0) goto L16;
-        return false;
-    L16:
-        if (r7 >= (r8 * 0.5f)) goto L19;
-        this.s.getClass();
-    L19:
-        if ((this.i[r5] & r6) == 0) goto L21;
-        return false;
-    L21:
-        if (r7 <= this.b) goto L30;
-        return true;
-    L30:
-        return false;
-    L28:
-        return false;
+    public final boolean c(float f, float f2, int i, int i2) {
+        float fAbs = Math.abs(f);
+        float fAbs2 = Math.abs(f2);
+        if ((this.h[i] & i2) != i2 || (this.q & i2) == 0 || (this.j[i] & i2) == i2 || (this.i[i] & i2) == i2) {
+            return false;
+        }
+        float f3 = this.b;
+        if (fAbs <= f3 && fAbs2 <= f3) {
+            return false;
+        }
+        if (fAbs < fAbs2 * 0.5f) {
+            this.s.getClass();
+        }
+        return (this.i[i] & i2) == 0 && fAbs > ((float) this.b);
     }
 
-    public final boolean d(View r4, float r5, float r6) {
-        if (r4 == null) goto L26;
-        hw r1 = this.s;
-        if (r1.o(r4) <= 0) goto L8;
-        boolean r7 = true;
-    L10:
-        if (r1.p() <= 0) goto L12;
-        boolean r2 = true;
-    L13:
-        if (r7 == false) goto L18;
-        if (r2 == false) goto L18;
-        float r8 = (r6 * r6) + (r5 * r5);
-        int r3 = this.b;
-        if (r8 <= (r3 * r3)) goto L26;
-    L25:
-        return true;
-    L18:
-        if (r7 == true) goto L20;
-        if (r2 == false) goto L26;
-        if (Math.abs(r6) <= this.b) goto L26;
-    L20:
-        if (Math.abs(r5) <= this.b) goto L26;
-    L12:
-        r2 = false;
-        goto L13
-    L8:
-        r7 = false;
-    L26:
+    /* JADX WARN: Code duplicated, block: B:25:0x0044 A[RETURN] */
+    public final boolean d(View view, float f, float f2) {
+        if (view != null) {
+            hw hwVar = this.s;
+            boolean z = hwVar.o(view) > 0;
+            boolean z2 = hwVar.p() > 0;
+            if (z && z2) {
+                float f3 = (f2 * f2) + (f * f);
+                int i = this.b;
+                if (f3 > i * i) {
+                    return true;
+                }
+            } else if (!z ? !(!z2 || Math.abs(f2) <= this.b) : Math.abs(f) > this.b) {
+                return true;
+            }
+        }
         return false;
     }
 
-    public final void e(int r5) {
-        float[] r0 = this.d;
-        if (r0 == null) goto L8;
-        int r1 = this.k;
-        int r2 = 1 << r5;
-        if ((r1 & r2) == 0) goto L9;
-        r0[r5] = 0.0f;
-        this.e[r5] = 0.0f;
-        this.f[r5] = 0.0f;
-        this.g[r5] = 0.0f;
-        this.h[r5] = 0;
-        this.i[r5] = 0;
-        this.j[r5] = 0;
-        this.k = (~r2) & r1;
-        return;
-    L9:
-        return;
+    public final void e(int i) {
+        float[] fArr = this.d;
+        if (fArr != null) {
+            int i2 = this.k;
+            int i3 = 1 << i;
+            if ((i2 & i3) != 0) {
+                fArr[i] = 0.0f;
+                this.e[i] = 0.0f;
+                this.f[i] = 0.0f;
+                this.g[i] = 0.0f;
+                this.h[i] = 0;
+                this.i[i] = 0;
+                this.j[i] = 0;
+                this.k = (~i3) & i2;
+            }
+        }
     }
 
-    public final int f(int r4, int r5, int r6) {
-        if (r4 != 0) goto L5;
-        return 0;
-    L5:
-        int r3 = this.v.getWidth();
-        float r0 = r3 / 2;
-        float r1 = (((float) Math.sin((Math.min(1.0f, Math.abs(r4) / r3) - 0.5f) * 0.47123894f)) * r0) + r0;
-        int r7 = Math.abs(r5);
-        if (r7 <= 0) goto L8;
-        int r8 = Math.round(Math.abs(r1 / r7) * 1000.0f) * 4;
-    L10:
-        return Math.min(r8, 600);
-    L8:
-        r8 = (int) (((Math.abs(r4) / r6) + 1.0f) * 256.0f);
-        goto L10
+    public final int f(int i, int i2, int i3) {
+        if (i == 0) {
+            return 0;
+        }
+        int width = this.v.getWidth();
+        float f = width / 2;
+        float fSin = (((float) Math.sin((Math.min(1.0f, Math.abs(i) / width) - 0.5f) * 0.47123894f)) * f) + f;
+        int iAbs = Math.abs(i2);
+        return Math.min(iAbs > 0 ? Math.round(Math.abs(fSin / iAbs) * 1000.0f) * 4 : (int) (((Math.abs(i) / i3) + 1.0f) * 256.0f), 600);
     }
 
     public final boolean g() {
-        if (this.a != 2) goto L21;
-        OverScroller r0 = this.r;
-        boolean r3 = r0.computeScrollOffset();
-        int r4 = r0.getCurrX();
-        int r5 = r0.getCurrY();
-        int r6 = r4 - this.t.getLeft();
-        int r7 = r5 - this.t.getTop();
-        if (r6 == 0) goto L7;
-        View r8 = this.t;
-        WeakHashMap r9 = j65.a;
-        r8.offsetLeftAndRight(r6);
-    L7:
-        if (r7 == 0) goto L9;
-        View r10 = this.t;
-        WeakHashMap r11 = j65.a;
-        r10.offsetTopAndBottom(r7);
-    L9:
-        if (r6 != 0) goto L11;
-        if (r7 != 0) goto L11;
-    L12:
-        if (r3 == true) goto L14;
-    L18:
-        if (r3 == true) goto L21;
-        this.v.post(this.w);
-        goto L21
-    L14:
-        if (r4 != r0.getFinalX()) goto L18;
-        if (r5 != r0.getFinalY()) goto L18;
-        r0.abortAnimation();
-        r3 = false;
-    L11:
-        this.s.A(this.t, r4, r5);
-    L21:
-        if (this.a != 2) goto L24;
-        return true;
-    L24:
-        return false;
+        if (this.a == 2) {
+            OverScroller overScroller = this.r;
+            boolean zComputeScrollOffset = overScroller.computeScrollOffset();
+            int currX = overScroller.getCurrX();
+            int currY = overScroller.getCurrY();
+            int left = currX - this.t.getLeft();
+            int top = currY - this.t.getTop();
+            if (left != 0) {
+                View view = this.t;
+                WeakHashMap weakHashMap = j65.a;
+                view.offsetLeftAndRight(left);
+            }
+            if (top != 0) {
+                View view2 = this.t;
+                WeakHashMap weakHashMap2 = j65.a;
+                view2.offsetTopAndBottom(top);
+            }
+            if (left != 0 || top != 0) {
+                this.s.A(this.t, currX, currY);
+            }
+            if (zComputeScrollOffset && currX == overScroller.getFinalX() && currY == overScroller.getFinalY()) {
+                overScroller.abortAnimation();
+                zComputeScrollOffset = false;
+            }
+            if (!zComputeScrollOffset) {
+                this.v.post(this.w);
+            }
+        }
+        return this.a == 2;
     }
 
-    public final View h(int r5, int r6) {
-        ViewGroup r0 = this.v;
-        int r1 = r0.getChildCount() - 1;
-    L3:
-        if (r1 < 0) goto L14;
-        this.s.getClass();
-        View r2 = r0.getChildAt(r1);
-        if (r5 < r2.getLeft()) goto L13;
-        if (r5 >= r2.getRight()) goto L13;
-        if (r6 < r2.getTop()) goto L13;
-        if (r6 >= r2.getBottom()) goto L13;
-        return r2;
-    L13:
-        r1 = r1 - 1;
-        goto L3
-    L14:
+    public final View h(int i, int i2) {
+        ViewGroup viewGroup = this.v;
+        for (int childCount = viewGroup.getChildCount() - 1; childCount >= 0; childCount--) {
+            this.s.getClass();
+            View childAt = viewGroup.getChildAt(childCount);
+            if (i >= childAt.getLeft() && i < childAt.getRight() && i2 >= childAt.getTop() && i2 < childAt.getBottom()) {
+                return childAt;
+            }
+        }
         return null;
     }
 
-    public final boolean i(int r11, int r12, int r13, int r14) {
-        int r2 = this.t.getLeft();
-        int r3 = this.t.getTop();
-        int r4 = r11 - r2;
-        int r5 = r12 - r3;
-        OverScroller r1 = this.r;
-        if (r4 != 0) goto L7;
-        if (r5 != 0) goto L7;
-        r1.abortAnimation();
-        p(0);
-        return false;
-    L7:
-        View r15 = this.t;
-        int r0 = (int) this.n;
-        int r6 = (int) this.m;
-        int r7 = Math.abs(r13);
-        if (r7 >= r0) goto L10;
-        r13 = 0;
-    L14:
-        int r8 = (int) this.n;
-        int r9 = Math.abs(r14);
-        if (r9 >= r8) goto L17;
-        r14 = 0;
-    L21:
-        int r16 = Math.abs(r4);
-        int r10 = Math.abs(r5);
-        int r17 = Math.abs(r13);
-        int r18 = Math.abs(r14);
-        int r19 = r17 + r18;
-        int r20 = r16 + r10;
-        if (r13 == 0) goto L25;
-        float r110 = r17;
-        float r21 = r19;
-    L24:
-        float r111 = r110 / r21;
-        if (r14 == 0) goto L29;
-        float r22 = r18;
-        float r23 = r19;
-    L28:
-        float r24 = r22 / r23;
-        hw r25 = this.s;
-        r1.startScroll(r2, r3, r4, r5, (int) ((f(r5, r14, r25.p()) * r24) + (f(r4, r13, r25.o(r15)) * r111)));
+    public final boolean i(int i, int i2, int i3, int i4) {
+        float f;
+        float f2;
+        float f3;
+        float f4;
+        int left = this.t.getLeft();
+        int top = this.t.getTop();
+        int i5 = i - left;
+        int i6 = i2 - top;
+        OverScroller overScroller = this.r;
+        if (i5 == 0 && i6 == 0) {
+            overScroller.abortAnimation();
+            p(0);
+            return false;
+        }
+        View view = this.t;
+        int i7 = (int) this.n;
+        int i8 = (int) this.m;
+        int iAbs = Math.abs(i3);
+        if (iAbs < i7) {
+            i3 = 0;
+        } else if (iAbs > i8) {
+            i3 = i3 > 0 ? i8 : -i8;
+        }
+        int i9 = (int) this.n;
+        int iAbs2 = Math.abs(i4);
+        if (iAbs2 < i9) {
+            i4 = 0;
+        } else if (iAbs2 > i8) {
+            i4 = i4 > 0 ? i8 : -i8;
+        }
+        int iAbs3 = Math.abs(i5);
+        int iAbs4 = Math.abs(i6);
+        int iAbs5 = Math.abs(i3);
+        int iAbs6 = Math.abs(i4);
+        int i10 = iAbs5 + iAbs6;
+        int i11 = iAbs3 + iAbs4;
+        if (i3 != 0) {
+            f = iAbs5;
+            f2 = i10;
+        } else {
+            f = iAbs3;
+            f2 = i11;
+        }
+        float f5 = f / f2;
+        if (i4 != 0) {
+            f3 = iAbs6;
+            f4 = i10;
+        } else {
+            f3 = iAbs4;
+            f4 = i11;
+        }
+        float f6 = f3 / f4;
+        hw hwVar = this.s;
+        overScroller.startScroll(left, top, i5, i6, (int) ((f(i6, i4, hwVar.p()) * f6) + (f(i5, i3, hwVar.o(view)) * f5)));
         p(2);
         return true;
-    L29:
-        r22 = r10;
-        r23 = r20;
-        goto L28
-    L25:
-        r110 = r16;
-        r21 = r20;
-        goto L24
-    L17:
-        if (r9 <= r6) goto L21;
-        if (r14 <= 0) goto L20;
-        r14 = r6;
-        goto L21
-    L20:
-        r14 = -r6;
-        goto L21
-    L10:
-        if (r7 <= r6) goto L14;
-        if (r13 <= 0) goto L13;
-        r13 = r6;
-        goto L14
-    L13:
-        r13 = -r6;
-        goto L14
     }
 
-    public final boolean j(int r3) {
-        if ((this.k & (1 << r3)) == 0) goto L5;
-        return true;
-    L5:
-        Log.e("ViewDragHelper", "Ignoring pointerId=" + r3 + " because ACTION_DOWN was not received for this pointer before ACTION_MOVE. It likely happened because  ViewDragHelper did not receive all the events in the event stream.");
+    public final boolean j(int i) {
+        if ((this.k & (1 << i)) != 0) {
+            return true;
+        }
+        Log.e("ViewDragHelper", "Ignoring pointerId=" + i + " because ACTION_DOWN was not received for this pointer before ACTION_MOVE. It likely happened because  ViewDragHelper did not receive all the events in the event stream.");
         return false;
     }
 
-    public final void k(MotionEvent r10) {
-        int r0 = r10.getActionMasked();
-        int r1 = r10.getActionIndex();
-        if (r0 != 0) goto L6;
-        a();
-    L6:
-        if (this.l != null) goto L8;
-        this.l = VelocityTracker.obtain();
-    L8:
-        this.l.addMovement(r10);
-        hw r2 = this.s;
-        int r3 = 0;
-        if (r0 != 0) goto L11;
-        float r4 = r10.getX();
-        float r5 = r10.getY();
-        int r11 = r10.getPointerId(0);
-        View r6 = h((int) r4, (int) r5);
-        n(r4, r5, r11);
-        t(r6, r11);
-        if ((this.q & this.h[r11]) == 0) goto L124;
-        r2.w();
-        return;
-    L124:
-        return;
-    L11:
-        if (r0 == 1) goto L100;
-        if (r0 == 2) goto L69;
-        if (r0 == 3) goto L62;
-        if (r0 != 5) goto L19;
-        int r7 = r10.getPointerId(r1);
-        float r8 = r10.getX(r1);
-        float r12 = r10.getY(r1);
-        n(r8, r12, r7);
-        if (this.a != 0) goto L48;
-        t(h((int) r8, (int) r12), r7);
-        if ((this.q & this.h[r7]) == 0) goto L119;
-        r2.w();
-        return;
-    L119:
-        return;
-    L48:
-        int r9 = (int) r8;
-        int r13 = (int) r12;
-        View r14 = this.t;
-        if (r14 != null) goto L52;
-        return;
-    L52:
-        if (r9 >= r14.getLeft()) goto L54;
-        return;
-    L54:
-        if (r9 < r14.getRight()) goto L56;
-        return;
-    L56:
-        if (r13 >= r14.getTop()) goto L58;
-        return;
-    L58:
-        if (r13 >= r14.getBottom()) goto L123;
-        t(this.t, r7);
-        return;
-    L123:
-        return;
-    L19:
-        if (r0 != 6) goto L125;
-        int r15 = r10.getPointerId(r1);
-        if (this.a == 1) goto L24;
-    L40:
-        e(r15);
-        return;
-    L24:
-        if (r15 != this.c) goto L40;
-        int r16 = r10.getPointerCount();
-    L27:
-        if (r3 >= r16) goto L37;
-        int r17 = r10.getPointerId(r3);
-        if (r17 == this.c) goto L36;
-        View r18 = h((int) r10.getX(r3), (int) r10.getY(r3));
-        View r19 = this.t;
-        if (r18 != r19) goto L36;
-        if (t(r19, r17) == false) goto L36;
-        int r110 = this.c;
-    L38:
-        if (r110 != (-1)) goto L40;
-        l();
-    L36:
-        r3 = r3 + 1;
-        goto L27
-    L37:
-        r110 = -1;
-        goto L38
-    L125:
-        return;
-    L62:
-        if (this.a != 1) goto L66;
-        this.u = true;
-        r2.B(this.t, 0.0f, 0.0f);
-        this.u = false;
-        if (this.a != 1) goto L66;
-        p(0);
-    L66:
-        a();
-        return;
-    L69:
-        if (this.a == 1) goto L71;
-        int r20 = r10.getPointerCount();
-    L84:
-        if (r3 >= r20) goto L97;
-        int r21 = r10.getPointerId(r3);
-        if (j(r21) == false) goto L96;
-        float r22 = r10.getX(r3);
-        float r23 = r10.getY(r3);
-        float r24 = r22 - this.d[r21];
-        float r25 = r23 - this.e[r21];
-        m(r24, r25, r21);
-        if (this.a == 1) goto L97;
-        View r26 = h((int) r22, (int) r23);
-        if (d(r26, r24, r25) == false) goto L96;
-        if (t(r26, r21) == true) goto L97;
-    L96:
-        r3 = r3 + 1;
-    L97:
-        o(r10);
-        return;
-    L71:
-        if (j(this.c) == false) goto L127;
-        int r27 = r10.findPointerIndex(this.c);
-        float r28 = r10.getX(r27);
-        float r29 = r10.getY(r27);
-        float[] r30 = this.f;
-        int r31 = this.c;
-        int r32 = (int) (r28 - r30[r31]);
-        int r33 = (int) (r29 - this.g[r31]);
-        int r34 = this.t.getLeft() + r32;
-        int r35 = this.t.getTop() + r33;
-        int r36 = this.t.getLeft();
-        int r37 = this.t.getTop();
-        if (r32 == 0) goto L76;
-        r34 = r2.d(this.t, r34);
-        WeakHashMap r38 = j65.a;
-        this.t.offsetLeftAndRight(r34 - r36);
-    L76:
-        if (r33 == 0) goto L78;
-        r35 = r2.e(this.t, r35);
-        WeakHashMap r39 = j65.a;
-        this.t.offsetTopAndBottom(r35 - r37);
-    L78:
-        if (r32 != 0) goto L80;
-        if (r33 != 0) goto L80;
-    L81:
-        o(r10);
-        return;
-    L80:
-        r2.A(this.t, r34, r35);
-        goto L81
-    L127:
-        return;
-    L100:
-        if (this.a != 1) goto L102;
-        l();
-    L102:
-        a();
+    public final void k(MotionEvent motionEvent) {
+        int i;
+        int actionMasked = motionEvent.getActionMasked();
+        int actionIndex = motionEvent.getActionIndex();
+        if (actionMasked == 0) {
+            a();
+        }
+        if (this.l == null) {
+            this.l = VelocityTracker.obtain();
+        }
+        this.l.addMovement(motionEvent);
+        hw hwVar = this.s;
+        int i2 = 0;
+        if (actionMasked == 0) {
+            float x2 = motionEvent.getX();
+            float y = motionEvent.getY();
+            int pointerId = motionEvent.getPointerId(0);
+            View viewH = h((int) x2, (int) y);
+            n(x2, y, pointerId);
+            t(viewH, pointerId);
+            if ((this.q & this.h[pointerId]) != 0) {
+                hwVar.w();
+                return;
+            }
+            return;
+        }
+        if (actionMasked == 1) {
+            if (this.a == 1) {
+                l();
+            }
+            a();
+            return;
+        }
+        if (actionMasked == 2) {
+            if (this.a != 1) {
+                int pointerCount = motionEvent.getPointerCount();
+                while (i2 < pointerCount) {
+                    int pointerId2 = motionEvent.getPointerId(i2);
+                    if (j(pointerId2)) {
+                        float x3 = motionEvent.getX(i2);
+                        float y2 = motionEvent.getY(i2);
+                        float f = x3 - this.d[pointerId2];
+                        float f2 = y2 - this.e[pointerId2];
+                        m(f, f2, pointerId2);
+                        if (this.a != 1) {
+                            View viewH2 = h((int) x3, (int) y2);
+                            if (d(viewH2, f, f2) && t(viewH2, pointerId2)) {
+                                break;
+                            }
+                        } else {
+                            break;
+                        }
+                    }
+                    i2++;
+                }
+                o(motionEvent);
+                return;
+            }
+            if (j(this.c)) {
+                int iFindPointerIndex = motionEvent.findPointerIndex(this.c);
+                float x4 = motionEvent.getX(iFindPointerIndex);
+                float y3 = motionEvent.getY(iFindPointerIndex);
+                float[] fArr = this.f;
+                int i3 = this.c;
+                int i4 = (int) (x4 - fArr[i3]);
+                int i5 = (int) (y3 - this.g[i3]);
+                int left = this.t.getLeft() + i4;
+                int top = this.t.getTop() + i5;
+                int left2 = this.t.getLeft();
+                int top2 = this.t.getTop();
+                if (i4 != 0) {
+                    left = hwVar.d(this.t, left);
+                    WeakHashMap weakHashMap = j65.a;
+                    this.t.offsetLeftAndRight(left - left2);
+                }
+                if (i5 != 0) {
+                    top = hwVar.e(this.t, top);
+                    WeakHashMap weakHashMap2 = j65.a;
+                    this.t.offsetTopAndBottom(top - top2);
+                }
+                if (i4 != 0 || i5 != 0) {
+                    hwVar.A(this.t, left, top);
+                }
+                o(motionEvent);
+                return;
+            }
+            return;
+        }
+        if (actionMasked == 3) {
+            if (this.a == 1) {
+                this.u = true;
+                hwVar.B(this.t, 0.0f, 0.0f);
+                this.u = false;
+                if (this.a == 1) {
+                    p(0);
+                }
+            }
+            a();
+            return;
+        }
+        if (actionMasked == 5) {
+            int pointerId3 = motionEvent.getPointerId(actionIndex);
+            float x5 = motionEvent.getX(actionIndex);
+            float y4 = motionEvent.getY(actionIndex);
+            n(x5, y4, pointerId3);
+            if (this.a == 0) {
+                t(h((int) x5, (int) y4), pointerId3);
+                if ((this.q & this.h[pointerId3]) != 0) {
+                    hwVar.w();
+                    return;
+                }
+                return;
+            }
+            int i6 = (int) x5;
+            int i7 = (int) y4;
+            View view = this.t;
+            if (view != null && i6 >= view.getLeft() && i6 < view.getRight() && i7 >= view.getTop() && i7 < view.getBottom()) {
+                t(this.t, pointerId3);
+                return;
+            }
+            return;
+        }
+        if (actionMasked != 6) {
+            return;
+        }
+        int pointerId4 = motionEvent.getPointerId(actionIndex);
+        if (this.a == 1 && pointerId4 == this.c) {
+            int pointerCount2 = motionEvent.getPointerCount();
+            while (true) {
+                if (i2 >= pointerCount2) {
+                    i = -1;
+                    break;
+                }
+                int pointerId5 = motionEvent.getPointerId(i2);
+                if (pointerId5 != this.c) {
+                    View viewH3 = h((int) motionEvent.getX(i2), (int) motionEvent.getY(i2));
+                    View view2 = this.t;
+                    if (viewH3 == view2 && t(view2, pointerId5)) {
+                        i = this.c;
+                        break;
+                    }
+                }
+                i2++;
+            }
+            if (i == -1) {
+                l();
+            }
+        }
+        e(pointerId4);
     }
 
     public final void l() {
-        VelocityTracker r0 = this.l;
-        float r2 = this.m;
-        r0.computeCurrentVelocity(1000, r2);
-        float r1 = this.l.getXVelocity(this.c);
-        float r3 = this.n;
-        float r4 = Math.abs(r1);
-        if (r4 >= r3) goto L6;
-        r1 = 0.0f;
-    L11:
-        float r5 = this.l.getYVelocity(this.c);
-        float r6 = this.n;
-        float r7 = Math.abs(r5);
-        if (r7 >= r6) goto L15;
-        r2 = 0.0f;
-    L21:
+        VelocityTracker velocityTracker = this.l;
+        float f = this.m;
+        velocityTracker.computeCurrentVelocity(1000, f);
+        float xVelocity = this.l.getXVelocity(this.c);
+        float f2 = this.n;
+        float fAbs = Math.abs(xVelocity);
+        if (fAbs < f2) {
+            xVelocity = 0.0f;
+        } else if (fAbs > f) {
+            xVelocity = xVelocity > 0.0f ? f : -f;
+        }
+        float yVelocity = this.l.getYVelocity(this.c);
+        float f3 = this.n;
+        float fAbs2 = Math.abs(yVelocity);
+        if (fAbs2 < f3) {
+            f = 0.0f;
+        } else if (fAbs2 <= f) {
+            f = yVelocity;
+        } else if (yVelocity <= 0.0f) {
+            f = -f;
+        }
         this.u = true;
-        this.s.B(this.t, r1, r2);
+        this.s.B(this.t, xVelocity, f);
         this.u = false;
-        if (this.a != 1) goto L25;
-        p(0);
-        return;
-    L25:
-        return;
-    L15:
-        if (r7 > r2) goto L17;
-        r2 = r5;
-        goto L21
-    L17:
-        if (r5 > 0.0f) goto L21;
-        r2 = -r2;
-        goto L21
-    L6:
-        if (r4 <= r2) goto L11;
-        if (r1 <= 0.0f) goto L10;
-        r1 = r2;
-        goto L11
-    L10:
-        r1 = -r2;
-        goto L11
+        if (this.a == 1) {
+            p(0);
+        }
     }
 
     /* JADX WARN: Multi-variable type inference failed */
@@ -559,258 +468,225 @@ public final class o65 {
     	at jadx.core.dex.visitors.typeinference.FixTypesVisitor.applyFieldType(FixTypesVisitor.java:309)
     	at jadx.core.dex.visitors.typeinference.FixTypesVisitor.visit(FixTypesVisitor.java:94)
      */
-    public final void m(float r3, float r4, int r5) {
-        boolean r0 = c(r3, r4, r5, 1);
+    public final void m(float f, float f2, int i) {
+        int i2;
+        boolean zC = c(f, f2, i, 1);
+        ?? r0 = zC;
+        if (c(f2, f, i, 4)) {
+            r0 = (zC ? 1 : 0) | 4;
+        }
         ?? r1 = r0;
-        if (c(r4, r3, r5, 4) == false) goto L5;
-        r1 = (r0 ? 1 : 0) | 4;
-    L5:
+        if (c(f, f2, i, 2)) {
+            r1 = (r0 == true ? 1 : 0) | 2;
+        }
         ?? r2 = r1;
-        if (c(r3, r4, r5, 2) == false) goto L8;
-        r2 = (r1 == true ? 1 : 0) | 2;
-    L8:
-        ?? r6 = r2;
-        if (c(r4, r3, r5, 8) == false) goto L11;
-        r6 = (r2 == true ? 1 : 0) | 8;
-    L11:
-        if (r6 == 0) goto L14;
-        int[] r7 = this.i;
-        r7[r5] = (r7[r5] | r6) == true ? 1 : 0;
-        this.s.v(r6, r5);
-        return;
+        if (c(f2, f, i, 8)) {
+            i2 = (r1 == true ? 1 : 0) | 8;
+        }
+        if (r2 == 0) {
+            r2 = i2;
+            return;
+        }
+        r2 = i2;
+        int[] iArr = this.i;
+        iArr[i] = (iArr[i] | r2) == true ? 1 : 0;
+        this.s.v(r2, i);
     }
 
-    public final void n(float r11, float r12, int r13) {
-        float[] r0 = this.d;
-        int r1 = 0;
-        if (r0 != null) goto L5;
-    L6:
-        int r2 = r13 + 1;
-        float[] r3 = new float[r2];
-        float[] r4 = new float[r2];
-        float[] r5 = new float[r2];
-        float[] r6 = new float[r2];
-        int[] r7 = new int[r2];
-        int[] r8 = new int[r2];
-        int[] r9 = new int[r2];
-        if (r0 == null) goto L9;
-        System.arraycopy(r0, 0, r3, 0, r0.length);
-        float[] r10 = this.e;
-        System.arraycopy(r10, 0, r4, 0, r10.length);
-        float[] r14 = this.f;
-        System.arraycopy(r14, 0, r5, 0, r14.length);
-        float[] r15 = this.g;
-        System.arraycopy(r15, 0, r6, 0, r15.length);
-        int[] r16 = this.h;
-        System.arraycopy(r16, 0, r7, 0, r16.length);
-        int[] r17 = this.i;
-        System.arraycopy(r17, 0, r8, 0, r17.length);
-        int[] r18 = this.j;
-        System.arraycopy(r18, 0, r9, 0, r18.length);
-    L9:
-        this.d = r3;
-        this.e = r4;
-        this.f = r5;
-        this.g = r6;
-        this.h = r7;
-        this.i = r8;
-        this.j = r9;
-    L10:
-        float[] r19 = this.d;
-        this.f[r13] = r11;
-        r19[r13] = r11;
-        float[] r20 = this.e;
-        this.g[r13] = r12;
-        r20[r13] = r12;
-        int[] r21 = this.h;
-        int r110 = (int) r11;
-        int r111 = (int) r12;
-        ViewGroup r22 = this.v;
-        if (r110 >= (r22.getLeft() + this.o)) goto L14;
-        r1 = 1;
-    L14:
-        if (r111 >= (r22.getTop() + this.o)) goto L17;
-        r1 = r1 | 4;
-    L17:
-        if (r110 <= (r22.getRight() - this.o)) goto L20;
-        r1 = r1 | 2;
-    L20:
-        if (r111 <= (r22.getBottom() - this.o)) goto L22;
-        r1 = r1 | 8;
-    L22:
-        r21[r13] = r1;
-        this.k |= 1 << r13;
-        return;
-    L5:
-        if (r0.length > r13) goto L10;
-        goto L6
+    public final void n(float f, float f2, int i) {
+        float[] fArr = this.d;
+        if (fArr == null || fArr.length <= i) {
+            int i2 = i + 1;
+            float[] fArr2 = new float[i2];
+            float[] fArr3 = new float[i2];
+            float[] fArr4 = new float[i2];
+            float[] fArr5 = new float[i2];
+            int[] iArr = new int[i2];
+            int[] iArr2 = new int[i2];
+            int[] iArr3 = new int[i2];
+            if (fArr != null) {
+                System.arraycopy(fArr, 0, fArr2, 0, fArr.length);
+                float[] fArr6 = this.e;
+                System.arraycopy(fArr6, 0, fArr3, 0, fArr6.length);
+                float[] fArr7 = this.f;
+                System.arraycopy(fArr7, 0, fArr4, 0, fArr7.length);
+                float[] fArr8 = this.g;
+                System.arraycopy(fArr8, 0, fArr5, 0, fArr8.length);
+                int[] iArr4 = this.h;
+                System.arraycopy(iArr4, 0, iArr, 0, iArr4.length);
+                int[] iArr5 = this.i;
+                System.arraycopy(iArr5, 0, iArr2, 0, iArr5.length);
+                int[] iArr6 = this.j;
+                System.arraycopy(iArr6, 0, iArr3, 0, iArr6.length);
+            }
+            this.d = fArr2;
+            this.e = fArr3;
+            this.f = fArr4;
+            this.g = fArr5;
+            this.h = iArr;
+            this.i = iArr2;
+            this.j = iArr3;
+        }
+        float[] fArr9 = this.d;
+        this.f[i] = f;
+        fArr9[i] = f;
+        float[] fArr10 = this.e;
+        this.g[i] = f2;
+        fArr10[i] = f2;
+        int[] iArr7 = this.h;
+        int i3 = (int) f;
+        int i4 = (int) f2;
+        ViewGroup viewGroup = this.v;
+        int i5 = i3 < viewGroup.getLeft() + this.o ? 1 : 0;
+        if (i4 < viewGroup.getTop() + this.o) {
+            i5 |= 4;
+        }
+        if (i3 > viewGroup.getRight() - this.o) {
+            i5 |= 2;
+        }
+        if (i4 > viewGroup.getBottom() - this.o) {
+            i5 |= 8;
+        }
+        iArr7[i] = i5;
+        this.k |= 1 << i;
     }
 
-    public final void o(MotionEvent r7) {
-        int r0 = r7.getPointerCount();
-        int r1 = 0;
-    L3:
-        if (r1 >= r0) goto L9;
-        int r2 = r7.getPointerId(r1);
-        if (j(r2) == false) goto L8;
-        float r3 = r7.getX(r1);
-        float r4 = r7.getY(r1);
-        this.f[r2] = r3;
-        this.g[r2] = r4;
-    L8:
-        r1 = r1 + 1;
-        goto L3
+    public final void o(MotionEvent motionEvent) {
+        int pointerCount = motionEvent.getPointerCount();
+        for (int i = 0; i < pointerCount; i++) {
+            int pointerId = motionEvent.getPointerId(i);
+            if (j(pointerId)) {
+                float x2 = motionEvent.getX(i);
+                float y = motionEvent.getY(i);
+                this.f[pointerId] = x2;
+                this.g[pointerId] = y;
+            }
+        }
     }
 
-    public final void p(int r3) {
+    public final void p(int i) {
         this.v.removeCallbacks(this.w);
-        if (this.a == r3) goto L8;
-        this.a = r3;
-        this.s.z(r3);
-        if (this.a != 0) goto L9;
-        this.t = null;
-        return;
-    L9:
-        return;
+        if (this.a != i) {
+            this.a = i;
+            this.s.z(i);
+            if (this.a == 0) {
+                this.t = null;
+            }
+        }
     }
 
-    public final boolean q(int r4, int r5) {
-        if (this.u == true) goto L5;
+    public final boolean q(int i, int i2) {
+        if (this.u) {
+            return i(i, i2, (int) this.l.getXVelocity(this.c), (int) this.l.getYVelocity(this.c));
+        }
         kf2.o("Cannot settleCapturedViewAt outside of a call to Callback#onViewReleased");
         return false;
-    L5:
-        return i(r4, r5, (int) this.l.getXVelocity(this.c), (int) this.l.getYVelocity(this.c));
     }
 
-    public final boolean r(MotionEvent r19) {
-        int r2 = r19.getActionMasked();
-        int r3 = r19.getActionIndex();
-        if (r2 != 0) goto L6;
-        a();
-    L6:
-        if (this.l != null) goto L8;
-        this.l = VelocityTracker.obtain();
-    L8:
-        this.l.addMovement(r19);
-        hw r6 = this.s;
-        if (r2 == 0) goto L64;
-        if (r2 == 1) goto L63;
-        if (r2 == 2) goto L30;
-        if (r2 == 3) goto L63;
-        if (r2 != 5) goto L17;
-        int r4 = r19.getPointerId(r3);
-        float r8 = r19.getX(r3);
-        float r1 = r19.getY(r3);
-        n(r8, r1, r4);
-        int r5 = this.a;
-        if (r5 == 0) goto L23;
-        if (r5 != 2) goto L73;
-        View r7 = h((int) r8, (int) r1);
-        if (r7 != this.t) goto L73;
-        t(r7, r4);
-    L73:
-        if (this.a != 1) goto L75;
-        return true;
-    L75:
-        return false;
-    L23:
-        if ((this.h[r4] & this.q) == 0) goto L73;
-        r6.w();
-        goto L73
-    L17:
-        if (r2 != 6) goto L73;
-        e(r19.getPointerId(r3));
-        goto L73
-    L30:
-        if (this.d == null) goto L73;
-        if (this.e == null) goto L73;
-        int r9 = r19.getPointerCount();
-        int r10 = 0;
-    L35:
-        if (r10 >= r9) goto L62;
-        int r11 = r19.getPointerId(r10);
-        if (j(r11) == false) goto L61;
-        float r12 = r19.getX(r10);
-        float r13 = r19.getY(r10);
-        float r14 = r12 - this.d[r11];
-        float r15 = r13 - this.e[r11];
-        View r16 = h((int) r12, (int) r13);
-        if (r16 != null) goto L42;
-    L44:
-        boolean r17 = false;
-    L45:
-        if (r17 == false) goto L54;
-        int r18 = r16.getLeft();
-        int r110 = r6.d(r16, ((int) r14) + r18);
-        int r111 = r16.getTop();
-        int r112 = r6.e(r16, ((int) r15) + r111);
-        int r113 = r6.o(r16);
-        int r114 = r6.p();
-        if (r113 == 0) goto L50;
-        if (r113 <= 0) goto L54;
-        if (r110 != r18) goto L54;
-    L50:
-        if (r114 == 0) goto L62;
-        if (r114 <= 0) goto L54;
-        if (r112 == r111) goto L62;
-    L54:
-        m(r14, r15, r11);
-        if (this.a == 1) goto L62;
-        if (r17 == false) goto L61;
-        if (t(r16, r11) == false) goto L61;
-    L42:
-        if (d(r16, r14, r15) == false) goto L44;
-        r17 = true;
-    L61:
-        r10 = r10 + 1;
-    L62:
-        o(r19);
-    L63:
-        a();
-        goto L73
-    L64:
-        float r20 = r19.getX();
-        float r21 = r19.getY();
-        int r22 = r19.getPointerId(0);
-        n(r20, r21, r22);
-        View r23 = h((int) r20, (int) r21);
-        if (r23 != this.t) goto L70;
-        if (this.a != 2) goto L70;
-        t(r23, r22);
-    L70:
-        if ((this.h[r22] & this.q) == 0) goto L73;
-        r6.w();
-        goto L73
+    /* JADX WARN: Code duplicated, block: B:54:0x00dd  */
+    /* JADX WARN: Code duplicated, block: B:63:0x00f5  */
+    public final boolean r(MotionEvent motionEvent) {
+        View viewH;
+        int actionMasked = motionEvent.getActionMasked();
+        int actionIndex = motionEvent.getActionIndex();
+        if (actionMasked == 0) {
+            a();
+        }
+        if (this.l == null) {
+            this.l = VelocityTracker.obtain();
+        }
+        this.l.addMovement(motionEvent);
+        hw hwVar = this.s;
+        if (actionMasked == 0) {
+            float x2 = motionEvent.getX();
+            float y = motionEvent.getY();
+            int pointerId = motionEvent.getPointerId(0);
+            n(x2, y, pointerId);
+            View viewH2 = h((int) x2, (int) y);
+            if (viewH2 == this.t && this.a == 2) {
+                t(viewH2, pointerId);
+            }
+            if ((this.h[pointerId] & this.q) != 0) {
+                hwVar.w();
+            }
+        } else if (actionMasked == 1) {
+            a();
+        } else if (actionMasked != 2) {
+            if (actionMasked == 3) {
+                a();
+            } else if (actionMasked == 5) {
+                int pointerId2 = motionEvent.getPointerId(actionIndex);
+                float x3 = motionEvent.getX(actionIndex);
+                float y2 = motionEvent.getY(actionIndex);
+                n(x3, y2, pointerId2);
+                int i = this.a;
+                if (i == 0) {
+                    if ((this.h[pointerId2] & this.q) != 0) {
+                        hwVar.w();
+                    }
+                } else if (i == 2 && (viewH = h((int) x3, (int) y2)) == this.t) {
+                    t(viewH, pointerId2);
+                }
+            } else if (actionMasked == 6) {
+                e(motionEvent.getPointerId(actionIndex));
+            }
+        } else if (this.d != null && this.e != null) {
+            int pointerCount = motionEvent.getPointerCount();
+            for (int i2 = 0; i2 < pointerCount; i2++) {
+                int pointerId3 = motionEvent.getPointerId(i2);
+                if (j(pointerId3)) {
+                    float x4 = motionEvent.getX(i2);
+                    float y3 = motionEvent.getY(i2);
+                    float f = x4 - this.d[pointerId3];
+                    float f2 = y3 - this.e[pointerId3];
+                    View viewH3 = h((int) x4, (int) y3);
+                    boolean z = viewH3 != null && d(viewH3, f, f2);
+                    if (!z) {
+                        m(f, f2, pointerId3);
+                        if (this.a != 1) {
+                            break;
+                        }
+                    } else {
+                        int left = viewH3.getLeft();
+                        int iD = hwVar.d(viewH3, ((int) f) + left);
+                        int top = viewH3.getTop();
+                        int iE = hwVar.e(viewH3, ((int) f2) + top);
+                        int iO = hwVar.o(viewH3);
+                        int iP = hwVar.p();
+                        if ((iO == 0 || (iO > 0 && iD == left)) && (iP == 0 || (iP > 0 && iE == top))) {
+                            break;
+                        }
+                        m(f, f2, pointerId3);
+                        if (this.a != 1 || (z && t(viewH3, pointerId3))) {
+                            break;
+                        }
+                    }
+                }
+            }
+            o(motionEvent);
+        }
+        return this.a == 1;
     }
 
-    public final boolean s(View r1, int r2, int r3) {
-        this.t = r1;
+    public final boolean s(View view, int i, int i2) {
+        this.t = view;
         this.c = -1;
-        boolean r4 = i(r2, r3, 0, 0);
-        if (r4 == false) goto L5;
-    L9:
-        return r4;
-    L5:
-        if (this.a != 0) goto L9;
-        if (this.t == null) goto L9;
-        this.t = null;
-        goto L9
+        boolean zI = i(i, i2, 0, 0);
+        if (!zI && this.a == 0 && this.t != null) {
+            this.t = null;
+        }
+        return zI;
     }
 
-    public final boolean t(View r3, int r4) {
-        if (r3 == this.t) goto L5;
-    L7:
-        if (r3 != null) goto L9;
-        return false;
-    L9:
-        if (this.s.Q(r3, r4) == false) goto L14;
-        this.c = r4;
-        b(r3, r4);
-        return true;
-    L14:
-        return false;
-    L5:
-        if (this.c != r4) goto L7;
+    public final boolean t(View view, int i) {
+        if (view == this.t && this.c == i) {
+            return true;
+        }
+        if (view == null || !this.s.Q(view, i)) {
+            return false;
+        }
+        this.c = i;
+        b(view, i);
         return true;
     }
 }

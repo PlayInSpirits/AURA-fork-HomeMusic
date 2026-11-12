@@ -7,18 +7,17 @@ import com.eddyizm.tempus.ui.activity.MainActivity;
 public final class tf2 implements oi3 {
     public final /* synthetic */ MainActivity n;
 
-    public tf2(MainActivity r1) {
-        this.n = r1;
+    public tf2(MainActivity mainActivity) {
+        this.n = mainActivity;
     }
 
     @Override // defpackage.oi3
-    public final void V(boolean r2) {
-        if (r2 == false) goto L7;
-        MainActivity r1 = this.n;
-        if (r1.W.Y != 5) goto L8;
-        ((au) r1.V.n).d(true);
-        return;
-    L8:
-        return;
+    public final void V(boolean z) {
+        if (z) {
+            MainActivity mainActivity = this.n;
+            if (mainActivity.W.Y == 5) {
+                ((au) mainActivity.V.n).d(true);
+            }
+        }
     }
 }

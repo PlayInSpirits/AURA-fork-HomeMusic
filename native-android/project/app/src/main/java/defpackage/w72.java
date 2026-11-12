@@ -6,49 +6,40 @@ final class w72 extends gx2 {
     public final dc3 a;
     public final hg3 b;
 
-    public w72(dc3 r1, hg3 r2) {
-        this.a = r1;
-        this.b = r2;
+    public w72(dc3 dc3Var, hg3 hg3Var) {
+        this.a = dc3Var;
+        this.b = hg3Var;
     }
 
     @Override // defpackage.gx2
     public final cx2 d() {
-        z72 r0 = new z72();
-        r0.B = this.a;
-        r0.C = this.b;
-        r0.D = hb3.o;
-        return r0;
+        z72 z72Var = new z72();
+        z72Var.B = this.a;
+        z72Var.C = this.b;
+        z72Var.D = hb3.o;
+        return z72Var;
     }
 
     @Override // defpackage.gx2
-    public final void e(cx2 r2) {
-        z72 r3 = (z72) r2;
-        r3.B = this.a;
-        r3.C = this.b;
-        r3.D = hb3.o;
+    public final void e(cx2 cx2Var) {
+        z72 z72Var = (z72) cx2Var;
+        z72Var.B = this.a;
+        z72Var.C = this.b;
+        z72Var.D = hb3.o;
     }
 
-    public final boolean equals(Object r4) {
-        if (this != r4) goto L6;
-        return true;
-    L6:
-        if ((r4 instanceof w72) == false) goto L16;
-        w72 r5 = (w72) r4;
-        dc3 r1 = r5.a;
-        if (h12.c(this.a, r1) == true) goto L12;
-        return false;
-    L12:
-        if (h12.c(this.b, r5.b) == true) goto L15;
-        return false;
-    L15:
-        return true;
-    L16:
-        return false;
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof w72)) {
+            return false;
+        }
+        w72 w72Var = (w72) obj;
+        return h12.c(this.a, w72Var.a) && h12.c(this.b, w72Var.b);
     }
 
     public final int hashCode() {
-        int r0 = this.a.hashCode() * 31;
-        int r2 = xa3.c((this.b.hashCode() + r0) * 31, 31, false);
-        return hb3.o.hashCode() + r2;
+        return hb3.o.hashCode() + xa3.c((this.b.hashCode() + (this.a.hashCode() * 31)) * 31, 31, false);
     }
 }

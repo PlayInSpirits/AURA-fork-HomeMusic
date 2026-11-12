@@ -9,28 +9,24 @@ import defpackage.h12;
 /* JADX INFO: loaded from: classes.dex */
 public final class RecentSearch implements Parcelable {
     public static final int $stable = 8;
-    public static final Parcelable.Creator<RecentSearch> CREATOR = null;
+    public static final Parcelable.Creator<RecentSearch> CREATOR = new b23(23);
     private String search;
     private long timestamp;
 
-    static {
-        CREATOR = new b23(23);
+    public RecentSearch(String str, long j) {
+        str.getClass();
+        this.search = str;
+        this.timestamp = j;
     }
 
-    public RecentSearch(String r1, long r2) {
-        r1.getClass();
-        this.search = r1;
-        this.timestamp = r2;
-    }
-
-    public static /* synthetic */ RecentSearch copy$default(RecentSearch r0, String r1, long r2, int r4, Object r5) {
-        if ((r4 & 1) == 0) goto L6;
-        r1 = r0.search;
-    L6:
-        if ((r4 & 2) == 0) goto L9;
-        r2 = r0.timestamp;
-    L9:
-        return r0.copy(r1, r2);
+    public static /* synthetic */ RecentSearch copy$default(RecentSearch recentSearch, String str, long j, int i, Object obj) {
+        if ((i & 1) != 0) {
+            str = recentSearch.search;
+        }
+        if ((i & 2) != 0) {
+            j = recentSearch.timestamp;
+        }
+        return recentSearch.copy(str, j);
     }
 
     public final String component1() {
@@ -41,9 +37,9 @@ public final class RecentSearch implements Parcelable {
         return this.timestamp;
     }
 
-    public final RecentSearch copy(String r1, long r2) {
-        r1.getClass();
-        return new RecentSearch(r1, r2);
+    public final RecentSearch copy(String str, long j) {
+        str.getClass();
+        return new RecentSearch(str, j);
     }
 
     @Override // android.os.Parcelable
@@ -51,21 +47,15 @@ public final class RecentSearch implements Parcelable {
         return 0;
     }
 
-    public boolean equals(Object r6) {
-        if (this != r6) goto L6;
-        return true;
-    L6:
-        if ((r6 instanceof RecentSearch) == true) goto L8;
-        return false;
-    L8:
-        RecentSearch r7 = (RecentSearch) r6;
-        if (h12.c(this.search, r7.search) == true) goto L12;
-        return false;
-    L12:
-        if (this.timestamp == r7.timestamp) goto L14;
-        return false;
-    L14:
-        return true;
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof RecentSearch)) {
+            return false;
+        }
+        RecentSearch recentSearch = (RecentSearch) obj;
+        return h12.c(this.search, recentSearch.search) && this.timestamp == recentSearch.timestamp;
     }
 
     public final String getSearch() {
@@ -77,17 +67,16 @@ public final class RecentSearch implements Parcelable {
     }
 
     public int hashCode() {
-        int r0 = this.search.hashCode() * 31;
-        return Long.hashCode(this.timestamp) + r0;
+        return Long.hashCode(this.timestamp) + (this.search.hashCode() * 31);
     }
 
-    public final void setSearch(String r1) {
-        r1.getClass();
-        this.search = r1;
+    public final void setSearch(String str) {
+        str.getClass();
+        this.search = str;
     }
 
-    public final void setTimestamp(long r1) {
-        this.timestamp = r1;
+    public final void setTimestamp(long j) {
+        this.timestamp = j;
     }
 
     public String toString() {
@@ -95,9 +84,9 @@ public final class RecentSearch implements Parcelable {
     }
 
     @Override // android.os.Parcelable
-    public final void writeToParcel(Parcel r3, int r4) {
-        r3.getClass();
-        r3.writeString(this.search);
-        r3.writeLong(this.timestamp);
+    public final void writeToParcel(Parcel parcel, int i) {
+        parcel.getClass();
+        parcel.writeString(this.search);
+        parcel.writeLong(this.timestamp);
     }
 }

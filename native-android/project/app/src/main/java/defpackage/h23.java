@@ -13,34 +13,33 @@ public final class h23 extends q42 implements if1 {
     public final /* synthetic */ v23 q;
     public final /* synthetic */ Bundle r;
 
-    public h23(fx3 r1, ArrayList r2, hx3 r3, v23 r4, Bundle r5) {
-        this.n = r1;
-        this.o = r2;
-        this.p = r3;
-        this.q = r4;
-        this.r = r5;
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public h23(fx3 fx3Var, ArrayList arrayList, hx3 hx3Var, v23 v23Var, Bundle bundle) {
         super(1);
+        this.n = fx3Var;
+        this.o = arrayList;
+        this.p = hx3Var;
+        this.q = v23Var;
+        this.r = bundle;
     }
 
     @Override // defpackage.if1
-    public final Object invoke(Object r6) {
-        a23 r7 = (a23) r6;
-        r7.getClass();
+    public final Object invoke(Object obj) {
+        List listSubList;
+        a23 a23Var = (a23) obj;
+        a23Var.getClass();
         this.n.n = true;
-        ArrayList r0 = this.o;
-        int r2 = r0.indexOf(r7);
-        if (r2 == (-1)) goto L5;
-        hx3 r3 = this.p;
-        int r4 = r2 + 1;
-        List r1 = r0.subList(r3.n, r4);
-        r3.n = r4;
-    L6:
-        r23 r5 = r7.o;
-        Bundle r8 = this.r;
-        this.q.a(r5, r8, r7, r1);
+        ArrayList arrayList = this.o;
+        int iIndexOf = arrayList.indexOf(a23Var);
+        if (iIndexOf != -1) {
+            hx3 hx3Var = this.p;
+            int i = iIndexOf + 1;
+            listSubList = arrayList.subList(hx3Var.n, i);
+            hx3Var.n = i;
+        } else {
+            listSubList = u01.n;
+        }
+        this.q.a(a23Var.o, this.r, a23Var, listSubList);
         return j15.a;
-    L5:
-        r1 = u01.n;
-        goto L6
     }
 }

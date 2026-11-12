@@ -7,9 +7,10 @@ import java.util.Iterator;
 public final class l91 extends m91 {
     public final /* synthetic */ Iterable o;
 
-    public l91(Iterable r1, Iterable r2) {
-        this.o = r2;
-        super(r1);
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public l91(Iterable iterable, Iterable iterable2) {
+        super(iterable);
+        this.o = iterable2;
     }
 
     @Override // java.lang.Iterable

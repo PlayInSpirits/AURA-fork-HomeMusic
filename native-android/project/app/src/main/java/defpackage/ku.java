@@ -8,28 +8,23 @@ import android.view.WindowManager;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class ku implements ju, dc5 {
-    public static final ku n = null;
-    public static final ku o = null;
-
-    static {
-        n = new ku();
-        o = new ku();
-    }
+    public static final ku n = new ku();
+    public static final ku o = new ku();
 
     @Override // defpackage.ju
-    public Rect a(Activity r1) {
-        Rect r0 = ((WindowManager) r1.getSystemService(WindowManager.class)).getCurrentWindowMetrics().getBounds();
-        r0.getClass();
-        return r0;
+    public Rect a(Activity activity) {
+        Rect bounds = ((WindowManager) activity.getSystemService(WindowManager.class)).getCurrentWindowMetrics().getBounds();
+        bounds.getClass();
+        return bounds;
     }
 
     @Override // defpackage.dc5
-    public zb5 e(Context r1, po0 r2) {
-        r2.getClass();
-        WindowManager r0 = (WindowManager) r1.getSystemService(WindowManager.class);
-        float r3 = r1.getResources().getDisplayMetrics().density;
-        Rect r4 = r0.getCurrentWindowMetrics().getBounds();
-        r4.getClass();
-        return new zb5(r4, r3);
+    public zb5 e(Context context, po0 po0Var) {
+        po0Var.getClass();
+        WindowManager windowManager = (WindowManager) context.getSystemService(WindowManager.class);
+        float f = context.getResources().getDisplayMetrics().density;
+        Rect bounds = windowManager.getCurrentWindowMetrics().getBounds();
+        bounds.getClass();
+        return new zb5(bounds, f);
     }
 }

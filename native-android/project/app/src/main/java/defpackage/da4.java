@@ -7,9 +7,9 @@ public interface da4 {
 
     boolean f();
 
-    boolean o(pd2 r1);
+    boolean o(pd2 pd2Var);
 
     long q();
 
-    void u(long r1);
+    void u(long j);
 }

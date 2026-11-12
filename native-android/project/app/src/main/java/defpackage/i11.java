@@ -10,7 +10,7 @@ import java.util.concurrent.Executor;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class i11 {
-    public static final boolean h = false;
+    public static final boolean h = Log.isLoggable("Engine", 2);
     public final gp3 a;
     public final om0 b;
     public final pf2 c;
@@ -19,294 +19,253 @@ public final class i11 {
     public final ue1 f;
     public final ns3 g;
 
-    static {
-        h = Log.isLoggable("Engine", 2);
+    public i11(pf2 pf2Var, e20 e20Var, li1 li1Var, li1 li1Var2, li1 li1Var3, li1 li1Var4) throws Throwable {
+        this.c = pf2Var;
+        sd0 sd0Var = new sd0(e20Var);
+        ns3 ns3Var = new ns3(1);
+        this.g = ns3Var;
+        synchronized (this) {
+            try {
+                try {
+                    synchronized (ns3Var) {
+                        try {
+                            ns3Var.q = this;
+                        } catch (Throwable th) {
+                            th = th;
+                            while (true) {
+                                try {
+                                    throw th;
+                                } catch (Throwable th2) {
+                                    th = th2;
+                                }
+                            }
+                        }
+                    }
+                    this.b = new om0(26);
+                    this.a = new gp3(12);
+                    this.d = new lv4(li1Var, li1Var2, li1Var3, li1Var4, this, this);
+                    this.f = new ue1(sd0Var);
+                    this.e = new xk0(6);
+                    pf2Var.d = this;
+                } catch (Throwable th3) {
+                    th = th3;
+                    throw th;
+                }
+            } catch (Throwable th4) {
+                th = th4;
+                throw th;
+            }
+        }
     }
 
-    public i11(pf2 r10, e20 r11, li1 r12, li1 r13, li1 r14, li1 r15) {
-        this.c = r10;
-        sd0 r0 = new sd0(r11);
-        ns3 r16 = new ns3(1);
-        this.g = r16;
-        monitor-enter(this);
-        monitor-enter(r16);     // Catch: Throwable -> L10
-        r16.q = this;     // Catch: Throwable -> L13
-        monitor-exit(r16);     // Catch: Throwable -> L13
-        monitor-exit(this);     // Catch: Throwable -> L10
-        this.b = new om0(26);
-        this.a = new gp3(12);
-        this.d = new lv4(r12, r13, r14, r15, this, this);
-        this.f = new ue1(r0);
-        this.e = new xk0(6);
-        r10.d = this;
-        return;
-    L13:
-        th = th;
-    L25:
-        throw th;     // Catch: Throwable -> L18
-    L20:
-        th = th;
-    L18:
-        th = th;
-    L12:
-        Throwable r9 = th;
-        monitor-exit(this);     // Catch: Throwable -> L18
-        throw r9;
-    L10:
-        th = th;
-        goto L12
+    public static void c(String str, long j, n11 n11Var) {
+        StringBuilder sbS = b11.s(str, " in ");
+        sbS.append(ee2.a(j));
+        sbS.append("ms, key: ");
+        sbS.append(n11Var);
+        Log.v("Engine", sbS.toString());
     }
 
-    public static void c(String r1, long r2, n11 r4) {
-        StringBuilder r3 = b11.s(r1, " in ");
-        r3.append(ee2.a(r2));
-        r3.append("ms, key: ");
-        r3.append(r4);
-        Log.v("Engine", r3.toString());
+    public static void f(q04 q04Var) {
+        if (q04Var instanceof o11) {
+            ((o11) q04Var).c();
+        } else {
+            kf2.n("Cannot release anything but an EngineResource");
+        }
     }
 
-    public static void f(q04 r1) {
-        if ((r1 instanceof o11) == false) goto L6;
-        ((o11) r1).c();
-        return;
-    L6:
-        kf2.n("Cannot release anything but an EngineResource");
-    }
-
-    public final z05 a(ii1 r25, Object r26, f42 r27, int r28, int r29, Class r30, Class r31, eq3 r32, xq0 r33, yx r34, boolean r35, boolean r36, db3 r37, boolean r38, boolean r39, boolean r40, cf4 r41, Executor r42) {
-        if (h == false) goto L5;
-        int r0 = ee2.b;
-        long r1 = SystemClock.elapsedRealtimeNanos();
-    L6:
+    public final z05 a(ii1 ii1Var, Object obj, f42 f42Var, int i, int i2, Class cls, Class cls2, eq3 eq3Var, xq0 xq0Var, yx yxVar, boolean z, boolean z2, db3 db3Var, boolean z3, boolean z4, boolean z5, cf4 cf4Var, Executor executor) {
+        long jElapsedRealtimeNanos;
+        if (h) {
+            int i3 = ee2.b;
+            jElapsedRealtimeNanos = SystemClock.elapsedRealtimeNanos();
+        } else {
+            jElapsedRealtimeNanos = 0;
+        }
         this.b.getClass();
-        n11 r4 = new n11(r26, r27, r28, r29, r34, r30, r31, r37);
-        monitor-enter(this);
-        o11 r5 = b(r4, r38, r1);     // Catch: Throwable -> L14
-        if (r5 != null) goto L17;
-        z05 r2 = g(r25, r26, r27, r28, r29, r30, r31, r32, r33, r34, r35, r36, r37, r38, r39, r40, r41, r42, r4, r1);     // Catch: Throwable -> L14
-        monitor-exit(this);     // Catch: Throwable -> L14
-        return r2;
-    L17:
-        monitor-exit(this);     // Catch: Throwable -> L14
-        r41.i(r5, 5);
-        return null;
-    L14:
-        th = move-exception;
-        throw th;
-    L5:
-        r1 = 0;
-        goto L6
+        n11 n11Var = new n11(obj, f42Var, i, i2, yxVar, cls, cls2, db3Var);
+        synchronized (this) {
+            try {
+                o11 o11VarB = b(n11Var, z3, jElapsedRealtimeNanos);
+                if (o11VarB == null) {
+                    return g(ii1Var, obj, f42Var, i, i2, cls, cls2, eq3Var, xq0Var, yxVar, z, z2, db3Var, z3, z4, z5, cf4Var, executor, n11Var, jElapsedRealtimeNanos);
+                }
+                cf4Var.i(o11VarB, 5);
+                return null;
+            } catch (Throwable th) {
+                throw th;
+            }
+        }
     }
 
     /* JADX WARN: Multi-variable type inference failed */
-    public final o11 b(n11 r8, boolean r9, long r10) {
-        if (r9 == false) goto L47;
-        ns3 r11 = this.g;
-        monitor-enter(r11);
-        i5 r1 = (i5) ((HashMap) r11.o).get(r8);     // Catch: Throwable -> L15
-        if (r1 != null) goto L11;
-        monitor-exit(r11);
-        o11 r2 = null;
-    L18:
-        if (r2 == null) goto L20;
-        r2.a();
-    L20:
-        if (r2 != null) goto L22;
-        pf2 r3 = this.c;
-        monitor-enter(r3);
-        of2 r12 = (of2) ((LinkedHashMap) r3.c).remove(r8);     // Catch: Throwable -> L48
-        if (r12 != null) goto L31;
-        monitor-exit(r3);
-        Object r13 = null;
-    L33:
-        q04 r4 = (q04) r13;
-        if (r4 != null) goto L37;
-        i11 r6 = this;
-        n11 r5 = r8;
-        o11 r7 = null;
-    L40:
-        if (r7 == null) goto L42;
-        r7.a();
-        r6.g.a(r5, r7);
-    L42:
-        if (r7 == null) goto L47;
-        if (h == false) goto L46;
-        c("Loaded resource from cache", r10, r5);
-    L46:
-        return r7;
-    L37:
-        if ((r4 instanceof o11) == false) goto L39;
-        r7 = (o11) r4;
-        r6 = this;
-        r5 = r8;
-        goto L40
-    L39:
-        r6 = this;
-        r5 = r8;
-        r7 = new o11(r4, true, true, r5, r6);
-        goto L40
-    L31:
-        r3.b -= (long) r12.b;     // Catch: Throwable -> L48
-        r13 = r12.a;     // Catch: Throwable -> L48
-        monitor-exit(r3);
-    L48:
-        th = move-exception;
-        throw th;
-    L22:
-        if (h == false) goto L24;
-        c("Loaded resource from active resources", r10, r8);
-    L24:
-        return r2;
-    L11:
-        r2 = (o11) r1.get();     // Catch: Throwable -> L15
-        if (r2 != null) goto L17;
-        r11.b(r1);     // Catch: Throwable -> L15
-    L17:
-        monitor-exit(r11);
-    L15:
-        th = move-exception;
-        throw th;
-    L47:
+    public final o11 b(n11 n11Var, boolean z, long j) {
+        o11 o11Var;
+        Object obj;
+        i11 i11Var;
+        n11 n11Var2;
+        o11 o11Var2;
+        if (z) {
+            ns3 ns3Var = this.g;
+            synchronized (ns3Var) {
+                i5 i5Var = (i5) ((HashMap) ns3Var.o).get(n11Var);
+                if (i5Var == null) {
+                    o11Var = null;
+                } else {
+                    o11Var = (o11) i5Var.get();
+                    if (o11Var == null) {
+                        ns3Var.b(i5Var);
+                    }
+                }
+            }
+            if (o11Var != null) {
+                o11Var.a();
+            }
+            if (o11Var != null) {
+                if (h) {
+                    c("Loaded resource from active resources", j, n11Var);
+                }
+                return o11Var;
+            }
+            pf2 pf2Var = this.c;
+            synchronized (pf2Var) {
+                of2 of2Var = (of2) ((LinkedHashMap) pf2Var.c).remove(n11Var);
+                if (of2Var == null) {
+                    obj = null;
+                } else {
+                    pf2Var.b -= (long) of2Var.b;
+                    obj = of2Var.a;
+                }
+            }
+            q04 q04Var = (q04) obj;
+            if (q04Var == null) {
+                i11Var = this;
+                n11Var2 = n11Var;
+                o11Var2 = null;
+            } else if (q04Var instanceof o11) {
+                o11Var2 = (o11) q04Var;
+                i11Var = this;
+                n11Var2 = n11Var;
+            } else {
+                i11Var = this;
+                n11Var2 = n11Var;
+                o11Var2 = new o11(q04Var, true, true, n11Var2, i11Var);
+            }
+            if (o11Var2 != null) {
+                o11Var2.a();
+                i11Var.g.a(n11Var2, o11Var2);
+            }
+            if (o11Var2 != null) {
+                if (h) {
+                    c("Loaded resource from cache", j, n11Var2);
+                }
+                return o11Var2;
+            }
+        }
         return null;
     }
 
-    public final synchronized void d(m11 r2, n11 r3, o11 r4) {
-        monitor-enter(this);
-        if (r4 != null) goto L22;
-    L9:
-        gp3 r5 = this.a;     // Catch: Throwable -> L7
-        r5.getClass();     // Catch: Throwable -> L7
-        if (r2.A == false) goto L13;
-        Object r6 = r5.p;     // Catch: Throwable -> L7
-    L12:
-        HashMap r7 = (HashMap) r6;     // Catch: Throwable -> L7
-        if (r2 != r7.get(r3)) goto L18;
-        r7.remove(r3);     // Catch: Throwable -> L7
-    L7:
-        th = move-exception;
-        throw th;
-    L18:
-        monitor-exit(this);
-        return;
-    L13:
-        r6 = r5.o;     // Catch: Throwable -> L7
-        goto L12
-    L22:
-        if (r4.n == false) goto L9;
-        this.g.a(r3, r4);     // Catch: Throwable -> L7
-        goto L9
+    public final synchronized void d(m11 m11Var, n11 n11Var, o11 o11Var) {
+        if (o11Var != null) {
+            try {
+                if (o11Var.n) {
+                    this.g.a(n11Var, o11Var);
+                }
+            } catch (Throwable th) {
+                throw th;
+            }
+        }
+        gp3 gp3Var = this.a;
+        gp3Var.getClass();
+        HashMap map = (HashMap) (m11Var.A ? gp3Var.p : gp3Var.o);
+        if (m11Var == map.get(n11Var)) {
+            map.remove(n11Var);
+        }
     }
 
-    public final void e(f42 r4, o11 r5) {
-        ns3 r0 = this.g;
-        monitor-enter(r0);
-        i5 r1 = (i5) ((HashMap) r0.o).remove(r4);     // Catch: Throwable -> L14
-        if (r1 == null) goto L7;
-        r1.c = null;     // Catch: Throwable -> L14
-        r1.clear();     // Catch: Throwable -> L14
-    L7:
-        monitor-exit(r0);
-        if (r5.n == false) goto L12;
-        q04 r3 = (q04) this.c.d(r4, r5);
-        return;
-    L12:
-        this.e.k(r5, false);
-        return;
-    L14:
-        th = move-exception;
-        throw th;
+    public final void e(f42 f42Var, o11 o11Var) {
+        ns3 ns3Var = this.g;
+        synchronized (ns3Var) {
+            i5 i5Var = (i5) ((HashMap) ns3Var.o).remove(f42Var);
+            if (i5Var != null) {
+                i5Var.c = null;
+                i5Var.clear();
+            }
+        }
+        if (o11Var.n) {
+        } else {
+            this.e.k(o11Var, false);
+        }
     }
 
-    public final z05 g(ii1 r17, Object r18, f42 r19, int r20, int r21, Class r22, Class r23, eq3 r24, xq0 r25, Map r26, boolean r27, boolean r28, db3 r29, boolean r30, boolean r31, boolean r32, cf4 r33, Executor r34, n11 r35, long r36) {
-        gp3 r15 = this.a;
-        if (r32 == false) goto L6;
-        Object r16 = r15.p;
-    L7:
-        m11 r110 = (m11) ((HashMap) r16).get(r35);
-        if (r110 == null) goto L14;
-        r110.a(r33, r34);
-        if (h == false) goto L13;
-        c("Added to existing load", r36, r35);
-    L13:
-        return new z05(this, r33, r110);
-    L14:
-        m11 r111 = (m11) ((i61) this.d.t).b();
-        monitor-enter(r111);
-        r111.x = r35;     // Catch: Throwable -> L45
-        r111.y = r30;     // Catch: Throwable -> L45
-        r111.z = r31;     // Catch: Throwable -> L45
-        r111.A = r32;     // Catch: Throwable -> L45
-        monitor-exit(r111);
-        ue1 r13 = this.f;
-        xi0 r14 = (xi0) ((i61) r13.q).b();
-        int r10 = r13.o;
-        r13.o = r10 + 1;
-        wi0 r11 = r14.n;
-        sd0 r112 = r14.q;
-        r11.c = r17;
-        r11.d = r18;
-        r11.n = r19;
-        r11.e = r20;
-        r11.f = r21;
-        r11.p = r25;
-        r11.g = r22;
-        r11.h = r112;
-        r11.k = r23;
-        r11.o = r24;
-        r11.i = r29;
-        r11.j = r26;
-        r11.q = r27;
-        r11.r = r28;
-        r14.u = r17;
-        r14.v = r19;
-        r14.w = r24;
-        r14.x = r35;
-        r14.y = r20;
-        r14.z = r21;
-        r14.A = r25;
-        r14.F = r32;
-        r14.B = r29;
-        r14.C = r111;
-        r14.D = r10;
-        r14.R = 1;
-        r14.G = r18;
-        gp3 r2 = this.a;
-        r2.getClass();
-        if (r111.A == false) goto L22;
-        Object r3 = r2.p;
-    L23:
-        ((HashMap) r3).put(r35, r111);
-        r111.a(r33, r34);
-        monitor-enter(r111);
-        r111.H = r14;     // Catch: Throwable -> L42
-        int r0 = r14.h(1);     // Catch: Throwable -> L42
-        if (r0 != 2) goto L28;
-    L34:
-        li1 r1 = r111.t;     // Catch: Throwable -> L42
-    L35:
-        r1.execute(r14);     // Catch: Throwable -> L42
-        monitor-exit(r111);
-        if (h == false) goto L41;
-        c("Started new load", r36, r35);
-    L41:
-        return new z05(this, r33, r111);
-    L28:
-        if (r0 == 3) goto L34;
-        if (r111.z == false) goto L33;
-        r1 = r111.v;     // Catch: Throwable -> L42
-        goto L35
-    L33:
-        r1 = r111.u;     // Catch: Throwable -> L42
-    L42:
-        th = move-exception;
-        throw th;
-    L22:
-        r3 = r2.o;
-    L45:
-        th = move-exception;
-        throw th;
-    L6:
-        r16 = r15.o;
-        goto L7
+    public final z05 g(ii1 ii1Var, Object obj, f42 f42Var, int i, int i2, Class cls, Class cls2, eq3 eq3Var, xq0 xq0Var, Map map, boolean z, boolean z2, db3 db3Var, boolean z3, boolean z4, boolean z5, cf4 cf4Var, Executor executor, n11 n11Var, long j) {
+        li1 li1Var;
+        gp3 gp3Var = this.a;
+        m11 m11Var = (m11) ((HashMap) (z5 ? gp3Var.p : gp3Var.o)).get(n11Var);
+        if (m11Var != null) {
+            m11Var.a(cf4Var, executor);
+            if (h) {
+                c("Added to existing load", j, n11Var);
+            }
+            return new z05(this, cf4Var, m11Var);
+        }
+        m11 m11Var2 = (m11) ((i61) this.d.t).b();
+        synchronized (m11Var2) {
+            m11Var2.x = n11Var;
+            m11Var2.y = z3;
+            m11Var2.z = z4;
+            m11Var2.A = z5;
+        }
+        ue1 ue1Var = this.f;
+        xi0 xi0Var = (xi0) ((i61) ue1Var.q).b();
+        int i3 = ue1Var.o;
+        ue1Var.o = i3 + 1;
+        wi0 wi0Var = xi0Var.n;
+        sd0 sd0Var = xi0Var.q;
+        wi0Var.c = ii1Var;
+        wi0Var.d = obj;
+        wi0Var.n = f42Var;
+        wi0Var.e = i;
+        wi0Var.f = i2;
+        wi0Var.p = xq0Var;
+        wi0Var.g = cls;
+        wi0Var.h = sd0Var;
+        wi0Var.k = cls2;
+        wi0Var.o = eq3Var;
+        wi0Var.i = db3Var;
+        wi0Var.j = map;
+        wi0Var.q = z;
+        wi0Var.r = z2;
+        xi0Var.u = ii1Var;
+        xi0Var.v = f42Var;
+        xi0Var.w = eq3Var;
+        xi0Var.x = n11Var;
+        xi0Var.y = i;
+        xi0Var.z = i2;
+        xi0Var.A = xq0Var;
+        xi0Var.F = z5;
+        xi0Var.B = db3Var;
+        xi0Var.C = m11Var2;
+        xi0Var.D = i3;
+        xi0Var.R = 1;
+        xi0Var.G = obj;
+        gp3 gp3Var2 = this.a;
+        gp3Var2.getClass();
+        ((HashMap) (m11Var2.A ? gp3Var2.p : gp3Var2.o)).put(n11Var, m11Var2);
+        m11Var2.a(cf4Var, executor);
+        synchronized (m11Var2) {
+            m11Var2.H = xi0Var;
+            int iH = xi0Var.h(1);
+            if (iH == 2 || iH == 3) {
+                li1Var = m11Var2.t;
+            } else {
+                li1Var = m11Var2.z ? m11Var2.v : m11Var2.u;
+            }
+            li1Var.execute(xi0Var);
+        }
+        if (h) {
+            c("Started new load", j, n11Var);
+        }
+        return new z05(this, cf4Var, m11Var2);
     }
 }

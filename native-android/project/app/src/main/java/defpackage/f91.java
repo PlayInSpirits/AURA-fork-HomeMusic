@@ -6,27 +6,20 @@ public final class f91 extends ep4 implements wf1 {
     public /* synthetic */ int o;
 
     @Override // defpackage.jp
-    public final vd0 create(Object r2, vd0 r3) {
-        f91 r1 = new f91(2, r3);
-        r1.o = ((Number) r2).intValue();
-        return r1;
+    public final vd0 create(Object obj, vd0 vd0Var) {
+        f91 f91Var = new f91(2, vd0Var);
+        f91Var.o = ((Number) obj).intValue();
+        return f91Var;
     }
 
     @Override // defpackage.wf1
-    public final Object invoke(Object r1, Object r2) {
-        Integer r3 = Integer.valueOf(((Number) r1).intValue());
-        return ((f91) create(r3, (vd0) r2)).invokeSuspend(j15.a);
+    public final Object invoke(Object obj, Object obj2) {
+        return ((f91) create(Integer.valueOf(((Number) obj).intValue()), (vd0) obj2)).invokeSuspend(j15.a);
     }
 
     @Override // defpackage.jp
-    public final Object invokeSuspend(Object r1) {
-        kb4.X(r1);
-        if (this.o <= 0) goto L5;
-        boolean r0 = true;
-    L7:
-        return Boolean.valueOf(r0);
-    L5:
-        r0 = false;
-        goto L7
+    public final Object invokeSuspend(Object obj) {
+        kb4.X(obj);
+        return Boolean.valueOf(this.o > 0);
     }
 }

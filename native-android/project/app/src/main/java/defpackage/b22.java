@@ -17,78 +17,73 @@ public final class b22 implements Animator.AnimatorListener {
     public boolean h;
     public float i;
     public float j;
-    public boolean k;
-    public boolean l;
+    public boolean k = false;
+    public boolean l = false;
     public float m;
     public final /* synthetic */ int n;
     public final /* synthetic */ cx3 o;
     public final /* synthetic */ f22 p;
 
-    public b22(f22 r1, cx3 r2, int r3, float r4, float r5, float r6, float r7, int r8, cx3 r9) {
-        this.p = r1;
-        this.n = r8;
-        this.o = r9;
-        this.k = false;
-        this.l = false;
-        this.f = r3;
-        this.e = r2;
-        this.a = r4;
-        this.b = r5;
-        this.c = r6;
-        this.d = r7;
-        ValueAnimator r10 = ValueAnimator.ofFloat(new float[]{0.0f, 1.0f});
-        this.g = r10;
-        r10.addUpdateListener(new qq(4, this));
-        r10.setTarget(r2.a);
-        r10.addListener(this);
+    public b22(f22 f22Var, cx3 cx3Var, int i, float f, float f2, float f3, float f4, int i2, cx3 cx3Var2) {
+        this.p = f22Var;
+        this.n = i2;
+        this.o = cx3Var2;
+        this.f = i;
+        this.e = cx3Var;
+        this.a = f;
+        this.b = f2;
+        this.c = f3;
+        this.d = f4;
+        ValueAnimator valueAnimatorOfFloat = ValueAnimator.ofFloat(0.0f, 1.0f);
+        this.g = valueAnimatorOfFloat;
+        valueAnimatorOfFloat.addUpdateListener(new qq(4, this));
+        valueAnimatorOfFloat.setTarget(cx3Var.a);
+        valueAnimatorOfFloat.addListener(this);
         this.m = 0.0f;
     }
 
-    public final void a(Animator r2) {
-        if (this.l == true) goto L5;
-        this.e.p(true);
-    L5:
+    public final void a(Animator animator) {
+        if (!this.l) {
+            this.e.p(true);
+        }
         this.l = true;
     }
 
     @Override // android.animation.Animator.AnimatorListener
-    public final void onAnimationCancel(Animator r1) {
+    public final void onAnimationCancel(Animator animator) {
         this.m = 1.0f;
     }
 
     @Override // android.animation.Animator.AnimatorListener
-    public final void onAnimationEnd(Animator r5) {
-        a(r5);
-        if (this.k == true) goto L18;
-        int r6 = this.n;
-        cx3 r0 = this.o;
-        f22 r1 = this.p;
-        if (r6 > 0) goto L8;
-        r1.m.a(r1.r, r0);
-    L11:
-        View r4 = r1.w;
-        View r7 = r0.a;
-        if (r4 != r7) goto L16;
-        if (r7 != r4) goto L17;
-        r1.w = null;
-        return;
-    L17:
-        return;
-    L16:
-        return;
-    L8:
-        r1.a.add(r0.a);
-        this.h = true;
-        if (r6 <= 0) goto L11;
-        r1.r.post(new lg1(r1, this, r6));
-        goto L11
+    public final void onAnimationEnd(Animator animator) {
+        a(animator);
+        if (this.k) {
+            return;
+        }
+        int i = this.n;
+        cx3 cx3Var = this.o;
+        f22 f22Var = this.p;
+        if (i <= 0) {
+            f22Var.m.a(f22Var.r, cx3Var);
+        } else {
+            f22Var.a.add(cx3Var.a);
+            this.h = true;
+            if (i > 0) {
+                f22Var.r.post(new lg1(f22Var, this, i));
+            }
+        }
+        View view = f22Var.w;
+        View view2 = cx3Var.a;
+        if (view == view2 && view2 == view) {
+            f22Var.w = null;
+        }
     }
 
     @Override // android.animation.Animator.AnimatorListener
-    public final void onAnimationRepeat(Animator r1) {
+    public final void onAnimationRepeat(Animator animator) {
     }
 
     @Override // android.animation.Animator.AnimatorListener
-    public final void onAnimationStart(Animator r1) {
+    public final void onAnimationStart(Animator animator) {
     }
 }

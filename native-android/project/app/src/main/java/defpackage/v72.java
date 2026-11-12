@@ -6,49 +6,31 @@ public final class v72 {
     public final int a;
     public final int b;
 
-    public v72(int r3, int r4) {
-        this.a = r3;
-        this.b = r4;
-        boolean r2 = false;
-        if (r3 < 0) goto L5;
-        boolean r1 = true;
-    L6:
-        if (r1 == true) goto L8;
-        fz1.a("negative start index");
-    L8:
-        if (r4 < r3) goto L10;
-        r2 = true;
-    L10:
-        if (r2 == true) goto L13;
+    public v72(int i, int i2) {
+        this.a = i;
+        this.b = i2;
+        if (!(i >= 0)) {
+            fz1.a("negative start index");
+        }
+        if (i2 >= i) {
+            return;
+        }
         fz1.a("end index greater than start");
-        return;
-    L13:
-        return;
-    L5:
-        r1 = false;
-        goto L6
     }
 
-    public final boolean equals(Object r5) {
-        if (this != r5) goto L6;
-        return true;
-    L6:
-        if ((r5 instanceof v72) == true) goto L8;
-        return false;
-    L8:
-        v72 r6 = (v72) r5;
-        if (this.a == r6.a) goto L12;
-        return false;
-    L12:
-        if (this.b == r6.b) goto L14;
-        return false;
-    L14:
-        return true;
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof v72)) {
+            return false;
+        }
+        v72 v72Var = (v72) obj;
+        return this.a == v72Var.a && this.b == v72Var.b;
     }
 
     public final int hashCode() {
-        int r0 = Integer.hashCode(this.a) * 31;
-        return Integer.hashCode(this.b) + r0;
+        return Integer.hashCode(this.b) + (Integer.hashCode(this.a) * 31);
     }
 
     public final String toString() {

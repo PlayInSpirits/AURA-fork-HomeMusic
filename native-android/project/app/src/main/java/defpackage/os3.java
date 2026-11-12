@@ -5,75 +5,67 @@ package defpackage;
 public final class os3 implements cd2 {
     public final wl0 a;
 
-    public os3(wl0 r1) {
-        this.a = r1;
+    public os3(wl0 wl0Var) {
+        this.a = wl0Var;
     }
 
     @Override // defpackage.cd2
-    public final boolean a(ik3 r1, cu4 r2, mt2 r3, long r4) {
-        r2.getClass();
-        r3.getClass();
-        return this.a.a(r1, r2, r3, r4);
+    public final boolean a(ik3 ik3Var, cu4 cu4Var, mt2 mt2Var, long j) {
+        cu4Var.getClass();
+        mt2Var.getClass();
+        return this.a.a(ik3Var, cu4Var, mt2Var, j);
     }
 
     @Override // defpackage.cd2
-    public final void b(ik3 r1) {
-        this.a.b(r1);
+    public final void b(ik3 ik3Var) {
+        this.a.b(ik3Var);
     }
 
     @Override // defpackage.cd2
-    public final void c(ik3 r1) {
-        this.a.m(r1);
+    public final void c(ik3 ik3Var) {
+        this.a.m(ik3Var);
     }
 
     @Override // defpackage.cd2
-    public final boolean d(ik3 r1) {
+    public final boolean d(ik3 ik3Var) {
         return false;
     }
 
     @Override // defpackage.cd2
-    public final void e(ik3 r1) {
-        this.a.e(r1);
+    public final void e(ik3 ik3Var) {
+        this.a.e(ik3Var);
     }
 
     @Override // defpackage.cd2
-    public final void f(bd2 r1, tv4 r2, t41[] r3) {
-        r2.getClass();
-        r3.getClass();
-        this.a.f(r1, r2, r3);
+    public final void f(bd2 bd2Var, tv4 tv4Var, t41[] t41VarArr) {
+        tv4Var.getClass();
+        t41VarArr.getClass();
+        this.a.f(bd2Var, tv4Var, t41VarArr);
     }
 
     @Override // defpackage.cd2
-    public final r20 g(ik3 r2) {
-        return new r20(this.a, r2);
+    public final r20 g(ik3 ik3Var) {
+        return new r20(this.a, ik3Var);
     }
 
     @Override // defpackage.cd2
-    public final boolean h(bd2 r8) {
-        long r0 = r8.d;
-        long r2 = r8.e;
-        boolean r4 = jp1.a();
-        if (r0 < (-20000000)) goto L17;
-        if (r4 == false) goto L11;
-        if (r0 >= 30000000) goto L11;
-        if (r2 < 40000000) goto L11;
-        return false;
-    L11:
-        if (this.a.h(r8) == false) goto L16;
-        return true;
-    L16:
-        return false;
-    L17:
-        return false;
+    public final boolean h(bd2 bd2Var) {
+        long j = bd2Var.d;
+        long j2 = bd2Var.e;
+        boolean zA = jp1.a();
+        if (j < -20000000) {
+            return false;
+        }
+        return (!zA || j >= 30000000 || j2 < 40000000) && this.a.h(bd2Var);
     }
 
     @Override // defpackage.cd2
-    public final long i(ik3 r1) {
+    public final long i(ik3 ik3Var) {
         return this.a.n;
     }
 
     @Override // defpackage.cd2
-    public final boolean j(bd2 r1) {
-        return this.a.j(r1);
+    public final boolean j(bd2 bd2Var) {
+        return this.a.j(bd2Var);
     }
 }

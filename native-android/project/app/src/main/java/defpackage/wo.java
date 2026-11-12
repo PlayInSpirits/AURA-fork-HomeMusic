@@ -7,32 +7,30 @@ public final /* synthetic */ class wo implements Runnable {
     public final /* synthetic */ c6 o;
     public final /* synthetic */ Object p;
 
-    public /* synthetic */ wo(c6 r1, Object r2, int r3) {
-        this.n = r3;
-        this.o = r1;
-        this.p = r2;
+    public /* synthetic */ wo(c6 c6Var, Object obj, int i) {
+        this.n = i;
+        this.o = c6Var;
+        this.p = obj;
     }
 
     @Override // java.lang.Runnable
     public final void run() {
-        int r0 = this.n;
-        Object r1 = this.p;
-        c6 r2 = this.o;
-        switch(r0) {
-            case 0: goto L9;
-            default: goto L4;
-        };
-    L4:
-        int r3 = r2.a - 1;
-        r2.a = r3;
-        if (r3 != 0) goto L12;
-        r2.C(r1);
-        return;
-    L12:
-        return;
-    L9:
-        if (r2.a != 0) goto L13;
-        r2.C(r1);
-        return;
+        int i = this.n;
+        Object obj = this.p;
+        c6 c6Var = this.o;
+        switch (i) {
+            case 0:
+                if (c6Var.a == 0) {
+                    c6Var.C(obj);
+                }
+                break;
+            default:
+                int i2 = c6Var.a - 1;
+                c6Var.a = i2;
+                if (i2 == 0) {
+                    c6Var.C(obj);
+                }
+                break;
+        }
     }
 }

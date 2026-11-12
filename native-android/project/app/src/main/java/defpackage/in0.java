@@ -19,31 +19,27 @@ public final class in0 extends bw4 {
     public final SparseArray Q;
     public final SparseBooleanArray R;
 
-    public in0(jn0 r7) {
-        e(r7);
-        this.J = r7.w0;
-        this.K = r7.x0;
-        this.L = r7.y0;
-        this.M = r7.z0;
-        this.N = r7.A0;
-        this.O = r7.B0;
-        this.P = r7.C0;
-        SparseArray r0 = r7.D0;
-        SparseArray r1 = new SparseArray();
-        int r2 = 0;
-    L4:
-        if (r2 >= r0.size()) goto L6;
-        r1.put(r0.keyAt(r2), new HashMap((Map) r0.valueAt(r2)));
-        r2 = r2 + 1;
-        goto L4
-    L6:
-        this.Q = r1;
-        this.R = r7.E0.clone();
+    public in0(jn0 jn0Var) {
+        e(jn0Var);
+        this.J = jn0Var.w0;
+        this.K = jn0Var.x0;
+        this.L = jn0Var.y0;
+        this.M = jn0Var.z0;
+        this.N = jn0Var.A0;
+        this.O = jn0Var.B0;
+        this.P = jn0Var.C0;
+        SparseArray sparseArray = jn0Var.D0;
+        SparseArray sparseArray2 = new SparseArray();
+        for (int i = 0; i < sparseArray.size(); i++) {
+            sparseArray2.put(sparseArray.keyAt(i), new HashMap((Map) sparseArray.valueAt(i)));
+        }
+        this.Q = sparseArray2;
+        this.R = jn0Var.E0.clone();
     }
 
     @Override // defpackage.bw4
-    public final void a(yv4 r2) {
-        this.H.put(r2.a, r2);
+    public final void a(yv4 yv4Var) {
+        this.H.put(yv4Var.a, yv4Var);
     }
 
     @Override // defpackage.bw4
@@ -58,8 +54,8 @@ public final class in0 extends bw4 {
     }
 
     @Override // defpackage.bw4
-    public final bw4 d(int r1) {
-        super.d(r1);
+    public final bw4 d(int i) {
+        super.d(i);
         return this;
     }
 
@@ -70,8 +66,8 @@ public final class in0 extends bw4 {
     }
 
     @Override // defpackage.bw4
-    public final bw4 h(yv4 r1) {
-        super.h(r1);
+    public final bw4 h(yv4 yv4Var) {
+        super.h(yv4Var);
         return this;
     }
 
@@ -82,8 +78,8 @@ public final class in0 extends bw4 {
     }
 
     @Override // defpackage.bw4
-    public final bw4 j(String[] r1) {
-        super.j(r1);
+    public final bw4 j(String[] strArr) {
+        super.j(strArr);
         return this;
     }
 
@@ -94,14 +90,14 @@ public final class in0 extends bw4 {
     }
 
     @Override // defpackage.bw4
-    public final bw4 l(int r1, boolean r2) {
-        super.l(r1, r2);
+    public final bw4 l(int i, boolean z) {
+        super.l(i, z);
         return this;
     }
 
-    public final void m(Set r2) {
+    public final void m(Set set) {
         this.I.clear();
-        this.I.addAll(r2);
+        this.I.addAll(set);
     }
 
     public in0() {

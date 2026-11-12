@@ -24,112 +24,91 @@ public abstract class rl1 extends g75 {
     }
 
     @Override // defpackage.de0
-    public final boolean m(CoordinatorLayout r6, View r7, int r8, int r9, int r10) {
-        int r0 = r7.getLayoutParams().height;
-        if (r0 != (-1)) goto L5;
-    L6:
-        AppBarLayout r2 = AppBarLayout.ScrollingViewBehavior.z(r6.k(r7));
-        if (r2 == null) goto L27;
-        int r11 = View.MeasureSpec.getSize(r10);
-        if (r11 <= 0) goto L15;
-        WeakHashMap r3 = j65.a;
-        if (r2.getFitsSystemWindows() == false) goto L16;
-        pb5 r4 = r6.getLastWindowInsets();
-        if (r4 == null) goto L16;
-        r11 = r11 + (r4.a() + r4.d());
-    L16:
-        int r5 = r2.getTotalScrollRange() + r11;
-        int r12 = r2.getMeasuredHeight();
-        if ((this instanceof SearchBar.ScrollingViewBehavior) == false) goto L19;
-        r7.setTranslationY(-r12);
-    L20:
-        if (r0 != (-1)) goto L22;
-        int r13 = 1073741824;
-    L23:
-        r6.s(r8, r9, View.MeasureSpec.makeMeasureSpec(r5, r13), r7);
+    public final boolean m(CoordinatorLayout coordinatorLayout, View view, int i, int i2, int i3) {
+        AppBarLayout appBarLayoutZ;
+        pb5 lastWindowInsets;
+        int i4 = view.getLayoutParams().height;
+        if ((i4 != -1 && i4 != -2) || (appBarLayoutZ = AppBarLayout.ScrollingViewBehavior.z(coordinatorLayout.k(view))) == null) {
+            return false;
+        }
+        int size = View.MeasureSpec.getSize(i3);
+        if (size > 0) {
+            WeakHashMap weakHashMap = j65.a;
+            if (appBarLayoutZ.getFitsSystemWindows() && (lastWindowInsets = coordinatorLayout.getLastWindowInsets()) != null) {
+                size += lastWindowInsets.a() + lastWindowInsets.d();
+            }
+        } else {
+            size = coordinatorLayout.getHeight();
+        }
+        int totalScrollRange = appBarLayoutZ.getTotalScrollRange() + size;
+        int measuredHeight = appBarLayoutZ.getMeasuredHeight();
+        if (this instanceof SearchBar.ScrollingViewBehavior) {
+            view.setTranslationY(-measuredHeight);
+        } else {
+            view.setTranslationY(0.0f);
+            totalScrollRange -= measuredHeight;
+        }
+        coordinatorLayout.s(i, i2, View.MeasureSpec.makeMeasureSpec(totalScrollRange, i4 == -1 ? 1073741824 : Integer.MIN_VALUE), view);
         return true;
-    L22:
-        r13 = Integer.MIN_VALUE;
-        goto L23
-    L19:
-        r7.setTranslationY(0.0f);
-        r5 = r5 - r12;
-        goto L20
-    L15:
-        r11 = r6.getHeight();
-        goto L16
-    L27:
-        return false;
-    L5:
-        if (r0 == (-2)) goto L6;
-        return false;
     }
 
     @Override // defpackage.g75
-    public final void x(CoordinatorLayout r14, View r15, int r16) {
-        AppBarLayout r0 = AppBarLayout.ScrollingViewBehavior.z(r14.k(r15));
-        if (r0 == null) goto L16;
-        ge0 r1 = (ge0) r15.getLayoutParams();
-        int r2 = r14.getPaddingLeft() + ((ViewGroup.MarginLayoutParams) r1).leftMargin;
-        int r3 = r0.getBottom() + ((ViewGroup.MarginLayoutParams) r1).topMargin;
-        int r4 = (r14.getWidth() - r14.getPaddingRight()) - ((ViewGroup.MarginLayoutParams) r1).rightMargin;
-        int r6 = ((r0.getBottom() + r14.getHeight()) - r14.getPaddingBottom()) - ((ViewGroup.MarginLayoutParams) r1).bottomMargin;
-        Rect r10 = this.p;
-        r10.set(r2, r3, r4, r6);
-        pb5 r5 = r14.getLastWindowInsets();
-        if (r5 == null) goto L11;
-        WeakHashMap r7 = j65.a;
-        if (r14.getFitsSystemWindows() == false) goto L11;
-        if (r15.getFitsSystemWindows() == true) goto L11;
-        r10.left = r5.b() + r10.left;
-        r10.right -= r5.c();
-    L11:
-        int r17 = r1.c;
-        if (r17 != 0) goto L14;
-        r17 = 8388659;
-    L14:
-        int r8 = r15.getMeasuredWidth();
-        int r9 = r15.getMeasuredHeight();
-        Rect r11 = this.q;
-        Gravity.apply(r17, r8, r9, r10, r11, r16);
-        int r18 = y(r0);
-        r15.layout(r11.left, r11.top - r18, r11.right, r11.bottom - r18);
-        this.r = r11.top - r0.getBottom();
-        return;
-    L16:
-        r14.r(r15, r16);
-        this.r = 0;
+    public final void x(CoordinatorLayout coordinatorLayout, View view, int i) {
+        AppBarLayout appBarLayoutZ = AppBarLayout.ScrollingViewBehavior.z(coordinatorLayout.k(view));
+        if (appBarLayoutZ == null) {
+            coordinatorLayout.r(view, i);
+            this.r = 0;
+            return;
+        }
+        ge0 ge0Var = (ge0) view.getLayoutParams();
+        int paddingLeft = coordinatorLayout.getPaddingLeft() + ((ViewGroup.MarginLayoutParams) ge0Var).leftMargin;
+        int bottom = appBarLayoutZ.getBottom() + ((ViewGroup.MarginLayoutParams) ge0Var).topMargin;
+        int width = (coordinatorLayout.getWidth() - coordinatorLayout.getPaddingRight()) - ((ViewGroup.MarginLayoutParams) ge0Var).rightMargin;
+        int bottom2 = ((appBarLayoutZ.getBottom() + coordinatorLayout.getHeight()) - coordinatorLayout.getPaddingBottom()) - ((ViewGroup.MarginLayoutParams) ge0Var).bottomMargin;
+        Rect rect = this.p;
+        rect.set(paddingLeft, bottom, width, bottom2);
+        pb5 lastWindowInsets = coordinatorLayout.getLastWindowInsets();
+        if (lastWindowInsets != null) {
+            WeakHashMap weakHashMap = j65.a;
+            if (coordinatorLayout.getFitsSystemWindows() && !view.getFitsSystemWindows()) {
+                rect.left = lastWindowInsets.b() + rect.left;
+                rect.right -= lastWindowInsets.c();
+            }
+        }
+        int i2 = ge0Var.c;
+        if (i2 == 0) {
+            i2 = 8388659;
+        }
+        int measuredWidth = view.getMeasuredWidth();
+        int measuredHeight = view.getMeasuredHeight();
+        Rect rect2 = this.q;
+        Gravity.apply(i2, measuredWidth, measuredHeight, rect, rect2, i);
+        int iY = y(appBarLayoutZ);
+        view.layout(rect2.left, rect2.top - iY, rect2.right, rect2.bottom - iY);
+        this.r = rect2.top - appBarLayoutZ.getBottom();
     }
 
-    public final int y(View r6) {
-        if (this.s != 0) goto L5;
-        return 0;
-    L5:
-        float r2 = 0.0f;
-        if ((r6 instanceof AppBarLayout) == false) goto L18;
-        AppBarLayout r7 = (AppBarLayout) r6;
-        int r0 = r7.getTotalScrollRange();
-        int r3 = r7.getDownNestedPreScrollRange();
-        de0 r8 = ((ge0) r7.getLayoutParams()).a;
-        if ((r8 instanceof AppBarLayout.BaseBehavior) == false) goto L10;
-        int r9 = ((AppBarLayout.BaseBehavior) r8).y();
-    L11:
-        if (r3 != 0) goto L13;
-    L15:
-        int r1 = r0 - r3;
-        if (r1 == 0) goto L18;
-        r2 = (r9 / r1) + 1.0f;
-        goto L18
-    L13:
-        if ((r0 + r9) > r3) goto L15;
-    L10:
-        r9 = 0;
-    L18:
-        int r5 = this.s;
-        return su3.l((int) (r2 * r5), 0, r5);
+    public final int y(View view) {
+        int i;
+        if (this.s == 0) {
+            return 0;
+        }
+        float f = 0.0f;
+        if (view instanceof AppBarLayout) {
+            AppBarLayout appBarLayout = (AppBarLayout) view;
+            int totalScrollRange = appBarLayout.getTotalScrollRange();
+            int downNestedPreScrollRange = appBarLayout.getDownNestedPreScrollRange();
+            de0 de0Var = ((ge0) appBarLayout.getLayoutParams()).a;
+            int iY = de0Var instanceof AppBarLayout.BaseBehavior ? ((AppBarLayout.BaseBehavior) de0Var).y() : 0;
+            if ((downNestedPreScrollRange == 0 || totalScrollRange + iY > downNestedPreScrollRange) && (i = totalScrollRange - downNestedPreScrollRange) != 0) {
+                f = (iY / i) + 1.0f;
+            }
+        }
+        int i2 = this.s;
+        return su3.l((int) (f * i2), 0, i2);
     }
 
-    public rl1(int r2) {
+    public rl1(int i) {
         super(0);
         this.p = new Rect();
         this.q = new Rect();

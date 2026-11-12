@@ -11,9 +11,6 @@ public final class AlbumInfo {
     private String notes;
     private String smallImageUrl;
 
-    public AlbumInfo() {
-    }
-
     public final String getLargeImageUrl() {
         return this.largeImageUrl;
     }
@@ -38,27 +35,27 @@ public final class AlbumInfo {
         return this.smallImageUrl;
     }
 
-    public final void setLargeImageUrl(String r1) {
-        this.largeImageUrl = r1;
+    public final void setLargeImageUrl(String str) {
+        this.largeImageUrl = str;
     }
 
-    public final void setLastFmUrl(String r1) {
-        this.lastFmUrl = r1;
+    public final void setLastFmUrl(String str) {
+        this.lastFmUrl = str;
     }
 
-    public final void setMediumImageUrl(String r1) {
-        this.mediumImageUrl = r1;
+    public final void setMediumImageUrl(String str) {
+        this.mediumImageUrl = str;
     }
 
-    public final void setMusicBrainzId(String r1) {
-        this.musicBrainzId = r1;
+    public final void setMusicBrainzId(String str) {
+        this.musicBrainzId = str;
     }
 
-    public final void setNotes(String r1) {
-        this.notes = r1;
+    public final void setNotes(String str) {
+        this.notes = str;
     }
 
-    public final void setSmallImageUrl(String r1) {
-        this.smallImageUrl = r1;
+    public final void setSmallImageUrl(String str) {
+        this.smallImageUrl = str;
     }
 }

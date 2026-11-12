@@ -6,41 +6,27 @@ public final class ty2 implements pv2 {
     public final float a;
     public final float b;
 
-    public ty2(float r3, float r4) {
-        if (r3 >= (-90.0f)) goto L5;
-    L11:
-        boolean r0 = false;
-    L12:
-        rr2.k("Invalid latitude or longitude", r0);
-        this.a = r3;
-        this.b = r4;
-        return;
-    L5:
-        if (r3 > 90.0f) goto L11;
-        if (r4 < (-180.0f)) goto L11;
-        if (r4 > 180.0f) goto L11;
-        r0 = true;
-        goto L12
+    public ty2(float f, float f2) {
+        rr2.k("Invalid latitude or longitude", f >= -90.0f && f <= 90.0f && f2 >= -180.0f && f2 <= 180.0f);
+        this.a = f;
+        this.b = f2;
     }
 
-    public final boolean equals(Object r5) {
-        if (this != r5) goto L6;
-        return true;
-    L6:
-        if (r5 != null) goto L8;
-    L15:
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj != null && ty2.class == obj.getClass()) {
+            ty2 ty2Var = (ty2) obj;
+            if (this.a == ty2Var.a && this.b == ty2Var.b) {
+                return true;
+            }
+        }
         return false;
-    L8:
-        if (ty2.class != r5.getClass()) goto L15;
-        ty2 r6 = (ty2) r5;
-        if (this.a != r6.a) goto L15;
-        if (this.b != r6.b) goto L15;
-        return true;
     }
 
     public final int hashCode() {
-        int r0 = (Float.valueOf(this.a).hashCode() + 527) * 31;
-        return Float.valueOf(this.b).hashCode() + r0;
+        return Float.valueOf(this.b).hashCode() + ((Float.valueOf(this.a).hashCode() + 527) * 31);
     }
 
     public final String toString() {

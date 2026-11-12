@@ -9,9 +9,9 @@ public final class an1 {
     public final tb1 b;
     public final String c;
 
-    public an1(Uri r1, tb1 r2, String r3) {
-        this.a = r1;
-        this.b = r2;
-        this.c = r3;
+    public an1(Uri uri, tb1 tb1Var, String str) {
+        this.a = uri;
+        this.b = tb1Var;
+        this.c = str;
     }
 }

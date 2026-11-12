@@ -12,8 +12,8 @@ import java.util.List;
 public final class yk0 implements gn1 {
     public final /* synthetic */ al0 n;
 
-    public yk0(al0 r1) {
-        this.n = r1;
+    public yk0(al0 al0Var) {
+        this.n = al0Var;
     }
 
     @Override // defpackage.gn1
@@ -22,49 +22,31 @@ public final class yk0 implements gn1 {
     }
 
     @Override // defpackage.gn1
-    public final boolean b(Uri r9, x7 r10, boolean r11) {
-        al0 r8 = this.n;
-        HashMap r12 = r8.q;
-        if (r8.y != null) goto L39;
-        long r2 = SystemClock.elapsedRealtime();
-        cn1 r0 = r8.w;
-        String r4 = f35.a;
-        List r1 = r0.e;
-        int r5 = 0;
-        int r6 = 0;
-    L6:
-        if (r5 >= r1.size()) goto L13;
-        zk0 r7 = (zk0) r12.get(((bn1) r1.get(r5)).a);
-        if (r7 == null) goto L12;
-        if (r2 >= r7.u) goto L12;
-        r6 = r6 + 1;
-    L12:
-        r5 = r5 + 1;
-        goto L6
-    L13:
-        int r3 = r8.w.e.size();
-        r8.p.getClass();
-        IOException r13 = (IOException) r10.p;
-        if ((r13 instanceof HttpDataSource$InvalidResponseCodeException) == false) goto L31;
-        int r14 = ((HttpDataSource$InvalidResponseCodeException) r13).p;
-        if (r14 == 403) goto L29;
-        if (r14 == 404) goto L29;
-        if (r14 == 410) goto L29;
-        if (r14 == 416) goto L29;
-        if (r14 == 500) goto L29;
-        if (r14 != 503) goto L31;
-    L29:
-        if ((r3 - r6) <= 1) goto L31;
-        dd2 r15 = new dd2(2, 60000);
-    L32:
-        if (r15 == null) goto L39;
-        if (r15.a != 2) goto L39;
-        zk0 r16 = (zk0) r12.get(r9);
-        if (r16 == null) goto L39;
-        return zk0.a(r16, r15.b);
-    L31:
-        r15 = null;
-    L39:
+    public final boolean b(Uri uri, x7 x7Var, boolean z) {
+        zk0 zk0Var;
+        int i;
+        al0 al0Var = this.n;
+        HashMap map = al0Var.q;
+        if (al0Var.y == null) {
+            long jElapsedRealtime = SystemClock.elapsedRealtime();
+            cn1 cn1Var = al0Var.w;
+            String str = f35.a;
+            List list = cn1Var.e;
+            int i2 = 0;
+            for (int i3 = 0; i3 < list.size(); i3++) {
+                zk0 zk0Var2 = (zk0) map.get(((bn1) list.get(i3)).a);
+                if (zk0Var2 != null && jElapsedRealtime < zk0Var2.u) {
+                    i2++;
+                }
+            }
+            int size = al0Var.w.e.size();
+            al0Var.p.getClass();
+            IOException iOException = (IOException) x7Var.p;
+            dd2 dd2Var = ((iOException instanceof HttpDataSource$InvalidResponseCodeException) && ((i = ((HttpDataSource$InvalidResponseCodeException) iOException).p) == 403 || i == 404 || i == 410 || i == 416 || i == 500 || i == 503) && size - i2 > 1) ? new dd2(2, 60000L) : null;
+            if (dd2Var != null && dd2Var.a == 2 && (zk0Var = (zk0) map.get(uri)) != null) {
+                return zk0.a(zk0Var, dd2Var.b);
+            }
+        }
         return false;
     }
 }

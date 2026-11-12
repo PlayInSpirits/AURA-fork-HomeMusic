@@ -28,7 +28,10 @@ import app.homemusic.AURAWavePlaybackListener;
 import app.homemusic.AURAWaveToggleClickListener;
 import app.homemusic.R;
 import com.eddyizm.tempus.App;
+import com.eddyizm.tempus.homemusic.HubMix;
+import com.eddyizm.tempus.homemusic.HubMixToday;
 import com.eddyizm.tempus.homemusic.WaveOrigin;
+import com.eddyizm.tempus.homemusic.WaveTrack;
 import com.eddyizm.tempus.interfaces.ClickCallback;
 import com.eddyizm.tempus.service.MediaService;
 import com.eddyizm.tempus.subsonic.models.ArtistID3;
@@ -39,11 +42,14 @@ import com.eddyizm.tempus.viewmodel.b;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
 import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.concurrent.ExecutorService;
+import org.chromium.support_lib_boundary.WebSettingsBoundaryInterface;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
@@ -55,8 +61,8 @@ public class cp1 extends kc1 implements ClickCallback {
     public uc4 E0;
     public bl2 F0;
     public zd0 G0;
-    public View H0;
-    public boolean I0;
+    public View H0 = null;
+    public boolean I0 = false;
     public tc1 l0;
     public MainActivity m0;
     public b n0;
@@ -73,342 +79,1599 @@ public class cp1 extends kc1 implements ClickCallback {
     public s6 y0;
     public s6 z0;
 
-    public cp1() {
-        this.H0 = null;
-        this.I0 = false;
-    }
-
     @Override // defpackage.kc1
-    public final View H(LayoutInflater r78, ViewGroup r79, Bundle r80) {
-        this.m0 = (MainActivity) l();
-        final int r2 = 0;
-        View r1 = r78.inflate(R.layout.fragment_home_tab_music, r79, false);
-        int r3 = R.id.after_favorites_divider;
-        View r6 = uo.s(r1, R.id.after_favorites_divider);
-        if (r6 == null) goto L186;
-        r3 = R.id.after_grid_divider;
-        View r7 = uo.s(r1, R.id.after_grid_divider);
-        if (r7 == null) goto L186;
-        r3 = R.id.after_radio_artist_divider;
-        View r8 = uo.s(r1, R.id.after_radio_artist_divider);
-        if (r8 == null) goto L186;
-        r3 = R.id.best_of_artist_recycler_view;
-        RecyclerView r9 = (RecyclerView) uo.s(r1, R.id.best_of_artist_recycler_view);
-        if (r9 == null) goto L186;
-        r3 = R.id.best_of_artist_text_view_refreshable;
-        TextView r10 = (TextView) uo.s(r1, R.id.best_of_artist_text_view_refreshable);
-        if (r10 == null) goto L186;
-        r3 = R.id.continue_listening_recycler_view;
-        RecyclerView r11 = (RecyclerView) uo.s(r1, R.id.continue_listening_recycler_view);
-        if (r11 == null) goto L186;
-        r3 = R.id.discover_song_recycler_view;
-        RecyclerView r12 = (RecyclerView) uo.s(r1, R.id.discover_song_recycler_view);
-        if (r12 == null) goto L186;
-        r3 = R.id.discovery_text_view_clickable;
-        TextView r13 = (TextView) uo.s(r1, R.id.discovery_text_view_clickable);
-        if (r13 == null) goto L186;
-        r3 = R.id.discovery_text_view_refreshable;
-        TextView r14 = (TextView) uo.s(r1, R.id.discovery_text_view_refreshable);
-        if (r14 == null) goto L186;
-        NestedScrollView r5 = (NestedScrollView) r1;
-        r3 = R.id.grid_tracks_pre_text_view;
-        TextView r15 = (TextView) uo.s(r1, R.id.grid_tracks_pre_text_view);
-        if (r15 == null) goto L186;
-        r3 = R.id.grid_tracks_text_view;
-        if (((TextView) uo.s(r1, R.id.grid_tracks_text_view)) == null) goto L186;
-        r3 = R.id.home_best_of_artist_sector;
-        LinearLayout r16 = (LinearLayout) uo.s(r1, R.id.home_best_of_artist_sector);
-        if (r16 == null) goto L186;
-        r3 = R.id.home_continue_listening_sector;
-        LinearLayout r17 = (LinearLayout) uo.s(r1, R.id.home_continue_listening_sector);
-        if (r17 == null) goto L186;
-        r3 = R.id.home_discover_sector;
-        LinearLayout r18 = (LinearLayout) uo.s(r1, R.id.home_discover_sector);
-        if (r18 == null) goto L186;
-        r3 = R.id.home_flashback_sector;
-        LinearLayout r19 = (LinearLayout) uo.s(r1, R.id.home_flashback_sector);
-        if (r19 == null) goto L186;
-        r3 = R.id.home_grid_tracks_sector;
-        LinearLayout r20 = (LinearLayout) uo.s(r1, R.id.home_grid_tracks_sector);
-        if (r20 == null) goto L186;
-        r3 = R.id.home_linear_layout_container;
-        LinearLayout r21 = (LinearLayout) uo.s(r1, R.id.home_linear_layout_container);
-        if (r21 == null) goto L186;
-        r3 = R.id.home_most_played_albums_sector;
-        LinearLayout r22 = (LinearLayout) uo.s(r1, R.id.home_most_played_albums_sector);
-        if (r22 == null) goto L186;
-        r3 = R.id.home_new_releases_sector;
-        LinearLayout r23 = (LinearLayout) uo.s(r1, R.id.home_new_releases_sector);
-        if (r23 == null) goto L186;
-        r3 = R.id.home_radio_artist_sector;
-        LinearLayout r24 = (LinearLayout) uo.s(r1, R.id.home_radio_artist_sector);
-        if (r24 == null) goto L186;
-        r3 = R.id.home_recently_added_albums_sector;
-        LinearLayout r25 = (LinearLayout) uo.s(r1, R.id.home_recently_added_albums_sector);
-        if (r25 == null) goto L186;
-        r3 = R.id.home_recently_played_albums_sector;
-        LinearLayout r26 = (LinearLayout) uo.s(r1, R.id.home_recently_played_albums_sector);
-        if (r26 == null) goto L186;
-        r3 = R.id.home_sector_rearrangement_button;
-        Button r27 = (Button) uo.s(r1, R.id.home_sector_rearrangement_button);
-        if (r27 == null) goto L186;
-        r3 = R.id.home_similar_tracks_sector;
-        LinearLayout r28 = (LinearLayout) uo.s(r1, R.id.home_similar_tracks_sector);
-        if (r28 == null) goto L186;
-        r3 = R.id.home_sync_starred_albums_cancel;
-        MaterialButton r29 = (MaterialButton) uo.s(r1, R.id.home_sync_starred_albums_cancel);
-        if (r29 == null) goto L186;
-        r3 = R.id.home_sync_starred_albums_card;
-        MaterialCardView r30 = (MaterialCardView) uo.s(r1, R.id.home_sync_starred_albums_card);
-        if (r30 == null) goto L186;
-        r3 = R.id.home_sync_starred_albums_download;
-        MaterialButton r31 = (MaterialButton) uo.s(r1, R.id.home_sync_starred_albums_download);
-        if (r31 == null) goto L186;
-        r3 = R.id.home_sync_starred_albums_subtitle;
-        if (((TextView) uo.s(r1, R.id.home_sync_starred_albums_subtitle)) == null) goto L186;
-        r3 = R.id.home_sync_starred_albums_title;
-        if (((TextView) uo.s(r1, R.id.home_sync_starred_albums_title)) == null) goto L186;
-        r3 = R.id.home_sync_starred_albums_to_sync;
-        TextView r32 = (TextView) uo.s(r1, R.id.home_sync_starred_albums_to_sync);
-        if (r32 == null) goto L186;
-        r3 = R.id.home_sync_starred_artists_cancel;
-        MaterialButton r33 = (MaterialButton) uo.s(r1, R.id.home_sync_starred_artists_cancel);
-        if (r33 == null) goto L186;
-        r3 = R.id.home_sync_starred_artists_card;
-        MaterialCardView r34 = (MaterialCardView) uo.s(r1, R.id.home_sync_starred_artists_card);
-        if (r34 == null) goto L186;
-        r3 = R.id.home_sync_starred_artists_download;
-        MaterialButton r35 = (MaterialButton) uo.s(r1, R.id.home_sync_starred_artists_download);
-        if (r35 == null) goto L186;
-        r3 = R.id.home_sync_starred_artists_subtitle;
-        if (((TextView) uo.s(r1, R.id.home_sync_starred_artists_subtitle)) == null) goto L186;
-        r3 = R.id.home_sync_starred_artists_title;
-        if (((TextView) uo.s(r1, R.id.home_sync_starred_artists_title)) == null) goto L186;
-        r3 = R.id.home_sync_starred_artists_to_sync;
-        TextView r36 = (TextView) uo.s(r1, R.id.home_sync_starred_artists_to_sync);
-        if (r36 == null) goto L186;
-        r3 = R.id.home_sync_starred_cancel;
-        MaterialButton r37 = (MaterialButton) uo.s(r1, R.id.home_sync_starred_cancel);
-        if (r37 == null) goto L186;
-        r3 = R.id.home_sync_starred_card;
-        MaterialCardView r38 = (MaterialCardView) uo.s(r1, R.id.home_sync_starred_card);
-        if (r38 == null) goto L186;
-        r3 = R.id.home_sync_starred_download;
-        MaterialButton r39 = (MaterialButton) uo.s(r1, R.id.home_sync_starred_download);
-        if (r39 == null) goto L186;
-        r3 = R.id.home_sync_starred_subtitle;
-        if (((TextView) uo.s(r1, R.id.home_sync_starred_subtitle)) == null) goto L186;
-        r3 = R.id.home_sync_starred_title;
-        if (((TextView) uo.s(r1, R.id.home_sync_starred_title)) == null) goto L186;
-        r3 = R.id.home_sync_starred_tracks_to_sync;
-        TextView r40 = (TextView) uo.s(r1, R.id.home_sync_starred_tracks_to_sync);
-        if (r40 == null) goto L186;
-        r3 = R.id.most_played_albums_recycler_view;
-        RecyclerView r41 = (RecyclerView) uo.s(r1, R.id.most_played_albums_recycler_view);
-        if (r41 == null) goto L186;
-        r3 = R.id.most_played_albums_text_view_clickable;
-        TextView r42 = (TextView) uo.s(r1, R.id.most_played_albums_text_view_clickable);
-        if (r42 == null) goto L186;
-        r3 = R.id.most_played_albums_text_view_refreshable;
-        TextView r43 = (TextView) uo.s(r1, R.id.most_played_albums_text_view_refreshable);
-        if (r43 == null) goto L186;
-        r3 = R.id.most_streamed_song_pre_text_view;
-        if (((TextView) uo.s(r1, R.id.most_streamed_song_pre_text_view)) == null) goto L186;
-        r3 = R.id.new_releases_recycler_view;
-        RecyclerView r44 = (RecyclerView) uo.s(r1, R.id.new_releases_recycler_view);
-        if (r44 == null) goto L186;
-        r3 = R.id.pinned_playlists_recycler_view;
-        RecyclerView r45 = (RecyclerView) uo.s(r1, R.id.pinned_playlists_recycler_view);
-        if (r45 == null) goto L186;
-        r3 = R.id.pinned_playlists_sector;
-        LinearLayout r46 = (LinearLayout) uo.s(r1, R.id.pinned_playlists_sector);
-        if (r46 == null) goto L186;
-        r3 = R.id.pinned_playlists_text_view;
-        if (((TextView) uo.s(r1, R.id.pinned_playlists_text_view)) == null) goto L186;
-        r3 = R.id.playlist_catalogue_text_view_clickable;
-        TextView r47 = (TextView) uo.s(r1, R.id.playlist_catalogue_text_view_clickable);
-        if (r47 == null) goto L186;
-        r3 = R.id.radio_artist_recycler_view;
-        RecyclerView r48 = (RecyclerView) uo.s(r1, R.id.radio_artist_recycler_view);
-        if (r48 == null) goto L186;
-        r3 = R.id.radio_artist_text_view_refreshable;
-        TextView r49 = (TextView) uo.s(r1, R.id.radio_artist_text_view_refreshable);
-        if (r49 == null) goto L186;
-        r3 = R.id.recently_added_albums_recycler_view;
-        RecyclerView r50 = (RecyclerView) uo.s(r1, R.id.recently_added_albums_recycler_view);
-        if (r50 == null) goto L186;
-        r3 = R.id.recently_added_albums_text_view_clickable;
-        TextView r51 = (TextView) uo.s(r1, R.id.recently_added_albums_text_view_clickable);
-        if (r51 == null) goto L186;
-        r3 = R.id.recently_added_albums_text_view_refreshable;
-        TextView r52 = (TextView) uo.s(r1, R.id.recently_added_albums_text_view_refreshable);
-        if (r52 == null) goto L186;
-        r3 = R.id.recently_played_albums_recycler_view;
-        RecyclerView r53 = (RecyclerView) uo.s(r1, R.id.recently_played_albums_recycler_view);
-        if (r53 == null) goto L186;
-        r3 = R.id.recently_played_albums_text_view_clickable;
-        TextView r54 = (TextView) uo.s(r1, R.id.recently_played_albums_text_view_clickable);
-        if (r54 == null) goto L186;
-        r3 = R.id.recently_played_albums_text_view_refreshable;
-        TextView r55 = (TextView) uo.s(r1, R.id.recently_played_albums_text_view_refreshable);
-        if (r55 == null) goto L186;
-        r3 = R.id.shares_recycler_view;
-        RecyclerView r56 = (RecyclerView) uo.s(r1, R.id.shares_recycler_view);
-        if (r56 == null) goto L186;
-        r3 = R.id.shares_sector;
-        LinearLayout r57 = (LinearLayout) uo.s(r1, R.id.shares_sector);
-        if (r57 == null) goto L186;
-        r3 = R.id.shares_text_view_refreshable;
-        TextView r58 = (TextView) uo.s(r1, R.id.shares_text_view_refreshable);
-        if (r58 == null) goto L186;
-        r3 = R.id.similar_tracks_pre_text_view;
-        if (((TextView) uo.s(r1, R.id.similar_tracks_pre_text_view)) == null) goto L186;
-        r3 = R.id.similar_tracks_recycler_view;
-        RecyclerView r59 = (RecyclerView) uo.s(r1, R.id.similar_tracks_recycler_view);
-        if (r59 == null) goto L186;
-        r3 = R.id.similar_tracks_text_view_refreshable;
-        TextView r60 = (TextView) uo.s(r1, R.id.similar_tracks_text_view_refreshable);
-        if (r60 == null) goto L186;
-        r3 = R.id.starred_albums_recycler_view;
-        RecyclerView r61 = (RecyclerView) uo.s(r1, R.id.starred_albums_recycler_view);
-        if (r61 == null) goto L186;
-        r3 = R.id.starred_albums_sector;
-        LinearLayout r62 = (LinearLayout) uo.s(r1, R.id.starred_albums_sector);
-        if (r62 == null) goto L186;
-        r3 = R.id.starred_albums_text_view_clickable;
-        TextView r63 = (TextView) uo.s(r1, R.id.starred_albums_text_view_clickable);
-        if (r63 == null) goto L186;
-        r3 = R.id.starred_albums_text_view_refreshable;
-        TextView r64 = (TextView) uo.s(r1, R.id.starred_albums_text_view_refreshable);
-        if (r64 == null) goto L186;
-        r3 = R.id.starred_artists_recycler_view;
-        RecyclerView r65 = (RecyclerView) uo.s(r1, R.id.starred_artists_recycler_view);
-        if (r65 == null) goto L186;
-        r3 = R.id.starred_artists_sector;
-        LinearLayout r66 = (LinearLayout) uo.s(r1, R.id.starred_artists_sector);
-        if (r66 == null) goto L186;
-        r3 = R.id.starred_artists_text_view_clickable;
-        TextView r67 = (TextView) uo.s(r1, R.id.starred_artists_text_view_clickable);
-        if (r67 == null) goto L186;
-        r3 = R.id.starred_artists_text_view_refreshable;
-        TextView r68 = (TextView) uo.s(r1, R.id.starred_artists_text_view_refreshable);
-        if (r68 == null) goto L186;
-        r3 = R.id.starred_tracks_recycler_view;
-        RecyclerView r69 = (RecyclerView) uo.s(r1, R.id.starred_tracks_recycler_view);
-        if (r69 == null) goto L186;
-        r3 = R.id.starred_tracks_sector;
-        LinearLayout r70 = (LinearLayout) uo.s(r1, R.id.starred_tracks_sector);
-        if (r70 == null) goto L186;
-        r3 = R.id.starred_tracks_text_view_clickable;
-        TextView r71 = (TextView) uo.s(r1, R.id.starred_tracks_text_view_clickable);
-        if (r71 == null) goto L186;
-        r3 = R.id.starred_tracks_text_view_refreshable;
-        TextView r72 = (TextView) uo.s(r1, R.id.starred_tracks_text_view_refreshable);
-        if (r72 == null) goto L186;
-        r3 = R.id.top_songs_recycler_view;
-        RecyclerView r73 = (RecyclerView) uo.s(r1, R.id.top_songs_recycler_view);
-        if (r73 == null) goto L186;
-        r3 = R.id.vertical_guideline;
-        if (((Guideline) uo.s(r1, R.id.vertical_guideline)) == null) goto L186;
-        r3 = R.id.vertical_guideline_albums;
-        if (((Guideline) uo.s(r1, R.id.vertical_guideline_albums)) == null) goto L186;
-        r3 = R.id.vertical_guideline_artists;
-        if (((Guideline) uo.s(r1, R.id.vertical_guideline_artists)) == null) goto L186;
-        r3 = R.id.years_recycler_view;
-        RecyclerView r74 = (RecyclerView) uo.s(r1, R.id.years_recycler_view);
-        if (r74 == null) goto L186;
-        this.l0 = new tc1(r5, r6, r7, r8, r9, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r20, r21, r22, r23, r24, r25, r26, r27, r28, r29, r30, r31, r32, r33, r34, r35, r36, r37, r38, r39, r40, r41, r42, r43, r44, r45, r46, r47, r48, r49, r50, r51, r52, r53, r54, r55, r56, r57, r58, r59, r60, r61, r62, r63, r64, r65, r66, r67, r68, r69, r70, r71, r72, r73, r74);
-        NestedScrollView r4 = this.l0.a;
-        nc1 r75 = X();
-        e75 r76 = r75.d();
-        b75 r77 = gh0.r(r75);
-        bq4 r81 = new bq4(r76, r77, b11.e(r75, r77));
-        i30 r82 = kx3.a(b.class);
-        String r83 = r82.b();
-        if (r83 == null) goto L184;
-        this.n0 = (b) r81.l(r82, "androidx.lifecycle.ViewModelProvider.DefaultKey:".concat(r83));
-        nc1 r84 = X();
-        e75 r85 = r84.d();
-        b75 r86 = gh0.r(r84);
-        bq4 r87 = new bq4(r85, r86, b11.e(r84, r86));
-        i30 r88 = kx3.a(vf2.class);
-        String r89 = r88.b();
-        if (r89 == null) goto L182;
-        this.o0 = (vf2) r87.l(r88, "androidx.lifecycle.ViewModelProvider.DefaultKey:".concat(r89));
-        nc1 r90 = X();
-        e75 r91 = r90.d();
-        b75 r92 = gh0.r(r90);
-        bq4 r93 = new bq4(r91, r92, b11.e(r90, r92));
-        i30 r94 = kx3.a(li3.class);
-        String r95 = r94.b();
-        if (r95 == null) goto L180;
-        this.p0 = (li3) r93.l(r94, "androidx.lifecycle.ViewModelProvider.DefaultKey:".concat(r95));
-        this.n0.e();
-        this.l0.j.setOnLongClickListener(new yo1(this, r2));
-        final int r96 = 4;
-        this.l0.i.setOnClickListener(new go1(this, r96));
-        final int r97 = 8;
-        this.l0.d0.setOnLongClickListener(new yo1(this, r97));
-        final int r98 = 9;
-        this.l0.S.setOnLongClickListener(new yo1(this, r98));
-        final int r99 = 10;
-        this.l0.f.setOnLongClickListener(new yo1(this, r99));
-        final int r100 = 5;
-        this.l0.o0.setOnClickListener(new go1(this, r100));
-        final int r110 = 6;
-        this.l0.g0.setOnClickListener(new go1(this, r110));
-        final int r111 = 7;
-        this.l0.k0.setOnClickListener(new go1(this, r111));
-        this.l0.U.setOnClickListener(new go1(this, r97));
-        this.l0.Q.setOnClickListener(new go1(this, r98));
-        final int r101 = 1;
-        this.l0.X.setOnClickListener(new go1(this, r101));
-        final int r102 = 2;
-        this.l0.L.setOnClickListener(new go1(this, r102));
-        this.l0.p0.setOnLongClickListener(new yo1(this, r101));
-        this.l0.h0.setOnLongClickListener(new yo1(this, r102));
-        final int r103 = 3;
-        this.l0.l0.setOnLongClickListener(new yo1(this, r103));
-        this.l0.Y.setOnLongClickListener(new yo1(this, r96));
-        this.l0.M.setOnLongClickListener(new yo1(this, r100));
-        this.l0.V.setOnLongClickListener(new yo1(this, r110));
-        this.l0.b0.setOnLongClickListener(new yo1(this, r111));
-        this.l0.k.setOnClickListener(new go1(this, r103));
-        LinearLayout r104 = this.l0.q;
-        final View r105 = LayoutInflater.from(r104.getContext()).inflate(R.layout.homemusic_home_mixes, r104, false);
-        View r106 = r105.findViewById(R.id.homemusic_wave_card);
-        r106.setOnClickListener(new AURAWaveToggleClickListener(new go1(this, r2)));
-        r106.setOnTouchListener(new AURAWaveCircleTouchListener());
-        AURAVersion.waveButton = r106;
-        AURAWaveToggleClickListener.syncIcon(r106);
-        AURAWavePlaybackListener.syncCurrent();
-        r105.findViewById(R.id.homemusic_mix_card).setOnClickListener(new ho1(this, r105, r2));
-        r105.findViewById(R.id.homemusic_mix_play).setOnClickListener(new ho1(this, r105, r101));
-        ud3.E0(r105, null);
-        this.H0 = r105;
-        if (this.H0 == null) goto L179;
-        LinearLayout r107 = this.l0.q;
-        View r108 = this.H0;
-        MaterialCardView r0 = this.l0.D;
-        r107.addView(r108, 0);
-        View r112 = r107.getRootView().findViewById(R.id.fragment_home_nested_scroll_view);
-        if (r112 == null) goto L179;
-        Drawable r113 = r112.getBackground();
-        if ((r113 instanceof AnimationDrawable) == false) goto L179;
-        ((AnimationDrawable) r113).start();
-    L179:
-        return r4;
-    L180:
-        kf2.n("Local and anonymous classes can not be ViewModels");
-        return null;
-    L182:
-        kf2.n("Local and anonymous classes can not be ViewModels");
-        return null;
-    L184:
-        kf2.n("Local and anonymous classes can not be ViewModels");
-        return null;
-    L186:
-        nz2.n("Missing required view with ID: ".concat(r1.getResources().getResourceName(r3)));
+    public final View H(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
+        this.m0 = (MainActivity) e();
+        final int i = 0;
+        View viewInflate = layoutInflater.inflate(R.layout.fragment_home_tab_music, viewGroup, false);
+        int i2 = R.id.after_favorites_divider;
+        View viewS = uo.s(viewInflate, R.id.after_favorites_divider);
+        if (viewS != null) {
+            i2 = R.id.after_grid_divider;
+            View viewS2 = uo.s(viewInflate, R.id.after_grid_divider);
+            if (viewS2 != null) {
+                i2 = R.id.after_radio_artist_divider;
+                View viewS3 = uo.s(viewInflate, R.id.after_radio_artist_divider);
+                if (viewS3 != null) {
+                    i2 = R.id.best_of_artist_recycler_view;
+                    RecyclerView recyclerView = (RecyclerView) uo.s(viewInflate, R.id.best_of_artist_recycler_view);
+                    if (recyclerView != null) {
+                        i2 = R.id.best_of_artist_text_view_refreshable;
+                        TextView textView = (TextView) uo.s(viewInflate, R.id.best_of_artist_text_view_refreshable);
+                        if (textView != null) {
+                            i2 = R.id.continue_listening_recycler_view;
+                            RecyclerView recyclerView2 = (RecyclerView) uo.s(viewInflate, R.id.continue_listening_recycler_view);
+                            if (recyclerView2 != null) {
+                                i2 = R.id.discover_song_recycler_view;
+                                RecyclerView recyclerView3 = (RecyclerView) uo.s(viewInflate, R.id.discover_song_recycler_view);
+                                if (recyclerView3 != null) {
+                                    i2 = R.id.discovery_text_view_clickable;
+                                    TextView textView2 = (TextView) uo.s(viewInflate, R.id.discovery_text_view_clickable);
+                                    if (textView2 != null) {
+                                        i2 = R.id.discovery_text_view_refreshable;
+                                        TextView textView3 = (TextView) uo.s(viewInflate, R.id.discovery_text_view_refreshable);
+                                        if (textView3 != null) {
+                                            NestedScrollView nestedScrollView = (NestedScrollView) viewInflate;
+                                            i2 = R.id.grid_tracks_pre_text_view;
+                                            TextView textView4 = (TextView) uo.s(viewInflate, R.id.grid_tracks_pre_text_view);
+                                            if (textView4 != null) {
+                                                i2 = R.id.grid_tracks_text_view;
+                                                if (((TextView) uo.s(viewInflate, R.id.grid_tracks_text_view)) != null) {
+                                                    i2 = R.id.home_best_of_artist_sector;
+                                                    LinearLayout linearLayout = (LinearLayout) uo.s(viewInflate, R.id.home_best_of_artist_sector);
+                                                    if (linearLayout != null) {
+                                                        i2 = R.id.home_continue_listening_sector;
+                                                        LinearLayout linearLayout2 = (LinearLayout) uo.s(viewInflate, R.id.home_continue_listening_sector);
+                                                        if (linearLayout2 != null) {
+                                                            i2 = R.id.home_discover_sector;
+                                                            LinearLayout linearLayout3 = (LinearLayout) uo.s(viewInflate, R.id.home_discover_sector);
+                                                            if (linearLayout3 != null) {
+                                                                i2 = R.id.home_flashback_sector;
+                                                                LinearLayout linearLayout4 = (LinearLayout) uo.s(viewInflate, R.id.home_flashback_sector);
+                                                                if (linearLayout4 != null) {
+                                                                    i2 = R.id.home_grid_tracks_sector;
+                                                                    LinearLayout linearLayout5 = (LinearLayout) uo.s(viewInflate, R.id.home_grid_tracks_sector);
+                                                                    if (linearLayout5 != null) {
+                                                                        i2 = R.id.home_linear_layout_container;
+                                                                        LinearLayout linearLayout6 = (LinearLayout) uo.s(viewInflate, R.id.home_linear_layout_container);
+                                                                        if (linearLayout6 != null) {
+                                                                            i2 = R.id.home_most_played_albums_sector;
+                                                                            LinearLayout linearLayout7 = (LinearLayout) uo.s(viewInflate, R.id.home_most_played_albums_sector);
+                                                                            if (linearLayout7 != null) {
+                                                                                i2 = R.id.home_new_releases_sector;
+                                                                                LinearLayout linearLayout8 = (LinearLayout) uo.s(viewInflate, R.id.home_new_releases_sector);
+                                                                                if (linearLayout8 != null) {
+                                                                                    i2 = R.id.home_radio_artist_sector;
+                                                                                    LinearLayout linearLayout9 = (LinearLayout) uo.s(viewInflate, R.id.home_radio_artist_sector);
+                                                                                    if (linearLayout9 != null) {
+                                                                                        i2 = R.id.home_recently_added_albums_sector;
+                                                                                        LinearLayout linearLayout10 = (LinearLayout) uo.s(viewInflate, R.id.home_recently_added_albums_sector);
+                                                                                        if (linearLayout10 != null) {
+                                                                                            i2 = R.id.home_recently_played_albums_sector;
+                                                                                            LinearLayout linearLayout11 = (LinearLayout) uo.s(viewInflate, R.id.home_recently_played_albums_sector);
+                                                                                            if (linearLayout11 != null) {
+                                                                                                i2 = R.id.home_sector_rearrangement_button;
+                                                                                                Button button = (Button) uo.s(viewInflate, R.id.home_sector_rearrangement_button);
+                                                                                                if (button != null) {
+                                                                                                    i2 = R.id.home_similar_tracks_sector;
+                                                                                                    LinearLayout linearLayout12 = (LinearLayout) uo.s(viewInflate, R.id.home_similar_tracks_sector);
+                                                                                                    if (linearLayout12 != null) {
+                                                                                                        i2 = R.id.home_sync_starred_albums_cancel;
+                                                                                                        MaterialButton materialButton = (MaterialButton) uo.s(viewInflate, R.id.home_sync_starred_albums_cancel);
+                                                                                                        if (materialButton != null) {
+                                                                                                            i2 = R.id.home_sync_starred_albums_card;
+                                                                                                            MaterialCardView materialCardView = (MaterialCardView) uo.s(viewInflate, R.id.home_sync_starred_albums_card);
+                                                                                                            if (materialCardView != null) {
+                                                                                                                i2 = R.id.home_sync_starred_albums_download;
+                                                                                                                MaterialButton materialButton2 = (MaterialButton) uo.s(viewInflate, R.id.home_sync_starred_albums_download);
+                                                                                                                if (materialButton2 != null) {
+                                                                                                                    i2 = R.id.home_sync_starred_albums_subtitle;
+                                                                                                                    if (((TextView) uo.s(viewInflate, R.id.home_sync_starred_albums_subtitle)) != null) {
+                                                                                                                        i2 = R.id.home_sync_starred_albums_title;
+                                                                                                                        if (((TextView) uo.s(viewInflate, R.id.home_sync_starred_albums_title)) != null) {
+                                                                                                                            i2 = R.id.home_sync_starred_albums_to_sync;
+                                                                                                                            TextView textView5 = (TextView) uo.s(viewInflate, R.id.home_sync_starred_albums_to_sync);
+                                                                                                                            if (textView5 != null) {
+                                                                                                                                i2 = R.id.home_sync_starred_artists_cancel;
+                                                                                                                                MaterialButton materialButton3 = (MaterialButton) uo.s(viewInflate, R.id.home_sync_starred_artists_cancel);
+                                                                                                                                if (materialButton3 != null) {
+                                                                                                                                    i2 = R.id.home_sync_starred_artists_card;
+                                                                                                                                    MaterialCardView materialCardView2 = (MaterialCardView) uo.s(viewInflate, R.id.home_sync_starred_artists_card);
+                                                                                                                                    if (materialCardView2 != null) {
+                                                                                                                                        i2 = R.id.home_sync_starred_artists_download;
+                                                                                                                                        MaterialButton materialButton4 = (MaterialButton) uo.s(viewInflate, R.id.home_sync_starred_artists_download);
+                                                                                                                                        if (materialButton4 != null) {
+                                                                                                                                            i2 = R.id.home_sync_starred_artists_subtitle;
+                                                                                                                                            if (((TextView) uo.s(viewInflate, R.id.home_sync_starred_artists_subtitle)) != null) {
+                                                                                                                                                i2 = R.id.home_sync_starred_artists_title;
+                                                                                                                                                if (((TextView) uo.s(viewInflate, R.id.home_sync_starred_artists_title)) != null) {
+                                                                                                                                                    i2 = R.id.home_sync_starred_artists_to_sync;
+                                                                                                                                                    TextView textView6 = (TextView) uo.s(viewInflate, R.id.home_sync_starred_artists_to_sync);
+                                                                                                                                                    if (textView6 != null) {
+                                                                                                                                                        i2 = R.id.home_sync_starred_cancel;
+                                                                                                                                                        MaterialButton materialButton5 = (MaterialButton) uo.s(viewInflate, R.id.home_sync_starred_cancel);
+                                                                                                                                                        if (materialButton5 != null) {
+                                                                                                                                                            i2 = R.id.home_sync_starred_card;
+                                                                                                                                                            MaterialCardView materialCardView3 = (MaterialCardView) uo.s(viewInflate, R.id.home_sync_starred_card);
+                                                                                                                                                            if (materialCardView3 != null) {
+                                                                                                                                                                i2 = R.id.home_sync_starred_download;
+                                                                                                                                                                MaterialButton materialButton6 = (MaterialButton) uo.s(viewInflate, R.id.home_sync_starred_download);
+                                                                                                                                                                if (materialButton6 != null) {
+                                                                                                                                                                    i2 = R.id.home_sync_starred_subtitle;
+                                                                                                                                                                    if (((TextView) uo.s(viewInflate, R.id.home_sync_starred_subtitle)) != null) {
+                                                                                                                                                                        i2 = R.id.home_sync_starred_title;
+                                                                                                                                                                        if (((TextView) uo.s(viewInflate, R.id.home_sync_starred_title)) != null) {
+                                                                                                                                                                            i2 = R.id.home_sync_starred_tracks_to_sync;
+                                                                                                                                                                            TextView textView7 = (TextView) uo.s(viewInflate, R.id.home_sync_starred_tracks_to_sync);
+                                                                                                                                                                            if (textView7 != null) {
+                                                                                                                                                                                i2 = R.id.most_played_albums_recycler_view;
+                                                                                                                                                                                RecyclerView recyclerView4 = (RecyclerView) uo.s(viewInflate, R.id.most_played_albums_recycler_view);
+                                                                                                                                                                                if (recyclerView4 != null) {
+                                                                                                                                                                                    i2 = R.id.most_played_albums_text_view_clickable;
+                                                                                                                                                                                    TextView textView8 = (TextView) uo.s(viewInflate, R.id.most_played_albums_text_view_clickable);
+                                                                                                                                                                                    if (textView8 != null) {
+                                                                                                                                                                                        i2 = R.id.most_played_albums_text_view_refreshable;
+                                                                                                                                                                                        TextView textView9 = (TextView) uo.s(viewInflate, R.id.most_played_albums_text_view_refreshable);
+                                                                                                                                                                                        if (textView9 != null) {
+                                                                                                                                                                                            i2 = R.id.most_streamed_song_pre_text_view;
+                                                                                                                                                                                            if (((TextView) uo.s(viewInflate, R.id.most_streamed_song_pre_text_view)) != null) {
+                                                                                                                                                                                                i2 = R.id.new_releases_recycler_view;
+                                                                                                                                                                                                RecyclerView recyclerView5 = (RecyclerView) uo.s(viewInflate, R.id.new_releases_recycler_view);
+                                                                                                                                                                                                if (recyclerView5 != null) {
+                                                                                                                                                                                                    i2 = R.id.pinned_playlists_recycler_view;
+                                                                                                                                                                                                    RecyclerView recyclerView6 = (RecyclerView) uo.s(viewInflate, R.id.pinned_playlists_recycler_view);
+                                                                                                                                                                                                    if (recyclerView6 != null) {
+                                                                                                                                                                                                        i2 = R.id.pinned_playlists_sector;
+                                                                                                                                                                                                        LinearLayout linearLayout13 = (LinearLayout) uo.s(viewInflate, R.id.pinned_playlists_sector);
+                                                                                                                                                                                                        if (linearLayout13 != null) {
+                                                                                                                                                                                                            i2 = R.id.pinned_playlists_text_view;
+                                                                                                                                                                                                            if (((TextView) uo.s(viewInflate, R.id.pinned_playlists_text_view)) != null) {
+                                                                                                                                                                                                                i2 = R.id.playlist_catalogue_text_view_clickable;
+                                                                                                                                                                                                                TextView textView10 = (TextView) uo.s(viewInflate, R.id.playlist_catalogue_text_view_clickable);
+                                                                                                                                                                                                                if (textView10 != null) {
+                                                                                                                                                                                                                    i2 = R.id.radio_artist_recycler_view;
+                                                                                                                                                                                                                    RecyclerView recyclerView7 = (RecyclerView) uo.s(viewInflate, R.id.radio_artist_recycler_view);
+                                                                                                                                                                                                                    if (recyclerView7 != null) {
+                                                                                                                                                                                                                        i2 = R.id.radio_artist_text_view_refreshable;
+                                                                                                                                                                                                                        TextView textView11 = (TextView) uo.s(viewInflate, R.id.radio_artist_text_view_refreshable);
+                                                                                                                                                                                                                        if (textView11 != null) {
+                                                                                                                                                                                                                            i2 = R.id.recently_added_albums_recycler_view;
+                                                                                                                                                                                                                            RecyclerView recyclerView8 = (RecyclerView) uo.s(viewInflate, R.id.recently_added_albums_recycler_view);
+                                                                                                                                                                                                                            if (recyclerView8 != null) {
+                                                                                                                                                                                                                                i2 = R.id.recently_added_albums_text_view_clickable;
+                                                                                                                                                                                                                                TextView textView12 = (TextView) uo.s(viewInflate, R.id.recently_added_albums_text_view_clickable);
+                                                                                                                                                                                                                                if (textView12 != null) {
+                                                                                                                                                                                                                                    i2 = R.id.recently_added_albums_text_view_refreshable;
+                                                                                                                                                                                                                                    TextView textView13 = (TextView) uo.s(viewInflate, R.id.recently_added_albums_text_view_refreshable);
+                                                                                                                                                                                                                                    if (textView13 != null) {
+                                                                                                                                                                                                                                        i2 = R.id.recently_played_albums_recycler_view;
+                                                                                                                                                                                                                                        RecyclerView recyclerView9 = (RecyclerView) uo.s(viewInflate, R.id.recently_played_albums_recycler_view);
+                                                                                                                                                                                                                                        if (recyclerView9 != null) {
+                                                                                                                                                                                                                                            i2 = R.id.recently_played_albums_text_view_clickable;
+                                                                                                                                                                                                                                            TextView textView14 = (TextView) uo.s(viewInflate, R.id.recently_played_albums_text_view_clickable);
+                                                                                                                                                                                                                                            if (textView14 != null) {
+                                                                                                                                                                                                                                                i2 = R.id.recently_played_albums_text_view_refreshable;
+                                                                                                                                                                                                                                                TextView textView15 = (TextView) uo.s(viewInflate, R.id.recently_played_albums_text_view_refreshable);
+                                                                                                                                                                                                                                                if (textView15 != null) {
+                                                                                                                                                                                                                                                    i2 = R.id.shares_recycler_view;
+                                                                                                                                                                                                                                                    RecyclerView recyclerView10 = (RecyclerView) uo.s(viewInflate, R.id.shares_recycler_view);
+                                                                                                                                                                                                                                                    if (recyclerView10 != null) {
+                                                                                                                                                                                                                                                        i2 = R.id.shares_sector;
+                                                                                                                                                                                                                                                        LinearLayout linearLayout14 = (LinearLayout) uo.s(viewInflate, R.id.shares_sector);
+                                                                                                                                                                                                                                                        if (linearLayout14 != null) {
+                                                                                                                                                                                                                                                            i2 = R.id.shares_text_view_refreshable;
+                                                                                                                                                                                                                                                            TextView textView16 = (TextView) uo.s(viewInflate, R.id.shares_text_view_refreshable);
+                                                                                                                                                                                                                                                            if (textView16 != null) {
+                                                                                                                                                                                                                                                                i2 = R.id.similar_tracks_pre_text_view;
+                                                                                                                                                                                                                                                                if (((TextView) uo.s(viewInflate, R.id.similar_tracks_pre_text_view)) != null) {
+                                                                                                                                                                                                                                                                    i2 = R.id.similar_tracks_recycler_view;
+                                                                                                                                                                                                                                                                    RecyclerView recyclerView11 = (RecyclerView) uo.s(viewInflate, R.id.similar_tracks_recycler_view);
+                                                                                                                                                                                                                                                                    if (recyclerView11 != null) {
+                                                                                                                                                                                                                                                                        i2 = R.id.similar_tracks_text_view_refreshable;
+                                                                                                                                                                                                                                                                        TextView textView17 = (TextView) uo.s(viewInflate, R.id.similar_tracks_text_view_refreshable);
+                                                                                                                                                                                                                                                                        if (textView17 != null) {
+                                                                                                                                                                                                                                                                            i2 = R.id.starred_albums_recycler_view;
+                                                                                                                                                                                                                                                                            RecyclerView recyclerView12 = (RecyclerView) uo.s(viewInflate, R.id.starred_albums_recycler_view);
+                                                                                                                                                                                                                                                                            if (recyclerView12 != null) {
+                                                                                                                                                                                                                                                                                i2 = R.id.starred_albums_sector;
+                                                                                                                                                                                                                                                                                LinearLayout linearLayout15 = (LinearLayout) uo.s(viewInflate, R.id.starred_albums_sector);
+                                                                                                                                                                                                                                                                                if (linearLayout15 != null) {
+                                                                                                                                                                                                                                                                                    i2 = R.id.starred_albums_text_view_clickable;
+                                                                                                                                                                                                                                                                                    TextView textView18 = (TextView) uo.s(viewInflate, R.id.starred_albums_text_view_clickable);
+                                                                                                                                                                                                                                                                                    if (textView18 != null) {
+                                                                                                                                                                                                                                                                                        i2 = R.id.starred_albums_text_view_refreshable;
+                                                                                                                                                                                                                                                                                        TextView textView19 = (TextView) uo.s(viewInflate, R.id.starred_albums_text_view_refreshable);
+                                                                                                                                                                                                                                                                                        if (textView19 != null) {
+                                                                                                                                                                                                                                                                                            i2 = R.id.starred_artists_recycler_view;
+                                                                                                                                                                                                                                                                                            RecyclerView recyclerView13 = (RecyclerView) uo.s(viewInflate, R.id.starred_artists_recycler_view);
+                                                                                                                                                                                                                                                                                            if (recyclerView13 != null) {
+                                                                                                                                                                                                                                                                                                i2 = R.id.starred_artists_sector;
+                                                                                                                                                                                                                                                                                                LinearLayout linearLayout16 = (LinearLayout) uo.s(viewInflate, R.id.starred_artists_sector);
+                                                                                                                                                                                                                                                                                                if (linearLayout16 != null) {
+                                                                                                                                                                                                                                                                                                    i2 = R.id.starred_artists_text_view_clickable;
+                                                                                                                                                                                                                                                                                                    TextView textView20 = (TextView) uo.s(viewInflate, R.id.starred_artists_text_view_clickable);
+                                                                                                                                                                                                                                                                                                    if (textView20 != null) {
+                                                                                                                                                                                                                                                                                                        i2 = R.id.starred_artists_text_view_refreshable;
+                                                                                                                                                                                                                                                                                                        TextView textView21 = (TextView) uo.s(viewInflate, R.id.starred_artists_text_view_refreshable);
+                                                                                                                                                                                                                                                                                                        if (textView21 != null) {
+                                                                                                                                                                                                                                                                                                            i2 = R.id.starred_tracks_recycler_view;
+                                                                                                                                                                                                                                                                                                            RecyclerView recyclerView14 = (RecyclerView) uo.s(viewInflate, R.id.starred_tracks_recycler_view);
+                                                                                                                                                                                                                                                                                                            if (recyclerView14 != null) {
+                                                                                                                                                                                                                                                                                                                i2 = R.id.starred_tracks_sector;
+                                                                                                                                                                                                                                                                                                                LinearLayout linearLayout17 = (LinearLayout) uo.s(viewInflate, R.id.starred_tracks_sector);
+                                                                                                                                                                                                                                                                                                                if (linearLayout17 != null) {
+                                                                                                                                                                                                                                                                                                                    i2 = R.id.starred_tracks_text_view_clickable;
+                                                                                                                                                                                                                                                                                                                    TextView textView22 = (TextView) uo.s(viewInflate, R.id.starred_tracks_text_view_clickable);
+                                                                                                                                                                                                                                                                                                                    if (textView22 != null) {
+                                                                                                                                                                                                                                                                                                                        i2 = R.id.starred_tracks_text_view_refreshable;
+                                                                                                                                                                                                                                                                                                                        TextView textView23 = (TextView) uo.s(viewInflate, R.id.starred_tracks_text_view_refreshable);
+                                                                                                                                                                                                                                                                                                                        if (textView23 != null) {
+                                                                                                                                                                                                                                                                                                                            i2 = R.id.top_songs_recycler_view;
+                                                                                                                                                                                                                                                                                                                            RecyclerView recyclerView15 = (RecyclerView) uo.s(viewInflate, R.id.top_songs_recycler_view);
+                                                                                                                                                                                                                                                                                                                            if (recyclerView15 != null) {
+                                                                                                                                                                                                                                                                                                                                i2 = R.id.vertical_guideline;
+                                                                                                                                                                                                                                                                                                                                if (((Guideline) uo.s(viewInflate, R.id.vertical_guideline)) != null) {
+                                                                                                                                                                                                                                                                                                                                    i2 = R.id.vertical_guideline_albums;
+                                                                                                                                                                                                                                                                                                                                    if (((Guideline) uo.s(viewInflate, R.id.vertical_guideline_albums)) != null) {
+                                                                                                                                                                                                                                                                                                                                        i2 = R.id.vertical_guideline_artists;
+                                                                                                                                                                                                                                                                                                                                        if (((Guideline) uo.s(viewInflate, R.id.vertical_guideline_artists)) != null) {
+                                                                                                                                                                                                                                                                                                                                            i2 = R.id.years_recycler_view;
+                                                                                                                                                                                                                                                                                                                                            RecyclerView recyclerView16 = (RecyclerView) uo.s(viewInflate, R.id.years_recycler_view);
+                                                                                                                                                                                                                                                                                                                                            if (recyclerView16 != null) {
+                                                                                                                                                                                                                                                                                                                                                this.l0 = new tc1(nestedScrollView, viewS, viewS2, viewS3, recyclerView, textView, recyclerView2, recyclerView3, textView2, textView3, textView4, linearLayout, linearLayout2, linearLayout3, linearLayout4, linearLayout5, linearLayout6, linearLayout7, linearLayout8, linearLayout9, linearLayout10, linearLayout11, button, linearLayout12, materialButton, materialCardView, materialButton2, textView5, materialButton3, materialCardView2, materialButton4, textView6, materialButton5, materialCardView3, materialButton6, textView7, recyclerView4, textView8, textView9, recyclerView5, recyclerView6, linearLayout13, textView10, recyclerView7, textView11, recyclerView8, textView12, textView13, recyclerView9, textView14, textView15, recyclerView10, linearLayout14, textView16, recyclerView11, textView17, recyclerView12, linearLayout15, textView18, textView19, recyclerView13, linearLayout16, textView20, textView21, recyclerView14, linearLayout17, textView22, textView23, recyclerView15, recyclerView16);
+                                                                                                                                                                                                                                                                                                                                                NestedScrollView nestedScrollView2 = this.l0.a;
+                                                                                                                                                                                                                                                                                                                                                nc1 nc1VarX = X();
+                                                                                                                                                                                                                                                                                                                                                e75 e75VarD = nc1VarX.d();
+                                                                                                                                                                                                                                                                                                                                                b75 b75VarR = gh0.r(nc1VarX);
+                                                                                                                                                                                                                                                                                                                                                bq4 bq4Var = new bq4(e75VarD, b75VarR, b11.e(nc1VarX, b75VarR));
+                                                                                                                                                                                                                                                                                                                                                i30 i30VarA = kx3.a(b.class);
+                                                                                                                                                                                                                                                                                                                                                String strB = i30VarA.b();
+                                                                                                                                                                                                                                                                                                                                                if (strB == null) {
+                                                                                                                                                                                                                                                                                                                                                    kf2.n("Local and anonymous classes can not be ViewModels");
+                                                                                                                                                                                                                                                                                                                                                    return null;
+                                                                                                                                                                                                                                                                                                                                                }
+                                                                                                                                                                                                                                                                                                                                                this.n0 = (b) bq4Var.l(i30VarA, "androidx.lifecycle.ViewModelProvider.DefaultKey:".concat(strB));
+                                                                                                                                                                                                                                                                                                                                                nc1 nc1VarX2 = X();
+                                                                                                                                                                                                                                                                                                                                                e75 e75VarD2 = nc1VarX2.d();
+                                                                                                                                                                                                                                                                                                                                                b75 b75VarR2 = gh0.r(nc1VarX2);
+                                                                                                                                                                                                                                                                                                                                                bq4 bq4Var2 = new bq4(e75VarD2, b75VarR2, b11.e(nc1VarX2, b75VarR2));
+                                                                                                                                                                                                                                                                                                                                                i30 i30VarA2 = kx3.a(vf2.class);
+                                                                                                                                                                                                                                                                                                                                                String strB2 = i30VarA2.b();
+                                                                                                                                                                                                                                                                                                                                                if (strB2 == null) {
+                                                                                                                                                                                                                                                                                                                                                    kf2.n("Local and anonymous classes can not be ViewModels");
+                                                                                                                                                                                                                                                                                                                                                    return null;
+                                                                                                                                                                                                                                                                                                                                                }
+                                                                                                                                                                                                                                                                                                                                                this.o0 = (vf2) bq4Var2.l(i30VarA2, "androidx.lifecycle.ViewModelProvider.DefaultKey:".concat(strB2));
+                                                                                                                                                                                                                                                                                                                                                nc1 nc1VarX3 = X();
+                                                                                                                                                                                                                                                                                                                                                e75 e75VarD3 = nc1VarX3.d();
+                                                                                                                                                                                                                                                                                                                                                b75 b75VarR3 = gh0.r(nc1VarX3);
+                                                                                                                                                                                                                                                                                                                                                bq4 bq4Var3 = new bq4(e75VarD3, b75VarR3, b11.e(nc1VarX3, b75VarR3));
+                                                                                                                                                                                                                                                                                                                                                i30 i30VarA3 = kx3.a(li3.class);
+                                                                                                                                                                                                                                                                                                                                                String strB3 = i30VarA3.b();
+                                                                                                                                                                                                                                                                                                                                                if (strB3 == null) {
+                                                                                                                                                                                                                                                                                                                                                    kf2.n("Local and anonymous classes can not be ViewModels");
+                                                                                                                                                                                                                                                                                                                                                    return null;
+                                                                                                                                                                                                                                                                                                                                                }
+                                                                                                                                                                                                                                                                                                                                                this.p0 = (li3) bq4Var3.l(i30VarA3, "androidx.lifecycle.ViewModelProvider.DefaultKey:".concat(strB3));
+                                                                                                                                                                                                                                                                                                                                                this.n0.e();
+                                                                                                                                                                                                                                                                                                                                                this.l0.j.setOnLongClickListener(new View.OnLongClickListener(this) { // from class: yo1
+                                                                                                                                                                                                                                                                                                                                                    public final /* synthetic */ cp1 o;
+
+                                                                                                                                                                                                                                                                                                                                                    {
+                                                                                                                                                                                                                                                                                                                                                        this.o = this;
+                                                                                                                                                                                                                                                                                                                                                    }
+
+                                                                                                                                                                                                                                                                                                                                                    @Override // android.view.View.OnLongClickListener
+                                                                                                                                                                                                                                                                                                                                                    public final boolean onLongClick(View view) {
+                                                                                                                                                                                                                                                                                                                                                        int i3 = i;
+                                                                                                                                                                                                                                                                                                                                                        cp1 cp1Var = this.o;
+                                                                                                                                                                                                                                                                                                                                                        int i4 = 1;
+                                                                                                                                                                                                                                                                                                                                                        switch (i3) {
+                                                                                                                                                                                                                                                                                                                                                            case 0:
+                                                                                                                                                                                                                                                                                                                                                                b bVar = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                bVar.c.getClass();
+                                                                                                                                                                                                                                                                                                                                                                xi4.q(10, null, null).e(le1VarV, bVar.h(bVar.l));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 1:
+                                                                                                                                                                                                                                                                                                                                                                b bVar2 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV2 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                bVar2.c.getClass();
+                                                                                                                                                                                                                                                                                                                                                                k03 k03VarS = xi4.s(20, true, true);
+                                                                                                                                                                                                                                                                                                                                                                k03 k03Var = bVar2.q;
+                                                                                                                                                                                                                                                                                                                                                                Objects.requireNonNull(k03Var);
+                                                                                                                                                                                                                                                                                                                                                                k03VarS.e(le1VarV2, new g7(k03Var, 0));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 2:
+                                                                                                                                                                                                                                                                                                                                                                b bVar3 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV3 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                bVar3.d.getClass();
+                                                                                                                                                                                                                                                                                                                                                                k03 k03VarO = rv2.o(20, true);
+                                                                                                                                                                                                                                                                                                                                                                k03 k03Var2 = bVar3.r;
+                                                                                                                                                                                                                                                                                                                                                                Objects.requireNonNull(k03Var2);
+                                                                                                                                                                                                                                                                                                                                                                k03VarO.e(le1VarV3, new g7(k03Var2, 0));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
+                                                                                                                                                                                                                                                                                                                                                                b bVar4 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV4 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                k03 k03VarY = bVar4.e.y(20, true);
+                                                                                                                                                                                                                                                                                                                                                                k03 k03Var3 = bVar4.s;
+                                                                                                                                                                                                                                                                                                                                                                Objects.requireNonNull(k03Var3);
+                                                                                                                                                                                                                                                                                                                                                                k03VarY.e(le1VarV4, new g7(k03Var3, 0));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 4:
+                                                                                                                                                                                                                                                                                                                                                                b bVar5 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV5 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                bVar5.d.getClass();
+                                                                                                                                                                                                                                                                                                                                                                rv2.m("recent", 20, null, null).e(le1VarV5, bVar5.h(bVar5.u));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 5:
+                                                                                                                                                                                                                                                                                                                                                                b bVar6 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV6 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                bVar6.d.getClass();
+                                                                                                                                                                                                                                                                                                                                                                rv2.m("frequent", 20, null, null).e(le1VarV6, bVar6.h(bVar6.t));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 6:
+                                                                                                                                                                                                                                                                                                                                                                b bVar7 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV7 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                bVar7.d.getClass();
+                                                                                                                                                                                                                                                                                                                                                                rv2.m("newest", 20, null, null).e(le1VarV7, bVar7.h(bVar7.w));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 7:
+                                                                                                                                                                                                                                                                                                                                                                cp1Var.n0.g(cp1Var.v());
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 8:
+                                                                                                                                                                                                                                                                                                                                                                b bVar8 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV8 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                bVar8.c.getClass();
+                                                                                                                                                                                                                                                                                                                                                                k03 k03VarS2 = xi4.s(10, true, true);
+                                                                                                                                                                                                                                                                                                                                                                k03 k03Var4 = bVar8.n;
+                                                                                                                                                                                                                                                                                                                                                                Objects.requireNonNull(k03Var4);
+                                                                                                                                                                                                                                                                                                                                                                k03VarS2.e(le1VarV8, new g7(k03Var4, 0));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 9:
+                                                                                                                                                                                                                                                                                                                                                                b bVar9 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV9 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                pa paVar = bVar9.e;
+                                                                                                                                                                                                                                                                                                                                                                paVar.getClass();
+                                                                                                                                                                                                                                                                                                                                                                k03 k03Var5 = new k03();
+                                                                                                                                                                                                                                                                                                                                                                App.f(false).a().s().enqueue(new r8(paVar, k03Var5, i4));
+                                                                                                                                                                                                                                                                                                                                                                k03 k03Var6 = bVar9.o;
+                                                                                                                                                                                                                                                                                                                                                                Objects.requireNonNull(k03Var6);
+                                                                                                                                                                                                                                                                                                                                                                k03Var5.e(le1VarV9, new g7(k03Var6, 0));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            default:
+                                                                                                                                                                                                                                                                                                                                                                b bVar10 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV10 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                k03 k03VarY2 = bVar10.e.y(20, true);
+                                                                                                                                                                                                                                                                                                                                                                k03 k03Var7 = bVar10.p;
+                                                                                                                                                                                                                                                                                                                                                                Objects.requireNonNull(k03Var7);
+                                                                                                                                                                                                                                                                                                                                                                k03VarY2.e(le1VarV10, new g7(k03Var7, 0));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                                                                                                                                        return true;
+                                                                                                                                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                                                                                                                                });
+                                                                                                                                                                                                                                                                                                                                                final int i3 = 4;
+                                                                                                                                                                                                                                                                                                                                                this.l0.i.setOnClickListener(new go1(this, i3));
+                                                                                                                                                                                                                                                                                                                                                final int i4 = 8;
+                                                                                                                                                                                                                                                                                                                                                this.l0.d0.setOnLongClickListener(new View.OnLongClickListener(this) { // from class: yo1
+                                                                                                                                                                                                                                                                                                                                                    public final /* synthetic */ cp1 o;
+
+                                                                                                                                                                                                                                                                                                                                                    {
+                                                                                                                                                                                                                                                                                                                                                        this.o = this;
+                                                                                                                                                                                                                                                                                                                                                    }
+
+                                                                                                                                                                                                                                                                                                                                                    @Override // android.view.View.OnLongClickListener
+                                                                                                                                                                                                                                                                                                                                                    public final boolean onLongClick(View view) {
+                                                                                                                                                                                                                                                                                                                                                        int i5 = i4;
+                                                                                                                                                                                                                                                                                                                                                        cp1 cp1Var = this.o;
+                                                                                                                                                                                                                                                                                                                                                        int i6 = 1;
+                                                                                                                                                                                                                                                                                                                                                        switch (i5) {
+                                                                                                                                                                                                                                                                                                                                                            case 0:
+                                                                                                                                                                                                                                                                                                                                                                b bVar = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                bVar.c.getClass();
+                                                                                                                                                                                                                                                                                                                                                                xi4.q(10, null, null).e(le1VarV, bVar.h(bVar.l));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 1:
+                                                                                                                                                                                                                                                                                                                                                                b bVar2 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV2 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                bVar2.c.getClass();
+                                                                                                                                                                                                                                                                                                                                                                k03 k03VarS = xi4.s(20, true, true);
+                                                                                                                                                                                                                                                                                                                                                                k03 k03Var = bVar2.q;
+                                                                                                                                                                                                                                                                                                                                                                Objects.requireNonNull(k03Var);
+                                                                                                                                                                                                                                                                                                                                                                k03VarS.e(le1VarV2, new g7(k03Var, 0));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 2:
+                                                                                                                                                                                                                                                                                                                                                                b bVar3 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV3 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                bVar3.d.getClass();
+                                                                                                                                                                                                                                                                                                                                                                k03 k03VarO = rv2.o(20, true);
+                                                                                                                                                                                                                                                                                                                                                                k03 k03Var2 = bVar3.r;
+                                                                                                                                                                                                                                                                                                                                                                Objects.requireNonNull(k03Var2);
+                                                                                                                                                                                                                                                                                                                                                                k03VarO.e(le1VarV3, new g7(k03Var2, 0));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
+                                                                                                                                                                                                                                                                                                                                                                b bVar4 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV4 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                k03 k03VarY = bVar4.e.y(20, true);
+                                                                                                                                                                                                                                                                                                                                                                k03 k03Var3 = bVar4.s;
+                                                                                                                                                                                                                                                                                                                                                                Objects.requireNonNull(k03Var3);
+                                                                                                                                                                                                                                                                                                                                                                k03VarY.e(le1VarV4, new g7(k03Var3, 0));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 4:
+                                                                                                                                                                                                                                                                                                                                                                b bVar5 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV5 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                bVar5.d.getClass();
+                                                                                                                                                                                                                                                                                                                                                                rv2.m("recent", 20, null, null).e(le1VarV5, bVar5.h(bVar5.u));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 5:
+                                                                                                                                                                                                                                                                                                                                                                b bVar6 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV6 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                bVar6.d.getClass();
+                                                                                                                                                                                                                                                                                                                                                                rv2.m("frequent", 20, null, null).e(le1VarV6, bVar6.h(bVar6.t));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 6:
+                                                                                                                                                                                                                                                                                                                                                                b bVar7 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV7 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                bVar7.d.getClass();
+                                                                                                                                                                                                                                                                                                                                                                rv2.m("newest", 20, null, null).e(le1VarV7, bVar7.h(bVar7.w));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 7:
+                                                                                                                                                                                                                                                                                                                                                                cp1Var.n0.g(cp1Var.v());
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 8:
+                                                                                                                                                                                                                                                                                                                                                                b bVar8 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV8 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                bVar8.c.getClass();
+                                                                                                                                                                                                                                                                                                                                                                k03 k03VarS2 = xi4.s(10, true, true);
+                                                                                                                                                                                                                                                                                                                                                                k03 k03Var4 = bVar8.n;
+                                                                                                                                                                                                                                                                                                                                                                Objects.requireNonNull(k03Var4);
+                                                                                                                                                                                                                                                                                                                                                                k03VarS2.e(le1VarV8, new g7(k03Var4, 0));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 9:
+                                                                                                                                                                                                                                                                                                                                                                b bVar9 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV9 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                pa paVar = bVar9.e;
+                                                                                                                                                                                                                                                                                                                                                                paVar.getClass();
+                                                                                                                                                                                                                                                                                                                                                                k03 k03Var5 = new k03();
+                                                                                                                                                                                                                                                                                                                                                                App.f(false).a().s().enqueue(new r8(paVar, k03Var5, i6));
+                                                                                                                                                                                                                                                                                                                                                                k03 k03Var6 = bVar9.o;
+                                                                                                                                                                                                                                                                                                                                                                Objects.requireNonNull(k03Var6);
+                                                                                                                                                                                                                                                                                                                                                                k03Var5.e(le1VarV9, new g7(k03Var6, 0));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            default:
+                                                                                                                                                                                                                                                                                                                                                                b bVar10 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV10 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                k03 k03VarY2 = bVar10.e.y(20, true);
+                                                                                                                                                                                                                                                                                                                                                                k03 k03Var7 = bVar10.p;
+                                                                                                                                                                                                                                                                                                                                                                Objects.requireNonNull(k03Var7);
+                                                                                                                                                                                                                                                                                                                                                                k03VarY2.e(le1VarV10, new g7(k03Var7, 0));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                                                                                                                                        return true;
+                                                                                                                                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                                                                                                                                });
+                                                                                                                                                                                                                                                                                                                                                final int i5 = 9;
+                                                                                                                                                                                                                                                                                                                                                this.l0.S.setOnLongClickListener(new View.OnLongClickListener(this) { // from class: yo1
+                                                                                                                                                                                                                                                                                                                                                    public final /* synthetic */ cp1 o;
+
+                                                                                                                                                                                                                                                                                                                                                    {
+                                                                                                                                                                                                                                                                                                                                                        this.o = this;
+                                                                                                                                                                                                                                                                                                                                                    }
+
+                                                                                                                                                                                                                                                                                                                                                    @Override // android.view.View.OnLongClickListener
+                                                                                                                                                                                                                                                                                                                                                    public final boolean onLongClick(View view) {
+                                                                                                                                                                                                                                                                                                                                                        int i6 = i5;
+                                                                                                                                                                                                                                                                                                                                                        cp1 cp1Var = this.o;
+                                                                                                                                                                                                                                                                                                                                                        int i7 = 1;
+                                                                                                                                                                                                                                                                                                                                                        switch (i6) {
+                                                                                                                                                                                                                                                                                                                                                            case 0:
+                                                                                                                                                                                                                                                                                                                                                                b bVar = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                bVar.c.getClass();
+                                                                                                                                                                                                                                                                                                                                                                xi4.q(10, null, null).e(le1VarV, bVar.h(bVar.l));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 1:
+                                                                                                                                                                                                                                                                                                                                                                b bVar2 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV2 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                bVar2.c.getClass();
+                                                                                                                                                                                                                                                                                                                                                                k03 k03VarS = xi4.s(20, true, true);
+                                                                                                                                                                                                                                                                                                                                                                k03 k03Var = bVar2.q;
+                                                                                                                                                                                                                                                                                                                                                                Objects.requireNonNull(k03Var);
+                                                                                                                                                                                                                                                                                                                                                                k03VarS.e(le1VarV2, new g7(k03Var, 0));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 2:
+                                                                                                                                                                                                                                                                                                                                                                b bVar3 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV3 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                bVar3.d.getClass();
+                                                                                                                                                                                                                                                                                                                                                                k03 k03VarO = rv2.o(20, true);
+                                                                                                                                                                                                                                                                                                                                                                k03 k03Var2 = bVar3.r;
+                                                                                                                                                                                                                                                                                                                                                                Objects.requireNonNull(k03Var2);
+                                                                                                                                                                                                                                                                                                                                                                k03VarO.e(le1VarV3, new g7(k03Var2, 0));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
+                                                                                                                                                                                                                                                                                                                                                                b bVar4 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV4 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                k03 k03VarY = bVar4.e.y(20, true);
+                                                                                                                                                                                                                                                                                                                                                                k03 k03Var3 = bVar4.s;
+                                                                                                                                                                                                                                                                                                                                                                Objects.requireNonNull(k03Var3);
+                                                                                                                                                                                                                                                                                                                                                                k03VarY.e(le1VarV4, new g7(k03Var3, 0));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 4:
+                                                                                                                                                                                                                                                                                                                                                                b bVar5 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV5 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                bVar5.d.getClass();
+                                                                                                                                                                                                                                                                                                                                                                rv2.m("recent", 20, null, null).e(le1VarV5, bVar5.h(bVar5.u));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 5:
+                                                                                                                                                                                                                                                                                                                                                                b bVar6 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV6 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                bVar6.d.getClass();
+                                                                                                                                                                                                                                                                                                                                                                rv2.m("frequent", 20, null, null).e(le1VarV6, bVar6.h(bVar6.t));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 6:
+                                                                                                                                                                                                                                                                                                                                                                b bVar7 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV7 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                bVar7.d.getClass();
+                                                                                                                                                                                                                                                                                                                                                                rv2.m("newest", 20, null, null).e(le1VarV7, bVar7.h(bVar7.w));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 7:
+                                                                                                                                                                                                                                                                                                                                                                cp1Var.n0.g(cp1Var.v());
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 8:
+                                                                                                                                                                                                                                                                                                                                                                b bVar8 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV8 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                bVar8.c.getClass();
+                                                                                                                                                                                                                                                                                                                                                                k03 k03VarS2 = xi4.s(10, true, true);
+                                                                                                                                                                                                                                                                                                                                                                k03 k03Var4 = bVar8.n;
+                                                                                                                                                                                                                                                                                                                                                                Objects.requireNonNull(k03Var4);
+                                                                                                                                                                                                                                                                                                                                                                k03VarS2.e(le1VarV8, new g7(k03Var4, 0));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 9:
+                                                                                                                                                                                                                                                                                                                                                                b bVar9 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV9 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                pa paVar = bVar9.e;
+                                                                                                                                                                                                                                                                                                                                                                paVar.getClass();
+                                                                                                                                                                                                                                                                                                                                                                k03 k03Var5 = new k03();
+                                                                                                                                                                                                                                                                                                                                                                App.f(false).a().s().enqueue(new r8(paVar, k03Var5, i7));
+                                                                                                                                                                                                                                                                                                                                                                k03 k03Var6 = bVar9.o;
+                                                                                                                                                                                                                                                                                                                                                                Objects.requireNonNull(k03Var6);
+                                                                                                                                                                                                                                                                                                                                                                k03Var5.e(le1VarV9, new g7(k03Var6, 0));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            default:
+                                                                                                                                                                                                                                                                                                                                                                b bVar10 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV10 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                k03 k03VarY2 = bVar10.e.y(20, true);
+                                                                                                                                                                                                                                                                                                                                                                k03 k03Var7 = bVar10.p;
+                                                                                                                                                                                                                                                                                                                                                                Objects.requireNonNull(k03Var7);
+                                                                                                                                                                                                                                                                                                                                                                k03VarY2.e(le1VarV10, new g7(k03Var7, 0));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                                                                                                                                        return true;
+                                                                                                                                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                                                                                                                                });
+                                                                                                                                                                                                                                                                                                                                                final int i6 = 10;
+                                                                                                                                                                                                                                                                                                                                                this.l0.f.setOnLongClickListener(new View.OnLongClickListener(this) { // from class: yo1
+                                                                                                                                                                                                                                                                                                                                                    public final /* synthetic */ cp1 o;
+
+                                                                                                                                                                                                                                                                                                                                                    {
+                                                                                                                                                                                                                                                                                                                                                        this.o = this;
+                                                                                                                                                                                                                                                                                                                                                    }
+
+                                                                                                                                                                                                                                                                                                                                                    @Override // android.view.View.OnLongClickListener
+                                                                                                                                                                                                                                                                                                                                                    public final boolean onLongClick(View view) {
+                                                                                                                                                                                                                                                                                                                                                        int i7 = i6;
+                                                                                                                                                                                                                                                                                                                                                        cp1 cp1Var = this.o;
+                                                                                                                                                                                                                                                                                                                                                        int i8 = 1;
+                                                                                                                                                                                                                                                                                                                                                        switch (i7) {
+                                                                                                                                                                                                                                                                                                                                                            case 0:
+                                                                                                                                                                                                                                                                                                                                                                b bVar = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                bVar.c.getClass();
+                                                                                                                                                                                                                                                                                                                                                                xi4.q(10, null, null).e(le1VarV, bVar.h(bVar.l));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 1:
+                                                                                                                                                                                                                                                                                                                                                                b bVar2 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV2 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                bVar2.c.getClass();
+                                                                                                                                                                                                                                                                                                                                                                k03 k03VarS = xi4.s(20, true, true);
+                                                                                                                                                                                                                                                                                                                                                                k03 k03Var = bVar2.q;
+                                                                                                                                                                                                                                                                                                                                                                Objects.requireNonNull(k03Var);
+                                                                                                                                                                                                                                                                                                                                                                k03VarS.e(le1VarV2, new g7(k03Var, 0));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 2:
+                                                                                                                                                                                                                                                                                                                                                                b bVar3 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV3 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                bVar3.d.getClass();
+                                                                                                                                                                                                                                                                                                                                                                k03 k03VarO = rv2.o(20, true);
+                                                                                                                                                                                                                                                                                                                                                                k03 k03Var2 = bVar3.r;
+                                                                                                                                                                                                                                                                                                                                                                Objects.requireNonNull(k03Var2);
+                                                                                                                                                                                                                                                                                                                                                                k03VarO.e(le1VarV3, new g7(k03Var2, 0));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
+                                                                                                                                                                                                                                                                                                                                                                b bVar4 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV4 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                k03 k03VarY = bVar4.e.y(20, true);
+                                                                                                                                                                                                                                                                                                                                                                k03 k03Var3 = bVar4.s;
+                                                                                                                                                                                                                                                                                                                                                                Objects.requireNonNull(k03Var3);
+                                                                                                                                                                                                                                                                                                                                                                k03VarY.e(le1VarV4, new g7(k03Var3, 0));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 4:
+                                                                                                                                                                                                                                                                                                                                                                b bVar5 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV5 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                bVar5.d.getClass();
+                                                                                                                                                                                                                                                                                                                                                                rv2.m("recent", 20, null, null).e(le1VarV5, bVar5.h(bVar5.u));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 5:
+                                                                                                                                                                                                                                                                                                                                                                b bVar6 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV6 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                bVar6.d.getClass();
+                                                                                                                                                                                                                                                                                                                                                                rv2.m("frequent", 20, null, null).e(le1VarV6, bVar6.h(bVar6.t));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 6:
+                                                                                                                                                                                                                                                                                                                                                                b bVar7 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV7 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                bVar7.d.getClass();
+                                                                                                                                                                                                                                                                                                                                                                rv2.m("newest", 20, null, null).e(le1VarV7, bVar7.h(bVar7.w));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 7:
+                                                                                                                                                                                                                                                                                                                                                                cp1Var.n0.g(cp1Var.v());
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 8:
+                                                                                                                                                                                                                                                                                                                                                                b bVar8 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV8 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                bVar8.c.getClass();
+                                                                                                                                                                                                                                                                                                                                                                k03 k03VarS2 = xi4.s(10, true, true);
+                                                                                                                                                                                                                                                                                                                                                                k03 k03Var4 = bVar8.n;
+                                                                                                                                                                                                                                                                                                                                                                Objects.requireNonNull(k03Var4);
+                                                                                                                                                                                                                                                                                                                                                                k03VarS2.e(le1VarV8, new g7(k03Var4, 0));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 9:
+                                                                                                                                                                                                                                                                                                                                                                b bVar9 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV9 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                pa paVar = bVar9.e;
+                                                                                                                                                                                                                                                                                                                                                                paVar.getClass();
+                                                                                                                                                                                                                                                                                                                                                                k03 k03Var5 = new k03();
+                                                                                                                                                                                                                                                                                                                                                                App.f(false).a().s().enqueue(new r8(paVar, k03Var5, i8));
+                                                                                                                                                                                                                                                                                                                                                                k03 k03Var6 = bVar9.o;
+                                                                                                                                                                                                                                                                                                                                                                Objects.requireNonNull(k03Var6);
+                                                                                                                                                                                                                                                                                                                                                                k03Var5.e(le1VarV9, new g7(k03Var6, 0));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            default:
+                                                                                                                                                                                                                                                                                                                                                                b bVar10 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV10 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                k03 k03VarY2 = bVar10.e.y(20, true);
+                                                                                                                                                                                                                                                                                                                                                                k03 k03Var7 = bVar10.p;
+                                                                                                                                                                                                                                                                                                                                                                Objects.requireNonNull(k03Var7);
+                                                                                                                                                                                                                                                                                                                                                                k03VarY2.e(le1VarV10, new g7(k03Var7, 0));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                                                                                                                                        return true;
+                                                                                                                                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                                                                                                                                });
+                                                                                                                                                                                                                                                                                                                                                final int i7 = 5;
+                                                                                                                                                                                                                                                                                                                                                this.l0.o0.setOnClickListener(new go1(this, i7));
+                                                                                                                                                                                                                                                                                                                                                final int i8 = 6;
+                                                                                                                                                                                                                                                                                                                                                this.l0.g0.setOnClickListener(new go1(this, i8));
+                                                                                                                                                                                                                                                                                                                                                final int i9 = 7;
+                                                                                                                                                                                                                                                                                                                                                this.l0.k0.setOnClickListener(new go1(this, i9));
+                                                                                                                                                                                                                                                                                                                                                this.l0.U.setOnClickListener(new go1(this, i4));
+                                                                                                                                                                                                                                                                                                                                                this.l0.Q.setOnClickListener(new go1(this, i5));
+                                                                                                                                                                                                                                                                                                                                                final int i10 = 1;
+                                                                                                                                                                                                                                                                                                                                                this.l0.X.setOnClickListener(new go1(this, i10));
+                                                                                                                                                                                                                                                                                                                                                final int i11 = 2;
+                                                                                                                                                                                                                                                                                                                                                this.l0.L.setOnClickListener(new go1(this, i11));
+                                                                                                                                                                                                                                                                                                                                                this.l0.p0.setOnLongClickListener(new View.OnLongClickListener(this) { // from class: yo1
+                                                                                                                                                                                                                                                                                                                                                    public final /* synthetic */ cp1 o;
+
+                                                                                                                                                                                                                                                                                                                                                    {
+                                                                                                                                                                                                                                                                                                                                                        this.o = this;
+                                                                                                                                                                                                                                                                                                                                                    }
+
+                                                                                                                                                                                                                                                                                                                                                    @Override // android.view.View.OnLongClickListener
+                                                                                                                                                                                                                                                                                                                                                    public final boolean onLongClick(View view) {
+                                                                                                                                                                                                                                                                                                                                                        int i12 = i10;
+                                                                                                                                                                                                                                                                                                                                                        cp1 cp1Var = this.o;
+                                                                                                                                                                                                                                                                                                                                                        int i13 = 1;
+                                                                                                                                                                                                                                                                                                                                                        switch (i12) {
+                                                                                                                                                                                                                                                                                                                                                            case 0:
+                                                                                                                                                                                                                                                                                                                                                                b bVar = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                bVar.c.getClass();
+                                                                                                                                                                                                                                                                                                                                                                xi4.q(10, null, null).e(le1VarV, bVar.h(bVar.l));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 1:
+                                                                                                                                                                                                                                                                                                                                                                b bVar2 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV2 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                bVar2.c.getClass();
+                                                                                                                                                                                                                                                                                                                                                                k03 k03VarS = xi4.s(20, true, true);
+                                                                                                                                                                                                                                                                                                                                                                k03 k03Var = bVar2.q;
+                                                                                                                                                                                                                                                                                                                                                                Objects.requireNonNull(k03Var);
+                                                                                                                                                                                                                                                                                                                                                                k03VarS.e(le1VarV2, new g7(k03Var, 0));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 2:
+                                                                                                                                                                                                                                                                                                                                                                b bVar3 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV3 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                bVar3.d.getClass();
+                                                                                                                                                                                                                                                                                                                                                                k03 k03VarO = rv2.o(20, true);
+                                                                                                                                                                                                                                                                                                                                                                k03 k03Var2 = bVar3.r;
+                                                                                                                                                                                                                                                                                                                                                                Objects.requireNonNull(k03Var2);
+                                                                                                                                                                                                                                                                                                                                                                k03VarO.e(le1VarV3, new g7(k03Var2, 0));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
+                                                                                                                                                                                                                                                                                                                                                                b bVar4 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV4 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                k03 k03VarY = bVar4.e.y(20, true);
+                                                                                                                                                                                                                                                                                                                                                                k03 k03Var3 = bVar4.s;
+                                                                                                                                                                                                                                                                                                                                                                Objects.requireNonNull(k03Var3);
+                                                                                                                                                                                                                                                                                                                                                                k03VarY.e(le1VarV4, new g7(k03Var3, 0));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 4:
+                                                                                                                                                                                                                                                                                                                                                                b bVar5 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV5 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                bVar5.d.getClass();
+                                                                                                                                                                                                                                                                                                                                                                rv2.m("recent", 20, null, null).e(le1VarV5, bVar5.h(bVar5.u));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 5:
+                                                                                                                                                                                                                                                                                                                                                                b bVar6 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV6 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                bVar6.d.getClass();
+                                                                                                                                                                                                                                                                                                                                                                rv2.m("frequent", 20, null, null).e(le1VarV6, bVar6.h(bVar6.t));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 6:
+                                                                                                                                                                                                                                                                                                                                                                b bVar7 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV7 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                bVar7.d.getClass();
+                                                                                                                                                                                                                                                                                                                                                                rv2.m("newest", 20, null, null).e(le1VarV7, bVar7.h(bVar7.w));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 7:
+                                                                                                                                                                                                                                                                                                                                                                cp1Var.n0.g(cp1Var.v());
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 8:
+                                                                                                                                                                                                                                                                                                                                                                b bVar8 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV8 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                bVar8.c.getClass();
+                                                                                                                                                                                                                                                                                                                                                                k03 k03VarS2 = xi4.s(10, true, true);
+                                                                                                                                                                                                                                                                                                                                                                k03 k03Var4 = bVar8.n;
+                                                                                                                                                                                                                                                                                                                                                                Objects.requireNonNull(k03Var4);
+                                                                                                                                                                                                                                                                                                                                                                k03VarS2.e(le1VarV8, new g7(k03Var4, 0));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 9:
+                                                                                                                                                                                                                                                                                                                                                                b bVar9 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV9 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                pa paVar = bVar9.e;
+                                                                                                                                                                                                                                                                                                                                                                paVar.getClass();
+                                                                                                                                                                                                                                                                                                                                                                k03 k03Var5 = new k03();
+                                                                                                                                                                                                                                                                                                                                                                App.f(false).a().s().enqueue(new r8(paVar, k03Var5, i13));
+                                                                                                                                                                                                                                                                                                                                                                k03 k03Var6 = bVar9.o;
+                                                                                                                                                                                                                                                                                                                                                                Objects.requireNonNull(k03Var6);
+                                                                                                                                                                                                                                                                                                                                                                k03Var5.e(le1VarV9, new g7(k03Var6, 0));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            default:
+                                                                                                                                                                                                                                                                                                                                                                b bVar10 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV10 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                k03 k03VarY2 = bVar10.e.y(20, true);
+                                                                                                                                                                                                                                                                                                                                                                k03 k03Var7 = bVar10.p;
+                                                                                                                                                                                                                                                                                                                                                                Objects.requireNonNull(k03Var7);
+                                                                                                                                                                                                                                                                                                                                                                k03VarY2.e(le1VarV10, new g7(k03Var7, 0));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                                                                                                                                        return true;
+                                                                                                                                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                                                                                                                                });
+                                                                                                                                                                                                                                                                                                                                                this.l0.h0.setOnLongClickListener(new View.OnLongClickListener(this) { // from class: yo1
+                                                                                                                                                                                                                                                                                                                                                    public final /* synthetic */ cp1 o;
+
+                                                                                                                                                                                                                                                                                                                                                    {
+                                                                                                                                                                                                                                                                                                                                                        this.o = this;
+                                                                                                                                                                                                                                                                                                                                                    }
+
+                                                                                                                                                                                                                                                                                                                                                    @Override // android.view.View.OnLongClickListener
+                                                                                                                                                                                                                                                                                                                                                    public final boolean onLongClick(View view) {
+                                                                                                                                                                                                                                                                                                                                                        int i12 = i11;
+                                                                                                                                                                                                                                                                                                                                                        cp1 cp1Var = this.o;
+                                                                                                                                                                                                                                                                                                                                                        int i13 = 1;
+                                                                                                                                                                                                                                                                                                                                                        switch (i12) {
+                                                                                                                                                                                                                                                                                                                                                            case 0:
+                                                                                                                                                                                                                                                                                                                                                                b bVar = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                bVar.c.getClass();
+                                                                                                                                                                                                                                                                                                                                                                xi4.q(10, null, null).e(le1VarV, bVar.h(bVar.l));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 1:
+                                                                                                                                                                                                                                                                                                                                                                b bVar2 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV2 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                bVar2.c.getClass();
+                                                                                                                                                                                                                                                                                                                                                                k03 k03VarS = xi4.s(20, true, true);
+                                                                                                                                                                                                                                                                                                                                                                k03 k03Var = bVar2.q;
+                                                                                                                                                                                                                                                                                                                                                                Objects.requireNonNull(k03Var);
+                                                                                                                                                                                                                                                                                                                                                                k03VarS.e(le1VarV2, new g7(k03Var, 0));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 2:
+                                                                                                                                                                                                                                                                                                                                                                b bVar3 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV3 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                bVar3.d.getClass();
+                                                                                                                                                                                                                                                                                                                                                                k03 k03VarO = rv2.o(20, true);
+                                                                                                                                                                                                                                                                                                                                                                k03 k03Var2 = bVar3.r;
+                                                                                                                                                                                                                                                                                                                                                                Objects.requireNonNull(k03Var2);
+                                                                                                                                                                                                                                                                                                                                                                k03VarO.e(le1VarV3, new g7(k03Var2, 0));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
+                                                                                                                                                                                                                                                                                                                                                                b bVar4 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV4 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                k03 k03VarY = bVar4.e.y(20, true);
+                                                                                                                                                                                                                                                                                                                                                                k03 k03Var3 = bVar4.s;
+                                                                                                                                                                                                                                                                                                                                                                Objects.requireNonNull(k03Var3);
+                                                                                                                                                                                                                                                                                                                                                                k03VarY.e(le1VarV4, new g7(k03Var3, 0));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 4:
+                                                                                                                                                                                                                                                                                                                                                                b bVar5 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV5 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                bVar5.d.getClass();
+                                                                                                                                                                                                                                                                                                                                                                rv2.m("recent", 20, null, null).e(le1VarV5, bVar5.h(bVar5.u));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 5:
+                                                                                                                                                                                                                                                                                                                                                                b bVar6 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV6 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                bVar6.d.getClass();
+                                                                                                                                                                                                                                                                                                                                                                rv2.m("frequent", 20, null, null).e(le1VarV6, bVar6.h(bVar6.t));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 6:
+                                                                                                                                                                                                                                                                                                                                                                b bVar7 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV7 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                bVar7.d.getClass();
+                                                                                                                                                                                                                                                                                                                                                                rv2.m("newest", 20, null, null).e(le1VarV7, bVar7.h(bVar7.w));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 7:
+                                                                                                                                                                                                                                                                                                                                                                cp1Var.n0.g(cp1Var.v());
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 8:
+                                                                                                                                                                                                                                                                                                                                                                b bVar8 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV8 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                bVar8.c.getClass();
+                                                                                                                                                                                                                                                                                                                                                                k03 k03VarS2 = xi4.s(10, true, true);
+                                                                                                                                                                                                                                                                                                                                                                k03 k03Var4 = bVar8.n;
+                                                                                                                                                                                                                                                                                                                                                                Objects.requireNonNull(k03Var4);
+                                                                                                                                                                                                                                                                                                                                                                k03VarS2.e(le1VarV8, new g7(k03Var4, 0));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 9:
+                                                                                                                                                                                                                                                                                                                                                                b bVar9 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV9 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                pa paVar = bVar9.e;
+                                                                                                                                                                                                                                                                                                                                                                paVar.getClass();
+                                                                                                                                                                                                                                                                                                                                                                k03 k03Var5 = new k03();
+                                                                                                                                                                                                                                                                                                                                                                App.f(false).a().s().enqueue(new r8(paVar, k03Var5, i13));
+                                                                                                                                                                                                                                                                                                                                                                k03 k03Var6 = bVar9.o;
+                                                                                                                                                                                                                                                                                                                                                                Objects.requireNonNull(k03Var6);
+                                                                                                                                                                                                                                                                                                                                                                k03Var5.e(le1VarV9, new g7(k03Var6, 0));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            default:
+                                                                                                                                                                                                                                                                                                                                                                b bVar10 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV10 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                k03 k03VarY2 = bVar10.e.y(20, true);
+                                                                                                                                                                                                                                                                                                                                                                k03 k03Var7 = bVar10.p;
+                                                                                                                                                                                                                                                                                                                                                                Objects.requireNonNull(k03Var7);
+                                                                                                                                                                                                                                                                                                                                                                k03VarY2.e(le1VarV10, new g7(k03Var7, 0));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                                                                                                                                        return true;
+                                                                                                                                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                                                                                                                                });
+                                                                                                                                                                                                                                                                                                                                                final int i12 = 3;
+                                                                                                                                                                                                                                                                                                                                                this.l0.l0.setOnLongClickListener(new View.OnLongClickListener(this) { // from class: yo1
+                                                                                                                                                                                                                                                                                                                                                    public final /* synthetic */ cp1 o;
+
+                                                                                                                                                                                                                                                                                                                                                    {
+                                                                                                                                                                                                                                                                                                                                                        this.o = this;
+                                                                                                                                                                                                                                                                                                                                                    }
+
+                                                                                                                                                                                                                                                                                                                                                    @Override // android.view.View.OnLongClickListener
+                                                                                                                                                                                                                                                                                                                                                    public final boolean onLongClick(View view) {
+                                                                                                                                                                                                                                                                                                                                                        int i13 = i12;
+                                                                                                                                                                                                                                                                                                                                                        cp1 cp1Var = this.o;
+                                                                                                                                                                                                                                                                                                                                                        int i14 = 1;
+                                                                                                                                                                                                                                                                                                                                                        switch (i13) {
+                                                                                                                                                                                                                                                                                                                                                            case 0:
+                                                                                                                                                                                                                                                                                                                                                                b bVar = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                bVar.c.getClass();
+                                                                                                                                                                                                                                                                                                                                                                xi4.q(10, null, null).e(le1VarV, bVar.h(bVar.l));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 1:
+                                                                                                                                                                                                                                                                                                                                                                b bVar2 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV2 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                bVar2.c.getClass();
+                                                                                                                                                                                                                                                                                                                                                                k03 k03VarS = xi4.s(20, true, true);
+                                                                                                                                                                                                                                                                                                                                                                k03 k03Var = bVar2.q;
+                                                                                                                                                                                                                                                                                                                                                                Objects.requireNonNull(k03Var);
+                                                                                                                                                                                                                                                                                                                                                                k03VarS.e(le1VarV2, new g7(k03Var, 0));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 2:
+                                                                                                                                                                                                                                                                                                                                                                b bVar3 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV3 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                bVar3.d.getClass();
+                                                                                                                                                                                                                                                                                                                                                                k03 k03VarO = rv2.o(20, true);
+                                                                                                                                                                                                                                                                                                                                                                k03 k03Var2 = bVar3.r;
+                                                                                                                                                                                                                                                                                                                                                                Objects.requireNonNull(k03Var2);
+                                                                                                                                                                                                                                                                                                                                                                k03VarO.e(le1VarV3, new g7(k03Var2, 0));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
+                                                                                                                                                                                                                                                                                                                                                                b bVar4 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV4 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                k03 k03VarY = bVar4.e.y(20, true);
+                                                                                                                                                                                                                                                                                                                                                                k03 k03Var3 = bVar4.s;
+                                                                                                                                                                                                                                                                                                                                                                Objects.requireNonNull(k03Var3);
+                                                                                                                                                                                                                                                                                                                                                                k03VarY.e(le1VarV4, new g7(k03Var3, 0));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 4:
+                                                                                                                                                                                                                                                                                                                                                                b bVar5 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV5 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                bVar5.d.getClass();
+                                                                                                                                                                                                                                                                                                                                                                rv2.m("recent", 20, null, null).e(le1VarV5, bVar5.h(bVar5.u));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 5:
+                                                                                                                                                                                                                                                                                                                                                                b bVar6 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV6 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                bVar6.d.getClass();
+                                                                                                                                                                                                                                                                                                                                                                rv2.m("frequent", 20, null, null).e(le1VarV6, bVar6.h(bVar6.t));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 6:
+                                                                                                                                                                                                                                                                                                                                                                b bVar7 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV7 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                bVar7.d.getClass();
+                                                                                                                                                                                                                                                                                                                                                                rv2.m("newest", 20, null, null).e(le1VarV7, bVar7.h(bVar7.w));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 7:
+                                                                                                                                                                                                                                                                                                                                                                cp1Var.n0.g(cp1Var.v());
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 8:
+                                                                                                                                                                                                                                                                                                                                                                b bVar8 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV8 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                bVar8.c.getClass();
+                                                                                                                                                                                                                                                                                                                                                                k03 k03VarS2 = xi4.s(10, true, true);
+                                                                                                                                                                                                                                                                                                                                                                k03 k03Var4 = bVar8.n;
+                                                                                                                                                                                                                                                                                                                                                                Objects.requireNonNull(k03Var4);
+                                                                                                                                                                                                                                                                                                                                                                k03VarS2.e(le1VarV8, new g7(k03Var4, 0));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 9:
+                                                                                                                                                                                                                                                                                                                                                                b bVar9 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV9 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                pa paVar = bVar9.e;
+                                                                                                                                                                                                                                                                                                                                                                paVar.getClass();
+                                                                                                                                                                                                                                                                                                                                                                k03 k03Var5 = new k03();
+                                                                                                                                                                                                                                                                                                                                                                App.f(false).a().s().enqueue(new r8(paVar, k03Var5, i14));
+                                                                                                                                                                                                                                                                                                                                                                k03 k03Var6 = bVar9.o;
+                                                                                                                                                                                                                                                                                                                                                                Objects.requireNonNull(k03Var6);
+                                                                                                                                                                                                                                                                                                                                                                k03Var5.e(le1VarV9, new g7(k03Var6, 0));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            default:
+                                                                                                                                                                                                                                                                                                                                                                b bVar10 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV10 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                k03 k03VarY2 = bVar10.e.y(20, true);
+                                                                                                                                                                                                                                                                                                                                                                k03 k03Var7 = bVar10.p;
+                                                                                                                                                                                                                                                                                                                                                                Objects.requireNonNull(k03Var7);
+                                                                                                                                                                                                                                                                                                                                                                k03VarY2.e(le1VarV10, new g7(k03Var7, 0));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                                                                                                                                        return true;
+                                                                                                                                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                                                                                                                                });
+                                                                                                                                                                                                                                                                                                                                                this.l0.Y.setOnLongClickListener(new View.OnLongClickListener(this) { // from class: yo1
+                                                                                                                                                                                                                                                                                                                                                    public final /* synthetic */ cp1 o;
+
+                                                                                                                                                                                                                                                                                                                                                    {
+                                                                                                                                                                                                                                                                                                                                                        this.o = this;
+                                                                                                                                                                                                                                                                                                                                                    }
+
+                                                                                                                                                                                                                                                                                                                                                    @Override // android.view.View.OnLongClickListener
+                                                                                                                                                                                                                                                                                                                                                    public final boolean onLongClick(View view) {
+                                                                                                                                                                                                                                                                                                                                                        int i13 = i3;
+                                                                                                                                                                                                                                                                                                                                                        cp1 cp1Var = this.o;
+                                                                                                                                                                                                                                                                                                                                                        int i14 = 1;
+                                                                                                                                                                                                                                                                                                                                                        switch (i13) {
+                                                                                                                                                                                                                                                                                                                                                            case 0:
+                                                                                                                                                                                                                                                                                                                                                                b bVar = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                bVar.c.getClass();
+                                                                                                                                                                                                                                                                                                                                                                xi4.q(10, null, null).e(le1VarV, bVar.h(bVar.l));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 1:
+                                                                                                                                                                                                                                                                                                                                                                b bVar2 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV2 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                bVar2.c.getClass();
+                                                                                                                                                                                                                                                                                                                                                                k03 k03VarS = xi4.s(20, true, true);
+                                                                                                                                                                                                                                                                                                                                                                k03 k03Var = bVar2.q;
+                                                                                                                                                                                                                                                                                                                                                                Objects.requireNonNull(k03Var);
+                                                                                                                                                                                                                                                                                                                                                                k03VarS.e(le1VarV2, new g7(k03Var, 0));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 2:
+                                                                                                                                                                                                                                                                                                                                                                b bVar3 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV3 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                bVar3.d.getClass();
+                                                                                                                                                                                                                                                                                                                                                                k03 k03VarO = rv2.o(20, true);
+                                                                                                                                                                                                                                                                                                                                                                k03 k03Var2 = bVar3.r;
+                                                                                                                                                                                                                                                                                                                                                                Objects.requireNonNull(k03Var2);
+                                                                                                                                                                                                                                                                                                                                                                k03VarO.e(le1VarV3, new g7(k03Var2, 0));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
+                                                                                                                                                                                                                                                                                                                                                                b bVar4 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV4 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                k03 k03VarY = bVar4.e.y(20, true);
+                                                                                                                                                                                                                                                                                                                                                                k03 k03Var3 = bVar4.s;
+                                                                                                                                                                                                                                                                                                                                                                Objects.requireNonNull(k03Var3);
+                                                                                                                                                                                                                                                                                                                                                                k03VarY.e(le1VarV4, new g7(k03Var3, 0));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 4:
+                                                                                                                                                                                                                                                                                                                                                                b bVar5 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV5 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                bVar5.d.getClass();
+                                                                                                                                                                                                                                                                                                                                                                rv2.m("recent", 20, null, null).e(le1VarV5, bVar5.h(bVar5.u));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 5:
+                                                                                                                                                                                                                                                                                                                                                                b bVar6 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV6 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                bVar6.d.getClass();
+                                                                                                                                                                                                                                                                                                                                                                rv2.m("frequent", 20, null, null).e(le1VarV6, bVar6.h(bVar6.t));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 6:
+                                                                                                                                                                                                                                                                                                                                                                b bVar7 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV7 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                bVar7.d.getClass();
+                                                                                                                                                                                                                                                                                                                                                                rv2.m("newest", 20, null, null).e(le1VarV7, bVar7.h(bVar7.w));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 7:
+                                                                                                                                                                                                                                                                                                                                                                cp1Var.n0.g(cp1Var.v());
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 8:
+                                                                                                                                                                                                                                                                                                                                                                b bVar8 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV8 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                bVar8.c.getClass();
+                                                                                                                                                                                                                                                                                                                                                                k03 k03VarS2 = xi4.s(10, true, true);
+                                                                                                                                                                                                                                                                                                                                                                k03 k03Var4 = bVar8.n;
+                                                                                                                                                                                                                                                                                                                                                                Objects.requireNonNull(k03Var4);
+                                                                                                                                                                                                                                                                                                                                                                k03VarS2.e(le1VarV8, new g7(k03Var4, 0));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 9:
+                                                                                                                                                                                                                                                                                                                                                                b bVar9 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV9 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                pa paVar = bVar9.e;
+                                                                                                                                                                                                                                                                                                                                                                paVar.getClass();
+                                                                                                                                                                                                                                                                                                                                                                k03 k03Var5 = new k03();
+                                                                                                                                                                                                                                                                                                                                                                App.f(false).a().s().enqueue(new r8(paVar, k03Var5, i14));
+                                                                                                                                                                                                                                                                                                                                                                k03 k03Var6 = bVar9.o;
+                                                                                                                                                                                                                                                                                                                                                                Objects.requireNonNull(k03Var6);
+                                                                                                                                                                                                                                                                                                                                                                k03Var5.e(le1VarV9, new g7(k03Var6, 0));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            default:
+                                                                                                                                                                                                                                                                                                                                                                b bVar10 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV10 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                k03 k03VarY2 = bVar10.e.y(20, true);
+                                                                                                                                                                                                                                                                                                                                                                k03 k03Var7 = bVar10.p;
+                                                                                                                                                                                                                                                                                                                                                                Objects.requireNonNull(k03Var7);
+                                                                                                                                                                                                                                                                                                                                                                k03VarY2.e(le1VarV10, new g7(k03Var7, 0));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                                                                                                                                        return true;
+                                                                                                                                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                                                                                                                                });
+                                                                                                                                                                                                                                                                                                                                                this.l0.M.setOnLongClickListener(new View.OnLongClickListener(this) { // from class: yo1
+                                                                                                                                                                                                                                                                                                                                                    public final /* synthetic */ cp1 o;
+
+                                                                                                                                                                                                                                                                                                                                                    {
+                                                                                                                                                                                                                                                                                                                                                        this.o = this;
+                                                                                                                                                                                                                                                                                                                                                    }
+
+                                                                                                                                                                                                                                                                                                                                                    @Override // android.view.View.OnLongClickListener
+                                                                                                                                                                                                                                                                                                                                                    public final boolean onLongClick(View view) {
+                                                                                                                                                                                                                                                                                                                                                        int i13 = i7;
+                                                                                                                                                                                                                                                                                                                                                        cp1 cp1Var = this.o;
+                                                                                                                                                                                                                                                                                                                                                        int i14 = 1;
+                                                                                                                                                                                                                                                                                                                                                        switch (i13) {
+                                                                                                                                                                                                                                                                                                                                                            case 0:
+                                                                                                                                                                                                                                                                                                                                                                b bVar = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                bVar.c.getClass();
+                                                                                                                                                                                                                                                                                                                                                                xi4.q(10, null, null).e(le1VarV, bVar.h(bVar.l));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 1:
+                                                                                                                                                                                                                                                                                                                                                                b bVar2 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV2 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                bVar2.c.getClass();
+                                                                                                                                                                                                                                                                                                                                                                k03 k03VarS = xi4.s(20, true, true);
+                                                                                                                                                                                                                                                                                                                                                                k03 k03Var = bVar2.q;
+                                                                                                                                                                                                                                                                                                                                                                Objects.requireNonNull(k03Var);
+                                                                                                                                                                                                                                                                                                                                                                k03VarS.e(le1VarV2, new g7(k03Var, 0));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 2:
+                                                                                                                                                                                                                                                                                                                                                                b bVar3 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV3 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                bVar3.d.getClass();
+                                                                                                                                                                                                                                                                                                                                                                k03 k03VarO = rv2.o(20, true);
+                                                                                                                                                                                                                                                                                                                                                                k03 k03Var2 = bVar3.r;
+                                                                                                                                                                                                                                                                                                                                                                Objects.requireNonNull(k03Var2);
+                                                                                                                                                                                                                                                                                                                                                                k03VarO.e(le1VarV3, new g7(k03Var2, 0));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
+                                                                                                                                                                                                                                                                                                                                                                b bVar4 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV4 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                k03 k03VarY = bVar4.e.y(20, true);
+                                                                                                                                                                                                                                                                                                                                                                k03 k03Var3 = bVar4.s;
+                                                                                                                                                                                                                                                                                                                                                                Objects.requireNonNull(k03Var3);
+                                                                                                                                                                                                                                                                                                                                                                k03VarY.e(le1VarV4, new g7(k03Var3, 0));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 4:
+                                                                                                                                                                                                                                                                                                                                                                b bVar5 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV5 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                bVar5.d.getClass();
+                                                                                                                                                                                                                                                                                                                                                                rv2.m("recent", 20, null, null).e(le1VarV5, bVar5.h(bVar5.u));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 5:
+                                                                                                                                                                                                                                                                                                                                                                b bVar6 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV6 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                bVar6.d.getClass();
+                                                                                                                                                                                                                                                                                                                                                                rv2.m("frequent", 20, null, null).e(le1VarV6, bVar6.h(bVar6.t));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 6:
+                                                                                                                                                                                                                                                                                                                                                                b bVar7 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV7 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                bVar7.d.getClass();
+                                                                                                                                                                                                                                                                                                                                                                rv2.m("newest", 20, null, null).e(le1VarV7, bVar7.h(bVar7.w));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 7:
+                                                                                                                                                                                                                                                                                                                                                                cp1Var.n0.g(cp1Var.v());
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 8:
+                                                                                                                                                                                                                                                                                                                                                                b bVar8 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV8 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                bVar8.c.getClass();
+                                                                                                                                                                                                                                                                                                                                                                k03 k03VarS2 = xi4.s(10, true, true);
+                                                                                                                                                                                                                                                                                                                                                                k03 k03Var4 = bVar8.n;
+                                                                                                                                                                                                                                                                                                                                                                Objects.requireNonNull(k03Var4);
+                                                                                                                                                                                                                                                                                                                                                                k03VarS2.e(le1VarV8, new g7(k03Var4, 0));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 9:
+                                                                                                                                                                                                                                                                                                                                                                b bVar9 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV9 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                pa paVar = bVar9.e;
+                                                                                                                                                                                                                                                                                                                                                                paVar.getClass();
+                                                                                                                                                                                                                                                                                                                                                                k03 k03Var5 = new k03();
+                                                                                                                                                                                                                                                                                                                                                                App.f(false).a().s().enqueue(new r8(paVar, k03Var5, i14));
+                                                                                                                                                                                                                                                                                                                                                                k03 k03Var6 = bVar9.o;
+                                                                                                                                                                                                                                                                                                                                                                Objects.requireNonNull(k03Var6);
+                                                                                                                                                                                                                                                                                                                                                                k03Var5.e(le1VarV9, new g7(k03Var6, 0));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            default:
+                                                                                                                                                                                                                                                                                                                                                                b bVar10 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV10 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                k03 k03VarY2 = bVar10.e.y(20, true);
+                                                                                                                                                                                                                                                                                                                                                                k03 k03Var7 = bVar10.p;
+                                                                                                                                                                                                                                                                                                                                                                Objects.requireNonNull(k03Var7);
+                                                                                                                                                                                                                                                                                                                                                                k03VarY2.e(le1VarV10, new g7(k03Var7, 0));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                                                                                                                                        return true;
+                                                                                                                                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                                                                                                                                });
+                                                                                                                                                                                                                                                                                                                                                this.l0.V.setOnLongClickListener(new View.OnLongClickListener(this) { // from class: yo1
+                                                                                                                                                                                                                                                                                                                                                    public final /* synthetic */ cp1 o;
+
+                                                                                                                                                                                                                                                                                                                                                    {
+                                                                                                                                                                                                                                                                                                                                                        this.o = this;
+                                                                                                                                                                                                                                                                                                                                                    }
+
+                                                                                                                                                                                                                                                                                                                                                    @Override // android.view.View.OnLongClickListener
+                                                                                                                                                                                                                                                                                                                                                    public final boolean onLongClick(View view) {
+                                                                                                                                                                                                                                                                                                                                                        int i13 = i8;
+                                                                                                                                                                                                                                                                                                                                                        cp1 cp1Var = this.o;
+                                                                                                                                                                                                                                                                                                                                                        int i14 = 1;
+                                                                                                                                                                                                                                                                                                                                                        switch (i13) {
+                                                                                                                                                                                                                                                                                                                                                            case 0:
+                                                                                                                                                                                                                                                                                                                                                                b bVar = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                bVar.c.getClass();
+                                                                                                                                                                                                                                                                                                                                                                xi4.q(10, null, null).e(le1VarV, bVar.h(bVar.l));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 1:
+                                                                                                                                                                                                                                                                                                                                                                b bVar2 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV2 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                bVar2.c.getClass();
+                                                                                                                                                                                                                                                                                                                                                                k03 k03VarS = xi4.s(20, true, true);
+                                                                                                                                                                                                                                                                                                                                                                k03 k03Var = bVar2.q;
+                                                                                                                                                                                                                                                                                                                                                                Objects.requireNonNull(k03Var);
+                                                                                                                                                                                                                                                                                                                                                                k03VarS.e(le1VarV2, new g7(k03Var, 0));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 2:
+                                                                                                                                                                                                                                                                                                                                                                b bVar3 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV3 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                bVar3.d.getClass();
+                                                                                                                                                                                                                                                                                                                                                                k03 k03VarO = rv2.o(20, true);
+                                                                                                                                                                                                                                                                                                                                                                k03 k03Var2 = bVar3.r;
+                                                                                                                                                                                                                                                                                                                                                                Objects.requireNonNull(k03Var2);
+                                                                                                                                                                                                                                                                                                                                                                k03VarO.e(le1VarV3, new g7(k03Var2, 0));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
+                                                                                                                                                                                                                                                                                                                                                                b bVar4 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV4 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                k03 k03VarY = bVar4.e.y(20, true);
+                                                                                                                                                                                                                                                                                                                                                                k03 k03Var3 = bVar4.s;
+                                                                                                                                                                                                                                                                                                                                                                Objects.requireNonNull(k03Var3);
+                                                                                                                                                                                                                                                                                                                                                                k03VarY.e(le1VarV4, new g7(k03Var3, 0));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 4:
+                                                                                                                                                                                                                                                                                                                                                                b bVar5 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV5 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                bVar5.d.getClass();
+                                                                                                                                                                                                                                                                                                                                                                rv2.m("recent", 20, null, null).e(le1VarV5, bVar5.h(bVar5.u));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 5:
+                                                                                                                                                                                                                                                                                                                                                                b bVar6 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV6 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                bVar6.d.getClass();
+                                                                                                                                                                                                                                                                                                                                                                rv2.m("frequent", 20, null, null).e(le1VarV6, bVar6.h(bVar6.t));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 6:
+                                                                                                                                                                                                                                                                                                                                                                b bVar7 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV7 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                bVar7.d.getClass();
+                                                                                                                                                                                                                                                                                                                                                                rv2.m("newest", 20, null, null).e(le1VarV7, bVar7.h(bVar7.w));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 7:
+                                                                                                                                                                                                                                                                                                                                                                cp1Var.n0.g(cp1Var.v());
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 8:
+                                                                                                                                                                                                                                                                                                                                                                b bVar8 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV8 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                bVar8.c.getClass();
+                                                                                                                                                                                                                                                                                                                                                                k03 k03VarS2 = xi4.s(10, true, true);
+                                                                                                                                                                                                                                                                                                                                                                k03 k03Var4 = bVar8.n;
+                                                                                                                                                                                                                                                                                                                                                                Objects.requireNonNull(k03Var4);
+                                                                                                                                                                                                                                                                                                                                                                k03VarS2.e(le1VarV8, new g7(k03Var4, 0));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 9:
+                                                                                                                                                                                                                                                                                                                                                                b bVar9 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV9 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                pa paVar = bVar9.e;
+                                                                                                                                                                                                                                                                                                                                                                paVar.getClass();
+                                                                                                                                                                                                                                                                                                                                                                k03 k03Var5 = new k03();
+                                                                                                                                                                                                                                                                                                                                                                App.f(false).a().s().enqueue(new r8(paVar, k03Var5, i14));
+                                                                                                                                                                                                                                                                                                                                                                k03 k03Var6 = bVar9.o;
+                                                                                                                                                                                                                                                                                                                                                                Objects.requireNonNull(k03Var6);
+                                                                                                                                                                                                                                                                                                                                                                k03Var5.e(le1VarV9, new g7(k03Var6, 0));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            default:
+                                                                                                                                                                                                                                                                                                                                                                b bVar10 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV10 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                k03 k03VarY2 = bVar10.e.y(20, true);
+                                                                                                                                                                                                                                                                                                                                                                k03 k03Var7 = bVar10.p;
+                                                                                                                                                                                                                                                                                                                                                                Objects.requireNonNull(k03Var7);
+                                                                                                                                                                                                                                                                                                                                                                k03VarY2.e(le1VarV10, new g7(k03Var7, 0));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                                                                                                                                        return true;
+                                                                                                                                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                                                                                                                                });
+                                                                                                                                                                                                                                                                                                                                                this.l0.b0.setOnLongClickListener(new View.OnLongClickListener(this) { // from class: yo1
+                                                                                                                                                                                                                                                                                                                                                    public final /* synthetic */ cp1 o;
+
+                                                                                                                                                                                                                                                                                                                                                    {
+                                                                                                                                                                                                                                                                                                                                                        this.o = this;
+                                                                                                                                                                                                                                                                                                                                                    }
+
+                                                                                                                                                                                                                                                                                                                                                    @Override // android.view.View.OnLongClickListener
+                                                                                                                                                                                                                                                                                                                                                    public final boolean onLongClick(View view) {
+                                                                                                                                                                                                                                                                                                                                                        int i13 = i9;
+                                                                                                                                                                                                                                                                                                                                                        cp1 cp1Var = this.o;
+                                                                                                                                                                                                                                                                                                                                                        int i14 = 1;
+                                                                                                                                                                                                                                                                                                                                                        switch (i13) {
+                                                                                                                                                                                                                                                                                                                                                            case 0:
+                                                                                                                                                                                                                                                                                                                                                                b bVar = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                bVar.c.getClass();
+                                                                                                                                                                                                                                                                                                                                                                xi4.q(10, null, null).e(le1VarV, bVar.h(bVar.l));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 1:
+                                                                                                                                                                                                                                                                                                                                                                b bVar2 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV2 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                bVar2.c.getClass();
+                                                                                                                                                                                                                                                                                                                                                                k03 k03VarS = xi4.s(20, true, true);
+                                                                                                                                                                                                                                                                                                                                                                k03 k03Var = bVar2.q;
+                                                                                                                                                                                                                                                                                                                                                                Objects.requireNonNull(k03Var);
+                                                                                                                                                                                                                                                                                                                                                                k03VarS.e(le1VarV2, new g7(k03Var, 0));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 2:
+                                                                                                                                                                                                                                                                                                                                                                b bVar3 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV3 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                bVar3.d.getClass();
+                                                                                                                                                                                                                                                                                                                                                                k03 k03VarO = rv2.o(20, true);
+                                                                                                                                                                                                                                                                                                                                                                k03 k03Var2 = bVar3.r;
+                                                                                                                                                                                                                                                                                                                                                                Objects.requireNonNull(k03Var2);
+                                                                                                                                                                                                                                                                                                                                                                k03VarO.e(le1VarV3, new g7(k03Var2, 0));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
+                                                                                                                                                                                                                                                                                                                                                                b bVar4 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV4 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                k03 k03VarY = bVar4.e.y(20, true);
+                                                                                                                                                                                                                                                                                                                                                                k03 k03Var3 = bVar4.s;
+                                                                                                                                                                                                                                                                                                                                                                Objects.requireNonNull(k03Var3);
+                                                                                                                                                                                                                                                                                                                                                                k03VarY.e(le1VarV4, new g7(k03Var3, 0));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 4:
+                                                                                                                                                                                                                                                                                                                                                                b bVar5 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV5 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                bVar5.d.getClass();
+                                                                                                                                                                                                                                                                                                                                                                rv2.m("recent", 20, null, null).e(le1VarV5, bVar5.h(bVar5.u));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 5:
+                                                                                                                                                                                                                                                                                                                                                                b bVar6 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV6 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                bVar6.d.getClass();
+                                                                                                                                                                                                                                                                                                                                                                rv2.m("frequent", 20, null, null).e(le1VarV6, bVar6.h(bVar6.t));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 6:
+                                                                                                                                                                                                                                                                                                                                                                b bVar7 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV7 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                bVar7.d.getClass();
+                                                                                                                                                                                                                                                                                                                                                                rv2.m("newest", 20, null, null).e(le1VarV7, bVar7.h(bVar7.w));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 7:
+                                                                                                                                                                                                                                                                                                                                                                cp1Var.n0.g(cp1Var.v());
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 8:
+                                                                                                                                                                                                                                                                                                                                                                b bVar8 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV8 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                bVar8.c.getClass();
+                                                                                                                                                                                                                                                                                                                                                                k03 k03VarS2 = xi4.s(10, true, true);
+                                                                                                                                                                                                                                                                                                                                                                k03 k03Var4 = bVar8.n;
+                                                                                                                                                                                                                                                                                                                                                                Objects.requireNonNull(k03Var4);
+                                                                                                                                                                                                                                                                                                                                                                k03VarS2.e(le1VarV8, new g7(k03Var4, 0));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            case 9:
+                                                                                                                                                                                                                                                                                                                                                                b bVar9 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV9 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                pa paVar = bVar9.e;
+                                                                                                                                                                                                                                                                                                                                                                paVar.getClass();
+                                                                                                                                                                                                                                                                                                                                                                k03 k03Var5 = new k03();
+                                                                                                                                                                                                                                                                                                                                                                App.f(false).a().s().enqueue(new r8(paVar, k03Var5, i14));
+                                                                                                                                                                                                                                                                                                                                                                k03 k03Var6 = bVar9.o;
+                                                                                                                                                                                                                                                                                                                                                                Objects.requireNonNull(k03Var6);
+                                                                                                                                                                                                                                                                                                                                                                k03Var5.e(le1VarV9, new g7(k03Var6, 0));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            default:
+                                                                                                                                                                                                                                                                                                                                                                b bVar10 = cp1Var.n0;
+                                                                                                                                                                                                                                                                                                                                                                le1 le1VarV10 = cp1Var.v();
+                                                                                                                                                                                                                                                                                                                                                                k03 k03VarY2 = bVar10.e.y(20, true);
+                                                                                                                                                                                                                                                                                                                                                                k03 k03Var7 = bVar10.p;
+                                                                                                                                                                                                                                                                                                                                                                Objects.requireNonNull(k03Var7);
+                                                                                                                                                                                                                                                                                                                                                                k03VarY2.e(le1VarV10, new g7(k03Var7, 0));
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                                                                                                                                        return true;
+                                                                                                                                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                                                                                                                                });
+                                                                                                                                                                                                                                                                                                                                                this.l0.k.setOnClickListener(new go1(this, i12));
+                                                                                                                                                                                                                                                                                                                                                LinearLayout linearLayout18 = this.l0.q;
+                                                                                                                                                                                                                                                                                                                                                final View viewInflate2 = LayoutInflater.from(linearLayout18.getContext()).inflate(R.layout.homemusic_home_mixes, (ViewGroup) linearLayout18, false);
+                                                                                                                                                                                                                                                                                                                                                View viewFindViewById = viewInflate2.findViewById(R.id.homemusic_wave_card);
+                                                                                                                                                                                                                                                                                                                                                viewFindViewById.setOnClickListener(new AURAWaveToggleClickListener(new go1(this, i)));
+                                                                                                                                                                                                                                                                                                                                                viewFindViewById.setOnTouchListener(new AURAWaveCircleTouchListener());
+                                                                                                                                                                                                                                                                                                                                                AURAVersion.waveButton = viewFindViewById;
+                                                                                                                                                                                                                                                                                                                                                AURAWaveToggleClickListener.syncIcon(viewFindViewById);
+                                                                                                                                                                                                                                                                                                                                                AURAWavePlaybackListener.syncCurrent();
+                                                                                                                                                                                                                                                                                                                                                viewInflate2.findViewById(R.id.homemusic_mix_card).setOnClickListener(new View.OnClickListener(this) { // from class: ho1
+                                                                                                                                                                                                                                                                                                                                                    public final /* synthetic */ cp1 o;
+
+                                                                                                                                                                                                                                                                                                                                                    {
+                                                                                                                                                                                                                                                                                                                                                        this.o = this;
+                                                                                                                                                                                                                                                                                                                                                    }
+
+                                                                                                                                                                                                                                                                                                                                                    @Override // android.view.View.OnClickListener
+                                                                                                                                                                                                                                                                                                                                                    public final void onClick(View view) {
+                                                                                                                                                                                                                                                                                                                                                        int i13 = i;
+                                                                                                                                                                                                                                                                                                                                                        View view2 = viewInflate2;
+                                                                                                                                                                                                                                                                                                                                                        switch (i13) {
+                                                                                                                                                                                                                                                                                                                                                            case 0:
+                                                                                                                                                                                                                                                                                                                                                                Object tag = view2.getTag();
+                                                                                                                                                                                                                                                                                                                                                                HubMixToday hubMixToday = tag instanceof HubMixToday ? (HubMixToday) tag : null;
+                                                                                                                                                                                                                                                                                                                                                                cp1 cp1Var = this.o;
+                                                                                                                                                                                                                                                                                                                                                                nc1 nc1VarE = cp1Var.e();
+                                                                                                                                                                                                                                                                                                                                                                MainActivity mainActivity = nc1VarE instanceof MainActivity ? (MainActivity) nc1VarE : null;
+                                                                                                                                                                                                                                                                                                                                                                if (mainActivity != null) {
+                                                                                                                                                                                                                                                                                                                                                                    HubMix mix = hubMixToday != null ? hubMixToday.getMix() : null;
+                                                                                                                                                                                                                                                                                                                                                                    String ndPlaylistId = mix != null ? mix.getNdPlaylistId() : null;
+                                                                                                                                                                                                                                                                                                                                                                    if (mix == null || ndPlaylistId == null || qm4.u0(ndPlaylistId)) {
+                                                                                                                                                                                                                                                                                                                                                                        js1.a(mainActivity, (hubMixToday == null || !hubMixToday.getOnboarding()) ? "/" : "/taste");
+                                                                                                                                                                                                                                                                                                                                                                    } else {
+                                                                                                                                                                                                                                                                                                                                                                        io1.a.execute(new t6(ndPlaylistId, cp1Var, mainActivity, mix, 4));
+                                                                                                                                                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                                                                                                                                                    break;
+                                                                                                                                                                                                                                                                                                                                                                }
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            default:
+                                                                                                                                                                                                                                                                                                                                                                Object tag2 = view2.getTag();
+                                                                                                                                                                                                                                                                                                                                                                HubMixToday hubMixToday2 = tag2 instanceof HubMixToday ? (HubMixToday) tag2 : null;
+                                                                                                                                                                                                                                                                                                                                                                HubMix mix2 = hubMixToday2 != null ? hubMixToday2.getMix() : null;
+                                                                                                                                                                                                                                                                                                                                                                nc1 nc1VarE2 = this.o.e();
+                                                                                                                                                                                                                                                                                                                                                                MainActivity mainActivity2 = nc1VarE2 instanceof MainActivity ? (MainActivity) nc1VarE2 : null;
+                                                                                                                                                                                                                                                                                                                                                                if (mainActivity2 != null) {
+                                                                                                                                                                                                                                                                                                                                                                    List<WaveTrack> tracks = mix2 != null ? mix2.getTracks() : null;
+                                                                                                                                                                                                                                                                                                                                                                    if (tracks == null) {
+                                                                                                                                                                                                                                                                                                                                                                        tracks = u01.n;
+                                                                                                                                                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                                                                                                                                                    if (tracks.isEmpty()) {
+                                                                                                                                                                                                                                                                                                                                                                        Toast.makeText(mainActivity2, R.string.homemusic_play_failed, 0).show();
+                                                                                                                                                                                                                                                                                                                                                                    } else {
+                                                                                                                                                                                                                                                                                                                                                                        ExecutorService executorService = ms1.a;
+                                                                                                                                                                                                                                                                                                                                                                        ArrayList arrayList = new ArrayList(r40.k0(tracks, 10));
+                                                                                                                                                                                                                                                                                                                                                                        for (WaveTrack waveTrack : tracks) {
+                                                                                                                                                                                                                                                                                                                                                                            mix2.getClass();
+                                                                                                                                                                                                                                                                                                                                                                            arrayList.add(waveTrack.item("mix:" + mix2.getId()));
+                                                                                                                                                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                                                                                                                                                        ms1.a(mainActivity2, arrayList, 0, "mix_card");
+                                                                                                                                                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                                                                                                                                                    break;
+                                                                                                                                                                                                                                                                                                                                                                }
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                                                                                                                                });
+                                                                                                                                                                                                                                                                                                                                                viewInflate2.findViewById(R.id.homemusic_mix_play).setOnClickListener(new View.OnClickListener(this) { // from class: ho1
+                                                                                                                                                                                                                                                                                                                                                    public final /* synthetic */ cp1 o;
+
+                                                                                                                                                                                                                                                                                                                                                    {
+                                                                                                                                                                                                                                                                                                                                                        this.o = this;
+                                                                                                                                                                                                                                                                                                                                                    }
+
+                                                                                                                                                                                                                                                                                                                                                    @Override // android.view.View.OnClickListener
+                                                                                                                                                                                                                                                                                                                                                    public final void onClick(View view) {
+                                                                                                                                                                                                                                                                                                                                                        int i13 = i10;
+                                                                                                                                                                                                                                                                                                                                                        View view2 = viewInflate2;
+                                                                                                                                                                                                                                                                                                                                                        switch (i13) {
+                                                                                                                                                                                                                                                                                                                                                            case 0:
+                                                                                                                                                                                                                                                                                                                                                                Object tag = view2.getTag();
+                                                                                                                                                                                                                                                                                                                                                                HubMixToday hubMixToday = tag instanceof HubMixToday ? (HubMixToday) tag : null;
+                                                                                                                                                                                                                                                                                                                                                                cp1 cp1Var = this.o;
+                                                                                                                                                                                                                                                                                                                                                                nc1 nc1VarE = cp1Var.e();
+                                                                                                                                                                                                                                                                                                                                                                MainActivity mainActivity = nc1VarE instanceof MainActivity ? (MainActivity) nc1VarE : null;
+                                                                                                                                                                                                                                                                                                                                                                if (mainActivity != null) {
+                                                                                                                                                                                                                                                                                                                                                                    HubMix mix = hubMixToday != null ? hubMixToday.getMix() : null;
+                                                                                                                                                                                                                                                                                                                                                                    String ndPlaylistId = mix != null ? mix.getNdPlaylistId() : null;
+                                                                                                                                                                                                                                                                                                                                                                    if (mix == null || ndPlaylistId == null || qm4.u0(ndPlaylistId)) {
+                                                                                                                                                                                                                                                                                                                                                                        js1.a(mainActivity, (hubMixToday == null || !hubMixToday.getOnboarding()) ? "/" : "/taste");
+                                                                                                                                                                                                                                                                                                                                                                    } else {
+                                                                                                                                                                                                                                                                                                                                                                        io1.a.execute(new t6(ndPlaylistId, cp1Var, mainActivity, mix, 4));
+                                                                                                                                                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                                                                                                                                                    break;
+                                                                                                                                                                                                                                                                                                                                                                }
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                            default:
+                                                                                                                                                                                                                                                                                                                                                                Object tag2 = view2.getTag();
+                                                                                                                                                                                                                                                                                                                                                                HubMixToday hubMixToday2 = tag2 instanceof HubMixToday ? (HubMixToday) tag2 : null;
+                                                                                                                                                                                                                                                                                                                                                                HubMix mix2 = hubMixToday2 != null ? hubMixToday2.getMix() : null;
+                                                                                                                                                                                                                                                                                                                                                                nc1 nc1VarE2 = this.o.e();
+                                                                                                                                                                                                                                                                                                                                                                MainActivity mainActivity2 = nc1VarE2 instanceof MainActivity ? (MainActivity) nc1VarE2 : null;
+                                                                                                                                                                                                                                                                                                                                                                if (mainActivity2 != null) {
+                                                                                                                                                                                                                                                                                                                                                                    List<WaveTrack> tracks = mix2 != null ? mix2.getTracks() : null;
+                                                                                                                                                                                                                                                                                                                                                                    if (tracks == null) {
+                                                                                                                                                                                                                                                                                                                                                                        tracks = u01.n;
+                                                                                                                                                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                                                                                                                                                    if (tracks.isEmpty()) {
+                                                                                                                                                                                                                                                                                                                                                                        Toast.makeText(mainActivity2, R.string.homemusic_play_failed, 0).show();
+                                                                                                                                                                                                                                                                                                                                                                    } else {
+                                                                                                                                                                                                                                                                                                                                                                        ExecutorService executorService = ms1.a;
+                                                                                                                                                                                                                                                                                                                                                                        ArrayList arrayList = new ArrayList(r40.k0(tracks, 10));
+                                                                                                                                                                                                                                                                                                                                                                        for (WaveTrack waveTrack : tracks) {
+                                                                                                                                                                                                                                                                                                                                                                            mix2.getClass();
+                                                                                                                                                                                                                                                                                                                                                                            arrayList.add(waveTrack.item("mix:" + mix2.getId()));
+                                                                                                                                                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                                                                                                                                                        ms1.a(mainActivity2, arrayList, 0, "mix_card");
+                                                                                                                                                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                                                                                                                                                    break;
+                                                                                                                                                                                                                                                                                                                                                                }
+                                                                                                                                                                                                                                                                                                                                                                break;
+                                                                                                                                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                                                                                                                                });
+                                                                                                                                                                                                                                                                                                                                                ud3.E0(viewInflate2, null);
+                                                                                                                                                                                                                                                                                                                                                this.H0 = viewInflate2;
+                                                                                                                                                                                                                                                                                                                                                if (this.H0 != null) {
+                                                                                                                                                                                                                                                                                                                                                    LinearLayout linearLayout19 = this.l0.q;
+                                                                                                                                                                                                                                                                                                                                                    View view = this.H0;
+                                                                                                                                                                                                                                                                                                                                                    MaterialCardView materialCardView4 = this.l0.D;
+                                                                                                                                                                                                                                                                                                                                                    linearLayout19.addView(view, 0);
+                                                                                                                                                                                                                                                                                                                                                    View viewFindViewById2 = linearLayout19.getRootView().findViewById(R.id.fragment_home_nested_scroll_view);
+                                                                                                                                                                                                                                                                                                                                                    if (viewFindViewById2 != null) {
+                                                                                                                                                                                                                                                                                                                                                        Drawable background = viewFindViewById2.getBackground();
+                                                                                                                                                                                                                                                                                                                                                        if (background instanceof AnimationDrawable) {
+                                                                                                                                                                                                                                                                                                                                                            ((AnimationDrawable) background).start();
+                                                                                                                                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                                                                                                                                }
+                                                                                                                                                                                                                                                                                                                                                return nestedScrollView2;
+                                                                                                                                                                                                                                                                                                                                            }
+                                                                                                                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                                                                                                                }
+                                                                                                                                                                                                                                                                                                                            }
+                                                                                                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                                                                                                }
+                                                                                                                                                                                                                                                                                                            }
+                                                                                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                                                                                }
+                                                                                                                                                                                                                                                                                            }
+                                                                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                                                                }
+                                                                                                                                                                                                                                                                            }
+                                                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                                                }
+                                                                                                                                                                                                                                                            }
+                                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                                }
+                                                                                                                                                                                                                                            }
+                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                }
+                                                                                                                                                                                                                            }
+                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                }
+                                                                                                                                                                                                            }
+                                                                                                                                                                                                        }
+                                                                                                                                                                                                    }
+                                                                                                                                                                                                }
+                                                                                                                                                                                            }
+                                                                                                                                                                                        }
+                                                                                                                                                                                    }
+                                                                                                                                                                                }
+                                                                                                                                                                            }
+                                                                                                                                                                        }
+                                                                                                                                                                    }
+                                                                                                                                                                }
+                                                                                                                                                            }
+                                                                                                                                                        }
+                                                                                                                                                    }
+                                                                                                                                                }
+                                                                                                                                            }
+                                                                                                                                        }
+                                                                                                                                    }
+                                                                                                                                }
+                                                                                                                            }
+                                                                                                                        }
+                                                                                                                    }
+                                                                                                                }
+                                                                                                            }
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        nz2.n("Missing required view with ID: ".concat(viewInflate.getResources().getResourceName(i2)));
         return null;
     }
 
@@ -423,50 +1686,48 @@ public class cp1 extends kc1 implements ClickCallback {
     @Override // defpackage.kc1
     public final void P() {
         this.R = true;
-        new Handler().postDelayed(new zo1(this, 7), 100);
-        new Handler().postDelayed(new zo1(this, 2), 100);
-        View r0 = this.H0;
-        if (r0 == null) goto L6;
-        io1.a.execute(new k6(26, this, r0));
-    L6:
-        ni4 r1 = this.v0;
-        if (r1 == null) goto L9;
-        r1.A = this.F0;
-    L9:
-        ni4 r2 = this.u0;
-        if (r2 == null) goto L13;
-        r2.A = this.F0;
-        return;
+        new Handler().postDelayed(new zo1(this, 7), 100L);
+        new Handler().postDelayed(new zo1(this, 2), 100L);
+        View view = this.H0;
+        if (view != null) {
+            io1.a.execute(new k6(26, this, view));
+        }
+        ni4 ni4Var = this.v0;
+        if (ni4Var != null) {
+            ni4Var.A = this.F0;
+        }
+        ni4 ni4Var2 = this.u0;
+        if (ni4Var2 != null) {
+            ni4Var2.A = this.F0;
+        }
     }
 
     @Override // defpackage.kc1
     public final void R() {
+        xc5 xc5Var;
         this.R = true;
-        Context r2 = Z();
-        cb4 r3 = new cb4(Z(), new ComponentName(Z(), MediaService.class));
-        Bundle r4 = Bundle.EMPTY;
-        aj2 r5 = new aj2();
-        Looper r6 = f35.x();
-        bl2 r7 = new bl2(r6);
-        if (r3.a.e() == false) goto L6;
-        fi0 r8 = new fi0(new x7(r2));
-        xc5 r0 = new xc5(4, r8);
-    L7:
-        b11.w(r7, new bj2(r2, r3, r4, r5, r6, r7, r0), new Handler(r6));
-        this.F0 = r7;
-        zd0 r1 = this.G0;
-        if (r1 == null) goto L10;
-        r1.s = r7;
-    L10:
-        bo2.j(r7, this.p0);
+        Context contextZ = Z();
+        cb4 cb4Var = new cb4(Z(), new ComponentName(Z(), (Class<?>) MediaService.class));
+        Bundle bundle = Bundle.EMPTY;
+        aj2 aj2Var = new aj2();
+        Looper looperX = f35.x();
+        bl2 bl2Var = new bl2(looperX);
+        if (cb4Var.a.e()) {
+            xc5Var = new xc5(4, new fi0(new x7(contextZ)));
+        } else {
+            xc5Var = null;
+        }
+        b11.w(bl2Var, new bj2(contextZ, cb4Var, bundle, aj2Var, looperX, bl2Var, xc5Var), new Handler(looperX));
+        this.F0 = bl2Var;
+        zd0 zd0Var = this.G0;
+        if (zd0Var != null) {
+            zd0Var.s = bl2Var;
+        }
+        bo2.j(bl2Var, this.p0);
         this.p0.b.e(v(), new xo1(this, 17));
         this.p0.c.e(v(), new xo1(this, 18));
         this.p0.b.e(v(), new xo1(this, 0));
         this.p0.c.e(v(), new xo1(this, 2));
-        return;
-    L6:
-        r0 = null;
-        goto L7
     }
 
     @Override // defpackage.kc1
@@ -476,513 +1737,479 @@ public class cp1 extends kc1 implements ClickCallback {
     }
 
     @Override // defpackage.kc1
-    public final void T(View r24, Bundle r25) {
-        int r6 = 0;
-        if (ud3.X() == false) goto L5;
-        this.n0.c.getClass();
-        xi4.s(-1, false, false).e(v(), new ap1(this, r6));
-    L5:
+    public final void T(View view, Bundle bundle) {
+        int i = 0;
+        if (ud3.X()) {
+            this.n0.c.getClass();
+            xi4.s(-1, false, false).e(v(), new ap1(this, i));
+        }
         this.l0.G.setOnClickListener(new go1(this, 15));
-        int r8 = 4;
-        this.l0.I.setOnClickListener(new i4(r8, this));
+        int i2 = 4;
+        this.l0.I.setOnClickListener(new i4(i2, this));
         App.b().getClass();
-        int r10 = 1;
-        if (App.c().getBoolean("sync_starred_albums_for_offline_use", false) == false) goto L11;
-        b r0 = this.n0;
-        le1 r1 = v();
-        k03 r3 = r0.r;
-        if (r3.d() != null) goto L10;
-        r0.d.getClass();
-        rv2.o(20, true).e(r1, new g7(r3, 0));
-    L10:
-        r3.e(v(), new ap1(this, r10));
-    L11:
-        int r4 = 10;
-        this.l0.y.setOnClickListener(new go1(this, r4));
-        int r11 = 11;
-        this.l0.A.setOnClickListener(new go1(this, r11));
-        int r12 = 3;
-        if (ud3.W() == false) goto L17;
-        b r2 = this.n0;
-        le1 r5 = v();
-        k03 r7 = r2.s;
-        if (r7.d() != null) goto L16;
-        r2.e.y(20, true).e(r5, new g7(r7, 0));
-    L16:
-        r7.e(v(), new ap1(this, r12));
-    L17:
-        int r9 = 13;
-        this.l0.C.setOnClickListener(new go1(this, r9));
+        int i3 = 1;
+        if (App.c().getBoolean("sync_starred_albums_for_offline_use", false)) {
+            b bVar = this.n0;
+            le1 le1VarV = v();
+            k03 k03Var = bVar.r;
+            if (k03Var.d() == null) {
+                bVar.d.getClass();
+                rv2.o(20, true).e(le1VarV, new g7(k03Var, 0));
+            }
+            k03Var.e(v(), new ap1(this, i3));
+        }
+        int i4 = 10;
+        this.l0.y.setOnClickListener(new go1(this, i4));
+        int i5 = 11;
+        this.l0.A.setOnClickListener(new go1(this, i5));
+        int i6 = 3;
+        if (ud3.W()) {
+            b bVar2 = this.n0;
+            le1 le1VarV2 = v();
+            k03 k03Var2 = bVar2.s;
+            if (k03Var2.d() == null) {
+                bVar2.e.y(20, true).e(le1VarV2, new g7(k03Var2, 0));
+            }
+            k03Var2.e(v(), new ap1(this, i6));
+        }
+        int i7 = 13;
+        this.l0.C.setOnClickListener(new go1(this, i7));
         this.l0.E.setOnClickListener(new go1(this, 14));
-        if (this.n0.d("HOME_SECTOR_DISCOVERY") == true) goto L24;
-        RecyclerView r13 = this.l0.h;
-        Z();
-        r13.setLayoutManager(new LinearLayoutManager(0));
-        this.l0.h.setHasFixedSize(true);
-        vq0 r14 = new vq0(this);
-        this.q0 = r14;
-        this.l0.h.setAdapter(r14);
-        b r15 = this.n0;
-        le1 r16 = v();
-        k03 r17 = r15.l;
-        if (r17.d() != null) goto L23;
-        r15.c.getClass();
-        xi4.q(10, null, null).e(r16, r15.h(r17));
-    L23:
-        r17.e(v(), new xo1(this, 7));
-    L24:
-        int r18 = 8;
-        if (this.n0.d("HOME_SECTOR_CONTINUE_LISTENING") == true) goto L33;
-        RecyclerView r19 = this.l0.g;
-        Z();
-        r19.setLayoutManager(new LinearLayoutManager(0));
-        this.l0.g.setHasFixedSize(true);
-        bl2 r20 = this.F0;
-        zd0 r21 = new zd0();
-        r21.r = Collections.EMPTY_LIST;
-        r21.s = r20;
-        this.G0 = r21;
-        this.l0.g.setAdapter(r21);
-        List r22 = q40.K0(ud3.A().values(), new jb2(1));
-        boolean r23 = r22.isEmpty();
-        tc1 r26 = this.l0;
-        if (r23 == false) goto L30;
-        r26.m.setVisibility(8);
-    L31:
-        new vs3();
-        zo1 r27 = new zo1(this, r12);
-        rm3 r28 = App.f(false).b();
-        r28.getClass();
-        Log.d("BookmarksClient", "getBookmarks()");
-        ((mt) r28.o).c(((pn4) r28.n).f()).enqueue(new rm2(r4, r27));
-        goto L33
-    L30:
-        r26.m.setVisibility(0);
-        zd0 r29 = this.G0;
-        r29.r = r22;
-        r29.d();
-    L33:
-        if (this.n0.d("HOME_SECTOR_MADE_FOR_YOU") == true) goto L40;
-        RecyclerView r30 = this.l0.c0;
-        Z();
-        r30.setLayoutManager(new LinearLayoutManager(0));
-        this.l0.c0.setHasFixedSize(true);
-        s6 r31 = new s6(this);
-        this.r0 = r31;
-        this.l0.c0.setAdapter(r31);
-        b r32 = this.n0;
-        le1 r33 = v();
-        k03 r34 = r32.n;
-        if (r34.d() != null) goto L38;
-        r32.c.getClass();
-        xi4.s(10, true, true).e(r33, new g7(r34, 0));
-    L38:
-        r34.e(v(), new xo1(this, 9));
-        new xg0(0).a(this.l0.c0);
-    L40:
-        if (this.n0.d("HOME_SECTOR_RADIO_STATION") == true) goto L47;
-        RecyclerView r35 = this.l0.R;
-        Z();
-        r35.setLayoutManager(new LinearLayoutManager(0));
-        this.l0.R.setHasFixedSize(true);
-        vi r36 = new vi(this, Boolean.TRUE, Boolean.FALSE);
-        this.s0 = r36;
-        this.l0.R.setAdapter(r36);
-        b r37 = this.n0;
-        le1 r38 = v();
-        k03 r39 = r37.o;
-        if (r39.d() != null) goto L45;
-        pa r40 = r37.e;
-        r40.getClass();
-        k03 r110 = new k03();
-        App.f(false).a().s().enqueue(new r8(r40, r110, r10));
-        r110.e(r38, new g7(r39, 0));
-    L45:
-        r39.e(v(), new xo1(this, r9));
-        new xg0(0).a(this.l0.R);
-    L47:
-        if (this.n0.d("HOME_SECTOR_BEST_OF") == true) goto L54;
-        RecyclerView r41 = this.l0.e;
-        Z();
-        r41.setLayoutManager(new LinearLayoutManager(0));
-        this.l0.e.setHasFixedSize(true);
-        vi r42 = new vi(this, Boolean.FALSE, Boolean.TRUE);
-        this.t0 = r42;
-        this.l0.e.setAdapter(r42);
-        b r43 = this.n0;
-        le1 r44 = v();
-        k03 r45 = r43.p;
-        if (r45.d() != null) goto L52;
-        r43.e.y(20, true).e(r44, new g7(r45, 0));
-    L52:
-        r45.e(v(), new xo1(this, r4));
-        new xg0(0).a(this.l0.e);
-    L54:
-        if (this.n0.d("HOME_SECTOR_STARRED_TRACKS") == true) goto L61;
-        this.l0.m0.setHasFixedSize(true);
-        ni4 r46 = new ni4(v(), this, true, false, null);
-        this.u0 = r46;
-        this.l0.m0.setAdapter(r46);
-        ni4 r47 = this.u0;
-        r47.A = this.F0;
-        h0();
-        b r48 = this.n0;
-        le1 r49 = v();
-        k03 r50 = r48.q;
-        if (r50.d() != null) goto L59;
-        r48.c.getClass();
-        xi4.s(20, true, true).e(r49, new g7(r50, 0));
-    L59:
-        r50.e(v(), new xo1(this, r18));
-        new xg0(1).a(this.l0.m0);
-        this.l0.m0.i(new js0(r().getDimensionPixelSize(R.dimen.radius), r().getDimensionPixelSize(R.dimen.radius) * 4, r().getDimensionPixelSize(R.dimen.dots_height), Z().getResources().getColor(R.color.titleTextColor, null), Z().getResources().getColor(R.color.titleTextColor, null)));
-    L61:
-        if (this.n0.d("HOME_SECTOR_STARRED_ALBUMS") == true) goto L68;
-        RecyclerView r51 = this.l0.e0;
-        r51.getContext();
-        r51.setLayoutManager(new LinearLayoutManager(0));
-        r51.setHasFixedSize(true);
-        float r52 = r51.getResources().getDisplayMetrics().density;
-        r51.setPaddingRelative((int) (16.0f * r52), r51.getPaddingTop(), (int) (8.0f * r52), r51.getPaddingBottom());
-        s6 r53 = new s6(this);
-        r51.setAdapter(r53);
-        new xg0(0).a(r51);
-        this.w0 = r53;
-        b r54 = this.n0;
-        le1 r55 = v();
-        k03 r56 = r54.r;
-        if (r56.d() != null) goto L66;
-        r54.d.getClass();
-        rv2.o(20, true).e(r55, new g7(r56, 0));
-    L66:
-        r56.e(v(), new xo1(this, 22));
-    L68:
-        if (this.n0.d("HOME_SECTOR_STARRED_ARTISTS") == true) goto L75;
-        this.l0.i0.setHasFixedSize(true);
-        b8 r57 = new b8(this, 1);
-        this.x0 = r57;
-        this.l0.i0.setAdapter(r57);
-        b r58 = this.n0;
-        le1 r59 = v();
-        k03 r60 = r58.s;
-        if (r60.d() != null) goto L73;
-        r58.e.y(20, true).e(r59, new g7(r60, 0));
-    L73:
-        r60.e(v(), new xo1(this, r10));
-        new xg0(1).a(this.l0.i0);
-        this.l0.i0.i(new js0(r().getDimensionPixelSize(R.dimen.radius), r().getDimensionPixelSize(R.dimen.radius) * 4, r().getDimensionPixelSize(R.dimen.dots_height), Z().getResources().getColor(R.color.titleTextColor, null), Z().getResources().getColor(R.color.titleTextColor, null)));
-    L75:
-        if (this.n0.d("HOME_SECTOR_MOST_PLAYED") == true) goto L82;
-        RecyclerView r61 = this.l0.K;
-        Z();
-        r61.setLayoutManager(new LinearLayoutManager(0));
-        this.l0.K.setHasFixedSize(true);
-        s6 r62 = new s6(this);
-        this.A0 = r62;
-        this.l0.K.setAdapter(r62);
-        b r63 = this.n0;
-        le1 r64 = v();
-        k03 r65 = r63.t;
-        if (r65.d() != null) goto L80;
-        r63.d.getClass();
-        rv2.m("frequent", 20, null, null).e(r64, r63.h(r65));
-    L80:
-        r65.e(v(), new xo1(this, r8));
-        new xg0(0).a(this.l0.K);
-    L82:
-        if (this.n0.d("HOME_SECTOR_LAST_PLAYED") == true) goto L89;
-        RecyclerView r66 = this.l0.W;
-        Z();
-        r66.setLayoutManager(new LinearLayoutManager(0));
-        this.l0.W.setHasFixedSize(true);
-        s6 r67 = new s6(this);
-        this.z0 = r67;
-        this.l0.W.setAdapter(r67);
-        b r68 = this.n0;
-        le1 r69 = v();
-        k03 r70 = r68.u;
-        if (r70.d() != null) goto L87;
-        r68.d.getClass();
-        rv2.m("recent", 20, null, null).e(r69, r68.h(r70));
-    L87:
-        r70.e(v(), new xo1(this, r11));
-        new xg0(0).a(this.l0.W);
-    L89:
-        if (this.n0.d("HOME_SECTOR_NEW_RELEASES") == true) goto L96;
-        this.l0.N.setHasFixedSize(true);
-        b8 r71 = new b8(this, 0);
-        this.B0 = r71;
-        this.l0.N.setAdapter(r71);
-        b r72 = this.n0;
-        le1 r73 = v();
-        k03 r74 = r72.m;
-        if (r74.d() != null) goto L94;
-        r72.f(r73);
-    L94:
-        r74.e(v(), new xo1(this, 5));
-        new xg0(1).a(this.l0.N);
-        this.l0.N.i(new js0(r().getDimensionPixelSize(R.dimen.radius), r().getDimensionPixelSize(R.dimen.radius) * 4, r().getDimensionPixelSize(R.dimen.dots_height), Z().getResources().getColor(R.color.titleTextColor, null), Z().getResources().getColor(R.color.titleTextColor, null)));
-    L96:
-        if (this.n0.d("HOME_SECTOR_FLASHBACK") == true) goto L103;
-        RecyclerView r75 = this.l0.r0;
-        Z();
-        r75.setLayoutManager(new LinearLayoutManager(0));
-        this.l0.r0.setHasFixedSize(true);
-        uc4 r76 = new uc4(this, 1);
-        this.C0 = r76;
-        this.l0.r0.setAdapter(r76);
-        b r77 = this.n0;
-        le1 r78 = v();
-        k03 r79 = r77.v;
-        if (r79.d() != null) goto L101;
-        r77.d.n().e(r78, r77.h(r79));
-    L101:
-        r79.e(v(), new xo1(this, 16));
-        new xg0(0).a(this.l0.r0);
-    L103:
-        if (this.n0.d("HOME_SECTOR_RECENTLY_ADDED") == true) goto L110;
-        RecyclerView r80 = this.l0.T;
-        Z();
-        r80.setLayoutManager(new LinearLayoutManager(0));
-        this.l0.T.setHasFixedSize(true);
-        s6 r81 = new s6(this);
-        this.y0 = r81;
-        this.l0.T.setAdapter(r81);
-        b r82 = this.n0;
-        le1 r83 = v();
-        k03 r84 = r82.w;
-        if (r84.d() != null) goto L108;
-        r82.d.getClass();
-        rv2.m("newest", 20, null, null).e(r83, r82.h(r84));
-    L108:
-        r84.e(v(), new xo1(this, 15));
-        new xg0(0).a(this.l0.T);
-    L110:
-        if (this.n0.d("HOME_SECTOR_TOP_SONGS") == true) goto L114;
-        this.l0.q0.setHasFixedSize(true);
-        ni4 r85 = new ni4(v(), this, true, false, null);
-        this.v0 = r85;
-        this.l0.q0.setAdapter(r85);
-        ni4 r86 = this.v0;
-        r86.A = this.F0;
-        i0();
-        b r87 = this.n0;
-        le1 r88 = v();
-        r87.getClass();
-        Calendar r89 = Calendar.getInstance();
-        String r210 = ud3.E();
-        int r90 = r89.get(3);
-        long r111 = r89.getTimeInMillis();
-        r89.set(3, r90 - 1);
-        long r112 = r89.getTimeInMillis();
-        r20 r91 = (r20) r87.f.o;
-        t24 r92 = ((s24) r91.o).i().a(new String[]{"chronology"}, new p20(r91, r112, r111, r210));
-        k03 r93 = r87.x;
-        Objects.requireNonNull(r93);
-        r92.e(r88, new g7(r93, 0));
-        r93.e(v(), new xo1(this, 14));
-        new xg0(1).a(this.l0.q0);
-        this.l0.q0.i(new js0(r().getDimensionPixelSize(R.dimen.radius), r().getDimensionPixelSize(R.dimen.radius) * 4, r().getDimensionPixelSize(R.dimen.dots_height), Z().getResources().getColor(R.color.titleTextColor, null), Z().getResources().getColor(R.color.titleTextColor, null)));
-    L114:
-        if (this.n0.d("HOME_SECTOR_PINNED_PLAYLISTS") == true) goto L117;
-        this.l0.O.setHasFixedSize(true);
-        ej r94 = new ej(this);
-        this.D0 = r94;
-        this.l0.O.setAdapter(r94);
-        b r95 = this.n0;
-        v();
-        r95.B.e(v(), new xo1(this, 3));
-        new xg0(1).a(this.l0.O);
-        this.l0.O.i(new js0(r().getDimensionPixelSize(R.dimen.radius), r().getDimensionPixelSize(R.dimen.radius) * 4, r().getDimensionPixelSize(R.dimen.dots_height), Z().getResources().getColor(R.color.titleTextColor, null), Z().getResources().getColor(R.color.titleTextColor, null)));
-    L117:
-        int r96 = 12;
-        if (this.n0.d("HOME_SECTOR_SHARED") == true) goto L127;
-        this.l0.Z.setHasFixedSize(true);
-        uc4 r97 = new uc4(this, 0);
-        this.E0 = r97;
-        this.l0.Z.setAdapter(r97);
-        if (ud3.V() == false) goto L126;
-        b r98 = this.n0;
-        le1 r99 = v();
-        k03 r100 = r98.C;
-        if (r100.d() != null) goto L125;
-        r98.i.getClass();
-        hh3.m().e(r99, new g7(r100, 0));
-    L125:
-        r100.e(v(), new xo1(this, r96));
-    L126:
-        new xg0(1).a(this.l0.Z);
-        this.l0.Z.i(new js0(r().getDimensionPixelSize(R.dimen.radius), r().getDimensionPixelSize(R.dimen.radius) * 4, r().getDimensionPixelSize(R.dimen.dots_height), Z().getResources().getColor(R.color.titleTextColor, null), Z().getResources().getColor(R.color.titleTextColor, null)));
-    L127:
-        new Handler().postDelayed(new zo1(this, r10), 5000);
-        this.l0.w.setOnClickListener(new go1(this, r96));
+        if (!this.n0.d("HOME_SECTOR_DISCOVERY")) {
+            RecyclerView recyclerView = this.l0.h;
+            Z();
+            recyclerView.setLayoutManager(new LinearLayoutManager(0));
+            this.l0.h.setHasFixedSize(true);
+            vq0 vq0Var = new vq0(this);
+            this.q0 = vq0Var;
+            this.l0.h.setAdapter(vq0Var);
+            b bVar3 = this.n0;
+            le1 le1VarV3 = v();
+            k03 k03Var3 = bVar3.l;
+            if (k03Var3.d() == null) {
+                bVar3.c.getClass();
+                xi4.q(10, null, null).e(le1VarV3, bVar3.h(k03Var3));
+            }
+            k03Var3.e(v(), new xo1(this, 7));
+        }
+        int i8 = 8;
+        if (!this.n0.d("HOME_SECTOR_CONTINUE_LISTENING")) {
+            RecyclerView recyclerView2 = this.l0.g;
+            Z();
+            recyclerView2.setLayoutManager(new LinearLayoutManager(0));
+            this.l0.g.setHasFixedSize(true);
+            bl2 bl2Var = this.F0;
+            zd0 zd0Var = new zd0();
+            zd0Var.r = Collections.EMPTY_LIST;
+            zd0Var.s = bl2Var;
+            this.G0 = zd0Var;
+            this.l0.g.setAdapter(zd0Var);
+            List listK0 = q40.K0(ud3.A().values(), new jb2(1));
+            boolean zIsEmpty = listK0.isEmpty();
+            tc1 tc1Var = this.l0;
+            if (zIsEmpty) {
+                tc1Var.m.setVisibility(8);
+            } else {
+                tc1Var.m.setVisibility(0);
+                zd0 zd0Var2 = this.G0;
+                zd0Var2.r = listK0;
+                zd0Var2.d();
+            }
+            new vs3();
+            zo1 zo1Var = new zo1(this, i6);
+            rm3 rm3VarB = App.f(false).b();
+            rm3VarB.getClass();
+            Log.d("BookmarksClient", "getBookmarks()");
+            ((mt) rm3VarB.o).c(((pn4) rm3VarB.n).f()).enqueue(new rm2(i4, zo1Var));
+        }
+        if (!this.n0.d("HOME_SECTOR_MADE_FOR_YOU")) {
+            RecyclerView recyclerView3 = this.l0.c0;
+            Z();
+            recyclerView3.setLayoutManager(new LinearLayoutManager(0));
+            this.l0.c0.setHasFixedSize(true);
+            s6 s6Var = new s6(this);
+            this.r0 = s6Var;
+            this.l0.c0.setAdapter(s6Var);
+            b bVar4 = this.n0;
+            le1 le1VarV4 = v();
+            k03 k03Var4 = bVar4.n;
+            if (k03Var4.d() == null) {
+                bVar4.c.getClass();
+                xi4.s(10, true, true).e(le1VarV4, new g7(k03Var4, 0));
+            }
+            k03Var4.e(v(), new xo1(this, 9));
+            new xg0(0).a(this.l0.c0);
+        }
+        if (!this.n0.d("HOME_SECTOR_RADIO_STATION")) {
+            RecyclerView recyclerView4 = this.l0.R;
+            Z();
+            recyclerView4.setLayoutManager(new LinearLayoutManager(0));
+            this.l0.R.setHasFixedSize(true);
+            vi viVar = new vi(this, Boolean.TRUE, Boolean.FALSE);
+            this.s0 = viVar;
+            this.l0.R.setAdapter(viVar);
+            b bVar5 = this.n0;
+            le1 le1VarV5 = v();
+            k03 k03Var5 = bVar5.o;
+            if (k03Var5.d() == null) {
+                pa paVar = bVar5.e;
+                paVar.getClass();
+                k03 k03Var6 = new k03();
+                App.f(false).a().s().enqueue(new r8(paVar, k03Var6, i3));
+                k03Var6.e(le1VarV5, new g7(k03Var5, 0));
+            }
+            k03Var5.e(v(), new xo1(this, i7));
+            new xg0(0).a(this.l0.R);
+        }
+        if (!this.n0.d("HOME_SECTOR_BEST_OF")) {
+            RecyclerView recyclerView5 = this.l0.e;
+            Z();
+            recyclerView5.setLayoutManager(new LinearLayoutManager(0));
+            this.l0.e.setHasFixedSize(true);
+            vi viVar2 = new vi(this, Boolean.FALSE, Boolean.TRUE);
+            this.t0 = viVar2;
+            this.l0.e.setAdapter(viVar2);
+            b bVar6 = this.n0;
+            le1 le1VarV6 = v();
+            k03 k03Var7 = bVar6.p;
+            if (k03Var7.d() == null) {
+                bVar6.e.y(20, true).e(le1VarV6, new g7(k03Var7, 0));
+            }
+            k03Var7.e(v(), new xo1(this, i4));
+            new xg0(0).a(this.l0.e);
+        }
+        if (!this.n0.d("HOME_SECTOR_STARRED_TRACKS")) {
+            this.l0.m0.setHasFixedSize(true);
+            ni4 ni4Var = new ni4(v(), this, true, false, null);
+            this.u0 = ni4Var;
+            this.l0.m0.setAdapter(ni4Var);
+            this.u0.A = this.F0;
+            h0();
+            b bVar7 = this.n0;
+            le1 le1VarV7 = v();
+            k03 k03Var8 = bVar7.q;
+            if (k03Var8.d() == null) {
+                bVar7.c.getClass();
+                xi4.s(20, true, true).e(le1VarV7, new g7(k03Var8, 0));
+            }
+            k03Var8.e(v(), new xo1(this, i8));
+            new xg0(1).a(this.l0.m0);
+            this.l0.m0.i(new js0(r().getDimensionPixelSize(R.dimen.radius), r().getDimensionPixelSize(R.dimen.radius) * 4, r().getDimensionPixelSize(R.dimen.dots_height), Z().getResources().getColor(R.color.titleTextColor, null), Z().getResources().getColor(R.color.titleTextColor, null)));
+        }
+        if (!this.n0.d("HOME_SECTOR_STARRED_ALBUMS")) {
+            RecyclerView recyclerView6 = this.l0.e0;
+            recyclerView6.getContext();
+            recyclerView6.setLayoutManager(new LinearLayoutManager(0));
+            recyclerView6.setHasFixedSize(true);
+            float f = recyclerView6.getResources().getDisplayMetrics().density;
+            recyclerView6.setPaddingRelative((int) (16.0f * f), recyclerView6.getPaddingTop(), (int) (8.0f * f), recyclerView6.getPaddingBottom());
+            s6 s6Var2 = new s6((ClickCallback) this);
+            recyclerView6.setAdapter(s6Var2);
+            new xg0(0).a(recyclerView6);
+            this.w0 = s6Var2;
+            b bVar8 = this.n0;
+            le1 le1VarV8 = v();
+            k03 k03Var9 = bVar8.r;
+            if (k03Var9.d() == null) {
+                bVar8.d.getClass();
+                rv2.o(20, true).e(le1VarV8, new g7(k03Var9, 0));
+            }
+            k03Var9.e(v(), new xo1(this, 22));
+        }
+        if (!this.n0.d("HOME_SECTOR_STARRED_ARTISTS")) {
+            this.l0.i0.setHasFixedSize(true);
+            b8 b8Var = new b8(this, 1);
+            this.x0 = b8Var;
+            this.l0.i0.setAdapter(b8Var);
+            b bVar9 = this.n0;
+            le1 le1VarV9 = v();
+            k03 k03Var10 = bVar9.s;
+            if (k03Var10.d() == null) {
+                bVar9.e.y(20, true).e(le1VarV9, new g7(k03Var10, 0));
+            }
+            k03Var10.e(v(), new xo1(this, i3));
+            new xg0(1).a(this.l0.i0);
+            this.l0.i0.i(new js0(r().getDimensionPixelSize(R.dimen.radius), r().getDimensionPixelSize(R.dimen.radius) * 4, r().getDimensionPixelSize(R.dimen.dots_height), Z().getResources().getColor(R.color.titleTextColor, null), Z().getResources().getColor(R.color.titleTextColor, null)));
+        }
+        if (!this.n0.d("HOME_SECTOR_MOST_PLAYED")) {
+            RecyclerView recyclerView7 = this.l0.K;
+            Z();
+            recyclerView7.setLayoutManager(new LinearLayoutManager(0));
+            this.l0.K.setHasFixedSize(true);
+            s6 s6Var3 = new s6((ClickCallback) this);
+            this.A0 = s6Var3;
+            this.l0.K.setAdapter(s6Var3);
+            b bVar10 = this.n0;
+            le1 le1VarV10 = v();
+            k03 k03Var11 = bVar10.t;
+            if (k03Var11.d() == null) {
+                bVar10.d.getClass();
+                rv2.m("frequent", 20, null, null).e(le1VarV10, bVar10.h(k03Var11));
+            }
+            k03Var11.e(v(), new xo1(this, i2));
+            new xg0(0).a(this.l0.K);
+        }
+        if (!this.n0.d("HOME_SECTOR_LAST_PLAYED")) {
+            RecyclerView recyclerView8 = this.l0.W;
+            Z();
+            recyclerView8.setLayoutManager(new LinearLayoutManager(0));
+            this.l0.W.setHasFixedSize(true);
+            s6 s6Var4 = new s6((ClickCallback) this);
+            this.z0 = s6Var4;
+            this.l0.W.setAdapter(s6Var4);
+            b bVar11 = this.n0;
+            le1 le1VarV11 = v();
+            k03 k03Var12 = bVar11.u;
+            if (k03Var12.d() == null) {
+                bVar11.d.getClass();
+                rv2.m("recent", 20, null, null).e(le1VarV11, bVar11.h(k03Var12));
+            }
+            k03Var12.e(v(), new xo1(this, i5));
+            new xg0(0).a(this.l0.W);
+        }
+        if (!this.n0.d("HOME_SECTOR_NEW_RELEASES")) {
+            this.l0.N.setHasFixedSize(true);
+            b8 b8Var2 = new b8(this, 0);
+            this.B0 = b8Var2;
+            this.l0.N.setAdapter(b8Var2);
+            b bVar12 = this.n0;
+            le1 le1VarV12 = v();
+            k03 k03Var13 = bVar12.m;
+            if (k03Var13.d() == null) {
+                bVar12.f(le1VarV12);
+            }
+            k03Var13.e(v(), new xo1(this, 5));
+            new xg0(1).a(this.l0.N);
+            this.l0.N.i(new js0(r().getDimensionPixelSize(R.dimen.radius), r().getDimensionPixelSize(R.dimen.radius) * 4, r().getDimensionPixelSize(R.dimen.dots_height), Z().getResources().getColor(R.color.titleTextColor, null), Z().getResources().getColor(R.color.titleTextColor, null)));
+        }
+        if (!this.n0.d("HOME_SECTOR_FLASHBACK")) {
+            RecyclerView recyclerView9 = this.l0.r0;
+            Z();
+            recyclerView9.setLayoutManager(new LinearLayoutManager(0));
+            this.l0.r0.setHasFixedSize(true);
+            uc4 uc4Var = new uc4(this, 1);
+            this.C0 = uc4Var;
+            this.l0.r0.setAdapter(uc4Var);
+            b bVar13 = this.n0;
+            le1 le1VarV13 = v();
+            k03 k03Var14 = bVar13.v;
+            if (k03Var14.d() == null) {
+                bVar13.d.n().e(le1VarV13, bVar13.h(k03Var14));
+            }
+            k03Var14.e(v(), new xo1(this, 16));
+            new xg0(0).a(this.l0.r0);
+        }
+        if (!this.n0.d("HOME_SECTOR_RECENTLY_ADDED")) {
+            RecyclerView recyclerView10 = this.l0.T;
+            Z();
+            recyclerView10.setLayoutManager(new LinearLayoutManager(0));
+            this.l0.T.setHasFixedSize(true);
+            s6 s6Var5 = new s6((ClickCallback) this);
+            this.y0 = s6Var5;
+            this.l0.T.setAdapter(s6Var5);
+            b bVar14 = this.n0;
+            le1 le1VarV14 = v();
+            k03 k03Var15 = bVar14.w;
+            if (k03Var15.d() == null) {
+                bVar14.d.getClass();
+                rv2.m("newest", 20, null, null).e(le1VarV14, bVar14.h(k03Var15));
+            }
+            k03Var15.e(v(), new xo1(this, 15));
+            new xg0(0).a(this.l0.T);
+        }
+        if (!this.n0.d("HOME_SECTOR_TOP_SONGS")) {
+            this.l0.q0.setHasFixedSize(true);
+            ni4 ni4Var2 = new ni4(v(), this, true, false, null);
+            this.v0 = ni4Var2;
+            this.l0.q0.setAdapter(ni4Var2);
+            this.v0.A = this.F0;
+            i0();
+            b bVar15 = this.n0;
+            le1 le1VarV15 = v();
+            bVar15.getClass();
+            Calendar calendar = Calendar.getInstance();
+            String strE = ud3.E();
+            int i9 = calendar.get(3);
+            long timeInMillis = calendar.getTimeInMillis();
+            calendar.set(3, i9 - 1);
+            long timeInMillis2 = calendar.getTimeInMillis();
+            r20 r20Var = (r20) bVar15.f.o;
+            t24 t24VarA = ((s24) r20Var.o).i().a(new String[]{"chronology"}, new p20(r20Var, timeInMillis2, timeInMillis, strE));
+            k03 k03Var16 = bVar15.x;
+            Objects.requireNonNull(k03Var16);
+            t24VarA.e(le1VarV15, new g7(k03Var16, 0));
+            k03Var16.e(v(), new xo1(this, 14));
+            new xg0(1).a(this.l0.q0);
+            this.l0.q0.i(new js0(r().getDimensionPixelSize(R.dimen.radius), r().getDimensionPixelSize(R.dimen.radius) * 4, r().getDimensionPixelSize(R.dimen.dots_height), Z().getResources().getColor(R.color.titleTextColor, null), Z().getResources().getColor(R.color.titleTextColor, null)));
+        }
+        if (!this.n0.d("HOME_SECTOR_PINNED_PLAYLISTS")) {
+            this.l0.O.setHasFixedSize(true);
+            ej ejVar = new ej(this);
+            this.D0 = ejVar;
+            this.l0.O.setAdapter(ejVar);
+            b bVar16 = this.n0;
+            v();
+            bVar16.B.e(v(), new xo1(this, 3));
+            new xg0(1).a(this.l0.O);
+            this.l0.O.i(new js0(r().getDimensionPixelSize(R.dimen.radius), r().getDimensionPixelSize(R.dimen.radius) * 4, r().getDimensionPixelSize(R.dimen.dots_height), Z().getResources().getColor(R.color.titleTextColor, null), Z().getResources().getColor(R.color.titleTextColor, null)));
+        }
+        int i10 = 12;
+        if (!this.n0.d("HOME_SECTOR_SHARED")) {
+            this.l0.Z.setHasFixedSize(true);
+            uc4 uc4Var2 = new uc4(this, 0);
+            this.E0 = uc4Var2;
+            this.l0.Z.setAdapter(uc4Var2);
+            if (ud3.V()) {
+                b bVar17 = this.n0;
+                le1 le1VarV16 = v();
+                k03 k03Var17 = bVar17.C;
+                if (k03Var17.d() == null) {
+                    bVar17.i.getClass();
+                    hh3.m().e(le1VarV16, new g7(k03Var17, 0));
+                }
+                k03Var17.e(v(), new xo1(this, i10));
+            }
+            new xg0(1).a(this.l0.Z);
+            this.l0.Z.i(new js0(r().getDimensionPixelSize(R.dimen.radius), r().getDimensionPixelSize(R.dimen.radius) * 4, r().getDimensionPixelSize(R.dimen.dots_height), Z().getResources().getColor(R.color.titleTextColor, null), Z().getResources().getColor(R.color.titleTextColor, null)));
+        }
+        new Handler().postDelayed(new zo1(this, i3), 5000L);
+        this.l0.w.setOnClickListener(new go1(this, i10));
         this.o0.d.e(v(), new xo1(this, 6));
         j0();
     }
 
     public final void h0() {
-        if (this.u0 == null) goto L12;
-        String r0 = (String) this.p0.b.d();
-        Boolean r1 = (Boolean) this.p0.c.d();
-        ni4 r2 = this.u0;
-        if (r1 != null) goto L7;
-    L9:
-        boolean r3 = false;
-    L10:
-        r2.s(r0, r3);
-        return;
-    L7:
-        if (r1.booleanValue() == false) goto L9;
-        r3 = true;
-        goto L10
+        if (this.u0 != null) {
+            String str = (String) this.p0.b.d();
+            Boolean bool = (Boolean) this.p0.c.d();
+            this.u0.s(str, bool != null && bool.booleanValue());
+        }
     }
 
     public final void i0() {
-        if (this.v0 == null) goto L12;
-        String r0 = (String) this.p0.b.d();
-        Boolean r1 = (Boolean) this.p0.c.d();
-        ni4 r2 = this.v0;
-        if (r1 != null) goto L7;
-    L9:
-        boolean r3 = false;
-    L10:
-        r2.s(r0, r3);
-        return;
-    L7:
-        if (r1.booleanValue() == false) goto L9;
-        r3 = true;
-        goto L10
+        if (this.v0 != null) {
+            String str = (String) this.p0.b.d();
+            Boolean bool = (Boolean) this.p0.c.d();
+            this.v0.s(str, bool != null && bool.booleanValue());
+        }
     }
 
     public final void j0() {
-        tc1 r0 = this.l0;
-        if (r0 != null) goto L5;
-        return;
-    L5:
-        if (this.n0.D != null) goto L8;
-        return;
-    L8:
-        if (this.I0 == true) goto L14;
+        tc1 tc1Var = this.l0;
+        if (tc1Var == null || this.n0.D == null || this.I0) {
+            return;
+        }
         this.I0 = true;
-        r0.q.post(new zo1(this, 0));
-        return;
+        tc1Var.q.post(new zo1(this, 0));
     }
 
     @Override // com.eddyizm.tempus.interfaces.ClickCallback
-    public final void onAlbumClick(Bundle r3) {
-        gb.x(a0()).m(R.id.albumPageFragment, r3, null);
+    public final void onAlbumClick(Bundle bundle) {
+        gb.x(a0()).m(R.id.albumPageFragment, bundle, null);
     }
 
     @Override // com.eddyizm.tempus.interfaces.ClickCallback
-    public final void onAlbumLongClick(Bundle r3) {
-        gb.x(a0()).m(R.id.albumBottomSheetDialog, r3, null);
+    public final void onAlbumLongClick(Bundle bundle) {
+        gb.x(a0()).m(R.id.albumBottomSheetDialog, bundle, null);
     }
 
     @Override // com.eddyizm.tempus.interfaces.ClickCallback
-    public final void onArtistClick(Bundle r5) {
-        if (r5.containsKey("MEDIA_MIX") == false) goto L16;
-        if (r5.getBoolean("MEDIA_MIX") == false) goto L16;
-        ArtistID3 r6 = (ArtistID3) r5.getParcelable("ARTIST_OBJECT");
-        if (r6 == null) goto L29;
-        MainActivity r0 = this.m0;
-        String r1 = r6.getId();
-        k6 r2 = new k6(27, this, r6);
-        WeakReference r4 = com.eddyizm.tempus.homemusic.b.a;
-        r0.getClass();
-        r1.getClass();
-        if (cx.h() == true) goto L13;
-        r2.run();
-        return;
-    L13:
-        Map r7 = Collections.singletonMap("nd_artist_id", r1);
-        r7.getClass();
-        com.eddyizm.tempus.homemusic.b.l(r0, r7, r2, WaveOrigin.RADIO);
-        return;
-    L29:
-        return;
-    L16:
-        if (r5.containsKey("MEDIA_BEST_OF") == true) goto L18;
-    L26:
-        gb.x(a0()).m(R.id.artistPageFragment, r5, null);
-        return;
-    L18:
-        if (r5.getBoolean("MEDIA_BEST_OF") == false) goto L26;
-        ArtistID3 r8 = (ArtistID3) r5.getParcelable("ARTIST_OBJECT");
-        if (r8 != null) goto L23;
-        return;
-    L23:
-        if (this.F0 == null) goto L28;
-        b r3 = this.n0;
-        r3.getClass();
-        k03 r9 = new k03();
-        pa r10 = r3.e;
-        String r11 = r8.getName();
-        r10.getClass();
-        pa.z(10, r11).f(new np1(r3, r9, r8));
-        r9.e(v(), new xo1(this, 19));
-        return;
+    public final void onArtistClick(Bundle bundle) throws InterruptedException {
+        if (bundle.containsKey("MEDIA_MIX") && bundle.getBoolean("MEDIA_MIX")) {
+            ArtistID3 artistID3 = (ArtistID3) bundle.getParcelable("ARTIST_OBJECT");
+            if (artistID3 == null) {
+                return;
+            }
+            MainActivity mainActivity = this.m0;
+            String id = artistID3.getId();
+            k6 k6Var = new k6(27, this, artistID3);
+            WeakReference weakReference = com.eddyizm.tempus.homemusic.b.a;
+            mainActivity.getClass();
+            id.getClass();
+            if (!cx.h()) {
+                k6Var.run();
+                return;
+            }
+            Map mapSingletonMap = Collections.singletonMap("nd_artist_id", id);
+            mapSingletonMap.getClass();
+            com.eddyizm.tempus.homemusic.b.l(mainActivity, mapSingletonMap, k6Var, WaveOrigin.RADIO);
+            return;
+        }
+        if (!bundle.containsKey("MEDIA_BEST_OF") || !bundle.getBoolean("MEDIA_BEST_OF")) {
+            gb.x(a0()).m(R.id.artistPageFragment, bundle, null);
+            return;
+        }
+        ArtistID3 artistID4 = (ArtistID3) bundle.getParcelable("ARTIST_OBJECT");
+        if (artistID4 == null || this.F0 == null) {
+            return;
+        }
+        b bVar = this.n0;
+        bVar.getClass();
+        k03 k03Var = new k03();
+        pa paVar = bVar.e;
+        String name = artistID4.getName();
+        paVar.getClass();
+        pa.z(10, name).f(new np1(bVar, k03Var, artistID4));
+        k03Var.e(v(), new xo1(this, 19));
     }
 
     @Override // com.eddyizm.tempus.interfaces.ClickCallback
-    public final void onArtistLongClick(Bundle r3) {
-        gb.x(a0()).m(R.id.artistBottomSheetDialog, r3, null);
+    public final void onArtistLongClick(Bundle bundle) {
+        gb.x(a0()).m(R.id.artistBottomSheetDialog, bundle, null);
     }
 
     @Override // com.eddyizm.tempus.interfaces.ClickCallback
-    public final void onMediaClick(Bundle r8) {
-        if (r8.containsKey("MEDIA_MIX") == false) goto L8;
-        Child r9 = (Child) r8.getParcelable("TRACK_OBJECT");
-        ((au) this.m0.V.n).d(true);
-        if (this.F0 == null) goto L11;
-        Toast.makeText(Z(), R.string.bottom_sheet_generating_instant_mix, 0).show();
-        b r2 = this.n0;
-        le1 r3 = v();
-        k03 r4 = r2.y;
-        r4.k(Collections.EMPTY_LIST);
-        r2.c.o(r9.getId(), fb0.p, 20).e(r3, new g7(r4, 0));
-        r4.e(v(), new f7(2, this, new boolean[]{false}));
-    L11:
+    public final void onMediaClick(Bundle bundle) {
+        if (bundle.containsKey("MEDIA_MIX")) {
+            Child child = (Child) bundle.getParcelable("TRACK_OBJECT");
+            ((au) this.m0.V.n).d(true);
+            if (this.F0 != null) {
+                Toast.makeText(Z(), R.string.bottom_sheet_generating_instant_mix, 0).show();
+                b bVar = this.n0;
+                le1 le1VarV = v();
+                k03 k03Var = bVar.y;
+                k03Var.k(Collections.EMPTY_LIST);
+                bVar.c.o(child.getId(), fb0.p, 20).e(le1VarV, new g7(k03Var, 0));
+                k03Var.e(v(), new f7(2, this, new boolean[]{false}));
+            }
+        } else if (bundle.containsKey("MEDIA_CHRONOLOGY")) {
+            bo2.o(this.F0, bundle.getParcelableArrayList("TRACKS_OBJECT"), bundle.getInt("ITEM_POSITION"));
+            ((au) this.m0.V.n).d(true);
+        } else {
+            bo2.o(this.F0, bundle.getParcelableArrayList("TRACKS_OBJECT"), bundle.getInt("ITEM_POSITION"));
+            ((au) this.m0.V.n).d(true);
+        }
         this.v0.d();
         this.u0.d();
-        return;
-    L8:
-        if (r8.containsKey("MEDIA_CHRONOLOGY") == false) goto L10;
-        bo2.o(this.F0, r8.getParcelableArrayList("TRACKS_OBJECT"), r8.getInt("ITEM_POSITION"));
-        ((au) this.m0.V.n).d(true);
-        goto L11
-    L10:
-        bo2.o(this.F0, r8.getParcelableArrayList("TRACKS_OBJECT"), r8.getInt("ITEM_POSITION"));
-        ((au) this.m0.V.n).d(true);
-        goto L11
     }
 
     @Override // com.eddyizm.tempus.interfaces.ClickCallback
-    public final void onMediaLongClick(Bundle r3) {
-        gb.x(a0()).m(R.id.songBottomSheetDialog, r3, null);
+    public final void onMediaLongClick(Bundle bundle) {
+        gb.x(a0()).m(R.id.songBottomSheetDialog, bundle, null);
     }
 
     @Override // com.eddyizm.tempus.interfaces.ClickCallback
-    public final void onPlaylistClick(Bundle r3) {
-        gb.x(a0()).m(R.id.playlistPageFragment, r3, null);
+    public final void onPlaylistClick(Bundle bundle) {
+        gb.x(a0()).m(R.id.playlistPageFragment, bundle, null);
     }
 
     @Override // com.eddyizm.tempus.interfaces.ClickCallback
-    public final void onPlaylistLongClick(Bundle r3) {
-        gb.x(a0()).m(R.id.playlistRowBottomSheetDialog, r3, null);
+    public final void onPlaylistLongClick(Bundle bundle) {
+        gb.x(a0()).m(R.id.playlistRowBottomSheetDialog, bundle, null);
     }
 
     @Override // com.eddyizm.tempus.interfaces.ClickCallback
-    public final void onShareClick(Bundle r3) {
-        g0(new Intent("android.intent.action.VIEW", Uri.parse(((Share) r3.getParcelable("share_object")).getUrl())).setFlags(268435456));
+    public final void onShareClick(Bundle bundle) {
+        g0(new Intent("android.intent.action.VIEW", Uri.parse(((Share) bundle.getParcelable("share_object")).getUrl())).setFlags(268435456));
     }
 
     @Override // com.eddyizm.tempus.interfaces.ClickCallback
-    public final void onShareLongClick(Bundle r3) {
-        gb.x(a0()).m(R.id.shareBottomSheetDialog, r3, null);
+    public final void onShareLongClick(Bundle bundle) {
+        gb.x(a0()).m(R.id.shareBottomSheetDialog, bundle, null);
     }
 
     @Override // com.eddyizm.tempus.interfaces.ClickCallback
-    public final void onYearClick(Bundle r3) {
-        gb.x(a0()).m(R.id.songListPageFragment, r3, null);
+    public final void onYearClick(Bundle bundle) {
+        gb.x(a0()).m(R.id.songListPageFragment, bundle, null);
     }
 }

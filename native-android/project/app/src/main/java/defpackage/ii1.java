@@ -7,7 +7,7 @@ import java.util.List;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class ii1 extends ContextWrapper {
-    public static final ch1 k = null;
+    public static final ch1 k = new ch1();
     public final qj0 a;
     public final sd0 b;
     public final tv1 c;
@@ -19,21 +19,17 @@ public final class ii1 extends ContextWrapper {
     public final int i;
     public g04 j;
 
-    static {
-        k = new ch1();
-    }
-
-    public ii1(Context r1, qj0 r2, ll r3, tv1 r4, fi1 r5, oi r6, List r7, i11 r8, d34 r9, int r10) {
-        super(r1.getApplicationContext());
-        this.a = r2;
-        this.c = r4;
-        this.d = r5;
-        this.e = r7;
-        this.f = r6;
-        this.g = r8;
-        this.h = r9;
-        this.i = r10;
-        this.b = new sd0(r3);
+    public ii1(Context context, qj0 qj0Var, ll llVar, tv1 tv1Var, fi1 fi1Var, oi oiVar, List list, i11 i11Var, d34 d34Var, int i) {
+        super(context.getApplicationContext());
+        this.a = qj0Var;
+        this.c = tv1Var;
+        this.d = fi1Var;
+        this.e = list;
+        this.f = oiVar;
+        this.g = i11Var;
+        this.h = d34Var;
+        this.i = i;
+        this.b = new sd0(llVar);
     }
 
     public final ey3 a() {

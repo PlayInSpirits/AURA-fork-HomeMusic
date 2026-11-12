@@ -4,7 +4,7 @@ package defpackage;
 /* JADX INFO: loaded from: classes.dex */
 public final class j33 extends tv1 {
     @Override // defpackage.tv1
-    public final float q(float r1, float r2) {
-        return yd.a(0.4f, 1.0f, r1);
+    public final float q(float f, float f2) {
+        return yd.a(0.4f, 1.0f, f);
     }
 }

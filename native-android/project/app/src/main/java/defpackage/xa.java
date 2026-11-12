@@ -6,14 +6,14 @@ public final class xa implements q94 {
     public boolean n;
     public final /* synthetic */ ac4 o;
 
-    public xa(ac4 r1) {
-        this.o = r1;
+    public xa(ac4 ac4Var) {
+        this.o = ac4Var;
     }
 
     @Override // defpackage.q94
-    public final void a(p94 r1, Object r2) {
-        if (r2 != this.o) goto L6;
-        this.n = true;
-        return;
+    public final void a(p94 p94Var, Object obj) {
+        if (obj == this.o) {
+            this.n = true;
+        }
     }
 }

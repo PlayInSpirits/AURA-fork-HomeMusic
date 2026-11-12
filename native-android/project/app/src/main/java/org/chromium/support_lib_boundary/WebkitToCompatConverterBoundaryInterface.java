@@ -7,25 +7,25 @@ import java.lang.reflect.InvocationHandler;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public interface WebkitToCompatConverterBoundaryInterface {
-    InvocationHandler convertCookieManager(Object r1);
+    InvocationHandler convertCookieManager(Object obj);
 
-    Object convertSafeBrowsingResponse(InvocationHandler r1);
+    Object convertSafeBrowsingResponse(InvocationHandler invocationHandler);
 
-    InvocationHandler convertSafeBrowsingResponse(Object r1);
+    InvocationHandler convertSafeBrowsingResponse(Object obj);
 
-    Object convertServiceWorkerSettings(InvocationHandler r1);
+    Object convertServiceWorkerSettings(InvocationHandler invocationHandler);
 
-    InvocationHandler convertServiceWorkerSettings(Object r1);
+    InvocationHandler convertServiceWorkerSettings(Object obj);
 
-    InvocationHandler convertSettings(WebSettings r1);
+    InvocationHandler convertSettings(WebSettings webSettings);
 
-    Object convertWebMessagePort(InvocationHandler r1);
+    Object convertWebMessagePort(InvocationHandler invocationHandler);
 
-    InvocationHandler convertWebMessagePort(Object r1);
+    InvocationHandler convertWebMessagePort(Object obj);
 
-    Object convertWebResourceError(InvocationHandler r1);
+    Object convertWebResourceError(InvocationHandler invocationHandler);
 
-    InvocationHandler convertWebResourceError(Object r1);
+    InvocationHandler convertWebResourceError(Object obj);
 
-    InvocationHandler convertWebResourceRequest(WebResourceRequest r1);
+    InvocationHandler convertWebResourceRequest(WebResourceRequest webResourceRequest);
 }

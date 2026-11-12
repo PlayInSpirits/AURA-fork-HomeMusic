@@ -7,7 +7,7 @@ import java.util.TreeMap;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class w24 implements wo4, vo4 {
-    public static final TreeMap v = null;
+    public static final TreeMap v = new TreeMap();
     public final int n;
     public volatile String o;
     public final long[] p;
@@ -17,47 +17,39 @@ public final class w24 implements wo4, vo4 {
     public final int[] t;
     public int u;
 
-    static {
-        v = new TreeMap();
+    public w24(int i) {
+        this.n = i;
+        int i2 = i + 1;
+        this.t = new int[i2];
+        this.p = new long[i2];
+        this.q = new double[i2];
+        this.r = new String[i2];
+        this.s = new byte[i2][];
     }
 
-    public w24(int r2) {
-        this.n = r2;
-        int r3 = r2 + 1;
-        this.t = new int[r3];
-        this.p = new long[r3];
-        this.q = new double[r3];
-        this.r = new String[r3];
-        this.s = new byte[r3][];
-    }
-
-    public static final w24 b(int r3, String r4) {
-        TreeMap r0 = v;
-        monitor-enter(r0);
-        Map.Entry r1 = r0.ceilingEntry(Integer.valueOf(r3));     // Catch: Throwable -> L9
-        if (r1 == null) goto L11;
-        r0.remove(r1.getKey());     // Catch: Throwable -> L9
-        w24 r2 = (w24) r1.getValue();     // Catch: Throwable -> L9
-        r2.getClass();     // Catch: Throwable -> L9
-        r2.o = r4;     // Catch: Throwable -> L9
-        r2.u = r3;     // Catch: Throwable -> L9
-        monitor-exit(r0);
-        return r2;
-    L11:
-        monitor-exit(r0);
-        w24 r5 = new w24(r3);
-        r5.o = r4;
-        r5.u = r3;
-        return r5;
-    L9:
-        th = move-exception;
-        throw th;
+    public static final w24 b(int i, String str) {
+        TreeMap treeMap = v;
+        synchronized (treeMap) {
+            Map.Entry entryCeilingEntry = treeMap.ceilingEntry(Integer.valueOf(i));
+            if (entryCeilingEntry == null) {
+                w24 w24Var = new w24(i);
+                w24Var.o = str;
+                w24Var.u = i;
+                return w24Var;
+            }
+            treeMap.remove(entryCeilingEntry.getKey());
+            w24 w24Var2 = (w24) entryCeilingEntry.getValue();
+            w24Var2.getClass();
+            w24Var2.o = str;
+            w24Var2.u = i;
+            return w24Var2;
+        }
     }
 
     @Override // defpackage.vo4
-    public final void c(int r3, long r4) {
-        this.t[r3] = 2;
-        this.p[r3] = r4;
+    public final void c(int i, long j) {
+        this.t[i] = 2;
+        this.p[i] = j;
     }
 
     @Override // java.io.Closeable, java.lang.AutoCloseable
@@ -65,101 +57,95 @@ public final class w24 implements wo4, vo4 {
     }
 
     @Override // defpackage.vo4
-    public final void d(double r3, int r5) {
-        this.t[r5] = 3;
-        this.q[r5] = r3;
+    public final void d(double d, int i) {
+        this.t[i] = 3;
+        this.q[i] = d;
     }
 
     @Override // defpackage.vo4
-    public final void e(int r2) {
-        this.t[r2] = 1;
+    public final void e(int i) {
+        this.t[i] = 1;
     }
 
     @Override // defpackage.wo4
     public final String f() {
-        String r0 = this.o;
-        if (r0 == null) goto L5;
-        return r0;
-    L5:
+        String str = this.o;
+        if (str != null) {
+            return str;
+        }
         kf2.o("Required value was null.");
         return null;
     }
 
     @Override // defpackage.vo4
-    public final void h(int r3, String r4) {
-        r4.getClass();
-        this.t[r3] = 4;
-        this.r[r3] = r4;
+    public final void h(int i, String str) {
+        str.getClass();
+        this.t[i] = 4;
+        this.r[i] = str;
     }
 
     public final void j() {
-        TreeMap r0 = v;
-        monitor-enter(r0);
-        r0.put(Integer.valueOf(this.n), this);     // Catch: Throwable -> L13
-        if (r0.size() <= 15) goto L11;
-        int r3 = r0.size() - 10;     // Catch: Throwable -> L13
-        Iterator r1 = r0.descendingKeySet().iterator();     // Catch: Throwable -> L13
-        r1.getClass();     // Catch: Throwable -> L13
-    L7:
-        int r2 = r3 - 1;     // Catch: Throwable -> L13
-        if (r3 <= 0) goto L11;
-        r1.next();     // Catch: Throwable -> L13
-        r1.remove();     // Catch: Throwable -> L13
-        r3 = r2;
-    L11:
-        monitor-exit(r0);
-        return;
-    L13:
-        th = move-exception;
-        throw th;
+        TreeMap treeMap = v;
+        synchronized (treeMap) {
+            treeMap.put(Integer.valueOf(this.n), this);
+            if (treeMap.size() > 15) {
+                int size = treeMap.size() - 10;
+                Iterator it = treeMap.descendingKeySet().iterator();
+                it.getClass();
+                while (true) {
+                    int i = size - 1;
+                    if (size <= 0) {
+                        break;
+                    }
+                    it.next();
+                    it.remove();
+                    size = i;
+                }
+            }
+        }
     }
 
     @Override // defpackage.wo4
-    public final void n(vo4 r7) {
-        int r0 = this.u;
-        if (1 > r0) goto L31;
-        int r2 = 1;
-    L5:
-        int r3 = this.t[r2];
-        if (r3 != 1) goto L8;
-        r7.e(r2);
-    L29:
-        if (r2 == r0) goto L35;
-        r2 = r2 + 1;
-        goto L5
-    L35:
-        return;
-    L8:
-        if (r3 != 2) goto L10;
-        r7.c(r2, this.p[r2]);
-        goto L29
-    L10:
-        if (r3 != 3) goto L12;
-        r7.d(this.q[r2], r2);
-        goto L29
-    L12:
-        if (r3 != 4) goto L14;
-        String r4 = this.r[r2];
-        if (r4 == null) goto L24;
-        r7.h(r2, r4);
-        goto L29
-    L24:
-        kf2.n("Required value was null.");
-        return;
-    L14:
-        if (r3 != 5) goto L29;
-        byte[] r5 = this.s[r2];
-        if (r5 == null) goto L19;
-        r7.x(r2, r5);
-        goto L29
-    L19:
-        kf2.n("Required value was null.");
-        return;
+    public final void n(vo4 vo4Var) {
+        int i = this.u;
+        if (1 > i) {
+            return;
+        }
+        int i2 = 1;
+        while (true) {
+            int i3 = this.t[i2];
+            if (i3 == 1) {
+                vo4Var.e(i2);
+            } else if (i3 == 2) {
+                vo4Var.c(i2, this.p[i2]);
+            } else if (i3 == 3) {
+                vo4Var.d(this.q[i2], i2);
+            } else if (i3 == 4) {
+                String str = this.r[i2];
+                if (str == null) {
+                    kf2.n("Required value was null.");
+                    return;
+                }
+                vo4Var.h(i2, str);
+            } else if (i3 == 5) {
+                byte[] bArr = this.s[i2];
+                if (bArr == null) {
+                    kf2.n("Required value was null.");
+                    return;
+                }
+                vo4Var.x(i2, bArr);
+            }
+            if (i2 == i) {
+                return;
+            } else {
+                i2++;
+            }
+        }
     }
 
     @Override // defpackage.vo4
-    public final void x(int r3, byte[] r4) {
-        this.t[r3] = 5;
-        this.s[r3] = r4;
+    public final void x(int i, byte[] bArr) {
+        this.t[i] = 5;
+        this.s[i] = bArr;
     }
 }

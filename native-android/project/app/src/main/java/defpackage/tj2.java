@@ -5,24 +5,25 @@ package defpackage;
 public final class tj2 extends sj2 {
     public final /* synthetic */ pn2 t;
 
-    public tj2(pn2 r1) {
-        this.t = r1;
-        super(r1);
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public tj2(pn2 pn2Var) {
+        super(pn2Var);
+        this.t = pn2Var;
     }
 
     @Override // defpackage.bq4
     public final ms2 j() {
-        pn2 r0 = this.t;
-        oj2 r1 = r0.s;
-        if (r1 != null) goto L5;
-        kf2.o("This should be called inside of onGetRoot, onLoadChildren, onLoadItem, onSearch, or onCustomAction methods");
-        return null;
-    L5:
-        if (r1 != r0.p) goto L9;
-        qj2 r2 = (qj2) this.o;
-        r2.getClass();
-        return new ms2(sr0.h(r2));
-    L9:
-        return r1.d;
+        pn2 pn2Var = this.t;
+        oj2 oj2Var = pn2Var.s;
+        if (oj2Var == null) {
+            kf2.o("This should be called inside of onGetRoot, onLoadChildren, onLoadItem, onSearch, or onCustomAction methods");
+            return null;
+        }
+        if (oj2Var != pn2Var.p) {
+            return oj2Var.d;
+        }
+        qj2 qj2Var = (qj2) this.o;
+        qj2Var.getClass();
+        return new ms2(qj2Var.getCurrentBrowserInfo());
     }
 }

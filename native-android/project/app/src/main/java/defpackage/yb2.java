@@ -6,41 +6,31 @@ public final class yb2 implements Runnable {
     public final /* synthetic */ int n;
     public final /* synthetic */ bc2 o;
 
-    public /* synthetic */ yb2(bc2 r1, int r2) {
-        this.n = r2;
-        this.o = r1;
+    public /* synthetic */ yb2(bc2 bc2Var, int i) {
+        this.n = i;
+        this.o = bc2Var;
     }
 
     @Override // java.lang.Runnable
     public final void run() {
-        int r0 = this.n;
-        bc2 r2 = this.o;
-        switch(r0) {
-            case 0: goto L14;
-            default: goto L4;
-        };
-    L4:
-        cx0 r1 = r2.p;
-        if (r1 != null) goto L7;
-        return;
-    L7:
-        if (r1.isAttachedToWindow() == true) goto L9;
-        return;
-    L9:
-        if (r2.p.getCount() > r2.p.getChildCount()) goto L11;
-        return;
-    L11:
-        if (r2.p.getChildCount() > r2.z) goto L21;
-        r2.M.setInputMethodMode(2);
-        r2.f();
-        return;
-    L21:
-        return;
-    L14:
-        cx0 r3 = r2.p;
-        if (r3 == null) goto L22;
-        r3.setListSelectionHidden(true);
-        r3.requestLayout();
-        return;
+        int i = this.n;
+        bc2 bc2Var = this.o;
+        switch (i) {
+            case 0:
+                cx0 cx0Var = bc2Var.p;
+                if (cx0Var != null) {
+                    cx0Var.setListSelectionHidden(true);
+                    cx0Var.requestLayout();
+                }
+                break;
+            default:
+                cx0 cx0Var2 = bc2Var.p;
+                if (cx0Var2 != null && cx0Var2.isAttachedToWindow() && bc2Var.p.getCount() > bc2Var.p.getChildCount() && bc2Var.p.getChildCount() <= bc2Var.z) {
+                    bc2Var.M.setInputMethodMode(2);
+                    bc2Var.f();
+                    break;
+                }
+                break;
+        }
     }
 }

@@ -1,7 +1,6 @@
 package defpackage;
 
 import java.util.Comparator;
-import java.util.Set;
 import java.util.SortedMap;
 import java.util.SortedSet;
 
@@ -11,23 +10,26 @@ public class k1 extends f1 implements SortedMap {
     public SortedSet r;
     public final /* synthetic */ sz2 s;
 
-    public k1(sz2 r1, SortedMap r2) {
-        this.s = r1;
-        super(r1, r2);
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public k1(sz2 sz2Var, SortedMap sortedMap) {
+        super(sz2Var, sortedMap);
+        this.s = sz2Var;
     }
 
     public SortedSet b() {
         return new l1(this.s, d());
     }
 
-    public SortedSet c() {
-        SortedSet r0 = this.r;
-        if (r0 != null) goto L6;
-        SortedSet r1 = b();
-        this.r = r1;
-        return r1;
-    L6:
-        return r0;
+    @Override // defpackage.f1, java.util.AbstractMap, java.util.Map
+    /* JADX INFO: renamed from: c, reason: merged with bridge method [inline-methods] */
+    public SortedSet keySet() {
+        SortedSet sortedSet = this.r;
+        if (sortedSet != null) {
+            return sortedSet;
+        }
+        SortedSet sortedSetB = b();
+        this.r = sortedSetB;
+        return sortedSetB;
     }
 
     @Override // java.util.SortedMap
@@ -44,14 +46,8 @@ public class k1 extends f1 implements SortedMap {
         return d().firstKey();
     }
 
-    public SortedMap headMap(Object r3) {
-        SortedMap r4 = d().headMap(r3);
-        return new k1(this.s, r4);
-    }
-
-    @Override // defpackage.f1, java.util.AbstractMap, java.util.Map
-    public /* bridge */ /* synthetic */ Set keySet() {
-        return c();
+    public SortedMap headMap(Object obj) {
+        return new k1(this.s, d().headMap(obj));
     }
 
     @Override // java.util.SortedMap
@@ -59,13 +55,11 @@ public class k1 extends f1 implements SortedMap {
         return d().lastKey();
     }
 
-    public SortedMap subMap(Object r3, Object r4) {
-        SortedMap r5 = d().subMap(r3, r4);
-        return new k1(this.s, r5);
+    public SortedMap subMap(Object obj, Object obj2) {
+        return new k1(this.s, d().subMap(obj, obj2));
     }
 
-    public SortedMap tailMap(Object r3) {
-        SortedMap r4 = d().tailMap(r3);
-        return new k1(this.s, r4);
+    public SortedMap tailMap(Object obj) {
+        return new k1(this.s, d().tailMap(obj));
     }
 }

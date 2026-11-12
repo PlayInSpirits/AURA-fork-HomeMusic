@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+import org.chromium.support_lib_boundary.WebSettingsBoundaryInterface;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
@@ -22,9 +23,9 @@ public final class i4 implements View.OnClickListener {
     public final /* synthetic */ int n;
     public final /* synthetic */ Object o;
 
-    public /* synthetic */ i4(int r1, Object r2) {
-        this.n = r1;
-        this.o = r2;
+    public /* synthetic */ i4(int i, Object obj) {
+        this.n = i;
+        this.o = obj;
     }
 
     /* JADX WARN: Type inference fix 'apply assigned field type' failed
@@ -38,415 +39,310 @@ public final class i4 implements View.OnClickListener {
     	at jadx.core.dex.visitors.typeinference.FixTypesVisitor.visit(FixTypesVisitor.java:94)
      */
     @Override // android.view.View.OnClickListener
-    public final void onClick(View r17) {
-        int r2 = this.n;
-        Message r8 = null;
-        tu2 r9 = null;
-        r8 = null;
-        boolean r10 = false;
-        int r11 = 0;
-        int r12 = 0;
-        int r13 = 1;
-        Object r14 = this.o;
-        switch(r2) {
-            case 0: goto L227;
-            case 1: goto L218;
-            case 2: goto L199;
-            case 3: goto L188;
-            case 4: goto L186;
-            case 5: goto L180;
-            case 6: goto L178;
-            case 7: goto L166;
-            case 8: goto L136;
-            case 9: goto L41;
-            case 10: goto L33;
-            case 11: goto L29;
-            case 12: goto L13;
-            case 13: goto L11;
-            default: goto L4;
-        };
-    L4:
-        yu4 r0 = ((Toolbar) r14).c0;
-        if (r0 == null) goto L8;
-        r9 = r0.o;
-    L8:
-        if (r9 == null) goto L248;
-        r9.collapseActionView();
-        return;
-    L248:
-        return;
-    L11:
-        ((Preference) r14).s(r17);
-        return;
-    L13:
-        NavigationMenuItemView r1 = (NavigationMenuItemView) r17;
-        l43 r15 = (l43) r14;
-        d43 r3 = r15.r;
-        if (r3 == null) goto L16;
-        r3.s = true;
-    L16:
-        tu2 r4 = r1.getItemData();
-        boolean r5 = r15.p.q(r4, r15, 0);
-        if (r4 != null) goto L19;
-    L22:
-        r13 = 0;
-    L23:
-        d43 r6 = r15.r;
-        if (r6 == null) goto L26;
-        r6.s = false;
-    L26:
-        if (r13 == 0) goto L249;
-        r15.c(false);
-        return;
-    L249:
-        return;
-    L19:
-        if (r4.isCheckable() == false) goto L22;
-        if (r5 == false) goto L22;
-        r15.r.q(r4);
-        goto L23
-    L29:
-        tu2 r7 = ((k33) r17).getItemData();
-        qt r16 = (qt) r14;
-        if (r16.R.q(r7, r16.Q, 0) == true) goto L250;
-        r7.setChecked(true);
-        return;
-    L250:
-        return;
-    L33:
-        MediaRouteExpandCollapseButton r18 = (MediaRouteExpandCollapseButton) r14;
-        AnimationDrawable r19 = r18.r;
-        AnimationDrawable r20 = r18.q;
-        boolean r21 = r18.u;
-        r18.u = !r21;
-        if (r21 == true) goto L36;
-        r18.setImageDrawable(r20);
-        r20.start();
-        r18.setContentDescription(r18.t);
-    L37:
-        View.OnClickListener r22 = r18.v;
-        if (r22 == null) goto L251;
-        r22.onClick(r17);
-        return;
-    L251:
-        return;
-    L36:
-        r18.setImageDrawable(r19);
-        r19.start();
-        r18.setContentDescription(r18.s);
-        goto L37
-    L41:
-        iq2 r110 = (iq2) r14;
-        boolean r23 = r110.u(r110.u);
-        boolean r24 = !r23;
-        boolean r25 = r110.u.e();
-        jq2 r26 = r110.H;
-        if (r23 == true) goto L65;
-        yq2 r27 = r26.z.t;
-        wq2 r111 = r110.u;
-        r27.getClass();
-        if (r111 == null) goto L64;
-        yq2.b();
-        ui1 r28 = yq2.c();
-        tq2 r29 = r28.c.a();
-        if (r29 != null) goto L49;
-        Log.w("AxMediaRouter", "Ignoring attempt to add a member route to a selected non-group route");
-    L91:
-        r110.v(r24, !r25);
-        if (r25 == false) goto L101;
-        List r30 = Collections.unmodifiableList(r26.z.w.v);
-        Iterator r31 = Collections.unmodifiableList(r110.u.v).iterator();
-    L95:
-        if (r31.hasNext() == false) goto L101;
-        wq2 r32 = (wq2) r31.next();
-        if (r30.contains(r32) == r24) goto L95;
-        dq2 r33 = (dq2) r26.z.J.get(r32.c);
-        if ((r33 instanceof iq2) == false) goto L95;
-        ((iq2) r33).v(r24, true);
-    L101:
-        lq2 r34 = r26.z;
-        wq2 r35 = r110.u;
-        List r36 = Collections.unmodifiableList(r34.w.v);
-        int r37 = Math.max(1, r36.size());
-        if (r35.e() == false) goto L112;
-        Iterator r38 = Collections.unmodifiableList(r35.v).iterator();
-    L105:
-        if (r38.hasNext() == false) goto L117;
-        if (r36.contains((wq2) r38.next()) == r24) goto L105;
-        if (r23 == true) goto L110;
-        int r39 = 1;
-    L111:
-        r37 = r37 + r39;
-        goto L105
-    L110:
-        r39 = -1;
-    L117:
-        if (r34.f0 == true) goto L119;
-    L121:
-        int r40 = 0;
-    L123:
-        if (r34.f0 == false) goto L126;
-        if (r37 < 2) goto L126;
-    L127:
-        if (r40 == r13) goto L255;
-        cx3 r41 = r34.G.I(0);
-        if ((r41 instanceof fq2) == false) goto L256;
-        fq2 r42 = (fq2) r41;
-        View r43 = r42.a;
-        if (r13 == 0) goto L133;
-        r11 = r42.z;
-    L133:
-        r26.p(r43, r11);
-        return;
-    L256:
-        return;
-    L255:
-        return;
-    L126:
-        r13 = 0;
-        goto L127
-    L119:
-        if (Collections.unmodifiableList(r34.w.v).size() <= 1) goto L121;
-        r40 = 1;
-        goto L123
-    L112:
-        if (r23 == true) goto L114;
-        int r44 = 1;
-    L115:
-        r37 = r37 + r44;
-        goto L117
-    L114:
-        r44 = -1;
-        goto L115
-    L49:
-        if (r29.n(r111) == true) goto L52;
-        Log.w("AxMediaRouter", "Ignoring attempt to add a non-groupable member route: " + r111);
-        goto L91
-    L52:
-        if (Collections.unmodifiableList(r29.v).contains(r111) == false) goto L55;
-        Log.w("AxMediaRouter", "Ignoring attempt to add an existing member route: " + r111);
-        goto L91
-    L55:
-        if (r29.g() == false) goto L61;
-        oq2 r45 = r28.d;
-        if ((r45 instanceof nq2) == false) goto L59;
-        ((nq2) r45).m(r111.b);
-        goto L91
-    L59:
-        kf2.o("There is no currently selected dynamic group route.");
-        return;
-    L61:
-        if (r29.m() == false) goto L63;
-        r28.e();
-        Log.w("AxMediaRouter", "Ignoring attempt to add a route to a non-available connected route: " + r29);
-        goto L91
-    L63:
-        Log.w("AxMediaRouter", "Ignoring attempt to add a route to an unsupported group route:" + r29);
-        goto L91
-    L64:
-        nz2.n("route must not be null");
-        return;
-    L65:
-        yq2 r112 = r26.z.t;
-        wq2 r113 = r110.u;
-        r112.getClass();
-        if (r113 == null) goto L134;
-        yq2.b();
-        ui1 r46 = yq2.c();
-        tq2 r114 = r46.c.a();
-        if (r114 != null) goto L70;
-        Log.w("AxMediaRouter", "Ignoring attempt to remove a member route from a selected non-group route");
-        goto L91
-    L70:
-        mq2 r47 = (mq2) r114.x.get(r113.c);
-        if (r47 != null) goto L73;
-    L90:
-        Log.w("AxMediaRouter", "Ignoring attempt to remove a non-unselectable member route: " + r113);
-        goto L91
-    L73:
-        if (r47.c == false) goto L90;
-        if (Collections.unmodifiableList(r114.v).contains(r113) == true) goto L78;
-        Log.w("AxMediaRouter", "Ignoring attempt to remove a non-in-group member route: " + r113);
-        goto L91
-    L78:
-        if (Collections.unmodifiableList(r114.v).size() > 1) goto L81;
-        Log.w("AxMediaRouter", "Ignoring attempt to remove the last member route.");
-        goto L91
-    L81:
-        if (r114.g() == false) goto L87;
-        oq2 r48 = r46.d;
-        if ((r48 instanceof nq2) == false) goto L85;
-        ((nq2) r48).n(r113.b);
-        goto L91
-    L85:
-        kf2.o("There is no currently selected dynamic group route.");
-        return;
-    L87:
-        if (r114.m() == false) goto L89;
-        r46.e();
-        Log.w("AxMediaRouter", "Ignoring attempt to update routes for a non-available connected route: " + r114);
-        goto L91
-    L89:
-        Log.w("AxMediaRouter", "Ignoring attempt to remove a route from an unsupported group route:" + r114);
-        goto L91
-    L134:
-        nz2.n("route must not be null");
-        return;
-    L136:
-        eq2 r115 = (eq2) r14;
-        yq2 r49 = r115.A.z.t;
-        wq2 r50 = r115.z;
-        r49.getClass();
-        if (r50 == null) goto L164;
-        yq2.b();
-        ui1 r51 = yq2.c();
-        tq2 r52 = r51.c.a();
-        if (r52 != null) goto L141;
-        Log.w("AxMediaRouter", "Ignoring attempt to transfer for a selected non-group route");
-    L163:
-        r115.v.setVisibility(4);
-        r115.w.setVisibility(0);
-        return;
-    L141:
-        List r53 = Collections.singletonList(r50);
-        ArrayList r54 = new ArrayList();
-        Iterator r55 = r53.iterator();
-    L143:
-        if (r55.hasNext() == false) goto L151;
-        wq2 r56 = (wq2) r55.next();
-        mq2 r57 = (mq2) r52.x.get(r56.c);
-        if (r57 == null) goto L149;
-        if (r57.e == false) goto L149;
-        r54.add(r56.b);
-    L149:
-        Log.w("AxMediaRouter", "Ignoring attempt to update the group with a non-transferable route: " + r56);
-        goto L143
-    L151:
-        if (r54.isEmpty() == false) goto L154;
-        Log.w("AxMediaRouter", "Ignoring attempt to update the group with non-transferable routes");
-        goto L163
-    L154:
-        if (r52.g() == false) goto L160;
-        oq2 r58 = r51.d;
-        if ((r58 instanceof nq2) == false) goto L158;
-        ((nq2) r58).o(r54);
-        goto L163
-    L158:
-        kf2.o("There is no currently selected dynamic group route.");
-        return;
-    L160:
-        if (r52.m() == false) goto L162;
-        r51.e();
-        Log.w("AxMediaRouter", "Ignoring attempt to update routes for a non-available connected route: " + r52);
-        goto L163
-    L162:
-        Log.w("AxMediaRouter", "Ignoring attempt to update routes for an unsupported group route:" + r52);
-        goto L163
-    L164:
-        nz2.n("route must not be null");
-        return;
-    L166:
-        dq2 r116 = (dq2) r14;
-        lq2 r59 = r116.x;
-        if (r59.K == null) goto L169;
-        r59.F.removeMessages(2);
-    L169:
-        r59.K = r116.u;
-        boolean r60 = r17.isActivated();
-        boolean r61 = !r60;
-        if (r60 == false) goto L176;
-        Integer r62 = (Integer) r59.L.get(r116.u.c);
-        if (r62 != null) goto L175;
-        r12 = 1;
-        goto L176
-    L175:
-        r12 = Math.max(1, r62.intValue());
-    L176:
-        r116.t(r61);
-        r116.w.setProgress(r12);
-        r116.u.j(r12);
-        r59.F.sendEmptyMessageDelayed(2, 500);
-        return;
-    L178:
-        ((aq2) r14).dismiss();
-        return;
-    L180:
-        nh2 r117 = (nh2) r14;
-        int r63 = r117.q0;
-        if (r63 != 2) goto L183;
-        r117.j0(1);
-        return;
-    L183:
-        if (r63 != 1) goto L261;
-        r117.j0(2);
-        return;
-    L261:
-        return;
-    L186:
-        cp1 r118 = (cp1) r14;
-        r118.n0.c.getClass();
-        xi4.s(-1, false, false).e(r118.v(), new np0(r13, this));
-        return;
-    L188:
-        yt r119 = (yt) r14;
-        if (r119.x == true) goto L191;
-        return;
-    L191:
-        if (r119.isShowing() == true) goto L193;
-        return;
-    L193:
-        if (r119.z == true) goto L196;
-        TypedArray r64 = r119.getContext().obtainStyledAttributes(new int[]{R.attr.windowCloseOnTouchOutside});
-        r119.y = r64.getBoolean(0, true);
-        r64.recycle();
-        r119.z = true;
-    L196:
-        if (r119.y == false) goto L264;
-        r119.cancel();
-        return;
-    L264:
-        return;
-    L199:
-        d9 r120 = (d9) r14;
-        if (r17 != r120.i) goto L205;
-        Message r65 = r120.k;
-        if (r65 == null) goto L205;
-        r8 = Message.obtain(r65);
-    L214:
-        if (r8 == null) goto L216;
-        r8.sendToTarget();
-    L216:
-        r120.F.obtainMessage(1, r120.b).sendToTarget();
-        return;
-    L205:
-        if (r17 != r120.l) goto L210;
-        Message r66 = r120.n;
-        if (r66 == null) goto L210;
-        r8 = Message.obtain(r66);
-    L210:
-        if (r17 != r120.o) goto L214;
-        Message r67 = r120.q;
-        if (r67 == null) goto L214;
-        r8 = Message.obtain(r67);
-        goto L214
-    L218:
-        DrawerLayout r68 = ((k4) r14).b;
-        int r69 = r68.h(8388611);
-        View r70 = r68.f(8388611);
-        if (r70 == null) goto L221;
-        r10 = DrawerLayout.o(r70);
-    L221:
-        if (r10 == false) goto L224;
-        if (r69 == 2) goto L224;
-        r68.d();
-        return;
-    L224:
-        if (r69 == 1) goto L266;
-        r68.q();
-        return;
-    L266:
-        return;
-    L227:
-        ((d5) r14).a();
+    public final void onClick(View view) {
+        Message message;
+        Message message2;
+        Message message3;
+        int i = this.n;
+        Message messageObtain = null;
+        messageObtain = null;
+        int iMax = 0;
+        int i2 = 1;
+        Object obj = this.o;
+        switch (i) {
+            case 0:
+                ((d5) obj).a();
+                break;
+            case 1:
+                DrawerLayout drawerLayout = ((k4) obj).b;
+                int iH = drawerLayout.h(8388611);
+                View viewF = drawerLayout.f(8388611);
+                if ((viewF != null ? DrawerLayout.o(viewF) : false) && iH != 2) {
+                    drawerLayout.d();
+                } else if (iH != 1) {
+                    drawerLayout.q();
+                }
+                break;
+            case 2:
+                d9 d9Var = (d9) obj;
+                if (view == d9Var.i && (message3 = d9Var.k) != null) {
+                    messageObtain = Message.obtain(message3);
+                } else if (view == d9Var.l && (message2 = d9Var.n) != null) {
+                    messageObtain = Message.obtain(message2);
+                } else if (view == d9Var.o && (message = d9Var.q) != null) {
+                    messageObtain = Message.obtain(message);
+                }
+                if (messageObtain != null) {
+                    messageObtain.sendToTarget();
+                }
+                d9Var.F.obtainMessage(1, d9Var.b).sendToTarget();
+                break;
+            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
+                yt ytVar = (yt) obj;
+                if (ytVar.x && ytVar.isShowing()) {
+                    if (!ytVar.z) {
+                        TypedArray typedArrayObtainStyledAttributes = ytVar.getContext().obtainStyledAttributes(new int[]{R.attr.windowCloseOnTouchOutside});
+                        ytVar.y = typedArrayObtainStyledAttributes.getBoolean(0, true);
+                        typedArrayObtainStyledAttributes.recycle();
+                        ytVar.z = true;
+                    }
+                    if (ytVar.y) {
+                        ytVar.cancel();
+                    }
+                    break;
+                }
+                break;
+            case 4:
+                cp1 cp1Var = (cp1) obj;
+                cp1Var.n0.c.getClass();
+                xi4.s(-1, false, false).e(cp1Var.v(), new np0(i2, this));
+                break;
+            case 5:
+                nh2 nh2Var = (nh2) obj;
+                int i3 = nh2Var.q0;
+                if (i3 == 2) {
+                    nh2Var.j0(1);
+                } else if (i3 == 1) {
+                    nh2Var.j0(2);
+                }
+                break;
+            case 6:
+                ((aq2) obj).dismiss();
+                break;
+            case 7:
+                dq2 dq2Var = (dq2) obj;
+                lq2 lq2Var = dq2Var.x;
+                if (lq2Var.K != null) {
+                    lq2Var.F.removeMessages(2);
+                }
+                lq2Var.K = dq2Var.u;
+                boolean zIsActivated = view.isActivated();
+                boolean z = !zIsActivated;
+                if (zIsActivated) {
+                    Integer num = (Integer) lq2Var.L.get(dq2Var.u.c);
+                    iMax = num == null ? 1 : Math.max(1, num.intValue());
+                }
+                dq2Var.t(z);
+                dq2Var.w.setProgress(iMax);
+                dq2Var.u.j(iMax);
+                lq2Var.F.sendEmptyMessageDelayed(2, 500L);
+                break;
+            case 8:
+                eq2 eq2Var = (eq2) obj;
+                yq2 yq2Var = eq2Var.A.z.t;
+                wq2 wq2Var = eq2Var.z;
+                yq2Var.getClass();
+                if (wq2Var != null) {
+                    yq2.b();
+                    ui1 ui1VarC = yq2.c();
+                    tq2 tq2VarA = ui1VarC.c.a();
+                    if (tq2VarA == null) {
+                        Log.w("AxMediaRouter", "Ignoring attempt to transfer for a selected non-group route");
+                    } else {
+                        List<wq2> listSingletonList = Collections.singletonList(wq2Var);
+                        ArrayList arrayList = new ArrayList();
+                        for (wq2 wq2Var2 : listSingletonList) {
+                            mq2 mq2Var = (mq2) tq2VarA.x.get(wq2Var2.c);
+                            if (mq2Var == null || !mq2Var.e) {
+                                Log.w("AxMediaRouter", "Ignoring attempt to update the group with a non-transferable route: " + wq2Var2);
+                            } else {
+                                arrayList.add(wq2Var2.b);
+                            }
+                        }
+                        if (arrayList.isEmpty()) {
+                            Log.w("AxMediaRouter", "Ignoring attempt to update the group with non-transferable routes");
+                        } else if (tq2VarA.g()) {
+                            oq2 oq2Var = ui1VarC.d;
+                            if (!(oq2Var instanceof nq2)) {
+                                kf2.o("There is no currently selected dynamic group route.");
+                            } else {
+                                ((nq2) oq2Var).o(arrayList);
+                            }
+                            break;
+                        } else if (tq2VarA.m()) {
+                            ui1VarC.e();
+                            Log.w("AxMediaRouter", "Ignoring attempt to update routes for a non-available connected route: " + tq2VarA);
+                        } else {
+                            Log.w("AxMediaRouter", "Ignoring attempt to update routes for an unsupported group route:" + tq2VarA);
+                        }
+                    }
+                    eq2Var.v.setVisibility(4);
+                    eq2Var.w.setVisibility(0);
+                } else {
+                    nz2.n("route must not be null");
+                }
+                break;
+            case 9:
+                iq2 iq2Var = (iq2) obj;
+                boolean zU = iq2Var.u(iq2Var.u);
+                boolean z2 = !zU;
+                boolean zE = iq2Var.u.e();
+                jq2 jq2Var = iq2Var.H;
+                if (!zU) {
+                    yq2 yq2Var2 = jq2Var.z.t;
+                    wq2 wq2Var3 = iq2Var.u;
+                    yq2Var2.getClass();
+                    if (wq2Var3 == null) {
+                        nz2.n("route must not be null");
+                        break;
+                    } else {
+                        yq2.b();
+                        ui1 ui1VarC2 = yq2.c();
+                        tq2 tq2VarA2 = ui1VarC2.c.a();
+                        if (tq2VarA2 == null) {
+                            Log.w("AxMediaRouter", "Ignoring attempt to add a member route to a selected non-group route");
+                        } else if (!tq2VarA2.n(wq2Var3)) {
+                            Log.w("AxMediaRouter", "Ignoring attempt to add a non-groupable member route: " + wq2Var3);
+                        } else if (Collections.unmodifiableList(tq2VarA2.v).contains(wq2Var3)) {
+                            Log.w("AxMediaRouter", "Ignoring attempt to add an existing member route: " + wq2Var3);
+                        } else if (tq2VarA2.g()) {
+                            oq2 oq2Var2 = ui1VarC2.d;
+                            if (!(oq2Var2 instanceof nq2)) {
+                                kf2.o("There is no currently selected dynamic group route.");
+                            } else {
+                                ((nq2) oq2Var2).m(wq2Var3.b);
+                            }
+                            break;
+                        } else if (tq2VarA2.m()) {
+                            ui1VarC2.e();
+                            Log.w("AxMediaRouter", "Ignoring attempt to add a route to a non-available connected route: " + tq2VarA2);
+                        } else {
+                            Log.w("AxMediaRouter", "Ignoring attempt to add a route to an unsupported group route:" + tq2VarA2);
+                        }
+                    }
+                } else {
+                    yq2 yq2Var3 = jq2Var.z.t;
+                    wq2 wq2Var4 = iq2Var.u;
+                    yq2Var3.getClass();
+                    if (wq2Var4 == null) {
+                        nz2.n("route must not be null");
+                        break;
+                    } else {
+                        yq2.b();
+                        ui1 ui1VarC3 = yq2.c();
+                        tq2 tq2VarA3 = ui1VarC3.c.a();
+                        if (tq2VarA3 == null) {
+                            Log.w("AxMediaRouter", "Ignoring attempt to remove a member route from a selected non-group route");
+                        } else {
+                            mq2 mq2Var2 = (mq2) tq2VarA3.x.get(wq2Var4.c);
+                            if (mq2Var2 == null || !mq2Var2.c) {
+                                Log.w("AxMediaRouter", "Ignoring attempt to remove a non-unselectable member route: " + wq2Var4);
+                            } else if (!Collections.unmodifiableList(tq2VarA3.v).contains(wq2Var4)) {
+                                Log.w("AxMediaRouter", "Ignoring attempt to remove a non-in-group member route: " + wq2Var4);
+                            } else if (Collections.unmodifiableList(tq2VarA3.v).size() <= 1) {
+                                Log.w("AxMediaRouter", "Ignoring attempt to remove the last member route.");
+                            } else if (tq2VarA3.g()) {
+                                oq2 oq2Var3 = ui1VarC3.d;
+                                if (!(oq2Var3 instanceof nq2)) {
+                                    kf2.o("There is no currently selected dynamic group route.");
+                                } else {
+                                    ((nq2) oq2Var3).n(wq2Var4.b);
+                                }
+                                break;
+                            } else if (tq2VarA3.m()) {
+                                ui1VarC3.e();
+                                Log.w("AxMediaRouter", "Ignoring attempt to update routes for a non-available connected route: " + tq2VarA3);
+                            } else {
+                                Log.w("AxMediaRouter", "Ignoring attempt to remove a route from an unsupported group route:" + tq2VarA3);
+                            }
+                        }
+                    }
+                }
+                iq2Var.v(z2, !zE);
+                if (zE) {
+                    List listUnmodifiableList = Collections.unmodifiableList(jq2Var.z.w.v);
+                    for (wq2 wq2Var5 : Collections.unmodifiableList(iq2Var.u.v)) {
+                        if (listUnmodifiableList.contains(wq2Var5) != z2) {
+                            dq2 dq2Var2 = (dq2) jq2Var.z.J.get(wq2Var5.c);
+                            if (dq2Var2 instanceof iq2) {
+                                ((iq2) dq2Var2).v(z2, true);
+                            }
+                        }
+                    }
+                }
+                lq2 lq2Var2 = jq2Var.z;
+                wq2 wq2Var6 = iq2Var.u;
+                List listUnmodifiableList2 = Collections.unmodifiableList(lq2Var2.w.v);
+                int iMax2 = Math.max(1, listUnmodifiableList2.size());
+                if (wq2Var6.e()) {
+                    Iterator it = Collections.unmodifiableList(wq2Var6.v).iterator();
+                    while (it.hasNext()) {
+                        if (listUnmodifiableList2.contains((wq2) it.next()) != z2) {
+                            iMax2 += !zU ? 1 : -1;
+                        }
+                    }
+                } else {
+                    iMax2 += !zU ? 1 : -1;
+                }
+                int i4 = (!lq2Var2.f0 || Collections.unmodifiableList(lq2Var2.w.v).size() <= 1) ? 0 : 1;
+                i2 = (!lq2Var2.f0 || iMax2 < 2) ? 0 : 1;
+                if (i4 != i2) {
+                    cx3 cx3VarI = lq2Var2.G.I(0);
+                    if (cx3VarI instanceof fq2) {
+                        fq2 fq2Var = (fq2) cx3VarI;
+                        jq2Var.p(fq2Var.a, i2 != 0 ? fq2Var.z : 0);
+                    }
+                }
+                break;
+            case 10:
+                MediaRouteExpandCollapseButton mediaRouteExpandCollapseButton = (MediaRouteExpandCollapseButton) obj;
+                AnimationDrawable animationDrawable = mediaRouteExpandCollapseButton.r;
+                AnimationDrawable animationDrawable2 = mediaRouteExpandCollapseButton.q;
+                boolean z3 = mediaRouteExpandCollapseButton.u;
+                mediaRouteExpandCollapseButton.u = !z3;
+                if (z3) {
+                    mediaRouteExpandCollapseButton.setImageDrawable(animationDrawable);
+                    animationDrawable.start();
+                    mediaRouteExpandCollapseButton.setContentDescription(mediaRouteExpandCollapseButton.s);
+                } else {
+                    mediaRouteExpandCollapseButton.setImageDrawable(animationDrawable2);
+                    animationDrawable2.start();
+                    mediaRouteExpandCollapseButton.setContentDescription(mediaRouteExpandCollapseButton.t);
+                }
+                View.OnClickListener onClickListener = mediaRouteExpandCollapseButton.v;
+                if (onClickListener != null) {
+                    onClickListener.onClick(view);
+                }
+                break;
+            case 11:
+                tu2 itemData = ((k33) view).getItemData();
+                qt qtVar = (qt) obj;
+                if (!qtVar.R.q(itemData, qtVar.Q, 0)) {
+                    itemData.setChecked(true);
+                }
+                break;
+            case 12:
+                NavigationMenuItemView navigationMenuItemView = (NavigationMenuItemView) view;
+                l43 l43Var = (l43) obj;
+                d43 d43Var = l43Var.r;
+                if (d43Var != null) {
+                    d43Var.s = true;
+                }
+                tu2 itemData2 = navigationMenuItemView.getItemData();
+                boolean zQ = l43Var.p.q(itemData2, l43Var, 0);
+                if (itemData2 != null && itemData2.isCheckable() && zQ) {
+                    l43Var.r.q(itemData2);
+                } else {
+                    i2 = 0;
+                }
+                d43 d43Var2 = l43Var.r;
+                if (d43Var2 != null) {
+                    d43Var2.s = false;
+                }
+                if (i2 != 0) {
+                    l43Var.c(false);
+                }
+                break;
+            case 13:
+                ((Preference) obj).s(view);
+                break;
+            default:
+                yu4 yu4Var = ((Toolbar) obj).c0;
+                tu2 tu2Var = yu4Var != null ? yu4Var.o : null;
+                if (tu2Var != null) {
+                    tu2Var.collapseActionView();
+                }
+                break;
+        }
     }
 }

@@ -5,391 +5,311 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
+import org.chromium.support_lib_boundary.WebSettingsBoundaryInterface;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class a33 extends h33 {
     public final /* synthetic */ int r;
 
-    public /* synthetic */ a33(int r1, boolean r2) {
-        this.r = r1;
-        super(r2);
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public /* synthetic */ a33(int i, boolean z) {
+        super(z);
+        this.r = i;
     }
 
-    public static int[] g(String r1) {
-        r1.getClass();
-        return new int[]{((Number) h33.b.d(r1)).intValue()};
+    public static int[] g(String str) {
+        str.getClass();
+        return new int[]{((Number) h33.b.d(str)).intValue()};
     }
 
-    public static long[] h(String r3) {
-        r3.getClass();
-        return new long[]{((Number) h33.f.d(r3)).longValue()};
+    public static long[] h(String str) {
+        str.getClass();
+        return new long[]{((Number) h33.f.d(str)).longValue()};
     }
 
-    public static boolean[] i(String r2) {
-        r2.getClass();
-        return new boolean[]{((Boolean) h33.l.d(r2)).booleanValue()};
+    public static boolean[] i(String str) {
+        str.getClass();
+        return new boolean[]{((Boolean) h33.l.d(str)).booleanValue()};
     }
 
     @Override // defpackage.h33
-    public final Object a(String r3, Bundle r4) {
-        switch(this.r) {
-            case 0: goto L40;
-            case 1: goto L36;
-            case 2: goto L34;
-            case 3: goto L30;
-            case 4: goto L28;
-            case 5: goto L16;
-            case 6: goto L14;
-            case 7: goto L10;
-            case 8: goto L8;
-            default: goto L4;
-        };
-    L4:
-        r4.getClass();
-        r3.getClass();
-        String[] r2 = (String[]) r4.get(r3);
-        if (r2 != null) goto L7;
-        return null;
-    L7:
-        return ti.r0(r2);
-    L8:
-        r4.getClass();
-        r3.getClass();
-        return (String[]) r4.get(r3);
-    L10:
-        r4.getClass();
-        r3.getClass();
-        long[] r5 = (long[]) r4.get(r3);
-        if (r5 != null) goto L13;
-        return null;
-    L13:
-        return ti.q0(r5);
-    L14:
-        r4.getClass();
-        r3.getClass();
-        return (long[]) r4.get(r3);
-    L16:
-        r4.getClass();
-        r3.getClass();
-        int[] r6 = (int[]) r4.get(r3);
-        if (r6 == null) goto L45;
-        int r7 = r6.length;
-        if (r7 == 0) goto L27;
-        int r8 = 0;
-        if (r7 == 1) goto L46;
-        ArrayList r0 = new ArrayList(r6.length);
-        int r9 = r6.length;
-    L23:
-        if (r8 >= r9) goto L47;
-        r0.add(Integer.valueOf(r6[r8]));
-        r8 = r8 + 1;
-        goto L23
-    L47:
-        return r0;
-    L46:
-        return gb.O(Integer.valueOf(r6[0]));
-    L27:
-        return u01.n;
-    L45:
-        return null;
-    L28:
-        r4.getClass();
-        r3.getClass();
-        return (int[]) r4.get(r3);
-    L30:
-        r4.getClass();
-        r3.getClass();
-        float[] r10 = (float[]) r4.get(r3);
-        if (r10 != null) goto L33;
-        return null;
-    L33:
-        return ti.p0(r10);
-    L34:
-        r4.getClass();
-        r3.getClass();
-        return (float[]) r4.get(r3);
-    L36:
-        r4.getClass();
-        r3.getClass();
-        boolean[] r11 = (boolean[]) r4.get(r3);
-        if (r11 != null) goto L39;
-        return null;
-    L39:
-        return ti.s0(r11);
-    L40:
-        r4.getClass();
-        r3.getClass();
-        return (boolean[]) r4.get(r3);
+    public final Object a(String str, Bundle bundle) {
+        switch (this.r) {
+            case 0:
+                bundle.getClass();
+                str.getClass();
+                return (boolean[]) bundle.get(str);
+            case 1:
+                bundle.getClass();
+                str.getClass();
+                boolean[] zArr = (boolean[]) bundle.get(str);
+                if (zArr != null) {
+                    return ti.s0(zArr);
+                }
+                return null;
+            case 2:
+                bundle.getClass();
+                str.getClass();
+                return (float[]) bundle.get(str);
+            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
+                bundle.getClass();
+                str.getClass();
+                float[] fArr = (float[]) bundle.get(str);
+                if (fArr != null) {
+                    return ti.p0(fArr);
+                }
+                return null;
+            case 4:
+                bundle.getClass();
+                str.getClass();
+                return (int[]) bundle.get(str);
+            case 5:
+                bundle.getClass();
+                str.getClass();
+                int[] iArr = (int[]) bundle.get(str);
+                if (iArr == null) {
+                    return null;
+                }
+                int length = iArr.length;
+                if (length == 0) {
+                    return u01.n;
+                }
+                if (length == 1) {
+                    return gb.O(Integer.valueOf(iArr[0]));
+                }
+                ArrayList arrayList = new ArrayList(iArr.length);
+                for (int i : iArr) {
+                    arrayList.add(Integer.valueOf(i));
+                }
+                return arrayList;
+            case 6:
+                bundle.getClass();
+                str.getClass();
+                return (long[]) bundle.get(str);
+            case 7:
+                bundle.getClass();
+                str.getClass();
+                long[] jArr = (long[]) bundle.get(str);
+                if (jArr != null) {
+                    return ti.q0(jArr);
+                }
+                return null;
+            case 8:
+                bundle.getClass();
+                str.getClass();
+                return (String[]) bundle.get(str);
+            default:
+                bundle.getClass();
+                str.getClass();
+                String[] strArr = (String[]) bundle.get(str);
+                if (strArr != null) {
+                    return ti.r0(strArr);
+                }
+                return null;
+        }
     }
 
     @Override // defpackage.h33
     public final String b() {
-        switch(this.r) {
-            case 0: goto L22;
-            case 1: goto L20;
-            case 2: goto L18;
-            case 3: goto L16;
-            case 4: goto L14;
-            case 5: goto L12;
-            case 6: goto L10;
-            case 7: goto L8;
-            case 8: goto L6;
-            default: goto L4;
-        };
-    L4:
-        return "List<String>";
-    L6:
-        return "string[]";
-    L8:
-        return "List<Long>";
-    L10:
-        return "long[]";
-    L12:
-        return "List<Int>";
-    L14:
-        return "integer[]";
-    L16:
-        return "List<Float>";
-    L18:
-        return "float[]";
-    L20:
-        return "List<Boolean>";
-    L22:
-        return "boolean[]";
+        switch (this.r) {
+            case 0:
+                return "boolean[]";
+            case 1:
+                return "List<Boolean>";
+            case 2:
+                return "float[]";
+            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
+                return "List<Float>";
+            case 4:
+                return "integer[]";
+            case 5:
+                return "List<Int>";
+            case 6:
+                return "long[]";
+            case 7:
+                return "List<Long>";
+            case 8:
+                return "string[]";
+            default:
+                return "List<String>";
+        }
     }
 
     @Override // defpackage.h33
-    public final Object c(Object r4, String r5) {
-        switch(this.r) {
-            case 0: goto L49;
-            case 1: goto L44;
-            case 2: goto L39;
-            case 3: goto L34;
-            case 4: goto L29;
-            case 5: goto L24;
-            case 6: goto L19;
-            case 7: goto L14;
-            case 8: goto L9;
-            default: goto L4;
-        };
-    L4:
-        List r6 = (List) r4;
-        if (r6 == null) goto L8;
-        return q40.G0(r6, gb.O(r5));
-    L8:
-        return gb.O(r5);
-    L9:
-        String[] r7 = (String[]) r4;
-        if (r7 == null) goto L13;
-        String[] r3 = {r5};
-        int r8 = r7.length;
-        Object[] r9 = Arrays.copyOf(r7, r8 + 1);
-        System.arraycopy(r3, 0, r9, r8, 1);
-        return (String[]) r9;
-    L13:
-        return new String[]{r5};
-    L14:
-        List r10 = (List) r4;
-        b33 r11 = h33.f;
-        if (r10 == null) goto L18;
-        return q40.G0(r10, gb.O(r11.d(r5)));
-    L18:
-        return gb.O(r11.d(r5));
-    L19:
-        long[] r12 = (long[]) r4;
-        if (r12 == null) goto L23;
-        long[] r13 = h(r5);
-        int r14 = r12.length;
-        long[] r15 = Arrays.copyOf(r12, r14 + 1);
-        System.arraycopy(r13, 0, r15, r14, 1);
-        return r15;
-    L23:
-        return h(r5);
-    L24:
-        List r16 = (List) r4;
-        b33 r17 = h33.b;
-        if (r16 == null) goto L28;
-        return q40.G0(r16, gb.O(r17.d(r5)));
-    L28:
-        return gb.O(r17.d(r5));
-    L29:
-        int[] r18 = (int[]) r4;
-        if (r18 == null) goto L33;
-        int[] r19 = g(r5);
-        int r20 = r18.length;
-        int[] r21 = Arrays.copyOf(r18, r20 + 1);
-        System.arraycopy(r19, 0, r21, r20, 1);
-        return r21;
-    L33:
-        return g(r5);
-    L34:
-        List r22 = (List) r4;
-        if (r22 == null) goto L38;
-        return q40.G0(r22, gb.O(Float.valueOf(Float.parseFloat(r5))));
-    L38:
-        return gb.O(Float.valueOf(Float.parseFloat(r5)));
-    L39:
-        float[] r23 = (float[]) r4;
-        if (r23 == null) goto L43;
-        float[] r24 = {Float.parseFloat(r5)};
-        int r25 = r23.length;
-        float[] r26 = Arrays.copyOf(r23, r25 + 1);
-        System.arraycopy(r24, 0, r26, r25, 1);
-        return r26;
-    L43:
-        return new float[]{Float.parseFloat(r5)};
-    L44:
-        List r27 = (List) r4;
-        b33 r28 = h33.l;
-        if (r27 == null) goto L48;
-        return q40.G0(r27, gb.O(r28.d(r5)));
-    L48:
-        return gb.O(r28.d(r5));
-    L49:
-        boolean[] r29 = (boolean[]) r4;
-        if (r29 == null) goto L53;
-        boolean[] r30 = i(r5);
-        int r31 = r29.length;
-        boolean[] r32 = Arrays.copyOf(r29, r31 + 1);
-        System.arraycopy(r30, 0, r32, r31, 1);
-        return r32;
-    L53:
-        return i(r5);
+    public final Object c(Object obj, String str) {
+        switch (this.r) {
+            case 0:
+                boolean[] zArr = (boolean[]) obj;
+                if (zArr == null) {
+                    return i(str);
+                }
+                boolean[] zArrI = i(str);
+                int length = zArr.length;
+                boolean[] zArrCopyOf = Arrays.copyOf(zArr, length + 1);
+                System.arraycopy(zArrI, 0, zArrCopyOf, length, 1);
+                return zArrCopyOf;
+            case 1:
+                List list = (List) obj;
+                b33 b33Var = h33.l;
+                return list != null ? q40.G0(list, gb.O(b33Var.d(str))) : gb.O(b33Var.d(str));
+            case 2:
+                float[] fArr = (float[]) obj;
+                if (fArr == null) {
+                    return new float[]{Float.parseFloat(str)};
+                }
+                float[] fArr2 = {Float.parseFloat(str)};
+                int length2 = fArr.length;
+                float[] fArrCopyOf = Arrays.copyOf(fArr, length2 + 1);
+                System.arraycopy(fArr2, 0, fArrCopyOf, length2, 1);
+                return fArrCopyOf;
+            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
+                List list2 = (List) obj;
+                return list2 != null ? q40.G0(list2, gb.O(Float.valueOf(Float.parseFloat(str)))) : gb.O(Float.valueOf(Float.parseFloat(str)));
+            case 4:
+                int[] iArr = (int[]) obj;
+                if (iArr == null) {
+                    return g(str);
+                }
+                int[] iArrG = g(str);
+                int length3 = iArr.length;
+                int[] iArrCopyOf = Arrays.copyOf(iArr, length3 + 1);
+                System.arraycopy(iArrG, 0, iArrCopyOf, length3, 1);
+                return iArrCopyOf;
+            case 5:
+                List list3 = (List) obj;
+                b33 b33Var2 = h33.b;
+                return list3 != null ? q40.G0(list3, gb.O(b33Var2.d(str))) : gb.O(b33Var2.d(str));
+            case 6:
+                long[] jArr = (long[]) obj;
+                if (jArr == null) {
+                    return h(str);
+                }
+                long[] jArrH = h(str);
+                int length4 = jArr.length;
+                long[] jArrCopyOf = Arrays.copyOf(jArr, length4 + 1);
+                System.arraycopy(jArrH, 0, jArrCopyOf, length4, 1);
+                return jArrCopyOf;
+            case 7:
+                List list4 = (List) obj;
+                b33 b33Var3 = h33.f;
+                return list4 != null ? q40.G0(list4, gb.O(b33Var3.d(str))) : gb.O(b33Var3.d(str));
+            case 8:
+                String[] strArr = (String[]) obj;
+                if (strArr == null) {
+                    return new String[]{str};
+                }
+                String[] strArr2 = {str};
+                int length5 = strArr.length;
+                Object[] objArrCopyOf = Arrays.copyOf(strArr, length5 + 1);
+                System.arraycopy(strArr2, 0, objArrCopyOf, length5, 1);
+                return (String[]) objArrCopyOf;
+            default:
+                List list5 = (List) obj;
+                return list5 != null ? q40.G0(list5, gb.O(str)) : gb.O(str);
+        }
     }
 
     @Override // defpackage.h33
-    public final Object d(String r2) {
-        switch(this.r) {
-            case 0: goto L23;
-            case 1: goto L20;
-            case 2: goto L18;
-            case 3: goto L16;
-            case 4: goto L15;
-            case 5: goto L12;
-            case 6: goto L11;
-            case 7: goto L8;
-            case 8: goto L6;
-            default: goto L4;
-        };
-    L4:
-        r2.getClass();
-        return gb.O(r2);
-    L6:
-        r2.getClass();
-        return new String[]{r2};
-    L8:
-        r2.getClass();
-        return gb.O(h33.f.d(r2));
-    L12:
-        r2.getClass();
-        return gb.O(h33.b.d(r2));
-    L16:
-        r2.getClass();
-        return gb.O(Float.valueOf(Float.parseFloat(r2)));
-    L18:
-        r2.getClass();
-        return new float[]{Float.parseFloat(r2)};
-    L20:
-        r2.getClass();
-        return gb.O(h33.l.d(r2));
-    L11:
-        return h(r2);
-    L15:
-        return g(r2);
-    L23:
-        return i(r2);
+    public final Object d(String str) {
+        switch (this.r) {
+            case 0:
+                return i(str);
+            case 1:
+                str.getClass();
+                return gb.O(h33.l.d(str));
+            case 2:
+                str.getClass();
+                return new float[]{Float.parseFloat(str)};
+            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
+                str.getClass();
+                return gb.O(Float.valueOf(Float.parseFloat(str)));
+            case 4:
+                return g(str);
+            case 5:
+                str.getClass();
+                return gb.O(h33.b.d(str));
+            case 6:
+                return h(str);
+            case 7:
+                str.getClass();
+                return gb.O(h33.f.d(str));
+            case 8:
+                str.getClass();
+                return new String[]{str};
+            default:
+                str.getClass();
+                return gb.O(str);
+        }
     }
 
     @Override // defpackage.h33
-    public final void e(Bundle r5, String r6, Object r7) {
-        int r0 = 0;
-        boolean[] r1 = null;
-        String[] r2 = null;
-        long[] r3 = null;
-        int[] r4 = null;
-        float[] r8 = null;
-        switch(this.r) {
-            case 0: goto L43;
-            case 1: goto L38;
-            case 2: goto L36;
-            case 3: goto L28;
-            case 4: goto L26;
-            case 5: goto L21;
-            case 6: goto L19;
-            case 7: goto L11;
-            case 8: goto L9;
-            default: goto L4;
-        };
-    L4:
-        List r9 = (List) r7;
-        r6.getClass();
-        if (r9 == null) goto L7;
-        r2 = (String[]) r9.toArray(new String[0]);
-    L7:
-        r5.putStringArray(r6, r2);
-        return;
-    L9:
-        r6.getClass();
-        r5.putStringArray(r6, (String[]) r7);
-        return;
-    L11:
-        List r10 = (List) r7;
-        r6.getClass();
-        if (r10 == null) goto L17;
-        r3 = new long[r10.size()];
-        Iterator r11 = r10.iterator();
-    L15:
-        if (r11.hasNext() == false) goto L17;
-        long r12 = ((Number) r11.next()).longValue();
-        r3[r0] = r12;
-        r0 = r0 + 1;
-    L17:
-        r5.putLongArray(r6, r3);
-        return;
-    L19:
-        r6.getClass();
-        r5.putLongArray(r6, (long[]) r7);
-        return;
-    L21:
-        List r13 = (List) r7;
-        r6.getClass();
-        if (r13 == null) goto L24;
-        r4 = q40.P0(r13);
-    L24:
-        r5.putIntArray(r6, r4);
-        return;
-    L26:
-        r6.getClass();
-        r5.putIntArray(r6, (int[]) r7);
-        return;
-    L28:
-        List r14 = (List) r7;
-        r6.getClass();
-        if (r14 == null) goto L34;
-        r8 = new float[r14.size()];
-        Iterator r15 = r14.iterator();
-    L32:
-        if (r15.hasNext() == false) goto L34;
-        r8[r0] = ((Number) r15.next()).floatValue();
-        r0 = r0 + 1;
-    L34:
-        r5.putFloatArray(r6, r8);
-        return;
-    L36:
-        r6.getClass();
-        r5.putFloatArray(r6, (float[]) r7);
-        return;
-    L38:
-        List r16 = (List) r7;
-        r6.getClass();
-        if (r16 == null) goto L41;
-        r1 = q40.N0(r16);
-    L41:
-        r5.putBooleanArray(r6, r1);
-        return;
-    L43:
-        r6.getClass();
-        r5.putBooleanArray(r6, (boolean[]) r7);
+    public final void e(Bundle bundle, String str, Object obj) {
+        int i = 0;
+        long[] jArr = null;
+        float[] fArr = null;
+        switch (this.r) {
+            case 0:
+                str.getClass();
+                bundle.putBooleanArray(str, (boolean[]) obj);
+                break;
+            case 1:
+                List list = (List) obj;
+                str.getClass();
+                bundle.putBooleanArray(str, list != null ? q40.N0(list) : null);
+                break;
+            case 2:
+                str.getClass();
+                bundle.putFloatArray(str, (float[]) obj);
+                break;
+            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
+                List list2 = (List) obj;
+                str.getClass();
+                if (list2 != null) {
+                    fArr = new float[list2.size()];
+                    Iterator it = list2.iterator();
+                    while (it.hasNext()) {
+                        fArr[i] = ((Number) it.next()).floatValue();
+                        i++;
+                    }
+                }
+                bundle.putFloatArray(str, fArr);
+                break;
+            case 4:
+                str.getClass();
+                bundle.putIntArray(str, (int[]) obj);
+                break;
+            case 5:
+                List list3 = (List) obj;
+                str.getClass();
+                bundle.putIntArray(str, list3 != null ? q40.P0(list3) : null);
+                break;
+            case 6:
+                str.getClass();
+                bundle.putLongArray(str, (long[]) obj);
+                break;
+            case 7:
+                List list4 = (List) obj;
+                str.getClass();
+                if (list4 != null) {
+                    jArr = new long[list4.size()];
+                    Iterator it2 = list4.iterator();
+                    while (it2.hasNext()) {
+                        jArr[i] = ((Number) it2.next()).longValue();
+                        i++;
+                    }
+                }
+                bundle.putLongArray(str, jArr);
+                break;
+            case 8:
+                str.getClass();
+                bundle.putStringArray(str, (String[]) obj);
+                break;
+            default:
+                List list5 = (List) obj;
+                str.getClass();
+                bundle.putStringArray(str, list5 != null ? (String[]) list5.toArray(new String[0]) : null);
+                break;
+        }
     }
 }

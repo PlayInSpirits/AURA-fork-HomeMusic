@@ -1,6 +1,7 @@
 package com.eddyizm.tempus.homemusic;
 
 import defpackage.h12;
+import defpackage.kk1;
 import defpackage.qm4;
 import defpackage.vr1;
 import defpackage.xm4;
@@ -14,95 +15,90 @@ import java.util.Map;
 /* JADX INFO: loaded from: classes.dex */
 public final class SmartContexts {
     public static final int $stable = 0;
-    public static final SmartContexts INSTANCE = null;
+    public static final SmartContexts INSTANCE = new SmartContexts();
     public static final String LIKED = "liked";
-
-    static {
-        INSTANCE = new SmartContexts();
-    }
 
     private SmartContexts() {
     }
 
-    public final String dominant(List<String> r6) {
-        r6.getClass();
-        Object r0 = null;
-        if (r6.isEmpty() == true) goto L25;
-        final ArrayList r5 = new ArrayList();
-        Iterator<T> r1 = r6.iterator();
-    L7:
-        if (r1.hasNext() == false) goto L11;
-        Object r2 = r1.next();
-        if (r2 == null) goto L7;
-        r5.add(r2);
-        goto L7
-    L11:
-        Iterator r7 = vr1.m(new SmartContexts$dominant$$inlined$groupingBy$1(r5)).entrySet().iterator();
-        if (r7.hasNext() == true) goto L14;
-        Object r3 = null;
-    L23:
-        Map.Entry r4 = (Map.Entry) r3;
-        if (r4 == null) goto L25;
-        Object r8 = r4.getKey();
-        String r9 = (String) r8;
-        if ((((Number) r4.getValue()).intValue() * 2) <= r6.size()) goto L32;
-        if (INSTANCE.offered(r9) == false) goto L32;
-        r0 = r8;
-    L32:
-        return (String) r0;
-    L14:
-        r3 = r7.next();
-        if (r7.hasNext() == false) goto L23;
-        int r10 = ((Number) ((Map.Entry) r3).getValue()).intValue();
-    L18:
-        Object r11 = r7.next();
-        int r12 = ((Number) ((Map.Entry) r11).getValue()).intValue();
-        if (r10 >= r12) goto L22;
-        r3 = r11;
-        r10 = r12;
-    L22:
-        if (r7.hasNext() == true) goto L18;
-    L25:
+    public final String dominant(List<String> list) {
+        Object next;
+        list.getClass();
+        Object obj = null;
+        if (!list.isEmpty()) {
+            final ArrayList arrayList = new ArrayList();
+            for (Object obj2 : list) {
+                if (obj2 != null) {
+                    arrayList.add(obj2);
+                }
+            }
+            Iterator it = vr1.m(new kk1() { // from class: com.eddyizm.tempus.homemusic.SmartContexts$dominant$$inlined$groupingBy$1
+                @Override // defpackage.kk1
+                public String keyOf(String str) {
+                    return str;
+                }
+
+                @Override // defpackage.kk1
+                public Iterator<String> sourceIterator() {
+                    return arrayList.iterator();
+                }
+            }).entrySet().iterator();
+            if (it.hasNext()) {
+                next = it.next();
+                if (it.hasNext()) {
+                    int iIntValue = ((Number) ((Map.Entry) next).getValue()).intValue();
+                    do {
+                        Object next2 = it.next();
+                        int iIntValue2 = ((Number) ((Map.Entry) next2).getValue()).intValue();
+                        if (iIntValue < iIntValue2) {
+                            next = next2;
+                            iIntValue = iIntValue2;
+                        }
+                    } while (it.hasNext());
+                }
+            } else {
+                next = null;
+            }
+            Map.Entry entry = (Map.Entry) next;
+            if (entry != null) {
+                Object key = entry.getKey();
+                String str = (String) key;
+                if (((Number) entry.getValue()).intValue() * 2 > list.size() && INSTANCE.offered(str)) {
+                    obj = key;
+                }
+                return (String) obj;
+            }
+        }
         return null;
     }
 
-    public final String hubId(String r1) {
-        r1.getClass();
-        return qm4.z0(r1, "hub:");
+    public final String hubId(String str) {
+        str.getClass();
+        return qm4.z0(str, "hub:");
     }
 
-    public final String mediaId(String r1) {
-        r1.getClass();
-        if (qm4.n0(r1, ':') == true) goto L5;
-        return r1;
-    L5:
-        return "hub:".concat(r1);
+    public final String mediaId(String str) {
+        str.getClass();
+        return qm4.n0(str, ':') ? "hub:".concat(str) : str;
     }
 
-    public final boolean offered(String r3) {
-        if (h12.c(r3, LIKED) == false) goto L5;
-        return true;
-    L5:
-        if (r3 != null) goto L7;
-    L19:
+    public final boolean offered(String str) {
+        int length;
+        if (h12.c(str, LIKED)) {
+            return true;
+        }
+        if (str != null && xm4.k0(str, "playlist:", false) && 10 <= (length = str.length()) && length < 74) {
+            for (int i = 0; i < str.length(); i++) {
+                if (!ya4.y(str.charAt(i))) {
+                }
+            }
+            return true;
+        }
         return false;
-    L7:
-        if (xm4.k0(r3, "playlist:", false) == false) goto L19;
-        int r0 = r3.length();
-        if (10 > r0) goto L19;
-        if (r0 >= 74) goto L19;
-        int r1 = 0;
-    L14:
-        if (r1 >= r3.length()) goto L24;
-        if (ya4.y(r3.charAt(r1)) == true) goto L19;
-        r1 = r1 + 1;
-        goto L14
-    L24:
-        return true;
     }
 
-    public final String recommendation(String r1) {
-        r1.getClass();
-        return "smart:".concat(r1);
+    public final String recommendation(String str) {
+        str.getClass();
+        return "smart:".concat(str);
     }
 }

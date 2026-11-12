@@ -8,22 +8,20 @@ public final /* synthetic */ class xk implements go4 {
     public final /* synthetic */ int n;
     public final /* synthetic */ int o;
 
-    public /* synthetic */ xk(int r1, int r2) {
-        this.n = r2;
-        this.o = r1;
+    public /* synthetic */ xk(int i, int i2) {
+        this.n = i2;
+        this.o = i;
     }
 
     @Override // defpackage.go4
     public final Object get() {
-        int r0 = this.n;
-        int r2 = this.o;
-        switch(r0) {
-            case 0: goto L7;
-            default: goto L5;
-        };
-    L5:
-        return new HandlerThread(yk.o(r2, "ExoPlayer:MediaCodecQueueingThread:"));
-    L7:
-        return new HandlerThread(yk.o(r2, "ExoPlayer:MediaCodecAsyncAdapter:"));
+        int i = this.n;
+        int i2 = this.o;
+        switch (i) {
+            case 0:
+                return new HandlerThread(yk.o(i2, "ExoPlayer:MediaCodecAsyncAdapter:"));
+            default:
+                return new HandlerThread(yk.o(i2, "ExoPlayer:MediaCodecQueueingThread:"));
+        }
     }
 }

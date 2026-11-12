@@ -10,31 +10,25 @@ public final class ve {
     public final le c;
     public final String d;
 
-    public ve(rf2 r1, le r2, String r3) {
-        this.b = r1;
-        this.c = r2;
-        this.d = r3;
-        this.a = Arrays.hashCode(new Object[]{r1, r2, r3});
+    public ve(rf2 rf2Var, le leVar, String str) {
+        this.b = rf2Var;
+        this.c = leVar;
+        this.d = str;
+        this.a = Arrays.hashCode(new Object[]{rf2Var, leVar, str});
     }
 
-    public final boolean equals(Object r5) {
-        if (r5 != null) goto L6;
-        return false;
-    L6:
-        if (r5 != this) goto L9;
-        return true;
-    L9:
-        if ((r5 instanceof ve) == true) goto L11;
-        return false;
-    L11:
-        ve r6 = (ve) r5;
-        if (au0.n(this.b, r6.b) == true) goto L14;
-    L18:
-        return false;
-    L14:
-        if (au0.n(this.c, r6.c) == false) goto L18;
-        if (au0.n(this.d, r6.d) == false) goto L18;
-        return true;
+    public final boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (obj == this) {
+            return true;
+        }
+        if (!(obj instanceof ve)) {
+            return false;
+        }
+        ve veVar = (ve) obj;
+        return au0.n(this.b, veVar.b) && au0.n(this.c, veVar.c) && au0.n(this.d, veVar.d);
     }
 
     public final int hashCode() {

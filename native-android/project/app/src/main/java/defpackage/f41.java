@@ -7,10 +7,10 @@ public final class f41 implements tt2 {
     public final rg2 b;
     public cu4 c;
 
-    public f41(Object r1, rg2 r2) {
-        this.a = r1;
-        this.b = r2;
-        this.c = r2.o;
+    public f41(Object obj, rg2 rg2Var) {
+        this.a = obj;
+        this.b = rg2Var;
+        this.c = rg2Var.o;
     }
 
     @Override // defpackage.tt2

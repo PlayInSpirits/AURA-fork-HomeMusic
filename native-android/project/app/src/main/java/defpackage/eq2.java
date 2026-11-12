@@ -17,16 +17,17 @@ public final class eq2 extends cx3 {
     public final float y;
     public wq2 z;
 
-    public eq2(jq2 r3, View r4) {
-        this.A = r3;
-        super(r4);
-        this.u = r4;
-        this.v = (ImageView) r4.findViewById(R.id.mr_cast_group_icon);
-        ProgressBar r0 = (ProgressBar) r4.findViewById(R.id.mr_cast_group_progress_bar);
-        this.w = r0;
-        this.x = (TextView) r4.findViewById(R.id.mr_cast_group_name);
-        lq2 r5 = r3.z;
-        this.y = fu.v(r5.B);
-        fu.M(r5.B, r0);
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public eq2(jq2 jq2Var, View view) {
+        super(view);
+        this.A = jq2Var;
+        this.u = view;
+        this.v = (ImageView) view.findViewById(R.id.mr_cast_group_icon);
+        ProgressBar progressBar = (ProgressBar) view.findViewById(R.id.mr_cast_group_progress_bar);
+        this.w = progressBar;
+        this.x = (TextView) view.findViewById(R.id.mr_cast_group_name);
+        lq2 lq2Var = jq2Var.z;
+        this.y = fu.v(lq2Var.B);
+        fu.M(lq2Var.B, progressBar);
     }
 }

@@ -5,8 +5,8 @@ package defpackage;
 public final class av3 extends uk {
     public final /* synthetic */ bv3 m;
 
-    public av3(bv3 r1) {
-        this.m = r1;
+    public av3(bv3 bv3Var) {
+        this.m = bv3Var;
     }
 
     @Override // defpackage.uk

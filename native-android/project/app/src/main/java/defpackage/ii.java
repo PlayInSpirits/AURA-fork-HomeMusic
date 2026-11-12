@@ -8,28 +8,23 @@ import java.util.Iterator;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class ii extends v1 {
-    public static final Object[] q = null;
+    public static final Object[] q = new Object[0];
     public int n;
     public Object[] o;
     public int p;
 
-    static {
-        q = new Object[0];
-    }
-
-    public ii(int r1) {
-        if (r1 != 0) goto L5;
-        Object[] r2 = q;
-    L7:
-        this.o = r2;
-        return;
-    L5:
-        if (r1 <= 0) goto L9;
-        r2 = new Object[r1];
-        goto L7
-    L9:
-        kf2.n(f34.f(r1, "Illegal Capacity: "));
-        throw null;
+    public ii(int i) {
+        Object[] objArr;
+        if (i == 0) {
+            objArr = q;
+        } else {
+            if (i <= 0) {
+                kf2.n(f34.f(i, "Illegal Capacity: "));
+                throw null;
+            }
+            objArr = new Object[i];
+        }
+        this.o = objArr;
     }
 
     @Override // defpackage.v1
@@ -38,433 +33,376 @@ public final class ii extends v1 {
     }
 
     @Override // java.util.AbstractList, java.util.List
-    public final void add(int r8, Object r9) {
-        int r0 = this.p;
-        if (r8 < 0) goto L31;
-        if (r8 > r0) goto L31;
-        if (r8 != r0) goto L8;
-        addLast(r9);
-        return;
-    L8:
-        if (r8 != 0) goto L11;
-        addFirst(r9);
-        return;
-    L11:
+    public final void add(int i, Object obj) {
+        int length;
+        int i2 = this.p;
+        if (i < 0 || i > i2) {
+            kf2.h(xa3.e(i, i2, "index: ", ", size: "));
+            return;
+        }
+        if (i == i2) {
+            addLast(obj);
+            return;
+        }
+        if (i == 0) {
+            addFirst(obj);
+            return;
+        }
         k();
         e(this.p + 1);
-        int r1 = j(this.n + r8);
-        int r2 = this.p;
-        if (r8 >= ((r2 + 1) >> 1)) goto L24;
-        if (r1 != 0) goto L15;
-        Object[] r10 = this.o;
-        r10.getClass();
-        int r11 = r10.length - 1;
-    L16:
-        int r3 = this.n;
-        if (r3 != 0) goto L19;
-        Object[] r4 = this.o;
-        r4.getClass();
-        r3 = r4.length;
-    L19:
-        int r5 = r3 - 1;
-        int r6 = this.n;
-        Object[] r7 = this.o;
-        if (r11 < r6) goto L22;
-        r7[r5] = r7[r6];
-        ti.Z(r6, r6 + 1, r11 + 1, r7, r7);
-    L23:
-        this.o[r11] = r9;
-        this.n = r5;
-    L29:
+        int iJ = j(this.n + i);
+        int i3 = this.p;
+        if (i < ((i3 + 1) >> 1)) {
+            if (iJ == 0) {
+                Object[] objArr = this.o;
+                objArr.getClass();
+                length = objArr.length - 1;
+            } else {
+                length = iJ - 1;
+            }
+            int length2 = this.n;
+            if (length2 == 0) {
+                Object[] objArr2 = this.o;
+                objArr2.getClass();
+                length2 = objArr2.length;
+            }
+            int i4 = length2 - 1;
+            int i5 = this.n;
+            Object[] objArr3 = this.o;
+            if (length >= i5) {
+                objArr3[i4] = objArr3[i5];
+                ti.Z(i5, i5 + 1, length + 1, objArr3, objArr3);
+            } else {
+                ti.Z(i5 - 1, i5, objArr3.length, objArr3, objArr3);
+                Object[] objArr4 = this.o;
+                objArr4[objArr4.length - 1] = objArr4[0];
+                ti.Z(0, 1, length + 1, objArr4, objArr4);
+            }
+            this.o[length] = obj;
+            this.n = i4;
+        } else {
+            int iJ2 = j(i3 + this.n);
+            Object[] objArr5 = this.o;
+            if (iJ < iJ2) {
+                ti.Z(iJ + 1, iJ, iJ2, objArr5, objArr5);
+            } else {
+                ti.Z(1, 0, iJ2, objArr5, objArr5);
+                Object[] objArr6 = this.o;
+                objArr6[0] = objArr6[objArr6.length - 1];
+                ti.Z(iJ + 1, iJ, objArr6.length - 1, objArr6, objArr6);
+            }
+            this.o[iJ] = obj;
+        }
         this.p++;
-        return;
-    L22:
-        ti.Z(r6 - 1, r6, r7.length, r7, r7);
-        Object[] r12 = this.o;
-        r12[r12.length - 1] = r12[0];
-        ti.Z(0, 1, r11 + 1, r12, r12);
-        goto L23
-    L15:
-        r11 = r1 - 1;
-        goto L16
-    L24:
-        int r13 = j(r2 + this.n);
-        Object[] r14 = this.o;
-        if (r1 >= r13) goto L27;
-        ti.Z(r1 + 1, r1, r13, r14, r14);
-    L28:
-        this.o[r1] = r9;
-        goto L29
-    L27:
-        ti.Z(1, 0, r13, r14, r14);
-        Object[] r15 = this.o;
-        r15[0] = r15[r15.length - 1];
-        ti.Z(r1 + 1, r1, r15.length - 1, r15, r15);
-    L31:
-        kf2.h(xa3.e(r8, r0, "index: ", ", size: "));
     }
 
     @Override // java.util.AbstractList, java.util.List
-    public final boolean addAll(int r9, Collection r10) {
-        r10.getClass();
-        int r0 = this.p;
-        if (r9 < 0) goto L43;
-        if (r9 > r0) goto L43;
-        if (r10.isEmpty() == false) goto L9;
-        return false;
-    L9:
-        if (r9 == this.p) goto L11;
+    public final boolean addAll(int i, Collection collection) {
+        collection.getClass();
+        int i2 = this.p;
+        if (i < 0 || i > i2) {
+            kf2.h(xa3.e(i, i2, "index: ", ", size: "));
+            return false;
+        }
+        if (collection.isEmpty()) {
+            return false;
+        }
+        if (i == this.p) {
+            return addAll(collection);
+        }
         k();
-        int r1 = this.p;
-        e(r10.size() + r1);
-        int r2 = this.n;
-        int r3 = j(this.p + r2);
-        int r4 = j(this.n + r9);
-        int r5 = r10.size();
-        if (r9 >= ((this.p + 1) >> 1)) goto L28;
-        int r11 = this.n;
-        int r6 = r11 - r5;
-        Object[] r7 = this.o;
-        if (r4 < r11) goto L22;
-        if (r6 < 0) goto L18;
-        ti.Z(r6, r11, r4, r7, r7);
-    L26:
-        this.n = r6;
-        d(h(r4 - r5), r10);
+        e(collection.size() + this.p);
+        int iJ = j(this.p + this.n);
+        int iJ2 = j(this.n + i);
+        int size = collection.size();
+        if (i >= ((this.p + 1) >> 1)) {
+            int i3 = iJ2 + size;
+            Object[] objArr = this.o;
+            if (iJ2 < iJ) {
+                int i4 = size + iJ;
+                if (i4 <= objArr.length) {
+                    ti.Z(i3, iJ2, iJ, objArr, objArr);
+                } else if (i3 >= objArr.length) {
+                    ti.Z(i3 - objArr.length, iJ2, iJ, objArr, objArr);
+                } else {
+                    int length = iJ - (i4 - objArr.length);
+                    ti.Z(0, length, iJ, objArr, objArr);
+                    Object[] objArr2 = this.o;
+                    ti.Z(i3, iJ2, length, objArr2, objArr2);
+                }
+            } else {
+                ti.Z(size, 0, iJ, objArr, objArr);
+                Object[] objArr3 = this.o;
+                if (i3 >= objArr3.length) {
+                    ti.Z(i3 - objArr3.length, iJ2, objArr3.length, objArr3, objArr3);
+                } else {
+                    ti.Z(0, objArr3.length - size, objArr3.length, objArr3, objArr3);
+                    Object[] objArr4 = this.o;
+                    ti.Z(i3, iJ2, objArr4.length - size, objArr4, objArr4);
+                }
+            }
+            d(iJ2, collection);
+            return true;
+        }
+        int i5 = this.n;
+        int length2 = i5 - size;
+        Object[] objArr5 = this.o;
+        if (iJ2 < i5) {
+            ti.Z(length2, i5, objArr5.length, objArr5, objArr5);
+            Object[] objArr6 = this.o;
+            if (size >= iJ2) {
+                ti.Z(objArr6.length - size, 0, iJ2, objArr6, objArr6);
+            } else {
+                ti.Z(objArr6.length - size, 0, size, objArr6, objArr6);
+                Object[] objArr7 = this.o;
+                ti.Z(0, size, iJ2, objArr7, objArr7);
+            }
+        } else if (length2 >= 0) {
+            ti.Z(length2, i5, iJ2, objArr5, objArr5);
+        } else {
+            length2 += objArr5.length;
+            int i6 = iJ2 - i5;
+            int length3 = objArr5.length - length2;
+            if (length3 >= i6) {
+                ti.Z(length2, i5, iJ2, objArr5, objArr5);
+            } else {
+                ti.Z(length2, i5, i5 + length3, objArr5, objArr5);
+                Object[] objArr8 = this.o;
+                ti.Z(0, this.n + length3, iJ2, objArr8, objArr8);
+            }
+        }
+        this.n = length2;
+        d(h(iJ2 - size), collection);
         return true;
-    L18:
-        r6 = r6 + r7.length;
-        int r8 = r4 - r11;
-        int r12 = r7.length - r6;
-        if (r12 < r8) goto L21;
-        ti.Z(r6, r11, r4, r7, r7);
-        goto L26
-    L21:
-        ti.Z(r6, r11, r11 + r12, r7, r7);
-        Object[] r13 = this.o;
-        ti.Z(0, this.n + r12, r4, r13, r13);
-        goto L26
-    L22:
-        ti.Z(r6, r11, r7.length, r7, r7);
-        Object[] r14 = this.o;
-        if (r5 < r4) goto L25;
-        ti.Z(r14.length - r5, 0, r4, r14, r14);
-        goto L26
-    L25:
-        ti.Z(r14.length - r5, 0, r5, r14, r14);
-        Object[] r15 = this.o;
-        ti.Z(0, r5, r4, r15, r15);
-        goto L26
-    L28:
-        int r16 = r4 + r5;
-        Object[] r17 = this.o;
-        if (r4 >= r3) goto L37;
-        int r18 = r5 + r3;
-        if (r18 > r17.length) goto L34;
-        ti.Z(r16, r4, r3, r17, r17);
-    L41:
-        d(r4, r10);
-        return true;
-    L34:
-        if (r16 < r17.length) goto L36;
-        ti.Z(r16 - r17.length, r4, r3, r17, r17);
-        goto L41
-    L36:
-        int r19 = r3 - (r18 - r17.length);
-        ti.Z(0, r19, r3, r17, r17);
-        Object[] r20 = this.o;
-        ti.Z(r16, r4, r19, r20, r20);
-        goto L41
-    L37:
-        ti.Z(r5, 0, r3, r17, r17);
-        Object[] r21 = this.o;
-        if (r16 < r21.length) goto L40;
-        ti.Z(r16 - r21.length, r4, r21.length, r21, r21);
-        goto L41
-    L40:
-        ti.Z(0, r21.length - r5, r21.length, r21, r21);
-        Object[] r22 = this.o;
-        ti.Z(r16, r4, r22.length - r5, r22, r22);
-        goto L41
-    L11:
-        return addAll(r10);
-    L43:
-        kf2.h(xa3.e(r9, r0, "index: ", ", size: "));
-        return false;
     }
 
-    public final void addFirst(Object r3) {
+    public final void addFirst(Object obj) {
         k();
         e(this.p + 1);
-        int r0 = this.n;
-        if (r0 != 0) goto L5;
-        Object[] r1 = this.o;
-        r1.getClass();
-        r0 = r1.length;
-    L5:
-        int r2 = r0 - 1;
-        this.n = r2;
-        this.o[r2] = r3;
+        int length = this.n;
+        if (length == 0) {
+            Object[] objArr = this.o;
+            objArr.getClass();
+            length = objArr.length;
+        }
+        int i = length - 1;
+        this.n = i;
+        this.o[i] = obj;
         this.p++;
     }
 
-    public final void addLast(Object r4) {
+    public final void addLast(Object obj) {
         k();
         e(a() + 1);
-        Object[] r0 = this.o;
-        int r1 = this.n;
-        r0[j(a() + r1)] = r4;
+        this.o[j(a() + this.n)] = obj;
         this.p = a() + 1;
     }
 
     @Override // defpackage.v1
-    public final Object b(int r9) {
-        int r0 = this.p;
-        if (r9 < 0) goto L25;
-        if (r9 >= r0) goto L25;
-        if (r9 == (a() - 1)) goto L8;
-        if (r9 == 0) goto L11;
+    public final Object b(int i) {
+        int i2 = this.p;
+        if (i < 0 || i >= i2) {
+            kf2.h(xa3.e(i, i2, "index: ", ", size: "));
+            return null;
+        }
+        if (i == a() - 1) {
+            return removeLast();
+        }
+        if (i == 0) {
+            return removeFirst();
+        }
         k();
-        int r1 = j(this.n + r9);
-        Object[] r3 = this.o;
-        Object r4 = r3[r1];
-        int r5 = this.p >> 1;
-        int r6 = this.n;
-        if (r9 >= r5) goto L18;
-        if (r1 < r6) goto L16;
-        ti.Z(r6 + 1, r6, r1, r3, r3);
-    L17:
-        Object[] r10 = this.o;
-        int r2 = this.n;
-        r10[r2] = null;
-        this.n = f(r2);
-    L23:
+        int iJ = j(this.n + i);
+        Object[] objArr = this.o;
+        Object obj = objArr[iJ];
+        int i3 = this.p >> 1;
+        int i4 = this.n;
+        if (i < i3) {
+            if (iJ >= i4) {
+                ti.Z(i4 + 1, i4, iJ, objArr, objArr);
+            } else {
+                ti.Z(1, 0, iJ, objArr, objArr);
+                Object[] objArr2 = this.o;
+                objArr2[0] = objArr2[objArr2.length - 1];
+                int i5 = this.n;
+                ti.Z(i5 + 1, i5, objArr2.length - 1, objArr2, objArr2);
+            }
+            Object[] objArr3 = this.o;
+            int i6 = this.n;
+            objArr3[i6] = null;
+            this.n = f(i6);
+        } else {
+            int iJ2 = j((a() - 1) + i4);
+            Object[] objArr4 = this.o;
+            if (iJ <= iJ2) {
+                ti.Z(iJ, iJ + 1, iJ2 + 1, objArr4, objArr4);
+            } else {
+                ti.Z(iJ, iJ + 1, objArr4.length, objArr4, objArr4);
+                Object[] objArr5 = this.o;
+                objArr5[objArr5.length - 1] = objArr5[0];
+                ti.Z(0, 1, iJ2 + 1, objArr5, objArr5);
+            }
+            this.o[iJ2] = null;
+        }
         this.p--;
-        return r4;
-    L16:
-        ti.Z(1, 0, r1, r3, r3);
-        Object[] r11 = this.o;
-        r11[0] = r11[r11.length - 1];
-        int r7 = this.n;
-        ti.Z(r7 + 1, r7, r11.length - 1, r11, r11);
-        goto L17
-    L18:
-        int r12 = j((a() - 1) + r6);
-        Object[] r8 = this.o;
-        if (r1 > r12) goto L21;
-        ti.Z(r1, r1 + 1, r12 + 1, r8, r8);
-    L22:
-        this.o[r12] = null;
-        goto L23
-    L21:
-        ti.Z(r1, r1 + 1, r8.length, r8, r8);
-        Object[] r13 = this.o;
-        r13[r13.length - 1] = r13[0];
-        ti.Z(0, 1, r12 + 1, r13, r13);
-        goto L22
-    L11:
-        return removeFirst();
-    L8:
-        return removeLast();
-    L25:
-        kf2.h(xa3.e(r9, r0, "index: ", ", size: "));
-        return null;
+        return obj;
     }
 
     @Override // java.util.AbstractList, java.util.AbstractCollection, java.util.Collection, java.util.List
     public final void clear() {
-        if (isEmpty() == true) goto L5;
-        k();
-        int r0 = this.n;
-        int r1 = j(a() + r0);
-        i(this.n, r1);
-    L5:
+        if (!isEmpty()) {
+            k();
+            i(this.n, j(a() + this.n));
+        }
         this.n = 0;
         this.p = 0;
     }
 
     @Override // java.util.AbstractCollection, java.util.Collection, java.util.List
-    public final boolean contains(Object r1) {
-        if (indexOf(r1) == (-1)) goto L6;
-        return true;
-    L6:
-        return false;
+    public final boolean contains(Object obj) {
+        return indexOf(obj) != -1;
     }
 
-    public final void d(int r5, Collection r6) {
-        Iterator r0 = r6.iterator();
-        int r1 = this.o.length;
-    L3:
-        if (r5 >= r1) goto L7;
-        if (r0.hasNext() == false) goto L7;
-        this.o[r5] = r0.next();
-        r5 = r5 + 1;
-    L7:
-        int r7 = this.n;
-        int r2 = 0;
-    L8:
-        if (r2 >= r7) goto L12;
-        if (r0.hasNext() == false) goto L12;
-        this.o[r2] = r0.next();
-        r2 = r2 + 1;
-    L12:
-        int r8 = this.p;
-        this.p = r6.size() + r8;
+    public final void d(int i, Collection collection) {
+        Iterator it = collection.iterator();
+        int length = this.o.length;
+        while (i < length && it.hasNext()) {
+            this.o[i] = it.next();
+            i++;
+        }
+        int i2 = this.n;
+        for (int i3 = 0; i3 < i2 && it.hasNext(); i3++) {
+            this.o[i3] = it.next();
+        }
+        this.p = collection.size() + this.p;
     }
 
-    public final void e(int r5) {
-        if (r5 < 0) goto L23;
-        Object[] r0 = this.o;
-        if (r5 > r0.length) goto L7;
-        return;
-    L7:
-        if (r0 == q) goto L9;
-        int r1 = r0.length;
-        int r2 = r1 + (r1 >> 1);
-        if ((r2 - r5) >= 0) goto L17;
-        r2 = r5;
-    L17:
-        if ((r2 - 2147483639) <= 0) goto L21;
-        if (r5 <= 2147483639) goto L20;
-        r2 = Integer.MAX_VALUE;
-        goto L21
-    L20:
-        r2 = 2147483639;
-    L21:
-        Object[] r6 = new Object[r2];
-        ti.Z(0, this.n, r0.length, r0, r6);
-        Object[] r3 = this.o;
-        int r4 = r3.length;
-        int r7 = this.n;
-        ti.Z(r4 - r7, 0, r7, r3, r6);
+    public final void e(int i) {
+        if (i < 0) {
+            kf2.o("Deque is too big.");
+            return;
+        }
+        Object[] objArr = this.o;
+        if (i <= objArr.length) {
+            return;
+        }
+        if (objArr == q) {
+            if (i < 10) {
+                i = 10;
+            }
+            this.o = new Object[i];
+            return;
+        }
+        int length = objArr.length;
+        int i2 = length + (length >> 1);
+        if (i2 - i < 0) {
+            i2 = i;
+        }
+        if (i2 - 2147483639 > 0) {
+            i2 = i > 2147483639 ? Integer.MAX_VALUE : 2147483639;
+        }
+        Object[] objArr2 = new Object[i2];
+        ti.Z(0, this.n, objArr.length, objArr, objArr2);
+        Object[] objArr3 = this.o;
+        int length2 = objArr3.length;
+        int i3 = this.n;
+        ti.Z(length2 - i3, 0, i3, objArr3, objArr2);
         this.n = 0;
-        this.o = r6;
-        return;
-    L9:
-        if (r5 >= 10) goto L11;
-        r5 = 10;
-    L11:
-        this.o = new Object[r5];
-        return;
-    L23:
-        kf2.o("Deque is too big.");
+        this.o = objArr2;
     }
 
-    public final int f(int r1) {
-        Object[] r0 = this.o;
-        r0.getClass();
-        if (r1 != (r0.length - 1)) goto L7;
-        return 0;
-    L7:
-        return r1 + 1;
+    public final int f(int i) {
+        Object[] objArr = this.o;
+        objArr.getClass();
+        if (i == objArr.length - 1) {
+            return 0;
+        }
+        return i + 1;
     }
 
     public final Object first() {
-        if (isEmpty() == false) goto L5;
+        if (!isEmpty()) {
+            return this.o[this.n];
+        }
         kf2.m("ArrayDeque is empty.");
         return null;
-    L5:
-        return this.o[this.n];
     }
 
     public final Object g() {
-        if (isEmpty() == false) goto L7;
-        return null;
-    L7:
+        if (isEmpty()) {
+            return null;
+        }
         return this.o[j((size() - 1) + this.n)];
     }
 
     @Override // java.util.AbstractList, java.util.List
-    public final Object get(int r3) {
-        int r0 = a();
-        if (r3 < 0) goto L7;
-        if (r3 >= r0) goto L7;
-        return this.o[j(this.n + r3)];
-    L7:
-        kf2.h(xa3.e(r3, r0, "index: ", ", size: "));
+    public final Object get(int i) {
+        int iA = a();
+        if (i >= 0 && i < iA) {
+            return this.o[j(this.n + i)];
+        }
+        kf2.h(xa3.e(i, iA, "index: ", ", size: "));
         return null;
     }
 
-    public final int h(int r1) {
-        if (r1 < 0) goto L4;
-        return r1;
-    L4:
-        return r1 + this.o.length;
+    public final int h(int i) {
+        return i < 0 ? i + this.o.length : i;
     }
 
-    public final void i(int r4, int r5) {
-        Object[] r0 = this.o;
-        if (r4 >= r5) goto L6;
-        ti.f0(r4, r5, null, r0);
-        return;
-    L6:
-        ti.f0(r4, r0.length, null, r0);
-        ti.f0(0, r5, null, this.o);
+    public final void i(int i, int i2) {
+        Object[] objArr = this.o;
+        if (i < i2) {
+            ti.f0(i, i2, null, objArr);
+        } else {
+            ti.f0(i, objArr.length, null, objArr);
+            ti.f0(0, i2, null, this.o);
+        }
     }
 
     @Override // java.util.AbstractList, java.util.List
-    public final int indexOf(Object r5) {
-        int r0 = this.n;
-        int r1 = j(a() + r0);
-        int r2 = this.n;
-        if (r2 >= r1) goto L12;
-    L4:
-        if (r2 >= r1) goto L36;
-        if (h12.c(r5, this.o[r2]) == true) goto L7;
-        r2 = r2 + 1;
-        goto L4
-    L7:
-        int r4 = this.n;
-    L9:
-        return r2 - r4;
-    L36:
+    public final int indexOf(Object obj) {
+        int i;
+        int iJ = j(a() + this.n);
+        int length = this.n;
+        if (length < iJ) {
+            while (length < iJ) {
+                if (h12.c(obj, this.o[length])) {
+                    i = this.n;
+                } else {
+                    length++;
+                }
+            }
+            return -1;
+        }
+        if (isEmpty() || (length = this.n) < iJ) {
+            return -1;
+        }
+        int length2 = this.o.length;
+        while (length < length2) {
+            if (h12.c(obj, this.o[length])) {
+                i = this.n;
+            } else {
+                length++;
+            }
+        }
+        for (int i2 = 0; i2 < iJ; i2++) {
+            if (h12.c(obj, this.o[i2])) {
+                length = i2 + this.o.length;
+                i = this.n;
+            }
+        }
         return -1;
-    L12:
-        if (isEmpty() == true) goto L27;
-        r2 = this.n;
-        if (r2 < r1) goto L35;
-        int r3 = this.o.length;
-    L16:
-        if (r2 >= r3) goto L21;
-        if (h12.c(r5, this.o[r2]) == true) goto L19;
-        r2 = r2 + 1;
-        goto L16
-    L19:
-        r4 = this.n;
-        goto L9
-    L21:
-        int r6 = 0;
-    L22:
-        if (r6 >= r1) goto L37;
-        if (h12.c(r5, this.o[r6]) == true) goto L25;
-        r6 = r6 + 1;
-        goto L22
-    L25:
-        r2 = r6 + this.o.length;
-        r4 = this.n;
-        goto L9
-    L37:
-        return -1;
-    L35:
-        return -1;
-    L27:
-        return -1;
+        return length - i;
     }
 
     @Override // java.util.AbstractCollection, java.util.Collection, java.util.List
     public final boolean isEmpty() {
-        if (a() != 0) goto L6;
-        return true;
-    L6:
-        return false;
+        return a() == 0;
     }
 
-    public final int j(int r2) {
-        Object[] r1 = this.o;
-        if (r2 >= r1.length) goto L5;
-        return r2;
-    L5:
-        return r2 - r1.length;
+    public final int j(int i) {
+        Object[] objArr = this.o;
+        return i >= objArr.length ? i - objArr.length : i;
     }
 
     public final void k() {
@@ -472,350 +410,327 @@ public final class ii extends v1 {
     }
 
     public final Object last() {
-        if (isEmpty() == false) goto L5;
-        kf2.m("ArrayDeque is empty.");
-        return null;
-    L5:
+        if (isEmpty()) {
+            kf2.m("ArrayDeque is empty.");
+            return null;
+        }
         return this.o[j((size() - 1) + this.n)];
     }
 
     @Override // java.util.AbstractList, java.util.List
-    public final int lastIndexOf(Object r5) {
-        int r0 = j(this.p + this.n);
-        int r1 = this.n;
-        if (r1 >= r0) goto L14;
-        int r2 = r0 - 1;
-        if (r1 <= r2) goto L7;
-    L31:
+    public final int lastIndexOf(Object obj) {
+        Object[] objArr;
+        int length;
+        int i;
+        int iJ = j(this.p + this.n);
+        int i2 = this.n;
+        if (i2 < iJ) {
+            length = iJ - 1;
+            if (i2 <= length) {
+                while (!h12.c(obj, this.o[length])) {
+                    if (length != i2) {
+                        length--;
+                    }
+                }
+                i = this.n;
+                return length - i;
+            }
+            return -1;
+        }
+        if (!isEmpty() && this.n >= iJ) {
+            do {
+                iJ--;
+                objArr = this.o;
+                if (-1 >= iJ) {
+                    objArr.getClass();
+                    length = objArr.length - 1;
+                    int i3 = this.n;
+                    if (i3 <= length) {
+                        while (!h12.c(obj, this.o[length])) {
+                            if (length != i3) {
+                                length--;
+                            }
+                        }
+                        i = this.n;
+                    }
+                }
+                return length - i;
+            } while (!h12.c(obj, objArr[iJ]));
+            length = iJ + this.o.length;
+            i = this.n;
+            return length - i;
+        }
         return -1;
-    L7:
-        if (h12.c(r5, this.o[r2]) == true) goto L8;
-        if (r2 == r1) goto L31;
-        r2 = r2 - 1;
-        goto L7
-    L8:
-        int r4 = this.n;
-    L10:
-        return r2 - r4;
-    L14:
-        if (isEmpty() == true) goto L31;
-        if (this.n < r0) goto L31;
-    L18:
-        r0 = r0 - 1;
-        Object[] r3 = this.o;
-        if ((-1) >= r0) goto L24;
-        if (h12.c(r5, r3[r0]) == false) goto L18;
-        r2 = r0 + this.o.length;
-        r4 = this.n;
-        goto L10
-    L24:
-        r3.getClass();
-        r2 = r3.length - 1;
-        int r6 = this.n;
-        if (r6 > r2) goto L31;
-    L27:
-        if (h12.c(r5, this.o[r2]) == true) goto L28;
-        if (r2 == r6) goto L31;
-        r2 = r2 - 1;
-        goto L27
-    L28:
-        r4 = this.n;
-        goto L10
     }
 
     @Override // java.util.AbstractCollection, java.util.Collection, java.util.List
-    public final boolean remove(Object r2) {
-        int r3 = indexOf(r2);
-        if (r3 != (-1)) goto L6;
-        return false;
-    L6:
-        b(r3);
+    public final boolean remove(Object obj) {
+        int iIndexOf = indexOf(obj);
+        if (iIndexOf == -1) {
+            return false;
+        }
+        b(iIndexOf);
         return true;
     }
 
     @Override // java.util.AbstractCollection, java.util.Collection, java.util.List
-    public final boolean removeAll(Collection r12) {
-        r12.getClass();
-        boolean r1 = false;
-        r1 = false;
-        int r2 = 0;
-        r1 = false;
-        if (isEmpty() == false) goto L5;
-    L35:
-        return r1;
-    L5:
-        if (this.o.length == 0) goto L35;
-        int r0 = j(a() + this.n);
-        int r3 = this.n;
-        if (r3 >= r0) goto L18;
-        int r5 = r3;
-    L10:
-        Object[] r6 = this.o;
-        if (r3 >= r0) goto L17;
-        Object r7 = r6[r3];
-        if (r12.contains(r7) == true) goto L15;
-        this.o[r5] = r7;
-        r5 = r5 + 1;
-    L16:
-        r3 = r3 + 1;
-        goto L10
-    L15:
-        r1 = true;
-        goto L16
-    L17:
-        ti.f0(r5, r0, null, r6);
-    L33:
-        if (r1 == false) goto L35;
-        k();
-        this.p = h(r5 - this.n);
-        goto L35
-    L18:
-        int r8 = this.o.length;
-        boolean r9 = false;
-        int r10 = r3;
-    L19:
-        if (r3 >= r8) goto L25;
-        Object[] r11 = this.o;
-        Object r13 = r11[r3];
-        r11[r3] = null;
-        if (r12.contains(r13) == true) goto L23;
-        this.o[r10] = r13;
-        r10 = r10 + 1;
-    L24:
-        r3 = r3 + 1;
-        goto L19
-    L23:
-        r9 = true;
-        goto L24
-    L25:
-        r5 = j(r10);
-    L26:
-        if (r2 >= r0) goto L32;
-        Object[] r4 = this.o;
-        Object r14 = r4[r2];
-        r4[r2] = null;
-        if (r12.contains(r14) == true) goto L30;
-        this.o[r5] = r14;
-        r5 = f(r5);
-    L31:
-        r2 = r2 + 1;
-        goto L26
-    L30:
-        r9 = true;
-        goto L31
-    L32:
-        r1 = r9;
-        goto L33
+    public final boolean removeAll(Collection collection) {
+        int iJ;
+        Object[] objArr;
+        collection.getClass();
+        boolean z = false;
+        z = false;
+        z = false;
+        if (!isEmpty() && this.o.length != 0) {
+            int iJ2 = j(a() + this.n);
+            int i = this.n;
+            if (i < iJ2) {
+                iJ = i;
+                while (true) {
+                    objArr = this.o;
+                    if (i >= iJ2) {
+                        break;
+                    }
+                    Object obj = objArr[i];
+                    if (collection.contains(obj)) {
+                        z = true;
+                    } else {
+                        this.o[iJ] = obj;
+                        iJ++;
+                    }
+                    i++;
+                }
+                ti.f0(iJ, iJ2, null, objArr);
+            } else {
+                int length = this.o.length;
+                boolean z2 = false;
+                int i2 = i;
+                while (i < length) {
+                    Object[] objArr2 = this.o;
+                    Object obj2 = objArr2[i];
+                    objArr2[i] = null;
+                    if (collection.contains(obj2)) {
+                        z2 = true;
+                    } else {
+                        this.o[i2] = obj2;
+                        i2++;
+                    }
+                    i++;
+                }
+                iJ = j(i2);
+                for (int i3 = 0; i3 < iJ2; i3++) {
+                    Object[] objArr3 = this.o;
+                    Object obj3 = objArr3[i3];
+                    objArr3[i3] = null;
+                    if (collection.contains(obj3)) {
+                        z2 = true;
+                    } else {
+                        this.o[iJ] = obj3;
+                        iJ = f(iJ);
+                    }
+                }
+                z = z2;
+            }
+            if (z) {
+                k();
+                this.p = h(iJ - this.n);
+            }
+        }
+        return z;
     }
 
     public final Object removeFirst() {
-        if (isEmpty() == true) goto L6;
+        if (isEmpty()) {
+            kf2.m("ArrayDeque is empty.");
+            return null;
+        }
         k();
-        Object[] r0 = this.o;
-        int r1 = this.n;
-        Object r2 = r0[r1];
-        r0[r1] = null;
-        this.n = f(r1);
+        Object[] objArr = this.o;
+        int i = this.n;
+        Object obj = objArr[i];
+        objArr[i] = null;
+        this.n = f(i);
         this.p = a() - 1;
-        return r2;
-    L6:
-        kf2.m("ArrayDeque is empty.");
-        return null;
+        return obj;
     }
 
     public final Object removeLast() {
-        if (isEmpty() == true) goto L6;
+        if (isEmpty()) {
+            kf2.m("ArrayDeque is empty.");
+            return null;
+        }
         k();
-        int r0 = j((size() - 1) + this.n);
-        Object[] r1 = this.o;
-        Object r2 = r1[r0];
-        r1[r0] = null;
+        int iJ = j((size() - 1) + this.n);
+        Object[] objArr = this.o;
+        Object obj = objArr[iJ];
+        objArr[iJ] = null;
         this.p = a() - 1;
-        return r2;
-    L6:
-        kf2.m("ArrayDeque is empty.");
-        return null;
+        return obj;
     }
 
     @Override // java.util.AbstractList
-    public final void removeRange(int r8, int r9) {
-        h12.g(r8, r9, this.p);
-        int r0 = r9 - r8;
-        if (r0 != 0) goto L6;
-        return;
-    L6:
-        if (r0 != this.p) goto L10;
-        clear();
-        return;
-    L10:
-        if (r0 != 1) goto L13;
-        b(r8);
-        return;
-    L13:
+    public final void removeRange(int i, int i2) {
+        h12.g(i, i2, this.p);
+        int i3 = i2 - i;
+        if (i3 == 0) {
+            return;
+        }
+        if (i3 == this.p) {
+            clear();
+            return;
+        }
+        if (i3 == 1) {
+            b(i);
+            return;
+        }
         k();
-        int r2 = this.p - r9;
-        int r3 = this.n;
-        if (r8 >= r2) goto L19;
-        int r4 = j((r8 - 1) + r3);
-        int r10 = j(this.n + (r9 - 1));
-    L16:
-        if (r8 <= 0) goto L18;
-        int r1 = r4 + 1;
-        int r5 = Math.min(r8, Math.min(r1, r10 + 1));
-        Object[] r6 = this.o;
-        int r11 = r10 - r5;
-        int r7 = r4 - r5;
-        ti.Z(r11 + 1, r7 + 1, r1, r6, r6);
-        r4 = h(r7);
-        r10 = h(r11);
-        r8 = r8 - r5;
-        goto L16
-    L18:
-        int r12 = j(this.n + r0);
-        i(this.n, r12);
-        this.n = r12;
-    L24:
-        this.p -= r0;
-        return;
-    L19:
-        int r13 = j(r3 + r9);
-        int r14 = j(this.n + r8);
-        int r15 = this.p;
-    L20:
-        r15 = r15 - r9;
-        if (r15 <= 0) goto L23;
-        Object[] r16 = this.o;
-        r9 = Math.min(r15, Math.min(r16.length - r13, r16.length - r14));
-        Object[] r17 = this.o;
-        int r18 = r13 + r9;
-        ti.Z(r14, r13, r18, r17, r17);
-        r13 = j(r18);
-        r14 = j(r14 + r9);
-        goto L20
-    L23:
-        int r19 = j(this.p + this.n);
-        i(h(r19 - r0), r19);
-        goto L24
+        int i4 = this.p - i2;
+        int i5 = this.n;
+        if (i < i4) {
+            int iJ = j((i - 1) + i5);
+            int iJ2 = j(this.n + (i2 - 1));
+            while (i > 0) {
+                int i6 = iJ + 1;
+                int iMin = Math.min(i, Math.min(i6, iJ2 + 1));
+                Object[] objArr = this.o;
+                int i7 = iJ2 - iMin;
+                int i8 = iJ - iMin;
+                ti.Z(i7 + 1, i8 + 1, i6, objArr, objArr);
+                iJ = h(i8);
+                iJ2 = h(i7);
+                i -= iMin;
+            }
+            int iJ3 = j(this.n + i3);
+            i(this.n, iJ3);
+            this.n = iJ3;
+        } else {
+            int iJ4 = j(i5 + i2);
+            int iJ5 = j(this.n + i);
+            int i9 = this.p;
+            while (true) {
+                i9 -= i2;
+                if (i9 <= 0) {
+                    break;
+                }
+                Object[] objArr2 = this.o;
+                i2 = Math.min(i9, Math.min(objArr2.length - iJ4, objArr2.length - iJ5));
+                Object[] objArr3 = this.o;
+                int i10 = iJ4 + i2;
+                ti.Z(iJ5, iJ4, i10, objArr3, objArr3);
+                iJ4 = j(i10);
+                iJ5 = j(iJ5 + i2);
+            }
+            int iJ6 = j(this.p + this.n);
+            i(h(iJ6 - i3), iJ6);
+        }
+        this.p -= i3;
     }
 
     @Override // java.util.AbstractCollection, java.util.Collection, java.util.List
-    public final boolean retainAll(Collection r12) {
-        r12.getClass();
-        boolean r1 = false;
-        r1 = false;
-        int r2 = 0;
-        r1 = false;
-        if (isEmpty() == false) goto L5;
-    L35:
-        return r1;
-    L5:
-        if (this.o.length == 0) goto L35;
-        int r0 = j(a() + this.n);
-        int r3 = this.n;
-        if (r3 >= r0) goto L18;
-        int r5 = r3;
-    L10:
-        Object[] r6 = this.o;
-        if (r3 >= r0) goto L17;
-        Object r7 = r6[r3];
-        if (r12.contains(r7) == false) goto L15;
-        this.o[r5] = r7;
-        r5 = r5 + 1;
-    L16:
-        r3 = r3 + 1;
-        goto L10
-    L15:
-        r1 = true;
-        goto L16
-    L17:
-        ti.f0(r5, r0, null, r6);
-    L33:
-        if (r1 == false) goto L35;
-        k();
-        this.p = h(r5 - this.n);
-        goto L35
-    L18:
-        int r8 = this.o.length;
-        boolean r9 = false;
-        int r10 = r3;
-    L19:
-        if (r3 >= r8) goto L25;
-        Object[] r11 = this.o;
-        Object r13 = r11[r3];
-        r11[r3] = null;
-        if (r12.contains(r13) == false) goto L23;
-        this.o[r10] = r13;
-        r10 = r10 + 1;
-    L24:
-        r3 = r3 + 1;
-        goto L19
-    L23:
-        r9 = true;
-        goto L24
-    L25:
-        r5 = j(r10);
-    L26:
-        if (r2 >= r0) goto L32;
-        Object[] r4 = this.o;
-        Object r14 = r4[r2];
-        r4[r2] = null;
-        if (r12.contains(r14) == false) goto L30;
-        this.o[r5] = r14;
-        r5 = f(r5);
-    L31:
-        r2 = r2 + 1;
-        goto L26
-    L30:
-        r9 = true;
-        goto L31
-    L32:
-        r1 = r9;
-        goto L33
+    public final boolean retainAll(Collection collection) {
+        int iJ;
+        Object[] objArr;
+        collection.getClass();
+        boolean z = false;
+        z = false;
+        z = false;
+        if (!isEmpty() && this.o.length != 0) {
+            int iJ2 = j(a() + this.n);
+            int i = this.n;
+            if (i < iJ2) {
+                iJ = i;
+                while (true) {
+                    objArr = this.o;
+                    if (i >= iJ2) {
+                        break;
+                    }
+                    Object obj = objArr[i];
+                    if (collection.contains(obj)) {
+                        this.o[iJ] = obj;
+                        iJ++;
+                    } else {
+                        z = true;
+                    }
+                    i++;
+                }
+                ti.f0(iJ, iJ2, null, objArr);
+            } else {
+                int length = this.o.length;
+                boolean z2 = false;
+                int i2 = i;
+                while (i < length) {
+                    Object[] objArr2 = this.o;
+                    Object obj2 = objArr2[i];
+                    objArr2[i] = null;
+                    if (collection.contains(obj2)) {
+                        this.o[i2] = obj2;
+                        i2++;
+                    } else {
+                        z2 = true;
+                    }
+                    i++;
+                }
+                iJ = j(i2);
+                for (int i3 = 0; i3 < iJ2; i3++) {
+                    Object[] objArr3 = this.o;
+                    Object obj3 = objArr3[i3];
+                    objArr3[i3] = null;
+                    if (collection.contains(obj3)) {
+                        this.o[iJ] = obj3;
+                        iJ = f(iJ);
+                    } else {
+                        z2 = true;
+                    }
+                }
+                z = z2;
+            }
+            if (z) {
+                k();
+                this.p = h(iJ - this.n);
+            }
+        }
+        return z;
     }
 
     @Override // java.util.AbstractList, java.util.List
-    public final Object set(int r2, Object r3) {
-        int r0 = a();
-        if (r2 < 0) goto L7;
-        if (r2 >= r0) goto L7;
-        int r4 = j(this.n + r2);
-        Object[] r1 = this.o;
-        Object r5 = r1[r4];
-        r1[r4] = r3;
-        return r5;
-    L7:
-        kf2.h(xa3.e(r2, r0, "index: ", ", size: "));
-        return null;
+    public final Object set(int i, Object obj) {
+        int iA = a();
+        if (i < 0 || i >= iA) {
+            kf2.h(xa3.e(i, iA, "index: ", ", size: "));
+            return null;
+        }
+        int iJ = j(this.n + i);
+        Object[] objArr = this.o;
+        Object obj2 = objArr[iJ];
+        objArr[iJ] = obj;
+        return obj2;
     }
 
     @Override // java.util.AbstractCollection, java.util.Collection, java.util.List
-    public final Object[] toArray(Object[] r6) {
-        r6.getClass();
-        int r0 = r6.length;
-        int r1 = this.p;
-        if (r0 >= r1) goto L6;
-        Object r7 = Array.newInstance(r6.getClass().getComponentType(), r1);
-        r7.getClass();
-        r6 = (Object[]) r7;
-    L6:
-        int r2 = this.n;
-        int r3 = j(this.p + r2);
-        int r4 = this.n;
-        if (r4 >= r3) goto L10;
-        ti.c0(r4, r3, 2, this.o, r6);
-    L12:
-        int r5 = this.p;
-        if (r5 >= r6.length) goto L15;
-        r6[r5] = null;
-    L15:
-        return r6;
-    L10:
-        if (isEmpty() == true) goto L12;
-        Object[] r8 = this.o;
-        ti.Z(0, this.n, r8.length, r8, r6);
-        Object[] r9 = this.o;
-        ti.Z(r9.length - this.n, 0, r3, r9, r6);
-        goto L12
+    public final Object[] toArray(Object[] objArr) {
+        objArr.getClass();
+        int length = objArr.length;
+        int i = this.p;
+        if (length < i) {
+            Object objNewInstance = Array.newInstance(objArr.getClass().getComponentType(), i);
+            objNewInstance.getClass();
+            objArr = (Object[]) objNewInstance;
+        }
+        int iJ = j(this.p + this.n);
+        int i2 = this.n;
+        if (i2 < iJ) {
+            ti.c0(i2, iJ, 2, this.o, objArr);
+        } else if (!isEmpty()) {
+            Object[] objArr2 = this.o;
+            ti.Z(0, this.n, objArr2.length, objArr2, objArr);
+            Object[] objArr3 = this.o;
+            ti.Z(objArr3.length - this.n, 0, iJ, objArr3, objArr);
+        }
+        int i3 = this.p;
+        if (i3 < objArr.length) {
+            objArr[i3] = null;
+        }
+        return objArr;
     }
 
     public ii() {
@@ -828,22 +743,20 @@ public final class ii extends v1 {
     }
 
     @Override // java.util.AbstractList, java.util.AbstractCollection, java.util.Collection, java.util.List
-    public final boolean add(Object r1) {
-        addLast(r1);
+    public final boolean add(Object obj) {
+        addLast(obj);
         return true;
     }
 
     @Override // java.util.AbstractCollection, java.util.Collection, java.util.List
-    public final boolean addAll(Collection r3) {
-        r3.getClass();
-        if (r3.isEmpty() == false) goto L6;
-        return false;
-    L6:
+    public final boolean addAll(Collection collection) {
+        collection.getClass();
+        if (collection.isEmpty()) {
+            return false;
+        }
         k();
-        int r0 = a();
-        e(r3.size() + r0);
-        int r1 = this.n;
-        d(j(a() + r1), r3);
+        e(collection.size() + a());
+        d(j(a() + this.n), collection);
         return true;
     }
 }

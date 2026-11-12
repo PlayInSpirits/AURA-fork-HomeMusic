@@ -9,43 +9,41 @@ public final class wa2 extends AnimatorListenerAdapter {
     public final /* synthetic */ int a;
     public final /* synthetic */ xa2 b;
 
-    public /* synthetic */ wa2(xa2 r1, int r2) {
-        this.a = r2;
-        this.b = r1;
+    public /* synthetic */ wa2(xa2 xa2Var, int i) {
+        this.a = i;
+        this.b = xa2Var;
     }
 
     @Override // android.animation.AnimatorListenerAdapter, android.animation.Animator.AnimatorListener
-    public void onAnimationEnd(Animator r2) {
-        switch(this.a) {
-            case 1: goto L6;
-            default: goto L4;
-        };
-    L4:
-        super.onAnimationEnd(r2);
-        return;
-    L6:
-        super.onAnimationEnd(r2);
-        xa2 r1 = this.b;
-        r1.d();
-        hq r3 = r1.k;
-        if (r3 == null) goto L10;
-        r3.a((sx1) r1.a);
-        return;
+    public void onAnimationEnd(Animator animator) {
+        switch (this.a) {
+            case 1:
+                super.onAnimationEnd(animator);
+                xa2 xa2Var = this.b;
+                xa2Var.d();
+                hq hqVar = xa2Var.k;
+                if (hqVar != null) {
+                    hqVar.a((sx1) xa2Var.a);
+                }
+                break;
+            default:
+                super.onAnimationEnd(animator);
+                break;
+        }
     }
 
     @Override // android.animation.AnimatorListenerAdapter, android.animation.Animator.AnimatorListener
-    public void onAnimationRepeat(Animator r3) {
-        switch(this.a) {
-            case 0: goto L6;
-            default: goto L4;
-        };
-    L4:
-        super.onAnimationRepeat(r3);
-        return;
-    L6:
-        super.onAnimationRepeat(r3);
-        xa2 r2 = this.b;
-        r2.h = (r2.h + 1) % r2.g.c.length;
-        r2.i = true;
+    public void onAnimationRepeat(Animator animator) {
+        switch (this.a) {
+            case 0:
+                super.onAnimationRepeat(animator);
+                xa2 xa2Var = this.b;
+                xa2Var.h = (xa2Var.h + 1) % xa2Var.g.c.length;
+                xa2Var.i = true;
+                break;
+            default:
+                super.onAnimationRepeat(animator);
+                break;
+        }
     }
 }

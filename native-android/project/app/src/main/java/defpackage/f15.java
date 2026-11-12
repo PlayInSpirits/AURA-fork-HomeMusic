@@ -6,77 +6,50 @@ public final class f15 extends e64 {
     public final ThreadLocal t;
     private volatile boolean threadLocalIsSet;
 
-    public f15(ne0 r3, wd0 r4) {
-        iz r0 = iz.p;
-        if (r3.K(r0) != null) goto L5;
-        ne0 r1 = r3.J(r0);
-    L6:
-        super(r4, r1);
+    /* JADX WARN: Illegal instructions before constructor call */
+    public f15(ne0 ne0Var, wd0 wd0Var) {
+        iz izVar = iz.p;
+        super(wd0Var, ne0Var.K(izVar) == null ? ne0Var.J(izVar) : ne0Var);
         this.t = new ThreadLocal();
-        if ((r4.getContext().K(fz0.R) instanceof pe0) == true) goto L10;
-        Object r5 = te5.R(r3, null);
-        te5.K(r3, r5);
-        n0(r3, r5);
-        return;
-    L10:
-        return;
-    L5:
-        r1 = r3;
-        goto L6
+        if (wd0Var.getContext().K(fz0.R) instanceof pe0) {
+            return;
+        }
+        Object objR = te5.R(ne0Var, null);
+        te5.K(ne0Var, objR);
+        n0(ne0Var, objR);
     }
 
     @Override // defpackage.e64, defpackage.a32
-    public final void m(Object r6) {
-        if (this.threadLocalIsSet == false) goto L8;
-        kd3 r0 = (kd3) this.t.get();
-        if (r0 == null) goto L7;
-        te5.K((ne0) r0.n, r0.o);
-    L7:
-        this.t.remove();
-    L8:
-        Object r7 = hw.I(r6);
-        vd0 r1 = this.s;
-        ne0 r2 = r1.getContext();
-        f15 r3 = null;
-        Object r4 = te5.R(r2, null);
-        if (r4 == te5.b) goto L25;
-        r3 = jz4.Q(r1, r2, r4);
-    L25:
-        this.s.resumeWith(r7);     // Catch: Throwable -> L19
-        if (r3 != null) goto L14;
-    L17:
-        te5.K(r2, r4);
-        return;
-    L14:
-        if (r3.m0() == true) goto L17;
-        return;
-    L19:
-        th = move-exception;
-        if (r3 != null) goto L22;
-    L23:
-        te5.K(r2, r4);
-    L24:
-        throw th;
-    L22:
-        if (r3.m0() == false) goto L24;
-        goto L23
+    public final void m(Object obj) {
+        if (this.threadLocalIsSet) {
+            kd3 kd3Var = (kd3) this.t.get();
+            if (kd3Var != null) {
+                te5.K((ne0) kd3Var.n, kd3Var.o);
+            }
+            this.t.remove();
+        }
+        Object objI = hw.I(obj);
+        vd0 vd0Var = this.s;
+        ne0 context = vd0Var.getContext();
+        Object objR = te5.R(context, null);
+        f15 f15VarQ = objR != te5.b ? jz4.Q(vd0Var, context, objR) : null;
+        try {
+            this.s.resumeWith(objI);
+        } finally {
+            if (f15VarQ == null || f15VarQ.m0()) {
+                te5.K(context, objR);
+            }
+        }
     }
 
     public final boolean m0() {
-        if (this.threadLocalIsSet == true) goto L5;
-    L7:
-        boolean r0 = false;
-    L8:
+        boolean z = this.threadLocalIsSet && this.t.get() == null;
         this.t.remove();
-        return !r0;
-    L5:
-        if (this.t.get() != null) goto L7;
-        r0 = true;
-        goto L8
+        return !z;
     }
 
-    public final void n0(ne0 r2, Object r3) {
+    public final void n0(ne0 ne0Var, Object obj) {
         this.threadLocalIsSet = true;
-        this.t.set(new kd3(r2, r3));
+        this.t.set(new kd3(ne0Var, obj));
     }
 }

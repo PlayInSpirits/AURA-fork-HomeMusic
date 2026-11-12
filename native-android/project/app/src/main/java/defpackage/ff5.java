@@ -5,7 +5,7 @@ package defpackage;
 public final class ff5 {
     public final /* synthetic */ ij1 a;
 
-    public ff5(ij1 r1) {
-        this.a = r1;
+    public ff5(ij1 ij1Var) {
+        this.a = ij1Var;
     }
 }

@@ -3,24 +3,19 @@ package defpackage;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class af0 extends pe0 {
-    public static final af0 p = null;
-    public static final rm0 q = null;
+    public static final af0 p = new af0();
+    public static final rm0 q = rr0.a;
 
-    static {
-        p = new af0();
-        q = rr0.a;
+    @Override // defpackage.pe0
+    public final void W(ne0 ne0Var, Runnable runnable) {
+        ne0Var.getClass();
+        runnable.getClass();
+        q.W(ne0Var, runnable);
     }
 
     @Override // defpackage.pe0
-    public final void W(ne0 r1, Runnable r2) {
-        r1.getClass();
-        r2.getClass();
-        q.W(r1, r2);
-    }
-
-    @Override // defpackage.pe0
-    public final boolean Y(ne0 r1) {
-        r1.getClass();
+    public final boolean Y(ne0 ne0Var) {
+        ne0Var.getClass();
         q.getClass();
         return !false;
     }

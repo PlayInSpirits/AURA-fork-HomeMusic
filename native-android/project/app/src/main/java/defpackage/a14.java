@@ -11,25 +11,22 @@ public final class a14 implements vw2 {
     public final /* synthetic */ int a;
     public final Resources b;
 
-    public /* synthetic */ a14(Resources r1, int r2) {
-        this.a = r2;
-        this.b = r1;
+    public /* synthetic */ a14(Resources resources, int i) {
+        this.a = i;
+        this.b = resources;
     }
 
     @Override // defpackage.vw2
-    public final uw2 a(na4 r4) {
-        int r0 = this.a;
-        Resources r3 = this.b;
-        switch(r0) {
-            case 0: goto L9;
-            case 1: goto L7;
-            default: goto L5;
-        };
-    L5:
-        return new lk(r3, l15.b);
-    L7:
-        return new lk(r3, r4.f(Uri.class, InputStream.class));
-    L9:
-        return new lk(r3, r4.f(Uri.class, AssetFileDescriptor.class));
+    public final uw2 a(na4 na4Var) {
+        int i = this.a;
+        Resources resources = this.b;
+        switch (i) {
+            case 0:
+                return new lk(resources, na4Var.f(Uri.class, AssetFileDescriptor.class));
+            case 1:
+                return new lk(resources, na4Var.f(Uri.class, InputStream.class));
+            default:
+                return new lk(resources, l15.b);
+        }
     }
 }

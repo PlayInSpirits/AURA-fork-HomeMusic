@@ -5,8 +5,8 @@ package defpackage;
 public final class qa extends gx2 {
     public final /* synthetic */ ra a;
 
-    public qa(ra r1) {
-        this.a = r1;
+    public qa(ra raVar) {
+        this.a = raVar;
     }
 
     @Override // defpackage.gx2
@@ -15,15 +15,11 @@ public final class qa extends gx2 {
     }
 
     @Override // defpackage.gx2
-    public final /* bridge */ /* synthetic */ void e(cx2 r1) {
-        ma r2 = (ma) r1;
+    public final /* bridge */ /* synthetic */ void e(cx2 cx2Var) {
     }
 
-    public final boolean equals(Object r1) {
-        if (r1 != this) goto L5;
-        return true;
-    L5:
-        return false;
+    public final boolean equals(Object obj) {
+        return obj == this;
     }
 
     public final int hashCode() {

@@ -8,29 +8,27 @@ public final class l72 extends z62 {
     public final /* synthetic */ o72 a;
     public final /* synthetic */ wf1 b;
 
-    public l72(o72 r1, wf1 r2) {
-        this.a = r1;
-        this.b = r2;
+    public l72(o72 o72Var, wf1 wf1Var) {
+        this.a = o72Var;
+        this.b = wf1Var;
     }
 
     @Override // defpackage.ui2
-    public final vi2 a(cf2 r7, List r8, long r9) {
-        o72 r2 = this.a;
-        j72 r10 = r2.u;
-        r10.n = r7.getLayoutDirection();
-        r10.o = r7.g();
-        r10.p = r7.J();
-        boolean r11 = r7.K();
-        wf1 r6 = this.b;
-        if (r11 == false) goto L5;
-    L8:
-        r2.q = 0;
-        vi2 r1 = (vi2) r6.invoke(r10, new nc0(r9));
-        return new k72(r1, r2, r2.q, r1, 1);
-    L5:
-        if (r2.n.u == null) goto L8;
-        r2.r = 0;
-        vi2 r3 = (vi2) r6.invoke(r2.v, new nc0(r9));
-        return new k72(r3, r2, r2.r, r3, 0);
+    public final vi2 a(cf2 cf2Var, List list, long j) {
+        o72 o72Var = this.a;
+        j72 j72Var = o72Var.u;
+        j72Var.n = cf2Var.getLayoutDirection();
+        j72Var.o = cf2Var.g();
+        j72Var.p = cf2Var.J();
+        boolean zK = cf2Var.K();
+        wf1 wf1Var = this.b;
+        if (zK || o72Var.n.u == null) {
+            o72Var.q = 0;
+            vi2 vi2Var = (vi2) wf1Var.invoke(j72Var, new nc0(j));
+            return new k72(vi2Var, o72Var, o72Var.q, vi2Var, 1);
+        }
+        o72Var.r = 0;
+        vi2 vi2Var2 = (vi2) wf1Var.invoke(o72Var.v, new nc0(j));
+        return new k72(vi2Var2, o72Var, o72Var.r, vi2Var2, 0);
     }
 }

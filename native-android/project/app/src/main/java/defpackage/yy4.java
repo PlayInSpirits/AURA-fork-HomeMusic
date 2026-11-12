@@ -6,9 +6,9 @@ public final class yy4 implements wd {
     public final int a;
     public final ry0 b;
 
-    public yy4(int r1, ry0 r2) {
-        this.a = r1;
-        this.b = r2;
+    public yy4(int i, ry0 ry0Var) {
+        this.a = i;
+        this.b = ry0Var;
     }
 
     @Override // defpackage.wd
@@ -16,22 +16,15 @@ public final class yy4 implements wd {
         return new x7(this.a, this.b);
     }
 
-    public final boolean equals(Object r3) {
-        if ((r3 instanceof yy4) == false) goto L10;
-        yy4 r4 = (yy4) r3;
-        if (r4.a == this.a) goto L7;
-        return false;
-    L7:
-        if (h12.c(r4.b, this.b) == false) goto L13;
-        return true;
-    L13:
-        return false;
-    L10:
-        return false;
+    public final boolean equals(Object obj) {
+        if (!(obj instanceof yy4)) {
+            return false;
+        }
+        yy4 yy4Var = (yy4) obj;
+        return yy4Var.a == this.a && h12.c(yy4Var.b, this.b);
     }
 
     public final int hashCode() {
-        int r0 = this.a * 31;
-        return (this.b.hashCode() + r0) * 31;
+        return (this.b.hashCode() + (this.a * 31)) * 31;
     }
 }

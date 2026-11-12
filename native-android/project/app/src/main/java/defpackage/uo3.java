@@ -7,20 +7,20 @@ import java.io.Serializable;
 public final class uo3 implements ro3, Serializable {
     public final to3 n;
 
-    public uo3(to3 r1) {
-        this.n = r1;
+    public uo3(to3 to3Var) {
+        this.n = to3Var;
     }
 
     @Override // defpackage.ro3
-    public final boolean apply(Object r1) {
-        return !Object.class.equals(r1);
+    public final boolean apply(Object obj) {
+        return !Object.class.equals(obj);
     }
 
-    public final boolean equals(Object r2) {
-        if ((r2 instanceof uo3) == true) goto L5;
+    public final boolean equals(Object obj) {
+        if (obj instanceof uo3) {
+            return this.n.equals(((uo3) obj).n);
+        }
         return false;
-    L5:
-        return this.n.equals(((uo3) r2).n);
     }
 
     public final int hashCode() {

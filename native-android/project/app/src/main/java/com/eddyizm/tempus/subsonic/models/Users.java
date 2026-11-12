@@ -8,14 +8,11 @@ public final class Users {
     public static final int $stable = 8;
     private List<User> users;
 
-    public Users() {
-    }
-
     public final List<User> getUsers() {
         return this.users;
     }
 
-    public final void setUsers(List<User> r1) {
-        this.users = r1;
+    public final void setUsers(List<User> list) {
+        this.users = list;
     }
 }

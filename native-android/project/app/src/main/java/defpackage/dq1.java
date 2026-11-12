@@ -12,99 +12,106 @@ public final class dq1 extends bq1 {
     public boolean s;
     public final /* synthetic */ hq1 t;
 
-    public dq1(hq1 r1, gr1 r2) {
-        r2.getClass();
-        this.t = r1;
-        super(r1);
-        this.q = r2;
-        this.r = -1;
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public dq1(hq1 hq1Var, gr1 gr1Var) {
+        super(hq1Var);
+        gr1Var.getClass();
+        this.t = hq1Var;
+        this.q = gr1Var;
+        this.r = -1L;
         this.s = true;
     }
 
     @Override // java.io.Closeable, java.lang.AutoCloseable
     public final void close() {
-        if (this.o == false) goto L6;
-        return;
-    L6:
-        if (this.s == false) goto L13;
-        tl1 r0 = ze5.a;
-        TimeUnit.MILLISECONDS.getClass();
-        boolean r1 = ze5.h(this, 100);     // Catch: IOException -> L10
-    L11:
-        if (r1 == true) goto L13;
-        ((q21) this.t.c).a();
-        b();
-    L10:
-        r1 = false;
-    L13:
+        boolean zH;
+        if (this.o) {
+            return;
+        }
+        if (this.s) {
+            tl1 tl1Var = ze5.a;
+            TimeUnit.MILLISECONDS.getClass();
+            try {
+                zH = ze5.h(this, 100);
+            } catch (IOException unused) {
+                zH = false;
+            }
+            if (!zH) {
+                ((q21) this.t.c).a();
+                b();
+            }
+        }
         this.o = true;
     }
 
+    /* JADX WARN: Code restructure failed: missing block: B:30:0x00a8, code lost:
+    
+        if (r11.s == false) goto L31;
+     */
     @Override // defpackage.bq1, defpackage.ej4
-    public final long read(tv r12, long r13) {
-        hq1 r0 = this.t;
-        fw r1 = (fw) r0.d;
-        r12.getClass();
-        if (r13 >= 0) goto L5;
-        kf2.e(b11.k("byteCount < 0: ", r13));
-        return 0;
-    L5:
-        if (this.o == false) goto L7;
-        kf2.o("closed");
-        return 0;
-    L7:
-        if (this.s == false) goto L31;
-        long r7 = this.r;
-        if (r7 == 0) goto L14;
-        if (r7 == (-1)) goto L14;
-    L32:
-        long r14 = super.read(r12, Math.min(r13, this.r));
-        if (r14 == (-1)) goto L36;
-        this.r -= r14;
-        return r14;
-    L36:
-        ((q21) r0.c).a();
-        ProtocolException r15 = new ProtocolException("unexpected end of stream");
-        b();
-        throw r15;
-    L14:
-        if (r7 == (-1)) goto L47;
-        r1.I();
-    L47:
-        this.r = r1.S();     // Catch: NumberFormatException -> L40
-        String r2 = qm4.K0(r1.I()).toString();     // Catch: NumberFormatException -> L40
-        if (this.r < 0) goto L39;
-        if (r2.length() <= 0) goto L23;
-        if (xm4.k0(r2, ";", false) == false) goto L39;
-    L23:
-        if (this.r != 0) goto L30;
-        this.s = false;
-        e20 r3 = (e20) r0.f;
-        r3.getClass();
-        sl1 r4 = new sl1();
-    L25:
-        String r5 = ((fw) r3.p).t(r3.o);
-        r3.o -= (long) r5.length();
-        if (r5.length() == 0) goto L27;
-        r4.b(r5);
-        goto L25
-    L27:
-        r0.g = r4.c();
-        o83 r6 = (o83) r0.b;
-        r6.getClass();
-        be0 r8 = r6.j;
-        tl1 r9 = (tl1) r0.g;
-        r9.getClass();
-        br1.b(r8, this.q, r9);
-        b();
-    L30:
-        if (this.s == true) goto L32;
-    L39:
-        throw new ProtocolException("expected chunk size and optional extensions but was \"" + this.r + r2 + '\"');     // Catch: NumberFormatException -> L40
-    L40:
-        e = move-exception;
-        throw new ProtocolException(e.getMessage());
-    L31:
-        return -1;
+    /*
+        Code decompiled incorrectly, please refer to instructions dump.
+    */
+    public final long read(tv tvVar, long j) throws IOException {
+        hq1 hq1Var = this.t;
+        fw fwVar = (fw) hq1Var.d;
+        tvVar.getClass();
+        if (j < 0) {
+            kf2.e(b11.k("byteCount < 0: ", j));
+            return 0L;
+        }
+        if (this.o) {
+            kf2.o("closed");
+            return 0L;
+        }
+        if (this.s) {
+            long j2 = this.r;
+            if (j2 == 0 || j2 == -1) {
+                if (j2 != -1) {
+                    fwVar.I();
+                }
+                try {
+                    this.r = fwVar.S();
+                    String string = qm4.K0(fwVar.I()).toString();
+                    if (this.r < 0 || (string.length() > 0 && !xm4.k0(string, ";", false))) {
+                        throw new ProtocolException("expected chunk size and optional extensions but was \"" + this.r + string + '\"');
+                    }
+                    if (this.r == 0) {
+                        this.s = false;
+                        e20 e20Var = (e20) hq1Var.f;
+                        e20Var.getClass();
+                        sl1 sl1Var = new sl1();
+                        while (true) {
+                            String strT = ((fw) e20Var.p).t(e20Var.o);
+                            e20Var.o -= (long) strT.length();
+                            if (strT.length() == 0) {
+                                break;
+                            }
+                            sl1Var.b(strT);
+                        }
+                        hq1Var.g = sl1Var.c();
+                        o83 o83Var = (o83) hq1Var.b;
+                        o83Var.getClass();
+                        be0 be0Var = o83Var.j;
+                        tl1 tl1Var = (tl1) hq1Var.g;
+                        tl1Var.getClass();
+                        br1.b(be0Var, this.q, tl1Var);
+                        b();
+                    }
+                } catch (NumberFormatException e) {
+                    throw new ProtocolException(e.getMessage());
+                }
+            }
+            long j3 = super.read(tvVar, Math.min(j, this.r));
+            if (j3 != -1) {
+                this.r -= j3;
+                return j3;
+            }
+            ((q21) hq1Var.c).a();
+            ProtocolException protocolException = new ProtocolException("unexpected end of stream");
+            b();
+            throw protocolException;
+        }
+        return -1L;
     }
 }

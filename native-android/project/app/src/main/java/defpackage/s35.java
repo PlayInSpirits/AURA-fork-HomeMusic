@@ -20,39 +20,41 @@ public final class s35 extends v35 {
 
     @Override // defpackage.u35
     public final boolean a() {
-        if (this.f.n() == false) goto L5;
-        return true;
-    L5:
-        if (this.d.n() == true) goto L11;
-        return false;
-    L11:
-        return true;
+        return this.f.n() || this.d.n();
     }
 
+    /* JADX WARN: Code duplicated, block: B:13:0x003a  */
+    /* JADX WARN: Code duplicated, block: B:7:0x001e  */
     @Override // defpackage.u35
-    public final boolean b(int[] r6) {
-        ue1 r0 = this.f;
-        boolean r2 = true;
-        if (r0.n() == false) goto L7;
-        ColorStateList r1 = (ColorStateList) r0.q;
-        int r3 = r1.getColorForState(r6, r1.getDefaultColor());
-        if (r3 == r0.o) goto L7;
-        r0.o = r3;
-        boolean r4 = true;
-    L8:
-        ue1 r5 = this.d;
-        if (r5.n() == false) goto L13;
-        ColorStateList r7 = (ColorStateList) r5.q;
-        int r8 = r7.getColorForState(r6, r7.getDefaultColor());
-        if (r8 == r5.o) goto L13;
-        r5.o = r8;
-    L15:
-        return r4 | r2;
-    L13:
-        r2 = false;
-    L7:
-        r4 = false;
-        goto L8
+    public final boolean b(int[] iArr) {
+        boolean z;
+        ue1 ue1Var = this.f;
+        boolean z2 = true;
+        if (ue1Var.n()) {
+            ColorStateList colorStateList = (ColorStateList) ue1Var.q;
+            int colorForState = colorStateList.getColorForState(iArr, colorStateList.getDefaultColor());
+            if (colorForState != ue1Var.o) {
+                ue1Var.o = colorForState;
+                z = true;
+            } else {
+                z = false;
+            }
+        } else {
+            z = false;
+        }
+        ue1 ue1Var2 = this.d;
+        if (ue1Var2.n()) {
+            ColorStateList colorStateList2 = (ColorStateList) ue1Var2.q;
+            int colorForState2 = colorStateList2.getColorForState(iArr, colorStateList2.getDefaultColor());
+            if (colorForState2 != ue1Var2.o) {
+                ue1Var2.o = colorForState2;
+            } else {
+                z2 = false;
+            }
+        } else {
+            z2 = false;
+        }
+        return z | z2;
     }
 
     public float getFillAlpha() {
@@ -87,35 +89,35 @@ public final class s35 extends v35 {
         return this.i;
     }
 
-    public void setFillAlpha(float r1) {
-        this.h = r1;
+    public void setFillAlpha(float f) {
+        this.h = f;
     }
 
-    public void setFillColor(int r1) {
-        this.f.o = r1;
+    public void setFillColor(int i) {
+        this.f.o = i;
     }
 
-    public void setStrokeAlpha(float r1) {
-        this.g = r1;
+    public void setStrokeAlpha(float f) {
+        this.g = f;
     }
 
-    public void setStrokeColor(int r1) {
-        this.d.o = r1;
+    public void setStrokeColor(int i) {
+        this.d.o = i;
     }
 
-    public void setStrokeWidth(float r1) {
-        this.e = r1;
+    public void setStrokeWidth(float f) {
+        this.e = f;
     }
 
-    public void setTrimPathEnd(float r1) {
-        this.j = r1;
+    public void setTrimPathEnd(float f) {
+        this.j = f;
     }
 
-    public void setTrimPathOffset(float r1) {
-        this.k = r1;
+    public void setTrimPathOffset(float f) {
+        this.k = f;
     }
 
-    public void setTrimPathStart(float r1) {
-        this.i = r1;
+    public void setTrimPathStart(float f) {
+        this.i = f;
     }
 }

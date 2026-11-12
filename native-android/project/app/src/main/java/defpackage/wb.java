@@ -7,7 +7,7 @@ import android.view.autofill.AutofillValue;
 public final class wb {
     public final AutofillValue a;
 
-    public wb(AutofillValue r1) {
-        this.a = r1;
+    public wb(AutofillValue autofillValue) {
+        this.a = autofillValue;
     }
 }

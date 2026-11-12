@@ -16,135 +16,114 @@ public final class sq extends z41 {
     public final Slider D;
     public final Rect E;
 
-    public sq(Slider r2) {
-        super(r2);
+    public sq(Slider slider) {
+        super(slider);
         this.E = new Rect();
-        this.D = r2;
+        this.D = slider;
     }
 
     @Override // defpackage.z41
-    public final int n(float r5, float r6) {
-        int r0 = 0;
-    L3:
-        Slider r1 = this.D;
-        if (r0 >= r1.getValues().size()) goto L9;
-        Rect r2 = this.E;
-        r1.t(r0, r2);
-        if (r2.contains((int) r5, (int) r6) == true) goto L7;
-        r0 = r0 + 1;
-        goto L3
-    L7:
-        return r0;
-    L9:
-        return -1;
+    public final int n(float f, float f2) {
+        int i = 0;
+        while (true) {
+            Slider slider = this.D;
+            if (i >= slider.getValues().size()) {
+                return -1;
+            }
+            Rect rect = this.E;
+            slider.t(i, rect);
+            if (rect.contains((int) f, (int) f2)) {
+                return i;
+            }
+            i++;
+        }
     }
 
     @Override // defpackage.z41
-    public final void o(ArrayList r3) {
-        int r0 = 0;
-    L4:
-        if (r0 >= this.D.getValues().size()) goto L6;
-        r3.add(Integer.valueOf(r0));
-        r0 = r0 + 1;
-        goto L4
+    public final void o(ArrayList arrayList) {
+        for (int i = 0; i < this.D.getValues().size(); i++) {
+            arrayList.add(Integer.valueOf(i));
+        }
     }
 
     @Override // defpackage.z41
-    public final boolean s(int r7, int r8, Bundle r9) {
-        Slider r0 = this.D;
-        if (r0.isEnabled() == true) goto L6;
-        return false;
-    L6:
-        if (r8 == 4096) goto L19;
-        if (r8 == 8192) goto L19;
-        if (r8 != 16908349) goto L40;
-        if (r9 != null) goto L13;
-        return false;
-    L13:
-        if (r9.containsKey("android.view.accessibility.action.ARGUMENT_PROGRESS_VALUE") == true) goto L16;
-        return false;
-    L16:
-        if (r0.r(r7, r9.getFloat("android.view.accessibility.action.ARGUMENT_PROGRESS_VALUE")) == false) goto L37;
-        r0.u();
-        r0.postInvalidate();
-        p(r7);
+    public final boolean s(int i, int i2, Bundle bundle) {
+        Slider slider = this.D;
+        if (!slider.isEnabled()) {
+            return false;
+        }
+        if (i2 != 4096 && i2 != 8192) {
+            if (i2 != 16908349 || bundle == null || !bundle.containsKey("android.view.accessibility.action.ARGUMENT_PROGRESS_VALUE") || !slider.r(i, bundle.getFloat("android.view.accessibility.action.ARGUMENT_PROGRESS_VALUE"))) {
+                return false;
+            }
+            slider.u();
+            slider.postInvalidate();
+            p(i);
+            return true;
+        }
+        float fRound = slider.e0;
+        if (fRound == 0.0f) {
+            fRound = 1.0f;
+        }
+        float f = (slider.a0 - slider.W) / fRound;
+        if (f > 20.0f) {
+            fRound *= Math.round(f / 20.0f);
+        }
+        if (i2 == 8192) {
+            fRound = -fRound;
+        }
+        if (slider.j()) {
+            fRound = -fRound;
+        }
+        if (!slider.r(i, su3.k(slider.getValues().get(i).floatValue() + fRound, slider.getValueFrom(), slider.getValueTo()))) {
+            return false;
+        }
+        slider.u();
+        slider.postInvalidate();
+        p(i);
         return true;
-    L37:
-        return false;
-    L40:
-        return false;
-    L19:
-        float r10 = r0.e0;
-        if (r10 != 0.0f) goto L22;
-        r10 = 1.0f;
-    L22:
-        float r1 = (r0.a0 - r0.W) / r10;
-        if (r1 <= 20.0f) goto L26;
-        r10 = r10 * Math.round(r1 / 20.0f);
-    L26:
-        if (r8 != 8192) goto L29;
-        r10 = -r10;
-    L29:
-        if (r0.j() == false) goto L32;
-        r10 = -r10;
-    L32:
-        if (r0.r(r7, su3.k(r0.getValues().get(r7).floatValue() + r10, r0.getValueFrom(), r0.getValueTo())) == false) goto L38;
-        r0.u();
-        r0.postInvalidate();
-        p(r7);
-        return true;
-    L38:
-        return false;
     }
 
     @Override // defpackage.z41
-    public final void u(int r8, v3 r9) {
-        AccessibilityNodeInfo r0 = r9.a;
-        r9.b(o3.t);
-        Slider r1 = this.D;
-        List<Float> r2 = r1.getValues();
-        float r3 = r2.get(r8).floatValue();
-        float r4 = r1.getValueFrom();
-        float r5 = r1.getValueTo();
-        if (r1.isEnabled() == true) goto L5;
-    L10:
-        r0.setRangeInfo(AccessibilityNodeInfo.RangeInfo.obtain(1, r4, r5, r3));
-        r9.i(SeekBar.class.getName());
-        StringBuilder r10 = new StringBuilder();
-        if (r1.getContentDescription() == null) goto L13;
-        r10.append(r1.getContentDescription());
-        r10.append(",");
-    L13:
-        String r6 = r1.e(r3);
-        String r7 = r1.getContext().getString(R.string.material_slider_value);
-        if (r2.size() > 1) goto L16;
-    L22:
-        Locale r11 = Locale.US;
-        r10.append(r7 + ", " + r6);
-        r0.setContentDescription(r10.toString());
-        Rect r12 = this.E;
-        r1.t(r8, r12);
-        r0.setBoundsInParent(r12);
-        return;
-    L16:
-        if (r8 != (r1.getValues().size() - 1)) goto L19;
-        String r13 = r1.getContext().getString(R.string.material_slider_range_end);
-    L18:
-        r7 = r13;
-        goto L22
-    L19:
-        if (r8 != 0) goto L21;
-        r13 = r1.getContext().getString(R.string.material_slider_range_start);
-        goto L18
-    L21:
-        r13 = "";
-        goto L18
-    L5:
-        if (r3 <= r4) goto L8;
-        r9.a(8192);
-    L8:
-        if (r3 >= r5) goto L10;
-        r9.a(4096);
-        goto L10
+    public final void u(int i, v3 v3Var) {
+        String string;
+        AccessibilityNodeInfo accessibilityNodeInfo = v3Var.a;
+        v3Var.b(o3.t);
+        Slider slider = this.D;
+        List<Float> values = slider.getValues();
+        float fFloatValue = values.get(i).floatValue();
+        float valueFrom = slider.getValueFrom();
+        float valueTo = slider.getValueTo();
+        if (slider.isEnabled()) {
+            if (fFloatValue > valueFrom) {
+                v3Var.a(8192);
+            }
+            if (fFloatValue < valueTo) {
+                v3Var.a(4096);
+            }
+        }
+        accessibilityNodeInfo.setRangeInfo(AccessibilityNodeInfo.RangeInfo.obtain(1, valueFrom, valueTo, fFloatValue));
+        v3Var.i(SeekBar.class.getName());
+        StringBuilder sb = new StringBuilder();
+        if (slider.getContentDescription() != null) {
+            sb.append(slider.getContentDescription());
+            sb.append(",");
+        }
+        String strE = slider.e(fFloatValue);
+        String string2 = slider.getContext().getString(R.string.material_slider_value);
+        if (values.size() > 1) {
+            if (i == slider.getValues().size() - 1) {
+                string = slider.getContext().getString(R.string.material_slider_range_end);
+            } else {
+                string = i == 0 ? slider.getContext().getString(R.string.material_slider_range_start) : "";
+            }
+            string2 = string;
+        }
+        Locale locale = Locale.US;
+        sb.append(string2 + ", " + strE);
+        accessibilityNodeInfo.setContentDescription(sb.toString());
+        Rect rect = this.E;
+        slider.t(i, rect);
+        accessibilityNodeInfo.setBoundsInParent(rect);
     }
 }

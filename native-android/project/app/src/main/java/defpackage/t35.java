@@ -19,7 +19,8 @@ public final class t35 extends u35 {
     public final Matrix j;
     public String k;
 
-    public t35(t35 r8, oi r9) {
+    public t35(t35 t35Var, oi oiVar) {
+        v35 r35Var;
         this.a = new Matrix();
         this.b = new ArrayList();
         this.c = 0.0f;
@@ -29,109 +30,105 @@ public final class t35 extends u35 {
         this.g = 1.0f;
         this.h = 0.0f;
         this.i = 0.0f;
-        Matrix r2 = new Matrix();
-        this.j = r2;
+        Matrix matrix = new Matrix();
+        this.j = matrix;
         this.k = null;
-        this.c = r8.c;
-        this.d = r8.d;
-        this.e = r8.e;
-        this.f = r8.f;
-        this.g = r8.g;
-        this.h = r8.h;
-        this.i = r8.i;
-        String r4 = r8.k;
-        this.k = r4;
-        if (r4 == null) goto L5;
-        r9.put(r4, this);
-    L5:
-        r2.set(r8.j);
-        ArrayList r10 = r8.b;
-        int r3 = 0;
-    L7:
-        if (r3 >= r10.size()) goto L23;
-        Object r5 = r10.get(r3);
-        if ((r5 instanceof t35) == false) goto L12;
-        this.b.add(new t35((t35) r5, r9));
-    L20:
-        r3 = r3 + 1;
-        goto L7
-    L12:
-        if ((r5 instanceof s35) == false) goto L15;
-        s35 r6 = (s35) r5;
-        s35 r7 = new s35(r6);
-        r7.e = 0.0f;
-        r7.g = 1.0f;
-        r7.h = 1.0f;
-        r7.i = 0.0f;
-        r7.j = 1.0f;
-        r7.k = 0.0f;
-        r7.l = Paint.Cap.BUTT;
-        r7.m = Paint.Join.MITER;
-        r7.n = 4.0f;
-        r7.d = r6.d;
-        r7.e = r6.e;
-        r7.g = r6.g;
-        r7.f = r6.f;
-        r7.c = r6.c;
-        r7.h = r6.h;
-        r7.i = r6.i;
-        r7.j = r6.j;
-        r7.k = r6.k;
-        r7.l = r6.l;
-        r7.m = r6.m;
-        r7.n = r6.n;
-        v35 r11 = r7;
-    L17:
-        this.b.add(r11);
-        Object r12 = r11.b;
-        if (r12 == null) goto L20;
-        r9.put(r12, r11);
-        goto L20
-    L15:
-        if ((r5 instanceof r35) == false) goto L21;
-        r11 = new r35((r35) r5);
-        goto L17
-    L21:
-        kf2.o("Unknown object in the tree!");
-        throw null;
+        this.c = t35Var.c;
+        this.d = t35Var.d;
+        this.e = t35Var.e;
+        this.f = t35Var.f;
+        this.g = t35Var.g;
+        this.h = t35Var.h;
+        this.i = t35Var.i;
+        String str = t35Var.k;
+        this.k = str;
+        if (str != null) {
+            oiVar.put(str, this);
+        }
+        matrix.set(t35Var.j);
+        ArrayList arrayList = t35Var.b;
+        for (int i = 0; i < arrayList.size(); i++) {
+            Object obj = arrayList.get(i);
+            if (obj instanceof t35) {
+                this.b.add(new t35((t35) obj, oiVar));
+            } else {
+                if (obj instanceof s35) {
+                    s35 s35Var = (s35) obj;
+                    s35 s35Var2 = new s35(s35Var);
+                    s35Var2.e = 0.0f;
+                    s35Var2.g = 1.0f;
+                    s35Var2.h = 1.0f;
+                    s35Var2.i = 0.0f;
+                    s35Var2.j = 1.0f;
+                    s35Var2.k = 0.0f;
+                    s35Var2.l = Paint.Cap.BUTT;
+                    s35Var2.m = Paint.Join.MITER;
+                    s35Var2.n = 4.0f;
+                    s35Var2.d = s35Var.d;
+                    s35Var2.e = s35Var.e;
+                    s35Var2.g = s35Var.g;
+                    s35Var2.f = s35Var.f;
+                    s35Var2.c = s35Var.c;
+                    s35Var2.h = s35Var.h;
+                    s35Var2.i = s35Var.i;
+                    s35Var2.j = s35Var.j;
+                    s35Var2.k = s35Var.k;
+                    s35Var2.l = s35Var.l;
+                    s35Var2.m = s35Var.m;
+                    s35Var2.n = s35Var.n;
+                    r35Var = s35Var2;
+                } else {
+                    if (!(obj instanceof r35)) {
+                        kf2.o("Unknown object in the tree!");
+                        throw null;
+                    }
+                    r35Var = new r35((r35) obj);
+                }
+                this.b.add(r35Var);
+                Object obj2 = r35Var.b;
+                if (obj2 != null) {
+                    oiVar.put(obj2, r35Var);
+                }
+            }
+        }
     }
 
     @Override // defpackage.u35
     public final boolean a() {
-        int r1 = 0;
-    L3:
-        ArrayList r2 = this.b;
-        if (r1 >= r2.size()) goto L10;
-        if (((u35) r2.get(r1)).a() == true) goto L7;
-        r1 = r1 + 1;
-        goto L3
-    L7:
-        return true;
-    L10:
-        return false;
+        int i = 0;
+        while (true) {
+            ArrayList arrayList = this.b;
+            if (i >= arrayList.size()) {
+                return false;
+            }
+            if (((u35) arrayList.get(i)).a()) {
+                return true;
+            }
+            i++;
+        }
     }
 
     @Override // defpackage.u35
-    public final boolean b(int[] r5) {
-        int r0 = 0;
-        boolean r1 = false;
-    L3:
-        ArrayList r2 = this.b;
-        if (r0 >= r2.size()) goto L6;
-        r1 = r1 | ((u35) r2.get(r0)).b(r5);
-        r0 = r0 + 1;
-        goto L3
-    L6:
-        return r1;
+    public final boolean b(int[] iArr) {
+        int i = 0;
+        boolean zB = false;
+        while (true) {
+            ArrayList arrayList = this.b;
+            if (i >= arrayList.size()) {
+                return zB;
+            }
+            zB |= ((u35) arrayList.get(i)).b(iArr);
+            i++;
+        }
     }
 
     public final void c() {
-        Matrix r0 = this.j;
-        r0.reset();
-        r0.postTranslate(-this.d, -this.e);
-        r0.postScale(this.f, this.g);
-        r0.postRotate(this.c, 0.0f, 0.0f);
-        r0.postTranslate(this.h + this.d, this.i + this.e);
+        Matrix matrix = this.j;
+        matrix.reset();
+        matrix.postTranslate(-this.d, -this.e);
+        matrix.postScale(this.f, this.g);
+        matrix.postRotate(this.c, 0.0f, 0.0f);
+        matrix.postTranslate(this.h + this.d, this.i + this.e);
     }
 
     public String getGroupName() {
@@ -170,53 +167,53 @@ public final class t35 extends u35 {
         return this.i;
     }
 
-    public void setPivotX(float r2) {
-        if (r2 == this.d) goto L6;
-        this.d = r2;
-        c();
-        return;
+    public void setPivotX(float f) {
+        if (f != this.d) {
+            this.d = f;
+            c();
+        }
     }
 
-    public void setPivotY(float r2) {
-        if (r2 == this.e) goto L6;
-        this.e = r2;
-        c();
-        return;
+    public void setPivotY(float f) {
+        if (f != this.e) {
+            this.e = f;
+            c();
+        }
     }
 
-    public void setRotation(float r2) {
-        if (r2 == this.c) goto L6;
-        this.c = r2;
-        c();
-        return;
+    public void setRotation(float f) {
+        if (f != this.c) {
+            this.c = f;
+            c();
+        }
     }
 
-    public void setScaleX(float r2) {
-        if (r2 == this.f) goto L6;
-        this.f = r2;
-        c();
-        return;
+    public void setScaleX(float f) {
+        if (f != this.f) {
+            this.f = f;
+            c();
+        }
     }
 
-    public void setScaleY(float r2) {
-        if (r2 == this.g) goto L6;
-        this.g = r2;
-        c();
-        return;
+    public void setScaleY(float f) {
+        if (f != this.g) {
+            this.g = f;
+            c();
+        }
     }
 
-    public void setTranslateX(float r2) {
-        if (r2 == this.h) goto L6;
-        this.h = r2;
-        c();
-        return;
+    public void setTranslateX(float f) {
+        if (f != this.h) {
+            this.h = f;
+            c();
+        }
     }
 
-    public void setTranslateY(float r2) {
-        if (r2 == this.i) goto L6;
-        this.i = r2;
-        c();
-        return;
+    public void setTranslateY(float f) {
+        if (f != this.i) {
+            this.i = f;
+            c();
+        }
     }
 
     public t35() {

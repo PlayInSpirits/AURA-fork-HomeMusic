@@ -14,14 +14,15 @@ public final class fy4 extends wd0 {
     public final /* synthetic */ jy4 v;
     public int w;
 
-    public fy4(jy4 r1, wd0 r2) {
-        this.v = r1;
-        super(r2);
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public fy4(jy4 jy4Var, wd0 wd0Var) {
+        super(wd0Var);
+        this.v = jy4Var;
     }
 
     @Override // defpackage.jp
-    public final Object invokeSuspend(Object r3) {
-        this.u = r3;
+    public final Object invokeSuspend(Object obj) {
+        this.u = obj;
         this.w |= Integer.MIN_VALUE;
         return jy4.c(this.v, null, 0, this);
     }

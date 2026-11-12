@@ -17,19 +17,19 @@ public final class r13 {
     public final int l;
     public final int m;
 
-    public r13(int r1, p13 r2, int r3, int r4, int r5, int r6, int r7, int r8, float r9, int r10, int r11, int r12, int r13) {
-        this.a = r1;
-        this.b = r2;
-        this.c = r3;
-        this.d = r4;
-        this.e = r5;
-        this.f = r6;
-        this.i = r9;
-        this.j = r10;
-        this.k = r11;
-        this.l = r12;
-        this.m = r13;
-        this.g = r7;
-        this.h = r8;
+    public r13(int i, p13 p13Var, int i2, int i3, int i4, int i5, int i6, int i7, float f, int i8, int i9, int i10, int i11) {
+        this.a = i;
+        this.b = p13Var;
+        this.c = i2;
+        this.d = i3;
+        this.e = i4;
+        this.f = i5;
+        this.i = f;
+        this.j = i8;
+        this.k = i9;
+        this.l = i10;
+        this.m = i11;
+        this.g = i6;
+        this.h = i7;
     }
 }

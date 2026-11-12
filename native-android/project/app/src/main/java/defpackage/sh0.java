@@ -9,7 +9,7 @@ public interface sh0 {
 
     void cancel();
 
-    void d(eq3 r1, rh0 r2);
+    void d(eq3 eq3Var, rh0 rh0Var);
 
     int e();
 }

@@ -33,164 +33,102 @@ public final class lx implements ci0 {
     public ci0 y;
     public long z;
 
-    public lx(se4 r1, ci0 r2, ci0 r3, jx r4, px r5, int r6) {
-        this.n = r1;
-        this.o = r3;
-        this.r = r5;
-        boolean r7 = false;
-        if ((r6 & 1) == 0) goto L5;
-        boolean r8 = true;
-    L6:
-        this.s = r8;
-        if ((r6 & 2) == 0) goto L9;
-        boolean r9 = true;
-    L10:
-        this.t = r9;
-        if ((r6 & 4) == 0) goto L13;
-        r7 = true;
-    L13:
-        this.u = r7;
-        jr4 r10 = null;
-        if (r2 == null) goto L20;
-        this.q = r2;
-        if (r4 == null) goto L18;
-        r10 = new jr4(r2, r4);
-    L18:
-        this.p = r10;
-        return;
-    L20:
-        this.q = mg3.n;
-        this.p = null;
-        return;
-    L9:
-        r9 = false;
-        goto L10
-    L5:
-        r8 = false;
-        goto L6
+    public lx(se4 se4Var, ci0 ci0Var, ci0 ci0Var2, jx jxVar, px pxVar, int i) {
+        this.n = se4Var;
+        this.o = ci0Var2;
+        this.r = pxVar;
+        this.s = (i & 1) != 0;
+        this.t = (i & 2) != 0;
+        this.u = (i & 4) != 0;
+        if (ci0Var != null) {
+            this.q = ci0Var;
+            this.p = jxVar != null ? new jr4(ci0Var, jxVar) : null;
+        } else {
+            this.q = mg3.n;
+            this.p = null;
+        }
     }
 
     @Override // defpackage.ci0
-    public final long b(ii0 r14) {
-        se4 r0 = this.n;
-        String r2 = this.r.d(r14);     // Catch: Throwable -> L26
-        hi0 r3 = r14.a();     // Catch: Throwable -> L26
-        long r4 = r14.f;     // Catch: Throwable -> L26
-        long r6 = r14.g;     // Catch: Throwable -> L26
-        r3.h = r2;     // Catch: Throwable -> L26
-        ii0 r15 = r3.a();     // Catch: Throwable -> L26
-        this.w = r15;     // Catch: Throwable -> L26
-        Uri r5 = r15.a;     // Catch: Throwable -> L26
-        byte[] r8 = (byte[]) r0.i(r2).b.get("exo_redir");     // Catch: Throwable -> L26
-        Uri r9 = null;
-        if (r8 == null) goto L6;
-        String r10 = new String(r8, StandardCharsets.UTF_8);     // Catch: Throwable -> L26
-    L7:
-        if (r10 == null) goto L10;
-        r9 = Uri.parse(r10);     // Catch: Throwable -> L26
-    L10:
-        if (r9 == null) goto L12;
-        r5 = r9;
-    L12:
-        this.v = r5;     // Catch: Throwable -> L26
-        this.A = r4;     // Catch: Throwable -> L26
-        if (this.t == false) goto L18;
-        if (this.D == false) goto L18;
-    L21:
-        boolean r7 = true;
-    L23:
-        this.E = r7;     // Catch: Throwable -> L26
-        if (r7 == false) goto L28;
-        this.B = -1;     // Catch: Throwable -> L26
-    L36:
-        if (r6 == (-1)) goto L42;
-        long r11 = this.B;     // Catch: Throwable -> L26
-        if (r11 != (-1)) goto L40;
-        long r12 = r6;
-    L41:
-        this.B = r12;     // Catch: Throwable -> L26
-        goto L42
-    L40:
-        r12 = Math.min(r11, r6);     // Catch: Throwable -> L26
-    L42:
-        long r13 = this.B;     // Catch: Throwable -> L26
-        if (r13 <= 0) goto L45;
-    L46:
-        p(r15, false);     // Catch: Throwable -> L26
-    L47:
-        if (r6 == (-1)) goto L50;
-        return r6;
-    L50:
-        return this.B;
-    L45:
-        if (r13 != (-1)) goto L47;
-    L28:
-        long r16 = nd0.a(r0.i(r2));     // Catch: Throwable -> L26
-        this.B = r16;     // Catch: Throwable -> L26
-        if (r16 == (-1)) goto L36;
-        long r17 = r16 - r4;     // Catch: Throwable -> L26
-        this.B = r17;     // Catch: Throwable -> L26
-        if (r17 >= 0) goto L36;
-        throw new DataSourceException(2008);     // Catch: Throwable -> L26
-    L18:
-        if (this.u == true) goto L20;
-    L22:
-        r7 = false;
-        goto L23
-    L20:
-        if (r6 != (-1)) goto L22;
-    L6:
-        r10 = null;
-    L26:
-        th = move-exception;
-        if (this.y != this.o) goto L54;
-    L55:
-        this.D = true;
-    L56:
-        throw th;
-    L54:
-        if ((th instanceof Cache$CacheException) == false) goto L56;
-        goto L55
+    public final long b(ii0 ii0Var) {
+        se4 se4Var = this.n;
+        try {
+            String strD = this.r.d(ii0Var);
+            hi0 hi0VarA = ii0Var.a();
+            long j = ii0Var.f;
+            long j2 = ii0Var.g;
+            hi0VarA.h = strD;
+            ii0 ii0VarA = hi0VarA.a();
+            this.w = ii0VarA;
+            Uri uri = ii0VarA.a;
+            byte[] bArr = (byte[]) se4Var.i(strD).b.get("exo_redir");
+            Uri uri2 = null;
+            String str = bArr != null ? new String(bArr, StandardCharsets.UTF_8) : null;
+            if (str != null) {
+                uri2 = Uri.parse(str);
+            }
+            if (uri2 != null) {
+                uri = uri2;
+            }
+            this.v = uri;
+            this.A = j;
+            boolean z = (this.t && this.D) || (this.u && j2 == -1);
+            this.E = z;
+            if (z) {
+                this.B = -1L;
+            } else {
+                long jA = nd0.a(se4Var.i(strD));
+                this.B = jA;
+                if (jA != -1) {
+                    long j3 = jA - j;
+                    this.B = j3;
+                    if (j3 < 0) {
+                        throw new DataSourceException(2008);
+                    }
+                }
+            }
+            if (j2 != -1) {
+                long j4 = this.B;
+                this.B = j4 == -1 ? j2 : Math.min(j4, j2);
+            }
+            long j5 = this.B;
+            if (j5 > 0 || j5 == -1) {
+                p(ii0VarA, false);
+            }
+            return j2 != -1 ? j2 : this.B;
+        } catch (Throwable th) {
+            if (this.y == this.o || (th instanceof Cache$CacheException)) {
+                this.D = true;
+            }
+            throw th;
+        }
     }
 
     @Override // defpackage.ci0
-    public final void c(rw4 r2) {
-        r2.getClass();
-        this.o.c(r2);
-        this.q.c(r2);
+    public final void c(rw4 rw4Var) {
+        rw4Var.getClass();
+        this.o.c(rw4Var);
+        this.q.c(rw4Var);
     }
 
     @Override // defpackage.ci0
     public final void close() {
         this.w = null;
         this.v = null;
-        this.A = 0;
-        o();     // Catch: Throwable -> L5
-        return;
-    L5:
-        th = move-exception;
-        if (this.y != this.o) goto L9;
-    L10:
-        this.D = true;
-    L11:
-        throw th;
-    L9:
-        if ((th instanceof Cache$CacheException) == false) goto L11;
-        goto L10
+        this.A = 0L;
+        try {
+            o();
+        } catch (Throwable th) {
+            if (this.y == this.o || (th instanceof Cache$CacheException)) {
+                this.D = true;
+            }
+            throw th;
+        }
     }
 
     @Override // defpackage.ci0
     public final Map j() {
-        if (this.y != this.o) goto L5;
-        boolean r0 = true;
-    L6:
-        if (r0 == true) goto L10;
-        return this.q.j();
-    L10:
-        return Collections.EMPTY_MAP;
-    L5:
-        r0 = false;
-        goto L6
+        return !(this.y == this.o) ? this.q.j() : Collections.EMPTY_MAP;
     }
 
     @Override // defpackage.ci0
@@ -198,262 +136,213 @@ public final class lx implements ci0 {
         return this.v;
     }
 
+    /* JADX WARN: Multi-variable type inference failed */
     public final void o() {
-        se4 r0 = this.n;
-        ci0 r1 = this.y;
-        if (r1 != null) goto L16;
-        return;
-    L16:
-        r1.close();     // Catch: Throwable -> L11
-        this.x = null;
-        this.y = null;
-        te4 r2 = this.C;
-        if (r2 == null) goto L18;
-        r0.l(r2);
-        this.C = null;
-        return;
-    L18:
-        return;
-    L11:
-        th = move-exception;
-        this.x = null;
-        this.y = null;
-        te4 r3 = this.C;
-        if (r3 == null) goto L15;
-        r0.l(r3);
-        this.C = null;
-    L15:
-        throw th;
+        se4 se4Var = this.n;
+        ci0 ci0Var = this.y;
+        if (ci0Var == null) {
+            return;
+        }
+        try {
+            ci0Var.close();
+        } finally {
+            this.x = null;
+            this.y = null;
+            te4 te4Var = this.C;
+            if (te4Var != null) {
+                se4Var.l(te4Var);
+                this.C = null;
+            }
+        }
     }
 
-    public final void p(ii0 r18, boolean r19) {
-        String r7 = r18.h;
-        String r2 = f35.a;
-        Uri r8 = null;
-        if (this.E == false) goto L5;
-        te4 r9 = null;
-    L22:
-        if (r9 != null) goto L25;
-        ci0 r4 = this.q;
-        hi0 r5 = r18.a();
-        r5.f = this.A;
-        r5.g = this.B;
-        ii0 r6 = r5.a();
-    L41:
-        if (this.E == false) goto L43;
-    L45:
-        long r10 = Long.MAX_VALUE;
-    L46:
-        this.F = r10;
-        boolean r11 = false;
-        if (r19 == true) goto L49;
-    L62:
-        if (r9 != null) goto L64;
-    L66:
-        this.y = r4;
-        this.x = r6;
-        this.z = 0;
-        long r12 = r4.b(r6);
-        xc5 r13 = new xc5(5);
-        if (r6.g != (-1)) goto L72;
-        if (r12 == (-1)) goto L72;
-        this.B = r12;
-        r13.m(Long.valueOf(this.A + r12), "exo_len");
-    L72:
-        if (this.y != this.o) goto L74;
-        r11 = true;
-    L74:
-        if (r11 == true) goto L83;
-        Uri r3 = r4.m();
-        this.v = r3;
-        if (r18.a.equals(r3) == true) goto L79;
-        r8 = this.v;
-    L79:
-        if (r8 != null) goto L81;
-        ((ArrayList) r13.p).add("exo_redir");
-        ((HashMap) r13.o).remove("exo_redir");
-        goto L83
-    L81:
-        r13.m(r8.toString(), "exo_redir");
-    L83:
-        if (this.y != this.p) goto L93;
-        this.n.c(r7, r13);
-        return;
-    L93:
-        return;
-    L64:
-        if (r9.q == true) goto L66;
-        this.C = r9;
-        goto L66
-    L49:
-        if (this.y != this.q) goto L51;
-        boolean r14 = true;
-    L52:
-        rr2.w(r14);
-        if (r4 != this.q) goto L86;
-        return;
-    L86:
-        o();     // Catch: Throwable -> L57
-    L57:
-        th = move-exception;
-        if (r9.q == true) goto L61;
-        this.n.l(r9);
-    L61:
-        throw th;
-    L51:
-        r14 = false;
-        goto L52
-    L43:
-        if (r4 != this.q) goto L45;
-        r10 = this.A + 102400;
-        goto L46
-    L25:
-        if (r9.q == false) goto L30;
-        Uri r15 = Uri.fromFile(r9.r);
-        long r16 = r9.o;
-        long r17 = this.A - r16;
-        long r110 = r9.p - r17;
-        long r111 = this.B;
-        if (r111 == (-1)) goto L29;
-        r110 = Math.min(r110, r111);
-    L29:
-        hi0 r112 = r18.a();
-        r112.a = r15;
-        r112.b = r16;
-        r112.f = r17;
-        r112.g = r110;
-        r6 = r112.a();
-        r4 = this.o;
-        goto L41
-    L30:
-        long r20 = r9.p;
-        long r113 = this.B;
-        if (r20 != (-1)) goto L34;
-        r20 = r113;
-    L36:
-        hi0 r21 = r18.a();
-        r21.f = this.A;
-        r21.g = r20;
-        r6 = r21.a();
-        r4 = this.p;
-        if (r4 != null) goto L41;
-        r4 = this.q;
-        this.n.l(r9);
-        r9 = null;
-        goto L41
-    L34:
-        if (r113 == (-1)) goto L36;
-        r20 = Math.min(r20, r113);
-        goto L36
-    L5:
-        boolean r22 = this.s;
-        se4 r23 = this.n;
-        long r24 = this.A;
-        if (r22 == true) goto L88;
-        r9 = r23.p(r24, this.B, r7);
-        goto L22
-    L88:
-        long r25 = this.B;     // Catch: InterruptedException -> L18
-        monitor-enter(r23);     // Catch: InterruptedException -> L18
-        r23.d();     // Catch: Throwable -> L15
-    L10:
-        r9 = r23.p(r24, r25, r7);     // Catch: Throwable -> L15
-        if (r9 != null) goto L12;
-        r23.wait();     // Catch: Throwable -> L15
-    L12:
-        monitor-exit(r23);     // Catch: InterruptedException -> L18
-    L15:
-        th = move-exception;
-        throw th;     // Catch: InterruptedException -> L18
-    L18:
-        Thread.currentThread().interrupt();
-        throw new InterruptedIOException();
+    public final void p(ii0 ii0Var, boolean z) throws InterruptedIOException {
+        te4 te4VarP;
+        ii0 ii0VarA;
+        ci0 ci0Var;
+        String str = ii0Var.h;
+        String str2 = f35.a;
+        if (this.E) {
+            te4VarP = null;
+        } else {
+            boolean z2 = this.s;
+            se4 se4Var = this.n;
+            long j = this.A;
+            if (z2) {
+                try {
+                    long j2 = this.B;
+                    synchronized (se4Var) {
+                        se4Var.d();
+                        while (true) {
+                            te4VarP = se4Var.p(j, j2, str);
+                            if (te4VarP != null) {
+                                break;
+                            } else {
+                                se4Var.wait();
+                            }
+                        }
+                    }
+                } catch (InterruptedException unused) {
+                    Thread.currentThread().interrupt();
+                    throw new InterruptedIOException();
+                }
+            } else {
+                te4VarP = se4Var.p(j, this.B, str);
+            }
+        }
+        if (te4VarP == null) {
+            ci0Var = this.q;
+            hi0 hi0VarA = ii0Var.a();
+            hi0VarA.f = this.A;
+            hi0VarA.g = this.B;
+            ii0VarA = hi0VarA.a();
+        } else if (te4VarP.q) {
+            Uri uriFromFile = Uri.fromFile(te4VarP.r);
+            long j3 = te4VarP.o;
+            long j4 = this.A - j3;
+            long jMin = te4VarP.p - j4;
+            long j5 = this.B;
+            if (j5 != -1) {
+                jMin = Math.min(jMin, j5);
+            }
+            hi0 hi0VarA2 = ii0Var.a();
+            hi0VarA2.a = uriFromFile;
+            hi0VarA2.b = j3;
+            hi0VarA2.f = j4;
+            hi0VarA2.g = jMin;
+            ii0VarA = hi0VarA2.a();
+            ci0Var = this.o;
+        } else {
+            long jMin2 = te4VarP.p;
+            long j6 = this.B;
+            if (jMin2 == -1) {
+                jMin2 = j6;
+            } else if (j6 != -1) {
+                jMin2 = Math.min(jMin2, j6);
+            }
+            hi0 hi0VarA3 = ii0Var.a();
+            hi0VarA3.f = this.A;
+            hi0VarA3.g = jMin2;
+            ii0VarA = hi0VarA3.a();
+            ci0Var = this.p;
+            if (ci0Var == null) {
+                ci0Var = this.q;
+                this.n.l(te4VarP);
+                te4VarP = null;
+            }
+        }
+        this.F = (this.E || ci0Var != this.q) ? Long.MAX_VALUE : this.A + 102400;
+        if (z) {
+            rr2.w(this.y == this.q);
+            if (ci0Var == this.q) {
+                return;
+            }
+            try {
+                o();
+            } catch (Throwable th) {
+                if (!te4VarP.q) {
+                    this.n.l(te4VarP);
+                }
+                throw th;
+            }
+        }
+        if (te4VarP != null && !te4VarP.q) {
+            this.C = te4VarP;
+        }
+        this.y = ci0Var;
+        this.x = ii0VarA;
+        this.z = 0L;
+        long jB = ci0Var.b(ii0VarA);
+        xc5 xc5Var = new xc5(5);
+        if (ii0VarA.g == -1 && jB != -1) {
+            this.B = jB;
+            xc5Var.m(Long.valueOf(this.A + jB), "exo_len");
+        }
+        if (!(this.y == this.o)) {
+            Uri uriM = ci0Var.m();
+            this.v = uriM;
+            Uri uri = ii0Var.a.equals(uriM) ? null : this.v;
+            if (uri == null) {
+                ((ArrayList) xc5Var.p).add("exo_redir");
+                ((HashMap) xc5Var.o).remove("exo_redir");
+            } else {
+                xc5Var.m(uri.toString(), "exo_redir");
+            }
+        }
+        if (this.y == this.p) {
+            this.n.c(str, xc5Var);
+        }
     }
 
     @Override // defpackage.wh0
-    public final int read(byte[] r19, int r20, int r21) {
-        ci0 r2 = this.o;
-        boolean r3 = false;
-        if (r21 != 0) goto L6;
-        return 0;
-    L6:
-        if (this.B != 0) goto L8;
-        return -1;
-    L8:
-        ii0 r4 = this.w;
-        r4.getClass();
-        ii0 r8 = this.x;
-        r8.getClass();
-    L12:
-        th = move-exception;
-        if (this.y != r2) goto L50;
-    L51:
-        this.D = true;
-    L52:
-        throw th;
-    L50:
-        if ((th instanceof Cache$CacheException) == false) goto L52;
-    L10:
-        if (this.A < this.F) goto L14;
-        p(r4, true);     // Catch: Throwable -> L12
-    L14:
-        ci0 r10 = this.y;     // Catch: Throwable -> L12
-        r10.getClass();     // Catch: Throwable -> L12
-        int r11 = r10.read(r19, r20, r21);     // Catch: Throwable -> L12
-        ci0 r13 = this.y;
-        if (r11 == (-1)) goto L22;
-        long r5 = r11;
-        this.A += r5;     // Catch: Throwable -> L12
-        this.z += r5;     // Catch: Throwable -> L12
-        long r6 = this.B;     // Catch: Throwable -> L12
-        if (r6 == (-1)) goto L44;
-        this.B = r6 - r5;     // Catch: Throwable -> L12
-        return r11;
-    L44:
-        return r11;
-    L22:
-        if (r13 != r2) goto L24;
-        boolean r7 = true;
-    L25:
-        if (r7 == true) goto L38;
-        long r16 = -1;
-        long r14 = r8.g;     // Catch: Throwable -> L12
-        if (r14 == (-1)) goto L31;
-        int r9 = r11;
-        if (this.z < r14) goto L32;
-    L39:
-        long r12 = this.B;     // Catch: Throwable -> L12
-        if (r12 <= 0) goto L42;
-    L45:
-        o();     // Catch: Throwable -> L12
-        p(r4, false);     // Catch: Throwable -> L12
-        return read(r19, r20, r21);
-    L42:
-        if (r12 == r16) goto L45;
-        return r9;
-    L32:
-        String r0 = r4.h;     // Catch: Throwable -> L12
-        String r15 = f35.a;     // Catch: Throwable -> L12
-        this.B = 0;     // Catch: Throwable -> L12
-        if (r13 != this.p) goto L35;
-        r3 = true;
-    L35:
-        if (r3 == false) goto L54;
-        xc5 r17 = new xc5(5);     // Catch: Throwable -> L12
-        r17.m(Long.valueOf(this.A), "exo_len");     // Catch: Throwable -> L12
-        this.n.c(r0, r17);     // Catch: Throwable -> L12
-        return r9;
-    L54:
-        return r9;
-    L31:
-        r9 = r11;
-        goto L32
-    L38:
-        r9 = r11;
-        r16 = -1;
-        goto L39
-    L24:
-        r7 = false;
-        goto L25
+    public final int read(byte[] bArr, int i, int i2) {
+        int i3;
+        long j;
+        ci0 ci0Var = this.o;
+        if (i2 == 0) {
+            return 0;
+        }
+        if (this.B == 0) {
+            return -1;
+        }
+        ii0 ii0Var = this.w;
+        ii0Var.getClass();
+        ii0 ii0Var2 = this.x;
+        ii0Var2.getClass();
+        try {
+            if (this.A >= this.F) {
+                p(ii0Var, true);
+            }
+            ci0 ci0Var2 = this.y;
+            ci0Var2.getClass();
+            int i4 = ci0Var2.read(bArr, i, i2);
+            ci0 ci0Var3 = this.y;
+            if (i4 != -1) {
+                long j2 = i4;
+                this.A += j2;
+                this.z += j2;
+                long j3 = this.B;
+                if (j3 == -1) {
+                    return i4;
+                }
+                this.B = j3 - j2;
+                return i4;
+            }
+            if (!(ci0Var3 == ci0Var)) {
+                j = -1;
+                long j4 = ii0Var2.g;
+                if (j4 != -1) {
+                    i3 = i4;
+                    if (this.z < j4) {
+                    }
+                } else {
+                    i3 = i4;
+                }
+                String str = ii0Var.h;
+                String str2 = f35.a;
+                this.B = 0L;
+                if (!(ci0Var3 == this.p)) {
+                    return i3;
+                }
+                xc5 xc5Var = new xc5(5);
+                xc5Var.m(Long.valueOf(this.A), "exo_len");
+                this.n.c(str, xc5Var);
+                return i3;
+            }
+            i3 = i4;
+            j = -1;
+            long j5 = this.B;
+            if (j5 <= 0 && j5 != j) {
+                return i3;
+            }
+            o();
+            p(ii0Var, false);
+            return read(bArr, i, i2);
+        } catch (Throwable th) {
+            if (this.y == ci0Var || (th instanceof Cache$CacheException)) {
+                this.D = true;
+            }
+            throw th;
+        }
     }
 }

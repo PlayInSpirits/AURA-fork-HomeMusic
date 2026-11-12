@@ -10,71 +10,65 @@ import java.util.HashMap;
 /* JADX INFO: loaded from: classes.dex */
 public class xk2 {
     public final MediaController a;
-    public final Object b;
-    public final ArrayList c;
-    public final HashMap d;
+    public final Object b = new Object();
+    public final ArrayList c = new ArrayList();
+    public final HashMap d = new HashMap();
     public final pr2 e;
 
-    public xk2(Context r3, pr2 r4) {
-        this.b = new Object();
-        this.c = new ArrayList();
-        this.d = new HashMap();
-        this.e = r4;
-        MediaController r0 = new MediaController(r3, r4.o);
-        this.a = r0;
-        if (r4.a() != null) goto L6;
-        r0.sendCommand("android.support.v4.media.session.command.GET_EXTRA_BINDER", null, new wk2(this));
-        return;
+    public xk2(Context context, pr2 pr2Var) {
+        this.e = pr2Var;
+        MediaController mediaController = new MediaController(context, pr2Var.o);
+        this.a = mediaController;
+        if (pr2Var.a() == null) {
+            mediaController.sendCommand("android.support.v4.media.session.command.GET_EXTRA_BINDER", null, new wk2(this));
+        }
     }
 
     public final void a() {
-        qu1 r0 = this.e.a();
-        if (r0 != null) goto L5;
-        return;
-    L5:
-        ArrayList r1 = this.c;
-        int r2 = r1.size();
-        int r3 = 0;
-    L6:
-        if (r3 >= r2) goto L14;
-        Object r4 = r1.get(r3);
-        r3 = r3 + 1;
-        gm2 r5 = (gm2) r4;
-        tk2 r6 = new tk2(r5);
-        this.d.put(r5, r6);
-        r5.c = r6;
-        r0.l0(r6);     // Catch: SecurityException -> L10 Throwable -> L12
-        r5.c(13, null);
-    L12:
-        e = move-exception;
-        l93.G("MediaControllerCompat", "Dead object in registerCallback.", e);
-    L14:
-        r1.clear();
+        qu1 qu1VarA = this.e.a();
+        if (qu1VarA == null) {
+            return;
+        }
+        ArrayList arrayList = this.c;
+        int size = arrayList.size();
+        int i = 0;
+        while (i < size) {
+            Object obj = arrayList.get(i);
+            i++;
+            gm2 gm2Var = (gm2) obj;
+            tk2 tk2Var = new tk2(gm2Var);
+            this.d.put(gm2Var, tk2Var);
+            gm2Var.c = tk2Var;
+            try {
+                qu1VarA.l0(tk2Var);
+                gm2Var.c(13, null);
+            } catch (RemoteException | SecurityException e) {
+                l93.G("MediaControllerCompat", "Dead object in registerCallback.", e);
+            }
+        }
+        arrayList.clear();
     }
 
-    public final void b(gm2 r4) {
-        MediaController r0 = this.a;
-        uk2 r1 = r4.a;
-        r1.getClass();
-        r0.unregisterCallback(r1);
-        Object r2 = this.b;
-        monitor-enter(r2);
-        qu1 r3 = this.e.a();     // Catch: Throwable -> L10
-        if (r3 != null) goto L23;
-        this.c.remove(r4);     // Catch: Throwable -> L10
-    L17:
-        monitor-exit(r2);     // Catch: Throwable -> L10
-        return;
-    L23:
-        tk2 r5 = (tk2) this.d.remove(r4);     // Catch: Throwable -> L10 Throwable -> L12 RemoteException -> L14
-        if (r5 == null) goto L17;
-        r4.c = null;     // Catch: Throwable -> L10 Throwable -> L12 RemoteException -> L14
-        r3.b0(r5);     // Catch: Throwable -> L10 Throwable -> L12 RemoteException -> L14
-    L12:
-        e = move-exception;
-        l93.G("MediaControllerCompat", "Dead object in unregisterCallback.", e);     // Catch: Throwable -> L10
-    L10:
-        th = move-exception;
-        throw th;
+    public final void b(gm2 gm2Var) {
+        MediaController mediaController = this.a;
+        uk2 uk2Var = gm2Var.a;
+        uk2Var.getClass();
+        mediaController.unregisterCallback(uk2Var);
+        synchronized (this.b) {
+            qu1 qu1VarA = this.e.a();
+            if (qu1VarA != null) {
+                try {
+                    tk2 tk2Var = (tk2) this.d.remove(gm2Var);
+                    if (tk2Var != null) {
+                        gm2Var.c = null;
+                        qu1VarA.b0(tk2Var);
+                    }
+                } catch (RemoteException | SecurityException e) {
+                    l93.G("MediaControllerCompat", "Dead object in unregisterCallback.", e);
+                }
+            } else {
+                this.c.remove(gm2Var);
+            }
+        }
     }
 }

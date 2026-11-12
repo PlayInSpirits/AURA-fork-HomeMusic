@@ -8,8 +8,8 @@ import android.os.IInterface;
 public final class fu1 implements hu1, IInterface {
     public final IBinder e;
 
-    public fu1(IBinder r1) {
-        this.e = r1;
+    public fu1(IBinder iBinder) {
+        this.e = iBinder;
     }
 
     @Override // android.os.IInterface

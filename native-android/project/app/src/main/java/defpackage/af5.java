@@ -11,41 +11,35 @@ public abstract class af5 implements IInterface {
     public final IBinder f;
     public final String g;
 
-    public /* synthetic */ af5(IBinder r1, String r2, int r3) {
-        this.e = r3;
-        this.f = r1;
-        this.g = r2;
+    public /* synthetic */ af5(IBinder iBinder, String str, int i) {
+        this.e = i;
+        this.f = iBinder;
+        this.g = str;
     }
 
-    public void U(Parcel r3, int r4) {
-        Parcel r0 = Parcel.obtain();
-        this.f.transact(r4, r3, r0, 0);     // Catch: Throwable -> L6
-        r0.readException();     // Catch: Throwable -> L6
-        r3.recycle();
-        r0.recycle();
-        return;
-    L6:
-        th = move-exception;
-        r3.recycle();
-        r0.recycle();
-        throw th;
+    public void U(Parcel parcel, int i) {
+        Parcel parcelObtain = Parcel.obtain();
+        try {
+            this.f.transact(i, parcel, parcelObtain, 0);
+            parcelObtain.readException();
+        } finally {
+            parcel.recycle();
+            parcelObtain.recycle();
+        }
     }
 
     @Override // android.os.IInterface
     public final IBinder asBinder() {
-        switch(this.e) {
-            case 0: goto L7;
-            default: goto L5;
-        };
-    L5:
-        return this.f;
-    L7:
+        switch (this.e) {
+            case 0:
+                break;
+        }
         return this.f;
     }
 
     public Parcel m() {
-        Parcel r0 = Parcel.obtain();
-        r0.writeInterfaceToken(this.g);
-        return r0;
+        Parcel parcelObtain = Parcel.obtain();
+        parcelObtain.writeInterfaceToken(this.g);
+        return parcelObtain;
     }
 }

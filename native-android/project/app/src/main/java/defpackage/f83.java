@@ -8,8 +8,8 @@ public final class f83 {
     public final int a;
     public final ByteBuffer b;
 
-    public f83(int r1, ByteBuffer r2) {
-        this.a = r1;
-        this.b = r2;
+    public f83(int i, ByteBuffer byteBuffer) {
+        this.a = i;
+        this.b = byteBuffer;
     }
 }

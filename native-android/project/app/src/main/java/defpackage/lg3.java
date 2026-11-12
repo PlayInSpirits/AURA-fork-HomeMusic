@@ -7,10 +7,10 @@ public final class lg3 implements vb3 {
     public final cf2 o;
     public final rp1 p;
 
-    public lg3(vi2 r1, cf2 r2, rp1 r3) {
-        this.n = r1;
-        this.o = r2;
-        this.p = r3;
+    public lg3(vi2 vi2Var, cf2 cf2Var, rp1 rp1Var) {
+        this.n = vi2Var;
+        this.o = cf2Var;
+        this.p = rp1Var;
     }
 
     @Override // defpackage.vb3

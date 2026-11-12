@@ -7,24 +7,21 @@ public final /* synthetic */ class a41 implements qc2 {
     public final /* synthetic */ gn2 o;
     public final /* synthetic */ int p;
 
-    public /* synthetic */ a41(gn2 r1, int r2, int r3) {
-        this.n = r3;
-        this.o = r1;
-        this.p = r2;
+    public /* synthetic */ a41(gn2 gn2Var, int i, int i2) {
+        this.n = i2;
+        this.o = gn2Var;
+        this.p = i;
     }
 
     @Override // defpackage.qc2
-    public final void invoke(Object r2) {
-        switch(this.n) {
-            case 0: goto L6;
-            default: goto L4;
-        };
-    L4:
-        oi3 r3 = (oi3) r2;
-        r3.t(this.p, this.o);
-        return;
-    L6:
-        oi3 r4 = (oi3) r2;
-        r4.t(this.p, this.o);
+    public final void invoke(Object obj) {
+        switch (this.n) {
+            case 0:
+                ((oi3) obj).t(this.p, this.o);
+                break;
+            default:
+                ((oi3) obj).t(this.p, this.o);
+                break;
+        }
     }
 }

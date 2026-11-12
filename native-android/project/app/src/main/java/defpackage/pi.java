@@ -5,246 +5,187 @@ import java.util.ArrayList;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public class pi {
-    public ai4 a;
-    public float b;
-    public final ArrayList c;
     public final ji d;
-    public boolean e;
+    public ai4 a = null;
+    public float b = 0.0f;
+    public final ArrayList c = new ArrayList();
+    public boolean e = false;
 
-    public pi(yc5 r2) {
-        this.a = null;
-        this.b = 0.0f;
-        this.c = new ArrayList();
-        this.e = false;
-        this.d = new ji(this, r2);
+    public pi(yc5 yc5Var) {
+        this.d = new ji(this, yc5Var);
     }
 
-    public final void a(eb2 r3, int r4) {
-        ai4 r0 = r3.j(r4);
-        ji r2 = this.d;
-        r2.g(r0, 1.0f);
-        r2.g(r3.j(r4), -1.0f);
+    public final void a(eb2 eb2Var, int i) {
+        ai4 ai4VarJ = eb2Var.j(i);
+        ji jiVar = this.d;
+        jiVar.g(ai4VarJ, 1.0f);
+        jiVar.g(eb2Var.j(i), -1.0f);
     }
 
-    public final void b(ai4 r3, ai4 r4, ai4 r5, int r6) {
-        boolean r0 = false;
-        if (r6 == 0) goto L7;
-        if (r6 >= 0) goto L6;
-        r6 = r6 * (-1);
-        r0 = true;
-    L6:
-        this.b = r6;
-    L7:
-        ji r2 = this.d;
-        if (r0 == true) goto L11;
-        r2.g(r3, -1.0f);
-        r2.g(r4, 1.0f);
-        r2.g(r5, 1.0f);
-        return;
-    L11:
-        r2.g(r3, 1.0f);
-        r2.g(r4, -1.0f);
-        r2.g(r5, -1.0f);
+    public final void b(ai4 ai4Var, ai4 ai4Var2, ai4 ai4Var3, int i) {
+        boolean z = false;
+        if (i != 0) {
+            if (i < 0) {
+                i *= -1;
+                z = true;
+            }
+            this.b = i;
+        }
+        ji jiVar = this.d;
+        if (z) {
+            jiVar.g(ai4Var, 1.0f);
+            jiVar.g(ai4Var2, -1.0f);
+            jiVar.g(ai4Var3, -1.0f);
+        } else {
+            jiVar.g(ai4Var, -1.0f);
+            jiVar.g(ai4Var2, 1.0f);
+            jiVar.g(ai4Var3, 1.0f);
+        }
     }
 
-    public final void c(ai4 r3, ai4 r4, ai4 r5, int r6) {
-        boolean r0 = false;
-        if (r6 == 0) goto L7;
-        if (r6 >= 0) goto L6;
-        r6 = r6 * (-1);
-        r0 = true;
-    L6:
-        this.b = r6;
-    L7:
-        ji r2 = this.d;
-        if (r0 == true) goto L11;
-        r2.g(r3, -1.0f);
-        r2.g(r4, 1.0f);
-        r2.g(r5, -1.0f);
-        return;
-    L11:
-        r2.g(r3, 1.0f);
-        r2.g(r4, -1.0f);
-        r2.g(r5, 1.0f);
+    public final void c(ai4 ai4Var, ai4 ai4Var2, ai4 ai4Var3, int i) {
+        boolean z = false;
+        if (i != 0) {
+            if (i < 0) {
+                i *= -1;
+                z = true;
+            }
+            this.b = i;
+        }
+        ji jiVar = this.d;
+        if (z) {
+            jiVar.g(ai4Var, 1.0f);
+            jiVar.g(ai4Var2, -1.0f);
+            jiVar.g(ai4Var3, 1.0f);
+        } else {
+            jiVar.g(ai4Var, -1.0f);
+            jiVar.g(ai4Var2, 1.0f);
+            jiVar.g(ai4Var3, -1.0f);
+        }
     }
 
-    public ai4 d(boolean[] r2) {
-        return f(r2, null);
+    public ai4 d(boolean[] zArr) {
+        return f(zArr, null);
     }
 
     public boolean e() {
-        if (this.a == null) goto L5;
-        return false;
-    L5:
-        if (this.b == 0.0f) goto L7;
-        return false;
-    L7:
-        if (this.d.d() != 0) goto L13;
-        return true;
-    L13:
-        return false;
+        return this.a == null && this.b == 0.0f && this.d.d() == 0;
     }
 
-    public final ai4 f(boolean[] r10, ai4 r11) {
-        ji r9 = this.d;
-        int r0 = r9.d();
-        ai4 r2 = null;
-        int r3 = 0;
-        float r4 = 0.0f;
-    L3:
-        if (r3 >= r0) goto L19;
-        float r5 = r9.f(r3);
-        if (r5 >= 0.0f) goto L18;
-        ai4 r6 = r9.e(r3);
-        if (r10 != null) goto L9;
-    L10:
-        if (r6 == r11) goto L18;
-        int r7 = r6.y;
-        if (r7 == 3) goto L16;
-        if (r7 != 4) goto L18;
-    L16:
-        if (r5 >= r4) goto L18;
-        r4 = r5;
-        r2 = r6;
-        goto L18
-    L9:
-        if (r10[r6.o] == false) goto L10;
-    L18:
-        r3 = r3 + 1;
-        goto L3
-    L19:
-        return r2;
+    public final ai4 f(boolean[] zArr, ai4 ai4Var) {
+        int i;
+        ji jiVar = this.d;
+        int iD = jiVar.d();
+        ai4 ai4Var2 = null;
+        float f = 0.0f;
+        for (int i2 = 0; i2 < iD; i2++) {
+            float f2 = jiVar.f(i2);
+            if (f2 < 0.0f) {
+                ai4 ai4VarE = jiVar.e(i2);
+                if ((zArr == null || !zArr[ai4VarE.o]) && ai4VarE != ai4Var && (((i = ai4VarE.y) == 3 || i == 4) && f2 < f)) {
+                    f = f2;
+                    ai4Var2 = ai4VarE;
+                }
+            }
+        }
+        return ai4Var2;
     }
 
-    public final void g(ai4 r6) {
-        ai4 r0 = this.a;
-        ji r2 = this.d;
-        if (r0 == null) goto L5;
-        r2.g(r0, -1.0f);
-        this.a.p = -1;
-        this.a = null;
-    L5:
-        float r1 = r2.h(r6, true) * (-1.0f);
-        this.a = r6;
-        if (r1 != 1.0f) goto L8;
-        return;
-    L8:
-        this.b /= r1;
-        int r5 = r2.h;
-        int r7 = 0;
-    L9:
-        if (r5 == (-1)) goto L13;
-        if (r7 >= r2.a) goto L16;
-        float[] r3 = r2.g;
-        r3[r5] = r3[r5] / r1;
-        r5 = r2.f[r5];
-        r7 = r7 + 1;
-        goto L9
-    L16:
-        return;
+    public final void g(ai4 ai4Var) {
+        ai4 ai4Var2 = this.a;
+        ji jiVar = this.d;
+        if (ai4Var2 != null) {
+            jiVar.g(ai4Var2, -1.0f);
+            this.a.p = -1;
+            this.a = null;
+        }
+        float fH = jiVar.h(ai4Var, true) * (-1.0f);
+        this.a = ai4Var;
+        if (fH == 1.0f) {
+            return;
+        }
+        this.b /= fH;
+        int i = jiVar.h;
+        for (int i2 = 0; i != -1 && i2 < jiVar.a; i2++) {
+            float[] fArr = jiVar.g;
+            fArr[i] = fArr[i] / fH;
+            i = jiVar.f[i];
+        }
     }
 
-    public final void h(eb2 r5, ai4 r6, boolean r7) {
-        if (r6.s == false) goto L13;
-        ji r0 = this.d;
-        float r1 = r0.c(r6);
-        float r2 = this.b;
-        this.b = (r6.r * r1) + r2;
-        r0.h(r6, r7);
-        if (r7 == false) goto L9;
-        r6.b(this);
-    L9:
-        if (r0.d() != 0) goto L12;
+    public final void h(eb2 eb2Var, ai4 ai4Var, boolean z) {
+        if (ai4Var.s) {
+            ji jiVar = this.d;
+            float fC = jiVar.c(ai4Var);
+            this.b = (ai4Var.r * fC) + this.b;
+            jiVar.h(ai4Var, z);
+            if (z) {
+                ai4Var.b(this);
+            }
+            if (jiVar.d() == 0) {
+                this.e = true;
+                eb2Var.b = true;
+            }
+        }
+    }
+
+    public void i(eb2 eb2Var, pi piVar, boolean z) {
+        ji jiVar = this.d;
+        jiVar.getClass();
+        float fC = jiVar.c(piVar.a);
+        jiVar.h(piVar.a, z);
+        ji jiVar2 = piVar.d;
+        int iD = jiVar2.d();
+        for (int i = 0; i < iD; i++) {
+            ai4 ai4VarE = jiVar2.e(i);
+            jiVar.a(ai4VarE, jiVar2.c(ai4VarE) * fC, z);
+        }
+        this.b = (piVar.b * fC) + this.b;
+        if (z) {
+            piVar.a.b(this);
+        }
+        if (this.a == null || jiVar.d() != 0) {
+            return;
+        }
         this.e = true;
-        r5.b = true;
-        return;
-    L12:
-        return;
-    }
-
-    public void i(eb2 r8, pi r9, boolean r10) {
-        ji r0 = this.d;
-        r0.getClass();
-        float r1 = r0.c(r9.a);
-        r0.h(r9.a, r10);
-        ji r2 = r9.d;
-        int r3 = r2.d();
-        int r4 = 0;
-    L3:
-        if (r4 >= r3) goto L5;
-        ai4 r5 = r2.e(r4);
-        r0.a(r5, r2.c(r5) * r1, r10);
-        r4 = r4 + 1;
-        goto L3
-    L5:
-        float r6 = this.b;
-        this.b = (r9.b * r1) + r6;
-        if (r10 == false) goto L9;
-        r9.a.b(this);
-    L9:
-        if (this.a != null) goto L11;
-        return;
-    L11:
-        if (r0.d() != 0) goto L16;
-        this.e = true;
-        r8.b = true;
-        return;
+        eb2Var.b = true;
     }
 
     public String toString() {
-        if (this.a != null) goto L5;
-        String r0 = "0";
-    L6:
-        String r1 = r0.concat(" = ");
-        int r3 = 0;
-        if (this.b == 0.0f) goto L9;
-        StringBuilder r2 = xa3.i(r1);
-        r2.append(this.b);
-        r1 = r2.toString();
-        boolean r4 = true;
-    L10:
-        ji r10 = this.d;
-        int r5 = r10.d();
-    L11:
-        if (r3 >= r5) goto L33;
-        ai4 r6 = r10.e(r3);
-        if (r6 == null) goto L32;
-        float r7 = r10.f(r3);
-        if (r7 == 0.0f) goto L32;
-        String r8 = r6.toString();
-        if (r4 == false) goto L21;
-        if (r7 <= 0.0f) goto L26;
-        r1 = r1.concat(" + ");
-    L28:
-        if (r7 != 1.0f) goto L30;
-        r1 = r1.concat(r8);
-    L31:
-        r4 = true;
-        goto L32
-    L30:
-        r1 = r1 + r7 + " " + r8;
-        goto L31
-    L26:
-        r1 = r1.concat(" - ");
-    L23:
-        r7 = r7 * (-1.0f);
-        goto L28
-    L21:
-        if (r7 >= 0.0f) goto L28;
-        r1 = r1.concat("- ");
-    L32:
-        r3 = r3 + 1;
-        goto L11
-    L33:
-        if (r4 == false) goto L35;
-        return r1;
-    L35:
-        return r1.concat("0.0");
-    L9:
-        r4 = false;
-        goto L10
-    L5:
-        r0 = "" + this.a;
-        goto L6
+        boolean z;
+        String strConcat = (this.a == null ? "0" : "" + this.a).concat(" = ");
+        if (this.b != 0.0f) {
+            StringBuilder sbI = xa3.i(strConcat);
+            sbI.append(this.b);
+            strConcat = sbI.toString();
+            z = true;
+        } else {
+            z = false;
+        }
+        ji jiVar = this.d;
+        int iD = jiVar.d();
+        for (int i = 0; i < iD; i++) {
+            ai4 ai4VarE = jiVar.e(i);
+            if (ai4VarE != null) {
+                float f = jiVar.f(i);
+                if (f != 0.0f) {
+                    String string = ai4VarE.toString();
+                    if (z) {
+                        if (f > 0.0f) {
+                            strConcat = strConcat.concat(" + ");
+                        } else {
+                            strConcat = strConcat.concat(" - ");
+                            f *= -1.0f;
+                        }
+                    } else if (f < 0.0f) {
+                        strConcat = strConcat.concat("- ");
+                        f *= -1.0f;
+                    }
+                    strConcat = f == 1.0f ? strConcat.concat(string) : strConcat + f + " " + string;
+                    z = true;
+                }
+            }
+        }
+        return !z ? strConcat.concat("0.0") : strConcat;
     }
 }

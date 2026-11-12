@@ -17,82 +17,75 @@ public final class ek extends kp {
     public long u;
     public boolean v;
 
-    public ek(Context r2) {
+    public ek(Context context) {
         super(false);
-        this.r = r2.getAssets();
+        this.r = context.getAssets();
     }
 
     @Override // defpackage.ci0
-    public final long b(ii0 r8) {
-        Uri r0 = r8.a;     // Catch: IOException -> L20 AssetDataSource$AssetDataSourceException -> L27
-        long r1 = r8.f;     // Catch: IOException -> L20 AssetDataSource$AssetDataSourceException -> L27
-        this.s = r0;     // Catch: IOException -> L20 AssetDataSource$AssetDataSourceException -> L27
-        String r2 = r0.getPath();     // Catch: IOException -> L20 AssetDataSource$AssetDataSourceException -> L27
-        r2.getClass();     // Catch: IOException -> L20 AssetDataSource$AssetDataSourceException -> L27
-        if (r2.startsWith("/android_asset/") == false) goto L6;
-        r2 = r2.substring(15);     // Catch: IOException -> L20 AssetDataSource$AssetDataSourceException -> L27
-    L8:
-        q(r8);     // Catch: IOException -> L20 AssetDataSource$AssetDataSourceException -> L27
-        InputStream r3 = this.r.open(r2, 1);     // Catch: IOException -> L20 AssetDataSource$AssetDataSourceException -> L27
-        this.t = r3;     // Catch: IOException -> L20 AssetDataSource$AssetDataSourceException -> L27
-        if (r3.skip(r1) < r1) goto L19;
-        long r4 = r8.g;     // Catch: IOException -> L20 AssetDataSource$AssetDataSourceException -> L27
-        if (r4 == (-1)) goto L13;
-        this.u = r4;     // Catch: IOException -> L20 AssetDataSource$AssetDataSourceException -> L27
-    L16:
-        this.v = true;
-        r(r8);
-        return this.u;
-    L13:
-        long r5 = this.t.available();     // Catch: IOException -> L20 AssetDataSource$AssetDataSourceException -> L27
-        this.u = r5;     // Catch: IOException -> L20 AssetDataSource$AssetDataSourceException -> L27
-        if (r5 != 2147483647L) goto L16;
-        this.u = -1;     // Catch: IOException -> L20 AssetDataSource$AssetDataSourceException -> L27
-        goto L16
-    L19:
-        throw new AssetDataSource$AssetDataSourceException(null, 2008);     // Catch: IOException -> L20 AssetDataSource$AssetDataSourceException -> L27
-    L6:
-        if (r2.startsWith("/") == false) goto L8;
-        r2 = r2.substring(1);     // Catch: IOException -> L20 AssetDataSource$AssetDataSourceException -> L27
-    L27:
-        e = move-exception;
-        throw e;
-    L20:
-        e = move-exception;
-        if ((e instanceof FileNotFoundException) == false) goto L24;
-        int r6 = 2005;
-    L26:
-        throw new AssetDataSource$AssetDataSourceException(e, r6);
-    L24:
-        r6 = 2000;
-        goto L26
+    public final long b(ii0 ii0Var) throws AssetDataSource$AssetDataSourceException {
+        try {
+            Uri uri = ii0Var.a;
+            long j = ii0Var.f;
+            this.s = uri;
+            String path = uri.getPath();
+            path.getClass();
+            if (path.startsWith("/android_asset/")) {
+                path = path.substring(15);
+            } else if (path.startsWith("/")) {
+                path = path.substring(1);
+            }
+            q(ii0Var);
+            InputStream inputStreamOpen = this.r.open(path, 1);
+            this.t = inputStreamOpen;
+            if (inputStreamOpen.skip(j) < j) {
+                throw new AssetDataSource$AssetDataSourceException(null, 2008);
+            }
+            long j2 = ii0Var.g;
+            if (j2 != -1) {
+                this.u = j2;
+            } else {
+                long jAvailable = this.t.available();
+                this.u = jAvailable;
+                if (jAvailable == 2147483647L) {
+                    this.u = -1L;
+                }
+            }
+            this.v = true;
+            r(ii0Var);
+            return this.u;
+        } catch (AssetDataSource$AssetDataSourceException e) {
+            throw e;
+        } catch (IOException e2) {
+            throw new AssetDataSource$AssetDataSourceException(e2, e2 instanceof FileNotFoundException ? 2005 : 2000);
+        }
     }
 
     @Override // defpackage.ci0
     public final void close() {
         this.s = null;
-        InputStream r2 = this.t;     // Catch: Throwable -> L7 IOException -> L9
-        if (r2 == null) goto L11;
-        r2.close();     // Catch: Throwable -> L7 IOException -> L9
-    L11:
-        this.t = null;
-        if (this.v == false) goto L23;
-        this.v = false;
-        p();
-        return;
-    L23:
-        return;
-    L7:
-        th = move-exception;
-        this.t = null;
-        if (this.v == false) goto L20;
-        this.v = false;
-        p();
-    L20:
-        throw th;
-    L9:
-        e = move-exception;
-        throw new AssetDataSource$AssetDataSourceException(e, 2000);     // Catch: Throwable -> L7
+        try {
+            try {
+                InputStream inputStream = this.t;
+                if (inputStream != null) {
+                    inputStream.close();
+                }
+                this.t = null;
+                if (this.v) {
+                    this.v = false;
+                    p();
+                }
+            } catch (IOException e) {
+                throw new AssetDataSource$AssetDataSourceException(e, 2000);
+            }
+        } catch (Throwable th) {
+            this.t = null;
+            if (this.v) {
+                this.v = false;
+                p();
+            }
+            throw th;
+        }
     }
 
     @Override // defpackage.ci0
@@ -101,32 +94,31 @@ public final class ek extends kp {
     }
 
     @Override // defpackage.wh0
-    public final int read(byte[] r9, int r10, int r11) {
-        if (r11 != 0) goto L5;
-        return 0;
-    L5:
-        long r0 = this.u;
-        if (r0 != 0) goto L9;
-    L15:
+    public final int read(byte[] bArr, int i, int i2) throws AssetDataSource$AssetDataSourceException {
+        if (i2 == 0) {
+            return 0;
+        }
+        long j = this.u;
+        if (j != 0) {
+            if (j != -1) {
+                try {
+                    i2 = (int) Math.min(j, i2);
+                } catch (IOException e) {
+                    throw new AssetDataSource$AssetDataSourceException(e, 2000);
+                }
+            }
+            InputStream inputStream = this.t;
+            String str = f35.a;
+            int i3 = inputStream.read(bArr, i, i2);
+            if (i3 != -1) {
+                long j2 = this.u;
+                if (j2 != -1) {
+                    this.u = j2 - ((long) i3);
+                }
+                o(i3);
+                return i3;
+            }
+        }
         return -1;
-    L9:
-        if (r0 != (-1)) goto L24;
-    L13:
-        InputStream r1 = this.t;     // Catch: IOException -> L21
-        String r2 = f35.a;     // Catch: IOException -> L21
-        int r12 = r1.read(r9, r10, r11);     // Catch: IOException -> L21
-        if (r12 == (-1)) goto L15;
-        long r13 = this.u;
-        if (r13 == (-1)) goto L19;
-        this.u = r13 - ((long) r12);
-    L19:
-        o(r12);
-        return r12;
-    L21:
-        e = move-exception;
-        throw new AssetDataSource$AssetDataSourceException(e, 2000);
-    L24:
-        r11 = (int) Math.min(r0, r11);     // Catch: IOException -> L21
-        goto L13
     }
 }

@@ -39,33 +39,33 @@ public final class uc1 {
     public final MaterialButton y;
     public final TextInputEditText z;
 
-    public uc1(ScrollView r1, LinearLayout r2, TextInputEditText r3, TextInputLayout r4, TextInputEditText r5, TextInputLayout r6, MaterialButton r7, TextView r8, MaterialButton r9, TextView r10, TextInputEditText r11, TextInputEditText r12, TextInputLayout r13, TextInputLayout r14, MaterialButton r15, LinearProgressIndicator r16, MaterialButton r17, ScrollView r18, TextInputEditText r19, TextView r20, TextView r21, TextInputLayout r22, LinearLayout r23, LinearLayout r24, TextView r25, MaterialButton r26, TextInputEditText r27, TextInputLayout r28) {
-        this.a = r1;
-        this.b = r2;
-        this.c = r3;
-        this.d = r4;
-        this.e = r5;
-        this.f = r6;
-        this.g = r7;
-        this.h = r8;
-        this.i = r9;
-        this.j = r10;
-        this.k = r11;
-        this.l = r12;
-        this.m = r13;
-        this.n = r14;
-        this.o = r15;
-        this.p = r16;
-        this.q = r17;
-        this.r = r19;
-        this.s = r20;
-        this.t = r21;
-        this.u = r22;
-        this.v = r23;
-        this.w = r24;
-        this.x = r25;
-        this.y = r26;
-        this.z = r27;
-        this.A = r28;
+    public uc1(ScrollView scrollView, LinearLayout linearLayout, TextInputEditText textInputEditText, TextInputLayout textInputLayout, TextInputEditText textInputEditText2, TextInputLayout textInputLayout2, MaterialButton materialButton, TextView textView, MaterialButton materialButton2, TextView textView2, TextInputEditText textInputEditText3, TextInputEditText textInputEditText4, TextInputLayout textInputLayout3, TextInputLayout textInputLayout4, MaterialButton materialButton3, LinearProgressIndicator linearProgressIndicator, MaterialButton materialButton4, ScrollView scrollView2, TextInputEditText textInputEditText5, TextView textView3, TextView textView4, TextInputLayout textInputLayout5, LinearLayout linearLayout2, LinearLayout linearLayout3, TextView textView5, MaterialButton materialButton5, TextInputEditText textInputEditText6, TextInputLayout textInputLayout6) {
+        this.a = scrollView;
+        this.b = linearLayout;
+        this.c = textInputEditText;
+        this.d = textInputLayout;
+        this.e = textInputEditText2;
+        this.f = textInputLayout2;
+        this.g = materialButton;
+        this.h = textView;
+        this.i = materialButton2;
+        this.j = textView2;
+        this.k = textInputEditText3;
+        this.l = textInputEditText4;
+        this.m = textInputLayout3;
+        this.n = textInputLayout4;
+        this.o = materialButton3;
+        this.p = linearProgressIndicator;
+        this.q = materialButton4;
+        this.r = textInputEditText5;
+        this.s = textView3;
+        this.t = textView4;
+        this.u = textInputLayout5;
+        this.v = linearLayout2;
+        this.w = linearLayout3;
+        this.x = textView5;
+        this.y = materialButton5;
+        this.z = textInputEditText6;
+        this.A = textInputLayout6;
     }
 }

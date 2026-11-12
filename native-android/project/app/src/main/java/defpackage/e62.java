@@ -13,71 +13,56 @@ public final /* synthetic */ class e62 implements Runnable {
     public final /* synthetic */ long p;
     public final /* synthetic */ NsdServiceInfo q;
 
-    public /* synthetic */ e62(h62 r1, long r2, NsdServiceInfo r4, int r5) {
-        this.n = r5;
-        this.o = r1;
-        this.p = r2;
-        this.q = r4;
+    public /* synthetic */ e62(h62 h62Var, long j, NsdServiceInfo nsdServiceInfo, int i) {
+        this.n = i;
+        this.o = h62Var;
+        this.p = j;
+        this.q = nsdServiceInfo;
     }
 
     @Override // java.lang.Runnable
     public final void run() {
-        int r0 = this.n;
-        NsdServiceInfo r2 = this.q;
-        long r3 = this.p;
-        h62 r6 = this.o;
-        switch(r0) {
-            case 0: goto L27;
-            case 1: goto L23;
-            case 2: goto L12;
-            default: goto L5;
-        };
-    L12:
-        boolean r1 = r6.l0(r3);
-        LinkedHashMap r4 = r6.G0;
-        if (r1 == false) goto L33;
-        r4.remove(r2.getServiceName());
-        r6.n0();
-        if (r4.isEmpty() == true) goto L17;
-        return;
-    L17:
-        if (r6.O0 == false) goto L19;
-        return;
-    L19:
-        if (r6.N0 == true) goto L36;
-        r6.s0(R.string.lan_searching);
-        return;
-    L36:
-        return;
-    L33:
-        return;
-    L5:
-        if (r6.l0(r3) == false) goto L30;
-        r6.G0.put(r2.getServiceName(), new c62(r2, SystemClock.elapsedRealtime()));
-        r6.n0();
-        if (r6.O0 == false) goto L9;
-        return;
-    L9:
-        if (r6.N0 == true) goto L32;
-        r6.s0(R.string.lan_devices_found);
-        return;
-    L32:
-        return;
-    L30:
-        return;
-    L23:
-        if (r6.l0(r3) == false) goto L37;
-        r6.N0 = false;
-        r6.k0(r2);
-        return;
-    L37:
-        return;
-    L27:
-        if (r6.l0(r3) == false) goto L38;
-        r6.N0 = false;
-        r6.G0.remove(r2.getServiceName());
-        r6.n0();
-        r6.s0(R.string.lan_connection_error);
-        return;
+        int i = this.n;
+        NsdServiceInfo nsdServiceInfo = this.q;
+        long j = this.p;
+        h62 h62Var = this.o;
+        switch (i) {
+            case 0:
+                if (h62Var.l0(j)) {
+                    h62Var.N0 = false;
+                    h62Var.G0.remove(nsdServiceInfo.getServiceName());
+                    h62Var.n0();
+                    h62Var.s0(R.string.lan_connection_error);
+                }
+                break;
+            case 1:
+                if (h62Var.l0(j)) {
+                    h62Var.N0 = false;
+                    h62Var.k0(nsdServiceInfo);
+                }
+                break;
+            case 2:
+                boolean zL0 = h62Var.l0(j);
+                LinkedHashMap linkedHashMap = h62Var.G0;
+                if (zL0) {
+                    linkedHashMap.remove(nsdServiceInfo.getServiceName());
+                    h62Var.n0();
+                    if (linkedHashMap.isEmpty() && !h62Var.O0 && !h62Var.N0) {
+                        h62Var.s0(R.string.lan_searching);
+                        break;
+                    }
+                }
+                break;
+            default:
+                if (h62Var.l0(j)) {
+                    h62Var.G0.put(nsdServiceInfo.getServiceName(), new c62(nsdServiceInfo, SystemClock.elapsedRealtime()));
+                    h62Var.n0();
+                    if (!h62Var.O0 && !h62Var.N0) {
+                        h62Var.s0(R.string.lan_devices_found);
+                        break;
+                    }
+                }
+                break;
+        }
     }
 }

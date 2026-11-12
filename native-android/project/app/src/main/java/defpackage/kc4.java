@@ -13,66 +13,61 @@ public final class kc4 {
     public float d;
     public float e;
     public float f;
-    public final ArrayList g;
-    public final ArrayList h;
+    public final ArrayList g = new ArrayList();
+    public final ArrayList h = new ArrayList();
 
     public kc4() {
-        this.g = new ArrayList();
-        this.h = new ArrayList();
         d(0.0f, 0.0f, 270.0f, 0.0f);
     }
 
-    public final void a(float r5) {
-        float r0 = this.e;
-        if (r0 == r5) goto L10;
-        float r1 = ((r5 - r0) + 360.0f) % 360.0f;
-        if (r1 <= 180.0f) goto L8;
-        return;
-    L8:
-        float r2 = this.c;
-        float r3 = this.d;
-        gc4 r4 = new gc4(r2, r3, r2, r3);
-        r4.f = this.e;
-        r4.g = r1;
-        ec4 r6 = new ec4(r4);
-        this.h.add(r6);
-        this.e = r5;
-        return;
+    public final void a(float f) {
+        float f2 = this.e;
+        if (f2 == f) {
+            return;
+        }
+        float f3 = ((f - f2) + 360.0f) % 360.0f;
+        if (f3 > 180.0f) {
+            return;
+        }
+        float f4 = this.c;
+        float f5 = this.d;
+        gc4 gc4Var = new gc4(f4, f5, f4, f5);
+        gc4Var.f = this.e;
+        gc4Var.g = f3;
+        this.h.add(new ec4(gc4Var));
+        this.e = f;
     }
 
-    public final void b(Matrix r4, Path r5) {
-        ArrayList r3 = this.g;
-        int r0 = r3.size();
-        int r1 = 0;
-    L3:
-        if (r1 >= r0) goto L5;
-        ((ic4) r3.get(r1)).a(r4, r5);
-        r1 = r1 + 1;
-        goto L3
+    public final void b(Matrix matrix, Path path) {
+        ArrayList arrayList = this.g;
+        int size = arrayList.size();
+        for (int i = 0; i < size; i++) {
+            ((ic4) arrayList.get(i)).a(matrix, path);
+        }
     }
 
-    public final void c(float r5, float r6) {
-        hc4 r0 = new hc4();
-        r0.b = r5;
-        r0.c = r6;
-        this.g.add(r0);
-        fc4 r1 = new fc4(r0, this.c, this.d);
-        float r2 = r1.b() + 270.0f;
-        float r3 = r1.b() + 270.0f;
-        a(r2);
-        this.h.add(r1);
-        this.e = r3;
-        this.c = r5;
-        this.d = r6;
+    public final void c(float f, float f2) {
+        hc4 hc4Var = new hc4();
+        hc4Var.b = f;
+        hc4Var.c = f2;
+        this.g.add(hc4Var);
+        fc4 fc4Var = new fc4(hc4Var, this.c, this.d);
+        float fB = fc4Var.b() + 270.0f;
+        float fB2 = fc4Var.b() + 270.0f;
+        a(fB);
+        this.h.add(fc4Var);
+        this.e = fB2;
+        this.c = f;
+        this.d = f2;
     }
 
-    public final void d(float r1, float r2, float r3, float r4) {
-        this.a = r1;
-        this.b = r2;
-        this.c = r1;
-        this.d = r2;
-        this.e = r3;
-        this.f = (r3 + r4) % 360.0f;
+    public final void d(float f, float f2, float f3, float f4) {
+        this.a = f;
+        this.b = f2;
+        this.c = f;
+        this.d = f2;
+        this.e = f3;
+        this.f = (f3 + f4) % 360.0f;
         this.g.clear();
         this.h.clear();
     }

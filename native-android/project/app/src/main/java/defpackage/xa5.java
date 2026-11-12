@@ -6,7 +6,7 @@ public class xa5 extends wa5 {
     public xa5() {
     }
 
-    public xa5(pb5 r1) {
-        super(r1);
+    public xa5(pb5 pb5Var) {
+        super(pb5Var);
     }
 }

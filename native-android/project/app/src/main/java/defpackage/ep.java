@@ -12,317 +12,199 @@ public final class ep extends jc0 {
     public int t0;
     public boolean u0;
 
-    public final void N(int r6, aa5 r7, ArrayList r8) {
-        int r0 = 0;
-        int r1 = 0;
-    L4:
-        if (r1 >= this.q0) goto L11;
-        jc0 r2 = this.p0[r1];
-        ArrayList r3 = r7.a;
-        if (r3.contains(r2) == true) goto L9;
-        r3.add(r2);
-    L9:
-        r1 = r1 + 1;
-    L11:
-        if (r0 >= this.q0) goto L13;
-        gi1.n(this.p0[r0], r6, r8, r7);
-        r0 = r0 + 1;
-        goto L11
+    public final void N(int i, aa5 aa5Var, ArrayList arrayList) {
+        for (int i2 = 0; i2 < this.q0; i2++) {
+            jc0 jc0Var = this.p0[i2];
+            ArrayList arrayList2 = aa5Var.a;
+            if (!arrayList2.contains(jc0Var)) {
+                arrayList2.add(jc0Var);
+            }
+        }
+        for (int i3 = 0; i3 < this.q0; i3++) {
+            gi1.n(this.p0[i3], i, arrayList, aa5Var);
+        }
     }
 
     public final boolean O() {
-        int r1 = 0;
-        boolean r3 = true;
-        int r2 = 0;
-    L3:
-        int r4 = this.q0;
-        if (r2 >= r4) goto L23;
-        jc0 r5 = this.p0[r2];
-        if (this.s0 == false) goto L8;
-    L10:
-        int r7 = this.r0;
-        if (r7 == 0) goto L14;
-        if (r7 == 1) goto L14;
-    L16:
-        int r8 = this.r0;
-        if (r8 == 2) goto L20;
-        if (r8 == 3) goto L20;
-    L22:
-        r2 = r2 + 1;
-    L20:
-        if (r5.z() == true) goto L22;
-    L15:
-        r3 = false;
-    L14:
-        if (r5.y() == true) goto L16;
-    L8:
-        if (r5.c() == true) goto L10;
-    L23:
-        if (r3 == false) goto L63;
-        if (r4 <= 0) goto L63;
-        int r6 = 0;
-        boolean r9 = false;
-    L27:
-        if (r1 >= this.q0) goto L55;
-        jc0 r10 = this.p0[r1];
-        if (this.s0 == true) goto L34;
-        if (r10.c() == true) goto L34;
-    L54:
-        r1 = r1 + 1;
-    L34:
-        if (r9 == true) goto L45;
-        int r11 = this.r0;
-        if (r11 != 0) goto L38;
-        r6 = r10.g(2).c();
-    L44:
-        r9 = true;
-        goto L45
-    L38:
-        if (r11 != 1) goto L40;
-        r6 = r10.g(4).c();
-        goto L44
-    L40:
-        if (r11 != 2) goto L42;
-        r6 = r10.g(3).c();
-        goto L44
-    L42:
-        if (r11 != 3) goto L44;
-        r6 = r10.g(5).c();
-    L45:
-        int r12 = this.r0;
-        if (r12 != 0) goto L48;
-        r6 = Math.min(r6, r10.g(2).c());
-        goto L54
-    L48:
-        if (r12 != 1) goto L50;
-        r6 = Math.max(r6, r10.g(4).c());
-        goto L54
-    L50:
-        if (r12 != 2) goto L52;
-        r6 = Math.min(r6, r10.g(3).c());
-        goto L54
-    L52:
-        if (r12 != 3) goto L54;
-        r6 = Math.max(r6, r10.g(5).c());
-        goto L54
-    L55:
-        int r13 = r6 + this.t0;
-        int r14 = this.r0;
-        if (r14 == 0) goto L60;
-        if (r14 == 1) goto L60;
-        G(r13, r13);
-    L61:
+        int i;
+        int i2;
+        int i3;
+        boolean z = true;
+        int i4 = 0;
+        while (true) {
+            i = this.q0;
+            if (i4 >= i) {
+                break;
+            }
+            jc0 jc0Var = this.p0[i4];
+            if ((this.s0 || jc0Var.c()) && ((((i2 = this.r0) == 0 || i2 == 1) && !jc0Var.y()) || (((i3 = this.r0) == 2 || i3 == 3) && !jc0Var.z()))) {
+                z = false;
+            }
+            i4++;
+        }
+        if (!z || i <= 0) {
+            return false;
+        }
+        int iMax = 0;
+        boolean z2 = false;
+        for (int i5 = 0; i5 < this.q0; i5++) {
+            jc0 jc0Var2 = this.p0[i5];
+            if (this.s0 || jc0Var2.c()) {
+                if (!z2) {
+                    int i6 = this.r0;
+                    if (i6 == 0) {
+                        iMax = jc0Var2.g(2).c();
+                    } else if (i6 == 1) {
+                        iMax = jc0Var2.g(4).c();
+                    } else if (i6 == 2) {
+                        iMax = jc0Var2.g(3).c();
+                    } else if (i6 == 3) {
+                        iMax = jc0Var2.g(5).c();
+                    }
+                    z2 = true;
+                }
+                int i7 = this.r0;
+                if (i7 == 0) {
+                    iMax = Math.min(iMax, jc0Var2.g(2).c());
+                } else if (i7 == 1) {
+                    iMax = Math.max(iMax, jc0Var2.g(4).c());
+                } else if (i7 == 2) {
+                    iMax = Math.min(iMax, jc0Var2.g(3).c());
+                } else if (i7 == 3) {
+                    iMax = Math.max(iMax, jc0Var2.g(5).c());
+                }
+            }
+        }
+        int i8 = iMax + this.t0;
+        int i9 = this.r0;
+        if (i9 == 0 || i9 == 1) {
+            F(i8, i8);
+        } else {
+            G(i8, i8);
+        }
         this.u0 = true;
         return true;
-    L60:
-        F(r13, r13);
-    L63:
-        return false;
     }
 
     public final int P() {
-        int r2 = this.r0;
-        if (r2 != 0) goto L5;
-        return 0;
-    L5:
-        if (r2 != 1) goto L7;
-        return 0;
-    L7:
-        if (r2 != 2) goto L9;
-    L12:
-        return 1;
-    L9:
-        if (r2 == 3) goto L12;
-        return -1;
+        int i = this.r0;
+        if (i == 0 || i == 1) {
+            return 0;
+        }
+        return (i == 2 || i == 3) ? 1 : -1;
     }
 
     @Override // defpackage.jc0
-    public final void b(eb2 r17, boolean r18) {
-        hb0[] r2 = this.P;
-        hb0 r4 = this.H;
-        r2[0] = r4;
-        int r5 = 2;
-        hb0 r6 = this.I;
-        r2[2] = r6;
-        hb0 r8 = this.J;
-        r2[1] = r8;
-        hb0 r10 = this.K;
-        r2[3] = r10;
-        int r11 = 0;
-    L4:
-        if (r11 >= r2.length) goto L6;
-        hb0 r12 = r2[r11];
-        r12.i = r17.k(r12);
-        r11 = r11 + 1;
-        goto L4
-    L6:
-        int r13 = this.r0;
-        if (r13 >= 0) goto L9;
-        return;
-    L9:
-        if (r13 >= 4) goto L133;
-        hb0 r3 = r2[r13];
-        if (this.u0 == true) goto L14;
-        O();
-    L14:
-        if (this.u0 == false) goto L25;
-        this.u0 = false;
-        int r7 = this.r0;
-        if (r7 == 0) goto L23;
-        if (r7 == 1) goto L23;
-        if (r7 == 2) goto L21;
-        if (r7 == 3) goto L21;
-        return;
-    L21:
-        r17.d(r6.i, this.Y);
-        r17.d(r10.i, this.Y);
-        return;
-    L23:
-        r17.d(r4.i, this.X);
-        r17.d(r8.i, this.X);
-        return;
-    L25:
-        int r14 = 0;
-    L27:
-        if (r14 >= this.q0) goto L53;
-        jc0 r15 = this.p0[r14];
-        if (this.s0 == false) goto L31;
-    L33:
-        int r16 = this.r0;
-        if (r16 == 0) goto L37;
-        if (r16 == 1) goto L37;
-    L43:
-        if (r16 == 2) goto L46;
-        if (r16 == 3) goto L46;
-    L52:
-        r14 = r14 + 1;
-    L46:
-        if (r15.o0[1] != 3) goto L52;
-        if (r15.I.f == null) goto L52;
-        if (r15.K.f == null) goto L52;
-    L42:
-        boolean r19 = true;
-    L55:
-        if (r4.e() == false) goto L57;
-    L60:
-        boolean r110 = true;
-    L62:
-        if (r6.e() == false) goto L64;
-    L67:
-        boolean r111 = true;
-    L68:
-        if (r19 == true) goto L79;
-        int r112 = this.r0;
-        if (r112 != 0) goto L72;
-        if (r110 == false) goto L72;
-    L78:
-        boolean r113 = true;
-    L80:
-        if (r113 == true) goto L82;
-        int r114 = 4;
-    L83:
-        int r115 = 0;
-    L85:
-        if (r115 >= this.q0) goto L104;
-        jc0 r116 = this.p0[r115];
-        if (this.s0 == false) goto L89;
-    L91:
-        ai4 r9 = r17.k(r116.P[this.r0]);
-        hb0[] r117 = r116.P;
-        int r118 = this.r0;
-        hb0 r119 = r117[r118];
-        r119.i = r9;
-        hb0 r20 = r119.f;
-        if (r20 != null) goto L94;
-    L96:
-        int r21 = 0;
-    L97:
-        if (r118 == 0) goto L101;
-        if (r118 == r5) goto L101;
-        ai4 r120 = r3.i;
-        int r121 = this.t0 + r21;
-        pi r22 = r17.l();
-        ai4 r122 = r17.m();
-        r122.q = 0;
-        r22.b(r120, r9, r122, r121);
-        r17.c(r22);
-    L102:
-        r17.e(r3.i, r9, this.t0 + r21, r114);
-    L103:
-        r115 = r115 + 1;
-        r5 = 2;
-    L101:
-        ai4 r23 = r3.i;
-        int r123 = this.t0 - r21;
-        pi r124 = r17.l();
-        ai4 r125 = r17.m();
-        r125.q = 0;
-        r124.c(r23, r9, r125, r123);
-        r17.c(r124);
-        goto L102
-    L94:
-        if (r20.d != this) goto L96;
-        r21 = r119.g;
-        goto L97
-    L89:
-        if (r116.c() == true) goto L91;
-    L104:
-        int r24 = this.r0;
-        if (r24 != 0) goto L109;
-        r17.e(r8.i, r4.i, 0, 8);
-        r17.e(r4.i, this.S.J.i, 0, 4);
-        r17.e(r4.i, this.S.H.i, 0, 0);
-        return;
-    L109:
-        if (r24 != 1) goto L113;
-        r17.e(r4.i, r8.i, 0, 8);
-        r17.e(r4.i, this.S.H.i, 0, 4);
-        r17.e(r4.i, this.S.J.i, 0, 0);
-        return;
-    L113:
-        if (r24 != 2) goto L117;
-        r17.e(r10.i, r6.i, 0, 8);
-        r17.e(r6.i, this.S.K.i, 0, 4);
-        r17.e(r6.i, this.S.I.i, 0, 0);
-        return;
-    L117:
-        if (r24 != 3) goto L135;
-        r17.e(r6.i, r10.i, 0, 8);
-        r17.e(r6.i, this.S.I.i, 0, 4);
-        r17.e(r6.i, this.S.K.i, 0, 0);
-        return;
-    L135:
-        return;
-    L82:
-        r114 = 5;
-    L72:
-        if (r112 != 2) goto L74;
-        if (r111 == true) goto L78;
-    L74:
-        if (r112 != 1) goto L76;
-        if (r110 == true) goto L78;
-    L76:
-        if (r112 != 3) goto L79;
-        if (r111 == true) goto L78;
-    L79:
-        r113 = false;
-        goto L80
-    L64:
-        if (r10.e() == true) goto L67;
-        r111 = false;
-        goto L68
-    L57:
-        if (r8.e() == true) goto L60;
-        r110 = false;
-    L37:
-        if (r15.o0[0] != 3) goto L43;
-        if (r15.H.f == null) goto L43;
-        if (r15.J.f == null) goto L43;
-    L31:
-        if (r15.c() == true) goto L33;
-    L53:
-        r19 = false;
-        goto L55
+    public final void b(eb2 eb2Var, boolean z) {
+        boolean z2;
+        int i;
+        int i2;
+        hb0[] hb0VarArr = this.P;
+        hb0 hb0Var = this.H;
+        hb0VarArr[0] = hb0Var;
+        int i3 = 2;
+        hb0 hb0Var2 = this.I;
+        hb0VarArr[2] = hb0Var2;
+        hb0 hb0Var3 = this.J;
+        hb0VarArr[1] = hb0Var3;
+        hb0 hb0Var4 = this.K;
+        hb0VarArr[3] = hb0Var4;
+        for (hb0 hb0Var5 : hb0VarArr) {
+            hb0Var5.i = eb2Var.k(hb0Var5);
+        }
+        int i4 = this.r0;
+        if (i4 < 0 || i4 >= 4) {
+            return;
+        }
+        hb0 hb0Var6 = hb0VarArr[i4];
+        if (!this.u0) {
+            O();
+        }
+        if (this.u0) {
+            this.u0 = false;
+            int i5 = this.r0;
+            if (i5 == 0 || i5 == 1) {
+                eb2Var.d(hb0Var.i, this.X);
+                eb2Var.d(hb0Var3.i, this.X);
+                return;
+            } else {
+                if (i5 == 2 || i5 == 3) {
+                    eb2Var.d(hb0Var2.i, this.Y);
+                    eb2Var.d(hb0Var4.i, this.Y);
+                    return;
+                }
+                return;
+            }
+        }
+        int i6 = 0;
+        while (true) {
+            if (i6 >= this.q0) {
+                z2 = false;
+                break;
+            }
+            jc0 jc0Var = this.p0[i6];
+            if ((this.s0 || jc0Var.c()) && ((((i2 = this.r0) == 0 || i2 == 1) && jc0Var.o0[0] == 3 && jc0Var.H.f != null && jc0Var.J.f != null) || ((i2 == 2 || i2 == 3) && jc0Var.o0[1] == 3 && jc0Var.I.f != null && jc0Var.K.f != null))) {
+                z2 = true;
+                break;
+            }
+            i6++;
+        }
+        boolean z3 = hb0Var.e() || hb0Var3.e();
+        boolean z4 = hb0Var2.e() || hb0Var4.e();
+        int i7 = !(!z2 && (((i = this.r0) == 0 && z3) || ((i == 2 && z4) || ((i == 1 && z3) || (i == 3 && z4))))) ? 4 : 5;
+        int i8 = 0;
+        while (i8 < this.q0) {
+            jc0 jc0Var2 = this.p0[i8];
+            if (this.s0 || jc0Var2.c()) {
+                ai4 ai4VarK = eb2Var.k(jc0Var2.P[this.r0]);
+                hb0[] hb0VarArr2 = jc0Var2.P;
+                int i9 = this.r0;
+                hb0 hb0Var7 = hb0VarArr2[i9];
+                hb0Var7.i = ai4VarK;
+                hb0 hb0Var8 = hb0Var7.f;
+                int i10 = (hb0Var8 == null || hb0Var8.d != this) ? 0 : hb0Var7.g;
+                if (i9 == 0 || i9 == i3) {
+                    ai4 ai4Var = hb0Var6.i;
+                    int i11 = this.t0 - i10;
+                    pi piVarL = eb2Var.l();
+                    ai4 ai4VarM = eb2Var.m();
+                    ai4VarM.q = 0;
+                    piVarL.c(ai4Var, ai4VarK, ai4VarM, i11);
+                    eb2Var.c(piVarL);
+                } else {
+                    ai4 ai4Var2 = hb0Var6.i;
+                    int i12 = this.t0 + i10;
+                    pi piVarL2 = eb2Var.l();
+                    ai4 ai4VarM2 = eb2Var.m();
+                    ai4VarM2.q = 0;
+                    piVarL2.b(ai4Var2, ai4VarK, ai4VarM2, i12);
+                    eb2Var.c(piVarL2);
+                }
+                eb2Var.e(hb0Var6.i, ai4VarK, this.t0 + i10, i7);
+            }
+            i8++;
+            i3 = 2;
+        }
+        int i13 = this.r0;
+        if (i13 == 0) {
+            eb2Var.e(hb0Var3.i, hb0Var.i, 0, 8);
+            eb2Var.e(hb0Var.i, this.S.J.i, 0, 4);
+            eb2Var.e(hb0Var.i, this.S.H.i, 0, 0);
+            return;
+        }
+        if (i13 == 1) {
+            eb2Var.e(hb0Var.i, hb0Var3.i, 0, 8);
+            eb2Var.e(hb0Var.i, this.S.H.i, 0, 4);
+            eb2Var.e(hb0Var.i, this.S.J.i, 0, 0);
+        } else if (i13 == 2) {
+            eb2Var.e(hb0Var4.i, hb0Var2.i, 0, 8);
+            eb2Var.e(hb0Var2.i, this.S.K.i, 0, 4);
+            eb2Var.e(hb0Var2.i, this.S.I.i, 0, 0);
+        } else if (i13 == 3) {
+            eb2Var.e(hb0Var2.i, hb0Var4.i, 0, 8);
+            eb2Var.e(hb0Var2.i, this.S.I.i, 0, 4);
+            eb2Var.e(hb0Var2.i, this.S.K.i, 0, 0);
+        }
     }
 
     @Override // defpackage.jc0
@@ -332,21 +214,17 @@ public final class ep extends jc0 {
 
     @Override // defpackage.jc0
     public final String toString() {
-        String r0 = b11.q(new StringBuilder("[Barrier] "), this.g0, " {");
-        int r1 = 0;
-    L4:
-        if (r1 >= this.q0) goto L10;
-        jc0 r2 = this.p0[r1];
-        if (r1 <= 0) goto L8;
-        r0 = r0.concat(", ");
-    L8:
-        StringBuilder r3 = xa3.i(r0);
-        r3.append(r2.g0);
-        r0 = r3.toString();
-        r1 = r1 + 1;
-        goto L4
-    L10:
-        return r0.concat("}");
+        String strQ = b11.q(new StringBuilder("[Barrier] "), this.g0, " {");
+        for (int i = 0; i < this.q0; i++) {
+            jc0 jc0Var = this.p0[i];
+            if (i > 0) {
+                strQ = strQ.concat(", ");
+            }
+            StringBuilder sbI = xa3.i(strQ);
+            sbI.append(jc0Var.g0);
+            strQ = sbI.toString();
+        }
+        return strQ.concat("}");
     }
 
     @Override // defpackage.jc0

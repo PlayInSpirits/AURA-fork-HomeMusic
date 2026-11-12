@@ -11,61 +11,61 @@ public final class e41 implements c55, uy, rk3 {
     public uy q;
 
     @Override // defpackage.uy
-    public final void a(long r2, float[] r4) {
-        uy r0 = this.q;
-        if (r0 == null) goto L5;
-        r0.a(r2, r4);
-    L5:
-        uy r1 = this.o;
-        if (r1 == null) goto L9;
-        r1.a(r2, r4);
-        return;
+    public final void a(long j, float[] fArr) {
+        uy uyVar = this.q;
+        if (uyVar != null) {
+            uyVar.a(j, fArr);
+        }
+        uy uyVar2 = this.o;
+        if (uyVar2 != null) {
+            uyVar2.a(j, fArr);
+        }
     }
 
     @Override // defpackage.uy
     public final void b() {
-        uy r0 = this.q;
-        if (r0 == null) goto L5;
-        r0.b();
-    L5:
-        uy r1 = this.o;
-        if (r1 == null) goto L9;
-        r1.b();
-        return;
+        uy uyVar = this.q;
+        if (uyVar != null) {
+            uyVar.b();
+        }
+        uy uyVar2 = this.o;
+        if (uyVar2 != null) {
+            uyVar2.b();
+        }
     }
 
     @Override // defpackage.rk3
-    public final void c(int r2, Object r3) {
-        if (r2 != 7) goto L5;
-        this.n = (c55) r3;
-        return;
-    L5:
-        if (r2 != 8) goto L7;
-        this.o = (uy) r3;
-        return;
-    L7:
-        if (r2 == 10000) goto L9;
-        return;
-    L9:
-        sj4 r4 = (sj4) r3;
-        if (r4 != null) goto L13;
-        this.p = null;
-        this.q = null;
-        return;
-    L13:
-        this.p = r4.getVideoFrameMetadataListener();
-        this.q = r4.getCameraMotionListener();
+    public final void c(int i, Object obj) {
+        if (i == 7) {
+            this.n = (c55) obj;
+            return;
+        }
+        if (i == 8) {
+            this.o = (uy) obj;
+            return;
+        }
+        if (i != 10000) {
+            return;
+        }
+        sj4 sj4Var = (sj4) obj;
+        if (sj4Var == null) {
+            this.p = null;
+            this.q = null;
+        } else {
+            this.p = sj4Var.getVideoFrameMetadataListener();
+            this.q = sj4Var.getCameraMotionListener();
+        }
     }
 
     @Override // defpackage.c55
-    public final void d(long r8, long r10, tb1 r12, MediaFormat r13) {
-        c55 r0 = this.p;
-        if (r0 == null) goto L5;
-        r0.d(r8, r10, r12, r13);
-    L5:
-        c55 r7 = this.n;
-        if (r7 == null) goto L9;
-        r7.d(r8, r10, r12, r13);
-        return;
+    public final void d(long j, long j2, tb1 tb1Var, MediaFormat mediaFormat) {
+        c55 c55Var = this.p;
+        if (c55Var != null) {
+            c55Var.d(j, j2, tb1Var, mediaFormat);
+        }
+        c55 c55Var2 = this.n;
+        if (c55Var2 != null) {
+            c55Var2.d(j, j2, tb1Var, mediaFormat);
+        }
     }
 }

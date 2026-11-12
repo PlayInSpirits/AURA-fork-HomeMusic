@@ -6,23 +6,22 @@ public final /* synthetic */ class es2 implements Runnable {
     public final /* synthetic */ int n;
     public final /* synthetic */ ls2 o;
 
-    public /* synthetic */ es2(ls2 r1, int r2) {
-        this.n = r2;
-        this.o = r1;
+    public /* synthetic */ es2(ls2 ls2Var, int i) {
+        this.n = i;
+        this.o = ls2Var;
     }
 
     @Override // java.lang.Runnable
     public final void run() {
-        int r0 = this.n;
-        ls2 r3 = this.o;
-        switch(r0) {
-            case 0: goto L6;
-            default: goto L4;
-        };
-    L4:
-        f35.W(r3.g.l, new es2(r3, 0));
-        return;
-    L6:
-        r3.O();
+        int i = this.n;
+        ls2 ls2Var = this.o;
+        switch (i) {
+            case 0:
+                ls2Var.O();
+                break;
+            default:
+                f35.W(ls2Var.g.l, new es2(ls2Var, 0));
+                break;
+        }
     }
 }

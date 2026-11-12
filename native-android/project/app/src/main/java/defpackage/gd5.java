@@ -6,10 +6,10 @@ public final class gd5 {
     public final String a;
     public final String b;
 
-    public gd5(String r1, String r2) {
-        r1.getClass();
-        r2.getClass();
-        this.a = r1;
-        this.b = r2;
+    public gd5(String str, String str2) {
+        str.getClass();
+        str2.getClass();
+        this.a = str;
+        this.b = str2;
     }
 }

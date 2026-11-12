@@ -7,7 +7,7 @@ import android.content.pm.Signature;
 /* JADX INFO: loaded from: classes.dex */
 public final class nk0 extends i80 {
     @Override // defpackage.i80
-    public final Signature[] F(PackageManager r1, String r2) {
-        return r1.getPackageInfo(r2, 64).signatures;
+    public final Signature[] F(PackageManager packageManager, String str) {
+        return packageManager.getPackageInfo(str, 64).signatures;
     }
 }

@@ -5,19 +5,19 @@ package defpackage;
 public final class lh4 extends tl4 {
     public int c;
 
-    public lh4(int r1, long r2) {
-        super(r2);
-        this.c = r1;
+    public lh4(int i, long j) {
+        super(j);
+        this.c = i;
     }
 
     @Override // defpackage.tl4
-    public final void a(tl4 r1) {
-        r1.getClass();
-        this.c = ((lh4) r1).c;
+    public final void a(tl4 tl4Var) {
+        tl4Var.getClass();
+        this.c = ((lh4) tl4Var).c;
     }
 
     @Override // defpackage.tl4
-    public final tl4 b(long r2) {
-        return new lh4(this.c, r2);
+    public final tl4 b(long j) {
+        return new lh4(this.c, j);
     }
 }

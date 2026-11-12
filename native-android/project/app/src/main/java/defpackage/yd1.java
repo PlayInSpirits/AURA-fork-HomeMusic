@@ -30,22 +30,22 @@ public final class yd1 {
     public final ProgressBar o;
     public final View p;
 
-    public yd1(LinearLayout r1, MaterialToolbar r2, View r3, TextView r4, ImageView r5, ImageView r6, ImageView r7, ImageView r8, TextView r9, NestedScrollView r10, TextView r11, Button r12, Button r13, TextView r14, RecyclerView r15, ProgressBar r16, View r17) {
-        this.a = r2;
-        this.b = r3;
-        this.c = r4;
-        this.d = r5;
-        this.e = r6;
-        this.f = r7;
-        this.g = r8;
-        this.h = r9;
-        this.i = r10;
-        this.j = r11;
-        this.k = r12;
-        this.l = r13;
-        this.m = r14;
-        this.n = r15;
-        this.o = r16;
-        this.p = r17;
+    public yd1(LinearLayout linearLayout, MaterialToolbar materialToolbar, View view, TextView textView, ImageView imageView, ImageView imageView2, ImageView imageView3, ImageView imageView4, TextView textView2, NestedScrollView nestedScrollView, TextView textView3, Button button, Button button2, TextView textView4, RecyclerView recyclerView, ProgressBar progressBar, View view2) {
+        this.a = materialToolbar;
+        this.b = view;
+        this.c = textView;
+        this.d = imageView;
+        this.e = imageView2;
+        this.f = imageView3;
+        this.g = imageView4;
+        this.h = textView2;
+        this.i = nestedScrollView;
+        this.j = textView3;
+        this.k = button;
+        this.l = button2;
+        this.m = textView4;
+        this.n = recyclerView;
+        this.o = progressBar;
+        this.p = view2;
     }
 }

@@ -6,30 +6,28 @@ public final /* synthetic */ class r31 implements qc2, wc0 {
     public final /* synthetic */ int n;
     public final /* synthetic */ do2 o;
 
-    public /* synthetic */ r31(do2 r1, int r2) {
-        this.n = r2;
-        this.o = r1;
+    public /* synthetic */ r31(do2 do2Var, int i) {
+        this.n = i;
+        this.o = do2Var;
     }
 
     @Override // defpackage.wc0
-    public void accept(Object r1) {
-        al3 r2 = (al3) r1;
-        r2.l0(this.o);
+    public void accept(Object obj) {
+        ((al3) obj).l0(this.o);
     }
 
     @Override // defpackage.qc2
-    public void invoke(Object r2) {
-        int r0 = this.n;
-        do2 r1 = this.o;
-        oi3 r3 = (oi3) r2;
-        switch(r0) {
-            case 0: goto L6;
-            default: goto L4;
-        };
-    L4:
-        r3.G(r1);
-        return;
-    L6:
-        r3.F(r1);
+    public void invoke(Object obj) {
+        int i = this.n;
+        do2 do2Var = this.o;
+        oi3 oi3Var = (oi3) obj;
+        switch (i) {
+            case 0:
+                oi3Var.F(do2Var);
+                break;
+            default:
+                oi3Var.G(do2Var);
+                break;
+        }
     }
 }

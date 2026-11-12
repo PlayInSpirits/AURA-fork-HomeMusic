@@ -5,22 +5,16 @@ package defpackage;
 public final class gg3 {
     public final String a;
 
-    public gg3(String r1) {
-        r1.getClass();
-        this.a = r1;
+    public gg3(String str) {
+        str.getClass();
+        this.a = str;
     }
 
-    public final boolean equals(Object r4) {
-        if (this != r4) goto L6;
-        return true;
-    L6:
-        if ((r4 instanceof gg3) == true) goto L9;
-        return false;
-    L9:
-        if (h12.c(this.a, ((gg3) r4).a) == true) goto L11;
-        return false;
-    L11:
-        return true;
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        return (obj instanceof gg3) && h12.c(this.a, ((gg3) obj).a);
     }
 
     public final int hashCode() {

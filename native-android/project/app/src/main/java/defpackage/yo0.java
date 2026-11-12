@@ -1,97 +1,84 @@
 package defpackage;
 
 import java.util.ArrayList;
+import org.chromium.support_lib_boundary.WebSettingsBoundaryInterface;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public class yo0 implements uo0 {
-    public ba5 a;
-    public boolean b;
-    public boolean c;
     public final ba5 d;
-    public int e;
     public int f;
     public int g;
-    public int h;
-    public eq0 i;
-    public boolean j;
-    public final ArrayList k;
-    public final ArrayList l;
+    public ba5 a = null;
+    public boolean b = false;
+    public boolean c = false;
+    public int e = 1;
+    public int h = 1;
+    public eq0 i = null;
+    public boolean j = false;
+    public final ArrayList k = new ArrayList();
+    public final ArrayList l = new ArrayList();
 
-    public yo0(ba5 r4) {
-        this.a = null;
-        this.b = false;
-        this.c = false;
-        this.e = 1;
-        this.h = 1;
-        this.i = null;
-        this.j = false;
-        this.k = new ArrayList();
-        this.l = new ArrayList();
-        this.d = r4;
+    public yo0(ba5 ba5Var) {
+        this.d = ba5Var;
     }
 
     @Override // defpackage.uo0
-    public final void a(uo0 r8) {
-        ArrayList r9 = this.l;
-        int r0 = r9.size();
-        int r1 = 0;
-        int r2 = 0;
-    L3:
-        if (r2 >= r0) goto L7;
-        Object r3 = r9.get(r2);
-        r2 = r2 + 1;
-        if (((yo0) r3).j == true) goto L3;
-        return;
-    L7:
+    public final void a(uo0 uo0Var) {
+        ArrayList arrayList = this.l;
+        int size = arrayList.size();
+        int i = 0;
+        int i2 = 0;
+        while (i2 < size) {
+            Object obj = arrayList.get(i2);
+            i2++;
+            if (!((yo0) obj).j) {
+                return;
+            }
+        }
         this.c = true;
-        ba5 r4 = this.a;
-        if (r4 == null) goto L11;
-        r4.a(this);
-    L11:
-        if (this.b == false) goto L14;
-        this.d.a(this);
-        return;
-    L14:
-        int r5 = r9.size();
-        yo0 r6 = null;
-        int r7 = 0;
-    L15:
-        if (r7 >= r5) goto L20;
-        Object r10 = r9.get(r7);
-        r7 = r7 + 1;
-        yo0 r11 = (yo0) r10;
-        if ((r11 instanceof eq0) == true) goto L15;
-        r1 = r1 + 1;
-        r6 = r11;
-        goto L15
-    L20:
-        if (r6 == null) goto L30;
-        if (r1 != 1) goto L30;
-        if (r6.j == false) goto L30;
-        eq0 r12 = this.i;
-        if (r12 != null) goto L27;
-    L29:
-        d(r6.g + this.f);
-        goto L30
-    L27:
-        if (r12.j == false) goto L42;
-        this.f = this.h * r12.g;
-        goto L29
-    L42:
-        return;
-    L30:
-        ba5 r13 = this.a;
-        if (r13 == null) goto L43;
-        r13.a(this);
-        return;
+        ba5 ba5Var = this.a;
+        if (ba5Var != null) {
+            ba5Var.a(this);
+        }
+        if (this.b) {
+            this.d.a(this);
+            return;
+        }
+        int size2 = arrayList.size();
+        yo0 yo0Var = null;
+        int i3 = 0;
+        while (i3 < size2) {
+            Object obj2 = arrayList.get(i3);
+            i3++;
+            yo0 yo0Var2 = (yo0) obj2;
+            if (!(yo0Var2 instanceof eq0)) {
+                i++;
+                yo0Var = yo0Var2;
+            }
+        }
+        if (yo0Var != null && i == 1 && yo0Var.j) {
+            eq0 eq0Var = this.i;
+            if (eq0Var != null) {
+                if (!eq0Var.j) {
+                    return;
+                } else {
+                    this.f = this.h * eq0Var.g;
+                }
+            }
+            d(yo0Var.g + this.f);
+        }
+        ba5 ba5Var2 = this.a;
+        if (ba5Var2 != null) {
+            ba5Var2.a(this);
+        }
     }
 
-    public final void b(ba5 r2) {
-        this.k.add(r2);
-        if (this.j == false) goto L6;
-        r2.a(r2);
-        return;
+    public final void b(ba5 ba5Var) {
+        this.k.add(ba5Var);
+        if (this.j) {
+            ba5Var.a(ba5Var);
+        }
     }
 
     public final void c() {
@@ -103,80 +90,65 @@ public class yo0 implements uo0 {
         this.b = false;
     }
 
-    public void d(int r3) {
-        if (this.j == true) goto L8;
+    public void d(int i) {
+        if (this.j) {
+            return;
+        }
         this.j = true;
-        this.g = r3;
-        ArrayList r2 = this.k;
-        int r4 = r2.size();
-        int r0 = 0;
-    L6:
-        if (r0 >= r4) goto L10;
-        Object r1 = r2.get(r0);
-        r0 = r0 + 1;
-        uo0 r5 = (uo0) r1;
-        r5.a(r5);
-        goto L6
-    L10:
-        return;
+        this.g = i;
+        ArrayList arrayList = this.k;
+        int size = arrayList.size();
+        int i2 = 0;
+        while (i2 < size) {
+            Object obj = arrayList.get(i2);
+            i2++;
+            uo0 uo0Var = (uo0) obj;
+            uo0Var.a(uo0Var);
+        }
     }
 
     public final String toString() {
-        StringBuilder r0 = new StringBuilder();
-        r0.append(this.d.b.g0);
-        r0.append(":");
-        switch(this.e) {
-            case 1: goto L12;
-            case 2: goto L11;
-            case 3: goto L10;
-            case 4: goto L9;
-            case 5: goto L8;
-            case 6: goto L7;
-            case 7: goto L6;
-            case 8: goto L5;
-            default: goto L4;
-        };
-    L4:
-        String r1 = "null";
-    L13:
-        r0.append(r1);
-        r0.append("(");
-        if (this.j == false) goto L16;
-        Object r2 = Integer.valueOf(this.g);
-    L17:
-        r0.append(r2);
-        r0.append(") <t=");
-        r0.append(this.l.size());
-        r0.append(":d=");
-        r0.append(this.k.size());
-        r0.append(">");
-        return r0.toString();
-    L16:
-        r2 = "unresolved";
-        goto L17
-    L5:
-        r1 = "BASELINE";
-        goto L13
-    L6:
-        r1 = "BOTTOM";
-        goto L13
-    L7:
-        r1 = "TOP";
-        goto L13
-    L8:
-        r1 = "RIGHT";
-        goto L13
-    L9:
-        r1 = "LEFT";
-        goto L13
-    L10:
-        r1 = "VERTICAL_DIMENSION";
-        goto L13
-    L11:
-        r1 = "HORIZONTAL_DIMENSION";
-        goto L13
-    L12:
-        r1 = "UNKNOWN";
-        goto L13
+        String str;
+        StringBuilder sb = new StringBuilder();
+        sb.append(this.d.b.g0);
+        sb.append(":");
+        switch (this.e) {
+            case 1:
+                str = "UNKNOWN";
+                break;
+            case 2:
+                str = "HORIZONTAL_DIMENSION";
+                break;
+            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
+                str = "VERTICAL_DIMENSION";
+                break;
+            case 4:
+                str = "LEFT";
+                break;
+            case 5:
+                str = "RIGHT";
+                break;
+            case 6:
+                str = "TOP";
+                break;
+            case 7:
+                str = "BOTTOM";
+                break;
+            case 8:
+                str = "BASELINE";
+                break;
+            default:
+                str = "null";
+                break;
+        }
+        sb.append(str);
+        sb.append("(");
+        sb.append(this.j ? Integer.valueOf(this.g) : "unresolved");
+        sb.append(") <t=");
+        sb.append(this.l.size());
+        sb.append(":d=");
+        sb.append(this.k.size());
+        sb.append(">");
+        return sb.toString();
     }
 }

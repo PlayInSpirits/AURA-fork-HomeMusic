@@ -15,68 +15,50 @@ public final class na5 implements ValueAnimator.AnimatorUpdateListener {
     public final /* synthetic */ int d;
     public final /* synthetic */ View e;
 
-    public na5(ta5 r1, pb5 r2, pb5 r3, int r4, View r5) {
-        this.a = r1;
-        this.b = r2;
-        this.c = r3;
-        this.d = r4;
-        this.e = r5;
+    public na5(ta5 ta5Var, pb5 pb5Var, pb5 pb5Var2, int i, View view) {
+        this.a = ta5Var;
+        this.b = pb5Var;
+        this.c = pb5Var2;
+        this.d = i;
+        this.e = view;
     }
 
     @Override // android.animation.ValueAnimator.AnimatorUpdateListener
-    public final void onAnimationUpdate(ValueAnimator r15) {
-        float r16 = r15.getAnimatedFraction();
-        ta5 r0 = this.a;
-        sa5 r1 = r0.a;
-        r1.e(r16);
-        float r17 = r1.c();
-        PathInterpolator r2 = pa5.e;
-        int r3 = Build.VERSION.SDK_INT;
-        pb5 r4 = this.b;
-        if (r3 < 36) goto L6;
-        bb5 r5 = new ab5(r4);
-    L21:
-        int r6 = 1;
-    L23:
-        if (r6 > 512) goto L29;
-        int r7 = this.d & r6;
-        mb5 r8 = r4.a;
-        if (r7 != 0) goto L27;
-        r5.d(r6, r8.h(r6));
-    L28:
-        r6 = r6 << 1;
-        goto L23
-    L27:
-        vz1 r9 = r8.h(r6);
-        vz1 r10 = this.c.a.h(r6);
-        float r11 = 1.0f - r17;
-        r5.d(r6, pb5.e(r9, (int) (((double) ((r9.a - r10.a) * r11)) + 0.5d), (int) (((double) ((r9.b - r10.b) * r11)) + 0.5d), (int) (((double) ((r9.c - r10.c) * r11)) + 0.5d), (int) (((double) ((r9.d - r10.d) * r11)) + 0.5d)));
-        goto L28
-    L29:
-        pa5.h(this.e, r5.b(), Collections.singletonList(r0));
-        return;
-    L6:
-        if (r3 < 35) goto L9;
-        r5 = new za5(r4);
-        goto L21
-    L9:
-        if (r3 < 34) goto L12;
-        r5 = new ya5(r4);
-        goto L21
-    L12:
-        if (r3 < 31) goto L15;
-        r5 = new xa5(r4);
-        goto L21
-    L15:
-        if (r3 < 30) goto L18;
-        r5 = new wa5(r4);
-        goto L21
-    L18:
-        if (r3 < 29) goto L20;
-        r5 = new va5(r4);
-        goto L21
-    L20:
-        r5 = new ua5(r4);
-        goto L21
+    public final void onAnimationUpdate(ValueAnimator valueAnimator) {
+        bb5 va5Var;
+        float animatedFraction = valueAnimator.getAnimatedFraction();
+        ta5 ta5Var = this.a;
+        sa5 sa5Var = ta5Var.a;
+        sa5Var.e(animatedFraction);
+        float fC = sa5Var.c();
+        PathInterpolator pathInterpolator = pa5.e;
+        int i = Build.VERSION.SDK_INT;
+        pb5 pb5Var = this.b;
+        if (i >= 36) {
+            va5Var = new ab5(pb5Var);
+        } else if (i >= 35) {
+            va5Var = new za5(pb5Var);
+        } else if (i >= 34) {
+            va5Var = new ya5(pb5Var);
+        } else if (i >= 31) {
+            va5Var = new xa5(pb5Var);
+        } else if (i >= 30) {
+            va5Var = new wa5(pb5Var);
+        } else {
+            va5Var = i >= 29 ? new va5(pb5Var) : new ua5(pb5Var);
+        }
+        for (int i2 = 1; i2 <= 512; i2 <<= 1) {
+            int i3 = this.d & i2;
+            mb5 mb5Var = pb5Var.a;
+            if (i3 == 0) {
+                va5Var.d(i2, mb5Var.h(i2));
+            } else {
+                vz1 vz1VarH = mb5Var.h(i2);
+                vz1 vz1VarH2 = this.c.a.h(i2);
+                float f = 1.0f - fC;
+                va5Var.d(i2, pb5.e(vz1VarH, (int) (((double) ((vz1VarH.a - vz1VarH2.a) * f)) + 0.5d), (int) (((double) ((vz1VarH.b - vz1VarH2.b) * f)) + 0.5d), (int) (((double) ((vz1VarH.c - vz1VarH2.c) * f)) + 0.5d), (int) (((double) ((vz1VarH.d - vz1VarH2.d) * f)) + 0.5d)));
+            }
+        }
+        pa5.h(this.e, va5Var.b(), Collections.singletonList(ta5Var));
     }
 }

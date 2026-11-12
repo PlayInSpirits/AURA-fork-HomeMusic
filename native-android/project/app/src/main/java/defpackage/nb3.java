@@ -5,21 +5,17 @@ package defpackage;
 public final class nb3 extends ya4 {
     public final wv3 f;
 
-    public nb3(wv3 r1) {
-        this.f = r1;
+    public nb3(wv3 wv3Var) {
+        this.f = wv3Var;
     }
 
-    public final boolean equals(Object r2) {
-        if (this != r2) goto L5;
-        return true;
-    L5:
-        if ((r2 instanceof nb3) == false) goto L13;
-        wv3 r3 = ((nb3) r2).f;
-        if (this.f.equals(r3) == true) goto L11;
-        return false;
-    L11:
-        return true;
-    L13:
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj instanceof nb3) {
+            return this.f.equals(((nb3) obj).f);
+        }
         return false;
     }
 

@@ -7,9 +7,9 @@ public final class w6 {
     public final String b;
     public final String c;
 
-    public w6(String r1, String r2, String r3) {
-        this.a = r1;
-        this.b = r2;
-        this.c = r3;
+    public w6(String str, String str2, String str3) {
+        this.a = str;
+        this.b = str2;
+        this.c = str3;
     }
 }

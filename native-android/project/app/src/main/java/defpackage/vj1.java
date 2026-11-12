@@ -7,261 +7,235 @@ import android.view.ViewParent;
 /* JADX INFO: loaded from: classes.dex */
 public final class vj1 implements tb3 {
     public int A;
-    public long B;
     public ya4 C;
     public boolean D;
     public boolean E;
-    public boolean F;
-    public final x G;
     public sj1 n;
     public final rj1 o;
     public final ra p;
     public wf1 q;
     public gf1 r;
-    public long s;
     public boolean t;
-    public final float[] u;
     public float[] v;
     public boolean w;
-    public oo0 x;
-    public r62 y;
-    public final mz z;
+    public long s = 9223372034707292159L;
+    public final float[] u = ya4.h();
+    public oo0 x = new ro0(1.0f, 1.0f);
+    public r62 y = r62.n;
+    public final mz z = new mz();
+    public long B = tw4.a;
+    public boolean F = true;
+    public final x G = new x(14, this);
 
-    public vj1(sj1 r1, rj1 r2, ra r3, wf1 r4, gf1 r5) {
-        this.n = r1;
-        this.o = r2;
-        this.p = r3;
-        this.q = r4;
-        this.r = r5;
-        this.s = 9223372034707292159L;
-        this.u = ya4.h();
-        this.x = new ro0(1.0f, 1.0f);
-        this.y = r62.n;
-        this.z = new mz();
-        this.B = tw4.a;
-        this.F = true;
-        this.G = new x(14, this);
+    public vj1(sj1 sj1Var, rj1 rj1Var, ra raVar, wf1 wf1Var, gf1 gf1Var) {
+        this.n = sj1Var;
+        this.o = rj1Var;
+        this.p = raVar;
+        this.q = wf1Var;
+        this.r = gf1Var;
     }
 
     public final float[] a() {
-        float[] r0 = this.v;
-        if (r0 != null) goto L6;
-        r0 = ya4.h();
-        this.v = r0;
-    L6:
-        if (this.E == false) goto L8;
-        this.E = false;
-        float[] r1 = b();
-        if (this.F == false) goto L14;
-        return r1;
-    L14:
-        if (q05.q(r1, r0) == false) goto L16;
-    L15:
-        return r0;
-    L16:
-        r0[0] = Float.NaN;
-        return null;
-    L8:
-        if (Float.isNaN(r0[0]) == false) goto L15;
-        return null;
+        float[] fArrH = this.v;
+        if (fArrH == null) {
+            fArrH = ya4.h();
+            this.v = fArrH;
+        }
+        if (this.E) {
+            this.E = false;
+            float[] fArrB = b();
+            if (this.F) {
+                return fArrB;
+            }
+            if (!q05.q(fArrB, fArrH)) {
+                fArrH[0] = Float.NaN;
+                return null;
+            }
+        } else if (Float.isNaN(fArrH[0])) {
+            return null;
+        }
+        return fArrH;
     }
 
     public final float[] b() {
-        boolean r1 = this.D;
-        float[] r2 = this.u;
-        if (r1 == false) goto L12;
-        sj1 r3 = this.n;
-        long r4 = r3.z;
-        uj1 r5 = r3.a;
-        if ((9223372034707292159L & r4) != 9205357640488583168L) goto L7;
-        r4 = h12.q(l93.o0(this.s));
-    L7:
-        float r6 = Float.intBitsToFloat((int) (r4 >> 32));
-        float r7 = Float.intBitsToFloat((int) (r4 & 4294967295L));
-        float r8 = r5.D();
-        float r9 = r5.u();
-        float r10 = r5.G();
-        float r11 = r5.l();
-        float r12 = r5.n();
-        float r13 = r5.c();
-        float r14 = r5.N();
-        double r15 = ((double) r10) * 0.017453292519943295d;
-        float r16 = (float) Math.sin(r15);
-        float r17 = (float) Math.cos(r15);
-        float r18 = -r16;
-        float r19 = (r9 * r17) - (0.0f * r16);
-        float r110 = 0.0f * r17;
-        float r111 = r110 + (r9 * r16);
-        double r112 = ((double) r11) * 0.017453292519943295d;
-        float r20 = (float) Math.sin(r112);
-        float r21 = (float) Math.cos(r112);
-        float r113 = -r20;
-        float r114 = r16 * r20;
-        float r22 = r16 * r21;
-        float r23 = r17 * r20;
-        float r24 = r17 * r21;
-        float r25 = r111 * r20;
-        float r26 = r25 + (r8 * r21);
-        float r115 = r111 * r21;
-        float r116 = r115 + ((-r8) * r20);
-        double r27 = ((double) r12) * 0.017453292519943295d;
-        float r28 = (float) Math.sin(r27);
-        float r29 = (float) Math.cos(r27);
-        float r30 = -r28;
-        float r117 = r29 * r114;
-        float r118 = r117 + (r30 * r21);
-        float r119 = r114 * r28;
-        float r120 = r119 + (r21 * r29);
-        float r31 = r28 * r17;
-        float r121 = r17 * r29;
-        float r122 = r29 * r22;
-        float r32 = r28 * r22;
-        float r123 = r120 * r13;
-        float r33 = r31 * r13;
-        float r34 = (r32 + (r29 * r113)) * r13;
-        float r124 = r118 * r14;
-        float r125 = r121 * r14;
-        float r126 = (r122 + (r30 * r113)) * r14;
-        float r210 = r23 * 1.0f;
-        float r127 = r18 * 1.0f;
-        float r211 = r24 * 1.0f;
-        if (r2.length < 16) goto L11;
-        r2[0] = r123;
-        r2[1] = r33;
-        r2[2] = r34;
-        r2[3] = 0.0f;
-        r2[4] = r124;
-        r2[5] = r125;
-        r2[6] = r126;
-        r2[7] = 0.0f;
-        r2[8] = r210;
-        r2[9] = r127;
-        r2[10] = r211;
-        r2[11] = 0.0f;
-        float r35 = -r6;
-        r2[12] = (((r123 * r35) - (r7 * r124)) + r26) + r6;
-        r2[13] = (((r33 * r35) - (r7 * r125)) + r19) + r7;
-        r2[14] = ((r35 * r34) - (r7 * r126)) + r116;
-        r2[15] = 1.0f;
-    L11:
-        this.D = false;
-        this.F = jz4.B(r2);
-    L12:
-        return r2;
+        boolean z = this.D;
+        float[] fArr = this.u;
+        if (z) {
+            sj1 sj1Var = this.n;
+            long jQ = sj1Var.z;
+            uj1 uj1Var = sj1Var.a;
+            if ((9223372034707292159L & jQ) == 9205357640488583168L) {
+                jQ = h12.q(l93.o0(this.s));
+            }
+            float fIntBitsToFloat = Float.intBitsToFloat((int) (jQ >> 32));
+            float fIntBitsToFloat2 = Float.intBitsToFloat((int) (jQ & 4294967295L));
+            float fD = uj1Var.D();
+            float fU = uj1Var.u();
+            float fG = uj1Var.G();
+            float fL = uj1Var.l();
+            float fN = uj1Var.n();
+            float fC = uj1Var.c();
+            float fN2 = uj1Var.N();
+            double d = ((double) fG) * 0.017453292519943295d;
+            float fSin = (float) Math.sin(d);
+            float fCos = (float) Math.cos(d);
+            float f = -fSin;
+            float f2 = (fU * fCos) - (0.0f * fSin);
+            float f3 = (0.0f * fCos) + (fU * fSin);
+            double d2 = ((double) fL) * 0.017453292519943295d;
+            float fSin2 = (float) Math.sin(d2);
+            float fCos2 = (float) Math.cos(d2);
+            float f4 = -fSin2;
+            float f5 = fSin * fSin2;
+            float f6 = fSin * fCos2;
+            float f7 = fCos * fSin2;
+            float f8 = fCos * fCos2;
+            float f9 = (f3 * fSin2) + (fD * fCos2);
+            float f10 = (f3 * fCos2) + ((-fD) * fSin2);
+            double d3 = ((double) fN) * 0.017453292519943295d;
+            float fSin3 = (float) Math.sin(d3);
+            float fCos3 = (float) Math.cos(d3);
+            float f11 = -fSin3;
+            float f12 = (fCos3 * f5) + (f11 * fCos2);
+            float f13 = (f5 * fSin3) + (fCos2 * fCos3);
+            float f14 = fSin3 * fCos;
+            float f15 = f13 * fC;
+            float f16 = f14 * fC;
+            float f17 = ((fSin3 * f6) + (fCos3 * f4)) * fC;
+            float f18 = f12 * fN2;
+            float f19 = fCos * fCos3 * fN2;
+            float f20 = ((fCos3 * f6) + (f11 * f4)) * fN2;
+            float f21 = f7 * 1.0f;
+            float f22 = f * 1.0f;
+            float f23 = f8 * 1.0f;
+            if (fArr.length >= 16) {
+                fArr[0] = f15;
+                fArr[1] = f16;
+                fArr[2] = f17;
+                fArr[3] = 0.0f;
+                fArr[4] = f18;
+                fArr[5] = f19;
+                fArr[6] = f20;
+                fArr[7] = 0.0f;
+                fArr[8] = f21;
+                fArr[9] = f22;
+                fArr[10] = f23;
+                fArr[11] = 0.0f;
+                float f24 = -fIntBitsToFloat;
+                fArr[12] = ((f15 * f24) - (fIntBitsToFloat2 * f18)) + f9 + fIntBitsToFloat;
+                fArr[13] = ((f16 * f24) - (fIntBitsToFloat2 * f19)) + f2 + fIntBitsToFloat2;
+                fArr[14] = ((f24 * f17) - (fIntBitsToFloat2 * f20)) + f10;
+                fArr[15] = 1.0f;
+            }
+            this.D = false;
+            this.F = jz4.B(fArr);
+        }
+        return fArr;
     }
 
     public final void c() {
-        if (this.w == false) goto L5;
-        return;
-    L5:
-        if (this.t == true) goto L9;
+        if (this.w || this.t) {
+            return;
+        }
         this.p.invalidate();
         f(true);
-        return;
     }
 
-    public final void d(long r7) {
-        boolean r0 = ra.l();
-        ra r1 = this.p;
-        if (r0 == false) goto L5;
-        r1.J(-4.0f);
-    L5:
-        sj1 r6 = this.n;
-        if (g02.a(r6.t, r7) == true) goto L9;
-        r6.t = r7;
-        long r2 = r6.u;
-        r6.a.k((int) (r7 >> 32), (int) (r7 & 4294967295L), r2);
-    L9:
-        if (Build.VERSION.SDK_INT < 26) goto L14;
-        ViewParent r8 = r1.getParent();
-        if (r8 == null) goto L16;
-        rg3.k(r8, r1, r1);
-        return;
-    L16:
-        return;
-    L14:
-        r1.invalidate();
+    public final void d(long j) {
+        boolean zL = ra.l();
+        ra raVar = this.p;
+        if (zL) {
+            raVar.J(-4.0f);
+        }
+        sj1 sj1Var = this.n;
+        if (!g02.a(sj1Var.t, j)) {
+            sj1Var.t = j;
+            sj1Var.a.k((int) (j >> 32), (int) (j & 4294967295L), sj1Var.u);
+        }
+        if (Build.VERSION.SDK_INT < 26) {
+            raVar.invalidate();
+            return;
+        }
+        ViewParent parent = raVar.getParent();
+        if (parent != null) {
+            parent.onDescendantInvalidated(raVar, raVar);
+        }
     }
 
-    public final void e(long r3) {
-        if (n02.a(r3, this.s) == false) goto L5;
-        return;
-    L5:
-        if (ra.l() == false) goto L7;
-        this.p.J(-4.0f);
-    L7:
-        this.s = r3;
+    public final void e(long j) {
+        if (n02.a(j, this.s)) {
+            return;
+        }
+        if (ra.l()) {
+            this.p.J(-4.0f);
+        }
+        this.s = j;
         c();
     }
 
-    public final void f(boolean r4) {
-        if (r4 == this.w) goto L19;
-        this.w = r4;
-        ra r0 = this.p;
-        q03 r1 = r0.N;
-        boolean r2 = r0.P;
-        if (r4 == true) goto L11;
-        if (r2 == true) goto L20;
-        r1.j(this);
-        q03 r5 = r0.O;
-        if (r5 == null) goto L21;
-        r5.j(this);
-        return;
-    L21:
-        return;
-    L20:
-        return;
-    L11:
-        if (r2 == true) goto L14;
-        r1.a(this);
-        return;
-    L14:
-        q03 r6 = r0.O;
-        if (r6 != null) goto L17;
-        r6 = new q03();
-        r0.O = r6;
-    L17:
-        r6.a(this);
-        return;
+    public final void f(boolean z) {
+        if (z != this.w) {
+            this.w = z;
+            ra raVar = this.p;
+            q03 q03Var = raVar.N;
+            boolean z2 = raVar.P;
+            if (!z) {
+                if (z2) {
+                    return;
+                }
+                q03Var.j(this);
+                q03 q03Var2 = raVar.O;
+                if (q03Var2 != null) {
+                    q03Var2.j(this);
+                    return;
+                }
+                return;
+            }
+            if (!z2) {
+                q03Var.a(this);
+                return;
+            }
+            q03 q03Var3 = raVar.O;
+            if (q03Var3 == null) {
+                q03Var3 = new q03();
+                raVar.O = q03Var3;
+            }
+            q03Var3.a(this);
+        }
     }
 
     public final void g() {
         ra.l();
-        if (this.w == true) goto L5;
-        return;
-    L5:
-        if (this.B != tw4.a) goto L8;
-    L12:
-        sj1 r0 = this.n;
-        oo0 r4 = this.x;
-        r62 r5 = this.y;
-        long r6 = this.s;
-        long r8 = r0.u;
-        uj1 r10 = r0.a;
-        if (n02.a(r8, r6) == true) goto L17;
-        r0.u = r6;
-        long r9 = r0.t;
-        r10.k((int) (r9 >> 32), (int) (4294967295L & r9), r6);
-        if (r0.i != 9205357640488583168L) goto L17;
-        r0.g = true;
-        r0.a();
-    L17:
-        r0.b = r4;
-        r0.c = r5;
-        r0.d = this.G;
-        r10.q(r4, r5, r0, r0.e);
-        f(false);
-        return;
-    L8:
-        if (n02.a(this.n.u, this.s) == true) goto L12;
-        sj1 r1 = this.n;
-        float r7 = Float.intBitsToFloat((int) (this.B >> 32)) * ((int) (this.s >> 32));
-        float r11 = Float.intBitsToFloat((int) (this.B & 4294967295L)) * ((int) (this.s & 4294967295L));
-        long r12 = Float.floatToRawIntBits(r7);
-        long r13 = (((long) Float.floatToRawIntBits(r11)) & 4294967295L) | (r12 << 32);
-        if (g83.b(r1.z, r13) == true) goto L12;
-        r1.z = r13;
-        r1.a.o(r13);
-        goto L12
+        if (this.w) {
+            if (this.B != tw4.a && !n02.a(this.n.u, this.s)) {
+                sj1 sj1Var = this.n;
+                float fIntBitsToFloat = Float.intBitsToFloat((int) (this.B >> 32)) * ((int) (this.s >> 32));
+                long jFloatToRawIntBits = (((long) Float.floatToRawIntBits(Float.intBitsToFloat((int) (this.B & 4294967295L)) * ((int) (this.s & 4294967295L)))) & 4294967295L) | (Float.floatToRawIntBits(fIntBitsToFloat) << 32);
+                if (!g83.b(sj1Var.z, jFloatToRawIntBits)) {
+                    sj1Var.z = jFloatToRawIntBits;
+                    sj1Var.a.o(jFloatToRawIntBits);
+                }
+            }
+            sj1 sj1Var2 = this.n;
+            oo0 oo0Var = this.x;
+            r62 r62Var = this.y;
+            long j = this.s;
+            long j2 = sj1Var2.u;
+            uj1 uj1Var = sj1Var2.a;
+            if (!n02.a(j2, j)) {
+                sj1Var2.u = j;
+                long j3 = sj1Var2.t;
+                uj1Var.k((int) (j3 >> 32), (int) (4294967295L & j3), j);
+                if (sj1Var2.i == 9205357640488583168L) {
+                    sj1Var2.g = true;
+                    sj1Var2.a();
+                }
+            }
+            sj1Var2.b = oo0Var;
+            sj1Var2.c = r62Var;
+            sj1Var2.d = this.G;
+            uj1Var.q(oo0Var, r62Var, sj1Var2, sj1Var2.e);
+            f(false);
+        }
     }
 }

@@ -26,50 +26,42 @@ final class DefaultCallAdapterFactory extends CallAdapter.Factory {
         /* JADX INFO: renamed from: retrofit2.DefaultCallAdapterFactory$ExecutorCallbackCall$1, reason: invalid class name */
         /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
         public class AnonymousClass1 implements Callback<T> {
-            final /* synthetic */ ExecutorCallbackCall this$0;
             final /* synthetic */ Callback val$callback;
 
-            public AnonymousClass1(ExecutorCallbackCall r1, Callback r2) {
-                this.this$0 = r1;
-                this.val$callback = r2;
+            public AnonymousClass1(Callback callback) {
+                this.val$callback = callback;
             }
 
-            public static /* synthetic */ void a(AnonymousClass1 r0, Callback r1, Throwable r2) {
-                r0.lambda$onFailure$1(r1, r2);
+            /* JADX INFO: Access modifiers changed from: private */
+            public /* synthetic */ void lambda$onFailure$1(Callback callback, Throwable th) {
+                callback.onFailure(ExecutorCallbackCall.this, th);
             }
 
-            public static /* synthetic */ void b(AnonymousClass1 r0, Callback r1, Response r2) {
-                r0.lambda$onResponse$0(r1, r2);
-            }
-
-            private /* synthetic */ void lambda$onFailure$1(Callback r1, Throwable r2) {
-                r1.onFailure(this.this$0, r2);
-            }
-
-            private /* synthetic */ void lambda$onResponse$0(Callback r2, Response r3) {
-                boolean r0 = this.this$0.delegate.isCanceled();
-                ExecutorCallbackCall r1 = this.this$0;
-                if (r0 == false) goto L6;
-                r2.onFailure(r1, new IOException("Canceled"));
-                return;
-            L6:
-                r2.onResponse(r1, r3);
+            /* JADX INFO: Access modifiers changed from: private */
+            public /* synthetic */ void lambda$onResponse$0(Callback callback, Response response) {
+                boolean zIsCanceled = ExecutorCallbackCall.this.delegate.isCanceled();
+                ExecutorCallbackCall executorCallbackCall = ExecutorCallbackCall.this;
+                if (zIsCanceled) {
+                    callback.onFailure(executorCallbackCall, new IOException("Canceled"));
+                } else {
+                    callback.onResponse(executorCallbackCall, response);
+                }
             }
 
             @Override // retrofit2.Callback
-            public void onFailure(Call<T> r4, Throwable r5) {
-                this.this$0.callbackExecutor.execute(new a(this, this.val$callback, r5, 1));
+            public void onFailure(Call<T> call, Throwable th) {
+                ExecutorCallbackCall.this.callbackExecutor.execute(new a(this, this.val$callback, th, 1));
             }
 
             @Override // retrofit2.Callback
-            public void onResponse(Call<T> r4, Response<T> r5) {
-                this.this$0.callbackExecutor.execute(new a(this, this.val$callback, r5, 0));
+            public void onResponse(Call<T> call, Response<T> response) {
+                ExecutorCallbackCall.this.callbackExecutor.execute(new a(this, this.val$callback, response, 0));
             }
         }
 
-        public ExecutorCallbackCall(Executor r1, Call<T> r2) {
-            this.callbackExecutor = r1;
-            this.delegate = r2;
+        public ExecutorCallbackCall(Executor executor, Call<T> call) {
+            this.callbackExecutor = executor;
+            this.delegate = call;
         }
 
         @Override // retrofit2.Call
@@ -78,15 +70,14 @@ final class DefaultCallAdapterFactory extends CallAdapter.Factory {
         }
 
         @Override // retrofit2.Call
-        /* JADX INFO: renamed from: clone, reason: collision with other method in class */
-        public Call<T> mo76clone() {
-            return new ExecutorCallbackCall(this.callbackExecutor, this.delegate.mo76clone());
+        public Call<T> clone() {
+            return new ExecutorCallbackCall(this.callbackExecutor, this.delegate.clone());
         }
 
         @Override // retrofit2.Call
-        public void enqueue(Callback<T> r3) {
-            Objects.requireNonNull(r3, "callback == null");
-            this.delegate.enqueue(new AnonymousClass1(this, r3));
+        public void enqueue(Callback<T> callback) {
+            Objects.requireNonNull(callback, "callback == null");
+            this.delegate.enqueue(new AnonymousClass1(callback));
         }
 
         @Override // retrofit2.Call
@@ -113,31 +104,35 @@ final class DefaultCallAdapterFactory extends CallAdapter.Factory {
         public fu4 timeout() {
             return this.delegate.timeout();
         }
-
-        public /* bridge */ /* synthetic */ Object clone() {
-            return mo76clone();
-        }
     }
 
-    public DefaultCallAdapterFactory(@Nullable Executor r1) {
-        this.callbackExecutor = r1;
+    public DefaultCallAdapterFactory(@Nullable Executor executor) {
+        this.callbackExecutor = executor;
     }
 
     @Override // retrofit2.CallAdapter.Factory
     @Nullable
-    public CallAdapter<?, ?> get(Type r3, Annotation[] r4, Retrofit r5) {
-        final Executor r1 = null;
-        if (CallAdapter.Factory.getRawType(r3) == Call.class) goto L6;
-        return null;
-    L6:
-        if ((r3 instanceof ParameterizedType) == false) goto L13;
-        final Type r6 = Utils.getParameterUpperBound(0, (ParameterizedType) r3);
-        if (Utils.isAnnotationPresent(r4, SkipCallbackExecutor.class) == true) goto L12;
-        r1 = this.callbackExecutor;
-    L12:
-        return new AnonymousClass1(this, r6, r1);
-    L13:
-        kf2.n("Call return type must be parameterized as Call<Foo> or Call<? extends Foo>");
-        return null;
+    public CallAdapter<?, ?> get(Type type, Annotation[] annotationArr, Retrofit retrofit) {
+        if (CallAdapter.Factory.getRawType(type) != Call.class) {
+            return null;
+        }
+        if (!(type instanceof ParameterizedType)) {
+            kf2.n("Call return type must be parameterized as Call<Foo> or Call<? extends Foo>");
+            return null;
+        }
+        final Type parameterUpperBound = Utils.getParameterUpperBound(0, (ParameterizedType) type);
+        final Executor executor = Utils.isAnnotationPresent(annotationArr, SkipCallbackExecutor.class) ? null : this.callbackExecutor;
+        return new CallAdapter<Object, Call<?>>() { // from class: retrofit2.DefaultCallAdapterFactory.1
+            @Override // retrofit2.CallAdapter
+            public Call<?> adapt(Call<Object> call) {
+                Executor executor2 = executor;
+                return executor2 == null ? call : new ExecutorCallbackCall(executor2, call);
+            }
+
+            @Override // retrofit2.CallAdapter
+            public Type responseType() {
+                return parameterUpperBound;
+            }
+        };
     }
 }

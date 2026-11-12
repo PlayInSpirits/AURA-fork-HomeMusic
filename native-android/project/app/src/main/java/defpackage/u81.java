@@ -8,8 +8,8 @@ public final class u81 extends wd0 {
     public int p;
 
     @Override // defpackage.jp
-    public final Object invokeSuspend(Object r2) {
-        this.o = r2;
+    public final Object invokeSuspend(Object obj) {
+        this.o = obj;
         this.p |= Integer.MIN_VALUE;
         return ya4.f(null, null, this);
     }

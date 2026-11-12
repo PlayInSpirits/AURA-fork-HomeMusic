@@ -11,114 +11,92 @@ public final class d61 extends AnimatorListenerAdapter {
     public boolean b;
     public final /* synthetic */ Object c;
 
-    public d61(lo r2, boolean r3) {
+    public d61(lo loVar, boolean z) {
         this.a = 2;
-        this.c = r2;
-        this.b = r3;
+        this.c = loVar;
+        this.b = z;
     }
 
     @Override // android.animation.AnimatorListenerAdapter, android.animation.Animator.AnimatorListener
-    public void onAnimationCancel(Animator r2) {
-        switch(this.a) {
-            case 0: goto L8;
-            case 1: goto L6;
-            default: goto L4;
-        };
-    L4:
-        super.onAnimationCancel(r2);
-        return;
-    L6:
-        this.b = true;
-        return;
-    L8:
-        this.b = true;
+    public void onAnimationCancel(Animator animator) {
+        switch (this.a) {
+            case 0:
+                this.b = true;
+                break;
+            case 1:
+                this.b = true;
+                break;
+            default:
+                super.onAnimationCancel(animator);
+                break;
+        }
     }
 
     @Override // android.animation.AnimatorListenerAdapter, android.animation.Animator.AnimatorListener
-    public final void onAnimationEnd(Animator r5) {
-        int r6 = this.a;
-        Object r3 = this.c;
-        switch(r6) {
-            case 0: goto L14;
-            case 1: goto L10;
-            default: goto L4;
-        };
-    L4:
-        lo r4 = (lo) r3;
-        if (this.b == false) goto L7;
-        float r7 = 1.0f;
-    L8:
-        lo.a(r4, r7);
-        ClippableRoundedCornerLayout r8 = (ClippableRoundedCornerLayout) r4.c;
-        r8.n = null;
-        r8.o = 0.0f;
-        r8.invalidate();
-        return;
-    L7:
-        r7 = 0.0f;
-        goto L8
-    L10:
-        m81 r9 = (m81) r3;
-        r9.q = 0;
-        r9.l = null;
-        if (this.b == true) goto L22;
-        r9.r.a(4, false);
-        return;
-    L22:
-        return;
-    L14:
-        e61 r10 = (e61) r3;
-        if (this.b == false) goto L18;
-        this.b = false;
-        return;
-    L18:
-        if (((Float) r10.z.getAnimatedValue()).floatValue() != 0.0f) goto L20;
-        r10.A = 0;
-        r10.l(0);
-        return;
-    L20:
-        r10.A = 2;
-        r10.s.invalidate();
+    public final void onAnimationEnd(Animator animator) {
+        int i = this.a;
+        Object obj = this.c;
+        switch (i) {
+            case 0:
+                e61 e61Var = (e61) obj;
+                if (this.b) {
+                    this.b = false;
+                } else if (((Float) e61Var.z.getAnimatedValue()).floatValue() != 0.0f) {
+                    e61Var.A = 2;
+                    e61Var.s.invalidate();
+                } else {
+                    e61Var.A = 0;
+                    e61Var.l(0);
+                }
+                break;
+            case 1:
+                m81 m81Var = (m81) obj;
+                m81Var.q = 0;
+                m81Var.l = null;
+                if (!this.b) {
+                    m81Var.r.a(4, false);
+                }
+                break;
+            default:
+                lo loVar = (lo) obj;
+                lo.a(loVar, this.b ? 1.0f : 0.0f);
+                ClippableRoundedCornerLayout clippableRoundedCornerLayout = (ClippableRoundedCornerLayout) loVar.c;
+                clippableRoundedCornerLayout.n = null;
+                clippableRoundedCornerLayout.o = 0.0f;
+                clippableRoundedCornerLayout.invalidate();
+                break;
+        }
     }
 
     @Override // android.animation.AnimatorListenerAdapter, android.animation.Animator.AnimatorListener
-    public void onAnimationStart(Animator r4) {
-        int r0 = this.a;
-        Object r1 = this.c;
-        switch(r0) {
-            case 1: goto L12;
-            case 2: goto L6;
-            default: goto L4;
-        };
-    L4:
-        super.onAnimationStart(r4);
-        return;
-    L6:
-        lo r2 = (lo) r1;
-        if (this.b == false) goto L9;
-        float r3 = 0.0f;
-    L10:
-        lo.a(r2, r3);
-        return;
-    L9:
-        r3 = 1.0f;
-        goto L10
-    L12:
-        m81 r5 = (m81) r1;
-        r5.r.a(0, false);
-        r5.q = 1;
-        r5.l = r4;
-        this.b = false;
+    public void onAnimationStart(Animator animator) {
+        int i = this.a;
+        Object obj = this.c;
+        switch (i) {
+            case 1:
+                m81 m81Var = (m81) obj;
+                m81Var.r.a(0, false);
+                m81Var.q = 1;
+                m81Var.l = animator;
+                this.b = false;
+                break;
+            case 2:
+                lo.a((lo) obj, this.b ? 0.0f : 1.0f);
+                break;
+            default:
+                super.onAnimationStart(animator);
+                break;
+        }
     }
 
-    public d61(m81 r2) {
+    public d61(m81 m81Var) {
         this.a = 1;
-        this.c = r2;
+        this.c = m81Var;
     }
 
-    public d61(e61 r2) {
+    public d61(e61 e61Var) {
         this.a = 0;
-        this.c = r2;
+        this.c = e61Var;
         this.b = false;
     }
 }

@@ -17,10 +17,10 @@ import java.util.RandomAccess;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class pn0 {
-    public static final gb3 k = null;
+    public static final gb3 k = new s60(new n7(4));
     public dw4 a;
     public cp b;
-    public final Object c;
+    public final Object c = new Object();
     public final Context d;
     public final s41 e;
     public jn0 f;
@@ -29,338 +29,228 @@ public final class pn0 {
     public il i;
     public Boolean j;
 
-    static {
-        k = new s60(new n7(4));
-    }
-
-    public pn0(cw4 r2, s41 r3, MediaService r4) {
-        this.c = new Object();
-        if (r4 == null) goto L5;
-        Context r0 = r4.getApplicationContext();
-    L6:
-        this.d = r0;
-        this.e = r3;
-        if ((r2 instanceof jn0) == false) goto L9;
-        this.f = (jn0) r2;
-    L10:
+    public pn0(cw4 cw4Var, s41 s41Var, MediaService mediaService) {
+        this.d = mediaService != null ? mediaService.getApplicationContext() : null;
+        this.e = s41Var;
+        if (cw4Var instanceof jn0) {
+            this.f = (jn0) cw4Var;
+        } else {
+            jn0 jn0Var = jn0.F0;
+            jn0Var.getClass();
+            in0 in0Var = new in0(jn0Var);
+            in0Var.e(cw4Var);
+            this.f = new jn0(in0Var);
+        }
         this.i = il.i;
-        if (this.f.A0 == false) goto L15;
-        if (r4 != null) goto L16;
-        l93.q0("DefaultTrackSelector", "Audio channel count constraints cannot be applied without reference to Context. Build the track selector instance with one of the non-deprecated constructors that take a Context argument.");
-        return;
-    L16:
-        return;
-    L15:
-        return;
-    L9:
-        jn0 r5 = jn0.F0;
-        r5.getClass();
-        in0 r1 = new in0(r5);
-        r1.e(r2);
-        this.f = new jn0(r1);
-        goto L10
-    L5:
-        r0 = null;
-        goto L6
+        if (this.f.A0 && mediaService == null) {
+            l93.q0("DefaultTrackSelector", "Audio channel count constraints cannot be applied without reference to Context. Build the track selector instance with one of the non-deprecated constructors that take a Context argument.");
+        }
     }
 
-    public static int a(tb1 r5, yw1 r6) {
-        int r1 = 0;
-    L4:
-        if (r1 >= r6.size()) goto L13;
-        int r2 = 0;
-    L7:
-        if (r2 >= r5.c.size()) goto L12;
-        if (((o42) r5.c.get(r2)).b.equals(r6.get(r1)) == true) goto L10;
-        r2 = r2 + 1;
-        goto L7
-    L10:
-        return r1;
-    L12:
-        r1 = r1 + 1;
-        goto L4
-    L13:
+    public static int a(tb1 tb1Var, yw1 yw1Var) {
+        for (int i = 0; i < yw1Var.size(); i++) {
+            for (int i2 = 0; i2 < tb1Var.c.size(); i2++) {
+                if (((o42) tb1Var.c.get(i2)).b.equals(yw1Var.get(i))) {
+                    return i;
+                }
+            }
+        }
         return Integer.MAX_VALUE;
     }
 
-    public static void b(tv4 r4, jn0 r5, HashMap r6) {
-        int r0 = 0;
-    L4:
-        if (r0 >= r4.a) goto L16;
-        sv4 r1 = r4.a(r0);
-        yv4 r2 = (yv4) r5.H.get(r1);
-        if (r2 == null) goto L15;
-        sv4 r3 = r2.a;
-        yv4 r7 = (yv4) r6.get(Integer.valueOf(r3.c));
-        if (r7 != null) goto L11;
-    L14:
-        r6.put(Integer.valueOf(r3.c), r2);
-        goto L15
-    L11:
-        if (r7.b.isEmpty() == false) goto L15;
-        if (r2.b.isEmpty() == false) goto L14;
-    L15:
-        r0 = r0 + 1;
-        goto L4
+    public static void b(tv4 tv4Var, jn0 jn0Var, HashMap map) {
+        for (int i = 0; i < tv4Var.a; i++) {
+            yv4 yv4Var = (yv4) jn0Var.H.get(tv4Var.a(i));
+            if (yv4Var != null) {
+                sv4 sv4Var = yv4Var.a;
+                yv4 yv4Var2 = (yv4) map.get(Integer.valueOf(sv4Var.c));
+                if (yv4Var2 == null || (yv4Var2.b.isEmpty() && !yv4Var.b.isEmpty())) {
+                    map.put(Integer.valueOf(sv4Var.c), yv4Var);
+                }
+            }
+        }
     }
 
-    public static int c(tb1 r2, String r3, boolean r4) {
-        if (TextUtils.isEmpty(r3) == false) goto L5;
-    L8:
-        String r5 = f(r3);
-        String r6 = f(r2.d);
-        if (r6 == null) goto L23;
-        if (r5 == null) goto L23;
-        if (r6.startsWith(r5) == false) goto L15;
-        return 3;
-    L15:
-        if (r5.startsWith(r6) == true) goto L28;
-        String r7 = f35.a;
-        if (r6.split("-", 2)[0].equals(r5.split("-", 2)[0]) == false) goto L20;
-        return 2;
-    L20:
-        return 0;
-    L28:
-        return 3;
-    L23:
-        if (r4 == false) goto L27;
-        if (r6 != null) goto L27;
-        return 1;
-    L27:
-        return 0;
-    L5:
-        if (r3.equals(r2.d) == false) goto L8;
-        return 4;
+    public static int c(tb1 tb1Var, String str, boolean z) {
+        if (!TextUtils.isEmpty(str) && str.equals(tb1Var.d)) {
+            return 4;
+        }
+        String strF = f(str);
+        String strF2 = f(tb1Var.d);
+        if (strF2 == null || strF == null) {
+            return (z && strF2 == null) ? 1 : 0;
+        }
+        if (strF2.startsWith(strF) || strF.startsWith(strF2)) {
+            return 3;
+        }
+        String str2 = f35.a;
+        return strF2.split("-", 2)[0].equals(strF.split("-", 2)[0]) ? 2 : 0;
     }
 
-    public static String f(String r1) {
-        if (TextUtils.isEmpty(r1) == false) goto L5;
-        return null;
-    L5:
-        if (TextUtils.equals(r1, "und") == true) goto L10;
-        return r1;
-    L10:
-        return null;
+    public static String f(String str) {
+        if (TextUtils.isEmpty(str) || TextUtils.equals(str, "und")) {
+            return null;
+        }
+        return str;
     }
 
-    public static boolean h(jn0 r2, int r3, tb1 r4) {
-        if ((r3 & 3584) != 0) goto L5;
-        return false;
-    L5:
-        aw4 r5 = r2.w;
-        if (r5.c == false) goto L11;
-        if ((r3 & 2048) != 0) goto L11;
-        return false;
-    L11:
-        if (r5.b == true) goto L13;
-    L27:
+    public static boolean h(jn0 jn0Var, int i, tb1 tb1Var) {
+        if ((i & 3584) == 0) {
+            return false;
+        }
+        aw4 aw4Var = jn0Var.w;
+        if (aw4Var.c && (i & 2048) == 0) {
+            return false;
+        }
+        if (aw4Var.b) {
+            boolean z = (tb1Var.I == 0 && tb1Var.J == 0) ? false : true;
+            boolean z2 = (i & 1024) != 0;
+            if (z && !z2) {
+                return false;
+            }
+        }
         return true;
-    L13:
-        if (r4.I == 0) goto L15;
-    L18:
-        boolean r6 = true;
-    L20:
-        if ((r3 & 1024) == 0) goto L22;
-        boolean r7 = true;
-    L23:
-        if (r6 == false) goto L27;
-        if (r7 == true) goto L27;
-        return false;
-    L22:
-        r7 = false;
-        goto L23
-    L15:
-        if (r4.J != 0) goto L18;
-        r6 = false;
-        goto L20
     }
 
-    public static Pair i(int r18, gg2 r19, int[][][] r20, mn0 r21, Comparator r22) {
-        gg2 r0 = r19;
-        ArrayList r1 = new ArrayList();
-        int r2 = r0.a;
-        int r4 = 0;
-    L3:
-        if (r4 >= r2) goto L33;
-        if (r18 != r0.b[r4]) goto L31;
-        tv4 r5 = r0.c[r4];
-        int r7 = 0;
-    L8:
-        if (r7 >= r5.a) goto L31;
-        sv4 r8 = r5.a(r7);
-        gy3 r9 = r21.g(r4, r8, r20[r4][r7]);
-        int r10 = r8.a;
-        boolean[] r11 = new boolean[r10];
-        int r12 = 0;
-    L10:
-        if (r12 >= r10) goto L30;
-        nn0 r13 = (nn0) r9.get(r12);
-        int r14 = r13.a();
-        if (r11[r12] == true) goto L14;
-        if (r14 == 0) goto L14;
-        if (r14 != 1) goto L19;
-        RandomAccess r15 = yw1.o(r13);
-    L18:
-        int r16 = r2;
-        r1.add(r15);
-    L29:
-        r12 = r12 + 1;
-        r2 = r16;
-        goto L10
-    L19:
-        ArrayList r17 = new ArrayList();
-        r17.add(r13);
-        int r110 = r12 + 1;
-    L20:
-        if (r110 >= r10) goto L27;
-        nn0 r3 = (nn0) r9.get(r110);
-        int r111 = r2;
-        if (r3.a() != 2) goto L26;
-        if (r13.b(r3) == false) goto L26;
-        r17.add(r3);
-        r11[r110] = true;
-    L26:
-        r110 = r110 + 1;
-        r2 = r111;
-        goto L20
-    L27:
-        r15 = r17;
-    L14:
-        r16 = r2;
-        goto L29
-    L30:
-        r7 = r7 + 1;
-    L31:
-        r4 = r4 + 1;
-        r0 = r19;
-        r2 = r2;
-        goto L3
-    L33:
-        if (r1.isEmpty() == false) goto L36;
-        return null;
-    L36:
-        List r6 = (List) Collections.max(r1, r22);
-        int[] r23 = new int[r6.size()];
-        int r24 = 0;
-    L38:
-        if (r24 >= r6.size()) goto L40;
-        r23[r24] = ((nn0) r6.get(r24)).p;
-        r24 = r24 + 1;
-        goto L38
-    L40:
-        nn0 r25 = (nn0) r6.get(0);
-        return Pair.create(new r41(r25.o, r23), Integer.valueOf(r25.n));
+    public static Pair i(int i, gg2 gg2Var, int[][][] iArr, mn0 mn0Var, Comparator comparator) {
+        int i2;
+        RandomAccess randomAccessO;
+        gg2 gg2Var2 = gg2Var;
+        ArrayList arrayList = new ArrayList();
+        int i3 = gg2Var2.a;
+        int i4 = 0;
+        while (i4 < i3) {
+            if (i == gg2Var2.b[i4]) {
+                tv4 tv4Var = gg2Var2.c[i4];
+                for (int i5 = 0; i5 < tv4Var.a; i5++) {
+                    sv4 sv4VarA = tv4Var.a(i5);
+                    gy3 gy3VarG = mn0Var.g(i4, sv4VarA, iArr[i4][i5]);
+                    int i6 = sv4VarA.a;
+                    boolean[] zArr = new boolean[i6];
+                    int i7 = 0;
+                    while (i7 < i6) {
+                        nn0 nn0Var = (nn0) gy3VarG.get(i7);
+                        int iA = nn0Var.a();
+                        if (zArr[i7] || iA == 0) {
+                            i2 = i3;
+                        } else {
+                            if (iA == 1) {
+                                randomAccessO = yw1.o(nn0Var);
+                            } else {
+                                ArrayList arrayList2 = new ArrayList();
+                                arrayList2.add(nn0Var);
+                                int i8 = i7 + 1;
+                                while (i8 < i6) {
+                                    nn0 nn0Var2 = (nn0) gy3VarG.get(i8);
+                                    int i9 = i3;
+                                    if (nn0Var2.a() == 2 && nn0Var.b(nn0Var2)) {
+                                        arrayList2.add(nn0Var2);
+                                        zArr[i8] = true;
+                                    }
+                                    i8++;
+                                    i3 = i9;
+                                }
+                                randomAccessO = arrayList2;
+                            }
+                            i2 = i3;
+                            arrayList.add(randomAccessO);
+                        }
+                        i7++;
+                        i3 = i2;
+                    }
+                }
+            }
+            i4++;
+            gg2Var2 = gg2Var;
+            i3 = i3;
+        }
+        if (arrayList.isEmpty()) {
+            return null;
+        }
+        List list = (List) Collections.max(arrayList, comparator);
+        int[] iArr2 = new int[list.size()];
+        for (int i10 = 0; i10 < list.size(); i10++) {
+            iArr2[i10] = ((nn0) list.get(i10)).p;
+        }
+        nn0 nn0Var3 = (nn0) list.get(0);
+        return Pair.create(new r41(nn0Var3.o, iArr2), Integer.valueOf(nn0Var3.n));
     }
 
     public final jn0 d() {
-        Object r0 = this.c;
-        monitor-enter(r0);
-        jn0 r1 = this.f;     // Catch: Throwable -> L7
-        monitor-exit(r0);     // Catch: Throwable -> L7
-        return r1;
-    L7:
-        th = move-exception;
-        throw th;
+        jn0 jn0Var;
+        synchronized (this.c) {
+            jn0Var = this.f;
+        }
+        return jn0Var;
     }
 
     public final void e() {
-        Object r0 = this.c;
-        monitor-enter(r0);
-    L13:
-        th = move-exception;
-        throw th;
-    L5:
-        if (this.f.A0 == true) goto L7;
-    L15:
-        boolean r1 = false;
-    L16:
-        monitor-exit(r0);     // Catch: Throwable -> L13
-        if (r1 == false) goto L26;
-        dw4 r3 = this.a;
-        if (r3 == null) goto L27;
-        r3.c();
-        return;
-    L27:
-        return;
-    L26:
-        return;
-    L7:
-        if (Build.VERSION.SDK_INT < 32) goto L15;
-        ll r2 = this.h;     // Catch: Throwable -> L13
-        if (r2 == null) goto L15;
-        if (r2.o == false) goto L15;
-        r1 = true;
-        goto L16
+        boolean z;
+        dw4 dw4Var;
+        ll llVar;
+        synchronized (this.c) {
+            try {
+                z = this.f.A0 && Build.VERSION.SDK_INT >= 32 && (llVar = this.h) != null && llVar.o;
+            } catch (Throwable th) {
+                throw th;
+            }
+        }
+        if (!z || (dw4Var = this.a) == null) {
+            return;
+        }
+        dw4Var.c();
     }
 
     public final void g() {
-        Object r0 = this.c;
-        monitor-enter(r0);
-        Thread r1 = this.g;     // Catch: Throwable -> L11
-        if (r1 != null) goto L7;
-    L13:
-        monitor-exit(r0);     // Catch: Throwable -> L11
-        if (Build.VERSION.SDK_INT < 32) goto L26;
-        ll r2 = this.h;
-        if (r2 == null) goto L26;
-        Handler r3 = (Handler) r2.q;
-        Spatializer r4 = (Spatializer) r2.p;
-        if (r4 == null) goto L25;
-        kn0 r5 = (kn0) r2.r;
-        if (r5 == null) goto L25;
-        if (r3 == null) goto L25;
-        m3.i(r4, r5);
-        r3.removeCallbacksAndMessages(null);
-    L25:
-        this.h = null;
-    L26:
+        ll llVar;
+        kn0 kn0Var;
+        synchronized (this.c) {
+            try {
+                Thread thread = this.g;
+                if (thread != null) {
+                    rr2.v("DefaultTrackSelector is accessed on the wrong thread.", thread == Thread.currentThread());
+                }
+            } catch (Throwable th) {
+                throw th;
+            }
+        }
+        if (Build.VERSION.SDK_INT >= 32 && (llVar = this.h) != null) {
+            Handler handler = (Handler) llVar.q;
+            Spatializer spatializer = (Spatializer) llVar.p;
+            if (spatializer != null && (kn0Var = (kn0) llVar.r) != null && handler != null) {
+                spatializer.removeOnSpatializerStateChangedListener(kn0Var);
+                handler.removeCallbacksAndMessages(null);
+            }
+            this.h = null;
+        }
         this.a = null;
         this.b = null;
-        return;
-    L7:
-        if (r1 != Thread.currentThread()) goto L9;
-        boolean r6 = true;
-    L10:
-        rr2.v("DefaultTrackSelector is accessed on the wrong thread.", r6);     // Catch: Throwable -> L11
-        goto L13
-    L9:
-        r6 = false;
-    L11:
-        th = move-exception;
-        throw th;
     }
 
-    public final void j(cw4 r3) {
-        if ((r3 instanceof jn0) == false) goto L5;
-        k((jn0) r3);
-    L5:
-        in0 r0 = new in0(d());
-        r0.e(r3);
-        k(new jn0(r0));
+    public final void j(cw4 cw4Var) {
+        if (cw4Var instanceof jn0) {
+            k((jn0) cw4Var);
+        }
+        in0 in0Var = new in0(d());
+        in0Var.e(cw4Var);
+        k(new jn0(in0Var));
     }
 
-    public final void k(jn0 r3) {
-        Object r0 = this.c;
-        monitor-enter(r0);
-        boolean r1 = this.f.equals(r3);     // Catch: Throwable -> L16
-        this.f = r3;     // Catch: Throwable -> L16
-        monitor-exit(r0);     // Catch: Throwable -> L16
-        if (r1 == false) goto L8;
-        return;
-    L8:
-        if (r3.A0 == true) goto L10;
-    L12:
-        dw4 r2 = this.a;
-        if (r2 == null) goto L22;
-        r2.c();
-        return;
-    L22:
-        return;
-    L10:
-        if (this.d != null) goto L12;
-        l93.q0("DefaultTrackSelector", "Audio channel count constraints cannot be applied without reference to Context. Build the track selector instance with one of the non-deprecated constructors that take a Context argument.");
-    L16:
-        th = move-exception;
-        throw th;
+    public final void k(jn0 jn0Var) {
+        boolean zEquals;
+        synchronized (this.c) {
+            zEquals = this.f.equals(jn0Var);
+            this.f = jn0Var;
+        }
+        if (zEquals) {
+            return;
+        }
+        if (jn0Var.A0 && this.d == null) {
+            l93.q0("DefaultTrackSelector", "Audio channel count constraints cannot be applied without reference to Context. Build the track selector instance with one of the non-deprecated constructors that take a Context argument.");
+        }
+        dw4 dw4Var = this.a;
+        if (dw4Var != null) {
+            dw4Var.c();
+        }
     }
 }

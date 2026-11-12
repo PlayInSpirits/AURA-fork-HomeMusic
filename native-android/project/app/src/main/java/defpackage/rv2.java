@@ -26,92 +26,63 @@ import retrofit2.Response;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class rv2 implements me0, th4, as4, d14, l65, dc5, fv2, s41, Callback, f3, y30 {
-    public static final rv2 A = null;
-    public static final rv2 B = null;
-    public static final rv2 C = null;
-    public static final rv2 D = null;
-    public static final rv2 E = null;
-    public static final rv2 F = null;
-    public static final rv2 G = null;
-    public static final rv2 H = null;
-    public static final rv2 I = null;
-    public static final rv2 J = null;
-    public static final rv2 K = null;
-    public static final rv2 L = null;
-    public static final ec5 M = null;
-    public static final rv2 o = null;
-    public static final /* synthetic */ rv2 p = null;
-    public static final /* synthetic */ rv2 q = null;
-    public static final rv2 r = null;
-    public static final rv2 s = null;
-    public static final rv2 t = null;
-    public static final rv2 u = null;
-    public static final qa3 v = null;
-    public static final qa3 w = null;
-    public static final rv2 x = null;
-    public static final /* synthetic */ rv2 y = null;
-    public static final rv2 z = null;
     public final /* synthetic */ int n;
+    public static final rv2 o = new rv2(0);
+    public static final /* synthetic */ rv2 p = new rv2(1);
+    public static final /* synthetic */ rv2 q = new rv2(2);
+    public static final rv2 r = new rv2(3);
+    public static final rv2 s = new rv2(4);
+    public static final rv2 t = new rv2(5);
+    public static final rv2 u = new rv2(6);
+    public static final qa3 v = new qa3(1);
+    public static final qa3 w = new qa3(0);
+    public static final rv2 x = new rv2(8);
+    public static final /* synthetic */ rv2 y = new rv2(9);
+    public static final rv2 z = new rv2(10);
+    public static final rv2 A = new rv2(11);
+    public static final rv2 B = new rv2(12);
+    public static final rv2 C = new rv2(13);
+    public static final rv2 D = new rv2(14);
+    public static final rv2 E = new rv2(15);
+    public static final rv2 F = new rv2(16);
+    public static final rv2 G = new rv2(17);
+    public static final rv2 H = new rv2(18);
+    public static final rv2 I = new rv2(19);
+    public static final rv2 J = new rv2(20);
+    public static final rv2 K = new rv2(21);
+    public static final rv2 L = new rv2(22);
+    public static final ec5 M = new ec5();
 
-    static {
-        o = new rv2(0);
-        p = new rv2(1);
-        q = new rv2(2);
-        r = new rv2(3);
-        s = new rv2(4);
-        t = new rv2(5);
-        u = new rv2(6);
-        v = new qa3(1);
-        w = new qa3(0);
-        x = new rv2(8);
-        y = new rv2(9);
-        z = new rv2(10);
-        A = new rv2(11);
-        B = new rv2(12);
-        C = new rv2(13);
-        D = new rv2(14);
-        E = new rv2(15);
-        F = new rv2(16);
-        G = new rv2(17);
-        H = new rv2(18);
-        I = new rv2(19);
-        J = new rv2(20);
-        K = new rv2(21);
-        L = new rv2(22);
-        M = new ec5();
+    public /* synthetic */ rv2(int i) {
+        this.n = i;
     }
 
-    public /* synthetic */ rv2(int r1) {
-        this.n = r1;
+    public static k03 j(String str) {
+        k03 k03Var = new k03();
+        App.f(false).c().e(str).enqueue(new p8(k03Var, 0));
+        return k03Var;
     }
 
-    public static k03 j(String r3) {
-        k03 r0 = new k03();
-        App.f(false).c().e(r3).enqueue(new p8(r0, 0));
-        return r0;
+    public static k03 l(String str) {
+        k03 k03Var = new k03();
+        App.f(false).c().e(str).enqueue(new gp3(1, new d7(2, k03Var), str));
+        return k03Var;
     }
 
-    public static k03 l(String r5) {
-        k03 r0 = new k03();
-        d7 r1 = new d7(2, r0);
-        App.f(false).c().e(r5).enqueue(new gp3(1, r1, r5));
-        return r0;
+    public static k03 m(String str, int i, Integer num, Integer num2) {
+        k03 k03Var = new k03(new ArrayList());
+        App.f(false).a().q(str, i, 0, num, num2).enqueue(new ew4(k03Var, str, i, num, num2));
+        return k03Var;
     }
 
-    public static k03 m(String r8, int r9, Integer r10, Integer r11) {
-        k03 r1 = new k03(new ArrayList());
-        App.f(false).a().q(r8, r9, 0, r10, r11).enqueue(new ew4(r1, r8, r9, r10, r11));
-        return r1;
-    }
-
-    public static k03 o(int r4, boolean r5) {
-        k03 r0 = new k03(new ArrayList());
-        App.f(false).a().s().enqueue(new o8(r5, r0, r4, 0));
-        return r0;
+    public static k03 o(int i, boolean z2) {
+        k03 k03Var = new k03(new ArrayList());
+        App.f(false).a().s().enqueue(new o8(z2, k03Var, i, 0));
+        return k03Var;
     }
 
     @Override // defpackage.fv2
-    public void a(qu2 r1, boolean r2) {
+    public void a(qu2 qu2Var, boolean z2) {
     }
 
     @Override // defpackage.as4
@@ -121,77 +92,72 @@ public final class rv2 implements me0, th4, as4, d14, l65, dc5, fv2, s41, Callba
 
     @Override // defpackage.as4
     public long c() {
-        int r2 = x40.h;
+        int i = x40.h;
         return x40.g;
     }
 
     @Override // defpackage.l65
-    public gf1 d(b0 r4) {
-        if (r4.isAttachedToWindow() == false) goto L10;
-        ba2 r3 = j51.u(r4);
-        if (r3 != null) goto L7;
-        cz1.c("View tree for " + r4 + " has no ViewTreeLifecycleOwner");
+    public gf1 d(b0 b0Var) {
+        if (!b0Var.isAttachedToWindow()) {
+            jx3 jx3Var = new jx3();
+            vc1 vc1Var = new vc1(1, b0Var, jx3Var);
+            b0Var.addOnAttachStateChangeListener(vc1Var);
+            jx3Var.n = new fa(16, b0Var, vc1Var);
+            return new e25(2, jx3Var);
+        }
+        ba2 ba2VarU = j51.u(b0Var);
+        if (ba2VarU != null) {
+            return fu.c(b0Var, ba2VarU.h());
+        }
+        cz1.c("View tree for " + b0Var + " has no ViewTreeLifecycleOwner");
         er1.a();
         return null;
-    L7:
-        return fu.c(r4, r3.h());
-    L10:
-        jx3 r5 = new jx3();
-        vc1 r0 = new vc1(1, r4, r5);
-        r4.addOnAttachStateChangeListener(r0);
-        r5.n = new fa(16, r4, r0);
-        return new e25(2, r5);
     }
 
     @Override // defpackage.dc5
-    public zb5 e(Context r4, po0 r5) {
-        r5.getClass();
-        Context r3 = r4;
-    L4:
-        if ((r3 instanceof ContextWrapper) == false) goto L15;
-        if ((r3 instanceof Activity) == true) goto L17;
-        if ((r3 instanceof InputMethodService) == true) goto L17;
-        ContextWrapper r0 = (ContextWrapper) r3;
-        if (r0.getBaseContext() == null) goto L17;
-        r3 = r0.getBaseContext();
-        r3.getClass();
-    L17:
-        if ((r3 instanceof Activity) == false) goto L31;
-        Activity r6 = (Activity) r3;
-        ju.b.getClass();
-        int r1 = Build.VERSION.SDK_INT;
-        if (r1 < 30) goto L22;
-        ju r2 = ku.n;
-    L29:
-        return new zb5(new hu(r2.a(r6)), r5.c(r6));
-    L22:
-        if (r1 < 29) goto L25;
-        r2 = fz0.D;
-        goto L29
-    L25:
-        if (r1 < 28) goto L27;
-        r2 = fz0.C;
-        goto L29
-    L27:
-        r2 = fz0.B;
-        goto L29
-    L31:
-        if ((r3 instanceof InputMethodService) == false) goto L33;
-    L37:
-        Object r7 = r4.getSystemService("window");
-        r7.getClass();
-        Display r8 = ((WindowManager) r7).getDefaultDisplay();
-        r8.getClass();
-        Point r9 = new Point();
-        r8.getRealSize(r9);
-        return new zb5(new Rect(0, 0, r9.x, r9.y), r5.c(r4));
-    L33:
-        if ((r3 instanceof Application) == true) goto L37;
-        kf2.n("Must provide a UiContext or Application Context");
-        return null;
-    L15:
-        r3 = r4;
-        goto L17
+    public zb5 e(Context context, po0 po0Var) {
+        ju juVar;
+        po0Var.getClass();
+        Context baseContext = context;
+        while (true) {
+            if (!(baseContext instanceof ContextWrapper)) {
+                baseContext = context;
+                break;
+            }
+            if ((baseContext instanceof Activity) || (baseContext instanceof InputMethodService)) {
+                break;
+            }
+            ContextWrapper contextWrapper = (ContextWrapper) baseContext;
+            if (contextWrapper.getBaseContext() == null) {
+                break;
+            }
+            baseContext = contextWrapper.getBaseContext();
+            baseContext.getClass();
+        }
+        if (baseContext instanceof Activity) {
+            Activity activity = (Activity) baseContext;
+            ju.b.getClass();
+            int i = Build.VERSION.SDK_INT;
+            if (i >= 30) {
+                juVar = ku.n;
+            } else if (i >= 29) {
+                juVar = fz0.D;
+            } else {
+                juVar = i >= 28 ? fz0.C : fz0.B;
+            }
+            return new zb5(new hu(juVar.a(activity)), po0Var.c(activity));
+        }
+        if (!(baseContext instanceof InputMethodService) && !(baseContext instanceof Application)) {
+            kf2.n("Must provide a UiContext or Application Context");
+            return null;
+        }
+        Object systemService = context.getSystemService("window");
+        systemService.getClass();
+        Display defaultDisplay = ((WindowManager) systemService).getDefaultDisplay();
+        defaultDisplay.getClass();
+        Point point = new Point();
+        defaultDisplay.getRealSize(point);
+        return new zb5(new Rect(0, 0, point.x, point.y), po0Var.c(context));
     }
 
     @Override // defpackage.as4
@@ -200,363 +166,260 @@ public final class rv2 implements me0, th4, as4, d14, l65, dc5, fv2, s41, Callba
     }
 
     /* JADX WARN: Multi-variable type inference failed */
-    public int g(Object r4, HashMap r5) {
-        Integer r0 = (Integer) r5.get(r4);
-        if (r0 != null) goto L5;
-        boolean r1 = ((TypeToken) r4).getRawType().isInterface();
-        Iterator<E> r2 = ((TypeToken) r4).getGenericInterfaces().iterator();
-        int r3 = r1;
-    L8:
-        if (r2.hasNext() == false) goto L10;
-        r3 = Math.max(r3, g(r2.next(), r5));
-        goto L8
-    L10:
-        TypeToken r6 = ((TypeToken) r4).getGenericSuperclass();
-        int r7 = r3;
-        if (r6 == null) goto L13;
-        r7 = Math.max(r3, g(r6, r5));
-    L13:
-        int r8 = r7 + 1;
-        r5.put(r4, Integer.valueOf(r8));
-        return r8;
-    L5:
-        return r0.intValue();
+    public int g(Object obj, HashMap map) {
+        Integer num = (Integer) map.get(obj);
+        if (num != null) {
+            return num.intValue();
+        }
+        boolean zIsInterface = ((TypeToken) obj).getRawType().isInterface();
+        Iterator<E> it = ((TypeToken) obj).getGenericInterfaces().iterator();
+        int iMax = zIsInterface;
+        while (it.hasNext()) {
+            iMax = Math.max(iMax, g(it.next(), map));
+        }
+        TypeToken genericSuperclass = ((TypeToken) obj).getGenericSuperclass();
+        int iMax2 = iMax;
+        if (genericSuperclass != null) {
+            iMax2 = Math.max(iMax, g(genericSuperclass, map));
+        }
+        int i = iMax2 + 1;
+        map.put(obj, Integer.valueOf(i));
+        return i;
     }
 
-    public zz1 h(tb1 r5) {
-        String r4 = r5.n;
-        if (r4 == null) goto L39;
-        int r1 = 1;
-        int r2 = 0;
-        byte r3 = -1;
-        switch(r4.hashCode()) {
-            case -1354451219: goto L24;
-            case -1348231605: goto L20;
-            case -1248341703: goto L16;
-            case 1154383568: goto L12;
-            case 1652648887: goto L8;
-            default: goto L27;
-        };
-    L27:
-        switch(r3) {
-            case 0: goto L38;
-            case 1: goto L36;
-            case 2: goto L34;
-            case 3: goto L32;
-            case 4: goto L30;
-            default: goto L39;
-        };
-    L30:
-        return new vj4();
-    L32:
-        return new wh(r1);
-    L34:
-        return new mv1(null);
-    L36:
-        return new hv1();
-    L38:
-        return new wh(r2);
-    L8:
-        if (r4.equals("application/x-scte35") == false) goto L27;
-        r3 = 4;
-        goto L27
-    L12:
-        if (r4.equals("application/x-emsg") == false) goto L27;
-        r3 = 3;
-        goto L27
-    L16:
-        if (r4.equals("application/id3") == false) goto L27;
-        r3 = 2;
-        goto L27
-    L20:
-        if (r4.equals("application/x-icy") == false) goto L27;
-        r3 = 1;
-        goto L27
-    L24:
-        if (r4.equals("application/vnd.dvb.ait") == false) goto L27;
-        r3 = 0;
-    L39:
-        kf2.n(xa3.g("Attempted to create decoder for unsupported MIME type: ", r4));
+    public zz1 h(tb1 tb1Var) {
+        String str = tb1Var.n;
+        if (str != null) {
+            int i = 1;
+            int i2 = 0;
+            switch (str) {
+                case "application/vnd.dvb.ait":
+                    return new wh(i2);
+                case "application/x-icy":
+                    return new hv1();
+                case "application/id3":
+                    return new mv1(null);
+                case "application/x-emsg":
+                    return new wh(i);
+                case "application/x-scte35":
+                    return new vj4();
+            }
+        }
+        kf2.n(xa3.g("Attempted to create decoder for unsupported MIME type: ", str));
         return null;
     }
 
-    public boolean i(Object r1, Object r2) {
-        switch(this.n) {
-            case 4: goto L10;
-            case 11: goto L6;
-            default: goto L5;
-        };
-    L6:
-        if (r1 != r2) goto L8;
-        return true;
-    L8:
-        return false;
-    L10:
-        return false;
-    L5:
-        return h12.c(r1, r2);
+    public boolean i(Object obj, Object obj2) {
+        switch (this.n) {
+            case 4:
+                return false;
+            case 11:
+                return obj == obj2;
+            default:
+                return h12.c(obj, obj2);
+        }
     }
 
+    /* JADX WARN: Code duplicated, block: B:85:0x0185  */
     @Override // defpackage.s41
-    public t41[] k(r41[] r25, cp r26) {
-        ArrayList r1 = new ArrayList();
-        int r2 = 0;
-        int r3 = 0;
-    L3:
-        int r5 = 1;
-        if (r3 >= r25.length) goto L12;
-        r41 r4 = r25[r3];
-        if (r4 != null) goto L8;
-    L10:
-        r1.add(null);
-    L11:
-        r3 = r3 + 1;
-        goto L3
-    L8:
-        if (r4.b.length <= 1) goto L10;
-        uw1 r6 = yw1.j();
-        r6.c(new d6(0, 0));
-        r1.add(r6);
-        goto L11
-    L12:
-        int r7 = r25.length;
-        long[][] r8 = new long[r7][];
-        int r9 = 0;
-    L13:
-        long r10 = -1;
-        if (r9 >= r25.length) goto L27;
-        r41 r11 = r25[r9];
-        if (r11 != null) goto L18;
-        r8[r9] = new long[0];
-    L26:
-        r9 = r9 + 1;
-        goto L13
-    L18:
-        int[] r12 = r11.b;
-        r8[r9] = new long[r12.length];
-        int r13 = 0;
-    L20:
-        if (r13 >= r12.length) goto L25;
-        sv4 r14 = r11.a;
-        long r15 = r14.d[r12[r13]].j;
-        long[] r16 = r8[r9];
-        if (r15 != (-1)) goto L24;
-        r15 = 0;
-    L24:
-        r16[r13] = r15;
-        r13 = r13 + 1;
-        goto L20
-    L25:
-        Arrays.sort(r8[r9]);
-        goto L26
-    L27:
-        int[] r17 = new int[r7];
-        long[] r18 = new long[r7];
-        int r19 = 0;
-    L28:
-        if (r19 >= r7) goto L34;
-        long[] r110 = r8[r19];
-        if (r110.length != 0) goto L32;
-        long r111 = 0;
-    L33:
-        r18[r19] = r111;
-        r19 = r19 + 1;
-        goto L28
-    L32:
-        r111 = r110[0];
-        goto L33
-    L34:
-        e6.u(r1, r18);
+    public t41[] k(r41[] r41VarArr, cp cpVar) {
+        int i;
+        long j;
+        int i2;
+        t41 e6Var;
+        long j2;
+        ArrayList arrayList = new ArrayList();
+        int i3 = 0;
+        int i4 = 0;
+        while (true) {
+            i = 1;
+            if (i4 >= r41VarArr.length) {
+                break;
+            }
+            r41 r41Var = r41VarArr[i4];
+            if (r41Var == null || r41Var.b.length <= 1) {
+                arrayList.add(null);
+            } else {
+                uw1 uw1VarJ = yw1.j();
+                uw1VarJ.c(new d6(0L, 0L));
+                arrayList.add(uw1VarJ);
+            }
+            i4++;
+        }
+        int length = r41VarArr.length;
+        long[][] jArr = new long[length][];
+        int i5 = 0;
+        while (true) {
+            j = -1;
+            if (i5 >= r41VarArr.length) {
+                break;
+            }
+            r41 r41Var2 = r41VarArr[i5];
+            if (r41Var2 == null) {
+                jArr[i5] = new long[0];
+            } else {
+                int[] iArr = r41Var2.b;
+                jArr[i5] = new long[iArr.length];
+                for (int i6 = 0; i6 < iArr.length; i6++) {
+                    long j3 = r41Var2.a.d[iArr[i6]].j;
+                    long[] jArr2 = jArr[i5];
+                    if (j3 == -1) {
+                        j3 = 0;
+                    }
+                    jArr2[i6] = j3;
+                }
+                Arrays.sort(jArr[i5]);
+            }
+            i5++;
+        }
+        int[] iArr2 = new int[length];
+        long[] jArr3 = new long[length];
+        for (int i7 = 0; i7 < length; i7++) {
+            long[] jArr4 = jArr[i7];
+            jArr3[i7] = jArr4.length == 0 ? 0L : jArr4[0];
+        }
+        e6.u(arrayList, jArr3);
         uc5.f(2, "expectedValuesPerKey");
-        TreeMap r20 = new TreeMap(x13.o);
-        rz2 r21 = new rz2();
-        sz2 r112 = new sz2(r20);
-        r112.t = r21;
-        int r22 = 0;
-    L35:
-        if (r22 >= r7) goto L56;
-        long[] r23 = r8[r22];
-        if (r23.length > 1) goto L40;
-        long r113 = r10;
-    L55:
-        r22 = r22 + 1;
-        r2 = r2;
-        r10 = r113;
-        goto L35
-    L40:
-        int r24 = r23.length;
-        double[] r114 = new double[r24];
-        int r115 = r2;
-    L41:
-        long[] r116 = r8[r22];
-        r113 = r10;
-        double r117 = 0.0d;
-        if (r115 >= r116.length) goto L48;
-        long r118 = r116[r115];
-        if (r118 == r113) goto L47;
-        r117 = Math.log(r118);
-    L47:
-        r114[r115] = r117;
-        r115 = r115 + 1;
-        r10 = r113;
-        goto L41
-    L48:
-        int r27 = r24 - 1;
-        double r119 = r114[r27] - r114[r2];
-        int r120 = r2;
-    L49:
-        if (r120 >= r27) goto L55;
-        double r28 = r114[r120];
-        r120 = r120 + 1;
-        double r29 = (r28 + r114[r120]) * 0.5d;
-        if (r119 != 0.0d) goto L53;
-        double r210 = 1.0d;
-    L54:
-        r112.j(Double.valueOf(r210), Integer.valueOf(r22));
-        r2 = r2;
-        goto L49
-    L53:
-        r210 = (r29 - r114[r2]) / r119;
-        goto L54
-    L56:
-        int r211 = r2;
-        Collection r30 = r112.p;
-        if (r30 != null) goto L59;
-        r30 = new s1(r5, r112);
-        r112.p = r30;
-    L59:
-        yw1 r31 = yw1.k(r30);
-        int r32 = r211;
-    L61:
-        if (r32 >= r31.size()) goto L63;
-        int r33 = ((Integer) r31.get(r32)).intValue();
-        int r34 = r17[r33] + 1;
-        r17[r33] = r34;
-        r18[r33] = r8[r33][r34];
-        e6.u(r1, r18);
-        r32 = r32 + 1;
-        goto L61
-    L63:
-        int r35 = r211;
-    L65:
-        if (r35 >= r25.length) goto L70;
-        if (r1.get(r35) == null) goto L69;
-        r18[r35] = r18[r35] * 2;
-    L69:
-        r35 = r35 + 1;
-        goto L65
-    L70:
-        e6.u(r1, r18);
-        uw1 r36 = yw1.j();
-        int r37 = r211;
-    L72:
-        if (r37 >= r1.size()) goto L78;
-        uw1 r38 = (uw1) r1.get(r37);
-        if (r38 != null) goto L76;
-        gy3 r39 = gy3.r;
-    L77:
-        r36.c(r39);
-        r37 = r37 + 1;
-        goto L72
-    L76:
-        r39 = r38.f();
-        goto L77
-    L78:
-        gy3 r40 = r36.f();
-        t41[] r41 = new t41[r25.length];
-        int r42 = r211;
-    L80:
-        if (r42 >= r25.length) goto L92;
-        r41 r43 = r25[r42];
-        if (r43 == null) goto L85;
-        int[] r44 = r43.b;
-        if (r44.length == 0) goto L85;
-        int r45 = r44.length;
-        sv4 r46 = r43.a;
-        if (r45 != 1) goto L89;
-        int r47 = r211;
-        t41 r48 = new ys0(r46, new int[]{r44[r211]}, r47, r5);
-    L90:
-        r41[r42] = r48;
-    L91:
-        r42 = r42 + 1;
-        r211 = r47;
-        goto L80
-    L89:
-        r47 = r211;
-        r48 = new e6(r46, r44, r26, (yw1) r40.get(r42));
-    L85:
-        r47 = r211;
-        goto L91
-    L92:
-        return r41;
+        TreeMap treeMap = new TreeMap(x13.o);
+        rz2 rz2Var = new rz2();
+        sz2 sz2Var = new sz2(treeMap);
+        sz2Var.t = rz2Var;
+        int i8 = 0;
+        while (i8 < length) {
+            long[] jArr5 = jArr[i8];
+            if (jArr5.length <= 1) {
+                j2 = j;
+            } else {
+                int length2 = jArr5.length;
+                double[] dArr = new double[length2];
+                int i9 = i3;
+                while (true) {
+                    long[] jArr6 = jArr[i8];
+                    j2 = j;
+                    double dLog = 0.0d;
+                    if (i9 >= jArr6.length) {
+                        break;
+                    }
+                    long j4 = jArr6[i9];
+                    if (j4 != j2) {
+                        dLog = Math.log(j4);
+                    }
+                    dArr[i9] = dLog;
+                    i9++;
+                    j = j2;
+                }
+                int i10 = length2 - 1;
+                double d = dArr[i10] - dArr[i3];
+                int i11 = i3;
+                while (i11 < i10) {
+                    double d2 = dArr[i11];
+                    i11++;
+                    sz2Var.j(Double.valueOf(d == 0.0d ? 1.0d : (((d2 + dArr[i11]) * 0.5d) - dArr[i3]) / d), Integer.valueOf(i8));
+                    i3 = i3;
+                }
+            }
+            i8++;
+            i3 = i3;
+            j = j2;
+        }
+        int i12 = i3;
+        Collection s1Var = sz2Var.p;
+        if (s1Var == null) {
+            s1Var = new s1(i, sz2Var);
+            sz2Var.p = s1Var;
+        }
+        yw1 yw1VarK = yw1.k(s1Var);
+        for (int i13 = i12; i13 < yw1VarK.size(); i13++) {
+            int iIntValue = ((Integer) yw1VarK.get(i13)).intValue();
+            int i14 = iArr2[iIntValue] + 1;
+            iArr2[iIntValue] = i14;
+            jArr3[iIntValue] = jArr[iIntValue][i14];
+            e6.u(arrayList, jArr3);
+        }
+        for (int i15 = i12; i15 < r41VarArr.length; i15++) {
+            if (arrayList.get(i15) != null) {
+                jArr3[i15] = jArr3[i15] * 2;
+            }
+        }
+        e6.u(arrayList, jArr3);
+        uw1 uw1VarJ2 = yw1.j();
+        for (int i16 = i12; i16 < arrayList.size(); i16++) {
+            uw1 uw1Var = (uw1) arrayList.get(i16);
+            uw1VarJ2.c(uw1Var == null ? gy3.r : uw1Var.f());
+        }
+        gy3 gy3VarF = uw1VarJ2.f();
+        t41[] t41VarArr = new t41[r41VarArr.length];
+        int i17 = i12;
+        while (i17 < r41VarArr.length) {
+            r41 r41Var3 = r41VarArr[i17];
+            if (r41Var3 != null) {
+                int[] iArr3 = r41Var3.b;
+                if (iArr3.length == 0) {
+                    i2 = i12;
+                } else {
+                    int length3 = iArr3.length;
+                    sv4 sv4Var = r41Var3.a;
+                    if (length3 == 1) {
+                        i2 = i12;
+                        e6Var = new ys0(sv4Var, new int[]{iArr3[i12]}, i2, i);
+                    } else {
+                        i2 = i12;
+                        e6Var = new e6(sv4Var, iArr3, cpVar, (yw1) gy3VarF.get(i17));
+                    }
+                    t41VarArr[i17] = e6Var;
+                }
+            } else {
+                i2 = i12;
+            }
+            i17++;
+            i12 = i2;
+        }
+        return t41VarArr;
     }
 
     public k03 n() {
-        k03 r0 = new k03();
-        r8 r1 = new r8(this, r0, 0);
-        App.f(false).a().q("byYear", 1, 0, 1900, Integer.valueOf(Calendar.getInstance().get(1))).enqueue(new d34(5, r1));
-        return r0;
+        k03 k03Var = new k03();
+        App.f(false).a().q("byYear", 1, 0, 1900, Integer.valueOf(Calendar.getInstance().get(1))).enqueue(new d34(5, new r8(this, k03Var, 0)));
+        return k03Var;
     }
 
     @Override // retrofit2.Callback
-    public void onFailure(Call r1, Throwable r2) {
+    public void onFailure(Call call, Throwable th) {
     }
 
     @Override // retrofit2.Callback
-    public void onResponse(Call r1, Response r2) {
+    public void onResponse(Call call, Response response) {
     }
 
-    public boolean p(tb1 r1) {
-        String r0 = r1.n;
-        if ("application/id3".equals(r0) == false) goto L5;
-        return true;
-    L5:
-        if ("application/x-emsg".equals(r0) == false) goto L7;
-        return true;
-    L7:
-        if ("application/x-scte35".equals(r0) == false) goto L9;
-        return true;
-    L9:
-        if ("application/x-icy".equals(r0) == false) goto L11;
-        return true;
-    L11:
-        if ("application/vnd.dvb.ait".equals(r0) == true) goto L20;
-        return false;
-    L20:
-        return true;
+    public boolean p(tb1 tb1Var) {
+        String str = tb1Var.n;
+        return "application/id3".equals(str) || "application/x-emsg".equals(str) || "application/x-scte35".equals(str) || "application/x-icy".equals(str) || "application/vnd.dvb.ait".equals(str);
     }
 
     @Override // defpackage.d14
-    public q04 q(q04 r1, db3 r2) {
-        return r1;
+    public q04 q(q04 q04Var, db3 db3Var) {
+        return q04Var;
     }
 
     public String toString() {
-        switch(this.n) {
-            case 4: goto L14;
-            case 5: goto L12;
-            case 11: goto L10;
-            case 13: goto L8;
-            case 14: goto L6;
-            default: goto L5;
-        };
-    L6:
-        return "StructuralEqualityPolicy";
-    L8:
-        return "Start";
-    L10:
-        return "ReferentialEqualityPolicy";
-    L12:
-        return "NoDeclaredBrand";
-    L14:
-        return "NeverEqualPolicy";
-    L5:
-        return super.toString();
+        switch (this.n) {
+            case 4:
+                return "NeverEqualPolicy";
+            case 5:
+                return "NoDeclaredBrand";
+            case 11:
+                return "ReferentialEqualityPolicy";
+            case 13:
+                return "Start";
+            case 14:
+                return "StructuralEqualityPolicy";
+            default:
+                return super.toString();
+        }
     }
 
     @Override // defpackage.fv2
-    public boolean w(qu2 r1) {
+    public boolean w(qu2 qu2Var) {
         return false;
     }
 }

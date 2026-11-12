@@ -24,27 +24,50 @@ import java.util.concurrent.Executor;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public abstract class tq3 {
-    public static final hh3 a = null;
+    public static final hh3 a = new hh3(3);
 
-    static {
-        a = new hh3(3);
+    public static void a(PackageInfo packageInfo, File file) {
+        try {
+            DataOutputStream dataOutputStream = new DataOutputStream(new FileOutputStream(new File(file, "profileinstaller_profileWrittenFor_lastUpdateTime.dat")));
+            try {
+                dataOutputStream.writeLong(packageInfo.lastUpdateTime);
+                dataOutputStream.close();
+            } catch (Throwable th) {
+                try {
+                    dataOutputStream.close();
+                } catch (Throwable th2) {
+                    th.addSuppressed(th2);
+                }
+                throw th;
+            }
+        } catch (IOException unused) {
+        }
     }
 
-    public static void a(PackageInfo r2, File r3) {
-        DataOutputStream r4 = new DataOutputStream(new FileOutputStream(new File(r3, "profileinstaller_profileWrittenFor_lastUpdateTime.dat")));     // Catch: IOException -> L13
-        r4.writeLong(r2.lastUpdateTime);     // Catch: Throwable -> L7
-        r4.close();     // Catch: IOException -> L13
-        return;
-    L7:
-        th = move-exception;
-        r4.close();     // Catch: Throwable -> L10
-    L12:
-        throw th;     // Catch: IOException -> L13
-    L10:
-        th = move-exception;
-        th.addSuppressed(th);     // Catch: IOException -> L13
-    }
-
+    /* JADX WARN: Code duplicated, block: B:107:0x0192 A[Catch: all -> 0x018f, TRY_ENTER, TryCatch #30 {all -> 0x018f, blocks: (B:94:0x016e, B:96:0x017a, B:107:0x0192, B:108:0x0197), top: B:283:0x016e }] */
+    /* JADX WARN: Code duplicated, block: B:114:0x01a1 A[DONT_INVERT] */
+    /* JADX WARN: Code duplicated, block: B:115:0x01a3 A[Catch: IllegalStateException -> 0x0189, IOException -> 0x018b, FileNotFoundException -> 0x018d, TRY_LEAVE, TryCatch #34 {FileNotFoundException -> 0x018d, IOException -> 0x018b, IllegalStateException -> 0x0189, blocks: (B:92:0x0166, B:97:0x0184, B:115:0x01a3, B:113:0x01a0, B:112:0x019d), top: B:299:0x0166 }] */
+    /* JADX WARN: Code duplicated, block: B:122:0x01b9  */
+    /* JADX WARN: Code duplicated, block: B:132:0x01e3 A[Catch: all -> 0x01f1, TRY_LEAVE, TryCatch #14 {all -> 0x01f1, blocks: (B:130:0x01d7, B:132:0x01e3, B:141:0x01f4), top: B:272:0x01d7 }] */
+    /* JADX WARN: Code duplicated, block: B:141:0x01f4 A[Catch: all -> 0x01f1, TRY_ENTER, TRY_LEAVE, TryCatch #14 {all -> 0x01f1, blocks: (B:130:0x01d7, B:132:0x01e3, B:141:0x01f4), top: B:272:0x01d7 }] */
+    /* JADX WARN: Code duplicated, block: B:152:0x0211  */
+    /* JADX WARN: Code duplicated, block: B:156:0x021b  */
+    /* JADX WARN: Code duplicated, block: B:157:0x021f  */
+    /* JADX WARN: Code duplicated, block: B:166:0x0241 A[Catch: all -> 0x027f, TryCatch #23 {all -> 0x027f, blocks: (B:164:0x023b, B:166:0x0241, B:167:0x0245, B:169:0x024b), top: B:277:0x023b }] */
+    /* JADX WARN: Code duplicated, block: B:169:0x024b A[Catch: all -> 0x027f, TRY_LEAVE, TryCatch #23 {all -> 0x027f, blocks: (B:164:0x023b, B:166:0x0241, B:167:0x0245, B:169:0x024b), top: B:277:0x023b }] */
+    /* JADX WARN: Code duplicated, block: B:235:0x02d0  */
+    /* JADX WARN: Code duplicated, block: B:239:0x02da  */
+    /* JADX WARN: Code duplicated, block: B:246:0x02e8  */
+    /* JADX WARN: Code duplicated, block: B:269:0x0107 A[EXC_TOP_SPLITTER, SYNTHETIC] */
+    /* JADX WARN: Code duplicated, block: B:277:0x023b A[EXC_TOP_SPLITTER, SYNTHETIC] */
+    /* JADX WARN: Code duplicated, block: B:283:0x016e A[EXC_TOP_SPLITTER, SYNTHETIC] */
+    /* JADX WARN: Code duplicated, block: B:296:0x01d2 A[EXC_TOP_SPLITTER, SYNTHETIC] */
+    /* JADX WARN: Code duplicated, block: B:297:0x0223 A[EXC_TOP_SPLITTER, SYNTHETIC] */
+    /* JADX WARN: Code duplicated, block: B:300:0x0250 A[EDGE_INSN: B:300:0x0250->B:171:0x0250 BREAK  A[LOOP:0: B:167:0x0245->B:301:?], SYNTHETIC] */
+    /* JADX WARN: Code duplicated, block: B:37:0x00df  */
+    /* JADX WARN: Code duplicated, block: B:55:0x0111 A[Catch: all -> 0x0126, IllegalStateException -> 0x0129, IOException -> 0x012b, TRY_LEAVE, TryCatch #11 {IOException -> 0x012b, blocks: (B:53:0x0107, B:55:0x0111, B:66:0x012d, B:67:0x0132), top: B:269:0x0107, outer: #4 }] */
+    /* JADX WARN: Code duplicated, block: B:66:0x012d A[Catch: all -> 0x0126, IllegalStateException -> 0x0129, IOException -> 0x012b, TRY_ENTER, TryCatch #11 {IOException -> 0x012b, blocks: (B:53:0x0107, B:55:0x0111, B:66:0x012d, B:67:0x0132), top: B:269:0x0107, outer: #4 }] */
+    /* JADX WARN: Code duplicated, block: B:96:0x017a A[Catch: all -> 0x018f, TRY_LEAVE, TryCatch #30 {all -> 0x018f, blocks: (B:94:0x016e, B:96:0x017a, B:107:0x0192, B:108:0x0197), top: B:283:0x016e }] */
     /* JADX WARN: Multi-variable type inference failed */
     /* JADX WARN: Type inference failed for: r7v10 */
     /* JADX WARN: Type inference failed for: r7v11 */
@@ -86,361 +109,526 @@ public abstract class tq3 {
     /* JADX WARN: Type inference failed for: r9v16 */
     /* JADX WARN: Type inference failed for: r9v17, types: [boolean] */
     /* JADX WARN: Type inference failed for: r9v18 */
-    public static void b(Context r18, Executor r19, sq3 r20, boolean r21) {
-        Context r0 = r18.getApplicationContext();
-        String r2 = r0.getPackageName();
-        ApplicationInfo r3 = r0.getApplicationInfo();
-        AssetManager r4 = r0.getAssets();
-        String r6 = new File(r3.sourceDir).getName();
-        PackageInfo r10 = r18.getPackageManager().getPackageInfo(r2, 0);     // Catch: PackageManager.NameNotFoundException -> L249
-        File r11 = r18.getFilesDir();
-        if (r21 == true) goto L28;
-        File r1 = new File(r11, "profileinstaller_profileWrittenFor_lastUpdateTime.dat");
-        if (r1.exists() == true) goto L276;
-    L8:
-        boolean r5 = false;
-    L25:
-        if (r5 == false) goto L28;
-        Log.d("ProfileInstaller", "Skipping profile installation for " + r18.getPackageName());
-        wq3.c(r18, false);
-        return;
-    L276:
-        DataInputStream r7 = new DataInputStream(new FileInputStream(r1));     // Catch: IOException -> L252
-        long r14 = r7.readLong();     // Catch: Throwable -> L18
-        r7.close();     // Catch: IOException -> L252
-        if (r14 != r10.lastUpdateTime) goto L15;
-        r5 = true;
-    L16:
-        if (r5 == false) goto L25;
-        r20.e(2, null);
-        goto L25
-    L15:
-        r5 = false;
-        goto L16
-    L18:
-        th = move-exception;
-        r7.close();     // Catch: Throwable -> L22
-        goto L8
-    L302:
-        throw th;     // Catch: IOException -> L252
-    L22:
-        th = move-exception;
-        th.addSuppressed(th);     // Catch: IOException -> L252
-        throw th;     // Catch: IOException -> L252
-    L28:
-        Log.d("ProfileInstaller", "Installing profile for " + r18.getPackageName());
-        byte[] r13 = si0.c;
-        File r8 = new File(new File("/data/misc/profiles/cur/0", r2), "primary.prof");
-        ip0 r9 = new ip0(r4, r19, r20, r6, r8);
-        byte[] r12 = (byte[]) r9.d;
-        if (r12 != null) goto L33;
-        r9.b(3, Integer.valueOf(Build.VERSION.SDK_INT));
-    L31:
-        boolean r15 = true;
-    L242:
-        boolean r16 = false;
-        ?? r17 = r15;
-    L243:
-        if (r16 == false) goto L246;
-        if (r21 == false) goto L246;
-        ?? r22 = r17;
-    L247:
-        wq3.c(r18, r22);
-        return;
-    L246:
-        r22 = 0;
-        goto L247
-    L33:
-        if (r8.exists() == true) goto L35;
-    L42:
-        r15 = true;
-        r9.b(4, null);
-        goto L242
-    L39:
-        if (r8.createNewFile() == true) goto L43;
-        r9.b(4, null);     // Catch: IOException -> L42
-    L43:
-        r9.a = true;
-        ?? r23 = r9.a(r4, "dexopt/baseline.prof");     // Catch: IOException -> L46 FileNotFoundException -> L48
-    L259:
-        if (r23 != 0) goto L269;
-    L82:
-        jp0[] r24 = (jp0[]) r9.h;
-        if (r24 == null) goto L123;
-        r23 = Build.VERSION.SDK_INT;
-        if (r23 < 31) goto L88;
-    L299:
-        String r25 = "dexopt/baseline.profm";
-        FileInputStream r26 = r9.a(r4, "dexopt/baseline.profm");     // Catch: IllegalStateException -> L99 IOException -> L101 FileNotFoundException -> L103
-        ?? r27 = r25;
-        if (r26 != null) goto L283;
-        if (r26 == null) goto L120;
-        r26.close();     // Catch: IllegalStateException -> L99 IOException -> L101 FileNotFoundException -> L103
-        r27 = r25;
-    L120:
-        ip0 r28 = null;
-        r23 = r27;
-    L121:
-        if (r28 == null) goto L123;
-        r9 = r28;
-        goto L123
-    L283:
-    L105:
-        th = move-exception;
-        r26.close();     // Catch: Throwable -> L111
-        throw th;     // Catch: IllegalStateException -> L99 IOException -> L101 FileNotFoundException -> L103
-    L111:
-        th = move-exception;
-        th.addSuppressed(th);     // Catch: IllegalStateException -> L99 IOException -> L101 FileNotFoundException -> L103
-        throw th;     // Catch: IllegalStateException -> L99 IOException -> L101 FileNotFoundException -> L103
-    L95:
-        if (Arrays.equals(si0.d, fh0.t(r26, 4)) == false) goto L108;
-        byte[] r29 = fh0.t(r26, 4);     // Catch: Throwable -> L105
-        r9.h = si0.J(r26, r29, r12, r24);     // Catch: Throwable -> L105
-        r26.close();     // Catch: IllegalStateException -> L99 IOException -> L101 FileNotFoundException -> L103
-        r28 = r9;
-        r23 = r29;
-        goto L121
-    L108:
-        throw new IllegalStateException("Invalid magic");     // Catch: Throwable -> L105
-    L103:
-        e = move-exception;
-        r20.e(9, e);
-        r27 = r23;
-    L101:
-        e = move-exception;
-        r20.e(7, e);
-        r27 = r23;
-    L99:
-        e = move-exception;
-        r9.h = null;
-        r20.e(8, e);
-        r27 = r23;
-        goto L120
-    L88:
-        if (r23 == 24) goto L299;
-        if (r23 == 25) goto L299;
-    L123:
-        sq3 r30 = (sq3) r9.c;
-        jp0[] r31 = (jp0[]) r9.h;
-        byte[] r32 = (byte[]) r9.d;
-        ?? r33 = r23;
-        r33 = r23;
-        if (r31 == null) goto L154;
-        if (r32 == null) goto L154;
-        boolean r34 = r9.a;
-        if (r34 == true) goto L296;
-        kf2.o("This device doesn't support aot. Did you call deviceSupportsAotProfile()?");
-        return;
-    L296:
-        ByteArrayOutputStream r35 = new ByteArrayOutputStream();     // Catch: IllegalStateException -> L135 IOException -> L137
-        r35.write(r13);     // Catch: Throwable -> L139
-        r35.write(r32);     // Catch: Throwable -> L139
-        if (si0.S(r35, r32, r31) == true) goto L141;
-        r30.e(5, null);     // Catch: Throwable -> L139
-        r9.h = null;     // Catch: Throwable -> L139
-        r35.close();     // Catch: IllegalStateException -> L135 IOException -> L137
-        r33 = r35;
-        goto L154
-    L141:
-        r9.e = r35.toByteArray();     // Catch: Throwable -> L139
-        r35.close();     // Catch: IllegalStateException -> L135 IOException -> L137
-        ?? r36 = r35;
-    L151:
-        r9.h = null;
-        r33 = r36;
-    L139:
-        th = move-exception;
-        r35.close();     // Catch: Throwable -> L146
-        throw th;     // Catch: IllegalStateException -> L135 IOException -> L137
-    L146:
-        th = move-exception;
-        th.addSuppressed(th);     // Catch: IllegalStateException -> L135 IOException -> L137
-        throw th;     // Catch: IllegalStateException -> L135 IOException -> L137
-    L137:
-        e = move-exception;
-        r30.e(7, e);
-        r36 = r34;
-    L135:
-        e = move-exception;
-        r30.e(8, e);
-        r36 = r34;
-    L154:
-        byte[] r37 = (byte[]) r9.e;
-        if (r37 != null) goto L260;
-        boolean r38 = false;
-        ?? r39 = 1;
-    L234:
-        if (r38 == false) goto L236;
-        a(r10, r11);
-    L236:
-        r16 = r38;
-        r17 = r39;
-        goto L243
-    L260:
-        if (r9.a == true) goto L297;
-        kf2.o("This device doesn't support aot. Did you call deviceSupportsAotProfile()?");
-        return;
-    L297:
-        ByteArrayInputStream r40 = new ByteArrayInputStream(r37);     // Catch: Throwable -> L178 IOException -> L225 FileNotFoundException -> L227
-        FileOutputStream r41 = new FileOutputStream((File) r9.f);     // Catch: Throwable -> L218
-        FileChannel r42 = r41.getChannel();     // Catch: Throwable -> L211
-        FileLock r43 = r42.tryLock();     // Catch: Throwable -> L203
-        if (r43 == null) goto L196;
-    L193:
-        th = th;
-    L191:
-        Throwable r44 = th;
-        if (r43 == null) goto L306;
-        r43.close();     // Catch: Throwable -> L200
-    L307:
-        throw r44;     // Catch: Throwable -> L188
-    L200:
-        th = move-exception;
-        r44.addSuppressed(th);     // Catch: Throwable -> L188
-        throw r44;     // Catch: Throwable -> L188
-    L306:
-        throw r44;     // Catch: Throwable -> L188
-    L165:
-        if (r43.isValid() == false) goto L196;
-        byte[] r45 = new byte[512];     // Catch: Throwable -> L193
-    L167:
-        int r46 = r40.read(r45);     // Catch: Throwable -> L193
-        if (r46 <= 0) goto L171;
-        r41.write(r45, 0, r46);     // Catch: Throwable -> L193
-        goto L167
-    L171:
-        r39 = 1;
-        r9.b(1, null);     // Catch: Throwable -> L190
-        r43.close();     // Catch: Throwable -> L188
-        r42.close();     // Catch: Throwable -> L186
-        r41.close();     // Catch: Throwable -> L184
-        r40.close();     // Catch: Throwable -> L178 IOException -> L180 FileNotFoundException -> L182
-        r9.e = null;
-        r9.h = null;
-        r38 = true;
-    L196:
-        throw new IOException("Unable to acquire a lock on the underlying file channel.");     // Catch: Throwable -> L190
-    L188:
-        th = th;
-    L189:
-        Throwable r47 = th;
-        if (r42 == null) goto L308;
-        r42.close();     // Catch: Throwable -> L208
-    L309:
-        throw r47;     // Catch: Throwable -> L186
-    L208:
-        th = move-exception;
-        r47.addSuppressed(th);     // Catch: Throwable -> L186
-        throw r47;     // Catch: Throwable -> L186
-    L308:
-        throw r47;     // Catch: Throwable -> L186
-    L190:
-        th = th;
-    L203:
-        th = th;
-    L211:
-        th = th;
-    L187:
-        Throwable r48 = th;
-        r41.close();     // Catch: Throwable -> L215
-    L310:
-        throw r48;     // Catch: Throwable -> L184
-    L215:
-        th = move-exception;
-        r48.addSuppressed(th);     // Catch: Throwable -> L184
-        throw r48;     // Catch: Throwable -> L184
-    L186:
-        th = th;
-    L218:
-        th = th;
-    L185:
-        Throwable r49 = th;
-        r40.close();     // Catch: Throwable -> L222
-        throw r49;     // Catch: Throwable -> L178 IOException -> L180 FileNotFoundException -> L182
-    L222:
-        th = move-exception;
-        r49.addSuppressed(th);     // Catch: Throwable -> L178 IOException -> L180 FileNotFoundException -> L182
-        throw r49;     // Catch: Throwable -> L178 IOException -> L180 FileNotFoundException -> L182
-    L184:
-        th = th;
-        goto L185
-    L227:
-        e = e;
-        r33 = 1;
-    L231:
-        r9.b(6, e);     // Catch: Throwable -> L178
-        ?? r50 = r33;
-    L230:
-        r9.e = null;
-        r9.h = null;
-        r38 = false;
-        r39 = r50;
-    L225:
-        e = e;
-        r33 = 1;
-    L229:
-        r9.b(7, e);     // Catch: Throwable -> L178
-        r50 = r33;
-    L182:
-        e = e;
-    L180:
-        e = e;
-    L178:
-        th = move-exception;
-        r9.e = null;
-        r9.h = null;
-        throw th;
-    L269:
-    L64:
-        e = move-exception;
-        r20.e(7, e);     // Catch: Throwable -> L60
-    L253:
-        r23.close();     // Catch: IOException -> L71
-    L75:
-        jp0[] r51 = null;
-    L76:
-        r9.h = r51;
-    L71:
-        e = move-exception;
-        r20.e(7, e);
-    L62:
-        e = move-exception;
-        r20.e(8, e);     // Catch: Throwable -> L60
-        goto L253
-    L54:
-        if (Arrays.equals(r13, fh0.t(r23, 4)) == false) goto L67;
-        r51 = si0.M(r23, fh0.t(r23, 4), (String) r9.g);     // Catch: Throwable -> L60 IllegalStateException -> L62 IOException -> L64
-        r23.close();     // Catch: IOException -> L58
-    L58:
-        e = move-exception;
-        r20.e(7, e);
-        goto L76
-    L67:
-        throw new IllegalStateException("Invalid magic");     // Catch: Throwable -> L60 IllegalStateException -> L62 IOException -> L64
-    L60:
-        th = move-exception;
-        r23.close();     // Catch: IOException -> L79
-        throw th;
-    L79:
-        e = move-exception;
-        r20.e(7, e);
-        throw th;
-    L48:
-        e = move-exception;
-        r20.e(6, e);
-    L50:
-        r23 = 0;
-    L46:
-        e = move-exception;
-        r20.e(7, e);
-        goto L50
-    L35:
-        if (r8.canWrite() == true) goto L43;
-        r9.b(4, null);
-    L249:
-        e = move-exception;
-        r20.e(7, e);
-        wq3.c(r18, false);
+    public static void b(Context context, Executor executor, sq3 sq3Var, boolean z) {
+        boolean z2;
+        ?? A;
+        jp0[] jp0VarArrM;
+        jp0[] jp0VarArr;
+        sq3 sq3Var2;
+        jp0[] jp0VarArr2;
+        byte[] bArr;
+        ?? r7;
+        byte[] bArr2;
+        ?? r8;
+        boolean z3;
+        ByteArrayInputStream byteArrayInputStream;
+        Throwable th;
+        FileOutputStream fileOutputStream;
+        Throwable th2;
+        FileChannel channel;
+        FileLock fileLockTryLock;
+        byte[] bArr3;
+        int i;
+        ?? r9;
+        boolean z4;
+        boolean z5;
+        ?? r10;
+        ByteArrayOutputStream byteArrayOutputStream;
+        ip0 ip0Var;
+        ?? r11;
+        String str;
+        FileInputStream fileInputStreamA;
+        ?? r12;
+        ?? r13;
+        boolean z6;
+        Context applicationContext = context.getApplicationContext();
+        String packageName = applicationContext.getPackageName();
+        ApplicationInfo applicationInfo = applicationContext.getApplicationInfo();
+        AssetManager assets = applicationContext.getAssets();
+        String name = new File(applicationInfo.sourceDir).getName();
+        try {
+            PackageInfo packageInfo = context.getPackageManager().getPackageInfo(packageName, 0);
+            File filesDir = context.getFilesDir();
+            if (!z) {
+                File file = new File(filesDir, "profileinstaller_profileWrittenFor_lastUpdateTime.dat");
+                if (file.exists()) {
+                    try {
+                        DataInputStream dataInputStream = new DataInputStream(new FileInputStream(file));
+                        try {
+                            long j = dataInputStream.readLong();
+                            dataInputStream.close();
+                            z6 = j == packageInfo.lastUpdateTime;
+                            if (z6) {
+                                sq3Var.e(2, null);
+                            }
+                        } catch (Throwable th3) {
+                            try {
+                                dataInputStream.close();
+                                throw th3;
+                            } catch (Throwable th4) {
+                                th3.addSuppressed(th4);
+                                throw th3;
+                            }
+                        }
+                    } catch (IOException unused) {
+                        z6 = false;
+                    }
+                } else {
+                    z6 = false;
+                }
+                if (z6) {
+                    Log.d("ProfileInstaller", "Skipping profile installation for " + context.getPackageName());
+                    wq3.c(context, false);
+                    return;
+                }
+            }
+            Log.d("ProfileInstaller", "Installing profile for " + context.getPackageName());
+            byte[] bArr4 = si0.c;
+            File file2 = new File(new File("/data/misc/profiles/cur/0", packageName), "primary.prof");
+            ip0 ip0Var2 = new ip0(assets, executor, sq3Var, name, file2);
+            byte[] bArr5 = (byte[]) ip0Var2.d;
+            if (bArr5 != null) {
+                if (!file2.exists()) {
+                    try {
+                        if (file2.createNewFile()) {
+                            ip0Var2.a = true;
+                            A = ip0Var2.a(assets, "dexopt/baseline.prof");
+                            if (A != 0) {
+                                if (Arrays.equals(bArr4, fh0.t(A, 4))) {
+                                    throw new IllegalStateException("Invalid magic");
+                                }
+                                jp0VarArrM = si0.M(A, fh0.t(A, 4), (String) ip0Var2.g);
+                                A.close();
+                                ip0Var2.h = jp0VarArrM;
+                            }
+                            jp0VarArr = (jp0[]) ip0Var2.h;
+                            if (jp0VarArr != null) {
+                                str = "dexopt/baseline.profm";
+                                fileInputStreamA = ip0Var2.a(assets, "dexopt/baseline.profm");
+                                r11 = str;
+                                if (fileInputStreamA == null) {
+                                    if (fileInputStreamA != null) {
+                                        fileInputStreamA.close();
+                                        r11 = str;
+                                    }
+                                    ip0Var = null;
+                                    A = r11;
+                                } else {
+                                    if (Arrays.equals(si0.d, fh0.t(fileInputStreamA, 4))) {
+                                        throw new IllegalStateException("Invalid magic");
+                                    }
+                                    byte[] bArrT = fh0.t(fileInputStreamA, 4);
+                                    ip0Var2.h = si0.J(fileInputStreamA, bArrT, bArr5, jp0VarArr);
+                                    fileInputStreamA.close();
+                                    ip0Var = ip0Var2;
+                                    A = bArrT;
+                                }
+                                if (ip0Var != null) {
+                                    ip0Var2 = ip0Var;
+                                }
+                            }
+                            sq3Var2 = (sq3) ip0Var2.c;
+                            jp0VarArr2 = (jp0[]) ip0Var2.h;
+                            bArr = (byte[]) ip0Var2.d;
+                            r7 = A;
+                            r7 = A;
+                            if (jp0VarArr2 != null) {
+                                z5 = ip0Var2.a;
+                                if (z5) {
+                                    kf2.o("This device doesn't support aot. Did you call deviceSupportsAotProfile()?");
+                                    return;
+                                }
+                                byteArrayOutputStream = new ByteArrayOutputStream();
+                                byteArrayOutputStream.write(bArr4);
+                                byteArrayOutputStream.write(bArr);
+                                if (si0.S(byteArrayOutputStream, bArr, jp0VarArr2)) {
+                                    ip0Var2.e = byteArrayOutputStream.toByteArray();
+                                    byteArrayOutputStream.close();
+                                    r10 = byteArrayOutputStream;
+                                    ip0Var2.h = null;
+                                    r7 = r10;
+                                } else {
+                                    sq3Var2.e(5, null);
+                                    ip0Var2.h = null;
+                                    byteArrayOutputStream.close();
+                                    r7 = byteArrayOutputStream;
+                                }
+                            }
+                            bArr2 = (byte[]) ip0Var2.e;
+                            if (bArr2 != null) {
+                                if (ip0Var2.a) {
+                                    kf2.o("This device doesn't support aot. Did you call deviceSupportsAotProfile()?");
+                                    return;
+                                }
+                                byteArrayInputStream = new ByteArrayInputStream(bArr2);
+                                fileOutputStream = new FileOutputStream((File) ip0Var2.f);
+                                channel = fileOutputStream.getChannel();
+                                fileLockTryLock = channel.tryLock();
+                                if (fileLockTryLock != null) {
+                                    if (fileLockTryLock.isValid()) {
+                                        bArr3 = new byte[512];
+                                        while (true) {
+                                            i = byteArrayInputStream.read(bArr3);
+                                            if (i > 0) {
+                                                break;
+                                                break;
+                                            }
+                                            fileOutputStream.write(bArr3, 0, i);
+                                        }
+                                        r9 = 1;
+                                        ip0Var2.b(1, null);
+                                        fileLockTryLock.close();
+                                        channel.close();
+                                        fileOutputStream.close();
+                                        byteArrayInputStream.close();
+                                        ip0Var2.e = null;
+                                        ip0Var2.h = null;
+                                        z3 = true;
+                                    }
+                                }
+                                throw new IOException("Unable to acquire a lock on the underlying file channel.");
+                            }
+                            z3 = false;
+                            r9 = 1;
+                            if (z3) {
+                                a(packageInfo, filesDir);
+                            }
+                            z4 = z3;
+                            r12 = r9;
+                        } else {
+                            ip0Var2.b(4, null);
+                        }
+                    } catch (IOException unused2) {
+                        z2 = true;
+                        ip0Var2.b(4, null);
+                    }
+                } else if (file2.canWrite()) {
+                    ip0Var2.a = true;
+                    try {
+                        A = ip0Var2.a(assets, "dexopt/baseline.prof");
+                    } catch (FileNotFoundException e) {
+                        sq3Var.e(6, e);
+                        A = 0;
+                    } catch (IOException e2) {
+                        sq3Var.e(7, e2);
+                        A = 0;
+                    }
+                    try {
+                        if (A != 0) {
+                            try {
+                                try {
+                                    if (Arrays.equals(bArr4, fh0.t(A, 4))) {
+                                        throw new IllegalStateException("Invalid magic");
+                                    }
+                                    jp0VarArrM = si0.M(A, fh0.t(A, 4), (String) ip0Var2.g);
+                                    try {
+                                        A.close();
+                                    } catch (IOException e3) {
+                                        sq3Var.e(7, e3);
+                                    }
+                                    ip0Var2.h = jp0VarArrM;
+                                } catch (IOException e4) {
+                                    sq3Var.e(7, e4);
+                                    try {
+                                        A.close();
+                                    } catch (IOException e5) {
+                                        sq3Var.e(7, e5);
+                                    }
+                                    jp0VarArrM = null;
+                                }
+                            } catch (IllegalStateException e6) {
+                                sq3Var.e(8, e6);
+                                A.close();
+                                jp0VarArrM = null;
+                            }
+                        }
+                        jp0VarArr = (jp0[]) ip0Var2.h;
+                        if (jp0VarArr != null && ((A = Build.VERSION.SDK_INT) >= 31 || A == 24 || A == 25)) {
+                            try {
+                                str = "dexopt/baseline.profm";
+                                fileInputStreamA = ip0Var2.a(assets, "dexopt/baseline.profm");
+                                r11 = str;
+                                if (fileInputStreamA == null) {
+                                    try {
+                                        if (Arrays.equals(si0.d, fh0.t(fileInputStreamA, 4))) {
+                                            throw new IllegalStateException("Invalid magic");
+                                        }
+                                        byte[] bArrT2 = fh0.t(fileInputStreamA, 4);
+                                        ip0Var2.h = si0.J(fileInputStreamA, bArrT2, bArr5, jp0VarArr);
+                                        fileInputStreamA.close();
+                                        ip0Var = ip0Var2;
+                                        A = bArrT2;
+                                    } catch (Throwable th5) {
+                                        try {
+                                            fileInputStreamA.close();
+                                            throw th5;
+                                        } catch (Throwable th6) {
+                                            th5.addSuppressed(th6);
+                                            throw th5;
+                                        }
+                                    }
+                                } else {
+                                    if (fileInputStreamA != null) {
+                                        fileInputStreamA.close();
+                                        r11 = str;
+                                    }
+                                    ip0Var = null;
+                                    A = r11;
+                                }
+                            } catch (FileNotFoundException e7) {
+                                sq3Var.e(9, e7);
+                                r11 = A;
+                            } catch (IOException e8) {
+                                sq3Var.e(7, e8);
+                                r11 = A;
+                            } catch (IllegalStateException e9) {
+                                ip0Var2.h = null;
+                                sq3Var.e(8, e9);
+                                r11 = A;
+                            }
+                            if (ip0Var != null) {
+                                ip0Var2 = ip0Var;
+                            }
+                        }
+                        sq3Var2 = (sq3) ip0Var2.c;
+                        jp0VarArr2 = (jp0[]) ip0Var2.h;
+                        bArr = (byte[]) ip0Var2.d;
+                        r7 = A;
+                        r7 = A;
+                        if (jp0VarArr2 != null && bArr != null) {
+                            z5 = ip0Var2.a;
+                            if (z5) {
+                                kf2.o("This device doesn't support aot. Did you call deviceSupportsAotProfile()?");
+                                return;
+                            }
+                            try {
+                                byteArrayOutputStream = new ByteArrayOutputStream();
+                                try {
+                                    byteArrayOutputStream.write(bArr4);
+                                    byteArrayOutputStream.write(bArr);
+                                    if (si0.S(byteArrayOutputStream, bArr, jp0VarArr2)) {
+                                        sq3Var2.e(5, null);
+                                        ip0Var2.h = null;
+                                        byteArrayOutputStream.close();
+                                        r7 = byteArrayOutputStream;
+                                    } else {
+                                        ip0Var2.e = byteArrayOutputStream.toByteArray();
+                                        byteArrayOutputStream.close();
+                                        r10 = byteArrayOutputStream;
+                                        ip0Var2.h = null;
+                                        r7 = r10;
+                                    }
+                                } catch (Throwable th7) {
+                                    try {
+                                        byteArrayOutputStream.close();
+                                        throw th7;
+                                    } catch (Throwable th8) {
+                                        th7.addSuppressed(th8);
+                                        throw th7;
+                                    }
+                                }
+                            } catch (IOException e10) {
+                                sq3Var2.e(7, e10);
+                                r10 = z5;
+                            } catch (IllegalStateException e11) {
+                                sq3Var2.e(8, e11);
+                                r10 = z5;
+                            }
+                        }
+                        bArr2 = (byte[]) ip0Var2.e;
+                        if (bArr2 != null) {
+                            z3 = false;
+                            r9 = 1;
+                        } else {
+                            try {
+                                if (ip0Var2.a) {
+                                    kf2.o("This device doesn't support aot. Did you call deviceSupportsAotProfile()?");
+                                    return;
+                                }
+                                try {
+                                    try {
+                                        byteArrayInputStream = new ByteArrayInputStream(bArr2);
+                                        try {
+                                            try {
+                                                fileOutputStream = new FileOutputStream((File) ip0Var2.f);
+                                                try {
+                                                    try {
+                                                        channel = fileOutputStream.getChannel();
+                                                        try {
+                                                            fileLockTryLock = channel.tryLock();
+                                                            try {
+                                                                try {
+                                                                    if (fileLockTryLock != null) {
+                                                                        try {
+                                                                            if (fileLockTryLock.isValid()) {
+                                                                                bArr3 = new byte[512];
+                                                                                while (true) {
+                                                                                    i = byteArrayInputStream.read(bArr3);
+                                                                                    if (i > 0) {
+                                                                                        break;
+                                                                                    } else {
+                                                                                        fileOutputStream.write(bArr3, 0, i);
+                                                                                    }
+                                                                                }
+                                                                                r9 = 1;
+                                                                                ip0Var2.b(1, null);
+                                                                                fileLockTryLock.close();
+                                                                                channel.close();
+                                                                                fileOutputStream.close();
+                                                                                byteArrayInputStream.close();
+                                                                                ip0Var2.e = null;
+                                                                                ip0Var2.h = null;
+                                                                                z3 = true;
+                                                                            }
+                                                                        } catch (Throwable th9) {
+                                                                            th = th9;
+                                                                            Throwable th10 = th;
+                                                                            if (fileLockTryLock == null) {
+                                                                                throw th10;
+                                                                            }
+                                                                            try {
+                                                                                fileLockTryLock.close();
+                                                                                throw th10;
+                                                                            } catch (Throwable th11) {
+                                                                                th10.addSuppressed(th11);
+                                                                                throw th10;
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                    throw new IOException("Unable to acquire a lock on the underlying file channel.");
+                                                                } catch (Throwable th12) {
+                                                                    th = th12;
+                                                                    Throwable th13 = th;
+                                                                    if (channel == null) {
+                                                                        throw th13;
+                                                                    }
+                                                                    try {
+                                                                        channel.close();
+                                                                        throw th13;
+                                                                    } catch (Throwable th14) {
+                                                                        th13.addSuppressed(th14);
+                                                                        throw th13;
+                                                                    }
+                                                                }
+                                                            } catch (Throwable th15) {
+                                                                th = th15;
+                                                            }
+                                                        } catch (Throwable th16) {
+                                                            th = th16;
+                                                        }
+                                                    } catch (Throwable th17) {
+                                                        th = th17;
+                                                        th2 = th;
+                                                        try {
+                                                            fileOutputStream.close();
+                                                            throw th2;
+                                                        } catch (Throwable th18) {
+                                                            th2.addSuppressed(th18);
+                                                            throw th2;
+                                                        }
+                                                    }
+                                                } catch (Throwable th19) {
+                                                    th = th19;
+                                                    th2 = th;
+                                                    fileOutputStream.close();
+                                                    throw th2;
+                                                }
+                                            } catch (Throwable th20) {
+                                                th = th20;
+                                                th = th;
+                                                try {
+                                                    byteArrayInputStream.close();
+                                                    throw th;
+                                                } catch (Throwable th21) {
+                                                    th.addSuppressed(th21);
+                                                    throw th;
+                                                }
+                                            }
+                                        } catch (Throwable th22) {
+                                            th = th22;
+                                            th = th;
+                                            byteArrayInputStream.close();
+                                            throw th;
+                                        }
+                                    } catch (FileNotFoundException e12) {
+                                        e = e12;
+                                        r7 = 1;
+                                        ip0Var2.b(6, e);
+                                        r8 = r7;
+                                        ip0Var2.e = null;
+                                        ip0Var2.h = null;
+                                        z3 = false;
+                                        r9 = r8;
+                                    } catch (IOException e13) {
+                                        e = e13;
+                                        r7 = 1;
+                                        ip0Var2.b(7, e);
+                                        r8 = r7;
+                                        ip0Var2.e = null;
+                                        ip0Var2.h = null;
+                                        z3 = false;
+                                        r9 = r8;
+                                    }
+                                } catch (FileNotFoundException e14) {
+                                    e = e14;
+                                    ip0Var2.b(6, e);
+                                    r8 = r7;
+                                    ip0Var2.e = null;
+                                    ip0Var2.h = null;
+                                    z3 = false;
+                                    r9 = r8;
+                                } catch (IOException e15) {
+                                    e = e15;
+                                    ip0Var2.b(7, e);
+                                    r8 = r7;
+                                    ip0Var2.e = null;
+                                    ip0Var2.h = null;
+                                    z3 = false;
+                                    r9 = r8;
+                                }
+                            } catch (Throwable th23) {
+                                ip0Var2.e = null;
+                                ip0Var2.h = null;
+                                throw th23;
+                            }
+                        }
+                        if (z3) {
+                            a(packageInfo, filesDir);
+                        }
+                        z4 = z3;
+                        r12 = r9;
+                    } catch (Throwable th24) {
+                        try {
+                            A.close();
+                            throw th24;
+                        } catch (IOException e16) {
+                            sq3Var.e(7, e16);
+                            throw th24;
+                        }
+                    }
+                } else {
+                    ip0Var2.b(4, null);
+                }
+                if (z4 || !z) {
+                    r13 = 0;
+                } else {
+                    r13 = r12;
+                }
+                wq3.c(context, r13);
+            }
+            ip0Var2.b(3, Integer.valueOf(Build.VERSION.SDK_INT));
+            z2 = true;
+            z4 = false;
+            r12 = z2;
+            if (z4) {
+                r13 = 0;
+            } else {
+                r13 = 0;
+            }
+            wq3.c(context, r13);
+        } catch (PackageManager.NameNotFoundException e17) {
+            sq3Var.e(7, e17);
+            wq3.c(context, false);
+        }
     }
 }

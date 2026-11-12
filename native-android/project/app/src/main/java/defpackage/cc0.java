@@ -14,91 +14,105 @@ public final class cc0 extends ep4 implements wf1 {
     public final /* synthetic */ c52 t;
     public final /* synthetic */ dd5 u;
 
-    public cc0(oc2 r1, c52 r2, dd5 r3, vd0 r4) {
-        this.s = r1;
-        this.t = r2;
-        this.u = r3;
-        super(2, r4);
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public cc0(oc2 oc2Var, c52 c52Var, dd5 dd5Var, vd0 vd0Var) {
+        super(2, vd0Var);
+        this.s = oc2Var;
+        this.t = c52Var;
+        this.u = dd5Var;
     }
 
     @Override // defpackage.jp
-    public final vd0 create(Object r4, vd0 r5) {
-        c52 r1 = this.t;
-        dd5 r2 = this.u;
-        cc0 r0 = new cc0(this.s, r1, r2, r5);
-        r0.r = r4;
-        return r0;
+    public final vd0 create(Object obj, vd0 vd0Var) {
+        cc0 cc0Var = new cc0(this.s, this.t, this.u, vd0Var);
+        cc0Var.r = obj;
+        return cc0Var;
     }
 
     @Override // defpackage.wf1
-    public final Object invoke(Object r1, Object r2) {
-        return ((cc0) create((we0) r1, (vd0) r2)).invokeSuspend(j15.a);
+    public final Object invoke(Object obj, Object obj2) {
+        return ((cc0) create((we0) obj, (vd0) obj2)).invokeSuspend(j15.a);
     }
 
+    /* JADX WARN: Code duplicated, block: B:31:0x00aa  */
+    /* JADX WARN: Code duplicated, block: B:32:0x00ab  */
     @Override // defpackage.jp
-    public final Object invokeSuspend(Object r14) {
-        int r0 = this.q;
-        oc2 r3 = this.s;
-        boolean r4 = true;
-        if (r0 == 0) goto L14;
-        if (r0 != 1) goto L12;
-        sk4 r6 = this.p;
-        ic2 r7 = this.o;
-        AtomicInteger r13 = (AtomicInteger) this.r;
-        kb4.X(r14);     // Catch: Throwable -> L8 CancellationException -> L10
-    L20:
-        nc2 r15 = (nc2) r14;     // Catch: Throwable -> L8 CancellationException -> L10
-        r6.f(null);
-        return r15;
-    L10:
-        e = move-exception;
-        CancellationException r16 = e;
-    L29:
-        String r1 = ic0.a;     // Catch: Throwable -> L27
-        cx.f().c(r1, "Delegated worker " + r3.getClass() + " was cancelled", r16);     // Catch: Throwable -> L27
-        if (r13.get() != (-256)) goto L34;
-        r4 = false;
-    L34:
-        if (r7.isCancelled() == false) goto L38;
-        if (r4 == true) goto L37;
-        throw r16;     // Catch: Throwable -> L27
-    L37:
-        throw new zb0(r13.get());     // Catch: Throwable -> L27
-    L38:
-        throw r16;     // Catch: Throwable -> L27
-    L12:
-        kf2.o("call to 'resume' before 'invoke' with coroutine");
-        return null;
-    L14:
-        kb4.X(r14);
-        we0 r17 = (we0) this.r;
-        AtomicInteger r9 = new AtomicInteger(-256);
-        ry r10 = r3.c();
-        r6 = fu.G(r17, null, null, new x70(this.t, this.u, r9, r10, null, 1), 3);
-        this.r = r9;     // Catch: Throwable -> L8 CancellationException -> L23
-        this.o = r10;     // Catch: Throwable -> L8 CancellationException -> L23
-        this.p = r6;     // Catch: Throwable -> L8 CancellationException -> L23
-        this.q = 1;     // Catch: Throwable -> L8 CancellationException -> L23
-        r14 = fu.e(r10, this);     // Catch: Throwable -> L8 CancellationException -> L23
-        xe0 r18 = xe0.n;
-        if (r14 != r18) goto L19;
-        return r18;
-    L19:
-        r13 = r9;
-        r7 = r10;
-    L23:
-        e = move-exception;
-        r16 = e;
-        r13 = r9;
-        r7 = r10;
-    L27:
-        th = move-exception;
-        r6.f(null);
-        throw th;
-    L8:
-        th = move-exception;
-        String r19 = ic0.a;     // Catch: Throwable -> L27
-        cx.f().c(r19, "Delegated worker " + r3.getClass() + " threw exception in startWork.", th);     // Catch: Throwable -> L27
-        throw th;     // Catch: Throwable -> L27
+    public final Object invokeSuspend(Object obj) {
+        sk4 sk4VarG;
+        CancellationException cancellationException;
+        AtomicInteger atomicInteger;
+        ic2 ic2Var;
+        int i = this.q;
+        oc2 oc2Var = this.s;
+        boolean z = true;
+        try {
+            try {
+                if (i == 0) {
+                    kb4.X(obj);
+                    we0 we0Var = (we0) this.r;
+                    AtomicInteger atomicInteger2 = new AtomicInteger(-256);
+                    ry ryVarC = oc2Var.c();
+                    sk4VarG = fu.G(we0Var, null, null, new x70(this.t, this.u, atomicInteger2, ryVarC, null, 1), 3);
+                    try {
+                        this.r = atomicInteger2;
+                        this.o = ryVarC;
+                        this.p = sk4VarG;
+                        this.q = 1;
+                        obj = fu.e(ryVarC, this);
+                        xe0 xe0Var = xe0.n;
+                        if (obj == xe0Var) {
+                            return xe0Var;
+                        }
+                        atomicInteger = atomicInteger2;
+                        ic2Var = ryVarC;
+                    } catch (CancellationException e) {
+                        cancellationException = e;
+                        atomicInteger = atomicInteger2;
+                        ic2Var = ryVarC;
+                        String str = ic0.a;
+                        cx.f().c(str, "Delegated worker " + oc2Var.getClass() + " was cancelled", cancellationException);
+                        if (atomicInteger.get() != -256) {
+                            z = false;
+                        }
+                        if (ic2Var.isCancelled() || !z) {
+                            throw cancellationException;
+                        }
+                        throw new zb0(atomicInteger.get());
+                    }
+                } else {
+                    if (i != 1) {
+                        kf2.o("call to 'resume' before 'invoke' with coroutine");
+                        return null;
+                    }
+                    sk4VarG = this.p;
+                    ic2Var = this.o;
+                    atomicInteger = (AtomicInteger) this.r;
+                    try {
+                        kb4.X(obj);
+                    } catch (CancellationException e2) {
+                        cancellationException = e2;
+                        String str2 = ic0.a;
+                        cx.f().c(str2, "Delegated worker " + oc2Var.getClass() + " was cancelled", cancellationException);
+                        if (atomicInteger.get() != -256) {
+                            z = false;
+                        }
+                        if (ic2Var.isCancelled()) {
+                            throw cancellationException;
+                        }
+                        throw cancellationException;
+                    }
+                }
+                nc2 nc2Var = (nc2) obj;
+                sk4VarG.f(null);
+                return nc2Var;
+            } catch (Throwable th) {
+                sk4VarG.f(null);
+                throw th;
+            }
+        } catch (Throwable th2) {
+            String str3 = ic0.a;
+            cx.f().c(str3, "Delegated worker " + oc2Var.getClass() + " threw exception in startWork.", th2);
+            throw th2;
+        }
     }
 }

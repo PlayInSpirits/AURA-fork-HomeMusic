@@ -6,8 +6,8 @@ public final class pj0 {
     public final em a;
     public final /* synthetic */ tj0 b;
 
-    public pj0(tj0 r1, em r2) {
-        this.b = r1;
-        this.a = r2;
+    public pj0(tj0 tj0Var, em emVar) {
+        this.b = tj0Var;
+        this.a = emVar;
     }
 }

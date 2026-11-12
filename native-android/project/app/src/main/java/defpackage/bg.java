@@ -37,6 +37,7 @@ import android.view.ViewParent;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
+import android.widget.ListAdapter;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.window.OnBackInvokedCallback;
@@ -56,13 +57,14 @@ import java.lang.reflect.Method;
 import java.util.LinkedHashSet;
 import java.util.Locale;
 import java.util.WeakHashMap;
+import org.chromium.support_lib_boundary.WebSettingsBoundaryInterface;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class bg extends pf implements ou2, LayoutInflater.Factory2 {
-    public static final yd4 u0 = null;
-    public static final int[] v0 = null;
-    public static final boolean w0 = false;
+    public static final yd4 u0 = new yd4(0);
+    public static final int[] v0 = {R.attr.windowBackground};
+    public static final boolean w0 = !"robolectric".equals(Build.FINGERPRINT);
     public l93 A;
     public no4 B;
     public CharSequence C;
@@ -73,8 +75,6 @@ public final class bg extends pf implements ou2, LayoutInflater.Factory2 {
     public ActionBarContextView H;
     public PopupWindow I;
     public qf J;
-    public s75 K;
-    public final boolean L;
     public boolean M;
     public ViewGroup N;
     public TextView O;
@@ -102,7 +102,6 @@ public final class bg extends pf implements ou2, LayoutInflater.Factory2 {
     public yf k0;
     public boolean l0;
     public int m0;
-    public final qf n0;
     public boolean o0;
     public Rect p0;
     public Rect q0;
@@ -113,1915 +112,1747 @@ public final class bg extends pf implements ou2, LayoutInflater.Factory2 {
     public final Context x;
     public Window y;
     public xf z;
+    public s75 K = null;
+    public final boolean L = true;
+    public final qf n0 = new qf(this, 0);
 
-    static {
-        u0 = new yd4(0);
-        v0 = new int[]{R.attr.windowBackground};
-        w0 = !"robolectric".equals(Build.FINGERPRINT);
-    }
-
-    public bg(Context r4, Window r5, gf r6, Object r7) {
-        df r8 = null;
-        this.K = null;
-        this.L = true;
+    public bg(Context context, Window window, gf gfVar, Object obj) {
+        df dfVar = null;
         this.f0 = -100;
-        this.n0 = new qf(this, 0);
-        this.x = r4;
-        this.w = r7;
-        if ((r7 instanceof Dialog) == false) goto L14;
-    L4:
-        if (r4 == null) goto L11;
-        if ((r4 instanceof df) == true) goto L7;
-        if ((r4 instanceof ContextWrapper) == false) goto L11;
-        r4 = ((ContextWrapper) r4).getBaseContext();
-        goto L4
-    L7:
-        r8 = (df) r4;
-    L11:
-        if (r8 == null) goto L14;
-        this.f0 = ((bg) r8.m()).f0;
-    L14:
-        if (this.f0 != (-100)) goto L18;
-        String r9 = this.w.getClass().getName();
-        yd4 r10 = u0;
-        Integer r11 = (Integer) r10.get(r9);
-        if (r11 == null) goto L18;
-        this.f0 = r11.intValue();
-        r10.remove(this.w.getClass().getName());
-    L18:
-        if (r5 == null) goto L20;
-        s(r5);
-    L20:
+        this.x = context;
+        this.w = obj;
+        if (obj instanceof Dialog) {
+            while (context != null) {
+                if (!(context instanceof df)) {
+                    if (!(context instanceof ContextWrapper)) {
+                        break;
+                    } else {
+                        context = ((ContextWrapper) context).getBaseContext();
+                    }
+                } else {
+                    dfVar = (df) context;
+                    break;
+                }
+            }
+            if (dfVar != null) {
+                this.f0 = ((bg) dfVar.m()).f0;
+            }
+        }
+        if (this.f0 == -100) {
+            String name = this.w.getClass().getName();
+            yd4 yd4Var = u0;
+            Integer num = (Integer) yd4Var.get(name);
+            if (num != null) {
+                this.f0 = num.intValue();
+                yd4Var.remove(this.w.getClass().getName());
+            }
+        }
+        if (window != null) {
+            s(window);
+        }
         fg.d();
     }
 
-    public static wd2 t(Context r6) {
-        if (Build.VERSION.SDK_INT >= 33) goto L30;
-        wd2 r0 = pf.p;
-        if (r0 != null) goto L9;
-        return null;
-    L9:
-        xd2 r1 = r0.a;
-        wd2 r7 = uf.b(r6.getApplicationContext().getResources().getConfiguration());
-        if (r1.a.isEmpty() == false) goto L12;
-        wd2 r2 = wd2.b;
-    L24:
-        if (r2.a.a.isEmpty() == false) goto L26;
-        return r7;
-    L26:
-        return r2;
-    L12:
-        LinkedHashSet r3 = new LinkedHashSet();
-        int r4 = 0;
-    L13:
-        int r5 = r0.b();
-        if (r4 >= (r7.b() + r5)) goto L22;
-        if (r4 >= r0.b()) goto L18;
-        Locale r8 = r1.a.get(r4);
-    L19:
-        if (r8 == null) goto L21;
-        r3.add(r8);
-    L21:
-        r4 = r4 + 1;
-        goto L13
-    L18:
-        int r9 = r4 - r0.b();
-        r8 = r7.a.a.get(r9);
-        goto L19
-    L22:
-        r2 = new wd2(new xd2(new LocaleList((Locale[]) r3.toArray(new Locale[r3.size()]))));
-        goto L24
-    L30:
-        return null;
+    public static wd2 t(Context context) {
+        wd2 wd2Var;
+        wd2 wd2Var2;
+        if (Build.VERSION.SDK_INT >= 33 || (wd2Var = pf.p) == null) {
+            return null;
+        }
+        xd2 xd2Var = wd2Var.a;
+        wd2 wd2VarB = uf.b(context.getApplicationContext().getResources().getConfiguration());
+        if (xd2Var.a.isEmpty()) {
+            wd2Var2 = wd2.b;
+        } else {
+            LinkedHashSet linkedHashSet = new LinkedHashSet();
+            int i = 0;
+            while (i < wd2VarB.b() + wd2Var.b()) {
+                Locale locale = i < wd2Var.b() ? xd2Var.a.get(i) : wd2VarB.a.a.get(i - wd2Var.b());
+                if (locale != null) {
+                    linkedHashSet.add(locale);
+                }
+                i++;
+            }
+            wd2Var2 = new wd2(new xd2(new LocaleList((Locale[]) linkedHashSet.toArray(new Locale[linkedHashSet.size()]))));
+        }
+        return wd2Var2.a.a.isEmpty() ? wd2VarB : wd2Var2;
     }
 
-    public static Configuration x(Context r1, int r2, wd2 r3, Configuration r4, boolean r5) {
-        if (r2 != 1) goto L5;
-        int r6 = 16;
-    L11:
-        Configuration r7 = new Configuration();
-        r7.fontScale = 0.0f;
-        if (r4 == null) goto L14;
-        r7.setTo(r4);
-    L14:
-        r7.uiMode = r6 | (r7.uiMode & (-49));
-        if (r3 == null) goto L17;
-        uf.d(r7, r3);
-    L17:
-        return r7;
-    L5:
-        if (r2 == 2) goto L9;
-        if (r5 == false) goto L8;
-        r6 = 0;
-        goto L11
-    L8:
-        r6 = r1.getApplicationContext().getResources().getConfiguration().uiMode & 48;
-        goto L11
-    L9:
-        r6 = 32;
-        goto L11
+    public static Configuration x(Context context, int i, wd2 wd2Var, Configuration configuration, boolean z) {
+        int i2;
+        if (i == 1) {
+            i2 = 16;
+        } else if (i != 2) {
+            i2 = z ? 0 : context.getApplicationContext().getResources().getConfiguration().uiMode & 48;
+        } else {
+            i2 = 32;
+        }
+        Configuration configuration2 = new Configuration();
+        configuration2.fontScale = 0.0f;
+        if (configuration != null) {
+            configuration2.setTo(configuration);
+        }
+        configuration2.uiMode = i2 | (configuration2.uiMode & (-49));
+        if (wd2Var != null) {
+            uf.d(configuration2, wd2Var);
+        }
+        return configuration2;
     }
 
-    public final void A(int r4) {
-        ag r0 = F(r4);
-        if (r0.h == null) goto L8;
-        Bundle r1 = new Bundle();
-        r0.h.u(r1);
-        if (r1.size() <= 0) goto L7;
-        r0.p = r1;
-    L7:
-        r0.h.y();
-        r0.h.clear();
-    L8:
-        r0.o = true;
-        r0.n = true;
-        if (r4 == 108) goto L12;
-        if (r4 == 0) goto L12;
-        return;
-    L12:
-        if (this.D == null) goto L16;
-        ag r2 = F(0);
-        r2.k = false;
-        M(r2, null);
-        return;
+    public final void A(int i) {
+        ag agVarF = F(i);
+        if (agVarF.h != null) {
+            Bundle bundle = new Bundle();
+            agVarF.h.u(bundle);
+            if (bundle.size() > 0) {
+                agVarF.p = bundle;
+            }
+            agVarF.h.y();
+            agVarF.h.clear();
+        }
+        agVarF.o = true;
+        agVarF.n = true;
+        if ((i == 108 || i == 0) && this.D != null) {
+            ag agVarF2 = F(0);
+            agVarF2.k = false;
+            M(agVarF2, null);
+        }
     }
 
     public final void B() {
-        if (this.M == true) goto L110;
-        Context r0 = this.x;
-        int[] r1 = st3.j;
-        TypedArray r2 = r0.obtainStyledAttributes(r1);
-        if (r2.hasValue(117) == true) goto L7;
-        r2.recycle();
-        kf2.o("You need to use a Theme.AppCompat theme (or descendant) with this activity.");
-        return;
-    L7:
-        if (r2.getBoolean(126, false) == false) goto L10;
-        i(1);
-    L13:
-        if (r2.getBoolean(118, false) == false) goto L16;
-        i(109);
-    L16:
-        if (r2.getBoolean(119, false) == false) goto L18;
-        i(10);
-    L18:
-        this.V = r2.getBoolean(0, false);
-        r2.recycle();
+        ViewGroup viewGroup;
+        if (this.M) {
+            return;
+        }
+        Context context = this.x;
+        int[] iArr = st3.j;
+        TypedArray typedArrayObtainStyledAttributes = context.obtainStyledAttributes(iArr);
+        if (!typedArrayObtainStyledAttributes.hasValue(117)) {
+            typedArrayObtainStyledAttributes.recycle();
+            kf2.o("You need to use a Theme.AppCompat theme (or descendant) with this activity.");
+            return;
+        }
+        if (typedArrayObtainStyledAttributes.getBoolean(126, false)) {
+            i(1);
+        } else if (typedArrayObtainStyledAttributes.getBoolean(117, false)) {
+            i(108);
+        }
+        if (typedArrayObtainStyledAttributes.getBoolean(118, false)) {
+            i(109);
+        }
+        if (typedArrayObtainStyledAttributes.getBoolean(119, false)) {
+            i(10);
+        }
+        this.V = typedArrayObtainStyledAttributes.getBoolean(0, false);
+        typedArrayObtainStyledAttributes.recycle();
         C();
         this.y.getDecorView();
-        LayoutInflater r3 = LayoutInflater.from(r0);
-        if (this.W == true) goto L40;
-        if (this.V == false) goto L24;
-        ViewGroup r4 = (ViewGroup) r3.inflate(app.homemusic.R.layout.abc_dialog_title_material, null);
-        this.T = false;
-        this.S = false;
-    L43:
-        if (r4 == null) goto L104;
-        rf r5 = new rf(this);
-        WeakHashMap r6 = j65.a;
-        a65.c(r4, r5);
-        if (this.D != null) goto L47;
-        this.O = (TextView) r4.findViewById(app.homemusic.R.id.title);
-    L47:
-        boolean r7 = e85.a;
-        Method r9 = r4.getClass().getMethod("makeOptionalFitsSystemWindows", null);     // Catch: IllegalAccessException -> L51 InvocationTargetException -> L53 NoSuchMethodException -> L59
-        if (r9.isAccessible() == true) goto L55;
-        r9.setAccessible(true);     // Catch: IllegalAccessException -> L51 InvocationTargetException -> L53 NoSuchMethodException -> L59
-    L55:
-        r9.invoke(r4, null);     // Catch: IllegalAccessException -> L51 InvocationTargetException -> L53 NoSuchMethodException -> L59
-    L60:
-        ContentFrameLayout r8 = (ContentFrameLayout) r4.findViewById(app.homemusic.R.id.action_bar_activity_content);
-        ViewGroup r10 = (ViewGroup) this.y.findViewById(R.id.content);
-        if (r10 != null) goto L63;
-    L68:
-        this.y.setContentView(r4);
-        r8.setAttachListener(new zg5(this));
-        this.N = r4;
-        Object r11 = this.w;
-        if ((r11 instanceof Activity) == false) goto L71;
-        CharSequence r12 = ((Activity) r11).getTitle();
-    L73:
-        if (TextUtils.isEmpty(r12) == true) goto L83;
-        ActionBarOverlayLayout r13 = this.D;
-        if (r13 == null) goto L77;
-        r13.setWindowTitle(r12);
-        goto L83
-    L77:
-        l93 r14 = this.A;
-        if (r14 == null) goto L80;
-        r14.l0(r12);
-        goto L83
-    L80:
-        TextView r15 = this.O;
-        if (r15 == null) goto L83;
-        r15.setText(r12);
-    L83:
-        ContentFrameLayout r16 = (ContentFrameLayout) this.N.findViewById(R.id.content);
-        View r17 = this.y.getDecorView();
-        r16.t.set(r17.getPaddingLeft(), r17.getPaddingTop(), r17.getPaddingRight(), r17.getPaddingBottom());
-        if (r16.isLaidOut() == false) goto L86;
-        r16.requestLayout();
-    L86:
-        TypedArray r18 = r0.obtainStyledAttributes(r1);
-        r18.getValue(124, r16.getMinWidthMajor());
-        r18.getValue(125, r16.getMinWidthMinor());
-        if (r18.hasValue(122) == false) goto L90;
-        r18.getValue(122, r16.getFixedWidthMajor());
-    L90:
-        if (r18.hasValue(123) == false) goto L93;
-        r18.getValue(123, r16.getFixedWidthMinor());
-    L93:
-        if (r18.hasValue(120) == false) goto L96;
-        r18.getValue(120, r16.getFixedHeightMajor());
-    L96:
-        if (r18.hasValue(121) == false) goto L98;
-        r18.getValue(121, r16.getFixedHeightMinor());
-    L98:
-        r18.recycle();
-        r16.requestLayout();
+        LayoutInflater layoutInflaterFrom = LayoutInflater.from(context);
+        if (this.W) {
+            viewGroup = this.U ? (ViewGroup) layoutInflaterFrom.inflate(app.homemusic.R.layout.abc_screen_simple_overlay_action_mode, (ViewGroup) null) : (ViewGroup) layoutInflaterFrom.inflate(app.homemusic.R.layout.abc_screen_simple, (ViewGroup) null);
+        } else if (this.V) {
+            viewGroup = (ViewGroup) layoutInflaterFrom.inflate(app.homemusic.R.layout.abc_dialog_title_material, (ViewGroup) null);
+            this.T = false;
+            this.S = false;
+        } else if (this.S) {
+            TypedValue typedValue = new TypedValue();
+            context.getTheme().resolveAttribute(app.homemusic.R.attr.actionBarTheme, typedValue, true);
+            viewGroup = (ViewGroup) LayoutInflater.from(typedValue.resourceId != 0 ? new ud0(context, typedValue.resourceId) : context).inflate(app.homemusic.R.layout.abc_screen_toolbar, (ViewGroup) null);
+            ActionBarOverlayLayout actionBarOverlayLayout = (ActionBarOverlayLayout) viewGroup.findViewById(app.homemusic.R.id.decor_content_parent);
+            this.D = actionBarOverlayLayout;
+            actionBarOverlayLayout.setWindowCallback(this.y.getCallback());
+            if (this.T) {
+                this.D.j(109);
+            }
+            if (this.Q) {
+                this.D.j(2);
+            }
+            if (this.R) {
+                this.D.j(5);
+            }
+        } else {
+            viewGroup = null;
+        }
+        if (viewGroup == null) {
+            throw new IllegalArgumentException("AppCompat does not support the current theme features: { windowActionBar: " + this.S + ", windowActionBarOverlay: " + this.T + ", android:windowIsFloating: " + this.V + ", windowActionModeOverlay: " + this.U + ", windowNoTitle: " + this.W + " }");
+        }
+        rf rfVar = new rf(this);
+        WeakHashMap weakHashMap = j65.a;
+        a65.c(viewGroup, rfVar);
+        if (this.D == null) {
+            this.O = (TextView) viewGroup.findViewById(app.homemusic.R.id.title);
+        }
+        boolean z = e85.a;
+        try {
+            Method method = viewGroup.getClass().getMethod("makeOptionalFitsSystemWindows", null);
+            if (!method.isAccessible()) {
+                method.setAccessible(true);
+            }
+            method.invoke(viewGroup, null);
+        } catch (IllegalAccessException e) {
+            Log.d("ViewUtils", "Could not invoke makeOptionalFitsSystemWindows", e);
+        } catch (NoSuchMethodException unused) {
+            Log.d("ViewUtils", "Could not find method makeOptionalFitsSystemWindows. Oh well...");
+        } catch (InvocationTargetException e2) {
+            Log.d("ViewUtils", "Could not invoke makeOptionalFitsSystemWindows", e2);
+        }
+        ContentFrameLayout contentFrameLayout = (ContentFrameLayout) viewGroup.findViewById(app.homemusic.R.id.action_bar_activity_content);
+        ViewGroup viewGroup2 = (ViewGroup) this.y.findViewById(R.id.content);
+        if (viewGroup2 != null) {
+            while (viewGroup2.getChildCount() > 0) {
+                View childAt = viewGroup2.getChildAt(0);
+                viewGroup2.removeViewAt(0);
+                contentFrameLayout.addView(childAt);
+            }
+            viewGroup2.setId(-1);
+            contentFrameLayout.setId(R.id.content);
+            if (viewGroup2 instanceof FrameLayout) {
+                ((FrameLayout) viewGroup2).setForeground(null);
+            }
+        }
+        this.y.setContentView(viewGroup);
+        contentFrameLayout.setAttachListener(new zg5(this));
+        this.N = viewGroup;
+        Object obj = this.w;
+        CharSequence title = obj instanceof Activity ? ((Activity) obj).getTitle() : this.C;
+        if (!TextUtils.isEmpty(title)) {
+            ActionBarOverlayLayout actionBarOverlayLayout2 = this.D;
+            if (actionBarOverlayLayout2 != null) {
+                actionBarOverlayLayout2.setWindowTitle(title);
+            } else {
+                l93 l93Var = this.A;
+                if (l93Var != null) {
+                    l93Var.l0(title);
+                } else {
+                    TextView textView = this.O;
+                    if (textView != null) {
+                        textView.setText(title);
+                    }
+                }
+            }
+        }
+        ContentFrameLayout contentFrameLayout2 = (ContentFrameLayout) this.N.findViewById(R.id.content);
+        View decorView = this.y.getDecorView();
+        contentFrameLayout2.t.set(decorView.getPaddingLeft(), decorView.getPaddingTop(), decorView.getPaddingRight(), decorView.getPaddingBottom());
+        if (contentFrameLayout2.isLaidOut()) {
+            contentFrameLayout2.requestLayout();
+        }
+        TypedArray typedArrayObtainStyledAttributes2 = context.obtainStyledAttributes(iArr);
+        typedArrayObtainStyledAttributes2.getValue(124, contentFrameLayout2.getMinWidthMajor());
+        typedArrayObtainStyledAttributes2.getValue(125, contentFrameLayout2.getMinWidthMinor());
+        if (typedArrayObtainStyledAttributes2.hasValue(122)) {
+            typedArrayObtainStyledAttributes2.getValue(122, contentFrameLayout2.getFixedWidthMajor());
+        }
+        if (typedArrayObtainStyledAttributes2.hasValue(123)) {
+            typedArrayObtainStyledAttributes2.getValue(123, contentFrameLayout2.getFixedWidthMinor());
+        }
+        if (typedArrayObtainStyledAttributes2.hasValue(120)) {
+            typedArrayObtainStyledAttributes2.getValue(120, contentFrameLayout2.getFixedHeightMajor());
+        }
+        if (typedArrayObtainStyledAttributes2.hasValue(121)) {
+            typedArrayObtainStyledAttributes2.getValue(121, contentFrameLayout2.getFixedHeightMinor());
+        }
+        typedArrayObtainStyledAttributes2.recycle();
+        contentFrameLayout2.requestLayout();
         this.M = true;
-        ag r19 = F(0);
-        if (this.d0 == false) goto L101;
-        return;
-    L101:
-        if (r19.h != null) goto L112;
+        ag agVarF = F(0);
+        if (this.d0 || agVarF.h != null) {
+            return;
+        }
         H(108);
-        return;
-    L112:
-        return;
-    L71:
-        r12 = this.C;
-    L63:
-        if (r10.getChildCount() <= 0) goto L65;
-        View r110 = r10.getChildAt(0);
-        r10.removeViewAt(0);
-        r8.addView(r110);
-        goto L63
-    L65:
-        r10.setId(-1);
-        r8.setId(R.id.content);
-        if ((r10 instanceof FrameLayout) == false) goto L68;
-        ((FrameLayout) r10).setForeground(null);
-        goto L68
-    L51:
-        e = move-exception;
-        Log.d("ViewUtils", "Could not invoke makeOptionalFitsSystemWindows", e);
-    L59:
-        Log.d("ViewUtils", "Could not find method makeOptionalFitsSystemWindows. Oh well...");
-    L53:
-        e = move-exception;
-        Log.d("ViewUtils", "Could not invoke makeOptionalFitsSystemWindows", e);
-        goto L60
-    L104:
-        throw new IllegalArgumentException("AppCompat does not support the current theme features: { windowActionBar: " + this.S + ", windowActionBarOverlay: " + this.T + ", android:windowIsFloating: " + this.V + ", windowActionModeOverlay: " + this.U + ", windowNoTitle: " + this.W + " }");
-    L24:
-        if (this.S == false) goto L38;
-        TypedValue r20 = new TypedValue();
-        r0.getTheme().resolveAttribute(app.homemusic.R.attr.actionBarTheme, r20, true);
-        if (r20.resourceId == 0) goto L28;
-        Context r21 = new ud0(r0, r20.resourceId);
-    L29:
-        r4 = (ViewGroup) LayoutInflater.from(r21).inflate(app.homemusic.R.layout.abc_screen_toolbar, null);
-        ActionBarOverlayLayout r22 = (ActionBarOverlayLayout) r4.findViewById(app.homemusic.R.id.decor_content_parent);
-        this.D = r22;
-        r22.setWindowCallback(this.y.getCallback());
-        if (this.T == false) goto L33;
-        this.D.j(109);
-    L33:
-        if (this.Q == false) goto L36;
-        this.D.j(2);
-    L36:
-        if (this.R == false) goto L43;
-        this.D.j(5);
-        goto L43
-    L28:
-        r21 = r0;
-        goto L29
-    L38:
-        r4 = null;
-        goto L43
-    L40:
-        if (this.U == false) goto L42;
-        r4 = (ViewGroup) r3.inflate(app.homemusic.R.layout.abc_screen_simple_overlay_action_mode, null);
-        goto L43
-    L42:
-        r4 = (ViewGroup) r3.inflate(app.homemusic.R.layout.abc_screen_simple, null);
-        goto L43
-    L10:
-        if (r2.getBoolean(117, false) == false) goto L13;
-        i(108);
-        goto L13
     }
 
     public final void C() {
-        if (this.y != null) goto L8;
-        Object r0 = this.w;
-        if ((r0 instanceof Activity) == false) goto L8;
-        s(((Activity) r0).getWindow());
-    L8:
-        if (this.y == null) goto L10;
-        return;
-    L10:
+        if (this.y == null) {
+            Object obj = this.w;
+            if (obj instanceof Activity) {
+                s(((Activity) obj).getWindow());
+            }
+        }
+        if (this.y != null) {
+            return;
+        }
         kf2.o("We have not been given a Window");
     }
 
     public final Context D() {
         G();
-        l93 r0 = this.A;
-        if (r0 == null) goto L5;
-        Context r1 = r0.J();
-    L6:
-        if (r1 == null) goto L8;
-        return r1;
-    L8:
-        return this.x;
-    L5:
-        r1 = null;
-        goto L6
+        l93 l93Var = this.A;
+        Context contextJ = l93Var != null ? l93Var.J() : null;
+        return contextJ == null ? this.x : contextJ;
     }
 
-    public final b3 E(Context r4) {
-        if (this.j0 != null) goto L9;
-        if (qp4.d != null) goto L7;
-        Context r5 = r4.getApplicationContext();
-        qp4.d = new qp4(r5, (LocationManager) r5.getSystemService("location"));
-    L7:
-        this.j0 = new yf(this, qp4.d);
-    L9:
+    public final b3 E(Context context) {
+        if (this.j0 == null) {
+            if (qp4.d == null) {
+                Context applicationContext = context.getApplicationContext();
+                qp4.d = new qp4(applicationContext, (LocationManager) applicationContext.getSystemService("location"));
+            }
+            this.j0 = new yf(this, qp4.d);
+        }
         return this.j0;
     }
 
-    public final ag F(int r5) {
-        ag[] r0 = this.Y;
-        if (r0 != null) goto L5;
-    L6:
-        ag[] r2 = new ag[r5 + 1];
-        if (r0 == null) goto L9;
-        System.arraycopy(r0, 0, r2, 0, r0.length);
-    L9:
-        this.Y = r2;
-        r0 = r2;
-    L10:
-        ag r4 = r0[r5];
-        if (r4 != null) goto L14;
-        ag r6 = new ag();
-        r6.a = r5;
-        r6.n = false;
-        r0[r5] = r6;
-        return r6;
-    L14:
-        return r4;
-    L5:
-        if (r0.length > r5) goto L10;
-        goto L6
+    public final ag F(int i) {
+        ag[] agVarArr = this.Y;
+        if (agVarArr == null || agVarArr.length <= i) {
+            ag[] agVarArr2 = new ag[i + 1];
+            if (agVarArr != null) {
+                System.arraycopy(agVarArr, 0, agVarArr2, 0, agVarArr.length);
+            }
+            this.Y = agVarArr2;
+            agVarArr = agVarArr2;
+        }
+        ag agVar = agVarArr[i];
+        if (agVar != null) {
+            return agVar;
+        }
+        ag agVar2 = new ag();
+        agVar2.a = i;
+        agVar2.n = false;
+        agVarArr[i] = agVar2;
+        return agVar2;
     }
 
     public final void G() {
         B();
-        if (this.S == true) goto L5;
-        return;
-    L5:
-        if (this.A != null) goto L19;
-        Object r0 = this.w;
-        if ((r0 instanceof Activity) == false) goto L11;
-        this.A = new ia5((Activity) r0, this.T);
-    L13:
-        l93 r1 = this.A;
-        if (r1 == null) goto L18;
-        r1.e0(this.o0);
-        return;
-    L18:
-        return;
-    L11:
-        if ((r0 instanceof Dialog) == false) goto L13;
-        this.A = new ia5((Dialog) r0);
-        goto L13
+        if (this.S && this.A == null) {
+            Object obj = this.w;
+            if (obj instanceof Activity) {
+                this.A = new ia5((Activity) obj, this.T);
+            } else if (obj instanceof Dialog) {
+                this.A = new ia5((Dialog) obj);
+            }
+            l93 l93Var = this.A;
+            if (l93Var != null) {
+                l93Var.e0(this.o0);
+            }
+        }
     }
 
-    public final void H(int r3) {
-        int r4 = 1 << r3;
-        this.m0 = r4 | this.m0;
-        if (this.l0 == true) goto L6;
-        View r5 = this.y.getDecorView();
-        WeakHashMap r0 = j65.a;
-        r5.postOnAnimation(this.n0);
+    public final void H(int i) {
+        this.m0 = (1 << i) | this.m0;
+        if (this.l0) {
+            return;
+        }
+        View decorView = this.y.getDecorView();
+        WeakHashMap weakHashMap = j65.a;
+        decorView.postOnAnimation(this.n0);
         this.l0 = true;
-        return;
     }
 
-    public final int I(Context r3, int r4) {
-        if (r4 == (-100)) goto L25;
-        if (r4 == (-1)) goto L24;
-        if (r4 == 0) goto L20;
-        if (r4 == 1) goto L24;
-        if (r4 == 2) goto L24;
-        if (r4 == 3) goto L13;
-        kf2.o("Unknown value set for night mode. Please use one of the MODE_NIGHT values from AppCompatDelegate.");
-        return 0;
-    L13:
-        if (this.k0 != null) goto L16;
-        this.k0 = new yf(this, r3);
-    L16:
-        return this.k0.g();
-    L20:
-        if (((UiModeManager) r3.getApplicationContext().getSystemService("uimode")).getNightMode() == 0) goto L25;
-        return E(r3).g();
-    L24:
-        return r4;
-    L25:
+    public final int I(Context context, int i) {
+        if (i != -100) {
+            if (i != -1) {
+                if (i != 0) {
+                    if (i != 1 && i != 2) {
+                        if (i != 3) {
+                            kf2.o("Unknown value set for night mode. Please use one of the MODE_NIGHT values from AppCompatDelegate.");
+                            return 0;
+                        }
+                        if (this.k0 == null) {
+                            this.k0 = new yf(this, context);
+                        }
+                        return this.k0.g();
+                    }
+                } else if (((UiModeManager) context.getApplicationContext().getSystemService("uimode")).getNightMode() != 0) {
+                    return E(context).g();
+                }
+            }
+            return i;
+        }
         return -1;
     }
 
     public final boolean J() {
-        boolean r0 = this.a0;
+        boolean z = this.a0;
         this.a0 = false;
-        ag r2 = F(0);
-        if (r2.m == false) goto L7;
-        if (r0 == true) goto L15;
-        w(r2, true);
+        ag agVarF = F(0);
+        if (!agVarF.m) {
+            d5 d5Var = this.G;
+            if (d5Var != null) {
+                d5Var.a();
+                return true;
+            }
+            G();
+            l93 l93Var = this.A;
+            if (l93Var == null || !l93Var.s()) {
+                return false;
+            }
+        } else if (!z) {
+            w(agVarF, true);
+            return true;
+        }
         return true;
-    L15:
-        return true;
-    L7:
-        d5 r1 = this.G;
-        if (r1 == null) goto L11;
-        r1.a();
-        return true;
-    L11:
-        G();
-        l93 r5 = this.A;
-        if (r5 != null) goto L14;
-    L16:
-        return false;
-    L14:
-        if (r5.s() == false) goto L16;
-        goto L15
     }
 
-    public final void K(ag r14, KeyEvent r15) {
-        boolean r0 = r14.m;
-        int r1 = r14.a;
-        if (r0 == false) goto L5;
-        return;
-    L5:
-        if (this.d0 == true) goto L99;
-        Context r2 = this.x;
-        if (r1 == 0) goto L10;
-    L12:
-        Window.Callback r3 = this.y.getCallback();
-        if (r3 != null) goto L15;
-    L18:
-        WindowManager r4 = (WindowManager) r2.getSystemService("window");
-        if (r4 != null) goto L22;
-        return;
-    L22:
-        if (M(r14, r15) == false) goto L102;
-        zf r16 = r14.e;
-        if (r16 != null) goto L27;
-    L36:
-        if (r16 != null) goto L46;
-        Context r17 = D();
-        TypedValue r5 = new TypedValue();
-        Resources.Theme r6 = r17.getResources().newTheme();
-        r6.setTo(r17.getTheme());
-        r6.resolveAttribute(app.homemusic.R.attr.actionBarPopupTheme, r5, true);
-        int r7 = r5.resourceId;
-        if (r7 == 0) goto L40;
-        r6.applyStyle(r7, true);
-    L40:
-        r6.resolveAttribute(app.homemusic.R.attr.panelMenuListTheme, r5, true);
-        int r8 = r5.resourceId;
-        if (r8 == 0) goto L43;
-        r6.applyStyle(r8, true);
-    L44:
-        ud0 r9 = new ud0(r17, 0);
-        r9.getTheme().setTo(r6);
-        r14.j = r9;
-        TypedArray r18 = r9.obtainStyledAttributes(st3.j);
-        r14.b = r18.getResourceId(86, 0);
-        r14.d = r18.getResourceId(1, 0);
-        r18.recycle();
-        r14.e = new zf(this, r14.j);
-        r14.c = 81;
-    L50:
-        View r19 = r14.g;
-        if (r19 == null) goto L54;
-        r14.f = r19;
-    L71:
-        if (r14.f != null) goto L74;
-    L95:
-        r14.n = true;
-        return;
-    L74:
-        if (r14.g != null) goto L81;
-        ub2 r110 = r14.i;
-        if (r110.s != null) goto L80;
-        r110.s = new tb2(r110);
-    L80:
-        if (r110.s.getCount() <= 0) goto L95;
-    L81:
-        ViewGroup.LayoutParams r111 = r14.f.getLayoutParams();
-        if (r111 != null) goto L84;
-        r111 = new ViewGroup.LayoutParams(-2, -2);
-    L84:
-        r14.e.setBackgroundResource(r14.b);
-        ViewParent r10 = r14.f.getParent();
-        if ((r10 instanceof ViewGroup) == false) goto L87;
-        ((ViewGroup) r10).removeView(r14.f);
-    L87:
-        r14.e.addView(r14.f, r111);
-        if (r14.f.hasFocus() == true) goto L90;
-        r14.f.requestFocus();
-    L90:
-        int r11 = -2;
-    L91:
-        r14.l = false;
-        WindowManager.LayoutParams r12 = new WindowManager.LayoutParams(r11, -2, 0, 0, 1002, 8519680, -3);
-        r12.gravity = r14.c;
-        r12.windowAnimations = r14.d;
-        r4.addView(r14.e, r12);
-        r14.m = true;
-        if (r1 != 0) goto L98;
-        O();
-        return;
-    L98:
-        return;
-    L54:
-        if (r14.h == null) goto L95;
-        if (this.F != null) goto L59;
-        this.F = new rf(this);
-    L59:
-        rf r112 = this.F;
-        if (r14.i != null) goto L62;
-        ub2 r13 = new ub2(r14.j);
-        r14.i = r13;
-        r13.r = r112;
-        qu2 r113 = r14.h;
-        r113.b(r13, r113.a);
-    L62:
-        ub2 r114 = r14.i;
-        zf r20 = r14.e;
-        if (r114.q != null) goto L68;
-        r114.q = (ExpandedMenuView) r114.o.inflate(app.homemusic.R.layout.abc_expanded_menu_layout, r20, false);
-        if (r114.s != null) goto L67;
-        r114.s = new tb2(r114);
-    L67:
-        r114.q.setAdapter(r114.s);
-        r114.q.setOnItemClickListener(r114);
-    L68:
-        ExpandedMenuView r115 = r114.q;
-        r14.f = r115;
-        if (r115 == null) goto L95;
-    L43:
-        r6.applyStyle(app.homemusic.R.style.Theme_AppCompat_CompactMenu, true);
-        goto L44
-    L46:
-        if (r14.n == false) goto L50;
-        if (r16.getChildCount() <= 0) goto L50;
-        r14.e.removeAllViews();
-        goto L50
-    L27:
-        if (r14.n == true) goto L36;
-        View r116 = r14.g;
-        if (r116 == null) goto L90;
-        ViewGroup.LayoutParams r117 = r116.getLayoutParams();
-        if (r117 == null) goto L90;
-        if (r117.width != (-1)) goto L90;
-        r11 = -1;
-        goto L91
-    L102:
-        return;
-    L15:
-        if (r3.onMenuOpened(r1, r14.h) == true) goto L18;
-        w(r14, true);
-        return;
-    L10:
-        if ((r2.getResources().getConfiguration().screenLayout & 15) != 4) goto L12;
-        return;
+    /* JADX WARN: Code duplicated, block: B:93:0x01c0  */
+    /* JADX WARN: Code duplicated, block: B:98:? A[RETURN, SYNTHETIC] */
+    /* JADX WARN: Code restructure failed: missing block: B:80:0x0164, code lost:
+    
+        if (r15.s.getCount() > 0) goto L81;
+     */
+    /*
+        Code decompiled incorrectly, please refer to instructions dump.
+    */
+    public final void K(ag agVar, KeyEvent keyEvent) {
+        int i;
+        ViewGroup.LayoutParams layoutParams;
+        boolean z = agVar.m;
+        int i2 = agVar.a;
+        if (z || this.d0) {
+            return;
+        }
+        Context context = this.x;
+        if (i2 == 0 && (context.getResources().getConfiguration().screenLayout & 15) == 4) {
+            return;
+        }
+        Window.Callback callback = this.y.getCallback();
+        if (callback != null && !callback.onMenuOpened(i2, agVar.h)) {
+            w(agVar, true);
+            return;
+        }
+        WindowManager windowManager = (WindowManager) context.getSystemService("window");
+        if (windowManager != null && M(agVar, keyEvent)) {
+            zf zfVar = agVar.e;
+            if (zfVar != null && !agVar.n) {
+                View view = agVar.g;
+                if (view != null && (layoutParams = view.getLayoutParams()) != null && layoutParams.width == -1) {
+                    i = -1;
+                }
+                agVar.l = false;
+                WindowManager.LayoutParams layoutParams2 = new WindowManager.LayoutParams(i, -2, 0, 0, 1002, 8519680, -3);
+                layoutParams2.gravity = agVar.c;
+                layoutParams2.windowAnimations = agVar.d;
+                windowManager.addView(agVar.e, layoutParams2);
+                agVar.m = true;
+                if (i2 == 0) {
+                    O();
+                }
+            }
+            if (zfVar == null) {
+                Context contextD = D();
+                TypedValue typedValue = new TypedValue();
+                Resources.Theme themeNewTheme = contextD.getResources().newTheme();
+                themeNewTheme.setTo(contextD.getTheme());
+                themeNewTheme.resolveAttribute(app.homemusic.R.attr.actionBarPopupTheme, typedValue, true);
+                int i3 = typedValue.resourceId;
+                if (i3 != 0) {
+                    themeNewTheme.applyStyle(i3, true);
+                }
+                themeNewTheme.resolveAttribute(app.homemusic.R.attr.panelMenuListTheme, typedValue, true);
+                int i4 = typedValue.resourceId;
+                if (i4 != 0) {
+                    themeNewTheme.applyStyle(i4, true);
+                } else {
+                    themeNewTheme.applyStyle(app.homemusic.R.style.Theme_AppCompat_CompactMenu, true);
+                }
+                ud0 ud0Var = new ud0(contextD, 0);
+                ud0Var.getTheme().setTo(themeNewTheme);
+                agVar.j = ud0Var;
+                TypedArray typedArrayObtainStyledAttributes = ud0Var.obtainStyledAttributes(st3.j);
+                agVar.b = typedArrayObtainStyledAttributes.getResourceId(86, 0);
+                agVar.d = typedArrayObtainStyledAttributes.getResourceId(1, 0);
+                typedArrayObtainStyledAttributes.recycle();
+                agVar.e = new zf(this, agVar.j);
+                agVar.c = 81;
+            } else if (agVar.n && zfVar.getChildCount() > 0) {
+                agVar.e.removeAllViews();
+            }
+            View view2 = agVar.g;
+            if (view2 == null) {
+                if (agVar.h != null) {
+                    if (this.F == null) {
+                        this.F = new rf(this);
+                    }
+                    rf rfVar = this.F;
+                    if (agVar.i == null) {
+                        ub2 ub2Var = new ub2(agVar.j);
+                        agVar.i = ub2Var;
+                        ub2Var.r = rfVar;
+                        qu2 qu2Var = agVar.h;
+                        qu2Var.b(ub2Var, qu2Var.a);
+                    }
+                    ub2 ub2Var2 = agVar.i;
+                    zf zfVar2 = agVar.e;
+                    if (ub2Var2.q == null) {
+                        ub2Var2.q = (ExpandedMenuView) ub2Var2.o.inflate(app.homemusic.R.layout.abc_expanded_menu_layout, (ViewGroup) zfVar2, false);
+                        if (ub2Var2.s == null) {
+                            ub2Var2.s = new tb2(ub2Var2);
+                        }
+                        ub2Var2.q.setAdapter((ListAdapter) ub2Var2.s);
+                        ub2Var2.q.setOnItemClickListener(ub2Var2);
+                    }
+                    ExpandedMenuView expandedMenuView = ub2Var2.q;
+                    agVar.f = expandedMenuView;
+                    if (expandedMenuView != null) {
+                    }
+                }
+                agVar.n = true;
+                return;
+            }
+            agVar.f = view2;
+            if (agVar.f != null) {
+                if (agVar.g == null) {
+                    ub2 ub2Var3 = agVar.i;
+                    if (ub2Var3.s == null) {
+                        ub2Var3.s = new tb2(ub2Var3);
+                    }
+                }
+                ViewGroup.LayoutParams layoutParams3 = agVar.f.getLayoutParams();
+                if (layoutParams3 == null) {
+                    layoutParams3 = new ViewGroup.LayoutParams(-2, -2);
+                }
+                agVar.e.setBackgroundResource(agVar.b);
+                ViewParent parent = agVar.f.getParent();
+                if (parent instanceof ViewGroup) {
+                    ((ViewGroup) parent).removeView(agVar.f);
+                }
+                agVar.e.addView(agVar.f, layoutParams3);
+                if (!agVar.f.hasFocus()) {
+                    agVar.f.requestFocus();
+                }
+            }
+            agVar.n = true;
+            return;
+            i = -2;
+            agVar.l = false;
+            WindowManager.LayoutParams layoutParams4 = new WindowManager.LayoutParams(i, -2, 0, 0, 1002, 8519680, -3);
+            layoutParams4.gravity = agVar.c;
+            layoutParams4.windowAnimations = agVar.d;
+            windowManager.addView(agVar.e, layoutParams4);
+            agVar.m = true;
+            if (i2 == 0) {
+                O();
+            }
+        }
     }
 
-    public final boolean L(ag r3, int r4, KeyEvent r5) {
-        if (r5.isSystem() == false) goto L6;
-        return false;
-    L6:
-        if (r3.k == false) goto L8;
-    L9:
-        qu2 r2 = r3.h;
-        if (r2 != null) goto L12;
-        return false;
-    L12:
-        return r2.performShortcut(r4, r5, 1);
-    L8:
-        if (M(r3, r5) == true) goto L9;
+    public final boolean L(ag agVar, int i, KeyEvent keyEvent) {
+        qu2 qu2Var;
+        if (keyEvent.isSystem()) {
+            return false;
+        }
+        if ((agVar.k || M(agVar, keyEvent)) && (qu2Var = agVar.h) != null) {
+            return qu2Var.performShortcut(i, keyEvent, 1);
+        }
         return false;
     }
 
-    public final boolean M(ag r13, KeyEvent r14) {
-        if (this.d0 == true) goto L81;
-        boolean r0 = r13.k;
-        int r2 = r13.a;
-        if (r0 == false) goto L8;
-        return true;
-    L8:
-        ag r1 = this.Z;
-        if (r1 == null) goto L12;
-        if (r1 == r13) goto L12;
-        w(r1, false);
-    L12:
-        Window.Callback r3 = this.y.getCallback();
-        if (r3 == null) goto L16;
-        r13.g = r3.onCreatePanelView(r2);
-    L16:
-        if (r2 == 0) goto L20;
-        if (r2 == 108) goto L20;
-        boolean r5 = false;
-    L21:
-        if (r5 == false) goto L26;
-        ActionBarOverlayLayout r6 = this.D;
-        if (r6 == null) goto L26;
-        r6.k();
-        ((gv4) r6.r).l = true;
-    L26:
-        if (r13.g != null) goto L102;
-        if (r5 == true) goto L29;
-    L30:
-        qu2 r7 = r13.h;
-        if (r7 != null) goto L33;
-    L34:
-        if (r7 != null) goto L62;
-        Context r8 = this.x;
-        if (r2 == 0) goto L39;
-        if (r2 == 108) goto L39;
-    L51:
-        qu2 r4 = new qu2(r8);
-        r4.e = this;
-        qu2 r9 = r13.h;
-        if (r4 == r9) goto L60;
-        if (r9 == null) goto L56;
-        r9.r(r13.i);
-    L56:
-        r13.h = r4;
-        ub2 r10 = r13.i;
-        if (r10 == null) goto L60;
-        r4.b(r10, r4.a);
-    L60:
-        if (r13.h != null) goto L62;
-    L39:
-        if (this.D == null) goto L51;
-        TypedValue r11 = new TypedValue();
-        Resources.Theme r12 = r8.getTheme();
-        r12.resolveAttribute(app.homemusic.R.attr.actionBarTheme, r11, true);
-        if (r11.resourceId == 0) goto L43;
-        Resources.Theme r15 = r8.getResources().newTheme();
-        r15.setTo(r12);
-        r15.applyStyle(r11.resourceId, true);
-        r15.resolveAttribute(app.homemusic.R.attr.actionBarWidgetTheme, r11, true);
-    L45:
-        if (r11.resourceId == 0) goto L49;
-        if (r15 != null) goto L48;
-        r15 = r8.getResources().newTheme();
-        r15.setTo(r12);
-    L48:
-        r15.applyStyle(r11.resourceId, true);
-    L49:
-        if (r15 == null) goto L51;
-        ud0 r16 = new ud0(r8, 0);
-        r16.getTheme().setTo(r15);
-        r8 = r16;
-        goto L51
-    L43:
-        r12.resolveAttribute(app.homemusic.R.attr.actionBarWidgetTheme, r11, true);
-        r15 = null;
-    L62:
-        if (r5 == false) goto L69;
-        ActionBarOverlayLayout r17 = this.D;
-        if (r17 == null) goto L69;
-        if (this.E != null) goto L68;
-        this.E = new zh0(6, this);
-    L68:
-        r17.l(r13.h, this.E);
-    L69:
-        r13.h.y();
-        if (r3.onCreatePanelMenu(r2, r13.h) == true) goto L82;
-        qu2 r18 = r13.h;
-        if (r18 == null) goto L77;
-        if (r18 == null) goto L76;
-        r18.r(r13.i);
-    L76:
-        r13.h = null;
-    L77:
-        if (r5 == false) goto L81;
-        ActionBarOverlayLayout r19 = this.D;
-        if (r19 == null) goto L81;
-        r19.l(null, this.E);
-        goto L81
-    L82:
-        r13.o = false;
-    L83:
-        r13.h.y();
-        Bundle r20 = r13.p;
-        if (r20 == null) goto L87;
-        r13.h.s(r20);
-        r13.p = null;
-    L87:
-        if (r3.onPreparePanel(0, r13.g, r13.h) == true) goto L94;
-        if (r5 == false) goto L92;
-        ActionBarOverlayLayout r110 = this.D;
-        if (r110 == null) goto L92;
-        r110.l(null, this.E);
-    L92:
-        r13.h.x();
-        return false;
-    L94:
-        if (r14 == null) goto L96;
-        int r111 = r14.getDeviceId();
-    L98:
-        if (KeyCharacterMap.load(r111).getKeyboardType() == 1) goto L100;
-        boolean r112 = true;
-    L101:
-        r13.h.setQwertyMode(r112);
-        r13.h.x();
-        goto L102
-    L100:
-        r112 = false;
-        goto L101
-    L96:
-        r111 = -1;
-        goto L98
-    L33:
-        if (r13.o == false) goto L83;
-    L29:
-        if ((this.A instanceof cv4) == false) goto L30;
-    L102:
-        r13.k = true;
-        r13.l = false;
-        this.Z = r13;
-        return true;
-    L20:
-        r5 = true;
-    L81:
+    /* JADX WARN: Code duplicated, block: B:62:0x00d6  */
+    /* JADX WARN: Code duplicated, block: B:67:0x00e0  */
+    /* JADX WARN: Code duplicated, block: B:71:0x00fc  */
+    /* JADX WARN: Code duplicated, block: B:74:0x0101 A[DONT_INVERT] */
+    /* JADX WARN: Code duplicated, block: B:75:0x0103  */
+    /* JADX WARN: Code duplicated, block: B:82:0x0116  */
+    public final boolean M(ag agVar, KeyEvent keyEvent) {
+        qu2 qu2Var;
+        ActionBarOverlayLayout actionBarOverlayLayout;
+        ActionBarOverlayLayout actionBarOverlayLayout2;
+        Resources.Theme themeNewTheme;
+        ActionBarOverlayLayout actionBarOverlayLayout3;
+        ActionBarOverlayLayout actionBarOverlayLayout4;
+        if (!this.d0) {
+            boolean z = agVar.k;
+            int i = agVar.a;
+            if (z) {
+                return true;
+            }
+            ag agVar2 = this.Z;
+            if (agVar2 != null && agVar2 != agVar) {
+                w(agVar2, false);
+            }
+            Window.Callback callback = this.y.getCallback();
+            if (callback != null) {
+                agVar.g = callback.onCreatePanelView(i);
+            }
+            boolean z2 = i == 0 || i == 108;
+            if (z2 && (actionBarOverlayLayout4 = this.D) != null) {
+                actionBarOverlayLayout4.k();
+                ((gv4) actionBarOverlayLayout4.r).l = true;
+            }
+            if (agVar.g == null && (!z2 || !(this.A instanceof cv4))) {
+                qu2 qu2Var2 = agVar.h;
+                if (qu2Var2 == null || agVar.o) {
+                    if (qu2Var2 == null) {
+                        Context context = this.x;
+                        if ((i == 0 || i == 108) && this.D != null) {
+                            TypedValue typedValue = new TypedValue();
+                            Resources.Theme theme = context.getTheme();
+                            theme.resolveAttribute(app.homemusic.R.attr.actionBarTheme, typedValue, true);
+                            if (typedValue.resourceId != 0) {
+                                themeNewTheme = context.getResources().newTheme();
+                                themeNewTheme.setTo(theme);
+                                themeNewTheme.applyStyle(typedValue.resourceId, true);
+                                themeNewTheme.resolveAttribute(app.homemusic.R.attr.actionBarWidgetTheme, typedValue, true);
+                            } else {
+                                theme.resolveAttribute(app.homemusic.R.attr.actionBarWidgetTheme, typedValue, true);
+                                themeNewTheme = null;
+                            }
+                            if (typedValue.resourceId != 0) {
+                                if (themeNewTheme == null) {
+                                    themeNewTheme = context.getResources().newTheme();
+                                    themeNewTheme.setTo(theme);
+                                }
+                                themeNewTheme.applyStyle(typedValue.resourceId, true);
+                            }
+                            if (themeNewTheme != null) {
+                                ud0 ud0Var = new ud0(context, 0);
+                                ud0Var.getTheme().setTo(themeNewTheme);
+                                context = ud0Var;
+                            }
+                        }
+                        qu2 qu2Var3 = new qu2(context);
+                        qu2Var3.e = this;
+                        qu2 qu2Var4 = agVar.h;
+                        if (qu2Var3 != qu2Var4) {
+                            if (qu2Var4 != null) {
+                                qu2Var4.r(agVar.i);
+                            }
+                            agVar.h = qu2Var3;
+                            ub2 ub2Var = agVar.i;
+                            if (ub2Var != null) {
+                                qu2Var3.b(ub2Var, qu2Var3.a);
+                            }
+                        }
+                        if (agVar.h != null) {
+                            if (z2 && (actionBarOverlayLayout2 = this.D) != null) {
+                                if (this.E == null) {
+                                    this.E = new zh0(6, this);
+                                }
+                                actionBarOverlayLayout2.l(agVar.h, this.E);
+                            }
+                            agVar.h.y();
+                            if (callback.onCreatePanelMenu(i, agVar.h)) {
+                                agVar.o = false;
+                            } else {
+                                qu2Var = agVar.h;
+                                if (qu2Var != null) {
+                                    if (qu2Var != null) {
+                                        qu2Var.r(agVar.i);
+                                    }
+                                    agVar.h = null;
+                                }
+                                if (z2 && (actionBarOverlayLayout = this.D) != null) {
+                                    actionBarOverlayLayout.l(null, this.E);
+                                }
+                            }
+                        }
+                    } else {
+                        if (z2) {
+                            if (this.E == null) {
+                                this.E = new zh0(6, this);
+                            }
+                            actionBarOverlayLayout2.l(agVar.h, this.E);
+                        }
+                        agVar.h.y();
+                        if (callback.onCreatePanelMenu(i, agVar.h)) {
+                            qu2Var = agVar.h;
+                            if (qu2Var != null) {
+                                if (qu2Var != null) {
+                                    qu2Var.r(agVar.i);
+                                }
+                                agVar.h = null;
+                            }
+                            if (z2) {
+                                actionBarOverlayLayout.l(null, this.E);
+                            }
+                        } else {
+                            agVar.o = false;
+                        }
+                    }
+                }
+                agVar.h.y();
+                Bundle bundle = agVar.p;
+                if (bundle != null) {
+                    agVar.h.s(bundle);
+                    agVar.p = null;
+                }
+                if (!callback.onPreparePanel(0, agVar.g, agVar.h)) {
+                    if (z2 && (actionBarOverlayLayout3 = this.D) != null) {
+                        actionBarOverlayLayout3.l(null, this.E);
+                    }
+                    agVar.h.x();
+                    return false;
+                }
+                agVar.h.setQwertyMode(KeyCharacterMap.load(keyEvent != null ? keyEvent.getDeviceId() : -1).getKeyboardType() != 1);
+                agVar.h.x();
+            }
+            agVar.k = true;
+            agVar.l = false;
+            this.Z = agVar;
+            return true;
+        }
         return false;
     }
 
     public final void N() {
-        if (this.M == true) goto L6;
-        return;
-    L6:
-        throw new AndroidRuntimeException("Window feature must be requested before adding content");
+        if (this.M) {
+            throw new AndroidRuntimeException("Window feature must be requested before adding content");
+        }
     }
 
     public final void O() {
-        if (Build.VERSION.SDK_INT < 33) goto L23;
-        boolean r1 = false;
-        if (this.s0 != null) goto L8;
-    L13:
-        if (r1 == true) goto L15;
-    L18:
-        if (r1 == true) goto L24;
-        OnBackInvokedCallback r0 = this.t0;
-        if (r0 == null) goto L25;
-        wf.c(this.s0, r0);
-        this.t0 = null;
-        return;
-    L25:
-        return;
-    L24:
-        return;
-    L15:
-        if (this.t0 != null) goto L18;
-        this.t0 = wf.b(this.s0, this);
-        return;
-    L8:
-        if (F(0).m == false) goto L11;
-    L9:
-        r1 = true;
-        goto L13
-    L11:
-        if (this.G == null) goto L13;
+        OnBackInvokedCallback onBackInvokedCallback;
+        if (Build.VERSION.SDK_INT >= 33) {
+            boolean z = false;
+            if (this.s0 != null && (F(0).m || this.G != null)) {
+                z = true;
+            }
+            if (z && this.t0 == null) {
+                this.t0 = wf.b(this.s0, this);
+            } else {
+                if (z || (onBackInvokedCallback = this.t0) == null) {
+                    return;
+                }
+                wf.c(this.s0, onBackInvokedCallback);
+                this.t0 = null;
+            }
+        }
     }
 
     @Override // defpackage.pf
     public final void c() {
-        LayoutInflater r0 = LayoutInflater.from(this.x);
-        if (r0.getFactory() != null) goto L7;
-        r0.setFactory2(this);
-        return;
-    L7:
-        if ((r0.getFactory2() instanceof bg) == true) goto L10;
-        Log.i("AppCompatDelegate", "The Activity's LayoutInflater already has a Factory installed so we can not install AppCompat's");
-        return;
+        LayoutInflater layoutInflaterFrom = LayoutInflater.from(this.x);
+        if (layoutInflaterFrom.getFactory() == null) {
+            layoutInflaterFrom.setFactory2(this);
+        } else {
+            if (layoutInflaterFrom.getFactory2() instanceof bg) {
+                return;
+            }
+            Log.i("AppCompatDelegate", "The Activity's LayoutInflater already has a Factory installed so we can not install AppCompat's");
+        }
     }
 
     @Override // defpackage.pf
     public final void d() {
-        if (this.A == null) goto L9;
-        G();
-        if (this.A.L() == true) goto L10;
-        H(0);
-        return;
-    L10:
-        return;
+        if (this.A != null) {
+            G();
+            if (this.A.L()) {
+                return;
+            }
+            H(0);
+        }
     }
 
     @Override // defpackage.pf
     public final void f() {
+        String strA;
         this.b0 = true;
         r(false, true);
         C();
-        Object r1 = this.w;
-        if ((r1 instanceof Activity) == true) goto L26;
-    L24:
+        Object obj = this.w;
+        if (obj instanceof Activity) {
+            try {
+                Activity activity = (Activity) obj;
+                try {
+                    strA = te5.A(activity, activity.getComponentName());
+                } catch (PackageManager.NameNotFoundException e) {
+                    throw new IllegalArgumentException(e);
+                }
+            } catch (IllegalArgumentException unused) {
+                strA = null;
+            }
+            if (strA != null) {
+                l93 l93Var = this.A;
+                if (l93Var == null) {
+                    this.o0 = true;
+                } else {
+                    l93Var.e0(true);
+                }
+            }
+            synchronized (pf.u) {
+                pf.h(this);
+                pf.t.add(new WeakReference(this));
+            }
+        }
         this.e0 = new Configuration(this.x.getResources().getConfiguration());
         this.c0 = true;
-        return;
-    L26:
-        Activity r2 = (Activity) r1;     // Catch: IllegalArgumentException -> L10
-        String r3 = te5.A(r2, r2.getComponentName());     // Catch: PackageManager.NameNotFoundException -> L7 IllegalArgumentException -> L10
-    L11:
-        if (r3 == null) goto L16;
-        l93 r4 = this.A;
-        if (r4 != null) goto L15;
-        this.o0 = true;
-        goto L16
-    L15:
-        r4.e0(true);
-    L16:
-        Object r5 = pf.u;
-        monitor-enter(r5);
-        pf.h(this);     // Catch: Throwable -> L21
-        pf.t.add(new WeakReference(this));     // Catch: Throwable -> L21
-        monitor-exit(r5);     // Catch: Throwable -> L21
-    L21:
-        th = move-exception;
-        throw th;
-    L7:
-        e = move-exception;
-        throw new IllegalArgumentException(e);     // Catch: IllegalArgumentException -> L10
-    L10:
-        r3 = null;
-        goto L11
     }
 
+    /* JADX WARN: Code duplicated, block: B:22:0x004d  */
     @Override // defpackage.pf
     public final void g() {
-        if ((this.w instanceof Activity) == false) goto L13;
-        Object r0 = pf.u;
-        monitor-enter(r0);
-        pf.h(this);     // Catch: Throwable -> L9
-        monitor-exit(r0);     // Catch: Throwable -> L9
-    L9:
-        th = move-exception;
-        throw th;
-    L13:
-        if (this.l0 == false) goto L15;
-        this.y.getDecorView().removeCallbacks(this.n0);
-    L15:
+        if (this.w instanceof Activity) {
+            synchronized (pf.u) {
+                pf.h(this);
+            }
+        }
+        if (this.l0) {
+            this.y.getDecorView().removeCallbacks(this.n0);
+        }
         this.d0 = true;
-        if (this.f0 == (-100)) goto L22;
-        Object r1 = this.w;
-        if ((r1 instanceof Activity) == false) goto L22;
-        if (((Activity) r1).isChangingConfigurations() == false) goto L22;
-        u0.put(this.w.getClass().getName(), Integer.valueOf(this.f0));
-    L23:
-        l93 r2 = this.A;
-        if (r2 == null) goto L26;
-        r2.O();
-    L26:
-        yf r3 = this.j0;
-        if (r3 == null) goto L29;
-        r3.c();
-    L29:
-        yf r4 = this.k0;
-        if (r4 == null) goto L35;
-        r4.c();
-        return;
-    L35:
-        return;
-    L22:
-        u0.remove(this.w.getClass().getName());
-        goto L23
+        if (this.f0 != -100) {
+            Object obj = this.w;
+            if ((obj instanceof Activity) && ((Activity) obj).isChangingConfigurations()) {
+                u0.put(this.w.getClass().getName(), Integer.valueOf(this.f0));
+            } else {
+                u0.remove(this.w.getClass().getName());
+            }
+        } else {
+            u0.remove(this.w.getClass().getName());
+        }
+        l93 l93Var = this.A;
+        if (l93Var != null) {
+            l93Var.O();
+        }
+        yf yfVar = this.j0;
+        if (yfVar != null) {
+            yfVar.c();
+        }
+        yf yfVar2 = this.k0;
+        if (yfVar2 != null) {
+            yfVar2.c();
+        }
     }
 
     @Override // defpackage.pf
-    public final boolean i(int r6) {
-        if (r6 != 8) goto L6;
-        Log.i("AppCompatDelegate", "You should now use the AppCompatDelegate.FEATURE_SUPPORT_ACTION_BAR id when requesting this feature.");
-        r6 = 108;
-    L9:
-        if (this.W == false) goto L13;
-        if (r6 != 108) goto L13;
-        return false;
-    L13:
-        if (this.S == false) goto L16;
-        if (r6 != 1) goto L16;
-        this.S = false;
-    L16:
-        if (r6 != 1) goto L18;
-        N();
-        this.W = true;
-        return true;
-    L18:
-        if (r6 != 2) goto L20;
-        N();
-        this.Q = true;
-        return true;
-    L20:
-        if (r6 != 5) goto L22;
-        N();
-        this.R = true;
-        return true;
-    L22:
-        if (r6 == 10) goto L31;
-        if (r6 == 108) goto L29;
-        if (r6 != 109) goto L26;
+    public final boolean i(int i) {
+        if (i == 8) {
+            Log.i("AppCompatDelegate", "You should now use the AppCompatDelegate.FEATURE_SUPPORT_ACTION_BAR id when requesting this feature.");
+            i = 108;
+        } else if (i == 9) {
+            Log.i("AppCompatDelegate", "You should now use the AppCompatDelegate.FEATURE_SUPPORT_ACTION_BAR_OVERLAY id when requesting this feature.");
+            i = 109;
+        }
+        if (this.W && i == 108) {
+            return false;
+        }
+        if (this.S && i == 1) {
+            this.S = false;
+        }
+        if (i == 1) {
+            N();
+            this.W = true;
+            return true;
+        }
+        if (i == 2) {
+            N();
+            this.Q = true;
+            return true;
+        }
+        if (i == 5) {
+            N();
+            this.R = true;
+            return true;
+        }
+        if (i == 10) {
+            N();
+            this.U = true;
+            return true;
+        }
+        if (i == 108) {
+            N();
+            this.S = true;
+            return true;
+        }
+        if (i != 109) {
+            return this.y.requestFeature(i);
+        }
         N();
         this.T = true;
         return true;
-    L26:
-        return this.y.requestFeature(r6);
-    L29:
-        N();
-        this.S = true;
-        return true;
-    L31:
-        N();
-        this.U = true;
-        return true;
-    L6:
-        if (r6 != 9) goto L9;
-        Log.i("AppCompatDelegate", "You should now use the AppCompatDelegate.FEATURE_SUPPORT_ACTION_BAR_OVERLAY id when requesting this feature.");
-        r6 = 109;
-        goto L9
     }
 
     @Override // defpackage.pf
-    public final void k(int r3) {
+    public final void k(int i) {
         B();
-        ViewGroup r0 = (ViewGroup) this.N.findViewById(R.id.content);
-        r0.removeAllViews();
-        LayoutInflater.from(this.x).inflate(r3, r0);
+        ViewGroup viewGroup = (ViewGroup) this.N.findViewById(R.id.content);
+        viewGroup.removeAllViews();
+        LayoutInflater.from(this.x).inflate(i, viewGroup);
         this.z.a(this.y.getCallback());
     }
 
     @Override // defpackage.pf
-    public final void l(View r3) {
+    public final void l(View view) {
         B();
-        ViewGroup r0 = (ViewGroup) this.N.findViewById(R.id.content);
-        r0.removeAllViews();
-        r0.addView(r3);
+        ViewGroup viewGroup = (ViewGroup) this.N.findViewById(R.id.content);
+        viewGroup.removeAllViews();
+        viewGroup.addView(view);
         this.z.a(this.y.getCallback());
     }
 
+    /* JADX WARN: Code duplicated, block: B:20:0x002a  */
     @Override // defpackage.ou2
-    public final boolean m(qu2 r7, MenuItem r8) {
-        Window.Callback r0 = this.y.getCallback();
-        if (r0 != null) goto L5;
-    L22:
+    public final boolean m(qu2 qu2Var, MenuItem menuItem) {
+        ag agVar;
+        Window.Callback callback = this.y.getCallback();
+        if (callback != null && !this.d0) {
+            qu2 qu2VarK = qu2Var.k();
+            ag[] agVarArr = this.Y;
+            int length = agVarArr != null ? agVarArr.length : 0;
+            for (int i = 0; i < length; i++) {
+                agVar = agVarArr[i];
+                if (agVar != null && agVar.h == qu2VarK) {
+                    if (agVar != null) {
+                        return callback.onMenuItemSelected(agVar.a, menuItem);
+                    }
+                }
+            }
+            agVar = null;
+            if (agVar != null) {
+                return callback.onMenuItemSelected(agVar.a, menuItem);
+            }
+        }
         return false;
-    L5:
-        if (this.d0 == true) goto L22;
-        qu2 r9 = r7.k();
-        ag[] r6 = this.Y;
-        if (r6 == null) goto L9;
-        int r2 = r6.length;
-    L10:
-        int r3 = 0;
-    L11:
-        if (r3 >= r2) goto L18;
-        ag r4 = r6[r3];
-        if (r4 == null) goto L17;
-        if (r4.h != r9) goto L17;
-    L19:
-        if (r4 == null) goto L22;
-        return r0.onMenuItemSelected(r4.a, r8);
-    L17:
-        r3 = r3 + 1;
-        goto L11
-    L18:
-        r4 = null;
-        goto L19
-    L9:
-        r2 = 0;
-        goto L10
     }
 
     @Override // defpackage.pf
-    public final void n(View r3, ViewGroup.LayoutParams r4) {
+    public final void n(View view, ViewGroup.LayoutParams layoutParams) {
         B();
-        ViewGroup r0 = (ViewGroup) this.N.findViewById(R.id.content);
-        r0.removeAllViews();
-        r0.addView(r3, r4);
+        ViewGroup viewGroup = (ViewGroup) this.N.findViewById(R.id.content);
+        viewGroup.removeAllViews();
+        viewGroup.addView(view, layoutParams);
         this.z.a(this.y.getCallback());
     }
 
     @Override // android.view.LayoutInflater.Factory2
-    public final View onCreateView(View r9, String r10, Context r11, AttributeSet r12) {
-        View r1 = null;
-        if (this.r0 != null) goto L11;
-        int[] r13 = st3.j;
-        Context r0 = this.x;
-        TypedArray r14 = r0.obtainStyledAttributes(r13);
-        String r2 = r14.getString(116);
-        r14.recycle();
-        if (r2 != null) goto L143;
-        this.r0 = new th();
-        goto L11
-    L143:
-        this.r0 = (th) r0.getClassLoader().loadClass(r2).getDeclaredConstructor(null).newInstance(null);     // Catch: Throwable -> L9
-    L9:
-        th = move-exception;
-        Log.i("AppCompatDelegate", "Failed to instantiate custom view inflater " + r2 + ". Falling back to default.", th);
-        this.r0 = new th();
-    L11:
-        th r8 = this.r0;
-        int r15 = a45.a;
-        r8.getClass();
-        TypedArray r16 = r11.obtainStyledAttributes(r12, st3.A, 0, 0);
-        byte r3 = 4;
-        int r4 = r16.getResourceId(4, 0);
-        if (r4 == 0) goto L14;
-        Log.i("AppCompatViewInflater", "app:theme is now deprecated. Please move to using android:theme instead.");
-    L14:
-        r16.recycle();
-        if (r4 != 0) goto L17;
-    L21:
-        Context r17 = r11;
-    L22:
-        r10.getClass();
-        switch(r10.hashCode()) {
-            case -1946472170: goto L77;
-            case -1455429095: goto L73;
-            case -1346021293: goto L69;
-            case -938935918: goto L65;
-            case -937446323: goto L62;
-            case -658531749: goto L58;
-            case -339785223: goto L54;
-            case 776382189: goto L50;
-            case 799298502: goto L46;
-            case 1125864064: goto L42;
-            case 1413872058: goto L38;
-            case 1601505219: goto L34;
-            case 1666676343: goto L30;
-            case 2001146706: goto L26;
-            default: goto L24;
-        };
-    L24:
-        r3 = -1;
-    L80:
-        switch(r3) {
-            case 0: goto L95;
-            case 1: goto L94;
-            case 2: goto L93;
-            case 3: goto L92;
-            case 4: goto L91;
-            case 5: goto L90;
-            case 6: goto L89;
-            case 7: goto L88;
-            case 8: goto L87;
-            case 9: goto L86;
-            case 10: goto L85;
-            case 11: goto L84;
-            case 12: goto L83;
-            case 13: goto L82;
-            default: goto L81;
-        };
-    L81:
-        View r5 = null;
-    L96:
-        if (r5 != null) goto L119;
-        if (r11 == r17) goto L119;
-        Object[] r18 = r8.a;
-        if (r10.equals("view") == false) goto L145;
-        r10 = r12.getAttributeValue(null, "class");
-    L145:
-        r18[0] = r17;     // Catch: Throwable -> L110 Exception -> L117
-        r18[1] = r12;     // Catch: Throwable -> L110 Exception -> L117
-        if ((-1) != r10.indexOf(46)) goto L113;
-        int r6 = 0;
-    L104:
-        String[] r7 = th.g;     // Catch: Throwable -> L110 Exception -> L117
-        if (r6 >= 3) goto L112;
-        View r19 = r8.f(r17, r10, r7[r6]);     // Catch: Throwable -> L110 Exception -> L117
-        if (r19 != null) goto L108;
-        r6 = r6 + 1;
-        goto L104
-    L108:
-        r18[0] = null;
-        r18[1] = null;
-        r1 = r19;
-    L118:
-        r5 = r1;
-        goto L119
-    L112:
-        r18[0] = null;
-        r18[1] = null;
-        goto L118
-    L113:
-        View r20 = r8.f(r17, r10, null);     // Catch: Throwable -> L110 Exception -> L117
-        r18[0] = null;
-        r18[1] = null;
-        r1 = r20;
-    L117:
-        r18[0] = null;
-        r18[1] = null;
-    L110:
-        th = move-exception;
-        r18[0] = null;
-        r18[1] = null;
-        throw th;
-    L119:
-        if (r5 == null) goto L142;
-        Context r21 = r5.getContext();
-        if ((r21 instanceof ContextWrapper) == false) goto L130;
-        if (r5.hasOnClickListeners() == false) goto L130;
-        TypedArray r22 = r21.obtainStyledAttributes(r12, th.c);
-        String r110 = r22.getString(0);
-        if (r110 == null) goto L128;
-        r5.setOnClickListener(new sh(r5, r110));
-    L128:
-        r22.recycle();
-    L130:
-        if (Build.VERSION.SDK_INT > 28) goto L142;
-        TypedArray r23 = r17.obtainStyledAttributes(r12, th.d);
-        if (r23.hasValue(0) == false) goto L135;
-        boolean r111 = r23.getBoolean(0, false);
-        WeakHashMap r112 = j65.a;
-        new w55(app.homemusic.R.id.tag_accessibility_heading, Boolean.class, 0, 28, 3).f(r5, Boolean.valueOf(r111));
-    L135:
-        r23.recycle();
-        TypedArray r24 = r17.obtainStyledAttributes(r12, th.e);
-        if (r24.hasValue(0) == false) goto L138;
-        j65.p(r5, r24.getString(0));
-    L138:
-        r24.recycle();
-        TypedArray r25 = r17.obtainStyledAttributes(r12, th.f);
-        if (r25.hasValue(0) == false) goto L141;
-        boolean r26 = r25.getBoolean(0, false);
-        WeakHashMap r113 = j65.a;
-        new w55(app.homemusic.R.id.tag_screen_reader_focusable, Boolean.class, 0, 28, 0).f(r5, Boolean.valueOf(r26));
-    L141:
-        r25.recycle();
-    L142:
-        return r5;
-    L82:
-        r5 = r8.b(r17, r12);
-        goto L96
-    L83:
-        r5 = new hg(r17, r12, app.homemusic.R.attr.editTextStyle);
-        goto L96
-    L84:
-        r5 = r8.c(r17, r12);
-        goto L96
-    L85:
-        r5 = r8.a(r17, r12);
-        goto L96
-    L86:
-        r5 = new jg(r17, r12, 0);
-        goto L96
-    L87:
-        r5 = new AppCompatToggleButton(r17, r12);
-        goto L96
-    L88:
-        r5 = r8.d(r17, r12);
-        goto L96
-    L89:
-        r5 = new bh(r17, r12);
-        goto L96
-    L90:
-        r5 = new pg(r17, r12, app.homemusic.R.attr.seekBarStyle);
-        goto L96
-    L91:
-        r5 = new AppCompatImageButton(r17, r12);
-        goto L96
-    L92:
-        r5 = r8.e(r17, r12);
-        goto L96
-    L93:
-        r5 = new kg(r17, r12);
-        goto L96
-    L94:
-        r5 = new jf(r17, r12);
-        goto L96
-    L95:
-        r5 = new ng(r17, r12);
-        goto L96
-    L26:
-        if (r10.equals("Button") == false) goto L148;
-        r3 = 13;
-        goto L80
-    L148:
-        r3 = -1;
-        goto L80
-    L30:
-        if (r10.equals("EditText") == false) goto L149;
-        r3 = 12;
-        goto L80
-    L149:
-        r3 = -1;
-        goto L80
-    L34:
-        if (r10.equals("CheckBox") == false) goto L150;
-        r3 = 11;
-        goto L80
-    L150:
-        r3 = -1;
-        goto L80
-    L38:
-        if (r10.equals("AutoCompleteTextView") == false) goto L151;
-        r3 = 10;
-        goto L80
-    L151:
-        r3 = -1;
-        goto L80
-    L42:
-        if (r10.equals("ImageView") == false) goto L152;
-        r3 = 9;
-        goto L80
-    L152:
-        r3 = -1;
-        goto L80
-    L46:
-        if (r10.equals("ToggleButton") == false) goto L153;
-        r3 = 8;
-        goto L80
-    L153:
-        r3 = -1;
-        goto L80
-    L50:
-        if (r10.equals("RadioButton") == false) goto L154;
-        r3 = 7;
-        goto L80
-    L154:
-        r3 = -1;
-        goto L80
-    L54:
-        if (r10.equals("Spinner") == false) goto L155;
-        r3 = 6;
-        goto L80
-    L155:
-        r3 = -1;
-        goto L80
-    L58:
-        if (r10.equals("SeekBar") == false) goto L156;
-        r3 = 5;
-        goto L80
-    L156:
-        r3 = -1;
-        goto L80
-    L62:
-        if (r10.equals("ImageButton") == true) goto L80;
-        r3 = -1;
-        goto L80
-    L65:
-        if (r10.equals("TextView") == false) goto L158;
-        r3 = 3;
-        goto L80
-    L158:
-        r3 = -1;
-        goto L80
-    L69:
-        if (r10.equals("MultiAutoCompleteTextView") == false) goto L159;
-        r3 = 2;
-        goto L80
-    L159:
-        r3 = -1;
-        goto L80
-    L73:
-        if (r10.equals("CheckedTextView") == false) goto L160;
-        r3 = 1;
-        goto L80
-    L160:
-        r3 = -1;
-        goto L80
-    L77:
-        if (r10.equals("RatingBar") == false) goto L161;
-        r3 = 0;
-        goto L80
-    L161:
-        r3 = -1;
-        goto L80
-    L17:
-        if ((r11 instanceof ud0) == true) goto L19;
-    L20:
-        r17 = new ud0(r11, r4);
-        goto L22
-    L19:
-        if (((ud0) r11).a == r4) goto L21;
-        goto L20
+    public final View onCreateView(View view, String str, Context context, AttributeSet attributeSet) {
+        View ngVar;
+        View view2 = null;
+        if (this.r0 == null) {
+            int[] iArr = st3.j;
+            Context context2 = this.x;
+            TypedArray typedArrayObtainStyledAttributes = context2.obtainStyledAttributes(iArr);
+            String string = typedArrayObtainStyledAttributes.getString(116);
+            typedArrayObtainStyledAttributes.recycle();
+            if (string == null) {
+                this.r0 = new th();
+            } else {
+                try {
+                    this.r0 = (th) context2.getClassLoader().loadClass(string).getDeclaredConstructor(null).newInstance(null);
+                } catch (Throwable th) {
+                    Log.i("AppCompatDelegate", "Failed to instantiate custom view inflater " + string + ". Falling back to default.", th);
+                    this.r0 = new th();
+                }
+            }
+        }
+        th thVar = this.r0;
+        int i = a45.a;
+        thVar.getClass();
+        TypedArray typedArrayObtainStyledAttributes2 = context.obtainStyledAttributes(attributeSet, st3.A, 0, 0);
+        byte b = 4;
+        int resourceId = typedArrayObtainStyledAttributes2.getResourceId(4, 0);
+        if (resourceId != 0) {
+            Log.i("AppCompatViewInflater", "app:theme is now deprecated. Please move to using android:theme instead.");
+        }
+        typedArrayObtainStyledAttributes2.recycle();
+        Context ud0Var = (resourceId == 0 || ((context instanceof ud0) && ((ud0) context).a == resourceId)) ? context : new ud0(context, resourceId);
+        str.getClass();
+        switch (str.hashCode()) {
+            case -1946472170:
+                b = !str.equals("RatingBar") ? (byte) -1 : (byte) 0;
+                break;
+            case -1455429095:
+                b = !str.equals("CheckedTextView") ? (byte) -1 : (byte) 1;
+                break;
+            case -1346021293:
+                b = !str.equals("MultiAutoCompleteTextView") ? (byte) -1 : (byte) 2;
+                break;
+            case -938935918:
+                b = !str.equals("TextView") ? (byte) -1 : (byte) 3;
+                break;
+            case -937446323:
+                if (!str.equals("ImageButton")) {
+                    b = -1;
+                }
+                break;
+            case -658531749:
+                b = !str.equals("SeekBar") ? (byte) -1 : (byte) 5;
+                break;
+            case -339785223:
+                b = !str.equals("Spinner") ? (byte) -1 : (byte) 6;
+                break;
+            case 776382189:
+                b = !str.equals("RadioButton") ? (byte) -1 : (byte) 7;
+                break;
+            case 799298502:
+                b = !str.equals("ToggleButton") ? (byte) -1 : (byte) 8;
+                break;
+            case 1125864064:
+                b = !str.equals("ImageView") ? (byte) -1 : (byte) 9;
+                break;
+            case 1413872058:
+                b = !str.equals("AutoCompleteTextView") ? (byte) -1 : (byte) 10;
+                break;
+            case 1601505219:
+                b = !str.equals("CheckBox") ? (byte) -1 : (byte) 11;
+                break;
+            case 1666676343:
+                b = !str.equals("EditText") ? (byte) -1 : (byte) 12;
+                break;
+            case 2001146706:
+                b = !str.equals("Button") ? (byte) -1 : (byte) 13;
+                break;
+            default:
+                b = -1;
+                break;
+        }
+        switch (b) {
+            case 0:
+                ngVar = new ng(ud0Var, attributeSet);
+                break;
+            case 1:
+                ngVar = new jf(ud0Var, attributeSet);
+                break;
+            case 2:
+                ngVar = new kg(ud0Var, attributeSet);
+                break;
+            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
+                ngVar = thVar.e(ud0Var, attributeSet);
+                break;
+            case 4:
+                ngVar = new AppCompatImageButton(ud0Var, attributeSet);
+                break;
+            case 5:
+                ngVar = new pg(ud0Var, attributeSet, app.homemusic.R.attr.seekBarStyle);
+                break;
+            case 6:
+                ngVar = new bh(ud0Var, attributeSet);
+                break;
+            case 7:
+                ngVar = thVar.d(ud0Var, attributeSet);
+                break;
+            case 8:
+                ngVar = new AppCompatToggleButton(ud0Var, attributeSet);
+                break;
+            case 9:
+                ngVar = new jg(ud0Var, attributeSet, 0);
+                break;
+            case 10:
+                ngVar = thVar.a(ud0Var, attributeSet);
+                break;
+            case 11:
+                ngVar = thVar.c(ud0Var, attributeSet);
+                break;
+            case 12:
+                ngVar = new hg(ud0Var, attributeSet, app.homemusic.R.attr.editTextStyle);
+                break;
+            case 13:
+                ngVar = thVar.b(ud0Var, attributeSet);
+                break;
+            default:
+                ngVar = null;
+                break;
+        }
+        if (ngVar == null && context != ud0Var) {
+            Object[] objArr = thVar.a;
+            if (str.equals("view")) {
+                str = attributeSet.getAttributeValue(null, "class");
+            }
+            try {
+                objArr[0] = ud0Var;
+                objArr[1] = attributeSet;
+                if (-1 == str.indexOf(46)) {
+                    int i2 = 0;
+                    while (true) {
+                        String[] strArr = th.g;
+                        if (i2 < 3) {
+                            View viewF = thVar.f(ud0Var, str, strArr[i2]);
+                            if (viewF != null) {
+                                objArr[0] = null;
+                                objArr[1] = null;
+                                view2 = viewF;
+                            } else {
+                                i2++;
+                            }
+                        } else {
+                            objArr[0] = null;
+                            objArr[1] = null;
+                        }
+                    }
+                } else {
+                    View viewF2 = thVar.f(ud0Var, str, null);
+                    objArr[0] = null;
+                    objArr[1] = null;
+                    view2 = viewF2;
+                }
+            } catch (Exception unused) {
+                objArr[0] = null;
+                objArr[1] = null;
+            } catch (Throwable th2) {
+                objArr[0] = null;
+                objArr[1] = null;
+                throw th2;
+            }
+            ngVar = view2;
+        }
+        if (ngVar != null) {
+            Context context3 = ngVar.getContext();
+            if ((context3 instanceof ContextWrapper) && ngVar.hasOnClickListeners()) {
+                TypedArray typedArrayObtainStyledAttributes3 = context3.obtainStyledAttributes(attributeSet, th.c);
+                String string2 = typedArrayObtainStyledAttributes3.getString(0);
+                if (string2 != null) {
+                    ngVar.setOnClickListener(new sh(ngVar, string2));
+                }
+                typedArrayObtainStyledAttributes3.recycle();
+            }
+            if (Build.VERSION.SDK_INT <= 28) {
+                TypedArray typedArrayObtainStyledAttributes4 = ud0Var.obtainStyledAttributes(attributeSet, th.d);
+                if (typedArrayObtainStyledAttributes4.hasValue(0)) {
+                    boolean z = typedArrayObtainStyledAttributes4.getBoolean(0, false);
+                    WeakHashMap weakHashMap = j65.a;
+                    new w55(app.homemusic.R.id.tag_accessibility_heading, Boolean.class, 0, 28, 3).f(ngVar, Boolean.valueOf(z));
+                }
+                typedArrayObtainStyledAttributes4.recycle();
+                TypedArray typedArrayObtainStyledAttributes5 = ud0Var.obtainStyledAttributes(attributeSet, th.e);
+                if (typedArrayObtainStyledAttributes5.hasValue(0)) {
+                    j65.p(ngVar, typedArrayObtainStyledAttributes5.getString(0));
+                }
+                typedArrayObtainStyledAttributes5.recycle();
+                TypedArray typedArrayObtainStyledAttributes6 = ud0Var.obtainStyledAttributes(attributeSet, th.f);
+                if (typedArrayObtainStyledAttributes6.hasValue(0)) {
+                    boolean z2 = typedArrayObtainStyledAttributes6.getBoolean(0, false);
+                    WeakHashMap weakHashMap2 = j65.a;
+                    new w55(app.homemusic.R.id.tag_screen_reader_focusable, Boolean.class, 0, 28, 0).f(ngVar, Boolean.valueOf(z2));
+                }
+                typedArrayObtainStyledAttributes6.recycle();
+            }
+        }
+        return ngVar;
     }
 
     @Override // defpackage.pf
-    public final void p(CharSequence r2) {
-        this.C = r2;
-        ActionBarOverlayLayout r0 = this.D;
-        if (r0 == null) goto L6;
-        r0.setWindowTitle(r2);
-        return;
-    L6:
-        l93 r1 = this.A;
-        if (r1 == null) goto L10;
-        r1.l0(r2);
-        return;
-    L10:
-        TextView r3 = this.O;
-        if (r3 == null) goto L14;
-        r3.setText(r2);
-        return;
+    public final void p(CharSequence charSequence) {
+        this.C = charSequence;
+        ActionBarOverlayLayout actionBarOverlayLayout = this.D;
+        if (actionBarOverlayLayout != null) {
+            actionBarOverlayLayout.setWindowTitle(charSequence);
+            return;
+        }
+        l93 l93Var = this.A;
+        if (l93Var != null) {
+            l93Var.l0(charSequence);
+            return;
+        }
+        TextView textView = this.O;
+        if (textView != null) {
+            textView.setText(charSequence);
+        }
     }
 
+    /* JADX WARN: Code duplicated, block: B:70:0x00f7  */
     /* JADX WARN: Multi-variable type inference failed */
-    public final boolean r(boolean r14, boolean r15) {
-        boolean r1 = false;
-        if (this.d0 == false) goto L5;
-        return false;
-    L5:
-        int r2 = this.f0;
-        if (r2 != (-100)) goto L9;
-        r2 = pf.o;
-    L9:
-        Context r0 = this.x;
-        int r3 = I(r0, r2);
-        int r4 = Build.VERSION.SDK_INT;
-        LongSparseArray r6 = null;
-        if (r4 >= 33) goto L12;
-        wd2 r5 = t(r0);
-    L13:
-        if (r15 == true) goto L16;
-        if (r5 == null) goto L16;
-        r5 = uf.b(r0.getResources().getConfiguration());
-    L16:
-        Configuration r16 = x(r0, r3, r5, null, false);
-        boolean r7 = this.i0;
-        boolean r8 = true;
-        r8 = true;
-        r8 = true;
-        r8 = true;
-        r8 = true;
-        r8 = true;
-        r8 = true;
-        Object r9 = this.w;
-        if (r7 == false) goto L19;
-    L33:
-        this.i0 = true;
-        int r10 = this.h0;
-    L34:
-        Configuration r11 = this.e0;
-        if (r11 != null) goto L37;
-        r11 = r0.getResources().getConfiguration();
-    L37:
-        int r12 = r11.uiMode & 48;
-        int r13 = r16.uiMode & 48;
-        wd2 r17 = uf.b(r11);
-        if (r5 != null) goto L40;
-        wd2 r18 = null;
-    L41:
-        if (r12 == r13) goto L43;
-        int r19 = 512;
-    L44:
-        if (r18 == null) goto L49;
-        if (r17.equals(r18) == true) goto L49;
-        r19 = r19 | 8196;
-    L49:
-        if (((~r10) & r19) == 0) goto L70;
-        if (r14 == false) goto L70;
-        if (this.b0 == false) goto L70;
-        if (w0 == true) goto L58;
-        if (this.c0 == false) goto L70;
-    L58:
-        if ((r9 instanceof Activity) == false) goto L70;
-        Activity r110 = (Activity) r9;
-        if (r110.isChild() == true) goto L70;
-        int r20 = Build.VERSION.SDK_INT;
-        if (r20 >= 31) goto L64;
-    L66:
-        if (r20 < 28) goto L68;
-        r110.recreate();
-    L69:
-        boolean r111 = true;
-    L71:
-        if (r111 == true) goto L156;
-        if (r19 == 0) goto L156;
-        if ((r19 & r10) != r19) goto L76;
-        r1 = true;
-    L76:
-        Resources r112 = r0.getResources();
-        Configuration r113 = new Configuration(r112.getConfiguration());
-        r113.uiMode = (r112.getConfiguration().uiMode & (-49)) | r13;
-        if (r18 == null) goto L79;
-        uf.d(r113, r18);
-    L79:
-        r112.updateConfiguration(r113, null);
-        int r21 = Build.VERSION.SDK_INT;
-        if (r21 >= 26) goto L140;
-        if (r21 >= 28) goto L140;
-        if (j51.r == false) goto L182;
-    L90:
-        Field r22 = j51.q;
-        if (r22 == null) goto L140;
-        Object r114 = r22.get(r112);     // Catch: IllegalAccessException -> L95
-    L97:
-        if (r114 == null) goto L140;
-        if (j51.l == false) goto L180;
-    L106:
-        Field r23 = j51.k;
-        if (r23 != null) goto L176;
-    L112:
-        Object r115 = null;
-    L113:
-        if (r115 == null) goto L140;
-        if (j51.n == false) goto L172;
-    L121:
-        Class r24 = j51.m;
-        if (r24 == null) goto L140;
-        if (j51.p == false) goto L184;
-    L131:
-        Field r25 = j51.o;
-        if (r25 == null) goto L140;
-        r6 = (LongSparseArray) r25.get(r115);     // Catch: IllegalAccessException -> L136
-    L138:
-        if (r6 == null) goto L140;
-        r6.clear();
-    L136:
-        e = move-exception;
-        Log.e("ResourcesFlusher", "Could not retrieve value from ThemedResourceCache#mUnthemedEntries", e);
-        goto L138
-    L184:
-        Field r26 = r24.getDeclaredField("mUnthemedEntries");     // Catch: NoSuchFieldException -> L128
-        j51.o = r26;     // Catch: NoSuchFieldException -> L128
-        r26.setAccessible(true);     // Catch: NoSuchFieldException -> L128
-    L130:
-        j51.p = true;
-    L128:
-        e = move-exception;
-        Log.e("ResourcesFlusher", "Could not retrieve ThemedResourceCache#mUnthemedEntries field", e);
-        goto L130
-    L172:
-        j51.m = Class.forName("android.content.res.ThemedResourceCache");     // Catch: ClassNotFoundException -> L118
-    L120:
-        j51.n = true;
-    L118:
-        e = move-exception;
-        Log.e("ResourcesFlusher", "Could not find ThemedResourceCache class", e);
-        goto L120
-    L176:
-        r115 = r23.get(r114);     // Catch: IllegalAccessException -> L110
-    L110:
-        e = move-exception;
-        Log.e("ResourcesFlusher", "Could not retrieve value from ResourcesImpl#mDrawableCache", e);
-        goto L112
-    L180:
-        Field r27 = r114.getClass().getDeclaredField("mDrawableCache");     // Catch: NoSuchFieldException -> L103
-        j51.k = r27;     // Catch: NoSuchFieldException -> L103
-        r27.setAccessible(true);     // Catch: NoSuchFieldException -> L103
-    L105:
-        j51.l = true;
-    L103:
-        e = move-exception;
-        Log.e("ResourcesFlusher", "Could not retrieve ResourcesImpl#mDrawableCache field", e);
-    L95:
-        e = move-exception;
-        Log.e("ResourcesFlusher", "Could not retrieve value from Resources#mResourcesImpl", e);
-        r114 = null;
-        goto L97
-    L182:
-        Field r28 = Resources.class.getDeclaredField("mResourcesImpl");     // Catch: NoSuchFieldException -> L87
-        j51.q = r28;     // Catch: NoSuchFieldException -> L87
-        r28.setAccessible(true);     // Catch: NoSuchFieldException -> L87
-    L89:
-        j51.r = true;
-    L87:
-        e = move-exception;
-        Log.e("ResourcesFlusher", "Could not retrieve Resources#mResourcesImpl field", e);
-    L140:
-        int r116 = this.g0;
-        if (r116 == 0) goto L143;
-        r0.setTheme(r116);
-        r0.getTheme().applyStyle(this.g0, true);
-    L143:
-        if (r1 == true) goto L145;
-    L157:
-        if (r18 == null) goto L159;
-        uf.c(uf.b(r0.getResources().getConfiguration()));
-    L159:
-        if (r2 != 0) goto L161;
-        E(r0).n();
-    L164:
-        yf r117 = this.k0;
-        if (r2 != 3) goto L169;
-        if (r117 != null) goto L168;
-        this.k0 = new yf(this, r0);
-    L168:
-        this.k0.n();
-    L171:
-        return r8;
-    L169:
-        if (r117 == null) goto L171;
-        r117.c();
-        goto L171
-    L161:
-        yf r118 = this.j0;
-        if (r118 == null) goto L164;
-        r118.c();
-        goto L164
-    L145:
-        if ((r9 instanceof Activity) == false) goto L157;
-        Activity r29 = (Activity) r9;
-        if ((r29 instanceof ba2) == false) goto L152;
-        if (((ba2) r29).h().h.compareTo(r92.p) < 0) goto L157;
-        r29.onConfigurationChanged(r113);
-        goto L157
-    L152:
-        if (this.c0 == false) goto L157;
-        if (this.d0 == true) goto L157;
-        r29.onConfigurationChanged(r113);
-    L156:
-        r8 = r111;
-        goto L157
-    L68:
-        new Handler(r110.getMainLooper()).post(new a0(r8 ? 1 : 0, r110));
-        goto L69
-    L64:
-        if ((r19 & 8192) == 0) goto L66;
-        r110.getWindow().getDecorView().setLayoutDirection(r16.getLayoutDirection());
-    L70:
-        r111 = false;
-        goto L71
-    L43:
-        r19 = 0;
-        goto L44
-    L40:
-        r18 = uf.b(r16);
-        goto L41
-    L19:
-        if ((r9 instanceof Activity) == false) goto L33;
-        PackageManager r30 = r0.getPackageManager();
-        if (r30 != null) goto L24;
-        r10 = 0;
-        goto L34
-    L24:
-        if (r4 < 29) goto L26;
-        int r31 = 269221888;
-    L174:
-        ActivityInfo r32 = r30.getActivityInfo(new ComponentName(r0, r9.getClass()), r31);     // Catch: PackageManager.NameNotFoundException -> L31
-        if (r32 == null) goto L33;
-        this.h0 = r32.configChanges;     // Catch: PackageManager.NameNotFoundException -> L31
-    L31:
-        e = move-exception;
-        Log.d("AppCompatDelegate", "Exception while getting ActivityInfo", e);
-        this.h0 = 0;
-        goto L33
-    L26:
-        r31 = 786432;
-        goto L174
-    L12:
-        r5 = null;
-        goto L13
+    public final boolean r(boolean z, boolean z2) {
+        int i;
+        boolean z3;
+        Object obj;
+        Object obj2;
+        if (this.d0) {
+            return false;
+        }
+        int i2 = this.f0;
+        if (i2 == -100) {
+            i2 = pf.o;
+        }
+        Context context = this.x;
+        int I = I(context, i2);
+        int i3 = Build.VERSION.SDK_INT;
+        LongSparseArray longSparseArray = null;
+        wd2 wd2VarT = i3 < 33 ? t(context) : null;
+        if (!z2 && wd2VarT != null) {
+            wd2VarT = uf.b(context.getResources().getConfiguration());
+        }
+        Configuration configurationX = x(context, I, wd2VarT, null, false);
+        boolean z4 = this.i0;
+        boolean z5 = true;
+        z5 = true;
+        z5 = true;
+        z5 = true;
+        z5 = true;
+        z5 = true;
+        z5 = true;
+        Object obj3 = this.w;
+        if (z4 || !(obj3 instanceof Activity)) {
+            this.i0 = true;
+            i = this.h0;
+        } else {
+            PackageManager packageManager = context.getPackageManager();
+            if (packageManager == null) {
+                i = 0;
+            } else {
+                try {
+                    ActivityInfo activityInfo = packageManager.getActivityInfo(new ComponentName(context, obj3.getClass()), i3 >= 29 ? 269221888 : 786432);
+                    if (activityInfo != null) {
+                        this.h0 = activityInfo.configChanges;
+                    }
+                } catch (PackageManager.NameNotFoundException e) {
+                    Log.d("AppCompatDelegate", "Exception while getting ActivityInfo", e);
+                    this.h0 = 0;
+                }
+                this.i0 = true;
+                i = this.h0;
+            }
+        }
+        Configuration configuration = this.e0;
+        if (configuration == null) {
+            configuration = context.getResources().getConfiguration();
+        }
+        int i4 = configuration.uiMode & 48;
+        int i5 = configurationX.uiMode & 48;
+        wd2 wd2VarB = uf.b(configuration);
+        wd2 wd2VarB2 = wd2VarT == null ? null : uf.b(configurationX);
+        int i6 = i4 != i5 ? 512 : 0;
+        if (wd2VarB2 != null && !wd2VarB.equals(wd2VarB2)) {
+            i6 |= 8196;
+        }
+        if (((~i) & i6) != 0 && z && this.b0 && ((w0 || this.c0) && (obj3 instanceof Activity))) {
+            Activity activity = (Activity) obj3;
+            if (activity.isChild()) {
+                z3 = false;
+            } else {
+                int i7 = Build.VERSION.SDK_INT;
+                if (i7 >= 31 && (i6 & 8192) != 0) {
+                    activity.getWindow().getDecorView().setLayoutDirection(configurationX.getLayoutDirection());
+                }
+                if (i7 >= 28) {
+                    activity.recreate();
+                } else {
+                    new Handler(activity.getMainLooper()).post(new a0(z5 ? 1 : 0, activity));
+                }
+                z3 = true;
+            }
+        } else {
+            z3 = false;
+        }
+        if (z3 || i6 == 0) {
+            z5 = z3;
+        } else {
+            boolean z6 = (i6 & i) == i6;
+            Resources resources = context.getResources();
+            Configuration configuration2 = new Configuration(resources.getConfiguration());
+            configuration2.uiMode = (resources.getConfiguration().uiMode & (-49)) | i5;
+            if (wd2VarB2 != null) {
+                uf.d(configuration2, wd2VarB2);
+            }
+            resources.updateConfiguration(configuration2, null);
+            int i8 = Build.VERSION.SDK_INT;
+            if (i8 < 26 && i8 < 28) {
+                if (!j51.r) {
+                    try {
+                        Field declaredField = Resources.class.getDeclaredField("mResourcesImpl");
+                        j51.q = declaredField;
+                        declaredField.setAccessible(true);
+                    } catch (NoSuchFieldException e2) {
+                        Log.e("ResourcesFlusher", "Could not retrieve Resources#mResourcesImpl field", e2);
+                    }
+                    j51.r = true;
+                }
+                Field field = j51.q;
+                if (field != null) {
+                    try {
+                        obj = field.get(resources);
+                    } catch (IllegalAccessException e3) {
+                        Log.e("ResourcesFlusher", "Could not retrieve value from Resources#mResourcesImpl", e3);
+                        obj = null;
+                    }
+                    if (obj != null) {
+                        if (!j51.l) {
+                            try {
+                                Field declaredField2 = obj.getClass().getDeclaredField("mDrawableCache");
+                                j51.k = declaredField2;
+                                declaredField2.setAccessible(true);
+                            } catch (NoSuchFieldException e4) {
+                                Log.e("ResourcesFlusher", "Could not retrieve ResourcesImpl#mDrawableCache field", e4);
+                            }
+                            j51.l = true;
+                        }
+                        Field field2 = j51.k;
+                        if (field2 != null) {
+                            try {
+                                obj2 = field2.get(obj);
+                            } catch (IllegalAccessException e5) {
+                                Log.e("ResourcesFlusher", "Could not retrieve value from ResourcesImpl#mDrawableCache", e5);
+                                obj2 = null;
+                            }
+                        } else {
+                            obj2 = null;
+                        }
+                        if (obj2 != null) {
+                            if (!j51.n) {
+                                try {
+                                    j51.m = Class.forName("android.content.res.ThemedResourceCache");
+                                } catch (ClassNotFoundException e6) {
+                                    Log.e("ResourcesFlusher", "Could not find ThemedResourceCache class", e6);
+                                }
+                                j51.n = true;
+                            }
+                            Class cls = j51.m;
+                            if (cls != null) {
+                                if (!j51.p) {
+                                    try {
+                                        Field declaredField3 = cls.getDeclaredField("mUnthemedEntries");
+                                        j51.o = declaredField3;
+                                        declaredField3.setAccessible(true);
+                                    } catch (NoSuchFieldException e7) {
+                                        Log.e("ResourcesFlusher", "Could not retrieve ThemedResourceCache#mUnthemedEntries field", e7);
+                                    }
+                                    j51.p = true;
+                                }
+                                Field field3 = j51.o;
+                                if (field3 != null) {
+                                    try {
+                                        longSparseArray = (LongSparseArray) field3.get(obj2);
+                                    } catch (IllegalAccessException e8) {
+                                        Log.e("ResourcesFlusher", "Could not retrieve value from ThemedResourceCache#mUnthemedEntries", e8);
+                                    }
+                                    if (longSparseArray != null) {
+                                        longSparseArray.clear();
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            int i9 = this.g0;
+            if (i9 != 0) {
+                context.setTheme(i9);
+                context.getTheme().applyStyle(this.g0, true);
+            }
+            if (z6 && (obj3 instanceof Activity)) {
+                Activity activity2 = (Activity) obj3;
+                if (activity2 instanceof ba2) {
+                    if (((ba2) activity2).h().h.compareTo(r92.p) >= 0) {
+                        activity2.onConfigurationChanged(configuration2);
+                    }
+                } else if (this.c0 && !this.d0) {
+                    activity2.onConfigurationChanged(configuration2);
+                }
+            }
+        }
+        if (wd2VarB2 != null) {
+            uf.c(uf.b(context.getResources().getConfiguration()));
+        }
+        if (i2 == 0) {
+            E(context).n();
+        } else {
+            yf yfVar = this.j0;
+            if (yfVar != null) {
+                yfVar.c();
+            }
+        }
+        yf yfVar2 = this.k0;
+        if (i2 == 3) {
+            if (yfVar2 == null) {
+                this.k0 = new yf(this, context);
+            }
+            this.k0.n();
+        } else if (yfVar2 != null) {
+            yfVar2.c();
+        }
+        return z5;
     }
 
-    public final void s(Window r8) {
-        if (this.y != null) goto L40;
-        Window.Callback r1 = r8.getCallback();
-        if ((r1 instanceof xf) == true) goto L38;
-        xf r0 = new xf(this, r1);
-        this.z = r0;
-        r8.setCallback(r0);
-        Context r2 = this.x;
-        TypedArray r3 = r2.obtainStyledAttributes(null, v0);
-        if (r3.hasValue(0) == false) goto L18;
-        int r4 = r3.getResourceId(0, 0);
-        if (r4 == 0) goto L18;
-        fg r5 = fg.a();
-        monitor-enter(r5);
-        Drawable r6 = r5.a.e(r2, r4, true);     // Catch: Throwable -> L15
-        monitor-exit(r5);
-    L19:
-        if (r6 == null) goto L21;
-        r8.setBackgroundDrawable(r6);
-    L21:
-        r3.recycle();
-        this.y = r8;
-        if (Build.VERSION.SDK_INT < 33) goto L44;
-        OnBackInvokedDispatcher r9 = this.s0;
-        if (r9 != null) goto L45;
-        Object r7 = this.w;
-        if (r9 == null) goto L31;
-        OnBackInvokedCallback r10 = this.t0;
-        if (r10 == null) goto L31;
-        wf.c(r9, r10);
-        this.t0 = null;
-    L31:
-        if ((r7 instanceof Activity) == false) goto L35;
-        Activity r11 = (Activity) r7;
-        if (r11.getWindow() == null) goto L35;
-        this.s0 = wf.a(r11);
-    L36:
+    /* JADX WARN: Code duplicated, block: B:35:0x0074  */
+    public final void s(Window window) {
+        Drawable drawableE;
+        OnBackInvokedDispatcher onBackInvokedDispatcher;
+        OnBackInvokedCallback onBackInvokedCallback;
+        int resourceId;
+        if (this.y != null) {
+            kf2.o("AppCompat has already installed itself into the Window");
+            return;
+        }
+        Window.Callback callback = window.getCallback();
+        if (callback instanceof xf) {
+            kf2.o("AppCompat has already installed itself into the Window");
+            return;
+        }
+        xf xfVar = new xf(this, callback);
+        this.z = xfVar;
+        window.setCallback(xfVar);
+        Context context = this.x;
+        TypedArray typedArrayObtainStyledAttributes = context.obtainStyledAttributes((AttributeSet) null, v0);
+        if (!typedArrayObtainStyledAttributes.hasValue(0) || (resourceId = typedArrayObtainStyledAttributes.getResourceId(0, 0)) == 0) {
+            drawableE = null;
+        } else {
+            fg fgVarA = fg.a();
+            synchronized (fgVarA) {
+                drawableE = fgVarA.a.e(context, resourceId, true);
+            }
+        }
+        if (drawableE != null) {
+            window.setBackgroundDrawable(drawableE);
+        }
+        typedArrayObtainStyledAttributes.recycle();
+        this.y = window;
+        if (Build.VERSION.SDK_INT < 33 || (onBackInvokedDispatcher = this.s0) != null) {
+            return;
+        }
+        Object obj = this.w;
+        if (onBackInvokedDispatcher != null && (onBackInvokedCallback = this.t0) != null) {
+            wf.c(onBackInvokedDispatcher, onBackInvokedCallback);
+            this.t0 = null;
+        }
+        if (obj instanceof Activity) {
+            Activity activity = (Activity) obj;
+            if (activity.getWindow() != null) {
+                this.s0 = wf.a(activity);
+            } else {
+                this.s0 = null;
+            }
+        } else {
+            this.s0 = null;
+        }
         O();
-        return;
-    L35:
-        this.s0 = null;
-        goto L36
-    L45:
-        return;
-    L44:
-        return;
-    L15:
-        th = move-exception;
-        throw th;
-    L18:
-        r6 = null;
-        goto L19
-    L38:
-        kf2.o("AppCompat has already installed itself into the Window");
-        return;
-    L40:
-        kf2.o("AppCompat has already installed itself into the Window");
     }
 
-    public final void u(int r3, ag r4, qu2 r5) {
-        if (r5 != null) goto L10;
-        if (r4 != null) goto L8;
-        if (r3 < 0) goto L8;
-        ag[] r0 = this.Y;
-        if (r3 >= r0.length) goto L8;
-        r4 = r0[r3];
-    L8:
-        if (r4 == null) goto L10;
-        r5 = r4.h;
-    L10:
-        if (r4 == null) goto L15;
-        if (r4.m == true) goto L15;
-        return;
-    L15:
-        if (this.d0 == true) goto L23;
-        xf r6 = this.z;
-        Window.Callback r2 = this.y.getCallback();
-        r6.getClass();
-        r6.r = true;     // Catch: Throwable -> L20
-        r2.onPanelClosed(r3, r5);     // Catch: Throwable -> L20
-        r6.r = false;
-        return;
-    L20:
-        th = move-exception;
-        r6.r = false;
-        throw th;
+    public final void u(int i, ag agVar, qu2 qu2Var) {
+        if (qu2Var == null) {
+            if (agVar == null && i >= 0) {
+                ag[] agVarArr = this.Y;
+                if (i < agVarArr.length) {
+                    agVar = agVarArr[i];
+                }
+            }
+            if (agVar != null) {
+                qu2Var = agVar.h;
+            }
+        }
+        if ((agVar == null || agVar.m) && !this.d0) {
+            xf xfVar = this.z;
+            Window.Callback callback = this.y.getCallback();
+            xfVar.getClass();
+            try {
+                xfVar.r = true;
+                callback.onPanelClosed(i, qu2Var);
+            } finally {
+                xfVar.r = false;
+            }
+        }
     }
 
-    public final void v(qu2 r3) {
-        if (this.X == false) goto L5;
-        return;
-    L5:
+    public final void v(qu2 qu2Var) {
+        y4 y4Var;
+        if (this.X) {
+            return;
+        }
         this.X = true;
-        ActionBarOverlayLayout r0 = this.D;
-        r0.k();
-        ActionMenuView r1 = ((gv4) r0.r).a.n;
-        if (r1 == null) goto L14;
-        y4 r2 = r1.G;
-        if (r2 == null) goto L14;
-        r2.f();
-        t4 r4 = r2.H;
-        if (r4 == null) goto L14;
-        if (r4.b() == false) goto L14;
-        r4.i.dismiss();
-    L14:
-        Window.Callback r5 = this.y.getCallback();
-        if (r5 != null) goto L17;
-    L19:
+        ActionBarOverlayLayout actionBarOverlayLayout = this.D;
+        actionBarOverlayLayout.k();
+        ActionMenuView actionMenuView = ((gv4) actionBarOverlayLayout.r).a.n;
+        if (actionMenuView != null && (y4Var = actionMenuView.G) != null) {
+            y4Var.f();
+            t4 t4Var = y4Var.H;
+            if (t4Var != null && t4Var.b()) {
+                t4Var.i.dismiss();
+            }
+        }
+        Window.Callback callback = this.y.getCallback();
+        if (callback != null && !this.d0) {
+            callback.onPanelClosed(108, qu2Var);
+        }
         this.X = false;
-        return;
-    L17:
-        if (this.d0 == true) goto L19;
-        r5.onPanelClosed(108, r3);
-        goto L19
     }
 
-    public final void w(ag r4, boolean r5) {
-        if (r5 == true) goto L4;
-    L11:
-        WindowManager r0 = (WindowManager) this.x.getSystemService("window");
-        if (r0 != null) goto L14;
-    L20:
-        r4.k = false;
-        r4.l = false;
-        r4.m = false;
-        r4.f = null;
-        r4.n = true;
-        if (this.Z != r4) goto L24;
-        this.Z = null;
-    L24:
-        if (r4.a != 0) goto L27;
-        O();
-        return;
-    L27:
-        return;
-    L14:
-        if (r4.m == false) goto L20;
-        zf r2 = r4.e;
-        if (r2 == null) goto L20;
-        r0.removeView(r2);
-        if (r5 == false) goto L20;
-        u(r4.a, r4, null);
-        goto L20
-    L4:
-        if (r4.a != 0) goto L11;
-        ActionBarOverlayLayout r1 = this.D;
-        if (r1 == null) goto L11;
-        r1.k();
-        if (((gv4) r1.r).a.p() == false) goto L11;
-        v(r4.h);
+    public final void w(ag agVar, boolean z) {
+        zf zfVar;
+        ActionBarOverlayLayout actionBarOverlayLayout;
+        if (z && agVar.a == 0 && (actionBarOverlayLayout = this.D) != null) {
+            actionBarOverlayLayout.k();
+            if (((gv4) actionBarOverlayLayout.r).a.p()) {
+                v(agVar.h);
+                return;
+            }
+        }
+        WindowManager windowManager = (WindowManager) this.x.getSystemService("window");
+        if (windowManager != null && agVar.m && (zfVar = agVar.e) != null) {
+            windowManager.removeView(zfVar);
+            if (z) {
+                u(agVar.a, agVar, null);
+            }
+        }
+        agVar.k = false;
+        agVar.l = false;
+        agVar.m = false;
+        agVar.f = null;
+        agVar.n = true;
+        if (this.Z == agVar) {
+            this.Z = null;
+        }
+        if (agVar.a == 0) {
+            O();
+        }
     }
 
+    /* JADX WARN: Code restructure failed: missing block: B:19:0x0044, code lost:
+    
+        if (r6.k() != false) goto L20;
+     */
     @Override // defpackage.ou2
-    public final void y(qu2 r6) {
-        ActionBarOverlayLayout r7 = this.D;
-        if (r7 == null) goto L47;
-        r7.k();
-        Toolbar r8 = ((gv4) r7.r).a;
-        if (r8.getVisibility() != 0) goto L47;
-        ActionMenuView r9 = r8.n;
-        if (r9 == null) goto L47;
-        if (r9.F == false) goto L47;
-        if (ViewConfiguration.get(this.x).hasPermanentMenuKey() == false) goto L20;
-        ActionBarOverlayLayout r10 = this.D;
-        r10.k();
-        ActionMenuView r11 = ((gv4) r10.r).a.n;
-        if (r11 == null) goto L47;
-        y4 r12 = r11.G;
-        if (r12 == null) goto L47;
-        if (r12.I != null) goto L20;
-        if (r12.k() == false) goto L47;
-    L20:
-        Window.Callback r13 = this.y.getCallback();
-        ActionBarOverlayLayout r2 = this.D;
-        r2.k();
-        if (((gv4) r2.r).a.p() == false) goto L31;
-        ActionBarOverlayLayout r0 = this.D;
-        r0.k();
-        ActionMenuView r1 = ((gv4) r0.r).a.n;
-        if (r1 == null) goto L28;
-        y4 r3 = r1.G;
-        if (r3 == null) goto L28;
-        r3.f();
-    L28:
-        if (this.d0 == true) goto L49;
-        r13.onPanelClosed(108, F(0).h);
-        return;
-    L49:
-        return;
-    L31:
-        if (r13 != null) goto L33;
-        return;
-    L33:
-        if (this.d0 == false) goto L35;
-        return;
-    L35:
-        if (this.l0 == true) goto L37;
-    L39:
-        ag r4 = F(0);
-        qu2 r5 = r4.h;
-        if (r5 != null) goto L42;
-        return;
-    L42:
-        if (r4.o == false) goto L44;
-        return;
-    L44:
-        if (r13.onPreparePanel(0, r4.g, r5) == false) goto L54;
-        r13.onMenuOpened(108, r4.h);
-        ActionBarOverlayLayout r14 = this.D;
-        r14.k();
-        ((gv4) r14.r).a.v();
-        return;
-    L54:
-        return;
-    L37:
-        if ((1 & this.m0) == 0) goto L39;
-        View r15 = this.y.getDecorView();
-        qf r16 = this.n0;
-        r15.removeCallbacks(r16);
-        r16.run();
-    L47:
-        ag r17 = F(0);
-        r17.n = true;
-        w(r17, false);
-        K(r17, null);
+    /*
+        Code decompiled incorrectly, please refer to instructions dump.
+    */
+    public final void y(qu2 qu2Var) {
+        ActionMenuView actionMenuView;
+        y4 y4Var;
+        ActionBarOverlayLayout actionBarOverlayLayout = this.D;
+        if (actionBarOverlayLayout != null) {
+            actionBarOverlayLayout.k();
+            Toolbar toolbar = ((gv4) actionBarOverlayLayout.r).a;
+            if (toolbar.getVisibility() == 0 && (actionMenuView = toolbar.n) != null && actionMenuView.F) {
+                if (ViewConfiguration.get(this.x).hasPermanentMenuKey()) {
+                    ActionBarOverlayLayout actionBarOverlayLayout2 = this.D;
+                    actionBarOverlayLayout2.k();
+                    ActionMenuView actionMenuView2 = ((gv4) actionBarOverlayLayout2.r).a.n;
+                    if (actionMenuView2 != null) {
+                        y4 y4Var2 = actionMenuView2.G;
+                        if (y4Var2 != null) {
+                            if (y4Var2.I == null) {
+                            }
+                        }
+                    }
+                }
+                Window.Callback callback = this.y.getCallback();
+                ActionBarOverlayLayout actionBarOverlayLayout3 = this.D;
+                actionBarOverlayLayout3.k();
+                if (((gv4) actionBarOverlayLayout3.r).a.p()) {
+                    ActionBarOverlayLayout actionBarOverlayLayout4 = this.D;
+                    actionBarOverlayLayout4.k();
+                    ActionMenuView actionMenuView3 = ((gv4) actionBarOverlayLayout4.r).a.n;
+                    if (actionMenuView3 != null && (y4Var = actionMenuView3.G) != null) {
+                        y4Var.f();
+                    }
+                    if (this.d0) {
+                        return;
+                    }
+                    callback.onPanelClosed(108, F(0).h);
+                    return;
+                }
+                if (callback == null || this.d0) {
+                    return;
+                }
+                if (this.l0 && (1 & this.m0) != 0) {
+                    View decorView = this.y.getDecorView();
+                    qf qfVar = this.n0;
+                    decorView.removeCallbacks(qfVar);
+                    qfVar.run();
+                }
+                ag agVarF = F(0);
+                qu2 qu2Var2 = agVarF.h;
+                if (qu2Var2 == null || agVarF.o || !callback.onPreparePanel(0, agVarF.g, qu2Var2)) {
+                    return;
+                }
+                callback.onMenuOpened(108, agVarF.h);
+                ActionBarOverlayLayout actionBarOverlayLayout5 = this.D;
+                actionBarOverlayLayout5.k();
+                ((gv4) actionBarOverlayLayout5.r).a.v();
+                return;
+            }
+        }
+        ag agVarF2 = F(0);
+        agVarF2.n = true;
+        w(agVarF2, false);
+        K(agVarF2, null);
     }
 
-    public final boolean z(KeyEvent r7) {
-        Object r0 = this.w;
-        boolean r2 = true;
-        if ((r0 instanceof h42) == false) goto L5;
-    L6:
-        View r1 = this.y.getDecorView();
-        if (r1 != null) goto L9;
-    L12:
-        if (r7.getKeyCode() != 82) goto L21;
-        xf r3 = this.z;
-        Window.Callback r4 = this.y.getCallback();
-        r3.getClass();
-        r3.q = true;     // Catch: Throwable -> L18
-        boolean r5 = r4.dispatchKeyEvent(r7);     // Catch: Throwable -> L18
-        r3.q = false;
-        if (r5 == false) goto L21;
-    L93:
+    /* JADX WARN: Code duplicated, block: B:21:0x003f  */
+    /* JADX WARN: Code duplicated, block: B:23:0x004a A[DONT_INVERT] */
+    /* JADX WARN: Code duplicated, block: B:24:0x004c A[DONT_INVERT] */
+    /* JADX WARN: Code duplicated, block: B:26:0x0050  */
+    /* JADX WARN: Code duplicated, block: B:28:0x0056  */
+    /* JADX WARN: Code duplicated, block: B:30:0x005e  */
+    /* JADX WARN: Code duplicated, block: B:32:0x0062  */
+    /* JADX WARN: Code duplicated, block: B:35:0x006b  */
+    /* JADX WARN: Code duplicated, block: B:38:0x006f A[DONT_INVERT] */
+    /* JADX WARN: Code duplicated, block: B:39:0x0071 A[DONT_INVERT] */
+    /* JADX WARN: Code duplicated, block: B:41:0x0075  */
+    /* JADX WARN: Code duplicated, block: B:44:0x007b  */
+    /* JADX WARN: Code duplicated, block: B:46:0x0085  */
+    /* JADX WARN: Code duplicated, block: B:68:0x00eb  */
+    /* JADX WARN: Code duplicated, block: B:70:0x00ef  */
+    /* JADX WARN: Code duplicated, block: B:85:0x0113  */
+    /* JADX WARN: Code duplicated, block: B:87:0x0121  */
+    /* JADX WARN: Code duplicated, block: B:89:0x0125  */
+    /* JADX WARN: Code duplicated, block: B:91:0x012d  */
+    /* JADX WARN: Code duplicated, block: B:94:0x0134 A[RETURN] */
+    public final boolean z(KeyEvent keyEvent) {
+        View decorView;
+        int keyCode;
+        ag agVarF;
+        ActionBarOverlayLayout actionBarOverlayLayout;
+        Context context;
+        boolean z;
+        boolean zV;
+        boolean zM;
+        AudioManager audioManager;
+        Toolbar toolbar;
+        ActionMenuView actionMenuView;
+        y4 y4Var;
+        ag agVarF2;
+        Object obj = this.w;
+        if ((!(obj instanceof h42) && !(obj instanceof dg)) || (decorView = this.y.getDecorView()) == null || !fu.q(decorView, keyEvent)) {
+            if (keyEvent.getKeyCode() == 82) {
+                xf xfVar = this.z;
+                Window.Callback callback = this.y.getCallback();
+                xfVar.getClass();
+                try {
+                    xfVar.q = true;
+                    boolean zDispatchKeyEvent = callback.dispatchKeyEvent(keyEvent);
+                    xfVar.q = false;
+                    if (!zDispatchKeyEvent) {
+                        keyCode = keyEvent.getKeyCode();
+                        if (keyEvent.getAction() == 0) {
+                            if (keyCode != 4) {
+                                this.a0 = (keyEvent.getFlags() & 128) != 0;
+                                return false;
+                            }
+                            if (keyCode == 82) {
+                                if (keyEvent.getRepeatCount() == 0) {
+                                    agVarF2 = F(0);
+                                    if (!agVarF2.m) {
+                                        M(agVarF2, keyEvent);
+                                        return true;
+                                    }
+                                }
+                            }
+                            return false;
+                        }
+                        if (keyCode != 4) {
+                            if (keyCode == 82) {
+                                if (this.G == null) {
+                                    agVarF = F(0);
+                                    actionBarOverlayLayout = this.D;
+                                    context = this.x;
+                                    if (actionBarOverlayLayout != null) {
+                                        actionBarOverlayLayout.k();
+                                        toolbar = ((gv4) actionBarOverlayLayout.r).a;
+                                        if (toolbar.getVisibility() == 0 || (actionMenuView = toolbar.n) == null || !actionMenuView.F || ViewConfiguration.get(context).hasPermanentMenuKey()) {
+                                            z = agVarF.m;
+                                            if (!z || agVarF.l) {
+                                                w(agVarF, true);
+                                                zV = z;
+                                            } else {
+                                                if (agVarF.k) {
+                                                    if (agVarF.o) {
+                                                        agVarF.k = false;
+                                                        zM = M(agVarF, keyEvent);
+                                                    } else {
+                                                        zM = true;
+                                                    }
+                                                    if (zM) {
+                                                        K(agVarF, keyEvent);
+                                                        zV = true;
+                                                    }
+                                                }
+                                                zV = false;
+                                            }
+                                        } else {
+                                            ActionBarOverlayLayout actionBarOverlayLayout2 = this.D;
+                                            actionBarOverlayLayout2.k();
+                                            if (((gv4) actionBarOverlayLayout2.r).a.p()) {
+                                                ActionBarOverlayLayout actionBarOverlayLayout3 = this.D;
+                                                actionBarOverlayLayout3.k();
+                                                ActionMenuView actionMenuView2 = ((gv4) actionBarOverlayLayout3.r).a.n;
+                                                if (actionMenuView2 != null && (y4Var = actionMenuView2.G) != null && y4Var.f()) {
+                                                    zV = true;
+                                                }
+                                            } else if (!this.d0 && M(agVarF, keyEvent)) {
+                                                ActionBarOverlayLayout actionBarOverlayLayout4 = this.D;
+                                                actionBarOverlayLayout4.k();
+                                                zV = ((gv4) actionBarOverlayLayout4.r).a.v();
+                                            }
+                                            zV = false;
+                                        }
+                                    } else {
+                                        z = agVarF.m;
+                                        if (z) {
+                                        }
+                                        w(agVarF, true);
+                                        zV = z;
+                                    }
+                                    if (zV) {
+                                        audioManager = (AudioManager) context.getApplicationContext().getSystemService("audio");
+                                        if (audioManager != null) {
+                                            audioManager.playSoundEffect(0);
+                                            return true;
+                                        }
+                                        Log.w("AppCompatDelegate", "Couldn't get audio manager");
+                                        return true;
+                                    }
+                                }
+                            }
+                            return false;
+                        }
+                        if (J()) {
+                            return false;
+                        }
+                    }
+                } catch (Throwable th) {
+                    xfVar.q = false;
+                    throw th;
+                }
+            } else {
+                keyCode = keyEvent.getKeyCode();
+                if (keyEvent.getAction() == 0) {
+                    if (keyCode != 4) {
+                        this.a0 = (keyEvent.getFlags() & 128) != 0;
+                        return false;
+                    }
+                    if (keyCode == 82) {
+                        if (keyEvent.getRepeatCount() == 0) {
+                            agVarF2 = F(0);
+                            if (!agVarF2.m) {
+                                M(agVarF2, keyEvent);
+                                return true;
+                            }
+                        }
+                    }
+                    return false;
+                }
+                if (keyCode != 4) {
+                    if (keyCode == 82) {
+                        if (this.G == null) {
+                            agVarF = F(0);
+                            actionBarOverlayLayout = this.D;
+                            context = this.x;
+                            if (actionBarOverlayLayout != null) {
+                                actionBarOverlayLayout.k();
+                                toolbar = ((gv4) actionBarOverlayLayout.r).a;
+                                if (toolbar.getVisibility() == 0) {
+                                    z = agVarF.m;
+                                    if (z) {
+                                    }
+                                    w(agVarF, true);
+                                    zV = z;
+                                } else {
+                                    z = agVarF.m;
+                                    if (z) {
+                                    }
+                                    w(agVarF, true);
+                                    zV = z;
+                                }
+                            } else {
+                                z = agVarF.m;
+                                if (z) {
+                                }
+                                w(agVarF, true);
+                                zV = z;
+                            }
+                            if (zV) {
+                                audioManager = (AudioManager) context.getApplicationContext().getSystemService("audio");
+                                if (audioManager != null) {
+                                    audioManager.playSoundEffect(0);
+                                    return true;
+                                }
+                                Log.w("AppCompatDelegate", "Couldn't get audio manager");
+                                return true;
+                            }
+                        }
+                    }
+                    return false;
+                }
+                if (J()) {
+                    return false;
+                }
+            }
+        }
         return true;
-    L18:
-        th = move-exception;
-        r3.q = false;
-        throw th;
-    L21:
-        int r6 = r7.getKeyCode();
-        if (r7.getAction() != 0) goto L38;
-        if (r6 == 4) goto L33;
-        if (r6 == 82) goto L27;
-    L94:
-        return false;
-    L27:
-        if (r7.getRepeatCount() != 0) goto L93;
-        ag r8 = F(0);
-        if (r8.m == true) goto L93;
-        M(r8, r7);
-        return true;
-    L33:
-        if ((r7.getFlags() & 128) != 0) goto L36;
-        r2 = false;
-    L36:
-        this.a0 = r2;
-        return false;
-    L38:
-        if (r6 == 4) goto L92;
-        if (r6 != 82) goto L94;
-        if (this.G != null) goto L93;
-        ag r9 = F(0);
-        ActionBarOverlayLayout r10 = this.D;
-        Context r11 = this.x;
-        if (r10 == null) goto L68;
-        r10.k();
-        Toolbar r12 = ((gv4) r10.r).a;
-        if (r12.getVisibility() != 0) goto L68;
-        ActionMenuView r13 = r12.n;
-        if (r13 == null) goto L68;
-        if (r13.F == false) goto L68;
-        if (ViewConfiguration.get(r11).hasPermanentMenuKey() == true) goto L68;
-        ActionBarOverlayLayout r14 = this.D;
-        r14.k();
-        if (((gv4) r14.r).a.p() == false) goto L57;
-        ActionBarOverlayLayout r15 = this.D;
-        r15.k();
-        ActionMenuView r16 = ((gv4) r15.r).a.n;
-        if (r16 == null) goto L82;
-        y4 r17 = r16.G;
-        if (r17 == null) goto L82;
-        if (r17.f() == false) goto L82;
-    L81:
-        boolean r18 = true;
-    L84:
-        if (r18 == false) goto L93;
-        AudioManager r19 = (AudioManager) r11.getApplicationContext().getSystemService("audio");
-        if (r19 == null) goto L89;
-        r19.playSoundEffect(0);
-        return true;
-    L89:
-        Log.w("AppCompatDelegate", "Couldn't get audio manager");
-        return true;
-    L82:
-        r18 = false;
-        goto L84
-    L57:
-        if (this.d0 == true) goto L82;
-        if (M(r9, r7) == false) goto L82;
-        ActionBarOverlayLayout r20 = this.D;
-        r20.k();
-        r18 = ((gv4) r20.r).a.v();
-    L68:
-        boolean r21 = r9.m;
-        if (r21 == false) goto L71;
-    L83:
-        w(r9, true);
-        r18 = r21;
-        goto L84
-    L71:
-        if (r9.l == true) goto L83;
-        if (r9.k == false) goto L82;
-        if (r9.o == false) goto L78;
-        r9.k = false;
-        boolean r22 = M(r9, r7);
-    L79:
-        if (r22 == false) goto L82;
-        K(r9, r7);
-        goto L81
-    L78:
-        r22 = true;
-        goto L79
-    L92:
-        if (J() == false) goto L94;
-    L9:
-        if (fu.q(r1, r7) == false) goto L12;
-    L5:
-        if ((r0 instanceof dg) == false) goto L12;
-        goto L6
     }
 
     @Override // android.view.LayoutInflater.Factory
-    public final View onCreateView(String r2, Context r3, AttributeSet r4) {
-        return onCreateView(null, r2, r3, r4);
+    public final View onCreateView(String str, Context context, AttributeSet attributeSet) {
+        return onCreateView(null, str, context, attributeSet);
     }
 }

@@ -7,7 +7,7 @@ public interface pv2 {
         return null;
     }
 
-    default void b(co2 r1) {
+    default void b(co2 co2Var) {
     }
 
     default byte[] c() {

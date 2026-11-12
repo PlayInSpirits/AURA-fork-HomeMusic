@@ -15,32 +15,35 @@ public final class r01 implements g32 {
     public final List a;
 
     public r01() {
-        Locale r1 = Locale.US;
-        SimpleDateFormat r0 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", r1);
-        r0.setTimeZone(TimeZone.getTimeZone("UTC"));
-        SimpleDateFormat r3 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", r1);
-        r3.setTimeZone(TimeZone.getTimeZone("UTC"));
-        SimpleDateFormat r4 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", r1);
-        r4.setTimeZone(TimeZone.getTimeZone("UTC"));
-        this.a = gb.P(new SimpleDateFormat[]{r0, r3, r4});
+        Locale locale = Locale.US;
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", locale);
+        simpleDateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
+        SimpleDateFormat simpleDateFormat2 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", locale);
+        simpleDateFormat2.setTimeZone(TimeZone.getTimeZone("UTC"));
+        SimpleDateFormat simpleDateFormat3 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", locale);
+        simpleDateFormat3.setTimeZone(TimeZone.getTimeZone("UTC"));
+        this.a = gb.P(simpleDateFormat, simpleDateFormat2, simpleDateFormat3);
     }
 
     @Override // defpackage.g32
-    public final Object a(h32 r1, Type r2, si1 r3) {
-        r1.getClass();
-        r2.getClass();
-        String r4 = r1.b();
-        r4.getClass();
-        String r5 = qm4.K0(r4).toString();
-        Date r6 = null;
-        if (r5.length() != 0) goto L5;
-        return null;
-    L5:
-        Iterator r0 = this.a.iterator();
-    L7:
-        if (r0.hasNext() == false) goto L10;
-        r6 = ((SimpleDateFormat) r0.next()).parse(r5);     // Catch: ParseException -> L11
-    L10:
-        return r6;
+    public final Object a(h32 h32Var, Type type, si1 si1Var) {
+        h32Var.getClass();
+        type.getClass();
+        String strB = h32Var.b();
+        strB.getClass();
+        String string = qm4.K0(strB).toString();
+        Date date = null;
+        if (string.length() == 0) {
+            return null;
+        }
+        Iterator it = this.a.iterator();
+        while (it.hasNext()) {
+            try {
+                date = ((SimpleDateFormat) it.next()).parse(string);
+                break;
+            } catch (ParseException unused) {
+            }
+        }
+        return date;
     }
 }

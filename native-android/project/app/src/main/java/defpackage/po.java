@@ -4,6 +4,7 @@ import android.util.Log;
 import java.io.PrintWriter;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
+import org.chromium.support_lib_boundary.WebSettingsBoundaryInterface;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
@@ -29,446 +30,393 @@ public final class po implements id1 {
     public int s;
     public boolean t;
 
-    public po(po r9) {
-        r9.q.F();
-        mc1 r0 = r9.q.v;
-        if (r0 == null) goto L5;
-        r0.B.getClassLoader();
-    L5:
+    /* JADX WARN: 'this' call moved to the top of the method (can break code semantics) */
+    public po(po poVar) {
         this();
-        ArrayList r1 = r9.a;
-        int r2 = r1.size();
-        int r3 = 0;
-    L6:
-        if (r3 >= r2) goto L8;
-        Object r4 = r1.get(r3);
-        r3 = r3 + 1;
-        je1 r5 = (je1) r4;
-        ArrayList r6 = this.a;
-        je1 r7 = new je1();
-        r7.a = r5.a;
-        r7.b = r5.b;
-        r7.c = r5.c;
-        r7.d = r5.d;
-        r7.e = r5.e;
-        r7.f = r5.f;
-        r7.g = r5.g;
-        r7.h = r5.h;
-        r7.i = r5.i;
-        r6.add(r7);
-        goto L6
-    L8:
-        this.b = r9.b;
-        this.c = r9.c;
-        this.d = r9.d;
-        this.e = r9.e;
-        this.f = r9.f;
-        this.g = r9.g;
-        this.h = r9.h;
-        this.i = r9.i;
-        this.l = r9.l;
-        this.m = r9.m;
-        this.j = r9.j;
-        this.k = r9.k;
-        if (r9.n == null) goto L12;
-        ArrayList r8 = new ArrayList();
-        this.n = r8;
-        r8.addAll(r9.n);
-    L12:
-        if (r9.o == null) goto L14;
-        ArrayList r10 = new ArrayList();
-        this.o = r10;
-        r10.addAll(r9.o);
-    L14:
-        this.p = r9.p;
+        poVar.q.F();
+        mc1 mc1Var = poVar.q.v;
+        if (mc1Var != null) {
+            mc1Var.B.getClassLoader();
+        }
+        ArrayList arrayList = poVar.a;
+        int size = arrayList.size();
+        int i = 0;
+        while (i < size) {
+            Object obj = arrayList.get(i);
+            i++;
+            je1 je1Var = (je1) obj;
+            ArrayList arrayList2 = this.a;
+            je1 je1Var2 = new je1();
+            je1Var2.a = je1Var.a;
+            je1Var2.b = je1Var.b;
+            je1Var2.c = je1Var.c;
+            je1Var2.d = je1Var.d;
+            je1Var2.e = je1Var.e;
+            je1Var2.f = je1Var.f;
+            je1Var2.g = je1Var.g;
+            je1Var2.h = je1Var.h;
+            je1Var2.i = je1Var.i;
+            arrayList2.add(je1Var2);
+        }
+        this.b = poVar.b;
+        this.c = poVar.c;
+        this.d = poVar.d;
+        this.e = poVar.e;
+        this.f = poVar.f;
+        this.g = poVar.g;
+        this.h = poVar.h;
+        this.i = poVar.i;
+        this.l = poVar.l;
+        this.m = poVar.m;
+        this.j = poVar.j;
+        this.k = poVar.k;
+        if (poVar.n != null) {
+            ArrayList arrayList3 = new ArrayList();
+            this.n = arrayList3;
+            arrayList3.addAll(poVar.n);
+        }
+        if (poVar.o != null) {
+            ArrayList arrayList4 = new ArrayList();
+            this.o = arrayList4;
+            arrayList4.addAll(poVar.o);
+        }
+        this.p = poVar.p;
         this.s = -1;
         this.t = false;
-        this.q = r9.q;
-        this.r = r9.r;
-        this.s = r9.s;
-        this.t = r9.t;
+        this.q = poVar.q;
+        this.r = poVar.r;
+        this.s = poVar.s;
+        this.t = poVar.t;
     }
 
     @Override // defpackage.id1
-    public final boolean a(ArrayList r3, ArrayList r4) {
-        if (ld1.I(2) == false) goto L5;
-        Log.v("FragmentManager", "Run: " + this);
-    L5:
-        r3.add(this);
-        r4.add(Boolean.FALSE);
-        if (this.g == false) goto L13;
-        ld1 r5 = this.q;
-        if (r5.d != null) goto L10;
-        r5.d = new ArrayList();
-    L10:
-        r5.d.add(this);
+    public final boolean a(ArrayList arrayList, ArrayList arrayList2) {
+        if (ld1.I(2)) {
+            Log.v("FragmentManager", "Run: " + this);
+        }
+        arrayList.add(this);
+        arrayList2.add(Boolean.FALSE);
+        if (!this.g) {
+            return true;
+        }
+        ld1 ld1Var = this.q;
+        if (ld1Var.d == null) {
+            ld1Var.d = new ArrayList();
+        }
+        ld1Var.d.add(this);
         return true;
-    L13:
-        return true;
     }
 
-    public final void b(je1 r2) {
-        this.a.add(r2);
-        r2.d = this.b;
-        r2.e = this.c;
-        r2.f = this.d;
-        r2.g = this.e;
+    public final void b(je1 je1Var) {
+        this.a.add(je1Var);
+        je1Var.d = this.b;
+        je1Var.e = this.c;
+        je1Var.f = this.d;
+        je1Var.g = this.e;
     }
 
-    public final void c(String r2) {
-        if (this.h == false) goto L6;
-        this.g = true;
-        this.i = r2;
-        return;
-    L6:
-        kf2.o("This FragmentTransaction is not allowed to be added to the back stack.");
+    public final void c(String str) {
+        if (!this.h) {
+            kf2.o("This FragmentTransaction is not allowed to be added to the back stack.");
+        } else {
+            this.g = true;
+            this.i = str;
+        }
     }
 
-    public final void d(int r8) {
-        if (this.g == true) goto L6;
-        return;
-    L6:
-        if (ld1.I(2) == false) goto L8;
-        Log.v("FragmentManager", "Bump nesting in " + this + " by " + r8);
-    L8:
-        ArrayList r7 = this.a;
-        int r1 = r7.size();
-        int r3 = 0;
-    L9:
-        if (r3 >= r1) goto L21;
-        je1 r4 = (je1) r7.get(r3);
-        kc1 r5 = r4.b;
-        if (r5 == null) goto L15;
-        r5.E += r8;
-        if (ld1.I(2) == false) goto L15;
-        Log.v("FragmentManager", "Bump nesting of " + r4.b + " to " + r4.b.E);
-    L15:
-        r3 = r3 + 1;
-        goto L9
+    public final void d(int i) {
+        if (this.g) {
+            if (ld1.I(2)) {
+                Log.v("FragmentManager", "Bump nesting in " + this + " by " + i);
+            }
+            ArrayList arrayList = this.a;
+            int size = arrayList.size();
+            for (int i2 = 0; i2 < size; i2++) {
+                je1 je1Var = (je1) arrayList.get(i2);
+                kc1 kc1Var = je1Var.b;
+                if (kc1Var != null) {
+                    kc1Var.E += i;
+                    if (ld1.I(2)) {
+                        Log.v("FragmentManager", "Bump nesting of " + je1Var.b + " to " + je1Var.b.E);
+                    }
+                }
+            }
+        }
     }
 
-    public final int e(boolean r4) {
-        if (this.r == false) goto L5;
-        kf2.o("commit already called");
-        return 0;
-    L5:
-        if (ld1.I(2) == false) goto L7;
-        Log.v("FragmentManager", "Commit: " + this);
-        PrintWriter r2 = new PrintWriter(new fe2());
-        h("  ", r2, true);
-        r2.close();
-    L7:
+    public final int e(boolean z) {
+        if (this.r) {
+            kf2.o("commit already called");
+            return 0;
+        }
+        if (ld1.I(2)) {
+            Log.v("FragmentManager", "Commit: " + this);
+            PrintWriter printWriter = new PrintWriter(new fe2());
+            h("  ", printWriter, true);
+            printWriter.close();
+        }
         this.r = true;
-        boolean r0 = this.g;
-        ld1 r1 = this.q;
-        if (r0 == false) goto L10;
-        this.s = r1.i.getAndIncrement();
-    L11:
-        r1.w(this, r4);
+        boolean z2 = this.g;
+        ld1 ld1Var = this.q;
+        if (z2) {
+            this.s = ld1Var.i.getAndIncrement();
+        } else {
+            this.s = -1;
+        }
+        ld1Var.w(this, z);
         return this.s;
-    L10:
-        this.s = -1;
-        goto L11
     }
 
     public final void f() {
-        if (this.g == true) goto L6;
-        this.h = false;
-        this.q.z(this, false);
-        return;
-    L6:
-        kf2.o("This transaction is already being added to the back stack");
+        if (this.g) {
+            kf2.o("This transaction is already being added to the back stack");
+        } else {
+            this.h = false;
+            this.q.z(this, false);
+        }
     }
 
-    public final void g(int r4, kc1 r5, String r6, int r7) {
-        String r0 = r5.a0;
-        if (r0 == null) goto L5;
-        he1.c(r5, r0);
-    L5:
-        Class<?> r1 = r5.getClass();
-        int r2 = r1.getModifiers();
-        if (r1.isAnonymousClass() == false) goto L8;
-    L37:
-        er1.j(r1.getCanonicalName(), " must be a public static class to be  properly recreated from instance state.", "Fragment ");
-        return;
-    L8:
-        if (Modifier.isPublic(r2) == false) goto L37;
-        if (r1.isMemberClass() == false) goto L14;
-        if (Modifier.isStatic(r2) == false) goto L37;
-    L14:
-        if (r6 == null) goto L23;
-        String r3 = r5.L;
-        if (r3 != null) goto L18;
-    L22:
-        r5.L = r6;
-        goto L23
-    L18:
-        if (r6.equals(r3) == true) goto L22;
-        StringBuilder r8 = new StringBuilder("Can't change tag of fragment ");
-        r8.append(r5);
-        String r9 = r5.L;
-        r8.append(": was ");
-        r8.append(r9);
-        r8.append(" now ");
-        r8.append(r6);
-        throw new IllegalStateException(r8.toString());
-    L23:
-        if (r4 != 0) goto L25;
-    L35:
-        b(new je1(r7, r5));
-        r5.F = this.q;
-        return;
-    L25:
-        if (r4 == (-1)) goto L34;
-        int r10 = r5.J;
-        if (r10 == 0) goto L32;
-        if (r10 == r4) goto L32;
-        StringBuilder r11 = new StringBuilder("Can't change container ID of fragment ");
-        r11.append(r5);
-        int r12 = r5.J;
-        r11.append(": was ");
-        r11.append(r12);
-        r11.append(" now ");
-        r11.append(r4);
-        throw new IllegalStateException(r11.toString());
-    L32:
-        r5.J = r4;
-        r5.K = r4;
-        goto L35
-    L34:
-        throw new IllegalArgumentException("Can't add fragment " + r5 + " with tag " + r6 + " to container view with no id");
+    public final void g(int i, kc1 kc1Var, String str, int i2) {
+        String str2 = kc1Var.a0;
+        if (str2 != null) {
+            he1.c(kc1Var, str2);
+        }
+        Class<?> cls = kc1Var.getClass();
+        int modifiers = cls.getModifiers();
+        if (cls.isAnonymousClass() || !Modifier.isPublic(modifiers) || (cls.isMemberClass() && !Modifier.isStatic(modifiers))) {
+            er1.j(cls.getCanonicalName(), " must be a public static class to be  properly recreated from instance state.", "Fragment ");
+            return;
+        }
+        if (str != null) {
+            String str3 = kc1Var.L;
+            if (str3 != null && !str.equals(str3)) {
+                StringBuilder sb = new StringBuilder("Can't change tag of fragment ");
+                sb.append(kc1Var);
+                String str4 = kc1Var.L;
+                sb.append(": was ");
+                sb.append(str4);
+                sb.append(" now ");
+                sb.append(str);
+                throw new IllegalStateException(sb.toString());
+            }
+            kc1Var.L = str;
+        }
+        if (i != 0) {
+            if (i == -1) {
+                throw new IllegalArgumentException("Can't add fragment " + kc1Var + " with tag " + str + " to container view with no id");
+            }
+            int i3 = kc1Var.J;
+            if (i3 != 0 && i3 != i) {
+                StringBuilder sb2 = new StringBuilder("Can't change container ID of fragment ");
+                sb2.append(kc1Var);
+                int i4 = kc1Var.J;
+                sb2.append(": was ");
+                sb2.append(i4);
+                sb2.append(" now ");
+                sb2.append(i);
+                throw new IllegalStateException(sb2.toString());
+            }
+            kc1Var.J = i;
+            kc1Var.K = i;
+        }
+        b(new je1(i2, kc1Var));
+        kc1Var.F = this.q;
     }
 
-    public final void h(String r6, PrintWriter r7, boolean r8) {
-        if (r8 == false) goto L26;
-        r7.print(r6);
-        r7.print("mName=");
-        r7.print(this.i);
-        r7.print(" mIndex=");
-        r7.print(this.s);
-        r7.print(" mCommitted=");
-        r7.println(this.r);
-        if (this.f == 0) goto L7;
-        r7.print(r6);
-        r7.print("mTransition=#");
-        r7.print(Integer.toHexString(this.f));
-    L7:
-        if (this.b == 0) goto L9;
-    L10:
-        r7.print(r6);
-        r7.print("mEnterAnim=#");
-        r7.print(Integer.toHexString(this.b));
-        r7.print(" mExitAnim=#");
-        r7.println(Integer.toHexString(this.c));
-    L12:
-        if (this.d == 0) goto L14;
-    L15:
-        r7.print(r6);
-        r7.print("mPopEnterAnim=#");
-        r7.print(Integer.toHexString(this.d));
-        r7.print(" mPopExitAnim=#");
-        r7.println(Integer.toHexString(this.e));
-    L17:
-        if (this.j == 0) goto L19;
-    L20:
-        r7.print(r6);
-        r7.print("mBreadCrumbTitleRes=#");
-        r7.print(Integer.toHexString(this.j));
-        r7.print(" mBreadCrumbTitleText=");
-        r7.println(this.k);
-    L22:
-        if (this.l == 0) goto L24;
-    L25:
-        r7.print(r6);
-        r7.print("mBreadCrumbShortTitleRes=#");
-        r7.print(Integer.toHexString(this.l));
-        r7.print(" mBreadCrumbShortTitleText=");
-        r7.println(this.m);
-        goto L26
-    L24:
-        if (this.m == null) goto L26;
-    L19:
-        if (this.k == null) goto L22;
-    L14:
-        if (this.e == 0) goto L17;
-    L9:
-        if (this.c == 0) goto L12;
-    L26:
-        ArrayList r5 = this.a;
-        if (r5.isEmpty() == true) goto L57;
-        r7.print(r6);
-        r7.println("Operations:");
-        int r0 = r5.size();
-        int r1 = 0;
-    L29:
-        if (r1 >= r0) goto L62;
-        je1 r2 = (je1) r5.get(r1);
-        switch(r2.a) {
-            case 0: goto L43;
-            case 1: goto L42;
-            case 2: goto L41;
-            case 3: goto L40;
-            case 4: goto L39;
-            case 5: goto L38;
-            case 6: goto L37;
-            case 7: goto L36;
-            case 8: goto L35;
-            case 9: goto L34;
-            case 10: goto L33;
-            default: goto L32;
-        };
-    L32:
-        String r3 = "cmd=" + r2.a;
-    L44:
-        r7.print(r6);
-        r7.print("  Op #");
-        r7.print(r1);
-        r7.print(": ");
-        r7.print(r3);
-        r7.print(" ");
-        r7.println(r2.b);
-        if (r8 == false) goto L56;
-        if (r2.d == 0) goto L49;
-    L50:
-        r7.print(r6);
-        r7.print("enterAnim=#");
-        r7.print(Integer.toHexString(r2.d));
-        r7.print(" exitAnim=#");
-        r7.println(Integer.toHexString(r2.e));
-    L52:
-        if (r2.f == 0) goto L54;
-    L55:
-        r7.print(r6);
-        r7.print("popEnterAnim=#");
-        r7.print(Integer.toHexString(r2.f));
-        r7.print(" popExitAnim=#");
-        r7.println(Integer.toHexString(r2.g));
-        goto L56
-    L54:
-        if (r2.g == 0) goto L56;
-    L49:
-        if (r2.e == 0) goto L52;
-    L56:
-        r1 = r1 + 1;
-        goto L29
-    L33:
-        r3 = "OP_SET_MAX_LIFECYCLE";
-        goto L44
-    L34:
-        r3 = "UNSET_PRIMARY_NAV";
-        goto L44
-    L35:
-        r3 = "SET_PRIMARY_NAV";
-        goto L44
-    L36:
-        r3 = "ATTACH";
-        goto L44
-    L37:
-        r3 = "DETACH";
-        goto L44
-    L38:
-        r3 = "SHOW";
-        goto L44
-    L39:
-        r3 = "HIDE";
-        goto L44
-    L40:
-        r3 = "REMOVE";
-        goto L44
-    L41:
-        r3 = "REPLACE";
-        goto L44
-    L42:
-        r3 = "ADD";
-        goto L44
-    L43:
-        r3 = "NULL";
-        goto L44
-    L62:
-        return;
+    public final void h(String str, PrintWriter printWriter, boolean z) {
+        String str2;
+        if (z) {
+            printWriter.print(str);
+            printWriter.print("mName=");
+            printWriter.print(this.i);
+            printWriter.print(" mIndex=");
+            printWriter.print(this.s);
+            printWriter.print(" mCommitted=");
+            printWriter.println(this.r);
+            if (this.f != 0) {
+                printWriter.print(str);
+                printWriter.print("mTransition=#");
+                printWriter.print(Integer.toHexString(this.f));
+            }
+            if (this.b != 0 || this.c != 0) {
+                printWriter.print(str);
+                printWriter.print("mEnterAnim=#");
+                printWriter.print(Integer.toHexString(this.b));
+                printWriter.print(" mExitAnim=#");
+                printWriter.println(Integer.toHexString(this.c));
+            }
+            if (this.d != 0 || this.e != 0) {
+                printWriter.print(str);
+                printWriter.print("mPopEnterAnim=#");
+                printWriter.print(Integer.toHexString(this.d));
+                printWriter.print(" mPopExitAnim=#");
+                printWriter.println(Integer.toHexString(this.e));
+            }
+            if (this.j != 0 || this.k != null) {
+                printWriter.print(str);
+                printWriter.print("mBreadCrumbTitleRes=#");
+                printWriter.print(Integer.toHexString(this.j));
+                printWriter.print(" mBreadCrumbTitleText=");
+                printWriter.println(this.k);
+            }
+            if (this.l != 0 || this.m != null) {
+                printWriter.print(str);
+                printWriter.print("mBreadCrumbShortTitleRes=#");
+                printWriter.print(Integer.toHexString(this.l));
+                printWriter.print(" mBreadCrumbShortTitleText=");
+                printWriter.println(this.m);
+            }
+        }
+        ArrayList arrayList = this.a;
+        if (arrayList.isEmpty()) {
+            return;
+        }
+        printWriter.print(str);
+        printWriter.println("Operations:");
+        int size = arrayList.size();
+        for (int i = 0; i < size; i++) {
+            je1 je1Var = (je1) arrayList.get(i);
+            switch (je1Var.a) {
+                case 0:
+                    str2 = "NULL";
+                    break;
+                case 1:
+                    str2 = "ADD";
+                    break;
+                case 2:
+                    str2 = "REPLACE";
+                    break;
+                case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
+                    str2 = "REMOVE";
+                    break;
+                case 4:
+                    str2 = "HIDE";
+                    break;
+                case 5:
+                    str2 = "SHOW";
+                    break;
+                case 6:
+                    str2 = "DETACH";
+                    break;
+                case 7:
+                    str2 = "ATTACH";
+                    break;
+                case 8:
+                    str2 = "SET_PRIMARY_NAV";
+                    break;
+                case 9:
+                    str2 = "UNSET_PRIMARY_NAV";
+                    break;
+                case 10:
+                    str2 = "OP_SET_MAX_LIFECYCLE";
+                    break;
+                default:
+                    str2 = "cmd=" + je1Var.a;
+                    break;
+            }
+            printWriter.print(str);
+            printWriter.print("  Op #");
+            printWriter.print(i);
+            printWriter.print(": ");
+            printWriter.print(str2);
+            printWriter.print(" ");
+            printWriter.println(je1Var.b);
+            if (z) {
+                if (je1Var.d != 0 || je1Var.e != 0) {
+                    printWriter.print(str);
+                    printWriter.print("enterAnim=#");
+                    printWriter.print(Integer.toHexString(je1Var.d));
+                    printWriter.print(" exitAnim=#");
+                    printWriter.println(Integer.toHexString(je1Var.e));
+                }
+                if (je1Var.f != 0 || je1Var.g != 0) {
+                    printWriter.print(str);
+                    printWriter.print("popEnterAnim=#");
+                    printWriter.print(Integer.toHexString(je1Var.f));
+                    printWriter.print(" popExitAnim=#");
+                    printWriter.println(Integer.toHexString(je1Var.g));
+                }
+            }
+        }
     }
 
-    public final void i(kc1 r3) {
-        ld1 r0 = r3.F;
-        if (r0 != null) goto L5;
-    L9:
-        b(new je1(3, r3));
-        return;
-    L5:
-        if (r0 == this.q) goto L9;
-        throw new IllegalStateException("Cannot remove Fragment attached to a different FragmentManager. Fragment " + r3.toString() + " is already attached to a FragmentManager.");
+    public final void i(kc1 kc1Var) {
+        ld1 ld1Var = kc1Var.F;
+        if (ld1Var == null || ld1Var == this.q) {
+            b(new je1(3, kc1Var));
+            return;
+        }
+        throw new IllegalStateException("Cannot remove Fragment attached to a different FragmentManager. Fragment " + kc1Var.toString() + " is already attached to a FragmentManager.");
     }
 
-    public final void j(int r2, kc1 r3, String r4) {
-        if (r2 == 0) goto L5;
-        g(r2, r3, r4, 2);
-        return;
-    L5:
-        kf2.n("Must use non-zero containerViewId");
+    public final void j(int i, kc1 kc1Var, String str) {
+        if (i != 0) {
+            g(i, kc1Var, str, 2);
+        } else {
+            kf2.n("Must use non-zero containerViewId");
+        }
     }
 
-    public final void k(kc1 r4, r92 r5) {
-        ld1 r0 = r4.F;
-        ld1 r1 = this.q;
-        if (r0 == r1) goto L5;
-        mj0.l(r1, "Cannot setMaxLifecycle for Fragment not attached to FragmentManager ");
-        return;
-    L5:
-        if (r5 != r92.o) goto L12;
-        if (r4.n <= (-1)) goto L12;
-        nz2.A(r5, " after the Fragment has been created", "Cannot set maximum Lifecycle to ");
-        return;
-    L12:
-        if (r5 == r92.n) goto L15;
-        je1 r2 = new je1();
-        r2.a = 10;
-        r2.b = r4;
-        r2.c = false;
-        r2.h = r4.b0;
-        r2.i = r5;
-        b(r2);
-        return;
-    L15:
-        nz2.A(r5, ". Use remove() to remove the fragment from the FragmentManager and trigger its destruction.", "Cannot set maximum Lifecycle to ");
+    public final void k(kc1 kc1Var, r92 r92Var) {
+        ld1 ld1Var = kc1Var.F;
+        ld1 ld1Var2 = this.q;
+        if (ld1Var != ld1Var2) {
+            mj0.l(ld1Var2, "Cannot setMaxLifecycle for Fragment not attached to FragmentManager ");
+            return;
+        }
+        if (r92Var == r92.o && kc1Var.n > -1) {
+            nz2.A(r92Var, " after the Fragment has been created", "Cannot set maximum Lifecycle to ");
+            return;
+        }
+        if (r92Var == r92.n) {
+            nz2.A(r92Var, ". Use remove() to remove the fragment from the FragmentManager and trigger its destruction.", "Cannot set maximum Lifecycle to ");
+            return;
+        }
+        je1 je1Var = new je1();
+        je1Var.a = 10;
+        je1Var.b = kc1Var;
+        je1Var.c = false;
+        je1Var.h = kc1Var.b0;
+        je1Var.i = r92Var;
+        b(je1Var);
     }
 
-    public final void l(kc1 r3) {
-        ld1 r0 = r3.F;
-        if (r0 != null) goto L5;
-    L9:
-        b(new je1(8, r3));
-        return;
-    L5:
-        if (r0 == this.q) goto L9;
-        throw new IllegalStateException("Cannot setPrimaryNavigation for Fragment attached to a different FragmentManager. Fragment " + r3.toString() + " is already attached to a FragmentManager.");
+    public final void l(kc1 kc1Var) {
+        ld1 ld1Var = kc1Var.F;
+        if (ld1Var == null || ld1Var == this.q) {
+            b(new je1(8, kc1Var));
+            return;
+        }
+        throw new IllegalStateException("Cannot setPrimaryNavigation for Fragment attached to a different FragmentManager. Fragment " + kc1Var.toString() + " is already attached to a FragmentManager.");
     }
 
     public final String toString() {
-        StringBuilder r0 = new StringBuilder(128);
-        r0.append("BackStackEntry{");
-        r0.append(Integer.toHexString(System.identityHashCode(this)));
-        if (this.s < 0) goto L6;
-        r0.append(" #");
-        r0.append(this.s);
-    L6:
-        if (this.i == null) goto L8;
-        r0.append(" ");
-        r0.append(this.i);
-    L8:
-        r0.append("}");
-        return r0.toString();
+        StringBuilder sb = new StringBuilder(128);
+        sb.append("BackStackEntry{");
+        sb.append(Integer.toHexString(System.identityHashCode(this)));
+        if (this.s >= 0) {
+            sb.append(" #");
+            sb.append(this.s);
+        }
+        if (this.i != null) {
+            sb.append(" ");
+            sb.append(this.i);
+        }
+        sb.append("}");
+        return sb.toString();
     }
 
-    public po(ld1 r2) {
-        r2.F();
-        mc1 r0 = r2.v;
-        if (r0 == null) goto L5;
-        r0.B.getClassLoader();
-    L5:
+    /* JADX WARN: 'this' call moved to the top of the method (can break code semantics) */
+    public po(ld1 ld1Var) {
         this();
+        ld1Var.F();
+        mc1 mc1Var = ld1Var.v;
+        if (mc1Var != null) {
+            mc1Var.B.getClassLoader();
+        }
         this.s = -1;
         this.t = false;
-        this.q = r2;
+        this.q = ld1Var;
     }
 
     public po() {

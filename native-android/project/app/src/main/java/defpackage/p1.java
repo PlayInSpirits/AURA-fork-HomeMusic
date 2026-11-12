@@ -8,22 +8,23 @@ import java.util.Set;
 public final class p1 extends m1 implements Set {
     public final /* synthetic */ nl1 s;
 
-    public p1(nl1 r2, Object r3, Set r4) {
-        this.s = r2;
-        super(r2, r3, r4, null);
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public p1(nl1 nl1Var, Object obj, Set set) {
+        super(nl1Var, obj, set, null);
+        this.s = nl1Var;
     }
 
     @Override // defpackage.m1, java.util.AbstractCollection, java.util.Collection
-    public final boolean removeAll(Collection r4) {
-        if (r4.isEmpty() == false) goto L6;
-        return false;
-    L6:
-        int r0 = size();
-        boolean r5 = j51.L((Set) this.o, r4);
-        if (r5 == false) goto L9;
-        this.s.s += this.o.size() - r0;
-        d();
-    L9:
-        return r5;
+    public final boolean removeAll(Collection collection) {
+        if (collection.isEmpty()) {
+            return false;
+        }
+        int size = size();
+        boolean zL = j51.L((Set) this.o, collection);
+        if (zL) {
+            this.s.s += this.o.size() - size;
+            d();
+        }
+        return zL;
     }
 }

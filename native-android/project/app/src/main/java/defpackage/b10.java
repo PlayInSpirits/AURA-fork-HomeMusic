@@ -4,8 +4,8 @@ package defpackage;
 /* JADX INFO: loaded from: classes.dex */
 public final class b10 extends a10 {
     @Override // defpackage.z00
-    public final z00 d(ne0 r2, int r3, wv r4) {
-        return new b10(this.q, r2, r3, r4);
+    public final z00 d(ne0 ne0Var, int i, wv wvVar) {
+        return new b10(this.q, ne0Var, i, wvVar);
     }
 
     @Override // defpackage.z00
@@ -14,11 +14,8 @@ public final class b10 extends a10 {
     }
 
     @Override // defpackage.a10
-    public final Object f(q81 r1, vd0 r2) {
-        Object r0 = this.q.a(r1, r2);
-        if (r0 != xe0.n) goto L6;
-        return r0;
-    L6:
-        return j15.a;
+    public final Object f(q81 q81Var, vd0 vd0Var) {
+        Object objA = this.q.a(q81Var, vd0Var);
+        return objA == xe0.n ? objA : j15.a;
     }
 }

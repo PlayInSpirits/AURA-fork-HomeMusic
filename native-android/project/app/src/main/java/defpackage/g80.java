@@ -9,45 +9,37 @@ import android.view.ViewTreeObserver;
 public final class g80 implements ComponentCallbacks2, ViewTreeObserver.OnWindowFocusChangeListener {
     public final /* synthetic */ h80 n;
 
-    public g80(h80 r1) {
-        this.n = r1;
+    public g80(h80 h80Var) {
+        this.n = h80Var;
     }
 
     @Override // android.content.ComponentCallbacks
-    public final void onConfigurationChanged(Configuration r1) {
-        this.n.f(r1);
+    public final void onConfigurationChanged(Configuration configuration) {
+        this.n.f(configuration);
     }
 
     @Override // android.content.ComponentCallbacks
     public final void onLowMemory() {
-        h80 r1 = this.n;
-        r1.g.a.clear();
-        z04 r2 = r1.h;
-        monitor-enter(r2);
-        r2.a.c();     // Catch: Throwable -> L7
-        monitor-exit(r2);
-        return;
-    L7:
-        th = move-exception;
-        throw th;
+        h80 h80Var = this.n;
+        h80Var.g.a.clear();
+        z04 z04Var = h80Var.h;
+        synchronized (z04Var) {
+            z04Var.a.c();
+        }
     }
 
     @Override // android.content.ComponentCallbacks2
-    public final void onTrimMemory(int r1) {
-        h80 r0 = this.n;
-        r0.g.a.clear();
-        z04 r2 = r0.h;
-        monitor-enter(r2);
-        r2.a.c();     // Catch: Throwable -> L7
-        monitor-exit(r2);
-        return;
-    L7:
-        th = move-exception;
-        throw th;
+    public final void onTrimMemory(int i) {
+        h80 h80Var = this.n;
+        h80Var.g.a.clear();
+        z04 z04Var = h80Var.h;
+        synchronized (z04Var) {
+            z04Var.a.c();
+        }
     }
 
     @Override // android.view.ViewTreeObserver.OnWindowFocusChangeListener
-    public final void onWindowFocusChanged(boolean r1) {
-        ((zd3) this.n.t.o).setValue(Boolean.valueOf(r1));
+    public final void onWindowFocusChanged(boolean z) {
+        ((zd3) this.n.t.o).setValue(Boolean.valueOf(z));
     }
 }

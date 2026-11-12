@@ -10,35 +10,26 @@ public final class a54 implements x44, j54 {
     public ea2 o;
     public gp3 p;
 
-    public a54(y44 r6) {
-        this.n = r6;
-        Object r1 = r6.d("androidx.savedstate.SavedStateRegistry");
-        if ((r1 instanceof Bundle) == false) goto L5;
-        Bundle r2 = (Bundle) r1;
-    L6:
-        if (r2 != null) goto L8;
-    L10:
-        r6.a("androidx.savedstate.SavedStateRegistry", new wc(20, this));
-        return;
-    L8:
-        if (this.p != null) goto L10;
-        gp3 r3 = new gp3(new xm2(this, new wc(22, this)));
-        this.p = r3;
-        r3.s(r2);
-        goto L10
-    L5:
-        r2 = null;
-        goto L6
+    public a54(y44 y44Var) {
+        this.n = y44Var;
+        Object objD = y44Var.d("androidx.savedstate.SavedStateRegistry");
+        Bundle bundle = objD instanceof Bundle ? (Bundle) objD : null;
+        if (bundle != null && this.p == null) {
+            gp3 gp3Var = new gp3(new xm2(this, new wc(22, this)));
+            this.p = gp3Var;
+            gp3Var.s(bundle);
+        }
+        y44Var.a("androidx.savedstate.SavedStateRegistry", new wc(20, this));
     }
 
     @Override // defpackage.x44
-    public final c12 a(String r1, gf1 r2) {
-        return this.n.a(r1, r2);
+    public final c12 a(String str, gf1 gf1Var) {
+        return this.n.a(str, gf1Var);
     }
 
     @Override // defpackage.x44
-    public final boolean b(Object r1) {
-        return this.n.b(r1);
+    public final boolean b(Object obj) {
+        return this.n.b(obj);
     }
 
     @Override // defpackage.x44
@@ -47,30 +38,30 @@ public final class a54 implements x44, j54 {
     }
 
     @Override // defpackage.x44
-    public final Object d(String r1) {
-        return this.n.d(r1);
+    public final Object d(String str) {
+        return this.n.d(str);
     }
 
     @Override // defpackage.j54
     public final rm3 f() {
-        gp3 r0 = this.p;
-        if (r0 != null) goto L6;
-        gp3 r1 = new gp3(new xm2(this, new wc(22, this)));
-        this.p = r1;
-        r1.s(null);
-        r0 = r1;
-    L6:
-        return (rm3) r0.p;
+        gp3 gp3Var = this.p;
+        if (gp3Var == null) {
+            gp3 gp3Var2 = new gp3(new xm2(this, new wc(22, this)));
+            this.p = gp3Var2;
+            gp3Var2.s(null);
+            gp3Var = gp3Var2;
+        }
+        return (rm3) gp3Var.p;
     }
 
     @Override // defpackage.ba2
     public final ea2 h() {
-        ea2 r0 = this.o;
-        if (r0 != null) goto L6;
-        ea2 r1 = new ea2(this, false);
-        this.o = r1;
-        return r1;
-    L6:
-        return r0;
+        ea2 ea2Var = this.o;
+        if (ea2Var != null) {
+            return ea2Var;
+        }
+        ea2 ea2Var2 = new ea2(this, false);
+        this.o = ea2Var2;
+        return ea2Var2;
     }
 }

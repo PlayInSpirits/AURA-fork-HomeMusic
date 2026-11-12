@@ -9,83 +9,70 @@ import java.util.WeakHashMap;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class pb5 {
-    public static final pb5 b = null;
+    public static final pb5 b;
     public final mb5 a;
 
     static {
-        int r0 = Build.VERSION.SDK_INT;
-        if (r0 < 34) goto L7;
-        b = kb5.w;
-        return;
-    L7:
-        if (r0 < 30) goto L10;
-        b = ib5.v;
-        return;
-    L10:
-        b = mb5.b;
+        int i = Build.VERSION.SDK_INT;
+        if (i >= 34) {
+            b = kb5.w;
+        } else if (i >= 30) {
+            b = ib5.v;
+        } else {
+            b = mb5.b;
+        }
     }
 
-    public pb5(WindowInsets r3) {
-        int r0 = Build.VERSION.SDK_INT;
-        if (r0 < 35) goto L7;
-        this.a = new lb5(this, r3);
-        return;
-    L7:
-        if (r0 < 34) goto L11;
-        this.a = new kb5(this, r3);
-        return;
-    L11:
-        if (r0 < 31) goto L15;
-        this.a = new jb5(this, r3);
-        return;
-    L15:
-        if (r0 < 30) goto L19;
-        this.a = new ib5(this, r3);
-        return;
-    L19:
-        if (r0 < 29) goto L23;
-        this.a = new gb5(this, r3);
-        return;
-    L23:
-        if (r0 < 28) goto L26;
-        this.a = new eb5(this, r3);
-        return;
-    L26:
-        this.a = new db5(this, r3);
+    public pb5(WindowInsets windowInsets) {
+        int i = Build.VERSION.SDK_INT;
+        if (i >= 35) {
+            this.a = new lb5(this, windowInsets);
+            return;
+        }
+        if (i >= 34) {
+            this.a = new kb5(this, windowInsets);
+            return;
+        }
+        if (i >= 31) {
+            this.a = new jb5(this, windowInsets);
+            return;
+        }
+        if (i >= 30) {
+            this.a = new ib5(this, windowInsets);
+            return;
+        }
+        if (i >= 29) {
+            this.a = new gb5(this, windowInsets);
+        } else if (i >= 28) {
+            this.a = new eb5(this, windowInsets);
+        } else {
+            this.a = new db5(this, windowInsets);
+        }
     }
 
-    public static vz1 e(vz1 r5, int r6, int r7, int r8, int r9) {
-        int r0 = Math.max(0, r5.a - r6);
-        int r2 = Math.max(0, r5.b - r7);
-        int r3 = Math.max(0, r5.c - r8);
-        int r1 = Math.max(0, r5.d - r9);
-        if (r0 != r6) goto L9;
-        if (r2 != r7) goto L9;
-        if (r3 != r8) goto L9;
-        if (r1 != r9) goto L9;
-        return r5;
-    L9:
-        return vz1.b(r0, r2, r3, r1);
+    public static vz1 e(vz1 vz1Var, int i, int i2, int i3, int i4) {
+        int iMax = Math.max(0, vz1Var.a - i);
+        int iMax2 = Math.max(0, vz1Var.b - i2);
+        int iMax3 = Math.max(0, vz1Var.c - i3);
+        int iMax4 = Math.max(0, vz1Var.d - i4);
+        return (iMax == i && iMax2 == i2 && iMax3 == i3 && iMax4 == i4) ? vz1Var : vz1.b(iMax, iMax2, iMax3, iMax4);
     }
 
-    public static pb5 g(WindowInsets r2, View r3) {
-        r2.getClass();
-        pb5 r0 = new pb5(r2);
-        if (r3 != null) goto L5;
-    L7:
-        return r0;
-    L5:
-        if (r3.isAttachedToWindow() == false) goto L7;
-        WeakHashMap r4 = j65.a;
-        pb5 r5 = b65.a(r3);
-        mb5 r1 = r0.a;
-        r1.w(r5);
-        View r6 = r3.getRootView();
-        r1.d(r6);
-        r1.o(r6);
-        r1.p();
-        r1.y(r3.getWindowSystemUiVisibility());
-        goto L7
+    public static pb5 g(WindowInsets windowInsets, View view) {
+        windowInsets.getClass();
+        pb5 pb5Var = new pb5(windowInsets);
+        if (view != null && view.isAttachedToWindow()) {
+            WeakHashMap weakHashMap = j65.a;
+            pb5 pb5VarA = b65.a(view);
+            mb5 mb5Var = pb5Var.a;
+            mb5Var.w(pb5VarA);
+            View rootView = view.getRootView();
+            mb5Var.d(rootView);
+            mb5Var.o(rootView);
+            mb5Var.p();
+            mb5Var.y(view.getWindowSystemUiVisibility());
+        }
+        return pb5Var;
     }
 
     public final int a() {
@@ -104,30 +91,30 @@ public final class pb5 {
         return this.a.m().b;
     }
 
-    public final boolean equals(Object r2) {
-        if (this != r2) goto L6;
-        return true;
-    L6:
-        if ((r2 instanceof pb5) == true) goto L10;
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj instanceof pb5) {
+            return Objects.equals(this.a, ((pb5) obj).a);
+        }
         return false;
-    L10:
-        return Objects.equals(this.a, ((pb5) r2).a);
     }
 
     public final WindowInsets f() {
-        mb5 r1 = this.a;
-        if ((r1 instanceof cb5) == true) goto L5;
+        mb5 mb5Var = this.a;
+        if (mb5Var instanceof cb5) {
+            return ((cb5) mb5Var).c;
+        }
         return null;
-    L5:
-        return ((cb5) r1).c;
     }
 
     public final int hashCode() {
-        mb5 r0 = this.a;
-        if (r0 != null) goto L7;
-        return 0;
-    L7:
-        return r0.hashCode();
+        mb5 mb5Var = this.a;
+        if (mb5Var == null) {
+            return 0;
+        }
+        return mb5Var.hashCode();
     }
 
     public pb5() {

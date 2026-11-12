@@ -11,216 +11,186 @@ import java.util.concurrent.atomic.AtomicBoolean;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class z54 implements c55, uy {
-    public final AtomicBoolean n;
-    public final AtomicBoolean o;
-    public final nr3 p;
-    public final ll q;
-    public final tu r;
-    public final tu s;
-    public final float[] t;
-    public final float[] u;
     public int v;
     public SurfaceTexture w;
-    public volatile int x;
-    public int y;
     public byte[] z;
-
-    public z54() {
-        this.n = new AtomicBoolean();
-        this.o = new AtomicBoolean(true);
-        this.p = new nr3();
-        this.q = new ll(4, (byte) 0);
-        this.r = new tu();
-        this.s = new tu();
-        this.t = new float[16];
-        this.u = new float[16];
-        this.x = 0;
-        this.y = -1;
-    }
+    public final AtomicBoolean n = new AtomicBoolean();
+    public final AtomicBoolean o = new AtomicBoolean(true);
+    public final nr3 p = new nr3();
+    public final ll q = new ll(4, (byte) 0);
+    public final tu r = new tu();
+    public final tu s = new tu();
+    public final float[] t = new float[16];
+    public final float[] u = new float[16];
+    public volatile int x = 0;
+    public int y = -1;
 
     @Override // defpackage.uy
-    public final void a(long r1, float[] r3) {
-        ((tu) this.q.r).a(r1, r3);
+    public final void a(long j, float[] fArr) {
+        ((tu) this.q.r).a(j, fArr);
     }
 
     @Override // defpackage.uy
     public final void b() {
         this.r.b();
-        ll r0 = this.q;
-        ((tu) r0.r).b();
-        r0.o = false;
+        ll llVar = this.q;
+        ((tu) llVar.r).b();
+        llVar.o = false;
         this.o.set(true);
     }
 
     public final SurfaceTexture c() {
-        GLES20.glClearColor(0.5f, 0.5f, 0.5f, 1.0f);     // Catch: GlUtil$GlException -> L5
-        j51.l();     // Catch: GlUtil$GlException -> L5
-        this.p.a();     // Catch: GlUtil$GlException -> L5
-        j51.l();     // Catch: GlUtil$GlException -> L5
-        int[] r1 = new int[1];     // Catch: GlUtil$GlException -> L5
-        GLES20.glGenTextures(1, r1, 0);     // Catch: GlUtil$GlException -> L5
-        j51.l();     // Catch: GlUtil$GlException -> L5
-        int r0 = r1[0];     // Catch: GlUtil$GlException -> L5
-        GLES20.glBindTexture(36197, r0);     // Catch: GlUtil$GlException -> L5
-        j51.l();     // Catch: GlUtil$GlException -> L5
-        GLES20.glTexParameteri(36197, 10240, 9729);     // Catch: GlUtil$GlException -> L5
-        j51.l();     // Catch: GlUtil$GlException -> L5
-        GLES20.glTexParameteri(36197, 10241, 9729);     // Catch: GlUtil$GlException -> L5
-        j51.l();     // Catch: GlUtil$GlException -> L5
-        GLES20.glTexParameteri(36197, 10242, 33071);     // Catch: GlUtil$GlException -> L5
-        j51.l();     // Catch: GlUtil$GlException -> L5
-        GLES20.glTexParameteri(36197, 10243, 33071);     // Catch: GlUtil$GlException -> L5
-        j51.l();     // Catch: GlUtil$GlException -> L5
-        this.v = r0;     // Catch: GlUtil$GlException -> L5
-    L7:
-        SurfaceTexture r2 = new SurfaceTexture(this.v);
-        this.w = r2;
-        r2.setOnFrameAvailableListener(new y54(this));
+        try {
+            GLES20.glClearColor(0.5f, 0.5f, 0.5f, 1.0f);
+            j51.l();
+            this.p.a();
+            j51.l();
+            int[] iArr = new int[1];
+            GLES20.glGenTextures(1, iArr, 0);
+            j51.l();
+            int i = iArr[0];
+            GLES20.glBindTexture(36197, i);
+            j51.l();
+            GLES20.glTexParameteri(36197, 10240, 9729);
+            j51.l();
+            GLES20.glTexParameteri(36197, 10241, 9729);
+            j51.l();
+            GLES20.glTexParameteri(36197, 10242, 33071);
+            j51.l();
+            GLES20.glTexParameteri(36197, 10243, 33071);
+            j51.l();
+            this.v = i;
+        } catch (GlUtil$GlException e) {
+            l93.G("SceneRenderer", "Failed to initialize the renderer", e);
+        }
+        SurfaceTexture surfaceTexture = new SurfaceTexture(this.v);
+        this.w = surfaceTexture;
+        surfaceTexture.setOnFrameAvailableListener(new SurfaceTexture.OnFrameAvailableListener() { // from class: y54
+            @Override // android.graphics.SurfaceTexture.OnFrameAvailableListener
+            public final void onFrameAvailable(SurfaceTexture surfaceTexture2) {
+                this.n.n.set(true);
+            }
+        });
         return this.w;
-    L5:
-        e = move-exception;
-        l93.G("SceneRenderer", "Failed to initialize the renderer", e);
-        goto L7
     }
 
     @Override // defpackage.c55
-    public final void d(long r34, long r36, tb1 r38, MediaFormat r39) {
-        this.r.a(r36, Long.valueOf(r34));
-        byte[] r4 = r38.B;
-        int r3 = r38.C;
-        byte[] r5 = this.z;
-        int r6 = this.y;
-        this.z = r4;
-        if (r3 != (-1)) goto L5;
-        r3 = this.x;
-    L5:
-        this.y = r3;
-        if (r6 == r3) goto L8;
-    L10:
-        byte[] r7 = this.z;
-        mr3 r8 = null;
-        if (r7 == null) goto L39;
-        int r9 = this.y;
-        be3 r10 = new be3(r7);
-        r10.O(4);     // Catch: ArrayIndexOutOfBoundsException -> L70
-        int r11 = r10.m();     // Catch: ArrayIndexOutOfBoundsException -> L70
-        r10.N(0);     // Catch: ArrayIndexOutOfBoundsException -> L70
-        if (r11 != 1886547818) goto L28;
-        r10.O(8);     // Catch: ArrayIndexOutOfBoundsException -> L70
-        int r12 = r10.b;     // Catch: ArrayIndexOutOfBoundsException -> L70
-        int r13 = r10.c;     // Catch: ArrayIndexOutOfBoundsException -> L70
-    L16:
-        if (r12 >= r13) goto L30;
-        int r14 = r10.m() + r12;     // Catch: ArrayIndexOutOfBoundsException -> L70
-        if (r14 <= r12) goto L30;
-        if (r14 > r13) goto L30;
-        int r15 = r10.m();     // Catch: ArrayIndexOutOfBoundsException -> L70
-        if (r15 == 2037673328) goto L27;
-        if (r15 == 1836279920) goto L27;
-        r10.N(r14);     // Catch: ArrayIndexOutOfBoundsException -> L70
-        r12 = r14;
-    L27:
-        r10.M(r14);     // Catch: ArrayIndexOutOfBoundsException -> L70
-        ArrayList r16 = uc5.K(r10);     // Catch: ArrayIndexOutOfBoundsException -> L70
-    L31:
-        if (r16 == null) goto L39;
-        int r17 = r16.size();
-        if (r17 == 1) goto L38;
-        if (r17 != 2) goto L39;
-        r8 = new mr3((lr3) r16.get(0), (lr3) r16.get(1), r9);
-        goto L39
-    L38:
-        lr3 r18 = (lr3) r16.get(0);
-        r8 = new mr3(r18, r18, r9);
-        goto L39
-    L28:
-        r16 = uc5.K(r10);     // Catch: ArrayIndexOutOfBoundsException -> L70
-    L30:
-        r16 = null;
-    L39:
-        if (r8 != null) goto L41;
-    L43:
-        int r19 = this.y;
-        float r20 = (float) Math.toRadians(180.0d);
-        float r21 = (float) Math.toRadians(360.0d);
-        float r22 = r20 / 36.0f;
-        float r110 = r21 / 72.0f;
-        float[] r111 = new float[15984];
-        float[] r112 = new float[10656];
-        int r113 = 0;
-        int r114 = 0;
-        int r115 = 0;
-    L45:
-        if (r113 >= 36) goto L67;
-        float r116 = r20 / 2.0f;
-        float r23 = (r113 * r22) - r116;
-        int r24 = r113 + 1;
-        float r25 = (r24 * r22) - r116;
-        int r26 = 0;
-    L48:
-        if (r26 >= 73) goto L66;
-        int r117 = r24;
-        int r27 = 0;
-        int r28 = 2;
-    L50:
-        if (r27 >= r28) goto L65;
-        if (r27 != 0) goto L54;
-        float r29 = r23;
-    L53:
-        float r118 = r20;
-        float r30 = r26 * r110;
-        float r210 = r21;
-        double r31 = (r30 + 3.1415927f) - (r21 / 2.0f);
-        double r32 = r29;
-        r111[r114] = -((float) (Math.cos(r32) * (Math.sin(r31) * 50.0d)));
-        r111[r114 + 1] = (float) (Math.sin(r32) * 50.0d);
-        int r33 = r114 + 3;
-        float r211 = r22;
-        r111[r114 + 2] = (float) (Math.cos(r32) * (Math.cos(r31) * 50.0d));
-        r112[r115] = r30 / r210;
-        int r35 = r115 + 2;
-        r112[r115 + 1] = ((r113 + r27) * r211) / r118;
-        if (r26 != 0) goto L59;
-        if (r27 != 0) goto L59;
-    L62:
-        System.arraycopy(r111, r114, r111, r33, 3);
-        r114 = r114 + 6;
-        r28 = 2;
-        System.arraycopy(r112, r115, r112, r35, 2);
-        r115 = r115 + 4;
-    L64:
-        r27 = r27 + 1;
-        r20 = r118;
-        r22 = r211;
-        r21 = r210;
-    L59:
-        if (r26 == 72) goto L61;
-    L63:
-        r28 = 2;
-        r114 = r33;
-        r115 = r35;
-        goto L64
-    L61:
-        if (r27 != 1) goto L63;
-    L54:
-        r29 = r25;
-        goto L53
-    L65:
-        r26 = r26 + 1;
-        r24 = r117;
-        goto L48
-    L66:
-        r113 = r24;
-        goto L45
-    L67:
-        lr3 r37 = new lr3(new tu[]{new tu(0, 1, r111, r112)});
-        r8 = new mr3(r37, r37, r19);
-    L68:
-        this.s.a(r36, r8);
-        return;
-    L41:
-        if (nr3.c(r8) == false) goto L43;
-    L8:
-        if (Arrays.equals(r5, this.z) == false) goto L10;
+    public final void d(long j, long j2, tb1 tb1Var, MediaFormat mediaFormat) {
+        int i;
+        ArrayList arrayListK;
+        this.r.a(j2, Long.valueOf(j));
+        byte[] bArr = tb1Var.B;
+        int i2 = tb1Var.C;
+        byte[] bArr2 = this.z;
+        int i3 = this.y;
+        this.z = bArr;
+        if (i2 == -1) {
+            i2 = this.x;
+        }
+        this.y = i2;
+        if (i3 == i2 && Arrays.equals(bArr2, this.z)) {
+            return;
+        }
+        byte[] bArr3 = this.z;
+        mr3 mr3Var = null;
+        if (bArr3 != null) {
+            int i4 = this.y;
+            be3 be3Var = new be3(bArr3);
+            try {
+                be3Var.O(4);
+                int iM = be3Var.m();
+                be3Var.N(0);
+                if (iM == 1886547818) {
+                    be3Var.O(8);
+                    int i5 = be3Var.b;
+                    int i6 = be3Var.c;
+                    while (true) {
+                        if (i5 < i6) {
+                            int iM2 = be3Var.m() + i5;
+                            if (iM2 > i5 && iM2 <= i6) {
+                                int iM3 = be3Var.m();
+                                if (iM3 != 2037673328 && iM3 != 1836279920) {
+                                    be3Var.N(iM2);
+                                    i5 = iM2;
+                                }
+                                be3Var.M(iM2);
+                                arrayListK = uc5.K(be3Var);
+                            }
+                        }
+                        arrayListK = null;
+                    }
+                } else {
+                    arrayListK = uc5.K(be3Var);
+                }
+            } catch (ArrayIndexOutOfBoundsException unused) {
+            }
+            if (arrayListK != null) {
+                int size = arrayListK.size();
+                if (size == 1) {
+                    lr3 lr3Var = (lr3) arrayListK.get(0);
+                    mr3Var = new mr3(lr3Var, lr3Var, i4);
+                } else if (size == 2) {
+                    mr3Var = new mr3((lr3) arrayListK.get(0), (lr3) arrayListK.get(1), i4);
+                }
+            }
+        }
+        if (mr3Var == null || !nr3.c(mr3Var)) {
+            int i7 = this.y;
+            float radians = (float) Math.toRadians(180.0d);
+            float radians2 = (float) Math.toRadians(360.0d);
+            float f = radians / 36.0f;
+            float f2 = radians2 / 72.0f;
+            float[] fArr = new float[15984];
+            float[] fArr2 = new float[10656];
+            int i8 = 0;
+            int i9 = 0;
+            for (int i10 = 0; i10 < 36; i10 = i) {
+                float f3 = radians / 2.0f;
+                float f4 = (i10 * f) - f3;
+                i = i10 + 1;
+                float f5 = (i * f) - f3;
+                int i11 = 0;
+                while (i11 < 73) {
+                    int i12 = i;
+                    int i13 = 0;
+                    int i14 = 2;
+                    while (i13 < i14) {
+                        float f6 = radians;
+                        float f7 = i11 * f2;
+                        float f8 = radians2;
+                        double d = (f7 + 3.1415927f) - (radians2 / 2.0f);
+                        double d2 = i13 == 0 ? f4 : f5;
+                        fArr[i8] = -((float) (Math.cos(d2) * Math.sin(d) * 50.0d));
+                        fArr[i8 + 1] = (float) (Math.sin(d2) * 50.0d);
+                        int i15 = i8 + 3;
+                        float f9 = f;
+                        fArr[i8 + 2] = (float) (Math.cos(d2) * Math.cos(d) * 50.0d);
+                        fArr2[i9] = f7 / f8;
+                        int i16 = i9 + 2;
+                        fArr2[i9 + 1] = ((i10 + i13) * f9) / f6;
+                        if ((i11 == 0 && i13 == 0) || (i11 == 72 && i13 == 1)) {
+                            System.arraycopy(fArr, i8, fArr, i15, 3);
+                            i8 += 6;
+                            i14 = 2;
+                            System.arraycopy(fArr2, i9, fArr2, i16, 2);
+                            i9 += 4;
+                        } else {
+                            i14 = 2;
+                            i8 = i15;
+                            i9 = i16;
+                        }
+                        i13++;
+                        radians = f6;
+                        f = f9;
+                        radians2 = f8;
+                    }
+                    i11++;
+                    i = i12;
+                }
+            }
+            lr3 lr3Var2 = new lr3(new tu(0, 1, fArr, fArr2));
+            mr3Var = new mr3(lr3Var2, lr3Var2, i7);
+        }
+        this.s.a(j2, mr3Var);
     }
 }

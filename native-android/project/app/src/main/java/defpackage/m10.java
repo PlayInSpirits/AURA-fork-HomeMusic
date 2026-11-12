@@ -11,46 +11,27 @@ public final class m10 extends nv1 {
     public final String[] e;
     public final nv1[] f;
 
-    public m10(String r2, boolean r3, boolean r4, String[] r5, nv1[] r6) {
+    public m10(String str, boolean z, boolean z2, String[] strArr, nv1[] nv1VarArr) {
         super("CTOC");
-        this.b = r2;
-        this.c = r3;
-        this.d = r4;
-        this.e = r5;
-        this.f = r6;
+        this.b = str;
+        this.c = z;
+        this.d = z2;
+        this.e = strArr;
+        this.f = nv1VarArr;
     }
 
-    public final boolean equals(Object r3) {
-        if (this == r3) goto L22;
-        if (r3 != null) goto L6;
-        return false;
-    L6:
-        if (m10.class != r3.getClass()) goto L28;
-        m10 r4 = (m10) r3;
-        if (this.c == r4.c) goto L11;
-        return false;
-    L11:
-        if (this.d == r4.d) goto L13;
-        return false;
-    L13:
-        if (this.b.equals(r4.b) == true) goto L15;
-        return false;
-    L15:
-        if (Arrays.equals(this.e, r4.e) == true) goto L17;
-        return false;
-    L17:
-        if (Arrays.equals(this.f, r4.f) == false) goto L27;
-        return true;
-    L27:
-        return false;
-    L28:
-        return false;
-    L22:
-        return true;
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || m10.class != obj.getClass()) {
+            return false;
+        }
+        m10 m10Var = (m10) obj;
+        return this.c == m10Var.c && this.d == m10Var.d && this.b.equals(m10Var.b) && Arrays.equals(this.e, m10Var.e) && Arrays.equals(this.f, m10Var.f);
     }
 
     public final int hashCode() {
-        int r0 = (((527 + (this.c ? 1 : 0)) * 31) + (this.d ? 1 : 0)) * 31;
-        return this.b.hashCode() + r0;
+        return this.b.hashCode() + ((((527 + (this.c ? 1 : 0)) * 31) + (this.d ? 1 : 0)) * 31);
     }
 }

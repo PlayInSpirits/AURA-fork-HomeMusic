@@ -7,16 +7,15 @@ import androidx.work.impl.WorkDatabase;
 public final class rv1 {
     public final WorkDatabase a;
 
-    public rv1(WorkDatabase r1, int r2) {
-        switch(r2) {
-            case 1: goto L5;
-            default: goto L3;
-        };
-    L3:
-        r1.getClass();
-        this.a = r1;
-        return;
-    L5:
-        this.a = r1;
+    public rv1(WorkDatabase workDatabase, int i) {
+        switch (i) {
+            case 1:
+                this.a = workDatabase;
+                break;
+            default:
+                workDatabase.getClass();
+                this.a = workDatabase;
+                break;
+        }
     }
 }

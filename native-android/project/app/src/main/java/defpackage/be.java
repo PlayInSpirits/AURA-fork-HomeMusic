@@ -8,28 +8,28 @@ public final class be extends ce {
     public float c;
     public float d;
 
-    public be(float r1, float r2, float r3, float r4) {
-        this.a = r1;
-        this.b = r2;
-        this.c = r3;
-        this.d = r4;
+    public be(float f, float f2, float f3, float f4) {
+        this.a = f;
+        this.b = f2;
+        this.c = f3;
+        this.d = f4;
     }
 
     @Override // defpackage.ce
-    public final float a(int r2) {
-        if (r2 == 0) goto L18;
-        if (r2 == 1) goto L16;
-        if (r2 == 2) goto L14;
-        if (r2 == 3) goto L12;
-        return 0.0f;
-    L12:
+    public final float a(int i) {
+        if (i == 0) {
+            return this.a;
+        }
+        if (i == 1) {
+            return this.b;
+        }
+        if (i == 2) {
+            return this.c;
+        }
+        if (i != 3) {
+            return 0.0f;
+        }
         return this.d;
-    L14:
-        return this.c;
-    L16:
-        return this.b;
-    L18:
-        return this.a;
     }
 
     @Override // defpackage.ce
@@ -43,59 +43,44 @@ public final class be extends ce {
     }
 
     @Override // defpackage.ce
-    public final void d(int r2, float r3) {
-        if (r2 != 0) goto L4;
-        this.a = r3;
-        return;
-    L4:
-        if (r2 != 1) goto L6;
-        this.b = r3;
-        return;
-    L6:
-        if (r2 != 2) goto L8;
-        this.c = r3;
-        return;
-    L8:
-        if (r2 == 3) goto L10;
-        return;
-    L10:
-        this.d = r3;
+    public final void d(int i, float f) {
+        if (i == 0) {
+            this.a = f;
+            return;
+        }
+        if (i == 1) {
+            this.b = f;
+        } else if (i == 2) {
+            this.c = f;
+        } else {
+            if (i != 3) {
+                return;
+            }
+            this.d = f;
+        }
     }
 
-    public final boolean equals(Object r3) {
-        if ((r3 instanceof be) == false) goto L14;
-        be r4 = (be) r3;
-        if (r4.a == this.a) goto L7;
-        return false;
-    L7:
-        if (r4.b == this.b) goto L9;
-        return false;
-    L9:
-        if (r4.c == this.c) goto L11;
-        return false;
-    L11:
-        if (r4.d != this.d) goto L19;
-        return true;
-    L19:
-        return false;
-    L14:
-        return false;
+    public final boolean equals(Object obj) {
+        if (!(obj instanceof be)) {
+            return false;
+        }
+        be beVar = (be) obj;
+        return beVar.a == this.a && beVar.b == this.b && beVar.c == this.c && beVar.d == this.d;
     }
 
     public final int hashCode() {
-        int r0 = b11.d(b11.d(Float.hashCode(this.a) * 31, this.b, 31), this.c, 31);
-        return Float.hashCode(this.d) + r0;
+        return Float.hashCode(this.d) + b11.d(b11.d(Float.hashCode(this.a) * 31, this.b, 31), this.c, 31);
     }
 
     public final String toString() {
-        float r0 = this.a;
-        float r1 = this.b;
-        float r2 = this.c;
-        float r6 = this.d;
-        StringBuilder r3 = b11.r("AnimationVector4D: v1 = ", r0, ", v2 = ", r1, ", v3 = ");
-        r3.append(r2);
-        r3.append(", v4 = ");
-        r3.append(r6);
-        return r3.toString();
+        float f = this.a;
+        float f2 = this.b;
+        float f3 = this.c;
+        float f4 = this.d;
+        StringBuilder sbR = b11.r("AnimationVector4D: v1 = ", f, ", v2 = ", f2, ", v3 = ");
+        sbR.append(f3);
+        sbR.append(", v4 = ");
+        sbR.append(f4);
+        return sbR.toString();
     }
 }

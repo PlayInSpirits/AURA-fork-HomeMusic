@@ -5,13 +5,12 @@ package defpackage;
 public final class x61 implements vw2 {
     public final y41 a;
 
-    public x61(y41 r1) {
-        this.a = r1;
+    public x61(y41 y41Var) {
+        this.a = y41Var;
     }
 
     @Override // defpackage.vw2
-    public final uw2 a(na4 r2) {
-        int r0 = 2;
-        return new mw(r0, this.a);
+    public final uw2 a(na4 na4Var) {
+        return new mw(2, this.a);
     }
 }

@@ -11,17 +11,17 @@ public final enum t05 extends x05 {
     }
 
     @Override // defpackage.x05
-    public final Type a(Type r2) {
-        if ((r2 instanceof Class) == false) goto L7;
-        c32 r1 = b15.a;
-        return Array.newInstance((Class) r2, 0).getClass();
-    L7:
-        return new a(1, r2);
+    public final Type a(Type type) {
+        if (!(type instanceof Class)) {
+            return new a(1, type);
+        }
+        c32 c32Var = b15.a;
+        return Array.newInstance((Class<?>) type, 0).getClass();
     }
 
     @Override // defpackage.x05
-    public final Type d(Type r1) {
-        r1.getClass();
-        return r1;
+    public final Type d(Type type) {
+        type.getClass();
+        return type;
     }
 }

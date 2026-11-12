@@ -13,15 +13,15 @@ public final class oh3 {
     public String f;
     public long g;
 
-    public oh3(String r1, long r2, String r4, ag2 r5, k62 r6) {
-        r1.getClass();
-        this.a = r1;
-        this.b = r2;
-        this.c = r4;
-        this.d = r5;
-        this.e = r6;
-        String r3 = UUID.randomUUID().toString();
-        r3.getClass();
-        this.f = r3;
+    public oh3(String str, long j, String str2, ag2 ag2Var, k62 k62Var) {
+        str.getClass();
+        this.a = str;
+        this.b = j;
+        this.c = str2;
+        this.d = ag2Var;
+        this.e = k62Var;
+        String string = UUID.randomUUID().toString();
+        string.getClass();
+        this.f = string;
     }
 }

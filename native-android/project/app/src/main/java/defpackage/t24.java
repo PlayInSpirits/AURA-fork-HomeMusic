@@ -17,146 +17,185 @@ public final class t24 extends ad2 {
     public final ne0 r;
     public final if1 s;
 
-    public t24(s24 r1, hd5 r2, String[] r3, if1 r4) {
-        r2.getClass();
-        this.l = r1;
-        this.m = r2;
-        this.n = new y24(r3, this);
+    public t24(s24 s24Var, hd5 hd5Var, String[] strArr, if1 if1Var) {
+        ne0 ne0Var;
+        hd5Var.getClass();
+        this.l = s24Var;
+        this.m = hd5Var;
+        this.n = new y24(strArr, this);
         this.o = new AtomicBoolean(true);
         this.p = new AtomicBoolean(false);
         this.q = new AtomicBoolean(false);
-        if (r1.m() == false) goto L9;
-        td0 r5 = r1.a;
-        if (r5 == null) goto L7;
-        ne0 r6 = r5.n;
-    L10:
-        this.r = r6;
-        this.s = r4;
-        return;
-    L7:
-        h12.Q("coroutineScope");
-        throw null;
-    L9:
-        r6 = q01.n;
-        goto L10
+        if (s24Var.m()) {
+            td0 td0Var = s24Var.a;
+            if (td0Var == null) {
+                h12.Q("coroutineScope");
+                throw null;
+            }
+            ne0Var = td0Var.n;
+        } else {
+            ne0Var = q01.n;
+        }
+        this.r = ne0Var;
+        this.s = if1Var;
     }
 
+    /* JADX WARN: Code duplicated, block: B:41:0x00ac  */
+    /* JADX WARN: Code duplicated, block: B:44:0x00b6 A[Catch: all -> 0x002c, Exception -> 0x002f, TRY_ENTER, TRY_LEAVE, TryCatch #0 {Exception -> 0x002f, blocks: (B:12:0x0027, B:44:0x00b6), top: B:64:0x0027, outer: #2 }] */
+    /* JADX WARN: Code duplicated, block: B:48:0x00c9 A[LOOP:0: B:42:0x00ae->B:48:0x00c9, LOOP_END] */
+    /* JADX WARN: Code duplicated, block: B:52:0x00d5 A[Catch: all -> 0x002c, TRY_LEAVE, TryCatch #2 {all -> 0x002c, blocks: (B:12:0x0027, B:42:0x00ae, B:44:0x00b6, B:52:0x00d5, B:49:0x00cb, B:50:0x00d2), top: B:64:0x0027, inners: #0 }] */
+    /* JADX WARN: Code duplicated, block: B:56:0x00e4  */
+    /* JADX WARN: Code duplicated, block: B:58:0x00e7  */
+    /* JADX WARN: Code duplicated, block: B:69:0x00c8 A[SYNTHETIC] */
+    /* JADX WARN: Code duplicated, block: B:7:0x0013  */
     /* JADX WARN: Unsupported multi-entry loop pattern (BACK_EDGE: B:41:0x00ac -> B:42:0x00ae). Please report as a decompilation issue!!! */
     /* JADX WARN: Unsupported multi-entry loop pattern (BACK_EDGE: B:56:0x00e4 -> B:57:0x00e5). Please report as a decompilation issue!!! */
-    public static final Object l(t24 r11, wd0 r12) {
-        if ((r12 instanceof z24) == false) goto L7;
-        z24 r0 = (z24) r12;
-        int r1 = r0.r;
-        if ((r1 & Integer.MIN_VALUE) == 0) goto L7;
-        r0.r = r1 - Integer.MIN_VALUE;
-    L8:
-        Object r13 = r0.p;
-        int r2 = r0.r;
-        vd0 r3 = null;
-        int r4 = 0;
-        if (r2 == 0) goto L20;
-        if (r2 != 1) goto L18;
-        int r14 = r0.o;
-        t24 r5 = r0.n;
-        kb4.X(r13);     // Catch: Throwable -> L14 Exception -> L16
-    L43:
-        if (r5.o.compareAndSet(true, false) == false) goto L51;
-        r0.n = r5;     // Catch: Throwable -> L14 Exception -> L16
-        r0.o = 1;     // Catch: Throwable -> L14 Exception -> L16
-        r0.r = 1;     // Catch: Throwable -> L14 Exception -> L16
-        r13 = xl.F(r5.l, true, r5.s, r0);     // Catch: Throwable -> L14 Exception -> L16
-        xe0 r15 = xe0.n;
-        if (r13 == r15) goto L47;
-        r14 = 1;
-        goto L43
-    L47:
-        return r15;
-    L51:
-        if (r14 == 0) goto L53;
-        r5.i(r13);     // Catch: Throwable -> L14
-    L53:
-        r5.p.set(false);
-    L57:
-        if (r14 == 0) goto L63;
-        if (r5.o.get() == false) goto L63;
-        r11 = r5;
-    L39:
-        r5 = r11;
-        if (r11.p.compareAndSet(false, true) == false) goto L56;
-        r13 = null;
-        r14 = 0;
-        goto L43
-    L56:
-        r14 = 0;
-    L63:
-        return j15.a;
-    L16:
-        e = move-exception;
-        throw new RuntimeException("Exception while computing database live data.", e);     // Catch: Throwable -> L14
-    L14:
-        th = move-exception;
-        r5.p.set(false);
-        throw th;
-    L18:
-        kf2.o("call to 'resume' before 'invoke' with coroutine");
-        return null;
-    L20:
-        kb4.X(r13);
-        if (r11.q.compareAndSet(false, true) == false) goto L39;
-        s12 r16 = r11.l.i();
-        y24 r6 = r11.n;
-        r6.getClass();
-        f95 r7 = new f95(r16, r6);
-        LinkedHashMap r8 = r16.c;
-        jy4 r9 = r16.b;
-        kd3 r10 = r9.g(r7.a);
-        String[] r17 = (String[]) r10.n;
-        int[] r18 = (int[]) r10.o;
-        d83 r19 = new d83(r7, r18, r17);
-        ReentrantLock r20 = r16.d;
-        r20.lock();
-    L26:
-        th = move-exception;
-        r20.unlock();
-        throw th;
-    L24:
-        if (r8.containsKey(r7) == false) goto L28;
-        d83 r21 = (d83) lg2.V(r7, r8);     // Catch: Throwable -> L26
-    L29:
-        r20.unlock();
-        if (r21 == null) goto L32;
-    L34:
-        boolean r22 = false;
-    L35:
-        if (r22 == false) goto L39;
-        g12.Q(new r12(r16, r3, r4));
-        goto L39
-    L32:
-        if (r9.h.j(r18) == false) goto L34;
-        r22 = true;
-        goto L35
-    L28:
-        r21 = (d83) r8.put(r7, r19);     // Catch: Throwable -> L26
-    L7:
-        r0 = new z24(r11, r12);
-        goto L8
+    public static final Object l(t24 t24Var, wd0 wd0Var) {
+        z24 z24Var;
+        t24 t24Var2;
+        int i;
+        xe0 xe0Var;
+        if (wd0Var instanceof z24) {
+            z24Var = (z24) wd0Var;
+            int i2 = z24Var.r;
+            if ((i2 & Integer.MIN_VALUE) != 0) {
+                z24Var.r = i2 - Integer.MIN_VALUE;
+            } else {
+                z24Var = new z24(t24Var, wd0Var);
+            }
+        } else {
+            z24Var = new z24(t24Var, wd0Var);
+        }
+        Object objF = z24Var.p;
+        int i3 = z24Var.r;
+        vd0 vd0Var = null;
+        int i4 = 0;
+        if (i3 == 0) {
+            kb4.X(objF);
+            if (t24Var.q.compareAndSet(false, true)) {
+                s12 s12VarI = t24Var.l.i();
+                y24 y24Var = t24Var.n;
+                y24Var.getClass();
+                f95 f95Var = new f95(s12VarI, y24Var);
+                LinkedHashMap linkedHashMap = s12VarI.c;
+                jy4 jy4Var = s12VarI.b;
+                kd3 kd3VarG = jy4Var.g(f95Var.a);
+                String[] strArr = (String[]) kd3VarG.n;
+                int[] iArr = (int[]) kd3VarG.o;
+                d83 d83Var = new d83(f95Var, iArr, strArr);
+                ReentrantLock reentrantLock = s12VarI.d;
+                reentrantLock.lock();
+                try {
+                    d83 d83Var2 = linkedHashMap.containsKey(f95Var) ? (d83) lg2.V(f95Var, linkedHashMap) : (d83) linkedHashMap.put(f95Var, d83Var);
+                    reentrantLock.unlock();
+                    if (d83Var2 == null && jy4Var.h.j(iArr)) {
+                        g12.Q(new r12(s12VarI, vd0Var, i4));
+                    }
+                } catch (Throwable th) {
+                    reentrantLock.unlock();
+                    throw th;
+                }
+            }
+            t24Var2 = t24Var;
+            if (t24Var.p.compareAndSet(false, true)) {
+                objF = null;
+                i = 0;
+                while (t24Var2.o.compareAndSet(true, false)) {
+                    z24Var.n = t24Var2;
+                    z24Var.o = 1;
+                    z24Var.r = 1;
+                    objF = xl.F(t24Var2.l, true, t24Var2.s, z24Var);
+                    xe0Var = xe0.n;
+                    if (objF == xe0Var) {
+                        return xe0Var;
+                    }
+                    i = 1;
+                }
+                if (i != 0) {
+                    t24Var2.i(objF);
+                }
+                t24Var2.p.set(false);
+            } else {
+                i = 0;
+            }
+            if (i != 0) {
+            }
+            return j15.a;
+        }
+        if (i3 != 1) {
+            kf2.o("call to 'resume' before 'invoke' with coroutine");
+            return null;
+        }
+        i = z24Var.o;
+        t24Var2 = z24Var.n;
+        try {
+            try {
+                kb4.X(objF);
+                while (t24Var2.o.compareAndSet(true, false)) {
+                    z24Var.n = t24Var2;
+                    z24Var.o = 1;
+                    z24Var.r = 1;
+                    objF = xl.F(t24Var2.l, true, t24Var2.s, z24Var);
+                    xe0Var = xe0.n;
+                    if (objF == xe0Var) {
+                        return xe0Var;
+                    }
+                    i = 1;
+                }
+                if (i != 0) {
+                    t24Var2.i(objF);
+                }
+                t24Var2.p.set(false);
+                if (i != 0 || !t24Var2.o.get()) {
+                    return j15.a;
+                }
+                t24Var = t24Var2;
+                t24Var2 = t24Var;
+                if (t24Var.p.compareAndSet(false, true)) {
+                    objF = null;
+                    i = 0;
+                    while (t24Var2.o.compareAndSet(true, false)) {
+                        z24Var.n = t24Var2;
+                        z24Var.o = 1;
+                        z24Var.r = 1;
+                        objF = xl.F(t24Var2.l, true, t24Var2.s, z24Var);
+                        xe0Var = xe0.n;
+                        if (objF == xe0Var) {
+                            return xe0Var;
+                        }
+                        i = 1;
+                    }
+                    if (i != 0) {
+                        t24Var2.i(objF);
+                    }
+                    t24Var2.p.set(false);
+                } else {
+                    i = 0;
+                }
+                if (i != 0) {
+                }
+                return j15.a;
+            } catch (Exception e) {
+                throw new RuntimeException("Exception while computing database live data.", e);
+            }
+        } catch (Throwable th2) {
+            t24Var2.p.set(false);
+            throw th2;
+        }
     }
 
     @Override // defpackage.ad2
     public final void g() {
-        hd5 r0 = this.m;
-        r0.getClass();
-        ((Set) r0.p).add(this);
-        we0 r1 = this.l.h();
-        vd0 r3 = null;
-        x24 r2 = new x24(this, r3, 1);
-        fu.G(r1, this.r, null, r2, 2);
+        hd5 hd5Var = this.m;
+        hd5Var.getClass();
+        ((Set) hd5Var.p).add(this);
+        fu.G(this.l.h(), this.r, null, new x24(this, null, 1), 2);
     }
 
     @Override // defpackage.ad2
     public final void h() {
-        hd5 r0 = this.m;
-        r0.getClass();
-        ((Set) r0.p).remove(this);
+        hd5 hd5Var = this.m;
+        hd5Var.getClass();
+        ((Set) hd5Var.p).remove(this);
     }
 }

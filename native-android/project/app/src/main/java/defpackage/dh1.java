@@ -8,11 +8,12 @@ public final class dh1 extends cx3 {
     public final rm3 u;
     public final /* synthetic */ zd0 v;
 
-    public dh1(zd0 r2, rm3 r3) {
-        this.v = r2;
-        LinearLayout r4 = (LinearLayout) r3.n;
-        super(r4);
-        this.u = r3;
-        r4.setOnClickListener(new p6(15, this));
+    /* JADX WARN: Illegal instructions before constructor call */
+    public dh1(zd0 zd0Var, rm3 rm3Var) {
+        this.v = zd0Var;
+        LinearLayout linearLayout = (LinearLayout) rm3Var.n;
+        super(linearLayout);
+        this.u = rm3Var;
+        linearLayout.setOnClickListener(new p6(15, this));
     }
 }

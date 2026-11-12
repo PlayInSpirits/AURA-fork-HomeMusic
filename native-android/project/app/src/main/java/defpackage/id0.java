@@ -8,9 +8,9 @@ import android.os.Bundle;
 public interface id0 {
     ld0 build();
 
-    void c(Uri r1);
+    void c(Uri uri);
 
-    void i(int r1);
+    void i(int i);
 
-    void setExtras(Bundle r1);
+    void setExtras(Bundle bundle);
 }

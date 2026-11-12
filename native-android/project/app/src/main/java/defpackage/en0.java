@@ -11,126 +11,139 @@ public final /* synthetic */ class en0 implements ro3 {
     public final /* synthetic */ pn0 n;
     public final /* synthetic */ jn0 o;
 
-    public /* synthetic */ en0(pn0 r1, jn0 r2) {
-        this.n = r1;
-        this.o = r2;
+    public /* synthetic */ en0(pn0 pn0Var, jn0 jn0Var) {
+        this.n = pn0Var;
+        this.o = jn0Var;
     }
 
+    /* JADX WARN: Code duplicated, block: B:42:0x006c A[FALL_THROUGH] */
+    /* JADX WARN: Code duplicated, block: B:50:0x0089  */
+    /* JADX WARN: Code duplicated, block: B:52:0x009c  */
+    /* JADX WARN: Code duplicated, block: B:54:0x00ab  */
+    /* JADX WARN: Code duplicated, block: B:56:0x00af  */
+    /* JADX WARN: Code duplicated, block: B:57:0x00b2  */
+    /* JADX WARN: Code duplicated, block: B:59:0x00ba A[DONT_INVERT] */
+    /* JADX WARN: Code duplicated, block: B:60:0x00bc  */
+    /* JADX WARN: Code duplicated, block: B:61:0x00be  */
+    /* JADX WARN: Code duplicated, block: B:70:0x00d4  */
+    /* JADX WARN: Code duplicated, block: B:71:0x00d6  */
+    /* JADX WARN: Code duplicated, block: B:73:0x00e7  */
     @Override // defpackage.ro3
-    public final boolean apply(Object r10) {
-        tb1 r11 = (tb1) r10;
-        pn0 r0 = this.n;
-        r0.getClass();
-        if (this.o.A0 == false) goto L78;
-        Boolean r9 = r0.j;
-        if (r9 != null) goto L7;
-    L8:
-        int r12 = r11.F;
-        String r2 = r11.n;
-        if (r12 == (-1)) goto L78;
-        if (r12 <= 2) goto L78;
-        if (r2 == null) goto L43;
-        switch(r2.hashCode()) {
-            case -2123537834: goto L31;
-            case 187078296: goto L27;
-            case 187078297: goto L23;
-            case 1504578661: goto L19;
-            default: goto L17;
-        };
-    L17:
-        byte r8 = -1;
-    L34:
-        switch(r8) {
-            case 0: goto L37;
-            case 1: goto L37;
-            case 2: goto L37;
-            case 3: goto L37;
-            default: goto L43;
-        };
-    L37:
-        if (Build.VERSION.SDK_INT < 32) goto L78;
-        ll r13 = r0.h;
-        if (r13 == null) goto L78;
-        if (r13.o == false) goto L78;
-    L19:
-        if (r2.equals("audio/eac3") == false) goto L79;
-        r8 = 3;
-        goto L34
-    L79:
-        r8 = -1;
-        goto L34
-    L23:
-        if (r2.equals("audio/ac4") == false) goto L80;
-        r8 = 2;
-        goto L34
-    L80:
-        r8 = -1;
-        goto L34
-    L27:
-        if (r2.equals("audio/ac3") == false) goto L81;
-        r8 = 1;
-        goto L34
-    L81:
-        r8 = -1;
-        goto L34
-    L31:
-        if (r2.equals("audio/eac3-joc") == false) goto L82;
-        r8 = 0;
-        goto L34
-    L82:
-        r8 = -1;
-    L43:
-        if (Build.VERSION.SDK_INT < 32) goto L77;
-        ll r7 = r0.h;
-        if (r7 == null) goto L77;
-        if (r7.o == false) goto L77;
-        Spatializer r14 = (Spatializer) r7.p;
-        r14.getClass();
-        if (m3.k(m3.d(r14)) == false) goto L77;
-        Spatializer r15 = (Spatializer) r0.h.p;
-        r15.getClass();
-        if (m3.n(m3.d(r15)) == false) goto L77;
-        ll r16 = r0.h;
-        il r1 = r0.i;
-        r16.getClass();
-        int r17 = r11.F;
-        if (Objects.equals(r2, "audio/eac3-joc") == false) goto L58;
-        if (r17 != 16) goto L68;
-        r17 = 12;
-    L68:
-        int r18 = f35.s(r17);
-        if (r18 != 0) goto L71;
-        boolean r19 = false;
-    L75:
-        if (r19 == false) goto L77;
-    L71:
-        AudioFormat.Builder r20 = new AudioFormat.Builder().setEncoding(2).setChannelMask(r18);
-        int r110 = r11.G;
-        if (r110 == (-1)) goto L74;
-        r20.setSampleRate(r110);
-    L74:
-        Spatializer r111 = (Spatializer) r16.p;
-        r111.getClass();
-        r19 = m3.l(m3.d(r111), r1.c(), r20.build());
-        goto L75
-    L58:
-        if (Objects.equals(r2, "audio/iamf") == false) goto L62;
-        if (r17 != (-1)) goto L68;
-        r17 = 6;
-        goto L68
-    L62:
-        if (Objects.equals(r2, "audio/ac4") == false) goto L68;
-        if (r17 != 18) goto L66;
-    L67:
-        r17 = 24;
-        goto L68
-    L66:
-        if (r17 != 21) goto L68;
-    L77:
-        return false;
-    L7:
-        if (r9.booleanValue() == false) goto L8;
-    L78:
+    public final boolean apply(Object obj) {
+        Boolean bool;
+        ll llVar;
+        Spatializer spatializer;
+        Spatializer spatializer2;
+        ll llVar2;
+        il ilVar;
+        int i;
+        int iS;
+        AudioFormat.Builder channelMask;
+        int i2;
+        boolean zCanBeSpatialized;
+        ll llVar3;
+        tb1 tb1Var = (tb1) obj;
+        pn0 pn0Var = this.n;
+        pn0Var.getClass();
+        if (this.o.A0 && ((bool = pn0Var.j) == null || !bool.booleanValue())) {
+            int i3 = tb1Var.F;
+            String str = tb1Var.n;
+            if (i3 != -1 && i3 > 2) {
+                if (str == null) {
+                    if (Build.VERSION.SDK_INT >= 32 && (llVar = pn0Var.h) != null && llVar.o) {
+                        spatializer = (Spatializer) llVar.p;
+                        spatializer.getClass();
+                        if (m3.d(spatializer).isAvailable()) {
+                            spatializer2 = (Spatializer) pn0Var.h.p;
+                            spatializer2.getClass();
+                            if (m3.d(spatializer2).isEnabled()) {
+                                llVar2 = pn0Var.h;
+                                ilVar = pn0Var.i;
+                                llVar2.getClass();
+                                i = tb1Var.F;
+                                if (Objects.equals(str, "audio/eac3-joc")) {
+                                    if (i == 16) {
+                                        i = 12;
+                                    }
+                                } else if (Objects.equals(str, "audio/iamf")) {
+                                    if (i == -1) {
+                                        i = 6;
+                                    }
+                                } else if (Objects.equals(str, "audio/ac4") && (i == 18 || i == 21)) {
+                                    i = 24;
+                                }
+                                iS = f35.s(i);
+                                if (iS == 0) {
+                                    zCanBeSpatialized = false;
+                                } else {
+                                    channelMask = new AudioFormat.Builder().setEncoding(2).setChannelMask(iS);
+                                    i2 = tb1Var.G;
+                                    if (i2 != -1) {
+                                        channelMask.setSampleRate(i2);
+                                    }
+                                    Spatializer spatializer3 = (Spatializer) llVar2.p;
+                                    spatializer3.getClass();
+                                    zCanBeSpatialized = m3.d(spatializer3).canBeSpatialized(ilVar.c(), channelMask.build());
+                                }
+                                if (zCanBeSpatialized) {
+                                }
+                            }
+                        }
+                    }
+                    return false;
+                }
+                switch (str) {
+                    case "audio/eac3-joc":
+                    case "audio/ac3":
+                    case "audio/ac4":
+                    case "audio/eac3":
+                        if (Build.VERSION.SDK_INT >= 32 && (llVar3 = pn0Var.h) != null && llVar3.o) {
+                        }
+                    default:
+                        if (Build.VERSION.SDK_INT >= 32) {
+                            spatializer = (Spatializer) llVar.p;
+                            spatializer.getClass();
+                            if (m3.d(spatializer).isAvailable()) {
+                                spatializer2 = (Spatializer) pn0Var.h.p;
+                                spatializer2.getClass();
+                                if (m3.d(spatializer2).isEnabled()) {
+                                    llVar2 = pn0Var.h;
+                                    ilVar = pn0Var.i;
+                                    llVar2.getClass();
+                                    i = tb1Var.F;
+                                    if (Objects.equals(str, "audio/eac3-joc")) {
+                                        if (i == 16) {
+                                            i = 12;
+                                        }
+                                    } else if (Objects.equals(str, "audio/iamf")) {
+                                        if (i == -1) {
+                                            i = 6;
+                                        }
+                                    } else if (Objects.equals(str, "audio/ac4")) {
+                                        i = 24;
+                                    }
+                                    iS = f35.s(i);
+                                    if (iS == 0) {
+                                        zCanBeSpatialized = false;
+                                    } else {
+                                        channelMask = new AudioFormat.Builder().setEncoding(2).setChannelMask(iS);
+                                        i2 = tb1Var.G;
+                                        if (i2 != -1) {
+                                            channelMask.setSampleRate(i2);
+                                        }
+                                        Spatializer spatializer4 = (Spatializer) llVar2.p;
+                                        spatializer4.getClass();
+                                        zCanBeSpatialized = m3.d(spatializer4).canBeSpatialized(ilVar.c(), channelMask.build());
+                                    }
+                                    if (zCanBeSpatialized) {
+                                    }
+                                }
+                            }
+                        }
+                        return false;
+                }
+            }
+        }
         return true;
     }
 }

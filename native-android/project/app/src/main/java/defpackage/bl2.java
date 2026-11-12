@@ -10,7 +10,7 @@ public final class bl2 extends u0 {
     public sk2 v;
     public boolean w;
 
-    public bl2(Looper r2) {
-        this.u = new Handler(r2);
+    public bl2(Looper looper) {
+        this.u = new Handler(looper);
     }
 }

@@ -19,23 +19,23 @@ public final class oc1 {
     public final TextView f;
     public final MaterialToolbar g;
 
-    public oc1(LinearLayout r1, ConstraintLayout r2, RecyclerView r3, Button r4, AppBarLayout r5, TextView r6, TextView r7, MaterialToolbar r8) {
-        this.b = r2;
-        this.c = r3;
-        this.d = r4;
-        this.a = r5;
-        this.e = r6;
-        this.f = r7;
-        this.g = r8;
+    public oc1(LinearLayout linearLayout, ConstraintLayout constraintLayout, RecyclerView recyclerView, Button button, AppBarLayout appBarLayout, TextView textView, TextView textView2, MaterialToolbar materialToolbar) {
+        this.b = constraintLayout;
+        this.c = recyclerView;
+        this.d = button;
+        this.a = appBarLayout;
+        this.e = textView;
+        this.f = textView2;
+        this.g = materialToolbar;
     }
 
-    public oc1(LinearLayout r1, AppBarLayout r2, ConstraintLayout r3, RecyclerView r4, Button r5, TextView r6, TextView r7, MaterialToolbar r8) {
-        this.a = r2;
-        this.b = r3;
-        this.c = r4;
-        this.d = r5;
-        this.e = r6;
-        this.f = r7;
-        this.g = r8;
+    public oc1(LinearLayout linearLayout, AppBarLayout appBarLayout, ConstraintLayout constraintLayout, RecyclerView recyclerView, Button button, TextView textView, TextView textView2, MaterialToolbar materialToolbar) {
+        this.a = appBarLayout;
+        this.b = constraintLayout;
+        this.c = recyclerView;
+        this.d = button;
+        this.e = textView;
+        this.f = textView2;
+        this.g = materialToolbar;
     }
 }

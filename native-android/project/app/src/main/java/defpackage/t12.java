@@ -13,35 +13,31 @@ public abstract class t12 implements AnnotatedElement, Member {
     public final Member o;
 
     static {
-        Class.forName("java.lang.reflect.AnnotatedType");     // Catch: ClassNotFoundException -> L4
-        return;
+        try {
+            Class.forName("java.lang.reflect.AnnotatedType");
+        } catch (ClassNotFoundException unused) {
+        }
     }
 
     /* JADX WARN: Multi-variable type inference failed */
-    public t12(AccessibleObject r1) {
-        this.n = r1;
-        this.o = (Member) r1;
+    public t12(AccessibleObject accessibleObject) {
+        this.n = accessibleObject;
+        this.o = (Member) accessibleObject;
     }
 
     public abstract TypeToken a();
 
-    public final boolean equals(Object r3) {
-        if ((r3 instanceof t12) == false) goto L10;
-        t12 r4 = (t12) r3;
-        if (a().equals(r4.a()) == true) goto L7;
-        return false;
-    L7:
-        if (this.o.equals(r4.o) == false) goto L13;
-        return true;
-    L13:
-        return false;
-    L10:
-        return false;
+    public final boolean equals(Object obj) {
+        if (!(obj instanceof t12)) {
+            return false;
+        }
+        t12 t12Var = (t12) obj;
+        return a().equals(t12Var.a()) && this.o.equals(t12Var.o);
     }
 
     @Override // java.lang.reflect.AnnotatedElement
-    public final Annotation getAnnotation(Class r1) {
-        return this.n.getAnnotation(r1);
+    public final Annotation getAnnotation(Class cls) {
+        return this.n.getAnnotation(cls);
     }
 
     @Override // java.lang.reflect.AnnotatedElement
@@ -74,8 +70,8 @@ public abstract class t12 implements AnnotatedElement, Member {
     }
 
     @Override // java.lang.reflect.AnnotatedElement
-    public final boolean isAnnotationPresent(Class r1) {
-        return this.n.isAnnotationPresent(r1);
+    public final boolean isAnnotationPresent(Class cls) {
+        return this.n.isAnnotationPresent(cls);
     }
 
     @Override // java.lang.reflect.Member

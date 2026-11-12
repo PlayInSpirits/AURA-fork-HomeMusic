@@ -16,303 +16,291 @@ import java.util.logging.Logger;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public abstract class g2 implements ic2 {
-    public static final boolean q = false;
-    public static final Logger r = null;
-    public static final ji2 s = null;
-    public static final Object t = null;
+    public static final boolean q = Boolean.parseBoolean(System.getProperty("guava.concurrent.generate_cancellation_cause", "false"));
+    public static final Logger r = Logger.getLogger(g2.class.getName());
+    public static final ji2 s;
+    public static final Object t;
     public volatile Object n;
     public volatile c2 o;
     public volatile f2 p;
 
     static {
-        q = Boolean.parseBoolean(System.getProperty("guava.concurrent.generate_cancellation_cause", "false"));
-        r = Logger.getLogger(g2.class.getName());
-        ji2 r3 = new d2(AtomicReferenceFieldUpdater.newUpdater(f2.class, Thread.class, "a"), AtomicReferenceFieldUpdater.newUpdater(f2.class, f2.class, "b"), AtomicReferenceFieldUpdater.newUpdater(g2.class, f2.class, "p"), AtomicReferenceFieldUpdater.newUpdater(g2.class, c2.class, "o"), AtomicReferenceFieldUpdater.newUpdater(g2.class, Object.class, "n"));     // Catch: Throwable -> L5
-        th = null;
-    L7:
-        s = r3;
-        if (th == null) goto L10;
-        r.log(Level.SEVERE, "SafeAtomicHelper is broken!", th);
-    L10:
+        ji2 e2Var;
+        try {
+            e2Var = new d2(AtomicReferenceFieldUpdater.newUpdater(f2.class, Thread.class, "a"), AtomicReferenceFieldUpdater.newUpdater(f2.class, f2.class, "b"), AtomicReferenceFieldUpdater.newUpdater(g2.class, f2.class, "p"), AtomicReferenceFieldUpdater.newUpdater(g2.class, c2.class, "o"), AtomicReferenceFieldUpdater.newUpdater(g2.class, Object.class, "n"));
+            th = null;
+        } catch (Throwable th) {
+            th = th;
+            e2Var = new e2();
+        }
+        s = e2Var;
+        if (th != null) {
+            r.log(Level.SEVERE, "SafeAtomicHelper is broken!", th);
+        }
         t = new Object();
-        return;
-    L5:
-        th = th;
-        r3 = new e2();
-        goto L7
     }
 
-    public static void b(g2 r4) {
-    L2:
-        f2 r0 = r4.p;
-        if (s.f(r4, r0, f2.c) == false) goto L2;
-    L4:
-        c2 r1 = null;
-        if (r0 == null) goto L10;
-        Thread r2 = r0.a;
-        if (r2 == null) goto L9;
-        r0.a = null;
-        LockSupport.unpark(r2);
-    L9:
-        r0 = r0.b;
-    L10:
-        c2 r3 = r4.o;
-        if (s.d(r4, r3, c2.d) == false) goto L10;
-    L12:
-        c2 r5 = r1;
-        r1 = r3;
-        if (r1 == null) goto L15;
-        r3 = r1.c;
-        r1.c = r5;
-    L15:
-        if (r5 == null) goto L17;
-        c2 r6 = r5.c;
-        c(r5.a, r5.b);
-        r5 = r6;
-        goto L15
+    public static void b(g2 g2Var) {
+        f2 f2Var;
+        c2 c2Var;
+        c2 c2Var2;
+        c2 c2Var3;
+        do {
+            f2Var = g2Var.p;
+        } while (!s.f(g2Var, f2Var, f2.c));
+        while (true) {
+            c2Var = null;
+            if (f2Var == null) {
+                break;
+            }
+            Thread thread = f2Var.a;
+            if (thread != null) {
+                f2Var.a = null;
+                LockSupport.unpark(thread);
+            }
+            f2Var = f2Var.b;
+        }
+        do {
+            c2Var2 = g2Var.o;
+        } while (!s.d(g2Var, c2Var2, c2.d));
+        while (true) {
+            c2Var3 = c2Var;
+            c2Var = c2Var2;
+            if (c2Var == null) {
+                break;
+            }
+            c2Var2 = c2Var.c;
+            c2Var.c = c2Var3;
+        }
+        while (c2Var3 != null) {
+            c2 c2Var4 = c2Var3.c;
+            c(c2Var3.a, c2Var3.b);
+            c2Var3 = c2Var4;
+        }
     }
 
-    public static void c(Runnable r4, Executor r5) {
-        r5.execute(r4);     // Catch: RuntimeException -> L4
-        return;
-    L4:
-        e = move-exception;
-        r.log(Level.SEVERE, "RuntimeException while executing runnable " + r4 + " with executor " + r5, e);
+    public static void c(Runnable runnable, Executor executor) {
+        try {
+            executor.execute(runnable);
+        } catch (RuntimeException e) {
+            r.log(Level.SEVERE, "RuntimeException while executing runnable " + runnable + " with executor " + executor, (Throwable) e);
+        }
     }
 
-    public static Object d(Object r2) {
-        if ((r2 instanceof a2) == false) goto L5;
-        Throwable r3 = ((a2) r2).a;
-        CancellationException r0 = new CancellationException("Task was cancelled.");
-        r0.initCause(r3);
-        throw r0;
-    L5:
-        if ((r2 instanceof b2) == true) goto L11;
-        if (r2 != t) goto L14;
-        return null;
-    L14:
-        return r2;
-    L11:
-        throw new ExecutionException(((b2) r2).a);
+    public static Object d(Object obj) throws ExecutionException {
+        if (obj instanceof a2) {
+            Throwable th = ((a2) obj).a;
+            CancellationException cancellationException = new CancellationException("Task was cancelled.");
+            cancellationException.initCause(th);
+            throw cancellationException;
+        }
+        if (obj instanceof b2) {
+            throw new ExecutionException(((b2) obj).a);
+        }
+        if (obj == t) {
+            return null;
+        }
+        return obj;
     }
 
-    public static Object e(Future r1) {
-        boolean r0 = false;
-    L12:
-        Object r2 = r1.get();     // Catch: Throwable -> L7 InterruptedException -> L11
-    L4:
-        if (r0 == false) goto L6;
-        Thread.currentThread().interrupt();
-    L6:
-        return r2;
-    L11:
-        r0 = true;
-    L7:
-        th = move-exception;
-        if (r0 == false) goto L10;
-        Thread.currentThread().interrupt();
-    L10:
-        throw th;
+    public static Object e(Future future) {
+        Object obj;
+        boolean z = false;
+        while (true) {
+            try {
+                obj = future.get();
+                break;
+            } catch (InterruptedException unused) {
+                z = true;
+            } catch (Throwable th) {
+                if (z) {
+                    Thread.currentThread().interrupt();
+                }
+                throw th;
+            }
+        }
+        if (z) {
+            Thread.currentThread().interrupt();
+        }
+        return obj;
     }
 
-    public final void a(StringBuilder r4) {
-        Object r1 = e(this);     // Catch: RuntimeException -> L9 ExecutionException -> L11 CancellationException -> L14
-        r4.append("SUCCESS, result=[");     // Catch: RuntimeException -> L9 ExecutionException -> L11 CancellationException -> L14
-        if (r1 != this) goto L6;
-        String r3 = "this future";
-    L7:
-        r4.append(r3);     // Catch: RuntimeException -> L9 ExecutionException -> L11 CancellationException -> L14
-        r4.append("]");     // Catch: RuntimeException -> L9 ExecutionException -> L11 CancellationException -> L14
-        return;
-    L6:
-        r3 = String.valueOf(r1);     // Catch: RuntimeException -> L9 ExecutionException -> L11 CancellationException -> L14
-    L14:
-        r4.append("CANCELLED");
-        return;
-    L9:
-        e = move-exception;
-        r4.append("UNKNOWN, cause=[");
-        r4.append(e.getClass());
-        r4.append(" thrown from get()]");
-        return;
-    L11:
-        e = move-exception;
-        r4.append("FAILURE, cause=[");
-        r4.append(e.getCause());
-        r4.append("]");
+    public final void a(StringBuilder sb) {
+        try {
+            Object objE = e(this);
+            sb.append("SUCCESS, result=[");
+            sb.append(objE == this ? "this future" : String.valueOf(objE));
+            sb.append("]");
+        } catch (CancellationException unused) {
+            sb.append("CANCELLED");
+        } catch (RuntimeException e) {
+            sb.append("UNKNOWN, cause=[");
+            sb.append(e.getClass());
+            sb.append(" thrown from get()]");
+        } catch (ExecutionException e2) {
+            sb.append("FAILURE, cause=[");
+            sb.append(e2.getCause());
+            sb.append("]");
+        }
     }
 
     @Override // java.util.concurrent.Future
-    public final boolean cancel(boolean r5) {
-        Object r0 = this.n;
-        if (r0 == null) goto L5;
-        return false;
-    L5:
-        if (q == false) goto L7;
-        a2 r1 = new a2(new CancellationException("Future.cancel() was called."), r5);
-    L11:
-        if (s.e(this, r0, r1) == false) goto L16;
+    public final boolean cancel(boolean z) {
+        a2 a2Var;
+        Object obj = this.n;
+        if (obj != null) {
+            return false;
+        }
+        if (q) {
+            a2Var = new a2(new CancellationException("Future.cancel() was called."), z);
+        } else {
+            a2Var = z ? a2.b : a2.c;
+        }
+        if (!s.e(this, obj, a2Var)) {
+            return false;
+        }
         b(this);
         return true;
-    L16:
-        return false;
-    L7:
-        if (r5 == false) goto L9;
-        r1 = a2.b;
-        goto L11
-    L9:
-        r1 = a2.c;
-        goto L11
     }
 
     @Override // defpackage.ic2
-    public final void f(Runnable r5, Executor r6) {
-        r6.getClass();
-        c2 r0 = this.o;
-        c2 r1 = c2.d;
-        if (r0 == r1) goto L10;
-        c2 r2 = new c2(r5, r6);
-    L5:
-        r2.c = r0;
-        if (s.d(this, r0, r2) == true) goto L7;
-        r0 = this.o;
-        if (r0 != r1) goto L5;
-    L7:
-        return;
-    L10:
-        c(r5, r6);
+    public final void f(Runnable runnable, Executor executor) {
+        executor.getClass();
+        c2 c2Var = this.o;
+        c2 c2Var2 = c2.d;
+        if (c2Var != c2Var2) {
+            c2 c2Var3 = new c2(runnable, executor);
+            do {
+                c2Var3.c = c2Var;
+                if (s.d(this, c2Var, c2Var3)) {
+                    return;
+                } else {
+                    c2Var = this.o;
+                }
+            } while (c2Var != c2Var2);
+        }
+        c(runnable, executor);
     }
 
     /* JADX WARN: Multi-variable type inference failed */
     public String g() {
-        if ((this instanceof ScheduledFuture) == true) goto L5;
-        return null;
-    L5:
+        if (!(this instanceof ScheduledFuture)) {
+            return null;
+        }
         return "remaining delay=[" + ((ScheduledFuture) this).getDelay(TimeUnit.MILLISECONDS) + " ms]";
     }
 
     @Override // java.util.concurrent.Future
-    public final Object get(long r18, TimeUnit r20) {
-        f2 r4 = f2.c;
-        long r5 = r20.toNanos(r18);
-        if (Thread.interrupted() == true) goto L69;
-        Object r7 = this.n;
-        if (r7 == null) goto L9;
-        return d(r7);
-    L9:
-        if (r5 <= 0) goto L11;
-        long r9 = System.nanoTime() + r5;
-    L13:
-        if (r5 < 1000) goto L35;
-        f2 r13 = this.p;
-        if (r13 == r4) goto L33;
-        f2 r14 = new f2();
-    L17:
-        ji2 r15 = s;
-        r15.B(r14, r13);
-        if (r15.f(this, r13, r14) == true) goto L19;
-        r13 = this.p;
-        if (r13 != r4) goto L17;
-    L19:
-        LockSupport.parkNanos(this, r5);
-        if (Thread.interrupted() == true) goto L28;
-        Object r6 = this.n;
-        if (r6 != null) goto L24;
-        r5 = r9 - System.nanoTime();
-        if (r5 >= 1000) goto L19;
-        h(r14);
-        goto L35
-    L24:
-        return d(r6);
-    L28:
-        h(r14);
-        throw new InterruptedException();
-    L33:
-        return d(this.n);
-    L35:
-        if (r5 <= 0) goto L45;
-        Object r8 = this.n;
-        if (r8 != null) goto L39;
-        if (Thread.interrupted() == true) goto L44;
-        r5 = r9 - System.nanoTime();
-        goto L35
-    L44:
-        throw new InterruptedException();
-    L39:
-        return d(r8);
-    L45:
-        String r10 = toString();
-        String r11 = r20.toString();
-        Locale r12 = Locale.ROOT;
-        String r16 = r11.toLowerCase(r12);
-        String r2 = "Waited " + r18 + " " + r20.toString().toLowerCase(r12);
-        if ((r5 + 1000) >= 0) goto L63;
-        String r3 = r2.concat(" (plus ");
-        long r17 = -r5;
-        long r19 = r20.convert(r17, TimeUnit.NANOSECONDS);
-        long r21 = r17 - r20.toNanos(r19);
-        if (r19 != 0) goto L50;
-    L53:
-        boolean r22 = true;
-    L54:
-        if (r19 <= 0) goto L59;
-        String r23 = r3 + r19 + " " + r16;
-        if (r22 == false) goto L58;
-        r23 = r23.concat(",");
-    L58:
-        r3 = r23.concat(" ");
-    L59:
-        if (r22 == false) goto L61;
-        r3 = r3 + r21 + " nanoseconds ";
-    L61:
-        r2 = r3.concat("delay)");
-        goto L63
-    L50:
-        if (r21 > 1000) goto L53;
-        r22 = false;
-    L63:
-        if (isDone() == false) goto L67;
-        throw new TimeoutException(r2.concat(" but future completed as timeout expired"));
-    L67:
-        throw new TimeoutException(b11.o(r2, " for ", r10));
-    L11:
-        r9 = 0;
-        goto L13
-    L69:
-        throw new InterruptedException();
+    public final Object get(long j, TimeUnit timeUnit) throws InterruptedException, TimeoutException {
+        f2 f2Var = f2.c;
+        long nanos = timeUnit.toNanos(j);
+        if (Thread.interrupted()) {
+            throw new InterruptedException();
+        }
+        Object obj = this.n;
+        if (obj != null) {
+            return d(obj);
+        }
+        long jNanoTime = nanos > 0 ? System.nanoTime() + nanos : 0L;
+        if (nanos >= 1000) {
+            f2 f2Var2 = this.p;
+            if (f2Var2 != f2Var) {
+                f2 f2Var3 = new f2();
+                while (true) {
+                    ji2 ji2Var = s;
+                    ji2Var.B(f2Var3, f2Var2);
+                    if (ji2Var.f(this, f2Var2, f2Var3)) {
+                        do {
+                            LockSupport.parkNanos(this, nanos);
+                            if (Thread.interrupted()) {
+                                h(f2Var3);
+                                throw new InterruptedException();
+                            }
+                            Object obj2 = this.n;
+                            if (obj2 != null) {
+                                return d(obj2);
+                            }
+                            nanos = jNanoTime - System.nanoTime();
+                        } while (nanos >= 1000);
+                        h(f2Var3);
+                        break;
+                    }
+                    f2Var2 = this.p;
+                    if (f2Var2 == f2Var) {
+                    }
+                }
+            }
+            return d(this.n);
+        }
+        while (nanos > 0) {
+            Object obj3 = this.n;
+            if (obj3 != null) {
+                return d(obj3);
+            }
+            if (Thread.interrupted()) {
+                throw new InterruptedException();
+            }
+            nanos = jNanoTime - System.nanoTime();
+        }
+        String string = toString();
+        String string2 = timeUnit.toString();
+        Locale locale = Locale.ROOT;
+        String lowerCase = string2.toLowerCase(locale);
+        String strConcat = "Waited " + j + " " + timeUnit.toString().toLowerCase(locale);
+        if (nanos + 1000 < 0) {
+            String strConcat2 = strConcat.concat(" (plus ");
+            long j2 = -nanos;
+            long jConvert = timeUnit.convert(j2, TimeUnit.NANOSECONDS);
+            long nanos2 = j2 - timeUnit.toNanos(jConvert);
+            boolean z = jConvert == 0 || nanos2 > 1000;
+            if (jConvert > 0) {
+                String strConcat3 = strConcat2 + jConvert + " " + lowerCase;
+                if (z) {
+                    strConcat3 = strConcat3.concat(",");
+                }
+                strConcat2 = strConcat3.concat(" ");
+            }
+            if (z) {
+                strConcat2 = strConcat2 + nanos2 + " nanoseconds ";
+            }
+            strConcat = strConcat2.concat("delay)");
+        }
+        if (isDone()) {
+            throw new TimeoutException(strConcat.concat(" but future completed as timeout expired"));
+        }
+        throw new TimeoutException(b11.o(strConcat, " for ", string));
     }
 
-    public final void h(f2 r5) {
-        r5.a = null;
-    L3:
-        f2 r6 = this.p;
-        if (r6 == f2.c) goto L19;
-        f2 r1 = null;
-    L7:
-        if (r6 == null) goto L28;
-        f2 r2 = r6.b;
-        if (r6.a == null) goto L11;
-        r1 = r6;
-    L18:
-        r6 = r2;
-        goto L7
-    L11:
-        if (r1 == null) goto L16;
-        r1.b = r2;
-        if (r1.a != null) goto L18;
-    L16:
-        if (s.f(this, r6, r2) == true) goto L18;
-    L28:
-        return;
+    public final void h(f2 f2Var) {
+        f2Var.a = null;
+        while (true) {
+            f2 f2Var2 = this.p;
+            if (f2Var2 == f2.c) {
+                return;
+            }
+            f2 f2Var3 = null;
+            while (f2Var2 != null) {
+                f2 f2Var4 = f2Var2.b;
+                if (f2Var2.a != null) {
+                    f2Var3 = f2Var2;
+                } else if (f2Var3 != null) {
+                    f2Var3.b = f2Var4;
+                    if (f2Var3.a == null) {
+                    }
+                } else if (!s.f(this, f2Var2, f2Var4)) {
+                }
+                f2Var2 = f2Var4;
+            }
+            return;
+        }
     }
 
-    public boolean i(Throwable r3) {
-        b2 r0 = new b2(r3);
-        if (s.e(this, null, r0) == false) goto L6;
+    public boolean i(Throwable th) {
+        if (!s.e(this, null, new b2(th))) {
+            return false;
+        }
         b(this);
         return true;
-    L6:
-        return false;
     }
 
     @Override // java.util.concurrent.Future
@@ -322,74 +310,70 @@ public abstract class g2 implements ic2 {
 
     @Override // java.util.concurrent.Future
     public final boolean isDone() {
-        if (this.n == null) goto L5;
-        return true;
-    L5:
-        return false;
+        return this.n != null;
     }
 
     public final String toString() {
-        StringBuilder r0 = new StringBuilder();
-        r0.append(super.toString());
-        r0.append("[status=");
-        if ((this.n instanceof a2) == false) goto L6;
-        r0.append("CANCELLED");
-    L20:
-        r0.append("]");
-        return r0.toString();
-    L6:
-        if (isDone() == false) goto L22;
-        a(r0);
-        goto L20
-    L22:
-        String r1 = g();     // Catch: RuntimeException -> L10
-    L12:
-        if (r1 == null) goto L17;
-        if (r1.isEmpty() == true) goto L17;
-        r0.append("PENDING, info=[");
-        r0.append(r1);
-        r0.append("]");
-    L17:
-        if (isDone() == false) goto L19;
-        a(r0);
-        goto L20
-    L19:
-        r0.append("PENDING");
-    L10:
-        e = move-exception;
-        r1 = "Exception thrown from implementation: " + e.getClass();
-        goto L12
+        String strG;
+        StringBuilder sb = new StringBuilder();
+        sb.append(super.toString());
+        sb.append("[status=");
+        if (this.n instanceof a2) {
+            sb.append("CANCELLED");
+        } else if (isDone()) {
+            a(sb);
+        } else {
+            try {
+                strG = g();
+            } catch (RuntimeException e) {
+                strG = "Exception thrown from implementation: " + e.getClass();
+            }
+            if (strG != null && !strG.isEmpty()) {
+                sb.append("PENDING, info=[");
+                sb.append(strG);
+                sb.append("]");
+            } else if (isDone()) {
+                a(sb);
+            } else {
+                sb.append("PENDING");
+            }
+        }
+        sb.append("]");
+        return sb.toString();
     }
 
     @Override // java.util.concurrent.Future
-    public final Object get() {
-        f2 r0 = f2.c;
-        if (Thread.interrupted() == true) goto L26;
-        Object r1 = this.n;
-        if (r1 != null) goto L7;
-        f2 r2 = this.p;
-        if (r2 == r0) goto L24;
-        f2 r3 = new f2();
-    L11:
-        ji2 r4 = s;
-        r4.B(r3, r2);
-        if (r4.f(this, r2, r3) == true) goto L13;
-        r2 = this.p;
-        if (r2 != r0) goto L11;
-    L13:
-        LockSupport.park(this);
-        if (Thread.interrupted() == true) goto L19;
-        Object r5 = this.n;
-        if (r5 == null) goto L13;
-        return d(r5);
-    L19:
-        h(r3);
-        throw new InterruptedException();
-    L24:
-        return d(this.n);
-    L7:
-        return d(r1);
-    L26:
+    public final Object get() throws InterruptedException {
+        Object obj;
+        f2 f2Var = f2.c;
+        if (!Thread.interrupted()) {
+            Object obj2 = this.n;
+            if (obj2 != null) {
+                return d(obj2);
+            }
+            f2 f2Var2 = this.p;
+            if (f2Var2 != f2Var) {
+                f2 f2Var3 = new f2();
+                do {
+                    ji2 ji2Var = s;
+                    ji2Var.B(f2Var3, f2Var2);
+                    if (ji2Var.f(this, f2Var2, f2Var3)) {
+                        do {
+                            LockSupport.park(this);
+                            if (!Thread.interrupted()) {
+                                obj = this.n;
+                            } else {
+                                h(f2Var3);
+                                throw new InterruptedException();
+                            }
+                        } while (obj == null);
+                        return d(obj);
+                    }
+                    f2Var2 = this.p;
+                } while (f2Var2 != f2Var);
+            }
+            return d(this.n);
+        }
         throw new InterruptedException();
     }
 }

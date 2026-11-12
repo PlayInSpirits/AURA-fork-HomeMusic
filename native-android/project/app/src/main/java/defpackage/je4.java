@@ -8,35 +8,27 @@ public final class je4 {
     public final z5 c;
     public final boolean d;
 
-    public je4(ie4 r3) {
-        this.a = r3.a;
-        this.b = r3.b;
-        this.c = r3.c;
-        this.d = r3.d;
+    public je4(ie4 ie4Var) {
+        this.a = ie4Var.a;
+        this.b = ie4Var.b;
+        this.c = ie4Var.c;
+        this.d = ie4Var.d;
     }
 
-    public final boolean equals(Object r8) {
-        if (this != r8) goto L6;
-        return true;
-    L6:
-        if ((r8 instanceof je4) == true) goto L8;
-        return false;
-    L8:
-        je4 r9 = (je4) r8;
-        if (this.a.equals(r9.a) == true) goto L11;
-    L17:
-        return false;
-    L11:
-        if (this.b != r9.b) goto L17;
-        if (this.c.equals(r9.c) == false) goto L17;
-        if (this.d != r9.d) goto L17;
-        return true;
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof je4)) {
+            return false;
+        }
+        je4 je4Var = (je4) obj;
+        return this.a.equals(je4Var.a) && this.b == je4Var.b && this.c.equals(je4Var.c) && this.d == je4Var.d;
     }
 
     public final int hashCode() {
-        int r0 = (this.a.hashCode() + 217) * 31;
-        long r2 = this.b;
-        int r1 = (r0 + ((int) (r2 ^ (r2 >>> 32)))) * 31;
-        return ((this.c.hashCode() + r1) * 31) + (this.d ? 1 : 0);
+        int iHashCode = (this.a.hashCode() + 217) * 31;
+        long j = this.b;
+        return ((this.c.hashCode() + ((iHashCode + ((int) (j ^ (j >>> 32)))) * 31)) * 31) + (this.d ? 1 : 0);
     }
 }

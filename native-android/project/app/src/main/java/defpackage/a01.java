@@ -14,60 +14,40 @@ public final class a01 extends InputConnectionWrapper {
     public final TextView a;
     public final om0 b;
 
-    public a01(EditorInfo r3, InputConnection r4, TextView r5) {
-        om0 r0 = new om0(21);
-        super(r4, false);
-        this.a = r5;
-        this.b = r0;
-        if (tz0.c() == false) goto L17;
-        tz0 r2 = tz0.a();
-        if (r2.b() != 1) goto L18;
-        if (r3 != null) goto L9;
-        return;
-    L9:
-        if (r3.extras != null) goto L11;
-        r3.extras = new Bundle();
-    L11:
-        pz0 r6 = r2.e;
-        r6.getClass();
-        Bundle r7 = r3.extras;
-        wv2 r8 = (wv2) r6.c.n;
-        int r9 = r8.a(4);
-        if (r9 == 0) goto L14;
-        int r10 = ((ByteBuffer) r8.q).getInt(r9 + r8.n);
-    L15:
-        r7.putInt("android.support.text.emoji.emojiCompat_metadataVersion", r10);
-        r3.extras.putBoolean("android.support.text.emoji.emojiCompat_replaceAll", false);
-        return;
-    L14:
-        r10 = 0;
-        goto L15
-    L18:
-        return;
+    public a01(EditorInfo editorInfo, InputConnection inputConnection, TextView textView) {
+        om0 om0Var = new om0(21);
+        super(inputConnection, false);
+        this.a = textView;
+        this.b = om0Var;
+        if (tz0.c()) {
+            tz0 tz0VarA = tz0.a();
+            if (tz0VarA.b() != 1 || editorInfo == null) {
+                return;
+            }
+            if (editorInfo.extras == null) {
+                editorInfo.extras = new Bundle();
+            }
+            pz0 pz0Var = tz0VarA.e;
+            pz0Var.getClass();
+            Bundle bundle = editorInfo.extras;
+            wv2 wv2Var = (wv2) pz0Var.c.n;
+            int iA = wv2Var.a(4);
+            bundle.putInt("android.support.text.emoji.emojiCompat_metadataVersion", iA != 0 ? ((ByteBuffer) wv2Var.q).getInt(iA + wv2Var.n) : 0);
+            editorInfo.extras.putBoolean("android.support.text.emoji.emojiCompat_replaceAll", false);
+        }
     }
 
     @Override // android.view.inputmethod.InputConnectionWrapper, android.view.inputmethod.InputConnection
-    public final boolean deleteSurroundingText(int r3, int r4) {
-        Editable r0 = this.a.getEditableText();
+    public final boolean deleteSurroundingText(int i, int i2) {
+        Editable editableText = this.a.getEditableText();
         this.b.getClass();
-        if (om0.Y(this, r0, r3, r4, false) == false) goto L5;
-        return true;
-    L5:
-        if (super.deleteSurroundingText(r3, r4) == true) goto L10;
-        return false;
-    L10:
-        return true;
+        return om0.Y(this, editableText, i, i2, false) || super.deleteSurroundingText(i, i2);
     }
 
     @Override // android.view.inputmethod.InputConnectionWrapper, android.view.inputmethod.InputConnection
-    public final boolean deleteSurroundingTextInCodePoints(int r3, int r4) {
-        Editable r0 = this.a.getEditableText();
+    public final boolean deleteSurroundingTextInCodePoints(int i, int i2) {
+        Editable editableText = this.a.getEditableText();
         this.b.getClass();
-        if (om0.Y(this, r0, r3, r4, true) == false) goto L5;
-    L9:
-        return true;
-    L5:
-        if (super.deleteSurroundingTextInCodePoints(r3, r4) == true) goto L9;
-        return false;
+        return om0.Y(this, editableText, i, i2, true) || super.deleteSurroundingTextInCodePoints(i, i2);
     }
 }

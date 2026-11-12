@@ -12,42 +12,40 @@ public final class x10 implements CompoundButton.OnCheckedChangeListener {
     public final /* synthetic */ int a;
     public final /* synthetic */ TwoStatePreference b;
 
-    public /* synthetic */ x10(TwoStatePreference r1, int r2) {
-        this.a = r2;
-        this.b = r1;
+    public /* synthetic */ x10(TwoStatePreference twoStatePreference, int i) {
+        this.a = i;
+        this.b = twoStatePreference;
     }
 
     @Override // android.widget.CompoundButton.OnCheckedChangeListener
-    public final void onCheckedChanged(CompoundButton r2, boolean r3) {
-        int r0 = this.a;
-        TwoStatePreference r1 = this.b;
-        switch(r0) {
-            case 0: goto L14;
-            case 1: goto L9;
-            default: goto L4;
-        };
-    L4:
-        SwitchPreferenceCompat r4 = (SwitchPreferenceCompat) r1;
-        if (r4.a(Boolean.valueOf(r3)) == true) goto L7;
-        r2.setChecked(!r3);
-        return;
-    L7:
-        r4.E(r3);
-        return;
-    L9:
-        SwitchPreference r5 = (SwitchPreference) r1;
-        if (r5.a(Boolean.valueOf(r3)) == true) goto L12;
-        r2.setChecked(!r3);
-        return;
-    L12:
-        r5.E(r3);
-        return;
-    L14:
-        CheckBoxPreference r6 = (CheckBoxPreference) r1;
-        if (r6.a(Boolean.valueOf(r3)) == true) goto L17;
-        r2.setChecked(!r3);
-        return;
-    L17:
-        r6.E(r3);
+    public final void onCheckedChanged(CompoundButton compoundButton, boolean z) {
+        int i = this.a;
+        TwoStatePreference twoStatePreference = this.b;
+        switch (i) {
+            case 0:
+                CheckBoxPreference checkBoxPreference = (CheckBoxPreference) twoStatePreference;
+                if (!checkBoxPreference.a(Boolean.valueOf(z))) {
+                    compoundButton.setChecked(!z);
+                } else {
+                    checkBoxPreference.E(z);
+                }
+                break;
+            case 1:
+                SwitchPreference switchPreference = (SwitchPreference) twoStatePreference;
+                if (!switchPreference.a(Boolean.valueOf(z))) {
+                    compoundButton.setChecked(!z);
+                } else {
+                    switchPreference.E(z);
+                }
+                break;
+            default:
+                SwitchPreferenceCompat switchPreferenceCompat = (SwitchPreferenceCompat) twoStatePreference;
+                if (!switchPreferenceCompat.a(Boolean.valueOf(z))) {
+                    compoundButton.setChecked(!z);
+                } else {
+                    switchPreferenceCompat.E(z);
+                }
+                break;
+        }
     }
 }

@@ -16,173 +16,201 @@ public final class fr4 {
     public final ArrayList e;
     public boolean f;
 
-    public fr4(gr4 r1, String r2) {
-        this.a = r1;
-        this.b = r2;
+    public fr4(gr4 gr4Var, String str) {
+        this.a = gr4Var;
+        this.b = str;
         new ReentrantLock();
         this.e = new ArrayList();
     }
 
-    public static void c(fr4 r1, String r2, gf1 r3) {
-        r1.getClass();
-        r2.getClass();
-        r3.getClass();
-        r1.d(new gr0(r2, r3), 0);
-    }
-
-    public static /* synthetic */ void e(fr4 r2, ar4 r3) {
-        r2.d(r3, 0);
+    public static void c(fr4 fr4Var, String str, gf1 gf1Var) {
+        fr4Var.getClass();
+        str.getClass();
+        gf1Var.getClass();
+        fr4Var.d(new gr0(str, gf1Var), 0L);
     }
 
     public final void a() {
-        tl1 r0 = ze5.a;
-        gr4 r1 = this.a;
-        ReentrantLock r2 = r1.c;
-        r2.lock();
-    L7:
-        th = move-exception;
-        r2.unlock();
-        throw th;
-    L4:
-        if (b() == false) goto L9;
-        r1.d(this);     // Catch: Throwable -> L7
-    L9:
-        r2.unlock();
+        tl1 tl1Var = ze5.a;
+        gr4 gr4Var = this.a;
+        ReentrantLock reentrantLock = gr4Var.c;
+        reentrantLock.lock();
+        try {
+            if (b()) {
+                gr4Var.d(this);
+            }
+        } finally {
+            reentrantLock.unlock();
+        }
     }
 
     public final boolean b() {
-        ar4 r0 = this.d;
-        if (r0 != null) goto L5;
-    L7:
-        ArrayList r1 = this.e;
-        int r2 = r1.size() - 1;
-        boolean r3 = false;
-    L9:
-        if ((-1) >= r2) goto L17;
-        if (((ar4) r1.get(r2)).b == false) goto L16;
-        Logger r4 = this.a.b;
-        ar4 r5 = (ar4) r1.get(r2);
-        if (r4.isLoggable(Level.FINE) == false) goto L15;
-        zz1.c(r4, r5, this, "canceled");
-    L15:
-        r1.remove(r2);
-        r3 = true;
-    L16:
-        r2 = r2 - 1;
-        goto L9
-    L17:
-        return r3;
-    L5:
-        if (r0.b == false) goto L7;
-        this.f = true;
-        goto L7
+        ar4 ar4Var = this.d;
+        if (ar4Var != null && ar4Var.b) {
+            this.f = true;
+        }
+        ArrayList arrayList = this.e;
+        boolean z = false;
+        for (int size = arrayList.size() - 1; -1 < size; size--) {
+            if (((ar4) arrayList.get(size)).b) {
+                Logger logger = this.a.b;
+                ar4 ar4Var2 = (ar4) arrayList.get(size);
+                if (logger.isLoggable(Level.FINE)) {
+                    zz1.c(logger, ar4Var2, this, "canceled");
+                }
+                arrayList.remove(size);
+                z = true;
+            }
+        }
+        return z;
     }
 
-    public final void d(ar4 r4, long r5) {
-        r4.getClass();
-        gr4 r0 = this.a;
-        ReentrantLock r1 = r0.c;
-        r1.lock();
-    L12:
-        th = move-exception;
-        r1.unlock();
-        throw th;
-    L4:
-        if (this.c == false) goto L22;
-        boolean r6 = r4.b;     // Catch: Throwable -> L12
-        Logger r7 = r0.b;
-        if (r6 == false) goto L17;
-        if (r7.isLoggable(Level.FINE) == false) goto L14;
-        zz1.c(r7, r4, this, "schedule canceled (queue is shutdown)");     // Catch: Throwable -> L12
-    L14:
-        r1.unlock();
-        return;
-    L17:
-        if (r7.isLoggable(Level.FINE) == false) goto L20;
-        zz1.c(r7, r4, this, "schedule failed (queue is shutdown)");     // Catch: Throwable -> L12
-    L20:
-        throw new RejectedExecutionException();     // Catch: Throwable -> L12
-    L22:
-        if (f(r4, r5, false) == false) goto L24;
-        r0.d(this);     // Catch: Throwable -> L12
-    L24:
-        r1.unlock();
+    public final void d(ar4 ar4Var, long j) {
+        ar4Var.getClass();
+        gr4 gr4Var = this.a;
+        ReentrantLock reentrantLock = gr4Var.c;
+        reentrantLock.lock();
+        try {
+            if (!this.c) {
+                if (f(ar4Var, j, false)) {
+                    gr4Var.d(this);
+                }
+                reentrantLock.unlock();
+                return;
+            }
+            boolean z = ar4Var.b;
+            Logger logger = gr4Var.b;
+            if (!z) {
+                if (logger.isLoggable(Level.FINE)) {
+                    zz1.c(logger, ar4Var, this, "schedule failed (queue is shutdown)");
+                }
+                throw new RejectedExecutionException();
+            }
+            if (logger.isLoggable(Level.FINE)) {
+                zz1.c(logger, ar4Var, this, "schedule canceled (queue is shutdown)");
+            }
+            reentrantLock.unlock();
+        } catch (Throwable th) {
+            reentrantLock.unlock();
+            throw th;
+        }
     }
 
-    public final boolean f(ar4 r12, long r13, boolean r15) {
-        Logger r0 = this.a.b;
-        r12.getClass();
-        fr4 r1 = r12.c;
-        if (r1 == this) goto L7;
-        if (r1 != null) goto L36;
-        r12.c = this;
-        goto L7
-    L36:
-        kf2.o("task is in multiple queues");
-        return false;
-    L7:
-        long r3 = System.nanoTime();
-        long r5 = r3 + r13;
-        ArrayList r2 = this.e;
-        int r7 = r2.indexOf(r12);
-        if (r7 != (-1)) goto L10;
-    L16:
-        r12.d = r5;
-        if (r0.isLoggable(Level.FINE) == false) goto L22;
-        if (r15 == false) goto L20;
-        String r16 = "run again after ".concat(zz1.n(r5 - r3));
-    L21:
-        zz1.c(r0, r12, this, r16);
-        goto L22
-    L20:
-        r16 = "scheduled after ".concat(zz1.n(r5 - r3));
-    L22:
-        int r11 = r2.size();
-        int r17 = 0;
-        int r4 = 0;
-    L23:
-        if (r4 >= r11) goto L28;
-        Object r6 = r2.get(r4);
-        r4 = r4 + 1;
-        if ((((ar4) r6).d - r3) > r13) goto L29;
-        r17 = r17 + 1;
-    L29:
-        if (r17 != (-1)) goto L31;
-        r17 = r2.size();
-    L31:
-        r2.add(r17, r12);
-        if (r17 != 0) goto L35;
-        return true;
-    L35:
-        return false;
-    L28:
-        r17 = -1;
-        goto L29
-    L10:
-        if (r12.d <= r5) goto L12;
-        r2.remove(r7);
-        goto L16
-    L12:
-        if (r0.isLoggable(Level.FINE) == false) goto L35;
-        zz1.c(r0, r12, this, "already scheduled");
+    /* JADX WARN: Code duplicated, block: B:18:0x0041 A[DONT_INVERT] */
+    /* JADX WARN: Code duplicated, block: B:19:0x0043  */
+    /* JADX WARN: Code duplicated, block: B:20:0x004f  */
+    /* JADX WARN: Code duplicated, block: B:24:0x0065  */
+    /* JADX WARN: Code duplicated, block: B:27:0x0075 A[LOOP:0: B:23:0x0063->B:27:0x0075, LOOP_END] */
+    /* JADX WARN: Code duplicated, block: B:30:0x007b  */
+    /* JADX WARN: Code duplicated, block: B:33:0x0084 A[RETURN] */
+    /* JADX WARN: Code duplicated, block: B:38:0x0078 A[SYNTHETIC] */
+    /* JADX WARN: Code duplicated, block: B:39:0x0079 A[EDGE_INSN: B:39:0x0079->B:29:0x0079 BREAK  A[LOOP:0: B:23:0x0063->B:27:0x0075], SYNTHETIC] */
+    public final boolean f(ar4 ar4Var, long j, boolean z) {
+        int size;
+        int size2;
+        int i;
+        Object obj;
+        String strConcat;
+        Logger logger = this.a.b;
+        ar4Var.getClass();
+        fr4 fr4Var = ar4Var.c;
+        if (fr4Var != this) {
+            if (fr4Var != null) {
+                kf2.o("task is in multiple queues");
+                return false;
+            }
+            ar4Var.c = this;
+        }
+        long jNanoTime = System.nanoTime();
+        long j2 = jNanoTime + j;
+        ArrayList arrayList = this.e;
+        int iIndexOf = arrayList.indexOf(ar4Var);
+        if (iIndexOf == -1) {
+            ar4Var.d = j2;
+            if (logger.isLoggable(Level.FINE)) {
+                if (z) {
+                    strConcat = "run again after ".concat(zz1.n(j2 - jNanoTime));
+                } else {
+                    strConcat = "scheduled after ".concat(zz1.n(j2 - jNanoTime));
+                }
+                zz1.c(logger, ar4Var, this, strConcat);
+            }
+            size = arrayList.size();
+            size2 = 0;
+            i = 0;
+            while (true) {
+                if (i < size) {
+                    size2 = -1;
+                    break;
+                }
+                obj = arrayList.get(i);
+                i++;
+                if (((ar4) obj).d - jNanoTime > j) {
+                    break;
+                }
+                size2++;
+            }
+            if (size2 == -1) {
+                size2 = arrayList.size();
+            }
+            arrayList.add(size2, ar4Var);
+            if (size2 == 0) {
+                return true;
+            }
+        } else if (ar4Var.d > j2) {
+            arrayList.remove(iIndexOf);
+            ar4Var.d = j2;
+            if (logger.isLoggable(Level.FINE)) {
+                if (z) {
+                    strConcat = "run again after ".concat(zz1.n(j2 - jNanoTime));
+                } else {
+                    strConcat = "scheduled after ".concat(zz1.n(j2 - jNanoTime));
+                }
+                zz1.c(logger, ar4Var, this, strConcat);
+            }
+            size = arrayList.size();
+            size2 = 0;
+            i = 0;
+            while (true) {
+                if (i < size) {
+                    size2 = -1;
+                    break;
+                }
+                obj = arrayList.get(i);
+                i++;
+                if (((ar4) obj).d - jNanoTime > j) {
+                    break;
+                    break;
+                }
+                size2++;
+            }
+            if (size2 == -1) {
+                size2 = arrayList.size();
+            }
+            arrayList.add(size2, ar4Var);
+            if (size2 == 0) {
+                return true;
+            }
+        } else if (logger.isLoggable(Level.FINE)) {
+            zz1.c(logger, ar4Var, this, "already scheduled");
+            return false;
+        }
         return false;
     }
 
     public final void g() {
-        tl1 r0 = ze5.a;
-        gr4 r1 = this.a;
-        ReentrantLock r2 = r1.c;
-        r2.lock();
-        this.c = true;     // Catch: Throwable -> L7
-        if (b() == false) goto L9;
-        r1.d(this);     // Catch: Throwable -> L7
-    L9:
-        r2.unlock();
-        return;
-    L7:
-        th = move-exception;
-        r2.unlock();
-        throw th;
+        tl1 tl1Var = ze5.a;
+        gr4 gr4Var = this.a;
+        ReentrantLock reentrantLock = gr4Var.c;
+        reentrantLock.lock();
+        try {
+            this.c = true;
+            if (b()) {
+                gr4Var.d(this);
+            }
+        } finally {
+            reentrantLock.unlock();
+        }
     }
 
     public final String toString() {

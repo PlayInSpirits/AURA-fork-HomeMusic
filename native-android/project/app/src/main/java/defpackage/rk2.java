@@ -14,7 +14,7 @@ public interface rk2 {
 
     float B();
 
-    void B0(gn2 r1);
+    void B0(gn2 gn2Var);
 
     void C();
 
@@ -24,7 +24,7 @@ public interface rk2 {
 
     boolean D0();
 
-    void E(int r1, boolean r2);
+    void E(int i, boolean z);
 
     cw4 E0();
 
@@ -34,9 +34,9 @@ public interface rk2 {
 
     void G();
 
-    void G0(int r1);
+    void G0(int i);
 
-    void H(int r1, int r2);
+    void H(int i, int i2);
 
     void H0();
 
@@ -44,7 +44,7 @@ public interface rk2 {
 
     void I0();
 
-    void J(int r1);
+    void J(int i);
 
     void J0();
 
@@ -52,31 +52,31 @@ public interface rk2 {
 
     do2 K0();
 
-    void L(int r1, int r2, List r3);
+    void L(int i, int i2, List list);
 
-    void L0(List r1);
+    void L0(List list);
 
-    void M(cw4 r1);
+    void M(cw4 cw4Var);
 
     long M0();
 
-    void N(int r1);
+    void N(int i);
 
-    void N0(List r1, int r2);
+    void N0(List list, int i);
 
-    void O(long r1);
+    void O(long j);
 
     long O0();
 
-    void P(int r1, int r2);
+    void P(int i, int i2);
 
     wa4 P0();
 
-    void Q(SurfaceHolder r1);
+    void Q(SurfaceHolder surfaceHolder);
 
     yw1 Q0();
 
-    void R(float r1);
+    void R(float f);
 
     void R0();
 
@@ -84,19 +84,19 @@ public interface rk2 {
 
     Bundle S0();
 
-    void T(List r1, int r2, long r3);
+    void T(List list, int i, long j);
 
-    ic2 T0(va4 r1, Bundle r2);
+    ic2 T0(va4 va4Var, Bundle bundle);
 
     PlaybackException U();
 
-    void U0(gn2 r1);
+    void U0(gn2 gn2Var);
 
-    void V(boolean r1);
+    void V(boolean z);
 
-    void V0(List r1);
+    void V0(List list);
 
-    void W(int r1);
+    void W(int i);
 
     long X();
 
@@ -116,11 +116,11 @@ public interface rk2 {
 
     void c0();
 
-    void d(qh3 r1);
+    void d(qh3 qh3Var);
 
-    void d0(int r1);
+    void d0(int i);
 
-    void e(float r1);
+    void e(float f);
 
     jw4 e0();
 
@@ -148,17 +148,17 @@ public interface rk2 {
 
     boolean k();
 
-    void k0(il r1, boolean r2);
+    void k0(il ilVar, boolean z);
 
     long l();
 
-    void l0(do2 r1);
+    void l0(do2 do2Var);
 
     long m();
 
     void m0();
 
-    void n(int r1, long r2);
+    void n(int i, long j);
 
     int n0();
 
@@ -166,39 +166,39 @@ public interface rk2 {
 
     int o0();
 
-    void p(gn2 r1, long r2);
+    void p(gn2 gn2Var, long j);
 
-    void p0(int r1);
+    void p0(int i);
 
     boolean q();
 
-    void q0(boolean r1);
+    void q0(boolean z);
 
     void r();
 
-    void r0(oi3 r1);
+    void r0(oi3 oi3Var);
 
-    void s(boolean r1);
+    void s(boolean z);
 
-    void s0(gn2 r1);
+    void s0(gn2 gn2Var);
 
     void stop();
 
     int t();
 
-    void t0(int r1, int r2);
+    void t0(int i, int i2);
 
     long u();
 
-    void u0(int r1, int r2, int r3);
+    void u0(int i, int i2, int i3);
 
-    void v(oi3 r1);
+    void v(oi3 oi3Var);
 
     int v0();
 
     int w();
 
-    void w0(List r1);
+    void w0(List list);
 
     long x();
 
@@ -210,5 +210,5 @@ public interface rk2 {
 
     s55 z();
 
-    void z0(int r1, gn2 r2);
+    void z0(int i, gn2 gn2Var);
 }

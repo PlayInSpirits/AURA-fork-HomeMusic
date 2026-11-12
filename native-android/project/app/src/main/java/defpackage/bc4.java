@@ -10,155 +10,110 @@ import android.view.ContextThemeWrapper;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class bc4 {
-    public static final oy3 m = null;
-    public su3 a;
-    public su3 b;
-    public su3 c;
-    public su3 d;
-    public ke0 e;
-    public ke0 f;
-    public ke0 g;
-    public ke0 h;
+    public static final oy3 m = new oy3(0.5f);
+    public su3 a = new m34();
+    public su3 b = new m34();
+    public su3 c = new m34();
+    public su3 d = new m34();
+    public ke0 e = new m(0.0f);
+    public ke0 f = new m(0.0f);
+    public ke0 g = new m(0.0f);
+    public ke0 h = new m(0.0f);
     public fz0 i;
     public fz0 j;
     public fz0 k;
     public fz0 l;
 
-    static {
-        m = new oy3(0.5f);
-    }
-
     public bc4() {
-        this.a = new m34();
-        this.b = new m34();
-        this.c = new m34();
-        this.d = new m34();
-        this.e = new m(0.0f);
-        this.f = new m(0.0f);
-        this.g = new m(0.0f);
-        this.h = new m(0.0f);
-        int r1 = 0;
-        this.i = new fz0(r1);
-        this.j = new fz0(r1);
-        this.k = new fz0(r1);
-        this.l = new fz0(r1);
+        int i = 0;
+        this.i = new fz0(i);
+        this.j = new fz0(i);
+        this.k = new fz0(i);
+        this.l = new fz0(i);
     }
 
-    public static zc1 a(Context r2, int r3, int r4) {
-        return b(r2, r3, r4, new m(0.0f));
+    public static zc1 a(Context context, int i, int i2) {
+        return b(context, i, i2, new m(0.0f));
     }
 
-    public static zc1 b(Context r6, int r7, int r8, ke0 r9) {
-        ContextThemeWrapper r0 = new ContextThemeWrapper(r6, r7);
-        if (r8 == 0) goto L5;
-        r0 = new ContextThemeWrapper(r0, r8);
-    L5:
-        TypedArray r10 = r0.obtainStyledAttributes(ht3.P);
-        int r11 = r10.getInt(0, 0);     // Catch: Throwable -> L9
-        int r12 = r10.getInt(3, r11);     // Catch: Throwable -> L9
-        int r1 = r10.getInt(4, r11);     // Catch: Throwable -> L9
-        int r2 = r10.getInt(2, r11);     // Catch: Throwable -> L9
-        int r13 = r10.getInt(1, r11);     // Catch: Throwable -> L9
-        ke0 r14 = e(r10, 5, r9);     // Catch: Throwable -> L9
-        ke0 r3 = e(r10, 8, r14);     // Catch: Throwable -> L9
-        ke0 r4 = e(r10, 9, r14);     // Catch: Throwable -> L9
-        ke0 r5 = e(r10, 7, r14);     // Catch: Throwable -> L9
-        ke0 r15 = e(r10, 6, r14);     // Catch: Throwable -> L9
-        zc1 r16 = new zc1();     // Catch: Throwable -> L9
-        r16.a = ji2.v(r12);     // Catch: Throwable -> L9
-        r16.e = r3;     // Catch: Throwable -> L9
-        r16.b = ji2.v(r1);     // Catch: Throwable -> L9
-        r16.f = r4;     // Catch: Throwable -> L9
-        r16.c = ji2.v(r2);     // Catch: Throwable -> L9
-        r16.g = r5;     // Catch: Throwable -> L9
-        r16.d = ji2.v(r13);     // Catch: Throwable -> L9
-        r16.h = r15;     // Catch: Throwable -> L9
-        r10.recycle();
-        return r16;
-    L9:
-        th = move-exception;
-        r10.recycle();
-        throw th;
+    public static zc1 b(Context context, int i, int i2, ke0 ke0Var) {
+        ContextThemeWrapper contextThemeWrapper = new ContextThemeWrapper(context, i);
+        if (i2 != 0) {
+            contextThemeWrapper = new ContextThemeWrapper(contextThemeWrapper, i2);
+        }
+        TypedArray typedArrayObtainStyledAttributes = contextThemeWrapper.obtainStyledAttributes(ht3.P);
+        try {
+            int i3 = typedArrayObtainStyledAttributes.getInt(0, 0);
+            int i4 = typedArrayObtainStyledAttributes.getInt(3, i3);
+            int i5 = typedArrayObtainStyledAttributes.getInt(4, i3);
+            int i6 = typedArrayObtainStyledAttributes.getInt(2, i3);
+            int i7 = typedArrayObtainStyledAttributes.getInt(1, i3);
+            ke0 ke0VarE = e(typedArrayObtainStyledAttributes, 5, ke0Var);
+            ke0 ke0VarE2 = e(typedArrayObtainStyledAttributes, 8, ke0VarE);
+            ke0 ke0VarE3 = e(typedArrayObtainStyledAttributes, 9, ke0VarE);
+            ke0 ke0VarE4 = e(typedArrayObtainStyledAttributes, 7, ke0VarE);
+            ke0 ke0VarE5 = e(typedArrayObtainStyledAttributes, 6, ke0VarE);
+            zc1 zc1Var = new zc1();
+            zc1Var.a = ji2.v(i4);
+            zc1Var.e = ke0VarE2;
+            zc1Var.b = ji2.v(i5);
+            zc1Var.f = ke0VarE3;
+            zc1Var.c = ji2.v(i6);
+            zc1Var.g = ke0VarE4;
+            zc1Var.d = ji2.v(i7);
+            zc1Var.h = ke0VarE5;
+            return zc1Var;
+        } finally {
+            typedArrayObtainStyledAttributes.recycle();
+        }
     }
 
-    public static zc1 c(Context r2, AttributeSet r3, int r4, int r5) {
-        return d(r2, r3, r4, r5, new m(0.0f));
+    public static zc1 c(Context context, AttributeSet attributeSet, int i, int i2) {
+        return d(context, attributeSet, i, i2, new m(0.0f));
     }
 
-    public static zc1 d(Context r1, AttributeSet r2, int r3, int r4, ke0 r5) {
-        TypedArray r6 = r1.obtainStyledAttributes(r2, ht3.D, r3, r4);
-        int r7 = r6.getResourceId(0, 0);
-        int r8 = r6.getResourceId(1, 0);
-        r6.recycle();
-        return b(r1, r7, r8, r5);
+    public static zc1 d(Context context, AttributeSet attributeSet, int i, int i2, ke0 ke0Var) {
+        TypedArray typedArrayObtainStyledAttributes = context.obtainStyledAttributes(attributeSet, ht3.D, i, i2);
+        int resourceId = typedArrayObtainStyledAttributes.getResourceId(0, 0);
+        int resourceId2 = typedArrayObtainStyledAttributes.getResourceId(1, 0);
+        typedArrayObtainStyledAttributes.recycle();
+        return b(context, resourceId, resourceId2, ke0Var);
     }
 
-    public static ke0 e(TypedArray r2, int r3, ke0 r4) {
-        TypedValue r5 = r2.peekValue(r3);
-        if (r5 == null) goto L13;
-        int r0 = r5.type;
-        if (r0 != 5) goto L10;
-        return new m(TypedValue.complexToDimensionPixelSize(r5.data, r2.getResources().getDisplayMetrics()));
-    L10:
-        if (r0 != 6) goto L13;
-        return new oy3(r5.getFraction(1.0f, 1.0f));
-    L13:
-        return r4;
+    public static ke0 e(TypedArray typedArray, int i, ke0 ke0Var) {
+        TypedValue typedValuePeekValue = typedArray.peekValue(i);
+        if (typedValuePeekValue != null) {
+            int i2 = typedValuePeekValue.type;
+            if (i2 == 5) {
+                return new m(TypedValue.complexToDimensionPixelSize(typedValuePeekValue.data, typedArray.getResources().getDisplayMetrics()));
+            }
+            if (i2 == 6) {
+                return new oy3(typedValuePeekValue.getFraction(1.0f, 1.0f));
+            }
+        }
+        return ke0Var;
     }
 
-    public final boolean f(RectF r6) {
-        if (this.l.getClass().equals(fz0.class) == true) goto L5;
-    L11:
-        boolean r0 = false;
-    L12:
-        float r1 = this.e.a(r6);
-        if (this.f.a(r6) == r1) goto L15;
-    L19:
-        boolean r7 = false;
-    L21:
-        if ((this.b instanceof m34) == true) goto L23;
-    L29:
-        boolean r5 = false;
-    L30:
-        if (r0 == false) goto L34;
-        if (r7 == false) goto L34;
-        if (r5 == false) goto L34;
-        return true;
-    L34:
-        return false;
-    L23:
-        if ((this.a instanceof m34) == false) goto L29;
-        if ((this.c instanceof m34) == false) goto L29;
-        if ((this.d instanceof m34) == false) goto L29;
-        r5 = true;
-        goto L30
-    L15:
-        if (this.h.a(r6) != r1) goto L19;
-        if (this.g.a(r6) != r1) goto L19;
-        r7 = true;
-        goto L21
-    L5:
-        if (this.j.getClass().equals(fz0.class) == false) goto L11;
-        if (this.i.getClass().equals(fz0.class) == false) goto L11;
-        if (this.k.getClass().equals(fz0.class) == false) goto L11;
-        r0 = true;
-        goto L12
+    public final boolean f(RectF rectF) {
+        boolean z = this.l.getClass().equals(fz0.class) && this.j.getClass().equals(fz0.class) && this.i.getClass().equals(fz0.class) && this.k.getClass().equals(fz0.class);
+        float fA = this.e.a(rectF);
+        return z && ((this.f.a(rectF) > fA ? 1 : (this.f.a(rectF) == fA ? 0 : -1)) == 0 && (this.h.a(rectF) > fA ? 1 : (this.h.a(rectF) == fA ? 0 : -1)) == 0 && (this.g.a(rectF) > fA ? 1 : (this.g.a(rectF) == fA ? 0 : -1)) == 0) && ((this.b instanceof m34) && (this.a instanceof m34) && (this.c instanceof m34) && (this.d instanceof m34));
     }
 
     public final zc1 g() {
-        zc1 r0 = new zc1();
-        r0.a = this.a;
-        r0.b = this.b;
-        r0.c = this.c;
-        r0.d = this.d;
-        r0.e = this.e;
-        r0.f = this.f;
-        r0.g = this.g;
-        r0.h = this.h;
-        r0.i = this.i;
-        r0.j = this.j;
-        r0.k = this.k;
-        r0.l = this.l;
-        return r0;
+        zc1 zc1Var = new zc1();
+        zc1Var.a = this.a;
+        zc1Var.b = this.b;
+        zc1Var.c = this.c;
+        zc1Var.d = this.d;
+        zc1Var.e = this.e;
+        zc1Var.f = this.f;
+        zc1Var.g = this.g;
+        zc1Var.h = this.h;
+        zc1Var.i = this.i;
+        zc1Var.j = this.j;
+        zc1Var.k = this.k;
+        zc1Var.l = this.l;
+        return zc1Var;
     }
 }

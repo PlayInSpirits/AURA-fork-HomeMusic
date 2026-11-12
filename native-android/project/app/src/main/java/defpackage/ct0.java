@@ -18,94 +18,88 @@ public final /* synthetic */ class ct0 implements Runnable {
     public final /* synthetic */ Object q;
     public final /* synthetic */ Object r;
 
-    public /* synthetic */ ct0(ft0 r2, String r3, et0 r4, int r5) {
+    public /* synthetic */ ct0(ft0 ft0Var, String str, et0 et0Var, int i) {
         this.n = 0;
-        this.q = r2;
-        this.p = r3;
-        this.r = r4;
-        this.o = r5;
+        this.q = ft0Var;
+        this.p = str;
+        this.r = et0Var;
+        this.o = i;
     }
 
     @Override // java.lang.Runnable
     public final void run() {
-        int r0 = this.n;
-        int r1 = 2;
-        Object r4 = this.r;
-        Object r5 = this.p;
-        int r6 = this.o;
-        Object r9 = this.q;
-        switch(r0) {
-            case 0: goto L25;
-            case 1: goto L14;
-            case 2: goto L10;
-            default: goto L4;
-        };
-    L4:
-        List r7 = (List) r5;
-        fr2 r8 = (fr2) r4;
-        tn2 r10 = ((ls2) ((ue1) r9).q).g;
-        if (r6 != (-1)) goto L7;
-        r10.s.w0(r7);
-    L8:
-        SparseBooleanArray r2 = new SparseBooleanArray();
-        r2.append(20, true);
-        r10.v(r8, new mi3(new w71(r2)));
-        return;
-    L7:
-        r10.s.N0(r7, r6);
-        goto L8
-    L10:
-        lo2 r11 = (lo2) r9;
-        kn2 r12 = (kn2) r5;
-        rm2 r13 = (rm2) r4;
-        if (r6 != r11.v) goto L31;
-        r11.e(r12, r13, r11.c(false));
-        return;
-    L31:
-        return;
-    L14:
-        fo1 r14 = (fo1) r9;
-        String r15 = (String) r5;
-        HubAuthOptions r16 = (HubAuthOptions) r4;
-        boolean r3 = r14.c();
-        uc1 r17 = (uc1) r14.c;
-        if (r3 == false) goto L34;
-        r14.r(false);
-        if (r6 == 0) goto L23;
-        TextInputLayout r18 = r17.u;
-        if (r6 == 2) goto L22;
-        r18.setError(r14.v(R.string.homemusic_login_server_unreachable, new Object[0]));
-        return;
-    L22:
-        r18.setError(r14.v(R.string.homemusic_login_server_not_music, new Object[0]));
-        return;
-    L23:
-        r14.e = r15;
-        r14.i = r16;
-        r17.r.setText(r15);
-        r14.s(co1.o);
-        return;
-    L34:
-        return;
-    L25:
-        ft0 r19 = (ft0) r9;
-        String r20 = (String) r5;
-        View r21 = ((et0) r4).a;
-        String r22 = (String) xl.E((s24) AppDatabase.y().C().a, true, false, new rs0(13, r20));
-        if (r22 == null) goto L35;
-        r19.x.put(r20, r22);
-        if ((r21.getContext() instanceof Activity) == false) goto L36;
-        ((Activity) r21.getContext()).runOnUiThread(new ul(r6, r1, r19));
-        return;
-    L36:
-        return;
+        int i = this.n;
+        int i2 = 2;
+        Object obj = this.r;
+        Object obj2 = this.p;
+        int i3 = this.o;
+        Object obj3 = this.q;
+        switch (i) {
+            case 0:
+                ft0 ft0Var = (ft0) obj3;
+                String str = (String) obj2;
+                View view = ((et0) obj).a;
+                String str2 = (String) xl.E((s24) AppDatabase.y().C().a, true, false, new rs0(13, str));
+                if (str2 != null) {
+                    ft0Var.x.put(str, str2);
+                    if (view.getContext() instanceof Activity) {
+                        ((Activity) view.getContext()).runOnUiThread(new ul(i3, i2, ft0Var));
+                    }
+                }
+                break;
+            case 1:
+                fo1 fo1Var = (fo1) obj3;
+                String str3 = (String) obj2;
+                HubAuthOptions hubAuthOptions = (HubAuthOptions) obj;
+                boolean zC = fo1Var.c();
+                uc1 uc1Var = (uc1) fo1Var.c;
+                if (zC) {
+                    fo1Var.r(false);
+                    if (i3 == 0) {
+                        fo1Var.e = str3;
+                        fo1Var.i = hubAuthOptions;
+                        uc1Var.r.setText(str3);
+                        fo1Var.s(co1.o);
+                    } else {
+                        TextInputLayout textInputLayout = uc1Var.u;
+                        if (i3 == 2) {
+                            textInputLayout.setError(fo1Var.v(R.string.homemusic_login_server_not_music, new Object[0]));
+                        } else {
+                            textInputLayout.setError(fo1Var.v(R.string.homemusic_login_server_unreachable, new Object[0]));
+                        }
+                    }
+                    break;
+                }
+                break;
+            case 2:
+                lo2 lo2Var = (lo2) obj3;
+                kn2 kn2Var = (kn2) obj2;
+                rm2 rm2Var = (rm2) obj;
+                if (i3 == lo2Var.v) {
+                    lo2Var.e(kn2Var, rm2Var, lo2Var.c(false));
+                }
+                break;
+            default:
+                List list = (List) obj2;
+                fr2 fr2Var = (fr2) obj;
+                tn2 tn2Var = ((ls2) ((ue1) obj3).q).g;
+                if (i3 == -1) {
+                    tn2Var.s.w0(list);
+                } else {
+                    tn2Var.s.N0(list, i3);
+                }
+                SparseBooleanArray sparseBooleanArray = new SparseBooleanArray();
+                sparseBooleanArray.append(20, true);
+                tn2Var.v(fr2Var, new mi3(new w71(sparseBooleanArray)));
+                break;
+        }
     }
 
-    public /* synthetic */ ct0(Object r1, int r2, Object r3, Object r4, int r5) {
-        this.n = r5;
-        this.q = r1;
-        this.o = r2;
-        this.p = r3;
-        this.r = r4;
+    public /* synthetic */ ct0(Object obj, int i, Object obj2, Object obj3, int i2) {
+        this.n = i2;
+        this.q = obj;
+        this.o = i;
+        this.p = obj2;
+        this.r = obj3;
     }
 }

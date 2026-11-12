@@ -6,8 +6,8 @@ public class wg1 {
     public final vy3 a;
     public final int b;
 
-    public wg1(vy3 r1, int r2) {
-        this.a = r1;
-        this.b = r2;
+    public wg1(vy3 vy3Var, int i) {
+        this.a = vy3Var;
+        this.b = i;
     }
 }

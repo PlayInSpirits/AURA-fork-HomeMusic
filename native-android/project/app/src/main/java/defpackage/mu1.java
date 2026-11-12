@@ -10,45 +10,36 @@ public final class mu1 implements qu1 {
 
     @Override // defpackage.qu1
     public final int V() {
-        Parcel r0 = Parcel.obtain();
-        Parcel r1 = Parcel.obtain();
-        r0.writeInterfaceToken("android.support.v4.media.session.IMediaSession");     // Catch: Throwable -> L6
-        if (this.e.transact(47, r0, r1, 0) == true) goto L8;
-        int r4 = jr2.f;     // Catch: Throwable -> L6
-    L8:
-        r1.readException();     // Catch: Throwable -> L6
-        int r5 = r1.readInt();     // Catch: Throwable -> L6
-        r1.recycle();
-        r0.recycle();
-        return r5;
-    L6:
-        th = move-exception;
-        r1.recycle();
-        r0.recycle();
-        throw th;
+        Parcel parcelObtain = Parcel.obtain();
+        Parcel parcelObtain2 = Parcel.obtain();
+        try {
+            parcelObtain.writeInterfaceToken("android.support.v4.media.session.IMediaSession");
+            if (!this.e.transact(47, parcelObtain, parcelObtain2, 0)) {
+                int i = jr2.f;
+            }
+            parcelObtain2.readException();
+            return parcelObtain2.readInt();
+        } finally {
+            parcelObtain2.recycle();
+            parcelObtain.recycle();
+        }
     }
 
     @Override // defpackage.qu1
     public final boolean Y() {
-        Parcel r0 = Parcel.obtain();
-        Parcel r1 = Parcel.obtain();
-        r0.writeInterfaceToken("android.support.v4.media.session.IMediaSession");     // Catch: Throwable -> L6
-        boolean r3 = false;
-        if (this.e.transact(45, r0, r1, 0) == true) goto L8;
-        int r4 = jr2.f;     // Catch: Throwable -> L6
-    L8:
-        r1.readException();     // Catch: Throwable -> L6
-        if (r1.readInt() == 0) goto L11;
-        r3 = true;
-    L11:
-        r1.recycle();
-        r0.recycle();
-        return r3;
-    L6:
-        th = move-exception;
-        r1.recycle();
-        r0.recycle();
-        throw th;
+        Parcel parcelObtain = Parcel.obtain();
+        Parcel parcelObtain2 = Parcel.obtain();
+        try {
+            parcelObtain.writeInterfaceToken("android.support.v4.media.session.IMediaSession");
+            if (!this.e.transact(45, parcelObtain, parcelObtain2, 0)) {
+                int i = jr2.f;
+            }
+            parcelObtain2.readException();
+            return parcelObtain2.readInt() != 0;
+        } finally {
+            parcelObtain2.recycle();
+            parcelObtain.recycle();
+        }
     }
 
     @Override // android.os.IInterface
@@ -57,86 +48,70 @@ public final class mu1 implements qu1 {
     }
 
     @Override // defpackage.qu1
-    public final void b0(lu1 r4) {
-        Parcel r0 = Parcel.obtain();
-        Parcel r1 = Parcel.obtain();
-        r0.writeInterfaceToken("android.support.v4.media.session.IMediaSession");     // Catch: Throwable -> L6
-        r0.writeStrongBinder((tk2) r4);     // Catch: Throwable -> L6
-        if (this.e.transact(4, r0, r1, 0) == true) goto L8;
-        int r3 = jr2.f;     // Catch: Throwable -> L6
-    L8:
-        r1.readException();     // Catch: Throwable -> L6
-        r1.recycle();
-        r0.recycle();
-        return;
-    L6:
-        th = move-exception;
-        r1.recycle();
-        r0.recycle();
-        throw th;
+    public final void b0(lu1 lu1Var) {
+        Parcel parcelObtain = Parcel.obtain();
+        Parcel parcelObtain2 = Parcel.obtain();
+        try {
+            parcelObtain.writeInterfaceToken("android.support.v4.media.session.IMediaSession");
+            parcelObtain.writeStrongBinder((tk2) lu1Var);
+            if (!this.e.transact(4, parcelObtain, parcelObtain2, 0)) {
+                int i = jr2.f;
+            }
+            parcelObtain2.readException();
+        } finally {
+            parcelObtain2.recycle();
+            parcelObtain.recycle();
+        }
     }
 
     @Override // defpackage.qu1
     public final ei3 g() {
-        Parcel r0 = Parcel.obtain();
-        Parcel r1 = Parcel.obtain();
-        r0.writeInterfaceToken("android.support.v4.media.session.IMediaSession");     // Catch: Throwable -> L6
-        if (this.e.transact(28, r0, r1, 0) == true) goto L8;
-        int r4 = jr2.f;     // Catch: Throwable -> L6
-    L8:
-        r1.readException();     // Catch: Throwable -> L6
-        if (r1.readInt() == 0) goto L12;
-        ei3 r5 = ei3.CREATOR.createFromParcel(r1);     // Catch: Throwable -> L6
-    L13:
-        r1.recycle();
-        r0.recycle();
-        return r5;
-    L12:
-        r5 = null;
-    L6:
-        th = move-exception;
-        r1.recycle();
-        r0.recycle();
-        throw th;
+        Parcel parcelObtain = Parcel.obtain();
+        Parcel parcelObtain2 = Parcel.obtain();
+        try {
+            parcelObtain.writeInterfaceToken("android.support.v4.media.session.IMediaSession");
+            if (!this.e.transact(28, parcelObtain, parcelObtain2, 0)) {
+                int i = jr2.f;
+            }
+            parcelObtain2.readException();
+            return parcelObtain2.readInt() != 0 ? ei3.CREATOR.createFromParcel(parcelObtain2) : null;
+        } finally {
+            parcelObtain2.recycle();
+            parcelObtain.recycle();
+        }
     }
 
     @Override // defpackage.qu1
     public final int h() {
-        Parcel r0 = Parcel.obtain();
-        Parcel r1 = Parcel.obtain();
-        r0.writeInterfaceToken("android.support.v4.media.session.IMediaSession");     // Catch: Throwable -> L6
-        if (this.e.transact(37, r0, r1, 0) == true) goto L8;
-        int r4 = jr2.f;     // Catch: Throwable -> L6
-    L8:
-        r1.readException();     // Catch: Throwable -> L6
-        int r5 = r1.readInt();     // Catch: Throwable -> L6
-        r1.recycle();
-        r0.recycle();
-        return r5;
-    L6:
-        th = move-exception;
-        r1.recycle();
-        r0.recycle();
-        throw th;
+        Parcel parcelObtain = Parcel.obtain();
+        Parcel parcelObtain2 = Parcel.obtain();
+        try {
+            parcelObtain.writeInterfaceToken("android.support.v4.media.session.IMediaSession");
+            if (!this.e.transact(37, parcelObtain, parcelObtain2, 0)) {
+                int i = jr2.f;
+            }
+            parcelObtain2.readException();
+            return parcelObtain2.readInt();
+        } finally {
+            parcelObtain2.recycle();
+            parcelObtain.recycle();
+        }
     }
 
     @Override // defpackage.qu1
-    public final void l0(lu1 r4) {
-        Parcel r0 = Parcel.obtain();
-        Parcel r1 = Parcel.obtain();
-        r0.writeInterfaceToken("android.support.v4.media.session.IMediaSession");     // Catch: Throwable -> L6
-        r0.writeStrongBinder((tk2) r4);     // Catch: Throwable -> L6
-        if (this.e.transact(3, r0, r1, 0) == true) goto L8;
-        int r3 = jr2.f;     // Catch: Throwable -> L6
-    L8:
-        r1.readException();     // Catch: Throwable -> L6
-        r1.recycle();
-        r0.recycle();
-        return;
-    L6:
-        th = move-exception;
-        r1.recycle();
-        r0.recycle();
-        throw th;
+    public final void l0(lu1 lu1Var) {
+        Parcel parcelObtain = Parcel.obtain();
+        Parcel parcelObtain2 = Parcel.obtain();
+        try {
+            parcelObtain.writeInterfaceToken("android.support.v4.media.session.IMediaSession");
+            parcelObtain.writeStrongBinder((tk2) lu1Var);
+            if (!this.e.transact(3, parcelObtain, parcelObtain2, 0)) {
+                int i = jr2.f;
+            }
+            parcelObtain2.readException();
+        } finally {
+            parcelObtain2.recycle();
+            parcelObtain.recycle();
+        }
     }
 }

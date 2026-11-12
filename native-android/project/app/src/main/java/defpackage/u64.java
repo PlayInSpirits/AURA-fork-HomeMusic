@@ -9,9 +9,9 @@ public final class u64 extends wd0 {
     public int q;
 
     @Override // defpackage.jp
-    public final Object invokeSuspend(Object r3) {
-        this.p = r3;
+    public final Object invokeSuspend(Object obj) {
+        this.p = obj;
         this.q |= Integer.MIN_VALUE;
-        return v64.a(null, 0, this);
+        return v64.a(null, 0L, this);
     }
 }

@@ -8,16 +8,16 @@ import com.eddyizm.tempus.ui.fragment.DirectoryFragment;
 public final class qq0 implements DialogClickCallback {
     public final /* synthetic */ DirectoryFragment n;
 
-    public qq0(DirectoryFragment r1) {
-        this.n = r1;
+    public qq0(DirectoryFragment directoryFragment) {
+        this.n = directoryFragment;
     }
 
     @Override // com.eddyizm.tempus.interfaces.DialogClickCallback
     public final void onPositiveClick() {
-        DirectoryFragment r0 = this.n;
-        rq0 r1 = r0.n0;
-        String r2 = r0.s.getString("MUSIC_DIRECTORY_ID");
-        r1.c.getClass();
-        om0.W(r2).e(r0.v(), new d8(8, this));
+        DirectoryFragment directoryFragment = this.n;
+        rq0 rq0Var = directoryFragment.n0;
+        String string = directoryFragment.s.getString("MUSIC_DIRECTORY_ID");
+        rq0Var.c.getClass();
+        om0.W(string).e(directoryFragment.v(), new d8(8, this));
     }
 }

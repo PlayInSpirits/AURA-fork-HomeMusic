@@ -7,7 +7,7 @@ public interface g94 extends eo0 {
         return true;
     }
 
-    void c0(q94 r1);
+    void c0(q94 q94Var);
 
     default boolean d0() {
         return false;

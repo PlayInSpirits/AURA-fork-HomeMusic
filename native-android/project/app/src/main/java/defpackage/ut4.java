@@ -19,74 +19,58 @@ public final class ut4 {
     public boolean j;
 
     public static ut4 c() {
-        if (k != null) goto L6;
-        k = new ut4();
-    L6:
+        if (k == null) {
+            k = new ut4();
+        }
         return k;
     }
 
-    public final void a(Context r6) {
-        DisplayMetrics r7 = r6.getResources().getDisplayMetrics();
-        float r0 = r7.widthPixels;
-        float r8 = r7.heightPixels;
-        int r1 = Math.max(2, Math.min(3, ud3.I()));
-        this.d = Math.max(2, Math.round(r0 / (Math.round(Math.min(r0, r8) / r1) - 10)));
-        if (r1 != 3) goto L5;
-        this.e = 15;
-    L14:
+    public final void a(Context context) {
+        DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
+        float f = displayMetrics.widthPixels;
+        float f2 = displayMetrics.heightPixels;
+        int iMax = Math.max(2, Math.min(3, ud3.I()));
+        this.d = Math.max(2, Math.round(f / (Math.round(Math.min(f, f2) / iMax) - 10)));
+        if (iMax == 3) {
+            this.e = 15;
+        } else if (iMax == 4) {
+            this.e = 10;
+        } else if (iMax == 5) {
+            this.e = 6;
+        } else if (iMax != 6) {
+            this.e = 20;
+        } else {
+            this.e = 2;
+        }
         this.i = true;
-        return;
-    L5:
-        if (r1 != 4) goto L7;
-        this.e = 10;
-        goto L14
-    L7:
-        if (r1 == 5) goto L11;
-        if (r1 == 6) goto L10;
-        this.e = 20;
-        goto L14
-    L10:
-        this.e = 2;
-        goto L14
-    L11:
-        this.e = 6;
-        goto L14
     }
 
-    public final void b(Context r6) {
-        DisplayMetrics r7 = r6.getResources().getDisplayMetrics();
-        float r0 = r7.widthPixels;
-        float r8 = r7.heightPixels;
-        int r1 = Math.max(2, Math.min(6, ud3.I()));
-        int r9 = Math.round(Math.min(r0, r8) / r1) - 10;
-        this.a = r9;
-        this.b = Math.max(2, Math.round(r0 / r9));
-        if (r1 != 3) goto L5;
-        this.c = 15;
-    L14:
+    public final void b(Context context) {
+        DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
+        float f = displayMetrics.widthPixels;
+        float f2 = displayMetrics.heightPixels;
+        int iMax = Math.max(2, Math.min(6, ud3.I()));
+        int iRound = Math.round(Math.min(f, f2) / iMax) - 10;
+        this.a = iRound;
+        this.b = Math.max(2, Math.round(f / iRound));
+        if (iMax == 3) {
+            this.c = 15;
+        } else if (iMax == 4) {
+            this.c = 10;
+        } else if (iMax == 5) {
+            this.c = 6;
+        } else if (iMax != 6) {
+            this.c = 20;
+        } else {
+            this.c = 2;
+        }
         this.h = true;
-        return;
-    L5:
-        if (r1 != 4) goto L7;
-        this.c = 10;
-        goto L14
-    L7:
-        if (r1 == 5) goto L11;
-        if (r1 == 6) goto L10;
-        this.c = 20;
-        goto L14
-    L10:
-        this.c = 2;
-        goto L14
-    L11:
-        this.c = 6;
-        goto L14
     }
 
-    public final int d(Context r2) {
-        if (this.h == true) goto L6;
-        b(r2);
-    L6:
+    public final int d(Context context) {
+        if (!this.h) {
+            b(context);
+        }
         return this.a;
     }
 }

@@ -6,23 +6,22 @@ public final /* synthetic */ class b70 implements Runnable {
     public final /* synthetic */ int n;
     public final /* synthetic */ nc1 o;
 
-    public /* synthetic */ b70(nc1 r1, int r2) {
-        this.n = r2;
-        this.o = r1;
+    public /* synthetic */ b70(nc1 nc1Var, int i) {
+        this.n = i;
+        this.o = nc1Var;
     }
 
     @Override // java.lang.Runnable
     public final void run() {
-        int r0 = this.n;
-        nc1 r1 = this.o;
-        switch(r0) {
-            case 0: goto L6;
-            default: goto L4;
-        };
-    L4:
-        r1.invalidateOptionsMenu();
-        return;
-    L6:
-        l70.e(r1);
+        int i = this.n;
+        nc1 nc1Var = this.o;
+        switch (i) {
+            case 0:
+                l70.e(nc1Var);
+                break;
+            default:
+                nc1Var.invalidateOptionsMenu();
+                break;
+        }
     }
 }

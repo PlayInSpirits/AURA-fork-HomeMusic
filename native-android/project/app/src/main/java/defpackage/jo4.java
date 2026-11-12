@@ -12,9 +12,9 @@ public final class jo4 extends ActionMode {
     public final Context a;
     public final d5 b;
 
-    public jo4(Context r1, d5 r2) {
-        this.a = r1;
-        this.b = r2;
+    public jo4(Context context, d5 d5Var) {
+        this.a = context;
+        this.b = d5Var;
     }
 
     @Override // android.view.ActionMode
@@ -29,8 +29,7 @@ public final class jo4 extends ActionMode {
 
     @Override // android.view.ActionMode
     public final Menu getMenu() {
-        qu2 r1 = this.b.c();
-        return new jv2(this.a, r1);
+        return new jv2(this.a, this.b.c());
     }
 
     @Override // android.view.ActionMode
@@ -69,37 +68,37 @@ public final class jo4 extends ActionMode {
     }
 
     @Override // android.view.ActionMode
-    public final void setCustomView(View r1) {
-        this.b.i(r1);
+    public final void setCustomView(View view) {
+        this.b.i(view);
     }
 
     @Override // android.view.ActionMode
-    public final void setSubtitle(CharSequence r1) {
-        this.b.k(r1);
+    public final void setSubtitle(CharSequence charSequence) {
+        this.b.k(charSequence);
     }
 
     @Override // android.view.ActionMode
-    public final void setTag(Object r1) {
-        this.b.n = r1;
+    public final void setTag(Object obj) {
+        this.b.n = obj;
     }
 
     @Override // android.view.ActionMode
-    public final void setTitle(CharSequence r1) {
-        this.b.n(r1);
+    public final void setTitle(CharSequence charSequence) {
+        this.b.n(charSequence);
     }
 
     @Override // android.view.ActionMode
-    public final void setTitleOptionalHint(boolean r1) {
-        this.b.o(r1);
+    public final void setTitleOptionalHint(boolean z) {
+        this.b.o(z);
     }
 
     @Override // android.view.ActionMode
-    public final void setSubtitle(int r1) {
-        this.b.j(r1);
+    public final void setSubtitle(int i) {
+        this.b.j(i);
     }
 
     @Override // android.view.ActionMode
-    public final void setTitle(int r1) {
-        this.b.l(r1);
+    public final void setTitle(int i) {
+        this.b.l(i);
     }
 }

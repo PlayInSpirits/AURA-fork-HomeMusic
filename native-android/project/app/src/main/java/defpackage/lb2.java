@@ -11,133 +11,123 @@ public final class lb2 extends AbstractSet {
     public final /* synthetic */ int n;
     public final /* synthetic */ nb2 o;
 
-    public /* synthetic */ lb2(nb2 r1, int r2) {
-        this.n = r2;
-        this.o = r1;
+    public /* synthetic */ lb2(nb2 nb2Var, int i) {
+        this.n = i;
+        this.o = nb2Var;
     }
 
     @Override // java.util.AbstractCollection, java.util.Collection, java.util.Set
     public final void clear() {
-        int r0 = this.n;
-        nb2 r1 = this.o;
-        switch(r0) {
-            case 0: goto L6;
-            default: goto L4;
-        };
-    L4:
-        r1.clear();
-        return;
-    L6:
-        r1.clear();
+        int i = this.n;
+        nb2 nb2Var = this.o;
+        switch (i) {
+            case 0:
+                nb2Var.clear();
+                break;
+            default:
+                nb2Var.clear();
+                break;
+        }
     }
 
     @Override // java.util.AbstractCollection, java.util.Collection, java.util.Set
-    public final boolean contains(Object r4) {
-        int r0 = this.n;
-        nb2 r3 = this.o;
-        switch(r0) {
-            case 0: goto L7;
-            default: goto L5;
-        };
-    L5:
-        return r3.containsKey(r4);
-    L7:
-        if ((r4 instanceof Map.Entry) == false) goto L23;
-        Map.Entry r5 = (Map.Entry) r4;
-        Object r1 = r5.getKey();
-        mb2 r2 = null;
-        if (r1 != null) goto L21;
-    L12:
-        mb2 r6 = null;
-    L13:
-        if (r6 != null) goto L15;
-    L17:
-        if (r2 == null) goto L24;
-        return true;
-    L24:
-        return false;
-    L15:
-        if (Objects.equals(r6.u, r5.getValue()) == false) goto L17;
-        r2 = r6;
-        goto L17
-    L21:
-        r6 = r3.a(r1, false);     // Catch: ClassCastException -> L20
-    L23:
-        return false;
+    public final boolean contains(Object obj) {
+        mb2 mb2VarA;
+        int i = this.n;
+        nb2 nb2Var = this.o;
+        switch (i) {
+            case 0:
+                if (!(obj instanceof Map.Entry)) {
+                    return false;
+                }
+                Map.Entry entry = (Map.Entry) obj;
+                Object key = entry.getKey();
+                mb2 mb2Var = null;
+                if (key != null) {
+                    try {
+                        mb2VarA = nb2Var.a(key, false);
+                    } catch (ClassCastException unused) {
+                        mb2VarA = null;
+                    }
+                    break;
+                } else {
+                    mb2VarA = null;
+                }
+                if (mb2VarA != null && Objects.equals(mb2VarA.u, entry.getValue())) {
+                    mb2Var = mb2VarA;
+                }
+                return mb2Var != null;
+            default:
+                return nb2Var.containsKey(obj);
+        }
     }
 
     @Override // java.util.AbstractCollection, java.util.Collection, java.lang.Iterable, java.util.Set
     public final Iterator iterator() {
-        int r0 = this.n;
-        nb2 r2 = this.o;
-        switch(r0) {
-            case 0: goto L7;
-            default: goto L5;
-        };
-    L5:
-        return new kb2(r2, 1);
-    L7:
-        return new kb2(r2, 0);
+        int i = this.n;
+        nb2 nb2Var = this.o;
+        switch (i) {
+            case 0:
+                return new kb2(nb2Var, 0);
+            default:
+                return new kb2(nb2Var, 1);
+        }
     }
 
     @Override // java.util.AbstractCollection, java.util.Collection, java.util.Set
-    public final boolean remove(Object r6) {
-        int r0 = this.n;
-        mb2 r1 = null;
-        nb2 r5 = this.o;
-        switch(r0) {
-            case 0: goto L12;
-            default: goto L4;
-        };
-    L4:
-        if (r6 != null) goto L31;
-    L6:
-        if (r1 == null) goto L8;
-        r5.c(r1, true);
-    L8:
-        if (r1 != null) goto L10;
-        return false;
-    L10:
-        return true;
-    L31:
-        r1 = r5.a(r6, false);     // Catch: ClassCastException -> L27
-        goto L6
-    L12:
-        if ((r6 instanceof Map.Entry) == false) goto L34;
-        Map.Entry r7 = (Map.Entry) r6;
-        Object r2 = r7.getKey();
-        if (r2 != null) goto L29;
-    L18:
-        mb2 r3 = null;
-    L19:
-        if (r3 != null) goto L21;
-    L23:
-        if (r1 == null) goto L35;
-        r5.c(r1, true);
-        return true;
-    L35:
-        return false;
-    L21:
-        if (Objects.equals(r3.u, r7.getValue()) == false) goto L23;
-        r1 = r3;
-        goto L23
-    L29:
-        r3 = r5.a(r2, false);     // Catch: ClassCastException -> L28
-    L34:
-        return false;
+    public final boolean remove(Object obj) {
+        mb2 mb2VarA;
+        int i = this.n;
+        mb2 mb2VarA2 = null;
+        nb2 nb2Var = this.o;
+        switch (i) {
+            case 0:
+                if (!(obj instanceof Map.Entry)) {
+                    return false;
+                }
+                Map.Entry entry = (Map.Entry) obj;
+                Object key = entry.getKey();
+                if (key != null) {
+                    try {
+                        mb2VarA = nb2Var.a(key, false);
+                    } catch (ClassCastException unused) {
+                        mb2VarA = null;
+                    }
+                    break;
+                } else {
+                    mb2VarA = null;
+                }
+                if (mb2VarA != null && Objects.equals(mb2VarA.u, entry.getValue())) {
+                    mb2VarA2 = mb2VarA;
+                }
+                if (mb2VarA2 == null) {
+                    return false;
+                }
+                nb2Var.c(mb2VarA2, true);
+                return true;
+            default:
+                if (obj != null) {
+                    try {
+                        mb2VarA2 = nb2Var.a(obj, false);
+                        break;
+                    } catch (ClassCastException unused2) {
+                    }
+                }
+                if (mb2VarA2 != null) {
+                    nb2Var.c(mb2VarA2, true);
+                }
+                return mb2VarA2 != null;
+        }
     }
 
     @Override // java.util.AbstractCollection, java.util.Collection, java.util.Set
     public final int size() {
-        int r0 = this.n;
-        nb2 r1 = this.o;
-        switch(r0) {
-            case 0: goto L7;
-            default: goto L5;
-        };
-    L5:
-        return r1.q;
-    L7:
-        return r1.q;
+        int i = this.n;
+        nb2 nb2Var = this.o;
+        switch (i) {
+            case 0:
+                break;
+        }
+        return nb2Var.q;
     }
 }

@@ -7,8 +7,8 @@ import java.util.concurrent.ScheduledFuture;
 public final class zr0 implements as0 {
     public final ScheduledFuture n;
 
-    public zr0(ScheduledFuture r1) {
-        this.n = r1;
+    public zr0(ScheduledFuture scheduledFuture) {
+        this.n = scheduledFuture;
     }
 
     @Override // defpackage.as0

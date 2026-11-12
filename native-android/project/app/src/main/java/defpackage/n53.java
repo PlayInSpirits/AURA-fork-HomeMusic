@@ -9,19 +9,17 @@ public final class n53 extends ip {
         cx.i("NetworkNotRoamingCtrlr");
     }
 
-    public n53(xb0 r1) {
-        r1.getClass();
-        super(r1);
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public n53(xb0 xb0Var) {
+        super(xb0Var);
+        xb0Var.getClass();
         this.b = 7;
     }
 
     @Override // defpackage.jb0
-    public final boolean c(dd5 r1) {
-        r1.getClass();
-        if (r1.j.a != 4) goto L6;
-        return true;
-    L6:
-        return false;
+    public final boolean c(dd5 dd5Var) {
+        dd5Var.getClass();
+        return dd5Var.j.a == 4;
     }
 
     @Override // defpackage.ip
@@ -30,15 +28,9 @@ public final class n53 extends ip {
     }
 
     @Override // defpackage.ip
-    public final boolean e(Object r1) {
-        q53 r2 = (q53) r1;
-        r2.getClass();
-        if (r2.a == true) goto L5;
-        return true;
-    L5:
-        if (r2.d == false) goto L11;
-        return false;
-    L11:
-        return true;
+    public final boolean e(Object obj) {
+        q53 q53Var = (q53) obj;
+        q53Var.getClass();
+        return (q53Var.a && q53Var.d) ? false : true;
     }
 }

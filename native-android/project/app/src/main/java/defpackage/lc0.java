@@ -8,37 +8,24 @@ public final class lc0 {
     public final Uri a;
     public final boolean b;
 
-    public lc0(boolean r1, Uri r2) {
-        this.a = r2;
-        this.b = r1;
+    public lc0(boolean z, Uri uri) {
+        this.a = uri;
+        this.b = z;
     }
 
-    public final boolean equals(Object r3) {
-        if (this == r3) goto L21;
-        if (r3 == null) goto L6;
-        Class<?> r0 = r3.getClass();
-    L8:
-        if (lc0.class.equals(r0) == false) goto L19;
-        r3.getClass();
-        lc0 r4 = (lc0) r3;
-        if (this.a.equals(r4.a) == true) goto L14;
-        return false;
-    L14:
-        if (this.b == r4.b) goto L17;
-        return false;
-    L17:
-        return true;
-    L19:
-        return false;
-    L6:
-        r0 = null;
-        goto L8
-    L21:
-        return true;
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!lc0.class.equals(obj != null ? obj.getClass() : null)) {
+            return false;
+        }
+        obj.getClass();
+        lc0 lc0Var = (lc0) obj;
+        return this.a.equals(lc0Var.a) && this.b == lc0Var.b;
     }
 
     public final int hashCode() {
-        int r0 = this.a.hashCode() * 31;
-        return Boolean.hashCode(this.b) + r0;
+        return Boolean.hashCode(this.b) + (this.a.hashCode() * 31);
     }
 }

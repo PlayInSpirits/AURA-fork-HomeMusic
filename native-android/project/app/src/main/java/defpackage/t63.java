@@ -10,37 +10,35 @@ public final class t63 {
     public final int b;
     public final Notification c;
 
-    public t63(String r1, int r2, Notification r3) {
-        this.a = r1;
-        this.b = r2;
-        this.c = r3;
+    public t63(String str, int i, Notification notification) {
+        this.a = str;
+        this.b = i;
+        this.c = notification;
     }
 
-    public final void a(yu1 r5) {
-        String r0 = this.a;
-        int r1 = this.b;
-        Notification r4 = this.c;
-        wu1 r6 = (wu1) r5;
-        r6.getClass();
-        Parcel r2 = Parcel.obtain();
-        r2.writeInterfaceToken(yu1.c);     // Catch: Throwable -> L6
-        r2.writeString(r0);     // Catch: Throwable -> L6
-        r2.writeInt(r1);     // Catch: Throwable -> L6
-        r2.writeString(null);     // Catch: Throwable -> L6
-        r2.writeTypedObject(r4, 0);     // Catch: Throwable -> L6
-        r6.e.transact(1, r2, null, 1);     // Catch: Throwable -> L6
-        r2.recycle();
-        return;
-    L6:
-        th = move-exception;
-        r2.recycle();
-        throw th;
+    public final void a(yu1 yu1Var) {
+        String str = this.a;
+        int i = this.b;
+        Notification notification = this.c;
+        wu1 wu1Var = (wu1) yu1Var;
+        wu1Var.getClass();
+        Parcel parcelObtain = Parcel.obtain();
+        try {
+            parcelObtain.writeInterfaceToken(yu1.c);
+            parcelObtain.writeString(str);
+            parcelObtain.writeInt(i);
+            parcelObtain.writeString(null);
+            parcelObtain.writeTypedObject(notification, 0);
+            wu1Var.e.transact(1, parcelObtain, null, 1);
+        } finally {
+            parcelObtain.recycle();
+        }
     }
 
     public final String toString() {
-        StringBuilder r0 = new StringBuilder("NotifyTask[packageName:");
-        r0.append(this.a);
-        r0.append(", id:");
-        return f34.i(r0, this.b, ", tag:null]");
+        StringBuilder sb = new StringBuilder("NotifyTask[packageName:");
+        sb.append(this.a);
+        sb.append(", id:");
+        return f34.i(sb, this.b, ", tag:null]");
     }
 }

@@ -6,60 +6,55 @@ public abstract class ig3 implements oo0 {
     public boolean n;
 
     /* JADX WARN: Multi-variable type inference failed */
-    public static final void a(ig3 r1, jg3 r2) {
-        r1.getClass();
-        if ((r2 instanceof yx2) == false) goto L6;
-        ((yx2) r2).x(r1.n);
-        return;
+    public static final void a(ig3 ig3Var, jg3 jg3Var) {
+        ig3Var.getClass();
+        if (jg3Var instanceof yx2) {
+            ((yx2) jg3Var).x(ig3Var.n);
+        }
     }
 
-    public static void f(ig3 r4, jg3 r5, int r6, int r7) {
-        r4.getClass();
-        long r0 = ((long) r6) << 32;
-        a(r4, r5);
-        r5.N(g02.c((((long) r7) & 4294967295L) | r0, r5.r), 0.0f, null);
+    public static void f(ig3 ig3Var, jg3 jg3Var, int i, int i2) {
+        ig3Var.getClass();
+        a(ig3Var, jg3Var);
+        jg3Var.N(g02.c((((long) i2) & 4294967295L) | (((long) i) << 32), jg3Var.r), 0.0f, null);
     }
 
-    public static void j(ig3 r2, jg3 r3, long r4) {
-        r2.getClass();
-        a(r2, r3);
-        r3.N(g02.c(r4, r3.r), 0.0f, null);
+    public static void j(ig3 ig3Var, jg3 jg3Var, long j) {
+        ig3Var.getClass();
+        a(ig3Var, jg3Var);
+        jg3Var.N(g02.c(j, jg3Var.r), 0.0f, null);
     }
 
-    public static void k(ig3 r6, jg3 r7) {
-        if (r6.c() != r62.n) goto L5;
-    L9:
-        a(r6, r7);
-        r7.N(g02.c(0, r7.r), 0.0f, null);
-        return;
-    L5:
-        if (r6.e() == 0) goto L9;
-        long r0 = ((long) (r6.e() - r7.n)) << 32;
-        a(r6, r7);
-        r7.N(g02.c(r0, r7.r), 0.0f, null);
+    public static void k(ig3 ig3Var, jg3 jg3Var) {
+        if (ig3Var.c() == r62.n || ig3Var.e() == 0) {
+            a(ig3Var, jg3Var);
+            jg3Var.N(g02.c(0L, jg3Var.r), 0.0f, null);
+        } else {
+            long jE = ((long) (ig3Var.e() - jg3Var.n)) << 32;
+            a(ig3Var, jg3Var);
+            jg3Var.N(g02.c(jE, jg3Var.r), 0.0f, null);
+        }
     }
 
-    public static void n(ig3 r6, jg3 r7) {
-        k52 r0 = kg3.a;
-        if (r6.c() != r62.n) goto L5;
-    L9:
-        a(r6, r7);
-        r7.N(g02.c(0, r7.r), 0.0f, r0);
-        return;
-    L5:
-        if (r6.e() == 0) goto L9;
-        long r1 = ((long) (r6.e() - r7.n)) << 32;
-        a(r6, r7);
-        r7.N(g02.c(r1, r7.r), 0.0f, r0);
+    public static void n(ig3 ig3Var, jg3 jg3Var) {
+        k52 k52Var = kg3.a;
+        if (ig3Var.c() == r62.n || ig3Var.e() == 0) {
+            a(ig3Var, jg3Var);
+            jg3Var.N(g02.c(0L, jg3Var.r), 0.0f, k52Var);
+        } else {
+            long jE = ((long) (ig3Var.e() - jg3Var.n)) << 32;
+            a(ig3Var, jg3Var);
+            jg3Var.N(g02.c(jE, jg3Var.r), 0.0f, k52Var);
+        }
     }
 
-    public static void q(ig3 r4, jg3 r5, if1 r6) {
-        r4.getClass();
-        a(r4, r5);
-        r5.N(g02.c(0, r5.r), 0.0f, r6);
+    public static void q(ig3 ig3Var, jg3 jg3Var, if1 if1Var) {
+        ig3Var.getClass();
+        a(ig3Var, jg3Var);
+        jg3Var.N(g02.c(0L, jg3Var.r), 0.0f, if1Var);
     }
 
-    public float b(rp1 r1) {
+    public float b(rp1 rp1Var) {
         return Float.NaN;
     }
 

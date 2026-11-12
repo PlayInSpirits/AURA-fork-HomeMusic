@@ -19,20 +19,20 @@ public final class rk4 extends d5 implements ou2 {
 
     @Override // defpackage.d5
     public final void a() {
-        if (this.t == false) goto L5;
-        return;
-    L5:
+        if (this.t) {
+            return;
+        }
         this.t = true;
         this.r.H(this);
     }
 
     @Override // defpackage.d5
     public final View b() {
-        WeakReference r0 = this.s;
-        if (r0 != null) goto L5;
+        WeakReference weakReference = this.s;
+        if (weakReference != null) {
+            return (View) weakReference.get();
+        }
         return null;
-    L5:
-        return (View) r0.get();
     }
 
     @Override // defpackage.d5
@@ -66,55 +66,48 @@ public final class rk4 extends d5 implements ou2 {
     }
 
     @Override // defpackage.d5
-    public final void i(View r2) {
-        this.q.setCustomView(r2);
-        if (r2 == null) goto L5;
-        WeakReference r0 = new WeakReference(r2);
-    L6:
-        this.s = r0;
-        return;
-    L5:
-        r0 = null;
-        goto L6
+    public final void i(View view) {
+        this.q.setCustomView(view);
+        this.s = view != null ? new WeakReference(view) : null;
     }
 
     @Override // defpackage.d5
-    public final void j(int r2) {
-        k(this.p.getString(r2));
+    public final void j(int i) {
+        k(this.p.getString(i));
     }
 
     @Override // defpackage.d5
-    public final void k(CharSequence r1) {
-        this.q.setSubtitle(r1);
+    public final void k(CharSequence charSequence) {
+        this.q.setSubtitle(charSequence);
     }
 
     @Override // defpackage.d5
-    public final void l(int r2) {
-        n(this.p.getString(r2));
+    public final void l(int i) {
+        n(this.p.getString(i));
     }
 
     @Override // defpackage.ou2
-    public final boolean m(qu2 r1, MenuItem r2) {
-        return ((bq4) this.r.n).q(this, r2);
+    public final boolean m(qu2 qu2Var, MenuItem menuItem) {
+        return ((bq4) this.r.n).q(this, menuItem);
     }
 
     @Override // defpackage.d5
-    public final void n(CharSequence r1) {
-        this.q.setTitle(r1);
+    public final void n(CharSequence charSequence) {
+        this.q.setTitle(charSequence);
     }
 
     @Override // defpackage.d5
-    public final void o(boolean r1) {
-        this.o = r1;
-        this.q.setTitleOptional(r1);
+    public final void o(boolean z) {
+        this.o = z;
+        this.q.setTitleOptional(z);
     }
 
     @Override // defpackage.ou2
-    public final void y(qu2 r1) {
+    public final void y(qu2 qu2Var) {
         g();
-        y4 r0 = this.q.q;
-        if (r0 == null) goto L6;
-        r0.n();
-        return;
+        y4 y4Var = this.q.q;
+        if (y4Var != null) {
+            y4Var.n();
+        }
     }
 }

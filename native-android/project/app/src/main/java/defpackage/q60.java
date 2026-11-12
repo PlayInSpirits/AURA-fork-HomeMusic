@@ -10,68 +10,51 @@ public final class q60 implements Iterator {
     public int p;
     public final /* synthetic */ r60 q;
 
-    public q60(r60 r2) {
-        this.q = r2;
-        this.n = r2.q;
-        if (r2.isEmpty() == false) goto L5;
-        int r3 = -1;
-    L6:
-        this.o = r3;
+    public q60(r60 r60Var) {
+        this.q = r60Var;
+        this.n = r60Var.q;
+        this.o = r60Var.isEmpty() ? -1 : 0;
         this.p = -1;
-        return;
-    L5:
-        r3 = 0;
-        goto L6
     }
 
     @Override // java.util.Iterator
     public final boolean hasNext() {
-        if (this.o < 0) goto L6;
-        return true;
-    L6:
-        return false;
+        return this.o >= 0;
     }
 
     @Override // java.util.Iterator
     public final Object next() {
-        r60 r0 = this.q;
-        if (r0.q == this.n) goto L5;
-        kf2.c();
-        return null;
-    L5:
-        if (hasNext() == false) goto L12;
-        int r1 = this.o;
-        this.p = r1;
-        Object r2 = r0.e()[r1];
-        int r3 = this.o + 1;
-        if (r3 < r0.r) goto L10;
-        r3 = -1;
-    L10:
-        this.o = r3;
-        return r2;
-    L12:
-        tb4.k();
-        return null;
+        r60 r60Var = this.q;
+        if (r60Var.q != this.n) {
+            kf2.c();
+            return null;
+        }
+        if (!hasNext()) {
+            tb4.k();
+            return null;
+        }
+        int i = this.o;
+        this.p = i;
+        Object obj = r60Var.e()[i];
+        int i2 = this.o + 1;
+        if (i2 >= r60Var.r) {
+            i2 = -1;
+        }
+        this.o = i2;
+        return obj;
     }
 
     @Override // java.util.Iterator
     public final void remove() {
-        r60 r0 = this.q;
-        if (r0.q == this.n) goto L5;
-        kf2.c();
-        return;
-    L5:
-        if (this.p < 0) goto L7;
-        boolean r1 = true;
-    L8:
-        rr2.v("no calls to next() since the last call to remove()", r1);
+        r60 r60Var = this.q;
+        if (r60Var.q != this.n) {
+            kf2.c();
+            return;
+        }
+        rr2.v("no calls to next() since the last call to remove()", this.p >= 0);
         this.n += 32;
-        r0.remove(r0.e()[this.p]);
+        r60Var.remove(r60Var.e()[this.p]);
         this.o--;
         this.p = -1;
-        return;
-    L7:
-        r1 = false;
-        goto L8
     }
 }

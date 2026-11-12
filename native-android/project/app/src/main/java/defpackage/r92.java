@@ -1,31 +1,33 @@
 package defpackage;
 
+/* JADX WARN: Failed to restore enum class, 'enum' modifier and super class removed */
+/* JADX WARN: Unknown enum class pattern. Please report as an issue! */
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
-public final enum r92 extends Enum {
-    public static final r92 n = null;
-    public static final r92 o = null;
-    public static final r92 p = null;
-    public static final r92 q = null;
-    public static final r92 r = null;
-    public static final /* synthetic */ r92[] s = null;
+public final class r92 {
+    public static final r92 n;
+    public static final r92 o;
+    public static final r92 p;
+    public static final r92 q;
+    public static final r92 r;
+    public static final /* synthetic */ r92[] s;
 
     static {
-        r92 r0 = new r92("DESTROYED", 0);
-        n = r0;
-        r92 r1 = new r92("INITIALIZED", 1);
-        o = r1;
-        r92 r2 = new r92("CREATED", 2);
-        p = r2;
-        r92 r3 = new r92("STARTED", 3);
-        q = r3;
-        r92 r4 = new r92("RESUMED", 4);
-        r = r4;
-        s = new r92[]{r0, r1, r2, r3, r4};
+        r92 r92Var = new r92("DESTROYED", 0);
+        n = r92Var;
+        r92 r92Var2 = new r92("INITIALIZED", 1);
+        o = r92Var2;
+        r92 r92Var3 = new r92("CREATED", 2);
+        p = r92Var3;
+        r92 r92Var4 = new r92("STARTED", 3);
+        q = r92Var4;
+        r92 r92Var5 = new r92("RESUMED", 4);
+        r = r92Var5;
+        s = new r92[]{r92Var, r92Var2, r92Var3, r92Var4, r92Var5};
     }
 
-    public static r92 valueOf(String r1) {
-        return (r92) Enum.valueOf(r92.class, r1);
+    public static r92 valueOf(String str) {
+        return (r92) Enum.valueOf(r92.class, str);
     }
 
     public static r92[] values() {

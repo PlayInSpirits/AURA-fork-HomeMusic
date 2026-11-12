@@ -10,42 +10,29 @@ public final class rp0 extends r23 {
     public String x;
 
     @Override // defpackage.r23
-    public final boolean equals(Object r4) {
-        if (this != r4) goto L6;
-        return true;
-    L6:
-        if (r4 != null) goto L8;
-    L15:
-        return false;
-    L8:
-        if ((r4 instanceof rp0) == false) goto L15;
-        if (super.equals(r4) == false) goto L15;
-        if (h12.c(this.x, ((rp0) r4).x) == false) goto L15;
-        return true;
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        return obj != null && (obj instanceof rp0) && super.equals(obj) && h12.c(this.x, ((rp0) obj).x);
     }
 
     @Override // defpackage.r23
-    public final void f(Context r2, AttributeSet r3) {
-        super.f(r2, r3);
-        TypedArray r4 = r2.getResources().obtainAttributes(r3, at3.a);
-        r4.getClass();
-        String r5 = r4.getString(0);
-        if (r5 == null) goto L5;
-        this.x = r5;
-    L5:
-        r4.recycle();
+    public final void f(Context context, AttributeSet attributeSet) {
+        super.f(context, attributeSet);
+        TypedArray typedArrayObtainAttributes = context.getResources().obtainAttributes(attributeSet, at3.a);
+        typedArrayObtainAttributes.getClass();
+        String string = typedArrayObtainAttributes.getString(0);
+        if (string != null) {
+            this.x = string;
+        }
+        typedArrayObtainAttributes.recycle();
     }
 
     @Override // defpackage.r23
     public final int hashCode() {
-        int r0 = super.hashCode() * 31;
-        String r1 = this.x;
-        if (r1 == null) goto L5;
-        int r2 = r1.hashCode();
-    L7:
-        return r0 + r2;
-    L5:
-        r2 = 0;
-        goto L7
+        int iHashCode = super.hashCode() * 31;
+        String str = this.x;
+        return iHashCode + (str != null ? str.hashCode() : 0);
     }
 }

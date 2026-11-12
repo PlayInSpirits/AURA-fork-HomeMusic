@@ -22,1290 +22,1061 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Function;
+import java.util.function.Predicate;
 import kotlinx.coroutines.internal.DiagnosticCoroutineContextException;
 import kotlinx.coroutines.internal.ExceptionSuccessfullyProcessed;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public abstract class q05 {
-    public static final kr a = null;
-    public static final f01 b = null;
-    public static final o54 c = null;
+    public static final kr a = new kr();
+    public static final f01 b = new f01(1, "NO_OWNER");
+    public static final o54 c = new o54(17);
 
-    static {
-        a = new kr();
-        b = new f01(1, "NO_OWNER");
-        c = new o54(17);
+    public static final BlendMode A(int i) {
+        if (i == 0) {
+            return BlendMode.CLEAR;
+        }
+        if (i == 1) {
+            return BlendMode.SRC;
+        }
+        if (i == 2) {
+            return BlendMode.DST;
+        }
+        if (i == 3) {
+            return BlendMode.SRC_OVER;
+        }
+        if (i == 4) {
+            return BlendMode.DST_OVER;
+        }
+        if (i == 5) {
+            return BlendMode.SRC_IN;
+        }
+        if (i == 6) {
+            return BlendMode.DST_IN;
+        }
+        if (i == 7) {
+            return BlendMode.SRC_OUT;
+        }
+        if (i == 8) {
+            return BlendMode.DST_OUT;
+        }
+        if (i == 9) {
+            return BlendMode.SRC_ATOP;
+        }
+        if (i == 10) {
+            return BlendMode.DST_ATOP;
+        }
+        if (i == 11) {
+            return BlendMode.XOR;
+        }
+        if (i == 12) {
+            return BlendMode.PLUS;
+        }
+        if (i == 13) {
+            return BlendMode.MODULATE;
+        }
+        if (i == 14) {
+            return BlendMode.SCREEN;
+        }
+        if (i == 15) {
+            return BlendMode.OVERLAY;
+        }
+        if (i == 16) {
+            return BlendMode.DARKEN;
+        }
+        if (i == 17) {
+            return BlendMode.LIGHTEN;
+        }
+        if (i == 18) {
+            return BlendMode.COLOR_DODGE;
+        }
+        if (i == 19) {
+            return BlendMode.COLOR_BURN;
+        }
+        if (i == 20) {
+            return BlendMode.HARD_LIGHT;
+        }
+        if (i == 21) {
+            return BlendMode.SOFT_LIGHT;
+        }
+        if (i == 22) {
+            return BlendMode.DIFFERENCE;
+        }
+        if (i == 23) {
+            return BlendMode.EXCLUSION;
+        }
+        if (i == 24) {
+            return BlendMode.MULTIPLY;
+        }
+        if (i == 25) {
+            return BlendMode.HUE;
+        }
+        if (i == 26) {
+            return BlendMode.SATURATION;
+        }
+        if (i == 27) {
+            return BlendMode.COLOR;
+        }
+        return i == 28 ? BlendMode.LUMINOSITY : BlendMode.SRC_OVER;
     }
 
-    public static final BlendMode A(int r1) {
-        if (r1 != 0) goto L6;
-        return k3.a();
-    L6:
-        if (r1 != 1) goto L10;
-        return k3.r();
-    L10:
-        if (r1 != 2) goto L14;
-        return k3.l();
-    L14:
-        if (r1 != 3) goto L18;
-        return k3.k();
-    L18:
-        if (r1 != 4) goto L22;
-        return k3.m();
-    L22:
-        if (r1 != 5) goto L26;
-        return k3.n();
-    L26:
-        if (r1 != 6) goto L30;
-        return k3.o();
-    L30:
-        if (r1 != 7) goto L34;
-        return k3.p();
-    L34:
-        if (r1 != 8) goto L38;
-        return k3.q();
-    L38:
-        if (r1 != 9) goto L42;
-        return k3.t();
-    L42:
-        if (r1 != 10) goto L46;
-        return k3.i();
-    L46:
-        if (r1 != 11) goto L50;
-        return k3.u();
-    L50:
-        if (r1 != 12) goto L54;
-        return k3.v();
-    L54:
-        if (r1 != 13) goto L58;
-        return z9.d();
-    L58:
-        if (r1 != 14) goto L62;
-        return z9.z();
-    L62:
-        if (r1 != 15) goto L66;
-        return z9.A();
-    L66:
-        if (r1 != 16) goto L70;
-        return z9.B();
-    L70:
-        if (r1 != 17) goto L74;
-        return z9.C();
-    L74:
-        if (r1 != 18) goto L78;
-        return z9.D();
-    L78:
-        if (r1 != 19) goto L82;
-        return k3.f();
-    L82:
-        if (r1 != 20) goto L86;
-        return k3.w();
-    L86:
-        if (r1 != 21) goto L90;
-        return k3.y();
-    L90:
-        if (r1 != 22) goto L94;
-        return k3.z();
-    L94:
-        if (r1 != 23) goto L98;
-        return k3.A();
-    L98:
-        if (r1 != 24) goto L102;
-        return k3.B();
-    L102:
-        if (r1 != 25) goto L106;
-        return k3.C();
-    L106:
-        if (r1 != 26) goto L110;
-        return k3.D();
-    L110:
-        if (r1 != 27) goto L114;
-        return k3.h();
-    L114:
-        if (r1 != 28) goto L118;
-        return k3.j();
-    L118:
-        return k3.k();
+    public static final PorterDuff.Mode B(int i) {
+        if (i == 0) {
+            return PorterDuff.Mode.CLEAR;
+        }
+        if (i == 1) {
+            return PorterDuff.Mode.SRC;
+        }
+        if (i == 2) {
+            return PorterDuff.Mode.DST;
+        }
+        if (i == 3) {
+            return PorterDuff.Mode.SRC_OVER;
+        }
+        if (i == 4) {
+            return PorterDuff.Mode.DST_OVER;
+        }
+        if (i == 5) {
+            return PorterDuff.Mode.SRC_IN;
+        }
+        if (i == 6) {
+            return PorterDuff.Mode.DST_IN;
+        }
+        if (i == 7) {
+            return PorterDuff.Mode.SRC_OUT;
+        }
+        if (i == 8) {
+            return PorterDuff.Mode.DST_OUT;
+        }
+        if (i == 9) {
+            return PorterDuff.Mode.SRC_ATOP;
+        }
+        if (i == 10) {
+            return PorterDuff.Mode.DST_ATOP;
+        }
+        if (i == 11) {
+            return PorterDuff.Mode.XOR;
+        }
+        if (i == 12) {
+            return PorterDuff.Mode.ADD;
+        }
+        if (i == 14) {
+            return PorterDuff.Mode.SCREEN;
+        }
+        if (i == 15) {
+            return PorterDuff.Mode.OVERLAY;
+        }
+        if (i == 16) {
+            return PorterDuff.Mode.DARKEN;
+        }
+        if (i == 17) {
+            return PorterDuff.Mode.LIGHTEN;
+        }
+        return i == 13 ? PorterDuff.Mode.MULTIPLY : PorterDuff.Mode.SRC_OVER;
     }
 
-    public static final PorterDuff.Mode B(int r1) {
-        if (r1 != 0) goto L6;
-        return PorterDuff.Mode.CLEAR;
-    L6:
-        if (r1 != 1) goto L10;
-        return PorterDuff.Mode.SRC;
-    L10:
-        if (r1 != 2) goto L14;
-        return PorterDuff.Mode.DST;
-    L14:
-        if (r1 != 3) goto L18;
-        return PorterDuff.Mode.SRC_OVER;
-    L18:
-        if (r1 != 4) goto L22;
-        return PorterDuff.Mode.DST_OVER;
-    L22:
-        if (r1 != 5) goto L26;
-        return PorterDuff.Mode.SRC_IN;
-    L26:
-        if (r1 != 6) goto L30;
-        return PorterDuff.Mode.DST_IN;
-    L30:
-        if (r1 != 7) goto L34;
-        return PorterDuff.Mode.SRC_OUT;
-    L34:
-        if (r1 != 8) goto L38;
-        return PorterDuff.Mode.DST_OUT;
-    L38:
-        if (r1 != 9) goto L42;
-        return PorterDuff.Mode.SRC_ATOP;
-    L42:
-        if (r1 != 10) goto L46;
-        return PorterDuff.Mode.DST_ATOP;
-    L46:
-        if (r1 != 11) goto L50;
-        return PorterDuff.Mode.XOR;
-    L50:
-        if (r1 != 12) goto L54;
-        return PorterDuff.Mode.ADD;
-    L54:
-        if (r1 != 14) goto L58;
-        return PorterDuff.Mode.SCREEN;
-    L58:
-        if (r1 != 15) goto L62;
-        return PorterDuff.Mode.OVERLAY;
-    L62:
-        if (r1 != 16) goto L66;
-        return PorterDuff.Mode.DARKEN;
-    L66:
-        if (r1 != 17) goto L70;
-        return PorterDuff.Mode.LIGHTEN;
-    L70:
-        if (r1 != 13) goto L74;
-        return PorterDuff.Mode.MULTIPLY;
-    L74:
-        return PorterDuff.Mode.SRC_OVER;
+    public static void C(int i, jc0 jc0Var, nr3 nr3Var) {
+        boolean z;
+        hb0 hb0Var;
+        hb0 hb0Var2;
+        hb0 hb0Var3;
+        hb0 hb0Var4;
+        if (jc0Var.n) {
+            return;
+        }
+        if (!(jc0Var instanceof kc0) && jc0Var.x() && g(jc0Var)) {
+            kc0.R(jc0Var, nr3Var, new kr());
+        }
+        hb0 hb0VarG = jc0Var.g(3);
+        hb0 hb0VarG2 = jc0Var.g(5);
+        int iC = hb0VarG.c();
+        int iC2 = hb0VarG2.c();
+        HashSet<hb0> hashSet = hb0VarG.a;
+        if (hashSet != null && hb0VarG.c) {
+            for (hb0 hb0Var5 : hashSet) {
+                jc0 jc0Var2 = hb0Var5.d;
+                int i2 = i + 1;
+                boolean zG = g(jc0Var2);
+                hb0 hb0Var6 = jc0Var2.I;
+                hb0 hb0Var7 = jc0Var2.K;
+                if (jc0Var2.x() && zG) {
+                    kc0.R(jc0Var2, nr3Var, new kr());
+                }
+                boolean z2 = (hb0Var5 == hb0Var6 && (hb0Var4 = hb0Var7.f) != null && hb0Var4.c) || (hb0Var5 == hb0Var7 && (hb0Var3 = hb0Var6.f) != null && hb0Var3.c);
+                int i3 = jc0Var2.o0[1];
+                if (i3 != 3 || zG) {
+                    if (!jc0Var2.x()) {
+                        if (hb0Var5 == hb0Var6 && hb0Var7.f == null) {
+                            int iD = hb0Var6.d() + iC;
+                            jc0Var2.G(iD, jc0Var2.i() + iD);
+                            C(i2, jc0Var2, nr3Var);
+                        } else if (hb0Var5 == hb0Var7 && hb0Var6.f == null) {
+                            int iD2 = iC - hb0Var7.d();
+                            jc0Var2.G(iD2 - jc0Var2.i(), iD2);
+                            C(i2, jc0Var2, nr3Var);
+                        } else if (z2 && !jc0Var2.w()) {
+                            x(i2, jc0Var2, nr3Var);
+                        }
+                    }
+                } else if (i3 == 3 && jc0Var2.y >= 0 && jc0Var2.x >= 0 && (jc0Var2.f0 == 8 || (jc0Var2.s == 0 && jc0Var2.V == 0.0f))) {
+                    if (!jc0Var2.w() && z2 && !jc0Var2.w()) {
+                        y(i2, jc0Var, nr3Var, jc0Var2);
+                    }
+                }
+            }
+        }
+        boolean z3 = true;
+        z3 = true;
+        z3 = true;
+        if (jc0Var instanceof pk1) {
+            return;
+        }
+        HashSet<hb0> hashSet2 = hb0VarG2.a;
+        if (hashSet2 != null && hb0VarG2.c) {
+            for (hb0 hb0Var8 : hashSet2) {
+                jc0 jc0Var3 = hb0Var8.d;
+                int i4 = i + 1;
+                boolean zG2 = g(jc0Var3);
+                hb0 hb0Var9 = jc0Var3.I;
+                hb0 hb0Var10 = jc0Var3.K;
+                if (jc0Var3.x() && zG2) {
+                    kc0.R(jc0Var3, nr3Var, new kr());
+                }
+                boolean z4 = (hb0Var8 == hb0Var9 && (hb0Var2 = hb0Var10.f) != null && hb0Var2.c) || (hb0Var8 == hb0Var10 && (hb0Var = hb0Var9.f) != null && hb0Var.c);
+                int i5 = jc0Var3.o0[1];
+                if (i5 != 3 || zG2) {
+                    if (!jc0Var3.x()) {
+                        if (hb0Var8 == hb0Var9 && hb0Var10.f == null) {
+                            int iD3 = hb0Var9.d() + iC2;
+                            jc0Var3.G(iD3, jc0Var3.i() + iD3);
+                            C(i4, jc0Var3, nr3Var);
+                        } else if (hb0Var8 == hb0Var10 && hb0Var9.f == null) {
+                            int iD4 = iC2 - hb0Var10.d();
+                            jc0Var3.G(iD4 - jc0Var3.i(), iD4);
+                            C(i4, jc0Var3, nr3Var);
+                        } else if (z4 && !jc0Var3.w()) {
+                            x(i4, jc0Var3, nr3Var);
+                        }
+                    }
+                } else if (i5 == 3 && jc0Var3.y >= 0 && jc0Var3.x >= 0 && (jc0Var3.f0 == 8 || (jc0Var3.s == 0 && jc0Var3.V == 0.0f))) {
+                    if (!jc0Var3.w() && z4 && !jc0Var3.w()) {
+                        y(i4, jc0Var, nr3Var, jc0Var3);
+                    }
+                }
+            }
+        }
+        hb0 hb0VarG3 = jc0Var.g(6);
+        if (hb0VarG3.a != null && hb0VarG3.c) {
+            int iC3 = hb0VarG3.c();
+            for (hb0 hb0Var11 : hb0VarG3.a) {
+                jc0 jc0Var4 = hb0Var11.d;
+                int i6 = i + 1;
+                boolean zG3 = g(jc0Var4);
+                hb0 hb0Var12 = jc0Var4.L;
+                if (jc0Var4.x() && zG3) {
+                    kc0.R(jc0Var4, nr3Var, new kr());
+                }
+                if (jc0Var4.o0[z3 ? 1 : 0] != 3 || zG3) {
+                    if (!jc0Var4.x()) {
+                        if (hb0Var11 == hb0Var12) {
+                            int iD5 = hb0Var11.d() + iC3;
+                            if (jc0Var4.E) {
+                                int i7 = iD5 - jc0Var4.Z;
+                                int i8 = jc0Var4.U + i7;
+                                jc0Var4.Y = i7;
+                                jc0Var4.I.i(i7);
+                                jc0Var4.K.i(i8);
+                                hb0Var12.i(iD5);
+                                z = z3 ? 1 : 0;
+                                jc0Var4.l = z;
+                            } else {
+                                z = z3 ? 1 : 0;
+                            }
+                            C(i6, jc0Var4, nr3Var);
+                        }
+                        z3 = z;
+                    }
+                }
+                z = z3 ? 1 : 0;
+                z3 = z;
+            }
+        }
+        jc0Var.n = z3;
     }
 
-    public static void C(int r19, jc0 r20, nr3 r21) {
-        if (r20.n == false) goto L6;
-        return;
-    L6:
-        if ((r20 instanceof kc0) == false) goto L8;
-    L12:
-        hb0 r3 = r20.g(3);
-        hb0 r4 = r20.g(5);
-        int r5 = r3.c();
-        int r6 = r4.c();
-        HashSet r7 = r3.a;
-        if (r7 != null) goto L15;
-    L72:
-        boolean r18 = true;
-        r18 = true;
-        r18 = true;
-        if ((r20 instanceof pk1) == false) goto L75;
-        return;
-    L75:
-        HashSet r8 = r4.a;
-        if (r8 != null) goto L78;
-    L134:
-        hb0 r9 = r20.g(6);
-        if (r9.a != null) goto L137;
-    L160:
-        r20.n = r18;
-        return;
-    L137:
-        if (r9.c == false) goto L160;
-        int r10 = r9.c();
-        Iterator r11 = r9.a.iterator();
-    L140:
-        if (r11.hasNext() == false) goto L160;
-        hb0 r12 = (hb0) r11.next();
-        jc0 r13 = r12.d;
-        int r14 = r19 + 1;
-        boolean r15 = g(r13);
-        hb0 r16 = r13.L;
-        if (r13.x() == false) goto L146;
-        if (r15 == false) goto L146;
-        kc0.R(r13, r21, new kr());
-    L146:
-        if (r13.o0[r18 ? 1 : 0] != 3) goto L151;
-        if (r15 == true) goto L151;
-    L149:
-        boolean r17 = r18 ? 1 : 0;
-    L159:
-        r18 = r17;
-    L151:
-        if (r13.x() == true) goto L140;
-        if (r12 != r16) goto L149;
-        int r22 = r12.d() + r10;
-        if (r13.E == true) goto L157;
-        r17 = r18 ? 1 : 0;
-    L158:
-        C(r14, r13, r21);
-        goto L159
-    L157:
-        int r23 = r22 - r13.Z;
-        int r24 = r13.U + r23;
-        r13.Y = r23;
-        r13.I.i(r23);
-        r13.K.i(r24);
-        r16.i(r22);
-        r17 = r18 ? 1 : 0;
-        r13.l = r17;
-        goto L158
-    L78:
-        if (r4.c == false) goto L134;
-        Iterator r25 = r8.iterator();
-    L81:
-        if (r25.hasNext() == false) goto L134;
-        hb0 r26 = (hb0) r25.next();
-        jc0 r27 = r26.d;
-        int r28 = r19 + 1;
-        boolean r29 = g(r27);
-        hb0 r110 = r27.I;
-        hb0 r111 = r27.K;
-        if (r27.x() == false) goto L86;
-        if (r29 == false) goto L86;
-        kc0.R(r27, r21, new kr());
-    L86:
-        if (r26 != r110) goto L91;
-        hb0 r112 = r111.f;
-        if (r112 == null) goto L91;
-        if (r112.c == false) goto L91;
-    L96:
-        boolean r113 = true;
-    L98:
-        int r114 = r27.o0[1];
-        if (r114 != 3) goto L120;
-        if (r29 == true) goto L120;
-        if (r114 != 3) goto L81;
-        if (r27.y < 0) goto L81;
-        if (r27.x < 0) goto L81;
-        if (r27.f0 == 8) goto L114;
-        if (r27.s != 0) goto L81;
-        if (r27.V != 0.0f) goto L81;
-    L114:
-        if (r27.w() == true) goto L81;
-        if (r113 == false) goto L81;
-        if (r27.w() == true) goto L81;
-        y(r28, r20, r21, r27);
-    L120:
-        if (r27.x() == true) goto L81;
-        if (r26 != r110) goto L126;
-        if (r111.f != null) goto L126;
-        int r30 = r110.d() + r6;
-        r27.G(r30, r27.i() + r30);
-        C(r28, r27, r21);
-    L126:
-        if (r26 != r111) goto L130;
-        if (r110.f != null) goto L130;
-        int r31 = r6 - r111.d();
-        r27.G(r31 - r27.i(), r31);
-        C(r28, r27, r21);
-    L130:
-        if (r113 == false) goto L81;
-        if (r27.w() == true) goto L81;
-        x(r28, r27, r21);
-    L91:
-        if (r26 != r111) goto L97;
-        hb0 r115 = r110.f;
-        if (r115 == null) goto L97;
-        if (r115.c == true) goto L96;
-    L97:
-        r113 = false;
-        goto L98
-    L15:
-        if (r3.c == false) goto L72;
-        Iterator r32 = r7.iterator();
-    L18:
-        if (r32.hasNext() == false) goto L72;
-        hb0 r33 = (hb0) r32.next();
-        jc0 r116 = r33.d;
-        int r117 = r19 + 1;
-        boolean r118 = g(r116);
-        hb0 r119 = r116.I;
-        hb0 r34 = r116.K;
-        if (r116.x() == false) goto L23;
-        if (r118 == false) goto L23;
-        kc0.R(r116, r21, new kr());
-    L23:
-        if (r33 != r119) goto L28;
-        hb0 r120 = r34.f;
-        if (r120 == null) goto L28;
-        if (r120.c == false) goto L28;
-    L33:
-        boolean r121 = true;
-    L36:
-        int r122 = r116.o0[1];
-        if (r122 != 3) goto L58;
-        if (r118 == true) goto L58;
-        if (r122 != 3) goto L18;
-        if (r116.y < 0) goto L18;
-        if (r116.x < 0) goto L18;
-        if (r116.f0 == 8) goto L52;
-        if (r116.s != 0) goto L18;
-        if (r116.V != 0.0f) goto L18;
-    L52:
-        if (r116.w() == true) goto L18;
-        if (r121 == false) goto L18;
-        if (r116.w() == true) goto L18;
-        y(r117, r20, r21, r116);
-    L58:
-        if (r116.x() == true) goto L18;
-        if (r33 != r119) goto L64;
-        if (r34.f != null) goto L64;
-        int r35 = r119.d() + r5;
-        r116.G(r35, r116.i() + r35);
-        C(r117, r116, r21);
-    L64:
-        if (r33 != r34) goto L68;
-        if (r119.f != null) goto L68;
-        int r36 = r5 - r34.d();
-        r116.G(r36 - r116.i(), r36);
-        C(r117, r116, r21);
-    L68:
-        if (r121 == false) goto L18;
-        if (r116.w() == true) goto L18;
-        x(r117, r116, r21);
-    L28:
-        if (r33 != r34) goto L35;
-        hb0 r123 = r119.f;
-        if (r123 == null) goto L35;
-        if (r123.c == true) goto L33;
-    L35:
-        r121 = false;
-        goto L36
-    L8:
-        if (r20.x() == false) goto L12;
-        if (g(r20) == false) goto L12;
-        kc0.R(r20, r21, new kr());
-        goto L12
+    public static final void a(r70 r70Var, rg1 rg1Var, int i) {
+        rg1Var.S(-709502251);
+        byte b2 = 0;
+        int i2 = 6;
+        if (rg1Var.K(i & 1, (i & 3) != 2)) {
+            qr3 qr3Var = z44.a;
+            Object obj = (x44) rg1Var.i(qr3Var);
+            rg1Var.R(1967007413);
+            Object[] objArr = new Object[0];
+            Object objH = rg1Var.H();
+            Object obj2 = j80.a;
+            if (objH == obj2) {
+                objH = new rd2(i2);
+                rg1Var.b0(objH);
+            }
+            w44 w44Var = (w44) gh0.z(objArr, w44.r, (gf1) objH, rg1Var, 384);
+            w44Var.p = (x44) rg1Var.i(qr3Var);
+            rg1Var.o(false);
+            Object[] objArr2 = {obj};
+            xc5 xc5Var = new xc5(19, new d60(14, b2), new o(16, obj, w44Var));
+            boolean zG = rg1Var.g(obj) | rg1Var.g(w44Var);
+            Object objH2 = rg1Var.H();
+            if (zG || objH2 == obj2) {
+                objH2 = new fa(12, obj, w44Var);
+                rg1Var.b0(objH2);
+            }
+            Object obj3 = (z82) gh0.z(objArr2, xc5Var, (gf1) objH2, rg1Var, 0);
+            gi1.a(qr3Var.a(obj3), fh0.w(-412824043, new ib(5, r70Var, obj3), rg1Var), rg1Var, 56);
+        } else {
+            rg1Var.N();
+        }
+        lv3 lv3VarP = rg1Var.p();
+        if (lv3VarP != null) {
+            lv3VarP.d = new z(i, i2, r70Var);
+        }
     }
 
-    public static final void a(r70 r11, rg1 r12, int r13) {
-        r12.S(-709502251);
-        byte r2 = 0;
-        if ((r13 & 3) == 2) goto L5;
-        boolean r0 = true;
-    L6:
-        int r1 = 6;
-        if (r12.K(r13 & 1, r0) == false) goto L16;
-        qr3 r3 = z44.a;
-        Object r4 = (x44) r12.i(r3);
-        r12.R(1967007413);
-        Object[] r5 = new Object[0];
-        Object r6 = r12.H();
-        Object r7 = j80.a;
-        if (r6 != r7) goto L11;
-        r6 = new rd2(r1);
-        r12.b0(r6);
-    L11:
-        w44 r8 = (w44) gh0.z(r5, w44.r, (gf1) r6, r12, 384);
-        r8.p = (x44) r12.i(r3);
-        r12.o(false);
-        Object[] r9 = {r4};
-        xc5 r10 = new xc5(19, new d60(14, r2), new o(16, r4, r8));
-        boolean r14 = r12.g(r4) | r12.g(r8);
-        Object r15 = r12.H();
-        if (r14 == true) goto L14;
-        if (r15 == r7) goto L14;
-    L15:
-        Object r16 = (z82) gh0.z(r9, r10, (gf1) r15, r12, 0);
-        gi1.a(r3.a(r16), fh0.w(-412824043, new ib(5, r11, r16), r12), r12, 56);
-    L17:
-        lv3 r17 = r12.p();
-        if (r17 == null) goto L21;
-        r17.d = new z(r13, r1, r11);
-        return;
-    L21:
-        return;
-    L14:
-        r15 = new fa(12, r4, r8);
-        r12.b0(r15);
-        goto L15
-    L16:
-        r12.N();
-        goto L17
-    L5:
-        r0 = false;
-        goto L6
-    }
-
-    public static ac3 b(int r1) {
+    public static ac3 b(int i) {
         return new ac3(0.0f, 0.0f);
     }
 
-    public static void c(df r2, int r3) {
-        r2.getTheme().applyStyle(r3, true);
-        Window r4 = r2.getWindow();
-        if (r4 == null) goto L9;
-        View r5 = r4.peekDecorView();
-        if (r5 == null) goto L9;
-        Context r6 = r5.getContext();
-        if (r6 == null) goto L9;
-        Resources.Theme r7 = r6.getTheme();
-    L10:
-        if (r7 == null) goto L13;
-        r7.applyStyle(r3, true);
-        return;
-    L13:
-        return;
-    L9:
-        r7 = null;
-        goto L10
+    public static void c(df dfVar, int i) {
+        View viewPeekDecorView;
+        Context context;
+        dfVar.getTheme().applyStyle(i, true);
+        Window window = dfVar.getWindow();
+        Resources.Theme theme = (window == null || (viewPeekDecorView = window.peekDecorView()) == null || (context = viewPeekDecorView.getContext()) == null) ? null : context.getTheme();
+        if (theme != null) {
+            theme.applyStyle(i, true);
+        }
     }
 
-    public static boolean d(int r9, Rect r10, Rect r11, Rect r12) {
-        boolean r0 = e(r9, r10, r11);
-        if (e(r9, r10, r12) == true) goto L42;
-        if (r0 == false) goto L42;
-        if (r9 == 17) goto L23;
-        if (r9 == 33) goto L20;
-        if (r9 == 66) goto L17;
-        if (r9 == 130) goto L12;
-        kf2.n("direction must be one of {FOCUS_UP, FOCUS_DOWN, FOCUS_LEFT, FOCUS_RIGHT}.");
-        return false;
-    L12:
-        if (r10.bottom <= r12.top) goto L24;
-    L41:
-        return true;
-    L24:
-        if (r9 == 17) goto L41;
-        if (r9 == 66) goto L41;
-        int r13 = s(r9, r10, r11);
-        if (r9 == 17) goto L38;
-        if (r9 == 33) goto L37;
-        if (r9 == 66) goto L36;
-        if (r9 != 130) goto L34;
-        int r14 = r12.bottom;
-        int r15 = r10.bottom;
-    L40:
-        if (r13 >= Math.max(1, r14 - r15)) goto L42;
-    L34:
-        kf2.n("direction must be one of {FOCUS_UP, FOCUS_DOWN, FOCUS_LEFT, FOCUS_RIGHT}.");
-        return false;
-    L36:
-        r14 = r12.right;
-        r15 = r10.right;
-        goto L40
-    L37:
-        r14 = r10.top;
-        r15 = r12.top;
-        goto L40
-    L38:
-        r14 = r10.left;
-        r15 = r12.left;
-        goto L40
-    L17:
-        if (r10.right > r12.left) goto L41;
-    L20:
-        if (r10.top < r12.bottom) goto L41;
-    L23:
-        if (r10.left < r12.right) goto L41;
-    L42:
+    /* JADX WARN: Code duplicated, block: B:24:0x0041  */
+    /* JADX WARN: Code duplicated, block: B:25:0x0043 A[ADDED_TO_REGION] */
+    /* JADX WARN: Code duplicated, block: B:29:0x004c A[DONT_INVERT] */
+    /* JADX WARN: Code duplicated, block: B:30:0x004e A[DONT_INVERT] */
+    /* JADX WARN: Code duplicated, block: B:31:0x0050 A[DONT_INVERT] */
+    /* JADX WARN: Code duplicated, block: B:32:0x0052  */
+    /* JADX WARN: Code duplicated, block: B:34:0x0058  */
+    /* JADX WARN: Code duplicated, block: B:36:0x005c  */
+    /* JADX WARN: Code duplicated, block: B:37:0x0061  */
+    /* JADX WARN: Code duplicated, block: B:38:0x0066  */
+    public static boolean d(int i, Rect rect, Rect rect2, Rect rect3) {
+        int iS;
+        int i2;
+        int i3;
+        boolean zE = e(i, rect, rect2);
+        if (!e(i, rect, rect3) && zE) {
+            if (i != 17) {
+                if (i != 33) {
+                    if (i != 66) {
+                        if (i != 130) {
+                            kf2.n("direction must be one of {FOCUS_UP, FOCUS_DOWN, FOCUS_LEFT, FOCUS_RIGHT}.");
+                            return false;
+                        }
+                        if (rect.bottom <= rect3.top) {
+                            if (i != 17 && i != 66) {
+                                iS = s(i, rect, rect2);
+                                if (i != 17) {
+                                    i2 = rect.left;
+                                    i3 = rect3.left;
+                                } else if (i != 33) {
+                                    i2 = rect.top;
+                                    i3 = rect3.top;
+                                } else if (i != 66) {
+                                    i2 = rect3.right;
+                                    i3 = rect.right;
+                                } else {
+                                    if (i == 130) {
+                                        kf2.n("direction must be one of {FOCUS_UP, FOCUS_DOWN, FOCUS_LEFT, FOCUS_RIGHT}.");
+                                        return false;
+                                    }
+                                    i2 = rect3.bottom;
+                                    i3 = rect.bottom;
+                                }
+                                if (iS < Math.max(1, i2 - i3)) {
+                                }
+                            }
+                        }
+                    } else if (rect.right <= rect3.left) {
+                        if (i != 17) {
+                            iS = s(i, rect, rect2);
+                            if (i != 17) {
+                                i2 = rect.left;
+                                i3 = rect3.left;
+                            } else if (i != 33) {
+                                i2 = rect.top;
+                                i3 = rect3.top;
+                            } else if (i != 66) {
+                                i2 = rect3.right;
+                                i3 = rect.right;
+                            } else {
+                                if (i == 130) {
+                                    kf2.n("direction must be one of {FOCUS_UP, FOCUS_DOWN, FOCUS_LEFT, FOCUS_RIGHT}.");
+                                    return false;
+                                }
+                                i2 = rect3.bottom;
+                                i3 = rect.bottom;
+                            }
+                            if (iS < Math.max(1, i2 - i3)) {
+                            }
+                        }
+                    }
+                } else if (rect.top >= rect3.bottom) {
+                    if (i != 17) {
+                        iS = s(i, rect, rect2);
+                        if (i != 17) {
+                            i2 = rect.left;
+                            i3 = rect3.left;
+                        } else if (i != 33) {
+                            i2 = rect.top;
+                            i3 = rect3.top;
+                        } else if (i != 66) {
+                            i2 = rect3.right;
+                            i3 = rect.right;
+                        } else {
+                            if (i == 130) {
+                                kf2.n("direction must be one of {FOCUS_UP, FOCUS_DOWN, FOCUS_LEFT, FOCUS_RIGHT}.");
+                                return false;
+                            }
+                            i2 = rect3.bottom;
+                            i3 = rect.bottom;
+                        }
+                        if (iS < Math.max(1, i2 - i3)) {
+                        }
+                    }
+                }
+            } else if (rect.left >= rect3.right) {
+                if (i != 17) {
+                    iS = s(i, rect, rect2);
+                    if (i != 17) {
+                        i2 = rect.left;
+                        i3 = rect3.left;
+                    } else if (i != 33) {
+                        i2 = rect.top;
+                        i3 = rect3.top;
+                    } else if (i != 66) {
+                        i2 = rect3.right;
+                        i3 = rect.right;
+                    } else {
+                        if (i == 130) {
+                            kf2.n("direction must be one of {FOCUS_UP, FOCUS_DOWN, FOCUS_LEFT, FOCUS_RIGHT}.");
+                            return false;
+                        }
+                        i2 = rect3.bottom;
+                        i3 = rect.bottom;
+                    }
+                    if (iS < Math.max(1, i2 - i3)) {
+                    }
+                }
+            }
+            return true;
+        }
         return false;
     }
 
-    public static boolean e(int r2, Rect r3, Rect r4) {
-        if (r2 == 17) goto L19;
-        if (r2 == 33) goto L14;
-        if (r2 == 66) goto L19;
-        if (r2 == 130) goto L14;
-        kf2.n("direction must be one of {FOCUS_UP, FOCUS_DOWN, FOCUS_LEFT, FOCUS_RIGHT}.");
+    /* JADX WARN: Code duplicated, block: B:18:0x0025  */
+    public static boolean e(int i, Rect rect, Rect rect2) {
+        if (i != 17) {
+            if (i != 33) {
+                if (i != 66) {
+                    if (i != 130) {
+                        kf2.n("direction must be one of {FOCUS_UP, FOCUS_DOWN, FOCUS_LEFT, FOCUS_RIGHT}.");
+                        return false;
+                    }
+                } else if (rect2.bottom < rect.top) {
+                }
+            }
+            if (rect2.right >= rect.left && rect2.left <= rect.right) {
+                return true;
+            }
+        } else if (rect2.bottom < rect.top && rect2.top <= rect.bottom) {
+            return true;
+        }
         return false;
-    L14:
-        if (r4.right >= r3.left) goto L16;
-    L24:
-        return false;
-    L16:
-        if (r4.left > r3.right) goto L24;
-        return true;
-    L19:
-        if (r4.bottom < r3.top) goto L24;
-        if (r4.top > r3.bottom) goto L24;
-        return true;
     }
 
-    public static final int f(long[] r5, long r6) {
-        int r0 = r5.length - 1;
-        int r1 = 0;
-    L3:
-        if (r1 > r0) goto L11;
-        int r2 = (r1 + r0) >>> 1;
-        long r3 = r5[r2];
-        if (r6 > r3) goto L6;
-        if (r6 >= r3) goto L9;
-        r0 = r2 - 1;
-        goto L3
-    L9:
-        return r2;
-    L6:
-        r1 = r2 + 1;
-        goto L3
-    L11:
-        return -(r1 + 1);
+    public static final int f(long[] jArr, long j) {
+        int length = jArr.length - 1;
+        int i = 0;
+        while (i <= length) {
+            int i2 = (i + length) >>> 1;
+            long j2 = jArr[i2];
+            if (j > j2) {
+                i = i2 + 1;
+            } else {
+                if (j >= j2) {
+                    return i2;
+                }
+                length = i2 - 1;
+            }
+        }
+        return -(i + 1);
     }
 
-    public static boolean g(jc0 r8) {
-        int[] r0 = r8.o0;
-        int r2 = r0[0];
-        int r1 = r0[1];
-        jc0 r4 = r8.S;
-        if (r4 == null) goto L5;
-        kc0 r5 = (kc0) r4;
-    L6:
-        if (r5 == null) goto L8;
-        int r6 = r5.o0[0];
-    L8:
-        if (r5 == null) goto L11;
-        int r7 = r5.o0[1];
-    L11:
-        if (r2 != 1) goto L13;
-    L29:
-        boolean r3 = true;
-    L30:
-        if (r1 != 1) goto L32;
-    L48:
-        boolean r9 = true;
-    L50:
-        if (r8.V <= 0.0f) goto L54;
-        if (r3 == true) goto L56;
-        if (r9 == false) goto L54;
-    L56:
-        return true;
-    L54:
-        if (r3 == false) goto L57;
-        if (r9 == true) goto L56;
-    L57:
-        return false;
-    L32:
-        if (r8.z() == true) goto L48;
-        if (r1 == 2) goto L48;
-        if (r1 == 3) goto L36;
-    L41:
-        if (r1 == 3) goto L43;
-    L47:
-        r9 = false;
-        goto L50
-    L43:
-        if (r8.s != 1) goto L47;
-        if (r8.s(1, r8.i()) == false) goto L47;
-    L36:
-        if (r8.s != 0) goto L41;
-        if (r8.V != 0.0f) goto L41;
-        if (r8.r(1) == true) goto L48;
-    L13:
-        if (r8.y() == true) goto L29;
-        if (r2 == 2) goto L29;
-        if (r2 == 3) goto L17;
-    L22:
-        if (r2 == 3) goto L24;
-    L28:
-        r3 = false;
-        goto L30
-    L24:
-        if (r8.r != 1) goto L28;
-        if (r8.s(0, r8.o()) == false) goto L28;
-    L17:
-        if (r8.r != 0) goto L22;
-        if (r8.V != 0.0f) goto L22;
-        if (r8.r(0) == true) goto L29;
-    L5:
-        r5 = null;
-        goto L6
+    public static boolean g(jc0 jc0Var) {
+        int[] iArr = jc0Var.o0;
+        int i = iArr[0];
+        int i2 = iArr[1];
+        jc0 jc0Var2 = jc0Var.S;
+        kc0 kc0Var = jc0Var2 != null ? (kc0) jc0Var2 : null;
+        if (kc0Var != null) {
+            int i3 = kc0Var.o0[0];
+        }
+        if (kc0Var != null) {
+            int i4 = kc0Var.o0[1];
+        }
+        boolean z = i == 1 || jc0Var.y() || i == 2 || (i == 3 && jc0Var.r == 0 && jc0Var.V == 0.0f && jc0Var.r(0)) || (i == 3 && jc0Var.r == 1 && jc0Var.s(0, jc0Var.o()));
+        boolean z2 = i2 == 1 || jc0Var.z() || i2 == 2 || (i2 == 3 && jc0Var.s == 0 && jc0Var.V == 0.0f && jc0Var.r(1)) || (i2 == 3 && jc0Var.s == 1 && jc0Var.s(1, jc0Var.i()));
+        return (jc0Var.V > 0.0f && (z || z2)) || (z && z2);
     }
 
-    public static final void h(Closeable r0, Throwable r1) {
-        if (r0 == null) goto L13;
-        if (r1 != null) goto L11;
-        r0.close();
-        return;
-    L11:
-        r0.close();     // Catch: Throwable -> L8
-        return;
-    L8:
-        th = move-exception;
-        j51.d(r1, th);
-        return;
+    public static final void h(Closeable closeable, Throwable th) {
+        if (closeable != null) {
+            if (th == null) {
+                closeable.close();
+                return;
+            }
+            try {
+                closeable.close();
+            } catch (Throwable th2) {
+                j51.d(th, th2);
+            }
+        }
     }
 
-    public static boolean i(File r6) {
-        if (r6.isDirectory() == false) goto L16;
-        File[] r7 = r6.listFiles();
-        if (r7 != null) goto L7;
-        return false;
-    L7:
-        int r2 = r7.length;
-        int r3 = 0;
-        boolean r4 = true;
-    L8:
-        if (r3 >= r2) goto L15;
-        if (i(r7[r3]) == false) goto L13;
-        if (r4 == false) goto L13;
-        r4 = true;
-    L14:
-        r3 = r3 + 1;
-    L13:
-        r4 = false;
-        goto L14
-    L15:
-        return r4;
-    L16:
-        r6.delete();
-        return true;
+    public static boolean i(File file) {
+        if (!file.isDirectory()) {
+            file.delete();
+            return true;
+        }
+        File[] fileArrListFiles = file.listFiles();
+        if (fileArrListFiles == null) {
+            return false;
+        }
+        boolean z = true;
+        for (File file2 : fileArrListFiles) {
+            z = i(file2) && z;
+        }
+        return z;
     }
 
     /* JADX WARN: Type inference failed for: r1v0, types: [b35] */
-    public static b35 j(final Function r2) {
-        final ConcurrentHashMap r0 = new ConcurrentHashMap();     // Catch: NullPointerException -> L4
-        return new b35(r0, r2);
-    L4:
+    public static b35 j(final Function function) {
+        try {
+            final ConcurrentHashMap concurrentHashMap = new ConcurrentHashMap();
+            return new Predicate() { // from class: b35
+                @Override // java.util.function.Predicate
+                public final boolean test(Object obj) {
+                    return concurrentHashMap.putIfAbsent(function.apply(obj), Boolean.TRUE) == null;
+                }
+            };
+        } catch (NullPointerException unused) {
+            return null;
+        }
+    }
+
+    public static int k(boolean z) {
+        MediaCodecInfo.VideoCapabilities videoCapabilities;
+        List supportedPerformancePoints;
+        try {
+            sb1 sb1Var = new sb1();
+            sb1Var.m = lw2.m("video/avc");
+            tb1 tb1Var = new tb1(sb1Var);
+            String str = tb1Var.n;
+            if (str != null) {
+                List listE = jk2.e(z, false, str);
+                String strC = jk2.c(tb1Var);
+                Iterable iterableE = strC == null ? gy3.r : jk2.e(z, false, strC);
+                uw1 uw1VarJ = yw1.j();
+                uw1VarJ.d(listE);
+                uw1VarJ.d(iterableE);
+                gy3 gy3VarF = uw1VarJ.f();
+                for (int i = 0; i < gy3VarF.q; i++) {
+                    if (((dk2) gy3VarF.get(i)).d != null && (videoCapabilities = ((dk2) gy3VarF.get(i)).d.getVideoCapabilities()) != null && (supportedPerformancePoints = videoCapabilities.getSupportedPerformancePoints()) != null && !supportedPerformancePoints.isEmpty()) {
+                        ek2.m();
+                        MediaCodecInfo.VideoCapabilities.PerformancePoint performancePointG = ek2.g();
+                        for (int i2 = 0; i2 < supportedPerformancePoints.size(); i2++) {
+                            if (yj1.c(supportedPerformancePoints.get(i2)).covers(performancePointG)) {
+                                return 2;
+                            }
+                        }
+                        return 1;
+                    }
+                }
+            }
+        } catch (MediaCodecUtil$DecoderQueryException unused) {
+        }
+        return 0;
+    }
+
+    public static v23 l(kc1 kc1Var) {
+        Dialog dialog;
+        Window window;
+        kc1Var.getClass();
+        for (kc1 kc1Var2 = kc1Var; kc1Var2 != null; kc1Var2 = kc1Var2.I) {
+            if (kc1Var2 instanceof NavHostFragment) {
+                return ((NavHostFragment) kc1Var2).h0();
+            }
+            kc1 kc1Var3 = kc1Var2.q().y;
+            if (kc1Var3 instanceof NavHostFragment) {
+                return ((NavHostFragment) kc1Var3).h0();
+            }
+        }
+        View view = kc1Var.T;
+        if (view != null) {
+            return gb.x(view);
+        }
+        pp0 pp0Var = kc1Var instanceof pp0 ? (pp0) kc1Var : null;
+        View decorView = (pp0Var == null || (dialog = pp0Var.w0) == null || (window = dialog.getWindow()) == null) ? null : window.getDecorView();
+        if (decorView != null) {
+            return gb.x(decorView);
+        }
+        kf2.o(b11.l("Fragment ", kc1Var, " does not have a NavController set"));
         return null;
     }
 
-    public static int k(boolean r4) {
-        sb1 r1 = new sb1();     // Catch: MediaCodecUtil$DecoderQueryException -> L32
-        r1.m = lw2.m("video/avc");     // Catch: MediaCodecUtil$DecoderQueryException -> L32
-        tb1 r2 = new tb1(r1);     // Catch: MediaCodecUtil$DecoderQueryException -> L32
-        String r3 = r2.n;     // Catch: MediaCodecUtil$DecoderQueryException -> L32
-        if (r3 == null) goto L31;
-        List r5 = jk2.e(r4, false, r3);     // Catch: MediaCodecUtil$DecoderQueryException -> L32
-        String r6 = jk2.c(r2);     // Catch: MediaCodecUtil$DecoderQueryException -> L32
-        if (r6 != null) goto L8;
-        Iterable r7 = gy3.r;     // Catch: MediaCodecUtil$DecoderQueryException -> L32
-    L9:
-        uw1 r8 = yw1.j();     // Catch: MediaCodecUtil$DecoderQueryException -> L32
-        r8.d(r5);     // Catch: MediaCodecUtil$DecoderQueryException -> L32
-        r8.d(r7);     // Catch: MediaCodecUtil$DecoderQueryException -> L32
-        gy3 r9 = r8.f();     // Catch: MediaCodecUtil$DecoderQueryException -> L32
-        int r10 = 0;
-    L11:
-        if (r10 >= r9.q) goto L31;
-        if (((dk2) r9.get(r10)).d == null) goto L30;
-        MediaCodecInfo.VideoCapabilities r11 = ((dk2) r9.get(r10)).d.getVideoCapabilities();     // Catch: MediaCodecUtil$DecoderQueryException -> L32
-        if (r11 == null) goto L30;
-        List r12 = yj1.e(r11);     // Catch: MediaCodecUtil$DecoderQueryException -> L32
-        if (r12 == null) goto L30;
-        if (r12.isEmpty() == true) goto L30;
-        ek2.m();     // Catch: MediaCodecUtil$DecoderQueryException -> L32
-        MediaCodecInfo.VideoCapabilities.PerformancePoint r13 = ek2.g();     // Catch: MediaCodecUtil$DecoderQueryException -> L32
-        int r14 = 0;
-    L21:
-        if (r14 >= r12.size()) goto L28;
-        if (ek2.t(yj1.c(r12.get(r14)), r13) == true) goto L25;
-        r14 = r14 + 1;
-        goto L21
-    L25:
-        return 2;
-    L28:
-        return 1;
-    L30:
-        r10 = r10 + 1;
-        goto L11
-    L8:
-        r7 = jk2.e(r4, false, r6);     // Catch: MediaCodecUtil$DecoderQueryException -> L32
-    L31:
-        return 0;
+    public static final rc5 m(dd5 dd5Var) {
+        dd5Var.getClass();
+        return new rc5(dd5Var.t, dd5Var.a);
     }
 
-    public static v23 l(kc1 r3) {
-        r3.getClass();
-        kc1 r0 = r3;
-    L3:
-        if (r0 == null) goto L13;
-        if ((r0 instanceof NavHostFragment) == true) goto L7;
-        kc1 r1 = r0.q().y;
-        if ((r1 instanceof NavHostFragment) == true) goto L11;
-        r0 = r0.I;
-        goto L3
-    L11:
-        return ((NavHostFragment) r1).h0();
-    L7:
-        return ((NavHostFragment) r0).h0();
-    L13:
-        View r2 = r3.T;
-        if (r2 == null) goto L18;
-        return gb.x(r2);
-    L18:
-        if ((r3 instanceof pp0) == false) goto L20;
-        pp0 r4 = (pp0) r3;
-    L21:
-        if (r4 == null) goto L27;
-        Dialog r5 = r4.w0;
-        if (r5 == null) goto L27;
-        Window r6 = r5.getWindow();
-        if (r6 == null) goto L27;
-        View r7 = r6.getDecorView();
-    L28:
-        if (r7 != null) goto L30;
-        kf2.o(b11.l("Fragment ", r3, " does not have a NavController set"));
-        return null;
-    L30:
-        return gb.x(r7);
-    L27:
-        r7 = null;
-        goto L28
-    L20:
-        r4 = null;
-        goto L21
+    public static final int n(int i, int i2, int i3) {
+        if (i3 > 0) {
+            if (i < i2) {
+                int i4 = i2 % i3;
+                if (i4 < 0) {
+                    i4 += i3;
+                }
+                int i5 = i % i3;
+                if (i5 < 0) {
+                    i5 += i3;
+                }
+                int i6 = (i4 - i5) % i3;
+                if (i6 < 0) {
+                    i6 += i3;
+                }
+                return i2 - i6;
+            }
+        } else {
+            if (i3 >= 0) {
+                kf2.n("Step is zero.");
+                return 0;
+            }
+            if (i > i2) {
+                int i7 = -i3;
+                int i8 = i % i7;
+                if (i8 < 0) {
+                    i8 += i7;
+                }
+                int i9 = i2 % i7;
+                if (i9 < 0) {
+                    i9 += i7;
+                }
+                int i10 = (i8 - i9) % i7;
+                if (i10 < 0) {
+                    i10 += i7;
+                }
+                return i10 + i2;
+            }
+        }
+        return i2;
     }
 
-    public static final rc5 m(dd5 r2) {
-        r2.getClass();
-        String r1 = r2.a;
-        return new rc5(r2.t, r1);
+    public static final void o(ne0 ne0Var, Throwable th) {
+        Throwable runtimeException;
+        Iterator it = re0.a.iterator();
+        while (it.hasNext()) {
+            try {
+                ((qe0) it.next()).n(ne0Var, th);
+            } catch (ExceptionSuccessfullyProcessed unused) {
+                return;
+            } catch (Throwable th2) {
+                if (th == th2) {
+                    runtimeException = th;
+                } else {
+                    runtimeException = new RuntimeException("Exception while trying to handle coroutine exception", th2);
+                    j51.d(runtimeException, th);
+                }
+                Thread threadCurrentThread = Thread.currentThread();
+                threadCurrentThread.getUncaughtExceptionHandler().uncaughtException(threadCurrentThread, runtimeException);
+            }
+        }
+        try {
+            j51.d(th, new DiagnosticCoroutineContextException(ne0Var));
+        } catch (Throwable unused2) {
+        }
+        Thread threadCurrentThread2 = Thread.currentThread();
+        threadCurrentThread2.getUncaughtExceptionHandler().uncaughtException(threadCurrentThread2, th);
     }
 
-    public static final int n(int r1, int r2, int r3) {
-        if (r3 <= 0) goto L19;
-        if (r1 >= r2) goto L21;
-        int r0 = r2 % r3;
-        if (r0 >= 0) goto L9;
-        r0 = r0 + r3;
-    L9:
-        int r4 = r1 % r3;
-        if (r4 >= 0) goto L13;
-        r4 = r4 + r3;
-    L13:
-        int r5 = (r0 - r4) % r3;
-        if (r5 >= 0) goto L18;
-        r5 = r5 + r3;
-    L18:
-        return r2 - r5;
-    L21:
-        return r2;
-    L19:
-        if (r3 >= 0) goto L36;
-        if (r1 <= r2) goto L21;
-        int r6 = -r3;
-        int r7 = r1 % r6;
-        if (r7 >= 0) goto L26;
-        r7 = r7 + r6;
-    L26:
-        int r8 = r2 % r6;
-        if (r8 >= 0) goto L30;
-        r8 = r8 + r6;
-    L30:
-        int r9 = (r7 - r8) % r6;
-        if (r9 >= 0) goto L35;
-        r9 = r9 + r6;
-    L35:
-        return r9 + r2;
-    L36:
-        kf2.n("Step is zero.");
-        return 0;
+    public static void p(int i, jc0 jc0Var, nr3 nr3Var, boolean z) {
+        hb0 hb0Var;
+        hb0 hb0Var2;
+        boolean z2;
+        hb0 hb0Var3;
+        hb0 hb0Var4;
+        if (jc0Var.m) {
+            return;
+        }
+        if (!(jc0Var instanceof kc0) && jc0Var.x() && g(jc0Var)) {
+            kc0.R(jc0Var, nr3Var, new kr());
+        }
+        hb0 hb0VarG = jc0Var.g(2);
+        hb0 hb0VarG2 = jc0Var.g(4);
+        int iC = hb0VarG.c();
+        int iC2 = hb0VarG2.c();
+        HashSet<hb0> hashSet = hb0VarG.a;
+        if (hashSet != null && hb0VarG.c) {
+            for (hb0 hb0Var5 : hashSet) {
+                jc0 jc0Var2 = hb0Var5.d;
+                int i2 = i + 1;
+                boolean zG = g(jc0Var2);
+                hb0 hb0Var6 = jc0Var2.H;
+                hb0 hb0Var7 = jc0Var2.J;
+                if (jc0Var2.x() && zG) {
+                    z2 = true;
+                    kc0.R(jc0Var2, nr3Var, new kr());
+                } else {
+                    z2 = true;
+                }
+                boolean z3 = ((hb0Var5 == hb0Var6 && (hb0Var4 = hb0Var7.f) != null && hb0Var4.c) || (hb0Var5 == hb0Var7 && (hb0Var3 = hb0Var6.f) != null && hb0Var3.c)) ? z2 : false;
+                int i3 = jc0Var2.o0[0];
+                if (i3 != 3 || zG) {
+                    if (!jc0Var2.x()) {
+                        if (hb0Var5 == hb0Var6 && hb0Var7.f == null) {
+                            int iD = hb0Var6.d() + iC;
+                            jc0Var2.F(iD, jc0Var2.o() + iD);
+                            p(i2, jc0Var2, nr3Var, z);
+                        } else if (hb0Var5 == hb0Var7 && hb0Var6.f == null) {
+                            int iD2 = iC - hb0Var7.d();
+                            jc0Var2.F(iD2 - jc0Var2.o(), iD2);
+                            p(i2, jc0Var2, nr3Var, z);
+                        } else if (z3 && !jc0Var2.v()) {
+                            v(i2, jc0Var2, nr3Var, z);
+                        }
+                    }
+                } else if (i3 == 3 && jc0Var2.v >= 0 && jc0Var2.u >= 0 && (jc0Var2.f0 == 8 || (jc0Var2.r == 0 && jc0Var2.V == 0.0f))) {
+                    if (!jc0Var2.v() && z3 && !jc0Var2.v()) {
+                        w(i2, jc0Var, nr3Var, jc0Var2, z);
+                    }
+                }
+            }
+        }
+        if (jc0Var instanceof pk1) {
+            return;
+        }
+        HashSet<hb0> hashSet2 = hb0VarG2.a;
+        if (hashSet2 != null && hb0VarG2.c) {
+            for (hb0 hb0Var8 : hashSet2) {
+                jc0 jc0Var3 = hb0Var8.d;
+                int i4 = i + 1;
+                boolean zG2 = g(jc0Var3);
+                hb0 hb0Var9 = jc0Var3.H;
+                hb0 hb0Var10 = jc0Var3.J;
+                if (jc0Var3.x() && zG2) {
+                    kc0.R(jc0Var3, nr3Var, new kr());
+                }
+                boolean z4 = (hb0Var8 == hb0Var9 && (hb0Var2 = hb0Var10.f) != null && hb0Var2.c) || (hb0Var8 == hb0Var10 && (hb0Var = hb0Var9.f) != null && hb0Var.c);
+                int i5 = jc0Var3.o0[0];
+                if (i5 != 3 || zG2) {
+                    if (!jc0Var3.x()) {
+                        if (hb0Var8 == hb0Var9 && hb0Var10.f == null) {
+                            int iD3 = hb0Var9.d() + iC2;
+                            jc0Var3.F(iD3, jc0Var3.o() + iD3);
+                            p(i4, jc0Var3, nr3Var, z);
+                        } else if (hb0Var8 == hb0Var10 && hb0Var9.f == null) {
+                            int iD4 = iC2 - hb0Var10.d();
+                            jc0Var3.F(iD4 - jc0Var3.o(), iD4);
+                            p(i4, jc0Var3, nr3Var, z);
+                        } else if (z4 && !jc0Var3.v()) {
+                            v(i4, jc0Var3, nr3Var, z);
+                        }
+                    }
+                } else if (i5 == 3 && jc0Var3.v >= 0 && jc0Var3.u >= 0) {
+                    if (jc0Var3.f0 == 8 || (jc0Var3.r == 0 && jc0Var3.V == 0.0f)) {
+                        if (!jc0Var3.v() && z4 && !jc0Var3.v()) {
+                            w(i4, jc0Var, nr3Var, jc0Var3, z);
+                        }
+                    }
+                }
+            }
+        }
+        jc0Var.m = true;
     }
 
-    public static final void o(ne0 r4, Throwable r5) {
-        Iterator r0 = re0.a.iterator();
-    L4:
-        if (r0.hasNext() == true) goto L20;
-        j51.d(r5, new DiagnosticCoroutineContextException(r4));     // Catch: Throwable -> L17
-    L15:
-        Thread r6 = Thread.currentThread();
-        r6.getUncaughtExceptionHandler().uncaughtException(r6, r5);
-        return;
-    L20:
-        ((qe0) r0.next()).n(r4, r5);     // Catch: Throwable -> L8 ExceptionSuccessfullyProcessed -> L13
-    L13:
-        return;
-    L8:
-        th = move-exception;
-        if (r5 != th) goto L11;
-        Throwable r2 = r5;
-    L12:
-        Thread r1 = Thread.currentThread();
-        r1.getUncaughtExceptionHandler().uncaughtException(r1, r2);
-        goto L4
-    L11:
-        r2 = new RuntimeException("Exception while trying to handle coroutine exception", th);
-        j51.d(r2, r5);
-        goto L12
+    public static final boolean q(float[] fArr, float[] fArr2) {
+        if (fArr.length < 16 || fArr2.length < 16) {
+            return false;
+        }
+        float f = fArr[0];
+        float f2 = fArr[1];
+        float f3 = fArr[2];
+        float f4 = fArr[3];
+        float f5 = fArr[4];
+        float f6 = fArr[5];
+        float f7 = fArr[6];
+        float f8 = fArr[7];
+        float f9 = fArr[8];
+        float f10 = fArr[9];
+        float f11 = fArr[10];
+        float f12 = fArr[11];
+        float f13 = fArr[12];
+        float f14 = fArr[13];
+        float f15 = fArr[14];
+        float f16 = fArr[15];
+        float f17 = (f * f6) - (f2 * f5);
+        float f18 = (f * f7) - (f3 * f5);
+        float f19 = (f * f8) - (f4 * f5);
+        float f20 = (f2 * f7) - (f3 * f6);
+        float f21 = (f2 * f8) - (f4 * f6);
+        float f22 = (f3 * f8) - (f4 * f7);
+        float f23 = (f9 * f14) - (f10 * f13);
+        float f24 = (f9 * f15) - (f11 * f13);
+        float f25 = (f9 * f16) - (f12 * f13);
+        float f26 = (f10 * f15) - (f11 * f14);
+        float f27 = (f10 * f16) - (f12 * f14);
+        float f28 = (f11 * f16) - (f12 * f15);
+        float f29 = (f22 * f23) + (((f20 * f25) + ((f19 * f26) + ((f17 * f28) - (f18 * f27)))) - (f21 * f24));
+        if (f29 != 0.0f) {
+            float f30 = 1.0f / f29;
+            fArr2[0] = ((f8 * f26) + ((f6 * f28) - (f7 * f27))) * f30;
+            fArr2[1] = (((f3 * f27) + ((-f2) * f28)) - (f4 * f26)) * f30;
+            fArr2[2] = ((f16 * f20) + ((f14 * f22) - (f15 * f21))) * f30;
+            fArr2[3] = (((f11 * f21) + ((-f10) * f22)) - (f12 * f20)) * f30;
+            float f31 = -f5;
+            fArr2[4] = (((f7 * f25) + (f31 * f28)) - (f8 * f24)) * f30;
+            fArr2[5] = ((f4 * f24) + ((f28 * f) - (f3 * f25))) * f30;
+            float f32 = -f13;
+            fArr2[6] = (((f15 * f19) + (f32 * f22)) - (f16 * f18)) * f30;
+            fArr2[7] = ((f12 * f18) + ((f22 * f9) - (f11 * f19))) * f30;
+            fArr2[8] = ((f8 * f23) + ((f5 * f27) - (f6 * f25))) * f30;
+            fArr2[9] = (((f25 * f2) + ((-f) * f27)) - (f4 * f23)) * f30;
+            fArr2[10] = ((f16 * f17) + ((f13 * f21) - (f14 * f19))) * f30;
+            fArr2[11] = (((f19 * f10) + ((-f9) * f21)) - (f12 * f17)) * f30;
+            fArr2[12] = (((f6 * f24) + (f31 * f26)) - (f7 * f23)) * f30;
+            fArr2[13] = ((f3 * f23) + ((f * f26) - (f2 * f24))) * f30;
+            fArr2[14] = (((f14 * f18) + (f32 * f20)) - (f15 * f17)) * f30;
+            fArr2[15] = ((f11 * f17) + ((f9 * f20) - (f10 * f18))) * f30;
+        }
+        return !(f29 == 0.0f);
     }
 
-    public static void p(int r19, jc0 r20, nr3 r21, boolean r22) {
-        if (r20.m == false) goto L6;
-        return;
-    L6:
-        if ((r20 instanceof kc0) == false) goto L8;
-    L12:
-        hb0 r3 = r20.g(2);
-        hb0 r4 = r20.g(4);
-        int r5 = r3.c();
-        int r6 = r4.c();
-        HashSet r7 = r3.a;
-        if (r7 == null) goto L73;
-        if (r3.c == false) goto L73;
-        Iterator r8 = r7.iterator();
-    L18:
-        if (r8.hasNext() == false) goto L73;
-        hb0 r9 = (hb0) r8.next();
-        jc0 r13 = r9.d;
-        int r14 = r19 + 1;
-        boolean r15 = g(r13);
-        hb0 r10 = r13.H;
-        hb0 r11 = r13.J;
-        if (r13.x() == false) goto L23;
-        if (r15 == false) goto L23;
-        boolean r18 = true;
-        kc0.R(r13, r21, new kr());
-    L24:
-        if (r9 != r10) goto L29;
-        hb0 r12 = r11.f;
-        if (r12 == null) goto L29;
-        if (r12.c == false) goto L29;
-    L34:
-        boolean r16 = r18;
-    L36:
-        int r17 = r13.o0[0];
-        if (r17 != 3) goto L58;
-        if (r15 == true) goto L58;
-        if (r17 != 3) goto L18;
-        if (r13.v < 0) goto L18;
-        if (r13.u < 0) goto L18;
-        if (r13.f0 == 8) goto L52;
-        if (r13.r != 0) goto L18;
-        if (r13.V != 0.0f) goto L18;
-    L52:
-        if (r13.v() == true) goto L18;
-        if (r16 == false) goto L18;
-        if (r13.v() == true) goto L18;
-        w(r14, r20, r21, r13, r22);
-    L58:
-        if (r13.x() == true) goto L18;
-        if (r9 != r10) goto L64;
-        if (r11.f != null) goto L64;
-        int r23 = r10.d() + r5;
-        r13.F(r23, r13.o() + r23);
-        p(r14, r13, r21, r22);
-    L64:
-        if (r9 != r11) goto L68;
-        if (r10.f != null) goto L68;
-        int r24 = r5 - r11.d();
-        r13.F(r24 - r13.o(), r24);
-        p(r14, r13, r21, r22);
-    L68:
-        if (r16 == false) goto L18;
-        if (r13.v() == true) goto L18;
-        v(r14, r13, r21, r22);
-    L29:
-        if (r9 != r11) goto L35;
-        hb0 r110 = r10.f;
-        if (r110 == null) goto L35;
-        if (r110.c == true) goto L34;
-    L35:
-        r16 = false;
-    L23:
-        r18 = true;
-    L73:
-        if ((r20 instanceof pk1) == false) goto L75;
-        return;
-    L75:
-        HashSet r25 = r4.a;
-        if (r25 != null) goto L78;
-    L135:
-        r20.m = true;
-        return;
-    L78:
-        if (r4.c == false) goto L135;
-        Iterator r26 = r25.iterator();
-    L81:
-        if (r26.hasNext() == false) goto L135;
-        hb0 r27 = (hb0) r26.next();
-        jc0 r28 = r27.d;
-        int r111 = r19 + 1;
-        boolean r29 = g(r28);
-        hb0 r30 = r28.H;
-        hb0 r31 = r28.J;
-        if (r28.x() == false) goto L86;
-        if (r29 == false) goto L86;
-        kc0.R(r28, r21, new kr());
-    L86:
-        if (r27 != r30) goto L91;
-        hb0 r112 = r31.f;
-        if (r112 == null) goto L91;
-        if (r112.c == false) goto L91;
-    L96:
-        boolean r113 = true;
-    L98:
-        int r114 = r28.o0[0];
-        if (r114 != 3) goto L121;
-        if (r29 == true) goto L121;
-        if (r114 != 3) goto L81;
-        if (r28.v < 0) goto L81;
-        if (r28.u < 0) goto L81;
-        if (r28.f0 == 8) goto L114;
-        if (r28.r != 0) goto L81;
-        if (r28.V != 0.0f) goto L81;
-    L114:
-        if (r28.v() == true) goto L81;
-        if (r113 == false) goto L81;
-        if (r28.v() == true) goto L81;
-        w(r111, r20, r21, r28, r22);
-    L121:
-        if (r28.x() == true) goto L81;
-        if (r27 != r30) goto L127;
-        if (r31.f != null) goto L127;
-        int r32 = r30.d() + r6;
-        r28.F(r32, r28.o() + r32);
-        p(r111, r28, r21, r22);
-    L127:
-        if (r27 != r31) goto L131;
-        if (r30.f != null) goto L131;
-        int r33 = r6 - r31.d();
-        r28.F(r33 - r28.o(), r33);
-        p(r111, r28, r21, r22);
-    L131:
-        if (r113 == false) goto L81;
-        if (r28.v() == true) goto L81;
-        v(r111, r28, r21, r22);
-    L91:
-        if (r27 != r31) goto L97;
-        hb0 r115 = r30.f;
-        if (r115 == null) goto L97;
-        if (r115.c == true) goto L96;
-    L97:
-        r113 = false;
-        goto L98
-    L8:
-        if (r20.x() == false) goto L12;
-        if (g(r20) == false) goto L12;
-        kc0.R(r20, r21, new kr());
-        goto L12
-    }
-
-    public static final boolean q(float[] r49, float[] r50) {
-        if (r49.length < 16) goto L16;
-        if (r50.length < 16) goto L16;
-        float r2 = r49[0];
-        float r5 = r49[1];
-        float r7 = r49[2];
-        float r9 = r49[3];
-        float r11 = r49[4];
-        float r13 = r49[5];
-        float r15 = r49[6];
-        float r17 = r49[7];
-        float r3 = r49[8];
-        float r4 = r49[9];
-        float r23 = r49[10];
-        float r25 = r49[11];
-        float r6 = r49[12];
-        float r29 = r49[13];
-        float r31 = r49[14];
-        float r0 = r49[15];
-        float r33 = (r2 * r13) - (r5 * r11);
-        float r34 = (r2 * r15) - (r7 * r11);
-        float r35 = (r2 * r17) - (r9 * r11);
-        float r36 = (r5 * r15) - (r7 * r13);
-        float r37 = (r5 * r17) - (r9 * r13);
-        float r38 = (r7 * r17) - (r9 * r15);
-        float r39 = (r3 * r29) - (r4 * r6);
-        float r40 = (r3 * r31) - (r23 * r6);
-        float r41 = (r3 * r0) - (r25 * r6);
-        float r42 = (r4 * r31) - (r23 * r29);
-        float r43 = (r4 * r0) - (r25 * r29);
-        float r44 = (r23 * r0) - (r25 * r31);
-        float r46 = (r38 * r39) + (((r36 * r41) + ((r35 * r42) + ((r33 * r44) - (r34 * r43)))) - (r37 * r40));
-        if (r46 == 0.0f) goto L11;
-        float r47 = 1.0f / r46;
-        r50[0] = ((r17 * r42) + ((r13 * r44) - (r15 * r43))) * r47;
-        r50[1] = (((r7 * r43) + ((-r5) * r44)) - (r9 * r42)) * r47;
-        r50[2] = ((r0 * r36) + ((r29 * r38) - (r31 * r37))) * r47;
-        r50[3] = (((r23 * r37) + ((-r4) * r38)) - (r25 * r36)) * r47;
-        float r8 = -r11;
-        r50[4] = (((r15 * r41) + (r8 * r44)) - (r17 * r40)) * r47;
-        r50[5] = ((r9 * r40) + ((r44 * r2) - (r7 * r41))) * r47;
-        float r10 = -r6;
-        r50[6] = (((r31 * r35) + (r10 * r38)) - (r0 * r34)) * r47;
-        r50[7] = ((r25 * r34) + ((r38 * r3) - (r23 * r35))) * r47;
-        r50[8] = ((r17 * r39) + ((r11 * r43) - (r13 * r41))) * r47;
-        r50[9] = (((r41 * r5) + ((-r2) * r43)) - (r9 * r39)) * r47;
-        r50[10] = ((r0 * r33) + ((r6 * r37) - (r29 * r35))) * r47;
-        r50[11] = (((r35 * r4) + ((-r3) * r37)) - (r25 * r33)) * r47;
-        r50[12] = (((r13 * r40) + (r8 * r42)) - (r15 * r39)) * r47;
-        r50[13] = ((r7 * r39) + ((r2 * r42) - (r5 * r40))) * r47;
-        r50[14] = (((r29 * r34) + (r10 * r36)) - (r31 * r33)) * r47;
-        r50[15] = ((r23 * r33) + ((r3 * r36) - (r4 * r34))) * r47;
-    L11:
-        if (r46 != 0.0f) goto L13;
-        boolean r12 = true;
-    L15:
-        return !r12;
-    L13:
-        r12 = false;
-    L16:
+    public static boolean r(int i, Rect rect, Rect rect2) {
+        if (i == 17) {
+            int i2 = rect.right;
+            int i3 = rect2.right;
+            if ((i2 > i3 || rect.left >= i3) && rect.left > rect2.left) {
+                return true;
+            }
+        } else if (i == 33) {
+            int i4 = rect.bottom;
+            int i5 = rect2.bottom;
+            if ((i4 > i5 || rect.top >= i5) && rect.top > rect2.top) {
+                return true;
+            }
+        } else if (i == 66) {
+            int i6 = rect.left;
+            int i7 = rect2.left;
+            if ((i6 < i7 || rect.right <= i7) && rect.right < rect2.right) {
+                return true;
+            }
+        } else {
+            if (i != 130) {
+                kf2.n("direction must be one of {FOCUS_UP, FOCUS_DOWN, FOCUS_LEFT, FOCUS_RIGHT}.");
+                return false;
+            }
+            int i8 = rect.top;
+            int i9 = rect2.top;
+            if ((i8 < i9 || rect.bottom <= i9) && rect.bottom < rect2.bottom) {
+                return true;
+            }
+        }
         return false;
     }
 
-    public static boolean r(int r2, Rect r3, Rect r4) {
-        if (r2 != 17) goto L5;
-        int r5 = r3.right;
-        int r0 = r4.right;
-        if (r5 > r0) goto L38;
-        if (r3.left >= r0) goto L38;
-    L41:
-        return false;
-    L38:
-        if (r3.left <= r4.left) goto L41;
-        return true;
-    L5:
-        if (r2 != 33) goto L7;
-        int r6 = r3.bottom;
-        int r1 = r4.bottom;
-        if (r6 > r1) goto L31;
-        if (r3.top < r1) goto L41;
-    L31:
-        if (r3.top <= r4.top) goto L41;
-        return true;
-    L7:
-        if (r2 != 66) goto L9;
-        int r7 = r3.left;
-        int r8 = r4.left;
-        if (r7 < r8) goto L24;
-        if (r3.right > r8) goto L41;
-    L24:
-        if (r3.right >= r4.right) goto L41;
-        return true;
-    L9:
-        if (r2 != 130) goto L17;
-        int r9 = r3.top;
-        int r10 = r4.top;
-        if (r9 < r10) goto L15;
-        if (r3.bottom > r10) goto L41;
-    L15:
-        if (r3.bottom >= r4.bottom) goto L41;
-        return true;
-    L17:
-        kf2.n("direction must be one of {FOCUS_UP, FOCUS_DOWN, FOCUS_LEFT, FOCUS_RIGHT}.");
-        return false;
+    public static int s(int i, Rect rect, Rect rect2) {
+        int i2;
+        int i3;
+        if (i == 17) {
+            i2 = rect.left;
+            i3 = rect2.right;
+        } else if (i == 33) {
+            i2 = rect.top;
+            i3 = rect2.bottom;
+        } else if (i == 66) {
+            i2 = rect2.left;
+            i3 = rect.right;
+        } else {
+            if (i != 130) {
+                kf2.n("direction must be one of {FOCUS_UP, FOCUS_DOWN, FOCUS_LEFT, FOCUS_RIGHT}.");
+                return 0;
+            }
+            i2 = rect2.top;
+            i3 = rect.bottom;
+        }
+        return Math.max(0, i2 - i3);
     }
 
-    public static int s(int r2, Rect r3, Rect r4) {
-        if (r2 != 17) goto L5;
-        int r5 = r3.left;
-        int r6 = r4.right;
-    L18:
-        return Math.max(0, r5 - r6);
-    L5:
-        if (r2 != 33) goto L7;
-        r5 = r3.top;
-        r6 = r4.bottom;
-        goto L18
-    L7:
-        if (r2 != 66) goto L9;
-        r5 = r4.left;
-        r6 = r3.right;
-        goto L18
-    L9:
-        if (r2 != 130) goto L12;
-        r5 = r4.top;
-        r6 = r3.bottom;
-        goto L18
-    L12:
-        kf2.n("direction must be one of {FOCUS_UP, FOCUS_DOWN, FOCUS_LEFT, FOCUS_RIGHT}.");
-        return 0;
+    public static int t(int i, Rect rect, Rect rect2) {
+        if (i != 17) {
+            if (i != 33) {
+                if (i != 66) {
+                    if (i != 130) {
+                        kf2.n("direction must be one of {FOCUS_UP, FOCUS_DOWN, FOCUS_LEFT, FOCUS_RIGHT}.");
+                        return 0;
+                    }
+                }
+            }
+            return Math.abs(((rect.width() / 2) + rect.left) - ((rect2.width() / 2) + rect2.left));
+        }
+        return Math.abs(((rect.height() / 2) + rect.top) - ((rect2.height() / 2) + rect2.top));
     }
 
-    public static int t(int r1, Rect r2, Rect r3) {
-        if (r1 != 17) goto L5;
-    L15:
-        int r4 = r2.top;
-        int r5 = (r2.height() / 2) + r4;
-        int r6 = r3.top;
-        return Math.abs(r5 - ((r3.height() / 2) + r6));
-    L5:
-        if (r1 != 33) goto L7;
-    L13:
-        int r7 = r2.left;
-        int r8 = (r2.width() / 2) + r7;
-        int r9 = r3.left;
-        return Math.abs(r8 - ((r3.width() / 2) + r9));
-    L7:
-        if (r1 == 66) goto L15;
-        if (r1 == 130) goto L13;
-        kf2.n("direction must be one of {FOCUS_UP, FOCUS_DOWN, FOCUS_LEFT, FOCUS_RIGHT}.");
-        return 0;
+    public static final void u(ViewGroup viewGroup) {
+        Drawable drawableMutate;
+        viewGroup.getClass();
+        int iL = ji2.L(24.0f * viewGroup.getResources().getDisplayMetrics().density);
+        int childCount = viewGroup.getChildCount();
+        for (int i = 0; i < childCount; i++) {
+            View childAt = viewGroup.getChildAt(i);
+            TextView textView = childAt instanceof TextView ? (TextView) childAt : null;
+            if (textView != null) {
+                Drawable[] compoundDrawablesRelative = textView.getCompoundDrawablesRelative();
+                compoundDrawablesRelative.getClass();
+                Drawable drawable = compoundDrawablesRelative[0];
+                if (drawable != null && (drawableMutate = drawable.mutate()) != null) {
+                    drawableMutate.setBounds(0, 0, iL, iL);
+                    ColorStateList compoundDrawableTintList = textView.getCompoundDrawableTintList();
+                    if (compoundDrawableTintList != null) {
+                        drawableMutate.setTintList(compoundDrawableTintList);
+                    }
+                    textView.setCompoundDrawablesRelative(drawableMutate, compoundDrawablesRelative[1], compoundDrawablesRelative[2], compoundDrawablesRelative[3]);
+                }
+            }
+        }
     }
 
-    public static final void u(ViewGroup r10) {
-        r10.getClass();
-        int r0 = ji2.L(24.0f * r10.getResources().getDisplayMetrics().density);
-        int r1 = r10.getChildCount();
-        int r3 = 0;
-    L3:
-        if (r3 >= r1) goto L20;
-        View r4 = r10.getChildAt(r3);
-        if ((r4 instanceof TextView) == false) goto L7;
-        TextView r5 = (TextView) r4;
-    L8:
-        if (r5 == null) goto L19;
-        Drawable[] r6 = r5.getCompoundDrawablesRelative();
-        r6.getClass();
-        Drawable r7 = r6[0];
-        if (r7 == null) goto L19;
-        Drawable r8 = r7.mutate();
-        if (r8 == null) goto L19;
-        r8.setBounds(0, 0, r0, r0);
-        ColorStateList r9 = r5.getCompoundDrawableTintList();
-        if (r9 == null) goto L18;
-        r8.setTintList(r9);
-    L18:
-        r5.setCompoundDrawablesRelative(r8, r6[1], r6[2], r6[3]);
-    L19:
-        r3 = r3 + 1;
-        goto L3
-    L7:
-        r5 = null;
-        goto L8
+    public static void v(int i, jc0 jc0Var, nr3 nr3Var, boolean z) {
+        float f = jc0Var.c0;
+        hb0 hb0Var = jc0Var.H;
+        int iC = hb0Var.f.c();
+        hb0 hb0Var2 = jc0Var.J;
+        int iC2 = hb0Var2.f.c();
+        int iD = hb0Var.d() + iC;
+        int iD2 = iC2 - hb0Var2.d();
+        if (iC == iC2) {
+            f = 0.5f;
+        } else {
+            iC = iD;
+            iC2 = iD2;
+        }
+        int iO = jc0Var.o();
+        int i2 = (iC2 - iC) - iO;
+        if (iC > iC2) {
+            i2 = (iC - iC2) - iO;
+        }
+        int i3 = ((int) (i2 > 0 ? (f * i2) + 0.5f : f * i2)) + iC;
+        int i4 = i3 + iO;
+        if (iC > iC2) {
+            i4 = i3 - iO;
+        }
+        jc0Var.F(i3, i4);
+        p(i + 1, jc0Var, nr3Var, z);
     }
 
-    public static void v(int r6, jc0 r7, nr3 r8, boolean r9) {
-        float r0 = r7.c0;
-        hb0 r1 = r7.H;
-        int r2 = r1.f.c();
-        hb0 r3 = r7.J;
-        int r4 = r3.f.c();
-        int r5 = r1.d() + r2;
-        int r10 = r4 - r3.d();
-        if (r2 != r4) goto L5;
-        r0 = 0.5f;
-    L6:
-        int r11 = r7.o();
-        int r12 = (r4 - r2) - r11;
-        if (r2 <= r4) goto L9;
-        r12 = (r2 - r4) - r11;
-    L9:
-        if (r12 <= 0) goto L12;
-        float r13 = (r0 * r12) + 0.5f;
-    L13:
-        int r14 = ((int) r13) + r2;
-        int r15 = r14 + r11;
-        if (r2 <= r4) goto L16;
-        r15 = r14 - r11;
-    L16:
-        r7.F(r14, r15);
-        p(r6 + 1, r7, r8, r9);
-        return;
-    L12:
-        r13 = r0 * r12;
-        goto L13
-    L5:
-        r2 = r5;
-        r4 = r10;
-        goto L6
+    public static void w(int i, jc0 jc0Var, nr3 nr3Var, jc0 jc0Var2, boolean z) {
+        float f = jc0Var2.c0;
+        hb0 hb0Var = jc0Var2.H;
+        int iD = hb0Var.d() + hb0Var.f.c();
+        hb0 hb0Var2 = jc0Var2.J;
+        int iC = hb0Var2.f.c() - hb0Var2.d();
+        if (iC >= iD) {
+            int iO = jc0Var2.o();
+            if (jc0Var2.f0 != 8) {
+                int i2 = jc0Var2.r;
+                if (i2 == 2) {
+                    iO = (int) (jc0Var2.c0 * 0.5f * (jc0Var instanceof kc0 ? jc0Var.o() : jc0Var.S.o()));
+                } else if (i2 == 0) {
+                    iO = iC - iD;
+                }
+                iO = Math.max(jc0Var2.u, iO);
+                int i3 = jc0Var2.v;
+                if (i3 > 0) {
+                    iO = Math.min(i3, iO);
+                }
+            }
+            int i4 = iD + ((int) ((f * ((iC - iD) - iO)) + 0.5f));
+            jc0Var2.F(i4, iO + i4);
+            p(i + 1, jc0Var2, nr3Var, z);
+        }
     }
 
-    public static void w(int r7, jc0 r8, nr3 r9, jc0 r10, boolean r11) {
-        float r0 = r10.c0;
-        hb0 r1 = r10.H;
-        int r2 = r1.d() + r1.f.c();
-        hb0 r3 = r10.J;
-        int r4 = r3.f.c() - r3.d();
-        if (r4 < r2) goto L20;
-        int r5 = r10.o();
-        if (r10.f0 == 8) goto L18;
-        int r6 = r10.r;
-        if (r6 == 2) goto L9;
-        if (r6 != 0) goto L15;
-        r5 = r4 - r2;
-    L15:
-        r5 = Math.max(r10.u, r5);
-        int r12 = r10.v;
-        if (r12 <= 0) goto L18;
-        r5 = Math.min(r12, r5);
-        goto L18
-    L9:
-        if ((r8 instanceof kc0) == false) goto L11;
-        int r13 = r8.o();
-    L12:
-        r5 = (int) ((r10.c0 * 0.5f) * r13);
-        goto L15
-    L11:
-        r13 = r8.S.o();
-    L18:
-        int r14 = r2 + ((int) ((r0 * ((r4 - r2) - r5)) + 0.5f));
-        r10.F(r14, r5 + r14);
-        p(r7 + 1, r10, r9, r11);
-        return;
+    public static void x(int i, jc0 jc0Var, nr3 nr3Var) {
+        float f = jc0Var.d0;
+        hb0 hb0Var = jc0Var.I;
+        int iC = hb0Var.f.c();
+        hb0 hb0Var2 = jc0Var.K;
+        int iC2 = hb0Var2.f.c();
+        int iD = hb0Var.d() + iC;
+        int iD2 = iC2 - hb0Var2.d();
+        if (iC == iC2) {
+            f = 0.5f;
+        } else {
+            iC = iD;
+            iC2 = iD2;
+        }
+        int i2 = jc0Var.i();
+        int i3 = (iC2 - iC) - i2;
+        if (iC > iC2) {
+            i3 = (iC - iC2) - i2;
+        }
+        int i4 = (int) (i3 > 0 ? (f * i3) + 0.5f : f * i3);
+        int i5 = iC + i4;
+        int i6 = i5 + i2;
+        if (iC > iC2) {
+            i5 = iC - i4;
+            i6 = i5 - i2;
+        }
+        jc0Var.G(i5, i6);
+        C(i + 1, jc0Var, nr3Var);
     }
 
-    public static void x(int r6, jc0 r7, nr3 r8) {
-        float r0 = r7.d0;
-        hb0 r1 = r7.I;
-        int r2 = r1.f.c();
-        hb0 r3 = r7.K;
-        int r4 = r3.f.c();
-        int r5 = r1.d() + r2;
-        int r9 = r4 - r3.d();
-        if (r2 != r4) goto L5;
-        r0 = 0.5f;
-    L6:
-        int r10 = r7.i();
-        int r11 = (r4 - r2) - r10;
-        if (r2 <= r4) goto L9;
-        r11 = (r2 - r4) - r10;
-    L9:
-        if (r11 <= 0) goto L12;
-        float r12 = (r0 * r11) + 0.5f;
-    L11:
-        int r13 = (int) r12;
-        int r14 = r2 + r13;
-        int r15 = r14 + r10;
-        if (r2 <= r4) goto L16;
-        r14 = r2 - r13;
-        r15 = r14 - r10;
-    L16:
-        r7.G(r14, r15);
-        C(r6 + 1, r7, r8);
-        return;
-    L12:
-        r12 = r0 * r11;
-        goto L11
-    L5:
-        r2 = r5;
-        r4 = r9;
-        goto L6
+    public static void y(int i, jc0 jc0Var, nr3 nr3Var, jc0 jc0Var2) {
+        float f = jc0Var2.d0;
+        hb0 hb0Var = jc0Var2.I;
+        int iD = hb0Var.d() + hb0Var.f.c();
+        hb0 hb0Var2 = jc0Var2.K;
+        int iC = hb0Var2.f.c() - hb0Var2.d();
+        if (iC >= iD) {
+            int i2 = jc0Var2.i();
+            if (jc0Var2.f0 != 8) {
+                int i3 = jc0Var2.s;
+                if (i3 == 2) {
+                    i2 = (int) (f * 0.5f * (jc0Var instanceof kc0 ? jc0Var.i() : jc0Var.S.i()));
+                } else if (i3 == 0) {
+                    i2 = iC - iD;
+                }
+                i2 = Math.max(jc0Var2.x, i2);
+                int i4 = jc0Var2.y;
+                if (i4 > 0) {
+                    i2 = Math.min(i4, i2);
+                }
+            }
+            int i5 = iD + ((int) ((f * ((iC - iD) - i2)) + 0.5f));
+            jc0Var2.G(i5, i2 + i5);
+            C(i + 1, jc0Var2, nr3Var);
+        }
     }
 
-    public static void y(int r7, jc0 r8, nr3 r9, jc0 r10) {
-        float r0 = r10.d0;
-        hb0 r1 = r10.I;
-        int r2 = r1.d() + r1.f.c();
-        hb0 r3 = r10.K;
-        int r4 = r3.f.c() - r3.d();
-        if (r4 < r2) goto L20;
-        int r5 = r10.i();
-        if (r10.f0 == 8) goto L18;
-        int r6 = r10.s;
-        if (r6 == 2) goto L9;
-        if (r6 != 0) goto L15;
-        r5 = r4 - r2;
-    L15:
-        r5 = Math.max(r10.x, r5);
-        int r11 = r10.y;
-        if (r11 <= 0) goto L18;
-        r5 = Math.min(r11, r5);
-        goto L18
-    L9:
-        if ((r8 instanceof kc0) == false) goto L11;
-        int r12 = r8.i();
-    L12:
-        r5 = (int) ((r0 * 0.5f) * r12);
-        goto L15
-    L11:
-        r12 = r8.S.i();
-    L18:
-        int r13 = r2 + ((int) ((r0 * ((r4 - r2) - r5)) + 0.5f));
-        r10.G(r13, r5 + r13);
-        C(r7 + 1, r10, r9);
-        return;
-    }
-
-    public static final long z(long r5, long r7) {
-        float r2 = Float.intBitsToFloat((int) (r7 >> 32)) * Float.intBitsToFloat((int) (r5 >> 32));
-        float r6 = Float.intBitsToFloat((int) (r7 & 4294967295L)) * Float.intBitsToFloat((int) (r5 & 4294967295L));
-        long r8 = Float.floatToRawIntBits(r2);
-        return (((long) Float.floatToRawIntBits(r6)) & 4294967295L) | (r8 << 32);
+    public static final long z(long j, long j2) {
+        float fIntBitsToFloat = Float.intBitsToFloat((int) (j2 >> 32)) * Float.intBitsToFloat((int) (j >> 32));
+        return (((long) Float.floatToRawIntBits(Float.intBitsToFloat((int) (j2 & 4294967295L)) * Float.intBitsToFloat((int) (j & 4294967295L)))) & 4294967295L) | (Float.floatToRawIntBits(fIntBitsToFloat) << 32);
     }
 }

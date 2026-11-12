@@ -18,185 +18,154 @@ public final class jq4 extends LinearLayout {
     public ValueAnimator n;
     public final /* synthetic */ TabLayout o;
 
-    public jq4(TabLayout r1, Context r2) {
-        this.o = r1;
-        super(r2);
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public jq4(TabLayout tabLayout, Context context) {
+        super(context);
+        this.o = tabLayout;
         setWillNotDraw(false);
     }
 
-    public final void a(int r6) {
-        TabLayout r0 = this.o;
-        if (r0.c0 != 0) goto L5;
-    L9:
-        View r5 = getChildAt(r6);
-        xi4 r1 = r0.U;
-        Drawable r2 = r0.B;
-        r1.getClass();
-        RectF r7 = xi4.j(r0, r5);
-        r2.setBounds((int) r7.left, r2.getBounds().top, (int) r7.right, r2.getBounds().bottom);
-        r0.n = r6;
-        return;
-    L5:
-        if (r0.getTabSelectedIndicator().getBounds().left == (-1)) goto L7;
-        return;
-    L7:
-        if (r0.getTabSelectedIndicator().getBounds().right == (-1)) goto L9;
+    public final void a(int i) {
+        TabLayout tabLayout = this.o;
+        if (tabLayout.c0 == 0 || (tabLayout.getTabSelectedIndicator().getBounds().left == -1 && tabLayout.getTabSelectedIndicator().getBounds().right == -1)) {
+            View childAt = getChildAt(i);
+            xi4 xi4Var = tabLayout.U;
+            Drawable drawable = tabLayout.B;
+            xi4Var.getClass();
+            RectF rectFJ = xi4.j(tabLayout, childAt);
+            drawable.setBounds((int) rectFJ.left, drawable.getBounds().top, (int) rectFJ.right, drawable.getBounds().bottom);
+            tabLayout.n = i;
+        }
     }
 
-    public final void b(int r5) {
-        TabLayout r0 = this.o;
-        Rect r1 = r0.B.getBounds();
-        r0.B.setBounds(r1.left, 0, r1.right, r5);
+    public final void b(int i) {
+        TabLayout tabLayout = this.o;
+        Rect bounds = tabLayout.B.getBounds();
+        tabLayout.B.setBounds(bounds.left, 0, bounds.right, i);
         requestLayout();
     }
 
-    public final void c(View r7, View r8, float r9) {
-        TabLayout r1 = this.o;
-        if (r7 != null) goto L5;
-    L7:
-        Drawable r10 = r1.B;
-        r10.setBounds(-1, r10.getBounds().top, -1, r1.B.getBounds().bottom);
-    L8:
-        WeakHashMap r11 = j65.a;
+    public final void c(View view, View view2, float f) {
+        TabLayout tabLayout = this.o;
+        if (view == null || view.getWidth() <= 0) {
+            Drawable drawable = tabLayout.B;
+            drawable.setBounds(-1, drawable.getBounds().top, -1, tabLayout.B.getBounds().bottom);
+        } else {
+            tabLayout.U.y(tabLayout, view, view2, f, tabLayout.B);
+        }
+        WeakHashMap weakHashMap = j65.a;
         postInvalidateOnAnimation();
-        return;
-    L5:
-        if (r7.getWidth() <= 0) goto L7;
-        r1.U.y(r1, r7, r8, r9, r1.B);
-        goto L8
     }
 
-    public final void d(int r4, int r5, boolean r6) {
-        TabLayout r0 = this.o;
-        if (r0.n != r4) goto L5;
-        return;
-    L5:
-        View r1 = getChildAt(r0.getSelectedTabPosition());
-        View r2 = getChildAt(r4);
-        if (r2 != null) goto L9;
-        a(r0.getSelectedTabPosition());
-        return;
-    L9:
-        r0.n = r4;
-        w51 r7 = new w51(this, r1, r2);
-        if (r6 == false) goto L13;
-        ValueAnimator r8 = new ValueAnimator();
-        this.n = r8;
-        r8.setInterpolator(r0.V);
-        r8.setDuration(r5);
-        r8.setFloatValues(new float[]{0.0f, 1.0f});
-        r8.addUpdateListener(r7);
-        r8.start();
-        return;
-    L13:
-        this.n.removeAllUpdateListeners();
-        this.n.addUpdateListener(r7);
+    public final void d(int i, int i2, boolean z) {
+        TabLayout tabLayout = this.o;
+        if (tabLayout.n == i) {
+            return;
+        }
+        View childAt = getChildAt(tabLayout.getSelectedTabPosition());
+        View childAt2 = getChildAt(i);
+        if (childAt2 == null) {
+            a(tabLayout.getSelectedTabPosition());
+            return;
+        }
+        tabLayout.n = i;
+        w51 w51Var = new w51(this, childAt, childAt2);
+        if (!z) {
+            this.n.removeAllUpdateListeners();
+            this.n.addUpdateListener(w51Var);
+            return;
+        }
+        ValueAnimator valueAnimator = new ValueAnimator();
+        this.n = valueAnimator;
+        valueAnimator.setInterpolator(tabLayout.V);
+        valueAnimator.setDuration(i2);
+        valueAnimator.setFloatValues(0.0f, 1.0f);
+        valueAnimator.addUpdateListener(w51Var);
+        valueAnimator.start();
     }
 
     @Override // android.view.View
-    public final void draw(Canvas r7) {
-        TabLayout r0 = this.o;
-        int r1 = r0.B.getBounds().height();
-        if (r1 >= 0) goto L5;
-        r1 = r0.B.getIntrinsicHeight();
-    L5:
-        int r2 = r0.N;
-        if (r2 != 0) goto L8;
-        int r3 = getHeight() - r1;
-        r1 = getHeight();
-    L18:
-        if (r0.B.getBounds().width() <= 0) goto L20;
-        Rect r4 = r0.B.getBounds();
-        r0.B.setBounds(r4.left, r3, r4.right, r1);
-        r0.B.draw(r7);
-    L20:
-        super.draw(r7);
-        return;
-    L8:
-        if (r2 == 1) goto L15;
-        r3 = 0;
-        if (r2 == 2) goto L18;
-        if (r2 == 3) goto L14;
-        r1 = 0;
-        goto L18
-    L14:
-        r1 = getHeight();
-        goto L18
-    L15:
-        r3 = (getHeight() - r1) / 2;
-        r1 = (getHeight() + r1) / 2;
-        goto L18
+    public final void draw(Canvas canvas) {
+        int height;
+        TabLayout tabLayout = this.o;
+        int iHeight = tabLayout.B.getBounds().height();
+        if (iHeight < 0) {
+            iHeight = tabLayout.B.getIntrinsicHeight();
+        }
+        int i = tabLayout.N;
+        if (i == 0) {
+            height = getHeight() - iHeight;
+            iHeight = getHeight();
+        } else if (i != 1) {
+            height = 0;
+            if (i != 2) {
+                iHeight = i != 3 ? 0 : getHeight();
+            }
+        } else {
+            height = (getHeight() - iHeight) / 2;
+            iHeight = (getHeight() + iHeight) / 2;
+        }
+        if (tabLayout.B.getBounds().width() > 0) {
+            Rect bounds = tabLayout.B.getBounds();
+            tabLayout.B.setBounds(bounds.left, height, bounds.right, iHeight);
+            tabLayout.B.draw(canvas);
+        }
+        super.draw(canvas);
     }
 
     @Override // android.widget.LinearLayout, android.view.ViewGroup, android.view.View
-    public final void onLayout(boolean r1, int r2, int r3, int r4, int r5) {
-        super.onLayout(r1, r2, r3, r4, r5);
-        ValueAnimator r6 = this.n;
-        TabLayout r7 = this.o;
-        if (r6 == null) goto L9;
-        if (r6.isRunning() == false) goto L9;
-        d(r7.getSelectedTabPosition(), -1, false);
-        return;
-    L9:
-        if (r7.n != (-1)) goto L11;
-        r7.n = r7.getSelectedTabPosition();
-    L11:
-        a(r7.n);
+    public final void onLayout(boolean z, int i, int i2, int i3, int i4) {
+        super.onLayout(z, i, i2, i3, i4);
+        ValueAnimator valueAnimator = this.n;
+        TabLayout tabLayout = this.o;
+        if (valueAnimator != null && valueAnimator.isRunning()) {
+            d(tabLayout.getSelectedTabPosition(), -1, false);
+            return;
+        }
+        if (tabLayout.n == -1) {
+            tabLayout.n = tabLayout.getSelectedTabPosition();
+        }
+        a(tabLayout.n);
     }
 
     @Override // android.widget.LinearLayout, android.view.View
-    public final void onMeasure(int r10, int r11) {
-        super.onMeasure(r10, r11);
-        if (View.MeasureSpec.getMode(r10) != 1073741824) goto L40;
-        TabLayout r0 = this.o;
-        boolean r3 = true;
-        if (r0.L != 1) goto L8;
-    L9:
-        int r1 = getChildCount();
-        int r4 = 0;
-        int r5 = 0;
-        int r6 = 0;
-    L10:
-        if (r5 >= r1) goto L15;
-        View r7 = getChildAt(r5);
-        if (r7.getVisibility() != 0) goto L14;
-        r6 = Math.max(r6, r7.getMeasuredWidth());
-    L14:
-        r5 = r5 + 1;
-        goto L10
-    L15:
-        if (r6 > 0) goto L18;
-        return;
-    L18:
-        if ((r6 * r1) > (getMeasuredWidth() - (((int) vr1.l(getContext(), 16)) * 2))) goto L28;
-        boolean r2 = false;
-    L20:
-        if (r4 >= r1) goto L27;
-        LinearLayout.LayoutParams r8 = (LinearLayout.LayoutParams) getChildAt(r4).getLayoutParams();
-        if (r8.width == r6) goto L24;
-    L25:
-        r8.width = r6;
-        r8.weight = 0.0f;
-        r2 = true;
-    L26:
-        r4 = r4 + 1;
-        goto L20
-    L24:
-        if (r8.weight == 0.0f) goto L26;
-    L27:
-        r3 = r2;
-    L29:
-        if (r3 == false) goto L39;
-        super.onMeasure(r10, r11);
-        return;
-    L39:
-        return;
-    L28:
-        r0.L = 0;
-        r0.k(false);
-        goto L29
-    L8:
-        if (r0.O == 2) goto L9;
-        return;
+    public final void onMeasure(int i, int i2) {
+        super.onMeasure(i, i2);
+        if (View.MeasureSpec.getMode(i) != 1073741824) {
+            return;
+        }
+        TabLayout tabLayout = this.o;
+        boolean z = true;
+        if (tabLayout.L == 1 || tabLayout.O == 2) {
+            int childCount = getChildCount();
+            int iMax = 0;
+            for (int i3 = 0; i3 < childCount; i3++) {
+                View childAt = getChildAt(i3);
+                if (childAt.getVisibility() == 0) {
+                    iMax = Math.max(iMax, childAt.getMeasuredWidth());
+                }
+            }
+            if (iMax <= 0) {
+                return;
+            }
+            if (iMax * childCount <= getMeasuredWidth() - (((int) vr1.l(getContext(), 16)) * 2)) {
+                boolean z2 = false;
+                for (int i4 = 0; i4 < childCount; i4++) {
+                    LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) getChildAt(i4).getLayoutParams();
+                    if (layoutParams.width != iMax || layoutParams.weight != 0.0f) {
+                        layoutParams.width = iMax;
+                        layoutParams.weight = 0.0f;
+                        z2 = true;
+                    }
+                }
+                z = z2;
+            } else {
+                tabLayout.L = 0;
+                tabLayout.k(false);
+            }
+            if (z) {
+                super.onMeasure(i, i2);
+            }
+        }
     }
 }

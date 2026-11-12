@@ -10,12 +10,12 @@ public final class gg2 {
     public final int[][][] e;
     public final tv4 f;
 
-    public gg2(int[] r1, tv4[] r2, int[] r3, int[][][] r4, tv4 r5) {
-        this.b = r1;
-        this.c = r2;
-        this.e = r4;
-        this.d = r3;
-        this.f = r5;
-        this.a = r1.length;
+    public gg2(int[] iArr, tv4[] tv4VarArr, int[] iArr2, int[][][] iArr3, tv4 tv4Var) {
+        this.b = iArr;
+        this.c = tv4VarArr;
+        this.e = iArr3;
+        this.d = iArr2;
+        this.f = tv4Var;
+        this.a = iArr.length;
     }
 }

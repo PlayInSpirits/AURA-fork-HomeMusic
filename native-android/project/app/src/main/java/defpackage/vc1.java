@@ -10,67 +10,63 @@ public final class vc1 implements View.OnAttachStateChangeListener {
     public final /* synthetic */ Object o;
     public final /* synthetic */ Object p;
 
-    public vc1(wc1 r2, fe1 r3) {
+    public vc1(wc1 wc1Var, fe1 fe1Var) {
         this.n = 0;
-        this.p = r2;
-        this.o = r3;
+        this.p = wc1Var;
+        this.o = fe1Var;
     }
 
-    private final void a(View r1) {
+    private final void a(View view) {
     }
 
-    private final void b(View r1) {
+    private final void b(View view) {
     }
 
-    private final void c(View r1) {
-    }
-
-    @Override // android.view.View.OnAttachStateChangeListener
-    public final void onViewAttachedToWindow(View r3) {
-        int r4 = this.n;
-        Object r0 = this.p;
-        Object r1 = this.o;
-        switch(r4) {
-            case 0: goto L10;
-            case 1: goto L5;
-            default: goto L4;
-        };
-    L4:
-        return;
-    L5:
-        b0 r2 = (b0) r1;
-        ba2 r5 = j51.u(r2);
-        if (r5 == null) goto L8;
-        ((jx3) r0).n = fu.c(r2, r5.h());
-        r2.removeOnAttachStateChangeListener(this);
-        return;
-    L8:
-        cz1.c("View tree for " + r2 + " has no ViewTreeLifecycleOwner");
-        er1.a();
-        return;
-    L10:
-        fe1 r6 = (fe1) r1;
-        kc1 r7 = r6.c;
-        r6.k();
-        xm0.f((ViewGroup) r7.T.getParent(), ((wc1) r0).n).e();
+    private final void c(View view) {
     }
 
     @Override // android.view.View.OnAttachStateChangeListener
-    public final void onViewDetachedFromWindow(View r1) {
-        switch(this.n) {
-            case 0: goto L6;
-            case 1: goto L6;
-            default: goto L4;
-        };
-    L4:
-        ((View) this.o).removeOnAttachStateChangeListener(this);
-        ((tv3) this.p).x();
-        return;
+    public final void onViewAttachedToWindow(View view) {
+        int i = this.n;
+        Object obj = this.p;
+        Object obj2 = this.o;
+        switch (i) {
+            case 0:
+                fe1 fe1Var = (fe1) obj2;
+                kc1 kc1Var = fe1Var.c;
+                fe1Var.k();
+                xm0.f((ViewGroup) kc1Var.T.getParent(), ((wc1) obj).n).e();
+                break;
+            case 1:
+                b0 b0Var = (b0) obj2;
+                ba2 ba2VarU = j51.u(b0Var);
+                if (ba2VarU == null) {
+                    cz1.c("View tree for " + b0Var + " has no ViewTreeLifecycleOwner");
+                    er1.a();
+                } else {
+                    ((jx3) obj).n = fu.c(b0Var, ba2VarU.h());
+                    b0Var.removeOnAttachStateChangeListener(this);
+                }
+                break;
+        }
     }
 
-    public /* synthetic */ vc1(int r1, View r2, Object r3) {
-        this.n = r1;
-        this.o = r2;
-        this.p = r3;
+    @Override // android.view.View.OnAttachStateChangeListener
+    public final void onViewDetachedFromWindow(View view) {
+        switch (this.n) {
+            case 0:
+            case 1:
+                break;
+            default:
+                ((View) this.o).removeOnAttachStateChangeListener(this);
+                ((tv3) this.p).x();
+                break;
+        }
+    }
+
+    public /* synthetic */ vc1(int i, View view, Object obj) {
+        this.n = i;
+        this.o = view;
+        this.p = obj;
     }
 }

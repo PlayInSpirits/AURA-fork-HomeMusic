@@ -8,14 +8,11 @@ public final class ArtistInfo extends ArtistInfoBase {
     public static final int $stable = 8;
     private List<Artist> similarArtists;
 
-    public ArtistInfo() {
-    }
-
     public final List<Artist> getSimilarArtists() {
         return this.similarArtists;
     }
 
-    public final void setSimilarArtists(List<Artist> r1) {
-        this.similarArtists = r1;
+    public final void setSimilarArtists(List<Artist> list) {
+        this.similarArtists = list;
     }
 }

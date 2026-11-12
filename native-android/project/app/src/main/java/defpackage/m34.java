@@ -4,20 +4,20 @@ package defpackage;
 /* JADX INFO: loaded from: classes.dex */
 public final class m34 extends su3 {
     @Override // defpackage.su3
-    public final void r(kc4 r5, float r6, float r7) {
-        r5.d(0.0f, r7 * r6, 180.0f, 90.0f);
-        float r8 = (r7 * 2.0f) * r6;
-        gc4 r9 = new gc4(0.0f, 0.0f, r8, r8);
-        r9.f = 180.0f;
-        r9.g = 90.0f;
-        r5.g.add(r9);
-        ec4 r2 = new ec4(r9);
-        r5.a(180.0f);
-        r5.h.add(r2);
-        r5.e = 270.0f;
-        float r10 = (0.0f + r8) * 0.5f;
-        float r11 = (r8 - 0.0f) / 2.0f;
-        r5.c = (((float) Math.cos(Math.toRadians(270.0d))) * r11) + r10;
-        r5.d = (r11 * ((float) Math.sin(Math.toRadians(270.0d)))) + r10;
+    public final void r(kc4 kc4Var, float f, float f2) {
+        kc4Var.d(0.0f, f2 * f, 180.0f, 90.0f);
+        float f3 = f2 * 2.0f * f;
+        gc4 gc4Var = new gc4(0.0f, 0.0f, f3, f3);
+        gc4Var.f = 180.0f;
+        gc4Var.g = 90.0f;
+        kc4Var.g.add(gc4Var);
+        ec4 ec4Var = new ec4(gc4Var);
+        kc4Var.a(180.0f);
+        kc4Var.h.add(ec4Var);
+        kc4Var.e = 270.0f;
+        float f4 = (0.0f + f3) * 0.5f;
+        float f5 = (f3 - 0.0f) / 2.0f;
+        kc4Var.c = (((float) Math.cos(Math.toRadians(270.0d))) * f5) + f4;
+        kc4Var.d = (f5 * ((float) Math.sin(Math.toRadians(270.0d)))) + f4;
     }
 }

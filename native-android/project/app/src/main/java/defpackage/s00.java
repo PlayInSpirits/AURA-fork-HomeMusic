@@ -7,7 +7,7 @@ import android.animation.AnimatorListenerAdapter;
 public final class s00 extends AnimatorListenerAdapter {
     private u00 mViewBounds;
 
-    public s00(u00 r1) {
-        this.mViewBounds = r1;
+    public s00(u00 u00Var) {
+        this.mViewBounds = u00Var;
     }
 }

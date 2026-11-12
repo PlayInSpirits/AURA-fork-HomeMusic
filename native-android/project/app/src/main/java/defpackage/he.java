@@ -12,120 +12,90 @@ public final class he implements CharSequence {
     public final ArrayList q;
 
     static {
-        xc5 r0 = s54.a;
+        xc5 xc5Var = s54.a;
     }
 
-    public he(List r8, String r9) {
-        this.n = r8;
-        this.o = r9;
-        if (r8 == null) goto L17;
-        int r0 = r8.size();
-        int r1 = 0;
-        ArrayList r2 = null;
-        ArrayList r3 = null;
-    L5:
-        if (r1 >= r0) goto L18;
-        ge r4 = (ge) r8.get(r1);
-        Object r5 = r4.a;
-        if ((r5 instanceof ij4) == false) goto L12;
-        if (r2 != null) goto L10;
-        r2 = new ArrayList();
-    L10:
-        r2.add(r4);
-    L16:
-        r1 = r1 + 1;
-        goto L5
-    L12:
-        if ((r5 instanceof sd3) == false) goto L16;
-        if (r3 != null) goto L15;
-        r3 = new ArrayList();
-    L15:
-        r3.add(r4);
-    L18:
-        this.p = r2;
-        this.q = r3;
-        if (r3 == null) goto L21;
-        List r7 = q40.K0(r3, new ca1(10));
-    L22:
-        if (r7 != null) goto L24;
-        return;
-    L24:
-        if (r7.isEmpty() == true) goto L53;
-        int r10 = ((ge) q40.w0(r7)).c;
-        h03 r6 = c02.a;
-        int r11 = 1;
-        h03 r12 = new h03(1);
-        r12.a(r10);
-        int r13 = r7.size();
-    L27:
-        if (r11 >= r13) goto L54;
-        ge r14 = (ge) r7.get(r11);
-    L29:
-        int r15 = r12.b;
-        if (r15 == 0) goto L41;
-        if (r15 == 0) goto L39;
-        int r16 = r12.a[r15 - 1];
-        if (r14.b < r16) goto L35;
-        r12.c(r15 - 1);
-        goto L29
-    L35:
-        int r17 = r14.c;
-        if (r17 <= r16) goto L41;
-        dz1.a("Paragraph overlap not allowed, end " + r17 + " should be less than or equal to " + r16);
-        goto L41
-    L39:
-        kf2.m("IntList is empty.");
-        throw null;
-    L41:
-        r12.a(r14.c);
-        r11 = r11 + 1;
-        goto L27
-    L54:
-        return;
-    L53:
-        return;
-    L21:
-        r7 = null;
-        goto L22
-    L17:
-        r2 = null;
-        r3 = null;
-        goto L18
+    public he(List list, String str) {
+        ArrayList arrayList;
+        ArrayList arrayList2;
+        this.n = list;
+        this.o = str;
+        if (list != null) {
+            int size = list.size();
+            arrayList = null;
+            arrayList2 = null;
+            for (int i = 0; i < size; i++) {
+                ge geVar = (ge) list.get(i);
+                Object obj = geVar.a;
+                if (obj instanceof ij4) {
+                    arrayList = arrayList == null ? new ArrayList() : arrayList;
+                    arrayList.add(geVar);
+                } else if (obj instanceof sd3) {
+                    arrayList2 = arrayList2 == null ? new ArrayList() : arrayList2;
+                    arrayList2.add(geVar);
+                }
+            }
+        } else {
+            arrayList = null;
+            arrayList2 = null;
+        }
+        this.p = arrayList;
+        this.q = arrayList2;
+        List listK0 = arrayList2 != null ? q40.K0(arrayList2, new ca1(10)) : null;
+        if (listK0 == null || listK0.isEmpty()) {
+            return;
+        }
+        int i2 = ((ge) q40.w0(listK0)).c;
+        h03 h03Var = c02.a;
+        h03 h03Var2 = new h03(1);
+        h03Var2.a(i2);
+        int size2 = listK0.size();
+        for (int i3 = 1; i3 < size2; i3++) {
+            ge geVar2 = (ge) listK0.get(i3);
+            while (true) {
+                int i4 = h03Var2.b;
+                if (i4 == 0) {
+                    break;
+                }
+                if (i4 == 0) {
+                    kf2.m("IntList is empty.");
+                    throw null;
+                }
+                int i5 = h03Var2.a[i4 - 1];
+                if (geVar2.b < i5) {
+                    int i6 = geVar2.c;
+                    if (i6 > i5) {
+                        dz1.a("Paragraph overlap not allowed, end " + i6 + " should be less than or equal to " + i5);
+                        break;
+                    }
+                    break;
+                }
+                h03Var2.c(i4 - 1);
+            }
+            h03Var2.a(geVar2.c);
+        }
     }
 
     @Override // java.lang.CharSequence
-    public final char charAt(int r1) {
-        return this.o.charAt(r1);
+    public final char charAt(int i) {
+        return this.o.charAt(i);
     }
 
-    public final boolean equals(Object r5) {
-        if (this != r5) goto L6;
-        return true;
-    L6:
-        if ((r5 instanceof he) == true) goto L8;
-        return false;
-    L8:
-        he r6 = (he) r5;
-        String r1 = r6.o;
-        if (h12.c(this.o, r1) == true) goto L12;
-        return false;
-    L12:
-        if (h12.c(this.n, r6.n) == true) goto L14;
-        return false;
-    L14:
-        return true;
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof he)) {
+            return false;
+        }
+        he heVar = (he) obj;
+        return h12.c(this.o, heVar.o) && h12.c(this.n, heVar.n);
     }
 
     public final int hashCode() {
-        int r0 = this.o.hashCode() * 31;
-        List r1 = this.n;
-        if (r1 == null) goto L5;
-        int r2 = r1.hashCode();
-    L7:
-        return r0 + r2;
-    L5:
-        r2 = 0;
-        goto L7
+        int iHashCode = this.o.hashCode() * 31;
+        List list = this.n;
+        return iHashCode + (list != null ? list.hashCode() : 0);
     }
 
     @Override // java.lang.CharSequence
@@ -133,44 +103,41 @@ public final class he implements CharSequence {
         return this.o.length();
     }
 
+    /* JADX WARN: Code duplicated, block: B:26:0x0095  */
     @Override // java.lang.CharSequence
-    public final CharSequence subSequence(int r10, int r11) {
-        if (r10 <= r11) goto L6;
-        dz1.a("start (" + r10 + ") should be less or equal to end (" + r11 + ")");
-    L6:
-        String r2 = this.o;
-        if (r10 == 0) goto L9;
-    L11:
-        String r3 = r2.substring(r10, r11);
-        int r4 = ie.a;
-        if (r10 <= r11) goto L15;
-        dz1.a("start (" + r10 + ") should be less than or equal to end (" + r11 + ")");
-    L15:
-        List r9 = this.n;
-        if (r9 == null) goto L26;
-        ArrayList r0 = new ArrayList(r9.size());
-        int r1 = r9.size();
-        int r5 = 0;
-    L19:
-        if (r5 >= r1) goto L25;
-        ge r6 = (ge) r9.get(r5);
-        int r7 = r6.b;
-        int r8 = r6.c;
-        if (ie.a(r10, r11, r7, r8) == false) goto L23;
-        r0.add(new ge(Math.max(r10, r6.b) - r10, Math.min(r11, r8) - r10, r6.a, r6.d));
-    L23:
-        r5 = r5 + 1;
-        goto L19
-    L25:
-        if (r0.isEmpty() == true) goto L26;
-    L28:
-        return new he(r0, r3);
-    L26:
-        r0 = null;
-        goto L28
-    L9:
-        if (r11 != r2.length()) goto L11;
-        return this;
+    public final CharSequence subSequence(int i, int i2) {
+        ArrayList arrayList;
+        if (i > i2) {
+            dz1.a("start (" + i + ") should be less or equal to end (" + i2 + ")");
+        }
+        String str = this.o;
+        if (i == 0 && i2 == str.length()) {
+            return this;
+        }
+        String strSubstring = str.substring(i, i2);
+        int i3 = ie.a;
+        if (i > i2) {
+            dz1.a("start (" + i + ") should be less than or equal to end (" + i2 + ")");
+        }
+        List list = this.n;
+        if (list == null) {
+            arrayList = null;
+        } else {
+            arrayList = new ArrayList(list.size());
+            int size = list.size();
+            for (int i4 = 0; i4 < size; i4++) {
+                ge geVar = (ge) list.get(i4);
+                int i5 = geVar.b;
+                int i6 = geVar.c;
+                if (ie.a(i, i2, i5, i6)) {
+                    arrayList.add(new ge(Math.max(i, geVar.b) - i, Math.min(i2, i6) - i, geVar.a, geVar.d));
+                }
+            }
+            if (arrayList.isEmpty()) {
+                arrayList = null;
+            }
+        }
+        return new he(arrayList, strSubstring);
     }
 
     @Override // java.lang.CharSequence
@@ -178,14 +145,11 @@ public final class he implements CharSequence {
         return this.o;
     }
 
-    public /* synthetic */ he(String r2) {
-        this(r2, u01.n);
+    public /* synthetic */ he(String str) {
+        this(str, u01.n);
     }
 
-    public he(String r2, List r3) {
-        if (r3.isEmpty() == false) goto L5;
-        r3 = null;
-    L5:
-        this(r3, r2);
+    public he(String str, List list) {
+        this(list.isEmpty() ? null : list, str);
     }
 }

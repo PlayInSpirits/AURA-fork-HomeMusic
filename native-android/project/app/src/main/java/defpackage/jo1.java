@@ -12,24 +12,18 @@ public final class jo1 {
     public final String d;
     public final String e;
 
-    public jo1(String r2, List r3) {
-        this.a = r2;
-        this.b = r3;
-        Child r4 = (Child) q40.w0(r3);
-        this.c = r4;
-        this.d = r4.getArtistId();
-        String r5 = r4.getAlbumArtist();
-        if (r5 != null) goto L5;
-    L9:
-        r5 = r4.getArtist();
-    L10:
-        this.e = r5;
-        return;
-    L5:
-        if (qm4.u0(r5) == false) goto L8;
-        r5 = null;
-    L8:
-        if (r5 != null) goto L10;
-        goto L9
+    /* JADX WARN: Code duplicated, block: B:9:0x0025  */
+    public jo1(String str, List list) {
+        this.a = str;
+        this.b = list;
+        Child child = (Child) q40.w0(list);
+        this.c = child;
+        this.d = child.getArtistId();
+        String albumArtist = child.getAlbumArtist();
+        if (albumArtist != null) {
+            albumArtist = qm4.u0(albumArtist) ? null : albumArtist;
+            albumArtist = albumArtist == null ? child.getArtist() : albumArtist;
+        }
+        this.e = albumArtist;
     }
 }

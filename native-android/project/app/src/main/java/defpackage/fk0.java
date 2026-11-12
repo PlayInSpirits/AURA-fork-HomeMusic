@@ -14,331 +14,270 @@ import java.util.List;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class fk0 {
-    public static final String e = null;
-    public static final String[] f = null;
-    public final String a;
+    public static final String e = h(3, 4);
+    public static final String[] f = {"id", "mime_type", "uri", "stream_keys", "custom_cache_key", "data", "state", "start_time_ms", "update_time_ms", "content_length", "stop_reason", "failure_reason", "percent_downloaded", "bytes_downloaded", "key_set_id"};
     public final tk4 b;
-    public final Object c;
     public boolean d;
+    public final String a = "ExoPlayerDownloads";
+    public final Object c = new Object();
 
-    static {
-        e = h(new int[]{3, 4});
-        f = new String[]{"id", "mime_type", "uri", "stream_keys", "custom_cache_key", "data", "state", "start_time_ms", "update_time_ms", "content_length", "stop_reason", "failure_reason", "percent_downloaded", "bytes_downloaded", "key_set_id"};
+    public fk0(tk4 tk4Var) {
+        this.b = tk4Var;
     }
 
-    public fk0(tk4 r1) {
-        this.b = r1;
-        this.a = "ExoPlayerDownloads";
-        this.c = new Object();
+    public static ArrayList a(String str) {
+        ArrayList arrayList = new ArrayList();
+        if (!TextUtils.isEmpty(str)) {
+            String str2 = f35.a;
+            for (String str3 : str.split(",", -1)) {
+                String[] strArrSplit = str3.split("\\.", -1);
+                rr2.w(strArrSplit.length == 3);
+                arrayList.add(new fm4(Integer.parseInt(strArrSplit[0]), Integer.parseInt(strArrSplit[1]), Integer.parseInt(strArrSplit[2])));
+            }
+        }
+        return arrayList;
     }
 
-    public static ArrayList a(String r10) {
-        ArrayList r0 = new ArrayList();
-        if (TextUtils.isEmpty(r10) == true) goto L12;
-        String r1 = f35.a;
-        String[] r11 = r10.split(",", -1);
-        int r2 = r11.length;
-        int r4 = 0;
-    L6:
-        if (r4 >= r2) goto L12;
-        String[] r5 = r11[r4].split("\\.", -1);
-        if (r5.length != 3) goto L10;
-        boolean r6 = true;
-    L11:
-        rr2.w(r6);
-        r0.add(new fm4(Integer.parseInt(r5[0]), Integer.parseInt(r5[1]), Integer.parseInt(r5[2])));
-        r4 = r4 + 1;
-        goto L6
-    L10:
-        r6 = false;
-    L12:
-        return r0;
+    public static ns0 e(Cursor cursor) {
+        byte[] blob = cursor.getBlob(14);
+        String string = cursor.getString(0);
+        string.getClass();
+        String string2 = cursor.getString(2);
+        string2.getClass();
+        Uri uri = Uri.parse(string2);
+        String strM = lw2.m(cursor.getString(1));
+        ArrayList arrayListA = a(cursor.getString(3));
+        if (blob.length <= 0) {
+            blob = null;
+        }
+        tt0 tt0Var = new tt0(string, uri, strM, arrayListA, blob, cursor.getString(4), cursor.getBlob(5), null, null);
+        mt0 mt0Var = new mt0();
+        mt0Var.a = cursor.getLong(13);
+        mt0Var.b = cursor.getFloat(12);
+        int i = cursor.getInt(6);
+        return new ns0(tt0Var, i, cursor.getLong(7), cursor.getLong(8), cursor.getLong(9), cursor.getInt(10), i == 4 ? cursor.getInt(11) : 0, mt0Var);
     }
 
-    public static ns0 e(Cursor r23) {
-        byte[] r1 = r23.getBlob(14);
-        int r2 = 0;
-        String r4 = r23.getString(0);
-        r4.getClass();
-        String r3 = r23.getString(2);
-        r3.getClass();
-        Uri r5 = Uri.parse(r3);
-        String r6 = lw2.m(r23.getString(1));
-        ArrayList r7 = a(r23.getString(3));
-        if (r1.length <= 0) goto L5;
-    L4:
-        byte[] r8 = r1;
-        tt0 r9 = new tt0(r4, r5, r6, r7, r8, r23.getString(4), r23.getBlob(5), null, null);
-        mt0 r10 = new mt0();
-        r10.a = r23.getLong(13);
-        r10.b = r23.getFloat(12);
-        int r13 = r23.getInt(6);
-        if (r13 != 4) goto L9;
-        r2 = r23.getInt(11);
-    L9:
-        long r14 = r23.getLong(7);
-        long r16 = r23.getLong(8);
-        long r18 = r23.getLong(9);
-        int r20 = r23.getInt(10);
-        return new ns0(r9, r13, r14, r16, r18, r20, r2, r10);
-    L5:
-        r1 = null;
-        goto L4
+    public static ns0 f(Cursor cursor) {
+        String str;
+        String string = cursor.getString(0);
+        string.getClass();
+        String string2 = cursor.getString(2);
+        string2.getClass();
+        Uri uri = Uri.parse(string2);
+        String string3 = cursor.getString(1);
+        if ("dash".equals(string3)) {
+            str = "application/dash+xml";
+        } else if ("hls".equals(string3)) {
+            str = "application/x-mpegURL";
+        } else {
+            str = "ss".equals(string3) ? "application/vnd.ms-sstr+xml" : "video/x-unknown";
+        }
+        tt0 tt0Var = new tt0(string, uri, lw2.m(str), a(cursor.getString(3)), null, cursor.getString(4), cursor.getBlob(5), null, null);
+        mt0 mt0Var = new mt0();
+        mt0Var.a = cursor.getLong(13);
+        mt0Var.b = cursor.getFloat(12);
+        int i = cursor.getInt(6);
+        return new ns0(tt0Var, i, cursor.getLong(7), cursor.getLong(8), cursor.getLong(9), cursor.getInt(10), i == 4 ? cursor.getInt(11) : 0, mt0Var);
     }
 
-    public static ns0 f(Cursor r25) {
-        int r1 = 0;
-        String r3 = r25.getString(0);
-        r3.getClass();
-        String r2 = r25.getString(2);
-        r2.getClass();
-        Uri r4 = Uri.parse(r2);
-        String r5 = r25.getString(1);
-        if ("dash".equals(r5) == false) goto L6;
-        String r6 = "application/dash+xml";
-    L12:
-        tt0 r7 = new tt0(r3, r4, lw2.m(r6), a(r25.getString(3)), null, r25.getString(4), r25.getBlob(5), null, null);
-        mt0 r8 = new mt0();
-        r8.a = r25.getLong(13);
-        r8.b = r25.getFloat(12);
-        int r15 = r25.getInt(6);
-        if (r15 != 4) goto L15;
-        r1 = r25.getInt(11);
-    L15:
-        long r16 = r25.getLong(7);
-        long r18 = r25.getLong(8);
-        long r20 = r25.getLong(9);
-        int r22 = r25.getInt(10);
-        return new ns0(r7, r15, r16, r18, r20, r22, r1, r8);
-    L6:
-        if ("hls".equals(r5) == false) goto L9;
-        r6 = "application/x-mpegURL";
-        goto L12
-    L9:
-        if ("ss".equals(r5) == false) goto L11;
-        r6 = "application/vnd.ms-sstr+xml";
-        goto L12
-    L11:
-        r6 = "video/x-unknown";
-        goto L12
+    public static String h(int... iArr) {
+        if (iArr.length == 0) {
+            return "1";
+        }
+        StringBuilder sb = new StringBuilder("state IN (");
+        for (int i = 0; i < iArr.length; i++) {
+            if (i > 0) {
+                sb.append(',');
+            }
+            sb.append(iArr[i]);
+        }
+        sb.append(')');
+        return sb.toString();
     }
 
-    public static String h(int... r3) {
-        if (r3.length != 0) goto L6;
-        return "1";
-    L6:
-        StringBuilder r0 = new StringBuilder("state IN (");
-        int r1 = 0;
-    L8:
-        if (r1 >= r3.length) goto L12;
-        if (r1 <= 0) goto L11;
-        r0.append(',');
-    L11:
-        r0.append(r3[r1]);
-        r1 = r1 + 1;
-        goto L8
-    L12:
-        r0.append(')');
-        return r0.toString();
-    }
-
-    public static ArrayList i(SQLiteDatabase r17) {
-        ArrayList r0 = new ArrayList();
-        if (f35.f0(r17, "ExoPlayerDownloads") == true) goto L5;
-        return r0;
-    L5:
-        Cursor r1 = r17.query("ExoPlayerDownloads", new String[]{"id", "title", "uri", "stream_keys", "custom_cache_key", "data", "state", "start_time_ms", "update_time_ms", "content_length", "stop_reason", "failure_reason", "percent_downloaded", "bytes_downloaded"}, null, null, null, null, null);
-    L22:
-    L10:
-        th = move-exception;
-        if (r1 == null) goto L26;
-        r1.close();     // Catch: Throwable -> L17
-        throw th;
-    L17:
-        th = move-exception;
-        th.addSuppressed(th);
-        throw th;
-    L26:
-        throw th;
-    L7:
-        if (r1.moveToNext() == false) goto L12;
-        r0.add(f(r1));     // Catch: Throwable -> L10
-        goto L22
-    L12:
-        r1.close();
-        return r0;
+    public static ArrayList i(SQLiteDatabase sQLiteDatabase) {
+        ArrayList arrayList = new ArrayList();
+        if (!f35.f0(sQLiteDatabase, "ExoPlayerDownloads")) {
+            return arrayList;
+        }
+        Cursor cursorQuery = sQLiteDatabase.query("ExoPlayerDownloads", new String[]{"id", "title", "uri", "stream_keys", "custom_cache_key", "data", "state", "start_time_ms", "update_time_ms", "content_length", "stop_reason", "failure_reason", "percent_downloaded", "bytes_downloaded"}, null, null, null, null, null);
+        while (cursorQuery.moveToNext()) {
+            try {
+                arrayList.add(f(cursorQuery));
+            } catch (Throwable th) {
+                if (cursorQuery == null) {
+                    throw th;
+                }
+                try {
+                    cursorQuery.close();
+                    throw th;
+                } catch (Throwable th2) {
+                    th.addSuppressed(th2);
+                    throw th;
+                }
+            }
+        }
+        cursorQuery.close();
+        return arrayList;
     }
 
     public final void b() {
-        Object r0 = this.c;
-        monitor-enter(r0);
-    L8:
-        th = move-exception;
-        throw th;
-    L5:
-        if (this.d == false) goto L37;
-        monitor-exit(r0);     // Catch: Throwable -> L8
-        return;
-    L37:
-        int r3 = 0;
-        int r1 = r45.a(this.b.getReadableDatabase(), 0, "");     // Catch: Throwable -> L8 SQLException -> L24
-        if (r1 == 3) goto L28;
-        SQLiteDatabase r4 = this.b.getWritableDatabase();     // Catch: Throwable -> L8 SQLException -> L24
-        r4.beginTransactionNonExclusive();     // Catch: Throwable -> L8 SQLException -> L24
-        r45.b(r4, 0, "", 3);     // Catch: Throwable -> L16
-        if (r1 != 2) goto L18;
-        ArrayList r2 = i(r4);     // Catch: Throwable -> L16
-    L19:
-        r4.execSQL("DROP TABLE IF EXISTS ExoPlayerDownloads");     // Catch: Throwable -> L16
-        r4.execSQL("CREATE TABLE ExoPlayerDownloads (id TEXT PRIMARY KEY NOT NULL,mime_type TEXT,uri TEXT NOT NULL,stream_keys TEXT NOT NULL,custom_cache_key TEXT,data BLOB NOT NULL,state INTEGER NOT NULL,start_time_ms INTEGER NOT NULL,update_time_ms INTEGER NOT NULL,content_length INTEGER NOT NULL,stop_reason INTEGER NOT NULL,failure_reason INTEGER NOT NULL,percent_downloaded REAL NOT NULL,bytes_downloaded INTEGER NOT NULL,key_set_id BLOB NOT NULL)");     // Catch: Throwable -> L16
-        int r5 = r2.size();     // Catch: Throwable -> L16
-    L20:
-        if (r3 >= r5) goto L22;
-        Object r6 = r2.get(r3);     // Catch: Throwable -> L16
-        r3 = r3 + 1;     // Catch: Throwable -> L16
-        k((ns0) r6, r4);     // Catch: Throwable -> L16
-        goto L20
-    L22:
-        r4.setTransactionSuccessful();     // Catch: Throwable -> L16
-        r4.endTransaction();     // Catch: Throwable -> L8 SQLException -> L24
-        goto L28
-    L18:
-        r2 = new ArrayList();     // Catch: Throwable -> L16
-    L16:
-        th = move-exception;
-        r4.endTransaction();     // Catch: Throwable -> L8 SQLException -> L24
-        throw th;     // Catch: Throwable -> L8 SQLException -> L24
-    L28:
-        this.d = true;     // Catch: Throwable -> L8 SQLException -> L24
-        monitor-exit(r0);     // Catch: Throwable -> L8
-        return;
-    L24:
-        e = move-exception;
-        throw new DatabaseIOException(e);     // Catch: Throwable -> L8
+        synchronized (this.c) {
+            if (this.d) {
+                return;
+            }
+            try {
+                int i = 0;
+                int iA = r45.a(this.b.getReadableDatabase(), 0, "");
+                if (iA != 3) {
+                    SQLiteDatabase writableDatabase = this.b.getWritableDatabase();
+                    writableDatabase.beginTransactionNonExclusive();
+                    try {
+                        r45.b(writableDatabase, 0, "", 3);
+                        ArrayList arrayListI = iA == 2 ? i(writableDatabase) : new ArrayList();
+                        writableDatabase.execSQL("DROP TABLE IF EXISTS ExoPlayerDownloads");
+                        writableDatabase.execSQL("CREATE TABLE ExoPlayerDownloads (id TEXT PRIMARY KEY NOT NULL,mime_type TEXT,uri TEXT NOT NULL,stream_keys TEXT NOT NULL,custom_cache_key TEXT,data BLOB NOT NULL,state INTEGER NOT NULL,start_time_ms INTEGER NOT NULL,update_time_ms INTEGER NOT NULL,content_length INTEGER NOT NULL,stop_reason INTEGER NOT NULL,failure_reason INTEGER NOT NULL,percent_downloaded REAL NOT NULL,bytes_downloaded INTEGER NOT NULL,key_set_id BLOB NOT NULL)");
+                        int size = arrayListI.size();
+                        while (i < size) {
+                            Object obj = arrayListI.get(i);
+                            i++;
+                            k((ns0) obj, writableDatabase);
+                        }
+                        writableDatabase.setTransactionSuccessful();
+                        writableDatabase.endTransaction();
+                    } catch (Throwable th) {
+                        writableDatabase.endTransaction();
+                        throw th;
+                    }
+                }
+                this.d = true;
+            } catch (SQLException e2) {
+                throw new DatabaseIOException(e2);
+            }
+        }
     }
 
-    public final Cursor c(String r9, String[] r10) {
-        return this.b.getReadableDatabase().query(this.a, f, r9, r10, null, null, "start_time_ms ASC");
-    L4:
-        e = move-exception;
-        throw new DatabaseIOException(e);
+    public final Cursor c(String str, String[] strArr) throws DatabaseIOException {
+        try {
+            return this.b.getReadableDatabase().query(this.a, f, str, strArr, null, null, "start_time_ms ASC");
+        } catch (SQLiteException e2) {
+            throw new DatabaseIOException(e2);
+        }
     }
 
-    public final ns0 d(String r2) {
+    public final ns0 d(String str) throws DatabaseIOException {
         b();
-        Cursor r1 = c("id = ?", new String[]{r2});     // Catch: SQLiteException -> L19
-    L12:
-        th = move-exception;
-        if (r1 != null) goto L25;
-    L18:
-        throw th;     // Catch: SQLiteException -> L19
-    L25:
-        r1.close();     // Catch: Throwable -> L16
-    L16:
-        th = move-exception;
-        th.addSuppressed(th);     // Catch: SQLiteException -> L19
-        goto L18
-    L5:
-        if (r1.getCount() == 0) goto L7;
-        r1.moveToNext();     // Catch: Throwable -> L12
-        ns0 r3 = e(r1);     // Catch: Throwable -> L12
-        r1.close();     // Catch: SQLiteException -> L19
-        return r3;
-    L7:
-        r1.close();     // Catch: SQLiteException -> L19
-        return null;
-    L19:
-        e = move-exception;
-        throw new DatabaseIOException(e);
+        try {
+            Cursor cursorC = c("id = ?", new String[]{str});
+            try {
+                if (cursorC.getCount() == 0) {
+                    cursorC.close();
+                    return null;
+                }
+                cursorC.moveToNext();
+                ns0 ns0VarE = e(cursorC);
+                cursorC.close();
+                return ns0VarE;
+            } catch (Throwable th) {
+                if (cursorC != null) {
+                    try {
+                        cursorC.close();
+                    } catch (Throwable th2) {
+                        th.addSuppressed(th2);
+                    }
+                }
+                throw th;
+            }
+        } catch (SQLiteException e2) {
+            throw new DatabaseIOException(e2);
+        }
+        throw new DatabaseIOException(e2);
     }
 
-    public final ek0 g(int... r2) {
+    public final ek0 g(int... iArr) {
         b();
-        return new ek0(c(h(r2), null));
+        return new ek0(c(h(iArr), null));
     }
 
-    public final void j(ns0 r2) {
+    public final void j(ns0 ns0Var) {
         b();
-        k(r2, this.b.getWritableDatabase());     // Catch: SQLiteException -> L5
-        return;
-    L5:
-        e = move-exception;
-        throw new DatabaseIOException(e);
+        try {
+            k(ns0Var, this.b.getWritableDatabase());
+        } catch (SQLiteException e2) {
+            throw new DatabaseIOException(e2);
+        }
     }
 
-    public final void k(ns0 r9, SQLiteDatabase r10) {
-        byte[] r0 = r9.a.r;
-        if (r0 != null) goto L5;
-        r0 = f35.b;
-    L5:
-        ContentValues r1 = new ContentValues();
-        r1.put("id", r9.a.n);
-        r1.put("mime_type", r9.a.p);
-        r1.put("uri", r9.a.o.toString());
-        List r2 = r9.a.q;
-        StringBuilder r3 = new StringBuilder();
-        int r4 = 0;
-    L7:
-        if (r4 >= r2.size()) goto L10;
-        fm4 r5 = (fm4) r2.get(r4);
-        r3.append(r5.n);
-        r3.append('.');
-        r3.append(r5.o);
-        r3.append('.');
-        r3.append(r5.p);
-        r3.append(',');
-        r4 = r4 + 1;
-        goto L7
-    L10:
-        if (r3.length() <= 0) goto L12;
-        r3.setLength(r3.length() - 1);
-    L12:
-        r1.put("stream_keys", r3.toString());
-        r1.put("custom_cache_key", r9.a.s);
-        r1.put("data", r9.a.t);
-        r1.put("state", Integer.valueOf(r9.b));
-        r1.put("start_time_ms", Long.valueOf(r9.c));
-        r1.put("update_time_ms", Long.valueOf(r9.d));
-        r1.put("content_length", Long.valueOf(r9.e));
-        r1.put("stop_reason", Integer.valueOf(r9.f));
-        r1.put("failure_reason", Integer.valueOf(r9.g));
-        r1.put("percent_downloaded", Float.valueOf(r9.h.b));
-        r1.put("bytes_downloaded", Long.valueOf(r9.h.a));
-        r1.put("key_set_id", r0);
-        r10.replaceOrThrow(this.a, null, r1);
+    public final void k(ns0 ns0Var, SQLiteDatabase sQLiteDatabase) {
+        byte[] bArr = ns0Var.a.r;
+        if (bArr == null) {
+            bArr = f35.b;
+        }
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("id", ns0Var.a.n);
+        contentValues.put("mime_type", ns0Var.a.p);
+        contentValues.put("uri", ns0Var.a.o.toString());
+        List list = ns0Var.a.q;
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < list.size(); i++) {
+            fm4 fm4Var = (fm4) list.get(i);
+            sb.append(fm4Var.n);
+            sb.append('.');
+            sb.append(fm4Var.o);
+            sb.append('.');
+            sb.append(fm4Var.p);
+            sb.append(',');
+        }
+        if (sb.length() > 0) {
+            sb.setLength(sb.length() - 1);
+        }
+        contentValues.put("stream_keys", sb.toString());
+        contentValues.put("custom_cache_key", ns0Var.a.s);
+        contentValues.put("data", ns0Var.a.t);
+        contentValues.put("state", Integer.valueOf(ns0Var.b));
+        contentValues.put("start_time_ms", Long.valueOf(ns0Var.c));
+        contentValues.put("update_time_ms", Long.valueOf(ns0Var.d));
+        contentValues.put("content_length", Long.valueOf(ns0Var.e));
+        contentValues.put("stop_reason", Integer.valueOf(ns0Var.f));
+        contentValues.put("failure_reason", Integer.valueOf(ns0Var.g));
+        contentValues.put("percent_downloaded", Float.valueOf(ns0Var.h.b));
+        contentValues.put("bytes_downloaded", Long.valueOf(ns0Var.h.a));
+        contentValues.put("key_set_id", bArr);
+        sQLiteDatabase.replaceOrThrow(this.a, null, contentValues);
     }
 
     public final void l() {
         b();
-        ContentValues r0 = new ContentValues();     // Catch: SQLException -> L5
-        r0.put("state", 0);     // Catch: SQLException -> L5
-        this.b.getWritableDatabase().update("ExoPlayerDownloads", r0, "state = 2", null);     // Catch: SQLException -> L5
-        return;
-    L5:
-        e = move-exception;
-        throw new DatabaseIOException(e);
+        try {
+            ContentValues contentValues = new ContentValues();
+            contentValues.put("state", (Integer) 0);
+            this.b.getWritableDatabase().update("ExoPlayerDownloads", contentValues, "state = 2", null);
+        } catch (SQLException e2) {
+            throw new DatabaseIOException(e2);
+        }
     }
 
     public final void m() {
         b();
-        ContentValues r0 = new ContentValues();     // Catch: SQLException -> L5
-        r0.put("state", 5);     // Catch: SQLException -> L5
-        r0.put("failure_reason", 0);     // Catch: SQLException -> L5
-        this.b.getWritableDatabase().update("ExoPlayerDownloads", r0, null, null);     // Catch: SQLException -> L5
-        return;
-    L5:
-        e = move-exception;
-        throw new DatabaseIOException(e);
+        try {
+            ContentValues contentValues = new ContentValues();
+            contentValues.put("state", (Integer) 5);
+            contentValues.put("failure_reason", (Integer) 0);
+            this.b.getWritableDatabase().update("ExoPlayerDownloads", contentValues, null, null);
+        } catch (SQLException e2) {
+            throw new DatabaseIOException(e2);
+        }
     }
 
-    public final void n(int r5, String r6) {
+    public final void n(int i, String str) {
         b();
-        ContentValues r1 = new ContentValues();     // Catch: SQLException -> L5
-        r1.put("stop_reason", Integer.valueOf(r5));     // Catch: SQLException -> L5
-        this.b.getWritableDatabase().update("ExoPlayerDownloads", r1, e + " AND id = ?", new String[]{r6});     // Catch: SQLException -> L5
-        return;
-    L5:
-        e = move-exception;
-        throw new DatabaseIOException(e);
+        try {
+            ContentValues contentValues = new ContentValues();
+            contentValues.put("stop_reason", Integer.valueOf(i));
+            this.b.getWritableDatabase().update("ExoPlayerDownloads", contentValues, e + " AND id = ?", new String[]{str});
+        } catch (SQLException e2) {
+            throw new DatabaseIOException(e2);
+        }
     }
 }

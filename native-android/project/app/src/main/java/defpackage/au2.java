@@ -7,9 +7,9 @@ public final class au2 {
     public final ut2 b;
     public final zt2 c;
 
-    public au2(bq r1, ut2 r2, zt2 r3) {
-        this.a = r1;
-        this.b = r2;
-        this.c = r3;
+    public au2(bq bqVar, ut2 ut2Var, zt2 zt2Var) {
+        this.a = bqVar;
+        this.b = ut2Var;
+        this.c = zt2Var;
     }
 }

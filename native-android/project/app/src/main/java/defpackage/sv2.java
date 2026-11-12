@@ -6,56 +6,53 @@ public final class sv2 extends bc1 {
     public final /* synthetic */ int f;
     public final long g;
 
-    public sv2(int r1, long r2, cu4 r4) {
-        this.f = r1;
-        r4.getClass();
-        switch(r1) {
-            case 1: goto L6;
-            default: goto L4;
-        };
-    L4:
-        super(r4);
-        this.g = r2;
-        return;
-    L6:
-        super(r4);
-        this.g = r2;
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public sv2(int i, long j, cu4 cu4Var) {
+        super(cu4Var);
+        this.f = i;
+        cu4Var.getClass();
+        switch (i) {
+            case 1:
+                super(cu4Var);
+                this.g = j;
+                break;
+            default:
+                this.g = j;
+                break;
+        }
     }
 
     @Override // defpackage.bc1, defpackage.cu4
-    public zt4 f(int r2, zt4 r3, boolean r4) {
-        switch(this.f) {
-            case 1: goto L6;
-            default: goto L5;
-        };
-    L6:
-        r3.getClass();
-        super.f(r2, r3, r4);
-        r3.d = this.g;
-        return r3;
-    L5:
-        return super.f(r2, r3, r4);
+    public zt4 f(int i, zt4 zt4Var, boolean z) {
+        switch (this.f) {
+            case 1:
+                zt4Var.getClass();
+                super.f(i, zt4Var, z);
+                zt4Var.d = this.g;
+                return zt4Var;
+            default:
+                return super.f(i, zt4Var, z);
+        }
     }
 
     @Override // defpackage.bc1, defpackage.cu4
-    public final bu4 m(int r4, bu4 r5, long r6) {
-        int r0 = this.f;
-        long r1 = this.g;
-        r5.getClass();
-        switch(r0) {
-            case 0: goto L6;
-            default: goto L4;
-        };
-    L4:
-        super.m(r4, r5, r6);
-        r5.l = r1;
-        r5.g = true;
-        r5.h = false;
-        r5.i = null;
-        return r5;
-    L6:
-        super.m(r4, r5, r6);
-        r5.l = r1;
-        return r5;
+    public final bu4 m(int i, bu4 bu4Var, long j) {
+        int i2 = this.f;
+        long j2 = this.g;
+        bu4Var.getClass();
+        switch (i2) {
+            case 0:
+                super.m(i, bu4Var, j);
+                bu4Var.l = j2;
+                break;
+            default:
+                super.m(i, bu4Var, j);
+                bu4Var.l = j2;
+                bu4Var.g = true;
+                bu4Var.h = false;
+                bu4Var.i = null;
+                break;
+        }
+        return bu4Var;
     }
 }

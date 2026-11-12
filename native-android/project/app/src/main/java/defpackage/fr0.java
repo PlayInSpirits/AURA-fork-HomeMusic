@@ -11,25 +11,24 @@ public final class fr0 implements Closeable {
     public final ArrayList p;
     public final /* synthetic */ jr0 q;
 
-    public fr0(jr0 r1, String r2, long r3, ArrayList r5, long[] r6) {
-        r2.getClass();
-        r6.getClass();
-        this.q = r1;
-        this.n = r2;
-        this.o = r3;
-        this.p = r5;
+    public fr0(jr0 jr0Var, String str, long j, ArrayList arrayList, long[] jArr) {
+        str.getClass();
+        jArr.getClass();
+        this.q = jr0Var;
+        this.n = str;
+        this.o = j;
+        this.p = arrayList;
     }
 
     @Override // java.io.Closeable, java.lang.AutoCloseable
     public final void close() {
-        ArrayList r3 = this.p;
-        int r0 = r3.size();
-        int r1 = 0;
-    L3:
-        if (r1 >= r0) goto L5;
-        Object r2 = r3.get(r1);
-        r1 = r1 + 1;
-        xe5.b((ej4) r2);
-        goto L3
+        ArrayList arrayList = this.p;
+        int size = arrayList.size();
+        int i = 0;
+        while (i < size) {
+            Object obj = arrayList.get(i);
+            i++;
+            xe5.b((ej4) obj);
+        }
     }
 }

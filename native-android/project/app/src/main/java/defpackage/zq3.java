@@ -19,69 +19,71 @@ public final class zq3 implements du0 {
     public volatile yq3 f;
     public volatile boolean g;
 
-    public zq3(gn2 r14, kx r15, Executor r16, long r17, long r19) {
-        r16.getClass();
-        this.a = r16;
-        bn2 r18 = r14.b;
-        r18.getClass();
-        Map r6 = Collections.EMPTY_MAP;
-        Uri r1 = r18.a;
-        String r11 = r18.f;
-        rr2.s(r1, "The uri must be set.");
-        ii0 r0 = new ii0(r1, 0, 1, null, r6, r17, r19, r11, 4);
-        this.b = r0;
-        lx r110 = r15.b();
-        this.c = r110;
-        this.d = new ux(r110, r0, null, new ss2(9, this));
+    public zq3(gn2 gn2Var, kx kxVar, Executor executor, long j, long j2) {
+        executor.getClass();
+        this.a = executor;
+        bn2 bn2Var = gn2Var.b;
+        bn2Var.getClass();
+        Map map = Collections.EMPTY_MAP;
+        Uri uri = bn2Var.a;
+        String str = bn2Var.f;
+        rr2.s(uri, "The uri must be set.");
+        ii0 ii0Var = new ii0(uri, 0L, 1, null, map, j, j2, str, 4);
+        this.b = ii0Var;
+        lx lxVarB = kxVar.b();
+        this.c = lxVarB;
+        this.d = new ux(lxVarB, ii0Var, null, new ss2(9, this));
     }
 
     @Override // defpackage.du0
-    public final void a(kt0 r3) {
-        this.e = r3;
-        boolean r4 = false;
-    L3:
-        if (r4 == true) goto L23;
-    L9:
-        th = move-exception;
-        yq3 r2 = this.f;
-        r2.getClass();
-        r2.a();
-        throw th;
-    L5:
-        if (this.g == true) goto L23;
-        this.f = new yq3(this);     // Catch: Throwable -> L9
-        this.a.execute(this.f);     // Catch: Throwable -> L9
-        this.f.get();     // Catch: Throwable -> L9 ExecutionException -> L11
-    L8:
-        r4 = true;
-    L11:
-        e = move-exception;
-        Throwable r0 = e.getCause();     // Catch: Throwable -> L9
-        r0.getClass();     // Catch: Throwable -> L9
-        if ((r0 instanceof PriorityTaskManager$PriorityTooLowException) == true) goto L3;
-        if ((r0 instanceof IOException) == true) goto L20;
-        String r5 = f35.a;     // Catch: Throwable -> L9
-        throw r0;     // Catch: Throwable -> L9
-    L20:
-        throw ((IOException) r0);     // Catch: Throwable -> L9
-    L23:
-        yq3 r6 = this.f;
-        r6.getClass();
-        r6.a();
+    public final void a(kt0 kt0Var) {
+        this.e = kt0Var;
+        boolean z = false;
+        while (!z) {
+            try {
+                if (this.g) {
+                    break;
+                }
+                this.f = new yq3(this);
+                this.a.execute(this.f);
+                try {
+                    this.f.get();
+                    z = true;
+                } catch (ExecutionException e) {
+                    Throwable cause = e.getCause();
+                    cause.getClass();
+                    if (!(cause instanceof PriorityTaskManager$PriorityTooLowException)) {
+                        if (cause instanceof IOException) {
+                            throw ((IOException) cause);
+                        }
+                        String str = f35.a;
+                        throw cause;
+                    }
+                }
+            } catch (Throwable th) {
+                yq3 yq3Var = this.f;
+                yq3Var.getClass();
+                yq3Var.a();
+                throw th;
+            }
+        }
+        yq3 yq3Var2 = this.f;
+        yq3Var2.getClass();
+        yq3Var2.a();
     }
 
     @Override // defpackage.du0
     public final void cancel() {
         this.g = true;
-        yq3 r1 = this.f;
-        if (r1 == null) goto L6;
-        r1.cancel(true);
-        return;
+        yq3 yq3Var = this.f;
+        if (yq3Var != null) {
+            yq3Var.cancel(true);
+        }
     }
 
     @Override // defpackage.du0
     public final void remove() {
-        lx r0 = this.c;
-        r0.n.m(r0.r.d(this.b));
+        lx lxVar = this.c;
+        lxVar.n.m(lxVar.r.d(this.b));
     }
 }

@@ -8,9 +8,10 @@ import java.lang.reflect.Method;
 public final class tz4 extends t12 {
     public final /* synthetic */ TypeToken p;
 
-    public tz4(TypeToken r1, Method r2) {
-        this.p = r1;
-        super(r2);
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public tz4(TypeToken typeToken, Method method) {
+        super(method);
+        this.p = typeToken;
     }
 
     @Override // defpackage.t12

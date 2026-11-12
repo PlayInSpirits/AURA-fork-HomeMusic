@@ -8,8 +8,8 @@ import com.eddyizm.tempus.interfaces.DialogClickCallback;
 public final class ub4 implements DialogClickCallback {
     public final /* synthetic */ vb4 n;
 
-    public ub4(vb4 r1) {
-        this.n = r1;
+    public ub4(vb4 vb4Var) {
+        this.n = vb4Var;
     }
 
     @Override // com.eddyizm.tempus.interfaces.DialogClickCallback

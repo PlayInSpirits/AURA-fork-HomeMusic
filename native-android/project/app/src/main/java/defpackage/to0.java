@@ -6,9 +6,9 @@ public final class to0 {
     public final String a;
     public final String b;
 
-    public to0(String r1, String r2) {
-        r2.getClass();
-        this.a = r1;
-        this.b = r2;
+    public to0(String str, String str2) {
+        str2.getClass();
+        this.a = str;
+        this.b = str2;
     }
 }

@@ -10,28 +10,28 @@ public final class iy3 extends jx1 {
     public final transient int s;
     public final transient int t;
 
-    public iy3(bx1 r1, Object[] r2, int r3, int r4) {
-        this.q = r1;
-        this.r = r2;
-        this.s = r3;
-        this.t = r4;
+    public iy3(bx1 bx1Var, Object[] objArr, int i, int i2) {
+        this.q = bx1Var;
+        this.r = objArr;
+        this.s = i;
+        this.t = i2;
     }
 
     @Override // defpackage.rw1
-    public final int b(int r1, Object[] r2) {
-        return a().b(r1, r2);
+    public final int b(int i, Object[] objArr) {
+        return a().b(i, objArr);
     }
 
     @Override // defpackage.rw1, java.util.AbstractCollection, java.util.Collection
-    public final boolean contains(Object r3) {
-        if ((r3 instanceof Map.Entry) == false) goto L10;
-        Map.Entry r4 = (Map.Entry) r3;
-        Object r0 = r4.getKey();
-        Object r5 = r4.getValue();
-        if (r5 == null) goto L10;
-        if (r5.equals(this.q.get(r0)) == false) goto L10;
-        return true;
-    L10:
+    public final boolean contains(Object obj) {
+        if (obj instanceof Map.Entry) {
+            Map.Entry entry = (Map.Entry) obj;
+            Object key = entry.getKey();
+            Object value = entry.getValue();
+            if (value != null && value.equals(this.q.get(key))) {
+                return true;
+            }
+        }
         return false;
     }
 
@@ -41,8 +41,9 @@ public final class iy3 extends jx1 {
     }
 
     @Override // defpackage.rw1
-    public final o15 h() {
-        return a().m(0);
+    /* JADX INFO: renamed from: h */
+    public final o15 iterator() {
+        return a().listIterator(0);
     }
 
     @Override // defpackage.jx1

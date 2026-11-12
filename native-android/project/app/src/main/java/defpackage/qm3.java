@@ -12,17 +12,17 @@ import retrofit2.http.QueryMap;
 /* JADX INFO: loaded from: classes.dex */
 public interface qm3 {
     @GET("createPlaylist")
-    Call<ApiResponse> a(@QueryMap Map<String, String> r1, @Query("playlistId") String r2, @Query("name") String r3, @Query("songId") ArrayList<String> r4);
+    Call<ApiResponse> a(@QueryMap Map<String, String> map, @Query("playlistId") String str, @Query("name") String str2, @Query("songId") ArrayList<String> arrayList);
 
     @GET("updatePlaylist")
-    Call<ApiResponse> b(@QueryMap Map<String, String> r1, @Query("playlistId") String r2, @Query("name") String r3, @Query("public") Boolean r4, @Query("songIdToAdd") ArrayList<String> r5, @Query("songIndexToRemove") ArrayList<Integer> r6);
+    Call<ApiResponse> b(@QueryMap Map<String, String> map, @Query("playlistId") String str, @Query("name") String str2, @Query("public") Boolean bool, @Query("songIdToAdd") ArrayList<String> arrayList, @Query("songIndexToRemove") ArrayList<Integer> arrayList2);
 
     @GET("getPlaylist")
-    Call<ApiResponse> c(@QueryMap Map<String, String> r1, @Query("id") String r2);
+    Call<ApiResponse> c(@QueryMap Map<String, String> map, @Query("id") String str);
 
     @GET("getPlaylists")
-    Call<ApiResponse> d(@QueryMap Map<String, String> r1);
+    Call<ApiResponse> d(@QueryMap Map<String, String> map);
 
     @GET("deletePlaylist")
-    Call<ApiResponse> e(@QueryMap Map<String, String> r1, @Query("id") String r2);
+    Call<ApiResponse> e(@QueryMap Map<String, String> map, @Query("id") String str);
 }

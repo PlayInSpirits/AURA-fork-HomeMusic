@@ -8,38 +8,24 @@ public final class ld3 {
     public final Object a;
     public final Object b;
 
-    public ld3(Object r1, Object r2) {
-        this.a = r1;
-        this.b = r2;
+    public ld3(Object obj, Object obj2) {
+        this.a = obj;
+        this.b = obj2;
     }
 
-    public final boolean equals(Object r4) {
-        if ((r4 instanceof ld3) == true) goto L5;
-        return false;
-    L5:
-        ld3 r5 = (ld3) r4;
-        if (Objects.equals(r5.a, this.a) == true) goto L8;
-    L11:
-        return false;
-    L8:
-        if (Objects.equals(r5.b, this.b) == false) goto L11;
-        return true;
+    public final boolean equals(Object obj) {
+        if (!(obj instanceof ld3)) {
+            return false;
+        }
+        ld3 ld3Var = (ld3) obj;
+        return Objects.equals(ld3Var.a, this.a) && Objects.equals(ld3Var.b, this.b);
     }
 
     public final int hashCode() {
-        int r0 = 0;
-        Object r1 = this.a;
-        if (r1 != null) goto L5;
-        int r2 = 0;
-    L6:
-        Object r3 = this.b;
-        if (r3 == null) goto L11;
-        r0 = r3.hashCode();
-    L11:
-        return r2 ^ r0;
-    L5:
-        r2 = r1.hashCode();
-        goto L6
+        Object obj = this.a;
+        int iHashCode = obj == null ? 0 : obj.hashCode();
+        Object obj2 = this.b;
+        return iHashCode ^ (obj2 != null ? obj2.hashCode() : 0);
     }
 
     public final String toString() {

@@ -8,32 +8,28 @@ public final class vz0 extends bu {
     public final /* synthetic */ bu h;
     public final /* synthetic */ ThreadPoolExecutor i;
 
-    public vz0(bu r1, ThreadPoolExecutor r2) {
-        this.h = r1;
-        this.i = r2;
+    public vz0(bu buVar, ThreadPoolExecutor threadPoolExecutor) {
+        this.h = buVar;
+        this.i = threadPoolExecutor;
     }
 
     @Override // defpackage.bu
-    public final void u(Throwable r2) {
-        ThreadPoolExecutor r0 = this.i;
-        this.h.u(r2);     // Catch: Throwable -> L6
-        r0.shutdown();
-        return;
-    L6:
-        th = move-exception;
-        r0.shutdown();
-        throw th;
+    public final void u(Throwable th) {
+        ThreadPoolExecutor threadPoolExecutor = this.i;
+        try {
+            this.h.u(th);
+        } finally {
+            threadPoolExecutor.shutdown();
+        }
     }
 
     @Override // defpackage.bu
-    public final void v(na4 r2) {
-        ThreadPoolExecutor r0 = this.i;
-        this.h.v(r2);     // Catch: Throwable -> L6
-        r0.shutdown();
-        return;
-    L6:
-        th = move-exception;
-        r0.shutdown();
-        throw th;
+    public final void v(na4 na4Var) {
+        ThreadPoolExecutor threadPoolExecutor = this.i;
+        try {
+            this.h.v(na4Var);
+        } finally {
+            threadPoolExecutor.shutdown();
+        }
     }
 }

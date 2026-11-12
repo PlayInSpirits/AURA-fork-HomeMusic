@@ -15,17 +15,17 @@ public final class ik4 {
     public final int j;
     public final int k;
 
-    public ik4(int r1, int r2, int r3, int r4, int r5, int r6, int r7, int r8, int r9, int r10, int r11) {
-        this.a = r1;
-        this.b = r2;
-        this.c = r3;
-        this.d = r4;
-        this.e = r5;
-        this.f = r6;
-        this.g = r7;
-        this.h = r8;
-        this.i = r9;
-        this.j = r10;
-        this.k = r11;
+    public ik4(int i, int i2, int i3, int i4, int i5, int i6, int i7, int i8, int i9, int i10, int i11) {
+        this.a = i;
+        this.b = i2;
+        this.c = i3;
+        this.d = i4;
+        this.e = i5;
+        this.f = i6;
+        this.g = i7;
+        this.h = i8;
+        this.i = i9;
+        this.j = i10;
+        this.k = i11;
     }
 }

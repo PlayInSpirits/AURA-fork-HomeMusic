@@ -27,9 +27,6 @@ public final class HubTracks$Item {
     private String songId;
     private String title;
 
-    public HubTracks$Item() {
-    }
-
     public final String getAlbum() {
         return this.album;
     }
@@ -70,43 +67,43 @@ public final class HubTracks$Item {
         return this.title;
     }
 
-    public final void setAlbum(String r1) {
-        this.album = r1;
+    public final void setAlbum(String str) {
+        this.album = str;
     }
 
-    public final void setArtist(String r1) {
-        this.artist = r1;
+    public final void setArtist(String str) {
+        this.artist = str;
     }
 
-    public final void setContext(String r1) {
-        this.context = r1;
+    public final void setContext(String str) {
+        this.context = str;
     }
 
-    public final void setCoverUrl(String r1) {
-        this.coverUrl = r1;
+    public final void setCoverUrl(String str) {
+        this.coverUrl = str;
     }
 
-    public final void setDurationS(Double r1) {
-        this.durationS = r1;
+    public final void setDurationS(Double d) {
+        this.durationS = d;
     }
 
-    public final void setLaunchId(String r1) {
-        this.launchId = r1;
+    public final void setLaunchId(String str) {
+        this.launchId = str;
     }
 
-    public final void setLaunchOrigin(String r1) {
-        this.launchOrigin = r1;
+    public final void setLaunchOrigin(String str) {
+        this.launchOrigin = str;
     }
 
-    public final void setRef(String r1) {
-        this.ref = r1;
+    public final void setRef(String str) {
+        this.ref = str;
     }
 
-    public final void setSongId(String r1) {
-        this.songId = r1;
+    public final void setSongId(String str) {
+        this.songId = str;
     }
 
-    public final void setTitle(String r1) {
-        this.title = r1;
+    public final void setTitle(String str) {
+        this.title = str;
     }
 }

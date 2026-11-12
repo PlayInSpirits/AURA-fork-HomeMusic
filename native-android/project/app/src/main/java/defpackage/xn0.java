@@ -10,191 +10,177 @@ public final class xn0 extends i90 {
     public cu1 p;
     public final byte[] q;
 
-    public xn0(ByteArrayInputStream r3) {
-        cu1 r0 = new cu1(r3);
+    public xn0(ByteArrayInputStream byteArrayInputStream) {
+        cu1 cu1Var = new cu1(byteArrayInputStream);
         this.q = new byte[1];
-        this.p = r0;
-        this.o = r3;
+        this.p = cu1Var;
+        this.o = byteArrayInputStream;
     }
 
     @Override // java.io.InputStream
     public final int available() {
-        cu1 r0 = this.p;
-        if (r0 != null) goto L5;
+        cu1 cu1Var = this.p;
+        if (cu1Var != null) {
+            return cu1Var.o.e();
+        }
         return 0;
-    L5:
-        return r0.o.e();
     }
 
     @Override // java.io.InputStream, java.io.Closeable, java.lang.AutoCloseable
-    public final void close() {
-        cu1 r1 = this.p;     // Catch: Throwable -> L11
-        if (r1 != null) goto L17;
-    L6:
-        this.p = null;     // Catch: Throwable -> L11
-        ByteArrayInputStream r2 = this.o;
-        if (r2 == null) goto L21;
-        r2.close();
-        this.o = null;
-        return;
-    L21:
-        return;
-    L17:
-        r1.close();     // Catch: IOException -> L16 Throwable -> L11
-    L11:
-        th = move-exception;
-        ByteArrayInputStream r3 = this.o;
-        if (r3 == null) goto L15;
-        r3.close();
-        this.o = null;
-    L15:
-        throw th;
+    public final void close() throws IOException {
+        try {
+            cu1 cu1Var = this.p;
+            if (cu1Var != null) {
+                try {
+                    cu1Var.close();
+                } catch (IOException unused) {
+                }
+            }
+            this.p = null;
+        } finally {
+            ByteArrayInputStream byteArrayInputStream = this.o;
+            if (byteArrayInputStream != null) {
+                byteArrayInputStream.close();
+                this.o = null;
+            }
+        }
     }
 
     @Override // java.io.InputStream
-    public final int read(byte[] r25, int r26, int r27) {
-        if (r27 != 0) goto L5;
-        return 0;
-    L5:
-        cu1 r3 = this.p;
-        if (r3 != null) goto L8;
-        return -1;
-    L8:
-        if (r3.n == true) goto L10;
-    L13:
-        boolean r6 = true;
-        if (r3.o.x() == 1) goto L16;
-        int r4 = r3.o.r(r25, r26, r27);
-        if (r4 == 0) goto L8;
-    L61:
-        long r1 = this.p.p.n.n;
-        b(r4);
-        if (r4 != (-1)) goto L67;
-        cu1 r2 = this.p;
-        if (r2 != null) goto L71;
-    L66:
-        this.p = null;
-        goto L67
-    L71:
-        r2.close();     // Catch: IOException -> L70
-    L67:
-        return r4;
-    L16:
-        if (cu1.j(r3.p, 1) != 1) goto L18;
-        boolean r5 = true;
-    L19:
-        r3.n = r5;
-        int r7 = 2;
-        int r8 = (int) cu1.j(r3.p, 2);
-        int r9 = 16;
-        if (r8 != 0) goto L22;
-        qs r10 = r3.p;
-        int r11 = r10.q % 8;
-        if (r11 <= 0) goto L54;
-        r10.f(r11);
-    L54:
-        long r12 = cu1.j(r3.p, 16);
-        if ((65535 & (r12 ^ 65535)) != cu1.j(r3.p, 16)) goto L57;
-        r3.o = new bu1(r3, r12);
-        goto L8
-    L57:
-        kf2.o("Illegal LEN / NLEN values");
-        return 0;
-    L22:
-        if (r8 != 1) goto L23;
-        r3.o = new zt1(r3, 4, cu1.v, cu1.w);
-        goto L8
-    L23:
-        if (r8 != 2) goto L48;
-        int[][] r13 = {new int[(int) (cu1.j(r3.p, 5) + 257)], new int[(int) (cu1.j(r3.p, 5) + 1)]};
-        qs r14 = r3.p;
-        int[] r15 = r13[0];
-        int[] r16 = r13[1];
-        int r17 = (int) (cu1.j(r14, 4) + 4);
-        int[] r18 = new int[19];
-        int r19 = 0;
-    L26:
-        if (r19 >= r17) goto L28;
-        r18[cu1.u[r19]] = (int) cu1.j(r14, 3);
-        r19 = r19 + 1;
-        r13 = r13;
-        goto L26
-    L28:
-        int[][] r110 = r13;
-        tu r20 = cu1.b(r18);
-        int r21 = r15.length + r16.length;
-        int[] r111 = new int[r21];
-        int r112 = 0;
-        int r113 = 0;
-        int r114 = -1;
-    L29:
-        if (r112 >= r21) goto L47;
-        if (r113 > 0) goto L31;
-        boolean r115 = r6;
-        int r22 = cu1.f(r14, r20);
-        if (r22 >= r9) goto L35;
-        r111[r112] = r22;
-        r112 = r112 + 1;
-        r114 = r22;
-    L46:
-        r6 = r115;
-        r7 = 2;
-        r9 = 16;
-        goto L29
-    L35:
-        long r23 = 3;
-        if (r22 != r9) goto L40;
-        int r24 = (int) (cu1.j(r14, r7) + 3);
-    L38:
-        r113 = r24;
-        goto L46
-    L40:
-        if (r22 != 17) goto L44;
-        long r28 = cu1.j(r14, 3);
-    L42:
-        r24 = (int) (r28 + r23);
-        r114 = 0;
-        goto L38
-    L44:
-        if (r22 != 18) goto L46;
-        r28 = cu1.j(r14, 7);
-        r23 = 11;
-        goto L42
-    L31:
-        r111[r112] = r114;
-        r113 = r113 - 1;
-        r112 = r112 + 1;
-        goto L29
-    L47:
-        System.arraycopy(r111, 0, r15, 0, r15.length);
-        System.arraycopy(r111, r15.length, r16, 0, r16.length);
-        r3.o = new zt1(r3, 3, r110[0], r110[r6 ? 1 : 0]);
-        goto L8
-    L48:
-        kf2.o(f34.f(r8, "Unsupported compression: "));
-        return 0;
-    L18:
-        r5 = false;
-        goto L19
-    L10:
-        if (r3.o.o() == true) goto L13;
-        r4 = -1;
-        goto L61
+    public final int read(byte[] bArr, int i, int i2) {
+        long j;
+        int iJ;
+        int iR;
+        if (i2 == 0) {
+            return 0;
+        }
+        cu1 cu1Var = this.p;
+        if (cu1Var == null) {
+            return -1;
+        }
+        while (true) {
+            if (cu1Var.n && !cu1Var.o.o()) {
+                iR = -1;
+                break;
+            }
+            boolean z = true;
+            if (cu1Var.o.x() == 1) {
+                cu1Var.n = cu1.j(cu1Var.p, 1) == 1;
+                int i3 = 2;
+                int iJ2 = (int) cu1.j(cu1Var.p, 2);
+                int i4 = 16;
+                if (iJ2 == 0) {
+                    qs qsVar = cu1Var.p;
+                    int i5 = qsVar.q % 8;
+                    if (i5 > 0) {
+                        qsVar.f(i5);
+                    }
+                    long j2 = cu1.j(cu1Var.p, 16);
+                    if ((65535 & (j2 ^ 65535)) != cu1.j(cu1Var.p, 16)) {
+                        kf2.o("Illegal LEN / NLEN values");
+                        return 0;
+                    }
+                    cu1Var.o = new bu1(cu1Var, j2);
+                } else if (iJ2 == 1) {
+                    cu1Var.o = new zt1(cu1Var, 4, cu1.v, cu1.w);
+                } else {
+                    if (iJ2 != 2) {
+                        kf2.o(f34.f(iJ2, "Unsupported compression: "));
+                        return 0;
+                    }
+                    int[][] iArr = {new int[(int) (cu1.j(cu1Var.p, 5) + 257)], new int[(int) (cu1.j(cu1Var.p, 5) + 1)]};
+                    qs qsVar2 = cu1Var.p;
+                    int[] iArr2 = iArr[0];
+                    int[] iArr3 = iArr[1];
+                    int iJ3 = (int) (cu1.j(qsVar2, 4) + 4);
+                    int[] iArr4 = new int[19];
+                    int i6 = 0;
+                    while (i6 < iJ3) {
+                        iArr4[cu1.u[i6]] = (int) cu1.j(qsVar2, 3);
+                        i6++;
+                        iArr = iArr;
+                    }
+                    int[][] iArr5 = iArr;
+                    tu tuVarB = cu1.b(iArr4);
+                    int length = iArr2.length + iArr3.length;
+                    int[] iArr6 = new int[length];
+                    int i7 = 0;
+                    int i8 = 0;
+                    int i9 = -1;
+                    while (i7 < length) {
+                        if (i8 > 0) {
+                            iArr6[i7] = i9;
+                            i8--;
+                            i7++;
+                        } else {
+                            boolean z2 = z;
+                            int iF = cu1.f(qsVar2, tuVarB);
+                            if (iF < i4) {
+                                iArr6[i7] = iF;
+                                i7++;
+                                i9 = iF;
+                            } else {
+                                long j3 = 3;
+                                if (iF == i4) {
+                                    iJ = (int) (cu1.j(qsVar2, i3) + 3);
+                                } else {
+                                    if (iF == 17) {
+                                        j = cu1.j(qsVar2, 3);
+                                    } else if (iF == 18) {
+                                        j = cu1.j(qsVar2, 7);
+                                        j3 = 11;
+                                    }
+                                    iJ = (int) (j + j3);
+                                    i9 = 0;
+                                }
+                                i8 = iJ;
+                            }
+                            z = z2;
+                            i3 = 2;
+                            i4 = 16;
+                        }
+                    }
+                    System.arraycopy(iArr6, 0, iArr2, 0, iArr2.length);
+                    System.arraycopy(iArr6, iArr2.length, iArr3, 0, iArr3.length);
+                    cu1Var.o = new zt1(cu1Var, 3, iArr5[0], iArr5[z ? 1 : 0]);
+                }
+            } else {
+                iR = cu1Var.o.r(bArr, i, i2);
+                if (iR != 0) {
+                    break;
+                }
+            }
+        }
+        long j4 = this.p.p.n.n;
+        b(iR);
+        if (iR == -1) {
+            cu1 cu1Var2 = this.p;
+            if (cu1Var2 != null) {
+                try {
+                    cu1Var2.close();
+                } catch (IOException unused) {
+                }
+            }
+            this.p = null;
+        }
+        return iR;
     }
 
     @Override // java.io.InputStream
-    public final int read() {
-    L2:
-        byte[] r0 = this.q;
-        int r1 = read(r0);
-        if (r1 == (-1)) goto L11;
-        if (r1 == 0) goto L2;
-        if (r1 == 1) goto L8;
-        kf2.o(f34.f(r1, "Invalid return value from read: "));
+    public final int read() throws IOException {
+        byte[] bArr;
+        int i;
+        do {
+            bArr = this.q;
+            i = read(bArr);
+            if (i == -1) {
+                return -1;
+            }
+        } while (i == 0);
+        if (i == 1) {
+            return bArr[0] & 255;
+        }
+        kf2.o(f34.f(i, "Invalid return value from read: "));
         return 0;
-    L8:
-        return r0[0] & 255;
-    L11:
-        return -1;
     }
 }

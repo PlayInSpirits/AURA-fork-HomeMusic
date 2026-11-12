@@ -7,7 +7,7 @@ import android.os.Binder;
 public final class na0 extends Binder {
     public final /* synthetic */ oa0 e;
 
-    public na0(oa0 r1) {
-        this.e = r1;
+    public na0(oa0 oa0Var) {
+        this.e = oa0Var;
     }
 }

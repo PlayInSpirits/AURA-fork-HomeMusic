@@ -10,57 +10,57 @@ public final class hy {
     public final bv3 a;
     public final ev3 b;
 
-    public hy(bv3 r1, fz0 r2, ev3 r3) {
-        this.a = r1;
-        this.b = r3;
+    public hy(bv3 bv3Var, fz0 fz0Var, ev3 ev3Var) {
+        this.a = bv3Var;
+        this.b = ev3Var;
     }
 
-    public final void a(cv3 r3) {
-        r3.getClass();
-        tl1 r0 = ze5.a;
-        bv3 r2 = this.a;
-        if (r2.u != null) goto L6;
-        r2.u = r3;
-        r3.s.add(new zu3(r2, r2.s));
-        return;
-    L6:
-        kf2.o("Check failed.");
+    public final void a(cv3 cv3Var) {
+        cv3Var.getClass();
+        tl1 tl1Var = ze5.a;
+        bv3 bv3Var = this.a;
+        if (bv3Var.u != null) {
+            kf2.o("Check failed.");
+        } else {
+            bv3Var.u = cv3Var;
+            cv3Var.s.add(new zu3(bv3Var, bv3Var.s));
+        }
     }
 
-    public final void b(x90 r1) {
-        this.a.C.add(r1);
+    public final void b(x90 x90Var) {
+        this.a.C.add(x90Var);
     }
 
     public final cv3 c() {
         return this.a.u;
     }
 
-    public final void d(o34 r1, IOException r2) {
-        r1.getClass();
-        r1.c.getClass();
+    public final void d(o34 o34Var, IOException iOException) {
+        o34Var.getClass();
+        o34Var.c.getClass();
     }
 
-    public final void e(cv3 r1) {
-        r1.getClass();
+    public final void e(cv3 cv3Var) {
+        cv3Var.getClass();
     }
 
-    public final void f(cv3 r1) {
-        r1.getClass();
+    public final void f(cv3 cv3Var) {
+        cv3Var.getClass();
     }
 
-    public final void g(cv3 r1) {
+    public final void g(cv3 cv3Var) {
     }
 
-    public final void h(cv3 r1) {
+    public final void h(cv3 cv3Var) {
     }
 
-    public final void i(cv3 r1) {
+    public final void i(cv3 cv3Var) {
     }
 
-    public final void j(String r1, List r2) {
+    public final void j(String str, List list) {
     }
 
-    public final void k(String r1) {
+    public final void k(String str) {
     }
 
     public final boolean l() {
@@ -71,15 +71,15 @@ public final class hy {
         return this.a.A;
     }
 
-    public final void n(cv3 r1) {
+    public final void n(cv3 cv3Var) {
     }
 
     public final Socket o() {
         return this.a.h();
     }
 
-    public final void p(x90 r1) {
-        this.a.C.remove(r1);
+    public final void p(x90 x90Var) {
+        this.a.C.remove(x90Var);
     }
 
     public final void q() {

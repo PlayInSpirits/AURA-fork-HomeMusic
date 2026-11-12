@@ -11,49 +11,37 @@ public final class od3 {
     public final float f;
     public final float g;
 
-    public od3(ic r1, int r2, int r3, int r4, int r5, float r6, float r7) {
-        this.a = r1;
-        this.b = r2;
-        this.c = r3;
-        this.d = r4;
-        this.e = r5;
-        this.f = r6;
-        this.g = r7;
+    public od3(ic icVar, int i, int i2, int i3, int i4, float f, float f2) {
+        this.a = icVar;
+        this.b = i;
+        this.c = i2;
+        this.d = i3;
+        this.e = i4;
+        this.f = f;
+        this.g = f2;
     }
 
-    public final int a(int r2) {
-        int r0 = this.c;
-        int r1 = this.b;
-        return gb.m(r2, r1, r0) - r1;
+    public final int a(int i) {
+        int i2 = this.c;
+        int i3 = this.b;
+        return gb.m(i, i3, i2) - i3;
     }
 
-    public final boolean equals(Object r4) {
-        if (this != r4) goto L5;
-        return true;
-    L5:
-        if ((r4 instanceof od3) == false) goto L27;
-        od3 r5 = (od3) r4;
-        if (this.a == r5.a) goto L11;
-        return false;
-    L11:
-        if (this.b != r5.b) goto L27;
-        if (this.c != r5.c) goto L27;
-        if (this.d != r5.d) goto L27;
-        if (this.e != r5.e) goto L27;
-        if (Float.compare(this.f, r5.f) != 0) goto L27;
-        if (Float.compare(this.g, r5.g) != 0) goto L27;
-        return true;
-    L27:
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj instanceof od3) {
+            od3 od3Var = (od3) obj;
+            if (this.a == od3Var.a && this.b == od3Var.b && this.c == od3Var.c && this.d == od3Var.d && this.e == od3Var.e && Float.compare(this.f, od3Var.f) == 0 && Float.compare(this.g, od3Var.g) == 0) {
+                return true;
+            }
+        }
         return false;
     }
 
     public final int hashCode() {
-        int r0 = this.a.hashCode() * 31;
-        int r1 = f34.d(this.b, r0, 31);
-        int r2 = f34.d(this.c, r1, 31);
-        int r3 = f34.d(this.d, r2, 31);
-        int r4 = b11.d(f34.d(this.e, r3, 31), this.f, 31);
-        return Float.hashCode(this.g) + r4;
+        return Float.hashCode(this.g) + b11.d(f34.d(this.e, f34.d(this.d, f34.d(this.c, f34.d(this.b, this.a.hashCode() * 31, 31), 31), 31), 31), this.f, 31);
     }
 
     public final String toString() {

@@ -8,19 +8,15 @@ import java.util.Set;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class z01 implements Set, Serializable, x32 {
-    public static final z01 n = null;
-
-    static {
-        n = new z01();
-    }
+    public static final z01 n = new z01();
 
     @Override // java.util.Set, java.util.Collection
-    public final /* bridge */ /* synthetic */ boolean add(Object r1) {
+    public final /* bridge */ /* synthetic */ boolean add(Object obj) {
         throw new UnsupportedOperationException("Operation is not supported for read-only collection");
     }
 
     @Override // java.util.Set, java.util.Collection
-    public final boolean addAll(Collection r1) {
+    public final boolean addAll(Collection collection) {
         throw new UnsupportedOperationException("Operation is not supported for read-only collection");
     }
 
@@ -30,25 +26,19 @@ public final class z01 implements Set, Serializable, x32 {
     }
 
     @Override // java.util.Set, java.util.Collection
-    public final /* bridge */ boolean contains(Object r1) {
+    public final /* bridge */ boolean contains(Object obj) {
         return false;
     }
 
     @Override // java.util.Set, java.util.Collection
-    public final boolean containsAll(Collection r1) {
-        r1.getClass();
-        return r1.isEmpty();
+    public final boolean containsAll(Collection collection) {
+        collection.getClass();
+        return collection.isEmpty();
     }
 
     @Override // java.util.Set, java.util.Collection
-    public final boolean equals(Object r1) {
-        if ((r1 instanceof Set) == true) goto L5;
-        return false;
-    L5:
-        if (((Set) r1).isEmpty() == false) goto L10;
-        return true;
-    L10:
-        return false;
+    public final boolean equals(Object obj) {
+        return (obj instanceof Set) && ((Set) obj).isEmpty();
     }
 
     @Override // java.util.Set, java.util.Collection
@@ -67,17 +57,17 @@ public final class z01 implements Set, Serializable, x32 {
     }
 
     @Override // java.util.Set, java.util.Collection
-    public final boolean remove(Object r1) {
+    public final boolean remove(Object obj) {
         throw new UnsupportedOperationException("Operation is not supported for read-only collection");
     }
 
     @Override // java.util.Set, java.util.Collection
-    public final boolean removeAll(Collection r1) {
+    public final boolean removeAll(Collection collection) {
         throw new UnsupportedOperationException("Operation is not supported for read-only collection");
     }
 
     @Override // java.util.Set, java.util.Collection
-    public final boolean retainAll(Collection r1) {
+    public final boolean retainAll(Collection collection) {
         throw new UnsupportedOperationException("Operation is not supported for read-only collection");
     }
 
@@ -87,9 +77,9 @@ public final class z01 implements Set, Serializable, x32 {
     }
 
     @Override // java.util.Set, java.util.Collection
-    public final Object[] toArray(Object[] r1) {
-        r1.getClass();
-        return zz1.J(this, r1);
+    public final Object[] toArray(Object[] objArr) {
+        objArr.getClass();
+        return zz1.J(this, objArr);
     }
 
     public final String toString() {

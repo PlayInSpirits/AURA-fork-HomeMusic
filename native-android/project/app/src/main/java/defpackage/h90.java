@@ -9,35 +9,35 @@ import java.util.Comparator;
 public final class h90 extends gb3 implements Serializable {
     public final Comparator[] n;
 
-    public h90(kw r3, kw r4) {
-        this.n = new Comparator[]{r3, r4};
+    public h90(kw kwVar, kw kwVar2) {
+        this.n = new Comparator[]{kwVar, kwVar2};
     }
 
     @Override // java.util.Comparator
-    public final int compare(Object r5, Object r6) {
-        int r1 = 0;
-    L3:
-        Comparator[] r2 = this.n;
-        if (r1 >= r2.length) goto L9;
-        int r3 = r2[r1].compare(r5, r6);
-        if (r3 != 0) goto L7;
-        r1 = r1 + 1;
-        goto L3
-    L7:
-        return r3;
-    L9:
-        return 0;
+    public final int compare(Object obj, Object obj2) {
+        int i = 0;
+        while (true) {
+            Comparator[] comparatorArr = this.n;
+            if (i >= comparatorArr.length) {
+                return 0;
+            }
+            int iCompare = comparatorArr[i].compare(obj, obj2);
+            if (iCompare != 0) {
+                return iCompare;
+            }
+            i++;
+        }
     }
 
     @Override // java.util.Comparator
-    public final boolean equals(Object r2) {
-        if (r2 != this) goto L6;
-        return true;
-    L6:
-        if ((r2 instanceof h90) == true) goto L8;
+    public final boolean equals(Object obj) {
+        if (obj == this) {
+            return true;
+        }
+        if (obj instanceof h90) {
+            return Arrays.equals(this.n, ((h90) obj).n);
+        }
         return false;
-    L8:
-        return Arrays.equals(this.n, ((h90) r2).n);
     }
 
     public final int hashCode() {

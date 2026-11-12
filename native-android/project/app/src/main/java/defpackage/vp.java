@@ -9,23 +9,22 @@ public final /* synthetic */ class vp implements Runnable {
     public final /* synthetic */ int n;
     public final /* synthetic */ k6 o;
 
-    public /* synthetic */ vp(k6 r1, int r2) {
-        this.n = r2;
-        this.o = r1;
+    public /* synthetic */ vp(k6 k6Var, int i) {
+        this.n = i;
+        this.o = k6Var;
     }
 
     @Override // java.lang.Runnable
-    public final void run() {
-        int r0 = this.n;
-        k6 r3 = this.o;
-        switch(r0) {
-            case 0: goto L6;
-            default: goto L4;
-        };
-    L4:
-        r3.run();
-        return;
-    L6:
-        new Handler(Looper.getMainLooper()).post(new vp(r3, 1));
+    public final void run() throws InterruptedException {
+        int i = this.n;
+        k6 k6Var = this.o;
+        switch (i) {
+            case 0:
+                new Handler(Looper.getMainLooper()).post(new vp(k6Var, 1));
+                break;
+            default:
+                k6Var.run();
+                break;
+        }
     }
 }

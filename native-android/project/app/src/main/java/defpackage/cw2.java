@@ -5,7 +5,7 @@ package defpackage;
 public final class cw2 {
     public final tv4 a;
 
-    public cw2(tv4 r1) {
-        this.a = r1;
+    public cw2(tv4 tv4Var) {
+        this.a = tv4Var;
     }
 }

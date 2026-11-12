@@ -9,13 +9,10 @@ public final class bk3 extends ee1 {
     }
 
     @Override // defpackage.ee1
-    public final kc1 r(int r1) {
-        if (r1 == 0) goto L10;
-        if (r1 == 1) goto L8;
-        return new hk3();
-    L8:
-        return new qk3();
-    L10:
+    public final kc1 r(int i) {
+        if (i != 0) {
+            return i != 1 ? new hk3() : new qk3();
+        }
         return new hk3();
     }
 }

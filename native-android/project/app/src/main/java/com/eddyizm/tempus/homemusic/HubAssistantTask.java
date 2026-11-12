@@ -13,9 +13,6 @@ public final class HubAssistantTask {
     private long id;
     private String status;
 
-    public HubAssistantTask() {
-    }
-
     public final Long getBatchId() {
         return this.batchId;
     }
@@ -32,19 +29,19 @@ public final class HubAssistantTask {
         return this.status;
     }
 
-    public final void setBatchId(Long r1) {
-        this.batchId = r1;
+    public final void setBatchId(Long l) {
+        this.batchId = l;
     }
 
-    public final void setError(String r1) {
-        this.error = r1;
+    public final void setError(String str) {
+        this.error = str;
     }
 
-    public final void setId(long r1) {
-        this.id = r1;
+    public final void setId(long j) {
+        this.id = j;
     }
 
-    public final void setStatus(String r1) {
-        this.status = r1;
+    public final void setStatus(String str) {
+        this.status = str;
     }
 }

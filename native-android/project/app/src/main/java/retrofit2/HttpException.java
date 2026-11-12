@@ -10,16 +10,16 @@ public class HttpException extends RuntimeException {
     private final String message;
     private final transient Response<?> response;
 
-    public HttpException(Response<?> r2) {
-        super(getMessage(r2));
-        this.code = r2.code();
-        this.message = r2.message();
-        this.response = r2;
+    public HttpException(Response<?> response) {
+        super(getMessage(response));
+        this.code = response.code();
+        this.message = response.message();
+        this.response = response;
     }
 
-    private static String getMessage(Response<?> r2) {
-        Objects.requireNonNull(r2, "response == null");
-        return "HTTP " + r2.code() + " " + r2.message();
+    private static String getMessage(Response<?> response) {
+        Objects.requireNonNull(response, "response == null");
+        return "HTTP " + response.code() + " " + response.message();
     }
 
     public int code() {

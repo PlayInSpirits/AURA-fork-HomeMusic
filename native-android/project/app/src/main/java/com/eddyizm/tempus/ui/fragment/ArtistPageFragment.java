@@ -85,310 +85,326 @@ public class ArtistPageFragment extends kc1 implements ClickCallback {
     public l7 r0;
     public s6 s0;
     public bl2 t0;
-    public int u0;
-    public int v0;
-    public final Handler w0;
-    public final a0 x0;
+    public int u0 = 2;
+    public int v0 = 20;
+    public final Handler w0 = new Handler(Looper.getMainLooper());
+    public final a0 x0 = new a0(6, this);
 
-    public ArtistPageFragment() {
-        this.u0 = 2;
-        this.v0 = 20;
-        this.w0 = new Handler(Looper.getMainLooper());
-        this.x0 = new a0(6, this);
+    public static void h0(ArtistPageFragment artistPageFragment, Button button, int i) {
+        String string = button.getText() != null ? button.getText().toString() : null;
+        if (string == null || string.isEmpty()) {
+            return;
+        }
+        float fMeasureText = button.getPaint().measureText(string);
+        int width = ((button.getWidth() - button.getPaddingLeft()) - button.getPaddingRight()) - ((int) ((48.0f * artistPageFragment.Z().getResources().getDisplayMetrics().density) + 0.5f));
+        try {
+            if (width <= 0 || fMeasureText > width) {
+                button.setText("");
+                button.setContentDescription(artistPageFragment.s(i));
+            } else if (button.getContentDescription() == null || button.getContentDescription().length() == 0) {
+                button.setContentDescription(artistPageFragment.s(i));
+            }
+        } catch (Exception unused) {
+        }
     }
 
-    public static void h0(ArtistPageFragment r4, Button r5, int r6) {
-        if (r5.getText() == null) goto L5;
-        String r0 = r5.getText().toString();
-    L6:
-        if (r0 != null) goto L8;
-        return;
-    L8:
-        if (r0.isEmpty() == true) goto L30;
-        float r1 = r5.getPaint().measureText(r0);
-        int r2 = ((r5.getWidth() - r5.getPaddingLeft()) - r5.getPaddingRight()) - ((int) ((48.0f * r4.Z().getResources().getDisplayMetrics().density) + 0.5f));
-        if (r2 > 0) goto L13;
-    L21:
-        r5.setText("");
-        r5.setContentDescription(r4.s(r6));     // Catch: Exception -> L24
-        return;
-    L13:
-        if (r1 > r2) goto L21;
-        if (r5.getContentDescription() != null) goto L18;
-    L19:
-        r5.setContentDescription(r4.s(r6));     // Catch: Exception -> L24
-        return;
-    L18:
-        if (r5.getContentDescription().length() == 0) goto L19;
-        return;
-    L31:
-        return;
-    L30:
-        return;
-    L5:
-        r0 = null;
-        goto L6
-    }
-
+    /* JADX WARN: Code duplicated, block: B:111:0x04bf A[PHI: r7
+  0x04bf: PHI (r7v4 int) = 
+  (r7v3 int)
+  (r7v5 int)
+  (r7v6 int)
+  (r7v8 int)
+  (r7v9 int)
+  (r7v10 int)
+  (r7v11 int)
+  (r7v12 int)
+  (r7v13 int)
+  (r7v15 int)
+  (r7v16 int)
+  (r7v17 int)
+  (r7v18 int)
+  (r7v19 int)
+  (r7v20 int)
+  (r7v21 int)
+  (r7v22 int)
+ binds: [B:31:0x00c9, B:33:0x00d6, B:35:0x00df, B:113:0x04c3, B:43:0x010b, B:45:0x0116, B:47:0x011f, B:49:0x012b, B:51:0x0137, B:53:0x0149, B:55:0x0154, B:57:0x015f, B:59:0x016a, B:61:0x0175, B:63:0x0180, B:65:0x018b, B:67:0x0194] A[DONT_GENERATE, DONT_INLINE]] */
+    /* JADX WARN: Code duplicated, block: B:115:0x04c6 A[PHI: r5
+  0x04c6: PHI (r5v2 int) = (r5v1 int), (r5v3 int), (r5v4 int) binds: [B:27:0x00b1, B:29:0x00bc, B:114:0x04c5] A[DONT_GENERATE, DONT_INLINE]] */
     @Override // defpackage.kc1
-    public final View H(LayoutInflater r32, ViewGroup r33, Bundle r34) {
-        this.m0 = (MainActivity) l();
-        View r0 = r32.inflate(R.layout.fragment_artist_page, r33, false);
-        int r1 = R.id.album_page_button_layout;
-        if (((LinearLayout) uo.s(r0, R.id.album_page_button_layout)) == null) goto L117;
-        r1 = R.id.all_albums_recycler_view;
-        RecyclerView r9 = (RecyclerView) uo.s(r0, R.id.all_albums_recycler_view);
-        if (r9 == null) goto L117;
-        r1 = R.id.anim_toolbar;
-        MaterialToolbar r10 = (MaterialToolbar) uo.s(r0, R.id.anim_toolbar);
-        if (r10 == null) goto L117;
-        r1 = R.id.appbar;
-        if (((AppBarLayout) uo.s(r0, R.id.appbar)) == null) goto L117;
-        r1 = R.id.appears_on_recycler_view;
-        RecyclerView r11 = (RecyclerView) uo.s(r0, R.id.appears_on_recycler_view);
-        if (r11 == null) goto L117;
-        r1 = R.id.appears_on_see_all_text_view;
-        TextView r12 = (TextView) uo.s(r0, R.id.appears_on_see_all_text_view);
-        if (r12 == null) goto L117;
-        r1 = R.id.artist_backdrop_image_view;
-        ImageView r13 = (ImageView) uo.s(r0, R.id.artist_backdrop_image_view);
-        if (r13 == null) goto L117;
-        r1 = R.id.artist_page_all_albums_sectors;
-        if (((LinearLayout) uo.s(r0, R.id.artist_page_all_albums_sectors)) == null) goto L117;
-        r1 = R.id.artist_page_appears_on_sector;
-        LinearLayout r14 = (LinearLayout) uo.s(r0, R.id.artist_page_appears_on_sector);
-        if (r14 == null) goto L117;
-        r1 = R.id.artist_page_bio_sector;
-        LinearLayout r15 = (LinearLayout) uo.s(r0, R.id.artist_page_bio_sector);
-        if (r15 == null) goto L117;
-        r1 = R.id.artist_page_radio_button;
-        Button r16 = (Button) uo.s(r0, R.id.artist_page_radio_button);
-        if (r16 == null) goto L117;
-        Button r17 = (Button) uo.s(r0, R.id.artist_page_shuffle_button);
-        if (r17 == null) goto L116;
-        int r5 = R.id.artist_page_top_songs_sector;
-        LinearLayout r18 = (LinearLayout) uo.s(r0, R.id.artist_page_top_songs_sector);
-        if (r18 == null) goto L115;
-        r5 = R.id.artist_page_wave_button;
-        if (((Button) uo.s(r0, R.id.artist_page_wave_button)) == null) goto L115;
-        int r7 = R.id.bio_more_text_view_clickable;
-        TextView r19 = (TextView) uo.s(r0, R.id.bio_more_text_view_clickable);
-        if (r19 == null) goto L111;
-        r7 = R.id.bio_text_view;
-        TextView r20 = (TextView) uo.s(r0, R.id.bio_text_view);
-        if (r20 == null) goto L111;
-        r7 = R.id.bottom_button_divider;
-        View r21 = uo.s(r0, R.id.bottom_button_divider);
-        if (r21 == null) goto L111;
-        if (((ToggleButton) uo.s(r0, R.id.button_favorite)) != null) goto L39;
-        r5 = R.id.button_favorite;
-        goto L115
-    L39:
-        if (((Button) uo.s(r0, R.id.button_more_options)) != null) goto L41;
-        r7 = R.id.button_more_options;
-        goto L111
-    L41:
-        if (((Button) uo.s(r0, R.id.button_toggle_bio)) == null) goto L112;
-        r7 = R.id.collapsing_toolbar;
-        CollapsingToolbarLayout r22 = (CollapsingToolbarLayout) uo.s(r0, R.id.collapsing_toolbar);
-        if (r22 == null) goto L111;
-        r7 = R.id.fragment_artist_page_nested_scroll_view;
-        if (((NestedScrollView) uo.s(r0, R.id.fragment_artist_page_nested_scroll_view)) == null) goto L111;
-        r7 = R.id.item_song_placeholder_1;
-        View r23 = uo.s(r0, R.id.item_song_placeholder_1);
-        if (r23 == null) goto L111;
-        c12.f(r23);
-        r7 = R.id.item_song_placeholder_2;
-        View r24 = uo.s(r0, R.id.item_song_placeholder_2);
-        if (r24 == null) goto L111;
-        c12.f(r24);
-        r7 = R.id.item_song_placeholder_3;
-        View r25 = uo.s(r0, R.id.item_song_placeholder_3);
-        if (r25 == null) goto L111;
-        c12.f(r25);
-        CoordinatorLayout r8 = (CoordinatorLayout) r0;
-        r7 = R.id.most_streamed_song_recycler_container;
-        LinearLayout r26 = (LinearLayout) uo.s(r0, R.id.most_streamed_song_recycler_container);
-        if (r26 == null) goto L111;
-        r7 = R.id.most_streamed_song_recycler_empty;
-        TextView r27 = (TextView) uo.s(r0, R.id.most_streamed_song_recycler_empty);
-        if (r27 == null) goto L111;
-        r7 = R.id.most_streamed_song_recycler_placeholder;
-        ShimmerFrameLayout r28 = (ShimmerFrameLayout) uo.s(r0, R.id.most_streamed_song_recycler_placeholder);
-        if (r28 == null) goto L111;
-        r7 = R.id.most_streamed_song_recycler_view;
-        RecyclerView r29 = (RecyclerView) uo.s(r0, R.id.most_streamed_song_recycler_view);
-        if (r29 == null) goto L111;
-        r7 = R.id.most_streamed_song_text_view_clickable;
-        TextView r210 = (TextView) uo.s(r0, R.id.most_streamed_song_text_view_clickable);
-        if (r210 == null) goto L111;
-        r7 = R.id.similar_artist_sector;
-        LinearLayout r211 = (LinearLayout) uo.s(r0, R.id.similar_artist_sector);
-        if (r211 == null) goto L111;
-        r7 = R.id.similar_artists_recycler_view;
-        RecyclerView r212 = (RecyclerView) uo.s(r0, R.id.similar_artists_recycler_view);
-        if (r212 == null) goto L111;
-        r7 = R.id.upper_button_divider;
-        View r30 = uo.s(r0, R.id.upper_button_divider);
-        if (r30 == null) goto L111;
-        this.l0 = new sc1(r8, r9, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r20, r21, r22, r26, r27, r28, r29, r210, r211, r212, r30);
-        nc1 r31 = X();
-        e75 r35 = r31.d();
-        b75 r110 = gh0.r(r31);
-        bq4 r111 = new bq4(r35, r110, b11.e(r31, r110));
-        i30 r36 = kx3.a(wj.class);
-        String r37 = r36.b();
-        if (r37 == null) goto L109;
-        this.n0 = (wj) r111.l(r36, "androidx.lifecycle.ViewModelProvider.DefaultKey:".concat(r37));
-        nc1 r38 = X();
-        e75 r39 = r38.d();
-        b75 r112 = gh0.r(r38);
-        bq4 r113 = new bq4(r39, r112, b11.e(r38, r112));
-        i30 r40 = kx3.a(li3.class);
-        String r41 = r40.b();
-        if (r41 == null) goto L107;
-        this.o0 = (li3) r113.l(r40, "androidx.lifecycle.ViewModelProvider.DefaultKey:".concat(r41));
-        Bundle r42 = this.s;
-        if (r42 == null) goto L75;
-        ArtistID3 r43 = (ArtistID3) r42.getParcelable("ARTIST_OBJECT");
-    L76:
-        if (r43 != null) goto L83;
-        MainActivity r2 = this.m0;
-        if (r2 == null) goto L82;
-        v23 r3 = r2.T;
-        if (r3 == null) goto L82;
-        r3.o();
-    L82:
-        return r8;
-    L83:
-        ut4.c().b(Z());
-        ut4 r44 = ut4.c();
-        Context r114 = Z();
-        if (r44.h == true) goto L86;
-        r44.b(r114);
-    L86:
-        this.u0 = r44.b;
-        ut4 r45 = ut4.c();
-        Context r115 = Z();
-        if (r45.h == true) goto L89;
-        r45.b(r115);
-    L89:
-        this.v0 = r45.c;
-        wj r46 = this.n0;
-        r46.e = r43;
-        le1 r47 = v();
-        pa r116 = r46.c;
-        String r117 = r46.e.getId();
-        r116.getClass();
-        int r118 = 6;
-        pa.v(r117).e(r47, new d8(r118, r46));
-        int r119 = 1;
-        this.l0.t.setOnClickListener(new pj(this, r119));
-        ToggleButton r6 = (ToggleButton) r8.findViewById(R.id.button_favorite);
-        String r48 = this.n0.e.getId();
-        if (this.n0.e.getStarred() == null) goto L92;
-        boolean r49 = true;
-    L93:
-        r6.setChecked(n61.f(3, r48, r49));
-        int r50 = 2;
-        r6.setOnClickListener(new pj(this, r50));
-        ((Button) r8.findViewById(R.id.button_toggle_bio)).setOnClickListener(new pj(this, 3));
-        int r51 = 4;
-        ((Button) r8.findViewById(R.id.button_more_options)).setOnClickListener(new pj(this, r51));
-        Button r4 = (Button) r8.findViewById(R.id.artist_page_shuffle_button);
-        Button r52 = (Button) r8.findViewById(R.id.artist_page_radio_button);
-        if (r4 == null) goto L97;
-        if (r52 == null) goto L97;
-        r8.getViewTreeObserver().addOnGlobalLayoutListener(new qj(this, r4, r52, r8));
-    L97:
-        this.m0.o(this.l0.c);
-        if (this.m0.n() == null) goto L100;
-        this.m0.n().f0(true);
-    L100:
-        this.l0.o.setTitle(this.n0.e.getName());
-        this.l0.c.setNavigationOnClickListener(new pj(this, r118));
-        this.l0.o.setExpandedTitleColor(r().getColor(R.color.white, null));
-        wj r53 = this.n0;
-        r53.c(r53.e.getId()).e(v(), new oj(this, r119));
-        this.l0.j.setOnClickListener(new pj(this, 7));
-        View r54 = this.l0.a.findViewById(R.id.artist_page_wave_button);
-        String r55 = this.n0.e.getId();
-        int r56 = 5;
-        if (r55 != null) goto L103;
-    L105:
-        this.l0.i.setOnClickListener(new pj(this, 8));
-        RecyclerView r57 = this.l0.s;
-        Z();
-        r57.setLayoutManager(new LinearLayoutManager(1));
-        ni4 r58 = new ni4(v(), this, true, true, null);
-        this.p0 = r58;
-        this.l0.s.setAdapter(r58);
-        this.p0.A = this.t0;
-        i0();
-        wj r59 = this.n0;
-        pa r60 = r59.c;
-        String r61 = r59.e.getName();
-        r60.getClass();
-        pa.z(20, r61).e(v(), new oj(this, r50));
-        this.l0.q.setOnClickListener(new pj(this, 0));
-        RecyclerView r62 = this.l0.b;
-        Z();
-        r62.setLayoutManager(new LinearLayoutManager(1));
-        this.l0.b.setHasFixedSize(true);
-        this.l0.b.setNestedScrollingEnabled(false);
-        v8 r63 = new v8(Z(), this);
-        this.q0 = r63;
-        this.l0.b.setAdapter(r63);
-        this.n0.g.e(v(), new oj(this, r51));
-        RecyclerView r64 = this.l0.d;
-        Z();
-        r64.setLayoutManager(new LinearLayoutManager(0));
-        this.l0.d.setHasFixedSize(true);
-        this.l0.d.setNestedScrollingEnabled(false);
-        l7 r65 = new l7(this, true);
-        this.r0 = r65;
-        this.l0.d.setAdapter(r65);
-        this.n0.f.e(v(), new oj(this, r56));
-        RecyclerView r66 = this.l0.v;
-        Z();
-        r66.setLayoutManager(new GridLayoutManager(this.u0));
-        this.l0.v.i(new ek1(this.u0, this.v0));
-        this.l0.v.setHasFixedSize(true);
-        s6 r67 = new s6(this);
-        this.s0 = r67;
-        this.l0.v.setAdapter(r67);
-        wj r68 = this.n0;
-        r68.c(r68.e.getId()).e(v(), new oj(this, r118));
-        new xg0(0).a(this.l0.v);
-        return r8;
-    L103:
-        if (r55.trim().isEmpty() == true) goto L105;
-        r54.setVisibility(0);
-        r54.setOnClickListener(new j8(r56, this, r55));
-        goto L105
-    L92:
-        r49 = false;
-        goto L93
-    L75:
-        r43 = null;
-        goto L76
-    L107:
-        kf2.n("Local and anonymous classes can not be ViewModels");
-        return null;
-    L109:
-        kf2.n("Local and anonymous classes can not be ViewModels");
-        return null;
-    L112:
-        r1 = R.id.button_toggle_bio;
-    L111:
-        r1 = r7;
-    L115:
-        r1 = r5;
-        goto L117
-    L116:
-        r1 = R.id.artist_page_shuffle_button;
-    L117:
-        nz2.n("Missing required view with ID: ".concat(r0.getResources().getResourceName(r1)));
+    public final View H(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
+        v23 v23Var;
+        this.m0 = (MainActivity) e();
+        View viewInflate = layoutInflater.inflate(R.layout.fragment_artist_page, viewGroup, false);
+        int i = R.id.album_page_button_layout;
+        if (((LinearLayout) uo.s(viewInflate, R.id.album_page_button_layout)) != null) {
+            i = R.id.all_albums_recycler_view;
+            RecyclerView recyclerView = (RecyclerView) uo.s(viewInflate, R.id.all_albums_recycler_view);
+            if (recyclerView != null) {
+                i = R.id.anim_toolbar;
+                MaterialToolbar materialToolbar = (MaterialToolbar) uo.s(viewInflate, R.id.anim_toolbar);
+                if (materialToolbar != null) {
+                    i = R.id.appbar;
+                    if (((AppBarLayout) uo.s(viewInflate, R.id.appbar)) != null) {
+                        i = R.id.appears_on_recycler_view;
+                        RecyclerView recyclerView2 = (RecyclerView) uo.s(viewInflate, R.id.appears_on_recycler_view);
+                        if (recyclerView2 != null) {
+                            i = R.id.appears_on_see_all_text_view;
+                            TextView textView = (TextView) uo.s(viewInflate, R.id.appears_on_see_all_text_view);
+                            if (textView != null) {
+                                i = R.id.artist_backdrop_image_view;
+                                ImageView imageView = (ImageView) uo.s(viewInflate, R.id.artist_backdrop_image_view);
+                                if (imageView != null) {
+                                    i = R.id.artist_page_all_albums_sectors;
+                                    if (((LinearLayout) uo.s(viewInflate, R.id.artist_page_all_albums_sectors)) != null) {
+                                        i = R.id.artist_page_appears_on_sector;
+                                        LinearLayout linearLayout = (LinearLayout) uo.s(viewInflate, R.id.artist_page_appears_on_sector);
+                                        if (linearLayout != null) {
+                                            i = R.id.artist_page_bio_sector;
+                                            LinearLayout linearLayout2 = (LinearLayout) uo.s(viewInflate, R.id.artist_page_bio_sector);
+                                            if (linearLayout2 != null) {
+                                                i = R.id.artist_page_radio_button;
+                                                Button button = (Button) uo.s(viewInflate, R.id.artist_page_radio_button);
+                                                if (button != null) {
+                                                    Button button2 = (Button) uo.s(viewInflate, R.id.artist_page_shuffle_button);
+                                                    if (button2 != null) {
+                                                        int i2 = R.id.artist_page_top_songs_sector;
+                                                        LinearLayout linearLayout3 = (LinearLayout) uo.s(viewInflate, R.id.artist_page_top_songs_sector);
+                                                        if (linearLayout3 != null) {
+                                                            i2 = R.id.artist_page_wave_button;
+                                                            if (((Button) uo.s(viewInflate, R.id.artist_page_wave_button)) != null) {
+                                                                int i3 = R.id.bio_more_text_view_clickable;
+                                                                TextView textView2 = (TextView) uo.s(viewInflate, R.id.bio_more_text_view_clickable);
+                                                                if (textView2 != null) {
+                                                                    i3 = R.id.bio_text_view;
+                                                                    TextView textView3 = (TextView) uo.s(viewInflate, R.id.bio_text_view);
+                                                                    if (textView3 != null) {
+                                                                        i3 = R.id.bottom_button_divider;
+                                                                        View viewS = uo.s(viewInflate, R.id.bottom_button_divider);
+                                                                        if (viewS == null) {
+                                                                            i = i3;
+                                                                        } else if (((ToggleButton) uo.s(viewInflate, R.id.button_favorite)) != null) {
+                                                                            if (((Button) uo.s(viewInflate, R.id.button_more_options)) == null) {
+                                                                                i3 = R.id.button_more_options;
+                                                                            } else if (((Button) uo.s(viewInflate, R.id.button_toggle_bio)) != null) {
+                                                                                i3 = R.id.collapsing_toolbar;
+                                                                                CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) uo.s(viewInflate, R.id.collapsing_toolbar);
+                                                                                if (collapsingToolbarLayout != null) {
+                                                                                    i3 = R.id.fragment_artist_page_nested_scroll_view;
+                                                                                    if (((NestedScrollView) uo.s(viewInflate, R.id.fragment_artist_page_nested_scroll_view)) != null) {
+                                                                                        i3 = R.id.item_song_placeholder_1;
+                                                                                        View viewS2 = uo.s(viewInflate, R.id.item_song_placeholder_1);
+                                                                                        if (viewS2 != null) {
+                                                                                            c12.f(viewS2);
+                                                                                            i3 = R.id.item_song_placeholder_2;
+                                                                                            View viewS3 = uo.s(viewInflate, R.id.item_song_placeholder_2);
+                                                                                            if (viewS3 != null) {
+                                                                                                c12.f(viewS3);
+                                                                                                i3 = R.id.item_song_placeholder_3;
+                                                                                                View viewS4 = uo.s(viewInflate, R.id.item_song_placeholder_3);
+                                                                                                if (viewS4 != null) {
+                                                                                                    c12.f(viewS4);
+                                                                                                    CoordinatorLayout coordinatorLayout = (CoordinatorLayout) viewInflate;
+                                                                                                    i3 = R.id.most_streamed_song_recycler_container;
+                                                                                                    LinearLayout linearLayout4 = (LinearLayout) uo.s(viewInflate, R.id.most_streamed_song_recycler_container);
+                                                                                                    if (linearLayout4 != null) {
+                                                                                                        i3 = R.id.most_streamed_song_recycler_empty;
+                                                                                                        TextView textView4 = (TextView) uo.s(viewInflate, R.id.most_streamed_song_recycler_empty);
+                                                                                                        if (textView4 != null) {
+                                                                                                            i3 = R.id.most_streamed_song_recycler_placeholder;
+                                                                                                            ShimmerFrameLayout shimmerFrameLayout = (ShimmerFrameLayout) uo.s(viewInflate, R.id.most_streamed_song_recycler_placeholder);
+                                                                                                            if (shimmerFrameLayout != null) {
+                                                                                                                i3 = R.id.most_streamed_song_recycler_view;
+                                                                                                                RecyclerView recyclerView3 = (RecyclerView) uo.s(viewInflate, R.id.most_streamed_song_recycler_view);
+                                                                                                                if (recyclerView3 != null) {
+                                                                                                                    i3 = R.id.most_streamed_song_text_view_clickable;
+                                                                                                                    TextView textView5 = (TextView) uo.s(viewInflate, R.id.most_streamed_song_text_view_clickable);
+                                                                                                                    if (textView5 != null) {
+                                                                                                                        i3 = R.id.similar_artist_sector;
+                                                                                                                        LinearLayout linearLayout5 = (LinearLayout) uo.s(viewInflate, R.id.similar_artist_sector);
+                                                                                                                        if (linearLayout5 != null) {
+                                                                                                                            i3 = R.id.similar_artists_recycler_view;
+                                                                                                                            RecyclerView recyclerView4 = (RecyclerView) uo.s(viewInflate, R.id.similar_artists_recycler_view);
+                                                                                                                            if (recyclerView4 != null) {
+                                                                                                                                i3 = R.id.upper_button_divider;
+                                                                                                                                View viewS5 = uo.s(viewInflate, R.id.upper_button_divider);
+                                                                                                                                if (viewS5 != null) {
+                                                                                                                                    this.l0 = new sc1(coordinatorLayout, recyclerView, materialToolbar, recyclerView2, textView, imageView, linearLayout, linearLayout2, button, button2, linearLayout3, textView2, textView3, viewS, collapsingToolbarLayout, linearLayout4, textView4, shimmerFrameLayout, recyclerView3, textView5, linearLayout5, recyclerView4, viewS5);
+                                                                                                                                    nc1 nc1VarX = X();
+                                                                                                                                    e75 e75VarD = nc1VarX.d();
+                                                                                                                                    b75 b75VarR = gh0.r(nc1VarX);
+                                                                                                                                    bq4 bq4Var = new bq4(e75VarD, b75VarR, b11.e(nc1VarX, b75VarR));
+                                                                                                                                    i30 i30VarA = kx3.a(wj.class);
+                                                                                                                                    String strB = i30VarA.b();
+                                                                                                                                    if (strB == null) {
+                                                                                                                                        kf2.n("Local and anonymous classes can not be ViewModels");
+                                                                                                                                        return null;
+                                                                                                                                    }
+                                                                                                                                    this.n0 = (wj) bq4Var.l(i30VarA, "androidx.lifecycle.ViewModelProvider.DefaultKey:".concat(strB));
+                                                                                                                                    nc1 nc1VarX2 = X();
+                                                                                                                                    e75 e75VarD2 = nc1VarX2.d();
+                                                                                                                                    b75 b75VarR2 = gh0.r(nc1VarX2);
+                                                                                                                                    bq4 bq4Var2 = new bq4(e75VarD2, b75VarR2, b11.e(nc1VarX2, b75VarR2));
+                                                                                                                                    i30 i30VarA2 = kx3.a(li3.class);
+                                                                                                                                    String strB2 = i30VarA2.b();
+                                                                                                                                    if (strB2 == null) {
+                                                                                                                                        kf2.n("Local and anonymous classes can not be ViewModels");
+                                                                                                                                        return null;
+                                                                                                                                    }
+                                                                                                                                    this.o0 = (li3) bq4Var2.l(i30VarA2, "androidx.lifecycle.ViewModelProvider.DefaultKey:".concat(strB2));
+                                                                                                                                    Bundle bundle2 = this.s;
+                                                                                                                                    ArtistID3 artistID3 = bundle2 != null ? (ArtistID3) bundle2.getParcelable("ARTIST_OBJECT") : null;
+                                                                                                                                    if (artistID3 == null) {
+                                                                                                                                        MainActivity mainActivity = this.m0;
+                                                                                                                                        if (mainActivity != null && (v23Var = mainActivity.T) != null) {
+                                                                                                                                            v23Var.o();
+                                                                                                                                        }
+                                                                                                                                        return coordinatorLayout;
+                                                                                                                                    }
+                                                                                                                                    ut4.c().b(Z());
+                                                                                                                                    ut4 ut4VarC = ut4.c();
+                                                                                                                                    Context contextZ = Z();
+                                                                                                                                    if (!ut4VarC.h) {
+                                                                                                                                        ut4VarC.b(contextZ);
+                                                                                                                                    }
+                                                                                                                                    this.u0 = ut4VarC.b;
+                                                                                                                                    ut4 ut4VarC2 = ut4.c();
+                                                                                                                                    Context contextZ2 = Z();
+                                                                                                                                    if (!ut4VarC2.h) {
+                                                                                                                                        ut4VarC2.b(contextZ2);
+                                                                                                                                    }
+                                                                                                                                    this.v0 = ut4VarC2.c;
+                                                                                                                                    wj wjVar = this.n0;
+                                                                                                                                    wjVar.e = artistID3;
+                                                                                                                                    le1 le1VarV = v();
+                                                                                                                                    pa paVar = wjVar.c;
+                                                                                                                                    String id = wjVar.e.getId();
+                                                                                                                                    paVar.getClass();
+                                                                                                                                    int i4 = 6;
+                                                                                                                                    pa.v(id).e(le1VarV, new d8(i4, wjVar));
+                                                                                                                                    int i5 = 1;
+                                                                                                                                    this.l0.t.setOnClickListener(new pj(this, i5));
+                                                                                                                                    ToggleButton toggleButton = (ToggleButton) coordinatorLayout.findViewById(R.id.button_favorite);
+                                                                                                                                    toggleButton.setChecked(n61.f(3, this.n0.e.getId(), this.n0.e.getStarred() != null));
+                                                                                                                                    int i6 = 2;
+                                                                                                                                    toggleButton.setOnClickListener(new pj(this, i6));
+                                                                                                                                    ((Button) coordinatorLayout.findViewById(R.id.button_toggle_bio)).setOnClickListener(new pj(this, 3));
+                                                                                                                                    int i7 = 4;
+                                                                                                                                    ((Button) coordinatorLayout.findViewById(R.id.button_more_options)).setOnClickListener(new pj(this, i7));
+                                                                                                                                    Button button3 = (Button) coordinatorLayout.findViewById(R.id.artist_page_shuffle_button);
+                                                                                                                                    Button button4 = (Button) coordinatorLayout.findViewById(R.id.artist_page_radio_button);
+                                                                                                                                    if (button3 != null && button4 != null) {
+                                                                                                                                        coordinatorLayout.getViewTreeObserver().addOnGlobalLayoutListener(new qj(this, button3, button4, coordinatorLayout));
+                                                                                                                                    }
+                                                                                                                                    this.m0.o(this.l0.c);
+                                                                                                                                    if (this.m0.n() != null) {
+                                                                                                                                        this.m0.n().f0(true);
+                                                                                                                                    }
+                                                                                                                                    this.l0.o.setTitle(this.n0.e.getName());
+                                                                                                                                    this.l0.c.setNavigationOnClickListener(new pj(this, i4));
+                                                                                                                                    this.l0.o.setExpandedTitleColor(r().getColor(R.color.white, null));
+                                                                                                                                    wj wjVar2 = this.n0;
+                                                                                                                                    wjVar2.c(wjVar2.e.getId()).e(v(), new oj(this, i5));
+                                                                                                                                    this.l0.j.setOnClickListener(new pj(this, 7));
+                                                                                                                                    View viewFindViewById = this.l0.a.findViewById(R.id.artist_page_wave_button);
+                                                                                                                                    String id2 = this.n0.e.getId();
+                                                                                                                                    int i8 = 5;
+                                                                                                                                    if (id2 != null && !id2.trim().isEmpty()) {
+                                                                                                                                        viewFindViewById.setVisibility(0);
+                                                                                                                                        viewFindViewById.setOnClickListener(new j8(i8, this, id2));
+                                                                                                                                    }
+                                                                                                                                    this.l0.i.setOnClickListener(new pj(this, 8));
+                                                                                                                                    RecyclerView recyclerView5 = this.l0.s;
+                                                                                                                                    Z();
+                                                                                                                                    recyclerView5.setLayoutManager(new LinearLayoutManager(1));
+                                                                                                                                    ni4 ni4Var = new ni4(v(), this, true, true, null);
+                                                                                                                                    this.p0 = ni4Var;
+                                                                                                                                    this.l0.s.setAdapter(ni4Var);
+                                                                                                                                    this.p0.A = this.t0;
+                                                                                                                                    i0();
+                                                                                                                                    wj wjVar3 = this.n0;
+                                                                                                                                    pa paVar2 = wjVar3.c;
+                                                                                                                                    String name = wjVar3.e.getName();
+                                                                                                                                    paVar2.getClass();
+                                                                                                                                    pa.z(20, name).e(v(), new oj(this, i6));
+                                                                                                                                    this.l0.q.setOnClickListener(new pj(this, 0));
+                                                                                                                                    RecyclerView recyclerView6 = this.l0.b;
+                                                                                                                                    Z();
+                                                                                                                                    recyclerView6.setLayoutManager(new LinearLayoutManager(1));
+                                                                                                                                    this.l0.b.setHasFixedSize(true);
+                                                                                                                                    this.l0.b.setNestedScrollingEnabled(false);
+                                                                                                                                    v8 v8Var = new v8(Z(), this);
+                                                                                                                                    this.q0 = v8Var;
+                                                                                                                                    this.l0.b.setAdapter(v8Var);
+                                                                                                                                    this.n0.g.e(v(), new oj(this, i7));
+                                                                                                                                    RecyclerView recyclerView7 = this.l0.d;
+                                                                                                                                    Z();
+                                                                                                                                    recyclerView7.setLayoutManager(new LinearLayoutManager(0));
+                                                                                                                                    this.l0.d.setHasFixedSize(true);
+                                                                                                                                    this.l0.d.setNestedScrollingEnabled(false);
+                                                                                                                                    l7 l7Var = new l7(this, true);
+                                                                                                                                    this.r0 = l7Var;
+                                                                                                                                    this.l0.d.setAdapter(l7Var);
+                                                                                                                                    this.n0.f.e(v(), new oj(this, i8));
+                                                                                                                                    RecyclerView recyclerView8 = this.l0.v;
+                                                                                                                                    Z();
+                                                                                                                                    recyclerView8.setLayoutManager(new GridLayoutManager(this.u0));
+                                                                                                                                    this.l0.v.i(new ek1(this.u0, this.v0));
+                                                                                                                                    this.l0.v.setHasFixedSize(true);
+                                                                                                                                    s6 s6Var = new s6(this);
+                                                                                                                                    this.s0 = s6Var;
+                                                                                                                                    this.l0.v.setAdapter(s6Var);
+                                                                                                                                    wj wjVar4 = this.n0;
+                                                                                                                                    wjVar4.c(wjVar4.e.getId()).e(v(), new oj(this, i4));
+                                                                                                                                    new xg0(0).a(this.l0.v);
+                                                                                                                                    return coordinatorLayout;
+                                                                                                                                }
+                                                                                                                            }
+                                                                                                                        }
+                                                                                                                    }
+                                                                                                                }
+                                                                                                            }
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            } else {
+                                                                                i = R.id.button_toggle_bio;
+                                                                            }
+                                                                            i = i3;
+                                                                        } else {
+                                                                            i2 = R.id.button_favorite;
+                                                                            i = i2;
+                                                                        }
+                                                                    } else {
+                                                                        i = i3;
+                                                                    }
+                                                                } else {
+                                                                    i = i3;
+                                                                }
+                                                            } else {
+                                                                i = i2;
+                                                            }
+                                                        } else {
+                                                            i = i2;
+                                                        }
+                                                    } else {
+                                                        i = R.id.artist_page_shuffle_button;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        nz2.n("Missing required view with ID: ".concat(viewInflate.getResources().getResourceName(i)));
         return null;
     }
 
@@ -402,34 +418,32 @@ public class ArtistPageFragment extends kc1 implements ClickCallback {
     @Override // defpackage.kc1
     public final void P() {
         this.R = true;
-        ni4 r0 = this.p0;
-        if (r0 == null) goto L6;
-        r0.A = this.t0;
-        return;
+        ni4 ni4Var = this.p0;
+        if (ni4Var != null) {
+            ni4Var.A = this.t0;
+        }
     }
 
     @Override // defpackage.kc1
     public final void R() {
+        xc5 xc5Var;
         this.R = true;
-        Context r2 = Z();
-        cb4 r3 = new cb4(Z(), new ComponentName(Z(), MediaService.class));
-        Bundle r4 = Bundle.EMPTY;
-        aj2 r5 = new aj2();
-        Looper r6 = f35.x();
-        bl2 r7 = new bl2(r6);
-        if (r3.a.e() == false) goto L6;
-        fi0 r8 = new fi0(new x7(r2));
-        xc5 r0 = new xc5(4, r8);
-    L7:
-        b11.w(r7, new bj2(r2, r3, r4, r5, r6, r7, r0), new Handler(r6));
-        this.t0 = r7;
-        bo2.j(r7, this.o0);
+        Context contextZ = Z();
+        cb4 cb4Var = new cb4(Z(), new ComponentName(Z(), (Class<?>) MediaService.class));
+        Bundle bundle = Bundle.EMPTY;
+        aj2 aj2Var = new aj2();
+        Looper looperX = f35.x();
+        bl2 bl2Var = new bl2(looperX);
+        if (cb4Var.a.e()) {
+            xc5Var = new xc5(4, new fi0(new x7(contextZ)));
+        } else {
+            xc5Var = null;
+        }
+        b11.w(bl2Var, new bj2(contextZ, cb4Var, bundle, aj2Var, looperX, bl2Var, xc5Var), new Handler(looperX));
+        this.t0 = bl2Var;
+        bo2.j(bl2Var, this.o0);
         this.o0.b.e(v(), new oj(this, 0));
         this.o0.c.e(v(), new oj(this, 3));
-        return;
-    L6:
-        r0 = null;
-        goto L7
     }
 
     @Override // defpackage.kc1
@@ -440,50 +454,41 @@ public class ArtistPageFragment extends kc1 implements ClickCallback {
     }
 
     public final void i0() {
-        if (this.p0 == null) goto L12;
-        String r0 = (String) this.o0.b.d();
-        Boolean r1 = (Boolean) this.o0.c.d();
-        ni4 r2 = this.p0;
-        if (r1 != null) goto L7;
-    L9:
-        boolean r3 = false;
-    L10:
-        r2.s(r0, r3);
-        return;
-    L7:
-        if (r1.booleanValue() == false) goto L9;
-        r3 = true;
-        goto L10
+        if (this.p0 != null) {
+            String str = (String) this.o0.b.d();
+            Boolean bool = (Boolean) this.o0.c.d();
+            this.p0.s(str, bool != null && bool.booleanValue());
+        }
     }
 
     @Override // com.eddyizm.tempus.interfaces.ClickCallback
-    public final void onAlbumClick(Bundle r3) {
-        gb.x(a0()).m(R.id.albumPageFragment, r3, null);
+    public final void onAlbumClick(Bundle bundle) {
+        gb.x(a0()).m(R.id.albumPageFragment, bundle, null);
     }
 
     @Override // com.eddyizm.tempus.interfaces.ClickCallback
-    public final void onAlbumLongClick(Bundle r3) {
-        gb.x(a0()).m(R.id.albumBottomSheetDialog, r3, null);
+    public final void onAlbumLongClick(Bundle bundle) {
+        gb.x(a0()).m(R.id.albumBottomSheetDialog, bundle, null);
     }
 
     @Override // com.eddyizm.tempus.interfaces.ClickCallback
-    public final void onArtistClick(Bundle r3) {
-        gb.x(a0()).m(R.id.artistPageFragment, r3, null);
+    public final void onArtistClick(Bundle bundle) {
+        gb.x(a0()).m(R.id.artistPageFragment, bundle, null);
     }
 
     @Override // com.eddyizm.tempus.interfaces.ClickCallback
-    public final void onArtistLongClick(Bundle r3) {
-        gb.x(a0()).m(R.id.artistBottomSheetDialog, r3, null);
+    public final void onArtistLongClick(Bundle bundle) {
+        gb.x(a0()).m(R.id.artistBottomSheetDialog, bundle, null);
     }
 
     @Override // com.eddyizm.tempus.interfaces.ClickCallback
-    public final void onMediaClick(Bundle r4) {
-        bo2.q(this.t0, r4.getParcelableArrayList("TRACKS_OBJECT"), r4.getInt("ITEM_POSITION"), "artist");
+    public final void onMediaClick(Bundle bundle) {
+        bo2.q(this.t0, bundle.getParcelableArrayList("TRACKS_OBJECT"), bundle.getInt("ITEM_POSITION"), "artist");
         ((au) this.m0.V.n).d(true);
     }
 
     @Override // com.eddyizm.tempus.interfaces.ClickCallback
-    public final void onMediaLongClick(Bundle r3) {
-        gb.x(a0()).m(R.id.songBottomSheetDialog, r3, null);
+    public final void onMediaLongClick(Bundle bundle) {
+        gb.x(a0()).m(R.id.songBottomSheetDialog, bundle, null);
     }
 }

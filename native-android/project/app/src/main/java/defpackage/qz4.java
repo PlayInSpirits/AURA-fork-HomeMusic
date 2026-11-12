@@ -11,18 +11,19 @@ import java.util.concurrent.atomic.AtomicInteger;
 public final class qz4 extends rz4 {
     public final /* synthetic */ TypeVariable c;
 
-    public qz4(AtomicInteger r1, TypeVariable r2) {
-        this.c = r2;
-        super(r1);
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public qz4(AtomicInteger atomicInteger, TypeVariable typeVariable) {
+        super(atomicInteger);
+        this.c = typeVariable;
     }
 
     @Override // defpackage.rz4
-    public final TypeVariable b(Type[] r3) {
-        LinkedHashSet r0 = new LinkedHashSet(Arrays.asList(r3));
-        r0.addAll(Arrays.asList(this.c.getBounds()));
-        if (r0.size() <= 1) goto L6;
-        r0.remove(Object.class);
-    L6:
-        return super.b((Type[]) r0.toArray(new Type[0]));
+    public final TypeVariable b(Type[] typeArr) {
+        LinkedHashSet linkedHashSet = new LinkedHashSet(Arrays.asList(typeArr));
+        linkedHashSet.addAll(Arrays.asList(this.c.getBounds()));
+        if (linkedHashSet.size() > 1) {
+            linkedHashSet.remove(Object.class);
+        }
+        return super.b((Type[]) linkedHashSet.toArray(new Type[0]));
     }
 }

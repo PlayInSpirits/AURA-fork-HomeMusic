@@ -9,43 +9,36 @@ import android.widget.TextView;
 public final class j01 extends hw {
     public final i01 j;
 
-    public j01(TextView r2) {
-        this.j = new i01(r2);
+    public j01(TextView textView) {
+        this.j = new i01(textView);
     }
 
     @Override // defpackage.hw
-    public final void J(boolean r2) {
-        if (tz0.c() == true) goto L5;
-        return;
-    L5:
-        this.j.J(r2);
+    public final void J(boolean z) {
+        if (tz0.c()) {
+            this.j.J(z);
+        }
     }
 
     @Override // defpackage.hw
-    public final void K(boolean r2) {
-        boolean r0 = tz0.c();
-        i01 r1 = this.j;
-        if (r0 == true) goto L6;
-        r1.l = r2;
-        return;
-    L6:
-        r1.K(r2);
+    public final void K(boolean z) {
+        boolean zC = tz0.c();
+        i01 i01Var = this.j;
+        if (zC) {
+            i01Var.K(z);
+        } else {
+            i01Var.l = z;
+        }
     }
 
     @Override // defpackage.hw
-    public final TransformationMethod R(TransformationMethod r2) {
-        if (tz0.c() == true) goto L6;
-        return r2;
-    L6:
-        return this.j.R(r2);
+    public final TransformationMethod R(TransformationMethod transformationMethod) {
+        return !tz0.c() ? transformationMethod : this.j.R(transformationMethod);
     }
 
     @Override // defpackage.hw
-    public final InputFilter[] k(InputFilter[] r2) {
-        if (tz0.c() == true) goto L6;
-        return r2;
-    L6:
-        return this.j.k(r2);
+    public final InputFilter[] k(InputFilter[] inputFilterArr) {
+        return !tz0.c() ? inputFilterArr : this.j.k(inputFilterArr);
     }
 
     @Override // defpackage.hw

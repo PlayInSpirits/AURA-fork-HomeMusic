@@ -9,94 +9,73 @@ public class h02 implements Iterable, x32 {
     public final int o;
     public final int p;
 
-    public h02(int r2, int r3, int r4) {
-        if (r4 != 0) goto L5;
-        kf2.n("Step must be non-zero.");
-        throw null;
-    L5:
-        if (r4 == Integer.MIN_VALUE) goto L8;
-        this.n = r2;
-        this.o = q05.n(r2, r3, r4);
-        this.p = r4;
-        return;
-    L8:
-        kf2.n("Step must be greater than Int.MIN_VALUE to avoid overflow on negation.");
-        throw null;
+    public h02(int i, int i2, int i3) {
+        if (i3 == 0) {
+            kf2.n("Step must be non-zero.");
+            throw null;
+        }
+        if (i3 == Integer.MIN_VALUE) {
+            kf2.n("Step must be greater than Int.MIN_VALUE to avoid overflow on negation.");
+            throw null;
+        }
+        this.n = i;
+        this.o = q05.n(i, i2, i3);
+        this.p = i3;
     }
 
-    public boolean equals(Object r3) {
-        if ((r3 instanceof h02) == true) goto L5;
-        return false;
-    L5:
-        if (isEmpty() == true) goto L7;
-    L8:
-        h02 r4 = (h02) r3;
-        int r0 = r4.n;
-        if (this.n == r0) goto L11;
-        return false;
-    L11:
-        if (this.o == r4.o) goto L13;
-        return false;
-    L13:
-        if (this.p != r4.p) goto L21;
-        return true;
-    L21:
-        return false;
-    L7:
-        if (((h02) r3).isEmpty() == false) goto L8;
-        return true;
+    public boolean equals(Object obj) {
+        if (!(obj instanceof h02)) {
+            return false;
+        }
+        if (isEmpty() && ((h02) obj).isEmpty()) {
+            return true;
+        }
+        h02 h02Var = (h02) obj;
+        return this.n == h02Var.n && this.o == h02Var.o && this.p == h02Var.p;
     }
 
     public int hashCode() {
-        if (isEmpty() == false) goto L7;
-        return -1;
-    L7:
+        if (isEmpty()) {
+            return -1;
+        }
         return (((this.n * 31) + this.o) * 31) + this.p;
     }
 
     public boolean isEmpty() {
-        int r2 = this.o;
-        int r3 = this.p;
-        int r4 = this.n;
-        if (r3 <= 0) goto L7;
-        if (r4 <= r2) goto L6;
-        return true;
-    L6:
-        return false;
-    L7:
-        if (r4 >= r2) goto L9;
-        return true;
-    L9:
-        return false;
+        int i = this.o;
+        int i2 = this.p;
+        int i3 = this.n;
+        if (i2 > 0) {
+            return i3 > i;
+        }
+        return i3 < i;
     }
 
     @Override // java.lang.Iterable
     public final Iterator iterator() {
-        int r1 = this.o;
-        int r2 = this.p;
-        return new i02(this.n, r1, r2);
+        return new i02(this.n, this.o, this.p);
     }
 
     public String toString() {
-        int r1 = this.o;
-        int r2 = this.p;
-        int r4 = this.n;
-        if (r2 <= 0) goto L7;
-        StringBuilder r3 = new StringBuilder();
-        r3.append(r4);
-        r3.append("..");
-        r3.append(r1);
-        r3.append(" step ");
-        r3.append(r2);
-    L6:
-        return r3.toString();
-    L7:
-        r3 = new StringBuilder();
-        r3.append(r4);
-        r3.append(" downTo ");
-        r3.append(r1);
-        r3.append(" step ");
-        r3.append(-r2);
-        goto L6
+        StringBuilder sb;
+        int i = this.o;
+        int i2 = this.p;
+        int i3 = this.n;
+        if (i2 > 0) {
+            sb = new StringBuilder();
+            sb.append(i3);
+            sb.append("..");
+            sb.append(i);
+            sb.append(" step ");
+            sb.append(i2);
+        } else {
+            sb = new StringBuilder();
+            sb.append(i3);
+            sb.append(" downTo ");
+            sb.append(i);
+            sb.append(" step ");
+            sb.append(-i2);
+        }
+        return sb.toString();
     }
 }

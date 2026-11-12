@@ -10,58 +10,45 @@ public final class pv extends uo {
     public long v;
     public final /* synthetic */ Shader w;
 
-    public pv(Shader r3) {
+    public pv(Shader shader) {
         super(6);
-        this.w = r3;
+        this.w = shader;
         this.v = 9205357640488583168L;
     }
 
     @Override // defpackage.uo
-    public final void d(long r6, gc r8, float r9) {
-        Paint r0 = (Paint) r8.b;
-        rm2 r1 = this.u;
-        Shader r2 = null;
-        if (r1 == null) goto L7;
-        if (qf4.a(this.v, r6) == false) goto L7;
-    L13:
-        long r5 = r8.a();
-        long r3 = x40.b;
-        if (x40.c(r5, r3) == true) goto L16;
-        r8.f(r3);
-    L16:
-        Shader r7 = (Shader) r8.c;
-        if (r1 == null) goto L19;
-        Shader r10 = (Shader) r1.o;
-    L21:
-        if (h12.c(r7, r10) == true) goto L26;
-        if (r1 == null) goto L24;
-        r2 = (Shader) r1.o;
-    L24:
-        r8.c = r2;
-        r0.setShader(r2);
-    L26:
-        if ((r0.getAlpha() / 255.0f) != r9) goto L28;
-        return;
-    L28:
-        r8.d(r9);
-        return;
-    L19:
-        r10 = null;
-    L7:
-        if (qf4.b(r6) == false) goto L9;
-        this.u = null;
-        this.v = 9205357640488583168L;
-        r1 = null;
-        goto L13
-    L9:
-        r1 = this.u;
-        if (r1 != null) goto L12;
-        r1 = new rm2(26, false);
-        this.u = r1;
-    L12:
-        r1.o = this.w;
-        this.u = r1;
-        this.v = r6;
-        goto L13
+    public final void d(long j, gc gcVar, float f) {
+        Paint paint = (Paint) gcVar.b;
+        rm2 rm2Var = this.u;
+        if (rm2Var == null || !qf4.a(this.v, j)) {
+            if (qf4.b(j)) {
+                this.u = null;
+                this.v = 9205357640488583168L;
+                rm2Var = null;
+            } else {
+                rm2Var = this.u;
+                if (rm2Var == null) {
+                    rm2Var = new rm2(26, false);
+                    this.u = rm2Var;
+                }
+                rm2Var.o = this.w;
+                this.u = rm2Var;
+                this.v = j;
+            }
+        }
+        long jA = gcVar.a();
+        long j2 = x40.b;
+        if (!x40.c(jA, j2)) {
+            gcVar.f(j2);
+        }
+        if (!h12.c((Shader) gcVar.c, rm2Var != null ? (Shader) rm2Var.o : null)) {
+            Shader shader = rm2Var != null ? (Shader) rm2Var.o : null;
+            gcVar.c = shader;
+            paint.setShader(shader);
+        }
+        if (paint.getAlpha() / 255.0f == f) {
+            return;
+        }
+        gcVar.d(f);
     }
 }

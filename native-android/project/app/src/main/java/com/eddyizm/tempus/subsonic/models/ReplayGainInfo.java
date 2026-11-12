@@ -10,7 +10,7 @@ import defpackage.xj0;
 /* JADX INFO: loaded from: classes.dex */
 public final class ReplayGainInfo implements Parcelable {
     public static final int $stable = 8;
-    public static final Parcelable.Creator<ReplayGainInfo> CREATOR = null;
+    public static final Parcelable.Creator<ReplayGainInfo> CREATOR = new b23(27);
     private Float albumGain;
     private Float albumPeak;
     private Float baseGain;
@@ -18,56 +18,32 @@ public final class ReplayGainInfo implements Parcelable {
     private Float trackGain;
     private Float trackPeak;
 
-    static {
-        CREATOR = new b23(27);
+    public /* synthetic */ ReplayGainInfo(Float f, Float f2, Float f3, Float f4, Float f5, Float f6, int i, xj0 xj0Var) {
+        this((i & 1) != 0 ? null : f, (i & 2) != 0 ? null : f2, (i & 4) != 0 ? null : f3, (i & 8) != 0 ? null : f4, (i & 16) != 0 ? null : f5, (i & 32) != 0 ? null : f6);
     }
 
-    public /* synthetic */ ReplayGainInfo(Float r2, Float r3, Float r4, Float r5, Float r6, Float r7, int r8, xj0 r9) {
-        if ((r8 & 1) == 0) goto L6;
-        r2 = null;
-    L6:
-        if ((r8 & 2) == 0) goto L9;
-        r3 = null;
-    L9:
-        if ((r8 & 4) == 0) goto L12;
-        r4 = null;
-    L12:
-        if ((r8 & 8) == 0) goto L15;
-        r5 = null;
-    L15:
-        if ((r8 & 16) == 0) goto L18;
-        r6 = null;
-    L18:
-        if ((r8 & 32) == 0) goto L20;
-        r7 = null;
-    L20:
-        this(r2, r3, r4, r5, r6, r7);
-    }
-
-    public static /* synthetic */ ReplayGainInfo copy$default(ReplayGainInfo r0, Float r1, Float r2, Float r3, Float r4, Float r5, Float r6, int r7, Object r8) {
-        if ((r7 & 1) == 0) goto L6;
-        r1 = r0.trackGain;
-    L6:
-        if ((r7 & 2) == 0) goto L9;
-        r2 = r0.albumGain;
-    L9:
-        if ((r7 & 4) == 0) goto L12;
-        r3 = r0.trackPeak;
-    L12:
-        if ((r7 & 8) == 0) goto L15;
-        r4 = r0.albumPeak;
-    L15:
-        if ((r7 & 16) == 0) goto L18;
-        r5 = r0.baseGain;
-    L18:
-        if ((r7 & 32) == 0) goto L20;
-        r6 = r0.fallbackGain;
-    L20:
-        Float r9 = r5;
-        Float r10 = r6;
-        Float r11 = r3;
-        Float r12 = r4;
-        return r0.copy(r1, r2, r11, r12, r9, r10);
+    public static /* synthetic */ ReplayGainInfo copy$default(ReplayGainInfo replayGainInfo, Float f, Float f2, Float f3, Float f4, Float f5, Float f6, int i, Object obj) {
+        if ((i & 1) != 0) {
+            f = replayGainInfo.trackGain;
+        }
+        if ((i & 2) != 0) {
+            f2 = replayGainInfo.albumGain;
+        }
+        if ((i & 4) != 0) {
+            f3 = replayGainInfo.trackPeak;
+        }
+        if ((i & 8) != 0) {
+            f4 = replayGainInfo.albumPeak;
+        }
+        if ((i & 16) != 0) {
+            f5 = replayGainInfo.baseGain;
+        }
+        if ((i & 32) != 0) {
+            f6 = replayGainInfo.fallbackGain;
+        }
+        Float f7 = f5;
+        Float f8 = f6;
+        return replayGainInfo.copy(f, f2, f3, f4, f7, f8);
     }
 
     public final Float component1() {
@@ -94,8 +70,8 @@ public final class ReplayGainInfo implements Parcelable {
         return this.fallbackGain;
     }
 
-    public final ReplayGainInfo copy(Float r1, Float r2, Float r3, Float r4, Float r5, Float r6) {
-        return new ReplayGainInfo(r1, r2, r3, r4, r5, r6);
+    public final ReplayGainInfo copy(Float f, Float f2, Float f3, Float f4, Float f5, Float f6) {
+        return new ReplayGainInfo(f, f2, f3, f4, f5, f6);
     }
 
     @Override // android.os.Parcelable
@@ -103,33 +79,15 @@ public final class ReplayGainInfo implements Parcelable {
         return 0;
     }
 
-    public boolean equals(Object r5) {
-        if (this != r5) goto L6;
-        return true;
-    L6:
-        if ((r5 instanceof ReplayGainInfo) == true) goto L8;
-        return false;
-    L8:
-        ReplayGainInfo r6 = (ReplayGainInfo) r5;
-        if (h12.c(this.trackGain, r6.trackGain) == true) goto L12;
-        return false;
-    L12:
-        if (h12.c(this.albumGain, r6.albumGain) == true) goto L15;
-        return false;
-    L15:
-        if (h12.c(this.trackPeak, r6.trackPeak) == true) goto L18;
-        return false;
-    L18:
-        if (h12.c(this.albumPeak, r6.albumPeak) == true) goto L21;
-        return false;
-    L21:
-        if (h12.c(this.baseGain, r6.baseGain) == true) goto L24;
-        return false;
-    L24:
-        if (h12.c(this.fallbackGain, r6.fallbackGain) == true) goto L26;
-        return false;
-    L26:
-        return true;
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof ReplayGainInfo)) {
+            return false;
+        }
+        ReplayGainInfo replayGainInfo = (ReplayGainInfo) obj;
+        return h12.c(this.trackGain, replayGainInfo.trackGain) && h12.c(this.albumGain, replayGainInfo.albumGain) && h12.c(this.trackPeak, replayGainInfo.trackPeak) && h12.c(this.albumPeak, replayGainInfo.albumPeak) && h12.c(this.baseGain, replayGainInfo.baseGain) && h12.c(this.fallbackGain, replayGainInfo.fallbackGain);
     }
 
     public final Float getAlbumGain() {
@@ -157,98 +115,46 @@ public final class ReplayGainInfo implements Parcelable {
     }
 
     public final boolean hasAnyValue() {
-        if (this.trackGain == null) goto L5;
-        return true;
-    L5:
-        if (this.albumGain == null) goto L7;
-        return true;
-    L7:
-        if (this.trackPeak == null) goto L9;
-        return true;
-    L9:
-        if (this.albumPeak == null) goto L11;
-        return true;
-    L11:
-        if (this.baseGain == null) goto L13;
-        return true;
-    L13:
-        if (this.fallbackGain != null) goto L23;
-        return false;
-    L23:
-        return true;
+        return (this.trackGain == null && this.albumGain == null && this.trackPeak == null && this.albumPeak == null && this.baseGain == null && this.fallbackGain == null) ? false : true;
     }
 
     public int hashCode() {
-        Float r0 = this.trackGain;
-        int r1 = 0;
-        if (r0 != null) goto L5;
-        int r2 = 0;
-    L6:
-        int r3 = r2 * 31;
-        Float r4 = this.albumGain;
-        if (r4 != null) goto L9;
-        int r5 = 0;
-    L10:
-        int r6 = (r3 + r5) * 31;
-        Float r7 = this.trackPeak;
-        if (r7 != null) goto L13;
-        int r8 = 0;
-    L14:
-        int r9 = (r6 + r8) * 31;
-        Float r10 = this.albumPeak;
-        if (r10 != null) goto L17;
-        int r11 = 0;
-    L18:
-        int r12 = (r9 + r11) * 31;
-        Float r13 = this.baseGain;
-        if (r13 != null) goto L21;
-        int r14 = 0;
-    L22:
-        int r15 = (r12 + r14) * 31;
-        Float r16 = this.fallbackGain;
-        if (r16 == null) goto L27;
-        r1 = r16.hashCode();
-    L27:
-        return r15 + r1;
-    L21:
-        r14 = r13.hashCode();
-        goto L22
-    L17:
-        r11 = r10.hashCode();
-        goto L18
-    L13:
-        r8 = r7.hashCode();
-        goto L14
-    L9:
-        r5 = r4.hashCode();
-        goto L10
-    L5:
-        r2 = r0.hashCode();
-        goto L6
+        Float f = this.trackGain;
+        int iHashCode = (f == null ? 0 : f.hashCode()) * 31;
+        Float f2 = this.albumGain;
+        int iHashCode2 = (iHashCode + (f2 == null ? 0 : f2.hashCode())) * 31;
+        Float f3 = this.trackPeak;
+        int iHashCode3 = (iHashCode2 + (f3 == null ? 0 : f3.hashCode())) * 31;
+        Float f4 = this.albumPeak;
+        int iHashCode4 = (iHashCode3 + (f4 == null ? 0 : f4.hashCode())) * 31;
+        Float f5 = this.baseGain;
+        int iHashCode5 = (iHashCode4 + (f5 == null ? 0 : f5.hashCode())) * 31;
+        Float f6 = this.fallbackGain;
+        return iHashCode5 + (f6 != null ? f6.hashCode() : 0);
     }
 
-    public final void setAlbumGain(Float r1) {
-        this.albumGain = r1;
+    public final void setAlbumGain(Float f) {
+        this.albumGain = f;
     }
 
-    public final void setAlbumPeak(Float r1) {
-        this.albumPeak = r1;
+    public final void setAlbumPeak(Float f) {
+        this.albumPeak = f;
     }
 
-    public final void setBaseGain(Float r1) {
-        this.baseGain = r1;
+    public final void setBaseGain(Float f) {
+        this.baseGain = f;
     }
 
-    public final void setFallbackGain(Float r1) {
-        this.fallbackGain = r1;
+    public final void setFallbackGain(Float f) {
+        this.fallbackGain = f;
     }
 
-    public final void setTrackGain(Float r1) {
-        this.trackGain = r1;
+    public final void setTrackGain(Float f) {
+        this.trackGain = f;
     }
 
-    public final void setTrackPeak(Float r1) {
-        this.trackPeak = r1;
+    public final void setTrackPeak(Float f) {
+        this.trackPeak = f;
     }
 
     public String toString() {
@@ -256,74 +162,62 @@ public final class ReplayGainInfo implements Parcelable {
     }
 
     @Override // android.os.Parcelable
-    public final void writeToParcel(Parcel r3, int r4) {
-        r3.getClass();
-        Float r5 = this.trackGain;
-        if (r5 != null) goto L5;
-        r3.writeInt(0);
-    L6:
-        Float r6 = this.albumGain;
-        if (r6 != null) goto L9;
-        r3.writeInt(0);
-    L10:
-        Float r7 = this.trackPeak;
-        if (r7 != null) goto L13;
-        r3.writeInt(0);
-    L14:
-        Float r8 = this.albumPeak;
-        if (r8 != null) goto L17;
-        r3.writeInt(0);
-    L18:
-        Float r9 = this.baseGain;
-        if (r9 != null) goto L21;
-        r3.writeInt(0);
-    L22:
-        Float r2 = this.fallbackGain;
-        if (r2 != null) goto L26;
-        r3.writeInt(0);
-        return;
-    L26:
-        r3.writeInt(1);
-        r3.writeFloat(r2.floatValue());
-        return;
-    L21:
-        r3.writeInt(1);
-        r3.writeFloat(r9.floatValue());
-        goto L22
-    L17:
-        r3.writeInt(1);
-        r3.writeFloat(r8.floatValue());
-        goto L18
-    L13:
-        r3.writeInt(1);
-        r3.writeFloat(r7.floatValue());
-        goto L14
-    L9:
-        r3.writeInt(1);
-        r3.writeFloat(r6.floatValue());
-        goto L10
-    L5:
-        r3.writeInt(1);
-        r3.writeFloat(r5.floatValue());
-        goto L6
+    public final void writeToParcel(Parcel parcel, int i) {
+        parcel.getClass();
+        Float f = this.trackGain;
+        if (f == null) {
+            parcel.writeInt(0);
+        } else {
+            parcel.writeInt(1);
+            parcel.writeFloat(f.floatValue());
+        }
+        Float f2 = this.albumGain;
+        if (f2 == null) {
+            parcel.writeInt(0);
+        } else {
+            parcel.writeInt(1);
+            parcel.writeFloat(f2.floatValue());
+        }
+        Float f3 = this.trackPeak;
+        if (f3 == null) {
+            parcel.writeInt(0);
+        } else {
+            parcel.writeInt(1);
+            parcel.writeFloat(f3.floatValue());
+        }
+        Float f4 = this.albumPeak;
+        if (f4 == null) {
+            parcel.writeInt(0);
+        } else {
+            parcel.writeInt(1);
+            parcel.writeFloat(f4.floatValue());
+        }
+        Float f5 = this.baseGain;
+        if (f5 == null) {
+            parcel.writeInt(0);
+        } else {
+            parcel.writeInt(1);
+            parcel.writeFloat(f5.floatValue());
+        }
+        Float f6 = this.fallbackGain;
+        if (f6 == null) {
+            parcel.writeInt(0);
+        } else {
+            parcel.writeInt(1);
+            parcel.writeFloat(f6.floatValue());
+        }
     }
 
-    public ReplayGainInfo(Float r1, Float r2, Float r3, Float r4, Float r5, Float r6) {
-        this.trackGain = r1;
-        this.albumGain = r2;
-        this.trackPeak = r3;
-        this.albumPeak = r4;
-        this.baseGain = r5;
-        this.fallbackGain = r6;
+    public ReplayGainInfo(Float f, Float f2, Float f3, Float f4, Float f5, Float f6) {
+        this.trackGain = f;
+        this.albumGain = f2;
+        this.trackPeak = f3;
+        this.albumPeak = f4;
+        this.baseGain = f5;
+        this.fallbackGain = f6;
     }
 
     public ReplayGainInfo() {
-        Float r1 = null;
-        Float r2 = null;
-        Float r3 = null;
-        Float r4 = null;
-        Float r5 = null;
-        Float r6 = null;
-        this(r1, r2, r3, r4, r5, r6, 63, null);
+        this(null, null, null, null, null, null, 63, null);
     }
 }

@@ -11,90 +11,79 @@ import java.util.Arrays;
 public final class wh extends zz1 {
     public final /* synthetic */ int n;
 
-    public /* synthetic */ wh(int r1) {
-        this.n = r1;
+    public /* synthetic */ wh(int i) {
+        this.n = i;
     }
 
-    public static m21 O(be3 r8) {
-        String r1 = r8.v();
-        r1.getClass();
-        String r2 = r8.v();
-        r2.getClass();
-        return new m21(r1, r2, r8.u(), r8.u(), Arrays.copyOfRange(r8.a, r8.b, r8.c));
+    public static m21 O(be3 be3Var) {
+        String strV = be3Var.v();
+        strV.getClass();
+        String strV2 = be3Var.v();
+        strV2.getClass();
+        return new m21(strV, strV2, be3Var.u(), be3Var.u(), Arrays.copyOfRange(be3Var.a, be3Var.b, be3Var.c));
     }
 
     @Override // defpackage.zz1
-    public final qv2 k(uv2 r17, ByteBuffer r18) {
-        switch(this.n) {
-            case 0: goto L7;
-            default: goto L5;
-        };
-    L5:
-        return new qv2(new pv2[]{O(new be3(r18.limit(), r18.array()))});
-    L7:
-        if (r18.get() != 116) goto L48;
-        h00 r0 = new h00(r18.limit(), r18.array());
-        r0.t(12);
-        int r5 = (r0.f() + r0.i(12)) - 4;
-        r0.t(44);
-        r0.u(r0.i(12));
-        r0.t(16);
-        ArrayList r7 = new ArrayList();
-    L10:
-        if (r0.f() >= r5) goto L34;
-        r0.t(48);
-        int r9 = r0.i(8);
-        r0.t(4);
-        int r11 = r0.f() + r0.i(12);
-        String r10 = null;
-        String r12 = null;
-    L13:
-        if (r0.f() >= r11) goto L28;
-        int r13 = r0.i(8);
-        int r14 = r0.i(8);
-        int r15 = r0.f() + r14;
-        if (r13 != 2) goto L25;
-        int r1 = r0.i(16);
-        r0.t(8);
-        if (r1 != 3) goto L27;
-    L19:
-        if (r0.f() >= r15) goto L27;
-        int r2 = r0.i(8);
-        Charset r16 = StandardCharsets.US_ASCII;
-        byte[] r19 = new byte[r2];
-        r0.l(r2, r19);
-        String r3 = new String(r19, r16);
-        int r110 = r0.i(8);
-        int r111 = 0;
-    L21:
-        if (r111 >= r110) goto L23;
-        r0.u(r0.i(8));
-        r111 = r111 + 1;
-        goto L21
-    L23:
-        r10 = r3;
-    L27:
-        r0.q(r15 * 8);
-        goto L13
-    L25:
-        if (r13 != 21) goto L27;
-        Charset r4 = StandardCharsets.US_ASCII;
-        byte[] r112 = new byte[r14];
-        r0.l(r14, r112);
-        r12 = new String(r112, r4);
-        goto L27
-    L28:
-        r0.q(r11 * 8);
-        if (r10 == null) goto L10;
-        if (r12 == null) goto L10;
-        r7.add(new vh(r9, r10.concat(r12)));
-        goto L10
-    L34:
-        if (r7.isEmpty() == false) goto L37;
-        return null;
-    L37:
-        return new qv2(r7);
-    L48:
-        return null;
+    public final qv2 k(uv2 uv2Var, ByteBuffer byteBuffer) {
+        switch (this.n) {
+            case 0:
+                if (byteBuffer.get() != 116) {
+                    return null;
+                }
+                h00 h00Var = new h00(byteBuffer.limit(), byteBuffer.array());
+                h00Var.t(12);
+                int iF = (h00Var.f() + h00Var.i(12)) - 4;
+                h00Var.t(44);
+                h00Var.u(h00Var.i(12));
+                h00Var.t(16);
+                ArrayList arrayList = new ArrayList();
+                while (h00Var.f() < iF) {
+                    h00Var.t(48);
+                    int i = h00Var.i(8);
+                    h00Var.t(4);
+                    int iF2 = h00Var.f() + h00Var.i(12);
+                    String str = null;
+                    String str2 = null;
+                    while (h00Var.f() < iF2) {
+                        int i2 = h00Var.i(8);
+                        int i3 = h00Var.i(8);
+                        int iF3 = h00Var.f() + i3;
+                        if (i2 == 2) {
+                            int i4 = h00Var.i(16);
+                            h00Var.t(8);
+                            if (i4 == 3) {
+                                while (h00Var.f() < iF3) {
+                                    int i5 = h00Var.i(8);
+                                    Charset charset = StandardCharsets.US_ASCII;
+                                    byte[] bArr = new byte[i5];
+                                    h00Var.l(i5, bArr);
+                                    String str3 = new String(bArr, charset);
+                                    int i6 = h00Var.i(8);
+                                    for (int i7 = 0; i7 < i6; i7++) {
+                                        h00Var.u(h00Var.i(8));
+                                    }
+                                    str = str3;
+                                }
+                            }
+                        } else if (i2 == 21) {
+                            Charset charset2 = StandardCharsets.US_ASCII;
+                            byte[] bArr2 = new byte[i3];
+                            h00Var.l(i3, bArr2);
+                            str2 = new String(bArr2, charset2);
+                        }
+                        h00Var.q(iF3 * 8);
+                    }
+                    h00Var.q(iF2 * 8);
+                    if (str != null && str2 != null) {
+                        arrayList.add(new vh(i, str.concat(str2)));
+                    }
+                }
+                if (arrayList.isEmpty()) {
+                    return null;
+                }
+                return new qv2(arrayList);
+            default:
+                return new qv2(O(new be3(byteBuffer.limit(), byteBuffer.array())));
+        }
     }
 }

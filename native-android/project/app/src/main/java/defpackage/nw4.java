@@ -7,9 +7,9 @@ public final class nw4 {
     public final Class b;
     public final d14 c;
 
-    public nw4(Class r1, Class r2, d14 r3) {
-        this.a = r1;
-        this.b = r2;
-        this.c = r3;
+    public nw4(Class cls, Class cls2, d14 d14Var) {
+        this.a = cls;
+        this.b = cls2;
+        this.c = d14Var;
     }
 }

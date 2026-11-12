@@ -12,65 +12,54 @@ public final class p25 {
     public final String c;
     public final jw4 d;
 
-    public p25(long r5, gn2 r7, String r8) {
-        r7.getClass();
-        this.a = r5;
-        this.b = r7;
-        this.c = r8;
-        Set r0 = q25.Q;
-        Bundle r9 = r7.d.I;
-        String r1 = null;
-        if (r9 == null) goto L5;
-        String r2 = r9.getString("type");
-    L6:
-        if (r2 == null) goto L21;
-        int r3 = r2.hashCode();
-        if (r3 == (-405568764)) goto L16;
-        if (r3 != 104263205) goto L21;
-        if (r2.equals("music") == false) goto L21;
-    L17:
-        if (r8 == null) goto L21;
-        Uri r10 = Uri.parse(r8);
-        if (r10 == null) goto L21;
-        String r11 = r10.getQueryParameter("format");
-    L22:
-        if (r11 != null) goto L24;
-    L30:
-        String r12 = e03.p(r9);
-        if (r12 != null) goto L33;
-    L35:
-        if (r1 != null) goto L37;
-        String r13 = "audio/x-unknown";
-    L39:
-        sb1 r14 = new sb1();
-        r14.a = "upnp";
-        r14.m = lw2.m(r13);
-        this.d = new jw4(gb.O(new iw4(new sv4(String.valueOf(r5), new tb1[]{new tb1(r14)}), false, new int[]{4}, new boolean[]{true})));
-        return;
-    L37:
-        r11 = r1;
-    L38:
-        r13 = "audio/".concat(r11);
-        goto L39
-    L33:
-        if (r12.length() <= 0) goto L35;
-        r1 = r12;
-        goto L35
-    L24:
-        if (r11.length() > 0) goto L26;
-    L28:
-        r11 = null;
-    L29:
-        if (r11 != null) goto L38;
-    L26:
-        if (r11.equals("raw") == true) goto L28;
-    L16:
-        if (r2.equals("podcast") == true) goto L17;
-    L21:
-        r11 = null;
-        goto L22
-    L5:
-        r2 = null;
-        goto L6
+    /* JADX WARN: Code duplicated, block: B:30:0x0063  */
+    /* JADX WARN: Code duplicated, block: B:36:0x0072  */
+    /* JADX WARN: Code duplicated, block: B:37:0x0075  */
+    public p25(long j, gn2 gn2Var, String str) {
+        String strP;
+        String strConcat;
+        int iHashCode;
+        Uri uri;
+        gn2Var.getClass();
+        this.a = j;
+        this.b = gn2Var;
+        this.c = str;
+        Set set = q25.Q;
+        Bundle bundle = gn2Var.d.I;
+        String str2 = null;
+        String string = bundle != null ? bundle.getString("type") : null;
+        String queryParameter = (string == null || ((iHashCode = string.hashCode()) == -405568764 ? !string.equals("podcast") : !(iHashCode == 104263205 && string.equals("music"))) || str == null || (uri = Uri.parse(str)) == null) ? null : uri.getQueryParameter("format");
+        if (queryParameter == null) {
+            strP = e03.p(bundle);
+            if (strP != null && strP.length() > 0) {
+                str2 = strP;
+            }
+            if (str2 == null) {
+                strConcat = "audio/x-unknown";
+            } else {
+                queryParameter = str2;
+                strConcat = "audio/".concat(queryParameter);
+            }
+        } else {
+            queryParameter = (queryParameter.length() <= 0 || queryParameter.equals("raw")) ? null : queryParameter;
+            if (queryParameter == null) {
+                strP = e03.p(bundle);
+                if (strP != null) {
+                    str2 = strP;
+                }
+                if (str2 == null) {
+                    strConcat = "audio/x-unknown";
+                } else {
+                    queryParameter = str2;
+                    strConcat = "audio/".concat(queryParameter);
+                }
+            } else {
+                strConcat = "audio/".concat(queryParameter);
+            }
+        }
+        sb1 sb1Var = new sb1();
+        sb1Var.a = "upnp";
+        sb1Var.m = lw2.m(strConcat);
+        this.d = new jw4(gb.O(new iw4(new sv4(String.valueOf(j), new tb1(sb1Var)), false, new int[]{4}, new boolean[]{true})));
     }
 }

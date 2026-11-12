@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -15,13 +14,13 @@ import java.util.UUID;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class gn2 {
-    public static final gn2 g = null;
-    public static final String h = null;
-    public static final String i = null;
-    public static final String j = null;
-    public static final String k = null;
-    public static final String l = null;
-    public static final String m = null;
+    public static final gn2 g;
+    public static final String h;
+    public static final String i;
+    public static final String j;
+    public static final String k;
+    public static final String l;
+    public static final String m;
     public final String a;
     public final bn2 b;
     public final an2 c;
@@ -30,14 +29,13 @@ public final class gn2 {
     public final cn2 f;
 
     static {
-        um2 r0 = new um2();
-        vw1 r1 = yw1.o;
-        gy3 r2 = gy3.r;
-        List r3 = Collections.EMPTY_LIST;
-        gy3 r4 = gy3.r;
-        zm2 r5 = new zm2();
-        cn2 r8 = cn2.d;
-        g = new gn2("", new wm2(r0), null, new an2(r5), do2.K, r8);
+        um2 um2Var = new um2();
+        vw1 vw1Var = yw1.o;
+        gy3 gy3Var = gy3.r;
+        List list = Collections.EMPTY_LIST;
+        gy3 gy3Var2 = gy3.r;
+        zm2 zm2Var = new zm2();
+        g = new gn2("", new wm2(um2Var), null, new an2(zm2Var), do2.K, cn2.d);
         h = Integer.toString(0, 36);
         i = Integer.toString(1, 36);
         j = Integer.toString(2, 36);
@@ -46,476 +44,395 @@ public final class gn2 {
         m = Integer.toString(5, 36);
     }
 
-    public gn2(String r1, wm2 r2, bn2 r3, an2 r4, do2 r5, cn2 r6) {
-        this.a = r1;
-        this.b = r3;
-        this.c = r4;
-        this.d = r5;
-        this.e = r2;
-        this.f = r6;
+    public gn2(String str, wm2 wm2Var, bn2 bn2Var, an2 an2Var, do2 do2Var, cn2 cn2Var) {
+        this.a = str;
+        this.b = bn2Var;
+        this.c = an2Var;
+        this.d = do2Var;
+        this.e = wm2Var;
+        this.f = cn2Var;
     }
 
     /* JADX WARN: Multi-variable type inference failed */
     /* JADX WARN: Type inference failed for: r1v25 */
     /* JADX WARN: Type inference failed for: r1v26, types: [java.lang.Cloneable] */
     /* JADX WARN: Type inference failed for: r1v59 */
-    public static gn2 b(Bundle r20) {
-        String r4 = r20.getString(h, "");
-        r4.getClass();
-        Bundle r1 = r20.getBundle(i);
-        if (r1 != null) goto L6;
-        an2 r2 = an2.f;
-    L5:
-        an2 r7 = r2;
-        Bundle r3 = r20.getBundle(j);
-        if (r3 != null) goto L11;
-        do2 r5 = do2.K;
-    L10:
-        do2 r8 = r5;
-        Bundle r6 = r20.getBundle(k);
-        int r9 = 0;
-        boolean r10 = false;
-        if (r6 != null) goto L16;
-        wm2 r11 = wm2.r;
-    L15:
-        wm2 r12 = r11;
-        Bundle r13 = r20.getBundle(l);
-        if (r13 != null) goto L48;
-        cn2 r14 = cn2.d;
-    L47:
-        cn2 r15 = r14;
-        Bundle r0 = r20.getBundle(m);
-        if (r0 != null) goto L52;
-        bn2 r16 = null;
-    L99:
-        return new gn2(r4, r12, r16, r7, r8, r15);
-    L52:
-        Bundle r17 = r0.getBundle(bn2.k);
-        if (r17 != null) goto L55;
-        ym2 r18 = null;
-    L79:
-        Bundle r19 = r0.getBundle(bn2.l);
-        if (r19 != null) goto L82;
-        sm2 r110 = null;
-    L83:
-        ArrayList r21 = r0.getParcelableArrayList(bn2.m);
-        if (r21 != null) goto L87;
-        vw1 r22 = yw1.o;
-        gy3 r23 = gy3.r;
-    L86:
-        gy3 r111 = r23;
-        ArrayList r24 = r0.getParcelableArrayList(bn2.o);
-        if (r24 != null) goto L96;
-        vw1 r25 = yw1.o;
-        gy3 r26 = gy3.r;
-    L95:
-        gy3 r112 = r26;
-        long r113 = r0.getLong(bn2.p, -9223372036854775807L);
-        Uri r114 = (Uri) r0.getParcelable(bn2.i);
-        r114.getClass();
-        r16 = new bn2(r114, r0.getString(bn2.j), r18, r110, r111, r0.getString(bn2.n), r112, r113);
-        goto L99
-    L96:
-        r26 = hw.f(new er1(26), r24);
-        goto L95
-    L87:
-        uw1 r27 = yw1.j();
-        int r28 = 0;
-    L89:
-        if (r28 >= r21.size()) goto L91;
-        Bundle r115 = (Bundle) r21.get(r28);
-        r115.getClass();
-        r27.c(new fm4(r115.getInt(fm4.q, 0), r115.getInt(fm4.r, 0), r115.getInt(fm4.s, 0)));
-        r28 = r28 + 1;
-        r21 = r21;
-        goto L89
-    L91:
-        r23 = r27.f();
-        goto L86
-    L82:
-        Uri r29 = (Uri) r19.getParcelable(sm2.b);
-        r29.getClass();
-        rm2 r30 = new rm2(r9, r10 ? 1 : 0);
-        r30.o = r29;
-        r110 = new sm2(r30);
-        goto L83
-    L55:
-        String r31 = r17.getString(ym2.i);
-        r31.getClass();
-        UUID r32 = UUID.fromString(r31);
-        Uri r116 = (Uri) r17.getParcelable(ym2.j);
-        String r117 = ym2.k;
-        Bundle r118 = Bundle.EMPTY;
-        Bundle r119 = r17.getBundle(r117);
-        if (r119 != null) goto L59;
-        r119 = r118;
-    L59:
-        if (r119 != r118) goto L61;
-        Map r120 = ly3.t;
-    L71:
-        boolean r121 = r17.getBoolean(ym2.l, false);
-        boolean r122 = r17.getBoolean(ym2.m, false);
-        boolean r123 = r17.getBoolean(ym2.n, false);
-        String r124 = ym2.o;
-        ArrayList<Integer> r125 = new ArrayList();
-        ArrayList<Integer> r126 = r17.getIntegerArrayList(r124);
-        if (r126 == null) goto L74;
-        r125 = r126;
-    L74:
-        yw1 r127 = yw1.k(r125);
-        byte[] r33 = r17.getByteArray(ym2.p);
-        xm2 r34 = new xm2();
-        r34.d = r32;
-        r34.e = r116;
-        r34.f = bx1.b(r120);
-        r34.a = r121;
-        r34.c = r123;
-        r34.b = r122;
-        r34.g = yw1.k(r127);
-        if (r33 == null) goto L77;
-        ?? r35 = Arrays.copyOf(r33, r33.length);
-    L78:
-        r34.h = r35;
-        r18 = new ym2(r34);
-        goto L79
-    L77:
-        r35 = 0;
-        goto L78
-    L61:
-        HashMap r128 = new HashMap();
-        if (r119 == r118) goto L70;
-        Iterator<String> r129 = r119.keySet().iterator();
-    L66:
-        if (r129.hasNext() == false) goto L70;
-        String r130 = r129.next();
-        String r131 = r119.getString(r130);
-        if (r131 == null) goto L66;
-        r128.put(r130, r131);
-    L70:
-        r120 = bx1.b(r128);
-        goto L71
-    L48:
-        yc5 r36 = new yc5();
-        r36.n = (Uri) r13.getParcelable(cn2.e);
-        r36.o = r13.getString(cn2.f);
-        r36.p = f35.n(r13.getBundle(cn2.g));
-        r14 = new cn2(r36);
-        goto L47
-    L16:
-        um2 r37 = new um2();
-        String r38 = vm2.j;
-        vm2 r39 = vm2.i;
-        long r40 = r39.a;
-        long r132 = r39.d;
-        long r133 = r39.b;
-        long r41 = f35.Q(r6.getLong(r38, r40));
-        boolean r134 = true;
-        if (r41 < 0) goto L19;
-        boolean r42 = true;
-    L20:
-        rr2.l(r42);
-        r37.a = r41;
-        long r43 = f35.Q(r6.getLong(vm2.k, r39.c));
-        if (r43 != Long.MIN_VALUE) goto L23;
-    L26:
-        boolean r44 = true;
-    L27:
-        rr2.l(r44);
-        r37.b = r43;
-        r37.c = r6.getBoolean(vm2.l, r39.e);
-        r37.d = r6.getBoolean(vm2.m, r39.f);
-        r37.e = r6.getBoolean(vm2.n, r39.g);
-        r37.f = r6.getBoolean(vm2.q, r39.h);
-        long r45 = r6.getLong(vm2.o, r133);
-        if (r45 != r133) goto L30;
-    L34:
-        long r46 = r6.getLong(vm2.p, r132);
-        if (r46 != r132) goto L37;
-    L43:
-        r11 = new wm2(r37);
-        goto L15
-    L37:
-        if (r46 != Long.MIN_VALUE) goto L39;
-    L42:
-        rr2.l(r134);
-        r37.b = r46;
-        goto L43
-    L39:
-        if (r46 >= 0) goto L42;
-        r134 = false;
-        goto L42
-    L30:
-        if (r45 < 0) goto L32;
-        boolean r47 = true;
-    L33:
-        rr2.l(r47);
-        r37.a = r45;
-        goto L34
-    L32:
-        r47 = false;
-        goto L33
-    L23:
-        if (r43 >= 0) goto L26;
-        r44 = false;
-        goto L27
-    L19:
-        r42 = false;
-        goto L20
-    L11:
-        r5 = do2.b(r3);
-        goto L10
-    L6:
-        r2 = an2.b(r1);
-        goto L5
+    public static gn2 b(Bundle bundle) {
+        wm2 wm2Var;
+        cn2 cn2Var;
+        Map mapB;
+        ym2 ym2Var;
+        sm2 sm2Var;
+        gy3 gy3VarF;
+        gy3 gy3VarF2;
+        bn2 bn2Var;
+        String string = bundle.getString(h, "");
+        string.getClass();
+        Bundle bundle2 = bundle.getBundle(i);
+        an2 an2VarB = bundle2 == null ? an2.f : an2.b(bundle2);
+        Bundle bundle3 = bundle.getBundle(j);
+        do2 do2VarB = bundle3 == null ? do2.K : do2.b(bundle3);
+        Bundle bundle4 = bundle.getBundle(k);
+        int i2 = 0;
+        boolean z = false;
+        if (bundle4 == null) {
+            wm2Var = wm2.r;
+        } else {
+            um2 um2Var = new um2();
+            String str = vm2.j;
+            vm2 vm2Var = vm2.i;
+            long j2 = vm2Var.a;
+            long j3 = vm2Var.d;
+            long j4 = vm2Var.b;
+            long jQ = f35.Q(bundle4.getLong(str, j2));
+            boolean z2 = true;
+            rr2.l(jQ >= 0);
+            um2Var.a = jQ;
+            long jQ2 = f35.Q(bundle4.getLong(vm2.k, vm2Var.c));
+            rr2.l(jQ2 == Long.MIN_VALUE || jQ2 >= 0);
+            um2Var.b = jQ2;
+            um2Var.c = bundle4.getBoolean(vm2.l, vm2Var.e);
+            um2Var.d = bundle4.getBoolean(vm2.m, vm2Var.f);
+            um2Var.e = bundle4.getBoolean(vm2.n, vm2Var.g);
+            um2Var.f = bundle4.getBoolean(vm2.q, vm2Var.h);
+            long j5 = bundle4.getLong(vm2.o, j4);
+            if (j5 != j4) {
+                rr2.l(j5 >= 0);
+                um2Var.a = j5;
+            }
+            long j6 = bundle4.getLong(vm2.p, j3);
+            if (j6 != j3) {
+                if (j6 != Long.MIN_VALUE && j6 < 0) {
+                    z2 = false;
+                }
+                rr2.l(z2);
+                um2Var.b = j6;
+            }
+            wm2Var = new wm2(um2Var);
+        }
+        wm2 wm2Var2 = wm2Var;
+        Bundle bundle5 = bundle.getBundle(l);
+        if (bundle5 == null) {
+            cn2Var = cn2.d;
+        } else {
+            yc5 yc5Var = new yc5();
+            yc5Var.n = (Uri) bundle5.getParcelable(cn2.e);
+            yc5Var.o = bundle5.getString(cn2.f);
+            yc5Var.p = f35.n(bundle5.getBundle(cn2.g));
+            cn2Var = new cn2(yc5Var);
+        }
+        cn2 cn2Var2 = cn2Var;
+        Bundle bundle6 = bundle.getBundle(m);
+        if (bundle6 == null) {
+            bn2Var = null;
+        } else {
+            Bundle bundle7 = bundle6.getBundle(bn2.k);
+            if (bundle7 == null) {
+                ym2Var = null;
+            } else {
+                String string2 = bundle7.getString(ym2.i);
+                string2.getClass();
+                UUID uuidFromString = UUID.fromString(string2);
+                Uri uri = (Uri) bundle7.getParcelable(ym2.j);
+                String str2 = ym2.k;
+                Bundle bundle8 = Bundle.EMPTY;
+                Bundle bundle9 = bundle7.getBundle(str2);
+                if (bundle9 == null) {
+                    bundle9 = bundle8;
+                }
+                if (bundle9 == bundle8) {
+                    mapB = ly3.t;
+                } else {
+                    HashMap map = new HashMap();
+                    if (bundle9 != bundle8) {
+                        for (String str3 : bundle9.keySet()) {
+                            String string3 = bundle9.getString(str3);
+                            if (string3 != null) {
+                                map.put(str3, string3);
+                            }
+                        }
+                    }
+                    mapB = bx1.b(map);
+                }
+                boolean z3 = bundle7.getBoolean(ym2.l, false);
+                boolean z4 = bundle7.getBoolean(ym2.m, false);
+                boolean z5 = bundle7.getBoolean(ym2.n, false);
+                String str4 = ym2.o;
+                ArrayList<Integer> arrayList = new ArrayList<>();
+                ArrayList<Integer> integerArrayList = bundle7.getIntegerArrayList(str4);
+                if (integerArrayList != null) {
+                    arrayList = integerArrayList;
+                }
+                yw1 yw1VarK = yw1.k(arrayList);
+                byte[] byteArray = bundle7.getByteArray(ym2.p);
+                xm2 xm2Var = new xm2();
+                xm2Var.d = uuidFromString;
+                xm2Var.e = uri;
+                xm2Var.f = bx1.b(mapB);
+                xm2Var.a = z3;
+                xm2Var.c = z5;
+                xm2Var.b = z4;
+                xm2Var.g = yw1.k(yw1VarK);
+                xm2Var.h = byteArray != null ? Arrays.copyOf(byteArray, byteArray.length) : 0;
+                ym2Var = new ym2(xm2Var);
+            }
+            Bundle bundle10 = bundle6.getBundle(bn2.l);
+            if (bundle10 == null) {
+                sm2Var = null;
+            } else {
+                Uri uri2 = (Uri) bundle10.getParcelable(sm2.b);
+                uri2.getClass();
+                rm2 rm2Var = new rm2(i2, z ? 1 : 0);
+                rm2Var.o = uri2;
+                sm2Var = new sm2(rm2Var);
+            }
+            ArrayList parcelableArrayList = bundle6.getParcelableArrayList(bn2.m);
+            if (parcelableArrayList == null) {
+                vw1 vw1Var = yw1.o;
+                gy3VarF = gy3.r;
+            } else {
+                uw1 uw1VarJ = yw1.j();
+                int i3 = 0;
+                while (i3 < parcelableArrayList.size()) {
+                    Bundle bundle11 = (Bundle) parcelableArrayList.get(i3);
+                    bundle11.getClass();
+                    uw1VarJ.c(new fm4(bundle11.getInt(fm4.q, 0), bundle11.getInt(fm4.r, 0), bundle11.getInt(fm4.s, 0)));
+                    i3++;
+                    parcelableArrayList = parcelableArrayList;
+                }
+                gy3VarF = uw1VarJ.f();
+            }
+            gy3 gy3Var = gy3VarF;
+            ArrayList parcelableArrayList2 = bundle6.getParcelableArrayList(bn2.o);
+            if (parcelableArrayList2 == null) {
+                vw1 vw1Var2 = yw1.o;
+                gy3VarF2 = gy3.r;
+            } else {
+                gy3VarF2 = hw.f(new er1(26), parcelableArrayList2);
+            }
+            gy3 gy3Var2 = gy3VarF2;
+            long j7 = bundle6.getLong(bn2.p, -9223372036854775807L);
+            Uri uri3 = (Uri) bundle6.getParcelable(bn2.i);
+            uri3.getClass();
+            bn2Var = new bn2(uri3, bundle6.getString(bn2.j), ym2Var, sm2Var, gy3Var, bundle6.getString(bn2.n), gy3Var2, j7);
+        }
+        return new gn2(string, wm2Var2, bn2Var, an2VarB, do2VarB, cn2Var2);
     }
 
     /* JADX WARN: Type inference failed for: r1v21, types: [byte[], java.lang.Cloneable] */
     public final tm2 a() {
-        tm2 r0 = new tm2();
-        r0.d = new um2();
-        r0.e = new xm2();
-        r0.f = Collections.EMPTY_LIST;
-        r0.h = gy3.r;
-        r0.l = new zm2();
-        r0.m = cn2.d;
-        r0.j = -9223372036854775807L;
-        um2 r1 = new um2();
-        wm2 r2 = this.e;
-        r1.a = r2.b;
-        r1.b = r2.d;
-        r1.c = r2.e;
-        r1.d = r2.f;
-        r1.e = r2.g;
-        r1.f = r2.h;
-        r0.d = r1;
-        r0.a = this.a;
-        r0.k = this.d;
-        r0.l = this.c.a();
-        r0.m = this.f;
-        bn2 r5 = this.b;
-        if (r5 == null) goto L9;
-        r0.g = r5.f;
-        r0.c = r5.b;
-        r0.b = r5.a;
-        r0.f = r5.e;
-        r0.h = r5.g;
-        ym2 r3 = r5.c;
-        if (r3 == null) goto L7;
-        xm2 r4 = new xm2();
-        r4.d = r3.a;
-        r4.e = r3.b;
-        r4.f = r3.c;
-        r4.a = r3.d;
-        r4.b = r3.e;
-        r4.c = r3.f;
-        r4.g = r3.g;
-        r4.h = r3.h;
-    L8:
-        r0.e = r4;
-        r0.i = r5.d;
-        r0.j = r5.h;
-        goto L9
-    L7:
-        r4 = new xm2();
-    L9:
-        return r0;
+        xm2 xm2Var;
+        tm2 tm2Var = new tm2();
+        tm2Var.d = new um2();
+        tm2Var.e = new xm2();
+        tm2Var.f = Collections.EMPTY_LIST;
+        tm2Var.h = gy3.r;
+        tm2Var.l = new zm2();
+        tm2Var.m = cn2.d;
+        tm2Var.j = -9223372036854775807L;
+        um2 um2Var = new um2();
+        wm2 wm2Var = this.e;
+        um2Var.a = wm2Var.b;
+        um2Var.b = wm2Var.d;
+        um2Var.c = wm2Var.e;
+        um2Var.d = wm2Var.f;
+        um2Var.e = wm2Var.g;
+        um2Var.f = wm2Var.h;
+        tm2Var.d = um2Var;
+        tm2Var.a = this.a;
+        tm2Var.k = this.d;
+        tm2Var.l = this.c.a();
+        tm2Var.m = this.f;
+        bn2 bn2Var = this.b;
+        if (bn2Var != null) {
+            tm2Var.g = bn2Var.f;
+            tm2Var.c = bn2Var.b;
+            tm2Var.b = bn2Var.a;
+            tm2Var.f = bn2Var.e;
+            tm2Var.h = bn2Var.g;
+            ym2 ym2Var = bn2Var.c;
+            if (ym2Var != null) {
+                xm2Var = new xm2();
+                xm2Var.d = ym2Var.a;
+                xm2Var.e = ym2Var.b;
+                xm2Var.f = ym2Var.c;
+                xm2Var.a = ym2Var.d;
+                xm2Var.b = ym2Var.e;
+                xm2Var.c = ym2Var.f;
+                xm2Var.g = ym2Var.g;
+                xm2Var.h = ym2Var.h;
+            } else {
+                xm2Var = new xm2();
+            }
+            tm2Var.e = xm2Var;
+            tm2Var.i = bn2Var.d;
+            tm2Var.j = bn2Var.h;
+        }
+        return tm2Var;
     }
 
-    public final Bundle c(boolean r13) {
-        Bundle r0 = new Bundle();
-        String r2 = this.a;
-        if (r2.equals("") == true) goto L5;
-        r0.putString(h, r2);
-    L5:
-        an2 r1 = an2.f;
-        an2 r3 = this.c;
-        if (r3.equals(r1) == true) goto L8;
-        r0.putBundle(i, r3.c());
-    L8:
-        do2 r4 = do2.K;
-        do2 r5 = this.d;
-        if (r5.equals(r4) == true) goto L11;
-        r0.putBundle(j, r5.c());
-    L11:
-        vm2 r6 = vm2.i;
-        wm2 r7 = this.e;
-        if (r7.equals(r6) == true) goto L38;
-        Bundle r8 = new Bundle();
-        long r9 = r7.a;
-        if (r9 == r6.a) goto L16;
-        r8.putLong(vm2.j, r9);
-    L16:
-        long r10 = r7.c;
-        if (r10 == r6.c) goto L19;
-        r8.putLong(vm2.k, r10);
-    L19:
-        long r11 = r7.b;
-        if (r11 == r6.b) goto L22;
-        r8.putLong(vm2.o, r11);
-    L22:
-        long r12 = r7.d;
-        if (r12 == r6.d) goto L25;
-        r8.putLong(vm2.p, r12);
-    L25:
-        boolean r14 = r7.e;
-        if (r14 == r6.e) goto L28;
-        r8.putBoolean(vm2.l, r14);
-    L28:
-        boolean r15 = r7.f;
-        if (r15 == r6.f) goto L31;
-        r8.putBoolean(vm2.m, r15);
-    L31:
-        boolean r16 = r7.g;
-        if (r16 == r6.g) goto L34;
-        r8.putBoolean(vm2.n, r16);
-    L34:
-        boolean r17 = r7.h;
-        if (r17 == r6.h) goto L37;
-        r8.putBoolean(vm2.q, r17);
-    L37:
-        r0.putBundle(k, r8);
-    L38:
-        cn2 r18 = cn2.d;
-        cn2 r19 = this.f;
-        if (r19.equals(r18) == true) goto L50;
-        Bundle r20 = new Bundle();
-        Uri r21 = r19.a;
-        if (r21 == null) goto L43;
-        r20.putParcelable(cn2.e, r21);
-    L43:
-        String r22 = r19.b;
-        if (r22 == null) goto L46;
-        r20.putString(cn2.f, r22);
-    L46:
-        Bundle r23 = r19.c;
-        if (r23 == null) goto L49;
-        r20.putBundle(cn2.g, r23);
-    L49:
-        r0.putBundle(l, r20);
-    L50:
-        if (r13 == false) goto L100;
-        bn2 r110 = this.b;
-        if (r110 == null) goto L100;
-        yw1 r111 = r110.g;
-        List r24 = r110.e;
-        Bundle r25 = new Bundle();
-        r25.putParcelable(bn2.i, r110.a);
-        String r26 = r110.b;
-        if (r26 == null) goto L56;
-        r25.putString(bn2.j, r26);
-    L56:
-        ym2 r27 = r110.c;
-        if (r27 == null) goto L84;
-        String r28 = bn2.k;
-        yw1 r29 = r27.g;
-        bx1 r30 = r27.c;
-        Bundle r31 = new Bundle();
-        r31.putString(ym2.i, r27.a.toString());
-        Uri r32 = r27.b;
-        if (r32 == null) goto L62;
-        r31.putParcelable(ym2.j, r32);
-    L62:
-        if (r30.isEmpty() == true) goto L68;
-        String r33 = ym2.k;
-        Bundle r34 = new Bundle();
-        Iterator r35 = r30.entrySet().iterator();
-    L65:
-        if (r35.hasNext() == false) goto L67;
-        Map.Entry r112 = (Map.Entry) r35.next();
-        r34.putString((String) r112.getKey(), (String) r112.getValue());
-        goto L65
-    L67:
-        r31.putBundle(r33, r34);
-    L68:
-        boolean r36 = r27.d;
-        if (r36 == false) goto L71;
-        r31.putBoolean(ym2.l, r36);
-    L71:
-        boolean r37 = r27.e;
-        if (r37 == false) goto L74;
-        r31.putBoolean(ym2.m, r37);
-    L74:
-        boolean r38 = r27.f;
-        if (r38 == false) goto L78;
-        r31.putBoolean(ym2.n, r38);
-    L78:
-        if (r29.isEmpty() == true) goto L80;
-        r31.putIntegerArrayList(ym2.o, new ArrayList(r29));
-    L80:
-        byte[] r39 = r27.h;
-        if (r39 == null) goto L83;
-        r31.putByteArray(ym2.p, r39);
-    L83:
-        r25.putBundle(r28, r31);
-    L84:
-        sm2 r40 = r110.d;
-        if (r40 == null) goto L88;
-        String r41 = bn2.l;
-        Bundle r42 = new Bundle();
-        r42.putParcelable(sm2.b, r40.a);
-        r25.putBundle(r41, r42);
-    L88:
-        if (r24.isEmpty() == true) goto L90;
-        r25.putParcelableArrayList(bn2.m, hw.N(r24, new er1(24)));
-    L90:
-        String r43 = r110.f;
-        if (r43 == null) goto L94;
-        r25.putString(bn2.n, r43);
-    L94:
-        if (r111.isEmpty() == true) goto L96;
-        r25.putParcelableArrayList(bn2.o, hw.N(r111, new er1(25)));
-    L96:
-        long r113 = r110.h;
-        if (r113 == (-9223372036854775807L)) goto L99;
-        r25.putLong(bn2.p, r113);
-    L99:
-        r0.putBundle(m, r25);
-    L100:
-        return r0;
+    public final Bundle c(boolean z) {
+        bn2 bn2Var;
+        Bundle bundle = new Bundle();
+        String str = this.a;
+        if (!str.equals("")) {
+            bundle.putString(h, str);
+        }
+        an2 an2Var = an2.f;
+        an2 an2Var2 = this.c;
+        if (!an2Var2.equals(an2Var)) {
+            bundle.putBundle(i, an2Var2.c());
+        }
+        do2 do2Var = do2.K;
+        do2 do2Var2 = this.d;
+        if (!do2Var2.equals(do2Var)) {
+            bundle.putBundle(j, do2Var2.c());
+        }
+        vm2 vm2Var = vm2.i;
+        wm2 wm2Var = this.e;
+        if (!wm2Var.equals(vm2Var)) {
+            Bundle bundle2 = new Bundle();
+            long j2 = wm2Var.a;
+            if (j2 != vm2Var.a) {
+                bundle2.putLong(vm2.j, j2);
+            }
+            long j3 = wm2Var.c;
+            if (j3 != vm2Var.c) {
+                bundle2.putLong(vm2.k, j3);
+            }
+            long j4 = wm2Var.b;
+            if (j4 != vm2Var.b) {
+                bundle2.putLong(vm2.o, j4);
+            }
+            long j5 = wm2Var.d;
+            if (j5 != vm2Var.d) {
+                bundle2.putLong(vm2.p, j5);
+            }
+            boolean z2 = wm2Var.e;
+            if (z2 != vm2Var.e) {
+                bundle2.putBoolean(vm2.l, z2);
+            }
+            boolean z3 = wm2Var.f;
+            if (z3 != vm2Var.f) {
+                bundle2.putBoolean(vm2.m, z3);
+            }
+            boolean z4 = wm2Var.g;
+            if (z4 != vm2Var.g) {
+                bundle2.putBoolean(vm2.n, z4);
+            }
+            boolean z5 = wm2Var.h;
+            if (z5 != vm2Var.h) {
+                bundle2.putBoolean(vm2.q, z5);
+            }
+            bundle.putBundle(k, bundle2);
+        }
+        cn2 cn2Var = cn2.d;
+        cn2 cn2Var2 = this.f;
+        if (!cn2Var2.equals(cn2Var)) {
+            Bundle bundle3 = new Bundle();
+            Uri uri = cn2Var2.a;
+            if (uri != null) {
+                bundle3.putParcelable(cn2.e, uri);
+            }
+            String str2 = cn2Var2.b;
+            if (str2 != null) {
+                bundle3.putString(cn2.f, str2);
+            }
+            Bundle bundle4 = cn2Var2.c;
+            if (bundle4 != null) {
+                bundle3.putBundle(cn2.g, bundle4);
+            }
+            bundle.putBundle(l, bundle3);
+        }
+        if (z && (bn2Var = this.b) != null) {
+            yw1 yw1Var = bn2Var.g;
+            List list = bn2Var.e;
+            Bundle bundle5 = new Bundle();
+            bundle5.putParcelable(bn2.i, bn2Var.a);
+            String str3 = bn2Var.b;
+            if (str3 != null) {
+                bundle5.putString(bn2.j, str3);
+            }
+            ym2 ym2Var = bn2Var.c;
+            if (ym2Var != null) {
+                String str4 = bn2.k;
+                yw1 yw1Var2 = ym2Var.g;
+                bx1 bx1Var = ym2Var.c;
+                Bundle bundle6 = new Bundle();
+                bundle6.putString(ym2.i, ym2Var.a.toString());
+                Uri uri2 = ym2Var.b;
+                if (uri2 != null) {
+                    bundle6.putParcelable(ym2.j, uri2);
+                }
+                if (!bx1Var.isEmpty()) {
+                    String str5 = ym2.k;
+                    Bundle bundle7 = new Bundle();
+                    for (Map.Entry entry : bx1Var.entrySet()) {
+                        bundle7.putString((String) entry.getKey(), (String) entry.getValue());
+                    }
+                    bundle6.putBundle(str5, bundle7);
+                }
+                boolean z6 = ym2Var.d;
+                if (z6) {
+                    bundle6.putBoolean(ym2.l, z6);
+                }
+                boolean z7 = ym2Var.e;
+                if (z7) {
+                    bundle6.putBoolean(ym2.m, z7);
+                }
+                boolean z8 = ym2Var.f;
+                if (z8) {
+                    bundle6.putBoolean(ym2.n, z8);
+                }
+                if (!yw1Var2.isEmpty()) {
+                    bundle6.putIntegerArrayList(ym2.o, new ArrayList<>(yw1Var2));
+                }
+                byte[] bArr = ym2Var.h;
+                if (bArr != null) {
+                    bundle6.putByteArray(ym2.p, bArr);
+                }
+                bundle5.putBundle(str4, bundle6);
+            }
+            sm2 sm2Var = bn2Var.d;
+            if (sm2Var != null) {
+                String str6 = bn2.l;
+                Bundle bundle8 = new Bundle();
+                bundle8.putParcelable(sm2.b, sm2Var.a);
+                bundle5.putBundle(str6, bundle8);
+            }
+            if (!list.isEmpty()) {
+                bundle5.putParcelableArrayList(bn2.m, hw.N(list, new er1(24)));
+            }
+            String str7 = bn2Var.f;
+            if (str7 != null) {
+                bundle5.putString(bn2.n, str7);
+            }
+            if (!yw1Var.isEmpty()) {
+                bundle5.putParcelableArrayList(bn2.o, hw.N(yw1Var, new er1(25)));
+            }
+            long j6 = bn2Var.h;
+            if (j6 != -9223372036854775807L) {
+                bundle5.putLong(bn2.p, j6);
+            }
+            bundle.putBundle(m, bundle5);
+        }
+        return bundle;
     }
 
-    public final boolean equals(Object r3) {
-        if (this != r3) goto L5;
-        return true;
-    L5:
-        if ((r3 instanceof gn2) == false) goto L29;
-        gn2 r4 = (gn2) r3;
-        if (Objects.equals(this.a, r4.a) == true) goto L10;
-        return false;
-    L10:
-        if (this.e.equals(r4.e) == true) goto L12;
-        return false;
-    L12:
-        if (Objects.equals(this.b, r4.b) == true) goto L14;
-        return false;
-    L14:
-        if (Objects.equals(this.c, r4.c) == true) goto L16;
-        return false;
-    L16:
-        if (Objects.equals(this.d, r4.d) == true) goto L18;
-        return false;
-    L18:
-        if (Objects.equals(this.f, r4.f) == false) goto L28;
-        return true;
-    L28:
-        return false;
-    L29:
-        return false;
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof gn2)) {
+            return false;
+        }
+        gn2 gn2Var = (gn2) obj;
+        return Objects.equals(this.a, gn2Var.a) && this.e.equals(gn2Var.e) && Objects.equals(this.b, gn2Var.b) && Objects.equals(this.c, gn2Var.c) && Objects.equals(this.d, gn2Var.d) && Objects.equals(this.f, gn2Var.f);
     }
 
     public final int hashCode() {
-        int r0 = this.a.hashCode() * 31;
-        bn2 r1 = this.b;
-        if (r1 == null) goto L5;
-        int r2 = r1.hashCode();
-    L6:
-        int r3 = (r0 + r2) * 31;
-        int r4 = (this.c.hashCode() + r3) * 31;
-        int r5 = (this.e.hashCode() + r4) * 31;
-        int r6 = (this.d.hashCode() + r5) * 31;
-        return this.f.hashCode() + r6;
-    L5:
-        r2 = 0;
-        goto L6
+        int iHashCode = this.a.hashCode() * 31;
+        bn2 bn2Var = this.b;
+        return this.f.hashCode() + ((this.d.hashCode() + ((this.e.hashCode() + ((this.c.hashCode() + ((iHashCode + (bn2Var != null ? bn2Var.hashCode() : 0)) * 31)) * 31)) * 31)) * 31);
     }
 }

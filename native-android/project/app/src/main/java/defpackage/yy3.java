@@ -3,18 +3,13 @@ package defpackage;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class yy3 implements we0, vy3 {
-    public static final iz q = null;
+    public static final iz q = new iz(0);
     public final ne0 n;
-    public final yy3 o;
+    public final yy3 o = this;
     public volatile ne0 p;
 
-    static {
-        q = new iz(0);
-    }
-
-    public yy3(ne0 r1) {
-        this.n = r1;
-        this.o = this;
+    public yy3(ne0 ne0Var) {
+        this.n = ne0Var;
     }
 
     @Override // defpackage.vy3
@@ -23,22 +18,22 @@ public final class yy3 implements we0, vy3 {
     }
 
     public final void b() {
-        yy3 r0 = this.o;
-        monitor-enter(r0);
-        ne0 r1 = this.p;     // Catch: Throwable -> L7
-        if (r1 != null) goto L9;
-        this.p = q;     // Catch: Throwable -> L7
-    L12:
-        monitor-exit(r0);
-        return;
-    L9:
-        pb1 r3 = new pb1(0);     // Catch: Throwable -> L7
-        s22 r2 = (s22) r1.K(fz0.h0);     // Catch: Throwable -> L7
-        if (r2 == null) goto L12;
-        r2.f(r3);     // Catch: Throwable -> L7
-    L7:
-        th = move-exception;
-        throw th;
+        synchronized (this.o) {
+            try {
+                ne0 ne0Var = this.p;
+                if (ne0Var == null) {
+                    this.p = q;
+                } else {
+                    pb1 pb1Var = new pb1(0);
+                    s22 s22Var = (s22) ne0Var.K(fz0.h0);
+                    if (s22Var != null) {
+                        s22Var.f(pb1Var);
+                    }
+                }
+            } catch (Throwable th) {
+                throw th;
+            }
+        }
     }
 
     @Override // defpackage.vy3
@@ -52,43 +47,33 @@ public final class yy3 implements we0, vy3 {
 
     @Override // defpackage.we0
     public final ne0 e() {
-        ne0 r0 = this.p;
-        if (r0 != null) goto L5;
-    L6:
-        x80 r1 = (x80) this.n.K(x80.o);
-        if (r1 == null) goto L9;
-        ne0 r2 = new xy3(r1, this);
-    L10:
-        yy3 r3 = this.o;
-        monitor-enter(r3);
-        ne0 r4 = this.p;     // Catch: Throwable -> L15
-        if (r4 != null) goto L18;
-        ne0 r5 = this.n;     // Catch: Throwable -> L15
-        ne0 r6 = r5.J(new t22((s22) r5.K(fz0.h0))).J(q01.n).J(r2);     // Catch: Throwable -> L15
-    L21:
-        this.p = r6;     // Catch: Throwable -> L15
-        monitor-exit(r3);
-        r0 = r6;
-    L24:
-        r0.getClass();
-        return r0;
-    L18:
-        if (r4 != q) goto L20;
-        ne0 r7 = this.n;     // Catch: Throwable -> L15
-        t22 r8 = new t22((s22) r7.K(fz0.h0));     // Catch: Throwable -> L15
-        r8.o(new pb1(0));     // Catch: Throwable -> L15
-        r6 = r7.J(r8).J(q01.n).J(r2);     // Catch: Throwable -> L15
-        goto L21
-    L20:
-        r6 = r4;
-    L15:
-        th = move-exception;
-        throw th;
-    L9:
-        r2 = q01.n;
-        goto L10
-    L5:
-        if (r0 != q) goto L24;
-        goto L6
+        ne0 ne0VarJ;
+        ne0 ne0Var = this.p;
+        if (ne0Var == null || ne0Var == q) {
+            x80 x80Var = (x80) this.n.K(x80.o);
+            ne0 xy3Var = x80Var != null ? new xy3(x80Var, this) : q01.n;
+            synchronized (this.o) {
+                try {
+                    ne0 ne0Var2 = this.p;
+                    if (ne0Var2 == null) {
+                        ne0 ne0Var3 = this.n;
+                        ne0VarJ = ne0Var3.J(new t22((s22) ne0Var3.K(fz0.h0))).J(q01.n).J(xy3Var);
+                    } else if (ne0Var2 == q) {
+                        ne0 ne0Var4 = this.n;
+                        t22 t22Var = new t22((s22) ne0Var4.K(fz0.h0));
+                        t22Var.o(new pb1(0));
+                        ne0VarJ = ne0Var4.J(t22Var).J(q01.n).J(xy3Var);
+                    } else {
+                        ne0VarJ = ne0Var2;
+                    }
+                    this.p = ne0VarJ;
+                } catch (Throwable th) {
+                    throw th;
+                }
+            }
+            ne0Var = ne0VarJ;
+        }
+        ne0Var.getClass();
+        return ne0Var;
     }
 }

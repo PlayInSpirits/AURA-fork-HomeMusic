@@ -12,15 +12,16 @@ public final class kx2 extends cx3 {
     public final TextView u;
     public final MaterialCalendarGridView v;
 
-    public kx2(LinearLayout r9, boolean r10) {
-        super(r9);
-        TextView r0 = (TextView) r9.findViewById(R.id.month_title);
-        this.u = r0;
-        WeakHashMap r1 = j65.a;
-        new w55(R.id.tag_accessibility_heading, Boolean.class, 0, 28, 3).f(r0, Boolean.TRUE);
-        this.v = (MaterialCalendarGridView) r9.findViewById(R.id.month_grid);
-        if (r10 == true) goto L6;
-        r0.setVisibility(8);
-        return;
+    public kx2(LinearLayout linearLayout, boolean z) {
+        super(linearLayout);
+        TextView textView = (TextView) linearLayout.findViewById(R.id.month_title);
+        this.u = textView;
+        WeakHashMap weakHashMap = j65.a;
+        new w55(R.id.tag_accessibility_heading, Boolean.class, 0, 28, 3).f(textView, Boolean.TRUE);
+        this.v = (MaterialCalendarGridView) linearLayout.findViewById(R.id.month_grid);
+        if (z) {
+            return;
+        }
+        textView.setVisibility(8);
     }
 }

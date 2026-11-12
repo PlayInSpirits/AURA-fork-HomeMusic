@@ -29,7 +29,4 @@ public class RadioBrowserStation {
 
     @ka4("votes")
     public int votes;
-
-    public RadioBrowserStation() {
-    }
 }

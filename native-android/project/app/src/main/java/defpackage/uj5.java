@@ -12,27 +12,27 @@ public final class uj5 extends ak5 {
     public final ei5 n;
     public final int o;
 
-    public uj5(pi5 r4) {
-        r4.getClass();
-        this.n = r4;
-        int r5 = 0;
-        int r0 = 0;
-    L3:
-        ei5 r1 = this.n;
-        if (r5 >= r1.size()) goto L9;
-        int r2 = ((ak5) r1.get(r5)).b();
-        if (r0 >= r2) goto L8;
-        r0 = r2;
-    L8:
-        r5 = r5 + 1;
-        goto L3
-    L9:
-        int r3 = r0 + 1;
-        this.o = r3;
-        if (r3 > 8) goto L13;
-        return;
-    L13:
-        throw new zzhf("Exceeded cutoff limit for max depth of cbor value");
+    public uj5(pi5 pi5Var) throws zzhf {
+        pi5Var.getClass();
+        this.n = pi5Var;
+        int i = 0;
+        int i2 = 0;
+        while (true) {
+            ei5 ei5Var = this.n;
+            if (i >= ei5Var.size()) {
+                break;
+            }
+            int iB = ((ak5) ei5Var.get(i)).b();
+            if (i2 < iB) {
+                i2 = iB;
+            }
+            i++;
+        }
+        int i3 = i2 + 1;
+        this.o = i3;
+        if (i3 > 8) {
+            throw new zzhf("Exceeded cutoff limit for max depth of cbor value");
+        }
     }
 
     @Override // defpackage.ak5
@@ -46,42 +46,35 @@ public final class uj5 extends ak5 {
     }
 
     @Override // java.lang.Comparable
-    public final /* bridge */ /* synthetic */ int compareTo(Object r5) {
-        ak5 r6 = (ak5) r5;
-        int r0 = r6.a();
-        int r1 = ak5.d((byte) -128);
-        if (r1 != r0) goto L5;
-        ei5 r7 = ((uj5) r6).n;
-        ei5 r4 = this.n;
-        if (r4.size() != r7.size()) goto L9;
-        int r2 = 0;
-    L12:
-        if (r2 >= r4.size()) goto L17;
-        int r3 = ((ak5) r4.get(r2)).compareTo((ak5) r7.get(r2));
-        if (r3 != 0) goto L15;
-        r2 = r2 + 1;
-        goto L12
-    L15:
-        return r3;
-    L17:
+    public final /* bridge */ /* synthetic */ int compareTo(Object obj) {
+        ak5 ak5Var = (ak5) obj;
+        int iA = ak5Var.a();
+        int iD = ak5.d((byte) -128);
+        if (iD != iA) {
+            return iD - ak5Var.a();
+        }
+        ei5 ei5Var = ((uj5) ak5Var).n;
+        ei5 ei5Var2 = this.n;
+        if (ei5Var2.size() != ei5Var.size()) {
+            return ei5Var2.size() - ei5Var.size();
+        }
+        for (int i = 0; i < ei5Var2.size(); i++) {
+            int iCompareTo = ((ak5) ei5Var2.get(i)).compareTo((ak5) ei5Var.get(i));
+            if (iCompareTo != 0) {
+                return iCompareTo;
+            }
+        }
         return 0;
-    L9:
-        return r4.size() - r7.size();
-    L5:
-        return r1 - r6.a();
     }
 
-    public final boolean equals(Object r4) {
-        if (this != r4) goto L6;
-        return true;
-    L6:
-        if (r4 != null) goto L9;
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj != null && uj5.class == obj.getClass()) {
+            return this.n.equals(((uj5) obj).n);
+        }
         return false;
-    L9:
-        if (uj5.class == r4.getClass()) goto L12;
-        return false;
-    L12:
-        return this.n.equals(((uj5) r4).n);
     }
 
     public final int hashCode() {
@@ -89,33 +82,29 @@ public final class uj5 extends ak5 {
     }
 
     public final String toString() {
-        ei5 r6 = this.n;
-        if (r6.isEmpty() == false) goto L6;
-        return "[]";
-    L6:
-        ArrayList r0 = new ArrayList();
-        int r1 = r6.size();
-        int r2 = 0;
-    L7:
-        if (r2 >= r1) goto L9;
-        r0.add(((ak5) r6.get(r2)).toString().replace("\n", "\n  "));
-        r2 = r2 + 1;
-        goto L7
-    L9:
-        StringBuilder r7 = new StringBuilder("[\n  ");
-        Iterator r3 = r0.iterator();
-    L19:
-        e = move-exception;
-        throw new AssertionError(e);
-    L11:
-        if (r3.hasNext() == false) goto L17;
-        r7.append(z45.a(r3.next()));     // Catch: IOException -> L19
-    L14:
-        if (r3.hasNext() == false) goto L17;
-        r7.append(",\n  ");     // Catch: IOException -> L19
-        r7.append(z45.a(r3.next()));     // Catch: IOException -> L19
-    L17:
-        r7.append("\n]");
-        return r7.toString();
+        ei5 ei5Var = this.n;
+        if (ei5Var.isEmpty()) {
+            return "[]";
+        }
+        ArrayList arrayList = new ArrayList();
+        int size = ei5Var.size();
+        for (int i = 0; i < size; i++) {
+            arrayList.add(((ak5) ei5Var.get(i)).toString().replace("\n", "\n  "));
+        }
+        StringBuilder sb = new StringBuilder("[\n  ");
+        Iterator it = arrayList.iterator();
+        try {
+            if (it.hasNext()) {
+                sb.append(z45.a(it.next()));
+                while (it.hasNext()) {
+                    sb.append((CharSequence) ",\n  ");
+                    sb.append(z45.a(it.next()));
+                }
+            }
+            sb.append("\n]");
+            return sb.toString();
+        } catch (IOException e) {
+            throw new AssertionError(e);
+        }
     }
 }

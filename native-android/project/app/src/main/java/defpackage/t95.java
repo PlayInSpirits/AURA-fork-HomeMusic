@@ -10,10 +10,10 @@ public final class t95 {
     public final String c;
     public final Set d;
 
-    public t95(String r1, int r2, String r3, Set r4) {
-        this.b = r2;
-        this.a = r1;
-        this.c = r3;
-        this.d = r4;
+    public t95(String str, int i, String str2, Set set) {
+        this.b = i;
+        this.a = str;
+        this.c = str2;
+        this.d = set;
     }
 }

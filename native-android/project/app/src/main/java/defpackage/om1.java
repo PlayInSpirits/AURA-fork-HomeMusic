@@ -33,8 +33,8 @@ import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
+import org.chromium.support_lib_boundary.WebSettingsBoundaryInterface;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -45,96 +45,83 @@ public final class om1 implements ca4, bi0, zy3, ka5, kg1, lm3, Callback, sq3, s
     public final /* synthetic */ int n;
     public Object o;
 
-    public om1(int r1, byte r2) {
-        this.n = r1;
-        switch(r1) {
-            case 5: goto L10;
-            case 12: goto L8;
-            case 27: goto L6;
-            default: goto L4;
-        };
-    L4:
-        this.o = uc5.B(Boolean.FALSE);
-        return;
-    L6:
-        this.o = new om0(1);
-        return;
-    L8:
-        this.o = new HashMap();
-        return;
-    L10:
-        this.o = AppDatabase.y().A();
+    public om1(int i, byte b) {
+        this.n = i;
+        switch (i) {
+            case 5:
+                this.o = AppDatabase.y().A();
+                break;
+            case 12:
+                this.o = new HashMap();
+                break;
+            case 27:
+                this.o = new om0(1);
+                break;
+            default:
+                this.o = uc5.B(Boolean.FALSE);
+                break;
+        }
     }
 
-    private final void i(Call r1, Throwable r2) {
+    private final void i(Call call, Throwable th) {
     }
 
     @Override // defpackage.s21
-    public cv3 a() {
-        gv3 r5 = (gv3) this.o;
-        IOException r1 = null;
-    L4:
-        if (r5.x.m() == true) goto L31;
-        q34 r2 = r5.w();     // Catch: IOException -> L15
-        if (r2.c() == true) goto L23;
-        p34 r3 = r2.f();     // Catch: IOException -> L15
-        if (r3.b == null) goto L10;
-    L12:
-        boolean r4 = false;
-    L13:
-        if (r4 == false) goto L17;
-        r3 = r2.g();     // Catch: IOException -> L15
-    L17:
-        q34 r6 = r3.b;     // Catch: IOException -> L15
-        Throwable r7 = r3.c;     // Catch: IOException -> L15
-        if (r7 != null) goto L21;
-        if (r6 == null) goto L23;
-        r5.B.addFirst(r6);     // Catch: IOException -> L15
-        goto L4
-    L21:
-        throw r7;     // Catch: IOException -> L15
-    L10:
-        if (r3.c != null) goto L12;
-        r4 = true;
-    L23:
-        return r2.e();
-    L15:
-        e = move-exception;
-        if (r1 != null) goto L26;
-        r1 = e;
-    L28:
-        if (r5.m(null) == true) goto L4;
-        throw r1;
-    L26:
-        j51.d(r1, e);
-        goto L28
-    L31:
+    public cv3 a() throws Throwable {
+        gv3 gv3Var = (gv3) this.o;
+        IOException iOException = null;
+        while (!gv3Var.x.m()) {
+            try {
+                q34 q34VarW = gv3Var.w();
+                if (!q34VarW.c()) {
+                    p34 p34VarF = q34VarW.f();
+                    if (p34VarF.b == null && p34VarF.c == null) {
+                        p34VarF = q34VarW.g();
+                    }
+                    q34 q34Var = p34VarF.b;
+                    Throwable th = p34VarF.c;
+                    if (th != null) {
+                        throw th;
+                    }
+                    if (q34Var != null) {
+                        gv3Var.B.addFirst(q34Var);
+                    }
+                }
+                return q34VarW.e();
+            } catch (IOException e) {
+                if (iOException == null) {
+                    iOException = e;
+                } else {
+                    j51.d(iOException, e);
+                }
+                if (!gv3Var.m(null)) {
+                    throw iOException;
+                }
+            }
+        }
         mj0.i("Canceled");
         return null;
     }
 
     @Override // defpackage.zy3
-    public void accept(Object r3, Object r4) {
-        qh1 r2 = (qh1) this.o;
-        w02 r0 = new w02((cr4) r4);
-        av1 r5 = (av1) ((cv1) ((p14) r3).e());
-        Parcel r6 = Parcel.obtain();
-        r6.writeInterfaceToken("com.google.android.gms.auth.blockstore.restorecredential.internal.IRestoreCredentialService");
-        int r1 = yh5.a;
-        r6.writeInt(1);
-        r2.writeToParcel(r6, 0);
-        r6.writeStrongBinder(r0);
-        Parcel r7 = Parcel.obtain();
-        r5.e.transact(2, r6, r7, 0);     // Catch: Throwable -> L6
-        r7.readException();     // Catch: Throwable -> L6
-        r6.recycle();
-        r7.recycle();
-        return;
-    L6:
-        th = move-exception;
-        r6.recycle();
-        r7.recycle();
-        throw th;
+    public void accept(Object obj, Object obj2) {
+        qh1 qh1Var = (qh1) this.o;
+        w02 w02Var = new w02((cr4) obj2);
+        av1 av1Var = (av1) ((cv1) ((p14) obj).e());
+        Parcel parcelObtain = Parcel.obtain();
+        parcelObtain.writeInterfaceToken("com.google.android.gms.auth.blockstore.restorecredential.internal.IRestoreCredentialService");
+        int i = yh5.a;
+        parcelObtain.writeInt(1);
+        qh1Var.writeToParcel(parcelObtain, 0);
+        parcelObtain.writeStrongBinder(w02Var);
+        Parcel parcelObtain2 = Parcel.obtain();
+        try {
+            av1Var.e.transact(2, parcelObtain, parcelObtain2, 0);
+            parcelObtain2.readException();
+        } finally {
+            parcelObtain.recycle();
+            parcelObtain2.recycle();
+        }
     }
 
     @Override // defpackage.sq3
@@ -148,217 +135,172 @@ public final class om1 implements ca4, bi0, zy3, ka5, kg1, lm3, Callback, sq3, s
     }
 
     @Override // defpackage.sq3
-    public void e(int r4, Object r5) {
-        switch(r4) {
-            case 1: goto L13;
-            case 2: goto L12;
-            case 3: goto L11;
-            case 4: goto L10;
-            case 5: goto L9;
-            case 6: goto L8;
-            case 7: goto L7;
-            case 8: goto L6;
-            case 9: goto L3;
-            case 10: goto L5;
-            case 11: goto L4;
-            default: goto L3;
-        };
-    L3:
-        String r0 = "";
-    L15:
-        if (r4 != 6) goto L17;
-    L21:
-        Log.e("ProfileInstaller", r0, (Throwable) r5);
-    L22:
-        ((ProfileInstallReceiver) this.o).setResultCode(r4);
-        return;
-    L17:
-        if (r4 == 7) goto L21;
-        if (r4 == 8) goto L21;
-        Log.d("ProfileInstaller", r0);
-        goto L22
-    L4:
-        r0 = "RESULT_DELETE_SKIP_FILE_SUCCESS";
-        goto L15
-    L5:
-        r0 = "RESULT_INSTALL_SKIP_FILE_SUCCESS";
-        goto L15
-    L6:
-        r0 = "RESULT_PARSE_EXCEPTION";
-        goto L15
-    L7:
-        r0 = "RESULT_IO_EXCEPTION";
-        goto L15
-    L8:
-        r0 = "RESULT_BASELINE_PROFILE_NOT_FOUND";
-        goto L15
-    L9:
-        r0 = "RESULT_DESIRED_FORMAT_UNSUPPORTED";
-        goto L15
-    L10:
-        r0 = "RESULT_NOT_WRITABLE";
-        goto L15
-    L11:
-        r0 = "RESULT_UNSUPPORTED_ART_VERSION";
-        goto L15
-    L12:
-        r0 = "RESULT_ALREADY_INSTALLED";
-        goto L15
-    L13:
-        r0 = "RESULT_INSTALL_SUCCESS";
-        goto L15
+    public void e(int i, Object obj) {
+        String str;
+        switch (i) {
+            case 1:
+                str = "RESULT_INSTALL_SUCCESS";
+                break;
+            case 2:
+                str = "RESULT_ALREADY_INSTALLED";
+                break;
+            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
+                str = "RESULT_UNSUPPORTED_ART_VERSION";
+                break;
+            case 4:
+                str = "RESULT_NOT_WRITABLE";
+                break;
+            case 5:
+                str = "RESULT_DESIRED_FORMAT_UNSUPPORTED";
+                break;
+            case 6:
+                str = "RESULT_BASELINE_PROFILE_NOT_FOUND";
+                break;
+            case 7:
+                str = "RESULT_IO_EXCEPTION";
+                break;
+            case 8:
+                str = "RESULT_PARSE_EXCEPTION";
+                break;
+            case 9:
+            default:
+                str = "";
+                break;
+            case 10:
+                str = "RESULT_INSTALL_SKIP_FILE_SUCCESS";
+                break;
+            case 11:
+                str = "RESULT_DELETE_SKIP_FILE_SUCCESS";
+                break;
+        }
+        if (i == 6 || i == 7 || i == 8) {
+            Log.e("ProfileInstaller", str, (Throwable) obj);
+        } else {
+            Log.d("ProfileInstaller", str);
+        }
+        ((ProfileInstallReceiver) this.o).setResultCode(i);
     }
 
-    public void f(e10 r5, wd0 r6) {
-        if ((r6 instanceof z73) == false) goto L7;
-        z73 r0 = (z73) r6;
-        int r1 = r0.p;
-        if ((r1 & Integer.MIN_VALUE) == 0) goto L7;
-        r0.p = r1 - Integer.MIN_VALUE;
-    L8:
-        Object r7 = r0.n;
-        int r2 = r0.p;
-        if (r2 == 0) goto L15;
-        if (r2 == 1) goto L13;
-        kf2.o("call to 'resume' before 'invoke' with coroutine");
-        return;
-    L13:
-        kb4.X(r7);
-        er1.a();
-        return;
-    L15:
-        kb4.X(r7);
-        nl4 r4 = (nl4) this.o;
-        r0.p = 1;
-        r4.a(r5, r0);
-        return;
-    L7:
-        r0 = new z73(this, r6);
-        goto L8
+    /* JADX WARN: Code duplicated, block: B:7:0x0013  */
+    public void f(e10 e10Var, wd0 wd0Var) {
+        z73 z73Var;
+        if (wd0Var instanceof z73) {
+            z73Var = (z73) wd0Var;
+            int i = z73Var.p;
+            if ((i & Integer.MIN_VALUE) != 0) {
+                z73Var.p = i - Integer.MIN_VALUE;
+            } else {
+                z73Var = new z73(this, wd0Var);
+            }
+        } else {
+            z73Var = new z73(this, wd0Var);
+        }
+        Object obj = z73Var.n;
+        int i2 = z73Var.p;
+        if (i2 == 0) {
+            kb4.X(obj);
+            nl4 nl4Var = (nl4) this.o;
+            z73Var.p = 1;
+            nl4Var.a(e10Var, z73Var);
+            return;
+        }
+        if (i2 != 1) {
+            kf2.o("call to 'resume' before 'invoke' with coroutine");
+        } else {
+            kb4.X(obj);
+            er1.a();
+        }
     }
 
     @Override // defpackage.lm3
     public void g() {
-        sl3 r0 = (sl3) this.o;
-        if (r0.y() == true) goto L5;
-        return;
-    L5:
-        if (r0.n() == null) goto L9;
-        r0.X().runOnUiThread(new ql3(this, 0));
-        return;
+        sl3 sl3Var = (sl3) this.o;
+        if (!sl3Var.y() || sl3Var.n() == null) {
+            return;
+        }
+        sl3Var.X().runOnUiThread(new ql3(this, 0));
     }
 
     @Override // defpackage.kg1
-    public void h(Object r7) {
-        bj2 r8 = (bj2) r7;
-        li3 r0 = (li3) this.o;
-        boolean r2 = false;
-        int r3 = 1;
-        String r5 = null;
-        if (((bj2) bo2.a.get()) == r8) goto L15;
-        r8.v(new j52(r3, this));
-        if (r8.a() == null) goto L8;
-        r5 = r8.a().a;
-    L8:
-        if (r8.g() == 3) goto L10;
-    L12:
-        r0.c(r5, r2);
-        bo2.a = new WeakReference(r8);
-        return;
-    L10:
-        if (r8.q() == false) goto L12;
-        r2 = true;
-        goto L12
-    L15:
-        if (r8.a() == null) goto L18;
-        r5 = r8.a().a;
-    L18:
-        if (r8.g() == 3) goto L20;
-    L22:
-        r0.c(r5, r2);
-        return;
-    L20:
-        if (r8.q() == false) goto L22;
-        r2 = true;
-        goto L22
+    public void h(Object obj) {
+        String str;
+        bj2 bj2Var = (bj2) obj;
+        li3 li3Var = (li3) this.o;
+        boolean z = false;
+        int i = 1;
+        if (((bj2) bo2.a.get()) == bj2Var) {
+            str = bj2Var.a() != null ? bj2Var.a().a : null;
+            if (bj2Var.g() == 3 && bj2Var.q()) {
+                z = true;
+            }
+            li3Var.c(str, z);
+            return;
+        }
+        bj2Var.v(new j52(i, this));
+        str = bj2Var.a() != null ? bj2Var.a().a : null;
+        if (bj2Var.g() == 3 && bj2Var.q()) {
+            z = true;
+        }
+        li3Var.c(str, z);
+        bo2.a = new WeakReference(bj2Var);
     }
 
     @Override // defpackage.ca4
-    public void j(da4 r1) {
-        pm1 r0 = (pm1) this.o;
-        r0.D.j(r0);
+    public void j(da4 da4Var) {
+        pm1 pm1Var = (pm1) this.o;
+        pm1Var.D.j(pm1Var);
     }
 
     public void k() {
-        pm1 r11 = (pm1) this.o;
-        int r0 = r11.E - 1;
-        r11.E = r0;
-        if (r0 <= 0) goto L5;
-        return;
-    L5:
-        ln1[] r1 = r11.G;
-        int r2 = r1.length;
-        int r3 = 0;
-        int r4 = 0;
-    L6:
-        if (r3 >= r2) goto L8;
-        ln1 r5 = r1[r3];
-        r5.v();
-        r4 = r4 + r5.V.a;
-        r3 = r3 + 1;
-        goto L6
-    L8:
-        sv4[] r6 = new sv4[r4];
-        ln1[] r7 = r11.G;
-        int r8 = r7.length;
-        int r9 = 0;
-        int r10 = 0;
-    L9:
-        if (r9 >= r8) goto L14;
-        ln1 r12 = r7[r9];
-        r12.v();
-        int r13 = r12.V.a;
-        int r14 = 0;
-    L11:
-        if (r14 >= r13) goto L13;
-        r12.v();
-        r6[r10] = r12.V.a(r14);
-        r14 = r14 + 1;
-        r10 = r10 + 1;
-        goto L11
-    L13:
-        r9 = r9 + 1;
-        goto L9
-    L14:
-        r11.F = new tv4(r6);
-        r11.D.b(r11);
+        pm1 pm1Var = (pm1) this.o;
+        int i = pm1Var.E - 1;
+        pm1Var.E = i;
+        if (i > 0) {
+            return;
+        }
+        int i2 = 0;
+        for (ln1 ln1Var : pm1Var.G) {
+            ln1Var.v();
+            i2 += ln1Var.V.a;
+        }
+        sv4[] sv4VarArr = new sv4[i2];
+        int i3 = 0;
+        for (ln1 ln1Var2 : pm1Var.G) {
+            ln1Var2.v();
+            int i4 = ln1Var2.V.a;
+            int i5 = 0;
+            while (i5 < i4) {
+                ln1Var2.v();
+                sv4VarArr[i3] = ln1Var2.V.a(i5);
+                i5++;
+                i3++;
+            }
+        }
+        pm1Var.F = new tv4(sv4VarArr);
+        pm1Var.D.b(pm1Var);
     }
 
-    public void l(Object r5) {
-        MediaBrowserService.Result r4 = (MediaBrowserService.Result) this.o;
-        if ((r5 instanceof List) == false) goto L11;
-        List r6 = (List) r5;
-        ArrayList r0 = new ArrayList(r6.size());
-        Iterator r7 = r6.iterator();
-    L6:
-        if (r7.hasNext() == false) goto L8;
-        Parcel r2 = (Parcel) r7.next();
-        r2.setDataPosition(0);
-        r0.add((MediaBrowser.MediaItem) MediaBrowser.MediaItem.CREATOR.createFromParcel(r2));
-        r2.recycle();
-        goto L6
-    L8:
-        r4.sendResult(r0);
-        return;
-    L11:
-        if ((r5 instanceof Parcel) == false) goto L14;
-        Parcel r8 = (Parcel) r5;
-        r8.setDataPosition(0);
-        r4.sendResult(MediaBrowser.MediaItem.CREATOR.createFromParcel(r8));
-        r8.recycle();
-        return;
-    L14:
-        r4.sendResult(null);
+    public void l(Object obj) {
+        MediaBrowserService.Result result = (MediaBrowserService.Result) this.o;
+        if (!(obj instanceof List)) {
+            if (!(obj instanceof Parcel)) {
+                result.sendResult(null);
+                return;
+            }
+            Parcel parcel = (Parcel) obj;
+            parcel.setDataPosition(0);
+            result.sendResult(MediaBrowser.MediaItem.CREATOR.createFromParcel(parcel));
+            parcel.recycle();
+            return;
+        }
+        List<Parcel> list = (List) obj;
+        ArrayList arrayList = new ArrayList(list.size());
+        for (Parcel parcel2 : list) {
+            parcel2.setDataPosition(0);
+            arrayList.add((MediaBrowser.MediaItem) MediaBrowser.MediaItem.CREATOR.createFromParcel(parcel2));
+            parcel2.recycle();
+        }
+        result.sendResult(arrayList);
     }
 
     @Override // defpackage.bi0
@@ -366,302 +308,245 @@ public final class om1 implements ca4, bi0, zy3, ka5, kg1, lm3, Callback, sq3, s
         return new j6(((bl0) this.o).m());
     }
 
-    public void n(df r3, MaterialToolbar r4) {
-        DrawerLayout r2 = (DrawerLayout) ((ss0) this.o).p;
-        if (r3.getResources().getConfiguration().orientation != 2) goto L6;
-        k4 r0 = new k4(r3, r2, r4);
-        r2.a(r0);
-        r0.e();
-        return;
+    public void n(df dfVar, MaterialToolbar materialToolbar) {
+        DrawerLayout drawerLayout = (DrawerLayout) ((ss0) this.o).p;
+        if (dfVar.getResources().getConfiguration().orientation == 2) {
+            k4 k4Var = new k4(dfVar, drawerLayout, materialToolbar);
+            drawerLayout.a(k4Var);
+            k4Var.e();
+        }
     }
 
     @Override // defpackage.kg1
-    public void o(Throwable r2) {
-        Log.e("MediaManager", "Failed to get MediaBrowser instance", r2);
+    public void o(Throwable th) {
+        Log.e("MediaManager", "Failed to get MediaBrowser instance", th);
     }
 
     @Override // retrofit2.Callback
-    public void onFailure(Call r3, Throwable r4) {
-        switch(this.n) {
-            case 18: goto L17;
-            case 19: goto L13;
-            case 20: goto L4;
-            case 21: goto L6;
-            default: goto L4;
-        };
-    L4:
-        ((nb4) this.o).onError(new Exception(r4.getMessage()));
-        return;
-    L6:
-        eu3 r2 = (eu3) this.o;
-        if (r2.y() == false) goto L15;
-        w12 r5 = r2.J0;
-        if (r5 == null) goto L16;
-        ((ProgressBar) r5.h).setVisibility(8);
-        ((TextView) r2.J0.d).setVisibility(0);
-        Toast.makeText(r2.Z(), r2.t(R.string.radio_search_error, new Object[]{r4.getMessage()}), 0).show();
-        return;
-    L16:
-        return;
-    L15:
-        return;
-    L13:
-        ((xm3) this.o).c("Network error: " + r4.getMessage());
-        Log.e("PodcastChannelEditorViewModel", "Network error", r4);
-        return;
+    public void onFailure(Call call, Throwable th) {
+        w12 w12Var;
+        switch (this.n) {
+            case 18:
+                break;
+            case 19:
+                ((xm3) this.o).c("Network error: " + th.getMessage());
+                Log.e("PodcastChannelEditorViewModel", "Network error", th);
+                break;
+            case 20:
+            default:
+                ((nb4) this.o).onError(new Exception(th.getMessage()));
+                break;
+            case 21:
+                eu3 eu3Var = (eu3) this.o;
+                if (eu3Var.y() && (w12Var = eu3Var.J0) != null) {
+                    ((ProgressBar) w12Var.h).setVisibility(8);
+                    ((TextView) eu3Var.J0.d).setVisibility(0);
+                    Toast.makeText(eu3Var.Z(), eu3Var.t(R.string.radio_search_error, th.getMessage()), 0).show();
+                    break;
+                }
+                break;
+        }
     }
 
     @Override // defpackage.u74
-    public boolean onQueryTextChange(String r2) {
-        vb4 r1 = (vb4) ((SettingsFragment) this.o).m().C(R.id.settings_container);
-        if (r1 == null) goto L7;
-        r1.D0 = g12.I(r2).trim();
-        r1.l0();
-        return true;
-    L7:
+    public boolean onQueryTextChange(String str) {
+        vb4 vb4Var = (vb4) ((SettingsFragment) this.o).m().C(R.id.settings_container);
+        if (vb4Var == null) {
+            return true;
+        }
+        vb4Var.D0 = g12.I(str).trim();
+        vb4Var.l0();
         return true;
     }
 
     @Override // defpackage.u74
-    public boolean onQueryTextSubmit(String r2) {
-        vb4 r1 = (vb4) ((SettingsFragment) this.o).m().C(R.id.settings_container);
-        if (r1 == null) goto L7;
-        r1.D0 = g12.I(r2).trim();
-        r1.l0();
-        return true;
-    L7:
+    public boolean onQueryTextSubmit(String str) {
+        vb4 vb4Var = (vb4) ((SettingsFragment) this.o).m().C(R.id.settings_container);
+        if (vb4Var == null) {
+            return true;
+        }
+        vb4Var.D0 = g12.I(str).trim();
+        vb4Var.l0();
         return true;
     }
 
     @Override // retrofit2.Callback
-    public void onResponse(Call r3, Response r4) {
-        switch(this.n) {
-            case 18: goto L52;
-            case 19: goto L31;
-            case 20: goto L4;
-            case 21: goto L17;
-            default: goto L4;
-        };
-    L4:
-        nb4 r2 = (nb4) this.o;
-        if (r4.isSuccessful() == true) goto L7;
-        return;
-    L7:
-        if (r4.body() != null) goto L9;
-        return;
-    L9:
-        if (((ApiResponse) r4.body()).getSubsonicResponse() != null) goto L11;
-        return;
-    L11:
-        if (((ApiResponse) r4.body()).getSubsonicResponse().getError() == null) goto L14;
-        r2.onError(new Exception(((ApiResponse) r4.body()).getSubsonicResponse().getError().getMessage()));
-        return;
-    L14:
-        if (((ApiResponse) r4.body()).getSubsonicResponse().getScanStatus() == null) goto L68;
-        r2.onSuccess(((ApiResponse) r4.body()).getSubsonicResponse().getScanStatus().isScanning(), ((ApiResponse) r4.body()).getSubsonicResponse().getScanStatus().getCount().longValue());
-        return;
-    L68:
-        return;
-    L17:
-        eu3 r5 = (eu3) this.o;
-        if (r5.y() == false) goto L69;
-        w12 r6 = r5.J0;
-        if (r6 == null) goto L71;
-        ((ProgressBar) r6.h).setVisibility(8);
-        if (r4.isSuccessful() == true) goto L25;
-    L29:
-        zd0 r7 = r5.L0;
-        r7.r = Collections.EMPTY_LIST;
-        r7.d();
-        ((RecyclerView) r5.J0.i).setVisibility(8);
-        ((TextView) r5.J0.d).setVisibility(0);
-        return;
-    L25:
-        if (r4.body() == null) goto L29;
-        if (((List) r4.body()).isEmpty() == true) goto L29;
-        zd0 r8 = r5.L0;
-        r8.r = (List) r4.body();
-        r8.d();
-        ((RecyclerView) r5.J0.i).setVisibility(0);
-        ((TextView) r5.J0.d).setVisibility(8);
-        return;
-    L71:
-        return;
-    L69:
-        return;
-    L31:
-        xm3 r9 = (xm3) this.o;
-        if (r4.code() != 501) goto L35;
-        Application r10 = r9.b;
-        r10.getClass();
-        r9.c(r10.getString(R.string.podcast_channel_not_supported_snackbar));
-        return;
-    L35:
-        if (r4.isSuccessful() == true) goto L37;
-    L41:
-        r9.getClass();
-        String r11 = "HTTP error: " + r4.code();
-        if (r4.errorBody() != null) goto L62;
-    L49:
-        r9.c(r11);
-        return;
-    L62:
-        String r12 = r4.errorBody().string();     // Catch: IOException -> L47
-        if (r12.isEmpty() == true) goto L49;
-        r11 = r11 + " - " + r12;     // Catch: IOException -> L47
-    L47:
-        e = move-exception;
-        Log.e("PodcastChannelEditorViewModel", "Error reading error body", e);
-        goto L49
-    L37:
-        if (r4.body() == null) goto L41;
-        if ("ok".equals(((ApiResponse) r4.body()).getSubsonicResponse().getStatus()) == false) goto L73;
-        r9.d.k(Boolean.TRUE);
-        return;
-    L73:
-        return;
-    L52:
-        if (r4.isSuccessful() == true) goto L54;
-        return;
-    L54:
-        if (r4.body() != null) goto L56;
-        return;
-    L56:
-        if (((ApiResponse) r4.body()).getSubsonicResponse().getPlaylists() == null) goto L77;
-        List<Playlist> r13 = ((ApiResponse) r4.body()).getSubsonicResponse().getPlaylists().getPlaylists();
-        if (r13 != null) goto L60;
-        r13 = new ArrayList();
-    L60:
-        mm3.h.i(r13);
-        new Thread(new ur2(11, (mm3) this.o, r13)).start();
-        return;
+    public void onResponse(Call call, Response response) {
+        w12 w12Var;
+        switch (this.n) {
+            case 18:
+                if (response.isSuccessful() && response.body() != null && ((ApiResponse) response.body()).getSubsonicResponse().getPlaylists() != null) {
+                    List<Playlist> playlists = ((ApiResponse) response.body()).getSubsonicResponse().getPlaylists().getPlaylists();
+                    if (playlists == null) {
+                        playlists = new ArrayList<>();
+                    }
+                    mm3.h.i(playlists);
+                    new Thread(new ur2(11, (mm3) this.o, playlists)).start();
+                    break;
+                }
+                break;
+            case 19:
+                xm3 xm3Var = (xm3) this.o;
+                if (response.code() == 501) {
+                    Application application = xm3Var.b;
+                    application.getClass();
+                    xm3Var.c(application.getString(R.string.podcast_channel_not_supported_snackbar));
+                } else if (!response.isSuccessful() || response.body() == null) {
+                    xm3Var.getClass();
+                    String str = "HTTP error: " + response.code();
+                    if (response.errorBody() != null) {
+                        try {
+                            String strString = response.errorBody().string();
+                            if (!strString.isEmpty()) {
+                                str = str + " - " + strString;
+                            }
+                        } catch (IOException e) {
+                            Log.e("PodcastChannelEditorViewModel", "Error reading error body", e);
+                        }
+                    }
+                    xm3Var.c(str);
+                } else if ("ok".equals(((ApiResponse) response.body()).getSubsonicResponse().getStatus())) {
+                    xm3Var.d.k(Boolean.TRUE);
+                }
+                break;
+            case 20:
+            default:
+                nb4 nb4Var = (nb4) this.o;
+                if (response.isSuccessful() && response.body() != null && ((ApiResponse) response.body()).getSubsonicResponse() != null) {
+                    if (((ApiResponse) response.body()).getSubsonicResponse().getError() != null) {
+                        nb4Var.onError(new Exception(((ApiResponse) response.body()).getSubsonicResponse().getError().getMessage()));
+                    } else if (((ApiResponse) response.body()).getSubsonicResponse().getScanStatus() != null) {
+                        nb4Var.onSuccess(((ApiResponse) response.body()).getSubsonicResponse().getScanStatus().isScanning(), ((ApiResponse) response.body()).getSubsonicResponse().getScanStatus().getCount().longValue());
+                    }
+                    break;
+                }
+                break;
+            case 21:
+                eu3 eu3Var = (eu3) this.o;
+                if (eu3Var.y() && (w12Var = eu3Var.J0) != null) {
+                    ((ProgressBar) w12Var.h).setVisibility(8);
+                    if (!response.isSuccessful() || response.body() == null || ((List) response.body()).isEmpty()) {
+                        zd0 zd0Var = eu3Var.L0;
+                        zd0Var.r = Collections.EMPTY_LIST;
+                        zd0Var.d();
+                        ((RecyclerView) eu3Var.J0.i).setVisibility(8);
+                        ((TextView) eu3Var.J0.d).setVisibility(0);
+                    } else {
+                        zd0 zd0Var2 = eu3Var.L0;
+                        zd0Var2.r = (List) response.body();
+                        zd0Var2.d();
+                        ((RecyclerView) eu3Var.J0.i).setVisibility(0);
+                        ((TextView) eu3Var.J0.d).setVisibility(8);
+                    }
+                    break;
+                }
+                break;
+        }
     }
 
     @Override // defpackage.lm3
     public void onSuccess() {
-        sl3 r0 = (sl3) this.o;
-        if (r0.y() == true) goto L5;
-        return;
-    L5:
-        if (r0.n() == null) goto L9;
-        r0.X().runOnUiThread(new ql3(this, 1));
-        return;
+        sl3 sl3Var = (sl3) this.o;
+        if (!sl3Var.y() || sl3Var.n() == null) {
+            return;
+        }
+        sl3Var.X().runOnUiThread(new ql3(this, 1));
     }
 
-    public void p(boolean r2) {
-        ss0 r1 = (ss0) this.o;
-        if (r2 == false) goto L5;
-        int r3 = 0;
-    L6:
-        ((BottomNavigationView) r1.n).setVisibility(r3);
-        ((FrameLayout) r1.o).setVisibility(r3);
-        return;
-    L5:
-        r3 = 8;
-        goto L6
+    public void p(boolean z) {
+        ss0 ss0Var = (ss0) this.o;
+        int i = z ? 0 : 8;
+        ((BottomNavigationView) ss0Var.n).setVisibility(i);
+        ((FrameLayout) ss0Var.o).setVisibility(i);
     }
 
-    public void q(df r3, boolean r4) {
-        Window r2 = r3.getWindow();
-        om1 r0 = new om1(r2.getDecorView());
-        int r5 = Build.VERSION.SDK_INT;
-        if (r5 < 35) goto L6;
-        su3 r6 = new tb5(r2, r0);
-    L13:
-        if (r4 == false) goto L16;
-        r6.F(2);
-        r6.F(1);
-        r6.E(1);
-        return;
-    L16:
-        r6.x(2);
-        r6.x(1);
-        r6.E(2);
-        return;
-    L6:
-        if (r5 < 30) goto L9;
-        r6 = new sb5(r2, r0);
-        goto L13
-    L9:
-        if (r5 < 26) goto L11;
-        r6 = new rb5(r2, r0);
-        goto L13
-    L11:
-        r6 = new qb5(r2, r0);
-        goto L13
+    public void q(df dfVar, boolean z) {
+        su3 rb5Var;
+        Window window = dfVar.getWindow();
+        om1 om1Var = new om1(window.getDecorView());
+        int i = Build.VERSION.SDK_INT;
+        if (i >= 35) {
+            rb5Var = new tb5(window, om1Var);
+        } else if (i >= 30) {
+            rb5Var = new sb5(window, om1Var);
+        } else {
+            rb5Var = i >= 26 ? new rb5(window, om1Var) : new qb5(window, om1Var);
+        }
+        if (z) {
+            rb5Var.F(2);
+            rb5Var.F(1);
+            rb5Var.E(1);
+        } else {
+            rb5Var.x(2);
+            rb5Var.x(1);
+            rb5Var.E(2);
+        }
     }
 
     @Override // defpackage.ep3
-    public CharSequence r(Preference r5) {
-        CharSequence r6 = ((ListPreference) r5).F();
-        if (r6 != null) goto L6;
-        return null;
-    L6:
-        nc1 r0 = ((vb4) this.o).X();
-        monitor-enter(au0.class);
-        se4 r1 = au0.B(r0);     // Catch: Throwable -> L18
-        monitor-enter(r1);     // Catch: Throwable -> L18
-        long r2 = r1.i;     // Catch: Throwable -> L15
-        monitor-exit(r1);     // Catch: Throwable -> L18
-        monitor-exit(au0.class);
-        return ((vb4) this.o).t(R.string.settings_summary_streaming_cache_size, new Object[]{r6, String.valueOf(r2 / 1048576)});
-    L15:
-        th = move-exception;
-        throw th;     // Catch: Throwable -> L18
-    L18:
-        th = move-exception;
-        throw th;
+    public CharSequence r(Preference preference) {
+        long j;
+        CharSequence charSequenceF = ((ListPreference) preference).F();
+        if (charSequenceF == null) {
+            return null;
+        }
+        nc1 nc1VarX = ((vb4) this.o).X();
+        synchronized (au0.class) {
+            se4 se4VarB = au0.B(nc1VarX);
+            synchronized (se4VarB) {
+                j = se4VarB.i;
+            }
+        }
+        return ((vb4) this.o).t(R.string.settings_summary_streaming_cache_size, charSequenceF, String.valueOf(j / 1048576));
     }
 
     public String toString() {
-        switch(this.n) {
-            case 10: goto L7;
-            default: goto L5;
-        };
-    L5:
-        return super.toString();
-    L7:
-        return "ProviderMetadata{ componentName=" + ((ComponentName) this.o).flattenToShortString() + " }";
+        switch (this.n) {
+            case 10:
+                return "ProviderMetadata{ componentName=" + ((ComponentName) this.o).flattenToShortString() + " }";
+            default:
+                return super.toString();
+        }
     }
 
-    public /* synthetic */ om1(int r1, Object r2) {
-        this.n = r1;
-        this.o = r2;
+    public /* synthetic */ om1(int i, Object obj) {
+        this.n = i;
+        this.o = obj;
     }
 
-    public /* synthetic */ om1(char r1, int r2) {
-        this.n = r2;
+    public /* synthetic */ om1(char c, int i) {
+        this.n = i;
     }
 
-    public om1(View r3) {
+    public om1(View view) {
         this.n = 26;
-        if (Build.VERSION.SDK_INT < 30) goto L5;
-        yh4 r0 = new yh4(r3);
-        r0.b = r3;
-        this.o = r0;
-        return;
-    L5:
-        this.o = new sg3(r3);
+        if (Build.VERSION.SDK_INT >= 30) {
+            yh4 yh4Var = new yh4(view);
+            yh4Var.b = view;
+            this.o = yh4Var;
+            return;
+        }
+        this.o = new sg3(view);
     }
 
-    public om1(WindowInsetsController r3) {
+    public om1(WindowInsetsController windowInsetsController) {
         this.n = 26;
-        yh4 r0 = new yh4(null);
-        r0.c = r3;
-        this.o = r0;
+        yh4 yh4Var = new yh4(null);
+        yh4Var.c = windowInsetsController;
+        this.o = yh4Var;
     }
 
-    public om1(Uri r3, ClipDescription r4, Uri r5) {
+    public om1(Uri uri, ClipDescription clipDescription, Uri uri2) {
         this.n = 2;
-        if (Build.VERSION.SDK_INT < 25) goto L5;
-        this.o = new mz1(r3, r4, r5);
-        return;
-    L5:
-        this.o = new c12(r3, r4, r5, 6);
+        if (Build.VERSION.SDK_INT >= 25) {
+            this.o = new mz1(uri, clipDescription, uri2);
+        } else {
+            this.o = new c12(uri, clipDescription, uri2, 6);
+        }
     }
 
-    public om1(int r2) {
+    public om1(int i) {
         this.n = 14;
-        this.o = ya4.a(new int[r2]);
+        this.o = ya4.a(new int[i]);
     }
 }

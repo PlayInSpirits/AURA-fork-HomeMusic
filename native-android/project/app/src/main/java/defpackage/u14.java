@@ -12,20 +12,20 @@ public final class u14 extends Binder implements ev1 {
     public static final /* synthetic */ int f = 0;
     public final /* synthetic */ v14 e;
 
-    public u14(v14 r1) {
-        this.e = r1;
+    public u14(v14 v14Var) {
+        this.e = v14Var;
         attachInterface(this, ev1.d);
     }
 
     @Override // defpackage.ev1
-    public final void J0(int r3, Bundle r4) {
-        v14 r2 = this.e;
-        Handler r0 = r2.o;
-        if (r0 == null) goto L6;
-        r0.post(new eh(r2, r3, r4));
-        return;
-    L6:
-        r2.a(r3, r4);
+    public final void J0(int i, Bundle bundle) {
+        v14 v14Var = this.e;
+        Handler handler = v14Var.o;
+        if (handler != null) {
+            handler.post(new eh(v14Var, i, bundle));
+        } else {
+            v14Var.a(i, bundle);
+        }
     }
 
     @Override // android.os.IInterface
@@ -34,20 +34,19 @@ public final class u14 extends Binder implements ev1 {
     }
 
     @Override // android.os.Binder
-    public final boolean onTransact(int r4, Parcel r5, Parcel r6, int r7) {
-        String r0 = ev1.d;
-        if (r4 < 1) goto L8;
-        if (r4 > 16777215) goto L8;
-        r5.enforceInterface(r0);
-    L8:
-        if (r4 != 1598968902) goto L11;
-        r6.writeString(r0);
+    public final boolean onTransact(int i, Parcel parcel, Parcel parcel2, int i2) {
+        String str = ev1.d;
+        if (i >= 1 && i <= 16777215) {
+            parcel.enforceInterface(str);
+        }
+        if (i == 1598968902) {
+            parcel2.writeString(str);
+            return true;
+        }
+        if (i != 1) {
+            return super.onTransact(i, parcel, parcel2, i2);
+        }
+        J0(parcel.readInt(), (Bundle) parcel.readTypedObject(Bundle.CREATOR));
         return true;
-    L11:
-        if (r4 != 1) goto L13;
-        J0(r5.readInt(), (Bundle) r5.readTypedObject(Bundle.CREATOR));
-        return true;
-    L13:
-        return super.onTransact(r4, r5, r6, r7);
     }
 }

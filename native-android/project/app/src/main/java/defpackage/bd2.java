@@ -12,14 +12,14 @@ public final class bd2 {
     public final boolean g;
     public final long h;
 
-    public bd2(ik3 r1, cu4 r2, mt2 r3, long r4, long r6, float r8, boolean r9, long r10) {
-        this.a = r1;
-        this.b = r2;
-        this.c = r3;
-        this.d = r4;
-        this.e = r6;
-        this.f = r8;
-        this.g = r9;
-        this.h = r10;
+    public bd2(ik3 ik3Var, cu4 cu4Var, mt2 mt2Var, long j, long j2, float f, boolean z, long j3) {
+        this.a = ik3Var;
+        this.b = cu4Var;
+        this.c = mt2Var;
+        this.d = j;
+        this.e = j2;
+        this.f = f;
+        this.g = z;
+        this.h = j3;
     }
 }

@@ -44,227 +44,184 @@ public final class ml3 implements a74 {
     public Object e;
     public Object f;
 
-    public ml3(int r4) {
-        switch(r4) {
-            case 12: goto L5;
-            default: goto L3;
-        };
-    L3:
-        this.a = new int[]{R.drawable.abc_textfield_search_default_mtrl_alpha, R.drawable.abc_textfield_default_mtrl_alpha, R.drawable.abc_ab_share_pack_mtrl_alpha};
-        this.b = new int[]{R.drawable.abc_ic_commit_search_api_mtrl_alpha, R.drawable.abc_seekbar_tick_mark_material, R.drawable.abc_ic_menu_share_mtrl_alpha, R.drawable.abc_ic_menu_copy_mtrl_am_alpha, R.drawable.abc_ic_menu_cut_mtrl_alpha, R.drawable.abc_ic_menu_selectall_mtrl_alpha, R.drawable.abc_ic_menu_paste_mtrl_am_alpha};
-        this.c = new int[]{R.drawable.abc_textfield_activated_mtrl_alpha, R.drawable.abc_textfield_search_activated_mtrl_alpha, R.drawable.abc_cab_background_top_mtrl_alpha, R.drawable.abc_text_cursor_material, R.drawable.abc_text_select_handle_left_mtrl, R.drawable.abc_text_select_handle_middle_mtrl, R.drawable.abc_text_select_handle_right_mtrl};
-        this.d = new int[]{R.drawable.abc_popup_background_mtrl_mult, R.drawable.abc_cab_background_internal_bg, R.drawable.abc_menu_hardkey_panel_mtrl_mult};
-        this.e = new int[]{R.drawable.abc_tab_indicator_material, R.drawable.abc_textfield_search_material};
-        this.f = new int[]{R.drawable.abc_btn_check_material, R.drawable.abc_btn_radio_material, R.drawable.abc_btn_check_material_anim, R.drawable.abc_btn_radio_material_anim};
-        return;
-    L5:
-        this.a = lk3.H.l(xs3.g);
-        this.b = wa4.b;
-        this.c = mi3.b;
-        this.d = gy3.r;
-        this.e = Bundle.EMPTY;
-        this.f = null;
+    public ml3(int i) {
+        switch (i) {
+            case 12:
+                this.a = lk3.H.l(xs3.g);
+                this.b = wa4.b;
+                this.c = mi3.b;
+                this.d = gy3.r;
+                this.e = Bundle.EMPTY;
+                this.f = null;
+                break;
+            default:
+                this.a = new int[]{R.drawable.abc_textfield_search_default_mtrl_alpha, R.drawable.abc_textfield_default_mtrl_alpha, R.drawable.abc_ab_share_pack_mtrl_alpha};
+                this.b = new int[]{R.drawable.abc_ic_commit_search_api_mtrl_alpha, R.drawable.abc_seekbar_tick_mark_material, R.drawable.abc_ic_menu_share_mtrl_alpha, R.drawable.abc_ic_menu_copy_mtrl_am_alpha, R.drawable.abc_ic_menu_cut_mtrl_alpha, R.drawable.abc_ic_menu_selectall_mtrl_alpha, R.drawable.abc_ic_menu_paste_mtrl_am_alpha};
+                this.c = new int[]{R.drawable.abc_textfield_activated_mtrl_alpha, R.drawable.abc_textfield_search_activated_mtrl_alpha, R.drawable.abc_cab_background_top_mtrl_alpha, R.drawable.abc_text_cursor_material, R.drawable.abc_text_select_handle_left_mtrl, R.drawable.abc_text_select_handle_middle_mtrl, R.drawable.abc_text_select_handle_right_mtrl};
+                this.d = new int[]{R.drawable.abc_popup_background_mtrl_mult, R.drawable.abc_cab_background_internal_bg, R.drawable.abc_menu_hardkey_panel_mtrl_mult};
+                this.e = new int[]{R.drawable.abc_tab_indicator_material, R.drawable.abc_textfield_search_material};
+                this.f = new int[]{R.drawable.abc_btn_check_material, R.drawable.abc_btn_radio_material, R.drawable.abc_btn_check_material_anim, R.drawable.abc_btn_radio_material_anim};
+                break;
+        }
     }
 
-    public static yj0 f(DataInputStream r11) {
-        int r0 = r11.readInt();
-        HashMap r1 = new HashMap();
-        int r3 = 0;
-    L3:
-        if (r3 >= r0) goto L13;
-        String r4 = r11.readUTF();
-        int r5 = r11.readInt();
-        if (r5 < 0) goto L10;
-        int r7 = Math.min(r5, 10485760);
-        byte[] r8 = f35.b;
-        int r9 = 0;
-    L7:
-        if (r9 == r5) goto L9;
-        int r10 = r9 + r7;
-        r8 = Arrays.copyOf(r8, r10);
-        r11.readFully(r8, r9, r7);
-        r7 = Math.min(r5 - r10, 10485760);
-        r9 = r10;
-        goto L7
-    L9:
-        r1.put(r4, r8);
-        r3 = r3 + 1;
-        goto L3
-    L10:
-        mj0.i(f34.f(r5, "Invalid value size: "));
-        return null;
-    L13:
-        return new yj0(r1);
+    public static yj0 f(DataInputStream dataInputStream) {
+        int i = dataInputStream.readInt();
+        HashMap map = new HashMap();
+        for (int i2 = 0; i2 < i; i2++) {
+            String utf = dataInputStream.readUTF();
+            int i3 = dataInputStream.readInt();
+            if (i3 < 0) {
+                mj0.i(f34.f(i3, "Invalid value size: "));
+                return null;
+            }
+            int iMin = Math.min(i3, 10485760);
+            byte[] bArrCopyOf = f35.b;
+            int i4 = 0;
+            while (i4 != i3) {
+                int i5 = i4 + iMin;
+                bArrCopyOf = Arrays.copyOf(bArrCopyOf, i5);
+                dataInputStream.readFully(bArrCopyOf, i4, iMin);
+                iMin = Math.min(i3 - i5, 10485760);
+                i4 = i5;
+            }
+            map.put(utf, bArrCopyOf);
+        }
+        return new yj0(map);
     }
 
-    public static void g(yj0 r2, DataOutputStream r3) {
-        Set r4 = r2.b.entrySet();
-        r3.writeInt(r4.size());
-        Iterator r5 = r4.iterator();
-    L4:
-        if (r5.hasNext() == false) goto L6;
-        Map.Entry r0 = (Map.Entry) r5.next();
-        r3.writeUTF((String) r0.getKey());
-        byte[] r1 = (byte[]) r0.getValue();
-        r3.writeInt(r1.length);
-        r3.write(r1);
-        goto L4
+    public static void g(yj0 yj0Var, DataOutputStream dataOutputStream) {
+        Set<Map.Entry> setEntrySet = yj0Var.b.entrySet();
+        dataOutputStream.writeInt(setEntrySet.size());
+        for (Map.Entry entry : setEntrySet) {
+            dataOutputStream.writeUTF((String) entry.getKey());
+            byte[] bArr = (byte[]) entry.getValue();
+            dataOutputStream.writeInt(bArr.length);
+            dataOutputStream.write(bArr);
+        }
     }
 
-    public static boolean i(int[] r4, int r5) {
-        int r0 = r4.length;
-        int r2 = 0;
-    L3:
-        if (r2 >= r0) goto L9;
-        if (r4[r2] == r5) goto L6;
-        r2 = r2 + 1;
-        goto L3
-    L6:
-        return true;
-    L9:
+    public static boolean i(int[] iArr, int i) {
+        for (int i2 : iArr) {
+            if (i2 == i) {
+                return true;
+            }
+        }
         return false;
     }
 
-    public static ColorStateList j(Context r6, int r7) {
-        int r0 = gt4.c(r6, R.attr.colorControlHighlight);
-        int r8 = gt4.b(r6, R.attr.colorButtonNormal);
-        int[] r1 = gt4.b;
-        int[] r2 = gt4.d;
-        int r3 = v50.g(r0, r7);
-        int[] r4 = gt4.c;
-        int r5 = v50.g(r0, r7);
-        return new ColorStateList(new int[][]{r1, r2, r4, gt4.f}, new int[]{r8, r3, r5, r7});
+    public static ColorStateList j(Context context, int i) {
+        int iC = gt4.c(context, R.attr.colorControlHighlight);
+        int iB = gt4.b(context, R.attr.colorButtonNormal);
+        int[] iArr = gt4.b;
+        int[] iArr2 = gt4.d;
+        int iG = v50.g(iC, i);
+        return new ColorStateList(new int[][]{iArr, iArr2, gt4.c, gt4.f}, new int[]{iB, iG, v50.g(iC, i), i});
     }
 
-    public static mt2 k(qi3 r10, yw1 r11, mt2 r12, zt4 r13) {
-        cu4 r0 = r10.x0();
-        int r1 = r10.y();
-        if (r0.p() == false) goto L5;
-        Object r5 = null;
-    L7:
-        if (r10.k() == false) goto L9;
-    L13:
-        int r14 = -1;
-    L12:
-        int r9 = r14;
-        int r15 = 0;
-    L16:
-        if (r15 >= r11.size()) goto L22;
-        mt2 r4 = (mt2) r11.get(r15);
-        if (r(r4, r5, r10.k(), r10.n0(), r10.K(), r9) == true) goto L19;
-        r15 = r15 + 1;
-        goto L16
-    L19:
-        return r4;
-    L22:
-        if (r11.isEmpty() == false) goto L27;
-        if (r12 == null) goto L27;
-        if (r(r12, r5, r10.k(), r10.n0(), r10.K(), r9) == false) goto L27;
-        return r12;
-    L27:
-        return null;
-    L9:
-        if (r0.p() == true) goto L13;
-        r14 = r0.f(r1, r13, false).b(f35.Q(r10.M0()) - r13.e);
-        goto L12
-    L5:
-        r5 = r0.l(r1);
-        goto L7
-    }
-
-    public static LayerDrawable n(c14 r4, Context r5, int r6) {
-        int r7 = r5.getResources().getDimensionPixelSize(r6);
-        Drawable r0 = r4.d(r5, R.drawable.abc_star_black_48dp);
-        Drawable r8 = r4.d(r5, R.drawable.abc_star_half_black_48dp);
-        if ((r0 instanceof BitmapDrawable) == true) goto L5;
-    L9:
-        Bitmap r9 = Bitmap.createBitmap(r7, r7, Bitmap.Config.ARGB_8888);
-        Canvas r2 = new Canvas(r9);
-        r0.setBounds(0, 0, r7, r7);
-        r0.draw(r2);
-        BitmapDrawable r1 = new BitmapDrawable(r9);
-        BitmapDrawable r10 = new BitmapDrawable(r9);
-    L10:
-        r10.setTileModeX(Shader.TileMode.REPEAT);
-        if ((r8 instanceof BitmapDrawable) == true) goto L13;
-    L17:
-        Bitmap r3 = Bitmap.createBitmap(r7, r7, Bitmap.Config.ARGB_8888);
-        Canvas r11 = new Canvas(r3);
-        r8.setBounds(0, 0, r7, r7);
-        r8.draw(r11);
-        BitmapDrawable r12 = new BitmapDrawable(r3);
-    L18:
-        LayerDrawable r13 = new LayerDrawable(new Drawable[]{r1, r12, r10});
-        r13.setId(0, android.R.id.background);
-        r13.setId(1, android.R.id.secondaryProgress);
-        r13.setId(2, android.R.id.progress);
-        return r13;
-    L13:
-        if (r8.getIntrinsicWidth() != r7) goto L17;
-        if (r8.getIntrinsicHeight() != r7) goto L17;
-        r12 = (BitmapDrawable) r8;
-        goto L18
-    L5:
-        if (r0.getIntrinsicWidth() != r7) goto L9;
-        if (r0.getIntrinsicHeight() != r7) goto L9;
-        r1 = (BitmapDrawable) r0;
-        r10 = new BitmapDrawable(r1.getBitmap());
-        goto L10
-    }
-
-    public static ml3 p(LayoutInflater r10) {
-        View r11 = r10.inflate(R.layout.dialog_playlist_chooser, null, false);
-        int r0 = R.id.button_bar;
-        if (((LinearLayout) uo.s(r11, R.id.button_bar)) == null) goto L18;
-        r0 = R.id.no_playlists_created_text_view;
-        TextView r5 = (TextView) uo.s(r11, R.id.no_playlists_created_text_view);
-        if (r5 == null) goto L18;
-        r0 = R.id.playlist_chooser_dialog_cancel_button;
-        Button r6 = (Button) uo.s(r11, R.id.playlist_chooser_dialog_cancel_button);
-        if (r6 == null) goto L18;
-        r0 = R.id.playlist_chooser_dialog_create_button;
-        Button r7 = (Button) uo.s(r11, R.id.playlist_chooser_dialog_create_button);
-        if (r7 == null) goto L18;
-        r0 = R.id.playlist_dialog_chooser_visibility_summary;
-        if (((TextView) uo.s(r11, R.id.playlist_dialog_chooser_visibility_summary)) == null) goto L18;
-        r0 = R.id.playlist_dialog_chooser_visibility_switch;
-        MaterialSwitch r8 = (MaterialSwitch) uo.s(r11, R.id.playlist_dialog_chooser_visibility_switch);
-        if (r8 == null) goto L18;
-        r0 = R.id.playlist_dialog_recycler_view;
-        RecyclerView r9 = (RecyclerView) uo.s(r11, R.id.playlist_dialog_recycler_view);
-        if (r9 == null) goto L18;
-        return new ml3((LinearLayout) r11, r5, r6, r7, r8, r9);
-    L18:
-        nz2.n("Missing required view with ID: ".concat(r11.getResources().getResourceName(r0)));
+    public static mt2 k(qi3 qi3Var, yw1 yw1Var, mt2 mt2Var, zt4 zt4Var) {
+        cu4 cu4VarX0 = qi3Var.x0();
+        int iY = qi3Var.y();
+        Object objL = cu4VarX0.p() ? null : cu4VarX0.l(iY);
+        int iB = (qi3Var.k() || cu4VarX0.p()) ? -1 : cu4VarX0.f(iY, zt4Var, false).b(f35.Q(qi3Var.M0()) - zt4Var.e);
+        for (int i = 0; i < yw1Var.size(); i++) {
+            mt2 mt2Var2 = (mt2) yw1Var.get(i);
+            if (r(mt2Var2, objL, qi3Var.k(), qi3Var.n0(), qi3Var.K(), iB)) {
+                return mt2Var2;
+            }
+        }
+        if (yw1Var.isEmpty() && mt2Var != null && r(mt2Var, objL, qi3Var.k(), qi3Var.n0(), qi3Var.K(), iB)) {
+            return mt2Var;
+        }
         return null;
     }
 
-    public static boolean r(mt2 r2, Object r3, boolean r4, int r5, int r6, int r7) {
-        Object r0 = r2.a;
-        int r1 = r2.b;
-        if (r0.equals(r3) == true) goto L5;
-        return false;
-    L5:
-        if (r4 == false) goto L9;
-        if (r1 != r5) goto L9;
-        if (r2.c != r6) goto L9;
-        return true;
-    L9:
-        if (r4 == false) goto L11;
-    L16:
-        return false;
-    L11:
-        if (r1 != (-1)) goto L16;
-        if (r2.e != r7) goto L16;
-        return true;
+    public static LayerDrawable n(c14 c14Var, Context context, int i) {
+        BitmapDrawable bitmapDrawable;
+        BitmapDrawable bitmapDrawable2;
+        BitmapDrawable bitmapDrawable3;
+        int dimensionPixelSize = context.getResources().getDimensionPixelSize(i);
+        Drawable drawableD = c14Var.d(context, R.drawable.abc_star_black_48dp);
+        Drawable drawableD2 = c14Var.d(context, R.drawable.abc_star_half_black_48dp);
+        if ((drawableD instanceof BitmapDrawable) && drawableD.getIntrinsicWidth() == dimensionPixelSize && drawableD.getIntrinsicHeight() == dimensionPixelSize) {
+            bitmapDrawable = (BitmapDrawable) drawableD;
+            bitmapDrawable2 = new BitmapDrawable(bitmapDrawable.getBitmap());
+        } else {
+            Bitmap bitmapCreateBitmap = Bitmap.createBitmap(dimensionPixelSize, dimensionPixelSize, Bitmap.Config.ARGB_8888);
+            Canvas canvas = new Canvas(bitmapCreateBitmap);
+            drawableD.setBounds(0, 0, dimensionPixelSize, dimensionPixelSize);
+            drawableD.draw(canvas);
+            bitmapDrawable = new BitmapDrawable(bitmapCreateBitmap);
+            bitmapDrawable2 = new BitmapDrawable(bitmapCreateBitmap);
+        }
+        bitmapDrawable2.setTileModeX(Shader.TileMode.REPEAT);
+        if ((drawableD2 instanceof BitmapDrawable) && drawableD2.getIntrinsicWidth() == dimensionPixelSize && drawableD2.getIntrinsicHeight() == dimensionPixelSize) {
+            bitmapDrawable3 = (BitmapDrawable) drawableD2;
+        } else {
+            Bitmap bitmapCreateBitmap2 = Bitmap.createBitmap(dimensionPixelSize, dimensionPixelSize, Bitmap.Config.ARGB_8888);
+            Canvas canvas2 = new Canvas(bitmapCreateBitmap2);
+            drawableD2.setBounds(0, 0, dimensionPixelSize, dimensionPixelSize);
+            drawableD2.draw(canvas2);
+            bitmapDrawable3 = new BitmapDrawable(bitmapCreateBitmap2);
+        }
+        LayerDrawable layerDrawable = new LayerDrawable(new Drawable[]{bitmapDrawable, bitmapDrawable3, bitmapDrawable2});
+        layerDrawable.setId(0, android.R.id.background);
+        layerDrawable.setId(1, android.R.id.secondaryProgress);
+        layerDrawable.setId(2, android.R.id.progress);
+        return layerDrawable;
     }
 
-    public static void t(Drawable r0, int r1, PorterDuff.Mode r2) {
-        Drawable r3 = r0.mutate();
-        if (r2 != null) goto L5;
-        r2 = fg.b;
-    L5:
-        r3.setColorFilter(fg.c(r1, r2));
+    public static ml3 p(LayoutInflater layoutInflater) {
+        View viewInflate = layoutInflater.inflate(R.layout.dialog_playlist_chooser, (ViewGroup) null, false);
+        int i = R.id.button_bar;
+        if (((LinearLayout) uo.s(viewInflate, R.id.button_bar)) != null) {
+            i = R.id.no_playlists_created_text_view;
+            TextView textView = (TextView) uo.s(viewInflate, R.id.no_playlists_created_text_view);
+            if (textView != null) {
+                i = R.id.playlist_chooser_dialog_cancel_button;
+                Button button = (Button) uo.s(viewInflate, R.id.playlist_chooser_dialog_cancel_button);
+                if (button != null) {
+                    i = R.id.playlist_chooser_dialog_create_button;
+                    Button button2 = (Button) uo.s(viewInflate, R.id.playlist_chooser_dialog_create_button);
+                    if (button2 != null) {
+                        i = R.id.playlist_dialog_chooser_visibility_summary;
+                        if (((TextView) uo.s(viewInflate, R.id.playlist_dialog_chooser_visibility_summary)) != null) {
+                            i = R.id.playlist_dialog_chooser_visibility_switch;
+                            MaterialSwitch materialSwitch = (MaterialSwitch) uo.s(viewInflate, R.id.playlist_dialog_chooser_visibility_switch);
+                            if (materialSwitch != null) {
+                                i = R.id.playlist_dialog_recycler_view;
+                                RecyclerView recyclerView = (RecyclerView) uo.s(viewInflate, R.id.playlist_dialog_recycler_view);
+                                if (recyclerView != null) {
+                                    return new ml3((LinearLayout) viewInflate, textView, button, button2, materialSwitch, recyclerView);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        nz2.n("Missing required view with ID: ".concat(viewInflate.getResources().getResourceName(i)));
+        return null;
+    }
+
+    public static boolean r(mt2 mt2Var, Object obj, boolean z, int i, int i2, int i3) {
+        Object obj2 = mt2Var.a;
+        int i4 = mt2Var.b;
+        if (!obj2.equals(obj)) {
+            return false;
+        }
+        if (z && i4 == i && mt2Var.c == i2) {
+            return true;
+        }
+        return !z && i4 == -1 && mt2Var.e == i3;
+    }
+
+    public static void t(Drawable drawable, int i, PorterDuff.Mode mode) {
+        Drawable drawableMutate = drawable.mutate();
+        if (mode == null) {
+            mode = fg.b;
+        }
+        drawableMutate.setColorFilter(fg.c(i, mode));
     }
 
     @Override // defpackage.a74
@@ -273,330 +230,291 @@ public final class ml3 implements a74 {
     }
 
     @Override // defpackage.a74
-    public float d(float r1) {
-        return ((Number) ((uc3) this.a).invoke(Float.valueOf(r1))).floatValue();
+    public float d(float f) {
+        return ((Number) ((uc3) this.a).invoke(Float.valueOf(f))).floatValue();
     }
 
     @Override // defpackage.a74
-    public Object e(h13 r7, wf1 r8, wd0 r9) {
-        Object r6 = te5.j(new r(this, r7, r8, null, 5), r9);
-        if (r6 != xe0.n) goto L6;
-        return r6;
-    L6:
-        return j15.a;
+    public Object e(h13 h13Var, wf1 wf1Var, wd0 wd0Var) {
+        Object objJ = te5.j(new r(this, h13Var, wf1Var, null, 5), wd0Var);
+        return objJ == xe0.n ? objJ : j15.a;
     }
 
-    public void h(ue1 r3, mt2 r4, cu4 r5) {
-        if (r4 != null) goto L5;
-        return;
-    L5:
-        if (r5.b(r4.a) == (-1)) goto L8;
-        r3.x(r4, r5);
-        return;
-    L8:
-        cu4 r2 = (cu4) ((ly3) this.c).get(r4);
-        if (r2 == null) goto L12;
-        r3.x(r4, r2);
-        return;
+    public void h(ue1 ue1Var, mt2 mt2Var, cu4 cu4Var) {
+        if (mt2Var == null) {
+            return;
+        }
+        if (cu4Var.b(mt2Var.a) != -1) {
+            ue1Var.x(mt2Var, cu4Var);
+            return;
+        }
+        cu4 cu4Var2 = (cu4) ((ly3) this.c).get(mt2Var);
+        if (cu4Var2 != null) {
+            ue1Var.x(mt2Var, cu4Var2);
+        }
     }
 
-    public wx l(String r1) {
-        return (wx) ((HashMap) this.a).get(r1);
+    public wx l(String str) {
+        return (wx) ((HashMap) this.a).get(str);
     }
 
-    public wx m(String r7) {
-        HashMap r0 = (HashMap) this.a;
-        wx r1 = (wx) r0.get(r7);
-        if (r1 != null) goto L17;
-        SparseArray r2 = (SparseArray) this.b;
-        int r3 = r2.size();
-        int r4 = 0;
-        if (r3 != 0) goto L7;
-        int r5 = 0;
-    L8:
-        if (r5 >= 0) goto L15;
-    L9:
-        if (r4 >= r3) goto L14;
-        if (r4 != r2.keyAt(r4)) goto L14;
-        r4 = r4 + 1;
-    L14:
-        r5 = r4;
-    L15:
-        wx r6 = new wx(r5, r7, yj0.c);
-        r0.put(r7, r6);
-        r2.put(r5, r7);
-        ((SparseBooleanArray) this.d).put(r5, true);
-        ((xx) this.e).e(r6);
-        return r6;
-    L7:
-        r5 = r2.keyAt(r3 - 1) + 1;
-        goto L8
-    L17:
-        return r1;
+    public wx m(String str) {
+        HashMap map = (HashMap) this.a;
+        wx wxVar = (wx) map.get(str);
+        if (wxVar != null) {
+            return wxVar;
+        }
+        SparseArray sparseArray = (SparseArray) this.b;
+        int size = sparseArray.size();
+        int i = 0;
+        int iKeyAt = size == 0 ? 0 : sparseArray.keyAt(size - 1) + 1;
+        if (iKeyAt < 0) {
+            while (i < size && i == sparseArray.keyAt(i)) {
+                i++;
+            }
+            iKeyAt = i;
+        }
+        wx wxVar2 = new wx(iKeyAt, str, yj0.c);
+        map.put(str, wxVar2);
+        sparseArray.put(iKeyAt, str);
+        ((SparseBooleanArray) this.d).put(iKeyAt, true);
+        ((xx) this.e).e(wxVar2);
+        return wxVar2;
     }
 
-    public ColorStateList o(Context r8, int r9) {
-        if (r9 != R.drawable.abc_edit_text_material) goto L7;
-        return ud3.n(r8, R.color.abc_tint_edittext);
-    L7:
-        if (r9 != R.drawable.abc_switch_track_mtrl_alpha) goto L11;
-        return ud3.n(r8, R.color.abc_tint_switch_track);
-    L11:
-        if (r9 != R.drawable.abc_switch_thumb_material) goto L21;
-        int[][] r10 = new int[3][];
-        int[] r7 = new int[3];
-        ColorStateList r2 = gt4.d(r8, R.attr.colorSwitchThumbNormal);
-        if (r2 != null) goto L15;
-    L17:
-        r10[0] = gt4.b;
-        r7[0] = gt4.b(r8, R.attr.colorSwitchThumbNormal);
-        r10[1] = gt4.e;
-        r7[1] = gt4.c(r8, R.attr.colorControlActivated);
-        r10[2] = gt4.f;
-        r7[2] = gt4.c(r8, R.attr.colorSwitchThumbNormal);
-    L19:
-        return new ColorStateList(r10, r7);
-    L15:
-        if (r2.isStateful() == false) goto L17;
-        int[] r0 = gt4.b;
-        r10[0] = r0;
-        r7[0] = r2.getColorForState(r0, 0);
-        r10[1] = gt4.e;
-        r7[1] = gt4.c(r8, R.attr.colorControlActivated);
-        r10[2] = gt4.f;
-        r7[2] = r2.getDefaultColor();
-        goto L19
-    L21:
-        if (r9 != R.drawable.abc_btn_default_mtrl_shape) goto L25;
-        return j(r8, gt4.c(r8, R.attr.colorButtonNormal));
-    L25:
-        if (r9 != R.drawable.abc_btn_borderless_material) goto L29;
-        return j(r8, 0);
-    L29:
-        if (r9 != R.drawable.abc_btn_colored_material) goto L33;
-        return j(r8, gt4.c(r8, R.attr.colorAccent));
-    L33:
-        if (r9 == R.drawable.abc_spinner_mtrl_am_alpha) goto L56;
-        if (r9 == R.drawable.abc_spinner_textfield_background_material) goto L56;
-        if (i((int[]) this.b, r9) == false) goto L42;
-        return gt4.d(r8, R.attr.colorControlNormal);
-    L42:
-        if (i((int[]) this.e, r9) == false) goto L46;
-        return ud3.n(r8, R.color.abc_tint_default);
-    L46:
-        if (i((int[]) this.f, r9) == false) goto L50;
-        return ud3.n(r8, R.color.abc_tint_btn_checkable);
-    L50:
-        if (r9 == R.drawable.abc_seekbar_thumb_material) goto L52;
-        return null;
-    L52:
-        return ud3.n(r8, R.color.abc_tint_seek_thumb);
-    L56:
-        return ud3.n(r8, R.color.abc_tint_spinner);
+    public ColorStateList o(Context context, int i) {
+        if (i == R.drawable.abc_edit_text_material) {
+            return ud3.n(context, R.color.abc_tint_edittext);
+        }
+        if (i == R.drawable.abc_switch_track_mtrl_alpha) {
+            return ud3.n(context, R.color.abc_tint_switch_track);
+        }
+        if (i != R.drawable.abc_switch_thumb_material) {
+            if (i == R.drawable.abc_btn_default_mtrl_shape) {
+                return j(context, gt4.c(context, R.attr.colorButtonNormal));
+            }
+            if (i == R.drawable.abc_btn_borderless_material) {
+                return j(context, 0);
+            }
+            if (i == R.drawable.abc_btn_colored_material) {
+                return j(context, gt4.c(context, R.attr.colorAccent));
+            }
+            if (i == R.drawable.abc_spinner_mtrl_am_alpha || i == R.drawable.abc_spinner_textfield_background_material) {
+                return ud3.n(context, R.color.abc_tint_spinner);
+            }
+            if (i((int[]) this.b, i)) {
+                return gt4.d(context, R.attr.colorControlNormal);
+            }
+            if (i((int[]) this.e, i)) {
+                return ud3.n(context, R.color.abc_tint_default);
+            }
+            if (i((int[]) this.f, i)) {
+                return ud3.n(context, R.color.abc_tint_btn_checkable);
+            }
+            if (i == R.drawable.abc_seekbar_thumb_material) {
+                return ud3.n(context, R.color.abc_tint_seek_thumb);
+            }
+            return null;
+        }
+        int[][] iArr = new int[3][];
+        int[] iArr2 = new int[3];
+        ColorStateList colorStateListD = gt4.d(context, R.attr.colorSwitchThumbNormal);
+        if (colorStateListD == null || !colorStateListD.isStateful()) {
+            iArr[0] = gt4.b;
+            iArr2[0] = gt4.b(context, R.attr.colorSwitchThumbNormal);
+            iArr[1] = gt4.e;
+            iArr2[1] = gt4.c(context, R.attr.colorControlActivated);
+            iArr[2] = gt4.f;
+            iArr2[2] = gt4.c(context, R.attr.colorSwitchThumbNormal);
+        } else {
+            int[] iArr3 = gt4.b;
+            iArr[0] = iArr3;
+            iArr2[0] = colorStateListD.getColorForState(iArr3, 0);
+            iArr[1] = gt4.e;
+            iArr2[1] = gt4.c(context, R.attr.colorControlActivated);
+            iArr[2] = gt4.f;
+            iArr2[2] = colorStateListD.getDefaultColor();
+        }
+        return new ColorStateList(iArr, iArr2);
     }
 
-    public void q(long r5) {
-        SparseArray r0 = (SparseArray) this.b;
-        HashMap r1 = (HashMap) this.a;
-        xx r2 = (xx) this.e;
-        r2.h(r5);
-        xx r3 = (xx) this.f;
-        if (r3 == null) goto L6;
-        r3.h(r5);
-    L6:
-        if (r2.f() == true) goto L12;
-        xx r6 = (xx) this.f;
-        if (r6 == null) goto L12;
-        if (r6.f() == false) goto L12;
-        ((xx) this.f).i(r1, r0);
-        r2.b(r1);
-    L13:
-        xx r7 = (xx) this.f;
-        if (r7 == null) goto L17;
-        r7.j();
-        this.f = null;
-        return;
-    L17:
-        return;
-    L12:
-        r2.i(r1, r0);
-        goto L13
+    public void q(long j) {
+        xx xxVar;
+        SparseArray sparseArray = (SparseArray) this.b;
+        HashMap map = (HashMap) this.a;
+        xx xxVar2 = (xx) this.e;
+        xxVar2.h(j);
+        xx xxVar3 = (xx) this.f;
+        if (xxVar3 != null) {
+            xxVar3.h(j);
+        }
+        if (xxVar2.f() || (xxVar = (xx) this.f) == null || !xxVar.f()) {
+            xxVar2.i(map, sparseArray);
+        } else {
+            ((xx) this.f).i(map, sparseArray);
+            xxVar2.b(map);
+        }
+        xx xxVar4 = (xx) this.f;
+        if (xxVar4 != null) {
+            xxVar4.j();
+            this.f = null;
+        }
     }
 
-    public void s(String r5) {
-        SparseBooleanArray r0 = (SparseBooleanArray) this.d;
-        HashMap r1 = (HashMap) this.a;
-        wx r2 = (wx) r1.get(r5);
-        if (r2 != null) goto L5;
-        return;
-    L5:
-        if (r2.c.isEmpty() == true) goto L7;
-        return;
-    L7:
-        if (r2.d.isEmpty() == false) goto L16;
-        r1.remove(r5);
-        int r6 = r2.a;
-        boolean r3 = r0.get(r6);
-        ((xx) this.e).c(r2, r3);
-        SparseArray r4 = (SparseArray) this.b;
-        if (r3 == false) goto L12;
-        r4.remove(r6);
-        r0.delete(r6);
-        return;
-    L12:
-        r4.put(r6, null);
-        ((SparseBooleanArray) this.c).put(r6, true);
-        return;
+    public void s(String str) {
+        SparseBooleanArray sparseBooleanArray = (SparseBooleanArray) this.d;
+        HashMap map = (HashMap) this.a;
+        wx wxVar = (wx) map.get(str);
+        if (wxVar != null && wxVar.c.isEmpty() && wxVar.d.isEmpty()) {
+            map.remove(str);
+            int i = wxVar.a;
+            boolean z = sparseBooleanArray.get(i);
+            ((xx) this.e).c(wxVar, z);
+            SparseArray sparseArray = (SparseArray) this.b;
+            if (z) {
+                sparseArray.remove(i);
+                sparseBooleanArray.delete(i);
+            } else {
+                sparseArray.put(i, null);
+                ((SparseBooleanArray) this.c).put(i, true);
+            }
+        }
     }
 
     public void u() {
         ((xx) this.e).g((HashMap) this.a);
-        SparseBooleanArray r0 = (SparseBooleanArray) this.c;
-        int r1 = r0.size();
-        int r2 = 0;
-    L3:
-        if (r2 >= r1) goto L5;
-        ((SparseArray) this.b).remove(r0.keyAt(r2));
-        r2 = r2 + 1;
-        goto L3
-    L5:
-        r0.clear();
+        SparseBooleanArray sparseBooleanArray = (SparseBooleanArray) this.c;
+        int size = sparseBooleanArray.size();
+        for (int i = 0; i < size; i++) {
+            ((SparseArray) this.b).remove(sparseBooleanArray.keyAt(i));
+        }
+        sparseBooleanArray.clear();
         ((SparseBooleanArray) this.d).clear();
     }
 
-    public void v(cu4 r5) {
-        ue1 r0 = bx1.a();
-        if (((yw1) this.b).isEmpty() == false) goto L12;
-        h(r0, (mt2) this.e, r5);
-        if (Objects.equals((mt2) this.f, (mt2) this.e) == true) goto L8;
-        h(r0, (mt2) this.f, r5);
-    L8:
-        if (Objects.equals((mt2) this.d, (mt2) this.e) == false) goto L10;
-    L19:
-        this.c = r0.d(true);
-        return;
-    L10:
-        if (Objects.equals((mt2) this.d, (mt2) this.f) == true) goto L19;
-        h(r0, (mt2) this.d, r5);
-        goto L19
-    L12:
-        int r1 = 0;
-    L13:
-        int r2 = ((yw1) this.b).size();
-        yw1 r3 = (yw1) this.b;
-        if (r1 >= r2) goto L17;
-        h(r0, (mt2) r3.get(r1), r5);
-        r1 = r1 + 1;
-        goto L13
-    L17:
-        if (r3.contains((mt2) this.d) == true) goto L19;
-        h(r0, (mt2) this.d, r5);
-        goto L19
+    public void v(cu4 cu4Var) {
+        yw1 yw1Var;
+        ue1 ue1VarA = bx1.a();
+        if (((yw1) this.b).isEmpty()) {
+            h(ue1VarA, (mt2) this.e, cu4Var);
+            if (!Objects.equals((mt2) this.f, (mt2) this.e)) {
+                h(ue1VarA, (mt2) this.f, cu4Var);
+            }
+            if (!Objects.equals((mt2) this.d, (mt2) this.e) && !Objects.equals((mt2) this.d, (mt2) this.f)) {
+                h(ue1VarA, (mt2) this.d, cu4Var);
+            }
+        } else {
+            int i = 0;
+            while (true) {
+                int size = ((yw1) this.b).size();
+                yw1Var = (yw1) this.b;
+                if (i >= size) {
+                    break;
+                }
+                h(ue1VarA, (mt2) yw1Var.get(i), cu4Var);
+                i++;
+            }
+            if (!yw1Var.contains((mt2) this.d)) {
+                h(ue1VarA, (mt2) this.d, cu4Var);
+            }
+        }
+        this.c = ue1VarA.d(true);
     }
 
-    public /* synthetic */ ml3(Object r1, Object r2, Object r3, Object r4, Object r5, Object r6) {
-        this.a = r1;
-        this.b = r2;
-        this.c = r3;
-        this.d = r4;
-        this.e = r5;
-        this.f = r6;
+    public /* synthetic */ ml3(Object obj, Object obj2, Object obj3, Object obj4, Object obj5, Object obj6) {
+        this.a = obj;
+        this.b = obj2;
+        this.c = obj3;
+        this.d = obj4;
+        this.e = obj5;
+        this.f = obj6;
     }
 
-    public ml3(Set r2, String r3, String r4) {
-        if (r2 != null) goto L5;
-        Set r5 = Collections.EMPTY_SET;
-    L6:
-        this.a = r5;
-        Map r0 = Collections.EMPTY_MAP;
-        this.c = r3;
-        this.d = r4;
+    public ml3(Set set, String str, String str2) {
+        Set setUnmodifiableSet = set == null ? Collections.EMPTY_SET : Collections.unmodifiableSet(set);
+        this.a = setUnmodifiableSet;
+        Map map = Collections.EMPTY_MAP;
+        this.c = str;
+        this.d = str2;
         this.e = ud4.n;
-        HashSet r6 = new HashSet(r5);
-        Iterator r7 = r0.values().iterator();
-        if (r7.hasNext() == true) goto L11;
-        this.b = Collections.unmodifiableSet(r6);
-        return;
-    L11:
-        throw xa3.d(r7);
-    L5:
-        r5 = Collections.unmodifiableSet(r2);
-        goto L6
+        HashSet hashSet = new HashSet(setUnmodifiableSet);
+        Iterator it = map.values().iterator();
+        if (!it.hasNext()) {
+            this.b = Collections.unmodifiableSet(hashSet);
+            return;
+        }
+        throw xa3.d(it);
     }
 
-    public ml3(AppDatabase r3) {
+    public ml3(AppDatabase appDatabase) {
         this.c = new i80(22);
         this.d = new si1(25);
-        this.a = r3;
+        this.a = appDatabase;
         this.b = new ll3(this, 0);
         this.e = new ll3(this, 1);
         this.f = new h61(2);
     }
 
-    public /* synthetic */ ml3(ViewGroup r1, View r2, View r3, View r4, View r5, View r6, View r7) {
-        this.a = r2;
-        this.b = r3;
-        this.c = r4;
-        this.d = r5;
-        this.e = r6;
-        this.f = r7;
+    public /* synthetic */ ml3(ViewGroup viewGroup, View view, View view2, View view3, View view4, View view5, View view6) {
+        this.a = view;
+        this.b = view2;
+        this.c = view3;
+        this.d = view4;
+        this.e = view5;
+        this.f = view6;
     }
 
-    public ml3(tk4 r5, File r6) {
+    public ml3(tk4 tk4Var, File file) {
+        ss0 ss0Var;
         this.a = new HashMap();
         this.b = new SparseArray();
         this.c = new SparseBooleanArray();
         this.d = new SparseBooleanArray();
-        if (r5 == null) goto L5;
-        ss0 r1 = new ss0();
-        r1.n = r5;
-        r1.o = new SparseArray();
-    L6:
-        File r2 = new File(r6, "cached_content_index.exi");
-        jw r7 = new jw();
-        r7.o = null;
-        r7.p = null;
-        r7.q = new gp3(r2);
-        if (r1 == null) goto L10;
-        this.e = r1;
-        this.f = r7;
-        return;
-    L10:
-        String r8 = f35.a;
-        this.e = r7;
-        this.f = r1;
-        return;
-    L5:
-        r1 = null;
-        goto L6
+        if (tk4Var != null) {
+            ss0Var = new ss0();
+            ss0Var.n = tk4Var;
+            ss0Var.o = new SparseArray();
+        } else {
+            ss0Var = null;
+        }
+        File file2 = new File(file, "cached_content_index.exi");
+        jw jwVar = new jw();
+        jwVar.o = null;
+        jwVar.p = null;
+        jwVar.q = new gp3(file2);
+        if (ss0Var != null) {
+            this.e = ss0Var;
+            this.f = jwVar;
+        } else {
+            String str = f35.a;
+            this.e = jwVar;
+            this.f = ss0Var;
+        }
     }
 
-    public ml3(uc3 r2) {
-        this.a = r2;
+    public ml3(uc3 uc3Var) {
+        this.a = uc3Var;
         this.b = new sm0(this);
         this.c = new k13();
-        Boolean r3 = Boolean.FALSE;
-        this.d = uc5.B(r3);
-        this.e = uc5.B(r3);
-        this.f = uc5.B(r3);
+        Boolean bool = Boolean.FALSE;
+        this.d = uc5.B(bool);
+        this.e = uc5.B(bool);
+        this.f = uc5.B(bool);
     }
 
-    public ml3(zt4 r1) {
-        this.a = r1;
-        vw1 r2 = yw1.o;
+    public ml3(zt4 zt4Var) {
+        this.a = zt4Var;
+        vw1 vw1Var = yw1.o;
         this.b = gy3.r;
         this.c = ly3.t;
     }
 
-    public ml3(lk3 r1, wa4 r2, mi3 r3, yw1 r4, Bundle r5, xa4 r6) {
-        this.a = r1;
-        this.b = r2;
-        this.c = r3;
-        this.d = r4;
-        if (r5 != null) goto L5;
-        r5 = Bundle.EMPTY;
-    L5:
-        this.e = r5;
-        this.f = r6;
+    public ml3(lk3 lk3Var, wa4 wa4Var, mi3 mi3Var, yw1 yw1Var, Bundle bundle, xa4 xa4Var) {
+        this.a = lk3Var;
+        this.b = wa4Var;
+        this.c = mi3Var;
+        this.d = yw1Var;
+        this.e = bundle == null ? Bundle.EMPTY : bundle;
+        this.f = xa4Var;
     }
 }

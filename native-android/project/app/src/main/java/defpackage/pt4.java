@@ -12,52 +12,42 @@ public final class pt4 {
     public float[] g;
 
     public pt4() {
-        i03 r0 = f02.a;
+        i03 i03Var = f02.a;
         this.a = new i03();
-        this.c = -1;
-        this.d = 0;
-        this.e = 0;
+        this.c = -1L;
+        this.d = 0L;
+        this.e = 0L;
     }
 
-    public final void a(ot4 r11, long r12, long r14, float[] r16, long r17) {
-        long r2 = r11.g;
-        if ((r17 - r2) <= 0) goto L5;
-    L8:
-        boolean r10 = true;
-    L9:
-        if (r10 == false) goto L12;
-        r11.g = r17;
-        r11.a(r11.e, r11.f, r12, r14, r16);
-        return;
-    L12:
-        return;
-    L5:
-        if (r2 == Long.MIN_VALUE) goto L8;
-        r10 = false;
-        goto L9
+    public final void a(ot4 ot4Var, long j, long j2, float[] fArr, long j3) throws Exception {
+        long j4 = ot4Var.g;
+        if (j3 - j4 > 0 || j4 == Long.MIN_VALUE) {
+            ot4Var.g = j3;
+            ot4Var.a(ot4Var.e, ot4Var.f, j, j2, fArr);
+        }
     }
 
-    public final boolean b(long r5, long r7, float[] r9, int r10, int r11) {
-        if (g02.a(r7, this.d) == true) goto L5;
-        this.d = r7;
-        boolean r8 = true;
-    L7:
-        if (g02.a(r5, this.e) == true) goto L9;
-        this.e = r5;
-        r8 = true;
-    L9:
-        if (r9 == null) goto L11;
-        this.g = r9;
-        r8 = true;
-    L11:
-        long r6 = (((long) r10) << 32) | (((long) r11) & 4294967295L);
-        if (r6 == this.f) goto L15;
-        this.f = r6;
+    public final boolean b(long j, long j2, float[] fArr, int i, int i2) {
+        boolean z;
+        if (g02.a(j2, this.d)) {
+            z = false;
+        } else {
+            this.d = j2;
+            z = true;
+        }
+        if (!g02.a(j, this.e)) {
+            this.e = j;
+            z = true;
+        }
+        if (fArr != null) {
+            this.g = fArr;
+            z = true;
+        }
+        long j3 = (((long) i) << 32) | (((long) i2) & 4294967295L);
+        if (j3 == this.f) {
+            return z;
+        }
+        this.f = j3;
         return true;
-    L15:
-        return r8;
-    L5:
-        r8 = false;
-        goto L7
     }
 }

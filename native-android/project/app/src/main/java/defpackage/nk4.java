@@ -14,8 +14,8 @@ public final class nk4 {
     public int[] f;
     public final /* synthetic */ StaggeredGridLayoutManager g;
 
-    public nk4(StaggeredGridLayoutManager r1) {
-        this.g = r1;
+    public nk4(StaggeredGridLayoutManager staggeredGridLayoutManager) {
+        this.g = staggeredGridLayoutManager;
         a();
     }
 
@@ -25,9 +25,9 @@ public final class nk4 {
         this.c = false;
         this.d = false;
         this.e = false;
-        int[] r2 = this.f;
-        if (r2 == null) goto L6;
-        Arrays.fill(r2, -1);
-        return;
+        int[] iArr = this.f;
+        if (iArr != null) {
+            Arrays.fill(iArr, -1);
+        }
     }
 }

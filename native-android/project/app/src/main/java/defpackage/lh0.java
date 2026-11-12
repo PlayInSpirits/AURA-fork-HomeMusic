@@ -10,8 +10,8 @@ public final class lh0 extends wd0 {
     public int r;
 
     @Override // defpackage.jp
-    public final Object invokeSuspend(Object r2) {
-        this.q = r2;
+    public final Object invokeSuspend(Object obj) {
+        this.q = obj;
         this.r |= Integer.MIN_VALUE;
         return xl.F(null, false, null, this);
     }

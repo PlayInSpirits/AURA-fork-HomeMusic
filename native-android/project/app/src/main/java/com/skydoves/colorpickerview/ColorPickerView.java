@@ -28,7 +28,6 @@ import defpackage.g50;
 import defpackage.h50;
 import defpackage.hg3;
 import defpackage.it3;
-import defpackage.jx3;
 import defpackage.kb4;
 import defpackage.o9;
 import defpackage.q92;
@@ -63,9 +62,9 @@ public class ColorPickerView extends FrameLayout implements aa2 {
     public float y;
     public float z;
 
-    public ColorPickerView(Context r3, AttributeSet r4) {
-        super(r3, r4);
-        this.v = 0;
+    public ColorPickerView(Context context, AttributeSet attributeSet) {
+        super(context, attributeSet);
+        this.v = 0L;
         this.w = new Handler();
         this.x = c5.n;
         this.y = 1.0f;
@@ -76,172 +75,145 @@ public class ColorPickerView extends FrameLayout implements aa2 {
         this.E = true;
         this.F = true;
         this.G = hg3.C(getContext());
-        c(r4);
+        c(attributeSet);
         g();
     }
 
-    public final void a(int r6) {
-        this.o = r6;
+    public final void a(int i) {
+        this.o = i;
         getAlphaSlideBar();
         getBrightnessSlider();
-        h50 r7 = this.u;
-        if (r7 == null) goto L8;
-        if ((r7 instanceof e50) == false) goto L8;
-        int r8 = this.o;
-        int r0 = Color.alpha(r8);
-        int r1 = Color.red(r8);
-        int r2 = Color.green(r8);
-        int r3 = Color.blue(r8);
-        String r4 = String.format(Locale.getDefault(), "%02X%02X%02X%02X", new Object[]{Integer.valueOf(r0), Integer.valueOf(r1), Integer.valueOf(r2), Integer.valueOf(r3)});
-        Color.alpha(r8);
-        Color.red(r8);
-        Color.green(r8);
-        Color.blue(r8);
-        jx3 r9 = ((e50) this.u).a;
-        r9.n = "HEX:#".concat(r4);
-    L8:
-        if (this.C == false) goto L13;
-        this.C = false;
-        ImageView r10 = this.r;
-        if (r10 == null) goto L14;
-        r10.setAlpha(this.y);
-        return;
-    L14:
-        return;
+        h50 h50Var = this.u;
+        if (h50Var != null && (h50Var instanceof e50)) {
+            int i2 = this.o;
+            String str = String.format(Locale.getDefault(), "%02X%02X%02X%02X", Integer.valueOf(Color.alpha(i2)), Integer.valueOf(Color.red(i2)), Integer.valueOf(Color.green(i2)), Integer.valueOf(Color.blue(i2)));
+            Color.alpha(i2);
+            Color.red(i2);
+            Color.green(i2);
+            Color.blue(i2);
+            ((e50) this.u).a.n = "HEX:#".concat(str);
+        }
+        if (this.C) {
+            this.C = false;
+            ImageView imageView = this.r;
+            if (imageView != null) {
+                imageView.setAlpha(this.y);
+            }
+        }
     }
 
-    public final void c(AttributeSet r5) {
-        TypedArray r6 = getContext().obtainStyledAttributes(r5, it3.a);
-    L6:
-        th = move-exception;
-        r6.recycle();
-        throw th;
-    L4:
-        if (r6.hasValue(5) == false) goto L9;
-        this.s = r6.getDrawable(5);     // Catch: Throwable -> L6
-    L9:
-        if (r6.hasValue(8) == false) goto L14;
-        int r0 = r6.getResourceId(8, -1);     // Catch: Throwable -> L6
-        if (r0 == (-1)) goto L14;
-        this.t = zz1.r(getContext(), r0);     // Catch: Throwable -> L6
-    L14:
-        if (r6.hasValue(10) == false) goto L17;
-        this.y = r6.getFloat(10, this.y);     // Catch: Throwable -> L6
-    L17:
-        if (r6.hasValue(11) == false) goto L20;
-        this.B = r6.getDimensionPixelSize(11, this.B);     // Catch: Throwable -> L6
-    L20:
-        if (r6.hasValue(2) == false) goto L23;
-        this.z = r6.getFloat(2, this.z);     // Catch: Throwable -> L6
-    L23:
-        if (r6.hasValue(3) == false) goto L26;
-        this.A = r6.getBoolean(3, this.A);     // Catch: Throwable -> L6
-    L26:
-        if (r6.hasValue(0) == false) goto L33;
-        int r1 = r6.getInteger(0, 0);     // Catch: Throwable -> L6
-        if (r1 != 0) goto L30;
-        this.x = c5.n;     // Catch: Throwable -> L6
-        goto L33
-    L30:
-        if (r1 != 1) goto L33;
-        this.x = c5.o;     // Catch: Throwable -> L6
-    L33:
-        if (r6.hasValue(1) == false) goto L36;
-        this.v = r6.getInteger(1, (int) this.v);     // Catch: Throwable -> L6
-    L36:
-        if (r6.hasValue(6) == false) goto L39;
-        this.D = r6.getString(6);     // Catch: Throwable -> L6
-    L39:
-        if (r6.hasValue(4) == false) goto L42;
-        setInitialColor(r6.getColor(4, -1));     // Catch: Throwable -> L6
-    L42:
-        if (r6.hasValue(9) == false) goto L45;
-        this.E = r6.getBoolean(9, this.E);     // Catch: Throwable -> L6
-    L45:
-        if (r6.hasValue(7) == false) goto L47;
-        this.F = r6.getBoolean(7, this.F);     // Catch: Throwable -> L6
-    L47:
-        r6.recycle();
+    public final void c(AttributeSet attributeSet) {
+        int resourceId;
+        TypedArray typedArrayObtainStyledAttributes = getContext().obtainStyledAttributes(attributeSet, it3.a);
+        try {
+            if (typedArrayObtainStyledAttributes.hasValue(5)) {
+                this.s = typedArrayObtainStyledAttributes.getDrawable(5);
+            }
+            if (typedArrayObtainStyledAttributes.hasValue(8) && (resourceId = typedArrayObtainStyledAttributes.getResourceId(8, -1)) != -1) {
+                this.t = zz1.r(getContext(), resourceId);
+            }
+            if (typedArrayObtainStyledAttributes.hasValue(10)) {
+                this.y = typedArrayObtainStyledAttributes.getFloat(10, this.y);
+            }
+            if (typedArrayObtainStyledAttributes.hasValue(11)) {
+                this.B = typedArrayObtainStyledAttributes.getDimensionPixelSize(11, this.B);
+            }
+            if (typedArrayObtainStyledAttributes.hasValue(2)) {
+                this.z = typedArrayObtainStyledAttributes.getFloat(2, this.z);
+            }
+            if (typedArrayObtainStyledAttributes.hasValue(3)) {
+                this.A = typedArrayObtainStyledAttributes.getBoolean(3, this.A);
+            }
+            if (typedArrayObtainStyledAttributes.hasValue(0)) {
+                int integer = typedArrayObtainStyledAttributes.getInteger(0, 0);
+                if (integer == 0) {
+                    this.x = c5.n;
+                } else if (integer == 1) {
+                    this.x = c5.o;
+                }
+            }
+            if (typedArrayObtainStyledAttributes.hasValue(1)) {
+                this.v = typedArrayObtainStyledAttributes.getInteger(1, (int) this.v);
+            }
+            if (typedArrayObtainStyledAttributes.hasValue(6)) {
+                this.D = typedArrayObtainStyledAttributes.getString(6);
+            }
+            if (typedArrayObtainStyledAttributes.hasValue(4)) {
+                setInitialColor(typedArrayObtainStyledAttributes.getColor(4, -1));
+            }
+            if (typedArrayObtainStyledAttributes.hasValue(9)) {
+                this.E = typedArrayObtainStyledAttributes.getBoolean(9, this.E);
+            }
+            if (typedArrayObtainStyledAttributes.hasValue(7)) {
+                this.F = typedArrayObtainStyledAttributes.getBoolean(7, this.F);
+            }
+        } finally {
+            typedArrayObtainStyledAttributes.recycle();
+        }
     }
 
-    public final int d(float r11, float r12) {
-        Matrix r0 = new Matrix();
-        this.q.getImageMatrix().invert(r0);
-        float[] r2 = {r11, r12};
-        r0.mapPoints(r2);
-        if (this.q.getDrawable() != null) goto L5;
-    L20:
+    public final int d(float f, float f2) {
+        Matrix matrix = new Matrix();
+        this.q.getImageMatrix().invert(matrix);
+        float[] fArr = {f, f2};
+        matrix.mapPoints(fArr);
+        if (this.q.getDrawable() != null && (this.q.getDrawable() instanceof BitmapDrawable)) {
+            float f3 = fArr[0];
+            if (f3 >= 0.0f && fArr[1] >= 0.0f && f3 < this.q.getDrawable().getIntrinsicWidth() && fArr[1] < this.q.getDrawable().getIntrinsicHeight()) {
+                invalidate();
+                if (!(this.q.getDrawable() instanceof b50)) {
+                    Rect bounds = this.q.getDrawable().getBounds();
+                    return ((BitmapDrawable) this.q.getDrawable()).getBitmap().getPixel((int) ((fArr[0] / bounds.width()) * ((BitmapDrawable) this.q.getDrawable()).getBitmap().getWidth()), (int) ((fArr[1] / bounds.height()) * ((BitmapDrawable) this.q.getDrawable()).getBitmap().getHeight()));
+                }
+                float width = f - (getWidth() * 0.5f);
+                float height = f2 - (getHeight() * 0.5f);
+                double dSqrt = Math.sqrt((height * height) + (width * width));
+                float fMin = Math.min(getWidth(), getHeight()) * 0.5f;
+                float[] fArr2 = {0.0f, 0.0f, 1.0f};
+                fArr2[0] = ((float) ((Math.atan2(height, -width) / 3.141592653589793d) * 180.0d)) + 180.0f;
+                fArr2[1] = Math.max(0.0f, Math.min(1.0f, (float) (dSqrt / ((double) fMin))));
+                return Color.HSVToColor(fArr2);
+            }
+        }
         return 0;
-    L5:
-        if ((this.q.getDrawable() instanceof BitmapDrawable) == false) goto L20;
-        float r1 = r2[0];
-        if (r1 < 0.0f) goto L20;
-        if (r2[1] < 0.0f) goto L20;
-        if (r1 >= this.q.getDrawable().getIntrinsicWidth()) goto L20;
-        if (r2[1] >= this.q.getDrawable().getIntrinsicHeight()) goto L20;
-        invalidate();
-        if ((this.q.getDrawable() instanceof b50) == false) goto L18;
-        float r13 = r11 - (getWidth() * 0.5f);
-        float r14 = r12 - (getHeight() * 0.5f);
-        double r6 = Math.sqrt((r14 * r14) + (r13 * r13));
-        float r10 = Math.min(getWidth(), getHeight()) * 0.5f;
-        float[] r3 = {0.0f, 0.0f, 1.0f};
-        r3[0] = ((float) ((Math.atan2(r14, -r13) / 3.141592653589793d) * 180.0d)) + 180.0f;
-        r3[1] = Math.max(0.0f, Math.min(1.0f, (float) (r6 / ((double) r10))));
-        return Color.HSVToColor(r3);
-    L18:
-        Rect r15 = this.q.getDrawable().getBounds();
-        return ((BitmapDrawable) this.q.getDrawable()).getBitmap().getPixel((int) ((r2[0] / r15.width()) * ((BitmapDrawable) this.q.getDrawable()).getBitmap().getWidth()), (int) ((r2[1] / r15.height()) * ((BitmapDrawable) this.q.getDrawable()).getBitmap().getHeight()));
     }
 
     public final boolean e() {
-        if (this.q.getDrawable() != null) goto L5;
-        return false;
-    L5:
-        if ((this.q.getDrawable() instanceof b50) == false) goto L10;
-        return true;
-    L10:
-        return false;
+        return this.q.getDrawable() != null && (this.q.getDrawable() instanceof b50);
     }
 
-    public final void f(Point r4) {
-        int r0 = r4.x;
-        int r5 = r4.y;
-        new Point(r0 - (this.r.getWidth() / 2), r5 - (this.r.getMeasuredHeight() / 2));
+    public final void f(Point point) {
+        new Point(point.x - (this.r.getWidth() / 2), point.y - (this.r.getMeasuredHeight() / 2));
     }
 
     public final void g() {
         setPadding(0, 0, 0, 0);
-        ImageView r0 = new ImageView(getContext());
-        this.q = r0;
-        Drawable r1 = this.s;
-        if (r1 == null) goto L5;
-        r0.setImageDrawable(r1);
-    L5:
-        FrameLayout.LayoutParams r2 = new FrameLayout.LayoutParams(-1, -1);
-        r2.gravity = 17;
-        addView(this.q, r2);
-        ImageView r3 = new ImageView(getContext());
-        this.r = r3;
-        Drawable r4 = this.t;
-        if (r4 == null) goto L8;
-        r3.setImageDrawable(r4);
-    L9:
-        FrameLayout.LayoutParams r5 = new FrameLayout.LayoutParams(-2, -2);
-        if (this.B == 0) goto L12;
-        Context r6 = getContext();
-        r5.width = (int) ((this.B * r6.getResources().getDisplayMetrics().density) + 0.5f);
-        Context r7 = getContext();
-        r5.height = (int) ((this.B * r7.getResources().getDisplayMetrics().density) + 0.5f);
-    L12:
-        r5.gravity = 17;
-        addView(this.r, r5);
+        ImageView imageView = new ImageView(getContext());
+        this.q = imageView;
+        Drawable drawable = this.s;
+        if (drawable != null) {
+            imageView.setImageDrawable(drawable);
+        }
+        FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(-1, -1);
+        layoutParams.gravity = 17;
+        addView(this.q, layoutParams);
+        ImageView imageView2 = new ImageView(getContext());
+        this.r = imageView2;
+        Drawable drawable2 = this.t;
+        if (drawable2 != null) {
+            imageView2.setImageDrawable(drawable2);
+        } else {
+            imageView2.setImageDrawable(getContext().getDrawable(R.drawable.colorpickerview_wheel));
+        }
+        FrameLayout.LayoutParams layoutParams2 = new FrameLayout.LayoutParams(-2, -2);
+        if (this.B != 0) {
+            layoutParams2.width = (int) ((this.B * getContext().getResources().getDisplayMetrics().density) + 0.5f);
+            layoutParams2.height = (int) ((this.B * getContext().getResources().getDisplayMetrics().density) + 0.5f);
+        }
+        layoutParams2.gravity = 17;
+        addView(this.r, layoutParams2);
         this.r.setAlpha(this.y);
         getViewTreeObserver().addOnGlobalLayoutListener(new sg(3, this));
-        return;
-    L8:
-        r3.setImageDrawable(getContext().getDrawable(R.drawable.colorpickerview_wheel));
-        goto L9
     }
 
     public c5 getActionMode() {
@@ -266,18 +238,14 @@ public class ColorPickerView extends FrameLayout implements aa2 {
     }
 
     public a50 getColorEnvelope() {
-        int r6 = getColor();
-        a50 r0 = new a50();
-        int r1 = Color.alpha(r6);
-        int r2 = Color.red(r6);
-        int r3 = Color.green(r6);
-        int r4 = Color.blue(r6);
-        String.format(Locale.getDefault(), "%02X%02X%02X%02X", new Object[]{Integer.valueOf(r1), Integer.valueOf(r2), Integer.valueOf(r3), Integer.valueOf(r4)});
-        Color.alpha(r6);
-        Color.red(r6);
-        Color.green(r6);
-        Color.blue(r6);
-        return r0;
+        int color = getColor();
+        a50 a50Var = new a50();
+        String.format(Locale.getDefault(), "%02X%02X%02X%02X", Integer.valueOf(Color.alpha(color)), Integer.valueOf(Color.red(color)), Integer.valueOf(Color.green(color)), Integer.valueOf(Color.blue(color)));
+        Color.alpha(color);
+        Color.red(color);
+        Color.green(color);
+        Color.blue(color);
+        return a50Var;
     }
 
     public long getDebounceDuration() {
@@ -312,202 +280,190 @@ public class ColorPickerView extends FrameLayout implements aa2 {
         return this.r.getY() - (this.r.getMeasuredHeight() * 0.5f);
     }
 
-    public final void h(int r10) {
-        if ((this.q.getDrawable() instanceof b50) == false) goto L7;
-        float[] r0 = new float[3];
-        Color.colorToHSV(r10, r0);
-        float r1 = getWidth() * 0.5f;
-        float r3 = getHeight() * 0.5f;
-        float r4 = Math.min(r1, r3) * r0[1];
-        Point r2 = kb4.z(this, new Point((int) ((Math.cos(Math.toRadians(r0[0])) * ((double) r4)) + ((double) r1)), (int) ((Math.sin(Math.toRadians(r0[0])) * ((double) (-r4))) + ((double) r3))));
-        this.n = r10;
-        this.o = r10;
-        this.p = new Point(r2.x, r2.y);
+    public final void h(int i) {
+        if (!(this.q.getDrawable() instanceof b50)) {
+            throw new IllegalAccessException("selectByHsvColor(@ColorInt int color) can be called only when the palette is an instance of ColorHsvPalette. Use setHsvPaletteDrawable();");
+        }
+        float[] fArr = new float[3];
+        Color.colorToHSV(i, fArr);
+        float width = getWidth() * 0.5f;
+        float height = getHeight() * 0.5f;
+        float fMin = Math.min(width, height) * fArr[1];
+        Point pointZ = kb4.z(this, new Point((int) ((Math.cos(Math.toRadians(fArr[0])) * ((double) fMin)) + ((double) width)), (int) ((Math.sin(Math.toRadians(fArr[0])) * ((double) (-fMin))) + ((double) height))));
+        this.n = i;
+        this.o = i;
+        this.p = new Point(pointZ.x, pointZ.y);
         getAlphaSlideBar();
         getBrightnessSlider();
-        i(r2.x, r2.y);
+        i(pointZ.x, pointZ.y);
         a(getColor());
         f(this.p);
-        return;
-    L7:
-        throw new IllegalAccessException("selectByHsvColor(@ColorInt int color) can be called only when the palette is an instance of ColorHsvPalette. Use setHsvPaletteDrawable();");
     }
 
-    public final void i(int r4, int r5) {
-        ImageView r0 = this.r;
-        r0.setX(r4 - (r0.getWidth() * 0.5f));
-        ImageView r3 = this.r;
-        r3.setY(r5 - (r3.getMeasuredHeight() * 0.5f));
+    public final void i(int i, int i2) {
+        ImageView imageView = this.r;
+        imageView.setX(i - (imageView.getWidth() * 0.5f));
+        ImageView imageView2 = this.r;
+        imageView2.setY(i2 - (imageView2.getMeasuredHeight() * 0.5f));
     }
 
     @f93(q92.ON_DESTROY)
     public void onDestroy() {
-        SharedPreferences r0 = (SharedPreferences) this.G.o;
-        if (getPreferenceName() == null) goto L10;
-        String r1 = getPreferenceName();
-        int r2 = getColor();
-        r0.edit().putInt(r1 + "_COLOR", r2).apply();
-        Point r3 = getSelectedPoint();
-        if (r3 == null) goto L8;
-        r0.edit().putInt(r1 + "_SELECTOR_X", r3.x).apply();
-        r0.edit().putInt(r1 + "_SELECTOR_Y", r3.y).apply();
-    L8:
-        getAlphaSlideBar();
-        getBrightnessSlider();
-        return;
+        SharedPreferences sharedPreferences = (SharedPreferences) this.G.o;
+        if (getPreferenceName() != null) {
+            String preferenceName = getPreferenceName();
+            int color = getColor();
+            sharedPreferences.edit().putInt(preferenceName + "_COLOR", color).apply();
+            Point selectedPoint = getSelectedPoint();
+            if (selectedPoint != null) {
+                sharedPreferences.edit().putInt(preferenceName + "_SELECTOR_X", selectedPoint.x).apply();
+                sharedPreferences.edit().putInt(preferenceName + "_SELECTOR_Y", selectedPoint.y).apply();
+            }
+            getAlphaSlideBar();
+            getBrightnessSlider();
+        }
     }
 
     @Override // android.view.View
-    public final void onSizeChanged(int r1, int r2, int r3, int r4) {
-        super.onSizeChanged(r1, r2, r3, r4);
-        if (this.q.getDrawable() != null) goto L6;
-        Bitmap r5 = Bitmap.createBitmap(r1, r2, Bitmap.Config.ARGB_8888);
-        this.q.setImageDrawable(new b50(getResources(), r5));
-        return;
+    public final void onSizeChanged(int i, int i2, int i3, int i4) {
+        super.onSizeChanged(i, i2, i3, i4);
+        if (this.q.getDrawable() == null) {
+            this.q.setImageDrawable(new b50(getResources(), Bitmap.createBitmap(i, i2, Bitmap.Config.ARGB_8888)));
+        }
     }
 
     @Override // android.view.View
-    public final boolean onTouchEvent(MotionEvent r7) {
-        if (isEnabled() == true) goto L5;
-        return false;
-    L5:
-        int r0 = r7.getActionMasked();
-        if (r0 == 0) goto L12;
-        if (r0 == 1) goto L12;
-        if (r0 == 2) goto L12;
-        this.r.setPressed(false);
-        return false;
-    L12:
+    public final boolean onTouchEvent(MotionEvent motionEvent) {
+        if (!isEnabled()) {
+            return false;
+        }
+        int actionMasked = motionEvent.getActionMasked();
+        if (actionMasked != 0 && actionMasked != 1 && actionMasked != 2) {
+            this.r.setPressed(false);
+            return false;
+        }
         getFlagView();
         this.r.setPressed(true);
-        Point r1 = kb4.z(this, new Point((int) r7.getX(), (int) r7.getY()));
-        int r2 = d(r1.x, r1.y);
-        this.n = r2;
-        this.o = r2;
-        this.p = kb4.z(this, new Point(r1.x, r1.y));
-        i(r1.x, r1.y);
-        if (this.F == false) goto L15;
-        e();
-    L15:
-        c5 r3 = this.x;
-        c5 r4 = c5.o;
-        int r5 = 12;
-        Handler r6 = this.w;
-        if (r3 != r4) goto L21;
+        Point pointZ = kb4.z(this, new Point((int) motionEvent.getX(), (int) motionEvent.getY()));
+        int iD = d(pointZ.x, pointZ.y);
+        this.n = iD;
+        this.o = iD;
+        this.p = kb4.z(this, new Point(pointZ.x, pointZ.y));
+        i(pointZ.x, pointZ.y);
+        if (this.F) {
+            e();
+        }
+        c5 c5Var = this.x;
+        c5 c5Var2 = c5.o;
+        int i = 12;
+        Handler handler = this.w;
+        if (c5Var != c5Var2) {
+            handler.removeCallbacksAndMessages(null);
+            handler.postDelayed(new a0(i, this), this.v);
+            return true;
+        }
         f(this.p);
-        if (r7.getAction() != 1) goto L20;
-        r6.removeCallbacksAndMessages(null);
-        r6.postDelayed(new a0(r5, this), this.v);
-    L20:
-        return true;
-    L21:
-        r6.removeCallbacksAndMessages(null);
-        r6.postDelayed(new a0(r5, this), this.v);
+        if (motionEvent.getAction() == 1) {
+            handler.removeCallbacksAndMessages(null);
+            handler.postDelayed(new a0(i, this), this.v);
+        }
         return true;
     }
 
-    public void setActionMode(c5 r1) {
-        this.x = r1;
+    public void setActionMode(c5 c5Var) {
+        this.x = c5Var;
     }
 
-    public void setColorListener(h50 r1) {
-        this.u = r1;
+    public void setColorListener(h50 h50Var) {
+        this.u = h50Var;
     }
 
-    public void setDebounceDuration(long r1) {
-        this.v = r1;
+    public void setDebounceDuration(long j) {
+        this.v = j;
     }
 
     @Override // android.view.View
-    public void setEnabled(boolean r3) {
-        super.setEnabled(r3);
-        ImageView r0 = this.r;
-        if (r3 == false) goto L5;
-        int r1 = 0;
-    L6:
-        r0.setVisibility(r1);
+    public void setEnabled(boolean z) {
+        super.setEnabled(z);
+        this.r.setVisibility(z ? 0 : 4);
         getAlphaSlideBar();
         getBrightnessSlider();
-        if (r3 == false) goto L10;
-        this.q.clearColorFilter();
-        return;
-    L10:
-        int r4 = Color.argb(70, 255, 255, 255);
-        this.q.setColorFilter(r4);
-        return;
-    L5:
-        r1 = 4;
-        goto L6
+        if (z) {
+            this.q.clearColorFilter();
+        } else {
+            this.q.setColorFilter(Color.argb(70, 255, 255, 255));
+        }
     }
 
-    public void setFlagView(x71 r1) {
+    public void setFlagView(x71 x71Var) {
         throw null;
     }
 
-    public void setInitialColor(int r4) {
-        if (getPreferenceName() != null) goto L5;
-    L10:
-        post(new g50(this, r4, 0));
-        return;
-    L5:
-        if (getPreferenceName() == null) goto L9;
-        String r0 = getPreferenceName();
-        if (((SharedPreferences) this.G.o).getInt(r0 + "_COLOR", -1) == (-1)) goto L10;
-        return;
+    public void setInitialColor(int i) {
+        if (getPreferenceName() != null) {
+            if (getPreferenceName() == null) {
+                return;
+            }
+            String preferenceName = getPreferenceName();
+            if (((SharedPreferences) this.G.o).getInt(preferenceName + "_COLOR", -1) != -1) {
+                return;
+            }
+        }
+        post(new g50(this, i, 0));
     }
 
-    public void setInitialColorRes(int r2) {
-        setInitialColor(getContext().getColor(r2));
+    public void setInitialColorRes(int i) {
+        setInitialColor(getContext().getColor(i));
     }
 
-    public void setLifecycleOwner(ba2 r1) {
-        r1.h().a(this);
+    public void setLifecycleOwner(ba2 ba2Var) {
+        ba2Var.h().a(this);
     }
 
-    public void setPaletteDrawable(Drawable r3) {
+    public void setPaletteDrawable(Drawable drawable) {
         removeView(this.q);
-        ImageView r0 = new ImageView(getContext());
-        this.q = r0;
-        this.s = r3;
-        r0.setImageDrawable(r3);
+        ImageView imageView = new ImageView(getContext());
+        this.q = imageView;
+        this.s = drawable;
+        imageView.setImageDrawable(drawable);
         addView(this.q);
         removeView(this.r);
         addView(this.r);
         this.n = -1;
-        if (this.C == true) goto L8;
+        if (this.C) {
+            return;
+        }
         this.C = true;
-        ImageView r4 = this.r;
-        if (r4 == null) goto L9;
-        this.y = r4.getAlpha();
-        this.r.setAlpha(0.0f);
-        return;
-    L9:
-        return;
+        ImageView imageView2 = this.r;
+        if (imageView2 != null) {
+            this.y = imageView2.getAlpha();
+            this.r.setAlpha(0.0f);
+        }
     }
 
-    public void setPreferenceName(String r1) {
-        this.D = r1;
+    public void setPreferenceName(String str) {
+        this.D = str;
     }
 
-    public void setPureColor(int r1) {
-        this.n = r1;
+    public void setPureColor(int i) {
+        this.n = i;
     }
 
-    public void setResetBrightnessOnLowSaturation(boolean r1) {
-        this.F = r1;
+    public void setResetBrightnessOnLowSaturation(boolean z) {
+        this.F = z;
     }
 
-    public void setSelectorDrawable(Drawable r1) {
-        this.r.setImageDrawable(r1);
+    public void setSelectorDrawable(Drawable drawable) {
+        this.r.setImageDrawable(drawable);
     }
 
-    public void setSelectorPointValidation(boolean r1) {
-        this.E = r1;
+    public void setSelectorPointValidation(boolean z) {
+        this.E = z;
     }
 
-    public ColorPickerView(Context r3) {
-        super(r3);
-        this.v = 0;
+    public ColorPickerView(Context context) {
+        super(context);
+        this.v = 0L;
         this.w = new Handler();
         this.x = c5.n;
         this.y = 1.0f;
@@ -520,9 +476,9 @@ public class ColorPickerView extends FrameLayout implements aa2 {
         this.G = hg3.C(getContext());
     }
 
-    public ColorPickerView(Context r3, AttributeSet r4, int r5) {
-        super(r3, r4, r5);
-        this.v = 0;
+    public ColorPickerView(Context context, AttributeSet attributeSet, int i) {
+        super(context, attributeSet, i);
+        this.v = 0L;
         this.w = new Handler();
         this.x = c5.n;
         this.y = 1.0f;
@@ -533,13 +489,13 @@ public class ColorPickerView extends FrameLayout implements aa2 {
         this.E = true;
         this.F = true;
         this.G = hg3.C(getContext());
-        c(r4);
+        c(attributeSet);
         g();
     }
 
-    public ColorPickerView(Context r1, AttributeSet r2, int r3, int r4) {
-        super(r1, r2, r3, r4);
-        this.v = 0;
+    public ColorPickerView(Context context, AttributeSet attributeSet, int i, int i2) {
+        super(context, attributeSet, i, i2);
+        this.v = 0L;
         this.w = new Handler();
         this.x = c5.n;
         this.y = 1.0f;
@@ -550,7 +506,7 @@ public class ColorPickerView extends FrameLayout implements aa2 {
         this.E = true;
         this.F = true;
         this.G = hg3.C(getContext());
-        c(r2);
+        c(attributeSet);
         g();
     }
 }

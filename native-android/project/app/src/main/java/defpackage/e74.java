@@ -7,268 +7,448 @@ import android.widget.EdgeEffect;
 public final class e74 {
     public final /* synthetic */ g74 a;
 
-    public e74(g74 r1) {
-        this.a = r1;
+    public e74(g74 g74Var) {
+        this.a = g74Var;
     }
 
-    public final long a(int r20, long r21) {
-        g74 r1 = this.a;
-        r1.j = r20;
-        tb r4 = r1.b;
-        if (r4 == null) goto L197;
-        if (r1.b() == false) goto L197;
-        int r0 = r1.j;
-        kl3 r2 = r1.m;
-        vy0 r5 = r4.c;
-        if (qf4.b(r4.g) == false) goto L11;
-        g74 r3 = (g74) r2.o;
-        return new g83(r3.d(r3.k, r21, r3.j)).a;
-    L11:
-        if (r4.f == false) goto L13;
-    L25:
-        int r6 = fc.a;
-        if (r0 != 2) goto L28;
-        float r7 = 4.0f;
-    L29:
-        long r10 = g83.f(r21, r7);
-        int r14 = (int) (r21 & 4294967295L);
-        if (Float.intBitsToFloat(r14) != 0.0f) goto L34;
-        long r19 = 4294967295L;
-    L32:
-        float r12 = 0.0f;
-    L55:
-        int r8 = (int) (r21 >> 32);
-        if (Float.intBitsToFloat(r8) != 0.0f) goto L59;
-    L57:
-        float r9 = 0.0f;
-    L79:
-        long r11 = (Float.floatToRawIntBits(r9) << 32) | (((long) Float.floatToRawIntBits(r12)) & r19);
-        if (g83.b(r11, 0) == true) goto L82;
-        r4.d();
-    L82:
-        long r13 = g83.d(r21, r11);
-        g74 r15 = (g74) r2.o;
-        long r16 = new g83(r15.d(r15.k, r13, r15.j)).a;
-        long r17 = g83.d(r13, r16);
-        if (Float.intBitsToFloat((int) (r13 >> 32)) != 0.0f) goto L88;
-        if (Float.intBitsToFloat((int) (r13 & r19)) != 0.0f) goto L88;
-    L102:
-        if (r0 != 1) goto L123;
-        int r18 = (int) (r17 >> 32);
-        if (Float.intBitsToFloat(r18) <= 0.5f) goto L108;
-        r4.g(r17);
-    L106:
-        boolean r22 = true;
-    L111:
-        int r23 = (int) (r17 & r19);
-        if (Float.intBitsToFloat(r23) <= 0.5f) goto L116;
-        r4.i(r17);
-    L114:
-        boolean r24 = true;
-    L119:
-        if (r22 == true) goto L121;
-        if (r24 == false) goto L123;
-    L121:
-        boolean r25 = true;
-    L125:
-        if (g83.b(r13, 0) == false) goto L127;
-    L192:
-        if (r25 == false) goto L195;
-        r4.d();
-    L195:
-        return g83.e(r11, r16);
-    L127:
-        if (vy0.f(r5.f) == true) goto L129;
-    L137:
-        boolean r26 = false;
-    L139:
-        if (vy0.f(r5.g) == false) goto L155;
-        if (Float.intBitsToFloat(r8) <= 0.0f) goto L155;
-        EdgeEffect r27 = r5.d();
-        float r28 = Float.intBitsToFloat(r8);
-        if ((r27 instanceof aj1) == false) goto L147;
-        aj1 r29 = (aj1) r27;
-        float r30 = r29.b + r28;
-        r29.b = r30;
-        if (Math.abs(r30) <= r29.a) goto L148;
-        r29.onRelease();
-    L148:
-        if (r26 == false) goto L150;
-    L153:
-        r26 = true;
-        goto L155
-    L150:
-        if (vy0.f(r5.g) == true) goto L153;
-        r26 = false;
-        goto L155
-    L147:
-        r27.onRelease();
-    L155:
-        if (vy0.f(r5.d) == false) goto L171;
-        if (Float.intBitsToFloat(r14) >= 0.0f) goto L171;
-        EdgeEffect r31 = r5.e();
-        float r32 = Float.intBitsToFloat(r14);
-        if ((r31 instanceof aj1) == false) goto L163;
-        aj1 r33 = (aj1) r31;
-        float r34 = r33.b + r32;
-        r33.b = r34;
-        if (Math.abs(r34) <= r33.a) goto L164;
-        r33.onRelease();
-    L164:
-        if (r26 == false) goto L166;
-    L169:
-        r26 = true;
-        goto L171
-    L166:
-        if (vy0.f(r5.d) == true) goto L169;
-        r26 = false;
-        goto L171
-    L163:
-        r31.onRelease();
-    L171:
-        if (vy0.f(r5.e) == true) goto L173;
-    L186:
-        if (r26 == true) goto L190;
-        if (r25 == true) goto L190;
-        boolean r35 = false;
-    L191:
-        r25 = r35;
-    L190:
-        r35 = true;
-        goto L191
-    L173:
-        if (Float.intBitsToFloat(r14) <= 0.0f) goto L186;
-        EdgeEffect r36 = r5.b();
-        float r37 = Float.intBitsToFloat(r14);
-        if ((r36 instanceof aj1) == false) goto L179;
-        aj1 r38 = (aj1) r36;
-        float r39 = r38.b + r37;
-        r38.b = r39;
-        if (Math.abs(r39) <= r38.a) goto L180;
-        r38.onRelease();
-    L180:
-        if (r26 == false) goto L182;
-    L185:
-        r26 = true;
-        goto L186
-    L182:
-        if (vy0.f(r5.e) == true) goto L185;
-        r26 = false;
-        goto L186
-    L179:
-        r36.onRelease();
-        goto L180
-    L129:
-        if (Float.intBitsToFloat(r8) >= 0.0f) goto L137;
-        EdgeEffect r40 = r5.c();
-        float r41 = Float.intBitsToFloat(r8);
-        if ((r40 instanceof aj1) == false) goto L135;
-        aj1 r42 = (aj1) r40;
-        float r43 = r42.b + r41;
-        r42.b = r43;
-        if (Math.abs(r43) <= r42.a) goto L136;
-        r42.onRelease();
-    L136:
-        r26 = vy0.f(r5.f);
-        goto L139
-    L135:
-        r40.onRelease();
-        goto L136
-    L116:
-        if (Float.intBitsToFloat(r23) >= (-0.5f)) goto L118;
-        r4.f(r17);
-        goto L114
-    L118:
-        r24 = false;
-        goto L119
-    L108:
-        if (Float.intBitsToFloat(r18) >= (-0.5f)) goto L110;
-        r4.h(r17);
-        goto L106
-    L110:
-        r22 = false;
-    L123:
-        r25 = false;
-    L88:
-        if (Float.intBitsToFloat((int) (r16 >> 32)) != 0.0f) goto L93;
-        if (Float.intBitsToFloat((int) (r16 & r19)) == 0.0f) goto L102;
-    L93:
-        if (vy0.g(r5.f) == false) goto L95;
-    L100:
-        r4.a();
-        goto L102
-    L95:
-        if (vy0.g(r5.d) == true) goto L100;
-        if (vy0.g(r5.g) == true) goto L100;
-        if (vy0.g(r5.e) == false) goto L102;
-    L59:
-        if (vy0.g(r5.f) == false) goto L70;
-        if (Float.intBitsToFloat(r8) >= 0.0f) goto L70;
-        float r44 = r4.g(r10);
-        if (vy0.g(r5.f) == true) goto L66;
-        r5.c().finish();
-    L66:
-        if (r44 != Float.intBitsToFloat((int) (r10 >> 32))) goto L68;
-        r9 = Float.intBitsToFloat(r8);
-    L68:
-        r9 = r44 / r7;
-    L70:
-        if (vy0.g(r5.g) == false) goto L57;
-        if (Float.intBitsToFloat(r8) <= 0.0f) goto L57;
-        r44 = r4.h(r10);
-        if (vy0.g(r5.g) == true) goto L77;
-        r5.d().finish();
-    L77:
-        if (r44 != Float.intBitsToFloat((int) (r10 >> 32))) goto L68;
-        r9 = Float.intBitsToFloat(r8);
-        goto L79
-    L34:
-        if (vy0.g(r5.d) == true) goto L36;
-    L44:
-        r19 = 4294967295L;
-        if (vy0.g(r5.e) == false) goto L32;
-        if (Float.intBitsToFloat(r14) <= 0.0f) goto L32;
-        float r110 = r4.f(r10);
-        if (vy0.g(r5.e) == true) goto L52;
-        r5.b().finish();
-    L52:
-        if (r110 != Float.intBitsToFloat((int) (r10 & 4294967295L))) goto L54;
-        r12 = Float.intBitsToFloat(r14);
-        goto L55
-    L54:
-        r12 = r110 / r7;
-        goto L55
-    L36:
-        if (Float.intBitsToFloat(r14) >= 0.0f) goto L44;
-        float r111 = r4.i(r10);
-        r19 = 4294967295L;
-        if (vy0.g(r5.d) == true) goto L41;
-        r5.e().finish();
-    L41:
-        if (r111 != Float.intBitsToFloat((int) (r10 & 4294967295L))) goto L43;
-        r12 = Float.intBitsToFloat(r14);
-        goto L55
-    L43:
-        r12 = r111 / r7;
-        goto L55
-    L28:
-        r7 = 1.0f;
-        goto L29
-    L13:
-        if (vy0.g(r5.f) == false) goto L16;
-        r4.g(0);
-    L16:
-        if (vy0.g(r5.g) == false) goto L19;
-        r4.h(0);
-    L19:
-        if (vy0.g(r5.d) == false) goto L22;
-        r4.i(0);
-    L22:
-        if (vy0.g(r5.e) == false) goto L24;
-        r4.f(0);
-    L24:
-        r4.f = true;
-    L197:
-        return r1.d(r1.k, r21, r20);
+    /* JADX WARN: Code duplicated, block: B:103:0x0205  */
+    /* JADX WARN: Code duplicated, block: B:105:0x0214  */
+    /* JADX WARN: Code duplicated, block: B:107:0x0219  */
+    /* JADX WARN: Code duplicated, block: B:109:0x0221  */
+    /* JADX WARN: Code duplicated, block: B:110:0x0225  */
+    /* JADX WARN: Code duplicated, block: B:113:0x0231  */
+    /* JADX WARN: Code duplicated, block: B:115:0x0236  */
+    /* JADX WARN: Code duplicated, block: B:117:0x023e  */
+    /* JADX WARN: Code duplicated, block: B:118:0x0242  */
+    /* JADX WARN: Code duplicated, block: B:120:0x0245 A[ADDED_TO_REGION] */
+    /* JADX WARN: Code duplicated, block: B:123:0x024b  */
+    /* JADX WARN: Code duplicated, block: B:126:0x0253  */
+    /* JADX WARN: Code duplicated, block: B:137:0x028e  */
+    /* JADX WARN: Code duplicated, block: B:144:0x02ab  */
+    /* JADX WARN: Code duplicated, block: B:146:0x02bc  */
+    /* JADX WARN: Code duplicated, block: B:147:0x02c0  */
+    /* JADX WARN: Code duplicated, block: B:153:0x02d0  */
+    /* JADX WARN: Code duplicated, block: B:160:0x02ed  */
+    /* JADX WARN: Code duplicated, block: B:162:0x02fe  */
+    /* JADX WARN: Code duplicated, block: B:163:0x0302  */
+    /* JADX WARN: Code duplicated, block: B:169:0x0312  */
+    /* JADX WARN: Code duplicated, block: B:176:0x032f  */
+    /* JADX WARN: Code duplicated, block: B:178:0x0340  */
+    /* JADX WARN: Code duplicated, block: B:179:0x0344  */
+    /* JADX WARN: Code duplicated, block: B:185:0x0354  */
+    /* JADX WARN: Code duplicated, block: B:190:0x035c  */
+    /* JADX WARN: Code duplicated, block: B:193:0x0360  */
+    /* JADX WARN: Code duplicated, block: B:57:0x010c  */
+    /* JADX WARN: Code duplicated, block: B:58:0x010f  */
+    /* JADX WARN: Code duplicated, block: B:68:0x0141 A[PHI: r8
+  0x0141: PHI (r8v9 float) = (r8v8 float), (r8v12 float) binds: [B:77:0x016f, B:66:0x013a] A[DONT_GENERATE, DONT_INLINE]] */
+    /* JADX WARN: Code duplicated, block: B:69:0x0144  */
+    /* JADX WARN: Code duplicated, block: B:71:0x014c  */
+    /* JADX WARN: Code duplicated, block: B:81:0x018d  */
+    public final long a(int i, long j) {
+        long j2;
+        float fIntBitsToFloat;
+        int i2;
+        float fH;
+        float fIntBitsToFloat2;
+        long jFloatToRawIntBits;
+        long jD;
+        long jD2;
+        boolean z;
+        boolean zF;
+        boolean z2;
+        EdgeEffect edgeEffectB;
+        float fIntBitsToFloat3;
+        aj1 aj1Var;
+        float f;
+        EdgeEffect edgeEffectE;
+        float fIntBitsToFloat4;
+        aj1 aj1Var2;
+        float f2;
+        EdgeEffect edgeEffectD;
+        float fIntBitsToFloat5;
+        aj1 aj1Var3;
+        float f3;
+        int i3;
+        boolean z3;
+        int i4;
+        boolean z4;
+        g74 g74Var = this.a;
+        g74Var.j = i;
+        tb tbVar = g74Var.b;
+        if (tbVar == null || !g74Var.b()) {
+            return g74Var.d(g74Var.k, j, i);
+        }
+        int i5 = g74Var.j;
+        kl3 kl3Var = g74Var.m;
+        vy0 vy0Var = tbVar.c;
+        if (qf4.b(tbVar.g)) {
+            g74 g74Var2 = (g74) kl3Var.o;
+            return new g83(g74Var2.d(g74Var2.k, j, g74Var2.j)).a;
+        }
+        if (!tbVar.f) {
+            if (vy0.g(vy0Var.f)) {
+                tbVar.g(0L);
+            }
+            if (vy0.g(vy0Var.g)) {
+                tbVar.h(0L);
+            }
+            if (vy0.g(vy0Var.d)) {
+                tbVar.i(0L);
+            }
+            if (vy0.g(vy0Var.e)) {
+                tbVar.f(0L);
+            }
+            tbVar.f = true;
+        }
+        int i6 = fc.a;
+        float f4 = i5 == 2 ? 4.0f : 1.0f;
+        long jF = g83.f(j, f4);
+        int i7 = (int) (j & 4294967295L);
+        if (Float.intBitsToFloat(i7) != 0.0f) {
+            if (!vy0.g(vy0Var.d) || Float.intBitsToFloat(i7) >= 0.0f) {
+                j2 = 4294967295L;
+                if (vy0.g(vy0Var.e) && Float.intBitsToFloat(i7) > 0.0f) {
+                    float f5 = tbVar.f(jF);
+                    if (!vy0.g(vy0Var.e)) {
+                        vy0Var.b().finish();
+                    }
+                    fIntBitsToFloat = f5 == Float.intBitsToFloat((int) (jF & 4294967295L)) ? Float.intBitsToFloat(i7) : f5 / f4;
+                }
+            } else {
+                float fI = tbVar.i(jF);
+                j2 = 4294967295L;
+                if (!vy0.g(vy0Var.d)) {
+                    vy0Var.e().finish();
+                }
+                fIntBitsToFloat = fI == Float.intBitsToFloat((int) (jF & 4294967295L)) ? Float.intBitsToFloat(i7) : fI / f4;
+            }
+            i2 = (int) (j >> 32);
+            if (Float.intBitsToFloat(i2) != 0.0f) {
+                fIntBitsToFloat2 = 0.0f;
+            } else if (!vy0.g(vy0Var.f) && Float.intBitsToFloat(i2) < 0.0f) {
+                fH = tbVar.g(jF);
+                if (!vy0.g(vy0Var.f)) {
+                    vy0Var.c().finish();
+                }
+                if (fH == Float.intBitsToFloat((int) (jF >> 32))) {
+                    fIntBitsToFloat2 = Float.intBitsToFloat(i2);
+                } else {
+                    fIntBitsToFloat2 = fH / f4;
+                }
+            } else if (vy0.g(vy0Var.g) || Float.intBitsToFloat(i2) <= 0.0f) {
+                fIntBitsToFloat2 = 0.0f;
+            } else {
+                fH = tbVar.h(jF);
+                if (!vy0.g(vy0Var.g)) {
+                    vy0Var.d().finish();
+                }
+                if (fH == Float.intBitsToFloat((int) (jF >> 32))) {
+                    fIntBitsToFloat2 = Float.intBitsToFloat(i2);
+                } else {
+                    fIntBitsToFloat2 = fH / f4;
+                }
+            }
+            jFloatToRawIntBits = (((long) Float.floatToRawIntBits(fIntBitsToFloat2)) << 32) | (((long) Float.floatToRawIntBits(fIntBitsToFloat)) & j2);
+            if (!g83.b(jFloatToRawIntBits, 0L)) {
+                tbVar.d();
+            }
+            jD = g83.d(j, jFloatToRawIntBits);
+            g74 g74Var3 = (g74) kl3Var.o;
+            long j3 = new g83(g74Var3.d(g74Var3.k, jD, g74Var3.j)).a;
+            jD2 = g83.d(jD, j3);
+            if ((Float.intBitsToFloat((int) (jD >> 32)) == 0.0f || Float.intBitsToFloat((int) (jD & j2)) != 0.0f) && ((Float.intBitsToFloat((int) (j3 >> 32)) != 0.0f || Float.intBitsToFloat((int) (j3 & j2)) != 0.0f) && (vy0.g(vy0Var.f) || vy0.g(vy0Var.d) || vy0.g(vy0Var.g) || vy0.g(vy0Var.e)))) {
+                tbVar.a();
+            }
+            if (i5 == 1) {
+                i3 = (int) (jD2 >> 32);
+                if (Float.intBitsToFloat(i3) > 0.5f) {
+                    tbVar.g(jD2);
+                } else {
+                    if (Float.intBitsToFloat(i3) < -0.5f) {
+                        tbVar.h(jD2);
+                    } else {
+                        z3 = false;
+                    }
+                    i4 = (int) (jD2 & j2);
+                    if (Float.intBitsToFloat(i4) > 0.5f) {
+                        tbVar.i(jD2);
+                    } else {
+                        if (Float.intBitsToFloat(i4) < -0.5f) {
+                            tbVar.f(jD2);
+                        } else {
+                            z4 = false;
+                        }
+                        if (!z3 || z4) {
+                            z = true;
+                        } else {
+                            z = false;
+                        }
+                    }
+                    z4 = true;
+                    if (z3) {
+                    }
+                    z = true;
+                }
+                z3 = true;
+                i4 = (int) (jD2 & j2);
+                if (Float.intBitsToFloat(i4) > 0.5f) {
+                    tbVar.i(jD2);
+                } else {
+                    if (Float.intBitsToFloat(i4) < -0.5f) {
+                        tbVar.f(jD2);
+                    } else {
+                        z4 = false;
+                    }
+                    if (z3) {
+                    }
+                    z = true;
+                }
+                z4 = true;
+                if (z3) {
+                }
+                z = true;
+            } else {
+                z = false;
+            }
+            if (!g83.b(jD, 0L)) {
+                if (vy0.f(vy0Var.f) || Float.intBitsToFloat(i2) >= 0.0f) {
+                    zF = false;
+                } else {
+                    EdgeEffect edgeEffectC = vy0Var.c();
+                    float fIntBitsToFloat6 = Float.intBitsToFloat(i2);
+                    if (edgeEffectC instanceof aj1) {
+                        aj1 aj1Var4 = (aj1) edgeEffectC;
+                        float f6 = aj1Var4.b + fIntBitsToFloat6;
+                        aj1Var4.b = f6;
+                        if (Math.abs(f6) > aj1Var4.a) {
+                            aj1Var4.onRelease();
+                        }
+                    } else {
+                        edgeEffectC.onRelease();
+                    }
+                    zF = vy0.f(vy0Var.f);
+                }
+                if (vy0.f(vy0Var.g) && Float.intBitsToFloat(i2) > 0.0f) {
+                    edgeEffectD = vy0Var.d();
+                    fIntBitsToFloat5 = Float.intBitsToFloat(i2);
+                    if (edgeEffectD instanceof aj1) {
+                        aj1Var3 = (aj1) edgeEffectD;
+                        f3 = aj1Var3.b + fIntBitsToFloat5;
+                        aj1Var3.b = f3;
+                        if (Math.abs(f3) > aj1Var3.a) {
+                            aj1Var3.onRelease();
+                        }
+                    } else {
+                        edgeEffectD.onRelease();
+                    }
+                    if (!zF || vy0.f(vy0Var.g)) {
+                        zF = true;
+                    } else {
+                        zF = false;
+                    }
+                }
+                if (vy0.f(vy0Var.d) && Float.intBitsToFloat(i7) < 0.0f) {
+                    edgeEffectE = vy0Var.e();
+                    fIntBitsToFloat4 = Float.intBitsToFloat(i7);
+                    if (edgeEffectE instanceof aj1) {
+                        aj1Var2 = (aj1) edgeEffectE;
+                        f2 = aj1Var2.b + fIntBitsToFloat4;
+                        aj1Var2.b = f2;
+                        if (Math.abs(f2) > aj1Var2.a) {
+                            aj1Var2.onRelease();
+                        }
+                    } else {
+                        edgeEffectE.onRelease();
+                    }
+                    if (!zF || vy0.f(vy0Var.d)) {
+                        zF = true;
+                    } else {
+                        zF = false;
+                    }
+                }
+                if (vy0.f(vy0Var.e) && Float.intBitsToFloat(i7) > 0.0f) {
+                    edgeEffectB = vy0Var.b();
+                    fIntBitsToFloat3 = Float.intBitsToFloat(i7);
+                    if (edgeEffectB instanceof aj1) {
+                        aj1Var = (aj1) edgeEffectB;
+                        f = aj1Var.b + fIntBitsToFloat3;
+                        aj1Var.b = f;
+                        if (Math.abs(f) > aj1Var.a) {
+                            aj1Var.onRelease();
+                        }
+                    } else {
+                        edgeEffectB.onRelease();
+                    }
+                    if (!zF || vy0.f(vy0Var.e)) {
+                        zF = true;
+                    } else {
+                        zF = false;
+                    }
+                }
+                if (!zF || z) {
+                    z2 = true;
+                } else {
+                    z2 = false;
+                }
+                z = z2;
+            }
+            if (z) {
+                tbVar.d();
+            }
+            return g83.e(jFloatToRawIntBits, j3);
+        }
+        j2 = 4294967295L;
+        fIntBitsToFloat = 0.0f;
+        i2 = (int) (j >> 32);
+        if (Float.intBitsToFloat(i2) != 0.0f) {
+            fIntBitsToFloat2 = 0.0f;
+        } else if (!vy0.g(vy0Var.f)) {
+            if (vy0.g(vy0Var.g)) {
+                fIntBitsToFloat2 = 0.0f;
+            } else {
+                fIntBitsToFloat2 = 0.0f;
+            }
+        } else if (vy0.g(vy0Var.g)) {
+            fIntBitsToFloat2 = 0.0f;
+        } else {
+            fIntBitsToFloat2 = 0.0f;
+        }
+        jFloatToRawIntBits = (((long) Float.floatToRawIntBits(fIntBitsToFloat2)) << 32) | (((long) Float.floatToRawIntBits(fIntBitsToFloat)) & j2);
+        if (!g83.b(jFloatToRawIntBits, 0L)) {
+            tbVar.d();
+        }
+        jD = g83.d(j, jFloatToRawIntBits);
+        g74 g74Var4 = (g74) kl3Var.o;
+        long j4 = new g83(g74Var4.d(g74Var4.k, jD, g74Var4.j)).a;
+        jD2 = g83.d(jD, j4);
+        if (Float.intBitsToFloat((int) (jD >> 32)) == 0.0f) {
+            tbVar.a();
+        } else {
+            tbVar.a();
+        }
+        if (i5 == 1) {
+            i3 = (int) (jD2 >> 32);
+            if (Float.intBitsToFloat(i3) > 0.5f) {
+                tbVar.g(jD2);
+            } else {
+                if (Float.intBitsToFloat(i3) < -0.5f) {
+                    tbVar.h(jD2);
+                } else {
+                    z3 = false;
+                }
+                i4 = (int) (jD2 & j2);
+                if (Float.intBitsToFloat(i4) > 0.5f) {
+                    tbVar.i(jD2);
+                } else {
+                    if (Float.intBitsToFloat(i4) < -0.5f) {
+                        tbVar.f(jD2);
+                    } else {
+                        z4 = false;
+                    }
+                    if (z3) {
+                    }
+                    z = true;
+                }
+                z4 = true;
+                if (z3) {
+                }
+                z = true;
+            }
+            z3 = true;
+            i4 = (int) (jD2 & j2);
+            if (Float.intBitsToFloat(i4) > 0.5f) {
+                tbVar.i(jD2);
+            } else {
+                if (Float.intBitsToFloat(i4) < -0.5f) {
+                    tbVar.f(jD2);
+                } else {
+                    z4 = false;
+                }
+                if (z3) {
+                }
+                z = true;
+            }
+            z4 = true;
+            if (z3) {
+            }
+            z = true;
+        } else {
+            z = false;
+        }
+        if (!g83.b(jD, 0L)) {
+            if (vy0.f(vy0Var.f)) {
+                zF = false;
+            } else {
+                zF = false;
+            }
+            if (vy0.f(vy0Var.g)) {
+                edgeEffectD = vy0Var.d();
+                fIntBitsToFloat5 = Float.intBitsToFloat(i2);
+                if (edgeEffectD instanceof aj1) {
+                    aj1Var3 = (aj1) edgeEffectD;
+                    f3 = aj1Var3.b + fIntBitsToFloat5;
+                    aj1Var3.b = f3;
+                    if (Math.abs(f3) > aj1Var3.a) {
+                        aj1Var3.onRelease();
+                    }
+                } else {
+                    edgeEffectD.onRelease();
+                }
+                if (zF) {
+                    zF = true;
+                } else {
+                    zF = true;
+                }
+            }
+            if (vy0.f(vy0Var.d)) {
+                edgeEffectE = vy0Var.e();
+                fIntBitsToFloat4 = Float.intBitsToFloat(i7);
+                if (edgeEffectE instanceof aj1) {
+                    aj1Var2 = (aj1) edgeEffectE;
+                    f2 = aj1Var2.b + fIntBitsToFloat4;
+                    aj1Var2.b = f2;
+                    if (Math.abs(f2) > aj1Var2.a) {
+                        aj1Var2.onRelease();
+                    }
+                } else {
+                    edgeEffectE.onRelease();
+                }
+                if (zF) {
+                    zF = true;
+                } else {
+                    zF = true;
+                }
+            }
+            if (vy0.f(vy0Var.e)) {
+                edgeEffectB = vy0Var.b();
+                fIntBitsToFloat3 = Float.intBitsToFloat(i7);
+                if (edgeEffectB instanceof aj1) {
+                    aj1Var = (aj1) edgeEffectB;
+                    f = aj1Var.b + fIntBitsToFloat3;
+                    aj1Var.b = f;
+                    if (Math.abs(f) > aj1Var.a) {
+                        aj1Var.onRelease();
+                    }
+                } else {
+                    edgeEffectB.onRelease();
+                }
+                if (zF) {
+                    zF = true;
+                } else {
+                    zF = true;
+                }
+            }
+            if (zF) {
+                z2 = true;
+            } else {
+                z2 = true;
+            }
+            z = z2;
+        }
+        if (z) {
+            tbVar.d();
+        }
+        return g83.e(jFloatToRawIntBits, j4);
     }
 }

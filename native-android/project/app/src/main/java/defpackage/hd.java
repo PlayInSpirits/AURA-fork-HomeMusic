@@ -7,8 +7,8 @@ import android.app.Application;
 public abstract class hd extends x65 {
     public final Application b;
 
-    public hd(Application r1) {
-        r1.getClass();
-        this.b = r1;
+    public hd(Application application) {
+        application.getClass();
+        this.b = application;
     }
 }

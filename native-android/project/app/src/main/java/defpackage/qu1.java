@@ -9,11 +9,11 @@ public interface qu1 extends IInterface {
 
     boolean Y();
 
-    void b0(lu1 r1);
+    void b0(lu1 lu1Var);
 
     ei3 g();
 
     int h();
 
-    void l0(lu1 r1);
+    void l0(lu1 lu1Var);
 }

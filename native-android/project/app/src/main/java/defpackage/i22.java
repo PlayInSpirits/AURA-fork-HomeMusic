@@ -7,13 +7,14 @@ import java.util.Iterator;
 public final class i22 extends yw4 {
     public final /* synthetic */ eg1 o;
 
-    public i22(Iterator r1, eg1 r2) {
-        this.o = r2;
-        super(r1);
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public i22(Iterator it, eg1 eg1Var) {
+        super(it);
+        this.o = eg1Var;
     }
 
     @Override // defpackage.yw4
-    public final Object a(Object r1) {
-        return this.o.mo77apply(r1);
+    public final Object a(Object obj) {
+        return this.o.mo77apply(obj);
     }
 }

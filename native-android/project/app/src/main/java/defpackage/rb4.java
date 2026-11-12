@@ -9,27 +9,25 @@ public final /* synthetic */ class rb4 implements Runnable {
     public final /* synthetic */ int n;
     public final /* synthetic */ Preference o;
 
-    public /* synthetic */ rb4(Preference r1, int r2) {
-        this.n = r2;
-        this.o = r1;
+    public /* synthetic */ rb4(Preference preference, int i) {
+        this.n = i;
+        this.o = preference;
     }
 
     @Override // java.lang.Runnable
     public final void run() {
-        int r0 = this.n;
-        Preference r2 = this.o;
-        switch(r0) {
-            case 0: goto L8;
-            case 1: goto L6;
-            default: goto L4;
-        };
-    L4:
-        ((SwitchPreference) r2).E(false);
-        return;
-    L6:
-        ((SwitchPreference) r2).E(false);
-        return;
-    L8:
-        ((SwitchPreference) r2).E(false);
+        int i = this.n;
+        Preference preference = this.o;
+        switch (i) {
+            case 0:
+                ((SwitchPreference) preference).E(false);
+                break;
+            case 1:
+                ((SwitchPreference) preference).E(false);
+                break;
+            default:
+                ((SwitchPreference) preference).E(false);
+                break;
+        }
     }
 }

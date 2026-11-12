@@ -14,42 +14,38 @@ public final class pa1 {
     public final String f;
     public final String g;
 
-    public pa1(String r1, List r2, String r3, String r4, String r5, String r6) {
-        r1.getClass();
-        this.a = r1;
-        r3.getClass();
-        this.b = r3;
-        this.c = r4;
-        r2.getClass();
-        this.d = r2;
-        this.e = r5;
-        this.f = r6;
-        this.g = r1 + "-" + r3 + "-" + r4 + "-" + r5 + "-" + r6;
+    public pa1(String str, List list, String str2, String str3, String str4, String str5) {
+        str.getClass();
+        this.a = str;
+        str2.getClass();
+        this.b = str2;
+        this.c = str3;
+        list.getClass();
+        this.d = list;
+        this.e = str4;
+        this.f = str5;
+        this.g = str + "-" + str2 + "-" + str3 + "-" + str4 + "-" + str5;
     }
 
     public final String toString() {
-        StringBuilder r0 = new StringBuilder();
-        r0.append("FontRequest {mProviderAuthority: " + this.a + ", mProviderPackage: " + this.b + ", mQuery: " + this.c + ", mSystemFont: " + this.e + ", mVariationSettings: " + this.f + ", mCertificates:");
-        int r2 = 0;
-    L3:
-        List r3 = this.d;
-        if (r2 >= r3.size()) goto L10;
-        r0.append(" [");
-        List r4 = (List) r3.get(r2);
-        int r5 = 0;
-    L7:
-        if (r5 >= r4.size()) goto L9;
-        r0.append(" \"");
-        r0.append(Base64.encodeToString((byte[]) r4.get(r5), 0));
-        r0.append("\"");
-        r5 = r5 + 1;
-        goto L7
-    L9:
-        r0.append(" ]");
-        r2 = r2 + 1;
-        goto L3
-    L10:
-        r0.append("}mCertificatesArray: 0");
-        return r0.toString();
+        StringBuilder sb = new StringBuilder();
+        sb.append("FontRequest {mProviderAuthority: " + this.a + ", mProviderPackage: " + this.b + ", mQuery: " + this.c + ", mSystemFont: " + this.e + ", mVariationSettings: " + this.f + ", mCertificates:");
+        int i = 0;
+        while (true) {
+            List list = this.d;
+            if (i >= list.size()) {
+                sb.append("}mCertificatesArray: 0");
+                return sb.toString();
+            }
+            sb.append(" [");
+            List list2 = (List) list.get(i);
+            for (int i2 = 0; i2 < list2.size(); i2++) {
+                sb.append(" \"");
+                sb.append(Base64.encodeToString((byte[]) list2.get(i2), 0));
+                sb.append("\"");
+            }
+            sb.append(" ]");
+            i++;
+        }
     }
 }

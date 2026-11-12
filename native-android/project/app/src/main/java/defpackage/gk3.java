@@ -6,37 +6,36 @@ public final class gk3 implements oi3 {
     public final /* synthetic */ hk3 n;
     public final /* synthetic */ bj2 o;
 
-    public gk3(hk3 r1, bj2 r2) {
-        this.n = r1;
-        this.o = r2;
+    public gk3(hk3 hk3Var, bj2 bj2Var) {
+        this.n = hk3Var;
+        this.o = bj2Var;
     }
 
     @Override // defpackage.oi3
-    public final void B(qi3 r3, ni3 r4) {
-        r3.getClass();
-        w71 r5 = r4.a;
-        if (r5.a(new int[]{0, 9, 8}) == false) goto L6;
-        this.n.i0(this.o);
-        return;
+    public final void B(qi3 qi3Var, ni3 ni3Var) {
+        qi3Var.getClass();
+        if (ni3Var.a.a(0, 9, 8)) {
+            this.n.i0(this.o);
+        }
     }
 
     @Override // defpackage.oi3
-    public final void F(do2 r2) {
-        r2.getClass();
-        int r0 = this.o.o0();
-        hk3 r1 = this.n;
-        r1.m0(r2, r0);
-        r1.l0(false);
+    public final void F(do2 do2Var) {
+        do2Var.getClass();
+        int iO0 = this.o.o0();
+        hk3 hk3Var = this.n;
+        hk3Var.m0(do2Var, iO0);
+        hk3Var.l0(false);
     }
 
     @Override // defpackage.oi3
-    public final void t(int r1, gn2 r2) {
-        bj2 r3 = this.o;
-        do2 r4 = r3.K0();
-        r4.getClass();
-        int r5 = r3.o0();
-        hk3 r0 = this.n;
-        r0.m0(r4, r5);
-        r0.l0(false);
+    public final void t(int i, gn2 gn2Var) {
+        bj2 bj2Var = this.o;
+        do2 do2VarK0 = bj2Var.K0();
+        do2VarK0.getClass();
+        int iO0 = bj2Var.o0();
+        hk3 hk3Var = this.n;
+        hk3Var.m0(do2VarK0, iO0);
+        hk3Var.l0(false);
     }
 }

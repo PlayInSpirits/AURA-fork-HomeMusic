@@ -2,6 +2,7 @@ package defpackage;
 
 import android.view.View;
 import com.google.android.material.sidesheet.SideSheetBehavior;
+import org.chromium.support_lib_boundary.WebSettingsBoundaryInterface;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
@@ -10,76 +11,63 @@ public final /* synthetic */ class ul implements Runnable {
     public final /* synthetic */ int o;
     public final /* synthetic */ Object p;
 
-    public /* synthetic */ ul(q41 r1, int r2, boolean r3) {
+    public /* synthetic */ ul(q41 q41Var, int i, boolean z) {
         this.n = 3;
-        this.p = r1;
-        this.o = r2;
+        this.p = q41Var;
+        this.o = i;
     }
 
     @Override // java.lang.Runnable
     public final void run() {
-        int r0 = this.n;
-        int r1 = 1;
-        int r2 = this.o;
-        Object r5 = this.p;
-        switch(r0) {
-            case 0: goto L24;
-            case 1: goto L22;
-            case 2: goto L20;
-            case 3: goto L18;
-            case 4: goto L10;
-            case 5: goto L8;
-            default: goto L4;
-        };
-    L4:
-        SideSheetBehavior r6 = (SideSheetBehavior) r5;
-        View r3 = (View) r6.C.get();
-        if (r3 == null) goto L26;
-        r6.z(r3, r2, false);
-        return;
-    L26:
-        return;
-    L8:
-        ((au0) r5).M(r2);
-        return;
-    L10:
-        bm2 r7 = (bm2) r5;
-        qi r4 = r7.k;
-        r4.remove(Integer.valueOf(r2));
-        r7.l.delete(r2);
-        cb4 r8 = r7.n;
-        if (r8 != null) goto L13;
-        return;
-    L13:
-        if (r8.a.f() < 5) goto L15;
-        return;
-    L15:
-        if (r4.isEmpty() == false) goto L29;
-        r7.m.postDelayed(new sl2(r7, r1), 500);
-        return;
-    L29:
-        return;
-    L18:
-        q41 r9 = (q41) r5;
-        nj0 r10 = r9.K;
-        int r11 = ((kq) r9.n[r2].e).o;
-        r10.b0(r10.a0(), 1033, new oi0(13));
-        return;
-    L20:
-        ((ft0) r5).n.d(r2, 1, null);
-        return;
-    L22:
-        qm r12 = (qm) ((xc5) r5).p;
-        String r13 = f35.a;
-        r12.b(r2);
-        return;
-    L24:
-        ((vl) r5).b.onAudioFocusChange(r2);
+        int i = this.n;
+        int i2 = 1;
+        int i3 = this.o;
+        Object obj = this.p;
+        switch (i) {
+            case 0:
+                ((vl) obj).b.onAudioFocusChange(i3);
+                break;
+            case 1:
+                qm qmVar = (qm) ((xc5) obj).p;
+                String str = f35.a;
+                qmVar.b(i3);
+                break;
+            case 2:
+                ((ft0) obj).n.d(i3, 1, null);
+                break;
+            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
+                q41 q41Var = (q41) obj;
+                nj0 nj0Var = q41Var.K;
+                int i4 = ((kq) q41Var.n[i3].e).o;
+                nj0Var.b0(nj0Var.a0(), 1033, new oi0(13));
+                break;
+            case 4:
+                bm2 bm2Var = (bm2) obj;
+                qi qiVar = bm2Var.k;
+                qiVar.remove(Integer.valueOf(i3));
+                bm2Var.l.delete(i3);
+                cb4 cb4Var = bm2Var.n;
+                if (cb4Var != null && cb4Var.a.f() < 5 && qiVar.isEmpty()) {
+                    bm2Var.m.postDelayed(new sl2(bm2Var, i2), 500L);
+                    break;
+                }
+                break;
+            case 5:
+                ((au0) obj).M(i3);
+                break;
+            default:
+                SideSheetBehavior sideSheetBehavior = (SideSheetBehavior) obj;
+                View view = (View) sideSheetBehavior.C.get();
+                if (view != null) {
+                    sideSheetBehavior.z(view, i3, false);
+                }
+                break;
+        }
     }
 
-    public /* synthetic */ ul(int r1, int r2, Object r3) {
-        this.n = r2;
-        this.p = r3;
-        this.o = r1;
+    public /* synthetic */ ul(int i, int i2, Object obj) {
+        this.n = i2;
+        this.p = obj;
+        this.o = i;
     }
 }

@@ -21,55 +21,37 @@ public final class ql {
     public il i;
     public boolean j;
 
-    public ql(Context r2, cn r3, il r4, AudioDeviceInfo r5) {
-        Context r6 = r2.getApplicationContext();
-        this.a = r6;
-        this.b = r3;
-        this.i = r4;
-        this.h = r5;
-        pl r7 = null;
-        Handler r8 = f35.q(null);
-        this.c = r8;
+    public ql(Context context, cn cnVar, il ilVar, AudioDeviceInfo audioDeviceInfo) {
+        Context applicationContext = context.getApplicationContext();
+        this.a = applicationContext;
+        this.b = cnVar;
+        this.i = ilVar;
+        this.h = audioDeviceInfo;
+        Handler handlerQ = f35.q(null);
+        this.c = handlerQ;
         this.d = new ol(this);
         this.e = new v9(2, this);
-        nl r9 = nl.c;
-        String r10 = Build.MANUFACTURER;
-        if (r10.equals("Amazon") == false) goto L5;
-    L8:
-        Uri r11 = Settings.Global.getUriFor("external_surround_sound_enabled");
-    L9:
-        if (r11 == null) goto L11;
-        r7 = new pl(this, r8, r6.getContentResolver(), r11);
-    L11:
-        this.f = r7;
-        return;
-    L5:
-        if (r10.equals("Xiaomi") == true) goto L8;
-        r11 = null;
-        goto L9
+        nl nlVar = nl.c;
+        String str = Build.MANUFACTURER;
+        Uri uriFor = (str.equals("Amazon") || str.equals("Xiaomi")) ? Settings.Global.getUriFor("external_surround_sound_enabled") : null;
+        this.f = uriFor != null ? new pl(this, handlerQ, applicationContext.getContentResolver(), uriFor) : null;
     }
 
-    public final void a(nl r2) {
-        if (this.j == true) goto L5;
-        return;
-    L5:
-        if (r2.equals(this.g) == true) goto L15;
-        this.g = r2;
-        dn r1 = (dn) this.b.o;
-        r1.f();
-        nl r0 = r1.g;
-        if (r0 != null) goto L9;
-        return;
-    L9:
-        if (r2.equals(r0) == true) goto L17;
-        r1.g = r2;
-        tc2 r3 = r1.e;
-        if (r3 == null) goto L18;
-        r3.f(-1, new kf2(9));
-        return;
-    L18:
-        return;
-    L17:
-        return;
+    public final void a(nl nlVar) {
+        if (!this.j || nlVar.equals(this.g)) {
+            return;
+        }
+        this.g = nlVar;
+        dn dnVar = (dn) this.b.o;
+        dnVar.f();
+        nl nlVar2 = dnVar.g;
+        if (nlVar2 == null || nlVar.equals(nlVar2)) {
+            return;
+        }
+        dnVar.g = nlVar;
+        tc2 tc2Var = dnVar.e;
+        if (tc2Var != null) {
+            tc2Var.f(-1, new kf2(9));
+        }
     }
 }

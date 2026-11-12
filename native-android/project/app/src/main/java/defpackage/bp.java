@@ -9,8 +9,8 @@ public final class bp {
     public final nj0 b;
     public boolean c;
 
-    public bp(Handler r1, nj0 r2) {
-        this.a = r1;
-        this.b = r2;
+    public bp(Handler handler, nj0 nj0Var) {
+        this.a = handler;
+        this.b = nj0Var;
     }
 }

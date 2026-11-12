@@ -9,9 +9,9 @@ import android.os.Looper;
 public final class kj2 extends bm2 {
     public final bj2 J;
 
-    public kj2(Context r1, bj2 r2, cb4 r3, Bundle r4, Looper r5) {
-        super(r1, r2, r3, r4, r5);
-        this.J = r2;
+    public kj2(Context context, bj2 bj2Var, cb4 cb4Var, Bundle bundle, Looper looper) {
+        super(context, bj2Var, cb4Var, bundle, looper);
+        this.J = bj2Var;
     }
 
     @Override // defpackage.bm2

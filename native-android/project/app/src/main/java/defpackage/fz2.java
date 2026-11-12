@@ -8,19 +8,19 @@ import java.util.HashSet;
 public final class fz2 implements DialogInterface.OnMultiChoiceClickListener {
     public final /* synthetic */ gz2 a;
 
-    public fz2(gz2 r1) {
-        this.a = r1;
+    public fz2(gz2 gz2Var) {
+        this.a = gz2Var;
     }
 
     @Override // android.content.DialogInterface.OnMultiChoiceClickListener
-    public final void onClick(DialogInterface r2, int r3, boolean r4) {
-        gz2 r1 = this.a;
-        HashSet r5 = r1.J0;
-        boolean r0 = r1.K0;
-        if (r4 == false) goto L6;
-        r1.K0 = r5.add(r1.M0[r3].toString()) | r0;
-        return;
-    L6:
-        r1.K0 = r5.remove(r1.M0[r3].toString()) | r0;
+    public final void onClick(DialogInterface dialogInterface, int i, boolean z) {
+        gz2 gz2Var = this.a;
+        HashSet hashSet = gz2Var.J0;
+        boolean z2 = gz2Var.K0;
+        if (z) {
+            gz2Var.K0 = hashSet.add(gz2Var.M0[i].toString()) | z2;
+        } else {
+            gz2Var.K0 = hashSet.remove(gz2Var.M0[i].toString()) | z2;
+        }
     }
 }

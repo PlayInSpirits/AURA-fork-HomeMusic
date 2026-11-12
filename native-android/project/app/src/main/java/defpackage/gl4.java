@@ -5,8 +5,8 @@ package defpackage;
 public final class gl4 {
     public final rc5 a;
 
-    public gl4(rc5 r1) {
-        r1.getClass();
-        this.a = r1;
+    public gl4(rc5 rc5Var) {
+        rc5Var.getClass();
+        this.a = rc5Var;
     }
 }

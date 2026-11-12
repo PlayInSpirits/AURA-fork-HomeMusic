@@ -8,26 +8,12 @@ import android.telephony.TelephonyDisplayInfo;
 public final class t53 extends TelephonyCallback implements TelephonyCallback.DisplayInfoListener {
     public final v53 a;
 
-    public t53(v53 r1) {
-        this.a = r1;
+    public t53(v53 v53Var) {
+        this.a = v53Var;
     }
 
-    public final void onDisplayInfoChanged(TelephonyDisplayInfo r3) {
-        int r4 = xq2.d(r3);
-        int r1 = 5;
-        if (r4 != 3) goto L5;
-    L9:
-        boolean r5 = true;
-    L10:
-        if (r5 == false) goto L12;
-        r1 = 10;
-    L12:
-        this.a.c(r1);
-        return;
-    L5:
-        if (r4 == 4) goto L9;
-        if (r4 == 5) goto L9;
-        r5 = false;
-        goto L10
+    public final void onDisplayInfoChanged(TelephonyDisplayInfo telephonyDisplayInfo) {
+        int overrideNetworkType = telephonyDisplayInfo.getOverrideNetworkType();
+        this.a.c(overrideNetworkType == 3 || overrideNetworkType == 4 || overrideNetworkType == 5 ? 10 : 5);
     }
 }

@@ -7,22 +7,22 @@ import android.graphics.drawable.Drawable;
 public final class nd implements Drawable.Callback {
     public final /* synthetic */ qd n;
 
-    public nd(qd r1) {
-        this.n = r1;
+    public nd(qd qdVar) {
+        this.n = qdVar;
     }
 
     @Override // android.graphics.drawable.Drawable.Callback
-    public final void invalidateDrawable(Drawable r1) {
+    public final void invalidateDrawable(Drawable drawable) {
         this.n.invalidateSelf();
     }
 
     @Override // android.graphics.drawable.Drawable.Callback
-    public final void scheduleDrawable(Drawable r1, Runnable r2, long r3) {
-        this.n.scheduleSelf(r2, r3);
+    public final void scheduleDrawable(Drawable drawable, Runnable runnable, long j) {
+        this.n.scheduleSelf(runnable, j);
     }
 
     @Override // android.graphics.drawable.Drawable.Callback
-    public final void unscheduleDrawable(Drawable r1, Runnable r2) {
-        this.n.unscheduleSelf(r2);
+    public final void unscheduleDrawable(Drawable drawable, Runnable runnable) {
+        this.n.unscheduleSelf(runnable);
     }
 }

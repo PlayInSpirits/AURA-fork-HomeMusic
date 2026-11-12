@@ -6,32 +6,25 @@ public final class rc5 {
     public final String a;
     public final int b;
 
-    public rc5(int r1, String r2) {
-        r2.getClass();
-        this.a = r2;
-        this.b = r1;
+    public rc5(int i, String str) {
+        str.getClass();
+        this.a = str;
+        this.b = i;
     }
 
-    public final boolean equals(Object r5) {
-        if (this != r5) goto L6;
-        return true;
-    L6:
-        if ((r5 instanceof rc5) == true) goto L8;
-        return false;
-    L8:
-        rc5 r6 = (rc5) r5;
-        if (h12.c(this.a, r6.a) == true) goto L12;
-        return false;
-    L12:
-        if (this.b == r6.b) goto L14;
-        return false;
-    L14:
-        return true;
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof rc5)) {
+            return false;
+        }
+        rc5 rc5Var = (rc5) obj;
+        return h12.c(this.a, rc5Var.a) && this.b == rc5Var.b;
     }
 
     public final int hashCode() {
-        int r0 = this.a.hashCode() * 31;
-        return Integer.hashCode(this.b) + r0;
+        return Integer.hashCode(this.b) + (this.a.hashCode() * 31);
     }
 
     public final String toString() {

@@ -3,68 +3,62 @@ package defpackage;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class vv extends b1 {
-    public final /* synthetic */ int p;
+    public final /* synthetic */ int p = 1;
     public final Object q;
 
-    public vv(Object[] r2, int r3, int r4) {
-        this.p = 0;
-        super(r3, r4);
-        this.q = r2;
+    public vv(Object[] objArr, int i, int i2) {
+        super(i, i2);
+        this.q = objArr;
     }
 
     @Override // java.util.ListIterator, java.util.Iterator
     public final Object next() {
-        int r0 = this.p;
-        Object r2 = this.q;
-        switch(r0) {
-            case 0: goto L10;
-            default: goto L5;
-        };
-    L5:
-        if (hasNext() == false) goto L7;
-        this.n++;
-        return r2;
-    L7:
-        tb4.k();
-        return null;
-    L10:
-        if (hasNext() == false) goto L12;
-        int r1 = this.n;
-        this.n = r1 + 1;
-        return ((Object[]) r2)[r1];
-    L12:
-        tb4.k();
-        return null;
+        int i = this.p;
+        Object obj = this.q;
+        switch (i) {
+            case 0:
+                if (!hasNext()) {
+                    tb4.k();
+                    return null;
+                }
+                int i2 = this.n;
+                this.n = i2 + 1;
+                return ((Object[]) obj)[i2];
+            default:
+                if (hasNext()) {
+                    this.n++;
+                    return obj;
+                }
+                tb4.k();
+                return null;
+        }
     }
 
     @Override // java.util.ListIterator
     public final Object previous() {
-        int r0 = this.p;
-        Object r2 = this.q;
-        switch(r0) {
-            case 0: goto L10;
-            default: goto L5;
-        };
-    L5:
-        if (hasPrevious() == false) goto L7;
-        this.n--;
-        return r2;
-    L7:
-        tb4.k();
-        return null;
-    L10:
-        if (hasPrevious() == false) goto L12;
-        int r1 = this.n - 1;
-        this.n = r1;
-        return ((Object[]) r2)[r1];
-    L12:
-        tb4.k();
-        return null;
+        int i = this.p;
+        Object obj = this.q;
+        switch (i) {
+            case 0:
+                if (!hasPrevious()) {
+                    tb4.k();
+                    return null;
+                }
+                int i2 = this.n - 1;
+                this.n = i2;
+                return ((Object[]) obj)[i2];
+            default:
+                if (hasPrevious()) {
+                    this.n--;
+                    return obj;
+                }
+                tb4.k();
+                return null;
+        }
     }
 
-    public vv(int r2, Object r3) {
-        this.p = 1;
-        super(r2, 1);
-        this.q = r3;
+    public vv(int i, Object obj) {
+        super(i, 1);
+        this.q = obj;
     }
 }

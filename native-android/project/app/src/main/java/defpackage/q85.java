@@ -7,20 +7,21 @@ import android.media.VolumeProvider;
 public final class q85 extends VolumeProvider {
     public final /* synthetic */ is2 a;
 
-    public q85(is2 r1, int r2, int r3, int r4, String r5) {
-        this.a = r1;
-        super(r2, r3, r4, r5);
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public q85(is2 is2Var, int i, int i2, int i3, String str) {
+        super(i, i2, i3, str);
+        this.a = is2Var;
     }
 
     @Override // android.media.VolumeProvider
-    public final void onAdjustVolume(int r4) {
-        is2 r3 = this.a;
-        f35.W(r3.f, new hs2(r3.g, r4, 1));
+    public final void onAdjustVolume(int i) {
+        is2 is2Var = this.a;
+        f35.W(is2Var.f, new hs2(is2Var.g, i, 1));
     }
 
     @Override // android.media.VolumeProvider
-    public final void onSetVolumeTo(int r4) {
-        is2 r3 = this.a;
-        f35.W(r3.f, new hs2(r3.g, r4, 0));
+    public final void onSetVolumeTo(int i) {
+        is2 is2Var = this.a;
+        f35.W(is2Var.f, new hs2(is2Var.g, i, 0));
     }
 }

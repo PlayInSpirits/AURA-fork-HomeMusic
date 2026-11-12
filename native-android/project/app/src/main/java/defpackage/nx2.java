@@ -12,34 +12,33 @@ public final class nx2 extends uo implements ScheduledFuture, ic2, Future {
     public final u0 u;
     public final ScheduledFuture v;
 
-    public nx2(u0 r2, ScheduledFuture r3) {
+    public nx2(u0 u0Var, ScheduledFuture scheduledFuture) {
         super(10);
-        this.u = r2;
-        this.v = r3;
+        this.u = u0Var;
+        this.v = scheduledFuture;
     }
 
-    public final boolean W(boolean r1) {
-        return this.u.cancel(r1);
+    public final boolean W(boolean z) {
+        return this.u.cancel(z);
     }
 
     @Override // java.util.concurrent.Future
-    public final boolean cancel(boolean r2) {
-        boolean r0 = W(r2);
-        if (r0 == false) goto L5;
-        this.v.cancel(r2);
-    L5:
-        return r0;
+    public final boolean cancel(boolean z) {
+        boolean zW = W(z);
+        if (zW) {
+            this.v.cancel(z);
+        }
+        return zW;
     }
 
     @Override // java.lang.Comparable
-    public final int compareTo(Delayed r1) {
-        ScheduledFuture r0 = this.v;
-        return r0.compareTo(r1);
+    public final int compareTo(Delayed delayed) {
+        return this.v.compareTo(delayed);
     }
 
     @Override // defpackage.ic2
-    public final void f(Runnable r1, Executor r2) {
-        this.u.f(r1, r2);
+    public final void f(Runnable runnable, Executor executor) {
+        this.u.f(runnable, executor);
     }
 
     @Override // java.util.concurrent.Future
@@ -48,8 +47,8 @@ public final class nx2 extends uo implements ScheduledFuture, ic2, Future {
     }
 
     @Override // java.util.concurrent.Delayed
-    public final long getDelay(TimeUnit r1) {
-        return this.v.getDelay(r1);
+    public final long getDelay(TimeUnit timeUnit) {
+        return this.v.getDelay(timeUnit);
     }
 
     @Override // java.util.concurrent.Future
@@ -68,7 +67,7 @@ public final class nx2 extends uo implements ScheduledFuture, ic2, Future {
     }
 
     @Override // java.util.concurrent.Future
-    public final Object get(long r1, TimeUnit r3) {
-        return this.u.get(r1, r3);
+    public final Object get(long j, TimeUnit timeUnit) {
+        return this.u.get(j, timeUnit);
     }
 }

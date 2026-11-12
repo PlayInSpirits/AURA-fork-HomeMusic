@@ -7,9 +7,9 @@ import kotlinx.coroutines.TimeoutCancellationException;
 public final class gu4 extends e64 implements Runnable {
     public final long t;
 
-    public gu4(long r2, wd0 r4) {
-        super(r4, r4.getContext());
-        this.t = r2;
+    public gu4(long j, wd0 wd0Var) {
+        super(wd0Var, wd0Var.getContext());
+        this.t = j;
     }
 
     @Override // defpackage.a32

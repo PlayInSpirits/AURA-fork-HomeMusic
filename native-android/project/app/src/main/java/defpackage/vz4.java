@@ -9,24 +9,24 @@ public final class vz4 {
     public final Type[] a;
     public final boolean b;
 
-    public vz4(Type[] r1, boolean r2) {
-        this.a = r1;
-        this.b = r2;
+    public vz4(Type[] typeArr, boolean z) {
+        this.a = typeArr;
+        this.b = z;
     }
 
-    public final boolean a(Type r6) {
-        Type[] r0 = this.a;
-        int r1 = r0.length;
-        int r2 = 0;
-    L3:
-        boolean r3 = this.b;
-        if (r2 >= r1) goto L10;
-        if (TypeToken.of(r0[r2]).isSubtypeOf(r6) == r3) goto L7;
-        r2 = r2 + 1;
-        goto L3
-    L7:
-        return r3;
-    L10:
-        return !r3;
+    public final boolean a(Type type) {
+        Type[] typeArr = this.a;
+        int length = typeArr.length;
+        int i = 0;
+        while (true) {
+            boolean z = this.b;
+            if (i >= length) {
+                return !z;
+            }
+            if (TypeToken.of(typeArr[i]).isSubtypeOf(type) == z) {
+                return z;
+            }
+            i++;
+        }
     }
 }

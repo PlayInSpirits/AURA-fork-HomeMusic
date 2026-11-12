@@ -8,31 +8,24 @@ public final class k30 {
     public final int a;
     public final Method b;
 
-    public k30(Method r1, int r2) {
-        this.a = r2;
-        this.b = r1;
-        r1.setAccessible(true);
+    public k30(Method method, int i) {
+        this.a = i;
+        this.b = method;
+        method.setAccessible(true);
     }
 
-    public final boolean equals(Object r3) {
-        if (this != r3) goto L5;
-        return true;
-    L5:
-        if ((r3 instanceof k30) == false) goto L17;
-        k30 r4 = (k30) r3;
-        if (this.a == r4.a) goto L10;
-        return false;
-    L10:
-        if (this.b.getName().equals(r4.b.getName()) == false) goto L16;
-        return true;
-    L16:
-        return false;
-    L17:
-        return false;
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof k30)) {
+            return false;
+        }
+        k30 k30Var = (k30) obj;
+        return this.a == k30Var.a && this.b.getName().equals(k30Var.b.getName());
     }
 
     public final int hashCode() {
-        int r0 = this.a * 31;
-        return this.b.getName().hashCode() + r0;
+        return this.b.getName().hashCode() + (this.a * 31);
     }
 }

@@ -3,7 +3,7 @@ package defpackage;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class h85 {
-    public static final h85 k = null;
+    public static final h85 k = a(50.0d);
     public final double a;
     public final double b;
     public final double c;
@@ -15,63 +15,57 @@ public final class h85 {
     public final double i;
     public final double j;
 
-    static {
-        k = a(50.0d);
+    public h85(double d, double d2, double d3, double d4, double d5, double d6, double[] dArr, double d7, double d8, double d9) {
+        this.f = d;
+        this.a = d2;
+        this.b = d3;
+        this.c = d4;
+        this.d = d5;
+        this.e = d6;
+        this.g = dArr;
+        this.h = d7;
+        this.i = d8;
+        this.j = d9;
     }
 
-    public h85(double r1, double r3, double r5, double r7, double r9, double r11, double[] r13, double r14, double r16, double r18) {
-        this.f = r1;
-        this.a = r3;
-        this.b = r5;
-        this.c = r7;
-        this.d = r9;
-        this.e = r11;
-        this.g = r13;
-        this.h = r14;
-        this.i = r16;
-        this.j = r18;
-    }
-
-    public static h85 a(double r45) {
-        double[] r0 = h12.b;
-        double r1 = (h12.R(50.0d) * 63.66197723675813d) / 100.0d;
-        double r7 = Math.max(0.1d, r45);
-        double r10 = r0[0];
-        double[][] r12 = sy.d;
-        double[] r13 = r12[0];
-        double r14 = r13[0] * r10;
-        double r17 = r0[1];
-        double r19 = (r13[1] * r17) + r14;
-        double r21 = r0[2];
-        double r23 = (r13[2] * r21) + r19;
-        double[] r15 = r12[1];
-        double r110 = (r15[2] * r21) + ((r15[1] * r17) + (r15[0] * r10));
-        double[] r16 = r12[2];
-        double r22 = (r21 * r16[2]) + ((r17 * r16[1]) + (r10 * r16[0]));
-        double r11 = (1.0d - (Math.exp(((-r1) - 42.0d) / 92.0d) * 0.2777777777777778d)) * 1.0d;
-        if (r11 >= 0.0d) goto L6;
-        r11 = 0.0d;
-    L8:
-        double[] r18 = {(((100.0d / r23) * r11) + 1.0d) - r11, (((100.0d / r110) * r11) + 1.0d) - r11, (((100.0d / r22) * r11) + 1.0d) - r11};
-        double r111 = 5.0d * r1;
-        double r25 = 1.0d / (r111 + 1.0d);
-        double r27 = ((r25 * r25) * r25) * r25;
-        double r112 = 1.0d - r27;
-        double r2 = (Math.cbrt(r111) * ((0.1d * r112) * r112)) + (r27 * r1);
-        double r5 = h12.R(r7) / r0[1];
-        double r43 = Math.sqrt(r5) + 1.48d;
-        double r30 = 0.725d / Math.pow(r5, 0.2d);
-        double[] r3 = {Math.pow(((r18[0] * r2) * r23) / 100.0d, 0.42d), Math.pow(((r18[1] * r2) * r110) / 100.0d, 0.42d), Math.pow(((r18[2] * r2) * r22) / 100.0d, 0.42d)};
-        double r4 = r3[0];
-        double r113 = (r4 * 400.0d) / (r4 + 27.13d);
-        double r6 = r3[1];
-        double r114 = (r6 * 400.0d) / (r6 + 27.13d);
-        double r8 = r3[2];
-        double[] r9 = {r113, r114, (400.0d * r8) / (r8 + 27.13d)};
-        return new h85(r5, ((r9[2] * 0.05d) + ((r9[0] * 2.0d) + r9[1])) * r30, r30, r30, 0.69d, 1.0d, r18, r2, Math.pow(r2, 0.25d), r43);
-    L6:
-        if (r11 <= 1.0d) goto L8;
-        r11 = 1.0d;
-        goto L8
+    public static h85 a(double d) {
+        double[] dArr = h12.b;
+        double dR = (h12.R(50.0d) * 63.66197723675813d) / 100.0d;
+        double dMax = Math.max(0.1d, d);
+        double d2 = dArr[0];
+        double[][] dArr2 = sy.d;
+        double[] dArr3 = dArr2[0];
+        double d3 = dArr3[0] * d2;
+        double d4 = dArr[1];
+        double d5 = (dArr3[1] * d4) + d3;
+        double d6 = dArr[2];
+        double d7 = (dArr3[2] * d6) + d5;
+        double[] dArr4 = dArr2[1];
+        double d8 = (dArr4[2] * d6) + (dArr4[1] * d4) + (dArr4[0] * d2);
+        double[] dArr5 = dArr2[2];
+        double d9 = (d6 * dArr5[2]) + (d4 * dArr5[1]) + (d2 * dArr5[0]);
+        double dExp = (1.0d - (Math.exp(((-dR) - 42.0d) / 92.0d) * 0.2777777777777778d)) * 1.0d;
+        if (dExp < 0.0d) {
+            dExp = 0.0d;
+        } else if (dExp > 1.0d) {
+            dExp = 1.0d;
+        }
+        double[] dArr6 = {(((100.0d / d7) * dExp) + 1.0d) - dExp, (((100.0d / d8) * dExp) + 1.0d) - dExp, (((100.0d / d9) * dExp) + 1.0d) - dExp};
+        double d10 = 5.0d * dR;
+        double d11 = 1.0d / (d10 + 1.0d);
+        double d12 = d11 * d11 * d11 * d11;
+        double d13 = 1.0d - d12;
+        double dCbrt = (Math.cbrt(d10) * 0.1d * d13 * d13) + (d12 * dR);
+        double dR2 = h12.R(dMax) / dArr[1];
+        double dSqrt = Math.sqrt(dR2) + 1.48d;
+        double dPow = 0.725d / Math.pow(dR2, 0.2d);
+        double[] dArr7 = {Math.pow(((dArr6[0] * dCbrt) * d7) / 100.0d, 0.42d), Math.pow(((dArr6[1] * dCbrt) * d8) / 100.0d, 0.42d), Math.pow(((dArr6[2] * dCbrt) * d9) / 100.0d, 0.42d)};
+        double d14 = dArr7[0];
+        double d15 = (d14 * 400.0d) / (d14 + 27.13d);
+        double d16 = dArr7[1];
+        double d17 = (d16 * 400.0d) / (d16 + 27.13d);
+        double d18 = dArr7[2];
+        double[] dArr8 = {d15, d17, (400.0d * d18) / (d18 + 27.13d)};
+        return new h85(dR2, ((dArr8[2] * 0.05d) + (dArr8[0] * 2.0d) + dArr8[1]) * dPow, dPow, dPow, 0.69d, 1.0d, dArr6, dCbrt, Math.pow(dCbrt, 0.25d), dSqrt);
     }
 }

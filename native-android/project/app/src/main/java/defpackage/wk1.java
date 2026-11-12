@@ -5,29 +5,24 @@ import java.util.Arrays;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class wk1 {
-    public static final byte[] f = null;
+    public static final byte[] f = {0, 0, 1};
     public boolean a;
     public int b;
     public int c;
     public int d;
     public byte[] e;
 
-    static {
-        f = new byte[]{0, 0, 1};
-    }
-
-    public final void a(byte[] r4, int r5, int r6) {
-        if (this.a == true) goto L5;
-        return;
-    L5:
-        int r7 = r6 - r5;
-        byte[] r0 = this.e;
-        int r1 = r0.length;
-        int r2 = this.c + r7;
-        if (r1 >= r2) goto L8;
-        this.e = Arrays.copyOf(r0, r2 * 2);
-    L8:
-        System.arraycopy(r4, r5, this.e, this.c, r7);
-        this.c += r7;
+    public final void a(byte[] bArr, int i, int i2) {
+        if (this.a) {
+            int i3 = i2 - i;
+            byte[] bArr2 = this.e;
+            int length = bArr2.length;
+            int i4 = this.c + i3;
+            if (length < i4) {
+                this.e = Arrays.copyOf(bArr2, i4 * 2);
+            }
+            System.arraycopy(bArr, i, this.e, this.c, i3);
+            this.c += i3;
+        }
     }
 }

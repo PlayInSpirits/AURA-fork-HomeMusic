@@ -6,57 +6,41 @@ import java.util.Objects;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class jf3 extends lu3 {
-    public static final String c = null;
+    public static final String c;
     public final float b;
 
     static {
-        String r0 = f35.a;
+        String str = f35.a;
         c = Integer.toString(1, 36);
     }
 
-    public jf3(float r3) {
-        if (r3 >= 0.0f) goto L5;
-    L7:
-        boolean r0 = false;
-    L8:
-        rr2.k("percent must be in the range of [0, 100]", r0);
-        this.b = r3;
-        return;
-    L5:
-        if (r3 > 100.0f) goto L7;
-        r0 = true;
-        goto L8
+    public jf3(float f) {
+        rr2.k("percent must be in the range of [0, 100]", f >= 0.0f && f <= 100.0f);
+        this.b = f;
     }
 
     @Override // defpackage.lu3
     public final boolean b() {
-        if (this.b == (-1.0f)) goto L6;
-        return true;
-    L6:
-        return false;
+        return this.b != -1.0f;
     }
 
     @Override // defpackage.lu3
     public final Bundle c() {
-        Bundle r0 = new Bundle();
-        r0.putInt(lu3.a, 1);
-        r0.putFloat(c, this.b);
-        return r0;
+        Bundle bundle = new Bundle();
+        bundle.putInt(lu3.a, 1);
+        bundle.putFloat(c, this.b);
+        return bundle;
     }
 
-    public final boolean equals(Object r3) {
-        if ((r3 instanceof jf3) == true) goto L5;
-        return false;
-    L5:
-        float r4 = ((jf3) r3).b;
-        if (this.b != r4) goto L9;
-        return true;
-    L9:
+    public final boolean equals(Object obj) {
+        if (obj instanceof jf3) {
+            return this.b == ((jf3) obj).b;
+        }
         return false;
     }
 
     public final int hashCode() {
-        return Objects.hash(new Object[]{Float.valueOf(this.b)});
+        return Objects.hash(Float.valueOf(this.b));
     }
 
     public jf3() {

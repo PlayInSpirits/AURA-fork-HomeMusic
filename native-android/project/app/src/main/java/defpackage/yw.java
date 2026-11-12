@@ -2,132 +2,111 @@ package defpackage;
 
 import java.io.Serializable;
 import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public class yw implements Serializable, Comparable {
-    public static final yw q = null;
+    public static final yw q = new yw(new byte[0]);
     public final byte[] n;
     public transient int o;
     public transient String p;
 
-    static {
-        q = new yw(new byte[0]);
+    public yw(byte[] bArr) {
+        bArr.getClass();
+        this.n = bArr;
     }
 
-    public yw(byte[] r1) {
-        r1.getClass();
-        this.n = r1;
+    public static int g(yw ywVar, yw ywVar2) {
+        ywVar.getClass();
+        ywVar2.getClass();
+        return ywVar.f(0, ywVar2.h());
     }
 
-    public static int g(yw r1, yw r2) {
-        r1.getClass();
-        r2.getClass();
-        return r1.f(0, r2.h());
+    public static int k(yw ywVar, yw ywVar2) {
+        ywVar.getClass();
+        ywVar2.getClass();
+        return ywVar.j(ywVar2.h());
     }
 
-    public static int k(yw r0, yw r1) {
-        r0.getClass();
-        r1.getClass();
-        return r0.j(r1.h());
-    }
-
-    public static /* synthetic */ yw o(yw r1, int r2, int r3, int r4) {
-        if ((r4 & 1) == 0) goto L6;
-        r2 = 0;
-    L6:
-        if ((r4 & 2) == 0) goto L9;
-        r3 = -1234567890;
-    L9:
-        return r1.n(r2, r3);
+    public static /* synthetic */ yw o(yw ywVar, int i, int i2, int i3) {
+        if ((i3 & 1) != 0) {
+            i = 0;
+        }
+        if ((i3 & 2) != 0) {
+            i2 = -1234567890;
+        }
+        return ywVar.n(i, i2);
     }
 
     public String a() {
-        byte[] r0 = d.a;
-        byte[] r12 = this.n;
-        r12.getClass();
-        r0.getClass();
-        byte[] r1 = new byte[((r12.length + 2) / 3) * 4];
-        int r3 = r12.length - (r12.length % 3);
-        int r4 = 0;
-        int r5 = 0;
-    L3:
-        if (r4 >= r3) goto L5;
-        byte r7 = r12[r4];
-        int r8 = r4 + 2;
-        byte r6 = r12[r4 + 1];
-        r4 = r4 + 3;
-        byte r9 = r12[r8];
-        r1[r5] = r0[(r7 & 255) >> 2];
-        r1[r5 + 1] = r0[((r7 & 3) << 4) | ((r6 & 255) >> 4)];
-        int r10 = r5 + 3;
-        r1[r5 + 2] = r0[((r6 & 15) << 2) | ((r9 & 255) >> 6)];
-        r5 = r5 + 4;
-        r1[r10] = r0[r9 & 63];
-        goto L3
-    L5:
-        int r11 = r12.length - r3;
-        if (r11 == 1) goto L10;
-        if (r11 != 2) goto L12;
-        int r13 = r4 + 1;
-        byte r14 = r12[r4];
-        byte r15 = r12[r13];
-        r1[r5] = r0[(r14 & 255) >> 2];
-        r1[r5 + 1] = r0[((r14 & 3) << 4) | ((r15 & 255) >> 4)];
-        r1[r5 + 2] = r0[(r15 & 15) << 2];
-        r1[r5 + 3] = 61;
-    L12:
-        return new String(r1, w10.a);
-    L10:
-        byte r16 = r12[r4];
-        r1[r5] = r0[(r16 & 255) >> 2];
-        r1[r5 + 1] = r0[(r16 & 3) << 4];
-        r1[r5 + 2] = 61;
-        r1[r5 + 3] = 61;
-        goto L12
-    }
-
-    public final int b(yw r10) {
-        r10.getClass();
-        int r0 = d();
-        int r1 = r10.d();
-        int r2 = Math.min(r0, r1);
-        int r4 = 0;
-    L4:
-        if (r4 >= r2) goto L11;
-        int r7 = i(r4) & 255;
-        int r8 = r10.i(r4) & 255;
-        if (r7 != r8) goto L8;
-        r4 = r4 + 1;
-        goto L4
-    L8:
-        if (r7 >= r8) goto L10;
-        return -1;
-    L10:
-        return 1;
-    L11:
-        if (r0 != r1) goto L13;
-        return 0;
-    L13:
-        if (r0 >= r1) goto L15;
-        return -1;
-    L15:
-        return 1;
-    }
-
-    public yw c(String r3) {
-        MessageDigest r4 = MessageDigest.getInstance(r3);
-        int r1 = d();
-        r4.update(this.n, 0, r1);
-        byte[] r2 = r4.digest();
-        r2.getClass();
-        return new yw(r2);
+        byte[] bArr = d.a;
+        byte[] bArr2 = this.n;
+        bArr2.getClass();
+        bArr.getClass();
+        byte[] bArr3 = new byte[((bArr2.length + 2) / 3) * 4];
+        int length = bArr2.length - (bArr2.length % 3);
+        int i = 0;
+        int i2 = 0;
+        while (i < length) {
+            byte b = bArr2[i];
+            int i3 = i + 2;
+            byte b2 = bArr2[i + 1];
+            i += 3;
+            byte b3 = bArr2[i3];
+            bArr3[i2] = bArr[(b & 255) >> 2];
+            bArr3[i2 + 1] = bArr[((b & 3) << 4) | ((b2 & 255) >> 4)];
+            int i4 = i2 + 3;
+            bArr3[i2 + 2] = bArr[((b2 & 15) << 2) | ((b3 & 255) >> 6)];
+            i2 += 4;
+            bArr3[i4] = bArr[b3 & 63];
+        }
+        int length2 = bArr2.length - length;
+        if (length2 == 1) {
+            byte b4 = bArr2[i];
+            bArr3[i2] = bArr[(b4 & 255) >> 2];
+            bArr3[i2 + 1] = bArr[(b4 & 3) << 4];
+            bArr3[i2 + 2] = 61;
+            bArr3[i2 + 3] = 61;
+        } else if (length2 == 2) {
+            int i5 = i + 1;
+            byte b5 = bArr2[i];
+            byte b6 = bArr2[i5];
+            bArr3[i2] = bArr[(b5 & 255) >> 2];
+            bArr3[i2 + 1] = bArr[((b5 & 3) << 4) | ((b6 & 255) >> 4)];
+            bArr3[i2 + 2] = bArr[(b6 & 15) << 2];
+            bArr3[i2 + 3] = 61;
+        }
+        return new String(bArr3, w10.a);
     }
 
     @Override // java.lang.Comparable
-    public final /* bridge */ /* synthetic */ int compareTo(Object r1) {
-        return b((yw) r1);
+    /* JADX INFO: renamed from: b, reason: merged with bridge method [inline-methods] */
+    public final int compareTo(yw ywVar) {
+        ywVar.getClass();
+        int iD = d();
+        int iD2 = ywVar.d();
+        int iMin = Math.min(iD, iD2);
+        for (int i = 0; i < iMin; i++) {
+            int i2 = i(i) & 255;
+            int i3 = ywVar.i(i) & 255;
+            if (i2 != i3) {
+                return i2 < i3 ? -1 : 1;
+            }
+        }
+        if (iD == iD2) {
+            return 0;
+        }
+        return iD < iD2 ? -1 : 1;
+    }
+
+    public yw c(String str) throws NoSuchAlgorithmException {
+        MessageDigest messageDigest = MessageDigest.getInstance(str);
+        messageDigest.update(this.n, 0, d());
+        byte[] bArrDigest = messageDigest.digest();
+        bArrDigest.getClass();
+        return new yw(bArrDigest);
     }
 
     public int d() {
@@ -135,56 +114,49 @@ public class yw implements Serializable, Comparable {
     }
 
     public String e() {
-        byte[] r8 = this.n;
-        char[] r0 = new char[r8.length * 2];
-        int r1 = r8.length;
-        int r2 = 0;
-        int r3 = 0;
-    L3:
-        if (r2 >= r1) goto L6;
-        byte r4 = r8[r2];
-        int r5 = r3 + 1;
-        char[] r6 = e35.d;
-        r0[r3] = r6[(r4 >> 4) & 15];
-        r3 = r3 + 2;
-        r0[r5] = r6[r4 & 15];
-        r2 = r2 + 1;
-        goto L3
-    L6:
-        return new String(r0);
+        byte[] bArr = this.n;
+        char[] cArr = new char[bArr.length * 2];
+        int i = 0;
+        for (byte b : bArr) {
+            int i2 = i + 1;
+            char[] cArr2 = e35.d;
+            cArr[i] = cArr2[(b >> 4) & 15];
+            i += 2;
+            cArr[i2] = cArr2[b & 15];
+        }
+        return new String(cArr);
     }
 
-    public boolean equals(Object r4) {
-        if (r4 != this) goto L5;
-        return true;
-    L5:
-        if ((r4 instanceof yw) == false) goto L12;
-        yw r5 = (yw) r4;
-        int r0 = r5.d();
-        byte[] r3 = this.n;
-        if (r0 != r3.length) goto L12;
-        if (r5.l(0, 0, r3.length, r3) == false) goto L12;
-        return true;
-    L12:
+    public boolean equals(Object obj) {
+        if (obj == this) {
+            return true;
+        }
+        if (obj instanceof yw) {
+            yw ywVar = (yw) obj;
+            int iD = ywVar.d();
+            byte[] bArr = this.n;
+            if (iD == bArr.length && ywVar.l(0, 0, bArr.length, bArr)) {
+                return true;
+            }
+        }
         return false;
     }
 
-    public int f(int r4, byte[] r5) {
-        r5.getClass();
-        byte[] r3 = this.n;
-        int r0 = r3.length - r5.length;
-        int r6 = Math.max(r4, 0);
-        if (r6 <= r0) goto L5;
-        return -1;
-    L5:
-        if (zz1.e(r6, 0, r5.length, r3, r5) == true) goto L6;
-        if (r6 == r0) goto L13;
-        r6 = r6 + 1;
-        goto L5
-    L13:
-        return -1;
-    L6:
-        return r6;
+    public int f(int i, byte[] bArr) {
+        bArr.getClass();
+        byte[] bArr2 = this.n;
+        int length = bArr2.length - bArr.length;
+        int iMax = Math.max(i, 0);
+        if (iMax > length) {
+            return -1;
+        }
+        while (!zz1.e(iMax, 0, bArr.length, bArr2, bArr)) {
+            if (iMax == length) {
+                return -1;
+            }
+            iMax++;
+        }
+        return iMax;
     }
 
     public byte[] h() {
@@ -192,334 +164,339 @@ public class yw implements Serializable, Comparable {
     }
 
     public int hashCode() {
-        int r0 = this.o;
-        if (r0 == 0) goto L5;
-        return r0;
-    L5:
-        int r1 = Arrays.hashCode(this.n);
-        this.o = r1;
-        return r1;
+        int i = this.o;
+        if (i != 0) {
+            return i;
+        }
+        int iHashCode = Arrays.hashCode(this.n);
+        this.o = iHashCode;
+        return iHashCode;
     }
 
-    public byte i(int r1) {
-        return this.n[r1];
+    public byte i(int i) {
+        return this.n[i];
     }
 
-    public int j(byte[] r4) {
-        r4.getClass();
-        int r0 = d();
-        byte[] r3 = this.n;
-        int r1 = Math.min(r0, r3.length - r4.length);
-    L4:
-        if ((-1) >= r1) goto L9;
-        if (zz1.e(r1, 0, r4.length, r3, r4) == true) goto L7;
-        r1 = r1 - 1;
-        goto L4
-    L7:
-        return r1;
-    L9:
+    public int j(byte[] bArr) {
+        bArr.getClass();
+        int iD = d();
+        byte[] bArr2 = this.n;
+        for (int iMin = Math.min(iD, bArr2.length - bArr.length); -1 < iMin; iMin--) {
+            if (zz1.e(iMin, 0, bArr.length, bArr2, bArr)) {
+                return iMin;
+            }
+        }
         return -1;
     }
 
-    public boolean l(int r2, int r3, int r4, byte[] r5) {
-        r5.getClass();
-        if (r2 < 0) goto L13;
-        byte[] r1 = this.n;
-        if (r2 > (r1.length - r4)) goto L15;
-        if (r3 >= 0) goto L8;
-        return false;
-    L8:
-        if (r3 <= (r5.length - r4)) goto L10;
-        return false;
-    L10:
-        if (zz1.e(r2, r3, r4, r1, r5) == false) goto L18;
-        return true;
-    L18:
-        return false;
-    L15:
-        return false;
-    L13:
-        return false;
+    public boolean l(int i, int i2, int i3, byte[] bArr) {
+        bArr.getClass();
+        if (i < 0) {
+            return false;
+        }
+        byte[] bArr2 = this.n;
+        return i <= bArr2.length - i3 && i2 >= 0 && i2 <= bArr.length - i3 && zz1.e(i, i2, i3, bArr2, bArr);
     }
 
-    public boolean m(int r2, yw r3, int r4) {
-        r3.getClass();
-        return r3.l(0, r2, r4, this.n);
+    public boolean m(int i, yw ywVar, int i2) {
+        ywVar.getClass();
+        return ywVar.l(0, i, i2, this.n);
     }
 
-    public yw n(int r4, int r5) {
-        if (r5 != (-1234567890)) goto L6;
-        r5 = d();
-    L6:
-        if (r4 < 0) goto L21;
-        byte[] r1 = this.n;
-        if (r5 <= r1.length) goto L10;
-        kf2.i("endIndex > length(", r1.length, 41);
-        return null;
-    L10:
-        if ((r5 - r4) < 0) goto L17;
-        if (r4 != 0) goto L16;
-        if (r5 != r1.length) goto L16;
-        return this;
-    L16:
-        return new yw(ti.d0(r1, r4, r5));
-    L17:
+    public yw n(int i, int i2) {
+        if (i2 == -1234567890) {
+            i2 = d();
+        }
+        if (i < 0) {
+            kf2.n("beginIndex < 0");
+            return null;
+        }
+        byte[] bArr = this.n;
+        if (i2 > bArr.length) {
+            kf2.i("endIndex > length(", bArr.length, 41);
+            return null;
+        }
+        if (i2 - i >= 0) {
+            return (i == 0 && i2 == bArr.length) ? this : new yw(ti.d0(bArr, i, i2));
+        }
         kf2.n("endIndex < beginIndex");
-        return null;
-    L21:
-        kf2.n("beginIndex < 0");
         return null;
     }
 
     public yw p() {
-        int r0 = 0;
-    L3:
-        byte[] r1 = this.n;
-        if (r0 >= r1.length) goto L22;
-        byte r2 = r1[r0];
-        if (r2 < 65) goto L21;
-        if (r2 > 90) goto L21;
-        byte[] r5 = Arrays.copyOf(r1, r1.length);
-        int r3 = r0 + 1;
-        r5[r0] = (byte) (r2 + 32);
-    L12:
-        if (r3 >= r5.length) goto L20;
-        byte r4 = r5[r3];
-        if (r4 < 65) goto L18;
-        if (r4 > 90) goto L18;
-        r5[r3] = (byte) (r4 + 32);
-    L18:
-        r3 = r3 + 1;
-        goto L12
-    L20:
-        return new yw(r5);
-    L21:
-        r0 = r0 + 1;
-        goto L3
-    L22:
-        return this;
+        int i = 0;
+        while (true) {
+            byte[] bArr = this.n;
+            if (i >= bArr.length) {
+                return this;
+            }
+            byte b = bArr[i];
+            if (b >= 65 && b <= 90) {
+                byte[] bArrCopyOf = Arrays.copyOf(bArr, bArr.length);
+                bArrCopyOf[i] = (byte) (b + 32);
+                for (int i2 = i + 1; i2 < bArrCopyOf.length; i2++) {
+                    byte b2 = bArrCopyOf[i2];
+                    if (b2 >= 65 && b2 <= 90) {
+                        bArrCopyOf[i2] = (byte) (b2 + 32);
+                    }
+                }
+                return new yw(bArrCopyOf);
+            }
+            i++;
+        }
     }
 
     public final String q() {
-        String r0 = this.p;
-        if (r0 != null) goto L6;
-        byte[] r1 = h();
-        r1.getClass();
-        String r2 = new String(r1, w10.a);
-        this.p = r2;
-        return r2;
-    L6:
-        return r0;
+        String str = this.p;
+        if (str != null) {
+            return str;
+        }
+        byte[] bArrH = h();
+        bArrH.getClass();
+        String str2 = new String(bArrH, w10.a);
+        this.p = str2;
+        return str2;
     }
 
-    public void r(tv r2, int r3) {
-        r2.m78write(this.n, 0, r3);
+    public void r(tv tvVar, int i) {
+        tvVar.m78write(this.n, 0, i);
     }
 
+    /* JADX WARN: Code duplicated, block: B:179:0x01b6 A[EDGE_INSN: B:179:0x01b6->B:180:0x01b7 BREAK  A[LOOP:0: B:7:0x000e->B:241:0x000e]] */
     public String toString() {
-        yw r0 = this;
-        byte[] r1 = r0.n;
-        if (r1.length != 0) goto L6;
-        return "[size=0]";
-    L6:
-        int r2 = r1.length;
-        int r4 = 0;
-        int r5 = 0;
-        int r6 = 0;
-    L8:
-        if (r4 >= r2) goto L181;
-        byte r9 = r1[r4];
-        int r16 = 2;
-        if (r9 >= 0) goto L11;
-        if ((r9 >> 5) != (-2)) goto L83;
-        int r3 = r4 + 1;
-        if (r2 <= r3) goto L53;
-        byte r7 = r1[r3];
-        if ((r7 & 192) != 128) goto L80;
-        int r8 = (r7 ^ 3968) ^ (r9 << 6);
-        if (r8 < 128) goto L59;
-        int r10 = r6 + 1;
-        if (r6 == 64) goto L181;
-        if (r8 == 10) goto L73;
-        if (r8 == 13) goto L73;
-        if (r8 < 0) goto L69;
-        if (r8 >= 32) goto L69;
-    L179:
-        r5 = -1;
-    L69:
-        if (127 > r8) goto L73;
-        if (r8 < 160) goto L179;
-    L73:
-        if (r8 == 65533) goto L179;
-        if (r8 >= 65536) goto L78;
-        r16 = 1;
-    L78:
-        r5 = r5 + r16;
-        r4 = r4 + 2;
-    L79:
-        r6 = r10;
-        goto L8
-    L59:
-        if (r6 != 64) goto L179;
-    L80:
-        if (r6 != 64) goto L179;
-    L53:
-        if (r6 != 64) goto L179;
-    L83:
-        if ((r9 >> 4) != (-2)) goto L126;
-        int r11 = r4 + 2;
-        if (r2 <= r11) goto L86;
-        byte r12 = r1[r4 + 1];
-        if ((r12 & 192) != 128) goto L123;
-        byte r13 = r1[r11];
-        if ((r13 & 192) != 128) goto L121;
-        int r14 = ((r13 ^ (-123008)) ^ (r12 << 6)) ^ (r9 << 12);
-        if (r14 < 2048) goto L94;
-        if (55296 > r14) goto L100;
-        if (r14 >= 57344) goto L100;
-        if (r6 != 64) goto L179;
-    L100:
-        r10 = r6 + 1;
-        if (r6 == 64) goto L181;
-        if (r14 == 10) goto L115;
-        if (r14 == 13) goto L115;
-        if (r14 < 0) goto L110;
-        if (r14 < 32) goto L179;
-    L110:
-        if (127 > r14) goto L115;
-        if (r14 < 160) goto L179;
-    L115:
-        if (r14 == 65533) goto L179;
-        if (r14 >= 65536) goto L120;
-        r16 = 1;
-    L120:
-        r5 = r5 + r16;
-        r4 = r4 + 3;
-        goto L79
-    L94:
-        if (r6 != 64) goto L179;
-    L121:
-        if (r6 != 64) goto L179;
-    L123:
-        if (r6 != 64) goto L179;
-    L86:
-        if (r6 != 64) goto L179;
-    L126:
-        if ((r9 >> 3) != (-2)) goto L177;
-        int r15 = r4 + 3;
-        if (r2 <= r15) goto L129;
-        byte r17 = r1[r4 + 1];
-        if ((r17 & 192) != 128) goto L175;
-        byte r18 = r1[r4 + 2];
-        if ((r18 & 192) != 128) goto L173;
-        byte r19 = r1[r15];
-        if ((r19 & 192) != 128) goto L171;
-        int r20 = (((r19 ^ 3678080) ^ (r18 << 6)) ^ (r17 << 12)) ^ (r9 << 18);
-        if (r20 > 1114111) goto L139;
-        if (55296 > r20) goto L146;
-        if (r20 >= 57344) goto L146;
-        if (r6 != 64) goto L179;
-    L146:
-        if (r20 < 65536) goto L147;
-        r10 = r6 + 1;
-        if (r6 == 64) goto L181;
-        if (r20 == 10) goto L165;
-        if (r20 == 13) goto L165;
-        if (r20 < 0) goto L160;
-        if (r20 < 32) goto L179;
-    L160:
-        if (127 > r20) goto L165;
-        if (r20 < 160) goto L179;
-    L165:
-        if (r20 == 65533) goto L179;
-        if (r20 >= 65536) goto L170;
-        r16 = 1;
-    L170:
-        r5 = r5 + r16;
-        r4 = r4 + 4;
-        goto L79
-    L147:
-        if (r6 != 64) goto L179;
-    L139:
-        if (r6 != 64) goto L179;
-    L171:
-        if (r6 != 64) goto L179;
-    L173:
-        if (r6 != 64) goto L179;
-    L175:
-        if (r6 != 64) goto L179;
-    L129:
-        if (r6 != 64) goto L179;
-    L177:
-        if (r6 != 64) goto L179;
-    L11:
-        int r110 = r6 + 1;
-        if (r6 == 64) goto L181;
-        if (r9 == 10) goto L22;
-        if (r9 == 13) goto L22;
-        if (r9 < 0) goto L19;
-        if (r9 < 32) goto L179;
-    L19:
-        if (127 > r9) goto L22;
-        if (r9 < 160) goto L179;
-    L22:
-        if (r9 == 65533) goto L179;
-        if (r9 >= 65536) goto L26;
-        int r21 = 1;
-    L27:
-        r5 = r5 + r21;
-        r4 = r4 + 1;
-    L28:
-        r6 = r110;
-        if (r4 >= r2) goto L8;
-        byte r22 = r1[r4];
-        if (r22 < 0) goto L8;
-        r4 = r4 + 1;
-        r110 = r6 + 1;
-        if (r6 == 64) goto L181;
-        if (r22 == 10) goto L43;
-        if (r22 == 13) goto L43;
-        if (r22 < 0) goto L40;
-        if (r22 < 32) goto L179;
-    L40:
-        if (127 > r22) goto L43;
-        if (r22 < 160) goto L179;
-    L43:
-        if (r22 == 65533) goto L179;
-        if (r22 >= 65536) goto L47;
-        int r23 = 1;
-    L48:
-        r5 = r5 + r23;
-        goto L28
-    L47:
-        r23 = 2;
-        goto L48
-    L26:
-        r21 = 2;
-    L181:
-        if (r5 == (-1)) goto L183;
-        String r24 = r0.q();
-        String r25 = xm4.i0(xm4.i0(xm4.i0(r24.substring(0, r5), "\\", "\\\\"), "\n", "\\n"), "\r", "\\r");
-        if (r5 >= r24.length()) goto L201;
-        return "[size=" + r1.length + " text=" + r25 + "…]";
-    L201:
-        return "[text=" + r25 + ']';
-    L183:
-        if (r1.length <= 64) goto L185;
-        StringBuilder r26 = new StringBuilder("[size=");
-        r26.append(r1.length);
-        r26.append(" hex=");
-        if (64 <= r1.length) goto L189;
-        kf2.i("endIndex > length(", r1.length, 41);
-        return null;
-    L189:
-        if (64 == r1.length) goto L192;
-        r0 = new yw(ti.d0(r1, 0, 64));
-    L192:
-        r26.append(r0.e());
-        r26.append("…]");
-        return r26.toString();
-    L185:
-        return "[hex=" + r0.e() + ']';
+        byte b;
+        int i;
+        yw ywVar = this;
+        byte[] bArr = ywVar.n;
+        if (bArr.length == 0) {
+            return "[size=0]";
+        }
+        int length = bArr.length;
+        int i2 = 0;
+        int i3 = 0;
+        int i4 = 0;
+        loop0: while (i2 < length) {
+            byte b2 = bArr[i2];
+            if (b2 < 0) {
+                if ((b2 >> 5) != -2) {
+                    if ((b2 >> 4) != -2) {
+                        if ((b2 >> 3) != -2) {
+                            if (i4 == 64) {
+                                break;
+                            }
+                            i3 = -1;
+                            break;
+                        }
+                        int i5 = i2 + 3;
+                        if (length > i5) {
+                            byte b3 = bArr[i2 + 1];
+                            if ((b3 & 192) != 128) {
+                                if (i4 == 64) {
+                                    break;
+                                }
+                                i3 = -1;
+                                break;
+                            }
+                            byte b4 = bArr[i2 + 2];
+                            if ((b4 & 192) != 128) {
+                                if (i4 == 64) {
+                                    break;
+                                }
+                                i3 = -1;
+                                break;
+                            }
+                            byte b5 = bArr[i5];
+                            if ((b5 & 192) != 128) {
+                                if (i4 == 64) {
+                                    break;
+                                }
+                                i3 = -1;
+                                break;
+                            }
+                            int i6 = (((b5 ^ 3678080) ^ (b4 << 6)) ^ (b3 << 12)) ^ (b2 << 18);
+                            if (i6 <= 1114111) {
+                                if (55296 <= i6 && i6 < 57344) {
+                                    if (i4 == 64) {
+                                        break;
+                                    }
+                                    i3 = -1;
+                                    break;
+                                }
+                                if (i6 >= 65536) {
+                                    i = i4 + 1;
+                                    if (i4 == 64) {
+                                        break;
+                                    }
+                                    if ((i6 != 10 && i6 != 13 && ((i6 >= 0 && i6 < 32) || (127 <= i6 && i6 < 160))) || i6 == 65533) {
+                                        i3 = -1;
+                                        break;
+                                    }
+                                    i3 += i6 < 65536 ? 1 : 2;
+                                    i2 += 4;
+                                    i4 = i;
+                                } else {
+                                    if (i4 == 64) {
+                                        break;
+                                    }
+                                    i3 = -1;
+                                    break;
+                                }
+                            } else {
+                                if (i4 == 64) {
+                                    break;
+                                }
+                                i3 = -1;
+                                break;
+                            }
+                        } else {
+                            if (i4 == 64) {
+                                break;
+                            }
+                            i3 = -1;
+                            break;
+                        }
+                    } else {
+                        int i7 = i2 + 2;
+                        if (length > i7) {
+                            byte b6 = bArr[i2 + 1];
+                            if ((b6 & 192) != 128) {
+                                if (i4 == 64) {
+                                    break;
+                                }
+                                i3 = -1;
+                                break;
+                            }
+                            byte b7 = bArr[i7];
+                            if ((b7 & 192) != 128) {
+                                if (i4 == 64) {
+                                    break;
+                                }
+                                i3 = -1;
+                                break;
+                            }
+                            int i8 = ((b7 ^ (-123008)) ^ (b6 << 6)) ^ (b2 << 12);
+                            if (i8 >= 2048) {
+                                if (55296 <= i8 && i8 < 57344) {
+                                    if (i4 == 64) {
+                                        break;
+                                    }
+                                    i3 = -1;
+                                    break;
+                                }
+                                i = i4 + 1;
+                                if (i4 == 64) {
+                                    break;
+                                }
+                                if ((i8 != 10 && i8 != 13 && ((i8 >= 0 && i8 < 32) || (127 <= i8 && i8 < 160))) || i8 == 65533) {
+                                    i3 = -1;
+                                    break;
+                                }
+                                i3 += i8 < 65536 ? 1 : 2;
+                                i2 += 3;
+                                i4 = i;
+                            } else {
+                                if (i4 == 64) {
+                                    break;
+                                }
+                                i3 = -1;
+                                break;
+                            }
+                        } else {
+                            if (i4 == 64) {
+                                break;
+                            }
+                            i3 = -1;
+                            break;
+                        }
+                    }
+                } else {
+                    int i9 = i2 + 1;
+                    if (length > i9) {
+                        byte b8 = bArr[i9];
+                        if ((b8 & 192) != 128) {
+                            if (i4 == 64) {
+                                break;
+                            }
+                            i3 = -1;
+                            break;
+                        }
+                        int i10 = (b8 ^ 3968) ^ (b2 << 6);
+                        if (i10 >= 128) {
+                            i = i4 + 1;
+                            if (i4 == 64) {
+                                break;
+                            }
+                            if ((i10 != 10 && i10 != 13 && ((i10 >= 0 && i10 < 32) || (127 <= i10 && i10 < 160))) || i10 == 65533) {
+                                i3 = -1;
+                                break;
+                            }
+                            i3 += i10 < 65536 ? 1 : 2;
+                            i2 += 2;
+                            i4 = i;
+                        } else {
+                            if (i4 == 64) {
+                                break;
+                            }
+                            i3 = -1;
+                            break;
+                        }
+                    } else {
+                        if (i4 == 64) {
+                            break;
+                        }
+                        i3 = -1;
+                        break;
+                    }
+                }
+            } else {
+                int i11 = i4 + 1;
+                if (i4 == 64) {
+                    break;
+                }
+                if ((b2 == 10 || b2 == 13 || ((b2 < 0 || b2 >= 32) && (127 > b2 || b2 >= 160))) && b2 != 65533) {
+                    i3 += b2 < 65536 ? 1 : 2;
+                    i2++;
+                    while (true) {
+                        i4 = i11;
+                        if (i2 < length && (b = bArr[i2]) >= 0) {
+                            i2++;
+                            i11 = i4 + 1;
+                            if (i4 == 64) {
+                                break loop0;
+                            }
+                            if ((b == 10 || b == 13 || ((b < 0 || b >= 32) && (127 > b || b >= 160))) && b != 65533) {
+                                i3 += b < 65536 ? 1 : 2;
+                            }
+                        }
+                    }
+                }
+                i3 = -1;
+                break;
+            }
+        }
+        if (i3 != -1) {
+            String strQ = ywVar.q();
+            String strI0 = xm4.i0(xm4.i0(xm4.i0(strQ.substring(0, i3), "\\", "\\\\"), "\n", "\\n"), "\r", "\\r");
+            if (i3 >= strQ.length()) {
+                return "[text=" + strI0 + ']';
+            }
+            return "[size=" + bArr.length + " text=" + strI0 + "…]";
+        }
+        if (bArr.length <= 64) {
+            return "[hex=" + ywVar.e() + ']';
+        }
+        StringBuilder sb = new StringBuilder("[size=");
+        sb.append(bArr.length);
+        sb.append(" hex=");
+        if (64 > bArr.length) {
+            kf2.i("endIndex > length(", bArr.length, 41);
+            return null;
+        }
+        if (64 != bArr.length) {
+            ywVar = new yw(ti.d0(bArr, 0, 64));
+        }
+        sb.append(ywVar.e());
+        sb.append("…]");
+        return sb.toString();
     }
 }

@@ -7,13 +7,12 @@ import android.os.LocaleList;
 public final class xd2 {
     public final LocaleList a;
 
-    public xd2(LocaleList r1) {
-        this.a = r1;
+    public xd2(LocaleList localeList) {
+        this.a = localeList;
     }
 
-    public final boolean equals(Object r1) {
-        LocaleList r2 = ((xd2) r1).a;
-        return this.a.equals(r2);
+    public final boolean equals(Object obj) {
+        return this.a.equals(((xd2) obj).a);
     }
 
     public final int hashCode() {

@@ -15,92 +15,94 @@ public abstract class jw3 {
     public long e;
     public long f;
 
-    public static void b(cx3 r2) {
-        int r0 = r2.j;
-        if (r2.h() == false) goto L6;
-        return;
-    L6:
-        if ((r0 & 4) != 0) goto L9;
-        r2.b();
-        return;
+    public static void b(cx3 cx3Var) {
+        int i = cx3Var.j;
+        if (!cx3Var.h() && (i & 4) == 0) {
+            cx3Var.b();
+        }
     }
 
-    public abstract boolean a(cx3 r1, cx3 r2, n50 r3, n50 r4);
+    public abstract boolean a(cx3 cx3Var, cx3 cx3Var2, n50 n50Var, n50 n50Var2);
 
-    public final void c(cx3 r10) {
-        cw3 r9 = this.a;
-        if (r9 == null) goto L47;
-        RecyclerView r11 = r9.a;
-        boolean r0 = true;
-        r10.p(true);
-        View r1 = r10.a;
-        if (r10.h != null) goto L7;
-    L9:
-        r10.i = null;
-        if ((r10.j & 16) != 0) goto L50;
-        hm2 r2 = r11.p;
-        r11.n0();
-        ew4 r3 = r11.s;
-        e20 r4 = (e20) r3.q;
-        rm2 r5 = (rm2) r3.p;
-        int r6 = r3.o;
-        if (r6 != 1) goto L20;
-        if (((View) r3.s) != r1) goto L17;
-    L16:
-        r0 = false;
-    L32:
-        if (r0 == false) goto L36;
-        cx3 r7 = RecyclerView.N(r1);
-        r2.l(r7);
-        r2.i(r7);
-        if (RecyclerView.Q0 == false) goto L36;
-        Log.d("RecyclerView", "after removing animated view: " + r1 + ", " + r11);
-    L36:
-        r11.p0(!r0);
-        if (r0 == false) goto L39;
-        return;
-    L39:
-        if (r10.l() == false) goto L49;
-        r11.removeDetachedView(r1, false);
-        return;
-    L49:
-        return;
-    L17:
-        kf2.o("Cannot call removeViewIfHidden within removeView(At) for a different view");
-        return;
-    L20:
-        if (r6 != 2) goto L46;
-        kf2.o("Cannot call removeViewIfHidden within removeViewIfHidden");
-        return;
-    L46:
-        r3.o = 2;     // Catch: Throwable -> L25
-        int r8 = ((RecyclerView) r5.o).indexOfChild(r1);     // Catch: Throwable -> L25
-        if (r8 != (-1)) goto L28;
-        r3.p(r1);     // Catch: Throwable -> L25
-    L24:
-        r3.o = 0;
-        goto L32
-    L28:
-        if (r4.s(r8) == false) goto L31;
-        r4.y(r8);     // Catch: Throwable -> L25
-        r3.p(r1);     // Catch: Throwable -> L25
-        r5.i(r8);     // Catch: Throwable -> L25
-        goto L24
-    L31:
-        r3.o = 0;
-    L25:
-        th = move-exception;
-        r3.o = 0;
-        throw th;
-    L50:
-        return;
-    L7:
-        if (r10.i != null) goto L9;
-        r10.h = null;
-        goto L9
+    /* JADX WARN: Code duplicated, block: B:33:0x0070  */
+    /* JADX WARN: Code duplicated, block: B:35:0x007e  */
+    /* JADX WARN: Instruction removed from duplicated block: B:35:0x007e, please report this as an issue */
+    public final void c(cx3 cx3Var) {
+        cw3 cw3Var = this.a;
+        if (cw3Var != null) {
+            RecyclerView recyclerView = cw3Var.a;
+            boolean z = true;
+            cx3Var.p(true);
+            View view = cx3Var.a;
+            if (cx3Var.h != null && cx3Var.i == null) {
+                cx3Var.h = null;
+            }
+            cx3Var.i = null;
+            if ((cx3Var.j & 16) != 0) {
+                return;
+            }
+            hm2 hm2Var = recyclerView.p;
+            recyclerView.n0();
+            ew4 ew4Var = recyclerView.s;
+            e20 e20Var = (e20) ew4Var.q;
+            rm2 rm2Var = (rm2) ew4Var.p;
+            int i = ew4Var.o;
+            if (i != 1) {
+                if (i == 2) {
+                    kf2.o("Cannot call removeViewIfHidden within removeViewIfHidden");
+                    return;
+                }
+                try {
+                    ew4Var.o = 2;
+                    int iIndexOfChild = ((RecyclerView) rm2Var.o).indexOfChild(view);
+                    if (iIndexOfChild == -1) {
+                        ew4Var.p(view);
+                    } else if (e20Var.s(iIndexOfChild)) {
+                        e20Var.y(iIndexOfChild);
+                        ew4Var.p(view);
+                        rm2Var.i(iIndexOfChild);
+                    } else {
+                        ew4Var.o = 0;
+                    }
+                    ew4Var.o = 0;
+                    if (z) {
+                        cx3 cx3VarN = RecyclerView.N(view);
+                        hm2Var.l(cx3VarN);
+                        hm2Var.i(cx3VarN);
+                        if (RecyclerView.Q0) {
+                            Log.d("RecyclerView", "after removing animated view: " + view + ", " + recyclerView);
+                        }
+                    }
+                    recyclerView.p0(!z);
+                    if (z && cx3Var.l()) {
+                        recyclerView.removeDetachedView(view, false);
+                        return;
+                    }
+                } catch (Throwable th) {
+                    ew4Var.o = 0;
+                    throw th;
+                }
+            }
+            if (((View) ew4Var.s) != view) {
+                kf2.o("Cannot call removeViewIfHidden within removeView(At) for a different view");
+                return;
+            }
+            z = false;
+            if (z) {
+                cx3 cx3VarN2 = RecyclerView.N(view);
+                hm2Var.l(cx3VarN2);
+                hm2Var.i(cx3VarN2);
+                if (RecyclerView.Q0) {
+                    Log.d("RecyclerView", "after removing animated view: " + view + ", " + recyclerView);
+                }
+            }
+            recyclerView.p0(!z);
+            if (z) {
+            }
+        }
     }
 
-    public abstract void d(cx3 r1);
+    public abstract void d(cx3 cx3Var);
 
     public abstract void e();
 

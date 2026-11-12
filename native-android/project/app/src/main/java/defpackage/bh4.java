@@ -10,172 +10,224 @@ public final class bh4 extends w0 {
     public int y;
     public boolean z;
 
-    public bh4(InputStream r7, int r8) {
-        super(r7, r8);
+    public bh4(InputStream inputStream, int i) throws IOException {
+        super(inputStream, i);
         this.y = 1;
-        int r9 = 0;
+        int i2 = 0;
         this.z = false;
-        long r0 = 0;
-    L3:
-        int r10 = q();
-        if (r10 == (-1)) goto L10;
-        int r3 = r9 + 1;
-        r0 = r0 | ((long) ((r10 & 127) << (r9 * 7)));
-        if ((r10 & 128) == 0) goto L7;
-        r9 = r3;
-        goto L3
-    L7:
-        this.x = (int) r0;
-        return;
-    L10:
-        mj0.i("Premature end of stream reading size");
-        throw null;
+        long j = 0;
+        while (true) {
+            int iQ = q();
+            if (iQ == -1) {
+                mj0.i("Premature end of stream reading size");
+                throw null;
+            }
+            int i3 = i2 + 1;
+            j |= (long) ((iQ & 127) << (i2 * 7));
+            if ((iQ & 128) == 0) {
+                this.x = (int) j;
+                return;
+            }
+            i2 = i3;
+        }
     }
 
+    /* JADX WARN: Can't fix incorrect switch cases order, some code will duplicate */
+    /* JADX WARN: Code duplicated, block: B:100:0x0134  */
+    /* JADX WARN: Code duplicated, block: B:94:0x011a  */
+    /* JADX WARN: Code duplicated, block: B:96:0x0124  */
+    /* JADX WARN: Code duplicated, block: B:99:0x012d  */
     @Override // java.io.InputStream
-    public final int read(byte[] r11, int r12, int r13) {
-        if (r13 != 0) goto L6;
-        return 0;
-    L6:
-        if (this.z == false) goto L8;
-        return -1;
-    L8:
-        int r0 = xa3.w(this.y);
-        if (r0 == 0) goto L42;
-        if (r0 == 1) goto L33;
-        if (r0 != 2) goto L20;
-        int r1 = f(r11, r12, r13);
-        if (this.t > 0) goto L16;
-        this.y = 1;
-    L16:
-        if (r1 <= 0) goto L19;
-        return r1;
-    L19:
-        return read(r11, r12, r13);
-    L20:
-        int r10 = this.y;
-        if (r10 != 1) goto L23;
-        String r14 = "NO_BLOCK";
-    L30:
-        mj0.i("Unknown stream state ".concat(r14));
-        return 0;
-    L23:
-        if (r10 != 2) goto L25;
-        r14 = "IN_LITERAL";
-        goto L30
-    L25:
-        if (r10 == 3) goto L27;
-        r14 = "null";
-        goto L30
-    L27:
-        r14 = "IN_BACK_REFERENCE";
-        goto L30
-    L33:
-        int r2 = n(r11, r12, r13);
-        if (this.t > 0) goto L37;
-        this.y = 1;
-    L37:
-        if (r2 <= 0) goto L40;
-        return r2;
-    L40:
-        return read(r11, r12, r13);
-    L42:
-        if (this.x != 0) goto L44;
-        this.z = true;
-    L98:
-        return read(r11, r12, r13);
-    L44:
-        int r3 = q();
-        if (r3 == (-1)) goto L102;
-        int r6 = r3 & 3;
-        hg3 r9 = this.w;
-        if (r6 != 0) goto L49;
-        int r4 = r3 >> 2;
-        switch(r4) {
-            case 60: goto L90;
-            case 61: goto L89;
-            case 62: goto L88;
-            case 63: goto L86;
-            default: goto L92;
-        };
-    L86:
-        long r5 = gh0.k(r9, 4);
-    L87:
-        r4 = (int) r5;
-        goto L92
-    L88:
-        r5 = gh0.k(r9, 3);
-        goto L87
-    L89:
-        r5 = gh0.k(r9, 2);
-        goto L87
-    L90:
-        r4 = q();
-        if (r4 != (-1)) goto L92;
-        mj0.i("Premature end of stream reading literal length");
-        return 0;
-    L92:
-        int r7 = r4 + 1;
-        if (r7 < 0) goto L100;
-        this.x -= r7;
-        long r8 = r7;
-        if (r8 < 0) goto L99;
-        this.t = r8;
-        this.y = 2;
-        goto L98
-    L99:
-        kf2.n("length must not be negative");
-        return 0;
-    L100:
-        mj0.i("Illegal block with a negative literal size found");
-        return 0;
-    L49:
-        if (r6 == 1) goto L71;
-        if (r6 == 2) goto L62;
-        if (r6 != 3) goto L98;
-        int r15 = (r3 >> 2) + 1;
-        if (r15 < 0) goto L61;
-        this.x -= r15;
-        s(((int) gh0.k(r9, 4)) & Integer.MAX_VALUE, r15);     // Catch: IllegalArgumentException -> L58
-        this.y = 3;
-    L58:
-        e = move-exception;
-        throw new IOException("Illegal block with bad offset found", e);
-    L61:
-        mj0.i("Illegal block with a negative match length found");
-        return 0;
-    L62:
-        int r16 = (r3 >> 2) + 1;
-        if (r16 < 0) goto L70;
-        this.x -= r16;
-        s((int) gh0.k(r9, 2), r16);     // Catch: IllegalArgumentException -> L67
-        this.y = 3;
-    L67:
-        e = move-exception;
-        throw new IOException("Illegal block with bad offset found", e);
-    L70:
-        mj0.i("Illegal block with a negative match length found");
-        return 0;
-    L71:
-        int r17 = ((r3 >> 2) & 7) + 4;
-        if (r17 < 0) goto L82;
-        this.x -= r17;
-        int r18 = (r3 & 224) << 3;
-        int r19 = q();
-        if (r19 != (-1)) goto L107;
-        mj0.i("Premature end of stream reading back-reference length");
-        return 0;
-    L107:
-        s(r18 | r19, r17);     // Catch: IllegalArgumentException -> L78
-        this.y = 3;
-    L78:
-        e = move-exception;
-        throw new IOException("Illegal block with bad offset found", e);
-    L82:
-        mj0.i("Illegal block with a negative match length found");
-        return 0;
-    L102:
-        mj0.i("Premature end of stream reading block start");
-        return 0;
+    public final int read(byte[] bArr, int i, int i2) throws IOException {
+        int i3;
+        long j;
+        long jK;
+        String str;
+        if (i2 == 0) {
+            return 0;
+        }
+        if (this.z) {
+            return -1;
+        }
+        int iW = xa3.w(this.y);
+        if (iW != 0) {
+            if (iW == 1) {
+                int iN = n(bArr, i, i2);
+                if (this.t <= 0) {
+                    this.y = 1;
+                }
+                return iN > 0 ? iN : read(bArr, i, i2);
+            }
+            if (iW == 2) {
+                int iF = f(bArr, i, i2);
+                if (this.t <= 0) {
+                    this.y = 1;
+                }
+                return iF > 0 ? iF : read(bArr, i, i2);
+            }
+            int i4 = this.y;
+            if (i4 == 1) {
+                str = "NO_BLOCK";
+            } else if (i4 != 2) {
+                str = i4 != 3 ? "null" : "IN_BACK_REFERENCE";
+            } else {
+                str = "IN_LITERAL";
+            }
+            mj0.i("Unknown stream state ".concat(str));
+            return 0;
+        }
+        if (this.x == 0) {
+            this.z = true;
+        } else {
+            int iQ = q();
+            if (iQ == -1) {
+                mj0.i("Premature end of stream reading block start");
+                return 0;
+            }
+            int i5 = iQ & 3;
+            hg3 hg3Var = this.w;
+            if (i5 == 0) {
+                int iQ2 = iQ >> 2;
+                switch (iQ2) {
+                    case 60:
+                        iQ2 = q();
+                        if (iQ2 == -1) {
+                            mj0.i("Premature end of stream reading literal length");
+                            return 0;
+                        }
+                        i3 = iQ2 + 1;
+                        if (i3 < 0) {
+                            mj0.i("Illegal block with a negative literal size found");
+                            return 0;
+                        }
+                        this.x -= i3;
+                        j = i3;
+                        if (j < 0) {
+                            kf2.n("length must not be negative");
+                            return 0;
+                        }
+                        this.t = j;
+                        this.y = 2;
+                        break;
+                        break;
+                    case 61:
+                        jK = gh0.k(hg3Var, 2);
+                        iQ2 = (int) jK;
+                        i3 = iQ2 + 1;
+                        if (i3 < 0) {
+                            mj0.i("Illegal block with a negative literal size found");
+                            return 0;
+                        }
+                        this.x -= i3;
+                        j = i3;
+                        if (j < 0) {
+                            kf2.n("length must not be negative");
+                            return 0;
+                        }
+                        this.t = j;
+                        this.y = 2;
+                        break;
+                        break;
+                    case 62:
+                        jK = gh0.k(hg3Var, 3);
+                        iQ2 = (int) jK;
+                        i3 = iQ2 + 1;
+                        if (i3 < 0) {
+                            mj0.i("Illegal block with a negative literal size found");
+                            return 0;
+                        }
+                        this.x -= i3;
+                        j = i3;
+                        if (j < 0) {
+                            kf2.n("length must not be negative");
+                            return 0;
+                        }
+                        this.t = j;
+                        this.y = 2;
+                        break;
+                        break;
+                    case 63:
+                        jK = gh0.k(hg3Var, 4);
+                        iQ2 = (int) jK;
+                        i3 = iQ2 + 1;
+                        if (i3 < 0) {
+                            mj0.i("Illegal block with a negative literal size found");
+                            return 0;
+                        }
+                        this.x -= i3;
+                        j = i3;
+                        if (j < 0) {
+                            kf2.n("length must not be negative");
+                            return 0;
+                        }
+                        this.t = j;
+                        this.y = 2;
+                        break;
+                        break;
+                    default:
+                        i3 = iQ2 + 1;
+                        if (i3 < 0) {
+                            mj0.i("Illegal block with a negative literal size found");
+                            return 0;
+                        }
+                        this.x -= i3;
+                        j = i3;
+                        if (j < 0) {
+                            kf2.n("length must not be negative");
+                            return 0;
+                        }
+                        this.t = j;
+                        this.y = 2;
+                        break;
+                        break;
+                }
+            } else if (i5 == 1) {
+                int i6 = ((iQ >> 2) & 7) + 4;
+                if (i6 < 0) {
+                    mj0.i("Illegal block with a negative match length found");
+                    return 0;
+                }
+                this.x -= i6;
+                int i7 = (iQ & 224) << 3;
+                int iQ3 = q();
+                if (iQ3 == -1) {
+                    mj0.i("Premature end of stream reading back-reference length");
+                    return 0;
+                }
+                try {
+                    s(i7 | iQ3, i6);
+                    this.y = 3;
+                } catch (IllegalArgumentException e) {
+                    throw new IOException("Illegal block with bad offset found", e);
+                }
+            } else if (i5 == 2) {
+                int i8 = (iQ >> 2) + 1;
+                if (i8 < 0) {
+                    mj0.i("Illegal block with a negative match length found");
+                    return 0;
+                }
+                this.x -= i8;
+                try {
+                    s((int) gh0.k(hg3Var, 2), i8);
+                    this.y = 3;
+                } catch (IllegalArgumentException e2) {
+                    throw new IOException("Illegal block with bad offset found", e2);
+                }
+            } else if (i5 == 3) {
+                int i9 = (iQ >> 2) + 1;
+                if (i9 < 0) {
+                    mj0.i("Illegal block with a negative match length found");
+                    return 0;
+                }
+                this.x -= i9;
+                try {
+                    s(((int) gh0.k(hg3Var, 4)) & Integer.MAX_VALUE, i9);
+                    this.y = 3;
+                } catch (IllegalArgumentException e3) {
+                    throw new IOException("Illegal block with bad offset found", e3);
+                }
+            }
+        }
+        return read(bArr, i, i2);
     }
 }

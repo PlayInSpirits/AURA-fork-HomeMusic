@@ -8,9 +8,6 @@ public final class AudioTrack {
     private String languageCode;
     private String name;
 
-    public AudioTrack() {
-    }
-
     public final String getId() {
         return this.id;
     }
@@ -23,15 +20,15 @@ public final class AudioTrack {
         return this.name;
     }
 
-    public final void setId(String r1) {
-        this.id = r1;
+    public final void setId(String str) {
+        this.id = str;
     }
 
-    public final void setLanguageCode(String r1) {
-        this.languageCode = r1;
+    public final void setLanguageCode(String str) {
+        this.languageCode = str;
     }
 
-    public final void setName(String r1) {
-        this.name = r1;
+    public final void setName(String str) {
+        this.name = str;
     }
 }

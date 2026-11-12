@@ -7,8 +7,8 @@ import java.lang.ref.WeakReference;
 public final class zu3 extends WeakReference {
     public final Object a;
 
-    public zu3(bv3 r1, Object r2) {
-        super(r1);
-        this.a = r2;
+    public zu3(bv3 bv3Var, Object obj) {
+        super(bv3Var);
+        this.a = obj;
     }
 }

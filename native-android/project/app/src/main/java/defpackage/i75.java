@@ -8,45 +8,44 @@ public final class i75 extends fw3 {
     public final /* synthetic */ int a;
     public final /* synthetic */ Object b;
 
-    public /* synthetic */ i75(int r1, Object r2) {
-        this.a = r1;
-        this.b = r2;
+    public /* synthetic */ i75(int i, Object obj) {
+        this.a = i;
+        this.b = obj;
     }
 
     @Override // defpackage.fw3
     public final void a() {
-        int r0 = this.a;
-        Object r1 = this.b;
-        switch(r0) {
-            case 0: goto L6;
-            default: goto L4;
-        };
-    L4:
-        ((ss0) r1).H();
-        return;
-    L6:
-        ViewPager2 r2 = (ViewPager2) r1;
-        r2.r = true;
-        r2.y.l = true;
+        int i = this.a;
+        Object obj = this.b;
+        switch (i) {
+            case 0:
+                ViewPager2 viewPager2 = (ViewPager2) obj;
+                viewPager2.r = true;
+                viewPager2.y.l = true;
+                break;
+            default:
+                ((ss0) obj).H();
+                break;
+        }
     }
 
     @Override // defpackage.fw3
-    public final void b(int r1, int r2, Object r3) {
+    public final void b(int i, int i2, Object obj) {
         a();
     }
 
     @Override // defpackage.fw3
-    public final void c(int r1, int r2) {
+    public final void c(int i, int i2) {
         a();
     }
 
     @Override // defpackage.fw3
-    public final void d(int r1, int r2) {
+    public final void d(int i, int i2) {
         a();
     }
 
     @Override // defpackage.fw3
-    public final void e(int r1, int r2) {
+    public final void e(int i, int i2) {
         a();
     }
 }

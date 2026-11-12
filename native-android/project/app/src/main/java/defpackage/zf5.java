@@ -8,13 +8,13 @@ import com.google.android.gms.common.api.internal.BasePendingResult;
 public final class zf5 extends BasePendingResult {
     public final Status k;
 
-    public zf5(Status r2) {
+    public zf5(Status status) {
         super(null);
-        this.k = r2;
+        this.k = status;
     }
 
     @Override // com.google.android.gms.common.api.internal.BasePendingResult
-    public final t14 b(Status r1) {
+    public final t14 b(Status status) {
         return this.k;
     }
 }

@@ -6,8 +6,8 @@ public final /* synthetic */ class cg0 {
     public final /* synthetic */ int a;
     public final /* synthetic */ if1 b;
 
-    public /* synthetic */ cg0(if1 r1, int r2) {
-        this.a = r2;
-        this.b = r1;
+    public /* synthetic */ cg0(if1 if1Var, int i) {
+        this.a = i;
+        this.b = if1Var;
     }
 }

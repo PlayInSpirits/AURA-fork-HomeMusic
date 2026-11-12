@@ -9,13 +9,14 @@ public final class ui extends cx3 {
     public final yc5 u;
     public final /* synthetic */ vi v;
 
-    public ui(vi r2, yc5 r3) {
-        this.v = r2;
-        ConstraintLayout r4 = (ConstraintLayout) r3.n;
-        super(r4);
-        this.u = r3;
-        ((TextView) r3.p).setSelected(true);
-        r4.setOnClickListener(new p6(4, this));
-        r4.setOnLongClickListener(new q6(4, this));
+    /* JADX WARN: Illegal instructions before constructor call */
+    public ui(vi viVar, yc5 yc5Var) {
+        this.v = viVar;
+        ConstraintLayout constraintLayout = (ConstraintLayout) yc5Var.n;
+        super(constraintLayout);
+        this.u = yc5Var;
+        ((TextView) yc5Var.p).setSelected(true);
+        constraintLayout.setOnClickListener(new p6(4, this));
+        constraintLayout.setOnLongClickListener(new q6(4, this));
     }
 }

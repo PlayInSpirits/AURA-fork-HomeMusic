@@ -7,22 +7,16 @@ import android.view.animation.Interpolator;
 public final class c22 implements Interpolator {
     public final /* synthetic */ int a;
 
-    public /* synthetic */ c22(int r1) {
-        this.a = r1;
-    }
-
     @Override // android.animation.TimeInterpolator
-    public final float getInterpolation(float r2) {
-        switch(this.a) {
-            case 0: goto L7;
-            case 1: goto L4;
-            case 2: goto L4;
-            default: goto L4;
-        };
-    L4:
-        float r3 = r2 - 1.0f;
-        return ((((r3 * r3) * r3) * r3) * r3) + 1.0f;
-    L7:
-        return (((r2 * r2) * r2) * r2) * r2;
+    public final float getInterpolation(float f) {
+        switch (this.a) {
+            case 0:
+                return f * f * f * f * f;
+            case 1:
+            case 2:
+            default:
+                float f2 = f - 1.0f;
+                return (f2 * f2 * f2 * f2 * f2) + 1.0f;
+        }
     }
 }

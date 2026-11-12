@@ -11,21 +11,19 @@ public final class k85 extends AnimatorListenerAdapter implements bx4 {
     public final View a;
     public final int b;
     public final ViewGroup c;
-    public final boolean d;
     public boolean e;
-    public boolean f;
+    public boolean f = false;
+    public final boolean d = true;
 
-    public k85(View r2, int r3) {
-        this.f = false;
-        this.a = r2;
-        this.b = r3;
-        this.c = (ViewGroup) r2.getParent();
-        this.d = true;
+    public k85(View view, int i) {
+        this.a = view;
+        this.b = i;
+        this.c = (ViewGroup) view.getParent();
         f(true);
     }
 
     @Override // defpackage.bx4
-    public final void a(dx4 r1) {
+    public final void a(dx4 dx4Var) {
     }
 
     @Override // defpackage.bx4
@@ -34,16 +32,16 @@ public final class k85 extends AnimatorListenerAdapter implements bx4 {
     }
 
     @Override // defpackage.bx4
-    public final void c(dx4 r4) {
-        if (this.f == true) goto L7;
-        int r0 = this.b;
-        d85.a.W(this.a, r0);
-        ViewGroup r1 = this.c;
-        if (r1 == null) goto L7;
-        r1.invalidate();
-    L7:
+    public final void c(dx4 dx4Var) {
+        if (!this.f) {
+            d85.a.W(this.a, this.b);
+            ViewGroup viewGroup = this.c;
+            if (viewGroup != null) {
+                viewGroup.invalidate();
+            }
+        }
         f(false);
-        r4.u(this);
+        dx4Var.u(this);
     }
 
     @Override // defpackage.bx4
@@ -55,57 +53,53 @@ public final class k85 extends AnimatorListenerAdapter implements bx4 {
         f(true);
     }
 
-    public final void f(boolean r2) {
-        if (this.d == true) goto L5;
-        return;
-    L5:
-        if (this.e == r2) goto L11;
-        ViewGroup r0 = this.c;
-        if (r0 == null) goto L12;
-        this.e = r2;
-        fh0.y(r0, r2);
-        return;
-    L12:
-        return;
+    public final void f(boolean z) {
+        ViewGroup viewGroup;
+        if (!this.d || this.e == z || (viewGroup = this.c) == null) {
+            return;
+        }
+        this.e = z;
+        fh0.y(viewGroup, z);
     }
 
     @Override // android.animation.AnimatorListenerAdapter, android.animation.Animator.AnimatorListener
-    public final void onAnimationCancel(Animator r1) {
+    public final void onAnimationCancel(Animator animator) {
         this.f = true;
     }
 
     @Override // android.animation.AnimatorListenerAdapter, android.animation.Animator.AnimatorListener
-    public final void onAnimationEnd(Animator r3) {
-        if (this.f == true) goto L7;
-        int r4 = this.b;
-        d85.a.W(this.a, r4);
-        ViewGroup r5 = this.c;
-        if (r5 == null) goto L7;
-        r5.invalidate();
-    L7:
+    public final void onAnimationEnd(Animator animator) {
+        if (!this.f) {
+            d85.a.W(this.a, this.b);
+            ViewGroup viewGroup = this.c;
+            if (viewGroup != null) {
+                viewGroup.invalidate();
+            }
+        }
         f(false);
     }
 
     @Override // android.animation.AnimatorListenerAdapter, android.animation.Animator.AnimatorPauseListener
-    public final void onAnimationPause(Animator r2) {
-        if (this.f == true) goto L6;
-        int r3 = this.b;
-        d85.a.W(this.a, r3);
-        return;
+    public final void onAnimationPause(Animator animator) {
+        if (this.f) {
+            return;
+        }
+        d85.a.W(this.a, this.b);
     }
 
     @Override // android.animation.AnimatorListenerAdapter, android.animation.Animator.AnimatorListener
-    public final void onAnimationRepeat(Animator r1) {
+    public final void onAnimationRepeat(Animator animator) {
     }
 
     @Override // android.animation.AnimatorListenerAdapter, android.animation.Animator.AnimatorPauseListener
-    public final void onAnimationResume(Animator r2) {
-        if (this.f == true) goto L6;
+    public final void onAnimationResume(Animator animator) {
+        if (this.f) {
+            return;
+        }
         d85.a.W(this.a, 0);
-        return;
     }
 
     @Override // android.animation.AnimatorListenerAdapter, android.animation.Animator.AnimatorListener
-    public final void onAnimationStart(Animator r1) {
+    public final void onAnimationStart(Animator animator) {
     }
 }

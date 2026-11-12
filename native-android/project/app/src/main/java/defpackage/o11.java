@@ -11,72 +11,54 @@ public final class o11 implements q04 {
     public int s;
     public boolean t;
 
-    public o11(q04 r2, boolean r3, boolean r4, f42 r5, i11 r6) {
-        h12.f(r2, "Argument must not be null");
-        this.p = r2;
-        this.n = r3;
-        this.o = r4;
-        this.r = r5;
-        h12.f(r6, "Argument must not be null");
-        this.q = r6;
+    public o11(q04 q04Var, boolean z, boolean z2, f42 f42Var, i11 i11Var) {
+        h12.f(q04Var, "Argument must not be null");
+        this.p = q04Var;
+        this.n = z;
+        this.o = z2;
+        this.r = f42Var;
+        h12.f(i11Var, "Argument must not be null");
+        this.q = i11Var;
     }
 
     public final synchronized void a() {
-        monitor-enter(this);
-    L8:
-        th = move-exception;
-        throw th;
-    L4:
-        if (this.t == true) goto L11;
-        this.s++;     // Catch: Throwable -> L8
-        monitor-exit(this);
-        return;
-    L11:
-        throw new IllegalStateException("Cannot acquire a recycled resource");     // Catch: Throwable -> L8
+        if (this.t) {
+            throw new IllegalStateException("Cannot acquire a recycled resource");
+        }
+        this.s++;
     }
 
     @Override // defpackage.q04
     public final synchronized void b() {
-        monitor-enter(this);
-    L11:
-        th = move-exception;
-        throw th;
-    L4:
-        if (this.s > 0) goto L18;
-        if (this.t == true) goto L16;
-        this.t = true;     // Catch: Throwable -> L11
-        if (this.o == false) goto L13;
-        this.p.b();     // Catch: Throwable -> L11
-    L13:
-        monitor-exit(this);
-        return;
-    L16:
-        throw new IllegalStateException("Cannot recycle a resource that has already been recycled");     // Catch: Throwable -> L11
-    L18:
-        throw new IllegalStateException("Cannot recycle a resource while it is still acquired");     // Catch: Throwable -> L11
+        if (this.s > 0) {
+            throw new IllegalStateException("Cannot recycle a resource while it is still acquired");
+        }
+        if (this.t) {
+            throw new IllegalStateException("Cannot recycle a resource that has already been recycled");
+        }
+        this.t = true;
+        if (this.o) {
+            this.p.b();
+        }
     }
 
     public final void c() {
-        monitor-enter(this);
-        int r0 = this.s;     // Catch: Throwable -> L13
-        if (r0 <= 0) goto L16;
-        boolean r1 = true;
-        int r2 = r0 - 1;     // Catch: Throwable -> L13
-        this.s = r2;     // Catch: Throwable -> L13
-        if (r2 == 0) goto L9;
-        r1 = false;
-    L9:
-        monitor-exit(this);     // Catch: Throwable -> L13
-        if (r1 == false) goto L20;
-        this.q.e(this.r, this);
-        return;
-    L20:
-        return;
-    L16:
-        throw new IllegalStateException("Cannot release a recycled or not yet acquired resource");     // Catch: Throwable -> L13
-    L13:
-        th = move-exception;
-        throw th;
+        boolean z;
+        synchronized (this) {
+            int i = this.s;
+            if (i <= 0) {
+                throw new IllegalStateException("Cannot release a recycled or not yet acquired resource");
+            }
+            z = true;
+            int i2 = i - 1;
+            this.s = i2;
+            if (i2 != 0) {
+                z = false;
+            }
+        }
+        if (z) {
+            this.q.e(this.r, this);
+        }
     }
 
     @Override // defpackage.q04
@@ -95,12 +77,6 @@ public final class o11 implements q04 {
     }
 
     public final synchronized String toString() {
-        monitor-enter(this);
-        String r0 = "EngineResource{isMemoryCacheable=" + this.n + ", listener=" + this.q + ", key=" + this.r + ", acquired=" + this.s + ", isRecycled=" + this.t + ", resource=" + this.p + '}';     // Catch: Throwable -> L7
-        monitor-exit(this);
-        return r0;
-    L7:
-        th = move-exception;
-        throw th;
+        return "EngineResource{isMemoryCacheable=" + this.n + ", listener=" + this.q + ", key=" + this.r + ", acquired=" + this.s + ", isRecycled=" + this.t + ", resource=" + this.p + '}';
     }
 }

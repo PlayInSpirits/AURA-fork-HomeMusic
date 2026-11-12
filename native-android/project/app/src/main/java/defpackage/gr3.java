@@ -6,29 +6,20 @@ public final class gr3 {
     public final int a;
     public final boolean b;
 
-    public gr3(int r1, boolean r2) {
-        this.a = r1;
-        this.b = r2;
+    public gr3(int i, boolean z) {
+        this.a = i;
+        this.b = z;
     }
 
-    public final boolean equals(Object r3) {
-        if (this == r3) goto L16;
-        if (r3 != null) goto L6;
-        return false;
-    L6:
-        if (gr3.class != r3.getClass()) goto L19;
-        gr3 r4 = (gr3) r3;
-        if (this.a == r4.a) goto L11;
-        return false;
-    L11:
-        if (this.b != r4.b) goto L18;
-        return true;
-    L18:
-        return false;
-    L19:
-        return false;
-    L16:
-        return true;
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || gr3.class != obj.getClass()) {
+            return false;
+        }
+        gr3 gr3Var = (gr3) obj;
+        return this.a == gr3Var.a && this.b == gr3Var.b;
     }
 
     public final int hashCode() {

@@ -4,12 +4,12 @@ package defpackage;
 /* JADX INFO: loaded from: classes.dex */
 public final class yt4 extends cu4 {
     @Override // defpackage.cu4
-    public final int b(Object r1) {
+    public final int b(Object obj) {
         return -1;
     }
 
     @Override // defpackage.cu4
-    public final zt4 f(int r1, zt4 r2, boolean r3) {
+    public final zt4 f(int i, zt4 zt4Var, boolean z) {
         throw new IndexOutOfBoundsException();
     }
 
@@ -19,12 +19,12 @@ public final class yt4 extends cu4 {
     }
 
     @Override // defpackage.cu4
-    public final Object l(int r1) {
+    public final Object l(int i) {
         throw new IndexOutOfBoundsException();
     }
 
     @Override // defpackage.cu4
-    public final bu4 m(int r1, bu4 r2, long r3) {
+    public final bu4 m(int i, bu4 bu4Var, long j) {
         throw new IndexOutOfBoundsException();
     }
 

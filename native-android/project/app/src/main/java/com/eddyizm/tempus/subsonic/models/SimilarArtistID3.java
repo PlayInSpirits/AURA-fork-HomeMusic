@@ -8,11 +8,7 @@ import defpackage.j84;
 /* JADX INFO: loaded from: classes.dex */
 public final class SimilarArtistID3 extends ArtistID3 implements Parcelable {
     public static final int $stable = 8;
-    public static final Parcelable.Creator<SimilarArtistID3> CREATOR = null;
-
-    static {
-        CREATOR = new j84(3);
-    }
+    public static final Parcelable.Creator<SimilarArtistID3> CREATOR = new j84(3);
 
     public SimilarArtistID3() {
         super(null, null, null, 0, null, 31, null);
@@ -24,8 +20,8 @@ public final class SimilarArtistID3 extends ArtistID3 implements Parcelable {
     }
 
     @Override // com.eddyizm.tempus.subsonic.models.ArtistID3, android.os.Parcelable
-    public final void writeToParcel(Parcel r1, int r2) {
-        r1.getClass();
-        r1.writeInt(1);
+    public final void writeToParcel(Parcel parcel, int i) {
+        parcel.getClass();
+        parcel.writeInt(1);
     }
 }

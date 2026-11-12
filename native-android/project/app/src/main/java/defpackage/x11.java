@@ -11,50 +11,46 @@ public final /* synthetic */ class x11 implements View.OnClickListener {
     public final /* synthetic */ int n;
     public final /* synthetic */ EqualizerFragment o;
 
-    public /* synthetic */ x11(EqualizerFragment r1, int r2) {
-        this.n = r2;
-        this.o = r1;
+    public /* synthetic */ x11(EqualizerFragment equalizerFragment, int i) {
+        this.n = i;
+        this.o = equalizerFragment;
     }
 
     @Override // android.view.View.OnClickListener
-    public final void onClick(View r7) {
-        int r8 = this.n;
-        EqualizerFragment r6 = this.o;
-        switch(r8) {
-            case 0: goto L10;
-            default: goto L4;
-        };
-    L4:
-        MainActivity r9 = r6.l0;
-        if (r9 == null) goto L8;
-        r9.T.o();
-        return;
-    L8:
-        h12.Q("activity");
-        throw null;
-    L10:
-        wo0 r10 = r6.n0;
-        if (r10 == null) goto L23;
-        v11 r11 = (v11) r10.n;
-        int r0 = r11.b();
-        short[] r1 = r11.d();
-        if (r1 != null) goto L16;
-        r1 = new short[]{-1500, 1500};
-    L16:
-        int r2 = r1[0] / 100;
-        int r3 = 0;
-    L17:
-        if (r3 >= r0) goto L22;
-        r11.v((short) r3, 0);
-        SeekBar r4 = (SeekBar) q40.y0(r6.s0, r3);
-        if (r4 == null) goto L21;
-        r4.setProgress(0 - r2);
-    L21:
-        r3 = r3 + 1;
-        goto L17
-    L22:
-        ud3.k0(new short[r0]);
-    L23:
-        r6.k0();
+    public final void onClick(View view) {
+        int i = this.n;
+        EqualizerFragment equalizerFragment = this.o;
+        switch (i) {
+            case 0:
+                wo0 wo0Var = equalizerFragment.n0;
+                if (wo0Var != null) {
+                    v11 v11Var = (v11) wo0Var.n;
+                    int iB = v11Var.b();
+                    short[] sArrD = v11Var.d();
+                    if (sArrD == null) {
+                        sArrD = new short[]{-1500, 1500};
+                    }
+                    int i2 = sArrD[0] / 100;
+                    for (int i3 = 0; i3 < iB; i3++) {
+                        v11Var.v((short) i3, (short) 0);
+                        SeekBar seekBar = (SeekBar) q40.y0(equalizerFragment.s0, i3);
+                        if (seekBar != null) {
+                            seekBar.setProgress(0 - i2);
+                        }
+                    }
+                    ud3.k0(new short[iB]);
+                }
+                equalizerFragment.k0();
+                return;
+            default:
+                MainActivity mainActivity = equalizerFragment.l0;
+                if (mainActivity != null) {
+                    mainActivity.T.o();
+                    return;
+                } else {
+                    h12.Q("activity");
+                    throw null;
+                }
+        }
     }
 }

@@ -7,13 +7,9 @@ import java.util.ArrayDeque;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class n21 extends InputStream {
-    public static final ArrayDeque p = null;
+    public static final ArrayDeque p = new ArrayDeque(0);
     public aw3 n;
     public IOException o;
-
-    static {
-        p = new ArrayDeque(0);
-    }
 
     @Override // java.io.InputStream
     public final int available() {
@@ -21,13 +17,13 @@ public final class n21 extends InputStream {
     }
 
     @Override // java.io.InputStream, java.io.Closeable, java.lang.AutoCloseable
-    public final void close() {
+    public final void close() throws IOException {
         this.n.close();
     }
 
     @Override // java.io.InputStream
-    public final void mark(int r1) {
-        this.n.mark(r1);
+    public final void mark(int i) {
+        this.n.mark(i);
     }
 
     @Override // java.io.InputStream
@@ -37,49 +33,47 @@ public final class n21 extends InputStream {
     }
 
     @Override // java.io.InputStream
-    public final int read() {
-        return this.n.read();
-    L4:
-        e = move-exception;
-        this.o = e;
-        throw e;
+    public final int read() throws IOException {
+        try {
+            return this.n.read();
+        } catch (IOException e) {
+            this.o = e;
+            throw e;
+        }
     }
 
     @Override // java.io.InputStream
     public final synchronized void reset() {
-        monitor-enter(this);
-        this.n.reset();     // Catch: Throwable -> L6
-        monitor-exit(this);
-        return;
-    L6:
-        th = move-exception;
-        throw th;
+        this.n.reset();
     }
 
     @Override // java.io.InputStream
-    public final long skip(long r2) {
-        return this.n.skip(r2);
-    L4:
-        e = move-exception;
-        this.o = e;
-        throw e;
+    public final long skip(long j) throws IOException {
+        try {
+            return this.n.skip(j);
+        } catch (IOException e) {
+            this.o = e;
+            throw e;
+        }
     }
 
     @Override // java.io.InputStream
-    public final int read(byte[] r2) {
-        return this.n.read(r2);
-    L4:
-        e = move-exception;
-        this.o = e;
-        throw e;
+    public final int read(byte[] bArr) throws IOException {
+        try {
+            return this.n.read(bArr);
+        } catch (IOException e) {
+            this.o = e;
+            throw e;
+        }
     }
 
     @Override // java.io.InputStream
-    public final int read(byte[] r2, int r3, int r4) {
-        return this.n.read(r2, r3, r4);
-    L4:
-        e = move-exception;
-        this.o = e;
-        throw e;
+    public final int read(byte[] bArr, int i, int i2) throws IOException {
+        try {
+            return this.n.read(bArr, i, i2);
+        } catch (IOException e) {
+            this.o = e;
+            throw e;
+        }
     }
 }

@@ -2,7 +2,6 @@ package defpackage;
 
 import java.text.Normalizer;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -10,95 +9,86 @@ import java.util.Map;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public abstract class qn1 {
-    public static final ux3 a = null;
-    public static final ux3 b = null;
-    public static final Map c = null;
+    public static final ux3 a = new ux3("\\p{Mn}+");
+    public static final ux3 b = new ux3("[^\\p{L}\\p{N}]+");
+    public static final Map c = lg2.X(new kd3((char) 1072, "a"), new kd3((char) 1073, "b"), new kd3((char) 1074, "v"), new kd3((char) 1075, "g"), new kd3((char) 1076, "d"), new kd3((char) 1077, "e"), new kd3((char) 1078, "zh"), new kd3((char) 1079, "z"), new kd3((char) 1080, "i"), new kd3((char) 1081, "i"), new kd3((char) 1082, "k"), new kd3((char) 1083, "l"), new kd3((char) 1084, "m"), new kd3((char) 1085, "n"), new kd3((char) 1086, "o"), new kd3((char) 1087, "p"), new kd3((char) 1088, "r"), new kd3((char) 1089, "s"), new kd3((char) 1090, "t"), new kd3((char) 1091, "u"), new kd3((char) 1092, "f"), new kd3((char) 1093, "h"), new kd3((char) 1094, "c"), new kd3((char) 1095, "ch"), new kd3((char) 1096, "sh"), new kd3((char) 1097, "sh"), new kd3((char) 1098, ""), new kd3((char) 1099, "y"), new kd3((char) 1100, ""), new kd3((char) 1101, "e"), new kd3((char) 1102, "yu"), new kd3((char) 1103, "ya"));
 
-    static {
-        a = new ux3("\\p{Mn}+");
-        b = new ux3("[^\\p{L}\\p{N}]+");
-        c = lg2.X(new kd3[]{new kd3((char) 1072, "a"), new kd3((char) 1073, "b"), new kd3((char) 1074, "v"), new kd3((char) 1075, "g"), new kd3((char) 1076, "d"), new kd3((char) 1077, "e"), new kd3((char) 1078, "zh"), new kd3((char) 1079, "z"), new kd3((char) 1080, "i"), new kd3((char) 1081, "i"), new kd3((char) 1082, "k"), new kd3((char) 1083, "l"), new kd3((char) 1084, "m"), new kd3((char) 1085, "n"), new kd3((char) 1086, "o"), new kd3((char) 1087, "p"), new kd3((char) 1088, "r"), new kd3((char) 1089, "s"), new kd3((char) 1090, "t"), new kd3((char) 1091, "u"), new kd3((char) 1092, "f"), new kd3((char) 1093, "h"), new kd3((char) 1094, "c"), new kd3((char) 1095, "ch"), new kd3((char) 1096, "sh"), new kd3((char) 1097, "sh"), new kd3((char) 1098, ""), new kd3((char) 1099, "y"), new kd3((char) 1100, ""), new kd3((char) 1101, "e"), new kd3((char) 1102, "yu"), new kd3((char) 1103, "ya")});
-    }
-
-    public static boolean a(String r6, String r7) {
-        r7.getClass();
-        List r8 = qm4.D0(b(r7), new char[]{' '});
-        ArrayList r1 = new ArrayList();
-        Iterator r9 = r8.iterator();
-    L4:
-        if (r9.hasNext() == false) goto L9;
-        Object r2 = r9.next();
-        if (((String) r2).length() <= 0) goto L4;
-        r1.add(r2);
-        goto L4
-    L9:
-        if (r1.isEmpty() == true) goto L29;
-        String r10 = b(r6);
-        String r11 = c(r10);
-        if (r1.isEmpty() == true) goto L29;
-        int r3 = r1.size();
-        int r4 = 0;
-    L15:
-        if (r4 >= r3) goto L29;
-        Object r5 = r1.get(r4);
-        r4 = r4 + 1;
-        if (qm4.o0(r10, (String) r5) == true) goto L15;
-        ArrayList r12 = new ArrayList(r40.k0(r1, 10));
-        int r13 = r1.size();
-        int r14 = 0;
-    L19:
-        if (r14 >= r13) goto L22;
-        Object r15 = r1.get(r14);
-        r14 = r14 + 1;
-        r12.add(c((String) r15));
-        goto L19
-    L22:
-        if (r12.isEmpty() == true) goto L29;
-        int r16 = r12.size();
-        int r17 = 0;
-    L25:
-        if (r17 >= r16) goto L29;
-        Object r18 = r12.get(r17);
-        r17 = r17 + 1;
-        if (qm4.o0(r11, (String) r18) == true) goto L25;
-        return false;
-    L29:
+    public static boolean a(String str, String str2) {
+        str2.getClass();
+        List listD0 = qm4.D0(b(str2), new char[]{' '});
+        ArrayList arrayList = new ArrayList();
+        for (Object obj : listD0) {
+            if (((String) obj).length() > 0) {
+                arrayList.add(obj);
+            }
+        }
+        if (!arrayList.isEmpty()) {
+            String strB = b(str);
+            String strC = c(strB);
+            if (!arrayList.isEmpty()) {
+                int size = arrayList.size();
+                int i = 0;
+                while (i < size) {
+                    Object obj2 = arrayList.get(i);
+                    i++;
+                    if (!qm4.o0(strB, (String) obj2)) {
+                        ArrayList arrayList2 = new ArrayList(r40.k0(arrayList, 10));
+                        int size2 = arrayList.size();
+                        int i2 = 0;
+                        while (i2 < size2) {
+                            Object obj3 = arrayList.get(i2);
+                            i2++;
+                            arrayList2.add(c((String) obj3));
+                        }
+                        if (!arrayList2.isEmpty()) {
+                            int size3 = arrayList2.size();
+                            int i3 = 0;
+                            while (i3 < size3) {
+                                Object obj4 = arrayList2.get(i3);
+                                i3++;
+                                if (!qm4.o0(strC, (String) obj4)) {
+                                    return false;
+                                }
+                            }
+                            break;
+                        }
+                        break;
+                    }
+                }
+            }
+        }
         return true;
     }
 
-    public static String b(String r3) {
-        String r4 = r3.toLowerCase(Locale.ROOT);
-        r4.getClass();
-        String r5 = r4.replace(1105, 1077);
-        r5.getClass();
-        String r6 = r5.replace(1081, 1);
-        r6.getClass();
-        String r7 = Normalizer.normalize(r6, Normalizer.Form.NFD);
-        r7.getClass();
-        String r8 = a.n.matcher(r7).replaceAll("");
-        r8.getClass();
-        String r9 = r8.replace(1, 1081);
-        r9.getClass();
-        String r10 = b.n.matcher(r9).replaceAll(" ");
-        r10.getClass();
-        return qm4.K0(r10).toString();
+    public static String b(String str) {
+        String lowerCase = str.toLowerCase(Locale.ROOT);
+        lowerCase.getClass();
+        String strReplace = lowerCase.replace((char) 1105, (char) 1077);
+        strReplace.getClass();
+        String strReplace2 = strReplace.replace((char) 1081, (char) 1);
+        strReplace2.getClass();
+        String strNormalize = Normalizer.normalize(strReplace2, Normalizer.Form.NFD);
+        strNormalize.getClass();
+        String strReplaceAll = a.n.matcher(strNormalize).replaceAll("");
+        strReplaceAll.getClass();
+        String strReplace3 = strReplaceAll.replace((char) 1, (char) 1081);
+        strReplace3.getClass();
+        String strReplaceAll2 = b.n.matcher(strReplace3).replaceAll(" ");
+        strReplaceAll2.getClass();
+        return qm4.K0(strReplaceAll2).toString();
     }
 
-    public static String c(String r6) {
-        StringBuilder r0 = new StringBuilder();
-        int r1 = r6.length();
-        int r2 = 0;
-    L3:
-        if (r2 >= r1) goto L9;
-        char r3 = r6.charAt(r2);
-        Object r4 = (String) c.get(Character.valueOf(r3));
-        if (r4 != null) goto L7;
-        r4 = Character.valueOf(r3);
-    L7:
-        r0.append(r4);
-        r2 = r2 + 1;
-        goto L3
-    L9:
-        return r0.toString();
+    public static String c(String str) {
+        StringBuilder sb = new StringBuilder();
+        int length = str.length();
+        for (int i = 0; i < length; i++) {
+            char cCharAt = str.charAt(i);
+            Object objValueOf = (String) c.get(Character.valueOf(cCharAt));
+            if (objValueOf == null) {
+                objValueOf = Character.valueOf(cCharAt);
+            }
+            sb.append(objValueOf);
+        }
+        return sb.toString();
     }
 }

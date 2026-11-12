@@ -9,35 +9,38 @@ import java.util.concurrent.atomic.AtomicReference;
 /* JADX INFO: loaded from: classes.dex */
 public final class g31 implements wv1 {
     @Override // defpackage.wv1
-    public final ImageHeaderParser$ImageType a(ByteBuffer r1) {
+    public final ImageHeaderParser$ImageType a(ByteBuffer byteBuffer) {
         return ImageHeaderParser$ImageType.UNKNOWN;
     }
 
     @Override // defpackage.wv1
-    public final int b(InputStream r1, qj0 r2) {
-        f31 r0 = new f31(r1);
-        b31 r3 = r0.c("Orientation");
-        if (r3 != null) goto L12;
-    L7:
-        int r4 = 1;
-    L8:
-        if (r4 != 0) goto L14;
-        return -1;
-    L14:
-        return r4;
-    L12:
-        r4 = r3.e(r0.f);     // Catch: NumberFormatException -> L11
-        goto L8
+    public final int b(InputStream inputStream, qj0 qj0Var) {
+        int iE;
+        f31 f31Var = new f31(inputStream);
+        b31 b31VarC = f31Var.c("Orientation");
+        if (b31VarC == null) {
+            iE = 1;
+        } else {
+            try {
+                iE = b31VarC.e(f31Var.f);
+            } catch (NumberFormatException unused) {
+                iE = 1;
+            }
+        }
+        if (iE == 0) {
+            return -1;
+        }
+        return iE;
     }
 
     @Override // defpackage.wv1
-    public final int c(ByteBuffer r2, qj0 r3) {
-        AtomicReference r0 = vw.a;
-        return b(new uw(r2), r3);
+    public final int c(ByteBuffer byteBuffer, qj0 qj0Var) {
+        AtomicReference atomicReference = vw.a;
+        return b(new uw(byteBuffer), qj0Var);
     }
 
     @Override // defpackage.wv1
-    public final ImageHeaderParser$ImageType d(InputStream r1) {
+    public final ImageHeaderParser$ImageType d(InputStream inputStream) {
         return ImageHeaderParser$ImageType.UNKNOWN;
     }
 }

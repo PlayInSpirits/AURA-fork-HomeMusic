@@ -8,33 +8,29 @@ public final class tu4 {
     public final double a;
     public final double b;
 
-    public tu4(double r2, double r4) {
+    public tu4(double d, double d2) {
         new HashMap();
-        this.a = r2;
-        this.b = r4;
+        this.a = d;
+        this.b = d2;
     }
 
-    public static tu4 a(double r16, double r18) {
-        ol1 r7 = ol1.a(r16, r18, 50.0d);
-        double r12 = Math.abs(r7.b - r18);
-        double r14 = 1.0d;
-    L4:
-        if (r14 >= 50.0d) goto L17;
-        if (Math.round(r18) == Math.round(r7.b)) goto L17;
-        ol1 r4 = ol1.a(r16, r18, 50.0d + r14);
-        double r0 = Math.abs(r4.b - r18);
-        if (r0 >= r12) goto L11;
-        r12 = r0;
-        r7 = r4;
-    L11:
-        ol1 r5 = ol1.a(r16, r18, 50.0d - r14);
-        double r1 = Math.abs(r5.b - r18);
-        if (r1 >= r12) goto L14;
-        r12 = r1;
-        r7 = r5;
-    L14:
-        r14 = r14 + 1.0d;
-    L17:
-        return new tu4(r16, r18);
+    public static tu4 a(double d, double d2) {
+        ol1 ol1VarA = ol1.a(d, d2, 50.0d);
+        double dAbs = Math.abs(ol1VarA.b - d2);
+        for (double d3 = 1.0d; d3 < 50.0d && Math.round(d2) != Math.round(ol1VarA.b); d3 += 1.0d) {
+            ol1 ol1VarA2 = ol1.a(d, d2, 50.0d + d3);
+            double dAbs2 = Math.abs(ol1VarA2.b - d2);
+            if (dAbs2 < dAbs) {
+                dAbs = dAbs2;
+                ol1VarA = ol1VarA2;
+            }
+            ol1 ol1VarA3 = ol1.a(d, d2, 50.0d - d3);
+            double dAbs3 = Math.abs(ol1VarA3.b - d2);
+            if (dAbs3 < dAbs) {
+                dAbs = dAbs3;
+                ol1VarA = ol1VarA3;
+            }
+        }
+        return new tu4(d, d2);
     }
 }

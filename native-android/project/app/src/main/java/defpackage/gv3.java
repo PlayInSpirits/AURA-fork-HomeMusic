@@ -1,5 +1,6 @@
 package defpackage;
 
+import java.io.IOException;
 import java.net.Inet6Address;
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
@@ -33,334 +34,319 @@ public final class gv3 implements r34 {
     public x7 y;
     public s34 z;
 
-    public gv3(gr4 r1, dv3 r2, int r3, int r4, int r5, int r6, boolean r7, boolean r8, f6 r9, rm2 r10, hy r11) {
-        r1.getClass();
-        r2.getClass();
-        r9.getClass();
-        r10.getClass();
-        r11.getClass();
-        this.n = r1;
-        this.o = r2;
-        this.p = r3;
-        this.q = r4;
-        this.r = r5;
-        this.s = r6;
-        this.t = r7;
-        this.u = r8;
-        this.v = r9;
-        this.w = r10;
-        this.x = r11;
+    public gv3(gr4 gr4Var, dv3 dv3Var, int i, int i2, int i3, int i4, boolean z, boolean z2, f6 f6Var, rm2 rm2Var, hy hyVar) {
+        gr4Var.getClass();
+        dv3Var.getClass();
+        f6Var.getClass();
+        rm2Var.getClass();
+        hyVar.getClass();
+        this.n = gr4Var;
+        this.o = dv3Var;
+        this.p = i;
+        this.q = i2;
+        this.r = i3;
+        this.s = i4;
+        this.t = z;
+        this.u = z2;
+        this.v = f6Var;
+        this.w = rm2Var;
+        this.x = hyVar;
         this.B = new ii();
     }
 
-    public final x90 a() {
-        o34 r0 = this.A;
-        if (r0 == null) goto L6;
-        this.A = null;
-        return b(r0, null);
-    L6:
-        x7 r1 = this.y;
-        if (r1 != null) goto L9;
-    L16:
-        s34 r2 = this.z;
-        if (r2 != null) goto L20;
-        r2 = new s34(this.v, this.w, this.x, this.u);
-        this.z = r2;
-    L20:
-        if (r2.a() == true) goto L22;
-        mj0.i("exhausted all routes");
-        return null;
-    L22:
-        if (r2.a() == false) goto L130;
-        ArrayList r3 = new ArrayList();
-    L25:
-        if (r2.f >= r2.e.size()) goto L118;
-        f6 r4 = r2.a;
-        if (r2.f >= r2.e.size()) goto L116;
-        List r5 = r2.e;
-        int r6 = r2.f;
-        r2.f = r6 + 1;
-        Proxy r7 = (Proxy) r5.get(r6);
-        hy r8 = r2.c;
-        ArrayList r9 = new ArrayList();
-        r2.g = r9;
-        if (r7.type() != Proxy.Type.DIRECT) goto L31;
-    L42:
-        gr1 r10 = r4.h;
-        String r11 = r10.d;
-        int r12 = r10.e;
-    L44:
-        if (1 > r12) goto L114;
-        if (r12 >= 65536) goto L114;
-        if (r7.type() != Proxy.Type.SOCKS) goto L50;
-        r9.add(InetSocketAddress.createUnresolved(r11, r12));
-    L92:
-        Iterator r13 = r2.g.iterator();
-    L94:
-        if (r13.hasNext() == false) goto L106;
-        o34 r14 = new o34(r2.a, r7, (InetSocketAddress) r13.next());
-        rm2 r15 = r2.b;
-        monitor-enter(r15);
-        boolean r16 = ((LinkedHashSet) r15.o).contains(r14);     // Catch: Throwable -> L102
-        monitor-exit(r15);
-        if (r16 == true) goto L100;
-        r3.add(r14);
-        goto L94
-    L100:
-        r2.h.add(r14);
-    L102:
-        th = move-exception;
-        throw th;
-    L106:
-        if (r3.isEmpty() == true) goto L25;
-    L50:
-        ux3 r17 = ue5.a;
-        r11.getClass();
-        if (ue5.a.a(r11) == false) goto L53;
-        List r18 = gb.O(InetAddress.getByName(r11));
-    L59:
-        if (r2.d == true) goto L61;
-    L88:
-        Iterator r19 = r18.iterator();
-    L90:
-        if (r19.hasNext() == false) goto L92;
-        r9.add(new InetSocketAddress((InetAddress) r19.next(), r12));
-        goto L90
-    L61:
-        if (r18.size() < 2) goto L88;
-        ArrayList r20 = new ArrayList();
-        ArrayList r21 = new ArrayList();
-        Iterator r22 = r18.iterator();
-    L65:
-        if (r22.hasNext() == false) goto L71;
-        Object r110 = r22.next();
-        if ((((InetAddress) r110) instanceof Inet6Address) == true) goto L68;
-        r21.add(r110);
-        goto L65
-    L68:
-        r20.add(r110);
-        goto L65
-    L71:
-        if (r20.isEmpty() == true) goto L88;
-        if (r21.isEmpty() == true) goto L88;
-        byte[] r23 = xe5.a;
-        Iterator r24 = r20.iterator();
-        Iterator r25 = r21.iterator();
-        qb2 r26 = gb.r();
-    L77:
-        if (r24.hasNext() == true) goto L83;
-        if (r25.hasNext() == true) goto L83;
-        r18 = gb.f(r26);
-    L83:
-        if (r24.hasNext() == false) goto L86;
-        r26.add(r24.next());
-    L86:
-        if (r25.hasNext() == false) goto L77;
-        r26.add(r25.next());
-        goto L77
-    L53:
-        r8.getClass();
-        r4.a.getClass();
-        InetAddress[] r27 = InetAddress.getAllByName(r11);     // Catch: NullPointerException -> L110
-        r27.getClass();     // Catch: NullPointerException -> L110
-        List r28 = ti.r0(r27);     // Catch: NullPointerException -> L110
-        if (r28.isEmpty() == true) goto L109;
-        r18 = r28;
-        goto L59
-    L109:
-        throw new UnknownHostException(r4.a + " returned no addresses for " + r11);
-    L110:
-        e = move-exception;
-        UnknownHostException r29 = new UnknownHostException("Broken system behaviour for dns lookup of ".concat(r11));
-        r29.initCause(e);
-        throw r29;
-    L114:
-        throw new SocketException("No route to " + r11 + ':' + r12 + "; port is out of range");
-    L31:
-        if (r7.type() == Proxy.Type.SOCKS) goto L42;
-        SocketAddress r30 = r7.address();
-        if ((r30 instanceof InetSocketAddress) == false) goto L40;
-        InetSocketAddress r31 = (InetSocketAddress) r30;
-        InetAddress r32 = r31.getAddress();
-        if (r32 != null) goto L38;
-        r11 = r31.getHostName();
-        r11.getClass();
-    L39:
-        r12 = r31.getPort();
-        goto L44
-    L38:
-        r11 = r32.getHostAddress();
-        r11.getClass();
-        goto L39
-    L40:
-        nz2.l(r30.getClass(), "Proxy.address() is not an InetSocketAddress: ");
-        return null;
-    L116:
-        throw new SocketException("No route to " + r4.h.d + "; exhausted proxy configurations: " + r2.e);
-    L118:
-        if (r3.isEmpty() == false) goto L120;
-        v40.n0(r2.h, r3);
-        r2.h.clear();
-    L120:
-        x7 r33 = new x7(r3);
-        this.y = r33;
-        if (this.x.m() == false) goto L123;
-        mj0.i("Canceled");
-        return null;
-    L123:
-        if (r33.o >= r3.size()) goto L126;
-        int r34 = r33.o;
-        r33.o = r34 + 1;
-        return b((o34) r3.get(r34), r3);
-    L126:
-        tb4.k();
-        return null;
-    L130:
-        tb4.k();
-        return null;
-    L9:
-        if (r1.o >= ((ArrayList) r1.p).size()) goto L16;
-        int r35 = r1.o;
-        ArrayList r36 = (ArrayList) r1.p;
-        if (r35 >= r36.size()) goto L14;
-        int r37 = r1.o;
-        r1.o = r37 + 1;
-        return b((o34) r36.get(r37), null);
-    L14:
-        tb4.k();
-        return null;
+    public final x90 a() throws IOException {
+        String hostAddress;
+        int port;
+        List listF;
+        boolean zContains;
+        o34 o34Var = this.A;
+        if (o34Var != null) {
+            this.A = null;
+            return b(o34Var, null);
+        }
+        x7 x7Var = this.y;
+        if (x7Var != null && x7Var.o < ((ArrayList) x7Var.p).size()) {
+            int i = x7Var.o;
+            ArrayList arrayList = (ArrayList) x7Var.p;
+            if (i >= arrayList.size()) {
+                tb4.k();
+                return null;
+            }
+            int i2 = x7Var.o;
+            x7Var.o = i2 + 1;
+            return b((o34) arrayList.get(i2), null);
+        }
+        s34 s34Var = this.z;
+        if (s34Var == null) {
+            s34Var = new s34(this.v, this.w, this.x, this.u);
+            this.z = s34Var;
+        }
+        if (!s34Var.a()) {
+            mj0.i("exhausted all routes");
+            return null;
+        }
+        if (!s34Var.a()) {
+            tb4.k();
+            return null;
+        }
+        ArrayList arrayList2 = new ArrayList();
+        while (s34Var.f < s34Var.e.size()) {
+            f6 f6Var = s34Var.a;
+            if (s34Var.f >= s34Var.e.size()) {
+                throw new SocketException("No route to " + f6Var.h.d + "; exhausted proxy configurations: " + s34Var.e);
+            }
+            List list = s34Var.e;
+            int i3 = s34Var.f;
+            s34Var.f = i3 + 1;
+            Proxy proxy = (Proxy) list.get(i3);
+            hy hyVar = s34Var.c;
+            ArrayList arrayList3 = new ArrayList();
+            s34Var.g = arrayList3;
+            if (proxy.type() == Proxy.Type.DIRECT || proxy.type() == Proxy.Type.SOCKS) {
+                gr1 gr1Var = f6Var.h;
+                hostAddress = gr1Var.d;
+                port = gr1Var.e;
+            } else {
+                SocketAddress socketAddressAddress = proxy.address();
+                if (!(socketAddressAddress instanceof InetSocketAddress)) {
+                    nz2.l(socketAddressAddress.getClass(), "Proxy.address() is not an InetSocketAddress: ");
+                    return null;
+                }
+                InetSocketAddress inetSocketAddress = (InetSocketAddress) socketAddressAddress;
+                InetAddress address = inetSocketAddress.getAddress();
+                if (address == null) {
+                    hostAddress = inetSocketAddress.getHostName();
+                    hostAddress.getClass();
+                } else {
+                    hostAddress = address.getHostAddress();
+                    hostAddress.getClass();
+                }
+                port = inetSocketAddress.getPort();
+            }
+            if (1 > port || port >= 65536) {
+                throw new SocketException("No route to " + hostAddress + ':' + port + "; port is out of range");
+            }
+            if (proxy.type() == Proxy.Type.SOCKS) {
+                arrayList3.add(InetSocketAddress.createUnresolved(hostAddress, port));
+            } else {
+                ux3 ux3Var = ue5.a;
+                hostAddress.getClass();
+                if (ue5.a.a(hostAddress)) {
+                    listF = gb.O(InetAddress.getByName(hostAddress));
+                } else {
+                    hyVar.getClass();
+                    f6Var.a.getClass();
+                    try {
+                        InetAddress[] allByName = InetAddress.getAllByName(hostAddress);
+                        allByName.getClass();
+                        List listR0 = ti.r0(allByName);
+                        if (listR0.isEmpty()) {
+                            throw new UnknownHostException(f6Var.a + " returned no addresses for " + hostAddress);
+                        }
+                        listF = listR0;
+                    } catch (NullPointerException e) {
+                        UnknownHostException unknownHostException = new UnknownHostException("Broken system behaviour for dns lookup of ".concat(hostAddress));
+                        unknownHostException.initCause(e);
+                        throw unknownHostException;
+                    }
+                }
+                if (s34Var.d && listF.size() >= 2) {
+                    ArrayList arrayList4 = new ArrayList();
+                    ArrayList arrayList5 = new ArrayList();
+                    for (Object obj : listF) {
+                        if (((InetAddress) obj) instanceof Inet6Address) {
+                            arrayList4.add(obj);
+                        } else {
+                            arrayList5.add(obj);
+                        }
+                    }
+                    if (!arrayList4.isEmpty() && !arrayList5.isEmpty()) {
+                        byte[] bArr = xe5.a;
+                        Iterator it = arrayList4.iterator();
+                        Iterator it2 = arrayList5.iterator();
+                        qb2 qb2VarR = gb.r();
+                        while (true) {
+                            if (!it.hasNext() && !it2.hasNext()) {
+                                break;
+                            }
+                            if (it.hasNext()) {
+                                qb2VarR.add(it.next());
+                            }
+                            if (it2.hasNext()) {
+                                qb2VarR.add(it2.next());
+                            }
+                        }
+                        listF = gb.f(qb2VarR);
+                    }
+                }
+                Iterator it3 = listF.iterator();
+                while (it3.hasNext()) {
+                    arrayList3.add(new InetSocketAddress((InetAddress) it3.next(), port));
+                }
+            }
+            Iterator it4 = s34Var.g.iterator();
+            while (it4.hasNext()) {
+                o34 o34Var2 = new o34(s34Var.a, proxy, (InetSocketAddress) it4.next());
+                rm2 rm2Var = s34Var.b;
+                synchronized (rm2Var) {
+                    zContains = ((LinkedHashSet) rm2Var.o).contains(o34Var2);
+                }
+                if (zContains) {
+                    s34Var.h.add(o34Var2);
+                } else {
+                    arrayList2.add(o34Var2);
+                }
+            }
+            if (!arrayList2.isEmpty()) {
+                break;
+            }
+        }
+        if (arrayList2.isEmpty()) {
+            v40.n0(s34Var.h, arrayList2);
+            s34Var.h.clear();
+        }
+        x7 x7Var2 = new x7(arrayList2);
+        this.y = x7Var2;
+        if (this.x.m()) {
+            mj0.i("Canceled");
+            return null;
+        }
+        if (x7Var2.o >= arrayList2.size()) {
+            tb4.k();
+            return null;
+        }
+        int i4 = x7Var2.o;
+        x7Var2.o = i4 + 1;
+        return b((o34) arrayList2.get(i4), arrayList2);
     }
 
-    public final x90 b(o34 r29, ArrayList r30) {
-        pr3 r0 = pr3.t;
-        r29.getClass();
-        f6 r1 = r29.a;
-        if (r1.c != null) goto L14;
-        if (r1.j.contains(ma0.f) == false) goto L12;
-        String r2 = r29.a.h.d;
-        qg3 r3 = qg3.a;
-        if (qg3.a.h(r2) == true) goto L16;
-        throw new UnknownServiceException(xa3.h("CLEARTEXT communication to ", r2, " not permitted by network security policy"));
-    L16:
-        if (r29.b.type() != Proxy.Type.HTTP) goto L23;
-        f6 r4 = r29.a;
-        if (r4.c == null) goto L21;
-    L24:
-        nz3 r5 = new nz3();
-        gr1 r6 = r29.a.h;
-        r6.getClass();
-        r5.a = r6;
-        r5.b("CONNECT", null);
-        f6 r7 = r29.a;
-        r5.a("Host", ze5.j(r7.h, true));
-        r5.a("Proxy-Connection", "Keep-Alive");
-        r5.a("User-Agent", "okhttp/5.0.0-alpha.14");
-        oz3 r12 = new oz3(r5);
-        fv3 r18 = xe5.e;
-        gq1 r27 = gq1.q;
-        sl1 r8 = new sl1();
-        pr3 r13 = pr3.q;
-        e35.G("Proxy-Authenticate");
-        e35.H("OkHttp-Preemptive", "Proxy-Authenticate");
-        r8.e("Proxy-Authenticate");
-        e35.p(r8, "Proxy-Authenticate", "OkHttp-Preemptive");
-        new k14(r12, r13, "Preemptive Authenticate", 407, null, r8.c(), r18, null, null, null, -1, -1, null, r27);
-        r7.f.getClass();
-    L26:
-        return new x90(this.n, this.o, this.p, this.q, this.r, this.s, this.t, this.x, this, r29, r30, r12, -1, false);
-    L21:
-        if (r4.i.contains(r0) == true) goto L24;
-    L23:
-        r12 = null;
-        goto L26
-    L12:
-        throw new UnknownServiceException("CLEARTEXT communication not enabled for client");
-    L14:
-        if (r1.i.contains(r0) == false) goto L16;
-        throw new UnknownServiceException("H2_PRIOR_KNOWLEDGE cannot be used with HTTPS");
+    /* JADX WARN: Code duplicated, block: B:23:0x0063  */
+    public final x90 b(o34 o34Var, ArrayList arrayList) throws UnknownServiceException {
+        oz3 oz3Var;
+        pr3 pr3Var = pr3.t;
+        o34Var.getClass();
+        f6 f6Var = o34Var.a;
+        if (f6Var.c == null) {
+            if (!f6Var.j.contains(ma0.f)) {
+                throw new UnknownServiceException("CLEARTEXT communication not enabled for client");
+            }
+            String str = o34Var.a.h.d;
+            qg3 qg3Var = qg3.a;
+            if (!qg3.a.h(str)) {
+                throw new UnknownServiceException(xa3.h("CLEARTEXT communication to ", str, " not permitted by network security policy"));
+            }
+        } else if (f6Var.i.contains(pr3Var)) {
+            throw new UnknownServiceException("H2_PRIOR_KNOWLEDGE cannot be used with HTTPS");
+        }
+        if (o34Var.b.type() != Proxy.Type.HTTP) {
+            oz3Var = null;
+        } else {
+            f6 f6Var2 = o34Var.a;
+            if (f6Var2.c != null || f6Var2.i.contains(pr3Var)) {
+                nz3 nz3Var = new nz3();
+                gr1 gr1Var = o34Var.a.h;
+                gr1Var.getClass();
+                nz3Var.a = gr1Var;
+                nz3Var.b("CONNECT", null);
+                f6 f6Var3 = o34Var.a;
+                nz3Var.a("Host", ze5.j(f6Var3.h, true));
+                nz3Var.a("Proxy-Connection", "Keep-Alive");
+                nz3Var.a("User-Agent", "okhttp/5.0.0-alpha.14");
+                oz3Var = new oz3(nz3Var);
+                fv3 fv3Var = xe5.e;
+                gq1 gq1Var = gq1.q;
+                sl1 sl1Var = new sl1();
+                pr3 pr3Var2 = pr3.q;
+                e35.G("Proxy-Authenticate");
+                e35.H("OkHttp-Preemptive", "Proxy-Authenticate");
+                sl1Var.e("Proxy-Authenticate");
+                e35.p(sl1Var, "Proxy-Authenticate", "OkHttp-Preemptive");
+                new k14(oz3Var, pr3Var2, "Preemptive Authenticate", 407, null, sl1Var.c(), fv3Var, null, null, null, -1L, -1L, null, gq1Var);
+                f6Var3.f.getClass();
+            } else {
+                oz3Var = null;
+            }
+        }
+        return new x90(this.n, this.o, this.p, this.q, this.r, this.s, this.t, this.x, this, o34Var, arrayList, oz3Var, -1, false);
     }
 
-    public final c24 c(x90 r11, List r12) {
-        dv3 r0 = this.o;
-        boolean r1 = this.x.l();
-        f6 r2 = this.v;
-        hy r3 = this.x;
-        if (r11 != null) goto L5;
-    L7:
-        boolean r6 = false;
-    L8:
-        r0.getClass();
-        r2.getClass();
-        r3.getClass();
-        Iterator r4 = r0.f.iterator();
-    L10:
-        if (r4.hasNext() == false) goto L42;
-        cv3 r7 = (cv3) r4.next();
-        r7.getClass();
-        monitor-enter(r7);
-        if (r6 == false) goto L23;
-        if (r7.l == null) goto L17;
-        boolean r9 = true;
-    L18:
-        if (r9 == true) goto L23;
-    L19:
-        boolean r10 = false;
-    L27:
-        monitor-exit(r7);
-        if (r10 == false) goto L10;
-        if (r7.g(r1) == true) goto L43;
-        monitor-enter(r7);
-        r7.m = true;     // Catch: Throwable -> L37
-        Socket r8 = r3.o();     // Catch: Throwable -> L37
-        monitor-exit(r7);
-        if (r8 == null) goto L10;
-        ze5.c(r8);
-    L37:
-        th = move-exception;
-        throw th;
-    L43:
-        if (r7 != null) goto L45;
-        return null;
-    L45:
-        if (r11 == null) goto L49;
-        this.A = r11.j;
-        Socket r13 = r11.q;
-        if (r13 == null) goto L49;
-        ze5.c(r13);
-    L49:
-        this.x.e(r7);
-        this.x.f(r7);
-        return new c24(r7);
-    L17:
-        r9 = false;
-    L20:
-        th = move-exception;
-        throw th;
-    L23:
-        if (r7.f(r2, r12) == false) goto L19;
-        r3.a(r7);     // Catch: Throwable -> L20
-        r10 = true;
-        goto L27
-    L42:
-        r7 = null;
-        goto L43
-    L5:
-        if (r11.c() == false) goto L7;
-        r6 = true;
-        goto L8
+    /* JADX WARN: Code duplicated, block: B:22:0x0048 A[Catch: all -> 0x0046, TryCatch #0 {all -> 0x0046, blocks: (B:14:0x003b, B:22:0x0048, B:25:0x004f), top: B:51:0x003b }] */
+    /* JADX WARN: Code duplicated, block: B:24:0x004e  */
+    /* JADX WARN: Code duplicated, block: B:25:0x004f A[Catch: all -> 0x0046, TRY_LEAVE, TryCatch #0 {all -> 0x0046, blocks: (B:14:0x003b, B:22:0x0048, B:25:0x004f), top: B:51:0x003b }] */
+    public final c24 c(x90 x90Var, List list) {
+        cv3 cv3Var;
+        boolean z;
+        Socket socketO;
+        dv3 dv3Var = this.o;
+        boolean zL = this.x.l();
+        f6 f6Var = this.v;
+        hy hyVar = this.x;
+        boolean z2 = x90Var != null && x90Var.c();
+        dv3Var.getClass();
+        f6Var.getClass();
+        hyVar.getClass();
+        Iterator it = dv3Var.f.iterator();
+        while (true) {
+            if (!it.hasNext()) {
+                cv3Var = null;
+                break;
+            }
+            cv3Var = (cv3) it.next();
+            cv3Var.getClass();
+            synchronized (cv3Var) {
+                if (z2) {
+                    try {
+                        if (!(cv3Var.l != null)) {
+                            z = false;
+                        } else if (cv3Var.f(f6Var, list)) {
+                            hyVar.a(cv3Var);
+                            z = true;
+                        } else {
+                            z = false;
+                        }
+                    } catch (Throwable th) {
+                        throw th;
+                    }
+                } else if (cv3Var.f(f6Var, list)) {
+                    z = false;
+                } else {
+                    hyVar.a(cv3Var);
+                    z = true;
+                }
+            }
+            if (z) {
+                if (cv3Var.g(zL)) {
+                    break;
+                }
+                synchronized (cv3Var) {
+                    cv3Var.m = true;
+                    socketO = hyVar.o();
+                }
+                if (socketO != null) {
+                    ze5.c(socketO);
+                }
+            }
+        }
+        if (cv3Var == null) {
+            return null;
+        }
+        if (x90Var != null) {
+            this.A = x90Var.j;
+            Socket socket = x90Var.q;
+            if (socket != null) {
+                ze5.c(socket);
+            }
+        }
+        this.x.e(cv3Var);
+        this.x.f(cv3Var);
+        return new c24(cv3Var);
     }
 
     @Override // defpackage.r34
-    public final boolean f(gr1 r3) {
-        r3.getClass();
-        gr1 r2 = this.v.h;
-        if (r3.e == r2.e) goto L5;
-        return false;
-    L5:
-        if (h12.c(r3.d, r2.d) == false) goto L10;
-        return true;
-    L10:
-        return false;
+    public final boolean f(gr1 gr1Var) {
+        gr1Var.getClass();
+        gr1 gr1Var2 = this.v.h;
+        return gr1Var.e == gr1Var2.e && h12.c(gr1Var.d, gr1Var2.d);
     }
 
     @Override // defpackage.r34
@@ -369,37 +355,27 @@ public final class gv3 implements r34 {
     }
 
     @Override // defpackage.r34
-    public final boolean m(cv3 r5) {
-        if (this.B.isEmpty() == true) goto L6;
-    L34:
-        return true;
-    L6:
-        if (this.A != null) goto L34;
-        if (r5 == null) goto L27;
-        monitor-enter(r5);
-        o34 r2 = null;
-        if (r5.o == 0) goto L14;
-    L20:
-        monitor-exit(r5);
-        if (r2 == null) goto L27;
-        this.A = r2;
-        return true;
-    L14:
-        if (r5.m == false) goto L20;
-        if (ze5.a(r5.d.a.h, this.v.h) == false) goto L20;
-        r2 = r5.d;     // Catch: Throwable -> L24
-    L24:
-        th = move-exception;
-        throw th;
-    L27:
-        x7 r6 = this.y;
-        if (r6 != null) goto L30;
-    L32:
-        s34 r4 = this.z;
-        if (r4 == null) goto L34;
-        return r4.a();
-    L30:
-        if (r6.o >= ((ArrayList) r6.p).size()) goto L32;
+    public final boolean m(cv3 cv3Var) {
+        s34 s34Var;
+        o34 o34Var;
+        if (this.B.isEmpty() && this.A == null) {
+            if (cv3Var != null) {
+                synchronized (cv3Var) {
+                    o34Var = null;
+                    if (cv3Var.o == 0 && cv3Var.m && ze5.a(cv3Var.d.a.h, this.v.h)) {
+                        o34Var = cv3Var.d;
+                    }
+                }
+                if (o34Var != null) {
+                    this.A = o34Var;
+                    return true;
+                }
+            }
+            x7 x7Var = this.y;
+            if ((x7Var == null || x7Var.o >= ((ArrayList) x7Var.p).size()) && (s34Var = this.z) != null) {
+                return s34Var.a();
+            }
+        }
         return true;
     }
 
@@ -415,67 +391,62 @@ public final class gv3 implements r34 {
 
     @Override // defpackage.r34
     public final q34 w() {
-        cv3 r0 = this.x.c();
-        if (r0 != null) goto L5;
-    L4:
-        c24 r2 = null;
-    L35:
-        if (r2 == null) goto L37;
-        return r2;
-    L37:
-        c24 r1 = c(null, null);
-        if (r1 == null) goto L41;
-        return r1;
-    L41:
-        if (this.B.isEmpty() == false) goto L43;
-        x90 r3 = a();
-        c24 r6 = c(r3, r3.k);
-        if (r6 == null) goto L47;
-        return r6;
-    L47:
-        return r3;
-    L43:
-        return (q34) this.B.removeFirst();
-    L5:
-        boolean r4 = r0.g(this.x.l());
-        monitor-enter(r0);
-        boolean r5 = r0.m;
-        if (r4 == true) goto L14;
-        boolean r7 = !r5;
-        r0.m = true;     // Catch: Throwable -> L11
-        Socket r8 = this.x.o();     // Catch: Throwable -> L11
-    L21:
-        monitor-exit(r0);
-        if (this.x.c() == null) goto L28;
-        if (r8 != null) goto L26;
-        r2 = new c24(r0);
-        goto L35
-    L26:
-        kf2.o("Check failed.");
-        return null;
-    L28:
-        if (r8 == null) goto L30;
-        ze5.c(r8);
-    L30:
-        this.x.getClass();
-        this.x.getClass();
-        if (r8 == null) goto L33;
-        this.x.getClass();
-        goto L4
-    L33:
-        if (r7 == false) goto L4;
-        this.x.getClass();
-        goto L4
-    L14:
-        if (r5 == true) goto L20;
-        if (f(r0.d.a.h) == false) goto L20;
-        r7 = false;
-        r8 = null;
-    L20:
-        r7 = false;
-        r8 = this.x.o();     // Catch: Throwable -> L11
-    L11:
-        th = move-exception;
-        throw th;
+        boolean z;
+        Socket socketO;
+        c24 c24Var;
+        cv3 cv3VarC = this.x.c();
+        if (cv3VarC == null) {
+            c24Var = null;
+        } else {
+            boolean zG = cv3VarC.g(this.x.l());
+            synchronized (cv3VarC) {
+                boolean z2 = cv3VarC.m;
+                try {
+                    if (!zG) {
+                        z = !z2;
+                        cv3VarC.m = true;
+                        socketO = this.x.o();
+                    } else if (z2 || !f(cv3VarC.d.a.h)) {
+                        z = false;
+                        socketO = this.x.o();
+                    } else {
+                        z = false;
+                        socketO = null;
+                    }
+                } catch (Throwable th) {
+                    throw th;
+                }
+            }
+            if (this.x.c() == null) {
+                if (socketO != null) {
+                    ze5.c(socketO);
+                }
+                this.x.getClass();
+                this.x.getClass();
+                if (socketO != null || z) {
+                    this.x.getClass();
+                }
+                c24Var = null;
+            } else {
+                if (socketO != null) {
+                    kf2.o("Check failed.");
+                    return null;
+                }
+                c24Var = new c24(cv3VarC);
+            }
+        }
+        if (c24Var != null) {
+            return c24Var;
+        }
+        c24 c24VarC = c(null, null);
+        if (c24VarC != null) {
+            return c24VarC;
+        }
+        if (!this.B.isEmpty()) {
+            return (q34) this.B.removeFirst();
+        }
+        x90 x90VarA = a();
+        c24 c24VarC2 = c(x90VarA, x90VarA.k);
+        return c24VarC2 != null ? c24VarC2 : x90VarA;
     }
 }

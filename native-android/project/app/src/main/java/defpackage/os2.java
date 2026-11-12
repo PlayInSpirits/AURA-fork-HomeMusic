@@ -10,44 +10,33 @@ public class os2 {
     public final int b;
     public final int c;
 
-    public os2(String r1, int r2, int r3) {
-        this.a = r1;
-        this.b = r2;
-        this.c = r3;
+    public os2(String str, int i, int i2) {
+        this.a = str;
+        this.b = i;
+        this.c = i2;
     }
 
-    public final boolean equals(Object r7) {
-        if (this != r7) goto L6;
-        return true;
-    L6:
-        if ((r7 instanceof os2) == true) goto L8;
-        return false;
-    L8:
-        os2 r8 = (os2) r7;
-        int r1 = r8.c;
-        String r3 = r8.a;
-        int r9 = r8.b;
-        int r4 = this.c;
-        String r5 = this.a;
-        int r6 = this.b;
-        if (r6 < 0) goto L19;
-        if (r9 < 0) goto L19;
-        if (TextUtils.equals(r5, r3) == false) goto L17;
-        if (r6 != r9) goto L17;
-        if (r4 != r1) goto L17;
-        return true;
-    L17:
-        return false;
-    L19:
-        if (TextUtils.equals(r5, r3) == false) goto L22;
-        if (r4 != r1) goto L22;
-        return true;
-    L22:
-        return false;
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof os2)) {
+            return false;
+        }
+        os2 os2Var = (os2) obj;
+        int i = os2Var.c;
+        String str = os2Var.a;
+        int i2 = os2Var.b;
+        int i3 = this.c;
+        String str2 = this.a;
+        int i4 = this.b;
+        if (i4 < 0 || i2 < 0) {
+            return TextUtils.equals(str2, str) && i3 == i;
+        }
+        return TextUtils.equals(str2, str) && i4 == i2 && i3 == i;
     }
 
     public final int hashCode() {
-        Integer r0 = Integer.valueOf(this.c);
-        return Objects.hash(new Object[]{this.a, r0});
+        return Objects.hash(this.a, Integer.valueOf(this.c));
     }
 }

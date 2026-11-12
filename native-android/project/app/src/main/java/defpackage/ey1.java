@@ -13,15 +13,15 @@ public final class ey1 {
     public final boolean h;
     public boolean i;
 
-    public ey1(long r1, long r3, long r5, boolean r7, float r8, long r9, long r11, boolean r13) {
-        this.a = r1;
-        this.b = r3;
-        this.c = r5;
-        this.d = r7;
-        this.e = r8;
-        this.f = r9;
-        this.g = r11;
-        this.h = r13;
+    public ey1(long j, long j2, long j3, boolean z, float f, long j4, long j5, boolean z2) {
+        this.a = j;
+        this.b = j2;
+        this.c = j3;
+        this.d = z;
+        this.e = f;
+        this.f = j4;
+        this.g = j5;
+        this.h = z2;
     }
 
     public final String toString() {

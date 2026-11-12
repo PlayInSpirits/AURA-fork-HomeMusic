@@ -9,9 +9,6 @@ public class JukeboxStatus {
     private boolean isPlaying;
     private Integer position;
 
-    public JukeboxStatus() {
-    }
-
     public final int getCurrentIndex() {
         return this.currentIndex;
     }
@@ -28,19 +25,19 @@ public class JukeboxStatus {
         return this.isPlaying;
     }
 
-    public final void setCurrentIndex(int r1) {
-        this.currentIndex = r1;
+    public final void setCurrentIndex(int i) {
+        this.currentIndex = i;
     }
 
-    public final void setGain(float r1) {
-        this.gain = r1;
+    public final void setGain(float f) {
+        this.gain = f;
     }
 
-    public final void setPlaying(boolean r1) {
-        this.isPlaying = r1;
+    public final void setPlaying(boolean z) {
+        this.isPlaying = z;
     }
 
-    public final void setPosition(Integer r1) {
-        this.position = r1;
+    public final void setPosition(Integer num) {
+        this.position = num;
     }
 }

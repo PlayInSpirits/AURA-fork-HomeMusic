@@ -5,18 +5,19 @@ package defpackage;
 public class kh extends zg5 {
     public final /* synthetic */ mh q;
 
-    public kh(mh r1) {
-        this.q = r1;
-        super(r1);
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public kh(mh mhVar) {
+        super(mhVar);
+        this.q = mhVar;
     }
 
     @Override // defpackage.zg5, defpackage.jh
-    public final void c(int r1) {
-        mh.e(this.q, r1);
+    public final void c(int i) {
+        super/*android.widget.TextView*/.setLastBaselineToBottomHeight(i);
     }
 
     @Override // defpackage.zg5, defpackage.jh
-    public final void f(int r1) {
-        mh.d(this.q, r1);
+    public final void f(int i) {
+        super/*android.widget.TextView*/.setFirstBaselineToTopHeight(i);
     }
 }

@@ -10,11 +10,11 @@ public final class hc4 extends ic4 {
     public float c;
 
     @Override // defpackage.ic4
-    public final void a(Matrix r2, Path r3) {
-        Matrix r0 = this.a;
-        r2.invert(r0);
-        r3.transform(r0);
-        r3.lineTo(this.b, this.c);
-        r3.transform(r2);
+    public final void a(Matrix matrix, Path path) {
+        Matrix matrix2 = this.a;
+        matrix.invert(matrix2);
+        path.transform(matrix2);
+        path.lineTo(this.b, this.c);
+        path.transform(matrix);
     }
 }

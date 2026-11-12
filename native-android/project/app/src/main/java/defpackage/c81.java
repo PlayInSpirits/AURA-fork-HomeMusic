@@ -8,13 +8,13 @@ public interface c81 extends wd {
         return new ss0(this);
     }
 
-    float b(long r1, float r3, float r4, float r5);
+    float b(long j, float f, float f2, float f3);
 
-    long c(float r1, float r2, float r3);
+    long c(float f, float f2, float f3);
 
-    default float d(float r7, float r8, float r9) {
-        return b(c(r7, r8, r9), r7, r8, r9);
+    default float d(float f, float f2, float f3) {
+        return b(c(f, f2, f3), f, f2, f3);
     }
 
-    float e(long r1, float r3, float r4, float r5);
+    float e(long j, float f, float f2, float f3);
 }

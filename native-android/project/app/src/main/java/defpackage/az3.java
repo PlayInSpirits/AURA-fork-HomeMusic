@@ -5,8 +5,8 @@ package defpackage;
 public final class az3 {
     public final zd2 a;
 
-    public az3(zd2 r1) {
-        this.a = r1;
+    public az3(zd2 zd2Var) {
+        this.a = zd2Var;
     }
 
     public final String toString() {

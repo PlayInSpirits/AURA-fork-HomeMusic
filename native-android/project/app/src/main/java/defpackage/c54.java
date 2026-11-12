@@ -7,33 +7,32 @@ public final class c54 implements w92, AutoCloseable {
     public final b54 o;
     public boolean p;
 
-    public c54(String r1, b54 r2) {
-        this.n = r1;
-        this.o = r2;
+    public c54(String str, b54 b54Var) {
+        this.n = str;
+        this.o = b54Var;
     }
 
     @Override // defpackage.w92
-    public final void b(ba2 r2, q92 r3) {
-        if (r3 != q92.ON_DESTROY) goto L6;
-        this.p = false;
-        r2.h().f(this);
-        return;
+    public final void b(ba2 ba2Var, q92 q92Var) {
+        if (q92Var == q92.ON_DESTROY) {
+            this.p = false;
+            ba2Var.h().f(this);
+        }
     }
 
     @Override // java.lang.AutoCloseable
     public final void close() {
     }
 
-    public final void f(rm3 r2, ea2 r3) {
-        r2.getClass();
-        r3.getClass();
-        if (this.p == true) goto L6;
+    public final void f(rm3 rm3Var, ea2 ea2Var) {
+        rm3Var.getClass();
+        ea2Var.getClass();
+        if (this.p) {
+            kf2.o("Already attached to lifecycleOwner");
+            return;
+        }
         this.p = true;
-        r3.a(this);
-        cs0 r4 = (cs0) this.o.a.r;
-        r2.L(this.n, r4);
-        return;
-    L6:
-        kf2.o("Already attached to lifecycleOwner");
+        ea2Var.a(this);
+        rm3Var.L(this.n, (cs0) this.o.a.r);
     }
 }

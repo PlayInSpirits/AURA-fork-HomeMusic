@@ -8,15 +8,16 @@ public final class rb extends wd0 {
     public final /* synthetic */ tb p;
     public int q;
 
-    public rb(tb r1, wd0 r2) {
-        this.p = r1;
-        super(r2);
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public rb(tb tbVar, wd0 wd0Var) {
+        super(wd0Var);
+        this.p = tbVar;
     }
 
     @Override // defpackage.jp
-    public final Object invokeSuspend(Object r4) {
-        this.o = r4;
+    public final Object invokeSuspend(Object obj) {
+        this.o = obj;
         this.q |= Integer.MIN_VALUE;
-        return this.p.b(0, null, this);
+        return this.p.b(0L, null, this);
     }
 }

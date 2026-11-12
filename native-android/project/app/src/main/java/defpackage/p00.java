@@ -15,7 +15,7 @@ public final class p00 {
     public ArrayList h;
     public int i;
     public int j;
-    public float k;
+    public float k = 0.0f;
     public final int l;
     public final boolean m;
     public boolean n;
@@ -23,10 +23,9 @@ public final class p00 {
     public boolean p;
     public boolean q;
 
-    public p00(jc0 r2, int r3, boolean r4) {
-        this.k = 0.0f;
-        this.a = r2;
-        this.l = r3;
-        this.m = r4;
+    public p00(jc0 jc0Var, int i, boolean z) {
+        this.a = jc0Var;
+        this.l = i;
+        this.m = z;
     }
 }

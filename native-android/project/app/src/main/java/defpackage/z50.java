@@ -7,14 +7,15 @@ public final class z50 extends wd0 {
     public final /* synthetic */ a60 o;
     public int p;
 
-    public z50(a60 r1, vd0 r2) {
-        this.o = r1;
-        super(r2);
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public z50(a60 a60Var, vd0 vd0Var) {
+        super(vd0Var);
+        this.o = a60Var;
     }
 
     @Override // defpackage.jp
-    public final Object invokeSuspend(Object r2) {
-        this.n = r2;
+    public final Object invokeSuspend(Object obj) {
+        this.n = obj;
         this.p |= Integer.MIN_VALUE;
         return this.o.b(null, this);
     }

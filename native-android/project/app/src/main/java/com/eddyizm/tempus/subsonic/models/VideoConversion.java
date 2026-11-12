@@ -8,9 +8,6 @@ public final class VideoConversion {
     private Integer bitRate;
     private String id;
 
-    public VideoConversion() {
-    }
-
     public final Integer getAudioTrackId() {
         return this.audioTrackId;
     }
@@ -23,15 +20,15 @@ public final class VideoConversion {
         return this.id;
     }
 
-    public final void setAudioTrackId(Integer r1) {
-        this.audioTrackId = r1;
+    public final void setAudioTrackId(Integer num) {
+        this.audioTrackId = num;
     }
 
-    public final void setBitRate(Integer r1) {
-        this.bitRate = r1;
+    public final void setBitRate(Integer num) {
+        this.bitRate = num;
     }
 
-    public final void setId(String r1) {
-        this.id = r1;
+    public final void setId(String str) {
+        this.id = str;
     }
 }

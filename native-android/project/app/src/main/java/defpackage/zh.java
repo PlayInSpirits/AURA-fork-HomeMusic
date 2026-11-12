@@ -5,39 +5,32 @@ package defpackage;
 public final class zh extends gx2 {
     public final if1 a;
 
-    public zh(if1 r1) {
-        this.a = r1;
+    public zh(if1 if1Var) {
+        this.a = if1Var;
     }
 
     @Override // defpackage.gx2
     public final cx2 d() {
-        je0 r0 = new je0();
-        r0.B = this.a;
-        return r0;
+        je0 je0Var = new je0();
+        je0Var.B = this.a;
+        return je0Var;
     }
 
     @Override // defpackage.gx2
-    public final void e(cx2 r1) {
-        je0 r2 = (je0) r1;
-        r2.getClass();
-        r2.B = this.a;
+    public final void e(cx2 cx2Var) {
+        je0 je0Var = (je0) cx2Var;
+        je0Var.getClass();
+        je0Var.B = this.a;
     }
 
-    public final boolean equals(Object r2) {
-        if (this != r2) goto L5;
-        return true;
-    L5:
-        if ((r2 instanceof zh) == true) goto L8;
-        return false;
-    L8:
-        if (this.a == ((zh) r2).a) goto L11;
-        return false;
-    L11:
-        return true;
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        return (obj instanceof zh) && this.a == ((zh) obj).a;
     }
 
     public final int hashCode() {
-        int r0 = Boolean.hashCode(false) * 31;
-        return this.a.hashCode() + r0;
+        return this.a.hashCode() + (Boolean.hashCode(false) * 31);
     }
 }

@@ -8,27 +8,25 @@ public final /* synthetic */ class rn2 implements Executor {
     public final /* synthetic */ int n;
     public final /* synthetic */ tn2 o;
 
-    public /* synthetic */ rn2(tn2 r1, int r2) {
-        this.n = r2;
-        this.o = r1;
+    public /* synthetic */ rn2(tn2 tn2Var, int i) {
+        this.n = i;
+        this.o = tn2Var;
     }
 
     @Override // java.util.concurrent.Executor
-    public final void execute(Runnable r2) {
-        int r0 = this.n;
-        tn2 r1 = this.o;
-        switch(r0) {
-            case 0: goto L8;
-            case 1: goto L6;
-            default: goto L4;
-        };
-    L4:
-        f35.W(r1.l, r2);
-        return;
-    L6:
-        f35.W(r1.l, r2);
-        return;
-    L8:
-        tn2.b(r1, r2);
+    public final void execute(Runnable runnable) {
+        int i = this.n;
+        tn2 tn2Var = this.o;
+        switch (i) {
+            case 0:
+                tn2.b(tn2Var, runnable);
+                break;
+            case 1:
+                f35.W(tn2Var.l, runnable);
+                break;
+            default:
+                f35.W(tn2Var.l, runnable);
+                break;
+        }
     }
 }

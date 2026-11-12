@@ -7,7 +7,7 @@ import java.util.List;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class ph3 {
-    public static final mt2 u = null;
+    public static final mt2 u = new mt2(new Object());
     public final cu4 a;
     public final mt2 b;
     public final long c;
@@ -29,103 +29,92 @@ public final class ph3 {
     public volatile long s;
     public volatile long t;
 
-    static {
-        u = new mt2(new Object());
+    public ph3(cu4 cu4Var, mt2 mt2Var, long j, long j2, int i, ExoPlaybackException exoPlaybackException, boolean z, tv4 tv4Var, ew4 ew4Var, List list, mt2 mt2Var2, boolean z2, int i2, int i3, qh3 qh3Var, long j3, long j4, long j5, long j6, boolean z3) {
+        this.a = cu4Var;
+        this.b = mt2Var;
+        this.c = j;
+        this.d = j2;
+        this.e = i;
+        this.f = exoPlaybackException;
+        this.g = z;
+        this.h = tv4Var;
+        this.i = ew4Var;
+        this.j = list;
+        this.k = mt2Var2;
+        this.l = z2;
+        this.m = i2;
+        this.n = i3;
+        this.o = qh3Var;
+        this.q = j3;
+        this.r = j4;
+        this.s = j5;
+        this.t = j6;
+        this.p = z3;
     }
 
-    public ph3(cu4 r1, mt2 r2, long r3, long r5, int r7, ExoPlaybackException r8, boolean r9, tv4 r10, ew4 r11, List r12, mt2 r13, boolean r14, int r15, int r16, qh3 r17, long r18, long r20, long r22, long r24, boolean r26) {
-        this.a = r1;
-        this.b = r2;
-        this.c = r3;
-        this.d = r5;
-        this.e = r7;
-        this.f = r8;
-        this.g = r9;
-        this.h = r10;
-        this.i = r11;
-        this.j = r12;
-        this.k = r13;
-        this.l = r14;
-        this.m = r15;
-        this.n = r16;
-        this.o = r17;
-        this.q = r18;
-        this.r = r20;
-        this.s = r22;
-        this.t = r24;
-        this.p = r26;
-    }
-
-    public static ph3 k(ew4 r27) {
-        yt4 r1 = cu4.a;
-        tv4 r10 = tv4.d;
-        gy3 r12 = gy3.r;
-        qh3 r17 = qh3.d;
-        mt2 r2 = u;
-        return new ph3(r1, r2, -9223372036854775807L, 0, 1, null, false, r10, r27, r12, r2, false, 1, 0, r17, 0, 0, 0, 0, false);
+    public static ph3 k(ew4 ew4Var) {
+        yt4 yt4Var = cu4.a;
+        tv4 tv4Var = tv4.d;
+        gy3 gy3Var = gy3.r;
+        qh3 qh3Var = qh3.d;
+        mt2 mt2Var = u;
+        return new ph3(yt4Var, mt2Var, -9223372036854775807L, 0L, 1, null, false, tv4Var, ew4Var, gy3Var, mt2Var, false, 1, 0, qh3Var, 0L, 0L, 0L, 0L, false);
     }
 
     public final ph3 a() {
         return new ph3(this.a, this.b, this.c, this.d, this.e, this.f, this.g, this.h, this.i, this.j, this.k, this.l, this.m, this.n, this.o, this.q, this.r, l(), SystemClock.elapsedRealtime(), this.p);
     }
 
-    public final ph3 b(boolean r30) {
-        return new ph3(this.a, this.b, this.c, this.d, this.e, this.f, r30, this.h, this.i, this.j, this.k, this.l, this.m, this.n, this.o, this.q, this.r, this.s, this.t, this.p);
+    public final ph3 b(boolean z) {
+        return new ph3(this.a, this.b, this.c, this.d, this.e, this.f, z, this.h, this.i, this.j, this.k, this.l, this.m, this.n, this.o, this.q, this.r, this.s, this.t, this.p);
     }
 
-    public final ph3 c(mt2 r30) {
-        return new ph3(this.a, this.b, this.c, this.d, this.e, this.f, this.g, this.h, this.i, this.j, r30, this.l, this.m, this.n, this.o, this.q, this.r, this.s, this.t, this.p);
+    public final ph3 c(mt2 mt2Var) {
+        return new ph3(this.a, this.b, this.c, this.d, this.e, this.f, this.g, this.h, this.i, this.j, mt2Var, this.l, this.m, this.n, this.o, this.q, this.r, this.s, this.t, this.p);
     }
 
-    public final ph3 d(mt2 r28, long r29, long r31, long r33, long r35, tv4 r37, ew4 r38, List r39) {
-        return new ph3(this.a, r28, r31, r33, this.e, this.f, this.g, r37, r38, r39, this.k, this.l, this.m, this.n, this.o, this.q, r35, r29, SystemClock.elapsedRealtime(), this.p);
+    public final ph3 d(mt2 mt2Var, long j, long j2, long j3, long j4, tv4 tv4Var, ew4 ew4Var, List list) {
+        return new ph3(this.a, mt2Var, j2, j3, this.e, this.f, this.g, tv4Var, ew4Var, list, this.k, this.l, this.m, this.n, this.o, this.q, j4, j, SystemClock.elapsedRealtime(), this.p);
     }
 
-    public final ph3 e(int r28, int r29, boolean r30) {
-        return new ph3(this.a, this.b, this.c, this.d, this.e, this.f, this.g, this.h, this.i, this.j, this.k, r30, r28, r29, this.o, this.q, this.r, this.s, this.t, this.p);
+    public final ph3 e(int i, int i2, boolean z) {
+        return new ph3(this.a, this.b, this.c, this.d, this.e, this.f, this.g, this.h, this.i, this.j, this.k, z, i, i2, this.o, this.q, this.r, this.s, this.t, this.p);
     }
 
-    public final ph3 f(ExoPlaybackException r30) {
-        return new ph3(this.a, this.b, this.c, this.d, this.e, r30, this.g, this.h, this.i, this.j, this.k, this.l, this.m, this.n, this.o, this.q, this.r, this.s, this.t, this.p);
+    public final ph3 f(ExoPlaybackException exoPlaybackException) {
+        return new ph3(this.a, this.b, this.c, this.d, this.e, exoPlaybackException, this.g, this.h, this.i, this.j, this.k, this.l, this.m, this.n, this.o, this.q, this.r, this.s, this.t, this.p);
     }
 
-    public final ph3 g(qh3 r31) {
-        return new ph3(this.a, this.b, this.c, this.d, this.e, this.f, this.g, this.h, this.i, this.j, this.k, this.l, this.m, this.n, r31, this.q, this.r, this.s, this.t, this.p);
+    public final ph3 g(qh3 qh3Var) {
+        return new ph3(this.a, this.b, this.c, this.d, this.e, this.f, this.g, this.h, this.i, this.j, this.k, this.l, this.m, this.n, qh3Var, this.q, this.r, this.s, this.t, this.p);
     }
 
-    public final ph3 h(int r30) {
-        return new ph3(this.a, this.b, this.c, this.d, r30, this.f, this.g, this.h, this.i, this.j, this.k, this.l, this.m, this.n, this.o, this.q, this.r, this.s, this.t, this.p);
+    public final ph3 h(int i) {
+        return new ph3(this.a, this.b, this.c, this.d, i, this.f, this.g, this.h, this.i, this.j, this.k, this.l, this.m, this.n, this.o, this.q, this.r, this.s, this.t, this.p);
     }
 
-    public final ph3 i(boolean r32) {
-        return new ph3(this.a, this.b, this.c, this.d, this.e, this.f, this.g, this.h, this.i, this.j, this.k, this.l, this.m, this.n, this.o, this.q, this.r, this.s, this.t, r32);
+    public final ph3 i(boolean z) {
+        return new ph3(this.a, this.b, this.c, this.d, this.e, this.f, this.g, this.h, this.i, this.j, this.k, this.l, this.m, this.n, this.o, this.q, this.r, this.s, this.t, z);
     }
 
-    public final ph3 j(cu4 r30) {
-        return new ph3(r30, this.b, this.c, this.d, this.e, this.f, this.g, this.h, this.i, this.j, this.k, this.l, this.m, this.n, this.o, this.q, this.r, this.s, this.t, this.p);
+    public final ph3 j(cu4 cu4Var) {
+        return new ph3(cu4Var, this.b, this.c, this.d, this.e, this.f, this.g, this.h, this.i, this.j, this.k, this.l, this.m, this.n, this.o, this.q, this.r, this.s, this.t, this.p);
     }
 
     public final long l() {
-        if (m() == false) goto L5;
-    L6:
-        long r0 = this.t;
-        long r2 = this.s;
-        if (r0 != this.t) goto L6;
-        return f35.Q(f35.i0(r2) + ((long) ((SystemClock.elapsedRealtime() - r0) * this.o.a)));
-    L5:
-        return this.s;
+        long j;
+        long j2;
+        if (!m()) {
+            return this.s;
+        }
+        do {
+            j = this.t;
+            j2 = this.s;
+        } while (j != this.t);
+        return f35.Q(f35.i0(j2) + ((long) ((SystemClock.elapsedRealtime() - j) * this.o.a)));
     }
 
     public final boolean m() {
-        if (this.e == 3) goto L5;
-        return false;
-    L5:
-        if (this.l == true) goto L7;
-        return false;
-    L7:
-        if (this.n != 0) goto L13;
-        return true;
-    L13:
-        return false;
+        return this.e == 3 && this.l && this.n == 0;
     }
 }

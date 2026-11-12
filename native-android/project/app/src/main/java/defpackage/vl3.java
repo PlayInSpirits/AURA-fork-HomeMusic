@@ -10,26 +10,27 @@ import java.util.List;
 public final class vl3 extends e22 {
     public final /* synthetic */ PlaylistEditorFragment f;
 
-    public vl3(PlaylistEditorFragment r1) {
-        this.f = r1;
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public vl3(PlaylistEditorFragment playlistEditorFragment) {
         super(0);
+        this.f = playlistEditorFragment;
     }
 
     @Override // defpackage.e22
-    public final boolean h(RecyclerView r2, cx3 r3, cx3 r4) {
-        PlaylistEditorFragment r1 = this.f;
-        if (r1.m0.i == false) goto L6;
-        return false;
-    L6:
-        int r5 = r3.c();
-        int r6 = r4.c();
-        List r7 = r1.n0.r;
-        r7.add(r6, (Child) r7.remove(r5));
-        r1.n0.n.c(r5, r6);
+    public final boolean h(RecyclerView recyclerView, cx3 cx3Var, cx3 cx3Var2) {
+        PlaylistEditorFragment playlistEditorFragment = this.f;
+        if (playlistEditorFragment.m0.i) {
+            return false;
+        }
+        int iC = cx3Var.c();
+        int iC2 = cx3Var2.c();
+        List list = playlistEditorFragment.n0.r;
+        list.add(iC2, (Child) list.remove(iC));
+        playlistEditorFragment.n0.n.c(iC, iC2);
         return true;
     }
 
     @Override // defpackage.e22
-    public final void i(cx3 r1) {
+    public final void i(cx3 cx3Var) {
     }
 }

@@ -5,8 +5,8 @@ import android.content.Context;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public abstract class mk5 {
-    public static final aj5 a = null;
-    public static final aj5 b = null;
+    public static final aj5 a;
+    public static final aj5 b;
     public static Context c;
 
     static {

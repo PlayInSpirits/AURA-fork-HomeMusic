@@ -12,31 +12,25 @@ public class en4 extends qu2 implements SubMenu {
     public final tu2 A;
     public final qu2 z;
 
-    public en4(Context r1, qu2 r2, tu2 r3) {
-        super(r1);
-        this.z = r2;
-        this.A = r3;
+    public en4(Context context, qu2 qu2Var, tu2 tu2Var) {
+        super(context);
+        this.z = qu2Var;
+        this.A = tu2Var;
     }
 
     @Override // defpackage.qu2
-    public final boolean d(tu2 r1) {
-        return this.z.d(r1);
+    public final boolean d(tu2 tu2Var) {
+        return this.z.d(tu2Var);
     }
 
     @Override // defpackage.qu2
-    public final boolean e(qu2 r2, MenuItem r3) {
-        if (super.e(r2, r3) == false) goto L5;
-        return true;
-    L5:
-        if (this.z.e(r2, r3) == true) goto L11;
-        return false;
-    L11:
-        return true;
+    public final boolean e(qu2 qu2Var, MenuItem menuItem) {
+        return super.e(qu2Var, menuItem) || this.z.e(qu2Var, menuItem);
     }
 
     @Override // defpackage.qu2
-    public final boolean f(tu2 r1) {
-        return this.z.f(r1);
+    public final boolean f(tu2 tu2Var) {
+        return this.z.f(tu2Var);
     }
 
     @Override // android.view.SubMenu
@@ -46,17 +40,12 @@ public class en4 extends qu2 implements SubMenu {
 
     @Override // defpackage.qu2
     public final String j() {
-        tu2 r1 = this.A;
-        if (r1 == null) goto L5;
-        int r2 = r1.a;
-    L6:
-        if (r2 != 0) goto L10;
-        return null;
-    L10:
-        return f34.f(r2, "android:menu:actionviewstates:");
-    L5:
-        r2 = 0;
-        goto L6
+        tu2 tu2Var = this.A;
+        int i = tu2Var != null ? tu2Var.a : 0;
+        if (i == 0) {
+            return null;
+        }
+        return f34.f(i, "android:menu:actionviewstates:");
     }
 
     @Override // defpackage.qu2
@@ -80,54 +69,54 @@ public class en4 extends qu2 implements SubMenu {
     }
 
     @Override // defpackage.qu2, android.view.Menu
-    public final void setGroupDividerEnabled(boolean r1) {
-        this.z.setGroupDividerEnabled(r1);
+    public final void setGroupDividerEnabled(boolean z) {
+        this.z.setGroupDividerEnabled(z);
     }
 
     @Override // android.view.SubMenu
-    public final SubMenu setHeaderIcon(Drawable r7) {
-        w(0, null, 0, r7, null);
+    public final SubMenu setHeaderIcon(Drawable drawable) {
+        w(0, null, 0, drawable, null);
         return this;
     }
 
     @Override // android.view.SubMenu
-    public final SubMenu setHeaderTitle(CharSequence r7) {
-        w(0, r7, 0, null, null);
+    public final SubMenu setHeaderTitle(CharSequence charSequence) {
+        w(0, charSequence, 0, null, null);
         return this;
     }
 
     @Override // android.view.SubMenu
-    public final SubMenu setHeaderView(View r7) {
-        w(0, null, 0, null, r7);
+    public final SubMenu setHeaderView(View view) {
+        w(0, null, 0, null, view);
         return this;
     }
 
     @Override // android.view.SubMenu
-    public final SubMenu setIcon(Drawable r2) {
-        this.A.setIcon(r2);
+    public final SubMenu setIcon(Drawable drawable) {
+        this.A.setIcon(drawable);
         return this;
     }
 
     @Override // defpackage.qu2, android.view.Menu
-    public final void setQwertyMode(boolean r1) {
-        this.z.setQwertyMode(r1);
+    public final void setQwertyMode(boolean z) {
+        this.z.setQwertyMode(z);
     }
 
     @Override // android.view.SubMenu
-    public final SubMenu setIcon(int r2) {
-        this.A.setIcon(r2);
+    public final SubMenu setIcon(int i) {
+        this.A.setIcon(i);
         return this;
     }
 
     @Override // android.view.SubMenu
-    public final SubMenu setHeaderIcon(int r7) {
-        w(0, null, r7, null, null);
+    public final SubMenu setHeaderIcon(int i) {
+        w(0, null, i, null, null);
         return this;
     }
 
     @Override // android.view.SubMenu
-    public final SubMenu setHeaderTitle(int r7) {
-        w(r7, null, 0, null, null);
+    public final SubMenu setHeaderTitle(int i) {
+        w(i, null, 0, null, null);
         return this;
     }
 }

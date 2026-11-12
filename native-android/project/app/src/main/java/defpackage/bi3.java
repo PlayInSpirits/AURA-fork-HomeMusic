@@ -7,99 +7,99 @@ import java.util.List;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public abstract class bi3 {
-    public static void a(PlaybackState.Builder r0, PlaybackState.CustomAction r1) {
-        r0.addCustomAction(r1);
+    public static void a(PlaybackState.Builder builder, PlaybackState.CustomAction customAction) {
+        builder.addCustomAction(customAction);
     }
 
-    public static PlaybackState.CustomAction b(PlaybackState.CustomAction.Builder r0) {
-        return r0.build();
+    public static PlaybackState.CustomAction b(PlaybackState.CustomAction.Builder builder) {
+        return builder.build();
     }
 
-    public static PlaybackState c(PlaybackState.Builder r0) {
-        return r0.build();
+    public static PlaybackState c(PlaybackState.Builder builder) {
+        return builder.build();
     }
 
     public static PlaybackState.Builder d() {
         return new PlaybackState.Builder();
     }
 
-    public static PlaybackState.CustomAction.Builder e(String r1, CharSequence r2, int r3) {
-        return new PlaybackState.CustomAction.Builder(r1, r2, r3);
+    public static PlaybackState.CustomAction.Builder e(String str, CharSequence charSequence, int i) {
+        return new PlaybackState.CustomAction.Builder(str, charSequence, i);
     }
 
-    public static String f(PlaybackState.CustomAction r0) {
-        return r0.getAction();
+    public static String f(PlaybackState.CustomAction customAction) {
+        return customAction.getAction();
     }
 
-    public static long g(PlaybackState r2) {
-        return r2.getActions();
+    public static long g(PlaybackState playbackState) {
+        return playbackState.getActions();
     }
 
-    public static long h(PlaybackState r2) {
-        return r2.getActiveQueueItemId();
+    public static long h(PlaybackState playbackState) {
+        return playbackState.getActiveQueueItemId();
     }
 
-    public static long i(PlaybackState r2) {
-        return r2.getBufferedPosition();
+    public static long i(PlaybackState playbackState) {
+        return playbackState.getBufferedPosition();
     }
 
-    public static List<PlaybackState.CustomAction> j(PlaybackState r0) {
-        return r0.getCustomActions();
+    public static List<PlaybackState.CustomAction> j(PlaybackState playbackState) {
+        return playbackState.getCustomActions();
     }
 
-    public static CharSequence k(PlaybackState r0) {
-        return r0.getErrorMessage();
+    public static CharSequence k(PlaybackState playbackState) {
+        return playbackState.getErrorMessage();
     }
 
-    public static Bundle l(PlaybackState.CustomAction r0) {
-        return r0.getExtras();
+    public static Bundle l(PlaybackState.CustomAction customAction) {
+        return customAction.getExtras();
     }
 
-    public static int m(PlaybackState.CustomAction r0) {
-        return r0.getIcon();
+    public static int m(PlaybackState.CustomAction customAction) {
+        return customAction.getIcon();
     }
 
-    public static long n(PlaybackState r2) {
-        return r2.getLastPositionUpdateTime();
+    public static long n(PlaybackState playbackState) {
+        return playbackState.getLastPositionUpdateTime();
     }
 
-    public static CharSequence o(PlaybackState.CustomAction r0) {
-        return r0.getName();
+    public static CharSequence o(PlaybackState.CustomAction customAction) {
+        return customAction.getName();
     }
 
-    public static float p(PlaybackState r0) {
-        return r0.getPlaybackSpeed();
+    public static float p(PlaybackState playbackState) {
+        return playbackState.getPlaybackSpeed();
     }
 
-    public static long q(PlaybackState r2) {
-        return r2.getPosition();
+    public static long q(PlaybackState playbackState) {
+        return playbackState.getPosition();
     }
 
-    public static int r(PlaybackState r0) {
-        return r0.getState();
+    public static int r(PlaybackState playbackState) {
+        return playbackState.getState();
     }
 
-    public static void s(PlaybackState.Builder r0, long r1) {
-        r0.setActions(r1);
+    public static void s(PlaybackState.Builder builder, long j) {
+        builder.setActions(j);
     }
 
-    public static void t(PlaybackState.Builder r0, long r1) {
-        r0.setActiveQueueItemId(r1);
+    public static void t(PlaybackState.Builder builder, long j) {
+        builder.setActiveQueueItemId(j);
     }
 
-    public static void u(PlaybackState.Builder r0, long r1) {
-        r0.setBufferedPosition(r1);
+    public static void u(PlaybackState.Builder builder, long j) {
+        builder.setBufferedPosition(j);
     }
 
-    public static void v(PlaybackState.Builder r0, CharSequence r1) {
-        r0.setErrorMessage(r1);
+    public static void v(PlaybackState.Builder builder, CharSequence charSequence) {
+        builder.setErrorMessage(charSequence);
     }
 
-    public static void w(PlaybackState.CustomAction.Builder r0, Bundle r1) {
-        r0.setExtras(r1);
+    public static void w(PlaybackState.CustomAction.Builder builder, Bundle bundle) {
+        builder.setExtras(bundle);
     }
 
-    public static void x(PlaybackState.Builder r0, int r1, long r2, float r4, long r5) {
-        r0.setState(r1, r2, r4, r5);
+    public static void x(PlaybackState.Builder builder, int i, long j, float f, long j2) {
+        builder.setState(i, j, f, j2);
     }
 }

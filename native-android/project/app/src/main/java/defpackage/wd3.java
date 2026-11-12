@@ -6,20 +6,16 @@ import android.os.Parcelable;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class wd3 extends sl4 implements Parcelable, nh4, kl4, b13 {
-    public static final Parcelable.Creator<wd3> CREATOR = null;
+    public static final Parcelable.Creator<wd3> CREATOR = new b23(6);
     public lh4 o;
 
-    static {
-        CREATOR = new b23(6);
-    }
-
-    public wd3(int r5) {
-        ch4 r0 = jh4.j();
-        lh4 r1 = new lh4(r5, r0.g());
-        if ((r0 instanceof yi1) == true) goto L5;
-        r1.b = new lh4(r5, 1);
-    L5:
-        this.o = r1;
+    public wd3(int i) {
+        ch4 ch4VarJ = jh4.j();
+        lh4 lh4Var = new lh4(i, ch4VarJ.g());
+        if (!(ch4VarJ instanceof yi1)) {
+            lh4Var.b = new lh4(i, 1L);
+        }
+        this.o = lh4Var;
     }
 
     @Override // defpackage.rl4
@@ -28,10 +24,10 @@ public final class wd3 extends sl4 implements Parcelable, nh4, kl4, b13 {
     }
 
     @Override // defpackage.rl4
-    public final tl4 b(tl4 r1, tl4 r2, tl4 r3) {
-        if (((lh4) r2).c != ((lh4) r3).c) goto L5;
-        return r2;
-    L5:
+    public final tl4 b(tl4 tl4Var, tl4 tl4Var2, tl4 tl4Var3) {
+        if (((lh4) tl4Var2).c == ((lh4) tl4Var3).c) {
+            return tl4Var2;
+        }
         return null;
     }
 
@@ -41,9 +37,9 @@ public final class wd3 extends sl4 implements Parcelable, nh4, kl4, b13 {
     }
 
     @Override // defpackage.rl4
-    public final void d(tl4 r1) {
-        r1.getClass();
-        this.o = (lh4) r1;
+    public final void d(tl4 tl4Var) {
+        tl4Var.getClass();
+        this.o = (lh4) tl4Var;
     }
 
     @Override // android.os.Parcelable
@@ -60,25 +56,22 @@ public final class wd3 extends sl4 implements Parcelable, nh4, kl4, b13 {
         return Integer.valueOf(g());
     }
 
-    public final void h(int r5) {
-        lh4 r0 = (lh4) jh4.h(this.o);
-        if (r0.c == r5) goto L13;
-        lh4 r1 = this.o;
-        Object r2 = jh4.c;
-        monitor-enter(r2);
-        ch4 r3 = jh4.j();     // Catch: Throwable -> L10
-        ((lh4) jh4.o(r1, this, r3, r0)).c = r5;     // Catch: Throwable -> L10
-        monitor-exit(r2);
-        jh4.n(r3, this);
-        return;
-    L10:
-        th = move-exception;
-        throw th;
+    public final void h(int i) {
+        ch4 ch4VarJ;
+        lh4 lh4Var = (lh4) jh4.h(this.o);
+        if (lh4Var.c != i) {
+            lh4 lh4Var2 = this.o;
+            synchronized (jh4.c) {
+                ch4VarJ = jh4.j();
+                ((lh4) jh4.o(lh4Var2, this, ch4VarJ, lh4Var)).c = i;
+            }
+            jh4.n(ch4VarJ, this);
+        }
     }
 
     @Override // defpackage.b13
-    public final void setValue(Object r1) {
-        h(((Number) r1).intValue());
+    public final void setValue(Object obj) {
+        h(((Number) obj).intValue());
     }
 
     public final String toString() {
@@ -86,7 +79,7 @@ public final class wd3 extends sl4 implements Parcelable, nh4, kl4, b13 {
     }
 
     @Override // android.os.Parcelable
-    public final void writeToParcel(Parcel r1, int r2) {
-        r1.writeInt(g());
+    public final void writeToParcel(Parcel parcel, int i) {
+        parcel.writeInt(g());
     }
 }

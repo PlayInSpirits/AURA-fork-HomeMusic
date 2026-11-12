@@ -1,573 +1,590 @@
 package defpackage;
 
 import androidx.media3.common.ParserException;
+import com.eddyizm.tempus.homemusic.WaveRetry;
+import org.chromium.support_lib_boundary.WebSettingsBoundaryInterface;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class xy2 implements mz0 {
-    public final be3 a;
-    public final h00 b;
-    public final be3 c;
-    public int d;
     public String e;
     public wv4 f;
-    public double g;
-    public double h;
     public boolean i;
-    public boolean j;
     public int k;
     public int l;
-    public boolean m;
     public int n;
     public int o;
-    public final dl p;
-    public int q;
-    public int r;
     public int s;
-    public long t;
     public boolean u;
+    public int d = 0;
+    public final be3 a = new be3(2, new byte[15]);
+    public final h00 b = new h00();
+    public final be3 c = new be3();
+    public final dl p = new dl();
+    public int q = -2147483647;
+    public int r = -1;
+    public long t = -1;
+    public boolean j = true;
+    public boolean m = true;
+    public double g = -9.223372036854776E18d;
+    public double h = -9.223372036854776E18d;
 
-    public xy2() {
-        this.d = 0;
-        this.a = new be3(2, new byte[15]);
-        this.b = new h00();
-        this.c = new be3();
-        this.p = new dl();
-        this.q = -2147483647;
-        this.r = -1;
-        this.t = -1;
-        this.j = true;
-        this.m = true;
-        this.g = -9.223372036854776E18d;
-        this.h = -9.223372036854776E18d;
-    }
-
+    /* JADX WARN: Can't fix incorrect switch cases order, some code will duplicate */
+    /* JADX WARN: Code duplicated, block: B:155:0x02c0  */
+    /* JADX WARN: Code duplicated, block: B:157:0x02c7  */
+    /* JADX WARN: Code duplicated, block: B:159:0x02db  */
+    /* JADX WARN: Code duplicated, block: B:162:0x02e5  */
+    /* JADX WARN: Code duplicated, block: B:189:0x03b7  */
+    /* JADX WARN: Instruction removed from duplicated block: B:155:0x02c0, please report this as an issue */
     @Override // defpackage.mz0
-    public final void a(be3 r24) {
+    public final void a(be3 be3Var) throws ParserException {
+        int i;
+        int i2;
+        int i3;
+        int i4;
+        int i5;
+        char c;
+        byte[] bArr;
+        long j;
+        long j2;
+        gy3 gy3VarP;
+        int i6;
+        long j3;
+        boolean z;
+        int i7;
         this.f.getClass();
-    L4:
-        if (r24.a() <= 0) goto L254;
-        int r2 = this.d;
-        int r3 = 8;
-        int r4 = 3;
-        int r6 = 1;
-        if (r2 != 0) goto L7;
-        int r5 = this.k;
-        if ((r5 & 2) == 0) goto L243;
-        if ((r5 & 4) != 0) goto L253;
-    L247:
-        if (r24.a() <= 0) goto L4;
-        int r7 = this.l << 8;
-        this.l = r7;
-        int r8 = r7 | r24.A();
-        this.l = r8;
-        if ((r8 & 16777215) != 12583333) goto L247;
-        r24.N(r24.b - 3);
-        this.l = 0;
-    L253:
-        this.d = 1;
-        goto L4
-    L243:
-        r24.N(r24.c);
-        goto L4
-    L7:
-        be3 r11 = this.c;
-        dl r12 = this.p;
-        if (r2 != 1) goto L9;
-        int r9 = r24.a();
-        be3 r10 = this.a;
-        int r13 = Math.min(r9, r10.a());
-        r24.k(r10.a, r10.b, r13);
-        r10.O(r13);
-        if (r10.a() == 0) goto L187;
-        this.m = false;
-        goto L4
-    L187:
-        int r14 = r10.c;
-        byte[] r15 = r10.a;
-        h00 r16 = this.b;
-        r16.o(r14, r15);
-        r16.f();
-        int r17 = ji2.G(r16, 3, 8, 8);
-        r12.o = r17;
-        if (r17 != (-1)) goto L191;
-    L189:
-        boolean r18 = false;
-    L230:
-        if (r18 == false) goto L232;
-        int r19 = 0;
-        this.n = 0;
-        this.o = (r12.q + r14) + this.o;
-    L233:
-        if (r18 == true) goto L234;
-        int r20 = r10.c;
-        if (r20 >= 15) goto L4;
-        r10.M(r20 + 1);
-        this.m = false;
-        goto L4
-    L234:
-        r10.N(r19);
-        this.f.e(r10.c, r10);
-        r10.K(2);
-        r11.K(r12.q);
-        this.m = true;
-        this.d = 2;
-        goto L4
-    L232:
-        r19 = 0;
-        goto L233
-    L191:
-        if (Math.max(Math.max(2, 8), 32) > 63) goto L193;
-        boolean r21 = true;
-    L194:
-        rr2.l(r21);
-        gh0.g(gh0.g(3, 255), 4294967296L);
-        if (r16.b() >= 2) goto L197;
-    L196:
-        long r110 = -1;
-    L209:
-        r12.p = r110;
-        if (r110 == (-1)) goto L189;
-        if (r110 > 16) goto L239;
-        if (r110 != 0) goto L227;
-        int r22 = r12.o;
-        if (r22 == 1) goto L226;
-        if (r22 == 2) goto L224;
-        if (r22 != 17) goto L227;
-        throw ParserException.a(null, "AudioTruncation packet with invalid packet label 0");
-    L224:
-        throw ParserException.a(null, "Mpegh3daFrame packet with invalid packet label 0");
-    L226:
-        throw ParserException.a(null, "Mpegh3daConfig packet with invalid packet label 0");
-    L227:
-        int r23 = ji2.G(r16, 11, 24, 24);
-        r12.q = r23;
-        if (r23 == (-1)) goto L189;
-        r18 = true;
-        goto L230
-    L239:
-        throw ParserException.c("Contains sub-stream with an invalid packet label " + r12.p);
-    L197:
-        long r25 = r16.k(2);
-        if (r25 == 3) goto L200;
-    L208:
-        r110 = r25;
-        goto L209
-    L200:
-        if (r16.b() < 8) goto L196;
-        long r111 = r16.k(8);
-        r25 = r25 + r111;
-        if (r111 != 255) goto L208;
-        if (r16.b() < 32) goto L196;
-        r25 = r16.k(32) + r25;
-        goto L208
-    L193:
-        r21 = false;
-        goto L194
-    L9:
-        if (r2 != 2) goto L183;
-        int r26 = r12.o;
-        if (r26 == 1) goto L13;
-        if (r26 == 17) goto L13;
-    L14:
-        int r27 = Math.min(r24.a(), r12.q - this.n);
-        this.f.e(r27, r24);
-        int r28 = this.n + r27;
-        this.n = r28;
-        if (r28 != r12.q) goto L4;
-        int r29 = r12.o;
-        if (r29 != 1) goto L165;
-        byte[] r112 = r11.a;
-        h00 r30 = new h00(r112.length, r112);
-        int r113 = r30.i(8);
-        int r114 = r30.i(5);
-        if (r114 != 31) goto L21;
-        int r31 = r30.i(24);
-    L50:
-        int r115 = r30.i(3);
-        if (r115 == 0) goto L62;
-        if (r115 == 1) goto L61;
-        if (r115 == 2) goto L60;
-        if (r115 == 3) goto L60;
-        if (r115 != 4) goto L59;
-        int r116 = 4096;
-    L57:
-        int r117 = r116;
-        if (r115 == 0) goto L73;
-        if (r115 == 1) goto L73;
-        if (r115 == 2) goto L72;
-        if (r115 == 3) goto L71;
-        if (r115 != 4) goto L70;
-        char r32 = 1;
-    L74:
-        r30.t(2);
-        ji2.R(r30);
-        int r118 = r30.i(5);
-        int r33 = 0;
-        int r119 = 0;
-    L75:
-        int r120 = r6;
-        int r34 = 16;
-        if (r33 >= (r118 + 1)) goto L84;
-        int r35 = r30.i(3);
-        r119 = (ji2.G(r30, 5, 8, 16) + 1) + r119;
-        if (r35 == 0) goto L81;
-        if (r35 == 2) goto L81;
-    L83:
-        r33 = r33 + 1;
-        r6 = r120;
-    L81:
-        if (r30.h() == false) goto L83;
-        ji2.R(r30);
-        goto L83
-    L84:
-        int r36 = ji2.G(r30, 4, 8, 16) + 1;
-        r30.s();
-        int r37 = 0;
-    L85:
-        double r210 = 2.0d;
-        if (r37 >= r36) goto L135;
-        int r121 = r30.i(2);
-        if (r121 != 0) goto L90;
-        r30.t(r4);
-        if (r30.h() == false) goto L131;
-        r30.t(13);
-    L131:
-        if (r32 <= 0) goto L133;
-        ji2.Q(r30);
-    L133:
-        r37 = r37 + 1;
-        r3 = 8;
-        r4 = 3;
-        r34 = 16;
-        r120 = 1;
-        goto L85
-    L90:
-        if (r121 == r120) goto L99;
-        if (r121 != r4) goto L133;
-        ji2.G(r30, 4, r3, r34);
-        int r122 = ji2.G(r30, 4, r3, r34);
-        if (r30.h() == false) goto L96;
-        ji2.G(r30, r3, r34, 0);
-    L96:
-        r30.s();
-        if (r122 <= 0) goto L133;
-        r30.t(r122 * 8);
-        goto L133
-    L99:
-        r30.t(r4);
-        boolean r123 = r30.h();
-        if (r123 == false) goto L102;
-        r30.t(13);
-    L102:
-        if (r123 == false) goto L104;
-        r30.s();
-    L104:
-        if (r32 <= 0) goto L106;
-        ji2.Q(r30);
-        int r124 = r30.i(2);
-    L107:
-        if (r124 <= 0) goto L117;
-        r30.t(6);
-        int r38 = r30.i(2);
-        r30.t(4);
-        if (r30.h() == false) goto L111;
-        r30.t(5);
-    L111:
-        if (r124 == 2) goto L113;
-        if (r124 == r4) goto L113;
-    L114:
-        if (r38 != 2) goto L117;
-        r30.s();
-    L113:
-        r30.t(6);
-    L117:
-        int r39 = ((int) Math.floor(Math.log(r119 - 1) / Math.log(2.0d))) + 1;
-        int r40 = r30.i(2);
-        if (r40 <= 0) goto L123;
-        if (r30.h() == false) goto L123;
-        r30.t(r39);
-    L123:
-        if (r30.h() == false) goto L125;
-        r30.t(r39);
-    L125:
-        if (r32 != 0) goto L133;
-        if (r40 != 0) goto L133;
-        r30.s();
-        goto L133
-    L106:
-        r124 = 0;
-        goto L107
-    L135:
-        if (r30.h() == false) goto L146;
-        int r41 = 8;
-        int r42 = ji2.G(r30, 2, 4, 8) + 1;
-        int r43 = 0;
-        byte[] r44 = null;
-    L137:
-        if (r43 >= r42) goto L147;
-        int r45 = ji2.G(r30, 4, r41, 16);
-        int r125 = ji2.G(r30, 4, r41, 16);
-        if (r45 != 7) goto L144;
-        int r46 = r30.i(4) + 1;
-        r30.t(4);
-        byte[] r47 = new byte[r46];
-        int r126 = 0;
-    L141:
-        if (r126 >= r46) goto L143;
-        r47[r126] = (byte) r30.i(r41);
-        r126 = r126 + 1;
-        goto L141
-    L143:
-        r44 = r47;
-    L145:
-        r43 = r43 + 1;
-        r41 = 8;
-        goto L137
-    L144:
-        r30.t(r125 * r41);
-    L147:
-        switch(r31) {
-            case 14700: goto L152;
-            case 16000: goto L152;
-            case 22050: goto L153;
-            case 24000: goto L153;
-            case 29400: goto L151;
-            case 32000: goto L151;
-            case 44100: goto L150;
-            case 48000: goto L150;
-            case 58800: goto L151;
-            case 64000: goto L151;
-            case 88200: goto L150;
-            case 96000: goto L150;
-            default: goto L149;
-        };
-    L150:
-        r210 = 1.0d;
-        goto L153
-    L151:
-        r210 = 1.5d;
-        goto L153
-    L152:
-        r210 = 3.0d;
-    L153:
-        this.q = (int) (((double) r31) * r210);
-        this.r = (int) (((double) r117) * r210);
-        long r48 = this.t;
-        long r49 = r12.p;
-        if (r48 == r49) goto L164;
-        this.t = r49;
-        String r50 = "mhm1";
-        if (r113 == (-1)) goto L158;
-        r50 = "mhm1".concat(String.format(".%02X", new Object[]{Integer.valueOf(r113)}));
-    L158:
-        if (r44 != null) goto L160;
-    L162:
-        gy3 r51 = null;
-    L163:
-        sb1 r52 = new sb1();
-        r52.a = this.e;
-        r52.l = lw2.m("video/mp2t");
-        r52.m = lw2.m("audio/mhm1");
-        r52.F = this.q;
-        r52.j = r50;
-        r52.p = r51;
-        this.f.g(new tb1(r52));
-        goto L164
-    L160:
-        if (r44.length <= 0) goto L162;
-        r51 = yw1.p(f35.b, r44);
-    L164:
-        int r127 = 1;
-        this.u = true;
-    L182:
-        this.d = r127;
-        goto L4
-    L149:
-        throw ParserException.c("Unsupported sampling rate " + r31);
-    L146:
-        r44 = null;
-        goto L147
-    L70:
-        throw ParserException.c("Unsupported coreSbrFrameLengthIndex " + r115);
-    L71:
-        r32 = 3;
-        goto L74
-    L72:
-        r32 = 2;
-    L73:
-        r32 = 0;
-        goto L74
-    L59:
-        throw ParserException.c("Unsupported coreSbrFrameLengthIndex " + r115);
-    L60:
-        r116 = 2048;
-        goto L57
-    L61:
-        r116 = 1024;
-        goto L57
-    L62:
-        r116 = 768;
-        goto L57
-    L21:
-        switch(r114) {
-            case 0: goto L49;
-            case 1: goto L48;
-            case 2: goto L47;
-            case 3: goto L46;
-            case 4: goto L45;
-            case 5: goto L44;
-            case 6: goto L43;
-            case 7: goto L42;
-            case 8: goto L41;
-            case 9: goto L40;
-            case 10: goto L39;
-            case 11: goto L38;
-            case 12: goto L37;
-            case 13: goto L23;
-            case 14: goto L23;
-            case 15: goto L36;
-            case 16: goto L35;
-            case 17: goto L34;
-            case 18: goto L33;
-            case 19: goto L32;
-            case 20: goto L31;
-            case 21: goto L30;
-            case 22: goto L29;
-            case 23: goto L28;
-            case 24: goto L27;
-            case 25: goto L26;
-            case 26: goto L25;
-            case 27: goto L24;
-            default: goto L23;
-        };
-    L24:
-        r31 = 9600;
-        goto L50
-    L25:
-        r31 = 12800;
-        goto L50
-    L26:
-        r31 = 14400;
-        goto L50
-    L27:
-        r31 = 17075;
-        goto L50
-    L28:
-        r31 = 19200;
-        goto L50
-    L29:
-        r31 = 20000;
-        goto L50
-    L30:
-        r31 = 25600;
-        goto L50
-    L31:
-        r31 = 28800;
-        goto L50
-    L32:
-        r31 = 34150;
-        goto L50
-    L33:
-        r31 = 38400;
-        goto L50
-    L34:
-        r31 = 40000;
-        goto L50
-    L35:
-        r31 = 51200;
-        goto L50
-    L36:
-        r31 = 57600;
-        goto L50
-    L37:
-        r31 = 7350;
-        goto L50
-    L38:
-        r31 = 8000;
-        goto L50
-    L39:
-        r31 = 11025;
-        goto L50
-    L40:
-        r31 = 12000;
-        goto L50
-    L41:
-        r31 = 16000;
-        goto L50
-    L42:
-        r31 = 22050;
-        goto L50
-    L43:
-        r31 = 24000;
-        goto L50
-    L44:
-        r31 = 32000;
-        goto L50
-    L45:
-        r31 = 44100;
-        goto L50
-    L46:
-        r31 = 48000;
-        goto L50
-    L47:
-        r31 = 64000;
-        goto L50
-    L48:
-        r31 = 88200;
-        goto L50
-    L49:
-        r31 = 96000;
-        goto L50
-    L23:
-        throw ParserException.c("Unsupported sampling rate index " + r114);
-    L165:
-        if (r29 != 17) goto L172;
-        byte[] r53 = r11.a;
-        h00 r54 = new h00(r53.length, r53);
-        if (r54.h() == false) goto L169;
-        r54.t(2);
-        int r55 = r54.i(13);
-    L170:
-        this.s = r55;
-    L171:
-        r127 = 1;
-        goto L182
-    L169:
-        r55 = 0;
-        goto L170
-    L172:
-        if (r29 != 2) goto L171;
-        if (this.u == false) goto L176;
-        this.j = false;
-        int r56 = 1;
-    L177:
-        double r57 = (((double) (this.r - this.s)) * 1000000.0d) / ((double) this.q);
-        long r58 = Math.round(this.g);
-        if (this.i == false) goto L180;
-        this.i = false;
-        this.g = this.h;
-    L181:
-        this.f.a(r58, r56, this.o, 0, null);
-        this.u = false;
-        this.s = 0;
-        this.o = 0;
-        goto L171
-    L180:
-        this.g += r57;
-        goto L181
-    L176:
-        r56 = 0;
-    L13:
-        int r59 = r24.b;
-        int r128 = Math.min(r24.a(), r11.a());
-        r24.k(r11.a, r11.b, r128);
-        r11.O(r128);
-        r24.N(r59);
-        goto L14
-    L183:
-        tb4.a();
-        return;
+        while (be3Var.a() > 0) {
+            int i8 = this.d;
+            int i9 = 8;
+            int i10 = 3;
+            int i11 = 1;
+            if (i8 != 0) {
+                be3 be3Var2 = this.c;
+                dl dlVar = this.p;
+                if (i8 == 1) {
+                    int iA = be3Var.a();
+                    be3 be3Var3 = this.a;
+                    int iMin = Math.min(iA, be3Var3.a());
+                    be3Var.k(be3Var3.a, be3Var3.b, iMin);
+                    be3Var3.O(iMin);
+                    if (be3Var3.a() == 0) {
+                        int i12 = be3Var3.c;
+                        byte[] bArr2 = be3Var3.a;
+                        h00 h00Var = this.b;
+                        h00Var.o(i12, bArr2);
+                        h00Var.f();
+                        int iG = ji2.G(h00Var, 3, 8, 8);
+                        dlVar.o = iG;
+                        if (iG != -1) {
+                            rr2.l(Math.max(Math.max(2, 8), 32) <= 63);
+                            gh0.g(gh0.g(3L, 255L), 4294967296L);
+                            if (h00Var.b() < 2) {
+                                j3 = -1;
+                            } else {
+                                long jK = h00Var.k(2);
+                                if (jK == 3) {
+                                    if (h00Var.b() >= 8) {
+                                        long jK2 = h00Var.k(8);
+                                        jK += jK2;
+                                        if (jK2 == 255) {
+                                            if (h00Var.b() >= 32) {
+                                                jK = h00Var.k(32) + jK;
+                                            }
+                                        }
+                                    }
+                                    j3 = -1;
+                                }
+                                j3 = jK;
+                            }
+                            dlVar.p = j3;
+                            if (j3 == -1) {
+                                z = false;
+                            } else {
+                                if (j3 > 16) {
+                                    throw ParserException.c("Contains sub-stream with an invalid packet label " + dlVar.p);
+                                }
+                                if (j3 == 0) {
+                                    int i13 = dlVar.o;
+                                    if (i13 == 1) {
+                                        throw ParserException.a(null, "Mpegh3daConfig packet with invalid packet label 0");
+                                    }
+                                    if (i13 == 2) {
+                                        throw ParserException.a(null, "Mpegh3daFrame packet with invalid packet label 0");
+                                    }
+                                    if (i13 == 17) {
+                                        throw ParserException.a(null, "AudioTruncation packet with invalid packet label 0");
+                                    }
+                                }
+                                int iG2 = ji2.G(h00Var, 11, 24, 24);
+                                dlVar.q = iG2;
+                                if (iG2 != -1) {
+                                    z = true;
+                                } else {
+                                    z = false;
+                                }
+                            }
+                        } else {
+                            z = false;
+                        }
+                        if (z) {
+                            i7 = 0;
+                            this.n = 0;
+                            this.o = dlVar.q + i12 + this.o;
+                        } else {
+                            i7 = 0;
+                        }
+                        if (z) {
+                            be3Var3.N(i7);
+                            this.f.e(be3Var3.c, be3Var3);
+                            be3Var3.K(2);
+                            be3Var2.K(dlVar.q);
+                            this.m = true;
+                            this.d = 2;
+                        } else {
+                            int i14 = be3Var3.c;
+                            if (i14 < 15) {
+                                be3Var3.M(i14 + 1);
+                                this.m = false;
+                            }
+                        }
+                    } else {
+                        this.m = false;
+                    }
+                } else {
+                    if (i8 != 2) {
+                        tb4.a();
+                        return;
+                    }
+                    int i15 = dlVar.o;
+                    if (i15 == 1 || i15 == 17) {
+                        int i16 = be3Var.b;
+                        int iMin2 = Math.min(be3Var.a(), be3Var2.a());
+                        be3Var.k(be3Var2.a, be3Var2.b, iMin2);
+                        be3Var2.O(iMin2);
+                        be3Var.N(i16);
+                    }
+                    int iMin3 = Math.min(be3Var.a(), dlVar.q - this.n);
+                    this.f.e(iMin3, be3Var);
+                    int i17 = this.n + iMin3;
+                    this.n = i17;
+                    if (i17 != dlVar.q) {
+                        continue;
+                    } else {
+                        int i18 = dlVar.o;
+                        if (i18 == 1) {
+                            byte[] bArr3 = be3Var2.a;
+                            h00 h00Var2 = new h00(bArr3.length, bArr3);
+                            int i19 = h00Var2.i(8);
+                            int i20 = h00Var2.i(5);
+                            if (i20 != 31) {
+                                switch (i20) {
+                                    case 0:
+                                        i4 = 96000;
+                                        break;
+                                    case 1:
+                                        i4 = 88200;
+                                        break;
+                                    case 2:
+                                        i4 = 64000;
+                                        break;
+                                    case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
+                                        i4 = 48000;
+                                        break;
+                                    case 4:
+                                        i4 = 44100;
+                                        break;
+                                    case 5:
+                                        i4 = 32000;
+                                        break;
+                                    case 6:
+                                        i4 = 24000;
+                                        break;
+                                    case 7:
+                                        i4 = 22050;
+                                        break;
+                                    case 8:
+                                        i4 = 16000;
+                                        break;
+                                    case 9:
+                                        i4 = 12000;
+                                        break;
+                                    case 10:
+                                        i4 = 11025;
+                                        break;
+                                    case 11:
+                                        i4 = 8000;
+                                        break;
+                                    case 12:
+                                        i4 = 7350;
+                                        break;
+                                    case 13:
+                                    case 14:
+                                    default:
+                                        throw ParserException.c("Unsupported sampling rate index " + i20);
+                                    case 15:
+                                        i4 = 57600;
+                                        break;
+                                    case WaveRetry.MAX_FAILURES /* 16 */:
+                                        i4 = 51200;
+                                        break;
+                                    case 17:
+                                        i4 = 40000;
+                                        break;
+                                    case 18:
+                                        i4 = 38400;
+                                        break;
+                                    case 19:
+                                        i4 = 34150;
+                                        break;
+                                    case 20:
+                                        i4 = 28800;
+                                        break;
+                                    case 21:
+                                        i4 = 25600;
+                                        break;
+                                    case 22:
+                                        i4 = 20000;
+                                        break;
+                                    case 23:
+                                        i4 = 19200;
+                                        break;
+                                    case 24:
+                                        i4 = 17075;
+                                        break;
+                                    case 25:
+                                        i4 = 14400;
+                                        break;
+                                    case 26:
+                                        i4 = 12800;
+                                        break;
+                                    case 27:
+                                        i4 = 9600;
+                                        break;
+                                }
+                            } else {
+                                i4 = h00Var2.i(24);
+                            }
+                            int i21 = h00Var2.i(3);
+                            if (i21 == 0) {
+                                i5 = 768;
+                            } else if (i21 == 1) {
+                                i5 = 1024;
+                            } else if (i21 == 2 || i21 == 3) {
+                                i5 = 2048;
+                            } else {
+                                if (i21 != 4) {
+                                    throw ParserException.c("Unsupported coreSbrFrameLengthIndex " + i21);
+                                }
+                                i5 = 4096;
+                            }
+                            int i22 = i5;
+                            if (i21 == 0 || i21 == 1) {
+                                c = 0;
+                            } else if (i21 == 2) {
+                                c = 2;
+                            } else if (i21 == 3) {
+                                c = 3;
+                            } else {
+                                if (i21 != 4) {
+                                    throw ParserException.c("Unsupported coreSbrFrameLengthIndex " + i21);
+                                }
+                                c = 1;
+                            }
+                            h00Var2.t(2);
+                            ji2.R(h00Var2);
+                            int i23 = h00Var2.i(5);
+                            int i24 = 0;
+                            int iG3 = 0;
+                            while (true) {
+                                int i25 = i11;
+                                int i26 = 16;
+                                if (i24 < i23 + 1) {
+                                    int i27 = h00Var2.i(3);
+                                    iG3 = ji2.G(h00Var2, 5, 8, 16) + 1 + iG3;
+                                    if ((i27 == 0 || i27 == 2) && h00Var2.h()) {
+                                        ji2.R(h00Var2);
+                                    }
+                                    i24++;
+                                    i11 = i25;
+                                } else {
+                                    int iG4 = ji2.G(h00Var2, 4, 8, 16) + 1;
+                                    h00Var2.s();
+                                    int i28 = 0;
+                                    while (true) {
+                                        double d = 2.0d;
+                                        if (i28 < iG4) {
+                                            int i29 = h00Var2.i(2);
+                                            if (i29 == 0) {
+                                                h00Var2.t(i10);
+                                                if (h00Var2.h()) {
+                                                    h00Var2.t(13);
+                                                }
+                                                if (c > 0) {
+                                                    ji2.Q(h00Var2);
+                                                }
+                                            } else if (i29 == i25) {
+                                                h00Var2.t(i10);
+                                                boolean zH = h00Var2.h();
+                                                if (zH) {
+                                                    h00Var2.t(13);
+                                                }
+                                                if (zH) {
+                                                    h00Var2.s();
+                                                }
+                                                if (c > 0) {
+                                                    ji2.Q(h00Var2);
+                                                    i6 = h00Var2.i(2);
+                                                } else {
+                                                    i6 = 0;
+                                                }
+                                                if (i6 > 0) {
+                                                    h00Var2.t(6);
+                                                    int i30 = h00Var2.i(2);
+                                                    h00Var2.t(4);
+                                                    if (h00Var2.h()) {
+                                                        h00Var2.t(5);
+                                                    }
+                                                    if (i6 == 2 || i6 == i10) {
+                                                        h00Var2.t(6);
+                                                    }
+                                                    if (i30 == 2) {
+                                                        h00Var2.s();
+                                                    }
+                                                }
+                                                int iFloor = ((int) Math.floor(Math.log(iG3 - 1) / Math.log(2.0d))) + 1;
+                                                int i31 = h00Var2.i(2);
+                                                if (i31 > 0 && h00Var2.h()) {
+                                                    h00Var2.t(iFloor);
+                                                }
+                                                if (h00Var2.h()) {
+                                                    h00Var2.t(iFloor);
+                                                }
+                                                if (c == 0 && i31 == 0) {
+                                                    h00Var2.s();
+                                                }
+                                            } else if (i29 == i10) {
+                                                ji2.G(h00Var2, 4, i9, i26);
+                                                int iG5 = ji2.G(h00Var2, 4, i9, i26);
+                                                if (h00Var2.h()) {
+                                                    ji2.G(h00Var2, i9, i26, 0);
+                                                }
+                                                h00Var2.s();
+                                                if (iG5 > 0) {
+                                                    h00Var2.t(iG5 * 8);
+                                                }
+                                            }
+                                            i28++;
+                                            i9 = 8;
+                                            i10 = 3;
+                                            i26 = 16;
+                                            i25 = 1;
+                                        } else {
+                                            if (h00Var2.h()) {
+                                                int i32 = 8;
+                                                int iG6 = ji2.G(h00Var2, 2, 4, 8) + 1;
+                                                int i33 = 0;
+                                                bArr = null;
+                                                while (i33 < iG6) {
+                                                    int iG7 = ji2.G(h00Var2, 4, i32, 16);
+                                                    int iG8 = ji2.G(h00Var2, 4, i32, 16);
+                                                    if (iG7 == 7) {
+                                                        int i34 = h00Var2.i(4) + 1;
+                                                        h00Var2.t(4);
+                                                        byte[] bArr4 = new byte[i34];
+                                                        for (int i35 = 0; i35 < i34; i35++) {
+                                                            bArr4[i35] = (byte) h00Var2.i(i32);
+                                                        }
+                                                        bArr = bArr4;
+                                                    } else {
+                                                        h00Var2.t(iG8 * i32);
+                                                    }
+                                                    i33++;
+                                                    i32 = 8;
+                                                }
+                                            } else {
+                                                bArr = null;
+                                            }
+                                            switch (i4) {
+                                                case 14700:
+                                                case 16000:
+                                                    d = 3.0d;
+                                                    this.q = (int) (((double) i4) * d);
+                                                    this.r = (int) (((double) i22) * d);
+                                                    j = this.t;
+                                                    j2 = dlVar.p;
+                                                    if (j != j2) {
+                                                        this.t = j2;
+                                                        String strConcat = i19 != -1 ? "mhm1".concat(String.format(".%02X", Integer.valueOf(i19))) : "mhm1";
+                                                        if (bArr != null || bArr.length <= 0) {
+                                                            gy3VarP = null;
+                                                        } else {
+                                                            gy3VarP = yw1.p(f35.b, bArr);
+                                                        }
+                                                        sb1 sb1Var = new sb1();
+                                                        sb1Var.a = this.e;
+                                                        sb1Var.l = lw2.m("video/mp2t");
+                                                        sb1Var.m = lw2.m("audio/mhm1");
+                                                        sb1Var.F = this.q;
+                                                        sb1Var.j = strConcat;
+                                                        sb1Var.p = gy3VarP;
+                                                        this.f.g(new tb1(sb1Var));
+                                                    }
+                                                    i2 = 1;
+                                                    this.u = true;
+                                                    break;
+                                                case 22050:
+                                                case 24000:
+                                                    this.q = (int) (((double) i4) * d);
+                                                    this.r = (int) (((double) i22) * d);
+                                                    j = this.t;
+                                                    j2 = dlVar.p;
+                                                    if (j != j2) {
+                                                        this.t = j2;
+                                                        if (i19 != -1) {
+                                                        }
+                                                        if (bArr != null) {
+                                                            gy3VarP = null;
+                                                        } else {
+                                                            gy3VarP = null;
+                                                        }
+                                                        sb1 sb1Var2 = new sb1();
+                                                        sb1Var2.a = this.e;
+                                                        sb1Var2.l = lw2.m("video/mp2t");
+                                                        sb1Var2.m = lw2.m("audio/mhm1");
+                                                        sb1Var2.F = this.q;
+                                                        sb1Var2.j = strConcat;
+                                                        sb1Var2.p = gy3VarP;
+                                                        this.f.g(new tb1(sb1Var2));
+                                                    }
+                                                    i2 = 1;
+                                                    this.u = true;
+                                                    break;
+                                                case 29400:
+                                                case 32000:
+                                                case 58800:
+                                                case 64000:
+                                                    d = 1.5d;
+                                                    this.q = (int) (((double) i4) * d);
+                                                    this.r = (int) (((double) i22) * d);
+                                                    j = this.t;
+                                                    j2 = dlVar.p;
+                                                    if (j != j2) {
+                                                        this.t = j2;
+                                                        if (i19 != -1) {
+                                                        }
+                                                        if (bArr != null) {
+                                                            gy3VarP = null;
+                                                        } else {
+                                                            gy3VarP = null;
+                                                        }
+                                                        sb1 sb1Var3 = new sb1();
+                                                        sb1Var3.a = this.e;
+                                                        sb1Var3.l = lw2.m("video/mp2t");
+                                                        sb1Var3.m = lw2.m("audio/mhm1");
+                                                        sb1Var3.F = this.q;
+                                                        sb1Var3.j = strConcat;
+                                                        sb1Var3.p = gy3VarP;
+                                                        this.f.g(new tb1(sb1Var3));
+                                                    }
+                                                    i2 = 1;
+                                                    this.u = true;
+                                                    break;
+                                                case 44100:
+                                                case 48000:
+                                                case 88200:
+                                                case 96000:
+                                                    d = 1.0d;
+                                                    this.q = (int) (((double) i4) * d);
+                                                    this.r = (int) (((double) i22) * d);
+                                                    j = this.t;
+                                                    j2 = dlVar.p;
+                                                    if (j != j2) {
+                                                        this.t = j2;
+                                                        if (i19 != -1) {
+                                                        }
+                                                        if (bArr != null) {
+                                                            gy3VarP = null;
+                                                        } else {
+                                                            gy3VarP = null;
+                                                        }
+                                                        sb1 sb1Var4 = new sb1();
+                                                        sb1Var4.a = this.e;
+                                                        sb1Var4.l = lw2.m("video/mp2t");
+                                                        sb1Var4.m = lw2.m("audio/mhm1");
+                                                        sb1Var4.F = this.q;
+                                                        sb1Var4.j = strConcat;
+                                                        sb1Var4.p = gy3VarP;
+                                                        this.f.g(new tb1(sb1Var4));
+                                                    }
+                                                    i2 = 1;
+                                                    this.u = true;
+                                                    break;
+                                                default:
+                                                    throw ParserException.c("Unsupported sampling rate " + i4);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        } else {
+                            if (i18 == 17) {
+                                byte[] bArr5 = be3Var2.a;
+                                h00 h00Var3 = new h00(bArr5.length, bArr5);
+                                if (h00Var3.h()) {
+                                    h00Var3.t(2);
+                                    i3 = h00Var3.i(13);
+                                } else {
+                                    i3 = 0;
+                                }
+                                this.s = i3;
+                            } else if (i18 == 2) {
+                                if (this.u) {
+                                    this.j = false;
+                                    i = 1;
+                                } else {
+                                    i = 0;
+                                }
+                                double d2 = (((double) (this.r - this.s)) * 1000000.0d) / ((double) this.q);
+                                long jRound = Math.round(this.g);
+                                if (this.i) {
+                                    this.i = false;
+                                    this.g = this.h;
+                                } else {
+                                    this.g += d2;
+                                }
+                                this.f.a(jRound, i, this.o, 0, null);
+                                this.u = false;
+                                this.s = 0;
+                                this.o = 0;
+                            }
+                            i2 = 1;
+                        }
+                        this.d = i2;
+                    }
+                }
+            } else {
+                int i36 = this.k;
+                if ((i36 & 2) == 0) {
+                    be3Var.N(be3Var.c);
+                } else {
+                    if ((i36 & 4) == 0) {
+                        while (true) {
+                            if (be3Var.a() > 0) {
+                                int i37 = this.l << 8;
+                                this.l = i37;
+                                int iA2 = i37 | be3Var.A();
+                                this.l = iA2;
+                                if ((iA2 & 16777215) == 12583333) {
+                                    be3Var.N(be3Var.b - 3);
+                                    this.l = 0;
+                                }
+                            }
+                        }
+                    }
+                    this.d = 1;
+                }
+            }
+        }
     }
 
     @Override // defpackage.mz0
@@ -580,7 +597,7 @@ public final class xy2 implements mz0 {
         this.q = -2147483647;
         this.r = -1;
         this.s = 0;
-        this.t = -1;
+        this.t = -1L;
         this.u = false;
         this.i = false;
         this.m = true;
@@ -590,36 +607,30 @@ public final class xy2 implements mz0 {
     }
 
     @Override // defpackage.mz0
-    public final void d(boolean r1) {
+    public final void d(boolean z) {
     }
 
     @Override // defpackage.mz0
-    public final void e(int r3, long r4) {
-        this.k = r3;
-        if (this.j == true) goto L10;
-        if (this.o == 0) goto L7;
-    L8:
-        this.i = true;
-        goto L10
-    L7:
-        if (this.m == false) goto L8;
-    L10:
-        if (r4 != (-9223372036854775807L)) goto L12;
-        return;
-    L12:
-        if (this.i == false) goto L15;
-        this.h = r4;
-        return;
-    L15:
-        this.g = r4;
+    public final void e(int i, long j) {
+        this.k = i;
+        if (!this.j && (this.o != 0 || !this.m)) {
+            this.i = true;
+        }
+        if (j != -9223372036854775807L) {
+            if (this.i) {
+                this.h = j;
+            } else {
+                this.g = j;
+            }
+        }
     }
 
     @Override // defpackage.mz0
-    public final void f(m51 r2, sy4 r3) {
-        r3.a();
-        r3.b();
-        this.e = r3.e;
-        r3.b();
-        this.f = r2.t(r3.d, 1);
+    public final void f(m51 m51Var, sy4 sy4Var) {
+        sy4Var.a();
+        sy4Var.b();
+        this.e = sy4Var.e;
+        sy4Var.b();
+        this.f = m51Var.t(sy4Var.d, 1);
     }
 }

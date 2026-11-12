@@ -5,7 +5,7 @@ package defpackage;
 public final class be2 {
     public final int a;
 
-    public be2(int r1) {
-        this.a = r1;
+    public be2(int i) {
+        this.a = i;
     }
 }

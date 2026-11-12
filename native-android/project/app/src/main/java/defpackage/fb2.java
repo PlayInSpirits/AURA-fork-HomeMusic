@@ -11,65 +11,54 @@ public final class fb2 implements Iterator, x32 {
     public int q;
     public int r;
 
-    public fb2(String r1) {
-        this.n = r1;
+    public fb2(String str) {
+        this.n = str;
     }
 
     @Override // java.util.Iterator
     public final boolean hasNext() {
-        int r0 = this.o;
-        if (r0 == 0) goto L7;
-        if (r0 != 1) goto L6;
-        return true;
-    L6:
-        return false;
-    L7:
-        int r3 = 2;
-        if (this.r >= 0) goto L11;
-        this.o = 2;
-        return false;
-    L11:
-        String r1 = this.n;
-        int r2 = r1.length();
-        int r4 = this.p;
-        int r5 = r1.length();
-    L12:
-        if (r4 >= r5) goto L25;
-        char r6 = r1.charAt(r4);
-        if (r6 == '\n') goto L17;
-        if (r6 == '\r') goto L17;
-        r4 = r4 + 1;
-    L17:
-        if (r6 != '\r') goto L23;
-        int r7 = r4 + 1;
-        if (r7 >= r1.length()) goto L23;
-        if (r1.charAt(r7) != '\n') goto L23;
-    L24:
-        r2 = r4;
-    L26:
+        int i;
+        int i2;
+        int i3 = this.o;
+        if (i3 != 0) {
+            return i3 == 1;
+        }
+        if (this.r < 0) {
+            this.o = 2;
+            return false;
+        }
+        String str = this.n;
+        int length = str.length();
+        int length2 = str.length();
+        for (int i4 = this.p; i4 < length2; i4++) {
+            char cCharAt = str.charAt(i4);
+            if (cCharAt == '\n' || cCharAt == '\r') {
+                i = (cCharAt == '\r' && (i2 = i4 + 1) < str.length() && str.charAt(i2) == '\n') ? 2 : 1;
+                length = i4;
+                this.o = 1;
+                this.r = i;
+                this.q = length;
+                return true;
+            }
+        }
+        i = -1;
         this.o = 1;
-        this.r = r3;
-        this.q = r2;
+        this.r = i;
+        this.q = length;
         return true;
-    L23:
-        r3 = 1;
-        goto L24
-    L25:
-        r3 = -1;
-        goto L26
     }
 
     @Override // java.util.Iterator
     public final Object next() {
-        if (hasNext() == false) goto L6;
+        if (!hasNext()) {
+            tb4.k();
+            return null;
+        }
         this.o = 0;
-        int r0 = this.q;
-        int r1 = this.p;
-        this.p = this.r + r0;
-        return this.n.subSequence(r1, r0).toString();
-    L6:
-        tb4.k();
-        return null;
+        int i = this.q;
+        int i2 = this.p;
+        this.p = this.r + i;
+        return this.n.subSequence(i2, i).toString();
     }
 
     @Override // java.util.Iterator

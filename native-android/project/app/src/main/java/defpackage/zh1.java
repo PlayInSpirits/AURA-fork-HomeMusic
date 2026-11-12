@@ -12,21 +12,21 @@ public final class zh1 extends zg0 {
     public final long s;
     public Bitmap t;
 
-    public zh1(Handler r1, int r2, long r3) {
-        this.q = r1;
-        this.r = r2;
-        this.s = r3;
+    public zh1(Handler handler, int i, long j) {
+        this.q = handler;
+        this.r = i;
+        this.s = j;
     }
 
     @Override // defpackage.wq4
-    public final void c(Object r3, cx4 r4) {
-        this.t = (Bitmap) r3;
-        Handler r5 = this.q;
-        r5.sendMessageAtTime(r5.obtainMessage(1, this), this.s);
+    public final void c(Object obj, cx4 cx4Var) {
+        this.t = (Bitmap) obj;
+        Handler handler = this.q;
+        handler.sendMessageAtTime(handler.obtainMessage(1, this), this.s);
     }
 
     @Override // defpackage.wq4
-    public final void m(Drawable r1) {
+    public final void m(Drawable drawable) {
         this.t = null;
     }
 }

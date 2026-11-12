@@ -11,76 +11,86 @@ public final class h22 extends o15 {
     public final Iterator r;
     public final /* synthetic */ Object s;
 
-    public h22(gb4 r2) {
-        this.q = 1;
-        this.s = r2;
+    /* JADX WARN: 'this' call moved to the top of the method (can break code semantics) */
+    public h22(gb4 gb4Var) {
         this();
-        this.r = r2.n.iterator();
+        this.q = 1;
+        this.s = gb4Var;
+        this.r = gb4Var.n.iterator();
     }
 
+    /* JADX WARN: Can't fix incorrect switch cases order, some code will duplicate */
     @Override // java.util.Iterator
     public final boolean hasNext() {
-        if (this.o == 4) goto L5;
-        boolean r0 = true;
-    L6:
-        rr2.w(r0);
-        int r1 = xa3.w(this.o);
-        if (r1 != 0) goto L9;
-        return true;
-    L9:
-        if (r1 == 2) goto L28;
-        this.o = 4;
-        int r2 = this.q;
-        Object r3 = null;
-        Object r4 = this.s;
-        Iterator r5 = this.r;
-        switch(r2) {
-            case 0: goto L19;
-            default: goto L13;
-        };
-    L13:
-        if (r5.hasNext() == false) goto L17;
-        Object r6 = r5.next();
-        if (((gb4) r4).o.contains(r6) == false) goto L13;
-    L16:
-        r3 = r6;
-    L24:
-        this.p = r3;
-        if (this.o == 3) goto L28;
-        this.o = 1;
-        return true;
-    L17:
-        this.o = 3;
-    L19:
-        if (r5.hasNext() == false) goto L23;
-        r6 = r5.next();
-        if (((ro3) r4).apply(r6) == false) goto L19;
-    L23:
-        this.o = 3;
-    L28:
+        Object next;
+        rr2.w(this.o != 4);
+        int iW = xa3.w(this.o);
+        if (iW == 0) {
+            return true;
+        }
+        if (iW != 2) {
+            this.o = 4;
+            int i = this.q;
+            Object obj = null;
+            Object obj2 = this.s;
+            Iterator it = this.r;
+            switch (i) {
+                case 0:
+                    while (true) {
+                        if (!it.hasNext()) {
+                            this.o = 3;
+                            break;
+                        } else {
+                            next = it.next();
+                            if (((ro3) obj2).apply(next)) {
+                                obj = next;
+                                break;
+                            }
+                        }
+                    }
+                    break;
+                default:
+                    while (true) {
+                        if (!it.hasNext()) {
+                            this.o = 3;
+                            break;
+                        } else {
+                            next = it.next();
+                            if (((gb4) obj2).o.contains(next)) {
+                                obj = next;
+                                break;
+                            }
+                        }
+                    }
+                    break;
+            }
+            this.p = obj;
+            if (this.o != 3) {
+                this.o = 1;
+                return true;
+            }
+        }
         return false;
-    L5:
-        r0 = false;
-        goto L6
     }
 
     @Override // java.util.Iterator
     public final Object next() {
-        if (hasNext() == false) goto L6;
+        if (!hasNext()) {
+            tb4.k();
+            return null;
+        }
         this.o = 2;
-        Object r0 = this.p;
+        Object obj = this.p;
         this.p = null;
-        return r0;
-    L6:
-        tb4.k();
-        return null;
+        return obj;
     }
 
-    public h22(Iterator r2, ro3 r3) {
-        this.q = 0;
-        this.r = r2;
-        this.s = r3;
+    /* JADX WARN: 'this' call moved to the top of the method (can break code semantics) */
+    public h22(Iterator it, ro3 ro3Var) {
         this();
+        this.q = 0;
+        this.r = it;
+        this.s = ro3Var;
     }
 
     public h22() {

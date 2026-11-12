@@ -7,9 +7,6 @@ public final class ScanStatus {
     private Long count;
     private boolean isScanning;
 
-    public ScanStatus() {
-    }
-
     public final Long getCount() {
         return this.count;
     }
@@ -18,11 +15,11 @@ public final class ScanStatus {
         return this.isScanning;
     }
 
-    public final void setCount(Long r1) {
-        this.count = r1;
+    public final void setCount(Long l) {
+        this.count = l;
     }
 
-    public final void setScanning(boolean r1) {
-        this.isScanning = r1;
+    public final void setScanning(boolean z) {
+        this.isScanning = z;
     }
 }

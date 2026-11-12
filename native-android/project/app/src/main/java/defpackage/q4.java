@@ -34,7 +34,7 @@ public final class q4 implements oo4 {
     public int p;
 
     @Override // defpackage.oo4
-    public final oo4 a(e5 r1) {
+    public final oo4 a(e5 e5Var) {
         throw new UnsupportedOperationException();
     }
 
@@ -44,25 +44,20 @@ public final class q4 implements oo4 {
     }
 
     public final void c() {
-        Drawable r0 = this.h;
-        if (r0 != null) goto L5;
-        return;
-    L5:
-        if (this.n == false) goto L7;
-    L8:
-        this.h = r0;
-        Drawable r1 = r0.mutate();
-        this.h = r1;
-        if (this.n == false) goto L12;
-        r1.setTintList(this.l);
-    L12:
-        if (this.o == false) goto L17;
-        this.h.setTintMode(this.m);
-        return;
-    L17:
-        return;
-    L7:
-        if (this.o == true) goto L8;
+        Drawable drawable = this.h;
+        if (drawable != null) {
+            if (this.n || this.o) {
+                this.h = drawable;
+                Drawable drawableMutate = drawable.mutate();
+                this.h = drawableMutate;
+                if (this.n) {
+                    drawableMutate.setTintList(this.l);
+                }
+                if (this.o) {
+                    this.h.setTintMode(this.m);
+                }
+            }
+        }
     }
 
     @Override // android.view.MenuItem
@@ -162,11 +157,8 @@ public final class q4 implements oo4 {
 
     @Override // android.view.MenuItem
     public final CharSequence getTitleCondensed() {
-        CharSequence r0 = this.b;
-        if (r0 == null) goto L6;
-        return r0;
-    L6:
-        return this.a;
+        CharSequence charSequence = this.b;
+        return charSequence != null ? charSequence : this.a;
     }
 
     @Override // defpackage.oo4, android.view.MenuItem
@@ -186,231 +178,199 @@ public final class q4 implements oo4 {
 
     @Override // android.view.MenuItem
     public final boolean isCheckable() {
-        if ((this.p & 1) == 0) goto L5;
-        return true;
-    L5:
-        return false;
+        return (this.p & 1) != 0;
     }
 
     @Override // android.view.MenuItem
     public final boolean isChecked() {
-        if ((this.p & 2) == 0) goto L6;
-        return true;
-    L6:
-        return false;
+        return (this.p & 2) != 0;
     }
 
     @Override // android.view.MenuItem
     public final boolean isEnabled() {
-        if ((this.p & 16) == 0) goto L6;
-        return true;
-    L6:
-        return false;
+        return (this.p & 16) != 0;
     }
 
     @Override // android.view.MenuItem
     public final boolean isVisible() {
-        if ((this.p & 8) != 0) goto L6;
-        return true;
-    L6:
-        return false;
+        return (this.p & 8) == 0;
     }
 
     @Override // android.view.MenuItem
-    public final MenuItem setActionProvider(ActionProvider r1) {
+    public final MenuItem setActionProvider(ActionProvider actionProvider) {
         throw new UnsupportedOperationException();
     }
 
     @Override // android.view.MenuItem
-    public final MenuItem setActionView(View r1) {
+    public final MenuItem setActionView(View view) {
         throw new UnsupportedOperationException();
     }
 
     @Override // defpackage.oo4, android.view.MenuItem
-    public final MenuItem setAlphabeticShortcut(char r1, int r2) {
-        this.f = Character.toLowerCase(r1);
-        this.g = KeyEvent.normalizeMetaState(r2);
+    public final MenuItem setAlphabeticShortcut(char c, int i) {
+        this.f = Character.toLowerCase(c);
+        this.g = KeyEvent.normalizeMetaState(i);
         return this;
     }
 
     @Override // android.view.MenuItem
-    public final MenuItem setCheckable(boolean r2) {
-        int r0 = this.p & (-2);
-        this.p = (r2 ? 1 : 0) | r0;
+    public final MenuItem setCheckable(boolean z) {
+        this.p = (z ? 1 : 0) | (this.p & (-2));
         return this;
     }
 
     @Override // android.view.MenuItem
-    public final MenuItem setChecked(boolean r2) {
-        int r0 = this.p & (-3);
-        if (r2 == false) goto L5;
-        int r3 = 2;
-    L6:
-        this.p = r3 | r0;
+    public final MenuItem setChecked(boolean z) {
+        this.p = (z ? 2 : 0) | (this.p & (-3));
         return this;
-    L5:
-        r3 = 0;
-        goto L6
     }
 
     @Override // defpackage.oo4, android.view.MenuItem
-    public final oo4 setContentDescription(CharSequence r1) {
-        this.j = r1;
+    public final oo4 setContentDescription(CharSequence charSequence) {
+        this.j = charSequence;
         return this;
     }
 
     @Override // android.view.MenuItem
-    public final MenuItem setEnabled(boolean r2) {
-        int r0 = this.p & (-17);
-        if (r2 == false) goto L5;
-        int r3 = 16;
-    L6:
-        this.p = r3 | r0;
+    public final MenuItem setEnabled(boolean z) {
+        this.p = (z ? 16 : 0) | (this.p & (-17));
         return this;
-    L5:
-        r3 = 0;
-        goto L6
     }
 
     @Override // android.view.MenuItem
-    public final MenuItem setIcon(int r2) {
-        this.h = this.i.getDrawable(r2);
+    public final MenuItem setIcon(int i) {
+        this.h = this.i.getDrawable(i);
         c();
         return this;
     }
 
     @Override // defpackage.oo4, android.view.MenuItem
-    public final MenuItem setIconTintList(ColorStateList r1) {
-        this.l = r1;
+    public final MenuItem setIconTintList(ColorStateList colorStateList) {
+        this.l = colorStateList;
         this.n = true;
         c();
         return this;
     }
 
     @Override // defpackage.oo4, android.view.MenuItem
-    public final MenuItem setIconTintMode(PorterDuff.Mode r1) {
-        this.m = r1;
+    public final MenuItem setIconTintMode(PorterDuff.Mode mode) {
+        this.m = mode;
         this.o = true;
         c();
         return this;
     }
 
     @Override // android.view.MenuItem
-    public final MenuItem setIntent(Intent r1) {
-        this.c = r1;
+    public final MenuItem setIntent(Intent intent) {
+        this.c = intent;
         return this;
     }
 
     @Override // defpackage.oo4, android.view.MenuItem
-    public final MenuItem setNumericShortcut(char r1, int r2) {
-        this.d = r1;
-        this.e = KeyEvent.normalizeMetaState(r2);
+    public final MenuItem setNumericShortcut(char c, int i) {
+        this.d = c;
+        this.e = KeyEvent.normalizeMetaState(i);
         return this;
     }
 
     @Override // android.view.MenuItem
-    public final MenuItem setOnActionExpandListener(MenuItem.OnActionExpandListener r1) {
+    public final MenuItem setOnActionExpandListener(MenuItem.OnActionExpandListener onActionExpandListener) {
         throw new UnsupportedOperationException();
     }
 
     @Override // android.view.MenuItem
-    public final MenuItem setOnMenuItemClickListener(MenuItem.OnMenuItemClickListener r1) {
+    public final MenuItem setOnMenuItemClickListener(MenuItem.OnMenuItemClickListener onMenuItemClickListener) {
         return this;
     }
 
     @Override // defpackage.oo4, android.view.MenuItem
-    public final MenuItem setShortcut(char r1, char r2, int r3, int r4) {
-        this.d = r1;
-        this.e = KeyEvent.normalizeMetaState(r3);
-        this.f = Character.toLowerCase(r2);
-        this.g = KeyEvent.normalizeMetaState(r4);
+    public final MenuItem setShortcut(char c, char c2, int i, int i2) {
+        this.d = c;
+        this.e = KeyEvent.normalizeMetaState(i);
+        this.f = Character.toLowerCase(c2);
+        this.g = KeyEvent.normalizeMetaState(i2);
         return this;
     }
 
     @Override // android.view.MenuItem
-    public final void setShowAsAction(int r1) {
+    public final void setShowAsAction(int i) {
     }
 
     @Override // android.view.MenuItem
-    public final MenuItem setShowAsActionFlags(int r1) {
+    public final MenuItem setShowAsActionFlags(int i) {
         return this;
     }
 
     @Override // android.view.MenuItem
-    public final MenuItem setTitle(int r2) {
-        this.a = this.i.getResources().getString(r2);
+    public final MenuItem setTitle(int i) {
+        this.a = this.i.getResources().getString(i);
         return this;
     }
 
     @Override // android.view.MenuItem
-    public final MenuItem setTitleCondensed(CharSequence r1) {
-        this.b = r1;
+    public final MenuItem setTitleCondensed(CharSequence charSequence) {
+        this.b = charSequence;
         return this;
     }
 
     @Override // defpackage.oo4, android.view.MenuItem
-    public final oo4 setTooltipText(CharSequence r1) {
-        this.k = r1;
+    public final oo4 setTooltipText(CharSequence charSequence) {
+        this.k = charSequence;
         return this;
     }
 
     @Override // android.view.MenuItem
-    public final MenuItem setVisible(boolean r3) {
-        int r1 = 8;
-        int r0 = this.p & 8;
-        if (r3 == false) goto L5;
-        r1 = 0;
-    L5:
-        this.p = r0 | r1;
+    public final MenuItem setVisible(boolean z) {
+        this.p = (this.p & 8) | (z ? 0 : 8);
         return this;
     }
 
     @Override // android.view.MenuItem
-    public final MenuItem setContentDescription(CharSequence r1) {
-        this.j = r1;
+    public final MenuItem setContentDescription(CharSequence charSequence) {
+        this.j = charSequence;
         return this;
     }
 
     @Override // android.view.MenuItem
-    public final MenuItem setTooltipText(CharSequence r1) {
-        this.k = r1;
+    public final MenuItem setTooltipText(CharSequence charSequence) {
+        this.k = charSequence;
         return this;
     }
 
     @Override // android.view.MenuItem
-    public final MenuItem setActionView(int r1) {
+    public final MenuItem setActionView(int i) {
         throw new UnsupportedOperationException();
     }
 
     @Override // android.view.MenuItem
-    public final MenuItem setNumericShortcut(char r1) {
-        this.d = r1;
+    public final MenuItem setNumericShortcut(char c) {
+        this.d = c;
         return this;
     }
 
     @Override // android.view.MenuItem
-    public final MenuItem setIcon(Drawable r1) {
-        this.h = r1;
+    public final MenuItem setIcon(Drawable drawable) {
+        this.h = drawable;
         c();
         return this;
     }
 
     @Override // android.view.MenuItem
-    public final MenuItem setAlphabeticShortcut(char r1) {
-        this.f = Character.toLowerCase(r1);
+    public final MenuItem setAlphabeticShortcut(char c) {
+        this.f = Character.toLowerCase(c);
         return this;
     }
 
     @Override // android.view.MenuItem
-    public final MenuItem setTitle(CharSequence r1) {
-        this.a = r1;
+    public final MenuItem setTitle(CharSequence charSequence) {
+        this.a = charSequence;
         return this;
     }
 
     @Override // android.view.MenuItem
-    public final MenuItem setShortcut(char r1, char r2) {
-        this.d = r1;
-        this.f = Character.toLowerCase(r2);
+    public final MenuItem setShortcut(char c, char c2) {
+        this.d = c;
+        this.f = Character.toLowerCase(c2);
         return this;
     }
 }

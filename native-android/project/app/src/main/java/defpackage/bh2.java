@@ -9,32 +9,30 @@ public final class bh2 implements OnBackAnimationCallback {
     public final /* synthetic */ zg2 a;
     public final /* synthetic */ ch2 b;
 
-    public bh2(ch2 r1, zg2 r2) {
-        this.b = r1;
-        this.a = r2;
+    public bh2(ch2 ch2Var, zg2 zg2Var) {
+        this.b = ch2Var;
+        this.a = zg2Var;
     }
 
     public final void onBackCancelled() {
-        if (this.b.a == null) goto L6;
-        this.a.d();
-        return;
+        if (this.b.a != null) {
+            this.a.d();
+        }
     }
 
     public final void onBackInvoked() {
         this.a.a();
     }
 
-    public final void onBackProgressed(BackEvent r2) {
-        if (this.b.a == null) goto L6;
-        oo r0 = new oo(r2);
-        this.a.b(r0);
-        return;
+    public final void onBackProgressed(BackEvent backEvent) {
+        if (this.b.a != null) {
+            this.a.b(new oo(backEvent));
+        }
     }
 
-    public final void onBackStarted(BackEvent r2) {
-        if (this.b.a == null) goto L6;
-        oo r0 = new oo(r2);
-        this.a.c(r0);
-        return;
+    public final void onBackStarted(BackEvent backEvent) {
+        if (this.b.a != null) {
+            this.a.c(new oo(backEvent));
+        }
     }
 }

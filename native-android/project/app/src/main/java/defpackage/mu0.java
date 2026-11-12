@@ -5,18 +5,10 @@ package defpackage;
 public final class mu0 {
     public final long a;
 
-    public /* synthetic */ mu0(long r1) {
-        this.a = r1;
-    }
-
-    public final boolean equals(Object r3) {
-        if ((r3 instanceof mu0) == false) goto L11;
-        long r0 = ((mu0) r3).a;
-        if (this.a == r0) goto L9;
-        return false;
-    L9:
-        return true;
-    L11:
+    public final boolean equals(Object obj) {
+        if (obj instanceof mu0) {
+            return this.a == ((mu0) obj).a;
+        }
         return false;
     }
 
@@ -25,10 +17,7 @@ public final class mu0 {
     }
 
     public final String toString() {
-        long r2 = this.a;
-        if (r2 != 9205357640488583168L) goto L5;
-        return "DpOffset.Unspecified";
-    L5:
-        return f34.h("(", ku0.c(Float.intBitsToFloat((int) (r2 >> 32))), ", ", ku0.c(Float.intBitsToFloat((int) (4294967295L & r2))), ")");
+        long j = this.a;
+        return j != 9205357640488583168L ? f34.h("(", ku0.c(Float.intBitsToFloat((int) (j >> 32))), ", ", ku0.c(Float.intBitsToFloat((int) (4294967295L & j))), ")") : "DpOffset.Unspecified";
     }
 }

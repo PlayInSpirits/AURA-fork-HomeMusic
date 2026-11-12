@@ -10,58 +10,41 @@ public final class cd implements if1 {
     public final /* synthetic */ Object o;
     public final /* synthetic */ Object p;
 
-    public /* synthetic */ cd(int r1, Object r2, Object r3) {
-        this.n = r1;
-        this.p = r2;
-        this.o = r3;
+    public /* synthetic */ cd(int i, Object obj, Object obj2) {
+        this.n = i;
+        this.p = obj;
+        this.o = obj2;
     }
 
     @Override // defpackage.if1
-    public final Object invoke(Object r9) {
-        switch(this.n) {
-            case 0: goto L26;
-            case 1: goto L24;
-            case 2: goto L14;
-            default: goto L4;
-        };
-    L4:
-        Throwable r10 = (Throwable) r9;
-        ll r11 = (ll) this.p;
-        Object r1 = r11.p;
-        cz r8 = (cz) this.o;
-        monitor-enter(r1);
-        ((ArrayList) r11.q).remove(r8);     // Catch: Throwable -> L10
-        monitor-exit(r1);
-        return j15.a;
-    L10:
-        th = move-exception;
-        throw th;
-    L14:
-        gh4 r5 = (gh4) r9;
-        Object r12 = jh4.c;
-        monitor-enter(r12);
-        long r3 = jh4.e;     // Catch: Throwable -> L20
-        jh4.e = 1 + r3;     // Catch: Throwable -> L20
-        monitor-exit(r12);
-        return new a13(r3, r5, (if1) this.p, (if1) this.o);
-    L20:
-        th = move-exception;
-        throw th;
-    L24:
-        Throwable r13 = (Throwable) r9;
-        ((Choreographer) ((ed) this.p).o).removeFrameCallback((dd) this.o);
-        return j15.a;
-    L26:
-        Throwable r14 = (Throwable) r9;
-        bd r15 = (bd) this.p;
-        dd r16 = (dd) this.o;
-        Object r2 = r15.r;
-        monitor-enter(r2);
-        r15.t.remove(r16);     // Catch: Throwable -> L32
-        monitor-exit(r2);
-        return j15.a;
-    L32:
-        th = move-exception;
-        throw th;
+    public final Object invoke(Object obj) {
+        long j;
+        switch (this.n) {
+            case 0:
+                bd bdVar = (bd) this.p;
+                dd ddVar = (dd) this.o;
+                synchronized (bdVar.r) {
+                    bdVar.t.remove(ddVar);
+                }
+                return j15.a;
+            case 1:
+                ((Choreographer) ((ed) this.p).o).removeFrameCallback((dd) this.o);
+                return j15.a;
+            case 2:
+                gh4 gh4Var = (gh4) obj;
+                synchronized (jh4.c) {
+                    j = jh4.e;
+                    jh4.e = 1 + j;
+                }
+                return new a13(j, gh4Var, (if1) this.p, (if1) this.o);
+            default:
+                ll llVar = (ll) this.p;
+                Object obj2 = llVar.p;
+                cz czVar = (cz) this.o;
+                synchronized (obj2) {
+                    ((ArrayList) llVar.q).remove(czVar);
+                }
+                return j15.a;
+        }
     }
 }

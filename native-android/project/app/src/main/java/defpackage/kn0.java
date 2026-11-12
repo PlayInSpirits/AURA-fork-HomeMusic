@@ -8,17 +8,17 @@ import android.media.Spatializer$OnSpatializerStateChangedListener;
 public final class kn0 implements Spatializer$OnSpatializerStateChangedListener {
     public final /* synthetic */ pn0 a;
 
-    public kn0(pn0 r1) {
-        this.a = r1;
+    public kn0(pn0 pn0Var) {
+        this.a = pn0Var;
     }
 
-    public final void onSpatializerAvailableChanged(Spatializer r1, boolean r2) {
-        gb3 r3 = pn0.k;
+    public final void onSpatializerAvailableChanged(Spatializer spatializer, boolean z) {
+        gb3 gb3Var = pn0.k;
         this.a.e();
     }
 
-    public final void onSpatializerEnabledChanged(Spatializer r1, boolean r2) {
-        gb3 r3 = pn0.k;
+    public final void onSpatializerEnabledChanged(Spatializer spatializer, boolean z) {
+        gb3 gb3Var = pn0.k;
         this.a.e();
     }
 }

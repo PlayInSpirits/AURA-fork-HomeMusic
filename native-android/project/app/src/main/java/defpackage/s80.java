@@ -8,143 +8,122 @@ public final class s80 implements da4 {
     public final gy3 n;
     public long o;
 
-    public s80(List r6, List r7) {
-        uw1 r0 = yw1.j();
-        int r3 = 0;
-        if (r6.size() != r7.size()) goto L5;
-        boolean r1 = true;
-    L6:
-        rr2.l(r1);
-    L8:
-        if (r3 >= r6.size()) goto L10;
-        r0.c(new r80((da4) r6.get(r3), (List) r7.get(r3)));
-        r3 = r3 + 1;
-        goto L8
-    L10:
-        this.n = r0.f();
+    public s80(List list, List list2) {
+        uw1 uw1VarJ = yw1.j();
+        rr2.l(list.size() == list2.size());
+        for (int i = 0; i < list.size(); i++) {
+            uw1VarJ.c(new r80((da4) list.get(i), (List) list2.get(i)));
+        }
+        this.n = uw1VarJ.f();
         this.o = -9223372036854775807L;
-        return;
-    L5:
-        r1 = false;
-        goto L6
     }
 
     @Override // defpackage.da4
     public final long d() {
-        int r2 = 0;
-        long r3 = Long.MAX_VALUE;
-    L3:
-        gy3 r5 = this.n;
-        if (r2 >= r5.q) goto L10;
-        long r6 = ((r80) r5.get(r2)).n.d();
-        if (r6 == Long.MIN_VALUE) goto L8;
-        r3 = Math.min(r3, r6);
-    L8:
-        r2 = r2 + 1;
-        goto L3
-    L10:
-        if (r3 != Long.MAX_VALUE) goto L12;
-        return Long.MIN_VALUE;
-    L12:
-        return r3;
+        int i = 0;
+        long jMin = Long.MAX_VALUE;
+        while (true) {
+            gy3 gy3Var = this.n;
+            if (i >= gy3Var.q) {
+                break;
+            }
+            long jD = ((r80) gy3Var.get(i)).n.d();
+            if (jD != Long.MIN_VALUE) {
+                jMin = Math.min(jMin, jD);
+            }
+            i++;
+        }
+        if (jMin == Long.MAX_VALUE) {
+            return Long.MIN_VALUE;
+        }
+        return jMin;
     }
 
     @Override // defpackage.da4
     public final boolean f() {
-        int r1 = 0;
-    L3:
-        gy3 r2 = this.n;
-        if (r1 >= r2.q) goto L10;
-        if (((r80) r2.get(r1)).n.f() == true) goto L7;
-        r1 = r1 + 1;
-        goto L3
-    L7:
-        return true;
-    L10:
-        return false;
+        int i = 0;
+        while (true) {
+            gy3 gy3Var = this.n;
+            if (i >= gy3Var.q) {
+                return false;
+            }
+            if (((r80) gy3Var.get(i)).n.f()) {
+                return true;
+            }
+            i++;
+        }
     }
 
     @Override // defpackage.da4
-    public final boolean o(pd2 r14) {
-        boolean r1 = false;
-    L3:
-        long r2 = d();
-        if (r2 == Long.MIN_VALUE) goto L5;
-        int r6 = 0;
-        boolean r7 = false;
-    L7:
-        gy3 r8 = this.n;
-        if (r6 >= r8.q) goto L20;
-        long r9 = ((r80) r8.get(r6)).n.d();
-        if (r9 != Long.MIN_VALUE) goto L12;
-    L14:
-        boolean r11 = false;
-    L16:
-        if (r9 == r2) goto L18;
-        if (r11 == true) goto L18;
-    L19:
-        r6 = r6 + 1;
-    L18:
-        r7 = r7 | ((r80) r8.get(r6)).n.o(r14);
-        goto L19
-    L12:
-        if (r9 > r14.a) goto L14;
-        r11 = true;
-        goto L16
-    L20:
-        r1 = r1 | r7;
-        if (r7 == true) goto L3;
-        return r1;
-    L5:
-        return r1;
+    public final boolean o(pd2 pd2Var) {
+        boolean zO;
+        boolean z = false;
+        do {
+            long jD = d();
+            if (jD == Long.MIN_VALUE) {
+                return z;
+            }
+            int i = 0;
+            zO = false;
+            while (true) {
+                gy3 gy3Var = this.n;
+                if (i >= gy3Var.q) {
+                    break;
+                }
+                long jD2 = ((r80) gy3Var.get(i)).n.d();
+                boolean z2 = jD2 != Long.MIN_VALUE && jD2 <= pd2Var.a;
+                if (jD2 == jD || z2) {
+                    zO |= ((r80) gy3Var.get(i)).n.o(pd2Var);
+                }
+                i++;
+            }
+            z |= zO;
+        } while (zO);
+        return z;
     }
 
     @Override // defpackage.da4
     public final long q() {
-        int r2 = 0;
-        long r3 = Long.MAX_VALUE;
-        long r5 = Long.MAX_VALUE;
-    L3:
-        gy3 r7 = this.n;
-        if (r2 >= r7.q) goto L19;
-        r80 r8 = (r80) r7.get(r2);
-        long r11 = r8.n.q();
-        yw1 r9 = r8.o;
-        if (r9.contains(1) == true) goto L12;
-        if (r9.contains(2) == true) goto L12;
-        if (r9.contains(4) == true) goto L12;
-    L15:
-        if (r11 == Long.MIN_VALUE) goto L17;
-        r5 = Math.min(r5, r11);
-    L17:
-        r2 = r2 + 1;
-    L12:
-        if (r11 == Long.MIN_VALUE) goto L15;
-        r3 = Math.min(r3, r11);
-        goto L15
-    L19:
-        if (r3 == Long.MAX_VALUE) goto L23;
-        this.o = r3;
-        return r3;
-    L23:
-        if (r5 == Long.MAX_VALUE) goto L28;
-        long r0 = this.o;
-        if (r0 == (-9223372036854775807L)) goto L27;
-        return r0;
-    L27:
-        return r5;
-    L28:
-        return Long.MIN_VALUE;
+        int i = 0;
+        long jMin = Long.MAX_VALUE;
+        long jMin2 = Long.MAX_VALUE;
+        while (true) {
+            gy3 gy3Var = this.n;
+            if (i >= gy3Var.q) {
+                break;
+            }
+            r80 r80Var = (r80) gy3Var.get(i);
+            long jQ = r80Var.n.q();
+            yw1 yw1Var = r80Var.o;
+            if ((yw1Var.contains(1) || yw1Var.contains(2) || yw1Var.contains(4)) && jQ != Long.MIN_VALUE) {
+                jMin = Math.min(jMin, jQ);
+            }
+            if (jQ != Long.MIN_VALUE) {
+                jMin2 = Math.min(jMin2, jQ);
+            }
+            i++;
+        }
+        if (jMin != Long.MAX_VALUE) {
+            this.o = jMin;
+            return jMin;
+        }
+        if (jMin2 == Long.MAX_VALUE) {
+            return Long.MIN_VALUE;
+        }
+        long j = this.o;
+        return j != -9223372036854775807L ? j : jMin2;
     }
 
     @Override // defpackage.da4
-    public final void u(long r4) {
-        int r0 = 0;
-    L3:
-        gy3 r1 = this.n;
-        if (r0 >= r1.q) goto L6;
-        ((r80) r1.get(r0)).u(r4);
-        r0 = r0 + 1;
-        goto L3
+    public final void u(long j) {
+        int i = 0;
+        while (true) {
+            gy3 gy3Var = this.n;
+            if (i >= gy3Var.q) {
+                return;
+            }
+            ((r80) gy3Var.get(i)).u(j);
+            i++;
+        }
     }
 }

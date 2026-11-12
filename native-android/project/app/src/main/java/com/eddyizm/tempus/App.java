@@ -32,121 +32,112 @@ public class App extends Application {
     public static pn4 p;
     public static SharedPreferences q;
 
-    public App() {
-    }
-
     public static Context a() {
-        if (o != null) goto L6;
-        o = b();
-    L6:
+        if (o == null) {
+            o = b();
+        }
         return o;
     }
 
     public static App b() {
-        if (n != null) goto L6;
-        n = new App();
-    L6:
+        if (n == null) {
+            n = new App();
+        }
         return n;
     }
 
     public static SharedPreferences c() {
-        if (q != null) goto L6;
-        Context r0 = o;
-        q = r0.getSharedPreferences(pp3.b(r0), 0);
-    L6:
+        if (q == null) {
+            Context context = o;
+            q = context.getSharedPreferences(pp3.b(context), 0);
+        }
         return q;
     }
 
     public static pn4 d() {
-        String r0 = ud3.u();
-        String r1 = ud3.K();
-        String r2 = ud3.y();
-        String r3 = ud3.J();
-        String r4 = ud3.B();
-        boolean r5 = xa3.u("low_security", false);
-        c12 r6 = new c12(10);
-        r6.o = r0;
-        r6.p = r1;
-        r6.j(r2, r3, r5, r4);
-        i61 r7 = (i61) r6.q;
-        if (r7 == null) goto L14;
-        String r8 = (String) r7.o;
-        if (r8 == null) goto L7;
-        ud3.q0(r8);
-    L7:
-        String r9 = (String) ((i61) r6.q).q;
-        if (r9 == null) goto L10;
-        ud3.C0(r9);
-    L10:
-        String r10 = (String) ((i61) r6.q).p;
-        if (r10 == null) goto L14;
-        ud3.u0(r10);
-    L14:
-        return new pn4(r6);
+        String strU = ud3.u();
+        String strK = ud3.K();
+        String strY = ud3.y();
+        String strJ = ud3.J();
+        String strB = ud3.B();
+        boolean zU = xa3.u("low_security", false);
+        c12 c12Var = new c12(10);
+        c12Var.o = strU;
+        c12Var.p = strK;
+        c12Var.j(strY, strJ, zU, strB);
+        i61 i61Var = (i61) c12Var.q;
+        if (i61Var != null) {
+            String str = (String) i61Var.o;
+            if (str != null) {
+                ud3.q0(str);
+            }
+            String str2 = (String) ((i61) c12Var.q).q;
+            if (str2 != null) {
+                ud3.C0(str2);
+            }
+            String str3 = (String) ((i61) c12Var.q).p;
+            if (str3 != null) {
+                ud3.u0(str3);
+            }
+        }
+        return new pn4(c12Var);
     }
 
-    public static pn4 e(String r7) {
-        String r0 = ud3.K();
-        String r1 = ud3.y();
-        String r2 = ud3.J();
-        String r3 = ud3.B();
-        boolean r4 = xa3.u("low_security", false);
-        c12 r5 = new c12(10);
-        r5.o = r7;
-        r5.p = r0;
-        r5.j(r1, r2, r4, r3);
-        return new pn4(r5);
+    public static pn4 e(String str) {
+        String strK = ud3.K();
+        String strY = ud3.y();
+        String strJ = ud3.J();
+        String strB = ud3.B();
+        boolean zU = xa3.u("low_security", false);
+        c12 c12Var = new c12(10);
+        c12Var.o = str;
+        c12Var.p = strK;
+        c12Var.j(strY, strJ, zU, strB);
+        return new pn4(c12Var);
     }
 
-    public static pn4 f(boolean r1) {
-        if (p == null) goto L5;
-        if (r1 == true) goto L5;
-    L7:
+    public static pn4 f(boolean z) {
+        if (p == null || z) {
+            p = d();
+        }
         return p;
-    L5:
-        p = d();
-        goto L7
     }
 
     @Override // android.app.Application
     public final void onCreate() {
         super.onCreate();
-        oz r0 = sg0.b;
-        oz r1 = new oz();
-        r1.n = r0.n;
-        r1.o = r0.o;
-        r1.p = r0.p;
-        r1.n = Integer.valueOf(R.drawable.ui_crash);
-        SSLSocketFactory r2 = null;
-        r1.p = null;
-        r1.o = CrashActivity.class;
-        sg0.b = r1;
-        Context r3 = getApplicationContext();
-        jz4.d(r3.getSharedPreferences(pp3.b(r3), 0).getString("theme", "default"));
+        oz ozVar = sg0.b;
+        oz ozVar2 = new oz();
+        ozVar2.n = ozVar.n;
+        ozVar2.o = ozVar.o;
+        ozVar2.p = ozVar.p;
+        ozVar2.n = Integer.valueOf(R.drawable.ui_crash);
+        SSLSocketFactory socketFactory = null;
+        ozVar2.p = null;
+        ozVar2.o = CrashActivity.class;
+        sg0.b = ozVar2;
+        Context applicationContext = getApplicationContext();
+        jz4.d(applicationContext.getSharedPreferences(pp3.b(applicationContext), 0).getString("theme", "default"));
         n = new App();
-        Context r7 = getApplicationContext();
-        o = r7;
-        q = r7.getSharedPreferences(pp3.b(r7), 0);
-        Context r8 = o;
-        X509TrustManager r4 = x30.a;
-        r8.getClass();
-        w30 r5 = new w30(r8);     // Catch: KeyManagementException -> L5 NoSuchAlgorithmException -> L7
-        SSLContext r9 = SSLContext.getInstance("TLS");     // Catch: KeyManagementException -> L5 NoSuchAlgorithmException -> L7
-        r9.init(new w30[]{r5}, new X509TrustManager[]{x30.a}, null);     // Catch: KeyManagementException -> L5 NoSuchAlgorithmException -> L7
-        r2 = r9.getSocketFactory();     // Catch: KeyManagementException -> L5 NoSuchAlgorithmException -> L7
-    L11:
-        x30.b = r2;
-        if (r2 == null) goto L17;
-        HttpsURLConnection.setDefaultSSLSocketFactory(r2);
-        return;
-    L17:
-        return;
-    L5:
-        e = move-exception;
-        Log.e("ClientCertManager", "Failed setting mTLS", e);
-    L7:
-        e = move-exception;
-        Log.e("ClientCertManager", "Failed setting mTLS", e);
-        goto L11
+        Context applicationContext2 = getApplicationContext();
+        o = applicationContext2;
+        q = applicationContext2.getSharedPreferences(pp3.b(applicationContext2), 0);
+        Context context = o;
+        X509TrustManager x509TrustManager = x30.a;
+        context.getClass();
+        try {
+            w30 w30Var = new w30(context);
+            SSLContext sSLContext = SSLContext.getInstance("TLS");
+            sSLContext.init(new w30[]{w30Var}, new X509TrustManager[]{x30.a}, null);
+            socketFactory = sSLContext.getSocketFactory();
+        } catch (KeyManagementException e) {
+            Log.e("ClientCertManager", "Failed setting mTLS", e);
+        } catch (NoSuchAlgorithmException e2) {
+            Log.e("ClientCertManager", "Failed setting mTLS", e2);
+        }
+        x30.b = socketFactory;
+        if (socketFactory != null) {
+            HttpsURLConnection.setDefaultSSLSocketFactory(socketFactory);
+        }
     }
 }

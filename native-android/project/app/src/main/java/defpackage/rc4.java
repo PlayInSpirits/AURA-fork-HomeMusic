@@ -9,8 +9,8 @@ public class rc4 extends hd {
     public final hh3 c;
     public Share d;
 
-    public rc4(Application r2) {
-        super(r2);
+    public rc4(Application application) {
+        super(application);
         this.c = new hh3(27);
     }
 }

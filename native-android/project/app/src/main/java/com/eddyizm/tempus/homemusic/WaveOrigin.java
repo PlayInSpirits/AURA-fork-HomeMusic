@@ -7,16 +7,12 @@ public final class WaveOrigin {
     public static final String ARTIST_MENU = "artist_menu";
     public static final String ARTIST_PAGE = "artist_page";
     public static final String HOME_CARD = "home_card";
-    public static final WaveOrigin INSTANCE = null;
+    public static final WaveOrigin INSTANCE = new WaveOrigin();
     public static final String PLAYER = "player";
     public static final String RADIO = "radio";
     public static final String RESTART = "restart";
     public static final String TRACK_MENU = "track_menu";
     public static final String WAVE = "wave";
-
-    static {
-        INSTANCE = new WaveOrigin();
-    }
 
     private WaveOrigin() {
     }

@@ -9,21 +9,21 @@ public final class aj1 extends EdgeEffect {
     public final float a;
     public float b;
 
-    public aj1(Context r2) {
-        super(r2);
-        this.a = bu.a(r2).n * 1.0f;
+    public aj1(Context context) {
+        super(context);
+        this.a = bu.a(context).n * 1.0f;
     }
 
     @Override // android.widget.EdgeEffect
-    public final void onAbsorb(int r2) {
+    public final void onAbsorb(int i) {
         this.b = 0.0f;
-        super.onAbsorb(r2);
+        super.onAbsorb(i);
     }
 
     @Override // android.widget.EdgeEffect
-    public final void onPull(float r2, float r3) {
+    public final void onPull(float f, float f2) {
         this.b = 0.0f;
-        super.onPull(r2, r3);
+        super.onPull(f, f2);
     }
 
     @Override // android.widget.EdgeEffect
@@ -33,8 +33,8 @@ public final class aj1 extends EdgeEffect {
     }
 
     @Override // android.widget.EdgeEffect
-    public final void onPull(float r2) {
+    public final void onPull(float f) {
         this.b = 0.0f;
-        super.onPull(r2);
+        super.onPull(f);
     }
 }

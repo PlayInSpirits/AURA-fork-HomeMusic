@@ -5,8 +5,8 @@ package defpackage;
 public final class n01 implements mx1 {
     public final boolean n;
 
-    public n01(boolean r1) {
-        this.n = r1;
+    public n01(boolean z) {
+        this.n = z;
     }
 
     @Override // defpackage.mx1
@@ -20,15 +20,9 @@ public final class n01 implements mx1 {
     }
 
     public final String toString() {
-        StringBuilder r0 = new StringBuilder("Empty{");
-        if (this.n == false) goto L5;
-        String r2 = "Active";
-    L6:
-        r0.append(r2);
-        r0.append('}');
-        return r0.toString();
-    L5:
-        r2 = "New";
-        goto L6
+        StringBuilder sb = new StringBuilder("Empty{");
+        sb.append(this.n ? "Active" : "New");
+        sb.append('}');
+        return sb.toString();
     }
 }

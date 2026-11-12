@@ -10,22 +10,20 @@ public final /* synthetic */ class ei4 implements Supplier {
     public final /* synthetic */ int a;
     public final /* synthetic */ kc1 b;
 
-    public /* synthetic */ ei4(int r1, kc1 r2) {
-        this.a = r1;
-        this.b = r2;
+    public /* synthetic */ ei4(int i, kc1 kc1Var) {
+        this.a = i;
+        this.b = kc1Var;
     }
 
     @Override // java.util.function.Supplier
     public final Object get() {
-        int r0 = this.a;
-        kc1 r1 = this.b;
-        switch(r0) {
-            case 0: goto L7;
-            default: goto L5;
-        };
-    L5:
-        return ((SongListPageFragment) r1).q0;
-    L7:
-        return ((SongBottomSheetDialog) r1).C0.h;
+        int i = this.a;
+        kc1 kc1Var = this.b;
+        switch (i) {
+            case 0:
+                return ((SongBottomSheetDialog) kc1Var).C0.h;
+            default:
+                return ((SongListPageFragment) kc1Var).q0;
+        }
     }
 }

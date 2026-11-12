@@ -7,9 +7,9 @@ public final class s13 {
     public final int b;
     public final int c;
 
-    public s13(int r1, int r2, int r3) {
-        this.a = r1;
-        this.b = r2;
-        this.c = r3;
+    public s13(int i, int i2, int i3) {
+        this.a = i;
+        this.b = i2;
+        this.c = i3;
     }
 }

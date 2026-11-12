@@ -11,9 +11,9 @@ public final class pw implements sh0 {
     public final /* synthetic */ int n;
     public final Object o;
 
-    public /* synthetic */ pw(int r1, Object r2) {
-        this.n = r1;
-        this.o = r2;
+    public /* synthetic */ pw(int i, Object obj) {
+        this.n = i;
+        this.o = obj;
     }
 
     private final void b() {
@@ -30,57 +30,50 @@ public final class pw implements sh0 {
 
     @Override // defpackage.sh0
     public final Class a() {
-        switch(this.n) {
-            case 0: goto L6;
-            default: goto L5;
-        };
-    L6:
-        return ByteBuffer.class;
-    L5:
-        return this.o.getClass();
+        switch (this.n) {
+            case 0:
+                return ByteBuffer.class;
+            default:
+                return this.o.getClass();
+        }
     }
 
     @Override // defpackage.sh0
     public final void c() {
-        int r0 = this.n;
+        int i = this.n;
     }
 
     @Override // defpackage.sh0
     public final void cancel() {
-        int r0 = this.n;
+        int i = this.n;
     }
 
     @Override // defpackage.sh0
-    public final void d(eq3 r2, rh0 r3) {
-        int r4 = this.n;
-        Object r1 = this.o;
-        switch(r4) {
-            case 0: goto L14;
-            default: goto L4;
-        };
-    L4:
-        r3.f(r1);
-        return;
-    L14:
-        r3.f(vw.a((File) r1));     // Catch: IOException -> L8
-        return;
-    L8:
-        e = move-exception;
-        if (Log.isLoggable("ByteBufferFileLoader", 3) == false) goto L12;
-        Log.d("ByteBufferFileLoader", "Failed to obtain ByteBuffer for file", e);
-    L12:
-        r3.b(e);
+    public final void d(eq3 eq3Var, rh0 rh0Var) {
+        int i = this.n;
+        Object obj = this.o;
+        switch (i) {
+            case 0:
+                try {
+                    rh0Var.f(vw.a((File) obj));
+                } catch (IOException e) {
+                    if (Log.isLoggable("ByteBufferFileLoader", 3)) {
+                        Log.d("ByteBufferFileLoader", "Failed to obtain ByteBuffer for file", e);
+                    }
+                    rh0Var.b(e);
+                    return;
+                }
+                break;
+            default:
+                rh0Var.f(obj);
+                break;
+        }
     }
 
     @Override // defpackage.sh0
     public final int e() {
-        switch(this.n) {
-            case 0: goto L6;
-            default: goto L4;
-        };
-    L4:
-        return 1;
-    L6:
+        switch (this.n) {
+        }
         return 1;
     }
 }

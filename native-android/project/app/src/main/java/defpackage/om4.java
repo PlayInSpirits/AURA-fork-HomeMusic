@@ -5,18 +5,10 @@ package defpackage;
 public final class om4 implements fe {
     public final String a;
 
-    public /* synthetic */ om4(String r1) {
-        this.a = r1;
-    }
-
-    public final boolean equals(Object r2) {
-        if ((r2 instanceof om4) == false) goto L11;
-        String r3 = ((om4) r2).a;
-        if (this.a.equals(r3) == true) goto L9;
-        return false;
-    L9:
-        return true;
-    L11:
+    public final boolean equals(Object obj) {
+        if (obj instanceof om4) {
+            return this.a.equals(((om4) obj).a);
+        }
         return false;
     }
 

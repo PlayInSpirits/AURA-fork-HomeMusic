@@ -12,21 +12,18 @@ import com.google.android.gms.common.internal.a;
 public final class fg5 extends a {
     public final lr4 L;
 
-    public fg5(Context r9, Looper r10, ml3 r11, lr4 r12, gf5 r13, gf5 r14) {
-        super(r9, r10, 270, r11, r13, r14, 0);
-        this.L = r12;
+    public fg5(Context context, Looper looper, ml3 ml3Var, lr4 lr4Var, gf5 gf5Var, gf5 gf5Var2) {
+        super(context, looper, 270, ml3Var, gf5Var, gf5Var2, 0);
+        this.L = lr4Var;
     }
 
     @Override // com.google.android.gms.common.internal.a
-    public final IInterface a(IBinder r3) {
-        if (r3 != null) goto L5;
-        return null;
-    L5:
-        IInterface r0 = r3.queryLocalInterface("com.google.android.gms.common.internal.service.IClientTelemetryService");
-        if ((r0 instanceof bg5) == false) goto L10;
-        return (bg5) r0;
-    L10:
-        return new bg5(r3, "com.google.android.gms.common.internal.service.IClientTelemetryService", 0);
+    public final IInterface a(IBinder iBinder) {
+        if (iBinder == null) {
+            return null;
+        }
+        IInterface iInterfaceQueryLocalInterface = iBinder.queryLocalInterface("com.google.android.gms.common.internal.service.IClientTelemetryService");
+        return iInterfaceQueryLocalInterface instanceof bg5 ? (bg5) iInterfaceQueryLocalInterface : new bg5(iBinder, "com.google.android.gms.common.internal.service.IClientTelemetryService", 0);
     }
 
     @Override // com.google.android.gms.common.internal.a

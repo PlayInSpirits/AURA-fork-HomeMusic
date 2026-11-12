@@ -10,41 +10,39 @@ public final class c01 implements InputFilter {
     public final TextView a;
     public b01 b;
 
-    public c01(TextView r1) {
-        this.a = r1;
+    public c01(TextView textView) {
+        this.a = textView;
     }
 
+    /* JADX WARN: Code restructure failed: missing block: B:10:0x0017, code lost:
+    
+        if (r1 != 3) goto L27;
+     */
     @Override // android.text.InputFilter
-    public final CharSequence filter(CharSequence r4, int r5, int r6, Spanned r7, int r8, int r9) {
-        TextView r0 = this.a;
-        if (r0.isInEditMode() == true) goto L27;
-        int r1 = tz0.a().b();
-        if (r1 != 0) goto L8;
-    L28:
-        tz0 r10 = tz0.a();
-        if (this.b != null) goto L31;
-        this.b = new b01(r0, this);
-    L31:
-        r10.g(this.b);
-        return r4;
-    L8:
-        if (r1 != 1) goto L10;
-        if (r9 != 0) goto L19;
-        if (r8 != 0) goto L19;
-        if (r7.length() != 0) goto L19;
-        if (r4 == r0.getText()) goto L27;
-    L19:
-        if (r4 == null) goto L27;
-        if (r5 == 0) goto L22;
-    L24:
-        r4 = r4.subSequence(r5, r6);
-    L26:
-        return tz0.a().f(0, r4.length(), 0, r4);
-    L22:
-        if (r6 != r4.length()) goto L24;
-    L10:
-        if (r1 == 3) goto L28;
-    L27:
-        return r4;
+    /*
+        Code decompiled incorrectly, please refer to instructions dump.
+    */
+    public final CharSequence filter(CharSequence charSequence, int i, int i2, Spanned spanned, int i3, int i4) {
+        TextView textView = this.a;
+        if (!textView.isInEditMode()) {
+            int iB = tz0.a().b();
+            if (iB != 0) {
+                if (iB == 1) {
+                    if ((i4 != 0 || i3 != 0 || spanned.length() != 0 || charSequence != textView.getText()) && charSequence != null) {
+                        if (i != 0 || i2 != charSequence.length()) {
+                            charSequence = charSequence.subSequence(i, i2);
+                        }
+                        return tz0.a().f(0, charSequence.length(), 0, charSequence);
+                    }
+                }
+            }
+            tz0 tz0VarA = tz0.a();
+            if (this.b == null) {
+                this.b = new b01(textView, this);
+            }
+            tz0VarA.g(this.b);
+            return charSequence;
+        }
+        return charSequence;
     }
 }

@@ -7,38 +7,33 @@ import android.util.SparseBooleanArray;
 public final class w71 {
     public final SparseBooleanArray a;
 
-    public w71(SparseBooleanArray r1) {
-        this.a = r1;
+    public w71(SparseBooleanArray sparseBooleanArray) {
+        this.a = sparseBooleanArray;
     }
 
-    public final boolean a(int... r6) {
-        int r0 = r6.length;
-        int r2 = 0;
-    L3:
-        if (r2 >= r0) goto L9;
-        if (this.a.get(r6[r2]) == true) goto L6;
-        r2 = r2 + 1;
-        goto L3
-    L6:
-        return true;
-    L9:
+    public final boolean a(int... iArr) {
+        for (int i : iArr) {
+            if (this.a.get(i)) {
+                return true;
+            }
+        }
         return false;
     }
 
-    public final int b(int r2) {
-        SparseBooleanArray r1 = this.a;
-        rr2.q(r2, r1.size());
-        return r1.keyAt(r2);
+    public final int b(int i) {
+        SparseBooleanArray sparseBooleanArray = this.a;
+        rr2.q(i, sparseBooleanArray.size());
+        return sparseBooleanArray.keyAt(i);
     }
 
-    public final boolean equals(Object r2) {
-        if (this != r2) goto L6;
-        return true;
-    L6:
-        if ((r2 instanceof w71) == true) goto L10;
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj instanceof w71) {
+            return this.a.equals(((w71) obj).a);
+        }
         return false;
-    L10:
-        return this.a.equals(((w71) r2).a);
     }
 
     public final int hashCode() {

@@ -14,12 +14,17 @@ public class cd4 extends m2 implements zc4, q81, p81, jg1 {
     public int x;
     public int y;
 
-    public cd4(int r1, int r2, wv r3) {
-        this.r = r1;
-        this.s = r2;
-        this.t = r3;
+    public cd4(int i, int i2, wv wvVar) {
+        this.r = i;
+        this.s = i2;
+        this.t = wvVar;
     }
 
+    /* JADX WARN: Code duplicated, block: B:35:0x007f A[Catch: all -> 0x0036, TRY_ENTER, TryCatch #0 {all -> 0x0036, blocks: (B:15:0x002f, B:32:0x0075, B:35:0x007f, B:39:0x0092, B:42:0x0099, B:43:0x009d, B:44:0x009e, B:22:0x0047), top: B:51:0x001e }] */
+    /* JADX WARN: Code duplicated, block: B:39:0x0092 A[Catch: all -> 0x0036, TryCatch #0 {all -> 0x0036, blocks: (B:15:0x002f, B:32:0x0075, B:35:0x007f, B:39:0x0092, B:42:0x0099, B:43:0x009d, B:44:0x009e, B:22:0x0047), top: B:51:0x001e }] */
+    /* JADX WARN: Code duplicated, block: B:57:0x0090 A[SYNTHETIC] */
+    /* JADX WARN: Code duplicated, block: B:61:? A[RETURN, SYNTHETIC] */
+    /* JADX WARN: Code duplicated, block: B:7:0x0013  */
     /* JADX WARN: Multi-variable type inference failed */
     /* JADX WARN: Type inference failed for: r10v10 */
     /* JADX WARN: Type inference failed for: r10v11 */
@@ -62,206 +67,217 @@ public class cd4 extends m2 implements zc4, q81, p81, jg1 {
     /* JADX WARN: Type inference failed for: r9v7 */
     /* JADX WARN: Type inference failed for: r9v8, types: [dd4] */
     /* JADX WARN: Unsupported multi-entry loop pattern (BACK_EDGE: B:45:0x00ac -> B:16:0x0032). Please report as a decompilation issue!!! */
-    public static void k(cd4 r8, q81 r9, vd0 r10) {
-        if ((r10 instanceof bd4) == false) goto L7;
-        bd4 r0 = (bd4) r10;
-        int r1 = r0.t;
-        if ((r1 & Integer.MIN_VALUE) == 0) goto L7;
-        r0.t = r1 - Integer.MIN_VALUE;
-    L8:
-        Object r11 = r0.r;
-        int r2 = r0.t;
-        if (r2 != 0) goto L11;
-        kb4.X(r11);
-        dd4 r12 = (dd4) r8.d();
-        ?? r13 = r9;
-        r9 = r12;
-        cd4 r14 = r8;
-    L55:
-        s22 r3 = (s22) r0.getContext().K(fz0.h0);     // Catch: Throwable -> L47
-        ?? r15 = r14;
-        ?? r16 = r9;
-        ?? r17 = r13;
-    L31:
-        ?? r4 = r15;
-        s22 r18 = r3;
-        ?? r5 = r17;
-        r9 = r16;
-    L32:
-        Object r19 = r4.t(r9);     // Catch: Throwable -> L17
-        f01 r6 = g12.e;     // Catch: Throwable -> L17
-        xe0 r7 = xe0.n;
-        if (r19 != r6) goto L38;
-        r0.n = r4;     // Catch: Throwable -> L17
-        r0.o = r5;     // Catch: Throwable -> L17
-        r0.p = r9;     // Catch: Throwable -> L17
-        r0.q = r18;     // Catch: Throwable -> L17
-        r0.t = 2;     // Catch: Throwable -> L17
-        if (r4.i(r9, r0) != r7) goto L32;
-        return;
-    L38:
-        if (r18 != null) goto L40;
-    L44:
-        r0.n = r4;     // Catch: Throwable -> L17
-        r0.o = r5;     // Catch: Throwable -> L17
-        r0.p = r9;     // Catch: Throwable -> L17
-        r0.q = r18;     // Catch: Throwable -> L17
-        r0.t = 3;     // Catch: Throwable -> L17
-        Object r110 = r5.b(r19, r0);     // Catch: Throwable -> L17
-        ?? r20 = r5;
-        ?? r21 = r4;
-        ?? r22 = r9;
-        if (r110 == r7) goto L61;
-    L16:
-        r17 = r20;
-        r3 = r18;
-        r15 = r21;
-        r16 = r22;
-        goto L31
-    L61:
-        return;
-    L40:
-        if (r18.b() == true) goto L44;
-        throw r18.q();     // Catch: Throwable -> L17
-    L47:
-        th = move-exception;
-        r4 = r14;
-        th = th;
-    L49:
-        r4.g(r9);
-        throw th;
-    L11:
-        if (r2 == 1) goto L24;
-        if (r2 == 2) goto L21;
-        if (r2 != 3) goto L19;
-        r18 = r0.q;
-        dd4 r23 = r0.p;
-        q81 r24 = r0.o;
-        cd4 r25 = r0.n;
-        kb4.X(r11);     // Catch: Throwable -> L17
-        r20 = r24;
-        r21 = r25;
-        r22 = r23;
-        goto L16
-    L19:
-        kf2.o("call to 'resume' before 'invoke' with coroutine");
-        return;
-    L21:
-        r18 = r0.q;
-        dd4 r26 = r0.p;
-        q81 r27 = r0.o;
-        cd4 r28 = r0.n;
-        kb4.X(r11);     // Catch: Throwable -> L17
-        r5 = r27;
-        r4 = r28;
-        r9 = r26;
-        goto L32
-    L24:
-        r9 = r0.p;
-        q81 r29 = r0.o;
-        cd4 r30 = r0.n;
-        kb4.X(r11);     // Catch: Throwable -> L27
-        r13 = r29;
-        r14 = r30;
-        r9 = r9;
-    L27:
-        th = th;
-        r4 = r30;
-    L17:
-        th = th;
-    L7:
-        r0 = new bd4(r8, r10);
-        goto L8
+    /*  JADX ERROR: JadxOverflowException in pass: RegionMakerVisitor
+        jadx.core.utils.exceptions.JadxOverflowException: Regions count limit reached at block B:35:0x007f
+        	at jadx.core.utils.ErrorsCounter.addError(ErrorsCounter.java:59)
+        	at jadx.core.utils.ErrorsCounter.error(ErrorsCounter.java:31)
+        	at jadx.core.dex.attributes.nodes.NotificationAttrNode.addError(NotificationAttrNode.java:19)
+        */
+    public static void k(defpackage.cd4 r8, defpackage.q81 r9, defpackage.vd0 r10) throws java.lang.Throwable {
+        /*
+            boolean r0 = r10 instanceof defpackage.bd4
+            if (r0 == 0) goto L13
+            r0 = r10
+            bd4 r0 = (defpackage.bd4) r0
+            int r1 = r0.t
+            r2 = -2147483648(0xffffffff80000000, float:-0.0)
+            r3 = r1 & r2
+            if (r3 == 0) goto L13
+            int r1 = r1 - r2
+            r0.t = r1
+            goto L18
+        L13:
+            bd4 r0 = new bd4
+            r0.<init>(r8, r10)
+        L18:
+            java.lang.Object r10 = r0.r
+            int r1 = r0.t
+            r2 = 3
+            r3 = 2
+            if (r1 == 0) goto L5a
+            r8 = 1
+            if (r1 == r8) goto L4b
+            if (r1 == r3) goto L3f
+            if (r1 != r2) goto L39
+            s22 r8 = r0.q
+            dd4 r9 = r0.p
+            q81 r1 = r0.o
+            cd4 r4 = r0.n
+            defpackage.kb4.X(r10)     // Catch: java.lang.Throwable -> L36
+        L32:
+            r10 = r1
+            r1 = r8
+            r8 = r4
+            goto L72
+        L36:
+            r8 = move-exception
+            goto Lb2
+        L39:
+            java.lang.String r8 = "call to 'resume' before 'invoke' with coroutine"
+            defpackage.kf2.o(r8)
+            return
+        L3f:
+            s22 r8 = r0.q
+            dd4 r9 = r0.p
+            q81 r1 = r0.o
+            cd4 r4 = r0.n
+            defpackage.kb4.X(r10)     // Catch: java.lang.Throwable -> L36
+            goto L75
+        L4b:
+            dd4 r9 = r0.p
+            q81 r8 = r0.o
+            cd4 r1 = r0.n
+            defpackage.kb4.X(r10)     // Catch: java.lang.Throwable -> L57
+            r10 = r8
+            r8 = r1
+            goto L66
+        L57:
+            r8 = move-exception
+            r4 = r1
+            goto Lb2
+        L5a:
+            defpackage.kb4.X(r10)
+            n2 r10 = r8.d()
+            dd4 r10 = (defpackage.dd4) r10
+            r7 = r10
+            r10 = r9
+            r9 = r7
+        L66:
+            ne0 r1 = r0.getContext()     // Catch: java.lang.Throwable -> Laf
+            fz0 r4 = defpackage.fz0.h0     // Catch: java.lang.Throwable -> Laf
+            le0 r1 = r1.K(r4)     // Catch: java.lang.Throwable -> Laf
+            s22 r1 = (defpackage.s22) r1     // Catch: java.lang.Throwable -> Laf
+        L72:
+            r4 = r8
+            r8 = r1
+            r1 = r10
+        L75:
+            java.lang.Object r10 = r4.t(r9)     // Catch: java.lang.Throwable -> L36
+            f01 r5 = defpackage.g12.e     // Catch: java.lang.Throwable -> L36
+            xe0 r6 = defpackage.xe0.n
+            if (r10 != r5) goto L90
+            r0.n = r4     // Catch: java.lang.Throwable -> L36
+            r0.o = r1     // Catch: java.lang.Throwable -> L36
+            r0.p = r9     // Catch: java.lang.Throwable -> L36
+            r0.q = r8     // Catch: java.lang.Throwable -> L36
+            r0.t = r3     // Catch: java.lang.Throwable -> L36
+            java.lang.Object r10 = r4.i(r9, r0)     // Catch: java.lang.Throwable -> L36
+            if (r10 != r6) goto L75
+            goto Lae
+        L90:
+            if (r8 == 0) goto L9e
+            boolean r5 = r8.b()     // Catch: java.lang.Throwable -> L36
+            if (r5 == 0) goto L99
+            goto L9e
+        L99:
+            java.util.concurrent.CancellationException r8 = r8.q()     // Catch: java.lang.Throwable -> L36
+            throw r8     // Catch: java.lang.Throwable -> L36
+        L9e:
+            r0.n = r4     // Catch: java.lang.Throwable -> L36
+            r0.o = r1     // Catch: java.lang.Throwable -> L36
+            r0.p = r9     // Catch: java.lang.Throwable -> L36
+            r0.q = r8     // Catch: java.lang.Throwable -> L36
+            r0.t = r2     // Catch: java.lang.Throwable -> L36
+            java.lang.Object r10 = r1.b(r10, r0)     // Catch: java.lang.Throwable -> L36
+            if (r10 != r6) goto L32
+        Lae:
+            return
+        Laf:
+            r10 = move-exception
+            r4 = r8
+            r8 = r10
+        Lb2:
+            r4.g(r9)
+            throw r8
+        */
+        throw new UnsupportedOperationException("Method not decompiled: defpackage.cd4.k(cd4, q81, vd0):void");
     }
 
     @Override // defpackage.p81
-    public final Object a(q81 r1, vd0 r2) {
-        k(this, r1, r2);
+    public final Object a(q81 q81Var, vd0 vd0Var) throws Throwable {
+        k(this, q81Var, vd0Var);
         return xe0.n;
     }
 
     @Override // defpackage.q81
-    public final Object b(Object r8, vd0 r9) {
-        if (q(r8) == true) goto L5;
-        cz r5 = new cz(1, ya4.x(r9));
-        r5.u();
-        vd0[] r10 = bu.a;
-        monitor-enter(this);
-    L43:
-        th = th;
-        cd4 r1 = this;
-    L22:
-        Throwable r11 = th;
-    L45:
-        monitor-exit(r1);
-        throw r11;
-    L9:
-        if (r(r8) == true) goto L51;
-        r1 = this;
-        ad4 r0 = new ad4(r1, o() + ((long) (this.x + this.y)), r8, r5);     // Catch: Throwable -> L21
-        r1.m(r0);     // Catch: Throwable -> L21
-        r1.y++;     // Catch: Throwable -> L21
-        if (r1.s != 0) goto L23;
-        r10 = r1.n(r10);     // Catch: Throwable -> L21
-    L23:
-        vd0[] r12 = r10;
-        ad4 r13 = r0;
-    L24:
-        monitor-exit(r1);
-        if (r13 == null) goto L27;
-        r5.x(new wy(2, r13));
-    L27:
-        int r7 = r12.length;
-        int r14 = 0;
-    L28:
-        if (r14 >= r7) goto L33;
-        vd0 r2 = r12[r14];
-        if (r2 == null) goto L32;
-        r2.resumeWith(j15.a);
-    L32:
-        r14 = r14 + 1;
-        goto L28
-    L33:
-        Object r15 = r5.q();
-        xe0 r16 = xe0.n;
-        if (r15 == r16) goto L37;
-        r15 = j15.a;
-    L37:
-        if (r15 != r16) goto L40;
-        return r15;
-    L40:
-        return j15.a;
-    L21:
-        th = th;
-    L41:
-        th = move-exception;
-        r1 = this;
-        r11 = th;
-        goto L45
-    L51:
-        r5.resumeWith(j15.a);     // Catch: Throwable -> L12
-        r12 = n(r10);     // Catch: Throwable -> L12
-        r13 = null;
-        r1 = this;
-    L12:
-        th = move-exception;
-        r11 = th;
-        r1 = this;
-        goto L45
-    L5:
-        return j15.a;
+    public final Object b(Object obj, vd0 vd0Var) throws Throwable {
+        cd4 cd4Var;
+        Throwable th;
+        vd0[] vd0VarArrN;
+        ad4 ad4Var;
+        if (q(obj)) {
+            return j15.a;
+        }
+        cz czVar = new cz(1, ya4.x(vd0Var));
+        czVar.u();
+        vd0[] vd0VarArrN2 = bu.a;
+        synchronized (this) {
+            try {
+                if (r(obj)) {
+                    try {
+                        czVar.resumeWith(j15.a);
+                        vd0VarArrN = n(vd0VarArrN2);
+                        ad4Var = null;
+                        cd4Var = this;
+                    } catch (Throwable th2) {
+                        th = th2;
+                        cd4Var = this;
+                        throw th;
+                    }
+                } else {
+                    try {
+                        cd4Var = this;
+                        try {
+                            ad4 ad4Var2 = new ad4(cd4Var, o() + ((long) (this.x + this.y)), obj, czVar);
+                            cd4Var.m(ad4Var2);
+                            cd4Var.y++;
+                            if (cd4Var.s == 0) {
+                                vd0VarArrN2 = cd4Var.n(vd0VarArrN2);
+                            }
+                            vd0VarArrN = vd0VarArrN2;
+                            ad4Var = ad4Var2;
+                        } catch (Throwable th3) {
+                            th = th3;
+                            th = th;
+                            throw th;
+                        }
+                    } catch (Throwable th4) {
+                        cd4Var = this;
+                        th = th4;
+                        throw th;
+                    }
+                }
+                if (ad4Var != null) {
+                    czVar.x(new wy(2, ad4Var));
+                }
+                for (vd0 vd0Var2 : vd0VarArrN) {
+                    if (vd0Var2 != null) {
+                        vd0Var2.resumeWith(j15.a);
+                    }
+                }
+                Object objQ = czVar.q();
+                xe0 xe0Var = xe0.n;
+                if (objQ != xe0Var) {
+                    objQ = j15.a;
+                }
+                return objQ == xe0Var ? objQ : j15.a;
+            } catch (Throwable th5) {
+                th = th5;
+                cd4Var = this;
+            }
+        }
     }
 
     @Override // defpackage.jg1
-    public final p81 c(ne0 r1, int r2, wv r3) {
-        return g12.o(this, r1, r2, r3);
+    public final p81 c(ne0 ne0Var, int i, wv wvVar) {
+        return g12.o(this, ne0Var, i, wvVar);
     }
 
     @Override // defpackage.m2
     public final n2 e() {
-        dd4 r2 = new dd4();
-        r2.a = -1;
-        return r2;
+        dd4 dd4Var = new dd4();
+        dd4Var.a = -1L;
+        return dd4Var;
     }
 
     @Override // defpackage.m2
@@ -269,94 +285,76 @@ public class cd4 extends m2 implements zc4, q81, p81, jg1 {
         return new dd4[2];
     }
 
-    public final Object i(dd4 r6, bd4 r7) {
-        cz r0 = new cz(1, ya4.x(r7));
-        r0.u();
-        monitor-enter(this);
-    L7:
-        th = move-exception;
-        throw th;
-    L5:
-        if (s(r6) >= 0) goto L9;
-        r6.b = r0;     // Catch: Throwable -> L7
-    L10:
-        monitor-exit(this);
-        Object r5 = r0.q();
-        if (r5 != xe0.n) goto L15;
-        return r5;
-    L15:
-        return j15.a;
-    L9:
-        r0.resumeWith(j15.a);     // Catch: Throwable -> L7
-        goto L10
+    public final Object i(dd4 dd4Var, bd4 bd4Var) {
+        cz czVar = new cz(1, ya4.x(bd4Var));
+        czVar.u();
+        synchronized (this) {
+            try {
+                if (s(dd4Var) < 0) {
+                    dd4Var.b = czVar;
+                } else {
+                    czVar.resumeWith(j15.a);
+                }
+            } catch (Throwable th) {
+                throw th;
+            }
+        }
+        Object objQ = czVar.q();
+        return objQ == xe0.n ? objQ : j15.a;
     }
 
     public final void j() {
-        if (this.s == 0) goto L5;
-    L7:
-        Object[] r0 = this.u;
-        r0.getClass();
-    L9:
-        if (this.y <= 0) goto L16;
-        long r2 = o();
-        int r4 = this.x;
-        int r5 = this.y;
-        if (r0[((int) ((r2 + ((long) (r4 + r5))) - 1)) & (r0.length - 1)] != g12.e) goto L17;
-        this.y = r5 - 1;
-        g12.d(r0, o() + ((long) (this.x + this.y)), null);
-        goto L9
-    L17:
-        return;
-    L16:
-        return;
-    L5:
-        if (this.y > 1) goto L7;
+        if (this.s != 0 || this.y > 1) {
+            Object[] objArr = this.u;
+            objArr.getClass();
+            while (this.y > 0) {
+                long jO = o();
+                int i = this.x;
+                int i2 = this.y;
+                if (objArr[((int) ((jO + ((long) (i + i2))) - 1)) & (objArr.length - 1)] != g12.e) {
+                    return;
+                }
+                this.y = i2 - 1;
+                g12.d(objArr, o() + ((long) (this.x + this.y)), null);
+            }
+        }
     }
 
     public final void l() {
-        Object[] r0 = this.u;
-        r0.getClass();
-        g12.d(r0, o(), null);
+        n2[] n2VarArr;
+        Object[] objArr = this.u;
+        objArr.getClass();
+        g12.d(objArr, o(), null);
         this.x--;
-        long r1 = o() + 1;
-        if (this.v >= r1) goto L6;
-        this.v = r1;
-    L6:
-        if (this.w < r1) goto L8;
-        return;
-    L8:
-        if (this.o == 0) goto L21;
-        n2[] r2 = this.n;
-        if (r2 == null) goto L21;
-        int r3 = r2.length;
-        int r4 = 0;
-    L12:
-        if (r4 >= r3) goto L21;
-        n2 r5 = r2[r4];
-        if (r5 == null) goto L20;
-        dd4 r6 = (dd4) r5;
-        long r7 = r6.a;
-        if (r7 < 0) goto L20;
-        if (r7 >= r1) goto L20;
-        r6.a = r1;
-    L20:
-        r4 = r4 + 1;
-    L21:
-        this.w = r1;
+        long jO = o() + 1;
+        if (this.v < jO) {
+            this.v = jO;
+        }
+        if (this.w < jO) {
+            if (this.o != 0 && (n2VarArr = this.n) != null) {
+                for (n2 n2Var : n2VarArr) {
+                    if (n2Var != null) {
+                        dd4 dd4Var = (dd4) n2Var;
+                        long j = dd4Var.a;
+                        if (j >= 0 && j < jO) {
+                            dd4Var.a = jO;
+                        }
+                    }
+                }
+            }
+            this.w = jO;
+        }
     }
 
-    public final void m(Object r7) {
-        int r0 = this.x + this.y;
-        Object[] r1 = this.u;
-        if (r1 != null) goto L6;
-        r1 = p(null, 0, 2);
-    L8:
-        g12.d(r1, o() + ((long) r0), r7);
-        return;
-    L6:
-        if (r0 < r1.length) goto L8;
-        r1 = p(r1, r0, r1.length * 2);
-        goto L8
+    public final void m(Object obj) {
+        int i = this.x + this.y;
+        Object[] objArrP = this.u;
+        if (objArrP == null) {
+            objArrP = p(null, 0, 2);
+        } else if (i >= objArrP.length) {
+            objArrP = p(objArrP, i, objArrP.length * 2);
+        }
+        g12.d(objArrP, o() + ((long) i), obj);
     }
 
     /* JADX WARN: Multi-variable type inference failed */
@@ -370,197 +368,188 @@ public class cd4 extends m2 implements zc4, q81, p81, jg1 {
     /* JADX WARN: Type inference failed for: r11v8 */
     /* JADX WARN: Type inference failed for: r11v9 */
     /* JADX WARN: Type inference failed for: r6v3 */
-    public final vd0[] n(vd0[] r11) {
-        int r0 = r11.length;
-        if (this.o == 0) goto L21;
-        n2[] r1 = this.n;
-        if (r1 == null) goto L21;
-        int r2 = r1.length;
-        int r3 = 0;
-        r11 = r11;
-    L7:
-        if (r3 >= r2) goto L21;
-        n2 r4 = r1[r3];
-        if (r4 == null) goto L19;
-        dd4 r5 = (dd4) r4;
-        cz r6 = r5.b;
-        if (r6 == null) goto L19;
-        if (s(r5) < 0) goto L19;
-        int r7 = r11.length;
-        r11 = r11;
-        if (r0 < r7) goto L18;
-        r11 = Arrays.copyOf(r11, Math.max(2, r11.length * 2));
-    L18:
-        ((vd0[]) r11)[r0] = r6;
-        r5.b = null;
-        r0 = r0 + 1;
-    L19:
-        r3 = r3 + 1;
-        r11 = r11;
-    L21:
-        return (vd0[]) r11;
+    public final vd0[] n(vd0[] vd0VarArr) {
+        n2[] n2VarArr;
+        dd4 dd4Var;
+        cz czVar;
+        int length = vd0VarArr.length;
+        if (this.o != 0 && (n2VarArr = this.n) != null) {
+            int length2 = n2VarArr.length;
+            int i = 0;
+            while (i < length2) {
+                n2 n2Var = n2VarArr[i];
+                if (n2Var == null || (czVar = (dd4Var = (dd4) n2Var).b) == null || s(dd4Var) < 0) {
+                    vd0VarArr = vd0VarArr;
+                } else {
+                    if (length >= vd0VarArr.length) {
+                        vd0VarArr = vd0VarArr;
+                        vd0VarArr = vd0VarArr;
+                        vd0VarArr = Arrays.copyOf((Object[]) vd0VarArr, Math.max(2, vd0VarArr.length * 2));
+                    }
+                    vd0VarArr = vd0VarArr;
+                    vd0VarArr = vd0VarArr;
+                    ((vd0[]) vd0VarArr)[length] = czVar;
+                    dd4Var.b = null;
+                    length++;
+                }
+                i++;
+                vd0VarArr = vd0VarArr;
+            }
+            vd0VarArr = vd0VarArr;
+        }
+        return (vd0[]) vd0VarArr;
     }
 
     public final long o() {
         return Math.min(this.w, this.v);
     }
 
-    public final Object[] p(Object[] r7, int r8, int r9) {
-        if (r9 <= 0) goto L10;
-        Object[] r10 = new Object[r9];
-        this.u = r10;
-        if (r7 == null) goto L9;
-        long r0 = o();
-        int r6 = 0;
-    L7:
-        if (r6 >= r8) goto L9;
-        long r2 = ((long) r6) + r0;
-        g12.d(r10, r2, r7[((int) r2) & (r7.length - 1)]);
-        r6 = r6 + 1;
-    L9:
-        return r10;
-    L10:
-        kf2.o("Buffer size overflow");
-        return null;
+    public final Object[] p(Object[] objArr, int i, int i2) {
+        if (i2 <= 0) {
+            kf2.o("Buffer size overflow");
+            return null;
+        }
+        Object[] objArr2 = new Object[i2];
+        this.u = objArr2;
+        if (objArr != null) {
+            long jO = o();
+            for (int i3 = 0; i3 < i; i3++) {
+                long j = ((long) i3) + jO;
+                g12.d(objArr2, j, objArr[((int) j) & (objArr.length - 1)]);
+            }
+        }
+        return objArr2;
     }
 
-    public final boolean q(Object r5) {
-        vd0[] r0 = bu.a;
-        monitor-enter(this);
-        int r1 = 0;
-        if (r(r5) == false) goto L10;
-        r0 = n(r0);     // Catch: Throwable -> L8
-        boolean r6 = true;
-    L11:
-        monitor-exit(this);
-        int r4 = r0.length;
-    L13:
-        if (r1 >= r4) goto L18;
-        vd0 r2 = r0[r1];
-        if (r2 == null) goto L17;
-        r2.resumeWith(j15.a);
-    L17:
-        r1 = r1 + 1;
-        goto L13
-    L18:
-        return r6;
-    L10:
-        r6 = false;
-    L8:
-        th = move-exception;
-        throw th;
+    public final boolean q(Object obj) {
+        int i;
+        boolean z;
+        vd0[] vd0VarArrN = bu.a;
+        synchronized (this) {
+            if (r(obj)) {
+                vd0VarArrN = n(vd0VarArrN);
+                z = true;
+            } else {
+                z = false;
+            }
+        }
+        for (vd0 vd0Var : vd0VarArrN) {
+            if (vd0Var != null) {
+                vd0Var.resumeWith(j15.a);
+            }
+        }
+        return z;
     }
 
-    public final boolean r(Object r13) {
-        int r1 = this.o;
-        int r2 = this.r;
-        if (r1 != 0) goto L11;
-        if (r2 == 0) goto L29;
-        m(r13);
-        int r3 = this.x + 1;
-        this.x = r3;
-        if (r3 <= r2) goto L9;
-        l();
-    L9:
-        this.w = o() + ((long) this.x);
+    /* JADX WARN: Code duplicated, block: B:23:0x0044  */
+    /* JADX WARN: Code duplicated, block: B:25:0x004e  */
+    /* JADX WARN: Code duplicated, block: B:28:0x005f  */
+    public final boolean r(Object obj) {
+        int i;
+        long jO;
+        long j;
+        int i2 = this.o;
+        int i3 = this.r;
+        if (i2 != 0) {
+            int i4 = this.x;
+            int i5 = this.s;
+            if (i4 >= i5 && this.w <= this.v) {
+                int iOrdinal = this.t.ordinal();
+                if (iOrdinal != 0) {
+                    if (iOrdinal == 1) {
+                        m(obj);
+                        i = this.x + 1;
+                        this.x = i;
+                        if (i > i5) {
+                            l();
+                        }
+                        jO = o() + ((long) this.x);
+                        j = this.v;
+                        if (((int) (jO - j)) > i3) {
+                            u(1 + j, this.w, o() + ((long) this.x), o() + ((long) this.x) + ((long) this.y));
+                        }
+                    } else if (iOrdinal != 2) {
+                        er1.n();
+                    }
+                }
+                return false;
+            }
+            m(obj);
+            i = this.x + 1;
+            this.x = i;
+            if (i > i5) {
+                l();
+            }
+            jO = o() + ((long) this.x);
+            j = this.v;
+            if (((int) (jO - j)) > i3) {
+                u(1 + j, this.w, o() + ((long) this.x), o() + ((long) this.x) + ((long) this.y));
+            }
+        } else if (i3 != 0) {
+            m(obj);
+            int i6 = this.x + 1;
+            this.x = i6;
+            if (i6 > i3) {
+                l();
+            }
+            this.w = o() + ((long) this.x);
+            return true;
+        }
         return true;
-    L29:
-        return true;
-    L11:
-        int r4 = this.x;
-        int r5 = this.s;
-        if (r4 >= r5) goto L14;
-    L23:
-        m(r13);
-        int r6 = this.x + 1;
-        this.x = r6;
-        if (r6 <= r5) goto L26;
-        l();
-    L26:
-        long r7 = o() + ((long) this.x);
-        long r8 = this.v;
-        if (((int) (r7 - r8)) <= r2) goto L29;
-        u(1 + r8, this.w, o() + ((long) this.x), (o() + ((long) this.x)) + ((long) this.y));
-        goto L29
-    L14:
-        if (this.w > this.v) goto L23;
-        int r9 = this.t.ordinal();
-        if (r9 == 0) goto L22;
-        if (r9 == 1) goto L23;
-        if (r9 == 2) goto L29;
-        er1.n();
-    L22:
-        return false;
     }
 
-    public final long s(dd4 r7) {
-        long r0 = r7.a;
-        if (r0 >= (o() + ((long) this.x))) goto L6;
-    L15:
-        return r0;
-    L6:
-        if (this.s <= 0) goto L9;
-        return -1;
-    L9:
-        if (r0 <= o()) goto L12;
-        return -1;
-    L12:
-        if (this.y != 0) goto L15;
-        return -1;
+    public final long s(dd4 dd4Var) {
+        long j = dd4Var.a;
+        if (j >= o() + ((long) this.x) && (this.s > 0 || j > o() || this.y == 0)) {
+            return -1L;
+        }
+        return j;
     }
 
-    public final Object t(dd4 r9) {
-        vd0[] r0 = bu.a;
-        monitor-enter(this);
-        long r1 = s(r9);     // Catch: Throwable -> L7
-        if (r1 >= 0) goto L9;
-        Object r10 = g12.e;     // Catch: Throwable -> L7
-    L14:
-        monitor-exit(this);
-        int r8 = r0.length;
-        int r2 = 0;
-    L16:
-        if (r2 >= r8) goto L21;
-        vd0 r3 = r0[r2];
-        if (r3 == null) goto L20;
-        r3.resumeWith(j15.a);
-    L20:
-        r2 = r2 + 1;
-        goto L16
-    L21:
-        return r10;
-    L9:
-        long r4 = r9.a;     // Catch: Throwable -> L7
-        Object[] r5 = this.u;     // Catch: Throwable -> L7
-        r5.getClass();     // Catch: Throwable -> L7
-        Object r6 = r5[((int) r1) & (r5.length - 1)];     // Catch: Throwable -> L7
-        if ((r6 instanceof ad4) == false) goto L12;
-        r6 = ((ad4) r6).p;     // Catch: Throwable -> L7
-    L12:
-        r9.a = r1 + 1;     // Catch: Throwable -> L7
-        Object r7 = r6;
-        r0 = v(r4);     // Catch: Throwable -> L7
-        r10 = r7;
-    L7:
-        th = move-exception;
-        throw th;
+    public final Object t(dd4 dd4Var) {
+        Object obj;
+        vd0[] vd0VarArrV = bu.a;
+        synchronized (this) {
+            try {
+                long jS = s(dd4Var);
+                if (jS < 0) {
+                    obj = g12.e;
+                } else {
+                    long j = dd4Var.a;
+                    Object[] objArr = this.u;
+                    objArr.getClass();
+                    Object obj2 = objArr[((int) jS) & (objArr.length - 1)];
+                    if (obj2 instanceof ad4) {
+                        obj2 = ((ad4) obj2).p;
+                    }
+                    dd4Var.a = jS + 1;
+                    Object obj3 = obj2;
+                    vd0VarArrV = v(j);
+                    obj = obj3;
+                }
+            } catch (Throwable th) {
+                throw th;
+            }
+        }
+        for (vd0 vd0Var : vd0VarArrV) {
+            if (vd0Var != null) {
+                vd0Var.resumeWith(j15.a);
+            }
+        }
+        return obj;
     }
 
-    public final void u(long r7, long r9, long r11, long r13) {
-        long r0 = Math.min(r9, r7);
-        long r2 = o();
-    L4:
-        if (r2 >= r0) goto L6;
-        Object[] r4 = this.u;
-        r4.getClass();
-        g12.d(r4, r2, null);
-        r2 = r2 + 1;
-        goto L4
-    L6:
-        this.v = r7;
-        this.w = r9;
-        this.x = (int) (r11 - r0);
-        this.y = (int) (r13 - r11);
+    public final void u(long j, long j2, long j3, long j4) {
+        long jMin = Math.min(j2, j);
+        for (long jO = o(); jO < jMin; jO++) {
+            Object[] objArr = this.u;
+            objArr.getClass();
+            g12.d(objArr, jO, null);
+        }
+        this.v = j;
+        this.w = j2;
+        this.x = (int) (j3 - jMin);
+        this.y = (int) (j4 - j3);
     }
 
     /* JADX WARN: Failed to calculate best type for var: r12v1 ??
@@ -1320,29 +1309,6 @@ public class cd4 extends m2 implements zc4, q81, p81, jg1 {
         	... 5 more
         */
     public final defpackage.vd0[] v(long r21) {
-        /*  JADX ERROR: Simple mode code generation failed
-            jadx.core.utils.exceptions.CodegenException: Error generate insn: 0x000d: INVOKE (r3v2 ?? I:long) = (r20v0 'this' ?? I:cd4 A[IMMUTABLE_TYPE, THIS]) VIRTUAL call: cd4.o():long A[DECLARE_VAR, MD:():long (m)] (LINE:14) in method: cd4.v(long):vd0[], file: classes.dex
-            	at jadx.core.codegen.InsnGen.makeInsn(InsnGen.java:310)
-            	at jadx.core.codegen.InsnGen.makeInsn(InsnGen.java:273)
-            	at jadx.core.codegen.MethodGen.generateSimpleCode(MethodGen.java:348)
-            	at jadx.core.codegen.MethodGen.addSimpleMethodCode(MethodGen.java:316)
-            	at jadx.core.codegen.MethodGen.addInstructions(MethodGen.java:279)
-            	at jadx.core.codegen.ClassGen.addMethodCode(ClassGen.java:420)
-            	at jadx.core.codegen.ClassGen.addMethod(ClassGen.java:345)
-            	at jadx.core.codegen.ClassGen.lambda$addInnerClsAndMethods$3(ClassGen.java:299)
-            	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:183)
-            	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-            	at java.base/java.util.stream.SortedOps$RefSortingSink.end(SortedOps.java:395)
-            	at java.base/java.util.stream.Sink$ChainedReference.end(Sink.java:258)
-            Caused by: java.lang.NullPointerException: Cannot invoke "jadx.core.dex.instructions.args.ArgType.getPrimitiveType()" because "type" is null
-            	at jadx.core.codegen.ClassGen.useType(ClassGen.java:564)
-            	at jadx.core.codegen.InsnGen.useType(InsnGen.java:269)
-            	at jadx.core.codegen.InsnGen.declareVar(InsnGen.java:166)
-            	at jadx.core.codegen.InsnGen.declareVar(InsnGen.java:159)
-            	at jadx.core.codegen.InsnGen.assignVar(InsnGen.java:152)
-            	at jadx.core.codegen.InsnGen.makeInsn(InsnGen.java:299)
-            	... 11 more
-            */
         /*
             Method dump skipped, instruction units count: 257
             To view this dump add '--comments-level debug' option

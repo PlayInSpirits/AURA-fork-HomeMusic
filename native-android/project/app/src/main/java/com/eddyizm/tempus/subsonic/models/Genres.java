@@ -11,14 +11,11 @@ public final class Genres {
     @ka4("genre")
     private List<Genre> genres;
 
-    public Genres() {
-    }
-
     public final List<Genre> getGenres() {
         return this.genres;
     }
 
-    public final void setGenres(List<Genre> r1) {
-        this.genres = r1;
+    public final void setGenres(List<Genre> list) {
+        this.genres = list;
     }
 }

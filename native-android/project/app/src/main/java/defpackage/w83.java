@@ -6,39 +6,27 @@ public final class w83 {
     public final v83 a;
     public final ba2 b;
 
-    public w83(ba2 r1, v83 r2) {
-        r2.getClass();
-        this.a = r2;
-        this.b = r1;
+    public w83(ba2 ba2Var, v83 v83Var) {
+        v83Var.getClass();
+        this.a = v83Var;
+        this.b = ba2Var;
     }
 
-    public final boolean equals(Object r5) {
-        if (this != r5) goto L6;
-        return true;
-    L6:
-        if ((r5 instanceof w83) == true) goto L8;
-        return false;
-    L8:
-        w83 r6 = (w83) r5;
-        if (h12.c(this.a, r6.a) == true) goto L12;
-        return false;
-    L12:
-        if (h12.c(this.b, r6.b) == true) goto L14;
-        return false;
-    L14:
-        return true;
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof w83)) {
+            return false;
+        }
+        w83 w83Var = (w83) obj;
+        return h12.c(this.a, w83Var.a) && h12.c(this.b, w83Var.b);
     }
 
     public final int hashCode() {
-        int r0 = this.a.hashCode() * 31;
-        ba2 r1 = this.b;
-        if (r1 != null) goto L5;
-        int r2 = 0;
-    L7:
-        return r0 + r2;
-    L5:
-        r2 = r1.hashCode();
-        goto L7
+        int iHashCode = this.a.hashCode() * 31;
+        ba2 ba2Var = this.b;
+        return iHashCode + (ba2Var == null ? 0 : ba2Var.hashCode());
     }
 
     public final String toString() {

@@ -8,52 +8,42 @@ public final /* synthetic */ class dm2 implements Runnable {
     public final /* synthetic */ int n;
     public final /* synthetic */ im2 o;
 
-    public /* synthetic */ dm2(im2 r1, ml3 r2) {
+    public /* synthetic */ dm2(im2 im2Var, ml3 ml3Var) {
         this.n = 2;
-        this.o = r1;
+        this.o = im2Var;
     }
 
     @Override // java.lang.Runnable
     public final void run() {
-        int r0 = this.n;
-        im2 r5 = this.o;
-        switch(r0) {
-            case 0: goto L13;
-            case 1: goto L10;
-            default: goto L4;
-        };
-    L4:
-        sk2 r6 = r5.a1();
-        r6.getClass();
-        if (Looper.myLooper() != r6.f.getLooper()) goto L7;
-        boolean r1 = true;
-    L8:
-        rr2.w(r1);
-        qk2 r7 = r6.e;
-        r7.getClass();
-        new mw1(new ab4(-6));
-        r7.u();
-        return;
-    L7:
-        r1 = false;
-        goto L8
-    L10:
-        jj2 r2 = new jj2(r5.a, r5.c.a.b(), new z05(r5), r5.b.d.S0());
-        r5.j = r2;
-        l93.A("MediaBrowserCompat", "Connecting to a MediaBrowserService.");
-        r2.a.b.connect();
-        return;
-    L13:
-        if (r5.k == false) goto L15;
-        return;
-    L15:
-        if (((xk2) r5.i.n).e.a() != null) goto L20;
-        r5.e1();
-        return;
+        int i = this.n;
+        im2 im2Var = this.o;
+        switch (i) {
+            case 0:
+                if (!im2Var.k && ((xk2) im2Var.i.n).e.a() == null) {
+                    im2Var.e1();
+                    break;
+                }
+                break;
+            case 1:
+                jj2 jj2Var = new jj2(im2Var.a, im2Var.c.a.b(), new z05(im2Var), im2Var.b.d.S0());
+                im2Var.j = jj2Var;
+                l93.A("MediaBrowserCompat", "Connecting to a MediaBrowserService.");
+                jj2Var.a.b.connect();
+                break;
+            default:
+                sk2 sk2VarA1 = im2Var.a1();
+                sk2VarA1.getClass();
+                rr2.w(Looper.myLooper() == sk2VarA1.f.getLooper());
+                qk2 qk2Var = sk2VarA1.e;
+                qk2Var.getClass();
+                new mw1(new ab4(-6));
+                qk2Var.u();
+                break;
+        }
     }
 
-    public /* synthetic */ dm2(im2 r1, int r2) {
-        this.n = r2;
-        this.o = r1;
+    public /* synthetic */ dm2(im2 im2Var, int i) {
+        this.n = i;
+        this.o = im2Var;
     }
 }

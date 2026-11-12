@@ -5,67 +5,65 @@ package defpackage;
 public final class ff2 implements q62 {
     public final ef2 n;
 
-    public ff2(ef2 r1) {
-        this.n = r1;
+    public ff2(ef2 ef2Var) {
+        this.n = ef2Var;
     }
 
     @Override // defpackage.q62
-    public final long A(q62 r10, long r11) {
-        boolean r0 = r10 instanceof ff2;
-        ef2 r1 = this.n;
-        if (r0 == false) goto L10;
-        ef2 r9 = ((ff2) r10).n;
-        f63 r12 = r9.H;
-        r12.L0();
-        ef2 r13 = r1.H.w0(r12).y0();
-        if (r13 == null) goto L8;
-        long r14 = g02.b(g02.c(r9.s0(r13, false), ji2.K(r11)), r1.s0(r13, false));
-        return (Float.floatToRawIntBits((int) (r14 >> 32)) << 32) | (Float.floatToRawIntBits((int) (r14 & 4294967295L)) & 4294967295L);
-    L8:
-        ef2 r15 = au0.A(r9);
-        long r16 = g02.c(g02.c(r9.s0(r15, false), r15.I), ji2.K(r11));
-        ef2 r17 = au0.A(r1);
-        long r18 = g02.b(r16, g02.c(r1.s0(r17, false), r17.I));
-        long r2 = Float.floatToRawIntBits((int) (r18 >> 32));
-        long r19 = ((long) Float.floatToRawIntBits((int) (r18 & 4294967295L))) & 4294967295L;
-        f63 r20 = r17.H.J;
-        r20.getClass();
-        f63 r110 = r15.H.J;
-        r110.getClass();
-        return r20.A(r110, r19 | (r2 << 32));
-    L10:
-        ef2 r3 = au0.A(r1);
-        f63 r4 = r3.H;
-        long r111 = A(r3.K, r11);
-        long r5 = r3.I;
-        float r6 = (int) (r5 & 4294967295L);
-        long r7 = Float.floatToRawIntBits((int) (r5 >> 32));
-        long r112 = g83.d(r111, (4294967295L & ((long) Float.floatToRawIntBits(r6))) | (r7 << 32));
-        if (r4.A0().A == true) goto L13;
-        cz1.b("LayoutCoordinate operations are only valid when isAttached is true");
-    L13:
-        r4.L0();
-        f63 r21 = r4.J;
-        if (r21 == null) goto L18;
-        r4 = r21;
-    L18:
-        return g83.e(r112, r4.A(r10, 0));
+    public final long A(q62 q62Var, long j) {
+        boolean z = q62Var instanceof ff2;
+        ef2 ef2Var = this.n;
+        if (!z) {
+            ef2 ef2VarA = au0.A(ef2Var);
+            f63 f63Var = ef2VarA.H;
+            long jA = A(ef2VarA.K, j);
+            long j2 = ef2VarA.I;
+            long jD = g83.d(jA, (4294967295L & ((long) Float.floatToRawIntBits((int) (j2 & 4294967295L)))) | (Float.floatToRawIntBits((int) (j2 >> 32)) << 32));
+            if (!f63Var.A0().A) {
+                cz1.b("LayoutCoordinate operations are only valid when isAttached is true");
+            }
+            f63Var.L0();
+            f63 f63Var2 = f63Var.J;
+            if (f63Var2 != null) {
+                f63Var = f63Var2;
+            }
+            return g83.e(jD, f63Var.A(q62Var, 0L));
+        }
+        ef2 ef2Var2 = ((ff2) q62Var).n;
+        f63 f63Var3 = ef2Var2.H;
+        f63Var3.L0();
+        ef2 ef2VarY0 = ef2Var.H.w0(f63Var3).y0();
+        if (ef2VarY0 != null) {
+            long jB = g02.b(g02.c(ef2Var2.s0(ef2VarY0, false), ji2.K(j)), ef2Var.s0(ef2VarY0, false));
+            return (((long) Float.floatToRawIntBits((int) (jB >> 32))) << 32) | (((long) Float.floatToRawIntBits((int) (jB & 4294967295L))) & 4294967295L);
+        }
+        ef2 ef2VarA2 = au0.A(ef2Var2);
+        long jC = g02.c(g02.c(ef2Var2.s0(ef2VarA2, false), ef2VarA2.I), ji2.K(j));
+        ef2 ef2VarA3 = au0.A(ef2Var);
+        long jB2 = g02.b(jC, g02.c(ef2Var.s0(ef2VarA3, false), ef2VarA3.I));
+        long jFloatToRawIntBits = Float.floatToRawIntBits((int) (jB2 >> 32));
+        long jFloatToRawIntBits2 = ((long) Float.floatToRawIntBits((int) (jB2 & 4294967295L))) & 4294967295L;
+        f63 f63Var4 = ef2VarA3.H.J;
+        f63Var4.getClass();
+        f63 f63Var5 = ef2VarA2.H.J;
+        f63Var5.getClass();
+        return f63Var4.A(f63Var5, jFloatToRawIntBits2 | (jFloatToRawIntBits << 32));
     }
 
     @Override // defpackage.q62
-    public final wv3 C(q62 r1, boolean r2) {
-        return this.n.H.C(r1, r2);
+    public final wv3 C(q62 q62Var, boolean z) {
+        return this.n.H.C(q62Var, z);
     }
 
     public final long a() {
-        ef2 r0 = this.n;
-        ef2 r1 = au0.A(r0);
-        return g83.d(A(r1.K, 0), r0.H.A(r1.H, 0));
+        ef2 ef2Var = this.n;
+        ef2 ef2VarA = au0.A(ef2Var);
+        return g83.d(A(ef2VarA.K, 0L), ef2Var.H.A(ef2VarA.H, 0L));
     }
 
     @Override // defpackage.q62
-    public final long b(long r4) {
-        return this.n.H.b(g83.e(r4, a()));
+    public final long b(long j) {
+        return this.n.H.b(g83.e(j, a()));
     }
 
     @Override // defpackage.q62
@@ -75,34 +73,30 @@ public final class ff2 implements q62 {
 
     @Override // defpackage.q62
     public final long k() {
-        ef2 r6 = this.n;
-        int r0 = r6.n;
-        return (((long) r0) << 32) | (((long) r6.o) & 4294967295L);
+        ef2 ef2Var = this.n;
+        return (((long) ef2Var.n) << 32) | (((long) ef2Var.o) & 4294967295L);
     }
 
     @Override // defpackage.q62
-    public final long q(long r5) {
-        return this.n.H.q(g83.e(0, a()));
+    public final long q(long j) {
+        return this.n.H.q(g83.e(0L, a()));
     }
 
     @Override // defpackage.q62
     public final q62 u() {
-        if (f() == true) goto L5;
-        cz1.b("LayoutCoordinate operations are only valid when isAttached is true");
-    L5:
-        f63 r1 = ((f63) this.n.H.H.Q.e).J;
-        if (r1 == null) goto L11;
-        ef2 r2 = r1.y0();
-        if (r2 != null) goto L10;
-        return null;
-    L10:
-        return r2.K;
-    L11:
-        return null;
+        ef2 ef2VarY0;
+        if (!f()) {
+            cz1.b("LayoutCoordinate operations are only valid when isAttached is true");
+        }
+        f63 f63Var = ((f63) this.n.H.H.Q.e).J;
+        if (f63Var == null || (ef2VarY0 = f63Var.y0()) == null) {
+            return null;
+        }
+        return ef2VarY0.K;
     }
 
     @Override // defpackage.q62
-    public final long z(q62 r1, long r2) {
-        return A(r1, r2);
+    public final long z(q62 q62Var, long j) {
+        return A(q62Var, j);
     }
 }

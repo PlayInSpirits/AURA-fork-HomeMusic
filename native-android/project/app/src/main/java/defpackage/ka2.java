@@ -10,134 +10,134 @@ import java.util.HashMap;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public abstract class ka2 {
-    public static final HashMap a = null;
-    public static final HashMap b = null;
+    public static final HashMap a = new HashMap();
+    public static final HashMap b = new HashMap();
 
-    static {
-        a = new HashMap();
-        b = new HashMap();
+    public static void a(Constructor constructor, aa2 aa2Var) {
+        try {
+            constructor.newInstance(aa2Var).getClass();
+            throw new ClassCastException();
+        } catch (IllegalAccessException e) {
+            throw new RuntimeException(e);
+        } catch (InstantiationException e2) {
+            throw new RuntimeException(e2);
+        } catch (InvocationTargetException e3) {
+            throw new RuntimeException(e3);
+        }
     }
 
-    public static void a(Constructor r0, aa2 r1) {
-        r0.newInstance(new Object[]{r1}).getClass();     // Catch: InvocationTargetException -> L4 InstantiationException -> L7 IllegalAccessException -> L10
-        throw new ClassCastException();     // Catch: InvocationTargetException -> L4 InstantiationException -> L7 IllegalAccessException -> L10
-    L10:
-        e = move-exception;
-        throw new RuntimeException(e);
-    L7:
-        e = move-exception;
-        throw new RuntimeException(e);
-    L4:
-        e = move-exception;
-        throw new RuntimeException(e);
-    }
-
-    public static int b(Class r13) {
-        HashMap r1 = a;
-        Integer r2 = (Integer) r1.get(r13);
-        if (r2 != null) goto L5;
-        int r3 = 1;
-        if (r13.getCanonicalName() == null) goto L71;
-        int r4 = 0;
-        ArrayList r5 = null;
-        Package r6 = r13.getPackage();     // Catch: NoSuchMethodException -> L13 ClassNotFoundException -> L30
-        String r7 = r13.getCanonicalName();     // Catch: NoSuchMethodException -> L13 ClassNotFoundException -> L30
-        if (r6 == null) goto L15;
-        String r8 = r6.getName();     // Catch: NoSuchMethodException -> L13 ClassNotFoundException -> L30
-    L16:
-        r8.getClass();     // Catch: NoSuchMethodException -> L13 ClassNotFoundException -> L30
-        if (r8.length() == 0) goto L20;
-        r7.getClass();     // Catch: NoSuchMethodException -> L13 ClassNotFoundException -> L30
-        r7 = r7.substring(r8.length() + 1);     // Catch: NoSuchMethodException -> L13 ClassNotFoundException -> L30
-    L20:
-        r7.getClass();     // Catch: NoSuchMethodException -> L13 ClassNotFoundException -> L30
-        String r9 = xm4.i0(r7, ".", "_").concat("_LifecycleAdapter");     // Catch: NoSuchMethodException -> L13 ClassNotFoundException -> L30
-        if (r8.length() == 0) goto L24;
-        r9 = r8 + "." + r9;     // Catch: NoSuchMethodException -> L13 ClassNotFoundException -> L30
-    L24:
-        Constructor<?> r0 = Class.forName(r9).getDeclaredConstructor(new Class[]{r13});     // Catch: NoSuchMethodException -> L13 ClassNotFoundException -> L30
-        if (r0.isAccessible() == true) goto L31;
-        r0.setAccessible(true);     // Catch: NoSuchMethodException -> L13 ClassNotFoundException -> L30
-    L31:
-        HashMap r10 = b;
-        if (r0 == null) goto L35;
-        r10.put(r13, gb.O(r0));
-    L34:
-        r3 = 2;
-        goto L71
-    L35:
-        l30 r11 = l30.c;
-        HashMap r12 = r11.b;
-        Boolean r14 = (Boolean) r12.get(r13);
-        if (r14 == null) goto L76;
-        boolean r15 = r14.booleanValue();
-    L46:
-        if (r15 == true) goto L71;
-        Class r16 = r13.getSuperclass();
-        if (r16 != null) goto L51;
-    L56:
-        Class<?>[] r17 = r13.getInterfaces();
-        r17.getClass();
-        int r18 = r17.length;
-    L57:
-        if (r4 >= r18) goto L69;
-        Class<?> r19 = r17[r4];
-        if (r19 == null) goto L68;
-        if (aa2.class.isAssignableFrom(r19) == false) goto L68;
-        r19.getClass();
-        if (b(r19) == 1) goto L71;
-        if (r5 != null) goto L67;
-        r5 = new ArrayList();
-    L67:
-        Object r20 = r10.get(r19);
-        r20.getClass();
-        r5.addAll((Collection) r20);
-    L68:
-        r4 = r4 + 1;
-        goto L57
-    L69:
-        if (r5 == null) goto L71;
-        r10.put(r13, r5);
-        goto L34
-    L51:
-        if (aa2.class.isAssignableFrom(r16) == false) goto L56;
-        r16.getClass();
-        if (b(r16) == 1) goto L71;
-        Object r21 = r10.get(r16);
-        r21.getClass();
-        r5 = new ArrayList((Collection) r21);
-        goto L56
-    L76:
-        Method[] r22 = r13.getDeclaredMethods();     // Catch: NoClassDefFoundError -> L73
-        int r23 = r22.length;
-        int r110 = 0;
-    L40:
-        if (r110 >= r23) goto L45;
-        if (((f93) r22[r110].getAnnotation(f93.class)) != null) goto L43;
-        r110 = r110 + 1;
-        goto L40
-    L43:
-        r11.a(r13, r22);
-        r15 = true;
-        goto L46
-    L45:
-        r12.put(r13, Boolean.FALSE);
-        r15 = false;
-    L73:
-        e = move-exception;
-        throw new IllegalArgumentException("The observer class has some methods that use newer APIs which are not available in the current OS version. Lifecycles cannot access even other methods so you should make sure that your observer classes only access framework classes that are available in your min API level OR use lifecycle:compiler annotation processor.", e);
-    L15:
-        r8 = "";
-    L30:
-        r0 = null;
-    L13:
-        e = move-exception;
-        er1.m(e);
-        return 0;
-    L71:
-        r1.put(r13, Integer.valueOf(r3));
-        return r3;
-    L5:
-        return r2.intValue();
+    /* JADX WARN: Code duplicated, block: B:58:0x00fd  */
+    /* JADX WARN: Code duplicated, block: B:70:0x0129  */
+    public static int b(Class cls) {
+        Constructor<?> declaredConstructor;
+        boolean zBooleanValue;
+        Class<?>[] interfaces;
+        HashMap map = a;
+        Integer num = (Integer) map.get(cls);
+        if (num != null) {
+            return num.intValue();
+        }
+        int i = 1;
+        if (cls.getCanonicalName() != null) {
+            ArrayList arrayList = null;
+            try {
+                Package r5 = cls.getPackage();
+                String canonicalName = cls.getCanonicalName();
+                String name = r5 != null ? r5.getName() : "";
+                name.getClass();
+                if (name.length() != 0) {
+                    canonicalName.getClass();
+                    canonicalName = canonicalName.substring(name.length() + 1);
+                }
+                canonicalName.getClass();
+                String strConcat = xm4.i0(canonicalName, ".", "_").concat("_LifecycleAdapter");
+                if (name.length() != 0) {
+                    strConcat = name + "." + strConcat;
+                }
+                declaredConstructor = Class.forName(strConcat).getDeclaredConstructor(cls);
+                if (!declaredConstructor.isAccessible()) {
+                    declaredConstructor.setAccessible(true);
+                }
+            } catch (ClassNotFoundException unused) {
+                declaredConstructor = null;
+            } catch (NoSuchMethodException e) {
+                er1.m(e);
+                return 0;
+            }
+            HashMap map2 = b;
+            if (declaredConstructor != null) {
+                map2.put(cls, gb.O(declaredConstructor));
+            } else {
+                l30 l30Var = l30.c;
+                HashMap map3 = l30Var.b;
+                Boolean bool = (Boolean) map3.get(cls);
+                if (bool != null) {
+                    zBooleanValue = bool.booleanValue();
+                } else {
+                    try {
+                        Method[] declaredMethods = cls.getDeclaredMethods();
+                        int length = declaredMethods.length;
+                        int i2 = 0;
+                        while (true) {
+                            if (i2 >= length) {
+                                map3.put(cls, Boolean.FALSE);
+                                zBooleanValue = false;
+                                break;
+                            }
+                            if (((f93) declaredMethods[i2].getAnnotation(f93.class)) != null) {
+                                l30Var.a(cls, declaredMethods);
+                                zBooleanValue = true;
+                                break;
+                            }
+                            i2++;
+                        }
+                    } catch (NoClassDefFoundError e2) {
+                        throw new IllegalArgumentException("The observer class has some methods that use newer APIs which are not available in the current OS version. Lifecycles cannot access even other methods so you should make sure that your observer classes only access framework classes that are available in your min API level OR use lifecycle:compiler annotation processor.", e2);
+                    }
+                }
+                if (!zBooleanValue) {
+                    Class superclass = cls.getSuperclass();
+                    if (superclass == null || !aa2.class.isAssignableFrom(superclass)) {
+                        interfaces = cls.getInterfaces();
+                        interfaces.getClass();
+                        for (Class<?> cls2 : interfaces) {
+                            if (cls2 == null && aa2.class.isAssignableFrom(cls2)) {
+                                cls2.getClass();
+                                if (b(cls2) != 1) {
+                                    if (arrayList == null) {
+                                        arrayList = new ArrayList();
+                                    }
+                                    Object obj = map2.get(cls2);
+                                    obj.getClass();
+                                    arrayList.addAll((Collection) obj);
+                                }
+                            }
+                        }
+                        if (arrayList != null) {
+                            map2.put(cls, arrayList);
+                        }
+                    } else {
+                        superclass.getClass();
+                        if (b(superclass) != 1) {
+                            Object obj2 = map2.get(superclass);
+                            obj2.getClass();
+                            arrayList = new ArrayList((Collection) obj2);
+                            interfaces = cls.getInterfaces();
+                            interfaces.getClass();
+                            while (i < r8) {
+                                if (cls2 == null) {
+                                }
+                            }
+                            if (arrayList != null) {
+                                map2.put(cls, arrayList);
+                            }
+                        }
+                    }
+                }
+            }
+            i = 2;
+        }
+        map.put(cls, Integer.valueOf(i));
+        return i;
     }
 }

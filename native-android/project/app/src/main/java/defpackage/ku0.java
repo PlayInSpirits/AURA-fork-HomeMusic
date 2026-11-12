@@ -5,48 +5,33 @@ package defpackage;
 public final class ku0 implements Comparable {
     public final float n;
 
-    public /* synthetic */ ku0(float r1) {
-        this.n = r1;
+    public static int a(float f, float f2) {
+        if (Float.isNaN(f) || Float.isNaN(f2)) {
+            return 0;
+        }
+        return Float.compare(f, f2);
     }
 
-    public static int a(float r1, float r2) {
-        if (Float.isNaN(r1) == false) goto L5;
-        return 0;
-    L5:
-        if (Float.isNaN(r2) == false) goto L8;
-        return 0;
-    L8:
-        return Float.compare(r1, r2);
+    public static final boolean b(float f, float f2) {
+        return Float.compare(f, f2) == 0;
     }
 
-    public static final boolean b(float r0, float r1) {
-        if (Float.compare(r0, r1) != 0) goto L6;
-        return true;
-    L6:
-        return false;
-    }
-
-    public static String c(float r1) {
-        if (Float.isNaN(r1) == false) goto L7;
-        return "Dp.Unspecified";
-    L7:
-        return r1 + ".dp";
+    public static String c(float f) {
+        if (Float.isNaN(f)) {
+            return "Dp.Unspecified";
+        }
+        return f + ".dp";
     }
 
     @Override // java.lang.Comparable
-    public final int compareTo(Object r1) {
-        float r2 = ((ku0) r1).n;
-        return a(this.n, r2);
+    public final int compareTo(Object obj) {
+        return a(this.n, ((ku0) obj).n);
     }
 
-    public final boolean equals(Object r2) {
-        if ((r2 instanceof ku0) == false) goto L11;
-        float r3 = ((ku0) r2).n;
-        if (Float.compare(this.n, r3) == 0) goto L9;
-        return false;
-    L9:
-        return true;
-    L11:
+    public final boolean equals(Object obj) {
+        if (obj instanceof ku0) {
+            return Float.compare(this.n, ((ku0) obj).n) == 0;
+        }
         return false;
     }
 

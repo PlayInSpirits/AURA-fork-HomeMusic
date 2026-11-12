@@ -7,7 +7,7 @@ public final class pz0 {
     public volatile qp4 b;
     public volatile na4 c;
 
-    public pz0(tz0 r1) {
-        this.a = r1;
+    public pz0(tz0 tz0Var) {
+        this.a = tz0Var;
     }
 }

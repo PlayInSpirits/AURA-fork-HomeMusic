@@ -3,7 +3,6 @@ package defpackage;
 import android.text.TextUtils;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -13,60 +12,54 @@ public final class u72 implements ul1 {
     public final Map b;
     public volatile Map c;
 
-    public u72(Map r1) {
-        this.b = Collections.unmodifiableMap(r1);
+    public u72(Map map) {
+        this.b = Collections.unmodifiableMap(map);
     }
 
     @Override // defpackage.ul1
     public final Map a() {
-        if (this.c != null) goto L15;
-        monitor-enter(this);
-    L8:
-        th = move-exception;
-        throw th;
-    L6:
-        if (this.c != null) goto L10;
-        this.c = Collections.unmodifiableMap(b());     // Catch: Throwable -> L8
-    L10:
-        monitor-exit(this);     // Catch: Throwable -> L8
-    L15:
+        if (this.c == null) {
+            synchronized (this) {
+                try {
+                    if (this.c == null) {
+                        this.c = Collections.unmodifiableMap(b());
+                    }
+                } catch (Throwable th) {
+                    throw th;
+                }
+            }
+        }
         return this.c;
     }
 
     public final HashMap b() {
-        HashMap r0 = new HashMap();
-        Iterator r8 = this.b.entrySet().iterator();
-    L4:
-        if (r8.hasNext() == false) goto L16;
-        Map.Entry r1 = (Map.Entry) r8.next();
-        List r2 = (List) r1.getValue();
-        StringBuilder r3 = new StringBuilder();
-        int r4 = r2.size();
-        int r5 = 0;
-    L6:
-        if (r5 >= r4) goto L13;
-        String r6 = ((t72) r2.get(r5)).a;
-        if (TextUtils.isEmpty(r6) == true) goto L12;
-        r3.append(r6);
-        if (r5 == (r2.size() - 1)) goto L12;
-        r3.append(',');
-    L12:
-        r5 = r5 + 1;
-        goto L6
-    L13:
-        String r7 = r3.toString();
-        if (TextUtils.isEmpty(r7) == true) goto L4;
-        r0.put(r1.getKey(), r7);
-        goto L4
-    L16:
-        return r0;
+        HashMap map = new HashMap();
+        for (Map.Entry entry : this.b.entrySet()) {
+            List list = (List) entry.getValue();
+            StringBuilder sb = new StringBuilder();
+            int size = list.size();
+            for (int i = 0; i < size; i++) {
+                String str = ((t72) list.get(i)).a;
+                if (!TextUtils.isEmpty(str)) {
+                    sb.append(str);
+                    if (i != list.size() - 1) {
+                        sb.append(',');
+                    }
+                }
+            }
+            String string = sb.toString();
+            if (!TextUtils.isEmpty(string)) {
+                map.put(entry.getKey(), string);
+            }
+        }
+        return map;
     }
 
-    public final boolean equals(Object r2) {
-        if ((r2 instanceof u72) == true) goto L5;
+    public final boolean equals(Object obj) {
+        if (obj instanceof u72) {
+            return this.b.equals(((u72) obj).b);
+        }
         return false;
-    L5:
-        return this.b.equals(((u72) r2).b);
     }
 
     public final int hashCode() {

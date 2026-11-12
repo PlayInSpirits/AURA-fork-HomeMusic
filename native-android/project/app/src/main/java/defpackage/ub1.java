@@ -11,42 +11,35 @@ public final class ub1 implements Runnable {
     public final /* synthetic */ int n;
     public final /* synthetic */ vb1 o;
 
-    public /* synthetic */ ub1(vb1 r1, int r2) {
-        this.n = r2;
-        this.o = r1;
+    public /* synthetic */ ub1(vb1 vb1Var, int i) {
+        this.n = i;
+        this.o = vb1Var;
     }
 
     @Override // java.lang.Runnable
     public final void run() {
-        int r0 = this.n;
-        vb1 r11 = this.o;
-        switch(r0) {
-            case 0: goto L14;
-            default: goto L4;
-        };
-    L4:
-        r11.a();
-        View r1 = r11.q;
-        if (r1.isEnabled() == true) goto L7;
-        return;
-    L7:
-        if (r1.isLongClickable() == false) goto L10;
-        return;
-    L10:
-        if (r11.c() == false) goto L20;
-        r1.getParent().requestDisallowInterceptTouchEvent(true);
-        long r3 = SystemClock.uptimeMillis();
-        MotionEvent r2 = MotionEvent.obtain(r3, r3, 3, 0.0f, 0.0f, 0);
-        r1.onTouchEvent(r2);
-        r2.recycle();
-        r11.t = true;
-        return;
-    L20:
-        return;
-    L14:
-        ViewParent r12 = r11.q.getParent();
-        if (r12 == null) goto L21;
-        r12.requestDisallowInterceptTouchEvent(true);
-        return;
+        int i = this.n;
+        vb1 vb1Var = this.o;
+        switch (i) {
+            case 0:
+                ViewParent parent = vb1Var.q.getParent();
+                if (parent != null) {
+                    parent.requestDisallowInterceptTouchEvent(true);
+                }
+                break;
+            default:
+                vb1Var.a();
+                View view = vb1Var.q;
+                if (view.isEnabled() && !view.isLongClickable() && vb1Var.c()) {
+                    view.getParent().requestDisallowInterceptTouchEvent(true);
+                    long jUptimeMillis = SystemClock.uptimeMillis();
+                    MotionEvent motionEventObtain = MotionEvent.obtain(jUptimeMillis, jUptimeMillis, 3, 0.0f, 0.0f, 0);
+                    view.onTouchEvent(motionEventObtain);
+                    motionEventObtain.recycle();
+                    vb1Var.t = true;
+                    break;
+                }
+                break;
+        }
     }
 }

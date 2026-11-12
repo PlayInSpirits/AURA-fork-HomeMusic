@@ -19,161 +19,74 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
+import org.chromium.support_lib_boundary.WebSettingsBoundaryInterface;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class ft0 extends dw3 {
     public final DownloadFragment q;
-    public String r;
     public String s;
     public String t;
     public List u;
     public List v;
     public List w;
-    public final HashMap x;
+    public final HashMap x = new HashMap();
+    public String r = "download_type_track";
 
-    public ft0(DownloadFragment r2) {
-        this.x = new HashMap();
-        this.q = r2;
-        this.r = "download_type_track";
-        List r3 = Collections.EMPTY_LIST;
-        this.u = r3;
-        this.w = r3;
+    public ft0(DownloadFragment downloadFragment) {
+        this.q = downloadFragment;
+        List list = Collections.EMPTY_LIST;
+        this.u = list;
+        this.w = list;
     }
 
-    public static String p(String r5, String r6, List r7) {
-        if (r6 == null) goto L44;
-        byte r4 = -1;
-        switch(r5.hashCode()) {
-            case -2125974859: goto L27;
-            case -940056789: goto L23;
-            case 155496896: goto L19;
-            case 901055809: goto L15;
-            case 906399829: goto L11;
-            case 918779933: goto L7;
-            default: goto L30;
-        };
-    L30:
-        switch(r4) {
-            case 0: goto L43;
-            case 1: goto L41;
-            case 2: goto L39;
-            case 3: goto L37;
-            case 4: goto L35;
-            case 5: goto L33;
-            default: goto L46;
-        };
-    L46:
-        return "0";
-    L33:
-        return String.valueOf(r7.stream().filter(new at0(0, r6)).count());
-    L35:
-        return String.valueOf(r7.stream().filter(new at0(5, r6)).count());
-    L37:
-        return String.valueOf(r7.stream().filter(new at0(1, r6)).count());
-    L39:
-        return String.valueOf(r7.stream().filter(new at0(11, r6)).count());
-    L41:
-        return String.valueOf(r7.stream().filter(new at0(9, r6)).count());
-    L43:
-        return String.valueOf(r7.stream().filter(new at0(10, r6)).count());
-    L7:
-        if (r5.equals("download_type_track") == false) goto L30;
-        r4 = 5;
-        goto L30
-    L11:
-        if (r5.equals("download_type_genre") == false) goto L30;
-        r4 = 4;
-        goto L30
-    L15:
-        if (r5.equals("download_type_album") == false) goto L30;
-        r4 = 3;
-        goto L30
-    L19:
-        if (r5.equals("download_type_playlist") == false) goto L30;
-        r4 = 2;
-        goto L30
-    L23:
-        if (r5.equals("download_type_year") == false) goto L30;
-        r4 = 1;
-        goto L30
-    L27:
-        if (r5.equals("download_type_artist") == false) goto L30;
-        r4 = 0;
-        goto L30
-    L44:
-        return "0";
+    public static String p(String str, String str2, List list) {
+        if (str2 == null) {
+            return "0";
+        }
+        switch (str) {
+            case "download_type_artist":
+                return String.valueOf(list.stream().filter(new at0(10, str2)).count());
+            case "download_type_year":
+                return String.valueOf(list.stream().filter(new at0(9, str2)).count());
+            case "download_type_playlist":
+                return String.valueOf(list.stream().filter(new at0(11, str2)).count());
+            case "download_type_album":
+                return String.valueOf(list.stream().filter(new at0(1, str2)).count());
+            case "download_type_genre":
+                return String.valueOf(list.stream().filter(new at0(5, str2)).count());
+            case "download_type_track":
+                return String.valueOf(list.stream().filter(new at0(0, str2)).count());
+            default:
+                return "0";
+        }
     }
 
-    public static List q(String r5, String r6, List r7) {
-        if (r6 == null) goto L44;
-        r5.getClass();
-        byte r4 = -1;
-        switch(r5.hashCode()) {
-            case -2125974859: goto L27;
-            case -940056789: goto L23;
-            case 155496896: goto L19;
-            case 901055809: goto L15;
-            case 906399829: goto L11;
-            case 918779933: goto L7;
-            default: goto L30;
-        };
-    L30:
-        switch(r4) {
-            case 0: goto L43;
-            case 1: goto L41;
-            case 2: goto L39;
-            case 3: goto L37;
-            case 4: goto L35;
-            case 5: goto L33;
-            default: goto L44;
-        };
-    L33:
-        return (List) r7.stream().filter(new at0(2, r6)).collect(Collectors.toList());
-    L35:
-        return (List) r7.stream().filter(new at0(4, r6)).collect(Collectors.toList());
-    L37:
-        return (List) r7.stream().filter(new at0(3, r6)).collect(Collectors.toList());
-    L39:
-        return (List) r7.stream().filter(new at0(8, r6)).collect(Collectors.toList());
-    L41:
-        return (List) r7.stream().filter(new at0(6, r6)).collect(Collectors.toList());
-    L43:
-        return (List) r7.stream().filter(new at0(7, r6)).collect(Collectors.toList());
-    L7:
-        if (r5.equals("download_type_track") == false) goto L30;
-        r4 = 5;
-        goto L30
-    L11:
-        if (r5.equals("download_type_genre") == false) goto L30;
-        r4 = 4;
-        goto L30
-    L15:
-        if (r5.equals("download_type_album") == false) goto L30;
-        r4 = 3;
-        goto L30
-    L19:
-        if (r5.equals("download_type_playlist") == false) goto L30;
-        r4 = 2;
-        goto L30
-    L23:
-        if (r5.equals("download_type_year") == false) goto L30;
-        r4 = 1;
-        goto L30
-    L27:
-        if (r5.equals("download_type_artist") == false) goto L30;
-        r4 = 0;
-    L44:
-        return r7;
+    public static List q(String str, String str2, List list) {
+        if (str2 != null) {
+            str.getClass();
+            switch (str) {
+                case "download_type_artist":
+                    return (List) list.stream().filter(new at0(7, str2)).collect(Collectors.toList());
+                case "download_type_year":
+                    return (List) list.stream().filter(new at0(6, str2)).collect(Collectors.toList());
+                case "download_type_playlist":
+                    return (List) list.stream().filter(new at0(8, str2)).collect(Collectors.toList());
+                case "download_type_album":
+                    return (List) list.stream().filter(new at0(3, str2)).collect(Collectors.toList());
+                case "download_type_genre":
+                    return (List) list.stream().filter(new at0(4, str2)).collect(Collectors.toList());
+                case "download_type_track":
+                    return (List) list.stream().filter(new at0(2, str2)).collect(Collectors.toList());
+            }
+        }
+        return list;
     }
 
-    public static boolean r(Child r1, Child r2) {
-        if (r1.getAlbumId() == null) goto L9;
-        if (r2.getAlbumId() == null) goto L9;
-        return Objects.equals(r1.getAlbumId(), r2.getAlbumId());
-    L9:
-        return Objects.equals(r1.getAlbum(), r2.getAlbum());
+    public static boolean r(Child child, Child child2) {
+        return (child.getAlbumId() == null || child2.getAlbumId() == null) ? Objects.equals(child.getAlbum(), child2.getAlbum()) : Objects.equals(child.getAlbumId(), child2.getAlbumId());
     }
 
     @Override // defpackage.dw3
@@ -182,424 +95,427 @@ public final class ft0 extends dw3 {
     }
 
     @Override // defpackage.dw3
-    public final long b(int r1) {
-        return r1;
+    public final long b(int i) {
+        return i;
     }
 
     @Override // defpackage.dw3
-    public final void g(cx3 r17, int r18) {
-        et0 r2 = (et0) r17;
-        View r3 = r2.a;
-        lv4 r4 = r2.u;
-        String r5 = this.r;
-        r5.getClass();
-        byte r13 = -1;
-        switch(r5.hashCode()) {
-            case -2125974859: goto L26;
-            case -940056789: goto L22;
-            case 155496896: goto L18;
-            case 901055809: goto L14;
-            case 906399829: goto L10;
-            case 918779933: goto L6;
-            default: goto L30;
-        };
-    L6:
-        if (r5.equals("download_type_track") == false) goto L30;
-        r13 = 5;
-        goto L30
-    L10:
-        if (r5.equals("download_type_genre") == false) goto L30;
-        r13 = 4;
-        goto L30
-    L14:
-        if (r5.equals("download_type_album") == false) goto L30;
-        r13 = 3;
-        goto L30
-    L18:
-        if (r5.equals("download_type_playlist") == false) goto L30;
-        r13 = 2;
-        goto L30
-    L22:
-        if (r5.equals("download_type_year") == false) goto L30;
-        r13 = 1;
-        goto L30
-    L26:
-        if (r5.equals("download_type_artist") == false) goto L30;
-        r13 = 0;
-    L30:
-        switch(r13) {
-            case 0: goto L111;
-            case 1: goto L109;
-            case 2: goto L95;
-            case 3: goto L52;
-            case 4: goto L50;
-            case 5: goto L32;
-            default: goto L123;
-        };
-    L32:
-        Child r6 = (Child) this.w.get(r18);
-        ((TextView) r4.s).setText(r6.getTitle());
-        TextView r7 = (TextView) r4.r;
-        ImageView r8 = (ImageView) r4.t;
-        LinearLayout r9 = (LinearLayout) r4.o;
-        r7.setText(r3.getContext().getString(R.string.song_subtitle_formatter, new Object[]{r6.getArtist(), e03.g(r6.getDuration()), e03.f(r6)}));
-        ((TextView) r4.p).setText(r6.getAlbum());
-        Context r10 = r3.getContext();
-        String r11 = r6.getCoverArtId();
-        c04 r12 = a.c(r10);
-        if (r11 == null) goto L35;
-        String r14 = wg0.b(ud3.t(), r11);
-    L36:
-        vz3 r15 = b11.g(r10, r11, 9, r12, r14).T(xv0.b());
-        if (ud3.R() == false) goto L39;
-        r15 = (vz3) r15.l();
-    L39:
-        r15.K(r8);
-        r8.setVisibility(0);
-        ((FrameLayout) r4.q).setVisibility(0);
-        r9.setVisibility(0);
-        if (r18 <= 0) goto L47;
-        int r16 = r18 - 1;
-        if (this.w.get(r16) == null) goto L47;
-        if (r((Child) this.w.get(r16), (Child) this.w.get(r18)) == true) goto L47;
-        r9.setPadding(0, (int) r3.getContext().getResources().getDimension(R.dimen.downloaded_item_padding), 0, 0);
-        return;
-    L47:
-        if (r18 <= 0) goto L120;
-        r9.setVisibility(8);
-        return;
-    L120:
-        return;
-    L35:
-        r14 = null;
-        goto L36
-    L50:
-        Child r1 = (Child) this.w.get(r18);
-        ((TextView) r4.s).setText(r1.getGenre());
-        ((TextView) r4.r).setText(r3.getContext().getString(R.string.download_item_single_subtitle_formatter, new Object[]{p("download_type_genre", r1.getGenre(), this.u)}));
-        ((ImageView) r4.t).setVisibility(8);
-        ((FrameLayout) r4.q).setVisibility(0);
-        ((LinearLayout) r4.o).setVisibility(8);
-        return;
-    L52:
-        Child r19 = (Child) this.w.get(r18);
-        ((TextView) r4.s).setText(r19.getAlbum());
-        TextView r20 = (TextView) r4.r;
-        ImageView r21 = (ImageView) r4.t;
-        LinearLayout r110 = (LinearLayout) r4.o;
-        r20.setText(r3.getContext().getString(R.string.download_item_single_subtitle_formatter, new Object[]{p("download_type_album", r19.getAlbumId(), this.u)}));
-        TextView r22 = (TextView) r4.p;
-        String r23 = r19.getAlbumArtist();
-        if (r23 != null) goto L55;
-    L57:
-        r23 = null;
-    L58:
-        if (r23 != null) goto L61;
-        r23 = r19.getArtist();
-    L61:
-        r22.setText(r23);
-        Context r24 = r3.getContext();
-        String r25 = r19.getCoverArtId();
-        c04 r26 = a.c(r24);
-        if (r25 == null) goto L64;
-        String r27 = wg0.b(ud3.t(), r25);
-    L65:
-        vz3 r28 = b11.g(r24, r25, 9, r26, r27).T(xv0.b());
-        if (ud3.R() == false) goto L68;
-        r28 = (vz3) r28.l();
-    L68:
-        r28.K(r21);
-        r21.setVisibility(0);
-        ((FrameLayout) r4.q).setVisibility(0);
-        r110.setVisibility(0);
-        if (r18 <= 0) goto L92;
-        int r29 = r18 - 1;
-        if (this.w.get(r29) == null) goto L92;
-        Child r30 = (Child) this.w.get(r29);
-        Child r0 = (Child) this.w.get(r18);
-        String r31 = r30.getAlbumArtist();
-        if (r31 != null) goto L75;
-    L77:
-        r31 = null;
-    L78:
-        String r32 = r0.getAlbumArtist();
-        if (r32 != null) goto L81;
-    L83:
-        r32 = null;
-    L84:
-        if (r31 != null) goto L88;
-        if (r32 != null) goto L88;
-        boolean r33 = r(r30, r0);
-    L89:
-        if (r33 == true) goto L92;
-        r110.setPadding(0, (int) r3.getContext().getResources().getDimension(R.dimen.downloaded_item_padding), 0, 0);
-        return;
-    L88:
-        r33 = Objects.equals(r31, r32);
-        goto L89
-    L81:
-        if (r32.isEmpty() == true) goto L83;
-    L75:
-        if (r31.isEmpty() == true) goto L77;
-    L92:
-        if (r18 <= 0) goto L121;
-        r110.setVisibility(8);
-        return;
-    L121:
-        return;
-    L64:
-        r27 = null;
-        goto L65
-    L55:
-        if (r23.isEmpty() == true) goto L57;
-    L95:
-        Child r34 = (Child) this.w.get(r18);
-        if ((r34 instanceof Download) == false) goto L122;
-        Download r35 = (Download) r34;
-        ((TextView) r4.s).setText(r35.getPlaylistName());
-        TextView r36 = (TextView) r4.r;
-        ImageView r37 = (ImageView) r4.t;
-        r36.setText(r3.getContext().getString(R.string.download_item_single_subtitle_formatter, new Object[]{p("download_type_playlist", r35.getPlaylistId(), this.u)}));
-        String r38 = r35.getPlaylistId();
-        String r39 = (String) this.x.get(r38);
-        if (r39 != null) goto L100;
-        new Thread(new ct0(this, r38, r2, r18)).start();
-        r39 = r35.getCoverArtId();
-    L100:
-        Context r40 = r3.getContext();
-        c04 r41 = a.c(r40);
-        if (r39 == null) goto L103;
-        String r42 = wg0.b(ud3.t(), r39);
-    L104:
-        vz3 r43 = b11.g(r40, r39, 9, r41, r42).T(xv0.b());
-        if (ud3.R() == false) goto L107;
-        r43 = (vz3) r43.l();
-    L107:
-        r43.K(r37);
-        r37.setVisibility(0);
-        ((FrameLayout) r4.q).setVisibility(0);
-        ((LinearLayout) r4.o).setVisibility(8);
-        return;
-    L103:
-        r42 = null;
-        goto L104
-    L122:
-        return;
-    L109:
-        Child r44 = (Child) this.w.get(r18);
-        ((TextView) r4.s).setText(String.valueOf(r44.getYear()));
-        ((TextView) r4.r).setText(r3.getContext().getString(R.string.download_item_single_subtitle_formatter, new Object[]{p("download_type_year", r44.getYear().toString(), this.u)}));
-        ((ImageView) r4.t).setVisibility(8);
-        ((FrameLayout) r4.q).setVisibility(0);
-        ((LinearLayout) r4.o).setVisibility(8);
-        return;
-    L111:
-        Child r45 = (Child) this.w.get(r18);
-        ((TextView) r4.s).setText(r45.getArtist());
-        TextView r46 = (TextView) r4.r;
-        ImageView r47 = (ImageView) r4.t;
-        r46.setText(r3.getContext().getString(R.string.download_item_single_subtitle_formatter, new Object[]{p("download_type_artist", r45.getArtistId(), this.u)}));
-        Context r48 = r3.getContext();
-        String r49 = r45.getCoverArtId();
-        c04 r50 = a.c(r48);
-        if (r49 == null) goto L114;
-        String r51 = wg0.b(ud3.t(), r49);
-    L115:
-        vz3 r52 = b11.g(r48, r49, 9, r50, r51).T(xv0.b());
-        if (ud3.R() == false) goto L118;
-        r52 = (vz3) r52.l();
-    L118:
-        r52.K(r47);
-        r47.setVisibility(0);
-        ((FrameLayout) r4.q).setVisibility(0);
-        ((LinearLayout) r4.o).setVisibility(8);
-        return;
-    L114:
-        r51 = null;
-        goto L115
+    public final void g(cx3 cx3Var, int i) {
+        et0 et0Var = (et0) cx3Var;
+        View view = et0Var.a;
+        lv4 lv4Var = et0Var.u;
+        String str = this.r;
+        str.getClass();
+        switch (str) {
+            case "download_type_artist":
+                Child child = (Child) this.w.get(i);
+                ((TextView) lv4Var.s).setText(child.getArtist());
+                TextView textView = (TextView) lv4Var.r;
+                ImageView imageView = (ImageView) lv4Var.t;
+                textView.setText(view.getContext().getString(R.string.download_item_single_subtitle_formatter, p("download_type_artist", child.getArtistId(), this.u)));
+                Context context = view.getContext();
+                String coverArtId = child.getCoverArtId();
+                vz3 vz3VarT = b11.g(context, coverArtId, 9, a.c(context), coverArtId != null ? wg0.b(ud3.t(), coverArtId) : null).T(xv0.b());
+                if (ud3.R()) {
+                    vz3VarT = (vz3) vz3VarT.l();
+                }
+                vz3VarT.K(imageView);
+                imageView.setVisibility(0);
+                ((FrameLayout) lv4Var.q).setVisibility(0);
+                ((LinearLayout) lv4Var.o).setVisibility(8);
+                break;
+            case "download_type_year":
+                Child child2 = (Child) this.w.get(i);
+                ((TextView) lv4Var.s).setText(String.valueOf(child2.getYear()));
+                ((TextView) lv4Var.r).setText(view.getContext().getString(R.string.download_item_single_subtitle_formatter, p("download_type_year", child2.getYear().toString(), this.u)));
+                ((ImageView) lv4Var.t).setVisibility(8);
+                ((FrameLayout) lv4Var.q).setVisibility(0);
+                ((LinearLayout) lv4Var.o).setVisibility(8);
+                break;
+            case "download_type_playlist":
+                Child child3 = (Child) this.w.get(i);
+                if (child3 instanceof Download) {
+                    Download download = (Download) child3;
+                    ((TextView) lv4Var.s).setText(download.getPlaylistName());
+                    TextView textView2 = (TextView) lv4Var.r;
+                    ImageView imageView2 = (ImageView) lv4Var.t;
+                    textView2.setText(view.getContext().getString(R.string.download_item_single_subtitle_formatter, p("download_type_playlist", download.getPlaylistId(), this.u)));
+                    String playlistId = download.getPlaylistId();
+                    String coverArtId2 = (String) this.x.get(playlistId);
+                    if (coverArtId2 == null) {
+                        new Thread(new ct0(this, playlistId, et0Var, i)).start();
+                        coverArtId2 = download.getCoverArtId();
+                    }
+                    Context context2 = view.getContext();
+                    vz3 vz3VarT2 = b11.g(context2, coverArtId2, 9, a.c(context2), coverArtId2 != null ? wg0.b(ud3.t(), coverArtId2) : null).T(xv0.b());
+                    if (ud3.R()) {
+                        vz3VarT2 = (vz3) vz3VarT2.l();
+                    }
+                    vz3VarT2.K(imageView2);
+                    imageView2.setVisibility(0);
+                    ((FrameLayout) lv4Var.q).setVisibility(0);
+                    ((LinearLayout) lv4Var.o).setVisibility(8);
+                    break;
+                }
+                break;
+            case "download_type_album":
+                Child child4 = (Child) this.w.get(i);
+                ((TextView) lv4Var.s).setText(child4.getAlbum());
+                TextView textView3 = (TextView) lv4Var.r;
+                ImageView imageView3 = (ImageView) lv4Var.t;
+                LinearLayout linearLayout = (LinearLayout) lv4Var.o;
+                textView3.setText(view.getContext().getString(R.string.download_item_single_subtitle_formatter, p("download_type_album", child4.getAlbumId(), this.u)));
+                TextView textView4 = (TextView) lv4Var.p;
+                String albumArtist = child4.getAlbumArtist();
+                if (albumArtist == null || albumArtist.isEmpty()) {
+                    albumArtist = null;
+                }
+                if (albumArtist == null) {
+                    albumArtist = child4.getArtist();
+                }
+                textView4.setText(albumArtist);
+                Context context3 = view.getContext();
+                String coverArtId3 = child4.getCoverArtId();
+                vz3 vz3VarT3 = b11.g(context3, coverArtId3, 9, a.c(context3), coverArtId3 != null ? wg0.b(ud3.t(), coverArtId3) : null).T(xv0.b());
+                if (ud3.R()) {
+                    vz3VarT3 = (vz3) vz3VarT3.l();
+                }
+                vz3VarT3.K(imageView3);
+                imageView3.setVisibility(0);
+                ((FrameLayout) lv4Var.q).setVisibility(0);
+                linearLayout.setVisibility(0);
+                if (i > 0) {
+                    int i2 = i - 1;
+                    if (this.w.get(i2) != null) {
+                        Child child5 = (Child) this.w.get(i2);
+                        Child child6 = (Child) this.w.get(i);
+                        String albumArtist2 = child5.getAlbumArtist();
+                        if (albumArtist2 == null || albumArtist2.isEmpty()) {
+                            albumArtist2 = null;
+                        }
+                        String albumArtist3 = child6.getAlbumArtist();
+                        if (albumArtist3 == null || albumArtist3.isEmpty()) {
+                            albumArtist3 = null;
+                        }
+                        if (!((albumArtist2 == null && albumArtist3 == null) ? r(child5, child6) : Objects.equals(albumArtist2, albumArtist3))) {
+                            linearLayout.setPadding(0, (int) view.getContext().getResources().getDimension(R.dimen.downloaded_item_padding), 0, 0);
+                        }
+                    }
+                    break;
+                }
+                if (i > 0) {
+                    linearLayout.setVisibility(8);
+                    break;
+                }
+                break;
+            case "download_type_genre":
+                Child child7 = (Child) this.w.get(i);
+                ((TextView) lv4Var.s).setText(child7.getGenre());
+                ((TextView) lv4Var.r).setText(view.getContext().getString(R.string.download_item_single_subtitle_formatter, p("download_type_genre", child7.getGenre(), this.u)));
+                ((ImageView) lv4Var.t).setVisibility(8);
+                ((FrameLayout) lv4Var.q).setVisibility(0);
+                ((LinearLayout) lv4Var.o).setVisibility(8);
+                break;
+            case "download_type_track":
+                Child child8 = (Child) this.w.get(i);
+                ((TextView) lv4Var.s).setText(child8.getTitle());
+                TextView textView5 = (TextView) lv4Var.r;
+                ImageView imageView4 = (ImageView) lv4Var.t;
+                LinearLayout linearLayout2 = (LinearLayout) lv4Var.o;
+                textView5.setText(view.getContext().getString(R.string.song_subtitle_formatter, child8.getArtist(), e03.g(child8.getDuration()), e03.f(child8)));
+                ((TextView) lv4Var.p).setText(child8.getAlbum());
+                Context context4 = view.getContext();
+                String coverArtId4 = child8.getCoverArtId();
+                vz3 vz3VarT4 = b11.g(context4, coverArtId4, 9, a.c(context4), coverArtId4 != null ? wg0.b(ud3.t(), coverArtId4) : null).T(xv0.b());
+                if (ud3.R()) {
+                    vz3VarT4 = (vz3) vz3VarT4.l();
+                }
+                vz3VarT4.K(imageView4);
+                imageView4.setVisibility(0);
+                ((FrameLayout) lv4Var.q).setVisibility(0);
+                linearLayout2.setVisibility(0);
+                if (i > 0) {
+                    int i3 = i - 1;
+                    if (this.w.get(i3) != null && !r((Child) this.w.get(i3), (Child) this.w.get(i))) {
+                        linearLayout2.setPadding(0, (int) view.getContext().getResources().getDimension(R.dimen.downloaded_item_padding), 0, 0);
+                    }
+                    break;
+                }
+                if (i > 0) {
+                    linearLayout2.setVisibility(8);
+                    break;
+                }
+                break;
+        }
     }
 
     @Override // defpackage.dw3
-    public final cx3 i(ViewGroup r10, int r11) {
-        View r12 = b11.i(r10, R.layout.item_horizontal_download, r10, false);
-        int r13 = R.id.divider;
-        LinearLayout r3 = (LinearLayout) uo.s(r12, R.id.divider);
-        if (r3 == null) goto L16;
-        r13 = R.id.downloaded_item_more_button;
-        FrameLayout r4 = (FrameLayout) uo.s(r12, R.id.downloaded_item_more_button);
-        if (r4 == null) goto L16;
-        r13 = R.id.downloaded_item_pre_text_view;
-        TextView r5 = (TextView) uo.s(r12, R.id.downloaded_item_pre_text_view);
-        if (r5 == null) goto L16;
-        r13 = R.id.downloaded_item_subtitle_text_view;
-        TextView r6 = (TextView) uo.s(r12, R.id.downloaded_item_subtitle_text_view);
-        if (r6 == null) goto L16;
-        r13 = R.id.downloaded_item_title_text_view;
-        TextView r7 = (TextView) uo.s(r12, R.id.downloaded_item_title_text_view);
-        if (r7 == null) goto L16;
-        r13 = R.id.item_cover_image_view;
-        ImageView r8 = (ImageView) uo.s(r12, R.id.item_cover_image_view);
-        if (r8 == null) goto L16;
-        return new et0(this, new lv4((ConstraintLayout) r12, r3, r4, r5, r6, r7, r8));
-    L16:
-        nz2.n("Missing required view with ID: ".concat(r12.getResources().getResourceName(r13)));
+    public final cx3 i(ViewGroup viewGroup, int i) {
+        View viewI = b11.i(viewGroup, R.layout.item_horizontal_download, viewGroup, false);
+        int i2 = R.id.divider;
+        LinearLayout linearLayout = (LinearLayout) uo.s(viewI, R.id.divider);
+        if (linearLayout != null) {
+            i2 = R.id.downloaded_item_more_button;
+            FrameLayout frameLayout = (FrameLayout) uo.s(viewI, R.id.downloaded_item_more_button);
+            if (frameLayout != null) {
+                i2 = R.id.downloaded_item_pre_text_view;
+                TextView textView = (TextView) uo.s(viewI, R.id.downloaded_item_pre_text_view);
+                if (textView != null) {
+                    i2 = R.id.downloaded_item_subtitle_text_view;
+                    TextView textView2 = (TextView) uo.s(viewI, R.id.downloaded_item_subtitle_text_view);
+                    if (textView2 != null) {
+                        i2 = R.id.downloaded_item_title_text_view;
+                        TextView textView3 = (TextView) uo.s(viewI, R.id.downloaded_item_title_text_view);
+                        if (textView3 != null) {
+                            i2 = R.id.item_cover_image_view;
+                            ImageView imageView = (ImageView) uo.s(viewI, R.id.item_cover_image_view);
+                            if (imageView != null) {
+                                return new et0(this, new lv4((ConstraintLayout) viewI, linearLayout, frameLayout, textView, textView2, textView3, imageView));
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        nz2.n("Missing required view with ID: ".concat(viewI.getResources().getResourceName(i2)));
         return null;
     }
 
-    public final void s(String r17, String r18, String r19, List r20) {
-        if (r19 == null) goto L5;
-        String r3 = r17;
-    L6:
-        this.r = r3;
-        this.s = r18;
-        this.t = r19;
-        this.u = r20;
-        r3.getClass();
-        final int r13 = 0;
-        final int r14 = 5;
-        final int r15 = 4;
-        switch(r3.hashCode()) {
-            case -2125974859: goto L30;
-            case -940056789: goto L26;
-            case 155496896: goto L22;
-            case 901055809: goto L18;
-            case 906399829: goto L14;
-            case 918779933: goto L10;
-            default: goto L8;
-        };
-    L8:
-        byte r1 = -1;
-    L33:
-        switch(r1) {
-            case 0: goto L40;
-            case 1: goto L39;
-            case 2: goto L38;
-            case 3: goto L37;
-            case 4: goto L36;
-            case 5: goto L35;
-            default: goto L34;
-        };
-    L34:
-        List r2 = Collections.EMPTY_LIST;
-    L41:
-        this.w = r2;
-        List r4 = new ArrayList(r20);
-        if (this.t == null) goto L79;
-        String r5 = this.s;
-        r5.getClass();
-        switch(r5.hashCode()) {
-            case -2125974859: goto L68;
-            case -940056789: goto L64;
-            case 155496896: goto L60;
-            case 901055809: goto L56;
-            case 906399829: goto L52;
-            case 918779933: goto L48;
-            default: goto L46;
-        };
-    L46:
-        byte r10 = -1;
-    L71:
-        switch(r10) {
-            case 0: goto L78;
-            case 1: goto L77;
-            case 2: goto L76;
-            case 3: goto L75;
-            case 4: goto L74;
-            case 5: goto L73;
-            default: goto L79;
-        };
-    L73:
-        r4 = (List) r4.stream().filter(new bt0(this, r15)).collect(Collectors.toList());
-        goto L79
-    L74:
-        r4 = (List) r4.stream().filter(new bt0(this, r13)).collect(Collectors.toList());
-        goto L79
-    L75:
-        r4 = (List) r4.stream().filter(new bt0(this, r14)).collect(Collectors.toList());
-        goto L79
-    L76:
-        final int r6 = 3;
-        r4 = (List) r4.stream().filter(new bt0(this, r6)).collect(Collectors.toList());
-        goto L79
-    L77:
-        final int r7 = 1;
-        r4 = (List) r4.stream().filter(new bt0(this, r7)).collect(Collectors.toList());
-        goto L79
-    L78:
-        final int r8 = 2;
-        r4 = (List) r4.stream().filter(new bt0(this, r8)).collect(Collectors.toList());
-        goto L79
-    L48:
-        if (r5.equals("download_type_track") == false) goto L46;
-        r10 = 5;
-        goto L71
-    L52:
-        if (r5.equals("download_type_genre") == false) goto L46;
-        r10 = 4;
-        goto L71
-    L56:
-        if (r5.equals("download_type_album") == false) goto L46;
-        r10 = 3;
-        goto L71
-    L60:
-        if (r5.equals("download_type_playlist") == false) goto L46;
-        r10 = 2;
-        goto L71
-    L64:
-        if (r5.equals("download_type_year") == false) goto L46;
-        r10 = 1;
-        goto L71
-    L68:
-        if (r5.equals("download_type_artist") == false) goto L46;
-        r10 = 0;
-    L79:
-        this.v = r4;
+    /* JADX WARN: Can't fix incorrect switch cases order, some code will duplicate */
+    /* JADX WARN: Code duplicated, block: B:46:0x01bf  */
+    /* JADX WARN: Code duplicated, block: B:8:0x0031  */
+    public final void s(String str, String str2, String str3, List list) {
+        List listQ;
+        String str4 = str3 != null ? str : str2;
+        this.r = str4;
+        this.s = str2;
+        this.t = str3;
+        this.u = list;
+        str4.getClass();
+        final int i = 0;
+        final int i2 = 5;
+        final int i3 = 4;
+        switch (str4) {
+            case "download_type_artist":
+                listQ = q(this.s, this.t, (List) list.stream().filter(new c7(6)).filter(q05.j(new m7(19))).sorted(Comparator.comparing(new m7(20), Comparator.nullsLast(Comparator.naturalOrder()))).collect(Collectors.toList()));
+                break;
+            case "download_type_year":
+                listQ = q(this.s, this.t, (List) list.stream().filter(new c7(8)).filter(q05.j(new m7(15))).collect(Collectors.toList()));
+                break;
+            case "download_type_playlist":
+                listQ = q(this.s, this.t, (List) list.stream().filter(new c7(4)).filter(q05.j(new m7(16))).collect(Collectors.toList()));
+                break;
+            case "download_type_album":
+                listQ = q(this.s, this.t, (List) list.stream().filter(new c7(5)).filter(q05.j(new m7(18))).collect(Collectors.toList()));
+                break;
+            case "download_type_genre":
+                listQ = q(this.s, this.t, (List) list.stream().filter(new c7(7)).filter(q05.j(new m7(21))).collect(Collectors.toList()));
+                break;
+            case "download_type_track":
+                listQ = q(this.s, this.t, (List) list.stream().filter(new c7(3)).filter(q05.j(new m7(17))).collect(Collectors.toList()));
+                break;
+            default:
+                listQ = Collections.EMPTY_LIST;
+                break;
+        }
+        this.w = listQ;
+        List arrayList = new ArrayList(list);
+        if (this.t != null) {
+            String str5 = this.s;
+            str5.getClass();
+            switch (str5) {
+                case "download_type_artist":
+                    final int i4 = 2;
+                    arrayList = (List) arrayList.stream().filter(new Predicate(this) { // from class: bt0
+                        public final /* synthetic */ ft0 b;
+
+                        {
+                            this.b = this;
+                        }
+
+                        @Override // java.util.function.Predicate
+                        public final boolean test(Object obj) {
+                            int i5 = i4;
+                            ft0 ft0Var = this.b;
+                            Child child = (Child) obj;
+                            ft0Var.getClass();
+                            switch (i5) {
+                                case 0:
+                                    return Objects.equals(child.getGenre(), ft0Var.t);
+                                case 1:
+                                    return Objects.equals(child.getYear(), Integer.valueOf(ft0Var.t));
+                                case 2:
+                                    return Objects.equals(child.getArtistId(), ft0Var.t);
+                                case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
+                                    return (child instanceof Download) && Objects.equals(((Download) child).getPlaylistId(), ft0Var.t);
+                                case 4:
+                                    return child.getId().equals(ft0Var.t);
+                                default:
+                                    return Objects.equals(child.getAlbumId(), ft0Var.t);
+                            }
+                        }
+                    }).collect(Collectors.toList());
+                    break;
+                case "download_type_year":
+                    final int i5 = 1;
+                    arrayList = (List) arrayList.stream().filter(new Predicate(this) { // from class: bt0
+                        public final /* synthetic */ ft0 b;
+
+                        {
+                            this.b = this;
+                        }
+
+                        @Override // java.util.function.Predicate
+                        public final boolean test(Object obj) {
+                            int i6 = i5;
+                            ft0 ft0Var = this.b;
+                            Child child = (Child) obj;
+                            ft0Var.getClass();
+                            switch (i6) {
+                                case 0:
+                                    return Objects.equals(child.getGenre(), ft0Var.t);
+                                case 1:
+                                    return Objects.equals(child.getYear(), Integer.valueOf(ft0Var.t));
+                                case 2:
+                                    return Objects.equals(child.getArtistId(), ft0Var.t);
+                                case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
+                                    return (child instanceof Download) && Objects.equals(((Download) child).getPlaylistId(), ft0Var.t);
+                                case 4:
+                                    return child.getId().equals(ft0Var.t);
+                                default:
+                                    return Objects.equals(child.getAlbumId(), ft0Var.t);
+                            }
+                        }
+                    }).collect(Collectors.toList());
+                    break;
+                case "download_type_playlist":
+                    final int i6 = 3;
+                    arrayList = (List) arrayList.stream().filter(new Predicate(this) { // from class: bt0
+                        public final /* synthetic */ ft0 b;
+
+                        {
+                            this.b = this;
+                        }
+
+                        @Override // java.util.function.Predicate
+                        public final boolean test(Object obj) {
+                            int i7 = i6;
+                            ft0 ft0Var = this.b;
+                            Child child = (Child) obj;
+                            ft0Var.getClass();
+                            switch (i7) {
+                                case 0:
+                                    return Objects.equals(child.getGenre(), ft0Var.t);
+                                case 1:
+                                    return Objects.equals(child.getYear(), Integer.valueOf(ft0Var.t));
+                                case 2:
+                                    return Objects.equals(child.getArtistId(), ft0Var.t);
+                                case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
+                                    return (child instanceof Download) && Objects.equals(((Download) child).getPlaylistId(), ft0Var.t);
+                                case 4:
+                                    return child.getId().equals(ft0Var.t);
+                                default:
+                                    return Objects.equals(child.getAlbumId(), ft0Var.t);
+                            }
+                        }
+                    }).collect(Collectors.toList());
+                    break;
+                case "download_type_album":
+                    arrayList = (List) arrayList.stream().filter(new Predicate(this) { // from class: bt0
+                        public final /* synthetic */ ft0 b;
+
+                        {
+                            this.b = this;
+                        }
+
+                        @Override // java.util.function.Predicate
+                        public final boolean test(Object obj) {
+                            int i7 = i2;
+                            ft0 ft0Var = this.b;
+                            Child child = (Child) obj;
+                            ft0Var.getClass();
+                            switch (i7) {
+                                case 0:
+                                    return Objects.equals(child.getGenre(), ft0Var.t);
+                                case 1:
+                                    return Objects.equals(child.getYear(), Integer.valueOf(ft0Var.t));
+                                case 2:
+                                    return Objects.equals(child.getArtistId(), ft0Var.t);
+                                case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
+                                    return (child instanceof Download) && Objects.equals(((Download) child).getPlaylistId(), ft0Var.t);
+                                case 4:
+                                    return child.getId().equals(ft0Var.t);
+                                default:
+                                    return Objects.equals(child.getAlbumId(), ft0Var.t);
+                            }
+                        }
+                    }).collect(Collectors.toList());
+                    break;
+                case "download_type_genre":
+                    arrayList = (List) arrayList.stream().filter(new Predicate(this) { // from class: bt0
+                        public final /* synthetic */ ft0 b;
+
+                        {
+                            this.b = this;
+                        }
+
+                        @Override // java.util.function.Predicate
+                        public final boolean test(Object obj) {
+                            int i7 = i;
+                            ft0 ft0Var = this.b;
+                            Child child = (Child) obj;
+                            ft0Var.getClass();
+                            switch (i7) {
+                                case 0:
+                                    return Objects.equals(child.getGenre(), ft0Var.t);
+                                case 1:
+                                    return Objects.equals(child.getYear(), Integer.valueOf(ft0Var.t));
+                                case 2:
+                                    return Objects.equals(child.getArtistId(), ft0Var.t);
+                                case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
+                                    return (child instanceof Download) && Objects.equals(((Download) child).getPlaylistId(), ft0Var.t);
+                                case 4:
+                                    return child.getId().equals(ft0Var.t);
+                                default:
+                                    return Objects.equals(child.getAlbumId(), ft0Var.t);
+                            }
+                        }
+                    }).collect(Collectors.toList());
+                    break;
+                case "download_type_track":
+                    arrayList = (List) arrayList.stream().filter(new Predicate(this) { // from class: bt0
+                        public final /* synthetic */ ft0 b;
+
+                        {
+                            this.b = this;
+                        }
+
+                        @Override // java.util.function.Predicate
+                        public final boolean test(Object obj) {
+                            int i7 = i3;
+                            ft0 ft0Var = this.b;
+                            Child child = (Child) obj;
+                            ft0Var.getClass();
+                            switch (i7) {
+                                case 0:
+                                    return Objects.equals(child.getGenre(), ft0Var.t);
+                                case 1:
+                                    return Objects.equals(child.getYear(), Integer.valueOf(ft0Var.t));
+                                case 2:
+                                    return Objects.equals(child.getArtistId(), ft0Var.t);
+                                case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
+                                    return (child instanceof Download) && Objects.equals(((Download) child).getPlaylistId(), ft0Var.t);
+                                case 4:
+                                    return child.getId().equals(ft0Var.t);
+                                default:
+                                    return Objects.equals(child.getAlbumId(), ft0Var.t);
+                            }
+                        }
+                    }).collect(Collectors.toList());
+                    break;
+            }
+        }
+        this.v = arrayList;
         d();
-        return;
-    L35:
-        r2 = q(this.s, this.t, (List) r20.stream().filter(new c7(3)).filter(q05.j(new m7(17))).collect(Collectors.toList()));
-        goto L41
-    L36:
-        r2 = q(this.s, this.t, (List) r20.stream().filter(new c7(7)).filter(q05.j(new m7(21))).collect(Collectors.toList()));
-        goto L41
-    L37:
-        r2 = q(this.s, this.t, (List) r20.stream().filter(new c7(5)).filter(q05.j(new m7(18))).collect(Collectors.toList()));
-        goto L41
-    L38:
-        r2 = q(this.s, this.t, (List) r20.stream().filter(new c7(4)).filter(q05.j(new m7(16))).collect(Collectors.toList()));
-        goto L41
-    L39:
-        r2 = q(this.s, this.t, (List) r20.stream().filter(new c7(8)).filter(q05.j(new m7(15))).collect(Collectors.toList()));
-        goto L41
-    L40:
-        r2 = q(this.s, this.t, (List) r20.stream().filter(new c7(6)).filter(q05.j(new m7(19))).sorted(Comparator.comparing(new m7(20), Comparator.nullsLast(Comparator.naturalOrder()))).collect(Collectors.toList()));
-        goto L41
-    L10:
-        if (r3.equals("download_type_track") == false) goto L8;
-        r1 = 5;
-        goto L33
-    L14:
-        if (r3.equals("download_type_genre") == false) goto L8;
-        r1 = 4;
-        goto L33
-    L18:
-        if (r3.equals("download_type_album") == false) goto L8;
-        r1 = 3;
-        goto L33
-    L22:
-        if (r3.equals("download_type_playlist") == false) goto L8;
-        r1 = 2;
-        goto L33
-    L26:
-        if (r3.equals("download_type_year") == false) goto L8;
-        r1 = 1;
-        goto L33
-    L30:
-        if (r3.equals("download_type_artist") == false) goto L8;
-        r1 = 0;
-        goto L33
-    L5:
-        r3 = r18;
-        goto L6
     }
 }

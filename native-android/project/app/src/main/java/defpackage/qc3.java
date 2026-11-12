@@ -28,28 +28,28 @@ public final class qc3 implements vi2 {
     public final oo0 t;
     public final long u;
 
-    public qc3(List r1, int r2, int r3, int r4, hb3 r5, int r6, int r7, int r8, xi2 r9, xi2 r10, float r11, int r12, boolean r13, rv2 r14, vi2 r15, boolean r16, List r17, List r18, we0 r19, oo0 r20, long r21) {
-        this.a = r1;
-        this.b = r2;
-        this.c = r3;
-        this.d = r4;
-        this.e = r5;
-        this.f = r6;
-        this.g = r7;
-        this.h = r8;
-        this.i = r9;
-        this.j = r10;
-        this.k = r11;
-        this.l = r12;
-        this.m = r13;
-        this.n = r14;
-        this.o = r15;
-        this.p = r16;
-        this.q = r17;
-        this.r = r18;
-        this.s = r19;
-        this.t = r20;
-        this.u = r21;
+    public qc3(List list, int i, int i2, int i3, hb3 hb3Var, int i4, int i5, int i6, xi2 xi2Var, xi2 xi2Var2, float f, int i7, boolean z, rv2 rv2Var, vi2 vi2Var, boolean z2, List list2, List list3, we0 we0Var, oo0 oo0Var, long j) {
+        this.a = list;
+        this.b = i;
+        this.c = i2;
+        this.d = i3;
+        this.e = hb3Var;
+        this.f = i4;
+        this.g = i5;
+        this.h = i6;
+        this.i = xi2Var;
+        this.j = xi2Var2;
+        this.k = f;
+        this.l = i7;
+        this.m = z;
+        this.n = rv2Var;
+        this.o = vi2Var;
+        this.p = z2;
+        this.q = list2;
+        this.r = list3;
+        this.s = we0Var;
+        this.t = oo0Var;
+        this.u = j;
     }
 
     @Override // defpackage.vi2
@@ -87,97 +87,56 @@ public final class qc3 implements vi2 {
         return this.o.g();
     }
 
-    public final qc3 h(int r29) {
-        int r2 = this.b + this.c;
-        if (this.p == true) goto L45;
-        List r3 = this.a;
-        if (r3.isEmpty() == false) goto L7;
-        return null;
-    L7:
-        if (this.i == null) goto L51;
-        int r4 = this.l - r29;
-        if (r4 < 0) goto L52;
-        if (r4 >= r2) goto L53;
-        if (r2 == 0) goto L13;
-        float r5 = r29 / r2;
-    L14:
-        float r16 = this.k - r5;
-        if (this.j != null) goto L17;
-        return null;
-    L17:
-        if (r16 < 0.5f) goto L19;
-        return null;
-    L19:
-        if (r16 <= (-0.5f)) goto L58;
-        xi2 r6 = (xi2) q40.w0(r3);
-        xi2 r7 = (xi2) q40.C0(r3);
-        int r8 = this.g;
-        int r9 = this.f;
-        if (r29 >= 0) goto L27;
-        if (Math.min((r6.l + r2) - r9, (r7.l + r2) - r8) <= (-r29)) goto L56;
-    L28:
-        int r10 = r3.size();
-        boolean r11 = false;
-        int r12 = 0;
-    L29:
-        if (r12 >= r10) goto L31;
-        ((xi2) r3.get(r12)).a(r29);
-        r12 = r12 + 1;
-        goto L29
-    L31:
-        List r13 = this.q;
-        int r14 = r13.size();
-        int r15 = 0;
-    L32:
-        if (r15 >= r14) goto L34;
-        ((xi2) r13.get(r15)).a(r29);
-        r15 = r15 + 1;
-        goto L32
-    L34:
-        List r17 = this.r;
-        int r18 = r17.size();
-        int r19 = 0;
-    L35:
-        if (r19 >= r18) goto L38;
-        ((xi2) r17.get(r19)).a(r29);
-        r19 = r19 + 1;
-        goto L35
-    L38:
-        if (this.m == true) goto L42;
-        if (r29 > 0) goto L42;
-    L44:
-        return new qc3(this.a, this.b, this.c, this.d, this.e, this.f, this.g, this.h, this.i, this.j, r16, r4, r11, this.n, this.o, this.p, this.q, this.r, this.s, this.t, this.u);
-    L42:
-        r11 = true;
-        goto L44
-    L56:
-        return null;
-    L27:
-        if (Math.min(r9 - r6.l, r8 - r7.l) > r29) goto L28;
-        return null;
-    L58:
-        return null;
-    L13:
-        r5 = 0.0f;
-        goto L14
-    L53:
-        return null;
-    L52:
-        return null;
-    L51:
-        return null;
-    L45:
-        return null;
+    public final qc3 h(int i) {
+        int i2;
+        int i3 = this.b + this.c;
+        if (this.p) {
+            return null;
+        }
+        List list = this.a;
+        if (list.isEmpty() || this.i == null || (i2 = this.l - i) < 0 || i2 >= i3) {
+            return null;
+        }
+        float f = this.k - (i3 != 0 ? i / i3 : 0.0f);
+        if (this.j == null || f >= 0.5f || f <= -0.5f) {
+            return null;
+        }
+        xi2 xi2Var = (xi2) q40.w0(list);
+        xi2 xi2Var2 = (xi2) q40.C0(list);
+        int i4 = this.g;
+        int i5 = this.f;
+        if (i < 0) {
+            if (Math.min((xi2Var.l + i3) - i5, (xi2Var2.l + i3) - i4) <= (-i)) {
+                return null;
+            }
+        } else if (Math.min(i5 - xi2Var.l, i4 - xi2Var2.l) <= i) {
+            return null;
+        }
+        int size = list.size();
+        for (int i6 = 0; i6 < size; i6++) {
+            ((xi2) list.get(i6)).a(i);
+        }
+        List list2 = this.q;
+        int size2 = list2.size();
+        for (int i7 = 0; i7 < size2; i7++) {
+            ((xi2) list2.get(i7)).a(i);
+        }
+        List list3 = this.r;
+        int size3 = list3.size();
+        for (int i8 = 0; i8 < size3; i8++) {
+            ((xi2) list3.get(i8)).a(i);
+        }
+        return new qc3(this.a, this.b, this.c, this.d, this.e, this.f, this.g, this.h, this.i, this.j, f, i2, this.m || i > 0, this.n, this.o, this.p, this.q, this.r, this.s, this.t, this.u);
     }
 
     public final long i() {
-        vi2 r6 = this.o;
-        int r0 = r6.d();
-        return (((long) r0) << 32) | (((long) r6.b()) & 4294967295L);
+        vi2 vi2Var = this.o;
+        return (((long) vi2Var.d()) << 32) | (((long) vi2Var.b()) & 4294967295L);
     }
 
-    public /* synthetic */ qc3(int r24, int r25, int r26, int r27, int r28, int r29, rv2 r30, vi2 r31, we0 r32, oo0 r33, long r34) {
-        u01 r1 = u01.n;
-        this(r1, r24, r25, r26, hb3.o, r27, r28, r29, null, null, 0.0f, 0, false, r30, r31, false, r1, r1, r32, r33, r34);
+    /* JADX WARN: Illegal instructions before constructor call */
+    public /* synthetic */ qc3(int i, int i2, int i3, int i4, int i5, int i6, rv2 rv2Var, vi2 vi2Var, we0 we0Var, oo0 oo0Var, long j) {
+        u01 u01Var = u01.n;
+        this(u01Var, i, i2, i3, hb3.o, i4, i5, i6, null, null, 0.0f, 0, false, rv2Var, vi2Var, false, u01Var, u01Var, we0Var, oo0Var, j);
     }
 }

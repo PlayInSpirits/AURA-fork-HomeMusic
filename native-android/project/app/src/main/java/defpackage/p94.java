@@ -7,26 +7,26 @@ public final class p94 {
     public final wf1 b;
     public final boolean c;
 
-    public /* synthetic */ p94(String r3) {
-        this(r3, new m94(8));
+    public /* synthetic */ p94(String str) {
+        this(str, new m94(8));
     }
 
     public final String toString() {
         return xa3.g("AccessibilityKey: ", this.a);
     }
 
-    public p94(String r1, wf1 r2) {
-        this.a = r1;
-        this.b = r2;
+    public p94(String str, wf1 wf1Var) {
+        this.a = str;
+        this.b = wf1Var;
     }
 
-    public p94(int r1, String r2) {
-        this(r2);
+    public p94(int i, String str) {
+        this(str);
         this.c = true;
     }
 
-    public p94(String r1, boolean r2, wf1 r3) {
-        this(r1, r3);
-        this.c = r2;
+    public p94(String str, boolean z, wf1 wf1Var) {
+        this(str, wf1Var);
+        this.c = z;
     }
 }

@@ -10,43 +10,33 @@ public final class mg4 {
     public final long b;
     public final int c;
 
-    public mg4(int r2, long r3, long r5) {
-        if (r3 >= r5) goto L5;
-        boolean r0 = true;
-    L6:
-        rr2.l(r0);
-        this.a = r3;
-        this.b = r5;
-        this.c = r2;
-        return;
-    L5:
-        r0 = false;
-        goto L6
+    public mg4(int i, long j, long j2) {
+        rr2.l(j < j2);
+        this.a = j;
+        this.b = j2;
+        this.c = i;
     }
 
-    public final boolean equals(Object r7) {
-        if (this != r7) goto L6;
-        return true;
-    L6:
-        if (r7 != null) goto L8;
-    L17:
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj != null && mg4.class == obj.getClass()) {
+            mg4 mg4Var = (mg4) obj;
+            if (this.a == mg4Var.a && this.b == mg4Var.b && this.c == mg4Var.c) {
+                return true;
+            }
+        }
         return false;
-    L8:
-        if (mg4.class != r7.getClass()) goto L17;
-        mg4 r8 = (mg4) r7;
-        if (this.a != r8.a) goto L17;
-        if (this.b != r8.b) goto L17;
-        if (this.c != r8.c) goto L17;
-        return true;
     }
 
     public final int hashCode() {
-        return Objects.hash(new Object[]{Long.valueOf(this.a), Long.valueOf(this.b), Integer.valueOf(this.c)});
+        return Objects.hash(Long.valueOf(this.a), Long.valueOf(this.b), Integer.valueOf(this.c));
     }
 
     public final String toString() {
-        String r0 = f35.a;
-        Locale r1 = Locale.US;
+        String str = f35.a;
+        Locale locale = Locale.US;
         return "Segment: startTimeMs=" + this.a + ", endTimeMs=" + this.b + ", speedDivisor=" + this.c;
     }
 }

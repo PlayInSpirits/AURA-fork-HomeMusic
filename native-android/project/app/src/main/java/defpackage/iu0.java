@@ -18,587 +18,580 @@ import java.util.Collections;
 import java.util.EnumSet;
 import java.util.HashSet;
 import java.util.concurrent.locks.Lock;
+import org.chromium.support_lib_boundary.WebSettingsBoundaryInterface;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class iu0 {
-    public static final ab3 f = null;
-    public static final ab3 g = null;
-    public static final ab3 h = null;
-    public static final ab3 i = null;
-    public static final om0 j = null;
-    public static final ArrayDeque k = null;
+    public static final ab3 f = ab3.a(vi0.p, "com.bumptech.glide.load.resource.bitmap.Downsampler.DecodeFormat");
+    public static final ab3 g = new ab3("com.bumptech.glide.load.resource.bitmap.Downsampler.PreferredColorSpace", null, ab3.e);
+    public static final ab3 h;
+    public static final ab3 i;
+    public static final om0 j;
+    public static final ArrayDeque k;
     public final zs a;
     public final DisplayMetrics b;
     public final qj0 c;
     public final ArrayList d;
-    public final ll1 e;
+    public final ll1 e = ll1.a();
 
     static {
-        f = ab3.a(vi0.p, "com.bumptech.glide.load.resource.bitmap.Downsampler.DecodeFormat");
-        g = new ab3("com.bumptech.glide.load.resource.bitmap.Downsampler.PreferredColorSpace", null, ab3.e);
-        gu0 r0 = gu0.b;
-        Boolean r1 = Boolean.FALSE;
-        h = ab3.a(r1, "com.bumptech.glide.load.resource.bitmap.Downsampler.FixBitmapSize");
-        i = ab3.a(r1, "com.bumptech.glide.load.resource.bitmap.Downsampler.AllowHardwareDecode");
-        Collections.unmodifiableSet(new HashSet(Arrays.asList(new String[]{"image/vnd.wap.wbmp", "image/x-ico"})));
+        gu0 gu0Var = gu0.b;
+        Boolean bool = Boolean.FALSE;
+        h = ab3.a(bool, "com.bumptech.glide.load.resource.bitmap.Downsampler.FixBitmapSize");
+        i = ab3.a(bool, "com.bumptech.glide.load.resource.bitmap.Downsampler.AllowHardwareDecode");
+        Collections.unmodifiableSet(new HashSet(Arrays.asList("image/vnd.wap.wbmp", "image/x-ico")));
         j = new om0(10);
         Collections.unmodifiableSet(EnumSet.of(ImageHeaderParser$ImageType.JPEG, ImageHeaderParser$ImageType.PNG_A, ImageHeaderParser$ImageType.PNG));
         k = new ArrayDeque(0);
     }
 
-    public iu0(ArrayList r2, DisplayMetrics r3, zs r4, qj0 r5) {
-        this.e = ll1.a();
-        this.d = r2;
-        h12.f(r3, "Argument must not be null");
-        this.b = r3;
-        h12.f(r4, "Argument must not be null");
-        this.a = r4;
-        h12.f(r5, "Argument must not be null");
-        this.c = r5;
+    public iu0(ArrayList arrayList, DisplayMetrics displayMetrics, zs zsVar, qj0 qj0Var) {
+        this.d = arrayList;
+        h12.f(displayMetrics, "Argument must not be null");
+        this.b = displayMetrics;
+        h12.f(zsVar, "Argument must not be null");
+        this.a = zsVar;
+        h12.f(qj0Var, "Argument must not be null");
+        this.c = qj0Var;
     }
 
-    public static Bitmap c(aw1 r9, BitmapFactory.Options r10, hu0 r11, zs r12) {
-        if (r10.inJustDecodeBounds == true) goto L5;
-        r11.x();
-        r9.k();
-    L5:
-        int r1 = r10.outWidth;
-        int r2 = r10.outHeight;
-        String r3 = r10.outMimeType;
-        Lock r4 = xw4.b;
-        r4.lock();
-        Bitmap r13 = r9.i(r10);     // Catch: IllegalArgumentException -> L9 Throwable -> L20
-        r4.unlock();
-        return r13;
-    L9:
-        e = move-exception;
-        StringBuilder r5 = b11.t("Exception decoding bitmap, outWidth: ", ", outHeight: ", r1, r2, ", outMimeType: ");     // Catch: Throwable -> L20
-        r5.append(r3);     // Catch: Throwable -> L20
-        r5.append(", inBitmap: ");     // Catch: Throwable -> L20
-        r5.append(d(r10.inBitmap));     // Catch: Throwable -> L20
-        IOException r6 = new IOException(r5.toString(), e);     // Catch: Throwable -> L20
-        if (Log.isLoggable("Downsampler", 3) == false) goto L13;
-        Log.d("Downsampler", "Failed to decode with inBitmap, trying again without Bitmap re-use", r6);     // Catch: Throwable -> L20
-    L13:
-        Bitmap r0 = r10.inBitmap;     // Catch: Throwable -> L20
-        if (r0 != null) goto L25;
-        throw r6;     // Catch: Throwable -> L20
-    L25:
-        r12.d(r0);     // Catch: IOException -> L18 Throwable -> L20
-        r10.inBitmap = null;     // Catch: IOException -> L18 Throwable -> L20
-        Bitmap r14 = c(r9, r10, r11, r12);     // Catch: IOException -> L18 Throwable -> L20
-        xw4.b.unlock();
-        return r14;
-    L27:
-        throw r6;     // Catch: Throwable -> L20
-    L18:
-        throw r6;     // Catch: Throwable -> L20
-    L20:
-        th = move-exception;
-        xw4.b.unlock();
-        throw th;
+    /* JADX WARN: Code restructure failed: missing block: B:27:?, code lost:
+    
+        throw r5;
+     */
+    /*
+        Code decompiled incorrectly, please refer to instructions dump.
+    */
+    public static Bitmap c(aw1 aw1Var, BitmapFactory.Options options, hu0 hu0Var, zs zsVar) {
+        if (!options.inJustDecodeBounds) {
+            hu0Var.x();
+            aw1Var.k();
+        }
+        int i2 = options.outWidth;
+        int i3 = options.outHeight;
+        String str = options.outMimeType;
+        Lock lock = xw4.b;
+        lock.lock();
+        try {
+            try {
+                Bitmap bitmapI = aw1Var.i(options);
+                lock.unlock();
+                return bitmapI;
+            } catch (IllegalArgumentException e) {
+                StringBuilder sbT = b11.t("Exception decoding bitmap, outWidth: ", ", outHeight: ", i2, i3, ", outMimeType: ");
+                sbT.append(str);
+                sbT.append(", inBitmap: ");
+                sbT.append(d(options.inBitmap));
+                IOException iOException = new IOException(sbT.toString(), e);
+                if (Log.isLoggable("Downsampler", 3)) {
+                    Log.d("Downsampler", "Failed to decode with inBitmap, trying again without Bitmap re-use", iOException);
+                }
+                Bitmap bitmap = options.inBitmap;
+                if (bitmap == null) {
+                    throw iOException;
+                }
+                try {
+                    zsVar.d(bitmap);
+                    options.inBitmap = null;
+                    Bitmap bitmapC = c(aw1Var, options, hu0Var, zsVar);
+                    xw4.b.unlock();
+                    return bitmapC;
+                } catch (IOException unused) {
+                    throw iOException;
+                }
+            }
+        } catch (Throwable th) {
+            xw4.b.unlock();
+            throw th;
+        }
     }
 
-    public static String d(Bitmap r3) {
-        if (r3 != null) goto L6;
-        return null;
-    L6:
-        return "[" + r3.getWidth() + "x" + r3.getHeight() + "] " + r3.getConfig() + (" (" + r3.getAllocationByteCount() + ")");
+    public static String d(Bitmap bitmap) {
+        if (bitmap == null) {
+            return null;
+        }
+        return "[" + bitmap.getWidth() + "x" + bitmap.getHeight() + "] " + bitmap.getConfig() + (" (" + bitmap.getAllocationByteCount() + ")");
     }
 
-    public static void e(BitmapFactory.Options r5) {
-        r5.inTempStorage = null;
-        r5.inDither = false;
-        r5.inScaled = false;
-        r5.inSampleSize = 1;
-        r5.inPreferredConfig = null;
-        r5.inJustDecodeBounds = false;
-        r5.inDensity = 0;
-        r5.inTargetDensity = 0;
-        if (Build.VERSION.SDK_INT < 26) goto L5;
-        gm0.r(r5);
-        gm0.A(r5);
-        gm0.D(r5);
-    L5:
-        r5.outWidth = 0;
-        r5.outHeight = 0;
-        r5.outMimeType = null;
-        r5.inBitmap = null;
-        r5.inMutable = true;
+    public static void e(BitmapFactory.Options options) {
+        options.inTempStorage = null;
+        options.inDither = false;
+        options.inScaled = false;
+        options.inSampleSize = 1;
+        options.inPreferredConfig = null;
+        options.inJustDecodeBounds = false;
+        options.inDensity = 0;
+        options.inTargetDensity = 0;
+        if (Build.VERSION.SDK_INT >= 26) {
+            options.inPreferredColorSpace = null;
+            options.outColorSpace = null;
+            options.outConfig = null;
+        }
+        options.outWidth = 0;
+        options.outHeight = 0;
+        options.outMimeType = null;
+        options.inBitmap = null;
+        options.inMutable = true;
     }
 
-    public final at a(aw1 r15, int r16, int r17, db3 r18, hu0 r19) {
-        byte[] r12 = (byte[]) this.c.d(65536, byte[].class);
-        monitor-enter(iu0.class);
-        ArrayDeque r13 = k;     // Catch: Throwable -> L11
-        monitor-enter(r13);     // Catch: Throwable -> L11
-        BitmapFactory.Options r3 = (BitmapFactory.Options) r13.poll();     // Catch: Throwable -> L41
-        monitor-exit(r13);     // Catch: Throwable -> L41
-        if (r3 != null) goto L13;
-        r3 = new BitmapFactory.Options();     // Catch: Throwable -> L11
-        e(r3);     // Catch: Throwable -> L11
-    L13:
-        monitor-exit(iu0.class);
-        r3.inTempStorage = r12;
-        vi0 r5 = (vi0) r18.c(f);
-        tp3 r6 = (tp3) r18.c(g);
-        gu0 r4 = (gu0) r18.c(gu0.g);
-        boolean r10 = ((Boolean) r18.c(h)).booleanValue();
-        ab3 r2 = i;
-        if (r18.c(r2) != null) goto L17;
-    L20:
-        boolean r0 = false;
-    L46:
-        Bitmap r1 = b(r15, r3, r4, r5, r6, r0, r16, r17, r10, r19);     // Catch: Throwable -> L31
-        at r7 = at.c(this.a, r1);     // Catch: Throwable -> L31
-        e(r3);
-        monitor-enter(r13);
-        r13.offer(r3);     // Catch: Throwable -> L28
-        monitor-exit(r13);     // Catch: Throwable -> L28
-        this.c.h(r12);
-        return r7;
-    L28:
-        th = move-exception;
-        throw th;
-    L31:
-        th = move-exception;
-        e(r3);
-        ArrayDeque r8 = k;
-        monitor-enter(r8);
-        r8.offer(r3);     // Catch: Throwable -> L38
-        this.c.h(r12);
-        throw th;
-    L38:
-        th = move-exception;
-        throw th;
-    L17:
-        if (((Boolean) r18.c(r2)).booleanValue() == false) goto L20;
-        r0 = true;
-        goto L46
-    L41:
-        th = move-exception;
-        throw th;     // Catch: Throwable -> L11
-    L11:
-        th = move-exception;
-        throw th;
+    public final at a(aw1 aw1Var, int i2, int i3, db3 db3Var, hu0 hu0Var) {
+        ArrayDeque arrayDeque;
+        BitmapFactory.Options options;
+        byte[] bArr = (byte[]) this.c.d(65536, byte[].class);
+        synchronized (iu0.class) {
+            arrayDeque = k;
+            synchronized (arrayDeque) {
+                options = (BitmapFactory.Options) arrayDeque.poll();
+            }
+            if (options == null) {
+                options = new BitmapFactory.Options();
+                e(options);
+            }
+        }
+        options.inTempStorage = bArr;
+        vi0 vi0Var = (vi0) db3Var.c(f);
+        tp3 tp3Var = (tp3) db3Var.c(g);
+        gu0 gu0Var = (gu0) db3Var.c(gu0.g);
+        boolean zBooleanValue = ((Boolean) db3Var.c(h)).booleanValue();
+        ab3 ab3Var = i;
+        try {
+            at atVarC = at.c(this.a, b(aw1Var, options, gu0Var, vi0Var, tp3Var, db3Var.c(ab3Var) != null && ((Boolean) db3Var.c(ab3Var)).booleanValue(), i2, i3, zBooleanValue, hu0Var));
+            e(options);
+            synchronized (arrayDeque) {
+                arrayDeque.offer(options);
+            }
+            return atVarC;
+        } finally {
+            e(options);
+            ArrayDeque arrayDeque2 = k;
+            synchronized (arrayDeque2) {
+                arrayDeque2.offer(options);
+                this.c.h(bArr);
+            }
+        }
     }
 
-    public final Bitmap b(aw1 r42, BitmapFactory.Options r43, gu0 r44, vi0 r45, tp3 r46, boolean r47, int r48, int r49, boolean r50, hu0 r51) {
-        int r9 = ee2.b;
-        long r10 = SystemClock.elapsedRealtimeNanos();
-        r43.inJustDecodeBounds = true;
-        zs r12 = this.a;
-        c(r42, r43, r51, r12);
-        r43.inJustDecodeBounds = false;
-        int[] r14 = {r43.outWidth, r43.outHeight};
-        int r15 = r14[0];
-        int r16 = r14[1];
-        String r13 = r43.outMimeType;
-        if (r15 == (-1)) goto L7;
-        if (r16 == (-1)) goto L7;
-        boolean r11 = r47;
-    L8:
-        int r17 = r42.c();
-        switch(r17) {
-            case 3: goto L13;
-            case 4: goto L13;
-            case 5: goto L12;
-            case 6: goto L12;
-            case 7: goto L11;
-            case 8: goto L11;
-            default: goto L10;
-        };
-    L10:
-        int r18 = 0;
-    L14:
-        switch(r17) {
-            case 2: goto L17;
-            case 3: goto L17;
-            case 4: goto L17;
-            case 5: goto L17;
-            case 6: goto L17;
-            case 7: goto L17;
-            case 8: goto L17;
-            default: goto L15;
-        };
-    L15:
-        boolean r20 = false;
-    L19:
-        if (r48 != Integer.MIN_VALUE) goto L27;
-        if (r18 == 90) goto L25;
-        int r19 = 270;
-        if (r18 == 270) goto L26;
-        int r22 = r15;
-    L28:
-        if (r49 == Integer.MIN_VALUE) goto L30;
-        int r21 = r49;
-    L36:
-        ImageHeaderParser$ImageType r110 = r42.l();
-        boolean r26 = r11;
-        if (r15 <= 0) goto L39;
-        if (r16 <= 0) goto L39;
-        if (r18 != 90) goto L43;
-    L47:
-        int r111 = r16;
-        int r6 = r15;
-    L46:
-        int r1 = r22;
-        float r7 = r44.b(r111, r6, r1, r21);
-        if (r7 <= 0.0f) goto L106;
-        int r8 = r44.a(r111, r6, r1, r21);
-        if (r8 == 0) goto L103;
-        int r28 = r18;
-        float r112 = r111;
-        int r29 = r111;
-        float r113 = r6;
-        int r32 = r6;
-        int r23 = (int) (((double) (r7 * r113)) + 0.5d);
-        int r114 = r29 / ((int) (((double) (r7 * r112)) + 0.5d));
-        int r24 = r32 / r23;
-        if (r8 != 1) goto L55;
-        int r25 = Math.max(r114, r24);
-    L56:
-        int r27 = Math.max(1, Integer.highestOneBit(r25));
-        if (r8 == 1) goto L59;
-    L61:
-        r43.inSampleSize = r27;
-        if (r110 != ImageHeaderParser$ImageType.JPEG) goto L67;
-        float r30 = Math.min(r27, 8);
-        float r115 = r113 / r30;
-        int r31 = (int) Math.ceil(r112 / r30);
-        int r116 = (int) Math.ceil(r115);
-        int r117 = r27 / 8;
-        if (r117 <= 0) goto L82;
-        r31 = r31 / r117;
-        r116 = r116 / r117;
-    L82:
-        int r40 = r116;
-        int r118 = r31;
-        int r33 = r40;
-    L83:
-        zs r210 = r12;
-        double r119 = r44.b(r118, r33, r1, r21);
-        if (r119 > 1.0d) goto L86;
-        double r34 = r119;
-    L87:
-        int r120 = (int) Math.round(r34 * 2.147483647E9d);
-        int r121 = (int) ((((double) r120) * r119) + 0.5d);
-        float r122 = r121 / r120;
-        int r123 = r27;
-        int r35 = r33;
-        r43.inTargetDensity = (int) (((r119 / ((double) r122)) * ((double) r121)) + 0.5d);
-        if (r119 > 1.0d) goto L90;
-        double r36 = r119;
-    L91:
-        int r0 = (int) Math.round(r36 * 2.147483647E9d);
-        r43.inDensity = r0;
-        int r37 = r43.inTargetDensity;
-        if (r37 <= 0) goto L97;
-        if (r0 <= 0) goto L97;
-        if (r37 == r0) goto L97;
-        r43.inScaled = true;
-    L99:
-        if (Log.isLoggable("Downsampler", 2) == false) goto L102;
-        StringBuilder r2 = b11.t("Calculate scaling, source: [", "x", r15, r16, "], degreesToRotate: ");
-        r2.append(r28);
-        r2.append(", target: [");
-        r2.append(r1);
-        r2.append("x");
-        r2.append(r21);
-        r2.append("], power of two scaled: [");
-        r2.append(r118);
-        r2.append("x");
-        r2.append(r35);
-        r2.append("], exact scale factor: ");
-        r2.append(r7);
-        r2.append(", power of 2 sample size: ");
-        r2.append(r123);
-        r2.append(", adjusted scale factor: ");
-        r2.append(r119);
-        String r38 = ", target density: ";
-        r2.append(r38);
-        r2.append(r43.inTargetDensity);
-        String r39 = ", density: ";
-        r2.append(r39);
-        r2.append(r43.inDensity);
-        Log.v("Downsampler", r2.toString());
-    L110:
-        boolean r3 = this.e.c(r1, r21, r26, r20);
-        if (r3 == false) goto L114;
-        r43.inPreferredConfig = j3.D();
-        r43.inMutable = false;
-    L114:
-        if (r3 == false) goto L117;
-    L132:
-        if (r15 < 0) goto L136;
-        if (r16 < 0) goto L136;
-        if (r50 == false) goto L136;
-    L148:
-        if (r1 <= 0) goto L160;
-        if (r21 <= 0) goto L160;
-        if (Build.VERSION.SDK_INT >= 26) goto L153;
-        Bitmap.Config r124 = null;
-    L157:
-        if (r124 != null) goto L159;
-        r124 = r43.inPreferredConfig;
-    L159:
-        zs r125 = r210;
-        r43.inBitmap = r125.c(r1, r21, r124);
-    L161:
-        if (r46 == null) goto L175;
-        int r4 = Build.VERSION.SDK_INT;
-        if (r4 >= 28) goto L165;
-        if (r4 < 26) goto L175;
-        tn.A();
-        gm0.s(r43, gm0.g());
-        goto L175
-    L165:
-        if (r46 == tp3.n) goto L167;
-    L171:
-        ColorSpace.Named r5 = tn.A();
-    L172:
-        gm0.s(r43, tn.e(r5));
-        goto L175
-    L167:
-        if (gm0.h(r43) == null) goto L171;
-        if (tn.y(gm0.h(r43)) == false) goto L171;
-        r5 = tn.d();
-    L175:
-        Bitmap r41 = c(r42, r43, r51, r125);
-        r51.E(r125, r41);
-        if (Log.isLoggable("Downsampler", 2) == false) goto L178;
-        Log.v("Downsampler", "Decoded " + d(r41) + " from [" + r15 + "x" + r16 + "] " + r13 + " with inBitmap " + d(r43.inBitmap) + " for [" + r48 + "x" + r49 + "], sample size: " + r43.inSampleSize + r39 + r43.inDensity + r38 + r43.inTargetDensity + ", thread: " + Thread.currentThread().getName() + ", duration: " + ee2.a(r10));
-    L178:
-        if (r41 == null) goto L204;
-        r41.setDensity(this.b.densityDpi);
-        switch(r17) {
-            case 2: goto L182;
-            case 3: goto L182;
-            case 4: goto L182;
-            case 5: goto L182;
-            case 6: goto L182;
-            case 7: goto L182;
-            case 8: goto L182;
-            default: goto L181;
-        };
-    L181:
-        Bitmap r52 = r41;
-    L198:
-        if (r41.equals(r52) == true) goto L201;
-        r125.d(r41);
-    L201:
-        return r52;
-    L182:
-        Matrix r53 = new Matrix();
-        switch(r17) {
-            case 2: goto L191;
-            case 3: goto L190;
-            case 4: goto L189;
-            case 5: goto L188;
-            case 6: goto L187;
-            case 7: goto L186;
-            case 8: goto L185;
-            default: goto L192;
-        };
-    L185:
-        r53.setRotate(-90.0f);
-        goto L192
-    L186:
-        r53.setRotate(-90.0f);
-        r53.postScale(-1.0f, 1.0f);
-        goto L192
-    L187:
-        r53.setRotate(90.0f);
-        goto L192
-    L188:
-        r53.setRotate(90.0f);
-        r53.postScale(-1.0f, 1.0f);
-        goto L192
-    L189:
-        r53.setRotate(180.0f);
-        r53.postScale(-1.0f, 1.0f);
-        goto L192
-    L190:
-        r53.setRotate(180.0f);
-        goto L192
-    L191:
-        r53.setScale(-1.0f, 1.0f);
-    L192:
-        RectF r54 = new RectF(0.0f, 0.0f, r41.getWidth(), r41.getHeight());
-        r53.mapRect(r54);
-        int r55 = Math.round(r54.width());
-        int r56 = Math.round(r54.height());
-        if (r41.getConfig() == null) goto L195;
-        Bitmap.Config r57 = r41.getConfig();
-    L196:
-        r52 = r125.h(r55, r56, r57);
-        r53.postTranslate(-r54.left, -r54.top);
-        r52.setHasAlpha(r41.hasAlpha());
-        xw4.a(r41, r52, r53);
-        goto L198
-    L195:
-        r57 = Bitmap.Config.ARGB_8888;
-        goto L196
-    L204:
-        return null;
-    L153:
-        if (r43.inPreferredConfig == j3.D()) goto L160;
-        r124 = gm0.f(r43);
-    L160:
-        r125 = r210;
-    L136:
-        int r58 = r43.inTargetDensity;
-        if (r58 <= 0) goto L142;
-        int r59 = r43.inDensity;
-        if (r59 <= 0) goto L142;
-        if (r58 == r59) goto L142;
-        float r60 = r58 / r59;
-    L143:
-        int r61 = r43.inSampleSize;
-        float r126 = r61;
-        int r62 = (int) Math.ceil(r15 / r126);
-        int r127 = (int) Math.ceil(r16 / r126);
-        int r63 = Math.round(r62 * r60);
-        int r128 = Math.round(r127 * r60);
-        if (Log.isLoggable("Downsampler", 2) == false) goto L146;
-        StringBuilder r129 = b11.t("Calculated target [", "x", r63, r128, "] for source [");
-        r129.append(r15);
-        r129.append("x");
-        r129.append(r16);
-        r129.append("], sampleSize: ");
-        r129.append(r61);
-        r129.append(", targetDensity: ");
-        r129.append(r43.inTargetDensity);
-        r129.append(r39);
-        r129.append(r43.inDensity);
-        r129.append(", density multiplier: ");
-        r129.append(r60);
-        Log.v("Downsampler", r129.toString());
-    L146:
-        r1 = r63;
-        r21 = r128;
-    L142:
-        r60 = 1.0f;
-        goto L143
-    L117:
-        if (r45 != vi0.n) goto L202;
-        r43.inPreferredConfig = Bitmap.Config.ARGB_8888;
-        goto L132
-    L202:
-        boolean r130 = r42.l().hasAlpha();     // Catch: IOException -> L120
-    L125:
-        if (r130 == false) goto L127;
-        Bitmap.Config r64 = Bitmap.Config.ARGB_8888;
-    L128:
-        r43.inPreferredConfig = r64;
-        if (r64 != Bitmap.Config.RGB_565) goto L132;
-        r43.inDither = true;
-        goto L132
-    L127:
-        r64 = Bitmap.Config.RGB_565;
-    L120:
-        e = move-exception;
-        if (Log.isLoggable("Downsampler", 3) == false) goto L124;
-        Log.d("Downsampler", "Cannot determine whether the image has alpha or not from header, format " + r45, e);
-    L124:
-        r130 = false;
-        goto L125
-    L102:
-        r39 = r6;
-        r38 = ", target density: ";
-    L97:
-        r43.inTargetDensity = 0;
-        r43.inDensity = 0;
-        goto L99
-    L90:
-        r36 = 1.0d / r119;
-        goto L91
-    L86:
-        r34 = 1.0d / r119;
-        goto L87
-    L67:
-        if (r110 != ImageHeaderParser$ImageType.PNG) goto L69;
-    L81:
-        float r65 = r27;
-        float r131 = r113 / r65;
-        r31 = (int) Math.floor(r112 / r65);
-        r116 = (int) Math.floor(r131);
-        goto L82
-    L69:
-        if (r110 == ImageHeaderParser$ImageType.PNG_A) goto L81;
-        if (r110.isWebp() == false) goto L75;
-        float r66 = r27;
-        r118 = Math.round(r112 / r66);
-        r33 = Math.round(r113 / r66);
-        goto L83
-    L75:
-        if ((r29 % r27) != 0) goto L80;
-        if ((r32 % r27) != 0) goto L80;
-        r118 = r29 / r27;
-        r33 = r32 / r27;
-    L80:
-        r43.inJustDecodeBounds = true;
-        c(r42, r43, r51, r12);
-        r43.inJustDecodeBounds = false;
-        int[] r132 = {r43.outWidth, r43.outHeight};
-        int r133 = r132[0];
-        r33 = r132[1];
-        r118 = r133;
-        goto L83
-    L59:
-        if (r27 >= (1.0f / r7)) goto L61;
-        r27 = r27 << 1;
-        goto L61
-    L55:
-        r25 = Math.min(r114, r24);
-        goto L56
-    L103:
-        kf2.n("Cannot round with null rounding");
-        return null;
-    L106:
-        throw new IllegalArgumentException("Cannot scale with factor: " + r7 + " from: " + r44 + ", source: [" + r15 + "x" + r16 + "], target: [" + r1 + "x" + r21 + "]");
-    L43:
-        if (r18 == 270) goto L47;
-        r6 = r16;
-        r111 = r15;
-    L39:
-        r39 = ", density: ";
-        r38 = ", target density: ";
-        r210 = r12;
-        r1 = r22;
-        if (Log.isLoggable("Downsampler", 3) == false) goto L110;
-        Log.d("Downsampler", "Unable to determine dimensions for: " + r110 + " with target [" + r1 + "x" + r21 + "]");
-        goto L110
-    L30:
-        if (r18 == 90) goto L34;
-        if (r18 == r19) goto L34;
-        r21 = r16;
-    L34:
-        r21 = r15;
-    L26:
-        r22 = r16;
-        goto L28
-    L25:
-        r19 = 270;
-        goto L26
-    L27:
-        r19 = 270;
-        r22 = r48;
-        goto L28
-    L17:
-        r20 = true;
-        goto L19
-    L11:
-        r18 = 270;
-        goto L14
-    L12:
-        r18 = 90;
-        goto L14
-    L13:
-        r18 = 180;
-    L7:
-        r11 = false;
-        goto L8
+    /* JADX WARN: Code duplicated, block: B:100:0x01e9  */
+    /* JADX WARN: Code duplicated, block: B:102:0x024e  */
+    /* JADX WARN: Code duplicated, block: B:160:0x03b9  */
+    /* JADX WARN: Code duplicated, block: B:85:0x0197  */
+    /* JADX WARN: Code duplicated, block: B:86:0x019a  */
+    /* JADX WARN: Code duplicated, block: B:89:0x01c2  */
+    /* JADX WARN: Code duplicated, block: B:90:0x01c5  */
+    /* JADX WARN: Code duplicated, block: B:97:0x01dd  */
+    public final Bitmap b(aw1 aw1Var, BitmapFactory.Options options, gu0 gu0Var, vi0 vi0Var, tp3 tp3Var, boolean z, int i2, int i3, boolean z2, hu0 hu0Var) {
+        int i4;
+        boolean z3;
+        int i5;
+        int i6;
+        int i7;
+        String str;
+        String str2;
+        zs zsVar;
+        int i8;
+        int i9;
+        zs zsVar2;
+        Bitmap bitmapH;
+        Bitmap.Config config;
+        boolean zHasAlpha;
+        int i10;
+        int i11;
+        int iFloor;
+        int iFloor2;
+        int iRound;
+        int iRound2;
+        double dB;
+        double d;
+        int i12;
+        int i13;
+        double d2;
+        int i14;
+        int i15 = ee2.b;
+        long jElapsedRealtimeNanos = SystemClock.elapsedRealtimeNanos();
+        options.inJustDecodeBounds = true;
+        zs zsVar3 = this.a;
+        c(aw1Var, options, hu0Var, zsVar3);
+        options.inJustDecodeBounds = false;
+        int[] iArr = {options.outWidth, options.outHeight};
+        int i16 = iArr[0];
+        int i17 = iArr[1];
+        String str3 = options.outMimeType;
+        boolean z4 = (i16 == -1 || i17 == -1) ? false : z;
+        int iC = aw1Var.c();
+        switch (iC) {
+            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
+            case 4:
+                i4 = 180;
+                break;
+            case 5:
+            case 6:
+                i4 = 90;
+                break;
+            case 7:
+            case 8:
+                i4 = 270;
+                break;
+            default:
+                i4 = 0;
+                break;
+        }
+        switch (iC) {
+            case 2:
+            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
+            case 4:
+            case 5:
+            case 6:
+            case 7:
+            case 8:
+                z3 = true;
+                break;
+            default:
+                z3 = false;
+                break;
+        }
+        if (i2 == Integer.MIN_VALUE) {
+            if (i4 != 90) {
+                i5 = 270;
+                if (i4 != 270) {
+                    i6 = i16;
+                }
+            } else {
+                i5 = 270;
+            }
+            i6 = i17;
+        } else {
+            i5 = 270;
+            i6 = i2;
+        }
+        if (i3 == Integer.MIN_VALUE) {
+            i7 = (i4 == 90 || i4 == i5) ? i16 : i17;
+        } else {
+            i7 = i3;
+        }
+        ImageHeaderParser$ImageType imageHeaderParser$ImageTypeL = aw1Var.l();
+        boolean z5 = z4;
+        if (i16 <= 0 || i17 <= 0) {
+            str = ", density: ";
+            str2 = ", target density: ";
+            zsVar = zsVar3;
+            i8 = i6;
+            if (Log.isLoggable("Downsampler", 3)) {
+                Log.d("Downsampler", "Unable to determine dimensions for: " + imageHeaderParser$ImageTypeL + " with target [" + i8 + "x" + i7 + "]");
+            }
+        } else {
+            if (i4 == 90 || i4 == 270) {
+                i10 = i17;
+                i11 = i16;
+            } else {
+                i11 = i17;
+                i10 = i16;
+            }
+            i8 = i6;
+            float fB = gu0Var.b(i10, i11, i8, i7);
+            if (fB <= 0.0f) {
+                throw new IllegalArgumentException("Cannot scale with factor: " + fB + " from: " + gu0Var + ", source: [" + i16 + "x" + i17 + "], target: [" + i8 + "x" + i7 + "]");
+            }
+            int iA = gu0Var.a(i10, i11, i8, i7);
+            if (iA == 0) {
+                kf2.n("Cannot round with null rounding");
+                return null;
+            }
+            int i18 = i4;
+            float f2 = i10;
+            int i19 = i10;
+            float f3 = i11;
+            int i20 = i11;
+            int i21 = (int) (((double) (fB * f3)) + 0.5d);
+            int i22 = i19 / ((int) (((double) (fB * f2)) + 0.5d));
+            int i23 = i20 / i21;
+            int iMax = Math.max(1, Integer.highestOneBit(iA == 1 ? Math.max(i22, i23) : Math.min(i22, i23)));
+            if (iA == 1 && iMax < 1.0f / fB) {
+                iMax <<= 1;
+            }
+            options.inSampleSize = iMax;
+            if (imageHeaderParser$ImageTypeL == ImageHeaderParser$ImageType.JPEG) {
+                float fMin = Math.min(iMax, 8);
+                float f4 = f3 / fMin;
+                iFloor = (int) Math.ceil(f2 / fMin);
+                iFloor2 = (int) Math.ceil(f4);
+                int i24 = iMax / 8;
+                if (i24 > 0) {
+                    iFloor /= i24;
+                    iFloor2 /= i24;
+                }
+            } else {
+                if (imageHeaderParser$ImageTypeL == ImageHeaderParser$ImageType.PNG || imageHeaderParser$ImageTypeL == ImageHeaderParser$ImageType.PNG_A) {
+                    float f5 = iMax;
+                    float f6 = f3 / f5;
+                    iFloor = (int) Math.floor(f2 / f5);
+                    iFloor2 = (int) Math.floor(f6);
+                } else if (imageHeaderParser$ImageTypeL.isWebp()) {
+                    float f7 = iMax;
+                    iRound2 = Math.round(f2 / f7);
+                    iRound = Math.round(f3 / f7);
+                } else if (i19 % iMax == 0 && i20 % iMax == 0) {
+                    iRound2 = i19 / iMax;
+                    iRound = i20 / iMax;
+                } else {
+                    options.inJustDecodeBounds = true;
+                    c(aw1Var, options, hu0Var, zsVar3);
+                    options.inJustDecodeBounds = false;
+                    int[] iArr2 = {options.outWidth, options.outHeight};
+                    int i25 = iArr2[0];
+                    iRound = iArr2[1];
+                    iRound2 = i25;
+                }
+                zsVar = zsVar3;
+                dB = gu0Var.b(iRound2, iRound, i8, i7);
+                if (dB <= 1.0d) {
+                    d = dB;
+                } else {
+                    d = 1.0d / dB;
+                }
+                int iRound3 = (int) Math.round(d * 2.147483647E9d);
+                int i26 = (int) ((((double) iRound3) * dB) + 0.5d);
+                float f8 = i26 / iRound3;
+                i12 = iMax;
+                i13 = iRound;
+                options.inTargetDensity = (int) (((dB / ((double) f8)) * ((double) i26)) + 0.5d);
+                if (dB <= 1.0d) {
+                    d2 = dB;
+                } else {
+                    d2 = 1.0d / dB;
+                }
+                int iRound4 = (int) Math.round(d2 * 2.147483647E9d);
+                options.inDensity = iRound4;
+                i14 = options.inTargetDensity;
+                if (i14 > 0 || iRound4 <= 0 || i14 == iRound4) {
+                    options.inTargetDensity = 0;
+                    options.inDensity = 0;
+                } else {
+                    options.inScaled = true;
+                }
+                if (Log.isLoggable("Downsampler", 2)) {
+                    StringBuilder sbT = b11.t("Calculate scaling, source: [", "x", i16, i17, "], degreesToRotate: ");
+                    sbT.append(i18);
+                    sbT.append(", target: [");
+                    sbT.append(i8);
+                    sbT.append("x");
+                    sbT.append(i7);
+                    sbT.append("], power of two scaled: [");
+                    sbT.append(iRound2);
+                    sbT.append("x");
+                    sbT.append(i13);
+                    sbT.append("], exact scale factor: ");
+                    sbT.append(fB);
+                    sbT.append(", power of 2 sample size: ");
+                    sbT.append(i12);
+                    sbT.append(", adjusted scale factor: ");
+                    sbT.append(dB);
+                    str2 = ", target density: ";
+                    sbT.append(str2);
+                    sbT.append(options.inTargetDensity);
+                    str = ", density: ";
+                    sbT.append(str);
+                    sbT.append(options.inDensity);
+                    Log.v("Downsampler", sbT.toString());
+                } else {
+                    str = r6;
+                    str2 = ", target density: ";
+                }
+            }
+            int i27 = iFloor2;
+            iRound2 = iFloor;
+            iRound = i27;
+            zsVar = zsVar3;
+            dB = gu0Var.b(iRound2, iRound, i8, i7);
+            if (dB <= 1.0d) {
+                d = dB;
+            } else {
+                d = 1.0d / dB;
+            }
+            int iRound5 = (int) Math.round(d * 2.147483647E9d);
+            int i28 = (int) ((((double) iRound5) * dB) + 0.5d);
+            float f9 = i28 / iRound5;
+            i12 = iMax;
+            i13 = iRound;
+            options.inTargetDensity = (int) (((dB / ((double) f9)) * ((double) i28)) + 0.5d);
+            if (dB <= 1.0d) {
+                d2 = dB;
+            } else {
+                d2 = 1.0d / dB;
+            }
+            int iRound6 = (int) Math.round(d2 * 2.147483647E9d);
+            options.inDensity = iRound6;
+            i14 = options.inTargetDensity;
+            if (i14 > 0) {
+                options.inTargetDensity = 0;
+                options.inDensity = 0;
+            } else {
+                options.inTargetDensity = 0;
+                options.inDensity = 0;
+            }
+            if (Log.isLoggable("Downsampler", 2)) {
+                StringBuilder sbT2 = b11.t("Calculate scaling, source: [", "x", i16, i17, "], degreesToRotate: ");
+                sbT2.append(i18);
+                sbT2.append(", target: [");
+                sbT2.append(i8);
+                sbT2.append("x");
+                sbT2.append(i7);
+                sbT2.append("], power of two scaled: [");
+                sbT2.append(iRound2);
+                sbT2.append("x");
+                sbT2.append(i13);
+                sbT2.append("], exact scale factor: ");
+                sbT2.append(fB);
+                sbT2.append(", power of 2 sample size: ");
+                sbT2.append(i12);
+                sbT2.append(", adjusted scale factor: ");
+                sbT2.append(dB);
+                str2 = ", target density: ";
+                sbT2.append(str2);
+                sbT2.append(options.inTargetDensity);
+                str = ", density: ";
+                sbT2.append(str);
+                sbT2.append(options.inDensity);
+                Log.v("Downsampler", sbT2.toString());
+            } else {
+                str = r6;
+                str2 = ", target density: ";
+            }
+        }
+        boolean zC = this.e.c(i8, i7, z5, z3);
+        if (zC) {
+            options.inPreferredConfig = Bitmap.Config.HARDWARE;
+            options.inMutable = false;
+        }
+        if (!zC) {
+            if (vi0Var != vi0.n) {
+                try {
+                    zHasAlpha = aw1Var.l().hasAlpha();
+                } catch (IOException e) {
+                    if (Log.isLoggable("Downsampler", 3)) {
+                        Log.d("Downsampler", "Cannot determine whether the image has alpha or not from header, format " + vi0Var, e);
+                    }
+                    zHasAlpha = false;
+                }
+                Bitmap.Config config2 = zHasAlpha ? Bitmap.Config.ARGB_8888 : Bitmap.Config.RGB_565;
+                options.inPreferredConfig = config2;
+                if (config2 == Bitmap.Config.RGB_565) {
+                    options.inDither = true;
+                }
+            } else {
+                options.inPreferredConfig = Bitmap.Config.ARGB_8888;
+            }
+        }
+        if (i16 < 0 || i17 < 0 || !z2) {
+            int i29 = options.inTargetDensity;
+            float f10 = (i29 <= 0 || (i9 = options.inDensity) <= 0 || i29 == i9) ? 1.0f : i29 / i9;
+            int i30 = options.inSampleSize;
+            float f11 = i30;
+            int iCeil = (int) Math.ceil(i16 / f11);
+            int iCeil2 = (int) Math.ceil(i17 / f11);
+            int iRound7 = Math.round(iCeil * f10);
+            int iRound8 = Math.round(iCeil2 * f10);
+            if (Log.isLoggable("Downsampler", 2)) {
+                StringBuilder sbT3 = b11.t("Calculated target [", "x", iRound7, iRound8, "] for source [");
+                sbT3.append(i16);
+                sbT3.append("x");
+                sbT3.append(i17);
+                sbT3.append("], sampleSize: ");
+                sbT3.append(i30);
+                sbT3.append(", targetDensity: ");
+                sbT3.append(options.inTargetDensity);
+                sbT3.append(str);
+                sbT3.append(options.inDensity);
+                sbT3.append(", density multiplier: ");
+                sbT3.append(f10);
+                Log.v("Downsampler", sbT3.toString());
+            }
+            i8 = iRound7;
+            i7 = iRound8;
+        }
+        if (i8 <= 0 || i7 <= 0) {
+            zsVar2 = zsVar;
+        } else {
+            if (Build.VERSION.SDK_INT < 26) {
+                config = null;
+            } else if (options.inPreferredConfig == Bitmap.Config.HARDWARE) {
+                zsVar2 = zsVar;
+            } else {
+                config = options.outConfig;
+            }
+            if (config == null) {
+                config = options.inPreferredConfig;
+            }
+            zsVar2 = zsVar;
+            options.inBitmap = zsVar2.c(i8, i7, config);
+        }
+        if (tp3Var != null) {
+            int i31 = Build.VERSION.SDK_INT;
+            if (i31 >= 28) {
+                options.inPreferredColorSpace = ColorSpace.get((tp3Var == tp3.n && options.outColorSpace != null && options.outColorSpace.isWideGamut()) ? ColorSpace.Named.DISPLAY_P3 : ColorSpace.Named.SRGB);
+            } else if (i31 >= 26) {
+                ColorSpace.Named unused = ColorSpace.Named.SRGB;
+                options.inPreferredColorSpace = ColorSpace.get(ColorSpace.Named.SRGB);
+            }
+        }
+        Bitmap bitmapC = c(aw1Var, options, hu0Var, zsVar2);
+        hu0Var.E(zsVar2, bitmapC);
+        if (Log.isLoggable("Downsampler", 2)) {
+            Log.v("Downsampler", "Decoded " + d(bitmapC) + " from [" + i16 + "x" + i17 + "] " + str3 + " with inBitmap " + d(options.inBitmap) + " for [" + i2 + "x" + i3 + "], sample size: " + options.inSampleSize + str + options.inDensity + str2 + options.inTargetDensity + ", thread: " + Thread.currentThread().getName() + ", duration: " + ee2.a(jElapsedRealtimeNanos));
+        }
+        if (bitmapC == null) {
+            return null;
+        }
+        bitmapC.setDensity(this.b.densityDpi);
+        switch (iC) {
+            case 2:
+            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
+            case 4:
+            case 5:
+            case 6:
+            case 7:
+            case 8:
+                Matrix matrix = new Matrix();
+                switch (iC) {
+                    case 2:
+                        matrix.setScale(-1.0f, 1.0f);
+                        break;
+                    case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
+                        matrix.setRotate(180.0f);
+                        break;
+                    case 4:
+                        matrix.setRotate(180.0f);
+                        matrix.postScale(-1.0f, 1.0f);
+                        break;
+                    case 5:
+                        matrix.setRotate(90.0f);
+                        matrix.postScale(-1.0f, 1.0f);
+                        break;
+                    case 6:
+                        matrix.setRotate(90.0f);
+                        break;
+                    case 7:
+                        matrix.setRotate(-90.0f);
+                        matrix.postScale(-1.0f, 1.0f);
+                        break;
+                    case 8:
+                        matrix.setRotate(-90.0f);
+                        break;
+                }
+                RectF rectF = new RectF(0.0f, 0.0f, bitmapC.getWidth(), bitmapC.getHeight());
+                matrix.mapRect(rectF);
+                bitmapH = zsVar2.h(Math.round(rectF.width()), Math.round(rectF.height()), bitmapC.getConfig() != null ? bitmapC.getConfig() : Bitmap.Config.ARGB_8888);
+                matrix.postTranslate(-rectF.left, -rectF.top);
+                bitmapH.setHasAlpha(bitmapC.hasAlpha());
+                xw4.a(bitmapC, bitmapH, matrix);
+                break;
+            default:
+                bitmapH = bitmapC;
+                break;
+        }
+        if (!bitmapC.equals(bitmapH)) {
+            zsVar2.d(bitmapC);
+        }
+        return bitmapH;
     }
 }

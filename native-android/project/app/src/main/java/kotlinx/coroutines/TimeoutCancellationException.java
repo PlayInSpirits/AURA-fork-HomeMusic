@@ -9,8 +9,8 @@ import java.util.concurrent.CancellationException;
 public final class TimeoutCancellationException extends CancellationException {
     public final transient s22 n;
 
-    public TimeoutCancellationException(String r1, gu4 r2) {
-        super(r1);
-        this.n = r2;
+    public TimeoutCancellationException(String str, gu4 gu4Var) {
+        super(str);
+        this.n = gu4Var;
     }
 }

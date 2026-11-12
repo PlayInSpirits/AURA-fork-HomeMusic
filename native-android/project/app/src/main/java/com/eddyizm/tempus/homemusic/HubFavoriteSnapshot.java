@@ -29,9 +29,6 @@ public final class HubFavoriteSnapshot {
     private List<String> songIds;
     private List<HubFavoriteSubject> subjects;
 
-    public HubFavoriteSnapshot() {
-    }
-
     public final List<String> getAlbumIds() {
         return this.albumIds;
     }
@@ -52,124 +49,157 @@ public final class HubFavoriteSnapshot {
         return this.subjects;
     }
 
-    public final void setAlbumIds(List<String> r1) {
-        this.albumIds = r1;
+    public final void setAlbumIds(List<String> list) {
+        this.albumIds = list;
     }
 
-    public final void setArtistIds(List<String> r1) {
-        this.artistIds = r1;
+    public final void setArtistIds(List<String> list) {
+        this.artistIds = list;
     }
 
-    public final void setRefs(List<String> r1) {
-        this.refs = r1;
+    public final void setRefs(List<String> list) {
+        this.refs = list;
     }
 
-    public final void setSongIds(List<String> r1) {
-        this.songIds = r1;
+    public final void setSongIds(List<String> list) {
+        this.songIds = list;
     }
 
-    public final void setSubjects(List<HubFavoriteSubject> r1) {
-        this.subjects = r1;
+    public final void setSubjects(List<HubFavoriteSubject> list) {
+        this.subjects = list;
     }
 
+    /* JADX WARN: Code duplicated, block: B:29:0x006a  */
+    /* JADX WARN: Code duplicated, block: B:32:0x0074  */
+    /* JADX WARN: Code duplicated, block: B:33:0x0079  */
+    /* JADX WARN: Code duplicated, block: B:36:0x0082  */
+    /* JADX WARN: Code duplicated, block: B:40:0x00a0  */
+    /* JADX WARN: Code duplicated, block: B:43:0x00b6  */
+    /* JADX WARN: Code duplicated, block: B:94:0x00ad A[SYNTHETIC] */
+    /* JADX WARN: Code duplicated, block: B:95:0x00bc A[SYNTHETIC] */
+    /* JADX WARN: Code duplicated, block: B:97:0x009a A[SYNTHETIC] */
     public final List<m61> states() {
-        ArrayList r0 = new ArrayList();
-        Iterable r1 = this.subjects;
-        List<String> r2 = u01.n;
-        if (r1 != null) goto L5;
-        r1 = r2;
-    L5:
-        Iterator r3 = q40.K0(r1, new ca1(27)).iterator();
-    L6:
-        int r5 = 3;
-        if (r3.hasNext() == false) goto L47;
-        HubFavoriteSubject r4 = (HubFavoriteSubject) r3.next();
-        String r8 = r4.getTargetType();
-        if (r8 == null) goto L6;
-        int r9 = r8.hashCode();
-        if (r9 != (-1409097913)) goto L13;
-        if (r8.equals("artist") == false) goto L6;
-    L27:
-        List<String> r6 = r4.getAliases();
-        if (r6 != null) goto L30;
-        r6 = r2;
-    L30:
-        String r7 = r4.getRef();
-        String r10 = null;
-        if (r7 == null) goto L33;
-        String r11 = "ref:".concat(r7);
-    L34:
-        String r12 = r4.getNdId();
-        if (r12 == null) goto L37;
-        r10 = "nd:".concat(r12);
-    L37:
-        Iterator r13 = q40.t0(q40.G0(r6, ti.i0(new String[]{r11, r10}))).iterator();
-    L39:
-        if (r13.hasNext() == false) goto L6;
-        String r14 = (String) r13.next();
-        if (xm4.k0(r14, "ref:", false) == true) goto L42;
-        if (xm4.k0(r14, "nd:", false) == false) goto L39;
-        String r15 = qm4.z0(r14, "nd:");
-    L46:
-        r0.add(new m61(r5, r15, r4.getLiked()));
-        goto L39
-    L42:
-        r15 = "hub:".concat(qm4.z0(r14, "ref:"));
-        goto L46
-    L33:
-        r11 = null;
-        goto L34
-    L13:
-        if (r9 != 92896879) goto L15;
-        if (r8.equals("album") == false) goto L6;
-        r5 = 2;
-        goto L27
-    L15:
-        if (r9 != 110621003) goto L6;
-        if (r8.equals("track") == false) goto L6;
-        r5 = 1;
-        goto L27
-    L47:
-        List<String> r16 = this.songIds;
-        if (r16 != null) goto L50;
-        r16 = r2;
-    L50:
-        Iterator<T> r17 = r16.iterator();
-    L52:
-        if (r17.hasNext() == false) goto L54;
-        r0.add(new m61(1, (String) r17.next(), true));
-        goto L52
-    L54:
-        List<String> r18 = this.albumIds;
-        if (r18 != null) goto L57;
-        r18 = r2;
-    L57:
-        Iterator<T> r19 = r18.iterator();
-    L59:
-        if (r19.hasNext() == false) goto L61;
-        r0.add(new m61(2, (String) r19.next(), true));
-        goto L59
-    L61:
-        List<String> r20 = this.artistIds;
-        if (r20 != null) goto L64;
-        r20 = r2;
-    L64:
-        Iterator<T> r21 = r20.iterator();
-    L66:
-        if (r21.hasNext() == false) goto L68;
-        r0.add(new m61(3, (String) r21.next(), true));
-        goto L66
-    L68:
-        List<String> r110 = this.refs;
-        if (r110 == null) goto L72;
-        r2 = r110;
-    L72:
-        Iterator<T> r111 = r2.iterator();
-    L74:
-        if (r111.hasNext() == false) goto L76;
-        r0.add(new m61(1, xa3.g("hub:", (String) r111.next()), true));
-        goto L74
-    L76:
-        return r0;
+        List<String> aliases;
+        String ref;
+        String strConcat;
+        String strConcat2;
+        ArrayList arrayList = new ArrayList();
+        Iterable iterable = this.subjects;
+        List<String> list = u01.n;
+        if (iterable == null) {
+            iterable = list;
+        }
+        Iterator it = q40.K0(iterable, new ca1(27)).iterator();
+        while (true) {
+            int i = 3;
+            if (!it.hasNext()) {
+                break;
+            }
+            HubFavoriteSubject hubFavoriteSubject = (HubFavoriteSubject) it.next();
+            String targetType = hubFavoriteSubject.getTargetType();
+            if (targetType != null) {
+                int iHashCode = targetType.hashCode();
+                if (iHashCode != -1409097913) {
+                    if (iHashCode != 92896879) {
+                        if (iHashCode == 110621003 && targetType.equals("track")) {
+                            i = 1;
+                            aliases = hubFavoriteSubject.getAliases();
+                            if (aliases == null) {
+                                aliases = list;
+                            }
+                            ref = hubFavoriteSubject.getRef();
+                            if (ref != null) {
+                                strConcat = "ref:".concat(ref);
+                            } else {
+                                strConcat = null;
+                            }
+                            String ndId = hubFavoriteSubject.getNdId();
+                            for (String str : q40.t0(q40.G0(aliases, ti.i0(new String[]{strConcat, ndId != null ? "nd:".concat(ndId) : null})))) {
+                                if (xm4.k0(str, "ref:", false)) {
+                                    strConcat2 = "hub:".concat(qm4.z0(str, "ref:"));
+                                } else if (xm4.k0(str, "nd:", false)) {
+                                    strConcat2 = qm4.z0(str, "nd:");
+                                }
+                                arrayList.add(new m61(i, strConcat2, hubFavoriteSubject.getLiked()));
+                            }
+                        }
+                    } else if (targetType.equals("album")) {
+                        i = 2;
+                        aliases = hubFavoriteSubject.getAliases();
+                        if (aliases == null) {
+                            aliases = list;
+                        }
+                        ref = hubFavoriteSubject.getRef();
+                        if (ref != null) {
+                            strConcat = "ref:".concat(ref);
+                        } else {
+                            strConcat = null;
+                        }
+                        String ndId2 = hubFavoriteSubject.getNdId();
+                        while (r6.hasNext()) {
+                            if (xm4.k0(str, "ref:", false)) {
+                                strConcat2 = "hub:".concat(qm4.z0(str, "ref:"));
+                            } else if (xm4.k0(str, "nd:", false)) {
+                                strConcat2 = qm4.z0(str, "nd:");
+                            }
+                            arrayList.add(new m61(i, strConcat2, hubFavoriteSubject.getLiked()));
+                        }
+                    }
+                } else if (targetType.equals("artist")) {
+                    aliases = hubFavoriteSubject.getAliases();
+                    if (aliases == null) {
+                        aliases = list;
+                    }
+                    ref = hubFavoriteSubject.getRef();
+                    if (ref != null) {
+                        strConcat = "ref:".concat(ref);
+                    } else {
+                        strConcat = null;
+                    }
+                    String ndId3 = hubFavoriteSubject.getNdId();
+                    while (r6.hasNext()) {
+                        if (xm4.k0(str, "ref:", false)) {
+                            strConcat2 = "hub:".concat(qm4.z0(str, "ref:"));
+                        } else if (xm4.k0(str, "nd:", false)) {
+                            strConcat2 = qm4.z0(str, "nd:");
+                        }
+                        arrayList.add(new m61(i, strConcat2, hubFavoriteSubject.getLiked()));
+                    }
+                }
+            }
+        }
+        List<String> list2 = this.songIds;
+        if (list2 == null) {
+            list2 = list;
+        }
+        Iterator<T> it2 = list2.iterator();
+        while (it2.hasNext()) {
+            arrayList.add(new m61(1, (String) it2.next(), true));
+        }
+        List<String> list3 = this.albumIds;
+        if (list3 == null) {
+            list3 = list;
+        }
+        Iterator<T> it3 = list3.iterator();
+        while (it3.hasNext()) {
+            arrayList.add(new m61(2, (String) it3.next(), true));
+        }
+        List<String> list4 = this.artistIds;
+        if (list4 == null) {
+            list4 = list;
+        }
+        Iterator<T> it4 = list4.iterator();
+        while (it4.hasNext()) {
+            arrayList.add(new m61(3, (String) it4.next(), true));
+        }
+        List<String> list5 = this.refs;
+        if (list5 != null) {
+            list = list5;
+        }
+        Iterator<T> it5 = list.iterator();
+        while (it5.hasNext()) {
+            arrayList.add(new m61(1, xa3.g("hub:", (String) it5.next()), true));
+        }
+        return arrayList;
     }
 }

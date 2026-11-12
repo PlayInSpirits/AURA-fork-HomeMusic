@@ -3,39 +3,38 @@ package defpackage;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public abstract class lu {
-    public static final w03 a = null;
+    public static final w03 a;
 
     static {
         b(true);
         a = b(false);
     }
 
-    public static final void a(ig3 r15, jg3 r16, pi2 r17, r62 r18, int r19, int r20, hs r21) {
-        r17.t();
-        int r1 = r16.n;
-        ig3.j(r15, r16, r21.a((((long) r1) << 32) | (((long) r16.o) & 4294967295L), (((long) r19) << 32) | (((long) r20) & 4294967295L), r18));
+    public static final void a(ig3 ig3Var, jg3 jg3Var, pi2 pi2Var, r62 r62Var, int i, int i2, hs hsVar) {
+        pi2Var.t();
+        ig3.j(ig3Var, jg3Var, hsVar.a((((long) jg3Var.n) << 32) | (((long) jg3Var.o) & 4294967295L), (((long) i) << 32) | (((long) i2) & 4294967295L), r62Var));
     }
 
-    public static final w03 b(boolean r3) {
-        w03 r0 = new w03(9);
-        hs r1 = fz0.o;
-        r0.l(r1, new ou(r1, r3));
-        hs r2 = fz0.p;
-        r0.l(r2, new ou(r2, r3));
-        hs r4 = fz0.q;
-        r0.l(r4, new ou(r4, r3));
-        hs r5 = fz0.r;
-        r0.l(r5, new ou(r5, r3));
-        hs r6 = fz0.s;
-        r0.l(r6, new ou(r6, r3));
-        hs r7 = fz0.t;
-        r0.l(r7, new ou(r7, r3));
-        hs r8 = fz0.u;
-        r0.l(r8, new ou(r8, r3));
-        hs r9 = fz0.v;
-        r0.l(r9, new ou(r9, r3));
-        hs r10 = fz0.w;
-        r0.l(r10, new ou(r10, r3));
-        return r0;
+    public static final w03 b(boolean z) {
+        w03 w03Var = new w03(9);
+        hs hsVar = fz0.o;
+        w03Var.l(hsVar, new ou(hsVar, z));
+        hs hsVar2 = fz0.p;
+        w03Var.l(hsVar2, new ou(hsVar2, z));
+        hs hsVar3 = fz0.q;
+        w03Var.l(hsVar3, new ou(hsVar3, z));
+        hs hsVar4 = fz0.r;
+        w03Var.l(hsVar4, new ou(hsVar4, z));
+        hs hsVar5 = fz0.s;
+        w03Var.l(hsVar5, new ou(hsVar5, z));
+        hs hsVar6 = fz0.t;
+        w03Var.l(hsVar6, new ou(hsVar6, z));
+        hs hsVar7 = fz0.u;
+        w03Var.l(hsVar7, new ou(hsVar7, z));
+        hs hsVar8 = fz0.v;
+        w03Var.l(hsVar8, new ou(hsVar8, z));
+        hs hsVar9 = fz0.w;
+        w03Var.l(hsVar9, new ou(hsVar9, z));
+        return w03Var;
     }
 }

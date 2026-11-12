@@ -4,8 +4,8 @@ import android.net.Uri;
 import android.text.TextUtils;
 import android.util.Base64;
 import androidx.media3.common.ParserException;
-import androidx.media3.exoplayer.hls.playlist.HlsPlaylistParser$DeltaUpdateException;
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.math.BigDecimal;
 import java.nio.charset.StandardCharsets;
@@ -22,1635 +22,1380 @@ import java.util.TreeMap;
 import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import org.chromium.support_lib_boundary.WebSettingsBoundaryInterface;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class en1 implements ce3 {
-    public static final Pattern A = null;
-    public static final Pattern A0 = null;
-    public static final Pattern B = null;
-    public static final Pattern B0 = null;
-    public static final Pattern C = null;
-    public static final Pattern C0 = null;
-    public static final Pattern D = null;
-    public static final Pattern D0 = null;
-    public static final Pattern E = null;
-    public static final Pattern E0 = null;
-    public static final Pattern F = null;
-    public static final Pattern F0 = null;
-    public static final Pattern G = null;
-    public static final Pattern G0 = null;
-    public static final Pattern H = null;
-    public static final Pattern H0 = null;
-    public static final Pattern I = null;
-    public static final Pattern I0 = null;
-    public static final Pattern J = null;
-    public static final Pattern J0 = null;
-    public static final Pattern K = null;
-    public static final Pattern K0 = null;
-    public static final Pattern L = null;
-    public static final Pattern L0 = null;
-    public static final Pattern M = null;
-    public static final Pattern N = null;
-    public static final Pattern O = null;
-    public static final Pattern P = null;
-    public static final Pattern Q = null;
-    public static final Pattern R = null;
-    public static final Pattern S = null;
-    public static final Pattern T = null;
-    public static final Pattern U = null;
-    public static final Pattern V = null;
-    public static final Pattern W = null;
-    public static final Pattern X = null;
-    public static final Pattern Y = null;
-    public static final Pattern Z = null;
-    public static final Pattern a0 = null;
-    public static final Pattern b0 = null;
-    public static final Pattern c0 = null;
-    public static final Pattern d0 = null;
-    public static final Pattern e0 = null;
-    public static final Pattern f0 = null;
-    public static final Pattern g0 = null;
-    public static final Pattern h0 = null;
-    public static final Pattern i0 = null;
-    public static final Pattern j0 = null;
-    public static final Pattern k0 = null;
-    public static final Pattern l0 = null;
-    public static final Pattern m0 = null;
-    public static final Pattern n0 = null;
-    public static final Pattern o0 = null;
-    public static final Pattern p = null;
-    public static final Pattern p0 = null;
-    public static final Pattern q = null;
-    public static final Pattern q0 = null;
-    public static final Pattern r = null;
-    public static final Pattern r0 = null;
-    public static final Pattern s = null;
-    public static final Pattern s0 = null;
-    public static final Pattern t = null;
-    public static final Pattern t0 = null;
-    public static final Pattern u = null;
-    public static final Pattern u0 = null;
-    public static final Pattern v = null;
-    public static final Pattern v0 = null;
-    public static final Pattern w = null;
-    public static final Pattern w0 = null;
-    public static final Pattern x = null;
-    public static final Pattern x0 = null;
-    public static final Pattern y = null;
-    public static final Pattern y0 = null;
-    public static final Pattern z = null;
-    public static final Pattern z0 = null;
     public final cn1 n;
     public final ym1 o;
+    public static final Pattern p = Pattern.compile("AVERAGE-BANDWIDTH=(\\d+)\\b");
+    public static final Pattern q = Pattern.compile("VIDEO=\"((?:.|\f)+?)\"");
+    public static final Pattern r = Pattern.compile("AUDIO=\"((?:.|\f)+?)\"");
+    public static final Pattern s = Pattern.compile("SUBTITLES=\"((?:.|\f)+?)\"");
+    public static final Pattern t = Pattern.compile("CLOSED-CAPTIONS=\"((?:.|\f)+?)\"");
+    public static final Pattern u = Pattern.compile("[^-]BANDWIDTH=(\\d+)\\b");
+    public static final Pattern v = Pattern.compile("CHANNELS=\"((?:.|\f)+?)\"");
+    public static final Pattern w = Pattern.compile("VIDEO-RANGE=(SDR|PQ|HLG)");
+    public static final Pattern x = Pattern.compile("CODECS=\"((?:.|\f)+?)\"");
+    public static final Pattern y = Pattern.compile("SUPPLEMENTAL-CODECS=\"((?:.|\f)+?)\"");
+    public static final Pattern z = Pattern.compile("RESOLUTION=(\\d+x\\d+)");
+    public static final Pattern A = Pattern.compile("FRAME-RATE=([\\d\\.]+)\\b");
+    public static final Pattern B = Pattern.compile("#EXT-X-TARGETDURATION:(\\d+)\\b");
+    public static final Pattern C = Pattern.compile("DURATION=([\\d\\.]+)\\b");
+    public static final Pattern D = Pattern.compile("[:,]DURATION=([\\d\\.]+)\\b");
+    public static final Pattern E = Pattern.compile("PART-TARGET=([\\d\\.]+)\\b");
+    public static final Pattern F = Pattern.compile("#EXT-X-VERSION:(\\d+)\\b");
+    public static final Pattern G = Pattern.compile("#EXT-X-PLAYLIST-TYPE:(.+)\\b");
+    public static final Pattern H = Pattern.compile("CAN-SKIP-UNTIL=([\\d\\.]+)\\b");
+    public static final Pattern I = b("CAN-SKIP-DATERANGES");
+    public static final Pattern J = Pattern.compile("SKIPPED-SEGMENTS=(\\d+)\\b");
+    public static final Pattern K = Pattern.compile("[:|,]HOLD-BACK=([\\d\\.]+)\\b");
+    public static final Pattern L = Pattern.compile("PART-HOLD-BACK=([\\d\\.]+)\\b");
+    public static final Pattern M = b("CAN-BLOCK-RELOAD");
+    public static final Pattern N = Pattern.compile("#EXT-X-MEDIA-SEQUENCE:(\\d+)\\b");
+    public static final Pattern O = Pattern.compile("#EXTINF:([\\d\\.]+)\\b");
+    public static final Pattern P = Pattern.compile("#EXTINF:[\\d\\.]+\\b,(.+)");
+    public static final Pattern Q = Pattern.compile("LAST-MSN=(\\d+)\\b");
+    public static final Pattern R = Pattern.compile("LAST-PART=(\\d+)\\b");
+    public static final Pattern S = Pattern.compile("TIME-OFFSET=(-?[\\d\\.]+)\\b");
+    public static final Pattern T = Pattern.compile("#EXT-X-BYTERANGE:(\\d+(?:@\\d+)?)\\b");
+    public static final Pattern U = Pattern.compile("BYTERANGE=\"(\\d+(?:@\\d+)?)\\b\"");
+    public static final Pattern V = Pattern.compile("BYTERANGE-START=(\\d+)\\b");
+    public static final Pattern W = Pattern.compile("BYTERANGE-LENGTH=(\\d+)\\b");
+    public static final Pattern X = Pattern.compile("METHOD=(NONE|AES-128|SAMPLE-AES|SAMPLE-AES-CENC|SAMPLE-AES-CTR)\\s*(?:,|$)");
+    public static final Pattern Y = Pattern.compile("KEYFORMAT=\"((?:.|\f)+?)\"");
+    public static final Pattern Z = Pattern.compile("KEYFORMATVERSIONS=\"((?:.|\f)+?)\"");
+    public static final Pattern a0 = Pattern.compile("URI=\"((?:.|\f)+?)\"");
+    public static final Pattern b0 = Pattern.compile("IV=([^,.*]+)");
+    public static final Pattern c0 = Pattern.compile("TYPE=(AUDIO|VIDEO|SUBTITLES|CLOSED-CAPTIONS)");
+    public static final Pattern d0 = Pattern.compile("TYPE=(PART|MAP)");
+    public static final Pattern e0 = Pattern.compile("LANGUAGE=\"((?:.|\f)+?)\"");
+    public static final Pattern f0 = Pattern.compile("NAME=\"((?:.|\f)+?)\"");
+    public static final Pattern g0 = Pattern.compile("GROUP-ID=\"((?:.|\f)+?)\"");
+    public static final Pattern h0 = Pattern.compile("CHARACTERISTICS=\"((?:.|\f)+?)\"");
+    public static final Pattern i0 = Pattern.compile("INSTREAM-ID=\"((?:CC|SERVICE)\\d+)\"");
+    public static final Pattern j0 = b("AUTOSELECT");
+    public static final Pattern k0 = b("DEFAULT");
+    public static final Pattern l0 = b("FORCED");
+    public static final Pattern m0 = b("INDEPENDENT");
+    public static final Pattern n0 = b("GAP");
+    public static final Pattern o0 = b("PRECISE");
+    public static final Pattern p0 = Pattern.compile("VALUE=\"((?:.|\f)+?)\"");
+    public static final Pattern q0 = Pattern.compile("IMPORT=\"((?:.|\f)+?)\"");
+    public static final Pattern r0 = Pattern.compile("[:,]ID=\"((?:.|\f)+?)\"");
+    public static final Pattern s0 = Pattern.compile("CLASS=\"((?:.|\f)+?)\"");
+    public static final Pattern t0 = Pattern.compile("START-DATE=\"((?:.|\f)+?)\"");
+    public static final Pattern u0 = Pattern.compile("CUE=\"((?:.|\f)+?)\"");
+    public static final Pattern v0 = Pattern.compile("END-DATE=\"((?:.|\f)+?)\"");
+    public static final Pattern w0 = Pattern.compile("PLANNED-DURATION=([\\d\\.]+)\\b");
+    public static final Pattern x0 = b("END-ON-NEXT");
+    public static final Pattern y0 = Pattern.compile("X-ASSET-URI=\"((?:.|\f)+?)\"");
+    public static final Pattern z0 = Pattern.compile("X-ASSET-LIST=\"((?:.|\f)+?)\"");
+    public static final Pattern A0 = Pattern.compile("X-RESUME-OFFSET=(-?[\\d\\.]+)\\b");
+    public static final Pattern B0 = Pattern.compile("X-PLAYOUT-LIMIT=([\\d\\.]+)\\b");
+    public static final Pattern C0 = Pattern.compile("X-SNAP=\"((?:.|\f)+?)\"");
+    public static final Pattern D0 = Pattern.compile("X-RESTRICT=\"((?:.|\f)+?)\"");
+    public static final Pattern E0 = Pattern.compile("X-CONTENT-MAY-VARY=\"((?:.|\f)+?)\"");
+    public static final Pattern F0 = Pattern.compile("X-TIMELINE-OCCUPIES=\"((?:.|\f)+?)\"");
+    public static final Pattern G0 = Pattern.compile("X-TIMELINE-STYLE=\"((?:.|\f)+?)\"");
+    public static final Pattern H0 = Pattern.compile("X-SKIP-CONTROL-OFFSET=([\\d\\.]+)\\b");
+    public static final Pattern I0 = Pattern.compile("X-SKIP-CONTROL-DURATION=([\\d\\.]+)\\b");
+    public static final Pattern J0 = Pattern.compile("X-SKIP-CONTROL-LABEL-ID=\"((?:.|\f)+?)\"");
+    public static final Pattern K0 = Pattern.compile("\\{\\$([a-zA-Z0-9\\-_]+)\\}");
+    public static final Pattern L0 = Pattern.compile("\\b(X-[A-Z0-9-]+)=");
 
-    static {
-        p = Pattern.compile("AVERAGE-BANDWIDTH=(\\d+)\\b");
-        q = Pattern.compile("VIDEO=\"((?:.|\f)+?)\"");
-        r = Pattern.compile("AUDIO=\"((?:.|\f)+?)\"");
-        s = Pattern.compile("SUBTITLES=\"((?:.|\f)+?)\"");
-        t = Pattern.compile("CLOSED-CAPTIONS=\"((?:.|\f)+?)\"");
-        u = Pattern.compile("[^-]BANDWIDTH=(\\d+)\\b");
-        v = Pattern.compile("CHANNELS=\"((?:.|\f)+?)\"");
-        w = Pattern.compile("VIDEO-RANGE=(SDR|PQ|HLG)");
-        x = Pattern.compile("CODECS=\"((?:.|\f)+?)\"");
-        y = Pattern.compile("SUPPLEMENTAL-CODECS=\"((?:.|\f)+?)\"");
-        z = Pattern.compile("RESOLUTION=(\\d+x\\d+)");
-        A = Pattern.compile("FRAME-RATE=([\\d\\.]+)\\b");
-        B = Pattern.compile("#EXT-X-TARGETDURATION:(\\d+)\\b");
-        C = Pattern.compile("DURATION=([\\d\\.]+)\\b");
-        D = Pattern.compile("[:,]DURATION=([\\d\\.]+)\\b");
-        E = Pattern.compile("PART-TARGET=([\\d\\.]+)\\b");
-        F = Pattern.compile("#EXT-X-VERSION:(\\d+)\\b");
-        G = Pattern.compile("#EXT-X-PLAYLIST-TYPE:(.+)\\b");
-        H = Pattern.compile("CAN-SKIP-UNTIL=([\\d\\.]+)\\b");
-        I = b("CAN-SKIP-DATERANGES");
-        J = Pattern.compile("SKIPPED-SEGMENTS=(\\d+)\\b");
-        K = Pattern.compile("[:|,]HOLD-BACK=([\\d\\.]+)\\b");
-        L = Pattern.compile("PART-HOLD-BACK=([\\d\\.]+)\\b");
-        M = b("CAN-BLOCK-RELOAD");
-        N = Pattern.compile("#EXT-X-MEDIA-SEQUENCE:(\\d+)\\b");
-        O = Pattern.compile("#EXTINF:([\\d\\.]+)\\b");
-        P = Pattern.compile("#EXTINF:[\\d\\.]+\\b,(.+)");
-        Q = Pattern.compile("LAST-MSN=(\\d+)\\b");
-        R = Pattern.compile("LAST-PART=(\\d+)\\b");
-        S = Pattern.compile("TIME-OFFSET=(-?[\\d\\.]+)\\b");
-        T = Pattern.compile("#EXT-X-BYTERANGE:(\\d+(?:@\\d+)?)\\b");
-        U = Pattern.compile("BYTERANGE=\"(\\d+(?:@\\d+)?)\\b\"");
-        V = Pattern.compile("BYTERANGE-START=(\\d+)\\b");
-        W = Pattern.compile("BYTERANGE-LENGTH=(\\d+)\\b");
-        X = Pattern.compile("METHOD=(NONE|AES-128|SAMPLE-AES|SAMPLE-AES-CENC|SAMPLE-AES-CTR)\\s*(?:,|$)");
-        Y = Pattern.compile("KEYFORMAT=\"((?:.|\f)+?)\"");
-        Z = Pattern.compile("KEYFORMATVERSIONS=\"((?:.|\f)+?)\"");
-        a0 = Pattern.compile("URI=\"((?:.|\f)+?)\"");
-        b0 = Pattern.compile("IV=([^,.*]+)");
-        c0 = Pattern.compile("TYPE=(AUDIO|VIDEO|SUBTITLES|CLOSED-CAPTIONS)");
-        d0 = Pattern.compile("TYPE=(PART|MAP)");
-        e0 = Pattern.compile("LANGUAGE=\"((?:.|\f)+?)\"");
-        f0 = Pattern.compile("NAME=\"((?:.|\f)+?)\"");
-        g0 = Pattern.compile("GROUP-ID=\"((?:.|\f)+?)\"");
-        h0 = Pattern.compile("CHARACTERISTICS=\"((?:.|\f)+?)\"");
-        i0 = Pattern.compile("INSTREAM-ID=\"((?:CC|SERVICE)\\d+)\"");
-        j0 = b("AUTOSELECT");
-        k0 = b("DEFAULT");
-        l0 = b("FORCED");
-        m0 = b("INDEPENDENT");
-        n0 = b("GAP");
-        o0 = b("PRECISE");
-        p0 = Pattern.compile("VALUE=\"((?:.|\f)+?)\"");
-        q0 = Pattern.compile("IMPORT=\"((?:.|\f)+?)\"");
-        r0 = Pattern.compile("[:,]ID=\"((?:.|\f)+?)\"");
-        s0 = Pattern.compile("CLASS=\"((?:.|\f)+?)\"");
-        t0 = Pattern.compile("START-DATE=\"((?:.|\f)+?)\"");
-        u0 = Pattern.compile("CUE=\"((?:.|\f)+?)\"");
-        v0 = Pattern.compile("END-DATE=\"((?:.|\f)+?)\"");
-        w0 = Pattern.compile("PLANNED-DURATION=([\\d\\.]+)\\b");
-        x0 = b("END-ON-NEXT");
-        y0 = Pattern.compile("X-ASSET-URI=\"((?:.|\f)+?)\"");
-        z0 = Pattern.compile("X-ASSET-LIST=\"((?:.|\f)+?)\"");
-        A0 = Pattern.compile("X-RESUME-OFFSET=(-?[\\d\\.]+)\\b");
-        B0 = Pattern.compile("X-PLAYOUT-LIMIT=([\\d\\.]+)\\b");
-        C0 = Pattern.compile("X-SNAP=\"((?:.|\f)+?)\"");
-        D0 = Pattern.compile("X-RESTRICT=\"((?:.|\f)+?)\"");
-        E0 = Pattern.compile("X-CONTENT-MAY-VARY=\"((?:.|\f)+?)\"");
-        F0 = Pattern.compile("X-TIMELINE-OCCUPIES=\"((?:.|\f)+?)\"");
-        G0 = Pattern.compile("X-TIMELINE-STYLE=\"((?:.|\f)+?)\"");
-        H0 = Pattern.compile("X-SKIP-CONTROL-OFFSET=([\\d\\.]+)\\b");
-        I0 = Pattern.compile("X-SKIP-CONTROL-DURATION=([\\d\\.]+)\\b");
-        J0 = Pattern.compile("X-SKIP-CONTROL-LABEL-ID=\"((?:.|\f)+?)\"");
-        K0 = Pattern.compile("\\{\\$([a-zA-Z0-9\\-_]+)\\}");
-        L0 = Pattern.compile("\\b(X-[A-Z0-9-]+)=");
+    public en1(cn1 cn1Var, ym1 ym1Var) {
+        this.n = cn1Var;
+        this.o = ym1Var;
     }
 
-    public en1(cn1 r1, ym1 r2) {
-        this.n = r1;
-        this.o = r2;
+    public static Pattern b(String str) {
+        return Pattern.compile(str.concat("=(NO|YES)"));
     }
 
-    public static Pattern b(String r1) {
-        return Pattern.compile(r1.concat("=(NO|YES)"));
+    public static ow0 c(String str, nw0[] nw0VarArr) {
+        nw0[] nw0VarArr2 = new nw0[nw0VarArr.length];
+        for (int i = 0; i < nw0VarArr.length; i++) {
+            nw0 nw0Var = nw0VarArr[i];
+            nw0VarArr2[i] = new nw0(nw0Var.o, nw0Var.p, nw0Var.q, null);
+        }
+        return new ow0(str, true, nw0VarArr2);
     }
 
-    public static ow0 c(String r7, nw0[] r8) {
-        nw0[] r1 = new nw0[r8.length];
-        int r2 = 0;
-    L4:
-        if (r2 >= r8.length) goto L7;
-        nw0 r3 = r8[r2];
-        r1[r2] = new nw0(r3.o, r3.p, r3.q, null);
-        r2 = r2 + 1;
-        goto L4
-    L7:
-        return new ow0(r7, true, r1);
+    public static nw0 d(String str, String str2, HashMap map) throws ParserException {
+        String strJ = j(str, Z, "1", map);
+        boolean zEquals = "urn:uuid:edef8ba9-79d6-4ace-a3c8-27dcd51d21ed".equals(str2);
+        Pattern pattern = a0;
+        if (zEquals) {
+            String strK = k(str, pattern, map);
+            return new nw0(ax.d, null, "video/mp4", Base64.decode(strK.substring(strK.indexOf(44)), 0));
+        }
+        if ("com.widevine".equals(str2)) {
+            UUID uuid = ax.d;
+            String str3 = f35.a;
+            return new nw0(uuid, null, "hls", str.getBytes(StandardCharsets.UTF_8));
+        }
+        if (!"com.microsoft.playready".equals(str2) || !"1".equals(strJ)) {
+            return null;
+        }
+        String strK2 = k(str, pattern, map);
+        byte[] bArrDecode = Base64.decode(strK2.substring(strK2.indexOf(44)), 0);
+        UUID uuid2 = ax.e;
+        return new nw0(uuid2, null, "video/mp4", te5.d(uuid2, null, bArrDecode));
     }
 
-    public static nw0 d(String r8, String r9, HashMap r10) {
-        String r1 = j(r8, Z, "1", r10);
-        boolean r2 = "urn:uuid:edef8ba9-79d6-4ace-a3c8-27dcd51d21ed".equals(r9);
-        Pattern r6 = a0;
-        if (r2 == false) goto L7;
-        String r11 = k(r8, r6, r10);
-        return new nw0(ax.d, null, "video/mp4", Base64.decode(r11.substring(r11.indexOf(44)), 0));
-    L7:
-        if ("com.widevine".equals(r9) == false) goto L11;
-        UUID r12 = ax.d;
-        String r3 = f35.a;
-        return new nw0(r12, null, "hls", r8.getBytes(StandardCharsets.UTF_8));
-    L11:
-        if ("com.microsoft.playready".equals(r9) == true) goto L13;
-    L16:
-        return null;
-    L13:
-        if ("1".equals(r1) == false) goto L16;
-        String r13 = k(r8, r6, r10);
-        byte[] r14 = Base64.decode(r13.substring(r13.indexOf(44)), 0);
-        UUID r15 = ax.e;
-        return new nw0(r15, null, "video/mp4", te5.d(r15, null, r14));
-    }
-
+    /* JADX WARN: Code duplicated, block: B:274:0x07a5 A[PHI: r51
+  0x07a5: PHI (r51v18 int) = (r51v14 int), (r51v15 int), (r51v16 int), (r51v19 int) binds: [B:284:0x07ca, B:280:0x07bd, B:276:0x07af, B:273:0x07a3] A[DONT_GENERATE, DONT_INLINE]] */
+    /* JADX WARN: Code duplicated, block: B:344:0x08f4  */
+    /* JADX WARN: Code duplicated, block: B:353:0x0910  */
+    /* JADX WARN: Code duplicated, block: B:368:0x096b A[PHI: r29
+  0x096b: PHI (r29v17 java.util.regex.Matcher) = 
+  (r29v4 java.util.regex.Matcher)
+  (r29v5 java.util.regex.Matcher)
+  (r29v6 java.util.regex.Matcher)
+  (r29v7 java.util.regex.Matcher)
+  (r29v8 java.util.regex.Matcher)
+  (r29v9 java.util.regex.Matcher)
+  (r29v10 java.util.regex.Matcher)
+  (r29v11 java.util.regex.Matcher)
+  (r29v12 java.util.regex.Matcher)
+  (r29v13 java.util.regex.Matcher)
+  (r29v14 java.util.regex.Matcher)
+  (r29v15 java.util.regex.Matcher)
+  (r29v18 java.util.regex.Matcher)
+ binds: [B:414:0x0a14, B:410:0x0a07, B:406:0x09f9, B:402:0x09ec, B:398:0x09df, B:394:0x09d2, B:390:0x09c5, B:386:0x09b6, B:382:0x09a6, B:378:0x0996, B:374:0x0986, B:370:0x0976, B:367:0x0969] A[DONT_GENERATE, DONT_INLINE]] */
+    /* JADX WARN: Code duplicated, block: B:662:0x0ef4  */
+    /* JADX WARN: Code duplicated, block: B:664:0x0f0d  */
+    /* JADX WARN: Code duplicated, block: B:667:0x0f25  */
+    /* JADX WARN: Code duplicated, block: B:668:0x0f28  */
+    /* JADX WARN: Code duplicated, block: B:719:0x108f  */
     /* JADX WARN: Multi-variable type inference failed */
-    public static ym1 e(cn1 r131, ym1 r132, qp4 r133, String r134) {
-        cn1 r1 = r131;
-        ym1 r2 = r132;
-        boolean r3 = r1.c;
-        HashMap r4 = new HashMap();
-        HashMap r5 = new HashMap();
-        ArrayList r6 = new ArrayList();
-        ArrayList r7 = new ArrayList();
-        ArrayList r8 = new ArrayList();
-        ArrayList r9 = new ArrayList();
-        LinkedHashMap r10 = new LinkedHashMap();
-        xm1 r11 = new xm1(-9223372036854775807L, false, -9223372036854775807L, -9223372036854775807L, false);
-        TreeMap r12 = new TreeMap();
-        String r15 = "";
-        boolean r23 = r3;
-        String r74 = "";
-        long r45 = -9223372036854775807L;
-        long r24 = 0;
-        long r35 = 0;
-        long r40 = 0;
-        long r42 = 0;
-        long r57 = 0;
-        long r72 = 0;
-        long r75 = 0;
-        long r38 = -1;
-        tm1 r13 = null;
-        String r14 = null;
-        ow0 r26 = null;
-        String r34 = null;
-        ow0 r37 = null;
-        int r44 = 0;
-        int r47 = 1;
-        boolean r48 = false;
-        boolean r49 = false;
-        int r50 = 0;
-        vm1 r53 = null;
-        int r56 = 0;
-        String r60 = null;
-        int r69 = 0;
-        boolean r70 = false;
-        int r71 = 0;
-        long r19 = -9223372036854775807L;
-        long r21 = -9223372036854775807L;
-        long r16 = 0;
-        boolean r18 = false;
-    L3:
-        r11 = r11;
-        if (r133.j() == false) goto L671;
-        String r17 = r133.l();
-        r13 = r13;
-        if (r17.startsWith("#EXT") == false) goto L9;
-        r9.add(r17);
-    L9:
-        if (r17.startsWith("#EXT-X-PLAYLIST-TYPE") == true) goto L10;
-        if (r17.equals("#EXT-X-I-FRAMES-ONLY") == false) goto L22;
-        r11 = r11;
-        r13 = r13;
-        r70 = true;
-        goto L3
-    L22:
-        if (r17.startsWith("#EXT-X-START") == true) goto L23;
-        if (r17.startsWith("#EXT-X-SERVER-CONTROL") == false) goto L40;
-        double r27 = h(r17, H, -9.223372036854776E18d);
-        if (r27 != (-9.223372036854776E18d)) goto L29;
-        long r88 = -9223372036854775807L;
-    L30:
-        boolean r90 = g(r17, I);
-        double r28 = h(r17, K, -9.223372036854776E18d);
-        if (r28 != (-9.223372036854776E18d)) goto L33;
-        long r91 = -9223372036854775807L;
-    L34:
-        double r29 = h(r17, L, -9.223372036854776E18d);
-        if (r29 != (-9.223372036854776E18d)) goto L37;
-        long r93 = -9223372036854775807L;
-    L38:
-        r13 = r13;
-        r11 = new xm1(r88, r90, r91, r93, g(r17, M));
-        goto L3
-    L37:
-        r93 = (long) (r29 * 1000000.0d);
-        goto L38
-    L33:
-        r91 = (long) (r28 * 1000000.0d);
-        goto L34
-    L29:
-        r88 = (long) (r27 * 1000000.0d);
-        goto L30
-    L40:
-        if (r17.startsWith("#EXT-X-PART-INF") == true) goto L41;
-        boolean r20 = r17.startsWith("#EXT-X-MAP");
-        Pattern r22 = U;
-        r9 = r9;
-        r5 = r5;
-        Pattern r25 = a0;
-        if (r20 == false) goto L62;
-        String r210 = k(r17, r25, r4);
-        String r30 = j(r17, r22, null, r4);
-        if (r30 == null) goto L49;
-        String r31 = f35.a;
-        String[] r32 = r30.split("@", -1);
-        r38 = Long.parseLong(r32[r69]);
-        if (r32.length <= 1) goto L49;
-        r24 = Long.parseLong(r32[1]);
-    L49:
-        long r33 = r38;
-        if (r33 != (-1)) goto L52;
-        long r211 = 0;
-    L53:
-        if (r60 == null) goto L58;
-        if (r34 != null) goto L58;
-        throw ParserException.b("The encryption IV attribute must be present when an initialization segment is encrypted with METHOD=AES-128.");
-    L58:
-        vm1 r212 = new vm1(r210, r211, r33, r60, r34);
-        String r89 = r34;
-        if (r33 == (-1)) goto L61;
-        r211 = r211 + r33;
-    L61:
-        r24 = r211;
-        r53 = r212;
-        r38 = -1;
-        r11 = r11;
-        r13 = r13;
-        r9 = r9;
-        r5 = r5;
-        r34 = r89;
-        goto L3
-    L52:
-        r211 = r24;
-        goto L53
-    L62:
-        LinkedHashMap r92 = r10;
-        String r810 = r34;
-        if (r17.startsWith("#EXT-X-TARGETDURATION") == true) goto L64;
-        if (r17.startsWith("#EXT-X-MEDIA-SEQUENCE") == true) goto L69;
-        if (r17.startsWith("#EXT-X-VERSION") == true) goto L72;
-        if (r17.startsWith("#EXT-X-DEFINE") == true) goto L75;
-        if (r17.startsWith("#EXTINF") == true) goto L84;
-        if (r17.startsWith("#EXT-X-SKIP") == true) goto L87;
-        if (r17.startsWith("#EXT-X-KEY") == true) goto L121;
-        if (r17.startsWith("#EXT-X-BYTERANGE") == true) goto L147;
-        if (r17.startsWith("#EXT-X-DISCONTINUITY-SEQUENCE") == false) goto L155;
-        r50 = Integer.parseInt(r17.substring(r17.indexOf(58) + 1));
-        r1 = r131;
-        r2 = r132;
-        r11 = r11;
-        r13 = r13;
-        r9 = r9;
-        r5 = r5;
-        r34 = r810;
-        r10 = r92;
-        r49 = true;
-        goto L3
-    L155:
-        if (r17.equals("#EXT-X-DISCONTINUITY") == true) goto L156;
-        if (r17.startsWith("#EXT-X-PROGRAM-DATE-TIME") == true) goto L160;
-        if (r17.equals("#EXT-X-GAP") == false) goto L166;
-        r1 = r131;
-        r2 = r132;
-        r11 = r11;
-        r13 = r13;
-        r9 = r9;
-        r5 = r5;
-        r34 = r810;
-        r10 = r92;
-        r71 = 1;
-        goto L3
-    L166:
-        if (r17.equals("#EXT-X-INDEPENDENT-SEGMENTS") == false) goto L169;
-        r1 = r131;
-        r2 = r132;
-        r11 = r11;
-        r13 = r13;
-        r9 = r9;
-        r5 = r5;
-        r34 = r810;
-        r10 = r92;
-        r23 = true;
-        goto L3
-    L169:
-        if (r17.equals("#EXT-X-ENDLIST") == false) goto L172;
-        r1 = r131;
-        r2 = r132;
-        r11 = r11;
-        r13 = r13;
-        r9 = r9;
-        r5 = r5;
-        r34 = r810;
-        r10 = r92;
-        r48 = true;
-        goto L3
-    L172:
-        if (r17.startsWith("#EXT-X-RENDITION-REPORT") == true) goto L173;
-        if (r17.startsWith("#EXT-X-PRELOAD-HINT") == true) goto L180;
-        if (r17.startsWith("#EXT-X-PART") == false) goto L247;
-        if (r60 != null) goto L215;
-        String r61 = null;
-    L218:
-        String r52 = k(r17, r25, r4);
-        long r36 = (long) (Double.parseDouble(k(r17, C, Collections.EMPTY_MAP)) * 1000000.0d);
-        boolean r39 = g(r17, m0);
-        if (r23 == true) goto L221;
-    L223:
-        boolean r110 = false;
-    L224:
-        boolean r67 = r39 | r110;
-        boolean r66 = g(r17, n0);
-        String r41 = j(r17, r22, null, r4);
-        if (r41 == null) goto L230;
-        String r43 = f35.a;
-        String[] r46 = r41.split("@", -1);
-        long r111 = Long.parseLong(r46[0]);
-        if (r46.length <= 1) goto L229;
-        r75 = Long.parseLong(r46[1]);
-    L229:
-        long r64 = r111;
-    L232:
-        if (r64 != (-1)) goto L234;
-        long r62 = 0;
-    L235:
-        if (r37 == null) goto L237;
-    L242:
-        ow0 r59 = r37;
-    L243:
-        tm1 r51 = new tm1(r52, r53, r36, r56, r57, r59, r60, r61, r62, r64, r66, r67, false);
-        vm1 r112 = r53;
-        int r54 = r56;
-        r7.add(r51);
-        r57 = r57 + r36;
-        if (r64 == (-1)) goto L246;
-        r62 = r62 + r64;
-    L246:
-        r75 = r62;
-        r2 = r132;
-        r56 = r54;
-        r53 = r112;
-        r37 = r59;
-        r11 = r11;
-        r13 = r13;
-        r9 = r9;
-        r5 = r5;
-        r34 = r810;
-        r10 = r92;
-        r69 = 0;
-        r1 = r131;
-        goto L3
-    L237:
-        if (r12.isEmpty() == true) goto L242;
-        nw0[] r55 = (nw0[]) r12.values().toArray(new nw0[0]);
-        ow0 r58 = new ow0(r14, true, r55);
-        if (r26 != null) goto L241;
-        r26 = c(r14, r55);
-    L241:
-        r59 = r58;
-        goto L243
-    L234:
-        r62 = r75;
-        goto L235
-    L230:
-        r64 = -1;
-        goto L232
-    L221:
-        if (r7.isEmpty() == false) goto L223;
-        r110 = true;
-        goto L224
-    L215:
-        if (r810 == null) goto L217;
-        r61 = r810;
-        goto L218
-    L217:
-        r61 = Long.toHexString(r40);
-        goto L218
-    L247:
-        vm1 r113 = r53;
-        int r63 = r56;
-        if (r17.startsWith("#EXT-X-DATERANGE") == true) goto L250;
-    L636:
-        int r310 = r63;
-        ArrayList r130 = r6;
-        r7 = r7;
-        ArrayList r115 = r8;
-        TreeMap r116 = r12;
-        String r117 = r14;
-        vm1 r68 = r113;
-        String r610 = r15;
-        LinkedHashMap r65 = r92;
-        if (r17.startsWith("#") == false) goto L638;
-    L635:
-        int r311 = r310;
-        r7 = r7;
-        String r114 = r117;
-        ArrayList r73 = r130;
-        int r118 = 0;
-    L670:
-        r1 = r131;
-        r2 = r132;
-        r10 = r65;
-        r69 = r118;
-        r14 = r114;
-        r74 = r74;
-        r72 = r72;
-        r35 = r35;
-        r24 = r24;
-        r53 = r68;
-        r15 = r610;
-        r9 = r9;
-        r34 = r810;
-        r8 = r115;
-        r12 = r116;
-        r6 = r73;
-        r56 = r311;
-    L17:
-        r13 = r13;
-        goto L3
-    L638:
-        if (r60 != null) goto L640;
-        String r312 = null;
-    L643:
-        long r76 = r40 + 1;
-        String r77 = l(r4, r17);
-        r5 = r5;
-        vm1 r78 = (vm1) r5.get(r77);
-        if (r38 != (-1)) goto L646;
-        vm1 r510 = r78;
-        r24 = 0;
-    L651:
-        if (r37 == null) goto L653;
-    L659:
-        String r119 = r117;
-        int r120 = 0;
-    L658:
-        ow0 r79 = r26;
-    L661:
-        if (r68 == null) goto L664;
-        vm1 r213 = r68;
-    L663:
-        long r313 = r35;
-        ow0 r314 = r37;
-        long r315 = r24;
-        long r214 = r72;
-        String r316 = r312;
-        String r317 = r60;
-        r60 = r317;
-        r130.add(new vm1(r77, r213, r74, r214, r310, r313, r314, r317, r316, r315, r38, r71, r7));
-        r57 = r313 + r214;
-        ArrayList r80 = new ArrayList();
-        if (r38 == (-1)) goto L668;
-        r24 = r315 + r38;
-    L669:
-        r40 = r76;
-        r10 = r65;
-        r26 = r79;
-        r7 = r80;
-        r69 = r120;
-        r71 = r69;
-        r14 = r119;
-        r56 = r310;
-        r37 = r314;
-        r35 = r57;
-        r53 = r68;
-        r15 = r610;
-        r74 = r15;
-        r72 = 0;
-        r38 = -1;
-        r9 = r9;
-        r34 = r810;
-        r8 = r115;
-        r12 = r116;
-        r1 = r131;
-        r2 = r132;
-        r6 = r130;
-        goto L17
-    L668:
-        r24 = r315;
-        goto L669
-    L664:
-        r213 = r510;
-        goto L663
-    L653:
-        if (r116.isEmpty() == true) goto L659;
-        r120 = 0;
-        nw0[] r81 = (nw0[]) r116.values().toArray(new nw0[0]);
-        r119 = r117;
-        ow0 r82 = new ow0(r119, true, r81);
-        if (r26 != null) goto L657;
-        r79 = c(r119, r81);
-        r37 = r82;
-        goto L661
-    L657:
-        r37 = r82;
-        goto L658
-    L646:
-        if (r70 == false) goto L650;
-        if (r68 != null) goto L650;
-        if (r78 != null) goto L650;
-        vm1 r511 = new vm1(r77, 0, r24, null, null);
-        r5.put(r77, r511);
-        r510 = r511;
-    L650:
-        r510 = r78;
-        r24 = r24;
-        goto L651
-    L640:
-        if (r810 == null) goto L642;
-        r312 = r810;
-        goto L643
-    L642:
-        r312 = Long.toHexString(r40);
-        goto L643
-    L250:
-        if (j(r17, s0, r15, r4).equals("com.apple.hls.interstitial") == false) goto L636;
-        String r83 = k(r17, r0, r4);
-        String r84 = j(r17, y0, null, r4);
-        if (r84 == null) goto L254;
-        Uri r85 = Uri.parse(r84);
-    L255:
-        String r86 = j(r17, z0, null, r4);
-        if (r86 == null) goto L258;
-        Uri r87 = Uri.parse(r86);
-    L259:
-        String r121 = j(r17, t0, null, r4);
-        if (r121 == null) goto L262;
-        long r512 = f35.Q(f35.T(r121));
-    L263:
-        String r122 = j(r17, v0, null, r4);
-        if (r122 == null) goto L266;
-        long r611 = f35.Q(f35.T(r122));
-    L267:
-        ArrayList r123 = new ArrayList();
-        r310 = r63;
-        String r94 = j(r17, u0, null, r4);
-        if (r94 == null) goto L292;
-        String r318 = f35.a;
-        String[] r95 = r94.split(",", -1);
-        int r96 = r95.length;
-        int r97 = 0;
-    L270:
-        if (r97 >= r96) goto L292;
-        int r513 = r97;
-        String r98 = r95[r97].trim();
-        r98.getClass();
-        switch(r98.hashCode()) {
-            case 79491: goto L283;
-            case 2430593: goto L279;
-            case 2461856: goto L275;
-            default: goto L273;
-        };
-    L273:
-        int r514 = r96;
-    L274:
-        byte r99 = -1;
-    L287:
-        switch(r99) {
-            case 0: goto L289;
-            case 1: goto L289;
-            case 2: goto L289;
-            default: goto L290;
-        };
-    L289:
-        r123.add(r98);
-    L290:
-        r97 = r513 + 1;
-        r96 = r514;
-        goto L270
-    L275:
-        r514 = r96;
-        if (r98.equals("POST") == false) goto L274;
-        r99 = 2;
-        goto L287
-    L279:
-        r514 = r96;
-        if (r98.equals("ONCE") == false) goto L274;
-        r99 = 1;
-        goto L287
-    L283:
-        r514 = r96;
-        if (r98.equals("PRE") == false) goto L274;
-        r99 = 0;
-    L292:
-        r68 = r113;
-        String r100 = r15;
-        double r515 = h(r17, D, -1.0d);
-        if (r515 < 0.0d) goto L295;
-        long r910 = (long) (r515 * 1000000.0d);
-    L296:
-        double r516 = h(r17, w0, -1.0d);
-        if (r516 < 0.0d) goto L299;
-        long r101 = (long) (r516 * 1000000.0d);
-    L300:
-        boolean r102 = g(r17, x0);
-        r610 = r100;
-        ArrayList r124 = r8;
-        double r517 = h(r17, A0, Double.MIN_VALUE);
-        if (r517 == Double.MIN_VALUE) goto L303;
-        long r107 = (long) (r517 * 1000000.0d);
-    L304:
-        ArrayList r103 = r124;
-        double r518 = h(r17, B0, -1.0d);
-        if (r518 < 0.0d) goto L307;
-        long r1110 = (long) (r518 * 1000000.0d);
-    L308:
-        ArrayList r104 = new ArrayList();
-        String r125 = j(r17, C0, null, r4);
-        if (r125 == null) goto L319;
-        String r126 = f35.a;
-        String[] r127 = r125.split(",", -1);
-        int r128 = r127.length;
-        int r105 = 0;
-    L311:
-        if (r105 >= r128) goto L319;
-        int r519 = r105;
-        String r106 = r127[r105].trim();
-        r106.getClass();
-        ArrayList r1111 = r103;
-        if (r106.equals("IN") == false) goto L315;
-    L317:
-        r104.add(r106);
-    L318:
-        r105 = r519 + 1;
-        r103 = r1111;
-        goto L311
-    L315:
-        if (r106.equals("OUT") == true) goto L317;
-    L319:
-        r115 = r103;
-        ArrayList r108 = new ArrayList();
-        String r109 = j(r17, D0, null, r4);
-        if (r109 == null) goto L332;
-        String r129 = f35.a;
-        String[] r135 = r109.split(",", -1);
-        int r136 = r135.length;
-        int r137 = 0;
-    L324:
-        if (r137 >= r136) goto L332;
-        String r138 = r135[r137].trim();
-        r138.getClass();
-        String[] r520 = r135;
-        if (r138.equals("JUMP") == false) goto L328;
-    L330:
-        r108.add(r138);
-    L331:
-        r137 = r137 + 1;
-        r135 = r520;
-        goto L324
-    L328:
-        if (r138.equals("SKIP") == true) goto L330;
-    L332:
-        String r139 = j(r17, E0, null, r4);
-        if (r139 == null) goto L335;
-        Boolean r140 = Boolean.valueOf(!r139.equals("NO"));
-    L336:
-        String r141 = j(r17, F0, null, r4);
-        if (r141 == null) goto L344;
-        String r142 = "RANGE";
-        if (r141.equals("RANGE") == true) goto L345;
-        r142 = "POINT";
-        if (r141.equals(r142) == false) goto L344;
-    L345:
-        String r143 = j(r17, G0, null, r4);
-        if (r143 == null) goto L353;
-        String r144 = "PRIMARY";
-        if (r143.equals("PRIMARY") == true) goto L354;
-        r144 = "HIGHLIGHT";
-        if (r143.equals(r144) == false) goto L353;
-    L354:
-        r116 = r12;
-        r117 = r14;
-        double r319 = h(r17, H0, -1.0d);
-        if (r319 < 0.0d) goto L357;
-        long r1210 = (long) (r319 * 1000000.0d);
-    L358:
-        double r145 = h(r17, I0, -1.0d);
-        if (r145 < 0.0d) goto L361;
-        long r1211 = (long) (r145 * 1000000.0d);
-    L362:
-        String r146 = j(r17, J0, null, r4);
-        ArrayList r147 = new ArrayList();
-        String r148 = r17.substring(17);
-        Matcher r149 = L0.matcher(r148);
-    L364:
-        if (r149.find() == false) goto L435;
-        String r150 = r149.group();
-        r150.getClass();
-        switch(r150.hashCode()) {
-            case -2136701954: goto L413;
-            case -1843050726: goto L409;
-            case -148960310: goto L405;
-            case -36345757: goto L401;
-            case 397239341: goto L397;
-            case 850193465: goto L393;
-            case 1065650400: goto L389;
-            case 1274498945: goto L385;
-            case 1472528844: goto L381;
-            case 1748487807: goto L377;
-            case 1814205923: goto L373;
-            case 2080546752: goto L369;
-            default: goto L367;
-        };
-    L367:
-        Matcher r215 = r149;
-    L368:
-        byte r151 = -1;
-    L417:
-        switch(r151) {
-            case 0: goto L433;
-            case 1: goto L433;
-            case 2: goto L433;
-            case 3: goto L433;
-            case 4: goto L433;
-            case 5: goto L433;
-            case 6: goto L433;
-            case 7: goto L433;
-            case 8: goto L433;
-            case 9: goto L433;
-            case 10: goto L433;
-            case 11: goto L433;
-            default: goto L418;
-        };
-    L418:
-        String r152 = r150.substring(0, r150.length() - 1);
-        String r153 = r152.concat("=");
-        int r154 = r153.length() + r148.indexOf(r153);
-        if (r148.length() != (r154 + 1)) goto L421;
-        int r155 = 1;
-    L422:
-        String r156 = r148.substring(r154, r155 + r154);
-        if (r156.startsWith("\"") == false) goto L426;
-        qm1 r157 = new qm1(0, r152, k(r148, Pattern.compile(r152.concat("=\"((?:.|\f)+?)\"")), r4));
-    L432:
-        r147.add(r157);
-    L434:
-        r142 = r142;
-        r149 = r215;
-        r146 = r146;
-        r144 = r144;
-        r6 = r6;
-        goto L364
-    L426:
-        if (r156.equals("0x") == true) goto L431;
-        if (r156.equals("0X") == true) goto L431;
-        r157 = new qm1(r152, Double.parseDouble(k(r148, Pattern.compile(r152.concat("=([\\d\\.]+)\\b")), Collections.EMPTY_MAP)));
-    L431:
-        r157 = new qm1(1, r152, k(r148, Pattern.compile(r152.concat("=(0[xX][A-F0-9]+)")), r4));
-        goto L432
-    L421:
-        r155 = 2;
-        goto L422
-    L433:
-        r142 = r142;
-        r144 = r144;
-        goto L434
-    L369:
-        r215 = r149;
-        if (r150.equals("X-SKIP-CONTROL-LABEL-ID=") == false) goto L368;
-        r151 = 11;
-        goto L417
-    L373:
-        r215 = r149;
-        if (r150.equals("X-ASSET-URI=") == false) goto L368;
-        r151 = 10;
-        goto L417
-    L377:
-        r215 = r149;
-        if (r150.equals("X-RESUME-OFFSET=") == false) goto L368;
-        r151 = 9;
-        goto L417
-    L381:
-        r215 = r149;
-        if (r150.equals("X-RESTRICT=") == false) goto L368;
-        r151 = 8;
-        goto L417
-    L385:
-        r215 = r149;
-        if (r150.equals("X-SKIP-CONTROL-OFFSET=") == false) goto L368;
-        r151 = 7;
-        goto L417
-    L389:
-        r215 = r149;
-        if (r150.equals("X-SKIP-CONTROL-DURATION=") == false) goto L368;
-        r151 = 6;
-        goto L417
-    L393:
-        r215 = r149;
-        if (r150.equals("X-TIMELINE-OCCUPIES=") == false) goto L368;
-        r151 = 5;
-        goto L417
-    L397:
-        r215 = r149;
-        if (r150.equals("X-ASSET-LIST=") == false) goto L368;
-        r151 = 4;
-        goto L417
-    L401:
-        r215 = r149;
-        if (r150.equals("X-TIMELINE-STYLE=") == false) goto L368;
-        r151 = 3;
-        goto L417
-    L405:
-        r215 = r149;
-        if (r150.equals("X-PLAYOUT-LIMIT=") == false) goto L368;
-        r151 = 2;
-        goto L417
-    L409:
-        r215 = r149;
-        if (r150.equals("X-CONTENT-MAY-VARY=") == false) goto L368;
-        r151 = 1;
-        goto L417
-    L413:
-        r215 = r149;
-        if (r150.equals("X-SNAP=") == false) goto L368;
-        r151 = 0;
-        goto L417
-    L435:
-        r130 = r6;
-        String r320 = r146;
-        String r158 = r142;
-        String r321 = r144;
-        r65 = r92;
-        if (r65.containsKey(r83) == false) goto L438;
-        rm1 r159 = (rm1) r65.get(r83);
-    L439:
-        if (r85 != null) goto L441;
-        r159.getClass();
-    L445:
-        if (r87 == null) goto L452;
-        Uri r160 = r159.d;
-        if (r160 == null) goto L450;
-        rr2.p(r160.equals(r87), "Can't change assetListUri from %s to %s", r159.d, r87);
-    L450:
-        r159.d = r87;
-    L452:
-        if (r512 == (-9223372036854775807L)) goto L463;
-        long r161 = r159.e;
-        if (r161 != (-9223372036854775807L)) goto L457;
-    L461:
-        r159.e = r512;
-        goto L463
-    L457:
-        if (r161 != r512) goto L459;
-        boolean r521 = true;
-    L460:
-        rr2.n(r521, "Can't change startDateUnixUs from %s to %s", r161, r512);
-        goto L461
-    L459:
-        r521 = false;
-    L463:
-        if (r611 == (-9223372036854775807L)) goto L474;
-        long r162 = r159.f;
-        if (r162 != (-9223372036854775807L)) goto L468;
-    L472:
-        r159.f = r611;
-        goto L474
-    L468:
-        if (r162 != r611) goto L470;
-        boolean r612 = true;
-    L471:
-        rr2.n(r612, "Can't change endDateUnixUs from %s to %s", r162, r611);
-        goto L472
-    L470:
-        r612 = false;
-    L474:
-        if (r910 == (-9223372036854775807L)) goto L485;
-        long r163 = r159.g;
-        if (r163 != (-9223372036854775807L)) goto L479;
-    L483:
-        r159.g = r910;
-        goto L485
-    L479:
-        if (r163 != r910) goto L481;
-        boolean r911 = true;
-    L482:
-        rr2.n(r911, "Can't change durationUs from %s to %s", r163, r910);
-        goto L483
-    L481:
-        r911 = false;
-    L485:
-        if (r101 == (-9223372036854775807L)) goto L496;
-        long r164 = r159.h;
-        if (r164 != (-9223372036854775807L)) goto L490;
-    L494:
-        r159.h = r101;
-        goto L496
-    L490:
-        if (r164 != r101) goto L492;
-        boolean r912 = true;
-    L493:
-        rr2.n(r912, "Can't change plannedDurationUs from %s to %s", r164, r101);
-        goto L494
-    L492:
-        r912 = false;
-    L496:
-        if (r123.isEmpty() == false) goto L499;
-        r158 = r158;
-    L515:
-        if (r102 == false) goto L519;
-        r159.j = true;
-    L519:
-        if (r107 == (-9223372036854775807L)) goto L530;
-        long r165 = r159.k;
-        if (r165 != (-9223372036854775807L)) goto L524;
-    L528:
-        r159.k = r107;
-        goto L530
-    L524:
-        if (r165 != r107) goto L526;
-        boolean r1010 = true;
-    L527:
-        rr2.n(r1010, "Can't change resumeOffsetUs from %s to %s", r165, r107);
-        goto L528
-    L526:
-        r1010 = false;
-    L530:
-        if (r1110 == (-9223372036854775807L)) goto L541;
-        long r166 = r159.l;
-        if (r166 != (-9223372036854775807L)) goto L535;
-    L539:
-        r159.l = r1110;
-        goto L541
-    L535:
-        if (r166 != r1110) goto L537;
-        boolean r1011 = true;
-    L538:
-        rr2.n(r1011, "Can't change playoutLimitUs from %s to %s", r166, r1110);
-        goto L539
-    L537:
-        r1011 = false;
-    L541:
-        if (r104.isEmpty() == true) goto L558;
-        if (r159.m.isEmpty() == true) goto L556;
-        boolean r167 = r159.m.equals(r104);
-        StringBuilder r168 = new StringBuilder("Can't change snapTypes from ");
-        ArrayList r169 = r159.m;
-        StringBuilder r170 = new StringBuilder();
-        Iterator r171 = r169.iterator();
-        if (r171.hasNext() == false) goto L550;
-    L547:
-        r170.append((CharSequence) r171.next());
-        if (r171.hasNext() == false) goto L550;
-        r170.append(", ");
-    L550:
-        r168.append(r170.toString());
-        r168.append(" to ");
-        StringBuilder r172 = new StringBuilder();
-        Iterator r173 = r104.iterator();
-        if (r173.hasNext() == false) goto L555;
-    L552:
-        r172.append((CharSequence) r173.next());
-        if (r173.hasNext() == false) goto L555;
-        r172.append(", ");
-    L555:
-        r168.append(r172.toString());
-        rr2.k(r168.toString(), r167);
-    L556:
-        r159.m = r104;
-    L558:
-        if (r108.isEmpty() == false) goto L561;
-    L574:
-        HashMap r174 = r159.b;
-        if (r147.isEmpty() == true) goto L588;
-        int r175 = 0;
-    L579:
-        if (r175 >= r147.size()) goto L588;
-        qm1 r176 = (qm1) r147.get(r175);
-        String r177 = r176.a;
-        qm1 r178 = (qm1) r174.get(r177);
-        if (r178 == null) goto L587;
-        boolean r179 = r178.equals(r176);
-        Object[] r180 = {r177, r178.d, Double.valueOf(r178.c), r176.d, Double.valueOf(r176.c)};
-        if (r179 == true) goto L587;
-        kf2.n(gh0.s("Can't change %s from %s %s to %s %s", r180));
-        return null;
-    L587:
-        r174.put(r177, r176);
-        r175 = r175 + 1;
-    L588:
-        if (r140 == null) goto L594;
-        Boolean r181 = r159.o;
-        if (r181 == null) goto L593;
-        rr2.p(r181.equals(r140), "Can't change contentMayVary from %s to %s", r159.o, r140);
-    L593:
-        r159.o = r140;
-    L594:
-        if (r158 == null) goto L600;
-        String r182 = r159.p;
-        String r183 = r158;
-        if (r182 == null) goto L599;
-        rr2.p(r182.equals(r183), "Can't change timelineOccupies from %s to %s", r159.p, r183);
-    L599:
-        r159.p = r183;
-    L600:
-        if (r321 == null) goto L607;
-        String r184 = r159.q;
-        if (r184 == null) goto L605;
-        rr2.p(r184.equals(r321), "Can't change timelineStyle from %s to %s", r159.q, r321);
-    L605:
-        r159.q = r321;
-    L607:
-        if (r1210 == (-9223372036854775807L)) goto L618;
-        long r185 = r159.r;
-        if (r185 != (-9223372036854775807L)) goto L612;
-    L616:
-        r159.r = r1210;
-        goto L618
-    L612:
-        if (r185 != r1210) goto L614;
-        boolean r1112 = true;
-    L615:
-        rr2.n(r1112, "Can't change skipControlOffsetUs from %s to %s", r185, r1210);
-        goto L616
-    L614:
-        r1112 = false;
-    L618:
-        if (r1211 == (-9223372036854775807L)) goto L628;
-        long r186 = r159.s;
-        if (r186 != (-9223372036854775807L)) goto L623;
-    L627:
-        r159.s = r1211;
-        goto L628
-    L623:
-        if (r186 != r1211) goto L625;
-        boolean r1212 = true;
-    L626:
-        rr2.n(r1212, "Can't change skipControlDurationUs from %s to %s", r186, r1211);
-        goto L627
-    L625:
-        r1212 = false;
-    L628:
-        if (r320 == null) goto L634;
-        String r187 = r159.t;
-        if (r187 == null) goto L633;
-        rr2.p(r187.equals(r320), "Can't change skipControlLabelId from %s to %s", r159.t, r320);
-    L633:
-        r159.t = r320;
-    L634:
-        r65.put(r83, r159);
-        goto L635
-    L561:
-        if (r159.n.isEmpty() == true) goto L573;
-        boolean r188 = r159.n.equals(r108);
-        StringBuilder r189 = new StringBuilder("Can't change restrictions from ");
-        ArrayList r190 = r159.n;
-        StringBuilder r191 = new StringBuilder();
-        Iterator r192 = r190.iterator();
-        if (r192.hasNext() == false) goto L567;
-    L564:
-        r191.append((CharSequence) r192.next());
-        if (r192.hasNext() == false) goto L567;
-        r191.append(", ");
-    L567:
-        r189.append(r191.toString());
-        r189.append(" to ");
-        StringBuilder r193 = new StringBuilder();
-        Iterator r194 = r108.iterator();
-        if (r194.hasNext() == false) goto L572;
-    L569:
-        r193.append((CharSequence) r194.next());
-        if (r194.hasNext() == false) goto L572;
-        r193.append(", ");
-    L572:
-        r189.append(r193.toString());
-        rr2.k(r189.toString(), r188);
-    L573:
-        r159.n = r108;
-        goto L574
-    L499:
-        if (r159.i.isEmpty() == true) goto L513;
-        boolean r195 = r159.i.equals(r123);
-        StringBuilder r196 = new StringBuilder("Can't change cue from ");
-        ArrayList r197 = r159.i;
-        StringBuilder r198 = new StringBuilder();
-        Iterator r199 = r197.iterator();
-        if (r199.hasNext() == false) goto L507;
-        Object r1100 = r199.next();
-    L503:
-        r198.append((CharSequence) r1100);
-        if (r199.hasNext() == false) goto L507;
-        r198.append(", ");
-        r1100 = r199.next();
-    L507:
-        r196.append(r198.toString());
-        r196.append(" to ");
-        StringBuilder r1101 = new StringBuilder();
-        Iterator r1102 = r123.iterator();
-        if (r1102.hasNext() == false) goto L512;
-    L509:
-        r1101.append((CharSequence) r1102.next());
-        if (r1102.hasNext() == false) goto L512;
-        r1101.append(", ");
-    L512:
-        r196.append(r1101.toString());
-        rr2.k(r196.toString(), r195);
-    L514:
-        r159.i = r123;
-        goto L515
-    L513:
-        r158 = r158;
-        goto L514
-    L441:
-        Uri r200 = r159.c;
-        if (r200 == null) goto L444;
-        rr2.p(r200.equals(r85), "Can't change assetUri from %s to %s", r159.c, r85);
-    L444:
-        r159.c = r85;
-        goto L445
-    L438:
-        r159 = new rm1(r83);
-        goto L439
-    L361:
-        r1211 = -9223372036854775807L;
-        goto L362
-    L357:
-        r1210 = -9223372036854775807L;
-    L353:
-        r144 = null;
-    L344:
-        r142 = null;
-        goto L345
-    L335:
-        r140 = null;
-        goto L336
-    L307:
-        r1110 = -9223372036854775807L;
-        goto L308
-    L303:
-        r107 = -9223372036854775807L;
-        goto L304
-    L299:
-        r101 = -9223372036854775807L;
-        goto L300
-    L295:
-        r910 = -9223372036854775807L;
-        goto L296
-    L266:
-        r611 = -9223372036854775807L;
-        goto L267
-    L262:
-        r512 = -9223372036854775807L;
-        goto L263
-    L258:
-        r87 = null;
-        goto L259
-    L254:
-        r85 = null;
-        goto L255
-    L180:
-        if (r13 != null) goto L81;
-        if ("PART".equals(k(r17, d0, r4)) == false) goto L81;
-        String r522 = k(r17, r25, r4);
-        long r201 = i(r17, V);
-        long r613 = i(r17, W);
-        if (r60 != null) goto L188;
-        String r614 = null;
-    L191:
-        if (r37 == null) goto L193;
-    L198:
-        ow0 r523 = r37;
-    L200:
-        if (r201 == (-1)) goto L206;
-        if (r613 != (-1)) goto L206;
-        r13 = r13;
-    L210:
-        r1 = r131;
-        r2 = r132;
-        r37 = r523;
-        r11 = r11;
-        r9 = r9;
-        r5 = r5;
-        r34 = r810;
-        r10 = r92;
-        r69 = 0;
-    L206:
-        if (r201 == (-1)) goto L208;
-        long r615 = r201;
-    L209:
-        r13 = new tm1(r522, r53, 0, r56, r57, r523, r60, r614, r615, r613, false, false, true);
-        goto L210
-    L208:
-        r615 = 0;
-        goto L209
-    L193:
-        if (r12.isEmpty() == true) goto L198;
-        nw0[] r202 = (nw0[]) r12.values().toArray(new nw0[r69]);
-        ow0 r203 = new ow0(r14, true, r202);
-        if (r26 != null) goto L197;
-        r26 = c(r14, r202);
-    L197:
-        r523 = r203;
-        goto L200
-    L188:
-        if (r810 == null) goto L190;
-        r614 = r810;
-        goto L191
-    L190:
-        r614 = Long.toHexString(r40);
-    L81:
-        r73 = r6;
-        r115 = r8;
-        r116 = r12;
-        r114 = r14;
-        r610 = r15;
-        r68 = r53;
-        r311 = r56;
-        r118 = r69;
-        r65 = r92;
-        goto L670
-    L173:
-        long r204 = i(r17, Q);
-        Matcher r205 = R.matcher(r17);
-        if (r205.find() == false) goto L176;
-        String r206 = r205.group(1);
-        r206.getClass();
-        int r207 = Integer.parseInt(r206);
-    L177:
-        r8.add(new um1(Uri.parse(jz4.G(r134, k(r17, r25, r4))), r204, r207));
-        goto L81
-    L176:
-        r207 = -1;
-        goto L177
-    L160:
-        if (r42 != 0) goto L81;
-        r42 = f35.Q(f35.T(r17.substring(r17.indexOf(58) + 1))) - r35;
-    L150:
-        r1 = r131;
-        r2 = r132;
-    L65:
-        r34 = r810;
-    L66:
-        r10 = r92;
-        goto L3
-    L156:
-        r56 = r56 + 1;
-        goto L150
-    L147:
-        String r208 = k(r17, T, r4);
-        String r209 = f35.a;
-        String[] r216 = r208.split("@", -1);
-        r38 = Long.parseLong(r216[r69]);
-        if (r216.length <= 1) goto L150;
-        r24 = Long.parseLong(r216[1]);
-        goto L150
-    L121:
-        String r217 = k(r17, X, r4);
-        String r218 = j(r17, Y, "identity", r4);
-        if ("NONE".equals(r217) == false) goto L126;
-        r12.clear();
-        r34 = null;
-    L124:
-        r37 = null;
-    L125:
-        r60 = null;
-    L144:
-        r1 = r131;
-        r2 = r132;
-        goto L66
-    L126:
-        String r219 = j(r17, b0, null, r4);
-        if ("identity".equals(r218) == true) goto L129;
-        if (r14 == null) goto L134;
-    L141:
-        nw0 r220 = d(r17, r218, r4);
-        if (r220 != null) goto L143;
-    L131:
-        r34 = r219;
-        goto L125
-    L143:
-        r12.put(r218, r220);
-        r34 = r219;
-        goto L124
-    L134:
-        if ("SAMPLE-AES-CENC".equals(r217) == false) goto L136;
-    L140:
-        String r221 = "cenc";
-    L139:
-        r14 = r221;
-        goto L141
-    L136:
-        if ("SAMPLE-AES-CTR".equals(r217) == true) goto L140;
-        r221 = "cbcs";
-        goto L139
-    L129:
-        if ("AES-128".equals(r217) == false) goto L131;
-        r60 = k(r17, r25, r4);
-        r34 = r219;
-        goto L144
-    L87:
-        int r222 = Integer.parseInt(k(r17, J, Collections.EMPTY_MAP));
-        if (r2 != null) goto L90;
-    L92:
-        boolean r223 = r69;
-    L93:
-        rr2.w(r223);
-        String r224 = f35.a;
-        long r225 = r2.k;
-        yw1 r226 = r2.r;
-        int r227 = (int) (r16 - r225);
-        int r228 = r222 + r227;
-        if (r227 < 0) goto L118;
-        if (r228 > r226.size()) goto L118;
-        long r229 = r57;
-        r34 = r810;
-        long r524 = r35;
-    L98:
-        if (r227 >= r228) goto L116;
-        vm1 r230 = (vm1) r226.get(r227);
-        if (r16 == r2.k) goto L106;
-        int r913 = (r2.j - r50) + r230.q;
-        yw1 r1103 = r230.z;
-        ArrayList r1104 = new ArrayList();
-        long r914 = r524;
-        int r1105 = r69;
-    L103:
-        if (r1105 >= r1103.size()) goto L105;
-        tm1 r231 = (tm1) r1103.get(r1105);
-        r1104.add(new tm1(r231.n, r231.o, r231.p, r913, r914, r231.s, r231.t, r231.u, r231.v, r231.w, r231.x, r231.y, r231.z));
-        r914 = r914 + r231.p;
-        r1105 = r1105 + 1;
-        r228 = r228;
-        goto L103
-    L105:
-        int r232 = r228;
-        r230 = new vm1(r230.n, r230.o, r230.y, r230.p, r913, r524, r230.s, r230.t, r230.u, r230.v, r230.w, r230.x, r1104);
-    L107:
-        r6.add(r230);
-        long r233 = r230.p;
-        String r234 = r230.u;
-        long r235 = r524 + r233;
-        long r1106 = r230.w;
-        if (r1106 == (-1)) goto L110;
-        r24 = r230.v + r1106;
-    L110:
-        int r236 = r230.q;
-        vm1 r237 = r230.o;
-        ow0 r1107 = r230.s;
-        String r238 = r230.t;
-        if (r234 != null) goto L113;
-    L114:
-        r34 = r234;
-    L115:
-        r40 = r40 + 1;
-        r227 = r227 + 1;
-        r56 = r236;
-        r53 = r237;
-        r60 = r238;
-        r37 = r1107;
-        r228 = r232;
-        r229 = r235;
-        r524 = r229;
-        r2 = r132;
-        goto L98
-    L113:
-        if (r234.equals(Long.toHexString(r40)) == true) goto L115;
-    L106:
-        r232 = r228;
-        goto L107
-    L116:
-        r1 = r131;
-        r2 = r132;
-        r35 = r524;
-        r57 = r229;
-    L118:
-        throw new HlsPlaylistParser$DeltaUpdateException();
-    L90:
-        if (r6.isEmpty() == false) goto L92;
-        r223 = 1;
-        goto L93
-    L84:
-        r72 = new BigDecimal(k(r17, O, Collections.EMPTY_MAP)).multiply(new BigDecimal(1000000)).longValue();
-        r74 = j(r17, P, r15, r4);
-        goto L65
-    L75:
-        String r239 = j(r17, q0, null, r4);
-        if (r239 == null) goto L80;
-        String r240 = (String) r1.j.get(r239);
-        if (r240 == null) goto L81;
-        r4.put(r239, r240);
-        goto L81
-    L80:
-        r4.put(k(r17, f0, r4), k(r17, p0, r4));
-        goto L81
-    L72:
-        r47 = Integer.parseInt(k(r17, F, Collections.EMPTY_MAP));
-        goto L65
-    L69:
-        r40 = Long.parseLong(k(r17, N, Collections.EMPTY_MAP));
-        r16 = r40;
-        goto L65
-    L64:
-        r19 = ((long) Integer.parseInt(k(r17, B, Collections.EMPTY_MAP))) * 1000000;
-        goto L65
-    L41:
-        r21 = (long) (Double.parseDouble(k(r17, E, Collections.EMPTY_MAP)) * 1000000.0d);
-        goto L17
-    L23:
-        long r1108 = (long) (Double.parseDouble(k(r17, S, Collections.EMPTY_MAP)) * 1000000.0d);
-        r18 = g(r17, o0);
-        r45 = r1108;
-        goto L17
-    L10:
-        String r241 = k(r17, G, r4);
-        if ("VOD".equals(r241) == false) goto L14;
-        r44 = 1;
-        goto L17
-    L14:
-        if ("EVENT".equals(r241) == false) goto L17;
-        r44 = 2;
-        goto L17
-    L671:
-        tm1 r811 = r13;
-        ArrayList r242 = r6;
-        ArrayList r1113 = r8;
-        ArrayList r812 = r9;
-        LinkedHashMap r243 = r10;
-        HashMap r244 = new HashMap();
-        int r245 = r69;
-    L673:
-        if (r245 >= r1113.size()) goto L689;
-        ArrayList r246 = r1113;
-        um1 r247 = (um1) r246.get(r245);
-        long r248 = r247.b;
-        if (r248 != (-1)) goto L677;
-        r248 = (r16 + ((long) r242.size())) - (r7.isEmpty() ? 1 : 0);
-    L677:
-        int r249 = r247.c;
-        if (r249 != (-1)) goto L687;
-        if (r21 == (-9223372036854775807L)) goto L687;
-        if (r7.isEmpty() == false) goto L684;
-        List r250 = ((vm1) te5.w(r242)).z;
-    L685:
-        r249 = r250.size() - 1;
-        goto L687
-    L684:
-        r250 = r7;
-    L687:
-        Uri r251 = r247.a;
-        r244.put(r251, new um1(r251, r248, r249));
-        r245 = r245 + 1;
-        r1113 = r246;
-        goto L673
-    L689:
-        if (r811 == null) goto L691;
-        r7.add(r811);
-    L691:
-        ArrayList r252 = new ArrayList();
-        Iterator r253 = r243.values().iterator();
-    L693:
-        if (r253.hasNext() == false) goto L723;
-        rm1 r254 = (rm1) r253.next();
-        Uri r255 = r254.d;
-        if (r255 == null) goto L697;
-    L698:
-        if (r255 != null) goto L700;
-    L719:
-        sm1 r256 = null;
-    L720:
-        if (r256 == null) goto L722;
-        r252.add(r256);
-    L722:
-        r253 = r253;
-        r244 = r244;
-        r242 = r242;
-        goto L693
-    L700:
-        if (r254.c != null) goto L719;
-    L701:
-        long r257 = r254.e;
-        if (r257 == (-9223372036854775807L)) goto L719;
-        String r258 = r254.a;
-        Uri r1109 = r254.c;
-        long r1114 = r254.f;
-        long r259 = r254.g;
-        long r260 = r254.h;
-        ArrayList r1115 = r254.i;
-        boolean r261 = r254.j;
-        long r262 = r254.k;
-        long r263 = r254.l;
-        ArrayList r264 = r254.m;
-        ArrayList r265 = r254.n;
-        ArrayList r266 = new ArrayList(r254.b.values());
-        Boolean r267 = r254.o;
-        if (r267 != null) goto L706;
-    L709:
-        boolean r1012 = true;
-    L710:
-        String r268 = r254.p;
-        if (r268 == null) goto L713;
-        String r1116 = r268;
-    L714:
-        String r269 = r254.q;
-        if (r269 == null) goto L717;
-        String r1117 = r269;
-    L718:
-        r256 = new sm1(r258, r1109, r255, r257, r1114, r259, r260, r1115, r261, r262, r263, r264, r265, r266, r1012, r1116, r1117, r254.r, r254.s, r254.t);
-        goto L720
-    L717:
-        r1117 = "HIGHLIGHT";
-        goto L718
-    L713:
-        r1116 = "POINT";
-        goto L714
-    L706:
-        if (r267.booleanValue() == true) goto L709;
-        r1012 = false;
-        goto L710
-    L697:
-        if (r254.c != null) goto L701;
-    L723:
-        HashMap r322 = r244;
-        ArrayList r1310 = r242;
-        if (r42 != 0) goto L729;
-        if (r132 == null) goto L729;
-        if (r132.p == false) goto L729;
-        long r1118 = r132.h;
-    L731:
-        if (r1118 == 0) goto L734;
-        boolean r270 = true;
-    L736:
-        return new ym1(r44, r134, r812, r45, r18, r1118, r49, r50, r16, r47, r19, r21, r23, r48, r270, r26, r1310, r7, r11, r322, r252);
-    L734:
-        r270 = false;
-    L729:
-        r1118 = r42;
-        goto L731
+    public static ym1 e(cn1 cn1Var, ym1 ym1Var, qp4 qp4Var, String str) throws IOException {
+        sm1 sm1Var;
+        ArrayList arrayList;
+        ArrayList arrayList2;
+        TreeMap treeMap;
+        String str2;
+        String str3;
+        vm1 vm1Var;
+        int i;
+        int i2;
+        LinkedHashMap linkedHashMap;
+        int i3;
+        int i4;
+        ow0 ow0Var;
+        int i5;
+        ArrayList arrayList3;
+        String str4;
+        vm1 vm1Var2;
+        String str5;
+        int i6;
+        ow0 ow0VarC;
+        vm1 vm1Var3;
+        long j;
+        String str6;
+        String str7;
+        Matcher matcher;
+        byte b;
+        int i7;
+        byte b2;
+        long j2;
+        ow0 ow0Var2;
+        cn1 cn1Var2 = cn1Var;
+        ym1 ym1Var2 = ym1Var;
+        boolean z2 = cn1Var2.c;
+        HashMap map = new HashMap();
+        HashMap map2 = new HashMap();
+        ArrayList arrayList4 = new ArrayList();
+        ArrayList arrayList5 = new ArrayList();
+        ArrayList arrayList6 = new ArrayList();
+        ArrayList arrayList7 = new ArrayList();
+        LinkedHashMap linkedHashMap2 = new LinkedHashMap();
+        xm1 xm1Var = new xm1(-9223372036854775807L, false, -9223372036854775807L, -9223372036854775807L, false);
+        TreeMap treeMap2 = new TreeMap();
+        String str8 = "";
+        boolean z3 = z2;
+        String strJ = "";
+        long j3 = -9223372036854775807L;
+        long j4 = 0;
+        long j5 = 0;
+        long j6 = 0;
+        long jQ = 0;
+        long j7 = 0;
+        long jLongValue = 0;
+        long j8 = 0;
+        long j9 = -1;
+        tm1 tm1Var = null;
+        String str9 = null;
+        ow0 ow0VarC2 = null;
+        String str10 = null;
+        ow0 ow0Var3 = null;
+        int i8 = 0;
+        int i9 = 1;
+        boolean z4 = false;
+        boolean z5 = false;
+        int i10 = 0;
+        vm1 vm1Var4 = null;
+        int i11 = 0;
+        String strK = null;
+        int i12 = 0;
+        boolean z6 = false;
+        int i13 = 0;
+        long j10 = -9223372036854775807L;
+        long j11 = -9223372036854775807L;
+        long j12 = 0;
+        boolean zG = false;
+        while (true) {
+            xm1Var = xm1Var;
+            if (!qp4Var.j()) {
+                tm1 tm1Var2 = tm1Var;
+                ArrayList arrayList8 = arrayList4;
+                ArrayList arrayList9 = arrayList6;
+                ArrayList arrayList10 = arrayList7;
+                LinkedHashMap linkedHashMap3 = linkedHashMap2;
+                HashMap map3 = new HashMap();
+                int i14 = i12;
+                while (i14 < arrayList9.size()) {
+                    ArrayList arrayList11 = arrayList9;
+                    um1 um1Var = (um1) arrayList11.get(i14);
+                    long size = um1Var.b;
+                    if (size == -1) {
+                        size = (j12 + ((long) arrayList8.size())) - (arrayList5.isEmpty() ? 1L : 0L);
+                    }
+                    int size2 = um1Var.c;
+                    if (size2 == -1 && j11 != -9223372036854775807L) {
+                        size2 = (arrayList5.isEmpty() ? ((vm1) te5.w(arrayList8)).z : arrayList5).size() - 1;
+                    }
+                    Uri uri = um1Var.a;
+                    map3.put(uri, new um1(uri, size, size2));
+                    i14++;
+                    arrayList9 = arrayList11;
+                }
+                if (tm1Var2 != null) {
+                    arrayList5.add(tm1Var2);
+                }
+                ArrayList arrayList12 = new ArrayList();
+                Iterator it = linkedHashMap3.values().iterator();
+                while (it.hasNext()) {
+                    rm1 rm1Var = (rm1) it.next();
+                    Uri uri2 = rm1Var.d;
+                    if ((uri2 != null || rm1Var.c == null) && (uri2 == null || rm1Var.c != null)) {
+                        sm1Var = null;
+                    } else {
+                        long j13 = rm1Var.e;
+                        if (j13 != -9223372036854775807L) {
+                            String str11 = rm1Var.a;
+                            Uri uri3 = rm1Var.c;
+                            long j14 = rm1Var.f;
+                            long j15 = rm1Var.g;
+                            long j16 = rm1Var.h;
+                            ArrayList arrayList13 = rm1Var.i;
+                            boolean z7 = rm1Var.j;
+                            long j17 = rm1Var.k;
+                            long j18 = rm1Var.l;
+                            ArrayList arrayList14 = rm1Var.m;
+                            ArrayList arrayList15 = rm1Var.n;
+                            ArrayList arrayList16 = new ArrayList(rm1Var.b.values());
+                            Boolean bool = rm1Var.o;
+                            boolean z8 = bool == null || bool.booleanValue();
+                            String str12 = rm1Var.p;
+                            String str13 = str12 != null ? str12 : "POINT";
+                            String str14 = rm1Var.q;
+                            sm1Var = new sm1(str11, uri3, uri2, j13, j14, j15, j16, arrayList13, z7, j17, j18, arrayList14, arrayList15, arrayList16, z8, str13, str14 != null ? str14 : "HIGHLIGHT", rm1Var.r, rm1Var.s, rm1Var.t);
+                        } else {
+                            sm1Var = null;
+                        }
+                    }
+                    if (sm1Var != null) {
+                        arrayList12.add(sm1Var);
+                    }
+                    it = it;
+                    map3 = map3;
+                    arrayList8 = arrayList8;
+                }
+                HashMap map4 = map3;
+                ArrayList arrayList17 = arrayList8;
+                long j19 = (jQ == 0 && ym1Var != null && ym1Var.p) ? ym1Var.h : jQ;
+                return new ym1(i8, str, arrayList10, j3, zG, j19, z5, i10, j12, i9, j10, j11, z3, z4, j19 != 0, ow0VarC2, arrayList17, arrayList5, xm1Var, map4, arrayList12);
+            }
+            String strL = qp4Var.l();
+            tm1Var = tm1Var;
+            if (strL.startsWith("#EXT")) {
+                arrayList7.add(strL);
+            }
+            if (strL.startsWith("#EXT-X-PLAYLIST-TYPE")) {
+                String strK2 = k(strL, G, map);
+                if ("VOD".equals(strK2)) {
+                    i8 = 1;
+                } else if ("EVENT".equals(strK2)) {
+                    i8 = 2;
+                }
+            } else if (strL.equals("#EXT-X-I-FRAMES-ONLY")) {
+                xm1Var = xm1Var;
+                tm1Var = tm1Var;
+                z6 = true;
+            } else if (strL.startsWith("#EXT-X-START")) {
+                long j20 = (long) (Double.parseDouble(k(strL, S, Collections.EMPTY_MAP)) * 1000000.0d);
+                zG = g(strL, o0);
+                j3 = j20;
+            } else if (strL.startsWith("#EXT-X-SERVER-CONTROL")) {
+                double dH = h(strL, H, -9.223372036854776E18d);
+                long j21 = dH == -9.223372036854776E18d ? -9223372036854775807L : (long) (dH * 1000000.0d);
+                boolean zG2 = g(strL, I);
+                double dH2 = h(strL, K, -9.223372036854776E18d);
+                long j22 = dH2 == -9.223372036854776E18d ? -9223372036854775807L : (long) (dH2 * 1000000.0d);
+                double dH3 = h(strL, L, -9.223372036854776E18d);
+                tm1Var = tm1Var;
+                xm1Var = new xm1(j21, zG2, j22, dH3 == -9.223372036854776E18d ? -9223372036854775807L : (long) (dH3 * 1000000.0d), g(strL, M));
+            } else if (strL.startsWith("#EXT-X-PART-INF")) {
+                j11 = (long) (Double.parseDouble(k(strL, E, Collections.EMPTY_MAP)) * 1000000.0d);
+            } else {
+                boolean zStartsWith = strL.startsWith("#EXT-X-MAP");
+                Pattern pattern = U;
+                arrayList7 = arrayList7;
+                map2 = map2;
+                Pattern pattern2 = a0;
+                if (zStartsWith) {
+                    String strK3 = k(strL, pattern2, map);
+                    String strJ2 = j(strL, pattern, null, map);
+                    if (strJ2 != null) {
+                        String str15 = f35.a;
+                        String[] strArrSplit = strJ2.split("@", -1);
+                        j9 = Long.parseLong(strArrSplit[i12]);
+                        if (strArrSplit.length > 1) {
+                            j4 = Long.parseLong(strArrSplit[1]);
+                        }
+                    }
+                    long j23 = j9;
+                    long j24 = j23 == -1 ? 0L : j4;
+                    if (strK != null && str10 == null) {
+                        throw ParserException.b("The encryption IV attribute must be present when an initialization segment is encrypted with METHOD=AES-128.");
+                    }
+                    vm1 vm1Var5 = new vm1(strK3, j24, j23, strK, str10);
+                    String str16 = str10;
+                    if (j23 != -1) {
+                        j24 += j23;
+                    }
+                    j4 = j24;
+                    vm1Var4 = vm1Var5;
+                    j9 = -1;
+                    xm1Var = xm1Var;
+                    tm1Var = tm1Var;
+                    arrayList7 = arrayList7;
+                    map2 = map2;
+                    str10 = str16;
+                } else {
+                    LinkedHashMap linkedHashMap4 = linkedHashMap2;
+                    String str17 = str10;
+                    if (strL.startsWith("#EXT-X-TARGETDURATION")) {
+                        j10 = ((long) Integer.parseInt(k(strL, B, Collections.EMPTY_MAP))) * 1000000;
+                    } else if (strL.startsWith("#EXT-X-MEDIA-SEQUENCE")) {
+                        j6 = Long.parseLong(k(strL, N, Collections.EMPTY_MAP));
+                        j12 = j6;
+                    } else if (strL.startsWith("#EXT-X-VERSION")) {
+                        i9 = Integer.parseInt(k(strL, F, Collections.EMPTY_MAP));
+                    } else {
+                        if (strL.startsWith("#EXT-X-DEFINE")) {
+                            String strJ3 = j(strL, q0, null, map);
+                            if (strJ3 != null) {
+                                String str18 = (String) cn1Var2.j.get(strJ3);
+                                if (str18 != null) {
+                                    map.put(strJ3, str18);
+                                }
+                            } else {
+                                map.put(k(strL, f0, map), k(strL, p0, map));
+                            }
+                        } else if (strL.startsWith("#EXTINF")) {
+                            jLongValue = new BigDecimal(k(strL, O, Collections.EMPTY_MAP)).multiply(new BigDecimal(1000000L)).longValue();
+                            strJ = j(strL, P, str8, map);
+                        } else {
+                            if (strL.startsWith("#EXT-X-SKIP")) {
+                                int i15 = Integer.parseInt(k(strL, J, Collections.EMPTY_MAP));
+                                rr2.w((ym1Var2 == null || !arrayList4.isEmpty()) ? i12 : 1);
+                                String str19 = f35.a;
+                                long j25 = ym1Var2.k;
+                                yw1 yw1Var = ym1Var2.r;
+                                int i16 = (int) (j12 - j25);
+                                int i17 = i15 + i16;
+                                if (i16 < 0 || i17 > yw1Var.size()) {
+                                    throw new IOException() { // from class: androidx.media3.exoplayer.hls.playlist.HlsPlaylistParser$DeltaUpdateException
+                                    };
+                                }
+                                long j26 = j7;
+                                str10 = str17;
+                                long j27 = j5;
+                                while (i16 < i17) {
+                                    vm1 vm1Var6 = (vm1) yw1Var.get(i16);
+                                    if (j12 != ym1Var2.k) {
+                                        int i18 = (ym1Var2.j - i10) + vm1Var6.q;
+                                        yw1 yw1Var2 = vm1Var6.z;
+                                        ArrayList arrayList18 = new ArrayList();
+                                        long j28 = j27;
+                                        int i19 = i12;
+                                        while (i19 < yw1Var2.size()) {
+                                            tm1 tm1Var3 = (tm1) yw1Var2.get(i19);
+                                            arrayList18.add(new tm1(tm1Var3.n, tm1Var3.o, tm1Var3.p, i18, j28, tm1Var3.s, tm1Var3.t, tm1Var3.u, tm1Var3.v, tm1Var3.w, tm1Var3.x, tm1Var3.y, tm1Var3.z));
+                                            j28 += tm1Var3.p;
+                                            i19++;
+                                            i17 = i17;
+                                        }
+                                        i3 = i17;
+                                        vm1Var6 = new vm1(vm1Var6.n, vm1Var6.o, vm1Var6.y, vm1Var6.p, i18, j27, vm1Var6.s, vm1Var6.t, vm1Var6.u, vm1Var6.v, vm1Var6.w, vm1Var6.x, arrayList18);
+                                    } else {
+                                        i3 = i17;
+                                    }
+                                    arrayList4.add(vm1Var6);
+                                    long j29 = vm1Var6.p;
+                                    String str20 = vm1Var6.u;
+                                    long j30 = j27 + j29;
+                                    long j31 = vm1Var6.w;
+                                    if (j31 != -1) {
+                                        j4 = vm1Var6.v + j31;
+                                    }
+                                    int i20 = vm1Var6.q;
+                                    vm1 vm1Var7 = vm1Var6.o;
+                                    ow0 ow0Var4 = vm1Var6.s;
+                                    String str21 = vm1Var6.t;
+                                    if (str20 == null || !str20.equals(Long.toHexString(j6))) {
+                                        str10 = str20;
+                                    }
+                                    j6++;
+                                    i16++;
+                                    i11 = i20;
+                                    vm1Var4 = vm1Var7;
+                                    strK = str21;
+                                    ow0Var3 = ow0Var4;
+                                    i17 = i3;
+                                    j26 = j30;
+                                    j27 = j26;
+                                    ym1Var2 = ym1Var;
+                                }
+                                cn1Var2 = cn1Var;
+                                ym1Var2 = ym1Var;
+                                j5 = j27;
+                                j7 = j26;
+                            } else if (strL.startsWith("#EXT-X-KEY")) {
+                                String strK4 = k(strL, X, map);
+                                String strJ4 = j(strL, Y, "identity", map);
+                                if ("NONE".equals(strK4)) {
+                                    treeMap2.clear();
+                                    str10 = null;
+                                } else {
+                                    String strJ5 = j(strL, b0, null, map);
+                                    if ("identity".equals(strJ4)) {
+                                        if ("AES-128".equals(strK4)) {
+                                            strK = k(strL, pattern2, map);
+                                            str10 = strJ5;
+                                        }
+                                        cn1Var2 = cn1Var;
+                                        ym1Var2 = ym1Var;
+                                    } else {
+                                        if (str9 == null) {
+                                            str9 = ("SAMPLE-AES-CENC".equals(strK4) || "SAMPLE-AES-CTR".equals(strK4)) ? "cenc" : "cbcs";
+                                        }
+                                        nw0 nw0VarD = d(strL, strJ4, map);
+                                        if (nw0VarD != null) {
+                                            treeMap2.put(strJ4, nw0VarD);
+                                            str10 = strJ5;
+                                        }
+                                        strK = null;
+                                        cn1Var2 = cn1Var;
+                                        ym1Var2 = ym1Var;
+                                    }
+                                    str10 = strJ5;
+                                    strK = null;
+                                    cn1Var2 = cn1Var;
+                                    ym1Var2 = ym1Var;
+                                }
+                                ow0Var3 = null;
+                                strK = null;
+                                cn1Var2 = cn1Var;
+                                ym1Var2 = ym1Var;
+                            } else {
+                                if (strL.startsWith("#EXT-X-BYTERANGE")) {
+                                    String strK5 = k(strL, T, map);
+                                    String str22 = f35.a;
+                                    String[] strArrSplit2 = strK5.split("@", -1);
+                                    j9 = Long.parseLong(strArrSplit2[i12]);
+                                    if (strArrSplit2.length > 1) {
+                                        j4 = Long.parseLong(strArrSplit2[1]);
+                                    }
+                                } else if (strL.startsWith("#EXT-X-DISCONTINUITY-SEQUENCE")) {
+                                    i10 = Integer.parseInt(strL.substring(strL.indexOf(58) + 1));
+                                    cn1Var2 = cn1Var;
+                                    ym1Var2 = ym1Var;
+                                    xm1Var = xm1Var;
+                                    tm1Var = tm1Var;
+                                    arrayList7 = arrayList7;
+                                    map2 = map2;
+                                    str10 = str17;
+                                    linkedHashMap2 = linkedHashMap4;
+                                    z5 = true;
+                                } else if (strL.equals("#EXT-X-DISCONTINUITY")) {
+                                    i11++;
+                                } else if (strL.startsWith("#EXT-X-PROGRAM-DATE-TIME")) {
+                                    if (jQ == 0) {
+                                        jQ = f35.Q(f35.T(strL.substring(strL.indexOf(58) + 1))) - j5;
+                                    }
+                                } else if (strL.equals("#EXT-X-GAP")) {
+                                    cn1Var2 = cn1Var;
+                                    ym1Var2 = ym1Var;
+                                    xm1Var = xm1Var;
+                                    tm1Var = tm1Var;
+                                    arrayList7 = arrayList7;
+                                    map2 = map2;
+                                    str10 = str17;
+                                    linkedHashMap2 = linkedHashMap4;
+                                    i13 = 1;
+                                } else if (strL.equals("#EXT-X-INDEPENDENT-SEGMENTS")) {
+                                    cn1Var2 = cn1Var;
+                                    ym1Var2 = ym1Var;
+                                    xm1Var = xm1Var;
+                                    tm1Var = tm1Var;
+                                    arrayList7 = arrayList7;
+                                    map2 = map2;
+                                    str10 = str17;
+                                    linkedHashMap2 = linkedHashMap4;
+                                    z3 = true;
+                                } else if (strL.equals("#EXT-X-ENDLIST")) {
+                                    cn1Var2 = cn1Var;
+                                    ym1Var2 = ym1Var;
+                                    xm1Var = xm1Var;
+                                    tm1Var = tm1Var;
+                                    arrayList7 = arrayList7;
+                                    map2 = map2;
+                                    str10 = str17;
+                                    linkedHashMap2 = linkedHashMap4;
+                                    z4 = true;
+                                } else if (strL.startsWith("#EXT-X-RENDITION-REPORT")) {
+                                    long jI = i(strL, Q);
+                                    Matcher matcher2 = R.matcher(strL);
+                                    if (matcher2.find()) {
+                                        String strGroup = matcher2.group(1);
+                                        strGroup.getClass();
+                                        i4 = Integer.parseInt(strGroup);
+                                    } else {
+                                        i4 = -1;
+                                    }
+                                    arrayList6.add(new um1(Uri.parse(jz4.G(str, k(strL, pattern2, map))), jI, i4));
+                                } else if (strL.startsWith("#EXT-X-PRELOAD-HINT")) {
+                                    if (tm1Var == null && "PART".equals(k(strL, d0, map))) {
+                                        String strK6 = k(strL, pattern2, map);
+                                        long jI2 = i(strL, V);
+                                        long jI3 = i(strL, W);
+                                        String hexString = strK == null ? null : str17 != null ? str17 : Long.toHexString(j6);
+                                        if (ow0Var3 != null || treeMap2.isEmpty()) {
+                                            ow0Var = ow0Var3;
+                                        } else {
+                                            nw0[] nw0VarArr = (nw0[]) treeMap2.values().toArray(new nw0[i12]);
+                                            ow0 ow0Var5 = new ow0(str9, true, nw0VarArr);
+                                            if (ow0VarC2 == null) {
+                                                ow0VarC2 = c(str9, nw0VarArr);
+                                            }
+                                            ow0Var = ow0Var5;
+                                        }
+                                        tm1Var = (jI2 == -1 || jI3 != -1) ? new tm1(strK6, vm1Var4, 0L, i11, j7, ow0Var, strK, hexString, jI2 != -1 ? jI2 : 0L, jI3, false, false, true) : tm1Var;
+                                        cn1Var2 = cn1Var;
+                                        ym1Var2 = ym1Var;
+                                        ow0Var3 = ow0Var;
+                                        xm1Var = xm1Var;
+                                        arrayList7 = arrayList7;
+                                        map2 = map2;
+                                        str10 = str17;
+                                        linkedHashMap2 = linkedHashMap4;
+                                        i12 = 0;
+                                    }
+                                } else if (strL.startsWith("#EXT-X-PART")) {
+                                    String hexString2 = strK == null ? null : str17 != null ? str17 : Long.toHexString(j6);
+                                    String strK7 = k(strL, pattern2, map);
+                                    long j32 = (long) (Double.parseDouble(k(strL, C, Collections.EMPTY_MAP)) * 1000000.0d);
+                                    boolean zG3 = g(strL, m0) | (z3 && arrayList5.isEmpty());
+                                    boolean zG4 = g(strL, n0);
+                                    String strJ6 = j(strL, pattern, null, map);
+                                    if (strJ6 != null) {
+                                        String str23 = f35.a;
+                                        String[] strArrSplit3 = strJ6.split("@", -1);
+                                        long j33 = Long.parseLong(strArrSplit3[0]);
+                                        if (strArrSplit3.length > 1) {
+                                            j8 = Long.parseLong(strArrSplit3[1]);
+                                        }
+                                        j2 = j33;
+                                    } else {
+                                        j2 = -1;
+                                    }
+                                    long j34 = j2 == -1 ? 0L : j8;
+                                    if (ow0Var3 != null || treeMap2.isEmpty()) {
+                                        ow0Var2 = ow0Var3;
+                                    } else {
+                                        nw0[] nw0VarArr2 = (nw0[]) treeMap2.values().toArray(new nw0[0]);
+                                        ow0 ow0Var6 = new ow0(str9, true, nw0VarArr2);
+                                        if (ow0VarC2 == null) {
+                                            ow0VarC2 = c(str9, nw0VarArr2);
+                                        }
+                                        ow0Var2 = ow0Var6;
+                                    }
+                                    tm1 tm1Var4 = new tm1(strK7, vm1Var4, j32, i11, j7, ow0Var2, strK, hexString2, j34, j2, zG4, zG3, false);
+                                    vm1 vm1Var8 = vm1Var4;
+                                    int i21 = i11;
+                                    arrayList5.add(tm1Var4);
+                                    j7 += j32;
+                                    if (j2 != -1) {
+                                        j34 += j2;
+                                    }
+                                    j8 = j34;
+                                    ym1Var2 = ym1Var;
+                                    i11 = i21;
+                                    vm1Var4 = vm1Var8;
+                                    ow0Var3 = ow0Var2;
+                                    xm1Var = xm1Var;
+                                    tm1Var = tm1Var;
+                                    arrayList7 = arrayList7;
+                                    map2 = map2;
+                                    str10 = str17;
+                                    linkedHashMap2 = linkedHashMap4;
+                                    i12 = 0;
+                                    cn1Var2 = cn1Var;
+                                } else {
+                                    vm1 vm1Var9 = vm1Var4;
+                                    int i22 = i11;
+                                    if (strL.startsWith("#EXT-X-DATERANGE") && j(strL, s0, str8, map).equals("com.apple.hls.interstitial")) {
+                                        String strK8 = k(strL, r0, map);
+                                        String strJ7 = j(strL, y0, null, map);
+                                        Uri uri4 = strJ7 != null ? Uri.parse(strJ7) : null;
+                                        String strJ8 = j(strL, z0, null, map);
+                                        Uri uri5 = strJ8 != null ? Uri.parse(strJ8) : null;
+                                        String strJ9 = j(strL, t0, null, map);
+                                        long jQ2 = strJ9 != null ? f35.Q(f35.T(strJ9)) : -9223372036854775807L;
+                                        String strJ10 = j(strL, v0, null, map);
+                                        long jQ3 = strJ10 != null ? f35.Q(f35.T(strJ10)) : -9223372036854775807L;
+                                        ArrayList arrayList19 = new ArrayList();
+                                        i5 = i22;
+                                        String strJ11 = j(strL, u0, null, map);
+                                        if (strJ11 != null) {
+                                            String str24 = f35.a;
+                                            String[] strArrSplit4 = strJ11.split(",", -1);
+                                            int length = strArrSplit4.length;
+                                            int i23 = 0;
+                                            while (i23 < length) {
+                                                int i24 = i23;
+                                                String strTrim = strArrSplit4[i23].trim();
+                                                strTrim.getClass();
+                                                switch (strTrim.hashCode()) {
+                                                    case 79491:
+                                                        i7 = length;
+                                                        if (strTrim.equals("PRE")) {
+                                                            b2 = 0;
+                                                        } else {
+                                                            b2 = -1;
+                                                        }
+                                                        break;
+                                                    case 2430593:
+                                                        i7 = length;
+                                                        if (strTrim.equals("ONCE")) {
+                                                            b2 = 1;
+                                                        } else {
+                                                            b2 = -1;
+                                                        }
+                                                        break;
+                                                    case 2461856:
+                                                        i7 = length;
+                                                        if (strTrim.equals("POST")) {
+                                                            b2 = 2;
+                                                        } else {
+                                                            b2 = -1;
+                                                        }
+                                                        break;
+                                                    default:
+                                                        i7 = length;
+                                                        b2 = -1;
+                                                        break;
+                                                }
+                                                switch (b2) {
+                                                    case 0:
+                                                    case 1:
+                                                    case 2:
+                                                        arrayList19.add(strTrim);
+                                                        break;
+                                                }
+                                                i23 = i24 + 1;
+                                                length = i7;
+                                            }
+                                        }
+                                        vm1Var = vm1Var9;
+                                        String str25 = str8;
+                                        double dH4 = h(strL, D, -1.0d);
+                                        long j35 = dH4 >= 0.0d ? (long) (dH4 * 1000000.0d) : -9223372036854775807L;
+                                        double dH5 = h(strL, w0, -1.0d);
+                                        long j36 = dH5 >= 0.0d ? (long) (dH5 * 1000000.0d) : -9223372036854775807L;
+                                        boolean zG5 = g(strL, x0);
+                                        str3 = str25;
+                                        ArrayList arrayList20 = arrayList6;
+                                        double dH6 = h(strL, A0, Double.MIN_VALUE);
+                                        long j37 = dH6 != Double.MIN_VALUE ? (long) (dH6 * 1000000.0d) : -9223372036854775807L;
+                                        ArrayList arrayList21 = arrayList20;
+                                        double dH7 = h(strL, B0, -1.0d);
+                                        long j38 = dH7 >= 0.0d ? (long) (dH7 * 1000000.0d) : -9223372036854775807L;
+                                        ArrayList arrayList22 = new ArrayList();
+                                        String strJ12 = j(strL, C0, null, map);
+                                        if (strJ12 != null) {
+                                            String str26 = f35.a;
+                                            String[] strArrSplit5 = strJ12.split(",", -1);
+                                            int length2 = strArrSplit5.length;
+                                            int i25 = 0;
+                                            while (i25 < length2) {
+                                                int i26 = i25;
+                                                String strTrim2 = strArrSplit5[i25].trim();
+                                                strTrim2.getClass();
+                                                ArrayList arrayList23 = arrayList21;
+                                                if (strTrim2.equals("IN") || strTrim2.equals("OUT")) {
+                                                    arrayList22.add(strTrim2);
+                                                }
+                                                i25 = i26 + 1;
+                                                arrayList21 = arrayList23;
+                                            }
+                                        }
+                                        arrayList2 = arrayList21;
+                                        ArrayList arrayList24 = new ArrayList();
+                                        String strJ13 = j(strL, D0, null, map);
+                                        if (strJ13 != null) {
+                                            String str27 = f35.a;
+                                            String[] strArrSplit6 = strJ13.split(",", -1);
+                                            int length3 = strArrSplit6.length;
+                                            int i27 = 0;
+                                            while (i27 < length3) {
+                                                String strTrim3 = strArrSplit6[i27].trim();
+                                                strTrim3.getClass();
+                                                String[] strArr = strArrSplit6;
+                                                if (strTrim3.equals("JUMP") || strTrim3.equals("SKIP")) {
+                                                    arrayList24.add(strTrim3);
+                                                }
+                                                i27++;
+                                                strArrSplit6 = strArr;
+                                            }
+                                        }
+                                        String strJ14 = j(strL, E0, null, map);
+                                        Boolean boolValueOf = strJ14 != null ? Boolean.valueOf(!strJ14.equals("NO")) : null;
+                                        String strJ15 = j(strL, F0, null, map);
+                                        if (strJ15 != null) {
+                                            str6 = "RANGE";
+                                            if (!strJ15.equals("RANGE")) {
+                                                str6 = "POINT";
+                                                if (!strJ15.equals(str6)) {
+                                                    str6 = null;
+                                                }
+                                            }
+                                        } else {
+                                            str6 = null;
+                                        }
+                                        String strJ16 = j(strL, G0, null, map);
+                                        if (strJ16 != null) {
+                                            str7 = "PRIMARY";
+                                            if (!strJ16.equals("PRIMARY")) {
+                                                str7 = "HIGHLIGHT";
+                                                if (!strJ16.equals(str7)) {
+                                                    str7 = null;
+                                                }
+                                            }
+                                        } else {
+                                            str7 = null;
+                                        }
+                                        treeMap = treeMap2;
+                                        str4 = str9;
+                                        double dH8 = h(strL, H0, -1.0d);
+                                        long j39 = dH8 >= 0.0d ? (long) (dH8 * 1000000.0d) : -9223372036854775807L;
+                                        double dH9 = h(strL, I0, -1.0d);
+                                        long j40 = dH9 >= 0.0d ? (long) (dH9 * 1000000.0d) : -9223372036854775807L;
+                                        String strJ17 = j(strL, J0, null, map);
+                                        ArrayList arrayList25 = new ArrayList();
+                                        String strSubstring = strL.substring(17);
+                                        Matcher matcher3 = L0.matcher(strSubstring);
+                                        while (matcher3.find()) {
+                                            String strGroup2 = matcher3.group();
+                                            strGroup2.getClass();
+                                            switch (strGroup2.hashCode()) {
+                                                case -2136701954:
+                                                    matcher = matcher3;
+                                                    if (strGroup2.equals("X-SNAP=")) {
+                                                        b = 0;
+                                                    } else {
+                                                        b = -1;
+                                                    }
+                                                    break;
+                                                case -1843050726:
+                                                    matcher = matcher3;
+                                                    if (strGroup2.equals("X-CONTENT-MAY-VARY=")) {
+                                                        b = 1;
+                                                    } else {
+                                                        b = -1;
+                                                    }
+                                                    break;
+                                                case -148960310:
+                                                    matcher = matcher3;
+                                                    if (strGroup2.equals("X-PLAYOUT-LIMIT=")) {
+                                                        b = 2;
+                                                    } else {
+                                                        b = -1;
+                                                    }
+                                                    break;
+                                                case -36345757:
+                                                    matcher = matcher3;
+                                                    if (strGroup2.equals("X-TIMELINE-STYLE=")) {
+                                                        b = 3;
+                                                    } else {
+                                                        b = -1;
+                                                    }
+                                                    break;
+                                                case 397239341:
+                                                    matcher = matcher3;
+                                                    if (strGroup2.equals("X-ASSET-LIST=")) {
+                                                        b = 4;
+                                                    } else {
+                                                        b = -1;
+                                                    }
+                                                    break;
+                                                case 850193465:
+                                                    matcher = matcher3;
+                                                    if (strGroup2.equals("X-TIMELINE-OCCUPIES=")) {
+                                                        b = 5;
+                                                    } else {
+                                                        b = -1;
+                                                    }
+                                                    break;
+                                                case 1065650400:
+                                                    matcher = matcher3;
+                                                    if (strGroup2.equals("X-SKIP-CONTROL-DURATION=")) {
+                                                        b = 6;
+                                                    } else {
+                                                        b = -1;
+                                                    }
+                                                    break;
+                                                case 1274498945:
+                                                    matcher = matcher3;
+                                                    if (strGroup2.equals("X-SKIP-CONTROL-OFFSET=")) {
+                                                        b = 7;
+                                                    } else {
+                                                        b = -1;
+                                                    }
+                                                    break;
+                                                case 1472528844:
+                                                    matcher = matcher3;
+                                                    if (strGroup2.equals("X-RESTRICT=")) {
+                                                        b = 8;
+                                                    } else {
+                                                        b = -1;
+                                                    }
+                                                    break;
+                                                case 1748487807:
+                                                    matcher = matcher3;
+                                                    if (strGroup2.equals("X-RESUME-OFFSET=")) {
+                                                        b = 9;
+                                                    } else {
+                                                        b = -1;
+                                                    }
+                                                    break;
+                                                case 1814205923:
+                                                    matcher = matcher3;
+                                                    if (strGroup2.equals("X-ASSET-URI=")) {
+                                                        b = 10;
+                                                    } else {
+                                                        b = -1;
+                                                    }
+                                                    break;
+                                                case 2080546752:
+                                                    matcher = matcher3;
+                                                    if (strGroup2.equals("X-SKIP-CONTROL-LABEL-ID=")) {
+                                                        b = 11;
+                                                    } else {
+                                                        b = -1;
+                                                    }
+                                                    break;
+                                                default:
+                                                    matcher = matcher3;
+                                                    b = -1;
+                                                    break;
+                                            }
+                                            switch (b) {
+                                                case 0:
+                                                case 1:
+                                                case 2:
+                                                case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
+                                                case 4:
+                                                case 5:
+                                                case 6:
+                                                case 7:
+                                                case 8:
+                                                case 9:
+                                                case 10:
+                                                case 11:
+                                                    str6 = str6;
+                                                    str7 = str7;
+                                                    break;
+                                                default:
+                                                    String strSubstring2 = strGroup2.substring(0, strGroup2.length() - 1);
+                                                    String strConcat = strSubstring2.concat("=");
+                                                    int length4 = strConcat.length() + strSubstring.indexOf(strConcat);
+                                                    String strSubstring3 = strSubstring.substring(length4, (strSubstring.length() == length4 + 1 ? 1 : 2) + length4);
+                                                    arrayList25.add(strSubstring3.startsWith("\"") ? new qm1(0, strSubstring2, k(strSubstring, Pattern.compile(strSubstring2.concat("=\"((?:.|\f)+?)\"")), map)) : (strSubstring3.equals("0x") || strSubstring3.equals("0X")) ? new qm1(1, strSubstring2, k(strSubstring, Pattern.compile(strSubstring2.concat("=(0[xX][A-F0-9]+)")), map)) : new qm1(strSubstring2, Double.parseDouble(k(strSubstring, Pattern.compile(strSubstring2.concat("=([\\d\\.]+)\\b")), Collections.EMPTY_MAP))));
+                                                    break;
+                                            }
+                                            str6 = str6;
+                                            matcher3 = matcher;
+                                            strJ17 = strJ17;
+                                            str7 = str7;
+                                            arrayList4 = arrayList4;
+                                        }
+                                        arrayList3 = arrayList4;
+                                        String str28 = strJ17;
+                                        String str29 = str6;
+                                        String str30 = str7;
+                                        linkedHashMap = linkedHashMap4;
+                                        rm1 rm1Var2 = linkedHashMap.containsKey(strK8) ? (rm1) linkedHashMap.get(strK8) : new rm1(strK8);
+                                        if (uri4 == null) {
+                                            rm1Var2.getClass();
+                                        } else {
+                                            Uri uri6 = rm1Var2.c;
+                                            if (uri6 != null) {
+                                                rr2.p(uri6.equals(uri4), "Can't change assetUri from %s to %s", rm1Var2.c, uri4);
+                                            }
+                                            rm1Var2.c = uri4;
+                                        }
+                                        if (uri5 != null) {
+                                            Uri uri7 = rm1Var2.d;
+                                            if (uri7 != null) {
+                                                rr2.p(uri7.equals(uri5), "Can't change assetListUri from %s to %s", rm1Var2.d, uri5);
+                                            }
+                                            rm1Var2.d = uri5;
+                                        }
+                                        if (jQ2 != -9223372036854775807L) {
+                                            long j41 = rm1Var2.e;
+                                            if (j41 != -9223372036854775807L) {
+                                                rr2.n(j41 == jQ2, "Can't change startDateUnixUs from %s to %s", j41, jQ2);
+                                            }
+                                            rm1Var2.e = jQ2;
+                                        }
+                                        if (jQ3 != -9223372036854775807L) {
+                                            long j42 = rm1Var2.f;
+                                            if (j42 != -9223372036854775807L) {
+                                                rr2.n(j42 == jQ3, "Can't change endDateUnixUs from %s to %s", j42, jQ3);
+                                            }
+                                            rm1Var2.f = jQ3;
+                                        }
+                                        if (j35 != -9223372036854775807L) {
+                                            long j43 = rm1Var2.g;
+                                            if (j43 != -9223372036854775807L) {
+                                                rr2.n(j43 == j35, "Can't change durationUs from %s to %s", j43, j35);
+                                            }
+                                            rm1Var2.g = j35;
+                                        }
+                                        if (j36 != -9223372036854775807L) {
+                                            long j44 = rm1Var2.h;
+                                            if (j44 != -9223372036854775807L) {
+                                                rr2.n(j44 == j36, "Can't change plannedDurationUs from %s to %s", j44, j36);
+                                            }
+                                            rm1Var2.h = j36;
+                                        }
+                                        if (arrayList19.isEmpty()) {
+                                            str29 = str29;
+                                        } else {
+                                            if (rm1Var2.i.isEmpty()) {
+                                                str29 = str29;
+                                            } else {
+                                                boolean zEquals = rm1Var2.i.equals(arrayList19);
+                                                StringBuilder sb = new StringBuilder("Can't change cue from ");
+                                                ArrayList arrayList26 = rm1Var2.i;
+                                                StringBuilder sb2 = new StringBuilder();
+                                                Iterator it2 = arrayList26.iterator();
+                                                if (it2.hasNext()) {
+                                                    Object next = it2.next();
+                                                    while (true) {
+                                                        sb2.append((CharSequence) next);
+                                                        if (it2.hasNext()) {
+                                                            sb2.append((CharSequence) ", ");
+                                                            next = it2.next();
+                                                        }
+                                                    }
+                                                }
+                                                sb.append(sb2.toString());
+                                                sb.append(" to ");
+                                                StringBuilder sb3 = new StringBuilder();
+                                                Iterator it3 = arrayList19.iterator();
+                                                if (it3.hasNext()) {
+                                                    while (true) {
+                                                        sb3.append((CharSequence) it3.next());
+                                                        if (it3.hasNext()) {
+                                                            sb3.append((CharSequence) ", ");
+                                                        }
+                                                    }
+                                                }
+                                                sb.append(sb3.toString());
+                                                rr2.k(sb.toString(), zEquals);
+                                            }
+                                            rm1Var2.i = arrayList19;
+                                        }
+                                        if (zG5) {
+                                            rm1Var2.j = true;
+                                        }
+                                        if (j37 != -9223372036854775807L) {
+                                            long j45 = rm1Var2.k;
+                                            if (j45 != -9223372036854775807L) {
+                                                rr2.n(j45 == j37, "Can't change resumeOffsetUs from %s to %s", j45, j37);
+                                            }
+                                            rm1Var2.k = j37;
+                                        }
+                                        if (j38 != -9223372036854775807L) {
+                                            long j46 = rm1Var2.l;
+                                            if (j46 != -9223372036854775807L) {
+                                                rr2.n(j46 == j38, "Can't change playoutLimitUs from %s to %s", j46, j38);
+                                            }
+                                            rm1Var2.l = j38;
+                                        }
+                                        if (!arrayList22.isEmpty()) {
+                                            if (!rm1Var2.m.isEmpty()) {
+                                                boolean zEquals2 = rm1Var2.m.equals(arrayList22);
+                                                StringBuilder sb4 = new StringBuilder("Can't change snapTypes from ");
+                                                ArrayList arrayList27 = rm1Var2.m;
+                                                StringBuilder sb5 = new StringBuilder();
+                                                Iterator it4 = arrayList27.iterator();
+                                                if (it4.hasNext()) {
+                                                    while (true) {
+                                                        sb5.append((CharSequence) it4.next());
+                                                        if (it4.hasNext()) {
+                                                            sb5.append((CharSequence) ", ");
+                                                        }
+                                                    }
+                                                }
+                                                sb4.append(sb5.toString());
+                                                sb4.append(" to ");
+                                                StringBuilder sb6 = new StringBuilder();
+                                                Iterator it5 = arrayList22.iterator();
+                                                if (it5.hasNext()) {
+                                                    while (true) {
+                                                        sb6.append((CharSequence) it5.next());
+                                                        if (it5.hasNext()) {
+                                                            sb6.append((CharSequence) ", ");
+                                                        }
+                                                    }
+                                                }
+                                                sb4.append(sb6.toString());
+                                                rr2.k(sb4.toString(), zEquals2);
+                                            }
+                                            rm1Var2.m = arrayList22;
+                                        }
+                                        if (!arrayList24.isEmpty()) {
+                                            if (!rm1Var2.n.isEmpty()) {
+                                                boolean zEquals3 = rm1Var2.n.equals(arrayList24);
+                                                StringBuilder sb7 = new StringBuilder("Can't change restrictions from ");
+                                                ArrayList arrayList28 = rm1Var2.n;
+                                                StringBuilder sb8 = new StringBuilder();
+                                                Iterator it6 = arrayList28.iterator();
+                                                if (it6.hasNext()) {
+                                                    while (true) {
+                                                        sb8.append((CharSequence) it6.next());
+                                                        if (it6.hasNext()) {
+                                                            sb8.append((CharSequence) ", ");
+                                                        }
+                                                    }
+                                                }
+                                                sb7.append(sb8.toString());
+                                                sb7.append(" to ");
+                                                StringBuilder sb9 = new StringBuilder();
+                                                Iterator it7 = arrayList24.iterator();
+                                                if (it7.hasNext()) {
+                                                    while (true) {
+                                                        sb9.append((CharSequence) it7.next());
+                                                        if (it7.hasNext()) {
+                                                            sb9.append((CharSequence) ", ");
+                                                        }
+                                                    }
+                                                }
+                                                sb7.append(sb9.toString());
+                                                rr2.k(sb7.toString(), zEquals3);
+                                            }
+                                            rm1Var2.n = arrayList24;
+                                        }
+                                        HashMap map5 = rm1Var2.b;
+                                        if (!arrayList25.isEmpty()) {
+                                            for (int i28 = 0; i28 < arrayList25.size(); i28++) {
+                                                qm1 qm1Var = (qm1) arrayList25.get(i28);
+                                                String str31 = qm1Var.a;
+                                                qm1 qm1Var2 = (qm1) map5.get(str31);
+                                                if (qm1Var2 != null) {
+                                                    boolean zEquals4 = qm1Var2.equals(qm1Var);
+                                                    Object[] objArr = {str31, qm1Var2.d, Double.valueOf(qm1Var2.c), qm1Var.d, Double.valueOf(qm1Var.c)};
+                                                    if (!zEquals4) {
+                                                        kf2.n(gh0.s("Can't change %s from %s %s to %s %s", objArr));
+                                                        return null;
+                                                    }
+                                                }
+                                                map5.put(str31, qm1Var);
+                                            }
+                                        }
+                                        if (boolValueOf != null) {
+                                            Boolean bool2 = rm1Var2.o;
+                                            if (bool2 != null) {
+                                                rr2.p(bool2.equals(boolValueOf), "Can't change contentMayVary from %s to %s", rm1Var2.o, boolValueOf);
+                                            }
+                                            rm1Var2.o = boolValueOf;
+                                        }
+                                        if (str29 != null) {
+                                            String str32 = rm1Var2.p;
+                                            String str33 = str29;
+                                            if (str32 != null) {
+                                                rr2.p(str32.equals(str33), "Can't change timelineOccupies from %s to %s", rm1Var2.p, str33);
+                                            }
+                                            rm1Var2.p = str33;
+                                        }
+                                        if (str30 != null) {
+                                            String str34 = rm1Var2.q;
+                                            if (str34 != null) {
+                                                rr2.p(str34.equals(str30), "Can't change timelineStyle from %s to %s", rm1Var2.q, str30);
+                                            }
+                                            rm1Var2.q = str30;
+                                        }
+                                        if (j39 != -9223372036854775807L) {
+                                            long j47 = rm1Var2.r;
+                                            if (j47 != -9223372036854775807L) {
+                                                rr2.n(j47 == j39, "Can't change skipControlOffsetUs from %s to %s", j47, j39);
+                                            }
+                                            rm1Var2.r = j39;
+                                        }
+                                        if (j40 != -9223372036854775807L) {
+                                            long j48 = rm1Var2.s;
+                                            if (j48 != -9223372036854775807L) {
+                                                rr2.n(j48 == j40, "Can't change skipControlDurationUs from %s to %s", j48, j40);
+                                            }
+                                            rm1Var2.s = j40;
+                                        }
+                                        if (str28 != null) {
+                                            String str35 = rm1Var2.t;
+                                            if (str35 != null) {
+                                                rr2.p(str35.equals(str28), "Can't change skipControlLabelId from %s to %s", rm1Var2.t, str28);
+                                            }
+                                            rm1Var2.t = str28;
+                                        }
+                                        linkedHashMap.put(strK8, rm1Var2);
+                                    } else {
+                                        i5 = i22;
+                                        arrayList3 = arrayList4;
+                                        arrayList5 = arrayList5;
+                                        arrayList2 = arrayList6;
+                                        treeMap = treeMap2;
+                                        str4 = str9;
+                                        vm1Var = vm1Var9;
+                                        str3 = str8;
+                                        linkedHashMap = linkedHashMap4;
+                                        if (!strL.startsWith("#")) {
+                                            String hexString3 = strK == null ? null : str17 != null ? str17 : Long.toHexString(j6);
+                                            long j49 = j6 + 1;
+                                            String strL2 = l(map, strL);
+                                            map2 = map2;
+                                            vm1 vm1Var10 = (vm1) map2.get(strL2);
+                                            if (j9 == -1) {
+                                                vm1Var2 = vm1Var10;
+                                                j4 = 0;
+                                            } else if (z6 && vm1Var == null && vm1Var10 == null) {
+                                                vm1 vm1Var11 = new vm1(strL2, 0L, j4, null, null);
+                                                map2.put(strL2, vm1Var11);
+                                                vm1Var2 = vm1Var11;
+                                            } else {
+                                                vm1Var2 = vm1Var10;
+                                                j4 = j4;
+                                            }
+                                            if (ow0Var3 != null || treeMap.isEmpty()) {
+                                                str5 = str4;
+                                                i6 = 0;
+                                            } else {
+                                                i6 = 0;
+                                                nw0[] nw0VarArr3 = (nw0[]) treeMap.values().toArray(new nw0[0]);
+                                                str5 = str4;
+                                                ow0 ow0Var7 = new ow0(str5, true, nw0VarArr3);
+                                                if (ow0VarC2 == null) {
+                                                    ow0VarC = c(str5, nw0VarArr3);
+                                                    ow0Var3 = ow0Var7;
+                                                } else {
+                                                    ow0Var3 = ow0Var7;
+                                                }
+                                                if (vm1Var != null) {
+                                                    vm1Var3 = vm1Var;
+                                                } else {
+                                                    vm1Var3 = vm1Var2;
+                                                }
+                                                long j50 = j5;
+                                                ow0 ow0Var8 = ow0Var3;
+                                                j = j4;
+                                                long j51 = jLongValue;
+                                                String str36 = hexString3;
+                                                String str37 = strK;
+                                                strK = str37;
+                                                arrayList3.add(new vm1(strL2, vm1Var3, strJ, j51, i5, j50, ow0Var8, str37, str36, j, j9, i13, arrayList5));
+                                                j7 = j50 + j51;
+                                                ArrayList arrayList29 = new ArrayList();
+                                                if (j9 != -1) {
+                                                    j4 = j + j9;
+                                                } else {
+                                                    j4 = j;
+                                                }
+                                                j6 = j49;
+                                                linkedHashMap2 = linkedHashMap;
+                                                ow0VarC2 = ow0VarC;
+                                                arrayList5 = arrayList29;
+                                                i12 = i6;
+                                                i13 = i12;
+                                                str9 = str5;
+                                                i11 = i5;
+                                                ow0Var3 = ow0Var8;
+                                                j5 = j7;
+                                                vm1Var4 = vm1Var;
+                                                str8 = str3;
+                                                strJ = str8;
+                                                jLongValue = 0;
+                                                j9 = -1;
+                                                arrayList7 = arrayList7;
+                                                str10 = str17;
+                                                arrayList6 = arrayList2;
+                                                treeMap2 = treeMap;
+                                                cn1Var2 = cn1Var;
+                                                ym1Var2 = ym1Var;
+                                                arrayList4 = arrayList3;
+                                            }
+                                            ow0VarC = ow0VarC2;
+                                            if (vm1Var != null) {
+                                                vm1Var3 = vm1Var;
+                                            } else {
+                                                vm1Var3 = vm1Var2;
+                                            }
+                                            long j52 = j5;
+                                            ow0 ow0Var9 = ow0Var3;
+                                            j = j4;
+                                            long j53 = jLongValue;
+                                            String str38 = hexString3;
+                                            String str39 = strK;
+                                            strK = str39;
+                                            arrayList3.add(new vm1(strL2, vm1Var3, strJ, j53, i5, j52, ow0Var9, str39, str38, j, j9, i13, arrayList5));
+                                            j7 = j52 + j53;
+                                            ArrayList arrayList210 = new ArrayList();
+                                            if (j9 != -1) {
+                                                j4 = j + j9;
+                                            } else {
+                                                j4 = j;
+                                            }
+                                            j6 = j49;
+                                            linkedHashMap2 = linkedHashMap;
+                                            ow0VarC2 = ow0VarC;
+                                            arrayList5 = arrayList210;
+                                            i12 = i6;
+                                            i13 = i12;
+                                            str9 = str5;
+                                            i11 = i5;
+                                            ow0Var3 = ow0Var9;
+                                            j5 = j7;
+                                            vm1Var4 = vm1Var;
+                                            str8 = str3;
+                                            strJ = str8;
+                                            jLongValue = 0;
+                                            j9 = -1;
+                                            arrayList7 = arrayList7;
+                                            str10 = str17;
+                                            arrayList6 = arrayList2;
+                                            treeMap2 = treeMap;
+                                            cn1Var2 = cn1Var;
+                                            ym1Var2 = ym1Var;
+                                            arrayList4 = arrayList3;
+                                        }
+                                        tm1Var = tm1Var;
+                                    }
+                                    i = i5;
+                                    arrayList5 = arrayList5;
+                                    str2 = str4;
+                                    arrayList = arrayList3;
+                                    i2 = 0;
+                                    cn1Var2 = cn1Var;
+                                    ym1Var2 = ym1Var;
+                                    linkedHashMap2 = linkedHashMap;
+                                    i12 = i2;
+                                    str9 = str2;
+                                    strJ = strJ;
+                                    jLongValue = jLongValue;
+                                    j5 = j5;
+                                    j4 = j4;
+                                    vm1Var4 = vm1Var;
+                                    str8 = str3;
+                                    arrayList7 = arrayList7;
+                                    str10 = str17;
+                                    arrayList6 = arrayList2;
+                                    treeMap2 = treeMap;
+                                    arrayList4 = arrayList;
+                                    i11 = i;
+                                    tm1Var = tm1Var;
+                                }
+                                cn1Var2 = cn1Var;
+                                ym1Var2 = ym1Var;
+                            }
+                            linkedHashMap2 = linkedHashMap4;
+                        }
+                        arrayList = arrayList4;
+                        arrayList2 = arrayList6;
+                        treeMap = treeMap2;
+                        str2 = str9;
+                        str3 = str8;
+                        vm1Var = vm1Var4;
+                        i = i11;
+                        i2 = i12;
+                        linkedHashMap = linkedHashMap4;
+                        cn1Var2 = cn1Var;
+                        ym1Var2 = ym1Var;
+                        linkedHashMap2 = linkedHashMap;
+                        i12 = i2;
+                        str9 = str2;
+                        strJ = strJ;
+                        jLongValue = jLongValue;
+                        j5 = j5;
+                        j4 = j4;
+                        vm1Var4 = vm1Var;
+                        str8 = str3;
+                        arrayList7 = arrayList7;
+                        str10 = str17;
+                        arrayList6 = arrayList2;
+                        treeMap2 = treeMap;
+                        arrayList4 = arrayList;
+                        i11 = i;
+                        tm1Var = tm1Var;
+                    }
+                    str10 = str17;
+                    linkedHashMap2 = linkedHashMap4;
+                }
+            }
+            tm1Var = tm1Var;
+        }
     }
 
+    /* JADX WARN: Can't fix incorrect switch cases order, some code will duplicate */
+    /* JADX WARN: Code duplicated, block: B:104:0x022c  */
+    /* JADX WARN: Code duplicated, block: B:107:0x0234  */
+    /* JADX WARN: Code duplicated, block: B:108:0x0236  */
+    /* JADX WARN: Code duplicated, block: B:110:0x0240  */
+    /* JADX WARN: Code duplicated, block: B:112:0x0251  */
+    /* JADX WARN: Code duplicated, block: B:114:0x0257  */
+    /* JADX WARN: Code duplicated, block: B:119:0x026a  */
+    /* JADX WARN: Code duplicated, block: B:121:0x0270  */
+    /* JADX WARN: Code duplicated, block: B:122:0x0276  */
+    /* JADX WARN: Code duplicated, block: B:126:0x0283  */
+    /* JADX WARN: Code duplicated, block: B:128:0x029a A[ADDED_TO_REGION] */
+    /* JADX WARN: Code duplicated, block: B:129:0x029c  */
+    /* JADX WARN: Code duplicated, block: B:132:0x02a7  */
+    /* JADX WARN: Code duplicated, block: B:133:0x02ac  */
+    /* JADX WARN: Code duplicated, block: B:136:0x02c8  */
+    /* JADX WARN: Code duplicated, block: B:138:0x02d3  */
+    /* JADX WARN: Code duplicated, block: B:140:0x02d9  */
+    /* JADX WARN: Code duplicated, block: B:143:0x032c  */
+    /* JADX WARN: Code duplicated, block: B:193:0x04be  */
+    /* JADX WARN: Code duplicated, block: B:282:0x0354 A[SYNTHETIC] */
+    /* JADX WARN: Code duplicated, block: B:287:0x025d A[SYNTHETIC] */
+    /* JADX WARN: Code duplicated, block: B:54:0x0185  */
+    /* JADX WARN: Code duplicated, block: B:55:0x0189  */
+    /* JADX WARN: Code duplicated, block: B:57:0x0191  */
+    /* JADX WARN: Code duplicated, block: B:83:0x01ed  */
     /* JADX WARN: Multi-variable type inference failed */
     /* JADX WARN: Type inference failed for: r0v15 */
     /* JADX WARN: Type inference failed for: r0v16, types: [int] */
@@ -1658,643 +1403,911 @@ public final class en1 implements ce3 {
     /* JADX WARN: Type inference failed for: r43v3 */
     /* JADX WARN: Type inference failed for: r43v5 */
     /* JADX WARN: Type inference failed for: r43v7 */
-    public static cn1 f(qp4 r43, String r44) {
-        String r1 = r44;
-        HashMap r2 = new HashMap();
-        HashMap r11 = new HashMap();
-        ArrayList r3 = new ArrayList();
-        ArrayList r4 = new ArrayList();
-        ArrayList r5 = new ArrayList();
-        ArrayList r6 = new ArrayList();
-        ArrayList r7 = new ArrayList();
-        ArrayList r8 = new ArrayList();
-        ArrayList r12 = new ArrayList();
-        ArrayList r9 = new ArrayList();
-        boolean r10 = false;
-        boolean r13 = false;
-    L3:
-        boolean r14 = r43.j();
-        Pattern r15 = a0;
-        ArrayList r17 = r7;
-        boolean r18 = r10;
-        Pattern r16 = f0;
-        boolean r19 = r13;
-        if (r14 == false) goto L148;
-        String r110 = r43.l();
-        if (r110.startsWith("#EXT") == false) goto L8;
-        r9.add(r110);
-    L8:
-        boolean r111 = r110.startsWith("#EXT-X-I-FRAME-STREAM-INF");
-        ArrayList r23 = r9;
-        if (r110.startsWith("#EXT-X-DEFINE") == false) goto L12;
-        r11.put(k(r110, r16, r11), k(r110, p0, r11));
-    L33:
-        r8 = r8;
-    L34:
-        r10 = r18;
-        r13 = r19;
-    L145:
-        r7 = r17;
-        r9 = r23;
-        r12 = r12;
-        r6 = r6;
-        r5 = r5;
-        r4 = r4;
-        r8 = r8;
-        goto L3
-    L12:
-        if (r110.equals("#EXT-X-INDEPENDENT-SEGMENTS") == false) goto L15;
-        r8 = r8;
-        r4 = r4;
-        r5 = r5;
-        r6 = r6;
-        r12 = r12;
-        r10 = r18;
-        r13 = true;
-        goto L145
-    L15:
-        if (r110.startsWith("#EXT-X-MEDIA") == false) goto L18;
-        r8.add(r110);
-        goto L33
-    L18:
-        if (r110.startsWith("#EXT-X-SESSION-KEY") == false) goto L30;
-        nw0 r20 = d(r110, j(r110, Y, "identity", r11), r11);
-        if (r20 == null) goto L33;
-        String r21 = k(r110, X, r11);
-        if ("SAMPLE-AES-CENC".equals(r21) == false) goto L24;
-    L27:
-        String r22 = "cenc";
-    L28:
-        r12.add(new ow0(r22, true, new nw0[]{r20}));
-        goto L33
-    L24:
-        if ("SAMPLE-AES-CTR".equals(r21) == true) goto L27;
-        r22 = "cbcs";
-        goto L28
-    L30:
-        if (r110.startsWith("#EXT-X-STREAM-INF") == true) goto L35;
-        if (r111 == false) goto L33;
-    L35:
-        boolean r112 = r18 | r110.contains("CLOSED-CAPTIONS=NONE");
-        if (r111 == false) goto L39;
-        int r24 = 16384;
-    L38:
-        r18 = r112;
-        int r113 = Integer.parseInt(k(r110, u, Collections.EMPTY_MAP));
-        Matcher r114 = p.matcher(r110);
-        if (r114.find() == false) goto L43;
-        String r115 = r114.group(1);
-        r115.getClass();
-        int r116 = Integer.parseInt(r115);
-    L44:
-        String r117 = j(r110, w, null, r11);
-        String r25 = j(r110, x, null, r11);
-        String r26 = j(r110, y, null, r11);
-        if (r26 == null) goto L51;
-        String r27 = f35.a;
-        String[] r28 = r26.split(",", 2)[0].split("/", -1);
-        String r29 = r28[0];
-        if (r28.length <= 1) goto L49;
-        String r30 = r28[1];
-        r8 = r8;
-        int r31 = 2;
-    L52:
-        String r32 = f35.v(r31, r25);
-        ArrayList r33 = lw2.a;
-        if (r32 != null) goto L56;
-        String r210 = r25;
-    L123:
-        String r34 = r210;
-    L124:
-        String r35 = j(r110, z, null, r11);
-        if (r35 == null) goto L129;
-        String[] r36 = r35.split("x", -1);
-        int r37 = Integer.parseInt(r36[0]);
-        int r38 = Integer.parseInt(r36[1]);
-        if (r37 <= 0) goto L129;
-        if (r38 <= 0) goto L129;
-    L130:
-        String r39 = j(r110, A, null, r11);
-        if (r39 == null) goto L133;
-        float r40 = Float.parseFloat(r39);
-    L134:
-        String r211 = j(r110, q, null, r11);
-        String r212 = j(r110, r, null, r11);
-        String r310 = j(r110, s, null, r11);
-        String r311 = j(r110, t, null, r11);
-        if (r111 == false) goto L139;
-        Uri r41 = jz4.H(r1, k(r110, r15, r11));
-    L137:
-        Uri r312 = r41;
-        sb1 r42 = new sb1();
-        r42.a = Integer.toString(r3.size());
-        r42.l = lw2.m("application/x-mpegURL");
-        r42.j = r34;
-        r42.h = r116;
-        r42.i = r113;
-        r42.t = r37;
-        r42.u = r38;
-        r42.x = r40;
-        r42.f = r24;
-        r3.add(new bn1(r312, new tb1(r42), r211, r212, r310, r311));
-        ArrayList r45 = (ArrayList) r2.get(r312);
-        if (r45 != null) goto L144;
-        r45 = new ArrayList();
-        r2.put(r312, r45);
-    L144:
-        r45.add(new mn1(r116, r113, r211, r212, r310, r311));
-        goto L34
-    L139:
-        if (r43.j() == false) goto L147;
-        r41 = jz4.H(r1, l(r11, r43.l()));
-        goto L137
-    L147:
-        throw ParserException.b("#EXT-X-STREAM-INF must be followed by another line");
-    L133:
-        r40 = -1.0f;
-    L129:
-        r38 = -1;
-        r37 = -1;
-        goto L130
-    L56:
-        if (r32.startsWith("dvhe") == true) goto L83;
-        r210 = r25;
-        if (r32.startsWith("dvh1") == true) goto L84;
-        if (r29 == null) goto L123;
-        if (r29.startsWith("dvhe") == false) goto L67;
-        if (r32.startsWith("hev1") == true) goto L84;
-    L67:
-        if (r29.startsWith("dvh1") == false) goto L71;
-        if (r32.startsWith("hvc1") == true) goto L84;
-    L71:
-        if (r29.startsWith("dvav") == false) goto L75;
-        if (r32.startsWith("avc3") == true) goto L84;
-    L75:
-        if (r29.startsWith("dva1") == false) goto L79;
-        if (r32.startsWith("avc1") == true) goto L84;
-    L79:
-        if (r29.startsWith("dav1") == false) goto L123;
-        if (r32.startsWith("av01") == false) goto L123;
-    L84:
-        if (r29 == null) goto L102;
-        if (r117 == null) goto L123;
-        if (r30 == null) goto L123;
-        if (r117.equals("PQ") == false) goto L94;
-        if (r30.equals("db1p") == false) goto L123;
-    L94:
-        if (r117.equals("SDR") == false) goto L98;
-        if (r30.equals("db2g") == false) goto L123;
-    L98:
-        if (r117.equals("HLG") == false) goto L102;
-        if (r30.startsWith("db4") == false) goto L123;
-    L102:
-        if (r29 != null) goto L105;
-        r29 = r32;
-    L105:
-        String[] r46 = f35.e0(r210);
-        if (r46.length != 0) goto L108;
-    L107:
-        String r47 = null;
-    L120:
-        if (r47 == null) goto L122;
-        r34 = b11.o(r29, ",", r47);
-        goto L124
-    L122:
-        r34 = r29;
-        goto L124
-    L108:
-        StringBuilder r48 = new StringBuilder();
-        int r49 = r46.length;
-        int r50 = 0;
-    L109:
-        if (r50 >= r49) goto L118;
-        String r118 = r46[r50];
-        String[] r213 = r46;
-        int r214 = r49;
-        if (2 == lw2.h(lw2.d(r118))) goto L116;
-        if (r48.length() <= 0) goto L115;
-        r48.append(",");
-    L115:
-        r48.append(r118);
-    L116:
-        r50 = r50 + 1;
-        r49 = r214;
-        r46 = r213;
-        goto L109
-    L118:
-        if (r48.length() <= 0) goto L107;
-        r47 = r48.toString();
-        goto L120
-    L83:
-        r210 = r25;
-        goto L84
-    L49:
-        r31 = 2;
-    L50:
-        r30 = null;
-        goto L52
-    L51:
-        r31 = 2;
-        r29 = null;
-        goto L50
-    L43:
-        r116 = -1;
-        goto L44
-    L39:
-        r24 = 0;
-        goto L38
-    L148:
-        ArrayList r313 = r8;
-        ArrayList r314 = r4;
-        ArrayList r315 = r5;
-        ArrayList r316 = r6;
-        ArrayList r215 = r9;
-        ArrayList r216 = r12;
-        ArrayList r51 = new ArrayList();
-        HashSet r52 = new HashSet();
-        int r53 = 0;
-        HashMap r54 = r2;
-    L150:
-        if (r53 >= r3.size()) goto L160;
-        bn1 r55 = (bn1) r3.get(r53);
-        Uri r56 = r55.a;
-        tb1 r119 = r55.b;
-        if (r52.add(r56) == false) goto L159;
-        if (r119.l != null) goto L156;
-        boolean r57 = true;
-    L157:
-        rr2.w(r57);
-        ArrayList r120 = (ArrayList) r54.get(r55.a);
-        r120.getClass();
-        qv2 r121 = new qv2(new pv2[]{new nn1(null, null, r120)});
-        sb1 r58 = r119.a();
-        r58.k = r121;
-        r51.add(new bn1(r55.a, new tb1(r58), r55.c, r55.d, r55.e, r55.f));
-        goto L159
-    L156:
-        r57 = false;
-    L159:
-        r53 = r53 + 1;
-        r54 = r54;
-        goto L150
-    L160:
-        int r59 = 0;
-        List r60 = null;
-        tb1 r61 = null;
-    L162:
-        if (r59 >= r313.size()) goto L276;
-        ArrayList r62 = r313;
-        String r63 = (String) r62.get(r59);
-        String r122 = k(r63, g0, r11);
-        String r123 = k(r63, r16, r11);
-        sb1 r124 = new sb1();
-        int r217 = r59;
-        r124.a = b11.o(r122, ":", r123);
-        r124.b = r123;
-        r124.l = lw2.m("application/x-mpegURL");
-        boolean r410 = g(r63, k0);
-        ?? r411 = r410;
-        if (g(r63, l0) == false) goto L167;
-        r411 = (r410 ? 1 : 0) | 2;
-    L167:
-        if (g(r63, j0) == false) goto L169;
-        ?? r64 = r411 | 4;
-    L170:
-        r124.e = r64;
-        ArrayList r412 = r51;
-        String r65 = j(r63, h0, null, r11);
-        if (TextUtils.isEmpty(r65) == false) goto L173;
-        r313 = r62;
-        int r66 = 0;
-    L187:
-        r124.f = r66;
-        r124.d = j(r63, e0, null, r11);
-        String r67 = j(r63, r15, null, r11);
-        if (r67 != null) goto L190;
-        Uri r68 = null;
-    L191:
-        qv2 r69 = new qv2(new pv2[]{new nn1(r122, r123, Collections.EMPTY_LIST)});
-        String r70 = k(r63, c0, r11);
-        switch(r70.hashCode()) {
-            case -959297733: goto L207;
-            case -333210994: goto L203;
-            case 62628790: goto L199;
-            case 81665115: goto L195;
-            default: goto L193;
-        };
-    L193:
-        byte r71 = -1;
-    L210:
-        switch(r71) {
-            case 0: goto L258;
-            case 1: goto L250;
-            case 2: goto L225;
-            case 3: goto L212;
-            default: goto L249;
-        };
-    L212:
-        int r72 = 0;
-    L214:
-        if (r72 >= r3.size()) goto L219;
-        bn1 r73 = (bn1) r3.get(r72);
-        if (r122.equals(r73.c) == true) goto L220;
-        r72 = r72 + 1;
-    L220:
-        if (r73 == null) goto L222;
-        tb1 r74 = r73.b;
-        String r75 = f35.v(2, r74.k);
-        r124.j = r75;
-        r124.m = lw2.m(lw2.d(r75));
-        r124.t = r74.u;
-        r124.u = r74.v;
-        r124.x = r74.y;
-    L222:
-        if (r68 == null) goto L249;
-        r124.k = r69;
-        r314.add(new an1(r68, new tb1(r124), r123));
-        goto L249
-    L219:
-        r73 = null;
-        goto L220
-    L225:
-        int r76 = 0;
-    L227:
-        if (r76 >= r3.size()) goto L232;
-        bn1 r77 = (bn1) r3.get(r76);
-        int r218 = r76;
-        if (r122.equals(r77.d) == true) goto L233;
-        r76 = r218 + 1;
-    L233:
-        if (r77 == null) goto L235;
-        String r78 = f35.v(1, r77.b.k);
-        r124.j = r78;
-        String r79 = lw2.d(r78);
-    L236:
-        bn1 r219 = r77;
-        String r80 = j(r63, v, null, r11);
-        if (r80 == null) goto L243;
-        String r125 = f35.a;
-        r124.E = Integer.parseInt(r80.split("/", 2)[0]);
-        if ("audio/eac3".equals(r79) == false) goto L243;
-        if (r80.endsWith("/JOC") == false) goto L243;
-        r124.j = "ec+3";
-        r79 = "audio/eac3-joc";
-    L243:
-        r124.m = lw2.m(r79);
-        if (r68 == null) goto L246;
-        r124.k = r69;
-        r315.add(new an1(r68, new tb1(r124), r123));
-        goto L249
-    L246:
-        ArrayList r81 = r315;
-        if (r219 == null) goto L257;
-        r315 = r81;
-        r61 = new tb1(r124);
-    L257:
-        r315 = r81;
-        goto L249
-    L235:
-        r79 = null;
-        goto L236
-    L232:
-        r77 = null;
-        goto L233
-    L250:
-        r81 = r315;
-        String r82 = k(r63, i0, r11);
-        if (r82.startsWith("CC") == false) goto L253;
-        int r83 = Integer.parseInt(r82.substring(2));
-        String r84 = "application/cea-608";
-    L254:
-        if (r60 != null) goto L256;
-        r60 = new ArrayList();
-    L256:
-        r124.m = lw2.m(r84);
-        r124.J = r83;
-        r60.add(new tb1(r124));
-        goto L257
-    L253:
-        r83 = Integer.parseInt(r82.substring(7));
-        r84 = "application/cea-708";
-        goto L254
-    L258:
-        int r85 = 0;
-    L260:
-        if (r85 >= r3.size()) goto L265;
-        bn1 r86 = (bn1) r3.get(r85);
-        if (r122.equals(r86.e) == true) goto L266;
-        r85 = r85 + 1;
-    L266:
-        if (r86 == null) goto L268;
-        String r87 = f35.v(3, r86.b.k);
-        r124.j = r87;
-        String r88 = lw2.d(r87);
-    L269:
-        if (r88 != null) goto L271;
-        r88 = "text/vtt";
-    L271:
-        r124.m = lw2.m(r88);
-        r124.k = r69;
-        if (r68 == null) goto L274;
-        an1 r89 = new an1(r68, new tb1(r124), r123);
-        ArrayList r90 = r316;
-        r90.add(r89);
-    L275:
-        r51 = r412;
-        r316 = r90;
-        r59 = r217 + 1;
-        r1 = r44;
-        goto L162
-    L274:
-        r90 = r316;
-        l93.q0("HlsPlaylistParser", "EXT-X-MEDIA tag with missing mandatory URI attribute: skipping");
-        goto L275
-    L268:
-        r88 = null;
-        goto L269
-    L265:
-        r86 = null;
-    L249:
-        r90 = r316;
-        goto L275
-    L195:
-        if (r70.equals("VIDEO") == false) goto L193;
-        r71 = 3;
-        goto L210
-    L199:
-        if (r70.equals("AUDIO") == false) goto L193;
-        r71 = 2;
-        goto L210
-    L203:
-        if (r70.equals("CLOSED-CAPTIONS") == false) goto L193;
-        r71 = 1;
-        goto L210
-    L207:
-        if (r70.equals("SUBTITLES") == false) goto L193;
-        r71 = 0;
-        goto L210
-    L190:
-        r68 = jz4.H(r1, r67);
-        goto L191
-    L173:
-        String r91 = f35.a;
-        String[] r92 = r65.split(",", -1);
-        if (f35.m(r92, "public.accessibility.describes-video") == false) goto L177;
-        r66 = 512;
-    L176:
-        r313 = r62;
-        if (f35.m(r92, "public.accessibility.transcribes-spoken-dialog") == false) goto L182;
-        r66 = r66 | 4096;
-    L182:
-        if (f35.m(r92, "public.accessibility.describes-music-and-sound") == false) goto L185;
-        r66 = r66 | 1024;
-    L185:
-        if (f35.m(r92, "public.easy-to-read") == false) goto L187;
-        r66 = r66 | 8192;
-        goto L187
-    L177:
-        r66 = 0;
-        goto L176
-    L169:
-        r64 = r411;
-        goto L170
-    L276:
-        ArrayList r413 = r51;
-        ArrayList r93 = r316;
-        if (r18 == false) goto L280;
-        r60 = Collections.EMPTY_LIST;
-    L280:
-        return new cn1(r44, r215, r413, r314, r315, r93, r17, r61, r60, r19, r11, r216);
+    public static cn1 f(qp4 qp4Var, String str) throws IOException {
+        ?? r43;
+        int i;
+        ArrayList arrayList;
+        bn1 bn1Var;
+        String strD;
+        ArrayList arrayList2;
+        int i2;
+        String str2;
+        bn1 bn1Var2;
+        String strD2;
+        bn1 bn1Var3;
+        int i3;
+        int i4;
+        String str3;
+        String str4;
+        String strV;
+        String str5;
+        String[] strArrE0;
+        StringBuilder sb;
+        int length;
+        int i5;
+        String string;
+        String str6;
+        String strO;
+        String strJ;
+        int i6;
+        int i7;
+        String strJ2;
+        float f;
+        Uri uriH;
+        Uri uri;
+        ArrayList arrayList3;
+        String str7 = str;
+        HashMap map = new HashMap();
+        HashMap map2 = new HashMap();
+        ArrayList arrayList4 = new ArrayList();
+        ArrayList arrayList5 = new ArrayList();
+        ArrayList arrayList6 = new ArrayList();
+        ArrayList arrayList7 = new ArrayList();
+        ArrayList arrayList8 = new ArrayList();
+        ArrayList arrayList9 = new ArrayList();
+        ArrayList arrayList10 = new ArrayList();
+        ArrayList arrayList11 = new ArrayList();
+        boolean z2 = false;
+        boolean z3 = false;
+        while (true) {
+            boolean zJ = qp4Var.j();
+            Pattern pattern = a0;
+            ArrayList arrayList12 = arrayList8;
+            boolean z4 = z2;
+            Pattern pattern2 = f0;
+            boolean z5 = z3;
+            if (!zJ) {
+                ArrayList arrayList13 = arrayList9;
+                ArrayList arrayList14 = arrayList5;
+                ArrayList arrayList15 = arrayList6;
+                ArrayList arrayList16 = arrayList7;
+                ArrayList arrayList17 = arrayList11;
+                ArrayList arrayList18 = arrayList10;
+                ArrayList arrayList19 = new ArrayList();
+                HashSet hashSet = new HashSet();
+                int i8 = 0;
+                HashMap map3 = map;
+                while (i8 < arrayList4.size()) {
+                    bn1 bn1Var4 = (bn1) arrayList4.get(i8);
+                    Uri uri2 = bn1Var4.a;
+                    tb1 tb1Var = bn1Var4.b;
+                    if (hashSet.add(uri2)) {
+                        rr2.w(tb1Var.l == null);
+                        ArrayList arrayList20 = (ArrayList) map3.get(bn1Var4.a);
+                        arrayList20.getClass();
+                        qv2 qv2Var = new qv2(new nn1(null, null, arrayList20));
+                        sb1 sb1VarA = tb1Var.a();
+                        sb1VarA.k = qv2Var;
+                        arrayList19.add(new bn1(bn1Var4.a, new tb1(sb1VarA), bn1Var4.c, bn1Var4.d, bn1Var4.e, bn1Var4.f));
+                    }
+                    i8++;
+                    map3 = map3;
+                }
+                int i9 = 0;
+                List arrayList21 = null;
+                tb1 tb1Var2 = null;
+                while (i9 < arrayList13.size()) {
+                    ArrayList arrayList22 = arrayList13;
+                    String str8 = (String) arrayList22.get(i9);
+                    String strK = k(str8, g0, map2);
+                    String strK2 = k(str8, pattern2, map2);
+                    sb1 sb1Var = new sb1();
+                    int i10 = i9;
+                    sb1Var.a = b11.o(strK, ":", strK2);
+                    sb1Var.b = strK2;
+                    sb1Var.l = lw2.m("application/x-mpegURL");
+                    boolean zG = g(str8, k0);
+                    if (g(str8, l0)) {
+                        r43 = zG;
+                        r43 = (zG ? 1 : 0) | 2;
+                    }
+                    r43 = zG;
+                    sb1Var.e = g(str8, j0) ? r43 | 4 : r43;
+                    ArrayList arrayList23 = arrayList19;
+                    String strJ3 = j(str8, h0, null, map2);
+                    if (TextUtils.isEmpty(strJ3)) {
+                        arrayList13 = arrayList22;
+                        i = 0;
+                    } else {
+                        String str9 = f35.a;
+                        String[] strArrSplit = strJ3.split(",", -1);
+                        i = f35.m(strArrSplit, "public.accessibility.describes-video") ? 512 : 0;
+                        arrayList13 = arrayList22;
+                        if (f35.m(strArrSplit, "public.accessibility.transcribes-spoken-dialog")) {
+                            i |= 4096;
+                        }
+                        if (f35.m(strArrSplit, "public.accessibility.describes-music-and-sound")) {
+                            i |= 1024;
+                        }
+                        if (f35.m(strArrSplit, "public.easy-to-read")) {
+                            i |= 8192;
+                        }
+                    }
+                    sb1Var.f = i;
+                    sb1Var.d = j(str8, e0, null, map2);
+                    String strJ4 = j(str8, pattern, null, map2);
+                    Uri uriH2 = strJ4 == null ? null : jz4.H(str7, strJ4);
+                    qv2 qv2Var2 = new qv2(new nn1(strK, strK2, Collections.EMPTY_LIST));
+                    switch (k(str8, c0, map2)) {
+                        case "SUBTITLES":
+                            int i11 = 0;
+                            while (true) {
+                                if (i11 < arrayList4.size()) {
+                                    bn1Var = (bn1) arrayList4.get(i11);
+                                    if (!strK.equals(bn1Var.e)) {
+                                        i11++;
+                                    }
+                                } else {
+                                    bn1Var = null;
+                                }
+                            }
+                            if (bn1Var != null) {
+                                String strV2 = f35.v(3, bn1Var.b.k);
+                                sb1Var.j = strV2;
+                                strD = lw2.d(strV2);
+                            } else {
+                                strD = null;
+                            }
+                            if (strD == null) {
+                                strD = "text/vtt";
+                            }
+                            sb1Var.m = lw2.m(strD);
+                            sb1Var.k = qv2Var2;
+                            if (uriH2 == null) {
+                                arrayList = arrayList16;
+                                l93.q0("HlsPlaylistParser", "EXT-X-MEDIA tag with missing mandatory URI attribute: skipping");
+                                break;
+                            } else {
+                                an1 an1Var = new an1(uriH2, new tb1(sb1Var), strK2);
+                                arrayList = arrayList16;
+                                arrayList.add(an1Var);
+                                break;
+                            }
+                            break;
+                        case "CLOSED-CAPTIONS":
+                            arrayList2 = arrayList15;
+                            String strK3 = k(str8, i0, map2);
+                            if (strK3.startsWith("CC")) {
+                                i2 = Integer.parseInt(strK3.substring(2));
+                                str2 = "application/cea-608";
+                            } else {
+                                i2 = Integer.parseInt(strK3.substring(7));
+                                str2 = "application/cea-708";
+                            }
+                            if (arrayList21 == null) {
+                                arrayList21 = new ArrayList();
+                            }
+                            sb1Var.m = lw2.m(str2);
+                            sb1Var.J = i2;
+                            arrayList21.add(new tb1(sb1Var));
+                            arrayList15 = arrayList2;
+                            arrayList = arrayList16;
+                            break;
+                        case "AUDIO":
+                            int i12 = 0;
+                            while (true) {
+                                if (i12 < arrayList4.size()) {
+                                    bn1Var2 = (bn1) arrayList4.get(i12);
+                                    int i13 = i12;
+                                    if (!strK.equals(bn1Var2.d)) {
+                                        i12 = i13 + 1;
+                                    }
+                                } else {
+                                    bn1Var2 = null;
+                                }
+                            }
+                            if (bn1Var2 != null) {
+                                String strV3 = f35.v(1, bn1Var2.b.k);
+                                sb1Var.j = strV3;
+                                strD2 = lw2.d(strV3);
+                            } else {
+                                strD2 = null;
+                            }
+                            bn1 bn1Var5 = bn1Var2;
+                            String strJ5 = j(str8, v, null, map2);
+                            if (strJ5 != null) {
+                                String str10 = f35.a;
+                                sb1Var.E = Integer.parseInt(strJ5.split("/", 2)[0]);
+                                if ("audio/eac3".equals(strD2) && strJ5.endsWith("/JOC")) {
+                                    sb1Var.j = "ec+3";
+                                    strD2 = "audio/eac3-joc";
+                                }
+                            }
+                            sb1Var.m = lw2.m(strD2);
+                            if (uriH2 != null) {
+                                sb1Var.k = qv2Var2;
+                                arrayList15.add(new an1(uriH2, new tb1(sb1Var), strK2));
+                            } else {
+                                arrayList2 = arrayList15;
+                                if (bn1Var5 != null) {
+                                    arrayList15 = arrayList2;
+                                    tb1Var2 = new tb1(sb1Var);
+                                } else {
+                                    arrayList15 = arrayList2;
+                                }
+                            }
+                            arrayList = arrayList16;
+                            break;
+                        case "VIDEO":
+                            int i14 = 0;
+                            while (true) {
+                                if (i14 < arrayList4.size()) {
+                                    bn1Var3 = (bn1) arrayList4.get(i14);
+                                    if (!strK.equals(bn1Var3.c)) {
+                                        i14++;
+                                    }
+                                } else {
+                                    bn1Var3 = null;
+                                }
+                            }
+                            if (bn1Var3 != null) {
+                                tb1 tb1Var3 = bn1Var3.b;
+                                String strV4 = f35.v(2, tb1Var3.k);
+                                sb1Var.j = strV4;
+                                sb1Var.m = lw2.m(lw2.d(strV4));
+                                sb1Var.t = tb1Var3.u;
+                                sb1Var.u = tb1Var3.v;
+                                sb1Var.x = tb1Var3.y;
+                            }
+                            if (uriH2 != null) {
+                                sb1Var.k = qv2Var2;
+                                arrayList14.add(new an1(uriH2, new tb1(sb1Var), strK2));
+                            }
+                            arrayList = arrayList16;
+                            break;
+                        default:
+                            arrayList = arrayList16;
+                            break;
+                    }
+                    arrayList19 = arrayList23;
+                    arrayList16 = arrayList;
+                    i9 = i10 + 1;
+                    str7 = str;
+                }
+                ArrayList arrayList24 = arrayList19;
+                ArrayList arrayList25 = arrayList16;
+                if (z4) {
+                    arrayList21 = Collections.EMPTY_LIST;
+                }
+                return new cn1(str, arrayList17, arrayList24, arrayList14, arrayList15, arrayList25, arrayList12, tb1Var2, arrayList21, z5, map2, arrayList18);
+            }
+            String strL = qp4Var.l();
+            if (strL.startsWith("#EXT")) {
+                arrayList11.add(strL);
+            }
+            boolean zStartsWith = strL.startsWith("#EXT-X-I-FRAME-STREAM-INF");
+            ArrayList arrayList26 = arrayList11;
+            if (strL.startsWith("#EXT-X-DEFINE")) {
+                map2.put(k(strL, pattern2, map2), k(strL, p0, map2));
+            } else {
+                if (strL.equals("#EXT-X-INDEPENDENT-SEGMENTS")) {
+                    arrayList9 = arrayList9;
+                    arrayList5 = arrayList5;
+                    arrayList6 = arrayList6;
+                    arrayList7 = arrayList7;
+                    arrayList10 = arrayList10;
+                    z2 = z4;
+                    z3 = true;
+                } else if (strL.startsWith("#EXT-X-MEDIA")) {
+                    arrayList9.add(strL);
+                } else if (strL.startsWith("#EXT-X-SESSION-KEY")) {
+                    nw0 nw0VarD = d(strL, j(strL, Y, "identity", map2), map2);
+                    if (nw0VarD != null) {
+                        String strK4 = k(strL, X, map2);
+                        arrayList10.add(new ow0(("SAMPLE-AES-CENC".equals(strK4) || "SAMPLE-AES-CTR".equals(strK4)) ? "cenc" : "cbcs", true, nw0VarD));
+                    }
+                } else {
+                    if (strL.startsWith("#EXT-X-STREAM-INF") || zStartsWith) {
+                        boolean zContains = z4 | strL.contains("CLOSED-CAPTIONS=NONE");
+                        int i15 = zStartsWith ? 16384 : 0;
+                        z4 = zContains;
+                        int i16 = Integer.parseInt(k(strL, u, Collections.EMPTY_MAP));
+                        Matcher matcher = p.matcher(strL);
+                        if (matcher.find()) {
+                            String strGroup = matcher.group(1);
+                            strGroup.getClass();
+                            i3 = Integer.parseInt(strGroup);
+                        } else {
+                            i3 = -1;
+                        }
+                        String strJ6 = j(strL, w, null, map2);
+                        String strJ7 = j(strL, x, null, map2);
+                        String strJ8 = j(strL, y, null, map2);
+                        if (strJ8 != null) {
+                            String str11 = f35.a;
+                            String[] strArrSplit2 = strJ8.split(",", 2)[0].split("/", -1);
+                            str3 = strArrSplit2[0];
+                            if (strArrSplit2.length > 1) {
+                                str4 = strArrSplit2[1];
+                                arrayList9 = arrayList9;
+                                i4 = 2;
+                            } else {
+                                i4 = 2;
+                            }
+                            strV = f35.v(i4, strJ7);
+                            ArrayList arrayList27 = lw2.a;
+                            if (strV == null) {
+                                str5 = strJ7;
+                            } else {
+                                if (strV.startsWith("dvhe")) {
+                                    str5 = strJ7;
+                                } else {
+                                    str5 = strJ7;
+                                    if (strV.startsWith("dvh1") && (str3 == null || ((!str3.startsWith("dvhe") || !strV.startsWith("hev1")) && ((!str3.startsWith("dvh1") || !strV.startsWith("hvc1")) && ((!str3.startsWith("dvav") || !strV.startsWith("avc3")) && ((!str3.startsWith("dva1") || !strV.startsWith("avc1")) && (!str3.startsWith("dav1") || !strV.startsWith("av01")))))))) {
+                                    }
+                                    strJ = j(strL, z, null, map2);
+                                    if (strJ != null) {
+                                        String[] strArrSplit3 = strJ.split("x", -1);
+                                        i7 = Integer.parseInt(strArrSplit3[0]);
+                                        i6 = Integer.parseInt(strArrSplit3[1]);
+                                        if (i7 > 0 || i6 <= 0) {
+                                            i6 = -1;
+                                            i7 = -1;
+                                        }
+                                    } else {
+                                        i6 = -1;
+                                        i7 = -1;
+                                    }
+                                    strJ2 = j(strL, A, null, map2);
+                                    if (strJ2 != null) {
+                                        f = Float.parseFloat(strJ2);
+                                    } else {
+                                        f = -1.0f;
+                                    }
+                                    String strJ9 = j(strL, q, null, map2);
+                                    String strJ10 = j(strL, r, null, map2);
+                                    String strJ11 = j(strL, s, null, map2);
+                                    String strJ12 = j(strL, t, null, map2);
+                                    if (zStartsWith) {
+                                        uriH = jz4.H(str7, k(strL, pattern, map2));
+                                    } else {
+                                        if (qp4Var.j()) {
+                                            throw ParserException.b("#EXT-X-STREAM-INF must be followed by another line");
+                                        }
+                                        uriH = jz4.H(str7, l(map2, qp4Var.l()));
+                                    }
+                                    uri = uriH;
+                                    sb1 sb1Var2 = new sb1();
+                                    sb1Var2.a = Integer.toString(arrayList4.size());
+                                    sb1Var2.l = lw2.m("application/x-mpegURL");
+                                    sb1Var2.j = strO;
+                                    sb1Var2.h = i3;
+                                    sb1Var2.i = i16;
+                                    sb1Var2.t = i7;
+                                    sb1Var2.u = i6;
+                                    sb1Var2.x = f;
+                                    sb1Var2.f = i15;
+                                    arrayList4.add(new bn1(uri, new tb1(sb1Var2), strJ9, strJ10, strJ11, strJ12));
+                                    arrayList3 = (ArrayList) map.get(uri);
+                                    if (arrayList3 == null) {
+                                        arrayList3 = new ArrayList();
+                                        map.put(uri, arrayList3);
+                                    }
+                                    arrayList3.add(new mn1(i3, i16, strJ9, strJ10, strJ11, strJ12));
+                                }
+                                if (str3 == null || (strJ6 != null && str4 != null && ((!strJ6.equals("PQ") || str4.equals("db1p")) && ((!strJ6.equals("SDR") || str4.equals("db2g")) && (!strJ6.equals("HLG") || str4.startsWith("db4")))))) {
+                                    if (str3 == null) {
+                                        str3 = strV;
+                                    }
+                                    strArrE0 = f35.e0(str5);
+                                    if (strArrE0.length == 0) {
+                                        string = null;
+                                    } else {
+                                        sb = new StringBuilder();
+                                        length = strArrE0.length;
+                                        i5 = 0;
+                                        while (i5 < length) {
+                                            str6 = strArrE0[i5];
+                                            String[] strArr = strArrE0;
+                                            int i17 = length;
+                                            if (2 == lw2.h(lw2.d(str6))) {
+                                                if (sb.length() > 0) {
+                                                    sb.append(",");
+                                                }
+                                                sb.append(str6);
+                                            }
+                                            i5++;
+                                            length = i17;
+                                            strArrE0 = strArr;
+                                        }
+                                        if (sb.length() > 0) {
+                                            string = sb.toString();
+                                        } else {
+                                            string = null;
+                                        }
+                                    }
+                                    if (string != null) {
+                                        strO = b11.o(str3, ",", string);
+                                    } else {
+                                        strO = str3;
+                                    }
+                                }
+                                strJ = j(strL, z, null, map2);
+                                if (strJ != null) {
+                                    String[] strArrSplit4 = strJ.split("x", -1);
+                                    i7 = Integer.parseInt(strArrSplit4[0]);
+                                    i6 = Integer.parseInt(strArrSplit4[1]);
+                                    if (i7 > 0) {
+                                        i6 = -1;
+                                        i7 = -1;
+                                    } else {
+                                        i6 = -1;
+                                        i7 = -1;
+                                    }
+                                } else {
+                                    i6 = -1;
+                                    i7 = -1;
+                                }
+                                strJ2 = j(strL, A, null, map2);
+                                if (strJ2 != null) {
+                                    f = Float.parseFloat(strJ2);
+                                } else {
+                                    f = -1.0f;
+                                }
+                                String strJ13 = j(strL, q, null, map2);
+                                String strJ14 = j(strL, r, null, map2);
+                                String strJ15 = j(strL, s, null, map2);
+                                String strJ16 = j(strL, t, null, map2);
+                                if (zStartsWith) {
+                                    uriH = jz4.H(str7, k(strL, pattern, map2));
+                                } else {
+                                    if (qp4Var.j()) {
+                                        throw ParserException.b("#EXT-X-STREAM-INF must be followed by another line");
+                                    }
+                                    uriH = jz4.H(str7, l(map2, qp4Var.l()));
+                                }
+                                uri = uriH;
+                                sb1 sb1Var3 = new sb1();
+                                sb1Var3.a = Integer.toString(arrayList4.size());
+                                sb1Var3.l = lw2.m("application/x-mpegURL");
+                                sb1Var3.j = strO;
+                                sb1Var3.h = i3;
+                                sb1Var3.i = i16;
+                                sb1Var3.t = i7;
+                                sb1Var3.u = i6;
+                                sb1Var3.x = f;
+                                sb1Var3.f = i15;
+                                arrayList4.add(new bn1(uri, new tb1(sb1Var3), strJ13, strJ14, strJ15, strJ16));
+                                arrayList3 = (ArrayList) map.get(uri);
+                                if (arrayList3 == null) {
+                                    arrayList3 = new ArrayList();
+                                    map.put(uri, arrayList3);
+                                }
+                                arrayList3.add(new mn1(i3, i16, strJ13, strJ14, strJ15, strJ16));
+                            }
+                            strO = str5;
+                            strJ = j(strL, z, null, map2);
+                            if (strJ != null) {
+                                String[] strArrSplit5 = strJ.split("x", -1);
+                                i7 = Integer.parseInt(strArrSplit5[0]);
+                                i6 = Integer.parseInt(strArrSplit5[1]);
+                                if (i7 > 0) {
+                                    i6 = -1;
+                                    i7 = -1;
+                                } else {
+                                    i6 = -1;
+                                    i7 = -1;
+                                }
+                            } else {
+                                i6 = -1;
+                                i7 = -1;
+                            }
+                            strJ2 = j(strL, A, null, map2);
+                            if (strJ2 != null) {
+                                f = Float.parseFloat(strJ2);
+                            } else {
+                                f = -1.0f;
+                            }
+                            String strJ17 = j(strL, q, null, map2);
+                            String strJ18 = j(strL, r, null, map2);
+                            String strJ19 = j(strL, s, null, map2);
+                            String strJ110 = j(strL, t, null, map2);
+                            if (zStartsWith) {
+                                uriH = jz4.H(str7, k(strL, pattern, map2));
+                            } else {
+                                if (qp4Var.j()) {
+                                    throw ParserException.b("#EXT-X-STREAM-INF must be followed by another line");
+                                }
+                                uriH = jz4.H(str7, l(map2, qp4Var.l()));
+                            }
+                            uri = uriH;
+                            sb1 sb1Var4 = new sb1();
+                            sb1Var4.a = Integer.toString(arrayList4.size());
+                            sb1Var4.l = lw2.m("application/x-mpegURL");
+                            sb1Var4.j = strO;
+                            sb1Var4.h = i3;
+                            sb1Var4.i = i16;
+                            sb1Var4.t = i7;
+                            sb1Var4.u = i6;
+                            sb1Var4.x = f;
+                            sb1Var4.f = i15;
+                            arrayList4.add(new bn1(uri, new tb1(sb1Var4), strJ17, strJ18, strJ19, strJ110));
+                            arrayList3 = (ArrayList) map.get(uri);
+                            if (arrayList3 == null) {
+                                arrayList3 = new ArrayList();
+                                map.put(uri, arrayList3);
+                            }
+                            arrayList3.add(new mn1(i3, i16, strJ17, strJ18, strJ19, strJ110));
+                        } else {
+                            i4 = 2;
+                            str3 = null;
+                        }
+                        str4 = null;
+                        strV = f35.v(i4, strJ7);
+                        ArrayList arrayList28 = lw2.a;
+                        if (strV == null) {
+                            str5 = strJ7;
+                        } else {
+                            if (strV.startsWith("dvhe")) {
+                                str5 = strJ7;
+                                if (strV.startsWith("dvh1")) {
+                                }
+                                strJ = j(strL, z, null, map2);
+                                if (strJ != null) {
+                                    String[] strArrSplit6 = strJ.split("x", -1);
+                                    i7 = Integer.parseInt(strArrSplit6[0]);
+                                    i6 = Integer.parseInt(strArrSplit6[1]);
+                                    if (i7 > 0) {
+                                        i6 = -1;
+                                        i7 = -1;
+                                    } else {
+                                        i6 = -1;
+                                        i7 = -1;
+                                    }
+                                } else {
+                                    i6 = -1;
+                                    i7 = -1;
+                                }
+                                strJ2 = j(strL, A, null, map2);
+                                if (strJ2 != null) {
+                                    f = Float.parseFloat(strJ2);
+                                } else {
+                                    f = -1.0f;
+                                }
+                                String strJ111 = j(strL, q, null, map2);
+                                String strJ112 = j(strL, r, null, map2);
+                                String strJ113 = j(strL, s, null, map2);
+                                String strJ114 = j(strL, t, null, map2);
+                                if (zStartsWith) {
+                                    uriH = jz4.H(str7, k(strL, pattern, map2));
+                                } else {
+                                    if (qp4Var.j()) {
+                                        throw ParserException.b("#EXT-X-STREAM-INF must be followed by another line");
+                                    }
+                                    uriH = jz4.H(str7, l(map2, qp4Var.l()));
+                                }
+                                uri = uriH;
+                                sb1 sb1Var5 = new sb1();
+                                sb1Var5.a = Integer.toString(arrayList4.size());
+                                sb1Var5.l = lw2.m("application/x-mpegURL");
+                                sb1Var5.j = strO;
+                                sb1Var5.h = i3;
+                                sb1Var5.i = i16;
+                                sb1Var5.t = i7;
+                                sb1Var5.u = i6;
+                                sb1Var5.x = f;
+                                sb1Var5.f = i15;
+                                arrayList4.add(new bn1(uri, new tb1(sb1Var5), strJ111, strJ112, strJ113, strJ114));
+                                arrayList3 = (ArrayList) map.get(uri);
+                                if (arrayList3 == null) {
+                                    arrayList3 = new ArrayList();
+                                    map.put(uri, arrayList3);
+                                }
+                                arrayList3.add(new mn1(i3, i16, strJ111, strJ112, strJ113, strJ114));
+                            } else {
+                                str5 = strJ7;
+                            }
+                            if (str3 == null) {
+                            }
+                            if (str3 == null) {
+                                str3 = strV;
+                            }
+                            strArrE0 = f35.e0(str5);
+                            if (strArrE0.length == 0) {
+                                string = null;
+                            } else {
+                                sb = new StringBuilder();
+                                length = strArrE0.length;
+                                i5 = 0;
+                                while (i5 < length) {
+                                    str6 = strArrE0[i5];
+                                    String[] strArr2 = strArrE0;
+                                    int i18 = length;
+                                    if (2 == lw2.h(lw2.d(str6))) {
+                                        if (sb.length() > 0) {
+                                            sb.append(",");
+                                        }
+                                        sb.append(str6);
+                                    }
+                                    i5++;
+                                    length = i18;
+                                    strArrE0 = strArr2;
+                                }
+                                if (sb.length() > 0) {
+                                    string = sb.toString();
+                                } else {
+                                    string = null;
+                                }
+                            }
+                            if (string != null) {
+                                strO = b11.o(str3, ",", string);
+                            } else {
+                                strO = str3;
+                            }
+                            strJ = j(strL, z, null, map2);
+                            if (strJ != null) {
+                                String[] strArrSplit7 = strJ.split("x", -1);
+                                i7 = Integer.parseInt(strArrSplit7[0]);
+                                i6 = Integer.parseInt(strArrSplit7[1]);
+                                if (i7 > 0) {
+                                    i6 = -1;
+                                    i7 = -1;
+                                } else {
+                                    i6 = -1;
+                                    i7 = -1;
+                                }
+                            } else {
+                                i6 = -1;
+                                i7 = -1;
+                            }
+                            strJ2 = j(strL, A, null, map2);
+                            if (strJ2 != null) {
+                                f = Float.parseFloat(strJ2);
+                            } else {
+                                f = -1.0f;
+                            }
+                            String strJ115 = j(strL, q, null, map2);
+                            String strJ116 = j(strL, r, null, map2);
+                            String strJ117 = j(strL, s, null, map2);
+                            String strJ118 = j(strL, t, null, map2);
+                            if (zStartsWith) {
+                                uriH = jz4.H(str7, k(strL, pattern, map2));
+                            } else {
+                                if (qp4Var.j()) {
+                                    throw ParserException.b("#EXT-X-STREAM-INF must be followed by another line");
+                                }
+                                uriH = jz4.H(str7, l(map2, qp4Var.l()));
+                            }
+                            uri = uriH;
+                            sb1 sb1Var6 = new sb1();
+                            sb1Var6.a = Integer.toString(arrayList4.size());
+                            sb1Var6.l = lw2.m("application/x-mpegURL");
+                            sb1Var6.j = strO;
+                            sb1Var6.h = i3;
+                            sb1Var6.i = i16;
+                            sb1Var6.t = i7;
+                            sb1Var6.u = i6;
+                            sb1Var6.x = f;
+                            sb1Var6.f = i15;
+                            arrayList4.add(new bn1(uri, new tb1(sb1Var6), strJ115, strJ116, strJ117, strJ118));
+                            arrayList3 = (ArrayList) map.get(uri);
+                            if (arrayList3 == null) {
+                                arrayList3 = new ArrayList();
+                                map.put(uri, arrayList3);
+                            }
+                            arrayList3.add(new mn1(i3, i16, strJ115, strJ116, strJ117, strJ118));
+                        }
+                        strO = str5;
+                        strJ = j(strL, z, null, map2);
+                        if (strJ != null) {
+                            String[] strArrSplit8 = strJ.split("x", -1);
+                            i7 = Integer.parseInt(strArrSplit8[0]);
+                            i6 = Integer.parseInt(strArrSplit8[1]);
+                            if (i7 > 0) {
+                                i6 = -1;
+                                i7 = -1;
+                            } else {
+                                i6 = -1;
+                                i7 = -1;
+                            }
+                        } else {
+                            i6 = -1;
+                            i7 = -1;
+                        }
+                        strJ2 = j(strL, A, null, map2);
+                        if (strJ2 != null) {
+                            f = Float.parseFloat(strJ2);
+                        } else {
+                            f = -1.0f;
+                        }
+                        String strJ119 = j(strL, q, null, map2);
+                        String strJ1110 = j(strL, r, null, map2);
+                        String strJ1111 = j(strL, s, null, map2);
+                        String strJ1112 = j(strL, t, null, map2);
+                        if (zStartsWith) {
+                            uriH = jz4.H(str7, k(strL, pattern, map2));
+                        } else {
+                            if (qp4Var.j()) {
+                                throw ParserException.b("#EXT-X-STREAM-INF must be followed by another line");
+                            }
+                            uriH = jz4.H(str7, l(map2, qp4Var.l()));
+                        }
+                        uri = uriH;
+                        sb1 sb1Var7 = new sb1();
+                        sb1Var7.a = Integer.toString(arrayList4.size());
+                        sb1Var7.l = lw2.m("application/x-mpegURL");
+                        sb1Var7.j = strO;
+                        sb1Var7.h = i3;
+                        sb1Var7.i = i16;
+                        sb1Var7.t = i7;
+                        sb1Var7.u = i6;
+                        sb1Var7.x = f;
+                        sb1Var7.f = i15;
+                        arrayList4.add(new bn1(uri, new tb1(sb1Var7), strJ119, strJ1110, strJ1111, strJ1112));
+                        arrayList3 = (ArrayList) map.get(uri);
+                        if (arrayList3 == null) {
+                            arrayList3 = new ArrayList();
+                            map.put(uri, arrayList3);
+                        }
+                        arrayList3.add(new mn1(i3, i16, strJ119, strJ1110, strJ1111, strJ1112));
+                    }
+                    z2 = z4;
+                    z3 = z5;
+                }
+                arrayList8 = arrayList12;
+                arrayList11 = arrayList26;
+                arrayList10 = arrayList10;
+                arrayList7 = arrayList7;
+                arrayList6 = arrayList6;
+                arrayList5 = arrayList5;
+                arrayList9 = arrayList9;
+            }
+            arrayList9 = arrayList9;
+            z2 = z4;
+            z3 = z5;
+            arrayList8 = arrayList12;
+            arrayList11 = arrayList26;
+            arrayList10 = arrayList10;
+            arrayList7 = arrayList7;
+            arrayList6 = arrayList6;
+            arrayList5 = arrayList5;
+            arrayList9 = arrayList9;
+        }
     }
 
-    public static boolean g(String r1, Pattern r2) {
-        Matcher r3 = r2.matcher(r1);
-        if (r3.find() == true) goto L5;
+    public static boolean g(String str, Pattern pattern) {
+        Matcher matcher = pattern.matcher(str);
+        if (matcher.find()) {
+            return "YES".equals(matcher.group(1));
+        }
         return false;
-    L5:
-        return "YES".equals(r3.group(1));
     }
 
-    public static double h(String r1, Pattern r2, double r3) {
-        Matcher r4 = r2.matcher(r1);
-        if (r4.find() == false) goto L6;
-        String r5 = r4.group(1);
-        r5.getClass();
-        return Double.parseDouble(r5);
-    L6:
-        return r3;
+    public static double h(String str, Pattern pattern, double d) {
+        Matcher matcher = pattern.matcher(str);
+        if (!matcher.find()) {
+            return d;
+        }
+        String strGroup = matcher.group(1);
+        strGroup.getClass();
+        return Double.parseDouble(strGroup);
     }
 
-    public static long i(String r1, Pattern r2) {
-        Matcher r3 = r2.matcher(r1);
-        if (r3.find() == false) goto L6;
-        String r4 = r3.group(1);
-        r4.getClass();
-        return Long.parseLong(r4);
-    L6:
-        return -1;
+    public static long i(String str, Pattern pattern) {
+        Matcher matcher = pattern.matcher(str);
+        if (!matcher.find()) {
+            return -1L;
+        }
+        String strGroup = matcher.group(1);
+        strGroup.getClass();
+        return Long.parseLong(strGroup);
     }
 
-    public static String j(String r1, Pattern r2, String r3, Map r4) {
-        Matcher r5 = r2.matcher(r1);
-        if (r5.find() == false) goto L6;
-        r3 = r5.group(1);
-        r3.getClass();
-    L6:
-        if (r4.isEmpty() == true) goto L11;
-        if (r3 == null) goto L11;
-        return l(r4, r3);
-    L11:
-        return r3;
+    public static String j(String str, Pattern pattern, String str2, Map map) {
+        Matcher matcher = pattern.matcher(str);
+        if (matcher.find()) {
+            str2 = matcher.group(1);
+            str2.getClass();
+        }
+        return (map.isEmpty() || str2 == null) ? str2 : l(map, str2);
     }
 
-    public static String k(String r1, Pattern r2, Map r3) {
-        String r4 = j(r1, r2, null, r3);
-        if (r4 == null) goto L6;
-        return r4;
-    L6:
-        throw ParserException.b("Couldn't match " + r2.pattern() + " in " + r1);
+    public static String k(String str, Pattern pattern, Map map) throws ParserException {
+        String strJ = j(str, pattern, null, map);
+        if (strJ != null) {
+            return strJ;
+        }
+        throw ParserException.b("Couldn't match " + pattern.pattern() + " in " + str);
     }
 
-    public static String l(Map r3, String r4) {
-        Matcher r5 = K0.matcher(r4);
-        StringBuffer r1 = new StringBuffer();
-    L4:
-        if (r5.find() == false) goto L8;
-        String r2 = r5.group(1);
-        if (r3.containsKey(r2) == false) goto L4;
-        r5.appendReplacement(r1, Matcher.quoteReplacement((String) r3.get(r2)));
-        goto L4
-    L8:
-        r5.appendTail(r1);
-        return r1.toString();
+    public static String l(Map map, String str) {
+        Matcher matcher = K0.matcher(str);
+        StringBuffer stringBuffer = new StringBuffer();
+        while (matcher.find()) {
+            String strGroup = matcher.group(1);
+            if (map.containsKey(strGroup)) {
+                matcher.appendReplacement(stringBuffer, Matcher.quoteReplacement((String) map.get(strGroup)));
+            }
+        }
+        matcher.appendTail(stringBuffer);
+        return stringBuffer.toString();
     }
 
+    /* JADX WARN: Code duplicated, block: B:19:0x003f A[Catch: all -> 0x0095, TryCatch #0 {all -> 0x0095, blocks: (B:3:0x000f, B:5:0x0018, B:7:0x0020, B:10:0x0029, B:31:0x0068, B:33:0x006e, B:36:0x0079, B:38:0x0081, B:43:0x0097, B:45:0x009f, B:47:0x00a7, B:49:0x00af, B:51:0x00b7, B:53:0x00bf, B:55:0x00c7, B:57:0x00cf, B:60:0x00d8, B:61:0x00dc, B:66:0x00fe, B:67:0x0104, B:13:0x0030, B:15:0x0036, B:19:0x003f, B:22:0x0048, B:24:0x0051, B:26:0x0057, B:28:0x005d, B:29:0x0062), top: B:70:0x000f }] */
+    /* JADX WARN: Code duplicated, block: B:22:0x0048 A[Catch: all -> 0x0095, LOOP:2: B:17:0x003c->B:22:0x0048, LOOP_END, TryCatch #0 {all -> 0x0095, blocks: (B:3:0x000f, B:5:0x0018, B:7:0x0020, B:10:0x0029, B:31:0x0068, B:33:0x006e, B:36:0x0079, B:38:0x0081, B:43:0x0097, B:45:0x009f, B:47:0x00a7, B:49:0x00af, B:51:0x00b7, B:53:0x00bf, B:55:0x00c7, B:57:0x00cf, B:60:0x00d8, B:61:0x00dc, B:66:0x00fe, B:67:0x0104, B:13:0x0030, B:15:0x0036, B:19:0x003f, B:22:0x0048, B:24:0x0051, B:26:0x0057, B:28:0x005d, B:29:0x0062), top: B:70:0x000f }] */
+    /* JADX WARN: Code duplicated, block: B:89:0x004f A[SYNTHETIC] */
+    /* JADX WARN: Code duplicated, block: B:90:0x0047 A[SYNTHETIC] */
     @Override // defpackage.ce3
-    public final dn1 a(Uri r7, gi0 r8) {
-        BufferedReader r1 = new BufferedReader(new InputStreamReader(r8));
-        ArrayDeque r9 = new ArrayDeque();
-        int r2 = r1.read();     // Catch: Throwable -> L41
-        boolean r3 = false;
-        if (r2 != 239) goto L12;
-        if (r1.read() == 187) goto L8;
-    L30:
-        if (r3 == false) goto L67;
-    L31:
-        String r4 = r1.readLine();     // Catch: Throwable -> L41
-        if (r4 == null) goto L64;
-        String r5 = r4.trim();     // Catch: Throwable -> L41
-        if (r5.isEmpty() == true) goto L31;
-        if (r5.startsWith("#EXT-X-STREAM-INF") == true) goto L38;
-        if (r5.startsWith("#EXT-X-TARGETDURATION") == true) goto L61;
-        if (r5.startsWith("#EXT-X-MEDIA-SEQUENCE") == true) goto L61;
-        if (r5.startsWith("#EXTINF") == true) goto L61;
-        if (r5.startsWith("#EXT-X-KEY") == true) goto L61;
-        if (r5.startsWith("#EXT-X-BYTERANGE") == true) goto L61;
-        if (r5.equals("#EXT-X-DISCONTINUITY") == true) goto L61;
-        if (r5.equals("#EXT-X-DISCONTINUITY-SEQUENCE") == true) goto L61;
-        if (r5.equals("#EXT-X-ENDLIST") == true) goto L61;
-        r9.add(r5);     // Catch: Throwable -> L41
-    L61:
-        r9.add(r5);     // Catch: Throwable -> L41
-        ym1 r6 = e(this.n, this.o, new qp4(r9, r1), r7.toString());     // Catch: Throwable -> L41
-        f35.h(r1);
-        return r6;
-    L38:
-        r9.add(r5);     // Catch: Throwable -> L41
-        cn1 r10 = f(new qp4(r9, r1), r7.toString());     // Catch: Throwable -> L41
-        f35.h(r1);
-        return r10;
-    L64:
-        f35.h(r1);
-        throw ParserException.b("Failed to parse the playlist, could not identify any tags.");
-    L67:
-        throw ParserException.b("Input does not start with the #EXTM3U header.");     // Catch: Throwable -> L41
-    L8:
-        if (r1.read() != 191) goto L30;
-        r2 = r1.read();     // Catch: Throwable -> L41
-    L12:
-        if (r2 == (-1)) goto L16;
-        if (Character.isWhitespace(r2) == false) goto L16;
-        r2 = r1.read();     // Catch: Throwable -> L41
-    L16:
-        int r11 = 0;
-    L18:
-        if (r11 >= 7) goto L23;
-        if (r2 != "#EXTM3U".charAt(r11)) goto L30;
-        r2 = r1.read();     // Catch: Throwable -> L41
-        r11 = r11 + 1;     // Catch: Throwable -> L41
-    L23:
-        if (r2 == (-1)) goto L29;
-        if (Character.isWhitespace(r2) == false) goto L29;
-        if (f35.N(r2) == true) goto L29;
-        r2 = r1.read();     // Catch: Throwable -> L41
-    L29:
-        r3 = f35.N(r2);     // Catch: Throwable -> L41
-    L41:
-        th = move-exception;
-        f35.h(r1);
-        throw th;
+    public final dn1 a(Uri uri, gi0 gi0Var) throws ParserException {
+        int i;
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(gi0Var));
+        ArrayDeque arrayDeque = new ArrayDeque();
+        try {
+            int i2 = bufferedReader.read();
+            boolean zN = false;
+            if (i2 == 239) {
+                if (bufferedReader.read() == 187 && bufferedReader.read() == 191) {
+                    i2 = bufferedReader.read();
+                    while (i2 != -1) {
+                        i2 = bufferedReader.read();
+                    }
+                    i = 0;
+                    while (true) {
+                        if (i < 7) {
+                            while (i2 != -1) {
+                                i2 = bufferedReader.read();
+                            }
+                            zN = f35.N(i2);
+                            break;
+                        }
+                        if (i2 != "#EXTM3U".charAt(i)) {
+                            break;
+                            break;
+                        }
+                        i2 = bufferedReader.read();
+                        i++;
+                    }
+                }
+            } else {
+                while (i2 != -1 && Character.isWhitespace(i2)) {
+                    i2 = bufferedReader.read();
+                }
+                i = 0;
+                while (true) {
+                    if (i < 7) {
+                        while (i2 != -1 && Character.isWhitespace(i2) && !f35.N(i2)) {
+                            i2 = bufferedReader.read();
+                        }
+                        zN = f35.N(i2);
+                        break;
+                    }
+                    if (i2 != "#EXTM3U".charAt(i)) {
+                        break;
+                    }
+                    i2 = bufferedReader.read();
+                    i++;
+                }
+            }
+            if (!zN) {
+                throw ParserException.b("Input does not start with the #EXTM3U header.");
+            }
+            while (true) {
+                String line = bufferedReader.readLine();
+                if (line == null) {
+                    f35.h(bufferedReader);
+                    throw ParserException.b("Failed to parse the playlist, could not identify any tags.");
+                }
+                String strTrim = line.trim();
+                if (!strTrim.isEmpty()) {
+                    if (strTrim.startsWith("#EXT-X-STREAM-INF")) {
+                        arrayDeque.add(strTrim);
+                        cn1 cn1VarF = f(new qp4(arrayDeque, bufferedReader), uri.toString());
+                        f35.h(bufferedReader);
+                        return cn1VarF;
+                    }
+                    if (!strTrim.startsWith("#EXT-X-TARGETDURATION") && !strTrim.startsWith("#EXT-X-MEDIA-SEQUENCE") && !strTrim.startsWith("#EXTINF") && !strTrim.startsWith("#EXT-X-KEY") && !strTrim.startsWith("#EXT-X-BYTERANGE") && !strTrim.equals("#EXT-X-DISCONTINUITY") && !strTrim.equals("#EXT-X-DISCONTINUITY-SEQUENCE") && !strTrim.equals("#EXT-X-ENDLIST")) {
+                        arrayDeque.add(strTrim);
+                    }
+                    arrayDeque.add(strTrim);
+                    ym1 ym1VarE = e(this.n, this.o, new qp4(arrayDeque, bufferedReader), uri.toString());
+                    f35.h(bufferedReader);
+                    return ym1VarE;
+                }
+            }
+        } catch (Throwable th) {
+            f35.h(bufferedReader);
+            throw th;
+        }
     }
 
     public en1() {

@@ -35,10 +35,6 @@ public final class h62 extends kp3 {
     public Preference A0;
     public Preference B0;
     public Preference C0;
-    public final Handler D0;
-    public final ExecutorService E0;
-    public final z42 F0;
-    public final LinkedHashMap G0;
     public g62 H0;
     public boolean I0;
     public Future J0;
@@ -49,13 +45,9 @@ public final class h62 extends kp3 {
     public boolean O0;
     public long P0;
     public boolean Q0;
-    public String R0;
     public String S0;
-    public String T0;
     public h52 U0;
     public boolean V0;
-    public final dc1 W0;
-    public final g5 X0;
     public Context t0;
     public NsdManager u0;
     public SwitchPreference v0;
@@ -63,18 +55,14 @@ public final class h62 extends kp3 {
     public PreferenceCategory x0;
     public PreferenceCategory y0;
     public PreferenceCategory z0;
-
-    public h62() {
-        this.D0 = new Handler(Looper.getMainLooper());
-        this.E0 = Executors.newSingleThreadExecutor();
-        this.F0 = new z42();
-        this.G0 = new LinkedHashMap();
-        this.R0 = "";
-        this.T0 = "";
-        q5 r0 = new q5(0);
-        this.W0 = W(new a62(this, 4), r0);
-        this.X0 = new g5(17, this);
-    }
+    public final Handler D0 = new Handler(Looper.getMainLooper());
+    public final ExecutorService E0 = Executors.newSingleThreadExecutor();
+    public final z42 F0 = new z42();
+    public final LinkedHashMap G0 = new LinkedHashMap();
+    public String R0 = "";
+    public String T0 = "";
+    public final dc1 W0 = W(new a62(this, 4), new q5(0));
+    public final g5 X0 = new g5(17, this);
 
     @Override // defpackage.kc1
     public final void I() {
@@ -96,55 +84,58 @@ public final class h62 extends kp3 {
         this.N0 = false;
         this.O0 = false;
         this.D0.removeCallbacks(this.X0);
-        g62 r1 = this.H0;
-        if (r1 != null) goto L25;
-    L9:
+        g62 g62Var = this.H0;
+        if (g62Var != null) {
+            try {
+                NsdManager nsdManager = this.u0;
+                if (nsdManager == null) {
+                    h12.Q("nsd");
+                    throw null;
+                }
+                nsdManager.stopServiceDiscovery(g62Var);
+            } catch (Throwable unused) {
+            }
+        }
         this.H0 = null;
         this.I0 = false;
-        Future r0 = this.J0;
-        if (r0 == null) goto L12;
-        r0.cancel(true);
-    L12:
-        z42 r2 = this.F0;
-        r2.getClass();
-        SSLSocket r3 = r2.a;     // Catch: Throwable -> L22
-        if (r3 == null) goto L16;
-        r3.close();     // Catch: Throwable -> L22
-    L16:
-        f9 r4 = this.K0;
-        if (r4 == null) goto L19;
-        r4.dismiss();
-    L19:
+        Future future = this.J0;
+        if (future != null) {
+            future.cancel(true);
+        }
+        z42 z42Var = this.F0;
+        z42Var.getClass();
+        try {
+            SSLSocket sSLSocket = z42Var.a;
+            if (sSLSocket != null) {
+                sSLSocket.close();
+            }
+        } catch (Throwable unused2) {
+        }
+        f9 f9Var = this.K0;
+        if (f9Var != null) {
+            f9Var.dismiss();
+        }
         this.K0 = null;
         this.U0 = null;
         super.S();
-        return;
-    L25:
-        NsdManager r5 = this.u0;     // Catch: Throwable -> L21
-        if (r5 == null) goto L7;
-        r5.stopServiceDiscovery(r1);     // Catch: Throwable -> L21
-        goto L9
-    L7:
-        h12.Q("nsd");     // Catch: Throwable -> L21
-        throw null;     // Catch: Throwable -> L21
     }
 
     @Override // defpackage.kp3, defpackage.kc1
-    public final void T(View r3, Bundle r4) {
-        r3.getClass();
-        super.T(r3, r4);
+    public final void T(View view, Bundle bundle) {
+        view.getClass();
+        super.T(view, bundle);
         u52.b.e(v(), new wd1(new x(20, this), 5));
     }
 
     @Override // defpackage.kp3
-    public final void i0(String r4) {
-        Context r0 = Z().getApplicationContext();
-        r0.getClass();
-        this.t0 = r0;
-        Object r1 = r0.getSystemService(NsdManager.class);
-        r1.getClass();
-        this.u0 = (NsdManager) r1;
-        j0(R.xml.lan_preferences, r4);
+    public final void i0(String str) {
+        Context applicationContext = Z().getApplicationContext();
+        applicationContext.getClass();
+        this.t0 = applicationContext;
+        Object systemService = applicationContext.getSystemService((Class<Object>) NsdManager.class);
+        systemService.getClass();
+        this.u0 = (NsdManager) systemService;
+        j0(R.xml.lan_preferences, str);
         this.v0 = (SwitchPreference) m0("lan_receiver_enabled");
         this.w0 = (SwitchPreference) m0("lan_pairing_enabled");
         this.x0 = (PreferenceCategory) m0("lan_paired_controllers");
@@ -153,481 +144,417 @@ public final class h62 extends kp3 {
         this.A0 = m0("lan_setup_status");
         this.B0 = m0("lan_controlled_device");
         this.C0 = m0("lan_release_device");
-        EditTextPreference r5 = (EditTextPreference) m0("lan_name");
-        boolean r2 = LanReceiverService.y;
-        Context r3 = this.t0;
-        if (r3 == null) goto L18;
-        r5.E(kb4.M(r3));
-        r5.x(r5.h0);
-        r5.i0 = new er1(11);
-        r5.r = new ef0(8, this, r5);
-        SwitchPreference r6 = this.v0;
-        if (r6 == null) goto L16;
-        r6.r = new a62(this, 0);
-        SwitchPreference r7 = this.w0;
-        if (r7 == null) goto L14;
-        r7.r = new a62(this, 1);
-        Preference r8 = m0("lan_find_devices");
-        r8.s = new a62(this, 2);
-        Preference r9 = this.C0;
-        if (r9 == null) goto L12;
-        r9.s = new a62(this, 3);
-        return;
-    L12:
-        h12.Q("releaseControl");
-        throw null;
-    L14:
-        h12.Q("pairing");
-        throw null;
-    L16:
-        h12.Q("receiver");
-        throw null;
-    L18:
-        h12.Q("app");
-        throw null;
+        EditTextPreference editTextPreference = (EditTextPreference) m0("lan_name");
+        boolean z = LanReceiverService.y;
+        Context context = this.t0;
+        if (context == null) {
+            h12.Q("app");
+            throw null;
+        }
+        editTextPreference.E(kb4.M(context));
+        editTextPreference.x(editTextPreference.h0);
+        editTextPreference.i0 = new er1(11);
+        editTextPreference.r = new ef0(8, this, editTextPreference);
+        SwitchPreference switchPreference = this.v0;
+        if (switchPreference == null) {
+            h12.Q("receiver");
+            throw null;
+        }
+        switchPreference.r = new a62(this, 0);
+        SwitchPreference switchPreference2 = this.w0;
+        if (switchPreference2 == null) {
+            h12.Q("pairing");
+            throw null;
+        }
+        switchPreference2.r = new a62(this, 1);
+        m0("lan_find_devices").s = new a62(this, 2);
+        Preference preference = this.C0;
+        if (preference != null) {
+            preference.s = new a62(this, 3);
+        } else {
+            h12.Q("releaseControl");
+            throw null;
+        }
     }
 
-    public final void k0(NsdServiceInfo r8) {
-        if (this.O0 == false) goto L5;
-        return;
-    L5:
+    public final void k0(NsdServiceInfo nsdServiceInfo) {
+        if (this.O0) {
+            return;
+        }
         this.O0 = true;
-        long r5 = this.M0;
-        boolean r0 = LanReceiverService.y;
-        Context r1 = this.t0;
-        if (r1 == null) goto L9;
-        String r4 = kb4.M(r1);
-        this.J0 = this.E0.submit(new un1(this, r8, r4, r5));
-        return;
-    L9:
-        h12.Q("app");
-        throw null;
+        long j = this.M0;
+        boolean z = LanReceiverService.y;
+        Context context = this.t0;
+        if (context == null) {
+            h12.Q("app");
+            throw null;
+        }
+        this.J0 = this.E0.submit(new un1(this, nsdServiceInfo, kb4.M(context), j));
     }
 
-    public final boolean l0(long r3) {
-        if (this.L0 == true) goto L5;
-        return false;
-    L5:
-        if (r3 != this.M0) goto L10;
-        return true;
-    L10:
-        return false;
+    public final boolean l0(long j) {
+        return this.L0 && j == this.M0;
     }
 
-    public final Preference m0(String r1) {
-        Preference r0 = h0(r1);
-        if (r0 == null) goto L5;
-        return r0;
-    L5:
+    public final Preference m0(String str) {
+        Preference preferenceH0 = h0(str);
+        if (preferenceH0 != null) {
+            return preferenceH0;
+        }
         kf2.o("Required value was null.");
         return null;
     }
 
     public final void n0() {
-        PreferenceCategory r0 = this.z0;
-        if (r0 == null) goto L17;
-        r0.H();
-        PreferenceCategory r1 = this.z0;
-        if (r1 == null) goto L15;
-        LinkedHashMap r3 = this.G0;
-        r1.A(!r3.isEmpty());
-        Collection r2 = r3.values();
-        r2.getClass();
-        Iterator r4 = r2.iterator();
-    L8:
-        if (r4.hasNext() == false) goto L14;
-        c62 r5 = (c62) r4.next();
-        PreferenceCategory r6 = this.z0;
-        if (r6 == null) goto L12;
-        Preference r7 = new Preference(Z(), null);
-        String r8 = r5.a.getServiceName();
-        r8.getClass();
-        r7.z(qm4.z0(r8, "Tempus "));
-        r7.x(s(R.string.lan_select_receiver));
-        r7.v(R.drawable.ic_navigate_next);
-        r7.F = false;
-        r7.s = new ef0(7, this, r5);
-        r6.E(r7);
-        goto L8
-    L12:
-        h12.Q("devices");
-        throw null;
-    L14:
-        return;
-    L15:
-        h12.Q("devices");
-        throw null;
-    L17:
-        h12.Q("devices");
-        throw null;
+        PreferenceCategory preferenceCategory = this.z0;
+        if (preferenceCategory == null) {
+            h12.Q("devices");
+            throw null;
+        }
+        preferenceCategory.H();
+        PreferenceCategory preferenceCategory2 = this.z0;
+        if (preferenceCategory2 == null) {
+            h12.Q("devices");
+            throw null;
+        }
+        LinkedHashMap linkedHashMap = this.G0;
+        preferenceCategory2.A(!linkedHashMap.isEmpty());
+        Collection<c62> collectionValues = linkedHashMap.values();
+        collectionValues.getClass();
+        for (c62 c62Var : collectionValues) {
+            PreferenceCategory preferenceCategory3 = this.z0;
+            if (preferenceCategory3 == null) {
+                h12.Q("devices");
+                throw null;
+            }
+            Preference preference = new Preference(Z(), null);
+            String serviceName = c62Var.a.getServiceName();
+            serviceName.getClass();
+            preference.z(qm4.z0(serviceName, "Tempus "));
+            preference.x(s(R.string.lan_select_receiver));
+            preference.v(R.drawable.ic_navigate_next);
+            preference.F = false;
+            preference.s = new ef0(7, this, c62Var);
+            preferenceCategory3.E(preference);
+        }
     }
 
+    /* JADX WARN: Code duplicated, block: B:17:0x0054  */
     public final void o0() {
-        boolean r0 = LanReceiverService.y;
-        Context r1 = this.t0;
-        if (r1 == null) goto L48;
-        SharedPreferences r8 = r1.getSharedPreferences("lan-playback", 0);
-        Context r2 = this.t0;
-        if (r2 == null) goto L46;
-        Set r3 = kb4.a0(r2);
-        ArrayList r4 = new ArrayList(r40.k0(r3, 10));
-        Iterator r5 = r3.iterator();
-    L8:
-        if (r5.hasNext() == false) goto L19;
-        String r6 = (String) r5.next();
-        String r7 = r8.getString("peer-" + r6, null);
-        if (r7 != null) goto L12;
-    L17:
-        r7 = s(R.string.lan_unknown_device);
-        r7.getClass();
-    L18:
-        r4.add(new kd3(r6, r7));
-        goto L8
-    L12:
-        if (qm4.u0(r7) == false) goto L15;
-        r7 = null;
-    L15:
-        if (r7 == null) goto L17;
-    L19:
-        List r9 = q40.K0(r4, new ca1(28));
-        String r10 = q40.B0(r9, null, null, null, new k52(8), 31);
-        if (r10.equals(this.S0) == true) goto L43;
-        this.S0 = r10;
-        PreferenceCategory r11 = this.x0;
-        if (r11 == null) goto L44;
-        r11.H();
-        if (r9.isEmpty() == false) goto L35;
-        PreferenceCategory r12 = this.x0;
-        if (r12 == null) goto L33;
-        Preference r13 = new Preference(Z(), null);
-        r13.x(s(R.string.lan_no_paired));
-        if (r13.D == false) goto L31;
-        r13.D = false;
-        r13.h();
-    L31:
-        r12.E(r13);
-        return;
-    L33:
-        h12.Q("paired");
-        throw null;
-    L35:
-        Iterator r14 = r9.iterator();
-    L37:
-        if (r14.hasNext() == false) goto L55;
-        kd3 r15 = (kd3) r14.next();
-        String r16 = (String) r15.n;
-        String r17 = (String) r15.o;
-        PreferenceCategory r18 = this.x0;
-        if (r18 == null) goto L41;
-        Preference r19 = new Preference(Z(), null);
-        r19.z(r17);
-        r19.x(s(R.string.lan_revoke_hint));
-        r19.F = false;
-        r19.s = new dg0(this, r17, r8, r16, 4);
-        r18.E(r19);
-        goto L37
-    L41:
-        h12.Q("paired");
-        throw null;
-    L55:
-        return;
-    L44:
-        h12.Q("paired");
-        throw null;
-    L43:
-        return;
-    L46:
-        h12.Q("app");
-        throw null;
-    L48:
-        h12.Q("app");
-        throw null;
+        boolean z = LanReceiverService.y;
+        Context context = this.t0;
+        if (context == null) {
+            h12.Q("app");
+            throw null;
+        }
+        SharedPreferences sharedPreferences = context.getSharedPreferences("lan-playback", 0);
+        Context context2 = this.t0;
+        if (context2 == null) {
+            h12.Q("app");
+            throw null;
+        }
+        Set<String> setA0 = kb4.a0(context2);
+        ArrayList arrayList = new ArrayList(r40.k0(setA0, 10));
+        for (String str : setA0) {
+            String string = sharedPreferences.getString("peer-" + str, null);
+            if (string == null) {
+                string = s(R.string.lan_unknown_device);
+                string.getClass();
+            } else {
+                if (qm4.u0(string)) {
+                    string = null;
+                }
+                if (string == null) {
+                    string = s(R.string.lan_unknown_device);
+                    string.getClass();
+                }
+            }
+            arrayList.add(new kd3(str, string));
+        }
+        List<kd3> listK0 = q40.K0(arrayList, new ca1(28));
+        String strB0 = q40.B0(listK0, null, null, null, new k52(8), 31);
+        if (strB0.equals(this.S0)) {
+            return;
+        }
+        this.S0 = strB0;
+        PreferenceCategory preferenceCategory = this.x0;
+        if (preferenceCategory == null) {
+            h12.Q("paired");
+            throw null;
+        }
+        preferenceCategory.H();
+        if (listK0.isEmpty()) {
+            PreferenceCategory preferenceCategory2 = this.x0;
+            if (preferenceCategory2 == null) {
+                h12.Q("paired");
+                throw null;
+            }
+            Preference preference = new Preference(Z(), null);
+            preference.x(s(R.string.lan_no_paired));
+            if (preference.D) {
+                preference.D = false;
+                preference.h();
+            }
+            preferenceCategory2.E(preference);
+            return;
+        }
+        for (kd3 kd3Var : listK0) {
+            String str2 = (String) kd3Var.n;
+            String str3 = (String) kd3Var.o;
+            PreferenceCategory preferenceCategory3 = this.x0;
+            if (preferenceCategory3 == null) {
+                h12.Q("paired");
+                throw null;
+            }
+            Preference preference2 = new Preference(Z(), null);
+            preference2.z(str3);
+            preference2.x(s(R.string.lan_revoke_hint));
+            preference2.F = false;
+            preference2.s = new dg0(this, str3, sharedPreferences, str2, 4);
+            preferenceCategory3.E(preference2);
+        }
     }
 
     public final void p0() {
-        long r1 = SystemClock.elapsedRealtime();
-        boolean r3 = LanReceiverService.y;
-        if (LanReceiverService.y == false) goto L6;
-        this.P0 = 0;
-    L6:
-        if (LanReceiverService.y == true) goto L9;
-        this.Q0 = false;
-    L9:
-        if (this.P0 == 0) goto L16;
-        if (LanReceiverService.z == null) goto L13;
-    L14:
-        this.P0 = 0;
-        s0(R.string.lan_connection_error);
-        goto L16
-    L13:
-        if ((r1 - this.P0) > 10000) goto L14;
-    L16:
-        if (LanReceiverService.y == true) goto L18;
-    L20:
-        boolean r4 = false;
-    L21:
-        SwitchPreference r8 = this.v0;
-        if (r8 == null) goto L124;
-        if (r4 == false) goto L25;
-    L28:
-        boolean r11 = true;
-    L29:
-        r8.E(r11);
-        SwitchPreference r9 = this.v0;
-        if (r9 != null) goto L32;
-        h12.Q("receiver");
-        throw null;
-    L32:
-        if (this.P0 == 0) goto L34;
-        int r5 = R.string.lan_connecting;
-    L35:
-        r9.x(s(r5));
-        SwitchPreference r6 = this.w0;
-        if (r6 == null) goto L120;
-        r6.A(r4);
-        PreferenceCategory r7 = this.x0;
-        if (r7 == null) goto L118;
-        r7.A(r4);
-        if (r4 == false) goto L42;
-        o0();
-    L42:
-        if (r4 == true) goto L44;
-    L46:
-        boolean r10 = false;
-    L47:
-        SwitchPreference r12 = this.w0;
-        if (r12 == null) goto L116;
-        r12.E(r10);
-        SwitchPreference r13 = this.w0;
-        if (r13 == null) goto L114;
-        if (r10 == false) goto L53;
-        long r14 = ((LanReceiverService.A - r1) + 999) / 1000;
-        String r15 = t(R.string.lan_pairing_remaining, new Object[]{String.format("%d:%02d", Arrays.copyOf(new Object[]{Long.valueOf(r14 / 60), Long.valueOf(r14 % 60)}, 2))});
-    L54:
-        r13.x(r15);
-        if (r10 == false) goto L68;
-        Collection r16 = LanReceiverService.B.values();
-        r16.getClass();
-        ArrayList r17 = new ArrayList();
-        Iterator r18 = r16.iterator();
-    L58:
-        if (r18.hasNext() == false) goto L66;
-        Object r19 = r18.next();
-        boolean r20 = LanReceiverService.y;
-        long r110 = LanReceiverService.A;
-        long r21 = ((h52) r19).d;
-        if (r1 >= r110) goto L58;
-        if (r1 < r21) goto L58;
-        if ((r1 - r21) >= 120000) goto L58;
-        r17.add(r19);
-        goto L58
-    L66:
-        Collection r2 = q40.K0(r17, new ca1(29));
-    L67:
-        Collection r111 = r2;
-        PreferenceCategory r22 = this.y0;
-        if (r22 == null) goto L112;
-        r22.A(!r111.isEmpty());
-        h52 r23 = this.U0;
-        if (r23 == null) goto L80;
-        if (q40.s0(r111, r23) == true) goto L80;
-        f9 r24 = this.K0;
-        if (r24 == null) goto L78;
-        r24.dismiss();
-    L78:
-        this.U0 = null;
-    L80:
-        if (this.L0 == false) goto L96;
-        f9 r25 = this.K0;
-        if (r25 != null) goto L84;
-    L86:
-        Iterator r26 = r111.iterator();
-    L88:
-        if (r26.hasNext() == false) goto L92;
-        Object r27 = r26.next();
-        h52 r28 = (h52) r27;
-        r28.getClass();
-        if ((r28.a + ":" + r28.d).equals(this.T0) == true) goto L88;
-    L93:
-        h52 r29 = (h52) r27;
-        if (r29 == null) goto L96;
-        this.T0 = r29.a + ":" + r29.d;
-        r0(r29);
-        goto L96
-    L92:
-        r27 = null;
-        goto L93
-    L84:
-        if (r25.isShowing() != true) goto L86;
-    L96:
-        String r30 = q40.B0(r111, null, null, null, new k52(7), 31);
-        if (r30.equals(this.R0) == true) goto L109;
-        this.R0 = r30;
-        PreferenceCategory r31 = this.y0;
-        if (r31 == null) goto L110;
-        r31.H();
-        Iterator r32 = r111.iterator();
-    L103:
-        if (r32.hasNext() == false) goto L140;
-        h52 r33 = (h52) r32.next();
-        PreferenceCategory r34 = this.y0;
-        if (r34 == null) goto L107;
-        Preference r35 = new Preference(Z(), null);
-        r35.z(r33.b);
-        r35.x(t(R.string.lan_pair_request, new Object[]{r33.b, r33.c}));
-        r35.F = false;
-        r35.s = new ef0(6, this, r33);
-        r34.E(r35);
-        goto L103
-    L107:
-        h12.Q("pendingRequests");
-        throw null;
-    L140:
-        return;
-    L110:
-        h12.Q("pendingRequests");
-        throw null;
-    L109:
-        return;
-    L112:
-        h12.Q("pendingRequests");
-        throw null;
-    L68:
-        r2 = u01.n;
-        goto L67
-    L53:
-        r15 = s(R.string.lan_pairing_closed);
-        goto L54
-    L114:
-        h12.Q("pairing");
-        throw null;
-    L116:
-        h12.Q("pairing");
-        throw null;
-    L44:
-        if (r1 >= LanReceiverService.A) goto L46;
-        r10 = true;
-        goto L47
-    L118:
-        h12.Q("paired");
-        throw null;
-    L120:
-        h12.Q("pairing");
-        throw null;
-    L34:
-        r5 = R.string.lan_receiver_summary;
-        goto L35
-    L25:
-        if (this.P0 != 0) goto L28;
-        r11 = false;
-        goto L29
-    L124:
-        h12.Q("receiver");
-        throw null;
-    L18:
-        if (this.Q0 == true) goto L20;
-        r4 = true;
-        goto L21
+        String strS;
+        Collection collectionK0;
+        f9 f9Var;
+        Object next;
+        h52 h52Var;
+        long jElapsedRealtime = SystemClock.elapsedRealtime();
+        boolean z = LanReceiverService.y;
+        if (LanReceiverService.y) {
+            this.P0 = 0L;
+        }
+        if (!LanReceiverService.y) {
+            this.Q0 = false;
+        }
+        if (this.P0 != 0 && (LanReceiverService.z != null || jElapsedRealtime - this.P0 > 10000)) {
+            this.P0 = 0L;
+            s0(R.string.lan_connection_error);
+        }
+        boolean z2 = LanReceiverService.y && !this.Q0;
+        SwitchPreference switchPreference = this.v0;
+        if (switchPreference == null) {
+            h12.Q("receiver");
+            throw null;
+        }
+        switchPreference.E(z2 || this.P0 != 0);
+        SwitchPreference switchPreference2 = this.v0;
+        if (switchPreference2 == null) {
+            h12.Q("receiver");
+            throw null;
+        }
+        switchPreference2.x(s(this.P0 != 0 ? R.string.lan_connecting : R.string.lan_receiver_summary));
+        SwitchPreference switchPreference3 = this.w0;
+        if (switchPreference3 == null) {
+            h12.Q("pairing");
+            throw null;
+        }
+        switchPreference3.A(z2);
+        PreferenceCategory preferenceCategory = this.x0;
+        if (preferenceCategory == null) {
+            h12.Q("paired");
+            throw null;
+        }
+        preferenceCategory.A(z2);
+        if (z2) {
+            o0();
+        }
+        boolean z3 = z2 && jElapsedRealtime < LanReceiverService.A;
+        SwitchPreference switchPreference4 = this.w0;
+        if (switchPreference4 == null) {
+            h12.Q("pairing");
+            throw null;
+        }
+        switchPreference4.E(z3);
+        SwitchPreference switchPreference5 = this.w0;
+        if (switchPreference5 == null) {
+            h12.Q("pairing");
+            throw null;
+        }
+        if (z3) {
+            long j = ((LanReceiverService.A - jElapsedRealtime) + 999) / 1000;
+            strS = t(R.string.lan_pairing_remaining, String.format("%d:%02d", Arrays.copyOf(new Object[]{Long.valueOf(j / 60), Long.valueOf(j % 60)}, 2)));
+        } else {
+            strS = s(R.string.lan_pairing_closed);
+        }
+        switchPreference5.x(strS);
+        if (z3) {
+            Collection collectionValues = LanReceiverService.B.values();
+            collectionValues.getClass();
+            ArrayList arrayList = new ArrayList();
+            for (Object obj : collectionValues) {
+                boolean z4 = LanReceiverService.y;
+                long j2 = LanReceiverService.A;
+                long j3 = ((h52) obj).d;
+                if (jElapsedRealtime < j2 && jElapsedRealtime >= j3 && jElapsedRealtime - j3 < 120000) {
+                    arrayList.add(obj);
+                }
+            }
+            collectionK0 = q40.K0(arrayList, new ca1(29));
+        } else {
+            collectionK0 = u01.n;
+        }
+        Collection<h52> collection = collectionK0;
+        PreferenceCategory preferenceCategory2 = this.y0;
+        if (preferenceCategory2 == null) {
+            h12.Q("pendingRequests");
+            throw null;
+        }
+        preferenceCategory2.A(!collection.isEmpty());
+        h52 h52Var2 = this.U0;
+        if (h52Var2 != null && !q40.s0(collection, h52Var2)) {
+            f9 f9Var2 = this.K0;
+            if (f9Var2 != null) {
+                f9Var2.dismiss();
+            }
+            this.U0 = null;
+        }
+        if (this.L0 && ((f9Var = this.K0) == null || !f9Var.isShowing())) {
+            Iterator it = collection.iterator();
+            do {
+                if (!it.hasNext()) {
+                    next = null;
+                    break;
+                }
+                next = it.next();
+                h52Var = (h52) next;
+                h52Var.getClass();
+            } while ((h52Var.a + ":" + h52Var.d).equals(this.T0));
+            h52 h52Var3 = (h52) next;
+            if (h52Var3 != null) {
+                this.T0 = h52Var3.a + ":" + h52Var3.d;
+                r0(h52Var3);
+            }
+        }
+        String strB0 = q40.B0(collection, null, null, null, new k52(7), 31);
+        if (strB0.equals(this.R0)) {
+            return;
+        }
+        this.R0 = strB0;
+        PreferenceCategory preferenceCategory3 = this.y0;
+        if (preferenceCategory3 == null) {
+            h12.Q("pendingRequests");
+            throw null;
+        }
+        preferenceCategory3.H();
+        for (h52 h52Var4 : collection) {
+            PreferenceCategory preferenceCategory4 = this.y0;
+            if (preferenceCategory4 == null) {
+                h12.Q("pendingRequests");
+                throw null;
+            }
+            Preference preference = new Preference(Z(), null);
+            preference.z(h52Var4.b);
+            preference.x(t(R.string.lan_pair_request, h52Var4.b, h52Var4.c));
+            preference.F = false;
+            preference.s = new ef0(6, this, h52Var4);
+            preferenceCategory4.E(preference);
+        }
     }
 
     public final void q0() {
-        if (Build.VERSION.SDK_INT < 37) goto L12;
-        Context r0 = this.t0;
-        if (r0 != null) goto L7;
-        h12.Q("app");
-        throw null;
-    L7:
-        if (ud3.c(r0, "android.permission.ACCESS_LOCAL_NETWORK") == 0) goto L12;
-        this.V0 = false;
-        this.W0.a(new String[]{"android.permission.ACCESS_LOCAL_NETWORK"});
-        return;
-    L12:
-        g62 r1 = this.H0;
-        if (r1 == null) goto L27;
+        Object s14Var;
+        if (Build.VERSION.SDK_INT >= 37) {
+            Context context = this.t0;
+            if (context == null) {
+                h12.Q("app");
+                throw null;
+            }
+            if (ud3.c(context, "android.permission.ACCESS_LOCAL_NETWORK") != 0) {
+                this.V0 = false;
+                this.W0.a(new String[]{"android.permission.ACCESS_LOCAL_NETWORK"});
+                return;
+            }
+        }
+        g62 g62Var = this.H0;
+        if (g62Var == null) {
+            this.G0.clear();
+            n0();
+            g62 g62Var2 = new g62(this, this.M0);
+            this.H0 = g62Var2;
+            try {
+                NsdManager nsdManager = this.u0;
+                if (nsdManager == null) {
+                    h12.Q("nsd");
+                    throw null;
+                }
+                nsdManager.discoverServices("_tempus-lan._tcp.", 1, g62Var2);
+                s0(R.string.lan_searching);
+                return;
+            } catch (Exception unused) {
+                this.H0 = null;
+                s0(R.string.lan_discovery_error);
+                return;
+            }
+        }
         this.I0 = true;
-        NsdManager r4 = this.u0;     // Catch: Throwable -> L18
-        if (r4 == null) goto L20;
-        r4.stopServiceDiscovery(r1);     // Catch: Throwable -> L18
-        Object r2 = j15.a;     // Catch: Throwable -> L18
-    L24:
-        if (bb3.a(r2) == null) goto L38;
-        this.H0 = null;
-        this.I0 = false;
-        q0();
-        return;
-    L38:
-        return;
-    L20:
-        h12.Q("nsd");     // Catch: Throwable -> L18
-        throw null;     // Catch: Throwable -> L18
-    L18:
-        th = move-exception;
-        r2 = new s14(th);
-        goto L24
-    L27:
-        this.G0.clear();
-        n0();
-        g62 r3 = new g62(this, this.M0);
-        this.H0 = r3;
-        NsdManager r5 = this.u0;     // Catch: Exception -> L34
-        if (r5 == null) goto L32;
-        r5.discoverServices("_tempus-lan._tcp.", 1, r3);     // Catch: Exception -> L34
-        s0(R.string.lan_searching);     // Catch: Exception -> L34
-        return;
-    L32:
-        h12.Q("nsd");     // Catch: Exception -> L34
-        throw null;     // Catch: Exception -> L34
-    L34:
-        this.H0 = null;
-        s0(R.string.lan_discovery_error);
+        try {
+            NsdManager nsdManager2 = this.u0;
+            if (nsdManager2 == null) {
+                h12.Q("nsd");
+                throw null;
+            }
+            nsdManager2.stopServiceDiscovery(g62Var);
+            s14Var = j15.a;
+            if (bb3.a(s14Var) != null) {
+                this.H0 = null;
+                this.I0 = false;
+                q0();
+            }
+        } catch (Throwable th) {
+            s14Var = new s14(th);
+        }
     }
 
-    public final void r0(h52 r5) {
-        vg2 r0 = new vg2(Z(), 0);
-        r0.p(R.string.lan_pair_title);
-        r0.a.f = t(R.string.lan_pair_request, new Object[]{r5.b, r5.c});
-        f9 r1 = r0.l(R.string.lan_pair_confirm, new b62(this, r5, 0)).j(android.R.string.cancel, null).create();
+    public final void r0(h52 h52Var) {
+        vg2 vg2Var = new vg2(Z(), 0);
+        vg2Var.p(R.string.lan_pair_title);
+        vg2Var.a.f = t(R.string.lan_pair_request, h52Var.b, h52Var.c);
+        f9 f9VarCreate = vg2Var.l(R.string.lan_pair_confirm, new b62(this, h52Var, 0)).j(android.R.string.cancel, null).create();
         this.U0 = null;
-        f9 r2 = this.K0;
-        if (r2 == null) goto L5;
-        r2.dismiss();
-    L5:
-        this.K0 = r1;
-        r1.show();
-        this.U0 = r5;
+        f9 f9Var = this.K0;
+        if (f9Var != null) {
+            f9Var.dismiss();
+        }
+        this.K0 = f9VarCreate;
+        f9VarCreate.show();
+        this.U0 = h52Var;
     }
 
-    public final void s0(int r1) {
-        Preference r0 = this.A0;
-        if (r0 == null) goto L6;
-        r0.w(r1);
-        return;
-    L6:
-        h12.Q("status");
-        throw null;
+    public final void s0(int i) {
+        Preference preference = this.A0;
+        if (preference != null) {
+            preference.w(i);
+        } else {
+            h12.Q("status");
+            throw null;
+        }
     }
 
     public final void t0() {
-        boolean r0 = LanReceiverService.y;     // Catch: Exception -> L13
-        LanReceiverService.z = null;     // Catch: Exception -> L13
-        this.Q0 = false;     // Catch: Exception -> L13
-        this.P0 = SystemClock.elapsedRealtime();     // Catch: Exception -> L13
-        Context r1 = this.t0;     // Catch: Exception -> L13
-        if (r1 == null) goto L11;
-        Context r4 = this.t0;     // Catch: Exception -> L13
-        if (r4 == null) goto L9;
-        ud3.G0(r1, new Intent(r4, LanReceiverService.class));     // Catch: Exception -> L13
-        p0();     // Catch: Exception -> L13
-        return;
-    L9:
-        h12.Q("app");     // Catch: Exception -> L13
-        throw null;     // Catch: Exception -> L13
-    L11:
-        h12.Q("app");     // Catch: Exception -> L13
-        throw null;     // Catch: Exception -> L13
-    L13:
-        this.P0 = 0;
-        s0(R.string.lan_connection_error);
-        p0();
+        try {
+            boolean z = LanReceiverService.y;
+            LanReceiverService.z = null;
+            this.Q0 = false;
+            this.P0 = SystemClock.elapsedRealtime();
+            Context context = this.t0;
+            if (context == null) {
+                h12.Q("app");
+                throw null;
+            }
+            Context context2 = this.t0;
+            if (context2 == null) {
+                h12.Q("app");
+                throw null;
+            }
+            ud3.G0(context, new Intent(context2, (Class<?>) LanReceiverService.class));
+            p0();
+        } catch (Exception unused) {
+            this.P0 = 0L;
+            s0(R.string.lan_connection_error);
+            p0();
+        }
     }
 }

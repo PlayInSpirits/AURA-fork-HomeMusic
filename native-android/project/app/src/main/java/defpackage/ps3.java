@@ -7,21 +7,15 @@ import java.util.concurrent.ThreadFactory;
 public final /* synthetic */ class ps3 implements ThreadFactory {
     public final /* synthetic */ int a;
 
-    public /* synthetic */ ps3(int r1) {
-        this.a = r1;
-    }
-
     @Override // java.util.concurrent.ThreadFactory
-    public final Thread newThread(Runnable r2) {
-        switch(this.a) {
-            case 0: goto L6;
-            default: goto L5;
-        };
-    L6:
-        Thread r1 = new Thread(r2, "queue-preloader");
-        r1.setPriority(1);
-        return r1;
-    L5:
-        return new Thread(r2, "ExoPlayer:AudioTrackReleaseThread");
+    public final Thread newThread(Runnable runnable) {
+        switch (this.a) {
+            case 0:
+                Thread thread = new Thread(runnable, "queue-preloader");
+                thread.setPriority(1);
+                return thread;
+            default:
+                return new Thread(runnable, "ExoPlayer:AudioTrackReleaseThread");
+        }
     }
 }

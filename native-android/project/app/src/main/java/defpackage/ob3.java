@@ -6,30 +6,25 @@ public final class ob3 extends ya4 {
     public final g34 f;
     public final nc g;
 
-    public ob3(g34 r2) {
-        this.f = r2;
-        if (wr1.K(r2) == true) goto L5;
-        nc r0 = pc.a();
-        nc.b(r0, r2);
-    L6:
-        this.g = r0;
-        return;
-    L5:
-        r0 = null;
-        goto L6
+    public ob3(g34 g34Var) {
+        nc ncVarA;
+        this.f = g34Var;
+        if (wr1.K(g34Var)) {
+            ncVarA = null;
+        } else {
+            ncVarA = pc.a();
+            nc.b(ncVarA, g34Var);
+        }
+        this.g = ncVarA;
     }
 
-    public final boolean equals(Object r2) {
-        if (this != r2) goto L5;
-        return true;
-    L5:
-        if ((r2 instanceof ob3) == false) goto L13;
-        g34 r3 = ((ob3) r2).f;
-        if (this.f.equals(r3) == true) goto L11;
-        return false;
-    L11:
-        return true;
-    L13:
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj instanceof ob3) {
+            return this.f.equals(((ob3) obj).f);
+        }
         return false;
     }
 
@@ -39,7 +34,7 @@ public final class ob3 extends ya4 {
 
     @Override // defpackage.ya4
     public final wv3 s() {
-        g34 r4 = this.f;
-        return new wv3(r4.a, r4.b, r4.c, r4.d);
+        g34 g34Var = this.f;
+        return new wv3(g34Var.a, g34Var.b, g34Var.c, g34Var.d);
     }
 }

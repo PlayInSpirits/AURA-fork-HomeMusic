@@ -5,33 +5,27 @@ package defpackage;
 public final class ko3 extends jo3 {
     public final Object p;
 
-    public ko3(int r1) {
-        super(r1);
+    public ko3(int i) {
+        super(i);
         this.p = new Object();
     }
 
     @Override // defpackage.jo3, defpackage.io3
-    public final boolean a(Object r2) {
-        r2.getClass();
-        Object r0 = this.p;
-        monitor-enter(r0);
-        boolean r1 = super.a(r2);     // Catch: Throwable -> L7
-        monitor-exit(r0);
-        return r1;
-    L7:
-        th = move-exception;
-        throw th;
+    public final boolean a(Object obj) {
+        boolean zA;
+        obj.getClass();
+        synchronized (this.p) {
+            zA = super.a(obj);
+        }
+        return zA;
     }
 
     @Override // defpackage.jo3, defpackage.io3
     public final Object b() {
-        Object r0 = this.p;
-        monitor-enter(r0);
-        Object r1 = super.b();     // Catch: Throwable -> L7
-        monitor-exit(r0);
-        return r1;
-    L7:
-        th = move-exception;
-        throw th;
+        Object objB;
+        synchronized (this.p) {
+            objB = super.b();
+        }
+        return objB;
     }
 }

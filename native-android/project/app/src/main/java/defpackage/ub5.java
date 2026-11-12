@@ -10,29 +10,27 @@ import android.view.WindowInsetsController;
 public final class ub5 {
     public final su3 a;
 
-    public ub5(Window r3, View r4) {
-        om1 r0 = new om1(r4);
-        int r5 = Build.VERSION.SDK_INT;
-        if (r5 < 35) goto L7;
-        this.a = new tb5(r3, r0);
-        return;
-    L7:
-        if (r5 < 30) goto L11;
-        this.a = new sb5(r3, r0);
-        return;
-    L11:
-        if (r5 < 26) goto L14;
-        this.a = new rb5(r3, r0);
-        return;
-    L14:
-        this.a = new qb5(r3, r0);
+    public ub5(Window window, View view) {
+        om1 om1Var = new om1(view);
+        int i = Build.VERSION.SDK_INT;
+        if (i >= 35) {
+            this.a = new tb5(window, om1Var);
+            return;
+        }
+        if (i >= 30) {
+            this.a = new sb5(window, om1Var);
+        } else if (i >= 26) {
+            this.a = new rb5(window, om1Var);
+        } else {
+            this.a = new qb5(window, om1Var);
+        }
     }
 
-    public ub5(WindowInsetsController r3) {
-        if (Build.VERSION.SDK_INT < 35) goto L6;
-        this.a = new tb5(r3, new om1(r3));
-        return;
-    L6:
-        this.a = new sb5(r3, new om1(r3));
+    public ub5(WindowInsetsController windowInsetsController) {
+        if (Build.VERSION.SDK_INT >= 35) {
+            this.a = new tb5(windowInsetsController, new om1(windowInsetsController));
+        } else {
+            this.a = new sb5(windowInsetsController, new om1(windowInsetsController));
+        }
     }
 }

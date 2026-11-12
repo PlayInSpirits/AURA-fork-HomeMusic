@@ -10,22 +10,21 @@ public final class hi4 implements StarCallback {
     public final /* synthetic */ Child o;
     public final /* synthetic */ ii4 p;
 
-    public /* synthetic */ hi4(ii4 r1, Child r2, int r3) {
-        this.n = r3;
-        this.p = r1;
-        this.o = r2;
+    public /* synthetic */ hi4(ii4 ii4Var, Child child, int i) {
+        this.n = i;
+        this.p = ii4Var;
+        this.o = child;
     }
 
     @Override // com.eddyizm.tempus.interfaces.StarCallback
     public final void onError() {
-        switch(this.n) {
-            case 0: goto L6;
-            default: goto L4;
-        };
-    L4:
-        this.p.f.J(this.o.getId(), null, true, null);
-        return;
-    L6:
-        this.p.f.J(this.o.getId(), null, false, null);
+        switch (this.n) {
+            case 0:
+                this.p.f.J(this.o.getId(), null, false, null);
+                break;
+            default:
+                this.p.f.J(this.o.getId(), null, true, null);
+                break;
+        }
     }
 }

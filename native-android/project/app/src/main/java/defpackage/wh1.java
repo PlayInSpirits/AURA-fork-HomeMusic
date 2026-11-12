@@ -10,10 +10,10 @@ public final class wh1 implements q04, xy1 {
     public final Drawable n;
     public final /* synthetic */ int o;
 
-    public wh1(Drawable r1, int r2) {
-        this.o = r2;
-        h12.f(r1, "Argument must not be null");
-        this.n = r1;
+    public wh1(Drawable drawable, int i) {
+        this.o = i;
+        h12.f(drawable, "Argument must not be null");
+        this.n = drawable;
     }
 
     private final void c() {
@@ -21,129 +21,111 @@ public final class wh1 implements q04, xy1 {
 
     @Override // defpackage.xy1
     public void a() {
-        int r0 = this.o;
-        Drawable r1 = this.n;
-        switch(r0) {
-            case 0: goto L11;
-            default: goto L5;
-        };
-    L11:
-        ((bi1) ((vh1) r1).n.b).l.prepareToDraw();
-        return;
-    L5:
-        if ((r1 instanceof BitmapDrawable) == false) goto L8;
-        ((BitmapDrawable) r1).getBitmap().prepareToDraw();
-        return;
-    L8:
-        if ((r1 instanceof vh1) == false) goto L14;
-        ((bi1) ((vh1) r1).n.b).l.prepareToDraw();
-        return;
+        int i = this.o;
+        Drawable drawable = this.n;
+        switch (i) {
+            case 0:
+                ((bi1) ((vh1) drawable).n.b).l.prepareToDraw();
+                break;
+            default:
+                if (drawable instanceof BitmapDrawable) {
+                    ((BitmapDrawable) drawable).getBitmap().prepareToDraw();
+                } else if (drawable instanceof vh1) {
+                    ((bi1) ((vh1) drawable).n.b).l.prepareToDraw();
+                }
+                break;
+        }
     }
 
     @Override // defpackage.q04
     public final void b() {
-        switch(this.o) {
-            case 0: goto L5;
-            default: goto L4;
-        };
-    L4:
-        return;
-    L5:
-        vh1 r6 = (vh1) this.n;
-        r6.stop();
-        r6.q = true;
-        bi1 r7 = (bi1) r6.n.b;
-        c04 r1 = r7.d;
-        r7.c.clear();
-        Bitmap r2 = r7.l;
-        if (r2 == null) goto L8;
-        r7.e.d(r2);
-        r7.l = null;
-    L8:
-        r7.f = false;
-        zh1 r3 = r7.i;
-        if (r3 == null) goto L11;
-        r1.q(r3);
-        r7.i = null;
-    L11:
-        zh1 r4 = r7.k;
-        if (r4 == null) goto L14;
-        r1.q(r4);
-        r7.k = null;
-    L14:
-        zh1 r5 = r7.m;
-        if (r5 == null) goto L17;
-        r1.q(r5);
-        r7.m = null;
-    L17:
-        vk4 r8 = r7.a;
-        rm3 r9 = r8.c;
-        r8.l = null;
-        byte[] r10 = r8.i;
-        if (r10 == null) goto L23;
-        qj0 r11 = (qj0) r9.o;
-        if (r11 == null) goto L23;
-        r11.h(r10);
-    L23:
-        int[] r12 = r8.j;
-        if (r12 == null) goto L29;
-        qj0 r13 = (qj0) r9.o;
-        if (r13 == null) goto L29;
-        r13.h(r12);
-    L29:
-        Bitmap r14 = r8.m;
-        if (r14 == null) goto L32;
-        ((zs) r9.n).d(r14);
-    L32:
-        r8.m = null;
-        r8.d = null;
-        r8.s = null;
-        byte[] r15 = r8.e;
-        if (r15 == null) goto L38;
-        qj0 r16 = (qj0) r9.o;
-        if (r16 == null) goto L38;
-        r16.h(r15);
-    L38:
-        r7.j = true;
+        qj0 qj0Var;
+        qj0 qj0Var2;
+        qj0 qj0Var3;
+        switch (this.o) {
+            case 0:
+                vh1 vh1Var = (vh1) this.n;
+                vh1Var.stop();
+                vh1Var.q = true;
+                bi1 bi1Var = (bi1) vh1Var.n.b;
+                c04 c04Var = bi1Var.d;
+                bi1Var.c.clear();
+                Bitmap bitmap = bi1Var.l;
+                if (bitmap != null) {
+                    bi1Var.e.d(bitmap);
+                    bi1Var.l = null;
+                }
+                bi1Var.f = false;
+                zh1 zh1Var = bi1Var.i;
+                if (zh1Var != null) {
+                    c04Var.q(zh1Var);
+                    bi1Var.i = null;
+                }
+                zh1 zh1Var2 = bi1Var.k;
+                if (zh1Var2 != null) {
+                    c04Var.q(zh1Var2);
+                    bi1Var.k = null;
+                }
+                zh1 zh1Var3 = bi1Var.m;
+                if (zh1Var3 != null) {
+                    c04Var.q(zh1Var3);
+                    bi1Var.m = null;
+                }
+                vk4 vk4Var = bi1Var.a;
+                rm3 rm3Var = vk4Var.c;
+                vk4Var.l = null;
+                byte[] bArr = vk4Var.i;
+                if (bArr != null && (qj0Var3 = (qj0) rm3Var.o) != null) {
+                    qj0Var3.h(bArr);
+                }
+                int[] iArr = vk4Var.j;
+                if (iArr != null && (qj0Var2 = (qj0) rm3Var.o) != null) {
+                    qj0Var2.h(iArr);
+                }
+                Bitmap bitmap2 = vk4Var.m;
+                if (bitmap2 != null) {
+                    ((zs) rm3Var.n).d(bitmap2);
+                }
+                vk4Var.m = null;
+                vk4Var.d = null;
+                vk4Var.s = null;
+                byte[] bArr2 = vk4Var.e;
+                if (bArr2 != null && (qj0Var = (qj0) rm3Var.o) != null) {
+                    qj0Var.h(bArr2);
+                }
+                bi1Var.j = true;
+                break;
+        }
     }
 
     @Override // defpackage.q04
     public final int d() {
-        int r0 = this.o;
-        Drawable r3 = this.n;
-        switch(r0) {
-            case 0: goto L6;
-            default: goto L4;
-        };
-    L4:
-        int r1 = r3.getIntrinsicWidth();
-        return Math.max(1, (r3.getIntrinsicHeight() * r1) * 4);
-    L6:
-        bi1 r4 = (bi1) ((vh1) r3).n.b;
-        vk4 r2 = r4.a;
-        int r5 = r2.d.limit() + r2.i.length;
-        return ((r2.j.length * 4) + r5) + r4.n;
+        int i = this.o;
+        Drawable drawable = this.n;
+        switch (i) {
+            case 0:
+                bi1 bi1Var = (bi1) ((vh1) drawable).n.b;
+                vk4 vk4Var = bi1Var.a;
+                return (vk4Var.j.length * 4) + vk4Var.d.limit() + vk4Var.i.length + bi1Var.n;
+            default:
+                return Math.max(1, drawable.getIntrinsicHeight() * drawable.getIntrinsicWidth() * 4);
+        }
     }
 
     @Override // defpackage.q04
     public final Class e() {
-        switch(this.o) {
-            case 0: goto L6;
-            default: goto L5;
-        };
-    L6:
-        return vh1.class;
-    L5:
-        return this.n.getClass();
+        switch (this.o) {
+            case 0:
+                return vh1.class;
+            default:
+                return this.n.getClass();
+        }
     }
 
     @Override // defpackage.q04
     public final Object get() {
-        Drawable r1 = this.n;
-        Drawable.ConstantState r0 = r1.getConstantState();
-        if (r0 != null) goto L6;
-        return r1;
-    L6:
-        return r0.newDrawable();
+        Drawable drawable = this.n;
+        Drawable.ConstantState constantState = drawable.getConstantState();
+        return constantState == null ? drawable : constantState.newDrawable();
     }
 }

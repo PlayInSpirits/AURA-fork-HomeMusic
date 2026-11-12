@@ -17,36 +17,33 @@ public final class ok implements Executor {
     }
 
     @Override // java.util.concurrent.Executor
-    public final void execute(Runnable r3) {
-        int r0 = this.n;
-        Handler r2 = this.o;
-        switch(r0) {
-            case 0: goto L16;
-            case 1: goto L11;
-            case 2: goto L6;
-            default: goto L4;
-        };
-    L4:
-        r2.post(r3);
-        return;
-    L6:
-        r3.getClass();
-        if (r2.post(r3) == false) goto L10;
-        return;
-    L10:
-        throw new RejectedExecutionException(r2 + " is shutting down");
-    L11:
-        r3.getClass();
-        if (r2.post(r3) == false) goto L15;
-        return;
-    L15:
-        throw new RejectedExecutionException(r2 + " is shutting down");
-    L16:
-        r2.post(r3);
+    public final void execute(Runnable runnable) {
+        int i = this.n;
+        Handler handler = this.o;
+        switch (i) {
+            case 0:
+                handler.post(runnable);
+                return;
+            case 1:
+                runnable.getClass();
+                if (handler.post(runnable)) {
+                    return;
+                }
+                throw new RejectedExecutionException(handler + " is shutting down");
+            case 2:
+                runnable.getClass();
+                if (handler.post(runnable)) {
+                    return;
+                }
+                throw new RejectedExecutionException(handler + " is shutting down");
+            default:
+                handler.post(runnable);
+                return;
+        }
     }
 
-    public /* synthetic */ ok(Handler r1, int r2) {
-        this.n = r2;
-        this.o = r1;
+    public /* synthetic */ ok(Handler handler, int i) {
+        this.n = i;
+        this.o = handler;
     }
 }

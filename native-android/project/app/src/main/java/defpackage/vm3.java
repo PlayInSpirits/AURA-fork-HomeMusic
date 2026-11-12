@@ -9,13 +9,14 @@ public final class vm3 extends cx3 {
     public final jv3 u;
     public final /* synthetic */ ej v;
 
-    public vm3(ej r2, jv3 r3) {
-        this.v = r2;
-        ConstraintLayout r4 = (ConstraintLayout) r3.n;
-        super(r4);
-        this.u = r3;
-        ((TextView) r3.p).setSelected(true);
-        r4.setOnClickListener(new bj3(10, this));
-        r4.setOnLongClickListener(new q6(16, this));
+    /* JADX WARN: Illegal instructions before constructor call */
+    public vm3(ej ejVar, jv3 jv3Var) {
+        this.v = ejVar;
+        ConstraintLayout constraintLayout = (ConstraintLayout) jv3Var.n;
+        super(constraintLayout);
+        this.u = jv3Var;
+        ((TextView) jv3Var.p).setSelected(true);
+        constraintLayout.setOnClickListener(new bj3(10, this));
+        constraintLayout.setOnLongClickListener(new q6(16, this));
     }
 }

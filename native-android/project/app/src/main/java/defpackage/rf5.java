@@ -7,13 +7,13 @@ import android.os.Parcel;
 import android.os.RemoteException;
 import android.util.Log;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.gms.common.api.Status;
 import java.util.Set;
+import org.chromium.support_lib_boundary.WebSettingsBoundaryInterface;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class rf5 extends ef5 implements gj1, hj1 {
-    public static final u02 m = null;
+    public static final u02 m = tf5.a;
     public final Context f;
     public final Handler g;
     public final u02 h;
@@ -22,129 +22,104 @@ public final class rf5 extends ef5 implements gj1, hj1 {
     public sd4 k;
     public nq l;
 
-    static {
-        m = tf5.a;
-    }
-
-    public rf5(Context r2, zw2 r3, ml3 r4) {
+    public rf5(Context context, zw2 zw2Var, ml3 ml3Var) {
         super(0);
         attachInterface(this, "com.google.android.gms.signin.internal.ISignInCallbacks");
-        this.f = r2;
-        this.g = r3;
-        this.j = r4;
-        this.i = (Set) r4.a;
+        this.f = context;
+        this.g = zw2Var;
+        this.j = ml3Var;
+        this.i = (Set) ml3Var.a;
         this.h = m;
     }
 
     @Override // defpackage.ef5
-    public final boolean M0(int r2, Parcel r3, Parcel r4) {
-        int r0 = 0;
-        switch(r2) {
-            case 3: goto L10;
-            case 4: goto L9;
-            case 5: goto L4;
-            case 6: goto L8;
-            case 7: goto L7;
-            case 8: goto L6;
-            case 9: goto L5;
-            default: goto L4;
-        };
-    L4:
-        return false;
-    L5:
-        yf5 r1 = (yf5) mf5.a(r3, yf5.CREATOR);
-        mf5.b(r3);
-    L11:
-        r4.writeNoException();
+    public final boolean M0(int i, Parcel parcel, Parcel parcel2) {
+        int i2 = 0;
+        switch (i) {
+            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
+                mf5.b(parcel);
+                break;
+            case 4:
+                mf5.b(parcel);
+                break;
+            case 5:
+            default:
+                return false;
+            case 6:
+                mf5.b(parcel);
+                break;
+            case 7:
+                mf5.b(parcel);
+                break;
+            case 8:
+                dg5 dg5Var = (dg5) mf5.a(parcel, dg5.CREATOR);
+                mf5.b(parcel);
+                this.g.post(new qf5(i2, this, dg5Var));
+                break;
+            case 9:
+                mf5.b(parcel);
+                break;
+        }
+        parcel2.writeNoException();
         return true;
-    L6:
-        dg5 r5 = (dg5) mf5.a(r3, dg5.CREATOR);
-        mf5.b(r3);
-        qf5 r6 = new qf5(r0, this, r5);
-        this.g.post(r6);
-        goto L11
-    L7:
-        Status r7 = (Status) mf5.a(r3, Status.CREATOR);
-        GoogleSignInAccount r8 = (GoogleSignInAccount) mf5.a(r3, GoogleSignInAccount.CREATOR);
-        mf5.b(r3);
-        goto L11
-    L8:
-        Status r9 = (Status) mf5.a(r3, Status.CREATOR);
-        mf5.b(r3);
-        goto L11
-    L9:
-        Status r10 = (Status) mf5.a(r3, Status.CREATOR);
-        mf5.b(r3);
-        goto L11
-    L10:
-        ka0 r11 = (ka0) mf5.a(r3, ka0.CREATOR);
-        bf5 r12 = (bf5) mf5.a(r3, bf5.CREATOR);
-        mf5.b(r3);
-        goto L11
     }
 
     @Override // defpackage.gj1
-    public final void U(int r2) {
-        nq r1 = this.l;
-        gf5 r3 = (gf5) ((ij1) r1.s).w.get((ve) r1.p);
-        if (r3 != null) goto L5;
-        return;
-    L5:
-        if (r3.m == false) goto L8;
-        r3.n(new ka0(17));
-        return;
-    L8:
-        r3.U(r2);
+    public final void U(int i) {
+        nq nqVar = this.l;
+        gf5 gf5Var = (gf5) ((ij1) nqVar.s).w.get((ve) nqVar.p);
+        if (gf5Var != null) {
+            if (gf5Var.m) {
+                gf5Var.n(new ka0(17));
+            } else {
+                gf5Var.U(i);
+            }
+        }
     }
 
     @Override // defpackage.gj1
     public final void X() {
-        sd4 r0 = this.k;
-        r0.getClass();
-        int r2 = 0;
-        r0.M.getClass();     // Catch: RemoteException -> L6
-        Account r5 = new Account("<<default account>>", "com.google");     // Catch: RemoteException -> L6
-        if ("<<default account>>".equals(r5.name) == false) goto L8;
-        GoogleSignInAccount r1 = bm4.a(r0.p).b();     // Catch: RemoteException -> L6
-    L9:
-        Integer r7 = r0.O;     // Catch: RemoteException -> L6
-        ji2.m(r7);     // Catch: RemoteException -> L6
-        hg5 r6 = new hg5(2, r5, r7.intValue(), r1);     // Catch: RemoteException -> L6
-        wf5 r3 = (wf5) r0.e();     // Catch: RemoteException -> L6
-        Parcel r4 = Parcel.obtain();     // Catch: RemoteException -> L6
-        r4.writeInterfaceToken(r3.g);     // Catch: RemoteException -> L6
-        int r8 = mf5.a;     // Catch: RemoteException -> L6
-        r4.writeInt(1);     // Catch: RemoteException -> L6
-        int r9 = ud3.R0(r4, 20293);     // Catch: RemoteException -> L6
-        ud3.T0(r4, 1, 4);     // Catch: RemoteException -> L6
-        r4.writeInt(1);     // Catch: RemoteException -> L6
-        ud3.M0(r4, 2, r6, 0);     // Catch: RemoteException -> L6
-        ud3.S0(r4, r9);     // Catch: RemoteException -> L6
-        r4.writeStrongBinder(this);     // Catch: RemoteException -> L6
-        Parcel r10 = Parcel.obtain();     // Catch: RemoteException -> L6
-        r3.f.transact(12, r4, r10, 0);     // Catch: Throwable -> L13
-        r10.readException();     // Catch: Throwable -> L13
-        r4.recycle();     // Catch: RemoteException -> L6
-        r10.recycle();     // Catch: RemoteException -> L6
-        return;
-    L13:
-        th = move-exception;
-        r4.recycle();     // Catch: RemoteException -> L6
-        r10.recycle();     // Catch: RemoteException -> L6
-        throw th;     // Catch: RemoteException -> L6
-    L8:
-        r1 = null;
-    L6:
-        e = move-exception;
-        Log.w("SignInClientImpl", "Remote service probably died when signIn is called");
-        this.g.post(new qf5(r2, this, new dg5(1, new ka0(8, null), null)));     // Catch: RemoteException -> L19
-        return;
-    L19:
-        Log.wtf("SignInClientImpl", "ISignInCallbacks#onSignInComplete should be executed from the same process, unexpected RemoteException.", e);
+        sd4 sd4Var = this.k;
+        sd4Var.getClass();
+        int i = 0;
+        try {
+            sd4Var.M.getClass();
+            Account account = new Account("<<default account>>", "com.google");
+            GoogleSignInAccount googleSignInAccountB = "<<default account>>".equals(account.name) ? bm4.a(sd4Var.p).b() : null;
+            Integer num = sd4Var.O;
+            ji2.m(num);
+            hg5 hg5Var = new hg5(2, account, num.intValue(), googleSignInAccountB);
+            wf5 wf5Var = (wf5) sd4Var.e();
+            Parcel parcelObtain = Parcel.obtain();
+            parcelObtain.writeInterfaceToken(wf5Var.g);
+            int i2 = mf5.a;
+            parcelObtain.writeInt(1);
+            int iR0 = ud3.R0(parcelObtain, 20293);
+            ud3.T0(parcelObtain, 1, 4);
+            parcelObtain.writeInt(1);
+            ud3.M0(parcelObtain, 2, hg5Var, 0);
+            ud3.S0(parcelObtain, iR0);
+            parcelObtain.writeStrongBinder(this);
+            Parcel parcelObtain2 = Parcel.obtain();
+            try {
+                wf5Var.f.transact(12, parcelObtain, parcelObtain2, 0);
+                parcelObtain2.readException();
+            } finally {
+                parcelObtain.recycle();
+                parcelObtain2.recycle();
+            }
+        } catch (RemoteException e) {
+            Log.w("SignInClientImpl", "Remote service probably died when signIn is called");
+            try {
+                this.g.post(new qf5(i, this, new dg5(1, new ka0(8, null), null)));
+            } catch (RemoteException unused) {
+                Log.wtf("SignInClientImpl", "ISignInCallbacks#onSignInComplete should be executed from the same process, unexpected RemoteException.", e);
+            }
+        }
     }
 
     @Override // defpackage.hj1
-    public final void m(ka0 r1) {
-        this.l.a(r1);
+    public final void m(ka0 ka0Var) {
+        this.l.a(ka0Var);
     }
 }

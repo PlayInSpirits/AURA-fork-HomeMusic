@@ -6,7 +6,7 @@ import java.util.function.IntFunction;
 /* JADX INFO: loaded from: classes.dex */
 public final /* synthetic */ class c03 implements IntFunction {
     @Override // java.util.function.IntFunction
-    public final Object apply(int r1) {
-        return Integer.toHexString(r1);
+    public final Object apply(int i) {
+        return Integer.toHexString(i);
     }
 }

@@ -12,104 +12,94 @@ public final class o02 {
         this.a = new int[10];
     }
 
-    public int a(int r2) {
-        int r0 = this.b - 1;
-        if (r0 >= 0) goto L5;
-        return r2;
-    L5:
-        return this.a[r0];
+    public int a(int i) {
+        int i2 = this.b - 1;
+        return i2 >= 0 ? this.a[i2] : i;
     }
 
     public int b() {
-        int[] r0 = this.a;
-        int r1 = this.b - 1;
-        this.b = r1;
-        return r0[r1];
+        int[] iArr = this.a;
+        int i = this.b - 1;
+        this.b = i;
+        return iArr[i];
     }
 
-    public void c(int r4) {
-        int[] r0 = this.a;
-        if (this.b < r0.length) goto L5;
-        r0 = Arrays.copyOf(r0, r0.length * 2);
-        this.a = r0;
-    L5:
-        int r1 = this.b;
-        this.b = r1 + 1;
-        r0[r1] = r4;
+    public void c(int i) {
+        int[] iArrCopyOf = this.a;
+        if (this.b >= iArrCopyOf.length) {
+            iArrCopyOf = Arrays.copyOf(iArrCopyOf, iArrCopyOf.length * 2);
+            this.a = iArrCopyOf;
+        }
+        int i2 = this.b;
+        this.b = i2 + 1;
+        iArrCopyOf[i2] = i;
     }
 
-    public void d(int r5, int r6, int r7) {
-        int r0 = this.b;
-        int[] r1 = this.a;
-        int r2 = r0 + 3;
-        if (r2 < r1.length) goto L5;
-        r1 = Arrays.copyOf(r1, r1.length * 2);
-        this.a = r1;
-    L5:
-        r1[r0] = r5 + r7;
-        r1[r0 + 1] = r6 + r7;
-        r1[r0 + 2] = r7;
-        this.b = r2;
+    public void d(int i, int i2, int i3) {
+        int i4 = this.b;
+        int[] iArrCopyOf = this.a;
+        int i5 = i4 + 3;
+        if (i5 >= iArrCopyOf.length) {
+            iArrCopyOf = Arrays.copyOf(iArrCopyOf, iArrCopyOf.length * 2);
+            this.a = iArrCopyOf;
+        }
+        iArrCopyOf[i4] = i + i3;
+        iArrCopyOf[i4 + 1] = i2 + i3;
+        iArrCopyOf[i4 + 2] = i3;
+        this.b = i5;
     }
 
-    public void e(int r5, int r6, int r7, int r8) {
-        int r0 = this.b;
-        int[] r1 = this.a;
-        int r2 = r0 + 4;
-        if (r2 < r1.length) goto L5;
-        r1 = Arrays.copyOf(r1, r1.length * 2);
-        this.a = r1;
-    L5:
-        r1[r0] = r5;
-        r1[r0 + 1] = r6;
-        r1[r0 + 2] = r7;
-        r1[r0 + 3] = r8;
-        this.b = r2;
+    public void e(int i, int i2, int i3, int i4) {
+        int i5 = this.b;
+        int[] iArrCopyOf = this.a;
+        int i6 = i5 + 4;
+        if (i6 >= iArrCopyOf.length) {
+            iArrCopyOf = Arrays.copyOf(iArrCopyOf, iArrCopyOf.length * 2);
+            this.a = iArrCopyOf;
+        }
+        iArrCopyOf[i5] = i;
+        iArrCopyOf[i5 + 1] = i2;
+        iArrCopyOf[i5 + 2] = i3;
+        iArrCopyOf[i5 + 3] = i4;
+        this.b = i6;
     }
 
-    public void f(int r6, int r7) {
-        if (r6 >= r7) goto L18;
-        int r0 = r6 - 3;
-        int r1 = r6;
-    L4:
-        if (r1 >= r7) goto L12;
-        int[] r2 = this.a;
-        int r3 = r2[r1];
-        int r4 = r2[r7];
-        if (r3 < r4) goto L10;
-        if (r3 != r4) goto L11;
-        if (r2[r1 + 1] <= r2[r7 + 1]) goto L10;
-    L11:
-        r1 = r1 + 3;
-    L10:
-        r0 = r0 + 3;
-        g(r0, r1);
-        goto L11
-    L12:
-        g(r0 + 3, r7);
-        f(r6, r0);
-        f(r0 + 6, r7);
-        return;
+    public void f(int i, int i2) {
+        if (i < i2) {
+            int i3 = i - 3;
+            for (int i4 = i; i4 < i2; i4 += 3) {
+                int[] iArr = this.a;
+                int i5 = iArr[i4];
+                int i6 = iArr[i2];
+                if (i5 < i6 || (i5 == i6 && iArr[i4 + 1] <= iArr[i2 + 1])) {
+                    i3 += 3;
+                    g(i3, i4);
+                }
+            }
+            g(i3 + 3, i2);
+            f(i, i3);
+            f(i3 + 6, i2);
+        }
     }
 
-    public void g(int r5, int r6) {
-        int[] r4 = this.a;
-        int r0 = r4[r5];
-        r4[r5] = r4[r6];
-        r4[r6] = r0;
-        int r1 = r5 + 1;
-        int r2 = r6 + 1;
-        int r3 = r4[r1];
-        r4[r1] = r4[r2];
-        r4[r2] = r3;
-        int r7 = r5 + 2;
-        int r8 = r6 + 2;
-        int r9 = r4[r7];
-        r4[r7] = r4[r8];
-        r4[r8] = r9;
+    public void g(int i, int i2) {
+        int[] iArr = this.a;
+        int i3 = iArr[i];
+        iArr[i] = iArr[i2];
+        iArr[i2] = i3;
+        int i4 = i + 1;
+        int i5 = i2 + 1;
+        int i6 = iArr[i4];
+        iArr[i4] = iArr[i5];
+        iArr[i5] = i6;
+        int i7 = i + 2;
+        int i8 = i2 + 2;
+        int i9 = iArr[i7];
+        iArr[i7] = iArr[i8];
+        iArr[i8] = i9;
     }
 
-    public o02(int r1) {
-        this.a = new int[r1];
+    public o02(int i) {
+        this.a = new int[i];
     }
 }

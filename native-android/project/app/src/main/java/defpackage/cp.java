@@ -7,9 +7,9 @@ import android.os.Handler;
 public interface cp {
     long J();
 
-    void L(Handler r1, nj0 r2);
+    void L(Handler handler, nj0 nj0Var);
 
-    void h(nj0 r1);
+    void h(nj0 nj0Var);
 
     rw4 z();
 }

@@ -9,7 +9,6 @@ import android.view.animation.AnimationSet;
 import android.view.animation.TranslateAnimation;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Map;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
@@ -19,95 +18,86 @@ public final class kp2 implements ViewTreeObserver.OnGlobalLayoutListener {
     public final /* synthetic */ Map o;
     public final /* synthetic */ qp2 p;
 
-    public kp2(qp2 r1, HashMap r2, HashMap r3) {
-        this.p = r1;
-        this.n = r2;
-        this.o = r3;
+    public kp2(qp2 qp2Var, HashMap map, HashMap map2) {
+        this.p = qp2Var;
+        this.n = map;
+        this.o = map2;
     }
 
     @Override // android.view.ViewTreeObserver.OnGlobalLayoutListener
     public final void onGlobalLayout() {
-        qp2 r1 = this.p;
-        r1.R.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-        HashSet r2 = r1.U;
-        if (r2 != null) goto L5;
-        return;
-    L5:
-        if (r1.V == null) goto L39;
-        int r3 = r2.size() - r1.V.size();
-        boolean r4 = true;
-        gp2 r5 = new gp2(1 == true ? 1 : 0, r1);
-        int r6 = r1.R.getFirstVisiblePosition();
-        int r7 = 0;
-        boolean r8 = false;
-    L8:
-        int r9 = r1.R.getChildCount();
-        Map r10 = this.n;
-        Map r11 = this.o;
-        if (r7 >= r9) goto L24;
-        View r12 = r1.R.getChildAt(r7);
-        wq2 r13 = (wq2) r1.S.getItem(r6 + r7);
-        Rect r14 = (Rect) r10.get(r13);
-        int r15 = r12.getTop();
-        if (r14 == null) goto L13;
-        int r16 = r14.top;
-    L14:
-        AnimationSet r17 = new AnimationSet(r4);
-        HashSet r18 = r1.U;
-        if (r18 == null) goto L20;
-        if (r18.contains(r13) == false) goto L20;
-        AlphaAnimation r19 = new AlphaAnimation(0.0f, 0.0f);
-        r19.setDuration(r1.u0);
-        r17.addAnimation(r19);
-        r16 = r15;
-    L20:
-        TranslateAnimation r20 = new TranslateAnimation(0.0f, 0.0f, r16 - r15, 0.0f);
-        r20.setDuration(r1.t0);
-        r17.addAnimation(r20);
-        r4 = true;
-        r17.setFillAfter(true);
-        r17.setFillEnabled(true);
-        r17.setInterpolator(r1.w0);
-        if (r8 == true) goto L23;
-        r17.setAnimationListener(r5);
-        r8 = true;
-    L23:
-        r12.clearAnimation();
-        r12.startAnimation(r17);
-        r10.remove(r13);
-        r11.remove(r13);
-        r7 = r7 + 1;
-        goto L8
-    L13:
-        r16 = (r1.b0 * r3) + r15;
-        goto L14
-    L24:
-        Iterator r0 = r11.entrySet().iterator();
-    L26:
-        if (r0.hasNext() == false) goto L40;
-        Map.Entry r21 = (Map.Entry) r0.next();
-        wq2 r22 = (wq2) r21.getKey();
-        BitmapDrawable r23 = (BitmapDrawable) r21.getValue();
-        Rect r24 = (Rect) r10.get(r22);
-        if (r1.V.contains(r22) == false) goto L30;
-        pb3 r25 = new pb3(r23, r24);
-        r25.h = 0.0f;
-        r25.e = r1.v0;
-        r25.d = r1.w0;
-    L31:
-        r1.R.n.add(r25);
-        goto L26
-    L30:
-        int r26 = r1.b0 * r3;
-        pb3 r27 = new pb3(r23, r24);
-        r27.g = r26;
-        r27.e = r1.t0;
-        r27.d = r1.w0;
-        r27.l = new hd5(r1, r22, false, 14);
-        r1.W.add(r22);
-        r25 = r27;
-        goto L31
-    L40:
-        return;
+        Map map;
+        Map map2;
+        pb3 pb3Var;
+        qp2 qp2Var = this.p;
+        qp2Var.R.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+        HashSet hashSet = qp2Var.U;
+        if (hashSet == null || qp2Var.V == null) {
+            return;
+        }
+        int size = hashSet.size() - qp2Var.V.size();
+        boolean z = true;
+        gp2 gp2Var = new gp2(1 == true ? 1 : 0, qp2Var);
+        int firstVisiblePosition = qp2Var.R.getFirstVisiblePosition();
+        int i = 0;
+        boolean z2 = false;
+        while (true) {
+            int childCount = qp2Var.R.getChildCount();
+            map = this.n;
+            map2 = this.o;
+            if (i >= childCount) {
+                break;
+            }
+            View childAt = qp2Var.R.getChildAt(i);
+            wq2 wq2Var = (wq2) qp2Var.S.getItem(firstVisiblePosition + i);
+            Rect rect = (Rect) map.get(wq2Var);
+            int top = childAt.getTop();
+            int i2 = rect != null ? rect.top : (qp2Var.b0 * size) + top;
+            AnimationSet animationSet = new AnimationSet(z);
+            HashSet hashSet2 = qp2Var.U;
+            if (hashSet2 != null && hashSet2.contains(wq2Var)) {
+                AlphaAnimation alphaAnimation = new AlphaAnimation(0.0f, 0.0f);
+                alphaAnimation.setDuration(qp2Var.u0);
+                animationSet.addAnimation(alphaAnimation);
+                i2 = top;
+            }
+            TranslateAnimation translateAnimation = new TranslateAnimation(0.0f, 0.0f, i2 - top, 0.0f);
+            translateAnimation.setDuration(qp2Var.t0);
+            animationSet.addAnimation(translateAnimation);
+            z = true;
+            animationSet.setFillAfter(true);
+            animationSet.setFillEnabled(true);
+            animationSet.setInterpolator(qp2Var.w0);
+            if (!z2) {
+                animationSet.setAnimationListener(gp2Var);
+                z2 = true;
+            }
+            childAt.clearAnimation();
+            childAt.startAnimation(animationSet);
+            map.remove(wq2Var);
+            map2.remove(wq2Var);
+            i++;
+        }
+        for (Map.Entry entry : map2.entrySet()) {
+            wq2 wq2Var2 = (wq2) entry.getKey();
+            BitmapDrawable bitmapDrawable = (BitmapDrawable) entry.getValue();
+            Rect rect2 = (Rect) map.get(wq2Var2);
+            if (qp2Var.V.contains(wq2Var2)) {
+                pb3Var = new pb3(bitmapDrawable, rect2);
+                pb3Var.h = 0.0f;
+                pb3Var.e = qp2Var.v0;
+                pb3Var.d = qp2Var.w0;
+            } else {
+                int i3 = qp2Var.b0 * size;
+                pb3 pb3Var2 = new pb3(bitmapDrawable, rect2);
+                pb3Var2.g = i3;
+                pb3Var2.e = qp2Var.t0;
+                pb3Var2.d = qp2Var.w0;
+                pb3Var2.l = new hd5(qp2Var, wq2Var2, false, 14);
+                qp2Var.W.add(wq2Var2);
+                pb3Var = pb3Var2;
+            }
+            qp2Var.R.n.add(pb3Var);
+        }
     }
 }

@@ -9,14 +9,15 @@ public final class p7 extends cx3 {
     public final ss0 u;
     public final /* synthetic */ q7 v;
 
-    public p7(q7 r3, ss0 r4) {
-        this.v = r3;
-        ConstraintLayout r5 = (ConstraintLayout) r4.n;
-        super(r5);
-        this.u = r4;
-        ((TextView) r4.p).setSelected(true);
-        ((TextView) r4.q).setSelected(true);
-        r5.setOnClickListener(new p6(2, this));
-        r5.setOnLongClickListener(new q6(2, this));
+    /* JADX WARN: Illegal instructions before constructor call */
+    public p7(q7 q7Var, ss0 ss0Var) {
+        this.v = q7Var;
+        ConstraintLayout constraintLayout = (ConstraintLayout) ss0Var.n;
+        super(constraintLayout);
+        this.u = ss0Var;
+        ((TextView) ss0Var.p).setSelected(true);
+        ((TextView) ss0Var.q).setSelected(true);
+        constraintLayout.setOnClickListener(new p6(2, this));
+        constraintLayout.setOnLongClickListener(new q6(2, this));
     }
 }

@@ -6,8 +6,8 @@ public final class ob2 {
     public final Object a;
     public final Object b;
 
-    public ob2(Object r1, Object r2) {
-        this.a = r1;
-        this.b = r2;
+    public ob2(Object obj, Object obj2) {
+        this.a = obj;
+        this.b = obj2;
     }
 }

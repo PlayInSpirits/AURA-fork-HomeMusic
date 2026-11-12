@@ -9,38 +9,34 @@ public final /* synthetic */ class ey2 implements if1 {
     public final /* synthetic */ g74 q;
     public final /* synthetic */ fx3 r;
 
-    public /* synthetic */ ey2(hy2 r1, jx3 r2, gx3 r3, g74 r4, fx3 r5) {
-        this.n = r1;
-        this.o = r2;
-        this.p = r3;
-        this.q = r4;
-        this.r = r5;
+    public /* synthetic */ ey2(hy2 hy2Var, jx3 jx3Var, gx3 gx3Var, g74 g74Var, fx3 fx3Var) {
+        this.n = hy2Var;
+        this.o = jx3Var;
+        this.p = gx3Var;
+        this.q = g74Var;
+        this.r = fx3Var;
     }
 
     @Override // defpackage.if1
-    public final Object invoke(Object r11) {
-        float r12 = ((Float) r11).floatValue();
-        hy2 r0 = this.n;
-        cy2 r1 = hy2.I(r0.g);
-        boolean r2 = true;
-        if (r1 == null) goto L5;
-        rf2 r3 = (rf2) r0.e;
-        long r4 = r1.b;
-        long r5 = r1.a;
-        ((m45) r3.n).a(r4, Float.intBitsToFloat((int) (r5 >> 32)));
-        ((m45) r3.o).a(r4, Float.intBitsToFloat((int) (r5 & 4294967295L)));
-        jx3 r6 = this.o;
-        cy2 r7 = ((cy2) r6.n).a(r1);
-        r6.n = r7;
-        long r8 = r7.a;
-        g74 r9 = this.q;
-        float r10 = r9.j(r9.f(r8));
-        this.p.n = r10;
-        this.r.n = !h12.b(r10 - r12);
-    L5:
-        if (r1 != null) goto L9;
-        r2 = false;
-    L9:
-        return Boolean.valueOf(r2);
+    public final Object invoke(Object obj) {
+        float fFloatValue = ((Float) obj).floatValue();
+        hy2 hy2Var = this.n;
+        cy2 cy2VarI = hy2.I(hy2Var.g);
+        if (cy2VarI != null) {
+            rf2 rf2Var = (rf2) hy2Var.e;
+            long j = cy2VarI.b;
+            long j2 = cy2VarI.a;
+            ((m45) rf2Var.n).a(j, Float.intBitsToFloat((int) (j2 >> 32)));
+            ((m45) rf2Var.o).a(j, Float.intBitsToFloat((int) (j2 & 4294967295L)));
+            jx3 jx3Var = this.o;
+            cy2 cy2VarA = ((cy2) jx3Var.n).a(cy2VarI);
+            jx3Var.n = cy2VarA;
+            long j3 = cy2VarA.a;
+            g74 g74Var = this.q;
+            float fJ = g74Var.j(g74Var.f(j3));
+            this.p.n = fJ;
+            this.r.n = !h12.b(fJ - fFloatValue);
+        }
+        return Boolean.valueOf(cy2VarI != null);
     }
 }

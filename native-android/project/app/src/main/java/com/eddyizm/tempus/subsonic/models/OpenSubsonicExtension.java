@@ -9,9 +9,6 @@ public final class OpenSubsonicExtension {
     private String name;
     private List<Integer> versions;
 
-    public OpenSubsonicExtension() {
-    }
-
     public final String getName() {
         return this.name;
     }
@@ -20,11 +17,11 @@ public final class OpenSubsonicExtension {
         return this.versions;
     }
 
-    public final void setName(String r1) {
-        this.name = r1;
+    public final void setName(String str) {
+        this.name = str;
     }
 
-    public final void setVersions(List<Integer> r1) {
-        this.versions = r1;
+    public final void setVersions(List<Integer> list) {
+        this.versions = list;
     }
 }

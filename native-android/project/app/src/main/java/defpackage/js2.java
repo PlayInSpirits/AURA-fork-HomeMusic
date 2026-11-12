@@ -7,24 +7,21 @@ import java.util.Objects;
 public final class js2 implements er2 {
     public final ms2 n;
 
-    public js2(ms2 r1) {
-        this.n = r1;
+    public js2(ms2 ms2Var) {
+        this.n = ms2Var;
     }
 
-    public final boolean equals(Object r3) {
-        if (this != r3) goto L5;
-        return true;
-    L5:
-        if (r3 != null) goto L7;
-        return false;
-    L7:
-        if (r3.getClass() == js2.class) goto L10;
-        return false;
-    L10:
-        return Objects.equals(this.n, ((js2) r3).n);
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || obj.getClass() != js2.class) {
+            return false;
+        }
+        return Objects.equals(this.n, ((js2) obj).n);
     }
 
     public final int hashCode() {
-        return Objects.hash(new Object[]{this.n});
+        return Objects.hash(this.n);
     }
 }

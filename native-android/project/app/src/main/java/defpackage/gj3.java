@@ -14,10 +14,10 @@ public final class gj3 extends dw3 {
     public int s;
     public final /* synthetic */ PlayerControlView t;
 
-    public gj3(PlayerControlView r1, String[] r2, float[] r3) {
-        this.t = r1;
-        this.q = r2;
-        this.r = r3;
+    public gj3(PlayerControlView playerControlView, String[] strArr, float[] fArr) {
+        this.t = playerControlView;
+        this.q = strArr;
+        this.r = fArr;
     }
 
     @Override // defpackage.dw3
@@ -26,28 +26,38 @@ public final class gj3 extends dw3 {
     }
 
     @Override // defpackage.dw3
-    public final void g(cx3 r5, final int r6) {
-        kj3 r7 = (kj3) r5;
-        View r0 = r7.v;
-        View r1 = r7.a;
-        String[] r2 = this.q;
-        if (r6 >= r2.length) goto L6;
-        r7.u.setText(r2[r6]);
-    L6:
-        if (r6 != this.s) goto L8;
-        r1.setSelected(true);
-        r0.setVisibility(0);
-    L9:
-        r1.setOnClickListener(new fj3(this, r6));
-        return;
-    L8:
-        r1.setSelected(false);
-        r0.setVisibility(4);
-        goto L9
+    public final void g(cx3 cx3Var, final int i) {
+        kj3 kj3Var = (kj3) cx3Var;
+        View view = kj3Var.v;
+        View view2 = kj3Var.a;
+        String[] strArr = this.q;
+        if (i < strArr.length) {
+            kj3Var.u.setText(strArr[i]);
+        }
+        if (i == this.s) {
+            view2.setSelected(true);
+            view.setVisibility(0);
+        } else {
+            view2.setSelected(false);
+            view.setVisibility(4);
+        }
+        view2.setOnClickListener(new View.OnClickListener() { // from class: fj3
+            @Override // android.view.View.OnClickListener
+            public final void onClick(View view3) {
+                gj3 gj3Var = this.n;
+                PlayerControlView playerControlView = gj3Var.t;
+                int i2 = gj3Var.s;
+                int i3 = i;
+                if (i3 != i2) {
+                    playerControlView.setPlaybackSpeed(gj3Var.r[i3]);
+                }
+                playerControlView.E.dismiss();
+            }
+        });
     }
 
     @Override // defpackage.dw3
-    public final cx3 i(ViewGroup r2, int r3) {
-        return new kj3(LayoutInflater.from(this.t.getContext()).inflate(R.layout.exo_styled_sub_settings_list_item, r2, false));
+    public final cx3 i(ViewGroup viewGroup, int i) {
+        return new kj3(LayoutInflater.from(this.t.getContext()).inflate(R.layout.exo_styled_sub_settings_list_item, viewGroup, false));
     }
 }

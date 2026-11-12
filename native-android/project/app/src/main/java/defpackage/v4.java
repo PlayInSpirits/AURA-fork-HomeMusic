@@ -9,9 +9,10 @@ import app.homemusic.R;
 public final class v4 extends jg implements z4 {
     public final /* synthetic */ y4 q;
 
-    public v4(y4 r2, Context r3) {
-        this.q = r2;
-        super(r3, null, R.attr.actionOverflowButtonStyle);
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public v4(y4 y4Var, Context context) {
+        super(context, null, R.attr.actionOverflowButtonStyle);
+        this.q = y4Var;
         setClickable(true);
         setFocusable(true);
         setVisibility(0);
@@ -32,29 +33,27 @@ public final class v4 extends jg implements z4 {
 
     @Override // android.view.View
     public final boolean performClick() {
-        if (super.performClick() == false) goto L5;
-        return true;
-    L5:
+        if (super.performClick()) {
+            return true;
+        }
         playSoundEffect(0);
         this.q.n();
         return true;
     }
 
     @Override // android.widget.ImageView
-    public final boolean setFrame(int r4, int r5, int r6, int r7) {
-        boolean r8 = super.setFrame(r4, r5, r6, r7);
-        Drawable r9 = getDrawable();
-        Drawable r10 = getBackground();
-        if (r9 == null) goto L6;
-        if (r10 == null) goto L6;
-        int r11 = getWidth();
-        int r12 = getHeight();
-        int r0 = Math.max(r11, r12) / 2;
-        int r1 = getPaddingLeft() - getPaddingRight();
-        int r13 = (r11 + r1) / 2;
-        int r14 = (r12 + (getPaddingTop() - getPaddingBottom())) / 2;
-        r10.setHotspotBounds(r13 - r0, r14 - r0, r13 + r0, r14 + r0);
-    L6:
-        return r8;
+    public final boolean setFrame(int i, int i2, int i3, int i4) {
+        boolean frame = super.setFrame(i, i2, i3, i4);
+        Drawable drawable = getDrawable();
+        Drawable background = getBackground();
+        if (drawable != null && background != null) {
+            int width = getWidth();
+            int height = getHeight();
+            int iMax = Math.max(width, height) / 2;
+            int paddingLeft = (width + (getPaddingLeft() - getPaddingRight())) / 2;
+            int paddingTop = (height + (getPaddingTop() - getPaddingBottom())) / 2;
+            background.setHotspotBounds(paddingLeft - iMax, paddingTop - iMax, paddingLeft + iMax, paddingTop + iMax);
+        }
+        return frame;
     }
 }

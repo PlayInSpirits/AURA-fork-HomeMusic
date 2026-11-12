@@ -18,68 +18,56 @@ public final class zm4 {
     public long h;
     public final /* synthetic */ w12 i;
 
-    public zm4(w12 r1, int r2) {
-        this.i = r1;
-        this.a = r2;
+    public zm4(w12 w12Var, int i) {
+        this.i = w12Var;
+        this.a = i;
     }
 
     public final void a() {
-        w12 r1 = this.i;
-        yp4 r2 = (yp4) r1.g;
-        i41 r3 = (i41) r1.b;
-        if (r3.g() != 2) goto L38;
-        if (r3.q() == false) goto L38;
-        if (r3.v0() != 0) goto L38;
-        cu4 r4 = r3.x0();
-        if (r4.p() == false) goto L12;
-        Object r7 = null;
-    L13:
-        int r8 = r3.n0();
-        int r9 = r3.K();
-        long r10 = r3.b0();
-        long r12 = Math.max(0, r3.m() - Math.max(0, r10 - r3.M0()));
-        if (r7 != null) goto L16;
-    L18:
-        ((vp4) r1.e).getClass();
-        long r5 = SystemClock.elapsedRealtime();
-        boolean r14 = this.g;
-        int r15 = this.a;
-        if (r14 == true) goto L21;
-    L34:
-        Object r16 = r7;
-    L35:
+        Object obj;
+        w12 w12Var = this.i;
+        yp4 yp4Var = (yp4) w12Var.g;
+        i41 i41Var = (i41) w12Var.b;
+        if (i41Var.g() != 2 || !i41Var.q() || i41Var.v0() != 0) {
+            if (this.g) {
+                yp4Var.f(1);
+            }
+            this.g = false;
+            return;
+        }
+        cu4 cu4VarX0 = i41Var.x0();
+        Object objL = cu4VarX0.p() ? null : cu4VarX0.l(i41Var.y());
+        int iN0 = i41Var.n0();
+        int iK = i41Var.K();
+        long jB0 = i41Var.b0();
+        long jMax = Math.max(0L, i41Var.m() - Math.max(0L, jB0 - i41Var.M0()));
+        if (objL != null && iN0 == -1) {
+            jB0 -= f35.i0(cu4VarX0.g(objL, (zt4) w12Var.f).e);
+        }
+        ((vp4) w12Var.e).getClass();
+        long jElapsedRealtime = SystemClock.elapsedRealtime();
+        boolean z = this.g;
+        int i = this.a;
+        if (z && Objects.equals(objL, this.b) && iN0 == this.c && iK == this.d) {
+            obj = objL;
+            if (jB0 == this.e && jMax == this.f) {
+                if (jElapsedRealtime - this.h >= i) {
+                    ((d41) w12Var.d).n.u1(new ExoPlaybackException(2, new StuckPlayerException(1, i), 1003));
+                    return;
+                }
+                return;
+            }
+        } else {
+            obj = objL;
+        }
         this.g = true;
-        this.h = r5;
-        this.b = r16;
-        this.c = r8;
-        this.d = r9;
-        this.e = r10;
-        this.f = r12;
-        r2.f(1);
-        r2.h(1, r15);
-        return;
-    L21:
-        if (Objects.equals(r7, this.b) == false) goto L34;
-        if (r8 != this.c) goto L34;
-        if (r9 != this.d) goto L34;
-        r16 = r7;
-        if (r10 != this.e) goto L35;
-        if (r12 != this.f) goto L35;
-        if ((r5 - this.h) < r15) goto L42;
-        ((d41) r1.d).n.u1(new ExoPlaybackException(2, new StuckPlayerException(1, r15), 1003));
-        return;
-    L42:
-        return;
-    L16:
-        if (r8 != (-1)) goto L18;
-        r10 = r10 - f35.i0(r4.g(r7, (zt4) r1.f).e);
-        goto L18
-    L12:
-        r7 = r4.l(r3.y());
-    L38:
-        if (this.g == false) goto L40;
-        r2.f(1);
-    L40:
-        this.g = false;
+        this.h = jElapsedRealtime;
+        this.b = obj;
+        this.c = iN0;
+        this.d = iK;
+        this.e = jB0;
+        this.f = jMax;
+        yp4Var.f(1);
+        yp4Var.h(1, i);
     }
 }

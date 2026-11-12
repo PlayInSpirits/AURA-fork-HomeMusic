@@ -10,8 +10,8 @@ import java.io.File;
 /* JADX INFO: loaded from: classes.dex */
 public final class ni1 extends vz3 {
     @Override // defpackage.lq
-    public final lq A(uw4 r2) {
-        return (ni1) B(r2, true);
+    public final lq A(uw4 uw4Var) {
+        return (ni1) B(uw4Var, true);
     }
 
     @Override // defpackage.lq
@@ -20,93 +20,96 @@ public final class ni1 extends vz3 {
     }
 
     @Override // defpackage.vz3
-    public final vz3 F(zz3 r1) {
-        return (ni1) super.F(r1);
+    public final vz3 F(zz3 zz3Var) {
+        return (ni1) super.F(zz3Var);
     }
 
     @Override // defpackage.vz3
-    public final vz3 G(lq r1) {
-        return (ni1) super.G(r1);
+    /* JADX INFO: renamed from: G */
+    public final vz3 a(lq lqVar) {
+        return (ni1) super.a(lqVar);
     }
 
     @Override // defpackage.vz3
-    public final vz3 I() {
-        return (ni1) super.I();
+    /* JADX INFO: renamed from: I */
+    public final vz3 clone() {
+        return (ni1) super.clone();
     }
 
     @Override // defpackage.vz3
-    public final vz3 L(rj r1) {
-        return (ni1) super.L(r1);
+    public final vz3 L(rj rjVar) {
+        return (ni1) super.L(rjVar);
     }
 
     @Override // defpackage.vz3
-    public final vz3 M(vk4 r1) {
-        return (ni1) Q(r1);
+    public final vz3 M(vk4 vk4Var) {
+        return (ni1) Q(vk4Var);
     }
 
     @Override // defpackage.vz3
-    public final vz3 N(Uri r1) {
-        return (ni1) super.N(r1);
+    public final vz3 N(Uri uri) {
+        return (ni1) super.N(uri);
     }
 
     @Override // defpackage.vz3
-    public final vz3 O(File r1) {
-        return (ni1) Q(r1);
+    public final vz3 O(File file) {
+        return (ni1) Q(file);
     }
 
     @Override // defpackage.vz3
-    public final vz3 P(String r1) {
-        return (ni1) Q(r1);
+    public final vz3 P(String str) {
+        return (ni1) Q(str);
     }
 
     @Override // defpackage.vz3
-    public final vz3 S(vz3 r1) {
-        return (ni1) super.S(r1);
+    public final vz3 S(vz3 vz3Var) {
+        return (ni1) super.S(vz3Var);
     }
 
     @Override // defpackage.vz3
-    public final vz3 T(xv0 r1) {
-        return (ni1) super.T(r1);
+    public final vz3 T(xv0 xv0Var) {
+        return (ni1) super.T(xv0Var);
     }
 
     @Override // defpackage.vz3, defpackage.lq
-    public final lq a(lq r1) {
-        return (ni1) super.G(r1);
+    public final lq a(lq lqVar) {
+        return (ni1) super.a(lqVar);
     }
 
     @Override // defpackage.vz3, defpackage.lq
-    public final lq c() {
-        return (ni1) super.I();
+    /* JADX INFO: renamed from: c */
+    public final lq clone() {
+        return (ni1) super.clone();
     }
 
     @Override // defpackage.vz3, defpackage.lq
     public final Object clone() {
-        return (ni1) super.I();
+        return (ni1) super.clone();
     }
 
     @Override // defpackage.lq
-    public final lq d(Class r1) {
-        return (ni1) super.d(r1);
+    public final lq d(Class cls) {
+        return (ni1) super.d(cls);
     }
 
     @Override // defpackage.lq
-    public final lq e(xq0 r1) {
-        return (ni1) super.e(r1);
+    public final lq e(xq0 xq0Var) {
+        return (ni1) super.e(xq0Var);
     }
 
     @Override // defpackage.lq
-    public final lq f(gu0 r2) {
-        return (ni1) v(gu0.g, r2);
+    public final lq f(gu0 gu0Var) {
+        return (ni1) v(gu0.g, gu0Var);
     }
 
     @Override // defpackage.lq
-    public final lq g(Drawable r1) {
-        return (ni1) super.g(r1);
+    public final lq g(Drawable drawable) {
+        return (ni1) super.g(drawable);
     }
 
     @Override // defpackage.lq
-    public final lq h(Drawable r1) {
-        return (ni1) super.h(r1);
+    public final lq h(Drawable drawable) {
+        return (ni1) super.h(drawable);
     }
 
     @Override // defpackage.lq
@@ -136,13 +139,13 @@ public final class ni1 extends vz3 {
     }
 
     @Override // defpackage.lq
-    public final lq q(int r1, int r2) {
-        return (ni1) super.q(r1, r2);
+    public final lq q(int i, int i2) {
+        return (ni1) super.q(i, i2);
     }
 
     @Override // defpackage.lq
-    public final lq r(ColorDrawable r1) {
-        return (ni1) super.r(r1);
+    public final lq r(ColorDrawable colorDrawable) {
+        return (ni1) super.r(colorDrawable);
     }
 
     @Override // defpackage.lq
@@ -151,13 +154,13 @@ public final class ni1 extends vz3 {
     }
 
     @Override // defpackage.lq
-    public final lq v(ab3 r1, Object r2) {
-        return (ni1) super.v(r1, r2);
+    public final lq v(ab3 ab3Var, Object obj) {
+        return (ni1) super.v(ab3Var, obj);
     }
 
     @Override // defpackage.lq
-    public final lq w(f42 r1) {
-        return (ni1) super.w(r1);
+    public final lq w(f42 f42Var) {
+        return (ni1) super.w(f42Var);
     }
 
     @Override // defpackage.lq
@@ -166,12 +169,12 @@ public final class ni1 extends vz3 {
     }
 
     @Override // defpackage.lq
-    public final lq y(boolean r1) {
+    public final lq y(boolean z) {
         return (ni1) super.y(true);
     }
 
     @Override // defpackage.lq
-    public final lq z(Resources.Theme r1) {
-        return (ni1) super.z(r1);
+    public final lq z(Resources.Theme theme) {
+        return (ni1) super.z(theme);
     }
 }

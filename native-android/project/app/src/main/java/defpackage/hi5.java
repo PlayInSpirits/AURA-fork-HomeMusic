@@ -7,14 +7,14 @@ import java.util.AbstractMap;
 public final class hi5 extends ei5 {
     public final /* synthetic */ ii5 p;
 
-    public hi5(ii5 r1) {
-        this.p = r1;
+    public hi5(ii5 ii5Var) {
+        this.p = ii5Var;
     }
 
     @Override // java.util.List
-    public final /* bridge */ /* synthetic */ Object get(int r3) {
-        ji5 r2 = this.p.q;
-        return new AbstractMap.SimpleImmutableEntry(r2.p.s.get(r3), r2.q.get(r3));
+    public final /* bridge */ /* synthetic */ Object get(int i) {
+        ji5 ji5Var = this.p.q;
+        return new AbstractMap.SimpleImmutableEntry(ji5Var.p.s.get(i), ji5Var.q.get(i));
     }
 
     @Override // java.util.AbstractCollection, java.util.Collection, java.util.List

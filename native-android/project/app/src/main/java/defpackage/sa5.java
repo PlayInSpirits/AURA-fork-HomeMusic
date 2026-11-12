@@ -10,10 +10,10 @@ public abstract class sa5 {
     public final Interpolator c;
     public final long d;
 
-    public sa5(int r1, Interpolator r2, long r3) {
-        this.a = r1;
-        this.c = r2;
-        this.d = r3;
+    public sa5(int i, Interpolator interpolator, long j) {
+        this.a = i;
+        this.c = interpolator;
+        this.d = j;
     }
 
     public float a() {
@@ -25,19 +25,16 @@ public abstract class sa5 {
     }
 
     public float c() {
-        float r0 = this.b;
-        Interpolator r1 = this.c;
-        if (r1 != null) goto L5;
-        return r0;
-    L5:
-        return r1.getInterpolation(r0);
+        float f = this.b;
+        Interpolator interpolator = this.c;
+        return interpolator != null ? interpolator.getInterpolation(f) : f;
     }
 
     public int d() {
         return this.a;
     }
 
-    public void e(float r1) {
-        this.b = r1;
+    public void e(float f) {
+        this.b = f;
     }
 }

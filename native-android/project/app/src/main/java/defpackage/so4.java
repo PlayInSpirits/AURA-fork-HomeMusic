@@ -7,7 +7,7 @@ import java.io.Closeable;
 public interface so4 extends Closeable {
     String getDatabaseName();
 
-    void setWriteAheadLoggingEnabled(boolean r1);
+    void setWriteAheadLoggingEnabled(boolean z);
 
     we1 w();
 

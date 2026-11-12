@@ -8,15 +8,15 @@ public final class ts extends dj0 {
     public Bitmap s;
     public final /* synthetic */ us t;
 
-    public ts(us r1) {
-        this.t = r1;
+    public ts(us usVar) {
+        this.t = usVar;
     }
 
     @Override // defpackage.dj0
     public final void r() {
         this.s = null;
         this.o = 0;
-        this.p = 0;
+        this.p = 0L;
         this.q = 0;
         this.r = false;
     }

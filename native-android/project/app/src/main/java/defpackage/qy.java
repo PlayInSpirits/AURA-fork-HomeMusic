@@ -5,16 +5,16 @@ package defpackage;
 public final class qy extends g2 {
     public final /* synthetic */ ry u;
 
-    public qy(ry r1) {
-        this.u = r1;
+    public qy(ry ryVar) {
+        this.u = ryVar;
     }
 
     @Override // defpackage.g2
     public final String g() {
-        oy r2 = (oy) this.u.n.get();
-        if (r2 != null) goto L7;
-        return "Completer object has been garbage collected, future will fail soon";
-    L7:
-        return "tag=[" + r2.a + "]";
+        oy oyVar = (oy) this.u.n.get();
+        if (oyVar == null) {
+            return "Completer object has been garbage collected, future will fail soon";
+        }
+        return "tag=[" + oyVar.a + "]";
     }
 }

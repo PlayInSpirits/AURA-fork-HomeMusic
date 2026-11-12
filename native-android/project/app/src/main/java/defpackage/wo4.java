@@ -5,5 +5,5 @@ package defpackage;
 public interface wo4 {
     String f();
 
-    void n(vo4 r1);
+    void n(vo4 vo4Var);
 }

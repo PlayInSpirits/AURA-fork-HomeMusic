@@ -12,6 +12,7 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.FrameLayout;
 import android.widget.HeaderViewListAdapter;
@@ -32,7 +33,6 @@ public final class uz extends yu2 implements View.OnKeyListener, PopupWindow.OnD
     public boolean E;
     public int F;
     public int G;
-    public boolean H;
     public boolean I;
     public fv2 J;
     public ViewTreeObserver K;
@@ -43,176 +43,147 @@ public final class uz extends yu2 implements View.OnKeyListener, PopupWindow.OnD
     public final int q;
     public final boolean r;
     public final Handler s;
-    public final ArrayList t;
-    public final ArrayList u;
-    public final sg v;
-    public final bc w;
-    public final d34 x;
-    public int y;
-    public int z;
+    public final ArrayList t = new ArrayList();
+    public final ArrayList u = new ArrayList();
+    public final sg v = new sg(2, this);
+    public final bc w = new bc(1, this);
+    public final d34 x = new d34(13, this);
+    public int y = 0;
+    public int z = 0;
+    public boolean H = false;
 
-    public uz(Context r5, View r6, int r7, boolean r8) {
-        this.t = new ArrayList();
-        this.u = new ArrayList();
-        this.v = new sg(2, this);
-        int r2 = 1;
-        this.w = new bc(r2, this);
-        this.x = new d34(13, this);
-        this.y = 0;
-        this.z = 0;
-        this.o = r5;
-        this.A = r6;
-        this.q = r7;
-        this.r = r8;
-        this.H = false;
-        if (r6.getLayoutDirection() != 1) goto L5;
-        r2 = 0;
-    L5:
-        this.C = r2;
-        Resources r9 = r5.getResources();
-        this.p = Math.max(r9.getDisplayMetrics().widthPixels / 2, r9.getDimensionPixelSize(R.dimen.abc_config_prefDialogWidth));
+    public uz(Context context, View view, int i, boolean z) {
+        this.o = context;
+        this.A = view;
+        this.q = i;
+        this.r = z;
+        this.C = view.getLayoutDirection() == 1 ? 0 : 1;
+        Resources resources = context.getResources();
+        this.p = Math.max(resources.getDisplayMetrics().widthPixels / 2, resources.getDimensionPixelSize(R.dimen.abc_config_prefDialogWidth));
         this.s = new Handler();
     }
 
     @Override // defpackage.gv2
-    public final void a(qu2 r7, boolean r8) {
-        ArrayList r0 = this.u;
-        int r1 = r0.size();
-        int r3 = 0;
-    L3:
-        if (r3 >= r1) goto L8;
-        if (r7 == ((tz) r0.get(r3)).b) goto L9;
-        r3 = r3 + 1;
-    L9:
-        if (r3 < 0) goto L43;
-        int r2 = r3 + 1;
-        if (r2 >= r0.size()) goto L14;
-        ((tz) r0.get(r2)).b.c(false);
-    L14:
-        tz r4 = (tz) r0.remove(r3);
-        qu2 r5 = r4.b;
-        ev2 r6 = r4.a;
-        lg r9 = r6.M;
-        r5.r(this);
-        if (this.M == false) goto L17;
-        bv2.b(r9, null);
-        r9.setAnimationStyle(0);
-    L17:
-        r6.dismiss();
-        int r10 = r0.size();
-        if (r10 <= 0) goto L21;
-        this.C = ((tz) r0.get(r10 - 1)).c;
-    L25:
-        if (r10 != 0) goto L37;
+    public final void a(qu2 qu2Var, boolean z) {
+        ArrayList arrayList = this.u;
+        int size = arrayList.size();
+        int i = 0;
+        while (true) {
+            if (i >= size) {
+                i = -1;
+                break;
+            } else if (qu2Var == ((tz) arrayList.get(i)).b) {
+                break;
+            } else {
+                i++;
+            }
+        }
+        if (i < 0) {
+            return;
+        }
+        int i2 = i + 1;
+        if (i2 < arrayList.size()) {
+            ((tz) arrayList.get(i2)).b.c(false);
+        }
+        tz tzVar = (tz) arrayList.remove(i);
+        qu2 qu2Var2 = tzVar.b;
+        ev2 ev2Var = tzVar.a;
+        lg lgVar = ev2Var.M;
+        qu2Var2.r(this);
+        if (this.M) {
+            bv2.b(lgVar, null);
+            lgVar.setAnimationStyle(0);
+        }
+        ev2Var.dismiss();
+        int size2 = arrayList.size();
+        if (size2 > 0) {
+            this.C = ((tz) arrayList.get(size2 - 1)).c;
+        } else {
+            this.C = this.A.getLayoutDirection() == 1 ? 0 : 1;
+        }
+        if (size2 != 0) {
+            if (z) {
+                ((tz) arrayList.get(0)).b.c(false);
+                return;
+            }
+            return;
+        }
         dismiss();
-        fv2 r11 = this.J;
-        if (r11 == null) goto L29;
-        r11.a(r7, true);
-    L29:
-        ViewTreeObserver r12 = this.K;
-        if (r12 != null) goto L32;
-    L35:
+        fv2 fv2Var = this.J;
+        if (fv2Var != null) {
+            fv2Var.a(qu2Var, true);
+        }
+        ViewTreeObserver viewTreeObserver = this.K;
+        if (viewTreeObserver != null) {
+            if (viewTreeObserver.isAlive()) {
+                this.K.removeGlobalOnLayoutListener(this.v);
+            }
+            this.K = null;
+        }
         this.B.removeOnAttachStateChangeListener(this.w);
         this.L.onDismiss();
-        return;
-    L32:
-        if (r12.isAlive() == false) goto L34;
-        this.K.removeGlobalOnLayoutListener(this.v);
-    L34:
-        this.K = null;
-        goto L35
-    L37:
-        if (r8 == false) goto L42;
-        ((tz) r0.get(0)).b.c(false);
-        return;
-    L42:
-        return;
-    L21:
-        if (this.A.getLayoutDirection() != 1) goto L23;
-        int r13 = 0;
-    L24:
-        this.C = r13;
-        goto L25
-    L23:
-        r13 = 1;
-        goto L24
-    L43:
-        return;
-    L8:
-        r3 = -1;
-        goto L9
     }
 
     @Override // defpackage.nd4
     public final boolean b() {
-        ArrayList r2 = this.u;
-        if (r2.size() > 0) goto L5;
-    L8:
-        return false;
-    L5:
-        if (((tz) r2.get(0)).a.M.isShowing() == false) goto L8;
-        return true;
+        ArrayList arrayList = this.u;
+        return arrayList.size() > 0 && ((tz) arrayList.get(0)).a.M.isShowing();
     }
 
     @Override // defpackage.gv2
-    public final void c(boolean r4) {
-        ArrayList r3 = this.u;
-        int r5 = r3.size();
-        int r0 = 0;
-    L3:
-        if (r0 >= r5) goto L9;
-        Object r1 = r3.get(r0);
-        r0 = r0 + 1;
-        ListAdapter r2 = ((tz) r1).a.p.getAdapter();
-        if ((r2 instanceof HeaderViewListAdapter) == false) goto L8;
-        r2 = ((HeaderViewListAdapter) r2).getWrappedAdapter();
-    L8:
-        ((nu2) r2).notifyDataSetChanged();
-        goto L3
+    public final void c(boolean z) {
+        ArrayList arrayList = this.u;
+        int size = arrayList.size();
+        int i = 0;
+        while (i < size) {
+            Object obj = arrayList.get(i);
+            i++;
+            ListAdapter adapter = ((tz) obj).a.p.getAdapter();
+            if (adapter instanceof HeaderViewListAdapter) {
+                adapter = ((HeaderViewListAdapter) adapter).getWrappedAdapter();
+            }
+            ((nu2) adapter).notifyDataSetChanged();
+        }
     }
 
     @Override // defpackage.gv2
-    public final boolean d(en4 r8) {
-        ArrayList r0 = this.u;
-        int r1 = r0.size();
-        int r3 = 0;
-    L4:
-        if (r3 >= r1) goto L10;
-        Object r5 = r0.get(r3);
-        r3 = r3 + 1;
-        tz r6 = (tz) r5;
-        if (r8 != r6.b) goto L4;
-        r6.a.p.requestFocus();
+    public final boolean d(en4 en4Var) {
+        ArrayList arrayList = this.u;
+        int size = arrayList.size();
+        int i = 0;
+        while (i < size) {
+            Object obj = arrayList.get(i);
+            i++;
+            tz tzVar = (tz) obj;
+            if (en4Var == tzVar.b) {
+                tzVar.a.p.requestFocus();
+                return true;
+            }
+        }
+        if (!en4Var.hasVisibleItems()) {
+            return false;
+        }
+        n(en4Var);
+        fv2 fv2Var = this.J;
+        if (fv2Var != null) {
+            fv2Var.w(en4Var);
+        }
         return true;
-    L10:
-        if (r8.hasVisibleItems() == false) goto L15;
-        n(r8);
-        fv2 r7 = this.J;
-        if (r7 == null) goto L14;
-        r7.w(r8);
-    L14:
-        return true;
-    L15:
-        return false;
     }
 
     @Override // defpackage.nd4
     public final void dismiss() {
-        ArrayList r3 = this.u;
-        int r0 = r3.size();
-        if (r0 <= 0) goto L10;
-        tz[] r4 = (tz[]) r3.toArray(new tz[r0]);
-        int r1 = r0 - 1;
-    L5:
-        if (r1 < 0) goto L14;
-        tz r2 = r4[r1];
-        if (r2.a.M.isShowing() == false) goto L9;
-        r2.a.dismiss();
-    L9:
-        r1 = r1 - 1;
-        goto L5
-    L14:
-        return;
+        ArrayList arrayList = this.u;
+        int size = arrayList.size();
+        if (size > 0) {
+            tz[] tzVarArr = (tz[]) arrayList.toArray(new tz[size]);
+            for (int i = size - 1; i >= 0; i--) {
+                tz tzVar = tzVarArr[i];
+                if (tzVar.a.M.isShowing()) {
+                    tzVar.a.dismiss();
+                }
+            }
+        }
     }
 
     @Override // defpackage.gv2
@@ -222,52 +193,47 @@ public final class uz extends yu2 implements View.OnKeyListener, PopupWindow.OnD
 
     @Override // defpackage.nd4
     public final void f() {
-        if (b() == true) goto L20;
-        ArrayList r0 = this.t;
-        int r1 = r0.size();
-        boolean r2 = false;
-        int r3 = 0;
-    L6:
-        if (r3 >= r1) goto L8;
-        Object r4 = r0.get(r3);
-        r3 = r3 + 1;
-        w((qu2) r4);
-        goto L6
-    L8:
-        r0.clear();
-        View r5 = this.A;
-        this.B = r5;
-        if (r5 != null) goto L11;
-        return;
-    L11:
-        if (this.K != null) goto L13;
-        r2 = true;
-    L13:
-        ViewTreeObserver r6 = r5.getViewTreeObserver();
-        this.K = r6;
-        if (r2 == false) goto L16;
-        r6.addOnGlobalLayoutListener(this.v);
-    L16:
-        this.B.addOnAttachStateChangeListener(this.w);
-        return;
+        if (b()) {
+            return;
+        }
+        ArrayList arrayList = this.t;
+        int size = arrayList.size();
+        int i = 0;
+        while (i < size) {
+            Object obj = arrayList.get(i);
+            i++;
+            w((qu2) obj);
+        }
+        arrayList.clear();
+        View view = this.A;
+        this.B = view;
+        if (view != null) {
+            boolean z = this.K == null;
+            ViewTreeObserver viewTreeObserver = view.getViewTreeObserver();
+            this.K = viewTreeObserver;
+            if (z) {
+                viewTreeObserver.addOnGlobalLayoutListener(this.v);
+            }
+            this.B.addOnAttachStateChangeListener(this.w);
+        }
     }
 
     @Override // defpackage.gv2
-    public final void h(Parcelable r1) {
+    public final void h(Parcelable parcelable) {
     }
 
     @Override // defpackage.gv2
-    public final void i(fv2 r1) {
-        this.J = r1;
+    public final void i(fv2 fv2Var) {
+        this.J = fv2Var;
     }
 
     @Override // defpackage.nd4
     public final cx0 k() {
-        ArrayList r1 = this.u;
-        if (r1.isEmpty() == false) goto L7;
-        return null;
-    L7:
-        return ((tz) r1.get(r1.size() - 1)).a.p;
+        ArrayList arrayList = this.u;
+        if (arrayList.isEmpty()) {
+            return null;
+        }
+        return ((tz) arrayList.get(arrayList.size() - 1)).a.p;
     }
 
     @Override // defpackage.gv2
@@ -276,297 +242,276 @@ public final class uz extends yu2 implements View.OnKeyListener, PopupWindow.OnD
     }
 
     @Override // defpackage.yu2
-    public final void n(qu2 r2) {
-        r2.b(this, this.o);
-        if (b() == false) goto L6;
-        w(r2);
-        return;
-    L6:
-        this.t.add(r2);
+    public final void n(qu2 qu2Var) {
+        qu2Var.b(this, this.o);
+        if (b()) {
+            w(qu2Var);
+        } else {
+            this.t.add(qu2Var);
+        }
     }
 
     @Override // android.widget.PopupWindow.OnDismissListener
     public final void onDismiss() {
-        ArrayList r5 = this.u;
-        int r0 = r5.size();
-        int r2 = 0;
-    L3:
-        if (r2 >= r0) goto L8;
-        tz r3 = (tz) r5.get(r2);
-        if (r3.a.M.isShowing() == false) goto L9;
-        r2 = r2 + 1;
-    L9:
-        if (r3 == null) goto L14;
-        r3.b.c(false);
-        return;
-    L14:
-        return;
-    L8:
-        r3 = null;
-        goto L9
+        tz tzVar;
+        ArrayList arrayList = this.u;
+        int size = arrayList.size();
+        int i = 0;
+        while (true) {
+            if (i >= size) {
+                tzVar = null;
+                break;
+            }
+            tzVar = (tz) arrayList.get(i);
+            if (!tzVar.a.M.isShowing()) {
+                break;
+            } else {
+                i++;
+            }
+        }
+        if (tzVar != null) {
+            tzVar.b.c(false);
+        }
     }
 
     @Override // android.view.View.OnKeyListener
-    public final boolean onKey(View r1, int r2, KeyEvent r3) {
-        if (r3.getAction() == 1) goto L5;
-        return false;
-    L5:
-        if (r2 != 82) goto L10;
+    public final boolean onKey(View view, int i, KeyEvent keyEvent) {
+        if (keyEvent.getAction() != 1 || i != 82) {
+            return false;
+        }
         dismiss();
         return true;
-    L10:
-        return false;
     }
 
     @Override // defpackage.yu2
-    public final void p(View r2) {
-        if (this.A == r2) goto L6;
-        this.A = r2;
-        this.z = Gravity.getAbsoluteGravity(this.y, r2.getLayoutDirection());
-        return;
+    public final void p(View view) {
+        if (this.A != view) {
+            this.A = view;
+            this.z = Gravity.getAbsoluteGravity(this.y, view.getLayoutDirection());
+        }
     }
 
     @Override // defpackage.yu2
-    public final void q(boolean r1) {
-        this.H = r1;
+    public final void q(boolean z) {
+        this.H = z;
     }
 
     @Override // defpackage.yu2
-    public final void r(int r2) {
-        if (this.y == r2) goto L6;
-        this.y = r2;
-        this.z = Gravity.getAbsoluteGravity(r2, this.A.getLayoutDirection());
-        return;
+    public final void r(int i) {
+        if (this.y != i) {
+            this.y = i;
+            this.z = Gravity.getAbsoluteGravity(i, this.A.getLayoutDirection());
+        }
     }
 
     @Override // defpackage.yu2
-    public final void s(int r2) {
+    public final void s(int i) {
         this.D = true;
-        this.F = r2;
+        this.F = i;
     }
 
     @Override // defpackage.yu2
-    public final void t(PopupWindow.OnDismissListener r1) {
-        this.L = r1;
+    public final void t(PopupWindow.OnDismissListener onDismissListener) {
+        this.L = onDismissListener;
     }
 
     @Override // defpackage.yu2
-    public final void u(boolean r1) {
-        this.I = r1;
+    public final void u(boolean z) {
+        this.I = z;
     }
 
     @Override // defpackage.yu2
-    public final void v(int r2) {
+    public final void v(int i) {
         this.E = true;
-        this.G = r2;
+        this.G = i;
     }
 
+    /* JADX WARN: Code duplicated, block: B:69:0x0168  */
     /* JADX WARN: Multi-variable type inference failed */
-    public final void w(qu2 r20) {
-        Context r2 = this.o;
-        LayoutInflater r3 = LayoutInflater.from(r2);
-        nu2 r4 = new nu2(r20, r3, this.r, R.layout.abc_cascading_menu_item_layout);
-        if (b() == true) goto L8;
-        if (this.H == false) goto L8;
-        r4.p = true;
-    L19:
-        int r5 = yu2.o(r4, r2, this.p);
-        ev2 r8 = new ev2(r2, null, this.q, 0);
-        r8.P = this.x;
-        r8.C = this;
-        lg r6 = r8.M;
-        r6.setOnDismissListener(this);
-        r8.B = this.A;
-        r8.y = this.z;
-        r8.L = true;
-        r6.setFocusable(true);
-        r6.setInputMethodMode(2);
-        r8.p(r4);
-        r8.r(r5);
-        r8.y = this.z;
-        ArrayList r7 = this.u;
-        if (r7.size() <= 0) goto L52;
-        tz r11 = (tz) r7.get(r7.size() - 1);
-        qu2 r12 = r11.b;
-        int r13 = r12.f.size();
-        int r14 = 0;
-    L22:
-        if (r14 >= r13) goto L29;
-        MenuItem r15 = r12.getItem(r14);
-        if (r15.hasSubMenu() == false) goto L28;
-        if (r20 != r15.getSubMenu()) goto L28;
-    L30:
-        if (r15 != null) goto L32;
-        char r17 = 0;
-        View r9 = null;
-    L53:
-        if (r9 == null) goto L94;
-        if (Build.VERSION.SDK_INT > 28) goto L62;
-        Method r10 = ev2.Q;
-        if (r10 == null) goto L63;
-        Object[] r16 = new Object[1];     // Catch: Exception -> L61
-        r16[r17] = Boolean.FALSE;     // Catch: Exception -> L61
-        r10.invoke(r6, r16);     // Catch: Exception -> L61
-    L61:
-        Log.i("MenuPopupWindow", "Could not invoke setTouchModal() on PopupWindow. Oh well.");
-    L63:
-        bv2.a(r6, null);
-        cx0 r18 = ((tz) r7.get(r7.size() - 1)).a.p;
-        int[] r19 = new int[2];
-        r18.getLocationOnScreen(r19);
-        Rect r21 = new Rect();
-        this.B.getWindowVisibleDisplayFrame(r21);
-        if (this.C != 1) goto L71;
-        if (((r18.getWidth() + r19[0]) + r5) <= r21.right) goto L69;
-        int r22 = 0;
-    L74:
-        if (r22 != 1) goto L76;
-        boolean r23 = true;
-    L77:
-        this.C = r22;
-        if (Build.VERSION.SDK_INT < 26) goto L80;
-        r8.B = r9;
-        int r24 = 0;
-        int r25 = 0;
-    L85:
-        if ((this.z & 5) != 5) goto L90;
-        if (r23 == false) goto L88;
-        int r26 = r25 + r5;
-    L92:
-        r8.s = r26;
-        r8.x = true;
-        r8.w = true;
-        r8.j(r24);
-    L104:
-        r7.add(new tz(r8, r20, this.C));
-        r8.f();
-        cx0 r27 = r8.p;
-        r27.setOnKeyListener(this);
-        if (r11 == null) goto L107;
-        return;
-    L107:
-        if (this.I == true) goto L109;
-        return;
-    L109:
-        if (r20.m == null) goto L126;
-        FrameLayout r0 = (FrameLayout) r3.inflate(R.layout.abc_popup_menu_header_item_layout, r27, false);
-        TextView r28 = (TextView) r0.findViewById(android.R.id.title);
-        r0.setEnabled(false);
-        r28.setText(r20.m);
-        r27.addHeaderView(r0, null, false);
-        r8.f();
-        return;
-    L126:
-        return;
-    L88:
-        r5 = r9.getWidth();
-    L89:
-        r26 = r25 - r5;
-        goto L92
-    L90:
-        if (r23 == false) goto L89;
-        r26 = r25 + r9.getWidth();
-        goto L92
-    L80:
-        int[] r29 = new int[2];
-        this.A.getLocationOnScreen(r29);
-        int[] r30 = new int[2];
-        r9.getLocationOnScreen(r30);
-        if ((this.z & 7) != 5) goto L83;
-        r29[0] = this.A.getWidth() + r29[0];
-        r30[0] = r9.getWidth() + r30[0];
-    L83:
-        int r110 = r30[0] - r29[0];
-        r24 = r30[1] - r29[1];
-        r25 = r110;
-        goto L85
-    L76:
-        r23 = false;
-    L69:
-        r22 = 1;
-        goto L74
-    L71:
-        if ((r19[0] - r5) < 0) goto L69;
-        r22 = 0;
-        goto L74
-    L62:
-        cv2.a(r6, r17);
-        goto L63
-    L94:
-        if (this.D == false) goto L97;
-        r8.s = this.F;
-    L97:
-        if (this.E == false) goto L99;
-        r8.j(this.G);
-    L99:
-        Rect r31 = this.n;
-        if (r31 == null) goto L102;
-        Rect r32 = new Rect(r31);
-    L103:
-        r8.K = r32;
-        goto L104
-    L102:
-        r32 = null;
-        goto L103
-    L32:
-        cx0 r33 = r11.a.p;
-        ListAdapter r111 = r33.getAdapter();
-        if ((r111 instanceof HeaderViewListAdapter) == false) goto L35;
-        HeaderViewListAdapter r112 = (HeaderViewListAdapter) r111;
-        int r113 = r112.getHeadersCount();
-        nu2 r114 = (nu2) r112.getWrappedAdapter();
-    L36:
-        int r115 = r114.getCount();
-        int r116 = 0;
-        r17 = 0;
-    L38:
-        if (r116 >= r115) goto L43;
-        if (r15 == r114.b(r116)) goto L44;
-        r116 = r116 + 1;
-    L44:
-        if (r116 != (-1)) goto L46;
-    L45:
-        r9 = null;
-        goto L53
-    L46:
-        int r117 = (r116 + r113) - r33.getFirstVisiblePosition();
-        if (r117 < 0) goto L45;
-        if (r117 >= r33.getChildCount()) goto L45;
-        r9 = r33.getChildAt(r117);
-        goto L53
-    L43:
-        r116 = -1;
-        goto L44
-    L35:
-        r114 = (nu2) r111;
-        r113 = 0;
-    L28:
-        r14 = r14 + 1;
-        goto L22
-    L29:
-        r15 = null;
-        goto L30
-    L52:
-        r17 = 0;
-        r9 = null;
-        r11 = null;
-    L8:
-        if (b() == false) goto L19;
-        int r34 = r20.f.size();
-        int r35 = 0;
-    L10:
-        if (r35 >= r34) goto L17;
-        MenuItem r36 = r20.getItem(r35);
-        if (r36.isVisible() == false) goto L16;
-        if (r36.getIcon() == null) goto L16;
-        boolean r37 = true;
-    L18:
-        r4.p = r37;
-    L16:
-        r35 = r35 + 1;
-        goto L10
-    L17:
-        r37 = false;
-        goto L18
+    public final void w(qu2 qu2Var) {
+        boolean z;
+        char c;
+        View childAt;
+        tz tzVar;
+        int i;
+        int i2;
+        int i3;
+        int width;
+        MenuItem item;
+        nu2 nu2Var;
+        int headersCount;
+        int firstVisiblePosition;
+        Context context = this.o;
+        LayoutInflater layoutInflaterFrom = LayoutInflater.from(context);
+        nu2 nu2Var2 = new nu2(qu2Var, layoutInflaterFrom, this.r, R.layout.abc_cascading_menu_item_layout);
+        if (!b() && this.H) {
+            nu2Var2.p = true;
+        } else if (b()) {
+            int size = qu2Var.f.size();
+            int i4 = 0;
+            while (true) {
+                if (i4 >= size) {
+                    z = false;
+                    break;
+                }
+                MenuItem item2 = qu2Var.getItem(i4);
+                if (item2.isVisible() && item2.getIcon() != null) {
+                    z = true;
+                    break;
+                }
+                i4++;
+            }
+            nu2Var2.p = z;
+        }
+        int iO = yu2.o(nu2Var2, context, this.p);
+        ev2 ev2Var = new ev2(context, null, this.q, 0);
+        ev2Var.P = this.x;
+        ev2Var.C = this;
+        lg lgVar = ev2Var.M;
+        lgVar.setOnDismissListener(this);
+        ev2Var.B = this.A;
+        ev2Var.y = this.z;
+        ev2Var.L = true;
+        lgVar.setFocusable(true);
+        lgVar.setInputMethodMode(2);
+        ev2Var.p(nu2Var2);
+        ev2Var.r(iO);
+        ev2Var.y = this.z;
+        ArrayList arrayList = this.u;
+        if (arrayList.size() > 0) {
+            tzVar = (tz) arrayList.get(arrayList.size() - 1);
+            qu2 qu2Var2 = tzVar.b;
+            int size2 = qu2Var2.f.size();
+            int i5 = 0;
+            while (true) {
+                if (i5 >= size2) {
+                    item = null;
+                    break;
+                }
+                item = qu2Var2.getItem(i5);
+                if (item.hasSubMenu() && qu2Var == item.getSubMenu()) {
+                    break;
+                } else {
+                    i5++;
+                }
+            }
+            if (item == null) {
+                c = 0;
+                childAt = null;
+            } else {
+                cx0 cx0Var = tzVar.a.p;
+                ListAdapter adapter = cx0Var.getAdapter();
+                if (adapter instanceof HeaderViewListAdapter) {
+                    HeaderViewListAdapter headerViewListAdapter = (HeaderViewListAdapter) adapter;
+                    headersCount = headerViewListAdapter.getHeadersCount();
+                    nu2Var = (nu2) headerViewListAdapter.getWrappedAdapter();
+                } else {
+                    nu2Var = (nu2) adapter;
+                    headersCount = 0;
+                }
+                int count = nu2Var.getCount();
+                int i6 = 0;
+                c = 0;
+                while (true) {
+                    if (i6 >= count) {
+                        i6 = -1;
+                        break;
+                    } else if (item == nu2Var.getItem(i6)) {
+                        break;
+                    } else {
+                        i6++;
+                    }
+                }
+                childAt = (i6 != -1 && (firstVisiblePosition = (i6 + headersCount) - cx0Var.getFirstVisiblePosition()) >= 0 && firstVisiblePosition < cx0Var.getChildCount()) ? cx0Var.getChildAt(firstVisiblePosition) : null;
+            }
+        } else {
+            c = 0;
+            childAt = null;
+            tzVar = null;
+        }
+        if (childAt != null) {
+            if (Build.VERSION.SDK_INT <= 28) {
+                Method method = ev2.Q;
+                if (method != null) {
+                    try {
+                        Object[] objArr = new Object[1];
+                        objArr[c] = Boolean.FALSE;
+                        method.invoke(lgVar, objArr);
+                    } catch (Exception unused) {
+                        Log.i("MenuPopupWindow", "Could not invoke setTouchModal() on PopupWindow. Oh well.");
+                    }
+                }
+            } else {
+                cv2.a(lgVar, c);
+            }
+            bv2.a(lgVar, null);
+            cx0 cx0Var2 = ((tz) arrayList.get(arrayList.size() - 1)).a.p;
+            int[] iArr = new int[2];
+            cx0Var2.getLocationOnScreen(iArr);
+            Rect rect = new Rect();
+            this.B.getWindowVisibleDisplayFrame(rect);
+            if (this.C == 1) {
+                if (cx0Var2.getWidth() + iArr[0] + iO > rect.right) {
+                    i = 0;
+                } else {
+                    i = 1;
+                }
+            } else if (iArr[0] - iO < 0) {
+                i = 1;
+            } else {
+                i = 0;
+            }
+            boolean z2 = i == 1;
+            this.C = i;
+            if (Build.VERSION.SDK_INT >= 26) {
+                ev2Var.B = childAt;
+                i2 = 0;
+                i3 = 0;
+            } else {
+                int[] iArr2 = new int[2];
+                this.A.getLocationOnScreen(iArr2);
+                int[] iArr3 = new int[2];
+                childAt.getLocationOnScreen(iArr3);
+                if ((this.z & 7) == 5) {
+                    iArr2[0] = this.A.getWidth() + iArr2[0];
+                    iArr3[0] = childAt.getWidth() + iArr3[0];
+                }
+                int i7 = iArr3[0] - iArr2[0];
+                i2 = iArr3[1] - iArr2[1];
+                i3 = i7;
+            }
+            if ((this.z & 5) != 5) {
+                width = z2 ? i3 + childAt.getWidth() : i3 - iO;
+            } else if (z2) {
+                width = i3 + iO;
+            } else {
+                iO = childAt.getWidth();
+            }
+            ev2Var.s = width;
+            ev2Var.x = true;
+            ev2Var.w = true;
+            ev2Var.j(i2);
+        } else {
+            if (this.D) {
+                ev2Var.s = this.F;
+            }
+            if (this.E) {
+                ev2Var.j(this.G);
+            }
+            Rect rect2 = this.n;
+            ev2Var.K = rect2 != null ? new Rect(rect2) : null;
+        }
+        arrayList.add(new tz(ev2Var, qu2Var, this.C));
+        ev2Var.f();
+        cx0 cx0Var3 = ev2Var.p;
+        cx0Var3.setOnKeyListener(this);
+        if (tzVar == null && this.I && qu2Var.m != null) {
+            FrameLayout frameLayout = (FrameLayout) layoutInflaterFrom.inflate(R.layout.abc_popup_menu_header_item_layout, (ViewGroup) cx0Var3, false);
+            TextView textView = (TextView) frameLayout.findViewById(android.R.id.title);
+            frameLayout.setEnabled(false);
+            textView.setText(qu2Var.m);
+            cx0Var3.addHeaderView(frameLayout, null, false);
+            ev2Var.f();
+        }
     }
 }

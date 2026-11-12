@@ -14,107 +14,72 @@ import android.view.KeyEvent;
 public abstract class z52 {
     public static MediaSession a;
     public static x52 b;
-    public static final Handler c = null;
+    public static final Handler c = new Handler(Looper.getMainLooper());
 
-    static {
-        c = new Handler(Looper.getMainLooper());
-    }
-
-    public static final boolean a(KeyEvent r4) {
-        r4.getClass();
-        if (u52.c().a == true) goto L5;
-        return false;
-    L5:
-        int r0 = r4.getKeyCode();
-        if (r0 != 24) goto L8;
-        int r1 = 1;
-    L13:
-        if (r4.getAction() != 0) goto L19;
-        MediaSession r5 = a;
-        if (r5 == null) goto L19;
-        MediaController r6 = r5.getController();
-        if (r6 == null) goto L19;
-        r6.adjustVolume(r1, 1);
-    L19:
+    public static final boolean a(KeyEvent keyEvent) {
+        int i;
+        MediaSession mediaSession;
+        MediaController controller;
+        keyEvent.getClass();
+        if (!u52.c().a) {
+            return false;
+        }
+        int keyCode = keyEvent.getKeyCode();
+        if (keyCode == 24) {
+            i = 1;
+        } else {
+            if (keyCode != 25) {
+                return false;
+            }
+            i = -1;
+        }
+        if (keyEvent.getAction() == 0 && (mediaSession = a) != null && (controller = mediaSession.getController()) != null) {
+            controller.adjustVolume(i, 1);
+        }
         return true;
-    L8:
-        if (r0 == 25) goto L10;
-        return false;
-    L10:
-        r1 = -1;
-        goto L13
     }
 
     public static void b() {
-        MediaSession r0 = a;
-        if (r0 == null) goto L5;
-        r0.setActive(false);
-    L5:
-        MediaSession r1 = a;
-        if (r1 == null) goto L8;
-        r1.release();
-    L8:
+        MediaSession mediaSession = a;
+        if (mediaSession != null) {
+            mediaSession.setActive(false);
+        }
+        MediaSession mediaSession2 = a;
+        if (mediaSession2 != null) {
+            mediaSession2.release();
+        }
         a = null;
         b = null;
     }
 
-    public static void c(Context r7, v52 r8) {
-        r7.getClass();
-        int r0 = r8.m;
-        int r1 = r8.n;
-        if (r8.b == false) goto L32;
-        if (r1 <= 0) goto L32;
-        MediaSession r2 = a;
-        int r3 = 0;
-        if (r2 != null) goto L9;
-        r2 = new MediaSession(r7.getApplicationContext(), "Tempus LAN");
-        r2.setCallback(new y52(r3, r2), c);
-        a = r2;
-    L9:
-        x52 r9 = b;
-        if (r9 != null) goto L12;
-    L14:
-        x52 r4 = new x52(r2, r1, gb.m(r0, 0, r1));
-        b = r4;
-        r2.setPlaybackToRemote(r4);
-    L15:
-        x52 r10 = b;
-        r10.getClass();
-        r10.setCurrentVolume(gb.m(r0, 0, r1));
-        r2.setMetadata(new MediaMetadata.Builder().putString("android.media.metadata.TITLE", r8.d).putString("android.media.metadata.ARTIST", r8.e).putString("android.media.metadata.DISPLAY_SUBTITLE", r8.c).putLong("android.media.metadata.DURATION", r8.i).build());
-        PlaybackState.Builder r11 = new PlaybackState.Builder();
-        long r5 = 0;
-        if (r8.v == false) goto L18;
-        long r6 = 32;
-    L19:
-        long r12 = r6 | 775;
-        if (r8.w == false) goto L22;
-        r5 = 16;
-    L22:
-        PlaybackState.Builder r13 = r11.setActions(r12 | r5);
-        boolean r14 = r8.j;
-        if (r14 == false) goto L25;
-        int r15 = 3;
-    L26:
-        long r16 = r8.h;
-        if (r14 == false) goto L29;
-        float r17 = r8.y;
-    L30:
-        r2.setPlaybackState(r13.setState(r15, r16, r17).build());
-        r2.setActive(true);
-        return;
-    L29:
-        r17 = 0.0f;
-        goto L30
-    L25:
-        r15 = 2;
-        goto L26
-    L18:
-        r6 = 0;
-        goto L19
-    L12:
-        if (r9.getMaxVolume() != r1) goto L14;
-    L32:
-        b();
+    public static void c(Context context, v52 v52Var) {
+        context.getClass();
+        int i = v52Var.m;
+        int i2 = v52Var.n;
+        if (!v52Var.b || i2 <= 0) {
+            b();
+            return;
+        }
+        MediaSession mediaSession = a;
+        int i3 = 0;
+        if (mediaSession == null) {
+            mediaSession = new MediaSession(context.getApplicationContext(), "Tempus LAN");
+            mediaSession.setCallback(new y52(i3, mediaSession), c);
+            a = mediaSession;
+        }
+        x52 x52Var = b;
+        if (x52Var == null || x52Var.getMaxVolume() != i2) {
+            x52 x52Var2 = new x52(mediaSession, i2, gb.m(i, 0, i2));
+            b = x52Var2;
+            mediaSession.setPlaybackToRemote(x52Var2);
+        }
+        x52 x52Var3 = b;
+        x52Var3.getClass();
+        x52Var3.setCurrentVolume(gb.m(i, 0, i2));
+        mediaSession.setMetadata(new MediaMetadata.Builder().putString("android.media.metadata.TITLE", v52Var.d).putString("android.media.metadata.ARTIST", v52Var.e).putString("android.media.metadata.DISPLAY_SUBTITLE", v52Var.c).putLong("android.media.metadata.DURATION", v52Var.i).build());
+        PlaybackState.Builder actions = new PlaybackState.Builder().setActions((v52Var.v ? 32L : 0L) | 775 | (v52Var.w ? 16L : 0L));
+        boolean z = v52Var.j;
+        mediaSession.setPlaybackState(actions.setState(z ? 3 : 2, v52Var.h, z ? v52Var.y : 0.0f).build());
+        mediaSession.setActive(true);
     }
 }

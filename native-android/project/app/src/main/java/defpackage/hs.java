@@ -6,45 +6,37 @@ public final class hs {
     public final float a;
     public final float b;
 
-    public hs(float r1, float r2) {
-        this.a = r1;
-        this.b = r2;
+    public hs(float f, float f2) {
+        this.a = f;
+        this.b = f2;
     }
 
-    public final long a(long r6, long r8, r62 r10) {
-        float r1 = (((int) (r8 >> 32)) - ((int) (r6 >> 32))) / 2.0f;
-        float r7 = (((int) (r8 & 4294967295L)) - ((int) (r6 & 4294967295L))) / 2.0f;
-        r62 r9 = r62.n;
-        float r11 = this.a;
-        if (r10 == r9) goto L6;
-        r11 = r11 * (-1.0f);
-    L6:
-        float r12 = (1.0f + this.b) * r7;
-        int r5 = Math.round((r11 + 1.0f) * r1);
-        int r13 = Math.round(r12);
-        return (((long) r13) & 4294967295L) | (((long) r5) << 32);
+    public final long a(long j, long j2, r62 r62Var) {
+        float f = (((int) (j2 >> 32)) - ((int) (j >> 32))) / 2.0f;
+        float f2 = (((int) (j2 & 4294967295L)) - ((int) (j & 4294967295L))) / 2.0f;
+        r62 r62Var2 = r62.n;
+        float f3 = this.a;
+        if (r62Var != r62Var2) {
+            f3 *= -1.0f;
+        }
+        float f4 = (1.0f + this.b) * f2;
+        int iRound = Math.round((f3 + 1.0f) * f);
+        return (((long) Math.round(f4)) & 4294967295L) | (((long) iRound) << 32);
     }
 
-    public final boolean equals(Object r5) {
-        if (this != r5) goto L6;
-        return true;
-    L6:
-        if ((r5 instanceof hs) == true) goto L8;
-        return false;
-    L8:
-        hs r6 = (hs) r5;
-        if (Float.compare(this.a, r6.a) == 0) goto L12;
-        return false;
-    L12:
-        if (Float.compare(this.b, r6.b) == 0) goto L14;
-        return false;
-    L14:
-        return true;
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof hs)) {
+            return false;
+        }
+        hs hsVar = (hs) obj;
+        return Float.compare(this.a, hsVar.a) == 0 && Float.compare(this.b, hsVar.b) == 0;
     }
 
     public final int hashCode() {
-        int r0 = Float.hashCode(this.a) * 31;
-        return Float.hashCode(this.b) + r0;
+        return Float.hashCode(this.b) + (Float.hashCode(this.a) * 31);
     }
 
     public final String toString() {

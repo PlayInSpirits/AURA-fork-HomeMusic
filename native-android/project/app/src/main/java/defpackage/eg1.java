@@ -6,7 +6,7 @@ import javax.annotation.CheckForNull;
 /* JADX INFO: loaded from: classes.dex */
 public interface eg1 {
     /* JADX INFO: renamed from: apply */
-    Object mo77apply(Object r1);
+    Object mo77apply(Object obj);
 
-    boolean equals(@CheckForNull Object r1);
+    boolean equals(@CheckForNull Object obj);
 }

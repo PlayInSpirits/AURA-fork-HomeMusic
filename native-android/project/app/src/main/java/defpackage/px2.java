@@ -11,32 +11,32 @@ import java.util.concurrent.TimeUnit;
 public final class px2 extends mx2 implements ScheduledExecutorService {
     public final ScheduledExecutorService o;
 
-    public px2(ScheduledExecutorService r1) {
-        super(r1);
-        this.o = r1;
+    public px2(ScheduledExecutorService scheduledExecutorService) {
+        super(scheduledExecutorService);
+        this.o = scheduledExecutorService;
     }
 
     @Override // java.util.concurrent.ScheduledExecutorService
-    public final ScheduledFuture schedule(Runnable r3, long r4, TimeUnit r6) {
-        py4 r0 = new py4(Executors.callable(r3, null));
-        return new nx2(r0, this.o.schedule(r0, r4, r6));
+    public final ScheduledFuture schedule(Runnable runnable, long j, TimeUnit timeUnit) {
+        py4 py4Var = new py4(Executors.callable(runnable, null));
+        return new nx2(py4Var, this.o.schedule(py4Var, j, timeUnit));
     }
 
     @Override // java.util.concurrent.ScheduledExecutorService
-    public final ScheduledFuture scheduleAtFixedRate(Runnable r2, long r3, long r5, TimeUnit r7) {
-        ox2 r4 = new ox2(r2);
-        return new nx2(r4, this.o.scheduleAtFixedRate(r4, r3, r5, r7));
+    public final ScheduledFuture scheduleAtFixedRate(Runnable runnable, long j, long j2, TimeUnit timeUnit) {
+        ox2 ox2Var = new ox2(runnable);
+        return new nx2(ox2Var, this.o.scheduleAtFixedRate(ox2Var, j, j2, timeUnit));
     }
 
     @Override // java.util.concurrent.ScheduledExecutorService
-    public final ScheduledFuture scheduleWithFixedDelay(Runnable r2, long r3, long r5, TimeUnit r7) {
-        ox2 r4 = new ox2(r2);
-        return new nx2(r4, this.o.scheduleWithFixedDelay(r4, r3, r5, r7));
+    public final ScheduledFuture scheduleWithFixedDelay(Runnable runnable, long j, long j2, TimeUnit timeUnit) {
+        ox2 ox2Var = new ox2(runnable);
+        return new nx2(ox2Var, this.o.scheduleWithFixedDelay(ox2Var, j, j2, timeUnit));
     }
 
     @Override // java.util.concurrent.ScheduledExecutorService
-    public final ScheduledFuture schedule(Callable r2, long r3, TimeUnit r5) {
-        py4 r0 = new py4(r2);
-        return new nx2(r0, this.o.schedule(r0, r3, r5));
+    public final ScheduledFuture schedule(Callable callable, long j, TimeUnit timeUnit) {
+        py4 py4Var = new py4(callable);
+        return new nx2(py4Var, this.o.schedule(py4Var, j, timeUnit));
     }
 }

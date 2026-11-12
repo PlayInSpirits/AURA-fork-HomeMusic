@@ -9,26 +9,25 @@ public final class xs0 extends v83 {
     public final /* synthetic */ int d;
     public final /* synthetic */ DownloadFragment e;
 
-    public xs0(DownloadFragment r1, int r2) {
-        this.e = r1;
-        this.d = r2;
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public xs0(DownloadFragment downloadFragment, int i) {
         super(true);
+        this.e = downloadFragment;
+        this.d = i;
     }
 
     @Override // defpackage.v83
-    public final void a() {
-        int r0 = this.d;
-        DownloadFragment r2 = this.e;
-        if (r0 <= 1) goto L5;
-        k03 r1 = r2.o0.e;
-        ArrayList r3 = (ArrayList) r1.d();
-        r3.remove(r3.size() - 1);
-        r1.k(r3);
-    L6:
+    public final void a() throws Exception {
+        int i = this.d;
+        DownloadFragment downloadFragment = this.e;
+        if (i > 1) {
+            k03 k03Var = downloadFragment.o0.e;
+            ArrayList arrayList = (ArrayList) k03Var.d();
+            arrayList.remove(arrayList.size() - 1);
+            k03Var.k(arrayList);
+        } else {
+            downloadFragment.m0.T.o();
+        }
         b();
-        return;
-    L5:
-        r2.m0.T.o();
-        goto L6
     }
 }

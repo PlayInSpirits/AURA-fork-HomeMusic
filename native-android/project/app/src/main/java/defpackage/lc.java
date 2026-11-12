@@ -2,7 +2,6 @@ package defpackage;
 
 import android.database.sqlite.SQLiteCursor;
 import android.database.sqlite.SQLiteCursorDriver;
-import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteQuery;
 import android.graphics.Typeface;
 import com.eddyizm.tempus.homemusic.PlayEvent;
@@ -14,80 +13,68 @@ public final /* synthetic */ class lc implements yf1 {
     public final /* synthetic */ int n;
     public final /* synthetic */ Object o;
 
-    public /* synthetic */ lc(int r1, Object r2) {
-        this.n = r1;
-        this.o = r2;
+    public /* synthetic */ lc(int i, Object obj) {
+        this.n = i;
+        this.o = obj;
     }
 
     @Override // defpackage.yf1
-    public final Object d(Object r19, Object r20, Object r21, Object r22) {
-        int r1 = this.n;
-        Object r0 = this.o;
-        switch(r1) {
-            case 0: goto L20;
-            case 1: goto L18;
-            default: goto L4;
-        };
-    L4:
-        LinkedHashMap r2 = ((ps1) r0).o;
-        String r3 = (String) r19;
-        oh3 r4 = (oh3) r20;
-        Long r6 = (Long) r21;
-        ((Long) r22).getClass();
-        r3.getClass();
-        r4.getClass();
-        if (r3.equals(PlayEvent.START) == false) goto L7;
-        String r5 = r4.f;
-        b00 r7 = b00.a;
-        r2.put(r5, b00.a());
-    L7:
-        ih3 r8 = PlayEvent.Companion;
-        String r9 = r4.a;
-        String r10 = rs1.f();
-        long r11 = System.currentTimeMillis();
-        Long r12 = Long.valueOf(r4.b);
-        String r13 = r4.c;
-        String r14 = r4.f;
-        rs1 r15 = rs1.a;
-        String r16 = (String) rs1.k.getValue();
-        Long r17 = Long.valueOf(r4.g);
-        String r18 = (String) r2.get(r4.f);
-        ag2 r110 = r4.d;
-        k62 r23 = r4.e;
-        String r111 = null;
-        if (r23 == null) goto L10;
-        String r24 = r23.a;
-    L11:
-        if (r23 == null) goto L13;
-        r111 = r23.b;
-    L13:
-        r8.getClass();
-        rs1.j(ih3.b(r3, r9, r10, r11, r6, r12, r13, r14, r16, r17, r18, r110, r24, r111));
-        if (ti.t0(new String[]{PlayEvent.SKIP, PlayEvent.FINISH, "interrupted", "error"}).contains(r3) == false) goto L17;
-        r2.remove(r4.f);
-    L17:
-        return j15.a;
-    L10:
-        r24 = null;
-        goto L11
-    L18:
-        SQLiteDatabase r25 = (SQLiteDatabase) r19;
-        SQLiteQuery r26 = (SQLiteQuery) r22;
-        r26.getClass();
-        ((wo4) r0).n(new cf1(r26));
-        return new SQLiteCursor((SQLiteCursorDriver) r20, (String) r21, r26);
-    L20:
-        mc r27 = (mc) r0;
-        n05 r28 = ((ia1) r27.r).b((vk0) r19, (gb1) r20, ((eb1) r21).a, ((fb1) r22).a);
-        if ((r28 instanceof n05) == true) goto L23;
-        z05 r29 = new z05(r28, r27.w);
-        r27.w = r29;
-        Object r30 = r29.q;
-        r30.getClass();
-        return (Typeface) r30;
-    L23:
-        Object r31 = r28.n;
-        r31.getClass();
-        return (Typeface) r31;
+    public final Object d(Object obj, Object obj2, Object obj3, Object obj4) {
+        int i = this.n;
+        Object obj5 = this.o;
+        switch (i) {
+            case 0:
+                mc mcVar = (mc) obj5;
+                n05 n05VarB = ((ia1) mcVar.r).b((vk0) obj, (gb1) obj2, ((eb1) obj3).a, ((fb1) obj4).a);
+                if (n05VarB instanceof n05) {
+                    Object obj6 = n05VarB.n;
+                    obj6.getClass();
+                    return (Typeface) obj6;
+                }
+                z05 z05Var = new z05(n05VarB, mcVar.w);
+                mcVar.w = z05Var;
+                Object obj7 = z05Var.q;
+                obj7.getClass();
+                return (Typeface) obj7;
+            case 1:
+                SQLiteQuery sQLiteQuery = (SQLiteQuery) obj4;
+                sQLiteQuery.getClass();
+                ((wo4) obj5).n(new cf1(sQLiteQuery));
+                return new SQLiteCursor((SQLiteCursorDriver) obj2, (String) obj3, sQLiteQuery);
+            default:
+                LinkedHashMap linkedHashMap = ((ps1) obj5).o;
+                String str = (String) obj;
+                oh3 oh3Var = (oh3) obj2;
+                Long l = (Long) obj3;
+                ((Long) obj4).getClass();
+                str.getClass();
+                oh3Var.getClass();
+                if (str.equals(PlayEvent.START)) {
+                    String str2 = oh3Var.f;
+                    b00 b00Var = b00.a;
+                    linkedHashMap.put(str2, b00.a());
+                }
+                ih3 ih3Var = PlayEvent.Companion;
+                String str3 = oh3Var.a;
+                String strF = rs1.f();
+                long jCurrentTimeMillis = System.currentTimeMillis();
+                Long lValueOf = Long.valueOf(oh3Var.b);
+                String str4 = oh3Var.c;
+                String str5 = oh3Var.f;
+                rs1 rs1Var = rs1.a;
+                String str6 = (String) rs1.k.getValue();
+                Long lValueOf2 = Long.valueOf(oh3Var.g);
+                String str7 = (String) linkedHashMap.get(oh3Var.f);
+                ag2 ag2Var = oh3Var.d;
+                k62 k62Var = oh3Var.e;
+                String str8 = k62Var != null ? k62Var.a : null;
+                String str9 = k62Var != null ? k62Var.b : null;
+                ih3Var.getClass();
+                rs1.j(ih3.b(str, str3, strF, jCurrentTimeMillis, l, lValueOf, str4, str5, str6, lValueOf2, str7, ag2Var, str8, str9));
+                if (ti.t0(new String[]{PlayEvent.SKIP, PlayEvent.FINISH, "interrupted", "error"}).contains(str)) {
+                    linkedHashMap.remove(oh3Var.f);
+                }
+                return j15.a;
+        }
     }
 }

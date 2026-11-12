@@ -33,86 +33,62 @@ public final class yo extends Drawable implements wr4 {
     public WeakReference y;
     public WeakReference z;
 
-    public yo(Context r10, zo r11) {
-        WeakReference r0 = new WeakReference(r10);
-        this.n = r0;
-        uc5.h(r10, uc5.h, "Theme.MaterialComponents");
+    public yo(Context context, zo zoVar) {
+        rr4 rr4Var;
+        WeakReference weakReference = new WeakReference(context);
+        this.n = weakReference;
+        uc5.h(context, uc5.h, "Theme.MaterialComponents");
         this.q = new Rect();
-        xr4 r1 = new xr4(this);
-        this.p = r1;
-        Paint.Align r2 = Paint.Align.CENTER;
-        TextPaint r3 = r1.a;
-        r3.setTextAlign(r2);
-        ap r4 = new ap(r10, r11);
-        this.r = r4;
-        boolean r5 = f();
-        zo r6 = r4.b;
-        if (r5 == false) goto L5;
-        int r7 = r6.t.intValue();
-    L7:
-        if (f() == false) goto L9;
-        int r8 = r6.u.intValue();
-    L10:
-        fi2 r12 = new fi2(bc4.a(r10, r7, r8).a());
-        this.o = r12;
+        xr4 xr4Var = new xr4(this);
+        this.p = xr4Var;
+        Paint.Align align = Paint.Align.CENTER;
+        TextPaint textPaint = xr4Var.a;
+        textPaint.setTextAlign(align);
+        ap apVar = new ap(context, zoVar);
+        this.r = apVar;
+        boolean zF = f();
+        zo zoVar2 = apVar.b;
+        fi2 fi2Var = new fi2(bc4.a(context, zF ? zoVar2.t.intValue() : zoVar2.r.intValue(), f() ? zoVar2.u.intValue() : zoVar2.s.intValue()).a());
+        this.o = fi2Var;
         h();
-        Context r13 = (Context) r0.get();
-        if (r13 == null) goto L17;
-        rr4 r9 = new rr4(r13, r6.q.intValue());
-        if (r1.g == r9) goto L17;
-        r1.c(r9, r13);
-        r3.setColor(r6.p.intValue());
-        invalidateSelf();
+        Context context2 = (Context) weakReference.get();
+        if (context2 != null && xr4Var.g != (rr4Var = new rr4(context2, zoVar2.q.intValue()))) {
+            xr4Var.c(rr4Var, context2);
+            textPaint.setColor(zoVar2.p.intValue());
+            invalidateSelf();
+            j();
+            invalidateSelf();
+        }
+        int i = zoVar2.y;
+        if (i != -2) {
+            this.u = ((int) Math.pow(10.0d, ((double) i) - 1.0d)) - 1;
+        } else {
+            this.u = zoVar2.z;
+        }
+        xr4Var.e = true;
         j();
         invalidateSelf();
-    L17:
-        int r14 = r6.y;
-        if (r14 == (-2)) goto L20;
-        this.u = ((int) Math.pow(10.0d, ((double) r14) - 1.0d)) - 1;
-    L21:
-        r1.e = true;
-        j();
-        invalidateSelf();
-        r1.e = true;
+        xr4Var.e = true;
         h();
         j();
         invalidateSelf();
-        r3.setAlpha(getAlpha());
+        textPaint.setAlpha(getAlpha());
         invalidateSelf();
-        ColorStateList r15 = ColorStateList.valueOf(r6.o.intValue());
-        if (r12.n.c == r15) goto L24;
-        r12.m(r15);
+        ColorStateList colorStateListValueOf = ColorStateList.valueOf(zoVar2.o.intValue());
+        if (fi2Var.n.c != colorStateListValueOf) {
+            fi2Var.m(colorStateListValueOf);
+            invalidateSelf();
+        }
+        textPaint.setColor(zoVar2.p.intValue());
         invalidateSelf();
-    L24:
-        r3.setColor(r6.p.intValue());
-        invalidateSelf();
-        WeakReference r16 = this.y;
-        if (r16 != null) goto L27;
-    L33:
+        WeakReference weakReference2 = this.y;
+        if (weakReference2 != null && weakReference2.get() != null) {
+            View view = (View) this.y.get();
+            WeakReference weakReference3 = this.z;
+            i(view, weakReference3 != null ? (FrameLayout) weakReference3.get() : null);
+        }
         j();
-        setVisible(r6.G.booleanValue(), false);
-        return;
-    L27:
-        if (r16.get() == null) goto L33;
-        View r17 = (View) this.y.get();
-        WeakReference r18 = this.z;
-        if (r18 == null) goto L31;
-        FrameLayout r19 = (FrameLayout) r18.get();
-    L32:
-        i(r17, r19);
-        goto L33
-    L31:
-        r19 = null;
-        goto L32
-    L20:
-        this.u = r6.z;
-        goto L21
-    L9:
-        r8 = r6.s.intValue();
-        goto L10
-    L5:
-        r7 = r6.r.intValue();
-        goto L7
+        setVisible(zoVar2.G.booleanValue(), false);
     }
 
     @Override // defpackage.wr4
@@ -121,139 +97,96 @@ public final class yo extends Drawable implements wr4 {
     }
 
     public final String b() {
-        ap r0 = this.r;
-        zo r1 = r0.b;
-        zo r2 = r0.b;
-        String r3 = r1.w;
-        WeakReference r4 = this.n;
-        if (r3 == null) goto L17;
-        int r5 = r1.y;
-        if (r5 == (-2)) goto L15;
-        if (r3 == null) goto L15;
-        if (r3.length() <= r5) goto L15;
-        Context r6 = (Context) r4.get();
-        if (r6 != null) goto L14;
-        return "";
-    L14:
-        return String.format(r6.getString(R.string.m3_exceed_max_badge_text_suffix), new Object[]{r3.substring(0, r5 - 1), "…"});
-    L15:
-        return r3;
-    L17:
-        if (g() == false) goto L31;
-        int r7 = this.u;
-        if (r7 == (-2)) goto L30;
-        if (e() <= r7) goto L30;
-        Context r8 = (Context) r4.get();
-        if (r8 != null) goto L28;
-        return "";
-    L28:
-        return String.format(r2.A, r8.getString(R.string.mtrl_exceed_max_badge_number_suffix), new Object[]{Integer.valueOf(r7), "+"});
-    L30:
-        return NumberFormat.getInstance(r2.A).format(e());
-    L31:
-        return null;
+        ap apVar = this.r;
+        zo zoVar = apVar.b;
+        zo zoVar2 = apVar.b;
+        String str = zoVar.w;
+        WeakReference weakReference = this.n;
+        if (str == null) {
+            if (!g()) {
+                return null;
+            }
+            int i = this.u;
+            if (i == -2 || e() <= i) {
+                return NumberFormat.getInstance(zoVar2.A).format(e());
+            }
+            Context context = (Context) weakReference.get();
+            return context == null ? "" : String.format(zoVar2.A, context.getString(R.string.mtrl_exceed_max_badge_number_suffix), Integer.valueOf(i), "+");
+        }
+        int i2 = zoVar.y;
+        if (i2 == -2 || str == null || str.length() <= i2) {
+            return str;
+        }
+        Context context2 = (Context) weakReference.get();
+        if (context2 == null) {
+            return "";
+        }
+        return String.format(context2.getString(R.string.m3_exceed_max_badge_text_suffix), str.substring(0, i2 - 1), "…");
     }
 
     public final CharSequence c() {
-        if (isVisible() == false) goto L32;
-        ap r0 = this.r;
-        zo r1 = r0.b;
-        if (r1.w == null) goto L12;
-        CharSequence r4 = r1.B;
-        if (r4 == null) goto L11;
-        return r4;
-    L11:
-        return r0.b.w;
-    L12:
-        boolean r2 = g();
-        zo r3 = r0.b;
-        if (r2 == false) goto L31;
-        if (r3.D == 0) goto L28;
-        Context r5 = (Context) this.n.get();
-        if (r5 == null) goto L33;
-        int r6 = this.u;
-        if (r6 == (-2)) goto L27;
-        if (e() <= r6) goto L27;
-        return r5.getString(r3.E, new Object[]{Integer.valueOf(r6)});
-    L27:
-        return r5.getResources().getQuantityString(r3.D, e(), new Object[]{Integer.valueOf(e())});
-    L33:
-        return null;
-    L28:
-        return null;
-    L31:
-        return r3.C;
-    L32:
-        return null;
+        Context context;
+        if (!isVisible()) {
+            return null;
+        }
+        ap apVar = this.r;
+        zo zoVar = apVar.b;
+        if (zoVar.w != null) {
+            CharSequence charSequence = zoVar.B;
+            return charSequence != null ? charSequence : apVar.b.w;
+        }
+        boolean zG = g();
+        zo zoVar2 = apVar.b;
+        if (!zG) {
+            return zoVar2.C;
+        }
+        if (zoVar2.D == 0 || (context = (Context) this.n.get()) == null) {
+            return null;
+        }
+        int i = this.u;
+        return (i == -2 || e() <= i) ? context.getResources().getQuantityString(zoVar2.D, e(), Integer.valueOf(e())) : context.getString(zoVar2.E, Integer.valueOf(i));
     }
 
     public final FrameLayout d() {
-        WeakReference r0 = this.z;
-        if (r0 != null) goto L5;
+        WeakReference weakReference = this.z;
+        if (weakReference != null) {
+            return (FrameLayout) weakReference.get();
+        }
         return null;
-    L5:
-        return (FrameLayout) r0.get();
     }
 
     @Override // android.graphics.drawable.Drawable
-    public final void draw(Canvas r7) {
-        if (getBounds().isEmpty() == false) goto L5;
-        return;
-    L5:
-        if (getAlpha() != 0) goto L7;
-        return;
-    L7:
-        if (isVisible() == false) goto L24;
-        this.o.draw(r7);
-        if (f() == false) goto L22;
-        String r0 = b();
-        if (r0 == null) goto L23;
-        Rect r1 = new Rect();
-        xr4 r2 = this.p;
-        r2.a.getTextBounds(r0, 0, r0.length(), r1);
-        float r3 = this.t - r1.exactCenterY();
-        float r6 = this.s;
-        if (r1.bottom > 0) goto L17;
-        int r4 = (int) r3;
-    L18:
-        r7.drawText(r0, r6, r4, r2.a);
-        return;
-    L17:
-        r4 = Math.round(r3);
-        goto L18
-    L23:
-        return;
-    L22:
-        return;
+    public final void draw(Canvas canvas) {
+        String strB;
+        if (getBounds().isEmpty() || getAlpha() == 0 || !isVisible()) {
+            return;
+        }
+        this.o.draw(canvas);
+        if (!f() || (strB = b()) == null) {
+            return;
+        }
+        Rect rect = new Rect();
+        xr4 xr4Var = this.p;
+        xr4Var.a.getTextBounds(strB, 0, strB.length(), rect);
+        float fExactCenterY = this.t - rect.exactCenterY();
+        canvas.drawText(strB, this.s, rect.bottom <= 0 ? (int) fExactCenterY : Math.round(fExactCenterY), xr4Var.a);
     }
 
     public final int e() {
-        int r1 = this.r.b.x;
-        if (r1 == (-1)) goto L5;
-        return r1;
-    L5:
+        int i = this.r.b.x;
+        if (i != -1) {
+            return i;
+        }
         return 0;
     }
 
     public final boolean f() {
-        if (this.r.b.w == null) goto L6;
-        return true;
-    L6:
-        if (g() == false) goto L9;
-        return true;
-    L9:
-        return false;
+        return this.r.b.w != null || g();
     }
 
     public final boolean g() {
-        zo r1 = this.r.b;
-        if (r1.w == null) goto L6;
-        return false;
-    L6:
-        if (r1.x == (-1)) goto L9;
-        return true;
-    L9:
-        return false;
+        zo zoVar = this.r.b;
+        return zoVar.w == null && zoVar.x != -1;
     }
 
     @Override // android.graphics.drawable.Drawable
@@ -277,36 +210,22 @@ public final class yo extends Drawable implements wr4 {
     }
 
     public final void h() {
-        Context r0 = (Context) this.n.get();
-        if (r0 != null) goto L5;
-        return;
-    L5:
-        boolean r1 = f();
-        ap r2 = this.r;
-        if (r1 == false) goto L8;
-        int r3 = r2.b.t.intValue();
-    L10:
-        if (f() == false) goto L12;
-        int r4 = r2.b.u.intValue();
-    L13:
-        bc4 r5 = bc4.a(r0, r3, r4).a();
-        this.o.setShapeAppearanceModel(r5);
+        Context context = (Context) this.n.get();
+        if (context == null) {
+            return;
+        }
+        boolean zF = f();
+        ap apVar = this.r;
+        this.o.setShapeAppearanceModel(bc4.a(context, zF ? apVar.b.t.intValue() : apVar.b.r.intValue(), f() ? apVar.b.u.intValue() : apVar.b.s.intValue()).a());
         invalidateSelf();
-        return;
-    L12:
-        r4 = r2.b.s.intValue();
-        goto L13
-    L8:
-        r3 = r2.b.r.intValue();
-        goto L10
     }
 
-    public final void i(View r2, FrameLayout r3) {
-        this.y = new WeakReference(r2);
-        this.z = new WeakReference(r3);
-        ViewGroup r4 = (ViewGroup) r2.getParent();
-        r4.setClipChildren(false);
-        r4.setClipToPadding(false);
+    public final void i(View view, FrameLayout frameLayout) {
+        this.y = new WeakReference(view);
+        this.z = new WeakReference(frameLayout);
+        ViewGroup viewGroup = (ViewGroup) view.getParent();
+        viewGroup.setClipChildren(false);
+        viewGroup.setClipToPadding(false);
         j();
         invalidateSelf();
     }
@@ -316,223 +235,197 @@ public final class yo extends Drawable implements wr4 {
         return false;
     }
 
+    /* JADX WARN: Code duplicated, block: B:100:0x0237  */
+    /* JADX WARN: Code duplicated, block: B:101:0x024f  */
+    /* JADX WARN: Code duplicated, block: B:104:0x0254  */
+    /* JADX WARN: Code duplicated, block: B:107:0x0261  */
+    /* JADX WARN: Code duplicated, block: B:110:0x026e  */
+    /* JADX WARN: Code duplicated, block: B:113:0x027b  */
+    /* JADX WARN: Code duplicated, block: B:96:0x0216  */
+    /* JADX WARN: Code duplicated, block: B:97:0x022e  */
     public final void j() {
-        WeakReference r0 = this.n;
-        Context r1 = (Context) r0.get();
-        WeakReference r2 = this.y;
-        ViewGroup r3 = null;
-        if (r2 == null) goto L5;
-        View r4 = (View) r2.get();
-    L6:
-        if (r1 == null) goto L121;
-        if (r4 == null) goto L123;
-        Rect r5 = new Rect();
-        Rect r6 = this.q;
-        r5.set(r6);
-        Rect r7 = new Rect();
-        r4.getDrawingRect(r7);
-        WeakReference r8 = this.z;
-        if (r8 == null) goto L12;
-        r3 = (ViewGroup) r8.get();
-    L12:
-        if (r3 == null) goto L15;
-        r3.offsetDescendantRectToMyCoords(r4, r7);
-    L15:
-        boolean r9 = f();
-        ap r10 = this.r;
-        if (r9 == false) goto L18;
-        float r11 = r10.d;
-    L19:
-        this.v = r11;
-        if (r11 == (-1.0f)) goto L23;
-        this.w = r11;
-        this.x = r11;
-    L34:
-        if (f() == false) goto L40;
-        String r12 = b();
-        float r13 = this.w;
-        xr4 r14 = this.p;
-        this.w = Math.max(r13, (r14.a(r12) / 2.0f) + r10.b.H.intValue());
-        float r15 = this.x;
-        if (r14.e == false) goto L39;
-        r14.b(r12);
-    L39:
-        float r16 = Math.max(r15, (r14.d / 2.0f) + r10.b.I.intValue());
-        this.x = r16;
-        this.w = Math.max(this.w, r16);
-    L40:
-        zo r17 = r10.b;
-        zo r18 = r10.b;
-        int r19 = r10.k;
-        int r110 = r17.K.intValue();
-        if (f() == false) goto L45;
-        r110 = r17.M.intValue();
-        Context r20 = (Context) r0.get();
-        if (r20 == null) goto L45;
-        r110 = yd.c(r110, yd.b(0.0f, 1.0f, 0.3f, 1.0f, r20.getResources().getConfiguration().fontScale - 1.0f), r110 - r17.P.intValue());
-    L45:
-        if (r19 != 0) goto L47;
-        r110 = r110 - Math.round(this.x);
-    L47:
-        int r21 = r17.O.intValue() + r110;
-        int r111 = r18.F.intValue();
-        if (r111 != 8388691) goto L50;
-    L52:
-        this.t = r7.bottom - r21;
-    L54:
-        if (f() == false) goto L56;
-        int r22 = r17.L.intValue();
-    L58:
-        if (r19 == 1) goto L60;
-    L64:
-        int r23 = r17.N.intValue() + r22;
-        int r24 = r18.F.intValue();
-        if (r24 == 8388659) goto L72;
-        if (r24 == 8388691) goto L72;
-        WeakHashMap r25 = j65.a;
-        if (r4.getLayoutDirection() != 0) goto L70;
-        float r26 = (r7.right + this.w) - r23;
-    L71:
-        this.s = r26;
-    L78:
-        if (r17.Q.booleanValue() == false) goto L114;
-        View r27 = d();
-        if (r27 == null) goto L82;
-        FrameLayout r28 = d();
-        if (r28 != null) goto L88;
-    L93:
-        float r29 = 0.0f;
-        float r30 = 0.0f;
-    L94:
-        float r31 = (r27.getY() + (this.t - this.x)) + r29;
-        float r32 = (r27.getX() + (this.s - this.w)) + r30;
-        if ((r27.getParent() instanceof View) == false) goto L97;
-        float r33 = ((this.t + this.x) - (((View) r27.getParent()).getHeight() - r27.getY())) + r29;
-    L99:
-        if ((r27.getParent() instanceof View) == false) goto L101;
-        float r34 = ((this.s + this.w) - (((View) r27.getParent()).getWidth() - r27.getX())) + r30;
-    L103:
-        if (r31 >= 0.0f) goto L106;
-        this.t = Math.abs(r31) + this.t;
-    L106:
-        if (r32 >= 0.0f) goto L109;
-        this.s = Math.abs(r32) + this.s;
-    L109:
-        if (r33 <= 0.0f) goto L112;
-        this.t -= Math.abs(r33);
-    L112:
-        if (r34 <= 0.0f) goto L114;
-        this.s -= Math.abs(r34);
-        goto L114
-    L101:
-        r34 = 0.0f;
-        goto L103
-    L97:
-        r33 = 0.0f;
-        goto L99
-    L88:
-        if (r28.getId() != R.id.mtrl_anchor_parent) goto L93;
-        if ((r27.getParent() instanceof View) == false) goto L114;
-        r29 = r27.getY();
-        r30 = r27.getX();
-        r27 = (View) r27.getParent();
-        goto L94
-    L82:
-        if ((r4.getParent() instanceof View) == false) goto L114;
-        float r35 = r4.getY();
-        r30 = r4.getX();
-        View r36 = (View) r4.getParent();
-        r29 = r35;
-        r27 = r36;
-    L114:
-        float r37 = this.s;
-        float r38 = this.t;
-        float r39 = this.w;
-        float r40 = this.x;
-        r6.set((int) (r37 - r39), (int) (r38 - r40), (int) (r37 + r39), (int) (r38 + r40));
-        float r41 = this.v;
-        fi2 r112 = this.o;
-        if (r41 == (-1.0f)) goto L118;
-        zc1 r42 = r112.n.a.g();
-        r42.b(r41);
-        r112.setShapeAppearanceModel(r42.a());
-    L118:
-        if (r5.equals(r6) == true) goto L122;
-        r112.setBounds(r6);
-        return;
-    L122:
-        return;
-    L70:
-        r26 = (r7.left - this.w) + r23;
-    L72:
-        WeakHashMap r43 = j65.a;
-        if (r4.getLayoutDirection() != 0) goto L75;
-        float r44 = (r7.left - this.w) + r23;
-    L76:
-        this.s = r44;
-        goto L78
-    L75:
-        r44 = (r7.right + this.w) - r23;
-        goto L76
-    L60:
-        if (f() == false) goto L62;
-        int r45 = r10.j;
-    L63:
-        r22 = r22 + r45;
-        goto L64
-    L62:
-        r45 = r10.i;
-        goto L63
-    L56:
-        r22 = r18.J.intValue();
-        goto L58
-    L50:
-        if (r111 == 8388693) goto L52;
-        this.t = r7.top + r21;
-        goto L54
-    L23:
-        if (f() == false) goto L26;
-        float r46 = r10.g;
-    L27:
-        this.w = Math.round(r46 / 2.0f);
-        if (f() == false) goto L31;
-        float r47 = r10.h;
-    L32:
-        this.x = Math.round(r47 / 2.0f);
-        goto L34
-    L31:
-        r47 = r10.f;
-        goto L32
-    L26:
-        r46 = r10.e;
-        goto L27
-    L18:
-        r11 = r10.c;
-        goto L19
-    L123:
-        return;
-    L121:
-        return;
-    L5:
-        r4 = null;
-        goto L6
+        float y;
+        float x;
+        float y2;
+        float x2;
+        float height;
+        float width;
+        WeakReference weakReference = this.n;
+        Context context = (Context) weakReference.get();
+        WeakReference weakReference2 = this.y;
+        View view = weakReference2 != null ? (View) weakReference2.get() : null;
+        if (context == null || view == null) {
+            return;
+        }
+        Rect rect = new Rect();
+        Rect rect2 = this.q;
+        rect.set(rect2);
+        Rect rect3 = new Rect();
+        view.getDrawingRect(rect3);
+        WeakReference weakReference3 = this.z;
+        ViewGroup viewGroup = weakReference3 != null ? (ViewGroup) weakReference3.get() : null;
+        if (viewGroup != null) {
+            viewGroup.offsetDescendantRectToMyCoords(view, rect3);
+        }
+        boolean zF = f();
+        ap apVar = this.r;
+        float f = zF ? apVar.d : apVar.c;
+        this.v = f;
+        if (f != -1.0f) {
+            this.w = f;
+            this.x = f;
+        } else {
+            this.w = Math.round((f() ? apVar.g : apVar.e) / 2.0f);
+            this.x = Math.round((f() ? apVar.h : apVar.f) / 2.0f);
+        }
+        if (f()) {
+            String strB = b();
+            float f2 = this.w;
+            xr4 xr4Var = this.p;
+            this.w = Math.max(f2, (xr4Var.a(strB) / 2.0f) + apVar.b.H.intValue());
+            float f3 = this.x;
+            if (xr4Var.e) {
+                xr4Var.b(strB);
+            }
+            float fMax = Math.max(f3, (xr4Var.d / 2.0f) + apVar.b.I.intValue());
+            this.x = fMax;
+            this.w = Math.max(this.w, fMax);
+        }
+        zo zoVar = apVar.b;
+        zo zoVar2 = apVar.b;
+        int i = apVar.k;
+        int iIntValue = zoVar.K.intValue();
+        if (f()) {
+            iIntValue = zoVar.M.intValue();
+            Context context2 = (Context) weakReference.get();
+            if (context2 != null) {
+                iIntValue = yd.c(iIntValue, yd.b(0.0f, 1.0f, 0.3f, 1.0f, context2.getResources().getConfiguration().fontScale - 1.0f), iIntValue - zoVar.P.intValue());
+            }
+        }
+        if (i == 0) {
+            iIntValue -= Math.round(this.x);
+        }
+        int iIntValue2 = zoVar.O.intValue() + iIntValue;
+        int iIntValue3 = zoVar2.F.intValue();
+        if (iIntValue3 == 8388691 || iIntValue3 == 8388693) {
+            this.t = rect3.bottom - iIntValue2;
+        } else {
+            this.t = rect3.top + iIntValue2;
+        }
+        int iIntValue4 = f() ? zoVar.L.intValue() : zoVar2.J.intValue();
+        if (i == 1) {
+            iIntValue4 += f() ? apVar.j : apVar.i;
+        }
+        int iIntValue5 = zoVar.N.intValue() + iIntValue4;
+        int iIntValue6 = zoVar2.F.intValue();
+        if (iIntValue6 == 8388659 || iIntValue6 == 8388691) {
+            WeakHashMap weakHashMap = j65.a;
+            this.s = view.getLayoutDirection() == 0 ? (rect3.left - this.w) + iIntValue5 : (rect3.right + this.w) - iIntValue5;
+        } else {
+            WeakHashMap weakHashMap2 = j65.a;
+            this.s = view.getLayoutDirection() == 0 ? (rect3.right + this.w) - iIntValue5 : (rect3.left - this.w) + iIntValue5;
+        }
+        if (zoVar.Q.booleanValue()) {
+            View viewD = d();
+            if (viewD != null) {
+                FrameLayout frameLayoutD = d();
+                if (frameLayoutD == null || frameLayoutD.getId() != R.id.mtrl_anchor_parent) {
+                    y = 0.0f;
+                    x = 0.0f;
+                } else if (viewD.getParent() instanceof View) {
+                    y = viewD.getY();
+                    x = viewD.getX();
+                    viewD = (View) viewD.getParent();
+                }
+                y2 = viewD.getY() + (this.t - this.x) + y;
+                x2 = viewD.getX() + (this.s - this.w) + x;
+                if (viewD.getParent() instanceof View) {
+                    height = ((this.t + this.x) - (((View) viewD.getParent()).getHeight() - viewD.getY())) + y;
+                } else {
+                    height = 0.0f;
+                }
+                if (viewD.getParent() instanceof View) {
+                    width = ((this.s + this.w) - (((View) viewD.getParent()).getWidth() - viewD.getX())) + x;
+                } else {
+                    width = 0.0f;
+                }
+                if (y2 < 0.0f) {
+                    this.t = Math.abs(y2) + this.t;
+                }
+                if (x2 < 0.0f) {
+                    this.s = Math.abs(x2) + this.s;
+                }
+                if (height > 0.0f) {
+                    this.t -= Math.abs(height);
+                }
+                if (width > 0.0f) {
+                    this.s -= Math.abs(width);
+                }
+            } else if (view.getParent() instanceof View) {
+                float y3 = view.getY();
+                x = view.getX();
+                View view2 = (View) view.getParent();
+                y = y3;
+                viewD = view2;
+                y2 = viewD.getY() + (this.t - this.x) + y;
+                x2 = viewD.getX() + (this.s - this.w) + x;
+                if (viewD.getParent() instanceof View) {
+                    height = ((this.t + this.x) - (((View) viewD.getParent()).getHeight() - viewD.getY())) + y;
+                } else {
+                    height = 0.0f;
+                }
+                if (viewD.getParent() instanceof View) {
+                    width = ((this.s + this.w) - (((View) viewD.getParent()).getWidth() - viewD.getX())) + x;
+                } else {
+                    width = 0.0f;
+                }
+                if (y2 < 0.0f) {
+                    this.t = Math.abs(y2) + this.t;
+                }
+                if (x2 < 0.0f) {
+                    this.s = Math.abs(x2) + this.s;
+                }
+                if (height > 0.0f) {
+                    this.t -= Math.abs(height);
+                }
+                if (width > 0.0f) {
+                    this.s -= Math.abs(width);
+                }
+            }
+        }
+        float f4 = this.s;
+        float f5 = this.t;
+        float f6 = this.w;
+        float f7 = this.x;
+        rect2.set((int) (f4 - f6), (int) (f5 - f7), (int) (f4 + f6), (int) (f5 + f7));
+        float f8 = this.v;
+        fi2 fi2Var = this.o;
+        if (f8 != -1.0f) {
+            zc1 zc1VarG = fi2Var.n.a.g();
+            zc1VarG.b(f8);
+            fi2Var.setShapeAppearanceModel(zc1VarG.a());
+        }
+        if (rect.equals(rect2)) {
+            return;
+        }
+        fi2Var.setBounds(rect2);
     }
 
     @Override // android.graphics.drawable.Drawable, defpackage.wr4
-    public final boolean onStateChange(int[] r1) {
-        return super.onStateChange(r1);
+    public final boolean onStateChange(int[] iArr) {
+        return super.onStateChange(iArr);
     }
 
     @Override // android.graphics.drawable.Drawable
-    public final void setAlpha(int r3) {
-        ap r0 = this.r;
-        r0.a.v = r3;
-        r0.b.v = r3;
+    public final void setAlpha(int i) {
+        ap apVar = this.r;
+        apVar.a.v = i;
+        apVar.b.v = i;
         this.p.a.setAlpha(getAlpha());
         invalidateSelf();
     }
 
     @Override // android.graphics.drawable.Drawable
-    public final void setColorFilter(ColorFilter r1) {
+    public final void setColorFilter(ColorFilter colorFilter) {
     }
 }

@@ -6,42 +6,34 @@ import android.content.res.ColorStateList;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class di2 extends mg {
-    public static final int[][] t = null;
+    public static final int[][] t = {new int[]{R.attr.state_enabled, R.attr.state_checked}, new int[]{R.attr.state_enabled, -16842912}, new int[]{-16842910, R.attr.state_checked}, new int[]{-16842910, -16842912}};
     public ColorStateList r;
     public boolean s;
 
-    static {
-        t = new int[][]{new int[]{R.attr.state_enabled, R.attr.state_checked}, new int[]{R.attr.state_enabled, -16842912}, new int[]{-16842910, R.attr.state_checked}, new int[]{-16842910, -16842912}};
-    }
-
     private ColorStateList getMaterialThemeColorsTintList() {
-        if (this.r != null) goto L6;
-        int r0 = g12.t(this, app.homemusic.R.attr.colorControlActivated);
-        int r1 = g12.t(this, app.homemusic.R.attr.colorOnSurface);
-        int r2 = g12.t(this, app.homemusic.R.attr.colorSurface);
-        int[] r3 = {g12.H(r2, 1.0f, r0), g12.H(r2, 0.54f, r1), g12.H(r2, 0.38f, r1), g12.H(r2, 0.38f, r1)};
-        this.r = new ColorStateList(t, r3);
-    L6:
+        if (this.r == null) {
+            int iT = g12.t(this, app.homemusic.R.attr.colorControlActivated);
+            int iT2 = g12.t(this, app.homemusic.R.attr.colorOnSurface);
+            int iT3 = g12.t(this, app.homemusic.R.attr.colorSurface);
+            this.r = new ColorStateList(t, new int[]{g12.H(iT3, 1.0f, iT), g12.H(iT3, 0.54f, iT2), g12.H(iT3, 0.38f, iT2), g12.H(iT3, 0.38f, iT2)});
+        }
         return this.r;
     }
 
     @Override // android.widget.TextView, android.view.View
     public final void onAttachedToWindow() {
         super.onAttachedToWindow();
-        if (this.s == true) goto L5;
-        return;
-    L5:
-        if (getButtonTintList() != null) goto L9;
-        setUseMaterialThemeColors(true);
-        return;
+        if (this.s && getButtonTintList() == null) {
+            setUseMaterialThemeColors(true);
+        }
     }
 
-    public void setUseMaterialThemeColors(boolean r1) {
-        this.s = r1;
-        if (r1 == false) goto L6;
-        setButtonTintList(getMaterialThemeColorsTintList());
-        return;
-    L6:
-        setButtonTintList(null);
+    public void setUseMaterialThemeColors(boolean z) {
+        this.s = z;
+        if (z) {
+            setButtonTintList(getMaterialThemeColorsTintList());
+        } else {
+            setButtonTintList(null);
+        }
     }
 }

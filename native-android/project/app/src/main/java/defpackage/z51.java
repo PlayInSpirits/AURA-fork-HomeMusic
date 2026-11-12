@@ -9,26 +9,27 @@ public final class z51 extends ar4 {
     public final /* synthetic */ q34 e;
     public final /* synthetic */ lr0 f;
 
-    public z51(String r1, q34 r2, lr0 r3) {
-        this.e = r2;
-        this.f = r3;
-        super(r1);
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public z51(String str, q34 q34Var, lr0 lr0Var) {
+        super(str);
+        this.e = q34Var;
+        this.f = lr0Var;
     }
 
     @Override // defpackage.ar4
-    public final long a() {
-        q34 r0 = this.e;
-        p34 r1 = r0.f();     // Catch: Throwable -> L5
-    L7:
-        lr0 r4 = this.f;
-        if (((CopyOnWriteArrayList) r4.q).contains(r0) == false) goto L14;
-        ((LinkedBlockingDeque) r4.r).put(r1);
-        return -1;
-    L14:
-        return -1;
-    L5:
-        th = move-exception;
-        r1 = new p34(r0, th, 2);
-        goto L7
+    public final long a() throws InterruptedException {
+        p34 p34Var;
+        q34 q34Var = this.e;
+        try {
+            p34Var = q34Var.f();
+        } catch (Throwable th) {
+            p34Var = new p34(q34Var, th, 2);
+        }
+        lr0 lr0Var = this.f;
+        if (!((CopyOnWriteArrayList) lr0Var.q).contains(q34Var)) {
+            return -1L;
+        }
+        ((LinkedBlockingDeque) lr0Var.r).put(p34Var);
+        return -1L;
     }
 }

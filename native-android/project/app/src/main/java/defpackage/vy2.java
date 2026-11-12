@@ -10,7 +10,7 @@ public final class vy2 implements mz0 {
     public final String e;
     public wv4 f;
     public String g;
-    public int h;
+    public int h = 0;
     public int i;
     public boolean j;
     public boolean k;
@@ -18,114 +18,97 @@ public final class vy2 implements mz0 {
     public int m;
     public long n;
 
-    public vy2(int r4, String r5, String r6) {
-        this.h = 0;
-        be3 r1 = new be3(4);
-        this.a = r1;
-        r1.a[0] = -1;
+    public vy2(int i, String str, String str2) {
+        be3 be3Var = new be3(4);
+        this.a = be3Var;
+        be3Var.a[0] = -1;
         this.b = new wy2();
         this.n = -9223372036854775807L;
-        this.c = r5;
-        this.d = r4;
-        this.e = r6;
+        this.c = str;
+        this.d = i;
+        this.e = str2;
     }
 
     @Override // defpackage.mz0
-    public final void a(be3 r13) {
+    public final void a(be3 be3Var) {
         this.f.getClass();
-    L4:
-        if (r13.a() <= 0) goto L46;
-        int r0 = this.h;
-        be3 r1 = this.a;
-        boolean r4 = true;
-        if (r0 != 0) goto L7;
-        byte[] r2 = r13.a;
-        int r5 = r13.b;
-        int r6 = r13.c;
-    L30:
-        if (r5 >= r6) goto L45;
-        byte r7 = r2[r5];
-        if ((r7 & 255) != 255) goto L34;
-        boolean r8 = true;
-    L36:
-        if (this.k == true) goto L38;
-    L40:
-        boolean r9 = false;
-    L41:
-        this.k = r8;
-        if (r9 == true) goto L43;
-        r5 = r5 + 1;
-        goto L30
-    L43:
-        r13.N(r5 + 1);
-        this.k = false;
-        r1.a[1] = r2[r5];
-        this.i = 2;
-        this.h = 1;
-        goto L4
-    L38:
-        if ((r7 & 224) != 224) goto L40;
-        r9 = true;
-        goto L41
-    L34:
-        r8 = false;
-        goto L36
-    L45:
-        r13.N(r6);
-        goto L4
-    L7:
-        if (r0 != 1) goto L8;
-        int r3 = Math.min(r13.a(), 4 - this.i);
-        r13.k(r1.a, this.i, r3);
-        int r10 = this.i + r3;
-        this.i = r10;
-        if (r10 < 4) goto L4;
-        r1.N(0);
-        int r11 = r1.m();
-        wy2 r12 = this.b;
-        if (r12.a(r11) == false) goto L24;
-        this.m = r12.b;
-        if (this.j == true) goto L28;
-        this.l = (((long) r12.f) * 1000000) / ((long) r12.c);
-        sb1 r14 = new sb1();
-        r14.a = this.g;
-        r14.l = lw2.m(this.e);
-        r14.m = lw2.m((String) r12.g);
-        r14.n = 4096;
-        r14.E = r12.d;
-        r14.F = r12.c;
-        r14.d = this.c;
-        r14.f = this.d;
-        this.f.g(new tb1(r14));
-        this.j = true;
-    L28:
-        r1.N(0);
-        this.f.e(4, r1);
-        this.h = 2;
-        goto L4
-    L24:
-        this.i = 0;
-        this.h = 1;
-        goto L4
-    L8:
-        if (r0 != 2) goto L17;
-        int r15 = Math.min(r13.a(), this.m - this.i);
-        this.f.e(r15, r13);
-        int r16 = this.i + r15;
-        this.i = r16;
-        if (r16 < this.m) goto L4;
-        if (this.n != (-9223372036854775807L)) goto L16;
-        r4 = false;
-    L16:
-        rr2.w(r4);
-        this.f.a(this.n, 1, this.m, 0, null);
-        this.n += this.l;
-        this.i = 0;
-        this.h = 0;
-        goto L4
-    L17:
-        tb4.a();
-        return;
+        while (be3Var.a() > 0) {
+            int i = this.h;
+            be3 be3Var2 = this.a;
+            if (i == 0) {
+                byte[] bArr = be3Var.a;
+                int i2 = be3Var.b;
+                int i3 = be3Var.c;
+                while (true) {
+                    if (i2 >= i3) {
+                        be3Var.N(i3);
+                        break;
+                    }
+                    byte b = bArr[i2];
+                    boolean z = (b & 255) == 255;
+                    boolean z2 = this.k && (b & 224) == 224;
+                    this.k = z;
+                    if (z2) {
+                        be3Var.N(i2 + 1);
+                        this.k = false;
+                        be3Var2.a[1] = bArr[i2];
+                        this.i = 2;
+                        this.h = 1;
+                        break;
+                    }
+                    i2++;
+                }
+            } else if (i == 1) {
+                int iMin = Math.min(be3Var.a(), 4 - this.i);
+                be3Var.k(be3Var2.a, this.i, iMin);
+                int i4 = this.i + iMin;
+                this.i = i4;
+                if (i4 >= 4) {
+                    be3Var2.N(0);
+                    int iM = be3Var2.m();
+                    wy2 wy2Var = this.b;
+                    if (wy2Var.a(iM)) {
+                        this.m = wy2Var.b;
+                        if (!this.j) {
+                            this.l = (((long) wy2Var.f) * 1000000) / ((long) wy2Var.c);
+                            sb1 sb1Var = new sb1();
+                            sb1Var.a = this.g;
+                            sb1Var.l = lw2.m(this.e);
+                            sb1Var.m = lw2.m((String) wy2Var.g);
+                            sb1Var.n = 4096;
+                            sb1Var.E = wy2Var.d;
+                            sb1Var.F = wy2Var.c;
+                            sb1Var.d = this.c;
+                            sb1Var.f = this.d;
+                            this.f.g(new tb1(sb1Var));
+                            this.j = true;
+                        }
+                        be3Var2.N(0);
+                        this.f.e(4, be3Var2);
+                        this.h = 2;
+                    } else {
+                        this.i = 0;
+                        this.h = 1;
+                    }
+                }
+            } else {
+                if (i != 2) {
+                    tb4.a();
+                    return;
+                }
+                int iMin2 = Math.min(be3Var.a(), this.m - this.i);
+                this.f.e(iMin2, be3Var);
+                int i5 = this.i + iMin2;
+                this.i = i5;
+                if (i5 >= this.m) {
+                    rr2.w(this.n != -9223372036854775807L);
+                    this.f.a(this.n, 1, this.m, 0, null);
+                    this.n += this.l;
+                    this.i = 0;
+                    this.h = 0;
+                }
+            }
+        }
     }
 
     @Override // defpackage.mz0
@@ -137,20 +120,20 @@ public final class vy2 implements mz0 {
     }
 
     @Override // defpackage.mz0
-    public final void d(boolean r1) {
+    public final void d(boolean z) {
     }
 
     @Override // defpackage.mz0
-    public final void e(int r1, long r2) {
-        this.n = r2;
+    public final void e(int i, long j) {
+        this.n = j;
     }
 
     @Override // defpackage.mz0
-    public final void f(m51 r2, sy4 r3) {
-        r3.a();
-        r3.b();
-        this.g = r3.e;
-        r3.b();
-        this.f = r2.t(r3.d, 1);
+    public final void f(m51 m51Var, sy4 sy4Var) {
+        sy4Var.a();
+        sy4Var.b();
+        this.g = sy4Var.e;
+        sy4Var.b();
+        this.f = m51Var.t(sy4Var.d, 1);
     }
 }

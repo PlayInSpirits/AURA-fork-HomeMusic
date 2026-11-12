@@ -7,9 +7,9 @@ import java.util.ArrayList;
 public abstract class tg1 {
     public ArrayList a;
 
-    public abstract boolean a(mg1 r1);
+    public abstract boolean a(mg1 mg1Var);
 
     public abstract tg1 b();
 
-    public abstract boolean c(mg1 r1);
+    public abstract boolean c(mg1 mg1Var);
 }

@@ -8,14 +8,11 @@ import com.google.android.gms.common.internal.a;
 /* JADX INFO: loaded from: classes.dex */
 public final class sv1 extends a {
     @Override // com.google.android.gms.common.internal.a
-    public final IInterface a(IBinder r2) {
-        r2.getClass();
-        int r1 = gu1.f;
-        IInterface r3 = r2.queryLocalInterface("com.google.android.gms.identitycredentials.internal.IIdentityCredentialService");
-        if ((r3 instanceof hu1) == false) goto L7;
-        return (hu1) r3;
-    L7:
-        return new fu1(r2);
+    public final IInterface a(IBinder iBinder) {
+        iBinder.getClass();
+        int i = gu1.f;
+        IInterface iInterfaceQueryLocalInterface = iBinder.queryLocalInterface("com.google.android.gms.identitycredentials.internal.IIdentityCredentialService");
+        return iInterfaceQueryLocalInterface instanceof hu1 ? (hu1) iInterfaceQueryLocalInterface : new fu1(iBinder);
     }
 
     @Override // com.google.android.gms.common.internal.a

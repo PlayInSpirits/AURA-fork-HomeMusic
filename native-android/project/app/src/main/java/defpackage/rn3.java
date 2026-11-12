@@ -15,7 +15,7 @@ public interface rn3 extends eo0 {
         t();
     }
 
-    void n(kn3 r1, ln3 r2, long r3);
+    void n(kn3 kn3Var, ln3 ln3Var, long j);
 
     void t();
 

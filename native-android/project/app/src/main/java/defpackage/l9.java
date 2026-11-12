@@ -11,14 +11,14 @@ public final class l9 implements TransformationMethod {
     public Locale n;
 
     @Override // android.text.method.TransformationMethod
-    public final CharSequence getTransformation(CharSequence r1, View r2) {
-        if (r1 != null) goto L4;
+    public final CharSequence getTransformation(CharSequence charSequence, View view) {
+        if (charSequence != null) {
+            return charSequence.toString().toUpperCase(this.n);
+        }
         return null;
-    L4:
-        return r1.toString().toUpperCase(this.n);
     }
 
     @Override // android.text.method.TransformationMethod
-    public final void onFocusChanged(View r1, CharSequence r2, boolean r3, int r4, Rect r5) {
+    public final void onFocusChanged(View view, CharSequence charSequence, boolean z, int i, Rect rect) {
     }
 }

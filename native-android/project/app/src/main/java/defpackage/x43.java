@@ -6,32 +6,27 @@ public final class x43 extends ch4 {
     public final if1 e;
     public final ch4 f;
 
-    public x43(long r1, gh4 r3, if1 r4, ch4 r5) {
-        super(r1, r3);
-        this.e = r4;
-        this.f = r5;
-        r5.k();
+    public x43(long j, gh4 gh4Var, if1 if1Var, ch4 ch4Var) {
+        super(j, gh4Var);
+        this.e = if1Var;
+        this.f = ch4Var;
+        ch4Var.k();
     }
 
     @Override // defpackage.ch4
     public final void c() {
-        ch4 r0 = this.f;
-        if (this.c == false) goto L5;
-        return;
-    L5:
-        if (this.b == r0.g()) goto L7;
-        a();
-    L7:
-        r0.l();
+        ch4 ch4Var = this.f;
+        if (this.c) {
+            return;
+        }
+        if (this.b != ch4Var.g()) {
+            a();
+        }
+        ch4Var.l();
         this.c = true;
-        Object r1 = jh4.c;
-        monitor-enter(r1);
-        o();     // Catch: Throwable -> L12
-        monitor-exit(r1);
-        return;
-    L12:
-        th = move-exception;
-        throw th;
+        synchronized (jh4.c) {
+            o();
+        }
     }
 
     @Override // defpackage.ch4
@@ -66,13 +61,13 @@ public final class x43 extends ch4 {
     }
 
     @Override // defpackage.ch4
-    public final void n(rl4 r1) {
-        o54 r0 = jh4.a;
+    public final void n(rl4 rl4Var) {
+        o54 o54Var = jh4.a;
         throw new IllegalStateException("Cannot modify a state object in a read-only snapshot");
     }
 
     @Override // defpackage.ch4
-    public final ch4 u(if1 r7) {
-        return new x43(this.b, this.a, jh4.k(r7, this.e, true), this.f);
+    public final ch4 u(if1 if1Var) {
+        return new x43(this.b, this.a, jh4.k(if1Var, this.e, true), this.f);
     }
 }

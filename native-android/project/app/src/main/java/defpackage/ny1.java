@@ -8,56 +8,48 @@ import android.view.MotionEvent;
 public final class ny1 implements GestureDetector.OnGestureListener {
     public final /* synthetic */ bk n;
 
-    public ny1(bk r1) {
-        this.n = r1;
+    public ny1(bk bkVar) {
+        this.n = bkVar;
     }
 
     @Override // android.view.GestureDetector.OnGestureListener
-    public final boolean onDown(MotionEvent r1) {
+    public final boolean onDown(MotionEvent motionEvent) {
         return true;
     }
 
     @Override // android.view.GestureDetector.OnGestureListener
-    public final boolean onFling(MotionEvent r3, MotionEvent r4, float r5, float r6) {
-        bk r2 = this.n;
-        ja r7 = (ja) r2.q;
-        if (r2.p == true) goto L21;
-        int r8 = r2.o;
-        int r1 = 2;
-        if (r8 == 1) goto L8;
-        if (r8 != 2) goto L21;
-        if (Math.abs(r6) <= Math.abs(r5)) goto L21;
-        if (r6 <= 0.0f) goto L20;
-        r1 = 1;
-    L20:
-        r7.invoke(new o91(r1));
-        goto L21
-    L8:
-        if (Math.abs(r5) <= Math.abs(r6)) goto L21;
-        if (r5 <= 0.0f) goto L12;
-        r1 = 1;
-    L12:
-        r7.invoke(new o91(r1));
-        return true;
-    L21:
+    public final boolean onFling(MotionEvent motionEvent, MotionEvent motionEvent2, float f, float f2) {
+        bk bkVar = this.n;
+        ja jaVar = (ja) bkVar.q;
+        if (!bkVar.p) {
+            int i = bkVar.o;
+            if (i == 1) {
+                if (Math.abs(f) > Math.abs(f2)) {
+                    jaVar.invoke(new o91(f > 0.0f ? 1 : 2));
+                    return true;
+                }
+            } else if (i == 2 && Math.abs(f2) > Math.abs(f)) {
+                jaVar.invoke(new o91(f2 > 0.0f ? 1 : 2));
+            }
+        }
         return true;
     }
 
     @Override // android.view.GestureDetector.OnGestureListener
-    public final void onLongPress(MotionEvent r1) {
+    public final void onLongPress(MotionEvent motionEvent) {
     }
 
     @Override // android.view.GestureDetector.OnGestureListener
-    public final boolean onScroll(MotionEvent r1, MotionEvent r2, float r3, float r4) {
+    public final boolean onScroll(MotionEvent motionEvent, MotionEvent motionEvent2, float f, float f2) {
         return true;
     }
 
     @Override // android.view.GestureDetector.OnGestureListener
-    public final void onShowPress(MotionEvent r1) {
+    public final void onShowPress(MotionEvent motionEvent) {
     }
 
     @Override // android.view.GestureDetector.OnGestureListener
-    public final boolean onSingleTapUp(MotionEvent r1) {
+    public final boolean onSingleTapUp(MotionEvent motionEvent) {
         return true;
     }
 }

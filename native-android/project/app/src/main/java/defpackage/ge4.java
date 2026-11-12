@@ -4,52 +4,28 @@ package defpackage;
 /* JADX INFO: loaded from: classes.dex */
 public final class ge4 {
     public final Object a;
-    public jw4 b;
-    public gn2 c;
-    public do2 d;
-    public Object e;
-    public an2 f;
-    public long g;
-    public long h;
-    public long i;
-    public boolean j;
-    public boolean k;
-    public long l;
-    public long m;
-    public long n;
-    public boolean o;
-    public yw1 p;
+    public jw4 b = jw4.b;
+    public gn2 c = gn2.g;
+    public do2 d = null;
+    public Object e = null;
+    public an2 f = null;
+    public long g = -9223372036854775807L;
+    public long h = -9223372036854775807L;
+    public long i = -9223372036854775807L;
+    public boolean j = false;
+    public boolean k = false;
+    public long l = 0;
+    public long m = -9223372036854775807L;
+    public long n = 0;
+    public boolean o = false;
+    public yw1 p = gy3.r;
 
-    public ge4(Object r5) {
-        this.a = r5;
-        this.b = jw4.b;
-        this.c = gn2.g;
-        this.d = null;
-        this.e = null;
-        this.f = null;
-        this.g = -9223372036854775807L;
-        this.h = -9223372036854775807L;
-        this.i = -9223372036854775807L;
-        this.j = false;
-        this.k = false;
-        this.l = 0;
-        this.m = -9223372036854775807L;
-        this.n = 0;
-        this.o = false;
-        this.p = gy3.r;
+    public ge4(Object obj) {
+        this.a = obj;
     }
 
-    public final void a(long r3) {
-        if (r3 != (-9223372036854775807L)) goto L5;
-    L8:
-        boolean r0 = true;
-    L9:
-        rr2.l(r0);
-        this.m = r3;
-        return;
-    L5:
-        if (r3 >= 0) goto L8;
-        r0 = false;
-        goto L9
+    public final void a(long j) {
+        rr2.l(j == -9223372036854775807L || j >= 0);
+        this.m = j;
     }
 }

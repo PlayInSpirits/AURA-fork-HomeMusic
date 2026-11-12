@@ -11,25 +11,24 @@ public final /* synthetic */ class fi4 implements View.OnClickListener {
     public final /* synthetic */ SongBottomSheetDialog o;
     public final /* synthetic */ ik p;
 
-    public /* synthetic */ fi4(SongBottomSheetDialog r1, ik r2, int r3) {
-        this.n = r3;
-        this.o = r1;
-        this.p = r2;
+    public /* synthetic */ fi4(SongBottomSheetDialog songBottomSheetDialog, ik ikVar, int i) {
+        this.n = i;
+        this.o = songBottomSheetDialog;
+        this.p = ikVar;
     }
 
     @Override // android.view.View.OnClickListener
-    public final void onClick(View r4) {
-        int r5 = this.n;
-        ik r1 = this.p;
-        SongBottomSheetDialog r3 = this.o;
-        switch(r5) {
-            case 0: goto L6;
-            default: goto L4;
-        };
-    L4:
-        ((MainActivity) r3.X()).F(r1, true);
-        return;
-    L6:
-        ((MainActivity) r3.X()).F(r1, !"song".equals(r1.c));
+    public final void onClick(View view) {
+        int i = this.n;
+        ik ikVar = this.p;
+        SongBottomSheetDialog songBottomSheetDialog = this.o;
+        switch (i) {
+            case 0:
+                ((MainActivity) songBottomSheetDialog.X()).F(ikVar, !"song".equals(ikVar.c));
+                break;
+            default:
+                ((MainActivity) songBottomSheetDialog.X()).F(ikVar, true);
+                break;
+        }
     }
 }

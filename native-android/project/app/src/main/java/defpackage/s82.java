@@ -6,8 +6,8 @@ public final class s82 {
     public final /* synthetic */ lm0 a;
     public final /* synthetic */ boolean b;
 
-    public s82(lm0 r1, boolean r2) {
-        this.a = r1;
-        this.b = r2;
+    public s82(lm0 lm0Var, boolean z) {
+        this.a = lm0Var;
+        this.b = z;
     }
 }

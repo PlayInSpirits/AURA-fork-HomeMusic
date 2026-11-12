@@ -6,6 +6,6 @@ import android.graphics.Bitmap;
 /* JADX INFO: loaded from: classes.dex */
 public final class uv0 extends pa {
     @Override // defpackage.pa, defpackage.zs
-    public final void d(Bitmap r1) {
+    public final void d(Bitmap bitmap) {
     }
 }

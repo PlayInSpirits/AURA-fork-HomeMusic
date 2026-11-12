@@ -8,19 +8,19 @@ import android.text.style.LineHeightSpan;
 public final class na2 implements LineHeightSpan {
     public final float n;
 
-    public na2(float r1) {
-        this.n = r1;
+    public na2(float f) {
+        this.n = f;
     }
 
     @Override // android.text.style.LineHeightSpan
-    public final void chooseHeight(CharSequence r1, int r2, int r3, int r4, int r5, Paint.FontMetricsInt r6) {
-        int r7 = r6.descent - r6.ascent;
-        if (r7 > 0) goto L5;
-        return;
-    L5:
-        int r0 = (int) Math.ceil(this.n);
-        int r8 = (int) Math.ceil(((double) r6.descent) * ((double) ((r0 * 1.0f) / r7)));
-        r6.descent = r8;
-        r6.ascent = r8 - r0;
+    public final void chooseHeight(CharSequence charSequence, int i, int i2, int i3, int i4, Paint.FontMetricsInt fontMetricsInt) {
+        int i5 = fontMetricsInt.descent - fontMetricsInt.ascent;
+        if (i5 <= 0) {
+            return;
+        }
+        int iCeil = (int) Math.ceil(this.n);
+        int iCeil2 = (int) Math.ceil(((double) fontMetricsInt.descent) * ((double) ((iCeil * 1.0f) / i5)));
+        fontMetricsInt.descent = iCeil2;
+        fontMetricsInt.ascent = iCeil2 - iCeil;
     }
 }

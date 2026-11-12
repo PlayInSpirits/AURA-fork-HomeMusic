@@ -30,7 +30,7 @@ public final class ww4 implements Lock {
     }
 
     @Override // java.util.concurrent.locks.Lock
-    public final boolean tryLock(long r1, TimeUnit r3) {
+    public final boolean tryLock(long j, TimeUnit timeUnit) {
         return true;
     }
 }

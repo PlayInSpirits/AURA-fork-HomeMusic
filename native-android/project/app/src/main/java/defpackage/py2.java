@@ -5,8 +5,8 @@ package defpackage;
 public final class py2 extends uv {
     public final be3 p;
 
-    public py2(int r2, be3 r3) {
-        super(r2, 2);
-        this.p = r3;
+    public py2(int i, be3 be3Var) {
+        super(i, 2);
+        this.p = be3Var;
     }
 }

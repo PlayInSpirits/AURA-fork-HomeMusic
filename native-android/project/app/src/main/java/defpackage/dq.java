@@ -12,59 +12,58 @@ import java.util.ArrayList;
 public abstract class dq {
     public final Context a;
     public final ExtendedFloatingActionButton b;
-    public final ArrayList c;
+    public final ArrayList c = new ArrayList();
     public final d34 d;
     public zx2 e;
     public zx2 f;
 
-    public dq(ExtendedFloatingActionButton r2, d34 r3) {
-        this.c = new ArrayList();
-        this.b = r2;
-        this.a = r2.getContext();
-        this.d = r3;
+    public dq(ExtendedFloatingActionButton extendedFloatingActionButton, d34 d34Var) {
+        this.b = extendedFloatingActionButton;
+        this.a = extendedFloatingActionButton.getContext();
+        this.d = d34Var;
     }
 
     public AnimatorSet a() {
-        zx2 r0 = this.f;
-        if (r0 != null) goto L10;
-        if (this.e != null) goto L8;
-        this.e = zx2.b(this.a, c());
-    L8:
-        r0 = this.e;
-        r0.getClass();
-    L10:
-        return b(r0);
+        zx2 zx2Var = this.f;
+        if (zx2Var == null) {
+            if (this.e == null) {
+                this.e = zx2.b(this.a, c());
+            }
+            zx2Var = this.e;
+            zx2Var.getClass();
+        }
+        return b(zx2Var);
     }
 
-    public final AnimatorSet b(zx2 r5) {
-        ArrayList r0 = new ArrayList();
-        boolean r2 = r5.g("opacity");
-        ExtendedFloatingActionButton r3 = this.b;
-        if (r2 == false) goto L6;
-        r0.add(r5.d("opacity", r3, View.ALPHA));
-    L6:
-        if (r5.g("scale") == false) goto L9;
-        r0.add(r5.d("scale", r3, View.SCALE_Y));
-        r0.add(r5.d("scale", r3, View.SCALE_X));
-    L9:
-        if (r5.g("width") == false) goto L12;
-        r0.add(r5.d("width", r3, ExtendedFloatingActionButton.V));
-    L12:
-        if (r5.g("height") == false) goto L15;
-        r0.add(r5.d("height", r3, ExtendedFloatingActionButton.W));
-    L15:
-        if (r5.g("paddingStart") == false) goto L18;
-        r0.add(r5.d("paddingStart", r3, ExtendedFloatingActionButton.a0));
-    L18:
-        if (r5.g("paddingEnd") == false) goto L21;
-        r0.add(r5.d("paddingEnd", r3, ExtendedFloatingActionButton.b0));
-    L21:
-        if (r5.g("labelOpacity") == false) goto L23;
-        r0.add(r5.d("labelOpacity", r3, new cq(this)));
-    L23:
-        AnimatorSet r4 = new AnimatorSet();
-        gi1.R(r4, r0);
-        return r4;
+    public final AnimatorSet b(zx2 zx2Var) {
+        ArrayList arrayList = new ArrayList();
+        boolean zG = zx2Var.g("opacity");
+        ExtendedFloatingActionButton extendedFloatingActionButton = this.b;
+        if (zG) {
+            arrayList.add(zx2Var.d("opacity", extendedFloatingActionButton, View.ALPHA));
+        }
+        if (zx2Var.g("scale")) {
+            arrayList.add(zx2Var.d("scale", extendedFloatingActionButton, View.SCALE_Y));
+            arrayList.add(zx2Var.d("scale", extendedFloatingActionButton, View.SCALE_X));
+        }
+        if (zx2Var.g("width")) {
+            arrayList.add(zx2Var.d("width", extendedFloatingActionButton, ExtendedFloatingActionButton.V));
+        }
+        if (zx2Var.g("height")) {
+            arrayList.add(zx2Var.d("height", extendedFloatingActionButton, ExtendedFloatingActionButton.W));
+        }
+        if (zx2Var.g("paddingStart")) {
+            arrayList.add(zx2Var.d("paddingStart", extendedFloatingActionButton, ExtendedFloatingActionButton.a0));
+        }
+        if (zx2Var.g("paddingEnd")) {
+            arrayList.add(zx2Var.d("paddingEnd", extendedFloatingActionButton, ExtendedFloatingActionButton.b0));
+        }
+        if (zx2Var.g("labelOpacity")) {
+            arrayList.add(zx2Var.d("labelOpacity", extendedFloatingActionButton, new cq(this)));
+        }
+        AnimatorSet animatorSet = new AnimatorSet();
+        gi1.R(animatorSet, arrayList);
+        return animatorSet;
     }
 
     public abstract int c();
@@ -75,7 +74,7 @@ public abstract class dq {
 
     public abstract void e();
 
-    public abstract void f(Animator r1);
+    public abstract void f(Animator animator);
 
     public abstract void g();
 

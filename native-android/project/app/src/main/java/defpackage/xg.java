@@ -9,16 +9,16 @@ public final class xg implements PopupWindow.OnDismissListener {
     public final /* synthetic */ sg n;
     public final /* synthetic */ yg o;
 
-    public xg(yg r1, sg r2) {
-        this.o = r1;
-        this.n = r2;
+    public xg(yg ygVar, sg sgVar) {
+        this.o = ygVar;
+        this.n = sgVar;
     }
 
     @Override // android.widget.PopupWindow.OnDismissListener
     public final void onDismiss() {
-        ViewTreeObserver r0 = this.o.T.getViewTreeObserver();
-        if (r0 == null) goto L6;
-        r0.removeGlobalOnLayoutListener(this.n);
-        return;
+        ViewTreeObserver viewTreeObserver = this.o.T.getViewTreeObserver();
+        if (viewTreeObserver != null) {
+            viewTreeObserver.removeGlobalOnLayoutListener(this.n);
+        }
     }
 }

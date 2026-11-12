@@ -7,9 +7,9 @@ public final class k64 {
     public int b;
     public int c;
 
-    public k64(int r1, float r2, int r3) {
-        this.a = r2;
-        this.b = r1;
-        this.c = r3;
+    public k64(int i, float f, int i2) {
+        this.a = f;
+        this.b = i;
+        this.c = i2;
     }
 }

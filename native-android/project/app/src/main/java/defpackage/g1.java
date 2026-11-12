@@ -10,42 +10,38 @@ public class g1 extends jb4 {
     public final Map n;
     public final /* synthetic */ q1 o;
 
-    public g1(q1 r1, Map r2) {
-        this.o = r1;
-        r2.getClass();
-        this.n = r2;
+    public g1(q1 q1Var, Map map) {
+        this.o = q1Var;
+        map.getClass();
+        this.n = map;
     }
 
     @Override // java.util.AbstractCollection, java.util.Collection, java.util.Set
     public final void clear() {
-        Iterator r2 = iterator();
-    L3:
-        e1 r0 = (e1) r2;
-        if (r0.hasNext() == false) goto L6;
-        r0.next();
-        r0.remove();
-        goto L3
+        Iterator it = iterator();
+        while (true) {
+            e1 e1Var = (e1) it;
+            if (!e1Var.hasNext()) {
+                return;
+            }
+            e1Var.next();
+            e1Var.remove();
+        }
     }
 
     @Override // java.util.AbstractCollection, java.util.Collection, java.util.Set
-    public final boolean contains(Object r1) {
-        return this.n.containsKey(r1);
+    public final boolean contains(Object obj) {
+        return this.n.containsKey(obj);
     }
 
     @Override // java.util.AbstractCollection, java.util.Collection, java.util.Set
-    public final boolean containsAll(Collection r1) {
-        return this.n.keySet().containsAll(r1);
+    public final boolean containsAll(Collection collection) {
+        return this.n.keySet().containsAll(collection);
     }
 
     @Override // java.util.AbstractSet, java.util.Collection, java.util.Set
-    public final boolean equals(Object r1) {
-        if (this != r1) goto L4;
-        return true;
-    L4:
-        if (this.n.keySet().equals(r1) == true) goto L10;
-        return false;
-    L10:
-        return true;
+    public final boolean equals(Object obj) {
+        return this == obj || this.n.keySet().equals(obj);
     }
 
     @Override // java.util.AbstractSet, java.util.Collection, java.util.Set
@@ -64,20 +60,17 @@ public class g1 extends jb4 {
     }
 
     @Override // java.util.AbstractCollection, java.util.Collection, java.util.Set
-    public final boolean remove(Object r3) {
-        Collection r4 = (Collection) this.n.remove(r3);
-        if (r4 == null) goto L5;
-        int r1 = r4.size();
-        r4.clear();
-        this.o.s -= r1;
-    L6:
-        if (r1 <= 0) goto L9;
-        return true;
-    L9:
-        return false;
-    L5:
-        r1 = 0;
-        goto L6
+    public final boolean remove(Object obj) {
+        int size;
+        Collection collection = (Collection) this.n.remove(obj);
+        if (collection != null) {
+            size = collection.size();
+            collection.clear();
+            this.o.s -= size;
+        } else {
+            size = 0;
+        }
+        return size > 0;
     }
 
     @Override // java.util.AbstractCollection, java.util.Collection, java.util.Set

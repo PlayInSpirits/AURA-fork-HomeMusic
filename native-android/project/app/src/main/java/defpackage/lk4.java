@@ -6,18 +6,18 @@ public final class lk4 implements vd0, ye0 {
     public final vd0 n;
     public final ne0 o;
 
-    public lk4(vd0 r1, ne0 r2) {
-        this.n = r1;
-        this.o = r2;
+    public lk4(vd0 vd0Var, ne0 ne0Var) {
+        this.n = vd0Var;
+        this.o = ne0Var;
     }
 
     @Override // defpackage.ye0
     public final ye0 getCallerFrame() {
-        vd0 r1 = this.n;
-        if ((r1 instanceof ye0) == true) goto L5;
+        vd0 vd0Var = this.n;
+        if (vd0Var instanceof ye0) {
+            return (ye0) vd0Var;
+        }
         return null;
-    L5:
-        return (ye0) r1;
     }
 
     @Override // defpackage.vd0
@@ -26,7 +26,7 @@ public final class lk4 implements vd0, ye0 {
     }
 
     @Override // defpackage.vd0
-    public final void resumeWith(Object r1) {
-        this.n.resumeWith(r1);
+    public final void resumeWith(Object obj) {
+        this.n.resumeWith(obj);
     }
 }

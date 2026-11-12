@@ -16,9 +16,6 @@ public final class HubMe {
     private boolean isAdmin;
     private String username;
 
-    public HubMe() {
-    }
-
     public final String getEmail() {
         return this.email;
     }
@@ -39,23 +36,23 @@ public final class HubMe {
         return this.isAdmin;
     }
 
-    public final void setAdmin(boolean r1) {
-        this.isAdmin = r1;
+    public final void setAdmin(boolean z) {
+        this.isAdmin = z;
     }
 
-    public final void setEmail(String r1) {
-        this.email = r1;
+    public final void setEmail(String str) {
+        this.email = str;
     }
 
-    public final void setGoogleEmail(String r1) {
-        this.googleEmail = r1;
+    public final void setGoogleEmail(String str) {
+        this.googleEmail = str;
     }
 
-    public final void setId(int r1) {
-        this.id = r1;
+    public final void setId(int i) {
+        this.id = i;
     }
 
-    public final void setUsername(String r1) {
-        this.username = r1;
+    public final void setUsername(String str) {
+        this.username = str;
     }
 }

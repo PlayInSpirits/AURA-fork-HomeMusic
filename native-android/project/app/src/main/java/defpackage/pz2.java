@@ -5,7 +5,7 @@ package defpackage;
 public final class pz2 {
     public final boolean a;
 
-    public pz2(boolean r1) {
-        this.a = r1;
+    public pz2(boolean z) {
+        this.a = z;
     }
 }

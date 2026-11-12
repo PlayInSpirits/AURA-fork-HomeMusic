@@ -34,34 +34,34 @@ public final class li0 {
     public final ne0 u;
     public boolean v;
 
-    public li0(Context r1, String r2, ro4 r3, pz1 r4, List r5, boolean r6, r24 r7, Executor r8, Executor r9, Intent r10, boolean r11, boolean r12, Set r13, String r14, File r15, Callable r16, List r17, List r18, boolean r19, y34 r20, ne0 r21) {
-        r1.getClass();
-        r4.getClass();
-        r8.getClass();
-        r9.getClass();
-        r17.getClass();
-        r18.getClass();
-        this.a = r1;
-        this.b = r2;
-        this.c = r3;
-        this.d = r4;
-        this.e = r5;
-        this.f = r6;
-        this.g = r7;
-        this.h = r8;
-        this.i = r9;
-        this.j = r10;
-        this.k = r11;
-        this.l = r12;
-        this.m = r13;
-        this.n = r14;
-        this.o = r15;
-        this.p = r16;
-        this.q = r17;
-        this.r = r18;
-        this.s = r19;
-        this.t = r20;
-        this.u = r21;
+    public li0(Context context, String str, ro4 ro4Var, pz1 pz1Var, List list, boolean z, r24 r24Var, Executor executor, Executor executor2, Intent intent, boolean z2, boolean z3, Set set, String str2, File file, Callable callable, List list2, List list3, boolean z4, y34 y34Var, ne0 ne0Var) {
+        context.getClass();
+        pz1Var.getClass();
+        executor.getClass();
+        executor2.getClass();
+        list2.getClass();
+        list3.getClass();
+        this.a = context;
+        this.b = str;
+        this.c = ro4Var;
+        this.d = pz1Var;
+        this.e = list;
+        this.f = z;
+        this.g = r24Var;
+        this.h = executor;
+        this.i = executor2;
+        this.j = intent;
+        this.k = z2;
+        this.l = z3;
+        this.m = set;
+        this.n = str2;
+        this.o = file;
+        this.p = callable;
+        this.q = list2;
+        this.r = list3;
+        this.s = z4;
+        this.t = y34Var;
+        this.u = ne0Var;
         this.v = true;
     }
 }

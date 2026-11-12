@@ -11,50 +11,48 @@ public final class nj2 extends uj2 {
     public final /* synthetic */ int e;
     public final /* synthetic */ v14 f;
 
-    public /* synthetic */ nj2(Object r1, v14 r2, int r3) {
-        this.e = r3;
-        this.f = r2;
-        super(r1);
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public /* synthetic */ nj2(Object obj, v14 v14Var, int i) {
+        super(obj);
+        this.e = i;
+        this.f = v14Var;
     }
 
     @Override // defpackage.uj2
     public void c() {
-        switch(this.e) {
-            case 2: goto L6;
-            default: goto L4;
-        };
-    L4:
-        super.c();
-        return;
-    L6:
-        this.f.b(-1, null);
+        switch (this.e) {
+            case 2:
+                this.f.b(-1, null);
+                break;
+            default:
+                super.c();
+                break;
+        }
     }
 
     @Override // defpackage.uj2
-    public final void d(Object r4) {
-        int r0 = this.e;
-        v14 r3 = this.f;
-        switch(r0) {
-            case 0: goto L11;
-            case 1: goto L6;
-            default: goto L4;
-        };
-    L4:
-        r3.b(0, (Bundle) r4);
-        return;
-    L6:
-        List r5 = (List) r4;
-        if (r5 != null) goto L9;
-        r3.b(-1, null);
-        return;
-    L9:
-        Bundle r1 = new Bundle();
-        r1.putParcelableArray("search_results", (Parcelable[]) uc5.k(r5, MediaBrowserCompat$MediaItem.CREATOR).toArray(new MediaBrowserCompat$MediaItem[0]));
-        r3.b(0, r1);
-        return;
-    L11:
-        Bundle r2 = new Bundle();
-        r2.putParcelable("media_item", uc5.j((ij2) r4, MediaBrowserCompat$MediaItem.CREATOR));
-        r3.b(0, r2);
+    public final void d(Object obj) {
+        int i = this.e;
+        v14 v14Var = this.f;
+        switch (i) {
+            case 0:
+                Bundle bundle = new Bundle();
+                bundle.putParcelable("media_item", uc5.j((ij2) obj, MediaBrowserCompat$MediaItem.CREATOR));
+                v14Var.b(0, bundle);
+                break;
+            case 1:
+                List list = (List) obj;
+                if (list != null) {
+                    Bundle bundle2 = new Bundle();
+                    bundle2.putParcelableArray("search_results", (Parcelable[]) uc5.k(list, MediaBrowserCompat$MediaItem.CREATOR).toArray(new MediaBrowserCompat$MediaItem[0]));
+                    v14Var.b(0, bundle2);
+                } else {
+                    v14Var.b(-1, null);
+                }
+                break;
+            default:
+                v14Var.b(0, (Bundle) obj);
+                break;
+        }
     }
 }

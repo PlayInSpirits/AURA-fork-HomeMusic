@@ -7,20 +7,16 @@ import android.view.View;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class q75 extends View.BaseSavedState {
-    public static final Parcelable.Creator<q75> CREATOR = null;
+    public static final Parcelable.Creator<q75> CREATOR = new yd3(10);
     public int n;
     public int o;
     public Parcelable p;
 
-    static {
-        CREATOR = new yd3(10);
-    }
-
     @Override // android.view.View.BaseSavedState, android.view.AbsSavedState, android.os.Parcelable
-    public final void writeToParcel(Parcel r2, int r3) {
-        super.writeToParcel(r2, r3);
-        r2.writeInt(this.n);
-        r2.writeInt(this.o);
-        r2.writeParcelable(this.p, r3);
+    public final void writeToParcel(Parcel parcel, int i) {
+        super.writeToParcel(parcel, i);
+        parcel.writeInt(this.n);
+        parcel.writeInt(this.o);
+        parcel.writeParcelable(this.p, i);
     }
 }

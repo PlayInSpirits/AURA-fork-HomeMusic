@@ -9,7 +9,7 @@ public abstract class pc {
         return new nc(new Path());
     }
 
-    public static final void b(String r1) {
-        throw new IllegalStateException(r1);
+    public static final void b(String str) {
+        throw new IllegalStateException(str);
     }
 }

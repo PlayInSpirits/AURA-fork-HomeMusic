@@ -8,26 +8,22 @@ import java.util.function.Predicate;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class vd2 implements Collection, x32 {
-    public static final vd2 p = null;
+    public static final vd2 p = new vd2(u01.n);
     public final List n;
     public final int o;
 
-    static {
-        p = new vd2(u01.n);
-    }
-
-    public vd2(List r1) {
-        this.n = r1;
-        this.o = r1.size();
+    public vd2(List list) {
+        this.n = list;
+        this.o = list.size();
     }
 
     @Override // java.util.Collection
-    public final /* bridge */ /* synthetic */ boolean add(Object r1) {
+    public final /* bridge */ /* synthetic */ boolean add(Object obj) {
         throw new UnsupportedOperationException("Operation is not supported for read-only collection");
     }
 
     @Override // java.util.Collection
-    public final boolean addAll(Collection r1) {
+    public final boolean addAll(Collection collection) {
         throw new UnsupportedOperationException("Operation is not supported for read-only collection");
     }
 
@@ -37,31 +33,26 @@ public final class vd2 implements Collection, x32 {
     }
 
     @Override // java.util.Collection
-    public final boolean contains(Object r2) {
-        if ((r2 instanceof ud2) == true) goto L6;
-        return false;
-    L6:
-        List r1 = this.n;
-        return r1.contains((ud2) r2);
+    public final boolean contains(Object obj) {
+        if (!(obj instanceof ud2)) {
+            return false;
+        }
+        return this.n.contains((ud2) obj);
     }
 
     @Override // java.util.Collection
-    public final boolean containsAll(Collection r1) {
-        return this.n.containsAll(r1);
+    public final boolean containsAll(Collection collection) {
+        return this.n.containsAll(collection);
     }
 
     @Override // java.util.Collection
-    public final boolean equals(Object r2) {
-        if (this != r2) goto L5;
-        return true;
-    L5:
-        if ((r2 instanceof vd2) == false) goto L13;
-        List r3 = ((vd2) r2).n;
-        if (this.n.equals(r3) == true) goto L11;
-        return false;
-    L11:
-        return true;
-    L13:
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj instanceof vd2) {
+            return this.n.equals(((vd2) obj).n);
+        }
         return false;
     }
 
@@ -81,22 +72,22 @@ public final class vd2 implements Collection, x32 {
     }
 
     @Override // java.util.Collection
-    public final boolean remove(Object r1) {
+    public final boolean remove(Object obj) {
         throw new UnsupportedOperationException("Operation is not supported for read-only collection");
     }
 
     @Override // java.util.Collection
-    public final boolean removeAll(Collection r1) {
+    public final boolean removeAll(Collection collection) {
         throw new UnsupportedOperationException("Operation is not supported for read-only collection");
     }
 
     @Override // java.util.Collection
-    public final boolean removeIf(Predicate r1) {
+    public final boolean removeIf(Predicate predicate) {
         throw new UnsupportedOperationException("Operation is not supported for read-only collection");
     }
 
     @Override // java.util.Collection
-    public final boolean retainAll(Collection r1) {
+    public final boolean retainAll(Collection collection) {
         throw new UnsupportedOperationException("Operation is not supported for read-only collection");
     }
 
@@ -115,7 +106,7 @@ public final class vd2 implements Collection, x32 {
     }
 
     @Override // java.util.Collection
-    public final Object[] toArray(Object[] r1) {
-        return zz1.J(this, r1);
+    public final Object[] toArray(Object[] objArr) {
+        return zz1.J(this, objArr);
     }
 }

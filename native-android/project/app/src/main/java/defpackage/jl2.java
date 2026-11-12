@@ -7,47 +7,44 @@ public final /* synthetic */ class jl2 implements xl2, qc2 {
     public final /* synthetic */ bm2 o;
     public final /* synthetic */ boolean p;
 
-    public /* synthetic */ jl2(bm2 r1, boolean r2, int r3) {
-        this.n = r3;
-        this.o = r1;
-        this.p = r2;
+    public /* synthetic */ jl2(bm2 bm2Var, boolean z, int i) {
+        this.n = i;
+        this.o = bm2Var;
+        this.p = z;
     }
 
     @Override // defpackage.xl2
-    public void d(pu1 r3, int r4) {
-        int r0 = this.n;
-        boolean r1 = this.p;
-        bm2 r2 = this.o;
-        switch(r0) {
-            case 0: goto L8;
-            case 1: goto L4;
-            case 2: goto L6;
-            default: goto L4;
-        };
-    L4:
-        r3.B0(r2.c, r4, r1);
-        return;
-    L6:
-        r3.H0(r2.c, r4, r1);
-        return;
-    L8:
-        r3.h0(r2.c, r4, r1);
+    public void d(pu1 pu1Var, int i) {
+        int i2 = this.n;
+        boolean z = this.p;
+        bm2 bm2Var = this.o;
+        switch (i2) {
+            case 0:
+                pu1Var.h0(bm2Var.c, i, z);
+                break;
+            case 1:
+            default:
+                pu1Var.B0(bm2Var.c, i, z);
+                break;
+            case 2:
+                pu1Var.H0(bm2Var.c, i, z);
+                break;
+        }
     }
 
     @Override // defpackage.qc2
-    public void invoke(Object r3) {
-        int r0 = this.n;
-        boolean r1 = this.p;
-        bm2 r2 = this.o;
-        oi3 r4 = (oi3) r3;
-        switch(r0) {
-            case 1: goto L6;
-            default: goto L4;
-        };
-    L4:
-        r4.C(r2.q.t, r1);
-        return;
-    L6:
-        r4.C(r2.q.t, r1);
+    public void invoke(Object obj) {
+        int i = this.n;
+        boolean z = this.p;
+        bm2 bm2Var = this.o;
+        oi3 oi3Var = (oi3) obj;
+        switch (i) {
+            case 1:
+                oi3Var.C(bm2Var.q.t, z);
+                break;
+            default:
+                oi3Var.C(bm2Var.q.t, z);
+                break;
+        }
     }
 }

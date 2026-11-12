@@ -14,51 +14,50 @@ public final class sh implements View.OnClickListener {
     public Method p;
     public Context q;
 
-    public sh(View r1, String r2) {
-        this.n = r1;
-        this.o = r2;
+    public sh(View view, String str) {
+        this.n = view;
+        this.o = str;
     }
 
     @Override // android.view.View.OnClickListener
-    public final void onClick(View r6) {
-        if (this.p != null) goto L34;
-        View r0 = this.n;
-        Context r1 = r0.getContext();
-    L5:
-        String r2 = this.o;
-        if (r1 == null) goto L17;
-        if (r1.isRestricted() == true) goto L14;
-        Method r3 = r1.getClass().getMethod(r2, new Class[]{View.class});     // Catch: NoSuchMethodException -> L31
-        if (r3 == null) goto L14;
-        this.p = r3;     // Catch: NoSuchMethodException -> L31
-        this.q = r1;     // Catch: NoSuchMethodException -> L31
-    L14:
-        if ((r1 instanceof ContextWrapper) == true) goto L15;
-        r1 = null;
-        goto L5
-    L15:
-        r1 = ((ContextWrapper) r1).getBaseContext();
-        goto L5
-    L17:
-        int r5 = r0.getId();
-        if (r5 != (-1)) goto L20;
-        String r7 = "";
-    L21:
-        StringBuilder r4 = xa3.j("Could not find method ", r2, "(View) in a parent or ancestor Context for android:onClick attribute defined on view ");
-        r4.append(r0.getClass());
-        r4.append(r7);
-        throw new IllegalStateException(r4.toString());
-    L20:
-        r7 = " with id '" + r0.getContext().getResources().getResourceEntryName(r5) + "'";
-    L34:
-        this.p.invoke(this.q, new Object[]{r6});     // Catch: InvocationTargetException -> L25 IllegalAccessException -> L28
-        return;
-    L28:
-        e = move-exception;
-        mj0.j("Could not execute non-public method for android:onClick", e);
-        return;
-    L25:
-        e = move-exception;
-        mj0.j("Could not execute method for android:onClick", e);
+    public final void onClick(View view) {
+        String str;
+        Method method;
+        if (this.p != null) {
+            break;
+        }
+        View view2 = this.n;
+        Context context = view2.getContext();
+        while (true) {
+            String str2 = this.o;
+            if (context == null) {
+                int id = view2.getId();
+                if (id == -1) {
+                    str = "";
+                } else {
+                    str = " with id '" + view2.getContext().getResources().getResourceEntryName(id) + "'";
+                }
+                StringBuilder sbJ = xa3.j("Could not find method ", str2, "(View) in a parent or ancestor Context for android:onClick attribute defined on view ");
+                sbJ.append(view2.getClass());
+                sbJ.append(str);
+                throw new IllegalStateException(sbJ.toString());
+            }
+            try {
+                if (!context.isRestricted() && (method = context.getClass().getMethod(str2, View.class)) != null) {
+                    this.p = method;
+                    this.q = context;
+                    break;
+                }
+            } catch (NoSuchMethodException unused) {
+            }
+            context = context instanceof ContextWrapper ? ((ContextWrapper) context).getBaseContext() : null;
+        }
+        try {
+            this.p.invoke(this.q, view);
+        } catch (IllegalAccessException e) {
+            mj0.j("Could not execute non-public method for android:onClick", e);
+        } catch (InvocationTargetException e2) {
+            mj0.j("Could not execute method for android:onClick", e2);
+        }
     }
 }

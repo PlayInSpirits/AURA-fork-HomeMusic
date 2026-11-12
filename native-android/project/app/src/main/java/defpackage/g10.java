@@ -12,138 +12,148 @@ public final class g10 extends fp {
     public int[] j;
 
     @Override // defpackage.fp
-    public final gm a(gm r8) {
-        int r0 = r8.c;
-        int[] r7 = this.i;
-        if (r7 == null) goto L5;
-        int r1 = r8.b;
-        if (f35.L(r0) == false) goto L29;
-        if (r1 == r7.length) goto L11;
-        boolean r2 = true;
-    L12:
-        int r5 = 0;
-    L14:
-        if (r5 >= r7.length) goto L23;
-        int r6 = r7[r5];
-        if (r6 >= r1) goto L22;
-        if (r6 == r5) goto L19;
-        boolean r9 = true;
-    L20:
-        r2 = r2 | r9;
-        r5 = r5 + 1;
-        goto L14
-    L19:
-        r9 = false;
-        goto L20
-    L22:
-        throw new AudioProcessor$UnhandledAudioFormatException("Channel map (" + Arrays.toString(r7) + ") trying to access non-existent input channel.", r8);
-    L23:
-        if (r2 == false) goto L27;
-        return new gm(r8.a, r7.length, r0);
-    L27:
-        return gm.e;
-    L11:
-        r2 = false;
-        goto L12
-    L29:
-        throw new AudioProcessor$UnhandledAudioFormatException(r8);
-    L5:
-        return gm.e;
+    public final gm a(gm gmVar) throws AudioProcessor$UnhandledAudioFormatException {
+        int i = gmVar.c;
+        int[] iArr = this.i;
+        if (iArr == null) {
+            return gm.e;
+        }
+        int i2 = gmVar.b;
+        if (!f35.L(i)) {
+            throw new AudioProcessor$UnhandledAudioFormatException(gmVar);
+        }
+        boolean z = i2 != iArr.length;
+        int i3 = 0;
+        while (i3 < iArr.length) {
+            int i4 = iArr[i3];
+            if (i4 >= i2) {
+                throw new AudioProcessor$UnhandledAudioFormatException("Channel map (" + Arrays.toString(iArr) + ") trying to access non-existent input channel.", gmVar);
+            }
+            z |= i4 != i3;
+            i3++;
+        }
+        return z ? new gm(gmVar.a, iArr.length, i) : gm.e;
     }
 
+    /* JADX WARN: Code duplicated, block: B:26:0x0068  */
+    /* JADX WARN: Code duplicated, block: B:28:0x0070  */
+    /* JADX WARN: Code duplicated, block: B:29:0x0072  */
+    /* JADX WARN: Code duplicated, block: B:32:0x0084  */
+    /* JADX WARN: Code duplicated, block: B:39:0x00ac  */
+    /* JADX WARN: Code duplicated, block: B:43:0x00bf  */
+    /* JADX WARN: Code duplicated, block: B:46:0x00c9  */
+    /* JADX WARN: Code duplicated, block: B:48:0x00cf  */
+    /* JADX WARN: Code duplicated, block: B:51:0x00dd  */
+    /* JADX WARN: Code duplicated, block: B:53:0x00e1  */
+    /* JADX WARN: Code duplicated, block: B:57:0x0101  */
     @Override // defpackage.im
-    public final void e(ByteBuffer r18) {
-        int[] r2 = this.j;
-        r2.getClass();
-        int r3 = r18.position();
-        int r4 = r18.limit();
-        ByteBuffer r5 = l(((r4 - r3) / this.b.d) * this.c.d);
-    L3:
-        if (r3 >= r4) goto L60;
-        int r6 = r2.length;
-        int r8 = 0;
-    L5:
-        if (r8 >= r6) goto L59;
-        int r10 = (f35.t(this.b.c) * r2[r8]) + r3;
-        int r9 = this.b.c;
-        if (r9 != 2) goto L9;
-    L57:
-        r5.putShort(r18.getShort(r10));
-    L58:
-        r8 = r8 + 1;
-        goto L5
-    L9:
-        if (r9 != 3) goto L11;
-        r5.put(r18.get(r10));
-        goto L58
-    L11:
-        if (r9 != 4) goto L13;
-        r5.putFloat(r18.getFloat(r10));
-        goto L58
-    L13:
-        if (r9 != 21) goto L15;
-    L26:
-        ByteOrder r11 = r18.order();
-        ByteOrder r12 = ByteOrder.BIG_ENDIAN;
-        if (r11 != r12) goto L29;
-        int r13 = r10;
-    L30:
-        byte r14 = r18.get(r13);
-        byte r15 = r18.get(r10 + 1);
-        if (r18.order() != r12) goto L33;
-        r10 = r10 + 2;
-    L33:
-        int r16 = ((((r14 << 24) & (-16777216)) | ((r15 << 16) & 16711680)) | ((r18.get(r10) << 8) & 65280)) >> 8;
-        boolean r17 = true;
-        if ((r16 & (-16777216)) != 0) goto L36;
-    L39:
-        boolean r7 = true;
-    L40:
-        rr2.o(r7, "Value out of range of 24-bit integer: %s", Integer.toHexString(r16));
-        if (r5.remaining() >= 3) goto L44;
-        r17 = false;
-    L44:
-        rr2.l(r17);
-        if (r5.order() != r12) goto L48;
-        int r19 = (r16 & 16711680) >> 16;
-    L47:
-        byte r20 = (byte) r19;
-        byte r110 = (byte) ((r16 & 65280) >> 8);
-        if (r5.order() != r12) goto L53;
-        int r21 = r16 & 255;
-    L54:
-        r5.put(r20).put(r110).put((byte) r21);
-        goto L58
-    L53:
-        r21 = (r16 & 16711680) >> 16;
-        goto L54
-    L48:
-        r19 = r16 & 255;
-        goto L47
-    L36:
-        if ((r16 & (-8388608)) == (-8388608)) goto L39;
-        r7 = false;
-        goto L40
-    L29:
-        r13 = r10 + 2;
-        goto L30
-    L15:
-        if (r9 != 22) goto L17;
-    L25:
-        r5.putInt(r18.getInt(r10));
-        goto L58
-    L17:
-        if (r9 == 268435456) goto L57;
-        if (r9 == 1342177280) goto L26;
-        if (r9 == 1610612736) goto L25;
-        zr2.c(this.b.c, "Unexpected encoding: ");
-        return;
-    L59:
-        r3 = r3 + this.b.d;
-        goto L3
-    L60:
-        r18.position(r4);
-        r5.flip();
+    public final void e(ByteBuffer byteBuffer) {
+        ByteOrder byteOrderOrder;
+        ByteOrder byteOrder;
+        int i;
+        int i2;
+        boolean z;
+        int i3;
+        int i4;
+        int[] iArr = this.j;
+        iArr.getClass();
+        int iPosition = byteBuffer.position();
+        int iLimit = byteBuffer.limit();
+        ByteBuffer byteBufferL = l(((iLimit - iPosition) / this.b.d) * this.c.d);
+        while (iPosition < iLimit) {
+            for (int i5 : iArr) {
+                int iT = (f35.t(this.b.c) * i5) + iPosition;
+                int i6 = this.b.c;
+                if (i6 == 2) {
+                    byteBufferL.putShort(byteBuffer.getShort(iT));
+                } else if (i6 == 3) {
+                    byteBufferL.put(byteBuffer.get(iT));
+                } else if (i6 == 4) {
+                    byteBufferL.putFloat(byteBuffer.getFloat(iT));
+                } else if (i6 == 21) {
+                    byteOrderOrder = byteBuffer.order();
+                    byteOrder = ByteOrder.BIG_ENDIAN;
+                    if (byteOrderOrder == byteOrder) {
+                        i = iT;
+                    } else {
+                        i = iT + 2;
+                    }
+                    byte b = byteBuffer.get(i);
+                    byte b2 = byteBuffer.get(iT + 1);
+                    if (byteBuffer.order() == byteOrder) {
+                        iT += 2;
+                    }
+                    i2 = ((((b << 24) & (-16777216)) | ((b2 << 16) & 16711680)) | ((byteBuffer.get(iT) << 8) & 65280)) >> 8;
+                    if ((i2 & (-16777216)) != 0 || (i2 & (-8388608)) == -8388608) {
+                        z = true;
+                    } else {
+                        z = false;
+                    }
+                    rr2.o(z, "Value out of range of 24-bit integer: %s", Integer.toHexString(i2));
+                    rr2.l(byteBufferL.remaining() >= 3);
+                    if (byteBufferL.order() == byteOrder) {
+                        i3 = (i2 & 16711680) >> 16;
+                    } else {
+                        i3 = i2 & 255;
+                    }
+                    byte b3 = (byte) i3;
+                    byte b4 = (byte) ((i2 & 65280) >> 8);
+                    if (byteBufferL.order() == byteOrder) {
+                        i4 = i2 & 255;
+                    } else {
+                        i4 = (i2 & 16711680) >> 16;
+                    }
+                    byteBufferL.put(b3).put(b4).put((byte) i4);
+                } else {
+                    if (i6 != 22) {
+                        if (i6 == 268435456) {
+                            byteBufferL.putShort(byteBuffer.getShort(iT));
+                        } else if (i6 == 1342177280) {
+                            byteOrderOrder = byteBuffer.order();
+                            byteOrder = ByteOrder.BIG_ENDIAN;
+                            if (byteOrderOrder == byteOrder) {
+                                i = iT;
+                            } else {
+                                i = iT + 2;
+                            }
+                            byte b5 = byteBuffer.get(i);
+                            byte b6 = byteBuffer.get(iT + 1);
+                            if (byteBuffer.order() == byteOrder) {
+                                iT += 2;
+                            }
+                            i2 = ((((b5 << 24) & (-16777216)) | ((b6 << 16) & 16711680)) | ((byteBuffer.get(iT) << 8) & 65280)) >> 8;
+                            if ((i2 & (-16777216)) != 0) {
+                                z = true;
+                            } else {
+                                z = true;
+                            }
+                            rr2.o(z, "Value out of range of 24-bit integer: %s", Integer.toHexString(i2));
+                            rr2.l(byteBufferL.remaining() >= 3);
+                            if (byteBufferL.order() == byteOrder) {
+                                i3 = (i2 & 16711680) >> 16;
+                            } else {
+                                i3 = i2 & 255;
+                            }
+                            byte b7 = (byte) i3;
+                            byte b8 = (byte) ((i2 & 65280) >> 8);
+                            if (byteBufferL.order() == byteOrder) {
+                                i4 = i2 & 255;
+                            } else {
+                                i4 = (i2 & 16711680) >> 16;
+                            }
+                            byteBufferL.put(b7).put(b8).put((byte) i4);
+                        } else if (i6 != 1610612736) {
+                            zr2.c(this.b.c, "Unexpected encoding: ");
+                            return;
+                        }
+                    }
+                    byteBufferL.putInt(byteBuffer.getInt(iT));
+                }
+            }
+            iPosition += this.b.d;
+        }
+        byteBuffer.position(iLimit);
+        byteBufferL.flip();
     }
 
     @Override // defpackage.fp

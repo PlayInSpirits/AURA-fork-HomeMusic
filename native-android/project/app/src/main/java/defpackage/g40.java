@@ -4,23 +4,16 @@ package defpackage;
 /* JADX INFO: loaded from: classes.dex */
 public final class g40 {
     /* JADX WARN: Multi-variable type inference failed */
-    public static boolean a(Comparable r0, Comparable r1) {
-        if (((Number) r0).floatValue() > ((Number) r1).floatValue()) goto L6;
-        return true;
-    L6:
-        return false;
+    public static boolean a(Comparable comparable, Comparable comparable2) {
+        return ((Number) comparable).floatValue() <= ((Number) comparable2).floatValue();
     }
 
-    public final boolean equals(Object r1) {
-        if ((r1 instanceof g40) == false) goto L6;
-        return true;
-    L6:
-        return false;
+    public final boolean equals(Object obj) {
+        return obj instanceof g40;
     }
 
     public final int hashCode() {
-        int r0 = Float.hashCode(0.0f) * 31;
-        return Float.hashCode(0.0f) + r0;
+        return Float.hashCode(0.0f) + (Float.hashCode(0.0f) * 31);
     }
 
     public final String toString() {

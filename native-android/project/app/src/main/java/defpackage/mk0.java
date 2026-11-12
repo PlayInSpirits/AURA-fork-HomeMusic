@@ -5,31 +5,21 @@ import java.util.ArrayDeque;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class mk0 {
-    public final byte[] a;
-    public final ArrayDeque b;
-    public final k35 c;
+    public final byte[] a = new byte[8];
+    public final ArrayDeque b = new ArrayDeque();
+    public final k35 c = new k35();
     public hg3 d;
     public int e;
     public int f;
     public long g;
 
-    public mk0() {
-        this.a = new byte[8];
-        this.b = new ArrayDeque();
-        this.c = new k35();
-    }
-
-    public final long a(l51 r6, int r7) {
-        byte[] r5 = this.a;
-        int r0 = 0;
-        r6.readFully(r5, 0, r7);
-        long r1 = 0;
-    L3:
-        if (r0 >= r7) goto L5;
-        r1 = (r1 << 8) | ((long) (r5[r0] & 255));
-        r0 = r0 + 1;
-        goto L3
-    L5:
-        return r1;
+    public final long a(l51 l51Var, int i) {
+        byte[] bArr = this.a;
+        l51Var.readFully(bArr, 0, i);
+        long j = 0;
+        for (int i2 = 0; i2 < i; i2++) {
+            j = (j << 8) | ((long) (bArr[i2] & 255));
+        }
+        return j;
     }
 }

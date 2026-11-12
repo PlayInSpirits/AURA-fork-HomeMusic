@@ -11,54 +11,47 @@ public final class hq {
     public final /* synthetic */ int b;
     public final /* synthetic */ View c;
 
-    public /* synthetic */ hq(View r1, int r2) {
-        this.b = r2;
-        this.c = r1;
+    public /* synthetic */ hq(View view, int i) {
+        this.b = i;
+        this.c = view;
     }
 
-    public final void a(Drawable r2) {
-        int r0 = this.b;
-        View r1 = this.c;
-        switch(r0) {
-            case 0: goto L12;
-            case 1: goto L8;
-            default: goto L4;
-        };
-    L4:
-        ColorStateList r3 = ((sh2) r1).B;
-        if (r3 == null) goto L14;
-        r2.setTintList(r3);
-        return;
-    L14:
-        return;
-    L8:
-        iq r4 = (iq) r1;
-        if (r4.t == true) goto L15;
-        r4.setVisibility(r4.u);
-        return;
-    L15:
-        return;
-    L12:
-        iq r5 = (iq) r1;
-        r5.setIndeterminate(false);
-        r5.b(r5.o, r5.p);
+    public final void a(Drawable drawable) {
+        int i = this.b;
+        View view = this.c;
+        switch (i) {
+            case 0:
+                iq iqVar = (iq) view;
+                iqVar.setIndeterminate(false);
+                iqVar.b(iqVar.o, iqVar.p);
+                break;
+            case 1:
+                iq iqVar2 = (iq) view;
+                if (!iqVar2.t) {
+                    iqVar2.setVisibility(iqVar2.u);
+                }
+                break;
+            default:
+                ColorStateList colorStateList = ((sh2) view).B;
+                if (colorStateList != null) {
+                    drawable.setTintList(colorStateList);
+                }
+                break;
+        }
     }
 
-    public void b(Drawable r3) {
-        switch(this.b) {
-            case 2: goto L5;
-            default: goto L4;
-        };
-    L4:
-        return;
-    L5:
-        sh2 r2 = (sh2) this.c;
-        ColorStateList r0 = r2.B;
-        if (r0 == null) goto L9;
-        r3.setTint(r0.getColorForState(r2.F, r0.getDefaultColor()));
-        return;
+    public void b(Drawable drawable) {
+        switch (this.b) {
+            case 2:
+                sh2 sh2Var = (sh2) this.c;
+                ColorStateList colorStateList = sh2Var.B;
+                if (colorStateList != null) {
+                    drawable.setTint(colorStateList.getColorForState(sh2Var.F, colorStateList.getDefaultColor()));
+                }
+                break;
+        }
     }
 
-    public final void c(Drawable r1) {
+    public final void c(Drawable drawable) {
     }
 }

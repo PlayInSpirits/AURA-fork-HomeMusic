@@ -10,13 +10,13 @@ public abstract class xf0 {
     public final Bundle b;
     public final Set c;
 
-    public xf0(Bundle r1, Bundle r2, Set r3) {
-        this.a = r1;
-        this.b = r2;
-        this.c = r3;
-        r1.putBoolean("androidx.credentials.BUNDLE_KEY_IS_AUTO_SELECT_ALLOWED", true);
-        r2.putBoolean("androidx.credentials.BUNDLE_KEY_IS_AUTO_SELECT_ALLOWED", true);
-        r1.putInt("androidx.credentials.BUNDLE_KEY_TYPE_PRIORITY_VALUE", 2000);
-        r2.putInt("androidx.credentials.BUNDLE_KEY_TYPE_PRIORITY_VALUE", 2000);
+    public xf0(Bundle bundle, Bundle bundle2, Set set) {
+        this.a = bundle;
+        this.b = bundle2;
+        this.c = set;
+        bundle.putBoolean("androidx.credentials.BUNDLE_KEY_IS_AUTO_SELECT_ALLOWED", true);
+        bundle2.putBoolean("androidx.credentials.BUNDLE_KEY_IS_AUTO_SELECT_ALLOWED", true);
+        bundle.putInt("androidx.credentials.BUNDLE_KEY_TYPE_PRIORITY_VALUE", 2000);
+        bundle2.putInt("androidx.credentials.BUNDLE_KEY_TYPE_PRIORITY_VALUE", 2000);
     }
 }

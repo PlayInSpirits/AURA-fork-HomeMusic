@@ -8,16 +8,17 @@ import defpackage.er1;
 /* JADX INFO: loaded from: classes.dex */
 public final class a implements Parcelable.Creator {
     @Override // android.os.Parcelable.Creator
-    public final /* bridge */ /* synthetic */ Object createFromParcel(Parcel r1) {
-        return Transport.a(r1.readString());
-    L5:
-        e = move-exception;
-        er1.m(e);
-        return null;
+    public final /* bridge */ /* synthetic */ Object createFromParcel(Parcel parcel) {
+        try {
+            return Transport.a(parcel.readString());
+        } catch (Transport.UnsupportedTransportException e) {
+            er1.m(e);
+            return null;
+        }
     }
 
     @Override // android.os.Parcelable.Creator
-    public final /* synthetic */ Object[] newArray(int r1) {
-        return new Transport[r1];
+    public final /* synthetic */ Object[] newArray(int i) {
+        return new Transport[i];
     }
 }

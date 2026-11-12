@@ -3,16 +3,12 @@ package defpackage;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class k62 {
-    public static final ux3 c = null;
+    public static final ux3 c = new ux3("^[a-z][a-z0-9_]*$");
     public final String a;
     public final String b;
 
-    static {
-        c = new ux3("^[a-z][a-z0-9_]*$");
-    }
-
-    public k62(String r1, String r2) {
-        this.a = r1;
-        this.b = r2;
+    public k62(String str, String str2) {
+        this.a = str;
+        this.b = str2;
     }
 }

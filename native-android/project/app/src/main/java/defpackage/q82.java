@@ -4,14 +4,12 @@ package defpackage;
 /* JADX INFO: loaded from: classes.dex */
 public final class q82 {
     public final uc3 a;
-    public final rm3 b;
     public ll c;
-    public int d;
     public int e;
+    public final rm3 b = new rm3(18);
+    public int d = -1;
 
-    public q82(uc3 r3) {
-        this.b = new rm3(18);
-        this.d = -1;
-        this.a = r3;
+    public q82(uc3 uc3Var) {
+        this.a = uc3Var;
     }
 }

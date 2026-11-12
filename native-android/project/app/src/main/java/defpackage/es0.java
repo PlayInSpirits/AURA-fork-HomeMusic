@@ -5,8 +5,8 @@ package defpackage;
 public final class es0 extends u22 {
     public final as0 u;
 
-    public es0(as0 r1) {
-        this.u = r1;
+    public es0(as0 as0Var) {
+        this.u = as0Var;
     }
 
     @Override // defpackage.u22
@@ -15,7 +15,7 @@ public final class es0 extends u22 {
     }
 
     @Override // defpackage.u22
-    public final void s(Throwable r1) {
+    public final void s(Throwable th) {
         this.u.a();
     }
 }

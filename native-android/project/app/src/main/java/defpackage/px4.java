@@ -9,34 +9,26 @@ public final class px4 extends ch4 {
     public if1 h;
     public final long i;
 
-    public px4(ch4 r4, if1 r5, boolean r6, boolean r7) {
-        o54 r0 = jh4.a;
-        super(0, gh4.r);
-        this.e = r4;
-        this.f = r6;
-        this.g = r7;
-        if (r4 == null) goto L6;
-        if1 r8 = r4.e();
-        if (r8 == null) goto L6;
-    L7:
-        this.h = jh4.k(r5, r8, r6);
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public px4(ch4 ch4Var, if1 if1Var, boolean z, boolean z2) {
+        if1 if1VarE;
+        super(0L, gh4.r);
+        o54 o54Var = jh4.a;
+        this.e = ch4Var;
+        this.f = z;
+        this.g = z2;
+        this.h = jh4.k(if1Var, (ch4Var == null || (if1VarE = ch4Var.e()) == null) ? jh4.j.e : if1VarE, z);
         this.i = te5.m();
-        return;
-    L6:
-        r8 = jh4.j.e;
-        goto L7
     }
 
     @Override // defpackage.ch4
     public final void c() {
+        ch4 ch4Var;
         this.c = true;
-        if (this.g == false) goto L8;
-        ch4 r1 = this.e;
-        if (r1 == null) goto L9;
-        r1.c();
-        return;
-    L9:
-        return;
+        if (!this.g || (ch4Var = this.e) == null) {
+            return;
+        }
+        ch4Var.c();
     }
 
     @Override // defpackage.ch4
@@ -82,24 +74,18 @@ public final class px4 extends ch4 {
     }
 
     @Override // defpackage.ch4
-    public final void n(rl4 r1) {
-        v().n(r1);
+    public final void n(rl4 rl4Var) {
+        v().n(rl4Var);
     }
 
     @Override // defpackage.ch4
-    public final ch4 u(if1 r3) {
-        if1 r4 = jh4.k(r3, this.h, true);
-        if (this.f == true) goto L7;
-        return jh4.g(v().u(null), r4, true);
-    L7:
-        return v().u(r4);
+    public final ch4 u(if1 if1Var) {
+        if1 if1VarK = jh4.k(if1Var, this.h, true);
+        return !this.f ? jh4.g(v().u(null), if1VarK, true) : v().u(if1VarK);
     }
 
     public final ch4 v() {
-        ch4 r0 = this.e;
-        if (r0 == null) goto L5;
-        return r0;
-    L5:
-        return jh4.j;
+        ch4 ch4Var = this.e;
+        return ch4Var == null ? jh4.j : ch4Var;
     }
 }

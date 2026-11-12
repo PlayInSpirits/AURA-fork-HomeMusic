@@ -12,115 +12,107 @@ public final class ia4 implements Executor {
     public Runnable q;
     public final Object r;
 
-    public ia4(Executor r1, int r2) {
-        this.n = r2;
-        switch(r2) {
-            case 1: goto L6;
-            default: goto L4;
-        };
-    L4:
-        this.o = r1;
-        this.p = new ArrayDeque();
-        this.r = new Object();
-        return;
-    L6:
-        r1.getClass();
-        this.o = r1;
-        this.p = new ArrayDeque();
-        this.r = new Object();
+    public ia4(Executor executor, int i) {
+        this.n = i;
+        switch (i) {
+            case 1:
+                executor.getClass();
+                this.o = executor;
+                this.p = new ArrayDeque();
+                this.r = new Object();
+                break;
+            default:
+                this.o = executor;
+                this.p = new ArrayDeque();
+                this.r = new Object();
+                break;
+        }
     }
 
     public final void a() {
-        switch(this.n) {
-            case 0: goto L27;
-            case 1: goto L15;
-            default: goto L4;
-        };
-    L4:
-        Object r0 = this.r;
-        monitor-enter(r0);
-        Runnable r1 = (Runnable) this.p.poll();     // Catch: Throwable -> L9
-        this.q = r1;     // Catch: Throwable -> L9
-        if (r1 == null) goto L11;
-        ((of) this.o).execute(r1);     // Catch: Throwable -> L9
-    L11:
-        monitor-exit(r0);     // Catch: Throwable -> L9
-        return;
-    L9:
-        th = move-exception;
-        throw th;
-    L15:
-        Object r2 = this.r;
-        monitor-enter(r2);
-        Object r3 = this.p.poll();     // Catch: Throwable -> L21
-        Runnable r4 = (Runnable) r3;     // Catch: Throwable -> L21
-        this.q = r4;     // Catch: Throwable -> L21
-        if (r3 == null) goto L23;
-        this.o.execute(r4);     // Catch: Throwable -> L21
-    L23:
-        monitor-exit(r2);
-        return;
-    L21:
-        th = move-exception;
-        throw th;
-    L27:
-        Runnable r5 = (Runnable) this.p.poll();
-        this.q = r5;
-        if (r5 == null) goto L35;
-        this.o.execute(r5);
-        return;
+        switch (this.n) {
+            case 0:
+                Runnable runnable = (Runnable) this.p.poll();
+                this.q = runnable;
+                if (runnable != null) {
+                    this.o.execute(runnable);
+                    return;
+                }
+                return;
+            case 1:
+                synchronized (this.r) {
+                    Object objPoll = this.p.poll();
+                    Runnable runnable2 = (Runnable) objPoll;
+                    this.q = runnable2;
+                    if (objPoll != null) {
+                        this.o.execute(runnable2);
+                    }
+                    break;
+                }
+                return;
+            default:
+                synchronized (this.r) {
+                    try {
+                        Runnable runnable3 = (Runnable) this.p.poll();
+                        this.q = runnable3;
+                        if (runnable3 != null) {
+                            ((of) this.o).execute(runnable3);
+                        }
+                    } catch (Throwable th) {
+                        throw th;
+                    }
+                    break;
+                }
+                return;
+        }
     }
 
     @Override // java.util.concurrent.Executor
-    public final void execute(Runnable r5) {
-        switch(this.n) {
-            case 0: goto L27;
-            case 1: goto L15;
-            default: goto L4;
-        };
-    L4:
-        Object r0 = this.r;
-        monitor-enter(r0);
-        this.p.add(new k6(2, this, r5));     // Catch: Throwable -> L9
-        if (this.q != null) goto L11;
-        a();     // Catch: Throwable -> L9
-    L11:
-        monitor-exit(r0);     // Catch: Throwable -> L9
-        return;
-    L9:
-        th = move-exception;
-        throw th;
-    L15:
-        r5.getClass();
-        Object r1 = this.r;
-        monitor-enter(r1);
-        this.p.offer(new ur2(r5, this));     // Catch: Throwable -> L21
-        if (this.q != null) goto L23;
-        a();     // Catch: Throwable -> L21
-    L23:
-        monitor-exit(r1);
-        return;
-    L21:
-        th = move-exception;
-        throw th;
-    L27:
-        Object r2 = this.r;
-        monitor-enter(r2);
-        this.p.add(new lg1(27, this, r5));     // Catch: Throwable -> L32
-        if (this.q != null) goto L34;
-        a();     // Catch: Throwable -> L32
-    L34:
-        monitor-exit(r2);     // Catch: Throwable -> L32
-        return;
-    L32:
-        th = move-exception;
-        throw th;
+    public final void execute(Runnable runnable) {
+        switch (this.n) {
+            case 0:
+                synchronized (this.r) {
+                    try {
+                        this.p.add(new lg1(27, this, runnable));
+                        if (this.q == null) {
+                            a();
+                        }
+                    } catch (Throwable th) {
+                        throw th;
+                    }
+                    break;
+                }
+                return;
+            case 1:
+                runnable.getClass();
+                synchronized (this.r) {
+                    this.p.offer(new ur2(runnable, this));
+                    if (this.q == null) {
+                        a();
+                    }
+                    break;
+                }
+                return;
+            default:
+                synchronized (this.r) {
+                    try {
+                        this.p.add(new k6(2, this, runnable));
+                        if (this.q == null) {
+                            a();
+                        }
+                    } catch (Throwable th2) {
+                        throw th2;
+                    }
+                    break;
+                }
+                return;
+        }
     }
 
-    public ia4(of r2) {
+    public ia4(of ofVar) {
         this.n = 2;
         this.r = new Object();
         this.p = new ArrayDeque();
-        this.o = r2;
+        this.o = ofVar;
     }
 }

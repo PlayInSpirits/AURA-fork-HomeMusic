@@ -1,7 +1,6 @@
 package defpackage;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -10,105 +9,97 @@ import java.util.Map;
 public final class hr0 extends b71 {
     public final b71 c;
 
-    public hr0(b71 r1) {
-        r1.getClass();
-        this.c = r1;
+    public hr0(b71 b71Var) {
+        b71Var.getClass();
+        this.c = b71Var;
     }
 
     @Override // defpackage.b71
-    public final of4 a(ge3 r1) {
-        r1.getClass();
-        return this.c.a(r1);
+    public final of4 a(ge3 ge3Var) {
+        ge3Var.getClass();
+        return this.c.a(ge3Var);
     }
 
     @Override // defpackage.b71
-    public final void b(ge3 r1, ge3 r2) {
-        r1.getClass();
-        r2.getClass();
-        this.c.b(r1, r2);
+    public final void b(ge3 ge3Var, ge3 ge3Var2) {
+        ge3Var.getClass();
+        ge3Var2.getClass();
+        this.c.b(ge3Var, ge3Var2);
     }
 
     @Override // defpackage.b71
-    public final void c(ge3 r1) {
-        this.c.c(r1);
+    public final void c(ge3 ge3Var) {
+        this.c.c(ge3Var);
     }
 
     @Override // defpackage.b71
-    public final void d(ge3 r1) {
-        r1.getClass();
-        this.c.d(r1);
+    public final void d(ge3 ge3Var) {
+        ge3Var.getClass();
+        this.c.d(ge3Var);
     }
 
     @Override // defpackage.b71
-    public final List f(ge3 r2) {
-        List r1 = this.c.f(r2);
-        ArrayList r3 = new ArrayList();
-        Iterator r4 = r1.iterator();
-    L4:
-        if (r4.hasNext() == false) goto L6;
-        ge3 r0 = (ge3) r4.next();
-        r0.getClass();
-        r3.add(r0);
-        goto L4
-    L6:
-        u40.l0(r3);
-        return r3;
+    public final List f(ge3 ge3Var) {
+        List<ge3> listF = this.c.f(ge3Var);
+        ArrayList arrayList = new ArrayList();
+        for (ge3 ge3Var2 : listF) {
+            ge3Var2.getClass();
+            arrayList.add(ge3Var2);
+        }
+        u40.l0(arrayList);
+        return arrayList;
     }
 
     @Override // defpackage.b71
-    public final xo0 h(ge3 r10) {
-        r10.getClass();
-        xo0 r9 = this.c.h(r10);
-        if (r9 != null) goto L6;
-        return null;
-    L6:
-        ge3 r3 = (ge3) r9.d;
-        if (r3 != null) goto L9;
-        return r9;
-    L9:
-        boolean r1 = r9.b;
-        boolean r2 = r9.c;
-        Long r4 = (Long) r9.e;
-        Long r5 = (Long) r9.f;
-        Long r6 = (Long) r9.g;
-        Long r7 = (Long) r9.h;
-        Map r8 = (Map) r9.i;
-        r8.getClass();
-        return new xo0(r1, r2, r3, r4, r5, r6, r7, r8);
+    public final xo0 h(ge3 ge3Var) {
+        ge3Var.getClass();
+        xo0 xo0VarH = this.c.h(ge3Var);
+        if (xo0VarH == null) {
+            return null;
+        }
+        ge3 ge3Var2 = (ge3) xo0VarH.d;
+        if (ge3Var2 == null) {
+            return xo0VarH;
+        }
+        boolean z = xo0VarH.b;
+        boolean z2 = xo0VarH.c;
+        Long l = (Long) xo0VarH.e;
+        Long l2 = (Long) xo0VarH.f;
+        Long l3 = (Long) xo0VarH.g;
+        Long l4 = (Long) xo0VarH.h;
+        Map map = (Map) xo0VarH.i;
+        map.getClass();
+        return new xo0(z, z2, ge3Var2, l, l2, l3, l4, map);
     }
 
     @Override // defpackage.b71
-    public final r32 i(ge3 r1) {
-        return this.c.i(r1);
+    public final r32 i(ge3 ge3Var) {
+        return this.c.i(ge3Var);
     }
 
     @Override // defpackage.b71
-    public final of4 j(ge3 r5) {
-        r5.getClass();
-        ge3 r0 = r5.b();
-        b71 r1 = this.c;
-        if (r0 == null) goto L14;
-        ii r2 = new ii();
-    L5:
-        if (r0 == null) goto L9;
-        if (e(r0) == true) goto L9;
-        r2.addFirst(r0);
-        r0 = r0.b();
-    L9:
-        Iterator<E> r4 = r2.iterator();
-    L11:
-        if (r4.hasNext() == false) goto L14;
-        ge3 r3 = (ge3) r4.next();
-        r3.getClass();
-        r1.c(r3);
-    L14:
-        return r1.j(r5);
+    public final of4 j(ge3 ge3Var) {
+        ge3Var.getClass();
+        ge3 ge3VarB = ge3Var.b();
+        b71 b71Var = this.c;
+        if (ge3VarB != null) {
+            ii<ge3> iiVar = new ii();
+            while (ge3VarB != null && !e(ge3VarB)) {
+                iiVar.addFirst(ge3VarB);
+                ge3VarB = ge3VarB.b();
+            }
+            for (ge3 ge3Var2 : iiVar) {
+                ge3Var2.getClass();
+                b71Var.c(ge3Var2);
+            }
+        }
+        return b71Var.j(ge3Var);
     }
 
     @Override // defpackage.b71
-    public final ej4 k(ge3 r1) {
-        r1.getClass();
-        return this.c.k(r1);
+    public final ej4 k(ge3 ge3Var) {
+        ge3Var.getClass();
+        return this.c.k(ge3Var);
     }
 
     public final String toString() {

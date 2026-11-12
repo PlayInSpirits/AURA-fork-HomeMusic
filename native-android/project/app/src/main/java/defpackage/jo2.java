@@ -7,7 +7,7 @@ public final class jo2 {
     public boolean b;
     public boolean c;
 
-    public jo2(bl2 r1) {
-        this.a = r1;
+    public jo2(bl2 bl2Var) {
+        this.a = bl2Var;
     }
 }

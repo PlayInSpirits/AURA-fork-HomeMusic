@@ -12,24 +12,25 @@ import android.os.RemoteException;
 public final class jj2 {
     public final gj2 a;
 
-    public jj2(Context r3, ComponentName r4, z05 r5, Bundle r6) {
-        if (Build.VERSION.SDK_INT < 26) goto L6;
-        this.a = new hj2(r3, r4, r5, r6);
-        return;
-    L6:
-        this.a = new gj2(r3, r4, r5, r6);
+    public jj2(Context context, ComponentName componentName, z05 z05Var, Bundle bundle) {
+        if (Build.VERSION.SDK_INT >= 26) {
+            this.a = new hj2(context, componentName, z05Var, bundle);
+        } else {
+            this.a = new gj2(context, componentName, z05Var, bundle);
+        }
     }
 
     public final void a() {
-        gj2 r4 = this.a;
-        xc5 r0 = r4.f;
-        if (r0 == null) goto L10;
-        Messenger r1 = r4.g;
-        if (r1 == null) goto L10;
-        r0.w(7, null, r1);     // Catch: RemoteException -> L9
-    L9:
-        l93.K("MediaBrowserCompat", "Remote error unregistering client messenger.");
-    L10:
-        r4.b.disconnect();
+        Messenger messenger;
+        gj2 gj2Var = this.a;
+        xc5 xc5Var = gj2Var.f;
+        if (xc5Var != null && (messenger = gj2Var.g) != null) {
+            try {
+                xc5Var.w(7, null, messenger);
+            } catch (RemoteException unused) {
+                l93.K("MediaBrowserCompat", "Remote error unregistering client messenger.");
+            }
+        }
+        gj2Var.b.disconnect();
     }
 }

@@ -7,7 +7,7 @@ import java.util.ArrayDeque;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class s04 implements f42 {
-    public static final sj0 j = null;
+    public static final sj0 j = new sj0(50);
     public final qj0 b;
     public final f42 c;
     public final f42 d;
@@ -17,19 +17,15 @@ public final class s04 implements f42 {
     public final db3 h;
     public final uw4 i;
 
-    static {
-        j = new sj0(50);
-    }
-
-    public s04(qj0 r1, f42 r2, f42 r3, int r4, int r5, uw4 r6, Class r7, db3 r8) {
-        this.b = r1;
-        this.c = r2;
-        this.d = r3;
-        this.e = r4;
-        this.f = r5;
-        this.i = r6;
-        this.g = r7;
-        this.h = r8;
+    public s04(qj0 qj0Var, f42 f42Var, f42 f42Var2, int i, int i2, uw4 uw4Var, Class cls, db3 db3Var) {
+        this.b = qj0Var;
+        this.c = f42Var;
+        this.d = f42Var2;
+        this.e = i;
+        this.f = i2;
+        this.i = uw4Var;
+        this.g = cls;
+        this.h = db3Var;
     }
 
     /* JADX WARN: Type inference fix 'apply assigned field type' failed
@@ -43,71 +39,61 @@ public final class s04 implements f42 {
     	at jadx.core.dex.visitors.typeinference.FixTypesVisitor.visit(FixTypesVisitor.java:94)
      */
     @Override // defpackage.f42
-    public final void b(MessageDigest r6) {
-        qj0 r0 = this.b;
-        monitor-enter(r0);
-        mf2 r2 = (mf2) r0.d;     // Catch: Throwable -> L17
-        xn3 r3 = (xn3) ((ArrayDeque) r2.a).poll();     // Catch: Throwable -> L17
-        if (r3 != null) goto L7;
-        r3 = r2.u();     // Catch: Throwable -> L17
-    L7:
-        lf2 r4 = (lf2) r3;     // Catch: Throwable -> L17
-        r4.b = 8;     // Catch: Throwable -> L17
-        r4.c = byte[].class;     // Catch: Throwable -> L17
-        Object r1 = r0.f(r4, byte[].class);     // Catch: Throwable -> L17
-        monitor-exit(r0);
-        byte[] r5 = (byte[]) r1;
-        ByteBuffer.wrap(r5).putInt(this.e).putInt(this.f).array();
-        this.d.b(r6);
-        this.c.b(r6);
-        r6.update(r5);
-        uw4 r7 = this.i;
-        if (r7 == null) goto L12;
-        r7.b(r6);
-    L12:
-        this.h.b(r6);
-        sj0 r8 = j;
-        Class r9 = this.g;
-        byte[] r10 = (byte[]) r8.a(r9);
-        if (r10 != null) goto L15;
-        r10 = r9.getName().getBytes(f42.a);
-        r8.d(r9, r10);
-    L15:
-        r6.update(r10);
-        this.b.h(r5);
-        return;
-    L17:
-        th = move-exception;
-        throw th;
+    public final void b(MessageDigest messageDigest) {
+        Object objF;
+        qj0 qj0Var = this.b;
+        synchronized (qj0Var) {
+            mf2 mf2Var = (mf2) qj0Var.d;
+            xn3 xn3VarU = (xn3) ((ArrayDeque) mf2Var.a).poll();
+            if (xn3VarU == null) {
+                xn3VarU = mf2Var.u();
+            }
+            lf2 lf2Var = (lf2) xn3VarU;
+            lf2Var.b = 8;
+            lf2Var.c = byte[].class;
+            objF = qj0Var.f(lf2Var, byte[].class);
+        }
+        byte[] bArr = (byte[]) objF;
+        ByteBuffer.wrap(bArr).putInt(this.e).putInt(this.f).array();
+        this.d.b(messageDigest);
+        this.c.b(messageDigest);
+        messageDigest.update(bArr);
+        uw4 uw4Var = this.i;
+        if (uw4Var != null) {
+            uw4Var.b(messageDigest);
+        }
+        this.h.b(messageDigest);
+        sj0 sj0Var = j;
+        Class cls = this.g;
+        byte[] bytes = (byte[]) sj0Var.a(cls);
+        if (bytes == null) {
+            bytes = cls.getName().getBytes(f42.a);
+            sj0Var.d(cls, bytes);
+        }
+        messageDigest.update(bytes);
+        this.b.h(bArr);
     }
 
     @Override // defpackage.f42
-    public final boolean equals(Object r4) {
-        if ((r4 instanceof s04) == false) goto L20;
-        s04 r5 = (s04) r4;
-        if (this.f != r5.f) goto L20;
-        if (this.e != r5.e) goto L20;
-        if (e35.n(this.i, r5.i) == false) goto L20;
-        if (this.g.equals(r5.g) == false) goto L20;
-        if (this.c.equals(r5.c) == false) goto L20;
-        if (this.d.equals(r5.d) == false) goto L20;
-        if (this.h.equals(r5.h) == false) goto L20;
-        return true;
-    L20:
+    public final boolean equals(Object obj) {
+        if (obj instanceof s04) {
+            s04 s04Var = (s04) obj;
+            if (this.f == s04Var.f && this.e == s04Var.e && e35.n(this.i, s04Var.i) && this.g.equals(s04Var.g) && this.c.equals(s04Var.c) && this.d.equals(s04Var.d) && this.h.equals(s04Var.h)) {
+                return true;
+            }
+        }
         return false;
     }
 
     @Override // defpackage.f42
     public final int hashCode() {
-        int r0 = this.c.hashCode() * 31;
-        int r1 = ((((this.d.hashCode() + r0) * 31) + this.e) * 31) + this.f;
-        uw4 r2 = this.i;
-        if (r2 == null) goto L5;
-        r1 = (r1 * 31) + r2.hashCode();
-    L5:
-        int r3 = this.g.hashCode();
-        int r4 = this.h.b.hashCode();
-        return r4 + ((r3 + (r1 * 31)) * 31);
+        int iHashCode = ((((this.d.hashCode() + (this.c.hashCode() * 31)) * 31) + this.e) * 31) + this.f;
+        uw4 uw4Var = this.i;
+        if (uw4Var != null) {
+            iHashCode = (iHashCode * 31) + uw4Var.hashCode();
+        }
+        int iHashCode2 = this.g.hashCode();
+        return this.h.b.hashCode() + ((iHashCode2 + (iHashCode * 31)) * 31);
     }
 
     public final String toString() {

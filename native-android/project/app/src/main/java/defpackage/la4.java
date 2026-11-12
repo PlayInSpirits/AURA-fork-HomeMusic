@@ -9,13 +9,14 @@ public final class la4 extends cx3 {
     public final i61 u;
     public final /* synthetic */ zd0 v;
 
-    public la4(zd0 r2, i61 r3) {
-        this.v = r2;
-        ConstraintLayout r4 = (ConstraintLayout) r3.o;
-        super(r4);
-        this.u = r3;
-        ((TextView) r3.q).setSelected(true);
-        r4.setOnClickListener(new bj3(13, this));
-        r4.setOnLongClickListener(new q6(19, this));
+    /* JADX WARN: Illegal instructions before constructor call */
+    public la4(zd0 zd0Var, i61 i61Var) {
+        this.v = zd0Var;
+        ConstraintLayout constraintLayout = (ConstraintLayout) i61Var.o;
+        super(constraintLayout);
+        this.u = i61Var;
+        ((TextView) i61Var.q).setSelected(true);
+        constraintLayout.setOnClickListener(new bj3(13, this));
+        constraintLayout.setOnLongClickListener(new q6(19, this));
     }
 }

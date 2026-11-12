@@ -5,7 +5,7 @@ package defpackage;
 public final class sz1 implements rz1 {
     public final zd3 a;
 
-    public sz1(int r2) {
-        this.a = uc5.B(new qz1(r2));
+    public sz1(int i) {
+        this.a = uc5.B(new qz1(i));
     }
 }

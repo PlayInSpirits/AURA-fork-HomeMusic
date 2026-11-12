@@ -11,23 +11,21 @@ import java.util.SortedSet;
 public final class i1 extends l1 implements NavigableSet {
     public final /* synthetic */ sz2 q;
 
-    public i1(sz2 r1, NavigableMap r2) {
-        this.q = r1;
-        super(r1, r2);
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public i1(sz2 sz2Var, NavigableMap navigableMap) {
+        super(sz2Var, navigableMap);
+        this.q = sz2Var;
     }
 
     @Override // defpackage.l1
-    public final /* bridge */ /* synthetic */ SortedMap a() {
-        return b();
-    }
-
-    public final NavigableMap b() {
+    /* JADX INFO: renamed from: b, reason: merged with bridge method [inline-methods] */
+    public final NavigableMap a() {
         return (NavigableMap) ((SortedMap) this.n);
     }
 
     @Override // java.util.NavigableSet
-    public final Object ceiling(Object r1) {
-        return b().ceilingKey(r1);
+    public final Object ceiling(Object obj) {
+        return a().ceilingKey(obj);
     }
 
     @Override // java.util.NavigableSet
@@ -37,77 +35,73 @@ public final class i1 extends l1 implements NavigableSet {
 
     @Override // java.util.NavigableSet
     public final NavigableSet descendingSet() {
-        NavigableMap r1 = b().descendingMap();
-        return new i1(this.q, r1);
+        return new i1(this.q, a().descendingMap());
     }
 
     @Override // java.util.NavigableSet
-    public final Object floor(Object r1) {
-        return b().floorKey(r1);
+    public final Object floor(Object obj) {
+        return a().floorKey(obj);
     }
 
     @Override // java.util.NavigableSet
-    public final NavigableSet headSet(Object r3, boolean r4) {
-        NavigableMap r5 = b().headMap(r3, r4);
-        return new i1(this.q, r5);
+    public final NavigableSet headSet(Object obj, boolean z) {
+        return new i1(this.q, a().headMap(obj, z));
     }
 
     @Override // java.util.NavigableSet
-    public final Object higher(Object r1) {
-        return b().higherKey(r1);
+    public final Object higher(Object obj) {
+        return a().higherKey(obj);
     }
 
     @Override // java.util.NavigableSet
-    public final Object lower(Object r1) {
-        return b().lowerKey(r1);
+    public final Object lower(Object obj) {
+        return a().lowerKey(obj);
     }
 
     @Override // java.util.NavigableSet
     public final Object pollFirst() {
-        e1 r1 = (e1) iterator();
-        if (r1.hasNext() == false) goto L6;
-        Object r0 = r1.next();
-        r1.remove();
-        return r0;
-    L6:
-        return null;
+        e1 e1Var = (e1) iterator();
+        if (!e1Var.hasNext()) {
+            return null;
+        }
+        Object next = e1Var.next();
+        e1Var.remove();
+        return next;
     }
 
     @Override // java.util.NavigableSet
     public final Object pollLast() {
-        Iterator r1 = descendingIterator();
-        if (r1.hasNext() == false) goto L6;
-        Object r0 = r1.next();
-        r1.remove();
-        return r0;
-    L6:
-        return null;
+        Iterator itDescendingIterator = descendingIterator();
+        if (!itDescendingIterator.hasNext()) {
+            return null;
+        }
+        Object next = itDescendingIterator.next();
+        itDescendingIterator.remove();
+        return next;
     }
 
     @Override // java.util.NavigableSet
-    public final NavigableSet subSet(Object r3, boolean r4, Object r5, boolean r6) {
-        NavigableMap r7 = b().subMap(r3, r4, r5, r6);
-        return new i1(this.q, r7);
+    public final NavigableSet subSet(Object obj, boolean z, Object obj2, boolean z2) {
+        return new i1(this.q, a().subMap(obj, z, obj2, z2));
     }
 
     @Override // java.util.NavigableSet
-    public final NavigableSet tailSet(Object r3, boolean r4) {
-        NavigableMap r5 = b().tailMap(r3, r4);
-        return new i1(this.q, r5);
+    public final NavigableSet tailSet(Object obj, boolean z) {
+        return new i1(this.q, a().tailMap(obj, z));
     }
 
     @Override // defpackage.l1, java.util.SortedSet, java.util.NavigableSet
-    public final SortedSet headSet(Object r2) {
-        return headSet(r2, false);
+    public final SortedSet headSet(Object obj) {
+        return headSet(obj, false);
     }
 
     @Override // defpackage.l1, java.util.SortedSet, java.util.NavigableSet
-    public final SortedSet subSet(Object r3, Object r4) {
-        return subSet(r3, true, r4, false);
+    public final SortedSet subSet(Object obj, Object obj2) {
+        return subSet(obj, true, obj2, false);
     }
 
     @Override // defpackage.l1, java.util.SortedSet, java.util.NavigableSet
-    public final SortedSet tailSet(Object r2) {
-        return tailSet(r2, true);
+    public final SortedSet tailSet(Object obj) {
+        return tailSet(obj, true);
     }
 }

@@ -17,9 +17,6 @@ public final class SearchResult2 {
     @ka4("song")
     private List<? extends Child> songs;
 
-    public SearchResult2() {
-    }
-
     public final List<Child> getAlbums() {
         return this.albums;
     }
@@ -32,15 +29,15 @@ public final class SearchResult2 {
         return this.songs;
     }
 
-    public final void setAlbums(List<? extends Child> r1) {
-        this.albums = r1;
+    public final void setAlbums(List<? extends Child> list) {
+        this.albums = list;
     }
 
-    public final void setArtists(List<Artist> r1) {
-        this.artists = r1;
+    public final void setArtists(List<Artist> list) {
+        this.artists = list;
     }
 
-    public final void setSongs(List<? extends Child> r1) {
-        this.songs = r1;
+    public final void setSongs(List<? extends Child> list) {
+        this.songs = list;
     }
 }

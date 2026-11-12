@@ -11,139 +11,133 @@ import java.util.ArrayList;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class af4 {
-    public final /* synthetic */ int a;
+    public final /* synthetic */ int a = 0;
     public Context b;
     public Uri c;
 
-    public af4(Context r2, Uri r3) {
-        this.a = 1;
-        this.b = r2;
-        this.c = r3;
+    public af4(Context context, Uri uri) {
+        this.b = context;
+        this.c = uri;
     }
 
     public final boolean a() {
-        switch(this.a) {
-            case 0: goto L10;
-            default: goto L12;
-        };
-    L10:
-        return DocumentsContract.deleteDocument(this.b.getContentResolver(), this.c);
-    L15:
-        return false;
-    L12:
-        return DocumentsContract.deleteDocument(this.b.getContentResolver(), this.c);
-    L14:
-        return false;
+        switch (this.a) {
+            case 0:
+                try {
+                    return DocumentsContract.deleteDocument(this.b.getContentResolver(), this.c);
+                } catch (Exception unused) {
+                    return false;
+                }
+            default:
+                try {
+                    return DocumentsContract.deleteDocument(this.b.getContentResolver(), this.c);
+                } catch (Exception unused2) {
+                    return false;
+                }
+        }
     }
 
     public final boolean b() {
-        switch(this.a) {
-            case 0: goto L7;
-            default: goto L5;
-        };
-    L5:
-        return h12.o(this.b, this.c);
-    L7:
+        switch (this.a) {
+            case 0:
+                break;
+        }
         return h12.o(this.b, this.c);
     }
 
     public final String c() {
-        switch(this.a) {
-            case 0: goto L7;
-            default: goto L5;
-        };
-    L5:
-        return h12.K(this.b, this.c, "_display_name");
-    L7:
+        switch (this.a) {
+            case 0:
+                break;
+        }
         return h12.K(this.b, this.c, "_display_name");
     }
 
     public final Uri d() {
-        switch(this.a) {
-            case 0: goto L7;
-            default: goto L5;
-        };
-    L5:
-        return this.c;
-    L7:
+        switch (this.a) {
+            case 0:
+                break;
+        }
         return this.c;
     }
 
     public final boolean e() {
-        switch(this.a) {
-            case 0: goto L7;
-            default: goto L5;
-        };
-    L5:
-        return "vnd.android.document/directory".equals(h12.K(this.b, this.c, "mime_type"));
-    L7:
+        switch (this.a) {
+            case 0:
+                break;
+        }
         return "vnd.android.document/directory".equals(h12.K(this.b, this.c, "mime_type"));
     }
 
     public final long f() {
-        switch(this.a) {
-            case 0: goto L7;
-            default: goto L5;
-        };
-    L5:
-        return h12.J(this.b, this.c, "_size", 0);
-    L7:
-        return h12.J(this.b, this.c, "_size", 0);
+        switch (this.a) {
+            case 0:
+                break;
+        }
+        return h12.J(this.b, this.c, "_size", 0L);
     }
 
+    /* JADX WARN: Code duplicated, block: B:27:0x0074 A[LOOP:1: B:25:0x0071->B:27:0x0074, LOOP_END] */
     public af4[] g() {
-        Context r1 = this.b;
-        ContentResolver r2 = r1.getContentResolver();
-        Uri r11 = this.c;
-        Uri r3 = DocumentsContract.buildChildDocumentsUriUsingTree(r11, DocumentsContract.getDocumentId(r11));
-        ArrayList r8 = new ArrayList();
-        int r9 = 0;
-        Cursor r10 = null;
-        r10 = r2.query(r3, new String[]{"document_id"}, null, null, null);     // Catch: Throwable -> L8 Exception -> L10
-    L5:
-        if (r10.moveToNext() == false) goto L40;
-        r8.add(DocumentsContract.buildDocumentUriUsingTree(r11, r10.getString(0)));     // Catch: Throwable -> L8 Exception -> L10
-    L40:
-        xa3.p(r10);     // Catch: RuntimeException -> L14 Exception -> L36
-    L44:
-    L14:
-        e = move-exception;
-        throw e;
-    L8:
-        th = move-exception;
-        if (r10 != null) goto L47;
-        throw th;
-    L47:
-        xa3.p(r10);     // Catch: RuntimeException -> L32 Exception -> L37
-        goto L52
-    L51:
-        throw th;
-    L32:
-        e = move-exception;
-        throw e;
-    L52:
-        throw th;
-    L10:
-        e = move-exception;
-        Log.w("DocumentFile", "Failed query: " + e);     // Catch: Throwable -> L8
-        if (r10 == null) goto L24;
-        xa3.p(r10);     // Catch: RuntimeException -> L21 Exception -> L36
-    L21:
-        e = move-exception;
-        throw e;
-    L24:
-        Uri[] r12 = (Uri[]) r8.toArray(new Uri[r8.size()]);
-        af4[] r0 = new af4[r12.length];
-    L26:
-        if (r9 >= r12.length) goto L28;
-        r0[r9] = new af4(r1, r12[r9]);
-        r9 = r9 + 1;
-        goto L26
-    L28:
-        return r0;
+        Uri[] uriArr;
+        af4[] af4VarArr;
+        Context context = this.b;
+        ContentResolver contentResolver = context.getContentResolver();
+        Uri uri = this.c;
+        Uri uriBuildChildDocumentsUriUsingTree = DocumentsContract.buildChildDocumentsUriUsingTree(uri, DocumentsContract.getDocumentId(uri));
+        ArrayList arrayList = new ArrayList();
+        Cursor cursorQuery = null;
+        try {
+            try {
+                try {
+                    cursorQuery = contentResolver.query(uriBuildChildDocumentsUriUsingTree, new String[]{"document_id"}, null, null, null);
+                    while (cursorQuery.moveToNext()) {
+                        arrayList.add(DocumentsContract.buildDocumentUriUsingTree(uri, cursorQuery.getString(0)));
+                    }
+                    try {
+                        xa3.p(cursorQuery);
+                    } catch (RuntimeException e) {
+                        throw e;
+                    }
+                } catch (Exception e2) {
+                    Log.w("DocumentFile", "Failed query: " + e2);
+                    if (cursorQuery != null) {
+                        try {
+                            xa3.p(cursorQuery);
+                        } catch (RuntimeException e3) {
+                            throw e3;
+                        }
+                    }
+                    uriArr = (Uri[]) arrayList.toArray(new Uri[arrayList.size()]);
+                    af4VarArr = new af4[uriArr.length];
+                    for (int i = 0; i < uriArr.length; i++) {
+                        af4VarArr[i] = new af4(context, uriArr[i]);
+                    }
+                    return af4VarArr;
+                }
+            } catch (Throwable th) {
+                if (cursorQuery == null) {
+                    throw th;
+                }
+                try {
+                    xa3.p(cursorQuery);
+                    throw th;
+                } catch (RuntimeException e4) {
+                    throw e4;
+                } catch (Exception unused) {
+                    throw th;
+                }
+            }
+        } catch (Exception unused2) {
+        }
+        uriArr = (Uri[]) arrayList.toArray(new Uri[arrayList.size()]);
+        af4VarArr = new af4[uriArr.length];
+        while (i < uriArr.length) {
+            af4VarArr[i] = new af4(context, uriArr[i]);
+        }
+        return af4VarArr;
     }
 
     public /* synthetic */ af4() {
-        this.a = 0;
     }
 }

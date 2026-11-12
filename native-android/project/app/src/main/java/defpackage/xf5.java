@@ -14,78 +14,63 @@ public final class xf5 extends kf5 {
     public final cr4 c;
     public final pa d;
 
-    public xf5(int r1, bk r2, cr4 r3, pa r4) {
-        super(r1);
-        this.c = r3;
-        this.b = r2;
-        this.d = r4;
-        if (r1 == 2) goto L5;
-        return;
-    L5:
-        if (r2.p == false) goto L10;
-        kf2.n("Best-effort write calls cannot pass methods that should auto-resolve missing features.");
-        throw null;
+    public xf5(int i, bk bkVar, cr4 cr4Var, pa paVar) {
+        super(i);
+        this.c = cr4Var;
+        this.b = bkVar;
+        this.d = paVar;
+        if (i == 2 && bkVar.p) {
+            kf2.n("Best-effort write calls cannot pass methods that should auto-resolve missing features.");
+            throw null;
+        }
     }
 
     @Override // defpackage.cg5
-    public final void a(Status r2) {
+    public final void a(Status status) {
         this.d.getClass();
-        if (r2.p == null) goto L5;
-        Exception r0 = new ResolvableApiException(r2);
-    L6:
-        this.c.c(r0);
-        return;
-    L5:
-        r0 = new ApiException(r2);
-        goto L6
+        this.c.c(status.p != null ? new ResolvableApiException(status) : new ApiException(status));
     }
 
     @Override // defpackage.cg5
-    public final void b(Exception r1) {
-        this.c.c(r1);
+    public final void b(Exception exc) {
+        this.c.c(exc);
     }
 
     @Override // defpackage.cg5
-    public final void c(gf5 r3) {
-        cr4 r0 = this.c;
-        bk r1 = this.b;     // Catch: RuntimeException -> L5 RemoteException -> L7 DeadObjectException -> L13
-        me r4 = r3.f;     // Catch: RuntimeException -> L5 RemoteException -> L7 DeadObjectException -> L13
-        ((zy3) ((bk) r1.r).q).accept(r4, r0);     // Catch: RuntimeException -> L5 RemoteException -> L7 DeadObjectException -> L13
-        return;
-    L13:
-        e = move-exception;
-        throw e;
-    L7:
-        e = move-exception;
-        a(cg5.e(e));
-        return;
-    L5:
-        e = move-exception;
-        r0.c(e);
+    public final void c(gf5 gf5Var) throws DeadObjectException {
+        cr4 cr4Var = this.c;
+        try {
+            bk bkVar = this.b;
+            ((zy3) ((bk) bkVar.r).q).accept(gf5Var.f, cr4Var);
+        } catch (DeadObjectException e) {
+            throw e;
+        } catch (RemoteException e2) {
+            a(cg5.e(e2));
+        } catch (RuntimeException e3) {
+            cr4Var.c(e3);
+        }
     }
 
     @Override // defpackage.cg5
-    public final void d(xc5 r4, boolean r5) {
-        Boolean r6 = Boolean.valueOf(r5);
-        Map r0 = (Map) r4.p;
-        cr4 r3 = this.c;
-        r0.put(r3, r6);
-        jw r7 = r3.a;
-        boolean r2 = false;
-        gp3 r1 = new gp3(r4, r3, r2, 23);
-        r7.getClass();
-        hk5 r8 = new hk5(dr4.a, r1);
-        ((mf4) r7.p).i(r8);
-        r7.v();
+    public final void d(xc5 xc5Var, boolean z) {
+        Boolean boolValueOf = Boolean.valueOf(z);
+        Map map = (Map) xc5Var.p;
+        cr4 cr4Var = this.c;
+        map.put(cr4Var, boolValueOf);
+        jw jwVar = cr4Var.a;
+        gp3 gp3Var = new gp3(xc5Var, cr4Var, false, 23);
+        jwVar.getClass();
+        ((mf4) jwVar.p).i(new hk5(dr4.a, gp3Var));
+        jwVar.v();
     }
 
     @Override // defpackage.kf5
-    public final boolean f(gf5 r1) {
+    public final boolean f(gf5 gf5Var) {
         return this.b.p;
     }
 
     @Override // defpackage.kf5
-    public final p61[] g(gf5 r1) {
+    public final p61[] g(gf5 gf5Var) {
         return (p61[]) this.b.q;
     }
 }

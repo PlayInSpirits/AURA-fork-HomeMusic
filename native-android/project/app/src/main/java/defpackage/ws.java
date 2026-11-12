@@ -18,102 +18,80 @@ public final class ws implements wq4 {
     public Animatable p;
     public final /* synthetic */ int q;
 
-    public ws(ImageView r1, int r2) {
-        this.q = r2;
-        h12.f(r1, "Argument must not be null");
-        this.n = r1;
-        this.o = new x75(r1);
+    public ws(ImageView imageView, int i) {
+        this.q = i;
+        h12.f(imageView, "Argument must not be null");
+        this.n = imageView;
+        this.o = new x75(imageView);
     }
 
-    public final void a(Object r2) {
-        switch(this.q) {
-            case 0: goto L6;
-            default: goto L4;
-        };
-    L4:
-        ImageView r1 = this.n;
-        r1.setImageDrawable((Drawable) r2);
-        return;
-    L6:
-        ImageView r3 = this.n;
-        r3.setImageBitmap((Bitmap) r2);
+    public final void a(Object obj) {
+        switch (this.q) {
+            case 0:
+                this.n.setImageBitmap((Bitmap) obj);
+                break;
+            default:
+                this.n.setImageDrawable((Drawable) obj);
+                break;
+        }
     }
 
     @Override // defpackage.wq4
-    public final void b(cf4 r1) {
-        this.o.b.remove(r1);
+    public final void b(cf4 cf4Var) {
+        this.o.b.remove(cf4Var);
     }
 
     @Override // defpackage.wq4
-    public final void c(Object r2, cx4 r3) {
-        if (r3 != null) goto L5;
-    L13:
-        a(r2);
-        if ((r2 instanceof Animatable) == false) goto L17;
-        Animatable r4 = (Animatable) r2;
-        this.p = r4;
-        r4.start();
-        return;
-    L17:
-        this.p = null;
-        return;
-    L5:
-        if (r3.l(r2, this) == false) goto L13;
-        if ((r2 instanceof Animatable) == false) goto L11;
-        Animatable r5 = (Animatable) r2;
-        this.p = r5;
-        r5.start();
-        return;
-    L11:
-        this.p = null;
+    public final void c(Object obj, cx4 cx4Var) {
+        if (cx4Var != null && cx4Var.l(obj, this)) {
+            if (!(obj instanceof Animatable)) {
+                this.p = null;
+                return;
+            }
+            Animatable animatable = (Animatable) obj;
+            this.p = animatable;
+            animatable.start();
+            return;
+        }
+        a(obj);
+        if (!(obj instanceof Animatable)) {
+            this.p = null;
+            return;
+        }
+        Animatable animatable2 = (Animatable) obj;
+        this.p = animatable2;
+        animatable2.start();
     }
 
     @Override // defpackage.wq4
-    public final void d(cf4 r7) {
-        x75 r6 = this.o;
-        ArrayList r0 = r6.b;
-        View r1 = r6.a;
-        int r3 = r1.getPaddingRight() + r1.getPaddingLeft();
-        ViewGroup.LayoutParams r2 = r1.getLayoutParams();
-        int r4 = 0;
-        if (r2 == null) goto L5;
-        int r5 = r2.width;
-    L6:
-        int r8 = r6.a(r1.getWidth(), r5, r3);
-        int r9 = r1.getPaddingBottom() + r1.getPaddingTop();
-        ViewGroup.LayoutParams r10 = r1.getLayoutParams();
-        if (r10 == null) goto L9;
-        r4 = r10.height;
-    L9:
-        int r11 = r6.a(r1.getHeight(), r4, r9);
-        if (r8 > 0) goto L12;
-        if (r8 == Integer.MIN_VALUE) goto L12;
-    L16:
-        if (r0.contains(r7) == true) goto L19;
-        r0.add(r7);
-    L19:
-        if (r6.c != null) goto L24;
-        ViewTreeObserver r12 = r1.getViewTreeObserver();
-        ah0 r13 = new ah0(r6);
-        r6.c = r13;
-        r12.addOnPreDrawListener(r13);
-        return;
-    L24:
-        return;
-    L12:
-        if (r11 > 0) goto L22;
-        if (r11 != Integer.MIN_VALUE) goto L16;
-    L22:
-        r7.m(r8, r11);
-        return;
-    L5:
-        r5 = 0;
-        goto L6
+    public final void d(cf4 cf4Var) {
+        x75 x75Var = this.o;
+        ArrayList arrayList = x75Var.b;
+        View view = x75Var.a;
+        int paddingRight = view.getPaddingRight() + view.getPaddingLeft();
+        ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
+        int iA = x75Var.a(view.getWidth(), layoutParams != null ? layoutParams.width : 0, paddingRight);
+        int paddingBottom = view.getPaddingBottom() + view.getPaddingTop();
+        ViewGroup.LayoutParams layoutParams2 = view.getLayoutParams();
+        int iA2 = x75Var.a(view.getHeight(), layoutParams2 != null ? layoutParams2.height : 0, paddingBottom);
+        if ((iA > 0 || iA == Integer.MIN_VALUE) && (iA2 > 0 || iA2 == Integer.MIN_VALUE)) {
+            cf4Var.m(iA, iA2);
+            return;
+        }
+        if (!arrayList.contains(cf4Var)) {
+            arrayList.add(cf4Var);
+        }
+        if (x75Var.c == null) {
+            ViewTreeObserver viewTreeObserver = view.getViewTreeObserver();
+            ah0 ah0Var = new ah0(x75Var);
+            x75Var.c = ah0Var;
+            viewTreeObserver.addOnPreDrawListener(ah0Var);
+        }
     }
 
     @Override // defpackage.wq4
-    public final void e(pz3 r2) {
-        this.n.setTag(R.id.glide_custom_view_target_tag, r2);
+    public final void e(pz3 pz3Var) {
+        this.n.setTag(R.id.glide_custom_view_target_tag, pz3Var);
     }
 
     @Override // defpackage.z92
@@ -121,65 +99,63 @@ public final class ws implements wq4 {
     }
 
     @Override // defpackage.wq4
-    public final void i(Drawable r2) {
+    public final void i(Drawable drawable) {
         a(null);
         this.p = null;
-        this.n.setImageDrawable(r2);
+        this.n.setImageDrawable(drawable);
     }
 
     @Override // defpackage.z92
     public final void j() {
-        Animatable r0 = this.p;
-        if (r0 == null) goto L6;
-        r0.stop();
-        return;
+        Animatable animatable = this.p;
+        if (animatable != null) {
+            animatable.stop();
+        }
     }
 
     @Override // defpackage.wq4
-    public final void k(Drawable r2) {
+    public final void k(Drawable drawable) {
         a(null);
         this.p = null;
-        this.n.setImageDrawable(r2);
+        this.n.setImageDrawable(drawable);
     }
 
     @Override // defpackage.wq4
     public final pz3 l() {
-        Object r2 = this.n.getTag(R.id.glide_custom_view_target_tag);
-        if (r2 != null) goto L5;
-    L9:
+        Object tag = this.n.getTag(R.id.glide_custom_view_target_tag);
+        if (tag != null) {
+            if (tag instanceof pz3) {
+                return (pz3) tag;
+            }
+            kf2.n("You must not call setTag() on a view Glide is targeting");
+        }
         return null;
-    L5:
-        if ((r2 instanceof pz3) == true) goto L7;
-        kf2.n("You must not call setTag() on a view Glide is targeting");
-        goto L9
-    L7:
-        return (pz3) r2;
     }
 
     @Override // defpackage.wq4
-    public final void m(Drawable r4) {
-        x75 r0 = this.o;
-        ViewTreeObserver r1 = r0.a.getViewTreeObserver();
-        if (r1.isAlive() == false) goto L5;
-        r1.removeOnPreDrawListener(r0.c);
-    L5:
-        r0.c = null;
-        r0.b.clear();
-        Animatable r2 = this.p;
-        if (r2 == null) goto L8;
-        r2.stop();
-    L8:
+    public final void m(Drawable drawable) {
+        x75 x75Var = this.o;
+        ViewTreeObserver viewTreeObserver = x75Var.a.getViewTreeObserver();
+        if (viewTreeObserver.isAlive()) {
+            viewTreeObserver.removeOnPreDrawListener(x75Var.c);
+        }
+        x75Var.c = null;
+        x75Var.b.clear();
+        Animatable animatable = this.p;
+        if (animatable != null) {
+            animatable.stop();
+        }
         a(null);
         this.p = null;
-        this.n.setImageDrawable(r4);
+        this.n.setImageDrawable(drawable);
     }
 
     @Override // defpackage.z92
     public final void n() {
-        Animatable r0 = this.p;
-        if (r0 == null) goto L6;
-        r0.start();
-        return;
+        Animatable animatable = this.p;
+        if (animatable != null) {
+            animatable.start();
+        }
     }
 
     public final String toString() {

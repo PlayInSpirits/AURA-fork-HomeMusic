@@ -8,14 +8,11 @@ public final class ChatMessages {
     public static final int $stable = 8;
     private List<ChatMessage> chatMessages;
 
-    public ChatMessages() {
-    }
-
     public final List<ChatMessage> getChatMessages() {
         return this.chatMessages;
     }
 
-    public final void setChatMessages(List<ChatMessage> r1) {
-        this.chatMessages = r1;
+    public final void setChatMessages(List<ChatMessage> list) {
+        this.chatMessages = list;
     }
 }

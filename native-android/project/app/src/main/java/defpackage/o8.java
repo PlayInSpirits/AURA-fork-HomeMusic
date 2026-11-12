@@ -21,114 +21,84 @@ public final class o8 implements Callback {
     public final /* synthetic */ boolean p;
     public final /* synthetic */ int q;
 
-    public o8(int r2, k03 r3, boolean r4) {
+    public o8(int i, k03 k03Var, boolean z) {
         this.n = 1;
-        this.o = r3;
-        this.p = r4;
-        this.q = r2;
+        this.o = k03Var;
+        this.p = z;
+        this.q = i;
     }
 
-    private final void a(Call r1, Throwable r2) {
+    private final void a(Call call, Throwable th) {
     }
 
-    private final void b(Call r1, Throwable r2) {
+    private final void b(Call call, Throwable th) {
     }
 
-    private final void c(Call r1, Throwable r2) {
-    }
-
-    @Override // retrofit2.Callback
-    public final void onFailure(Call r1, Throwable r2) {
-        int r0 = this.n;
+    private final void c(Call call, Throwable th) {
     }
 
     @Override // retrofit2.Callback
-    public final void onResponse(Call r4, Response r5) {
-        int r6 = this.n;
-        int r0 = this.q;
-        boolean r2 = this.p;
-        k03 r3 = this.o;
-        switch(r6) {
-            case 0: goto L39;
-            case 1: goto L18;
-            default: goto L5;
-        };
-    L5:
-        if (r5.isSuccessful() == true) goto L7;
-        return;
-    L7:
-        if (r5.body() != null) goto L9;
-        return;
-    L9:
-        if (((ApiResponse) r5.body()).getSubsonicResponse().getStarred2() == null) goto L52;
-        List<Child> r7 = ((ApiResponse) r5.body()).getSubsonicResponse().getStarred2().getSongs();
-        if (r7 == null) goto L53;
-        ArrayList r8 = new ArrayList(kb4.U(r7));
-        if (r2 == true) goto L15;
-        r3.k(r8);
-        return;
-    L15:
-        Collections.shuffle(r8);
-        r3.k(r8.subList(0, Math.min(r0, r8.size())));
-        return;
-    L53:
-        return;
-    L52:
-        return;
-    L18:
-        if (r5.isSuccessful() == true) goto L20;
-        return;
-    L20:
-        if (r5.body() != null) goto L22;
-        return;
-    L22:
-        if (((ApiResponse) r5.body()).getSubsonicResponse() != null) goto L24;
-        return;
-    L24:
-        if (((ApiResponse) r5.body()).getSubsonicResponse().getGenres() == null) goto L58;
-        List<Genre> r9 = ((ApiResponse) r5.body()).getSubsonicResponse().getGenres().getGenres();
-        if (r9 != null) goto L28;
-    L36:
-        r3.k(Collections.EMPTY_LIST);
-        return;
-    L28:
-        if (r9.isEmpty() == true) goto L36;
-        if (r2 == false) goto L33;
-        Collections.shuffle(r9);
-    L33:
-        if (r0 == (-1)) goto L35;
-        r3.k(r9.subList(0, Math.min(r0, r9.size())));
-        return;
-    L35:
-        r3.k((List) r9.stream().sorted(Comparator.comparing(new m7(24))).collect(Collectors.toList()));
-        return;
-    L58:
-        return;
-    L39:
-        if (r5.isSuccessful() == true) goto L41;
-        return;
-    L41:
-        if (r5.body() != null) goto L43;
-        return;
-    L43:
-        if (((ApiResponse) r5.body()).getSubsonicResponse().getStarred2() == null) goto L63;
-        List<AlbumID3> r10 = ((ApiResponse) r5.body()).getSubsonicResponse().getStarred2().getAlbums();
-        if (r10 == null) goto L64;
-        if (r2 == false) goto L48;
-        Collections.shuffle(r10);
-        r3.k(r10.subList(0, Math.min(r0, r10.size())));
-        return;
-    L48:
-        r3.k(r10);
-        return;
-    L64:
-        return;
+    public final void onFailure(Call call, Throwable th) {
+        int i = this.n;
     }
 
-    public /* synthetic */ o8(boolean r1, k03 r2, int r3, int r4) {
-        this.n = r4;
-        this.p = r1;
-        this.o = r2;
-        this.q = r3;
+    @Override // retrofit2.Callback
+    public final void onResponse(Call call, Response response) {
+        List<AlbumID3> albums;
+        List<Child> songs;
+        int i = this.n;
+        int i2 = this.q;
+        boolean z = this.p;
+        k03 k03Var = this.o;
+        switch (i) {
+            case 0:
+                if (response.isSuccessful() && response.body() != null && ((ApiResponse) response.body()).getSubsonicResponse().getStarred2() != null && (albums = ((ApiResponse) response.body()).getSubsonicResponse().getStarred2().getAlbums()) != null) {
+                    if (!z) {
+                        k03Var.k(albums);
+                    } else {
+                        Collections.shuffle(albums);
+                        k03Var.k(albums.subList(0, Math.min(i2, albums.size())));
+                    }
+                    break;
+                }
+                break;
+            case 1:
+                if (response.isSuccessful() && response.body() != null && ((ApiResponse) response.body()).getSubsonicResponse() != null && ((ApiResponse) response.body()).getSubsonicResponse().getGenres() != null) {
+                    List<Genre> genres = ((ApiResponse) response.body()).getSubsonicResponse().getGenres().getGenres();
+                    if (genres == null || genres.isEmpty()) {
+                        k03Var.k(Collections.EMPTY_LIST);
+                    } else {
+                        if (z) {
+                            Collections.shuffle(genres);
+                        }
+                        if (i2 == -1) {
+                            k03Var.k((List) genres.stream().sorted(Comparator.comparing(new m7(24))).collect(Collectors.toList()));
+                        } else {
+                            k03Var.k(genres.subList(0, Math.min(i2, genres.size())));
+                        }
+                    }
+                    break;
+                }
+                break;
+            default:
+                if (response.isSuccessful() && response.body() != null && ((ApiResponse) response.body()).getSubsonicResponse().getStarred2() != null && (songs = ((ApiResponse) response.body()).getSubsonicResponse().getStarred2().getSongs()) != null) {
+                    ArrayList arrayList = new ArrayList(kb4.U(songs));
+                    if (!z) {
+                        k03Var.k(arrayList);
+                    } else {
+                        Collections.shuffle(arrayList);
+                        k03Var.k(arrayList.subList(0, Math.min(i2, arrayList.size())));
+                    }
+                    break;
+                }
+                break;
+        }
+    }
+
+    public /* synthetic */ o8(boolean z, k03 k03Var, int i, int i2) {
+        this.n = i2;
+        this.p = z;
+        this.o = k03Var;
+        this.q = i;
     }
 }

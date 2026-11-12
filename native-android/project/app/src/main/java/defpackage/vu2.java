@@ -10,10 +10,10 @@ public final class vu2 extends FrameLayout implements j40 {
     public final CollapsibleActionView n;
 
     /* JADX WARN: Multi-variable type inference failed */
-    public vu2(View r2) {
-        super(r2.getContext());
-        this.n = (CollapsibleActionView) r2;
-        addView(r2);
+    public vu2(View view) {
+        super(view.getContext());
+        this.n = (CollapsibleActionView) view;
+        addView(view);
     }
 
     @Override // defpackage.j40

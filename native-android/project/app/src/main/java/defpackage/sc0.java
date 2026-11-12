@@ -5,21 +5,15 @@ package defpackage;
 public final class sc0 extends tc0 {
     public final int a;
 
-    public sc0(int r1) {
-        this.a = r1;
+    public sc0(int i) {
+        this.a = i;
     }
 
-    public final boolean equals(Object r4) {
-        if (this != r4) goto L6;
-        return true;
-    L6:
-        if ((r4 instanceof sc0) == true) goto L9;
-        return false;
-    L9:
-        if (this.a == ((sc0) r4).a) goto L11;
-        return false;
-    L11:
-        return true;
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        return (obj instanceof sc0) && this.a == ((sc0) obj).a;
     }
 
     public final int hashCode() {

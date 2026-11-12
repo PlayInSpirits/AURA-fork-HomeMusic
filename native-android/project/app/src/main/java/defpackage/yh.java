@@ -17,88 +17,85 @@ import androidx.work.impl.foreground.SystemForegroundService;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public abstract class yh {
-    public static ContentCaptureSession a(View r0) {
-        return r0.getContentCaptureSession();
+    public static ContentCaptureSession a(View view) {
+        return view.getContentCaptureSession();
     }
 
-    public static String b(Context r0) {
-        return r0.getOpPackageName();
+    public static String b(Context context) {
+        return context.getOpPackageName();
     }
 
     public static boolean c() {
         return Trace.isEnabled();
     }
 
-    public static AutofillId d(ContentCaptureSession r0, AutofillId r1, long r2) {
-        return r0.newAutofillId(r1, r2);
+    public static AutofillId d(ContentCaptureSession contentCaptureSession, AutofillId autofillId, long j) {
+        return contentCaptureSession.newAutofillId(autofillId, j);
     }
 
-    public static ViewStructure e(ContentCaptureSession r0, AutofillId r1, long r2) {
-        return r0.newVirtualViewStructure(r1, r2);
+    public static ViewStructure e(ContentCaptureSession contentCaptureSession, AutofillId autofillId, long j) {
+        return contentCaptureSession.newVirtualViewStructure(autofillId, j);
     }
 
-    public static void f(ContentCaptureSession r0, ViewStructure r1) {
-        r0.notifyViewAppeared(r1);
+    public static void f(ContentCaptureSession contentCaptureSession, ViewStructure viewStructure) {
+        contentCaptureSession.notifyViewAppeared(viewStructure);
     }
 
-    public static void g(ContentCaptureSession r0, AutofillId r1) {
-        r0.notifyViewDisappeared(r1);
+    public static void g(ContentCaptureSession contentCaptureSession, AutofillId autofillId) {
+        contentCaptureSession.notifyViewDisappeared(autofillId);
     }
 
-    public static void h(ContentCaptureSession r0, AutofillId r1, String r2) {
-        r0.notifyViewTextChanged(r1, r2);
+    public static void h(ContentCaptureSession contentCaptureSession, AutofillId autofillId, String str) {
+        contentCaptureSession.notifyViewTextChanged(autofillId, str);
     }
 
-    public static void i(ContentCaptureSession r0, AutofillId r1, long[] r2) {
-        r0.notifyViewsDisappeared(r1, r2);
+    public static void i(ContentCaptureSession contentCaptureSession, AutofillId autofillId, long[] jArr) {
+        contentCaptureSession.notifyViewsDisappeared(autofillId, jArr);
     }
 
-    public static Insets j(int r0, int r1, int r2, int r3) {
-        return Insets.of(r0, r1, r2, r3);
+    public static Insets j(int i, int i2, int i3, int i4) {
+        return Insets.of(i, i2, i3, i4);
     }
 
-    public static void k(Resources.Theme r0) {
-        r0.rebase();
+    public static void k(Resources.Theme theme) {
+        theme.rebase();
     }
 
-    public static final void l(Activity r0, kq3.a r1) {
-        r0.registerActivityLifecycleCallbacks(r1);
+    public static final void l(Activity activity, kq3.a aVar) {
+        activity.registerActivityLifecycleCallbacks(aVar);
     }
 
-    public static void m(Notification.Builder r0, boolean r1) {
-        r0.setAllowSystemGeneratedContextualActions(r1);
+    public static void m(Notification.Builder builder, boolean z) {
+        builder.setAllowSystemGeneratedContextualActions(z);
     }
 
-    public static void n(Notification.Builder r1) {
-        r1.setBubbleMetadata(null);
+    public static void n(Notification.Builder builder) {
+        builder.setBubbleMetadata(null);
     }
 
-    public static void o(Notification.Action.Builder r1) {
-        r1.setContextual(false);
+    public static void o(Notification.Action.Builder builder) {
+        builder.setContextual(false);
     }
 
-    public static void p(SystemForegroundService r0, int r1, Notification r2, int r3) {
-        r0.startForeground(r1, r2, r3);
+    public static void p(SystemForegroundService systemForegroundService, int i, Notification notification, int i2) {
+        systemForegroundService.startForeground(i, notification, i2);
     }
 
-    public static void q(SystemForegroundService r2, int r3, Notification r4, int r5) {
-        r2.startForeground(r3, r4, r5);     // Catch: SecurityException -> L5 ForegroundServiceStartNotAllowedException -> L9
-        return;
-    L9:
-        e = move-exception;
-        cx r6 = cx.f();
-        String r7 = SystemForegroundService.r;
-        if (r6.a > 5) goto L18;
-        Log.w(r7, "Unable to start foreground service", e);
-        return;
-    L18:
-        return;
-    L5:
-        e = move-exception;
-        cx r8 = cx.f();
-        String r9 = SystemForegroundService.r;
-        if (r8.a > 5) goto L16;
-        Log.w(r9, "Unable to start foreground service", e);
-        return;
+    public static void q(SystemForegroundService systemForegroundService, int i, Notification notification, int i2) {
+        try {
+            systemForegroundService.startForeground(i, notification, i2);
+        } catch (ForegroundServiceStartNotAllowedException e) {
+            cx cxVarF = cx.f();
+            String str = SystemForegroundService.r;
+            if (cxVarF.a <= 5) {
+                Log.w(str, "Unable to start foreground service", e);
+            }
+        } catch (SecurityException e2) {
+            cx cxVarF2 = cx.f();
+            String str2 = SystemForegroundService.r;
+            if (cxVarF2.a <= 5) {
+                Log.w(str2, "Unable to start foreground service", e2);
+            }
+        }
     }
 }

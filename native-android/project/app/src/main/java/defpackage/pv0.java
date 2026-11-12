@@ -5,13 +5,7 @@ package defpackage;
 public final class pv0 {
     public cc a;
     public aa b;
-    public long c;
-    public int d;
-    public final mz e;
-
-    public pv0() {
-        this.c = 0;
-        this.d = 0;
-        this.e = new mz();
-    }
+    public long c = 0;
+    public int d = 0;
+    public final mz e = new mz();
 }

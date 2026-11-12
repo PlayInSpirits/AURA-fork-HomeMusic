@@ -9,27 +9,26 @@ public final /* synthetic */ class b12 implements if1 {
     public final /* synthetic */ c12 o;
     public final /* synthetic */ InternetRadioStationCache p;
 
-    public /* synthetic */ b12(c12 r1, InternetRadioStationCache r2, int r3) {
-        this.n = r3;
-        this.o = r1;
-        this.p = r2;
+    public /* synthetic */ b12(c12 c12Var, InternetRadioStationCache internetRadioStationCache, int i) {
+        this.n = i;
+        this.o = c12Var;
+        this.p = internetRadioStationCache;
     }
 
     @Override // defpackage.if1
-    public final Object invoke(Object r4) {
-        int r0 = this.n;
-        InternetRadioStationCache r2 = this.p;
-        c12 r3 = this.o;
-        x34 r5 = (x34) r4;
-        switch(r0) {
-            case 0: goto L6;
-            default: goto L4;
-        };
-    L4:
-        ((q20) r3.p).I(r5, r2);
-        return null;
-    L6:
-        ((h61) r3.q).y(r5, r2);
+    public final Object invoke(Object obj) {
+        int i = this.n;
+        InternetRadioStationCache internetRadioStationCache = this.p;
+        c12 c12Var = this.o;
+        x34 x34Var = (x34) obj;
+        switch (i) {
+            case 0:
+                ((h61) c12Var.q).y(x34Var, internetRadioStationCache);
+                break;
+            default:
+                ((q20) c12Var.p).I(x34Var, internetRadioStationCache);
+                break;
+        }
         return null;
     }
 }

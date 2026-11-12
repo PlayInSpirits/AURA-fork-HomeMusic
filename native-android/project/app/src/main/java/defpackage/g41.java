@@ -12,34 +12,31 @@ public final /* synthetic */ class g41 implements IntConsumer {
     public final /* synthetic */ int a;
     public final /* synthetic */ Object b;
 
-    public /* synthetic */ g41(int r1, Object r2) {
-        this.a = r1;
-        this.b = r2;
+    public /* synthetic */ g41(int i, Object obj) {
+        this.a = i;
+        this.b = obj;
     }
 
     @Override // java.util.function.IntConsumer
-    public final void accept(int r4) {
-        int r0 = this.a;
-        Object r3 = this.b;
-        switch(r0) {
-            case 0: goto L10;
-            default: goto L4;
-        };
-    L4:
-        PlaylistPageFragment r5 = (PlaylistPageFragment) r3;
-        Context r1 = r5.n();
-        if (r1 == null) goto L15;
-        if (r4 <= 0) goto L16;
-        Toast.makeText(r1, r5.r().getQuantityString(R.plurals.playlist_sync_downloading, r4, new Object[]{Integer.valueOf(r4)}), 0).show();
-        return;
-    L16:
-        return;
-    L15:
-        return;
-    L10:
-        i41 r6 = (i41) ((yc5) r3).p;
-        if (r6.i0 == true) goto L17;
-        r6.q1(1, 19, Integer.valueOf(r4));
-        return;
+    public final void accept(int i) {
+        int i2 = this.a;
+        Object obj = this.b;
+        switch (i2) {
+            case 0:
+                i41 i41Var = (i41) ((yc5) obj).p;
+                if (!i41Var.i0) {
+                    i41Var.q1(1, 19, Integer.valueOf(i));
+                    break;
+                }
+                break;
+            default:
+                PlaylistPageFragment playlistPageFragment = (PlaylistPageFragment) obj;
+                Context contextN = playlistPageFragment.n();
+                if (contextN != null && i > 0) {
+                    Toast.makeText(contextN, playlistPageFragment.r().getQuantityString(R.plurals.playlist_sync_downloading, i, Integer.valueOf(i)), 0).show();
+                    break;
+                }
+                break;
+        }
     }
 }

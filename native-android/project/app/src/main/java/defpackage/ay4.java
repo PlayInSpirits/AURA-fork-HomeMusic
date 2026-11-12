@@ -5,17 +5,15 @@ package defpackage;
 public final class ay4 extends yx4 {
     public final rf3 q;
 
-    public ay4(rf3 r1) {
-        this.q = r1;
+    public ay4(rf3 rf3Var) {
+        this.q = rf3Var;
     }
 
     @Override // java.util.Iterator
     public final Object next() {
-        int r0 = this.p;
-        this.p = r0 + 2;
-        Object[] r2 = this.n;
-        Object r3 = r2[r0];
-        Object r1 = r2[r0 + 1];
-        return new o03(this.q, r3, r1);
+        int i = this.p;
+        this.p = i + 2;
+        Object[] objArr = this.n;
+        return new o03(this.q, objArr[i], objArr[i + 1]);
     }
 }

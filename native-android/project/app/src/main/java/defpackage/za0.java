@@ -6,21 +6,21 @@ import org.conscrypt.Conscrypt;
 /* JADX INFO: loaded from: classes.dex */
 public abstract class za0 {
     public static boolean a() {
-        Conscrypt.Version r0 = Conscrypt.version();
-        if (r0 != null) goto L6;
-        return false;
-    L6:
-        if (r0.major() == 2) goto L11;
-        if (r0.major() > 2) goto L17;
-        return false;
-    L17:
+        Conscrypt.Version version = Conscrypt.version();
+        if (version == null) {
+            return false;
+        }
+        if (version.major() != 2) {
+            if (version.major() <= 2) {
+                return false;
+            }
+        } else if (version.minor() != 1) {
+            if (version.minor() <= 1) {
+                return false;
+            }
+        } else if (version.patch() < 0) {
+            return false;
+        }
         return true;
-    L11:
-        if (r0.minor() == 1) goto L16;
-        if (r0.minor() > 1) goto L17;
-        return false;
-    L16:
-        if (r0.patch() >= 0) goto L17;
-        return false;
     }
 }

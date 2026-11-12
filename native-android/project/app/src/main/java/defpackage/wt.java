@@ -8,6 +8,7 @@ import com.eddyizm.tempus.ui.activity.MainActivity;
 import com.eddyizm.tempus.ui.fragment.PlayerControllerFragment;
 import java.lang.ref.WeakReference;
 import java.util.List;
+import org.chromium.support_lib_boundary.WebSettingsBoundaryInterface;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
@@ -15,136 +16,97 @@ public final class wt extends ut {
     public final /* synthetic */ int a;
     public final /* synthetic */ Object b;
 
-    public /* synthetic */ wt(int r1, Object r2) {
-        this.a = r1;
-        this.b = r2;
+    public /* synthetic */ wt(int i, Object obj) {
+        this.a = i;
+        this.b = obj;
     }
 
-    private final void d(View r1, float r2) {
+    private final void d(View view, float f) {
     }
 
-    private final void e(View r1, float r2) {
+    private final void e(View view, float f) {
     }
 
-    private final void f(View r1, float r2) {
+    private final void f(View view, float f) {
     }
 
-    private final void g(View r1, float r2) {
-    }
-
-    @Override // defpackage.ut
-    public final void b(View r1, float r2) {
-        switch(this.a) {
-            case 0: goto L8;
-            case 1: goto L8;
-            case 2: goto L8;
-            case 3: goto L8;
-            default: goto L4;
-        };
-    L4:
-        MainActivity r0 = (MainActivity) this.b;
-        ((au) r0.V.n).a(r2);
-        if (r0.X == true) goto L9;
-        MainActivity.p(r0, r2);
-        return;
-    L9:
-        return;
+    private final void g(View view, float f) {
     }
 
     @Override // defpackage.ut
-    public final void c(View r6, int r7) {
-        int r8 = this.a;
-        boolean r3 = false;
-        Object r5 = this.b;
-        switch(r8) {
-            case 0: goto L50;
-            case 1: goto L46;
-            case 2: goto L44;
-            case 3: goto L39;
-            default: goto L4;
-        };
-    L4:
-        MainActivity r9 = (MainActivity) r5;
-        xi3 r10 = (xi3) r9.k().D("PlayerBottomSheet");
-        if (r7 == 3) goto L35;
-        if (r7 == 4) goto L12;
-        if (r7 != 5) goto L64;
-        u52.f();
-        AURAWavePlaybackListener.resetWaveState();
-        bl2 r11 = r9.P;
-        WeakReference r12 = bo2.a;
-        if (r11 == null) goto L53;
-        r11.f(new jr1(r11, 2), gq0.n);
-        return;
-    L53:
-        return;
-    L64:
-        return;
-    L12:
-        ((au) r9.V.n).a(0.0f);
-        if (r9.X == true) goto L15;
-        MainActivity.p(r9, 0.0f);
-    L15:
-        if (r10 != null) goto L17;
-        return;
-    L17:
-        if (r10.n() != null) goto L19;
-        return;
-    L19:
-        if (r10.y() == true) goto L21;
-        return;
-    L21:
-        if (r10.T == null) goto L65;
-        ((ViewPager2) ((om1) r10.o0.p).o).c(0, false);
-        if (r10.n() != null) goto L26;
-        return;
-    L26:
-        if (r10.y() == true) goto L28;
-        return;
-    L28:
-        if (r10.T == null) goto L66;
-        ck3 r13 = (ck3) ((ViewPager2) ((om1) r10.o0.p).o).getAdapter();
-        if (r13 == null) goto L60;
-        PlayerControllerFragment r14 = (PlayerControllerFragment) ((kc1) r13.z.get(0));
-        if (r14 == null) goto L61;
-        r14.o0.c(0, false);
-        return;
-    L61:
-        return;
-    L60:
-        return;
-    L66:
-        return;
-    L65:
-        return;
-    L35:
-        ((au) r9.V.n).a(1.0f);
-        if (r9.X == true) goto L63;
-        MainActivity.p(r9, 1.0f);
-        return;
-    L63:
-        return;
-    L39:
-        bd1 r15 = (bd1) r5;
-        if (r7 != 3) goto L42;
-        r3 = true;
-    L42:
-        r15.c(r3);
-        return;
-    L44:
-        List r16 = HubFragment.y0;
-        ((HubFragment) r5).n0();
-        return;
-    L46:
-        if (r7 == 4) goto L48;
-        if (r7 == 5) goto L48;
-        return;
-    L48:
-        ((au) r5).a = false;
-        return;
-    L50:
-        if (r7 != 5) goto L68;
-        ((yt) r5).cancel();
-        return;
+    public final void b(View view, float f) {
+        switch (this.a) {
+            case 0:
+            case 1:
+            case 2:
+            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
+                break;
+            default:
+                MainActivity mainActivity = (MainActivity) this.b;
+                ((au) mainActivity.V.n).a(f);
+                if (!mainActivity.X) {
+                    MainActivity.p(mainActivity, f);
+                }
+                break;
+        }
+    }
+
+    @Override // defpackage.ut
+    public final void c(View view, int i) {
+        ck3 ck3Var;
+        PlayerControllerFragment playerControllerFragment;
+        int i2 = this.a;
+        Object obj = this.b;
+        switch (i2) {
+            case 0:
+                if (i == 5) {
+                    ((yt) obj).cancel();
+                }
+                break;
+            case 1:
+                if (i == 4 || i == 5) {
+                    ((au) obj).a = false;
+                }
+                break;
+            case 2:
+                List list = HubFragment.y0;
+                ((HubFragment) obj).n0();
+                break;
+            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
+                ((bd1) obj).c(i == 3);
+                break;
+            default:
+                MainActivity mainActivity = (MainActivity) obj;
+                xi3 xi3Var = (xi3) mainActivity.k().D("PlayerBottomSheet");
+                if (i == 3) {
+                    ((au) mainActivity.V.n).a(1.0f);
+                    if (!mainActivity.X) {
+                        MainActivity.p(mainActivity, 1.0f);
+                    }
+                    break;
+                } else if (i == 4) {
+                    ((au) mainActivity.V.n).a(0.0f);
+                    if (!mainActivity.X) {
+                        MainActivity.p(mainActivity, 0.0f);
+                    }
+                    if (xi3Var != null && xi3Var.n() != null && xi3Var.y() && xi3Var.T != null) {
+                        ((ViewPager2) ((om1) xi3Var.o0.p).o).c(0, false);
+                        if (xi3Var.n() != null && xi3Var.y() && xi3Var.T != null && (ck3Var = (ck3) ((ViewPager2) ((om1) xi3Var.o0.p).o).getAdapter()) != null && (playerControllerFragment = (PlayerControllerFragment) ((kc1) ck3Var.z.get(0))) != null) {
+                            playerControllerFragment.o0.c(0, false);
+                            break;
+                        }
+                    }
+                } else if (i == 5) {
+                    u52.f();
+                    AURAWavePlaybackListener.resetWaveState();
+                    bl2 bl2Var = mainActivity.P;
+                    WeakReference weakReference = bo2.a;
+                    if (bl2Var != null) {
+                        bl2Var.f(new jr1(bl2Var, 2), gq0.n);
+                    }
+                    break;
+                }
+                break;
+        }
     }
 }

@@ -3,14 +3,14 @@ package defpackage;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class vk1 implements mz0 {
-    public static final double[] r = null;
+    public static final double[] r = {23.976023976023978d, 24.0d, 25.0d, 29.97002997002997d, 30.0d, 50.0d, 59.94005994005994d, 60.0d};
     public String a;
     public wv4 b;
     public final r20 c;
     public final String d;
     public final be3 e;
     public final n41 f;
-    public final boolean[] g;
+    public final boolean[] g = new boolean[4];
     public final uk1 h;
     public long i;
     public boolean j;
@@ -22,28 +22,21 @@ public final class vk1 implements mz0 {
     public boolean p;
     public boolean q;
 
-    static {
-        r = new double[]{23.976023976023978d, 24.0d, 25.0d, 29.97002997002997d, 30.0d, 50.0d, 59.94005994005994d, 60.0d};
-    }
-
-    public vk1(r20 r2, String r3) {
-        this.c = r2;
-        this.d = r3;
-        this.g = new boolean[4];
-        uk1 r4 = new uk1();
-        r4.d = new byte[128];
-        this.h = r4;
-        if (r2 == null) goto L5;
-        this.f = new n41(178);
-        this.e = new be3();
-    L6:
+    public vk1(r20 r20Var, String str) {
+        this.c = r20Var;
+        this.d = str;
+        uk1 uk1Var = new uk1();
+        uk1Var.d = new byte[128];
+        this.h = uk1Var;
+        if (r20Var != null) {
+            this.f = new n41(178);
+            this.e = new be3();
+        } else {
+            this.f = null;
+            this.e = null;
+        }
         this.m = -9223372036854775807L;
         this.o = -9223372036854775807L;
-        return;
-    L5:
-        this.f = null;
-        this.e = null;
-        goto L6
     }
 
     /* JADX WARN: Failed to calculate best type for var: r2v10 ??
@@ -207,29 +200,6 @@ public final class vk1 implements mz0 {
         */
     @Override // defpackage.mz0
     public final void a(defpackage.be3 r23) {
-        /*  JADX ERROR: Simple mode code generation failed
-            jadx.core.utils.exceptions.CodegenException: Error generate insn: 0x01ba: IGET (r13v4 ?? I:boolean) = (r22v0 'this' vk1 A[IMMUTABLE_TYPE, THIS]) A[DECLARE_VAR] (LINE:443) vk1.p boolean in method: vk1.a(be3):void, file: classes.dex
-            	at jadx.core.codegen.InsnGen.makeInsn(InsnGen.java:310)
-            	at jadx.core.codegen.InsnGen.makeInsn(InsnGen.java:273)
-            	at jadx.core.codegen.MethodGen.generateSimpleCode(MethodGen.java:348)
-            	at jadx.core.codegen.MethodGen.addSimpleMethodCode(MethodGen.java:316)
-            	at jadx.core.codegen.MethodGen.addInstructions(MethodGen.java:279)
-            	at jadx.core.codegen.ClassGen.addMethodCode(ClassGen.java:420)
-            	at jadx.core.codegen.ClassGen.addMethod(ClassGen.java:345)
-            	at jadx.core.codegen.ClassGen.lambda$addInnerClsAndMethods$3(ClassGen.java:299)
-            	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:183)
-            	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-            	at java.base/java.util.stream.SortedOps$RefSortingSink.end(SortedOps.java:395)
-            	at java.base/java.util.stream.Sink$ChainedReference.end(Sink.java:258)
-            Caused by: java.lang.NullPointerException: Cannot invoke "jadx.core.dex.instructions.args.ArgType.getPrimitiveType()" because "type" is null
-            	at jadx.core.codegen.ClassGen.useType(ClassGen.java:564)
-            	at jadx.core.codegen.InsnGen.useType(InsnGen.java:269)
-            	at jadx.core.codegen.InsnGen.declareVar(InsnGen.java:166)
-            	at jadx.core.codegen.InsnGen.declareVar(InsnGen.java:159)
-            	at jadx.core.codegen.InsnGen.assignVar(InsnGen.java:152)
-            	at jadx.core.codegen.InsnGen.makeInsn(InsnGen.java:299)
-            	... 11 more
-            */
         /*
             Method dump skipped, instruction units count: 525
             To view this dump add '--comments-level debug' option
@@ -240,15 +210,15 @@ public final class vk1 implements mz0 {
     @Override // defpackage.mz0
     public final void c() {
         uc5.i(this.g);
-        uk1 r0 = this.h;
-        r0.a = false;
-        r0.b = 0;
-        r0.c = 0;
-        n41 r1 = this.f;
-        if (r1 == null) goto L5;
-        r1.f();
-    L5:
-        this.i = 0;
+        uk1 uk1Var = this.h;
+        uk1Var.a = false;
+        uk1Var.b = 0;
+        uk1Var.c = 0;
+        n41 n41Var = this.f;
+        if (n41Var != null) {
+            n41Var.f();
+        }
+        this.i = 0L;
         this.j = false;
         this.m = -9223372036854775807L;
         this.o = -9223372036854775807L;
@@ -265,30 +235,29 @@ public final class vk1 implements mz0 {
     	at jadx.core.dex.visitors.typeinference.FixTypesVisitor.visit(FixTypesVisitor.java:94)
      */
     @Override // defpackage.mz0
-    public final void d(boolean r9) {
+    public final void d(boolean z) {
         this.b.getClass();
-        if (r9 == false) goto L6;
-        boolean r4 = this.p;
-        int r5 = (int) (this.i - this.n);
-        this.b.a(this.o, r4 ? 1 : 0, r5, 0, null);
-        return;
+        if (z) {
+            boolean z2 = this.p;
+            this.b.a(this.o, z2 ? 1 : 0, (int) (this.i - this.n), 0, null);
+        }
     }
 
     @Override // defpackage.mz0
-    public final void e(int r1, long r2) {
-        this.m = r2;
+    public final void e(int i, long j) {
+        this.m = j;
     }
 
     @Override // defpackage.mz0
-    public final void f(m51 r3, sy4 r4) {
-        r4.a();
-        r4.b();
-        this.a = r4.e;
-        r4.b();
-        this.b = r3.t(r4.d, 2);
-        r20 r2 = this.c;
-        if (r2 == null) goto L6;
-        r2.p(r3, r4);
-        return;
+    public final void f(m51 m51Var, sy4 sy4Var) {
+        sy4Var.a();
+        sy4Var.b();
+        this.a = sy4Var.e;
+        sy4Var.b();
+        this.b = m51Var.t(sy4Var.d, 2);
+        r20 r20Var = this.c;
+        if (r20Var != null) {
+            r20Var.p(m51Var, sy4Var);
+        }
     }
 }

@@ -8,47 +8,37 @@ public final class u33 {
     public final List a;
     public final int b;
 
-    public u33(List r2, int r3) {
-        this.a = r2;
-        this.b = r3;
-        if (r2.isEmpty() == false) goto L7;
-        if (r3 != (-1)) goto L7;
-        return;
-    L7:
-        if (r2.isEmpty() == true) goto L12;
-        int r1 = r2.size();
-        if (r3 < 0) goto L12;
-        if (r3 >= r1) goto L12;
-        return;
-    L12:
-        StringBuilder r4 = f34.j(r3, "Invalid 'NavigationEventHistory' state:  'currentIndex' must be within the bounds of 'mergedHistory' (or -1 if empty). Received: currentIndex = '", "', bounds = '");
-        r4.append(gb.C(r2));
-        r4.append("'.");
-        throw new IllegalArgumentException(r4.toString().toString());
+    public u33(List list, int i) {
+        this.a = list;
+        this.b = i;
+        if (list.isEmpty() && i == -1) {
+            return;
+        }
+        if (!list.isEmpty()) {
+            int size = list.size();
+            if (i >= 0 && i < size) {
+                return;
+            }
+        }
+        StringBuilder sbJ = f34.j(i, "Invalid 'NavigationEventHistory' state:  'currentIndex' must be within the bounds of 'mergedHistory' (or -1 if empty). Received: currentIndex = '", "', bounds = '");
+        sbJ.append(gb.C(list));
+        sbJ.append("'.");
+        throw new IllegalArgumentException(sbJ.toString().toString());
     }
 
-    public final boolean equals(Object r5) {
-        if (this != r5) goto L6;
-        return true;
-    L6:
-        if (r5 != null) goto L8;
-    L17:
-        return false;
-    L8:
-        if (u33.class != r5.getClass()) goto L17;
-        u33 r6 = (u33) r5;
-        if (this.b == r6.b) goto L14;
-        return false;
-    L14:
-        if (h12.c(this.a, r6.a) == true) goto L16;
-        return false;
-    L16:
-        return true;
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || u33.class != obj.getClass()) {
+            return false;
+        }
+        u33 u33Var = (u33) obj;
+        return this.b == u33Var.b && h12.c(this.a, u33Var.a);
     }
 
     public final int hashCode() {
-        int r0 = this.b * 31;
-        return this.a.hashCode() + r0;
+        return this.a.hashCode() + (this.b * 31);
     }
 
     public final String toString() {

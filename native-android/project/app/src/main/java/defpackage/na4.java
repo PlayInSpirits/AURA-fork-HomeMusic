@@ -34,1327 +34,1165 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.zip.Inflater;
+import org.chromium.support_lib_boundary.WebSettingsBoundaryInterface;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class na4 implements jj1, zn4 {
-    public static final tv1 r = null;
-    public static final l15 s = null;
+    public static final tv1 r = new tv1();
+    public static final l15 s = new l15(2);
     public static na4 t;
     public Object n;
     public Object o;
     public Object p;
     public Object q;
 
-    static {
-        r = new tv1();
-        s = new l15(2);
-    }
-
-    public na4(Typeface r8, wv2 r9) {
-        this.q = r8;
-        this.n = r9;
+    public na4(Typeface typeface, wv2 wv2Var) {
+        int i;
+        int i2;
+        int i3;
+        int i4;
+        this.q = typeface;
+        this.n = wv2Var;
         this.p = new zv2(1024);
-        int r0 = r9.a(6);
-        if (r0 == 0) goto L5;
-        int r1 = r0 + r9.n;
-        int r2 = ((ByteBuffer) r9.q).getInt(((ByteBuffer) r9.q).getInt(r1) + r1);
-    L6:
-        this.o = new char[r2 * 2];
-        int r10 = r9.a(6);
-        if (r10 == 0) goto L9;
-        int r11 = r10 + r9.n;
-        int r12 = ((ByteBuffer) r9.q).getInt(((ByteBuffer) r9.q).getInt(r11) + r11);
-    L10:
-        int r13 = 0;
-    L11:
-        if (r13 >= r12) goto L29;
-        k05 r3 = new k05(this, r13);
-        vv2 r4 = r3.b();
-        int r5 = r4.a(4);
-        if (r5 == 0) goto L15;
-        int r6 = ((ByteBuffer) r4.q).getInt(r5 + r4.n);
-    L16:
-        Character.toChars(r6, (char[]) this.o, r13 * 2);
-        vv2 r7 = r3.b();
-        int r14 = r7.a(16);
-        if (r14 == 0) goto L19;
-        int r15 = r14 + r7.n;
-        int r16 = ((ByteBuffer) r7.q).getInt(((ByteBuffer) r7.q).getInt(r15) + r15);
-    L21:
-        if (r16 <= 0) goto L23;
-        boolean r17 = true;
-    L24:
-        l93.j("invalid metadata codepoint length", r17);
-        zv2 r18 = (zv2) this.p;
-        vv2 r19 = r3.b();
-        int r20 = r19.a(16);
-        if (r20 == 0) goto L27;
-        int r21 = r20 + r19.n;
-        int r22 = ((ByteBuffer) r19.q).getInt(((ByteBuffer) r19.q).getInt(r21) + r21);
-    L28:
-        r18.a(r3, 0, r22 - 1);
-        r13 = r13 + 1;
-        goto L11
-    L27:
-        r22 = 0;
-        goto L28
-    L23:
-        r17 = false;
-        goto L24
-    L19:
-        r16 = 0;
-        goto L21
-    L15:
-        r6 = 0;
-        goto L16
-    L29:
-        return;
-    L9:
-        r12 = 0;
-        goto L10
-    L5:
-        r2 = 0;
-        goto L6
+        int iA = wv2Var.a(6);
+        if (iA != 0) {
+            int i5 = iA + wv2Var.n;
+            i = ((ByteBuffer) wv2Var.q).getInt(((ByteBuffer) wv2Var.q).getInt(i5) + i5);
+        } else {
+            i = 0;
+        }
+        this.o = new char[i * 2];
+        int iA2 = wv2Var.a(6);
+        if (iA2 != 0) {
+            int i6 = iA2 + wv2Var.n;
+            i2 = ((ByteBuffer) wv2Var.q).getInt(((ByteBuffer) wv2Var.q).getInt(i6) + i6);
+        } else {
+            i2 = 0;
+        }
+        for (int i7 = 0; i7 < i2; i7++) {
+            k05 k05Var = new k05(this, i7);
+            vv2 vv2VarB = k05Var.b();
+            int iA3 = vv2VarB.a(4);
+            Character.toChars(iA3 != 0 ? ((ByteBuffer) vv2VarB.q).getInt(iA3 + vv2VarB.n) : 0, (char[]) this.o, i7 * 2);
+            vv2 vv2VarB2 = k05Var.b();
+            int iA4 = vv2VarB2.a(16);
+            if (iA4 != 0) {
+                int i8 = iA4 + vv2VarB2.n;
+                i3 = ((ByteBuffer) vv2VarB2.q).getInt(((ByteBuffer) vv2VarB2.q).getInt(i8) + i8);
+            } else {
+                i3 = 0;
+            }
+            l93.j("invalid metadata codepoint length", i3 > 0);
+            zv2 zv2Var = (zv2) this.p;
+            vv2 vv2VarB3 = k05Var.b();
+            int iA5 = vv2VarB3.a(16);
+            if (iA5 != 0) {
+                int i9 = iA5 + vv2VarB3.n;
+                i4 = ((ByteBuffer) vv2VarB3.q).getInt(((ByteBuffer) vv2VarB3.q).getInt(i9) + i9);
+            } else {
+                i4 = 0;
+            }
+            zv2Var.a(k05Var, 0, i4 - 1);
+        }
     }
 
     public static na4 z() {
-        if (t != null) goto L6;
-        t = new na4(11);
-    L6:
+        if (t == null) {
+            t = new na4(11);
+        }
         return t;
     }
 
-    public PlaybackException A(fr2 r2) {
-        Object r0 = this.n;
-        monitor-enter(r0);
-    L8:
-        th = move-exception;
-        throw th;
-    L5:
-        if (((ba0) ((oi) this.p).get(r2)) == null) goto L10;
-        monitor-exit(r0);     // Catch: Throwable -> L8
+    public PlaybackException A(fr2 fr2Var) {
+        synchronized (this.n) {
+            try {
+                return ((ba0) ((oi) this.p).get(fr2Var)) != null ? null : null;
+            } catch (Throwable th) {
+                throw th;
+            }
+        }
+    }
+
+    public lk3 B(fr2 fr2Var) {
+        synchronized (this.n) {
+            try {
+                return ((ba0) ((oi) this.p).get(fr2Var)) != null ? null : null;
+            } catch (Throwable th) {
+                throw th;
+            }
+        }
+    }
+
+    public yk C(fr2 fr2Var) {
+        ba0 ba0Var;
+        synchronized (this.n) {
+            ba0Var = (ba0) ((oi) this.p).get(fr2Var);
+        }
+        if (ba0Var != null) {
+            return ba0Var.b;
+        }
         return null;
-    L10:
-        monitor-exit(r0);     // Catch: Throwable -> L8
-        return null;
     }
 
-    public lk3 B(fr2 r2) {
-        Object r0 = this.n;
-        monitor-enter(r0);
-    L8:
-        th = move-exception;
-        throw th;
-    L5:
-        if (((ba0) ((oi) this.p).get(r2)) == null) goto L10;
-        monitor-exit(r0);     // Catch: Throwable -> L8
-        return null;
-    L10:
-        monitor-exit(r0);     // Catch: Throwable -> L8
-        return null;
+    public ce D(ce ceVar, ce ceVar2) {
+        na4 na4Var = this;
+        if (((ce) na4Var.q) == null) {
+            na4Var.q = ceVar.c();
+        }
+        ce ceVar3 = (ce) na4Var.q;
+        if (ceVar3 == null) {
+            h12.Q("targetVector");
+            throw null;
+        }
+        int iB = ceVar3.b();
+        int i = 0;
+        while (true) {
+            ce ceVar4 = (ce) na4Var.q;
+            if (i >= iB) {
+                if (ceVar4 != null) {
+                    return ceVar4;
+                }
+                h12.Q("targetVector");
+                throw null;
+            }
+            if (ceVar4 == null) {
+                h12.Q("targetVector");
+                throw null;
+            }
+            rm2 rm2Var = (rm2) na4Var.n;
+            float fA = ceVar.a(i);
+            float fA2 = ceVar2.a(i);
+            yx0 yx0Var = (yx0) rm2Var.o;
+            double dB = yx0Var.b(fA2);
+            double d = a81.a;
+            float f = yx0Var.a * yx0Var.b;
+            ceVar4.d(i, (Math.signum(fA2) * ((float) (Math.exp((d / (d - 1.0d)) * dB) * ((double) f)))) + fA);
+            i++;
+            na4Var = this;
+            iB = iB;
+        }
     }
 
-    public yk C(fr2 r2) {
-        Object r0 = this.n;
-        monitor-enter(r0);
-        ba0 r1 = (ba0) ((oi) this.p).get(r2);     // Catch: Throwable -> L11
-        monitor-exit(r0);     // Catch: Throwable -> L11
-        if (r1 != null) goto L8;
-        return null;
-    L8:
-        return r1.b;
-    L11:
-        th = move-exception;
-        throw th;
+    public ce E(long j, ce ceVar, ce ceVar2) {
+        if (((ce) this.p) == null) {
+            this.p = ceVar.c();
+        }
+        ce ceVar3 = (ce) this.p;
+        if (ceVar3 == null) {
+            h12.Q("velocityVector");
+            throw null;
+        }
+        int iB = ceVar3.b();
+        int i = 0;
+        while (true) {
+            ce ceVar4 = (ce) this.p;
+            if (i >= iB) {
+                if (ceVar4 != null) {
+                    return ceVar4;
+                }
+                h12.Q("velocityVector");
+                throw null;
+            }
+            if (ceVar4 == null) {
+                h12.Q("velocityVector");
+                throw null;
+            }
+            rm2 rm2Var = (rm2) this.n;
+            ceVar.getClass();
+            long j2 = j / 1000000;
+            z71 z71VarA = ((yx0) rm2Var.o).a(ceVar2.a(i));
+            long j3 = z71VarA.c;
+            ceVar4.d(i, (((Math.signum(z71VarA.a) * yb.a(j3 > 0 ? j2 / j3 : 1.0f).b) * z71VarA.b) / j3) * 1000.0f);
+            i++;
+        }
     }
 
-    public ce D(ce r19, ce r20) {
-        na4 r0 = this;
-        if (((ce) r0.q) != null) goto L5;
-        r0.q = r19.c();
-    L5:
-        ce r1 = (ce) r0.q;
-        if (r1 == null) goto L19;
-        int r2 = r1.b();
-        int r4 = 0;
-    L8:
-        ce r5 = (ce) r0.q;
-        if (r4 >= r2) goto L15;
-        if (r5 == null) goto L12;
-        rm2 r6 = (rm2) r0.n;
-        float r8 = r19.a(r4);
-        float r10 = r20.a(r4);
-        yx0 r7 = (yx0) r6.o;
-        double r11 = r7.b(r10);
-        double r13 = a81.a;
-        float r3 = r7.a * r7.b;
-        int r9 = r2;
-        double r12 = Math.exp((r13 / (r13 - 1.0d)) * r11);
-        r5.d(r4, (Math.signum(r10) * ((float) (r12 * ((double) r3)))) + r8);
-        r4 = r4 + 1;
-        r0 = this;
-        r2 = r9;
-        goto L8
-    L12:
-        h12.Q("targetVector");
-        throw null;
-    L15:
-        if (r5 == null) goto L17;
-        return r5;
-    L17:
-        h12.Q("targetVector");
-        throw null;
-    L19:
-        h12.Q("targetVector");
-        throw null;
+    public boolean F(fr2 fr2Var) {
+        boolean z;
+        synchronized (this.n) {
+            z = ((oi) this.p).get(fr2Var) != null;
+        }
+        return z;
     }
 
-    public ce E(long r15, ce r17, ce r18) {
-        if (((ce) this.p) != null) goto L5;
-        this.p = r17.c();
-    L5:
-        ce r0 = (ce) this.p;
-        if (r0 == null) goto L22;
-        int r1 = r0.b();
-        int r3 = 0;
-    L8:
-        ce r4 = (ce) this.p;
-        if (r3 >= r1) goto L18;
-        if (r4 == null) goto L16;
-        rm2 r5 = (rm2) this.n;
-        r17.getClass();
-        long r8 = r15 / 1000000;
-        z71 r6 = ((yx0) r5.o).a(r18.a(r3));
-        long r10 = r6.c;
-        if (r10 <= 0) goto L14;
-        float r7 = r8 / r10;
-    L15:
-        r4.d(r3, (((Math.signum(r6.a) * yb.a(r7).b) * r6.b) / r10) * 1000.0f);
-        r3 = r3 + 1;
-        goto L8
-    L14:
-        r7 = 1.0f;
-        goto L15
-    L16:
-        h12.Q("velocityVector");
-        throw null;
-    L18:
-        if (r4 == null) goto L20;
-        return r4;
-    L20:
-        h12.Q("velocityVector");
-        throw null;
-    L22:
-        h12.Q("velocityVector");
-        throw null;
+    public boolean G(br brVar) {
+        rg4 rg4Var = (rg4) this.p;
+        return (rg4Var == null || brVar == null || rg4Var.a.get() != brVar) ? false : true;
     }
 
-    public boolean F(fr2 r2) {
-        Object r0 = this.n;
-        monitor-enter(r0);
-    L10:
-        th = move-exception;
-        throw th;
-    L5:
-        if (((oi) this.p).get(r2) == null) goto L7;
-        boolean r1 = true;
-    L8:
-        monitor-exit(r0);     // Catch: Throwable -> L10
-        return r1;
-    L7:
-        r1 = false;
-        goto L8
+    public boolean H(fr2 fr2Var, int i) {
+        ba0 ba0Var;
+        synchronized (this.n) {
+            ba0Var = (ba0) ((oi) this.p).get(fr2Var);
+        }
+        tn2 tn2Var = (tn2) ((WeakReference) this.q).get();
+        return ba0Var != null && ba0Var.e.a(i) && tn2Var != null && tn2Var.s.o().a(i);
     }
 
-    public boolean G(br r1) {
-        rg4 r0 = (rg4) this.p;
-        if (r0 == null) goto L9;
-        if (r1 != null) goto L6;
-        return false;
-    L6:
-        if (r0.a.get() != r1) goto L12;
-        return true;
-    L12:
-        return false;
-    L9:
+    /* JADX WARN: Code duplicated, block: B:20:0x003c A[RETURN] */
+    public boolean I(fr2 fr2Var, int i) {
+        ba0 ba0Var;
+        boolean z;
+        synchronized (this.n) {
+            ba0Var = (ba0) ((oi) this.p).get(fr2Var);
+        }
+        if (ba0Var != null) {
+            wa4 wa4Var = ba0Var.d;
+            wa4Var.getClass();
+            rr2.k("Use contains(Command) for custom command", i != 0);
+            Iterator<E> it = wa4Var.a.iterator();
+            while (it.hasNext()) {
+                if (((va4) it.next()).a == i) {
+                    z = true;
+                    if (z) {
+                        return true;
+                    }
+                }
+            }
+            z = false;
+            if (z) {
+                return true;
+            }
+        }
         return false;
     }
 
-    public boolean H(fr2 r3, int r4) {
-        Object r0 = this.n;
-        monitor-enter(r0);
-        ba0 r5 = (ba0) ((oi) this.p).get(r3);     // Catch: Throwable -> L17
-        monitor-exit(r0);     // Catch: Throwable -> L17
-        tn2 r2 = (tn2) ((WeakReference) this.q).get();
-        if (r5 != null) goto L9;
-        return false;
-    L9:
-        if (r5.e.a(r4) == false) goto L22;
-        if (r2 != null) goto L12;
-        return false;
-    L12:
-        if (r2.s.o().a(r4) == false) goto L24;
-        return true;
-    L24:
-        return false;
-    L22:
-        return false;
-    L17:
-        th = move-exception;
-        throw th;
+    public boolean J(fr2 fr2Var, va4 va4Var) {
+        ba0 ba0Var;
+        synchronized (this.n) {
+            ba0Var = (ba0) ((oi) this.p).get(fr2Var);
+        }
+        if (ba0Var == null) {
+            return false;
+        }
+        jx1 jx1Var = ba0Var.d.a;
+        va4Var.getClass();
+        return jx1Var.contains(va4Var) || j60.n(va4Var.b);
     }
 
-    public boolean I(fr2 r4, int r5) {
-        Object r0 = this.n;
-        monitor-enter(r0);
-        ba0 r3 = (ba0) ((oi) this.p).get(r4);     // Catch: Throwable -> L22
-        monitor-exit(r0);     // Catch: Throwable -> L22
-        if (r3 == null) goto L21;
-        wa4 r6 = r3.d;
-        r6.getClass();
-        if (r5 == 0) goto L11;
-        boolean r1 = true;
-    L12:
-        rr2.k("Use contains(Command) for custom command", r1);
-        Iterator<E> r7 = r6.a.iterator();
-    L14:
-        if (r7.hasNext() == false) goto L18;
-        if (((va4) r7.next()).a != r5) goto L14;
-        boolean r8 = true;
-    L19:
-        if (r8 == false) goto L21;
-        return true;
-    L18:
-        r8 = false;
-        goto L19
-    L11:
-        r1 = false;
-    L21:
-        return false;
-    L22:
-        th = move-exception;
-        throw th;
+    public void K(br brVar) {
+        synchronized (this.n) {
+            try {
+                if (G(brVar)) {
+                    rg4 rg4Var = (rg4) this.p;
+                    if (!rg4Var.c) {
+                        rg4Var.c = true;
+                        ((Handler) this.o).removeCallbacksAndMessages(rg4Var);
+                    }
+                }
+            } catch (Throwable th) {
+                throw th;
+            }
+        }
     }
 
-    public boolean J(fr2 r2, va4 r3) {
-        Object r0 = this.n;
-        monitor-enter(r0);
-        ba0 r1 = (ba0) ((oi) this.p).get(r2);     // Catch: Throwable -> L15
-        monitor-exit(r0);     // Catch: Throwable -> L15
-        if (r1 == null) goto L13;
-        jx1 r4 = r1.d.a;
-        r3.getClass();
-        if (r4.contains(r3) == false) goto L10;
-        return true;
-    L10:
-        if (j60.n(r3.b) == false) goto L21;
-        return true;
-    L21:
-        return false;
-    L13:
-        return false;
-    L15:
-        th = move-exception;
-        throw th;
-    }
-
-    public void K(br r3) {
-        Object r0 = this.n;
-        monitor-enter(r0);
-    L9:
-        th = move-exception;
-        throw th;
-    L5:
-        if (G(r3) == false) goto L11;
-        rg4 r4 = (rg4) this.p;     // Catch: Throwable -> L9
-        if (r4.c == true) goto L11;
-        r4.c = true;     // Catch: Throwable -> L9
-        ((Handler) this.o).removeCallbacksAndMessages(r4);     // Catch: Throwable -> L9
-    L11:
-        monitor-exit(r0);     // Catch: Throwable -> L9
-    }
-
+    /* JADX WARN: Code duplicated, block: B:20:0x0068  */
+    /* JADX WARN: Code duplicated, block: B:22:0x006e  */
+    /* JADX WARN: Code duplicated, block: B:30:0x009d  */
+    /* JADX WARN: Code duplicated, block: B:32:0x00a3  */
+    /* JADX WARN: Code duplicated, block: B:54:0x007a A[EXC_TOP_SPLITTER, SYNTHETIC] */
     public void L() {
-        tl1 r0 = ze5.a;
-        ArrayList r1 = new ArrayList();
-        monitor-enter(this);
-        Iterator r2 = ((ArrayDeque) this.o).iterator();     // Catch: Throwable -> L12
-        r2.getClass();     // Catch: Throwable -> L12
-    L6:
-        if (r2.hasNext() == false) goto L14;
-        yu3 r3 = (yu3) r2.next();     // Catch: Throwable -> L12
-        if (((ArrayDeque) this.p).size() >= 64) goto L14;
-        if (r3.o.get() >= 5) goto L6;
-        r2.remove();     // Catch: Throwable -> L12
-        r3.o.incrementAndGet();     // Catch: Throwable -> L12
-        r1.add(r3);     // Catch: Throwable -> L12
-        ((ArrayDeque) this.p).add(r3);     // Catch: Throwable -> L12
-    L14:
-        monitor-enter(this);     // Catch: Throwable -> L12
-        ((ArrayDeque) this.p).size();     // Catch: Throwable -> L44
-        ((ArrayDeque) this.q).size();     // Catch: Throwable -> L44
-        monitor-exit(this);     // Catch: Throwable -> L12
-        monitor-exit(this);
-        int r4 = 0;
-        if (((ThreadPoolExecutor) n()).isShutdown() == false) goto L30;
-        int r5 = r1.size();
-    L21:
-        if (r4 >= r5) goto L43;
-        yu3 r6 = (yu3) r1.get(r4);
-        r6.o.decrementAndGet();
-        monitor-enter(this);
-        ((ArrayDeque) this.p).remove(r6);     // Catch: Throwable -> L27
-        monitor-exit(this);
-        InterruptedIOException r7 = new InterruptedIOException("executor rejected");
-        r7.initCause(null);
-        bv3 r8 = r6.p;
-        r8.g(r7);
-        r6.n.onFailure(r8, r7);
-        r4 = r4 + 1;
-    L27:
-        th = move-exception;
-        throw th;
-    L43:
-        return;
-    L30:
-        int r9 = r1.size();
-    L31:
-        if (r4 >= r9) goto L66;
-        yu3 r10 = (yu3) r1.get(r4);
-        ExecutorService r11 = n();
-        r10.getClass();
-        bv3 r12 = r10.p;
-        na4 r13 = r12.n.a;
-        tl1 r14 = ze5.a;
-        ((ThreadPoolExecutor) r11).execute(r10);     // Catch: Throwable -> L35 RejectedExecutionException -> L37
-    L40:
-        r4 = r4 + 1;
-    L37:
-        e = move-exception;
-        InterruptedIOException r15 = new InterruptedIOException("executor rejected");     // Catch: Throwable -> L35
-        r15.initCause(e);     // Catch: Throwable -> L35
-        bv3 r16 = r10.p;     // Catch: Throwable -> L35
-        r16.g(r15);     // Catch: Throwable -> L35
-        r10.n.onFailure(r16, r15);     // Catch: Throwable -> L35
-        r12.n.a.q(r10);
-    L35:
-        th = move-exception;
-        r12.n.a.q(r10);
-        throw th;
-    L66:
-        return;
-    L44:
-        th = move-exception;
-        throw th;     // Catch: Throwable -> L12
-    L12:
-        th = move-exception;
-        throw th;
+        int i;
+        int size;
+        yu3 yu3Var;
+        int size2;
+        yu3 yu3Var2;
+        tl1 tl1Var = ze5.a;
+        ArrayList arrayList = new ArrayList();
+        synchronized (this) {
+            try {
+                Iterator it = ((ArrayDeque) this.o).iterator();
+                it.getClass();
+                while (it.hasNext()) {
+                    yu3 yu3Var3 = (yu3) it.next();
+                    if (((ArrayDeque) this.p).size() >= 64) {
+                        break;
+                    }
+                    if (yu3Var3.o.get() < 5) {
+                        it.remove();
+                        yu3Var3.o.incrementAndGet();
+                        arrayList.add(yu3Var3);
+                        ((ArrayDeque) this.p).add(yu3Var3);
+                    }
+                }
+                synchronized (this) {
+                    ((ArrayDeque) this.p).size();
+                    ((ArrayDeque) this.q).size();
+                }
+                i = 0;
+                if (!((ThreadPoolExecutor) n()).isShutdown()) {
+                    size2 = arrayList.size();
+                    while (i < size2) {
+                        yu3Var2 = (yu3) arrayList.get(i);
+                        yu3Var2.o.decrementAndGet();
+                        synchronized (this) {
+                            ((ArrayDeque) this.p).remove(yu3Var2);
+                        }
+                        InterruptedIOException interruptedIOException = new InterruptedIOException("executor rejected");
+                        interruptedIOException.initCause(null);
+                        bv3 bv3Var = yu3Var2.p;
+                        bv3Var.g(interruptedIOException);
+                        yu3Var2.n.onFailure(bv3Var, interruptedIOException);
+                        i++;
+                    }
+                }
+                size = arrayList.size();
+                while (i < size) {
+                    yu3Var = (yu3) arrayList.get(i);
+                    ExecutorService executorServiceN = n();
+                    yu3Var.getClass();
+                    bv3 bv3Var2 = yu3Var.p;
+                    na4 na4Var = bv3Var2.n.a;
+                    tl1 tl1Var2 = ze5.a;
+                    try {
+                        try {
+                            ((ThreadPoolExecutor) executorServiceN).execute(yu3Var);
+                        } catch (RejectedExecutionException e) {
+                            InterruptedIOException interruptedIOException2 = new InterruptedIOException("executor rejected");
+                            interruptedIOException2.initCause(e);
+                            bv3 bv3Var3 = yu3Var.p;
+                            bv3Var3.g(interruptedIOException2);
+                            yu3Var.n.onFailure(bv3Var3, interruptedIOException2);
+                            bv3Var2.n.a.q(yu3Var);
+                        }
+                        i++;
+                    } catch (Throwable th) {
+                        bv3Var2.n.a.q(yu3Var);
+                        throw th;
+                    }
+                }
+                return;
+            } catch (Throwable th2) {
+                throw th2;
+            }
+        }
+        i = 0;
+        if (!((ThreadPoolExecutor) n()).isShutdown()) {
+            size = arrayList.size();
+            while (i < size) {
+                yu3Var = (yu3) arrayList.get(i);
+                ExecutorService executorServiceN2 = n();
+                yu3Var.getClass();
+                bv3 bv3Var4 = yu3Var.p;
+                na4 na4Var2 = bv3Var4.n.a;
+                tl1 tl1Var3 = ze5.a;
+                ((ThreadPoolExecutor) executorServiceN2).execute(yu3Var);
+                i++;
+            }
+            return;
+        }
+        size2 = arrayList.size();
+        while (i < size2) {
+            yu3Var2 = (yu3) arrayList.get(i);
+            yu3Var2.o.decrementAndGet();
+            synchronized (this) {
+                ((ArrayDeque) this.p).remove(yu3Var2);
+                InterruptedIOException interruptedIOException3 = new InterruptedIOException("executor rejected");
+                interruptedIOException3.initCause(null);
+                bv3 bv3Var5 = yu3Var2.p;
+                bv3Var5.g(interruptedIOException3);
+                yu3Var2.n.onFailure(bv3Var5, interruptedIOException3);
+                i++;
+            }
+        }
     }
 
     public synchronized ArrayList M() {
-        monitor-enter(this);
-        ArrayList r2 = new ArrayList();     // Catch: Throwable -> L16
-        Iterator r3 = ((ArrayList) this.n).iterator();     // Catch: Throwable -> L16
-    L5:
-        if (r3.hasNext() == false) goto L18;
-        cz2 r4 = (cz2) r3.next();     // Catch: Throwable -> L16
-        if (r4.a.isAssignableFrom(String.class) == true) goto L10;
-    L12:
-        boolean r5 = false;
-    L13:
-        if (r5 == false) goto L5;
-        r3.remove();     // Catch: Throwable -> L16
-        r2.add(r4.c);     // Catch: Throwable -> L16
-        goto L5
-    L10:
-        if (r4.b.isAssignableFrom(InputStream.class) == false) goto L12;
-        r5 = true;
-        goto L13
-    L18:
-        monitor-exit(this);
-        return r2;
-    L16:
-        th = move-exception;
-        throw th;
+        ArrayList arrayList;
+        arrayList = new ArrayList();
+        Iterator it = ((ArrayList) this.n).iterator();
+        while (it.hasNext()) {
+            cz2 cz2Var = (cz2) it.next();
+            if (cz2Var.a.isAssignableFrom(String.class) && cz2Var.b.isAssignableFrom(InputStream.class)) {
+                it.remove();
+                arrayList.add(cz2Var.c);
+            }
+        }
+        return arrayList;
     }
 
-    public void N(fr2 r5) {
-        Object r0 = this.n;
-        monitor-enter(r0);
-        ba0 r1 = (ba0) ((oi) this.p).remove(r5);     // Catch: Throwable -> L8
-        if (r1 != null) goto L10;
-        monitor-exit(r0);     // Catch: Throwable -> L8
-        return;
-    L10:
-        ((oi) this.o).remove(r1.a);     // Catch: Throwable -> L8
-        monitor-exit(r0);     // Catch: Throwable -> L8
-        r1.b.a();
-        tn2 r4 = (tn2) ((WeakReference) this.q).get();
-        if (r4 != null) goto L15;
-        return;
-    L15:
-        if (r4.l() == true) goto L23;
-        f35.W(r4.l, new y90(r4, r5, 0));
-        return;
-    L23:
-        return;
-    L8:
-        th = move-exception;
-        throw th;
+    public void N(fr2 fr2Var) {
+        synchronized (this.n) {
+            try {
+                ba0 ba0Var = (ba0) ((oi) this.p).remove(fr2Var);
+                if (ba0Var == null) {
+                    return;
+                }
+                ((oi) this.o).remove(ba0Var.a);
+                ba0Var.b.a();
+                tn2 tn2Var = (tn2) ((WeakReference) this.q).get();
+                if (tn2Var == null || tn2Var.l()) {
+                    return;
+                }
+                f35.W(tn2Var.l, new y90(tn2Var, fr2Var, 0));
+            } catch (Throwable th) {
+                throw th;
+            }
+        }
     }
 
-    public void O(br r3) {
-        Object r0 = this.n;
-        monitor-enter(r0);
-    L9:
-        th = move-exception;
-        throw th;
-    L5:
-        if (G(r3) == false) goto L11;
-        rg4 r4 = (rg4) this.p;     // Catch: Throwable -> L9
-        if (r4.c == false) goto L11;
-        r4.c = false;     // Catch: Throwable -> L9
-        P(r4);     // Catch: Throwable -> L9
-    L11:
-        monitor-exit(r0);     // Catch: Throwable -> L9
+    public void O(br brVar) {
+        synchronized (this.n) {
+            try {
+                if (G(brVar)) {
+                    rg4 rg4Var = (rg4) this.p;
+                    if (rg4Var.c) {
+                        rg4Var.c = false;
+                        P(rg4Var);
+                    }
+                }
+            } catch (Throwable th) {
+                throw th;
+            }
+        }
     }
 
-    public void P(rg4 r3) {
-        Handler r2 = (Handler) this.o;
-        int r0 = r3.b;
-        if (r0 != (-2)) goto L5;
-        return;
-    L5:
-        if (r0 <= 0) goto L8;
-    L11:
-        r2.removeCallbacksAndMessages(r3);
-        r2.sendMessageDelayed(Message.obtain(r2, 0, r3), r0);
-        return;
-    L8:
-        if (r0 != (-1)) goto L10;
-        r0 = 1500;
-        goto L11
-    L10:
-        r0 = 2750;
-        goto L11
+    public void P(rg4 rg4Var) {
+        Handler handler = (Handler) this.o;
+        int i = rg4Var.b;
+        if (i == -2) {
+            return;
+        }
+        if (i <= 0) {
+            i = i == -1 ? 1500 : 2750;
+        }
+        handler.removeCallbacksAndMessages(rg4Var);
+        handler.sendMessageDelayed(Message.obtain(handler, 0, rg4Var), i);
     }
 
     public void Q() {
-        rg4 r0 = (rg4) this.q;
-        if (r0 == null) goto L10;
-        this.p = r0;
-        this.q = null;
-        br r1 = (br) r0.a.get();
-        if (r1 == null) goto L8;
-        Handler r2 = fr.z;
-        r2.sendMessage(r2.obtainMessage(0, r1.a));
-        return;
-    L8:
-        this.p = null;
-        return;
+        rg4 rg4Var = (rg4) this.q;
+        if (rg4Var != null) {
+            this.p = rg4Var;
+            this.q = null;
+            br brVar = (br) rg4Var.a.get();
+            if (brVar == null) {
+                this.p = null;
+            } else {
+                Handler handler = fr.z;
+                handler.sendMessage(handler.obtainMessage(0, brVar.a));
+            }
+        }
     }
 
-    public void R(gl4 r4) {
-        r4.getClass();
-        ur2 r0 = new ur2(24, this, r4);
-        Object r1 = this.p;
-        monitor-enter(r1);
-        Runnable r5 = (Runnable) ((LinkedHashMap) this.q).put(r4, r0);     // Catch: Throwable -> L8
-        monitor-exit(r1);
-        ((Handler) ((hg3) this.n).o).postDelayed(r0, 5400000);
-        return;
-    L8:
-        th = move-exception;
-        throw th;
+    public void R(gl4 gl4Var) {
+        gl4Var.getClass();
+        ur2 ur2Var = new ur2(24, this, gl4Var);
+        synchronized (this.p) {
+        }
+        ((Handler) ((hg3) this.n).o).postDelayed(ur2Var, 5400000L);
     }
 
     public void S() {
-        ArrayList r0 = (ArrayList) this.q;
-        int r1 = r0.size();
-        int r2 = 0;
-    L3:
-        if (r2 >= r1) goto L12;
-        Object r3 = r0.get(r2);
-        r2 = r2 + 1;
-        int r4 = ((o23) r3).a;
-        if (o(r4) != null) goto L3;
-        int r5 = r23.w;
-        StringBuilder r6 = xa3.j("Navigation destination ", ya4.v((Context) this.n, r4), " cannot be found in the navigation graph ");
-        kf2.g((t23) this.p, r6);
-        return;
+        ArrayList arrayList = (ArrayList) this.q;
+        int size = arrayList.size();
+        int i = 0;
+        while (i < size) {
+            Object obj = arrayList.get(i);
+            i++;
+            int i2 = ((o23) obj).a;
+            if (o(i2) == null) {
+                int i3 = r23.w;
+                kf2.g((t23) this.p, xa3.j("Navigation destination ", ya4.v((Context) this.n, i2), " cannot be found in the navigation graph "));
+                return;
+            }
+        }
     }
 
-    public void a(Object r4, fr2 r5, wa4 r6, mi3 r7) {
-        Object r0 = this.n;
-        monitor-enter(r0);
-        fr2 r1 = w(r4);     // Catch: Throwable -> L7
-        if (r1 != null) goto L9;
-        ((oi) this.o).put(r4, r5);     // Catch: Throwable -> L7
-        ((oi) this.p).put(r5, new ba0(r4, new yk(), r6, r7));     // Catch: Throwable -> L7
-    L10:
-        monitor-exit(r0);     // Catch: Throwable -> L7
-        return;
-    L9:
-        ba0 r3 = (ba0) ((oi) this.p).get(r1);     // Catch: Throwable -> L7
-        r3.getClass();     // Catch: Throwable -> L7
-        r3.d = r6;     // Catch: Throwable -> L7
-        r3.e = r7;     // Catch: Throwable -> L7
-    L7:
-        th = move-exception;
-        throw th;
+    public void a(Object obj, fr2 fr2Var, wa4 wa4Var, mi3 mi3Var) {
+        synchronized (this.n) {
+            try {
+                fr2 fr2VarW = w(obj);
+                if (fr2VarW == null) {
+                    ((oi) this.o).put(obj, fr2Var);
+                    ((oi) this.p).put(fr2Var, new ba0(obj, new yk(), wa4Var, mi3Var));
+                } else {
+                    ba0 ba0Var = (ba0) ((oi) this.p).get(fr2VarW);
+                    ba0Var.getClass();
+                    ba0Var.d = wa4Var;
+                    ba0Var.e = mi3Var;
+                }
+            } catch (Throwable th) {
+                throw th;
+            }
+        }
     }
 
+    /* JADX WARN: Can't fix incorrect switch cases order, some code will duplicate */
+    /* JADX WARN: Code duplicated, block: B:88:0x025c  */
     @Override // defpackage.zn4
-    public void c(byte[] r26, int r27, int r28, yn4 r29, wc0 r30) {
-        be3 r2 = (be3) this.n;
-        r2.L(r27 + r28, r26);
-        r2.N(r27);
-        be3 r1 = (be3) this.o;
-        o85 r3 = (o85) this.p;
-        if (((Inflater) this.q) != null) goto L5;
-        this.q = new Inflater();
-    L5:
-        Inflater r0 = (Inflater) this.q;
-        String r4 = f35.a;
-        if (r2.a() > 0) goto L8;
-    L12:
-        r3.c = false;
-        r3.g = null;
-        r3.h = -1;
-        r3.i = -1;
-        int r5 = r2.a();
-        if (r5 >= 2) goto L15;
-    L88:
-        ig0 r6 = null;
-    L91:
-        if (r6 == null) goto L94;
-        gy3 r7 = yw1.o(r6);
-    L95:
-        r30.accept(new lg0(-9223372036854775807L, 5000000, r7));
-        return;
-    L94:
-        vw1 r8 = yw1.o;
-        r7 = gy3.r;
-        goto L95
-    L15:
-        if (r2.H() != r5) goto L88;
-        if (r3.d != null) goto L21;
-        l93.q0("VobsubParser", "Skipping SPU (no palette)");
-    L71:
-        if (r3.d == null) goto L88;
-        if (r3.b == false) goto L88;
-        if (r3.c == false) goto L88;
-        Rect r9 = r3.g;
-        if (r9 == null) goto L88;
-        if (r3.h == (-1)) goto L88;
-        if (r3.i == (-1)) goto L88;
-        if (r9.width() < 2) goto L88;
-        if (r3.g.height() < 2) goto L88;
-        Rect r10 = r3.g;
-        int[] r11 = new int[r10.height() * r10.width()];
-        h00 r12 = new h00();
-        r2.N(r3.h);
-        r12.p(r2);
-        r3.b(r12, true, r10, r11);
-        r2.N(r3.i);
-        r12.p(r2);
-        r3.b(r12, false, r10, r11);
-        r6 = new ig0(null, null, null, Bitmap.createBitmap(r11, r10.width(), r10.height(), Bitmap.Config.ARGB_8888), r10.top / r3.f, 0, 0, r10.left / r3.e, 0, Integer.MIN_VALUE, -3.4028235E38f, r10.width() / r3.e, r10.height() / r3.f, false, -16777216, Integer.MIN_VALUE, 0.0f, 0);
-        goto L91
-    L21:
-        if (r3.b == true) goto L23;
-        l93.q0("VobsubParser", "Skipping SPU (no plane)");
-        goto L71
-    L23:
-        int r13 = r2.b - 2;
-        r2.N(r2.H() + r13);
-    L24:
-        int r14 = 4;
-        if (r2.a() >= 4) goto L27;
-        boolean r15 = false;
-    L69:
-        if (r15 == true) goto L24;
-    L27:
-        int r16 = r2.b;
-        r2.O(2);
-        int r17 = r2.H() + r13;
-        if (r17 != r16) goto L30;
-    L32:
-        r15 = false;
-    L33:
-        if (r15 == false) goto L35;
-        int r18 = r17;
-    L36:
-        boolean r19 = true;
-    L38:
-        if (r2.b >= r18) goto L67;
-        if (r19 == false) goto L67;
-        int[] r110 = r3.a;
-        int r111 = r2.A();
-        if (r111 != 255) goto L43;
-    L45:
-        r19 = false;
-    L66:
-        r14 = 4;
-        goto L38
-    L43:
-        switch(r111) {
-            case 0: goto L50;
-            case 1: goto L50;
-            case 2: goto L50;
-            case 3: goto L63;
-            case 4: goto L56;
-            case 5: goto L52;
-            case 6: goto L47;
-            default: goto L44;
-        };
-    L44:
-        xa3.m(r111, "Unrecognized command: ", "VobsubParser");
-    L50:
-        r19 = true;
-        goto L66
-    L47:
-        if (r2.a() >= r14) goto L49;
-        l93.q0("VobsubParser", "Incomplete offsets command");
-        goto L45
-    L49:
-        r3.h = r2.H();
-        r3.i = r2.H();
-        goto L50
-    L52:
-        if (r2.a() >= 6) goto L54;
-        l93.q0("VobsubParser", "Incomplete area command");
-        goto L45
-    L54:
-        int r112 = r2.A();
-        int r113 = r2.A();
-        int r114 = (r112 << r14) | (r113 >> 4);
-        int r115 = ((r113 & 15) << 8) | r2.A();
-        int r116 = r2.A();
-        int r117 = r2.A();
-        r3.g = new Rect(r114, (r116 << r14) | (r117 >> 4), r115 + 1, (((r117 & 15) << 8) | r2.A()) + 1);
-        goto L50
-    L56:
-        if (r2.a() >= 2) goto L59;
-        l93.q0("VobsubParser", "Incomplete alpha command");
-        goto L45
-    L59:
-        if (r3.c == true) goto L61;
-        l93.q0("VobsubParser", "Ignoring alpha command before color command");
-        goto L45
-    L61:
-        int r20 = r2.A();
-        int r118 = r2.A();
-        r110[3] = o85.c(r110[3], r20 >> 4);
-        r110[2] = o85.c(r110[2], r20 & 15);
-        r110[1] = o85.c(r110[1], r118 >> 4);
-        r110[0] = o85.c(r110[0], r118 & 15);
-        goto L50
-    L63:
-        if (r2.a() >= 2) goto L65;
-        l93.q0("VobsubParser", "Incomplete color command");
-        goto L45
-    L65:
-        int r21 = r2.A();
-        int r119 = r2.A();
-        r110[3] = o85.a(r3.d, r21 >> 4);
-        r110[2] = o85.a(r3.d, r21 & 15);
-        r110[1] = o85.a(r3.d, r119 >> 4);
-        r110[0] = o85.a(r3.d, r119 & 15);
-        r3.c = true;
-    L67:
-        if (r15 == false) goto L69;
-        r2.N(r17);
-        goto L69
-    L35:
-        r18 = r2.c;
-        goto L36
-    L30:
-        if (r17 >= r2.c) goto L32;
-        r15 = true;
-        goto L33
-    L8:
-        if (r2.j() != 120) goto L12;
-        if (f35.K(r2, r1, r0) == false) goto L12;
-        r2.L(r1.c, r1.a);
-        goto L12
+    public void c(byte[] bArr, int i, int i2, yn4 yn4Var, wc0 wc0Var) {
+        ig0 ig0Var;
+        gy3 gy3VarO;
+        boolean z;
+        Rect rect;
+        be3 be3Var = (be3) this.n;
+        be3Var.L(i + i2, bArr);
+        be3Var.N(i);
+        be3 be3Var2 = (be3) this.o;
+        o85 o85Var = (o85) this.p;
+        if (((Inflater) this.q) == null) {
+            this.q = new Inflater();
+        }
+        Inflater inflater = (Inflater) this.q;
+        String str = f35.a;
+        if (be3Var.a() > 0 && be3Var.j() == 120 && f35.K(be3Var, be3Var2, inflater)) {
+            be3Var.L(be3Var2.c, be3Var2.a);
+        }
+        o85Var.c = false;
+        o85Var.g = null;
+        o85Var.h = -1;
+        o85Var.i = -1;
+        int iA = be3Var.a();
+        if (iA < 2 || be3Var.H() != iA) {
+            ig0Var = null;
+        } else {
+            if (o85Var.d == null) {
+                l93.q0("VobsubParser", "Skipping SPU (no palette)");
+            } else if (o85Var.b) {
+                int i3 = be3Var.b - 2;
+                be3Var.N(be3Var.H() + i3);
+                do {
+                    int i4 = 4;
+                    if (be3Var.a() < 4) {
+                        z = false;
+                    } else {
+                        int i5 = be3Var.b;
+                        be3Var.O(2);
+                        int iH = be3Var.H() + i3;
+                        z = iH != i5 && iH < be3Var.c;
+                        int i6 = z ? iH : be3Var.c;
+                        boolean z2 = true;
+                        while (be3Var.b < i6 && z2) {
+                            int[] iArr = o85Var.a;
+                            int iA2 = be3Var.A();
+                            if (iA2 != 255) {
+                                switch (iA2) {
+                                    case 0:
+                                    case 1:
+                                    case 2:
+                                        z2 = true;
+                                        break;
+                                    case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
+                                        if (be3Var.a() >= 2) {
+                                            int iA3 = be3Var.A();
+                                            int iA4 = be3Var.A();
+                                            iArr[3] = o85.a(o85Var.d, iA3 >> 4);
+                                            iArr[2] = o85.a(o85Var.d, iA3 & 15);
+                                            iArr[1] = o85.a(o85Var.d, iA4 >> 4);
+                                            iArr[0] = o85.a(o85Var.d, iA4 & 15);
+                                            o85Var.c = true;
+                                            z2 = true;
+                                        } else {
+                                            l93.q0("VobsubParser", "Incomplete color command");
+                                            z2 = false;
+                                        }
+                                        break;
+                                    case 4:
+                                        if (be3Var.a() < 2) {
+                                            l93.q0("VobsubParser", "Incomplete alpha command");
+                                        } else if (o85Var.c) {
+                                            int iA5 = be3Var.A();
+                                            int iA6 = be3Var.A();
+                                            iArr[3] = o85.c(iArr[3], iA5 >> 4);
+                                            iArr[2] = o85.c(iArr[2], iA5 & 15);
+                                            iArr[1] = o85.c(iArr[1], iA6 >> 4);
+                                            iArr[0] = o85.c(iArr[0], iA6 & 15);
+                                            z2 = true;
+                                        } else {
+                                            l93.q0("VobsubParser", "Ignoring alpha command before color command");
+                                        }
+                                        z2 = false;
+                                        break;
+                                    case 5:
+                                        if (be3Var.a() >= 6) {
+                                            int iA7 = be3Var.A();
+                                            int iA8 = be3Var.A();
+                                            int i7 = (iA7 << i4) | (iA8 >> 4);
+                                            int iA9 = ((iA8 & 15) << 8) | be3Var.A();
+                                            int iA10 = be3Var.A();
+                                            int iA11 = be3Var.A();
+                                            o85Var.g = new Rect(i7, (iA10 << i4) | (iA11 >> 4), iA9 + 1, (((iA11 & 15) << 8) | be3Var.A()) + 1);
+                                            z2 = true;
+                                        } else {
+                                            l93.q0("VobsubParser", "Incomplete area command");
+                                            z2 = false;
+                                        }
+                                        break;
+                                    case 6:
+                                        if (be3Var.a() >= i4) {
+                                            o85Var.h = be3Var.H();
+                                            o85Var.i = be3Var.H();
+                                            z2 = true;
+                                        } else {
+                                            l93.q0("VobsubParser", "Incomplete offsets command");
+                                            z2 = false;
+                                        }
+                                        break;
+                                    default:
+                                        xa3.m(iA2, "Unrecognized command: ", "VobsubParser");
+                                        z2 = false;
+                                        break;
+                                }
+                            } else {
+                                z2 = false;
+                            }
+                            i4 = 4;
+                        }
+                        if (z) {
+                            be3Var.N(iH);
+                        }
+                    }
+                } while (z);
+            } else {
+                l93.q0("VobsubParser", "Skipping SPU (no plane)");
+            }
+            if (o85Var.d == null || !o85Var.b || !o85Var.c || (rect = o85Var.g) == null || o85Var.h == -1 || o85Var.i == -1 || rect.width() < 2 || o85Var.g.height() < 2) {
+                ig0Var = null;
+            } else {
+                Rect rect2 = o85Var.g;
+                int[] iArr2 = new int[rect2.height() * rect2.width()];
+                h00 h00Var = new h00();
+                be3Var.N(o85Var.h);
+                h00Var.p(be3Var);
+                o85Var.b(h00Var, true, rect2, iArr2);
+                be3Var.N(o85Var.i);
+                h00Var.p(be3Var);
+                o85Var.b(h00Var, false, rect2, iArr2);
+                ig0Var = new ig0(null, null, null, Bitmap.createBitmap(iArr2, rect2.width(), rect2.height(), Bitmap.Config.ARGB_8888), rect2.top / o85Var.f, 0, 0, rect2.left / o85Var.e, 0, Integer.MIN_VALUE, -3.4028235E38f, rect2.width() / o85Var.e, rect2.height() / o85Var.f, false, -16777216, Integer.MIN_VALUE, 0.0f, 0);
+            }
+        }
+        if (ig0Var != null) {
+            gy3VarO = yw1.o(ig0Var);
+        } else {
+            vw1 vw1Var = yw1.o;
+            gy3VarO = gy3.r;
+        }
+        wc0Var.accept(new lg0(-9223372036854775807L, 5000000L, gy3VarO));
     }
 
-    public void d(fr2 r4, int r5, aa0 r6) {
-        Object r0 = this.n;
-        monitor-enter(r0);
-        ba0 r3 = (ba0) ((oi) this.p).get(r4);     // Catch: Throwable -> L7
-        if (r3 == null) goto L9;
-        mi3 r7 = r3.g;     // Catch: Throwable -> L7
-        r7.getClass();     // Catch: Throwable -> L7
-        xk0 r1 = new xk0(2);     // Catch: Throwable -> L7
-        r1.c(r7.a);     // Catch: Throwable -> L7
-        r1.b(r5);     // Catch: Throwable -> L7
-        r3.g = new mi3(r1.f());     // Catch: Throwable -> L7
-        r3.c.add(r6);     // Catch: Throwable -> L7
-    L9:
-        monitor-exit(r0);     // Catch: Throwable -> L7
-        return;
-    L7:
-        th = move-exception;
-        throw th;
+    public void d(fr2 fr2Var, int i, aa0 aa0Var) {
+        synchronized (this.n) {
+            try {
+                ba0 ba0Var = (ba0) ((oi) this.p).get(fr2Var);
+                if (ba0Var != null) {
+                    mi3 mi3Var = ba0Var.g;
+                    mi3Var.getClass();
+                    xk0 xk0Var = new xk0(2);
+                    xk0Var.c(mi3Var.a);
+                    xk0Var.b(i);
+                    ba0Var.g = new mi3(xk0Var.f());
+                    ba0Var.c.add(aa0Var);
+                }
+            } catch (Throwable th) {
+                throw th;
+            }
+        }
     }
 
-    public synchronized void e(Class r2, Class r3, vw2 r4) {
-        monitor-enter(this);
-        cz2 r0 = new cz2(r2, r3, r4);     // Catch: Throwable -> L8
-        ArrayList r5 = (ArrayList) this.n;     // Catch: Throwable -> L8
-        r5.add(r5.size(), r0);     // Catch: Throwable -> L8
-        monitor-exit(this);
-        return;
-    L8:
-        th = move-exception;
-        throw th;
+    public synchronized void e(Class cls, Class cls2, vw2 vw2Var) {
+        cz2 cz2Var = new cz2(cls, cls2, vw2Var);
+        ArrayList arrayList = (ArrayList) this.n;
+        arrayList.add(arrayList.size(), cz2Var);
     }
 
-    public synchronized uw2 f(Class r10, Class r11) {
-        monitor-enter(this);
-        ArrayList r0 = new ArrayList();     // Catch: Throwable -> L17
-        ArrayList r1 = (ArrayList) this.n;     // Catch: Throwable -> L17
-        int r2 = r1.size();     // Catch: Throwable -> L17
-        boolean r4 = false;
-        int r5 = 0;
-    L4:
-        boolean r6 = true;
-        if (r5 >= r2) goto L20;
-        Object r7 = r1.get(r5);     // Catch: Throwable -> L17
-        r5 = r5 + 1;     // Catch: Throwable -> L17
-        cz2 r8 = (cz2) r7;     // Catch: Throwable -> L17
-        if (((HashSet) this.p).contains(r8) == true) goto L8;
-        if (r8.a.isAssignableFrom(r10) == true) goto L12;
-    L14:
-        r6 = false;
-    L15:
-        if (r6 == false) goto L4;
-        ((HashSet) this.p).add(r8);     // Catch: Throwable -> L17
-        r0.add(r8.c.a(this));     // Catch: Throwable -> L17
-        ((HashSet) this.p).remove(r8);     // Catch: Throwable -> L17
-        goto L4
-    L12:
-        if (r8.b.isAssignableFrom(r11) == false) goto L14;
-    L8:
-        r4 = true;
-        goto L4
-    L20:
-        if (r0.size() <= 1) goto L25;
-        tv1 r12 = (tv1) this.o;     // Catch: Throwable -> L17
-        i61 r13 = (i61) this.q;     // Catch: Throwable -> L17
-        r12.getClass();     // Catch: Throwable -> L17
-        lk r14 = new lk(2, r0, r13);     // Catch: Throwable -> L17
-        monitor-exit(this);
-        return r14;
-    L25:
-        if (r0.size() != 1) goto L29;
-        uw2 r15 = (uw2) r0.get(0);     // Catch: Throwable -> L17
-        monitor-exit(this);
-        return r15;
-    L29:
-        if (r4 == false) goto L34;
-        l15 r16 = s;     // Catch: Throwable -> L17
-        monitor-exit(this);
-        return r16;
-    L34:
-        throw new Registry$NoModelLoaderAvailableException("Failed to find any ModelLoaders for model: " + r10 + " and data: " + r11);     // Catch: Throwable -> L17
-    L17:
-        th = move-exception;
-        ((HashSet) this.p).clear();     // Catch: Throwable -> L37
-        throw th;     // Catch: Throwable -> L37
-    L37:
-        th = move-exception;
-        throw th;
+    public synchronized uw2 f(Class cls, Class cls2) {
+        try {
+            ArrayList arrayList = new ArrayList();
+            ArrayList arrayList2 = (ArrayList) this.n;
+            int size = arrayList2.size();
+            boolean z = false;
+            int i = 0;
+            while (true) {
+                boolean z2 = true;
+                if (i >= size) {
+                    break;
+                }
+                Object obj = arrayList2.get(i);
+                i++;
+                cz2 cz2Var = (cz2) obj;
+                if (((HashSet) this.p).contains(cz2Var)) {
+                    z = true;
+                } else {
+                    if (!cz2Var.a.isAssignableFrom(cls) || !cz2Var.b.isAssignableFrom(cls2)) {
+                        z2 = false;
+                    }
+                    if (z2) {
+                        ((HashSet) this.p).add(cz2Var);
+                        arrayList.add(cz2Var.c.a(this));
+                        ((HashSet) this.p).remove(cz2Var);
+                    }
+                }
+            }
+            if (arrayList.size() > 1) {
+                tv1 tv1Var = (tv1) this.o;
+                i61 i61Var = (i61) this.q;
+                tv1Var.getClass();
+                return new lk(2, arrayList, i61Var);
+            }
+            if (arrayList.size() == 1) {
+                return (uw2) arrayList.get(0);
+            }
+            if (z) {
+                return s;
+            }
+            throw new Registry$NoModelLoaderAvailableException("Failed to find any ModelLoaders for model: " + cls + " and data: " + cls2);
+        } catch (Throwable th) {
+            ((HashSet) this.p).clear();
+            throw th;
+        }
     }
 
     @Override // defpackage.jj1
-    public void g(String r9, String r10) {
-        r9.getClass();
-        jx3 r2 = (jx3) this.o;
-        jx3 r4 = (jx3) this.p;
-        vb4 r5 = (vb4) this.n;
-        Preference r6 = (Preference) this.q;
-        do1 r1 = new do1(1, r9);
-        String r3 = r5.s(R.string.homemusic_settings_google_linked);
-        r3.getClass();
-        io1.a.execute(new up(r1, r2, r3, r4, r5, r6, 2));
+    public void g(String str, String str2) {
+        str.getClass();
+        jx3 jx3Var = (jx3) this.o;
+        jx3 jx3Var2 = (jx3) this.p;
+        vb4 vb4Var = (vb4) this.n;
+        Preference preference = (Preference) this.q;
+        do1 do1Var = new do1(1, str);
+        String strS = vb4Var.s(R.string.homemusic_settings_google_linked);
+        strS.getClass();
+        io1.a.execute(new up(do1Var, jx3Var, strS, jx3Var2, vb4Var, preference, 2));
     }
 
-    public synchronized ArrayList h(Class r7) {
-        monitor-enter(this);
-        ArrayList r0 = new ArrayList();     // Catch: Throwable -> L12
-        ArrayList r1 = (ArrayList) this.n;     // Catch: Throwable -> L12
-        int r2 = r1.size();     // Catch: Throwable -> L12
-        int r3 = 0;
-    L4:
-        if (r3 >= r2) goto L14;
-        Object r4 = r1.get(r3);     // Catch: Throwable -> L12
-        r3 = r3 + 1;     // Catch: Throwable -> L12
-        cz2 r5 = (cz2) r4;     // Catch: Throwable -> L12
-        if (((HashSet) this.p).contains(r5) == true) goto L4;
-        if (r5.a.isAssignableFrom(r7) == false) goto L4;
-        ((HashSet) this.p).add(r5);     // Catch: Throwable -> L12
-        r0.add(r5.c.a(this));     // Catch: Throwable -> L12
-        ((HashSet) this.p).remove(r5);     // Catch: Throwable -> L12
-        goto L4
-    L14:
-        monitor-exit(this);
-        return r0;
-    L12:
-        th = move-exception;
-        ((HashSet) this.p).clear();     // Catch: Throwable -> L18
-        throw th;     // Catch: Throwable -> L18
-    L18:
-        th = move-exception;
-        throw th;
+    public synchronized ArrayList h(Class cls) {
+        ArrayList arrayList;
+        try {
+            arrayList = new ArrayList();
+            ArrayList arrayList2 = (ArrayList) this.n;
+            int size = arrayList2.size();
+            int i = 0;
+            while (i < size) {
+                Object obj = arrayList2.get(i);
+                i++;
+                cz2 cz2Var = (cz2) obj;
+                if (!((HashSet) this.p).contains(cz2Var) && cz2Var.a.isAssignableFrom(cls)) {
+                    ((HashSet) this.p).add(cz2Var);
+                    arrayList.add(cz2Var.c.a(this));
+                    ((HashSet) this.p).remove(cz2Var);
+                }
+            }
+        } catch (Throwable th) {
+            ((HashSet) this.p).clear();
+            throw th;
+        }
+        return arrayList;
     }
 
-    public void i(gl4 r3) {
-        r3.getClass();
-        Object r0 = this.p;
-        monitor-enter(r0);
-        Runnable r4 = (Runnable) ((LinkedHashMap) this.q).remove(r3);     // Catch: Throwable -> L9
-        monitor-exit(r0);
-        if (r4 == null) goto L14;
-        ((Handler) ((hg3) this.n).o).removeCallbacks(r4);
-        return;
-    L14:
-        return;
-    L9:
-        th = move-exception;
-        throw th;
+    public void i(gl4 gl4Var) {
+        Runnable runnable;
+        gl4Var.getClass();
+        synchronized (this.p) {
+            runnable = (Runnable) ((LinkedHashMap) this.q).remove(gl4Var);
+        }
+        if (runnable != null) {
+            ((Handler) ((hg3) this.n).o).removeCallbacks(runnable);
+        }
     }
 
-    public boolean j(rg4 r3, int r4) {
-        br r0 = (br) r3.a.get();
-        if (r0 == null) goto L6;
-        ((Handler) this.o).removeCallbacksAndMessages(r3);
-        Handler r2 = fr.z;
-        r2.sendMessage(r2.obtainMessage(1, r4, 0, r0.a));
+    public boolean j(rg4 rg4Var, int i) {
+        br brVar = (br) rg4Var.a.get();
+        if (brVar == null) {
+            return false;
+        }
+        ((Handler) this.o).removeCallbacksAndMessages(rg4Var);
+        Handler handler = fr.z;
+        handler.sendMessage(handler.obtainMessage(1, i, 0, brVar.a));
         return true;
-    L6:
-        return false;
     }
 
     public hr4 k() {
-        Context r1 = (Context) this.n;
-        ArrayList r2 = (ArrayList) this.q;
-        Intent r3 = (Intent) this.o;
-        t23 r4 = (t23) this.p;
-        if (r4 != null) goto L5;
-        kf2.o("You must call setGraph() before constructing the deep link");
-        return null;
-    L5:
-        if (r2.isEmpty() == true) goto L28;
-        ArrayList r6 = new ArrayList();
-        ArrayList<? extends Parcelable> r7 = new ArrayList();
-        int r8 = r2.size();
-        int r9 = 0;
-        int r11 = 0;
-        r23 r10 = null;
-    L7:
-        if (r11 >= r8) goto L16;
-        Object r12 = r2.get(r11);
-        r11 = r11 + 1;
-        o23 r13 = (o23) r12;
-        int r14 = r13.a;
-        Bundle r15 = r13.b;
-        r23 r16 = o(r14);
-        if (r16 == null) goto L14;
-        int[] r17 = r16.b(r10);
-        int r18 = r17.length;
-        int r19 = 0;
-    L11:
-        if (r19 >= r18) goto L13;
-        r6.add(Integer.valueOf(r17[r19]));
-        r7.add(r15);
-        r19 = r19 + 1;
-        goto L11
-    L13:
-        r10 = r16;
-        goto L7
-    L14:
-        int r0 = r23.w;
-        tb4.h("Navigation destination ", ya4.v(r1, r14), " cannot be found in the navigation graph ", r4);
-        return null;
-    L16:
-        r3.putExtra("android-support-nav:controller:deepLinkIds", q40.P0(r6));
-        r3.putParcelableArrayListExtra("android-support-nav:controller:deepLinkArgs", r7);
-        hr4 r5 = new hr4(r1);
-        Intent r20 = new Intent(r3);
-        ComponentName r21 = r20.getComponent();
-        if (r21 != null) goto L19;
-        r21 = r20.resolveActivity(r5.o.getPackageManager());
-    L19:
-        if (r21 == null) goto L21;
-        r5.a(r21);
-    L21:
-        ArrayList r22 = r5.n;
-        r22.add(r20);
-        int r23 = r22.size();
-    L22:
-        if (r9 >= r23) goto L27;
-        Intent r24 = (Intent) r22.get(r9);
-        if (r24 == null) goto L26;
-        r24.putExtra("android-support-nav:controller:deepLinkIntent", r3);
-    L26:
-        r9 = r9 + 1;
-        goto L22
-    L27:
-        return r5;
-    L28:
-        kf2.o("You must call setDestination() or addDestination() before constructing the deep link");
-        return null;
+        Context context = (Context) this.n;
+        ArrayList arrayList = (ArrayList) this.q;
+        Intent intent = (Intent) this.o;
+        t23 t23Var = (t23) this.p;
+        if (t23Var == null) {
+            kf2.o("You must call setGraph() before constructing the deep link");
+            return null;
+        }
+        if (arrayList.isEmpty()) {
+            kf2.o("You must call setDestination() or addDestination() before constructing the deep link");
+            return null;
+        }
+        ArrayList arrayList2 = new ArrayList();
+        ArrayList<? extends Parcelable> arrayList3 = new ArrayList<>();
+        int size = arrayList.size();
+        int i = 0;
+        r23 r23Var = null;
+        while (i < size) {
+            Object obj = arrayList.get(i);
+            i++;
+            o23 o23Var = (o23) obj;
+            int i2 = o23Var.a;
+            Bundle bundle = o23Var.b;
+            r23 r23VarO = o(i2);
+            if (r23VarO == null) {
+                int i3 = r23.w;
+                tb4.h("Navigation destination ", ya4.v(context, i2), " cannot be found in the navigation graph ", t23Var);
+                return null;
+            }
+            for (int i4 : r23VarO.b(r23Var)) {
+                arrayList2.add(Integer.valueOf(i4));
+                arrayList3.add(bundle);
+            }
+            r23Var = r23VarO;
+        }
+        intent.putExtra("android-support-nav:controller:deepLinkIds", q40.P0(arrayList2));
+        intent.putParcelableArrayListExtra("android-support-nav:controller:deepLinkArgs", arrayList3);
+        hr4 hr4Var = new hr4(context);
+        Intent intent2 = new Intent(intent);
+        ComponentName component = intent2.getComponent();
+        if (component == null) {
+            component = intent2.resolveActivity(hr4Var.o.getPackageManager());
+        }
+        if (component != null) {
+            hr4Var.a(component);
+        }
+        ArrayList arrayList4 = hr4Var.n;
+        arrayList4.add(intent2);
+        int size2 = arrayList4.size();
+        for (int i5 = 0; i5 < size2; i5++) {
+            Intent intent3 = (Intent) arrayList4.get(i5);
+            if (intent3 != null) {
+                intent3.putExtra("android-support-nav:controller:deepLinkIntent", intent);
+            }
+        }
+        return hr4Var;
     }
 
-    public Object l(long r8, long r10, wd0 r12) {
-        if ((r12 instanceof z43) == false) goto L8;
-        z43 r0 = (z43) r12;
-        int r1 = r0.p;
-        if ((r1 & Integer.MIN_VALUE) == 0) goto L8;
-        r0.p = r1 - Integer.MIN_VALUE;
-    L7:
-        z43 r13 = r0;
-        Object r2 = r13.n;
-        int r3 = r13.p;
-        e53 r4 = null;
-        if (r3 == 0) goto L17;
-        if (r3 == 1) goto L16;
-        if (r3 != 2) goto L14;
-        kb4.X(r2);
-    L37:
-        long r5 = ((k45) r2).a;
-    L39:
-        return new k45(r5);
-    L14:
-        kf2.o("call to 'resume' before 'invoke' with coroutine");
-        return null;
-    L16:
-        kb4.X(r2);
-    L28:
-        r5 = ((k45) r2).a;
-        goto L39
-    L17:
-        kb4.X(r2);
-        e53 r6 = (e53) this.n;
-        if (r6 == null) goto L20;
-        e53 r7 = r6.r0();
-    L21:
-        r5 = 0;
-        xe0 r9 = xe0.n;
-        if (r7 != null) goto L29;
-        e53 r11 = (e53) this.o;
-        if (r11 == null) goto L39;
-        r13.p = 1;
-        r2 = r11.b0(r8, r10, r13);
-        if (r2 != r9) goto L28;
-    L36:
-        return r9;
-    L29:
-        e53 r14 = (e53) this.n;
-        if (r14 == null) goto L32;
-        r4 = r14.r0();
-    L32:
-        e53 r15 = r4;
-        if (r15 == null) goto L39;
-        r13.p = 2;
-        r2 = r15.b0(r8, r10, r13);
-        if (r2 != r9) goto L37;
-    L20:
-        r7 = null;
-    L8:
-        r0 = new z43(this, r12);
-        goto L7
+    /* JADX WARN: Code duplicated, block: B:8:0x0014  */
+    /* JADX WARN: Code restructure failed: missing block: B:26:0x0056, code lost:
+    
+        if (r0 == r1) goto L36;
+     */
+    /* JADX WARN: Code restructure failed: missing block: B:35:0x0071, code lost:
+    
+        if (r0 == r1) goto L36;
+     */
+    /* JADX WARN: Code restructure failed: missing block: B:36:0x0073, code lost:
+    
+        return r1;
+     */
+    /*
+        Code decompiled incorrectly, please refer to instructions dump.
+    */
+    public Object l(long j, long j2, wd0 wd0Var) {
+        z43 z43Var;
+        long j3;
+        if (wd0Var instanceof z43) {
+            z43Var = (z43) wd0Var;
+            int i = z43Var.p;
+            if ((i & Integer.MIN_VALUE) != 0) {
+                z43Var.p = i - Integer.MIN_VALUE;
+            } else {
+                z43Var = new z43(this, wd0Var);
+            }
+        } else {
+            z43Var = new z43(this, wd0Var);
+        }
+        z43 z43Var2 = z43Var;
+        Object objB0 = z43Var2.n;
+        int i2 = z43Var2.p;
+        if (i2 == 0) {
+            kb4.X(objB0);
+            e53 e53Var = (e53) this.n;
+            e53 e53VarR0 = e53Var != null ? e53Var.r0() : null;
+            j3 = 0;
+            xe0 xe0Var = xe0.n;
+            if (e53VarR0 == null) {
+                e53 e53Var2 = (e53) this.o;
+                if (e53Var2 != null) {
+                    z43Var2.p = 1;
+                    objB0 = e53Var2.b0(j, j2, z43Var2);
+                }
+            } else {
+                e53 e53Var3 = (e53) this.n;
+                e53 e53VarR1 = e53Var3 != null ? e53Var3.r0() : null;
+                if (e53VarR1 != null) {
+                    z43Var2.p = 2;
+                    objB0 = e53VarR1.b0(j, j2, z43Var2);
+                }
+            }
+        } else if (i2 == 1) {
+            kb4.X(objB0);
+            j3 = ((k45) objB0).a;
+        } else {
+            if (i2 != 2) {
+                kf2.o("call to 'resume' before 'invoke' with coroutine");
+                return null;
+            }
+            kb4.X(objB0);
+            j3 = ((k45) objB0).a;
+        }
+        return new k45(j3);
     }
 
-    public Object m(long r5, wd0 r7) {
-        if ((r7 instanceof a53) == false) goto L7;
-        a53 r0 = (a53) r7;
-        int r1 = r0.p;
-        if ((r1 & Integer.MIN_VALUE) == 0) goto L7;
-        r0.p = r1 - Integer.MIN_VALUE;
-    L8:
-        Object r8 = r0.n;
-        int r2 = r0.p;
-        e53 r3 = null;
-        if (r2 == 0) goto L14;
-        if (r2 != 1) goto L12;
-        kb4.X(r8);
-    L21:
-        long r4 = ((k45) r8).a;
-    L24:
-        return new k45(r4);
-    L12:
-        kf2.o("call to 'resume' before 'invoke' with coroutine");
-        return null;
-    L14:
-        kb4.X(r8);
-        e53 r6 = (e53) this.n;
-        if (r6 == null) goto L17;
-        r3 = r6.r0();
-    L17:
-        if (r3 == null) goto L22;
-        r0.p = 1;
-        r8 = r3.s(r5, r0);
-        xe0 r9 = xe0.n;
-        if (r8 != r9) goto L21;
-        return r9;
-    L22:
-        r4 = 0;
-    L7:
-        r0 = new a53(this, r7);
-        goto L8
+    /* JADX WARN: Code duplicated, block: B:7:0x0013  */
+    public Object m(long j, wd0 wd0Var) {
+        a53 a53Var;
+        long j2;
+        if (wd0Var instanceof a53) {
+            a53Var = (a53) wd0Var;
+            int i = a53Var.p;
+            if ((i & Integer.MIN_VALUE) != 0) {
+                a53Var.p = i - Integer.MIN_VALUE;
+            } else {
+                a53Var = new a53(this, wd0Var);
+            }
+        } else {
+            a53Var = new a53(this, wd0Var);
+        }
+        Object objS = a53Var.n;
+        int i2 = a53Var.p;
+        if (i2 == 0) {
+            kb4.X(objS);
+            e53 e53Var = (e53) this.n;
+            e53 e53VarR0 = e53Var != null ? e53Var.r0() : null;
+            if (e53VarR0 != null) {
+                a53Var.p = 1;
+                objS = e53VarR0.s(j, a53Var);
+                xe0 xe0Var = xe0.n;
+                if (objS == xe0Var) {
+                    return xe0Var;
+                }
+            } else {
+                j2 = 0;
+            }
+            return new k45(j2);
+        }
+        if (i2 != 1) {
+            kf2.o("call to 'resume' before 'invoke' with coroutine");
+            return null;
+        }
+        kb4.X(objS);
+        j2 = ((k45) objS).a;
+        return new k45(j2);
     }
 
     public synchronized ExecutorService n() {
-        monitor-enter(this);
-    L6:
-        th = move-exception;
-        throw th;
-    L4:
-        if (((ThreadPoolExecutor) this.n) != null) goto L8;
-        this.n = new ThreadPoolExecutor(0, Integer.MAX_VALUE, 60, TimeUnit.SECONDS, new SynchronousQueue(), new ye5(ze5.c + " Dispatcher", false));     // Catch: Throwable -> L6
-    L8:
-        ThreadPoolExecutor r0 = (ThreadPoolExecutor) this.n;     // Catch: Throwable -> L6
-        r0.getClass();     // Catch: Throwable -> L6
-        monitor-exit(this);
-        return r0;
+        ThreadPoolExecutor threadPoolExecutor;
+        try {
+            if (((ThreadPoolExecutor) this.n) == null) {
+                this.n = new ThreadPoolExecutor(0, Integer.MAX_VALUE, 60L, TimeUnit.SECONDS, new SynchronousQueue(), new ye5(ze5.c + " Dispatcher", false));
+            }
+            threadPoolExecutor = (ThreadPoolExecutor) this.n;
+            threadPoolExecutor.getClass();
+        } catch (Throwable th) {
+            throw th;
+        }
+        return threadPoolExecutor;
     }
 
-    public r23 o(int r3) {
-        ii r0 = new ii();
-        t23 r2 = (t23) this.p;
-        r2.getClass();
-        r0.addLast(r2);
-    L4:
-        if (r0.isEmpty() == true) goto L14;
-        r23 r4 = (r23) r0.removeFirst();
-        if (r4.u == r3) goto L7;
-        if ((r4 instanceof t23) == false) goto L4;
-        s23 r1 = new s23((t23) r4);
-    L12:
-        if (r1.hasNext() == false) goto L4;
-        r0.addLast((r23) r1.next());
-        goto L12
-    L7:
-        return r4;
-    L14:
+    public r23 o(int i) {
+        ii iiVar = new ii();
+        t23 t23Var = (t23) this.p;
+        t23Var.getClass();
+        iiVar.addLast(t23Var);
+        while (!iiVar.isEmpty()) {
+            r23 r23Var = (r23) iiVar.removeFirst();
+            if (r23Var.u == i) {
+                return r23Var;
+            }
+            if (r23Var instanceof t23) {
+                s23 s23Var = new s23((t23) r23Var);
+                while (s23Var.hasNext()) {
+                    iiVar.addLast((r23) s23Var.next());
+                }
+            }
+        }
         return null;
     }
 
-    public void p(ArrayDeque r1, Object r2) {
-        monitor-enter(this);
-    L10:
-        th = move-exception;
-        throw th;
-    L4:
-        if (r1.remove(r2) == false) goto L9;
-        monitor-exit(this);
+    public void p(ArrayDeque arrayDeque, Object obj) {
+        synchronized (this) {
+            if (!arrayDeque.remove(obj)) {
+                throw new AssertionError("Call wasn't in-flight!");
+            }
+        }
         L();
-        return;
-    L9:
-        throw new AssertionError("Call wasn't in-flight!");     // Catch: Throwable -> L10
     }
 
-    public void q(yu3 r2) {
-        r2.o.decrementAndGet();
-        p((ArrayDeque) this.p, r2);
+    public void q(yu3 yu3Var) {
+        yu3Var.o.decrementAndGet();
+        p((ArrayDeque) this.p, yu3Var);
     }
 
-    public void r(ba0 r13) {
-        tn2 r0 = (tn2) ((WeakReference) this.q).get();
-        if (r0 == null) goto L13;
-        AtomicBoolean r6 = new AtomicBoolean(true);
-    L7:
-        if (r6.get() == false) goto L16;
-        r6.set(false);
-        aa0 r3 = (aa0) r13.c.poll();
-        if (r3 == null) goto L10;
-        AtomicBoolean r4 = new AtomicBoolean(true);
-        na4 r2 = this;
-        f35.W(r0.l, new ur2(r0, this.w(r13.a), new mr(r2, r3, r4, r13, r6, 1)));
-        r4.set(false);
-        na4 this = r2;
-        goto L7
-    L10:
-        r13.f = false;
-        return;
-    L16:
-        return;
+    public void r(ba0 ba0Var) {
+        tn2 tn2Var = (tn2) ((WeakReference) this.q).get();
+        if (tn2Var == null) {
+            return;
+        }
+        AtomicBoolean atomicBoolean = new AtomicBoolean(true);
+        while (atomicBoolean.get()) {
+            atomicBoolean.set(false);
+            aa0 aa0Var = (aa0) ba0Var.c.poll();
+            if (aa0Var == null) {
+                ba0Var.f = false;
+                return;
+            }
+            AtomicBoolean atomicBoolean2 = new AtomicBoolean(true);
+            na4 na4Var = this;
+            f35.W(tn2Var.l, new ur2(tn2Var, this.w(ba0Var.a), new mr(na4Var, aa0Var, atomicBoolean2, ba0Var, atomicBoolean, 1)));
+            atomicBoolean2.set(false);
+            this = na4Var;
+        }
     }
 
-    public void s(final fr2 r6) {
-        Object r0 = this.n;
-        monitor-enter(r0);
-        ba0 r1 = (ba0) ((oi) this.p).get(r6);     // Catch: Throwable -> L8
-        if (r1 != null) goto L10;
-        monitor-exit(r0);     // Catch: Throwable -> L8
-        return;
-    L10:
-        final mi3 r2 = r1.g;     // Catch: Throwable -> L8
-        r1.g = mi3.b;     // Catch: Throwable -> L8
-        r1.c.add(new z90(this, r6, r2));     // Catch: Throwable -> L8
-        if (r1.f == false) goto L14;
-        monitor-exit(r0);     // Catch: Throwable -> L8
-        return;
-    L14:
-        r1.f = true;     // Catch: Throwable -> L8
-        r(r1);     // Catch: Throwable -> L8
-        monitor-exit(r0);     // Catch: Throwable -> L8
-        return;
-    L8:
-        th = move-exception;
-        throw th;
+    public void s(final fr2 fr2Var) {
+        synchronized (this.n) {
+            try {
+                ba0 ba0Var = (ba0) ((oi) this.p).get(fr2Var);
+                if (ba0Var == null) {
+                    return;
+                }
+                final mi3 mi3Var = ba0Var.g;
+                ba0Var.g = mi3.b;
+                ba0Var.c.add(new aa0() { // from class: z90
+                    @Override // defpackage.aa0
+                    public final ic2 run() {
+                        tn2 tn2Var = (tn2) ((WeakReference) this.a.q).get();
+                        if (tn2Var != null) {
+                            tn2Var.v(fr2Var, mi3Var);
+                        }
+                        return mw1.o;
+                    }
+                });
+                if (ba0Var.f) {
+                    return;
+                }
+                ba0Var.f = true;
+                r(ba0Var);
+            } catch (Throwable th) {
+                throw th;
+            }
+        }
     }
 
-    public mi3 t(fr2 r2) {
-        Object r0 = this.n;
-        monitor-enter(r0);
-        ba0 r1 = (ba0) ((oi) this.p).get(r2);     // Catch: Throwable -> L9
-        if (r1 == null) goto L11;
-        mi3 r3 = r1.e;     // Catch: Throwable -> L9
-        monitor-exit(r0);     // Catch: Throwable -> L9
-        return r3;
-    L11:
-        monitor-exit(r0);     // Catch: Throwable -> L9
-        return null;
-    L9:
-        th = move-exception;
-        throw th;
+    public mi3 t(fr2 fr2Var) {
+        synchronized (this.n) {
+            try {
+                ba0 ba0Var = (ba0) ((oi) this.p).get(fr2Var);
+                if (ba0Var == null) {
+                    return null;
+                }
+                return ba0Var.e;
+            } catch (Throwable th) {
+                throw th;
+            }
+        }
     }
 
     public yw1 u() {
-        Object r0 = this.n;
-        monitor-enter(r0);
-        yw1 r1 = yw1.k(((oi) this.o).values());     // Catch: Throwable -> L7
-        monitor-exit(r0);     // Catch: Throwable -> L7
-        return r1;
-    L7:
-        th = move-exception;
-        throw th;
+        yw1 yw1VarK;
+        synchronized (this.n) {
+            yw1VarK = yw1.k(((oi) this.o).values());
+        }
+        return yw1VarK;
     }
 
     @Override // defpackage.jj1
-    public void v(String r1) {
-        if (r1 == null) goto L5;
-        bu.f((vb4) this.n, r1);
-        return;
+    public void v(String str) {
+        if (str != null) {
+            bu.f((vb4) this.n, str);
+        }
     }
 
-    public fr2 w(Object r2) {
-        Object r0 = this.n;
-        monitor-enter(r0);
-        fr2 r1 = (fr2) ((oi) this.o).get(r2);     // Catch: Throwable -> L7
-        monitor-exit(r0);     // Catch: Throwable -> L7
-        return r1;
-    L7:
-        th = move-exception;
-        throw th;
+    public fr2 w(Object obj) {
+        fr2 fr2Var;
+        synchronized (this.n) {
+            fr2Var = (fr2) ((oi) this.o).get(obj);
+        }
+        return fr2Var;
     }
 
     public we0 x() {
-        we0 r0 = (we0) ((gf1) this.p).invoke();
-        if (r0 == null) goto L5;
-        return r0;
-    L5:
+        we0 we0Var = (we0) ((gf1) this.p).invoke();
+        if (we0Var != null) {
+            return we0Var;
+        }
         kf2.o("in order to access nested coroutine scope you need to attach dispatcher to the `Modifier.nestedScroll` first.");
         return null;
     }
 
-    public synchronized ArrayList y(Class r7) {
-        monitor-enter(this);
-        ArrayList r0 = new ArrayList();     // Catch: Throwable -> L11
-        ArrayList r1 = (ArrayList) this.n;     // Catch: Throwable -> L11
-        int r2 = r1.size();     // Catch: Throwable -> L11
-        int r3 = 0;
-    L4:
-        if (r3 >= r2) goto L13;
-        Object r4 = r1.get(r3);     // Catch: Throwable -> L11
-        r3 = r3 + 1;     // Catch: Throwable -> L11
-        cz2 r5 = (cz2) r4;     // Catch: Throwable -> L11
-        if (r0.contains(r5.b) == true) goto L4;
-        if (r5.a.isAssignableFrom(r7) == false) goto L4;
-        r0.add(r5.b);     // Catch: Throwable -> L11
-        goto L4
-    L13:
-        monitor-exit(this);
-        return r0;
-    L11:
-        th = move-exception;
-        throw th;
+    public synchronized ArrayList y(Class cls) {
+        ArrayList arrayList;
+        arrayList = new ArrayList();
+        ArrayList arrayList2 = (ArrayList) this.n;
+        int size = arrayList2.size();
+        int i = 0;
+        while (i < size) {
+            Object obj = arrayList2.get(i);
+            i++;
+            cz2 cz2Var = (cz2) obj;
+            if (!arrayList.contains(cz2Var.b) && cz2Var.a.isAssignableFrom(cls)) {
+                arrayList.add(cz2Var.b);
+            }
+        }
+        return arrayList;
     }
 
-    public /* synthetic */ na4(Object r1, Object r2, Object r3, Object r4) {
-        this.n = r1;
-        this.o = r2;
-        this.p = r3;
-        this.q = r4;
+    public /* synthetic */ na4(Object obj, Object obj2, Object obj3, Object obj4) {
+        this.n = obj;
+        this.o = obj2;
+        this.p = obj3;
+        this.q = obj4;
     }
 
-    public na4(int r4) {
-        switch(r4) {
-            case 10: goto L7;
-            case 11: goto L5;
-            default: goto L3;
-        };
-    L3:
-        this.o = new ArrayDeque();
-        this.p = new ArrayDeque();
-        this.q = new ArrayDeque();
-        return;
-    L5:
-        this.n = new Object();
-        this.o = new Handler(Looper.getMainLooper(), new ai1(1, this));
-        return;
-    L7:
-        this.p = new wc(14, this);
+    public na4(int i) {
+        switch (i) {
+            case 10:
+                this.p = new wc(14, this);
+                break;
+            case 11:
+                this.n = new Object();
+                this.o = new Handler(Looper.getMainLooper(), new ai1(1, this));
+                break;
+            default:
+                this.o = new ArrayDeque();
+                this.p = new ArrayDeque();
+                this.q = new ArrayDeque();
+                break;
+        }
     }
 
-    public na4(tn2 r3) {
+    public na4(tn2 tn2Var) {
         this.o = new oi(0);
         this.p = new oi(0);
         this.n = new Object();
-        this.q = new WeakReference(r3);
+        this.q = new WeakReference(tn2Var);
     }
 
-    public na4(v23 r6) {
-        r6.getClass();
-        Context r0 = r6.a;
-        this.n = r0;
-        g71 r1 = new g71(new h71(new tq4(fa4.c0(k5.w, r0), k5.x, 1), false, new o54(13)));
-        if (r1.hasNext() == true) goto L5;
-        Object r2 = null;
-    L6:
-        Activity r3 = (Activity) r2;
-        if (r3 == null) goto L9;
-        Intent r4 = new Intent(r0, r3.getClass());
-    L12:
-        r4.addFlags(268468224);
-        this.o = r4;
+    public na4(v23 v23Var) {
+        Intent launchIntentForPackage;
+        v23Var.getClass();
+        Context context = v23Var.a;
+        this.n = context;
+        g71 g71Var = new g71(new h71(new tq4(fa4.c0(k5.w, context), k5.x, 1), false, new o54(13)));
+        Activity activity = (Activity) (!g71Var.hasNext() ? null : g71Var.next());
+        if (activity != null) {
+            launchIntentForPackage = new Intent(context, activity.getClass());
+        } else {
+            launchIntentForPackage = context.getPackageManager().getLaunchIntentForPackage(context.getPackageName());
+            if (launchIntentForPackage == null) {
+                launchIntentForPackage = new Intent();
+            }
+        }
+        launchIntentForPackage.addFlags(268468224);
+        this.o = launchIntentForPackage;
         this.q = new ArrayList();
-        this.p = r6.i();
-        return;
-    L9:
-        r4 = r0.getPackageManager().getLaunchIntentForPackage(r0.getPackageName());
-        if (r4 != null) goto L12;
-        r4 = new Intent();
-        goto L12
-    L5:
-        r2 = r1.next();
-        goto L6
+        this.p = v23Var.i();
     }
 
-    public /* synthetic */ na4(ConstraintLayout r1, View r2, View r3, View r4, View r5) {
-        this.n = r2;
-        this.o = r3;
-        this.p = r4;
-        this.q = r5;
+    public /* synthetic */ na4(ConstraintLayout constraintLayout, View view, View view2, View view3, View view4) {
+        this.n = view;
+        this.o = view2;
+        this.p = view3;
+        this.q = view4;
     }
 
-    public na4(rm2 r1) {
-        this.n = r1;
+    public na4(rm2 rm2Var) {
+        this.n = rm2Var;
     }
 }

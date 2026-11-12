@@ -8,9 +8,9 @@ public final class gg4 {
     public final String a;
     public final SmartRec b;
 
-    public gg4(String r1, SmartRec r2) {
-        r1.getClass();
-        this.a = r1;
-        this.b = r2;
+    public gg4(String str, SmartRec smartRec) {
+        str.getClass();
+        this.a = str;
+        this.b = smartRec;
     }
 }

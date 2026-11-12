@@ -9,17 +9,17 @@ import java.util.Set;
 public final class x54 implements Set, x32 {
     public final x03 n;
 
-    public x54(x03 r1) {
-        this.n = r1;
+    public x54(x03 x03Var) {
+        this.n = x03Var;
     }
 
     @Override // java.util.Set, java.util.Collection
-    public final boolean add(Object r1) {
+    public final boolean add(Object obj) {
         throw new UnsupportedOperationException("Operation is not supported for read-only collection");
     }
 
     @Override // java.util.Set, java.util.Collection
-    public final boolean addAll(Collection r1) {
+    public final boolean addAll(Collection collection) {
         throw new UnsupportedOperationException("Operation is not supported for read-only collection");
     }
 
@@ -29,25 +29,22 @@ public final class x54 implements Set, x32 {
     }
 
     @Override // java.util.Set, java.util.Collection
-    public final boolean contains(Object r1) {
-        return this.n.c(r1);
+    public final boolean contains(Object obj) {
+        return this.n.c(obj);
     }
 
     @Override // java.util.Set, java.util.Collection
-    public final boolean containsAll(Collection r4) {
-        Collection r5 = r4;
-        if ((r5 instanceof Collection) == true) goto L5;
-    L7:
-        Iterator r6 = r5.iterator();
-    L9:
-        if (r6.hasNext() == false) goto L14;
-        Object r0 = r6.next();
-        if (this.n.c(r0) == true) goto L9;
-        return false;
-    L14:
-        return true;
-    L5:
-        if (r5.isEmpty() == false) goto L7;
+    public final boolean containsAll(Collection collection) {
+        Collection collection2 = collection;
+        if ((collection2 instanceof Collection) && collection2.isEmpty()) {
+            return true;
+        }
+        Iterator it = collection2.iterator();
+        while (it.hasNext()) {
+            if (!this.n.c(it.next())) {
+                return false;
+            }
+        }
         return true;
     }
 
@@ -62,17 +59,17 @@ public final class x54 implements Set, x32 {
     }
 
     @Override // java.util.Set, java.util.Collection
-    public final boolean remove(Object r1) {
+    public final boolean remove(Object obj) {
         throw new UnsupportedOperationException("Operation is not supported for read-only collection");
     }
 
     @Override // java.util.Set, java.util.Collection
-    public final boolean removeAll(Collection r1) {
+    public final boolean removeAll(Collection collection) {
         throw new UnsupportedOperationException("Operation is not supported for read-only collection");
     }
 
     @Override // java.util.Set, java.util.Collection
-    public final boolean retainAll(Collection r1) {
+    public final boolean retainAll(Collection collection) {
         throw new UnsupportedOperationException("Operation is not supported for read-only collection");
     }
 
@@ -87,7 +84,7 @@ public final class x54 implements Set, x32 {
     }
 
     @Override // java.util.Set, java.util.Collection
-    public final Object[] toArray(Object[] r1) {
-        return zz1.J(this, r1);
+    public final Object[] toArray(Object[] objArr) {
+        return zz1.J(this, objArr);
     }
 }

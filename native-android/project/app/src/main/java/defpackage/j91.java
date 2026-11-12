@@ -9,19 +9,15 @@ public final class j91 implements p81 {
     public final /* synthetic */ WorkDatabase_Impl o;
     public final /* synthetic */ x p;
 
-    public j91(p81 r1, WorkDatabase_Impl r2, x r3) {
-        this.n = r1;
-        this.o = r2;
-        this.p = r3;
+    public j91(p81 p81Var, WorkDatabase_Impl workDatabase_Impl, x xVar) {
+        this.n = p81Var;
+        this.o = workDatabase_Impl;
+        this.p = xVar;
     }
 
     @Override // defpackage.p81
-    public final Object a(q81 r4, vd0 r5) {
-        z81 r0 = new z81(r4, this.o, this.p);
-        Object r3 = this.n.a(r0, r5);
-        if (r3 != xe0.n) goto L6;
-        return r3;
-    L6:
-        return j15.a;
+    public final Object a(q81 q81Var, vd0 vd0Var) {
+        Object objA = this.n.a(new z81(q81Var, this.o, this.p), vd0Var);
+        return objA == xe0.n ? objA : j15.a;
     }
 }

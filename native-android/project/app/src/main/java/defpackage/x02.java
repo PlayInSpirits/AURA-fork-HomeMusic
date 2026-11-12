@@ -11,14 +11,14 @@ import retrofit2.http.QueryMap;
 /* JADX INFO: loaded from: classes.dex */
 public interface x02 {
     @GET("getInternetRadioStations")
-    Call<ApiResponse> a(@QueryMap Map<String, String> r1);
+    Call<ApiResponse> a(@QueryMap Map<String, String> map);
 
     @GET("updateInternetRadioStation")
-    Call<ApiResponse> b(@QueryMap Map<String, String> r1, @Query("id") String r2, @Query("streamUrl") String r3, @Query("name") String r4, @Query("homepageUrl") String r5);
+    Call<ApiResponse> b(@QueryMap Map<String, String> map, @Query("id") String str, @Query("streamUrl") String str2, @Query("name") String str3, @Query("homepageUrl") String str4);
 
     @GET("deleteInternetRadioStation")
-    Call<ApiResponse> c(@QueryMap Map<String, String> r1, @Query("id") String r2);
+    Call<ApiResponse> c(@QueryMap Map<String, String> map, @Query("id") String str);
 
     @GET("createInternetRadioStation")
-    Call<ApiResponse> d(@QueryMap Map<String, String> r1, @Query("streamUrl") String r2, @Query("name") String r3, @Query("homepageUrl") String r4);
+    Call<ApiResponse> d(@QueryMap Map<String, String> map, @Query("streamUrl") String str, @Query("name") String str2, @Query("homepageUrl") String str3);
 }

@@ -18,120 +18,92 @@ import java.util.UUID;
 public class tv1 implements f04, ep3, q51, xj2, qk2, kg1, m51, ex4, e63, za3, bh3, gh3 {
     public static tv1 n;
 
-    public static ge3 A(File r1) {
-        String r0 = ge3.o;
-        String r2 = r1.toString();
-        r2.getClass();
-        return z(r2);
+    public static ge3 A(File file) {
+        String str = ge3.o;
+        String string = file.toString();
+        string.getClass();
+        return z(string);
     }
 
-    public static boolean B(d64 r1) {
-        int r2 = r1.b;
-        if (r2 != 6) goto L5;
-        return true;
-    L5:
-        if (r2 == 7) goto L11;
-        return false;
-    L11:
-        return true;
+    public static boolean B(d64 d64Var) {
+        int i = d64Var.b;
+        return i == 6 || i == 7;
     }
 
-    public static boolean C(d64 r1) {
-        if (r1.b != 1) goto L5;
-        return true;
-    L5:
-        return false;
+    public static boolean C(d64 d64Var) {
+        return d64Var.b == 1;
     }
 
-    public static double D(ol1 r25, d64 r26) {
-        if (r26.c == false) goto L5;
-        double r1 = 30.0d;
-    L6:
-        h85 r2 = h85.a(r1);
-        sy r3 = sy.a(r25.d);
-        double r4 = r3.c;
-        double r5 = r3.b;
-        if (r5 != 0.0d) goto L9;
-    L12:
-        double r6 = 0.0d;
-    L13:
-        double r12 = r2.f;
-        double r14 = r2.h;
-        double r7 = Math.pow(r6 / Math.pow(1.64d - Math.pow(0.29d, r12), 0.73d), 1.1111111111111112d);
-        double r9 = Math.toRadians(r3.a);
-        double r11 = (Math.cos(2.0d + r9) + 3.8d) * 0.25d;
-        double r8 = Math.pow(r4 / 100.0d, 1.4492753623188408d / r2.j) * r2.a;
-        double r13 = ((r11 * 3846.153846153846d) * 1.0d) * r2.c;
-        double r10 = r8 / r2.b;
-        double r15 = Math.sin(r9);
-        double r16 = Math.cos(r9);
-        double r17 = (((0.305d + r10) * 23.0d) * r7) / (((108.0d * r7) * r15) + (((11.0d * r7) * r16) + (r13 * 23.0d)));
-        double r18 = r16 * r17;
-        double r19 = r17 * r15;
-        double r20 = r10 * 460.0d;
-        double r110 = ((288.0d * r19) + ((451.0d * r18) + r20)) / 1403.0d;
-        double r111 = ((r20 - (891.0d * r18)) - (261.0d * r19)) / 1403.0d;
-        double r21 = ((r20 - (r18 * 220.0d)) - (r19 * 6300.0d)) / 1403.0d;
-        double r22 = Math.max(0.0d, (Math.abs(r110) * 27.13d) / (400.0d - Math.abs(r110)));
-        double r23 = Math.signum(r110);
-        double r112 = 100.0d / r14;
-        double r24 = Math.pow(r22, 2.380952380952381d) * (r23 * r112);
-        double r27 = Math.pow(Math.max(0.0d, (Math.abs(r111) * 27.13d) / (400.0d - Math.abs(r111))), 2.380952380952381d) * (Math.signum(r111) * r112);
-        double r28 = Math.pow(Math.max(0.0d, (Math.abs(r21) * 27.13d) / (400.0d - Math.abs(r21))), 2.380952380952381d) * (Math.signum(r21) * r112);
-        double[] r29 = r2.g;
-        double r30 = r24 / r29[0];
-        double r31 = r27 / r29[1];
-        double r32 = r28 / r29[2];
-        double[][] r33 = sy.e;
-        double[] r113 = r33[0];
-        double r114 = (r113[2] * r32) + ((r113[1] * r31) + (r113[0] * r30));
-        double[] r115 = r33[1];
-        double r116 = (r115[2] * r32) + ((r115[1] * r31) + (r115[0] * r30));
-        double[] r34 = r33[2];
-        double[] r35 = {r114, r116, (r32 * r34[2]) + ((r31 * r34[1]) + (r30 * r34[0]))};
-        sy r36 = sy.b(r35[0], r35[1], r35[2], h85.k);
-        ol1 r37 = ol1.a(r36.a, r36.b, (h12.B(r35[1] / 100.0d) * 116.0d) - 16.0d);
-        if (Math.round(r25.c) < 60) goto L16;
-    L25:
-        double r0 = r37.c;
-        if (Math.round(r0) < 60) goto L28;
-    L31:
-        return r0;
-    L28:
-        if (Math.round(r0) <= 49) goto L31;
+    public static double D(ol1 ol1Var, d64 d64Var) {
+        h85 h85VarA = h85.a(d64Var.c ? 30.0d : 80.0d);
+        sy syVarA = sy.a(ol1Var.d);
+        double d = syVarA.c;
+        double d2 = syVarA.b;
+        double dSqrt = (d2 == 0.0d || d == 0.0d) ? 0.0d : d2 / Math.sqrt(d / 100.0d);
+        double d3 = h85VarA.f;
+        double d4 = h85VarA.h;
+        double dPow = Math.pow(dSqrt / Math.pow(1.64d - Math.pow(0.29d, d3), 0.73d), 1.1111111111111112d);
+        double radians = Math.toRadians(syVarA.a);
+        double dCos = (Math.cos(2.0d + radians) + 3.8d) * 0.25d;
+        double dPow2 = Math.pow(d / 100.0d, 1.4492753623188408d / h85VarA.j) * h85VarA.a;
+        double d5 = dCos * 3846.153846153846d * 1.0d * h85VarA.c;
+        double d6 = dPow2 / h85VarA.b;
+        double dSin = Math.sin(radians);
+        double dCos2 = Math.cos(radians);
+        double d7 = (((0.305d + d6) * 23.0d) * dPow) / (((108.0d * dPow) * dSin) + (((11.0d * dPow) * dCos2) + (d5 * 23.0d)));
+        double d8 = dCos2 * d7;
+        double d9 = d7 * dSin;
+        double d10 = d6 * 460.0d;
+        double d11 = ((288.0d * d9) + ((451.0d * d8) + d10)) / 1403.0d;
+        double d12 = ((d10 - (891.0d * d8)) - (261.0d * d9)) / 1403.0d;
+        double d13 = ((d10 - (d8 * 220.0d)) - (d9 * 6300.0d)) / 1403.0d;
+        double dMax = Math.max(0.0d, (Math.abs(d11) * 27.13d) / (400.0d - Math.abs(d11)));
+        double dSignum = Math.signum(d11);
+        double d14 = 100.0d / d4;
+        double dPow3 = Math.pow(dMax, 2.380952380952381d) * dSignum * d14;
+        double dPow4 = Math.pow(Math.max(0.0d, (Math.abs(d12) * 27.13d) / (400.0d - Math.abs(d12))), 2.380952380952381d) * Math.signum(d12) * d14;
+        double dPow5 = Math.pow(Math.max(0.0d, (Math.abs(d13) * 27.13d) / (400.0d - Math.abs(d13))), 2.380952380952381d) * Math.signum(d13) * d14;
+        double[] dArr = h85VarA.g;
+        double d15 = dPow3 / dArr[0];
+        double d16 = dPow4 / dArr[1];
+        double d17 = dPow5 / dArr[2];
+        double[][] dArr2 = sy.e;
+        double[] dArr3 = dArr2[0];
+        double d18 = (dArr3[2] * d17) + (dArr3[1] * d16) + (dArr3[0] * d15);
+        double[] dArr4 = dArr2[1];
+        double d19 = (dArr4[2] * d17) + (dArr4[1] * d16) + (dArr4[0] * d15);
+        double[] dArr5 = dArr2[2];
+        double[] dArr6 = {d18, d19, (d17 * dArr5[2]) + (d16 * dArr5[1]) + (d15 * dArr5[0])};
+        sy syVarB = sy.b(dArr6[0], dArr6[1], dArr6[2], h85.k);
+        ol1 ol1VarA = ol1.a(syVarB.a, syVarB.b, (h12.B(dArr6[1] / 100.0d) * 116.0d) - 16.0d);
+        if (Math.round(ol1Var.c) >= 60 || Math.round(ol1VarA.c) <= 49) {
+            double d20 = ol1VarA.c;
+            if (Math.round(d20) >= 60 || Math.round(d20) <= 49) {
+                return d20;
+            }
+            return 49.0d;
+        }
+        double d21 = ol1Var.c;
+        if (Math.round(d21) >= 60 || Math.round(d21) <= 49) {
+            return d21;
+        }
         return 49.0d;
-    L16:
-        if (Math.round(r37.c) <= 49) goto L25;
-        double r38 = r25.c;
-        if (Math.round(r38) < 60) goto L21;
-    L24:
-        return r38;
-    L21:
-        if (Math.round(r38) <= 49) goto L24;
-        return 49.0d;
-    L9:
-        if (r4 == 0.0d) goto L12;
-        r6 = r5 / Math.sqrt(r4 / 100.0d);
-        goto L13
-    L5:
-        r1 = 80.0d;
-        goto L6
     }
 
-    public static a23 v(Context r9, r23 r10, Bundle r11, r92 r12, j23 r13) {
-        String r7 = UUID.randomUUID().toString();
-        r7.getClass();
-        r10.getClass();
-        r12.getClass();
-        return new a23(r9, r10, r11, r12, r13, r7, null);
+    public static a23 v(Context context, r23 r23Var, Bundle bundle, r92 r92Var, j23 j23Var) {
+        String string = UUID.randomUUID().toString();
+        string.getClass();
+        r23Var.getClass();
+        r92Var.getClass();
+        return new a23(context, r23Var, bundle, r92Var, j23Var, string, null);
     }
 
-    public static ge3 z(String r1) {
-        r1.getClass();
-        yw r0 = f.a;
-        tv r2 = new tv();
-        r2.d0(r1);
-        return f.d(r2, false);
+    public static ge3 z(String str) {
+        str.getClass();
+        yw ywVar = f.a;
+        tv tvVar = new tv();
+        tvVar.d0(str);
+        return f.d(tvVar, false);
     }
 
     public gy0 E() {
@@ -147,29 +119,19 @@ public class tv1 implements f04, ep3, q51, xj2, qk2, kg1, m51, ex4, e63, za3, bh
     }
 
     @Override // defpackage.e63
-    public boolean a(cx2 r1) {
+    public boolean a(cx2 cx2Var) {
         return false;
     }
 
     @Override // defpackage.gh3
-    public Typeface b(gb1 r2, int r3) {
-        if (r3 == 0) goto L4;
-    L7:
-        if (r3 == 0) goto L9;
-    L12:
-        Typeface r1 = Typeface.DEFAULT;
-        int r4 = r2.n;
-        boolean r0 = true;
-        if (r3 == 1) goto L17;
-        r0 = false;
-    L17:
-        return sr0.g(r1, r4, r0);
-    L9:
-        if (h12.c(r2, gb1.q) == false) goto L12;
-        return Typeface.DEFAULT_BOLD;
-    L4:
-        if (h12.c(r2, gb1.p) == false) goto L7;
-        return Typeface.DEFAULT;
+    public Typeface b(gb1 gb1Var, int i) {
+        if (i == 0 && h12.c(gb1Var, gb1.p)) {
+            return Typeface.DEFAULT;
+        }
+        if (i == 0 && h12.c(gb1Var, gb1.q)) {
+            return Typeface.DEFAULT_BOLD;
+        }
+        return Typeface.create(Typeface.DEFAULT, gb1Var.n, i == 1);
     }
 
     @Override // defpackage.e63
@@ -178,12 +140,12 @@ public class tv1 implements f04, ep3, q51, xj2, qk2, kg1, m51, ex4, e63, za3, bh
     }
 
     @Override // defpackage.za3
-    public void e(byte[] r1, Object r2, MessageDigest r3) {
+    public void e(byte[] bArr, Object obj, MessageDigest messageDigest) {
     }
 
     @Override // defpackage.e63
-    public boolean f(cx2 r1) {
-        return wr1.I(hw.a(j51.O(r1), false));
+    public boolean f(cx2 cx2Var) {
+        return wr1.I(hw.a(j51.O(cx2Var), false));
     }
 
     @Override // defpackage.q51
@@ -192,20 +154,19 @@ public class tv1 implements f04, ep3, q51, xj2, qk2, kg1, m51, ex4, e63, za3, bh
     }
 
     @Override // defpackage.kg1
-    public void h(Object r2) {
-        ab4 r3 = (ab4) r2;
-        if (r3.a == 0) goto L6;
-        Log.e("MediaManager", "insertPlayNext: play-next fixup rejected with code " + r3.a);
-        return;
+    public void h(Object obj) {
+        ab4 ab4Var = (ab4) obj;
+        if (ab4Var.a != 0) {
+            Log.e("MediaManager", "insertPlayNext: play-next fixup rejected with code " + ab4Var.a);
+        }
     }
 
     @Override // defpackage.e63
-    public void i(c72 r8, long r9, fm1 r11, int r12, boolean r13) {
-        w12 r7 = r8.Q;
-        f63 r10 = (f63) r7.e;
-        k52 r14 = f63.h0;
-        long r2 = r10.x0(r9);
-        ((f63) r7.e).G0(f63.m0, r2, r11, 1, r13);
+    public void i(c72 c72Var, long j, fm1 fm1Var, int i, boolean z) {
+        w12 w12Var = c72Var.Q;
+        f63 f63Var = (f63) w12Var.e;
+        k52 k52Var = f63.h0;
+        ((f63) w12Var.e).G0(f63.m0, f63Var.x0(j), fm1Var, 1, z);
     }
 
     @Override // defpackage.xj2
@@ -214,19 +175,18 @@ public class tv1 implements f04, ep3, q51, xj2, qk2, kg1, m51, ex4, e63, za3, bh
     }
 
     @Override // defpackage.e63
-    public boolean k(fm1 r1, c72 r2) {
+    public boolean k(fm1 fm1Var, c72 c72Var) {
         return false;
     }
 
     @Override // defpackage.e63
-    public boolean m(c72 r2) {
-        e94 r1 = r2.v();
-        boolean r3 = false;
-        if (r1 == null) goto L8;
-        if (r1.q != true) goto L8;
-        r3 = true;
-    L8:
-        return !r3;
+    public boolean m(c72 c72Var) {
+        e94 e94VarV = c72Var.v();
+        boolean z = false;
+        if (e94VarV != null && e94VarV.q) {
+            z = true;
+        }
+        return !z;
     }
 
     @Override // defpackage.xj2
@@ -240,39 +200,36 @@ public class tv1 implements f04, ep3, q51, xj2, qk2, kg1, m51, ex4, e63, za3, bh
     }
 
     @Override // defpackage.kg1
-    public void o(Throwable r2) {
-        Log.e("MediaManager", "insertPlayNext: play-next fixup command failed", r2);
+    public void o(Throwable th) {
+        Log.e("MediaManager", "insertPlayNext: play-next fixup command failed", th);
     }
 
     @Override // defpackage.m51
     public void p() {
     }
 
-    public float q(float r1, float r2) {
+    public float q(float f, float f2) {
         return 1.0f;
     }
 
     @Override // defpackage.ep3
-    public CharSequence r(Preference r1) {
-        ListPreference r2 = (ListPreference) r1;
-        if (TextUtils.isEmpty(r2.F()) == false) goto L7;
-        return r2.n.getString(R.string.not_set);
-    L7:
-        return r2.F();
+    public CharSequence r(Preference preference) {
+        ListPreference listPreference = (ListPreference) preference;
+        return TextUtils.isEmpty(listPreference.F()) ? listPreference.n.getString(R.string.not_set) : listPreference.F();
     }
 
     @Override // defpackage.ex4
-    public cx4 s(int r1) {
+    public cx4 s(int i) {
         return z53.n;
     }
 
     @Override // defpackage.m51
-    public wv4 t(int r1, int r2) {
+    public wv4 t(int i, int i2) {
         return new tq0();
     }
 
     @Override // defpackage.m51
-    public void w(m84 r1) {
+    public void w(m84 m84Var) {
     }
 
     public gy0 x() {

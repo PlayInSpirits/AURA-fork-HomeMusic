@@ -99,8 +99,8 @@ public abstract class uq extends View {
     public final ArrayList y;
     public final ArrayList z;
 
-    public uq(Context r11, AttributeSet r12, int r13) {
-        super(su3.H(r11, r12, r13, R.style.Widget_MaterialComponents_Slider), r12, r13);
+    public uq(Context context, AttributeSet attributeSet, int i) {
+        super(su3.H(context, attributeSet, i, R.style.Widget_MaterialComponents_Slider), attributeSet, i);
         this.x = new ArrayList();
         this.y = new ArrayList();
         this.z = new ArrayList();
@@ -112,279 +112,202 @@ public abstract class uq extends View {
         this.e0 = 0.0f;
         this.g0 = true;
         this.k0 = false;
-        fi2 r2 = new fi2();
-        this.r0 = r2;
+        fi2 fi2Var = new fi2();
+        this.r0 = fi2Var;
         this.t0 = Collections.EMPTY_LIST;
         this.v0 = 0;
-        Context r4 = getContext();
-        Paint r3 = new Paint();
-        this.n = r3;
-        Paint.Style r5 = Paint.Style.STROKE;
-        r3.setStyle(r5);
-        Paint.Cap r6 = Paint.Cap.ROUND;
-        r3.setStrokeCap(r6);
-        Paint r7 = new Paint();
-        this.o = r7;
-        r7.setStyle(r5);
-        r7.setStrokeCap(r6);
-        Paint r8 = new Paint(1);
-        this.p = r8;
-        Paint.Style r9 = Paint.Style.FILL;
-        r8.setStyle(r9);
-        r8.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
-        Paint r10 = new Paint(1);
-        this.q = r10;
-        r10.setStyle(r9);
-        Paint r14 = new Paint();
-        this.r = r14;
-        r14.setStyle(r5);
-        r14.setStrokeCap(r6);
-        Paint r15 = new Paint();
-        this.s = r15;
-        r15.setStyle(r5);
-        r15.setStrokeCap(r6);
-        Resources r16 = r4.getResources();
-        this.K = r16.getDimensionPixelSize(R.dimen.mtrl_slider_widget_height);
-        int r17 = r16.getDimensionPixelOffset(R.dimen.mtrl_slider_track_side_padding);
-        this.E = r17;
-        this.O = r17;
-        this.F = r16.getDimensionPixelSize(R.dimen.mtrl_slider_thumb_radius);
-        this.G = r16.getDimensionPixelSize(R.dimen.mtrl_slider_track_height);
-        this.H = r16.getDimensionPixelSize(R.dimen.mtrl_slider_tick_radius);
-        this.I = r16.getDimensionPixelSize(R.dimen.mtrl_slider_tick_radius);
-        this.R = r16.getDimensionPixelSize(R.dimen.mtrl_slider_label_padding);
-        uc5.c(r4, r12, r13, R.style.Widget_MaterialComponents_Slider);
-        int[] r18 = ht3.S;
-        uc5.g(r4, r12, r18, r13, R.style.Widget_MaterialComponents_Slider, new int[0]);
-        TypedArray r19 = r4.obtainStyledAttributes(r12, r18, r13, R.style.Widget_MaterialComponents_Slider);
-        this.w = r19.getResourceId(8, R.style.Widget_MaterialComponents_Tooltip);
-        this.W = r19.getFloat(3, 0.0f);
-        this.a0 = r19.getFloat(4, 1.0f);
-        setValues(new Float[]{Float.valueOf(this.W)});
-        this.e0 = r19.getFloat(2, 0.0f);
-        this.J = (int) Math.ceil(r19.getDimension(9, (float) Math.ceil(vr1.l(getContext(), 48))));
-        int r110 = 21;
-        boolean r20 = r19.hasValue(21);
-        if (r20 == false) goto L5;
-        int r21 = 21;
-    L6:
-        if (r20 == true) goto L9;
-        r110 = 22;
-    L9:
-        ColorStateList r22 = h12.s(r4, r19, r21);
-        if (r22 != null) goto L13;
-        r22 = ud3.n(r4, R.color.material_slider_inactive_track_color);
-    L13:
-        setTrackInactiveTintList(r22);
-        ColorStateList r111 = h12.s(r4, r19, r110);
-        if (r111 != null) goto L17;
-        r111 = ud3.n(r4, R.color.material_slider_active_track_color);
-    L17:
-        setTrackActiveTintList(r111);
-        r2.m(h12.s(r4, r19, 10));
-        if (r19.hasValue(13) == false) goto L20;
-        setThumbStrokeColor(h12.s(r4, r19, 13));
-    L20:
-        setThumbStrokeWidth(r19.getDimension(14, 0.0f));
-        ColorStateList r112 = h12.s(r4, r19, 5);
-        if (r112 != null) goto L24;
-        r112 = ud3.n(r4, R.color.material_slider_halo_color);
-    L24:
-        setHaloTintList(r112);
-        this.g0 = r19.getBoolean(20, true);
-        int r113 = 15;
-        boolean r23 = r19.hasValue(15);
-        if (r23 == false) goto L27;
-        int r24 = 15;
-    L28:
-        if (r23 == true) goto L31;
-        r113 = 16;
-    L31:
-        ColorStateList r25 = h12.s(r4, r19, r24);
-        if (r25 != null) goto L35;
-        r25 = ud3.n(r4, R.color.material_slider_inactive_tick_marks_color);
-    L35:
-        setTickInactiveTintList(r25);
-        ColorStateList r114 = h12.s(r4, r19, r113);
-        if (r114 != null) goto L39;
-        r114 = ud3.n(r4, R.color.material_slider_active_tick_marks_color);
-    L39:
-        setTickActiveTintList(r114);
-        setThumbRadius(r19.getDimensionPixelSize(12, 0));
-        setHaloRadius(r19.getDimensionPixelSize(6, 0));
-        setThumbElevation(r19.getDimension(11, 0.0f));
-        setTrackHeight(r19.getDimensionPixelSize(24, 0));
-        setTickActiveRadius(r19.getDimensionPixelSize(18, 0));
-        setTickInactiveRadius(r19.getDimensionPixelSize(19, 0));
-        setLabelBehavior(r19.getInt(7, 0));
-        if (r19.getBoolean(0, true) == true) goto L42;
-        setEnabled(false);
-    L42:
-        r19.recycle();
+        Context context2 = getContext();
+        Paint paint = new Paint();
+        this.n = paint;
+        Paint.Style style = Paint.Style.STROKE;
+        paint.setStyle(style);
+        Paint.Cap cap = Paint.Cap.ROUND;
+        paint.setStrokeCap(cap);
+        Paint paint2 = new Paint();
+        this.o = paint2;
+        paint2.setStyle(style);
+        paint2.setStrokeCap(cap);
+        Paint paint3 = new Paint(1);
+        this.p = paint3;
+        Paint.Style style2 = Paint.Style.FILL;
+        paint3.setStyle(style2);
+        paint3.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
+        Paint paint4 = new Paint(1);
+        this.q = paint4;
+        paint4.setStyle(style2);
+        Paint paint5 = new Paint();
+        this.r = paint5;
+        paint5.setStyle(style);
+        paint5.setStrokeCap(cap);
+        Paint paint6 = new Paint();
+        this.s = paint6;
+        paint6.setStyle(style);
+        paint6.setStrokeCap(cap);
+        Resources resources = context2.getResources();
+        this.K = resources.getDimensionPixelSize(R.dimen.mtrl_slider_widget_height);
+        int dimensionPixelOffset = resources.getDimensionPixelOffset(R.dimen.mtrl_slider_track_side_padding);
+        this.E = dimensionPixelOffset;
+        this.O = dimensionPixelOffset;
+        this.F = resources.getDimensionPixelSize(R.dimen.mtrl_slider_thumb_radius);
+        this.G = resources.getDimensionPixelSize(R.dimen.mtrl_slider_track_height);
+        this.H = resources.getDimensionPixelSize(R.dimen.mtrl_slider_tick_radius);
+        this.I = resources.getDimensionPixelSize(R.dimen.mtrl_slider_tick_radius);
+        this.R = resources.getDimensionPixelSize(R.dimen.mtrl_slider_label_padding);
+        uc5.c(context2, attributeSet, i, R.style.Widget_MaterialComponents_Slider);
+        int[] iArr = ht3.S;
+        uc5.g(context2, attributeSet, iArr, i, R.style.Widget_MaterialComponents_Slider, new int[0]);
+        TypedArray typedArrayObtainStyledAttributes = context2.obtainStyledAttributes(attributeSet, iArr, i, R.style.Widget_MaterialComponents_Slider);
+        this.w = typedArrayObtainStyledAttributes.getResourceId(8, R.style.Widget_MaterialComponents_Tooltip);
+        this.W = typedArrayObtainStyledAttributes.getFloat(3, 0.0f);
+        this.a0 = typedArrayObtainStyledAttributes.getFloat(4, 1.0f);
+        setValues(Float.valueOf(this.W));
+        this.e0 = typedArrayObtainStyledAttributes.getFloat(2, 0.0f);
+        this.J = (int) Math.ceil(typedArrayObtainStyledAttributes.getDimension(9, (float) Math.ceil(vr1.l(getContext(), 48))));
+        boolean zHasValue = typedArrayObtainStyledAttributes.hasValue(21);
+        int i2 = zHasValue ? 21 : 23;
+        int i3 = zHasValue ? 21 : 22;
+        ColorStateList colorStateListS = h12.s(context2, typedArrayObtainStyledAttributes, i2);
+        setTrackInactiveTintList(colorStateListS == null ? ud3.n(context2, R.color.material_slider_inactive_track_color) : colorStateListS);
+        ColorStateList colorStateListS2 = h12.s(context2, typedArrayObtainStyledAttributes, i3);
+        setTrackActiveTintList(colorStateListS2 == null ? ud3.n(context2, R.color.material_slider_active_track_color) : colorStateListS2);
+        fi2Var.m(h12.s(context2, typedArrayObtainStyledAttributes, 10));
+        if (typedArrayObtainStyledAttributes.hasValue(13)) {
+            setThumbStrokeColor(h12.s(context2, typedArrayObtainStyledAttributes, 13));
+        }
+        setThumbStrokeWidth(typedArrayObtainStyledAttributes.getDimension(14, 0.0f));
+        ColorStateList colorStateListS3 = h12.s(context2, typedArrayObtainStyledAttributes, 5);
+        setHaloTintList(colorStateListS3 == null ? ud3.n(context2, R.color.material_slider_halo_color) : colorStateListS3);
+        this.g0 = typedArrayObtainStyledAttributes.getBoolean(20, true);
+        boolean zHasValue2 = typedArrayObtainStyledAttributes.hasValue(15);
+        int i4 = zHasValue2 ? 15 : 17;
+        int i5 = zHasValue2 ? 15 : 16;
+        ColorStateList colorStateListS4 = h12.s(context2, typedArrayObtainStyledAttributes, i4);
+        setTickInactiveTintList(colorStateListS4 == null ? ud3.n(context2, R.color.material_slider_inactive_tick_marks_color) : colorStateListS4);
+        ColorStateList colorStateListS5 = h12.s(context2, typedArrayObtainStyledAttributes, i5);
+        setTickActiveTintList(colorStateListS5 == null ? ud3.n(context2, R.color.material_slider_active_tick_marks_color) : colorStateListS5);
+        setThumbRadius(typedArrayObtainStyledAttributes.getDimensionPixelSize(12, 0));
+        setHaloRadius(typedArrayObtainStyledAttributes.getDimensionPixelSize(6, 0));
+        setThumbElevation(typedArrayObtainStyledAttributes.getDimension(11, 0.0f));
+        setTrackHeight(typedArrayObtainStyledAttributes.getDimensionPixelSize(24, 0));
+        setTickActiveRadius(typedArrayObtainStyledAttributes.getDimensionPixelSize(18, 0));
+        setTickInactiveRadius(typedArrayObtainStyledAttributes.getDimensionPixelSize(19, 0));
+        setLabelBehavior(typedArrayObtainStyledAttributes.getInt(7, 0));
+        if (!typedArrayObtainStyledAttributes.getBoolean(0, true)) {
+            setEnabled(false);
+        }
+        typedArrayObtainStyledAttributes.recycle();
         setFocusable(true);
         setClickable(true);
-        r2.p();
-        this.D = ViewConfiguration.get(r4).getScaledTouchSlop();
-        sq r115 = new sq((Slider) this);
-        this.t = r115;
-        j65.o(this, r115);
+        fi2Var.p();
+        this.D = ViewConfiguration.get(context2).getScaledTouchSlop();
+        sq sqVar = new sq((Slider) this);
+        this.t = sqVar;
+        j65.o(this, sqVar);
         this.u = (AccessibilityManager) getContext().getSystemService("accessibility");
-        return;
-    L27:
-        r24 = 17;
-        goto L28
-    L5:
-        r21 = 23;
-        goto L6
     }
 
-    public final void a(Drawable r5) {
-        int r4 = this.P * 2;
-        int r0 = r5.getIntrinsicWidth();
-        int r1 = r5.getIntrinsicHeight();
-        if (r0 != (-1)) goto L7;
-        if (r1 != (-1)) goto L7;
-        r5.setBounds(0, 0, r4, r4);
-        return;
-    L7:
-        float r6 = r4 / Math.max(r0, r1);
-        r5.setBounds(0, 0, (int) (r0 * r6), (int) (r1 * r6));
+    public final void a(Drawable drawable) {
+        int i = this.P * 2;
+        int intrinsicWidth = drawable.getIntrinsicWidth();
+        int intrinsicHeight = drawable.getIntrinsicHeight();
+        if (intrinsicWidth == -1 && intrinsicHeight == -1) {
+            drawable.setBounds(0, 0, i, i);
+        } else {
+            float fMax = i / Math.max(intrinsicWidth, intrinsicHeight);
+            drawable.setBounds(0, 0, (int) (intrinsicWidth * fMax), (int) (intrinsicHeight * fMax));
+        }
     }
 
     public final int b() {
-        int r0 = this.L / 2;
-        int r1 = this.M;
-        int r3 = 0;
-        if (r1 != 1) goto L5;
-    L6:
-        r3 = ((kv4) this.x.get(0)).getIntrinsicHeight();
-    L8:
-        return r0 + r3;
-    L5:
-        if (r1 != 3) goto L8;
-        goto L6
+        int i = this.L / 2;
+        int i2 = this.M;
+        return i + ((i2 == 1 || i2 == 3) ? ((kv4) this.x.get(0)).getIntrinsicHeight() : 0);
     }
 
-    public final ValueAnimator c(boolean r7) {
-        float r0 = 1.0f;
-        if (r7 == false) goto L5;
-        float r2 = 0.0f;
-    L6:
-        if (r7 == false) goto L8;
-        ValueAnimator r3 = this.C;
-    L9:
-        if (r3 != null) goto L11;
-    L13:
-        if (r7 == true) goto L16;
-        r0 = 0.0f;
-    L16:
-        ValueAnimator r1 = ValueAnimator.ofFloat(new float[]{r2, r0});
-        if (r7 == false) goto L19;
-        int r8 = g12.N(getContext(), R.attr.motionDurationMedium4, 83);
-        TimeInterpolator r4 = g12.O(getContext(), R.attr.motionEasingEmphasizedInterpolator, yd.e);
-    L20:
-        r1.setDuration(r8);
-        r1.setInterpolator(r4);
-        r1.addUpdateListener(new qq(0, this));
-        return r1;
-    L19:
-        r8 = g12.N(getContext(), R.attr.motionDurationShort3, 117);
-        r4 = g12.O(getContext(), R.attr.motionEasingEmphasizedAccelerateInterpolator, yd.c);
-        goto L20
-    L11:
-        if (r3.isRunning() == false) goto L13;
-        r2 = ((Float) r3.getAnimatedValue()).floatValue();
-        r3.cancel();
-        goto L13
-    L8:
-        r3 = this.B;
-        goto L9
-    L5:
-        r2 = 1.0f;
-        goto L6
+    public final ValueAnimator c(boolean z) {
+        int iN;
+        TimeInterpolator timeInterpolatorO;
+        float fFloatValue = z ? 0.0f : 1.0f;
+        ValueAnimator valueAnimator = z ? this.C : this.B;
+        if (valueAnimator != null && valueAnimator.isRunning()) {
+            fFloatValue = ((Float) valueAnimator.getAnimatedValue()).floatValue();
+            valueAnimator.cancel();
+        }
+        ValueAnimator valueAnimatorOfFloat = ValueAnimator.ofFloat(fFloatValue, z ? 1.0f : 0.0f);
+        if (z) {
+            iN = g12.N(getContext(), R.attr.motionDurationMedium4, 83);
+            timeInterpolatorO = g12.O(getContext(), R.attr.motionEasingEmphasizedInterpolator, yd.e);
+        } else {
+            iN = g12.N(getContext(), R.attr.motionDurationShort3, 117);
+            timeInterpolatorO = g12.O(getContext(), R.attr.motionEasingEmphasizedAccelerateInterpolator, yd.c);
+        }
+        valueAnimatorOfFloat.setDuration(iN);
+        valueAnimatorOfFloat.setInterpolator(timeInterpolatorO);
+        valueAnimatorOfFloat.addUpdateListener(new qq(0, this));
+        return valueAnimatorOfFloat;
     }
 
-    public final void d(Canvas r2, int r3, int r4, float r5, Drawable r6) {
-        r2.save();
-        r2.translate((this.O + ((int) (n(r5) * r3))) - (r6.getBounds().width() / 2.0f), r4 - (r6.getBounds().height() / 2.0f));
-        r6.draw(r2);
-        r2.restore();
+    public final void d(Canvas canvas, int i, int i2, float f, Drawable drawable) {
+        canvas.save();
+        canvas.translate((this.O + ((int) (n(f) * i))) - (drawable.getBounds().width() / 2.0f), i2 - (drawable.getBounds().height() / 2.0f));
+        drawable.draw(canvas);
+        canvas.restore();
     }
 
     @Override // android.view.View
-    public final boolean dispatchHoverEvent(MotionEvent r2) {
-        if (this.t.m(r2) == false) goto L5;
-        return true;
-    L5:
-        if (super.dispatchHoverEvent(r2) == true) goto L11;
-        return false;
-    L11:
-        return true;
+    public final boolean dispatchHoverEvent(MotionEvent motionEvent) {
+        return this.t.m(motionEvent) || super.dispatchHoverEvent(motionEvent);
     }
 
     @Override // android.view.View
     public final void drawableStateChanged() {
         super.drawableStateChanged();
-        int r0 = g(this.q0);
-        this.n.setColor(r0);
-        int r1 = g(this.p0);
-        this.o.setColor(r1);
-        int r2 = g(this.o0);
-        this.r.setColor(r2);
-        int r3 = g(this.n0);
-        this.s.setColor(r3);
-        ArrayList r4 = this.x;
-        int r5 = r4.size();
-        int r6 = 0;
-    L3:
-        if (r6 >= r5) goto L7;
-        Object r7 = r4.get(r6);
-        r6 = r6 + 1;
-        kv4 r8 = (kv4) r7;
-        if (r8.isStateful() == false) goto L3;
-        r8.setState(getDrawableState());
-        goto L3
-    L7:
-        fi2 r9 = this.r0;
-        if (r9.isStateful() == false) goto L10;
-        r9.setState(getDrawableState());
-    L10:
-        int r10 = g(this.m0);
-        Paint r11 = this.q;
-        r11.setColor(r10);
-        r11.setAlpha(63);
+        this.n.setColor(g(this.q0));
+        this.o.setColor(g(this.p0));
+        this.r.setColor(g(this.o0));
+        this.s.setColor(g(this.n0));
+        ArrayList arrayList = this.x;
+        int size = arrayList.size();
+        int i = 0;
+        while (i < size) {
+            Object obj = arrayList.get(i);
+            i++;
+            kv4 kv4Var = (kv4) obj;
+            if (kv4Var.isStateful()) {
+                kv4Var.setState(getDrawableState());
+            }
+        }
+        fi2 fi2Var = this.r0;
+        if (fi2Var.isStateful()) {
+            fi2Var.setState(getDrawableState());
+        }
+        int iG = g(this.m0);
+        Paint paint = this.q;
+        paint.setColor(iG);
+        paint.setAlpha(63);
     }
 
-    public final String e(float r1) {
-        p42 r0 = this.U;
-        if (r0 == null) goto L7;
-        return r0.a(r1);
-    L7:
-        if (((int) r1) != r1) goto L9;
-        String r2 = "%.0f";
-    L11:
-        return String.format(r2, new Object[]{Float.valueOf(r1)});
-    L9:
-        r2 = "%.2f";
-        goto L11
+    public final String e(float f) {
+        p42 p42Var = this.U;
+        if (p42Var != null) {
+            return p42Var.a(f);
+        }
+        return String.format(((float) ((int) f)) == f ? "%.0f" : "%.2f", Float.valueOf(f));
     }
 
     public final float[] f() {
-        float r0 = ((Float) Collections.max(getValues())).floatValue();
-        float r1 = ((Float) Collections.min(getValues())).floatValue();
-        if (this.b0.size() != 1) goto L5;
-        r1 = this.W;
-    L5:
-        float r2 = n(r1);
-        float r3 = n(r0);
-        if (j() == false) goto L10;
-        return new float[]{r3, r2};
-    L10:
-        return new float[]{r2, r3};
+        float fFloatValue = ((Float) Collections.max(getValues())).floatValue();
+        float fFloatValue2 = ((Float) Collections.min(getValues())).floatValue();
+        if (this.b0.size() == 1) {
+            fFloatValue2 = this.W;
+        }
+        float fN = n(fFloatValue2);
+        float fN2 = n(fFloatValue);
+        return j() ? new float[]{fN2, fN} : new float[]{fN, fN2};
     }
 
-    public final int g(ColorStateList r2) {
-        return r2.getColorForState(getDrawableState(), r2.getDefaultColor());
+    public final int g(ColorStateList colorStateList) {
+        return colorStateList.getColorForState(getDrawableState(), colorStateList.getDefaultColor());
     }
 
     public final int getAccessibilityFocusedVirtualViewId() {
@@ -399,1088 +322,933 @@ public abstract class uq extends View {
         return new ArrayList(this.b0);
     }
 
-    public final boolean h(float r3) {
-        double r2 = new BigDecimal(Float.toString(r3)).divide(new BigDecimal(Float.toString(this.e0)), MathContext.DECIMAL64).doubleValue();
-        if (Math.abs(Math.round(r2) - r2) >= 1.0E-4d) goto L6;
-        return true;
-    L6:
-        return false;
+    public final boolean h(float f) {
+        double dDoubleValue = new BigDecimal(Float.toString(f)).divide(new BigDecimal(Float.toString(this.e0)), MathContext.DECIMAL64).doubleValue();
+        return Math.abs(((double) Math.round(dDoubleValue)) - dDoubleValue) < 1.0E-4d;
     }
 
-    public final boolean i(MotionEvent r4) {
-        if (r4.getToolType(0) == 3) goto L16;
-        ViewParent r3 = getParent();
-    L7:
-        if ((r3 instanceof ViewGroup) == false) goto L16;
-        ViewGroup r5 = (ViewGroup) r3;
-        if (r5.canScrollVertically(1) == true) goto L13;
-        if (r5.canScrollVertically(-1) == true) goto L13;
-    L15:
-        r3 = r3.getParent();
-    L13:
-        if (r5.shouldDelayChildPressedState() == false) goto L15;
-        return true;
-    L16:
+    public final boolean i(MotionEvent motionEvent) {
+        if (motionEvent.getToolType(0) != 3) {
+            for (ViewParent parent = getParent(); parent instanceof ViewGroup; parent = parent.getParent()) {
+                ViewGroup viewGroup = (ViewGroup) parent;
+                if ((viewGroup.canScrollVertically(1) || viewGroup.canScrollVertically(-1)) && viewGroup.shouldDelayChildPressedState()) {
+                    return true;
+                }
+            }
+        }
         return false;
     }
 
     public final boolean j() {
-        WeakHashMap r0 = j65.a;
-        if (getLayoutDirection() != 1) goto L5;
-        return true;
-    L5:
-        return false;
+        WeakHashMap weakHashMap = j65.a;
+        return getLayoutDirection() == 1;
     }
 
     public final void k() {
-        if (this.e0 <= 0.0f) goto L14;
+        if (this.e0 <= 0.0f) {
+            return;
+        }
         w();
-        int r0 = Math.min((int) (((this.a0 - this.W) / this.e0) + 1.0f), (this.j0 / (this.N * 2)) + 1);
-        float[] r1 = this.f0;
-        if (r1 != null) goto L8;
-    L9:
-        this.f0 = new float[r0 * 2];
-    L10:
-        float r2 = this.j0 / (r0 - 1);
-        int r3 = 0;
-    L12:
-        if (r3 >= (r0 * 2)) goto L16;
-        float[] r4 = this.f0;
-        r4[r3] = ((r3 / 2.0f) * r2) + this.O;
-        r4[r3 + 1] = b();
-        r3 = r3 + 2;
-        goto L12
-    L16:
-        return;
-    L8:
-        if (r1.length == (r0 * 2)) goto L10;
+        int iMin = Math.min((int) (((this.a0 - this.W) / this.e0) + 1.0f), (this.j0 / (this.N * 2)) + 1);
+        float[] fArr = this.f0;
+        if (fArr == null || fArr.length != iMin * 2) {
+            this.f0 = new float[iMin * 2];
+        }
+        float f = this.j0 / (iMin - 1);
+        for (int i = 0; i < iMin * 2; i += 2) {
+            float[] fArr2 = this.f0;
+            fArr2[i] = ((i / 2.0f) * f) + this.O;
+            fArr2[i + 1] = b();
+        }
     }
 
-    public final boolean l(int r9) {
-        int r0 = this.d0;
-        long r1 = ((long) r0) + ((long) r9);
-        long r4 = this.b0.size() - 1;
-        if (r1 >= 0) goto L6;
-        r1 = 0;
-    L8:
-        int r10 = (int) r1;
-        this.d0 = r10;
-        if (r10 != r0) goto L13;
-        return false;
-    L13:
-        if (this.c0 == (-1)) goto L15;
-        this.c0 = r10;
-    L15:
+    public final boolean l(int i) {
+        int i2 = this.d0;
+        long j = ((long) i2) + ((long) i);
+        long size = this.b0.size() - 1;
+        if (j < 0) {
+            j = 0;
+        } else if (j > size) {
+            j = size;
+        }
+        int i3 = (int) j;
+        this.d0 = i3;
+        if (i3 == i2) {
+            return false;
+        }
+        if (this.c0 != -1) {
+            this.c0 = i3;
+        }
         u();
         postInvalidate();
         return true;
-    L6:
-        if (r1 <= r4) goto L8;
-        r1 = r4;
-        goto L8
     }
 
-    public final void m(int r2) {
-        if (j() == true) goto L5;
-    L8:
-        l(r2);
-        return;
-    L5:
-        if (r2 != Integer.MIN_VALUE) goto L7;
-        r2 = Integer.MAX_VALUE;
-        goto L8
-    L7:
-        r2 = -r2;
-        goto L8
+    public final void m(int i) {
+        if (j()) {
+            i = i == Integer.MIN_VALUE ? Integer.MAX_VALUE : -i;
+        }
+        l(i);
     }
 
-    public final float n(float r3) {
-        float r0 = this.W;
-        float r4 = (r3 - r0) / (this.a0 - r0);
-        if (j() == true) goto L5;
-        return r4;
-    L5:
-        return 1.0f - r4;
+    public final float n(float f) {
+        float f2 = this.W;
+        float f3 = (f - f2) / (this.a0 - f2);
+        return j() ? 1.0f - f3 : f3;
     }
 
     public final void o() {
-        Iterator r1 = this.z.iterator();
-        if (r1.hasNext() == true) goto L6;
-        return;
-    L6:
-        throw xa3.d(r1);
+        Iterator it = this.z.iterator();
+        if (it.hasNext()) {
+            throw xa3.d(it);
+        }
     }
 
     @Override // android.view.View
     public final void onAttachedToWindow() {
         super.onAttachedToWindow();
-        ArrayList r0 = this.x;
-        int r1 = r0.size();
-        int r3 = 0;
-    L3:
-        if (r3 >= r1) goto L8;
-        Object r4 = r0.get(r3);
-        r3 = r3 + 1;
-        kv4 r5 = (kv4) r4;
-        ViewGroup r6 = vr1.s(this);
-        if (r6 == null) goto L6;
-        r5.getClass();
-        int[] r7 = new int[2];
-        r6.getLocationOnScreen(r7);
-        r5.V = r7[0];
-        r6.getWindowVisibleDisplayFrame(r5.P);
-        r6.addOnLayoutChangeListener(r5.O);
-        goto L3
-    L6:
-        r5.getClass();
-        goto L3
+        ArrayList arrayList = this.x;
+        int size = arrayList.size();
+        int i = 0;
+        while (i < size) {
+            Object obj = arrayList.get(i);
+            i++;
+            kv4 kv4Var = (kv4) obj;
+            ViewGroup viewGroupS = vr1.s(this);
+            if (viewGroupS == null) {
+                kv4Var.getClass();
+            } else {
+                kv4Var.getClass();
+                int[] iArr = new int[2];
+                viewGroupS.getLocationOnScreen(iArr);
+                kv4Var.V = iArr[0];
+                viewGroupS.getWindowVisibleDisplayFrame(kv4Var.P);
+                viewGroupS.addOnLayoutChangeListener(kv4Var.O);
+            }
+        }
     }
 
     @Override // android.view.View
     public final void onDetachedFromWindow() {
-        rq r0 = this.v;
-        if (r0 == null) goto L5;
-        removeCallbacks(r0);
-    L5:
-        int r1 = 0;
+        rq rqVar = this.v;
+        if (rqVar != null) {
+            removeCallbacks(rqVar);
+        }
+        int i = 0;
         this.A = false;
-        ArrayList r2 = this.x;
-        int r3 = r2.size();
-    L6:
-        if (r1 >= r3) goto L16;
-        Object r4 = r2.get(r1);
-        r1 = r1 + 1;
-        kv4 r5 = (kv4) r4;
-        ViewGroup r6 = vr1.s(this);
-        if (r6 != null) goto L10;
-        c05 r7 = null;
-    L11:
-        if (r7 == null) goto L6;
-        ((ViewOverlay) r7.n).remove(r5);
-        ViewGroup r8 = vr1.s(this);
-        if (r8 == null) goto L14;
-        r8.removeOnLayoutChangeListener(r5.O);
-        goto L6
-    L14:
-        r5.getClass();
-        goto L6
-    L10:
-        r7 = new c05(r6);
-        goto L11
-    L16:
+        ArrayList arrayList = this.x;
+        int size = arrayList.size();
+        while (i < size) {
+            Object obj = arrayList.get(i);
+            i++;
+            kv4 kv4Var = (kv4) obj;
+            ViewGroup viewGroupS = vr1.s(this);
+            c05 c05Var = viewGroupS == null ? null : new c05(viewGroupS);
+            if (c05Var != null) {
+                ((ViewOverlay) c05Var.n).remove(kv4Var);
+                ViewGroup viewGroupS2 = vr1.s(this);
+                if (viewGroupS2 == null) {
+                    kv4Var.getClass();
+                } else {
+                    viewGroupS2.removeOnLayoutChangeListener(kv4Var.O);
+                }
+            }
+        }
         super.onDetachedFromWindow();
     }
 
     @Override // android.view.View
-    public final void onDraw(Canvas r13) {
-        if (this.l0 == false) goto L5;
-        w();
-        k();
-    L5:
-        super.onDraw(r13);
-        int r7 = b();
-        int r1 = this.j0;
-        float[] r8 = f();
-        int r2 = this.O;
-        float r10 = r1;
-        float r4 = (r8[1] * r10) + r2;
-        float r3 = r2 + r1;
-        Paint r6 = this.n;
-        if (r4 >= r3) goto L8;
-        float r5 = r7;
-        r13.drawLine(r4, r5, r3, r5, r6);
-    L8:
-        float r9 = this.O;
-        int r11 = 0;
-        float r12 = (r8[0] * r10) + r9;
-        if (r12 <= r9) goto L12;
-        float r14 = r7;
-        r13.drawLine(r9, r14, r12, r14, r6);
-    L12:
-        if (((Float) Collections.max(getValues())).floatValue() <= this.W) goto L15;
-        int r15 = this.j0;
-        float[] r16 = f();
-        float r17 = this.O;
-        float r18 = r15;
-        float r19 = (r16[1] * r18) + r17;
-        float r20 = (r16[0] * r18) + r17;
-        float r21 = r7;
-        r13.drawLine(r20, r21, r19, r21, this.o);
-    L15:
-        if (this.g0 == false) goto L21;
-        if (this.e0 <= 0.0f) goto L21;
-        float[] r22 = f();
-        int r23 = Math.round(r22[0] * ((this.f0.length / 2) - 1));
-        int r24 = Math.round(r22[1] * ((this.f0.length / 2) - 1));
-        float[] r25 = this.f0;
-        int r26 = r23 * 2;
-        Paint r27 = this.r;
-        r13.drawPoints(r25, 0, r26, r27);
-        int r28 = r24 * 2;
-        r13.drawPoints(this.f0, r26, r28 - r26, this.s);
-        float[] r29 = this.f0;
-        r13.drawPoints(r29, r28, r29.length - r28, r27);
-    L21:
-        if (this.V == true) goto L25;
-        if (isFocused() == true) goto L25;
-    L33:
-        if (this.c0 != (-1)) goto L37;
-        if (this.M == 3) goto L37;
-    L60:
-        if (this.A == false) goto L62;
-        this.A = false;
-        ValueAnimator r30 = c(false);
-        this.C = r30;
-        this.B = null;
-        r30.addListener(new l4(2, this));
-        this.C.start();
-    L62:
-        int r31 = this.j0;
-    L64:
-        if (r11 >= this.b0.size()) goto L76;
-        float r32 = ((Float) this.b0.get(r11)).floatValue();
-        Drawable r33 = this.s0;
-        if (r33 == null) goto L68;
-        int r34 = r7;
-        d(r13, r31, r34, r32, r33);
-    L75:
-        r11 = r11 + 1;
-        r7 = r34;
-        goto L64
-    L68:
-        r34 = r7;
-        if (r11 >= this.t0.size()) goto L72;
-        d(r13, r31, r34, r32, (Drawable) this.t0.get(r11));
-        goto L75
-    L72:
-        if (isEnabled() == true) goto L74;
-        r13.drawCircle((n(r32) * r31) + this.O, r34, this.P, this.p);
-    L74:
-        d(r13, r31, r34, r32, this.r0);
-        goto L75
-    L76:
-        return;
-    L37:
-        if (isEnabled() == false) goto L60;
-        if (this.M == 2) goto L62;
-        if (this.A == true) goto L44;
-        this.A = true;
-        ValueAnimator r35 = c(true);
-        this.B = r35;
-        this.C = null;
-        r35.start();
-    L44:
-        ArrayList r36 = this.x;
-        Iterator r37 = r36.iterator();
-        int r38 = 0;
-    L46:
-        if (r38 >= this.b0.size()) goto L55;
-        if (r37.hasNext() == false) goto L55;
-        if (r38 == this.d0) goto L53;
-        p((kv4) r37.next(), ((Float) this.b0.get(r38)).floatValue());
-    L53:
-        r38 = r38 + 1;
-    L55:
-        if (r37.hasNext() == false) goto L58;
-        p((kv4) r37.next(), ((Float) this.b0.get(this.d0)).floatValue());
-        goto L62
-    L58:
-        throw new IllegalStateException(String.format("Not enough labels(%d) to display all the values(%d)", new Object[]{Integer.valueOf(r36.size()), Integer.valueOf(this.b0.size())}));
-    L25:
-        if (isEnabled() == false) goto L33;
-        int r39 = this.j0;
-        if ((getBackground() instanceof RippleDrawable) == true) goto L33;
-        int r110 = (int) ((n(((Float) this.b0.get(this.d0)).floatValue()) * r39) + this.O);
-        if (Build.VERSION.SDK_INT >= 28) goto L31;
-        int r40 = this.Q;
-        r13.clipRect(r110 - r40, r7 - r40, r110 + r40, r40 + r7, Region.Op.UNION);
-    L31:
-        r13.drawCircle(r110, r7, this.Q, this.q);
-        goto L33
+    public final void onDraw(Canvas canvas) {
+        int i;
+        if (this.l0) {
+            w();
+            k();
+        }
+        super.onDraw(canvas);
+        int iB = b();
+        int i2 = this.j0;
+        float[] fArrF = f();
+        int i3 = this.O;
+        float f = i2;
+        float f2 = (fArrF[1] * f) + i3;
+        float f3 = i3 + i2;
+        Paint paint = this.n;
+        if (f2 < f3) {
+            float f4 = iB;
+            canvas.drawLine(f2, f4, f3, f4, paint);
+        }
+        float f5 = this.O;
+        int i4 = 0;
+        float f6 = (fArrF[0] * f) + f5;
+        if (f6 > f5) {
+            float f7 = iB;
+            canvas.drawLine(f5, f7, f6, f7, paint);
+        }
+        if (((Float) Collections.max(getValues())).floatValue() > this.W) {
+            int i5 = this.j0;
+            float[] fArrF2 = f();
+            float f8 = this.O;
+            float f9 = i5;
+            float f10 = (fArrF2[1] * f9) + f8;
+            float f11 = (fArrF2[0] * f9) + f8;
+            float f12 = iB;
+            canvas.drawLine(f11, f12, f10, f12, this.o);
+        }
+        if (this.g0 && this.e0 > 0.0f) {
+            float[] fArrF3 = f();
+            int iRound = Math.round(fArrF3[0] * ((this.f0.length / 2) - 1));
+            int iRound2 = Math.round(fArrF3[1] * ((this.f0.length / 2) - 1));
+            float[] fArr = this.f0;
+            int i6 = iRound * 2;
+            Paint paint2 = this.r;
+            canvas.drawPoints(fArr, 0, i6, paint2);
+            int i7 = iRound2 * 2;
+            canvas.drawPoints(this.f0, i6, i7 - i6, this.s);
+            float[] fArr2 = this.f0;
+            canvas.drawPoints(fArr2, i7, fArr2.length - i7, paint2);
+        }
+        if ((this.V || isFocused()) && isEnabled()) {
+            int i8 = this.j0;
+            if (!(getBackground() instanceof RippleDrawable)) {
+                int iN = (int) ((n(((Float) this.b0.get(this.d0)).floatValue()) * i8) + this.O);
+                if (Build.VERSION.SDK_INT < 28) {
+                    int i9 = this.Q;
+                    canvas.clipRect(iN - i9, iB - i9, iN + i9, i9 + iB, Region.Op.UNION);
+                }
+                canvas.drawCircle(iN, iB, this.Q, this.q);
+            }
+        }
+        if ((this.c0 != -1 || this.M == 3) && isEnabled()) {
+            if (this.M != 2) {
+                if (!this.A) {
+                    this.A = true;
+                    ValueAnimator valueAnimatorC = c(true);
+                    this.B = valueAnimatorC;
+                    this.C = null;
+                    valueAnimatorC.start();
+                }
+                ArrayList arrayList = this.x;
+                Iterator it = arrayList.iterator();
+                for (int i10 = 0; i10 < this.b0.size() && it.hasNext(); i10++) {
+                    if (i10 != this.d0) {
+                        p((kv4) it.next(), ((Float) this.b0.get(i10)).floatValue());
+                    }
+                }
+                if (!it.hasNext()) {
+                    throw new IllegalStateException(String.format("Not enough labels(%d) to display all the values(%d)", Integer.valueOf(arrayList.size()), Integer.valueOf(this.b0.size())));
+                }
+                p((kv4) it.next(), ((Float) this.b0.get(this.d0)).floatValue());
+            }
+        } else if (this.A) {
+            this.A = false;
+            ValueAnimator valueAnimatorC2 = c(false);
+            this.C = valueAnimatorC2;
+            this.B = null;
+            valueAnimatorC2.addListener(new l4(2, this));
+            this.C.start();
+        }
+        int i11 = this.j0;
+        while (i4 < this.b0.size()) {
+            float fFloatValue = ((Float) this.b0.get(i4)).floatValue();
+            Drawable drawable = this.s0;
+            if (drawable != null) {
+                i = iB;
+                d(canvas, i11, i, fFloatValue, drawable);
+            } else {
+                i = iB;
+                if (i4 < this.t0.size()) {
+                    d(canvas, i11, i, fFloatValue, (Drawable) this.t0.get(i4));
+                } else {
+                    if (!isEnabled()) {
+                        canvas.drawCircle((n(fFloatValue) * i11) + this.O, i, this.P, this.p);
+                    }
+                    d(canvas, i11, i, fFloatValue, this.r0);
+                }
+            }
+            i4++;
+            iB = i;
+        }
     }
 
     @Override // android.view.View
-    public final void onFocusChanged(boolean r3, int r4, Rect r5) {
-        super.onFocusChanged(r3, r4, r5);
-        sq r6 = this.t;
-        if (r3 == true) goto L7;
+    public final void onFocusChanged(boolean z, int i, Rect rect) {
+        super.onFocusChanged(z, i, rect);
+        sq sqVar = this.t;
+        if (!z) {
+            this.c0 = -1;
+            sqVar.j(this.d0);
+            return;
+        }
+        if (i == 1) {
+            l(Integer.MAX_VALUE);
+        } else if (i == 2) {
+            l(Integer.MIN_VALUE);
+        } else if (i == 17) {
+            m(Integer.MAX_VALUE);
+        } else if (i == 66) {
+            m(Integer.MIN_VALUE);
+        }
+        sqVar.w(this.d0);
+    }
+
+    /* JADX WARN: Code duplicated, block: B:21:0x0047  */
+    /* JADX WARN: Code duplicated, block: B:22:0x004d  */
+    @Override // android.view.View, android.view.KeyEvent.Callback
+    public final boolean onKeyDown(int i, KeyEvent keyEvent) {
+        if (!isEnabled()) {
+            return super.onKeyDown(i, keyEvent);
+        }
+        if (this.b0.size() == 1) {
+            this.c0 = 0;
+        }
+        Float fValueOf = null;
+        Boolean boolValueOf = null;
+        if (this.c0 == -1) {
+            if (i != 61) {
+                if (i == 66) {
+                    this.c0 = this.d0;
+                    postInvalidate();
+                    boolValueOf = Boolean.TRUE;
+                } else if (i == 81) {
+                    l(1);
+                    boolValueOf = Boolean.TRUE;
+                } else if (i == 69) {
+                    l(-1);
+                    boolValueOf = Boolean.TRUE;
+                } else if (i != 70) {
+                    switch (i) {
+                        case 21:
+                            m(-1);
+                            boolValueOf = Boolean.TRUE;
+                            break;
+                        case 22:
+                            m(1);
+                            boolValueOf = Boolean.TRUE;
+                            break;
+                        case 23:
+                            this.c0 = this.d0;
+                            postInvalidate();
+                            boolValueOf = Boolean.TRUE;
+                            break;
+                    }
+                } else {
+                    l(1);
+                    boolValueOf = Boolean.TRUE;
+                }
+            } else if (keyEvent.hasNoModifiers()) {
+                boolValueOf = Boolean.valueOf(l(1));
+            } else {
+                boolValueOf = keyEvent.isShiftPressed() ? Boolean.valueOf(l(-1)) : Boolean.FALSE;
+            }
+            return boolValueOf != null ? boolValueOf.booleanValue() : super.onKeyDown(i, keyEvent);
+        }
+        boolean zIsLongPress = this.k0 | keyEvent.isLongPress();
+        this.k0 = zIsLongPress;
+        float fRound = this.e0;
+        if (zIsLongPress) {
+            if (fRound == 0.0f) {
+                fRound = 1.0f;
+            }
+            float f = (this.a0 - this.W) / fRound;
+            if (f > 20.0f) {
+                fRound *= Math.round(f / 20.0f);
+            }
+        } else if (fRound == 0.0f) {
+            fRound = 1.0f;
+        }
+        if (i == 21) {
+            if (!j()) {
+                fRound = -fRound;
+            }
+            fValueOf = Float.valueOf(fRound);
+        } else if (i == 22) {
+            if (j()) {
+                fRound = -fRound;
+            }
+            fValueOf = Float.valueOf(fRound);
+        } else if (i == 69) {
+            fValueOf = Float.valueOf(-fRound);
+        } else if (i == 70 || i == 81) {
+            fValueOf = Float.valueOf(fRound);
+        }
+        if (fValueOf != null) {
+            if (r(this.c0, fValueOf.floatValue() + ((Float) this.b0.get(this.c0)).floatValue())) {
+                u();
+                postInvalidate();
+            }
+            return true;
+        }
+        if (i != 23) {
+            if (i == 61) {
+                if (keyEvent.hasNoModifiers()) {
+                    return l(1);
+                }
+                if (keyEvent.isShiftPressed()) {
+                    return l(-1);
+                }
+                return false;
+            }
+            if (i != 66) {
+                return super.onKeyDown(i, keyEvent);
+            }
+        }
         this.c0 = -1;
-        r6.j(this.d0);
-        return;
-    L7:
-        if (r4 != 1) goto L9;
-        l(Integer.MAX_VALUE);
-    L19:
-        r6.w(this.d0);
-        return;
-    L9:
-        if (r4 != 2) goto L11;
-        l(Integer.MIN_VALUE);
-        goto L19
-    L11:
-        if (r4 != 17) goto L13;
-        m(Integer.MAX_VALUE);
-        goto L19
-    L13:
-        if (r4 != 66) goto L19;
-        m(Integer.MIN_VALUE);
-        goto L19
+        postInvalidate();
+        return true;
     }
 
     @Override // android.view.View, android.view.KeyEvent.Callback
-    public final boolean onKeyDown(int r14, KeyEvent r15) {
-        if (isEnabled() == true) goto L7;
-        return super.onKeyDown(r14, r15);
-    L7:
-        if (this.b0.size() != 1) goto L9;
-        this.c0 = 0;
-    L9:
-        Float r3 = null;
-        Boolean r4 = null;
-        if (this.c0 != (-1)) goto L35;
-        if (r14 == 61) goto L24;
-        if (r14 == 66) goto L22;
-        if (r14 == 81) goto L21;
-        if (r14 == 69) goto L20;
-        if (r14 == 70) goto L21;
-        switch(r14) {
-            case 21: goto L19;
-            case 22: goto L18;
-            case 23: goto L22;
-            default: goto L30;
-        };
-    L18:
-        m(1);
-        r4 = Boolean.TRUE;
-        goto L30
-    L19:
-        m(-1);
-        r4 = Boolean.TRUE;
-    L30:
-        if (r4 == null) goto L34;
-        return r4.booleanValue();
-    L34:
-        return super.onKeyDown(r14, r15);
-    L20:
-        l(-1);
-        r4 = Boolean.TRUE;
-    L21:
-        l(1);
-        r4 = Boolean.TRUE;
-    L22:
-        this.c0 = this.d0;
-        postInvalidate();
-        r4 = Boolean.TRUE;
-        goto L30
-    L24:
-        if (r15.hasNoModifiers() == false) goto L27;
-        r4 = Boolean.valueOf(l(1));
-        goto L30
-    L27:
-        if (r15.isShiftPressed() == false) goto L29;
-        r4 = Boolean.valueOf(l(-1));
-        goto L30
-    L29:
-        r4 = Boolean.FALSE;
-        goto L30
-    L35:
-        boolean r0 = this.k0 | r15.isLongPress();
-        this.k0 = r0;
-        float r10 = this.e0;
-        if (r0 == false) goto L45;
-        if (r10 != 0.0f) goto L40;
-        r10 = 1.0f;
-    L40:
-        float r1 = (this.a0 - this.W) / r10;
-        if (r1 <= 20.0f) goto L48;
-        r10 = r10 * Math.round(r1 / 20.0f);
-    L48:
-        if (r14 == 21) goto L62;
-        if (r14 == 22) goto L58;
-        if (r14 == 69) goto L56;
-        if (r14 == 70) goto L55;
-        if (r14 == 81) goto L55;
-    L66:
-        if (r3 == null) goto L72;
-        if (r(this.c0, r3.floatValue() + ((Float) this.b0.get(this.c0)).floatValue()) == false) goto L70;
-        u();
-        postInvalidate();
-    L70:
-        return true;
-    L72:
-        if (r14 == 23) goto L86;
-        if (r14 == 61) goto L78;
-        if (r14 == 66) goto L86;
-        return super.onKeyDown(r14, r15);
-    L78:
-        if (r15.hasNoModifiers() == false) goto L82;
-        return l(1);
-    L82:
-        if (r15.isShiftPressed() == true) goto L84;
-        return false;
-    L84:
-        return l(-1);
-    L86:
-        this.c0 = -1;
-        postInvalidate();
-        return true;
-    L55:
-        r3 = Float.valueOf(r10);
-        goto L66
-    L56:
-        r3 = Float.valueOf(-r10);
-        goto L66
-    L58:
-        if (j() == false) goto L60;
-        r10 = -r10;
-    L60:
-        r3 = Float.valueOf(r10);
-        goto L66
-    L62:
-        if (j() == true) goto L65;
-        r10 = -r10;
-    L65:
-        r3 = Float.valueOf(r10);
-        goto L66
-    L45:
-        if (r10 != 0.0f) goto L48;
-        r10 = 1.0f;
-        goto L48
-    }
-
-    @Override // android.view.View, android.view.KeyEvent.Callback
-    public final boolean onKeyUp(int r2, KeyEvent r3) {
+    public final boolean onKeyUp(int i, KeyEvent keyEvent) {
         this.k0 = false;
-        return super.onKeyUp(r2, r3);
+        return super.onKeyUp(i, keyEvent);
     }
 
     @Override // android.view.View
-    public final void onMeasure(int r4, int r5) {
-        int r6 = this.L;
-        int r0 = this.M;
-        int r2 = 0;
-        if (r0 != 1) goto L5;
-    L6:
-        r2 = ((kv4) this.x.get(0)).getIntrinsicHeight();
-    L7:
-        super.onMeasure(r4, View.MeasureSpec.makeMeasureSpec(r6 + r2, 1073741824));
-        return;
-    L5:
-        if (r0 != 3) goto L7;
-        goto L6
+    public final void onMeasure(int i, int i2) {
+        int i3 = this.L;
+        int i4 = this.M;
+        super.onMeasure(i, View.MeasureSpec.makeMeasureSpec(i3 + ((i4 == 1 || i4 == 3) ? ((kv4) this.x.get(0)).getIntrinsicHeight() : 0), 1073741824));
     }
 
     @Override // android.view.View
-    public final void onRestoreInstanceState(Parcelable r2) {
-        tq r3 = (tq) r2;
-        super.onRestoreInstanceState(r3.getSuperState());
-        this.W = r3.n;
-        this.a0 = r3.o;
-        q(r3.p);
-        this.e0 = r3.q;
-        if (r3.r == false) goto L6;
-        requestFocus();
-        return;
+    public final void onRestoreInstanceState(Parcelable parcelable) {
+        tq tqVar = (tq) parcelable;
+        super.onRestoreInstanceState(tqVar.getSuperState());
+        this.W = tqVar.n;
+        this.a0 = tqVar.o;
+        q(tqVar.p);
+        this.e0 = tqVar.q;
+        if (tqVar.r) {
+            requestFocus();
+        }
     }
 
     @Override // android.view.View
     public final Parcelable onSaveInstanceState() {
-        tq r1 = new tq(super.onSaveInstanceState());
-        r1.n = this.W;
-        r1.o = this.a0;
-        r1.p = new ArrayList(this.b0);
-        r1.q = this.e0;
-        r1.r = hasFocus();
-        return r1;
+        tq tqVar = new tq(super.onSaveInstanceState());
+        tqVar.n = this.W;
+        tqVar.o = this.a0;
+        tqVar.p = new ArrayList(this.b0);
+        tqVar.q = this.e0;
+        tqVar.r = hasFocus();
+        return tqVar;
     }
 
     @Override // android.view.View
-    public final void onSizeChanged(int r1, int r2, int r3, int r4) {
-        this.j0 = Math.max(r1 - (this.O * 2), 0);
+    public final void onSizeChanged(int i, int i2, int i3, int i4) {
+        this.j0 = Math.max(i - (this.O * 2), 0);
         k();
         u();
     }
 
+    /* JADX WARN: Code duplicated, block: B:27:0x0075  */
+    /* JADX WARN: Code duplicated, block: B:38:0x00b2  */
+    /* JADX WARN: Code duplicated, block: B:42:0x00bc  */
+    /* JADX WARN: Code duplicated, block: B:45:0x00d1  */
     @Override // android.view.View
-    public final boolean onTouchEvent(MotionEvent r8) {
-        if (isEnabled() == false) goto L20;
-        float r0 = r8.getX();
-        float r2 = (r0 - this.O) / this.j0;
-        this.u0 = r2;
-        float r3 = Math.max(0.0f, r2);
-        this.u0 = r3;
-        this.u0 = Math.min(1.0f, r3);
-        int r4 = r8.getActionMasked();
-        if (r4 == 0) goto L48;
-        int r5 = this.D;
-        if (r4 != 1) goto L10;
-    L27:
-        this.V = false;
-        MotionEvent r1 = this.T;
-        if (r1 == null) goto L41;
-        if (r1.getActionMasked() != 0) goto L41;
-        float r6 = r5;
-        if (Math.abs(this.T.getX() - r8.getX()) > r6) goto L41;
-        if (Math.abs(this.T.getY() - r8.getY()) > r6) goto L41;
-        Slider r7 = (Slider) this;
-        if (r7.getActiveThumbIndex() != (-1)) goto L39;
-        r7.setActiveThumbIndex(0);
-    L39:
-        o();
-    L41:
-        if (this.c0 == (-1)) goto L47;
-        s();
-        u();
-        this.c0 = -1;
-        Iterator r9 = this.z.iterator();
-        if (r9.hasNext() == false) goto L47;
-        throw xa3.d(r9);
-    L47:
-        invalidate();
-    L56:
-        setPressed(this.V);
-        this.T = MotionEvent.obtain(r8);
-        return true;
-    L10:
-        if (r4 == 2) goto L15;
-        if (r4 == 3) goto L27;
-    L15:
-        if (this.V == false) goto L17;
-    L22:
-        Slider r10 = (Slider) this;
-        if (r10.getActiveThumbIndex() != (-1)) goto L26;
-        r10.setActiveThumbIndex(0);
-    L26:
-        this.V = true;
-        s();
-        u();
-        invalidate();
-        goto L56
-    L17:
-        if (i(r8) == true) goto L19;
-    L21:
-        getParent().requestDisallowInterceptTouchEvent(true);
-        o();
-        goto L22
-    L19:
-        if (Math.abs(r0 - this.S) >= r5) goto L21;
-    L48:
-        this.S = r0;
-        if (i(r8) == true) goto L56;
-        getParent().requestDisallowInterceptTouchEvent(true);
-        Slider r11 = (Slider) this;
-        if (r11.getActiveThumbIndex() != (-1)) goto L55;
-        r11.setActiveThumbIndex(0);
-    L55:
-        requestFocus();
-        this.V = true;
-        s();
-        u();
-        invalidate();
-        o();
-    L20:
+    public final boolean onTouchEvent(MotionEvent motionEvent) {
+        MotionEvent motionEvent2;
+        Iterator it;
+        float f;
+        Slider slider;
+        if (isEnabled()) {
+            float x = motionEvent.getX();
+            float f2 = (x - this.O) / this.j0;
+            this.u0 = f2;
+            float fMax = Math.max(0.0f, f2);
+            this.u0 = fMax;
+            this.u0 = Math.min(1.0f, fMax);
+            int actionMasked = motionEvent.getActionMasked();
+            if (actionMasked != 0) {
+                int i = this.D;
+                if (actionMasked == 1) {
+                    this.V = false;
+                    motionEvent2 = this.T;
+                    if (motionEvent2 != null && motionEvent2.getActionMasked() == 0) {
+                        f = i;
+                        if (Math.abs(this.T.getX() - motionEvent.getX()) <= f && Math.abs(this.T.getY() - motionEvent.getY()) <= f) {
+                            slider = (Slider) this;
+                            if (slider.getActiveThumbIndex() == -1) {
+                                slider.setActiveThumbIndex(0);
+                            }
+                            o();
+                        }
+                    }
+                    if (this.c0 != -1) {
+                        s();
+                        u();
+                        this.c0 = -1;
+                        it = this.z.iterator();
+                        if (it.hasNext()) {
+                            throw xa3.d(it);
+                        }
+                    }
+                    invalidate();
+                } else if (actionMasked == 2) {
+                    if (!this.V) {
+                        if (!i(motionEvent) || Math.abs(x - this.S) >= i) {
+                            getParent().requestDisallowInterceptTouchEvent(true);
+                            o();
+                        }
+                    }
+                    Slider slider2 = (Slider) this;
+                    if (slider2.getActiveThumbIndex() == -1) {
+                        slider2.setActiveThumbIndex(0);
+                    }
+                    this.V = true;
+                    s();
+                    u();
+                    invalidate();
+                } else if (actionMasked == 3) {
+                    this.V = false;
+                    motionEvent2 = this.T;
+                    if (motionEvent2 != null) {
+                        f = i;
+                        if (Math.abs(this.T.getX() - motionEvent.getX()) <= f) {
+                            slider = (Slider) this;
+                            if (slider.getActiveThumbIndex() == -1) {
+                                slider.setActiveThumbIndex(0);
+                            }
+                            o();
+                        }
+                    }
+                    if (this.c0 != -1) {
+                        s();
+                        u();
+                        this.c0 = -1;
+                        it = this.z.iterator();
+                        if (it.hasNext()) {
+                            throw xa3.d(it);
+                        }
+                    }
+                    invalidate();
+                }
+            } else {
+                this.S = x;
+                if (!i(motionEvent)) {
+                    getParent().requestDisallowInterceptTouchEvent(true);
+                    Slider slider3 = (Slider) this;
+                    if (slider3.getActiveThumbIndex() == -1) {
+                        slider3.setActiveThumbIndex(0);
+                    }
+                    requestFocus();
+                    this.V = true;
+                    s();
+                    u();
+                    invalidate();
+                    o();
+                }
+            }
+            setPressed(this.V);
+            this.T = MotionEvent.obtain(motionEvent);
+            return true;
+        }
         return false;
     }
 
     @Override // android.view.View
-    public final void onVisibilityChanged(View r4, int r5) {
-        super.onVisibilityChanged(r4, r5);
-        if (r5 == 0) goto L13;
-        ViewGroup r6 = vr1.s(this);
-        if (r6 != null) goto L7;
-        c05 r7 = null;
-    L8:
-        if (r7 == null) goto L15;
-        ArrayList r3 = this.x;
-        int r8 = r3.size();
-        int r0 = 0;
-    L11:
-        if (r0 >= r8) goto L16;
-        Object r1 = r3.get(r0);
-        r0 = r0 + 1;
-        ViewOverlay r2 = (ViewOverlay) r7.n;
-        r2.remove((kv4) r1);
-        goto L11
-    L16:
-        return;
-    L15:
-        return;
-    L7:
-        r7 = new c05(r6);
-        goto L8
+    public final void onVisibilityChanged(View view, int i) {
+        super.onVisibilityChanged(view, i);
+        if (i != 0) {
+            ViewGroup viewGroupS = vr1.s(this);
+            c05 c05Var = viewGroupS == null ? null : new c05(viewGroupS);
+            if (c05Var == null) {
+                return;
+            }
+            ArrayList arrayList = this.x;
+            int size = arrayList.size();
+            int i2 = 0;
+            while (i2 < size) {
+                Object obj = arrayList.get(i2);
+                i2++;
+                ((ViewOverlay) c05Var.n).remove((kv4) obj);
+            }
+        }
     }
 
-    public final void p(kv4 r4, float r5) {
-        String r0 = e(r5);
-        if (TextUtils.equals(r4.K, r0) == true) goto L5;
-        r4.K = r0;
-        r4.N.e = true;
-        r4.invalidateSelf();
-    L5:
-        int r1 = (this.O + ((int) (n(r5) * this.j0))) - (r4.getIntrinsicWidth() / 2);
-        int r6 = b() - (this.R + this.P);
-        r4.setBounds(r1, r6 - r4.getIntrinsicHeight(), r4.getIntrinsicWidth() + r1, r6);
-        Rect r7 = new Rect(r4.getBounds());
-        ep0.c(vr1.s(this), this, r7);
-        r4.setBounds(r7);
-        ViewGroup r3 = vr1.s(this);
-        if (r3 != null) goto L8;
-        c05 r8 = null;
-    L9:
-        ((ViewOverlay) r8.n).add(r4);
-        return;
-    L8:
-        r8 = new c05(r3);
-        goto L9
+    public final void p(kv4 kv4Var, float f) {
+        String strE = e(f);
+        if (!TextUtils.equals(kv4Var.K, strE)) {
+            kv4Var.K = strE;
+            kv4Var.N.e = true;
+            kv4Var.invalidateSelf();
+        }
+        int iN = (this.O + ((int) (n(f) * this.j0))) - (kv4Var.getIntrinsicWidth() / 2);
+        int iB = b() - (this.R + this.P);
+        kv4Var.setBounds(iN, iB - kv4Var.getIntrinsicHeight(), kv4Var.getIntrinsicWidth() + iN, iB);
+        Rect rect = new Rect(kv4Var.getBounds());
+        ep0.c(vr1.s(this), this, rect);
+        kv4Var.setBounds(rect);
+        ViewGroup viewGroupS = vr1.s(this);
+        ((ViewOverlay) (viewGroupS == null ? null : new c05(viewGroupS)).n).add(kv4Var);
     }
 
-    public final void q(ArrayList r12) {
-        if (r12.isEmpty() == true) goto L60;
-        Collections.sort(r12);
-        if (this.b0.size() == r12.size()) goto L7;
-    L9:
-        this.b0 = r12;
-        int r13 = 1;
+    public final void q(ArrayList arrayList) {
+        ViewGroup viewGroupS;
+        int resourceId;
+        if (arrayList.isEmpty()) {
+            kf2.n("At least one value must be set");
+            return;
+        }
+        Collections.sort(arrayList);
+        if (this.b0.size() == arrayList.size() && this.b0.equals(arrayList)) {
+            return;
+        }
+        this.b0 = arrayList;
         this.l0 = true;
         this.d0 = 0;
         u();
-        ArrayList r1 = this.x;
-        if (r1.size() <= this.b0.size()) goto L27;
-        List r2 = r1.subList(this.b0.size(), r1.size());
-        Iterator r3 = r2.iterator();
-    L13:
-        if (r3.hasNext() == false) goto L25;
-        kv4 r5 = (kv4) r3.next();
-        WeakHashMap r6 = j65.a;
-        if (isAttachedToWindow() == false) goto L13;
-        ViewGroup r7 = vr1.s(this);
-        if (r7 != null) goto L19;
-        c05 r8 = null;
-    L20:
-        if (r8 == null) goto L13;
-        ((ViewOverlay) r8.n).remove(r5);
-        ViewGroup r9 = vr1.s(this);
-        if (r9 == null) goto L23;
-        r9.removeOnLayoutChangeListener(r5.O);
-        goto L13
-    L23:
-        r5.getClass();
-        goto L13
-    L19:
-        r8 = new c05(r7);
-        goto L20
-    L25:
-        r2.clear();
-    L27:
-        if (r1.size() >= this.b0.size()) goto L48;
-        Context r4 = getContext();
-        int r10 = this.w;
-        kv4 r11 = new kv4(r4, r10);
-        TypedArray r14 = uc5.D(r11.L, null, ht3.Z, 0, r10, new int[0]);
-        Context r15 = r11.L;
-        r11.U = r15.getResources().getDimensionPixelSize(R.dimen.mtrl_tooltip_arrowSize);
-        zc1 r16 = r11.n.a.g();
-        r16.k = r11.w();
-        r11.setShapeAppearanceModel(r16.a());
-        CharSequence r17 = r14.getText(6);
-        boolean r18 = TextUtils.equals(r11.K, r17);
-        xr4 r19 = r11.N;
-        if (r18 == true) goto L32;
-        r11.K = r17;
-        r19.e = true;
-        r11.invalidateSelf();
-    L32:
-        if (r14.hasValue(0) == false) goto L36;
-        int r20 = r14.getResourceId(0, 0);
-        if (r20 == 0) goto L36;
-        rr4 r21 = new rr4(r15, r20);
-    L37:
-        if (r21 != null) goto L39;
-    L41:
-        r19.c(r21, r15);
-        int r22 = g12.r(R.attr.colorOnBackground, r15, kv4.class.getCanonicalName());
-        r11.m(ColorStateList.valueOf(r14.getColor(7, v50.g(v50.i(r22, 153), v50.i(g12.r(android.R.attr.colorBackground, r15, kv4.class.getCanonicalName()), 229)))));
-        r11.q(ColorStateList.valueOf(g12.r(R.attr.colorSurface, r15, kv4.class.getCanonicalName())));
-        r11.Q = r14.getDimensionPixelSize(2, 0);
-        r11.R = r14.getDimensionPixelSize(4, 0);
-        r11.S = r14.getDimensionPixelSize(5, 0);
-        r11.T = r14.getDimensionPixelSize(3, 0);
-        r14.recycle();
-        r1.add(r11);
-        WeakHashMap r23 = j65.a;
-        if (isAttachedToWindow() == false) goto L27;
-        ViewGroup r24 = vr1.s(this);
-        if (r24 == null) goto L27;
-        int[] r25 = new int[2];
-        r24.getLocationOnScreen(r25);
-        r11.V = r25[0];
-        r24.getWindowVisibleDisplayFrame(r11.P);
-        r24.addOnLayoutChangeListener(r11.O);
-        goto L27
-    L39:
-        if (r14.hasValue(1) == false) goto L41;
-        r21.j = h12.s(r15, r14, 1);
-    L36:
-        r21 = null;
-        goto L37
-    L48:
-        if (r1.size() != 1) goto L50;
-        r13 = 0;
-    L50:
-        int r26 = r1.size();
-        int r27 = 0;
-    L51:
-        if (r27 >= r26) goto L53;
-        Object r28 = r1.get(r27);
-        r27 = r27 + 1;
-        ((kv4) r28).r(r13);
-        goto L51
-    L53:
-        ArrayList r110 = this.y;
-        int r29 = r110.size();
-        int r30 = 0;
-    L54:
-        if (r30 >= r29) goto L58;
-        Object r31 = r110.get(r30);
-        r30 = r30 + 1;
-        dg4 r32 = (dg4) r31;
-        ArrayList r33 = this.b0;
-        int r34 = r33.size();
-        int r35 = 0;
-    L56:
-        if (r35 >= r34) goto L54;
-        Object r36 = r33.get(r35);
-        r35 = r35 + 1;
-        float r37 = ((Float) r36).floatValue();
-        r32.getClass();
-        Slider r38 = (Slider) this;
-        r32.a(r37, false);
-        goto L56
-    L58:
+        ArrayList arrayList2 = this.x;
+        if (arrayList2.size() > this.b0.size()) {
+            List<kv4> listSubList = arrayList2.subList(this.b0.size(), arrayList2.size());
+            for (kv4 kv4Var : listSubList) {
+                WeakHashMap weakHashMap = j65.a;
+                if (isAttachedToWindow()) {
+                    ViewGroup viewGroupS2 = vr1.s(this);
+                    c05 c05Var = viewGroupS2 == null ? null : new c05(viewGroupS2);
+                    if (c05Var != null) {
+                        ((ViewOverlay) c05Var.n).remove(kv4Var);
+                        ViewGroup viewGroupS3 = vr1.s(this);
+                        if (viewGroupS3 == null) {
+                            kv4Var.getClass();
+                        } else {
+                            viewGroupS3.removeOnLayoutChangeListener(kv4Var.O);
+                        }
+                    }
+                }
+            }
+            listSubList.clear();
+        }
+        while (arrayList2.size() < this.b0.size()) {
+            Context context = getContext();
+            int i = this.w;
+            kv4 kv4Var2 = new kv4(context, i);
+            TypedArray typedArrayD = uc5.D(kv4Var2.L, null, ht3.Z, 0, i, new int[0]);
+            Context context2 = kv4Var2.L;
+            kv4Var2.U = context2.getResources().getDimensionPixelSize(R.dimen.mtrl_tooltip_arrowSize);
+            zc1 zc1VarG = kv4Var2.n.a.g();
+            zc1VarG.k = kv4Var2.w();
+            kv4Var2.setShapeAppearanceModel(zc1VarG.a());
+            CharSequence text = typedArrayD.getText(6);
+            boolean zEquals = TextUtils.equals(kv4Var2.K, text);
+            xr4 xr4Var = kv4Var2.N;
+            if (!zEquals) {
+                kv4Var2.K = text;
+                xr4Var.e = true;
+                kv4Var2.invalidateSelf();
+            }
+            rr4 rr4Var = (!typedArrayD.hasValue(0) || (resourceId = typedArrayD.getResourceId(0, 0)) == 0) ? null : new rr4(context2, resourceId);
+            if (rr4Var != null && typedArrayD.hasValue(1)) {
+                rr4Var.j = h12.s(context2, typedArrayD, 1);
+            }
+            xr4Var.c(rr4Var, context2);
+            kv4Var2.m(ColorStateList.valueOf(typedArrayD.getColor(7, v50.g(v50.i(g12.r(R.attr.colorOnBackground, context2, kv4.class.getCanonicalName()), 153), v50.i(g12.r(android.R.attr.colorBackground, context2, kv4.class.getCanonicalName()), 229)))));
+            kv4Var2.q(ColorStateList.valueOf(g12.r(R.attr.colorSurface, context2, kv4.class.getCanonicalName())));
+            kv4Var2.Q = typedArrayD.getDimensionPixelSize(2, 0);
+            kv4Var2.R = typedArrayD.getDimensionPixelSize(4, 0);
+            kv4Var2.S = typedArrayD.getDimensionPixelSize(5, 0);
+            kv4Var2.T = typedArrayD.getDimensionPixelSize(3, 0);
+            typedArrayD.recycle();
+            arrayList2.add(kv4Var2);
+            WeakHashMap weakHashMap2 = j65.a;
+            if (isAttachedToWindow() && (viewGroupS = vr1.s(this)) != null) {
+                int[] iArr = new int[2];
+                viewGroupS.getLocationOnScreen(iArr);
+                kv4Var2.V = iArr[0];
+                viewGroupS.getWindowVisibleDisplayFrame(kv4Var2.P);
+                viewGroupS.addOnLayoutChangeListener(kv4Var2.O);
+            }
+        }
+        int i2 = arrayList2.size() == 1 ? 0 : 1;
+        int size = arrayList2.size();
+        int i3 = 0;
+        while (i3 < size) {
+            Object obj = arrayList2.get(i3);
+            i3++;
+            ((kv4) obj).r(i2);
+        }
+        ArrayList arrayList3 = this.y;
+        int size2 = arrayList3.size();
+        int i4 = 0;
+        while (i4 < size2) {
+            Object obj2 = arrayList3.get(i4);
+            i4++;
+            dg4 dg4Var = (dg4) obj2;
+            ArrayList arrayList4 = this.b0;
+            int size3 = arrayList4.size();
+            int i5 = 0;
+            while (i5 < size3) {
+                Object obj3 = arrayList4.get(i5);
+                i5++;
+                float fFloatValue = ((Float) obj3).floatValue();
+                dg4Var.getClass();
+                dg4Var.a(fFloatValue, false);
+            }
+        }
         postInvalidate();
-        return;
-    L7:
-        if (this.b0.equals(r12) == false) goto L9;
-        return;
-    L60:
-        kf2.n("At least one value must be set");
     }
 
-    public final boolean r(int r7, float r8) {
-        this.d0 = r7;
-        int r1 = 0;
-        if (Math.abs(r8 - ((Float) this.b0.get(r7)).floatValue()) >= 1.0E-4d) goto L5;
-        return false;
-    L5:
-        float r0 = getMinSeparation();
-        if (this.v0 != 0) goto L12;
-        if (r0 != 0.0f) goto L10;
-        r0 = 0.0f;
-        goto L12
-    L10:
-        float r2 = (r0 - this.O) / this.j0;
-        float r3 = this.W;
-        r0 = xa3.a(r3, this.a0, r2, r3);
-    L12:
-        if (j() == false) goto L14;
-        r0 = -r0;
-    L14:
-        int r4 = r7 + 1;
-        if (r4 < this.b0.size()) goto L17;
-        float r5 = this.a0;
-    L18:
-        int r6 = r7 - 1;
-        if (r6 >= 0) goto L21;
-        float r9 = this.W;
-    L22:
-        this.b0.set(r7, Float.valueOf(su3.k(r8, r9, r5)));
-        ArrayList r10 = this.y;
-        int r11 = r10.size();
-    L24:
-        if (r1 >= r11) goto L26;
-        Object r12 = r10.get(r1);
-        r1 = r1 + 1;
-        dg4 r13 = (dg4) r12;
-        float r14 = ((Float) this.b0.get(r7)).floatValue();
-        r13.getClass();
-        Slider r15 = (Slider) this;
-        r13.a(r14, true);
-        goto L24
-    L26:
-        AccessibilityManager r16 = this.u;
-        if (r16 != null) goto L29;
-    L35:
+    public final boolean r(int i, float f) {
+        this.d0 = i;
+        int i2 = 0;
+        if (Math.abs(f - ((Float) this.b0.get(i)).floatValue()) < 1.0E-4d) {
+            return false;
+        }
+        float minSeparation = getMinSeparation();
+        if (this.v0 == 0) {
+            if (minSeparation == 0.0f) {
+                minSeparation = 0.0f;
+            } else {
+                float f2 = (minSeparation - this.O) / this.j0;
+                float f3 = this.W;
+                minSeparation = xa3.a(f3, this.a0, f2, f3);
+            }
+        }
+        if (j()) {
+            minSeparation = -minSeparation;
+        }
+        int i3 = i + 1;
+        int i4 = i - 1;
+        this.b0.set(i, Float.valueOf(su3.k(f, i4 < 0 ? this.W : minSeparation + ((Float) this.b0.get(i4)).floatValue(), i3 >= this.b0.size() ? this.a0 : ((Float) this.b0.get(i3)).floatValue() - minSeparation)));
+        ArrayList arrayList = this.y;
+        int size = arrayList.size();
+        while (i2 < size) {
+            Object obj = arrayList.get(i2);
+            i2++;
+            dg4 dg4Var = (dg4) obj;
+            float fFloatValue = ((Float) this.b0.get(i)).floatValue();
+            dg4Var.getClass();
+            dg4Var.a(fFloatValue, true);
+        }
+        AccessibilityManager accessibilityManager = this.u;
+        if (accessibilityManager != null && accessibilityManager.isEnabled()) {
+            Runnable runnable = this.v;
+            if (runnable == null) {
+                this.v = new rq(this);
+            } else {
+                removeCallbacks(runnable);
+            }
+            rq rqVar = this.v;
+            rqVar.o = i;
+            postDelayed(rqVar, 200L);
+        }
         return true;
-    L29:
-        if (r16.isEnabled() == false) goto L35;
-        Runnable r17 = this.v;
-        if (r17 != null) goto L33;
-        this.v = new rq(this);
-    L34:
-        rq r18 = this.v;
-        r18.o = r7;
-        postDelayed(r18, 200);
-        goto L35
-    L33:
-        removeCallbacks(r17);
-        goto L34
-    L21:
-        r9 = r0 + ((Float) this.b0.get(r6)).floatValue();
-        goto L22
-    L17:
-        r5 = ((Float) this.b0.get(r4)).floatValue() - r0;
-        goto L18
     }
 
     public final void s() {
-        float r0 = this.u0;
-        float r1 = this.e0;
-        if (r1 <= 0.0f) goto L5;
-        int r2 = (int) ((this.a0 - this.W) / r1);
-        double r3 = ((double) Math.round(r0 * r2)) / ((double) r2);
-    L7:
-        if (j() == false) goto L9;
-        r3 = 1.0d - r3;
-    L9:
-        float r4 = this.a0;
-        float r5 = this.W;
-        r(this.c0, (float) ((r3 * ((double) (r4 - r5))) + ((double) r5)));
-        return;
-    L5:
-        r3 = r0;
-        goto L7
+        double dRound;
+        float f = this.u0;
+        float f2 = this.e0;
+        if (f2 > 0.0f) {
+            int i = (int) ((this.a0 - this.W) / f2);
+            dRound = ((double) Math.round(f * i)) / ((double) i);
+        } else {
+            dRound = f;
+        }
+        if (j()) {
+            dRound = 1.0d - dRound;
+        }
+        float f3 = this.a0;
+        float f4 = this.W;
+        r(this.c0, (float) ((dRound * ((double) (f3 - f4))) + ((double) f4)));
     }
 
-    public void setActiveThumbIndex(int r1) {
-        this.c0 = r1;
+    public void setActiveThumbIndex(int i) {
+        this.c0 = i;
     }
 
-    public void setCustomThumbDrawablesForValues(Drawable... r5) {
+    public void setCustomThumbDrawablesForValues(Drawable... drawableArr) {
         this.s0 = null;
         this.t0 = new ArrayList();
-        int r0 = r5.length;
-        int r1 = 0;
-    L3:
-        if (r1 >= r0) goto L5;
-        Drawable r2 = r5[r1];
-        List r3 = this.t0;
-        Drawable r4 = r2.mutate().getConstantState().newDrawable();
-        a(r4);
-        r3.add(r4);
-        r1 = r1 + 1;
-        goto L3
-    L5:
+        for (Drawable drawable : drawableArr) {
+            List list = this.t0;
+            Drawable drawableNewDrawable = drawable.mutate().getConstantState().newDrawable();
+            a(drawableNewDrawable);
+            list.add(drawableNewDrawable);
+        }
         postInvalidate();
     }
 
     @Override // android.view.View
-    public void setEnabled(boolean r2) {
-        super.setEnabled(r2);
-        if (r2 == false) goto L5;
-        int r3 = 0;
-    L6:
-        setLayerType(r3, null);
-        return;
-    L5:
-        r3 = 2;
-        goto L6
+    public void setEnabled(boolean z) {
+        super.setEnabled(z);
+        setLayerType(z ? 0 : 2, null);
     }
 
-    public abstract void setHaloRadius(int r1);
+    public abstract void setHaloRadius(int i);
 
-    public abstract void setHaloTintList(ColorStateList r1);
+    public abstract void setHaloTintList(ColorStateList colorStateList);
 
-    public abstract void setLabelBehavior(int r1);
+    public abstract void setLabelBehavior(int i);
 
-    public void setSeparationUnit(int r1) {
-        this.v0 = r1;
+    public void setSeparationUnit(int i) {
+        this.v0 = i;
         this.l0 = true;
         postInvalidate();
     }
 
-    public abstract void setThumbElevation(float r1);
+    public abstract void setThumbElevation(float f);
 
-    public abstract void setThumbRadius(int r1);
+    public abstract void setThumbRadius(int i);
 
-    public abstract void setThumbStrokeColor(ColorStateList r1);
+    public abstract void setThumbStrokeColor(ColorStateList colorStateList);
 
-    public abstract void setThumbStrokeWidth(float r1);
+    public abstract void setThumbStrokeWidth(float f);
 
-    public abstract void setTickActiveRadius(int r1);
+    public abstract void setTickActiveRadius(int i);
 
-    public abstract void setTickActiveTintList(ColorStateList r1);
+    public abstract void setTickActiveTintList(ColorStateList colorStateList);
 
-    public abstract void setTickInactiveRadius(int r1);
+    public abstract void setTickInactiveRadius(int i);
 
-    public abstract void setTickInactiveTintList(ColorStateList r1);
+    public abstract void setTickInactiveTintList(ColorStateList colorStateList);
 
-    public abstract void setTrackActiveTintList(ColorStateList r1);
+    public abstract void setTrackActiveTintList(ColorStateList colorStateList);
 
-    public abstract void setTrackHeight(int r1);
+    public abstract void setTrackHeight(int i);
 
-    public abstract void setTrackInactiveTintList(ColorStateList r1);
+    public abstract void setTrackInactiveTintList(ColorStateList colorStateList);
 
-    public void setValues(Float... r2) {
-        ArrayList r0 = new ArrayList();
-        Collections.addAll(r0, r2);
-        q(r0);
+    public void setValues(Float... fArr) {
+        ArrayList arrayList = new ArrayList();
+        Collections.addAll(arrayList, fArr);
+        q(arrayList);
     }
 
-    public final void t(int r4, Rect r5) {
-        int r0 = this.O + ((int) (n(getValues().get(r4).floatValue()) * this.j0));
-        int r6 = b();
-        int r1 = this.P;
-        int r3 = this.J;
-        if (r1 > r3) goto L6;
-        r1 = r3;
-    L6:
-        int r2 = r1 / 2;
-        r5.set(r0 - r2, r6 - r2, r0 + r2, r6 + r2);
+    public final void t(int i, Rect rect) {
+        int iN = this.O + ((int) (n(getValues().get(i).floatValue()) * this.j0));
+        int iB = b();
+        int i2 = this.P;
+        int i3 = this.J;
+        if (i2 <= i3) {
+            i2 = i3;
+        }
+        int i4 = i2 / 2;
+        rect.set(iN - i4, iB - i4, iN + i4, iB + i4);
     }
 
     public final void u() {
-        if ((getBackground() instanceof RippleDrawable) == true) goto L5;
-        return;
-    L5:
-        if (getMeasuredWidth() <= 0) goto L11;
-        Drawable r0 = getBackground();
-        if ((r0 instanceof RippleDrawable) == false) goto L12;
-        int r1 = (int) ((n(((Float) this.b0.get(this.d0)).floatValue()) * this.j0) + this.O);
-        int r2 = b();
-        int r5 = this.Q;
-        r0.setHotspotBounds(r1 - r5, r2 - r5, r1 + r5, r2 + r5);
-        return;
-    L12:
-        return;
+        if (!(getBackground() instanceof RippleDrawable) || getMeasuredWidth() <= 0) {
+            return;
+        }
+        Drawable background = getBackground();
+        if (background instanceof RippleDrawable) {
+            int iN = (int) ((n(((Float) this.b0.get(this.d0)).floatValue()) * this.j0) + this.O);
+            int iB = b();
+            int i = this.Q;
+            background.setHotspotBounds(iN - i, iB - i, iN + i, iB + i);
+        }
     }
 
     public final void v() {
-        int r0 = Math.max(this.K, Math.max(this.N + (getPaddingBottom() + getPaddingTop()), getPaddingBottom() + (getPaddingTop() + (this.P * 2))));
-        boolean r2 = true;
-        if (r0 != this.L) goto L5;
-        boolean r1 = false;
-    L6:
-        int r3 = Math.max(Math.max(Math.max(this.P - this.F, 0), Math.max((this.N - this.G) / 2, 0)), Math.max(Math.max(this.h0 - this.H, 0), Math.max(this.i0 - this.I, 0))) + this.E;
-        if (this.O != r3) goto L9;
-        r2 = false;
-    L12:
-        if (r1 == false) goto L15;
-        requestLayout();
-        return;
-    L15:
-        if (r2 == false) goto L18;
-        postInvalidate();
-        return;
-    L18:
-        return;
-    L9:
-        this.O = r3;
-        WeakHashMap r4 = j65.a;
-        if (isLaidOut() == false) goto L12;
-        this.j0 = Math.max(getWidth() - (this.O * 2), 0);
-        k();
-        goto L12
-    L5:
-        this.L = r0;
-        r1 = true;
-        goto L6
+        boolean z;
+        int iMax = Math.max(this.K, Math.max(this.N + getPaddingBottom() + getPaddingTop(), getPaddingBottom() + getPaddingTop() + (this.P * 2)));
+        boolean z2 = true;
+        if (iMax == this.L) {
+            z = false;
+        } else {
+            this.L = iMax;
+            z = true;
+        }
+        int iMax2 = Math.max(Math.max(Math.max(this.P - this.F, 0), Math.max((this.N - this.G) / 2, 0)), Math.max(Math.max(this.h0 - this.H, 0), Math.max(this.i0 - this.I, 0))) + this.E;
+        if (this.O == iMax2) {
+            z2 = false;
+        } else {
+            this.O = iMax2;
+            WeakHashMap weakHashMap = j65.a;
+            if (isLaidOut()) {
+                this.j0 = Math.max(getWidth() - (this.O * 2), 0);
+                k();
+            }
+        }
+        if (z) {
+            requestLayout();
+        } else if (z2) {
+            postInvalidate();
+        }
     }
 
     public final void w() {
-        if (this.l0 == false) goto L76;
-        float r0 = this.W;
-        float r1 = this.a0;
-        if (r0 < r1) goto L7;
-        kf2.o(xa3.f("valueFrom(", r0, ") must be smaller than valueTo(", r1, ")"));
-        return;
-    L7:
-        if (r1 > r0) goto L9;
-        kf2.o(xa3.f("valueTo(", r1, ") must be greater than valueFrom(", r0, ")"));
-        return;
-    L9:
-        if (this.e0 > 0.0f) goto L11;
-    L15:
-        ArrayList r2 = this.b0;
-        int r3 = r2.size();
-        int r5 = 0;
-    L17:
-        if (r5 >= r3) goto L31;
-        Object r7 = r2.get(r5);
-        r5 = r5 + 1;
-        Float r8 = (Float) r7;
-        if (r8.floatValue() < this.W) goto L30;
-        if (r8.floatValue() > this.a0) goto L30;
-        if (this.e0 <= 0.0f) goto L17;
-        if (h(r8.floatValue() - this.W) == true) goto L17;
-        float r4 = this.W;
-        float r10 = this.e0;
-        throw new IllegalStateException("Value(" + r8 + ") must be equal to valueFrom(" + r4 + ") plus a multiple of stepSize(" + r10 + ") when using stepSize(" + r10 + ")");
-    L30:
-        throw new IllegalStateException("Slider value(" + r8 + ") must be greater or equal to valueFrom(" + this.W + "), and lower or equal to valueTo(" + this.a0 + ")");
-    L31:
-        float r6 = getMinSeparation();
-        if (r6 < 0.0f) goto L63;
-        float r9 = this.e0;
-        if (r9 > 0.0f) goto L36;
-    L48:
-        float r11 = this.e0;
-        if (r11 != 0.0f) goto L52;
-    L60:
-        this.l0 = false;
-        return;
-    L52:
-        if (((int) r11) == r11) goto L54;
-        Log.w("uq", "Floating point value used for stepSize(" + r11 + "). Using floats can have rounding errors which may result in incorrect values. Instead, consider using integers with a custom LabelFormatter to display the value correctly.");
-    L54:
-        float r12 = this.W;
-        if (((int) r12) == r12) goto L57;
-        Log.w("uq", "Floating point value used for valueFrom(" + r12 + "). Using floats can have rounding errors which may result in incorrect values. Instead, consider using integers with a custom LabelFormatter to display the value correctly.");
-    L57:
-        float r13 = this.a0;
-        if (((int) r13) == r13) goto L60;
-        Log.w("uq", "Floating point value used for valueTo(" + r13 + "). Using floats can have rounding errors which may result in incorrect values. Instead, consider using integers with a custom LabelFormatter to display the value correctly.");
-        goto L60
-    L36:
-        if (r6 <= 0.0f) goto L48;
-        if (this.v0 == 1) goto L40;
-        kf2.o(xa3.f("minSeparation(", r6, ") cannot be set as a dimension when using stepSize(", r9, ")"));
-        return;
-    L40:
-        if (r6 >= r9) goto L42;
-    L44:
-        float r14 = this.e0;
-        StringBuilder r15 = b11.r("minSeparation(", r6, ") must be greater or equal and a multiple of stepSize(", r14, ") when using stepSize(");
-        r15.append(r14);
-        r15.append(")");
-        throw new IllegalStateException(r15.toString());
-    L42:
-        if (h(r6) == false) goto L44;
-    L63:
-        throw new IllegalStateException("minSeparation(" + r6 + ") must be greater or equal to 0");
-    L11:
-        if (h(r1 - r0) == true) goto L15;
-        float r16 = this.e0;
-        float r17 = this.W;
-        float r18 = this.a0;
-        StringBuilder r19 = b11.r("The stepSize(", r16, ") must be 0, or a factor of the valueFrom(", r17, ")-valueTo(");
-        r19.append(r18);
-        r19.append(") range");
-        throw new IllegalStateException(r19.toString());
+        if (this.l0) {
+            float f = this.W;
+            float f2 = this.a0;
+            if (f >= f2) {
+                kf2.o(xa3.f("valueFrom(", f, ") must be smaller than valueTo(", f2, ")"));
+                return;
+            }
+            if (f2 <= f) {
+                kf2.o(xa3.f("valueTo(", f2, ") must be greater than valueFrom(", f, ")"));
+                return;
+            }
+            if (this.e0 > 0.0f && !h(f2 - f)) {
+                float f3 = this.e0;
+                float f4 = this.W;
+                float f5 = this.a0;
+                StringBuilder sbR = b11.r("The stepSize(", f3, ") must be 0, or a factor of the valueFrom(", f4, ")-valueTo(");
+                sbR.append(f5);
+                sbR.append(") range");
+                throw new IllegalStateException(sbR.toString());
+            }
+            ArrayList arrayList = this.b0;
+            int size = arrayList.size();
+            int i = 0;
+            while (i < size) {
+                Object obj = arrayList.get(i);
+                i++;
+                Float f6 = (Float) obj;
+                if (f6.floatValue() < this.W || f6.floatValue() > this.a0) {
+                    throw new IllegalStateException("Slider value(" + f6 + ") must be greater or equal to valueFrom(" + this.W + "), and lower or equal to valueTo(" + this.a0 + ")");
+                }
+                if (this.e0 > 0.0f && !h(f6.floatValue() - this.W)) {
+                    float f7 = this.W;
+                    float f8 = this.e0;
+                    throw new IllegalStateException("Value(" + f6 + ") must be equal to valueFrom(" + f7 + ") plus a multiple of stepSize(" + f8 + ") when using stepSize(" + f8 + ")");
+                }
+            }
+            float minSeparation = getMinSeparation();
+            if (minSeparation < 0.0f) {
+                throw new IllegalStateException("minSeparation(" + minSeparation + ") must be greater or equal to 0");
+            }
+            float f9 = this.e0;
+            if (f9 > 0.0f && minSeparation > 0.0f) {
+                if (this.v0 != 1) {
+                    kf2.o(xa3.f("minSeparation(", minSeparation, ") cannot be set as a dimension when using stepSize(", f9, ")"));
+                    return;
+                } else if (minSeparation < f9 || !h(minSeparation)) {
+                    float f10 = this.e0;
+                    StringBuilder sbR2 = b11.r("minSeparation(", minSeparation, ") must be greater or equal and a multiple of stepSize(", f10, ") when using stepSize(");
+                    sbR2.append(f10);
+                    sbR2.append(")");
+                    throw new IllegalStateException(sbR2.toString());
+                }
+            }
+            float f11 = this.e0;
+            if (f11 != 0.0f) {
+                if (((int) f11) != f11) {
+                    Log.w("uq", "Floating point value used for stepSize(" + f11 + "). Using floats can have rounding errors which may result in incorrect values. Instead, consider using integers with a custom LabelFormatter to display the value correctly.");
+                }
+                float f12 = this.W;
+                if (((int) f12) != f12) {
+                    Log.w("uq", "Floating point value used for valueFrom(" + f12 + "). Using floats can have rounding errors which may result in incorrect values. Instead, consider using integers with a custom LabelFormatter to display the value correctly.");
+                }
+                float f13 = this.a0;
+                if (((int) f13) != f13) {
+                    Log.w("uq", "Floating point value used for valueTo(" + f13 + "). Using floats can have rounding errors which may result in incorrect values. Instead, consider using integers with a custom LabelFormatter to display the value correctly.");
+                }
+            }
+            this.l0 = false;
+        }
     }
 
-    public void setValues(List<Float> r2) {
-        q(new ArrayList(r2));
+    public void setValues(List<Float> list) {
+        q(new ArrayList(list));
     }
 
-    public void setCustomThumbDrawablesForValues(int... r5) {
-        Drawable[] r0 = new Drawable[r5.length];
-        int r1 = 0;
-    L4:
-        if (r1 >= r5.length) goto L6;
-        r0[r1] = getResources().getDrawable(r5[r1]);
-        r1 = r1 + 1;
-        goto L4
-    L6:
-        setCustomThumbDrawablesForValues(r0);
+    public void setCustomThumbDrawablesForValues(int... iArr) {
+        Drawable[] drawableArr = new Drawable[iArr.length];
+        for (int i = 0; i < iArr.length; i++) {
+            drawableArr[i] = getResources().getDrawable(iArr[i]);
+        }
+        setCustomThumbDrawablesForValues(drawableArr);
     }
 }

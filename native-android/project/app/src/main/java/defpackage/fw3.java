@@ -5,13 +5,13 @@ package defpackage;
 public abstract class fw3 {
     public abstract void a();
 
-    public abstract void b(int r1, int r2, Object r3);
+    public abstract void b(int i, int i2, Object obj);
 
-    public abstract void c(int r1, int r2);
+    public abstract void c(int i, int i2);
 
-    public abstract void d(int r1, int r2);
+    public abstract void d(int i, int i2);
 
-    public abstract void e(int r1, int r2);
+    public abstract void e(int i, int i2);
 
     public void f() {
     }

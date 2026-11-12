@@ -11,47 +11,44 @@ public final /* synthetic */ class d70 implements w92 {
     public final /* synthetic */ Object o;
     public final /* synthetic */ Object p;
 
-    public /* synthetic */ d70(int r1, Object r2, Object r3) {
-        this.n = r1;
-        this.o = r2;
-        this.p = r3;
+    public /* synthetic */ d70(int i, Object obj, Object obj2) {
+        this.n = i;
+        this.o = obj;
+        this.p = obj2;
     }
 
     @Override // defpackage.w92
-    public final void b(ba2 r7, q92 r8) {
-        int r0 = this.n;
-        Object r1 = this.p;
-        Object r6 = this.o;
-        switch(r0) {
-            case 0: goto L19;
-            default: goto L4;
-        };
-    L4:
-        rd1 r9 = (rd1) r6;
-        a23 r2 = (a23) r1;
-        r2.getClass();
-        if (r8 != q92.ON_RESUME) goto L13;
-        if (((List) r9.b().e.n.getValue()).contains(r2) == false) goto L13;
-        if (rd1.n() == false) goto L11;
-        Log.v("FragmentNavigator", "Marking transition complete for entry " + r2 + " due to fragment " + r7 + " view lifecycle reaching RESUMED");
-    L11:
-        r9.b().b(r2);
-    L13:
-        if (r8 == q92.ON_DESTROY) goto L15;
-        return;
-    L15:
-        if (rd1.n() == false) goto L17;
-        Log.v("FragmentNavigator", "Marking transition complete for entry " + r2 + " due to fragment " + r7 + " view lifecycle reaching DESTROYED");
-    L17:
-        r9.b().b(r2);
-        return;
-    L19:
-        a93 r10 = (a93) r6;
-        l70 r3 = (l70) r1;
-        if (r8 != q92.ON_CREATE) goto L24;
-        OnBackInvokedDispatcher r11 = n3.j(r3);
-        r11.getClass();
-        r10.c(r11);
-        return;
+    public final void b(ba2 ba2Var, q92 q92Var) {
+        int i = this.n;
+        Object obj = this.p;
+        Object obj2 = this.o;
+        switch (i) {
+            case 0:
+                a93 a93Var = (a93) obj2;
+                l70 l70Var = (l70) obj;
+                if (q92Var == q92.ON_CREATE) {
+                    OnBackInvokedDispatcher onBackInvokedDispatcher = l70Var.getOnBackInvokedDispatcher();
+                    onBackInvokedDispatcher.getClass();
+                    a93Var.c(onBackInvokedDispatcher);
+                }
+                break;
+            default:
+                rd1 rd1Var = (rd1) obj2;
+                a23 a23Var = (a23) obj;
+                a23Var.getClass();
+                if (q92Var == q92.ON_RESUME && ((List) rd1Var.b().e.n.getValue()).contains(a23Var)) {
+                    if (rd1.n()) {
+                        Log.v("FragmentNavigator", "Marking transition complete for entry " + a23Var + " due to fragment " + ba2Var + " view lifecycle reaching RESUMED");
+                    }
+                    rd1Var.b().b(a23Var);
+                }
+                if (q92Var == q92.ON_DESTROY) {
+                    if (rd1.n()) {
+                        Log.v("FragmentNavigator", "Marking transition complete for entry " + a23Var + " due to fragment " + ba2Var + " view lifecycle reaching DESTROYED");
+                    }
+                    rd1Var.b().b(a23Var);
+                }
+                break;
+        }
     }
 }

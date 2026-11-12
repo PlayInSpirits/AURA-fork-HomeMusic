@@ -18,139 +18,126 @@ public final /* synthetic */ class a62 implements bp3, cp3, p5 {
     public final /* synthetic */ int n;
     public final /* synthetic */ h62 o;
 
-    public /* synthetic */ a62(h62 r1, int r2) {
-        this.n = r2;
-        this.o = r1;
+    public /* synthetic */ a62(h62 h62Var, int i) {
+        this.n = i;
+        this.o = h62Var;
     }
 
     @Override // defpackage.bp3
-    public boolean g(Preference r9, Object r10) {
-        int r11 = this.n;
-        h62 r8 = this.o;
-        switch(r11) {
-            case 0: goto L14;
-            default: goto L5;
-        };
-    L5:
-        if (h12.c(r10, Boolean.TRUE) == false) goto L10;
-        boolean r12 = LanReceiverService.y;
-        if (LanReceiverService.y == false) goto L11;
-        LanReceiverService.B.clear();
-        LanReceiverService.A = SystemClock.elapsedRealtime() + 120000;
-    L11:
-        r8.p0();
-        return false;
-    L10:
-        boolean r13 = LanReceiverService.y;
-        LanReceiverService.A = 0;
-        LanReceiverService.B.clear();
-        goto L11
-    L14:
-        if (h12.c(r10, Boolean.TRUE) == true) goto L16;
-        r8.P0 = 0;
-        r8.Q0 = true;
-        boolean r14 = LanReceiverService.y;
-        LanReceiverService.A = 0;
-        LanReceiverService.B.clear();
-        Context r15 = r8.t0;
-        if (r15 == null) goto L51;
-        Context r2 = r8.t0;
-        if (r2 == null) goto L49;
-        r15.stopService(new Intent(r2, LanReceiverService.class));
-        r8.p0();
-    L48:
-        return false;
-    L49:
-        h12.Q("app");
-        throw null;
-    L51:
-        h12.Q("app");
-        throw null;
-    L16:
-        if (r8.P0 != 0) goto L48;
-        String r16 = ud3.D();
-        if (r16 != null) goto L21;
-    L42:
-        r8.s0(R.string.lan_login_first);
-        goto L48
-    L21:
-        if (qm4.u0(r16) == true) goto L42;
-        r8.V0 = true;
-        ArrayList r17 = new ArrayList();
-        int r1 = Build.VERSION.SDK_INT;
-        if (r1 < 33) goto L27;
-        r17.add("android.permission.POST_NOTIFICATIONS");
-    L27:
-        if (r1 < 37) goto L29;
-        r17.add("android.permission.ACCESS_LOCAL_NETWORK");
-    L29:
-        ArrayList r3 = new ArrayList();
-        int r4 = r17.size();
-        int r5 = 0;
-    L30:
-        if (r5 >= r4) goto L39;
-        Object r6 = r17.get(r5);
-        r5 = r5 + 1;
-        String r7 = (String) r6;
-        Context r18 = r8.t0;
-        if (r18 == null) goto L36;
-        if (ud3.c(r18, r7) == 0) goto L30;
-        r3.add(r6);
-        goto L30
-    L36:
-        h12.Q("app");
-        throw null;
-    L39:
-        if (r3.isEmpty() == false) goto L41;
-        r8.t0();
-        goto L48
-    L41:
-        r8.W0.a(r3.toArray(new String[0]));
-        goto L48
+    public boolean g(Preference preference, Object obj) {
+        int i = this.n;
+        h62 h62Var = this.o;
+        switch (i) {
+            case 0:
+                if (!h12.c(obj, Boolean.TRUE)) {
+                    h62Var.P0 = 0L;
+                    h62Var.Q0 = true;
+                    boolean z = LanReceiverService.y;
+                    LanReceiverService.A = 0L;
+                    LanReceiverService.B.clear();
+                    Context context = h62Var.t0;
+                    if (context == null) {
+                        h12.Q("app");
+                        throw null;
+                    }
+                    Context context2 = h62Var.t0;
+                    if (context2 == null) {
+                        h12.Q("app");
+                        throw null;
+                    }
+                    context.stopService(new Intent(context2, (Class<?>) LanReceiverService.class));
+                    h62Var.p0();
+                } else if (h62Var.P0 == 0) {
+                    String strD = ud3.D();
+                    if (strD == null || qm4.u0(strD)) {
+                        h62Var.s0(R.string.lan_login_first);
+                    } else {
+                        h62Var.V0 = true;
+                        ArrayList arrayList = new ArrayList();
+                        int i2 = Build.VERSION.SDK_INT;
+                        if (i2 >= 33) {
+                            arrayList.add("android.permission.POST_NOTIFICATIONS");
+                        }
+                        if (i2 >= 37) {
+                            arrayList.add("android.permission.ACCESS_LOCAL_NETWORK");
+                        }
+                        ArrayList arrayList2 = new ArrayList();
+                        int size = arrayList.size();
+                        int i3 = 0;
+                        while (i3 < size) {
+                            Object obj2 = arrayList.get(i3);
+                            i3++;
+                            String str = (String) obj2;
+                            Context context3 = h62Var.t0;
+                            if (context3 == null) {
+                                h12.Q("app");
+                                throw null;
+                            }
+                            if (ud3.c(context3, str) != 0) {
+                                arrayList2.add(obj2);
+                            }
+                        }
+                        if (arrayList2.isEmpty()) {
+                            h62Var.t0();
+                        } else {
+                            h62Var.W0.a(arrayList2.toArray(new String[0]));
+                        }
+                    }
+                }
+                return false;
+            default:
+                if (h12.c(obj, Boolean.TRUE)) {
+                    boolean z2 = LanReceiverService.y;
+                    if (LanReceiverService.y) {
+                        LanReceiverService.B.clear();
+                        LanReceiverService.A = SystemClock.elapsedRealtime() + 120000;
+                    }
+                } else {
+                    boolean z3 = LanReceiverService.y;
+                    LanReceiverService.A = 0L;
+                    LanReceiverService.B.clear();
+                }
+                h62Var.p0();
+                return false;
+        }
     }
 
     @Override // defpackage.p5
-    public void i(Object r2) {
-        Map r3 = (Map) r2;
-        r3.getClass();
-        h62 r1 = this.o;
-        if (r1.L0 == true) goto L5;
-        return;
-    L5:
-        Collection r4 = r3.values();
-        if ((r4 instanceof Collection) == true) goto L8;
-    L10:
-        Iterator r5 = r4.iterator();
-    L12:
-        if (r5.hasNext() == false) goto L18;
-        if (((Boolean) r5.next()).booleanValue() == true) goto L12;
-        r1.s0(R.string.lan_permission);
-        return;
-    L18:
-        if (r1.V0 == false) goto L21;
-        r1.t0();
-        return;
-    L21:
-        r1.q0();
-        return;
-    L8:
-        if (r4.isEmpty() == false) goto L10;
-        goto L10
+    public void i(Object obj) {
+        Map map = (Map) obj;
+        map.getClass();
+        h62 h62Var = this.o;
+        if (h62Var.L0) {
+            Collection collectionValues = map.values();
+            if (!(collectionValues instanceof Collection) || !collectionValues.isEmpty()) {
+                Iterator it = collectionValues.iterator();
+                while (it.hasNext()) {
+                    if (!((Boolean) it.next()).booleanValue()) {
+                        h62Var.s0(R.string.lan_permission);
+                        return;
+                    }
+                }
+            }
+            if (h62Var.V0) {
+                h62Var.t0();
+            } else {
+                h62Var.q0();
+            }
+        }
     }
 
     @Override // defpackage.cp3
-    public void j(Preference r1) {
-        int r2 = this.n;
-        h62 r0 = this.o;
-        switch(r2) {
-            case 2: goto L6;
-            default: goto L4;
-        };
-    L4:
-        u52.f();
-        r0.s0(R.string.lan_disconnected);
-        return;
-    L6:
-        r0.q0();
+    public void j(Preference preference) {
+        int i = this.n;
+        h62 h62Var = this.o;
+        switch (i) {
+            case 2:
+                h62Var.q0();
+                break;
+            default:
+                u52.f();
+                h62Var.s0(R.string.lan_disconnected);
+                break;
+        }
     }
 }

@@ -6,17 +6,19 @@ public abstract class nv {
     public static volatile int a = 1;
 
     static {
-        Class.forName("org.osgi.framework.BundleEvent");     // Catch: Exception -> L4
-        return;
-    L5:
-        if (a != 1) goto L15;
-        Class.forName("org.brotli.dec.BrotliInputStream");     // Catch: Throwable -> L8
-        int r0 = 2;
-    L9:
-        a = r0;
-        return;
-    L8:
-        r0 = 3;
-        goto L9
+        int i;
+        try {
+            Class.forName("org.osgi.framework.BundleEvent");
+        } catch (Exception unused) {
+            if (a == 1) {
+                try {
+                    Class.forName("org.brotli.dec.BrotliInputStream");
+                    i = 2;
+                } catch (Exception | NoClassDefFoundError unused2) {
+                    i = 3;
+                }
+                a = i;
+            }
+        }
     }
 }

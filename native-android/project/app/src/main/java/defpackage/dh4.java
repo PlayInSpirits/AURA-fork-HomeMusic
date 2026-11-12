@@ -7,12 +7,12 @@ import androidx.compose.runtime.snapshots.SnapshotApplyConflictException;
 public final class dh4 extends jz4 {
     public final a13 j;
 
-    public dh4(a13 r1) {
-        this.j = r1;
+    public dh4(a13 a13Var) {
+        this.j = a13Var;
     }
 
     @Override // defpackage.jz4
-    public final void l() {
+    public final void l() throws SnapshotApplyConflictException {
         this.j.c();
         throw new SnapshotApplyConflictException();
     }

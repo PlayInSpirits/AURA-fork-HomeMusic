@@ -11,7 +11,7 @@ import java.util.Date;
 /* JADX INFO: loaded from: classes.dex */
 public class ArtistID3 implements Parcelable {
     public static final int $stable = 8;
-    public static final Parcelable.Creator<ArtistID3> CREATOR = null;
+    public static final Parcelable.Creator<ArtistID3> CREATOR = new w4(6);
     private int albumCount;
 
     @ka4("coverArt")
@@ -20,27 +20,8 @@ public class ArtistID3 implements Parcelable {
     private String name;
     private Date starred;
 
-    static {
-        CREATOR = new w4(6);
-    }
-
-    public /* synthetic */ ArtistID3(String r2, String r3, String r4, int r5, Date r6, int r7, xj0 r8) {
-        if ((r7 & 1) == 0) goto L6;
-        r2 = null;
-    L6:
-        if ((r7 & 2) == 0) goto L9;
-        r3 = null;
-    L9:
-        if ((r7 & 4) == 0) goto L12;
-        r4 = null;
-    L12:
-        if ((r7 & 8) == 0) goto L15;
-        r5 = 0;
-    L15:
-        if ((r7 & 16) == 0) goto L17;
-        r6 = null;
-    L17:
-        this(r2, r3, r4, r5, r6);
+    public /* synthetic */ ArtistID3(String str, String str2, String str3, int i, Date date, int i2, xj0 xj0Var) {
+        this((i2 & 1) != 0 ? null : str, (i2 & 2) != 0 ? null : str2, (i2 & 4) != 0 ? null : str3, (i2 & 8) != 0 ? 0 : i, (i2 & 16) != 0 ? null : date);
     }
 
     @Override // android.os.Parcelable
@@ -68,24 +49,24 @@ public class ArtistID3 implements Parcelable {
         return this.starred;
     }
 
-    public final void setAlbumCount(int r1) {
-        this.albumCount = r1;
+    public final void setAlbumCount(int i) {
+        this.albumCount = i;
     }
 
-    public final void setCoverArtId(String r1) {
-        this.coverArtId = r1;
+    public final void setCoverArtId(String str) {
+        this.coverArtId = str;
     }
 
-    public final void setId(String r1) {
-        this.id = r1;
+    public final void setId(String str) {
+        this.id = str;
     }
 
-    public final void setName(String r1) {
-        this.name = r1;
+    public final void setName(String str) {
+        this.name = str;
     }
 
-    public final void setStarred(Date r1) {
-        this.starred = r1;
+    public final void setStarred(Date date) {
+        this.starred = date;
     }
 
     public final ArtistID3 strippedForNav() {
@@ -93,29 +74,24 @@ public class ArtistID3 implements Parcelable {
     }
 
     @Override // android.os.Parcelable
-    public void writeToParcel(Parcel r1, int r2) {
-        r1.getClass();
-        r1.writeString(this.id);
-        r1.writeString(this.name);
-        r1.writeString(this.coverArtId);
-        r1.writeInt(this.albumCount);
-        r1.writeSerializable(this.starred);
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.getClass();
+        parcel.writeString(this.id);
+        parcel.writeString(this.name);
+        parcel.writeString(this.coverArtId);
+        parcel.writeInt(this.albumCount);
+        parcel.writeSerializable(this.starred);
     }
 
-    public ArtistID3(String r1, String r2, String r3, int r4, Date r5) {
-        this.id = r1;
-        this.name = r2;
-        this.coverArtId = r3;
-        this.albumCount = r4;
-        this.starred = r5;
+    public ArtistID3(String str, String str2, String str3, int i, Date date) {
+        this.id = str;
+        this.name = str2;
+        this.coverArtId = str3;
+        this.albumCount = i;
+        this.starred = date;
     }
 
     public ArtistID3() {
-        String r1 = null;
-        String r2 = null;
-        String r3 = null;
-        int r4 = 0;
-        Date r5 = null;
-        this(r1, r2, r3, r4, r5, 31, null);
+        this(null, null, null, 0, null, 31, null);
     }
 }

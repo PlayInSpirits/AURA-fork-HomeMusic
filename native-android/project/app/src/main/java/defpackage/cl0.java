@@ -7,25 +7,13 @@ import java.util.Map;
 public final /* synthetic */ class cl0 implements ro3 {
     public final /* synthetic */ int n;
 
-    public /* synthetic */ cl0(int r1) {
-        this.n = r1;
-    }
-
     @Override // defpackage.ro3
-    public final boolean apply(Object r1) {
-        switch(this.n) {
-            case 0: goto L10;
-            default: goto L5;
-        };
-    L5:
-        if (((String) r1) == null) goto L7;
-        return true;
-    L7:
-        return false;
-    L10:
-        if (((Map.Entry) r1).getKey() == null) goto L12;
-        return true;
-    L12:
-        return false;
+    public final boolean apply(Object obj) {
+        switch (this.n) {
+            case 0:
+                return ((Map.Entry) obj).getKey() != null;
+            default:
+                return ((String) obj) != null;
+        }
     }
 }

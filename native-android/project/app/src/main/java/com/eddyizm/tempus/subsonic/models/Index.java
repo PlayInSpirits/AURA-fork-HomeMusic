@@ -12,9 +12,6 @@ public final class Index {
     private List<Artist> artists;
     private String name;
 
-    public Index() {
-    }
-
     public final List<Artist> getArtists() {
         return this.artists;
     }
@@ -23,11 +20,11 @@ public final class Index {
         return this.name;
     }
 
-    public final void setArtists(List<Artist> r1) {
-        this.artists = r1;
+    public final void setArtists(List<Artist> list) {
+        this.artists = list;
     }
 
-    public final void setName(String r1) {
-        this.name = r1;
+    public final void setName(String str) {
+        this.name = str;
     }
 }

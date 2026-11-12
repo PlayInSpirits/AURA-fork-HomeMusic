@@ -5,7 +5,7 @@ package defpackage;
 public final class lr3 {
     public final tu[] a;
 
-    public lr3(tu... r1) {
-        this.a = r1;
+    public lr3(tu... tuVarArr) {
+        this.a = tuVarArr;
     }
 }

@@ -13,77 +13,64 @@ public abstract class rx1 {
     public Object b;
     public final Serializable c;
 
-    public rx1(Class r36) {
-        UUID r1 = UUID.randomUUID();
-        r1.getClass();
-        this.a = r1;
-        String r3 = ((UUID) this.a).toString();
-        r3.getClass();
-        this.b = new dd5(r3, 0, r36.getName(), null, null, null, 0, 0, 0, null, 0, 0, 0, 0, 0, 0, false, 0, 0, 0, 0, 0, null, 16777210);
-        String[] r2 = {r36.getName()};
-        LinkedHashSet r4 = new LinkedHashSet(lg2.W(1));
-        r4.add(r2[0]);
-        this.c = r4;
+    public rx1(Class cls) {
+        UUID uuidRandomUUID = UUID.randomUUID();
+        uuidRandomUUID.getClass();
+        this.a = uuidRandomUUID;
+        String string = ((UUID) this.a).toString();
+        string.getClass();
+        this.b = new dd5(string, 0, cls.getName(), (String) null, (oh0) null, (oh0) null, 0L, 0L, 0L, (mc0) null, 0, 0, 0L, 0L, 0L, 0L, false, 0, 0, 0L, 0, 0, (String) null, 16777210);
+        String[] strArr = {cls.getName()};
+        LinkedHashSet linkedHashSet = new LinkedHashSet(lg2.W(1));
+        linkedHashSet.add(strArr[0]);
+        this.c = linkedHashSet;
     }
 
     public df1 a() {
-        s24 r0 = (s24) this.a;
-        r0.a();
-        if (((AtomicBoolean) this.b).compareAndSet(false, true) == true) goto L5;
-        String r4 = e();
-        r0.getClass();
-        r0.a();
-        r0.b();
-        return r0.j().z().j(r4);
-    L5:
-        return (df1) ((rp4) this.c).getValue();
+        s24 s24Var = (s24) this.a;
+        s24Var.a();
+        if (((AtomicBoolean) this.b).compareAndSet(false, true)) {
+            return (df1) ((rp4) this.c).getValue();
+        }
+        String strE = e();
+        s24Var.getClass();
+        s24Var.a();
+        s24Var.b();
+        return s24Var.j().z().j(strE);
     }
 
     public bd5 b() {
-        bd5 r1 = c();
-        mc0 r2 = ((dd5) this.b).j;
-        if (r2.i.isEmpty() == true) goto L5;
-    L12:
-        boolean r3 = true;
-    L13:
-        dd5 r4 = (dd5) this.b;
-        if (r4.q == false) goto L25;
-        if (r3 == false) goto L18;
-        kf2.n("Expedited jobs only support network and storage constraints");
-        return null;
-    L18:
-        if (r4.g <= 0) goto L25;
-        kf2.n("Expedited jobs cannot be delayed");
-        return null;
-    L25:
-        if (r4.x != null) goto L35;
-        List r5 = qm4.C0(r4.c, new String[]{"."}, 6);
-        if (r5.size() != 1) goto L29;
-        String r6 = (String) r5.get(0);
-    L31:
-        if (r6.length() <= 127) goto L34;
-        r6 = qm4.J0(127, r6);
-    L34:
-        r4.x = r6;
-        goto L35
-    L29:
-        r6 = (String) q40.C0(r5);
-    L35:
-        UUID r7 = UUID.randomUUID();
-        r7.getClass();
-        this.a = r7;
-        String r8 = r7.toString();
-        r8.getClass();
-        dd5 r9 = (dd5) this.b;
-        r9.getClass();
-        this.b = new dd5(r8, r9.b, r9.c, r9.d, new oh0(r9.e), new oh0(r9.f), r9.g, r9.h, r9.i, new mc0(r9.j), r9.k, r9.l, r9.m, r9.n, r9.o, r9.p, r9.q, r9.r, r9.s, r9.u, r9.v, r9.w, r9.x, 524288);
-        return r1;
-    L5:
-        if (r2.e == true) goto L12;
-        if (r2.c == true) goto L12;
-        if (r2.d == true) goto L12;
-        r3 = false;
-        goto L13
+        bd5 bd5VarC = c();
+        mc0 mc0Var = ((dd5) this.b).j;
+        boolean z = !mc0Var.i.isEmpty() || mc0Var.e || mc0Var.c || mc0Var.d;
+        dd5 dd5Var = (dd5) this.b;
+        if (dd5Var.q) {
+            if (z) {
+                kf2.n("Expedited jobs only support network and storage constraints");
+                return null;
+            }
+            if (dd5Var.g > 0) {
+                kf2.n("Expedited jobs cannot be delayed");
+                return null;
+            }
+        }
+        if (dd5Var.x == null) {
+            List listC0 = qm4.C0(dd5Var.c, new String[]{"."}, 6);
+            String strJ0 = listC0.size() == 1 ? (String) listC0.get(0) : (String) q40.C0(listC0);
+            if (strJ0.length() > 127) {
+                strJ0 = qm4.J0(127, strJ0);
+            }
+            dd5Var.x = strJ0;
+        }
+        UUID uuidRandomUUID = UUID.randomUUID();
+        uuidRandomUUID.getClass();
+        this.a = uuidRandomUUID;
+        String string = uuidRandomUUID.toString();
+        string.getClass();
+        dd5 dd5Var2 = (dd5) this.b;
+        dd5Var2.getClass();
+        this.b = new dd5(string, dd5Var2.b, dd5Var2.c, dd5Var2.d, new oh0(dd5Var2.e), new oh0(dd5Var2.f), dd5Var2.g, dd5Var2.h, dd5Var2.i, new mc0(dd5Var2.j), dd5Var2.k, dd5Var2.l, dd5Var2.m, dd5Var2.n, dd5Var2.o, dd5Var2.p, dd5Var2.q, dd5Var2.r, dd5Var2.s, dd5Var2.u, dd5Var2.v, dd5Var2.w, dd5Var2.x, 524288);
+        return bd5VarC;
     }
 
     public abstract bd5 c();
@@ -94,13 +81,13 @@ public abstract class rx1 {
 
     public abstract void f();
 
-    public abstract void g(hq r1);
+    public abstract void g(hq hqVar);
 
-    public void h(df1 r2) {
-        r2.getClass();
-        if (r2 != ((df1) ((rp4) this.c).getValue())) goto L6;
-        ((AtomicBoolean) this.b).set(false);
-        return;
+    public void h(df1 df1Var) {
+        df1Var.getClass();
+        if (df1Var == ((df1) ((rp4) this.c).getValue())) {
+            ((AtomicBoolean) this.b).set(false);
+        }
     }
 
     public abstract void i();
@@ -110,14 +97,14 @@ public abstract class rx1 {
     public abstract void k();
 
     /* JADX WARN: Type inference failed for: r2v1, types: [int[], java.io.Serializable] */
-    public rx1(int r2) {
-        this.b = new float[r2 * 2];
-        this.c = new int[r2];
+    public rx1(int i) {
+        this.b = new float[i * 2];
+        this.c = new int[i];
     }
 
-    public rx1(s24 r2) {
-        r2.getClass();
-        this.a = r2;
+    public rx1(s24 s24Var) {
+        s24Var.getClass();
+        this.a = s24Var;
         this.b = new AtomicBoolean(false);
         this.c = new rp4(new wc(25, this));
     }

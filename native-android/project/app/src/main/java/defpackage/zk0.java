@@ -18,7 +18,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 /* JADX INFO: loaded from: classes.dex */
 public final class zk0 implements hd2 {
     public final Uri n;
-    public final i61 o;
+    public final i61 o = new i61("DefaultHlsPlaylistTracker:MediaPlaylist");
     public final ci0 p;
     public ym1 q;
     public long r;
@@ -30,439 +30,679 @@ public final class zk0 implements hd2 {
     public boolean x;
     public final /* synthetic */ al0 y;
 
-    public zk0(al0 r2, Uri r3) {
-        this.y = r2;
-        this.n = r3;
-        this.o = new i61("DefaultHlsPlaylistTracker:MediaPlaylist");
-        this.p = ((bi0) r2.n.o).m();
+    public zk0(al0 al0Var, Uri uri) {
+        this.y = al0Var;
+        this.n = uri;
+        this.p = ((bi0) al0Var.n.o).m();
     }
 
-    public static boolean a(zk0 r8, long r9) {
-        r8.u = SystemClock.elapsedRealtime() + r9;
-        Uri r10 = r8.n;
-        al0 r11 = r8.y;
-        if (r10.equals(r11.x) == false) goto L12;
-        List r12 = r11.w.e;
-        int r0 = r12.size();
-        long r1 = SystemClock.elapsedRealtime();
-        int r4 = 0;
-    L5:
-        if (r4 >= r0) goto L11;
-        zk0 r5 = (zk0) r11.q.get(((bn1) r12.get(r4)).a);
-        r5.getClass();
-        if (r1 > r5.u) goto L8;
-        r4 = r4 + 1;
-        goto L5
-    L8:
-        Uri r13 = r5.n;
-        r11.x = r13;
-        r5.f(r11.c(r13));
-        return true;
-    L11:
+    public static boolean a(zk0 zk0Var, long j) {
+        zk0Var.u = SystemClock.elapsedRealtime() + j;
+        Uri uri = zk0Var.n;
+        al0 al0Var = zk0Var.y;
+        if (!uri.equals(al0Var.x)) {
+            return true;
+        }
+        List list = al0Var.w.e;
+        int size = list.size();
+        long jElapsedRealtime = SystemClock.elapsedRealtime();
+        for (int i = 0; i < size; i++) {
+            zk0 zk0Var2 = (zk0) al0Var.q.get(((bn1) list.get(i)).a);
+            zk0Var2.getClass();
+            if (jElapsedRealtime > zk0Var2.u) {
+                Uri uri2 = zk0Var2.n;
+                al0Var.x = uri2;
+                zk0Var2.f(al0Var.c(uri2));
+                return true;
+            }
+        }
         return false;
-    L12:
-        return true;
     }
 
     @Override // defpackage.hd2
-    public final void b(jd2 r12, long r13, long r15, boolean r17) {
-        de3 r14 = (de3) r12;
-        long r1 = r14.a;
-        ii0 r2 = r14.b;
-        yl4 r16 = r14.d;
-        ed2 r0 = new ed2(r2, r16.p, r16.q, r13, r15, r16.o);
-        al0 r11 = this.y;
-        r11.p.getClass();
-        r11.s.q(r0, 4, -1, null, 0, null, -9223372036854775807L, -9223372036854775807L);
+    public final void b(jd2 jd2Var, long j, long j2, boolean z) {
+        de3 de3Var = (de3) jd2Var;
+        long j3 = de3Var.a;
+        ii0 ii0Var = de3Var.b;
+        yl4 yl4Var = de3Var.d;
+        ed2 ed2Var = new ed2(ii0Var, yl4Var.p, yl4Var.q, j, j2, yl4Var.o);
+        al0 al0Var = this.y;
+        al0Var.p.getClass();
+        al0Var.s.q(ed2Var, 4, -1, null, 0, null, -9223372036854775807L, -9223372036854775807L);
     }
 
     public final Uri c() {
-        ym1 r0 = this.q;
-        Uri r1 = this.n;
-        if (r0 == null) goto L28;
-        xm1 r2 = r0.v;
-        if (r2.a == (-9223372036854775807L)) goto L7;
-    L9:
-        Uri.Builder r3 = r1.buildUpon();
-        ym1 r4 = this.q;
-        if (r4.v.e == false) goto L19;
-        r3.appendQueryParameter("_HLS_msn", String.valueOf(r4.k + ((long) r4.r.size())));
-        ym1 r5 = this.q;
-        if (r5.n == (-9223372036854775807L)) goto L19;
-        yw1 r6 = r5.s;
-        int r7 = r6.size();
-        if (r6.isEmpty() == false) goto L16;
-    L18:
-        r3.appendQueryParameter("_HLS_part", String.valueOf(r7));
-        goto L19
-    L16:
-        if (((tm1) te5.w(r6)).z == false) goto L18;
-        r7 = r7 - 1;
-    L19:
-        xm1 r8 = this.q.v;
-        if (r8.a == (-9223372036854775807L)) goto L27;
-        if (r8.b == false) goto L24;
-        String r9 = "v2";
-    L25:
-        r3.appendQueryParameter("_HLS_skip", r9);
-        goto L27
-    L24:
-        r9 = "YES";
-    L27:
-        return r3.build();
-    L7:
-        if (r2.e == true) goto L9;
-    L28:
-        return r1;
+        ym1 ym1Var = this.q;
+        Uri uri = this.n;
+        if (ym1Var != null) {
+            xm1 xm1Var = ym1Var.v;
+            if (xm1Var.a != -9223372036854775807L || xm1Var.e) {
+                Uri.Builder builderBuildUpon = uri.buildUpon();
+                ym1 ym1Var2 = this.q;
+                if (ym1Var2.v.e) {
+                    builderBuildUpon.appendQueryParameter("_HLS_msn", String.valueOf(ym1Var2.k + ((long) ym1Var2.r.size())));
+                    ym1 ym1Var3 = this.q;
+                    if (ym1Var3.n != -9223372036854775807L) {
+                        yw1 yw1Var = ym1Var3.s;
+                        int size = yw1Var.size();
+                        if (!yw1Var.isEmpty() && ((tm1) te5.w(yw1Var)).z) {
+                            size--;
+                        }
+                        builderBuildUpon.appendQueryParameter("_HLS_part", String.valueOf(size));
+                    }
+                }
+                xm1 xm1Var2 = this.q.v;
+                if (xm1Var2.a != -9223372036854775807L) {
+                    builderBuildUpon.appendQueryParameter("_HLS_skip", xm1Var2.b ? "v2" : "YES");
+                }
+                return builderBuildUpon.build();
+            }
+        }
+        return uri;
     }
 
-    public final void d(boolean r1) {
-        if (r1 == false) goto L4;
-        Uri r2 = c();
-    L5:
-        f(r2);
-        return;
-    L4:
-        r2 = this.n;
-        goto L5
+    public final void d(boolean z) {
+        f(z ? c() : this.n);
     }
 
-    public final void e(Uri r17) {
-        al0 r1 = this.y;
-        ce3 r2 = r1.o.e(r1.w, this.q);
-        Map r9 = Collections.EMPTY_MAP;
-        rr2.s(r17, "The uri must be set.");
-        ii0 r3 = new ii0(r17, 0, 1, null, r9, 0, -1, null, 1);
-        de3 r4 = new de3(this.p, r3, r2);
-        int r5 = r1.p.D(r4.c);
-        this.o.u(r4, this, r5);
+    public final void e(Uri uri) {
+        al0 al0Var = this.y;
+        ce3 ce3VarE = al0Var.o.e(al0Var.w, this.q);
+        Map map = Collections.EMPTY_MAP;
+        rr2.s(uri, "The uri must be set.");
+        de3 de3Var = new de3(this.p, new ii0(uri, 0L, 1, null, map, 0L, -1L, null, 1), ce3VarE);
+        this.o.u(de3Var, this, al0Var.p.D(de3Var.c));
     }
 
-    public final void f(Uri r8) {
-        this.u = 0;
-        if (this.v == true) goto L15;
-        i61 r0 = this.o;
-        if (r0.l() == false) goto L7;
-        return;
-    L7:
-        if (((IOException) r0.q) == null) goto L9;
-        return;
-    L9:
-        long r1 = SystemClock.elapsedRealtime();
-        long r2 = this.t;
-        if (r1 >= r2) goto L13;
-        this.v = true;
-        this.y.u.postDelayed(new k6(19, this, r8), r2 - r1);
-        return;
-    L13:
-        e(r8);
-        return;
+    public final void f(Uri uri) {
+        this.u = 0L;
+        if (this.v) {
+            return;
+        }
+        i61 i61Var = this.o;
+        if (i61Var.l() || ((IOException) i61Var.q) != null) {
+            return;
+        }
+        long jElapsedRealtime = SystemClock.elapsedRealtime();
+        long j = this.t;
+        if (jElapsedRealtime >= j) {
+            e(uri);
+        } else {
+            this.v = true;
+            this.y.u.postDelayed(new k6(19, this, uri), j - jElapsedRealtime);
+        }
     }
 
     @Override // defpackage.hd2
-    public final void g(jd2 r17, long r18, long r20) {
-        de3 r1 = (de3) r17;
-        dn1 r2 = (dn1) r1.f;
-        ii0 r4 = r1.b;
-        yl4 r3 = r1.d;
-        ed2 r5 = new ed2(r4, r3.p, r3.q, r18, r20, r3.o);
-        if ((r2 instanceof ym1) == false) goto L5;
-        h((ym1) r2, r5);
-        this.y.s.r(r5, 4, -1, null, 0, null, -9223372036854775807L, -9223372036854775807L);
-    L6:
+    public final void g(jd2 jd2Var, long j, long j2) {
+        de3 de3Var = (de3) jd2Var;
+        dn1 dn1Var = (dn1) de3Var.f;
+        ii0 ii0Var = de3Var.b;
+        yl4 yl4Var = de3Var.d;
+        ed2 ed2Var = new ed2(ii0Var, yl4Var.p, yl4Var.q, j, j2, yl4Var.o);
+        if (dn1Var instanceof ym1) {
+            h((ym1) dn1Var, ed2Var);
+            this.y.s.r(ed2Var, 4, -1, null, 0, null, -9223372036854775807L, -9223372036854775807L);
+        } else {
+            ParserException parserExceptionB = ParserException.b("Loaded playlist has unexpected type.");
+            this.w = parserExceptionB;
+            this.y.s.s(ed2Var, 4, -1, null, 0, null, -9223372036854775807L, -9223372036854775807L, parserExceptionB, true);
+        }
         this.y.p.getClass();
-        return;
-    L5:
-        ParserException r14 = ParserException.b("Loaded playlist has unexpected type.");
-        this.w = r14;
-        this.y.s.s(r5, 4, -1, null, 0, null, -9223372036854775807L, -9223372036854775807L, r14, true);
-        goto L6
     }
 
-    public final void h(ym1 r71, ed2 r72) {
-        ym1 r2 = this.q;
-        long r3 = SystemClock.elapsedRealtime();
-        this.r = r3;
-        al0 r5 = this.y;
-        CopyOnWriteArrayList r6 = r5.r;
-        if (r2 == null) goto L21;
-        long r9 = r71.k;
-        long r11 = r2.k;
-        if (r9 > r11) goto L12;
-        if (r9 >= r11) goto L9;
-    L8:
-        boolean r10 = false;
-    L22:
-        long r12 = r71.k;
-        yw1 r13 = r71.r;
-        long r39 = 0;
-        if (r10 == false) goto L25;
-        r6 = r6;
-        boolean r68 = true;
-        if (r71.p == false) goto L36;
-        long r7 = r71.h;
-    L35:
-        long r19 = r7;
-    L54:
-        if (r71.i == false) goto L56;
-        int r22 = r71.j;
-    L69:
-        IOException r8 = null;
-        ym1 r14 = new ym1(r71.d, r71.a, r71.b, r71.e, r71.g, r19, true, r22, r71.k, r71.l, r71.m, r71.n, r71.c, r71.o, r71.p, r71.q, r13, r71.s, r71.v, r71.t, r71.w);
-    L70:
-        this.q = r14;
-        Uri r15 = this.n;
-        if (r14 == r2) goto L83;
-        this.w = r8;
-        this.s = r3;
-        if (r15.equals(r5.x) == true) goto L75;
-    L78:
-        Iterator r1 = r6.iterator();
-    L80:
-        if (r1.hasNext() == false) goto L97;
-        ((gn1) r1.next()).a();
-    L97:
-        ym1 r4 = this.q;
-        xm1 r16 = r4.v;
-        long r17 = r4.m;
-        if (r16.e == true) goto L102;
-        if (r4 == r2) goto L101;
-    L100:
-        r39 = r17;
-    L107:
-        this.t = (f35.i0(r39) + r3) - r72.e;
-        if (this.q.o == false) goto L110;
-        return;
-    L110:
-        if (r15.equals(r5.x) == false) goto L112;
-    L113:
-        f(c());
-        return;
-    L112:
-        if (this.x == true) goto L113;
-        return;
-    L101:
-        r17 = r17 / 2;
-        goto L100
-    L102:
-        if (r4 != r2) goto L107;
-        long r18 = r4.n;
-        if (r18 == (-9223372036854775807L)) goto L106;
-        r39 = r18 / 2;
-        goto L107
-    L106:
-        r17 = r17 / 2;
-        goto L100
-    L75:
-        if (r5.y != null) goto L77;
-        r5.z = !r14.o;
-        r5.A = r14.h;
-    L77:
-        r5.y = r14;
-        r5.v.u(r14);
-        goto L78
-    L83:
-        if (r14.o == true) goto L97;
-        long r20 = r71.k + ((long) r71.r.size());
-        ym1 r21 = this.q;
-        if (r20 >= r21.k) goto L88;
-        IOException r110 = new HlsPlaylistTracker$PlaylistResetException();
-        boolean r23 = r68;
-    L92:
-        if (r110 == null) goto L97;
-        this.w = r110;
-        x7 r24 = new x7(r68 ? 1 : 0, 8, r110);
-        Iterator r25 = r6.iterator();
-    L95:
-        if (r25.hasNext() == false) goto L97;
-        ((gn1) r25.next()).b(r15, r24, r23);
-        goto L95
-    L88:
-        if ((r3 - this.s) <= (f35.i0(r21.m) * 3.5d)) goto L91;
-        r110 = new HlsPlaylistTracker$PlaylistStuckException();
-    L90:
-        r23 = false;
-        goto L92
-    L91:
-        r110 = r8;
-        goto L90
-    L56:
-        ym1 r26 = r5.y;
-        if (r26 == null) goto L59;
-        int r27 = r26.j;
-    L60:
-        if (r2 == null) goto L68;
-        int r28 = (int) (r12 - r2.k);
-        yw1 r29 = r2.r;
-        if (r28 >= r29.size()) goto L65;
-        vm1 r30 = (vm1) r29.get(r28);
-    L66:
-        if (r30 == null) goto L68;
-        r27 = (r2.j + r30.q) - ((vm1) r13.get(0)).q;
-        goto L68
-    L65:
-        r30 = null;
-    L68:
-        r22 = r27;
-        goto L69
-    L59:
-        r27 = 0;
-        goto L60
-    L36:
-        ym1 r31 = r5.y;
-        if (r31 == null) goto L39;
-        long r32 = r31.h;
-    L40:
-        if (r2 == null) goto L52;
-        long r33 = r2.h;
-        long r111 = r2.k;
-        yw1 r112 = r2.r;
-        int r34 = r112.size();
-        int r35 = (int) (r12 - r111);
-        if (r35 >= r112.size()) goto L45;
-        vm1 r36 = (vm1) r112.get(r35);
-    L46:
-        if (r36 == null) goto L50;
-        long r37 = r36.r;
-    L48:
-        r7 = r33 + r37;
-        goto L35
-    L50:
-        if (r34 != (r12 - r111)) goto L52;
-        r37 = r2.u;
-        goto L48
-    L45:
-        r36 = null;
-    L52:
-        r19 = r32;
-        goto L54
-    L39:
-        r32 = 0;
-        goto L40
-    L25:
-        if (r71.o == true) goto L27;
-        r68 = true;
-        r14 = r2;
-    L30:
-        r8 = null;
-        goto L70
-    L27:
-        if (r2.o == false) goto L29;
-        r14 = r2;
-        r6 = r6;
-        r8 = null;
-        r68 = true;
-        goto L70
-    L29:
-        r68 = true;
-        r14 = new ym1(r2.d, r2.a, r2.b, r2.e, r2.g, r2.h, r2.i, r2.j, r2.k, r2.l, r2.m, r2.n, r2.c, true, r2.p, r2.q, r2.r, r2.s, r2.v, r2.t, r2.w);
-        goto L30
-    L9:
-        int r38 = r71.r.size() - r2.r.size();
-        if (r38 == 0) goto L13;
-        if (r38 <= 0) goto L8;
-    L13:
-        int r40 = r71.s.size();
-        int r113 = r2.s.size();
-        if (r40 > r113) goto L12;
-        if (r40 != r113) goto L8;
-        if (r71.o == false) goto L8;
-        if (r2.o == true) goto L8;
-    L12:
-        r10 = true;
-        goto L22
-    L21:
-        r71.getClass();
-        goto L12
+    /* JADX WARN: Code duplicated, block: B:101:0x0248  */
+    /* JADX WARN: Code duplicated, block: B:102:0x024a A[DONT_INVERT] */
+    /* JADX WARN: Code duplicated, block: B:103:0x024c  */
+    /* JADX WARN: Code duplicated, block: B:105:0x0257  */
+    /* JADX WARN: Code duplicated, block: B:106:0x025b  */
+    /* JADX WARN: Code duplicated, block: B:109:0x026f  */
+    /* JADX WARN: Code duplicated, block: B:111:0x0277  */
+    /* JADX WARN: Code duplicated, block: B:117:? A[RETURN, SYNTHETIC] */
+    /* JADX WARN: Code duplicated, block: B:24:0x0057  */
+    /* JADX WARN: Code duplicated, block: B:26:0x005b  */
+    /* JADX WARN: Code duplicated, block: B:28:0x005f  */
+    /* JADX WARN: Code duplicated, block: B:29:0x0067  */
+    /* JADX WARN: Code duplicated, block: B:31:0x00c7  */
+    /* JADX WARN: Code duplicated, block: B:32:0x00cd  */
+    /* JADX WARN: Code duplicated, block: B:34:0x00d5  */
+    /* JADX WARN: Code duplicated, block: B:36:0x00da  */
+    /* JADX WARN: Code duplicated, block: B:38:0x00de  */
+    /* JADX WARN: Code duplicated, block: B:39:0x00e1  */
+    /* JADX WARN: Code duplicated, block: B:41:0x00e5  */
+    /* JADX WARN: Code duplicated, block: B:42:0x00e8  */
+    /* JADX WARN: Code duplicated, block: B:44:0x00ff  */
+    /* JADX WARN: Code duplicated, block: B:45:0x0106  */
+    /* JADX WARN: Code duplicated, block: B:47:0x0109  */
+    /* JADX WARN: Code duplicated, block: B:49:0x010e  */
+    /* JADX WARN: Code duplicated, block: B:51:0x0115  */
+    /* JADX WARN: Code duplicated, block: B:55:0x011e  */
+    /* JADX WARN: Code duplicated, block: B:56:0x0126  */
+    /* JADX WARN: Code duplicated, block: B:58:0x012a  */
+    /* JADX WARN: Code duplicated, block: B:59:0x012d  */
+    /* JADX WARN: Code duplicated, block: B:61:0x0130  */
+    /* JADX WARN: Code duplicated, block: B:62:0x0132  */
+    /* JADX WARN: Code duplicated, block: B:64:0x013e  */
+    /* JADX WARN: Code duplicated, block: B:65:0x0145  */
+    /* JADX WARN: Code duplicated, block: B:67:0x0148  */
+    /* JADX WARN: Code duplicated, block: B:72:0x01a7  */
+    /* JADX WARN: Code duplicated, block: B:74:0x01b3  */
+    /* JADX WARN: Code duplicated, block: B:76:0x01b7  */
+    /* JADX WARN: Code duplicated, block: B:81:0x01d2 A[LOOP:0: B:79:0x01cc->B:81:0x01d2, LOOP_END] */
+    /* JADX WARN: Code duplicated, block: B:82:0x01dc  */
+    /* JADX WARN: Code duplicated, block: B:84:0x01e0  */
+    /* JADX WARN: Code duplicated, block: B:86:0x01f2  */
+    /* JADX WARN: Code duplicated, block: B:87:0x01fa  */
+    /* JADX WARN: Code duplicated, block: B:89:0x020d  */
+    /* JADX WARN: Code duplicated, block: B:91:0x0214  */
+    /* JADX WARN: Code duplicated, block: B:93:0x0218  */
+    /* JADX WARN: Code duplicated, block: B:96:0x022d A[LOOP:1: B:94:0x0227->B:96:0x022d, LOOP_END] */
+    /* JADX WARN: Code duplicated, block: B:99:0x0243 A[DONT_INVERT] */
+    public final void h(ym1 ym1Var, ed2 ed2Var) {
+        boolean z;
+        long j;
+        yw1 yw1Var;
+        long j2;
+        boolean z2;
+        ym1 ym1Var2;
+        long j3;
+        long j4;
+        yw1 yw1Var2;
+        int size;
+        int i;
+        vm1 vm1Var;
+        long j5;
+        long j6;
+        long j7;
+        ym1 ym1Var3;
+        int i2;
+        int i3;
+        yw1 yw1Var3;
+        vm1 vm1Var2;
+        int i4;
+        ym1 ym1Var4;
+        IOException iOException;
+        Uri uri;
+        long size2;
+        ym1 ym1Var5;
+        IOException hlsPlaylistTracker$PlaylistStuckException;
+        boolean z3;
+        x7 x7Var;
+        Iterator it;
+        ym1 ym1Var6;
+        xm1 xm1Var;
+        long j8;
+        long j9;
+        Iterator it2;
+        int size3;
+        int size4;
+        int size5;
+        ym1 ym1Var7 = this.q;
+        long jElapsedRealtime = SystemClock.elapsedRealtime();
+        this.r = jElapsedRealtime;
+        al0 al0Var = this.y;
+        CopyOnWriteArrayList copyOnWriteArrayList = al0Var.r;
+        if (ym1Var7 != null) {
+            long j10 = ym1Var.k;
+            long j11 = ym1Var7.k;
+            z = j10 > j11 || (j10 >= j11 && ((size3 = ym1Var.r.size() - ym1Var7.r.size()) == 0 ? (size4 = ym1Var.s.size()) > (size5 = ym1Var7.s.size()) || (size4 == size5 && ym1Var.o && !ym1Var7.o) : size3 > 0));
+            j = ym1Var.k;
+            yw1Var = ym1Var.r;
+            j2 = 0;
+            if (z) {
+                copyOnWriteArrayList = copyOnWriteArrayList;
+                z2 = true;
+                if (ym1Var.p) {
+                    j6 = ym1Var.h;
+                } else {
+                    ym1Var2 = al0Var.y;
+                    if (ym1Var2 != null) {
+                        j3 = ym1Var2.h;
+                    } else {
+                        j3 = 0;
+                    }
+                    if (ym1Var7 == null) {
+                        long j12 = ym1Var7.h;
+                        j4 = ym1Var7.k;
+                        yw1Var2 = ym1Var7.r;
+                        size = yw1Var2.size();
+                        i = (int) (j - j4);
+                        if (i < yw1Var2.size()) {
+                            vm1Var = (vm1) yw1Var2.get(i);
+                        } else {
+                            vm1Var = null;
+                        }
+                        if (vm1Var != null) {
+                            j5 = vm1Var.r;
+                        } else {
+                            if (size == j - j4) {
+                                j5 = ym1Var7.u;
+                            }
+                            if (ym1Var.i) {
+                                i4 = ym1Var.j;
+                            } else {
+                                ym1Var3 = al0Var.y;
+                                if (ym1Var3 != null) {
+                                    i2 = ym1Var3.j;
+                                } else {
+                                    i2 = 0;
+                                }
+                                if (ym1Var7 == null) {
+                                    i3 = (int) (j - ym1Var7.k);
+                                    yw1Var3 = ym1Var7.r;
+                                    if (i3 < yw1Var3.size()) {
+                                        vm1Var2 = (vm1) yw1Var3.get(i3);
+                                    } else {
+                                        vm1Var2 = null;
+                                    }
+                                    if (vm1Var2 != null) {
+                                        i2 = (ym1Var7.j + vm1Var2.q) - ((vm1) yw1Var.get(0)).q;
+                                    }
+                                }
+                                i4 = i2;
+                            }
+                            iOException = null;
+                            ym1Var4 = new ym1(ym1Var.d, ym1Var.a, ym1Var.b, ym1Var.e, ym1Var.g, j7, true, i4, ym1Var.k, ym1Var.l, ym1Var.m, ym1Var.n, ym1Var.c, ym1Var.o, ym1Var.p, ym1Var.q, yw1Var, ym1Var.s, ym1Var.v, ym1Var.t, ym1Var.w);
+                        }
+                        j6 = j12 + j5;
+                    }
+                    j7 = j3;
+                    if (ym1Var.i) {
+                        i4 = ym1Var.j;
+                    } else {
+                        ym1Var3 = al0Var.y;
+                        if (ym1Var3 != null) {
+                            i2 = ym1Var3.j;
+                        } else {
+                            i2 = 0;
+                        }
+                        if (ym1Var7 == null) {
+                            i3 = (int) (j - ym1Var7.k);
+                            yw1Var3 = ym1Var7.r;
+                            if (i3 < yw1Var3.size()) {
+                                vm1Var2 = (vm1) yw1Var3.get(i3);
+                            } else {
+                                vm1Var2 = null;
+                            }
+                            if (vm1Var2 != null) {
+                                i2 = (ym1Var7.j + vm1Var2.q) - ((vm1) yw1Var.get(0)).q;
+                            }
+                        }
+                        i4 = i2;
+                    }
+                    iOException = null;
+                    ym1Var4 = new ym1(ym1Var.d, ym1Var.a, ym1Var.b, ym1Var.e, ym1Var.g, j7, true, i4, ym1Var.k, ym1Var.l, ym1Var.m, ym1Var.n, ym1Var.c, ym1Var.o, ym1Var.p, ym1Var.q, yw1Var, ym1Var.s, ym1Var.v, ym1Var.t, ym1Var.w);
+                }
+                j7 = j6;
+                if (ym1Var.i) {
+                    i4 = ym1Var.j;
+                } else {
+                    ym1Var3 = al0Var.y;
+                    if (ym1Var3 != null) {
+                        i2 = ym1Var3.j;
+                    } else {
+                        i2 = 0;
+                    }
+                    if (ym1Var7 == null) {
+                        i3 = (int) (j - ym1Var7.k);
+                        yw1Var3 = ym1Var7.r;
+                        if (i3 < yw1Var3.size()) {
+                            vm1Var2 = (vm1) yw1Var3.get(i3);
+                        } else {
+                            vm1Var2 = null;
+                        }
+                        if (vm1Var2 != null) {
+                            i2 = (ym1Var7.j + vm1Var2.q) - ((vm1) yw1Var.get(0)).q;
+                        }
+                    }
+                    i4 = i2;
+                }
+                iOException = null;
+                ym1Var4 = new ym1(ym1Var.d, ym1Var.a, ym1Var.b, ym1Var.e, ym1Var.g, j7, true, i4, ym1Var.k, ym1Var.l, ym1Var.m, ym1Var.n, ym1Var.c, ym1Var.o, ym1Var.p, ym1Var.q, yw1Var, ym1Var.s, ym1Var.v, ym1Var.t, ym1Var.w);
+            } else {
+                if (ym1Var.o) {
+                    z2 = true;
+                    ym1Var4 = ym1Var7;
+                } else if (ym1Var7.o) {
+                    ym1Var4 = ym1Var7;
+                    copyOnWriteArrayList = copyOnWriteArrayList;
+                    iOException = null;
+                    z2 = true;
+                } else {
+                    z2 = true;
+                    ym1Var4 = new ym1(ym1Var7.d, ym1Var7.a, ym1Var7.b, ym1Var7.e, ym1Var7.g, ym1Var7.h, ym1Var7.i, ym1Var7.j, ym1Var7.k, ym1Var7.l, ym1Var7.m, ym1Var7.n, ym1Var7.c, true, ym1Var7.p, ym1Var7.q, ym1Var7.r, ym1Var7.s, ym1Var7.v, ym1Var7.t, ym1Var7.w);
+                }
+                iOException = null;
+            }
+            this.q = ym1Var4;
+            uri = this.n;
+            if (ym1Var4 != ym1Var7) {
+                this.w = iOException;
+                this.s = jElapsedRealtime;
+                if (uri.equals(al0Var.x)) {
+                    if (al0Var.y == null) {
+                        al0Var.z = !ym1Var4.o;
+                        al0Var.A = ym1Var4.h;
+                    }
+                    al0Var.y = ym1Var4;
+                    al0Var.v.u(ym1Var4);
+                }
+                it2 = copyOnWriteArrayList.iterator();
+                while (it2.hasNext()) {
+                    ((gn1) it2.next()).a();
+                }
+            } else if (!ym1Var4.o) {
+                size2 = ym1Var.k + ((long) ym1Var.r.size());
+                ym1Var5 = this.q;
+                if (size2 < ym1Var5.k) {
+                    hlsPlaylistTracker$PlaylistStuckException = new HlsPlaylistTracker$PlaylistResetException();
+                    z3 = z2;
+                } else {
+                    if (jElapsedRealtime - this.s > f35.i0(ym1Var5.m) * 3.5d) {
+                        hlsPlaylistTracker$PlaylistStuckException = new HlsPlaylistTracker$PlaylistStuckException();
+                    } else {
+                        hlsPlaylistTracker$PlaylistStuckException = iOException;
+                    }
+                    z3 = false;
+                }
+                if (hlsPlaylistTracker$PlaylistStuckException != null) {
+                    this.w = hlsPlaylistTracker$PlaylistStuckException;
+                    x7Var = new x7(z2 ? 1 : 0, 8, hlsPlaylistTracker$PlaylistStuckException);
+                    it = copyOnWriteArrayList.iterator();
+                    while (it.hasNext()) {
+                        ((gn1) it.next()).b(uri, x7Var, z3);
+                    }
+                }
+            }
+            ym1Var6 = this.q;
+            xm1Var = ym1Var6.v;
+            j8 = ym1Var6.m;
+            if (!xm1Var.e) {
+                if (ym1Var6 == ym1Var7) {
+                    j9 = ym1Var6.n;
+                    if (j9 != -9223372036854775807L) {
+                        j2 = j9 / 2;
+                    } else {
+                        j8 /= 2;
+                    }
+                }
+                this.t = (f35.i0(j2) + jElapsedRealtime) - ed2Var.e;
+                if (this.q.o) {
+                }
+                if (!uri.equals(al0Var.x) || this.x) {
+                    f(c());
+                }
+                return;
+            }
+            if (ym1Var6 == ym1Var7) {
+                j8 /= 2;
+            }
+            j2 = j8;
+            this.t = (f35.i0(j2) + jElapsedRealtime) - ed2Var.e;
+            if (this.q.o) {
+                if (uri.equals(al0Var.x)) {
+                }
+                f(c());
+            }
+        }
+        ym1Var.getClass();
+        j = ym1Var.k;
+        yw1Var = ym1Var.r;
+        j2 = 0;
+        if (z) {
+            if (ym1Var.o) {
+                z2 = true;
+                ym1Var4 = ym1Var7;
+            } else if (ym1Var7.o) {
+                ym1Var4 = ym1Var7;
+                copyOnWriteArrayList = copyOnWriteArrayList;
+                iOException = null;
+                z2 = true;
+            } else {
+                z2 = true;
+                ym1Var4 = new ym1(ym1Var7.d, ym1Var7.a, ym1Var7.b, ym1Var7.e, ym1Var7.g, ym1Var7.h, ym1Var7.i, ym1Var7.j, ym1Var7.k, ym1Var7.l, ym1Var7.m, ym1Var7.n, ym1Var7.c, true, ym1Var7.p, ym1Var7.q, ym1Var7.r, ym1Var7.s, ym1Var7.v, ym1Var7.t, ym1Var7.w);
+            }
+            iOException = null;
+        } else {
+            copyOnWriteArrayList = copyOnWriteArrayList;
+            z2 = true;
+            if (ym1Var.p) {
+                j6 = ym1Var.h;
+            } else {
+                ym1Var2 = al0Var.y;
+                if (ym1Var2 != null) {
+                    j3 = ym1Var2.h;
+                } else {
+                    j3 = 0;
+                }
+                if (ym1Var7 == null) {
+                    long j13 = ym1Var7.h;
+                    j4 = ym1Var7.k;
+                    yw1Var2 = ym1Var7.r;
+                    size = yw1Var2.size();
+                    i = (int) (j - j4);
+                    if (i < yw1Var2.size()) {
+                        vm1Var = (vm1) yw1Var2.get(i);
+                    } else {
+                        vm1Var = null;
+                    }
+                    if (vm1Var != null) {
+                        j5 = vm1Var.r;
+                    } else {
+                        if (size == j - j4) {
+                            j5 = ym1Var7.u;
+                        }
+                        if (ym1Var.i) {
+                            i4 = ym1Var.j;
+                        } else {
+                            ym1Var3 = al0Var.y;
+                            if (ym1Var3 != null) {
+                                i2 = ym1Var3.j;
+                            } else {
+                                i2 = 0;
+                            }
+                            if (ym1Var7 == null) {
+                                i3 = (int) (j - ym1Var7.k);
+                                yw1Var3 = ym1Var7.r;
+                                if (i3 < yw1Var3.size()) {
+                                    vm1Var2 = (vm1) yw1Var3.get(i3);
+                                } else {
+                                    vm1Var2 = null;
+                                }
+                                if (vm1Var2 != null) {
+                                    i2 = (ym1Var7.j + vm1Var2.q) - ((vm1) yw1Var.get(0)).q;
+                                }
+                            }
+                            i4 = i2;
+                        }
+                        iOException = null;
+                        ym1Var4 = new ym1(ym1Var.d, ym1Var.a, ym1Var.b, ym1Var.e, ym1Var.g, j7, true, i4, ym1Var.k, ym1Var.l, ym1Var.m, ym1Var.n, ym1Var.c, ym1Var.o, ym1Var.p, ym1Var.q, yw1Var, ym1Var.s, ym1Var.v, ym1Var.t, ym1Var.w);
+                    }
+                    j6 = j13 + j5;
+                }
+                j7 = j3;
+                if (ym1Var.i) {
+                    i4 = ym1Var.j;
+                } else {
+                    ym1Var3 = al0Var.y;
+                    if (ym1Var3 != null) {
+                        i2 = ym1Var3.j;
+                    } else {
+                        i2 = 0;
+                    }
+                    if (ym1Var7 == null) {
+                        i3 = (int) (j - ym1Var7.k);
+                        yw1Var3 = ym1Var7.r;
+                        if (i3 < yw1Var3.size()) {
+                            vm1Var2 = (vm1) yw1Var3.get(i3);
+                        } else {
+                            vm1Var2 = null;
+                        }
+                        if (vm1Var2 != null) {
+                            i2 = (ym1Var7.j + vm1Var2.q) - ((vm1) yw1Var.get(0)).q;
+                        }
+                    }
+                    i4 = i2;
+                }
+                iOException = null;
+                ym1Var4 = new ym1(ym1Var.d, ym1Var.a, ym1Var.b, ym1Var.e, ym1Var.g, j7, true, i4, ym1Var.k, ym1Var.l, ym1Var.m, ym1Var.n, ym1Var.c, ym1Var.o, ym1Var.p, ym1Var.q, yw1Var, ym1Var.s, ym1Var.v, ym1Var.t, ym1Var.w);
+            }
+            j7 = j6;
+            if (ym1Var.i) {
+                i4 = ym1Var.j;
+            } else {
+                ym1Var3 = al0Var.y;
+                if (ym1Var3 != null) {
+                    i2 = ym1Var3.j;
+                } else {
+                    i2 = 0;
+                }
+                if (ym1Var7 == null) {
+                    i3 = (int) (j - ym1Var7.k);
+                    yw1Var3 = ym1Var7.r;
+                    if (i3 < yw1Var3.size()) {
+                        vm1Var2 = (vm1) yw1Var3.get(i3);
+                    } else {
+                        vm1Var2 = null;
+                    }
+                    if (vm1Var2 != null) {
+                        i2 = (ym1Var7.j + vm1Var2.q) - ((vm1) yw1Var.get(0)).q;
+                    }
+                }
+                i4 = i2;
+            }
+            iOException = null;
+            ym1Var4 = new ym1(ym1Var.d, ym1Var.a, ym1Var.b, ym1Var.e, ym1Var.g, j7, true, i4, ym1Var.k, ym1Var.l, ym1Var.m, ym1Var.n, ym1Var.c, ym1Var.o, ym1Var.p, ym1Var.q, yw1Var, ym1Var.s, ym1Var.v, ym1Var.t, ym1Var.w);
+        }
+        this.q = ym1Var4;
+        uri = this.n;
+        if (ym1Var4 != ym1Var7) {
+            this.w = iOException;
+            this.s = jElapsedRealtime;
+            if (uri.equals(al0Var.x)) {
+                if (al0Var.y == null) {
+                    al0Var.z = !ym1Var4.o;
+                    al0Var.A = ym1Var4.h;
+                }
+                al0Var.y = ym1Var4;
+                al0Var.v.u(ym1Var4);
+            }
+            it2 = copyOnWriteArrayList.iterator();
+            while (it2.hasNext()) {
+                ((gn1) it2.next()).a();
+            }
+        } else if (!ym1Var4.o) {
+            size2 = ym1Var.k + ((long) ym1Var.r.size());
+            ym1Var5 = this.q;
+            if (size2 < ym1Var5.k) {
+                hlsPlaylistTracker$PlaylistStuckException = new HlsPlaylistTracker$PlaylistResetException();
+                z3 = z2;
+            } else {
+                if (jElapsedRealtime - this.s > f35.i0(ym1Var5.m) * 3.5d) {
+                    hlsPlaylistTracker$PlaylistStuckException = new HlsPlaylistTracker$PlaylistStuckException();
+                } else {
+                    hlsPlaylistTracker$PlaylistStuckException = iOException;
+                }
+                z3 = false;
+            }
+            if (hlsPlaylistTracker$PlaylistStuckException != null) {
+                this.w = hlsPlaylistTracker$PlaylistStuckException;
+                x7Var = new x7(z2 ? 1 : 0, 8, hlsPlaylistTracker$PlaylistStuckException);
+                it = copyOnWriteArrayList.iterator();
+                while (it.hasNext()) {
+                    ((gn1) it.next()).b(uri, x7Var, z3);
+                }
+            }
+        }
+        ym1Var6 = this.q;
+        xm1Var = ym1Var6.v;
+        j8 = ym1Var6.m;
+        if (!xm1Var.e) {
+            if (ym1Var6 == ym1Var7) {
+                j9 = ym1Var6.n;
+                if (j9 != -9223372036854775807L) {
+                    j2 = j9 / 2;
+                } else {
+                    j8 /= 2;
+                }
+            }
+            this.t = (f35.i0(j2) + jElapsedRealtime) - ed2Var.e;
+            if (this.q.o) {
+                if (uri.equals(al0Var.x)) {
+                }
+                f(c());
+            }
+        }
+        if (ym1Var6 == ym1Var7) {
+            j8 /= 2;
+        }
+        j2 = j8;
+        this.t = (f35.i0(j2) + jElapsedRealtime) - ed2Var.e;
+        if (this.q.o) {
+            if (uri.equals(al0Var.x)) {
+            }
+            f(c());
+        }
     }
 
     @Override // defpackage.hd2
-    public final void j(jd2 r17, long r18, long r20, int r22) {
-        de3 r0 = (de3) r17;
-        if (r22 != 0) goto L6;
-        long r2 = r0.a;
-        ed2 r5 = new ed2(r18, r0.b);
-    L7:
-        this.y.s.u(r5, r0.c, -1, null, 0, null, -9223372036854775807L, -9223372036854775807L, r22);
-        return;
-    L6:
-        long r1 = r0.a;
-        ii0 r4 = r0.b;
-        yl4 r3 = r0.d;
-        r5 = new ed2(r4, r3.p, r3.q, r18, r20, r3.o);
-        goto L7
+    public final void j(jd2 jd2Var, long j, long j2, int i) {
+        ed2 ed2Var;
+        de3 de3Var = (de3) jd2Var;
+        if (i == 0) {
+            long j3 = de3Var.a;
+            ed2Var = new ed2(j, de3Var.b);
+        } else {
+            long j4 = de3Var.a;
+            ii0 ii0Var = de3Var.b;
+            yl4 yl4Var = de3Var.d;
+            ed2Var = new ed2(ii0Var, yl4Var.p, yl4Var.q, j, j2, yl4Var.o);
+        }
+        this.y.s.u(ed2Var, de3Var.c, -1, null, 0, null, -9223372036854775807L, -9223372036854775807L, i);
     }
 
     @Override // defpackage.hd2
-    public final dd2 s(jd2 r23, long r24, long r26, IOException r28, int r29) {
-        de3 r1 = (de3) r23;
-        long r2 = r1.a;
-        int r3 = r1.c;
-        ii0 r13 = r1.b;
-        yl4 r4 = r1.d;
-        Uri r14 = r4.p;
-        ed2 r12 = new ed2(r13, r14, r4.q, r24, r26, r4.o);
-        if (r14.getQueryParameter("_HLS_msn") == null) goto L5;
-        boolean r5 = true;
-    L6:
-        boolean r6 = r28 instanceof HlsPlaylistParser$DeltaUpdateException;
-        dd2 r15 = i61.s;
-        al0 r7 = this.y;
-        if (r5 == true) goto L10;
-        if (r6 == true) goto L10;
-    L19:
-        x7 r8 = new x7(r29, 8, r28);
-        Iterator r9 = r7.r.iterator();
-        boolean r10 = false;
-    L21:
-        if (r9.hasNext() == false) goto L23;
-        r10 = r10 | (!((gn1) r9.next()).b(this.n, r8, false));
-        goto L21
-    L23:
-        i80 r16 = r7.p;
-        if (r10 == false) goto L30;
-        r16.getClass();
-        long r11 = i80.E(r8);
-        if (r11 == (-9223372036854775807L)) goto L29;
-        dd2 r0 = new dd2(0, r11, false);
-    L28:
-        r15 = r0;
-        goto L30
-    L29:
-        r0 = i61.t;
-    L30:
-        int r17 = r15.a;
-        if (r17 == 0) goto L35;
-        if (r17 == 1) goto L35;
-        boolean r18 = false;
-    L36:
-        r7.s.s(r12, r3, -1, null, 0, null, -9223372036854775807L, -9223372036854775807L, r28, !r18);
-        if (r18 == true) goto L39;
-        r16.getClass();
-    L39:
-        return r15;
-    L35:
-        r18 = true;
-    L10:
-        if ((r28 instanceof HttpDataSource$InvalidResponseCodeException) == false) goto L12;
-        int r19 = ((HttpDataSource$InvalidResponseCodeException) r28).p;
-    L13:
-        if (r6 == false) goto L15;
-    L40:
-        this.t = SystemClock.elapsedRealtime();
-        d(false);
-        ue1 r20 = r7.s;
-        String r21 = f35.a;
-        r20.s(r12, r3, -1, null, 0, null, -9223372036854775807L, -9223372036854775807L, r28, true);
-        return r15;
-    L15:
-        if (r19 == 400) goto L40;
-        if (r19 != 503) goto L19;
-    L12:
-        r19 = Integer.MAX_VALUE;
-        goto L13
-    L5:
-        r5 = false;
-        goto L6
+    public final dd2 s(jd2 jd2Var, long j, long j2, IOException iOException, int i) {
+        de3 de3Var = (de3) jd2Var;
+        long j3 = de3Var.a;
+        int i2 = de3Var.c;
+        ii0 ii0Var = de3Var.b;
+        yl4 yl4Var = de3Var.d;
+        Uri uri = yl4Var.p;
+        ed2 ed2Var = new ed2(ii0Var, uri, yl4Var.q, j, j2, yl4Var.o);
+        boolean z = uri.getQueryParameter("_HLS_msn") != null;
+        boolean z2 = iOException instanceof HlsPlaylistParser$DeltaUpdateException;
+        dd2 dd2Var = i61.s;
+        al0 al0Var = this.y;
+        if (z || z2) {
+            int i3 = iOException instanceof HttpDataSource$InvalidResponseCodeException ? ((HttpDataSource$InvalidResponseCodeException) iOException).p : Integer.MAX_VALUE;
+            if (z2 || i3 == 400 || i3 == 503) {
+                this.t = SystemClock.elapsedRealtime();
+                d(false);
+                ue1 ue1Var = al0Var.s;
+                String str = f35.a;
+                ue1Var.s(ed2Var, i2, -1, null, 0, null, -9223372036854775807L, -9223372036854775807L, iOException, true);
+                return dd2Var;
+            }
+        }
+        x7 x7Var = new x7(i, 8, iOException);
+        Iterator it = al0Var.r.iterator();
+        boolean z3 = false;
+        while (it.hasNext()) {
+            z3 |= !((gn1) it.next()).b(this.n, x7Var, false);
+        }
+        i80 i80Var = al0Var.p;
+        if (z3) {
+            i80Var.getClass();
+            long jE = i80.E(x7Var);
+            dd2Var = jE != -9223372036854775807L ? new dd2(0, jE, false) : i61.t;
+        }
+        int i4 = dd2Var.a;
+        boolean z4 = i4 == 0 || i4 == 1;
+        al0Var.s.s(ed2Var, i2, -1, null, 0, null, -9223372036854775807L, -9223372036854775807L, iOException, !z4);
+        if (!z4) {
+            i80Var.getClass();
+        }
+        return dd2Var;
     }
 }

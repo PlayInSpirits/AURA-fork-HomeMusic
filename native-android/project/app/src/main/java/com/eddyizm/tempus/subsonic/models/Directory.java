@@ -14,7 +14,7 @@ import java.util.List;
 /* JADX INFO: loaded from: classes.dex */
 public final class Directory implements Parcelable {
     public static final int $stable = 8;
-    public static final Parcelable.Creator<Directory> CREATOR = null;
+    public static final Parcelable.Creator<Directory> CREATOR = new w4(22);
     private Double averageRating;
 
     @ka4("child")
@@ -28,36 +28,8 @@ public final class Directory implements Parcelable {
     private Date starred;
     private Integer userRating;
 
-    static {
-        CREATOR = new w4(22);
-    }
-
-    public /* synthetic */ Directory(List r2, String r3, String r4, String r5, Date r6, Integer r7, Double r8, Long r9, int r10, xj0 r11) {
-        if ((r10 & 1) == 0) goto L6;
-        r2 = null;
-    L6:
-        if ((r10 & 2) == 0) goto L9;
-        r3 = null;
-    L9:
-        if ((r10 & 4) == 0) goto L12;
-        r4 = null;
-    L12:
-        if ((r10 & 8) == 0) goto L15;
-        r5 = null;
-    L15:
-        if ((r10 & 16) == 0) goto L18;
-        r6 = null;
-    L18:
-        if ((r10 & 32) == 0) goto L21;
-        r7 = null;
-    L21:
-        if ((r10 & 64) == 0) goto L24;
-        r8 = null;
-    L24:
-        if ((r10 & 128) == 0) goto L26;
-        r9 = null;
-    L26:
-        this(r2, r3, r4, r5, r6, r7, r8, r9);
+    public /* synthetic */ Directory(List list, String str, String str2, String str3, Date date, Integer num, Double d, Long l, int i, xj0 xj0Var) {
+        this((i & 1) != 0 ? null : list, (i & 2) != 0 ? null : str, (i & 4) != 0 ? null : str2, (i & 8) != 0 ? null : str3, (i & 16) != 0 ? null : date, (i & 32) != 0 ? null : num, (i & 64) != 0 ? null : d, (i & 128) != 0 ? null : l);
     }
 
     @Override // android.os.Parcelable
@@ -97,102 +69,90 @@ public final class Directory implements Parcelable {
         return this.userRating;
     }
 
-    public final void setAverageRating(Double r1) {
-        this.averageRating = r1;
+    public final void setAverageRating(Double d) {
+        this.averageRating = d;
     }
 
-    public final void setChildren(List<? extends Child> r1) {
-        this.children = r1;
+    public final void setChildren(List<? extends Child> list) {
+        this.children = list;
     }
 
-    public final void setId(String r1) {
-        this.id = r1;
+    public final void setId(String str) {
+        this.id = str;
     }
 
-    public final void setName(String r1) {
-        this.name = r1;
+    public final void setName(String str) {
+        this.name = str;
     }
 
-    public final void setParentId(String r1) {
-        this.parentId = r1;
+    public final void setParentId(String str) {
+        this.parentId = str;
     }
 
-    public final void setPlayCount(Long r1) {
-        this.playCount = r1;
+    public final void setPlayCount(Long l) {
+        this.playCount = l;
     }
 
-    public final void setStarred(Date r1) {
-        this.starred = r1;
+    public final void setStarred(Date date) {
+        this.starred = date;
     }
 
-    public final void setUserRating(Integer r1) {
-        this.userRating = r1;
+    public final void setUserRating(Integer num) {
+        this.userRating = num;
     }
 
     @Override // android.os.Parcelable
-    public final void writeToParcel(Parcel r6, int r7) {
-        r6.getClass();
-        List<? extends Child> r0 = this.children;
-        if (r0 != null) goto L5;
-        r6.writeInt(0);
-    L9:
-        r6.writeString(this.id);
-        r6.writeString(this.parentId);
-        r6.writeString(this.name);
-        r6.writeSerializable(this.starred);
-        Integer r8 = this.userRating;
-        if (r8 != null) goto L12;
-        r6.writeInt(0);
-    L13:
-        Double r9 = this.averageRating;
-        if (r9 != null) goto L16;
-        r6.writeInt(0);
-    L17:
-        Long r5 = this.playCount;
-        if (r5 != null) goto L21;
-        r6.writeInt(0);
-        return;
-    L21:
-        r6.writeInt(1);
-        r6.writeLong(r5.longValue());
-        return;
-    L16:
-        r6.writeInt(1);
-        r6.writeDouble(r9.doubleValue());
-        goto L17
-    L12:
-        xa3.q(r6, 1, r8);
-        goto L13
-    L5:
-        r6.writeInt(1);
-        r6.writeInt(r0.size());
-        Iterator<? extends Child> r1 = r0.iterator();
-    L7:
-        if (r1.hasNext() == false) goto L9;
-        r6.writeParcelable(r1.next(), r7);
-        goto L7
+    public final void writeToParcel(Parcel parcel, int i) {
+        parcel.getClass();
+        List<? extends Child> list = this.children;
+        if (list == null) {
+            parcel.writeInt(0);
+        } else {
+            parcel.writeInt(1);
+            parcel.writeInt(list.size());
+            Iterator<? extends Child> it = list.iterator();
+            while (it.hasNext()) {
+                parcel.writeParcelable(it.next(), i);
+            }
+        }
+        parcel.writeString(this.id);
+        parcel.writeString(this.parentId);
+        parcel.writeString(this.name);
+        parcel.writeSerializable(this.starred);
+        Integer num = this.userRating;
+        if (num == null) {
+            parcel.writeInt(0);
+        } else {
+            xa3.q(parcel, 1, num);
+        }
+        Double d = this.averageRating;
+        if (d == null) {
+            parcel.writeInt(0);
+        } else {
+            parcel.writeInt(1);
+            parcel.writeDouble(d.doubleValue());
+        }
+        Long l = this.playCount;
+        if (l == null) {
+            parcel.writeInt(0);
+        } else {
+            parcel.writeInt(1);
+            parcel.writeLong(l.longValue());
+        }
     }
 
-    public Directory(List<? extends Child> r1, String r2, String r3, String r4, Date r5, Integer r6, Double r7, Long r8) {
-        this.children = r1;
-        this.id = r2;
-        this.parentId = r3;
-        this.name = r4;
-        this.starred = r5;
-        this.userRating = r6;
-        this.averageRating = r7;
-        this.playCount = r8;
+    public Directory(List<? extends Child> list, String str, String str2, String str3, Date date, Integer num, Double d, Long l) {
+        this.children = list;
+        this.id = str;
+        this.parentId = str2;
+        this.name = str3;
+        this.starred = date;
+        this.userRating = num;
+        this.averageRating = d;
+        this.playCount = l;
     }
 
     public Directory() {
-        List r1 = null;
-        String r2 = null;
-        String r3 = null;
-        String r4 = null;
-        Date r5 = null;
-        Integer r6 = null;
-        Double r7 = null;
-        Long r8 = null;
-        this(r1, r2, r3, r4, r5, r6, r7, r8, 255, null);
+        this(null, null, null, null, null, null, null, null, 255, null);
     }
 }

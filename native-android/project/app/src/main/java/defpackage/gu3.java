@@ -14,27 +14,27 @@ public class gu3 extends hd {
     public final k03 f;
     public final k03 g;
 
-    public gu3(Application r2) {
-        super(r2);
+    public gu3(Application application) {
+        super(application);
         this.e = false;
         this.f = new k03(Boolean.FALSE);
         this.g = new k03();
         this.c = new hh3(10);
     }
 
-    public static void c(gu3 r1, ApiResponse r2) {
-        r1.getClass();
-        if (r2.getSubsonicResponse().getError() == null) goto L7;
-        String r3 = r2.getSubsonicResponse().getError().getMessage();
-        if ("Not implemented".equals(r3) == false) goto L8;
-        Application r4 = r1.b;
-        r4.getClass();
-        r3 = r4.getString(R.string.radio_dialog_not_supported_snackbar);
-    L8:
-        r1.g.k(r3);
-        return;
-    L7:
-        r3 = "Unknown server error";
-        goto L8
+    public static void c(gu3 gu3Var, ApiResponse apiResponse) {
+        String message;
+        gu3Var.getClass();
+        if (apiResponse.getSubsonicResponse().getError() != null) {
+            message = apiResponse.getSubsonicResponse().getError().getMessage();
+            if ("Not implemented".equals(message)) {
+                Application application = gu3Var.b;
+                application.getClass();
+                message = application.getString(R.string.radio_dialog_not_supported_snackbar);
+            }
+        } else {
+            message = "Unknown server error";
+        }
+        gu3Var.g.k(message);
     }
 }

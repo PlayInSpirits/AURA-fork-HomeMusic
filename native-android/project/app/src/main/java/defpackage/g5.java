@@ -14,6 +14,7 @@ import androidx.preference.PreferenceGroup;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import app.homemusic.R;
+import com.eddyizm.tempus.homemusic.WaveRetry;
 import com.eddyizm.tempus.lan.LanReceiverService;
 import com.eddyizm.tempus.service.MediaService;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
@@ -26,6 +27,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.chromium.support_lib_boundary.WebSettingsBoundaryInterface;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
@@ -33,12 +35,14 @@ public final class g5 implements Runnable {
     public final /* synthetic */ int n;
     public final Object o;
 
-    public /* synthetic */ g5(int r1, Object r2) {
-        this.n = r1;
-        this.o = r2;
+    public /* synthetic */ g5(int i, Object obj) {
+        this.n = i;
+        this.o = obj;
     }
 
     /* JADX INFO: Infinite loop detected, blocks: 8, insns: 0 */
+    /* JADX WARN: Code duplicated, block: B:121:0x025d  */
+    /* JADX WARN: Code duplicated, block: B:264:0x0549  */
     /* JADX WARN: Multi-variable type inference failed */
     /* JADX WARN: Type inference fix 'apply assigned field type' failed
     java.lang.UnsupportedOperationException: ArgType.getObject(), call class: class jadx.core.dex.instructions.args.ArgType$PrimitiveArg
@@ -52,513 +56,438 @@ public final class g5 implements Runnable {
      */
     @Override // java.lang.Runnable
     public final void run() {
-        int r3 = 3;
-        byte r6 = 0;
-        boolean r7 = false;
-        int r8 = 0;
-        r8 = 0;
-        r8 = 0;
-        switch(this.n) {
-            case 0: goto L271;
-            case 1: goto L267;
-            case 2: goto L253;
-            case 3: goto L231;
-            case 4: goto L223;
-            case 5: goto L214;
-            case 6: goto L212;
-            case 7: goto L210;
-            case 8: goto L176;
-            case 9: goto L174;
-            case 10: goto L172;
-            case 11: goto L165;
-            case 12: goto L161;
-            case 13: goto L159;
-            case 14: goto L157;
-            case 15: goto L151;
-            case 16: goto L97;
-            case 17: goto L71;
-            case 18: goto L62;
-            case 19: goto L60;
-            case 20: goto L58;
-            case 21: goto L56;
-            case 22: goto L50;
-            case 23: goto L48;
-            case 24: goto L41;
-            case 25: goto L39;
-            case 26: goto L37;
-            case 27: goto L35;
-            case 28: goto L33;
-            default: goto L4;
-        };
-    L4:
-        gr4 r2 = (gr4) this.o;
-        ReentrantLock r4 = r2.c;
-    L5:
-        r4.lock();
-        ar4 r5 = r2.c();     // Catch: Throwable -> L30
-        r4.unlock();
-        if (r5 == null) goto L9;
-        Logger r9 = r2.b;
-        fr4 r10 = r5.c;
-        r10.getClass();
-        boolean r11 = r9.isLoggable(Level.FINE);
-        if (r11 == false) goto L13;
-        long r12 = System.nanoTime();
-        zz1.c(r9, r5, r10, "starting");
-    L283:
-        gr4.a(r2, r5);     // Catch: Throwable -> L17
-        if (r11 == false) goto L5;
-        zz1.c(r9, r5, r10, "finished run in ".concat(zz1.n(System.nanoTime() - r12)));
-    L17:
-        th = move-exception;
-        r4.lock();     // Catch: Throwable -> L22
-        ((ThreadPoolExecutor) r2.a.o).execute(this);     // Catch: Throwable -> L24
-        r4.unlock();     // Catch: Throwable -> L22
-        throw th;     // Catch: Throwable -> L22
-    L24:
-        th = move-exception;
-        r4.unlock();     // Catch: Throwable -> L22
-        throw th;     // Catch: Throwable -> L22
-    L22:
-        th = move-exception;
-        if (r11 == false) goto L29;
-        zz1.c(r9, r5, r10, "failed a run in ".concat(zz1.n(System.nanoTime() - r12)));
-    L29:
-        throw th;
-    L13:
-        r12 = -1;
-        goto L283
-    L9:
-        return;
-    L30:
-        th = move-exception;
-        r4.unlock();
-        throw th;
-    L33:
-        ((StaggeredGridLayoutManager) this.o).F0();
-        return;
-    L35:
-        c04 r0 = (c04) this.o;
-        r0.p.f(r0);
-        return;
-    L37:
-        ((ip0) this.o).c();
-        return;
-    L39:
-        ((np3) this.o).s();
-        return;
-    L41:
-        monitor-enter(this);
-        ((PreferenceGroup) this.o).b0.clear();     // Catch: Throwable -> L45
-        monitor-exit(this);     // Catch: Throwable -> L45
-        return;
-    L45:
-        th = move-exception;
-        throw th;
-    L48:
-        RecyclerView r1 = ((kp3) this.o).n0;
-        r1.focusableViewAvailable(r1);
-        return;
-    L50:
-        qp2 r13 = ((op2) this.o).b;
-        if (r13.Z == null) goto L300;
-        r13.Z = null;
-        if (r13.o0 == false) goto L301;
-        r13.t(r13.p0);
-        return;
-    L301:
-        return;
-    L300:
-        return;
-    L56:
-        qp2 r14 = (qp2) this.o;
-        r14.m(true);
-        r14.R.requestLayout();
-        r14.R.getViewTreeObserver().addOnGlobalLayoutListener(new sg(4, r14));
-        return;
-    L58:
-        oj2 r15 = (oj2) this.o;
-        oi r16 = r15.g.r;
-        hg3 r17 = r15.e;
-        r17.getClass();
-        r16.remove(((Messenger) r17.o).getBinder());
-        return;
-    L60:
-        ((kd2) this.o).a();
-        return;
-    L62:
-        Object r18 = ((ad2) this.o).a;
-        monitor-enter(r18);
-        Object r19 = ((ad2) this.o).f;     // Catch: Throwable -> L68
-        ((ad2) this.o).f = ad2.k;     // Catch: Throwable -> L68
-        monitor-exit(r18);     // Catch: Throwable -> L68
-        ((ad2) this.o).k(r19);
-        return;
-    L68:
-        th = move-exception;
-        throw th;
-    L71:
-        h62 r20 = (h62) this.o;
-        if (r20.L0 == false) goto L302;
-        r20.p0();
-        boolean r21 = LanReceiverService.y;
-        String r22 = LanReceiverService.z;
-        if (r22 == null) goto L81;
-        Preference r23 = ((h62) this.o).A0;
-        if (r23 == null) goto L79;
-        r23.x(r22);
-        goto L81
-    L79:
-        h12.Q("status");
-        throw null;
-    L81:
-        long r24 = SystemClock.elapsedRealtime();
-        Set r25 = ((h62) this.o).G0.entrySet();
-        r25.getClass();
-        Iterator r26 = r25.iterator();
-    L83:
-        if (r26.hasNext() == false) goto L87;
-        Map.Entry r27 = (Map.Entry) r26.next();
-        r27.getClass();
-        if ((r24 - ((c62) r27.getValue()).b) < 45000) goto L83;
-        r26.remove();
-        r7 = true;
-        goto L83
-    L87:
-        if (r7 == false) goto L95;
-        ((h62) this.o).n0();
-        if (((h62) this.o).G0.isEmpty() == false) goto L95;
-        h62 r28 = (h62) this.o;
-        if (r28.O0 == true) goto L95;
-        if (r28.N0 == true) goto L95;
-        r28.s0(R.string.lan_search_again);
-        ((h62) this.o).q0();
-    L95:
-        ((h62) this.o).D0.postDelayed(this, 1000);
-        return;
-    L302:
-        return;
-    L97:
-        f22 r29 = (f22) this.o;
-        if (r29.c == null) goto L303;
-        long r30 = System.currentTimeMillis();
-        long r31 = r29.B;
-        if (r31 != Long.MIN_VALUE) goto L102;
-        long r110 = 0;
-    L103:
-        mw3 r32 = r29.r.getLayoutManager();
-        if (r29.A != null) goto L106;
-        r29.A = new Rect();
-    L106:
-        View r33 = r29.c.a;
-        Rect r34 = r29.A;
-        RecyclerView r111 = r32.b;
-        if (r111 != null) goto L109;
-        r34.set(0, 0, 0, 0);
-    L111:
-        if (r32.d() == false) goto L121;
-        int r35 = (int) (r29.j + r29.h);
-        int r36 = (r35 - r29.A.left) - r29.r.getPaddingLeft();
-        float r112 = r29.h;
-        if (r112 >= 0.0f) goto L117;
-        if (r36 >= 0) goto L117;
-    L115:
-        int r113 = r36;
-    L123:
-        if (r32.e() == false) goto L133;
-        int r37 = (int) (r29.k + r29.i);
-        int r38 = (r37 - r29.A.top) - r29.r.getPaddingTop();
-        float r39 = r29.i;
-        if (r39 >= 0.0f) goto L129;
-        if (r38 >= 0) goto L129;
-    L127:
-        r8 = r38;
-    L129:
-        if (r39 <= 0.0f) goto L133;
-        r38 = ((r29.c.a.getHeight() + r37) + r29.A.bottom) - (r29.r.getHeight() - r29.r.getPaddingBottom());
-        if (r38 > 0) goto L127;
-    L133:
-        if (r113 == 0) goto L135;
-        e22 r114 = r29.m;
-        RecyclerView r115 = r29.r;
-        int r116 = r29.c.a.getWidth();
-        r29.r.getWidth();
-        r113 = r114.f(r115, r116, r113, r110);
-    L135:
-        int r40 = r113;
-        if (r8 == 0) goto L139;
-        e22 r117 = r29.m;
-        RecyclerView r118 = r29.r;
-        int r119 = r29.c.a.getHeight();
-        r29.r.getHeight();
-        r8 = r117.f(r118, r119, r8, r110);
-    L139:
-        if (r40 != 0) goto L144;
-        if (r8 != 0) goto L144;
-        r29.B = Long.MIN_VALUE;
-        return;
-    L144:
-        if (r29.B != Long.MIN_VALUE) goto L146;
-        r29.B = r30;
-    L146:
-        r29.r.scrollBy(r40, r8);
-        cx3 r41 = r29.c;
-        if (r41 == null) goto L149;
-        r29.q(r41);
-    L149:
-        r29.r.removeCallbacks(r29.s);
-        RecyclerView r42 = r29.r;
-        WeakHashMap r43 = j65.a;
-        r42.postOnAnimation(this);
-        return;
-    L117:
-        if (r112 <= 0.0f) goto L121;
-        r36 = ((r29.c.a.getWidth() + r35) + r29.A.right) - (r29.r.getWidth() - r29.r.getPaddingRight());
-        if (r36 > 0) goto L115;
-    L121:
-        r113 = 0;
-        goto L123
-    L109:
-        r34.set(r111.P(r33));
-        goto L111
-    L102:
-        r110 = r30 - r31;
-        goto L103
-    L303:
-        return;
-    L151:
-        ps1 r44 = (ps1) this.o;
-        zq2 r45 = r44.p;
-        long r46 = SystemClock.elapsedRealtime();
-        oh3 r47 = (oh3) r45.r;
-        if (r47 == null) goto L155;
-        long r48 = r45.e(r46);
-        r45.a(r46);
-        r45.n = r48;
-        ((lc) r45.q).d("progress", r47, Long.valueOf(r48), Long.valueOf(r46));
-    L155:
-        r44.q.postDelayed(this, 15000);
-        return;
-    L157:
-        ee1 r49 = (ee1) this.o;
-        r49.x = false;
-        r49.s();
-        return;
-    L159:
-        ((ld1) this.o).y(true);
-        return;
-    L161:
-        kc1 r50 = (kc1) this.o;
-        if (r50.W == null) goto L305;
-        r50.k().getClass();
-        return;
-    L305:
-        return;
-    L165:
-        e61 r51 = (e61) this.o;
-        ValueAnimator r52 = r51.z;
-        int r53 = r51.A;
-        if (r53 == 1) goto L169;
-        if (r53 != 2) goto L306;
-    L170:
-        r51.A = 3;
-        r52.setFloatValues(new float[]{((Float) r52.getAnimatedValue()).floatValue(), 0.0f});
-        r52.setDuration(500);
-        r52.start();
-        return;
-    L306:
-        return;
-    L169:
-        r52.cancel();
-        goto L170
-    L172:
-        ((jz0) this.o).r0();
-        return;
-    L174:
-        cx0 r54 = (cx0) this.o;
-        r54.y = null;
-        r54.drawableStateChanged();
-        return;
-    L176:
-        jw0 r55 = (jw0) this.o;
-        DrawerLayout r56 = r55.m;
-        int r57 = r55.k.o;
-        int r58 = r55.j;
-        if (r58 != 3) goto L179;
-        boolean r59 = true;
-    L181:
-        if (r59 == false) goto L187;
-        View r60 = r56.f(3);
-        if (r60 == null) goto L185;
-        int r61 = -r60.getWidth();
-    L186:
-        int r62 = r61 + r57;
-    L188:
-        if (r60 == null) goto L307;
-        if (r59 == true) goto L191;
-    L192:
-        if (r59 == false) goto L194;
-        return;
-    L194:
-        if (r60.getLeft() > r62) goto L196;
-        return;
-    L196:
-        if (r56.i(r60) != 0) goto L310;
-        hw0 r63 = (hw0) r60.getLayoutParams();
-        r55.k.s(r60, r62, r60.getTop());
-        r63.c = true;
-        r56.invalidate();
-        if (r58 != 3) goto L200;
-        r3 = 5;
-    L200:
-        View r64 = r56.f(r3);
-        if (r64 == null) goto L204;
-        r56.c(r64, true);
-    L204:
-        if (r56.D == true) goto L311;
-        long r65 = SystemClock.uptimeMillis();
-        MotionEvent r66 = MotionEvent.obtain(r65, r65, 3, 0.0f, 0.0f, 0);
-        int r67 = r56.getChildCount();
-    L206:
-        if (r6 >= r67) goto L208;
-        r56.getChildAt(r6).dispatchTouchEvent(r66);
-        r6 = r6 + 1;
-        goto L206
-    L208:
-        r66.recycle();
-        r56.D = true;
-        return;
-    L311:
-        return;
-    L310:
-        return;
-    L191:
-        if (r60.getLeft() < r62) goto L196;
-    L307:
-        return;
-    L185:
-        r61 = 0;
-        goto L186
-    L187:
-        r60 = r56.f(5);
-        r62 = r56.getWidth() - r57;
-        goto L188
-    L179:
-        r59 = false;
-        goto L181
-    L210:
-        xl.E((s24) ((ss0) this.o).n, false, true, new k2(15, r6));
-        return;
-    L212:
-        pp0 r68 = (pp0) this.o;
-        r68.o0.onDismiss(r68.w0);
-        return;
-    L214:
-        bk r69 = (bk) this.o;
-        r69.p = false;
-        BottomSheetBehavior r70 = (BottomSheetBehavior) r69.r;
-        o65 r71 = r70.Z;
-        if (r71 == null) goto L220;
-        if (r71.g() == false) goto L220;
-        r69.c(r69.o);
-        return;
-    L220:
-        if (r70.Y != 2) goto L313;
-        r70.K(r69.o);
-        return;
-    L313:
-        return;
-    L223:
-        MediaService r72 = (MediaService) this.o;
-        qi3 r73 = r72.p().a();
-        r73.getClass();
-        if (r73.h0() == true) goto L226;
-        r72.C = false;
-        return;
-    L226:
-        long r74 = SystemClock.elapsedRealtime();
-        if ((r74 - r72.E) < 15000) goto L229;
-        r72.E = r74;
-        bo2.n(r73.a(), r73.M0());
-    L229:
-        r72.w(r73);
-        r72.B.postDelayed(this, 1000);
-        return;
-    L231:
-        hc2 r75 = (hc2) this.o;
-        cx0 r76 = r75.p;
-        qn r77 = r75.n;
-        if (r75.B == true) goto L235;
-        return;
-    L235:
-        if (r75.z == false) goto L238;
-        r75.z = false;
-        long r78 = AnimationUtils.currentAnimationTimeMillis();
-        r77.e = r78;
-        r77.g = -1;
-        r77.f = r78;
-        r77.h = 0.5f;
-    L238:
-        if (r77.g <= 0) goto L243;
-        if (AnimationUtils.currentAnimationTimeMillis() <= (r77.g + ((long) r77.i))) goto L243;
-    L244:
-        r75.B = false;
-        return;
-    L243:
-        if (r75.e() == false) goto L244;
-        if (r75.A == false) goto L249;
-        r75.A = false;
-        long r79 = SystemClock.uptimeMillis();
-        MotionEvent r80 = MotionEvent.obtain(r79, r79, 3, 0.0f, 0.0f, 0);
-        r76.onTouchEvent(r80);
-        r80.recycle();
-    L249:
-        if (r77.f == 0) goto L251;
-        long r81 = AnimationUtils.currentAnimationTimeMillis();
-        float r82 = r77.a(r81);
-        long r83 = r81 - r77.f;
-        r77.f = r81;
-        r75.D.scrollListBy((int) ((r83 * ((r82 * 4.0f) + (((-4.0f) * r82) * r82))) * r77.d));
-        WeakHashMap r84 = j65.a;
-        r76.postOnAnimation(this);
-        return;
-    L251:
-        tb4.e("Cannot compute scroll delta before calling start()");
-        return;
-    L253:
-        ra r85 = (ra) this.o;
-        r85.removeCallbacks(this);
-        MotionEvent r86 = r85.z0;
-        if (r86 == null) goto L318;
-        int r87 = r86.getActionMasked();
-        if (r87 == 10) goto L319;
-        if (r87 != 1) goto L259;
-        return;
-    L259:
-        if (r87 == 7) goto L264;
-        int r88 = 9;
-        if (r87 == 8) goto L265;
-        if (r87 == 9) goto L264;
-        r88 = 2;
-    L265:
-        r85.G(r86, r88, r85.A0, false);
-        return;
-    L264:
-        r88 = 7;
-        goto L265
-    L319:
-        return;
-    L318:
-        return;
-    L267:
-        ns3 r89 = (ns3) this.o;
-    L275:
-        r89.b((i5) ((ReferenceQueue) r89.p).remove());     // Catch: InterruptedException -> L270
-    L270:
-        Thread.currentThread().interrupt();
-        goto L275
-    L271:
-        Process.setThreadPriority(10);
-        ((Runnable) this.o).run();
+        int actionMasked;
+        int i;
+        View viewF;
+        int width;
+        int iF;
+        Object obj;
+        long jNanoTime;
+        byte b = 0;
+        boolean z = false;
+        iF = 0;
+        iF = 0;
+        int iF2 = 0;
+        switch (this.n) {
+            case 0:
+                Process.setThreadPriority(10);
+                ((Runnable) this.o).run();
+                return;
+            case 1:
+                ns3 ns3Var = (ns3) this.o;
+                while (true) {
+                    try {
+                        ns3Var.b((i5) ((ReferenceQueue) ns3Var.p).remove());
+                    } catch (InterruptedException unused) {
+                        Thread.currentThread().interrupt();
+                    }
+                }
+                break;
+            case 2:
+                ra raVar = (ra) this.o;
+                raVar.removeCallbacks(this);
+                MotionEvent motionEvent = raVar.z0;
+                if (motionEvent == null || (actionMasked = motionEvent.getActionMasked()) == 10 || actionMasked == 1) {
+                    return;
+                }
+                if (actionMasked != 7) {
+                    i = 9;
+                    if (actionMasked != 8) {
+                        if (actionMasked != 9) {
+                            i = 2;
+                        } else {
+                            i = 7;
+                        }
+                    }
+                } else {
+                    i = 7;
+                }
+                raVar.G(motionEvent, i, raVar.A0, false);
+                return;
+            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
+                hc2 hc2Var = (hc2) this.o;
+                cx0 cx0Var = hc2Var.p;
+                qn qnVar = hc2Var.n;
+                if (hc2Var.B) {
+                    if (hc2Var.z) {
+                        hc2Var.z = false;
+                        long jCurrentAnimationTimeMillis = AnimationUtils.currentAnimationTimeMillis();
+                        qnVar.e = jCurrentAnimationTimeMillis;
+                        qnVar.g = -1L;
+                        qnVar.f = jCurrentAnimationTimeMillis;
+                        qnVar.h = 0.5f;
+                    }
+                    if ((qnVar.g > 0 && AnimationUtils.currentAnimationTimeMillis() > qnVar.g + ((long) qnVar.i)) || !hc2Var.e()) {
+                        hc2Var.B = false;
+                        return;
+                    }
+                    if (hc2Var.A) {
+                        hc2Var.A = false;
+                        long jUptimeMillis = SystemClock.uptimeMillis();
+                        MotionEvent motionEventObtain = MotionEvent.obtain(jUptimeMillis, jUptimeMillis, 3, 0.0f, 0.0f, 0);
+                        cx0Var.onTouchEvent(motionEventObtain);
+                        motionEventObtain.recycle();
+                    }
+                    if (qnVar.f == 0) {
+                        tb4.e("Cannot compute scroll delta before calling start()");
+                        return;
+                    }
+                    long jCurrentAnimationTimeMillis2 = AnimationUtils.currentAnimationTimeMillis();
+                    float fA = qnVar.a(jCurrentAnimationTimeMillis2);
+                    long j = jCurrentAnimationTimeMillis2 - qnVar.f;
+                    qnVar.f = jCurrentAnimationTimeMillis2;
+                    hc2Var.D.scrollListBy((int) (j * ((fA * 4.0f) + ((-4.0f) * fA * fA)) * qnVar.d));
+                    WeakHashMap weakHashMap = j65.a;
+                    cx0Var.postOnAnimation(this);
+                    return;
+                }
+                return;
+            case 4:
+                MediaService mediaService = (MediaService) this.o;
+                qi3 qi3VarA = mediaService.p().a();
+                qi3VarA.getClass();
+                if (!qi3VarA.h0()) {
+                    mediaService.C = false;
+                    return;
+                }
+                long jElapsedRealtime = SystemClock.elapsedRealtime();
+                if (jElapsedRealtime - mediaService.E >= 15000) {
+                    mediaService.E = jElapsedRealtime;
+                    bo2.n(qi3VarA.a(), qi3VarA.M0());
+                }
+                mediaService.w(qi3VarA);
+                mediaService.B.postDelayed(this, 1000L);
+                return;
+            case 5:
+                bk bkVar = (bk) this.o;
+                bkVar.p = false;
+                BottomSheetBehavior bottomSheetBehavior = (BottomSheetBehavior) bkVar.r;
+                o65 o65Var = bottomSheetBehavior.Z;
+                if (o65Var != null && o65Var.g()) {
+                    bkVar.c(bkVar.o);
+                    return;
+                } else {
+                    if (bottomSheetBehavior.Y == 2) {
+                        bottomSheetBehavior.K(bkVar.o);
+                        return;
+                    }
+                    return;
+                }
+            case 6:
+                pp0 pp0Var = (pp0) this.o;
+                pp0Var.o0.onDismiss(pp0Var.w0);
+                return;
+            case 7:
+                xl.E((s24) ((ss0) this.o).n, false, true, new k2(15, b));
+                return;
+            case 8:
+                jw0 jw0Var = (jw0) this.o;
+                DrawerLayout drawerLayout = jw0Var.m;
+                int i2 = jw0Var.k.o;
+                int i3 = jw0Var.j;
+                boolean z2 = i3 == 3;
+                if (z2) {
+                    viewF = drawerLayout.f(3);
+                    width = (viewF != null ? -viewF.getWidth() : 0) + i2;
+                } else {
+                    viewF = drawerLayout.f(5);
+                    width = drawerLayout.getWidth() - i2;
+                }
+                if (viewF != null) {
+                    if (((!z2 || viewF.getLeft() >= width) && (z2 || viewF.getLeft() <= width)) || drawerLayout.i(viewF) != 0) {
+                        return;
+                    }
+                    hw0 hw0Var = (hw0) viewF.getLayoutParams();
+                    jw0Var.k.s(viewF, width, viewF.getTop());
+                    hw0Var.c = true;
+                    drawerLayout.invalidate();
+                    View viewF2 = drawerLayout.f(i3 == 3 ? 5 : 3);
+                    if (viewF2 != null) {
+                        drawerLayout.c(viewF2, true);
+                    }
+                    if (drawerLayout.D) {
+                        return;
+                    }
+                    long jUptimeMillis2 = SystemClock.uptimeMillis();
+                    MotionEvent motionEventObtain2 = MotionEvent.obtain(jUptimeMillis2, jUptimeMillis2, 3, 0.0f, 0.0f, 0);
+                    int childCount = drawerLayout.getChildCount();
+                    while (b < childCount) {
+                        drawerLayout.getChildAt(b).dispatchTouchEvent(motionEventObtain2);
+                        b++;
+                    }
+                    motionEventObtain2.recycle();
+                    drawerLayout.D = true;
+                    return;
+                }
+                return;
+            case 9:
+                cx0 cx0Var2 = (cx0) this.o;
+                cx0Var2.y = null;
+                cx0Var2.drawableStateChanged();
+                return;
+            case 10:
+                ((jz0) this.o).r0();
+                return;
+            case 11:
+                e61 e61Var = (e61) this.o;
+                ValueAnimator valueAnimator = e61Var.z;
+                int i4 = e61Var.A;
+                if (i4 == 1) {
+                    valueAnimator.cancel();
+                } else if (i4 != 2) {
+                    return;
+                }
+                e61Var.A = 3;
+                valueAnimator.setFloatValues(((Float) valueAnimator.getAnimatedValue()).floatValue(), 0.0f);
+                valueAnimator.setDuration(500L);
+                valueAnimator.start();
+                return;
+            case 12:
+                kc1 kc1Var = (kc1) this.o;
+                if (kc1Var.W != null) {
+                    kc1Var.k().getClass();
+                    return;
+                }
+                return;
+            case 13:
+                ((ld1) this.o).y(true);
+                return;
+            case 14:
+                ee1 ee1Var = (ee1) this.o;
+                ee1Var.x = false;
+                ee1Var.s();
+                return;
+            case 15:
+                ps1 ps1Var = (ps1) this.o;
+                zq2 zq2Var = ps1Var.p;
+                long jElapsedRealtime2 = SystemClock.elapsedRealtime();
+                oh3 oh3Var = (oh3) zq2Var.r;
+                if (oh3Var != null) {
+                    long jE = zq2Var.e(jElapsedRealtime2);
+                    zq2Var.a(jElapsedRealtime2);
+                    zq2Var.n = jE;
+                    ((lc) zq2Var.q).d("progress", oh3Var, Long.valueOf(jE), Long.valueOf(jElapsedRealtime2));
+                }
+                ps1Var.q.postDelayed(this, 15000L);
+                return;
+            case WaveRetry.MAX_FAILURES /* 16 */:
+                f22 f22Var = (f22) this.o;
+                if (f22Var.c != null) {
+                    long jCurrentTimeMillis = System.currentTimeMillis();
+                    long j2 = f22Var.B;
+                    long j3 = j2 == Long.MIN_VALUE ? 0L : jCurrentTimeMillis - j2;
+                    mw3 layoutManager = f22Var.r.getLayoutManager();
+                    if (f22Var.A == null) {
+                        f22Var.A = new Rect();
+                    }
+                    View view = f22Var.c.a;
+                    Rect rect = f22Var.A;
+                    RecyclerView recyclerView = layoutManager.b;
+                    if (recyclerView == null) {
+                        rect.set(0, 0, 0, 0);
+                    } else {
+                        rect.set(recyclerView.P(view));
+                    }
+                    if (layoutManager.d()) {
+                        int i5 = (int) (f22Var.j + f22Var.h);
+                        int paddingLeft = (i5 - f22Var.A.left) - f22Var.r.getPaddingLeft();
+                        float f = f22Var.h;
+                        if ((f >= 0.0f || paddingLeft >= 0) && (f <= 0.0f || (paddingLeft = ((f22Var.c.a.getWidth() + i5) + f22Var.A.right) - (f22Var.r.getWidth() - f22Var.r.getPaddingRight())) <= 0)) {
+                            iF = 0;
+                        } else {
+                            iF = paddingLeft;
+                        }
+                    } else {
+                        iF = 0;
+                    }
+                    if (layoutManager.e()) {
+                        int i6 = (int) (f22Var.k + f22Var.i);
+                        int paddingTop = (i6 - f22Var.A.top) - f22Var.r.getPaddingTop();
+                        float f2 = f22Var.i;
+                        if ((f2 < 0.0f && paddingTop < 0) || (f2 > 0.0f && (paddingTop = ((f22Var.c.a.getHeight() + i6) + f22Var.A.bottom) - (f22Var.r.getHeight() - f22Var.r.getPaddingBottom())) > 0)) {
+                            iF2 = paddingTop;
+                        }
+                    }
+                    if (iF != 0) {
+                        e22 e22Var = f22Var.m;
+                        RecyclerView recyclerView2 = f22Var.r;
+                        int width2 = f22Var.c.a.getWidth();
+                        f22Var.r.getWidth();
+                        iF = e22Var.f(recyclerView2, width2, iF, j3);
+                    }
+                    int i7 = iF;
+                    if (iF2 != 0) {
+                        e22 e22Var2 = f22Var.m;
+                        RecyclerView recyclerView3 = f22Var.r;
+                        int height = f22Var.c.a.getHeight();
+                        f22Var.r.getHeight();
+                        iF2 = e22Var2.f(recyclerView3, height, iF2, j3);
+                    }
+                    if (i7 == 0 && iF2 == 0) {
+                        f22Var.B = Long.MIN_VALUE;
+                        return;
+                    }
+                    if (f22Var.B == Long.MIN_VALUE) {
+                        f22Var.B = jCurrentTimeMillis;
+                    }
+                    f22Var.r.scrollBy(i7, iF2);
+                    cx3 cx3Var = f22Var.c;
+                    if (cx3Var != null) {
+                        f22Var.q(cx3Var);
+                    }
+                    f22Var.r.removeCallbacks(f22Var.s);
+                    RecyclerView recyclerView4 = f22Var.r;
+                    WeakHashMap weakHashMap2 = j65.a;
+                    recyclerView4.postOnAnimation(this);
+                    return;
+                }
+                return;
+            case 17:
+                h62 h62Var = (h62) this.o;
+                if (h62Var.L0) {
+                    h62Var.p0();
+                    boolean z3 = LanReceiverService.y;
+                    String str = LanReceiverService.z;
+                    if (str != null) {
+                        Preference preference = ((h62) this.o).A0;
+                        if (preference == null) {
+                            h12.Q("status");
+                            throw null;
+                        }
+                        preference.x(str);
+                    }
+                    long jElapsedRealtime3 = SystemClock.elapsedRealtime();
+                    Set setEntrySet = ((h62) this.o).G0.entrySet();
+                    setEntrySet.getClass();
+                    Iterator it = setEntrySet.iterator();
+                    while (it.hasNext()) {
+                        Map.Entry entry = (Map.Entry) it.next();
+                        entry.getClass();
+                        if (jElapsedRealtime3 - ((c62) entry.getValue()).b >= 45000) {
+                            it.remove();
+                            z = true;
+                        }
+                    }
+                    if (z) {
+                        ((h62) this.o).n0();
+                        if (((h62) this.o).G0.isEmpty()) {
+                            h62 h62Var2 = (h62) this.o;
+                            if (!h62Var2.O0 && !h62Var2.N0) {
+                                h62Var2.s0(R.string.lan_search_again);
+                                ((h62) this.o).q0();
+                            }
+                        }
+                    }
+                    ((h62) this.o).D0.postDelayed(this, 1000L);
+                    return;
+                }
+                return;
+            case 18:
+                synchronized (((ad2) this.o).a) {
+                    obj = ((ad2) this.o).f;
+                    ((ad2) this.o).f = ad2.k;
+                    break;
+                }
+                ((ad2) this.o).k(obj);
+                return;
+            case 19:
+                ((kd2) this.o).a();
+                return;
+            case 20:
+                oj2 oj2Var = (oj2) this.o;
+                oi oiVar = oj2Var.g.r;
+                hg3 hg3Var = oj2Var.e;
+                hg3Var.getClass();
+                oiVar.remove(((Messenger) hg3Var.o).getBinder());
+                return;
+            case 21:
+                qp2 qp2Var = (qp2) this.o;
+                qp2Var.m(true);
+                qp2Var.R.requestLayout();
+                qp2Var.R.getViewTreeObserver().addOnGlobalLayoutListener(new sg(4, qp2Var));
+                return;
+            case 22:
+                qp2 qp2Var2 = ((op2) this.o).b;
+                if (qp2Var2.Z != null) {
+                    qp2Var2.Z = null;
+                    if (qp2Var2.o0) {
+                        qp2Var2.t(qp2Var2.p0);
+                        return;
+                    }
+                    return;
+                }
+                return;
+            case 23:
+                RecyclerView recyclerView5 = ((kp3) this.o).n0;
+                recyclerView5.focusableViewAvailable(recyclerView5);
+                return;
+            case 24:
+                synchronized (this) {
+                    ((PreferenceGroup) this.o).b0.clear();
+                    break;
+                }
+                return;
+            case 25:
+                ((np3) this.o).s();
+                return;
+            case 26:
+                ((ip0) this.o).c();
+                return;
+            case 27:
+                c04 c04Var = (c04) this.o;
+                c04Var.p.f(c04Var);
+                return;
+            case 28:
+                ((StaggeredGridLayoutManager) this.o).F0();
+                return;
+            default:
+                gr4 gr4Var = (gr4) this.o;
+                ReentrantLock reentrantLock = gr4Var.c;
+                while (true) {
+                    reentrantLock.lock();
+                    try {
+                        ar4 ar4VarC = gr4Var.c();
+                        reentrantLock.unlock();
+                        if (ar4VarC == null) {
+                            return;
+                        }
+                        Logger logger = gr4Var.b;
+                        fr4 fr4Var = ar4VarC.c;
+                        fr4Var.getClass();
+                        boolean zIsLoggable = logger.isLoggable(Level.FINE);
+                        if (zIsLoggable) {
+                            jNanoTime = System.nanoTime();
+                            zz1.c(logger, ar4VarC, fr4Var, "starting");
+                        } else {
+                            jNanoTime = -1;
+                        }
+                        try {
+                            gr4.a(gr4Var, ar4VarC);
+                            if (zIsLoggable) {
+                                zz1.c(logger, ar4VarC, fr4Var, "finished run in ".concat(zz1.n(System.nanoTime() - jNanoTime)));
+                            }
+                        } catch (Throwable th) {
+                            try {
+                                reentrantLock.lock();
+                                try {
+                                    ((ThreadPoolExecutor) gr4Var.a.o).execute(this);
+                                    throw th;
+                                } finally {
+                                    reentrantLock.unlock();
+                                }
+                            } catch (Throwable th2) {
+                                if (zIsLoggable) {
+                                    zz1.c(logger, ar4VarC, fr4Var, "failed a run in ".concat(zz1.n(System.nanoTime() - jNanoTime)));
+                                }
+                                throw th2;
+                            }
+                        }
+                    } catch (Throwable th3) {
+                        reentrantLock.unlock();
+                        throw th3;
+                    }
+                }
+                break;
+        }
     }
 }

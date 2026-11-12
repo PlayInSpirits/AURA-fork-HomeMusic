@@ -15,42 +15,38 @@ import android.widget.PopupWindow;
 public abstract class yu2 implements nd4, gv2, AdapterView.OnItemClickListener {
     public Rect n;
 
-    public static int o(ListAdapter r10, Context r11, int r12) {
-        int r0 = 0;
-        int r1 = View.MeasureSpec.makeMeasureSpec(0, 0);
-        int r2 = View.MeasureSpec.makeMeasureSpec(0, 0);
-        int r3 = r10.getCount();
-        int r5 = 0;
-        int r6 = 0;
-        FrameLayout r7 = null;
-        View r8 = null;
-    L3:
-        if (r0 >= r3) goto L15;
-        int r9 = r10.getItemViewType(r0);
-        if (r9 == r6) goto L7;
-        r8 = null;
-        r6 = r9;
-    L7:
-        if (r7 != null) goto L9;
-        r7 = new FrameLayout(r11);
-    L9:
-        r8 = r10.getView(r0, r8, r7);
-        r8.measure(r1, r2);
-        int r13 = r8.getMeasuredWidth();
-        if (r13 >= r12) goto L11;
-        if (r13 <= r5) goto L14;
-        r5 = r13;
-    L14:
-        r0 = r0 + 1;
-        goto L3
-    L11:
-        return r12;
-    L15:
-        return r5;
+    public static int o(ListAdapter listAdapter, Context context, int i) {
+        int iMakeMeasureSpec = View.MeasureSpec.makeMeasureSpec(0, 0);
+        int iMakeMeasureSpec2 = View.MeasureSpec.makeMeasureSpec(0, 0);
+        int count = listAdapter.getCount();
+        int i2 = 0;
+        int i3 = 0;
+        FrameLayout frameLayout = null;
+        View view = null;
+        for (int i4 = 0; i4 < count; i4++) {
+            int itemViewType = listAdapter.getItemViewType(i4);
+            if (itemViewType != i3) {
+                view = null;
+                i3 = itemViewType;
+            }
+            if (frameLayout == null) {
+                frameLayout = new FrameLayout(context);
+            }
+            view = listAdapter.getView(i4, view, frameLayout);
+            view.measure(iMakeMeasureSpec, iMakeMeasureSpec2);
+            int measuredWidth = view.getMeasuredWidth();
+            if (measuredWidth >= i) {
+                return i;
+            }
+            if (measuredWidth > i2) {
+                i2 = measuredWidth;
+            }
+        }
+        return i2;
     }
 
     @Override // defpackage.gv2
-    public final boolean g(tu2 r1) {
+    public final boolean g(tu2 tu2Var) {
         return false;
     }
 
@@ -60,48 +56,33 @@ public abstract class yu2 implements nd4, gv2, AdapterView.OnItemClickListener {
     }
 
     @Override // defpackage.gv2
-    public final boolean j(tu2 r1) {
+    public final boolean j(tu2 tu2Var) {
         return false;
     }
 
     @Override // defpackage.gv2
-    public final void l(Context r1, qu2 r2) {
+    public final void l(Context context, qu2 qu2Var) {
     }
 
-    public abstract void n(qu2 r1);
+    public abstract void n(qu2 qu2Var);
 
     @Override // android.widget.AdapterView.OnItemClickListener
-    public final void onItemClick(AdapterView r1, View r2, int r3, long r4) {
-        ListAdapter r5 = (ListAdapter) r1.getAdapter();
-        if ((r5 instanceof HeaderViewListAdapter) == false) goto L5;
-        nu2 r6 = (nu2) ((HeaderViewListAdapter) r5).getWrappedAdapter();
-    L6:
-        qu2 r7 = r6.n;
-        MenuItem r8 = (MenuItem) r5.getItem(r3);
-        if ((this instanceof uz) == true) goto L9;
-        int r9 = 0;
-    L10:
-        r7.q(r8, this, r9);
-        return;
-    L9:
-        r9 = 4;
-        goto L10
-    L5:
-        r6 = (nu2) r5;
-        goto L6
+    public final void onItemClick(AdapterView adapterView, View view, int i, long j) {
+        ListAdapter listAdapter = (ListAdapter) adapterView.getAdapter();
+        (listAdapter instanceof HeaderViewListAdapter ? (nu2) ((HeaderViewListAdapter) listAdapter).getWrappedAdapter() : (nu2) listAdapter).n.q((MenuItem) listAdapter.getItem(i), this, !(this instanceof uz) ? 0 : 4);
     }
 
-    public abstract void p(View r1);
+    public abstract void p(View view);
 
-    public abstract void q(boolean r1);
+    public abstract void q(boolean z);
 
-    public abstract void r(int r1);
+    public abstract void r(int i);
 
-    public abstract void s(int r1);
+    public abstract void s(int i);
 
-    public abstract void t(PopupWindow.OnDismissListener r1);
+    public abstract void t(PopupWindow.OnDismissListener onDismissListener);
 
-    public abstract void u(boolean r1);
+    public abstract void u(boolean z);
 
-    public abstract void v(int r1);
+    public abstract void v(int i);
 }

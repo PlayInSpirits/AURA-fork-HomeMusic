@@ -10,10 +10,10 @@ public final class l41 {
     public final int c;
     public final long d;
 
-    public l41(ArrayList r1, pd4 r2, int r3, long r4) {
-        this.a = r1;
-        this.b = r2;
-        this.c = r3;
-        this.d = r4;
+    public l41(ArrayList arrayList, pd4 pd4Var, int i, long j) {
+        this.a = arrayList;
+        this.b = pd4Var;
+        this.c = i;
+        this.d = j;
     }
 }

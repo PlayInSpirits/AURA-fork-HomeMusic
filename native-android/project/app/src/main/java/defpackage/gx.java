@@ -6,28 +6,24 @@ public final class gx extends zb1 {
     public final /* synthetic */ hx o;
     public final /* synthetic */ jw p;
 
-    public gx(hx r1, jw r2, of4 r3) {
-        this.o = r1;
-        this.p = r2;
-        super(r3);
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public gx(hx hxVar, jw jwVar, of4 of4Var) {
+        super(of4Var);
+        this.o = hxVar;
+        this.p = jwVar;
     }
 
     @Override // defpackage.zb1, defpackage.of4, java.io.Closeable, java.lang.AutoCloseable
     public final void close() {
-        hx r0 = this.o;
-        jw r1 = this.p;
-        monitor-enter(r0);
-    L13:
-        th = move-exception;
-        throw th;
-    L5:
-        if (r1.n == false) goto L9;
-        monitor-exit(r0);
-        return;
-    L9:
-        r1.n = true;     // Catch: Throwable -> L13
-        monitor-exit(r0);
-        super.close();
-        ((ll) this.p.o).b();
+        hx hxVar = this.o;
+        jw jwVar = this.p;
+        synchronized (hxVar) {
+            if (jwVar.n) {
+                return;
+            }
+            jwVar.n = true;
+            super.close();
+            ((ll) this.p.o).b();
+        }
     }
 }

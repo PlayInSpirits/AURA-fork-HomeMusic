@@ -6,8 +6,8 @@ public final class gq3 {
     public final int a;
     public final vp3 b;
 
-    public gq3(int r1, vp3 r2) {
-        this.a = r1;
-        this.b = r2;
+    public gq3(int i, vp3 vp3Var) {
+        this.a = i;
+        this.b = vp3Var;
     }
 }

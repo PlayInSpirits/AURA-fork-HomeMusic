@@ -8,20 +8,19 @@ import java.util.Date;
 public final class fk4 extends bk0 {
     public final /* synthetic */ int c;
 
-    public /* synthetic */ fk4(int r1, Class r2) {
-        this.c = r1;
-        super(r2);
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public /* synthetic */ fk4(int i, Class cls) {
+        super(cls);
+        this.c = i;
     }
 
     @Override // defpackage.bk0
-    public final Date b(Date r3) {
-        switch(this.c) {
-            case 0: goto L7;
-            default: goto L5;
-        };
-    L5:
-        return new Timestamp(r3.getTime());
-    L7:
-        return new java.sql.Date(r3.getTime());
+    public final Date b(Date date) {
+        switch (this.c) {
+            case 0:
+                return new java.sql.Date(date.getTime());
+            default:
+                return new Timestamp(date.getTime());
+        }
     }
 }

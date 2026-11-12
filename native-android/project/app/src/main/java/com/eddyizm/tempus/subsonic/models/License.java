@@ -11,9 +11,6 @@ public final class License {
     private Date licenseExpires;
     private Date trialExpires;
 
-    public License() {
-    }
-
     public final String getEmail() {
         return this.email;
     }
@@ -30,19 +27,19 @@ public final class License {
         return this.isValid;
     }
 
-    public final void setEmail(String r1) {
-        this.email = r1;
+    public final void setEmail(String str) {
+        this.email = str;
     }
 
-    public final void setLicenseExpires(Date r1) {
-        this.licenseExpires = r1;
+    public final void setLicenseExpires(Date date) {
+        this.licenseExpires = date;
     }
 
-    public final void setTrialExpires(Date r1) {
-        this.trialExpires = r1;
+    public final void setTrialExpires(Date date) {
+        this.trialExpires = date;
     }
 
-    public final void setValid(boolean r1) {
-        this.isValid = r1;
+    public final void setValid(boolean z) {
+        this.isValid = z;
     }
 }

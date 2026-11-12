@@ -7,11 +7,11 @@ import android.widget.ImageButton;
 public abstract class m85 extends ImageButton {
     public int n;
 
-    public final void a(int r1, boolean r2) {
-        super.setVisibility(r1);
-        if (r2 == false) goto L6;
-        this.n = r1;
-        return;
+    public final void a(int i, boolean z) {
+        super.setVisibility(i);
+        if (z) {
+            this.n = i;
+        }
     }
 
     public final int getUserSetVisibility() {
@@ -19,7 +19,7 @@ public abstract class m85 extends ImageButton {
     }
 
     @Override // android.widget.ImageView, android.view.View
-    public void setVisibility(int r2) {
-        a(r2, true);
+    public void setVisibility(int i) {
+        a(i, true);
     }
 }

@@ -9,41 +9,35 @@ import java.util.Set;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class u25 implements uw2 {
-    public static final Set b = null;
+    public static final Set b = Collections.unmodifiableSet(new HashSet(Arrays.asList("file", "content", "android.resource")));
     public final t25 a;
 
-    static {
-        b = Collections.unmodifiableSet(new HashSet(Arrays.asList(new String[]{"file", "content", "android.resource"})));
-    }
-
-    public u25(t25 r1) {
-        this.a = r1;
+    public u25(t25 t25Var) {
+        this.a = t25Var;
     }
 
     @Override // defpackage.uw2
-    public final boolean a(Object r1) {
-        return b.contains(((Uri) r1).getScheme());
+    public final boolean a(Object obj) {
+        return b.contains(((Uri) obj).getScheme());
     }
 
     @Override // defpackage.uw2
-    public final tw2 b(Object r2, int r3, int r4, db3 r5) {
-        Uri r6 = (Uri) r2;
-        s73 r7 = new s73(r6);
-        t25 r1 = this.a;
-        switch(r1.a) {
-            case 0: goto L6;
-            case 1: goto L5;
-            default: goto L4;
-        };
-    L4:
-        sh0 r8 = new gm4(1, r6, r1.b);
-    L8:
-        return new tw2(r7, r8);
-    L5:
-        r8 = new fk(r1.b, r6, 1);
-        goto L8
-    L6:
-        r8 = new fk(r1.b, r6, 0);
-        goto L8
+    public final tw2 b(Object obj, int i, int i2, db3 db3Var) {
+        sh0 fkVar;
+        Uri uri = (Uri) obj;
+        s73 s73Var = new s73(uri);
+        t25 t25Var = this.a;
+        switch (t25Var.a) {
+            case 0:
+                fkVar = new fk(t25Var.b, uri, 0);
+                break;
+            case 1:
+                fkVar = new fk(t25Var.b, uri, 1);
+                break;
+            default:
+                fkVar = new gm4(1, uri, t25Var.b);
+                break;
+        }
+        return new tw2(s73Var, fkVar);
     }
 }

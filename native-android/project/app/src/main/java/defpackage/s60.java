@@ -7,27 +7,21 @@ import java.io.Serializable;
 public final class s60 extends gb3 implements Serializable {
     public final n7 n;
 
-    public s60(n7 r1) {
-        this.n = r1;
+    public s60(n7 n7Var) {
+        this.n = n7Var;
     }
 
     @Override // java.util.Comparator
-    public final int compare(Object r1, Object r2) {
-        return this.n.compare(r1, r2);
+    public final int compare(Object obj, Object obj2) {
+        return this.n.compare(obj, obj2);
     }
 
     @Override // java.util.Comparator
-    public final boolean equals(Object r4) {
-        if (r4 != this) goto L6;
-        return true;
-    L6:
-        if ((r4 instanceof s60) == true) goto L8;
-        return false;
-    L8:
-        if (this.n == ((s60) r4).n) goto L10;
-        return false;
-    L10:
-        return true;
+    public final boolean equals(Object obj) {
+        if (obj == this) {
+            return true;
+        }
+        return (obj instanceof s60) && this.n == ((s60) obj).n;
     }
 
     public final int hashCode() {

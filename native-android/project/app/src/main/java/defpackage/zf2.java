@@ -13,96 +13,86 @@ public abstract class zf2 {
     public Object q;
 
     public zf2() {
-        if (xi4.o != null) goto L6;
-        xi4.o = new xi4(26);
-        return;
+        if (xi4.o == null) {
+            xi4.o = new xi4(26);
+        }
     }
 
-    public int a(int r2) {
-        if (r2 < this.p) goto L5;
+    public int a(int i) {
+        if (i < this.p) {
+            return ((ByteBuffer) this.q).getShort(this.o + i);
+        }
         return 0;
-    L5:
-        return ((ByteBuffer) this.q).getShort(this.o + r2);
     }
 
     public void b() {
-        if (((ag2) this.q).u != this.p) goto L5;
-        return;
-    L5:
+        if (((ag2) this.q).u == this.p) {
+            return;
+        }
         kf2.c();
     }
 
-    public abstract Object c(View r1);
+    public abstract Object c(View view);
 
-    public abstract void d(View r1, Object r2);
+    public abstract void d(View view, Object obj);
 
     public void e() {
-    L2:
-        int r0 = this.n;
-        ag2 r1 = (ag2) this.q;
-        if (r0 >= r1.s) goto L7;
-        if (r1.p[r0] >= 0) goto L10;
-        this.n = r0 + 1;
-        goto L2
-    L10:
-        return;
+        while (true) {
+            int i = this.n;
+            ag2 ag2Var = (ag2) this.q;
+            if (i >= ag2Var.s || ag2Var.p[i] >= 0) {
+                return;
+            } else {
+                this.n = i + 1;
+            }
+        }
     }
 
-    public void f(View r4, Object r5) {
-        if (Build.VERSION.SDK_INT < this.o) goto L6;
-        d(r4, r5);
-        return;
-    L6:
-        z2 r2 = null;
-        if (Build.VERSION.SDK_INT < this.o) goto L9;
-        Object r0 = c(r4);
-    L14:
-        if (g(r0, r5) == false) goto L26;
-        View.AccessibilityDelegate r1 = j65.d(r4);
-        if (r1 != null) goto L19;
-    L22:
-        if (r2 != null) goto L24;
-        r2 = new z2();
-    L24:
-        j65.o(r4, r2);
-        r4.setTag(this.n, r5);
-        j65.i(r4, this.p);
-        return;
-    L19:
-        if ((r1 instanceof y2) == false) goto L21;
-        r2 = ((y2) r1).a;
-        goto L22
-    L21:
-        r2 = new z2(r1);
-        goto L22
-    L26:
-        return;
-    L9:
-        r0 = r4.getTag(this.n);
-        if (((Class) this.q).isInstance(r0) == true) goto L14;
-        r0 = null;
-        goto L14
+    public void f(View view, Object obj) {
+        Object tag;
+        if (Build.VERSION.SDK_INT >= this.o) {
+            d(view, obj);
+            return;
+        }
+        z2 z2Var = null;
+        if (Build.VERSION.SDK_INT >= this.o) {
+            tag = c(view);
+        } else {
+            tag = view.getTag(this.n);
+            if (!((Class) this.q).isInstance(tag)) {
+                tag = null;
+            }
+        }
+        if (g(tag, obj)) {
+            View.AccessibilityDelegate accessibilityDelegateD = j65.d(view);
+            if (accessibilityDelegateD != null) {
+                z2Var = accessibilityDelegateD instanceof y2 ? ((y2) accessibilityDelegateD).a : new z2(accessibilityDelegateD);
+            }
+            if (z2Var == null) {
+                z2Var = new z2();
+            }
+            j65.o(view, z2Var);
+            view.setTag(this.n, obj);
+            j65.i(view, this.p);
+        }
     }
 
-    public abstract boolean g(Object r1, Object r2);
+    public abstract boolean g(Object obj, Object obj2);
 
     public boolean hasNext() {
-        if (this.n >= ((ag2) this.q).s) goto L6;
-        return true;
-    L6:
-        return false;
+        return this.n < ((ag2) this.q).s;
     }
 
     public void remove() {
-        ag2 r0 = (ag2) this.q;
+        ag2 ag2Var = (ag2) this.q;
         b();
-        if (this.o == (-1)) goto L6;
-        r0.c();
-        r0.k(this.o);
+        if (this.o == -1) {
+            kf2.o("Call next() before removing element from the iterator.");
+            return;
+        }
+        ag2Var.c();
+        ag2Var.k(this.o);
         this.o = -1;
-        this.p = r0.u;
-        return;
-    L6:
-        kf2.o("Call next() before removing element from the iterator.");
+        this.p = ag2Var.u;
     }
 }

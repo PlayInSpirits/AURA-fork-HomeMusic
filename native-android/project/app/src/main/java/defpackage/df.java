@@ -18,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import androidx.appcompat.widget.Toolbar;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
@@ -31,251 +32,618 @@ public abstract class df extends nc1 implements gf {
     }
 
     @Override // defpackage.l70, android.app.Activity
-    public final void addContentView(View r3, ViewGroup.LayoutParams r4) {
+    public final void addContentView(View view, ViewGroup.LayoutParams layoutParams) {
         j();
-        bg r2 = (bg) m();
-        r2.B();
-        ((ViewGroup) r2.N.findViewById(R.id.content)).addView(r3, r4);
-        r2.z.a(r2.y.getCallback());
+        bg bgVar = (bg) m();
+        bgVar.B();
+        ((ViewGroup) bgVar.N.findViewById(R.id.content)).addView(view, layoutParams);
+        bgVar.z.a(bgVar.y.getCallback());
     }
 
+    /* JADX WARN: Code duplicated, block: B:110:0x01ce A[Catch: all -> 0x01c2, TRY_LEAVE, TryCatch #0 {, blocks: (B:101:0x01b0, B:103:0x01b4, B:109:0x01cc, B:110:0x01ce, B:112:0x01d2, B:118:0x01e2, B:117:0x01d9, B:108:0x01c5), top: B:128:0x01b0, inners: #6 }] */
+    /* JADX WARN: Code duplicated, block: B:128:0x01b0 A[EXC_TOP_SPLITTER, SYNTHETIC] */
+    /* JADX WARN: Code duplicated, block: B:136:0x01b4 A[EXC_TOP_SPLITTER, SYNTHETIC] */
+    /* JADX WARN: Code duplicated, block: B:138:0x01d2 A[EXC_TOP_SPLITTER, SYNTHETIC] */
+    /* JADX WARN: Code duplicated, block: B:16:0x0039  */
+    /* JADX WARN: Code duplicated, block: B:19:0x0045  */
+    /* JADX WARN: Code duplicated, block: B:22:0x004b  */
+    /* JADX WARN: Code duplicated, block: B:24:0x0074  */
+    /* JADX WARN: Code duplicated, block: B:27:0x0083  */
+    /* JADX WARN: Code duplicated, block: B:29:0x008b  */
+    /* JADX WARN: Code duplicated, block: B:32:0x0093  */
+    /* JADX WARN: Code duplicated, block: B:35:0x009b  */
+    /* JADX WARN: Code duplicated, block: B:38:0x00a6  */
+    /* JADX WARN: Code duplicated, block: B:41:0x00ae  */
+    /* JADX WARN: Code duplicated, block: B:44:0x00b6  */
+    /* JADX WARN: Code duplicated, block: B:47:0x00be  */
+    /* JADX WARN: Code duplicated, block: B:50:0x00c6  */
+    /* JADX WARN: Code duplicated, block: B:53:0x00ce  */
+    /* JADX WARN: Code duplicated, block: B:56:0x00da  */
+    /* JADX WARN: Code duplicated, block: B:59:0x00e9  */
+    /* JADX WARN: Code duplicated, block: B:62:0x00f8  */
+    /* JADX WARN: Code duplicated, block: B:65:0x0107  */
+    /* JADX WARN: Code duplicated, block: B:68:0x0112  */
+    /* JADX WARN: Code duplicated, block: B:70:0x0120  */
+    /* JADX WARN: Code duplicated, block: B:73:0x013c  */
+    /* JADX WARN: Code duplicated, block: B:76:0x0154  */
+    /* JADX WARN: Code duplicated, block: B:79:0x0163  */
+    /* JADX WARN: Code duplicated, block: B:82:0x016e  */
+    /* JADX WARN: Code duplicated, block: B:85:0x0176  */
+    /* JADX WARN: Code duplicated, block: B:88:0x017e  */
+    /* JADX WARN: Code duplicated, block: B:91:0x0186  */
+    /* JADX WARN: Code duplicated, block: B:92:0x0189  */
+    /* JADX WARN: Code duplicated, block: B:96:0x019f  */
+    /* JADX WARN: Code duplicated, block: B:98:0x01a9  */
+    /* JADX WARN: Code duplicated, block: B:99:0x01ad  */
     @Override // android.app.Activity, android.view.ContextThemeWrapper, android.content.ContextWrapper
-    public final void attachBaseContext(Context r10) {
-        bg r0 = (bg) m();
-        r0.b0 = true;
-        int r2 = r0.f0;
-        if (r2 != (-100)) goto L6;
-        r2 = pf.o;
-    L6:
-        int r1 = r0.I(r10, r2);
-        if (pf.e(r10) == false) goto L9;
-        pf.q(r10);
-    L9:
-        wd2 r3 = bg.t(r10);
-        if ((r10 instanceof ContextThemeWrapper) == false) goto L15;
-        ((ContextThemeWrapper) r10).applyOverrideConfiguration(bg.x(r10, r1, r3, null, false));     // Catch: IllegalStateException -> L125
-    L123:
-        super.attachBaseContext(r10);
-        return;
-    L15:
-        if ((r10 instanceof ud0) == false) goto L20;
-        ((ud0) r10).a(bg.x(r10, r1, r3, null, false));     // Catch: IllegalStateException -> L126
-    L20:
-        if (bg.w0 == false) goto L123;
-        Configuration r4 = new Configuration();
-        r4.uiMode = -1;
-        r4.fontScale = 0.0f;
-        Configuration r5 = r10.createConfigurationContext(r4).getResources().getConfiguration();
-        Configuration r6 = r10.getResources().getConfiguration();
-        r5.uiMode = r6.uiMode;
-        if (r5.equals(r6) == true) goto L92;
-        Configuration r7 = new Configuration();
-        r7.fontScale = 0.0f;
-        if (r5.diff(r6) == 0) goto L93;
-        float r8 = r5.fontScale;
-        float r9 = r6.fontScale;
-        if (r8 == r9) goto L30;
-        r7.fontScale = r9;
-    L30:
-        int r11 = r5.mcc;
-        int r12 = r6.mcc;
-        if (r11 == r12) goto L33;
-        r7.mcc = r12;
-    L33:
-        int r13 = r5.mnc;
-        int r14 = r6.mnc;
-        if (r13 == r14) goto L36;
-        r7.mnc = r14;
-    L36:
-        uf.a(r5, r6, r7);
-        int r15 = r5.touchscreen;
-        int r16 = r6.touchscreen;
-        if (r15 == r16) goto L39;
-        r7.touchscreen = r16;
-    L39:
-        int r17 = r5.keyboard;
-        int r18 = r6.keyboard;
-        if (r17 == r18) goto L42;
-        r7.keyboard = r18;
-    L42:
-        int r19 = r5.keyboardHidden;
-        int r20 = r6.keyboardHidden;
-        if (r19 == r20) goto L45;
-        r7.keyboardHidden = r20;
-    L45:
-        int r21 = r5.navigation;
-        int r22 = r6.navigation;
-        if (r21 == r22) goto L48;
-        r7.navigation = r22;
-    L48:
-        int r23 = r5.navigationHidden;
-        int r24 = r6.navigationHidden;
-        if (r23 == r24) goto L51;
-        r7.navigationHidden = r24;
-    L51:
-        int r25 = r5.orientation;
-        int r26 = r6.orientation;
-        if (r25 == r26) goto L54;
-        r7.orientation = r26;
-    L54:
-        int r27 = r5.screenLayout & 15;
-        int r28 = r6.screenLayout & 15;
-        if (r27 == r28) goto L57;
-        r7.screenLayout |= r28;
-    L57:
-        int r29 = r5.screenLayout & 192;
-        int r30 = r6.screenLayout & 192;
-        if (r29 == r30) goto L60;
-        r7.screenLayout |= r30;
-    L60:
-        int r31 = r5.screenLayout & 48;
-        int r32 = r6.screenLayout & 48;
-        if (r31 == r32) goto L63;
-        r7.screenLayout |= r32;
-    L63:
-        int r33 = r5.screenLayout & 768;
-        int r34 = r6.screenLayout & 768;
-        if (r33 == r34) goto L67;
-        r7.screenLayout |= r34;
-    L67:
-        if (Build.VERSION.SDK_INT >= 26) goto L69;
-    L74:
-        int r35 = r5.uiMode & 15;
-        int r36 = r6.uiMode & 15;
-        if (r35 == r36) goto L77;
-        r7.uiMode |= r36;
-    L77:
-        int r37 = r5.uiMode & 48;
-        int r38 = r6.uiMode & 48;
-        if (r37 == r38) goto L80;
-        r7.uiMode |= r38;
-    L80:
-        int r39 = r5.screenWidthDp;
-        int r40 = r6.screenWidthDp;
-        if (r39 == r40) goto L83;
-        r7.screenWidthDp = r40;
-    L83:
-        int r41 = r5.screenHeightDp;
-        int r42 = r6.screenHeightDp;
-        if (r41 == r42) goto L86;
-        r7.screenHeightDp = r42;
-    L86:
-        int r43 = r5.smallestScreenWidthDp;
-        int r44 = r6.smallestScreenWidthDp;
-        if (r43 == r44) goto L89;
-        r7.smallestScreenWidthDp = r44;
-    L89:
-        int r45 = r5.densityDpi;
-        int r46 = r6.densityDpi;
-        if (r45 == r46) goto L93;
-        r7.densityDpi = r46;
-        goto L93
-    L69:
-        if ((j3.a(r5) & 3) == (j3.a(r6) & 3)) goto L72;
-        j3.q(r7, j3.a(r7) | (j3.a(r6) & 3));
-    L72:
-        if ((j3.a(r5) & 12) == (j3.a(r6) & 12)) goto L74;
-        j3.q(r7, j3.a(r7) | (j3.a(r6) & 12));
-    L93:
-        Configuration r47 = bg.x(r10, r1, r3, r7, true);
-        ud0 r48 = new ud0(r10, app.homemusic.R.style.Theme_AppCompat_Empty);
-        r48.a(r47);
-        if (r10.getTheme() == null) goto L122;
-        Resources.Theme r110 = r48.getTheme();
-        if (Build.VERSION.SDK_INT < 29) goto L99;
-        yh.k(r110);
-        goto L122
-    L99:
-        Object r49 = gi1.f;
-        monitor-enter(r49);
-    L105:
-        th = move-exception;
-        throw th;
-    L102:
-        if (gi1.h == false) goto L136;
-    L110:
-        Method r50 = gi1.g;     // Catch: Throwable -> L105
-        if (r50 != null) goto L138;
-    L118:
-        monitor-exit(r49);     // Catch: Throwable -> L105
-        goto L122
-    L138:
-        r50.invoke(r110, null);     // Catch: Throwable -> L105 Throwable -> L114 IllegalAccessException -> L116
-    L114:
-        e = move-exception;
-        Log.i("ResourcesCompat", "Failed to invoke rebase() method via reflection", e);     // Catch: Throwable -> L105
-        gi1.g = null;     // Catch: Throwable -> L105
-        goto L118
-    L136:
-        Method r51 = Resources.Theme.class.getDeclaredMethod("rebase", null);     // Catch: Throwable -> L105 NoSuchMethodException -> L107
-        gi1.g = r51;     // Catch: Throwable -> L105 NoSuchMethodException -> L107
-        r51.setAccessible(true);     // Catch: Throwable -> L105 NoSuchMethodException -> L107
-    L109:
-        gi1.h = true;     // Catch: Throwable -> L105
-        goto L110
-    L107:
-        e = move-exception;
-        Log.i("ResourcesCompat", "Failed to retrieve rebase() method", e);     // Catch: Throwable -> L105
-    L122:
-        r10 = r48;
-        goto L123
-    L92:
-        r7 = null;
-        goto L93
+    public final void attachBaseContext(Context context) {
+        Configuration configuration;
+        Configuration configuration2;
+        Configuration configuration3;
+        ud0 ud0Var;
+        Resources.Theme theme;
+        Method method;
+        float f;
+        float f2;
+        int i;
+        int i2;
+        int i3;
+        int i4;
+        int i5;
+        int i6;
+        int i7;
+        int i8;
+        int i9;
+        int i10;
+        int i11;
+        int i12;
+        int i13;
+        int i14;
+        int i15;
+        int i16;
+        int i17;
+        int i18;
+        int i19;
+        int i20;
+        int i21;
+        int i22;
+        int i23;
+        int i24;
+        int i25;
+        int i26;
+        int i27;
+        int i28;
+        int i29;
+        int i30;
+        int i31;
+        int i32;
+        int i33;
+        int i34;
+        int i35;
+        int i36;
+        bg bgVar = (bg) m();
+        bgVar.b0 = true;
+        int i37 = bgVar.f0;
+        if (i37 == -100) {
+            i37 = pf.o;
+        }
+        int I = bgVar.I(context, i37);
+        if (pf.e(context)) {
+            pf.q(context);
+        }
+        wd2 wd2VarT = bg.t(context);
+        if (context instanceof ContextThemeWrapper) {
+            try {
+                ((ContextThemeWrapper) context).applyOverrideConfiguration(bg.x(context, I, wd2VarT, null, false));
+            } catch (IllegalStateException unused) {
+                if (context instanceof ud0) {
+                    try {
+                        ((ud0) context).a(bg.x(context, I, wd2VarT, null, false));
+                    } catch (IllegalStateException unused2) {
+                        if (bg.w0) {
+                            Configuration configuration4 = new Configuration();
+                            configuration4.uiMode = -1;
+                            configuration4.fontScale = 0.0f;
+                            configuration = context.createConfigurationContext(configuration4).getResources().getConfiguration();
+                            configuration2 = context.getResources().getConfiguration();
+                            configuration.uiMode = configuration2.uiMode;
+                            if (configuration.equals(configuration2)) {
+                                configuration3 = null;
+                            } else {
+                                configuration3 = new Configuration();
+                                configuration3.fontScale = 0.0f;
+                                if (configuration.diff(configuration2) != 0) {
+                                    f = configuration.fontScale;
+                                    f2 = configuration2.fontScale;
+                                    if (f != f2) {
+                                        configuration3.fontScale = f2;
+                                    }
+                                    i = configuration.mcc;
+                                    i2 = configuration2.mcc;
+                                    if (i != i2) {
+                                        configuration3.mcc = i2;
+                                    }
+                                    i3 = configuration.mnc;
+                                    i4 = configuration2.mnc;
+                                    if (i3 != i4) {
+                                        configuration3.mnc = i4;
+                                    }
+                                    uf.a(configuration, configuration2, configuration3);
+                                    i5 = configuration.touchscreen;
+                                    i6 = configuration2.touchscreen;
+                                    if (i5 != i6) {
+                                        configuration3.touchscreen = i6;
+                                    }
+                                    i7 = configuration.keyboard;
+                                    i8 = configuration2.keyboard;
+                                    if (i7 != i8) {
+                                        configuration3.keyboard = i8;
+                                    }
+                                    i9 = configuration.keyboardHidden;
+                                    i10 = configuration2.keyboardHidden;
+                                    if (i9 != i10) {
+                                        configuration3.keyboardHidden = i10;
+                                    }
+                                    i11 = configuration.navigation;
+                                    i12 = configuration2.navigation;
+                                    if (i11 != i12) {
+                                        configuration3.navigation = i12;
+                                    }
+                                    i13 = configuration.navigationHidden;
+                                    i14 = configuration2.navigationHidden;
+                                    if (i13 != i14) {
+                                        configuration3.navigationHidden = i14;
+                                    }
+                                    i15 = configuration.orientation;
+                                    i16 = configuration2.orientation;
+                                    if (i15 != i16) {
+                                        configuration3.orientation = i16;
+                                    }
+                                    i17 = configuration.screenLayout & 15;
+                                    i18 = configuration2.screenLayout & 15;
+                                    if (i17 != i18) {
+                                        configuration3.screenLayout |= i18;
+                                    }
+                                    i19 = configuration.screenLayout & 192;
+                                    i20 = configuration2.screenLayout & 192;
+                                    if (i19 != i20) {
+                                        configuration3.screenLayout |= i20;
+                                    }
+                                    i21 = configuration.screenLayout & 48;
+                                    i22 = configuration2.screenLayout & 48;
+                                    if (i21 != i22) {
+                                        configuration3.screenLayout |= i22;
+                                    }
+                                    i23 = configuration.screenLayout & 768;
+                                    i24 = configuration2.screenLayout & 768;
+                                    if (i23 != i24) {
+                                        configuration3.screenLayout |= i24;
+                                    }
+                                    if (Build.VERSION.SDK_INT >= 26) {
+                                        if ((configuration.colorMode & 3) != (configuration2.colorMode & 3)) {
+                                            configuration3.colorMode |= configuration2.colorMode & 3;
+                                        }
+                                        if ((configuration.colorMode & 12) != (configuration2.colorMode & 12)) {
+                                            configuration3.colorMode |= configuration2.colorMode & 12;
+                                        }
+                                    }
+                                    i25 = configuration.uiMode & 15;
+                                    i26 = configuration2.uiMode & 15;
+                                    if (i25 != i26) {
+                                        configuration3.uiMode |= i26;
+                                    }
+                                    i27 = configuration.uiMode & 48;
+                                    i28 = configuration2.uiMode & 48;
+                                    if (i27 != i28) {
+                                        configuration3.uiMode |= i28;
+                                    }
+                                    i29 = configuration.screenWidthDp;
+                                    i30 = configuration2.screenWidthDp;
+                                    if (i29 != i30) {
+                                        configuration3.screenWidthDp = i30;
+                                    }
+                                    i31 = configuration.screenHeightDp;
+                                    i32 = configuration2.screenHeightDp;
+                                    if (i31 != i32) {
+                                        configuration3.screenHeightDp = i32;
+                                    }
+                                    i33 = configuration.smallestScreenWidthDp;
+                                    i34 = configuration2.smallestScreenWidthDp;
+                                    if (i33 != i34) {
+                                        configuration3.smallestScreenWidthDp = i34;
+                                    }
+                                    i35 = configuration.densityDpi;
+                                    i36 = configuration2.densityDpi;
+                                    if (i35 != i36) {
+                                        configuration3.densityDpi = i36;
+                                    }
+                                }
+                            }
+                            Configuration configurationX = bg.x(context, I, wd2VarT, configuration3, true);
+                            ud0Var = new ud0(context, app.homemusic.R.style.Theme_AppCompat_Empty);
+                            ud0Var.a(configurationX);
+                            try {
+                                if (context.getTheme() != null) {
+                                    theme = ud0Var.getTheme();
+                                    if (Build.VERSION.SDK_INT >= 29) {
+                                        yh.k(theme);
+                                    } else {
+                                        synchronized (gi1.f) {
+                                            if (gi1.h) {
+                                                method = gi1.g;
+                                                if (method != null) {
+                                                    method.invoke(theme, null);
+                                                }
+                                            } else {
+                                                try {
+                                                    Method declaredMethod = Resources.Theme.class.getDeclaredMethod("rebase", null);
+                                                    gi1.g = declaredMethod;
+                                                    declaredMethod.setAccessible(true);
+                                                } catch (NoSuchMethodException e) {
+                                                    Log.i("ResourcesCompat", "Failed to retrieve rebase() method", e);
+                                                }
+                                                gi1.h = true;
+                                                method = gi1.g;
+                                                if (method != null) {
+                                                    try {
+                                                        method.invoke(theme, null);
+                                                    } catch (IllegalAccessException | InvocationTargetException e2) {
+                                                        Log.i("ResourcesCompat", "Failed to invoke rebase() method via reflection", e2);
+                                                        gi1.g = null;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            } catch (NullPointerException unused3) {
+                            }
+                            context = ud0Var;
+                        }
+                    }
+                } else if (bg.w0) {
+                    Configuration configuration5 = new Configuration();
+                    configuration5.uiMode = -1;
+                    configuration5.fontScale = 0.0f;
+                    configuration = context.createConfigurationContext(configuration5).getResources().getConfiguration();
+                    configuration2 = context.getResources().getConfiguration();
+                    configuration.uiMode = configuration2.uiMode;
+                    if (configuration.equals(configuration2)) {
+                        configuration3 = new Configuration();
+                        configuration3.fontScale = 0.0f;
+                        if (configuration.diff(configuration2) != 0) {
+                            f = configuration.fontScale;
+                            f2 = configuration2.fontScale;
+                            if (f != f2) {
+                                configuration3.fontScale = f2;
+                            }
+                            i = configuration.mcc;
+                            i2 = configuration2.mcc;
+                            if (i != i2) {
+                                configuration3.mcc = i2;
+                            }
+                            i3 = configuration.mnc;
+                            i4 = configuration2.mnc;
+                            if (i3 != i4) {
+                                configuration3.mnc = i4;
+                            }
+                            uf.a(configuration, configuration2, configuration3);
+                            i5 = configuration.touchscreen;
+                            i6 = configuration2.touchscreen;
+                            if (i5 != i6) {
+                                configuration3.touchscreen = i6;
+                            }
+                            i7 = configuration.keyboard;
+                            i8 = configuration2.keyboard;
+                            if (i7 != i8) {
+                                configuration3.keyboard = i8;
+                            }
+                            i9 = configuration.keyboardHidden;
+                            i10 = configuration2.keyboardHidden;
+                            if (i9 != i10) {
+                                configuration3.keyboardHidden = i10;
+                            }
+                            i11 = configuration.navigation;
+                            i12 = configuration2.navigation;
+                            if (i11 != i12) {
+                                configuration3.navigation = i12;
+                            }
+                            i13 = configuration.navigationHidden;
+                            i14 = configuration2.navigationHidden;
+                            if (i13 != i14) {
+                                configuration3.navigationHidden = i14;
+                            }
+                            i15 = configuration.orientation;
+                            i16 = configuration2.orientation;
+                            if (i15 != i16) {
+                                configuration3.orientation = i16;
+                            }
+                            i17 = configuration.screenLayout & 15;
+                            i18 = configuration2.screenLayout & 15;
+                            if (i17 != i18) {
+                                configuration3.screenLayout |= i18;
+                            }
+                            i19 = configuration.screenLayout & 192;
+                            i20 = configuration2.screenLayout & 192;
+                            if (i19 != i20) {
+                                configuration3.screenLayout |= i20;
+                            }
+                            i21 = configuration.screenLayout & 48;
+                            i22 = configuration2.screenLayout & 48;
+                            if (i21 != i22) {
+                                configuration3.screenLayout |= i22;
+                            }
+                            i23 = configuration.screenLayout & 768;
+                            i24 = configuration2.screenLayout & 768;
+                            if (i23 != i24) {
+                                configuration3.screenLayout |= i24;
+                            }
+                            if (Build.VERSION.SDK_INT >= 26) {
+                                if ((configuration.colorMode & 3) != (configuration2.colorMode & 3)) {
+                                    configuration3.colorMode |= configuration2.colorMode & 3;
+                                }
+                                if ((configuration.colorMode & 12) != (configuration2.colorMode & 12)) {
+                                    configuration3.colorMode |= configuration2.colorMode & 12;
+                                }
+                            }
+                            i25 = configuration.uiMode & 15;
+                            i26 = configuration2.uiMode & 15;
+                            if (i25 != i26) {
+                                configuration3.uiMode |= i26;
+                            }
+                            i27 = configuration.uiMode & 48;
+                            i28 = configuration2.uiMode & 48;
+                            if (i27 != i28) {
+                                configuration3.uiMode |= i28;
+                            }
+                            i29 = configuration.screenWidthDp;
+                            i30 = configuration2.screenWidthDp;
+                            if (i29 != i30) {
+                                configuration3.screenWidthDp = i30;
+                            }
+                            i31 = configuration.screenHeightDp;
+                            i32 = configuration2.screenHeightDp;
+                            if (i31 != i32) {
+                                configuration3.screenHeightDp = i32;
+                            }
+                            i33 = configuration.smallestScreenWidthDp;
+                            i34 = configuration2.smallestScreenWidthDp;
+                            if (i33 != i34) {
+                                configuration3.smallestScreenWidthDp = i34;
+                            }
+                            i35 = configuration.densityDpi;
+                            i36 = configuration2.densityDpi;
+                            if (i35 != i36) {
+                                configuration3.densityDpi = i36;
+                            }
+                        }
+                    } else {
+                        configuration3 = null;
+                    }
+                    Configuration configurationX2 = bg.x(context, I, wd2VarT, configuration3, true);
+                    ud0Var = new ud0(context, app.homemusic.R.style.Theme_AppCompat_Empty);
+                    ud0Var.a(configurationX2);
+                    if (context.getTheme() != null) {
+                        theme = ud0Var.getTheme();
+                        if (Build.VERSION.SDK_INT >= 29) {
+                            yh.k(theme);
+                        } else {
+                            synchronized (gi1.f) {
+                                if (gi1.h) {
+                                    Method declaredMethod2 = Resources.Theme.class.getDeclaredMethod("rebase", null);
+                                    gi1.g = declaredMethod2;
+                                    declaredMethod2.setAccessible(true);
+                                    gi1.h = true;
+                                    method = gi1.g;
+                                    if (method != null) {
+                                        method.invoke(theme, null);
+                                    }
+                                } else {
+                                    method = gi1.g;
+                                    if (method != null) {
+                                        method.invoke(theme, null);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    context = ud0Var;
+                }
+            }
+        } else if (context instanceof ud0) {
+            ((ud0) context).a(bg.x(context, I, wd2VarT, null, false));
+        } else if (bg.w0) {
+            Configuration configuration6 = new Configuration();
+            configuration6.uiMode = -1;
+            configuration6.fontScale = 0.0f;
+            configuration = context.createConfigurationContext(configuration6).getResources().getConfiguration();
+            configuration2 = context.getResources().getConfiguration();
+            configuration.uiMode = configuration2.uiMode;
+            if (configuration.equals(configuration2)) {
+                configuration3 = new Configuration();
+                configuration3.fontScale = 0.0f;
+                if (configuration.diff(configuration2) != 0) {
+                    f = configuration.fontScale;
+                    f2 = configuration2.fontScale;
+                    if (f != f2) {
+                        configuration3.fontScale = f2;
+                    }
+                    i = configuration.mcc;
+                    i2 = configuration2.mcc;
+                    if (i != i2) {
+                        configuration3.mcc = i2;
+                    }
+                    i3 = configuration.mnc;
+                    i4 = configuration2.mnc;
+                    if (i3 != i4) {
+                        configuration3.mnc = i4;
+                    }
+                    uf.a(configuration, configuration2, configuration3);
+                    i5 = configuration.touchscreen;
+                    i6 = configuration2.touchscreen;
+                    if (i5 != i6) {
+                        configuration3.touchscreen = i6;
+                    }
+                    i7 = configuration.keyboard;
+                    i8 = configuration2.keyboard;
+                    if (i7 != i8) {
+                        configuration3.keyboard = i8;
+                    }
+                    i9 = configuration.keyboardHidden;
+                    i10 = configuration2.keyboardHidden;
+                    if (i9 != i10) {
+                        configuration3.keyboardHidden = i10;
+                    }
+                    i11 = configuration.navigation;
+                    i12 = configuration2.navigation;
+                    if (i11 != i12) {
+                        configuration3.navigation = i12;
+                    }
+                    i13 = configuration.navigationHidden;
+                    i14 = configuration2.navigationHidden;
+                    if (i13 != i14) {
+                        configuration3.navigationHidden = i14;
+                    }
+                    i15 = configuration.orientation;
+                    i16 = configuration2.orientation;
+                    if (i15 != i16) {
+                        configuration3.orientation = i16;
+                    }
+                    i17 = configuration.screenLayout & 15;
+                    i18 = configuration2.screenLayout & 15;
+                    if (i17 != i18) {
+                        configuration3.screenLayout |= i18;
+                    }
+                    i19 = configuration.screenLayout & 192;
+                    i20 = configuration2.screenLayout & 192;
+                    if (i19 != i20) {
+                        configuration3.screenLayout |= i20;
+                    }
+                    i21 = configuration.screenLayout & 48;
+                    i22 = configuration2.screenLayout & 48;
+                    if (i21 != i22) {
+                        configuration3.screenLayout |= i22;
+                    }
+                    i23 = configuration.screenLayout & 768;
+                    i24 = configuration2.screenLayout & 768;
+                    if (i23 != i24) {
+                        configuration3.screenLayout |= i24;
+                    }
+                    if (Build.VERSION.SDK_INT >= 26) {
+                        if ((configuration.colorMode & 3) != (configuration2.colorMode & 3)) {
+                            configuration3.colorMode |= configuration2.colorMode & 3;
+                        }
+                        if ((configuration.colorMode & 12) != (configuration2.colorMode & 12)) {
+                            configuration3.colorMode |= configuration2.colorMode & 12;
+                        }
+                    }
+                    i25 = configuration.uiMode & 15;
+                    i26 = configuration2.uiMode & 15;
+                    if (i25 != i26) {
+                        configuration3.uiMode |= i26;
+                    }
+                    i27 = configuration.uiMode & 48;
+                    i28 = configuration2.uiMode & 48;
+                    if (i27 != i28) {
+                        configuration3.uiMode |= i28;
+                    }
+                    i29 = configuration.screenWidthDp;
+                    i30 = configuration2.screenWidthDp;
+                    if (i29 != i30) {
+                        configuration3.screenWidthDp = i30;
+                    }
+                    i31 = configuration.screenHeightDp;
+                    i32 = configuration2.screenHeightDp;
+                    if (i31 != i32) {
+                        configuration3.screenHeightDp = i32;
+                    }
+                    i33 = configuration.smallestScreenWidthDp;
+                    i34 = configuration2.smallestScreenWidthDp;
+                    if (i33 != i34) {
+                        configuration3.smallestScreenWidthDp = i34;
+                    }
+                    i35 = configuration.densityDpi;
+                    i36 = configuration2.densityDpi;
+                    if (i35 != i36) {
+                        configuration3.densityDpi = i36;
+                    }
+                }
+            } else {
+                configuration3 = null;
+            }
+            Configuration configurationX3 = bg.x(context, I, wd2VarT, configuration3, true);
+            ud0Var = new ud0(context, app.homemusic.R.style.Theme_AppCompat_Empty);
+            ud0Var.a(configurationX3);
+            if (context.getTheme() != null) {
+                theme = ud0Var.getTheme();
+                if (Build.VERSION.SDK_INT >= 29) {
+                    yh.k(theme);
+                } else {
+                    synchronized (gi1.f) {
+                        if (gi1.h) {
+                            Method declaredMethod3 = Resources.Theme.class.getDeclaredMethod("rebase", null);
+                            gi1.g = declaredMethod3;
+                            declaredMethod3.setAccessible(true);
+                            gi1.h = true;
+                            method = gi1.g;
+                            if (method != null) {
+                                method.invoke(theme, null);
+                            }
+                        } else {
+                            method = gi1.g;
+                            if (method != null) {
+                                method.invoke(theme, null);
+                            }
+                        }
+                    }
+                }
+            }
+            context = ud0Var;
+        }
+        super.attachBaseContext(context);
     }
 
     @Override // android.app.Activity
     public final void closeOptionsMenu() {
-        l93 r0 = n();
-        if (getWindow().hasFeature(0) == false) goto L9;
-        if (r0 != null) goto L6;
-    L7:
-        super.closeOptionsMenu();
-        return;
-    L6:
-        if (r0.q() == false) goto L7;
-        return;
+        l93 l93VarN = n();
+        if (getWindow().hasFeature(0)) {
+            if (l93VarN == null || !l93VarN.q()) {
+                super.closeOptionsMenu();
+            }
+        }
     }
 
     @Override // defpackage.k70, android.app.Activity, android.view.Window.Callback
-    public boolean dispatchKeyEvent(KeyEvent r4) {
-        int r0 = r4.getKeyCode();
-        l93 r1 = n();
-        if (r0 != 82) goto L10;
-        if (r1 == null) goto L10;
-        if (r1.Q(r4) == false) goto L10;
-        return true;
-    L10:
-        return super.dispatchKeyEvent(r4);
+    public boolean dispatchKeyEvent(KeyEvent keyEvent) {
+        int keyCode = keyEvent.getKeyCode();
+        l93 l93VarN = n();
+        if (keyCode == 82 && l93VarN != null && l93VarN.Q(keyEvent)) {
+            return true;
+        }
+        return super.dispatchKeyEvent(keyEvent);
     }
 
     @Override // android.app.Activity
-    public final View findViewById(int r1) {
-        bg r0 = (bg) m();
-        r0.B();
-        return r0.y.findViewById(r1);
+    public final View findViewById(int i) {
+        bg bgVar = (bg) m();
+        bgVar.B();
+        return bgVar.y.findViewById(i);
     }
 
     @Override // android.app.Activity
     public final MenuInflater getMenuInflater() {
-        bg r2 = (bg) m();
-        if (r2.B != null) goto L10;
-        r2.G();
-        l93 r1 = r2.A;
-        if (r1 == null) goto L7;
-        Context r3 = r1.J();
-    L8:
-        r2.B = new no4(r3);
-        goto L10
-    L7:
-        r3 = r2.x;
-    L10:
-        return r2.B;
+        bg bgVar = (bg) m();
+        if (bgVar.B == null) {
+            bgVar.G();
+            l93 l93Var = bgVar.A;
+            bgVar.B = new no4(l93Var != null ? l93Var.J() : bgVar.x);
+        }
+        return bgVar.B;
     }
 
     @Override // android.view.ContextThemeWrapper, android.content.ContextWrapper, android.content.Context
     public final Resources getResources() {
-        int r0 = a45.a;
+        int i = a45.a;
         return super.getResources();
     }
 
@@ -285,88 +653,70 @@ public abstract class df extends nc1 implements gf {
     }
 
     public final pf m() {
-        if (this.M != null) goto L6;
-        ia4 r0 = pf.n;
-        this.M = new bg(this, null, this, this);
-    L6:
+        if (this.M == null) {
+            ia4 ia4Var = pf.n;
+            this.M = new bg(this, null, this, this);
+        }
         return this.M;
     }
 
     public final l93 n() {
-        bg r0 = (bg) m();
-        r0.G();
-        return r0.A;
+        bg bgVar = (bg) m();
+        bgVar.G();
+        return bgVar.A;
     }
 
-    public final void o(Toolbar r4) {
-        bg r3 = (bg) m();
-        if ((r3.w instanceof Activity) == true) goto L5;
-        return;
-    L5:
-        r3.G();
-        l93 r0 = r3.A;
-        if ((r0 instanceof ia5) == true) goto L20;
-        r3.B = null;
-        if (r0 == null) goto L10;
-        r0.O();
-    L10:
-        r3.A = null;
-        if (r4 == null) goto L17;
-        Object r1 = r3.w;
-        if ((r1 instanceof Activity) == false) goto L15;
-        CharSequence r2 = ((Activity) r1).getTitle();
-    L16:
-        cv4 r5 = new cv4(r4, r2, r3.z);
-        r3.A = r5;
-        xf r6 = r3.z;
-        r6.o = r5.f;
-        r4.setBackInvokedCallbackEnabled(true);
-    L18:
-        r3.d();
-        return;
-    L15:
-        r2 = r3.C;
-        goto L16
-    L17:
-        r3.z.o = null;
-        goto L18
-    L20:
-        kf2.o("This Activity already has an action bar supplied by the window decor. Do not request Window.FEATURE_SUPPORT_ACTION_BAR and set windowActionBar to false in your theme to use a Toolbar instead.");
+    public final void o(Toolbar toolbar) {
+        bg bgVar = (bg) m();
+        if (bgVar.w instanceof Activity) {
+            bgVar.G();
+            l93 l93Var = bgVar.A;
+            if (l93Var instanceof ia5) {
+                kf2.o("This Activity already has an action bar supplied by the window decor. Do not request Window.FEATURE_SUPPORT_ACTION_BAR and set windowActionBar to false in your theme to use a Toolbar instead.");
+                return;
+            }
+            bgVar.B = null;
+            if (l93Var != null) {
+                l93Var.O();
+            }
+            bgVar.A = null;
+            if (toolbar != null) {
+                Object obj = bgVar.w;
+                cv4 cv4Var = new cv4(toolbar, obj instanceof Activity ? ((Activity) obj).getTitle() : bgVar.C, bgVar.z);
+                bgVar.A = cv4Var;
+                bgVar.z.o = cv4Var.f;
+                toolbar.setBackInvokedCallbackEnabled(true);
+            } else {
+                bgVar.z.o = null;
+            }
+            bgVar.d();
+        }
     }
 
     @Override // defpackage.l70, android.app.Activity, android.content.ComponentCallbacks
-    public final void onConfigurationChanged(Configuration r4) {
-        super.onConfigurationChanged(r4);
-        bg r3 = (bg) m();
-        if (r3.S == true) goto L5;
-    L9:
-        fg r5 = fg.a();
-        Context r0 = r3.x;
-        monitor-enter(r5);
-        c14 r1 = r5.a;     // Catch: Throwable -> L25
-        monitor-enter(r1);     // Catch: Throwable -> L25
-        xe2 r2 = (xe2) r1.b.get(r0);     // Catch: Throwable -> L17
-        if (r2 == null) goto L19;
-        r2.a();     // Catch: Throwable -> L17
-    L19:
-        monitor-exit(r1);     // Catch: Throwable -> L25
-        monitor-exit(r5);
-        r3.e0 = new Configuration(r3.x.getResources().getConfiguration());
-        r3.r(false, false);
-        return;
-    L17:
-        th = move-exception;
-        throw th;     // Catch: Throwable -> L25
-    L25:
-        th = move-exception;
-        throw th;
-    L5:
-        if (r3.M == false) goto L9;
-        r3.G();
-        l93 r6 = r3.A;
-        if (r6 == null) goto L9;
-        r6.N();
-        goto L9
+    public final void onConfigurationChanged(Configuration configuration) {
+        super.onConfigurationChanged(configuration);
+        bg bgVar = (bg) m();
+        if (bgVar.S && bgVar.M) {
+            bgVar.G();
+            l93 l93Var = bgVar.A;
+            if (l93Var != null) {
+                l93Var.N();
+            }
+        }
+        fg fgVarA = fg.a();
+        Context context = bgVar.x;
+        synchronized (fgVarA) {
+            c14 c14Var = fgVarA.a;
+            synchronized (c14Var) {
+                xe2 xe2Var = (xe2) c14Var.b.get(context);
+                if (xe2Var != null) {
+                    xe2Var.a();
+                }
+            }
+        }
+        bgVar.e0 = new Configuration(bgVar.x.getResources().getConfiguration());
+        bgVar.r(false, false);
     }
 
     @Override // android.app.Activity, android.view.Window.Callback
@@ -380,79 +730,64 @@ public abstract class df extends nc1 implements gf {
     }
 
     @Override // android.app.Activity, android.view.KeyEvent.Callback
-    public final boolean onKeyDown(int r3, KeyEvent r4) {
-        if (Build.VERSION.SDK_INT >= 26) goto L21;
-        if (r4.isCtrlPressed() == true) goto L21;
-        if (KeyEvent.metaStateHasNoModifiers(r4.getMetaState()) == true) goto L21;
-        if (r4.getRepeatCount() != 0) goto L21;
-        if (KeyEvent.isModifierKey(r4.getKeyCode()) == true) goto L21;
-        Window r0 = getWindow();
-        if (r0 == null) goto L21;
-        if (r0.getDecorView() == null) goto L21;
-        if (r0.getDecorView().dispatchKeyShortcutEvent(r4) == false) goto L21;
+    public final boolean onKeyDown(int i, KeyEvent keyEvent) {
+        Window window;
+        if (Build.VERSION.SDK_INT >= 26 || keyEvent.isCtrlPressed() || KeyEvent.metaStateHasNoModifiers(keyEvent.getMetaState()) || keyEvent.getRepeatCount() != 0 || KeyEvent.isModifierKey(keyEvent.getKeyCode()) || (window = getWindow()) == null || window.getDecorView() == null || !window.getDecorView().dispatchKeyShortcutEvent(keyEvent)) {
+            return super.onKeyDown(i, keyEvent);
+        }
         return true;
-    L21:
-        return super.onKeyDown(r3, r4);
     }
 
     @Override // defpackage.nc1, defpackage.l70, android.app.Activity, android.view.Window.Callback
-    public final boolean onMenuItemSelected(int r3, MenuItem r4) {
-        if (super.onMenuItemSelected(r3, r4) == true) goto L26;
-        l93 r5 = n();
-        if (r4.getItemId() != 16908332) goto L29;
-        if (r5 != null) goto L9;
-        return false;
-    L9:
-        if ((r5.I() & 4) == 0) goto L34;
-        Intent r6 = te5.y(this);
-        if (r6 != null) goto L13;
-        return false;
-    L13:
-        if (shouldUpRecreateTask(r6) == false) goto L27;
-        hr4 r7 = new hr4(this);
-        Intent r8 = te5.y(this);
-        if (r8 != null) goto L17;
-        r8 = te5.y(this);
-    L17:
-        if (r8 == null) goto L22;
-        ComponentName r1 = r8.getComponent();
-        if (r1 != null) goto L21;
-        r1 = r8.resolveActivity(r7.o.getPackageManager());
-    L21:
-        r7.a(r1);
-        r7.n.add(r8);
-    L22:
-        r7.b();
-        finishAffinity();     // Catch: IllegalStateException -> L25
-    L25:
-        finish();
-        goto L26
-    L27:
-        navigateUpTo(r6);
-        return true;
-    L34:
-        return false;
-    L29:
-        return false;
-    L26:
+    public final boolean onMenuItemSelected(int i, MenuItem menuItem) {
+        Intent intentY;
+        if (!super.onMenuItemSelected(i, menuItem)) {
+            l93 l93VarN = n();
+            if (menuItem.getItemId() != 16908332 || l93VarN == null || (l93VarN.I() & 4) == 0 || (intentY = te5.y(this)) == null) {
+                return false;
+            }
+            if (!shouldUpRecreateTask(intentY)) {
+                navigateUpTo(intentY);
+                return true;
+            }
+            hr4 hr4Var = new hr4(this);
+            Intent intentY2 = te5.y(this);
+            if (intentY2 == null) {
+                intentY2 = te5.y(this);
+            }
+            if (intentY2 != null) {
+                ComponentName component = intentY2.getComponent();
+                if (component == null) {
+                    component = intentY2.resolveActivity(hr4Var.o.getPackageManager());
+                }
+                hr4Var.a(component);
+                hr4Var.n.add(intentY2);
+            }
+            hr4Var.b();
+            try {
+                finishAffinity();
+            } catch (IllegalStateException unused) {
+                finish();
+            }
+        }
         return true;
     }
 
     @Override // android.app.Activity
-    public final void onPostCreate(Bundle r1) {
-        super.onPostCreate(r1);
+    public final void onPostCreate(Bundle bundle) {
+        super.onPostCreate(bundle);
         ((bg) m()).B();
     }
 
     @Override // defpackage.nc1, android.app.Activity
     public final void onPostResume() {
         super.onPostResume();
-        bg r1 = (bg) m();
-        r1.G();
-        l93 r2 = r1.A;
-        if (r2 == null) goto L6;
-        r2.j0(true);
-        return;
+        bg bgVar = (bg) m();
+        bgVar.G();
+        l93 l93Var = bgVar.A;
+        if (l93Var != null) {
+            l93Var.j0(true);
+        }
     }
 
     @Override // defpackage.nc1, android.app.Activity
@@ -464,54 +799,51 @@ public abstract class df extends nc1 implements gf {
     @Override // defpackage.nc1, android.app.Activity
     public void onStop() {
         super.onStop();
-        bg r1 = (bg) m();
-        r1.G();
-        l93 r2 = r1.A;
-        if (r2 == null) goto L6;
-        r2.j0(false);
-        return;
+        bg bgVar = (bg) m();
+        bgVar.G();
+        l93 l93Var = bgVar.A;
+        if (l93Var != null) {
+            l93Var.j0(false);
+        }
     }
 
     @Override // android.app.Activity
-    public final void onTitleChanged(CharSequence r1, int r2) {
-        super.onTitleChanged(r1, r2);
-        m().p(r1);
+    public final void onTitleChanged(CharSequence charSequence, int i) {
+        super.onTitleChanged(charSequence, i);
+        m().p(charSequence);
     }
 
     @Override // android.app.Activity
     public final void openOptionsMenu() {
-        l93 r0 = n();
-        if (getWindow().hasFeature(0) == false) goto L9;
-        if (r0 != null) goto L6;
-    L7:
-        super.openOptionsMenu();
-        return;
-    L6:
-        if (r0.R() == false) goto L7;
-        return;
+        l93 l93VarN = n();
+        if (getWindow().hasFeature(0)) {
+            if (l93VarN == null || !l93VarN.R()) {
+                super.openOptionsMenu();
+            }
+        }
     }
 
     @Override // defpackage.l70, android.app.Activity
-    public final void setContentView(int r1) {
+    public final void setContentView(int i) {
         j();
-        m().k(r1);
+        m().k(i);
     }
 
     @Override // android.app.Activity, android.view.ContextThemeWrapper, android.content.ContextWrapper, android.content.Context
-    public final void setTheme(int r1) {
-        super.setTheme(r1);
-        ((bg) m()).g0 = r1;
+    public final void setTheme(int i) {
+        super.setTheme(i);
+        ((bg) m()).g0 = i;
     }
 
     @Override // defpackage.l70, android.app.Activity
-    public void setContentView(View r1) {
+    public void setContentView(View view) {
         j();
-        m().l(r1);
+        m().l(view);
     }
 
     @Override // defpackage.l70, android.app.Activity
-    public final void setContentView(View r1, ViewGroup.LayoutParams r2) {
+    public final void setContentView(View view, ViewGroup.LayoutParams layoutParams) {
         j();
-        m().n(r1, r2);
+        m().n(view, layoutParams);
     }
 }

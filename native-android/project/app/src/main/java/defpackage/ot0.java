@@ -6,8 +6,8 @@ public final class ot0 {
     public final String a;
     public final String b;
 
-    public ot0(String r1, String r2) {
-        this.a = r1;
-        this.b = r2;
+    public ot0(String str, String str2) {
+        this.a = str;
+        this.b = str2;
     }
 }

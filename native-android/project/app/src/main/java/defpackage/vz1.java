@@ -5,70 +5,44 @@ import android.graphics.Insets;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class vz1 {
-    public static final vz1 e = null;
+    public static final vz1 e = new vz1(0, 0, 0, 0);
     public final int a;
     public final int b;
     public final int c;
     public final int d;
 
-    static {
-        e = new vz1(0, 0, 0, 0);
+    public vz1(int i, int i2, int i3, int i4) {
+        this.a = i;
+        this.b = i2;
+        this.c = i3;
+        this.d = i4;
     }
 
-    public vz1(int r1, int r2, int r3, int r4) {
-        this.a = r1;
-        this.b = r2;
-        this.c = r3;
-        this.d = r4;
+    public static vz1 a(vz1 vz1Var, vz1 vz1Var2) {
+        return b(Math.max(vz1Var.a, vz1Var2.a), Math.max(vz1Var.b, vz1Var2.b), Math.max(vz1Var.c, vz1Var2.c), Math.max(vz1Var.d, vz1Var2.d));
     }
 
-    public static vz1 a(vz1 r4, vz1 r5) {
-        return b(Math.max(r4.a, r5.a), Math.max(r4.b, r5.b), Math.max(r4.c, r5.c), Math.max(r4.d, r5.d));
+    public static vz1 b(int i, int i2, int i3, int i4) {
+        return (i == 0 && i2 == 0 && i3 == 0 && i4 == 0) ? e : new vz1(i, i2, i3, i4);
     }
 
-    public static vz1 b(int r1, int r2, int r3, int r4) {
-        if (r1 != 0) goto L9;
-        if (r2 != 0) goto L9;
-        if (r3 != 0) goto L9;
-        if (r4 != 0) goto L9;
-        return e;
-    L9:
-        return new vz1(r1, r2, r3, r4);
-    }
-
-    public static vz1 c(Insets r3) {
-        return b(kz.a(r3), yj1.a(r3), yj1.q(r3), yj1.v(r3));
+    public static vz1 c(Insets insets) {
+        return b(insets.left, insets.top, insets.right, insets.bottom);
     }
 
     public final Insets d() {
-        int r0 = this.c;
-        int r1 = this.d;
-        return yh.j(this.a, this.b, r0, r1);
+        return yh.j(this.a, this.b, this.c, this.d);
     }
 
-    public final boolean equals(Object r5) {
-        if (this != r5) goto L6;
-        return true;
-    L6:
-        if (r5 != null) goto L8;
-    L23:
-        return false;
-    L8:
-        if (vz1.class != r5.getClass()) goto L23;
-        vz1 r6 = (vz1) r5;
-        if (this.d == r6.d) goto L14;
-        return false;
-    L14:
-        if (this.a == r6.a) goto L17;
-        return false;
-    L17:
-        if (this.c == r6.c) goto L20;
-        return false;
-    L20:
-        if (this.b == r6.b) goto L22;
-        return false;
-    L22:
-        return true;
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || vz1.class != obj.getClass()) {
+            return false;
+        }
+        vz1 vz1Var = (vz1) obj;
+        return this.d == vz1Var.d && this.a == vz1Var.a && this.c == vz1Var.c && this.b == vz1Var.b;
     }
 
     public final int hashCode() {

@@ -13,8 +13,8 @@ public class n8 extends hd {
     public final k03 h;
     public k03 i;
 
-    public n8(Application r2) {
-        super(r2);
+    public n8(Application application) {
+        super(application);
         this.h = new k03(null);
         this.c = new rv2(27);
         this.d = new pa(12);

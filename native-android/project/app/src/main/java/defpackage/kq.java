@@ -7,12 +7,9 @@ import androidx.media3.exoplayer.ExoPlaybackException;
 public abstract class kq implements rk3 {
     public boolean A;
     public boolean B;
-    public cu4 C;
     public mt2 D;
     public pn0 E;
-    public final Object n;
     public final int o;
-    public final gp3 p;
     public dz3 q;
     public int r;
     public ik3 s;
@@ -22,124 +19,98 @@ public abstract class kq implements rk3 {
     public tb1[] w;
     public long x;
     public long y;
-    public long z;
+    public final Object n = new Object();
+    public final gp3 p = new gp3(9, false);
+    public long z = Long.MIN_VALUE;
+    public cu4 C = cu4.a;
 
-    public kq(int r3) {
-        this.n = new Object();
-        this.o = r3;
-        this.p = new gp3(9, false);
-        this.z = Long.MIN_VALUE;
-        this.C = cu4.a;
+    public kq(int i) {
+        this.o = i;
     }
 
-    public static int a(int r0, int r1, int r2, int r3) {
-        return (((r0 | r1) | r2) | 128) | r3;
+    public static int a(int i, int i2, int i3, int i4) {
+        return i | i2 | i3 | 128 | i4;
     }
 
-    public static boolean n(int r1, boolean r2) {
-        int r3 = r1 & 7;
-        if (r3 == 4) goto L10;
-        if (r2 == true) goto L6;
-        return false;
-    L6:
-        if (r3 == 3) goto L13;
-        return false;
-    L13:
-        return true;
-    L10:
+    public static boolean n(int i, boolean z) {
+        int i2 = i & 7;
+        if (i2 != 4) {
+            return z && i2 == 3;
+        }
         return true;
     }
 
-    public abstract void A(long r1, long r3);
+    public abstract void A(long j, long j2);
 
-    public final void B(tb1[] r8, q44 r9, long r10, long r12, mt2 r14) {
+    public final void B(tb1[] tb1VarArr, q44 q44Var, long j, long j2, mt2 mt2Var) {
         rr2.w(!this.A);
-        this.v = r9;
-        this.D = r14;
-        if (this.z != Long.MIN_VALUE) goto L5;
-        this.z = r10;
-    L5:
-        this.w = r8;
-        this.x = r12;
-        x(r8, r10, r12, r14);
+        this.v = q44Var;
+        this.D = mt2Var;
+        if (this.z == Long.MIN_VALUE) {
+            this.z = j;
+        }
+        this.w = tb1VarArr;
+        this.x = j2;
+        x(tb1VarArr, j, j2, mt2Var);
     }
 
-    public final void C(long r4, boolean r6, boolean r7) {
+    public final void C(long j, boolean z, boolean z2) {
         this.A = false;
-        this.y = r4;
-        this.z = r4;
-        if (r7 == true) goto L8;
-        q44 r8 = this.v;
-        r8.getClass();
-        if (r8.u(r4 - this.x) == 0) goto L7;
-        r7 = true;
-        goto L8
-    L7:
-        r7 = false;
-    L8:
-        r(r4, r6, r7);
+        this.y = j;
+        this.z = j;
+        if (!z2) {
+            q44 q44Var = this.v;
+            q44Var.getClass();
+            z2 = q44Var.u(j - this.x) != 0;
+        }
+        r(j, z, z2);
     }
 
-    public void D(float r1, float r2) {
+    public void D(float f, float f2) {
     }
 
-    public abstract int E(tb1 r1);
+    public abstract int E(tb1 tb1Var);
 
     public int F() {
         return 0;
     }
 
-    public boolean G(long r1) {
+    public boolean G(long j) {
         return false;
     }
 
-    public final ExoPlaybackException b(Throwable r11, tb1 r12, boolean r13, int r14) {
-        if (r12 != null) goto L5;
-    L13:
-        int r3 = 4;
-    L14:
-        String r4 = h();
-        int r5 = this.r;
-        mt2 r8 = this.D;
-        if (r12 != null) goto L17;
-        int r7 = 4;
-    L19:
-        return new ExoPlaybackException(1, r11, r14, r4, r5, r12, r7, r8, r13);
-    L17:
-        r7 = r3;
-        goto L19
-    L5:
-        if (this.B == true) goto L13;
-        this.B = true;
-        r3 = E(r12) & 7;
-        this.B = false;
-        goto L14
-    L12:
-        this.B = false;
-    L9:
-        th = move-exception;
-        this.B = false;
-        throw th;
+    public final ExoPlaybackException b(Throwable th, tb1 tb1Var, boolean z, int i) {
+        int iE;
+        if (tb1Var == null || this.B) {
+            iE = 4;
+        } else {
+            this.B = true;
+            try {
+                iE = E(tb1Var) & 7;
+                this.B = false;
+            } catch (ExoPlaybackException unused) {
+                this.B = false;
+                iE = 4;
+            } catch (Throwable th2) {
+                this.B = false;
+                throw th2;
+            }
+        }
+        return new ExoPlaybackException(1, th, i, h(), this.r, tb1Var, tb1Var == null ? 4 : iE, this.D, z);
     }
 
     @Override // defpackage.rk3
-    public void c(int r1, Object r2) {
+    public void c(int i, Object obj) {
     }
 
     public void e() {
     }
 
-    public long f(long r1, long r3) {
-        if (this.u == 1) goto L5;
-        return 10000;
-    L5:
-        if (o() == false) goto L7;
-        return 1000000;
-    L7:
-        if (m() == false) goto L13;
-        return 1000000;
-    L13:
-        return 10000;
+    public long f(long j, long j2) {
+        if (this.u == 1) {
+            return (o() || m()) ? 1000000L : 10000L;
+        }
+        return 10000L;
     }
 
     public yj2 g() {
@@ -149,10 +120,7 @@ public abstract class kq implements rk3 {
     public abstract String h();
 
     public final boolean l() {
-        if (this.z != Long.MIN_VALUE) goto L6;
-        return true;
-    L6:
-        return false;
+        return this.z == Long.MIN_VALUE;
     }
 
     public abstract boolean m();
@@ -161,33 +129,24 @@ public abstract class kq implements rk3 {
 
     public abstract void p();
 
-    public void q(boolean r1, boolean r2) {
+    public void q(boolean z, boolean z2) {
     }
 
-    public abstract void r(long r1, boolean r3, boolean r4);
+    public abstract void r(long j, boolean z, boolean z2);
 
     public void s() {
     }
 
     public final void t() {
-        Object r0 = this.n;
-        monitor-enter(r0);
-        pn0 r1 = this.E;     // Catch: Throwable -> L16
-        monitor-exit(r0);     // Catch: Throwable -> L16
-        if (r1 == null) goto L15;
-        Object r2 = r1.c;
-        monitor-enter(r2);
-        r1.f.getClass();     // Catch: Throwable -> L12
-        monitor-exit(r2);     // Catch: Throwable -> L12
-        return;
-    L12:
-        th = move-exception;
-        throw th;
-    L15:
-        return;
-    L16:
-        th = move-exception;
-        throw th;
+        pn0 pn0Var;
+        synchronized (this.n) {
+            pn0Var = this.E;
+        }
+        if (pn0Var != null) {
+            synchronized (pn0Var.c) {
+                pn0Var.f.getClass();
+            }
+        }
     }
 
     public void u() {
@@ -199,38 +158,36 @@ public abstract class kq implements rk3 {
     public void w() {
     }
 
-    public void x(tb1[] r1, long r2, long r4, mt2 r6) {
+    public void x(tb1[] tb1VarArr, long j, long j2, mt2 mt2Var) {
     }
 
     public void y() {
     }
 
-    public final int z(gp3 r5, cj0 r6, int r7) {
-        q44 r0 = this.v;
-        r0.getClass();
-        int r8 = r0.t(r5, r6, r7);
-        if (r8 != (-4)) goto L14;
-        if (r6.d(4) == false) goto L11;
-        this.z = Long.MIN_VALUE;
-        if (this.A == false) goto L9;
-        return -4;
-    L9:
-        return -3;
-    L11:
-        long r1 = r6.t + this.x;
-        r6.t = r1;
-        this.z = Math.max(this.z, r1);
-        return r8;
-    L14:
-        if (r8 != (-5)) goto L18;
-        tb1 r9 = (tb1) r5.p;
-        r9.getClass();
-        long r2 = r9.s;
-        if (r2 == Long.MAX_VALUE) goto L18;
-        sb1 r10 = r9.a();
-        r10.r = r2 + this.x;
-        r5.p = new tb1(r10);
-    L18:
-        return r8;
+    public final int z(gp3 gp3Var, cj0 cj0Var, int i) {
+        q44 q44Var = this.v;
+        q44Var.getClass();
+        int iT = q44Var.t(gp3Var, cj0Var, i);
+        if (iT == -4) {
+            if (cj0Var.d(4)) {
+                this.z = Long.MIN_VALUE;
+                return this.A ? -4 : -3;
+            }
+            long j = cj0Var.t + this.x;
+            cj0Var.t = j;
+            this.z = Math.max(this.z, j);
+            return iT;
+        }
+        if (iT == -5) {
+            tb1 tb1Var = (tb1) gp3Var.p;
+            tb1Var.getClass();
+            long j2 = tb1Var.s;
+            if (j2 != Long.MAX_VALUE) {
+                sb1 sb1VarA = tb1Var.a();
+                sb1VarA.r = j2 + this.x;
+                gp3Var.p = new tb1(sb1VarA);
+            }
+        }
+        return iT;
     }
 }

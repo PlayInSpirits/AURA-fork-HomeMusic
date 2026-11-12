@@ -11,13 +11,13 @@ public final class un2 {
     public final long f;
     public final long g;
 
-    public un2(int r1, int r2, tb1 r3, int r4, Object r5, long r6, long r8) {
-        this.a = r1;
-        this.b = r2;
-        this.c = r3;
-        this.d = r4;
-        this.e = r5;
-        this.f = r6;
-        this.g = r8;
+    public un2(int i, int i2, tb1 tb1Var, int i3, Object obj, long j, long j2) {
+        this.a = i;
+        this.b = i2;
+        this.c = tb1Var;
+        this.d = i3;
+        this.e = obj;
+        this.f = j;
+        this.g = j2;
     }
 }

@@ -14,138 +14,115 @@ public final class er3 implements jd2 {
     public final z05 c;
     public final hr3 d;
     public final q90 e;
-    public final t71 f;
     public volatile boolean g;
-    public boolean h;
     public long i;
     public ii0 j;
     public wv4 k;
     public boolean l;
     public final /* synthetic */ hr3 m;
+    public final t71 f = new t71();
+    public boolean h = true;
 
-    public er3(hr3 r1, Uri r2, ci0 r3, z05 r4, hr3 r5, q90 r6) {
-        this.m = r1;
-        this.a = r2;
-        this.b = new yl4(r3);
-        this.c = r4;
-        this.d = r5;
-        this.e = r6;
-        this.f = new t71();
-        this.h = true;
+    public er3(hr3 hr3Var, Uri uri, ci0 ci0Var, z05 z05Var, hr3 hr3Var2, q90 q90Var) {
+        this.m = hr3Var;
+        this.a = uri;
+        this.b = new yl4(ci0Var);
+        this.c = z05Var;
+        this.d = hr3Var2;
+        this.e = q90Var;
         ed2.g.getAndIncrement();
-        this.j = c(null, 0);
+        this.j = c(null, 0L);
     }
 
     @Override // defpackage.jd2
     public final void a() {
-        int r3 = 0;
-        String r4 = null;
-    L3:
-        if (r3 != 0) goto L73;
-        if (this.g == true) goto L92;
-        long r13 = this.f.a;     // Catch: Throwable -> L21
-        ii0 r5 = c(r4, r13);     // Catch: Throwable -> L21
-        this.j = r5;     // Catch: Throwable -> L21
-        long r8 = this.b.b(r5);     // Catch: Throwable -> L21
-        if (this.g == true) goto L9;
-        List r6 = (List) this.b.n.j().get("ETag");     // Catch: Throwable -> L21
-        if (r6 != null) goto L19;
-    L23:
-        r4 = null;
-    L25:
-        if (r8 == (-1)) goto L27;
-        r8 = r8 + r13;     // Catch: Throwable -> L21
-        hr3 r10 = this.m;     // Catch: Throwable -> L21
-        r10.E.post(new ar3(r10, 0));     // Catch: Throwable -> L21
-    L27:
-        long r15 = r8;
-        this.m.G = iv1.d(this.b.n.j());     // Catch: Throwable -> L21
-        yl4 r9 = this.b;     // Catch: Throwable -> L21
-        iv1 r11 = this.m.G;     // Catch: Throwable -> L21
-        if (r11 == null) goto L32;
-        int r12 = r11.f;     // Catch: Throwable -> L21
-        if (r12 == (-1)) goto L32;
-        ci0 r14 = new gv1(r9, r12, this);     // Catch: Throwable -> L21
-        wv4 r16 = this.m.D(new gr3(0, true));     // Catch: Throwable -> L21
-        this.k = r16;     // Catch: Throwable -> L21
-        r16.g(hr3.f0);     // Catch: Throwable -> L21
-    L33:
-        this.c.h(r14, this.a, this.b.n.j(), r13, r15, this.d);     // Catch: Throwable -> L21
-        if (this.m.G == null) goto L42;
-        k51 r17 = (k51) this.c.p;     // Catch: Throwable -> L21
-        if (r17 == null) goto L42;
-        if ((r17 instanceof ky2) == false) goto L42;
-        ((ky2) r17).s = true;     // Catch: Throwable -> L21
-    L42:
-        if (this.h == false) goto L44;
-        z05 r18 = this.c;     // Catch: Throwable -> L21
-        long r19 = this.i;     // Catch: Throwable -> L21
-        k51 r20 = (k51) r18.p;     // Catch: Throwable -> L21
-        r20.getClass();     // Catch: Throwable -> L21
-        r20.d(r13, r19);     // Catch: Throwable -> L21
-        this.h = false;     // Catch: Throwable -> L21
-    L44:
-        if (r3 != 0) goto L61;
-        if (this.g == true) goto L61;
-        this.e.a();     // Catch: Throwable -> L21 InterruptedException -> L59
-        z05 r21 = this.c;     // Catch: Throwable -> L21
-        t71 r22 = this.f;     // Catch: Throwable -> L21
-        k51 r110 = (k51) r21.p;     // Catch: Throwable -> L21
-        r110.getClass();     // Catch: Throwable -> L21
-        rk0 r23 = (rk0) r21.q;     // Catch: Throwable -> L21
-        r23.getClass();     // Catch: Throwable -> L21
-        r3 = r110.b(r23, r22);     // Catch: Throwable -> L21
-        long r24 = this.c.g();     // Catch: Throwable -> L21
-        if (r24 <= (this.m.w + r13)) goto L44;
-        q90 r111 = this.e;     // Catch: Throwable -> L21
-        monitor-enter(r111);     // Catch: Throwable -> L21
-        r111.b = false;     // Catch: Throwable -> L56
-        monitor-exit(r111);     // Catch: Throwable -> L21
-        hr3 r112 = this.m;     // Catch: Throwable -> L21
-        r112.E.post(r112.D);     // Catch: Throwable -> L21
-        r13 = r24;
-        goto L44
-    L56:
-        th = move-exception;
-        throw th;     // Catch: Throwable -> L21
-    L60:
-        throw new InterruptedIOException();     // Catch: Throwable -> L21
-    L61:
-        if (r3 != 1) goto L64;
-        r3 = 0;
-    L66:
-        fu.k(this.b);
-        goto L3
-    L64:
-        if (this.c.g() == (-1)) goto L66;
-        this.f.a = this.c.g();
-    L32:
-        r14 = r9;
-        goto L33
-    L19:
-        if (r6.isEmpty() == true) goto L23;
-        r4 = (String) r6.get(0);     // Catch: Throwable -> L21
-        goto L25
-    L9:
-        if (r3 != 1) goto L12;
-    L14:
-        fu.k(this.b);
-        return;
-    L12:
-        if (this.c.g() == (-1)) goto L14;
-        this.f.a = this.c.g();
-    L21:
-        th = move-exception;
-        if (r3 != 1) goto L69;
-    L71:
-        fu.k(this.b);
-        throw th;
-    L69:
-        if (this.c.g() == (-1)) goto L71;
-        this.f.a = this.c.g();
-        goto L71
-    L92:
-        return;
+        ci0 gv1Var;
+        k51 k51Var;
+        int i;
+        int iB = 0;
+        String str = null;
+        while (iB == 0 && !this.g) {
+            try {
+                long j = this.f.a;
+                ii0 ii0VarC = c(str, j);
+                this.j = ii0VarC;
+                long jB = this.b.b(ii0VarC);
+                if (this.g) {
+                    if (iB != 1 && this.c.g() != -1) {
+                        this.f.a = this.c.g();
+                    }
+                    fu.k(this.b);
+                    return;
+                }
+                List list = (List) this.b.n.j().get("ETag");
+                str = (list == null || list.isEmpty()) ? null : (String) list.get(0);
+                if (jB != -1) {
+                    jB += j;
+                    hr3 hr3Var = this.m;
+                    hr3Var.E.post(new ar3(hr3Var, 0));
+                }
+                long j2 = jB;
+                this.m.G = iv1.d(this.b.n.j());
+                yl4 yl4Var = this.b;
+                iv1 iv1Var = this.m.G;
+                if (iv1Var == null || (i = iv1Var.f) == -1) {
+                    gv1Var = yl4Var;
+                } else {
+                    gv1Var = new gv1(yl4Var, i, this);
+                    wv4 wv4VarD = this.m.D(new gr3(0, true));
+                    this.k = wv4VarD;
+                    wv4VarD.g(hr3.f0);
+                }
+                this.c.h(gv1Var, this.a, this.b.n.j(), j, j2, this.d);
+                if (this.m.G != null && (k51Var = (k51) this.c.p) != null && (k51Var instanceof ky2)) {
+                    ((ky2) k51Var).s = true;
+                }
+                if (this.h) {
+                    z05 z05Var = this.c;
+                    long j3 = this.i;
+                    k51 k51Var2 = (k51) z05Var.p;
+                    k51Var2.getClass();
+                    k51Var2.d(j, j3);
+                    this.h = false;
+                }
+                while (iB == 0 && !this.g) {
+                    try {
+                        this.e.a();
+                        z05 z05Var2 = this.c;
+                        t71 t71Var = this.f;
+                        k51 k51Var3 = (k51) z05Var2.p;
+                        k51Var3.getClass();
+                        rk0 rk0Var = (rk0) z05Var2.q;
+                        rk0Var.getClass();
+                        iB = k51Var3.b(rk0Var, t71Var);
+                        long jG = this.c.g();
+                        if (jG > this.m.w + j) {
+                            q90 q90Var = this.e;
+                            synchronized (q90Var) {
+                                q90Var.b = false;
+                            }
+                            hr3 hr3Var2 = this.m;
+                            hr3Var2.E.post(hr3Var2.D);
+                            j = jG;
+                        }
+                    } catch (InterruptedException unused) {
+                        throw new InterruptedIOException();
+                    }
+                }
+                if (iB == 1) {
+                    iB = 0;
+                } else if (this.c.g() != -1) {
+                    this.f.a = this.c.g();
+                }
+                fu.k(this.b);
+            } catch (Throwable th) {
+                if (iB != 1 && this.c.g() != -1) {
+                    this.f.a = this.c.g();
+                }
+                fu.k(this.b);
+                throw th;
+            }
+        }
     }
 
     @Override // defpackage.jd2
@@ -153,21 +130,18 @@ public final class er3 implements jd2 {
         this.g = true;
     }
 
-    public final ii0 c(String r17, long r18) {
-        Map r2 = hr3.e0;
-        if (r17 != null) goto L5;
-    L7:
-        Map r1 = Collections.EMPTY_MAP;
-        String r14 = this.m.v;
-        Uri r4 = this.a;
-        rr2.s(r4, "The uri must be set.");
-        return new ii0(r4, 0, 1, null, r2, r18, -1, r14, 6);
-    L5:
-        if (r17.startsWith("W/") == true) goto L7;
-        ue1 r3 = bx1.a();
-        r3.y(r2.entrySet());
-        r3.x("If-Range", r17);
-        r2 = r3.f();
-        goto L7
+    public final ii0 c(String str, long j) {
+        Map mapF = hr3.e0;
+        if (str != null && !str.startsWith("W/")) {
+            ue1 ue1VarA = bx1.a();
+            ue1VarA.y(mapF.entrySet());
+            ue1VarA.x("If-Range", str);
+            mapF = ue1VarA.f();
+        }
+        Map map = Collections.EMPTY_MAP;
+        String str2 = this.m.v;
+        Uri uri = this.a;
+        rr2.s(uri, "The uri must be set.");
+        return new ii0(uri, 0L, 1, null, mapF, j, -1L, str2, 6);
     }
 }

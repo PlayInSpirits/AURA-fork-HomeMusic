@@ -11,104 +11,90 @@ public final class k83 {
     public int c;
     public int d;
     public int e;
-    public final int[] f;
-    public final be3 g;
+    public final int[] f = new int[255];
+    public final be3 g = new be3(255);
 
-    public k83() {
-        this.f = new int[255];
-        this.g = new be3(255);
-    }
-
-    public final boolean a(l51 r7, boolean r8) {
-        int r0 = 0;
+    public final boolean a(l51 l51Var, boolean z) throws ParserException, EOFException {
+        boolean zE;
+        boolean zE2;
         this.a = 0;
-        this.b = 0;
+        this.b = 0L;
         this.c = 0;
         this.d = 0;
         this.e = 0;
-        be3 r1 = this.g;
-        r1.K(27);
-        boolean r2 = r7.e(r1.a, 0, 27, r8);     // Catch: EOFException -> L5
-    L8:
-        if (r2 == true) goto L10;
-    L32:
+        be3 be3Var = this.g;
+        be3Var.K(27);
+        try {
+            zE = l51Var.e(be3Var.a, 0, 27, z);
+        } catch (EOFException e) {
+            if (!z) {
+                throw e;
+            }
+            zE = false;
+        }
+        if (zE && be3Var.C() == 1332176723) {
+            if (be3Var.A() == 0) {
+                this.a = be3Var.A();
+                this.b = be3Var.p();
+                be3Var.r();
+                be3Var.r();
+                be3Var.r();
+                int iA = be3Var.A();
+                this.c = iA;
+                this.d = iA + 27;
+                be3Var.K(iA);
+                try {
+                    zE2 = l51Var.e(be3Var.a, 0, this.c, z);
+                } catch (EOFException e2) {
+                    if (!z) {
+                        throw e2;
+                    }
+                    zE2 = false;
+                }
+                if (zE2) {
+                    for (int i = 0; i < this.c; i++) {
+                        int iA2 = be3Var.A();
+                        this.f[i] = iA2;
+                        this.e += iA2;
+                    }
+                    return true;
+                }
+            } else if (!z) {
+                throw ParserException.c("unsupported bit stream revision");
+            }
+        }
         return false;
-    L10:
-        if (r1.C() != 1332176723) goto L32;
-        if (r1.A() == 0) goto L18;
-        if (r8 == true) goto L32;
-        throw ParserException.c("unsupported bit stream revision");
-    L18:
-        this.a = r1.A();
-        this.b = r1.p();
-        r1.r();
-        r1.r();
-        r1.r();
-        int r3 = r1.A();
-        this.c = r3;
-        this.d = r3 + 27;
-        r1.K(r3);
-        boolean r9 = r7.e(r1.a, 0, this.c, r8);     // Catch: EOFException -> L21
-    L24:
-        if (r9 == false) goto L32;
-    L27:
-        if (r0 >= this.c) goto L29;
-        int r10 = r1.A();
-        this.f[r0] = r10;
-        this.e += r10;
-        r0 = r0 + 1;
-        goto L27
-    L29:
-        return true;
-    L21:
-        e = move-exception;
-        if (r8 == false) goto L31;
-        r9 = false;
-        goto L24
-    L31:
-        throw e;
-    L5:
-        e = move-exception;
-        if (r8 == false) goto L33;
-        r2 = false;
-        goto L8
-    L33:
-        throw e;
     }
 
-    public final boolean b(l51 r9, long r10) {
-        if (r9.getPosition() != r9.f()) goto L5;
-        boolean r0 = true;
-    L6:
-        rr2.l(r0);
-        be3 r8 = this.g;
-        r8.K(4);
-    L8:
-        if (r10 == (-1)) goto L28;
-        if ((r9.getPosition() + 4) < r10) goto L28;
-    L21:
-        if (r10 == (-1)) goto L25;
-        if (r9.getPosition() < r10) goto L25;
-    L27:
+    public final boolean b(l51 l51Var, long j) {
+        boolean zE;
+        rr2.l(l51Var.getPosition() == l51Var.f());
+        be3 be3Var = this.g;
+        be3Var.K(4);
+        while (true) {
+            if (j != -1 && l51Var.getPosition() + 4 >= j) {
+                break;
+            }
+            try {
+                zE = l51Var.e(be3Var.a, 0, 4, true);
+            } catch (EOFException unused) {
+                zE = false;
+            }
+            if (!zE) {
+                break;
+            }
+            be3Var.N(0);
+            if (be3Var.C() == 1332176723) {
+                l51Var.k();
+                return true;
+            }
+            l51Var.l(1);
+        }
+        do {
+            if (j != -1 && l51Var.getPosition() >= j) {
+                break;
+            }
+        } while (l51Var.h(1) != -1);
         return false;
-    L25:
-        if (r9.h(1) == (-1)) goto L27;
-    L28:
-        boolean r4 = r9.e(r8.a, 0, 4, true);     // Catch: EOFException -> L14
-    L15:
-        if (r4 == false) goto L21;
-        r8.N(0);
-        if (r8.C() == 1332176723) goto L18;
-        r9.l(1);
-        goto L8
-    L18:
-        r9.k();
-        return true;
-    L14:
-        r4 = false;
-        goto L15
-    L5:
-        r0 = false;
-        goto L6
     }
 }

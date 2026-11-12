@@ -17,94 +17,83 @@ import java.util.Locale;
 public final class gs1 extends WebChromeClient {
     public final /* synthetic */ HubFragment a;
 
-    public gs1(HubFragment r1) {
-        this.a = r1;
+    public gs1(HubFragment hubFragment) {
+        this.a = hubFragment;
     }
 
     @Override // android.webkit.WebChromeClient
-    public final boolean onShowFileChooser(WebView r10, ValueCallback r11, WebChromeClient.FileChooserParams r12) {
-        r10.getClass();
-        r11.getClass();
-        r12.getClass();
-        HubFragment r9 = this.a;
-        ValueCallback r13 = r9.r0;
-        if (r13 == null) goto L5;
-        r13.onReceiveValue(null);
-    L5:
-        r9.r0 = r11;
-        Intent r14 = new Intent("android.intent.action.GET_CONTENT").addCategory("android.intent.category.OPENABLE");
-        r14.getClass();
-        String[] r1 = r12.getAcceptTypes();
-        r1.getClass();
-        ArrayList r2 = new ArrayList();
-        int r3 = r1.length;
-        int r5 = 0;
-    L7:
-        if (r5 >= r3) goto L9;
-        String r7 = r1[r5];
-        r7.getClass();
-        v40.n0(qm4.D0(r7, new char[]{','}), r2);
-        r5 = r5 + 1;
-        goto L7
-    L9:
-        ArrayList r4 = new ArrayList(r40.k0(r2, 10));
-        int r6 = r2.size();
-        int r8 = 0;
-    L10:
-        if (r8 >= r6) goto L12;
-        Object r15 = r2.get(r8);
-        r8 = r8 + 1;
-        String r16 = qm4.K0((String) r15).toString().toLowerCase(Locale.ROOT);
-        r16.getClass();
-        r4.add(r16);
-        goto L10
-    L12:
-        ArrayList r17 = new ArrayList();
-        int r18 = r4.size();
-        int r19 = 0;
-    L13:
-        if (r19 >= r18) goto L17;
-        Object r20 = r4.get(r19);
-        r19 = r19 + 1;
-        if (((String) r20).length() <= 0) goto L13;
-        r17.add(r20);
-        goto L13
-    L17:
-        ArrayList r21 = new ArrayList();
-        int r22 = r17.size();
-        int r23 = 0;
-    L18:
-        if (r23 >= r22) goto L24;
-        Object r24 = r17.get(r23);
-        r23 = r23 + 1;
-        String r25 = (String) r24;
-        if (xm4.k0(r25, ".", false) == false) goto L22;
-        r25 = MimeTypeMap.getSingleton().getMimeTypeFromExtension(r25.substring(1));
-    L22:
-        if (r25 == null) goto L18;
-        r21.add(r25);
-        goto L18
-    L24:
-        List r26 = q40.t0(r21);
-        if (r26.isEmpty() == false) goto L28;
-        r14.setType("*/*");
-    L32:
-        if (r12.getMode() != 1) goto L38;
-        r14.putExtra("android.intent.extra.ALLOW_MULTIPLE", true);
-    L38:
-        r9.s0.a(Intent.createChooser(r14, r9.s(R.string.homemusic_pick_files)));     // Catch: ActivityNotFoundException -> L36
-        return true;
-    L36:
-        r9.r0 = null;
-        r11.onReceiveValue(null);
-        return false;
-    L28:
-        if (r26.size() != 1) goto L30;
-        r14.setType((String) r26.get(0));
-        goto L32
-    L30:
-        r14.setType("*/*");
-        r14.putExtra("android.intent.extra.MIME_TYPES", (String[]) r26.toArray(new String[0])).getClass();
-        goto L32
+    public final boolean onShowFileChooser(WebView webView, ValueCallback valueCallback, WebChromeClient.FileChooserParams fileChooserParams) {
+        webView.getClass();
+        valueCallback.getClass();
+        fileChooserParams.getClass();
+        HubFragment hubFragment = this.a;
+        ValueCallback valueCallback2 = hubFragment.r0;
+        if (valueCallback2 != null) {
+            valueCallback2.onReceiveValue(null);
+        }
+        hubFragment.r0 = valueCallback;
+        Intent intentAddCategory = new Intent("android.intent.action.GET_CONTENT").addCategory("android.intent.category.OPENABLE");
+        intentAddCategory.getClass();
+        String[] acceptTypes = fileChooserParams.getAcceptTypes();
+        acceptTypes.getClass();
+        ArrayList arrayList = new ArrayList();
+        for (String str : acceptTypes) {
+            str.getClass();
+            v40.n0(qm4.D0(str, new char[]{','}), arrayList);
+        }
+        ArrayList arrayList2 = new ArrayList(r40.k0(arrayList, 10));
+        int size = arrayList.size();
+        int i = 0;
+        while (i < size) {
+            Object obj = arrayList.get(i);
+            i++;
+            String lowerCase = qm4.K0((String) obj).toString().toLowerCase(Locale.ROOT);
+            lowerCase.getClass();
+            arrayList2.add(lowerCase);
+        }
+        ArrayList arrayList3 = new ArrayList();
+        int size2 = arrayList2.size();
+        int i2 = 0;
+        while (i2 < size2) {
+            Object obj2 = arrayList2.get(i2);
+            i2++;
+            if (((String) obj2).length() > 0) {
+                arrayList3.add(obj2);
+            }
+        }
+        ArrayList arrayList4 = new ArrayList();
+        int size3 = arrayList3.size();
+        int i3 = 0;
+        while (i3 < size3) {
+            Object obj3 = arrayList3.get(i3);
+            i3++;
+            String mimeTypeFromExtension = (String) obj3;
+            if (xm4.k0(mimeTypeFromExtension, ".", false)) {
+                mimeTypeFromExtension = MimeTypeMap.getSingleton().getMimeTypeFromExtension(mimeTypeFromExtension.substring(1));
+            }
+            if (mimeTypeFromExtension != null) {
+                arrayList4.add(mimeTypeFromExtension);
+            }
+        }
+        List listT0 = q40.t0(arrayList4);
+        if (listT0.isEmpty()) {
+            intentAddCategory.setType("*/*");
+        } else if (listT0.size() == 1) {
+            intentAddCategory.setType((String) listT0.get(0));
+        } else {
+            intentAddCategory.setType("*/*");
+            intentAddCategory.putExtra("android.intent.extra.MIME_TYPES", (String[]) listT0.toArray(new String[0])).getClass();
+        }
+        if (fileChooserParams.getMode() == 1) {
+            intentAddCategory.putExtra("android.intent.extra.ALLOW_MULTIPLE", true);
+        }
+        try {
+            hubFragment.s0.a(Intent.createChooser(intentAddCategory, hubFragment.s(R.string.homemusic_pick_files)));
+            return true;
+        } catch (ActivityNotFoundException unused) {
+            hubFragment.r0 = null;
+            valueCallback.onReceiveValue(null);
+            return false;
+        }
     }
 }

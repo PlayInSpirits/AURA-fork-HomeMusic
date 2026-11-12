@@ -27,144 +27,104 @@ public final class k55 {
     public long r;
     public long s;
 
-    public k55(Context r3) {
-        this.b = r3;
-        n71 r4 = new n71();
-        r4.a = new m71();
-        r4.b = new m71();
-        r4.d = -9223372036854775807L;
-        this.a = r4;
+    public k55(Context context) {
+        this.b = context;
+        n71 n71Var = new n71();
+        n71Var.a = new m71();
+        n71Var.b = new m71();
+        n71Var.d = -9223372036854775807L;
+        this.a = n71Var;
         this.f = -1.0f;
         this.i = 1.0f;
         this.j = 0;
     }
 
     public final void a() {
-        if (Build.VERSION.SDK_INT < 30) goto L21;
-        Surface r0 = this.e;
-        if (r0 != null) goto L7;
-        return;
-    L7:
-        if (this.j != Integer.MIN_VALUE) goto L9;
-        return;
-    L9:
-        if (this.h != 0.0f) goto L11;
-        return;
-    L11:
-        if (r0.isValid() == false) goto L25;
+        Surface surface;
+        if (Build.VERSION.SDK_INT < 30 || (surface = this.e) == null || this.j == Integer.MIN_VALUE || this.h == 0.0f || !surface.isValid()) {
+            return;
+        }
         this.h = 0.0f;
-        xq2.r(this.e, 0.0f, 0);     // Catch: IllegalStateException -> L16
-        return;
-    L16:
-        e = move-exception;
-        l93.G("VideoFrameReleaseHelper", "Failed to call Surface.setFrameRate", e);
-        return;
-    L25:
-        return;
+        try {
+            this.e.setFrameRate(0.0f, 0);
+        } catch (IllegalStateException e) {
+            l93.G("VideoFrameReleaseHelper", "Failed to call Surface.setFrameRate", e);
+        }
     }
 
     public final void b() {
-        this.m = 0;
-        this.q = -1;
-        this.n = -1;
-        this.k = 0;
-        this.l = 0;
+        this.m = 0L;
+        this.q = -1L;
+        this.n = -1L;
+        this.k = 0L;
+        this.l = 0L;
     }
 
+    /* JADX WARN: Code duplicated, block: B:34:0x0071  */
     public final void c() {
-        if (Build.VERSION.SDK_INT >= 30) goto L5;
-        return;
-    L5:
-        if (this.e == null) goto L47;
-        n71 r0 = this.a;
-        if (r0.a.a() == true) goto L10;
-        float r2 = this.f;
-    L18:
-        float r4 = this.g;
-        if (r2 != r4) goto L22;
-        return;
-    L22:
-        if (r2 != (-1.0f)) goto L24;
-    L38:
-        if (r2 == (-1.0f)) goto L41;
-    L42:
-        this.g = r2;
+        float f;
+        float f2;
+        if (Build.VERSION.SDK_INT < 30 || this.e == null) {
+            return;
+        }
+        n71 n71Var = this.a;
+        if (!n71Var.a.a()) {
+            f = this.f;
+        } else if (n71Var.a.a()) {
+            m71 m71Var = n71Var.a;
+            long j = m71Var.e;
+            f = (float) (1.0E9d / (j != 0 ? m71Var.f / j : 0L));
+        } else {
+            f = -1.0f;
+        }
+        float f3 = this.g;
+        if (f == f3) {
+            return;
+        }
+        if (f != -1.0f && f3 != -1.0f) {
+            if (n71Var.a.a()) {
+                if ((n71Var.a.a() ? n71Var.a.f : -9223372036854775807L) >= 5000000000L) {
+                    f2 = 0.1f;
+                } else {
+                    f2 = 1.0f;
+                }
+            } else {
+                f2 = 1.0f;
+            }
+            if (Math.abs(f - this.g) < f2) {
+                return;
+            }
+        } else if (f == -1.0f && n71Var.e < 30) {
+            return;
+        }
+        this.g = f;
         d(false);
-        return;
-    L41:
-        if (r0.e >= 30) goto L42;
-        return;
-    L24:
-        if (r4 == (-1.0f)) goto L38;
-        if (r0.a.a() == true) goto L28;
-    L34:
-        float r1 = 1.0f;
-    L36:
-        if (Math.abs(r2 - this.g) >= r1) goto L42;
-        return;
-    L28:
-        if (r0.a.a() == false) goto L30;
-        long r3 = r0.a.f;
-    L32:
-        if (r3 < 5000000000L) goto L34;
-        r1 = 0.1f;
-        goto L36
-    L30:
-        r3 = -9223372036854775807L;
-        goto L32
-    L10:
-        if (r0.a.a() == false) goto L16;
-        m71 r5 = r0.a;
-        long r6 = r5.e;
-        long r7 = 0;
-        if (r6 == 0) goto L15;
-        r7 = r5.f / r6;
-    L15:
-        r2 = (float) (1.0E9d / r7);
-        goto L18
-    L16:
-        r2 = -1.0f;
-        goto L18
     }
 
-    public final void d(boolean r4) {
-        if (Build.VERSION.SDK_INT < 30) goto L32;
-        Surface r0 = this.e;
-        if (r0 != null) goto L7;
-        return;
-    L7:
-        if (this.j != Integer.MIN_VALUE) goto L9;
-        return;
-    L9:
-        if (r0.isValid() == true) goto L12;
-        return;
-    L12:
-        if (this.d == false) goto L16;
-        float r1 = this.g;
-        if (r1 == (-1.0f)) goto L16;
-        float r2 = r1 * this.i;
-    L17:
-        if (r4 == false) goto L19;
-    L21:
-        this.h = r2;
-        Surface r3 = this.e;
-        if (r2 != 0.0f) goto L24;
-        int r5 = 0;
-    L30:
-        xq2.r(r3, r2, r5);     // Catch: IllegalStateException -> L27
-        return;
-    L27:
-        e = move-exception;
-        l93.G("VideoFrameReleaseHelper", "Failed to call Surface.setFrameRate", e);
-        return;
-    L24:
-        r5 = 1;
-        goto L30
-    L19:
-        if (this.h != r2) goto L21;
-        return;
-    L16:
-        r2 = 0.0f;
-        goto L17
+    /* JADX WARN: Code duplicated, block: B:16:0x0028  */
+    public final void d(boolean z) {
+        Surface surface;
+        float f;
+        if (Build.VERSION.SDK_INT < 30 || (surface = this.e) == null || this.j == Integer.MIN_VALUE || !surface.isValid()) {
+            return;
+        }
+        if (this.d) {
+            float f2 = this.g;
+            if (f2 != -1.0f) {
+                f = f2 * this.i;
+            } else {
+                f = 0.0f;
+            }
+        } else {
+            f = 0.0f;
+        }
+        if (z || this.h != f) {
+            this.h = f;
+            try {
+                this.e.setFrameRate(f, f == 0.0f ? 0 : 1);
+            } catch (IllegalStateException e) {
+                l93.G("VideoFrameReleaseHelper", "Failed to call Surface.setFrameRate", e);
+            }
+        }
     }
 }

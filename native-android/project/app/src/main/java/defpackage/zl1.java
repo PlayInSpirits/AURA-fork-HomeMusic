@@ -23,156 +23,128 @@ public final class zl1 {
     public final String n;
     public final ss0 o;
 
-    public zl1(List r1, int r2, int r3, int r4, int r5, int r6, int r7, int r8, int r9, int r10, int r11, float r12, int r13, String r14, ss0 r15) {
-        this.a = r1;
-        this.b = r2;
-        this.c = r3;
-        this.d = r4;
-        this.e = r5;
-        this.f = r6;
-        this.g = r7;
-        this.h = r8;
-        this.i = r9;
-        this.j = r10;
-        this.k = r11;
-        this.l = r12;
-        this.m = r13;
-        this.n = r14;
-        this.o = r15;
+    public zl1(List list, int i, int i2, int i3, int i4, int i5, int i6, int i7, int i8, int i9, int i10, float f, int i11, String str, ss0 ss0Var) {
+        this.a = list;
+        this.b = i;
+        this.c = i2;
+        this.d = i3;
+        this.e = i4;
+        this.f = i5;
+        this.g = i6;
+        this.h = i7;
+        this.i = i8;
+        this.j = i9;
+        this.k = i10;
+        this.l = f;
+        this.m = i11;
+        this.n = str;
+        this.o = ss0Var;
     }
 
-    public static zl1 a(be3 r35, boolean r36, ss0 r37) {
-        int r1 = 4;
-        if (r36 == false) goto L7;
-        r35.O(4);     // Catch: ArrayIndexOutOfBoundsException -> L5
-    L8:
-        int r2 = r35.A() & 3;     // Catch: ArrayIndexOutOfBoundsException -> L5
-        int r3 = r35.A();     // Catch: ArrayIndexOutOfBoundsException -> L5
-        int r4 = r35.b;     // Catch: ArrayIndexOutOfBoundsException -> L5
-        int r5 = 0;
-        int r6 = 0;
-        int r7 = 0;
-    L9:
-        boolean r8 = true;
-        if (r6 >= r3) goto L15;
-        r35.O(1);     // Catch: ArrayIndexOutOfBoundsException -> L5
-        int r9 = r35.H();     // Catch: ArrayIndexOutOfBoundsException -> L5
-        int r10 = 0;
-    L12:
-        if (r10 >= r9) goto L14;
-        int r11 = r35.H();     // Catch: ArrayIndexOutOfBoundsException -> L5
-        r7 = r7 + (r11 + 4);     // Catch: ArrayIndexOutOfBoundsException -> L5
-        r35.O(r11);     // Catch: ArrayIndexOutOfBoundsException -> L5
-        r10 = r10 + 1;     // Catch: ArrayIndexOutOfBoundsException -> L5
-        goto L12
-    L14:
-        r6 = r6 + 1;     // Catch: ArrayIndexOutOfBoundsException -> L5
-        goto L9
-    L15:
-        r35.N(r4);     // Catch: ArrayIndexOutOfBoundsException -> L5
-        byte[] r12 = new byte[r7];     // Catch: ArrayIndexOutOfBoundsException -> L5
-        ss0 r26 = r37;
-        int r14 = -1;
-        int r15 = -1;
-        int r16 = -1;
-        int r17 = -1;
-        int r18 = -1;
-        int r19 = -1;
-        int r20 = -1;
-        int r21 = -1;
-        int r22 = -1;
-        int r24 = -1;
-        float r23 = 1.0f;
-        String r25 = null;
-        int r13 = 0;
-        int r27 = 0;
-    L16:
-        if (r13 >= r3) goto L44;
-        int r110 = r35.A() & 63;     // Catch: ArrayIndexOutOfBoundsException -> L5
-        int r111 = r35.H();     // Catch: ArrayIndexOutOfBoundsException -> L5
-        int r112 = r5;
-        ss0 r113 = r26;
-    L18:
-        if (r112 >= r111) goto L43;
-        boolean r28 = r8;
-        int r29 = r35.H();     // Catch: ArrayIndexOutOfBoundsException -> L5
-        int r210 = r2;
-        System.arraycopy(uc5.c, r5, r12, r27, r1);     // Catch: ArrayIndexOutOfBoundsException -> L5
-        int r30 = r27 + 4;     // Catch: ArrayIndexOutOfBoundsException -> L5
-        System.arraycopy(r35.a, r35.b, r12, r30, r29);     // Catch: ArrayIndexOutOfBoundsException -> L5
-        if (r110 != 32) goto L24;
-        if (r112 != 0) goto L24;
-        r113 = uc5.J(r12, r30, r30 + r29);     // Catch: ArrayIndexOutOfBoundsException -> L5
-    L42:
-        r27 = r30 + r29;     // Catch: ArrayIndexOutOfBoundsException -> L5
-        r35.O(r29);     // Catch: ArrayIndexOutOfBoundsException -> L5
-        r112 = r112 + 1;     // Catch: ArrayIndexOutOfBoundsException -> L5
-        r8 = r28;
-        r2 = r210;
-        r1 = 4;
-    L24:
-        if (r110 != 33) goto L33;
-        if (r112 != 0) goto L33;
-        r13 r31 = uc5.I(r12, r30, r30 + r29, r113);     // Catch: ArrayIndexOutOfBoundsException -> L5
-        r14 = r31.a + 1;     // Catch: ArrayIndexOutOfBoundsException -> L5
-        r15 = r31.g;     // Catch: ArrayIndexOutOfBoundsException -> L5
-        int r32 = r31.h;     // Catch: ArrayIndexOutOfBoundsException -> L5
-        r17 = r31.c + 8;     // Catch: ArrayIndexOutOfBoundsException -> L5
-        r18 = r31.d + 8;     // Catch: ArrayIndexOutOfBoundsException -> L5
-        int r33 = r31.k;     // Catch: ArrayIndexOutOfBoundsException -> L5
-        r16 = r32;
-        int r34 = r31.l;     // Catch: ArrayIndexOutOfBoundsException -> L5
-        int r38 = r31.m;     // Catch: ArrayIndexOutOfBoundsException -> L5
-        float r39 = r31.i;     // Catch: ArrayIndexOutOfBoundsException -> L5
-        int r40 = r31.j;     // Catch: ArrayIndexOutOfBoundsException -> L5
-        p13 r41 = r31.b;     // Catch: ArrayIndexOutOfBoundsException -> L5
-        if (r41 == null) goto L30;
-        r25 = i40.a(r41.a, r41.b, r41.c, r41.d, r41.e, r41.f);     // Catch: ArrayIndexOutOfBoundsException -> L5
-    L30:
-        r24 = r40;
-        r23 = r39;
-        r21 = r38;
-        r20 = r34;
-        r19 = r33;
-    L31:
-        r5 = 0;
-    L33:
-        if (r110 != 39) goto L31;
-        if (r112 != 0) goto L31;
-        cx r42 = uc5.H(r12, r30, r30 + r29);     // Catch: ArrayIndexOutOfBoundsException -> L5
-        if (r42 == null) goto L31;
-        if (r113 == null) goto L31;
-        r5 = 0;
-        if (r42.a != ((o13) ((yw1) r113.n).get(0)).b) goto L41;
-        r22 = 4;
-        goto L42
-    L41:
-        r22 = 5;
-        goto L42
-    L43:
-        r13 = r13 + 1;     // Catch: ArrayIndexOutOfBoundsException -> L5
-        r26 = r113;
-        r1 = 4;
-        goto L16
-    L44:
-        int r211 = r2;
-        if (r7 != 0) goto L48;
-        List r0 = Collections.EMPTY_LIST;     // Catch: ArrayIndexOutOfBoundsException -> L5
-    L49:
-        return new zl1(r0, r211 + 1, r14, r15, r16, r17, r18, r19, r20, r21, r22, r23, r24, r25, r26);
-    L48:
-        r0 = Collections.singletonList(r12);     // Catch: ArrayIndexOutOfBoundsException -> L5
-        goto L49
-    L7:
-        r35.O(21);     // Catch: ArrayIndexOutOfBoundsException -> L5
-    L5:
-        e = move-exception;
-        if (r36 == false) goto L53;
-        String r43 = "L-HEVC config";
-    L55:
-        throw ParserException.a(e, "Error parsing".concat(r43));
-    L53:
-        r43 = "HEVC config";
-        goto L55
+    public static zl1 a(be3 be3Var, boolean z, ss0 ss0Var) {
+        boolean z2;
+        cx cxVarH;
+        int i = 4;
+        try {
+            if (z) {
+                be3Var.O(4);
+            } else {
+                be3Var.O(21);
+            }
+            int iA = be3Var.A() & 3;
+            int iA2 = be3Var.A();
+            int i2 = be3Var.b;
+            int i3 = 0;
+            int i4 = 0;
+            int i5 = 0;
+            while (true) {
+                z2 = true;
+                if (i4 >= iA2) {
+                    break;
+                }
+                be3Var.O(1);
+                int iH = be3Var.H();
+                for (int i6 = 0; i6 < iH; i6++) {
+                    int iH2 = be3Var.H();
+                    i5 += iH2 + 4;
+                    be3Var.O(iH2);
+                }
+                i4++;
+            }
+            be3Var.N(i2);
+            byte[] bArr = new byte[i5];
+            ss0 ss0Var2 = ss0Var;
+            int i7 = -1;
+            int i8 = -1;
+            int i9 = -1;
+            int i10 = -1;
+            int i11 = -1;
+            int i12 = -1;
+            int i13 = -1;
+            int i14 = -1;
+            int i15 = -1;
+            int i16 = -1;
+            float f = 1.0f;
+            String strA = null;
+            int i17 = 0;
+            int i18 = 0;
+            while (i17 < iA2) {
+                int iA3 = be3Var.A() & 63;
+                int iH3 = be3Var.H();
+                int i19 = i3;
+                ss0 ss0VarJ = ss0Var2;
+                while (i19 < iH3) {
+                    boolean z3 = z2;
+                    int iH4 = be3Var.H();
+                    int i20 = iA;
+                    System.arraycopy(uc5.c, i3, bArr, i18, i);
+                    int i21 = i18 + 4;
+                    System.arraycopy(be3Var.a, be3Var.b, bArr, i21, iH4);
+                    if (iA3 == 32 && i19 == 0) {
+                        ss0VarJ = uc5.J(bArr, i21, i21 + iH4);
+                    } else {
+                        if (iA3 == 33 && i19 == 0) {
+                            r13 r13VarI = uc5.I(bArr, i21, i21 + iH4, ss0VarJ);
+                            i7 = r13VarI.a + 1;
+                            i8 = r13VarI.g;
+                            int i22 = r13VarI.h;
+                            i10 = r13VarI.c + 8;
+                            i11 = r13VarI.d + 8;
+                            int i23 = r13VarI.k;
+                            i9 = i22;
+                            int i24 = r13VarI.l;
+                            int i25 = r13VarI.m;
+                            float f2 = r13VarI.i;
+                            int i26 = r13VarI.j;
+                            p13 p13Var = r13VarI.b;
+                            if (p13Var != null) {
+                                strA = i40.a(p13Var.a, p13Var.b, p13Var.c, p13Var.d, p13Var.e, p13Var.f);
+                            }
+                            i16 = i26;
+                            f = f2;
+                            i14 = i25;
+                            i13 = i24;
+                            i12 = i23;
+                        } else if (iA3 == 39 && i19 == 0 && (cxVarH = uc5.H(bArr, i21, i21 + iH4)) != null && ss0VarJ != null) {
+                            i3 = 0;
+                            i15 = cxVarH.a == ((o13) ((yw1) ss0VarJ.n).get(0)).b ? 4 : 5;
+                        }
+                        i3 = 0;
+                    }
+                    i18 = i21 + iH4;
+                    be3Var.O(iH4);
+                    i19++;
+                    z2 = z3;
+                    iA = i20;
+                    i = 4;
+                }
+                i17++;
+                ss0Var2 = ss0VarJ;
+                i = 4;
+            }
+            return new zl1(i5 == 0 ? Collections.EMPTY_LIST : Collections.singletonList(bArr), iA + 1, i7, i8, i9, i10, i11, i12, i13, i14, i15, f, i16, strA, ss0Var2);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            throw ParserException.a(e, "Error parsing".concat(z ? "L-HEVC config" : "HEVC config"));
+        }
     }
 }

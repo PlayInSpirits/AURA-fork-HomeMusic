@@ -8,22 +8,19 @@ import androidx.media3.exoplayer.drm.UnsupportedDrmException;
 /* JADX INFO: loaded from: classes.dex */
 public final class uw0 implements ww0 {
     @Override // defpackage.ww0
-    public final pw0 c(sw0 r2, tb1 r3) {
-        if (r3.r != null) goto L7;
-        return null;
-    L7:
+    public final pw0 c(sw0 sw0Var, tb1 tb1Var) {
+        if (tb1Var.r == null) {
+            return null;
+        }
         return new f21(new DrmSession$DrmSessionException(new UnsupportedDrmException(), 6001));
     }
 
     @Override // defpackage.ww0
-    public final void e(Looper r1, ik3 r2) {
+    public final void e(Looper looper, ik3 ik3Var) {
     }
 
     @Override // defpackage.ww0
-    public final int f(tb1 r1) {
-        if (r1.r == null) goto L6;
-        return 1;
-    L6:
-        return 0;
+    public final int f(tb1 tb1Var) {
+        return tb1Var.r != null ? 1 : 0;
     }
 }

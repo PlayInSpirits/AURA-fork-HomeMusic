@@ -8,30 +8,29 @@ public final /* synthetic */ class z31 implements qc2 {
     public final /* synthetic */ pi3 p;
     public final /* synthetic */ pi3 q;
 
-    public /* synthetic */ z31(int r1, pi3 r2, pi3 r3, int r4) {
-        this.n = r4;
-        this.o = r1;
-        this.p = r2;
-        this.q = r3;
+    public /* synthetic */ z31(int i, pi3 pi3Var, pi3 pi3Var2, int i2) {
+        this.n = i2;
+        this.o = i;
+        this.p = pi3Var;
+        this.q = pi3Var2;
     }
 
     @Override // defpackage.qc2
-    public final void invoke(Object r4) {
-        int r0 = this.n;
-        pi3 r1 = this.q;
-        pi3 r2 = this.p;
-        int r3 = this.o;
-        oi3 r5 = (oi3) r4;
-        switch(r0) {
-            case 0: goto L6;
-            default: goto L4;
-        };
-    L4:
-        r5.j(r3);
-        r5.k(r2, r1, r3);
-        return;
-    L6:
-        r5.j(r3);
-        r5.k(r2, r1, r3);
+    public final void invoke(Object obj) {
+        int i = this.n;
+        pi3 pi3Var = this.q;
+        pi3 pi3Var2 = this.p;
+        int i2 = this.o;
+        oi3 oi3Var = (oi3) obj;
+        switch (i) {
+            case 0:
+                oi3Var.j(i2);
+                oi3Var.k(pi3Var2, pi3Var, i2);
+                break;
+            default:
+                oi3Var.j(i2);
+                oi3Var.k(pi3Var2, pi3Var, i2);
+                break;
+        }
     }
 }

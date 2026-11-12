@@ -2,105 +2,101 @@ package defpackage;
 
 import android.content.ContentResolver;
 import android.net.Uri;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.logging.Logger;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class rd0 extends tz3 {
-    public final /* synthetic */ int a;
+    public final /* synthetic */ int a = 0;
     public final hu2 b;
     public final Object c;
     public final Comparable d;
 
-    public rd0(ContentResolver r2, Uri r3, String r4) {
-        this.a = 0;
-        r3.getClass();
-        this.c = r2;
-        this.d = r3;
-        hu2 r5 = ve5.a(r4);     // Catch: IllegalArgumentException -> L5
-    L6:
-        this.b = r5;
-        return;
-    L5:
-        r5 = null;
-        goto L6
+    public rd0(ContentResolver contentResolver, Uri uri, String str) {
+        hu2 hu2VarA;
+        uri.getClass();
+        this.c = contentResolver;
+        this.d = uri;
+        try {
+            hu2VarA = ve5.a(str);
+        } catch (IllegalArgumentException unused) {
+            hu2VarA = null;
+        }
+        this.b = hu2VarA;
     }
 
     @Override // defpackage.tz3
     public final long contentLength() {
-        switch(this.a) {
-            case 0: goto L8;
-            default: goto L4;
-        };
-    L4:
-        Long r3 = (Long) ((b71) this.c).g((ge3) this.d).e;
-        if (r3 != null) goto L7;
-        return -1;
-    L7:
-        return r3.longValue();
-    L8:
-        return -1;
+        switch (this.a) {
+            case 0:
+                return -1L;
+            default:
+                Long l = (Long) ((b71) this.c).g((ge3) this.d).e;
+                if (l != null) {
+                    return l.longValue();
+                }
+                return -1L;
+        }
     }
 
     @Override // defpackage.tz3
     public final hu2 contentType() {
-        switch(this.a) {
-            case 0: goto L7;
-            default: goto L5;
-        };
-    L5:
-        return this.b;
-    L7:
+        switch (this.a) {
+            case 0:
+                break;
+        }
         return this.b;
     }
 
     @Override // defpackage.tz3
-    public final void writeTo(ew r4) {
-        int r0 = this.a;
-        Comparable r1 = this.d;
-        Object r3 = this.c;
-        r4.getClass();
-        switch(r0) {
-            case 0: goto L13;
-            default: goto L4;
-        };
-    L4:
-        ej4 r5 = ((b71) r3).k((ge3) r1);
-        r4.p(r5);     // Catch: Throwable -> L8
-        r5.close();
-        return;
-    L8:
-        th = move-exception;
-        throw th;     // Catch: Throwable -> L10
-    L10:
-        th = move-exception;
-        q05.h(r5, th);
-        throw th;
-    L13:
-        InputStream r6 = ((ContentResolver) r3).openInputStream((Uri) r1);
-        if (r6 == null) goto L23;
-        Logger r2 = p83.a;
-        int r7 = 1;
-        tk r8 = new tk(r7, r6, new fu4());
-        r4.p(r8);     // Catch: Throwable -> L18
-        r8.close();
-        return;
-    L18:
-        th = move-exception;
-        throw th;     // Catch: Throwable -> L20
-    L20:
-        th = move-exception;
-        q05.h(r8, th);
-        throw th;
-    L23:
-        mj0.i("Не удалось открыть файл");
+    public final void writeTo(ew ewVar) throws IOException {
+        int i = this.a;
+        Comparable comparable = this.d;
+        Object obj = this.c;
+        ewVar.getClass();
+        switch (i) {
+            case 0:
+                InputStream inputStreamOpenInputStream = ((ContentResolver) obj).openInputStream((Uri) comparable);
+                if (inputStreamOpenInputStream == null) {
+                    mj0.i("Не удалось открыть файл");
+                    return;
+                }
+                Logger logger = p83.a;
+                tk tkVar = new tk(1, inputStreamOpenInputStream, new fu4());
+                try {
+                    ewVar.p(tkVar);
+                    tkVar.close();
+                    return;
+                } catch (Throwable th) {
+                    try {
+                        throw th;
+                    } catch (Throwable th2) {
+                        q05.h(tkVar, th);
+                        throw th2;
+                    }
+                }
+            default:
+                ej4 ej4VarK = ((b71) obj).k((ge3) comparable);
+                try {
+                    ewVar.p(ej4VarK);
+                    ej4VarK.close();
+                    return;
+                } catch (Throwable th3) {
+                    try {
+                        throw th3;
+                    } catch (Throwable th4) {
+                        q05.h(ej4VarK, th3);
+                        throw th4;
+                    }
+                }
+        }
     }
 
-    public rd0(ge3 r2, b71 r3, hu2 r4) {
-        this.a = 1;
-        this.b = r4;
-        this.c = r3;
-        this.d = r2;
+    public rd0(ge3 ge3Var, b71 b71Var, hu2 hu2Var) {
+        this.b = hu2Var;
+        this.c = b71Var;
+        this.d = ge3Var;
     }
 }

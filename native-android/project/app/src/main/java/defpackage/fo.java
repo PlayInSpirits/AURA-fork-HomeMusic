@@ -10,28 +10,28 @@ public final class fo implements ao {
     public final int e;
     public final int f;
 
-    public fo(int r1, int r2, int r3, int r4, int r5, int r6) {
-        this.a = r1;
-        this.b = r2;
-        this.c = r3;
-        this.d = r4;
-        this.e = r5;
-        this.f = r6;
+    public fo(int i, int i2, int i3, int i4, int i5, int i6) {
+        this.a = i;
+        this.b = i2;
+        this.c = i3;
+        this.d = i4;
+        this.e = i5;
+        this.f = i6;
     }
 
     public final int a() {
-        int r2 = this.a;
-        if (r2 != 1935960438) goto L5;
-        return 2;
-    L5:
-        if (r2 != 1935963489) goto L7;
-        return 1;
-    L7:
-        if (r2 == 1937012852) goto L10;
-        l93.q0("AviStreamHeaderChunk", "Found unsupported streamType fourCC: " + Integer.toHexString(r2));
+        int i = this.a;
+        if (i == 1935960438) {
+            return 2;
+        }
+        if (i == 1935963489) {
+            return 1;
+        }
+        if (i == 1937012852) {
+            return 3;
+        }
+        l93.q0("AviStreamHeaderChunk", "Found unsupported streamType fourCC: " + Integer.toHexString(i));
         return -1;
-    L10:
-        return 3;
     }
 
     @Override // defpackage.ao

@@ -18,53 +18,32 @@ public final class b45 extends d45 implements Iterable, x32 {
     public final List v;
     public final List w;
 
-    public b45(String r1, float r2, float r3, float r4, float r5, float r6, float r7, float r8, List r9, ArrayList r10) {
-        this.n = r1;
-        this.o = r2;
-        this.p = r3;
-        this.q = r4;
-        this.r = r5;
-        this.s = r6;
-        this.t = r7;
-        this.u = r8;
-        this.v = r9;
-        this.w = r10;
+    public b45(String str, float f, float f2, float f3, float f4, float f5, float f6, float f7, List list, ArrayList arrayList) {
+        this.n = str;
+        this.o = f;
+        this.p = f2;
+        this.q = f3;
+        this.r = f4;
+        this.s = f5;
+        this.t = f6;
+        this.u = f7;
+        this.v = list;
+        this.w = arrayList;
     }
 
-    public final boolean equals(Object r5) {
-        if (this != r5) goto L6;
-        return true;
-    L6:
-        if (r5 != null) goto L8;
-    L34:
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj != null && (obj instanceof b45)) {
+            b45 b45Var = (b45) obj;
+            return h12.c(this.n, b45Var.n) && this.o == b45Var.o && this.p == b45Var.p && this.q == b45Var.q && this.r == b45Var.r && this.s == b45Var.s && this.t == b45Var.t && this.u == b45Var.u && h12.c(this.v, b45Var.v) && h12.c(this.w, b45Var.w);
+        }
         return false;
-    L8:
-        if ((r5 instanceof b45) == false) goto L34;
-        b45 r6 = (b45) r5;
-        String r2 = r6.n;
-        if (h12.c(this.n, r2) == true) goto L14;
-        return false;
-    L14:
-        if (this.o != r6.o) goto L34;
-        if (this.p != r6.p) goto L34;
-        if (this.q != r6.q) goto L34;
-        if (this.r != r6.r) goto L34;
-        if (this.s != r6.s) goto L34;
-        if (this.t != r6.t) goto L34;
-        if (this.u != r6.u) goto L34;
-        if (h12.c(this.v, r6.v) == true) goto L31;
-        return false;
-    L31:
-        if (h12.c(this.w, r6.w) == true) goto L33;
-        return false;
-    L33:
-        return true;
     }
 
     public final int hashCode() {
-        int r0 = b11.d(b11.d(b11.d(b11.d(b11.d(b11.d(b11.d(this.n.hashCode() * 31, this.o, 31), this.p, 31), this.q, 31), this.r, 31), this.s, 31), this.t, 31), this.u, 31);
-        int r2 = (this.v.hashCode() + r0) * 31;
-        return this.w.hashCode() + r2;
+        return this.w.hashCode() + ((this.v.hashCode() + b11.d(b11.d(b11.d(b11.d(b11.d(b11.d(b11.d(this.n.hashCode() * 31, this.o, 31), this.p, 31), this.q, 31), this.r, 31), this.s, 31), this.t, 31), this.u, 31)) * 31);
     }
 
     @Override // java.lang.Iterable

@@ -12,77 +12,67 @@ public final class vg1 {
     public final i03 e;
     public final rp4 f;
 
-    public vg1(int r6, ArrayList r7) {
-        this.a = r7;
-        this.b = r6;
-        if (r6 >= 0) goto L6;
-        oo3.a("Invalid start index");
-    L6:
+    public vg1(int i, ArrayList arrayList) {
+        this.a = arrayList;
+        this.b = i;
+        if (i < 0) {
+            oo3.a("Invalid start index");
+        }
         this.d = new ArrayList();
-        i03 r8 = new i03();
-        int r9 = r7.size();
-        int r0 = 0;
-        int r1 = 0;
-    L7:
-        if (r0 >= r9) goto L9;
-        i42 r2 = (i42) this.a.get(r0);
-        int r3 = r2.c;
-        int r4 = r2.d;
-        r8.i(r3, new hk1(r0, r1, r4));
-        r1 = r1 + r4;
-        r0 = r0 + 1;
-        goto L7
-    L9:
-        this.e = r8;
+        i03 i03Var = new i03();
+        int size = arrayList.size();
+        int i2 = 0;
+        for (int i3 = 0; i3 < size; i3++) {
+            i42 i42Var = (i42) this.a.get(i3);
+            int i4 = i42Var.c;
+            int i5 = i42Var.d;
+            i03Var.i(i4, new hk1(i3, i2, i5));
+            i2 += i5;
+        }
+        this.e = i03Var;
         this.f = new rp4(new ug1(this));
     }
 
-    public final boolean a(int r18, int r19) {
-        i03 r0 = this.e;
-        hk1 r2 = (hk1) r0.b(r18);
-        if (r2 == null) goto L27;
-        int r4 = r2.b;
-        int r5 = r19 - r2.c;
-        r2.c = r19;
-        if (r5 == 0) goto L25;
-        Object[] r1 = r0.c;
-        long[] r3 = r0.a;
-        int r6 = r3.length - 2;
-        if (r6 < 0) goto L36;
-        int r7 = 0;
-    L9:
-        long r8 = r3[r7];
-        if (((((~r8) << 7) & r8) & (-9187201950435737472L)) == (-9187201950435737472L)) goto L23;
-        int r10 = 8 - ((~(r7 - r6)) >>> 31);
-        int r12 = 0;
-    L12:
-        if (r12 >= r10) goto L22;
-        if ((255 & r8) >= 128) goto L21;
-        hk1 r13 = (hk1) r1[(r7 << 3) + r12];
-        int r14 = r13.b;
-        if (r14 < r4) goto L21;
-        if (r13 == r2) goto L21;
-        int r15 = r14 + r5;
-        if (r15 < 0) goto L21;
-        r13.b = r15;
-    L21:
-        r8 = r8 >> 8;
-        r12 = r12 + 1;
-        goto L12
-    L22:
-        if (r10 == 8) goto L23;
-        return true;
-    L23:
-        if (r7 == r6) goto L38;
-        r7 = r7 + 1;
-        goto L9
-    L38:
-        return true;
-    L36:
-        return true;
-    L25:
-        return true;
-    L27:
-        return false;
+    public final boolean a(int i, int i2) {
+        hk1 hk1Var;
+        int i3;
+        int i4;
+        i03 i03Var = this.e;
+        hk1 hk1Var2 = (hk1) i03Var.b(i);
+        if (hk1Var2 == null) {
+            return false;
+        }
+        int i5 = hk1Var2.b;
+        int i6 = i2 - hk1Var2.c;
+        hk1Var2.c = i2;
+        if (i6 == 0) {
+            return true;
+        }
+        Object[] objArr = i03Var.c;
+        long[] jArr = i03Var.a;
+        int length = jArr.length - 2;
+        if (length < 0) {
+            return true;
+        }
+        int i7 = 0;
+        while (true) {
+            long j = jArr[i7];
+            if ((((~j) << 7) & j & (-9187201950435737472L)) != -9187201950435737472L) {
+                int i8 = 8 - ((~(i7 - length)) >>> 31);
+                for (int i9 = 0; i9 < i8; i9++) {
+                    if ((255 & j) < 128 && (i3 = (hk1Var = (hk1) objArr[(i7 << 3) + i9]).b) >= i5 && hk1Var != hk1Var2 && (i4 = i3 + i6) >= 0) {
+                        hk1Var.b = i4;
+                    }
+                    j >>= 8;
+                }
+                if (i8 != 8) {
+                    return true;
+                }
+            }
+            if (i7 == length) {
+                return true;
+            }
+            i7++;
+        }
     }
 }

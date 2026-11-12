@@ -12,10 +12,10 @@ public final class cm {
         new bm().a();
     }
 
-    public cm(bm r2) {
-        this.a = r2.b;
-        this.b = r2.c;
-        this.c = r2.d;
-        this.d = r2.a;
+    public cm(bm bmVar) {
+        this.a = bmVar.b;
+        this.b = bmVar.c;
+        this.c = bmVar.d;
+        this.d = bmVar.a;
     }
 }

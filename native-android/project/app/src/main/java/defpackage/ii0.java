@@ -23,107 +23,72 @@ public final class ii0 {
         hn2.a("media3.datasource");
     }
 
-    public ii0(Uri r10, long r11, int r13, byte[] r14, Map r15, long r16, long r18, String r20, int r21) {
-        boolean r5 = false;
-        if ((r11 + r16) < 0) goto L5;
-        boolean r4 = true;
-    L6:
-        rr2.l(r4);
-        if (r16 < 0) goto L9;
-        boolean r6 = true;
-    L10:
-        rr2.l(r6);
-        if (r18 <= 0) goto L13;
-    L14:
-        r5 = true;
-    L15:
-        rr2.l(r5);
-        r10.getClass();
-        this.a = r10;
-        this.b = r11;
-        this.c = r13;
-        if (r14 != null) goto L18;
-    L20:
-        byte[] r12 = null;
-    L21:
-        this.d = r12;
-        this.e = Collections.unmodifiableMap(new HashMap(r15));
-        this.f = r16;
-        this.g = r18;
-        this.h = r20;
-        this.i = r21;
-        return;
-    L18:
-        if (r14.length == 0) goto L20;
-        r12 = r14;
-        goto L21
-    L13:
-        if (r18 != (-1)) goto L15;
-    L9:
-        r6 = false;
-        goto L10
-    L5:
-        r4 = false;
-        goto L6
+    public ii0(Uri uri, long j2, int i, byte[] bArr, Map map, long j3, long j4, String str, int i2) {
+        rr2.l(j2 + j3 >= 0);
+        rr2.l(j3 >= 0);
+        rr2.l(j4 > 0 || j4 == -1);
+        uri.getClass();
+        this.a = uri;
+        this.b = j2;
+        this.c = i;
+        this.d = (bArr == null || bArr.length == 0) ? null : bArr;
+        this.e = Collections.unmodifiableMap(new HashMap(map));
+        this.f = j3;
+        this.g = j4;
+        this.h = str;
+        this.i = i2;
     }
 
     public final hi0 a() {
-        hi0 r0 = new hi0();
-        r0.a = this.a;
-        r0.b = this.b;
-        r0.c = this.c;
-        r0.d = this.d;
-        r0.e = this.e;
-        r0.f = this.f;
-        r0.g = this.g;
-        r0.h = this.h;
-        r0.i = this.i;
-        return r0;
+        hi0 hi0Var = new hi0();
+        hi0Var.a = this.a;
+        hi0Var.b = this.b;
+        hi0Var.c = this.c;
+        hi0Var.d = this.d;
+        hi0Var.e = this.e;
+        hi0Var.f = this.f;
+        hi0Var.g = this.g;
+        hi0Var.h = this.h;
+        hi0Var.i = this.i;
+        return hi0Var;
     }
 
-    public final ii0 b(long r15, long r17) {
-        if (r15 == 0) goto L5;
-    L7:
-        long r8 = this.f + r15;
-        String r12 = this.h;
-        int r13 = this.i;
-        return new ii0(this.a, this.b, this.c, this.d, this.e, r8, r17, r12, r13);
-    L5:
-        if (this.g != r17) goto L7;
-        return this;
+    public final ii0 b(long j2, long j3) {
+        if (j2 == 0 && this.g == j3) {
+            return this;
+        }
+        return new ii0(this.a, this.b, this.c, this.d, this.e, this.f + j2, j3, this.h, this.i);
     }
 
     public final String toString() {
-        StringBuilder r0 = new StringBuilder("DataSpec[");
-        int r2 = this.c;
-        if (r2 != 1) goto L5;
-        String r1 = "GET";
-    L13:
-        r0.append(r1);
-        r0.append(" ");
-        r0.append(this.a);
-        r0.append(", ");
-        r0.append(this.f);
-        r0.append(", ");
-        r0.append(this.g);
-        r0.append(", ");
-        r0.append(this.h);
-        r0.append(", ");
-        return f34.i(r0, this.i, "]");
-    L5:
-        if (r2 != 2) goto L7;
-        r1 = "POST";
-        goto L13
-    L7:
-        if (r2 != 3) goto L9;
-        r1 = "HEAD";
-        goto L13
-    L9:
-        tb4.a();
-        return null;
+        String str;
+        StringBuilder sb = new StringBuilder("DataSpec[");
+        int i = this.c;
+        if (i == 1) {
+            str = "GET";
+        } else if (i == 2) {
+            str = "POST";
+        } else {
+            if (i != 3) {
+                tb4.a();
+                return null;
+            }
+            str = "HEAD";
+        }
+        sb.append(str);
+        sb.append(" ");
+        sb.append(this.a);
+        sb.append(", ");
+        sb.append(this.f);
+        sb.append(", ");
+        sb.append(this.g);
+        sb.append(", ");
+        sb.append(this.h);
+        sb.append(", ");
+        return f34.i(sb, this.i, "]");
     }
 
-    public ii0(Uri r14, long r15, long r17) {
-        this(r14, 0, 1, null, Collections.EMPTY_MAP, r15, r17, null, 0);
+    public ii0(Uri uri, long j2, long j3) {
+        this(uri, 0L, 1, null, Collections.EMPTY_MAP, j2, j3, null, 0);
     }
 }

@@ -2,6 +2,7 @@ package defpackage;
 
 import androidx.compose.ui.input.pointer.PointerInputEventHandler;
 import androidx.work.impl.workers.ConstraintTrackingWorker;
+import org.chromium.support_lib_boundary.WebSettingsBoundaryInterface;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
@@ -10,278 +11,231 @@ public final class ac0 extends ep4 implements wf1 {
     public int p;
     public /* synthetic */ Object q;
 
-    public /* synthetic */ ac0(Object r1, vd0 r2, int r3) {
-        this.o = r3;
-        this.q = r1;
-        super(2, r2);
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public /* synthetic */ ac0(Object obj, vd0 vd0Var, int i) {
+        super(2, vd0Var);
+        this.o = i;
+        this.q = obj;
     }
 
     @Override // defpackage.jp
-    public final vd0 create(Object r3, vd0 r4) {
-        int r1 = 2;
-        switch(this.o) {
-            case 0: goto L21;
-            case 1: goto L19;
-            case 2: goto L17;
-            case 3: goto L15;
-            case 4: goto L13;
-            case 5: goto L10;
-            case 6: goto L9;
-            case 7: goto L7;
-            default: goto L5;
-        };
-    L10:
-        ac0 r2 = new ac0(r1, r4);
-        r2.q = r3;
-        return r2;
-    L5:
-        return new ac0((jy4) this.q, r4, 8);
-    L7:
-        return new ac0((ip4) this.q, r4, 7);
-    L9:
-        return new ac0((x60) this.q, r4, 6);
-    L13:
-        return new ac0((hy2) this.q, r4, 4);
-    L15:
-        return new ac0((ea1) this.q, r4, 3);
-    L17:
-        return new ac0((x81) this.q, r4, r1);
-    L19:
-        return new ac0((ck0) this.q, r4, 1);
-    L21:
-        return new ac0((ConstraintTrackingWorker) this.q, r4, 0);
+    public final vd0 create(Object obj, vd0 vd0Var) {
+        int i = 2;
+        switch (this.o) {
+            case 0:
+                return new ac0((ConstraintTrackingWorker) this.q, vd0Var, 0);
+            case 1:
+                return new ac0((ck0) this.q, vd0Var, 1);
+            case 2:
+                return new ac0((x81) this.q, vd0Var, i);
+            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
+                return new ac0((ea1) this.q, vd0Var, 3);
+            case 4:
+                return new ac0((hy2) this.q, vd0Var, 4);
+            case 5:
+                ac0 ac0Var = new ac0(i, vd0Var);
+                ac0Var.q = obj;
+                return ac0Var;
+            case 6:
+                return new ac0((x60) this.q, vd0Var, 6);
+            case 7:
+                return new ac0((ip4) this.q, vd0Var, 7);
+            default:
+                return new ac0((jy4) this.q, vd0Var, 8);
+        }
     }
 
     @Override // defpackage.wf1
-    public final Object invoke(Object r3, Object r4) {
-        int r0 = this.o;
-        j15 r1 = j15.a;
-        we0 r5 = (we0) r3;
-        vd0 r6 = (vd0) r4;
-        switch(r0) {
-            case 0: goto L21;
-            case 1: goto L19;
-            case 2: goto L17;
-            case 3: goto L15;
-            case 4: goto L13;
-            case 5: goto L11;
-            case 6: goto L9;
-            case 7: goto L7;
-            default: goto L5;
-        };
-    L5:
-        return ((ac0) create(r5, r6)).invokeSuspend(r1);
-    L7:
-        return ((ac0) create(r5, r6)).invokeSuspend(r1);
-    L9:
-        return ((ac0) create(r5, r6)).invokeSuspend(r1);
-    L11:
-        return ((ac0) create(r5, r6)).invokeSuspend(r1);
-    L13:
-        return ((ac0) create(r5, r6)).invokeSuspend(r1);
-    L15:
-        return ((ac0) create(r5, r6)).invokeSuspend(r1);
-    L17:
-        return ((ac0) create(r5, r6)).invokeSuspend(r1);
-    L19:
-        return ((ac0) create(r5, r6)).invokeSuspend(r1);
-    L21:
-        return ((ac0) create(r5, r6)).invokeSuspend(r1);
+    public final Object invoke(Object obj, Object obj2) {
+        int i = this.o;
+        j15 j15Var = j15.a;
+        we0 we0Var = (we0) obj;
+        vd0 vd0Var = (vd0) obj2;
+        switch (i) {
+            case 0:
+                break;
+            case 1:
+                break;
+            case 2:
+                break;
+            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
+                break;
+            case 4:
+                break;
+            case 5:
+                break;
+            case 6:
+                break;
+            case 7:
+                break;
+        }
+        return ((ac0) create(we0Var, vd0Var)).invokeSuspend(j15Var);
     }
 
     @Override // defpackage.jp
-    public final Object invokeSuspend(Object r14) {
-        int r0 = this.o;
-        int r1 = 15;
-        j15 r2 = j15.a;
-        xe0 r4 = xe0.n;
-        vd0 r6 = null;
-        switch(r0) {
-            case 0: goto L81;
-            case 1: goto L74;
-            case 2: goto L62;
-            case 3: goto L53;
-            case 4: goto L44;
-            case 5: goto L32;
-            case 6: goto L23;
-            case 7: goto L13;
-            default: goto L4;
-        };
-    L4:
-        int r3 = this.p;
-        if (r3 == 0) goto L9;
-        if (r3 != 1) goto L8;
-        kb4.X(r14);
-        return r2;
-    L8:
-        kf2.o("call to 'resume' before 'invoke' with coroutine");
-        return null;
-    L9:
-        kb4.X(r14);
-        jy4 r15 = (jy4) this.q;
-        this.p = 1;
-        if (r15.f(this) == r4) goto L12;
-        return r2;
-    L12:
-        return r4;
-    L13:
-        ip4 r5 = (ip4) this.q;
-        int r7 = this.p;
-        if (r7 == 0) goto L19;
-        if (r7 == 1) goto L17;
-        if (r7 == 2) goto L17;
-        kf2.o("call to 'resume' before 'invoke' with coroutine");
-        return null;
-    L17:
-        kb4.X(r14);
-        return r2;
-    L19:
-        kb4.X(r14);
-        PointerInputEventHandler r16 = r5.D;
-        this.p = 2;
-        if (r16.invoke(r5, this) == r4) goto L22;
-        return r2;
-    L22:
-        return r4;
-    L23:
-        int r8 = this.p;
-        if (r8 == 0) goto L28;
-        if (r8 != 1) goto L27;
-        kb4.X(r14);
-        return r14;
-    L27:
-        kf2.o("call to 'resume' before 'invoke' with coroutine");
-        return null;
-    L28:
-        kb4.X(r14);
-        x60 r17 = (x60) this.q;
-        this.p = 1;
-        Object r18 = r17.j0(this);
-        if (r18 == r4) goto L31;
-        return r18;
-    L31:
-        return r4;
-    L32:
-        int r9 = this.p;
-        if (r9 == 0) goto L37;
-        if (r9 != 1) goto L36;
-        we0 r10 = (we0) this.q;
-        kb4.X(r14);
-    L39:
-        if (gb.L(r10.e()) == false) goto L104;
-        k52 r19 = new k52(15);
-        this.q = r10;
-        this.p = 1;
-        if (vr1.x(getContext()).a(r19, this) != r4) goto L39;
-        return r4;
-    L104:
-        return r2;
-    L36:
-        kf2.o("call to 'resume' before 'invoke' with coroutine");
-        return null;
-    L37:
-        kb4.X(r14);
-        r10 = (we0) this.q;
-        goto L39
-    L44:
-        int r11 = this.p;
-        if (r11 == 0) goto L49;
-        if (r11 != 1) goto L48;
-        kb4.X(r14);
-        return r14;
-    L48:
-        kf2.o("call to 'resume' before 'invoke' with coroutine");
-        return null;
-    L49:
-        kb4.X(r14);
-        aw r110 = ((hy2) this.q).g;
-        this.p = 1;
-        Object r111 = te5.j(new p(r110, r6, r1), this);
-        if (r111 == r4) goto L52;
-        return r111;
-    L52:
-        return r4;
-    L53:
-        int r12 = this.p;
-        if (r12 == 0) goto L58;
-        if (r12 != 1) goto L57;
-        kb4.X(r14);
-        return r2;
-    L57:
-        kf2.o("call to 'resume' before 'invoke' with coroutine");
-        return null;
-    L58:
-        kb4.X(r14);
-        ea1 r112 = (ea1) this.q;
-        this.p = 1;
-        if (xl.h(r112, null, this) == r4) goto L61;
-        return r2;
-    L61:
-        return r4;
-    L62:
-        int r13 = this.p;
-        if (r13 == 0) goto L67;
-        if (r13 != 1) goto L66;
-        kb4.X(r14);
-        return r2;
-    L66:
-        kf2.o("call to 'resume' before 'invoke' with coroutine");
-        return null;
-    L67:
-        kb4.X(r14);
-        x81 r113 = (x81) this.q;
-        this.p = 1;
-        Object r114 = r113.a(n63.n, this);
-        if (r114 == r4) goto L71;
-        r114 = r2;
-    L71:
-        if (r114 == r4) goto L73;
-        return r2;
-    L73:
-        return r4;
-    L74:
-        int r20 = this.p;
-        if (r20 == 0) goto L79;
-        if (r20 != 1) goto L78;
-        kb4.X(r14);
-        return r2;
-    L78:
-        kf2.o("call to 'resume' before 'invoke' with coroutine");
-        return null;
-    L79:
-        kb4.X(r14);
-        hx3 r21 = new hx3();
-        hx3 r22 = new hx3();
-        hx3 r115 = new hx3();
-        ck0 r116 = (ck0) this.q;
-        cd4 r117 = (cd4) r116.B.o;
-        e10 r23 = new e10(r21, r22, r115, r116, 1);
-        this.p = 1;
-        r117.getClass();
-        cd4.k(r117, r23, this);
-        return r4;
-    L81:
-        int r24 = this.p;
-        if (r24 == 0) goto L86;
-        if (r24 != 1) goto L85;
-        kb4.X(r14);
-        return r14;
-    L85:
-        kf2.o("call to 'resume' before 'invoke' with coroutine");
-        return null;
-    L86:
-        kb4.X(r14);
-        ConstraintTrackingWorker r118 = (ConstraintTrackingWorker) this.q;
-        this.p = 1;
-        Object r119 = ConstraintTrackingWorker.f(r118, this);
-        if (r119 == r4) goto L89;
-        return r119;
-    L89:
-        return r4;
+    public final Object invokeSuspend(Object obj) throws Throwable {
+        we0 we0Var;
+        int i = this.o;
+        int i2 = 15;
+        j15 j15Var = j15.a;
+        xe0 xe0Var = xe0.n;
+        vd0 vd0Var = null;
+        switch (i) {
+            case 0:
+                int i3 = this.p;
+                if (i3 != 0) {
+                    if (i3 == 1) {
+                        kb4.X(obj);
+                        return obj;
+                    }
+                    kf2.o("call to 'resume' before 'invoke' with coroutine");
+                    return null;
+                }
+                kb4.X(obj);
+                ConstraintTrackingWorker constraintTrackingWorker = (ConstraintTrackingWorker) this.q;
+                this.p = 1;
+                Object objF = ConstraintTrackingWorker.f(constraintTrackingWorker, this);
+                return objF == xe0Var ? xe0Var : objF;
+            case 1:
+                int i4 = this.p;
+                if (i4 != 0) {
+                    if (i4 == 1) {
+                        kb4.X(obj);
+                        return j15Var;
+                    }
+                    kf2.o("call to 'resume' before 'invoke' with coroutine");
+                    return null;
+                }
+                kb4.X(obj);
+                hx3 hx3Var = new hx3();
+                hx3 hx3Var2 = new hx3();
+                hx3 hx3Var3 = new hx3();
+                ck0 ck0Var = (ck0) this.q;
+                cd4 cd4Var = (cd4) ck0Var.B.o;
+                e10 e10Var = new e10(hx3Var, hx3Var2, hx3Var3, ck0Var, 1);
+                this.p = 1;
+                cd4Var.getClass();
+                cd4.k(cd4Var, e10Var, this);
+                return xe0Var;
+            case 2:
+                int i5 = this.p;
+                if (i5 != 0) {
+                    if (i5 == 1) {
+                        kb4.X(obj);
+                        return j15Var;
+                    }
+                    kf2.o("call to 'resume' before 'invoke' with coroutine");
+                    return null;
+                }
+                kb4.X(obj);
+                x81 x81Var = (x81) this.q;
+                this.p = 1;
+                Object objA = x81Var.a(n63.n, this);
+                if (objA != xe0Var) {
+                    objA = j15Var;
+                }
+                return objA == xe0Var ? xe0Var : j15Var;
+            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
+                int i6 = this.p;
+                if (i6 == 0) {
+                    kb4.X(obj);
+                    ea1 ea1Var = (ea1) this.q;
+                    this.p = 1;
+                    return xl.h(ea1Var, null, this) == xe0Var ? xe0Var : j15Var;
+                }
+                if (i6 == 1) {
+                    kb4.X(obj);
+                    return j15Var;
+                }
+                kf2.o("call to 'resume' before 'invoke' with coroutine");
+                return null;
+            case 4:
+                int i7 = this.p;
+                if (i7 != 0) {
+                    if (i7 == 1) {
+                        kb4.X(obj);
+                        return obj;
+                    }
+                    kf2.o("call to 'resume' before 'invoke' with coroutine");
+                    return null;
+                }
+                kb4.X(obj);
+                aw awVar = ((hy2) this.q).g;
+                this.p = 1;
+                Object objJ = te5.j(new p(awVar, vd0Var, i2), this);
+                return objJ == xe0Var ? xe0Var : objJ;
+            case 5:
+                int i8 = this.p;
+                if (i8 == 0) {
+                    kb4.X(obj);
+                    we0Var = (we0) this.q;
+                } else {
+                    if (i8 != 1) {
+                        kf2.o("call to 'resume' before 'invoke' with coroutine");
+                        return null;
+                    }
+                    we0Var = (we0) this.q;
+                    kb4.X(obj);
+                }
+                while (gb.L(we0Var.e())) {
+                    k52 k52Var = new k52(15);
+                    this.q = we0Var;
+                    this.p = 1;
+                    if (vr1.x(getContext()).a(k52Var, this) == xe0Var) {
+                        return xe0Var;
+                    }
+                }
+                return j15Var;
+            case 6:
+                int i9 = this.p;
+                if (i9 != 0) {
+                    if (i9 == 1) {
+                        kb4.X(obj);
+                        return obj;
+                    }
+                    kf2.o("call to 'resume' before 'invoke' with coroutine");
+                    return null;
+                }
+                kb4.X(obj);
+                x60 x60Var = (x60) this.q;
+                this.p = 1;
+                Object objJ0 = x60Var.j0(this);
+                return objJ0 == xe0Var ? xe0Var : objJ0;
+            case 7:
+                ip4 ip4Var = (ip4) this.q;
+                int i10 = this.p;
+                if (i10 == 0) {
+                    kb4.X(obj);
+                    PointerInputEventHandler pointerInputEventHandler = ip4Var.D;
+                    this.p = 2;
+                    return pointerInputEventHandler.invoke(ip4Var, this) == xe0Var ? xe0Var : j15Var;
+                }
+                if (i10 == 1 || i10 == 2) {
+                    kb4.X(obj);
+                    return j15Var;
+                }
+                kf2.o("call to 'resume' before 'invoke' with coroutine");
+                return null;
+            default:
+                int i11 = this.p;
+                if (i11 == 0) {
+                    kb4.X(obj);
+                    jy4 jy4Var = (jy4) this.q;
+                    this.p = 1;
+                    return jy4Var.f(this) == xe0Var ? xe0Var : j15Var;
+                }
+                if (i11 == 1) {
+                    kb4.X(obj);
+                    return j15Var;
+                }
+                kf2.o("call to 'resume' before 'invoke' with coroutine");
+                return null;
+        }
     }
 
-    public /* synthetic */ ac0(int r2, vd0 r3) {
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public /* synthetic */ ac0(int i, vd0 vd0Var) {
+        super(i, vd0Var);
         this.o = 5;
-        super(r2, r3);
     }
 }

@@ -5,121 +5,80 @@ import java.util.ArrayList;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class kv2 implements kg0 {
-    public static final h90 b = null;
-    public final ArrayList a;
-
-    static {
-        x13 r0 = x13.o;
-        kw r2 = new kw(new zr2(23), r0);
-        x13 r1 = x13.p;
-        b = new h90(r2, new kw(new zr2(24), r1));
-    }
-
-    public kv2() {
-        this.a = new ArrayList();
-    }
+    public static final h90 b = new h90(new kw(new zr2(23), x13.o), new kw(new zr2(24), x13.p));
+    public final ArrayList a = new ArrayList();
 
     @Override // defpackage.kg0
-    public final long a(long r11) {
-        int r2 = 0;
-        long r3 = -9223372036854775807L;
-    L3:
-        ArrayList r5 = this.a;
-        if (r2 >= r5.size()) goto L19;
-        long r6 = ((lg0) r5.get(r2)).b;
-        long r8 = ((lg0) r5.get(r2)).d;
-        if (r11 < r6) goto L8;
-        if (r11 >= r8) goto L17;
-        if (r3 != (-9223372036854775807L)) goto L16;
-        r3 = r8;
-        goto L17
-    L16:
-        r3 = Math.min(r3, r8);
-    L17:
-        r2 = r2 + 1;
-        goto L3
-    L8:
-        if (r3 != (-9223372036854775807L)) goto L10;
-        r3 = r6;
-        goto L19
-    L10:
-        r3 = Math.min(r3, r6);
-    L19:
-        if (r3 == (-9223372036854775807L)) goto L21;
-        return r3;
-    L21:
+    public final long a(long j) {
+        int i = 0;
+        long jMin = -9223372036854775807L;
+        while (true) {
+            ArrayList arrayList = this.a;
+            if (i >= arrayList.size()) {
+                break;
+            }
+            long j2 = ((lg0) arrayList.get(i)).b;
+            long j3 = ((lg0) arrayList.get(i)).d;
+            if (j < j2) {
+                if (jMin != -9223372036854775807L) {
+                    jMin = Math.min(jMin, j2);
+                    break;
+                }
+                jMin = j2;
+                break;
+            }
+            if (j < j3) {
+                jMin = jMin == -9223372036854775807L ? j3 : Math.min(jMin, j3);
+            }
+            i++;
+        }
+        if (jMin != -9223372036854775807L) {
+            return jMin;
+        }
         return Long.MIN_VALUE;
     }
 
     @Override // defpackage.kg0
-    public final boolean b(lg0 r10, long r11) {
-        long r0 = r10.b;
-        if (r0 == (-9223372036854775807L)) goto L5;
-        boolean r4 = true;
-    L6:
-        rr2.l(r4);
-        if (r10.c == (-9223372036854775807L)) goto L9;
-        boolean r2 = true;
-    L10:
-        rr2.l(r2);
-        if (r0 <= r11) goto L13;
-    L15:
-        boolean r12 = false;
-    L16:
-        ArrayList r9 = this.a;
-        int r13 = r9.size() - 1;
-    L17:
-        if (r13 < 0) goto L23;
-        if (r0 >= ((lg0) r9.get(r13)).b) goto L20;
-        r13 = r13 - 1;
-        goto L17
-    L20:
-        r9.add(r13 + 1, r10);
-        return r12;
-    L23:
-        r9.add(0, r10);
-        return r12;
-    L13:
-        if (r11 >= r10.d) goto L15;
-        r12 = true;
-        goto L16
-    L9:
-        r2 = false;
-        goto L10
-    L5:
-        r4 = false;
-        goto L6
+    public final boolean b(lg0 lg0Var, long j) {
+        long j2 = lg0Var.b;
+        rr2.l(j2 != -9223372036854775807L);
+        rr2.l(lg0Var.c != -9223372036854775807L);
+        boolean z = j2 <= j && j < lg0Var.d;
+        ArrayList arrayList = this.a;
+        for (int size = arrayList.size() - 1; size >= 0; size--) {
+            if (j2 >= ((lg0) arrayList.get(size)).b) {
+                arrayList.add(size + 1, lg0Var);
+                return z;
+            }
+        }
+        arrayList.add(0, lg0Var);
+        return z;
     }
 
     @Override // defpackage.kg0
-    public final yw1 c(long r7) {
-        ArrayList r6 = this.a;
-        if (r6.isEmpty() == true) goto L25;
-        int r0 = 0;
-        if (r7 < ((lg0) r6.get(0)).b) goto L25;
-        ArrayList r1 = new ArrayList();
-        int r2 = 0;
-    L9:
-        if (r2 >= r6.size()) goto L19;
-        lg0 r3 = (lg0) r6.get(r2);
-        if (r7 < r3.b) goto L16;
-        if (r7 >= r3.d) goto L16;
-        r1.add(r3);
-    L16:
-        if (r7 < r3.b) goto L19;
-        r2 = r2 + 1;
-    L19:
-        gy3 r8 = yw1.q(b, r1);
-        uw1 r9 = yw1.j();
-    L21:
-        if (r0 >= r8.q) goto L24;
-        r9.d(((lg0) r8.get(r0)).a);
-        r0 = r0 + 1;
-        goto L21
-    L24:
-        return r9.f();
-    L25:
-        vw1 r10 = yw1.o;
+    public final yw1 c(long j) {
+        ArrayList arrayList = this.a;
+        if (!arrayList.isEmpty()) {
+            if (j >= ((lg0) arrayList.get(0)).b) {
+                ArrayList arrayList2 = new ArrayList();
+                for (int i = 0; i < arrayList.size(); i++) {
+                    lg0 lg0Var = (lg0) arrayList.get(i);
+                    if (j >= lg0Var.b && j < lg0Var.d) {
+                        arrayList2.add(lg0Var);
+                    }
+                    if (j < lg0Var.b) {
+                        break;
+                    }
+                }
+                gy3 gy3VarQ = yw1.q(b, arrayList2);
+                uw1 uw1VarJ = yw1.j();
+                for (int i2 = 0; i2 < gy3VarQ.q; i2++) {
+                    uw1VarJ.d(((lg0) gy3VarQ.get(i2)).a);
+                }
+                return uw1VarJ.f();
+            }
+        }
+        vw1 vw1Var = yw1.o;
         return gy3.r;
     }
 
@@ -129,50 +88,46 @@ public final class kv2 implements kg0 {
     }
 
     @Override // defpackage.kg0
-    public final long d(long r9) {
-        ArrayList r8 = this.a;
-        if (r8.isEmpty() == true) goto L18;
-        int r0 = 0;
-        if (r9 < ((lg0) r8.get(0)).b) goto L24;
-        long r1 = ((lg0) r8.get(0)).b;
-    L9:
-        if (r0 >= r8.size()) goto L17;
-        long r3 = ((lg0) r8.get(r0)).b;
-        long r5 = ((lg0) r8.get(r0)).d;
-        if (r5 > r9) goto L14;
-        r1 = Math.max(r1, r5);
-    L16:
-        r0 = r0 + 1;
-        goto L9
-    L14:
-        if (r3 > r9) goto L17;
-        r1 = Math.max(r1, r3);
-    L17:
-        return r1;
-    L24:
-        return -9223372036854775807L;
-    L18:
-        return -9223372036854775807L;
+    public final long d(long j) {
+        ArrayList arrayList = this.a;
+        if (arrayList.isEmpty()) {
+            return -9223372036854775807L;
+        }
+        if (j < ((lg0) arrayList.get(0)).b) {
+            return -9223372036854775807L;
+        }
+        long jMax = ((lg0) arrayList.get(0)).b;
+        for (int i = 0; i < arrayList.size(); i++) {
+            long j2 = ((lg0) arrayList.get(i)).b;
+            long j3 = ((lg0) arrayList.get(i)).d;
+            if (j3 > j) {
+                if (j2 > j) {
+                    break;
+                }
+                jMax = Math.max(jMax, j2);
+            } else {
+                jMax = Math.max(jMax, j3);
+            }
+        }
+        return jMax;
     }
 
     @Override // defpackage.kg0
-    public final void e(long r6) {
-        int r0 = 0;
-    L3:
-        ArrayList r1 = this.a;
-        if (r0 >= r1.size()) goto L13;
-        long r2 = ((lg0) r1.get(r0)).b;
-        if (r6 > r2) goto L8;
-    L10:
-        if (r6 >= r2) goto L12;
-        return;
-    L12:
-        r0 = r0 + 1;
-        goto L3
-    L8:
-        if (r6 <= ((lg0) r1.get(r0)).d) goto L10;
-        r1.remove(r0);
-        r0 = r0 - 1;
-        goto L12
+    public final void e(long j) {
+        int i = 0;
+        while (true) {
+            ArrayList arrayList = this.a;
+            if (i >= arrayList.size()) {
+                return;
+            }
+            long j2 = ((lg0) arrayList.get(i)).b;
+            if (j > j2 && j > ((lg0) arrayList.get(i)).d) {
+                arrayList.remove(i);
+                i--;
+            } else if (j < j2) {
+                return;
+            }
+            i++;
+        }
     }
 }

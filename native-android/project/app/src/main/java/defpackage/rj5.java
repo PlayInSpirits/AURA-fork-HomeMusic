@@ -8,51 +8,49 @@ import java.util.Locale;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public class rj5 implements Iterable, Serializable {
-    public static final rj5 p = null;
-    public int n;
+    public static final rj5 p = new rj5(tj5.a);
+    public int n = 0;
     public final byte[] o;
 
     static {
-        p = new rj5(tj5.a);
-        int r0 = oj5.a;
+        int i = oj5.a;
     }
 
-    public rj5(byte[] r2) {
-        this.n = 0;
-        r2.getClass();
-        this.o = r2;
+    public rj5(byte[] bArr) {
+        bArr.getClass();
+        this.o = bArr;
     }
 
-    public static int h(int r3, int r4, int r5) {
-        int r1 = r4 - r3;
-        if ((((r3 | r4) | r1) | (r5 - r4)) >= 0) goto L11;
-        if (r3 < 0) goto L10;
-        if (r4 >= r3) goto L9;
-        kf2.h(xa3.e(r3, r4, "Beginning index larger than ending index: ", ", "));
+    public static int h(int i, int i2, int i3) {
+        int i4 = i2 - i;
+        if ((i | i2 | i4 | (i3 - i2)) >= 0) {
+            return i4;
+        }
+        if (i < 0) {
+            kf2.h(b11.j(i, "Beginning index: ", " < 0"));
+            return 0;
+        }
+        if (i2 < i) {
+            kf2.h(xa3.e(i, i2, "Beginning index larger than ending index: ", ", "));
+            return 0;
+        }
+        kf2.h(xa3.e(i2, i3, "End index: ", " >= "));
         return 0;
-    L9:
-        kf2.h(xa3.e(r4, r5, "End index: ", " >= "));
-        return 0;
-    L10:
-        kf2.h(b11.j(r3, "Beginning index: ", " < 0"));
-        return 0;
-    L11:
-        return r1;
     }
 
-    public static rj5 i(int r3, byte[] r4) {
-        h(0, r3, r4.length);
-        byte[] r2 = new byte[r3];
-        System.arraycopy(r4, 0, r2, 0, r3);
-        return new rj5(r2);
+    public static rj5 i(int i, byte[] bArr) {
+        h(0, i, bArr.length);
+        byte[] bArr2 = new byte[i];
+        System.arraycopy(bArr, 0, bArr2, 0, i);
+        return new rj5(bArr2);
     }
 
-    public byte a(int r1) {
-        return this.o[r1];
+    public byte a(int i) {
+        return this.o[i];
     }
 
-    public byte b(int r1) {
-        return this.o[r1];
+    public byte b(int i) {
+        return this.o[i];
     }
 
     public int d() {
@@ -63,81 +61,70 @@ public class rj5 implements Iterable, Serializable {
         return this.o.length;
     }
 
-    public final boolean equals(Object r7) {
-        if (r7 != this) goto L5;
-        return true;
-    L5:
-        if ((r7 instanceof rj5) == true) goto L8;
-    L27:
+    public final boolean equals(Object obj) {
+        if (obj == this) {
+            return true;
+        }
+        if ((obj instanceof rj5) && e() == ((rj5) obj).e()) {
+            if (e() == 0) {
+                return true;
+            }
+            if (!(obj instanceof rj5)) {
+                return obj.equals(this);
+            }
+            rj5 rj5Var = (rj5) obj;
+            int i = this.n;
+            int i2 = rj5Var.n;
+            if (i == 0 || i2 == 0 || i == i2) {
+                int iE = e();
+                if (iE > rj5Var.e()) {
+                    throw new IllegalArgumentException("Length too large: " + iE + e());
+                }
+                if (iE > rj5Var.e()) {
+                    kf2.n(xa3.e(iE, rj5Var.e(), "Ran off end of other: 0, ", ", "));
+                    return false;
+                }
+                byte[] bArr = rj5Var.o;
+                int iD = d() + iE;
+                int iD2 = d();
+                int iD3 = rj5Var.d();
+                while (iD2 < iD) {
+                    if (this.o[iD2] == bArr[iD3]) {
+                        iD2++;
+                        iD3++;
+                    }
+                }
+                return true;
+            }
+        }
         return false;
-    L8:
-        if (e() != ((rj5) r7).e()) goto L27;
-        if (e() != 0) goto L14;
-        return true;
-    L14:
-        if ((r7 instanceof rj5) == false) goto L36;
-        rj5 r8 = (rj5) r7;
-        int r0 = this.n;
-        int r2 = r8.n;
-        if (r0 == 0) goto L19;
-        if (r2 == 0) goto L19;
-        if (r0 != r2) goto L27;
-    L19:
-        int r1 = e();
-        if (r1 > r8.e()) goto L34;
-        if (r1 > r8.e()) goto L31;
-        byte[] r3 = r8.o;
-        int r4 = d() + r1;
-        int r5 = d();
-        int r9 = r8.d();
-    L24:
-        if (r5 >= r4) goto L40;
-        if (this.o[r5] != r3[r9]) goto L27;
-        r5 = r5 + 1;
-        r9 = r9 + 1;
-        goto L24
-    L40:
-        return true;
-    L31:
-        kf2.n(xa3.e(r1, r8.e(), "Ran off end of other: 0, ", ", "));
-        return false;
-    L34:
-        throw new IllegalArgumentException("Length too large: " + r1 + e());
-    L36:
-        return r7.equals(this);
     }
 
-    public void f(int r2, byte[] r3) {
-        System.arraycopy(this.o, 0, r3, 0, r2);
+    public void f(int i, byte[] bArr) {
+        System.arraycopy(this.o, 0, bArr, 0, i);
     }
 
     public final ByteArrayInputStream g() {
-        int r1 = d();
-        int r2 = e();
-        return new ByteArrayInputStream(this.o, r1, r2);
+        return new ByteArrayInputStream(this.o, d(), e());
     }
 
     public final int hashCode() {
-        int r0 = this.n;
-        if (r0 != 0) goto L12;
-        int r1 = e();
-        int r2 = d();
-        byte[] r3 = tj5.a;
-        int r4 = r1;
-        int r5 = r2;
-    L6:
-        if (r5 >= (r2 + r1)) goto L8;
-        r4 = (r4 * 31) + this.o[r5];
-        r5 = r5 + 1;
-        goto L6
-    L8:
-        if (r4 != 0) goto L10;
-        r4 = 1;
-    L10:
-        this.n = r4;
-        return r4;
-    L12:
-        return r0;
+        int i = this.n;
+        if (i != 0) {
+            return i;
+        }
+        int iE = e();
+        int iD = d();
+        byte[] bArr = tj5.a;
+        int i2 = iE;
+        for (int i3 = iD; i3 < iD + iE; i3++) {
+            i2 = (i2 * 31) + this.o[i3];
+        }
+        if (i2 == 0) {
+            i2 = 1;
+        }
+        this.n = i2;
+        return i2;
     }
 
     @Override // java.lang.Iterable
@@ -146,38 +133,37 @@ public class rj5 implements Iterable, Serializable {
     }
 
     public final byte[] j() {
-        int r0 = e();
-        if (r0 == 0) goto L5;
-        byte[] r1 = new byte[r0];
-        f(r0, r1);
-        return r1;
-    L5:
-        return tj5.a;
+        int iE = e();
+        if (iE == 0) {
+            return tj5.a;
+        }
+        byte[] bArr = new byte[iE];
+        f(iE, bArr);
+        return bArr;
     }
 
     public final String toString() {
-        Locale r0 = Locale.ROOT;
-        String r1 = Integer.toHexString(System.identityHashCode(this));
-        int r2 = e();
-        if (e() > 50) goto L5;
-        String r5 = gi1.d0(this);
-    L10:
-        StringBuilder r3 = new StringBuilder("<ByteString@");
-        r3.append(r1);
-        r3.append(" size=");
-        r3.append(r2);
-        r3.append(" contents=\"");
-        return b11.q(r3, r5, "\">");
-    L5:
-        int r4 = h(0, 47, e());
-        if (r4 != 0) goto L8;
-        rj5 r6 = p;
-    L9:
-        r5 = gi1.d0(r6).concat("...");
-        goto L10
-    L8:
-        int r7 = d();
-        r6 = new qj5(this.o, r7, r4);
-        goto L9
+        rj5 qj5Var;
+        String strConcat;
+        Locale locale = Locale.ROOT;
+        String hexString = Integer.toHexString(System.identityHashCode(this));
+        int iE = e();
+        if (e() <= 50) {
+            strConcat = gi1.d0(this);
+        } else {
+            int iH = h(0, 47, e());
+            if (iH == 0) {
+                qj5Var = p;
+            } else {
+                qj5Var = new qj5(this.o, d(), iH);
+            }
+            strConcat = gi1.d0(qj5Var).concat("...");
+        }
+        StringBuilder sb = new StringBuilder("<ByteString@");
+        sb.append(hexString);
+        sb.append(" size=");
+        sb.append(iE);
+        sb.append(" contents=\"");
+        return b11.q(sb, strConcat, "\">");
     }
 }

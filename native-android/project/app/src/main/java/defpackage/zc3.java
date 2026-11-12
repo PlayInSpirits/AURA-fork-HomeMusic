@@ -10,14 +10,15 @@ public final class zc3 extends wd0 {
     public final /* synthetic */ ad3 r;
     public int s;
 
-    public zc3(ad3 r1, wd0 r2) {
-        this.r = r1;
-        super(r2);
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public zc3(ad3 ad3Var, wd0 wd0Var) {
+        super(wd0Var);
+        this.r = ad3Var;
     }
 
     @Override // defpackage.jp
-    public final Object invokeSuspend(Object r2) {
-        this.q = r2;
+    public final Object invokeSuspend(Object obj) {
+        this.q = obj;
         this.s |= Integer.MIN_VALUE;
         return ad3.s(this.r, null, null, this);
     }

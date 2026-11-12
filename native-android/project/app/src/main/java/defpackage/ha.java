@@ -6,30 +6,28 @@ public final /* synthetic */ class ha implements if1 {
     public final /* synthetic */ int n;
     public final /* synthetic */ int o;
 
-    public /* synthetic */ ha(int r1, int r2) {
-        this.n = r2;
-        this.o = r1;
+    public /* synthetic */ ha(int i, int i2) {
+        this.n = i2;
+        this.o = i;
     }
 
     @Override // defpackage.if1
-    public final Object invoke(Object r2) {
-        int r0 = this.n;
-        int r1 = this.o;
-        ba1 r3 = (ba1) r2;
-        switch(r0) {
-            case 0: goto L8;
-            case 1: goto L7;
-            default: goto L4;
-        };
-    L4:
-        boolean r4 = r3.y0(r1);
-    L6:
-        return Boolean.valueOf(r4);
-    L7:
-        r4 = r3.y0(r1);
-        goto L6
-    L8:
-        r4 = r3.y0(r1);
-        goto L6
+    public final Object invoke(Object obj) {
+        boolean zY0;
+        int i = this.n;
+        int i2 = this.o;
+        ba1 ba1Var = (ba1) obj;
+        switch (i) {
+            case 0:
+                zY0 = ba1Var.y0(i2);
+                break;
+            case 1:
+                zY0 = ba1Var.y0(i2);
+                break;
+            default:
+                zY0 = ba1Var.y0(i2);
+                break;
+        }
+        return Boolean.valueOf(zY0);
     }
 }

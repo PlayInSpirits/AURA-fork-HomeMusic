@@ -8,20 +8,20 @@ public final class oy4 extends e12 {
     public final Callable p;
     public final /* synthetic */ py4 q;
 
-    public oy4(py4 r1, Callable r2) {
-        this.q = r1;
-        r2.getClass();
-        this.p = r2;
+    public oy4(py4 py4Var, Callable callable) {
+        this.q = py4Var;
+        callable.getClass();
+        this.p = callable;
     }
 
     @Override // defpackage.e12
-    public final void a(Throwable r1) {
-        this.q.m(r1);
+    public final void a(Throwable th) {
+        this.q.m(th);
     }
 
     @Override // defpackage.e12
-    public final void b(Object r1) {
-        this.q.l(r1);
+    public final void b(Object obj) {
+        this.q.l(obj);
     }
 
     @Override // defpackage.e12

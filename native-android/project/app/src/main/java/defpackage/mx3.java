@@ -8,22 +8,22 @@ import java.lang.reflect.Method;
 /* JADX INFO: loaded from: classes.dex */
 public final class mx3 extends hw {
     @Override // defpackage.hw
-    public final Method h(Class r1, Field r2) {
+    public final Method h(Class cls, Field field) {
         throw new UnsupportedOperationException("Records are not supported on this JVM, this method should not be called");
     }
 
     @Override // defpackage.hw
-    public final Constructor i(Class r1) {
+    public final Constructor i(Class cls) {
         throw new UnsupportedOperationException("Records are not supported on this JVM, this method should not be called");
     }
 
     @Override // defpackage.hw
-    public final String[] m(Class r1) {
+    public final String[] m(Class cls) {
         throw new UnsupportedOperationException("Records are not supported on this JVM, this method should not be called");
     }
 
     @Override // defpackage.hw
-    public final boolean u(Class r1) {
+    public final boolean u(Class cls) {
         return false;
     }
 }

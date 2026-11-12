@@ -11,164 +11,136 @@ public final class gr0 extends ar4 {
     public final /* synthetic */ int e;
     public final /* synthetic */ Object f;
 
-    public gr0(String r2, gf1 r3) {
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public gr0(String str, gf1 gf1Var) {
+        super(str);
         this.e = 2;
-        this.f = r3;
-        super(r2);
+        this.f = gf1Var;
     }
 
     @Override // defpackage.ar4
     public final long a() {
-        int r3 = 0;
-        long r4 = -1;
-        switch(this.e) {
-            case 0: goto L76;
-            case 1: goto L6;
-            default: goto L4;
-        };
-    L4:
-        ((gf1) this.f).invoke();
-        return -1;
-    L6:
-        dv3 r0 = (dv3) this.f;
-        long r6 = System.nanoTime();
-        Map r1 = r0.c;
-        Iterator r8 = r1.values().iterator();
-        if (r8.hasNext() == true) goto L75;
-        Iterator r9 = r0.f.iterator();
-    L10:
-        if (r9.hasNext() == false) goto L16;
-        if (r1.get(((cv3) r9.next()).d.a) == null) goto L10;
-        kf2.k();
-    L15:
-        return 0;
-    L16:
-        long r10 = (r6 - r0.b) + 1;
-        Iterator r12 = r0.f.iterator();
-        cv3 r13 = null;
-        cv3 r18 = null;
-        long r16 = Long.MAX_VALUE;
-        long r14 = r10;
-        cv3 r11 = null;
-        int r15 = 0;
-    L18:
-        if (r12.hasNext() == false) goto L39;
-        long r20 = r4;
-        cv3 r5 = (cv3) r12.next();
-        r5.getClass();
-        monitor-enter(r5);
-    L36:
-        th = move-exception;
-        throw th;
-    L22:
-        if (r0.a(r5, r6) <= 0) goto L24;
-        r15 = r15 + 1;     // Catch: Throwable -> L36
-    L32:
-        monitor-exit(r5);
-        r4 = r20;
-        goto L18
-    L24:
-        long r17 = r5.t;     // Catch: Throwable -> L36
-        if (r17 >= r14) goto L28;
-        r11 = r5;
-        r14 = r17;
-    L28:
-        if (r1.get(r5.d.a) != null) goto L35;
-        r3 = r3 + 1;
-        if (r17 >= r16) goto L32;
-        r18 = r5;
-        r16 = r17;
-        goto L32
-    L35:
-        throw new ClassCastException();     // Catch: Throwable -> L36
-    L39:
-        long r21 = r4;
-        if (r11 == null) goto L43;
-        r13 = r11;
-    L46:
-        if (r13 == null) goto L68;
-        monitor-enter(r13);
-    L65:
-        th = move-exception;
-        throw th;
-    L49:
-        if (r13.s.isEmpty() == true) goto L54;
-        monitor-exit(r13);
-        goto L15
-    L54:
-        if (r13.t == r14) goto L57;
-        monitor-exit(r13);
-        goto L15
-    L57:
-        r13.m = true;     // Catch: Throwable -> L65
-        r0.f.remove(r13);     // Catch: Throwable -> L65
-        monitor-exit(r13);
-        if (r1.get(r13.d.a) != null) goto L64;
-        Socket r2 = r13.f;
-        r2.getClass();
-        ze5.c(r2);
-        if (r0.f.isEmpty() == false) goto L15;
-        r0.d.a();
-        goto L15
-    L64:
-        kf2.k();
-        goto L15
-    L68:
-        if (r18 != null) goto L117;
-        if (r15 <= 0) goto L73;
-        return r0.b;
-    L73:
-        return r21;
-    L117:
-        return (r16 + r0.b) - r6;
-    L43:
-        if (r3 <= 5) goto L45;
-        r14 = r16;
-        r13 = r18;
-        goto L46
-    L45:
-        r14 = r21;
-        goto L46
-    L75:
-        throw xa3.d(r8);
-    L76:
-        jr0 r7 = (jr0) this.f;
-        monitor-enter(r7);
-    L85:
-        th = move-exception;
-        throw th;
-    L79:
-        if (r7.z == true) goto L81;
-    L98:
-        monitor-exit(r7);
-    L99:
-        return -1;
-    L81:
-        if (r7.A == true) goto L98;
-        r7.M();     // Catch: Throwable -> L85 IOException -> L87
-    L107:
-    L92:
-        r7.C = true;     // Catch: Throwable -> L85
-        wu3 r19 = r7.u;     // Catch: Throwable -> L85
-        if (r19 == null) goto L95;
-        xe5.b(r19);     // Catch: Throwable -> L85
-    L95:
-        r7.u = new wu3(new ct());     // Catch: Throwable -> L85
-    L96:
-        monitor-exit(r7);
-        goto L99
-    L89:
-        if (r7.s() == false) goto L96;
-        r7.J();     // Catch: Throwable -> L85 IOException -> L92
-        r7.w = 0;     // Catch: Throwable -> L85 IOException -> L92
-    L87:
-        r7.B = true;     // Catch: Throwable -> L85
-        goto L107
+        int i = 0;
+        long j = -1;
+        switch (this.e) {
+            case 0:
+                jr0 jr0Var = (jr0) this.f;
+                synchronized (jr0Var) {
+                    try {
+                        if (jr0Var.z && !jr0Var.A) {
+                            try {
+                                jr0Var.M();
+                            } catch (IOException unused) {
+                                jr0Var.B = true;
+                            }
+                            try {
+                                if (jr0Var.s()) {
+                                    jr0Var.J();
+                                    jr0Var.w = 0;
+                                }
+                            } catch (IOException unused2) {
+                                jr0Var.C = true;
+                                wu3 wu3Var = jr0Var.u;
+                                if (wu3Var != null) {
+                                    xe5.b(wu3Var);
+                                }
+                                jr0Var.u = new wu3(new ct());
+                            }
+                            break;
+                        }
+                    } catch (Throwable th) {
+                        throw th;
+                    }
+                }
+                return -1L;
+            case 1:
+                dv3 dv3Var = (dv3) this.f;
+                long jNanoTime = System.nanoTime();
+                Map map = dv3Var.c;
+                Iterator it = map.values().iterator();
+                if (it.hasNext()) {
+                    throw xa3.d(it);
+                }
+                Iterator it2 = dv3Var.f.iterator();
+                while (it2.hasNext()) {
+                    if (map.get(((cv3) it2.next()).d.a) != null) {
+                        kf2.k();
+                        return 0L;
+                    }
+                }
+                long j2 = (jNanoTime - dv3Var.b) + 1;
+                cv3 cv3Var = null;
+                cv3 cv3Var2 = null;
+                long j3 = Long.MAX_VALUE;
+                long j4 = j2;
+                cv3 cv3Var3 = null;
+                int i2 = 0;
+                for (cv3 cv3Var4 : dv3Var.f) {
+                    long j5 = j;
+                    cv3Var4.getClass();
+                    synchronized (cv3Var4) {
+                        if (dv3Var.a(cv3Var4, jNanoTime) > 0) {
+                            i2++;
+                        } else {
+                            long j6 = cv3Var4.t;
+                            if (j6 < j4) {
+                                cv3Var3 = cv3Var4;
+                                j4 = j6;
+                            }
+                            if (map.get(cv3Var4.d.a) != null) {
+                                throw new ClassCastException();
+                            }
+                            i++;
+                            if (j6 < j3) {
+                                cv3Var2 = cv3Var4;
+                                j3 = j6;
+                            }
+                        }
+                    }
+                    j = j5;
+                }
+                long j7 = j;
+                if (cv3Var3 != null) {
+                    cv3Var = cv3Var3;
+                } else if (i > 5) {
+                    j4 = j3;
+                    cv3Var = cv3Var2;
+                } else {
+                    j4 = j7;
+                }
+                if (cv3Var == null) {
+                    if (cv3Var2 != null) {
+                        return (j3 + dv3Var.b) - jNanoTime;
+                    }
+                    return i2 > 0 ? dv3Var.b : j7;
+                }
+                synchronized (cv3Var) {
+                    if (cv3Var.s.isEmpty() && cv3Var.t == j4) {
+                        cv3Var.m = true;
+                        dv3Var.f.remove(cv3Var);
+                        if (map.get(cv3Var.d.a) == null) {
+                            Socket socket = cv3Var.f;
+                            socket.getClass();
+                            ze5.c(socket);
+                            if (dv3Var.f.isEmpty()) {
+                                dv3Var.d.a();
+                            }
+                        } else {
+                            kf2.k();
+                        }
+                    }
+                }
+                return 0L;
+            default:
+                ((gf1) this.f).invoke();
+                return -1L;
+        }
     }
 
-    public /* synthetic */ gr0(Object r1, String r2, int r3) {
-        this.e = r3;
-        this.f = r1;
-        super(r2);
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public /* synthetic */ gr0(Object obj, String str, int i) {
+        super(str);
+        this.e = i;
+        this.f = obj;
     }
 }

@@ -7,11 +7,11 @@ public class ya5 extends xa5 {
     }
 
     @Override // defpackage.wa5, defpackage.bb5
-    public void d(int r1, vz1 r2) {
-        xq2.t(this.e, ob5.a(r1), r2.d());
+    public void d(int i, vz1 vz1Var) {
+        this.e.setInsets(ob5.a(i), vz1Var.d());
     }
 
-    public ya5(pb5 r1) {
-        super(r1);
+    public ya5(pb5 pb5Var) {
+        super(pb5Var);
     }
 }

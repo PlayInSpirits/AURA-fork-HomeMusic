@@ -7,9 +7,9 @@ public final class m61 {
     public final String b;
     public final boolean c;
 
-    public m61(int r1, String r2, boolean r3) {
-        this.a = r1;
-        this.b = r2;
-        this.c = r3;
+    public m61(int i, String str, boolean z) {
+        this.a = i;
+        this.b = str;
+        this.c = z;
     }
 }

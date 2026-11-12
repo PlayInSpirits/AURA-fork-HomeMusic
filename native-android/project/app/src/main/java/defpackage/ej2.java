@@ -9,37 +9,37 @@ public final class ej2 extends v14 {
     public final Bundle q;
     public final si1 r;
 
-    public ej2(String r1, Bundle r2, si1 r3, Handler r4) {
-        super(r4);
-        this.q = r2;
-        this.r = r3;
+    public ej2(String str, Bundle bundle, si1 si1Var, Handler handler) {
+        super(handler);
+        this.q = bundle;
+        this.r = si1Var;
     }
 
     @Override // defpackage.v14
-    public final void a(int r3, Bundle r4) {
-        Bundle r5 = f35.n(r4);
-        Bundle r1 = this.q;
-        si1 r2 = this.r;
-        if (r3 == (-1)) goto L16;
-        if (r3 != 0) goto L6;
-        Bundle r6 = new Bundle(r1);
-        r6.putAll(r5);
-        ((lb4) r2.o).l(new ab4(0, r6));
-        return;
-    L6:
-        if (r3 == 1) goto L9;
-        l93.q0("MediaBrowserCompat", "Unknown result code: " + r3 + " (extras=" + r1 + ", resultData=" + r5 + ")");
-        return;
-    L9:
-        if (r1 != null) goto L11;
-        Bundle r7 = Bundle.EMPTY;
-    L11:
-        if (r5 != null) goto L18;
-        Bundle r8 = Bundle.EMPTY;
-        return;
-    L18:
-        return;
-    L16:
-        r2.I(r1, r5);
+    public final void a(int i, Bundle bundle) {
+        Bundle bundleN = f35.n(bundle);
+        Bundle bundle2 = this.q;
+        si1 si1Var = this.r;
+        if (i == -1) {
+            si1Var.I(bundle2, bundleN);
+            return;
+        }
+        if (i == 0) {
+            Bundle bundle3 = new Bundle(bundle2);
+            bundle3.putAll(bundleN);
+            ((lb4) si1Var.o).l(new ab4(0, bundle3));
+            return;
+        }
+        if (i == 1) {
+            if (bundle2 == null) {
+                Bundle bundle4 = Bundle.EMPTY;
+            }
+            if (bundleN == null) {
+                Bundle bundle5 = Bundle.EMPTY;
+                return;
+            }
+            return;
+        }
+        l93.q0("MediaBrowserCompat", "Unknown result code: " + i + " (extras=" + bundle2 + ", resultData=" + bundleN + ")");
     }
 }

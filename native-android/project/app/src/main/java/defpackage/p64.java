@@ -8,18 +8,14 @@ import java.util.List;
 public final class p64 implements vb3 {
     public final int n;
     public final List o;
-    public Float p;
-    public Float q;
-    public h64 r;
-    public h64 s;
+    public Float p = null;
+    public Float q = null;
+    public h64 r = null;
+    public h64 s = null;
 
-    public p64(int r1, ArrayList r2) {
-        this.n = r1;
-        this.o = r2;
-        this.p = null;
-        this.q = null;
-        this.r = null;
-        this.s = null;
+    public p64(int i, ArrayList arrayList) {
+        this.n = i;
+        this.o = arrayList;
     }
 
     @Override // defpackage.vb3

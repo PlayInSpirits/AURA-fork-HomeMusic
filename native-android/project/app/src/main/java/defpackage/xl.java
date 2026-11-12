@@ -29,1083 +29,898 @@ import java.util.ListIterator;
 /* JADX INFO: loaded from: classes.dex */
 public abstract class xl {
     public static AudioManager a;
-    public static final int[] b = null;
-    public static final int[] c = null;
-    public static final String[] d = null;
-    public static final f01 e = null;
-    public static final f01 f = null;
-    public static final int[] g = null;
+    public static final int[] b = {96000, 88200, 64000, 48000, 44100, 32000, 24000, 22050, 16000, 12000, 11025, 8000, 7350};
+    public static final int[] c = {0, 1, 2, 3, 4, 5, 6, 8, -1, -1, -1, 7, 8, -1, 8, -1};
+    public static final String[] d = {"standard", "accelerate", "decelerate", "linear"};
+    public static final f01 e = new f01(1, "NULL");
+    public static final f01 f = new f01(1, "UNINITIALIZED");
+    public static final int[] g = {R.attr.stateListAnimator};
     public static long h;
     public static Method i;
     public static Method j;
     public static Method k;
 
-    static {
-        b = new int[]{96000, 88200, 64000, 48000, 44100, 32000, 24000, 22050, 16000, 12000, 11025, 8000, 7350};
-        c = new int[]{0, 1, 2, 3, 4, 5, 6, 8, -1, -1, -1, 7, 8, -1, 8, -1};
-        d = new String[]{"standard", "accelerate", "decelerate", "linear"};
-        e = new f01(1, "NULL");
-        f = new f01(1, "UNINITIALIZED");
-        g = new int[]{R.attr.stateListAnimator};
+    public static final boolean A(ad3 ad3Var, float f2) {
+        ad3Var.m().getClass();
+        return !(((ad3Var.r() ? -f2 : k(ad3Var)) > 0.0f ? 1 : ((ad3Var.r() ? -f2 : k(ad3Var)) == 0.0f ? 0 : -1)) > 0);
     }
 
-    public static final boolean A(ad3 r1, float r2) {
-        r1.m().getClass();
-        if (r1.r() == false) goto L5;
-        float r3 = -r2;
-    L7:
-        if (r3 <= 0.0f) goto L9;
-        boolean r4 = true;
-    L10:
-        if (r4 == true) goto L12;
-        return true;
-    L12:
-        return false;
-    L9:
-        r4 = false;
-        goto L10
-    L5:
-        r3 = k(r1);
-        goto L7
-    }
-
-    public static final boolean B(i94 r5) {
-        boolean r1 = false;
-        if (r5.o() == true) goto L9;
-        List r0 = i94.j(4, r5);
-        int r2 = r0.size();
-        int r3 = 0;
-    L6:
-        if (r3 >= r2) goto L11;
-        if (fh0.p((i94) r0.get(r3)) == false) goto L9;
-        r3 = r3 + 1;
-        goto L6
-    L11:
-        c72 r6 = r5.c.t();
-    L13:
-        if (r6 == null) goto L20;
-        e94 r4 = r6.v();
-        if (r4 == null) goto L19;
-        if (r4.p != true) goto L19;
-    L21:
-        if (r6 == null) goto L24;
-        r1 = true;
-    L24:
-        return !r1;
-    L19:
-        r6 = r6.t();
-        goto L13
-    L20:
-        r6 = null;
-    L9:
+    public static final boolean B(i94 i94Var) {
+        if (!i94Var.o()) {
+            List listI = i94Var.i((4 & 1) != 0 ? !i94Var.b : false, (4 & 2) == 0);
+            int size = listI.size();
+            for (int i2 = 0; i2 < size; i2++) {
+                if (fh0.p((i94) listI.get(i2))) {
+                }
+            }
+            c72 c72VarT = i94Var.c.t();
+            while (true) {
+                if (c72VarT == null) {
+                    c72VarT = null;
+                    break;
+                }
+                e94 e94VarV = c72VarT.v();
+                if (e94VarV != null && e94VarV.p) {
+                    break;
+                }
+                c72VarT = c72VarT.t();
+            }
+            return !(c72VarT != null);
+        }
         return false;
     }
 
-    public static float C(EdgeEffect r2, float r3, float r4) {
-        if (Build.VERSION.SDK_INT >= 31) goto L5;
-        r2.onPull(r3, r4);
-        return r3;
-    L5:
-        return ty0.c(r2, r3, r4);
+    public static float C(EdgeEffect edgeEffect, float f2, float f3) {
+        if (Build.VERSION.SDK_INT >= 31) {
+            return ty0.c(edgeEffect, f2, f3);
+        }
+        edgeEffect.onPull(f2, f3);
+        return f2;
     }
 
-    public static g D(h00 r11, boolean r12) {
-        int r1 = r11.i(5);
-        if (r1 != 31) goto L5;
-        r1 = r11.i(6) + 32;
-    L5:
-        int r4 = u(r11);
-        int r6 = r11.i(4);
-        String r7 = f34.f(r1, "mp4a.40.");
-        if (r1 != 5) goto L8;
-    L9:
-        r4 = u(r11);
-        int r0 = r11.i(5);
-        if (r0 != 31) goto L12;
-        r0 = r11.i(6) + 32;
-    L12:
-        r1 = r0;
-        if (r1 != 22) goto L15;
-        r6 = r11.i(4);
-    L15:
-        if (r12 == true) goto L17;
-    L61:
-        int r13 = c[r6];
-        if (r13 == (-1)) goto L66;
-        return new g(r7, r4, r13);
-    L66:
+    public static g D(h00 h00Var, boolean z) throws ParserException {
+        int i2 = h00Var.i(5);
+        if (i2 == 31) {
+            i2 = h00Var.i(6) + 32;
+        }
+        int iU = u(h00Var);
+        int i3 = h00Var.i(4);
+        String strF = f34.f(i2, "mp4a.40.");
+        if (i2 == 5 || i2 == 29) {
+            iU = u(h00Var);
+            int i4 = h00Var.i(5);
+            if (i4 == 31) {
+                i4 = h00Var.i(6) + 32;
+            }
+            i2 = i4;
+            if (i2 == 22) {
+                i3 = h00Var.i(4);
+            }
+        }
+        if (z) {
+            if (i2 != 1 && i2 != 2 && i2 != 3 && i2 != 4 && i2 != 6 && i2 != 7 && i2 != 17) {
+                switch (i2) {
+                    case 19:
+                    case 20:
+                    case 21:
+                    case 22:
+                    case 23:
+                        break;
+                    default:
+                        throw ParserException.c("Unsupported audio object type: " + i2);
+                }
+            }
+            if (h00Var.h()) {
+                l93.q0("AacUtil", "Unexpected frameLengthFlag = 1");
+            }
+            if (h00Var.h()) {
+                h00Var.t(14);
+            }
+            boolean zH = h00Var.h();
+            if (i3 == 0) {
+                throw new UnsupportedOperationException();
+            }
+            if (i2 == 6 || i2 == 20) {
+                h00Var.t(3);
+            }
+            if (zH) {
+                if (i2 == 22) {
+                    h00Var.t(16);
+                }
+                if (i2 == 17 || i2 == 19 || i2 == 20 || i2 == 23) {
+                    h00Var.t(3);
+                }
+                h00Var.t(1);
+            }
+            switch (i2) {
+                case 17:
+                case 19:
+                case 20:
+                case 21:
+                case 22:
+                case 23:
+                    int i5 = h00Var.i(2);
+                    if (i5 == 2 || i5 == 3) {
+                        throw ParserException.c("Unsupported epConfig: " + i5);
+                    }
+                    break;
+            }
+        }
+        int i6 = c[i3];
+        if (i6 != -1) {
+            return new g(strF, iU, i6);
+        }
         throw ParserException.a(null, null);
-    L17:
-        if (r1 == 1) goto L29;
-        if (r1 == 2) goto L29;
-        if (r1 == 3) goto L29;
-        if (r1 == 4) goto L29;
-        if (r1 == 6) goto L29;
-        if (r1 == 7) goto L29;
-        if (r1 == 17) goto L29;
-        switch(r1) {
-            case 19: goto L29;
-            case 20: goto L29;
-            case 21: goto L29;
-            case 22: goto L29;
-            case 23: goto L29;
-            default: goto L27;
-        };
-    L27:
-        throw ParserException.c("Unsupported audio object type: " + r1);
-    L29:
-        if (r11.h() == false) goto L32;
-        l93.q0("AacUtil", "Unexpected frameLengthFlag = 1");
-    L32:
-        if (r11.h() == false) goto L34;
-        r11.t(14);
-    L34:
-        boolean r5 = r11.h();
-        if (r6 == 0) goto L60;
-        if (r1 == 6) goto L39;
-        if (r1 == 20) goto L39;
-    L40:
-        if (r5 == false) goto L51;
-        if (r1 != 22) goto L43;
-        r11.t(16);
-    L43:
-        if (r1 != 17) goto L45;
-    L49:
-        r11.t(3);
-    L50:
-        r11.t(1);
-        goto L51
-    L45:
-        if (r1 == 19) goto L49;
-        if (r1 == 20) goto L49;
-        if (r1 != 23) goto L50;
-    L51:
-        switch(r1) {
-            case 17: goto L53;
-            case 18: goto L61;
-            case 19: goto L53;
-            case 20: goto L53;
-            case 21: goto L53;
-            case 22: goto L53;
-            case 23: goto L53;
-            default: goto L61;
-        };
-    L53:
-        int r14 = r11.i(2);
-        if (r14 == 2) goto L58;
-        if (r14 != 3) goto L61;
-    L58:
-        throw ParserException.c("Unsupported epConfig: " + r14);
-    L39:
-        r11.t(3);
-        goto L40
-    L60:
-        throw new UnsupportedOperationException();
-    L8:
-        if (r1 != 29) goto L15;
-        goto L9
     }
 
-    public static final Object E(s24 r6, boolean r7, boolean r8, if1 r9) {
-        r6.getClass();
-        r6.a();
-        r6.b();
-        return g12.Q(new jh0(null, r9, r6, r7, r8));
+    public static final Object E(s24 s24Var, boolean z, boolean z2, if1 if1Var) {
+        s24Var.getClass();
+        s24Var.a();
+        s24Var.b();
+        return g12.Q(new jh0(null, if1Var, s24Var, z, z2));
     }
 
-    public static final Object F(s24 r7, boolean r8, if1 r9, wd0 r10) {
-        if ((r10 instanceof lh0) == false) goto L7;
-        lh0 r0 = (lh0) r10;
-        int r1 = r0.r;
-        if ((r1 & Integer.MIN_VALUE) == 0) goto L7;
-        r0.r = r1 - Integer.MIN_VALUE;
-    L8:
-        Object r11 = r0.q;
-        int r2 = r0.r;
-        Object r6 = xe0.n;
-        if (r2 == 0) goto L20;
-        if (r2 == 1) goto L18;
-        if (r2 == 2) goto L17;
-        if (r2 != 3) goto L15;
-        kb4.X(r11);
-        return r11;
-    L15:
-        kf2.o("call to 'resume' before 'invoke' with coroutine");
-        return null;
-    L17:
-        r8 = r0.p;
-        r9 = r0.o;
-        r7 = r0.n;
-        kb4.X(r11);
-    L33:
-        kh0 r3 = new kh0(null, r9, r7, r8);
-        r0.n = null;
-        r0.o = null;
-        r0.r = 3;
-        Object r12 = fu.P((ne0) r11, r3, r0);
-        if (r12 != r6) goto L36;
-    L35:
-        return r6;
-    L36:
-        return r12;
-    L18:
-        kb4.X(r11);
-        return r11;
-    L20:
-        kb4.X(r11);
-        if (r7.m() == true) goto L23;
-    L30:
-        r0.n = r7;
-        r0.o = r9;
-        r0.p = r8;
-        r0.r = 2;
-        r11 = o(r7, r0);
-        if (r11 != r6) goto L33;
-    L23:
-        if (r7.q() == false) goto L30;
-        if (r7.n() == false) goto L30;
-        mh0 r13 = new mh0(null, r9, r7, r8);
-        r0.r = 1;
-        Object r14 = r7.u(r8, r13, r0);
-        if (r14 == r6) goto L35;
-        return r14;
-    L7:
-        r0 = new lh0(r10);
-        goto L8
+    /* JADX WARN: Code duplicated, block: B:7:0x0013  */
+    public static final Object F(s24 s24Var, boolean z, if1 if1Var, wd0 wd0Var) throws Throwable {
+        lh0 lh0Var;
+        if (wd0Var instanceof lh0) {
+            lh0Var = (lh0) wd0Var;
+            int i2 = lh0Var.r;
+            if ((i2 & Integer.MIN_VALUE) != 0) {
+                lh0Var.r = i2 - Integer.MIN_VALUE;
+            } else {
+                lh0Var = new lh0(wd0Var);
+            }
+        } else {
+            lh0Var = new lh0(wd0Var);
+        }
+        Object objO = lh0Var.q;
+        int i3 = lh0Var.r;
+        Object obj = xe0.n;
+        if (i3 == 0) {
+            kb4.X(objO);
+            if (s24Var.m() && s24Var.q() && s24Var.n()) {
+                mh0 mh0Var = new mh0(null, if1Var, s24Var, z);
+                lh0Var.r = 1;
+                Object objU = s24Var.u(z, mh0Var, lh0Var);
+                if (objU != obj) {
+                    return objU;
+                }
+            } else {
+                lh0Var.n = s24Var;
+                lh0Var.o = if1Var;
+                lh0Var.p = z;
+                lh0Var.r = 2;
+                objO = o(s24Var, lh0Var);
+                if (objO != obj) {
+                }
+            }
+        }
+        if (i3 == 1) {
+            kb4.X(objO);
+            return objO;
+        }
+        if (i3 != 2) {
+            if (i3 == 3) {
+                kb4.X(objO);
+                return objO;
+            }
+            kf2.o("call to 'resume' before 'invoke' with coroutine");
+            return null;
+        }
+        z = lh0Var.p;
+        if1Var = lh0Var.o;
+        s24Var = lh0Var.n;
+        kb4.X(objO);
+        kh0 kh0Var = new kh0(null, if1Var, s24Var, z);
+        lh0Var.n = null;
+        lh0Var.o = null;
+        lh0Var.r = 3;
+        Object objP = fu.P((ne0) objO, kh0Var, lh0Var);
+        return objP == obj ? obj : objP;
     }
 
-    public static final void G(float[] r16, float[] r17, int r18, float[] r19) {
-        if (r18 != 0) goto L5;
-        cz1.a("At least one point must be provided");
-    L5:
-        int r1 = 2;
-        if (2 < r18) goto L8;
-        r1 = r18 - 1;
-    L8:
-        int r2 = r1 + 1;
-        float[][] r3 = new float[r2][];
-        int r5 = 0;
-    L9:
-        if (r5 >= r2) goto L11;
-        r3[r5] = new float[r18];
-        r5 = r5 + 1;
-        goto L9
-    L11:
-        int r6 = 0;
-    L13:
-        if (r6 >= r18) goto L18;
-        r3[0][r6] = 1.0f;
-        int r7 = 1;
-    L15:
-        if (r7 >= r2) goto L17;
-        r3[r7][r6] = r3[r7 - 1][r6] * r16[r6];
-        r7 = r7 + 1;
-        goto L15
-    L17:
-        r6 = r6 + 1;
-        goto L13
-    L18:
-        float[][] r8 = new float[r2][];
-        int r9 = 0;
-    L19:
-        if (r9 >= r2) goto L21;
-        r8[r9] = new float[r18];
-        r9 = r9 + 1;
-        goto L19
-    L21:
-        float[][] r10 = new float[r2][];
-        int r11 = 0;
-    L22:
-        if (r11 >= r2) goto L24;
-        r10[r11] = new float[r2];
-        r11 = r11 + 1;
-        goto L22
-    L24:
-        int r12 = 0;
-    L25:
-        if (r12 >= r2) goto L45;
-        float[] r13 = r8[r12];
-        float[] r14 = r3[r12];
-        r14.getClass();
-        r13.getClass();
-        System.arraycopy(r14, 0, r13, 0, r18);
-        int r15 = 0;
-    L27:
-        if (r15 >= r12) goto L32;
-        float[] r110 = r8[r15];
-        float r111 = j(r13, r110);
-        int r112 = 0;
-    L29:
-        if (r112 >= r18) goto L31;
-        r13[r112] = r13[r112] - (r110[r112] * r111);
-        r112 = r112 + 1;
-        goto L29
-    L31:
-        r15 = r15 + 1;
-        goto L27
-    L32:
-        float r113 = (float) Math.sqrt(j(r13, r13));
-        if (r113 >= 1.0E-6f) goto L35;
-        r113 = 1.0E-6f;
-    L35:
-        float r114 = 1.0f / r113;
-        int r115 = 0;
-    L36:
-        if (r115 >= r18) goto L38;
-        r13[r115] = r13[r115] * r114;
-        r115 = r115 + 1;
-        goto L36
-    L38:
-        float[] r116 = r10[r12];
-        int r117 = 0;
-    L39:
-        if (r117 >= r2) goto L44;
-        if (r117 >= r12) goto L42;
-        float r118 = 0.0f;
-    L43:
-        r116[r117] = r118;
-        r117 = r117 + 1;
-        goto L39
-    L42:
-        r118 = j(r13, r3[r117]);
-        goto L43
-    L44:
-        r12 = r12 + 1;
-        goto L25
-    L45:
-        int r0 = r1;
-    L47:
-        if ((-1) >= r0) goto L55;
-        float r4 = j(r8[r0], r17);
-        float[] r20 = r10[r0];
-        int r21 = r0 + 1;
-        if (r21 > r1) goto L54;
-        int r22 = r1;
-    L51:
-        r4 = r4 - (r20[r22] * r19[r22]);
-        if (r22 == r21) goto L54;
-        r22 = r22 - 1;
-    L54:
-        r19[r0] = r4 / r20[r0];
-        r0 = r0 - 1;
-        goto L47
+    public static final void G(float[] fArr, float[] fArr2, int i2, float[] fArr3) {
+        if (i2 == 0) {
+            cz1.a("At least one point must be provided");
+        }
+        int i3 = 2 >= i2 ? i2 - 1 : 2;
+        int i4 = i3 + 1;
+        float[][] fArr4 = new float[i4][];
+        for (int i5 = 0; i5 < i4; i5++) {
+            fArr4[i5] = new float[i2];
+        }
+        for (int i6 = 0; i6 < i2; i6++) {
+            fArr4[0][i6] = 1.0f;
+            for (int i7 = 1; i7 < i4; i7++) {
+                fArr4[i7][i6] = fArr4[i7 - 1][i6] * fArr[i6];
+            }
+        }
+        float[][] fArr5 = new float[i4][];
+        for (int i8 = 0; i8 < i4; i8++) {
+            fArr5[i8] = new float[i2];
+        }
+        float[][] fArr6 = new float[i4][];
+        for (int i9 = 0; i9 < i4; i9++) {
+            fArr6[i9] = new float[i4];
+        }
+        int i10 = 0;
+        while (i10 < i4) {
+            float[] fArr7 = fArr5[i10];
+            float[] fArr8 = fArr4[i10];
+            fArr8.getClass();
+            fArr7.getClass();
+            System.arraycopy(fArr8, 0, fArr7, 0, i2);
+            for (int i11 = 0; i11 < i10; i11++) {
+                float[] fArr9 = fArr5[i11];
+                float fJ = j(fArr7, fArr9);
+                for (int i12 = 0; i12 < i2; i12++) {
+                    fArr7[i12] = fArr7[i12] - (fArr9[i12] * fJ);
+                }
+            }
+            float fSqrt = (float) Math.sqrt(j(fArr7, fArr7));
+            if (fSqrt < 1.0E-6f) {
+                fSqrt = 1.0E-6f;
+            }
+            float f2 = 1.0f / fSqrt;
+            for (int i13 = 0; i13 < i2; i13++) {
+                fArr7[i13] = fArr7[i13] * f2;
+            }
+            float[] fArr10 = fArr6[i10];
+            int i14 = 0;
+            while (i14 < i4) {
+                fArr10[i14] = i14 < i10 ? 0.0f : j(fArr7, fArr4[i14]);
+                i14++;
+            }
+            i10++;
+        }
+        for (int i15 = i3; -1 < i15; i15--) {
+            float fJ2 = j(fArr5[i15], fArr2);
+            float[] fArr11 = fArr6[i15];
+            int i16 = i15 + 1;
+            if (i16 <= i3) {
+                int i17 = i3;
+                while (true) {
+                    fJ2 -= fArr11[i17] * fArr3[i17];
+                    if (i17 != i16) {
+                        i17--;
+                    }
+                }
+            }
+            fArr3[i15] = fJ2 / fArr11[i15];
+        }
     }
 
-    public static final Cursor H(s24 r0, wo4 r1) {
-        r0.getClass();
-        r0.a();
-        r0.b();
-        return r0.j().z().F(r1);
+    public static final Cursor H(s24 s24Var, wo4 wo4Var) {
+        s24Var.getClass();
+        s24Var.a();
+        s24Var.b();
+        return s24Var.j().z().F(wo4Var);
     }
 
-    public static final void I(Object[] r1, int r2, int r3) {
-        r1.getClass();
-    L3:
-        if (r2 >= r3) goto L5;
-        r1[r2] = null;
-        r2 = r2 + 1;
-        goto L3
+    public static final void I(Object[] objArr, int i2, int i3) {
+        objArr.getClass();
+        while (i2 < i3) {
+            objArr[i2] = null;
+            i2++;
+        }
     }
 
-    public static String J(String r3) {
-        if (r3 != null) goto L5;
-        return null;
-    L5:
-        int r0 = qm4.r0(r3, '#', 0, 6);
-        if (r0 < 0) goto L10;
-        String r4 = r3.substring(r0 + 1);
-        if (r4.length() == 0) goto L10;
-        return r4;
-    L10:
+    public static String J(String str) {
+        if (str == null) {
+            return null;
+        }
+        int iR0 = qm4.r0(str, '#', 0, 6);
+        if (iR0 >= 0) {
+            String strSubstring = str.substring(iR0 + 1);
+            if (strSubstring.length() != 0) {
+                return strSubstring;
+            }
+        }
         return "/";
     }
 
-    public static void K(AppBarLayout r11, float r12) {
-        int r0 = r11.getResources().getInteger(app.homemusic.R.integer.app_bar_elevation_anim_duration);
-        StateListAnimator r1 = new StateListAnimator();
-        long r9 = r0;
-        r1.addState(new int[]{R.attr.state_enabled, app.homemusic.R.attr.state_liftable, -app.homemusic.R.attr.state_lifted}, ObjectAnimator.ofFloat(r11, "elevation", new float[]{0.0f}).setDuration(r9));
-        r1.addState(new int[]{R.attr.state_enabled}, ObjectAnimator.ofFloat(r11, "elevation", new float[]{r12}).setDuration(r9));
-        r1.addState(new int[0], ObjectAnimator.ofFloat(r11, "elevation", new float[]{0.0f}).setDuration(0));
-        r11.setStateListAnimator(r1);
+    public static void K(AppBarLayout appBarLayout, float f2) {
+        int integer = appBarLayout.getResources().getInteger(app.homemusic.R.integer.app_bar_elevation_anim_duration);
+        StateListAnimator stateListAnimator = new StateListAnimator();
+        long j2 = integer;
+        stateListAnimator.addState(new int[]{R.attr.state_enabled, app.homemusic.R.attr.state_liftable, -app.homemusic.R.attr.state_lifted}, ObjectAnimator.ofFloat(appBarLayout, "elevation", 0.0f).setDuration(j2));
+        stateListAnimator.addState(new int[]{R.attr.state_enabled}, ObjectAnimator.ofFloat(appBarLayout, "elevation", f2).setDuration(j2));
+        stateListAnimator.addState(new int[0], ObjectAnimator.ofFloat(appBarLayout, "elevation", 0.0f).setDuration(0L));
+        appBarLayout.setStateListAnimator(stateListAnimator);
     }
 
-    public static final String L(Object r2) {
-        if (r2.getClass().isAnonymousClass() == false) goto L5;
-        String r0 = r2.getClass().getName();
-    L7:
-        return b11.o(r0, "@", String.format("%07x", Arrays.copyOf(new Object[]{Integer.valueOf(System.identityHashCode(r2))}, 1)));
-    L5:
-        r0 = r2.getClass().getSimpleName();
-        goto L7
+    public static final String L(Object obj) {
+        return b11.o(obj.getClass().isAnonymousClass() ? obj.getClass().getName() : obj.getClass().getSimpleName(), "@", String.format("%07x", Arrays.copyOf(new Object[]{Integer.valueOf(System.identityHashCode(obj))}, 1)));
     }
 
-    public static final k14 M(k14 r5) {
-        r5.getClass();
-        j14 r0 = r5.f();
-        n14 r6 = r5.t;
-        r0.g = new r15(r6.contentType(), r6.contentLength());
-        return r0.a();
+    public static final k14 M(k14 k14Var) {
+        k14Var.getClass();
+        j14 j14VarF = k14Var.f();
+        n14 n14Var = k14Var.t;
+        j14VarF.g = new r15(n14Var.contentType(), n14Var.contentLength());
+        return j14VarF.a();
     }
 
-    public static String N(String r2) {
-        if (r2.length() > 127) goto L6;
-        return r2;
-    L6:
-        return r2.substring(0, 127);
+    public static String N(String str) {
+        return str.length() <= 127 ? str : str.substring(0, 127);
     }
 
-    public static final int O(int r3) {
-        int r0 = 306783378 & r3;
-        int r1 = 613566756 & r3;
-        return ((r3 & (-920350135)) | ((r1 >> 1) | r0)) | ((r0 << 1) & r1);
+    public static final int O(int i2) {
+        int i3 = 306783378 & i2;
+        int i4 = 613566756 & i2;
+        return (i2 & (-920350135)) | (i4 >> 1) | i3 | ((i3 << 1) & i4);
     }
 
-    public static final t33 a(BackEvent r7) {
-        float r3 = v22.a(r7);
-        float r4 = v22.g(r7);
-        float r2 = v22.h(r7);
-        int r1 = v22.c(r7);
-        if (Build.VERSION.SDK_INT < 36) goto L5;
-        long r5 = no.d(r7);
-    L7:
-        return new t33(r1, r2, r3, r4, r5);
-    L5:
-        r5 = 0;
-        goto L7
+    public static final t33 a(BackEvent backEvent) {
+        float touchX = backEvent.getTouchX();
+        float touchY = backEvent.getTouchY();
+        return new t33(backEvent.getSwipeEdge(), backEvent.getProgress(), touchX, touchY, Build.VERSION.SDK_INT >= 36 ? backEvent.getFrameTimeMillis() : 0L);
     }
 
-    public static final boolean b(i94 r1) {
-        e94 r2 = r1.k();
-        return !r2.n.c(n94.j);
+    public static final boolean b(i94 i94Var) {
+        return !i94Var.k().n.c(n94.j);
     }
 
-    public static final String c(Object[] r3, int r4, int r5, v1 r6) {
-        StringBuilder r0 = new StringBuilder((r5 * 3) + 2);
-        r0.append("[");
-        int r1 = 0;
-    L3:
-        if (r1 >= r5) goto L11;
-        if (r1 <= 0) goto L6;
-        r0.append(", ");
-    L6:
-        Object r2 = r3[r4 + r1];
-        if (r2 != r6) goto L9;
-        r0.append("(this Collection)");
-    L10:
-        r1 = r1 + 1;
-        goto L3
-    L9:
-        r0.append(r2);
-        goto L10
-    L11:
-        r0.append("]");
-        return r0.toString();
+    public static final String c(Object[] objArr, int i2, int i3, v1 v1Var) {
+        StringBuilder sb = new StringBuilder((i3 * 3) + 2);
+        sb.append("[");
+        for (int i4 = 0; i4 < i3; i4++) {
+            if (i4 > 0) {
+                sb.append(", ");
+            }
+            Object obj = objArr[i2 + i4];
+            if (obj == v1Var) {
+                sb.append("(this Collection)");
+            } else {
+                sb.append(obj);
+            }
+        }
+        sb.append("]");
+        return sb.toString();
     }
 
-    public static void d(SpannableStringBuilder r6, Object r7, int r8, int r9) {
-        Object[] r0 = r6.getSpans(r8, r9, r7.getClass());
-        int r1 = r0.length;
-        int r2 = 0;
-    L4:
-        if (r2 >= r1) goto L13;
-        Object r4 = r0[r2];
-        if (r6.getSpanStart(r4) != r8) goto L12;
-        if (r6.getSpanEnd(r4) != r9) goto L12;
-        if (r6.getSpanFlags(r4) != 33) goto L12;
-        r6.removeSpan(r4);
-    L12:
-        r2 = r2 + 1;
-        goto L4
-    L13:
-        r6.setSpan(r7, r8, r9, 33);
+    public static void d(SpannableStringBuilder spannableStringBuilder, Object obj, int i2, int i3) {
+        for (Object obj2 : spannableStringBuilder.getSpans(i2, i3, obj.getClass())) {
+            if (spannableStringBuilder.getSpanStart(obj2) == i2 && spannableStringBuilder.getSpanEnd(obj2) == i3 && spannableStringBuilder.getSpanFlags(obj2) == 33) {
+                spannableStringBuilder.removeSpan(obj2);
+            }
+        }
+        spannableStringBuilder.setSpan(obj, i2, i3, 33);
     }
 
-    public static final void e(rm2 r16, on3 r17) {
-        qf2 r0 = (qf2) r16.o;
-        r0.getClass();
-        m45 r2 = r0.b;
-        m45 r3 = r0.a;
-        boolean r4 = gi1.g(r17);
-        long r5 = r17.b;
-        if (r4 == false) goto L6;
-        ti.h0(r3.d, null);
-        r3.e = 0;
-        ti.h0(r2.d, null);
-        r2.e = 0;
-        r0.c = 0;
-    L6:
-        if (gi1.i(r17) == true) goto L12;
-        List r6 = r17.b();
-        int r11 = r6.size();
-        int r12 = 0;
-    L8:
-        if (r12 >= r11) goto L10;
-        bm1 r13 = (bm1) r6.get(r12);
-        r0.a(r13.a, g83.e(r13.e, 0));
-        r12 = r12 + 1;
-        goto L8
-    L10:
-        r0.a(r5, g83.e(r17.n, 0));
-    L12:
-        if (gi1.i(r17) == true) goto L14;
-    L16:
-        r0.c = r5;
-        return;
-    L14:
-        if ((r5 - r0.c) <= 40) goto L16;
-        ti.h0(r3.d, null);
-        r3.e = 0;
-        ti.h0(r2.d, null);
-        r2.e = 0;
-        r0.c = 0;
-        goto L16
+    public static final void e(rm2 rm2Var, on3 on3Var) {
+        qf2 qf2Var = (qf2) rm2Var.o;
+        qf2Var.getClass();
+        m45 m45Var = qf2Var.b;
+        m45 m45Var2 = qf2Var.a;
+        boolean zG = gi1.g(on3Var);
+        long j2 = on3Var.b;
+        if (zG) {
+            vh0[] vh0VarArr = m45Var2.d;
+            ti.f0(0, vh0VarArr.length, null, vh0VarArr);
+            m45Var2.e = 0;
+            vh0[] vh0VarArr2 = m45Var.d;
+            ti.f0(0, vh0VarArr2.length, null, vh0VarArr2);
+            m45Var.e = 0;
+            qf2Var.c = 0L;
+        }
+        if (!gi1.i(on3Var)) {
+            List listB = on3Var.b();
+            int size = listB.size();
+            for (int i2 = 0; i2 < size; i2++) {
+                bm1 bm1Var = (bm1) listB.get(i2);
+                qf2Var.a(bm1Var.a, g83.e(bm1Var.e, 0L));
+            }
+            qf2Var.a(j2, g83.e(on3Var.n, 0L));
+        }
+        if (gi1.i(on3Var) && j2 - qf2Var.c > 40) {
+            vh0[] vh0VarArr3 = m45Var2.d;
+            ti.f0(0, vh0VarArr3.length, null, vh0VarArr3);
+            m45Var2.e = 0;
+            vh0[] vh0VarArr4 = m45Var.d;
+            ti.f0(0, vh0VarArr4.length, null, vh0VarArr4);
+            m45Var.e = 0;
+            qf2Var.c = 0L;
+        }
+        qf2Var.c = j2;
     }
 
+    /* JADX WARN: Code duplicated, block: B:23:0x0068  */
+    /* JADX WARN: Code duplicated, block: B:26:0x0073 A[LOOP:0: B:22:0x0066->B:26:0x0073, LOOP_END] */
+    /* JADX WARN: Code duplicated, block: B:30:0x0079 A[SYNTHETIC] */
+    /* JADX WARN: Code duplicated, block: B:31:0x004e A[EDGE_INSN: B:31:0x004e->B:18:0x004e BREAK  A[LOOP:0: B:22:0x0066->B:26:0x0073], SYNTHETIC] */
+    /* JADX WARN: Code duplicated, block: B:7:0x0013  */
     /* JADX WARN: Unsupported multi-entry loop pattern (BACK_EDGE: B:19:0x005a -> B:21:0x005d). Please report as a decompilation issue!!! */
-    public static final Object f(hp4 r7, ln3 r8, jp r9) {
-        if ((r9 instanceof jb1) == false) goto L7;
-        jb1 r0 = (jb1) r9;
-        int r1 = r0.q;
-        if ((r1 & Integer.MIN_VALUE) == 0) goto L7;
-        r0.q = r1 - Integer.MIN_VALUE;
-    L8:
-        Object r10 = r0.p;
-        int r2 = r0.q;
-        if (r2 == 0) goto L14;
-        if (r2 != 1) goto L12;
-        ln3 r11 = r0.o;
-        hp4 r12 = r0.n;
-        kb4.X(r10);
-        r8 = r11;
-        r7 = r12;
-    L21:
-        List r13 = ((kn3) r10).a;
-        int r3 = r13.size();
-        int r4 = 0;
-    L22:
-        if (r4 >= r3) goto L29;
-        if (((on3) r13.get(r4)).d == true) goto L18;
-        r4 = r4 + 1;
-    L18:
-        r0.n = r7;
-        r0.o = r8;
-        r0.q = 1;
-        r10 = r7.a(r8, r0);
-        xe0 r5 = xe0.n;
-        if (r10 != r5) goto L21;
-        return r5;
-    L29:
+    /*  JADX ERROR: StackOverflowError in pass: RegionMakerVisitor
+        java.lang.StackOverflowError
+        	at jadx.core.utils.BlockUtils.traverseSuccessorsUntil(BlockUtils.java:731)
+        	at jadx.core.utils.BlockUtils.traverseSuccessorsUntil(BlockUtils.java:749)
+        */
+    public static final java.lang.Object f(defpackage.hp4 r7, defpackage.ln3 r8, defpackage.jp r9) {
+        /*
+            boolean r0 = r9 instanceof defpackage.jb1
+            if (r0 == 0) goto L13
+            r0 = r9
+            jb1 r0 = (defpackage.jb1) r0
+            int r1 = r0.q
+            r2 = -2147483648(0xffffffff80000000, float:-0.0)
+            r3 = r1 & r2
+            if (r3 == 0) goto L13
+            int r1 = r1 - r2
+            r0.q = r1
+            goto L18
+        L13:
+            jb1 r0 = new jb1
+            r0.<init>(r9)
+        L18:
+            java.lang.Object r9 = r0.p
+            int r1 = r0.q
+            r2 = 0
+            r3 = 1
+            if (r1 == 0) goto L34
+            if (r1 != r3) goto L2d
+            ln3 r7 = r0.o
+            hp4 r8 = r0.n
+            defpackage.kb4.X(r9)
+            r6 = r8
+            r8 = r7
+            r7 = r6
+            goto L5d
+        L2d:
+            java.lang.String r7 = "call to 'resume' before 'invoke' with coroutine"
+            defpackage.kf2.o(r7)
+            r7 = 0
+            return r7
+        L34:
+            defpackage.kb4.X(r9)
+            ip4 r9 = r7.s
+            kn3 r9 = r9.F
+            java.util.List r9 = r9.a
+            int r1 = r9.size()
+            r4 = r2
+        L42:
+            if (r4 >= r1) goto L79
+            java.lang.Object r5 = r9.get(r4)
+            on3 r5 = (defpackage.on3) r5
+            boolean r5 = r5.d
+            if (r5 == 0) goto L76
+        L4e:
+            r0.n = r7
+            r0.o = r8
+            r0.q = r3
+            java.lang.Object r9 = r7.a(r8, r0)
+            xe0 r1 = defpackage.xe0.n
+            if (r9 != r1) goto L5d
+            return r1
+        L5d:
+            kn3 r9 = (defpackage.kn3) r9
+            java.util.List r9 = r9.a
+            int r1 = r9.size()
+            r4 = r2
+        L66:
+            if (r4 >= r1) goto L79
+            java.lang.Object r5 = r9.get(r4)
+            on3 r5 = (defpackage.on3) r5
+            boolean r5 = r5.d
+            if (r5 == 0) goto L73
+            goto L4e
+        L73:
+            int r4 = r4 + 1
+            goto L66
+        L76:
+            int r4 = r4 + 1
+            goto L42
+        L79:
+            j15 r7 = defpackage.j15.a
+            return r7
+        */
+        throw new UnsupportedOperationException("Method not decompiled: defpackage.xl.f(hp4, ln3, jp):java.lang.Object");
+    }
+
+    public static final Object g(sn3 sn3Var, wf1 wf1Var, vd0 vd0Var) {
+        xe0 xe0Var;
+        j15 j15Var;
+        kb1 kb1Var = new kb1(vd0Var.getContext(), wf1Var, null);
+        ip4 ip4Var = (ip4) sn3Var;
+        ip4Var.getClass();
+        cz czVar = new cz(1, ya4.x(vd0Var));
+        czVar.u();
+        hp4 hp4Var = new hp4(ip4Var, czVar);
+        synchronized (ip4Var.H) {
+            ip4Var.G.b(hp4Var);
+            vd0 vd0VarX = ya4.x(ya4.i(hp4Var, hp4Var, kb1Var));
+            xe0Var = xe0.n;
+            d44 d44Var = new d44(vd0VarX);
+            j15Var = j15.a;
+            d44Var.resumeWith(j15Var);
+        }
+        czVar.w(new kv(3, hp4Var));
+        Object objQ = czVar.q();
+        return objQ == xe0Var ? objQ : j15Var;
+    }
+
+    public static final Object h(eo0 eo0Var, jo joVar, ep4 ep4Var) {
+        Object obj;
+        f63 f63VarN;
+        Object objK;
+        w12 w12Var;
+        if (((cx2) eo0Var).n.A) {
+            cx2 cx2Var = (cx2) eo0Var;
+            if (!cx2Var.n.A) {
+                cz1.b("visitAncestors called on an unattached node");
+            }
+            cx2 cx2Var2 = cx2Var.n.r;
+            c72 c72VarO = j51.O(eo0Var);
+            loop0: while (true) {
+                obj = null;
+                if (c72VarO == null) {
+                    break;
+                }
+                if ((((cx2) c72VarO.Q.g).q & 524288) != 0) {
+                    while (cx2Var2 != null) {
+                        if ((cx2Var2.p & 524288) != 0) {
+                            cx2 cx2VarC = cx2Var2;
+                            f13 f13Var = null;
+                            while (cx2VarC != null) {
+                                if (cx2VarC instanceof zu) {
+                                    obj = cx2VarC;
+                                    break loop0;
+                                }
+                                if ((cx2VarC.p & 524288) != 0 && (cx2VarC instanceof fo0)) {
+                                    int i2 = 0;
+                                    for (cx2 cx2Var3 = ((fo0) cx2VarC).C; cx2Var3 != null; cx2Var3 = cx2Var3.s) {
+                                        if ((cx2Var3.p & 524288) != 0) {
+                                            i2++;
+                                            if (i2 == 1) {
+                                                cx2VarC = cx2Var3;
+                                            } else {
+                                                if (f13Var == null) {
+                                                    f13Var = new f13(new cx2[16]);
+                                                }
+                                                if (cx2VarC != null) {
+                                                    f13Var.b(cx2VarC);
+                                                    cx2VarC = null;
+                                                }
+                                                f13Var.b(cx2Var3);
+                                            }
+                                        }
+                                    }
+                                    if (i2 == 1) {
+                                    }
+                                }
+                                cx2VarC = j51.c(f13Var);
+                            }
+                        }
+                        cx2Var2 = cx2Var2.r;
+                    }
+                }
+                c72VarO = c72VarO.t();
+                cx2Var2 = (c72VarO == null || (w12Var = c72VarO.Q) == null) ? null : (sq4) w12Var.f;
+            }
+            zu zuVar = (zu) obj;
+            if (zuVar != null && (objK = zuVar.k((f63VarN = j51.N(eo0Var)), new fa(3, joVar, f63VarN), ep4Var)) == xe0.n) {
+                return objK;
+            }
+        }
         return j15.a;
-    L12:
-        kf2.o("call to 'resume' before 'invoke' with coroutine");
-        return null;
-    L14:
-        kb4.X(r10);
-        List r14 = r7.s.F.a;
-        int r6 = r14.size();
-        int r15 = 0;
-    L15:
-        if (r15 >= r6) goto L29;
-        if (((on3) r14.get(r15)).d == true) goto L18;
-        r15 = r15 + 1;
-    L7:
-        r0 = new jb1(r9);
-        goto L8
     }
 
-    public static final Object g(sn3 r3, wf1 r4, vd0 r5) {
-        kb1 r1 = new kb1(r5.getContext(), r4, null);
-        ip4 r6 = (ip4) r3;
-        r6.getClass();
-        cz r7 = new cz(1, ya4.x(r5));
-        r7.u();
-        hp4 r8 = new hp4(r6, r7);
-        f13 r0 = r6.H;
-        monitor-enter(r0);
-        r6.G.b(r8);     // Catch: Throwable -> L10
-        vd0 r2 = ya4.x(ya4.i(r8, r8, r1));     // Catch: Throwable -> L10
-        xe0 r9 = xe0.n;     // Catch: Throwable -> L10
-        d44 r10 = new d44(r2);     // Catch: Throwable -> L10
-        j15 r11 = j15.a;     // Catch: Throwable -> L10
-        r10.resumeWith(r11);     // Catch: Throwable -> L10
-        monitor-exit(r0);
-        r7.w(new kv(3, r8));
-        Object r12 = r7.q();
-        if (r12 != r9) goto L9;
-        return r12;
-    L9:
-        return r11;
-    L10:
-        th = move-exception;
-        throw th;
+    public static final void i(String str, k14 k14Var) {
+        if (k14Var != null) {
+            if (k14Var.u != null) {
+                kf2.e(str.concat(".networkResponse != null"));
+            } else if (k14Var.v != null) {
+                kf2.e(str.concat(".cacheResponse != null"));
+            } else {
+                if (k14Var.w == null) {
+                    return;
+                }
+                kf2.e(str.concat(".priorResponse != null"));
+            }
+        }
     }
 
-    public static final Object h(eo0 r10, jo r11, ep4 r12) {
-        if (((cx2) r10).n.A == false) goto L56;
-        cx2 r0 = (cx2) r10;
-        if (r0.n.A == true) goto L8;
-        cz1.b("visitAncestors called on an unattached node");
-    L8:
-        cx2 r1 = r0.n.r;
-        c72 r2 = j51.O(r10);
-    L9:
-        Object r3 = null;
-        if (r2 == null) goto L49;
-        if ((((cx2) r2.Q.g).q & 524288) == 0) goto L43;
-    L13:
-        if (r1 == null) goto L43;
-        if ((r1.p & 524288) == 0) goto L42;
-        cx2 r4 = r1;
-        f13 r5 = null;
-    L17:
-        if (r4 == null) goto L42;
-        if ((r4 instanceof zu) == true) goto L20;
-        if ((r4.p & 524288) == 0) goto L41;
-        if ((r4 instanceof fo0) == false) goto L41;
-        cx2 r6 = ((fo0) r4).C;
-        int r7 = 0;
-    L27:
-        if (r6 == null) goto L39;
-        if ((r6.p & 524288) == 0) goto L38;
-        r7 = r7 + 1;
-        if (r7 != 1) goto L33;
-        r4 = r6;
-        goto L38
-    L33:
-        if (r5 != null) goto L35;
-        r5 = new f13(new cx2[16]);
-    L35:
-        if (r4 == null) goto L37;
-        r5.b(r4);
-        r4 = null;
-    L37:
-        r5.b(r6);
-    L38:
-        r6 = r6.s;
-        goto L27
-    L39:
-        if (r7 == 1) goto L17;
-    L41:
-        r4 = j51.c(r5);
-        goto L17
-    L20:
-        r3 = r4;
-    L42:
-        r1 = r1.r;
-    L43:
-        r2 = r2.t();
-        if (r2 == null) goto L48;
-        w12 r8 = r2.Q;
-        if (r8 == null) goto L48;
-        r1 = (sq4) r8.f;
-    L48:
-        r1 = null;
-    L49:
-        zu r9 = (zu) r3;
-        if (r9 == null) goto L56;
-        f63 r13 = j51.N(r10);
-        Object r14 = r9.k(r13, new fa(3, r11, r13), r12);
-        if (r14 != xe0.n) goto L56;
-        return r14;
-    L56:
-        return j15.a;
+    public static final float j(float[] fArr, float[] fArr2) {
+        int length = fArr.length;
+        float f2 = 0.0f;
+        for (int i2 = 0; i2 < length; i2++) {
+            f2 += fArr[i2] * fArr2[i2];
+        }
+        return f2;
     }
 
-    public static final void i(String r1, k14 r2) {
-        if (r2 != null) goto L4;
-        return;
-    L4:
-        if (r2.u == null) goto L6;
-        kf2.e(r1.concat(".networkResponse != null"));
-        return;
-    L6:
-        if (r2.v == null) goto L8;
-        kf2.e(r1.concat(".cacheResponse != null"));
-        return;
-    L8:
-        if (r2.w == null) goto L17;
-        kf2.e(r1.concat(".priorResponse != null"));
-        return;
+    public static final float k(ad3 ad3Var) {
+        return ad3Var.m().e == hb3.o ? Float.intBitsToFloat((int) (ad3Var.q() >> 32)) : Float.intBitsToFloat((int) (ad3Var.q() & 4294967295L));
     }
 
-    public static final float j(float[] r5, float[] r6) {
-        int r0 = r5.length;
-        float r1 = 0.0f;
-        int r2 = 0;
-    L3:
-        if (r2 >= r0) goto L5;
-        r1 = r1 + (r5[r2] * r6[r2]);
-        r2 = r2 + 1;
-        goto L3
-    L5:
-        return r1;
+    public static final void l(x34 x34Var) {
+        x34Var.getClass();
+        qb2 qb2VarR = gb.r();
+        z34 z34VarU = x34Var.U("SELECT name FROM sqlite_master WHERE type = 'trigger'");
+        while (z34VarU.O()) {
+            try {
+                qb2VarR.add(z34VarU.D(0));
+            } catch (Throwable th) {
+                try {
+                    throw th;
+                } catch (Throwable th2) {
+                    ud3.e(z34VarU, th);
+                    throw th2;
+                }
+            }
+        }
+        ud3.e(z34VarU, null);
+        ListIterator listIterator = gb.f(qb2VarR).listIterator(0);
+        while (true) {
+            dm1 dm1Var = (dm1) listIterator;
+            if (!dm1Var.hasNext()) {
+                return;
+            }
+            String str = (String) dm1Var.next();
+            if (xm4.k0(str, "room_fts_content_sync_", false)) {
+                h12.n(x34Var, "DROP TRIGGER IF EXISTS ".concat(str));
+            }
+        }
     }
 
-    public static final float k(ad3 r4) {
-        if (r4.m().e != hb3.o) goto L7;
-        return Float.intBitsToFloat((int) (r4.q() >> 32));
-    L7:
-        return Float.intBitsToFloat((int) (r4.q() & 4294967295L));
+    public static final boolean m(long j2, long j3) {
+        return j2 == j3;
     }
 
-    public static final void l(x34 r4) {
-        r4.getClass();
-        qb2 r0 = gb.r();
-        z34 r1 = r4.U("SELECT name FROM sqlite_master WHERE type = 'trigger'");
-    L20:
-    L7:
-        th = move-exception;
-        throw th;     // Catch: Throwable -> L17
-    L17:
-        th = move-exception;
-        ud3.e(r1, th);
-        throw th;
-    L4:
-        if (r1.O() == false) goto L9;
-        r0.add(r1.D(0));     // Catch: Throwable -> L7
-        goto L20
-    L9:
-        ud3.e(r1, null);
-        ListIterator r2 = gb.f(r0).listIterator(0);
-    L10:
-        dm1 r3 = (dm1) r2;
-        if (r3.hasNext() == false) goto L15;
-        String r5 = (String) r3.next();
-        if (xm4.k0(r5, "room_fts_content_sync_", false) == false) goto L10;
-        h12.n(r4, "DROP TRIGGER IF EXISTS ".concat(r5));
-        goto L10
+    public static synchronized AudioManager n(Context context) {
+        try {
+            Context applicationContext = context.getApplicationContext();
+            if (applicationContext != null) {
+                a = null;
+            }
+            AudioManager audioManager = a;
+            if (audioManager != null) {
+                return audioManager;
+            }
+            Looper looperMyLooper = Looper.myLooper();
+            if (looperMyLooper != null && looperMyLooper != Looper.getMainLooper()) {
+                q90 q90Var = new q90();
+                uo.t().execute(new k6(4, applicationContext, q90Var));
+                q90Var.b();
+                AudioManager audioManager2 = a;
+                audioManager2.getClass();
+                return audioManager2;
+            }
+            AudioManager audioManager3 = (AudioManager) applicationContext.getSystemService("audio");
+            a = audioManager3;
+            audioManager3.getClass();
+            return audioManager3;
+        } catch (Throwable th) {
+            throw th;
+        }
     }
 
-    public static final boolean m(long r0, long r2) {
-        if (r0 != r2) goto L6;
-        return true;
-    L6:
-        return false;
-    }
-
-    public static synchronized AudioManager n(Context r5) {
-        monitor-enter(xl.class);
-        Context r6 = r5.getApplicationContext();     // Catch: Throwable -> L7
-        if (r6 == null) goto L9;
-        a = null;     // Catch: Throwable -> L7
-    L9:
-        AudioManager r1 = a;     // Catch: Throwable -> L7
-        if (r1 == null) goto L13;
-        monitor-exit(xl.class);
-        return r1;
-    L13:
-        Looper r2 = Looper.myLooper();     // Catch: Throwable -> L7
-        if (r2 != null) goto L16;
-    L21:
-        AudioManager r7 = (AudioManager) r6.getSystemService("audio");     // Catch: Throwable -> L7
-        a = r7;     // Catch: Throwable -> L7
-        r7.getClass();     // Catch: Throwable -> L7
-        monitor-exit(xl.class);
-        return r7;
-    L16:
-        if (r2 == Looper.getMainLooper()) goto L21;
-        q90 r3 = new q90();     // Catch: Throwable -> L7
-        uo.t().execute(new k6(4, r6, r3));     // Catch: Throwable -> L7
-        r3.b();     // Catch: Throwable -> L7
-        AudioManager r8 = a;     // Catch: Throwable -> L7
-        r8.getClass();     // Catch: Throwable -> L7
-        monitor-exit(xl.class);
-        return r8;
-    L7:
-        th = move-exception;
-        throw th;
-    }
-
-    public static final ne0 o(s24 r1, wd0 r2) {
-        if (r1.m() == false) goto L15;
-        if (r2.getContext().K(kw4.n) != null) goto L12;
-        td0 r3 = r1.a;
-        if (r3 != null) goto L9;
+    public static final ne0 o(s24 s24Var, wd0 wd0Var) {
+        if (!s24Var.m()) {
+            return ((td0) s24Var.h()).n;
+        }
+        if (wd0Var.getContext().K(kw4.n) != null) {
+            kf2.k();
+            return null;
+        }
+        td0 td0Var = s24Var.a;
+        if (td0Var != null) {
+            return td0Var.n;
+        }
         h12.Q("coroutineScope");
         throw null;
-    L9:
-        return r3.n;
-    L12:
-        kf2.k();
-        return null;
-    L15:
-        return ((td0) r1.h()).n;
     }
 
-    public static int p(Context r4) {
-        DisplayMetrics r0 = r4.getResources().getDisplayMetrics();
-        if (r0.widthPixels >= r0.heightPixels) goto L5;
-        boolean r1 = true;
-    L6:
-        TypedValue r2 = new TypedValue();
-        Resources r5 = r4.getResources();
-        if (r1 == false) goto L9;
-        int r3 = app.homemusic.R.dimen.mr_dialog_fixed_width_minor;
-    L10:
-        r5.getValue(r3, r2, true);
-        int r6 = r2.type;
-        if (r6 != 5) goto L16;
-        float r7 = r2.getDimension(r0);
-    L14:
-        return (int) r7;
-    L16:
-        if (r6 != 6) goto L18;
-        int r8 = r0.widthPixels;
-        r7 = r2.getFraction(r8, r8);
-        goto L14
-    L18:
-        return -2;
-    L9:
-        r3 = app.homemusic.R.dimen.mr_dialog_fixed_width_major;
-        goto L10
-    L5:
-        r1 = false;
-        goto L6
+    public static int p(Context context) {
+        float fraction;
+        DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
+        boolean z = displayMetrics.widthPixels < displayMetrics.heightPixels;
+        TypedValue typedValue = new TypedValue();
+        context.getResources().getValue(z ? app.homemusic.R.dimen.mr_dialog_fixed_width_minor : app.homemusic.R.dimen.mr_dialog_fixed_width_major, typedValue, true);
+        int i2 = typedValue.type;
+        if (i2 == 5) {
+            fraction = typedValue.getDimension(displayMetrics);
+        } else {
+            if (i2 != 6) {
+                return -2;
+            }
+            int i3 = displayMetrics.widthPixels;
+            fraction = typedValue.getFraction(i3, i3);
+        }
+        return (int) fraction;
     }
 
-    public static float q(EdgeEffect r2) {
-        if (Build.VERSION.SDK_INT >= 31) goto L5;
+    public static float q(EdgeEffect edgeEffect) {
+        if (Build.VERSION.SDK_INT >= 31) {
+            return ty0.b(edgeEffect);
+        }
         return 0.0f;
-    L5:
-        return ty0.b(r2);
     }
 
-    public static final boolean r(i94 r4) {
-        e94 r0 = r4.d;
-        Object r1 = r0.n.g(n94.H);
-        Object r2 = null;
-        if (r1 != null) goto L5;
-        r1 = null;
-    L5:
-        qu4 r3 = (qu4) r1;
-        w03 r5 = r4.d.n;
-        Object r6 = r5.g(n94.w);
-        if (r6 != null) goto L8;
-        r6 = null;
-    L8:
-        m24 r7 = (m24) r6;
-        if (r3 == null) goto L11;
-        boolean r8 = true;
-    L12:
-        Object r9 = r5.g(n94.G);
-        if (r9 == null) goto L17;
-        r2 = r9;
-    L17:
-        if (((Boolean) r2) == null) goto L19;
-        return true;
-    L19:
-        return r8;
-    L11:
-        r8 = false;
-        goto L12
+    public static final boolean r(i94 i94Var) {
+        Object objG = i94Var.d.n.g(n94.H);
+        if (objG == null) {
+            objG = null;
+        }
+        qu4 qu4Var = (qu4) objG;
+        w03 w03Var = i94Var.d.n;
+        Object objG2 = w03Var.g(n94.w);
+        if (objG2 == null) {
+            objG2 = null;
+        }
+        boolean z = qu4Var != null;
+        Object objG3 = w03Var.g(n94.G);
+        if (((Boolean) (objG3 != null ? objG3 : null)) != null) {
+            return true;
+        }
+        return z;
     }
 
-    public static final String s(i94 r7, Resources r8) {
-        e94 r0 = r7.d;
-        e94 r1 = r7.d;
-        Object r2 = r0.n.g(n94.b);
-        String r3 = null;
-        if (r2 != null) goto L5;
-        r2 = null;
-    L5:
-        w03 r4 = r1.n;
-        Object r5 = r4.g(n94.H);
-        if (r5 != null) goto L8;
-        r5 = null;
-    L8:
-        qu4 r6 = (qu4) r5;
-        Object r9 = r4.g(n94.w);
-        if (r9 != null) goto L11;
-        r9 = null;
-    L11:
-        m24 r10 = (m24) r9;
-        if (r6 == null) goto L22;
-        int r11 = r6.ordinal();
-        if (r11 == 0) goto L22;
-        if (r11 == 1) goto L22;
-        if (r11 != 2) goto L20;
-        if (r2 != null) goto L22;
-        r2 = r8.getString(app.homemusic.R.string.indeterminate);
-        goto L22
-    L20:
-        er1.n();
-        return null;
-    L22:
-        Object r12 = r4.g(n94.G);
-        if (r12 != null) goto L25;
-        r12 = null;
-    L25:
-        Boolean r13 = (Boolean) r12;
-        if (r13 == null) goto L32;
-        boolean r14 = r13.booleanValue();
-        if (r2 != null) goto L32;
-        if (r14 == false) goto L31;
-        r2 = r8.getString(app.homemusic.R.string.selected);
-        goto L32
-    L31:
-        r2 = r8.getString(app.homemusic.R.string.not_selected);
-    L32:
-        Object r15 = r4.g(n94.c);
-        if (r15 != null) goto L35;
-        r15 = null;
-    L35:
-        xq3 r16 = (xq3) r15;
-        if (r16 != null) goto L38;
-    L43:
-        p94 r17 = n94.D;
-        if (r4.c(r17) == false) goto L69;
-        w03 r18 = new i94(r7.a, true, r7.c, r1).k().n;
-        Object r19 = r18.g(n94.a);
-        if (r19 != null) goto L48;
-        r19 = null;
-    L48:
-        Collection r20 = (Collection) r19;
-        if (r20 != null) goto L51;
-    L52:
-        Object r21 = r18.g(n94.z);
-        if (r21 != null) goto L55;
-        r21 = null;
-    L55:
-        Collection r22 = (Collection) r21;
-        if (r22 != null) goto L58;
-    L59:
-        Object r23 = r18.g(r17);
-        if (r23 != null) goto L62;
-        r23 = null;
-    L62:
-        CharSequence r24 = (CharSequence) r23;
-        if (r24 != null) goto L65;
-    L66:
-        r3 = r8.getString(app.homemusic.R.string.state_empty);
-    L67:
-        r2 = r3;
-        goto L69
-    L65:
-        if (r24.length() != 0) goto L67;
-    L58:
-        if (r22.isEmpty() == false) goto L67;
-    L51:
-        if (r20.isEmpty() == false) goto L67;
-    L69:
-        return (String) r2;
-    L38:
-        if (r16 == xq3.b) goto L41;
-        if (r2 != null) goto L43;
-        r2 = r8.getString(app.homemusic.R.string.template_percent, new Object[]{0});
-        goto L43
-    L41:
-        if (r2 != null) goto L43;
-        r2 = r8.getString(app.homemusic.R.string.in_progress);
-        goto L43
+    public static final String s(i94 i94Var, Resources resources) {
+        int iOrdinal;
+        e94 e94Var = i94Var.d;
+        e94 e94Var2 = i94Var.d;
+        Object objG = e94Var.n.g(n94.b);
+        String string = null;
+        if (objG == null) {
+            objG = null;
+        }
+        w03 w03Var = e94Var2.n;
+        Object objG2 = w03Var.g(n94.H);
+        if (objG2 == null) {
+            objG2 = null;
+        }
+        qu4 qu4Var = (qu4) objG2;
+        Object objG3 = w03Var.g(n94.w);
+        if (objG3 == null) {
+            objG3 = null;
+        }
+        if (qu4Var != null && (iOrdinal = qu4Var.ordinal()) != 0 && iOrdinal != 1) {
+            if (iOrdinal != 2) {
+                er1.n();
+                return null;
+            }
+            if (objG == null) {
+                objG = resources.getString(app.homemusic.R.string.indeterminate);
+            }
+        }
+        Object objG4 = w03Var.g(n94.G);
+        if (objG4 == null) {
+            objG4 = null;
+        }
+        Boolean bool = (Boolean) objG4;
+        if (bool != null) {
+            boolean zBooleanValue = bool.booleanValue();
+            if (objG == null) {
+                objG = zBooleanValue ? resources.getString(app.homemusic.R.string.selected) : resources.getString(app.homemusic.R.string.not_selected);
+            }
+        }
+        Object objG5 = w03Var.g(n94.c);
+        if (objG5 == null) {
+            objG5 = null;
+        }
+        xq3 xq3Var = (xq3) objG5;
+        if (xq3Var != null) {
+            if (xq3Var != xq3.b) {
+                if (objG == null) {
+                    objG = resources.getString(app.homemusic.R.string.template_percent, 0);
+                }
+            } else if (objG == null) {
+                objG = resources.getString(app.homemusic.R.string.in_progress);
+            }
+        }
+        p94 p94Var = n94.D;
+        if (w03Var.c(p94Var)) {
+            w03 w03Var2 = new i94(i94Var.a, true, i94Var.c, e94Var2).k().n;
+            Object objG6 = w03Var2.g(n94.a);
+            if (objG6 == null) {
+                objG6 = null;
+            }
+            Collection collection = (Collection) objG6;
+            if (collection == null || collection.isEmpty()) {
+                Object objG7 = w03Var2.g(n94.z);
+                if (objG7 == null) {
+                    objG7 = null;
+                }
+                Collection collection2 = (Collection) objG7;
+                if (collection2 == null || collection2.isEmpty()) {
+                    Object objG8 = w03Var2.g(p94Var);
+                    if (objG8 == null) {
+                        objG8 = null;
+                    }
+                    CharSequence charSequence = (CharSequence) objG8;
+                    if (charSequence == null || charSequence.length() == 0) {
+                        string = resources.getString(app.homemusic.R.string.state_empty);
+                    }
+                }
+            }
+            objG = string;
+        }
+        return (String) objG;
     }
 
-    public static final he t(i94 r3) {
-        e94 r0 = r3.d;
-        Object r1 = r0.n.g(n94.D);
-        he r2 = null;
-        if (r1 != null) goto L5;
-        r1 = null;
-    L5:
-        he r4 = (he) r1;
-        e94 r5 = r3.d;
-        Object r6 = r5.n.g(n94.z);
-        if (r6 != null) goto L8;
-        r6 = null;
-    L8:
-        List r7 = (List) r6;
-        if (r7 == null) goto L11;
-        r2 = (he) q40.x0(r7);
-    L11:
-        if (r4 != null) goto L13;
-        return r2;
-    L13:
-        return r4;
+    public static final he t(i94 i94Var) {
+        Object objG = i94Var.d.n.g(n94.D);
+        if (objG == null) {
+            objG = null;
+        }
+        he heVar = (he) objG;
+        Object objG2 = i94Var.d.n.g(n94.z);
+        if (objG2 == null) {
+            objG2 = null;
+        }
+        List list = (List) objG2;
+        return heVar == null ? list != null ? (he) q40.x0(list) : null : heVar;
     }
 
-    public static int u(h00 r3) {
-        int r0 = r3.i(4);
-        if (r0 != 15) goto L11;
-        if (r3.b() < 24) goto L9;
-        return r3.i(24);
-    L9:
-        throw ParserException.a(null, "AAC header insufficient data");
-    L11:
-        if (r0 >= 13) goto L15;
-        return b[r0];
-    L15:
+    public static int u(h00 h00Var) throws ParserException {
+        int i2 = h00Var.i(4);
+        if (i2 == 15) {
+            if (h00Var.b() >= 24) {
+                return h00Var.i(24);
+            }
+            throw ParserException.a(null, "AAC header insufficient data");
+        }
+        if (i2 < 13) {
+            return b[i2];
+        }
         throw ParserException.a(null, "AAC header wrong Sampling Frequency Index");
     }
 
-    public static final u84 v(Object r1) {
-        if (r1 != ud3.a) goto L5;
+    public static final u84 v(Object obj) {
+        if (obj != ud3.a) {
+            return (u84) obj;
+        }
         kf2.o("Does not contain segment");
         return null;
-    L5:
-        return (u84) r1;
     }
 
-    public static void w(String r2, Exception r3) {
-        if ((r3 instanceof InvocationTargetException) == false) goto L10;
-        Throwable r4 = r3.getCause();
-        if ((r4 instanceof RuntimeException) == true) goto L9;
-        er1.m(r4);
-        return;
-    L9:
-        throw ((RuntimeException) r4);
-    L10:
-        Log.v("Trace", "Unable to call " + r2 + " via reflection", r3);
+    public static void w(String str, Exception exc) {
+        if (exc instanceof InvocationTargetException) {
+            Throwable cause = exc.getCause();
+            if (cause instanceof RuntimeException) {
+                throw ((RuntimeException) cause);
+            }
+            er1.m(cause);
+            return;
+        }
+        Log.v("Trace", "Unable to call " + str + " via reflection", exc);
     }
 
-    public static final boolean x(Object r1) {
-        if (r1 != ud3.a) goto L6;
-        return true;
-    L6:
-        return false;
+    public static final boolean x(Object obj) {
+        return obj == ud3.a;
     }
 
     public static boolean y() {
-        if (Build.VERSION.SDK_INT < 29) goto L16;
-        return nv4.c();
-    L16:
-    L10:
-        e = move-exception;
-        w("isTagEnabled", e);
-        return false;
-    L8:
-        if (i != null) goto L12;
-        h = Trace.class.getField("TRACE_TAG_APP").getLong(null);     // Catch: Exception -> L10
-        i = Trace.class.getMethod("isTagEnabled", new Class[]{Long.TYPE});     // Catch: Exception -> L10
-    L12:
-        return ((Boolean) i.invoke(null, new Object[]{Long.valueOf(h)})).booleanValue();
+        if (Build.VERSION.SDK_INT >= 29) {
+            return nv4.c();
+        }
+        try {
+            if (i == null) {
+                h = Trace.class.getField("TRACE_TAG_APP").getLong(null);
+                i = Trace.class.getMethod("isTagEnabled", Long.TYPE);
+            }
+            return ((Boolean) i.invoke(null, Long.valueOf(h))).booleanValue();
+        } catch (Exception e2) {
+            w("isTagEnabled", e2);
+            return false;
+        }
     }
 
-    public static final boolean z(i94 r2, Resources r3) {
-        if (wr1.H(r2) == true) goto L29;
-        e94 r0 = r2.d;
-        if (r0.p == true) goto L27;
-        Object r1 = r0.n.g(n94.a);
-        String r4 = null;
-        if (r1 != null) goto L11;
-        r1 = null;
-    L11:
-        List r5 = (List) r1;
-        if (r5 == null) goto L14;
-        r4 = (String) q40.x0(r5);
-    L14:
-        if (r4 != null) goto L22;
-        if (t(r2) != null) goto L22;
-        if (s(r2, r3) != null) goto L22;
-        if (r(r2) == true) goto L22;
-        return false;
-    L22:
-        if (B(r2) == false) goto L28;
-        return true;
-    L28:
-        return false;
-    L27:
-        return true;
-    L29:
-        return false;
+    public static final boolean z(i94 i94Var, Resources resources) {
+        if (wr1.H(i94Var)) {
+            return false;
+        }
+        e94 e94Var = i94Var.d;
+        if (e94Var.p) {
+            return true;
+        }
+        Object objG = e94Var.n.g(n94.a);
+        if (objG == null) {
+            objG = null;
+        }
+        List list = (List) objG;
+        return !((list != null ? (String) q40.x0(list) : null) == null && t(i94Var) == null && s(i94Var, resources) == null && !r(i94Var)) && B(i94Var);
     }
 }

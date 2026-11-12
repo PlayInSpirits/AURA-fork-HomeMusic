@@ -25,12 +25,14 @@ import androidx.media3.common.ParserException;
 import androidx.work.impl.WorkDatabase;
 import androidx.work.impl.WorkDatabase_Impl;
 import app.homemusic.R;
+import com.eddyizm.tempus.homemusic.WaveRetry;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.nio.MappedByteBuffer;
 import java.nio.channels.FileChannel;
 import java.util.ArrayList;
@@ -44,944 +46,832 @@ import java.util.logging.Logger;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public abstract class wr1 {
-    public static final z95 a = null;
-    public static final z95 b = null;
-    public static final z95 c = null;
-    public static final z95 d = null;
-    public static final float[] e = null;
-    public static final wv3 f = null;
+    public static final z95 a = new z95(0.31006f, 0.31616f);
+    public static final z95 b = new z95(0.34567f, 0.3585f);
+    public static final z95 c = new z95(0.32168f, 0.33767f);
+    public static final z95 d = new z95(0.31271f, 0.32902f);
+    public static final float[] e = {0.964212f, 1.0f, 0.825188f};
+    public static final wv3 f = new wv3(0.0f, 0.0f, 10.0f, 10.0f);
     public static Field g = null;
     public static boolean h = false;
     public static boolean i = true;
 
-    static {
-        a = new z95(0.31006f, 0.31616f);
-        b = new z95(0.34567f, 0.3585f);
-        c = new z95(0.32168f, 0.33767f);
-        d = new z95(0.31271f, 0.32902f);
-        e = new float[]{0.964212f, 1.0f, 0.825188f};
-        f = new wv3(0.0f, 0.0f, 10.0f, 10.0f);
+    public static final ho3 A(View view) {
+        ho3 ho3Var = (ho3) view.getTag(R.id.pooling_container_listener_holder_tag);
+        if (ho3Var != null) {
+            return ho3Var;
+        }
+        ho3 ho3Var2 = new ho3();
+        view.setTag(R.id.pooling_container_listener_holder_tag, ho3Var2);
+        return ho3Var2;
     }
 
-    public static final ho3 A(View r2) {
-        ho3 r1 = (ho3) r2.getTag(R.id.pooling_container_listener_holder_tag);
-        if (r1 != null) goto L6;
-        ho3 r3 = new ho3();
-        r2.setTag(R.id.pooling_container_listener_holder_tag, r3);
-        return r3;
-    L6:
-        return r1;
-    }
-
-    public static File C(Context r5) {
-        File r6 = r5.getCacheDir();
-        if (r6 != null) goto L5;
-        return null;
-    L5:
-        String r1 = ".font" + Process.myPid() + "-" + Process.myTid() + "-";
-        int r2 = 0;
-    L7:
-        if (r2 >= 100) goto L13;
-        File r3 = new File(r6, r1 + r2);
-        if (r3.createNewFile() == false) goto L12;
-        return r3;
-    L12:
-        r2 = r2 + 1;
-        goto L7
-    L13:
+    public static File C(Context context) {
+        File cacheDir = context.getCacheDir();
+        if (cacheDir == null) {
+            return null;
+        }
+        String str = ".font" + Process.myPid() + "-" + Process.myTid() + "-";
+        for (int i2 = 0; i2 < 100; i2++) {
+            File file = new File(cacheDir, str + i2);
+            try {
+                if (file.createNewFile()) {
+                    return file;
+                }
+            } catch (IOException unused) {
+            }
+        }
         return null;
     }
 
-    public static final boolean E(AssertionError r2) {
-        Logger r0 = p83.a;
-        if (r2.getCause() == null) goto L11;
-        String r3 = r2.getMessage();
-        if (r3 == null) goto L7;
-        boolean r4 = qm4.o0(r3, "getsockname failed");
-    L8:
-        if (r4 == false) goto L11;
-        return true;
-    L7:
-        r4 = false;
-    L11:
+    public static final boolean E(AssertionError assertionError) {
+        Logger logger = p83.a;
+        if (assertionError.getCause() != null) {
+            String message = assertionError.getMessage();
+            if (message != null ? qm4.o0(message, "getsockname failed") : false) {
+                return true;
+            }
+        }
         return false;
     }
 
-    public static final boolean F(KeyEvent r4) {
-        long r0 = fh0.a(r4.getKeyCode());
-        if (g42.a(r0, g42.h) == false) goto L5;
-        return true;
-    L5:
-        if (g42.a(r0, g42.k) == false) goto L7;
-        return true;
-    L7:
-        if (g42.a(r0, g42.o) == false) goto L9;
-        return true;
-    L9:
-        if (g42.a(r0, g42.j) == true) goto L17;
-        return false;
-    L17:
-        return true;
+    public static final boolean F(KeyEvent keyEvent) {
+        long jA = fh0.a(keyEvent.getKeyCode());
+        return g42.a(jA, g42.h) || g42.a(jA, g42.k) || g42.a(jA, g42.o) || g42.a(jA, g42.j);
     }
 
-    public static final boolean H(i94 r2) {
-        f63 r0 = r2.d();
-        w03 r3 = r2.d.n;
-        if (r0 == null) goto L5;
-        boolean r1 = r0.J0();
-    L6:
-        if (r1 == false) goto L9;
-        return true;
-    L9:
-        if (r3.c(n94.p) == false) goto L12;
-        return true;
-    L12:
-        if (r3.c(n94.o) == false) goto L15;
-        return true;
-    L15:
-        return false;
-    L5:
-        r1 = false;
-        goto L6
+    public static final boolean H(i94 i94Var) {
+        f63 f63VarD = i94Var.d();
+        w03 w03Var = i94Var.d.n;
+        return (f63VarD != null ? f63VarD.J0() : false) || w03Var.c(n94.p) || w03Var.c(n94.o);
     }
 
-    public static final boolean I(i94 r14) {
-        if (H(r14) == true) goto L25;
-        e94 r15 = r14.d;
-        if (r15.p == true) goto L19;
-        w03 r16 = r15.n;
-        Object[] r0 = r16.b;
-        Object[] r2 = r16.c;
-        long[] r17 = r16.a;
-        int r3 = r17.length - 2;
-        if (r3 < 0) goto L25;
-        int r4 = 0;
-    L11:
-        long r5 = r17[r4];
-        if (((((~r5) << 7) & r5) & (-9187201950435737472L)) == (-9187201950435737472L)) goto L23;
-        int r7 = 8 - ((~(r4 - r3)) >>> 31);
-        int r9 = 0;
-    L14:
-        if (r9 >= r7) goto L22;
-        if ((255 & r5) >= 128) goto L21;
-        int r10 = (r4 << 3) + r9;
-        Object r11 = r0[r10];
-        Object r12 = r2[r10];
-        if (((p94) r11).c == false) goto L21;
-        return true;
-    L21:
-        r5 = r5 >> 8;
-        r9 = r9 + 1;
-        goto L14
-    L22:
-        if (r7 != 8) goto L25;
-    L23:
-        if (r4 == r3) goto L25;
-        r4 = r4 + 1;
-        goto L11
-    L19:
-        return true;
-    L25:
+    /* JADX WARN: Code duplicated, block: B:23:0x0057 A[DONT_INVERT] */
+    /* JADX WARN: Code duplicated, block: B:24:0x0059 A[LOOP:0: B:11:0x001d->B:24:0x0059, LOOP_END] */
+    /* JADX WARN: Code duplicated, block: B:28:0x005c A[SYNTHETIC] */
+    public static final boolean I(i94 i94Var) {
+        if (!H(i94Var)) {
+            e94 e94Var = i94Var.d;
+            if (e94Var.p) {
+                return true;
+            }
+            w03 w03Var = e94Var.n;
+            Object[] objArr = w03Var.b;
+            Object[] objArr2 = w03Var.c;
+            long[] jArr = w03Var.a;
+            int length = jArr.length - 2;
+            if (length >= 0) {
+                int i2 = 0;
+                while (true) {
+                    long j = jArr[i2];
+                    if ((((~j) << 7) & j & (-9187201950435737472L)) != -9187201950435737472L) {
+                        int i3 = 8 - ((~(i2 - length)) >>> 31);
+                        for (int i4 = 0; i4 < i3; i4++) {
+                            if ((255 & j) < 128) {
+                                int i5 = (i2 << 3) + i4;
+                                Object obj = objArr[i5];
+                                Object obj2 = objArr2[i5];
+                                if (((p94) obj).c) {
+                                    return true;
+                                }
+                            }
+                            j >>= 8;
+                        }
+                        if (i3 == 8) {
+                            if (i2 != length) {
+                                i2++;
+                            }
+                        }
+                    } else if (i2 != length) {
+                        i2++;
+                    }
+                }
+            }
+        }
         return false;
     }
 
-    public static final boolean K(g34 r6) {
-        long r0 = r6.e;
-        if ((r0 >>> 32) == (4294967295L & r0)) goto L5;
-        return false;
-    L5:
-        if (r0 == r6.f) goto L7;
-        return false;
-    L7:
-        if (r0 == r6.g) goto L9;
-        return false;
-    L9:
-        if (r0 != r6.h) goto L16;
-        return true;
-    L16:
-        return false;
+    public static final boolean K(g34 g34Var) {
+        long j = g34Var.e;
+        return (j >>> 32) == (4294967295L & j) && j == g34Var.f && j == g34Var.g && j == g34Var.h;
     }
 
-    public static mx2 M(ExecutorService r1) {
-        if ((r1 instanceof mx2) == false) goto L7;
-        return (mx2) r1;
-    L7:
-        if ((r1 instanceof ScheduledExecutorService) == false) goto L11;
-        return new px2((ScheduledExecutorService) r1);
-    L11:
-        return new mx2(r1);
+    public static mx2 M(ExecutorService executorService) {
+        if (executorService instanceof mx2) {
+            return (mx2) executorService;
+        }
+        return executorService instanceof ScheduledExecutorService ? new px2((ScheduledExecutorService) executorService) : new mx2(executorService);
     }
 
-    public static MappedByteBuffer N(Context r8, Uri r9) {
-        ParcelFileDescriptor r10 = r8.getContentResolver().openFileDescriptor(r9, "r", null);     // Catch: IOException -> L30
-        if (r10 != null) goto L31;
-        if (r10 == null) goto L29;
-        r10.close();     // Catch: IOException -> L30
-        return null;
-    L31:
-        FileInputStream r11 = new FileInputStream(r10.getFileDescriptor());     // Catch: Throwable -> L13
-        FileChannel r2 = r11.getChannel();     // Catch: Throwable -> L15
-        long r6 = r2.size();     // Catch: Throwable -> L15
-        MappedByteBuffer r0 = r2.map(FileChannel.MapMode.READ_ONLY, 0, r6);     // Catch: Throwable -> L15
-        r11.close();     // Catch: Throwable -> L13
-        r10.close();     // Catch: IOException -> L30
-        return r0;
-    L15:
-        th = move-exception;
-        r11.close();     // Catch: Throwable -> L19
-        goto L29
-    L39:
-        throw th;     // Catch: Throwable -> L13
-    L19:
-        th = move-exception;
-        th.addSuppressed(th);     // Catch: Throwable -> L13
-        throw th;     // Catch: Throwable -> L13
-    L13:
-        th = move-exception;
-        r10.close();     // Catch: Throwable -> L25
-        goto L29
-    L40:
-        throw th;     // Catch: IOException -> L30
-    L25:
-        th = move-exception;
-        th.addSuppressed(th);     // Catch: IOException -> L30
-        throw th;     // Catch: IOException -> L30
-    L29:
-        return null;
+    public static MappedByteBuffer N(Context context, Uri uri) {
+        try {
+            ParcelFileDescriptor parcelFileDescriptorOpenFileDescriptor = context.getContentResolver().openFileDescriptor(uri, "r", null);
+            if (parcelFileDescriptorOpenFileDescriptor == null) {
+                if (parcelFileDescriptorOpenFileDescriptor != null) {
+                    parcelFileDescriptorOpenFileDescriptor.close();
+                    return null;
+                }
+                return null;
+            }
+            try {
+                FileInputStream fileInputStream = new FileInputStream(parcelFileDescriptorOpenFileDescriptor.getFileDescriptor());
+                try {
+                    FileChannel channel = fileInputStream.getChannel();
+                    MappedByteBuffer map = channel.map(FileChannel.MapMode.READ_ONLY, 0L, channel.size());
+                    fileInputStream.close();
+                    parcelFileDescriptorOpenFileDescriptor.close();
+                    return map;
+                } catch (Throwable th) {
+                    try {
+                        fileInputStream.close();
+                        throw th;
+                    } catch (Throwable th2) {
+                        th.addSuppressed(th2);
+                        throw th;
+                    }
+                }
+            } catch (Throwable th3) {
+                try {
+                    parcelFileDescriptorOpenFileDescriptor.close();
+                    throw th3;
+                } catch (Throwable th4) {
+                    th3.addSuppressed(th4);
+                    throw th3;
+                }
+            }
+        } catch (IOException unused) {
+        }
     }
 
-    public static void O(EditorInfo r0, InputConnection r1, TextView r2) {
-        if (r1 != null) goto L4;
-        return;
-    L4:
-        if (r0.hintText != null) goto L11;
-        ViewParent r3 = r2.getParent();
-    L7:
-        if ((r3 instanceof View) == false) goto L12;
-        r3 = r3.getParent();
-        goto L7
-    L12:
-        return;
+    public static void O(EditorInfo editorInfo, InputConnection inputConnection, TextView textView) {
+        if (inputConnection == null || editorInfo.hintText != null) {
+            return;
+        }
+        for (ViewParent parent = textView.getParent(); parent instanceof View; parent = parent.getParent()) {
+        }
     }
 
-    public static final void P(cz r2, vd0 r3, boolean r4) {
-        Object r0 = r2.s();
-        Throwable r1 = r2.e(r0);
-        if (r1 == null) goto L5;
-        Object r5 = new s14(r1);
-    L6:
-        if (r4 == false) goto L25;
-        r3.getClass();
-        mr0 r6 = (mr0) r3;
-        wd0 r7 = r6.r;
-        Object r8 = r6.t;
-        ne0 r9 = r7.getContext();
-        Object r10 = te5.R(r9, r8);
-        if (r10 == te5.b) goto L10;
-        f15 r11 = jz4.Q(r7, r9, r10);
-    L27:
-        r7.resumeWith(r5);     // Catch: Throwable -> L19
-        if (r11 != null) goto L14;
-    L17:
-        te5.K(r9, r10);
-        return;
-    L14:
-        if (r11.m0() == true) goto L17;
-        return;
-    L19:
-        th = move-exception;
-        if (r11 != null) goto L22;
-    L23:
-        te5.K(r9, r10);
-    L24:
-        throw th;
-    L22:
-        if (r11.m0() == false) goto L24;
-    L10:
-        r11 = null;
-        goto L27
-    L25:
-        r3.resumeWith(r5);
-        return;
-    L5:
-        r5 = r2.f(r0);
-        goto L6
+    public static final void P(cz czVar, vd0 vd0Var, boolean z) {
+        Object objS = czVar.s();
+        Throwable thE = czVar.e(objS);
+        Object s14Var = thE != null ? new s14(thE) : czVar.f(objS);
+        if (!z) {
+            vd0Var.resumeWith(s14Var);
+            return;
+        }
+        vd0Var.getClass();
+        mr0 mr0Var = (mr0) vd0Var;
+        wd0 wd0Var = mr0Var.r;
+        Object obj = mr0Var.t;
+        ne0 context = wd0Var.getContext();
+        Object objR = te5.R(context, obj);
+        f15 f15VarQ = objR != te5.b ? jz4.Q(wd0Var, context, objR) : null;
+        try {
+            wd0Var.resumeWith(s14Var);
+        } finally {
+            if (f15VarQ == null || f15VarQ.m0()) {
+                te5.K(context, objR);
+            }
+        }
     }
 
-    public static final int Q(b94 r4, int r5) {
-        int[] r0 = r4.s;
-        int r6 = r5 + 1;
-        int r7 = r4.r.length;
-        r0.getClass();
-        int r8 = r7 - 1;
-        int r1 = 0;
-    L3:
-        if (r1 > r8) goto L9;
-        int r2 = (r1 + r8) >>> 1;
-        int r3 = r0[r2];
-        if (r3 < r6) goto L6;
-        if (r3 <= r6) goto L10;
-        r8 = r2 - 1;
-    L10:
-        if (r2 < 0) goto L13;
-        return r2;
-    L13:
-        return ~r2;
-    L6:
-        r1 = r2 + 1;
-        goto L3
-    L9:
-        r2 = (-r1) - 1;
-        goto L10
+    /* JADX WARN: Code duplicated, block: B:11:0x0024 A[RETURN] */
+    /* JADX WARN: Code duplicated, block: B:12:0x0025  */
+    public static final int Q(b94 b94Var, int i2) {
+        int i3;
+        int[] iArr = b94Var.s;
+        int i4 = i2 + 1;
+        int length = b94Var.r.length;
+        iArr.getClass();
+        int i5 = length - 1;
+        int i6 = 0;
+        while (i6 <= i5) {
+            i3 = (i6 + i5) >>> 1;
+            int i7 = iArr[i3];
+            if (i7 < i4) {
+                i6 = i3 + 1;
+            } else {
+                if (i7 <= i4) {
+                    if (i3 >= 0) {
+                        return i3;
+                    }
+                    return ~i3;
+                }
+                i5 = i3 - 1;
+            }
+        }
+        i3 = (-i6) - 1;
+        if (i3 >= 0) {
+            return i3;
+        }
+        return ~i3;
     }
 
-    public static final g34 a(float r17, float r18, float r19, float r20, long r21) {
-        float r1 = Float.intBitsToFloat((int) (r21 >> 32));
-        float r4 = Float.intBitsToFloat((int) (r21 & 4294967295L));
-        long r9 = (Float.floatToRawIntBits(r1) << 32) | (4294967295L & ((long) Float.floatToRawIntBits(r4)));
-        return new g34(r17, r18, r19, r20, r9, r9, r9, r9);
+    public static final g34 a(float f2, float f3, float f4, float f5, long j) {
+        float fIntBitsToFloat = Float.intBitsToFloat((int) (j >> 32));
+        float fIntBitsToFloat2 = Float.intBitsToFloat((int) (j & 4294967295L));
+        long jFloatToRawIntBits = (((long) Float.floatToRawIntBits(fIntBitsToFloat)) << 32) | (4294967295L & ((long) Float.floatToRawIntBits(fIntBitsToFloat2)));
+        return new g34(f2, f3, f4, f5, jFloatToRawIntBits, jFloatToRawIntBits, jFloatToRawIntBits, jFloatToRawIntBits);
     }
 
-    public static final ExecutorService b(boolean r2) {
-        ExecutorService r3 = Executors.newFixedThreadPool(Math.max(2, Math.min(Runtime.getRuntime().availableProcessors() - 1, 4)), new s90(r2));
-        r3.getClass();
-        return r3;
+    public static final ExecutorService b(boolean z) {
+        ExecutorService executorServiceNewFixedThreadPool = Executors.newFixedThreadPool(Math.max(2, Math.min(Runtime.getRuntime().availableProcessors() - 1, 4)), new s90(z));
+        executorServiceNewFixedThreadPool.getClass();
+        return executorServiceNewFixedThreadPool;
     }
 
-    public static final wv3 c(q62 r6) {
-        q62 r0 = r6.u();
-        if (r0 == null) goto L7;
-        return r0.C(r6, true);
-    L7:
-        return new wv3(0.0f, 0.0f, (int) (r6.k() >> 32), (int) (r6.k() & 4294967295L));
+    public static final wv3 c(q62 q62Var) {
+        q62 q62VarU = q62Var.u();
+        return q62VarU != null ? q62VarU.C(q62Var, true) : new wv3(0.0f, 0.0f, (int) (q62Var.k() >> 32), (int) (q62Var.k() & 4294967295L));
     }
 
-    public static final wv3 d(q62 r14, boolean r15) {
-        q62 r0 = n(r14);
-        float r1 = (int) (r0.k() >> 32);
-        float r2 = (int) (r0.k() & 4294967295L);
-        wv3 r16 = r0.C(r14, r15);
-        float r4 = r16.a;
-        float r5 = 0.0f;
-        if (r15 == true) goto L5;
-    L10:
-        float r8 = r16.b;
-        if (r15 == true) goto L13;
-    L18:
-        float r9 = r16.c;
-        if (r15 == true) goto L21;
-    L28:
-        float r17 = r16.d;
-        if (r15 == false) goto L40;
-        if (r17 < 0.0f) goto L35;
-        r5 = r17;
-    L35:
-        if (r5 > r2) goto L38;
-        r2 = r5;
-    L38:
-        r17 = r2;
-    L40:
-        if (r4 == r9) goto L45;
-        if (r8 == r17) goto L45;
-        long r3 = r0.b((Float.floatToRawIntBits(r4) << 32) | (((long) Float.floatToRawIntBits(r8)) & 4294967295L));
-        long r10 = r0.b((Float.floatToRawIntBits(r9) << 32) | (((long) Float.floatToRawIntBits(r8)) & 4294967295L));
-        long r11 = r0.b((Float.floatToRawIntBits(r9) << 32) | (((long) Float.floatToRawIntBits(r17)) & 4294967295L));
-        long r6 = Float.floatToRawIntBits(r4);
-        long r18 = r0.b((((long) Float.floatToRawIntBits(r17)) & 4294967295L) | (r6 << 32));
-        float r7 = Float.intBitsToFloat((int) (r3 >> 32));
-        float r12 = Float.intBitsToFloat((int) (r10 >> 32));
-        float r13 = Float.intBitsToFloat((int) (r18 >> 32));
-        float r19 = Float.intBitsToFloat((int) (r11 >> 32));
-        float r110 = Math.min(r7, Math.min(r12, Math.min(r13, r19)));
-        float r20 = Math.max(r7, Math.max(r12, Math.max(r13, r19)));
-        float r21 = Float.intBitsToFloat((int) (r3 & 4294967295L));
-        float r22 = Float.intBitsToFloat((int) (r10 & 4294967295L));
-        float r111 = Float.intBitsToFloat((int) (r18 & 4294967295L));
-        float r112 = Float.intBitsToFloat((int) (r11 & 4294967295L));
-        return new wv3(r110, Math.min(r21, Math.min(r22, Math.min(r111, r112))), r20, Math.max(r21, Math.max(r22, Math.max(r111, r112))));
-    L45:
-        return wv3.e;
-    L21:
-        if (r9 >= 0.0f) goto L24;
-        r9 = 0.0f;
-    L24:
-        if (r9 > r1) goto L27;
-        r1 = r9;
-    L27:
-        r9 = r1;
-        goto L28
-    L13:
-        if (r8 >= 0.0f) goto L16;
-        r8 = 0.0f;
-    L16:
-        if (r8 <= r2) goto L18;
-        r8 = r2;
-        goto L18
-    L5:
-        if (r4 >= 0.0f) goto L8;
-        r4 = 0.0f;
-    L8:
-        if (r4 <= r1) goto L10;
-        r4 = r1;
-        goto L10
+    public static final wv3 d(q62 q62Var, boolean z) {
+        q62 q62VarN = n(q62Var);
+        float fK = (int) (q62VarN.k() >> 32);
+        float fK2 = (int) (q62VarN.k() & 4294967295L);
+        wv3 wv3VarC = q62VarN.C(q62Var, z);
+        float f2 = wv3VarC.a;
+        if (z) {
+            if (f2 < 0.0f) {
+                f2 = 0.0f;
+            }
+            if (f2 > fK) {
+                f2 = fK;
+            }
+        }
+        float f3 = wv3VarC.b;
+        if (z) {
+            if (f3 < 0.0f) {
+                f3 = 0.0f;
+            }
+            if (f3 > fK2) {
+                f3 = fK2;
+            }
+        }
+        float f4 = wv3VarC.c;
+        if (z) {
+            if (f4 < 0.0f) {
+                f4 = 0.0f;
+            }
+            if (f4 <= fK) {
+                fK = f4;
+            }
+            f4 = fK;
+        }
+        float f5 = wv3VarC.d;
+        if (z) {
+            float f6 = f5 >= 0.0f ? f5 : 0.0f;
+            if (f6 <= fK2) {
+                fK2 = f6;
+            }
+            f5 = fK2;
+        }
+        if (f2 == f4 || f3 == f5) {
+            return wv3.e;
+        }
+        long jB = q62VarN.b((((long) Float.floatToRawIntBits(f2)) << 32) | (((long) Float.floatToRawIntBits(f3)) & 4294967295L));
+        long jB2 = q62VarN.b((((long) Float.floatToRawIntBits(f4)) << 32) | (((long) Float.floatToRawIntBits(f3)) & 4294967295L));
+        long jB3 = q62VarN.b((((long) Float.floatToRawIntBits(f4)) << 32) | (((long) Float.floatToRawIntBits(f5)) & 4294967295L));
+        long jB4 = q62VarN.b((((long) Float.floatToRawIntBits(f5)) & 4294967295L) | (((long) Float.floatToRawIntBits(f2)) << 32));
+        float fIntBitsToFloat = Float.intBitsToFloat((int) (jB >> 32));
+        float fIntBitsToFloat2 = Float.intBitsToFloat((int) (jB2 >> 32));
+        float fIntBitsToFloat3 = Float.intBitsToFloat((int) (jB4 >> 32));
+        float fIntBitsToFloat4 = Float.intBitsToFloat((int) (jB3 >> 32));
+        float fMin = Math.min(fIntBitsToFloat, Math.min(fIntBitsToFloat2, Math.min(fIntBitsToFloat3, fIntBitsToFloat4)));
+        float fMax = Math.max(fIntBitsToFloat, Math.max(fIntBitsToFloat2, Math.max(fIntBitsToFloat3, fIntBitsToFloat4)));
+        float fIntBitsToFloat5 = Float.intBitsToFloat((int) (jB & 4294967295L));
+        float fIntBitsToFloat6 = Float.intBitsToFloat((int) (jB2 & 4294967295L));
+        float fIntBitsToFloat7 = Float.intBitsToFloat((int) (jB4 & 4294967295L));
+        float fIntBitsToFloat8 = Float.intBitsToFloat((int) (jB3 & 4294967295L));
+        return new wv3(fMin, Math.min(fIntBitsToFloat5, Math.min(fIntBitsToFloat6, Math.min(fIntBitsToFloat7, fIntBitsToFloat8))), fMax, Math.max(fIntBitsToFloat5, Math.max(fIntBitsToFloat6, Math.max(fIntBitsToFloat7, fIntBitsToFloat8))));
     }
 
-    public static final void g(View r3) {
-        r3.getClass();
-        ba4 r4 = si0.C(new sb(r3, null, 1));
-    L4:
-        if (r4.hasNext() == false) goto L9;
-        ArrayList r0 = A((View) r4.next()).a;
-        int r1 = gb.E(r0);
-    L7:
-        if ((-1) >= r1) goto L4;
-        ((k65) r0.get(r1)).a.d();
-        r1 = r1 - 1;
-        goto L7
+    public static final void g(View view) {
+        view.getClass();
+        ba4 ba4VarC = si0.C(new sb(view, null, 1));
+        while (ba4VarC.hasNext()) {
+            ArrayList arrayList = A((View) ba4VarC.next()).a;
+            for (int iE = gb.E(arrayList); -1 < iE; iE--) {
+                ((k65) arrayList.get(iE)).a.d();
+            }
+        }
     }
 
-    public static final void h(sc5 r8, String r9) {
-        WorkDatabase r0 = r8.c;
-        r0.getClass();
-        fd5 r1 = r0.A();
-        wo0 r2 = r0.v();
-        ArrayList r3 = gb.Q(new String[]{r9});
-    L4:
-        if (r3.isEmpty() == true) goto L22;
-        String r4 = (String) v40.q0(r3);
-        int r5 = r1.g(r4);
-        if (r5 == 3) goto L21;
-        if (r5 == 4) goto L21;
-        WorkDatabase_Impl r6 = r1.a;
-        r6.b();
-        aq4 r7 = r1.e;
-        df1 r10 = r7.a();
-        r10.h(1, r4);
-        r6.c();     // Catch: Throwable -> L14
-        r10.b();     // Catch: Throwable -> L16
-        r6.t();     // Catch: Throwable -> L16
-        r6.o();     // Catch: Throwable -> L14
-        r7.h(r10);
-        goto L21
-    L16:
-        th = move-exception;
-        r6.o();     // Catch: Throwable -> L14
-        throw th;     // Catch: Throwable -> L14
-    L14:
-        th = move-exception;
-        r7.h(r10);
-        throw th;
-    L21:
-        r3.addAll(r2.w(r4));
-        goto L4
-    L22:
-        pq3 r11 = r8.f;
-        r11.getClass();
-        Object r12 = r11.k;
-        monitor-enter(r12);
-        cx.f().b(pq3.l, "Processor cancelling " + r9);     // Catch: Throwable -> L31
-        r11.i.add(r9);     // Catch: Throwable -> L31
-        td5 r13 = r11.b(r9);     // Catch: Throwable -> L31
-        monitor-exit(r12);     // Catch: Throwable -> L31
-        pq3.d(r9, r13, 1);
-        Iterator r14 = r8.e.iterator();
-    L28:
-        if (r14.hasNext() == false) goto L30;
-        ((a64) r14.next()).d(r9);
-        goto L28
-    L30:
-        return;
-    L31:
-        th = move-exception;
-        throw th;
+    public static final void h(sc5 sc5Var, String str) {
+        td5 td5VarB;
+        WorkDatabase workDatabase = sc5Var.c;
+        workDatabase.getClass();
+        fd5 fd5VarA = workDatabase.A();
+        wo0 wo0VarV = workDatabase.v();
+        ArrayList arrayListQ = gb.Q(str);
+        while (!arrayListQ.isEmpty()) {
+            String str2 = (String) v40.q0(arrayListQ);
+            int iG = fd5VarA.g(str2);
+            if (iG != 3 && iG != 4) {
+                WorkDatabase_Impl workDatabase_Impl = fd5VarA.a;
+                workDatabase_Impl.b();
+                aq4 aq4Var = fd5VarA.e;
+                df1 df1VarA = aq4Var.a();
+                df1VarA.h(1, str2);
+                try {
+                    workDatabase_Impl.c();
+                    try {
+                        df1VarA.b();
+                        workDatabase_Impl.t();
+                        workDatabase_Impl.o();
+                        aq4Var.h(df1VarA);
+                    } catch (Throwable th) {
+                        workDatabase_Impl.o();
+                        throw th;
+                    }
+                } catch (Throwable th2) {
+                    aq4Var.h(df1VarA);
+                    throw th2;
+                }
+            }
+            arrayListQ.addAll(wo0VarV.w(str2));
+        }
+        pq3 pq3Var = sc5Var.f;
+        pq3Var.getClass();
+        synchronized (pq3Var.k) {
+            cx.f().b(pq3.l, "Processor cancelling " + str);
+            pq3Var.i.add(str);
+            td5VarB = pq3Var.b(str);
+        }
+        pq3.d(str, td5VarB, 1);
+        Iterator it = sc5Var.e.iterator();
+        while (it.hasNext()) {
+            ((a64) it.next()).d(str);
+        }
     }
 
-    public static void i(String r0, boolean r1) {
-        if (r1 == false) goto L5;
-        return;
-    L5:
-        throw ParserException.a(null, r0);
+    public static void i(String str, boolean z) throws ParserException {
+        if (!z) {
+            throw ParserException.a(null, str);
+        }
     }
 
-    public static dx2 j(dx2 r1, gf1 r2) {
-        return r1.c(new t30(r2));
+    public static dx2 j(dx2 dx2Var, gf1 gf1Var) {
+        return dx2Var.c(new t30(gf1Var));
     }
 
-    public static boolean k(File r0, Resources r1, int r2) {
-        InputStream r3 = r1.openRawResource(r2);     // Catch: Throwable -> L9
-        boolean r4 = l(r0, r3);     // Catch: Throwable -> L7
-        if (r3 != null) goto L20;
-    L6:
-        return r4;
-    L20:
-        r3.close();     // Catch: IOException -> L14
-    L7:
-        th = th;
-    L11:
-        if (r3 != null) goto L18;
-    L13:
-        throw th;
-    L18:
-        r3.close();     // Catch: IOException -> L15
-    L9:
-        th = th;
-        r3 = null;
-        goto L11
+    public static boolean k(File file, Resources resources, int i2) throws Throwable {
+        InputStream inputStreamOpenRawResource;
+        try {
+            inputStreamOpenRawResource = resources.openRawResource(i2);
+            try {
+                boolean zL = l(file, inputStreamOpenRawResource);
+                if (inputStreamOpenRawResource != null) {
+                    try {
+                        inputStreamOpenRawResource.close();
+                    } catch (IOException unused) {
+                    }
+                }
+                return zL;
+            } catch (Throwable th) {
+                th = th;
+                if (inputStreamOpenRawResource != null) {
+                    try {
+                        inputStreamOpenRawResource.close();
+                    } catch (IOException unused2) {
+                    }
+                }
+                throw th;
+            }
+        } catch (Throwable th2) {
+            th = th2;
+            inputStreamOpenRawResource = null;
+        }
     }
 
-    public static boolean l(File r5, InputStream r6) {
-        StrictMode.ThreadPolicy r0 = StrictMode.allowThreadDiskWrites();
-        FileOutputStream r2 = null;
-        FileOutputStream r3 = new FileOutputStream(r5, false);     // Catch: Throwable -> L17 IOException -> L19
-        byte[] r7 = new byte[1024];     // Catch: Throwable -> L10 IOException -> L12
-    L6:
-        int r4 = r6.read(r7);     // Catch: Throwable -> L10 IOException -> L12
-        if (r4 == (-1)) goto L38;
-        r3.write(r7, 0, r4);     // Catch: Throwable -> L10 IOException -> L12
-    L38:
-        r3.close();     // Catch: IOException -> L29
-    L15:
-        StrictMode.setThreadPolicy(r0);
-        return true;
-    L12:
-        e = e;
-        r2 = r3;
-    L20:
-        Log.e("TypefaceCompatUtil", "Error copying resource contents to temp file: " + e.getMessage());     // Catch: Throwable -> L17
-        if (r2 != null) goto L32;
-    L23:
-        StrictMode.setThreadPolicy(r0);
-        return false;
-    L32:
-        r2.close();     // Catch: IOException -> L31
-    L10:
-        th = th;
-        r2 = r3;
-    L25:
-        if (r2 != null) goto L36;
-    L27:
-        StrictMode.setThreadPolicy(r0);
-        throw th;
-    L36:
-        r2.close();     // Catch: IOException -> L30
-    L19:
-        e = e;
-    L17:
-        th = th;
-        goto L25
+    public static boolean l(File file, InputStream inputStream) throws Throwable {
+        StrictMode.ThreadPolicy threadPolicyAllowThreadDiskWrites = StrictMode.allowThreadDiskWrites();
+        FileOutputStream fileOutputStream = null;
+        try {
+            try {
+                FileOutputStream fileOutputStream2 = new FileOutputStream(file, false);
+                try {
+                    byte[] bArr = new byte[1024];
+                    while (true) {
+                        int i2 = inputStream.read(bArr);
+                        if (i2 != -1) {
+                            fileOutputStream2.write(bArr, 0, i2);
+                        } else {
+                            try {
+                                break;
+                            } catch (IOException unused) {
+                            }
+                        }
+                    }
+                    fileOutputStream2.close();
+                    StrictMode.setThreadPolicy(threadPolicyAllowThreadDiskWrites);
+                    return true;
+                } catch (IOException e2) {
+                    e = e2;
+                    fileOutputStream = fileOutputStream2;
+                    Log.e("TypefaceCompatUtil", "Error copying resource contents to temp file: " + e.getMessage());
+                    if (fileOutputStream != null) {
+                        try {
+                            fileOutputStream.close();
+                        } catch (IOException unused2) {
+                        }
+                    }
+                    StrictMode.setThreadPolicy(threadPolicyAllowThreadDiskWrites);
+                    return false;
+                } catch (Throwable th) {
+                    th = th;
+                    fileOutputStream = fileOutputStream2;
+                    if (fileOutputStream != null) {
+                        try {
+                            fileOutputStream.close();
+                        } catch (IOException unused3) {
+                        }
+                    }
+                    StrictMode.setThreadPolicy(threadPolicyAllowThreadDiskWrites);
+                    throw th;
+                }
+            } catch (IOException e3) {
+                e = e3;
+            }
+        } catch (Throwable th2) {
+            th = th2;
+        }
     }
 
-    public static Handler m(Looper r5) {
-        if (Build.VERSION.SDK_INT < 28) goto L29;
-        return ne.b(r5);
-    L29:
-        return (Handler) Handler.class.getDeclaredConstructor(new Class[]{Looper.class, Handler.Callback.class, Boolean.TYPE}).newInstance(new Object[]{r5, null, Boolean.TRUE});
-    L15:
-        e = e;
-    L27:
-        Log.w("HandlerCompat", "Unable to invoke Handler(Looper, Callback, boolean) constructor", e);
-        return new Handler(r5);
-    L13:
-        e = e;
-    L11:
-        e = e;
-    L9:
-        e = move-exception;
-        Throwable r6 = e.getCause();
-        if ((r6 instanceof RuntimeException) == true) goto L26;
-        if ((r6 instanceof Error) == true) goto L24;
-        er1.m(r6);
-        return null;
-    L24:
-        throw ((Error) r6);
-    L26:
-        throw ((RuntimeException) r6);
+    public static Handler m(Looper looper) {
+        if (Build.VERSION.SDK_INT >= 28) {
+            return ne.b(looper);
+        }
+        try {
+            return (Handler) Handler.class.getDeclaredConstructor(Looper.class, Handler.Callback.class, Boolean.TYPE).newInstance(looper, null, Boolean.TRUE);
+        } catch (IllegalAccessException e2) {
+            e = e2;
+            Log.w("HandlerCompat", "Unable to invoke Handler(Looper, Callback, boolean) constructor", e);
+            return new Handler(looper);
+        } catch (InstantiationException e3) {
+            e = e3;
+            Log.w("HandlerCompat", "Unable to invoke Handler(Looper, Callback, boolean) constructor", e);
+            return new Handler(looper);
+        } catch (NoSuchMethodException e4) {
+            e = e4;
+            Log.w("HandlerCompat", "Unable to invoke Handler(Looper, Callback, boolean) constructor", e);
+            return new Handler(looper);
+        } catch (InvocationTargetException e5) {
+            Throwable cause = e5.getCause();
+            if (cause instanceof RuntimeException) {
+                throw ((RuntimeException) cause);
+            }
+            if (cause instanceof Error) {
+                throw ((Error) cause);
+            }
+            er1.m(cause);
+            return null;
+        }
     }
 
-    public static final q62 n(q62 r2) {
-        q62 r0 = r2.u();
-    L3:
-        q62 r1 = r0;
-        q62 r3 = r2;
-        r2 = r1;
-        if (r2 == null) goto L7;
-        r0 = r2.u();
-        goto L3
-    L7:
-        if ((r3 instanceof f63) == false) goto L9;
-        f63 r4 = (f63) r3;
-    L10:
-        if (r4 != null) goto L12;
-        return r3;
-    L12:
-        f63 r5 = r4.J;
-    L13:
-        f63 r6 = r5;
-        f63 r7 = r4;
-        r4 = r6;
-        if (r4 == null) goto L16;
-        r5 = r4.J;
-        goto L13
-    L16:
-        return r7;
-    L9:
-        r4 = null;
-        goto L10
+    public static final q62 n(q62 q62Var) {
+        q62 q62Var2;
+        q62 q62VarU = q62Var.u();
+        while (true) {
+            q62 q62Var3 = q62VarU;
+            q62Var2 = q62Var;
+            q62Var = q62Var3;
+            if (q62Var == null) {
+                break;
+            }
+            q62VarU = q62Var.u();
+        }
+        f63 f63Var = q62Var2 instanceof f63 ? (f63) q62Var2 : null;
+        if (f63Var == null) {
+            return q62Var2;
+        }
+        f63 f63Var2 = f63Var.J;
+        while (true) {
+            f63 f63Var3 = f63Var2;
+            f63 f63Var4 = f63Var;
+            f63Var = f63Var3;
+            if (f63Var == null) {
+                return f63Var4;
+            }
+            f63Var2 = f63Var.J;
+        }
     }
 
-    public static final i03 o(l94 r7, if1 r8) {
+    public static final i03 o(l94 l94Var, if1 if1Var) {
         Trace.beginSection("getAllUncoveredSemanticsNodesToIntObjectMap");
-        i94 r5 = r7.a();     // Catch: Throwable -> L14
-        c72 r9 = r5.c;     // Catch: Throwable -> L14
-        if (r9.H() == true) goto L6;
-    L11:
-        i03 r10 = f02.a;     // Catch: Throwable -> L14
-        r10.getClass();     // Catch: Throwable -> L14
-        Trace.endSection();
-        return r10;
-    L6:
-        if (r9.G() == false) goto L11;
-        wv3 r11 = r5.g();     // Catch: Throwable -> L14
-        i03 r4 = new i03(48);     // Catch: Throwable -> L14
-        si1 r3 = new si1(23);     // Catch: Throwable -> L14
-        r3.L(rr2.Q(r11));     // Catch: Throwable -> L14
-        r(r8, new si1(23), r3, r4, r5, r5);     // Catch: Throwable -> L14
-        Trace.endSection();
-        return r4;
-    L14:
-        th = move-exception;
-        Trace.endSection();
-        throw th;
+        try {
+            i94 i94VarA = l94Var.a();
+            c72 c72Var = i94VarA.c;
+            if (c72Var.H() && c72Var.G()) {
+                wv3 wv3VarG = i94VarA.g();
+                i03 i03Var = new i03(48);
+                si1 si1Var = new si1(23);
+                si1Var.L(rr2.Q(wv3VarG));
+                r(if1Var, new si1(23), si1Var, i03Var, i94VarA, i94VarA);
+                return i03Var;
+            }
+            i03 i03Var2 = f02.a;
+            i03Var2.getClass();
+            return i03Var2;
+        } finally {
+            Trace.endSection();
+        }
     }
 
-    public static final void p(if1 r16, si1 r17, si1 r18, i03 r19, i94 r20, i94 r21) {
-        si1 r1 = r17;
-        Region r0 = (Region) r1.o;
-        si1 r2 = r18;
-        Region r7 = (Region) r2.o;
-        c72 r3 = r21.c;
-        c72 r4 = r21.c;
-        if (r3.H() == false) goto L38;
-        if (r4.G() == false) goto L38;
-        if (r7.isEmpty() == true) goto L38;
-        wv3 r5 = r21.m();
-        if (r5.d() == false) goto L21;
-        eo0 r6 = r21.f();
-        if (r6 != null) goto L14;
-        iz1 r8 = (iz1) r4.Q.d;
-        r5 = n(r8).C(r8, false);
-        goto L21
-    L14:
-        cx2 r9 = ((cx2) r6).n;
-        e94 r10 = r21.d;
-        Object r11 = r10.n.g(d94.b);
-        if (r11 != null) goto L17;
-        r11 = null;
-    L17:
-        if (r11 == null) goto L19;
-        boolean r12 = true;
-    L20:
-        r5 = fu.s(r9, r12, false);
-        goto L21
-    L19:
-        r12 = false;
-    L21:
-        k02 r13 = rr2.Q(r5);
-        r1.L(r13);
-        if (r0.op(r7, Region.Op.INTERSECT) == false) goto L44;
-        int r14 = r21.f;
-        i94 r15 = r20;
-        if (r14 != r15.f) goto L26;
-        r14 = -1;
-    L26:
-        Rect r22 = r0.getBounds();
-        k94 r23 = new k94(r21, new k02(r22.left, r22.top, r22.right, r22.bottom));
-        i03 r24 = r19;
-        r24.i(r14, r23);
-        List r110 = i94.j(4, r21);
-        int r25 = r110.size() - 1;
-    L27:
-        if ((-1) >= r25) goto L34;
-        if (((Boolean) r16.invoke(r110.get(r25))).booleanValue() == true) goto L32;
-        p(r16, r1, r2, r24, r15, (i94) r110.get(r25));
-    L32:
-        r25 = r25 - 1;
-        r1 = r17;
-        r2 = r18;
-        r24 = r19;
-        r15 = r20;
-        goto L27
-    L34:
-        if (I(r21) == false) goto L45;
-        r7.op(r13.a, r13.b, r13.c, r13.d, Region.Op.DIFFERENCE);
-        return;
-    L45:
-        return;
-    L44:
-        return;
-    L38:
-        if (r21.o() == false) goto L46;
-        q(r19, r20, r21);
-        return;
+    public static final void p(if1 if1Var, si1 si1Var, si1 si1Var2, i03 i03Var, i94 i94Var, i94 i94Var2) {
+        si1 si1Var3 = si1Var;
+        Region region = (Region) si1Var3.o;
+        si1 si1Var4 = si1Var2;
+        Region region2 = (Region) si1Var4.o;
+        c72 c72Var = i94Var2.c;
+        c72 c72Var2 = i94Var2.c;
+        if (!c72Var.H() || !c72Var2.G() || region2.isEmpty()) {
+            if (i94Var2.o()) {
+                q(i03Var, i94Var, i94Var2);
+                return;
+            }
+            return;
+        }
+        wv3 wv3VarM = i94Var2.m();
+        if (wv3VarM.d()) {
+            eo0 eo0VarF = i94Var2.f();
+            if (eo0VarF == null) {
+                iz1 iz1Var = (iz1) c72Var2.Q.d;
+                wv3VarM = n(iz1Var).C(iz1Var, false);
+            } else {
+                cx2 cx2Var = ((cx2) eo0VarF).n;
+                Object objG = i94Var2.d.n.g(d94.b);
+                if (objG == null) {
+                    objG = null;
+                }
+                wv3VarM = fu.s(cx2Var, objG != null, false);
+            }
+        }
+        k02 k02VarQ = rr2.Q(wv3VarM);
+        si1Var3.L(k02VarQ);
+        if (region.op(region2, Region.Op.INTERSECT)) {
+            int i2 = i94Var2.f;
+            i94 i94Var3 = i94Var;
+            if (i2 == i94Var3.f) {
+                i2 = -1;
+            }
+            Rect bounds = region.getBounds();
+            k94 k94Var = new k94(i94Var2, new k02(bounds.left, bounds.top, bounds.right, bounds.bottom));
+            i03 i03Var2 = i03Var;
+            i03Var2.i(i2, k94Var);
+            List listI = i94Var2.i((4 & 1) != 0 ? !i94Var2.b : false, (4 & 2) == 0);
+            int size = listI.size() - 1;
+            while (-1 < size) {
+                if (!((Boolean) if1Var.invoke(listI.get(size))).booleanValue()) {
+                    p(if1Var, si1Var3, si1Var4, i03Var2, i94Var3, (i94) listI.get(size));
+                }
+                size--;
+                si1Var3 = si1Var;
+                si1Var4 = si1Var2;
+                i03Var2 = i03Var;
+                i94Var3 = i94Var;
+            }
+            if (I(i94Var2)) {
+                region2.op(k02VarQ.a, k02VarQ.b, k02VarQ.c, k02VarQ.d, Region.Op.DIFFERENCE);
+            }
+        }
     }
 
-    public static final void q(i03 r3, i94 r4, i94 r5) {
-        i94 r0 = r5.l();
-        if (r0 == null) goto L9;
-        c72 r1 = r0.c;
-        if (r1 == null) goto L9;
-        if (r1.H() != true) goto L9;
-        wv3 r2 = r0.g();
-    L10:
-        int r6 = r5.f;
-        if (r6 != r4.f) goto L13;
-        r6 = -1;
-    L13:
-        r3.i(r6, new k94(r5, rr2.Q(r2)));
-        return;
-    L9:
-        r2 = f;
-        goto L10
+    public static final void q(i03 i03Var, i94 i94Var, i94 i94Var2) {
+        c72 c72Var;
+        i94 i94VarL = i94Var2.l();
+        wv3 wv3VarG = (i94VarL == null || (c72Var = i94VarL.c) == null || !c72Var.H()) ? f : i94VarL.g();
+        int i2 = i94Var2.f;
+        if (i2 == i94Var.f) {
+            i2 = -1;
+        }
+        i03Var.i(i2, new k94(i94Var2, rr2.Q(wv3VarG)));
     }
 
-    public static final void r(if1 r17, si1 r18, si1 r19, i03 r20, i94 r21, i94 r22) {
-        if1 r0 = r17;
-        i94 r4 = r21;
-        int r2 = r4.f;
-        Region r5 = (Region) r18.o;
-        si1 r7 = r19;
-        Region r8 = (Region) r7.o;
-        c72 r9 = r22.c;
-        e94 r10 = r22.d;
-        c72 r11 = r22.c;
-        int r12 = r22.f;
-        if (r9.H() == true) goto L5;
-    L8:
-        boolean r13 = true;
-    L10:
-        if (r8.isEmpty() == false) goto L12;
-        if (r12 == r2) goto L12;
-        return;
-    L12:
-        if (r13 == true) goto L14;
-    L16:
-        k02 r14 = rr2.Q(r22.m());
-        r18.L(r14);
-        if (r12 != r2) goto L20;
-        r12 = -1;
-    L20:
-        if (r5.op(r8, Region.Op.INTERSECT) == false) goto L90;
-        Rect r6 = r5.getBounds();
-        r20.i(r12, new k94(r22, new k02(r6.left, r6.top, r6.right, r6.bottom)));
-        List r15 = i94.j(4, r22);
-        if (r10.p == false) goto L77;
-        i94 r1 = r22.l();
-    L24:
-        if (r1 == null) goto L31;
-        w03 r16 = r1.d.n;
-        if (r16.c(n94.v) == true) goto L32;
-        if (r16.c(n94.u) == true) goto L32;
-        r1 = r1.l();
-    L32:
-        if (r1 == null) goto L55;
-        f63 r23 = r22.d();
-        if (r23 != null) goto L36;
-    L41:
-        r23 = null;
-    L42:
-        f63 r3 = r1.d();
-        if (r3 != null) goto L45;
-    L50:
-        r3 = null;
-    L51:
-        if (r23 == null) goto L55;
-        if (r3 == null) goto L55;
-        wv3 r24 = r3.C(r23, false);
-        boolean r25 = !r24.equals(r24.c(bu.d(0, l93.o0(r3.p))));
-    L56:
-        if (r25 == false) goto L77;
-        si1 r26 = new si1(23);
-        eo0 r27 = r22.f();
-        if (r27 != null) goto L60;
-        iz1 r28 = (iz1) r11.Q.d;
-        wv3 r29 = n(r28).C(r28, false);
-    L69:
-        r26.L(rr2.Q(r29));
-        int r110 = r15.size() - 1;
-    L71:
-        if ((-1) >= r110) goto L86;
-        if (((Boolean) r0.invoke(r15.get(r110))).booleanValue() == true) goto L76;
-        p(r0, new si1(23), r26, r20, r4, (i94) r15.get(r110));
-    L76:
-        r110 = r110 - 1;
-        r4 = r21;
-    L86:
-        if (I(r22) == false) goto L107;
-        r8.op(r14.a, r14.b, r14.c, r14.d, Region.Op.DIFFERENCE);
-        return;
-    L107:
-        return;
-    L60:
-        cx2 r30 = ((cx2) r27).n;
-        Object r31 = r10.n.g(d94.b);
-        if (r31 != null) goto L63;
-        Object r32 = null;
-    L64:
-        if (r32 == null) goto L67;
-        boolean r111 = true;
-    L68:
-        r29 = fu.s(r30, r111, false);
-        goto L69
-    L67:
-        r111 = false;
-        goto L68
-    L63:
-        r32 = r31;
-        goto L64
-    L45:
-        if (r3.A0().A == true) goto L48;
-        r3 = null;
-    L48:
-        if (r3 == null) goto L50;
-    L36:
-        if (r23.A0().A == true) goto L39;
-        r23 = null;
-    L39:
-        if (r23 == null) goto L41;
-    L55:
-        r25 = false;
-        goto L56
-    L31:
-        r1 = null;
-    L77:
-        int r112 = r15.size() - 1;
-    L79:
-        if ((-1) >= r112) goto L86;
-        if (((Boolean) r0.invoke(r15.get(r112))).booleanValue() == true) goto L84;
-        r(r0, r18, r7, r20, r21, (i94) r15.get(r112));
-    L84:
-        r112 = r112 - 1;
-        r0 = r17;
-        r7 = r19;
-        goto L79
-    L90:
-        if (r22.o() == false) goto L94;
-        q(r20, r21, r22);
-        return;
-    L94:
-        if (r12 != (-1)) goto L108;
-        Rect r33 = r5.getBounds();
-        r20.i(r12, new k94(r22, new k02(r33.left, r33.top, r33.right, r33.bottom)));
-        return;
-    L108:
-        return;
-    L14:
-        if (r22.o() == true) goto L16;
-        return;
-    L5:
-        if (r11.G() == false) goto L8;
-        r13 = false;
-        goto L10
+    /* JADX WARN: Code duplicated, block: B:41:0x00b0  */
+    /* JADX WARN: Code duplicated, block: B:50:0x00c4  */
+    /* JADX WARN: Code duplicated, block: B:55:0x00e6  */
+    /* JADX WARN: Code duplicated, block: B:77:0x015b  */
+    /* JADX WARN: Code duplicated, block: B:80:0x0165  */
+    /* JADX WARN: Code duplicated, block: B:82:0x0175  */
+    /* JADX WARN: Code duplicated, block: B:83:0x0178  */
+    public static final void r(if1 if1Var, si1 si1Var, si1 si1Var2, i03 i03Var, i94 i94Var, i94 i94Var2) {
+        int size;
+        boolean z;
+        wv3 wv3VarS;
+        if1 if1Var2 = if1Var;
+        i94 i94Var3 = i94Var;
+        int i2 = i94Var3.f;
+        Region region = (Region) si1Var.o;
+        si1 si1Var3 = si1Var2;
+        Region region2 = (Region) si1Var3.o;
+        c72 c72Var = i94Var2.c;
+        e94 e94Var = i94Var2.d;
+        c72 c72Var2 = i94Var2.c;
+        int i3 = i94Var2.f;
+        boolean z2 = (c72Var.H() && c72Var2.G()) ? false : true;
+        if (!region2.isEmpty() || i3 == i2) {
+            if (!z2 || i94Var2.o()) {
+                k02 k02VarQ = rr2.Q(i94Var2.m());
+                si1Var.L(k02VarQ);
+                if (i3 == i2) {
+                    i3 = -1;
+                }
+                if (!region.op(region2, Region.Op.INTERSECT)) {
+                    if (i94Var2.o()) {
+                        q(i03Var, i94Var, i94Var2);
+                        return;
+                    } else {
+                        if (i3 == -1) {
+                            Rect bounds = region.getBounds();
+                            i03Var.i(i3, new k94(i94Var2, new k02(bounds.left, bounds.top, bounds.right, bounds.bottom)));
+                            return;
+                        }
+                        return;
+                    }
+                }
+                Rect bounds2 = region.getBounds();
+                i03Var.i(i3, new k94(i94Var2, new k02(bounds2.left, bounds2.top, bounds2.right, bounds2.bottom)));
+                List listI = i94Var2.i((4 & 1) != 0 ? !i94Var2.b : false, (4 & 2) == 0);
+                if (e94Var.p) {
+                    i94 i94VarL = i94Var2.l();
+                    while (true) {
+                        if (i94VarL == null) {
+                            i94VarL = null;
+                            break;
+                        }
+                        w03 w03Var = i94VarL.d.n;
+                        if (w03Var.c(n94.v) || w03Var.c(n94.u)) {
+                            break;
+                        } else {
+                            i94VarL = i94VarL.l();
+                        }
+                    }
+                    if (i94VarL == null) {
+                        z = false;
+                    } else {
+                        f63 f63VarD = i94Var2.d();
+                        if (f63VarD == null) {
+                            f63VarD = null;
+                        } else {
+                            if (!f63VarD.A0().A) {
+                                f63VarD = null;
+                            }
+                            if (f63VarD == null) {
+                                f63VarD = null;
+                            }
+                        }
+                        f63 f63VarD2 = i94VarL.d();
+                        if (f63VarD2 == null) {
+                            f63VarD2 = null;
+                        } else {
+                            if (!f63VarD2.A0().A) {
+                                f63VarD2 = null;
+                            }
+                            if (f63VarD2 == null) {
+                                f63VarD2 = null;
+                            }
+                        }
+                        if (f63VarD == null || f63VarD2 == null) {
+                            z = false;
+                        } else {
+                            wv3 wv3VarC = f63VarD2.C(f63VarD, false);
+                            z = !wv3VarC.equals(wv3VarC.c(bu.d(0L, l93.o0(f63VarD2.p))));
+                        }
+                    }
+                    if (z) {
+                        si1 si1Var4 = new si1(23);
+                        eo0 eo0VarF = i94Var2.f();
+                        if (eo0VarF == null) {
+                            iz1 iz1Var = (iz1) c72Var2.Q.d;
+                            wv3VarS = n(iz1Var).C(iz1Var, false);
+                        } else {
+                            cx2 cx2Var = ((cx2) eo0VarF).n;
+                            Object objG = e94Var.n.g(d94.b);
+                            wv3VarS = fu.s(cx2Var, (objG == null ? null : objG) != null, false);
+                        }
+                        si1Var4.L(rr2.Q(wv3VarS));
+                        int size2 = listI.size() - 1;
+                        while (-1 < size2) {
+                            if (!((Boolean) if1Var2.invoke(listI.get(size2))).booleanValue()) {
+                                p(if1Var2, new si1(23), si1Var4, i03Var, i94Var3, (i94) listI.get(size2));
+                            }
+                            size2--;
+                            i94Var3 = i94Var;
+                        }
+                    } else {
+                        size = listI.size() - 1;
+                        while (-1 < size) {
+                            if (((Boolean) if1Var2.invoke(listI.get(size))).booleanValue()) {
+                                r(if1Var2, si1Var, si1Var3, i03Var, i94Var, (i94) listI.get(size));
+                            }
+                            size--;
+                            if1Var2 = if1Var;
+                            si1Var3 = si1Var2;
+                        }
+                    }
+                } else {
+                    size = listI.size() - 1;
+                    while (-1 < size) {
+                        if (((Boolean) if1Var2.invoke(listI.get(size))).booleanValue()) {
+                            r(if1Var2, si1Var, si1Var3, i03Var, i94Var, (i94) listI.get(size));
+                        }
+                        size--;
+                        if1Var2 = if1Var;
+                        si1Var3 = si1Var2;
+                    }
+                }
+                if (I(i94Var2)) {
+                    region2.op(k02VarQ.a, k02VarQ.b, k02VarQ.c, k02VarQ.d, Region.Op.DIFFERENCE);
+                }
+            }
+        }
     }
 
-    public static int w(int r1) {
-        if (r1 != 20) goto L5;
-        return 63750;
-    L5:
-        if (r1 == 30) goto L32;
-        switch(r1) {
-            case 5: goto L30;
-            case 6: goto L28;
-            case 7: goto L26;
-            case 8: goto L37;
-            case 9: goto L24;
-            case 10: goto L22;
-            case 11: goto L20;
-            case 12: goto L18;
-            default: goto L7;
-        };
-    L7:
-        switch(r1) {
-            case 14: goto L16;
-            case 15: goto L14;
-            case 16: goto L12;
-            case 17: goto L10;
-            case 18: goto L36;
-            default: goto L8;
-        };
-    L8:
-        return -2147483647;
-    L10:
-        return 336000;
-    L12:
-        return 256000;
-    L14:
-        return 8000;
-    L16:
-        return 3062500;
-    L36:
-        return 768000;
-    L18:
-        return 7000;
-    L20:
-        return 16000;
-    L22:
-        return 100000;
-    L24:
-        return 40000;
-    L26:
-        return 192000;
-    L28:
-        return 768000;
-    L30:
-        return 80000;
-    L37:
-        return 2250000;
-    L32:
-        return 2250000;
+    public static int w(int i2) {
+        if (i2 == 20) {
+            return 63750;
+        }
+        if (i2 == 30) {
+            return 2250000;
+        }
+        switch (i2) {
+            case 5:
+                return 80000;
+            case 6:
+                return 768000;
+            case 7:
+                return 192000;
+            case 8:
+                return 2250000;
+            case 9:
+                return 40000;
+            case 10:
+                return 100000;
+            case 11:
+                return 16000;
+            case 12:
+                return 7000;
+            default:
+                switch (i2) {
+                    case 14:
+                        return 3062500;
+                    case 15:
+                        return 8000;
+                    case WaveRetry.MAX_FAILURES /* 16 */:
+                        return 256000;
+                    case 17:
+                        return 336000;
+                    case 18:
+                        return 768000;
+                    default:
+                        return -2147483647;
+                }
+        }
     }
 
     public abstract int B();
 
-    public float D(View r1) {
-        if (i == false) goto L8;
-        return lm4.a(r1);
-    L6:
-        i = false;
-    L8:
-        return r1.getAlpha();
+    public float D(View view) {
+        if (i) {
+            try {
+                return view.getTransitionAlpha();
+            } catch (NoSuchMethodError unused) {
+                i = false;
+            }
+        }
+        return view.getAlpha();
     }
 
-    public abstract boolean G(float r1);
+    public abstract boolean G(float f2);
 
-    public abstract boolean J(View r1);
+    public abstract boolean J(View view);
 
-    public abstract boolean L(float r1, float r2);
+    public abstract boolean L(float f2, float f3);
 
-    public void R(View r1, float r2) {
-        if (i == true) goto L9;
-    L7:
-        r1.setAlpha(r2);
-        return;
-    L9:
-        lm4.r(r1, r2);     // Catch: NoSuchMethodError -> L6
-        return;
-    L6:
-        i = false;
-        goto L7
+    public void R(View view, float f2) {
+        if (i) {
+            try {
+                view.setTransitionAlpha(f2);
+                return;
+            } catch (NoSuchMethodError unused) {
+                i = false;
+            }
+        }
+        view.setAlpha(f2);
     }
 
-    public abstract boolean S(View r1, float r2);
+    public abstract boolean S(View view, float f2);
 
-    public abstract void T(ViewGroup.MarginLayoutParams r1, int r2);
+    public abstract void T(ViewGroup.MarginLayoutParams marginLayoutParams, int i2);
 
-    public abstract void U(ViewGroup.MarginLayoutParams r1, int r2, int r3);
+    public abstract void U(ViewGroup.MarginLayoutParams marginLayoutParams, int i2, int i3);
 
-    public abstract int e(ViewGroup.MarginLayoutParams r1);
+    public abstract int e(ViewGroup.MarginLayoutParams marginLayoutParams);
 
-    public abstract float f(int r1);
+    public abstract float f(int i2);
 
-    public abstract int s(ViewGroup.MarginLayoutParams r1);
+    public abstract int s(ViewGroup.MarginLayoutParams marginLayoutParams);
 
     public abstract int t();
 
@@ -991,7 +881,7 @@ public abstract class wr1 {
 
     public abstract int x();
 
-    public abstract int y(View r1);
+    public abstract int y(View view);
 
-    public abstract int z(CoordinatorLayout r1);
+    public abstract int z(CoordinatorLayout coordinatorLayout);
 }

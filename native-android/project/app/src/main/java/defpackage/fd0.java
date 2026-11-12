@@ -12,65 +12,67 @@ public final class fd0 extends ep4 implements wf1 {
     public final /* synthetic */ fv s;
     public final /* synthetic */ long t;
 
-    public fd0(gd0 r1, b25 r2, fv r3, long r4, vd0 r6) {
-        this.q = r1;
-        this.r = r2;
-        this.s = r3;
-        this.t = r4;
-        super(2, r6);
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public fd0(gd0 gd0Var, b25 b25Var, fv fvVar, long j, vd0 vd0Var) {
+        super(2, vd0Var);
+        this.q = gd0Var;
+        this.r = b25Var;
+        this.s = fvVar;
+        this.t = j;
     }
 
     @Override // defpackage.jp
-    public final vd0 create(Object r8, vd0 r9) {
-        fv r3 = this.s;
-        long r4 = this.t;
-        fd0 r0 = new fd0(this.q, this.r, r3, r4, r9);
-        r0.p = r8;
-        return r0;
+    public final vd0 create(Object obj, vd0 vd0Var) {
+        fd0 fd0Var = new fd0(this.q, this.r, this.s, this.t, vd0Var);
+        fd0Var.p = obj;
+        return fd0Var;
     }
 
     @Override // defpackage.wf1
-    public final Object invoke(Object r1, Object r2) {
-        return ((fd0) create((we0) r1, (vd0) r2)).invokeSuspend(j15.a);
+    public final Object invoke(Object obj, Object obj2) {
+        return ((fd0) create((we0) obj, (vd0) obj2)).invokeSuspend(j15.a);
     }
 
     @Override // defpackage.jp
-    public final Object invokeSuspend(Object r14) {
-        gd0 r2 = this.q;
-        zg5 r8 = r2.G;
-        int r0 = this.o;
-        if (r0 == 0) goto L13;
-        if (r0 != 1) goto L11;
-        kb4.X(r14);     // Catch: Throwable -> L7 CancellationException -> L9
-    L18:
-        r8.z();     // Catch: Throwable -> L7 CancellationException -> L9
-        r2.J = false;
-        r8.q(null);
-        r2.H = false;
-        return j15.a;
-    L11:
-        kf2.o("call to 'resume' before 'invoke' with coroutine");
-        return null;
-    L13:
-        kb4.X(r14);
-        s22 r6 = gb.D(((we0) this.p).e());
-        r2.J = true;     // Catch: Throwable -> L7 CancellationException -> L9
-        g74 r15 = r2.C;     // Catch: Throwable -> L7 CancellationException -> L9
-        h13 r12 = h13.n;     // Catch: Throwable -> L7 CancellationException -> L9
-        ed0 r1 = new ed0(this.r, r2, this.s, this.t, r6, null);     // Catch: Throwable -> L7 CancellationException -> L9
-        this.o = 1;     // Catch: Throwable -> L7 CancellationException -> L9
-        Object r13 = r15.g(r12, r1, this);     // Catch: Throwable -> L7 CancellationException -> L9
-        xe0 r16 = xe0.n;
-        if (r13 != r16) goto L18;
-        return r16;
-    L7:
-        th = move-exception;
-        r2.J = false;
-        r8.q(null);
-        r2.H = false;
-        throw th;
-    L9:
-        e = move-exception;
-        throw e;     // Catch: Throwable -> L7
+    public final Object invokeSuspend(Object obj) {
+        gd0 gd0Var = this.q;
+        zg5 zg5Var = gd0Var.G;
+        int i = this.o;
+        try {
+            try {
+                if (i == 0) {
+                    kb4.X(obj);
+                    s22 s22VarD = gb.D(((we0) this.p).e());
+                    gd0Var.J = true;
+                    g74 g74Var = gd0Var.C;
+                    h13 h13Var = h13.n;
+                    ed0 ed0Var = new ed0(this.r, gd0Var, this.s, this.t, s22VarD, null);
+                    this.o = 1;
+                    Object objG = g74Var.g(h13Var, ed0Var, this);
+                    xe0 xe0Var = xe0.n;
+                    if (objG == xe0Var) {
+                        return xe0Var;
+                    }
+                } else {
+                    if (i != 1) {
+                        kf2.o("call to 'resume' before 'invoke' with coroutine");
+                        return null;
+                    }
+                    kb4.X(obj);
+                }
+                zg5Var.z();
+                gd0Var.J = false;
+                zg5Var.q(null);
+                gd0Var.H = false;
+                return j15.a;
+            } catch (CancellationException e) {
+                throw e;
+            }
+        } catch (Throwable th) {
+            gd0Var.J = false;
+            zg5Var.q(null);
+            gd0Var.H = false;
+            throw th;
+        }
     }
 }

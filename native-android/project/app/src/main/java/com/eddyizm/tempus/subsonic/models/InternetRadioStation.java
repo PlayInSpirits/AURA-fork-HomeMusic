@@ -10,7 +10,7 @@ import defpackage.xj0;
 /* JADX INFO: loaded from: classes.dex */
 public final class InternetRadioStation implements Parcelable {
     public static final int $stable = 8;
-    public static final Parcelable.Creator<InternetRadioStation> CREATOR = null;
+    public static final Parcelable.Creator<InternetRadioStation> CREATOR = new hz0(11);
     private String coverArt;
 
     @ka4(alternate = {"homepageUrl"}, value = "homePageUrl")
@@ -20,30 +20,8 @@ public final class InternetRadioStation implements Parcelable {
     private String source;
     private String streamUrl;
 
-    static {
-        CREATOR = new hz0(11);
-    }
-
-    public /* synthetic */ InternetRadioStation(String r2, String r3, String r4, String r5, String r6, String r7, int r8, xj0 r9) {
-        if ((r8 & 1) == 0) goto L6;
-        r2 = null;
-    L6:
-        if ((r8 & 2) == 0) goto L9;
-        r3 = null;
-    L9:
-        if ((r8 & 4) == 0) goto L12;
-        r4 = null;
-    L12:
-        if ((r8 & 8) == 0) goto L15;
-        r5 = null;
-    L15:
-        if ((r8 & 16) == 0) goto L18;
-        r6 = null;
-    L18:
-        if ((r8 & 32) == 0) goto L20;
-        r7 = null;
-    L20:
-        this(r2, r3, r4, r5, r6, r7);
+    public /* synthetic */ InternetRadioStation(String str, String str2, String str3, String str4, String str5, String str6, int i, xj0 xj0Var) {
+        this((i & 1) != 0 ? null : str, (i & 2) != 0 ? null : str2, (i & 4) != 0 ? null : str3, (i & 8) != 0 ? null : str4, (i & 16) != 0 ? null : str5, (i & 32) != 0 ? null : str6);
     }
 
     @Override // android.os.Parcelable
@@ -75,57 +53,51 @@ public final class InternetRadioStation implements Parcelable {
         return this.streamUrl;
     }
 
-    public final void setCoverArt(String r1) {
-        this.coverArt = r1;
+    public final void setCoverArt(String str) {
+        this.coverArt = str;
     }
 
-    public final void setHomePageUrl(String r1) {
-        this.homePageUrl = r1;
+    public final void setHomePageUrl(String str) {
+        this.homePageUrl = str;
     }
 
-    public final void setId(String r1) {
-        this.id = r1;
+    public final void setId(String str) {
+        this.id = str;
     }
 
-    public final void setName(String r1) {
-        this.name = r1;
+    public final void setName(String str) {
+        this.name = str;
     }
 
-    public final void setSource(String r1) {
-        this.source = r1;
+    public final void setSource(String str) {
+        this.source = str;
     }
 
-    public final void setStreamUrl(String r1) {
-        this.streamUrl = r1;
+    public final void setStreamUrl(String str) {
+        this.streamUrl = str;
     }
 
     @Override // android.os.Parcelable
-    public final void writeToParcel(Parcel r1, int r2) {
-        r1.getClass();
-        r1.writeString(this.id);
-        r1.writeString(this.name);
-        r1.writeString(this.streamUrl);
-        r1.writeString(this.homePageUrl);
-        r1.writeString(this.coverArt);
-        r1.writeString(this.source);
+    public final void writeToParcel(Parcel parcel, int i) {
+        parcel.getClass();
+        parcel.writeString(this.id);
+        parcel.writeString(this.name);
+        parcel.writeString(this.streamUrl);
+        parcel.writeString(this.homePageUrl);
+        parcel.writeString(this.coverArt);
+        parcel.writeString(this.source);
     }
 
-    public InternetRadioStation(String r1, String r2, String r3, String r4, String r5, String r6) {
-        this.id = r1;
-        this.name = r2;
-        this.streamUrl = r3;
-        this.homePageUrl = r4;
-        this.coverArt = r5;
-        this.source = r6;
+    public InternetRadioStation(String str, String str2, String str3, String str4, String str5, String str6) {
+        this.id = str;
+        this.name = str2;
+        this.streamUrl = str3;
+        this.homePageUrl = str4;
+        this.coverArt = str5;
+        this.source = str6;
     }
 
     public InternetRadioStation() {
-        String r1 = null;
-        String r2 = null;
-        String r3 = null;
-        String r4 = null;
-        String r5 = null;
-        String r6 = null;
-        this(r1, r2, r3, r4, r5, r6, 63, null);
+        this(null, null, null, null, null, null, 63, null);
     }
 }

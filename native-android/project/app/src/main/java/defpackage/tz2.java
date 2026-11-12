@@ -12,10 +12,10 @@ public final class tz2 extends u1 implements vb2 {
     public final vb2 r;
     public final hg3 s;
 
-    public tz2(vb2 r1, hg3 r2) {
-        r1.getClass();
-        this.r = r1;
-        this.s = r2;
+    public tz2(vb2 vb2Var, hg3 hg3Var) {
+        vb2Var.getClass();
+        this.r = vb2Var;
+        this.s = hg3Var;
     }
 
     @Override // defpackage.qz2
@@ -39,9 +39,8 @@ public final class tz2 extends u1 implements vb2 {
     }
 
     @Override // defpackage.qz2
-    public final Collection get(Object r4) {
-        List r0 = (List) this.r.get(r4);
-        return hw.P(new rm3(this.s, r4, false), r0);
+    public final Collection get(Object obj) {
+        return hw.P(new rm3(this.s, obj, false), (List) this.r.get(obj));
     }
 
     @Override // defpackage.u1
@@ -50,8 +49,8 @@ public final class tz2 extends u1 implements vb2 {
     }
 
     @Override // defpackage.u1, defpackage.qz2
-    public final boolean remove(Object r1, Object r2) {
-        return get(r1).remove(r2);
+    public final boolean remove(Object obj, Object obj2) {
+        return get(obj).remove(obj2);
     }
 
     @Override // defpackage.qz2

@@ -8,32 +8,26 @@ import java.util.Arrays;
 public final class pz4 {
     public final TypeVariable a;
 
-    public pz4(TypeVariable r1) {
-        r1.getClass();
-        this.a = r1;
+    public pz4(TypeVariable typeVariable) {
+        typeVariable.getClass();
+        this.a = typeVariable;
     }
 
-    public final boolean a(TypeVariable r3) {
-        TypeVariable r2 = this.a;
-        if (r2.getGenericDeclaration().equals(r3.getGenericDeclaration()) == true) goto L5;
-        return false;
-    L5:
-        if (r2.getName().equals(r3.getName()) == false) goto L10;
-        return true;
-    L10:
-        return false;
+    public final boolean a(TypeVariable typeVariable) {
+        TypeVariable typeVariable2 = this.a;
+        return typeVariable2.getGenericDeclaration().equals(typeVariable.getGenericDeclaration()) && typeVariable2.getName().equals(typeVariable.getName());
     }
 
-    public final boolean equals(Object r2) {
-        if ((r2 instanceof pz4) == true) goto L5;
+    public final boolean equals(Object obj) {
+        if (obj instanceof pz4) {
+            return a(((pz4) obj).a);
+        }
         return false;
-    L5:
-        return a(((pz4) r2).a);
     }
 
     public final int hashCode() {
-        TypeVariable r1 = this.a;
-        return Arrays.hashCode(new Object[]{r1.getGenericDeclaration(), r1.getName()});
+        TypeVariable typeVariable = this.a;
+        return Arrays.hashCode(new Object[]{typeVariable.getGenericDeclaration(), typeVariable.getName()});
     }
 
     public final String toString() {

@@ -12,29 +12,30 @@ public final class ea0 extends q42 implements xf1 {
     public final /* synthetic */ boolean t;
     public final /* synthetic */ rm2 u;
 
-    public ea0(gr4 r1, int r2, int r3, int r4, int r5, boolean r6, boolean r7, rm2 r8) {
-        this.n = r1;
-        this.o = r2;
-        this.p = r3;
-        this.q = r4;
-        this.r = r5;
-        this.s = r6;
-        this.t = r7;
-        this.u = r8;
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public ea0(gr4 gr4Var, int i, int i2, int i3, int i4, boolean z, boolean z2, rm2 rm2Var) {
         super(3);
+        this.n = gr4Var;
+        this.o = i;
+        this.p = i2;
+        this.q = i3;
+        this.r = i4;
+        this.s = z;
+        this.t = z2;
+        this.u = rm2Var;
     }
 
     @Override // defpackage.xf1
-    public final Object a(Object r13, Object r14, Object r15) {
-        dv3 r2 = (dv3) r13;
-        f6 r9 = (f6) r14;
-        hy r11 = (hy) r15;
-        r2.getClass();
-        r9.getClass();
-        r11.getClass();
-        boolean r8 = this.t;
-        rm2 r10 = this.u;
-        gr4 r1 = this.n;
-        return new lr0(new hg3(18, new gv3(r1, r2, this.o, this.p, this.q, this.r, this.s, r8, r9, r10, r11)), r1);
+    public final Object a(Object obj, Object obj2, Object obj3) {
+        dv3 dv3Var = (dv3) obj;
+        f6 f6Var = (f6) obj2;
+        hy hyVar = (hy) obj3;
+        dv3Var.getClass();
+        f6Var.getClass();
+        hyVar.getClass();
+        boolean z = this.t;
+        rm2 rm2Var = this.u;
+        gr4 gr4Var = this.n;
+        return new lr0(new hg3(18, new gv3(gr4Var, dv3Var, this.o, this.p, this.q, this.r, this.s, z, f6Var, rm2Var, hyVar)), gr4Var);
     }
 }

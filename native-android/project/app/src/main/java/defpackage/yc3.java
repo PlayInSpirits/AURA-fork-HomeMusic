@@ -5,7 +5,7 @@ package defpackage;
 public final class yc3 implements bx2 {
     public final /* synthetic */ ad3 a;
 
-    public yc3(ad3 r1) {
-        this.a = r1;
+    public yc3(ad3 ad3Var) {
+        this.a = ad3Var;
     }
 }

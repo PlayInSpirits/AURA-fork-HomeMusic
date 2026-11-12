@@ -5,33 +5,33 @@ package defpackage;
 public abstract class bc1 extends cu4 {
     public final cu4 e;
 
-    public bc1(cu4 r1) {
-        this.e = r1;
+    public bc1(cu4 cu4Var) {
+        this.e = cu4Var;
     }
 
     @Override // defpackage.cu4
-    public final int a(boolean r1) {
-        return this.e.a(r1);
+    public final int a(boolean z) {
+        return this.e.a(z);
     }
 
     @Override // defpackage.cu4
-    public int b(Object r1) {
-        return this.e.b(r1);
+    public int b(Object obj) {
+        return this.e.b(obj);
     }
 
     @Override // defpackage.cu4
-    public final int c(boolean r1) {
-        return this.e.c(r1);
+    public final int c(boolean z) {
+        return this.e.c(z);
     }
 
     @Override // defpackage.cu4
-    public final int e(int r1, int r2, boolean r3) {
-        return this.e.e(r1, r2, r3);
+    public final int e(int i, int i2, boolean z) {
+        return this.e.e(i, i2, z);
     }
 
     @Override // defpackage.cu4
-    public zt4 f(int r1, zt4 r2, boolean r3) {
-        return this.e.f(r1, r2, r3);
+    public zt4 f(int i, zt4 zt4Var, boolean z) {
+        return this.e.f(i, zt4Var, z);
     }
 
     @Override // defpackage.cu4
@@ -40,18 +40,18 @@ public abstract class bc1 extends cu4 {
     }
 
     @Override // defpackage.cu4
-    public final int k(int r1, int r2, boolean r3) {
-        return this.e.k(r1, r2, r3);
+    public final int k(int i, int i2, boolean z) {
+        return this.e.k(i, i2, z);
     }
 
     @Override // defpackage.cu4
-    public Object l(int r1) {
-        return this.e.l(r1);
+    public Object l(int i) {
+        return this.e.l(i);
     }
 
     @Override // defpackage.cu4
-    public bu4 m(int r1, bu4 r2, long r3) {
-        return this.e.m(r1, r2, r3);
+    public bu4 m(int i, bu4 bu4Var, long j) {
+        return this.e.m(i, bu4Var, j);
     }
 
     @Override // defpackage.cu4

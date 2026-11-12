@@ -10,14 +10,15 @@ public final class dy2 extends wd0 {
     public final /* synthetic */ hy2 r;
     public int s;
 
-    public dy2(hy2 r1, wd0 r2) {
-        this.r = r1;
-        super(r2);
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public dy2(hy2 hy2Var, wd0 wd0Var) {
+        super(wd0Var);
+        this.r = hy2Var;
     }
 
     @Override // defpackage.jp
-    public final Object invokeSuspend(Object r7) {
-        this.q = r7;
+    public final Object invokeSuspend(Object obj) {
+        this.q = obj;
         this.s |= Integer.MIN_VALUE;
         return hy2.E(this.r, null, null, 0.0f, 0.0f, this);
     }

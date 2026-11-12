@@ -12,46 +12,44 @@ public final class fd2 {
     public final List b;
     public final String c;
 
-    public fd2(Class r1, Class r2, Class r3, List r4, io3 r5) {
-        this.a = r5;
-        if (r4.isEmpty() == true) goto L6;
-        this.b = r4;
-        this.c = "Failed LoadPath{" + r1.getSimpleName() + "->" + r2.getSimpleName() + "->" + r3.getSimpleName() + "}";
-        return;
-    L6:
-        kf2.n("Must not be empty.");
-        throw null;
+    public fd2(Class cls, Class cls2, Class cls3, List list, io3 io3Var) {
+        this.a = io3Var;
+        if (list.isEmpty()) {
+            kf2.n("Must not be empty.");
+            throw null;
+        }
+        this.b = list;
+        this.c = "Failed LoadPath{" + cls.getSimpleName() + "->" + cls2.getSimpleName() + "->" + cls3.getSimpleName() + "}";
     }
 
-    public final q04 a(int r14, int r15, x7 r16, yh0 r17, db3 r18) {
-        io3 r1 = this.a;
-        Object r0 = r1.b();
-        h12.f(r0, "Argument must not be null");
-        List r2 = (List) r0;
-        List r3 = this.b;     // Catch: Throwable -> L19
-        int r4 = r3.size();     // Catch: Throwable -> L19
-        int r6 = 0;
-        q04 r5 = null;
-    L4:
-        if (r6 >= r4) goto L14;
-        r5 = ((yi0) r3.get(r6)).a(r14, r15, r16, r17, r18);     // Catch: GlideException -> L9 Throwable -> L19
-    L11:
-        if (r5 != null) goto L14;
-        r6 = r6 + 1;
-        goto L4
-    L9:
-        e = move-exception;
-        r2.add(e);     // Catch: Throwable -> L19
-    L14:
-        if (r5 == null) goto L18;
-        r1.a(r2);
-        return r5;
-    L18:
-        throw new GlideException(this.c, new ArrayList(r2));     // Catch: Throwable -> L19
-    L19:
-        th = move-exception;
-        r1.a(r2);
-        throw th;
+    public final q04 a(int i, int i2, x7 x7Var, yh0 yh0Var, db3 db3Var) {
+        io3 io3Var = this.a;
+        Object objB = io3Var.b();
+        h12.f(objB, "Argument must not be null");
+        List list = (List) objB;
+        try {
+            List list2 = this.b;
+            int size = list2.size();
+            q04 q04VarA = null;
+            for (int i3 = 0; i3 < size; i3++) {
+                try {
+                    q04VarA = ((yi0) list2.get(i3)).a(i, i2, x7Var, yh0Var, db3Var);
+                } catch (GlideException e) {
+                    list.add(e);
+                }
+                if (q04VarA != null) {
+                    break;
+                }
+            }
+            if (q04VarA == null) {
+                throw new GlideException(this.c, new ArrayList(list));
+            }
+            io3Var.a(list);
+            return q04VarA;
+        } catch (Throwable th) {
+            io3Var.a(list);
+            throw th;
+        }
     }
 
     public final String toString() {

@@ -5,9 +5,9 @@ package defpackage;
 public final class ox2 extends n0 implements Runnable {
     public final Runnable u;
 
-    public ox2(Runnable r1) {
-        r1.getClass();
-        this.u = r1;
+    public ox2(Runnable runnable) {
+        runnable.getClass();
+        this.u = runnable;
     }
 
     @Override // defpackage.u0
@@ -17,11 +17,11 @@ public final class ox2 extends n0 implements Runnable {
 
     @Override // java.lang.Runnable
     public final void run() {
-        this.u.run();     // Catch: Throwable -> L4
-        return;
-    L4:
-        th = move-exception;
-        m(th);
-        throw th;
+        try {
+            this.u.run();
+        } catch (Throwable th) {
+            m(th);
+            throw th;
+        }
     }
 }

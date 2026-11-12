@@ -14,10 +14,10 @@ public final class au1 extends fh0 {
     }
 
     @Override // defpackage.fh0
-    public final int r(byte[] r1, int r2, int r3) {
-        if (r3 != 0) goto L5;
-        return 0;
-    L5:
+    public final int r(byte[] bArr, int i, int i2) {
+        if (i2 == 0) {
+            return 0;
+        }
         kf2.o("Cannot read in this state");
         return 0;
     }

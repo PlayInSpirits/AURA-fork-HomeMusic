@@ -12,13 +12,13 @@ public final class ee3 extends h11 {
     public EditText f;
     public final p6 g;
 
-    public ee3(g11 r2, int r3) {
-        super(r2);
+    public ee3(g11 g11Var, int i) {
+        super(g11Var);
         this.e = R.drawable.design_password_eye;
         this.g = new p6(28, this);
-        if (r3 == 0) goto L6;
-        this.e = r3;
-        return;
+        if (i != 0) {
+            this.e = i;
+        }
     }
 
     @Override // defpackage.h11
@@ -48,45 +48,31 @@ public final class ee3 extends h11 {
 
     @Override // defpackage.h11
     public final boolean k() {
-        EditText r1 = this.f;
-        if (r1 != null) goto L5;
-    L7:
-        boolean r2 = false;
-    L9:
-        return !r2;
-    L5:
-        if ((r1.getTransformationMethod() instanceof PasswordTransformationMethod) == false) goto L7;
-        r2 = true;
-        goto L9
+        EditText editText = this.f;
+        return !(editText != null && (editText.getTransformationMethod() instanceof PasswordTransformationMethod));
     }
 
     @Override // defpackage.h11
-    public final void l(EditText r1) {
-        this.f = r1;
+    public final void l(EditText editText) {
+        this.f = editText;
         p();
     }
 
     @Override // defpackage.h11
     public final void q() {
-        EditText r0 = this.f;
-        if (r0 != null) goto L5;
-        return;
-    L5:
-        if (r0.getInputType() != 16) goto L7;
-    L12:
-        this.f.setTransformationMethod(PasswordTransformationMethod.getInstance());
-        return;
-    L7:
-        if (r0.getInputType() == 128) goto L12;
-        if (r0.getInputType() == 144) goto L12;
-        if (r0.getInputType() == 224) goto L12;
+        EditText editText = this.f;
+        if (editText != null) {
+            if (editText.getInputType() == 16 || editText.getInputType() == 128 || editText.getInputType() == 144 || editText.getInputType() == 224) {
+                this.f.setTransformationMethod(PasswordTransformationMethod.getInstance());
+            }
+        }
     }
 
     @Override // defpackage.h11
     public final void r() {
-        EditText r1 = this.f;
-        if (r1 == null) goto L6;
-        r1.setTransformationMethod(PasswordTransformationMethod.getInstance());
-        return;
+        EditText editText = this.f;
+        if (editText != null) {
+            editText.setTransformationMethod(PasswordTransformationMethod.getInstance());
+        }
     }
 }

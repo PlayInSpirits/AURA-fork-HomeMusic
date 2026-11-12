@@ -5,18 +5,18 @@ package defpackage;
 public final class ni3 {
     public final w71 a;
 
-    public ni3(w71 r1) {
-        this.a = r1;
+    public ni3(w71 w71Var) {
+        this.a = w71Var;
     }
 
-    public final boolean equals(Object r2) {
-        if (this != r2) goto L6;
-        return true;
-    L6:
-        if ((r2 instanceof ni3) == true) goto L10;
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj instanceof ni3) {
+            return this.a.equals(((ni3) obj).a);
+        }
         return false;
-    L10:
-        return this.a.equals(((ni3) r2).a);
     }
 
     public final int hashCode() {

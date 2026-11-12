@@ -8,129 +8,108 @@ public final class h03 {
     public int[] a;
     public int b;
 
-    public h03(int r1) {
-        if (r1 != 0) goto L5;
-        int[] r2 = m02.a;
-    L6:
-        this.a = r2;
-        return;
-    L5:
-        r2 = new int[r1];
-        goto L6
+    public h03(int i) {
+        this.a = i == 0 ? m02.a : new int[i];
     }
 
-    public final void a(int r4) {
-        int r0 = this.b + 1;
-        int[] r1 = this.a;
-        if (r1.length >= r0) goto L5;
-        this.a = Arrays.copyOf(r1, Math.max(r0, (r1.length * 3) / 2));
-    L5:
-        int[] r2 = this.a;
-        int r3 = this.b;
-        r2[r3] = r4;
-        this.b = r3 + 1;
+    public final void a(int i) {
+        int i2 = this.b + 1;
+        int[] iArr = this.a;
+        if (iArr.length < i2) {
+            this.a = Arrays.copyOf(iArr, Math.max(i2, (iArr.length * 3) / 2));
+        }
+        int[] iArr2 = this.a;
+        int i3 = this.b;
+        iArr2[i3] = i;
+        this.b = i3 + 1;
     }
 
-    public final int b(int r2) {
-        if (r2 >= 0) goto L4;
-    L7:
+    public final int b(int i) {
+        if (i >= 0 && i < this.b) {
+            return this.a[i];
+        }
         kf2.h("Index must be between 0 and size");
         return 0;
-    L4:
-        if (r2 >= this.b) goto L7;
-        return this.a[r2];
     }
 
-    public final void c(int r4) {
-        if (r4 < 0) goto L10;
-        int r0 = this.b;
-        if (r4 >= r0) goto L10;
-        int[] r1 = this.a;
-        int r2 = r1[r4];
-        if (r4 == (r0 - 1)) goto L8;
-        ti.Y(r4, r4 + 1, r0, r1, r1);
-    L8:
+    public final void c(int i) {
+        int i2;
+        if (i < 0 || i >= (i2 = this.b)) {
+            kf2.h("Index must be between 0 and size");
+            return;
+        }
+        int[] iArr = this.a;
+        int i3 = iArr[i];
+        if (i != i2 - 1) {
+            ti.Y(i, i + 1, i2, iArr, iArr);
+        }
         this.b--;
-        return;
-    L10:
-        kf2.h("Index must be between 0 and size");
     }
 
-    public final void d(int r2, int r3) {
-        if (r2 >= 0) goto L4;
-    L7:
-        kf2.h("Index must be between 0 and size");
-        return;
-    L4:
-        if (r2 >= this.b) goto L7;
-        int[] r1 = this.a;
-        int r0 = r1[r2];
-        r1[r2] = r3;
+    public final void d(int i, int i2) {
+        if (i < 0 || i >= this.b) {
+            kf2.h("Index must be between 0 and size");
+            return;
+        }
+        int[] iArr = this.a;
+        int i3 = iArr[i];
+        iArr[i] = i2;
     }
 
-    public final boolean equals(Object r6) {
-        if ((r6 instanceof h03) == false) goto L16;
-        h03 r7 = (h03) r6;
-        int r0 = r7.b;
-        int r2 = this.b;
-        if (r0 != r2) goto L16;
-        int[] r5 = this.a;
-        int[] r8 = r7.a;
-        j02 r1 = gb.g0(0, r2);
-        int r3 = r1.n;
-        int r4 = r1.o;
-        if (r3 <= r4) goto L10;
-        return true;
-    L10:
-        if (r5[r3] != r8[r3]) goto L11;
-        if (r3 == r4) goto L19;
-        r3 = r3 + 1;
-        goto L10
-    L19:
-        return true;
-    L11:
-        return false;
-    L16:
+    public final boolean equals(Object obj) {
+        if (obj instanceof h03) {
+            h03 h03Var = (h03) obj;
+            int i = h03Var.b;
+            int i2 = this.b;
+            if (i == i2) {
+                int[] iArr = this.a;
+                int[] iArr2 = h03Var.a;
+                j02 j02VarG0 = gb.g0(0, i2);
+                int i3 = j02VarG0.n;
+                int i4 = j02VarG0.o;
+                if (i3 > i4) {
+                    return true;
+                }
+                while (iArr[i3] == iArr2[i3]) {
+                    if (i3 == i4) {
+                        return true;
+                    }
+                    i3++;
+                }
+                return false;
+            }
+        }
         return false;
     }
 
     public final int hashCode() {
-        int[] r0 = this.a;
-        int r4 = this.b;
-        int r1 = 0;
-        int r2 = 0;
-    L3:
-        if (r1 >= r4) goto L5;
-        r2 = r2 + (Integer.hashCode(r0[r1]) * 31);
-        r1 = r1 + 1;
-        goto L3
-    L5:
-        return r2;
+        int[] iArr = this.a;
+        int i = this.b;
+        int iHashCode = 0;
+        for (int i2 = 0; i2 < i; i2++) {
+            iHashCode += Integer.hashCode(iArr[i2]) * 31;
+        }
+        return iHashCode;
     }
 
     public final String toString() {
-        StringBuilder r0 = new StringBuilder();
-        r0.append("[");
-        int[] r1 = this.a;
-        int r5 = this.b;
-        int r2 = 0;
-    L3:
-        if (r2 >= r5) goto L10;
-        int r3 = r1[r2];
-        if (r2 == (-1)) goto L6;
-        if (r2 == 0) goto L9;
-        r0.append(", ");
-    L9:
-        r0.append(r3);
-        r2 = r2 + 1;
-        goto L3
-    L6:
-        r0.append("...");
-    L12:
-        return r0.toString();
-    L10:
-        r0.append("]");
-        goto L12
+        StringBuilder sb = new StringBuilder();
+        sb.append((CharSequence) "[");
+        int[] iArr = this.a;
+        int i = this.b;
+        for (int i2 = 0; i2 < i; i2++) {
+            int i3 = iArr[i2];
+            if (i2 == -1) {
+                sb.append((CharSequence) "...");
+                return sb.toString();
+            }
+            if (i2 != 0) {
+                sb.append((CharSequence) ", ");
+            }
+            sb.append(i3);
+        }
+        sb.append((CharSequence) "]");
+        return sb.toString();
     }
 
     public /* synthetic */ h03() {

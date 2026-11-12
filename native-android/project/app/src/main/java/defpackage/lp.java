@@ -15,95 +15,67 @@ public final class lp {
     public final byte[] g;
     public final boolean h;
 
-    public lp(String r4, char[] r5, byte[] r6, boolean r7) {
-        this.a = r4;
-        r5.getClass();
-        this.b = r5;
-        int r8 = r5.length;     // Catch: ArithmeticException -> L10
-        RoundingMode r0 = RoundingMode.UNNECESSARY;     // Catch: ArithmeticException -> L10
-        int r9 = h12.F(r8);     // Catch: ArithmeticException -> L10
-        this.d = r9;     // Catch: ArithmeticException -> L10
-        int r1 = Integer.numberOfTrailingZeros(r9);
-        int r2 = 1 << (3 - r1);
-        this.e = r2;
-        this.f = r9 >> r1;
-        this.c = r5.length - 1;
-        this.g = r6;
-        boolean[] r10 = new boolean[r2];
-        int r11 = 0;
-    L6:
-        if (r11 >= this.f) goto L8;
-        int r3 = this.d;
-        RoundingMode r12 = RoundingMode.CEILING;
-        r10[h12.m(r11 * 8, r3)] = true;
-        r11 = r11 + 1;
-        goto L6
-    L8:
-        this.h = r7;
-        return;
-    L10:
-        e = move-exception;
-        throw new IllegalArgumentException("Illegal alphabet length " + r5.length, e);
+    public lp(String str, char[] cArr, byte[] bArr, boolean z) {
+        this.a = str;
+        cArr.getClass();
+        this.b = cArr;
+        try {
+            int length = cArr.length;
+            RoundingMode roundingMode = RoundingMode.UNNECESSARY;
+            int iF = h12.F(length);
+            this.d = iF;
+            int iNumberOfTrailingZeros = Integer.numberOfTrailingZeros(iF);
+            int i = 1 << (3 - iNumberOfTrailingZeros);
+            this.e = i;
+            this.f = iF >> iNumberOfTrailingZeros;
+            this.c = cArr.length - 1;
+            this.g = bArr;
+            boolean[] zArr = new boolean[i];
+            for (int i2 = 0; i2 < this.f; i2++) {
+                int i3 = this.d;
+                RoundingMode roundingMode2 = RoundingMode.CEILING;
+                zArr[h12.m(i2 * 8, i3)] = true;
+            }
+            this.h = z;
+        } catch (ArithmeticException e) {
+            throw new IllegalArgumentException("Illegal alphabet length " + cArr.length, e);
+        }
     }
 
-    public final boolean equals(Object r3) {
-        if ((r3 instanceof lp) == false) goto L10;
-        lp r4 = (lp) r3;
-        if (this.h == r4.h) goto L7;
-        return false;
-    L7:
-        if (Arrays.equals(this.b, r4.b) == false) goto L13;
-        return true;
-    L13:
-        return false;
-    L10:
-        return false;
+    public final boolean equals(Object obj) {
+        if (!(obj instanceof lp)) {
+            return false;
+        }
+        lp lpVar = (lp) obj;
+        return this.h == lpVar.h && Arrays.equals(this.b, lpVar.b);
     }
 
     public final int hashCode() {
-        int r0 = Arrays.hashCode(this.b);
-        if (this.h == false) goto L5;
-        int r1 = 1231;
-    L7:
-        return r0 + r1;
-    L5:
-        r1 = 1237;
-        goto L7
+        return Arrays.hashCode(this.b) + (this.h ? 1231 : 1237);
     }
 
     public final String toString() {
         return this.a;
     }
 
-    public lp(String r10, char[] r11) {
-        byte[] r1 = new byte[128];
-        Arrays.fill(r1, (byte) -1);
-        int r4 = 0;
-    L4:
-        if (r4 >= r11.length) goto L21;
-        char r5 = r11[r4];
-        boolean r6 = true;
-        if (r5 >= 128) goto L8;
-        boolean r7 = true;
-    L10:
-        if (r7 == false) goto L19;
-        if (r1[r5] == (-1)) goto L15;
-        r6 = false;
-    L15:
-        if (r6 == false) goto L17;
-        r1[r5] = (byte) r4;
-        r4 = r4 + 1;
-        goto L4
-    L17:
-        kf2.n(gh0.s("Duplicate character: %s", new Object[]{Character.valueOf(r5)}));
-        throw null;
-    L19:
-        kf2.n(gh0.s("Non-ASCII character: %s", new Object[]{Character.valueOf(r5)}));
-        throw null;
-    L8:
-        r7 = false;
-        goto L10
-    L21:
-        this(r10, r11, r1, false);
+    /* JADX WARN: Illegal instructions before constructor call */
+    public lp(String str, char[] cArr) {
+        byte[] bArr = new byte[128];
+        Arrays.fill(bArr, (byte) -1);
+        for (int i = 0; i < cArr.length; i++) {
+            char c = cArr[i];
+            if (c < 128) {
+                if (bArr[c] == -1) {
+                    bArr[c] = (byte) i;
+                } else {
+                    kf2.n(gh0.s("Duplicate character: %s", Character.valueOf(c)));
+                    throw null;
+                }
+            } else {
+                kf2.n(gh0.s("Non-ASCII character: %s", Character.valueOf(c)));
+                throw null;
+            }
+        }
+        this(str, cArr, bArr, false);
     }
 }

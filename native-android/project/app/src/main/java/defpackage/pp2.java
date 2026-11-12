@@ -21,98 +21,89 @@ public final class pp2 extends ArrayAdapter {
     public final float n;
     public final /* synthetic */ qp2 o;
 
-    public pp2(qp2 r1, Context r2, ArrayList r3) {
-        this.o = r1;
-        super(r2, 0, r3);
-        this.n = fu.v(r2);
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public pp2(qp2 qp2Var, Context context, ArrayList arrayList) {
+        super(context, 0, arrayList);
+        this.o = qp2Var;
+        this.n = fu.v(context);
     }
 
+    /* JADX WARN: Code duplicated, block: B:24:0x00b4  */
     @Override // android.widget.ArrayAdapter, android.widget.Adapter
-    public final View getView(int r10, View r11, ViewGroup r12) {
-        int r2 = 0;
-        qp2 r3 = this.o;
-        if (r11 != null) goto L5;
-        r11 = b11.i(r12, R.layout.mr_controller_volume_item, r12, false);
-    L6:
-        wq2 r13 = (wq2) getItem(r10);
-        if (r13 == null) goto L37;
-        boolean r4 = r13.g;
-        TextView r5 = (TextView) r11.findViewById(R.id.mr_name);
-        r5.setEnabled(r4);
-        r5.setText(r13.d);
-        MediaRouteVolumeSlider r6 = (MediaRouteVolumeSlider) r11.findViewById(R.id.mr_volume_slider);
-        Context r14 = r12.getContext();
-        OverlayListView r7 = r3.R;
-        int r15 = fu.u(r14, 0);
-        int r8 = 255;
-        if (Color.alpha(r15) == 255) goto L11;
-        r15 = v50.g(r15, ((Integer) r7.getTag()).intValue());
-    L11:
-        r6.a(r15, r15);
-        r6.setTag(r13);
-        r3.e0.put(r13, r6);
-        r6.b(!r4);
-        r6.setEnabled(r4);
-        if (r4 == true) goto L14;
-    L25:
-        ImageView r0 = (ImageView) r11.findViewById(R.id.mr_volume_item_icon);
-        if (r4 == true) goto L29;
-        r8 = (int) (this.n * 255.0f);
-    L29:
-        r0.setAlpha(r8);
-        LinearLayout r9 = (LinearLayout) r11.findViewById(R.id.volume_item_container);
-        if (r3.W.contains(r13) == false) goto L32;
-        r2 = 4;
-    L32:
-        r9.setVisibility(r2);
-        HashSet r16 = r3.U;
-        if (r16 == null) goto L37;
-        if (r16.contains(r13) == false) goto L37;
-        AlphaAnimation r17 = new AlphaAnimation(0.0f, 0.0f);
-        r17.setDuration(0);
-        r17.setFillEnabled(true);
-        r17.setFillAfter(true);
-        r11.clearAnimation();
-        r11.startAnimation(r17);
-        goto L37
-    L14:
-        if (r3.L == true) goto L16;
-    L24:
-        r6.setMax(100);
-        r6.setProgress(100);
-        r6.setEnabled(false);
-        goto L25
-    L16:
-        if (r13.e() == true) goto L18;
-    L21:
-        int r18 = r13.o;
-    L22:
-        if (r18 != 1) goto L24;
-        r6.setMax(r13.q);
-        r6.setProgress(r13.p);
-        r6.setOnSeekBarChangeListener(r3.Y);
-        goto L25
-    L18:
-        if (yq2.c != null) goto L20;
-        r18 = 0;
-        goto L22
-    L20:
-        yq2.c().getClass();
-    L37:
-        return r11;
-    L5:
-        qp2.r((LinearLayout) r11.findViewById(R.id.volume_item_container), r3.b0);
-        View r19 = r11.findViewById(R.id.mr_volume_item_icon);
-        ViewGroup.LayoutParams r20 = r19.getLayoutParams();
-        int r21 = r3.a0;
-        r20.width = r21;
-        r20.height = r21;
-        r19.setLayoutParams(r20);
-        goto L6
+    public final View getView(int i, View view, ViewGroup viewGroup) {
+        int i2;
+        qp2 qp2Var = this.o;
+        if (view == null) {
+            view = b11.i(viewGroup, R.layout.mr_controller_volume_item, viewGroup, false);
+        } else {
+            qp2.r((LinearLayout) view.findViewById(R.id.volume_item_container), qp2Var.b0);
+            View viewFindViewById = view.findViewById(R.id.mr_volume_item_icon);
+            ViewGroup.LayoutParams layoutParams = viewFindViewById.getLayoutParams();
+            int i3 = qp2Var.a0;
+            layoutParams.width = i3;
+            layoutParams.height = i3;
+            viewFindViewById.setLayoutParams(layoutParams);
+        }
+        wq2 wq2Var = (wq2) getItem(i);
+        if (wq2Var != null) {
+            boolean z = wq2Var.g;
+            TextView textView = (TextView) view.findViewById(R.id.mr_name);
+            textView.setEnabled(z);
+            textView.setText(wq2Var.d);
+            MediaRouteVolumeSlider mediaRouteVolumeSlider = (MediaRouteVolumeSlider) view.findViewById(R.id.mr_volume_slider);
+            Context context = viewGroup.getContext();
+            OverlayListView overlayListView = qp2Var.R;
+            int iU = fu.u(context, 0);
+            if (Color.alpha(iU) != 255) {
+                iU = v50.g(iU, ((Integer) overlayListView.getTag()).intValue());
+            }
+            mediaRouteVolumeSlider.a(iU, iU);
+            mediaRouteVolumeSlider.setTag(wq2Var);
+            qp2Var.e0.put(wq2Var, mediaRouteVolumeSlider);
+            mediaRouteVolumeSlider.b(!z);
+            mediaRouteVolumeSlider.setEnabled(z);
+            if (z) {
+                if (qp2Var.L) {
+                    if (!wq2Var.e()) {
+                        i2 = wq2Var.o;
+                    } else if (yq2.c == null) {
+                        i2 = 0;
+                    } else {
+                        yq2.c().getClass();
+                        i2 = wq2Var.o;
+                    }
+                    if (i2 == 1) {
+                        mediaRouteVolumeSlider.setMax(wq2Var.q);
+                        mediaRouteVolumeSlider.setProgress(wq2Var.p);
+                        mediaRouteVolumeSlider.setOnSeekBarChangeListener(qp2Var.Y);
+                    } else {
+                        mediaRouteVolumeSlider.setMax(100);
+                        mediaRouteVolumeSlider.setProgress(100);
+                        mediaRouteVolumeSlider.setEnabled(false);
+                    }
+                } else {
+                    mediaRouteVolumeSlider.setMax(100);
+                    mediaRouteVolumeSlider.setProgress(100);
+                    mediaRouteVolumeSlider.setEnabled(false);
+                }
+            }
+            ((ImageView) view.findViewById(R.id.mr_volume_item_icon)).setAlpha(z ? 255 : (int) (this.n * 255.0f));
+            ((LinearLayout) view.findViewById(R.id.volume_item_container)).setVisibility(qp2Var.W.contains(wq2Var) ? 4 : 0);
+            HashSet hashSet = qp2Var.U;
+            if (hashSet != null && hashSet.contains(wq2Var)) {
+                AlphaAnimation alphaAnimation = new AlphaAnimation(0.0f, 0.0f);
+                alphaAnimation.setDuration(0L);
+                alphaAnimation.setFillEnabled(true);
+                alphaAnimation.setFillAfter(true);
+                view.clearAnimation();
+                view.startAnimation(alphaAnimation);
+            }
+        }
+        return view;
     }
 
     @Override // android.widget.BaseAdapter, android.widget.ListAdapter
-    public final boolean isEnabled(int r1) {
+    public final boolean isEnabled(int i) {
         return false;
     }
 }

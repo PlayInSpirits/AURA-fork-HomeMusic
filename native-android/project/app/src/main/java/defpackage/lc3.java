@@ -5,17 +5,17 @@ package defpackage;
 public final class lc3 {
     public final ue1 a;
 
-    public lc3(yf1 r3, if1 r4, int r5) {
-        ue1 r0 = new ue1();
-        wo0 r1 = new wo0(r4, r3);
-        if (r5 >= 0) goto L6;
-        fz1.a("size should be >=0");
-    L6:
-        if (r5 == 0) goto L9;
-        f12 r6 = new f12(r0.o, r5, r1);
-        r0.o += r5;
-        ((f13) r0.p).b(r6);
-    L9:
-        this.a = r0;
+    public lc3(yf1 yf1Var, if1 if1Var, int i) {
+        ue1 ue1Var = new ue1();
+        wo0 wo0Var = new wo0(if1Var, yf1Var);
+        if (i < 0) {
+            fz1.a("size should be >=0");
+        }
+        if (i != 0) {
+            f12 f12Var = new f12(ue1Var.o, i, wo0Var);
+            ue1Var.o += i;
+            ((f13) ue1Var.p).b(f12Var);
+        }
+        this.a = ue1Var;
     }
 }

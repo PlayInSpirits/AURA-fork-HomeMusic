@@ -8,8 +8,8 @@ public final class r63 extends rp {
     public CharSequence b;
 
     @Override // defpackage.rp
-    public final void c(gc r2) {
-        new Notification.BigTextStyle((Notification.Builder) r2.b).setBigContentTitle(null).bigText(this.b);
+    public final void c(gc gcVar) {
+        new Notification.BigTextStyle((Notification.Builder) gcVar.b).setBigContentTitle(null).bigText(this.b);
     }
 
     @Override // defpackage.rp

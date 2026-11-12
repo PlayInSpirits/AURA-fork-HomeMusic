@@ -42,73 +42,57 @@ public final class HubLikedSong {
     @ka4("track_no")
     private Integer track;
 
-    public HubLikedSong() {
-    }
-
-    public final Child child(String r46, long r47) {
-        r46.getClass();
-        String r1 = this.songId;
-        if (r1 != null) goto L5;
-    L7:
-        String r5 = null;
-    L8:
-        String r2 = this.coverUrl;
-        if (r2 != null) goto L11;
-        r2 = null;
-    L14:
-        if (r5 == null) goto L16;
-        boolean r3 = false;
-        Integer r44 = null;
-        Child r4 = new Child(r5, null, false, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, false, null, null, null, null, null, null, null, null, null, null, null, null, null, null, -2, 7, null);
-    L19:
-        r4.setTitle(this.title);
-        r4.setArtist(this.artist);
-        r4.setAlbum(this.album);
-        r4.setAlbumId(this.albumId);
-        r4.setArtistId(this.artistId);
-        if (r5 == null) goto L26;
-        String r6 = this.coverUrl;
-        if (r6 == null) goto L26;
-        if (xm4.k0(r6, "/api/nd/cover/", r3) != true) goto L26;
-        String r7 = this.coverUrl;
-        r7.getClass();
-        r2 = URLDecoder.decode(qm4.H0(qm4.F0(r7, "/api/nd/cover/"), '?'), StandardCharsets.UTF_8.name());
-    L26:
-        r4.setCoverArtId(r2);
-        Double r8 = this.duration;
-        if (r8 == null) goto L29;
-        Integer r9 = Integer.valueOf((int) r8.doubleValue());
-    L30:
-        r4.setDuration(r9);
-        r4.setTrack(this.track);
-        r4.setDiscNumber(this.disc);
-        r4.setStarred(new Date(r47));
-        return r4;
-    L29:
-        r9 = r44;
-        goto L30
-    L16:
-        r3 = false;
-        r44 = null;
-        ConcurrentHashMap r10 = ot1.a;
-        HubTracks$Item r11 = new HubTracks$Item();
-        r11.setRef(this.ref);
-        r11.setTitle(this.title);
-        r11.setArtist(this.artist);
-        r11.setAlbum(this.album);
-        r11.setCoverUrl(r2);
-        r11.setDurationS(this.duration);
-        r4 = ot1.b(r11);
-        if (r4 != null) goto L19;
-        return null;
-    L11:
-        if (xm4.k0(r2, "/", false) == false) goto L14;
-        r2 = qm4.L0(r46, new char[]{'/'}) + r2;
-        goto L14
-    L5:
-        if (qm4.u0(r1) == true) goto L7;
-        r5 = r1;
-        goto L8
+    public final Child child(String str, long j) {
+        boolean z;
+        Integer num;
+        Child childB;
+        String str2;
+        str.getClass();
+        String str3 = this.songId;
+        String str4 = (str3 == null || qm4.u0(str3)) ? null : str3;
+        String strDecode = this.coverUrl;
+        if (strDecode == null) {
+            strDecode = null;
+        } else if (xm4.k0(strDecode, "/", false)) {
+            strDecode = qm4.L0(str, '/') + strDecode;
+        }
+        if (str4 != null) {
+            z = false;
+            num = null;
+            childB = new Child(str4, null, false, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, false, null, null, null, null, null, null, null, null, null, null, null, null, null, null, -2, 7, null);
+        } else {
+            z = false;
+            num = null;
+            ConcurrentHashMap concurrentHashMap = ot1.a;
+            HubTracks$Item hubTracks$Item = new HubTracks$Item();
+            hubTracks$Item.setRef(this.ref);
+            hubTracks$Item.setTitle(this.title);
+            hubTracks$Item.setArtist(this.artist);
+            hubTracks$Item.setAlbum(this.album);
+            hubTracks$Item.setCoverUrl(strDecode);
+            hubTracks$Item.setDurationS(this.duration);
+            childB = ot1.b(hubTracks$Item);
+            if (childB == null) {
+                return null;
+            }
+        }
+        childB.setTitle(this.title);
+        childB.setArtist(this.artist);
+        childB.setAlbum(this.album);
+        childB.setAlbumId(this.albumId);
+        childB.setArtistId(this.artistId);
+        if (str4 != null && (str2 = this.coverUrl) != null && xm4.k0(str2, "/api/nd/cover/", z)) {
+            String str5 = this.coverUrl;
+            str5.getClass();
+            strDecode = URLDecoder.decode(qm4.H0(qm4.F0(str5, "/api/nd/cover/"), '?'), StandardCharsets.UTF_8.name());
+        }
+        childB.setCoverArtId(strDecode);
+        Double d = this.duration;
+        childB.setDuration(d != null ? Integer.valueOf((int) d.doubleValue()) : num);
+        childB.setTrack(this.track);
+        childB.setDiscNumber(this.disc);
+        childB.setStarred(new Date(j));
+        return childB;
     }
 
     public final String getAlbum() {
@@ -155,47 +139,47 @@ public final class HubLikedSong {
         return this.track;
     }
 
-    public final void setAlbum(String r1) {
-        this.album = r1;
+    public final void setAlbum(String str) {
+        this.album = str;
     }
 
-    public final void setAlbumId(String r1) {
-        this.albumId = r1;
+    public final void setAlbumId(String str) {
+        this.albumId = str;
     }
 
-    public final void setArtist(String r1) {
-        this.artist = r1;
+    public final void setArtist(String str) {
+        this.artist = str;
     }
 
-    public final void setArtistId(String r1) {
-        this.artistId = r1;
+    public final void setArtistId(String str) {
+        this.artistId = str;
     }
 
-    public final void setCoverUrl(String r1) {
-        this.coverUrl = r1;
+    public final void setCoverUrl(String str) {
+        this.coverUrl = str;
     }
 
-    public final void setDisc(Integer r1) {
-        this.disc = r1;
+    public final void setDisc(Integer num) {
+        this.disc = num;
     }
 
-    public final void setDuration(Double r1) {
-        this.duration = r1;
+    public final void setDuration(Double d) {
+        this.duration = d;
     }
 
-    public final void setRef(String r1) {
-        this.ref = r1;
+    public final void setRef(String str) {
+        this.ref = str;
     }
 
-    public final void setSongId(String r1) {
-        this.songId = r1;
+    public final void setSongId(String str) {
+        this.songId = str;
     }
 
-    public final void setTitle(String r1) {
-        this.title = r1;
+    public final void setTitle(String str) {
+        this.title = str;
     }
 
-    public final void setTrack(Integer r1) {
-        this.track = r1;
+    public final void setTrack(Integer num) {
+        this.track = num;
     }
 }

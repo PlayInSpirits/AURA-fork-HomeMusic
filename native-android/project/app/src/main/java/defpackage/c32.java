@@ -5,16 +5,14 @@ package defpackage;
 public final class c32 extends uc0 {
     public final /* synthetic */ uc0 p;
 
-    public c32(uc0 r1, uc0 r2) {
-        this.p = r1;
-        super(r2);
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public c32(uc0 uc0Var, uc0 uc0Var2) {
+        super(uc0Var2);
+        this.p = uc0Var;
     }
 
     @Override // defpackage.uc0
-    public final CharSequence c(Object r1) {
-        if (r1 != null) goto L6;
-        return "null";
-    L6:
-        return this.p.c(r1);
+    public final CharSequence c(Object obj) {
+        return obj == null ? "null" : this.p.c(obj);
     }
 }

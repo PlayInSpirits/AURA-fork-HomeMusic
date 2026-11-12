@@ -6,10 +6,11 @@ public final class rg extends vb1 {
     public final /* synthetic */ yg w;
     public final /* synthetic */ bh x;
 
-    public rg(bh r1, bh r2, yg r3) {
-        this.x = r1;
-        this.w = r3;
-        super(r2);
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public rg(bh bhVar, bh bhVar2, yg ygVar) {
+        super(bhVar2);
+        this.x = bhVar;
+        this.w = ygVar;
     }
 
     @Override // defpackage.vb1
@@ -19,11 +20,11 @@ public final class rg extends vb1 {
 
     @Override // defpackage.vb1
     public final boolean c() {
-        bh r2 = this.x;
-        if (r2.getInternalPopup().b() == true) goto L7;
-        r2.s.n(r2.getTextDirection(), r2.getTextAlignment());
-        return true;
-    L7:
+        bh bhVar = this.x;
+        if (bhVar.getInternalPopup().b()) {
+            return true;
+        }
+        bhVar.s.n(bhVar.getTextDirection(), bhVar.getTextAlignment());
         return true;
     }
 }

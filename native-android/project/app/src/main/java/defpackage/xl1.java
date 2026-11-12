@@ -6,17 +6,14 @@ public final class xl1 implements k51 {
     public final k51 a;
     public final boolean b;
 
-    public xl1(int r3) {
-        boolean r0 = true;
-        if ((r3 & 1) != 0) goto L6;
-        r0 = false;
-    L6:
-        this.b = r0;
-        if (r0 == false) goto L10;
-        this.a = new df4("image/heif", -1, -1);
-        return;
-    L10:
-        this.a = new wl1();
+    public xl1(int i) {
+        boolean z = (i & 1) != 0;
+        this.b = z;
+        if (z) {
+            this.a = new df4("image/heif", -1, -1);
+        } else {
+            this.a = new wl1();
+        }
     }
 
     @Override // defpackage.k51
@@ -25,25 +22,22 @@ public final class xl1 implements k51 {
     }
 
     @Override // defpackage.k51
-    public final int b(l51 r1, t71 r2) {
-        return this.a.b(r1, r2);
+    public final int b(l51 l51Var, t71 t71Var) {
+        return this.a.b(l51Var, t71Var);
     }
 
     @Override // defpackage.k51
-    public final boolean c(l51 r2) {
-        if (this.b == false) goto L7;
-        return ji2.S((rk0) r2, false);
-    L7:
-        return this.a.c(r2);
+    public final boolean c(l51 l51Var) {
+        return this.b ? ji2.S((rk0) l51Var, false) : this.a.c(l51Var);
     }
 
     @Override // defpackage.k51
-    public final void d(long r1, long r3) {
-        this.a.d(r1, r3);
+    public final void d(long j, long j2) {
+        this.a.d(j, j2);
     }
 
     @Override // defpackage.k51
-    public final void f(m51 r1) {
-        this.a.f(r1);
+    public final void f(m51 m51Var) {
+        this.a.f(m51Var);
     }
 }

@@ -10,63 +10,60 @@ import android.view.TextureView;
 public final class am2 implements SurfaceHolder.Callback, TextureView.SurfaceTextureListener {
     public final /* synthetic */ bm2 n;
 
-    public am2(bm2 r1) {
-        this.n = r1;
+    public am2(bm2 bm2Var) {
+        this.n = bm2Var;
     }
 
     @Override // android.view.TextureView.SurfaceTextureListener
-    public final void onSurfaceTextureAvailable(SurfaceTexture r1, int r2, int r3) {
+    public final void onSurfaceTextureAvailable(SurfaceTexture surfaceTexture, int i, int i2) {
     }
 
     @Override // android.view.TextureView.SurfaceTextureListener
-    public final boolean onSurfaceTextureDestroyed(SurfaceTexture r1) {
+    public final boolean onSurfaceTextureDestroyed(SurfaceTexture surfaceTexture) {
         return true;
     }
 
     @Override // android.view.TextureView.SurfaceTextureListener
-    public final void onSurfaceTextureSizeChanged(SurfaceTexture r1, int r2, int r3) {
+    public final void onSurfaceTextureSizeChanged(SurfaceTexture surfaceTexture, int i, int i2) {
     }
 
     @Override // android.view.TextureView.SurfaceTextureListener
-    public final void onSurfaceTextureUpdated(SurfaceTexture r1) {
+    public final void onSurfaceTextureUpdated(SurfaceTexture surfaceTexture) {
     }
 
     @Override // android.view.SurfaceHolder.Callback
-    public final void surfaceChanged(SurfaceHolder r2, int r3, int r4, int r5) {
-        bm2 r6 = this.n;
-        if (r6.B == r2) goto L5;
-        return;
-    L5:
-        if (r6.Y() == false) goto L13;
-        cb4 r7 = r6.n;
-        r7.getClass();
-        if (r7.a.f() < 8) goto L10;
-        r6.c1(new zl2(r4, r5, this));
-    L10:
-        r6.p1(r4, r5);
-        return;
+    public final void surfaceChanged(SurfaceHolder surfaceHolder, int i, int i2, int i3) {
+        bm2 bm2Var = this.n;
+        if (bm2Var.B == surfaceHolder && bm2Var.Y()) {
+            cb4 cb4Var = bm2Var.n;
+            cb4Var.getClass();
+            if (cb4Var.a.f() >= 8) {
+                bm2Var.c1(new zl2(i2, i3, this));
+            }
+            bm2Var.p1(i2, i3);
+        }
     }
 
     @Override // android.view.SurfaceHolder.Callback
-    public final void surfaceCreated(SurfaceHolder r4) {
-        bm2 r3 = this.n;
-        if (r3.B == r4) goto L5;
-        return;
-    L5:
-        r3.A = r4.getSurface();
-        Rect r5 = r4.getSurfaceFrame();
-        r3.z1(r3.A, r5.width(), r5.height());
-        r3.p1(r5.width(), r5.height());
+    public final void surfaceCreated(SurfaceHolder surfaceHolder) {
+        bm2 bm2Var = this.n;
+        if (bm2Var.B != surfaceHolder) {
+            return;
+        }
+        bm2Var.A = surfaceHolder.getSurface();
+        Rect surfaceFrame = surfaceHolder.getSurfaceFrame();
+        bm2Var.z1(bm2Var.A, surfaceFrame.width(), surfaceFrame.height());
+        bm2Var.p1(surfaceFrame.width(), surfaceFrame.height());
     }
 
     @Override // android.view.SurfaceHolder.Callback
-    public final void surfaceDestroyed(SurfaceHolder r2) {
-        bm2 r1 = this.n;
-        if (r1.B == r2) goto L5;
-        return;
-    L5:
-        r1.A = null;
-        r1.z1(null, 0, 0);
-        r1.p1(0, 0);
+    public final void surfaceDestroyed(SurfaceHolder surfaceHolder) {
+        bm2 bm2Var = this.n;
+        if (bm2Var.B != surfaceHolder) {
+            return;
+        }
+        bm2Var.A = null;
+        bm2Var.z1(null, 0, 0);
+        bm2Var.p1(0, 0);
     }
 }

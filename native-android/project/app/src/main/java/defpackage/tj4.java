@@ -10,22 +10,21 @@ import app.homemusic.R;
 public final class tj4 extends pz1 {
     public final fe0 p;
 
-    public tj4(df r2) {
-        super(24, r2);
-        this.p = new fe0(this, r2);
+    public tj4(df dfVar) {
+        super(24, dfVar);
+        this.p = new fe0(this, dfVar);
     }
 
     @Override // defpackage.pz1
     public final void v() {
-        df r0 = (df) this.o;
-        Resources.Theme r1 = r0.getTheme();
-        r1.getClass();
-        TypedValue r2 = new TypedValue();
-        if (r1.resolveAttribute(R.attr.postSplashScreenTheme, r2, true) == false) goto L7;
-        int r3 = r2.resourceId;
-        if (r3 == 0) goto L7;
-        r0.setTheme(r3);
-    L7:
-        ((ViewGroup) r0.getWindow().getDecorView()).setOnHierarchyChangeListener(this.p);
+        int i;
+        df dfVar = (df) this.o;
+        Resources.Theme theme = dfVar.getTheme();
+        theme.getClass();
+        TypedValue typedValue = new TypedValue();
+        if (theme.resolveAttribute(R.attr.postSplashScreenTheme, typedValue, true) && (i = typedValue.resourceId) != 0) {
+            dfVar.setTheme(i);
+        }
+        ((ViewGroup) dfVar.getWindow().getDecorView()).setOnHierarchyChangeListener(this.p);
     }
 }

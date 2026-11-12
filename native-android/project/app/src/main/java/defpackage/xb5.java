@@ -7,10 +7,10 @@ public final class xb5 implements wb5 {
     public final jz1 c;
     public final jz1 d;
 
-    public xb5(String r2) {
-        this.b = r2;
-        this.c = new jz1(r2);
-        this.d = new jz1(r2.concat(" maximum"));
+    public xb5(String str) {
+        this.b = str;
+        this.c = new jz1(str);
+        this.d = new jz1(str.concat(" maximum"));
     }
 
     public final String toString() {

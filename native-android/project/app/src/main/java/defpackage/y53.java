@@ -4,19 +4,19 @@ package defpackage;
 /* JADX INFO: loaded from: classes.dex */
 public final class y53 implements mx {
     @Override // defpackage.mx
-    public final void a(se4 r1, long r2) {
+    public final void a(se4 se4Var, long j) {
     }
 
     @Override // defpackage.mx
-    public final void b(se4 r1, te4 r2) {
+    public final void b(se4 se4Var, te4 te4Var) {
     }
 
     @Override // defpackage.mx
-    public final void c(se4 r1, te4 r2, te4 r3) {
+    public final void c(se4 se4Var, te4 te4Var, te4 te4Var2) {
     }
 
     @Override // defpackage.mx
-    public final void d(te4 r1) {
+    public final void d(te4 te4Var) {
     }
 
     @Override // defpackage.mx

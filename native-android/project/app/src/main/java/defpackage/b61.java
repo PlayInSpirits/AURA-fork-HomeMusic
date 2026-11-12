@@ -11,24 +11,20 @@ public final class b61 implements Map.Entry, x32 {
     public b61 q;
     public boolean r;
 
-    public b61(aa2 r1, da2 r2) {
-        this.n = r1;
-        this.o = r2;
+    public b61(aa2 aa2Var, da2 da2Var) {
+        this.n = aa2Var;
+        this.o = da2Var;
     }
 
     @Override // java.util.Map.Entry
-    public final boolean equals(Object r5) {
-        if (this != r5) goto L6;
-        return true;
-    L6:
-        if ((r5 instanceof b61) == false) goto L10;
-        b61 r6 = (b61) r5;
-        if (h12.c(this.n, r6.n) == false) goto L10;
-        if (this.o == r6.o) goto L14;
-        return false;
-    L14:
-        return true;
-    L10:
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj instanceof b61) {
+            b61 b61Var = (b61) obj;
+            return h12.c(this.n, b61Var.n) && this.o == b61Var.o;
+        }
         return false;
     }
 
@@ -44,19 +40,12 @@ public final class b61 implements Map.Entry, x32 {
 
     @Override // java.util.Map.Entry
     public final int hashCode() {
-        Object r0 = this.n;
-        if (r0 != null) goto L5;
-        int r1 = 0;
-    L6:
-        int r2 = this.o.hashCode();
-        return r2 + (r1 * 31);
-    L5:
-        r1 = r0.hashCode();
-        goto L6
+        Object obj = this.n;
+        return this.o.hashCode() + ((obj == null ? 0 : obj.hashCode()) * 31);
     }
 
     @Override // java.util.Map.Entry
-    public final Object setValue(Object r1) {
+    public final Object setValue(Object obj) {
         throw new UnsupportedOperationException("Operation is not supported for read-only collection");
     }
 

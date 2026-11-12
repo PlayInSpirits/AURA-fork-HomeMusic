@@ -20,7 +20,7 @@ import java.util.WeakHashMap;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public abstract class er extends FrameLayout {
-    public static final dr y = null;
+    public static final dr y = new dr(0);
     public fr n;
     public final bc4 o;
     public int p;
@@ -33,72 +33,59 @@ public abstract class er extends FrameLayout {
     public Rect w;
     public boolean x;
 
-    static {
-        y = new dr(0);
-    }
-
-    public er(Context r5, AttributeSet r6) {
-        super(su3.H(r5, r6, 0, 0), r6);
-        Context r7 = getContext();
-        TypedArray r1 = r7.obtainStyledAttributes(r6, ht3.T);
-        if (r1.hasValue(6) == false) goto L5;
-        float r2 = r1.getDimensionPixelSize(6, 0);
-        WeakHashMap r3 = j65.a;
-        setElevation(r2);
-    L5:
-        this.p = r1.getInt(2, 0);
-        if (r1.hasValue(8) == false) goto L8;
-    L9:
-        this.o = bc4.c(r7, r6, 0, 0).a();
-    L10:
-        this.q = r1.getFloat(3, 1.0f);
-        setBackgroundTintList(h12.s(r7, r1, 4));
-        setBackgroundTintMode(vr1.B(r1.getInt(5, -1), PorterDuff.Mode.SRC_IN));
-        this.r = r1.getFloat(1, 1.0f);
-        this.s = r1.getDimensionPixelSize(0, -1);
-        this.t = r1.getDimensionPixelSize(7, -1);
-        r1.recycle();
+    public er(Context context, AttributeSet attributeSet) {
+        Drawable drawable;
+        super(su3.H(context, attributeSet, 0, 0), attributeSet);
+        Context context2 = getContext();
+        TypedArray typedArrayObtainStyledAttributes = context2.obtainStyledAttributes(attributeSet, ht3.T);
+        if (typedArrayObtainStyledAttributes.hasValue(6)) {
+            float dimensionPixelSize = typedArrayObtainStyledAttributes.getDimensionPixelSize(6, 0);
+            WeakHashMap weakHashMap = j65.a;
+            setElevation(dimensionPixelSize);
+        }
+        this.p = typedArrayObtainStyledAttributes.getInt(2, 0);
+        if (typedArrayObtainStyledAttributes.hasValue(8) || typedArrayObtainStyledAttributes.hasValue(9)) {
+            this.o = bc4.c(context2, attributeSet, 0, 0).a();
+        }
+        this.q = typedArrayObtainStyledAttributes.getFloat(3, 1.0f);
+        setBackgroundTintList(h12.s(context2, typedArrayObtainStyledAttributes, 4));
+        setBackgroundTintMode(vr1.B(typedArrayObtainStyledAttributes.getInt(5, -1), PorterDuff.Mode.SRC_IN));
+        this.r = typedArrayObtainStyledAttributes.getFloat(1, 1.0f);
+        this.s = typedArrayObtainStyledAttributes.getDimensionPixelSize(0, -1);
+        this.t = typedArrayObtainStyledAttributes.getDimensionPixelSize(7, -1);
+        typedArrayObtainStyledAttributes.recycle();
         setOnTouchListener(y);
         setFocusable(true);
-        if (getBackground() != null) goto L21;
-        int r8 = g12.H(g12.t(this, R.attr.colorSurface), getBackgroundOverlayColorAlpha(), g12.t(this, R.attr.colorOnSurface));
-        bc4 r9 = this.o;
-        if (r9 == null) goto L15;
-        a61 r0 = fr.w;
-        fi2 r4 = new fi2(r9);
-        r4.m(ColorStateList.valueOf(r8));
-        Drawable r10 = r4;
-    L16:
-        ColorStateList r11 = this.u;
-        if (r11 == null) goto L19;
-        r10.setTintList(r11);
-    L19:
-        WeakHashMap r12 = j65.a;
-        setBackground(r10);
-        return;
-    L15:
-        Resources r13 = getResources();
-        a61 r14 = fr.w;
-        float r15 = r13.getDimension(R.dimen.mtrl_snackbar_background_corner_radius);
-        GradientDrawable r16 = new GradientDrawable();
-        r16.setShape(0);
-        r16.setCornerRadius(r15);
-        r16.setColor(r8);
-        r10 = r16;
-        goto L16
-    L21:
-        return;
-    L8:
-        if (r1.hasValue(9) == false) goto L10;
-        goto L9
+        if (getBackground() == null) {
+            int iH = g12.H(g12.t(this, R.attr.colorSurface), getBackgroundOverlayColorAlpha(), g12.t(this, R.attr.colorOnSurface));
+            bc4 bc4Var = this.o;
+            if (bc4Var != null) {
+                a61 a61Var = fr.w;
+                fi2 fi2Var = new fi2(bc4Var);
+                fi2Var.m(ColorStateList.valueOf(iH));
+                drawable = fi2Var;
+            } else {
+                Resources resources = getResources();
+                a61 a61Var2 = fr.w;
+                float dimension = resources.getDimension(R.dimen.mtrl_snackbar_background_corner_radius);
+                GradientDrawable gradientDrawable = new GradientDrawable();
+                gradientDrawable.setShape(0);
+                gradientDrawable.setCornerRadius(dimension);
+                gradientDrawable.setColor(iH);
+                drawable = gradientDrawable;
+            }
+            ColorStateList colorStateList = this.u;
+            if (colorStateList != null) {
+                drawable.setTintList(colorStateList);
+            }
+            WeakHashMap weakHashMap2 = j65.a;
+            setBackground(drawable);
+        }
     }
 
-    public static /* synthetic */ void a(er r0, fr r1) {
-        r0.setBaseTransientBottomBar(r1);
-    }
-
-    private void setBaseTransientBottomBar(fr r1) {
-        this.n = r1;
+    /* JADX INFO: Access modifiers changed from: private */
+    public void setBaseTransientBottomBar(fr frVar) {
+        this.n = frVar;
     }
 
     public float getActionTextColorAlpha() {
@@ -123,160 +110,123 @@ public abstract class er extends FrameLayout {
 
     @Override // android.view.ViewGroup, android.view.View
     public final void onAttachedToWindow() {
+        WindowInsets rootWindowInsets;
         super.onAttachedToWindow();
-        fr r0 = this.n;
-        if (r0 != null) goto L5;
-    L9:
-        WeakHashMap r1 = j65.a;
+        fr frVar = this.n;
+        if (frVar != null && Build.VERSION.SDK_INT >= 29 && (rootWindowInsets = frVar.i.getRootWindowInsets()) != null) {
+            frVar.r = rootWindowInsets.getMandatorySystemGestureInsets().bottom;
+            frVar.g();
+        }
+        WeakHashMap weakHashMap = j65.a;
         requestApplyInsets();
-        return;
-    L5:
-        if (Build.VERSION.SDK_INT < 29) goto L9;
-        WindowInsets r2 = r0.i.getRootWindowInsets();
-        if (r2 == null) goto L9;
-        r0.r = yj1.v(z9.f(r2));
-        r0.g();
-        goto L9
     }
 
+    /* JADX WARN: Code duplicated, block: B:15:0x002b  */
     @Override // android.view.ViewGroup, android.view.View
     public final void onDetachedFromWindow() {
+        int i;
+        boolean z;
         super.onDetachedFromWindow();
-        fr r5 = this.n;
-        if (r5 == null) goto L23;
-        na4 r0 = na4.z();
-        br r1 = r5.v;
-        Object r2 = r0.n;
-        monitor-enter(r2);
-        int r4 = 1;
-        if (r0.G(r1) == true) goto L15;
-        rg4 r3 = (rg4) r0.q;     // Catch: Throwable -> L20
-        boolean r6 = false;
-        if (r3 != null) goto L11;
-    L13:
-        boolean r7 = false;
-    L14:
-        if (r7 == true) goto L15;
-    L16:
-        monitor-exit(r2);     // Catch: Throwable -> L20
-        if (r6 == false) goto L26;
-        fr.z.post(new zq(r5, r4));
-        return;
-    L26:
-        return;
-    L11:
-        if (r3.a.get() != r1) goto L13;
-        r7 = true;
-    L15:
-        r6 = true;
-    L20:
-        th = move-exception;
-        throw th;
+        fr frVar = this.n;
+        if (frVar != null) {
+            na4 na4VarZ = na4.z();
+            br brVar = frVar.v;
+            synchronized (na4VarZ.n) {
+                i = 1;
+                if (!na4VarZ.G(brVar)) {
+                    rg4 rg4Var = (rg4) na4VarZ.q;
+                    z = rg4Var != null && rg4Var.a.get() == brVar;
+                }
+            }
+            if (z) {
+                fr.z.post(new zq(frVar, i));
+            }
+        }
     }
 
     @Override // android.widget.FrameLayout, android.view.ViewGroup, android.view.View
-    public final void onLayout(boolean r1, int r2, int r3, int r4, int r5) {
-        super.onLayout(r1, r2, r3, r4, r5);
-        fr r0 = this.n;
-        if (r0 != null) goto L5;
-        return;
-    L5:
-        if (r0.t == false) goto L9;
-        r0.f();
-        r0.t = false;
-        return;
+    public final void onLayout(boolean z, int i, int i2, int i3, int i4) {
+        super.onLayout(z, i, i2, i3, i4);
+        fr frVar = this.n;
+        if (frVar == null || !frVar.t) {
+            return;
+        }
+        frVar.f();
+        frVar.t = false;
     }
 
     @Override // android.widget.FrameLayout, android.view.View
-    public void onMeasure(int r2, int r3) {
-        super.onMeasure(r2, r3);
-        int r4 = this.s;
-        if (r4 > 0) goto L5;
-        return;
-    L5:
-        if (getMeasuredWidth() <= r4) goto L9;
-        super.onMeasure(View.MeasureSpec.makeMeasureSpec(r4, 1073741824), r3);
-        return;
+    public void onMeasure(int i, int i2) {
+        super.onMeasure(i, i2);
+        int i3 = this.s;
+        if (i3 <= 0 || getMeasuredWidth() <= i3) {
+            return;
+        }
+        super.onMeasure(View.MeasureSpec.makeMeasureSpec(i3, 1073741824), i2);
     }
 
-    public void setAnimationMode(int r1) {
-        this.p = r1;
-    }
-
-    @Override // android.view.View
-    public void setBackground(Drawable r1) {
-        setBackgroundDrawable(r1);
+    public void setAnimationMode(int i) {
+        this.p = i;
     }
 
     @Override // android.view.View
-    public void setBackgroundDrawable(Drawable r2) {
-        if (r2 != null) goto L4;
-    L6:
-        super.setBackgroundDrawable(r2);
-        return;
-    L4:
-        if (this.u == null) goto L6;
-        r2 = r2.mutate();
-        r2.setTintList(this.u);
-        r2.setTintMode(this.v);
-        goto L6
+    public void setBackground(Drawable drawable) {
+        setBackgroundDrawable(drawable);
     }
 
     @Override // android.view.View
-    public void setBackgroundTintList(ColorStateList r2) {
-        this.u = r2;
-        if (getBackground() == null) goto L8;
-        Drawable r0 = getBackground().mutate();
-        r0.setTintList(r2);
-        r0.setTintMode(this.v);
-        if (r0 == getBackground()) goto L9;
-        super.setBackgroundDrawable(r0);
-        return;
-    L9:
-        return;
+    public void setBackgroundDrawable(Drawable drawable) {
+        if (drawable != null && this.u != null) {
+            drawable = drawable.mutate();
+            drawable.setTintList(this.u);
+            drawable.setTintMode(this.v);
+        }
+        super.setBackgroundDrawable(drawable);
     }
 
     @Override // android.view.View
-    public void setBackgroundTintMode(PorterDuff.Mode r2) {
-        this.v = r2;
-        if (getBackground() == null) goto L8;
-        Drawable r0 = getBackground().mutate();
-        r0.setTintMode(r2);
-        if (r0 == getBackground()) goto L9;
-        super.setBackgroundDrawable(r0);
-        return;
-    L9:
-        return;
+    public void setBackgroundTintList(ColorStateList colorStateList) {
+        this.u = colorStateList;
+        if (getBackground() != null) {
+            Drawable drawableMutate = getBackground().mutate();
+            drawableMutate.setTintList(colorStateList);
+            drawableMutate.setTintMode(this.v);
+            if (drawableMutate != getBackground()) {
+                super.setBackgroundDrawable(drawableMutate);
+            }
+        }
     }
 
     @Override // android.view.View
-    public void setLayoutParams(ViewGroup.LayoutParams r5) {
-        super.setLayoutParams(r5);
-        if (this.x == false) goto L5;
-        return;
-    L5:
-        if ((r5 instanceof ViewGroup.MarginLayoutParams) == false) goto L11;
-        ViewGroup.MarginLayoutParams r6 = (ViewGroup.MarginLayoutParams) r5;
-        this.w = new Rect(r6.leftMargin, r6.topMargin, r6.rightMargin, r6.bottomMargin);
-        fr r4 = this.n;
-        if (r4 == null) goto L12;
-        a61 r7 = fr.w;
-        r4.g();
-        return;
-    L12:
-        return;
+    public void setBackgroundTintMode(PorterDuff.Mode mode) {
+        this.v = mode;
+        if (getBackground() != null) {
+            Drawable drawableMutate = getBackground().mutate();
+            drawableMutate.setTintMode(mode);
+            if (drawableMutate != getBackground()) {
+                super.setBackgroundDrawable(drawableMutate);
+            }
+        }
     }
 
     @Override // android.view.View
-    public void setOnClickListener(View.OnClickListener r2) {
-        if (r2 == null) goto L4;
-        dr r0 = null;
-    L5:
-        setOnTouchListener(r0);
-        super.setOnClickListener(r2);
-        return;
-    L4:
-        r0 = y;
-        goto L5
+    public void setLayoutParams(ViewGroup.LayoutParams layoutParams) {
+        super.setLayoutParams(layoutParams);
+        if (this.x || !(layoutParams instanceof ViewGroup.MarginLayoutParams)) {
+            return;
+        }
+        ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) layoutParams;
+        this.w = new Rect(marginLayoutParams.leftMargin, marginLayoutParams.topMargin, marginLayoutParams.rightMargin, marginLayoutParams.bottomMargin);
+        fr frVar = this.n;
+        if (frVar != null) {
+            a61 a61Var = fr.w;
+            frVar.g();
+        }
+    }
+
+    @Override // android.view.View
+    public void setOnClickListener(View.OnClickListener onClickListener) {
+        setOnTouchListener(onClickListener != null ? null : y);
+        super.setOnClickListener(onClickListener);
     }
 }

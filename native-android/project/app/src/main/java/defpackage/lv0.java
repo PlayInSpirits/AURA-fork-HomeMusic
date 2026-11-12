@@ -10,120 +10,123 @@ public final class lv0 implements q81 {
     public final /* synthetic */ Object o;
     public final /* synthetic */ Object p;
 
-    public /* synthetic */ lv0(int r1, Object r2, Object r3) {
-        this.n = r1;
-        this.o = r2;
-        this.p = r3;
+    public /* synthetic */ lv0(int i, Object obj, Object obj2) {
+        this.n = i;
+        this.o = obj;
+        this.p = obj2;
     }
 
+    /* JADX WARN: Code duplicated, block: B:11:0x002e  */
+    /* JADX WARN: Code duplicated, block: B:33:0x0086  */
     @Override // defpackage.q81
-    public final Object b(Object r12, vd0 r13) {
-        int r0 = this.n;
-        xe0 r2 = xe0.n;
-        Object r6 = this.p;
-        j15 r7 = j15.a;
-        Object r8 = this.o;
-        switch(r0) {
-            case 0: goto L48;
-            case 1: goto L29;
-            case 2: goto L7;
-            default: goto L4;
-        };
-    L4:
-        ((c93) r8).a((dd5) r6, (tc0) r12);
-        return r7;
-    L48:
-        q02 r14 = (q02) r12;
-        ArrayList r9 = (ArrayList) r8;
-        if ((r14 instanceof jv0) == false) goto L52;
-        r9.add(r14);
-    L57:
-        ((b13) r6).setValue(Boolean.valueOf(!r9.isEmpty()));
-        return r7;
-    L52:
-        if ((r14 instanceof kv0) == false) goto L55;
-        r9.remove(((kv0) r14).a);
-        goto L57
-    L55:
-        if ((r14 instanceof iv0) == false) goto L57;
-        r9.remove(((iv0) r14).a);
-        goto L57
-    L7:
-        if ((r13 instanceof g91) == false) goto L11;
-        g91 r1 = (g91) r13;
-        int r10 = r1.o;
-        if ((r10 & Integer.MIN_VALUE) == 0) goto L11;
-        r1.o = r10 - Integer.MIN_VALUE;
-    L12:
-        Object r11 = r1.n;
-        int r15 = r1.o;
-        if (r15 == 0) goto L19;
-        if (r15 == 1) goto L18;
-        if (r15 != 2) goto L17;
-        kb4.X(r11);
-    L27:
-        return r7;
-    L17:
-        kf2.o("call to 'resume' before 'invoke' with coroutine");
-        return null;
-    L18:
-        q81 r16 = r1.r;
-        Object r17 = r1.q;
-        kb4.X(r11);
-    L23:
-        r1.q = null;
-        r1.r = null;
-        r1.o = 2;
-        if (r16.b(r17, r1) != r2) goto L27;
-        return r2;
-    L19:
-        kb4.X(r11);
-        q81 r18 = (q81) r8;
-        r1.q = r12;
-        r1.r = r18;
-        r1.o = 1;
-        if (((wf1) r6).invoke(r12, r1) == r2) goto L60;
-        r17 = r12;
-        r16 = r18;
-        goto L23
-    L60:
-        return r2;
-    L11:
-        r1 = new g91(this, r13);
-        goto L12
-    L29:
-        if ((r13 instanceof c91) == false) goto L33;
-        c91 r3 = (c91) r13;
-        int r19 = r3.p;
-        if ((r19 & Integer.MIN_VALUE) == 0) goto L33;
-        r3.p = r19 - Integer.MIN_VALUE;
-    L34:
-        Object r110 = r3.o;
-        int r4 = r3.p;
-        if (r4 == 0) goto L39;
-        if (r4 != 1) goto L38;
-        r12 = r3.r;
-        lv0 this = r3.n;
-        kb4.X(r110);
-    L43:
-        if (((Boolean) r110).booleanValue() == false) goto L45;
-        ((jx3) this.p).n = r12;
-        throw new AbortFlowException(this);
-    L45:
-        return r7;
-    L38:
-        kf2.o("call to 'resume' before 'invoke' with coroutine");
-        return null;
-    L39:
-        kb4.X(r110);
-        r3.n = this;
-        r3.r = r12;
-        r3.p = 1;
-        r110 = ((wf1) r8).invoke(r12, r3);
-        if (r110 != r2) goto L43;
-        return r2;
-    L33:
-        r3 = new c91(this, r13);
-        goto L34
+    public final Object b(Object obj, vd0 vd0Var) {
+        c91 c91Var;
+        g91 g91Var;
+        Object obj2;
+        q81 q81Var;
+        int i = this.n;
+        xe0 xe0Var = xe0.n;
+        Object obj3 = this.p;
+        j15 j15Var = j15.a;
+        Object obj4 = this.o;
+        switch (i) {
+            case 0:
+                q02 q02Var = (q02) obj;
+                ArrayList arrayList = (ArrayList) obj4;
+                if (q02Var instanceof jv0) {
+                    arrayList.add(q02Var);
+                } else if (q02Var instanceof kv0) {
+                    arrayList.remove(((kv0) q02Var).a);
+                } else if (q02Var instanceof iv0) {
+                    arrayList.remove(((iv0) q02Var).a);
+                }
+                ((b13) obj3).setValue(Boolean.valueOf(!arrayList.isEmpty()));
+                return j15Var;
+            case 1:
+                if (vd0Var instanceof c91) {
+                    c91Var = (c91) vd0Var;
+                    int i2 = c91Var.p;
+                    if ((i2 & Integer.MIN_VALUE) != 0) {
+                        c91Var.p = i2 - Integer.MIN_VALUE;
+                    } else {
+                        c91Var = new c91(this, vd0Var);
+                    }
+                } else {
+                    c91Var = new c91(this, vd0Var);
+                }
+                Object objInvoke = c91Var.o;
+                int i3 = c91Var.p;
+                if (i3 == 0) {
+                    kb4.X(objInvoke);
+                    c91Var.n = this;
+                    c91Var.r = obj;
+                    c91Var.p = 1;
+                    objInvoke = ((wf1) obj4).invoke(obj, c91Var);
+                    if (objInvoke == xe0Var) {
+                        return xe0Var;
+                    }
+                } else {
+                    if (i3 != 1) {
+                        kf2.o("call to 'resume' before 'invoke' with coroutine");
+                        return null;
+                    }
+                    obj = c91Var.r;
+                    this = c91Var.n;
+                    kb4.X(objInvoke);
+                }
+                if (!((Boolean) objInvoke).booleanValue()) {
+                    return j15Var;
+                }
+                ((jx3) this.p).n = obj;
+                throw new AbortFlowException(this);
+            case 2:
+                if (vd0Var instanceof g91) {
+                    g91Var = (g91) vd0Var;
+                    int i4 = g91Var.o;
+                    if ((i4 & Integer.MIN_VALUE) != 0) {
+                        g91Var.o = i4 - Integer.MIN_VALUE;
+                    } else {
+                        g91Var = new g91(this, vd0Var);
+                    }
+                } else {
+                    g91Var = new g91(this, vd0Var);
+                }
+                Object obj5 = g91Var.n;
+                int i5 = g91Var.o;
+                if (i5 != 0) {
+                    if (i5 == 1) {
+                        q81Var = g91Var.r;
+                        obj2 = g91Var.q;
+                        kb4.X(obj5);
+                    } else {
+                        if (i5 != 2) {
+                            kf2.o("call to 'resume' before 'invoke' with coroutine");
+                            return null;
+                        }
+                        kb4.X(obj5);
+                    }
+                    return j15Var;
+                }
+                kb4.X(obj5);
+                q81 q81Var2 = (q81) obj4;
+                g91Var.q = obj;
+                g91Var.r = q81Var2;
+                g91Var.o = 1;
+                if (((wf1) obj3).invoke(obj, g91Var) == xe0Var) {
+                    return xe0Var;
+                }
+                obj2 = obj;
+                q81Var = q81Var2;
+                g91Var.q = null;
+                g91Var.r = null;
+                g91Var.o = 2;
+                if (q81Var.b(obj2, g91Var) == xe0Var) {
+                    return xe0Var;
+                }
+                return j15Var;
+            default:
+                ((c93) obj4).a((dd5) obj3, (tc0) obj);
+                return j15Var;
+        }
     }
 }

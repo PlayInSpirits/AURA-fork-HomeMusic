@@ -4,8 +4,8 @@ package defpackage;
 /* JADX INFO: loaded from: classes.dex */
 public final class ct implements of4 {
     @Override // defpackage.of4
-    public final void L(tv r1, long r2) {
-        r1.skip(r2);
+    public final void L(tv tvVar, long j) {
+        tvVar.skip(j);
     }
 
     @Override // defpackage.of4, java.io.Closeable, java.lang.AutoCloseable

@@ -10,27 +10,21 @@ import java.util.ArrayList;
 public final class gz4 implements PrivilegedAction {
     public final /* synthetic */ Class a;
 
-    public gz4(Class r1) {
-        this.a = r1;
+    public gz4(Class cls) {
+        this.a = cls;
     }
 
     @Override // java.security.PrivilegedAction
     public final Object run() {
-        Field[] r6 = this.a.getDeclaredFields();
-        ArrayList r0 = new ArrayList(r6.length);
-        int r1 = r6.length;
-        int r3 = 0;
-    L3:
-        if (r3 >= r1) goto L8;
-        Field r4 = r6[r3];
-        if (r4.isEnumConstant() == false) goto L7;
-        r0.add(r4);
-    L7:
-        r3 = r3 + 1;
-        goto L3
-    L8:
-        Field[] r7 = (Field[]) r0.toArray(new Field[0]);
-        AccessibleObject.setAccessible(r7, true);
-        return r7;
+        Field[] declaredFields = this.a.getDeclaredFields();
+        ArrayList arrayList = new ArrayList(declaredFields.length);
+        for (Field field : declaredFields) {
+            if (field.isEnumConstant()) {
+                arrayList.add(field);
+            }
+        }
+        Field[] fieldArr = (Field[]) arrayList.toArray(new Field[0]);
+        AccessibleObject.setAccessible(fieldArr, true);
+        return fieldArr;
     }
 }

@@ -13,112 +13,102 @@ public final class dn4 implements List, y32 {
     public int p;
     public int q;
 
-    public dn4(rh4 r1, int r2, int r3) {
-        this.n = r1;
-        this.o = r2;
-        this.p = rr2.H(r1);
-        this.q = r3 - r2;
+    public dn4(rh4 rh4Var, int i, int i2) {
+        this.n = rh4Var;
+        this.o = i;
+        this.p = rr2.H(rh4Var);
+        this.q = i2 - i;
     }
 
     public final void a() {
-        if (rr2.H(this.n) != this.p) goto L5;
-        return;
-    L5:
+        if (rr2.H(this.n) == this.p) {
+            return;
+        }
         kf2.c();
     }
 
     @Override // java.util.List, java.util.Collection
-    public final boolean add(Object r3) {
+    public final boolean add(Object obj) {
         a();
-        int r0 = this.o + this.q;
-        rh4 r1 = this.n;
-        r1.add(r0, r3);
+        int i = this.o + this.q;
+        rh4 rh4Var = this.n;
+        rh4Var.add(i, obj);
         this.q++;
-        this.p = rr2.H(r1);
+        this.p = rr2.H(rh4Var);
         return true;
     }
 
     @Override // java.util.List
-    public final boolean addAll(int r3, Collection r4) {
+    public final boolean addAll(int i, Collection collection) {
         a();
-        int r5 = r3 + this.o;
-        rh4 r0 = this.n;
-        boolean r6 = r0.addAll(r5, r4);
-        if (r6 == false) goto L5;
-        int r1 = this.q;
-        this.q = r4.size() + r1;
-        this.p = rr2.H(r0);
-    L5:
-        return r6;
+        int i2 = i + this.o;
+        rh4 rh4Var = this.n;
+        boolean zAddAll = rh4Var.addAll(i2, collection);
+        if (zAddAll) {
+            this.q = collection.size() + this.q;
+            this.p = rr2.H(rh4Var);
+        }
+        return zAddAll;
     }
 
     @Override // java.util.List, java.util.Collection
     public final void clear() {
-        if (this.q <= 0) goto L6;
-        a();
-        int r0 = this.q;
-        int r1 = this.o;
-        rh4 r2 = this.n;
-        r2.e(r1, r0 + r1);
-        this.q = 0;
-        this.p = rr2.H(r2);
-        return;
+        if (this.q > 0) {
+            a();
+            int i = this.q;
+            int i2 = this.o;
+            rh4 rh4Var = this.n;
+            rh4Var.e(i2, i + i2);
+            this.q = 0;
+            this.p = rr2.H(rh4Var);
+        }
     }
 
     @Override // java.util.List, java.util.Collection
-    public final boolean contains(Object r1) {
-        if (indexOf(r1) < 0) goto L6;
-        return true;
-    L6:
-        return false;
+    public final boolean contains(Object obj) {
+        return indexOf(obj) >= 0;
     }
 
     @Override // java.util.List, java.util.Collection
-    public final boolean containsAll(Collection r3) {
-        Collection r4 = r3;
-        if ((r4 instanceof Collection) == true) goto L5;
-    L7:
-        Iterator r5 = r4.iterator();
-    L9:
-        if (r5.hasNext() == false) goto L14;
-        if (contains(r5.next()) == true) goto L9;
-        return false;
-    L14:
-        return true;
-    L5:
-        if (r4.isEmpty() == false) goto L7;
+    public final boolean containsAll(Collection collection) {
+        Collection collection2 = collection;
+        if ((collection2 instanceof Collection) && collection2.isEmpty()) {
+            return true;
+        }
+        Iterator it = collection2.iterator();
+        while (it.hasNext()) {
+            if (!contains(it.next())) {
+                return false;
+            }
+        }
         return true;
     }
 
     @Override // java.util.List
-    public final Object get(int r2) {
+    public final Object get(int i) {
         a();
-        rr2.d(r2, this.q);
-        int r0 = this.o + r2;
-        return this.n.get(r0);
+        rr2.d(i, this.q);
+        return this.n.get(this.o + i);
     }
 
     @Override // java.util.List
-    public final int indexOf(Object r5) {
+    public final int indexOf(Object obj) {
         a();
-        int r0 = this.q;
-        int r1 = this.o;
-        Iterator r2 = gb.g0(r1, r0 + r1).iterator();
-    L4:
-        if (((i02) r2).p == false) goto L9;
-        int r3 = ((b02) r2).nextInt();
-        if (h12.c(r5, this.n.get(r3)) == false) goto L4;
-        return r3 - r1;
-    L9:
+        int i = this.q;
+        int i2 = this.o;
+        Iterator it = gb.g0(i2, i + i2).iterator();
+        while (((i02) it).p) {
+            int iNextInt = ((b02) it).nextInt();
+            if (h12.c(obj, this.n.get(iNextInt))) {
+                return iNextInt - i2;
+            }
+        }
         return -1;
     }
 
     @Override // java.util.List, java.util.Collection
     public final boolean isEmpty() {
-        if (this.q != 0) goto L6;
-        return true;
-    L6:
-        return false;
+        return this.q == 0;
     }
 
     @Override // java.util.List, java.util.Collection, java.lang.Iterable
@@ -127,114 +117,102 @@ public final class dn4 implements List, y32 {
     }
 
     @Override // java.util.List
-    public final int lastIndexOf(Object r4) {
+    public final int lastIndexOf(Object obj) {
         a();
-        int r0 = this.q;
-        int r1 = this.o;
-        int r2 = (r0 + r1) - 1;
-    L3:
-        if (r2 < r1) goto L9;
-        if (h12.c(r4, this.n.get(r2)) == true) goto L7;
-        r2 = r2 - 1;
-        goto L3
-    L7:
-        return r2 - r1;
-    L9:
+        int i = this.q;
+        int i2 = this.o;
+        for (int i3 = (i + i2) - 1; i3 >= i2; i3--) {
+            if (h12.c(obj, this.n.get(i3))) {
+                return i3 - i2;
+            }
+        }
         return -1;
     }
 
     @Override // java.util.List
-    public final ListIterator listIterator(int r2) {
+    public final ListIterator listIterator(int i) {
         a();
-        hx3 r0 = new hx3();
-        r0.n = r2 - 1;
-        return new f24(r0, this);
+        hx3 hx3Var = new hx3();
+        hx3Var.n = i - 1;
+        return new f24(hx3Var, this);
     }
 
     @Override // java.util.List
-    public final Object remove(int r3) {
+    public final Object remove(int i) {
         a();
-        int r0 = this.o + r3;
-        rh4 r4 = this.n;
-        Object r1 = r4.remove(r0);
+        int i2 = this.o + i;
+        rh4 rh4Var = this.n;
+        Object objRemove = rh4Var.remove(i2);
         this.q--;
-        this.p = rr2.H(r4);
-        return r1;
+        this.p = rr2.H(rh4Var);
+        return objRemove;
     }
 
     @Override // java.util.List, java.util.Collection
-    public final boolean removeAll(Collection r4) {
-        Iterator r5 = r4.iterator();
-    L3:
-        boolean r1 = false;
-    L5:
-        if (r5.hasNext() == false) goto L10;
-        if (remove(r5.next()) == true) goto L9;
-        if (r1 == false) goto L3;
-    L9:
-        r1 = true;
-        goto L5
-    L10:
-        return r1;
+    public final boolean removeAll(Collection collection) {
+        Iterator it = collection.iterator();
+        while (true) {
+            boolean z = false;
+            while (it.hasNext()) {
+                if (remove(it.next()) || z) {
+                    z = true;
+                }
+            }
+            return z;
+        }
     }
 
     @Override // java.util.List, java.util.Collection
-    public final boolean retainAll(Collection r11) {
+    public final boolean retainAll(Collection collection) {
+        int i;
+        y1 y1Var;
+        ch4 ch4VarJ;
+        boolean zE;
         a();
-        rh4 r0 = this.n;
-        int r1 = this.o;
-        int r2 = this.q + r1;
-        int r3 = r0.size();
-    L3:
-        Object r4 = rr2.b;
-        monitor-enter(r4);
-        ql4 r5 = r0.n;     // Catch: Throwable -> L26
-        r5.getClass();     // Catch: Throwable -> L26
-        ql4 r6 = (ql4) jh4.h(r5);     // Catch: Throwable -> L26
-        int r7 = r6.d;     // Catch: Throwable -> L26
-        y1 r8 = r6.c;     // Catch: Throwable -> L26
-        monitor-exit(r4);
-        r8.getClass();
-        xf3 r9 = r8.f();
-        r9.subList(r1, r2).retainAll(r11);
-        y1 r10 = r9.d();
-        if (h12.c(r10, r8) == true) goto L19;
-        ql4 r12 = r0.n;
-        r12.getClass();
-        Object r13 = jh4.c;
-        monitor-enter(r13);
-        ch4 r14 = jh4.j();     // Catch: Throwable -> L16
-        boolean r15 = rr2.e((ql4) jh4.w(r12, r0, r14), r7, r10, true);     // Catch: Throwable -> L16
-        monitor-exit(r13);
-        jh4.n(r14, r0);
-        if (r15 == false) goto L3;
-    L16:
-        th = move-exception;
-        throw th;
-    L19:
-        int r16 = r3 - r0.size();
-        if (r16 <= 0) goto L22;
-        this.p = rr2.H(this.n);
-        this.q -= r16;
-    L22:
-        if (r16 <= 0) goto L24;
-        return true;
-    L24:
-        return false;
-    L26:
-        th = move-exception;
-        throw th;
+        rh4 rh4Var = this.n;
+        int i2 = this.o;
+        int i3 = this.q + i2;
+        int size = rh4Var.size();
+        do {
+            synchronized (rr2.b) {
+                ql4 ql4Var = rh4Var.n;
+                ql4Var.getClass();
+                ql4 ql4Var2 = (ql4) jh4.h(ql4Var);
+                i = ql4Var2.d;
+                y1Var = ql4Var2.c;
+            }
+            y1Var.getClass();
+            xf3 xf3VarF = y1Var.f();
+            xf3VarF.subList(i2, i3).retainAll(collection);
+            y1 y1VarD = xf3VarF.d();
+            if (h12.c(y1VarD, y1Var)) {
+                break;
+            }
+            ql4 ql4Var3 = rh4Var.n;
+            ql4Var3.getClass();
+            synchronized (jh4.c) {
+                ch4VarJ = jh4.j();
+                zE = rr2.e((ql4) jh4.w(ql4Var3, rh4Var, ch4VarJ), i, y1VarD, true);
+            }
+            jh4.n(ch4VarJ, rh4Var);
+        } while (!zE);
+        int size2 = size - rh4Var.size();
+        if (size2 > 0) {
+            this.p = rr2.H(this.n);
+            this.q -= size2;
+        }
+        return size2 > 0;
     }
 
     @Override // java.util.List
-    public final Object set(int r2, Object r3) {
-        rr2.d(r2, this.q);
+    public final Object set(int i, Object obj) {
+        rr2.d(i, this.q);
         a();
-        int r4 = r2 + this.o;
-        rh4 r0 = this.n;
-        Object r5 = r0.set(r4, r3);
-        this.p = rr2.H(r0);
-        return r5;
+        int i2 = i + this.o;
+        rh4 rh4Var = this.n;
+        Object obj2 = rh4Var.set(i2, obj);
+        this.p = rr2.H(rh4Var);
+        return obj2;
     }
 
     @Override // java.util.List, java.util.Collection
@@ -243,18 +221,13 @@ public final class dn4 implements List, y32 {
     }
 
     @Override // java.util.List
-    public final List subList(int r3, int r4) {
-        if (r3 < 0) goto L7;
-        if (r3 > r4) goto L7;
-        if (r4 > this.q) goto L7;
-    L8:
+    public final List subList(int i, int i2) {
+        if (i < 0 || i > i2 || i2 > this.q) {
+            oo3.a("fromIndex or toIndex are out of bounds");
+        }
         a();
-        int r1 = this.o;
-        rh4 r2 = this.n;
-        return new dn4(r2, r3 + r1, r4 + r1);
-    L7:
-        oo3.a("fromIndex or toIndex are out of bounds");
-        goto L8
+        int i3 = this.o;
+        return new dn4(this.n, i + i3, i2 + i3);
     }
 
     @Override // java.util.List, java.util.Collection
@@ -263,8 +236,8 @@ public final class dn4 implements List, y32 {
     }
 
     @Override // java.util.List, java.util.Collection
-    public final Object[] toArray(Object[] r1) {
-        return zz1.J(this, r1);
+    public final Object[] toArray(Object[] objArr) {
+        return zz1.J(this, objArr);
     }
 
     @Override // java.util.List
@@ -273,27 +246,27 @@ public final class dn4 implements List, y32 {
     }
 
     @Override // java.util.List, java.util.Collection
-    public final boolean remove(Object r1) {
-        int r2 = indexOf(r1);
-        if (r2 < 0) goto L6;
-        remove(r2);
+    public final boolean remove(Object obj) {
+        int iIndexOf = indexOf(obj);
+        if (iIndexOf < 0) {
+            return false;
+        }
+        remove(iIndexOf);
         return true;
-    L6:
-        return false;
     }
 
     @Override // java.util.List
-    public final void add(int r2, Object r3) {
+    public final void add(int i, Object obj) {
         a();
-        int r0 = this.o + r2;
-        rh4 r4 = this.n;
-        r4.add(r0, r3);
+        int i2 = this.o + i;
+        rh4 rh4Var = this.n;
+        rh4Var.add(i2, obj);
         this.q++;
-        this.p = rr2.H(r4);
+        this.p = rr2.H(rh4Var);
     }
 
     @Override // java.util.List, java.util.Collection
-    public final boolean addAll(Collection r2) {
-        return addAll(this.q, r2);
+    public final boolean addAll(Collection collection) {
+        return addAll(this.q, collection);
     }
 }

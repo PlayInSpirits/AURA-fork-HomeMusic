@@ -11,14 +11,11 @@ public final class NewestPodcasts {
     @ka4("episode")
     private List<PodcastEpisode> episodes;
 
-    public NewestPodcasts() {
-    }
-
     public final List<PodcastEpisode> getEpisodes() {
         return this.episodes;
     }
 
-    public final void setEpisodes(List<PodcastEpisode> r1) {
-        this.episodes = r1;
+    public final void setEpisodes(List<PodcastEpisode> list) {
+        this.episodes = list;
     }
 }

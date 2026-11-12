@@ -57,9 +57,6 @@ public final class SubsonicResponse {
     private VideoInfo videoInfo;
     private Videos videos;
 
-    public SubsonicResponse() {
-    }
-
     public final AlbumWithSongsID3 getAlbum() {
         return this.album;
     }
@@ -260,203 +257,203 @@ public final class SubsonicResponse {
         return this.videos;
     }
 
-    public final void setAlbum(AlbumWithSongsID3 r1) {
-        this.album = r1;
+    public final void setAlbum(AlbumWithSongsID3 albumWithSongsID3) {
+        this.album = albumWithSongsID3;
     }
 
-    public final void setAlbumInfo(AlbumInfo r1) {
-        this.albumInfo = r1;
+    public final void setAlbumInfo(AlbumInfo albumInfo) {
+        this.albumInfo = albumInfo;
     }
 
-    public final void setAlbumList(AlbumList r1) {
-        this.albumList = r1;
+    public final void setAlbumList(AlbumList albumList) {
+        this.albumList = albumList;
     }
 
-    public final void setAlbumList2(AlbumList2 r1) {
-        this.albumList2 = r1;
+    public final void setAlbumList2(AlbumList2 albumList2) {
+        this.albumList2 = albumList2;
     }
 
-    public final void setArtist(ArtistWithAlbumsID3 r1) {
-        this.artist = r1;
+    public final void setArtist(ArtistWithAlbumsID3 artistWithAlbumsID3) {
+        this.artist = artistWithAlbumsID3;
     }
 
-    public final void setArtistInfo(ArtistInfo r1) {
-        this.artistInfo = r1;
+    public final void setArtistInfo(ArtistInfo artistInfo) {
+        this.artistInfo = artistInfo;
     }
 
-    public final void setArtistInfo2(ArtistInfo2 r1) {
-        this.artistInfo2 = r1;
+    public final void setArtistInfo2(ArtistInfo2 artistInfo2) {
+        this.artistInfo2 = artistInfo2;
     }
 
-    public final void setArtists(ArtistsID3 r1) {
-        this.artists = r1;
+    public final void setArtists(ArtistsID3 artistsID3) {
+        this.artists = artistsID3;
     }
 
-    public final void setBookmarks(Bookmarks r1) {
-        this.bookmarks = r1;
+    public final void setBookmarks(Bookmarks bookmarks) {
+        this.bookmarks = bookmarks;
     }
 
-    public final void setChatMessages(ChatMessages r1) {
-        this.chatMessages = r1;
+    public final void setChatMessages(ChatMessages chatMessages) {
+        this.chatMessages = chatMessages;
     }
 
-    public final void setDirectory(Directory r1) {
-        this.directory = r1;
+    public final void setDirectory(Directory directory) {
+        this.directory = directory;
     }
 
-    public final void setError(Error r1) {
-        this.error = r1;
+    public final void setError(Error error) {
+        this.error = error;
     }
 
-    public final void setGenres(Genres r1) {
-        this.genres = r1;
+    public final void setGenres(Genres genres) {
+        this.genres = genres;
     }
 
-    public final void setIndexes(Indexes r1) {
-        this.indexes = r1;
+    public final void setIndexes(Indexes indexes) {
+        this.indexes = indexes;
     }
 
-    public final void setInternetRadioStations(InternetRadioStations r1) {
-        this.internetRadioStations = r1;
+    public final void setInternetRadioStations(InternetRadioStations internetRadioStations) {
+        this.internetRadioStations = internetRadioStations;
     }
 
-    public final void setJukeboxPlaylist(JukeboxPlaylist r1) {
-        this.jukeboxPlaylist = r1;
+    public final void setJukeboxPlaylist(JukeboxPlaylist jukeboxPlaylist) {
+        this.jukeboxPlaylist = jukeboxPlaylist;
     }
 
-    public final void setJukeboxStatus(JukeboxStatus r1) {
-        this.jukeboxStatus = r1;
+    public final void setJukeboxStatus(JukeboxStatus jukeboxStatus) {
+        this.jukeboxStatus = jukeboxStatus;
     }
 
-    public final void setLicense(License r1) {
-        this.license = r1;
+    public final void setLicense(License license) {
+        this.license = license;
     }
 
-    public final void setLyrics(Lyrics r1) {
-        this.lyrics = r1;
+    public final void setLyrics(Lyrics lyrics) {
+        this.lyrics = lyrics;
     }
 
-    public final void setLyricsList(LyricsList r1) {
-        this.lyricsList = r1;
+    public final void setLyricsList(LyricsList lyricsList) {
+        this.lyricsList = lyricsList;
     }
 
-    public final void setMusicFolders(MusicFolders r1) {
-        this.musicFolders = r1;
+    public final void setMusicFolders(MusicFolders musicFolders) {
+        this.musicFolders = musicFolders;
     }
 
-    public final void setNewestPodcasts(NewestPodcasts r1) {
-        this.newestPodcasts = r1;
+    public final void setNewestPodcasts(NewestPodcasts newestPodcasts) {
+        this.newestPodcasts = newestPodcasts;
     }
 
-    public final void setNowPlaying(NowPlaying r1) {
-        this.nowPlaying = r1;
+    public final void setNowPlaying(NowPlaying nowPlaying) {
+        this.nowPlaying = nowPlaying;
     }
 
-    public final void setOpenSubsonic(Boolean r1) {
-        this.openSubsonic = r1;
+    public final void setOpenSubsonic(Boolean bool) {
+        this.openSubsonic = bool;
     }
 
-    public final void setOpenSubsonicExtensions(List<OpenSubsonicExtension> r1) {
-        this.openSubsonicExtensions = r1;
+    public final void setOpenSubsonicExtensions(List<OpenSubsonicExtension> list) {
+        this.openSubsonicExtensions = list;
     }
 
-    public final void setPlayQueue(PlayQueue r1) {
-        this.playQueue = r1;
+    public final void setPlayQueue(PlayQueue playQueue) {
+        this.playQueue = playQueue;
     }
 
-    public final void setPlaylist(PlaylistWithSongs r1) {
-        this.playlist = r1;
+    public final void setPlaylist(PlaylistWithSongs playlistWithSongs) {
+        this.playlist = playlistWithSongs;
     }
 
-    public final void setPlaylists(Playlists r1) {
-        this.playlists = r1;
+    public final void setPlaylists(Playlists playlists) {
+        this.playlists = playlists;
     }
 
-    public final void setPodcasts(Podcasts r1) {
-        this.podcasts = r1;
+    public final void setPodcasts(Podcasts podcasts) {
+        this.podcasts = podcasts;
     }
 
-    public final void setRandomSongs(Songs r1) {
-        this.randomSongs = r1;
+    public final void setRandomSongs(Songs songs) {
+        this.randomSongs = songs;
     }
 
-    public final void setScanStatus(ScanStatus r1) {
-        this.scanStatus = r1;
+    public final void setScanStatus(ScanStatus scanStatus) {
+        this.scanStatus = scanStatus;
     }
 
-    public final void setSearchResult(SearchResult r1) {
-        this.searchResult = r1;
+    public final void setSearchResult(SearchResult searchResult) {
+        this.searchResult = searchResult;
     }
 
-    public final void setSearchResult2(SearchResult2 r1) {
-        this.searchResult2 = r1;
+    public final void setSearchResult2(SearchResult2 searchResult2) {
+        this.searchResult2 = searchResult2;
     }
 
-    public final void setSearchResult3(SearchResult3 r1) {
-        this.searchResult3 = r1;
+    public final void setSearchResult3(SearchResult3 searchResult3) {
+        this.searchResult3 = searchResult3;
     }
 
-    public final void setServerVersion(String r1) {
-        this.serverVersion = r1;
+    public final void setServerVersion(String str) {
+        this.serverVersion = str;
     }
 
-    public final void setShares(Shares r1) {
-        this.shares = r1;
+    public final void setShares(Shares shares) {
+        this.shares = shares;
     }
 
-    public final void setSimilarSongs(SimilarSongs r1) {
-        this.similarSongs = r1;
+    public final void setSimilarSongs(SimilarSongs similarSongs) {
+        this.similarSongs = similarSongs;
     }
 
-    public final void setSimilarSongs2(SimilarSongs2 r1) {
-        this.similarSongs2 = r1;
+    public final void setSimilarSongs2(SimilarSongs2 similarSongs2) {
+        this.similarSongs2 = similarSongs2;
     }
 
-    public final void setSong(Child r1) {
-        this.song = r1;
+    public final void setSong(Child child) {
+        this.song = child;
     }
 
-    public final void setSongsByGenre(Songs r1) {
-        this.songsByGenre = r1;
+    public final void setSongsByGenre(Songs songs) {
+        this.songsByGenre = songs;
     }
 
-    public final void setStarred(Starred r1) {
-        this.starred = r1;
+    public final void setStarred(Starred starred) {
+        this.starred = starred;
     }
 
-    public final void setStarred2(Starred2 r1) {
-        this.starred2 = r1;
+    public final void setStarred2(Starred2 starred2) {
+        this.starred2 = starred2;
     }
 
-    public final void setStatus(String r1) {
-        this.status = r1;
+    public final void setStatus(String str) {
+        this.status = str;
     }
 
-    public final void setTopSongs(TopSongs r1) {
-        this.topSongs = r1;
+    public final void setTopSongs(TopSongs topSongs) {
+        this.topSongs = topSongs;
     }
 
-    public final void setType(String r1) {
-        this.type = r1;
+    public final void setType(String str) {
+        this.type = str;
     }
 
-    public final void setUser(User r1) {
-        this.user = r1;
+    public final void setUser(User user) {
+        this.user = user;
     }
 
-    public final void setUsers(Users r1) {
-        this.users = r1;
+    public final void setUsers(Users users) {
+        this.users = users;
     }
 
-    public final void setVersion(String r1) {
-        this.version = r1;
+    public final void setVersion(String str) {
+        this.version = str;
     }
 
-    public final void setVideoInfo(VideoInfo r1) {
-        this.videoInfo = r1;
+    public final void setVideoInfo(VideoInfo videoInfo) {
+        this.videoInfo = videoInfo;
     }
 
-    public final void setVideos(Videos r1) {
-        this.videos = r1;
+    public final void setVideos(Videos videos) {
+        this.videos = videos;
     }
 }

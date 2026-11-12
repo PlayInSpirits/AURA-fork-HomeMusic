@@ -16,323 +16,571 @@ import java.util.HashMap;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public abstract class l85 extends dx4 {
-    public static final String[] L = null;
-    public int K;
+    public static final String[] L = {"android:visibility:visibility", "android:visibility:parent"};
+    public int K = 3;
 
-    static {
-        L = new String[]{"android:visibility:visibility", "android:visibility:parent"};
+    public static void F(mx4 mx4Var) {
+        View view = mx4Var.b;
+        int visibility = view.getVisibility();
+        HashMap map = mx4Var.a;
+        map.put("android:visibility:visibility", Integer.valueOf(visibility));
+        map.put("android:visibility:parent", view.getParent());
+        int[] iArr = new int[2];
+        view.getLocationOnScreen(iArr);
+        map.put("android:visibility:screenLocation", iArr);
     }
 
-    public l85() {
-        this.K = 3;
+    /* JADX WARN: Code duplicated, block: B:12:0x0052  */
+    /* JADX WARN: Code duplicated, block: B:7:0x002f  */
+    public static ez3 G(mx4 mx4Var, mx4 mx4Var2) {
+        ez3 ez3Var = new ez3();
+        ez3Var.a = false;
+        ez3Var.b = false;
+        if (mx4Var != null) {
+            HashMap map = mx4Var.a;
+            if (map.containsKey("android:visibility:visibility")) {
+                ez3Var.c = ((Integer) map.get("android:visibility:visibility")).intValue();
+                ez3Var.e = (ViewGroup) map.get("android:visibility:parent");
+            } else {
+                ez3Var.c = -1;
+                ez3Var.e = null;
+            }
+        } else {
+            ez3Var.c = -1;
+            ez3Var.e = null;
+        }
+        if (mx4Var2 != null) {
+            HashMap map2 = mx4Var2.a;
+            if (map2.containsKey("android:visibility:visibility")) {
+                ez3Var.d = ((Integer) map2.get("android:visibility:visibility")).intValue();
+                ez3Var.f = (ViewGroup) map2.get("android:visibility:parent");
+            } else {
+                ez3Var.d = -1;
+                ez3Var.f = null;
+            }
+        } else {
+            ez3Var.d = -1;
+            ez3Var.f = null;
+        }
+        if (mx4Var != null && mx4Var2 != null) {
+            int i = ez3Var.c;
+            int i2 = ez3Var.d;
+            if (i != i2 || ((ViewGroup) ez3Var.e) != ((ViewGroup) ez3Var.f)) {
+                if (i != i2) {
+                    if (i == 0) {
+                        ez3Var.b = false;
+                        ez3Var.a = true;
+                        return ez3Var;
+                    }
+                    if (i2 == 0) {
+                        ez3Var.b = true;
+                        ez3Var.a = true;
+                        return ez3Var;
+                    }
+                } else {
+                    if (((ViewGroup) ez3Var.f) == null) {
+                        ez3Var.b = false;
+                        ez3Var.a = true;
+                        return ez3Var;
+                    }
+                    if (((ViewGroup) ez3Var.e) == null) {
+                        ez3Var.b = true;
+                        ez3Var.a = true;
+                        return ez3Var;
+                    }
+                }
+            }
+        } else {
+            if (mx4Var == null && ez3Var.d == 0) {
+                ez3Var.b = true;
+                ez3Var.a = true;
+                return ez3Var;
+            }
+            if (mx4Var2 == null && ez3Var.c == 0) {
+                ez3Var.b = false;
+                ez3Var.a = true;
+            }
+        }
+        return ez3Var;
     }
 
-    public static void F(mx4 r3) {
-        View r0 = r3.b;
-        int r1 = r0.getVisibility();
-        HashMap r4 = r3.a;
-        r4.put("android:visibility:visibility", Integer.valueOf(r1));
-        r4.put("android:visibility:parent", r0.getParent());
-        int[] r2 = new int[2];
-        r0.getLocationOnScreen(r2);
-        r4.put("android:visibility:screenLocation", r2);
-    }
+    public abstract ObjectAnimator H(ViewGroup viewGroup, View view, mx4 mx4Var, mx4 mx4Var2);
 
-    public static ez3 G(mx4 r8, mx4 r9) {
-        ez3 r0 = new ez3();
-        r0.a = false;
-        r0.b = false;
-        if (r8 == null) goto L7;
-        HashMap r6 = r8.a;
-        if (r6.containsKey("android:visibility:visibility") == false) goto L7;
-        r0.c = ((Integer) r6.get("android:visibility:visibility")).intValue();
-        r0.e = (ViewGroup) r6.get("android:visibility:parent");
-    L8:
-        if (r9 == null) goto L12;
-        HashMap r7 = r9.a;
-        if (r7.containsKey("android:visibility:visibility") == false) goto L12;
-        r0.d = ((Integer) r7.get("android:visibility:visibility")).intValue();
-        r0.f = (ViewGroup) r7.get("android:visibility:parent");
-    L14:
-        if (r8 == null) goto L36;
-        if (r9 == null) goto L36;
-        int r10 = r0.c;
-        int r11 = r0.d;
-        if (r10 == r11) goto L19;
-    L21:
-        if (r10 == r11) goto L29;
-        if (r10 != 0) goto L25;
-        r0.b = false;
-        r0.a = true;
-        return r0;
-    L25:
-        if (r11 != 0) goto L45;
-        r0.b = true;
-        r0.a = true;
-        return r0;
-    L45:
-        return r0;
-    L29:
-        if (((ViewGroup) r0.f) != null) goto L33;
-        r0.b = false;
-        r0.a = true;
-        return r0;
-    L33:
-        if (((ViewGroup) r0.e) != null) goto L45;
-        r0.b = true;
-        r0.a = true;
-        return r0;
-    L19:
-        if (((ViewGroup) r0.e) != ((ViewGroup) r0.f)) goto L21;
-    L36:
-        if (r8 == null) goto L38;
-    L41:
-        if (r9 != null) goto L45;
-        if (r0.c != 0) goto L45;
-        r0.b = false;
-        r0.a = true;
-        goto L45
-    L38:
-        if (r0.d != 0) goto L41;
-        r0.b = true;
-        r0.a = true;
-        return r0;
-    L12:
-        r0.d = -1;
-        r0.f = null;
-    L7:
-        r0.c = -1;
-        r0.e = null;
-        goto L8
-    }
-
-    public abstract ObjectAnimator H(ViewGroup r1, View r2, mx4 r3, mx4 r4);
-
-    public abstract ObjectAnimator I(ViewGroup r1, View r2, mx4 r3);
+    public abstract ObjectAnimator I(ViewGroup viewGroup, View view, mx4 mx4Var);
 
     @Override // defpackage.dx4
-    public void c(mx4 r1) {
-        F(r1);
+    public void c(mx4 mx4Var) {
+        F(mx4Var);
     }
 
+    /* JADX WARN: Code duplicated, block: B:49:0x0096  */
+    /* JADX WARN: Code duplicated, block: B:51:0x009c  */
+    /* JADX WARN: Code duplicated, block: B:52:0x00a9  */
+    /* JADX WARN: Code duplicated, block: B:54:0x00b1  */
+    /* JADX WARN: Code duplicated, block: B:56:0x00c7  */
+    /* JADX WARN: Code duplicated, block: B:58:0x012a  */
+    /* JADX WARN: Code duplicated, block: B:59:0x012d  */
+    /* JADX WARN: Code duplicated, block: B:61:0x0133 A[DONT_INVERT] */
+    /* JADX WARN: Code duplicated, block: B:62:0x0135  */
+    /* JADX WARN: Code duplicated, block: B:63:0x013d  */
+    /* JADX WARN: Code duplicated, block: B:64:0x0153  */
+    /* JADX WARN: Code duplicated, block: B:67:0x016d A[ADDED_TO_REGION] */
+    /* JADX WARN: Code duplicated, block: B:72:0x01c3  */
+    /* JADX WARN: Code duplicated, block: B:74:0x01c9  */
+    /* JADX WARN: Code duplicated, block: B:76:0x01d5  */
+    /* JADX WARN: Code duplicated, block: B:79:0x01f2  */
+    /* JADX WARN: Code duplicated, block: B:81:0x0206  */
+    /* JADX WARN: Code duplicated, block: B:84:0x020d  */
+    /* JADX WARN: Code restructure failed: missing block: B:19:0x0047, code lost:
+    
+        if (G(m(r5, false), p(r5, false)).a != false) goto L9;
+     */
     @Override // defpackage.dx4
-    public final Animator j(ViewGroup r24, mx4 r25, mx4 r26) {
-        ez3 r4 = G(r25, r26);
-        if (r4.a == true) goto L5;
-    L9:
+    /*
+        Code decompiled incorrectly, please refer to instructions dump.
+    */
+    public final Animator j(ViewGroup viewGroup, mx4 mx4Var, mx4 mx4Var2) {
+        boolean z;
+        View view;
+        int i;
+        char c;
+        int i2;
+        View view2;
+        Animator animator;
+        View view3;
+        View view4;
+        int id;
+        ImageView imageView;
+        boolean zIsAttachedToWindow;
+        boolean zIsAttachedToWindow2;
+        ViewGroup viewGroup2;
+        int i3;
+        int iRound;
+        Bitmap bitmapCreateBitmap;
+        ez3 ez3VarG = G(mx4Var, mx4Var2);
+        if (ez3VarG.a && (((ViewGroup) ez3VarG.e) != null || ((ViewGroup) ez3VarG.f) != null)) {
+            int i4 = 1;
+            if (!ez3VarG.b) {
+                int i5 = ez3VarG.d;
+                if ((this.K & 2) == 2 && mx4Var != null) {
+                    View view5 = mx4Var.b;
+                    View view6 = mx4Var2 != null ? mx4Var2.b : null;
+                    View view7 = (View) view5.getTag(R.id.save_overlay_view);
+                    if (view7 != null) {
+                        i = i5;
+                        c = 1;
+                        i2 = 0;
+                        view3 = null;
+                        animator = null;
+                    } else {
+                        if (view6 == null || view6.getParent() == null) {
+                            if (view6 != null) {
+                                z = false;
+                            }
+                            view = null;
+                            if (!z) {
+                                i = i5;
+                                c = 1;
+                                i2 = 0;
+                                view2 = view;
+                                animator = null;
+                                view7 = view6;
+                                i4 = i2;
+                                view3 = view2;
+                            } else if (view5.getParent() == null) {
+                                i = i5;
+                                c = 1;
+                                i4 = 0;
+                                i2 = 0;
+                                view3 = view;
+                                animator = null;
+                                view7 = view5;
+                            } else {
+                                if (view5.getParent() instanceof View) {
+                                    view4 = (View) view5.getParent();
+                                    if (G(p(view4, true), m(view4, true)).a) {
+                                        i = i5;
+                                        c = 1;
+                                        i2 = 0;
+                                        view2 = view;
+                                        animator = null;
+                                        id = view4.getId();
+                                        if (view4.getParent() == null && id != -1) {
+                                            viewGroup.findViewById(id);
+                                        }
+                                    } else {
+                                        boolean z2 = lx4.a;
+                                        Matrix matrix = new Matrix();
+                                        matrix.setTranslate(-view4.getScrollX(), -view4.getScrollY());
+                                        f85 f85Var = d85.a;
+                                        f85Var.X(view5, matrix);
+                                        f85Var.Y(viewGroup, matrix);
+                                        RectF rectF = new RectF(0.0f, 0.0f, view5.getWidth(), view5.getHeight());
+                                        matrix.mapRect(rectF);
+                                        int iRound2 = Math.round(rectF.left);
+                                        int iRound3 = Math.round(rectF.top);
+                                        int iRound4 = Math.round(rectF.right);
+                                        animator = null;
+                                        int iRound5 = Math.round(rectF.bottom);
+                                        c = 1;
+                                        i2 = 0;
+                                        imageView = new ImageView(view5.getContext());
+                                        imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+                                        zIsAttachedToWindow = view5.isAttachedToWindow();
+                                        if (viewGroup == null) {
+                                            zIsAttachedToWindow2 = false;
+                                        } else {
+                                            zIsAttachedToWindow2 = viewGroup.isAttachedToWindow();
+                                        }
+                                        if (zIsAttachedToWindow) {
+                                            viewGroup2 = null;
+                                            i3 = 0;
+                                        } else {
+                                            if (zIsAttachedToWindow2) {
+                                                viewGroup2 = (ViewGroup) view5.getParent();
+                                                int iIndexOfChild = viewGroup2.indexOfChild(view5);
+                                                viewGroup.getOverlay().add(view5);
+                                                i3 = iIndexOfChild;
+                                            } else {
+                                                i = i5;
+                                                view2 = view;
+                                                bitmapCreateBitmap = null;
+                                            }
+                                            if (bitmapCreateBitmap != null) {
+                                                imageView.setImageBitmap(bitmapCreateBitmap);
+                                            }
+                                            imageView.measure(View.MeasureSpec.makeMeasureSpec(iRound4 - iRound2, 1073741824), View.MeasureSpec.makeMeasureSpec(iRound5 - iRound3, 1073741824));
+                                            imageView.layout(iRound2, iRound3, iRound4, iRound5);
+                                            view7 = imageView;
+                                        }
+                                        iRound = Math.round(rectF.width());
+                                        view2 = view;
+                                        int iRound6 = Math.round(rectF.height());
+                                        if (iRound > 0 || iRound6 <= 0) {
+                                            i = i5;
+                                            bitmapCreateBitmap = null;
+                                        } else {
+                                            i = i5;
+                                            float fMin = Math.min(1.0f, 1048576.0f / (iRound * iRound6));
+                                            int iRound7 = Math.round(iRound * fMin);
+                                            int iRound8 = Math.round(iRound6 * fMin);
+                                            matrix.postTranslate(-rectF.left, -rectF.top);
+                                            matrix.postScale(fMin, fMin);
+                                            if (lx4.a) {
+                                                Picture picture = new Picture();
+                                                Canvas canvasBeginRecording = picture.beginRecording(iRound7, iRound8);
+                                                canvasBeginRecording.concat(matrix);
+                                                view5.draw(canvasBeginRecording);
+                                                picture.endRecording();
+                                                bitmapCreateBitmap = Bitmap.createBitmap(picture);
+                                            } else {
+                                                bitmapCreateBitmap = Bitmap.createBitmap(iRound7, iRound8, Bitmap.Config.ARGB_8888);
+                                                Canvas canvas = new Canvas(bitmapCreateBitmap);
+                                                canvas.concat(matrix);
+                                                view5.draw(canvas);
+                                            }
+                                        }
+                                        if (!zIsAttachedToWindow) {
+                                            viewGroup.getOverlay().remove(view5);
+                                            viewGroup2.addView(view5, i3);
+                                        }
+                                        if (bitmapCreateBitmap != null) {
+                                            imageView.setImageBitmap(bitmapCreateBitmap);
+                                        }
+                                        imageView.measure(View.MeasureSpec.makeMeasureSpec(iRound4 - iRound2, 1073741824), View.MeasureSpec.makeMeasureSpec(iRound5 - iRound3, 1073741824));
+                                        imageView.layout(iRound2, iRound3, iRound4, iRound5);
+                                        view7 = imageView;
+                                    }
+                                    i4 = i2;
+                                    view3 = view2;
+                                } else {
+                                    i = i5;
+                                    c = 1;
+                                    i2 = 0;
+                                    view2 = view;
+                                    animator = null;
+                                }
+                                view7 = view6;
+                                i4 = i2;
+                                view3 = view2;
+                            }
+                        } else {
+                            if (i5 == 4 || view5 == view6) {
+                                view = view6;
+                                z = false;
+                                view6 = null;
+                            }
+                            if (!z) {
+                                i = i5;
+                                c = 1;
+                                i2 = 0;
+                                view2 = view;
+                                animator = null;
+                                view7 = view6;
+                                i4 = i2;
+                                view3 = view2;
+                            } else if (view5.getParent() == null) {
+                                i = i5;
+                                c = 1;
+                                i4 = 0;
+                                i2 = 0;
+                                view3 = view;
+                                animator = null;
+                                view7 = view5;
+                            } else {
+                                if (view5.getParent() instanceof View) {
+                                    view4 = (View) view5.getParent();
+                                    if (G(p(view4, true), m(view4, true)).a) {
+                                        boolean z3 = lx4.a;
+                                        Matrix matrix2 = new Matrix();
+                                        matrix2.setTranslate(-view4.getScrollX(), -view4.getScrollY());
+                                        f85 f85Var2 = d85.a;
+                                        f85Var2.X(view5, matrix2);
+                                        f85Var2.Y(viewGroup, matrix2);
+                                        RectF rectF2 = new RectF(0.0f, 0.0f, view5.getWidth(), view5.getHeight());
+                                        matrix2.mapRect(rectF2);
+                                        int iRound9 = Math.round(rectF2.left);
+                                        int iRound10 = Math.round(rectF2.top);
+                                        int iRound11 = Math.round(rectF2.right);
+                                        animator = null;
+                                        int iRound12 = Math.round(rectF2.bottom);
+                                        c = 1;
+                                        i2 = 0;
+                                        imageView = new ImageView(view5.getContext());
+                                        imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+                                        zIsAttachedToWindow = view5.isAttachedToWindow();
+                                        if (viewGroup == null) {
+                                            zIsAttachedToWindow2 = false;
+                                        } else {
+                                            zIsAttachedToWindow2 = viewGroup.isAttachedToWindow();
+                                        }
+                                        if (zIsAttachedToWindow) {
+                                            if (zIsAttachedToWindow2) {
+                                                i = i5;
+                                                view2 = view;
+                                                bitmapCreateBitmap = null;
+                                            } else {
+                                                viewGroup2 = (ViewGroup) view5.getParent();
+                                                int iIndexOfChild2 = viewGroup2.indexOfChild(view5);
+                                                viewGroup.getOverlay().add(view5);
+                                                i3 = iIndexOfChild2;
+                                            }
+                                            if (bitmapCreateBitmap != null) {
+                                                imageView.setImageBitmap(bitmapCreateBitmap);
+                                            }
+                                            imageView.measure(View.MeasureSpec.makeMeasureSpec(iRound11 - iRound9, 1073741824), View.MeasureSpec.makeMeasureSpec(iRound12 - iRound10, 1073741824));
+                                            imageView.layout(iRound9, iRound10, iRound11, iRound12);
+                                            view7 = imageView;
+                                        } else {
+                                            viewGroup2 = null;
+                                            i3 = 0;
+                                        }
+                                        iRound = Math.round(rectF2.width());
+                                        view2 = view;
+                                        int iRound13 = Math.round(rectF2.height());
+                                        if (iRound > 0) {
+                                            i = i5;
+                                            bitmapCreateBitmap = null;
+                                        } else {
+                                            i = i5;
+                                            bitmapCreateBitmap = null;
+                                        }
+                                        if (!zIsAttachedToWindow) {
+                                            viewGroup.getOverlay().remove(view5);
+                                            viewGroup2.addView(view5, i3);
+                                        }
+                                        if (bitmapCreateBitmap != null) {
+                                            imageView.setImageBitmap(bitmapCreateBitmap);
+                                        }
+                                        imageView.measure(View.MeasureSpec.makeMeasureSpec(iRound11 - iRound9, 1073741824), View.MeasureSpec.makeMeasureSpec(iRound12 - iRound10, 1073741824));
+                                        imageView.layout(iRound9, iRound10, iRound11, iRound12);
+                                        view7 = imageView;
+                                    } else {
+                                        i = i5;
+                                        c = 1;
+                                        i2 = 0;
+                                        view2 = view;
+                                        animator = null;
+                                        id = view4.getId();
+                                        if (view4.getParent() == null) {
+                                            viewGroup.findViewById(id);
+                                        }
+                                    }
+                                    i4 = i2;
+                                    view3 = view2;
+                                } else {
+                                    i = i5;
+                                    c = 1;
+                                    i2 = 0;
+                                    view2 = view;
+                                    animator = null;
+                                }
+                                view7 = view6;
+                                i4 = i2;
+                                view3 = view2;
+                            }
+                        }
+                        z = true;
+                        view6 = null;
+                        view = null;
+                        if (!z) {
+                            i = i5;
+                            c = 1;
+                            i2 = 0;
+                            view2 = view;
+                            animator = null;
+                            view7 = view6;
+                            i4 = i2;
+                            view3 = view2;
+                        } else if (view5.getParent() == null) {
+                            i = i5;
+                            c = 1;
+                            i4 = 0;
+                            i2 = 0;
+                            view3 = view;
+                            animator = null;
+                            view7 = view5;
+                        } else {
+                            if (view5.getParent() instanceof View) {
+                                view4 = (View) view5.getParent();
+                                if (G(p(view4, true), m(view4, true)).a) {
+                                    boolean z4 = lx4.a;
+                                    Matrix matrix3 = new Matrix();
+                                    matrix3.setTranslate(-view4.getScrollX(), -view4.getScrollY());
+                                    f85 f85Var3 = d85.a;
+                                    f85Var3.X(view5, matrix3);
+                                    f85Var3.Y(viewGroup, matrix3);
+                                    RectF rectF3 = new RectF(0.0f, 0.0f, view5.getWidth(), view5.getHeight());
+                                    matrix3.mapRect(rectF3);
+                                    int iRound14 = Math.round(rectF3.left);
+                                    int iRound15 = Math.round(rectF3.top);
+                                    int iRound16 = Math.round(rectF3.right);
+                                    animator = null;
+                                    int iRound17 = Math.round(rectF3.bottom);
+                                    c = 1;
+                                    i2 = 0;
+                                    imageView = new ImageView(view5.getContext());
+                                    imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+                                    zIsAttachedToWindow = view5.isAttachedToWindow();
+                                    if (viewGroup == null) {
+                                        zIsAttachedToWindow2 = false;
+                                    } else {
+                                        zIsAttachedToWindow2 = viewGroup.isAttachedToWindow();
+                                    }
+                                    if (zIsAttachedToWindow) {
+                                        if (zIsAttachedToWindow2) {
+                                            i = i5;
+                                            view2 = view;
+                                            bitmapCreateBitmap = null;
+                                        } else {
+                                            viewGroup2 = (ViewGroup) view5.getParent();
+                                            int iIndexOfChild3 = viewGroup2.indexOfChild(view5);
+                                            viewGroup.getOverlay().add(view5);
+                                            i3 = iIndexOfChild3;
+                                        }
+                                        if (bitmapCreateBitmap != null) {
+                                            imageView.setImageBitmap(bitmapCreateBitmap);
+                                        }
+                                        imageView.measure(View.MeasureSpec.makeMeasureSpec(iRound16 - iRound14, 1073741824), View.MeasureSpec.makeMeasureSpec(iRound17 - iRound15, 1073741824));
+                                        imageView.layout(iRound14, iRound15, iRound16, iRound17);
+                                        view7 = imageView;
+                                    } else {
+                                        viewGroup2 = null;
+                                        i3 = 0;
+                                    }
+                                    iRound = Math.round(rectF3.width());
+                                    view2 = view;
+                                    int iRound18 = Math.round(rectF3.height());
+                                    if (iRound > 0) {
+                                        i = i5;
+                                        bitmapCreateBitmap = null;
+                                    } else {
+                                        i = i5;
+                                        bitmapCreateBitmap = null;
+                                    }
+                                    if (!zIsAttachedToWindow) {
+                                        viewGroup.getOverlay().remove(view5);
+                                        viewGroup2.addView(view5, i3);
+                                    }
+                                    if (bitmapCreateBitmap != null) {
+                                        imageView.setImageBitmap(bitmapCreateBitmap);
+                                    }
+                                    imageView.measure(View.MeasureSpec.makeMeasureSpec(iRound16 - iRound14, 1073741824), View.MeasureSpec.makeMeasureSpec(iRound17 - iRound15, 1073741824));
+                                    imageView.layout(iRound14, iRound15, iRound16, iRound17);
+                                    view7 = imageView;
+                                } else {
+                                    i = i5;
+                                    c = 1;
+                                    i2 = 0;
+                                    view2 = view;
+                                    animator = null;
+                                    id = view4.getId();
+                                    if (view4.getParent() == null) {
+                                        viewGroup.findViewById(id);
+                                    }
+                                }
+                                i4 = i2;
+                                view3 = view2;
+                            } else {
+                                i = i5;
+                                c = 1;
+                                i2 = 0;
+                                view2 = view;
+                                animator = null;
+                            }
+                            view7 = view6;
+                            i4 = i2;
+                            view3 = view2;
+                        }
+                    }
+                    if (view7 == null) {
+                        if (view3 == null) {
+                            return animator;
+                        }
+                        int visibility = view3.getVisibility();
+                        f85 f85Var4 = d85.a;
+                        f85Var4.W(view3, i2);
+                        ObjectAnimator objectAnimatorI = I(viewGroup, view3, mx4Var);
+                        if (objectAnimatorI == null) {
+                            f85Var4.W(view3, visibility);
+                            return objectAnimatorI;
+                        }
+                        k85 k85Var = new k85(view3, i);
+                        objectAnimatorI.addListener(k85Var);
+                        objectAnimatorI.addPauseListener(k85Var);
+                        a(k85Var);
+                        return objectAnimatorI;
+                    }
+                    if (i4 == 0) {
+                        int[] iArr = (int[]) mx4Var.a.get("android:visibility:screenLocation");
+                        int i6 = iArr[i2];
+                        int i7 = iArr[c];
+                        int[] iArr2 = new int[2];
+                        viewGroup.getLocationOnScreen(iArr2);
+                        view7.offsetLeftAndRight((i6 - iArr2[i2]) - view7.getLeft());
+                        view7.offsetTopAndBottom((i7 - iArr2[c]) - view7.getTop());
+                        viewGroup.getOverlay().add(view7);
+                    }
+                    ObjectAnimator objectAnimatorI2 = I(viewGroup, view7, mx4Var);
+                    if (i4 == 0) {
+                        if (objectAnimatorI2 == null) {
+                            viewGroup.getOverlay().remove(view7);
+                            return objectAnimatorI2;
+                        }
+                        view5.setTag(R.id.save_overlay_view, view7);
+                        a(new j85(this, viewGroup, view7, view5));
+                    }
+                    return objectAnimatorI2;
+                }
+            } else if ((this.K & 1) == 1 && mx4Var2 != null) {
+                View view8 = mx4Var2.b;
+                if (mx4Var == null) {
+                    View view9 = (View) view8.getParent();
+                }
+                return H(viewGroup, view8, mx4Var, mx4Var2);
+            }
+        }
         return null;
-    L5:
-        if (((ViewGroup) r4.e) == null) goto L7;
-    L10:
-        int r7 = 1;
-        if (r4.b == true) goto L13;
-        int r5 = r4.d;
-        if ((this.K & 2) != 2) goto L9;
-        if (r25 == null) goto L9;
-        View r6 = r25.b;
-        if (r26 == null) goto L31;
-        View r3 = r26.b;
-    L32:
-        View r11 = (View) r6.getTag(R.id.save_overlay_view);
-        if (r11 == null) goto L35;
-        int r19 = r5;
-        char r17 = 1;
-        int r18 = 0;
-        View r8 = null;
-        Animator r16 = null;
-    L86:
-        if (r11 == null) goto L97;
-        if (r7 != 0) goto L89;
-        int[] r0 = (int[]) r25.a.get("android:visibility:screenLocation");
-        int r9 = r0[r18];
-        int r1 = r0[r17];
-        int[] r10 = new int[2];
-        r24.getLocationOnScreen(r10);
-        r11.offsetLeftAndRight((r9 - r10[r18]) - r11.getLeft());
-        r11.offsetTopAndBottom((r1 - r10[r17]) - r11.getTop());
-        r24.getOverlay().add(r11);
-    L89:
-        ObjectAnimator r2 = I(r24, r11, r25);
-        if (r7 != 0) goto L95;
-        if (r2 != null) goto L94;
-        r24.getOverlay().remove(r11);
-        return r2;
-    L94:
-        r6.setTag(R.id.save_overlay_view, r11);
-        a(new j85(this, r24, r11, r6));
-    L95:
-        return r2;
-    L97:
-        if (r8 == null) goto L105;
-        int r12 = r8.getVisibility();
-        f85 r13 = d85.a;
-        r13.W(r8, r18);
-        ObjectAnimator r14 = I(r24, r8, r25);
-        if (r14 == null) goto L102;
-        k85 r15 = new k85(r8, r19);
-        r14.addListener(r15);
-        r14.addPauseListener(r15);
-        a(r15);
-        return r14;
-    L102:
-        r13.W(r8, r12);
-        return r14;
-    L105:
-        return r16;
-    L35:
-        if (r3 != null) goto L37;
-    L46:
-        if (r3 != null) goto L47;
-    L44:
-        boolean r110 = true;
-        r3 = null;
-    L45:
-        View r111 = null;
-    L48:
-        if (r110 == true) goto L50;
-    L84:
-        r19 = r5;
-        r17 = 1;
-        r18 = 0;
-        View r21 = r111;
-        r16 = null;
-    L85:
-        r11 = r3;
-    L78:
-        r7 = r18;
-        r8 = r21;
-        goto L86
-    L50:
-        if (r6.getParent() != null) goto L53;
-        r19 = r5;
-        r17 = 1;
-        r7 = 0;
-        r18 = 0;
-        r8 = r111;
-        r16 = null;
-        r11 = r6;
-        goto L86
-    L53:
-        if ((r6.getParent() instanceof View) == false) goto L84;
-        View r112 = (View) r6.getParent();
-        if (G(p(r112, true), m(r112, true)).a == true) goto L79;
-        boolean r20 = lx4.a;
-        Matrix r22 = new Matrix();
-        r22.setTranslate(-r112.getScrollX(), -r112.getScrollY());
-        f85 r113 = d85.a;
-        r113.X(r6, r22);
-        r113.Y(r24, r22);
-        RectF r114 = new RectF(0.0f, 0.0f, r6.getWidth(), r6.getHeight());
-        r22.mapRect(r114);
-        int r115 = Math.round(r114.left);
-        int r116 = Math.round(r114.top);
-        int r117 = Math.round(r114.right);
-        r16 = null;
-        int r23 = Math.round(r114.bottom);
-        r17 = 1;
-        r18 = 0;
-        ImageView r27 = new ImageView(r6.getContext());
-        r27.setScaleType(ImageView.ScaleType.CENTER_CROP);
-        boolean r28 = r6.isAttachedToWindow();
-        if (r24 != null) goto L59;
-        boolean r118 = false;
-    L60:
-        if (r28 == true) goto L64;
-        if (r118 == true) goto L63;
-        r19 = r5;
-        r21 = r111;
-        Bitmap r29 = null;
-    L75:
-        if (r29 == null) goto L77;
-        r27.setImageBitmap(r29);
-    L77:
-        r27.measure(View.MeasureSpec.makeMeasureSpec(r117 - r115, 1073741824), View.MeasureSpec.makeMeasureSpec(r23 - r116, 1073741824));
-        r27.layout(r115, r116, r117, r23);
-        r11 = r27;
-        goto L78
-    L63:
-        ViewGroup r119 = (ViewGroup) r6.getParent();
-        int r120 = r119.indexOfChild(r6);
-        r24.getOverlay().add(r6);
-        int r30 = r120;
-    L65:
-        int r31 = Math.round(r114.width());
-        r21 = r111;
-        int r121 = Math.round(r114.height());
-        if (r31 <= 0) goto L72;
-        if (r121 <= 0) goto L72;
-        r19 = r5;
-        float r32 = Math.min(1.0f, 1048576.0f / (r31 * r121));
-        int r33 = Math.round(r31 * r32);
-        int r34 = Math.round(r121 * r32);
-        r22.postTranslate(-r114.left, -r114.top);
-        r22.postScale(r32, r32);
-        if (lx4.a == false) goto L71;
-        Picture r35 = new Picture();
-        Canvas r36 = r35.beginRecording(r33, r34);
-        r36.concat(r22);
-        r6.draw(r36);
-        r35.endRecording();
-        r29 = vl4.b(r35);
-    L73:
-        if (r28 == true) goto L75;
-        r24.getOverlay().remove(r6);
-        r119.addView(r6, r30);
-        goto L75
-    L71:
-        r29 = Bitmap.createBitmap(r33, r34, Bitmap.Config.ARGB_8888);
-        Canvas r37 = new Canvas(r29);
-        r37.concat(r22);
-        r6.draw(r37);
-    L72:
-        r19 = r5;
-        r29 = null;
-        goto L73
-    L64:
-        r119 = null;
-        r30 = 0;
-        goto L65
-    L59:
-        r118 = r24.isAttachedToWindow();
-        goto L60
-    L79:
-        r19 = r5;
-        r17 = 1;
-        r18 = 0;
-        r21 = r111;
-        r16 = null;
-        int r38 = r112.getId();
-        if (r112.getParent() != null) goto L85;
-        if (r38 == (-1)) goto L85;
-        r24.findViewById(r38);
-        goto L85
-    L47:
-        r110 = false;
-        goto L45
-    L37:
-        if (r3.getParent() == null) goto L46;
-        if (r5 == 4) goto L43;
-        if (r6 != r3) goto L44;
-    L43:
-        r111 = r3;
-        r110 = false;
-        r3 = null;
-        goto L48
-    L31:
-        r3 = null;
-        goto L32
-    L13:
-        if ((this.K & 1) != 1) goto L9;
-        if (r26 == null) goto L9;
-        View r39 = r26.b;
-        if (r25 != null) goto L22;
-        View r40 = (View) r39.getParent();
-        if (G(m(r40, false), p(r40, false)).a == true) goto L9;
-    L22:
-        return H(r24, r39, r25, r26);
-    L7:
-        if (((ViewGroup) r4.f) == null) goto L9;
-        goto L9
     }
 
     @Override // defpackage.dx4
@@ -341,26 +589,17 @@ public abstract class l85 extends dx4 {
     }
 
     @Override // defpackage.dx4
-    public final boolean q(mx4 r3, mx4 r4) {
-        if (r3 != null) goto L5;
-        if (r4 != null) goto L5;
-        return false;
-    L5:
-        if (r3 == null) goto L10;
-        if (r4 == null) goto L10;
-        if (r4.a.containsKey("android:visibility:visibility") == r3.a.containsKey("android:visibility:visibility")) goto L10;
-        return false;
-    L10:
-        ez3 r2 = G(r3, r4);
-        if (r2.a == true) goto L13;
-        return false;
-    L13:
-        if (r2.c != 0) goto L15;
-        return true;
-    L15:
-        if (r2.d != 0) goto L21;
-        return true;
-    L21:
+    public final boolean q(mx4 mx4Var, mx4 mx4Var2) {
+        if (mx4Var == null && mx4Var2 == null) {
+            return false;
+        }
+        if (mx4Var != null && mx4Var2 != null && mx4Var2.a.containsKey("android:visibility:visibility") != mx4Var.a.containsKey("android:visibility:visibility")) {
+            return false;
+        }
+        ez3 ez3VarG = G(mx4Var, mx4Var2);
+        if (ez3VarG.a) {
+            return ez3VarG.c == 0 || ez3VarG.d == 0;
+        }
         return false;
     }
 }

@@ -51,25 +51,25 @@ public final class x90 implements q34, q21 {
     public wu3 u;
     public cv3 v;
 
-    public x90(gr4 r1, dv3 r2, int r3, int r4, int r5, int r6, boolean r7, hy r8, gv3 r9, o34 r10, List r11, oz3 r12, int r13, boolean r14) {
-        r1.getClass();
-        r2.getClass();
-        r8.getClass();
-        r10.getClass();
-        this.a = r1;
-        this.b = r2;
-        this.c = r3;
-        this.d = r4;
-        this.e = r5;
-        this.f = r6;
-        this.g = r7;
-        this.h = r8;
-        this.i = r9;
-        this.j = r10;
-        this.k = r11;
-        this.l = r12;
-        this.m = r13;
-        this.n = r14;
+    public x90(gr4 gr4Var, dv3 dv3Var, int i, int i2, int i3, int i4, boolean z, hy hyVar, gv3 gv3Var, o34 o34Var, List list, oz3 oz3Var, int i5, boolean z2) {
+        gr4Var.getClass();
+        dv3Var.getClass();
+        hyVar.getClass();
+        o34Var.getClass();
+        this.a = gr4Var;
+        this.b = dv3Var;
+        this.c = i;
+        this.d = i2;
+        this.e = i3;
+        this.f = i4;
+        this.g = z;
+        this.h = hyVar;
+        this.i = gv3Var;
+        this.j = o34Var;
+        this.k = list;
+        this.l = oz3Var;
+        this.m = i5;
+        this.n = z2;
     }
 
     @Override // defpackage.q21
@@ -77,246 +77,267 @@ public final class x90 implements q34, q21 {
     }
 
     @Override // defpackage.q21
-    public final void b(bv3 r1, IOException r2) {
+    public final void b(bv3 bv3Var, IOException iOException) {
     }
 
     @Override // defpackage.q34
     public final boolean c() {
-        if (this.s == null) goto L6;
-        return true;
-    L6:
-        return false;
+        return this.s != null;
     }
 
     @Override // defpackage.q34
     public final void cancel() {
         this.o = true;
-        Socket r1 = this.p;
-        if (r1 == null) goto L6;
-        ze5.c(r1);
-        return;
+        Socket socket = this.p;
+        if (socket != null) {
+            ze5.c(socket);
+        }
     }
 
     @Override // defpackage.q34
     public final q34 d() {
-        int r13 = this.m;
-        boolean r14 = this.n;
-        return new x90(this.a, this.b, this.c, this.d, this.e, this.f, this.g, this.h, this.i, this.j, this.k, this.l, r13, r14);
+        return new x90(this.a, this.b, this.c, this.d, this.e, this.f, this.g, this.h, this.i, this.j, this.k, this.l, this.m, this.n);
     }
 
     @Override // defpackage.q34
     public final cv3 e() {
-        hy r0 = this.h;
-        o34 r1 = this.j;
-        r0.getClass();
-        r1.getClass();
-        rm2 r2 = r0.a.n.C;
-        monitor-enter(r2);
-        ((LinkedHashSet) r2.o).remove(r1);     // Catch: Throwable -> L18
-        monitor-exit(r2);
-        cv3 r3 = this.v;
-        r3.getClass();
-        hy r4 = this.h;
-        o34 r5 = this.j;
-        r4.getClass();
-        r3.getClass();
-        r5.getClass();
-        c24 r6 = this.i.c(this, this.k);
-        if (r6 != null) goto L9;
-        monitor-enter(r3);
-        dv3 r7 = this.b;     // Catch: Throwable -> L15
-        r7.getClass();     // Catch: Throwable -> L15
-        tl1 r8 = ze5.a;     // Catch: Throwable -> L15
-        r7.f.add(r3);     // Catch: Throwable -> L15
-        fr4.e(r7.d, r7.e);     // Catch: Throwable -> L15
-        this.h.a(r3);     // Catch: Throwable -> L15
-        monitor-exit(r3);
-        this.h.e(r3);
-        this.h.f(r3);
-        return r3;
-    L15:
-        th = move-exception;
-        throw th;
-    L9:
-        return r6.a;
-    L18:
-        th = move-exception;
-        throw th;
+        hy hyVar = this.h;
+        o34 o34Var = this.j;
+        hyVar.getClass();
+        o34Var.getClass();
+        rm2 rm2Var = hyVar.a.n.C;
+        synchronized (rm2Var) {
+            ((LinkedHashSet) rm2Var.o).remove(o34Var);
+        }
+        cv3 cv3Var = this.v;
+        cv3Var.getClass();
+        hy hyVar2 = this.h;
+        o34 o34Var2 = this.j;
+        hyVar2.getClass();
+        cv3Var.getClass();
+        o34Var2.getClass();
+        c24 c24VarC = this.i.c(this, this.k);
+        if (c24VarC != null) {
+            return c24VarC.a;
+        }
+        synchronized (cv3Var) {
+            dv3 dv3Var = this.b;
+            dv3Var.getClass();
+            tl1 tl1Var = ze5.a;
+            dv3Var.f.add(cv3Var);
+            dv3Var.d.d(dv3Var.e, 0L);
+            this.h.a(cv3Var);
+        }
+        this.h.e(cv3Var);
+        this.h.f(cv3Var);
+        return cv3Var;
     }
 
     @Override // defpackage.q34
     public final p34 f() {
-        o34 r0 = this.j;
-        if (this.p != null) goto L24;
-        hy r1 = this.h;
-        r1.b(this);
-        boolean r3 = false;
-        r0.getClass();     // Catch: Throwable -> L8 IOException -> L10
-        r0.c.getClass();     // Catch: Throwable -> L8 IOException -> L10
-        i();     // Catch: Throwable -> L8 IOException -> L10
-        r3 = true;
-        p34 r4 = new p34(this, null, 6);     // Catch: Throwable -> L8 IOException -> L10
-        r1.p(this);
-        return r4;
-    L8:
-        th = move-exception;
-        r1.p(this);
-        if (r3 == true) goto L23;
-        Socket r6 = this.p;
-        if (r6 == null) goto L23;
-        ze5.c(r6);
-    L23:
-        throw th;
-    L10:
-        e = move-exception;
-        r1.d(r0, e);     // Catch: Throwable -> L8
-        p34 r2 = new p34(this, e, 2);     // Catch: Throwable -> L8
-        r1.p(this);
-        if (r3 == true) goto L17;
-        Socket r7 = this.p;
-        if (r7 == null) goto L17;
-        ze5.c(r7);
-    L17:
-        return r2;
-    L24:
-        kf2.o("TCP already connected");
-        return null;
+        Socket socket;
+        Socket socket2;
+        o34 o34Var = this.j;
+        if (this.p != null) {
+            kf2.o("TCP already connected");
+            return null;
+        }
+        hy hyVar = this.h;
+        hyVar.b(this);
+        boolean z = false;
+        try {
+            try {
+                o34Var.getClass();
+                o34Var.c.getClass();
+                i();
+                z = true;
+                p34 p34Var = new p34(this, (Throwable) null, 6);
+                hyVar.p(this);
+                return p34Var;
+            } catch (IOException e) {
+                hyVar.d(o34Var, e);
+                p34 p34Var2 = new p34(this, e, 2);
+                hyVar.p(this);
+                if (!z && (socket = this.p) != null) {
+                    ze5.c(socket);
+                }
+                return p34Var2;
+            }
+        } catch (Throwable th) {
+            hyVar.p(this);
+            if (!z && (socket2 = this.p) != null) {
+                ze5.c(socket2);
+            }
+            throw th;
+        }
     }
 
+    /* JADX WARN: Code duplicated, block: B:77:0x011c  */
+    /* JADX WARN: Code duplicated, block: B:79:0x0120  */
+    /* JADX WARN: Code duplicated, block: B:82:0x0127  */
+    /* JADX WARN: Code duplicated, block: B:87:0x0131  */
+    /* JADX WARN: Code duplicated, block: B:89:0x0135  */
+    /* JADX WARN: Code duplicated, block: B:92:0x013c  */
     @Override // defpackage.q34
-    public final p34 g() {
-        x90 r2 = null;
-        if (this.p != null) goto L5;
-        kf2.o("TCP not connected");
-        return null;
-    L5:
-        if (c() == true) goto L94;
-        o34 r3 = this.j;
-        f6 r0 = r3.a;
-        f6 r4 = r3.a;
-        List r1 = r0.j;
-        hy r5 = this.h;
-        r5.b(this);
-    L18:
-        th = th;
-        boolean r6 = false;
-    L85:
-        r5.p(this);
-        if (r6 == true) goto L93;
-        Socket r7 = this.q;
-        if (r7 == null) goto L90;
-        ze5.c(r7);
-    L90:
-        Socket r8 = this.p;
-        if (r8 == null) goto L93;
-        ze5.c(r8);
-    L93:
-        throw th;
-    L20:
-        e = e;
-        x90 r10 = null;
-    L22:
-        r6 = false;
-    L101:
-        r5.d(r3, e);     // Catch: Throwable -> L84
-        if (this.g == true) goto L58;
-    L74:
-        p34 r9 = new p34(this, r2, e);     // Catch: Throwable -> L84
-        r5.p(this);
-        if (r6 == true) goto L83;
-        Socket r11 = this.q;
-        if (r11 == null) goto L80;
-        ze5.c(r11);
-    L80:
-        Socket r12 = this.p;
-        if (r12 == null) goto L83;
-        ze5.c(r12);
-    L83:
-        return r9;
-    L58:
-        if ((e instanceof ProtocolException) == true) goto L74;
-        if ((e instanceof InterruptedIOException) == true) goto L74;
-        if ((e instanceof SSLHandshakeException) == false) goto L69;
-        if ((e.getCause() instanceof CertificateException) == true) goto L74;
-    L69:
-        if ((e instanceof SSLPeerUnverifiedException) == true) goto L74;
-        if ((e instanceof SSLException) == false) goto L74;
-        r2 = r10;
-    L84:
-        th = th;
-        goto L85
-    L8:
-        if (this.l == null) goto L24;
-        p34 r13 = k();     // Catch: Throwable -> L18 IOException -> L20
-        if (r13.c == null) goto L24;
-        r5.p(this);
-        Socket r14 = this.q;
-        if (r14 == null) goto L14;
-        ze5.c(r14);
-    L14:
-        Socket r15 = this.p;
-        if (r15 == null) goto L17;
-        ze5.c(r15);
-    L17:
-        return r13;
-    L24:
-        if (r4.c == null) goto L41;
-        xu3 r16 = this.t;     // Catch: Throwable -> L18 IOException -> L20
-        if (r16 != null) goto L28;
-    L29:
-        wu3 r17 = this.u;     // Catch: Throwable -> L18 IOException -> L20
-        if (r17 != null) goto L32;
-    L36:
-        SSLSocketFactory r18 = r4.c;     // Catch: Throwable -> L18 IOException -> L20
-        Socket r19 = this.p;     // Catch: Throwable -> L18 IOException -> L20
-        gr1 r20 = r4.h;     // Catch: Throwable -> L18 IOException -> L20
-        Socket r21 = r18.createSocket(r19, r20.d, r20.e, true);     // Catch: Throwable -> L18 IOException -> L20
-        r21.getClass();     // Catch: Throwable -> L18 IOException -> L20
-        SSLSocket r22 = (SSLSocket) r21;     // Catch: Throwable -> L18 IOException -> L20
-        x90 r23 = m(r1, r22);     // Catch: Throwable -> L18 IOException -> L20
-        ma0 r24 = (ma0) r1.get(r23.m);     // Catch: Throwable -> L18 IOException -> L20
-        r10 = r23.l(r1, r22);     // Catch: Throwable -> L18 IOException -> L20
-        r24.a(r22, r23.n);     // Catch: Throwable -> L18 IOException -> L39
-        j(r22, r24);     // Catch: Throwable -> L18 IOException -> L39
-    L47:
-        gr4 r110 = this.a;     // Catch: Throwable -> L18 IOException -> L39
-        dv3 r111 = this.b;     // Catch: Throwable -> L18 IOException -> L39
-        cv3 r112 = new cv3(r110, r111, this.j, this.p, this.q, this.r, this.s, this.t, this.u, r111.a);     // Catch: Throwable -> L18 IOException -> L39
-        this.v = r112;     // Catch: Throwable -> L18 IOException -> L39
-        r112.i();     // Catch: Throwable -> L18 IOException -> L39
-        r3.getClass();     // Catch: Throwable -> L18 IOException -> L39
-        r3.c.getClass();     // Catch: Throwable -> L18 IOException -> L39
-        p34 r25 = new p34(this, null, 6);     // Catch: Throwable -> L51 IOException -> L53
-        r5.p(this);
-        return r25;
-    L53:
-        e = e;
-        r6 = true;
-    L51:
-        th = th;
-        r6 = true;
-    L39:
-        e = e;
-        goto L22
-    L32:
-        if (r17.o.l() == true) goto L36;
-    L35:
-        throw new IOException("TLS tunnel buffered too many bytes!");     // Catch: Throwable -> L18 IOException -> L20
-    L28:
-        if (r16.o.l() == false) goto L35;
-    L41:
-        this.q = this.p;     // Catch: Throwable -> L18 IOException -> L20
-        List r26 = r4.i;     // Catch: Throwable -> L18 IOException -> L20
-        pr3 r27 = pr3.t;     // Catch: Throwable -> L18 IOException -> L20
-        if (r26.contains(r27) == true) goto L45;
-        r27 = pr3.q;     // Catch: Throwable -> L18 IOException -> L20
-    L45:
-        this.s = r27;     // Catch: Throwable -> L18 IOException -> L20
-        r10 = null;
-        goto L47
-    L94:
-        kf2.o("already connected");
-        return null;
+    public final p34 g() throws Throwable {
+        x90 x90VarL;
+        boolean z;
+        Socket socket;
+        Socket socket2;
+        Socket socket3;
+        Socket socket4;
+        wu3 wu3Var;
+        x90 x90Var = null;
+        if (this.p == null) {
+            kf2.o("TCP not connected");
+            return null;
+        }
+        if (c()) {
+            kf2.o("already connected");
+            return null;
+        }
+        o34 o34Var = this.j;
+        f6 f6Var = o34Var.a;
+        f6 f6Var2 = o34Var.a;
+        List list = f6Var.j;
+        hy hyVar = this.h;
+        hyVar.b(this);
+        try {
+            try {
+                if (this.l != null) {
+                    p34 p34VarK = k();
+                    if (p34VarK.c != null) {
+                        hyVar.p(this);
+                        Socket socket5 = this.q;
+                        if (socket5 != null) {
+                            ze5.c(socket5);
+                        }
+                        Socket socket6 = this.p;
+                        if (socket6 != null) {
+                            ze5.c(socket6);
+                        }
+                        return p34VarK;
+                    }
+                }
+                if (f6Var2.c != null) {
+                    xu3 xu3Var = this.t;
+                    if ((xu3Var != null && !xu3Var.o.l()) || ((wu3Var = this.u) != null && !wu3Var.o.l())) {
+                        throw new IOException("TLS tunnel buffered too many bytes!");
+                    }
+                    SSLSocketFactory sSLSocketFactory = f6Var2.c;
+                    Socket socket7 = this.p;
+                    gr1 gr1Var = f6Var2.h;
+                    Socket socketCreateSocket = sSLSocketFactory.createSocket(socket7, gr1Var.d, gr1Var.e, true);
+                    socketCreateSocket.getClass();
+                    SSLSocket sSLSocket = (SSLSocket) socketCreateSocket;
+                    x90 x90VarM = m(list, sSLSocket);
+                    ma0 ma0Var = (ma0) list.get(x90VarM.m);
+                    x90VarL = x90VarM.l(list, sSLSocket);
+                    try {
+                        ma0Var.a(sSLSocket, x90VarM.n);
+                        j(sSLSocket, ma0Var);
+                    } catch (IOException e) {
+                        e = e;
+                        z = false;
+                        try {
+                            hyVar.d(o34Var, e);
+                            if (this.g && !(e instanceof ProtocolException) && !(e instanceof InterruptedIOException) && ((!(e instanceof SSLHandshakeException) || !(e.getCause() instanceof CertificateException)) && !(e instanceof SSLPeerUnverifiedException) && (e instanceof SSLException))) {
+                                x90Var = x90VarL;
+                            }
+                            p34 p34Var = new p34(this, x90Var, e);
+                            hyVar.p(this);
+                            if (!z) {
+                                socket3 = this.q;
+                                if (socket3 != null) {
+                                    ze5.c(socket3);
+                                }
+                                socket4 = this.p;
+                                if (socket4 != null) {
+                                    ze5.c(socket4);
+                                }
+                            }
+                            return p34Var;
+                        } catch (Throwable th) {
+                            th = th;
+                            hyVar.p(this);
+                            if (!z) {
+                                socket = this.q;
+                                if (socket != null) {
+                                    ze5.c(socket);
+                                }
+                                socket2 = this.p;
+                                if (socket2 != null) {
+                                    ze5.c(socket2);
+                                }
+                            }
+                            throw th;
+                        }
+                    }
+                } else {
+                    this.q = this.p;
+                    List list2 = f6Var2.i;
+                    pr3 pr3Var = pr3.t;
+                    if (!list2.contains(pr3Var)) {
+                        pr3Var = pr3.q;
+                    }
+                    this.s = pr3Var;
+                    x90VarL = null;
+                }
+                gr4 gr4Var = this.a;
+                dv3 dv3Var = this.b;
+                cv3 cv3Var = new cv3(gr4Var, dv3Var, this.j, this.p, this.q, this.r, this.s, this.t, this.u, dv3Var.a);
+                this.v = cv3Var;
+                cv3Var.i();
+                o34Var.getClass();
+                o34Var.c.getClass();
+                try {
+                    p34 p34Var2 = new p34(this, (Throwable) null, 6);
+                    hyVar.p(this);
+                    return p34Var2;
+                } catch (IOException e2) {
+                    e = e2;
+                    z = true;
+                    hyVar.d(o34Var, e);
+                    if (this.g) {
+                        x90Var = x90VarL;
+                    }
+                    p34 p34Var3 = new p34(this, x90Var, e);
+                    hyVar.p(this);
+                    if (!z) {
+                        socket3 = this.q;
+                        if (socket3 != null) {
+                            ze5.c(socket3);
+                        }
+                        socket4 = this.p;
+                        if (socket4 != null) {
+                            ze5.c(socket4);
+                        }
+                    }
+                    return p34Var3;
+                } catch (Throwable th2) {
+                    th = th2;
+                    z = true;
+                    hyVar.p(this);
+                    if (!z) {
+                        socket = this.q;
+                        if (socket != null) {
+                            ze5.c(socket);
+                        }
+                        socket2 = this.p;
+                        if (socket2 != null) {
+                            ze5.c(socket2);
+                        }
+                    }
+                    throw th;
+                }
+            } catch (Throwable th3) {
+                th = th3;
+                z = false;
+            }
+        } catch (IOException e3) {
+            e = e3;
+            x90VarL = null;
+        }
     }
 
     @Override // defpackage.q21
@@ -324,237 +345,209 @@ public final class x90 implements q34, q21 {
         return this.j;
     }
 
-    public final void i() {
-        Proxy.Type r0 = this.j.b.type();
-        if (r0 != null) goto L5;
-        int r1 = -1;
-    L6:
-        int r2 = 1;
-        if (r1 != 1) goto L9;
-    L11:
-        Socket r3 = this.j.a.b.createSocket();
-        r3.getClass();
-    L12:
-        this.p = r3;
-        if (this.o == true) goto L27;
-        r3.setSoTimeout(this.f);
-        qg3 r4 = qg3.a;     // Catch: ConnectException -> L24
-        qg3.a.e(r3, this.j.c, this.e);     // Catch: ConnectException -> L24
-        Logger r5 = p83.a;     // Catch: NullPointerException -> L18
-        vh4 r6 = new vh4(r3);     // Catch: NullPointerException -> L18
-        InputStream r7 = r3.getInputStream();     // Catch: NullPointerException -> L18
-        r7.getClass();     // Catch: NullPointerException -> L18
-        int r8 = 0;
-        this.t = new xu3(new tk(r8, r6, new tk(r2, r7, r6)));     // Catch: NullPointerException -> L18
-        vh4 r9 = new vh4(r3);     // Catch: NullPointerException -> L18
-        OutputStream r10 = r3.getOutputStream();     // Catch: NullPointerException -> L18
-        r10.getClass();     // Catch: NullPointerException -> L18
-        this.u = new wu3(new sk(r8, r9, new sk(r2, r10, r9)));     // Catch: NullPointerException -> L18
-        return;
-    L18:
-        e = move-exception;
-        if (h12.c(e.getMessage(), "throw with null exception") == true) goto L23;
-        return;
-    L23:
-        throw new IOException(e);
-    L24:
-        e = move-exception;
-        ConnectException r11 = new ConnectException("Failed to connect to " + this.j.c);
-        r11.initCause(e);
-        throw r11;
-    L27:
-        mj0.i("canceled");
-        return;
-    L9:
-        if (r1 == 2) goto L11;
-        r3 = new Socket(this.j.b);
-        goto L12
-    L5:
-        r1 = v90.a[r0.ordinal()];
-        goto L6
+    public final void i() throws IOException {
+        Socket socketCreateSocket;
+        Proxy.Type type = this.j.b.type();
+        int i = type == null ? -1 : v90.a[type.ordinal()];
+        int i2 = 1;
+        if (i == 1 || i == 2) {
+            socketCreateSocket = this.j.a.b.createSocket();
+            socketCreateSocket.getClass();
+        } else {
+            socketCreateSocket = new Socket(this.j.b);
+        }
+        this.p = socketCreateSocket;
+        if (this.o) {
+            mj0.i("canceled");
+            return;
+        }
+        socketCreateSocket.setSoTimeout(this.f);
+        try {
+            qg3 qg3Var = qg3.a;
+            qg3.a.e(socketCreateSocket, this.j.c, this.e);
+            try {
+                Logger logger = p83.a;
+                vh4 vh4Var = new vh4(socketCreateSocket);
+                InputStream inputStream = socketCreateSocket.getInputStream();
+                inputStream.getClass();
+                int i3 = 0;
+                this.t = new xu3(new tk(i3, vh4Var, new tk(i2, inputStream, vh4Var)));
+                vh4 vh4Var2 = new vh4(socketCreateSocket);
+                OutputStream outputStream = socketCreateSocket.getOutputStream();
+                outputStream.getClass();
+                this.u = new wu3(new sk(i3, vh4Var2, new sk(i2, outputStream, vh4Var2)));
+            } catch (NullPointerException e) {
+                if (h12.c(e.getMessage(), "throw with null exception")) {
+                    throw new IOException(e);
+                }
+            }
+        } catch (ConnectException e2) {
+            ConnectException connectException = new ConnectException("Failed to connect to " + this.j.c);
+            connectException.initCause(e2);
+            throw connectException;
+        }
     }
 
-    public final void j(SSLSocket r10, ma0 r11) {
-        f6 r2 = this.j.a;
-    L6:
-        th = move-exception;
-        qg3 r12 = qg3.a;
-        qg3.a.a(r10);
-        ze5.c(r10);
-        throw th;
-    L4:
-        if (r11.b == false) goto L8;
-        qg3 r3 = qg3.a;     // Catch: Throwable -> L6
-        qg3.a.d(r10, r2.h.d, r2.i);     // Catch: Throwable -> L6
-    L8:
-        r10.startHandshake();     // Catch: Throwable -> L6
-        SSLSession r4 = r10.getSession();     // Catch: Throwable -> L6
-        r4.getClass();     // Catch: Throwable -> L6
-        jl1 r5 = zz1.q(r4);     // Catch: Throwable -> L6
-        HostnameVerifier r6 = r2.d;     // Catch: Throwable -> L6
-        r6.getClass();     // Catch: Throwable -> L6
-        boolean r7 = r6.verify(r2.h.d, r4);     // Catch: Throwable -> L6
-        int r8 = 0;
-        if (r7 == true) goto L16;
-        List r9 = r5.a();     // Catch: Throwable -> L6
-        if (r9.isEmpty() == true) goto L15;
-        Object r13 = r9.get(0);     // Catch: Throwable -> L6
-        r13.getClass();     // Catch: Throwable -> L6
-        X509Certificate r14 = (X509Certificate) r13;     // Catch: Throwable -> L6
-        StringBuilder r0 = new StringBuilder("\n            |Hostname ");     // Catch: Throwable -> L6
-        r0.append(r2.h.d);     // Catch: Throwable -> L6
-        r0.append(" not verified:\n            |    certificate: ");     // Catch: Throwable -> L6
-        o00 r1 = o00.c;     // Catch: Throwable -> L6
-        StringBuilder r15 = new StringBuilder("sha256/");     // Catch: Throwable -> L6
-        yw r16 = yw.q;     // Catch: Throwable -> L6
-        byte[] r17 = r14.getPublicKey().getEncoded();     // Catch: Throwable -> L6
-        r17.getClass();     // Catch: Throwable -> L6
-        r15.append(pa.A(r17).c("SHA-256").a());     // Catch: Throwable -> L6
-        r0.append(r15.toString());     // Catch: Throwable -> L6
-        r0.append("\n            |    DN: ");     // Catch: Throwable -> L6
-        r0.append(r14.getSubjectDN().getName());     // Catch: Throwable -> L6
-        r0.append("\n            |    subjectAltNames: ");     // Catch: Throwable -> L6
-        r0.append(q40.G0(m83.a(r14, 7), m83.a(r14, 2)));     // Catch: Throwable -> L6
-        r0.append("\n            ");     // Catch: Throwable -> L6
-        throw new SSLPeerUnverifiedException(rm4.d0(r0.toString()));     // Catch: Throwable -> L6
-    L15:
-        throw new SSLPeerUnverifiedException("Hostname " + r2.h.d + " not verified (no certificates)");     // Catch: Throwable -> L6
-    L16:
-        o00 r18 = r2.e;     // Catch: Throwable -> L6
-        r18.getClass();     // Catch: Throwable -> L6
-        this.r = new jl1(r5.a, r5.b, r5.c, new w90(r18, r5, r2, r8));     // Catch: Throwable -> L6
-        r2.h.d.getClass();     // Catch: Throwable -> L6
-        Iterator r19 = r18.a.iterator();     // Catch: Throwable -> L6
-        if (r19.hasNext() == false) goto L19;
-        r19.next().getClass();     // Catch: Throwable -> L6
-        throw new ClassCastException();     // Catch: Throwable -> L6
-    L19:
-        if (r11.b == false) goto L21;
-        qg3 r110 = qg3.a;     // Catch: Throwable -> L6
-        String r111 = qg3.a.f(r10);     // Catch: Throwable -> L6
-    L22:
-        this.q = r10;     // Catch: Throwable -> L6
-        Logger r20 = p83.a;     // Catch: Throwable -> L6
-        vh4 r21 = new vh4(r10);     // Catch: Throwable -> L6
-        InputStream r22 = r10.getInputStream();     // Catch: Throwable -> L6
-        r22.getClass();     // Catch: Throwable -> L6
-        int r23 = 1;
-        this.t = new xu3(new tk(r8, r21, new tk(r23, r22, r21)));     // Catch: Throwable -> L6
-        vh4 r24 = new vh4(r10);     // Catch: Throwable -> L6
-        OutputStream r25 = r10.getOutputStream();     // Catch: Throwable -> L6
-        r25.getClass();     // Catch: Throwable -> L6
-        this.u = new wu3(new sk(r8, r24, new sk(r23, r25, r24)));     // Catch: Throwable -> L6
-        if (r111 == null) goto L25;
-        pr3.o.getClass();     // Catch: Throwable -> L6
-        pr3 r112 = hh3.i(r111);     // Catch: Throwable -> L6
-    L26:
-        this.s = r112;     // Catch: Throwable -> L6
-        qg3 r26 = qg3.a;
-        qg3.a.a(r10);
-        return;
-    L25:
-        r112 = pr3.q;     // Catch: Throwable -> L6
-        goto L26
-    L21:
-        r111 = null;
-        goto L22
+    public final void j(SSLSocket sSLSocket, ma0 ma0Var) {
+        String strF;
+        pr3 pr3VarI;
+        f6 f6Var = this.j.a;
+        try {
+            if (ma0Var.b) {
+                qg3 qg3Var = qg3.a;
+                qg3.a.d(sSLSocket, f6Var.h.d, f6Var.i);
+            }
+            sSLSocket.startHandshake();
+            SSLSession session = sSLSocket.getSession();
+            session.getClass();
+            jl1 jl1VarQ = zz1.q(session);
+            HostnameVerifier hostnameVerifier = f6Var.d;
+            hostnameVerifier.getClass();
+            boolean zVerify = hostnameVerifier.verify(f6Var.h.d, session);
+            int i = 0;
+            if (!zVerify) {
+                List listA = jl1VarQ.a();
+                if (listA.isEmpty()) {
+                    throw new SSLPeerUnverifiedException("Hostname " + f6Var.h.d + " not verified (no certificates)");
+                }
+                Object obj = listA.get(0);
+                obj.getClass();
+                X509Certificate x509Certificate = (X509Certificate) obj;
+                StringBuilder sb = new StringBuilder("\n            |Hostname ");
+                sb.append(f6Var.h.d);
+                sb.append(" not verified:\n            |    certificate: ");
+                o00 o00Var = o00.c;
+                StringBuilder sb2 = new StringBuilder("sha256/");
+                yw ywVar = yw.q;
+                byte[] encoded = x509Certificate.getPublicKey().getEncoded();
+                encoded.getClass();
+                sb2.append(pa.A(encoded).c("SHA-256").a());
+                sb.append(sb2.toString());
+                sb.append("\n            |    DN: ");
+                sb.append(x509Certificate.getSubjectDN().getName());
+                sb.append("\n            |    subjectAltNames: ");
+                sb.append(q40.G0(m83.a(x509Certificate, 7), m83.a(x509Certificate, 2)));
+                sb.append("\n            ");
+                throw new SSLPeerUnverifiedException(rm4.d0(sb.toString()));
+            }
+            o00 o00Var2 = f6Var.e;
+            o00Var2.getClass();
+            this.r = new jl1(jl1VarQ.a, jl1VarQ.b, jl1VarQ.c, new w90(o00Var2, jl1VarQ, f6Var, i));
+            f6Var.h.d.getClass();
+            Iterator it = o00Var2.a.iterator();
+            if (it.hasNext()) {
+                it.next().getClass();
+                throw new ClassCastException();
+            }
+            if (ma0Var.b) {
+                qg3 qg3Var2 = qg3.a;
+                strF = qg3.a.f(sSLSocket);
+            } else {
+                strF = null;
+            }
+            this.q = sSLSocket;
+            Logger logger = p83.a;
+            vh4 vh4Var = new vh4(sSLSocket);
+            InputStream inputStream = sSLSocket.getInputStream();
+            inputStream.getClass();
+            int i2 = 1;
+            this.t = new xu3(new tk(i, vh4Var, new tk(i2, inputStream, vh4Var)));
+            vh4 vh4Var2 = new vh4(sSLSocket);
+            OutputStream outputStream = sSLSocket.getOutputStream();
+            outputStream.getClass();
+            this.u = new wu3(new sk(i, vh4Var2, new sk(i2, outputStream, vh4Var2)));
+            if (strF != null) {
+                pr3.o.getClass();
+                pr3VarI = hh3.i(strF);
+            } else {
+                pr3VarI = pr3.q;
+            }
+            this.s = pr3VarI;
+            qg3 qg3Var3 = qg3.a;
+            qg3.a.a(sSLSocket);
+        } catch (Throwable th) {
+            qg3 qg3Var4 = qg3.a;
+            qg3.a.a(sSLSocket);
+            ze5.c(sSLSocket);
+            throw th;
+        }
     }
 
-    public final p34 k() {
-        oz3 r0 = this.l;
-        r0.getClass();
-        o34 r1 = this.j;
-        String r2 = "CONNECT " + ze5.j(r1.a.h, true) + " HTTP/1.1";
-        xu3 r3 = this.t;
-        r3.getClass();
-        wu3 r4 = this.u;
-        r4.getClass();
-        hq1 r5 = new hq1(null, this, r3, r4);
-        fu4 r6 = r3.n.timeout();
-        long r7 = this.c;
-        TimeUnit r9 = TimeUnit.MILLISECONDS;
-        r6.g(r7, r9);
-        r4.n.timeout().g(this.d, r9);
-        r5.n(r0.c, r2);
-        r5.c();
-        j14 r8 = r5.f(false);
-        r8.getClass();
-        r8.a = r0;
-        k14 r10 = r8.a();
-        int r11 = r10.q;
-        long r12 = ze5.e(r10);
-        if (r12 == (-1)) goto L7;
-        eq1 r13 = r5.k(r12);
-        ze5.h(r13, Integer.MAX_VALUE);
-        r13.close();
-    L7:
-        if (r11 == 200) goto L15;
-        if (r11 != 407) goto L12;
-        r1.a.f.getClass();
+    public final p34 k() throws IOException {
+        oz3 oz3Var = this.l;
+        oz3Var.getClass();
+        o34 o34Var = this.j;
+        String str = "CONNECT " + ze5.j(o34Var.a.h, true) + " HTTP/1.1";
+        xu3 xu3Var = this.t;
+        xu3Var.getClass();
+        wu3 wu3Var = this.u;
+        wu3Var.getClass();
+        hq1 hq1Var = new hq1(null, this, xu3Var, wu3Var);
+        fu4 fu4VarTimeout = xu3Var.n.timeout();
+        long j = this.c;
+        TimeUnit timeUnit = TimeUnit.MILLISECONDS;
+        fu4VarTimeout.g(j, timeUnit);
+        wu3Var.n.timeout().g(this.d, timeUnit);
+        hq1Var.n(oz3Var.c, str);
+        hq1Var.c();
+        j14 j14VarF = hq1Var.f(false);
+        j14VarF.getClass();
+        j14VarF.a = oz3Var;
+        k14 k14VarA = j14VarF.a();
+        int i = k14VarA.q;
+        long jE = ze5.e(k14VarA);
+        if (jE != -1) {
+            eq1 eq1VarK = hq1Var.k(jE);
+            ze5.h(eq1VarK, Integer.MAX_VALUE);
+            eq1VarK.close();
+        }
+        if (i == 200) {
+            return new p34(this, (Throwable) null, 6);
+        }
+        if (i != 407) {
+            mj0.i(f34.f(i, "Unexpected response code for CONNECT: "));
+            return null;
+        }
+        o34Var.a.f.getClass();
         mj0.i("Failed to authenticate with proxy");
         return null;
-    L12:
-        mj0.i(f34.f(r11, "Unexpected response code for CONNECT: "));
-        return null;
-    L15:
-        return new p34(this, null, 6);
     }
 
-    public final x90 l(List r20, SSLSocket r21) {
-        r20.getClass();
-        int r1 = this.m;
-        int r2 = r1 + 1;
-        int r3 = r20.size();
-    L3:
-        if (r2 >= r3) goto L24;
-        ma0 r5 = (ma0) r20.get(r2);
-        r5.getClass();
-        if (r5.a == false) goto L16;
-        String[] r6 = r5.d;
-        if (r6 != null) goto L10;
-    L12:
-        String[] r7 = r5.c;
-        if (r7 == null) goto L18;
-        if (xe5.g(r7, r21.getEnabledCipherSuites(), v20.c) == false) goto L16;
-    L18:
-        if (r1 == (-1)) goto L21;
-        boolean r4 = true;
-    L20:
-        boolean r18 = r4;
-        o34 r14 = this.j;
-        List r15 = this.k;
-        return new x90(this.a, this.b, this.c, this.d, this.e, this.f, this.g, this.h, this.i, r14, r15, this.l, r2, r18);
-    L21:
-        r4 = false;
-        goto L20
-    L10:
-        if (xe5.g(r6, r21.getEnabledProtocols(), w13.o) == true) goto L12;
-    L16:
-        r2 = r2 + 1;
-        goto L3
-    L24:
+    public final x90 l(List list, SSLSocket sSLSocket) {
+        String[] strArr;
+        String[] strArr2;
+        list.getClass();
+        int i = this.m;
+        int size = list.size();
+        for (int i2 = i + 1; i2 < size; i2++) {
+            ma0 ma0Var = (ma0) list.get(i2);
+            ma0Var.getClass();
+            if (ma0Var.a && (((strArr = ma0Var.d) == null || xe5.g(strArr, sSLSocket.getEnabledProtocols(), w13.o)) && ((strArr2 = ma0Var.c) == null || xe5.g(strArr2, sSLSocket.getEnabledCipherSuites(), v20.c)))) {
+                return new x90(this.a, this.b, this.c, this.d, this.e, this.f, this.g, this.h, this.i, this.j, this.k, this.l, i2, i != -1);
+            }
+        }
         return null;
     }
 
-    public final x90 m(List r4, SSLSocket r5) {
-        r4.getClass();
-        if (this.m == (-1)) goto L5;
-        return this;
-    L5:
-        x90 r0 = l(r4, r5);
-        if (r0 == null) goto L8;
-        return r0;
-    L8:
-        StringBuilder r1 = new StringBuilder("Unable to find acceptable protocols. isFallback=");
-        r1.append(this.n);
-        r1.append(", modes=");
-        r1.append(r4);
-        String[] r3 = r5.getEnabledProtocols();
-        r3.getClass();
-        String r6 = Arrays.toString(r3);
-        r6.getClass();
-        r1.append(", supported protocols=");
-        r1.append(r6);
-        throw new UnknownServiceException(r1.toString());
+    public final x90 m(List list, SSLSocket sSLSocket) throws UnknownServiceException {
+        list.getClass();
+        if (this.m != -1) {
+            return this;
+        }
+        x90 x90VarL = l(list, sSLSocket);
+        if (x90VarL != null) {
+            return x90VarL;
+        }
+        StringBuilder sb = new StringBuilder("Unable to find acceptable protocols. isFallback=");
+        sb.append(this.n);
+        sb.append(", modes=");
+        sb.append(list);
+        String[] enabledProtocols = sSLSocket.getEnabledProtocols();
+        enabledProtocols.getClass();
+        String string = Arrays.toString(enabledProtocols);
+        string.getClass();
+        sb.append(", supported protocols=");
+        sb.append(string);
+        throw new UnknownServiceException(sb.toString());
     }
 }

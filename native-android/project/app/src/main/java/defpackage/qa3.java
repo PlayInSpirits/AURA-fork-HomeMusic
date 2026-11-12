@@ -5,18 +5,16 @@ package defpackage;
 public final class qa3 extends g12 {
     public final /* synthetic */ int i;
 
-    public /* synthetic */ qa3(int r1) {
-        this.i = r1;
+    public /* synthetic */ qa3(int i) {
+        this.i = i;
     }
 
     public final String toString() {
-        switch(this.i) {
-            case 0: goto L6;
-            default: goto L4;
-        };
-    L4:
-        return "SUCCESS";
-    L6:
-        return "IN_PROGRESS";
+        switch (this.i) {
+            case 0:
+                return "IN_PROGRESS";
+            default:
+                return "SUCCESS";
+        }
     }
 }

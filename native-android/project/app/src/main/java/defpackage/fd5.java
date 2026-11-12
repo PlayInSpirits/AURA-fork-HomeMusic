@@ -22,1162 +22,954 @@ public final class fd5 {
     public final aq4 m;
     public final aq4 n;
 
-    public fd5(WorkDatabase_Impl r4) {
-        this.a = r4;
-        int r1 = 5;
-        this.b = new vo0(r4, r1);
-        new aq4(r4, 12);
-        this.c = new aq4(r4, 13);
-        this.d = new aq4(r4, 14);
-        this.e = new aq4(r4, 15);
-        this.f = new aq4(r4, 16);
-        this.g = new aq4(r4, 17);
-        this.h = new aq4(r4, 18);
-        this.i = new aq4(r4, 19);
-        this.j = new aq4(r4, 4);
-        new aq4(r4, r1);
-        this.k = new aq4(r4, 6);
-        this.l = new aq4(r4, 7);
-        this.m = new aq4(r4, 8);
-        new aq4(r4, 9);
-        new aq4(r4, 10);
-        this.n = new aq4(r4, 11);
+    public fd5(WorkDatabase_Impl workDatabase_Impl) {
+        this.a = workDatabase_Impl;
+        int i = 5;
+        this.b = new vo0(workDatabase_Impl, i);
+        new aq4(workDatabase_Impl, 12);
+        this.c = new aq4(workDatabase_Impl, 13);
+        this.d = new aq4(workDatabase_Impl, 14);
+        this.e = new aq4(workDatabase_Impl, 15);
+        this.f = new aq4(workDatabase_Impl, 16);
+        this.g = new aq4(workDatabase_Impl, 17);
+        this.h = new aq4(workDatabase_Impl, 18);
+        this.i = new aq4(workDatabase_Impl, 19);
+        this.j = new aq4(workDatabase_Impl, 4);
+        new aq4(workDatabase_Impl, i);
+        this.k = new aq4(workDatabase_Impl, 6);
+        this.l = new aq4(workDatabase_Impl, 7);
+        this.m = new aq4(workDatabase_Impl, 8);
+        new aq4(workDatabase_Impl, 9);
+        new aq4(workDatabase_Impl, 10);
+        this.n = new aq4(workDatabase_Impl, 11);
     }
 
-    public final void a(String r4) {
-        WorkDatabase_Impl r0 = this.a;
-        r0.b();
-        aq4 r3 = this.c;
-        df1 r1 = r3.a();
-        r1.h(1, r4);
-        r0.c();     // Catch: Throwable -> L8
-        r1.b();     // Catch: Throwable -> L10
-        r0.t();     // Catch: Throwable -> L10
-        r0.o();     // Catch: Throwable -> L8
-        r3.h(r1);
-        return;
-    L10:
-        th = move-exception;
-        r0.o();     // Catch: Throwable -> L8
-        throw th;     // Catch: Throwable -> L8
-    L8:
-        th = move-exception;
-        r3.h(r1);
-        throw th;
+    public final void a(String str) {
+        WorkDatabase_Impl workDatabase_Impl = this.a;
+        workDatabase_Impl.b();
+        aq4 aq4Var = this.c;
+        df1 df1VarA = aq4Var.a();
+        df1VarA.h(1, str);
+        try {
+            workDatabase_Impl.c();
+            try {
+                df1VarA.b();
+                workDatabase_Impl.t();
+                workDatabase_Impl.o();
+                aq4Var.h(df1VarA);
+            } catch (Throwable th) {
+                workDatabase_Impl.o();
+                throw th;
+            }
+        } catch (Throwable th2) {
+            aq4Var.h(df1VarA);
+            throw th2;
+        }
     }
 
-    public final ArrayList b() {
-        w24 r1 = w24.b(1, "SELECT * FROM workspec WHERE state=0 ORDER BY last_enqueue_time LIMIT ?");
-        r1.c(1, 200);
-        WorkDatabase_Impl r2 = this.a;
-        r2.b();
-        Cursor r3 = xl.H(r2, r1);
-        int r4 = e35.x(r3, "id");     // Catch: Throwable -> L44
-        int r5 = e35.x(r3, "state");     // Catch: Throwable -> L44
-        int r6 = e35.x(r3, "worker_class_name");     // Catch: Throwable -> L44
-        int r7 = e35.x(r3, "input_merger_class_name");     // Catch: Throwable -> L44
-        int r8 = e35.x(r3, "input");     // Catch: Throwable -> L44
-        int r9 = e35.x(r3, "output");     // Catch: Throwable -> L44
-        int r10 = e35.x(r3, "initial_delay");     // Catch: Throwable -> L44
-        int r11 = e35.x(r3, "interval_duration");     // Catch: Throwable -> L44
-        int r12 = e35.x(r3, "flex_duration");     // Catch: Throwable -> L44
-        int r13 = e35.x(r3, "run_attempt_count");     // Catch: Throwable -> L44
-        int r14 = e35.x(r3, "backoff_policy");     // Catch: Throwable -> L44
-        int r15 = e35.x(r3, "backoff_delay_duration");     // Catch: Throwable -> L44
-        int r16 = e35.x(r3, "last_enqueue_time");     // Catch: Throwable -> L44
-        int r0 = e35.x(r3, "minimum_retention_duration");     // Catch: Throwable -> L44
-        w24 r17 = r1;
-        int r80 = e35.x(r3, "schedule_requested_at");     // Catch: Throwable -> L40
-        int r18 = e35.x(r3, "run_in_foreground");     // Catch: Throwable -> L40
-        int r19 = e35.x(r3, "out_of_quota_policy");     // Catch: Throwable -> L40
-        int r110 = e35.x(r3, "period_count");     // Catch: Throwable -> L40
-        int r20 = e35.x(r3, "generation");     // Catch: Throwable -> L40
-        int r21 = e35.x(r3, "next_schedule_time_override");     // Catch: Throwable -> L40
-        int r22 = e35.x(r3, "next_schedule_time_override_generation");     // Catch: Throwable -> L40
-        int r23 = e35.x(r3, "stop_reason");     // Catch: Throwable -> L40
-        int r24 = e35.x(r3, "trace_tag");     // Catch: Throwable -> L40
-        int r25 = e35.x(r3, "required_network_type");     // Catch: Throwable -> L40
-        int r26 = e35.x(r3, "required_network_request");     // Catch: Throwable -> L40
-        int r27 = e35.x(r3, "requires_charging");     // Catch: Throwable -> L40
-        int r28 = e35.x(r3, "requires_device_idle");     // Catch: Throwable -> L40
-        int r29 = e35.x(r3, "requires_battery_not_low");     // Catch: Throwable -> L40
-        int r30 = e35.x(r3, "requires_storage_not_low");     // Catch: Throwable -> L40
-        int r31 = e35.x(r3, "trigger_content_update_delay");     // Catch: Throwable -> L40
-        int r32 = e35.x(r3, "trigger_max_content_delay");     // Catch: Throwable -> L40
-        int r33 = e35.x(r3, "content_uri_triggers");     // Catch: Throwable -> L40
-        int r34 = r0;
-        ArrayList r35 = new ArrayList(r3.getCount());     // Catch: Throwable -> L40
-    L6:
-        if (r3.moveToNext() == false) goto L42;
-        String r36 = r3.getString(r4);     // Catch: Throwable -> L40
-        int r37 = uc5.x(r3.getInt(r5));     // Catch: Throwable -> L40
-        String r38 = r3.getString(r6);     // Catch: Throwable -> L40
-        String r39 = r3.getString(r7);     // Catch: Throwable -> L40
-        oh0 r40 = oh0.a(r3.getBlob(r8));     // Catch: Throwable -> L40
-        oh0 r41 = oh0.a(r3.getBlob(r9));     // Catch: Throwable -> L40
-        long r42 = r3.getLong(r10);     // Catch: Throwable -> L40
-        long r44 = r3.getLong(r11);     // Catch: Throwable -> L40
-        long r46 = r3.getLong(r12);     // Catch: Throwable -> L40
-        int r49 = r3.getInt(r13);     // Catch: Throwable -> L40
-        int r50 = uc5.u(r3.getInt(r14));     // Catch: Throwable -> L40
-        long r51 = r3.getLong(r15);     // Catch: Throwable -> L40
-        long r53 = r3.getLong(r16);     // Catch: Throwable -> L40
-        int r43 = r34;
-        long r55 = r3.getLong(r43);     // Catch: Throwable -> L40
-        r34 = r43;
-        int r45 = r80;
-        long r57 = r3.getLong(r45);     // Catch: Throwable -> L40
-        r80 = r45;
-        int r47 = r18;
-        if (r3.getInt(r47) == 0) goto L12;
-        boolean r59 = true;
-    L11:
-        r18 = r47;
-        int r48 = r19;
-        int r60 = uc5.w(r3.getInt(r48));     // Catch: Throwable -> L40
-        r19 = r48;
-        int r52 = r110;
-        int r61 = r3.getInt(r52);     // Catch: Throwable -> L40
-        r110 = r52;
-        int r54 = r20;
-        int r62 = r3.getInt(r54);     // Catch: Throwable -> L40
-        r20 = r54;
-        int r56 = r21;
-        long r63 = r3.getLong(r56);     // Catch: Throwable -> L40
-        r21 = r56;
-        int r58 = r22;
-        int r65 = r3.getInt(r58);     // Catch: Throwable -> L40
-        r22 = r58;
-        int r64 = r23;
-        int r66 = r3.getInt(r64);     // Catch: Throwable -> L40
-        r23 = r64;
-        int r67 = r24;
-        if (r3.isNull(r67) == false) goto L17;
-        String r210 = null;
-    L16:
-        String r68 = r210;
-        r24 = r67;
-        int r69 = r25;
-        int r70 = uc5.v(r3.getInt(r69));     // Catch: Throwable -> L40
-        r25 = r69;
-        int r71 = r26;
-        o53 r610 = uc5.a0(r3.getBlob(r71));     // Catch: Throwable -> L40
-        r26 = r71;
-        int r72 = r27;
-        if (r3.getInt(r72) == 0) goto L22;
-        boolean r73 = true;
-    L21:
-        r27 = r72;
-        int r74 = r28;
-        if (r3.getInt(r74) == 0) goto L27;
-        boolean r75 = true;
-    L26:
-        r28 = r74;
-        int r76 = r29;
-        if (r3.getInt(r76) == 0) goto L32;
-        boolean r77 = true;
-    L31:
-        r29 = r76;
-        int r78 = r30;
-        if (r3.getInt(r78) == 0) goto L37;
-        boolean r79 = true;
-    L36:
-        r30 = r78;
-        int r81 = r31;
-        long r710 = r3.getLong(r81);     // Catch: Throwable -> L40
-        r31 = r81;
-        int r82 = r32;
-        long r711 = r3.getLong(r82);     // Catch: Throwable -> L40
-        r32 = r82;
-        int r83 = r33;
-        r33 = r83;
-        r35.add(new dd5(r36, r37, r38, r39, r40, r41, r42, r44, r46, new mc0(r610, r70, r73, r75, r77, r79, r710, r711, uc5.b(r3.getBlob(r83))), r49, r50, r51, r53, r55, r57, r59, r60, r61, r62, r63, r65, r66, r68));     // Catch: Throwable -> L40
-        goto L6
-    L37:
-        r79 = false;
-        goto L36
-    L32:
-        r77 = false;
-        goto L31
-    L27:
-        r75 = false;
-        goto L26
-    L22:
-        r73 = false;
-        goto L21
-    L17:
-        r210 = r3.getString(r67);     // Catch: Throwable -> L40
-        goto L16
-    L12:
-        r59 = false;
-        goto L11
-    L42:
-        r3.close();
-        r17.j();
-        return r35;
-    L40:
-        th = th;
-    L46:
-        r3.close();
-        r17.j();
-        throw th;
-    L44:
-        th = th;
-        r17 = r1;
-        goto L46
+    public final ArrayList b() throws Throwable {
+        w24 w24Var;
+        w24 w24VarB = w24.b(1, "SELECT * FROM workspec WHERE state=0 ORDER BY last_enqueue_time LIMIT ?");
+        w24VarB.c(1, 200L);
+        WorkDatabase_Impl workDatabase_Impl = this.a;
+        workDatabase_Impl.b();
+        Cursor cursorH = xl.H(workDatabase_Impl, w24VarB);
+        try {
+            int iX = e35.x(cursorH, "id");
+            int iX2 = e35.x(cursorH, "state");
+            int iX3 = e35.x(cursorH, "worker_class_name");
+            int iX4 = e35.x(cursorH, "input_merger_class_name");
+            int iX5 = e35.x(cursorH, "input");
+            int iX6 = e35.x(cursorH, "output");
+            int iX7 = e35.x(cursorH, "initial_delay");
+            int iX8 = e35.x(cursorH, "interval_duration");
+            int iX9 = e35.x(cursorH, "flex_duration");
+            int iX10 = e35.x(cursorH, "run_attempt_count");
+            int iX11 = e35.x(cursorH, "backoff_policy");
+            int iX12 = e35.x(cursorH, "backoff_delay_duration");
+            int iX13 = e35.x(cursorH, "last_enqueue_time");
+            int iX14 = e35.x(cursorH, "minimum_retention_duration");
+            w24Var = w24VarB;
+            try {
+                int iX15 = e35.x(cursorH, "schedule_requested_at");
+                int iX16 = e35.x(cursorH, "run_in_foreground");
+                int iX17 = e35.x(cursorH, "out_of_quota_policy");
+                int iX18 = e35.x(cursorH, "period_count");
+                int iX19 = e35.x(cursorH, "generation");
+                int iX20 = e35.x(cursorH, "next_schedule_time_override");
+                int iX21 = e35.x(cursorH, "next_schedule_time_override_generation");
+                int iX22 = e35.x(cursorH, "stop_reason");
+                int iX23 = e35.x(cursorH, "trace_tag");
+                int iX24 = e35.x(cursorH, "required_network_type");
+                int iX25 = e35.x(cursorH, "required_network_request");
+                int iX26 = e35.x(cursorH, "requires_charging");
+                int iX27 = e35.x(cursorH, "requires_device_idle");
+                int iX28 = e35.x(cursorH, "requires_battery_not_low");
+                int iX29 = e35.x(cursorH, "requires_storage_not_low");
+                int iX30 = e35.x(cursorH, "trigger_content_update_delay");
+                int iX31 = e35.x(cursorH, "trigger_max_content_delay");
+                int iX32 = e35.x(cursorH, "content_uri_triggers");
+                int i = iX14;
+                ArrayList arrayList = new ArrayList(cursorH.getCount());
+                while (cursorH.moveToNext()) {
+                    String string = cursorH.getString(iX);
+                    int iX33 = uc5.x(cursorH.getInt(iX2));
+                    String string2 = cursorH.getString(iX3);
+                    String string3 = cursorH.getString(iX4);
+                    oh0 oh0VarA = oh0.a(cursorH.getBlob(iX5));
+                    oh0 oh0VarA2 = oh0.a(cursorH.getBlob(iX6));
+                    long j = cursorH.getLong(iX7);
+                    long j2 = cursorH.getLong(iX8);
+                    long j3 = cursorH.getLong(iX9);
+                    int i2 = cursorH.getInt(iX10);
+                    int iU = uc5.u(cursorH.getInt(iX11));
+                    long j4 = cursorH.getLong(iX12);
+                    long j5 = cursorH.getLong(iX13);
+                    int i3 = i;
+                    long j6 = cursorH.getLong(i3);
+                    i = i3;
+                    int i4 = iX15;
+                    long j7 = cursorH.getLong(i4);
+                    iX15 = i4;
+                    int i5 = iX16;
+                    boolean z = cursorH.getInt(i5) != 0;
+                    iX16 = i5;
+                    int i6 = iX17;
+                    int iW = uc5.w(cursorH.getInt(i6));
+                    iX17 = i6;
+                    int i7 = iX18;
+                    int i8 = cursorH.getInt(i7);
+                    iX18 = i7;
+                    int i9 = iX19;
+                    int i10 = cursorH.getInt(i9);
+                    iX19 = i9;
+                    int i11 = iX20;
+                    long j8 = cursorH.getLong(i11);
+                    iX20 = i11;
+                    int i12 = iX21;
+                    int i13 = cursorH.getInt(i12);
+                    iX21 = i12;
+                    int i14 = iX22;
+                    int i15 = cursorH.getInt(i14);
+                    iX22 = i14;
+                    int i16 = iX23;
+                    String string4 = cursorH.isNull(i16) ? null : cursorH.getString(i16);
+                    iX23 = i16;
+                    int i17 = iX24;
+                    int iV = uc5.v(cursorH.getInt(i17));
+                    iX24 = i17;
+                    int i18 = iX25;
+                    o53 o53VarA0 = uc5.a0(cursorH.getBlob(i18));
+                    iX25 = i18;
+                    int i19 = iX26;
+                    boolean z2 = cursorH.getInt(i19) != 0;
+                    iX26 = i19;
+                    int i20 = iX27;
+                    boolean z3 = cursorH.getInt(i20) != 0;
+                    iX27 = i20;
+                    int i21 = iX28;
+                    boolean z4 = cursorH.getInt(i21) != 0;
+                    iX28 = i21;
+                    int i22 = iX29;
+                    boolean z5 = cursorH.getInt(i22) != 0;
+                    iX29 = i22;
+                    int i23 = iX30;
+                    long j9 = cursorH.getLong(i23);
+                    iX30 = i23;
+                    int i24 = iX31;
+                    long j10 = cursorH.getLong(i24);
+                    iX31 = i24;
+                    int i25 = iX32;
+                    iX32 = i25;
+                    arrayList.add(new dd5(string, iX33, string2, string3, oh0VarA, oh0VarA2, j, j2, j3, new mc0(o53VarA0, iV, z2, z3, z4, z5, j9, j10, uc5.b(cursorH.getBlob(i25))), i2, iU, j4, j5, j6, j7, z, iW, i8, i10, j8, i13, i15, string4));
+                }
+                cursorH.close();
+                w24Var.j();
+                return arrayList;
+            } catch (Throwable th) {
+                th = th;
+                cursorH.close();
+                w24Var.j();
+                throw th;
+            }
+        } catch (Throwable th2) {
+            th = th2;
+            w24Var = w24VarB;
+        }
     }
 
-    public final ArrayList c(int r80) {
-        w24 r1 = w24.b(1, "SELECT * FROM workspec WHERE state=0 AND schedule_requested_at=-1 ORDER BY last_enqueue_time LIMIT (SELECT MAX(?-COUNT(*), 0) FROM workspec WHERE schedule_requested_at<>-1 AND LENGTH(content_uri_triggers)=0 AND state NOT IN (2, 3, 5))");
-        r1.c(1, r80);
-        WorkDatabase_Impl r2 = this.a;
-        r2.b();
-        Cursor r3 = xl.H(r2, r1);
-        int r4 = e35.x(r3, "id");     // Catch: Throwable -> L44
-        int r5 = e35.x(r3, "state");     // Catch: Throwable -> L44
-        int r6 = e35.x(r3, "worker_class_name");     // Catch: Throwable -> L44
-        int r7 = e35.x(r3, "input_merger_class_name");     // Catch: Throwable -> L44
-        int r8 = e35.x(r3, "input");     // Catch: Throwable -> L44
-        int r9 = e35.x(r3, "output");     // Catch: Throwable -> L44
-        int r10 = e35.x(r3, "initial_delay");     // Catch: Throwable -> L44
-        int r11 = e35.x(r3, "interval_duration");     // Catch: Throwable -> L44
-        int r12 = e35.x(r3, "flex_duration");     // Catch: Throwable -> L44
-        int r13 = e35.x(r3, "run_attempt_count");     // Catch: Throwable -> L44
-        int r14 = e35.x(r3, "backoff_policy");     // Catch: Throwable -> L44
-        int r15 = e35.x(r3, "backoff_delay_duration");     // Catch: Throwable -> L44
-        int r16 = e35.x(r3, "last_enqueue_time");     // Catch: Throwable -> L44
-        int r0 = e35.x(r3, "minimum_retention_duration");     // Catch: Throwable -> L44
-        w24 r17 = r1;
-        int r79 = e35.x(r3, "schedule_requested_at");     // Catch: Throwable -> L40
-        int r81 = e35.x(r3, "run_in_foreground");     // Catch: Throwable -> L40
-        int r18 = e35.x(r3, "out_of_quota_policy");     // Catch: Throwable -> L40
-        int r19 = e35.x(r3, "period_count");     // Catch: Throwable -> L40
-        int r110 = e35.x(r3, "generation");     // Catch: Throwable -> L40
-        int r20 = e35.x(r3, "next_schedule_time_override");     // Catch: Throwable -> L40
-        int r21 = e35.x(r3, "next_schedule_time_override_generation");     // Catch: Throwable -> L40
-        int r22 = e35.x(r3, "stop_reason");     // Catch: Throwable -> L40
-        int r23 = e35.x(r3, "trace_tag");     // Catch: Throwable -> L40
-        int r24 = e35.x(r3, "required_network_type");     // Catch: Throwable -> L40
-        int r25 = e35.x(r3, "required_network_request");     // Catch: Throwable -> L40
-        int r26 = e35.x(r3, "requires_charging");     // Catch: Throwable -> L40
-        int r27 = e35.x(r3, "requires_device_idle");     // Catch: Throwable -> L40
-        int r28 = e35.x(r3, "requires_battery_not_low");     // Catch: Throwable -> L40
-        int r29 = e35.x(r3, "requires_storage_not_low");     // Catch: Throwable -> L40
-        int r30 = e35.x(r3, "trigger_content_update_delay");     // Catch: Throwable -> L40
-        int r31 = e35.x(r3, "trigger_max_content_delay");     // Catch: Throwable -> L40
-        int r32 = e35.x(r3, "content_uri_triggers");     // Catch: Throwable -> L40
-        int r33 = r0;
-        ArrayList r34 = new ArrayList(r3.getCount());     // Catch: Throwable -> L40
-    L6:
-        if (r3.moveToNext() == false) goto L42;
-        String r35 = r3.getString(r4);     // Catch: Throwable -> L40
-        int r36 = uc5.x(r3.getInt(r5));     // Catch: Throwable -> L40
-        String r37 = r3.getString(r6);     // Catch: Throwable -> L40
-        String r38 = r3.getString(r7);     // Catch: Throwable -> L40
-        oh0 r39 = oh0.a(r3.getBlob(r8));     // Catch: Throwable -> L40
-        oh0 r40 = oh0.a(r3.getBlob(r9));     // Catch: Throwable -> L40
-        long r41 = r3.getLong(r10);     // Catch: Throwable -> L40
-        long r43 = r3.getLong(r11);     // Catch: Throwable -> L40
-        long r45 = r3.getLong(r12);     // Catch: Throwable -> L40
-        int r48 = r3.getInt(r13);     // Catch: Throwable -> L40
-        int r49 = uc5.u(r3.getInt(r14));     // Catch: Throwable -> L40
-        long r50 = r3.getLong(r15);     // Catch: Throwable -> L40
-        long r52 = r3.getLong(r16);     // Catch: Throwable -> L40
-        int r42 = r33;
-        long r54 = r3.getLong(r42);     // Catch: Throwable -> L40
-        r33 = r42;
-        int r44 = r79;
-        long r56 = r3.getLong(r44);     // Catch: Throwable -> L40
-        r79 = r44;
-        int r46 = r81;
-        if (r3.getInt(r46) == 0) goto L12;
-        boolean r58 = true;
-    L11:
-        r81 = r46;
-        int r47 = r18;
-        int r59 = uc5.w(r3.getInt(r47));     // Catch: Throwable -> L40
-        r18 = r47;
-        int r51 = r19;
-        int r60 = r3.getInt(r51);     // Catch: Throwable -> L40
-        r19 = r51;
-        int r53 = r110;
-        int r61 = r3.getInt(r53);     // Catch: Throwable -> L40
-        r110 = r53;
-        int r55 = r20;
-        long r62 = r3.getLong(r55);     // Catch: Throwable -> L40
-        r20 = r55;
-        int r57 = r21;
-        int r64 = r3.getInt(r57);     // Catch: Throwable -> L40
-        r21 = r57;
-        int r63 = r22;
-        int r65 = r3.getInt(r63);     // Catch: Throwable -> L40
-        r22 = r63;
-        int r66 = r23;
-        if (r3.isNull(r66) == false) goto L17;
-        String r210 = null;
-    L16:
-        String r67 = r210;
-        r23 = r66;
-        int r68 = r24;
-        int r69 = uc5.v(r3.getInt(r68));     // Catch: Throwable -> L40
-        r24 = r68;
-        int r70 = r25;
-        o53 r610 = uc5.a0(r3.getBlob(r70));     // Catch: Throwable -> L40
-        r25 = r70;
-        int r71 = r26;
-        if (r3.getInt(r71) == 0) goto L22;
-        boolean r72 = true;
-    L21:
-        r26 = r71;
-        int r73 = r27;
-        if (r3.getInt(r73) == 0) goto L27;
-        boolean r74 = true;
-    L26:
-        r27 = r73;
-        int r75 = r28;
-        if (r3.getInt(r75) == 0) goto L32;
-        boolean r76 = true;
-    L31:
-        r28 = r75;
-        int r77 = r29;
-        if (r3.getInt(r77) == 0) goto L37;
-        boolean r78 = true;
-    L36:
-        r29 = r77;
-        int r82 = r30;
-        long r710 = r3.getLong(r82);     // Catch: Throwable -> L40
-        r30 = r82;
-        int r83 = r31;
-        long r711 = r3.getLong(r83);     // Catch: Throwable -> L40
-        r31 = r83;
-        int r84 = r32;
-        r32 = r84;
-        r34.add(new dd5(r35, r36, r37, r38, r39, r40, r41, r43, r45, new mc0(r610, r69, r72, r74, r76, r78, r710, r711, uc5.b(r3.getBlob(r84))), r48, r49, r50, r52, r54, r56, r58, r59, r60, r61, r62, r64, r65, r67));     // Catch: Throwable -> L40
-        goto L6
-    L37:
-        r78 = false;
-        goto L36
-    L32:
-        r76 = false;
-        goto L31
-    L27:
-        r74 = false;
-        goto L26
-    L22:
-        r72 = false;
-        goto L21
-    L17:
-        r210 = r3.getString(r66);     // Catch: Throwable -> L40
-        goto L16
-    L12:
-        r58 = false;
-        goto L11
-    L42:
-        r3.close();
-        r17.j();
-        return r34;
-    L40:
-        th = th;
-    L46:
-        r3.close();
-        r17.j();
-        throw th;
-    L44:
-        th = th;
-        r17 = r1;
-        goto L46
+    public final ArrayList c(int i) throws Throwable {
+        w24 w24Var;
+        w24 w24VarB = w24.b(1, "SELECT * FROM workspec WHERE state=0 AND schedule_requested_at=-1 ORDER BY last_enqueue_time LIMIT (SELECT MAX(?-COUNT(*), 0) FROM workspec WHERE schedule_requested_at<>-1 AND LENGTH(content_uri_triggers)=0 AND state NOT IN (2, 3, 5))");
+        w24VarB.c(1, i);
+        WorkDatabase_Impl workDatabase_Impl = this.a;
+        workDatabase_Impl.b();
+        Cursor cursorH = xl.H(workDatabase_Impl, w24VarB);
+        try {
+            int iX = e35.x(cursorH, "id");
+            int iX2 = e35.x(cursorH, "state");
+            int iX3 = e35.x(cursorH, "worker_class_name");
+            int iX4 = e35.x(cursorH, "input_merger_class_name");
+            int iX5 = e35.x(cursorH, "input");
+            int iX6 = e35.x(cursorH, "output");
+            int iX7 = e35.x(cursorH, "initial_delay");
+            int iX8 = e35.x(cursorH, "interval_duration");
+            int iX9 = e35.x(cursorH, "flex_duration");
+            int iX10 = e35.x(cursorH, "run_attempt_count");
+            int iX11 = e35.x(cursorH, "backoff_policy");
+            int iX12 = e35.x(cursorH, "backoff_delay_duration");
+            int iX13 = e35.x(cursorH, "last_enqueue_time");
+            int iX14 = e35.x(cursorH, "minimum_retention_duration");
+            w24Var = w24VarB;
+            try {
+                int iX15 = e35.x(cursorH, "schedule_requested_at");
+                int iX16 = e35.x(cursorH, "run_in_foreground");
+                int iX17 = e35.x(cursorH, "out_of_quota_policy");
+                int iX18 = e35.x(cursorH, "period_count");
+                int iX19 = e35.x(cursorH, "generation");
+                int iX20 = e35.x(cursorH, "next_schedule_time_override");
+                int iX21 = e35.x(cursorH, "next_schedule_time_override_generation");
+                int iX22 = e35.x(cursorH, "stop_reason");
+                int iX23 = e35.x(cursorH, "trace_tag");
+                int iX24 = e35.x(cursorH, "required_network_type");
+                int iX25 = e35.x(cursorH, "required_network_request");
+                int iX26 = e35.x(cursorH, "requires_charging");
+                int iX27 = e35.x(cursorH, "requires_device_idle");
+                int iX28 = e35.x(cursorH, "requires_battery_not_low");
+                int iX29 = e35.x(cursorH, "requires_storage_not_low");
+                int iX30 = e35.x(cursorH, "trigger_content_update_delay");
+                int iX31 = e35.x(cursorH, "trigger_max_content_delay");
+                int iX32 = e35.x(cursorH, "content_uri_triggers");
+                int i2 = iX14;
+                ArrayList arrayList = new ArrayList(cursorH.getCount());
+                while (cursorH.moveToNext()) {
+                    String string = cursorH.getString(iX);
+                    int iX33 = uc5.x(cursorH.getInt(iX2));
+                    String string2 = cursorH.getString(iX3);
+                    String string3 = cursorH.getString(iX4);
+                    oh0 oh0VarA = oh0.a(cursorH.getBlob(iX5));
+                    oh0 oh0VarA2 = oh0.a(cursorH.getBlob(iX6));
+                    long j = cursorH.getLong(iX7);
+                    long j2 = cursorH.getLong(iX8);
+                    long j3 = cursorH.getLong(iX9);
+                    int i3 = cursorH.getInt(iX10);
+                    int iU = uc5.u(cursorH.getInt(iX11));
+                    long j4 = cursorH.getLong(iX12);
+                    long j5 = cursorH.getLong(iX13);
+                    int i4 = i2;
+                    long j6 = cursorH.getLong(i4);
+                    i2 = i4;
+                    int i5 = iX15;
+                    long j7 = cursorH.getLong(i5);
+                    iX15 = i5;
+                    int i6 = iX16;
+                    boolean z = cursorH.getInt(i6) != 0;
+                    iX16 = i6;
+                    int i7 = iX17;
+                    int iW = uc5.w(cursorH.getInt(i7));
+                    iX17 = i7;
+                    int i8 = iX18;
+                    int i9 = cursorH.getInt(i8);
+                    iX18 = i8;
+                    int i10 = iX19;
+                    int i11 = cursorH.getInt(i10);
+                    iX19 = i10;
+                    int i12 = iX20;
+                    long j8 = cursorH.getLong(i12);
+                    iX20 = i12;
+                    int i13 = iX21;
+                    int i14 = cursorH.getInt(i13);
+                    iX21 = i13;
+                    int i15 = iX22;
+                    int i16 = cursorH.getInt(i15);
+                    iX22 = i15;
+                    int i17 = iX23;
+                    String string4 = cursorH.isNull(i17) ? null : cursorH.getString(i17);
+                    iX23 = i17;
+                    int i18 = iX24;
+                    int iV = uc5.v(cursorH.getInt(i18));
+                    iX24 = i18;
+                    int i19 = iX25;
+                    o53 o53VarA0 = uc5.a0(cursorH.getBlob(i19));
+                    iX25 = i19;
+                    int i20 = iX26;
+                    boolean z2 = cursorH.getInt(i20) != 0;
+                    iX26 = i20;
+                    int i21 = iX27;
+                    boolean z3 = cursorH.getInt(i21) != 0;
+                    iX27 = i21;
+                    int i22 = iX28;
+                    boolean z4 = cursorH.getInt(i22) != 0;
+                    iX28 = i22;
+                    int i23 = iX29;
+                    boolean z5 = cursorH.getInt(i23) != 0;
+                    iX29 = i23;
+                    int i24 = iX30;
+                    long j9 = cursorH.getLong(i24);
+                    iX30 = i24;
+                    int i25 = iX31;
+                    long j10 = cursorH.getLong(i25);
+                    iX31 = i25;
+                    int i26 = iX32;
+                    iX32 = i26;
+                    arrayList.add(new dd5(string, iX33, string2, string3, oh0VarA, oh0VarA2, j, j2, j3, new mc0(o53VarA0, iV, z2, z3, z4, z5, j9, j10, uc5.b(cursorH.getBlob(i26))), i3, iU, j4, j5, j6, j7, z, iW, i9, i11, j8, i14, i16, string4));
+                }
+                cursorH.close();
+                w24Var.j();
+                return arrayList;
+            } catch (Throwable th) {
+                th = th;
+                cursorH.close();
+                w24Var.j();
+                throw th;
+            }
+        } catch (Throwable th2) {
+            th = th2;
+            w24Var = w24VarB;
+        }
     }
 
-    public final ArrayList d() {
-        w24 r1 = w24.b(0, "SELECT * FROM workspec WHERE state=0 AND schedule_requested_at=-1 AND LENGTH(content_uri_triggers)<>0 ORDER BY last_enqueue_time");
-        WorkDatabase_Impl r2 = this.a;
-        r2.b();
-        Cursor r3 = xl.H(r2, r1);
-        int r4 = e35.x(r3, "id");     // Catch: Throwable -> L44
-        int r5 = e35.x(r3, "state");     // Catch: Throwable -> L44
-        int r6 = e35.x(r3, "worker_class_name");     // Catch: Throwable -> L44
-        int r7 = e35.x(r3, "input_merger_class_name");     // Catch: Throwable -> L44
-        int r8 = e35.x(r3, "input");     // Catch: Throwable -> L44
-        int r9 = e35.x(r3, "output");     // Catch: Throwable -> L44
-        int r10 = e35.x(r3, "initial_delay");     // Catch: Throwable -> L44
-        int r11 = e35.x(r3, "interval_duration");     // Catch: Throwable -> L44
-        int r12 = e35.x(r3, "flex_duration");     // Catch: Throwable -> L44
-        int r13 = e35.x(r3, "run_attempt_count");     // Catch: Throwable -> L44
-        int r14 = e35.x(r3, "backoff_policy");     // Catch: Throwable -> L44
-        int r15 = e35.x(r3, "backoff_delay_duration");     // Catch: Throwable -> L44
-        int r16 = e35.x(r3, "last_enqueue_time");     // Catch: Throwable -> L44
-        int r0 = e35.x(r3, "minimum_retention_duration");     // Catch: Throwable -> L44
-        w24 r17 = r1;
-        int r80 = e35.x(r3, "schedule_requested_at");     // Catch: Throwable -> L40
-        int r18 = e35.x(r3, "run_in_foreground");     // Catch: Throwable -> L40
-        int r19 = e35.x(r3, "out_of_quota_policy");     // Catch: Throwable -> L40
-        int r110 = e35.x(r3, "period_count");     // Catch: Throwable -> L40
-        int r20 = e35.x(r3, "generation");     // Catch: Throwable -> L40
-        int r21 = e35.x(r3, "next_schedule_time_override");     // Catch: Throwable -> L40
-        int r22 = e35.x(r3, "next_schedule_time_override_generation");     // Catch: Throwable -> L40
-        int r23 = e35.x(r3, "stop_reason");     // Catch: Throwable -> L40
-        int r24 = e35.x(r3, "trace_tag");     // Catch: Throwable -> L40
-        int r25 = e35.x(r3, "required_network_type");     // Catch: Throwable -> L40
-        int r26 = e35.x(r3, "required_network_request");     // Catch: Throwable -> L40
-        int r27 = e35.x(r3, "requires_charging");     // Catch: Throwable -> L40
-        int r28 = e35.x(r3, "requires_device_idle");     // Catch: Throwable -> L40
-        int r29 = e35.x(r3, "requires_battery_not_low");     // Catch: Throwable -> L40
-        int r30 = e35.x(r3, "requires_storage_not_low");     // Catch: Throwable -> L40
-        int r31 = e35.x(r3, "trigger_content_update_delay");     // Catch: Throwable -> L40
-        int r32 = e35.x(r3, "trigger_max_content_delay");     // Catch: Throwable -> L40
-        int r33 = e35.x(r3, "content_uri_triggers");     // Catch: Throwable -> L40
-        int r34 = r0;
-        ArrayList r35 = new ArrayList(r3.getCount());     // Catch: Throwable -> L40
-    L6:
-        if (r3.moveToNext() == false) goto L42;
-        String r36 = r3.getString(r4);     // Catch: Throwable -> L40
-        int r37 = uc5.x(r3.getInt(r5));     // Catch: Throwable -> L40
-        String r38 = r3.getString(r6);     // Catch: Throwable -> L40
-        String r39 = r3.getString(r7);     // Catch: Throwable -> L40
-        oh0 r40 = oh0.a(r3.getBlob(r8));     // Catch: Throwable -> L40
-        oh0 r41 = oh0.a(r3.getBlob(r9));     // Catch: Throwable -> L40
-        long r42 = r3.getLong(r10);     // Catch: Throwable -> L40
-        long r44 = r3.getLong(r11);     // Catch: Throwable -> L40
-        long r46 = r3.getLong(r12);     // Catch: Throwable -> L40
-        int r49 = r3.getInt(r13);     // Catch: Throwable -> L40
-        int r50 = uc5.u(r3.getInt(r14));     // Catch: Throwable -> L40
-        long r51 = r3.getLong(r15);     // Catch: Throwable -> L40
-        long r53 = r3.getLong(r16);     // Catch: Throwable -> L40
-        int r43 = r34;
-        long r55 = r3.getLong(r43);     // Catch: Throwable -> L40
-        r34 = r43;
-        int r45 = r80;
-        long r57 = r3.getLong(r45);     // Catch: Throwable -> L40
-        r80 = r45;
-        int r47 = r18;
-        if (r3.getInt(r47) == 0) goto L12;
-        boolean r59 = true;
-    L11:
-        r18 = r47;
-        int r48 = r19;
-        int r60 = uc5.w(r3.getInt(r48));     // Catch: Throwable -> L40
-        r19 = r48;
-        int r52 = r110;
-        int r61 = r3.getInt(r52);     // Catch: Throwable -> L40
-        r110 = r52;
-        int r54 = r20;
-        int r62 = r3.getInt(r54);     // Catch: Throwable -> L40
-        r20 = r54;
-        int r56 = r21;
-        long r63 = r3.getLong(r56);     // Catch: Throwable -> L40
-        r21 = r56;
-        int r58 = r22;
-        int r65 = r3.getInt(r58);     // Catch: Throwable -> L40
-        r22 = r58;
-        int r64 = r23;
-        int r66 = r3.getInt(r64);     // Catch: Throwable -> L40
-        r23 = r64;
-        int r67 = r24;
-        if (r3.isNull(r67) == false) goto L17;
-        String r210 = null;
-    L16:
-        String r68 = r210;
-        r24 = r67;
-        int r69 = r25;
-        int r70 = uc5.v(r3.getInt(r69));     // Catch: Throwable -> L40
-        r25 = r69;
-        int r71 = r26;
-        o53 r610 = uc5.a0(r3.getBlob(r71));     // Catch: Throwable -> L40
-        r26 = r71;
-        int r72 = r27;
-        if (r3.getInt(r72) == 0) goto L22;
-        boolean r73 = true;
-    L21:
-        r27 = r72;
-        int r74 = r28;
-        if (r3.getInt(r74) == 0) goto L27;
-        boolean r75 = true;
-    L26:
-        r28 = r74;
-        int r76 = r29;
-        if (r3.getInt(r76) == 0) goto L32;
-        boolean r77 = true;
-    L31:
-        r29 = r76;
-        int r78 = r30;
-        if (r3.getInt(r78) == 0) goto L37;
-        boolean r79 = true;
-    L36:
-        r30 = r78;
-        int r81 = r31;
-        long r710 = r3.getLong(r81);     // Catch: Throwable -> L40
-        r31 = r81;
-        int r82 = r32;
-        long r711 = r3.getLong(r82);     // Catch: Throwable -> L40
-        r32 = r82;
-        int r83 = r33;
-        r33 = r83;
-        r35.add(new dd5(r36, r37, r38, r39, r40, r41, r42, r44, r46, new mc0(r610, r70, r73, r75, r77, r79, r710, r711, uc5.b(r3.getBlob(r83))), r49, r50, r51, r53, r55, r57, r59, r60, r61, r62, r63, r65, r66, r68));     // Catch: Throwable -> L40
-        goto L6
-    L37:
-        r79 = false;
-        goto L36
-    L32:
-        r77 = false;
-        goto L31
-    L27:
-        r75 = false;
-        goto L26
-    L22:
-        r73 = false;
-        goto L21
-    L17:
-        r210 = r3.getString(r67);     // Catch: Throwable -> L40
-        goto L16
-    L12:
-        r59 = false;
-        goto L11
-    L42:
-        r3.close();
-        r17.j();
-        return r35;
-    L40:
-        th = th;
-    L46:
-        r3.close();
-        r17.j();
-        throw th;
-    L44:
-        th = th;
-        r17 = r1;
-        goto L46
+    public final ArrayList d() throws Throwable {
+        w24 w24Var;
+        w24 w24VarB = w24.b(0, "SELECT * FROM workspec WHERE state=0 AND schedule_requested_at=-1 AND LENGTH(content_uri_triggers)<>0 ORDER BY last_enqueue_time");
+        WorkDatabase_Impl workDatabase_Impl = this.a;
+        workDatabase_Impl.b();
+        Cursor cursorH = xl.H(workDatabase_Impl, w24VarB);
+        try {
+            int iX = e35.x(cursorH, "id");
+            int iX2 = e35.x(cursorH, "state");
+            int iX3 = e35.x(cursorH, "worker_class_name");
+            int iX4 = e35.x(cursorH, "input_merger_class_name");
+            int iX5 = e35.x(cursorH, "input");
+            int iX6 = e35.x(cursorH, "output");
+            int iX7 = e35.x(cursorH, "initial_delay");
+            int iX8 = e35.x(cursorH, "interval_duration");
+            int iX9 = e35.x(cursorH, "flex_duration");
+            int iX10 = e35.x(cursorH, "run_attempt_count");
+            int iX11 = e35.x(cursorH, "backoff_policy");
+            int iX12 = e35.x(cursorH, "backoff_delay_duration");
+            int iX13 = e35.x(cursorH, "last_enqueue_time");
+            int iX14 = e35.x(cursorH, "minimum_retention_duration");
+            w24Var = w24VarB;
+            try {
+                int iX15 = e35.x(cursorH, "schedule_requested_at");
+                int iX16 = e35.x(cursorH, "run_in_foreground");
+                int iX17 = e35.x(cursorH, "out_of_quota_policy");
+                int iX18 = e35.x(cursorH, "period_count");
+                int iX19 = e35.x(cursorH, "generation");
+                int iX20 = e35.x(cursorH, "next_schedule_time_override");
+                int iX21 = e35.x(cursorH, "next_schedule_time_override_generation");
+                int iX22 = e35.x(cursorH, "stop_reason");
+                int iX23 = e35.x(cursorH, "trace_tag");
+                int iX24 = e35.x(cursorH, "required_network_type");
+                int iX25 = e35.x(cursorH, "required_network_request");
+                int iX26 = e35.x(cursorH, "requires_charging");
+                int iX27 = e35.x(cursorH, "requires_device_idle");
+                int iX28 = e35.x(cursorH, "requires_battery_not_low");
+                int iX29 = e35.x(cursorH, "requires_storage_not_low");
+                int iX30 = e35.x(cursorH, "trigger_content_update_delay");
+                int iX31 = e35.x(cursorH, "trigger_max_content_delay");
+                int iX32 = e35.x(cursorH, "content_uri_triggers");
+                int i = iX14;
+                ArrayList arrayList = new ArrayList(cursorH.getCount());
+                while (cursorH.moveToNext()) {
+                    String string = cursorH.getString(iX);
+                    int iX33 = uc5.x(cursorH.getInt(iX2));
+                    String string2 = cursorH.getString(iX3);
+                    String string3 = cursorH.getString(iX4);
+                    oh0 oh0VarA = oh0.a(cursorH.getBlob(iX5));
+                    oh0 oh0VarA2 = oh0.a(cursorH.getBlob(iX6));
+                    long j = cursorH.getLong(iX7);
+                    long j2 = cursorH.getLong(iX8);
+                    long j3 = cursorH.getLong(iX9);
+                    int i2 = cursorH.getInt(iX10);
+                    int iU = uc5.u(cursorH.getInt(iX11));
+                    long j4 = cursorH.getLong(iX12);
+                    long j5 = cursorH.getLong(iX13);
+                    int i3 = i;
+                    long j6 = cursorH.getLong(i3);
+                    i = i3;
+                    int i4 = iX15;
+                    long j7 = cursorH.getLong(i4);
+                    iX15 = i4;
+                    int i5 = iX16;
+                    boolean z = cursorH.getInt(i5) != 0;
+                    iX16 = i5;
+                    int i6 = iX17;
+                    int iW = uc5.w(cursorH.getInt(i6));
+                    iX17 = i6;
+                    int i7 = iX18;
+                    int i8 = cursorH.getInt(i7);
+                    iX18 = i7;
+                    int i9 = iX19;
+                    int i10 = cursorH.getInt(i9);
+                    iX19 = i9;
+                    int i11 = iX20;
+                    long j8 = cursorH.getLong(i11);
+                    iX20 = i11;
+                    int i12 = iX21;
+                    int i13 = cursorH.getInt(i12);
+                    iX21 = i12;
+                    int i14 = iX22;
+                    int i15 = cursorH.getInt(i14);
+                    iX22 = i14;
+                    int i16 = iX23;
+                    String string4 = cursorH.isNull(i16) ? null : cursorH.getString(i16);
+                    iX23 = i16;
+                    int i17 = iX24;
+                    int iV = uc5.v(cursorH.getInt(i17));
+                    iX24 = i17;
+                    int i18 = iX25;
+                    o53 o53VarA0 = uc5.a0(cursorH.getBlob(i18));
+                    iX25 = i18;
+                    int i19 = iX26;
+                    boolean z2 = cursorH.getInt(i19) != 0;
+                    iX26 = i19;
+                    int i20 = iX27;
+                    boolean z3 = cursorH.getInt(i20) != 0;
+                    iX27 = i20;
+                    int i21 = iX28;
+                    boolean z4 = cursorH.getInt(i21) != 0;
+                    iX28 = i21;
+                    int i22 = iX29;
+                    boolean z5 = cursorH.getInt(i22) != 0;
+                    iX29 = i22;
+                    int i23 = iX30;
+                    long j9 = cursorH.getLong(i23);
+                    iX30 = i23;
+                    int i24 = iX31;
+                    long j10 = cursorH.getLong(i24);
+                    iX31 = i24;
+                    int i25 = iX32;
+                    iX32 = i25;
+                    arrayList.add(new dd5(string, iX33, string2, string3, oh0VarA, oh0VarA2, j, j2, j3, new mc0(o53VarA0, iV, z2, z3, z4, z5, j9, j10, uc5.b(cursorH.getBlob(i25))), i2, iU, j4, j5, j6, j7, z, iW, i8, i10, j8, i13, i15, string4));
+                }
+                cursorH.close();
+                w24Var.j();
+                return arrayList;
+            } catch (Throwable th) {
+                th = th;
+                cursorH.close();
+                w24Var.j();
+                throw th;
+            }
+        } catch (Throwable th2) {
+            th = th2;
+            w24Var = w24VarB;
+        }
     }
 
-    public final ArrayList e() {
-        w24 r1 = w24.b(0, "SELECT * FROM workspec WHERE state=1");
-        WorkDatabase_Impl r2 = this.a;
-        r2.b();
-        Cursor r3 = xl.H(r2, r1);
-        int r4 = e35.x(r3, "id");     // Catch: Throwable -> L44
-        int r5 = e35.x(r3, "state");     // Catch: Throwable -> L44
-        int r6 = e35.x(r3, "worker_class_name");     // Catch: Throwable -> L44
-        int r7 = e35.x(r3, "input_merger_class_name");     // Catch: Throwable -> L44
-        int r8 = e35.x(r3, "input");     // Catch: Throwable -> L44
-        int r9 = e35.x(r3, "output");     // Catch: Throwable -> L44
-        int r10 = e35.x(r3, "initial_delay");     // Catch: Throwable -> L44
-        int r11 = e35.x(r3, "interval_duration");     // Catch: Throwable -> L44
-        int r12 = e35.x(r3, "flex_duration");     // Catch: Throwable -> L44
-        int r13 = e35.x(r3, "run_attempt_count");     // Catch: Throwable -> L44
-        int r14 = e35.x(r3, "backoff_policy");     // Catch: Throwable -> L44
-        int r15 = e35.x(r3, "backoff_delay_duration");     // Catch: Throwable -> L44
-        int r16 = e35.x(r3, "last_enqueue_time");     // Catch: Throwable -> L44
-        int r0 = e35.x(r3, "minimum_retention_duration");     // Catch: Throwable -> L44
-        w24 r17 = r1;
-        int r80 = e35.x(r3, "schedule_requested_at");     // Catch: Throwable -> L40
-        int r18 = e35.x(r3, "run_in_foreground");     // Catch: Throwable -> L40
-        int r19 = e35.x(r3, "out_of_quota_policy");     // Catch: Throwable -> L40
-        int r110 = e35.x(r3, "period_count");     // Catch: Throwable -> L40
-        int r20 = e35.x(r3, "generation");     // Catch: Throwable -> L40
-        int r21 = e35.x(r3, "next_schedule_time_override");     // Catch: Throwable -> L40
-        int r22 = e35.x(r3, "next_schedule_time_override_generation");     // Catch: Throwable -> L40
-        int r23 = e35.x(r3, "stop_reason");     // Catch: Throwable -> L40
-        int r24 = e35.x(r3, "trace_tag");     // Catch: Throwable -> L40
-        int r25 = e35.x(r3, "required_network_type");     // Catch: Throwable -> L40
-        int r26 = e35.x(r3, "required_network_request");     // Catch: Throwable -> L40
-        int r27 = e35.x(r3, "requires_charging");     // Catch: Throwable -> L40
-        int r28 = e35.x(r3, "requires_device_idle");     // Catch: Throwable -> L40
-        int r29 = e35.x(r3, "requires_battery_not_low");     // Catch: Throwable -> L40
-        int r30 = e35.x(r3, "requires_storage_not_low");     // Catch: Throwable -> L40
-        int r31 = e35.x(r3, "trigger_content_update_delay");     // Catch: Throwable -> L40
-        int r32 = e35.x(r3, "trigger_max_content_delay");     // Catch: Throwable -> L40
-        int r33 = e35.x(r3, "content_uri_triggers");     // Catch: Throwable -> L40
-        int r34 = r0;
-        ArrayList r35 = new ArrayList(r3.getCount());     // Catch: Throwable -> L40
-    L6:
-        if (r3.moveToNext() == false) goto L42;
-        String r36 = r3.getString(r4);     // Catch: Throwable -> L40
-        int r37 = uc5.x(r3.getInt(r5));     // Catch: Throwable -> L40
-        String r38 = r3.getString(r6);     // Catch: Throwable -> L40
-        String r39 = r3.getString(r7);     // Catch: Throwable -> L40
-        oh0 r40 = oh0.a(r3.getBlob(r8));     // Catch: Throwable -> L40
-        oh0 r41 = oh0.a(r3.getBlob(r9));     // Catch: Throwable -> L40
-        long r42 = r3.getLong(r10);     // Catch: Throwable -> L40
-        long r44 = r3.getLong(r11);     // Catch: Throwable -> L40
-        long r46 = r3.getLong(r12);     // Catch: Throwable -> L40
-        int r49 = r3.getInt(r13);     // Catch: Throwable -> L40
-        int r50 = uc5.u(r3.getInt(r14));     // Catch: Throwable -> L40
-        long r51 = r3.getLong(r15);     // Catch: Throwable -> L40
-        long r53 = r3.getLong(r16);     // Catch: Throwable -> L40
-        int r43 = r34;
-        long r55 = r3.getLong(r43);     // Catch: Throwable -> L40
-        r34 = r43;
-        int r45 = r80;
-        long r57 = r3.getLong(r45);     // Catch: Throwable -> L40
-        r80 = r45;
-        int r47 = r18;
-        if (r3.getInt(r47) == 0) goto L12;
-        boolean r59 = true;
-    L11:
-        r18 = r47;
-        int r48 = r19;
-        int r60 = uc5.w(r3.getInt(r48));     // Catch: Throwable -> L40
-        r19 = r48;
-        int r52 = r110;
-        int r61 = r3.getInt(r52);     // Catch: Throwable -> L40
-        r110 = r52;
-        int r54 = r20;
-        int r62 = r3.getInt(r54);     // Catch: Throwable -> L40
-        r20 = r54;
-        int r56 = r21;
-        long r63 = r3.getLong(r56);     // Catch: Throwable -> L40
-        r21 = r56;
-        int r58 = r22;
-        int r65 = r3.getInt(r58);     // Catch: Throwable -> L40
-        r22 = r58;
-        int r64 = r23;
-        int r66 = r3.getInt(r64);     // Catch: Throwable -> L40
-        r23 = r64;
-        int r67 = r24;
-        if (r3.isNull(r67) == false) goto L17;
-        String r210 = null;
-    L16:
-        String r68 = r210;
-        r24 = r67;
-        int r69 = r25;
-        int r70 = uc5.v(r3.getInt(r69));     // Catch: Throwable -> L40
-        r25 = r69;
-        int r71 = r26;
-        o53 r610 = uc5.a0(r3.getBlob(r71));     // Catch: Throwable -> L40
-        r26 = r71;
-        int r72 = r27;
-        if (r3.getInt(r72) == 0) goto L22;
-        boolean r73 = true;
-    L21:
-        r27 = r72;
-        int r74 = r28;
-        if (r3.getInt(r74) == 0) goto L27;
-        boolean r75 = true;
-    L26:
-        r28 = r74;
-        int r76 = r29;
-        if (r3.getInt(r76) == 0) goto L32;
-        boolean r77 = true;
-    L31:
-        r29 = r76;
-        int r78 = r30;
-        if (r3.getInt(r78) == 0) goto L37;
-        boolean r79 = true;
-    L36:
-        r30 = r78;
-        int r81 = r31;
-        long r710 = r3.getLong(r81);     // Catch: Throwable -> L40
-        r31 = r81;
-        int r82 = r32;
-        long r711 = r3.getLong(r82);     // Catch: Throwable -> L40
-        r32 = r82;
-        int r83 = r33;
-        r33 = r83;
-        r35.add(new dd5(r36, r37, r38, r39, r40, r41, r42, r44, r46, new mc0(r610, r70, r73, r75, r77, r79, r710, r711, uc5.b(r3.getBlob(r83))), r49, r50, r51, r53, r55, r57, r59, r60, r61, r62, r63, r65, r66, r68));     // Catch: Throwable -> L40
-        goto L6
-    L37:
-        r79 = false;
-        goto L36
-    L32:
-        r77 = false;
-        goto L31
-    L27:
-        r75 = false;
-        goto L26
-    L22:
-        r73 = false;
-        goto L21
-    L17:
-        r210 = r3.getString(r67);     // Catch: Throwable -> L40
-        goto L16
-    L12:
-        r59 = false;
-        goto L11
-    L42:
-        r3.close();
-        r17.j();
-        return r35;
-    L40:
-        th = th;
-    L46:
-        r3.close();
-        r17.j();
-        throw th;
-    L44:
-        th = th;
-        r17 = r1;
-        goto L46
+    public final ArrayList e() throws Throwable {
+        w24 w24Var;
+        w24 w24VarB = w24.b(0, "SELECT * FROM workspec WHERE state=1");
+        WorkDatabase_Impl workDatabase_Impl = this.a;
+        workDatabase_Impl.b();
+        Cursor cursorH = xl.H(workDatabase_Impl, w24VarB);
+        try {
+            int iX = e35.x(cursorH, "id");
+            int iX2 = e35.x(cursorH, "state");
+            int iX3 = e35.x(cursorH, "worker_class_name");
+            int iX4 = e35.x(cursorH, "input_merger_class_name");
+            int iX5 = e35.x(cursorH, "input");
+            int iX6 = e35.x(cursorH, "output");
+            int iX7 = e35.x(cursorH, "initial_delay");
+            int iX8 = e35.x(cursorH, "interval_duration");
+            int iX9 = e35.x(cursorH, "flex_duration");
+            int iX10 = e35.x(cursorH, "run_attempt_count");
+            int iX11 = e35.x(cursorH, "backoff_policy");
+            int iX12 = e35.x(cursorH, "backoff_delay_duration");
+            int iX13 = e35.x(cursorH, "last_enqueue_time");
+            int iX14 = e35.x(cursorH, "minimum_retention_duration");
+            w24Var = w24VarB;
+            try {
+                int iX15 = e35.x(cursorH, "schedule_requested_at");
+                int iX16 = e35.x(cursorH, "run_in_foreground");
+                int iX17 = e35.x(cursorH, "out_of_quota_policy");
+                int iX18 = e35.x(cursorH, "period_count");
+                int iX19 = e35.x(cursorH, "generation");
+                int iX20 = e35.x(cursorH, "next_schedule_time_override");
+                int iX21 = e35.x(cursorH, "next_schedule_time_override_generation");
+                int iX22 = e35.x(cursorH, "stop_reason");
+                int iX23 = e35.x(cursorH, "trace_tag");
+                int iX24 = e35.x(cursorH, "required_network_type");
+                int iX25 = e35.x(cursorH, "required_network_request");
+                int iX26 = e35.x(cursorH, "requires_charging");
+                int iX27 = e35.x(cursorH, "requires_device_idle");
+                int iX28 = e35.x(cursorH, "requires_battery_not_low");
+                int iX29 = e35.x(cursorH, "requires_storage_not_low");
+                int iX30 = e35.x(cursorH, "trigger_content_update_delay");
+                int iX31 = e35.x(cursorH, "trigger_max_content_delay");
+                int iX32 = e35.x(cursorH, "content_uri_triggers");
+                int i = iX14;
+                ArrayList arrayList = new ArrayList(cursorH.getCount());
+                while (cursorH.moveToNext()) {
+                    String string = cursorH.getString(iX);
+                    int iX33 = uc5.x(cursorH.getInt(iX2));
+                    String string2 = cursorH.getString(iX3);
+                    String string3 = cursorH.getString(iX4);
+                    oh0 oh0VarA = oh0.a(cursorH.getBlob(iX5));
+                    oh0 oh0VarA2 = oh0.a(cursorH.getBlob(iX6));
+                    long j = cursorH.getLong(iX7);
+                    long j2 = cursorH.getLong(iX8);
+                    long j3 = cursorH.getLong(iX9);
+                    int i2 = cursorH.getInt(iX10);
+                    int iU = uc5.u(cursorH.getInt(iX11));
+                    long j4 = cursorH.getLong(iX12);
+                    long j5 = cursorH.getLong(iX13);
+                    int i3 = i;
+                    long j6 = cursorH.getLong(i3);
+                    i = i3;
+                    int i4 = iX15;
+                    long j7 = cursorH.getLong(i4);
+                    iX15 = i4;
+                    int i5 = iX16;
+                    boolean z = cursorH.getInt(i5) != 0;
+                    iX16 = i5;
+                    int i6 = iX17;
+                    int iW = uc5.w(cursorH.getInt(i6));
+                    iX17 = i6;
+                    int i7 = iX18;
+                    int i8 = cursorH.getInt(i7);
+                    iX18 = i7;
+                    int i9 = iX19;
+                    int i10 = cursorH.getInt(i9);
+                    iX19 = i9;
+                    int i11 = iX20;
+                    long j8 = cursorH.getLong(i11);
+                    iX20 = i11;
+                    int i12 = iX21;
+                    int i13 = cursorH.getInt(i12);
+                    iX21 = i12;
+                    int i14 = iX22;
+                    int i15 = cursorH.getInt(i14);
+                    iX22 = i14;
+                    int i16 = iX23;
+                    String string4 = cursorH.isNull(i16) ? null : cursorH.getString(i16);
+                    iX23 = i16;
+                    int i17 = iX24;
+                    int iV = uc5.v(cursorH.getInt(i17));
+                    iX24 = i17;
+                    int i18 = iX25;
+                    o53 o53VarA0 = uc5.a0(cursorH.getBlob(i18));
+                    iX25 = i18;
+                    int i19 = iX26;
+                    boolean z2 = cursorH.getInt(i19) != 0;
+                    iX26 = i19;
+                    int i20 = iX27;
+                    boolean z3 = cursorH.getInt(i20) != 0;
+                    iX27 = i20;
+                    int i21 = iX28;
+                    boolean z4 = cursorH.getInt(i21) != 0;
+                    iX28 = i21;
+                    int i22 = iX29;
+                    boolean z5 = cursorH.getInt(i22) != 0;
+                    iX29 = i22;
+                    int i23 = iX30;
+                    long j9 = cursorH.getLong(i23);
+                    iX30 = i23;
+                    int i24 = iX31;
+                    long j10 = cursorH.getLong(i24);
+                    iX31 = i24;
+                    int i25 = iX32;
+                    iX32 = i25;
+                    arrayList.add(new dd5(string, iX33, string2, string3, oh0VarA, oh0VarA2, j, j2, j3, new mc0(o53VarA0, iV, z2, z3, z4, z5, j9, j10, uc5.b(cursorH.getBlob(i25))), i2, iU, j4, j5, j6, j7, z, iW, i8, i10, j8, i13, i15, string4));
+                }
+                cursorH.close();
+                w24Var.j();
+                return arrayList;
+            } catch (Throwable th) {
+                th = th;
+                cursorH.close();
+                w24Var.j();
+                throw th;
+            }
+        } catch (Throwable th2) {
+            th = th2;
+            w24Var = w24VarB;
+        }
     }
 
     public final ArrayList f() {
-        w24 r1 = w24.b(0, "SELECT * FROM workspec WHERE state=0 AND schedule_requested_at<>-1");
-        WorkDatabase_Impl r2 = this.a;
-        r2.b();
-        Cursor r3 = xl.H(r2, r1);
-        int r4 = e35.x(r3, "id");     // Catch: Throwable -> L44
-        int r5 = e35.x(r3, "state");     // Catch: Throwable -> L44
-        int r6 = e35.x(r3, "worker_class_name");     // Catch: Throwable -> L44
-        int r7 = e35.x(r3, "input_merger_class_name");     // Catch: Throwable -> L44
-        int r8 = e35.x(r3, "input");     // Catch: Throwable -> L44
-        int r9 = e35.x(r3, "output");     // Catch: Throwable -> L44
-        int r10 = e35.x(r3, "initial_delay");     // Catch: Throwable -> L44
-        int r11 = e35.x(r3, "interval_duration");     // Catch: Throwable -> L44
-        int r12 = e35.x(r3, "flex_duration");     // Catch: Throwable -> L44
-        int r13 = e35.x(r3, "run_attempt_count");     // Catch: Throwable -> L44
-        int r14 = e35.x(r3, "backoff_policy");     // Catch: Throwable -> L44
-        int r15 = e35.x(r3, "backoff_delay_duration");     // Catch: Throwable -> L44
-        int r16 = e35.x(r3, "last_enqueue_time");     // Catch: Throwable -> L44
-        int r0 = e35.x(r3, "minimum_retention_duration");     // Catch: Throwable -> L44
-        w24 r17 = r1;
-        int r80 = e35.x(r3, "schedule_requested_at");     // Catch: Throwable -> L40
-        int r18 = e35.x(r3, "run_in_foreground");     // Catch: Throwable -> L40
-        int r19 = e35.x(r3, "out_of_quota_policy");     // Catch: Throwable -> L40
-        int r110 = e35.x(r3, "period_count");     // Catch: Throwable -> L40
-        int r20 = e35.x(r3, "generation");     // Catch: Throwable -> L40
-        int r21 = e35.x(r3, "next_schedule_time_override");     // Catch: Throwable -> L40
-        int r22 = e35.x(r3, "next_schedule_time_override_generation");     // Catch: Throwable -> L40
-        int r23 = e35.x(r3, "stop_reason");     // Catch: Throwable -> L40
-        int r24 = e35.x(r3, "trace_tag");     // Catch: Throwable -> L40
-        int r25 = e35.x(r3, "required_network_type");     // Catch: Throwable -> L40
-        int r26 = e35.x(r3, "required_network_request");     // Catch: Throwable -> L40
-        int r27 = e35.x(r3, "requires_charging");     // Catch: Throwable -> L40
-        int r28 = e35.x(r3, "requires_device_idle");     // Catch: Throwable -> L40
-        int r29 = e35.x(r3, "requires_battery_not_low");     // Catch: Throwable -> L40
-        int r30 = e35.x(r3, "requires_storage_not_low");     // Catch: Throwable -> L40
-        int r31 = e35.x(r3, "trigger_content_update_delay");     // Catch: Throwable -> L40
-        int r32 = e35.x(r3, "trigger_max_content_delay");     // Catch: Throwable -> L40
-        int r33 = e35.x(r3, "content_uri_triggers");     // Catch: Throwable -> L40
-        int r34 = r0;
-        ArrayList r35 = new ArrayList(r3.getCount());     // Catch: Throwable -> L40
-    L6:
-        if (r3.moveToNext() == false) goto L42;
-        String r36 = r3.getString(r4);     // Catch: Throwable -> L40
-        int r37 = uc5.x(r3.getInt(r5));     // Catch: Throwable -> L40
-        String r38 = r3.getString(r6);     // Catch: Throwable -> L40
-        String r39 = r3.getString(r7);     // Catch: Throwable -> L40
-        oh0 r40 = oh0.a(r3.getBlob(r8));     // Catch: Throwable -> L40
-        oh0 r41 = oh0.a(r3.getBlob(r9));     // Catch: Throwable -> L40
-        long r42 = r3.getLong(r10);     // Catch: Throwable -> L40
-        long r44 = r3.getLong(r11);     // Catch: Throwable -> L40
-        long r46 = r3.getLong(r12);     // Catch: Throwable -> L40
-        int r49 = r3.getInt(r13);     // Catch: Throwable -> L40
-        int r50 = uc5.u(r3.getInt(r14));     // Catch: Throwable -> L40
-        long r51 = r3.getLong(r15);     // Catch: Throwable -> L40
-        long r53 = r3.getLong(r16);     // Catch: Throwable -> L40
-        int r43 = r34;
-        long r55 = r3.getLong(r43);     // Catch: Throwable -> L40
-        r34 = r43;
-        int r45 = r80;
-        long r57 = r3.getLong(r45);     // Catch: Throwable -> L40
-        r80 = r45;
-        int r47 = r18;
-        if (r3.getInt(r47) == 0) goto L12;
-        boolean r59 = true;
-    L11:
-        r18 = r47;
-        int r48 = r19;
-        int r60 = uc5.w(r3.getInt(r48));     // Catch: Throwable -> L40
-        r19 = r48;
-        int r52 = r110;
-        int r61 = r3.getInt(r52);     // Catch: Throwable -> L40
-        r110 = r52;
-        int r54 = r20;
-        int r62 = r3.getInt(r54);     // Catch: Throwable -> L40
-        r20 = r54;
-        int r56 = r21;
-        long r63 = r3.getLong(r56);     // Catch: Throwable -> L40
-        r21 = r56;
-        int r58 = r22;
-        int r65 = r3.getInt(r58);     // Catch: Throwable -> L40
-        r22 = r58;
-        int r64 = r23;
-        int r66 = r3.getInt(r64);     // Catch: Throwable -> L40
-        r23 = r64;
-        int r67 = r24;
-        if (r3.isNull(r67) == false) goto L17;
-        String r210 = null;
-    L16:
-        String r68 = r210;
-        r24 = r67;
-        int r69 = r25;
-        int r70 = uc5.v(r3.getInt(r69));     // Catch: Throwable -> L40
-        r25 = r69;
-        int r71 = r26;
-        o53 r610 = uc5.a0(r3.getBlob(r71));     // Catch: Throwable -> L40
-        r26 = r71;
-        int r72 = r27;
-        if (r3.getInt(r72) == 0) goto L22;
-        boolean r73 = true;
-    L21:
-        r27 = r72;
-        int r74 = r28;
-        if (r3.getInt(r74) == 0) goto L27;
-        boolean r75 = true;
-    L26:
-        r28 = r74;
-        int r76 = r29;
-        if (r3.getInt(r76) == 0) goto L32;
-        boolean r77 = true;
-    L31:
-        r29 = r76;
-        int r78 = r30;
-        if (r3.getInt(r78) == 0) goto L37;
-        boolean r79 = true;
-    L36:
-        r30 = r78;
-        int r81 = r31;
-        long r710 = r3.getLong(r81);     // Catch: Throwable -> L40
-        r31 = r81;
-        int r82 = r32;
-        long r711 = r3.getLong(r82);     // Catch: Throwable -> L40
-        r32 = r82;
-        int r83 = r33;
-        r33 = r83;
-        r35.add(new dd5(r36, r37, r38, r39, r40, r41, r42, r44, r46, new mc0(r610, r70, r73, r75, r77, r79, r710, r711, uc5.b(r3.getBlob(r83))), r49, r50, r51, r53, r55, r57, r59, r60, r61, r62, r63, r65, r66, r68));     // Catch: Throwable -> L40
-        goto L6
-    L37:
-        r79 = false;
-        goto L36
-    L32:
-        r77 = false;
-        goto L31
-    L27:
-        r75 = false;
-        goto L26
-    L22:
-        r73 = false;
-        goto L21
-    L17:
-        r210 = r3.getString(r67);     // Catch: Throwable -> L40
-        goto L16
-    L12:
-        r59 = false;
-        goto L11
-    L42:
-        r3.close();
-        r17.j();
-        return r35;
-    L40:
-        th = th;
-    L46:
-        r3.close();
-        r17.j();
-        throw th;
-    L44:
-        th = th;
-        r17 = r1;
-        goto L46
+        w24 w24Var;
+        w24 w24VarB = w24.b(0, "SELECT * FROM workspec WHERE state=0 AND schedule_requested_at<>-1");
+        WorkDatabase_Impl workDatabase_Impl = this.a;
+        workDatabase_Impl.b();
+        Cursor cursorH = xl.H(workDatabase_Impl, w24VarB);
+        try {
+            int iX = e35.x(cursorH, "id");
+            int iX2 = e35.x(cursorH, "state");
+            int iX3 = e35.x(cursorH, "worker_class_name");
+            int iX4 = e35.x(cursorH, "input_merger_class_name");
+            int iX5 = e35.x(cursorH, "input");
+            int iX6 = e35.x(cursorH, "output");
+            int iX7 = e35.x(cursorH, "initial_delay");
+            int iX8 = e35.x(cursorH, "interval_duration");
+            int iX9 = e35.x(cursorH, "flex_duration");
+            int iX10 = e35.x(cursorH, "run_attempt_count");
+            int iX11 = e35.x(cursorH, "backoff_policy");
+            int iX12 = e35.x(cursorH, "backoff_delay_duration");
+            int iX13 = e35.x(cursorH, "last_enqueue_time");
+            int iX14 = e35.x(cursorH, "minimum_retention_duration");
+            w24Var = w24VarB;
+            try {
+                int iX15 = e35.x(cursorH, "schedule_requested_at");
+                int iX16 = e35.x(cursorH, "run_in_foreground");
+                int iX17 = e35.x(cursorH, "out_of_quota_policy");
+                int iX18 = e35.x(cursorH, "period_count");
+                int iX19 = e35.x(cursorH, "generation");
+                int iX20 = e35.x(cursorH, "next_schedule_time_override");
+                int iX21 = e35.x(cursorH, "next_schedule_time_override_generation");
+                int iX22 = e35.x(cursorH, "stop_reason");
+                int iX23 = e35.x(cursorH, "trace_tag");
+                int iX24 = e35.x(cursorH, "required_network_type");
+                int iX25 = e35.x(cursorH, "required_network_request");
+                int iX26 = e35.x(cursorH, "requires_charging");
+                int iX27 = e35.x(cursorH, "requires_device_idle");
+                int iX28 = e35.x(cursorH, "requires_battery_not_low");
+                int iX29 = e35.x(cursorH, "requires_storage_not_low");
+                int iX30 = e35.x(cursorH, "trigger_content_update_delay");
+                int iX31 = e35.x(cursorH, "trigger_max_content_delay");
+                int iX32 = e35.x(cursorH, "content_uri_triggers");
+                int i = iX14;
+                ArrayList arrayList = new ArrayList(cursorH.getCount());
+                while (cursorH.moveToNext()) {
+                    String string = cursorH.getString(iX);
+                    int iX33 = uc5.x(cursorH.getInt(iX2));
+                    String string2 = cursorH.getString(iX3);
+                    String string3 = cursorH.getString(iX4);
+                    oh0 oh0VarA = oh0.a(cursorH.getBlob(iX5));
+                    oh0 oh0VarA2 = oh0.a(cursorH.getBlob(iX6));
+                    long j = cursorH.getLong(iX7);
+                    long j2 = cursorH.getLong(iX8);
+                    long j3 = cursorH.getLong(iX9);
+                    int i2 = cursorH.getInt(iX10);
+                    int iU = uc5.u(cursorH.getInt(iX11));
+                    long j4 = cursorH.getLong(iX12);
+                    long j5 = cursorH.getLong(iX13);
+                    int i3 = i;
+                    long j6 = cursorH.getLong(i3);
+                    i = i3;
+                    int i4 = iX15;
+                    long j7 = cursorH.getLong(i4);
+                    iX15 = i4;
+                    int i5 = iX16;
+                    boolean z = cursorH.getInt(i5) != 0;
+                    iX16 = i5;
+                    int i6 = iX17;
+                    int iW = uc5.w(cursorH.getInt(i6));
+                    iX17 = i6;
+                    int i7 = iX18;
+                    int i8 = cursorH.getInt(i7);
+                    iX18 = i7;
+                    int i9 = iX19;
+                    int i10 = cursorH.getInt(i9);
+                    iX19 = i9;
+                    int i11 = iX20;
+                    long j8 = cursorH.getLong(i11);
+                    iX20 = i11;
+                    int i12 = iX21;
+                    int i13 = cursorH.getInt(i12);
+                    iX21 = i12;
+                    int i14 = iX22;
+                    int i15 = cursorH.getInt(i14);
+                    iX22 = i14;
+                    int i16 = iX23;
+                    String string4 = cursorH.isNull(i16) ? null : cursorH.getString(i16);
+                    iX23 = i16;
+                    int i17 = iX24;
+                    int iV = uc5.v(cursorH.getInt(i17));
+                    iX24 = i17;
+                    int i18 = iX25;
+                    o53 o53VarA0 = uc5.a0(cursorH.getBlob(i18));
+                    iX25 = i18;
+                    int i19 = iX26;
+                    boolean z2 = cursorH.getInt(i19) != 0;
+                    iX26 = i19;
+                    int i20 = iX27;
+                    boolean z3 = cursorH.getInt(i20) != 0;
+                    iX27 = i20;
+                    int i21 = iX28;
+                    boolean z4 = cursorH.getInt(i21) != 0;
+                    iX28 = i21;
+                    int i22 = iX29;
+                    boolean z5 = cursorH.getInt(i22) != 0;
+                    iX29 = i22;
+                    int i23 = iX30;
+                    long j9 = cursorH.getLong(i23);
+                    iX30 = i23;
+                    int i24 = iX31;
+                    long j10 = cursorH.getLong(i24);
+                    iX31 = i24;
+                    int i25 = iX32;
+                    iX32 = i25;
+                    arrayList.add(new dd5(string, iX33, string2, string3, oh0VarA, oh0VarA2, j, j2, j3, new mc0(o53VarA0, iV, z2, z3, z4, z5, j9, j10, uc5.b(cursorH.getBlob(i25))), i2, iU, j4, j5, j6, j7, z, iW, i8, i10, j8, i13, i15, string4));
+                }
+                cursorH.close();
+                w24Var.j();
+                return arrayList;
+            } catch (Throwable th) {
+                th = th;
+                cursorH.close();
+                w24Var.j();
+                throw th;
+            }
+        } catch (Throwable th2) {
+            th = th2;
+            w24Var = w24VarB;
+        }
     }
 
-    public final int g(String r3) {
-        w24 r1 = w24.b(1, "SELECT state FROM workspec WHERE id=?");
-        r1.h(1, r3);
-        WorkDatabase_Impl r2 = this.a;
-        r2.b();
-        Cursor r4 = xl.H(r2, r1);
-        int r0 = 0;
-        if (r4.moveToFirst() == true) goto L6;
-    L15:
-        r4.close();
-        r1.j();
-        return r0;
-    L6:
-        if (r4.isNull(0) == false) goto L8;
-        Integer r5 = null;
-    L9:
-        if (r5 == null) goto L15;
-        r0 = uc5.x(r5.intValue());     // Catch: Throwable -> L13
-        goto L15
-    L8:
-        r5 = Integer.valueOf(r4.getInt(0));     // Catch: Throwable -> L13
-    L13:
-        th = move-exception;
-        r4.close();
-        r1.j();
-        throw th;
+    public final int g(String str) {
+        w24 w24VarB = w24.b(1, "SELECT state FROM workspec WHERE id=?");
+        w24VarB.h(1, str);
+        WorkDatabase_Impl workDatabase_Impl = this.a;
+        workDatabase_Impl.b();
+        Cursor cursorH = xl.H(workDatabase_Impl, w24VarB);
+        try {
+            int iX = 0;
+            if (cursorH.moveToFirst()) {
+                Integer numValueOf = cursorH.isNull(0) ? null : Integer.valueOf(cursorH.getInt(0));
+                if (numValueOf != null) {
+                    iX = uc5.x(numValueOf.intValue());
+                }
+            }
+            return iX;
+        } finally {
+            cursorH.close();
+            w24VarB.j();
+        }
     }
 
-    public final dd5 h(String r68) {
-        w24 r1 = w24.b(1, "SELECT * FROM workspec WHERE id=?");
-        r1.h(1, r68);
-        WorkDatabase_Impl r2 = this.a;
-        r2.b();
-        Cursor r3 = xl.H(r2, r1);
-        int r4 = e35.x(r3, "id");     // Catch: Throwable -> L42
-        int r5 = e35.x(r3, "state");     // Catch: Throwable -> L42
-        int r6 = e35.x(r3, "worker_class_name");     // Catch: Throwable -> L42
-        int r7 = e35.x(r3, "input_merger_class_name");     // Catch: Throwable -> L42
-        int r8 = e35.x(r3, "input");     // Catch: Throwable -> L42
-        int r9 = e35.x(r3, "output");     // Catch: Throwable -> L42
-        int r10 = e35.x(r3, "initial_delay");     // Catch: Throwable -> L42
-        int r11 = e35.x(r3, "interval_duration");     // Catch: Throwable -> L42
-        int r12 = e35.x(r3, "flex_duration");     // Catch: Throwable -> L42
-        int r13 = e35.x(r3, "run_attempt_count");     // Catch: Throwable -> L42
-        int r14 = e35.x(r3, "backoff_policy");     // Catch: Throwable -> L42
-        int r15 = e35.x(r3, "backoff_delay_duration");     // Catch: Throwable -> L42
-        int r16 = e35.x(r3, "last_enqueue_time");     // Catch: Throwable -> L42
-        int r0 = e35.x(r3, "minimum_retention_duration");     // Catch: Throwable -> L42
-        w24 r17 = r1;
-        int r18 = e35.x(r3, "schedule_requested_at");     // Catch: Throwable -> L38
-        int r19 = e35.x(r3, "run_in_foreground");     // Catch: Throwable -> L38
-        int r20 = e35.x(r3, "out_of_quota_policy");     // Catch: Throwable -> L38
-        int r21 = e35.x(r3, "period_count");     // Catch: Throwable -> L38
-        int r22 = e35.x(r3, "generation");     // Catch: Throwable -> L38
-        int r23 = e35.x(r3, "next_schedule_time_override");     // Catch: Throwable -> L38
-        int r24 = e35.x(r3, "next_schedule_time_override_generation");     // Catch: Throwable -> L38
-        int r25 = e35.x(r3, "stop_reason");     // Catch: Throwable -> L38
-        int r26 = e35.x(r3, "trace_tag");     // Catch: Throwable -> L38
-        int r27 = e35.x(r3, "required_network_type");     // Catch: Throwable -> L38
-        int r28 = e35.x(r3, "required_network_request");     // Catch: Throwable -> L38
-        int r29 = e35.x(r3, "requires_charging");     // Catch: Throwable -> L38
-        int r30 = e35.x(r3, "requires_device_idle");     // Catch: Throwable -> L38
-        int r31 = e35.x(r3, "requires_battery_not_low");     // Catch: Throwable -> L38
-        int r32 = e35.x(r3, "requires_storage_not_low");     // Catch: Throwable -> L38
-        int r33 = e35.x(r3, "trigger_content_update_delay");     // Catch: Throwable -> L38
-        int r34 = e35.x(r3, "trigger_max_content_delay");     // Catch: Throwable -> L38
-        int r35 = e35.x(r3, "content_uri_triggers");     // Catch: Throwable -> L38
-        dd5 r36 = null;
-        String r37 = null;
-        if (r3.moveToFirst() == false) goto L40;
-        String r38 = r3.getString(r4);     // Catch: Throwable -> L38
-        int r39 = uc5.x(r3.getInt(r5));     // Catch: Throwable -> L38
-        String r310 = r3.getString(r6);     // Catch: Throwable -> L38
-        String r311 = r3.getString(r7);     // Catch: Throwable -> L38
-        oh0 r312 = oh0.a(r3.getBlob(r8));     // Catch: Throwable -> L38
-        oh0 r40 = oh0.a(r3.getBlob(r9));     // Catch: Throwable -> L38
-        long r41 = r3.getLong(r10);     // Catch: Throwable -> L38
-        long r43 = r3.getLong(r11);     // Catch: Throwable -> L38
-        long r45 = r3.getLong(r12);     // Catch: Throwable -> L38
-        int r48 = r3.getInt(r13);     // Catch: Throwable -> L38
-        int r49 = uc5.u(r3.getInt(r14));     // Catch: Throwable -> L38
-        long r50 = r3.getLong(r15);     // Catch: Throwable -> L38
-        long r52 = r3.getLong(r16);     // Catch: Throwable -> L38
-        long r54 = r3.getLong(r0);     // Catch: Throwable -> L38
-        long r56 = r3.getLong(r18);     // Catch: Throwable -> L38
-        if (r3.getInt(r19) == 0) goto L11;
-        boolean r58 = true;
-    L12:
-        int r59 = uc5.w(r3.getInt(r20));     // Catch: Throwable -> L38
-        int r60 = r3.getInt(r21);     // Catch: Throwable -> L38
-        int r61 = r3.getInt(r22);     // Catch: Throwable -> L38
-        long r62 = r3.getLong(r23);     // Catch: Throwable -> L38
-        int r64 = r3.getInt(r24);     // Catch: Throwable -> L38
-        int r65 = r3.getInt(r25);     // Catch: Throwable -> L38
-        if (r3.isNull(r26) == false) goto L15;
-    L14:
-        String r66 = r37;
-        int r42 = uc5.v(r3.getInt(r27));     // Catch: Throwable -> L38
-        o53 r44 = uc5.a0(r3.getBlob(r28));     // Catch: Throwable -> L38
-        if (r3.getInt(r29) == 0) goto L20;
-        boolean r46 = true;
-    L22:
-        if (r3.getInt(r30) == 0) goto L25;
-        boolean r47 = true;
-    L27:
-        if (r3.getInt(r31) == 0) goto L30;
-        boolean r51 = true;
-    L32:
-        if (r3.getInt(r32) == 0) goto L35;
-        boolean r110 = true;
-    L36:
-        r36 = new dd5(r38, r39, r310, r311, r312, r40, r41, r43, r45, new mc0(r44, r42, r46, r47, r51, r110, r3.getLong(r33), r3.getLong(r34), uc5.b(r3.getBlob(r35))), r48, r49, r50, r52, r54, r56, r58, r59, r60, r61, r62, r64, r65, r66);     // Catch: Throwable -> L38
-        goto L40
-    L35:
-        r110 = false;
-        goto L36
-    L30:
-        r51 = false;
-        goto L32
-    L25:
-        r47 = false;
-        goto L27
-    L20:
-        r46 = false;
-        goto L22
-    L15:
-        r37 = r3.getString(r26);     // Catch: Throwable -> L38
-        goto L14
-    L11:
-        r58 = false;
-    L40:
-        r3.close();
-        r17.j();
-        return r36;
-    L38:
-        th = th;
-    L44:
-        r3.close();
-        r17.j();
-        throw th;
-    L42:
-        th = th;
-        r17 = r1;
-        goto L44
+    public final dd5 h(String str) throws Throwable {
+        w24 w24Var;
+        w24 w24VarB = w24.b(1, "SELECT * FROM workspec WHERE id=?");
+        w24VarB.h(1, str);
+        WorkDatabase_Impl workDatabase_Impl = this.a;
+        workDatabase_Impl.b();
+        Cursor cursorH = xl.H(workDatabase_Impl, w24VarB);
+        try {
+            int iX = e35.x(cursorH, "id");
+            int iX2 = e35.x(cursorH, "state");
+            int iX3 = e35.x(cursorH, "worker_class_name");
+            int iX4 = e35.x(cursorH, "input_merger_class_name");
+            int iX5 = e35.x(cursorH, "input");
+            int iX6 = e35.x(cursorH, "output");
+            int iX7 = e35.x(cursorH, "initial_delay");
+            int iX8 = e35.x(cursorH, "interval_duration");
+            int iX9 = e35.x(cursorH, "flex_duration");
+            int iX10 = e35.x(cursorH, "run_attempt_count");
+            int iX11 = e35.x(cursorH, "backoff_policy");
+            int iX12 = e35.x(cursorH, "backoff_delay_duration");
+            int iX13 = e35.x(cursorH, "last_enqueue_time");
+            int iX14 = e35.x(cursorH, "minimum_retention_duration");
+            w24Var = w24VarB;
+            try {
+                int iX15 = e35.x(cursorH, "schedule_requested_at");
+                int iX16 = e35.x(cursorH, "run_in_foreground");
+                int iX17 = e35.x(cursorH, "out_of_quota_policy");
+                int iX18 = e35.x(cursorH, "period_count");
+                int iX19 = e35.x(cursorH, "generation");
+                int iX20 = e35.x(cursorH, "next_schedule_time_override");
+                int iX21 = e35.x(cursorH, "next_schedule_time_override_generation");
+                int iX22 = e35.x(cursorH, "stop_reason");
+                int iX23 = e35.x(cursorH, "trace_tag");
+                int iX24 = e35.x(cursorH, "required_network_type");
+                int iX25 = e35.x(cursorH, "required_network_request");
+                int iX26 = e35.x(cursorH, "requires_charging");
+                int iX27 = e35.x(cursorH, "requires_device_idle");
+                int iX28 = e35.x(cursorH, "requires_battery_not_low");
+                int iX29 = e35.x(cursorH, "requires_storage_not_low");
+                int iX30 = e35.x(cursorH, "trigger_content_update_delay");
+                int iX31 = e35.x(cursorH, "trigger_max_content_delay");
+                int iX32 = e35.x(cursorH, "content_uri_triggers");
+                dd5 dd5Var = null;
+                if (cursorH.moveToFirst()) {
+                    dd5Var = new dd5(cursorH.getString(iX), uc5.x(cursorH.getInt(iX2)), cursorH.getString(iX3), cursorH.getString(iX4), oh0.a(cursorH.getBlob(iX5)), oh0.a(cursorH.getBlob(iX6)), cursorH.getLong(iX7), cursorH.getLong(iX8), cursorH.getLong(iX9), new mc0(uc5.a0(cursorH.getBlob(iX25)), uc5.v(cursorH.getInt(iX24)), cursorH.getInt(iX26) != 0, cursorH.getInt(iX27) != 0, cursorH.getInt(iX28) != 0, cursorH.getInt(iX29) != 0, cursorH.getLong(iX30), cursorH.getLong(iX31), uc5.b(cursorH.getBlob(iX32))), cursorH.getInt(iX10), uc5.u(cursorH.getInt(iX11)), cursorH.getLong(iX12), cursorH.getLong(iX13), cursorH.getLong(iX14), cursorH.getLong(iX15), cursorH.getInt(iX16) != 0, uc5.w(cursorH.getInt(iX17)), cursorH.getInt(iX18), cursorH.getInt(iX19), cursorH.getLong(iX20), cursorH.getInt(iX21), cursorH.getInt(iX22), cursorH.isNull(iX23) ? null : cursorH.getString(iX23));
+                }
+                cursorH.close();
+                w24Var.j();
+                return dd5Var;
+            } catch (Throwable th) {
+                th = th;
+                cursorH.close();
+                w24Var.j();
+                throw th;
+            }
+        } catch (Throwable th2) {
+            th = th2;
+            w24Var = w24VarB;
+        }
     }
 
-    public final ArrayList i(String r6) {
-        w24 r1 = w24.b(1, "SELECT id, state FROM workspec WHERE id IN (SELECT work_spec_id FROM workname WHERE name=?)");
-        r1.h(1, r6);
-        WorkDatabase_Impl r5 = this.a;
-        r5.b();
-        Cursor r7 = xl.H(r5, r1);
-        ArrayList r8 = new ArrayList(r7.getCount());     // Catch: Throwable -> L8
-    L5:
-        if (r7.moveToNext() == false) goto L10;
-        String r2 = r7.getString(0);     // Catch: Throwable -> L8
-        int r3 = uc5.x(r7.getInt(1));     // Catch: Throwable -> L8
-        r2.getClass();     // Catch: Throwable -> L8
-        cd5 r4 = new cd5();     // Catch: Throwable -> L8
-        r4.a = r2;     // Catch: Throwable -> L8
-        r4.b = r3;     // Catch: Throwable -> L8
-        r8.add(r4);     // Catch: Throwable -> L8
-        goto L5
-    L10:
-        r7.close();
-        r1.j();
-        return r8;
-    L8:
-        th = move-exception;
-        r7.close();
-        r1.j();
-        throw th;
+    public final ArrayList i(String str) {
+        w24 w24VarB = w24.b(1, "SELECT id, state FROM workspec WHERE id IN (SELECT work_spec_id FROM workname WHERE name=?)");
+        w24VarB.h(1, str);
+        WorkDatabase_Impl workDatabase_Impl = this.a;
+        workDatabase_Impl.b();
+        Cursor cursorH = xl.H(workDatabase_Impl, w24VarB);
+        try {
+            ArrayList arrayList = new ArrayList(cursorH.getCount());
+            while (cursorH.moveToNext()) {
+                String string = cursorH.getString(0);
+                int iX = uc5.x(cursorH.getInt(1));
+                string.getClass();
+                cd5 cd5Var = new cd5();
+                cd5Var.a = string;
+                cd5Var.b = iX;
+                arrayList.add(cd5Var);
+            }
+            cursorH.close();
+            w24VarB.j();
+            return arrayList;
+        } catch (Throwable th) {
+            cursorH.close();
+            w24VarB.j();
+            throw th;
+        }
     }
 
-    public final void j(String r4, long r5) {
-        WorkDatabase_Impl r0 = this.a;
-        r0.b();
-        aq4 r3 = this.l;
-        df1 r1 = r3.a();
-        r1.c(1, r5);
-        r1.h(2, r4);
-        r0.c();     // Catch: Throwable -> L8
-        r1.b();     // Catch: Throwable -> L10
-        r0.t();     // Catch: Throwable -> L10
-        r0.o();     // Catch: Throwable -> L8
-        r3.h(r1);
-        return;
-    L10:
-        th = move-exception;
-        r0.o();     // Catch: Throwable -> L8
-        throw th;     // Catch: Throwable -> L8
-    L8:
-        th = move-exception;
-        r3.h(r1);
-        throw th;
+    public final void j(String str, long j) {
+        WorkDatabase_Impl workDatabase_Impl = this.a;
+        workDatabase_Impl.b();
+        aq4 aq4Var = this.l;
+        df1 df1VarA = aq4Var.a();
+        df1VarA.c(1, j);
+        df1VarA.h(2, str);
+        try {
+            workDatabase_Impl.c();
+            try {
+                df1VarA.b();
+                workDatabase_Impl.t();
+                workDatabase_Impl.o();
+                aq4Var.h(df1VarA);
+            } catch (Throwable th) {
+                workDatabase_Impl.o();
+                throw th;
+            }
+        } catch (Throwable th2) {
+            aq4Var.h(df1VarA);
+            throw th2;
+        }
     }
 
-    public final void k(int r5, String r6) {
-        WorkDatabase_Impl r0 = this.a;
-        r0.b();
-        aq4 r4 = this.k;
-        df1 r1 = r4.a();
-        r1.h(1, r6);
-        r1.c(2, r5);
-        r0.c();     // Catch: Throwable -> L8
-        r1.b();     // Catch: Throwable -> L10
-        r0.t();     // Catch: Throwable -> L10
-        r0.o();     // Catch: Throwable -> L8
-        r4.h(r1);
-        return;
-    L10:
-        th = move-exception;
-        r0.o();     // Catch: Throwable -> L8
-        throw th;     // Catch: Throwable -> L8
-    L8:
-        th = move-exception;
-        r4.h(r1);
-        throw th;
+    public final void k(int i, String str) {
+        WorkDatabase_Impl workDatabase_Impl = this.a;
+        workDatabase_Impl.b();
+        aq4 aq4Var = this.k;
+        df1 df1VarA = aq4Var.a();
+        df1VarA.h(1, str);
+        df1VarA.c(2, i);
+        try {
+            workDatabase_Impl.c();
+            try {
+                df1VarA.b();
+                workDatabase_Impl.t();
+                workDatabase_Impl.o();
+                aq4Var.h(df1VarA);
+            } catch (Throwable th) {
+                workDatabase_Impl.o();
+                throw th;
+            }
+        } catch (Throwable th2) {
+            aq4Var.h(df1VarA);
+            throw th2;
+        }
     }
 
-    public final void l(String r4, long r5) {
-        WorkDatabase_Impl r0 = this.a;
-        r0.b();
-        aq4 r3 = this.h;
-        df1 r1 = r3.a();
-        r1.c(1, r5);
-        r1.h(2, r4);
-        r0.c();     // Catch: Throwable -> L8
-        r1.b();     // Catch: Throwable -> L10
-        r0.t();     // Catch: Throwable -> L10
-        r0.o();     // Catch: Throwable -> L8
-        r3.h(r1);
-        return;
-    L10:
-        th = move-exception;
-        r0.o();     // Catch: Throwable -> L8
-        throw th;     // Catch: Throwable -> L8
-    L8:
-        th = move-exception;
-        r3.h(r1);
-        throw th;
+    public final void l(String str, long j) {
+        WorkDatabase_Impl workDatabase_Impl = this.a;
+        workDatabase_Impl.b();
+        aq4 aq4Var = this.h;
+        df1 df1VarA = aq4Var.a();
+        df1VarA.c(1, j);
+        df1VarA.h(2, str);
+        try {
+            workDatabase_Impl.c();
+            try {
+                df1VarA.b();
+                workDatabase_Impl.t();
+                workDatabase_Impl.o();
+                aq4Var.h(df1VarA);
+            } catch (Throwable th) {
+                workDatabase_Impl.o();
+                throw th;
+            }
+        } catch (Throwable th2) {
+            aq4Var.h(df1VarA);
+            throw th2;
+        }
     }
 
-    public final void m(String r4, oh0 r5) {
-        WorkDatabase_Impl r0 = this.a;
-        r0.b();
-        aq4 r3 = this.g;
-        df1 r1 = r3.a();
-        oh0 r2 = oh0.b;
-        r1.x(1, bu.E(r5));
-        r1.h(2, r4);
-        r0.c();     // Catch: Throwable -> L8
-        r1.b();     // Catch: Throwable -> L10
-        r0.t();     // Catch: Throwable -> L10
-        r0.o();     // Catch: Throwable -> L8
-        r3.h(r1);
-        return;
-    L10:
-        th = move-exception;
-        r0.o();     // Catch: Throwable -> L8
-        throw th;     // Catch: Throwable -> L8
-    L8:
-        th = move-exception;
-        r3.h(r1);
-        throw th;
+    public final void m(String str, oh0 oh0Var) {
+        WorkDatabase_Impl workDatabase_Impl = this.a;
+        workDatabase_Impl.b();
+        aq4 aq4Var = this.g;
+        df1 df1VarA = aq4Var.a();
+        oh0 oh0Var2 = oh0.b;
+        df1VarA.x(1, bu.E(oh0Var));
+        df1VarA.h(2, str);
+        try {
+            workDatabase_Impl.c();
+            try {
+                df1VarA.b();
+                workDatabase_Impl.t();
+                workDatabase_Impl.o();
+                aq4Var.h(df1VarA);
+            } catch (Throwable th) {
+                workDatabase_Impl.o();
+                throw th;
+            }
+        } catch (Throwable th2) {
+            aq4Var.h(df1VarA);
+            throw th2;
+        }
     }
 
-    public final void n(int r5, String r6) {
-        WorkDatabase_Impl r0 = this.a;
-        r0.b();
-        aq4 r4 = this.d;
-        df1 r1 = r4.a();
-        r1.c(1, uc5.X(r5));
-        r1.h(2, r6);
-        r0.c();     // Catch: Throwable -> L8
-        r1.b();     // Catch: Throwable -> L10
-        r0.t();     // Catch: Throwable -> L10
-        r0.o();     // Catch: Throwable -> L8
-        r4.h(r1);
-        return;
-    L10:
-        th = move-exception;
-        r0.o();     // Catch: Throwable -> L8
-        throw th;     // Catch: Throwable -> L8
-    L8:
-        th = move-exception;
-        r4.h(r1);
-        throw th;
+    public final void n(int i, String str) {
+        WorkDatabase_Impl workDatabase_Impl = this.a;
+        workDatabase_Impl.b();
+        aq4 aq4Var = this.d;
+        df1 df1VarA = aq4Var.a();
+        df1VarA.c(1, uc5.X(i));
+        df1VarA.h(2, str);
+        try {
+            workDatabase_Impl.c();
+            try {
+                df1VarA.b();
+                workDatabase_Impl.t();
+                workDatabase_Impl.o();
+                aq4Var.h(df1VarA);
+            } catch (Throwable th) {
+                workDatabase_Impl.o();
+                throw th;
+            }
+        } catch (Throwable th2) {
+            aq4Var.h(df1VarA);
+            throw th2;
+        }
     }
 
-    public final void o(int r6, String r7) {
-        WorkDatabase_Impl r0 = this.a;
-        r0.b();
-        aq4 r5 = this.n;
-        df1 r1 = r5.a();
-        r1.c(1, r6);
-        r1.h(2, r7);
-        r0.c();     // Catch: Throwable -> L8
-        r1.b();     // Catch: Throwable -> L10
-        r0.t();     // Catch: Throwable -> L10
-        r0.o();     // Catch: Throwable -> L8
-        r5.h(r1);
-        return;
-    L10:
-        th = move-exception;
-        r0.o();     // Catch: Throwable -> L8
-        throw th;     // Catch: Throwable -> L8
-    L8:
-        th = move-exception;
-        r5.h(r1);
-        throw th;
+    public final void o(int i, String str) {
+        WorkDatabase_Impl workDatabase_Impl = this.a;
+        workDatabase_Impl.b();
+        aq4 aq4Var = this.n;
+        df1 df1VarA = aq4Var.a();
+        df1VarA.c(1, i);
+        df1VarA.h(2, str);
+        try {
+            workDatabase_Impl.c();
+            try {
+                df1VarA.b();
+                workDatabase_Impl.t();
+                workDatabase_Impl.o();
+                aq4Var.h(df1VarA);
+            } catch (Throwable th) {
+                workDatabase_Impl.o();
+                throw th;
+            }
+        } catch (Throwable th2) {
+            aq4Var.h(df1VarA);
+            throw th2;
+        }
     }
 }

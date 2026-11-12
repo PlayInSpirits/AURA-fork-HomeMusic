@@ -9,35 +9,29 @@ public final class ki2 implements Comparable {
     public final long o;
     public final long p;
 
-    public ki2(long r1, long r3, long r5) {
-        this.n = r1;
-        this.o = r3;
-        this.p = r5;
+    public ki2(long j, long j2, long j3) {
+        this.n = j;
+        this.o = j2;
+        this.p = j3;
     }
 
     @Override // java.lang.Comparable
-    public final int compareTo(Object r3) {
-        return Long.compare(this.n, ((ki2) r3).n);
+    public final int compareTo(Object obj) {
+        return Long.compare(this.n, ((ki2) obj).n);
     }
 
-    public final boolean equals(Object r8) {
-        if (this != r8) goto L6;
-        return true;
-    L6:
-        if ((r8 instanceof ki2) == true) goto L8;
-        return false;
-    L8:
-        ki2 r9 = (ki2) r8;
-        if (this.n == r9.n) goto L11;
-    L15:
-        return false;
-    L11:
-        if (this.o != r9.o) goto L15;
-        if (this.p != r9.p) goto L15;
-        return true;
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof ki2)) {
+            return false;
+        }
+        ki2 ki2Var = (ki2) obj;
+        return this.n == ki2Var.n && this.o == ki2Var.o && this.p == ki2Var.p;
     }
 
     public final int hashCode() {
-        return Objects.hash(new Object[]{Long.valueOf(this.n), Long.valueOf(this.o), Long.valueOf(this.p)});
+        return Objects.hash(Long.valueOf(this.n), Long.valueOf(this.o), Long.valueOf(this.p));
     }
 }

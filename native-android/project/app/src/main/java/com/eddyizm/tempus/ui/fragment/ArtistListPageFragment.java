@@ -6,8 +6,10 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.PopupMenu;
 import android.widget.SearchView;
 import android.widget.TextView;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -16,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import app.homemusic.R;
 import com.eddyizm.tempus.interfaces.ClickCallback;
 import com.eddyizm.tempus.ui.activity.MainActivity;
+import com.eddyizm.tempus.ui.fragment.ArtistListPageFragment;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.appbar.MaterialToolbar;
 import defpackage.b11;
@@ -30,7 +33,6 @@ import defpackage.i30;
 import defpackage.k03;
 import defpackage.kc1;
 import defpackage.kf2;
-import defpackage.kj;
 import defpackage.kx3;
 import defpackage.le1;
 import defpackage.lj;
@@ -56,117 +58,163 @@ public class ArtistListPageFragment extends kc1 implements ClickCallback {
     public nj n0;
     public b8 o0;
 
-    public ArtistListPageFragment() {
-    }
-
     @Override // defpackage.kc1
-    public final void F(Bundle r1) {
-        super.F(r1);
+    public final void F(Bundle bundle) {
+        super.F(bundle);
         d0();
     }
 
     @Override // defpackage.kc1
-    public final void G(Menu r2, MenuInflater r3) {
-        r3.inflate(R.menu.toolbar_menu, r2);
-        SearchView r4 = (SearchView) r2.findItem(R.id.action_search).getActionView();
-        r4.setImeOptions(6);
-        r4.setOnQueryTextListener(new w7(this, r4, 1));
-        r4.setPadding(-32, 0, 0, 0);
+    public final void G(Menu menu, MenuInflater menuInflater) {
+        menuInflater.inflate(R.menu.toolbar_menu, menu);
+        SearchView searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
+        searchView.setImeOptions(6);
+        searchView.setOnQueryTextListener(new w7(this, searchView, 1));
+        searchView.setPadding(-32, 0, 0, 0);
     }
 
     @Override // defpackage.kc1
-    public final View H(LayoutInflater r11, ViewGroup r12, Bundle r13) {
-        this.m0 = (MainActivity) l();
-        final int r0 = 0;
-        View r14 = r11.inflate(R.layout.fragment_artist_list_page, r12, false);
-        int r15 = R.id.app_bar_layout;
-        AppBarLayout r3 = (AppBarLayout) uo.s(r14, R.id.app_bar_layout);
-        if (r3 == null) goto L46;
-        r15 = R.id.artist_info_sector;
-        ConstraintLayout r4 = (ConstraintLayout) uo.s(r14, R.id.artist_info_sector);
-        if (r4 == null) goto L46;
-        r15 = R.id.artist_list_recycler_view;
-        RecyclerView r5 = (RecyclerView) uo.s(r14, R.id.artist_list_recycler_view);
-        if (r5 == null) goto L46;
-        r15 = R.id.artist_list_sort_image_view;
-        Button r6 = (Button) uo.s(r14, R.id.artist_list_sort_image_view);
-        if (r6 == null) goto L46;
-        r15 = R.id.page_subtitle_label;
-        TextView r7 = (TextView) uo.s(r14, R.id.page_subtitle_label);
-        if (r7 == null) goto L46;
-        r15 = R.id.page_title_label;
-        TextView r8 = (TextView) uo.s(r14, R.id.page_title_label);
-        if (r8 == null) goto L46;
-        r15 = R.id.toolbar;
-        MaterialToolbar r9 = (MaterialToolbar) uo.s(r14, R.id.toolbar);
-        if (r9 == null) goto L46;
-        LinearLayout r2 = (LinearLayout) r14;
-        this.l0 = new oc1(r2, r3, r4, r5, r6, r7, r8, r9);
-        nc1 r16 = X();
-        e75 r17 = r16.d();
-        b75 r1 = gh0.r(r16);
-        bq4 r10 = new bq4(r17, r1, b11.e(r16, r1));
-        i30 r18 = kx3.a(nj.class);
-        String r19 = r18.b();
-        if (r19 == null) goto L44;
-        this.n0 = (nj) r10.l(r18, "androidx.lifecycle.ViewModelProvider.DefaultKey:".concat(r19));
-        Bundle r110 = this.s;
-        if (r110 != null) goto L27;
-        MainActivity r111 = this.m0;
-        if (r111 == null) goto L25;
-        v23 r112 = r111.T;
-        if (r112 == null) goto L25;
-        r112.o();
-    L25:
-        return r2;
-    L27:
-        if (r110.getString("ARTIST_STARRED") == null) goto L30;
-        this.n0.e = "ARTIST_STARRED";
-        this.l0.f.setText(R.string.artist_list_page_starred);
-    L32:
-        this.m0.o(this.l0.g);
-        final int r113 = 1;
-        if (this.m0.n() == null) goto L35;
-        this.m0.n().f0(true);
-        this.m0.n().g0();
-    L35:
-        this.l0.g.setNavigationOnClickListener(new kj(this, r113));
-        this.l0.a.a(new u7(3, this));
-        RecyclerView r114 = this.l0.c;
-        Z();
-        r114.setLayoutManager(new LinearLayoutManager(1));
-        this.l0.c.setHasFixedSize(true);
-        b8 r115 = new b8(this, 1);
-        this.o0 = r115;
-        this.l0.c.setAdapter(r115);
-        nj r116 = this.n0;
-        le1 r20 = v();
-        r116.getClass();
-        r116.f = new k03(new ArrayList());
-        String r21 = r116.e;
-        r21.getClass();
-        if (r21.equals("ARTIST_STARRED") == false) goto L38;
-        r116.f = r116.c.y(-1, false);
-    L42:
-        r116.f.e(v(), new d8(5, this));
-        this.l0.c.setOnTouchListener(new s7(3, this));
-        this.l0.d.setOnClickListener(new kj(this, r0));
-        return r2;
-    L38:
-        if (r21.equals("ARTIST_DOWNLOADED") == false) goto L42;
-        ss0 r117 = (ss0) r116.d.o;
-        ((s24) r117.n).i().a(new String[]{"download"}, new os0(r117, 1)).e(r20, new lj(0));
-        goto L42
-    L30:
-        if (r110.getString("ARTIST_DOWNLOADED") == null) goto L32;
-        this.n0.e = "ARTIST_DOWNLOADED";
-        this.l0.f.setText(R.string.artist_list_page_downloaded);
-        goto L32
-    L44:
-        kf2.n("Local and anonymous classes can not be ViewModels");
-        return null;
-    L46:
-        nz2.n("Missing required view with ID: ".concat(r14.getResources().getResourceName(r15)));
+    public final View H(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
+        v23 v23Var;
+        this.m0 = (MainActivity) e();
+        final int i = 0;
+        View viewInflate = layoutInflater.inflate(R.layout.fragment_artist_list_page, viewGroup, false);
+        int i2 = R.id.app_bar_layout;
+        AppBarLayout appBarLayout = (AppBarLayout) uo.s(viewInflate, R.id.app_bar_layout);
+        if (appBarLayout != null) {
+            i2 = R.id.artist_info_sector;
+            ConstraintLayout constraintLayout = (ConstraintLayout) uo.s(viewInflate, R.id.artist_info_sector);
+            if (constraintLayout != null) {
+                i2 = R.id.artist_list_recycler_view;
+                RecyclerView recyclerView = (RecyclerView) uo.s(viewInflate, R.id.artist_list_recycler_view);
+                if (recyclerView != null) {
+                    i2 = R.id.artist_list_sort_image_view;
+                    Button button = (Button) uo.s(viewInflate, R.id.artist_list_sort_image_view);
+                    if (button != null) {
+                        i2 = R.id.page_subtitle_label;
+                        TextView textView = (TextView) uo.s(viewInflate, R.id.page_subtitle_label);
+                        if (textView != null) {
+                            i2 = R.id.page_title_label;
+                            TextView textView2 = (TextView) uo.s(viewInflate, R.id.page_title_label);
+                            if (textView2 != null) {
+                                i2 = R.id.toolbar;
+                                MaterialToolbar materialToolbar = (MaterialToolbar) uo.s(viewInflate, R.id.toolbar);
+                                if (materialToolbar != null) {
+                                    LinearLayout linearLayout = (LinearLayout) viewInflate;
+                                    this.l0 = new oc1(linearLayout, appBarLayout, constraintLayout, recyclerView, button, textView, textView2, materialToolbar);
+                                    nc1 nc1VarX = X();
+                                    e75 e75VarD = nc1VarX.d();
+                                    b75 b75VarR = gh0.r(nc1VarX);
+                                    bq4 bq4Var = new bq4(e75VarD, b75VarR, b11.e(nc1VarX, b75VarR));
+                                    i30 i30VarA = kx3.a(nj.class);
+                                    String strB = i30VarA.b();
+                                    if (strB == null) {
+                                        kf2.n("Local and anonymous classes can not be ViewModels");
+                                        return null;
+                                    }
+                                    this.n0 = (nj) bq4Var.l(i30VarA, "androidx.lifecycle.ViewModelProvider.DefaultKey:".concat(strB));
+                                    Bundle bundle2 = this.s;
+                                    if (bundle2 == null) {
+                                        MainActivity mainActivity = this.m0;
+                                        if (mainActivity != null && (v23Var = mainActivity.T) != null) {
+                                            v23Var.o();
+                                        }
+                                        return linearLayout;
+                                    }
+                                    if (bundle2.getString("ARTIST_STARRED") != null) {
+                                        this.n0.e = "ARTIST_STARRED";
+                                        this.l0.f.setText(R.string.artist_list_page_starred);
+                                    } else if (bundle2.getString("ARTIST_DOWNLOADED") != null) {
+                                        this.n0.e = "ARTIST_DOWNLOADED";
+                                        this.l0.f.setText(R.string.artist_list_page_downloaded);
+                                    }
+                                    this.m0.o(this.l0.g);
+                                    final int i3 = 1;
+                                    if (this.m0.n() != null) {
+                                        this.m0.n().f0(true);
+                                        this.m0.n().g0();
+                                    }
+                                    this.l0.g.setNavigationOnClickListener(new View.OnClickListener(this) { // from class: kj
+                                        public final /* synthetic */ ArtistListPageFragment o;
+
+                                        {
+                                            this.o = this;
+                                        }
+
+                                        @Override // android.view.View.OnClickListener
+                                        public final void onClick(View view) {
+                                            int i4 = i3;
+                                            ArtistListPageFragment artistListPageFragment = this.o;
+                                            switch (i4) {
+                                                case 0:
+                                                    PopupMenu popupMenu = new PopupMenu(artistListPageFragment.Z(), view);
+                                                    popupMenu.getMenuInflater().inflate(R.menu.sort_horizontal_artist_popup_menu, popupMenu.getMenu());
+                                                    popupMenu.setOnMenuItemClickListener(new v7(3, artistListPageFragment));
+                                                    popupMenu.show();
+                                                    break;
+                                                default:
+                                                    ((InputMethodManager) artistListPageFragment.X().getSystemService("input_method")).hideSoftInputFromWindow(view.getWindowToken(), 0);
+                                                    artistListPageFragment.m0.T.o();
+                                                    break;
+                                            }
+                                        }
+                                    });
+                                    this.l0.a.a(new u7(3, this));
+                                    RecyclerView recyclerView2 = this.l0.c;
+                                    Z();
+                                    recyclerView2.setLayoutManager(new LinearLayoutManager(1));
+                                    this.l0.c.setHasFixedSize(true);
+                                    b8 b8Var = new b8(this, 1);
+                                    this.o0 = b8Var;
+                                    this.l0.c.setAdapter(b8Var);
+                                    nj njVar = this.n0;
+                                    le1 le1VarV = v();
+                                    njVar.getClass();
+                                    njVar.f = new k03(new ArrayList());
+                                    String str = njVar.e;
+                                    str.getClass();
+                                    if (str.equals("ARTIST_STARRED")) {
+                                        njVar.f = njVar.c.y(-1, false);
+                                    } else if (str.equals("ARTIST_DOWNLOADED")) {
+                                        ss0 ss0Var = (ss0) njVar.d.o;
+                                        ((s24) ss0Var.n).i().a(new String[]{"download"}, new os0(ss0Var, 1)).e(le1VarV, new lj(0));
+                                    }
+                                    njVar.f.e(v(), new d8(5, this));
+                                    this.l0.c.setOnTouchListener(new s7(3, this));
+                                    this.l0.d.setOnClickListener(new View.OnClickListener(this) { // from class: kj
+                                        public final /* synthetic */ ArtistListPageFragment o;
+
+                                        {
+                                            this.o = this;
+                                        }
+
+                                        @Override // android.view.View.OnClickListener
+                                        public final void onClick(View view) {
+                                            int i4 = i;
+                                            ArtistListPageFragment artistListPageFragment = this.o;
+                                            switch (i4) {
+                                                case 0:
+                                                    PopupMenu popupMenu = new PopupMenu(artistListPageFragment.Z(), view);
+                                                    popupMenu.getMenuInflater().inflate(R.menu.sort_horizontal_artist_popup_menu, popupMenu.getMenu());
+                                                    popupMenu.setOnMenuItemClickListener(new v7(3, artistListPageFragment));
+                                                    popupMenu.show();
+                                                    break;
+                                                default:
+                                                    ((InputMethodManager) artistListPageFragment.X().getSystemService("input_method")).hideSoftInputFromWindow(view.getWindowToken(), 0);
+                                                    artistListPageFragment.m0.T.o();
+                                                    break;
+                                            }
+                                        }
+                                    });
+                                    return linearLayout;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        nz2.n("Missing required view with ID: ".concat(viewInflate.getResources().getResourceName(i2)));
         return null;
     }
 
@@ -177,12 +225,12 @@ public class ArtistListPageFragment extends kc1 implements ClickCallback {
     }
 
     @Override // com.eddyizm.tempus.interfaces.ClickCallback
-    public final void onArtistClick(Bundle r3) {
-        gb.x(a0()).m(R.id.artistPageFragment, r3, null);
+    public final void onArtistClick(Bundle bundle) {
+        gb.x(a0()).m(R.id.artistPageFragment, bundle, null);
     }
 
     @Override // com.eddyizm.tempus.interfaces.ClickCallback
-    public final void onArtistLongClick(Bundle r3) {
-        gb.x(a0()).m(R.id.artistBottomSheetDialog, r3, null);
+    public final void onArtistLongClick(Bundle bundle) {
+        gb.x(a0()).m(R.id.artistBottomSheetDialog, bundle, null);
     }
 }

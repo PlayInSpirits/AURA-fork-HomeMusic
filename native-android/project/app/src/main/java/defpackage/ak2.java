@@ -13,45 +13,45 @@ import java.util.ArrayList;
 public interface ak2 {
     void a();
 
-    void c(Bundle r1);
+    void c(Bundle bundle);
 
-    void e(int r1, fg0 r2, long r3, int r5);
+    void e(int i, fg0 fg0Var, long j, int i2);
 
-    void f(int r1, int r2, int r3, long r4);
+    void f(int i, int i2, int i3, long j);
 
     void flush();
 
-    void g(int r1);
+    void g(int i);
 
     MediaFormat h();
 
     void i();
 
-    default void k(ws1 r1) {
-        r1.run();
+    default void k(ws1 ws1Var) {
+        ws1Var.run();
     }
 
-    void l(int r1, long r2);
+    void l(int i, long j);
 
     int m();
 
-    int n(MediaCodec.BufferInfo r1);
+    int n(MediaCodec.BufferInfo bufferInfo);
 
-    void p(int r1);
+    void p(int i);
 
-    ByteBuffer q(int r1);
+    ByteBuffer q(int i);
 
-    void r(Surface r1);
+    void r(Surface surface);
 
-    ByteBuffer t(int r1);
+    ByteBuffer t(int i);
 
-    void u(ArrayList r1);
+    void u(ArrayList arrayList);
 
-    void v(nk2 r1, Handler r2);
+    void v(nk2 nk2Var, Handler handler);
 
-    default boolean w(om1 r1) {
+    default boolean w(om1 om1Var) {
         return false;
     }
 
-    void x(ArrayList r1);
+    void x(ArrayList arrayList);
 }

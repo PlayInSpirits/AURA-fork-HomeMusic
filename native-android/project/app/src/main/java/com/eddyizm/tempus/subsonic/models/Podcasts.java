@@ -11,14 +11,11 @@ public final class Podcasts {
     @ka4("channel")
     private List<PodcastChannel> channels;
 
-    public Podcasts() {
-    }
-
     public final List<PodcastChannel> getChannels() {
         return this.channels;
     }
 
-    public final void setChannels(List<PodcastChannel> r1) {
-        this.channels = r1;
+    public final void setChannels(List<PodcastChannel> list) {
+        this.channels = list;
     }
 }

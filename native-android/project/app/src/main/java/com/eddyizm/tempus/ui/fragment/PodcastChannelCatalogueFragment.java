@@ -51,82 +51,82 @@ public class PodcastChannelCatalogueFragment extends kc1 implements ClickCallbac
     public wm3 n0;
     public ej o0;
 
-    public PodcastChannelCatalogueFragment() {
-    }
-
     @Override // defpackage.kc1
-    public final void F(Bundle r1) {
-        super.F(r1);
+    public final void F(Bundle bundle) {
+        super.F(bundle);
         d0();
     }
 
     @Override // defpackage.kc1
-    public final void G(Menu r2, MenuInflater r3) {
-        r3.inflate(R.menu.toolbar_menu, r2);
-        SearchView r4 = (SearchView) r2.findItem(R.id.action_search).getActionView();
-        r4.setImeOptions(6);
-        r4.setOnQueryTextListener(new w7(this, r4, 5));
-        r4.setPadding(-32, 0, 0, 0);
+    public final void G(Menu menu, MenuInflater menuInflater) {
+        menuInflater.inflate(R.menu.toolbar_menu, menu);
+        SearchView searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
+        searchView.setImeOptions(6);
+        searchView.setOnQueryTextListener(new w7(this, searchView, 5));
+        searchView.setPadding(-32, 0, 0, 0);
     }
 
     @Override // defpackage.kc1
-    public final View H(LayoutInflater r8, ViewGroup r9, Bundle r10) {
-        this.m0 = (MainActivity) l();
-        View r11 = r8.inflate(R.layout.fragment_podcast_channel_catalogue, r9, false);
-        int r12 = R.id.app_bar_layout;
-        AppBarLayout r3 = (AppBarLayout) uo.s(r11, R.id.app_bar_layout);
-        if (r3 == null) goto L22;
-        r12 = R.id.podcast_channel_catalogue_recycler_view;
-        RecyclerView r4 = (RecyclerView) uo.s(r11, R.id.podcast_channel_catalogue_recycler_view);
-        if (r4 == null) goto L22;
-        r12 = R.id.podcast_channel_info_sector;
-        ConstraintLayout r5 = (ConstraintLayout) uo.s(r11, R.id.podcast_channel_info_sector);
-        if (r5 == null) goto L22;
-        r12 = R.id.toolbar;
-        MaterialToolbar r6 = (MaterialToolbar) uo.s(r11, R.id.toolbar);
-        if (r6 == null) goto L22;
-        LinearLayout r2 = (LinearLayout) r11;
-        this.l0 = new bq4(r2, r3, r4, r5, r6);
-        nc1 r13 = X();
-        e75 r14 = r13.d();
-        b75 r1 = gh0.r(r13);
-        bq4 r7 = new bq4(r14, r1, b11.e(r13, r1));
-        i30 r15 = kx3.a(wm3.class);
-        String r16 = r15.b();
-        if (r16 == null) goto L20;
-        this.n0 = (wm3) r7.l(r15, "androidx.lifecycle.ViewModelProvider.DefaultKey:".concat(r16));
-        this.m0.o((MaterialToolbar) this.l0.q);
-        if (this.m0.n() == null) goto L15;
-        this.m0.n().f0(true);
-        this.m0.n().g0();
-    L15:
-        ((MaterialToolbar) this.l0.q).setNavigationOnClickListener(new bj3(11, this));
-        ((AppBarLayout) this.l0.n).a(new u7(9, this));
-        RecyclerView r17 = (RecyclerView) this.l0.o;
-        Z();
-        r17.setLayoutManager(new GridLayoutManager(2));
-        ((RecyclerView) this.l0.o).i(new ek1(2, 20));
-        ((RecyclerView) this.l0.o).setHasFixedSize(true);
-        ej r18 = new ej(this);
-        this.o0 = r18;
-        r18.p = 2;
-        r18.n.g();
-        ((RecyclerView) this.l0.o).setAdapter(this.o0);
-        wm3 r19 = this.n0;
-        le1 r20 = v();
-        k03 r21 = r19.d;
-        if (r21.d() != null) goto L18;
-        r19.c.getClass();
-        hh3.l(null, false).e(r20, new g7(r21, 0));
-    L18:
-        r21.e(v(), new d8(22, this));
-        ((RecyclerView) this.l0.o).setOnTouchListener(new s7(8, this));
-        return r2;
-    L20:
-        kf2.n("Local and anonymous classes can not be ViewModels");
-        return null;
-    L22:
-        nz2.n("Missing required view with ID: ".concat(r11.getResources().getResourceName(r12)));
+    public final View H(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
+        this.m0 = (MainActivity) e();
+        View viewInflate = layoutInflater.inflate(R.layout.fragment_podcast_channel_catalogue, viewGroup, false);
+        int i = R.id.app_bar_layout;
+        AppBarLayout appBarLayout = (AppBarLayout) uo.s(viewInflate, R.id.app_bar_layout);
+        if (appBarLayout != null) {
+            i = R.id.podcast_channel_catalogue_recycler_view;
+            RecyclerView recyclerView = (RecyclerView) uo.s(viewInflate, R.id.podcast_channel_catalogue_recycler_view);
+            if (recyclerView != null) {
+                i = R.id.podcast_channel_info_sector;
+                ConstraintLayout constraintLayout = (ConstraintLayout) uo.s(viewInflate, R.id.podcast_channel_info_sector);
+                if (constraintLayout != null) {
+                    i = R.id.toolbar;
+                    MaterialToolbar materialToolbar = (MaterialToolbar) uo.s(viewInflate, R.id.toolbar);
+                    if (materialToolbar != null) {
+                        LinearLayout linearLayout = (LinearLayout) viewInflate;
+                        this.l0 = new bq4(linearLayout, appBarLayout, recyclerView, constraintLayout, materialToolbar);
+                        nc1 nc1VarX = X();
+                        e75 e75VarD = nc1VarX.d();
+                        b75 b75VarR = gh0.r(nc1VarX);
+                        bq4 bq4Var = new bq4(e75VarD, b75VarR, b11.e(nc1VarX, b75VarR));
+                        i30 i30VarA = kx3.a(wm3.class);
+                        String strB = i30VarA.b();
+                        if (strB == null) {
+                            kf2.n("Local and anonymous classes can not be ViewModels");
+                            return null;
+                        }
+                        this.n0 = (wm3) bq4Var.l(i30VarA, "androidx.lifecycle.ViewModelProvider.DefaultKey:".concat(strB));
+                        this.m0.o((MaterialToolbar) this.l0.q);
+                        if (this.m0.n() != null) {
+                            this.m0.n().f0(true);
+                            this.m0.n().g0();
+                        }
+                        ((MaterialToolbar) this.l0.q).setNavigationOnClickListener(new bj3(11, this));
+                        ((AppBarLayout) this.l0.n).a(new u7(9, this));
+                        RecyclerView recyclerView2 = (RecyclerView) this.l0.o;
+                        Z();
+                        recyclerView2.setLayoutManager(new GridLayoutManager(2));
+                        ((RecyclerView) this.l0.o).i(new ek1(2, 20));
+                        ((RecyclerView) this.l0.o).setHasFixedSize(true);
+                        ej ejVar = new ej(this);
+                        this.o0 = ejVar;
+                        ejVar.p = 2;
+                        ejVar.n.g();
+                        ((RecyclerView) this.l0.o).setAdapter(this.o0);
+                        wm3 wm3Var = this.n0;
+                        le1 le1VarV = v();
+                        k03 k03Var = wm3Var.d;
+                        if (k03Var.d() == null) {
+                            wm3Var.c.getClass();
+                            hh3.l(null, false).e(le1VarV, new g7(k03Var, 0));
+                        }
+                        k03Var.e(v(), new d8(22, this));
+                        ((RecyclerView) this.l0.o).setOnTouchListener(new s7(8, this));
+                        return linearLayout;
+                    }
+                }
+            }
+        }
+        nz2.n("Missing required view with ID: ".concat(viewInflate.getResources().getResourceName(i)));
         return null;
     }
 
@@ -136,17 +136,17 @@ public class PodcastChannelCatalogueFragment extends kc1 implements ClickCallbac
         this.l0 = null;
     }
 
-    public final void h0(View r2) {
-        ((InputMethodManager) X().getSystemService("input_method")).hideSoftInputFromWindow(r2.getWindowToken(), 0);
+    public final void h0(View view) {
+        ((InputMethodManager) X().getSystemService("input_method")).hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
     @Override // com.eddyizm.tempus.interfaces.ClickCallback
-    public final void onPodcastChannelClick(Bundle r4) {
-        gb.x(a0()).m(R.id.podcastChannelPageFragment, r4, null);
+    public final void onPodcastChannelClick(Bundle bundle) {
+        gb.x(a0()).m(R.id.podcastChannelPageFragment, bundle, null);
         h0(a0());
     }
 
     @Override // com.eddyizm.tempus.interfaces.ClickCallback
-    public final void onPodcastChannelLongClick(Bundle r1) {
+    public final void onPodcastChannelLongClick(Bundle bundle) {
     }
 }

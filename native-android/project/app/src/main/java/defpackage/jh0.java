@@ -9,48 +9,45 @@ public final class jh0 extends ep4 implements wf1 {
     public final /* synthetic */ boolean r;
     public final /* synthetic */ if1 s;
 
-    public jh0(vd0 r1, if1 r2, s24 r3, boolean r4, boolean r5) {
-        this.p = r3;
-        this.q = r4;
-        this.r = r5;
-        this.s = r2;
-        super(2, r1);
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public jh0(vd0 vd0Var, if1 if1Var, s24 s24Var, boolean z, boolean z2) {
+        super(2, vd0Var);
+        this.p = s24Var;
+        this.q = z;
+        this.r = z2;
+        this.s = if1Var;
     }
 
     @Override // defpackage.jp
-    public final vd0 create(Object r7, vd0 r8) {
-        boolean r5 = this.r;
-        return new jh0(r8, this.s, this.p, this.q, r5);
+    public final vd0 create(Object obj, vd0 vd0Var) {
+        return new jh0(vd0Var, this.s, this.p, this.q, this.r);
     }
 
     @Override // defpackage.wf1
-    public final Object invoke(Object r1, Object r2) {
-        return ((jh0) create((we0) r1, (vd0) r2)).invokeSuspend(j15.a);
+    public final Object invoke(Object obj, Object obj2) {
+        return ((jh0) create((we0) obj, (vd0) obj2)).invokeSuspend(j15.a);
     }
 
     @Override // defpackage.jp
-    public final Object invokeSuspend(Object r9) {
-        int r0 = this.o;
-        if (r0 == 0) goto L9;
-        if (r0 != 1) goto L7;
-        kb4.X(r9);
-        return r9;
-    L7:
-        kf2.o("call to 'resume' before 'invoke' with coroutine");
-        return null;
-    L9:
-        kb4.X(r9);
-        if1 r4 = this.s;
-        s24 r5 = this.p;
-        boolean r6 = this.r;
-        boolean r7 = this.q;
-        ih0 r2 = new ih0(null, r4, r5, r6, r7);
+    public final Object invokeSuspend(Object obj) {
+        int i = this.o;
+        if (i != 0) {
+            if (i == 1) {
+                kb4.X(obj);
+                return obj;
+            }
+            kf2.o("call to 'resume' before 'invoke' with coroutine");
+            return null;
+        }
+        kb4.X(obj);
+        if1 if1Var = this.s;
+        s24 s24Var = this.p;
+        boolean z = this.r;
+        boolean z2 = this.q;
+        ih0 ih0Var = new ih0(null, if1Var, s24Var, z, z2);
         this.o = 1;
-        Object r8 = r5.u(r7, r2, this);
-        xe0 r10 = xe0.n;
-        if (r8 != r10) goto L12;
-        return r10;
-    L12:
-        return r8;
+        Object objU = s24Var.u(z2, ih0Var, this);
+        xe0 xe0Var = xe0.n;
+        return objU == xe0Var ? xe0Var : objU;
     }
 }

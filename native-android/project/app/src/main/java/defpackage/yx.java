@@ -12,34 +12,34 @@ public final class yx extends oi {
     }
 
     @Override // defpackage.yd4
-    public final void g(oi r2) {
+    public final void g(oi oiVar) {
         this.t = 0;
-        super.g(r2);
+        super.g(oiVar);
     }
 
     @Override // defpackage.yd4
-    public final Object h(int r2) {
+    public final Object h(int i) {
         this.t = 0;
-        return super.h(r2);
+        return super.h(i);
     }
 
     @Override // defpackage.yd4, java.util.Map
     public final int hashCode() {
-        if (this.t != 0) goto L6;
-        this.t = super.hashCode();
-    L6:
+        if (this.t == 0) {
+            this.t = super.hashCode();
+        }
         return this.t;
     }
 
     @Override // defpackage.yd4
-    public final Object i(int r2, Object r3) {
+    public final Object i(int i, Object obj) {
         this.t = 0;
-        return super.i(r2, r3);
+        return super.i(i, obj);
     }
 
     @Override // defpackage.yd4, java.util.Map
-    public final Object put(Object r2, Object r3) {
+    public final Object put(Object obj, Object obj2) {
         this.t = 0;
-        return super.put(r2, r3);
+        return super.put(obj, obj2);
     }
 }

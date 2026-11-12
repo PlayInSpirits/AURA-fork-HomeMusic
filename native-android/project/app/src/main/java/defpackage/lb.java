@@ -19,634 +19,661 @@ public final class lb implements rl0, View.OnAttachStateChangeListener {
     public final ra n;
     public final na o;
     public gp3 p;
-    public final ArrayList q;
-    public final long r;
-    public jb s;
-    public boolean t;
-    public final aw u;
+    public final ArrayList q = new ArrayList();
+    public final long r = 100;
+    public jb s = jb.n;
+    public boolean t = true;
+    public final aw u = su3.a(1, 6, null);
     public i03 v;
     public long w;
     public final i03 x;
     public j94 y;
     public boolean z;
 
-    public lb(ra r3, na r4) {
-        this.n = r3;
-        this.o = r4;
-        this.q = new ArrayList();
-        this.r = 100;
-        this.s = jb.n;
-        this.t = true;
-        this.u = su3.a(1, 6, null);
+    public lb(ra raVar, na naVar) {
+        this.n = raVar;
+        this.o = naVar;
         new Handler(Looper.getMainLooper());
-        i03 r5 = f02.a;
-        r5.getClass();
-        this.v = r5;
+        i03 i03Var = f02.a;
+        i03Var.getClass();
+        this.v = i03Var;
         this.x = new i03();
-        this.y = new j94(r3.getSemanticsOwner().a(), r5);
+        this.y = new j94(raVar.getSemanticsOwner().a(), i03Var);
         this.A = new a0(5, this);
     }
 
+    /* JADX WARN: Code duplicated, block: B:17:0x0046 A[PHI: r1
+  0x0046: PHI (r1v3 xv) = (r1v1 xv), (r1v2 xv), (r1v5 xv) binds: [B:16:0x0039, B:30:0x0082, B:12:0x0026] A[DONT_GENERATE, DONT_INLINE]] */
+    /* JADX WARN: Code duplicated, block: B:20:0x0051 A[PHI: r1 r8
+  0x0051: PHI (r1v2 xv) = (r1v3 xv), (r1v4 xv) binds: [B:18:0x004e, B:15:0x0033] A[DONT_GENERATE, DONT_INLINE]
+  0x0051: PHI (r8v3 java.lang.Object) = (r8v10 java.lang.Object), (r8v1 java.lang.Object) binds: [B:18:0x004e, B:15:0x0033] A[DONT_GENERATE, DONT_INLINE]] */
+    /* JADX WARN: Code duplicated, block: B:22:0x0059  */
+    /* JADX WARN: Code duplicated, block: B:24:0x0062  */
+    /* JADX WARN: Code duplicated, block: B:27:0x006f A[ADDED_TO_REGION] */
+    /* JADX WARN: Code duplicated, block: B:7:0x0013  */
     /* JADX WARN: Unsupported multi-entry loop pattern (BACK_EDGE: B:30:0x0082 -> B:17:0x0046). Please report as a decompilation issue!!! */
-    public final Object a(wd0 r8) {
-        if ((r8 instanceof kb) == false) goto L7;
-        kb r0 = (kb) r8;
-        int r1 = r0.q;
-        if ((r1 & Integer.MIN_VALUE) == 0) goto L7;
-        r0.q = r1 - Integer.MIN_VALUE;
-    L8:
-        Object r9 = r0.o;
-        int r2 = r0.q;
-        xe0 r4 = xe0.n;
-        if (r2 == 0) goto L16;
-        if (r2 == 1) goto L15;
-        if (r2 != 2) goto L13;
-        xv r3 = r0.n;
-        kb4.X(r9);
-    L17:
-        r0.n = r3;
-        r0.q = 1;
-        r9 = r3.b(r0);
-        if (r9 != r4) goto L21;
-    L31:
-        return r4;
-    L21:
-        if (((Boolean) r9).booleanValue() == false) goto L33;
-        r3.c();
-        if (e() == false) goto L25;
-        f();
-    L25:
-        Handler r10 = this.n.getHandler();
-        if (this.z == true) goto L29;
-        if (r10 == null) goto L29;
-        this.z = true;
-        r10.post(this.A);
-    L29:
-        r0.n = r3;
-        r0.q = 2;
-        if (au0.j(this.r, r0) != r4) goto L17;
-    L33:
-        return j15.a;
-    L13:
-        kf2.o("call to 'resume' before 'invoke' with coroutine");
-        return null;
-    L15:
-        r3 = r0.n;
-        kb4.X(r9);
-        goto L21
-    L16:
-        kb4.X(r9);
-        aw r11 = this.u;
-        r11.getClass();
-        r3 = new xv(r11);
-    L7:
-        r0 = new kb(this, r8);
-        goto L8
+    /*  JADX ERROR: StackOverflowError in pass: RegionMakerVisitor
+        java.lang.StackOverflowError
+        	at jadx.core.utils.BlockUtils.traverseSuccessorsUntil(BlockUtils.java:731)
+        	at jadx.core.utils.BlockUtils.traverseSuccessorsUntil(BlockUtils.java:749)
+        */
+    public final java.lang.Object a(defpackage.wd0 r8) {
+        /*
+            r7 = this;
+            boolean r0 = r8 instanceof defpackage.kb
+            if (r0 == 0) goto L13
+            r0 = r8
+            kb r0 = (defpackage.kb) r0
+            int r1 = r0.q
+            r2 = -2147483648(0xffffffff80000000, float:-0.0)
+            r3 = r1 & r2
+            if (r3 == 0) goto L13
+            int r1 = r1 - r2
+            r0.q = r1
+            goto L18
+        L13:
+            kb r0 = new kb
+            r0.<init>(r7, r8)
+        L18:
+            java.lang.Object r8 = r0.o
+            int r1 = r0.q
+            r2 = 2
+            r3 = 1
+            xe0 r4 = defpackage.xe0.n
+            if (r1 == 0) goto L39
+            if (r1 == r3) goto L33
+            if (r1 != r2) goto L2c
+            xv r1 = r0.n
+            defpackage.kb4.X(r8)
+            goto L46
+        L2c:
+            java.lang.String r7 = "call to 'resume' before 'invoke' with coroutine"
+            defpackage.kf2.o(r7)
+            r7 = 0
+            return r7
+        L33:
+            xv r1 = r0.n
+            defpackage.kb4.X(r8)
+            goto L51
+        L39:
+            defpackage.kb4.X(r8)
+            aw r8 = r7.u
+            r8.getClass()
+            xv r1 = new xv
+            r1.<init>(r8)
+        L46:
+            r0.n = r1
+            r0.q = r3
+            java.lang.Object r8 = r1.b(r0)
+            if (r8 != r4) goto L51
+            goto L84
+        L51:
+            java.lang.Boolean r8 = (java.lang.Boolean) r8
+            boolean r8 = r8.booleanValue()
+            if (r8 == 0) goto L85
+            r1.c()
+            boolean r8 = r7.e()
+            if (r8 == 0) goto L65
+            r7.f()
+        L65:
+            ra r8 = r7.n
+            android.os.Handler r8 = r8.getHandler()
+            boolean r5 = r7.z
+            if (r5 != 0) goto L78
+            if (r8 == 0) goto L78
+            r7.z = r3
+            a0 r5 = r7.A
+            r8.post(r5)
+        L78:
+            r0.n = r1
+            r0.q = r2
+            long r5 = r7.r
+            java.lang.Object r8 = defpackage.au0.j(r5, r0)
+            if (r8 != r4) goto L46
+        L84:
+            return r4
+        L85:
+            j15 r7 = defpackage.j15.a
+            return r7
+        */
+        throw new UnsupportedOperationException("Method not decompiled: defpackage.lb.a(wd0):java.lang.Object");
     }
 
-    public final void c(e02 r34) {
-        e02 r1 = r34;
-        int[] r2 = r1.b;
-        long[] r3 = r1.a;
-        int r4 = r3.length - 2;
-        if (r4 < 0) goto L91;
-        int r6 = 0;
-    L5:
-        long r7 = r3[r6];
-        char r11 = 7;
-        long r12 = -9187201950435737472L;
-        if (((((~r7) << 7) & r7) & (-9187201950435737472L)) == (-9187201950435737472L)) goto L88;
-        int r10 = 8;
-        int r9 = 8 - ((~(r6 - r4)) >>> 31);
-        int r14 = 0;
-    L8:
-        if (r14 >= r9) goto L85;
-        if ((r7 & 255) >= 128) goto L83;
-        int r5 = r2[(r6 << 3) + r14];
-        char r17 = r11;
-        j94 r13 = (j94) this.x.b(r5);
-        k94 r8 = (k94) r1.b(r5);
-        if (r8 == null) goto L14;
-        i94 r15 = r8.a;
-    L15:
-        if (r15 == null) goto L82;
-        long r22 = r12;
-        int r16 = r15.f;
-        w03 r18 = r15.d.n;
-        if (r13 != null) goto L45;
-        Object[] r19 = r18.b;
-        long[] r110 = r18.a;
-        int r111 = r110.length - 2;
-        int[] r26 = r2;
-        if (r111 < 0) goto L43;
-        int r112 = r10;
-        int r113 = 0;
-    L21:
-        long r20 = r110[r113];
-        long r27 = r7;
-        if (((((~r20) << r17) & r20) & r22) == r22) goto L41;
-        int r21 = 8 - ((~(r113 - r111)) >>> 31);
-        int r23 = 0;
-    L24:
-        if (r23 >= r21) goto L40;
-        if ((r20 & 255) >= 128) goto L37;
-        long r30 = r20;
-        p94 r24 = (p94) r19[(r113 << 3) + r23];
-        p94 r25 = n94.z;
-        if (h12.c(r24, r25) == false) goto L38;
-        Object r28 = r18.g(r25);
-        if (r28 != null) goto L32;
-        r28 = null;
-    L32:
-        List r29 = (List) r28;
-        if (r29 == null) goto L35;
-        he r31 = (he) q40.x0(r29);
-    L36:
-        h(r16, String.valueOf(r31));
-        goto L38
-    L35:
-        r31 = null;
-    L38:
-        r20 = r30 >> r112;
-        r23 = r23 + 1;
-        goto L24
-    L37:
-        r30 = r20;
-        goto L38
-    L40:
-        if (r21 == r112) goto L41;
-    L44:
-        int r114 = r14;
-    L80:
-        int r32 = 8;
-    L84:
-        r7 = r27 >> r32;
-        r14 = r114 + 1;
-        r10 = r32;
-        r11 = r17;
-        r12 = r22;
-        r2 = r26;
-        r1 = r34;
-    L41:
-        if (r113 == r111) goto L44;
-        r113 = r113 + 1;
-        r7 = r27;
-        r112 = 8;
-        goto L21
-    L43:
-        r27 = r7;
-        goto L44
-    L45:
-        r26 = r2;
-        r27 = r7;
-        Object[] r33 = r18.b;
-        long[] r35 = r18.a;
-        int r36 = r35.length - 2;
-        if (r36 < 0) goto L44;
-        long[] r115 = r35;
-        int r37 = 0;
-    L48:
-        long r38 = r115[r37];
-        long[] r210 = r115;
-        r114 = r14;
-        if (((((~r38) << r17) & r38) & r22) == r22) goto L78;
-        int r116 = 8 - ((~(r37 - r36)) >>> 31);
-        int r117 = 0;
-    L51:
-        if (r117 >= r116) goto L77;
-        if ((r38 & 255) >= 128) goto L74;
-        long r39 = r38;
-        p94 r40 = (p94) r33[(r37 << 3) + r117];
-        p94 r41 = n94.z;
-        if (h12.c(r40, r41) == false) goto L75;
-        Object r42 = r13.a.n.g(r41);
-        if (r42 != null) goto L59;
-        r42 = null;
-    L59:
-        List r43 = (List) r42;
-        if (r43 == null) goto L62;
-        he r44 = (he) q40.x0(r43);
-    L63:
-        Object r45 = r18.g(r41);
-        if (r45 != null) goto L66;
-        r45 = null;
-    L66:
-        List r46 = (List) r45;
-        if (r46 == null) goto L69;
-        he r47 = (he) q40.x0(r46);
-    L71:
-        if (h12.c(r44, r47) == true) goto L75;
-        h(r16, String.valueOf(r47));
-        goto L75
-    L69:
-        r47 = null;
-        goto L71
-    L62:
-        r44 = null;
-    L75:
-        r117 = r117 + 1;
-        r38 = r39 >> 8;
-        goto L51
-    L74:
-        r39 = r38;
-        goto L75
-    L77:
-        if (r116 != 8) goto L80;
-    L78:
-        if (r37 == r36) goto L80;
-        r37 = r37 + 1;
-        r14 = r114;
-        r115 = r210;
-        goto L48
-    L82:
-        throw xa3.l("no value for specified key");
-    L14:
-        r15 = null;
-        goto L15
-    L83:
-        r26 = r2;
-        r27 = r7;
-        r17 = r11;
-        r22 = r12;
-        r114 = r14;
-        r32 = r10;
-        goto L84
-    L85:
-        int[] r211 = r2;
-        if (r9 != r10) goto L107;
-    L89:
-        if (r6 == r4) goto L108;
-        r6 = r6 + 1;
-        r1 = r34;
-        r2 = r211;
-        goto L5
-    L108:
-        return;
-    L107:
-        return;
-    L88:
-        r211 = r2;
-        goto L89
+    /* JADX WARN: Code duplicated, block: B:105:0x0173 A[EDGE_INSN: B:105:0x0173->B:80:0x0173 BREAK  A[LOOP:4: B:48:0x00e9->B:79:0x016c], SYNTHETIC] */
+    /* JADX WARN: Code duplicated, block: B:41:0x00c9 A[DONT_INVERT] */
+    /* JADX WARN: Code duplicated, block: B:42:0x00cb A[LOOP:2: B:21:0x006f->B:42:0x00cb, LOOP_END] */
+    /* JADX WARN: Code duplicated, block: B:78:0x016a A[DONT_INVERT] */
+    /* JADX WARN: Code duplicated, block: B:79:0x016c A[LOOP:4: B:48:0x00e9->B:79:0x016c, LOOP_END] */
+    /* JADX WARN: Code duplicated, block: B:99:0x00d4 A[EDGE_INSN: B:99:0x00d4->B:44:0x00d4 BREAK  A[LOOP:2: B:21:0x006f->B:42:0x00cb], SYNTHETIC] */
+    public final void c(e02 e02Var) {
+        int[] iArr;
+        int[] iArr2;
+        long j;
+        char c;
+        long j2;
+        int i;
+        int i2;
+        long j3;
+        long j4;
+        e02 e02Var2 = e02Var;
+        int[] iArr3 = e02Var2.b;
+        long[] jArr = e02Var2.a;
+        int length = jArr.length - 2;
+        if (length < 0) {
+            return;
+        }
+        int i3 = 0;
+        while (true) {
+            long j5 = jArr[i3];
+            char c2 = 7;
+            long j6 = -9187201950435737472L;
+            if ((((~j5) << 7) & j5 & (-9187201950435737472L)) != -9187201950435737472L) {
+                int i4 = 8;
+                int i5 = 8 - ((~(i3 - length)) >>> 31);
+                int i6 = 0;
+                while (i6 < i5) {
+                    if ((j5 & 255) < 128) {
+                        int i7 = iArr3[(i3 << 3) + i6];
+                        c = c2;
+                        j94 j94Var = (j94) this.x.b(i7);
+                        k94 k94Var = (k94) e02Var2.b(i7);
+                        i94 i94Var = k94Var != null ? k94Var.a : null;
+                        if (i94Var == null) {
+                            throw xa3.l("no value for specified key");
+                        }
+                        j2 = j6;
+                        int i8 = i94Var.f;
+                        w03 w03Var = i94Var.d.n;
+                        if (j94Var == null) {
+                            Object[] objArr = w03Var.b;
+                            long[] jArr2 = w03Var.a;
+                            int length2 = jArr2.length - 2;
+                            iArr2 = iArr3;
+                            if (length2 >= 0) {
+                                int i9 = i4;
+                                int i10 = 0;
+                                while (true) {
+                                    long j7 = jArr2[i10];
+                                    j = j5;
+                                    if ((((~j7) << c) & j7 & j2) != j2) {
+                                        int i11 = 8 - ((~(i10 - length2)) >>> 31);
+                                        for (int i12 = 0; i12 < i11; i12++) {
+                                            if ((j7 & 255) < 128) {
+                                                j4 = j7;
+                                                p94 p94Var = (p94) objArr[(i10 << 3) + i12];
+                                                p94 p94Var2 = n94.z;
+                                                if (h12.c(p94Var, p94Var2)) {
+                                                    Object objG = w03Var.g(p94Var2);
+                                                    if (objG == null) {
+                                                        objG = null;
+                                                    }
+                                                    List list = (List) objG;
+                                                    h(i8, String.valueOf(list != null ? (he) q40.x0(list) : null));
+                                                }
+                                            } else {
+                                                j4 = j7;
+                                            }
+                                            j7 = j4 >> i9;
+                                        }
+                                        if (i11 != i9) {
+                                            break;
+                                        }
+                                        if (i10 != length2) {
+                                            break;
+                                        }
+                                        i10++;
+                                        j5 = j;
+                                        i9 = 8;
+                                    } else if (i10 != length2) {
+                                        break;
+                                        break;
+                                    } else {
+                                        i10++;
+                                        j5 = j;
+                                        i9 = 8;
+                                    }
+                                }
+                            } else {
+                                j = j5;
+                            }
+                        } else {
+                            iArr2 = iArr3;
+                            j = j5;
+                            Object[] objArr2 = w03Var.b;
+                            long[] jArr3 = w03Var.a;
+                            int length3 = jArr3.length - 2;
+                            if (length3 >= 0) {
+                                long[] jArr4 = jArr3;
+                                int i13 = 0;
+                                while (true) {
+                                    long j8 = jArr4[i13];
+                                    long[] jArr5 = jArr4;
+                                    i = i6;
+                                    if ((((~j8) << c) & j8 & j2) != j2) {
+                                        int i14 = 8 - ((~(i13 - length3)) >>> 31);
+                                        int i15 = 0;
+                                        while (i15 < i14) {
+                                            if ((j8 & 255) < 128) {
+                                                j3 = j8;
+                                                p94 p94Var3 = (p94) objArr2[(i13 << 3) + i15];
+                                                p94 p94Var4 = n94.z;
+                                                if (h12.c(p94Var3, p94Var4)) {
+                                                    Object objG2 = j94Var.a.n.g(p94Var4);
+                                                    if (objG2 == null) {
+                                                        objG2 = null;
+                                                    }
+                                                    List list2 = (List) objG2;
+                                                    he heVar = list2 != null ? (he) q40.x0(list2) : null;
+                                                    Object objG3 = w03Var.g(p94Var4);
+                                                    if (objG3 == null) {
+                                                        objG3 = null;
+                                                    }
+                                                    List list3 = (List) objG3;
+                                                    he heVar2 = list3 != null ? (he) q40.x0(list3) : null;
+                                                    if (!h12.c(heVar, heVar2)) {
+                                                        h(i8, String.valueOf(heVar2));
+                                                    }
+                                                }
+                                            } else {
+                                                j3 = j8;
+                                            }
+                                            i15++;
+                                            j8 = j3 >> 8;
+                                        }
+                                        if (i14 != 8) {
+                                            break;
+                                        }
+                                        if (i13 != length3) {
+                                            break;
+                                        }
+                                        i13++;
+                                        i6 = i;
+                                        jArr4 = jArr5;
+                                    } else if (i13 != length3) {
+                                        break;
+                                        break;
+                                    } else {
+                                        i13++;
+                                        i6 = i;
+                                        jArr4 = jArr5;
+                                    }
+                                }
+                            }
+                            i2 = 8;
+                        }
+                        i = i6;
+                        i2 = 8;
+                    } else {
+                        iArr2 = iArr3;
+                        j = j5;
+                        c = c2;
+                        j2 = j6;
+                        i = i6;
+                        i2 = i4;
+                    }
+                    j5 = j >> i2;
+                    i6 = i + 1;
+                    i4 = i2;
+                    c2 = c;
+                    j6 = j2;
+                    iArr3 = iArr2;
+                    e02Var2 = e02Var;
+                }
+                iArr = iArr3;
+                if (i5 != i4) {
+                    return;
+                }
+            } else {
+                iArr = iArr3;
+            }
+            if (i3 == length) {
+                return;
+            }
+            i3++;
+            e02Var2 = e02Var;
+            iArr3 = iArr;
+        }
     }
 
     public final e02 d() {
-        if (this.t == false) goto L6;
-        this.t = false;
-        int r3 = 5;
-        this.v = wr1.o(this.n.getSemanticsOwner(), new k2(r3, 0));
-        this.w = System.currentTimeMillis();
-    L6:
+        if (this.t) {
+            this.t = false;
+            this.v = wr1.o(this.n.getSemanticsOwner(), new k2(5, (byte) 0));
+            this.w = System.currentTimeMillis();
+        }
         return this.v;
     }
 
     public final boolean e() {
-        if (this.p == null) goto L6;
-        return true;
-    L6:
-        return false;
+        return this.p != null;
     }
 
     public final void f() {
-        gp3 r0 = this.p;
-        if (r0 == null) goto L43;
-        Object r1 = r0.o;
-        if (Build.VERSION.SDK_INT < 29) goto L44;
-        ArrayList r9 = this.q;
-        if (r9.isEmpty() == true) goto L42;
-        int r2 = r9.size();
-        int r5 = 0;
-    L12:
-        if (r5 >= r2) goto L30;
-        yc0 r7 = (yc0) r9.get(r5);
-        int r8 = r7.c.ordinal();
-        if (r8 == 0) goto L23;
-        if (r8 != 1) goto L21;
-        AutofillId r6 = r0.q(r7.a);
-        if (r6 == null) goto L28;
-        if (Build.VERSION.SDK_INT < 29) goto L28;
-        yh.g(kz.d(r1), r6);
-    L28:
-        r5 = r5 + 1;
-        goto L12
-    L21:
-        er1.n();
-        return;
-    L23:
-        oz4 r10 = r7.d;
-        if (r10 == null) goto L28;
-        ViewStructure r11 = (ViewStructure) r10.n;
-        if (Build.VERSION.SDK_INT < 29) goto L28;
-        yh.f(kz.d(r1), r11);
-        goto L28
-    L30:
-        if (Build.VERSION.SDK_INT < 29) goto L32;
-        ContentCaptureSession r3 = kz.d(r1);
-        hg3 r4 = bu.l((View) r0.p);
-        Objects.requireNonNull(r4);
-        yh.i(r3, tn.f(r4.o), new long[]{Long.MIN_VALUE});
-    L32:
-        r9.clear();
-        return;
-    L42:
-        return;
-    L44:
-        return;
+        gp3 gp3Var = this.p;
+        if (gp3Var == null) {
+            return;
+        }
+        Object obj = gp3Var.o;
+        if (Build.VERSION.SDK_INT < 29) {
+            return;
+        }
+        ArrayList arrayList = this.q;
+        if (arrayList.isEmpty()) {
+            return;
+        }
+        int size = arrayList.size();
+        for (int i = 0; i < size; i++) {
+            yc0 yc0Var = (yc0) arrayList.get(i);
+            int iOrdinal = yc0Var.c.ordinal();
+            if (iOrdinal == 0) {
+                oz4 oz4Var = yc0Var.d;
+                if (oz4Var != null) {
+                    ViewStructure viewStructure = (ViewStructure) oz4Var.n;
+                    if (Build.VERSION.SDK_INT >= 29) {
+                        yh.f(kz.d(obj), viewStructure);
+                    }
+                }
+            } else {
+                if (iOrdinal != 1) {
+                    er1.n();
+                    return;
+                }
+                AutofillId autofillIdQ = gp3Var.q(yc0Var.a);
+                if (autofillIdQ != null && Build.VERSION.SDK_INT >= 29) {
+                    yh.g(kz.d(obj), autofillIdQ);
+                }
+            }
+        }
+        if (Build.VERSION.SDK_INT >= 29) {
+            ContentCaptureSession contentCaptureSessionD = kz.d(obj);
+            hg3 hg3VarL = bu.l((View) gp3Var.p);
+            Objects.requireNonNull(hg3VarL);
+            yh.i(contentCaptureSessionD, tn.f(hg3VarL.o), new long[]{Long.MIN_VALUE});
+        }
+        arrayList.clear();
     }
 
-    public final void g(i94 r10, j94 r11) {
-        int r1 = 0;
-        ib r0 = new ib(r1, r11, this);
-        r10.getClass();
-        List r2 = i94.j(4, r10);
-        int r3 = r2.size();
-        int r4 = 0;
-        int r5 = 0;
-    L3:
-        if (r4 >= r3) goto L8;
-        Object r6 = r2.get(r4);
-        if (d().a(((i94) r6).f) == false) goto L7;
-        r0.invoke(Integer.valueOf(r5), r6);
-        r5 = r5 + 1;
-    L7:
-        r4 = r4 + 1;
-        goto L3
-    L8:
-        List r12 = i94.j(4, r10);
-        int r13 = r12.size();
-    L9:
-        if (r1 >= r13) goto L20;
-        i94 r7 = (i94) r12.get(r1);
-        e02 r8 = d();
-        int r9 = r7.f;
-        if (r8.a(r9) == false) goto L19;
-        i03 r14 = this.x;
-        if (r14.a(r9) == false) goto L19;
-        Object r15 = r14.b(r9);
-        if (r15 == null) goto L18;
-        g(r7, (j94) r15);
-        goto L19
-    L18:
-        throw xa3.l("node not present in pruned tree before this change");
-    L19:
-        r1 = r1 + 1;
-        goto L9
+    public final void g(i94 i94Var, j94 j94Var) {
+        int i = 0;
+        ib ibVar = new ib(i, j94Var, this);
+        i94Var.getClass();
+        List listI = i94Var.i((4 & 1) != 0 ? !i94Var.b : false, (4 & 2) == 0);
+        int size = listI.size();
+        int i2 = 0;
+        for (int i3 = 0; i3 < size; i3++) {
+            Object obj = listI.get(i3);
+            if (d().a(((i94) obj).f)) {
+                ibVar.invoke(Integer.valueOf(i2), obj);
+                i2++;
+            }
+        }
+        List listI2 = i94Var.i((4 & 1) != 0 ? !i94Var.b : false, (4 & 2) == 0);
+        int size2 = listI2.size();
+        while (i < size2) {
+            i94 i94Var2 = (i94) listI2.get(i);
+            e02 e02VarD = d();
+            int i4 = i94Var2.f;
+            if (e02VarD.a(i4)) {
+                i03 i03Var = this.x;
+                if (i03Var.a(i4)) {
+                    Object objB = i03Var.b(i4);
+                    if (objB == null) {
+                        throw xa3.l("node not present in pruned tree before this change");
+                    }
+                    g(i94Var2, (j94) objB);
+                } else {
+                    continue;
+                }
+            }
+            i++;
+        }
     }
 
-    public final void h(int r5, String r6) {
-        int r0 = Build.VERSION.SDK_INT;
-        if (r0 < 29) goto L16;
-        gp3 r4 = this.p;
-        if (r4 == null) goto L17;
-        AutofillId r7 = r4.q(r5);
-        if (r7 == null) goto L14;
-        if (r0 < 29) goto L15;
-        yh.h(kz.d(r4.o), r7, r6);
-        return;
-    L15:
-        return;
-    L14:
-        throw xa3.l("Invalid content capture ID");
-    L17:
-        return;
+    public final void h(int i, String str) {
+        gp3 gp3Var;
+        int i2 = Build.VERSION.SDK_INT;
+        if (i2 >= 29 && (gp3Var = this.p) != null) {
+            AutofillId autofillIdQ = gp3Var.q(i);
+            if (autofillIdQ == null) {
+                throw xa3.l("Invalid content capture ID");
+            }
+            if (i2 >= 29) {
+                yh.h(kz.d(gp3Var.o), autofillIdQ, str);
+            }
+        }
     }
 
-    public final void i(int r19, i94 r20) {
-        if (e() == true) goto L5;
-        return;
-    L5:
-        w03 r2 = r20.d.n;
-        Object r3 = r2.g(n94.B);
-        f63 r4 = null;
-        if (r3 != null) goto L8;
-        r3 = null;
-    L8:
-        Boolean r5 = (Boolean) r3;
-        if (this.s != jb.n) goto L21;
-        if (h12.c(r5, Boolean.TRUE) == false) goto L21;
-        Object r6 = r2.g(d94.m);
-        if (r6 != null) goto L15;
-        r6 = null;
-    L15:
-        w2 r7 = (w2) r6;
-        if (r7 == null) goto L32;
-        if1 r8 = (if1) r7.b;
-        if (r8 == null) goto L32;
-        Boolean r9 = (Boolean) r8.invoke(Boolean.FALSE);
-    L32:
-        int r10 = r20.f;
-        gp3 r11 = this.p;
-        int r12 = 0;
-        if (r11 != null) goto L35;
-    L34:
-        oz4 r13 = null;
-    L107:
-        if (r13 == null) goto L110;
-        this.q.add(new yc0(r10, this.w, zc0.n, r13));
-    L110:
-        List r1 = i94.j(4, r20);
-        int r14 = r1.size();
-        int r15 = 0;
-    L111:
-        if (r12 >= r14) goto L116;
-        Object r16 = r1.get(r12);
-        if (d().a(((i94) r16).f) == false) goto L115;
-        i(r15, (i94) r16);
-        r15 = r15 + 1;
-    L115:
-        r12 = r12 + 1;
-        goto L111
-    L116:
-        return;
-    L35:
-        int r17 = Build.VERSION.SDK_INT;
-        if (r17 < 29) goto L34;
-        hg3 r18 = bu.l(this.n);
-        if (r18 == null) goto L34;
-        i94 r21 = r20.l();
-        int r110 = r20.f;
-        if (r21 == null) goto L46;
-        AutofillId r22 = r11.q(r21.f);
-        if (r22 == null) goto L34;
-    L47:
-        long r111 = r110;
-        if (r17 < 29) goto L50;
-        oz4 r23 = new oz4(yh.e(kz.d(r11.o), r22, r111));
-    L51:
-        if (r23 == null) goto L34;
-        ViewStructure r112 = (ViewStructure) r23.n;
-        e94 r24 = r20.d;
-        p94 r25 = n94.J;
-        w03 r26 = r24.n;
-        if (r26.c(r25) == true) goto L34;
-        Bundle r27 = r112.getExtras();
-        if (r27 == null) goto L59;
-        r27.putLong("android.view.contentcapture.EventTimestamp", this.w);
-        r27.putInt("android.view.ViewStructure.extra.EXTRA_VIEW_NODE_INDEX", r19);
-    L59:
-        Object r28 = r26.g(n94.x);
-        if (r28 != null) goto L62;
-        r28 = null;
-    L62:
-        String r29 = (String) r28;
-        if (r29 == null) goto L65;
-        r112.setId(r110, null, null, r29);
-    L65:
-        Object r30 = r26.g(n94.m);
-        if (r30 != null) goto L69;
-        r30 = null;
-    L69:
-        if (((Boolean) r30) == null) goto L71;
-        r112.setClassName("android.widget.ViewGroup");
-    L71:
-        Object r31 = r26.g(n94.z);
-        if (r31 != null) goto L74;
-        r31 = null;
-    L74:
-        List r32 = (List) r31;
-        if (r32 == null) goto L77;
-        r112.setClassName("android.widget.TextView");
-        r112.setText(gc2.a(r32, "\n", null, 62));
-    L77:
-        Object r33 = r26.g(n94.D);
-        if (r33 != null) goto L80;
-        r33 = null;
-    L80:
-        he r34 = (he) r33;
-        if (r34 == null) goto L83;
-        r112.setClassName("android.widget.EditText");
-        r112.setText(r34);
-    L83:
-        Object r35 = r26.g(n94.a);
-        if (r35 != null) goto L86;
-        r35 = null;
-    L86:
-        List r36 = (List) r35;
-        if (r36 == null) goto L89;
-        r112.setContentDescription(gc2.a(r36, "\n", null, 62));
-    L89:
-        Object r37 = r26.g(n94.w);
-        if (r37 != null) goto L93;
-        r37 = null;
-    L93:
-        if (((m24) r37) == null) goto L95;
-        r112.setClassName("android.widget.ImageView");
-    L95:
-        ms4 r38 = gh0.p(r24);
-        if (r38 == null) goto L98;
-        ls4 r39 = r38.a;
-        zs4 r40 = r39.b;
-        oo0 r41 = r39.g;
-        r112.setTextStyle(r41.J() * (r41.g() * bt4.c(r40.a.b)), 0, 0, 0);
-    L98:
-        f63 r42 = r20.d();
-        if (r42 != null) goto L101;
-    L105:
-        wv3 r43 = wv3.e;
-    L106:
-        float r44 = r43.a;
-        float r45 = r43.b;
-        r112.setDimens((int) r44, (int) r45, 0, 0, (int) (r43.c - r44), (int) (r43.d - r45));
-        r13 = r23;
-        goto L107
-    L101:
-        if (r42.A0().A == false) goto L103;
-        r4 = r42;
-    L103:
-        if (r4 == null) goto L105;
-        r43 = r20.a(r4);
-        goto L106
-    L50:
-        r23 = null;
-        goto L51
-    L46:
-        r22 = tn.f(r18.o);
-    L21:
-        if (this.s != jb.o) goto L32;
-        if (h12.c(r5, Boolean.FALSE) == false) goto L32;
-        Object r46 = r2.g(d94.m);
-        if (r46 != null) goto L27;
-        r46 = null;
-    L27:
-        w2 r47 = (w2) r46;
-        if (r47 == null) goto L32;
-        if1 r48 = (if1) r47.b;
-        if (r48 == null) goto L32;
-        Boolean r49 = (Boolean) r48.invoke(Boolean.TRUE);
-        goto L32
+    /* JADX WARN: Code duplicated, block: B:105:0x018e  */
+    /* JADX WARN: Code duplicated, block: B:34:0x0075  */
+    public final void i(int i, i94 i94Var) {
+        if1 if1Var;
+        int i2;
+        hg3 hg3VarL;
+        AutofillId autofillIdF;
+        wv3 wv3VarA;
+        oz4 oz4Var;
+        if1 if1Var2;
+        if (e()) {
+            w03 w03Var = i94Var.d.n;
+            Object objG = w03Var.g(n94.B);
+            if (objG == null) {
+                objG = null;
+            }
+            Boolean bool = (Boolean) objG;
+            if (this.s == jb.n && h12.c(bool, Boolean.TRUE)) {
+                Object objG2 = w03Var.g(d94.m);
+                if (objG2 == null) {
+                    objG2 = null;
+                }
+                w2 w2Var = (w2) objG2;
+                if (w2Var != null && (if1Var2 = (if1) w2Var.b) != null) {
+                }
+            } else if (this.s == jb.o && h12.c(bool, Boolean.FALSE)) {
+                Object objG3 = w03Var.g(d94.m);
+                if (objG3 == null) {
+                    objG3 = null;
+                }
+                w2 w2Var2 = (w2) objG3;
+                if (w2Var2 != null && (if1Var = (if1) w2Var2.b) != null) {
+                }
+            }
+            int i3 = i94Var.f;
+            gp3 gp3Var = this.p;
+            if (gp3Var == null || (i2 = Build.VERSION.SDK_INT) < 29 || (hg3VarL = bu.l(this.n)) == null) {
+                oz4Var = null;
+            } else {
+                i94 i94VarL = i94Var.l();
+                int i4 = i94Var.f;
+                if (i94VarL != null) {
+                    autofillIdF = gp3Var.q(i94VarL.f);
+                    if (autofillIdF == null) {
+                        oz4Var = null;
+                    }
+                } else {
+                    autofillIdF = tn.f(hg3VarL.o);
+                }
+                oz4 oz4Var2 = i2 >= 29 ? new oz4(yh.e(kz.d(gp3Var.o), autofillIdF, i4)) : null;
+                if (oz4Var2 == null) {
+                    oz4Var = null;
+                } else {
+                    ViewStructure viewStructure = (ViewStructure) oz4Var2.n;
+                    e94 e94Var = i94Var.d;
+                    p94 p94Var = n94.J;
+                    w03 w03Var2 = e94Var.n;
+                    if (w03Var2.c(p94Var)) {
+                        oz4Var = null;
+                    } else {
+                        Bundle extras = viewStructure.getExtras();
+                        if (extras != null) {
+                            extras.putLong("android.view.contentcapture.EventTimestamp", this.w);
+                            extras.putInt("android.view.ViewStructure.extra.EXTRA_VIEW_NODE_INDEX", i);
+                        }
+                        Object objG4 = w03Var2.g(n94.x);
+                        if (objG4 == null) {
+                            objG4 = null;
+                        }
+                        String str = (String) objG4;
+                        if (str != null) {
+                            viewStructure.setId(i4, null, null, str);
+                        }
+                        Object objG5 = w03Var2.g(n94.m);
+                        if (objG5 == null) {
+                            objG5 = null;
+                        }
+                        if (((Boolean) objG5) != null) {
+                            viewStructure.setClassName("android.widget.ViewGroup");
+                        }
+                        Object objG6 = w03Var2.g(n94.z);
+                        if (objG6 == null) {
+                            objG6 = null;
+                        }
+                        List list = (List) objG6;
+                        if (list != null) {
+                            viewStructure.setClassName("android.widget.TextView");
+                            viewStructure.setText(gc2.a(list, "\n", null, 62));
+                        }
+                        Object objG7 = w03Var2.g(n94.D);
+                        if (objG7 == null) {
+                            objG7 = null;
+                        }
+                        he heVar = (he) objG7;
+                        if (heVar != null) {
+                            viewStructure.setClassName("android.widget.EditText");
+                            viewStructure.setText(heVar);
+                        }
+                        Object objG8 = w03Var2.g(n94.a);
+                        if (objG8 == null) {
+                            objG8 = null;
+                        }
+                        List list2 = (List) objG8;
+                        if (list2 != null) {
+                            viewStructure.setContentDescription(gc2.a(list2, "\n", null, 62));
+                        }
+                        Object objG9 = w03Var2.g(n94.w);
+                        if (objG9 == null) {
+                            objG9 = null;
+                        }
+                        if (((m24) objG9) != null) {
+                            viewStructure.setClassName("android.widget.ImageView");
+                        }
+                        ms4 ms4VarP = gh0.p(e94Var);
+                        if (ms4VarP != null) {
+                            ls4 ls4Var = ms4VarP.a;
+                            zs4 zs4Var = ls4Var.b;
+                            oo0 oo0Var = ls4Var.g;
+                            viewStructure.setTextStyle(oo0Var.J() * oo0Var.g() * bt4.c(zs4Var.a.b), 0, 0, 0);
+                        }
+                        f63 f63VarD = i94Var.d();
+                        if (f63VarD == null) {
+                            wv3VarA = wv3.e;
+                        } else {
+                            f63 f63Var = f63VarD.A0().A ? f63VarD : null;
+                            if (f63Var != null) {
+                                wv3VarA = i94Var.a(f63Var);
+                            } else {
+                                wv3VarA = wv3.e;
+                            }
+                        }
+                        float f = wv3VarA.a;
+                        float f2 = wv3VarA.b;
+                        viewStructure.setDimens((int) f, (int) f2, 0, 0, (int) (wv3VarA.c - f), (int) (wv3VarA.d - f2));
+                        oz4Var = oz4Var2;
+                    }
+                }
+            }
+            if (oz4Var != null) {
+                this.q.add(new yc0(i3, this.w, zc0.n, oz4Var));
+            }
+            List listI = i94Var.i((4 & 1) != 0 ? !i94Var.b : false, (4 & 2) == 0);
+            int size = listI.size();
+            int i5 = 0;
+            for (int i6 = 0; i6 < size; i6++) {
+                Object obj = listI.get(i6);
+                if (d().a(((i94) obj).f)) {
+                    i(i5, (i94) obj);
+                    i5++;
+                }
+            }
+        }
     }
 
-    public final void k(i94 r8) {
-        if (e() == false) goto L8;
-        yc0 r1 = new yc0(r8.f, this.w, zc0.o, null);
-        this.q.add(r1);
-        List r9 = i94.j(4, r8);
-        int r0 = r9.size();
-        int r2 = 0;
-    L6:
-        if (r2 >= r0) goto L10;
-        k((i94) r9.get(r2));
-        r2 = r2 + 1;
-        goto L6
-    L10:
-        return;
+    public final void k(i94 i94Var) {
+        if (e()) {
+            this.q.add(new yc0(i94Var.f, this.w, zc0.o, null));
+            List listI = i94Var.i((4 & 1) != 0 ? !i94Var.b : false, (4 & 2) == 0);
+            int size = listI.size();
+            for (int i = 0; i < size; i++) {
+                k((i94) listI.get(i));
+            }
+        }
     }
 
+    /* JADX WARN: Code duplicated, block: B:14:0x0059 A[DONT_INVERT] */
+    /* JADX WARN: Code duplicated, block: B:15:0x005b A[LOOP:0: B:5:0x0017->B:15:0x005b, LOOP_END] */
+    /* JADX WARN: Code duplicated, block: B:19:0x005e A[EDGE_INSN: B:19:0x005e->B:16:0x005e BREAK  A[LOOP:0: B:5:0x0017->B:15:0x005b], SYNTHETIC] */
     public final void l() {
-        i03 r1 = this.x;
-        r1.c();
-        e02 r2 = d();
-        int[] r3 = r2.b;
-        Object[] r4 = r2.c;
-        long[] r5 = r2.a;
-        int r6 = r5.length - 2;
-        if (r6 < 0) goto L16;
-        int r7 = 0;
-    L5:
-        long r8 = r5[r7];
-        if (((((~r8) << 7) & r8) & (-9187201950435737472L)) == (-9187201950435737472L)) goto L14;
-        int r10 = 8 - ((~(r7 - r6)) >>> 31);
-        int r12 = 0;
-    L8:
-        if (r12 >= r10) goto L13;
-        if ((255 & r8) >= 128) goto L12;
-        int r13 = (r7 << 3) + r12;
-        r1.i(r3[r13], new j94(((k94) r4[r13]).a, d()));
-    L12:
-        r8 = r8 >> 8;
-        r12 = r12 + 1;
-        goto L8
-    L13:
-        if (r10 != 8) goto L16;
-    L14:
-        if (r7 == r6) goto L16;
-        r7 = r7 + 1;
-    L16:
+        i03 i03Var = this.x;
+        i03Var.c();
+        e02 e02VarD = d();
+        int[] iArr = e02VarD.b;
+        Object[] objArr = e02VarD.c;
+        long[] jArr = e02VarD.a;
+        int length = jArr.length - 2;
+        if (length >= 0) {
+            int i = 0;
+            while (true) {
+                long j = jArr[i];
+                if ((((~j) << 7) & j & (-9187201950435737472L)) == -9187201950435737472L) {
+                    if (i != length) {
+                        break;
+                        break;
+                    }
+                    i++;
+                } else {
+                    int i2 = 8 - ((~(i - length)) >>> 31);
+                    for (int i3 = 0; i3 < i2; i3++) {
+                        if ((255 & j) < 128) {
+                            int i4 = (i << 3) + i3;
+                            i03Var.i(iArr[i4], new j94(((k94) objArr[i4]).a, d()));
+                        }
+                        j >>= 8;
+                    }
+                    if (i2 != 8) {
+                        break;
+                    } else if (i != length) {
+                        break;
+                    } else {
+                        i++;
+                    }
+                }
+            }
+        }
         this.y = new j94(this.n.getSemanticsOwner().a(), d());
     }
 
     @Override // defpackage.rl0
-    public final void onStart(ba2 r2) {
+    public final void onStart(ba2 ba2Var) {
         this.p = (gp3) this.o.invoke();
         i(-1, this.n.getSemanticsOwner().a());
         f();
     }
 
     @Override // defpackage.rl0
-    public final void onStop(ba2 r1) {
+    public final void onStop(ba2 ba2Var) {
         k(this.n.getSemanticsOwner().a());
         f();
         this.p = null;
     }
 
     @Override // android.view.View.OnAttachStateChangeListener
-    public final void onViewAttachedToWindow(View r1) {
+    public final void onViewAttachedToWindow(View view) {
     }
 
     @Override // android.view.View.OnAttachStateChangeListener
-    public final void onViewDetachedFromWindow(View r2) {
-        Handler r3 = this.n.getHandler();
-        r3.getClass();
-        r3.removeCallbacks(this.A);
+    public final void onViewDetachedFromWindow(View view) {
+        Handler handler = this.n.getHandler();
+        handler.getClass();
+        handler.removeCallbacks(this.A);
         this.p = null;
     }
 }

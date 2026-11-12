@@ -8,77 +8,62 @@ import androidx.recyclerview.widget.RecyclerView;
 public final class cw3 {
     public final /* synthetic */ RecyclerView a;
 
-    public /* synthetic */ cw3(RecyclerView r1) {
-        this.a = r1;
+    public /* synthetic */ cw3(RecyclerView recyclerView) {
+        this.a = recyclerView;
     }
 
-    public void a(cx3 r8, n50 r9, n50 r10) {
-        r8.p(false);
-        RecyclerView r7 = this.a;
-        pl0 r1 = (pl0) r7.c0;
-        if (r9 == null) goto L11;
-        r1.getClass();
-        int r3 = r9.a;
-        int r5 = r10.a;
-        if (r3 == r5) goto L7;
-    L10:
-        boolean r11 = r1.g(r8, r3, r9.b, r5, r10.b);
-    L12:
-        if (r11 == false) goto L15;
-        r7.Y();
-        return;
-    L15:
-        return;
-    L7:
-        if (r9.b != r10.b) goto L10;
-    L11:
-        r1.l(r8);
-        r8.a.setAlpha(0.0f);
-        r1.i.add(r8);
-        r11 = true;
-        goto L12
+    /* JADX WARN: Code duplicated, block: B:9:0x001d  */
+    public void a(cx3 cx3Var, n50 n50Var, n50 n50Var2) {
+        boolean zG;
+        cx3Var.p(false);
+        RecyclerView recyclerView = this.a;
+        pl0 pl0Var = (pl0) recyclerView.c0;
+        if (n50Var != null) {
+            pl0Var.getClass();
+            int i = n50Var.a;
+            int i2 = n50Var2.a;
+            if (i == i2 && n50Var.b == n50Var2.b) {
+                pl0Var.l(cx3Var);
+                cx3Var.a.setAlpha(0.0f);
+                pl0Var.i.add(cx3Var);
+                zG = true;
+            } else {
+                zG = pl0Var.g(cx3Var, i, n50Var.b, i2, n50Var2.b);
+            }
+        } else {
+            pl0Var.l(cx3Var);
+            cx3Var.a.setAlpha(0.0f);
+            pl0Var.i.add(cx3Var);
+            zG = true;
+        }
+        if (zG) {
+            recyclerView.Y();
+        }
     }
 
-    public void b(cx3 r8, n50 r9, n50 r10) {
-        RecyclerView r7 = this.a;
-        r7.p.l(r8);
-        r7.h(r8);
-        r8.p(false);
-        pl0 r1 = (pl0) r7.c0;
-        r1.getClass();
-        int r3 = r9.a;
-        int r4 = r9.b;
-        View r11 = r8.a;
-        if (r10 != null) goto L6;
-        int r0 = r11.getLeft();
-    L5:
-        int r5 = r0;
-        if (r10 != null) goto L10;
-        int r12 = r11.getTop();
-    L9:
-        int r6 = r12;
-        if (r8.j() == true) goto L18;
-        if (r3 != r5) goto L17;
-        if (r4 == r6) goto L18;
-    L17:
-        r11.layout(r5, r6, r11.getWidth() + r5, r11.getHeight() + r6);
-        boolean r13 = r1.g(r8, r3, r4, r5, r6);
-    L19:
-        if (r13 == false) goto L22;
-        r7.Y();
-        return;
-    L22:
-        return;
-    L18:
-        r1.l(r8);
-        r1.h.add(r8);
-        r13 = true;
-        goto L19
-    L10:
-        r12 = r10.b;
-        goto L9
-    L6:
-        r0 = r10.a;
-        goto L5
+    public void b(cx3 cx3Var, n50 n50Var, n50 n50Var2) {
+        boolean zG;
+        RecyclerView recyclerView = this.a;
+        recyclerView.p.l(cx3Var);
+        recyclerView.h(cx3Var);
+        cx3Var.p(false);
+        pl0 pl0Var = (pl0) recyclerView.c0;
+        pl0Var.getClass();
+        int i = n50Var.a;
+        int i2 = n50Var.b;
+        View view = cx3Var.a;
+        int left = n50Var2 == null ? view.getLeft() : n50Var2.a;
+        int top = n50Var2 == null ? view.getTop() : n50Var2.b;
+        if (cx3Var.j() || (i == left && i2 == top)) {
+            pl0Var.l(cx3Var);
+            pl0Var.h.add(cx3Var);
+            zG = true;
+        } else {
+            view.layout(left, top, view.getWidth() + left, view.getHeight() + top);
+            zG = pl0Var.g(cx3Var, i, i2, left, top);
+        }
+        if (zG) {
+            recyclerView.Y();
+        }
     }
 }

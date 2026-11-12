@@ -6,20 +6,14 @@ public final class j32 extends h32 {
     public final nb2 n;
 
     public j32() {
-        jb2 r1 = nb2.v;
+        jb2 jb2Var = nb2.v;
         this.n = new nb2(false);
     }
 
-    public final boolean equals(Object r2) {
-        if (r2 != this) goto L4;
-        return true;
-    L4:
-        if ((r2 instanceof j32) == true) goto L6;
-        return false;
-    L6:
-        if (((j32) r2).n.equals(this.n) == true) goto L13;
-        return false;
-    L13:
+    public final boolean equals(Object obj) {
+        if (obj != this) {
+            return (obj instanceof j32) && ((j32) obj).n.equals(this.n);
+        }
         return true;
     }
 

@@ -11,14 +11,15 @@ public final class fo3 extends wd0 {
     public final /* synthetic */ go3 s;
     public int t;
 
-    public fo3(go3 r1, wd0 r2) {
-        this.s = r1;
-        super(r2);
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public fo3(go3 go3Var, wd0 wd0Var) {
+        super(wd0Var);
+        this.s = go3Var;
     }
 
     @Override // defpackage.jp
-    public final Object invokeSuspend(Object r2) {
-        this.r = r2;
+    public final Object invokeSuspend(Object obj) {
+        this.r = obj;
         this.t |= Integer.MIN_VALUE;
         return this.s.b(null, null, this);
     }

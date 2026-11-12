@@ -17,6 +17,7 @@ import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.MimeTypeMap;
+import com.eddyizm.tempus.homemusic.WaveRetry;
 import com.google.android.gms.internal.fido.zzhf;
 import com.google.android.gms.internal.fido.zzhj;
 import java.io.File;
@@ -36,798 +37,752 @@ import java.util.concurrent.ConcurrentHashMap;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public abstract class vr1 {
-    public static final f01 a = null;
-    public static final byte[] b = null;
-
-    static {
-        int r2 = 1;
-        a = new f01(r2, "RESUME_TOKEN");
-        b = new byte[4096];
-    }
+    public static final f01 a = new f01(1, "RESUME_TOKEN");
+    public static final byte[] b = new byte[4096];
 
     public vr1() {
         new ConcurrentHashMap();
     }
 
-    public static yc4 A(ContentResolver r11, Uri r12, String r13, String r14) {
-        r12.getClass();
-        String r2 = null;
-        long r3 = -1;
-        ContentResolver r5 = r11;
-        Uri r6 = r12;
-        Cursor r15 = r5.query(r6, new String[]{"_display_name", "_size"}, null, null, null);     // Catch: Exception -> L35
-        if (r15 != null) goto L85;
-        String r16 = null;
-    L40:
-        if (r16 != null) goto L42;
-    L43:
-        String r17 = r6.getLastPathSegment();
-        if (r17 == null) goto L46;
-        r16 = qm4.G0(r17, '/', r17);
-    L47:
-        String r18 = r5.getType(r6);
-        if (r18 != null) goto L56;
-        MimeTypeMap r19 = MimeTypeMap.getSingleton();
-        if (r16 == null) goto L52;
-        String r1 = qm4.G0(r16, '.', "").toLowerCase(Locale.ROOT);
-        r1.getClass();
-    L53:
-        r18 = r19.getMimeTypeFromExtension(r1);
-        if (r18 != null) goto L56;
-    L57:
-        if (r16 == null) goto L65;
-        if (qm4.u0(r16) == true) goto L61;
-        r2 = r16;
-    L61:
-        if (r2 == null) goto L65;
-        r14 = r2;
-    L65:
-        if (qm4.n0(r14, '.') == true) goto L72;
-        String r110 = (String) yc4.d.get(r13);
-        if (r110 != null) goto L69;
-        r110 = MimeTypeMap.getSingleton().getExtensionFromMimeType(r13);
-    L69:
-        if (r110 == null) goto L72;
-        r14 = b11.o(r14, ".", r110);
-    L72:
-        return new yc4(r14, r3, r13);
-    L52:
-        r1 = null;
-    L56:
-        r13 = r18;
-        goto L57
-    L46:
-        r16 = null;
-        goto L47
-    L42:
-        if (qm4.u0(r16) == false) goto L47;
-    L85:
-    L13:
-        th = move-exception;
-        Throwable r111 = th;
-        String r4 = null;
-    L81:
-        throw r111;     // Catch: Throwable -> L29
-    L29:
-        th = move-exception;
-        q05.h(r15, r111);     // Catch: Exception -> L32
-        throw th;     // Catch: Exception -> L32
-    L32:
-        e = move-exception;
-        Exception r112 = e;
-        r16 = r4;
-    L39:
-        Log.w("SharedFile", "Cannot query " + r6, r112);
-        goto L40
-    L8:
-        if (r15.moveToFirst() == false) goto L23;
-        int r113 = r15.getColumnIndex("_display_name");     // Catch: Throwable -> L13
-        int r0 = r15.getColumnIndex("_size");     // Catch: Throwable -> L13
-        if (r113 < 0) goto L15;
-        r16 = r15.getString(r113);     // Catch: Throwable -> L13
-    L16:
-        if (r0 < 0) goto L77;
-    L21:
-        th = move-exception;
-        r4 = r16;
-        r111 = th;
-        goto L81
-    L18:
-        if (r15.isNull(r0) == true) goto L77;
-        r3 = r15.getLong(r0);     // Catch: Throwable -> L21
-    L77:
-        r15.close();     // Catch: Exception -> L26
-    L26:
-        e = move-exception;
-        r112 = e;
-        goto L39
-    L15:
-        r16 = null;
-        goto L16
-    L23:
-        r16 = null;
-    L35:
-        e = e;
-    L36:
-        r112 = e;
-        r16 = null;
-    L37:
-        e = e;
-        r5 = r11;
-        r6 = r12;
-        goto L36
+    /* JADX WARN: Code duplicated, block: B:41:0x0075  */
+    /* JADX WARN: Code duplicated, block: B:43:0x007b  */
+    /* JADX WARN: Code duplicated, block: B:45:0x0081  */
+    /* JADX WARN: Code duplicated, block: B:46:0x0089  */
+    /* JADX WARN: Code duplicated, block: B:49:0x0092  */
+    /* JADX WARN: Code duplicated, block: B:51:0x0098  */
+    /* JADX WARN: Code duplicated, block: B:52:0x00a8  */
+    /* JADX WARN: Code duplicated, block: B:56:0x00b0 A[PHI: r11
+  0x00b0: PHI (r11v6 java.lang.String) = (r11v5 java.lang.String), (r11v17 java.lang.String) binds: [B:48:0x0090, B:54:0x00ad] A[DONT_GENERATE, DONT_INLINE]] */
+    /* JADX WARN: Code duplicated, block: B:58:0x00b3  */
+    /* JADX WARN: Code duplicated, block: B:60:0x00b9  */
+    /* JADX WARN: Code duplicated, block: B:63:0x00bd  */
+    /* JADX WARN: Code duplicated, block: B:66:0x00c4  */
+    /* JADX WARN: Code duplicated, block: B:68:0x00ce  */
+    /* JADX WARN: Code duplicated, block: B:70:0x00d8  */
+    public static yc4 A(ContentResolver contentResolver, Uri uri, String str, String str2) {
+        ContentResolver contentResolver2;
+        Uri uri2;
+        Exception exc;
+        String strG0;
+        String lastPathSegment;
+        String type;
+        String extensionFromMimeType;
+        String str3;
+        String lowerCase;
+        Throwable th;
+        String str4;
+        uri.getClass();
+        long j = -1;
+        try {
+            contentResolver2 = contentResolver;
+            uri2 = uri;
+            try {
+                Cursor cursorQuery = contentResolver2.query(uri2, new String[]{"_display_name", "_size"}, null, null, null);
+                if (cursorQuery != null) {
+                    try {
+                        if (cursorQuery.moveToFirst()) {
+                            int columnIndex = cursorQuery.getColumnIndex("_display_name");
+                            int columnIndex2 = cursorQuery.getColumnIndex("_size");
+                            strG0 = columnIndex >= 0 ? cursorQuery.getString(columnIndex) : null;
+                            if (columnIndex2 >= 0) {
+                                try {
+                                    if (!cursorQuery.isNull(columnIndex2)) {
+                                        j = cursorQuery.getLong(columnIndex2);
+                                    }
+                                } catch (Throwable th2) {
+                                    str4 = strG0;
+                                    th = th2;
+                                    try {
+                                        throw th;
+                                    } catch (Throwable th3) {
+                                        try {
+                                            q05.h(cursorQuery, th);
+                                            throw th3;
+                                        } catch (Exception e) {
+                                            exc = e;
+                                            strG0 = str4;
+                                            Log.w("SharedFile", "Cannot query " + uri2, exc);
+                                            if (strG0 != null) {
+                                                lastPathSegment = uri2.getLastPathSegment();
+                                                if (lastPathSegment != null) {
+                                                    strG0 = qm4.G0(lastPathSegment, '/', lastPathSegment);
+                                                } else {
+                                                    strG0 = null;
+                                                }
+                                            } else {
+                                                lastPathSegment = uri2.getLastPathSegment();
+                                                if (lastPathSegment != null) {
+                                                    strG0 = qm4.G0(lastPathSegment, '/', lastPathSegment);
+                                                } else {
+                                                    strG0 = null;
+                                                }
+                                            }
+                                            type = contentResolver2.getType(uri2);
+                                            if (type == null) {
+                                                MimeTypeMap singleton = MimeTypeMap.getSingleton();
+                                                if (strG0 != null) {
+                                                    lowerCase = qm4.G0(strG0, '.', "").toLowerCase(Locale.ROOT);
+                                                    lowerCase.getClass();
+                                                } else {
+                                                    lowerCase = null;
+                                                }
+                                                type = singleton.getMimeTypeFromExtension(lowerCase);
+                                                if (type != null) {
+                                                    str = type;
+                                                }
+                                            } else {
+                                                str = type;
+                                            }
+                                            if (strG0 != null) {
+                                                str3 = qm4.u0(strG0) ? null : strG0;
+                                                if (str3 != null) {
+                                                    str2 = str3;
+                                                }
+                                            }
+                                            if (!qm4.n0(str2, '.')) {
+                                                extensionFromMimeType = (String) yc4.d.get(str);
+                                                if (extensionFromMimeType == null) {
+                                                    extensionFromMimeType = MimeTypeMap.getSingleton().getExtensionFromMimeType(str);
+                                                }
+                                                if (extensionFromMimeType != null) {
+                                                    str2 = b11.o(str2, ".", extensionFromMimeType);
+                                                }
+                                            }
+                                            return new yc4(str2, j, str);
+                                        }
+                                    }
+                                }
+                            }
+                        } else {
+                            strG0 = null;
+                        }
+                        try {
+                            cursorQuery.close();
+                        } catch (Exception e2) {
+                            exc = e2;
+                            Log.w("SharedFile", "Cannot query " + uri2, exc);
+                        }
+                    } catch (Throwable th4) {
+                        th = th4;
+                        str4 = null;
+                    }
+                } else {
+                    strG0 = null;
+                }
+            } catch (Exception e3) {
+                e = e3;
+                exc = e;
+                strG0 = null;
+                Log.w("SharedFile", "Cannot query " + uri2, exc);
+                if (strG0 != null) {
+                    lastPathSegment = uri2.getLastPathSegment();
+                    if (lastPathSegment != null) {
+                        strG0 = qm4.G0(lastPathSegment, '/', lastPathSegment);
+                    } else {
+                        strG0 = null;
+                    }
+                } else {
+                    lastPathSegment = uri2.getLastPathSegment();
+                    if (lastPathSegment != null) {
+                        strG0 = qm4.G0(lastPathSegment, '/', lastPathSegment);
+                    } else {
+                        strG0 = null;
+                    }
+                }
+                type = contentResolver2.getType(uri2);
+                if (type == null) {
+                    MimeTypeMap singleton2 = MimeTypeMap.getSingleton();
+                    if (strG0 != null) {
+                        lowerCase = qm4.G0(strG0, '.', "").toLowerCase(Locale.ROOT);
+                        lowerCase.getClass();
+                    } else {
+                        lowerCase = null;
+                    }
+                    type = singleton2.getMimeTypeFromExtension(lowerCase);
+                    if (type != null) {
+                        str = type;
+                    }
+                } else {
+                    str = type;
+                }
+                if (strG0 != null) {
+                    if (qm4.u0(strG0)) {
+                    }
+                    if (str3 != null) {
+                        str2 = str3;
+                    }
+                }
+                if (!qm4.n0(str2, '.')) {
+                    extensionFromMimeType = (String) yc4.d.get(str);
+                    if (extensionFromMimeType == null) {
+                        extensionFromMimeType = MimeTypeMap.getSingleton().getExtensionFromMimeType(str);
+                    }
+                    if (extensionFromMimeType != null) {
+                        str2 = b11.o(str2, ".", extensionFromMimeType);
+                    }
+                }
+                return new yc4(str2, j, str);
+            }
+        } catch (Exception e4) {
+            e = e4;
+            contentResolver2 = contentResolver;
+            uri2 = uri;
+        }
+        if (strG0 != null || qm4.u0(strG0)) {
+            lastPathSegment = uri2.getLastPathSegment();
+            if (lastPathSegment != null) {
+                strG0 = qm4.G0(lastPathSegment, '/', lastPathSegment);
+            } else {
+                strG0 = null;
+            }
+        }
+        type = contentResolver2.getType(uri2);
+        if (type == null) {
+            MimeTypeMap singleton3 = MimeTypeMap.getSingleton();
+            if (strG0 != null) {
+                lowerCase = qm4.G0(strG0, '.', "").toLowerCase(Locale.ROOT);
+                lowerCase.getClass();
+            } else {
+                lowerCase = null;
+            }
+            type = singleton3.getMimeTypeFromExtension(lowerCase);
+            if (type != null) {
+                str = type;
+            }
+        } else {
+            str = type;
+        }
+        if (strG0 != null) {
+            if (qm4.u0(strG0)) {
+            }
+            if (str3 != null) {
+                str2 = str3;
+            }
+        }
+        if (!qm4.n0(str2, '.')) {
+            extensionFromMimeType = (String) yc4.d.get(str);
+            if (extensionFromMimeType == null) {
+                extensionFromMimeType = MimeTypeMap.getSingleton().getExtensionFromMimeType(str);
+            }
+            if (extensionFromMimeType != null) {
+                str2 = b11.o(str2, ".", extensionFromMimeType);
+            }
+        }
+        return new yc4(str2, j, str);
     }
 
-    public static PorterDuff.Mode B(int r1, PorterDuff.Mode r2) {
-        if (r1 == 3) goto L21;
-        if (r1 == 5) goto L19;
-        if (r1 == 9) goto L17;
-        switch(r1) {
-            case 14: goto L15;
-            case 15: goto L13;
-            case 16: goto L11;
-            default: goto L9;
-        };
-    L9:
-        return r2;
-    L11:
-        return PorterDuff.Mode.ADD;
-    L13:
-        return PorterDuff.Mode.SCREEN;
-    L15:
-        return PorterDuff.Mode.MULTIPLY;
-    L17:
-        return PorterDuff.Mode.SRC_ATOP;
-    L19:
-        return PorterDuff.Mode.SRC_IN;
-    L21:
-        return PorterDuff.Mode.SRC_OVER;
+    public static PorterDuff.Mode B(int i, PorterDuff.Mode mode) {
+        if (i == 3) {
+            return PorterDuff.Mode.SRC_OVER;
+        }
+        if (i == 5) {
+            return PorterDuff.Mode.SRC_IN;
+        }
+        if (i == 9) {
+            return PorterDuff.Mode.SRC_ATOP;
+        }
+        switch (i) {
+            case 14:
+                return PorterDuff.Mode.MULTIPLY;
+            case 15:
+                return PorterDuff.Mode.SCREEN;
+            case WaveRetry.MAX_FAILURES /* 16 */:
+                return PorterDuff.Mode.ADD;
+            default:
+                return mode;
+        }
     }
 
-    public static final Object C(mf3 r1, qr3 r2) {
-        r2.getClass();
-        Object r0 = r1.get(r2);
-        if (r0 != null) goto L6;
-        r0 = r2.b();
-    L6:
-        return ((j35) r0).a(r1);
+    public static final Object C(mf3 mf3Var, qr3 qr3Var) {
+        qr3Var.getClass();
+        Object objB = mf3Var.get(qr3Var);
+        if (objB == null) {
+            objB = qr3Var.b();
+        }
+        return ((j35) objB).a(mf3Var);
     }
 
-    public static int D(InputStream r3, byte[] r4, int r5, int r6) {
-        if (r6 < 0) goto L14;
-        if (r5 < 0) goto L14;
-        if ((r6 + r5) > r4.length) goto L14;
-        int r0 = 0;
-    L7:
-        if (r0 == r6) goto L12;
-        int r1 = r3.read(r4, r5 + r0, r6 - r0);
-        if (r1 == (-1)) goto L12;
-        r0 = r0 + r1;
-    L12:
-        return r0;
-    L14:
-        throw new IndexOutOfBoundsException();
+    public static int D(InputStream inputStream, byte[] bArr, int i, int i2) throws IOException {
+        if (i2 < 0 || i < 0 || i2 + i > bArr.length) {
+            throw new IndexOutOfBoundsException();
+        }
+        int i3 = 0;
+        while (i3 != i2) {
+            int i4 = inputStream.read(bArr, i + i3, i2 - i3);
+            if (i4 == -1) {
+                break;
+            }
+            i3 += i4;
+        }
+        return i3;
     }
 
-    public static int E(InputStream r3) {
-        byte[] r1 = new byte[8];
-        if (r3.read(r1) < 8) goto L14;
-        byte r4 = r1[7];
-        int r0 = ((((((((((((((r4 & 127) * 256) + (r1[6] & 255)) * 256) + (r1[5] & 255)) * 256) + (r1[4] & 255)) * 256) + (r1[3] & 255)) * 256) + (r1[2] & 255)) * 256) + (r1[1] & 255)) * 256) + (r1[0] & 255);
-        if (r0 >= 0) goto L7;
+    public static int E(InputStream inputStream) {
+        byte[] bArr = new byte[8];
+        if (inputStream.read(bArr) < 8) {
+            mj0.i("Could not read offset.");
+            return 0;
+        }
+        byte b2 = bArr[7];
+        int i = ((((((((((((((b2 & 127) * 256) + (bArr[6] & 255)) * 256) + (bArr[5] & 255)) * 256) + (bArr[4] & 255)) * 256) + (bArr[3] & 255)) * 256) + (bArr[2] & 255)) * 256) + (bArr[1] & 255)) * 256) + (bArr[0] & 255);
+        if (i >= 0) {
+            return (b2 & 128) != 0 ? -i : i;
+        }
         mj0.i("Integer overflow: 64-bit offsets not supported.");
         return 0;
-    L7:
-        if ((r4 & 128) != 0) goto L9;
-        return r0;
-    L9:
-        return -r0;
-    L14:
-        mj0.i("Could not read offset.");
-        return 0;
     }
 
-    public static final dx2 F(dx2 r7, lm0 r8, tb r9, boolean r10, gd3 r11, rm2 r12, ec3 r13) {
-        sp1 r0 = sp1.b;
-        return r7.c(au0.G(ax2.a, r0, 1042431)).c(new r64(r8, r10, r11, r12, r13, r9));
+    public static final dx2 F(dx2 dx2Var, lm0 lm0Var, tb tbVar, boolean z, gd3 gd3Var, rm2 rm2Var, ec3 ec3Var) {
+        return dx2Var.c(au0.G(ax2.a, sp1.b, 1042431)).c(new r64(lm0Var, z, gd3Var, rm2Var, ec3Var, tbVar));
     }
 
-    public static long G(InputStream r7, long r8) {
-        long r0 = r8;
-    L4:
-        if (r0 <= 0) goto L10;
-        long r4 = r7.skip(r0);
-        if (r4 == 0) goto L10;
-        r0 = r0 - r4;
-    L10:
-        if (r0 <= 0) goto L16;
-        int r5 = (int) Math.min(r0, 4096);
-        int r6 = D(r7, b, 0, r5);
-        if (r6 < 1) goto L16;
-        r0 = r0 - ((long) r6);
-    L16:
-        return r8 - r0;
+    public static long G(InputStream inputStream, long j) throws IOException {
+        long j2 = j;
+        while (j2 > 0) {
+            long jSkip = inputStream.skip(j2);
+            if (jSkip == 0) {
+                break;
+            }
+            j2 -= jSkip;
+        }
+        while (j2 > 0) {
+            int iD = D(inputStream, b, 0, (int) Math.min(j2, 4096L));
+            if (iD < 1) {
+                break;
+            }
+            j2 -= (long) iD;
+        }
+        return j - j2;
     }
 
-    public static String H(long r2) {
-        return "PointerId(value=" + r2 + ")";
+    public static String H(long j) {
+        return "PointerId(value=" + j + ")";
     }
 
-    public static final mf3 I(rr3[] r6, mf3 r7, mf3 r8) {
-        lf3 r1 = new lf3(mf3.q);
-        int r0 = r6.length;
-        int r2 = 0;
-    L3:
-        if (r2 >= r0) goto L11;
-        rr3 r3 = r6[r2];
-        qr3 r4 = r3.a;
-        if (r3.g == false) goto L7;
-    L8:
-        r1.put(r4, r4.d(r3, (j35) r8.get(r4)));
-    L9:
-        r2 = r2 + 1;
-        goto L3
-    L7:
-        if (r7.containsKey(r4) == true) goto L9;
-    L11:
-        return r1.a();
+    public static final mf3 I(rr3[] rr3VarArr, mf3 mf3Var, mf3 mf3Var2) {
+        lf3 lf3Var = new lf3(mf3.q);
+        for (rr3 rr3Var : rr3VarArr) {
+            qr3 qr3Var = rr3Var.a;
+            if (rr3Var.g || !mf3Var.containsKey(qr3Var)) {
+                lf3Var.put(qr3Var, qr3Var.d(rr3Var, (j35) mf3Var2.get(qr3Var)));
+            }
+        }
+        return lf3Var.a();
     }
 
     /* JADX WARN: Multi-variable type inference failed */
     /* JADX WARN: Type inference failed for: r6v0, types: [boolean] */
     /* JADX WARN: Type inference failed for: r6v1, types: [int] */
     /* JADX WARN: Type inference failed for: r6v6 */
-    public static final ak5 J(ck5 r10) {
-        bk5 r1 = r10.n();     // Catch: IOException -> L85
-        if (r1 == null) goto L84;
-        byte r2 = r1.b;     // Catch: Throwable -> L80
-        byte r3 = r1.a;     // Catch: Throwable -> L80
-        ?? r6 = 0;
-        int r7 = 0;
-        if (r3 != (-128)) goto L91;
-        long r0 = r10.b();     // Catch: Throwable -> L80 Throwable -> L80
-        if (r0 > 1000) goto L79;
-        K(r2, r0);     // Catch: Throwable -> L80 Throwable -> L80
-        ak5[] r4 = new ak5[(int) r0];     // Catch: Throwable -> L80 Throwable -> L80
-    L74:
-        if (((long) r6) >= r0) goto L77;
-        r4[r6] = J(r10);     // Catch: Throwable -> L80 Throwable -> L80
-        r6 = r6 + 1;     // Catch: Throwable -> L80 Throwable -> L80
-        goto L74
-    L77:
-        return new uj5(ei5.j(r4));
-    L79:
-        throw new zzhj("Parser being asked to read a large CBOR array");     // Catch: Throwable -> L80 Throwable -> L80
-    L91:
-        if (r3 != (-96)) goto L11;
-        long r5 = r10.j();     // Catch: Throwable -> L80 Throwable -> L80
-        if (r5 > 1000) goto L69;
-        K(r2, r5);     // Catch: Throwable -> L80 Throwable -> L80
-        int r8 = (int) r5;     // Catch: Throwable -> L80 Throwable -> L80
-        qr2[] r9 = new qr2[r8];     // Catch: Throwable -> L80 Throwable -> L80
-        ak5 r11 = null;
-        int r12 = 0;
-    L45:
-        if (r12 >= r5) goto L56;
-        ak5 r13 = J(r10);     // Catch: Throwable -> L80 Throwable -> L80
-        if (r11 == null) goto L55;
-        if (r13.compareTo(r11) > 0) goto L55;
-        throw new zzhf("Keys in CBOR Map not in strictly ascending natural order:\nPrevious key: " + r11.toString() + "\nCurrent key: " + r13.toString());     // Catch: Throwable -> L80 Throwable -> L80
-    L55:
-        r9[r12] = new qr2(r13, J(r10), r6, 22);     // Catch: Throwable -> L80 Throwable -> L80
-        r12 = r12 + 1;     // Catch: Throwable -> L80 Throwable -> L80
-        r11 = r13;
-        goto L45
-    L56:
-        TreeMap r14 = new TreeMap();     // Catch: Throwable -> L80 Throwable -> L80
-    L57:
-        if (r7 >= r8) goto L67;
-        qr2 r15 = r9[r7];     // Catch: Throwable -> L80 Throwable -> L80
-        if (r14.containsKey((ak5) r15.o) == true) goto L65;
-        r14.put((ak5) r15.o, (ak5) r15.p);     // Catch: Throwable -> L80 Throwable -> L80
-        r7 = r7 + 1;     // Catch: Throwable -> L80 Throwable -> L80
-        goto L57
-    L65:
-        throw new zzhf("Attempted to add duplicate key to canonical CBOR Map.");     // Catch: Throwable -> L80 Throwable -> L80
-    L67:
-        return new yj5(ji5.b(r14));
-    L69:
-        throw new zzhj("Parser being asked to read a large CBOR map");     // Catch: Throwable -> L80 Throwable -> L80
-    L11:
-        if (r3 == (-64)) goto L40;
-        if (r3 == (-32)) goto L38;
-        if (r3 != 0) goto L16;
-    L31:
-        long r16 = r10.f();     // Catch: Throwable -> L80 Throwable -> L80
-        if (r16 <= 0) goto L34;
-        long r17 = r16;
-    L35:
-        K(r2, r17);     // Catch: Throwable -> L80 Throwable -> L80
-        return new xj5(r16);
-    L34:
-        r17 = ~r16;     // Catch: Throwable -> L80 Throwable -> L80
-        goto L35
-    L16:
-        if (r3 == 32) goto L31;
-        if (r3 != 64) goto L20;
-        r10.v((byte) 64);     // Catch: RuntimeException -> L24 Throwable -> L80
-        byte[] r18 = r10.H();     // Catch: RuntimeException -> L24 Throwable -> L80
-        int r19 = r18.length;     // Catch: Throwable -> L80 Throwable -> L80
-        K(r2, r19);     // Catch: Throwable -> L80 Throwable -> L80
-        return new wj5(rj5.i(r19, r18));
-    L20:
-        if (r3 != 96) goto L27;
-        r10.v((byte) 96);     // Catch: RuntimeException -> L24 Throwable -> L80
-        String r20 = new String(r10.H(), StandardCharsets.UTF_8);     // Catch: RuntimeException -> L24 Throwable -> L80
-        K(r2, r20.length());     // Catch: Throwable -> L80 Throwable -> L80
-        return new zj5(r20);
-    L27:
-        throw new zzhj("Unidentifiable major type: " + ((r3 >> 5) & 7));     // Catch: Throwable -> L80 Throwable -> L80
-    L38:
-        return new vj5(r10.q());
-    L40:
-        throw new zzhj("Tags are currently unsupported");     // Catch: Throwable -> L80 Throwable -> L80
-    L24:
-        e = e;
-    L82:
-        throw new zzhj(e);
-    L80:
-        e = e;
-        goto L82
-    L84:
-        throw new zzhj("Parser being asked to parse an empty input stream");
-    L85:
-        e = move-exception;
-        throw new zzhj(e);
+    public static final ak5 J(ck5 ck5Var) throws zzhj {
+        try {
+            bk5 bk5VarN = ck5Var.n();
+            if (bk5VarN == null) {
+                throw new zzhj("Parser being asked to parse an empty input stream");
+            }
+            try {
+                byte b2 = bk5VarN.b;
+                byte b3 = bk5VarN.a;
+                ?? r6 = 0;
+                if (b3 == -128) {
+                    long jB = ck5Var.b();
+                    if (jB > 1000) {
+                        throw new zzhj("Parser being asked to read a large CBOR array");
+                    }
+                    K(b2, jB);
+                    ak5[] ak5VarArr = new ak5[(int) jB];
+                    while (((long) r6) < jB) {
+                        ak5VarArr[r6] = J(ck5Var);
+                        r6++;
+                    }
+                    return new uj5(ei5.j(ak5VarArr));
+                }
+                try {
+                    if (b3 != -96) {
+                        if (b3 == -64) {
+                            throw new zzhj("Tags are currently unsupported");
+                        }
+                        if (b3 == -32) {
+                            return new vj5(ck5Var.q());
+                        }
+                        if (b3 == 0 || b3 == 32) {
+                            long jF = ck5Var.f();
+                            K(b2, jF > 0 ? jF : ~jF);
+                            return new xj5(jF);
+                        }
+                        if (b3 == 64) {
+                            ck5Var.v((byte) 64);
+                            byte[] bArrH = ck5Var.H();
+                            int length = bArrH.length;
+                            K(b2, length);
+                            return new wj5(rj5.i(length, bArrH));
+                        }
+                        if (b3 != 96) {
+                            throw new zzhj("Unidentifiable major type: " + ((b3 >> 5) & 7));
+                        }
+                        ck5Var.v((byte) 96);
+                        String str = new String(ck5Var.H(), StandardCharsets.UTF_8);
+                        K(b2, str.length());
+                        return new zj5(str);
+                    }
+                    long j = ck5Var.j();
+                    if (j > 1000) {
+                        throw new zzhj("Parser being asked to read a large CBOR map");
+                    }
+                    K(b2, j);
+                    int i = (int) j;
+                    qr2[] qr2VarArr = new qr2[i];
+                    ak5 ak5Var = null;
+                    int i2 = 0;
+                    while (i2 < j) {
+                        ak5 ak5VarJ = J(ck5Var);
+                        if (ak5Var != null && ak5VarJ.compareTo(ak5Var) <= 0) {
+                            throw new zzhf("Keys in CBOR Map not in strictly ascending natural order:\nPrevious key: " + ak5Var.toString() + "\nCurrent key: " + ak5VarJ.toString());
+                        }
+                        qr2VarArr[i2] = new qr2(ak5VarJ, J(ck5Var), r6, 22);
+                        i2++;
+                        ak5Var = ak5VarJ;
+                    }
+                    TreeMap treeMap = new TreeMap();
+                    for (int i3 = 0; i3 < i; i3++) {
+                        qr2 qr2Var = qr2VarArr[i3];
+                        if (treeMap.containsKey((ak5) qr2Var.o)) {
+                            throw new zzhf("Attempted to add duplicate key to canonical CBOR Map.");
+                        }
+                        treeMap.put((ak5) qr2Var.o, (ak5) qr2Var.p);
+                    }
+                    return new yj5(ji5.b(treeMap));
+                } catch (RuntimeException e) {
+                    e = e;
+                    throw new zzhj(e);
+                }
+            } catch (IOException | RuntimeException e2) {
+                e = e2;
+            }
+        } catch (IOException e3) {
+            throw new zzhj(e3);
+        }
     }
 
-    public static final void K(byte r2, long r3) {
-        switch(r2) {
-            case 24: goto L20;
-            case 25: goto L15;
-            case 26: goto L10;
-            case 27: goto L5;
-            default: goto L24;
-        };
-    L24:
-        return;
-    L5:
-        if (r3 >= 4294967296L) goto L25;
-        tb4.b(r3, " after add info could have been represented in 0-4 additional bytes, but used 8");
-        return;
-    L25:
-        return;
-    L10:
-        if (r3 >= 65536) goto L26;
-        tb4.b(r3, " after add info could have been represented in 0-2 additional bytes, but used 4");
-        return;
-    L26:
-        return;
-    L15:
-        if (r3 >= 256) goto L27;
-        tb4.b(r3, " after add info could have been represented in 0-1 additional bytes, but used 2");
-        return;
-    L27:
-        return;
-    L20:
-        if (r3 < 24) goto L22;
-        return;
-    L22:
-        tb4.b(r3, " after add info could have been represented in 0 additional bytes, but used 1");
+    public static final void K(byte b2, long j) throws zzhf {
+        switch (b2) {
+            case 24:
+                if (j < 24) {
+                    tb4.b(j, " after add info could have been represented in 0 additional bytes, but used 1");
+                    break;
+                }
+                break;
+            case 25:
+                if (j < 256) {
+                    tb4.b(j, " after add info could have been represented in 0-1 additional bytes, but used 2");
+                    break;
+                }
+                break;
+            case 26:
+                if (j < 65536) {
+                    tb4.b(j, " after add info could have been represented in 0-2 additional bytes, but used 4");
+                    break;
+                }
+                break;
+            case 27:
+                if (j < 4294967296L) {
+                    tb4.b(j, " after add info could have been represented in 0-4 additional bytes, but used 8");
+                    break;
+                }
+                break;
+        }
     }
 
-    public static Rect c(View r5, View r6) {
-        int[] r1 = new int[2];
-        r6.getLocationOnScreen(r1);
-        int r3 = r1[0];
-        int r2 = r1[1];
-        int[] r0 = new int[2];
-        r5.getLocationOnScreen(r0);
-        int r7 = r0[0];
-        int r4 = r3 - r7;
-        int r8 = r2 - r0[1];
-        return new Rect(r4, r8, r6.getWidth() + r4, r6.getHeight() + r8);
+    public static Rect c(View view, View view2) {
+        int[] iArr = new int[2];
+        view2.getLocationOnScreen(iArr);
+        int i = iArr[0];
+        int i2 = iArr[1];
+        int[] iArr2 = new int[2];
+        view.getLocationOnScreen(iArr2);
+        int i3 = i - iArr2[0];
+        int i4 = i2 - iArr2[1];
+        return new Rect(i3, i4, view2.getWidth() + i3, view2.getHeight() + i4);
     }
 
-    public static void d(boolean r0) {
-        if (r0 == false) goto L4;
-        return;
-    L4:
+    public static void d(boolean z) {
+        if (z) {
+            return;
+        }
         nz2.c();
     }
 
-    public static final q24 i(Context r2, Class r3, String r4) {
-        r2.getClass();
-        if (qm4.u0(r4) == false) goto L5;
-        kf2.n("Cannot build a database with null or empty name. If you are trying to create an in memory database, use Room.inMemoryDatabaseBuilder");
-        return null;
-    L5:
-        if (r4.equals(":memory:") == false) goto L7;
+    public static final q24 i(Context context, Class cls, String str) {
+        context.getClass();
+        if (qm4.u0(str)) {
+            kf2.n("Cannot build a database with null or empty name. If you are trying to create an in memory database, use Room.inMemoryDatabaseBuilder");
+            return null;
+        }
+        if (!str.equals(":memory:")) {
+            return new q24(context, cls, str);
+        }
         kf2.n("Cannot build a database with the special name ':memory:'. If you are trying to create an in memory database, use Room.inMemoryDatabaseBuilder");
         return null;
-    L7:
-        return new q24(r2, r3, r4);
     }
 
-    public static final boolean j(String r8, String r9) {
-        r8.getClass();
-        if (r8.equals(r9) == false) goto L6;
-        return true;
-    L6:
-        if (r8.length() == 0) goto L29;
-        int r0 = 0;
-        int r3 = 0;
-        int r4 = 0;
-    L10:
-        if (r0 >= r8.length()) goto L26;
-        char r5 = r8.charAt(r0);
-        int r6 = r4 + 1;
-        if (r4 != 0) goto L15;
-        if (r5 != '(') goto L29;
-    L15:
-        if (r5 != '(') goto L17;
-        r3 = r3 + 1;
-    L25:
-        r0 = r0 + 1;
-        r4 = r6;
-        goto L10
-    L17:
-        if (r5 != ')') goto L25;
-        r3 = r3 - 1;
-        if (r3 != 0) goto L25;
-        if (r4 == (r8.length() - 1)) goto L25;
-    L26:
-        if (r3 != 0) goto L29;
-        return h12.c(qm4.K0(r8.substring(1, r8.length() - 1)).toString(), r9);
-    L29:
+    public static final boolean j(String str, String str2) {
+        str.getClass();
+        if (str.equals(str2)) {
+            return true;
+        }
+        if (str.length() != 0) {
+            int i = 0;
+            int i2 = 0;
+            int i3 = 0;
+            while (i < str.length()) {
+                char cCharAt = str.charAt(i);
+                int i4 = i3 + 1;
+                if (i3 != 0 || cCharAt == '(') {
+                    if (cCharAt == '(') {
+                        i2++;
+                    } else if (cCharAt == ')' && (i2 = i2 - 1) == 0 && i3 != str.length() - 1) {
+                    }
+                    i++;
+                    i3 = i4;
+                }
+            }
+            if (i2 == 0) {
+                return h12.c(qm4.K0(str.substring(1, str.length() - 1)).toString(), str2);
+            }
+        }
         return false;
     }
 
-    public static void k(View r5, b85 r6) {
-        WeakHashMap r1 = j65.a;
-        int r2 = r5.getPaddingStart();
-        int r3 = r5.getPaddingTop();
-        int r4 = r5.getPaddingEnd();
-        int r7 = r5.getPaddingBottom();
-        c85 r0 = new c85();
-        r0.a = r2;
-        r0.b = r3;
-        r0.c = r4;
-        r0.d = r7;
-        a65.c(r5, new gp3(22, r6, r0));
-        if (r5.isAttachedToWindow() == false) goto L6;
-        r5.requestApplyInsets();
-        return;
-    L6:
-        r5.addOnAttachStateChangeListener(new z75());
+    public static void k(View view, b85 b85Var) {
+        WeakHashMap weakHashMap = j65.a;
+        int paddingStart = view.getPaddingStart();
+        int paddingTop = view.getPaddingTop();
+        int paddingEnd = view.getPaddingEnd();
+        int paddingBottom = view.getPaddingBottom();
+        c85 c85Var = new c85();
+        c85Var.a = paddingStart;
+        c85Var.b = paddingTop;
+        c85Var.c = paddingEnd;
+        c85Var.d = paddingBottom;
+        a65.c(view, new gp3(22, b85Var, c85Var));
+        if (view.isAttachedToWindow()) {
+            view.requestApplyInsets();
+        } else {
+            view.addOnAttachStateChangeListener(new z75());
+        }
     }
 
-    public static float l(Context r1, int r2) {
-        return TypedValue.applyDimension(1, r2, r1.getResources().getDisplayMetrics());
+    public static float l(Context context, int i) {
+        return TypedValue.applyDimension(1, i, context.getResources().getDisplayMetrics());
     }
 
-    public static Map m(kk1 r5) {
-        LinkedHashMap r0 = new LinkedHashMap();
-        Iterator r1 = r5.sourceIterator();
-    L4:
-        if (r1.hasNext() == false) goto L11;
-        Object r2 = r5.keyOf(r1.next());
-        Object r3 = r0.get(r2);
-        if (r3 != null) goto L10;
-        if (r0.containsKey(r2) == true) goto L10;
-        r3 = new hx3();
-    L10:
-        hx3 r4 = (hx3) r3;
-        r4.n++;
-        r0.put(r2, r4);
-        goto L4
-    L11:
-        Iterator r6 = r0.entrySet().iterator();
-    L13:
-        if (r6.hasNext() == false) goto L23;
-        Map.Entry r7 = (Map.Entry) r6.next();
-        r7.getClass();
-        if ((r7 instanceof x32) == false) goto L21;
-        if ((r7 instanceof z32) == true) goto L21;
-        jz4.M(r7, "kotlin.collections.MutableMap.MutableEntry");
-        throw null;
-    L21:
-        r7.setValue(Integer.valueOf(((hx3) r7.getValue()).n));
-        goto L13
-    L23:
-        return jz4.f(r0);
+    public static Map m(kk1 kk1Var) {
+        LinkedHashMap linkedHashMap = new LinkedHashMap();
+        Iterator itSourceIterator = kk1Var.sourceIterator();
+        while (itSourceIterator.hasNext()) {
+            Object objKeyOf = kk1Var.keyOf(itSourceIterator.next());
+            Object hx3Var = linkedHashMap.get(objKeyOf);
+            if (hx3Var == null && !linkedHashMap.containsKey(objKeyOf)) {
+                hx3Var = new hx3();
+            }
+            hx3 hx3Var2 = (hx3) hx3Var;
+            hx3Var2.n++;
+            linkedHashMap.put(objKeyOf, hx3Var2);
+        }
+        for (Map.Entry entry : linkedHashMap.entrySet()) {
+            entry.getClass();
+            if ((entry instanceof x32) && !(entry instanceof z32)) {
+                jz4.M(entry, "kotlin.collections.MutableMap.MutableEntry");
+                throw null;
+            }
+            entry.setValue(Integer.valueOf(((hx3) entry.getValue()).n));
+        }
+        return jz4.f(linkedHashMap);
     }
 
-    public static final boolean n(long r0, long r2) {
-        if (r0 != r2) goto L6;
-        return true;
-    L6:
+    public static final boolean n(long j, long j2) {
+        return j == j2;
+    }
+
+    public static boolean o(Object obj, Map map) {
+        if (map == obj) {
+            return true;
+        }
+        if (obj instanceof Map) {
+            return map.entrySet().equals(((Map) obj).entrySet());
+        }
         return false;
     }
 
-    public static boolean o(Object r1, Map r2) {
-        if (r2 != r1) goto L6;
-        return true;
-    L6:
-        if ((r1 instanceof Map) == true) goto L8;
-        return false;
-    L8:
-        return r2.entrySet().equals(((Map) r1).entrySet());
+    public static ib1 p(ib1[] ib1VarArr, int i) {
+        int i2 = (i & 1) == 0 ? 400 : 700;
+        boolean z = (i & 2) != 0;
+        ib1 ib1Var = null;
+        int i3 = Integer.MAX_VALUE;
+        for (ib1 ib1Var2 : ib1VarArr) {
+            int iAbs = (Math.abs(ib1Var2.c - i2) * 2) + (ib1Var2.d == z ? 0 : 1);
+            if (ib1Var == null || i3 > iAbs) {
+                ib1Var = ib1Var2;
+                i3 = iAbs;
+            }
+        }
+        return ib1Var;
     }
 
-    public static ib1 p(ib1[] r10, int r11) {
-        if ((r11 & 1) != 0) goto L5;
-        int r0 = 400;
-    L7:
-        if ((r11 & 2) == 0) goto L9;
-        boolean r12 = true;
-    L10:
-        int r3 = r10.length;
-        ib1 r4 = null;
-        int r5 = Integer.MAX_VALUE;
-        int r6 = 0;
-    L11:
-        if (r6 >= r3) goto L21;
-        ib1 r7 = r10[r6];
-        int r8 = Math.abs(r7.c - r0) * 2;
-        if (r7.d != r12) goto L15;
-        int r9 = 0;
-    L16:
-        int r13 = r8 + r9;
-        if (r4 == null) goto L19;
-        if (r5 > r13) goto L19;
-    L20:
-        r6 = r6 + 1;
-    L19:
-        r4 = r7;
-        r5 = r13;
-        goto L20
-    L15:
-        r9 = 1;
-        goto L16
-    L21:
-        return r4;
-    L9:
-        r12 = false;
-        goto L10
-    L5:
-        r0 = 700;
-        goto L7
+    public static ol1 q(ol1 ol1Var) {
+        return (((((double) Math.round(ol1Var.a)) > 90.0d ? 1 : (((double) Math.round(ol1Var.a)) == 90.0d ? 0 : -1)) >= 0 && (((double) Math.round(ol1Var.a)) > 111.0d ? 1 : (((double) Math.round(ol1Var.a)) == 111.0d ? 0 : -1)) <= 0) && ((((double) Math.round(ol1Var.b)) > 16.0d ? 1 : (((double) Math.round(ol1Var.b)) == 16.0d ? 0 : -1)) > 0) && (((double) Math.round(ol1Var.c)) < 65.0d)) ? ol1.a(ol1Var.a, ol1Var.b, 70.0d) : ol1Var;
     }
 
-    public static ol1 q(ol1 r10) {
-        boolean r1 = false;
-        if (Math.round(r10.a) >= 90.0d) goto L5;
-    L7:
-        boolean r0 = false;
-    L9:
-        if (Math.round(r10.b) <= 16.0d) goto L11;
-        boolean r3 = true;
-    L13:
-        if (Math.round(r10.c) >= 65.0d) goto L15;
-        r1 = true;
-    L15:
-        if (r0 == false) goto L20;
-        if (r3 == false) goto L21;
-        if (r1 == true) goto L19;
-        return r10;
-    L19:
-        return ol1.a(r10.a, r10.b, 70.0d);
-    L21:
-        return r10;
-    L20:
-        return r10;
-    L11:
-        r3 = false;
-        goto L13
-    L5:
-        if (Math.round(r10.a) > 111.0d) goto L7;
-        r0 = true;
-        goto L9
+    public static final String r(Collection collection) {
+        collection.getClass();
+        return !collection.isEmpty() ? rm4.b0(q40.B0(collection, ",\n", "\n", "\n", null, 56)).concat("},") : " }";
     }
 
-    public static final String r(Collection r7) {
-        r7.getClass();
-        if (r7.isEmpty() == false) goto L5;
-        return " }";
-    L5:
-        return rm4.b0(q40.B0(r7, ",\n", "\n", "\n", null, 56)).concat("},");
+    public static ViewGroup s(View view) {
+        View rootView = view.getRootView();
+        ViewGroup viewGroup = (ViewGroup) rootView.findViewById(R.id.content);
+        if (viewGroup != null) {
+            return viewGroup;
+        }
+        if (rootView == view || !(rootView instanceof ViewGroup)) {
+            return null;
+        }
+        return (ViewGroup) rootView;
     }
 
-    public static ViewGroup s(View r2) {
-        View r0 = r2.getRootView();
-        ViewGroup r1 = (ViewGroup) r0.findViewById(R.id.content);
-        if (r1 == null) goto L5;
-        return r1;
-    L5:
-        if (r0 != r2) goto L7;
-        return null;
-    L7:
-        if ((r0 instanceof ViewGroup) == true) goto L9;
-        return null;
-    L9:
-        return (ViewGroup) r0;
+    public static final float t(Layout layout, int i, Paint paint) {
+        float fAbs;
+        float width;
+        float lineLeft = layout.getLineLeft(i);
+        ThreadLocal threadLocal = ns4.a;
+        if (layout.getEllipsisCount(i) <= 0 || layout.getParagraphDirection(i) != 1 || lineLeft >= 0.0f) {
+            return 0.0f;
+        }
+        float fMeasureText = paint.measureText("…") + (layout.getPrimaryHorizontal(layout.getEllipsisStart(i) + layout.getLineStart(i)) - lineLeft);
+        Layout.Alignment paragraphAlignment = layout.getParagraphAlignment(i);
+        if ((paragraphAlignment == null ? -1 : qx1.a[paragraphAlignment.ordinal()]) == 1) {
+            fAbs = Math.abs(lineLeft);
+            width = (layout.getWidth() - fMeasureText) / 2.0f;
+        } else {
+            fAbs = Math.abs(lineLeft);
+            width = layout.getWidth() - fMeasureText;
+        }
+        return width + fAbs;
     }
 
-    public static final float t(Layout r4, int r5, Paint r6) {
-        float r0 = r4.getLineLeft(r5);
-        ThreadLocal r1 = ns4.a;
-        if (r4.getEllipsisCount(r5) > 0) goto L5;
-    L17:
-        return 0.0f;
-    L5:
-        if (r4.getParagraphDirection(r5) != 1) goto L17;
-        if (r0 >= 0.0f) goto L17;
-        float r7 = r6.measureText("…") + (r4.getPrimaryHorizontal(r4.getEllipsisStart(r5) + r4.getLineStart(r5)) - r0);
-        Layout.Alignment r8 = r4.getParagraphAlignment(r5);
-        if (r8 != null) goto L11;
-        int r9 = -1;
-    L12:
-        if (r9 != 1) goto L16;
-        float r10 = Math.abs(r0);
-        float r11 = (r4.getWidth() - r7) / 2.0f;
-    L15:
-        return r11 + r10;
-    L16:
-        r10 = Math.abs(r0);
-        r11 = r4.getWidth() - r7;
-        goto L15
-    L11:
-        r9 = qx1.a[r8.ordinal()];
-        goto L12
+    public static final float u(Layout layout, int i, Paint paint) {
+        float width;
+        float width2;
+        ThreadLocal threadLocal = ns4.a;
+        if (layout.getEllipsisCount(i) <= 0) {
+            return 0.0f;
+        }
+        if (layout.getParagraphDirection(i) != -1 || layout.getWidth() >= layout.getLineRight(i)) {
+            return 0.0f;
+        }
+        float fMeasureText = paint.measureText("…") + (layout.getLineRight(i) - layout.getPrimaryHorizontal(layout.getEllipsisStart(i) + layout.getLineStart(i)));
+        Layout.Alignment paragraphAlignment = layout.getParagraphAlignment(i);
+        if ((paragraphAlignment != null ? qx1.a[paragraphAlignment.ordinal()] : -1) == 1) {
+            width = layout.getWidth() - layout.getLineRight(i);
+            width2 = (layout.getWidth() - fMeasureText) / 2.0f;
+        } else {
+            width = layout.getWidth() - layout.getLineRight(i);
+            width2 = layout.getWidth() - fMeasureText;
+        }
+        return width - width2;
     }
 
-    public static final float u(Layout r3, int r4, Paint r5) {
-        ThreadLocal r0 = ns4.a;
-        if (r3.getEllipsisCount(r4) <= 0) goto L18;
-        int r1 = -1;
-        if (r3.getParagraphDirection(r4) == (-1)) goto L7;
-        return 0.0f;
-    L7:
-        if (r3.getWidth() >= r3.getLineRight(r4)) goto L21;
-        float r6 = r5.measureText("…") + (r3.getLineRight(r4) - r3.getPrimaryHorizontal(r3.getEllipsisStart(r4) + r3.getLineStart(r4)));
-        Layout.Alignment r2 = r3.getParagraphAlignment(r4);
-        if (r2 == null) goto L13;
-        r1 = qx1.a[r2.ordinal()];
-    L13:
-        if (r1 != 1) goto L17;
-        float r7 = r3.getWidth() - r3.getLineRight(r4);
-        float r8 = (r3.getWidth() - r6) / 2.0f;
-    L16:
-        return r7 - r8;
-    L17:
-        r7 = r3.getWidth() - r3.getLineRight(r4);
-        r8 = r3.getWidth() - r6;
-        goto L16
-    L21:
-        return 0.0f;
-    L18:
-        return 0.0f;
+    public static ry v(py pyVar) {
+        oy oyVar = new oy();
+        oyVar.c = new n04();
+        ry ryVar = new ry(oyVar);
+        oyVar.b = ryVar;
+        oyVar.a = pyVar.getClass();
+        try {
+            Object objK = pyVar.k(oyVar);
+            if (objK == null) {
+                return ryVar;
+            }
+            oyVar.a = objK;
+            return ryVar;
+        } catch (Exception e) {
+            ryVar.o.i(e);
+            return ryVar;
+        }
     }
 
-    public static ry v(py r3) {
-        oy r0 = new oy();
-        r0.c = new n04();
-        ry r1 = new ry(r0);
-        r0.b = r1;
-        r0.a = r3.getClass();
-        Object r4 = r3.k(r0);     // Catch: Exception -> L7
-        if (r4 == null) goto L9;
-        r0.a = r4;     // Catch: Exception -> L7
-        return r1;
-    L9:
-        return r1;
-    L7:
-        e = move-exception;
-        r1.o.i(e);
-        return r1;
+    public static final int w(Layout layout, int i, boolean z) {
+        if (i <= 0) {
+            return 0;
+        }
+        if (i >= layout.getText().length()) {
+            return layout.getLineCount() - 1;
+        }
+        int lineForOffset = layout.getLineForOffset(i);
+        int lineStart = layout.getLineStart(lineForOffset);
+        int lineEnd = layout.getLineEnd(lineForOffset);
+        if (lineStart == i || lineEnd == i) {
+            if (lineStart == i) {
+                if (z) {
+                    return lineForOffset - 1;
+                }
+            } else if (!z) {
+                return lineForOffset + 1;
+            }
+        }
+        return lineForOffset;
     }
 
-    public static final int w(Layout r2, int r3, boolean r4) {
-        if (r3 > 0) goto L6;
-        return 0;
-    L6:
-        if (r3 >= r2.getText().length()) goto L8;
-        int r0 = r2.getLineForOffset(r3);
-        int r1 = r2.getLineStart(r0);
-        int r5 = r2.getLineEnd(r0);
-        if (r1 == r3) goto L13;
-        if (r5 == r3) goto L13;
-    L18:
-        return r0;
-    L13:
-        if (r1 != r3) goto L17;
-        if (r4 == false) goto L18;
-        return r0 - 1;
-    L17:
-        if (r4 == true) goto L18;
-        return r0 + 1;
-    L8:
-        return r2.getLineCount() - 1;
-    }
-
-    public static final ed x(ne0 r1) {
-        ed r2 = (ed) r1.K(rv2.p);
-        if (r2 == null) goto L5;
-        return r2;
-    L5:
+    public static final ed x(ne0 ne0Var) {
+        ed edVar = (ed) ne0Var.K(rv2.p);
+        if (edVar != null) {
+            return edVar;
+        }
         kf2.o("A MonotonicFrameClock is not available in this CoroutineContext. Callers should supply an appropriate MonotonicFrameClock using withContext.");
         return null;
     }
 
-    public static final void y(rg1 r1, wf1 r2) {
-        r2.getClass();
-        jz4.j(2, r2);
-        r2.invoke(r1, 1);
+    public static final void y(rg1 rg1Var, wf1 wf1Var) {
+        wf1Var.getClass();
+        jz4.j(2, wf1Var);
+        wf1Var.invoke(rg1Var, 1);
     }
 
-    public static boolean z(View r1) {
-        WeakHashMap r0 = j65.a;
-        if (r1.getLayoutDirection() != 1) goto L5;
-        return true;
-    L5:
-        return false;
+    public static boolean z(View view) {
+        WeakHashMap weakHashMap = j65.a;
+        return view.getLayoutDirection() == 1;
     }
 
-    public me a(Context r1, Looper r2, ml3 r3, Object r4, gj1 r5, hj1 r6) {
-        return b(r1, r2, r3, r4, (gf5) r5, (gf5) r6);
+    public me a(Context context, Looper looper, ml3 ml3Var, Object obj, gj1 gj1Var, hj1 hj1Var) {
+        return b(context, looper, ml3Var, obj, (gf5) gj1Var, (gf5) hj1Var);
     }
 
-    public me b(Context r1, Looper r2, ml3 r3, Object r4, gf5 r5, gf5 r6) {
+    public me b(Context context, Looper looper, ml3 ml3Var, Object obj, gf5 gf5Var, gf5 gf5Var2) {
         throw new UnsupportedOperationException("buildClient must be implemented");
     }
 
-    public abstract Typeface e(Context r1, ya1 r2, Resources r3, int r4);
+    public abstract Typeface e(Context context, ya1 ya1Var, Resources resources, int i);
 
-    public abstract Typeface f(Context r1, ib1[] r2, int r3);
+    public abstract Typeface f(Context context, ib1[] ib1VarArr, int i);
 
-    public Typeface g(Context r1, List r2, int r3) {
+    public Typeface g(Context context, List list, int i) {
         throw new IllegalStateException("createFromFontInfoWithFallback must only be called on API 29+");
     }
 
-    public Typeface h(Context r1, Resources r2, int r3, String r4, int r5) {
-        /*  JADX ERROR: Simple mode code generation failed
-            java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0
-            	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64)
-            	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70)
-            	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:266)
-            	at java.base/java.util.Objects.checkIndex(Objects.java:361)
-            	at java.base/java.util.ArrayList.get(ArrayList.java:427)
-            	at jadx.core.codegen.MethodGen.generateSimpleCode(MethodGen.java:354)
-            	at jadx.core.codegen.MethodGen.addSimpleMethodCode(MethodGen.java:316)
-            	at jadx.core.codegen.MethodGen.addInstructions(MethodGen.java:279)
-            	at jadx.core.codegen.ClassGen.addMethodCode(ClassGen.java:420)
-            	at jadx.core.codegen.ClassGen.addMethod(ClassGen.java:345)
-            	at jadx.core.codegen.ClassGen.lambda$addInnerClsAndMethods$3(ClassGen.java:299)
-            	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:183)
-            	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-            	at java.base/java.util.stream.SortedOps$RefSortingSink.end(SortedOps.java:395)
-            	at java.base/java.util.stream.Sink$ChainedReference.end(Sink.java:258)
-            */
-        /*
-            this = this;
-            java.io.File r0 = defpackage.wr1.C(r1)
-            r1 = 0
-            if (r0 != 0) goto L8
-            return r1
-        L8:
-            boolean r2 = defpackage.wr1.k(r0, r2, r3)     // Catch: java.lang.Throwable -> L1e java.lang.RuntimeException -> L23
-            if (r2 != 0) goto L12
-            r0.delete()
-            return r1
-        L12:
-            java.lang.String r2 = r0.getPath()     // Catch: java.lang.Throwable -> L1e java.lang.RuntimeException -> L23
-            android.graphics.Typeface r1 = android.graphics.Typeface.createFromFile(r2)     // Catch: java.lang.Throwable -> L1e java.lang.RuntimeException -> L23
-            r0.delete()
-            return r1
-        L1e:
-            r1 = move-exception
-            r0.delete()
-            throw r1
-        L23:
-            r0.delete()
-            return r1
-        */
-        throw new UnsupportedOperationException("Method not decompiled: defpackage.vr1.h(android.content.Context, android.content.res.Resources, int, java.lang.String, int):android.graphics.Typeface");
+    public Typeface h(Context context, Resources resources, int i, String str, int i2) {
+        File fileC = wr1.C(context);
+        if (fileC == null) {
+            return null;
+        }
+        try {
+            if (wr1.k(fileC, resources, i)) {
+                return Typeface.createFromFile(fileC.getPath());
+            }
+            return null;
+        } catch (RuntimeException unused) {
+            return null;
+        } finally {
+            fileC.delete();
+        }
     }
 }

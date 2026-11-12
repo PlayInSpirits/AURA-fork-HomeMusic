@@ -7,6 +7,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,7 +19,6 @@ import defpackage.df;
 import defpackage.h12;
 import defpackage.io1;
 import defpackage.jv3;
-import defpackage.n3;
 import defpackage.nz2;
 import defpackage.p6;
 import defpackage.pt0;
@@ -39,203 +39,161 @@ import java.util.Locale;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class HubShareActivity extends df {
-    public static final ux3 P = null;
+    public static final ux3 P = new ux3("https?://\\S+");
     public jv3 N;
     public boolean O;
 
-    static {
-        P = new ux3("https?://\\S+");
-    }
-
-    public HubShareActivity() {
-    }
-
     @Override // defpackage.nc1, defpackage.l70, defpackage.k70, android.app.Activity
-    public final void onCreate(Bundle r15) {
-        super.onCreate(r15);
-        String r2 = null;
-        int r3 = 0;
-        View r0 = getLayoutInflater().inflate(R.layout.activity_hub_share, null, false);
-        int r1 = R.id.hub_share_close;
-        MaterialButton r4 = (MaterialButton) uo.s(r0, R.id.hub_share_close);
-        if (r4 == null) goto L100;
-        r1 = R.id.hub_share_progress;
-        CircularProgressIndicator r5 = (CircularProgressIndicator) uo.s(r0, R.id.hub_share_progress);
-        if (r5 == null) goto L100;
-        r1 = R.id.hub_share_text;
-        TextView r6 = (TextView) uo.s(r0, R.id.hub_share_text);
-        if (r6 == null) goto L100;
-        jv3 r7 = new jv3();
-        r7.n = r4;
-        r7.o = r5;
-        r7.p = r6;
-        this.N = r7;
-        setContentView((LinearLayout) r0);
-        jv3 r8 = this.N;
-        if (r8 == null) goto L98;
-        ((MaterialButton) r8.n).setOnClickListener(new p6(20, this));
-        if (pt0.c() == true) goto L14;
-        Toast.makeText(this, R.string.homemusic_share_login_first, 1).show();
-        startActivity(new Intent(this, MainActivity.class).addFlags(268435456));
-        finish();
-        return;
-    L14:
-        if (r15 == null) goto L16;
-        return;
-    L16:
-        if (this.O == true) goto L123;
-        this.O = true;
-        Intent r16 = getIntent();
-        r16.getClass();
-        ArrayList r9 = new ArrayList();
-        String r10 = r16.getAction();
-        if (r10 == null) goto L43;
-        int r11 = r10.hashCode();
-        if (r11 == (-1173264947)) goto L34;
-        if (r11 != (-58484670)) goto L43;
-        if (r10.equals("android.intent.action.SEND_MULTIPLE") == false) goto L43;
-        if (Build.VERSION.SDK_INT < 33) goto L30;
-        ArrayList r12 = n3.q(r16);
-    L31:
-        if (r12 == null) goto L43;
-        r9.addAll(r12);
-        goto L43
-    L30:
-        r12 = r16.getParcelableArrayListExtra("android.intent.extra.STREAM");
-        goto L31
-    L34:
-        if (r10.equals("android.intent.action.SEND") == false) goto L43;
-        if (Build.VERSION.SDK_INT < 33) goto L38;
-        Parcelable r13 = (Parcelable) n3.o(r16);
-    L39:
-        Uri r14 = (Uri) r13;
-        if (r14 == null) goto L43;
-        r9.add(r14);
-        goto L43
-    L38:
-        r13 = r16.getParcelableExtra("android.intent.extra.STREAM");
-    L43:
-        if (r9.isEmpty() == false) goto L52;
-        ClipData r17 = r16.getClipData();
-        if (r17 == null) goto L52;
-        int r18 = r17.getItemCount();
-        int r19 = 0;
-    L47:
-        if (r19 >= r18) goto L52;
-        Uri r20 = r17.getItemAt(r19).getUri();
-        if (r20 == null) goto L51;
-        r9.add(r20);
-    L51:
-        r19 = r19 + 1;
-    L52:
-        List r21 = q40.t0(r9);
-        ArrayList r22 = new ArrayList();
-        Iterator r23 = r21.iterator();
-    L53:
-        String r24 = "";
-        if (r23.hasNext() == false) goto L64;
-        Object r25 = r23.next();
-        String r26 = getContentResolver().getType((Uri) r25);
-        if (r26 != null) goto L60;
-        r26 = r16.getType();
-        if (r26 != null) goto L60;
-    L61:
-        String r27 = r24.toLowerCase(Locale.ROOT);
-        r27.getClass();
-        if (xm4.k0(r27, "image/", false) == false) goto L53;
-        r22.add(r25);
-    L60:
-        r24 = r26;
-        goto L61
-    L64:
-        ArrayList r28 = new ArrayList();
-        Iterator r29 = r21.iterator();
-    L66:
-        if (r29.hasNext() == false) goto L77;
-        Object r30 = r29.next();
-        String r31 = getContentResolver().getType((Uri) r30);
-        if (r31 != null) goto L72;
-        r31 = r16.getType();
-        if (r31 != null) goto L72;
-        r31 = "";
-    L72:
-        String r32 = r31.toLowerCase(Locale.ROOT);
-        r32.getClass();
-        if (xm4.k0(r32, "audio/", false) == true) goto L76;
-        if (r32.equals("application/ogg") == false) goto L66;
-    L76:
-        r28.add(r30);
-        goto L66
-    L77:
-        String r33 = r16.getStringExtra("android.intent.extra.SUBJECT");
-        CharSequence r110 = r16.getCharSequenceExtra("android.intent.extra.TEXT");
-        if (r110 == null) goto L80;
-        r2 = r110.toString();
-    L80:
-        ArrayList r111 = ti.i0(new String[]{r33, r2});
-        ArrayList r34 = new ArrayList(r40.k0(r111, 10));
-        int r35 = r111.size();
-        int r36 = 0;
-    L81:
-        if (r36 >= r35) goto L83;
-        Object r37 = r111.get(r36);
-        r36 = r36 + 1;
-        r34.add(qm4.K0((String) r37).toString());
-        goto L81
-    L83:
-        ArrayList r112 = new ArrayList();
-        int r38 = r34.size();
-    L84:
-        if (r3 >= r38) goto L88;
-        Object r39 = r34.get(r3);
-        r3 = r3 + 1;
-        if (((String) r39).length() <= 0) goto L84;
-        r112.add(r39);
-        goto L84
-    L88:
-        String r40 = q40.B0(q40.t0(r112), " ", null, null, null, 62);
-        if (r22.isEmpty() == true) goto L91;
-    L96:
-        String r113 = getString(R.string.homemusic_share_connecting);
-        r113.getClass();
-        io1.b.post(new ws1(this, r113, 2));
-        io1.a.execute(new t6(r22, this, r28, r40, 8));
-        return;
-    L91:
-        if (r28.isEmpty() == false) goto L96;
-        if (r40.length() != 0) goto L96;
-        String r114 = getString(R.string.homemusic_share_unsupported);
-        r114.getClass();
-        p(r114);
-        return;
-    L123:
-        return;
-    L98:
-        h12.Q("bind");
-        throw null;
-    L100:
-        nz2.n("Missing required view with ID: ".concat(r0.getResources().getResourceName(r1)));
+    public final void onCreate(Bundle bundle) {
+        ClipData clipData;
+        super.onCreate(bundle);
+        int i = 0;
+        View viewInflate = getLayoutInflater().inflate(R.layout.activity_hub_share, (ViewGroup) null, false);
+        int i2 = R.id.hub_share_close;
+        MaterialButton materialButton = (MaterialButton) uo.s(viewInflate, R.id.hub_share_close);
+        if (materialButton != null) {
+            i2 = R.id.hub_share_progress;
+            CircularProgressIndicator circularProgressIndicator = (CircularProgressIndicator) uo.s(viewInflate, R.id.hub_share_progress);
+            if (circularProgressIndicator != null) {
+                i2 = R.id.hub_share_text;
+                TextView textView = (TextView) uo.s(viewInflate, R.id.hub_share_text);
+                if (textView != null) {
+                    jv3 jv3Var = new jv3();
+                    jv3Var.n = materialButton;
+                    jv3Var.o = circularProgressIndicator;
+                    jv3Var.p = textView;
+                    this.N = jv3Var;
+                    setContentView((LinearLayout) viewInflate);
+                    jv3 jv3Var2 = this.N;
+                    if (jv3Var2 == null) {
+                        h12.Q("bind");
+                        throw null;
+                    }
+                    ((MaterialButton) jv3Var2.n).setOnClickListener(new p6(20, this));
+                    if (!pt0.c()) {
+                        Toast.makeText(this, R.string.homemusic_share_login_first, 1).show();
+                        startActivity(new Intent(this, (Class<?>) MainActivity.class).addFlags(268435456));
+                        finish();
+                        return;
+                    }
+                    if (bundle != null || this.O) {
+                        return;
+                    }
+                    this.O = true;
+                    Intent intent = getIntent();
+                    intent.getClass();
+                    ArrayList arrayList = new ArrayList();
+                    String action = intent.getAction();
+                    if (action != null) {
+                        int iHashCode = action.hashCode();
+                        if (iHashCode != -1173264947) {
+                            if (iHashCode == -58484670 && action.equals("android.intent.action.SEND_MULTIPLE")) {
+                                ArrayList parcelableArrayListExtra = Build.VERSION.SDK_INT >= 33 ? intent.getParcelableArrayListExtra("android.intent.extra.STREAM", Uri.class) : intent.getParcelableArrayListExtra("android.intent.extra.STREAM");
+                                if (parcelableArrayListExtra != null) {
+                                    arrayList.addAll(parcelableArrayListExtra);
+                                }
+                            }
+                        } else if (action.equals("android.intent.action.SEND")) {
+                            Uri uri = (Uri) (Build.VERSION.SDK_INT >= 33 ? (Parcelable) intent.getParcelableExtra("android.intent.extra.STREAM", Uri.class) : intent.getParcelableExtra("android.intent.extra.STREAM"));
+                            if (uri != null) {
+                                arrayList.add(uri);
+                            }
+                        }
+                    }
+                    if (arrayList.isEmpty() && (clipData = intent.getClipData()) != null) {
+                        int itemCount = clipData.getItemCount();
+                        for (int i3 = 0; i3 < itemCount; i3++) {
+                            Uri uri2 = clipData.getItemAt(i3).getUri();
+                            if (uri2 != null) {
+                                arrayList.add(uri2);
+                            }
+                        }
+                    }
+                    List listT0 = q40.t0(arrayList);
+                    ArrayList arrayList2 = new ArrayList();
+                    Iterator it = listT0.iterator();
+                    while (true) {
+                        if (!it.hasNext()) {
+                            break;
+                        }
+                        Object next = it.next();
+                        String type = getContentResolver().getType((Uri) next);
+                        String lowerCase = ((type == null && (type = intent.getType()) == null) ? "" : type).toLowerCase(Locale.ROOT);
+                        lowerCase.getClass();
+                        if (xm4.k0(lowerCase, "image/", false)) {
+                            arrayList2.add(next);
+                        }
+                    }
+                    ArrayList arrayList3 = new ArrayList();
+                    for (Object obj : listT0) {
+                        String type2 = getContentResolver().getType((Uri) obj);
+                        if (type2 == null && (type2 = intent.getType()) == null) {
+                            type2 = "";
+                        }
+                        String lowerCase2 = type2.toLowerCase(Locale.ROOT);
+                        lowerCase2.getClass();
+                        if (xm4.k0(lowerCase2, "audio/", false) || lowerCase2.equals("application/ogg")) {
+                            arrayList3.add(obj);
+                        }
+                    }
+                    String stringExtra = intent.getStringExtra("android.intent.extra.SUBJECT");
+                    CharSequence charSequenceExtra = intent.getCharSequenceExtra("android.intent.extra.TEXT");
+                    ArrayList arrayListI0 = ti.i0(new String[]{stringExtra, charSequenceExtra != null ? charSequenceExtra.toString() : null});
+                    ArrayList arrayList4 = new ArrayList(r40.k0(arrayListI0, 10));
+                    int size = arrayListI0.size();
+                    int i4 = 0;
+                    while (i4 < size) {
+                        Object obj2 = arrayListI0.get(i4);
+                        i4++;
+                        arrayList4.add(qm4.K0((String) obj2).toString());
+                    }
+                    ArrayList arrayList5 = new ArrayList();
+                    int size2 = arrayList4.size();
+                    while (i < size2) {
+                        Object obj3 = arrayList4.get(i);
+                        i++;
+                        if (((String) obj3).length() > 0) {
+                            arrayList5.add(obj3);
+                        }
+                    }
+                    String strB0 = q40.B0(q40.t0(arrayList5), " ", null, null, null, 62);
+                    if (arrayList2.isEmpty() && arrayList3.isEmpty() && strB0.length() == 0) {
+                        String string = getString(R.string.homemusic_share_unsupported);
+                        string.getClass();
+                        p(string);
+                        return;
+                    } else {
+                        String string2 = getString(R.string.homemusic_share_connecting);
+                        string2.getClass();
+                        io1.b.post(new ws1(this, string2, 2));
+                        io1.a.execute(new t6(arrayList2, this, arrayList3, strB0, 8));
+                        return;
+                    }
+                }
+            }
+        }
+        nz2.n("Missing required view with ID: ".concat(viewInflate.getResources().getResourceName(i2)));
     }
 
-    public final void p(String r5) {
-        jv3 r0 = this.N;
-        if (r0 == null) goto L14;
-        ((CircularProgressIndicator) r0.o).setVisibility(8);
-        jv3 r1 = this.N;
-        if (r1 == null) goto L12;
-        ((TextView) r1.p).setText(r5);
-        jv3 r4 = this.N;
-        if (r4 == null) goto L10;
-        ((MaterialButton) r4.n).setVisibility(0);
-        return;
-    L10:
-        h12.Q("bind");
-        throw null;
-    L12:
-        h12.Q("bind");
-        throw null;
-    L14:
-        h12.Q("bind");
-        throw null;
+    public final void p(String str) {
+        jv3 jv3Var = this.N;
+        if (jv3Var == null) {
+            h12.Q("bind");
+            throw null;
+        }
+        ((CircularProgressIndicator) jv3Var.o).setVisibility(8);
+        jv3 jv3Var2 = this.N;
+        if (jv3Var2 == null) {
+            h12.Q("bind");
+            throw null;
+        }
+        ((TextView) jv3Var2.p).setText(str);
+        jv3 jv3Var3 = this.N;
+        if (jv3Var3 != null) {
+            ((MaterialButton) jv3Var3.n).setVisibility(0);
+        } else {
+            h12.Q("bind");
+            throw null;
+        }
     }
 }

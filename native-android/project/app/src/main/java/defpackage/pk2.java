@@ -7,33 +7,31 @@ public final /* synthetic */ class pk2 implements Runnable {
     public final /* synthetic */ bl2 o;
     public final /* synthetic */ sk2 p;
 
-    public /* synthetic */ pk2(bl2 r1, sk2 r2, int r3) {
-        this.n = r3;
-        this.o = r1;
-        this.p = r2;
+    public /* synthetic */ pk2(bl2 bl2Var, sk2 sk2Var, int i) {
+        this.n = i;
+        this.o = bl2Var;
+        this.p = sk2Var;
     }
 
     @Override // java.lang.Runnable
     public final void run() {
-        switch(this.n) {
-            case 0: goto L8;
-            default: goto L4;
-        };
-    L4:
-        bl2 r0 = this.o;
-        sk2 r3 = this.p;
-        if ((r0.n instanceof f0) == false) goto L13;
-        r3.Y0();
-        return;
-    L13:
-        return;
-    L8:
-        bl2 r1 = this.o;
-        sk2 r4 = this.p;
-        r1.v = r4;
-        if (r1.w == false) goto L11;
-        r1.l(r4);
-    L11:
-        r1.f(new pk2(r1, r4, 1), new h41(1, r1));
+        switch (this.n) {
+            case 0:
+                bl2 bl2Var = this.o;
+                sk2 sk2Var = this.p;
+                bl2Var.v = sk2Var;
+                if (bl2Var.w) {
+                    bl2Var.l(sk2Var);
+                }
+                bl2Var.f(new pk2(bl2Var, sk2Var, 1), new h41(1, bl2Var));
+                break;
+            default:
+                bl2 bl2Var2 = this.o;
+                sk2 sk2Var2 = this.p;
+                if (bl2Var2.n instanceof f0) {
+                    sk2Var2.Y0();
+                }
+                break;
+        }
     }
 }

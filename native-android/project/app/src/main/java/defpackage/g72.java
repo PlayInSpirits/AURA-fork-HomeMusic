@@ -1,5 +1,6 @@
 package defpackage;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -9,19 +10,19 @@ public final class g72 implements ln4, wi2 {
     public final /* synthetic */ j72 n;
     public final /* synthetic */ o72 o;
 
-    public g72(o72 r1) {
-        this.o = r1;
-        this.n = r1.u;
+    public g72(o72 o72Var) {
+        this.o = o72Var;
+        this.n = o72Var.u;
     }
 
     @Override // defpackage.oo0
-    public final float B(int r1) {
-        return this.n.B(r1);
+    public final float B(int i) {
+        return this.n.B(i);
     }
 
     @Override // defpackage.oo0
-    public final float D(float r1) {
-        return r1 / this.n.g();
+    public final float D(float f) {
+        return f / this.n.g();
     }
 
     @Override // defpackage.oo0
@@ -35,28 +36,28 @@ public final class g72 implements ln4, wi2 {
     }
 
     @Override // defpackage.oo0
-    public final float M(float r1) {
-        return this.n.g() * r1;
+    public final float M(float f) {
+        return this.n.g() * f;
     }
 
     @Override // defpackage.wi2
-    public final vi2 T(int r1, int r2, Map r3, if1 r4, if1 r5) {
-        return this.n.T(r1, r2, r3, r4, r5);
+    public final vi2 T(int i, int i2, Map map, if1 if1Var, if1 if1Var2) {
+        return this.n.T(i, i2, map, if1Var, if1Var2);
     }
 
     @Override // defpackage.oo0
-    public final int V(float r1) {
-        return this.n.V(r1);
+    public final int V(float f) {
+        return this.n.V(f);
     }
 
     @Override // defpackage.oo0
-    public final long Y(long r1) {
-        return this.n.Y(r1);
+    public final long Y(long j) {
+        return this.n.Y(j);
     }
 
     @Override // defpackage.oo0
-    public final float a0(long r1) {
-        return this.n.a0(r1);
+    public final float a0(long j) {
+        return this.n.a0(j);
     }
 
     @Override // defpackage.oo0
@@ -70,110 +71,90 @@ public final class g72 implements ln4, wi2 {
     }
 
     @Override // defpackage.oo0
-    public final long h(float r1) {
-        return this.n.h(r1);
+    public final long h(float f) {
+        return this.n.h(f);
     }
 
     @Override // defpackage.oo0
-    public final long i(long r1) {
-        return this.n.i(r1);
+    public final long i(long j) {
+        return this.n.i(j);
     }
 
     @Override // defpackage.ln4
-    public final List m(wf1 r10, Object r11) {
-        o72 r9 = this.o;
-        c72 r0 = r9.n;
-        w03 r1 = r9.t;
-        c72 r2 = (c72) r1.g(r11);
-        if (r2 != null) goto L5;
-    L8:
-        w03 r3 = r9.y;
-        w03 r4 = r9.w;
-        f13 r5 = r9.z;
-        if (r5.p >= r9.r) goto L12;
-        cz1.a("Error: currentApproachIndex cannot be greater than the size of theapproachComposedSlotIds list.");
-    L12:
-        c72 r6 = (c72) r1.g(r11);
-        int r7 = r5.p;
-        int r8 = r9.r;
-        if (r7 != r8) goto L15;
-        r5.b(r11);
-    L16:
-        r9.r++;
-        boolean r12 = r4.b(r11);
-        int r13 = 0;
-        if (r12 == true) goto L20;
-        if (r6 != null) goto L20;
-        r9.k(r11, r10, false);
-        r3.l(r11, r9.f(r11));
-    L37:
-        c72 r14 = (c72) r4.g(r11);
-        if (r14 == null) goto L44;
-        List r15 = r14.R.p.S();
-        c13 r16 = (c13) r15;
-        int r17 = r16.n.p;
-    L40:
-        if (r13 >= r17) goto L42;
-        ((ti2) r16.get(r13)).s.b = true;
-        r13 = r13 + 1;
-        goto L40
-    L42:
-        return r15;
-    L44:
-        return u01.n;
-    L20:
-        if (r12 == true) goto L25;
-        if (r6 == null) goto L25;
-        r9.j(((c13) r0.o()).n.i(r6), ((c13) r0.o()).n.p);
-        r9.B++;
-        r1.j(r11);
-        r4.l(r11, r6);
-        r3.l(r11, r9.f(r11));
-        if (r0.G() == false) goto L25;
-        r9.h();
-    L25:
-        c72 r18 = (c72) r4.g(r11);
-        ef3 r19 = null;
-        if (r18 == null) goto L28;
-        h72 r20 = (h72) r9.s.g(r18);
-    L29:
-        if (r20 != null) goto L31;
-    L33:
-        if (r20 == null) goto L35;
-        r19 = r20.f;
-    L35:
-        if (r19 == null) goto L37;
-        r9.d(r20, true);
-        goto L37
-    L31:
-        if (r20.d != true) goto L33;
-        r9.m(r18, r11, false, r10);
-        goto L33
-    L28:
-        r20 = null;
-        goto L29
-    L15:
-        Object[] r21 = r5.n;
-        Object r22 = r21[r8];
-        r21[r8] = r11;
-        goto L16
-    L5:
-        if (((c13) r0.o()).n.i(r2) >= r9.q) goto L8;
-        return r2.R.p.S();
+    public final List m(wf1 wf1Var, Object obj) throws IOException {
+        o72 o72Var = this.o;
+        c72 c72Var = o72Var.n;
+        w03 w03Var = o72Var.t;
+        c72 c72Var2 = (c72) w03Var.g(obj);
+        if (c72Var2 != null && ((c13) c72Var.o()).n.i(c72Var2) < o72Var.q) {
+            return c72Var2.R.p.S();
+        }
+        w03 w03Var2 = o72Var.y;
+        w03 w03Var3 = o72Var.w;
+        f13 f13Var = o72Var.z;
+        if (f13Var.p < o72Var.r) {
+            cz1.a("Error: currentApproachIndex cannot be greater than the size of theapproachComposedSlotIds list.");
+        }
+        c72 c72Var3 = (c72) w03Var.g(obj);
+        int i = f13Var.p;
+        int i2 = o72Var.r;
+        if (i == i2) {
+            f13Var.b(obj);
+        } else {
+            Object[] objArr = f13Var.n;
+            Object obj2 = objArr[i2];
+            objArr[i2] = obj;
+        }
+        o72Var.r++;
+        boolean zB = w03Var3.b(obj);
+        if (zB || c72Var3 != null) {
+            if (!zB && c72Var3 != null) {
+                o72Var.j(((c13) c72Var.o()).n.i(c72Var3), ((c13) c72Var.o()).n.p);
+                o72Var.B++;
+                w03Var.j(obj);
+                w03Var3.l(obj, c72Var3);
+                w03Var2.l(obj, o72Var.f(obj));
+                if (c72Var.G()) {
+                    o72Var.h();
+                }
+            }
+            c72 c72Var4 = (c72) w03Var3.g(obj);
+            h72 h72Var = c72Var4 != null ? (h72) o72Var.s.g(c72Var4) : null;
+            if (h72Var != null && h72Var.d) {
+                o72Var.m(c72Var4, obj, false, wf1Var);
+            }
+            if ((h72Var != null ? h72Var.f : null) != null) {
+                o72Var.d(h72Var, true);
+            }
+        } else {
+            o72Var.k(obj, wf1Var, false);
+            w03Var2.l(obj, o72Var.f(obj));
+        }
+        c72 c72Var5 = (c72) w03Var3.g(obj);
+        if (c72Var5 == null) {
+            return u01.n;
+        }
+        List listS = c72Var5.R.p.S();
+        c13 c13Var = (c13) listS;
+        int i3 = c13Var.n.p;
+        for (int i4 = 0; i4 < i3; i4++) {
+            ((ti2) c13Var.get(i4)).s.b = true;
+        }
+        return listS;
     }
 
     @Override // defpackage.oo0
-    public final float o(long r1) {
-        return this.n.o(r1);
+    public final float o(long j) {
+        return this.n.o(j);
     }
 
     @Override // defpackage.wi2
-    public final vi2 v(int r7, int r8, Map r9, if1 r10) {
-        return this.n.T(r7, r8, r9, null, r10);
+    public final vi2 v(int i, int i2, Map map, if1 if1Var) {
+        return this.n.T(i, i2, map, null, if1Var);
     }
 
     @Override // defpackage.oo0
-    public final long w(float r1) {
-        return this.n.w(r1);
+    public final long w(float f) {
+        return this.n.w(f);
     }
 }

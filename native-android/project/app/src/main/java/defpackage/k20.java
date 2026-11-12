@@ -28,8 +28,8 @@ import java.util.Arrays;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class k20 extends fi2 implements Drawable.Callback, wr4 {
-    public static final int[] S0 = null;
-    public static final ShapeDrawable T0 = null;
+    public static final int[] S0 = {R.attr.state_enabled};
+    public static final ShapeDrawable T0 = new ShapeDrawable(new OvalShape());
     public int A0;
     public int B0;
     public int C0;
@@ -91,13 +91,8 @@ public final class k20 extends fi2 implements Drawable.Callback, wr4 {
     public int y0;
     public int z0;
 
-    static {
-        S0 = new int[]{R.attr.state_enabled};
-        T0 = new ShapeDrawable(new OvalShape());
-    }
-
-    public k20(Context r2, AttributeSet r3, int r4) {
-        super(r2, r3, r4, app.homemusic.R.style.Widget_MaterialComponents_Chip_Action);
+    public k20(Context context, AttributeSet attributeSet, int i) {
+        super(context, attributeSet, i, app.homemusic.R.style.Widget_MaterialComponents_Chip_Action);
         this.N = -1.0f;
         this.s0 = new Paint(1);
         this.t0 = new Paint.FontMetrics();
@@ -107,528 +102,423 @@ public final class k20 extends fi2 implements Drawable.Callback, wr4 {
         this.G0 = 255;
         this.K0 = PorterDuff.Mode.SRC_IN;
         this.N0 = new WeakReference(null);
-        j(r2);
-        this.r0 = r2;
-        xr4 r5 = new xr4(this);
-        this.x0 = r5;
+        j(context);
+        this.r0 = context;
+        xr4 xr4Var = new xr4(this);
+        this.x0 = xr4Var;
         this.R = "";
-        r5.a.density = r2.getResources().getDisplayMetrics().density;
-        int[] r6 = S0;
-        setState(r6);
-        if (Arrays.equals(this.L0, r6) == true) goto L7;
-        this.L0 = r6;
-        if (a0() == false) goto L7;
-        D(getState(), r6);
-    L7:
+        xr4Var.a.density = context.getResources().getDisplayMetrics().density;
+        int[] iArr = S0;
+        setState(iArr);
+        if (!Arrays.equals(this.L0, iArr)) {
+            this.L0 = iArr;
+            if (a0()) {
+                D(getState(), iArr);
+            }
+        }
         this.P0 = true;
-        int[] r1 = l24.a;
+        int[] iArr2 = l24.a;
         T0.setTint(-1);
     }
 
-    public static boolean A(ColorStateList r0) {
-        if (r0 != null) goto L4;
-        return false;
-    L4:
-        if (r0.isStateful() == false) goto L9;
-        return true;
-    L9:
-        return false;
+    public static boolean A(ColorStateList colorStateList) {
+        return colorStateList != null && colorStateList.isStateful();
     }
 
-    public static boolean B(Drawable r0) {
-        if (r0 != null) goto L4;
-        return false;
-    L4:
-        if (r0.isStateful() == false) goto L9;
-        return true;
-    L9:
-        return false;
+    public static boolean B(Drawable drawable) {
+        return drawable != null && drawable.isStateful();
     }
 
-    public static void b0(Drawable r1) {
-        if (r1 == null) goto L5;
-        r1.setCallback(null);
-        return;
+    public static void b0(Drawable drawable) {
+        if (drawable != null) {
+            drawable.setCallback(null);
+        }
     }
 
     public final void C() {
-        Chip r1 = (Chip) this.N0.get();
-        if (r1 == null) goto L6;
-        r1.c(r1.D);
-        r1.requestLayout();
-        r1.invalidateOutline();
-        return;
+        Chip chip = (Chip) this.N0.get();
+        if (chip != null) {
+            chip.c(chip.D);
+            chip.requestLayout();
+            chip.invalidateOutline();
+        }
     }
 
-    public final boolean D(int[] r9, int[] r10) {
-        boolean r0 = super.onStateChange(r9);
-        ColorStateList r1 = this.K;
-        if (r1 == null) goto L5;
-        int r2 = r1.getColorForState(r9, this.y0);
-    L6:
-        int r3 = c(r2);
-        boolean r4 = true;
-        if (this.y0 == r3) goto L9;
-        this.y0 = r3;
-        r0 = true;
-    L9:
-        ColorStateList r5 = this.L;
-        if (r5 == null) goto L12;
-        int r6 = r5.getColorForState(r9, this.z0);
-    L13:
-        int r7 = c(r6);
-        if (this.z0 == r7) goto L16;
-        this.z0 = r7;
-        r0 = true;
-    L16:
-        int r8 = v50.g(r7, r3);
-        if (this.A0 == r8) goto L19;
-        boolean r11 = true;
-    L21:
-        if (this.n.c != null) goto L23;
-        boolean r12 = true;
-    L25:
-        if ((r11 | r12) == false) goto L27;
-        this.A0 = r8;
-        m(ColorStateList.valueOf(r8));
-        r0 = true;
-    L27:
-        ColorStateList r13 = this.O;
-        if (r13 == null) goto L30;
-        int r14 = r13.getColorForState(r9, this.B0);
-    L32:
-        if (this.B0 == r14) goto L35;
-        this.B0 = r14;
-        r0 = true;
-    L35:
-        if (this.M0 != null) goto L37;
-    L39:
-        int r15 = 0;
-    L41:
-        if (this.C0 == r15) goto L43;
-        this.C0 = r15;
-    L43:
-        rr4 r16 = this.x0.g;
-        if (r16 == null) goto L48;
-        ColorStateList r17 = r16.j;
-        if (r17 == null) goto L48;
-        int r18 = r17.getColorForState(r9, this.D0);
-    L50:
-        if (this.D0 == r18) goto L52;
-        this.D0 = r18;
-        r0 = true;
-    L52:
-        int[] r19 = getState();
-        if (r19 == null) goto L63;
-        int r20 = r19.length;
-        int r21 = 0;
-    L56:
-        if (r21 >= r20) goto L63;
-        if (r19[r21] == 16842912) goto L60;
-        r21 = r21 + 1;
-        goto L56
-    L60:
-        if (this.d0 == false) goto L63;
-        boolean r22 = true;
-    L65:
-        if (this.E0 != r22) goto L67;
-    L72:
-        boolean r23 = false;
-    L73:
-        ColorStateList r24 = this.J0;
-        if (r24 == null) goto L76;
-        int r25 = r24.getColorForState(r9, this.F0);
-    L78:
-        if (this.F0 == r25) goto L86;
-        this.F0 = r25;
-        ColorStateList r26 = this.J0;
-        PorterDuff.Mode r27 = this.K0;
-        if (r26 == null) goto L84;
-        if (r27 == null) goto L84;
-        PorterDuffColorFilter r28 = new PorterDuffColorFilter(r26.getColorForState(getState(), 0), r27);
-    L85:
-        this.I0 = r28;
-    L88:
-        if (B(this.T) == false) goto L91;
-        r4 = r4 | this.T.setState(r9);
-    L91:
-        if (B(this.f0) == false) goto L94;
-        r4 = r4 | this.f0.setState(r9);
-    L94:
-        if (B(this.Y) == false) goto L96;
-        int[] r29 = new int[r9.length + r10.length];
-        System.arraycopy(r9, 0, r29, 0, r9.length);
-        System.arraycopy(r10, 0, r29, r9.length, r10.length);
-        r4 = r4 | this.Y.setState(r29);
-    L96:
-        int[] r30 = l24.a;
-        if (B(this.Z) == false) goto L99;
-        r4 = r4 | this.Z.setState(r10);
-    L99:
-        if (r4 == false) goto L101;
-        invalidateSelf();
-    L101:
-        if (r23 == false) goto L103;
-        C();
-    L103:
-        return r4;
-    L84:
-        r28 = null;
-        goto L85
-    L86:
-        r4 = r0;
-        goto L88
-    L76:
-        r25 = 0;
-        goto L78
-    L67:
-        if (this.f0 == null) goto L72;
-        float r31 = x();
-        this.E0 = r22;
-        if (r31 == x()) goto L71;
-        r0 = true;
-        r23 = true;
-        goto L73
-    L71:
-        r23 = false;
-        r0 = true;
-    L63:
-        r22 = false;
-    L48:
-        r18 = 0;
-        goto L50
-    L37:
-        if (l24.d(r9) == false) goto L39;
-        r15 = this.M0.getColorForState(r9, this.C0);
-        goto L41
-    L30:
-        r14 = 0;
-        goto L32
-    L23:
-        r12 = false;
-        goto L25
-    L19:
-        r11 = false;
-        goto L21
-    L12:
-        r6 = 0;
-        goto L13
-    L5:
-        r2 = 0;
-        goto L6
+    public final boolean D(int[] iArr, int[] iArr2) {
+        boolean z;
+        boolean z2;
+        ColorStateList colorStateList;
+        boolean zOnStateChange = super.onStateChange(iArr);
+        ColorStateList colorStateList2 = this.K;
+        int iC = c(colorStateList2 != null ? colorStateList2.getColorForState(iArr, this.y0) : 0);
+        boolean state = true;
+        if (this.y0 != iC) {
+            this.y0 = iC;
+            zOnStateChange = true;
+        }
+        ColorStateList colorStateList3 = this.L;
+        int iC2 = c(colorStateList3 != null ? colorStateList3.getColorForState(iArr, this.z0) : 0);
+        if (this.z0 != iC2) {
+            this.z0 = iC2;
+            zOnStateChange = true;
+        }
+        int iG = v50.g(iC2, iC);
+        if ((this.A0 != iG) | (this.n.c == null)) {
+            this.A0 = iG;
+            m(ColorStateList.valueOf(iG));
+            zOnStateChange = true;
+        }
+        ColorStateList colorStateList4 = this.O;
+        int colorForState = colorStateList4 != null ? colorStateList4.getColorForState(iArr, this.B0) : 0;
+        if (this.B0 != colorForState) {
+            this.B0 = colorForState;
+            zOnStateChange = true;
+        }
+        int colorForState2 = (this.M0 == null || !l24.d(iArr)) ? 0 : this.M0.getColorForState(iArr, this.C0);
+        if (this.C0 != colorForState2) {
+            this.C0 = colorForState2;
+        }
+        rr4 rr4Var = this.x0.g;
+        int colorForState3 = (rr4Var == null || (colorStateList = rr4Var.j) == null) ? 0 : colorStateList.getColorForState(iArr, this.D0);
+        if (this.D0 != colorForState3) {
+            this.D0 = colorForState3;
+            zOnStateChange = true;
+        }
+        int[] state2 = getState();
+        if (state2 != null) {
+            int length = state2.length;
+            int i = 0;
+            while (true) {
+                if (i < length) {
+                    if (state2[i] != 16842912) {
+                        i++;
+                    } else if (this.d0) {
+                        z = true;
+                        break;
+                    }
+                }
+                z = false;
+                break;
+            }
+        } else {
+            z = false;
+            break;
+        }
+        if (this.E0 == z || this.f0 == null) {
+            z2 = false;
+        } else {
+            float fX = x();
+            this.E0 = z;
+            if (fX != x()) {
+                zOnStateChange = true;
+                z2 = true;
+            } else {
+                z2 = false;
+                zOnStateChange = true;
+            }
+        }
+        ColorStateList colorStateList5 = this.J0;
+        int colorForState4 = colorStateList5 != null ? colorStateList5.getColorForState(iArr, this.F0) : 0;
+        if (this.F0 != colorForState4) {
+            this.F0 = colorForState4;
+            ColorStateList colorStateList6 = this.J0;
+            PorterDuff.Mode mode = this.K0;
+            this.I0 = (colorStateList6 == null || mode == null) ? null : new PorterDuffColorFilter(colorStateList6.getColorForState(getState(), 0), mode);
+        } else {
+            state = zOnStateChange;
+        }
+        if (B(this.T)) {
+            state |= this.T.setState(iArr);
+        }
+        if (B(this.f0)) {
+            state |= this.f0.setState(iArr);
+        }
+        if (B(this.Y)) {
+            int[] iArr3 = new int[iArr.length + iArr2.length];
+            System.arraycopy(iArr, 0, iArr3, 0, iArr.length);
+            System.arraycopy(iArr2, 0, iArr3, iArr.length, iArr2.length);
+            state |= this.Y.setState(iArr3);
+        }
+        int[] iArr4 = l24.a;
+        if (B(this.Z)) {
+            state |= this.Z.setState(iArr2);
+        }
+        if (state) {
+            invalidateSelf();
+        }
+        if (z2) {
+            C();
+        }
+        return state;
     }
 
-    public final void E(boolean r2) {
-        if (this.d0 == r2) goto L13;
-        this.d0 = r2;
-        float r0 = x();
-        if (r2 == false) goto L7;
-    L9:
-        float r3 = x();
-        invalidateSelf();
-        if (r0 == r3) goto L14;
-        C();
-        return;
-    L14:
-        return;
-    L7:
-        if (this.E0 == false) goto L9;
-        this.E0 = false;
-        goto L9
+    public final void E(boolean z) {
+        if (this.d0 != z) {
+            this.d0 = z;
+            float fX = x();
+            if (!z && this.E0) {
+                this.E0 = false;
+            }
+            float fX2 = x();
+            invalidateSelf();
+            if (fX != fX2) {
+                C();
+            }
+        }
     }
 
-    public final void F(Drawable r3) {
-        if (this.f0 == r3) goto L8;
-        float r0 = x();
-        this.f0 = r3;
-        float r4 = x();
-        b0(this.f0);
-        v(this.f0);
-        invalidateSelf();
-        if (r0 == r4) goto L9;
-        C();
-        return;
-    L9:
-        return;
+    public final void F(Drawable drawable) {
+        if (this.f0 != drawable) {
+            float fX = x();
+            this.f0 = drawable;
+            float fX2 = x();
+            b0(this.f0);
+            v(this.f0);
+            invalidateSelf();
+            if (fX != fX2) {
+                C();
+            }
+        }
     }
 
-    public final void G(ColorStateList r3) {
-        if (this.g0 == r3) goto L13;
-        this.g0 = r3;
-        if (this.e0 == false) goto L11;
-        Drawable r0 = this.f0;
-        if (r0 == null) goto L11;
-        if (this.d0 == false) goto L11;
-        r0.setTintList(r3);
-    L11:
-        onStateChange(getState());
-        return;
+    public final void G(ColorStateList colorStateList) {
+        Drawable drawable;
+        if (this.g0 != colorStateList) {
+            this.g0 = colorStateList;
+            if (this.e0 && (drawable = this.f0) != null && this.d0) {
+                drawable.setTintList(colorStateList);
+            }
+            onStateChange(getState());
+        }
     }
 
-    public final void H(boolean r2) {
-        if (this.e0 == r2) goto L12;
-        boolean r0 = Y();
-        this.e0 = r2;
-        boolean r3 = Y();
-        if (r0 == r3) goto L13;
-        Drawable r1 = this.f0;
-        if (r3 == false) goto L9;
-        v(r1);
-    L10:
-        invalidateSelf();
-        C();
-        return;
-    L9:
-        b0(r1);
-        goto L10
-    L13:
-        return;
+    public final void H(boolean z) {
+        if (this.e0 != z) {
+            boolean zY = Y();
+            this.e0 = z;
+            boolean zY2 = Y();
+            if (zY != zY2) {
+                Drawable drawable = this.f0;
+                if (zY2) {
+                    v(drawable);
+                } else {
+                    b0(drawable);
+                }
+                invalidateSelf();
+                C();
+            }
+        }
     }
 
-    public final void I(float r2) {
-        if (this.N == r2) goto L6;
-        this.N = r2;
-        zc1 r0 = this.n.a.g();
-        r0.b(r2);
-        setShapeAppearanceModel(r0.a());
-        return;
+    public final void I(float f) {
+        if (this.N != f) {
+            this.N = f;
+            zc1 zc1VarG = this.n.a.g();
+            zc1VarG.b(f);
+            setShapeAppearanceModel(zc1VarG.a());
+        }
     }
 
-    public final void J(Drawable r4) {
-        Drawable r0 = this.T;
-        Drawable r1 = null;
-        if (r0 != null) goto L6;
-        r0 = null;
-    L6:
-        if (r0 == r4) goto L17;
-        float r2 = x();
-        if (r4 == null) goto L10;
-        r1 = r4.mutate();
-    L10:
-        this.T = r1;
-        float r5 = x();
-        b0(r0);
-        if (Z() == false) goto L13;
-        v(this.T);
-    L13:
-        invalidateSelf();
-        if (r2 == r5) goto L18;
-        C();
-        return;
-    L18:
-        return;
+    public final void J(Drawable drawable) {
+        Drawable drawable2 = this.T;
+        if (drawable2 == null) {
+            drawable2 = null;
+        }
+        if (drawable2 != drawable) {
+            float fX = x();
+            this.T = drawable != null ? drawable.mutate() : null;
+            float fX2 = x();
+            b0(drawable2);
+            if (Z()) {
+                v(this.T);
+            }
+            invalidateSelf();
+            if (fX != fX2) {
+                C();
+            }
+        }
     }
 
-    public final void K(float r2) {
-        if (this.V == r2) goto L8;
-        float r0 = x();
-        this.V = r2;
-        float r3 = x();
-        invalidateSelf();
-        if (r0 == r3) goto L9;
-        C();
-        return;
-    L9:
-        return;
+    public final void K(float f) {
+        if (this.V != f) {
+            float fX = x();
+            this.V = f;
+            float fX2 = x();
+            invalidateSelf();
+            if (fX != fX2) {
+                C();
+            }
+        }
     }
 
-    public final void L(ColorStateList r2) {
+    public final void L(ColorStateList colorStateList) {
         this.W = true;
-        if (this.U == r2) goto L9;
-        this.U = r2;
-        if (Z() == false) goto L7;
-        this.T.setTintList(r2);
-    L7:
-        onStateChange(getState());
-        return;
+        if (this.U != colorStateList) {
+            this.U = colorStateList;
+            if (Z()) {
+                this.T.setTintList(colorStateList);
+            }
+            onStateChange(getState());
+        }
     }
 
-    public final void M(boolean r2) {
-        if (this.S == r2) goto L12;
-        boolean r0 = Z();
-        this.S = r2;
-        boolean r3 = Z();
-        if (r0 == r3) goto L13;
-        Drawable r1 = this.T;
-        if (r3 == false) goto L9;
-        v(r1);
-    L10:
-        invalidateSelf();
-        C();
-        return;
-    L9:
-        b0(r1);
-        goto L10
-    L13:
-        return;
+    public final void M(boolean z) {
+        if (this.S != z) {
+            boolean Z = Z();
+            this.S = z;
+            boolean Z2 = Z();
+            if (Z != Z2) {
+                Drawable drawable = this.T;
+                if (Z2) {
+                    v(drawable);
+                } else {
+                    b0(drawable);
+                }
+                invalidateSelf();
+                C();
+            }
+        }
     }
 
-    public final void N(ColorStateList r2) {
-        if (this.O == r2) goto L9;
-        this.O = r2;
-        if (this.R0 == false) goto L7;
-        q(r2);
-    L7:
-        onStateChange(getState());
-        return;
+    public final void N(ColorStateList colorStateList) {
+        if (this.O != colorStateList) {
+            this.O = colorStateList;
+            if (this.R0) {
+                q(colorStateList);
+            }
+            onStateChange(getState());
+        }
     }
 
-    public final void O(float r2) {
-        if (this.P == r2) goto L9;
-        this.P = r2;
-        this.s0.setStrokeWidth(r2);
-        if (this.R0 == false) goto L7;
-        r(r2);
-    L7:
-        invalidateSelf();
-        return;
+    public final void O(float f) {
+        if (this.P != f) {
+            this.P = f;
+            this.s0.setStrokeWidth(f);
+            if (this.R0) {
+                r(f);
+            }
+            invalidateSelf();
+        }
     }
 
-    public final void P(Drawable r6) {
-        Drawable r0 = this.Y;
-        Drawable r1 = null;
-        if (r0 != null) goto L6;
-        r0 = null;
-    L6:
-        if (r0 == r6) goto L17;
-        float r2 = y();
-        if (r6 == null) goto L10;
-        r1 = r6.mutate();
-    L10:
-        this.Y = r1;
-        int[] r7 = l24.a;
-        this.Z = new RippleDrawable(l24.c(this.Q), this.Y, T0);
-        float r8 = y();
-        b0(r0);
-        if (a0() == false) goto L13;
-        v(this.Y);
-    L13:
-        invalidateSelf();
-        if (r2 == r8) goto L18;
-        C();
-        return;
-    L18:
-        return;
+    public final void P(Drawable drawable) {
+        Drawable drawable2 = this.Y;
+        if (drawable2 == null) {
+            drawable2 = null;
+        }
+        if (drawable2 != drawable) {
+            float fY = y();
+            this.Y = drawable != null ? drawable.mutate() : null;
+            int[] iArr = l24.a;
+            this.Z = new RippleDrawable(l24.c(this.Q), this.Y, T0);
+            float fY2 = y();
+            b0(drawable2);
+            if (a0()) {
+                v(this.Y);
+            }
+            invalidateSelf();
+            if (fY != fY2) {
+                C();
+            }
+        }
     }
 
-    public final void Q(float r2) {
-        if (this.p0 == r2) goto L8;
-        this.p0 = r2;
-        invalidateSelf();
-        if (a0() == false) goto L9;
-        C();
-        return;
-    L9:
-        return;
+    public final void Q(float f) {
+        if (this.p0 != f) {
+            this.p0 = f;
+            invalidateSelf();
+            if (a0()) {
+                C();
+            }
+        }
     }
 
-    public final void R(float r2) {
-        if (this.b0 == r2) goto L8;
-        this.b0 = r2;
-        invalidateSelf();
-        if (a0() == false) goto L9;
-        C();
-        return;
-    L9:
-        return;
+    public final void R(float f) {
+        if (this.b0 != f) {
+            this.b0 = f;
+            invalidateSelf();
+            if (a0()) {
+                C();
+            }
+        }
     }
 
-    public final void S(float r2) {
-        if (this.o0 == r2) goto L8;
-        this.o0 = r2;
-        invalidateSelf();
-        if (a0() == false) goto L9;
-        C();
-        return;
-    L9:
-        return;
+    public final void S(float f) {
+        if (this.o0 != f) {
+            this.o0 = f;
+            invalidateSelf();
+            if (a0()) {
+                C();
+            }
+        }
     }
 
-    public final void T(ColorStateList r2) {
-        if (this.a0 == r2) goto L9;
-        this.a0 = r2;
-        if (a0() == false) goto L7;
-        this.Y.setTintList(r2);
-    L7:
-        onStateChange(getState());
-        return;
+    public final void T(ColorStateList colorStateList) {
+        if (this.a0 != colorStateList) {
+            this.a0 = colorStateList;
+            if (a0()) {
+                this.Y.setTintList(colorStateList);
+            }
+            onStateChange(getState());
+        }
     }
 
-    public final void U(boolean r2) {
-        if (this.X == r2) goto L12;
-        boolean r0 = a0();
-        this.X = r2;
-        boolean r3 = a0();
-        if (r0 == r3) goto L13;
-        Drawable r1 = this.Y;
-        if (r3 == false) goto L9;
-        v(r1);
-    L10:
-        invalidateSelf();
-        C();
-        return;
-    L9:
-        b0(r1);
-        goto L10
-    L13:
-        return;
+    public final void U(boolean z) {
+        if (this.X != z) {
+            boolean zA0 = a0();
+            this.X = z;
+            boolean zA1 = a0();
+            if (zA0 != zA1) {
+                Drawable drawable = this.Y;
+                if (zA1) {
+                    v(drawable);
+                } else {
+                    b0(drawable);
+                }
+                invalidateSelf();
+                C();
+            }
+        }
     }
 
-    public final void V(float r2) {
-        if (this.l0 == r2) goto L8;
-        float r0 = x();
-        this.l0 = r2;
-        float r3 = x();
-        invalidateSelf();
-        if (r0 == r3) goto L9;
-        C();
-        return;
-    L9:
-        return;
+    public final void V(float f) {
+        if (this.l0 != f) {
+            float fX = x();
+            this.l0 = f;
+            float fX2 = x();
+            invalidateSelf();
+            if (fX != fX2) {
+                C();
+            }
+        }
     }
 
-    public final void W(float r2) {
-        if (this.k0 == r2) goto L8;
-        float r0 = x();
-        this.k0 = r2;
-        float r3 = x();
-        invalidateSelf();
-        if (r0 == r3) goto L9;
-        C();
-        return;
-    L9:
-        return;
+    public final void W(float f) {
+        if (this.k0 != f) {
+            float fX = x();
+            this.k0 = f;
+            float fX2 = x();
+            invalidateSelf();
+            if (fX != fX2) {
+                C();
+            }
+        }
     }
 
-    public final void X(ColorStateList r2) {
-        if (this.Q == r2) goto L6;
-        this.Q = r2;
-        this.M0 = null;
-        onStateChange(getState());
-        return;
+    public final void X(ColorStateList colorStateList) {
+        if (this.Q != colorStateList) {
+            this.Q = colorStateList;
+            this.M0 = null;
+            onStateChange(getState());
+        }
     }
 
     public final boolean Y() {
-        if (this.e0 == true) goto L5;
-        return false;
-    L5:
-        if (this.f0 != null) goto L7;
-        return false;
-    L7:
-        if (this.E0 == false) goto L13;
-        return true;
-    L13:
-        return false;
+        return this.e0 && this.f0 != null && this.E0;
     }
 
     public final boolean Z() {
-        if (this.S == true) goto L5;
-        return false;
-    L5:
-        if (this.T == null) goto L10;
-        return true;
-    L10:
-        return false;
+        return this.S && this.T != null;
     }
 
     @Override // defpackage.fi2, defpackage.wr4
@@ -638,215 +528,192 @@ public final class k20 extends fi2 implements Drawable.Callback, wr4 {
     }
 
     public final boolean a0() {
-        if (this.X == true) goto L5;
-        return false;
-    L5:
-        if (this.Y == null) goto L10;
-        return true;
-    L10:
-        return false;
+        return this.X && this.Y != null;
     }
 
     @Override // defpackage.fi2, android.graphics.drawable.Drawable
-    public final void draw(Canvas r20) {
-        Rect r7 = getBounds();
-        if (r7.isEmpty() == true) goto L97;
-        int r6 = this.G0;
-        if (r6 != 0) goto L8;
-        return;
-    L8:
-        if (r6 >= 255) goto L10;
-        Canvas r1 = r20;
-        int r10 = r1.saveLayerAlpha(r7.left, r7.top, r7.right, r7.bottom, r6);
-    L11:
-        boolean r2 = this.R0;
-        Paint r3 = this.s0;
-        RectF r11 = this.u0;
-        if (r2 == true) goto L15;
-        r3.setColor(this.y0);
-        r3.setStyle(Paint.Style.FILL);
-        r11.set(r7);
-        r1.drawRoundRect(r11, z(), z(), r3);
-    L15:
-        if (this.R0 == true) goto L22;
-        r3.setColor(this.z0);
-        r3.setStyle(Paint.Style.FILL);
-        ColorFilter r4 = this.H0;
-        if (r4 != null) goto L20;
-        r4 = this.I0;
-    L20:
-        r3.setColorFilter(r4);
-        r11.set(r7);
-        r1.drawRoundRect(r11, z(), z(), r3);
-    L22:
-        if (this.R0 == false) goto L25;
-        super.draw(r20);
-    L25:
-        if (this.P > 0.0f) goto L27;
-    L36:
-        r3.setColor(this.C0);
-        r3.setStyle(Paint.Style.FILL);
-        r11.set(r7);
-        if (this.R0 == true) goto L40;
-        r1.drawRoundRect(r11, z(), z(), r3);
-    L42:
-        if (Z() == false) goto L45;
-        w(r7, r11);
-        float r0 = r11.left;
-        float r5 = r11.top;
-        r1.translate(r0, r5);
-        this.T.setBounds(0, 0, (int) r11.width(), (int) r11.height());
-        this.T.draw(r1);
-        r1.translate(-r0, -r5);
-    L45:
-        if (Y() == false) goto L48;
-        w(r7, r11);
-        float r8 = r11.left;
-        float r9 = r11.top;
-        r1.translate(r8, r9);
-        this.f0.setBounds(0, 0, (int) r11.width(), (int) r11.height());
-        this.f0.draw(r1);
-        r1.translate(-r8, -r9);
-    L48:
-        if (this.P0 == false) goto L84;
-        if (this.R == null) goto L84;
-        PointF r12 = this.v0;
-        r12.set(0.0f, 0.0f);
-        Paint.Align r13 = Paint.Align.LEFT;
-        CharSequence r14 = this.R;
-        xr4 r15 = this.x0;
-        if (r14 == null) goto L58;
-        float r16 = (x() + this.j0) + this.m0;
-        if (getLayoutDirection() != 0) goto L56;
-        r12.x = r7.left + r16;
-    L57:
-        float r17 = r7.centerY();
-        TextPaint r18 = r15.a;
-        Paint.FontMetrics r19 = this.t0;
-        r18.getFontMetrics(r19);
-        r12.y = r17 - ((r19.descent + r19.ascent) / 2.0f);
-        goto L58
-    L56:
-        r12.x = r7.right - r16;
-        r13 = Paint.Align.RIGHT;
-    L58:
-        r11.setEmpty();
-        if (this.R == null) goto L65;
-        float r21 = (x() + this.j0) + this.m0;
-        float r22 = (y() + this.q0) + this.n0;
-        int r23 = getLayoutDirection();
-        int r110 = r7.left;
-        if (r23 != 0) goto L63;
-        r11.left = r110 + r21;
-        r11.right = r7.right - r22;
-    L64:
-        r11.top = r7.top;
-        r11.bottom = r7.bottom;
-        goto L65
-    L63:
-        r11.left = r110 + r22;
-        r11.right = r7.right - r21;
-    L65:
-        rr4 r24 = r15.g;
-        TextPaint r25 = r15.a;
-        if (r24 == null) goto L68;
-        r25.drawableState = getState();
-        r15.g.e(this.r0, r25, r15.b);
-    L68:
-        r25.setTextAlign(r13);
-        if (Math.round(r15.a(this.R.toString())) <= Math.round(r11.width())) goto L71;
-        boolean r111 = true;
-    L72:
-        if (r111 == false) goto L74;
-        int r26 = r1.save();
-        r1.clipRect(r11);
-        int r112 = r26;
-    L75:
-        CharSequence r27 = this.R;
-        if (r111 == true) goto L78;
-    L80:
-        r20.drawText(r27, 0, r27.length(), r12.x, r12.y, r25);
-        r1 = r20;
-        if (r111 == false) goto L84;
-        r1.restoreToCount(r112);
-        goto L84
-    L78:
-        if (this.O0 == null) goto L80;
-        r27 = TextUtils.ellipsize(r27, r25, r11.width(), this.O0);
-        goto L80
-    L74:
-        r112 = 0;
-        goto L75
-    L71:
-        r111 = false;
-    L84:
-        if (a0() == false) goto L94;
-        r11.setEmpty();
-        if (a0() == false) goto L92;
-        float r28 = this.q0 + this.p0;
-        if (getLayoutDirection() != 0) goto L90;
-        float r29 = r7.right - r28;
-        r11.right = r29;
-        r11.left = r29 - this.b0;
-    L91:
-        float r30 = r7.exactCenterY();
-        float r31 = this.b0;
-        float r32 = r30 - (r31 / 2.0f);
-        r11.top = r32;
-        r11.bottom = r32 + r31;
-        goto L92
-    L90:
-        float r33 = r7.left + r28;
-        r11.left = r33;
-        r11.right = r33 + this.b0;
-    L92:
-        float r34 = r11.left;
-        float r35 = r11.top;
-        r1.translate(r34, r35);
-        this.Y.setBounds(0, 0, (int) r11.width(), (int) r11.height());
-        int[] r36 = l24.a;
-        this.Z.setBounds(this.Y.getBounds());
-        this.Z.jumpToCurrentState();
-        this.Z.draw(r1);
-        r1.translate(-r34, -r35);
-    L94:
-        if (this.G0 >= 255) goto L98;
-        r1.restoreToCount(r10);
-        return;
-    L98:
-        return;
-    L40:
-        RectF r37 = new RectF(r7);
-        ei2 r38 = this.n;
-        bc4 r113 = r38.a;
-        float r114 = r38.i;
-        pz1 r39 = this.D;
-        fo1 r115 = this.E;
-        Path r40 = this.w0;
-        r115.d(r113, r114, r37, r39, r40);
-        e(r1, r3, r40, this.n.a, g());
-        goto L42
-    L27:
-        if (this.R0 == true) goto L36;
-        r3.setColor(this.B0);
-        r3.setStyle(Paint.Style.STROKE);
-        if (this.R0 == true) goto L35;
-        ColorFilter r41 = this.H0;
-        if (r41 != null) goto L34;
-        r41 = this.I0;
-    L34:
-        r3.setColorFilter(r41);
-    L35:
-        float r42 = r7.left;
-        float r43 = this.P / 2.0f;
-        r11.set(r42 + r43, r7.top + r43, r7.right - r43, r7.bottom - r43);
-        float r44 = this.N - (this.P / 2.0f);
-        r1.drawRoundRect(r11, r44, r44, r3);
-        goto L36
-    L10:
-        r1 = r20;
-        r10 = 0;
-        goto L11
+    public final void draw(Canvas canvas) {
+        int i;
+        Canvas canvas2;
+        int iSaveLayerAlpha;
+        int i2;
+        Rect bounds = getBounds();
+        if (bounds.isEmpty() || (i = this.G0) == 0) {
+            return;
+        }
+        if (i < 255) {
+            canvas2 = canvas;
+            iSaveLayerAlpha = canvas2.saveLayerAlpha(bounds.left, bounds.top, bounds.right, bounds.bottom, i);
+        } else {
+            canvas2 = canvas;
+            iSaveLayerAlpha = 0;
+        }
+        boolean z = this.R0;
+        Paint paint = this.s0;
+        RectF rectF = this.u0;
+        if (!z) {
+            paint.setColor(this.y0);
+            paint.setStyle(Paint.Style.FILL);
+            rectF.set(bounds);
+            canvas2.drawRoundRect(rectF, z(), z(), paint);
+        }
+        if (!this.R0) {
+            paint.setColor(this.z0);
+            paint.setStyle(Paint.Style.FILL);
+            ColorFilter colorFilter = this.H0;
+            if (colorFilter == null) {
+                colorFilter = this.I0;
+            }
+            paint.setColorFilter(colorFilter);
+            rectF.set(bounds);
+            canvas2.drawRoundRect(rectF, z(), z(), paint);
+        }
+        if (this.R0) {
+            super.draw(canvas);
+        }
+        if (this.P > 0.0f && !this.R0) {
+            paint.setColor(this.B0);
+            paint.setStyle(Paint.Style.STROKE);
+            if (!this.R0) {
+                ColorFilter colorFilter2 = this.H0;
+                if (colorFilter2 == null) {
+                    colorFilter2 = this.I0;
+                }
+                paint.setColorFilter(colorFilter2);
+            }
+            float f = bounds.left;
+            float f2 = this.P / 2.0f;
+            rectF.set(f + f2, bounds.top + f2, bounds.right - f2, bounds.bottom - f2);
+            float f3 = this.N - (this.P / 2.0f);
+            canvas2.drawRoundRect(rectF, f3, f3, paint);
+        }
+        paint.setColor(this.C0);
+        paint.setStyle(Paint.Style.FILL);
+        rectF.set(bounds);
+        if (this.R0) {
+            RectF rectF2 = new RectF(bounds);
+            ei2 ei2Var = this.n;
+            bc4 bc4Var = ei2Var.a;
+            float f4 = ei2Var.i;
+            pz1 pz1Var = this.D;
+            fo1 fo1Var = this.E;
+            Path path = this.w0;
+            fo1Var.d(bc4Var, f4, rectF2, pz1Var, path);
+            e(canvas2, paint, path, this.n.a, g());
+        } else {
+            canvas2.drawRoundRect(rectF, z(), z(), paint);
+        }
+        if (Z()) {
+            w(bounds, rectF);
+            float f5 = rectF.left;
+            float f6 = rectF.top;
+            canvas2.translate(f5, f6);
+            this.T.setBounds(0, 0, (int) rectF.width(), (int) rectF.height());
+            this.T.draw(canvas2);
+            canvas2.translate(-f5, -f6);
+        }
+        if (Y()) {
+            w(bounds, rectF);
+            float f7 = rectF.left;
+            float f8 = rectF.top;
+            canvas2.translate(f7, f8);
+            this.f0.setBounds(0, 0, (int) rectF.width(), (int) rectF.height());
+            this.f0.draw(canvas2);
+            canvas2.translate(-f7, -f8);
+        }
+        if (this.P0 && this.R != null) {
+            PointF pointF = this.v0;
+            pointF.set(0.0f, 0.0f);
+            Paint.Align align = Paint.Align.LEFT;
+            CharSequence charSequence = this.R;
+            xr4 xr4Var = this.x0;
+            if (charSequence != null) {
+                float fX = x() + this.j0 + this.m0;
+                if (getLayoutDirection() == 0) {
+                    pointF.x = bounds.left + fX;
+                } else {
+                    pointF.x = bounds.right - fX;
+                    align = Paint.Align.RIGHT;
+                }
+                float fCenterY = bounds.centerY();
+                TextPaint textPaint = xr4Var.a;
+                Paint.FontMetrics fontMetrics = this.t0;
+                textPaint.getFontMetrics(fontMetrics);
+                pointF.y = fCenterY - ((fontMetrics.descent + fontMetrics.ascent) / 2.0f);
+            }
+            rectF.setEmpty();
+            if (this.R != null) {
+                float fX2 = x() + this.j0 + this.m0;
+                float fY = y() + this.q0 + this.n0;
+                int layoutDirection = getLayoutDirection();
+                int i3 = bounds.left;
+                if (layoutDirection == 0) {
+                    rectF.left = i3 + fX2;
+                    rectF.right = bounds.right - fY;
+                } else {
+                    rectF.left = i3 + fY;
+                    rectF.right = bounds.right - fX2;
+                }
+                rectF.top = bounds.top;
+                rectF.bottom = bounds.bottom;
+            }
+            rr4 rr4Var = xr4Var.g;
+            TextPaint textPaint2 = xr4Var.a;
+            if (rr4Var != null) {
+                textPaint2.drawableState = getState();
+                xr4Var.g.e(this.r0, textPaint2, xr4Var.b);
+            }
+            textPaint2.setTextAlign(align);
+            boolean z2 = Math.round(xr4Var.a(this.R.toString())) > Math.round(rectF.width());
+            if (z2) {
+                int iSave = canvas2.save();
+                canvas2.clipRect(rectF);
+                i2 = iSave;
+            } else {
+                i2 = 0;
+            }
+            CharSequence charSequenceEllipsize = this.R;
+            if (z2 && this.O0 != null) {
+                charSequenceEllipsize = TextUtils.ellipsize(charSequenceEllipsize, textPaint2, rectF.width(), this.O0);
+            }
+            canvas.drawText(charSequenceEllipsize, 0, charSequenceEllipsize.length(), pointF.x, pointF.y, textPaint2);
+            canvas2 = canvas;
+            if (z2) {
+                canvas2.restoreToCount(i2);
+            }
+        }
+        if (a0()) {
+            rectF.setEmpty();
+            if (a0()) {
+                float f9 = this.q0 + this.p0;
+                if (getLayoutDirection() == 0) {
+                    float f10 = bounds.right - f9;
+                    rectF.right = f10;
+                    rectF.left = f10 - this.b0;
+                } else {
+                    float f11 = bounds.left + f9;
+                    rectF.left = f11;
+                    rectF.right = f11 + this.b0;
+                }
+                float fExactCenterY = bounds.exactCenterY();
+                float f12 = this.b0;
+                float f13 = fExactCenterY - (f12 / 2.0f);
+                rectF.top = f13;
+                rectF.bottom = f13 + f12;
+            }
+            float f14 = rectF.left;
+            float f15 = rectF.top;
+            canvas2.translate(f14, f15);
+            this.Y.setBounds(0, 0, (int) rectF.width(), (int) rectF.height());
+            int[] iArr = l24.a;
+            this.Z.setBounds(this.Y.getBounds());
+            this.Z.jumpToCurrentState();
+            this.Z.draw(canvas2);
+            canvas2.translate(-f14, -f15);
+        }
+        if (this.G0 < 255) {
+            canvas2.restoreToCount(iSaveLayerAlpha);
+        }
     }
 
     @Override // defpackage.fi2, android.graphics.drawable.Drawable
@@ -866,11 +733,7 @@ public final class k20 extends fi2 implements Drawable.Callback, wr4 {
 
     @Override // android.graphics.drawable.Drawable
     public final int getIntrinsicWidth() {
-        float r0 = this.j0;
-        float r1 = (x() + r0) + this.m0;
-        String r2 = this.R.toString();
-        float r3 = (this.x0.a(r2) + r1) + this.n0;
-        return Math.min(Math.round((y() + r3) + this.q0), this.Q0);
+        return Math.min(Math.round(y() + this.x0.a(this.R.toString()) + x() + this.j0 + this.m0 + this.n0 + this.q0), this.Q0);
     }
 
     @Override // defpackage.fi2, android.graphics.drawable.Drawable
@@ -879,291 +742,234 @@ public final class k20 extends fi2 implements Drawable.Callback, wr4 {
     }
 
     @Override // defpackage.fi2, android.graphics.drawable.Drawable
-    public final void getOutline(Outline r9) {
-        if (this.R0 == false) goto L6;
-        super.getOutline(r9);
-        return;
-    L6:
-        Rect r0 = getBounds();
-        if (r0.isEmpty() == true) goto L9;
-        r9.setRoundRect(r0, this.N);
-        Outline r2 = r9;
-    L10:
-        r2.setAlpha(this.G0 / 255.0f);
-        return;
-    L9:
-        r2 = r9;
-        r2.setRoundRect(0, 0, getIntrinsicWidth(), (int) this.M, this.N);
-        goto L10
+    public final void getOutline(Outline outline) {
+        Outline outline2;
+        if (this.R0) {
+            super.getOutline(outline);
+            return;
+        }
+        Rect bounds = getBounds();
+        if (bounds.isEmpty()) {
+            outline2 = outline;
+            outline2.setRoundRect(0, 0, getIntrinsicWidth(), (int) this.M, this.N);
+        } else {
+            outline.setRoundRect(bounds, this.N);
+            outline2 = outline;
+        }
+        outline2.setAlpha(this.G0 / 255.0f);
     }
 
     @Override // android.graphics.drawable.Drawable.Callback
-    public final void invalidateDrawable(Drawable r1) {
-        Drawable.Callback r2 = getCallback();
-        if (r2 == null) goto L6;
-        r2.invalidateDrawable(this);
-        return;
+    public final void invalidateDrawable(Drawable drawable) {
+        Drawable.Callback callback = getCallback();
+        if (callback != null) {
+            callback.invalidateDrawable(this);
+        }
     }
 
     @Override // defpackage.fi2, android.graphics.drawable.Drawable
     public final boolean isStateful() {
-        if (A(this.K) == false) goto L5;
-        return true;
-    L5:
-        if (A(this.L) == false) goto L7;
-        return true;
-    L7:
-        if (A(this.O) == true) goto L34;
-        rr4 r0 = this.x0.g;
-        if (r0 == null) goto L16;
-        ColorStateList r1 = r0.j;
-        if (r1 == null) goto L16;
-        if (r1.isStateful() == false) goto L16;
-        return true;
-    L16:
-        if (this.e0 == false) goto L23;
-        if (this.f0 == null) goto L23;
-        if (this.d0 == false) goto L23;
-        return true;
-    L23:
-        if (B(this.T) == false) goto L25;
-        return true;
-    L25:
-        if (B(this.f0) == false) goto L27;
-        return true;
-    L27:
-        if (A(this.J0) == true) goto L39;
-        return false;
-    L39:
-        return true;
-    L34:
+        ColorStateList colorStateList;
+        if (A(this.K) || A(this.L) || A(this.O)) {
+            return true;
+        }
+        rr4 rr4Var = this.x0.g;
+        if (rr4Var == null || (colorStateList = rr4Var.j) == null || !colorStateList.isStateful()) {
+            return (this.e0 && this.f0 != null && this.d0) || B(this.T) || B(this.f0) || A(this.J0);
+        }
         return true;
     }
 
     @Override // android.graphics.drawable.Drawable
-    public final boolean onLayoutDirectionChanged(int r3) {
-        boolean r0 = super.onLayoutDirectionChanged(r3);
-        if (Z() == false) goto L6;
-        r0 = r0 | this.T.setLayoutDirection(r3);
-    L6:
-        if (Y() == false) goto L9;
-        r0 = r0 | this.f0.setLayoutDirection(r3);
-    L9:
-        if (a0() == false) goto L11;
-        r0 = r0 | this.Y.setLayoutDirection(r3);
-    L11:
-        if (r0 == false) goto L15;
+    public final boolean onLayoutDirectionChanged(int i) {
+        boolean zOnLayoutDirectionChanged = super.onLayoutDirectionChanged(i);
+        if (Z()) {
+            zOnLayoutDirectionChanged |= this.T.setLayoutDirection(i);
+        }
+        if (Y()) {
+            zOnLayoutDirectionChanged |= this.f0.setLayoutDirection(i);
+        }
+        if (a0()) {
+            zOnLayoutDirectionChanged |= this.Y.setLayoutDirection(i);
+        }
+        if (!zOnLayoutDirectionChanged) {
+            return true;
+        }
         invalidateSelf();
-        return true;
-    L15:
         return true;
     }
 
     @Override // android.graphics.drawable.Drawable
-    public final boolean onLevelChange(int r3) {
-        boolean r0 = super.onLevelChange(r3);
-        if (Z() == false) goto L6;
-        r0 = r0 | this.T.setLevel(r3);
-    L6:
-        if (Y() == false) goto L9;
-        r0 = r0 | this.f0.setLevel(r3);
-    L9:
-        if (a0() == false) goto L11;
-        r0 = r0 | this.Y.setLevel(r3);
-    L11:
-        if (r0 == false) goto L13;
-        invalidateSelf();
-    L13:
-        return r0;
+    public final boolean onLevelChange(int i) {
+        boolean zOnLevelChange = super.onLevelChange(i);
+        if (Z()) {
+            zOnLevelChange |= this.T.setLevel(i);
+        }
+        if (Y()) {
+            zOnLevelChange |= this.f0.setLevel(i);
+        }
+        if (a0()) {
+            zOnLevelChange |= this.Y.setLevel(i);
+        }
+        if (zOnLevelChange) {
+            invalidateSelf();
+        }
+        return zOnLevelChange;
     }
 
     @Override // defpackage.fi2, android.graphics.drawable.Drawable
-    public final boolean onStateChange(int[] r2) {
-        if (this.R0 == false) goto L6;
-        super.onStateChange(r2);
-    L6:
-        return D(r2, this.L0);
+    public final boolean onStateChange(int[] iArr) {
+        if (this.R0) {
+            super.onStateChange(iArr);
+        }
+        return D(iArr, this.L0);
     }
 
     @Override // android.graphics.drawable.Drawable.Callback
-    public final void scheduleDrawable(Drawable r1, Runnable r2, long r3) {
-        Drawable.Callback r4 = getCallback();
-        if (r4 == null) goto L6;
-        r4.scheduleDrawable(this, r2, r3);
-        return;
+    public final void scheduleDrawable(Drawable drawable, Runnable runnable, long j) {
+        Drawable.Callback callback = getCallback();
+        if (callback != null) {
+            callback.scheduleDrawable(this, runnable, j);
+        }
     }
 
     @Override // defpackage.fi2, android.graphics.drawable.Drawable
-    public final void setAlpha(int r2) {
-        if (this.G0 == r2) goto L6;
-        this.G0 = r2;
-        invalidateSelf();
-        return;
+    public final void setAlpha(int i) {
+        if (this.G0 != i) {
+            this.G0 = i;
+            invalidateSelf();
+        }
     }
 
     @Override // defpackage.fi2, android.graphics.drawable.Drawable
-    public final void setColorFilter(ColorFilter r2) {
-        if (this.H0 == r2) goto L6;
-        this.H0 = r2;
-        invalidateSelf();
-        return;
+    public final void setColorFilter(ColorFilter colorFilter) {
+        if (this.H0 != colorFilter) {
+            this.H0 = colorFilter;
+            invalidateSelf();
+        }
     }
 
     @Override // defpackage.fi2, android.graphics.drawable.Drawable
-    public final void setTintList(ColorStateList r2) {
-        if (this.J0 == r2) goto L6;
-        this.J0 = r2;
-        onStateChange(getState());
-        return;
+    public final void setTintList(ColorStateList colorStateList) {
+        if (this.J0 != colorStateList) {
+            this.J0 = colorStateList;
+            onStateChange(getState());
+        }
     }
 
     @Override // defpackage.fi2, android.graphics.drawable.Drawable
-    public final void setTintMode(PorterDuff.Mode r4) {
-        if (this.K0 == r4) goto L12;
-        this.K0 = r4;
-        ColorStateList r0 = this.J0;
-        if (r0 == null) goto L9;
-        if (r4 == null) goto L9;
-        PorterDuffColorFilter r1 = new PorterDuffColorFilter(r0.getColorForState(getState(), 0), r4);
-    L10:
-        this.I0 = r1;
-        invalidateSelf();
-        return;
-    L9:
-        r1 = null;
-        goto L10
+    public final void setTintMode(PorterDuff.Mode mode) {
+        if (this.K0 != mode) {
+            this.K0 = mode;
+            ColorStateList colorStateList = this.J0;
+            this.I0 = (colorStateList == null || mode == null) ? null : new PorterDuffColorFilter(colorStateList.getColorForState(getState(), 0), mode);
+            invalidateSelf();
+        }
     }
 
     @Override // android.graphics.drawable.Drawable
-    public final boolean setVisible(boolean r3, boolean r4) {
-        boolean r0 = super.setVisible(r3, r4);
-        if (Z() == false) goto L6;
-        r0 = r0 | this.T.setVisible(r3, r4);
-    L6:
-        if (Y() == false) goto L9;
-        r0 = r0 | this.f0.setVisible(r3, r4);
-    L9:
-        if (a0() == false) goto L11;
-        r0 = r0 | this.Y.setVisible(r3, r4);
-    L11:
-        if (r0 == false) goto L13;
-        invalidateSelf();
-    L13:
-        return r0;
+    public final boolean setVisible(boolean z, boolean z2) {
+        boolean visible = super.setVisible(z, z2);
+        if (Z()) {
+            visible |= this.T.setVisible(z, z2);
+        }
+        if (Y()) {
+            visible |= this.f0.setVisible(z, z2);
+        }
+        if (a0()) {
+            visible |= this.Y.setVisible(z, z2);
+        }
+        if (visible) {
+            invalidateSelf();
+        }
+        return visible;
     }
 
     @Override // android.graphics.drawable.Drawable.Callback
-    public final void unscheduleDrawable(Drawable r1, Runnable r2) {
-        Drawable.Callback r3 = getCallback();
-        if (r3 == null) goto L6;
-        r3.unscheduleDrawable(this, r2);
-        return;
+    public final void unscheduleDrawable(Drawable drawable, Runnable runnable) {
+        Drawable.Callback callback = getCallback();
+        if (callback != null) {
+            callback.unscheduleDrawable(this, runnable);
+        }
     }
 
-    public final void v(Drawable r3) {
-        if (r3 == null) goto L21;
-        r3.setCallback(this);
-        r3.setLayoutDirection(getLayoutDirection());
-        r3.setLevel(getLevel());
-        r3.setVisible(isVisible(), false);
-        if (r3 == this.Y) goto L7;
-        Drawable r0 = this.T;
-        if (r3 != r0) goto L17;
-        if (this.W == false) goto L17;
-        r0.setTintList(this.U);
-    L17:
-        if (r3.isStateful() == false) goto L20;
-        r3.setState(getState());
-        return;
-    L20:
-        return;
-    L7:
-        if (r3.isStateful() == false) goto L9;
-        r3.setState(this.L0);
-    L9:
-        r3.setTintList(this.a0);
-        return;
+    public final void v(Drawable drawable) {
+        if (drawable == null) {
+            return;
+        }
+        drawable.setCallback(this);
+        drawable.setLayoutDirection(getLayoutDirection());
+        drawable.setLevel(getLevel());
+        drawable.setVisible(isVisible(), false);
+        if (drawable == this.Y) {
+            if (drawable.isStateful()) {
+                drawable.setState(this.L0);
+            }
+            drawable.setTintList(this.a0);
+            return;
+        }
+        Drawable drawable2 = this.T;
+        if (drawable == drawable2 && this.W) {
+            drawable2.setTintList(this.U);
+        }
+        if (drawable.isStateful()) {
+            drawable.setState(getState());
+        }
     }
 
-    public final void w(Rect r6, RectF r7) {
-        r7.setEmpty();
-        if (Z() == false) goto L5;
-    L8:
-        float r0 = this.j0 + this.k0;
-        if (this.E0 == false) goto L11;
-        Drawable r1 = this.f0;
-    L12:
-        float r2 = this.V;
-        if (r2 > 0.0f) goto L17;
-        if (r1 == null) goto L17;
-        r2 = r1.getIntrinsicWidth();
-    L17:
-        if (getLayoutDirection() != 0) goto L19;
-        float r3 = r6.left + r0;
-        r7.left = r3;
-        r7.right = r3 + r2;
-    L21:
-        if (this.E0 == false) goto L23;
-        Drawable r4 = this.f0;
-    L24:
-        float r5 = this.V;
-        if (r5 > 0.0f) goto L30;
-        if (r4 == null) goto L30;
-        r5 = (float) Math.ceil(vr1.l(this.r0, 24));
-        if (r4.getIntrinsicHeight() > r5) goto L30;
-        r5 = r4.getIntrinsicHeight();
-    L30:
-        float r8 = r6.exactCenterY() - (r5 / 2.0f);
-        r7.top = r8;
-        r7.bottom = r8 + r5;
-        return;
-    L23:
-        r4 = this.T;
-        goto L24
-    L19:
-        float r9 = r6.right - r0;
-        r7.right = r9;
-        r7.left = r9 - r2;
-        goto L21
-    L11:
-        r1 = this.T;
-        goto L12
-    L5:
-        if (Y() == true) goto L8;
+    public final void w(Rect rect, RectF rectF) {
+        rectF.setEmpty();
+        if (Z() || Y()) {
+            float f = this.j0 + this.k0;
+            Drawable drawable = this.E0 ? this.f0 : this.T;
+            float intrinsicWidth = this.V;
+            if (intrinsicWidth <= 0.0f && drawable != null) {
+                intrinsicWidth = drawable.getIntrinsicWidth();
+            }
+            if (getLayoutDirection() == 0) {
+                float f2 = rect.left + f;
+                rectF.left = f2;
+                rectF.right = f2 + intrinsicWidth;
+            } else {
+                float f3 = rect.right - f;
+                rectF.right = f3;
+                rectF.left = f3 - intrinsicWidth;
+            }
+            Drawable drawable2 = this.E0 ? this.f0 : this.T;
+            float fCeil = this.V;
+            if (fCeil <= 0.0f && drawable2 != null) {
+                fCeil = (float) Math.ceil(vr1.l(this.r0, 24));
+                if (drawable2.getIntrinsicHeight() <= fCeil) {
+                    fCeil = drawable2.getIntrinsicHeight();
+                }
+            }
+            float fExactCenterY = rect.exactCenterY() - (fCeil / 2.0f);
+            rectF.top = fExactCenterY;
+            rectF.bottom = fExactCenterY + fCeil;
+        }
     }
 
     public final float x() {
-        if (Z() == false) goto L5;
-    L8:
-        float r0 = this.k0;
-        if (this.E0 == false) goto L11;
-        Drawable r2 = this.f0;
-    L12:
-        float r3 = this.V;
-        if (r3 > 0.0f) goto L17;
-        if (r2 == null) goto L17;
-        r3 = r2.getIntrinsicWidth();
-    L17:
-        return (r3 + r0) + this.l0;
-    L11:
-        r2 = this.T;
-        goto L12
-    L5:
-        if (Y() == true) goto L8;
-        return 0.0f;
+        if (!Z() && !Y()) {
+            return 0.0f;
+        }
+        float f = this.k0;
+        Drawable drawable = this.E0 ? this.f0 : this.T;
+        float intrinsicWidth = this.V;
+        if (intrinsicWidth <= 0.0f && drawable != null) {
+            intrinsicWidth = drawable.getIntrinsicWidth();
+        }
+        return intrinsicWidth + f + this.l0;
     }
 
     public final float y() {
-        if (a0() == true) goto L5;
+        if (a0()) {
+            return this.o0 + this.b0 + this.p0;
+        }
         return 0.0f;
-    L5:
-        return (this.o0 + this.b0) + this.p0;
     }
 
     public final float z() {
-        if (this.R0 == false) goto L7;
-        return h();
-    L7:
-        return this.N;
+        return this.R0 ? h() : this.N;
     }
 }

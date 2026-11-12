@@ -14,33 +14,27 @@ public final class ax0 extends Drawable implements Drawable.Callback {
     public Drawable n;
     public boolean o;
 
-    public final void a(Canvas r1) {
-        this.n.draw(r1);
+    public final void a(Canvas canvas) {
+        this.n.draw(canvas);
     }
 
-    public final void b(float r1, float r2) {
-        this.n.setHotspot(r1, r2);
+    public final void b(float f, float f2) {
+        this.n.setHotspot(f, f2);
     }
 
-    public final void c(int r1, int r2, int r3, int r4) {
-        this.n.setHotspotBounds(r1, r2, r3, r4);
+    public final void c(int i, int i2, int i3, int i4) {
+        this.n.setHotspotBounds(i, i2, i3, i4);
     }
 
-    public final boolean d(boolean r2, boolean r3) {
-        if (super.setVisible(r2, r3) == false) goto L5;
-        return true;
-    L5:
-        if (this.n.setVisible(r2, r3) == true) goto L11;
-        return false;
-    L11:
-        return true;
+    public final boolean d(boolean z, boolean z2) {
+        return super.setVisible(z, z2) || this.n.setVisible(z, z2);
     }
 
     @Override // android.graphics.drawable.Drawable
-    public final void draw(Canvas r2) {
-        if (this.o == false) goto L6;
-        a(r2);
-        return;
+    public final void draw(Canvas canvas) {
+        if (this.o) {
+            a(canvas);
+        }
     }
 
     @Override // android.graphics.drawable.Drawable
@@ -79,8 +73,8 @@ public final class ax0 extends Drawable implements Drawable.Callback {
     }
 
     @Override // android.graphics.drawable.Drawable
-    public final boolean getPadding(Rect r1) {
-        return this.n.getPadding(r1);
+    public final boolean getPadding(Rect rect) {
+        return this.n.getPadding(rect);
     }
 
     @Override // android.graphics.drawable.Drawable
@@ -94,7 +88,7 @@ public final class ax0 extends Drawable implements Drawable.Callback {
     }
 
     @Override // android.graphics.drawable.Drawable.Callback
-    public final void invalidateDrawable(Drawable r1) {
+    public final void invalidateDrawable(Drawable drawable) {
         invalidateSelf();
     }
 
@@ -114,97 +108,97 @@ public final class ax0 extends Drawable implements Drawable.Callback {
     }
 
     @Override // android.graphics.drawable.Drawable
-    public final void onBoundsChange(Rect r1) {
-        this.n.setBounds(r1);
+    public final void onBoundsChange(Rect rect) {
+        this.n.setBounds(rect);
     }
 
     @Override // android.graphics.drawable.Drawable
-    public final boolean onLevelChange(int r1) {
-        return this.n.setLevel(r1);
+    public final boolean onLevelChange(int i) {
+        return this.n.setLevel(i);
     }
 
     @Override // android.graphics.drawable.Drawable.Callback
-    public final void scheduleDrawable(Drawable r1, Runnable r2, long r3) {
-        scheduleSelf(r2, r3);
+    public final void scheduleDrawable(Drawable drawable, Runnable runnable, long j) {
+        scheduleSelf(runnable, j);
     }
 
     @Override // android.graphics.drawable.Drawable
-    public final void setAlpha(int r1) {
-        this.n.setAlpha(r1);
+    public final void setAlpha(int i) {
+        this.n.setAlpha(i);
     }
 
     @Override // android.graphics.drawable.Drawable
-    public final void setAutoMirrored(boolean r1) {
-        this.n.setAutoMirrored(r1);
+    public final void setAutoMirrored(boolean z) {
+        this.n.setAutoMirrored(z);
     }
 
     @Override // android.graphics.drawable.Drawable
-    public final void setChangingConfigurations(int r1) {
-        this.n.setChangingConfigurations(r1);
+    public final void setChangingConfigurations(int i) {
+        this.n.setChangingConfigurations(i);
     }
 
     @Override // android.graphics.drawable.Drawable
-    public final void setColorFilter(ColorFilter r1) {
-        this.n.setColorFilter(r1);
+    public final void setColorFilter(ColorFilter colorFilter) {
+        this.n.setColorFilter(colorFilter);
     }
 
     @Override // android.graphics.drawable.Drawable
-    public final void setDither(boolean r1) {
-        this.n.setDither(r1);
+    public final void setDither(boolean z) {
+        this.n.setDither(z);
     }
 
     @Override // android.graphics.drawable.Drawable
-    public final void setFilterBitmap(boolean r1) {
-        this.n.setFilterBitmap(r1);
+    public final void setFilterBitmap(boolean z) {
+        this.n.setFilterBitmap(z);
     }
 
     @Override // android.graphics.drawable.Drawable
-    public final void setHotspot(float r2, float r3) {
-        if (this.o == false) goto L6;
-        b(r2, r3);
-        return;
+    public final void setHotspot(float f, float f2) {
+        if (this.o) {
+            b(f, f2);
+        }
     }
 
     @Override // android.graphics.drawable.Drawable
-    public final void setHotspotBounds(int r2, int r3, int r4, int r5) {
-        if (this.o == false) goto L6;
-        c(r2, r3, r4, r5);
-        return;
+    public final void setHotspotBounds(int i, int i2, int i3, int i4) {
+        if (this.o) {
+            c(i, i2, i3, i4);
+        }
     }
 
     @Override // android.graphics.drawable.Drawable
-    public final boolean setState(int[] r2) {
-        if (this.o == true) goto L5;
+    public final boolean setState(int[] iArr) {
+        if (this.o) {
+            return this.n.setState(iArr);
+        }
         return false;
-    L5:
-        return this.n.setState(r2);
     }
 
     @Override // android.graphics.drawable.Drawable
-    public final void setTint(int r1) {
-        this.n.setTint(r1);
+    public final void setTint(int i) {
+        this.n.setTint(i);
     }
 
     @Override // android.graphics.drawable.Drawable
-    public final void setTintList(ColorStateList r1) {
-        this.n.setTintList(r1);
+    public final void setTintList(ColorStateList colorStateList) {
+        this.n.setTintList(colorStateList);
     }
 
     @Override // android.graphics.drawable.Drawable
-    public final void setTintMode(PorterDuff.Mode r1) {
-        this.n.setTintMode(r1);
+    public final void setTintMode(PorterDuff.Mode mode) {
+        this.n.setTintMode(mode);
     }
 
     @Override // android.graphics.drawable.Drawable
-    public final boolean setVisible(boolean r2, boolean r3) {
-        if (this.o == true) goto L5;
+    public final boolean setVisible(boolean z, boolean z2) {
+        if (this.o) {
+            return d(z, z2);
+        }
         return false;
-    L5:
-        return d(r2, r3);
     }
 
     @Override // android.graphics.drawable.Drawable.Callback
-    public final void unscheduleDrawable(Drawable r1, Runnable r2) {
-        unscheduleSelf(r2);
+    public final void unscheduleDrawable(Drawable drawable, Runnable runnable) {
+        unscheduleSelf(runnable);
     }
 }

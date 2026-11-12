@@ -8,8 +8,8 @@ public class gh1 extends hd {
     public final y41 c;
     public k03 d;
 
-    public gh1(Application r2) {
-        super(r2);
+    public gh1(Application application) {
+        super(application);
         this.c = new y41(18);
     }
 }

@@ -13,35 +13,28 @@ import javax.net.ssl.SSLPeerUnverifiedException;
 public final class jr extends rr2 {
     public final ny4 c;
 
-    public jr(ny4 r1) {
-        r1.getClass();
-        this.c = r1;
+    public jr(ny4 ny4Var) {
+        ny4Var.getClass();
+        this.c = ny4Var;
     }
 
-    public static boolean Y(X509Certificate r2, X509Certificate r3, int r4) {
-        if (h12.c(r2.getIssuerDN(), r3.getSubjectDN()) == true) goto L6;
-        return false;
-    L6:
-        if (r3.getBasicConstraints() < r4) goto L16;
-        r2.verify(r3.getPublicKey());     // Catch: GeneralSecurityException -> L13
-        return true;
-    L17:
-        return false;
-    L16:
-        return false;
+    public static boolean Y(X509Certificate x509Certificate, X509Certificate x509Certificate2, int i) {
+        if (!h12.c(x509Certificate.getIssuerDN(), x509Certificate2.getSubjectDN()) || x509Certificate2.getBasicConstraints() < i) {
+            return false;
+        }
+        try {
+            x509Certificate.verify(x509Certificate2.getPublicKey());
+            return true;
+        } catch (GeneralSecurityException unused) {
+            return false;
+        }
     }
 
-    public final boolean equals(Object r3) {
-        if (r3 != this) goto L6;
-        return true;
-    L6:
-        if ((r3 instanceof jr) == true) goto L8;
-        return false;
-    L8:
-        if (h12.c(((jr) r3).c, this.c) == false) goto L12;
-        return true;
-    L12:
-        return false;
+    public final boolean equals(Object obj) {
+        if (obj == this) {
+            return true;
+        }
+        return (obj instanceof jr) && h12.c(((jr) obj).c, this.c);
     }
 
     public final int hashCode() {
@@ -49,53 +42,47 @@ public final class jr extends rr2 {
     }
 
     @Override // defpackage.rr2
-    public final List x(String r8, List r9) {
-        r9.getClass();
-        r8.getClass();
-        ArrayDeque r10 = new ArrayDeque(r9);
-        ArrayList r11 = new ArrayList();
-        Object r0 = r10.removeFirst();
-        r0.getClass();
-        r11.add(r0);
-        int r1 = 0;
-        boolean r2 = false;
-    L4:
-        if (r1 >= 9) goto L28;
-        Object r3 = r11.get(r11.size() - 1);
-        r3.getClass();
-        X509Certificate r4 = (X509Certificate) r3;
-        X509Certificate r5 = this.c.a(r4);
-        if (r5 != null) goto L8;
-        Iterator r6 = r10.iterator();
-        r6.getClass();
-    L18:
-        if (r6.hasNext() == false) goto L23;
-        Object r7 = r6.next();
-        r7.getClass();
-        X509Certificate r12 = (X509Certificate) r7;
-        if (Y(r4, r12, r11.size() - 1) == false) goto L18;
-        r6.remove();
-        r11.add(r12);
-    L22:
-        r1 = r1 + 1;
-        goto L4
-    L23:
-        if (r2 == false) goto L26;
-    L24:
-        return r11;
-    L26:
-        throw new SSLPeerUnverifiedException("Failed to find a trusted cert that signed " + r4);
-    L8:
-        if (r11.size() <= 1) goto L10;
-    L11:
-        r11.add(r5);
-    L13:
-        if (Y(r5, r5, r11.size() - 2) == true) goto L24;
-        r2 = true;
-        goto L22
-    L10:
-        if (r4.equals(r5) == true) goto L13;
-    L28:
-        throw new SSLPeerUnverifiedException("Certificate chain too long: " + r11);
+    public final List x(String str, List list) throws SSLPeerUnverifiedException {
+        X509Certificate x509Certificate;
+        list.getClass();
+        str.getClass();
+        ArrayDeque arrayDeque = new ArrayDeque(list);
+        ArrayList arrayList = new ArrayList();
+        Object objRemoveFirst = arrayDeque.removeFirst();
+        objRemoveFirst.getClass();
+        arrayList.add(objRemoveFirst);
+        boolean z = false;
+        for (int i = 0; i < 9; i++) {
+            Object obj = arrayList.get(arrayList.size() - 1);
+            obj.getClass();
+            X509Certificate x509Certificate2 = (X509Certificate) obj;
+            X509Certificate x509CertificateA = this.c.a(x509Certificate2);
+            if (x509CertificateA != null) {
+                if (arrayList.size() > 1 || !x509Certificate2.equals(x509CertificateA)) {
+                    arrayList.add(x509CertificateA);
+                }
+                if (Y(x509CertificateA, x509CertificateA, arrayList.size() - 2)) {
+                    return arrayList;
+                }
+                z = true;
+            } else {
+                Iterator it = arrayDeque.iterator();
+                it.getClass();
+                do {
+                    if (!it.hasNext()) {
+                        if (!z) {
+                            throw new SSLPeerUnverifiedException("Failed to find a trusted cert that signed " + x509Certificate2);
+                        }
+                        return arrayList;
+                    }
+                    Object next = it.next();
+                    next.getClass();
+                    x509Certificate = (X509Certificate) next;
+                } while (!Y(x509Certificate2, x509Certificate, arrayList.size() - 1));
+                it.remove();
+                arrayList.add(x509Certificate);
+            }
+        }
+        throw new SSLPeerUnverifiedException("Certificate chain too long: " + arrayList);
     }
 }

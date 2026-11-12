@@ -11,14 +11,11 @@ public final class Shares {
     @ka4("share")
     private List<Share> shares;
 
-    public Shares() {
-    }
-
     public final List<Share> getShares() {
         return this.shares;
     }
 
-    public final void setShares(List<Share> r1) {
-        this.shares = r1;
+    public final void setShares(List<Share> list) {
+        this.shares = list;
     }
 }

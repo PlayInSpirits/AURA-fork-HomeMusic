@@ -8,14 +8,15 @@ public final class c91 extends wd0 {
     public final /* synthetic */ lv0 q;
     public Object r;
 
-    public c91(lv0 r1, vd0 r2) {
-        this.q = r1;
-        super(r2);
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public c91(lv0 lv0Var, vd0 vd0Var) {
+        super(vd0Var);
+        this.q = lv0Var;
     }
 
     @Override // defpackage.jp
-    public final Object invokeSuspend(Object r2) {
-        this.o = r2;
+    public final Object invokeSuspend(Object obj) {
+        this.o = obj;
         this.p |= Integer.MIN_VALUE;
         return this.q.b(null, this);
     }

@@ -13,29 +13,21 @@ public class gj2 {
     public final Context a;
     public final MediaBrowser b;
     public final Bundle c;
-    public final cj2 d;
-    public final oi e;
+    public final cj2 d = new cj2(this);
+    public final oi e = new oi(0);
     public xc5 f;
     public Messenger g;
     public pr2 h;
 
-    public gj2(Context r3, ComponentName r4, z05 r5, Bundle r6) {
-        this.d = new cj2(this);
-        this.e = new oi(0);
-        this.a = r3;
-        if (r6 == null) goto L5;
-        Bundle r0 = new Bundle(r6);
-    L6:
-        this.c = r0;
-        r0.putInt("extra_client_version", 1);
-        r0.putInt("extra_calling_pid", Process.myPid());
-        r5.p = this;
-        dj2 r7 = (dj2) r5.o;
-        r7.getClass();
-        this.b = new MediaBrowser(r3, r4, r7, r0);
-        return;
-    L5:
-        r0 = new Bundle();
-        goto L6
+    public gj2(Context context, ComponentName componentName, z05 z05Var, Bundle bundle) {
+        this.a = context;
+        Bundle bundle2 = bundle != null ? new Bundle(bundle) : new Bundle();
+        this.c = bundle2;
+        bundle2.putInt("extra_client_version", 1);
+        bundle2.putInt("extra_calling_pid", Process.myPid());
+        z05Var.p = this;
+        dj2 dj2Var = (dj2) z05Var.o;
+        dj2Var.getClass();
+        this.b = new MediaBrowser(context, componentName, dj2Var, bundle2);
     }
 }

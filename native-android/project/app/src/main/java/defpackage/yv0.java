@@ -7,75 +7,190 @@ import java.lang.reflect.Method;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public abstract class yv0 {
-    public static final boolean a = false;
-    public static final Method b = null;
-    public static final Field c = null;
-    public static final Field d = null;
-    public static final Field e = null;
-    public static final Field f = null;
+    public static final boolean a;
+    public static final Method b;
+    public static final Field c;
+    public static final Field d;
+    public static final Field e;
+    public static final Field f;
 
+    /* JADX WARN: Code duplicated, block: B:25:0x004a  */
+    /* JADX WARN: Code duplicated, block: B:26:0x0057  */
     static {
-        Class<?> r3 = Class.forName("android.graphics.Insets");     // Catch: NoSuchFieldException -> L20 ClassNotFoundException -> L21 NoSuchMethodException -> L22
-        Method r4 = Drawable.class.getMethod("getOpticalInsets", null);     // Catch: NoSuchFieldException -> L20 ClassNotFoundException -> L21 NoSuchMethodException -> L22
-    L37:
-        Field r5 = r3.getField("left");     // Catch: NoSuchFieldException -> L14 ClassNotFoundException -> L16 NoSuchMethodException -> L18
-        Field r6 = r3.getField("top");     // Catch: NoSuchFieldException -> L10 ClassNotFoundException -> L12 NoSuchMethodException -> L13
-        Field r7 = r3.getField("right");     // Catch: Throwable -> L9
-        Field r8 = r3.getField("bottom");     // Catch: Throwable -> L28
-        boolean r9 = true;
-    L24:
-        if (r9 == false) goto L26;
-        b = r4;
-        c = r5;
-        d = r6;
-        e = r7;
-        f = r8;
-        a = true;
-        return;
-    L26:
+        Method method;
+        Field field;
+        Field field2;
+        Field field3;
+        Field field4;
+        boolean z;
+        try {
+            Class<?> cls = Class.forName("android.graphics.Insets");
+            method = Drawable.class.getMethod("getOpticalInsets", null);
+            try {
+                field = cls.getField("left");
+                try {
+                    field2 = cls.getField("top");
+                    try {
+                        field3 = cls.getField("right");
+                        try {
+                            field4 = cls.getField("bottom");
+                            z = true;
+                        } catch (ClassNotFoundException | NoSuchFieldException | NoSuchMethodException unused) {
+                            field4 = null;
+                            z = false;
+                        }
+                    } catch (ClassNotFoundException | NoSuchFieldException | NoSuchMethodException unused2) {
+                        field3 = null;
+                    }
+                } catch (ClassNotFoundException unused3) {
+                    field2 = null;
+                    field3 = field2;
+                    field4 = null;
+                    z = false;
+                    if (z) {
+                        b = method;
+                        c = field;
+                        d = field2;
+                        e = field3;
+                        f = field4;
+                        a = true;
+                        return;
+                    }
+                    b = null;
+                    c = null;
+                    d = null;
+                    e = null;
+                    f = null;
+                    a = false;
+                } catch (NoSuchFieldException unused4) {
+                    field2 = null;
+                    field3 = field2;
+                    field4 = null;
+                    z = false;
+                    if (z) {
+                        b = method;
+                        c = field;
+                        d = field2;
+                        e = field3;
+                        f = field4;
+                        a = true;
+                        return;
+                    }
+                    b = null;
+                    c = null;
+                    d = null;
+                    e = null;
+                    f = null;
+                    a = false;
+                } catch (NoSuchMethodException unused5) {
+                    field2 = null;
+                    field3 = field2;
+                    field4 = null;
+                    z = false;
+                    if (z) {
+                        b = method;
+                        c = field;
+                        d = field2;
+                        e = field3;
+                        f = field4;
+                        a = true;
+                        return;
+                    }
+                    b = null;
+                    c = null;
+                    d = null;
+                    e = null;
+                    f = null;
+                    a = false;
+                }
+            } catch (ClassNotFoundException unused6) {
+                field = null;
+                field2 = field;
+                field3 = field2;
+                field4 = null;
+                z = false;
+                if (z) {
+                    b = method;
+                    c = field;
+                    d = field2;
+                    e = field3;
+                    f = field4;
+                    a = true;
+                    return;
+                }
+                b = null;
+                c = null;
+                d = null;
+                e = null;
+                f = null;
+                a = false;
+            } catch (NoSuchFieldException unused7) {
+                field = null;
+                field2 = field;
+                field3 = field2;
+                field4 = null;
+                z = false;
+                if (z) {
+                    b = method;
+                    c = field;
+                    d = field2;
+                    e = field3;
+                    f = field4;
+                    a = true;
+                    return;
+                }
+                b = null;
+                c = null;
+                d = null;
+                e = null;
+                f = null;
+                a = false;
+            } catch (NoSuchMethodException unused8) {
+                field = null;
+                field2 = field;
+                field3 = field2;
+                field4 = null;
+                z = false;
+                if (z) {
+                    b = method;
+                    c = field;
+                    d = field2;
+                    e = field3;
+                    f = field4;
+                    a = true;
+                    return;
+                }
+                b = null;
+                c = null;
+                d = null;
+                e = null;
+                f = null;
+                a = false;
+            }
+        } catch (ClassNotFoundException unused9) {
+            method = null;
+            field = null;
+        } catch (NoSuchFieldException unused10) {
+            method = null;
+            field = null;
+        } catch (NoSuchMethodException unused11) {
+            method = null;
+            field = null;
+        }
+        if (z) {
+            b = method;
+            c = field;
+            d = field2;
+            e = field3;
+            f = field4;
+            a = true;
+            return;
+        }
         b = null;
         c = null;
         d = null;
         e = null;
         f = null;
         a = false;
-        return;
-    L23:
-        r8 = null;
-        r9 = false;
-    L9:
-        r7 = null;
-        goto L23
-    L12:
-        r6 = null;
-    L11:
-        r7 = r6;
-    L10:
-        r6 = null;
-    L13:
-        r6 = null;
-        goto L11
-    L16:
-        r5 = null;
-    L17:
-        r6 = r5;
-    L14:
-        r5 = null;
-    L15:
-        r6 = r5;
-    L18:
-        r5 = null;
-    L19:
-        r6 = r5;
-    L21:
-        r4 = null;
-        r5 = null;
-    L20:
-        r4 = null;
-        r5 = null;
-    L22:
-        r4 = null;
-        r5 = null;
-        goto L19
     }
 }

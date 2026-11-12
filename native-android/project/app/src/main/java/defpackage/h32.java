@@ -7,11 +7,11 @@ import java.io.StringWriter;
 /* JADX INFO: loaded from: classes.dex */
 public abstract class h32 {
     public final j32 a() {
-        if ((this instanceof j32) == true) goto L5;
+        if (this instanceof j32) {
+            return (j32) this;
+        }
         er1.o(this, "Not a JSON Object: ");
         return null;
-    L5:
-        return (j32) this;
     }
 
     public String b() {
@@ -19,14 +19,15 @@ public abstract class h32 {
     }
 
     public final String toString() {
-        StringWriter r0 = new StringWriter();     // Catch: IOException -> L4
-        q32 r1 = new q32(r0);     // Catch: IOException -> L4
-        r1.r = true;     // Catch: IOException -> L4
-        dz4 r2 = hz4.a;     // Catch: IOException -> L4
-        lk1.d(r1, this);     // Catch: IOException -> L4
-        return r0.toString();
-    L4:
-        e = move-exception;
-        throw new AssertionError(e);
+        try {
+            StringWriter stringWriter = new StringWriter();
+            q32 q32Var = new q32(stringWriter);
+            q32Var.r = true;
+            dz4 dz4Var = hz4.a;
+            lk1.d(q32Var, this);
+            return stringWriter.toString();
+        } catch (IOException e) {
+            throw new AssertionError(e);
+        }
     }
 }

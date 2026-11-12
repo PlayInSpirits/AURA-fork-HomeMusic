@@ -18,100 +18,95 @@ import java.util.concurrent.atomic.AtomicReference;
 public final class y41 implements v11, m51, q51, bi0, ro4, d04, d14, w04, fi1 {
     public final /* synthetic */ int n;
 
-    public /* synthetic */ y41(int r1) {
-        this.n = r1;
+    public /* synthetic */ y41(int i) {
+        this.n = i;
     }
 
-    public static final float e(float r7, float[] r8, float[] r9) {
-        float r0 = Math.abs(r7);
-        float r1 = Math.signum(r7);
-        int r2 = Arrays.binarySearch(r8, r0);
-        if (r2 >= 0) goto L5;
-        int r3 = -(r2 + 1);
-        int r4 = r3 - 1;
-        if (r4 < (r8.length - 1)) goto L14;
-        float r5 = r8[r8.length - 1];
-        float r10 = r9[r8.length - 1];
-        if (r5 != 0.0f) goto L12;
-        return 0.0f;
-    L12:
-        return (r10 / r5) * r7;
-    L14:
-        if (r4 != (-1)) goto L16;
-        float r11 = r8[0];
-        float r12 = r9[0];
-        float r13 = r11;
-        float r14 = 0.0f;
-        float r6 = 0.0f;
-    L18:
-        if (r14 != r13) goto L20;
-        float r15 = 0.0f;
-    L22:
-        return (((r12 - r6) * Math.max(0.0f, Math.min(1.0f, r15))) + r6) * r1;
-    L20:
-        r15 = (r0 - r14) / (r13 - r14);
-        goto L22
-    L16:
-        float r16 = r8[r4];
-        float r17 = r8[r3];
-        r6 = r9[r4];
-        r14 = r16;
-        r12 = r9[r3];
-        r13 = r17;
-        goto L18
-    L5:
-        return r1 * r9[r2];
+    public static final float e(float f, float[] fArr, float[] fArr2) {
+        float f2;
+        float f3;
+        float f4;
+        float f5;
+        float fAbs = Math.abs(f);
+        float fSignum = Math.signum(f);
+        int iBinarySearch = Arrays.binarySearch(fArr, fAbs);
+        if (iBinarySearch >= 0) {
+            return fSignum * fArr2[iBinarySearch];
+        }
+        int i = -(iBinarySearch + 1);
+        int i2 = i - 1;
+        if (i2 >= fArr.length - 1) {
+            float f6 = fArr[fArr.length - 1];
+            float f7 = fArr2[fArr.length - 1];
+            if (f6 == 0.0f) {
+                return 0.0f;
+            }
+            return (f7 / f6) * f;
+        }
+        if (i2 == -1) {
+            float f8 = fArr[0];
+            f4 = fArr2[0];
+            f5 = f8;
+            f3 = 0.0f;
+            f2 = 0.0f;
+        } else {
+            float f9 = fArr[i2];
+            float f10 = fArr[i];
+            f2 = fArr2[i2];
+            f3 = f9;
+            f4 = fArr2[i];
+            f5 = f10;
+        }
+        return (((f4 - f2) * Math.max(0.0f, Math.min(1.0f, f3 == f5 ? 0.0f : (fAbs - f3) / (f5 - f3)))) + f2) * fSignum;
     }
 
-    public static final void h(List r6, StringBuilder r7) {
-        h02 r0 = gb.b0(gb.g0(0, r6.size()), 2);
-        int r1 = r0.n;
-        int r2 = r0.o;
-        int r3 = r0.p;
-        if (r3 <= 0) goto L5;
-        if (r1 > r2) goto L5;
-    L7:
-        String r4 = (String) r6.get(r1);
-        String r5 = (String) r6.get(r1 + 1);
-        if (r1 <= 0) goto L10;
-        r7.append('&');
-    L10:
-        r7.append(r4);
-        if (r5 == null) goto L13;
-        r7.append('=');
-        r7.append(r5);
-    L13:
-        if (r1 == r2) goto L19;
-        r1 = r1 + r3;
-        goto L7
-    L19:
-        return;
-    L5:
-        if (r3 >= 0) goto L15;
-        if (r2 <= r1) goto L7;
-        return;
+    public static final void h(List list, StringBuilder sb) {
+        h02 h02VarB0 = gb.b0(gb.g0(0, list.size()), 2);
+        int i = h02VarB0.n;
+        int i2 = h02VarB0.o;
+        int i3 = h02VarB0.p;
+        if ((i3 <= 0 || i > i2) && (i3 >= 0 || i2 > i)) {
+            return;
+        }
+        while (true) {
+            String str = (String) list.get(i);
+            String str2 = (String) list.get(i + 1);
+            if (i > 0) {
+                sb.append('&');
+            }
+            sb.append(str);
+            if (str2 != null) {
+                sb.append('=');
+                sb.append(str2);
+            }
+            if (i == i2) {
+                return;
+            } else {
+                i += i3;
+            }
+        }
     }
 
-    public static k03 j(int r4, boolean r5) {
-        k03 r0 = new k03();
-        gp3 r1 = App.f(false).c();
-        r1.getClass();
+    public static k03 j(int i, boolean z) {
+        k03 k03Var = new k03();
+        gp3 gp3VarC = App.f(false).c();
+        gp3VarC.getClass();
         Log.d("BrowsingClient", "getGenres()");
-        ((ov) r1.p).i(((pn4) r1.o).f()).enqueue(new o8(r4, r0, r5));
-        return r0;
+        ((ov) gp3VarC.p).i(((pn4) gp3VarC.o).f()).enqueue(new o8(i, k03Var, z));
+        return k03Var;
     }
 
-    private final void k(Object r1) {
+    private final void k(Object obj) {
     }
 
     @Override // defpackage.d04
-    public c04 a(a r1, s92 r2, f04 r3, Context r4) {
-        return new oi1(r1, r2, r3, r4);
+    public c04 a(a aVar, s92 s92Var, f04 f04Var, Context context) {
+        return new oi1(aVar, s92Var, f04Var, context);
     }
 
     @Override // defpackage.v11
     public short b() {
-        return 0;
+        return (short) 0;
     }
 
     @Override // defpackage.fi1
@@ -120,8 +115,8 @@ public final class y41 implements v11, m51, q51, bi0, ro4, d04, d14, w04, fi1 {
     }
 
     @Override // defpackage.ro4
-    public so4 c(y10 r7) {
-        return new bf1((Context) r7.d, (String) r7.e, (uv) r7.f, r7.b, r7.c);
+    public so4 c(y10 y10Var) {
+        return new bf1((Context) y10Var.d, (String) y10Var.e, (uv) y10Var.f, y10Var.b, y10Var.c);
     }
 
     @Override // defpackage.v11
@@ -130,14 +125,14 @@ public final class y41 implements v11, m51, q51, bi0, ro4, d04, d14, w04, fi1 {
     }
 
     @Override // defpackage.v11
-    public boolean f(Context r2, int r3) {
-        if (r3 != 0) goto L5;
-        return false;
-    L5:
-        Intent r1 = new Intent("android.media.action.OPEN_AUDIO_EFFECT_CONTROL_SESSION");
-        r1.putExtra("android.media.extra.AUDIO_SESSION", r3);
-        r1.putExtra("android.media.extra.PACKAGE_NAME", r2.getApplicationContext().getPackageName());
-        r2.sendBroadcast(r1);
+    public boolean f(Context context, int i) {
+        if (i == 0) {
+            return false;
+        }
+        Intent intent = new Intent("android.media.action.OPEN_AUDIO_EFFECT_CONTROL_SESSION");
+        intent.putExtra("android.media.extra.AUDIO_SESSION", i);
+        intent.putExtra("android.media.extra.PACKAGE_NAME", context.getApplicationContext().getPackageName());
+        context.sendBroadcast(intent);
         return true;
     }
 
@@ -147,20 +142,21 @@ public final class y41 implements v11, m51, q51, bi0, ro4, d04, d14, w04, fi1 {
     }
 
     @Override // defpackage.c11
-    public boolean i(Object r1, File r2, db3 r3) {
-        vw.d(((bi1) ((vh1) ((q04) r1).get()).n.b).a.d.asReadOnlyBuffer(), r2);     // Catch: IOException -> L6
-        return true;
-    L6:
-        e = move-exception;
-        if (Log.isLoggable("GifEncoder", 5) == false) goto L14;
-        Log.w("GifEncoder", "Failed to encode GIF drawable data", e);
-        return false;
-    L14:
-        return false;
+    public boolean i(Object obj, File file, db3 db3Var) throws Throwable {
+        try {
+            vw.d(((bi1) ((vh1) ((q04) obj).get()).n.b).a.d.asReadOnlyBuffer(), file);
+            return true;
+        } catch (IOException e) {
+            if (!Log.isLoggable("GifEncoder", 5)) {
+                return false;
+            }
+            Log.w("GifEncoder", "Failed to encode GIF drawable data", e);
+            return false;
+        }
     }
 
     @Override // defpackage.w04
-    public int l(db3 r1) {
+    public int l(db3 db3Var) {
         return 1;
     }
 
@@ -170,19 +166,19 @@ public final class y41 implements v11, m51, q51, bi0, ro4, d04, d14, w04, fi1 {
     }
 
     @Override // defpackage.v11
-    public Integer n(short r1) {
+    public Integer n(short s) {
         return null;
     }
 
     @Override // defpackage.v11
-    public void o(Context r2, int r3) {
-        if (r3 != 0) goto L4;
-        return;
-    L4:
-        Intent r1 = new Intent("android.media.action.CLOSE_AUDIO_EFFECT_CONTROL_SESSION");
-        r1.putExtra("android.media.extra.AUDIO_SESSION", r3);
-        r1.putExtra("android.media.extra.PACKAGE_NAME", r2.getApplicationContext().getPackageName());
-        r2.sendBroadcast(r1);
+    public void o(Context context, int i) {
+        if (i == 0) {
+            return;
+        }
+        Intent intent = new Intent("android.media.action.CLOSE_AUDIO_EFFECT_CONTROL_SESSION");
+        intent.putExtra("android.media.extra.AUDIO_SESSION", i);
+        intent.putExtra("android.media.extra.PACKAGE_NAME", context.getApplicationContext().getPackageName());
+        context.sendBroadcast(intent);
     }
 
     @Override // defpackage.m51
@@ -191,53 +187,42 @@ public final class y41 implements v11, m51, q51, bi0, ro4, d04, d14, w04, fi1 {
     }
 
     @Override // defpackage.d14
-    public q04 q(q04 r4, db3 r5) {
-        ByteBuffer r3 = ((bi1) ((vh1) r4.get()).n.b).a.d.asReadOnlyBuffer();
-        AtomicReference r6 = vw.a;
-        if (r3.isReadOnly() == false) goto L5;
-    L7:
-        k35 r7 = null;
-    L8:
-        if (r7 != null) goto L10;
-    L14:
-        ByteBuffer r8 = r3.asReadOnlyBuffer();
-        byte[] r9 = new byte[r8.limit()];
-        ByteBuffer r0 = (ByteBuffer) r8.position(0);
-        r8.get(r9);
-        byte[] r10 = r9;
-    L16:
-        return new ld(r10);
-    L10:
-        if (r7.a != 0) goto L14;
-        if (r7.b != r7.c.length) goto L14;
-        r10 = r3.array();
-        goto L16
-    L5:
-        if (r3.hasArray() == false) goto L7;
-        r7 = new k35(r3.array(), r3.arrayOffset(), r3.limit());
-        goto L8
+    public q04 q(q04 q04Var, db3 db3Var) {
+        byte[] bArrArray;
+        ByteBuffer byteBufferAsReadOnlyBuffer = ((bi1) ((vh1) q04Var.get()).n.b).a.d.asReadOnlyBuffer();
+        AtomicReference atomicReference = vw.a;
+        k35 k35Var = (byteBufferAsReadOnlyBuffer.isReadOnly() || !byteBufferAsReadOnlyBuffer.hasArray()) ? null : new k35(byteBufferAsReadOnlyBuffer.array(), byteBufferAsReadOnlyBuffer.arrayOffset(), byteBufferAsReadOnlyBuffer.limit());
+        if (k35Var != null && k35Var.a == 0 && k35Var.b == k35Var.c.length) {
+            bArrArray = byteBufferAsReadOnlyBuffer.array();
+        } else {
+            ByteBuffer byteBufferAsReadOnlyBuffer2 = byteBufferAsReadOnlyBuffer.asReadOnlyBuffer();
+            byte[] bArr = new byte[byteBufferAsReadOnlyBuffer2.limit()];
+            byteBufferAsReadOnlyBuffer2.get(bArr);
+            bArrArray = bArr;
+        }
+        return new ld(bArrArray);
     }
 
     @Override // defpackage.v11
-    public void setEnabled(boolean r1) {
+    public void setEnabled(boolean z) {
     }
 
     @Override // defpackage.m51
-    public wv4 t(int r1, int r2) {
+    public wv4 t(int i, int i2) {
         throw new UnsupportedOperationException();
     }
 
     @Override // defpackage.v11
-    public void v(short r1, short r2) {
+    public void v(short s, short s2) {
     }
 
     @Override // defpackage.m51
-    public void w(m84 r1) {
+    public void w(m84 m84Var) {
         throw new UnsupportedOperationException();
     }
 
     @Override // defpackage.v11
-    public Short z(short r1) {
+    public Short z(short s) {
         return null;
     }
 }

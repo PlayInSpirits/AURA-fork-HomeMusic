@@ -12,41 +12,34 @@ public final class jf5 extends BroadcastReceiver {
     public Context a;
     public final wo0 b;
 
-    public jf5(wo0 r1) {
-        this.b = r1;
+    public jf5(wo0 wo0Var) {
+        this.b = wo0Var;
     }
 
     @Override // android.content.BroadcastReceiver
-    public final void onReceive(Context r3, Intent r4) {
-        Uri r5 = r4.getData();
-        if (r5 == null) goto L5;
-        String r6 = r5.getSchemeSpecificPart();
-    L7:
-        if ("com.google.android.gms".equals(r6) == false) goto L22;
-        wo0 r7 = this.b;
-        df5 r0 = (df5) ((qf5) r7.o).p;
-        r0.p.set(null);
-        zw2 r1 = r0.t.A;
-        r1.sendMessage(r1.obtainMessage(3));
-        AlertDialog r8 = (AlertDialog) r7.n;
-        if (r8.isShowing() == false) goto L11;
-        r8.dismiss();
-    L11:
-        monitor-enter(this);
-        Context r9 = this.a;     // Catch: Throwable -> L15
-        if (r9 == null) goto L17;
-        r9.unregisterReceiver(this);     // Catch: Throwable -> L15
-    L17:
-        this.a = null;     // Catch: Throwable -> L15
-        monitor-exit(this);
-        return;
-    L15:
-        th = move-exception;
-        throw th;
-    L22:
-        return;
-    L5:
-        r6 = null;
-        goto L7
+    public final void onReceive(Context context, Intent intent) {
+        Uri data = intent.getData();
+        if ("com.google.android.gms".equals(data != null ? data.getSchemeSpecificPart() : null)) {
+            wo0 wo0Var = this.b;
+            df5 df5Var = (df5) ((qf5) wo0Var.o).p;
+            df5Var.p.set(null);
+            zw2 zw2Var = df5Var.t.A;
+            zw2Var.sendMessage(zw2Var.obtainMessage(3));
+            AlertDialog alertDialog = (AlertDialog) wo0Var.n;
+            if (alertDialog.isShowing()) {
+                alertDialog.dismiss();
+            }
+            synchronized (this) {
+                try {
+                    Context context2 = this.a;
+                    if (context2 != null) {
+                        context2.unregisterReceiver(this);
+                    }
+                    this.a = null;
+                } catch (Throwable th) {
+                    throw th;
+                }
+            }
+        }
     }
 }

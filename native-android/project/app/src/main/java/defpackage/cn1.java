@@ -9,7 +9,7 @@ import java.util.Map;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class cn1 extends dn1 {
-    public static final cn1 l = null;
+    public static final cn1 l;
     public final List d;
     public final List e;
     public final List f;
@@ -20,88 +20,63 @@ public final class cn1 extends dn1 {
     public final List k;
 
     static {
-        List r2 = Collections.EMPTY_LIST;
-        l = new cn1("", r2, r2, r2, r2, r2, r2, null, r2, false, Collections.EMPTY_MAP, r2);
+        List list = Collections.EMPTY_LIST;
+        l = new cn1("", list, list, list, list, list, list, null, list, false, Collections.EMPTY_MAP, list);
     }
 
-    public cn1(String r2, List r3, List r4, List r5, List r6, List r7, List r8, tb1 r9, List r10, boolean r11, Map r12, List r13) {
-        super(r2, r3, r11);
-        ArrayList r14 = new ArrayList();
-        int r15 = 0;
-    L4:
-        if (r15 >= r4.size()) goto L9;
-        Uri r16 = ((bn1) r4.get(r15)).a;
-        if (r14.contains(r16) == true) goto L8;
-        r14.add(r16);
-    L8:
-        r15 = r15 + 1;
-        goto L4
-    L9:
-        b(r5, r14);
-        b(r6, r14);
-        b(r7, r14);
-        b(r8, r14);
-        this.d = Collections.unmodifiableList(r14);
-        this.e = Collections.unmodifiableList(r4);
-        Collections.unmodifiableList(r5);
-        this.f = Collections.unmodifiableList(r6);
-        this.g = Collections.unmodifiableList(r7);
-        Collections.unmodifiableList(r8);
-        this.h = r9;
-        if (r10 == null) goto L12;
-        List r17 = Collections.unmodifiableList(r10);
-    L13:
-        this.i = r17;
-        this.j = Collections.unmodifiableMap(r12);
-        this.k = Collections.unmodifiableList(r13);
-        return;
-    L12:
-        r17 = null;
-        goto L13
+    public cn1(String str, List list, List list2, List list3, List list4, List list5, List list6, tb1 tb1Var, List list7, boolean z, Map map, List list8) {
+        super(str, list, z);
+        ArrayList arrayList = new ArrayList();
+        for (int i = 0; i < list2.size(); i++) {
+            Uri uri = ((bn1) list2.get(i)).a;
+            if (!arrayList.contains(uri)) {
+                arrayList.add(uri);
+            }
+        }
+        b(list3, arrayList);
+        b(list4, arrayList);
+        b(list5, arrayList);
+        b(list6, arrayList);
+        this.d = Collections.unmodifiableList(arrayList);
+        this.e = Collections.unmodifiableList(list2);
+        Collections.unmodifiableList(list3);
+        this.f = Collections.unmodifiableList(list4);
+        this.g = Collections.unmodifiableList(list5);
+        Collections.unmodifiableList(list6);
+        this.h = tb1Var;
+        this.i = list7 != null ? Collections.unmodifiableList(list7) : null;
+        this.j = Collections.unmodifiableMap(map);
+        this.k = Collections.unmodifiableList(list8);
     }
 
-    public static void b(List r3, ArrayList r4) {
-        int r0 = 0;
-    L4:
-        if (r0 >= r3.size()) goto L9;
-        Uri r1 = ((an1) r3.get(r0)).a;
-        if (r4.contains(r1) == true) goto L8;
-        r4.add(r1);
-    L8:
-        r0 = r0 + 1;
-        goto L4
+    public static void b(List list, ArrayList arrayList) {
+        for (int i = 0; i < list.size(); i++) {
+            Uri uri = ((an1) list.get(i)).a;
+            if (!arrayList.contains(uri)) {
+                arrayList.add(uri);
+            }
+        }
     }
 
-    public static ArrayList c(List r7, int r8, List r9) {
-        ArrayList r0 = new ArrayList(r9.size());
-        int r2 = 0;
-    L4:
-        if (r2 >= r7.size()) goto L15;
-        Object r3 = r7.get(r2);
-        int r4 = 0;
-    L7:
-        if (r4 >= r9.size()) goto L14;
-        fm4 r5 = (fm4) r9.get(r4);
-        if (r5.o != r8) goto L13;
-        if (r5.p != r2) goto L13;
-        r0.add(r3);
-    L13:
-        r4 = r4 + 1;
-    L14:
-        r2 = r2 + 1;
-        goto L4
-    L15:
-        return r0;
+    public static ArrayList c(List list, int i, List list2) {
+        ArrayList arrayList = new ArrayList(list2.size());
+        for (int i2 = 0; i2 < list.size(); i2++) {
+            Object obj = list.get(i2);
+            for (int i3 = 0; i3 < list2.size(); i3++) {
+                fm4 fm4Var = (fm4) list2.get(i3);
+                if (fm4Var.o == i && fm4Var.p == i2) {
+                    arrayList.add(obj);
+                    break;
+                }
+            }
+        }
+        return arrayList;
     }
 
     @Override // defpackage.dn1
-    public final Object a(List r14) {
-        ArrayList r3 = c(this.e, 0, r14);
-        List r4 = Collections.EMPTY_LIST;
-        ArrayList r5 = c(this.f, 1, r14);
-        ArrayList r6 = c(this.g, 2, r14);
-        Map r11 = this.j;
-        List r12 = this.k;
-        return new cn1(this.a, this.b, r3, r4, r5, r6, r4, this.h, this.i, this.c, r11, r12);
+    public final Object a(List list) {
+        ArrayList arrayListC = c(this.e, 0, list);
+        List list2 = Collections.EMPTY_LIST;
+        return new cn1(this.a, this.b, arrayListC, list2, c(this.f, 1, list), c(this.g, 2, list), list2, this.h, this.i, this.c, this.j, this.k);
     }
 }

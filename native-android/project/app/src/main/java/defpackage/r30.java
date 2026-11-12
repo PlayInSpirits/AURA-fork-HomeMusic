@@ -9,34 +9,32 @@ public final class r30 extends AnimatorListenerAdapter {
     public final /* synthetic */ int a;
     public final /* synthetic */ s30 b;
 
-    public /* synthetic */ r30(s30 r1, int r2) {
-        this.a = r2;
-        this.b = r1;
+    public /* synthetic */ r30(s30 s30Var, int i) {
+        this.a = i;
+        this.b = s30Var;
     }
 
     @Override // android.animation.AnimatorListenerAdapter, android.animation.Animator.AnimatorListener
-    public void onAnimationEnd(Animator r2) {
-        switch(this.a) {
-            case 1: goto L6;
-            default: goto L4;
-        };
-    L4:
-        super.onAnimationEnd(r2);
-        return;
-    L6:
-        this.b.b.g(false);
+    public void onAnimationEnd(Animator animator) {
+        switch (this.a) {
+            case 1:
+                this.b.b.g(false);
+                break;
+            default:
+                super.onAnimationEnd(animator);
+                break;
+        }
     }
 
     @Override // android.animation.AnimatorListenerAdapter, android.animation.Animator.AnimatorListener
-    public void onAnimationStart(Animator r2) {
-        switch(this.a) {
-            case 0: goto L6;
-            default: goto L4;
-        };
-    L4:
-        super.onAnimationStart(r2);
-        return;
-    L6:
-        this.b.b.g(true);
+    public void onAnimationStart(Animator animator) {
+        switch (this.a) {
+            case 0:
+                this.b.b.g(true);
+                break;
+            default:
+                super.onAnimationStart(animator);
+                break;
+        }
     }
 }

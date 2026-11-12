@@ -9,148 +9,149 @@ import okhttp3.internal.http2.StreamResetException;
 public final class wq1 implements ej4 {
     public final long n;
     public boolean o;
-    public final tv p;
-    public final tv q;
+    public final tv p = new tv();
+    public final tv q = new tv();
     public tl1 r;
     public boolean s;
     public final /* synthetic */ yq1 t;
 
-    public wq1(yq1 r1, long r2, boolean r4) {
-        this.t = r1;
-        this.n = r2;
-        this.o = r4;
-        this.p = new tv();
-        this.q = new tv();
+    public wq1(yq1 yq1Var, long j, boolean z) {
+        this.t = yq1Var;
+        this.n = j;
+        this.o = z;
     }
 
     @Override // java.io.Closeable, java.lang.AutoCloseable
     public final void close() {
-        yq1 r0 = this.t;
-        monitor-enter(r0);
-        this.s = true;     // Catch: Throwable -> L12
-        tv r1 = this.q;     // Catch: Throwable -> L12
-        long r2 = r1.o;     // Catch: Throwable -> L12
-        r1.b();     // Catch: Throwable -> L12
-        r0.notifyAll();     // Catch: Throwable -> L12
-        monitor-exit(r0);
-        if (r2 <= 0) goto L10;
-        yq1 r3 = this.t;
-        tl1 r4 = ze5.a;
-        r3.b.s(r2);
-    L10:
+        long j;
+        yq1 yq1Var = this.t;
+        synchronized (yq1Var) {
+            this.s = true;
+            tv tvVar = this.q;
+            j = tvVar.o;
+            tvVar.b();
+            yq1Var.notifyAll();
+        }
+        if (j > 0) {
+            yq1 yq1Var2 = this.t;
+            tl1 tl1Var = ze5.a;
+            yq1Var2.b.s(j);
+        }
         this.t.a();
-        return;
-    L12:
-        th = move-exception;
-        throw th;
     }
 
+    /* JADX WARN: Code duplicated, block: B:62:0x00d9 A[LOOP:0: B:4:0x000d->B:62:0x00d9, LOOP_END] */
+    /* JADX WARN: Code duplicated, block: B:65:0x00e1 A[RETURN] */
+    /* JADX WARN: Code duplicated, block: B:66:0x00e2 A[DONT_INVERT] */
+    /* JADX WARN: Code duplicated, block: B:67:0x00e4 A[RETURN] */
+    /* JADX WARN: Code duplicated, block: B:68:0x00e5  */
+    /* JADX WARN: Code duplicated, block: B:90:0x00dd A[SYNTHETIC] */
     @Override // defpackage.ej4
-    public final long read(tv r28, long r29) {
-        r28.getClass();
-        long r3 = 0;
-        if (r29 < 0) goto L79;
-    L4:
-        yq1 r5 = this.t;
-        monitor-enter(r5);
-        r5.b.getClass();     // Catch: Throwable -> L16
-        vq1 r6 = r5.i;     // Catch: Throwable -> L16
-        boolean r8 = true;
-        if (r6.p == false) goto L9;
-    L12:
-        boolean r7 = true;
-    L13:
-        if (r7 == false) goto L81;
-        r5.j.h();     // Catch: Throwable -> L16
-    L81:
-        monitor-enter(r5);     // Catch: Throwable -> L32
-        b21 r9 = r5.l;     // Catch: Throwable -> L71
-        monitor-exit(r5);     // Catch: Throwable -> L32
-        if (r9 != null) goto L23;
-    L37:
-        Throwable r10 = null;
-    L39:
-        if (this.s == true) goto L70;
-        tv r11 = this.q;     // Catch: Throwable -> L32
-        long r12 = r11.o;     // Catch: Throwable -> L32
-        if (r12 <= r3) goto L49;
-        long r17 = r11.read(r28, Math.min(r29, r12));     // Catch: Throwable -> L32
-        os.c(r5.c, r17, 0, 2);     // Catch: Throwable -> L32
-        long r13 = r5.c.b();     // Catch: Throwable -> L32
-        if (r10 != null) goto L47;
-        long r25 = r3;
-        if (r13 < (r5.b.D.a() / 2)) goto L48;
-        r5.b.F(r5.a, r13);     // Catch: Throwable -> L32
-        os.c(r5.c, 0, r13, 1);     // Catch: Throwable -> L32
-    L48:
-        r8 = false;
-    L57:
-        if (r7 == false) goto L59;
-        r5.j.k();     // Catch: Throwable -> L16
-    L59:
-        monitor-exit(r5);
-        this.t.b.C.getClass();
-        if (r8 == false) goto L64;
-        r3 = r25;
-        goto L4
-    L64:
-        if (r17 == (-1)) goto L66;
-        return r17;
-    L66:
-        if (r10 != null) goto L68;
-        return -1;
-    L68:
-        throw r10;
-    L47:
-        r25 = r3;
-        goto L48
-    L49:
-        r25 = r3;
-        if (this.o == true) goto L56;
-        if (r10 != null) goto L56;
-        r5.wait();     // Catch: Throwable -> L32 InterruptedException -> L54
-    L53:
-        r17 = -1;
-        goto L57
-    L54:
-        Thread.currentThread().interrupt();     // Catch: Throwable -> L32
-        throw new InterruptedIOException();     // Catch: Throwable -> L32
-    L56:
-        r8 = false;
-        goto L53
-    L70:
-        throw new IOException("stream closed");     // Catch: Throwable -> L32
-    L23:
-        if (this.o == true) goto L37;
-        r10 = r5.m;     // Catch: Throwable -> L32
-        if (r10 != null) goto L39;
-        monitor-enter(r5);     // Catch: Throwable -> L32
-        b21 r14 = r5.l;     // Catch: Throwable -> L34
-        monitor-exit(r5);     // Catch: Throwable -> L32
-        r14.getClass();     // Catch: Throwable -> L32
-        r10 = new StreamResetException(r14);     // Catch: Throwable -> L32
-        goto L39
-    L34:
-        th = move-exception;
-        throw th;     // Catch: Throwable -> L32
-    L71:
-        th = move-exception;
-        throw th;     // Catch: Throwable -> L32
-    L32:
-        th = move-exception;
-        if (r7 == false) goto L76;
-        r5.j.k();     // Catch: Throwable -> L16
-    L76:
-        throw th;     // Catch: Throwable -> L16
-    L9:
-        if (r6.n == true) goto L12;
-        r7 = false;
-    L16:
-        th = move-exception;
-        throw th;
-    L79:
-        kf2.e(b11.k("byteCount < 0: ", r29));
-        return 0;
+    public final long read(tv tvVar, long j) throws Throwable {
+        boolean z;
+        boolean z2;
+        b21 b21Var;
+        Throwable streamResetException;
+        long j2;
+        long j3;
+        tvVar.getClass();
+        long j4 = 0;
+        if (j < 0) {
+            kf2.e(b11.k("byteCount < 0: ", j));
+            return 0L;
+        }
+        while (true) {
+            yq1 yq1Var = this.t;
+            synchronized (yq1Var) {
+                yq1Var.b.getClass();
+                vq1 vq1Var = yq1Var.i;
+                z = true;
+                z2 = vq1Var.p || vq1Var.n;
+                if (z2) {
+                    yq1Var.j.h();
+                }
+                try {
+                    synchronized (yq1Var) {
+                        b21Var = yq1Var.l;
+                    }
+                    this.t.b.C.getClass();
+                    if (z) {
+                        if (j3 != -1) {
+                            return j3;
+                        }
+                        if (streamResetException == null) {
+                            return -1L;
+                        }
+                        throw streamResetException;
+                    }
+                    j4 = j2;
+                } catch (Throwable th) {
+                    if (z2) {
+                        yq1Var.j.k();
+                    }
+                    throw th;
+                }
+            }
+            if (b21Var != null && !this.o) {
+                streamResetException = yq1Var.m;
+                if (streamResetException == null) {
+                    synchronized (yq1Var) {
+                        b21 b21Var2 = yq1Var.l;
+                        b21Var2.getClass();
+                        streamResetException = new StreamResetException(b21Var2);
+                    }
+                }
+                throw th;
+            }
+            streamResetException = null;
+            if (this.s) {
+                throw new IOException("stream closed");
+            }
+            tv tvVar2 = this.q;
+            long j5 = tvVar2.o;
+            if (j5 > j4) {
+                j3 = tvVar2.read(tvVar, Math.min(j, j5));
+                os.c(yq1Var.c, j3, 0L, 2);
+                long jB = yq1Var.c.b();
+                if (streamResetException == null) {
+                    j2 = j4;
+                    if (jB >= yq1Var.b.D.a() / 2) {
+                        yq1Var.b.F(yq1Var.a, jB);
+                        os.c(yq1Var.c, 0L, jB, 1);
+                    }
+                } else {
+                    j2 = j4;
+                }
+                z = false;
+            } else {
+                j2 = j4;
+                if (this.o || streamResetException != null) {
+                    z = false;
+                } else {
+                    try {
+                        yq1Var.wait();
+                    } catch (InterruptedException unused) {
+                        Thread.currentThread().interrupt();
+                        throw new InterruptedIOException();
+                    }
+                }
+                j3 = -1;
+            }
+            if (z2) {
+                yq1Var.j.k();
+            }
+            this.t.b.C.getClass();
+            if (z) {
+                if (j3 != -1) {
+                    return j3;
+                }
+                if (streamResetException == null) {
+                    return -1L;
+                }
+                throw streamResetException;
+            }
+            j4 = j2;
+        }
     }
 
     @Override // defpackage.ej4

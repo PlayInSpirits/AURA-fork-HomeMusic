@@ -13,19 +13,15 @@ import com.eddyizm.tempus.ui.crash.CrashActivity;
 public class jf0 extends kc1 {
     public TextView l0;
 
-    public jf0() {
+    @Override // defpackage.kc1
+    public final View H(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
+        View viewInflate = layoutInflater.inflate(R.layout.fragment_crash_logs, viewGroup, false);
+        this.l0 = (TextView) viewInflate.findViewById(R.id.crashLogsText);
+        return viewInflate;
     }
 
     @Override // defpackage.kc1
-    public final View H(LayoutInflater r2, ViewGroup r3, Bundle r4) {
-        View r5 = r2.inflate(R.layout.fragment_crash_logs, r3, false);
-        this.l0 = (TextView) r5.findViewById(R.id.crashLogsText);
-        return r5;
-    }
-
-    @Override // defpackage.kc1
-    public final void T(View r1, Bundle r2) {
-        String r3 = ((CrashActivity) l()).N;
-        this.l0.setText(r3);
+    public final void T(View view, Bundle bundle) {
+        this.l0.setText(((CrashActivity) e()).N);
     }
 }

@@ -9,18 +9,17 @@ public final class by3 extends oq2 implements yx3 {
     public final String b;
     public final pq2 c;
     public boolean d;
-    public int e;
+    public int e = -1;
     public int f;
     public xx3 g;
     public int h;
     public final /* synthetic */ cy3 i;
 
-    public by3(cy3 r1, String r2, String r3, pq2 r4) {
-        this.i = r1;
-        this.e = -1;
-        this.a = r2;
-        this.b = r3;
-        this.c = r4;
+    public by3(cy3 cy3Var, String str, String str2, pq2 pq2Var) {
+        this.i = cy3Var;
+        this.a = str;
+        this.b = str2;
+        this.c = pq2Var;
     }
 
     @Override // defpackage.yx3
@@ -29,73 +28,72 @@ public final class by3 extends oq2 implements yx3 {
     }
 
     @Override // defpackage.yx3
-    public final void b(xx3 r7) {
-        this.g = r7;
-        int r3 = r7.e;
-        r7.e = r3 + 1;
-        Bundle r5 = new Bundle();
-        r5.putString("routeId", this.a);
-        r5.putString("routeGroupId", this.b);
-        r5.putParcelable("routeControllerOptions", this.c.a);
-        int r2 = r7.d;
-        r7.d = r2 + 1;
-        r7.b(3, r2, r3, null, r5);
-        this.h = r3;
-        if (this.d == false) goto L11;
-        r7.a(r3);
-        int r8 = this.e;
-        if (r8 < 0) goto L7;
-        r7.c(this.h, r8);
-        this.e = -1;
-    L7:
-        int r9 = this.f;
-        if (r9 == 0) goto L12;
-        r7.d(this.h, r9);
-        this.f = 0;
-        return;
-    L12:
-        return;
+    public final void b(xx3 xx3Var) {
+        this.g = xx3Var;
+        int i = xx3Var.e;
+        xx3Var.e = i + 1;
+        Bundle bundle = new Bundle();
+        bundle.putString("routeId", this.a);
+        bundle.putString("routeGroupId", this.b);
+        bundle.putParcelable("routeControllerOptions", this.c.a);
+        int i2 = xx3Var.d;
+        xx3Var.d = i2 + 1;
+        xx3Var.b(3, i2, i, null, bundle);
+        this.h = i;
+        if (this.d) {
+            xx3Var.a(i);
+            int i3 = this.e;
+            if (i3 >= 0) {
+                xx3Var.c(this.h, i3);
+                this.e = -1;
+            }
+            int i4 = this.f;
+            if (i4 != 0) {
+                xx3Var.d(this.h, i4);
+                this.f = 0;
+            }
+        }
     }
 
     @Override // defpackage.yx3
     public final void c() {
-        xx3 r0 = this.g;
-        if (r0 == null) goto L6;
-        int r3 = this.h;
-        int r2 = r0.d;
-        r0.d = r2 + 1;
-        r0.b(4, r2, r3, null, null);
-        this.g = null;
-        this.h = 0;
-        return;
+        xx3 xx3Var = this.g;
+        if (xx3Var != null) {
+            int i = this.h;
+            int i2 = xx3Var.d;
+            xx3Var.d = i2 + 1;
+            xx3Var.b(4, i2, i, null, null);
+            this.g = null;
+            this.h = 0;
+        }
     }
 
     @Override // defpackage.oq2
     public final void d() {
-        cy3 r0 = this.i;
-        r0.x.remove(this);
+        cy3 cy3Var = this.i;
+        cy3Var.x.remove(this);
         c();
-        r0.l();
+        cy3Var.l();
     }
 
     @Override // defpackage.oq2
     public final void e() {
         this.d = true;
-        xx3 r0 = this.g;
-        if (r0 == null) goto L6;
-        r0.a(this.h);
-        return;
+        xx3 xx3Var = this.g;
+        if (xx3Var != null) {
+            xx3Var.a(this.h);
+        }
     }
 
     @Override // defpackage.oq2
-    public final void f(int r2) {
-        xx3 r0 = this.g;
-        if (r0 == null) goto L6;
-        r0.c(this.h, r2);
-        return;
-    L6:
-        this.e = r2;
-        this.f = 0;
+    public final void f(int i) {
+        xx3 xx3Var = this.g;
+        if (xx3Var != null) {
+            xx3Var.c(this.h, i);
+        } else {
+            this.e = i;
+            this.f = 0;
+        }
     }
 
     @Override // defpackage.oq2
@@ -104,26 +102,26 @@ public final class by3 extends oq2 implements yx3 {
     }
 
     @Override // defpackage.oq2
-    public final void h(int r8) {
+    public final void h(int i) {
         this.d = false;
-        xx3 r1 = this.g;
-        if (r1 == null) goto L6;
-        int r4 = this.h;
-        Bundle r6 = new Bundle();
-        r6.putInt("unselectReason", r8);
-        int r3 = r1.d;
-        r1.d = r3 + 1;
-        r1.b(6, r3, r4, null, r6);
-        return;
+        xx3 xx3Var = this.g;
+        if (xx3Var != null) {
+            int i2 = this.h;
+            Bundle bundle = new Bundle();
+            bundle.putInt("unselectReason", i);
+            int i3 = xx3Var.d;
+            xx3Var.d = i3 + 1;
+            xx3Var.b(6, i3, i2, null, bundle);
+        }
     }
 
     @Override // defpackage.oq2
-    public final void i(int r2) {
-        xx3 r0 = this.g;
-        if (r0 == null) goto L6;
-        r0.d(this.h, r2);
-        return;
-    L6:
-        this.f += r2;
+    public final void i(int i) {
+        xx3 xx3Var = this.g;
+        if (xx3Var != null) {
+            xx3Var.d(this.h, i);
+        } else {
+            this.f += i;
+        }
     }
 }

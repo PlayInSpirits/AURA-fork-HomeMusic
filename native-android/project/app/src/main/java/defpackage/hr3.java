@@ -17,8 +17,8 @@ import java.util.Map;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class hr3 implements no2, m51, hd2, kd2, o44 {
-    public static final Map e0 = null;
-    public static final tb1 f0 = null;
+    public static final Map e0;
+    public static final tb1 f0;
     public final z05 A;
     public final q90 B;
     public final ar3 C;
@@ -64,33 +64,30 @@ public final class hr3 implements no2, m51, hd2, kd2, o44 {
     public final i61 z;
 
     static {
-        HashMap r0 = new HashMap();
-        r0.put("Icy-MetaData", "1");
-        e0 = Collections.unmodifiableMap(r0);
-        sb1 r1 = new sb1();
-        r1.a = "icy";
-        r1.m = lw2.m("application/x-icy");
-        f0 = new tb1(r1);
+        HashMap map = new HashMap();
+        map.put("Icy-MetaData", "1");
+        e0 = Collections.unmodifiableMap(map);
+        sb1 sb1Var = new sb1();
+        sb1Var.a = "icy";
+        sb1Var.m = lw2.m("application/x-icy");
+        f0 = new tb1(sb1Var);
     }
 
-    public hr3(Uri r2, ci0 r3, z05 r4, ww0 r5, sw0 r6, i80 r7, ue1 r8, kr3 r9, n9 r10, String r11, int r12, tb1 r13, long r14, ty3 r16) {
-        this.n = r2;
-        this.o = r3;
-        this.p = r5;
-        this.s = r6;
-        this.q = r7;
-        this.r = r8;
-        this.t = r9;
-        this.u = r10;
-        this.v = r11;
-        this.w = r12;
-        this.x = r13;
-        if (r16 == null) goto L5;
-        i61 r15 = new i61(r16);
-    L6:
-        this.z = r15;
-        this.A = r4;
-        this.y = r14;
+    public hr3(Uri uri, ci0 ci0Var, z05 z05Var, ww0 ww0Var, sw0 sw0Var, i80 i80Var, ue1 ue1Var, kr3 kr3Var, n9 n9Var, String str, int i, tb1 tb1Var, long j, ty3 ty3Var) {
+        this.n = uri;
+        this.o = ci0Var;
+        this.p = ww0Var;
+        this.s = sw0Var;
+        this.q = i80Var;
+        this.r = ue1Var;
+        this.t = kr3Var;
+        this.u = n9Var;
+        this.v = str;
+        this.w = i;
+        this.x = tb1Var;
+        this.z = ty3Var != null ? new i61(ty3Var) : new i61("ProgressiveMediaPeriod");
+        this.A = z05Var;
+        this.y = j;
         this.B = new q90();
         this.C = new ar3(this, 1);
         this.D = new ar3(this, 2);
@@ -100,455 +97,289 @@ public final class hr3 implements no2, m51, hd2, kd2, o44 {
         this.H = new dr3[0];
         this.Z = -9223372036854775807L;
         this.S = 1;
-        return;
-    L5:
-        r15 = new i61("ProgressiveMediaPeriod");
-        goto L6
     }
 
     public final void A() {
-        long r0 = this.y;
-        if (this.d0 == false) goto L5;
-        return;
-    L5:
-        if (this.L == false) goto L7;
-        return;
-    L7:
-        if (this.K == true) goto L9;
-        return;
-    L9:
-        if (this.P == null) goto L80;
-        p44[] r2 = this.I;
-        int r3 = r2.length;
-        int r5 = 0;
-    L12:
-        if (r5 >= r3) goto L17;
-        if (r2[r5].r() == null) goto L81;
-        r5 = r5 + 1;
-        goto L12
-    L81:
-        return;
-    L17:
-        q90 r4 = this.B;
-        monitor-enter(r4);
-        r4.b = false;     // Catch: Throwable -> L63
-        monitor-exit(r4);
-        int r6 = this.I.length;
-        sv4[] r7 = new sv4[r6];
-        boolean[] r8 = new boolean[r6];
-        int r9 = 0;
-    L23:
-        if (r9 >= r6) goto L56;
-        tb1 r10 = this.I[r9].r();
-        r10.getClass();
-        String r11 = r10.n;
-        boolean r12 = lw2.i(r11);
-        if (r12 == false) goto L27;
-    L30:
-        boolean r13 = true;
-    L31:
-        r8[r9] = r13;
-        this.M = r13 | this.M;
-        boolean r14 = lw2.j(r11);
-        if (r0 == (-9223372036854775807L)) goto L36;
-        if (r6 != 1) goto L36;
-        if (r14 == false) goto L36;
-        boolean r15 = true;
-    L37:
-        this.N = r15;
-        iv1 r16 = this.G;
-        if (r16 == null) goto L55;
-        int r17 = r16.a;
-        if (r12 == false) goto L42;
-    L43:
-        qv2 r18 = r10.l;
-        if (r18 != null) goto L46;
-        qv2 r19 = new qv2(new pv2[]{r16});
-    L47:
-        sb1 r20 = r10.a();
-        r20.k = r19;
-        r10 = new tb1(r20);
-    L48:
-        if (r12 == false) goto L55;
-        if (r10.h != (-1)) goto L55;
-        if (r10.i != (-1)) goto L55;
-        if (r17 == (-1)) goto L55;
-        sb1 r21 = r10.a();
-        r21.h = r17;
-        r10 = new tb1(r21);
-        goto L55
-    L46:
-        r19 = r18.a(new pv2[]{r16});
-        goto L47
-    L42:
-        if (this.J[r9].b == false) goto L48;
-    L55:
-        int r22 = this.p.f(r10);
-        sb1 r23 = r10.a();
-        r23.N = r22;
-        tb1 r24 = new tb1(r23);
-        r7[r9] = new sv4(Integer.toString(r9), new tb1[]{r24});
-        this.V = r24.t | this.V;
-        r9 = r9 + 1;
-    L36:
-        r15 = false;
-        goto L37
-    L27:
-        if (lw2.l(r11) == true) goto L30;
-        r13 = false;
-        goto L31
-    L56:
-        tv4 r25 = new tv4(r7);
-        ss0 r26 = new ss0();
-        r26.n = r25;
-        r26.o = r8;
-        int r27 = r25.a;
-        r26.p = new boolean[r27];
-        r26.q = new boolean[r27];
-        this.O = r26;
-        if (this.N == true) goto L59;
-    L61:
+        long j = this.y;
+        if (this.d0 || this.L || !this.K || this.P == null) {
+            return;
+        }
+        for (p44 p44Var : this.I) {
+            if (p44Var.r() == null) {
+                return;
+            }
+        }
+        q90 q90Var = this.B;
+        synchronized (q90Var) {
+            q90Var.b = false;
+        }
+        int length = this.I.length;
+        sv4[] sv4VarArr = new sv4[length];
+        boolean[] zArr = new boolean[length];
+        for (int i = 0; i < length; i++) {
+            tb1 tb1VarR = this.I[i].r();
+            tb1VarR.getClass();
+            String str = tb1VarR.n;
+            boolean zI = lw2.i(str);
+            boolean z = zI || lw2.l(str);
+            zArr[i] = z;
+            this.M = z | this.M;
+            this.N = j != -9223372036854775807L && length == 1 && lw2.j(str);
+            iv1 iv1Var = this.G;
+            if (iv1Var != null) {
+                int i2 = iv1Var.a;
+                if (zI || this.J[i].b) {
+                    qv2 qv2Var = tb1VarR.l;
+                    qv2 qv2Var2 = qv2Var == null ? new qv2(iv1Var) : qv2Var.a(iv1Var);
+                    sb1 sb1VarA = tb1VarR.a();
+                    sb1VarA.k = qv2Var2;
+                    tb1VarR = new tb1(sb1VarA);
+                }
+                if (zI && tb1VarR.h == -1 && tb1VarR.i == -1 && i2 != -1) {
+                    sb1 sb1VarA2 = tb1VarR.a();
+                    sb1VarA2.h = i2;
+                    tb1VarR = new tb1(sb1VarA2);
+                }
+            }
+            int iF = this.p.f(tb1VarR);
+            sb1 sb1VarA3 = tb1VarR.a();
+            sb1VarA3.N = iF;
+            tb1 tb1Var = new tb1(sb1VarA3);
+            sv4VarArr[i] = new sv4(Integer.toString(i), tb1Var);
+            this.V = tb1Var.t | this.V;
+        }
+        tv4 tv4Var = new tv4(sv4VarArr);
+        ss0 ss0Var = new ss0();
+        ss0Var.n = tv4Var;
+        ss0Var.o = zArr;
+        int i3 = tv4Var.a;
+        ss0Var.p = new boolean[i3];
+        ss0Var.q = new boolean[i3];
+        this.O = ss0Var;
+        if (this.N && this.Q == -9223372036854775807L) {
+            this.Q = j;
+            this.P = new br3(this, this.P);
+        }
         this.t.u(this.Q, this.P, this.R);
         this.L = true;
-        mo2 r1 = this.F;
-        r1.getClass();
-        r1.b(this);
-        return;
-    L59:
-        if (this.Q != (-9223372036854775807L)) goto L61;
-        this.Q = r0;
-        this.P = new br3(this, this.P);
-    L63:
-        th = move-exception;
-        throw th;
+        mo2 mo2Var = this.F;
+        mo2Var.getClass();
+        mo2Var.b(this);
     }
 
-    public final void B(int r14) {
+    public final void B(int i) {
         v();
-        ss0 r0 = this.O;
-        boolean[] r1 = (boolean[]) r0.q;
-        if (r1[r14] == true) goto L6;
-        tb1 r6 = ((tv4) r0.n).a(r14).d[0];
-        un2 r3 = new un2(1, lw2.h(r6.n), r6, 0, null, f35.i0(this.Y), -9223372036854775807L);
-        ue1 r13 = this.r;
-        r13.i(new bt2(r13, r3));
-        r1[r14] = true;
-        return;
+        ss0 ss0Var = this.O;
+        boolean[] zArr = (boolean[]) ss0Var.q;
+        if (zArr[i]) {
+            return;
+        }
+        tb1 tb1Var = ((tv4) ss0Var.n).a(i).d[0];
+        un2 un2Var = new un2(1, lw2.h(tb1Var.n), tb1Var, 0, null, f35.i0(this.Y), -9223372036854775807L);
+        ue1 ue1Var = this.r;
+        ue1Var.i(new bt2(ue1Var, un2Var));
+        zArr[i] = true;
     }
 
-    public final void C(int r5) {
+    public final void C(int i) {
         v();
-        if (this.a0 == true) goto L5;
-        return;
-    L5:
-        if (this.M == false) goto L9;
-        if (((boolean[]) this.O.o)[r5] == true) goto L9;
-        return;
-    L9:
-        if (this.I[r5].s(false) == true) goto L19;
-        this.Z = 0;
-        this.a0 = false;
-        this.U = true;
-        this.Y = 0;
-        this.b0 = 0;
-        p44[] r6 = this.I;
-        int r1 = r6.length;
-        int r2 = 0;
-    L12:
-        if (r2 >= r1) goto L14;
-        r6[r2].x(false);
-        r2 = r2 + 1;
-        goto L12
-    L14:
-        mo2 r7 = this.F;
-        r7.getClass();
-        r7.j(this);
-        return;
+        if (this.a0) {
+            if ((!this.M || ((boolean[]) this.O.o)[i]) && !this.I[i].s(false)) {
+                this.Z = 0L;
+                this.a0 = false;
+                this.U = true;
+                this.Y = 0L;
+                this.b0 = 0;
+                for (p44 p44Var : this.I) {
+                    p44Var.x(false);
+                }
+                mo2 mo2Var = this.F;
+                mo2Var.getClass();
+                mo2Var.j(this);
+            }
+        }
     }
 
-    public final wv4 D(gr3 r6) {
-        int r0 = this.I.length;
-        int r1 = 0;
-    L3:
-        if (r1 >= r0) goto L10;
-        if (r6.equals(this.J[r1]) == true) goto L7;
-        r1 = r1 + 1;
-        goto L3
-    L7:
-        return this.I[r1];
-    L10:
-        if (this.K == false) goto L13;
-        l93.q0("ProgressiveMediaPeriod", "Extractor added new track (id=" + r6.a + ") after finishing tracks.");
-        return new tq0();
-    L13:
-        ww0 r2 = this.p;
-        r2.getClass();
-        p44 r3 = new p44(this.u, r2, this.s);
-        dr3 r4 = new dr3(r3);
-        r3.f = this;
-        int r5 = r0 + 1;
-        gr3[] r7 = (gr3[]) Arrays.copyOf(this.J, r5);
-        r7[r0] = r6;
-        this.J = r7;
-        p44[] r8 = (p44[]) Arrays.copyOf(this.I, r5);
-        r8[r0] = r3;
-        this.I = r8;
-        dr3[] r9 = (dr3[]) Arrays.copyOf(this.H, r5);
-        r9[r0] = r4;
-        this.H = r9;
-        return r4;
+    public final wv4 D(gr3 gr3Var) {
+        int length = this.I.length;
+        for (int i = 0; i < length; i++) {
+            if (gr3Var.equals(this.J[i])) {
+                return this.I[i];
+            }
+        }
+        if (this.K) {
+            l93.q0("ProgressiveMediaPeriod", "Extractor added new track (id=" + gr3Var.a + ") after finishing tracks.");
+            return new tq0();
+        }
+        ww0 ww0Var = this.p;
+        ww0Var.getClass();
+        p44 p44Var = new p44(this.u, ww0Var, this.s);
+        dr3 dr3Var = new dr3(p44Var);
+        p44Var.f = this;
+        int i2 = length + 1;
+        gr3[] gr3VarArr = (gr3[]) Arrays.copyOf(this.J, i2);
+        gr3VarArr[length] = gr3Var;
+        this.J = gr3VarArr;
+        p44[] p44VarArr = (p44[]) Arrays.copyOf(this.I, i2);
+        p44VarArr[length] = p44Var;
+        this.I = p44VarArr;
+        dr3[] dr3VarArr = (dr3[]) Arrays.copyOf(this.H, i2);
+        dr3VarArr[length] = dr3Var;
+        this.H = dr3VarArr;
+        return dr3Var;
     }
 
-    public final void E(m84 r7) {
-        if (this.G != null) goto L5;
-        m84 r0 = r7;
-    L6:
-        this.P = r0;
-        this.Q = r7.g();
-        int r3 = 1;
-        if (this.X == false) goto L9;
-    L11:
-        boolean r1 = false;
-    L12:
-        this.R = r1;
-        if (r1 == false) goto L15;
-        r3 = 7;
-    L15:
-        this.S = r3;
-        if (this.L == false) goto L19;
-        this.t.u(this.Q, r7, r1);
-        return;
-    L19:
-        A();
-        return;
-    L9:
-        if (r7.g() != (-9223372036854775807L)) goto L11;
-        r1 = true;
-        goto L12
-    L5:
-        r0 = new bo(-9223372036854775807L);
-        goto L6
+    public final void E(m84 m84Var) {
+        this.P = this.G == null ? m84Var : new bo(-9223372036854775807L);
+        this.Q = m84Var.g();
+        boolean z = !this.X && m84Var.g() == -9223372036854775807L;
+        this.R = z;
+        this.S = z ? 7 : 1;
+        if (this.L) {
+            this.t.u(this.Q, m84Var, z);
+        } else {
+            A();
+        }
     }
 
     public final void F() {
-        z05 r4 = this.A;
-        q90 r6 = this.B;
-        er3 r0 = new er3(this, this.n, this.o, r4, this, r6);
-        if (this.L == false) goto L14;
-        rr2.w(z());
-        long r2 = this.Q;
-        if (r2 != (-9223372036854775807L)) goto L7;
-    L10:
-        m84 r9 = this.P;
-        r9.getClass();
-        long r3 = r9.e(this.Z).a.b;
-        long r7 = this.Z;
-        r0.f.a = r3;
-        r0.i = r7;
-        r0.h = true;
-        int r10 = 0;
-        r0.l = false;
-        p44[] r5 = this.I;
-        int r8 = r5.length;
-    L11:
-        if (r10 >= r8) goto L13;
-        p44 r11 = r5[r10];
-        r11.t = this.Z;
-        r10 = r10 + 1;
-        goto L11
-    L13:
-        this.Z = -9223372036854775807L;
-        goto L14
-    L7:
-        if (this.Z <= r2) goto L10;
-        this.c0 = true;
-        this.Z = -9223372036854775807L;
-        return;
-    L14:
+        er3 er3Var = new er3(this, this.n, this.o, this.A, this, this.B);
+        if (this.L) {
+            rr2.w(z());
+            long j = this.Q;
+            if (j != -9223372036854775807L && this.Z > j) {
+                this.c0 = true;
+                this.Z = -9223372036854775807L;
+                return;
+            }
+            m84 m84Var = this.P;
+            m84Var.getClass();
+            long j2 = m84Var.e(this.Z).a.b;
+            long j3 = this.Z;
+            er3Var.f.a = j2;
+            er3Var.i = j3;
+            er3Var.h = true;
+            er3Var.l = false;
+            for (p44 p44Var : this.I) {
+                p44Var.t = this.Z;
+            }
+            this.Z = -9223372036854775807L;
+        }
         this.b0 = x();
-        int r12 = this.q.D(this.S);
-        this.z.u(r0, this, r12);
+        this.z.u(er3Var, this, this.q.D(this.S));
     }
 
     public final boolean G() {
-        if (this.U == false) goto L5;
-        return true;
-    L5:
-        if (z() == true) goto L11;
-        return false;
-    L11:
-        return true;
+        return this.U || z();
     }
 
     @Override // defpackage.kd2
     public final void a() {
-        p44[] r0 = this.I;
-        int r1 = r0.length;
-        int r2 = 0;
-    L4:
-        if (r2 >= r1) goto L9;
-        p44 r4 = r0[r2];
-        r4.x(true);
-        pw0 r5 = r4.h;
-        if (r5 == null) goto L8;
-        r5.d(r4.e);
-        r4.h = null;
-        r4.g = null;
-    L8:
-        r2 = r2 + 1;
-        goto L4
-    L9:
-        z05 r7 = this.A;
-        k51 r3 = (k51) r7.p;
-        if (r3 == null) goto L12;
-        r3.a();
-        r7.p = null;
-    L12:
-        r7.q = null;
+        for (p44 p44Var : this.I) {
+            p44Var.x(true);
+            pw0 pw0Var = p44Var.h;
+            if (pw0Var != null) {
+                pw0Var.d(p44Var.e);
+                p44Var.h = null;
+                p44Var.g = null;
+            }
+        }
+        z05 z05Var = this.A;
+        k51 k51Var = (k51) z05Var.p;
+        if (k51Var != null) {
+            k51Var.a();
+            z05Var.p = null;
+        }
+        z05Var.q = null;
     }
 
     @Override // defpackage.hd2
-    public final void b(jd2 r13, long r14, long r16, boolean r18) {
-        er3 r15 = (er3) r13;
-        yl4 r0 = r15.b;
-        ed2 r1 = new ed2(r15.j, r0.p, r0.q, r14, r16, r0.o);
+    public final void b(jd2 jd2Var, long j, long j2, boolean z) {
+        er3 er3Var = (er3) jd2Var;
+        yl4 yl4Var = er3Var.b;
+        ed2 ed2Var = new ed2(er3Var.j, yl4Var.p, yl4Var.q, j, j2, yl4Var.o);
         this.q.getClass();
-        this.r.q(r1, 1, -1, null, 0, null, r15.i, this.Q);
-        if (r18 == true) goto L12;
-        p44[] r17 = this.I;
-        int r2 = r17.length;
-        int r3 = 0;
-    L5:
-        if (r3 >= r2) goto L8;
-        r17[r3].x(false);
-        r3 = r3 + 1;
-        goto L5
-    L8:
-        if (this.W <= 0) goto L13;
-        mo2 r19 = this.F;
-        r19.getClass();
-        r19.j(this);
-        return;
-    L13:
-        return;
+        this.r.q(ed2Var, 1, -1, null, 0, null, er3Var.i, this.Q);
+        if (z) {
+            return;
+        }
+        for (p44 p44Var : this.I) {
+            p44Var.x(false);
+        }
+        if (this.W > 0) {
+            mo2 mo2Var = this.F;
+            mo2Var.getClass();
+            mo2Var.j(this);
+        }
     }
 
     @Override // defpackage.no2
-    public final long c(t41[] r9, boolean[] r10, q44[] r11, boolean[] r12, long r13) {
+    public final long c(t41[] t41VarArr, boolean[] zArr, q44[] q44VarArr, boolean[] zArr2, long j) {
+        t41 t41Var;
         v();
-        ss0 r0 = this.O;
-        tv4 r1 = (tv4) r0.n;
-        boolean[] r2 = (boolean[]) r0.p;
-        int r3 = this.W;
-        int r4 = 0;
-        int r5 = 0;
-    L4:
-        if (r5 >= r9.length) goto L14;
-        q44 r6 = r11[r5];
-        if (r6 == null) goto L12;
-        if (r9[r5] != null) goto L10;
-    L11:
-        int r7 = ((fr3) r6).n;
-        rr2.w(r2[r7]);
-        this.W--;
-        r2[r7] = false;
-        r11[r5] = null;
-        goto L12
-    L10:
-        if (r10[r5] == false) goto L11;
-    L12:
-        r5 = r5 + 1;
-        goto L4
-    L14:
-        if (this.T == false) goto L19;
-        if (r3 != 0) goto L17;
-    L16:
-        boolean r14 = true;
-    L23:
-        int r8 = 0;
-    L25:
-        if (r8 >= r9.length) goto L48;
-        if (r11[r8] != null) goto L46;
-        t41 r15 = r9[r8];
-        if (r15 == null) goto L46;
-        if (r15.length() != 1) goto L33;
-        boolean r16 = true;
-    L34:
-        rr2.w(r16);
-        if (r15.i(0) != 0) goto L37;
-        boolean r17 = true;
-    L38:
-        rr2.w(r17);
-        int r18 = r1.b(r15.c());
-        rr2.w(!r2[r18]);
-        this.W++;
-        r2[r18] = true;
-        this.V = r15.m().t | this.V;
-        r11[r8] = new fr3(this, r18);
-        r12[r8] = true;
-        if (r14 == true) goto L46;
-        p44 r19 = this.I[r18];
-        if (r19.o() != 0) goto L43;
-    L45:
-        r14 = false;
-        goto L46
-    L43:
-        if (r19.z(true, r13) == true) goto L45;
-        r14 = true;
-        goto L46
-    L37:
-        r17 = false;
-        goto L38
-    L33:
-        r16 = false;
-    L46:
-        r8 = r8 + 1;
-        goto L25
-    L48:
-        if (this.W != 0) goto L58;
-        this.a0 = false;
-        this.U = false;
-        this.V = false;
-        i61 r20 = this.z;
-        if (r20.l() == false) goto L55;
-        p44[] r110 = this.I;
-        int r111 = r110.length;
-    L52:
-        if (r4 >= r111) goto L54;
-        r110[r4].j();
-        r4 = r4 + 1;
-        goto L52
-    L54:
-        r20.d();
-    L66:
+        ss0 ss0Var = this.O;
+        tv4 tv4Var = (tv4) ss0Var.n;
+        boolean[] zArr3 = (boolean[]) ss0Var.p;
+        int i = this.W;
+        int i2 = 0;
+        for (int i3 = 0; i3 < t41VarArr.length; i3++) {
+            q44 q44Var = q44VarArr[i3];
+            if (q44Var != null && (t41VarArr[i3] == null || !zArr[i3])) {
+                int i4 = ((fr3) q44Var).n;
+                rr2.w(zArr3[i4]);
+                this.W--;
+                zArr3[i4] = false;
+                q44VarArr[i3] = null;
+            }
+        }
+        boolean z = !this.T ? j == 0 || this.N : i != 0;
+        for (int i5 = 0; i5 < t41VarArr.length; i5++) {
+            if (q44VarArr[i5] == null && (t41Var = t41VarArr[i5]) != null) {
+                rr2.w(t41Var.length() == 1);
+                rr2.w(t41Var.i(0) == 0);
+                int iB = tv4Var.b(t41Var.c());
+                rr2.w(!zArr3[iB]);
+                this.W++;
+                zArr3[iB] = true;
+                this.V = t41Var.m().t | this.V;
+                q44VarArr[i5] = new fr3(this, iB);
+                zArr2[i5] = true;
+                if (!z) {
+                    p44 p44Var = this.I[iB];
+                    z = (p44Var.o() == 0 || p44Var.z(true, j)) ? false : true;
+                }
+            }
+        }
+        if (this.W == 0) {
+            this.a0 = false;
+            this.U = false;
+            this.V = false;
+            i61 i61Var = this.z;
+            if (i61Var.l()) {
+                p44[] p44VarArr = this.I;
+                int length = p44VarArr.length;
+                while (i2 < length) {
+                    p44VarArr[i2].j();
+                    i2++;
+                }
+                i61Var.d();
+            } else {
+                this.c0 = false;
+                for (p44 p44Var2 : this.I) {
+                    p44Var2.x(false);
+                }
+            }
+        } else if (z) {
+            j = i(j);
+            while (i2 < q44VarArr.length) {
+                if (q44VarArr[i2] != null) {
+                    zArr2[i2] = true;
+                }
+                i2++;
+            }
+        }
         this.T = true;
-        return r13;
-    L55:
-        this.c0 = false;
-        p44[] r21 = this.I;
-        int r112 = r21.length;
-        int r113 = 0;
-    L56:
-        if (r113 >= r112) goto L66;
-        r21[r113].x(false);
-        r113 = r113 + 1;
-        goto L56
-    L58:
-        if (r14 == false) goto L66;
-        r13 = i(r13);
-    L61:
-        if (r4 >= r11.length) goto L66;
-        if (r11[r4] == null) goto L65;
-        r12[r4] = true;
-    L65:
-        r4 = r4 + 1;
-    L17:
-        r14 = false;
-        goto L23
-    L19:
-        if (r13 == 0) goto L17;
-        if (this.N == true) goto L17;
-        goto L17
+        return j;
     }
 
     @Override // defpackage.da4
@@ -557,235 +388,191 @@ public final class hr3 implements no2, m51, hd2, kd2, o44 {
     }
 
     @Override // defpackage.no2
-    public final long e(long r9, n84 r11) {
+    public final long e(long j, n84 n84Var) {
         v();
-        if (this.P.b() == true) goto L6;
-        return 0;
-    L6:
-        l84 r8 = this.P.e(r9);
-        return r11.a(r9, r8.a.a, r8.b.a);
+        if (!this.P.b()) {
+            return 0L;
+        }
+        l84 l84VarE = this.P.e(j);
+        return n84Var.a(j, l84VarE.a.a, l84VarE.b.a);
     }
 
     @Override // defpackage.da4
     public final boolean f() {
-        if (this.z.l() == false) goto L14;
-        q90 r1 = this.B;
-        monitor-enter(r1);
-        boolean r0 = r1.b;     // Catch: Throwable -> L11
-        monitor-exit(r1);
-        if (r0 == false) goto L18;
-        return true;
-    L18:
-        return false;
-    L11:
-        th = move-exception;
-        throw th;
-    L14:
-        return false;
+        boolean z;
+        if (!this.z.l()) {
+            return false;
+        }
+        q90 q90Var = this.B;
+        synchronized (q90Var) {
+            z = q90Var.b;
+        }
+        return z;
     }
 
     @Override // defpackage.hd2
-    public final void g(jd2 r14, long r15, long r17) {
-        er3 r16 = (er3) r14;
-        if (this.Q == (-9223372036854775807L)) goto L5;
-    L11:
-        yl4 r0 = r16.b;
-        ed2 r2 = new ed2(r16.j, r0.p, r0.q, r15, r17, r0.o);
+    public final void g(jd2 jd2Var, long j, long j2) {
+        er3 er3Var = (er3) jd2Var;
+        if (this.Q == -9223372036854775807L && this.P != null) {
+            long jY = y(true);
+            long j3 = jY == Long.MIN_VALUE ? 0L : jY + 10000;
+            this.Q = j3;
+            this.t.u(j3, this.P, this.R);
+        }
+        yl4 yl4Var = er3Var.b;
+        ed2 ed2Var = new ed2(er3Var.j, yl4Var.p, yl4Var.q, j, j2, yl4Var.o);
         this.q.getClass();
-        long r9 = r16.i;
-        long r11 = this.Q;
-        this.r.r(r2, 1, -1, null, 0, null, r9, r11);
+        this.r.r(ed2Var, 1, -1, null, 0, null, er3Var.i, this.Q);
         this.c0 = true;
-        mo2 r18 = this.F;
-        r18.getClass();
-        r18.j(this);
-        return;
-    L5:
-        if (this.P == null) goto L11;
-        long r3 = y(true);
-        if (r3 != Long.MIN_VALUE) goto L9;
-        long r4 = 0;
-    L10:
-        this.Q = r4;
-        m84 r1 = this.P;
-        boolean r5 = this.R;
-        this.t.u(r4, r1, r5);
-        goto L11
-    L9:
-        r4 = r3 + 10000;
-        goto L10
+        mo2 mo2Var = this.F;
+        mo2Var.getClass();
+        mo2Var.j(this);
     }
 
     @Override // defpackage.no2
-    public final void h() {
-        int r0 = this.q.D(this.S);
-        i61 r1 = this.z;
-        IOException r2 = (IOException) r1.q;
-        if (r2 != null) goto L23;
-        id2 r3 = (id2) r1.p;
-        if (r3 == null) goto L16;
-        if (r0 != Integer.MIN_VALUE) goto L9;
-        r0 = r3.n;
-    L9:
-        IOException r4 = r3.r;
-        if (r4 == null) goto L16;
-        if (r3.s <= r0) goto L16;
-        throw r4;
-    L16:
-        if (this.c0 == true) goto L18;
-        return;
-    L18:
-        if (this.L == false) goto L21;
-        return;
-    L21:
-        throw ParserException.a(null, "Loading finished before preparation is complete.");
-    L23:
-        throw r2;
+    public final void h() throws IOException {
+        int iD = this.q.D(this.S);
+        i61 i61Var = this.z;
+        IOException iOException = (IOException) i61Var.q;
+        if (iOException != null) {
+            throw iOException;
+        }
+        id2 id2Var = (id2) i61Var.p;
+        if (id2Var != null) {
+            if (iD == Integer.MIN_VALUE) {
+                iD = id2Var.n;
+            }
+            IOException iOException2 = id2Var.r;
+            if (iOException2 != null && id2Var.s > iD) {
+                throw iOException2;
+            }
+        }
+        if (this.c0 && !this.L) {
+            throw ParserException.a(null, "Loading finished before preparation is complete.");
+        }
     }
 
+    /* JADX WARN: Code duplicated, block: B:41:0x008a  */
+    /* JADX WARN: Code duplicated, block: B:43:0x008f A[LOOP:1: B:42:0x008d->B:43:0x008f, LOOP_END] */
+    /* JADX WARN: Code duplicated, block: B:46:0x009b  */
+    /* JADX WARN: Code duplicated, block: B:48:0x00a4 A[LOOP:2: B:47:0x00a2->B:48:0x00a4, LOOP_END] */
+    /* JADX WARN: Instruction removed from duplicated block: B:41:0x008a, please report this as an issue */
+    /* JADX WARN: Instruction removed from duplicated block: B:46:0x009b, please report this as an issue */
     @Override // defpackage.no2
-    public final long i(long r10) {
+    public final long i(long j) {
+        int i;
         v();
-        boolean[] r0 = (boolean[]) this.O.o;
-        if (this.P.b() == true) goto L6;
-        r10 = 0;
-    L6:
-        int r1 = 0;
+        boolean[] zArr = (boolean[]) this.O.o;
+        if (!this.P.b()) {
+            j = 0;
+        }
         this.U = false;
-        if (this.Y != r10) goto L9;
-        boolean r2 = true;
-    L10:
-        this.Y = r10;
-        if (z() == false) goto L14;
-        this.Z = r10;
-        return r10;
-    L14:
-        int r3 = this.S;
-        i61 r5 = this.z;
-        if (r3 != 7) goto L17;
-    L39:
-        this.a0 = false;
-        this.Z = r10;
-        this.c0 = false;
-        this.V = false;
-        if (r5.l() == false) goto L46;
-        p44[] r9 = this.I;
-        int r4 = r9.length;
-    L42:
-        if (r1 >= r4) goto L44;
-        r9[r1].j();
-        r1 = r1 + 1;
-        goto L42
-    L44:
-        r5.d();
-        return r10;
-    L46:
-        r5.q = null;
-        p44[] r11 = this.I;
-        int r6 = r11.length;
-        int r7 = 0;
-    L47:
-        if (r7 >= r6) goto L49;
-        r11[r7].x(false);
-        r7 = r7 + 1;
-    L49:
-        return r10;
-    L17:
-        if (this.c0 == false) goto L19;
-    L20:
-        int r8 = this.I.length;
-        int r12 = 0;
-    L21:
-        if (r12 >= r8) goto L49;
-        p44 r13 = this.I[r12];
-        if (this.H[r12].d.get() != cr3.n) goto L38;
-        if (r13.o() != 0) goto L29;
-        if (r2 == true) goto L38;
-    L29:
-        if (this.N == false) goto L31;
-        boolean r14 = r13.y(r13.q);
-    L32:
-        if (r14 == true) goto L38;
-        if (r0[r12] == true) goto L39;
-        if (this.M == true) goto L38;
-    L31:
-        r14 = r13.z(this.c0, r10);
-    L38:
-        r12 = r12 + 1;
-        goto L21
-    L19:
-        if (r5.l() == false) goto L39;
-    L9:
-        r2 = false;
-        goto L10
+        boolean z = this.Y == j;
+        this.Y = j;
+        if (z()) {
+            this.Z = j;
+            return j;
+        }
+        int i2 = this.S;
+        i61 i61Var = this.z;
+        if (i2 == 7 || !(this.c0 || i61Var.l())) {
+            this.a0 = false;
+            this.Z = j;
+            this.c0 = false;
+            this.V = false;
+            if (i61Var.l()) {
+                i61Var.q = null;
+                for (p44 p44Var : this.I) {
+                    p44Var.x(false);
+                }
+                break;
+            }
+            for (p44 p44Var2 : this.I) {
+                p44Var2.j();
+            }
+            i61Var.d();
+            return j;
+        }
+        int length = this.I.length;
+        for (int i3 = 0; i3 < length; i3++) {
+            p44 p44Var3 = this.I[i3];
+            if (this.H[i3].d.get() == cr3.n && (p44Var3.o() != 0 || !z)) {
+                if (!(this.N ? p44Var3.y(p44Var3.q) : p44Var3.z(this.c0, j)) && (zArr[i3] || !this.M)) {
+                    this.a0 = false;
+                    this.Z = j;
+                    this.c0 = false;
+                    this.V = false;
+                    if (i61Var.l()) {
+                        i61Var.q = null;
+                        while (i < r0) {
+                            p44Var.x(false);
+                        }
+                        break;
+                        break;
+                    }
+                    while (i < r0) {
+                        p44Var2.j();
+                    }
+                    i61Var.d();
+                    return j;
+                }
+            }
+        }
+        return j;
     }
 
     @Override // defpackage.hd2
-    public final void j(jd2 r18, long r19, long r21, int r23) {
-        er3 r1 = (er3) r18;
-        yl4 r2 = r1.b;
-        if (r23 != 0) goto L5;
-        ed2 r6 = new ed2(r19, r1.j);
-    L6:
-        long r12 = r1.i;
-        long r14 = this.Q;
-        this.r.u(r6, 1, -1, null, 0, null, r12, r14, r23);
-        return;
-    L5:
-        r6 = new ed2(r1.j, r2.p, r2.q, r19, r21, r2.o);
-        goto L6
+    public final void j(jd2 jd2Var, long j, long j2, int i) {
+        er3 er3Var = (er3) jd2Var;
+        yl4 yl4Var = er3Var.b;
+        this.r.u(i == 0 ? new ed2(j, er3Var.j) : new ed2(er3Var.j, yl4Var.p, yl4Var.q, j, j2, yl4Var.o), 1, -1, null, 0, null, er3Var.i, this.Q, i);
     }
 
     @Override // defpackage.no2
-    public final void k(boolean r6, long r7) {
-        if (this.N == true) goto L11;
+    public final void k(boolean z, long j) throws Throwable {
+        if (this.N) {
+            return;
+        }
         v();
-        if (z() == true) goto L13;
-        boolean[] r0 = (boolean[]) this.O.p;
-        int r1 = this.I.length;
-        int r2 = 0;
-    L9:
-        if (r2 >= r1) goto L14;
-        this.I[r2].i(r7, r6, r0[r2]);
-        r2 = r2 + 1;
-        goto L9
-    L14:
-        return;
-    L13:
-        return;
+        if (z()) {
+            return;
+        }
+        boolean[] zArr = (boolean[]) this.O.p;
+        int length = this.I.length;
+        for (int i = 0; i < length; i++) {
+            this.I[i].i(j, z, zArr[i]);
+        }
     }
 
     @Override // defpackage.no2
     public final long l() {
-        if (this.V == false) goto L7;
-        this.V = false;
-        return this.Y;
-    L7:
-        if (this.U == true) goto L9;
-        return -9223372036854775807L;
-    L9:
-        if (this.c0 == false) goto L11;
-    L12:
+        if (this.V) {
+            this.V = false;
+            return this.Y;
+        }
+        if (!this.U) {
+            return -9223372036854775807L;
+        }
+        if (!this.c0 && x() <= this.b0) {
+            return -9223372036854775807L;
+        }
         this.U = false;
         return this.Y;
-    L11:
-        if (x() > this.b0) goto L12;
-        return -9223372036854775807L;
     }
 
     @Override // defpackage.no2
-    public final void m(mo2 r6, long r7) {
-        this.F = r6;
-        tb1 r8 = this.x;
-        if (r8 == null) goto L6;
-        t(0, 3).g(r8);
-        E(new ux1(-9223372036854775807L, new long[]{0}, new long[]{0}));
-        p();
-        this.Z = r7;
-        return;
-    L6:
-        this.B.d();
-        F();
+    public final void m(mo2 mo2Var, long j) {
+        this.F = mo2Var;
+        tb1 tb1Var = this.x;
+        if (tb1Var == null) {
+            this.B.d();
+            F();
+        } else {
+            t(0, 3).g(tb1Var);
+            E(new ux1(-9223372036854775807L, new long[]{0}, new long[]{0}));
+            p();
+            this.Z = j;
+        }
     }
 
     @Override // defpackage.no2
@@ -795,29 +582,23 @@ public final class hr3 implements no2, m51, hd2, kd2, o44 {
     }
 
     @Override // defpackage.da4
-    public final boolean o(pd2 r2) {
-        if (this.c0 == true) goto L21;
-        i61 r3 = this.z;
-        if (((IOException) r3.q) == null) goto L8;
-        return false;
-    L8:
-        if (this.a0 == false) goto L10;
-        return false;
-    L10:
-        if (this.L == true) goto L14;
-        if (this.x != null) goto L14;
-    L16:
-        boolean r0 = this.B.d();
-        if (r3.l() == true) goto L20;
+    public final boolean o(pd2 pd2Var) {
+        if (this.c0) {
+            return false;
+        }
+        i61 i61Var = this.z;
+        if (((IOException) i61Var.q) != null || this.a0) {
+            return false;
+        }
+        if ((this.L || this.x != null) && this.W == 0) {
+            return false;
+        }
+        boolean zD = this.B.d();
+        if (i61Var.l()) {
+            return zD;
+        }
         F();
         return true;
-    L20:
-        return r0;
-    L14:
-        if (this.W != 0) goto L16;
-        return false;
-    L21:
-        return false;
     }
 
     @Override // defpackage.m51
@@ -828,53 +609,44 @@ public final class hr3 implements no2, m51, hd2, kd2, o44 {
 
     @Override // defpackage.da4
     public final long q() {
+        long jY;
+        boolean z;
+        long j;
         v();
-        if (this.c0 == false) goto L5;
-    L45:
-        return Long.MIN_VALUE;
-    L5:
-        if (this.W == 0) goto L45;
-        if (z() == false) goto L12;
-        return this.Z;
-    L12:
-        if (this.M == false) goto L36;
-        int r0 = this.I.length;
-        int r6 = 0;
-        long r7 = Long.MAX_VALUE;
-    L14:
-        if (r6 >= r0) goto L38;
-        ss0 r9 = this.O;
-        if (((boolean[]) r9.o)[r6] == false) goto L35;
-        if (((boolean[]) r9.p)[r6] == false) goto L35;
-        p44 r10 = this.I[r6];
-        monitor-enter(r10);
-        boolean r11 = r10.w;     // Catch: Throwable -> L32
-        monitor-exit(r10);
-        if (r11 == true) goto L35;
-        p44 r12 = this.I[r6];
-        monitor-enter(r12);
-        long r13 = r12.v;     // Catch: Throwable -> L29
-        monitor-exit(r12);
-        r7 = Math.min(r7, r13);
-    L29:
-        th = move-exception;
-        throw th;
-    L32:
-        th = move-exception;
-        throw th;
-    L35:
-        r6 = r6 + 1;
-    L38:
-        if (r7 != Long.MAX_VALUE) goto L41;
-        r7 = y(false);
-    L41:
-        if (r7 == Long.MIN_VALUE) goto L43;
-        return r7;
-    L43:
-        return this.Y;
-    L36:
-        r7 = Long.MAX_VALUE;
-        goto L38
+        if (this.c0 || this.W == 0) {
+            return Long.MIN_VALUE;
+        }
+        if (z()) {
+            return this.Z;
+        }
+        if (this.M) {
+            int length = this.I.length;
+            jY = Long.MAX_VALUE;
+            for (int i = 0; i < length; i++) {
+                ss0 ss0Var = this.O;
+                if (((boolean[]) ss0Var.o)[i] && ((boolean[]) ss0Var.p)[i]) {
+                    p44 p44Var = this.I[i];
+                    synchronized (p44Var) {
+                        z = p44Var.w;
+                    }
+                    if (z) {
+                        continue;
+                    } else {
+                        p44 p44Var2 = this.I[i];
+                        synchronized (p44Var2) {
+                            j = p44Var2.v;
+                        }
+                        jY = Math.min(jY, j);
+                    }
+                }
+            }
+        } else {
+            jY = Long.MAX_VALUE;
+        }
+        if (jY == Long.MAX_VALUE) {
+            jY = y(false);
+        }
+        return jY == Long.MIN_VALUE ? this.Y : jY;
     }
 
     @Override // defpackage.o44
@@ -883,94 +655,63 @@ public final class hr3 implements no2, m51, hd2, kd2, o44 {
     }
 
     @Override // defpackage.hd2
-    public final dd2 s(jd2 r17, long r18, long r20, IOException r22, int r23) {
-        er3 r1 = (er3) r17;
-        yl4 r2 = r1.b;
-        ed2 r3 = new ed2(r1.j, r2.p, r2.q, r18, r20, r2.o);
-        String r4 = f35.a;
+    public final dd2 s(jd2 jd2Var, long j, long j2, IOException iOException, int i) {
+        long jMin;
+        dd2 dd2Var;
+        m84 m84Var;
+        er3 er3Var = (er3) jd2Var;
+        yl4 yl4Var = er3Var.b;
+        ed2 ed2Var = new ed2(er3Var.j, yl4Var.p, yl4Var.q, j, j2, yl4Var.o);
+        String str = f35.a;
         this.q.getClass();
-        Throwable r5 = r22;
-    L4:
-        if (r5 == null) goto L20;
-        if ((r5 instanceof ParserException) == true) goto L19;
-        if ((r5 instanceof FileNotFoundException) == true) goto L19;
-        if ((r5 instanceof HttpDataSource$CleartextNotPermittedException) == true) goto L19;
-        if ((r5 instanceof Loader$UnexpectedLoaderException) == true) goto L19;
-        if ((r5 instanceof DataSourceException) == false) goto L18;
-        if (((DataSourceException) r5).n == 2008) goto L19;
-    L18:
-        r5 = r5.getCause();
-    L19:
-        long r7 = -9223372036854775807L;
-    L21:
-        boolean r9 = false;
-        if (r7 != (-9223372036854775807L)) goto L24;
-        dd2 r6 = i61.t;
-    L46:
-        int r8 = r6.a;
-        if (r8 == 0) goto L49;
-        if (r8 == 1) goto L49;
-    L50:
-        long r10 = r1.i;
-        long r12 = this.Q;
-        this.r.s(r3, 1, -1, null, 0, null, r10, r12, r22, !r9);
-        return r6;
-    L49:
-        r9 = true;
-        goto L50
-    L24:
-        int r11 = x();
-        if (r11 <= this.b0) goto L27;
-        int r13 = 1;
-    L29:
-        if (this.X == true) goto L44;
-        m84 r14 = this.P;
-        if (r14 == null) goto L36;
-        if (r14.g() != (-9223372036854775807L)) goto L44;
-    L36:
-        if (this.L == true) goto L38;
-    L40:
-        this.U = this.L;
-        this.Y = 0;
-        this.b0 = 0;
-        p44[] r15 = this.I;
-        int r16 = r15.length;
-        int r19 = 0;
-    L41:
-        if (r19 >= r16) goto L43;
-        r15[r19].x(false);
-        r19 = r19 + 1;
-        goto L41
-    L43:
-        r1.f.a = 0;
-        r1.i = 0;
-        r1.h = true;
-        r1.l = false;
-    L45:
-        r6 = new dd2(r13, r7, false);
-        goto L46
-    L38:
-        if (G() == true) goto L40;
-        this.a0 = true;
-        r6 = i61.s;
-    L44:
-        this.b0 = r11;
-        goto L45
-    L27:
-        r13 = 0;
-        goto L29
-    L20:
-        r7 = Math.min((r23 - 1) * 1000, SmartSession.MAX_SONGS);
-        goto L21
+        Throwable cause = iOException;
+        while (true) {
+            if (cause == null) {
+                jMin = Math.min((i - 1) * 1000, SmartSession.MAX_SONGS);
+                break;
+            }
+            if ((cause instanceof ParserException) || (cause instanceof FileNotFoundException) || (cause instanceof HttpDataSource$CleartextNotPermittedException) || (cause instanceof Loader$UnexpectedLoaderException) || ((cause instanceof DataSourceException) && ((DataSourceException) cause).n == 2008)) {
+                jMin = -9223372036854775807L;
+                break;
+            }
+            cause = cause.getCause();
+        }
+        if (jMin == -9223372036854775807L) {
+            dd2Var = i61.t;
+        } else {
+            int iX = x();
+            int i2 = iX > this.b0 ? 1 : 0;
+            if (this.X || !((m84Var = this.P) == null || m84Var.g() == -9223372036854775807L)) {
+                this.b0 = iX;
+            } else if (!this.L || G()) {
+                this.U = this.L;
+                this.Y = 0L;
+                this.b0 = 0;
+                for (p44 p44Var : this.I) {
+                    p44Var.x(false);
+                }
+                er3Var.f.a = 0L;
+                er3Var.i = 0L;
+                er3Var.h = true;
+                er3Var.l = false;
+            } else {
+                this.a0 = true;
+                dd2Var = i61.s;
+            }
+            dd2Var = new dd2(i2, jMin, false);
+        }
+        int i3 = dd2Var.a;
+        this.r.s(ed2Var, 1, -1, null, 0, null, er3Var.i, this.Q, iOException, !(i3 == 0 || i3 == 1));
+        return dd2Var;
     }
 
     @Override // defpackage.m51
-    public final wv4 t(int r2, int r3) {
-        return D(new gr3(r2, false));
+    public final wv4 t(int i, int i2) {
+        return D(new gr3(i, false));
     }
 
     @Override // defpackage.da4
-    public final void u(long r1) {
+    public final void u(long j) {
     }
 
     public final void v() {
@@ -980,54 +721,46 @@ public final class hr3 implements no2, m51, hd2, kd2, o44 {
     }
 
     @Override // defpackage.m51
-    public final void w(m84 r3) {
-        ur2 r0 = new ur2(13, this, r3);
-        this.E.post(r0);
+    public final void w(m84 m84Var) {
+        this.E.post(new ur2(13, this, m84Var));
     }
 
     public final int x() {
-        p44[] r5 = this.I;
-        int r0 = r5.length;
-        int r1 = 0;
-        int r2 = 0;
-    L3:
-        if (r1 >= r0) goto L5;
-        p44 r3 = r5[r1];
-        r2 = r2 + (r3.q + r3.p);
-        r1 = r1 + 1;
-        goto L3
-    L5:
-        return r2;
+        int i = 0;
+        for (p44 p44Var : this.I) {
+            i += p44Var.q + p44Var.p;
+        }
+        return i;
     }
 
-    public final long y(boolean r7) {
-        long r0 = Long.MIN_VALUE;
-        int r2 = 0;
-    L4:
-        if (r2 >= this.I.length) goto L17;
-        if (r7 == true) goto L8;
-        ss0 r3 = this.O;
-        r3.getClass();
-        if (((boolean[]) r3.p)[r2] == true) goto L8;
-    L13:
-        r2 = r2 + 1;
-    L8:
-        p44 r4 = this.I[r2];
-        monitor-enter(r4);
-        long r5 = r4.v;     // Catch: Throwable -> L14
-        monitor-exit(r4);
-        r0 = Math.max(r0, r5);
-    L14:
-        th = move-exception;
-        throw th;
-    L17:
-        return r0;
+    /* JADX WARN: Code duplicated, block: B:18:0x001c A[EXC_TOP_SPLITTER, SYNTHETIC] */
+    /* JADX WARN: Code duplicated, block: B:8:0x0017  */
+    public final long y(boolean z) {
+        p44 p44Var;
+        long jMax = Long.MIN_VALUE;
+        for (int i = 0; i < this.I.length; i++) {
+            if (z) {
+                p44Var = this.I[i];
+                synchronized (p44Var) {
+                    jMax = Math.max(jMax, p44Var.v);
+                }
+            } else {
+                ss0 ss0Var = this.O;
+                ss0Var.getClass();
+                if (((boolean[]) ss0Var.p)[i]) {
+                    p44Var = this.I[i];
+                    synchronized (p44Var) {
+                    }
+                    jMax = Math.max(jMax, p44Var.v);
+                } else {
+                    continue;
+                }
+            }
+        }
+        return jMax;
     }
 
     public final boolean z() {
-        if (this.Z == (-9223372036854775807L)) goto L6;
-        return true;
-    L6:
-        return false;
+        return this.Z != -9223372036854775807L;
     }
 }

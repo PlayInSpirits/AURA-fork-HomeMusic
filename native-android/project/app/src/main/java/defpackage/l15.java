@@ -5,46 +5,35 @@ import java.io.File;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class l15 implements uw2 {
-    public static final l15 b = null;
+    public static final l15 b = new l15(0);
     public final /* synthetic */ int a;
 
-    static {
-        b = new l15(0);
-    }
-
-    public /* synthetic */ l15(int r1) {
-        this.a = r1;
+    public /* synthetic */ l15(int i) {
+        this.a = i;
     }
 
     @Override // defpackage.uw2
-    public final boolean a(Object r1) {
-        switch(this.a) {
-            case 0: goto L8;
-            case 1: goto L6;
-            default: goto L4;
-        };
-    L4:
-        return false;
-    L6:
-        File r2 = (File) r1;
-        return true;
-    L8:
-        return true;
+    public final boolean a(Object obj) {
+        switch (this.a) {
+            case 0:
+                return true;
+            case 1:
+                return true;
+            default:
+                return false;
+        }
     }
 
     @Override // defpackage.uw2
-    public final tw2 b(Object r1, int r2, int r3, db3 r4) {
-        switch(this.a) {
-            case 0: goto L9;
-            case 1: goto L6;
-            default: goto L4;
-        };
-    L4:
-        return null;
-    L6:
-        File r5 = (File) r1;
-        return new tw2(new s73(r5), new pw(0, r5));
-    L9:
-        return new tw2(new s73(r1), new pw(1, r1));
+    public final tw2 b(Object obj, int i, int i2, db3 db3Var) {
+        switch (this.a) {
+            case 0:
+                return new tw2(new s73(obj), new pw(1, obj));
+            case 1:
+                File file = (File) obj;
+                return new tw2(new s73(file), new pw(0, file));
+            default:
+                return null;
+        }
     }
 }

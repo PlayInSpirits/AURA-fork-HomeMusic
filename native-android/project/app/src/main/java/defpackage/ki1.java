@@ -12,21 +12,21 @@ public final class ki1 implements ThreadFactory {
     public final boolean d;
     public final AtomicInteger e;
 
-    public ki1(h5 r3, String r4, boolean r5) {
-        fz0 r0 = fz0.c0;
+    public ki1(h5 h5Var, String str, boolean z) {
+        fz0 fz0Var = fz0.c0;
         this.e = new AtomicInteger();
-        this.a = r3;
-        this.b = r4;
-        this.c = r0;
-        this.d = r5;
+        this.a = h5Var;
+        this.b = str;
+        this.c = fz0Var;
+        this.d = z;
     }
 
     @Override // java.util.concurrent.ThreadFactory
-    public final Thread newThread(Runnable r4) {
-        lg1 r0 = new lg1(this, r4, false, 14);
+    public final Thread newThread(Runnable runnable) {
+        lg1 lg1Var = new lg1(this, runnable, false, 14);
         this.a.getClass();
-        rk r5 = new rk(r0);
-        r5.setName("glide-" + this.b + "-thread-" + this.e.getAndIncrement());
-        return r5;
+        rk rkVar = new rk(lg1Var);
+        rkVar.setName("glide-" + this.b + "-thread-" + this.e.getAndIncrement());
+        return rkVar;
     }
 }

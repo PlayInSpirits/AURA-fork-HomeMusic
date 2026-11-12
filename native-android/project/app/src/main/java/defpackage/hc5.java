@@ -17,86 +17,131 @@ public final class hc5 extends ep4 implements wf1 {
     public final /* synthetic */ aw u;
     public final /* synthetic */ Context v;
 
-    public hc5(ContentResolver r1, Uri r2, ng0 r3, aw r4, Context r5, vd0 r6) {
-        this.r = r1;
-        this.s = r2;
-        this.t = r3;
-        this.u = r4;
-        this.v = r5;
-        super(2, r6);
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public hc5(ContentResolver contentResolver, Uri uri, ng0 ng0Var, aw awVar, Context context, vd0 vd0Var) {
+        super(2, vd0Var);
+        this.r = contentResolver;
+        this.s = uri;
+        this.t = ng0Var;
+        this.u = awVar;
+        this.v = context;
     }
 
     @Override // defpackage.jp
-    public final vd0 create(Object r8, vd0 r9) {
-        aw r4 = this.u;
-        Context r5 = this.v;
-        hc5 r0 = new hc5(this.r, this.s, this.t, r4, r5, r9);
-        r0.q = r8;
-        return r0;
+    public final vd0 create(Object obj, vd0 vd0Var) {
+        hc5 hc5Var = new hc5(this.r, this.s, this.t, this.u, this.v, vd0Var);
+        hc5Var.q = obj;
+        return hc5Var;
     }
 
     @Override // defpackage.wf1
-    public final Object invoke(Object r1, Object r2) {
-        return ((hc5) create((q81) r1, (vd0) r2)).invokeSuspend(j15.a);
+    public final Object invoke(Object obj, Object obj2) {
+        return ((hc5) create((q81) obj, (vd0) obj2)).invokeSuspend(j15.a);
     }
 
+    /* JADX WARN: Code duplicated, block: B:20:0x004f  */
+    /* JADX WARN: Code duplicated, block: B:21:0x0050  */
+    /* JADX WARN: Code duplicated, block: B:24:0x005c A[Catch: all -> 0x001c, TRY_LEAVE, TryCatch #0 {all -> 0x001c, blocks: (B:7:0x0016, B:18:0x0043, B:22:0x0054, B:24:0x005c, B:14:0x002b, B:17:0x003c), top: B:31:0x000a }] */
+    /* JADX WARN: Code duplicated, block: B:27:0x0081  */
+    /* JADX WARN: Code restructure failed: missing block: B:25:0x007e, code lost:
+    
+        if (r6.b(r7, r10) == r5) goto L26;
+     */
     /* JADX WARN: Unsupported multi-entry loop pattern (BACK_EDGE: B:25:0x007e -> B:8:0x0019). Please report as a decompilation issue!!! */
     @Override // defpackage.jp
-    public final Object invokeSuspend(Object r11) {
-        int r0 = this.p;
-        ng0 r3 = this.t;
-        ContentResolver r4 = this.r;
-        xe0 r5 = xe0.n;
-        if (r0 == 0) goto L16;
-        if (r0 == 1) goto L13;
-        if (r0 != 2) goto L11;
-        xv r1 = this.o;
-        q81 r6 = (q81) this.q;
-        kb4.X(r11);     // Catch: Throwable -> L9
-    L8:
-        q81 r12 = r6;
-        xv r7 = r1;
-    L18:
-        this.q = r12;     // Catch: Throwable -> L9
-        this.o = r7;     // Catch: Throwable -> L9
-        this.p = 1;     // Catch: Throwable -> L9
-        Object r2 = r7.b(this);     // Catch: Throwable -> L9
-        if (r2 == r5) goto L26;
-        xv r9 = r7;
-        r6 = r12;
-        r11 = r2;
-        r1 = r9;
-    L23:
-        if (((Boolean) r11).booleanValue() == false) goto L27;
-        r1.c();     // Catch: Throwable -> L9
-        Context r13 = this.v;     // Catch: Throwable -> L9
-        w03 r8 = ic5.a;     // Catch: Throwable -> L9
-        Float r10 = new Float(Settings.Global.getFloat(r13.getContentResolver(), "animator_duration_scale", 1.0f));     // Catch: Throwable -> L9
-        this.q = r6;     // Catch: Throwable -> L9
-        this.o = r1;     // Catch: Throwable -> L9
-        this.p = 2;     // Catch: Throwable -> L9
-        if (r6.b(r10, this) != r5) goto L8;
-    L27:
-        r4.unregisterContentObserver(r3);
-        return j15.a;
-    L26:
-        return r5;
-    L11:
-        kf2.o("call to 'resume' before 'invoke' with coroutine");
-        return null;
-    L13:
-        r1 = this.o;
-        r6 = (q81) this.q;
-        kb4.X(r11);     // Catch: Throwable -> L9
-        goto L23
-    L16:
-        kb4.X(r11);
-        r12 = (q81) this.q;
-        r4.registerContentObserver(this.s, false, r3);
-        r7 = new xv(this.u);     // Catch: Throwable -> L9
-    L9:
-        th = move-exception;
-        r4.unregisterContentObserver(r3);
-        throw th;
+    /*
+        Code decompiled incorrectly, please refer to instructions dump.
+    */
+    public final Object invokeSuspend(Object obj) {
+        q81 q81Var;
+        xv xvVar;
+        q81 q81Var2;
+        xv xvVar2;
+        Object objB;
+        int i = this.p;
+        ng0 ng0Var = this.t;
+        ContentResolver contentResolver = this.r;
+        xe0 xe0Var = xe0.n;
+        try {
+            if (i == 0) {
+                kb4.X(obj);
+                q81Var = (q81) this.q;
+                contentResolver.registerContentObserver(this.s, false, ng0Var);
+                xvVar = new xv(this.u);
+                this.q = q81Var;
+                this.o = xvVar;
+                this.p = 1;
+                objB = xvVar.b(this);
+                if (objB == xe0Var) {
+                    xv xvVar3 = xvVar;
+                    q81Var2 = q81Var;
+                    obj = objB;
+                    xvVar2 = xvVar3;
+                    if (!((Boolean) obj).booleanValue()) {
+                        contentResolver.unregisterContentObserver(ng0Var);
+                        return j15.a;
+                    }
+                    xvVar2.c();
+                    Context context = this.v;
+                    w03 w03Var = ic5.a;
+                    Float f = new Float(Settings.Global.getFloat(context.getContentResolver(), "animator_duration_scale", 1.0f));
+                    this.q = q81Var2;
+                    this.o = xvVar2;
+                    this.p = 2;
+                }
+                return xe0Var;
+            }
+            if (i == 1) {
+                xvVar2 = this.o;
+                q81Var2 = (q81) this.q;
+                kb4.X(obj);
+                if (!((Boolean) obj).booleanValue()) {
+                    contentResolver.unregisterContentObserver(ng0Var);
+                    return j15.a;
+                }
+                xvVar2.c();
+                Context context2 = this.v;
+                w03 w03Var2 = ic5.a;
+                Float f2 = new Float(Settings.Global.getFloat(context2.getContentResolver(), "animator_duration_scale", 1.0f));
+                this.q = q81Var2;
+                this.o = xvVar2;
+                this.p = 2;
+            } else {
+                if (i != 2) {
+                    kf2.o("call to 'resume' before 'invoke' with coroutine");
+                    return null;
+                }
+                xvVar2 = this.o;
+                q81Var2 = (q81) this.q;
+                kb4.X(obj);
+            }
+            q81Var = q81Var2;
+            xvVar = xvVar2;
+            this.q = q81Var;
+            this.o = xvVar;
+            this.p = 1;
+            objB = xvVar.b(this);
+            if (objB == xe0Var) {
+                xv xvVar4 = xvVar;
+                q81Var2 = q81Var;
+                obj = objB;
+                xvVar2 = xvVar4;
+                if (!((Boolean) obj).booleanValue()) {
+                    contentResolver.unregisterContentObserver(ng0Var);
+                    return j15.a;
+                }
+                xvVar2.c();
+                Context context3 = this.v;
+                w03 w03Var3 = ic5.a;
+                Float f3 = new Float(Settings.Global.getFloat(context3.getContentResolver(), "animator_duration_scale", 1.0f));
+                this.q = q81Var2;
+                this.o = xvVar2;
+                this.p = 2;
+            }
+            return xe0Var;
+        } catch (Throwable th) {
+            contentResolver.unregisterContentObserver(ng0Var);
+            throw th;
+        }
     }
 }

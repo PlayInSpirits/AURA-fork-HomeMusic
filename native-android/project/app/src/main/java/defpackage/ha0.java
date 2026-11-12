@@ -16,14 +16,15 @@ public final class ha0 extends wd0 {
     public final /* synthetic */ ia0 v;
     public int w;
 
-    public ha0(ia0 r1, wd0 r2) {
-        this.v = r1;
-        super(r2);
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public ha0(ia0 ia0Var, wd0 wd0Var) {
+        super(wd0Var);
+        this.v = ia0Var;
     }
 
     @Override // defpackage.jp
-    public final Object invokeSuspend(Object r3) {
-        this.u = r3;
+    public final Object invokeSuspend(Object obj) {
+        this.u = obj;
         this.w |= Integer.MIN_VALUE;
         return this.v.k(false, null, this);
     }

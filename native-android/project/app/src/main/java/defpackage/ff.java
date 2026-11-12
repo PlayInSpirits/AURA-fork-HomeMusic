@@ -18,100 +18,95 @@ public class ff extends Button {
     public final ih o;
     public ig p;
 
-    public ff(Context r1, AttributeSet r2, int r3) {
-        ju4.a(r1);
-        super(r1, r2, r3);
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public ff(Context context, AttributeSet attributeSet, int i) {
+        super(context, attributeSet, i);
+        ju4.a(context);
         gt4.a(this, getContext());
-        c6 r4 = new c6(this);
-        this.n = r4;
-        r4.n(r2, r3);
-        ih r5 = new ih(this);
-        this.o = r5;
-        r5.f(r2, r3);
-        r5.b();
-        getEmojiTextViewHelper().b(r2, r3);
+        c6 c6Var = new c6(this);
+        this.n = c6Var;
+        c6Var.n(attributeSet, i);
+        ih ihVar = new ih(this);
+        this.o = ihVar;
+        ihVar.f(attributeSet, i);
+        ihVar.b();
+        getEmojiTextViewHelper().b(attributeSet, i);
     }
 
     private ig getEmojiTextViewHelper() {
-        if (this.p != null) goto L6;
-        this.p = new ig(this);
-    L6:
+        if (this.p == null) {
+            this.p = new ig(this);
+        }
         return this.p;
     }
 
     @Override // android.widget.TextView, android.view.View
     public final void drawableStateChanged() {
         super.drawableStateChanged();
-        c6 r0 = this.n;
-        if (r0 == null) goto L5;
-        r0.b();
-    L5:
-        ih r1 = this.o;
-        if (r1 == null) goto L9;
-        r1.b();
-        return;
+        c6 c6Var = this.n;
+        if (c6Var != null) {
+            c6Var.b();
+        }
+        ih ihVar = this.o;
+        if (ihVar != null) {
+            ihVar.b();
+        }
     }
 
     @Override // android.widget.TextView
     public int getAutoSizeMaxTextSize() {
-        if (e85.c == true) goto L5;
-        ih r1 = this.o;
-        if (r1 != null) goto L9;
+        if (e85.c) {
+            return super.getAutoSizeMaxTextSize();
+        }
+        ih ihVar = this.o;
+        if (ihVar != null) {
+            return Math.round(ihVar.i.e);
+        }
         return -1;
-    L9:
-        return Math.round(r1.i.e);
-    L5:
-        return super.getAutoSizeMaxTextSize();
     }
 
     @Override // android.widget.TextView
     public int getAutoSizeMinTextSize() {
-        if (e85.c == true) goto L5;
-        ih r1 = this.o;
-        if (r1 != null) goto L9;
+        if (e85.c) {
+            return super.getAutoSizeMinTextSize();
+        }
+        ih ihVar = this.o;
+        if (ihVar != null) {
+            return Math.round(ihVar.i.d);
+        }
         return -1;
-    L9:
-        return Math.round(r1.i.d);
-    L5:
-        return super.getAutoSizeMinTextSize();
     }
 
     @Override // android.widget.TextView
     public int getAutoSizeStepGranularity() {
-        if (e85.c == true) goto L5;
-        ih r1 = this.o;
-        if (r1 != null) goto L9;
+        if (e85.c) {
+            return super.getAutoSizeStepGranularity();
+        }
+        ih ihVar = this.o;
+        if (ihVar != null) {
+            return Math.round(ihVar.i.c);
+        }
         return -1;
-    L9:
-        return Math.round(r1.i.c);
-    L5:
-        return super.getAutoSizeStepGranularity();
     }
 
     @Override // android.widget.TextView
     public int[] getAutoSizeTextAvailableSizes() {
-        if (e85.c == true) goto L5;
-        ih r1 = this.o;
-        if (r1 == null) goto L11;
-        return r1.i.f;
-    L11:
-        return new int[0];
-    L5:
-        return super.getAutoSizeTextAvailableSizes();
+        if (e85.c) {
+            return super.getAutoSizeTextAvailableSizes();
+        }
+        ih ihVar = this.o;
+        return ihVar != null ? ihVar.i.f : new int[0];
     }
 
     @Override // android.widget.TextView
     public int getAutoSizeTextType() {
-        if (e85.c == true) goto L5;
-        ih r2 = this.o;
-        if (r2 != null) goto L11;
-        return 0;
-    L11:
-        return r2.i.a;
-    L5:
-        if (super.getAutoSizeTextType() != 1) goto L7;
-        return 1;
-    L7:
+        if (e85.c) {
+            return super.getAutoSizeTextType() == 1 ? 1 : 0;
+        }
+        ih ihVar = this.o;
+        if (ihVar != null) {
+            return ihVar.i.a;
+        }
         return 0;
     }
 
@@ -121,19 +116,19 @@ public class ff extends Button {
     }
 
     public ColorStateList getSupportBackgroundTintList() {
-        c6 r0 = this.n;
-        if (r0 != null) goto L5;
+        c6 c6Var = this.n;
+        if (c6Var != null) {
+            return c6Var.k();
+        }
         return null;
-    L5:
-        return r0.k();
     }
 
     public PorterDuff.Mode getSupportBackgroundTintMode() {
-        c6 r0 = this.n;
-        if (r0 != null) goto L5;
+        c6 c6Var = this.n;
+        if (c6Var != null) {
+            return c6Var.l();
+        }
         return null;
-    L5:
-        return r0.l();
     }
 
     public ColorStateList getSupportCompoundDrawablesTintList() {
@@ -145,178 +140,170 @@ public class ff extends Button {
     }
 
     @Override // android.view.View
-    public void onInitializeAccessibilityEvent(AccessibilityEvent r1) {
-        super.onInitializeAccessibilityEvent(r1);
-        r1.setClassName(Button.class.getName());
+    public void onInitializeAccessibilityEvent(AccessibilityEvent accessibilityEvent) {
+        super.onInitializeAccessibilityEvent(accessibilityEvent);
+        accessibilityEvent.setClassName(Button.class.getName());
     }
 
     @Override // android.view.View
-    public void onInitializeAccessibilityNodeInfo(AccessibilityNodeInfo r1) {
-        super.onInitializeAccessibilityNodeInfo(r1);
-        r1.setClassName(Button.class.getName());
+    public void onInitializeAccessibilityNodeInfo(AccessibilityNodeInfo accessibilityNodeInfo) {
+        super.onInitializeAccessibilityNodeInfo(accessibilityNodeInfo);
+        accessibilityNodeInfo.setClassName(Button.class.getName());
     }
 
     @Override // android.widget.TextView, android.view.View
-    public void onLayout(boolean r1, int r2, int r3, int r4, int r5) {
-        super.onLayout(r1, r2, r3, r4, r5);
-        ih r0 = this.o;
-        if (r0 != null) goto L5;
-        return;
-    L5:
-        if (e85.c == true) goto L9;
-        r0.i.a();
-        return;
+    public void onLayout(boolean z, int i, int i2, int i3, int i4) {
+        super.onLayout(z, i, i2, i3, i4);
+        ih ihVar = this.o;
+        if (ihVar == null || e85.c) {
+            return;
+        }
+        ihVar.i.a();
     }
 
     @Override // android.widget.TextView
-    public void onTextChanged(CharSequence r1, int r2, int r3, int r4) {
-        super.onTextChanged(r1, r2, r3, r4);
-        ih r0 = this.o;
-        if (r0 == null) goto L10;
-        rh r5 = r0.i;
-        if (e85.c == false) goto L7;
-        return;
-    L7:
-        if (r5.f() == false) goto L12;
-        r5.a();
-        return;
-    L12:
-        return;
+    public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
+        super.onTextChanged(charSequence, i, i2, i3);
+        ih ihVar = this.o;
+        if (ihVar != null) {
+            rh rhVar = ihVar.i;
+            if (e85.c || !rhVar.f()) {
+                return;
+            }
+            rhVar.a();
+        }
     }
 
     @Override // android.widget.TextView
-    public void setAllCaps(boolean r1) {
-        super.setAllCaps(r1);
-        getEmojiTextViewHelper().c(r1);
+    public void setAllCaps(boolean z) {
+        super.setAllCaps(z);
+        getEmojiTextViewHelper().c(z);
     }
 
     @Override // android.widget.TextView
-    public final void setAutoSizeTextTypeUniformWithConfiguration(int r2, int r3, int r4, int r5) {
-        if (e85.c == false) goto L6;
-        super.setAutoSizeTextTypeUniformWithConfiguration(r2, r3, r4, r5);
-        return;
-    L6:
-        ih r1 = this.o;
-        if (r1 == null) goto L10;
-        r1.h(r2, r3, r4, r5);
-        return;
+    public final void setAutoSizeTextTypeUniformWithConfiguration(int i, int i2, int i3, int i4) {
+        if (e85.c) {
+            super.setAutoSizeTextTypeUniformWithConfiguration(i, i2, i3, i4);
+            return;
+        }
+        ih ihVar = this.o;
+        if (ihVar != null) {
+            ihVar.h(i, i2, i3, i4);
+        }
     }
 
     @Override // android.widget.TextView
-    public final void setAutoSizeTextTypeUniformWithPresetSizes(int[] r2, int r3) {
-        if (e85.c == false) goto L6;
-        super.setAutoSizeTextTypeUniformWithPresetSizes(r2, r3);
-        return;
-    L6:
-        ih r1 = this.o;
-        if (r1 == null) goto L10;
-        r1.i(r2, r3);
-        return;
+    public final void setAutoSizeTextTypeUniformWithPresetSizes(int[] iArr, int i) {
+        if (e85.c) {
+            super.setAutoSizeTextTypeUniformWithPresetSizes(iArr, i);
+            return;
+        }
+        ih ihVar = this.o;
+        if (ihVar != null) {
+            ihVar.i(iArr, i);
+        }
     }
 
     @Override // android.widget.TextView
-    public void setAutoSizeTextTypeWithDefaults(int r2) {
-        if (e85.c == false) goto L6;
-        super.setAutoSizeTextTypeWithDefaults(r2);
-        return;
-    L6:
-        ih r1 = this.o;
-        if (r1 == null) goto L10;
-        r1.j(r2);
-        return;
+    public void setAutoSizeTextTypeWithDefaults(int i) {
+        if (e85.c) {
+            super.setAutoSizeTextTypeWithDefaults(i);
+            return;
+        }
+        ih ihVar = this.o;
+        if (ihVar != null) {
+            ihVar.j(i);
+        }
     }
 
     @Override // android.view.View
-    public void setBackgroundDrawable(Drawable r1) {
-        super.setBackgroundDrawable(r1);
-        c6 r0 = this.n;
-        if (r0 == null) goto L6;
-        r0.p();
-        return;
+    public void setBackgroundDrawable(Drawable drawable) {
+        super.setBackgroundDrawable(drawable);
+        c6 c6Var = this.n;
+        if (c6Var != null) {
+            c6Var.p();
+        }
     }
 
     @Override // android.view.View
-    public void setBackgroundResource(int r1) {
-        super.setBackgroundResource(r1);
-        c6 r0 = this.n;
-        if (r0 == null) goto L6;
-        r0.q(r1);
-        return;
+    public void setBackgroundResource(int i) {
+        super.setBackgroundResource(i);
+        c6 c6Var = this.n;
+        if (c6Var != null) {
+            c6Var.q(i);
+        }
     }
 
     @Override // android.widget.TextView
-    public void setCustomSelectionActionModeCallback(ActionMode.Callback r1) {
-        super.setCustomSelectionActionModeCallback(ya4.P(r1, this));
+    public void setCustomSelectionActionModeCallback(ActionMode.Callback callback) {
+        super.setCustomSelectionActionModeCallback(ya4.P(callback, this));
     }
 
-    public void setEmojiCompatEnabled(boolean r1) {
-        getEmojiTextViewHelper().d(r1);
-    }
-
-    @Override // android.widget.TextView
-    public void setFilters(InputFilter[] r2) {
-        super.setFilters(getEmojiTextViewHelper().a(r2));
-    }
-
-    public void setSupportAllCaps(boolean r1) {
-        ih r0 = this.o;
-        if (r0 == null) goto L6;
-        r0.a.setAllCaps(r1);
-        return;
-    }
-
-    public void setSupportBackgroundTintList(ColorStateList r1) {
-        c6 r0 = this.n;
-        if (r0 == null) goto L6;
-        r0.y(r1);
-        return;
-    }
-
-    public void setSupportBackgroundTintMode(PorterDuff.Mode r1) {
-        c6 r0 = this.n;
-        if (r0 == null) goto L6;
-        r0.z(r1);
-        return;
-    }
-
-    public void setSupportCompoundDrawablesTintList(ColorStateList r1) {
-        ih r0 = this.o;
-        r0.k(r1);
-        r0.b();
-    }
-
-    public void setSupportCompoundDrawablesTintMode(PorterDuff.Mode r1) {
-        ih r0 = this.o;
-        r0.l(r1);
-        r0.b();
+    public void setEmojiCompatEnabled(boolean z) {
+        getEmojiTextViewHelper().d(z);
     }
 
     @Override // android.widget.TextView
-    public final void setTextAppearance(Context r1, int r2) {
-        super.setTextAppearance(r1, r2);
-        ih r0 = this.o;
-        if (r0 == null) goto L6;
-        r0.g(r1, r2);
-        return;
+    public void setFilters(InputFilter[] inputFilterArr) {
+        super.setFilters(getEmojiTextViewHelper().a(inputFilterArr));
+    }
+
+    public void setSupportAllCaps(boolean z) {
+        ih ihVar = this.o;
+        if (ihVar != null) {
+            ihVar.a.setAllCaps(z);
+        }
+    }
+
+    public void setSupportBackgroundTintList(ColorStateList colorStateList) {
+        c6 c6Var = this.n;
+        if (c6Var != null) {
+            c6Var.y(colorStateList);
+        }
+    }
+
+    public void setSupportBackgroundTintMode(PorterDuff.Mode mode) {
+        c6 c6Var = this.n;
+        if (c6Var != null) {
+            c6Var.z(mode);
+        }
+    }
+
+    public void setSupportCompoundDrawablesTintList(ColorStateList colorStateList) {
+        ih ihVar = this.o;
+        ihVar.k(colorStateList);
+        ihVar.b();
+    }
+
+    public void setSupportCompoundDrawablesTintMode(PorterDuff.Mode mode) {
+        ih ihVar = this.o;
+        ihVar.l(mode);
+        ihVar.b();
     }
 
     @Override // android.widget.TextView
-    public final void setTextSize(int r2, float r3) {
-        boolean r0 = e85.c;
-        if (r0 == false) goto L6;
-        super.setTextSize(r2, r3);
-        return;
-    L6:
-        ih r1 = this.o;
-        if (r1 == null) goto L14;
-        rh r4 = r1.i;
-        if (r0 == false) goto L11;
-        return;
-    L11:
-        if (r4.f() == true) goto L16;
-        r4.g(r2, r3);
-        return;
-    L16:
-        return;
+    public final void setTextAppearance(Context context, int i) {
+        super.setTextAppearance(context, i);
+        ih ihVar = this.o;
+        if (ihVar != null) {
+            ihVar.g(context, i);
+        }
+    }
+
+    @Override // android.widget.TextView
+    public final void setTextSize(int i, float f) {
+        boolean z = e85.c;
+        if (z) {
+            super.setTextSize(i, f);
+            return;
+        }
+        ih ihVar = this.o;
+        if (ihVar != null) {
+            rh rhVar = ihVar.i;
+            if (z || rhVar.f()) {
+                return;
+            }
+            rhVar.g(i, f);
+        }
     }
 }

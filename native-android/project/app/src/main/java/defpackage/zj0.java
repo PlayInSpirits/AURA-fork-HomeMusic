@@ -23,188 +23,164 @@ public final class zj0 implements ci0 {
     public ru3 w;
     public ci0 x;
 
-    public zj0(Context r1, ci0 r2) {
-        this.n = r1.getApplicationContext();
-        r2.getClass();
-        this.p = r2;
+    public zj0(Context context, ci0 ci0Var) {
+        this.n = context.getApplicationContext();
+        ci0Var.getClass();
+        this.p = ci0Var;
         this.o = new ArrayList();
     }
 
-    public static void p(ci0 r0, rw4 r1) {
-        if (r0 == null) goto L5;
-        r0.c(r1);
-        return;
+    public static void p(ci0 ci0Var, rw4 rw4Var) {
+        if (ci0Var != null) {
+            ci0Var.c(rw4Var);
+        }
     }
 
     @Override // defpackage.ci0
-    public final long b(ii0 r7) {
-        if (this.x != null) goto L5;
-        boolean r0 = true;
-    L6:
-        rr2.w(r0);
-        Uri r1 = r7.a;
-        String r2 = r1.getScheme();
-        String r3 = f35.a;
-        String r4 = r1.getScheme();
-        boolean r5 = TextUtils.isEmpty(r4);
-        Context r6 = this.n;
-        if (r5 == false) goto L9;
-    L59:
-        String r8 = r1.getPath();
-        if (r8 == null) goto L68;
-        if (r8.startsWith("/android_asset/") == false) goto L68;
-        if (this.r != null) goto L66;
-        ek r9 = new ek(r6);
-        this.r = r9;
-        o(r9);
-    L66:
-        this.x = this.r;
-    L72:
-        return this.x.b(r7);
-    L68:
-        if (this.q != null) goto L70;
-        t61 r10 = new t61(false);
-        this.q = r10;
-        o(r10);
-    L70:
-        this.x = this.q;
-        goto L72
-    L9:
-        if (Objects.equals(r4, "file") == true) goto L59;
-        if ("asset".equals(r2) == false) goto L18;
-        if (this.r != null) goto L16;
-        ek r11 = new ek(r6);
-        this.r = r11;
-        o(r11);
-    L16:
-        this.x = this.r;
-        goto L72
-    L18:
-        if ("content".equals(r2) == true) goto L20;
-        boolean r12 = "rtmp".equals(r2);
-        ci0 r13 = this.p;
-        if (r12 == false) goto L38;
-        if (this.t == null) goto L73;
-    L36:
-        this.x = this.t;
-        goto L72
-    L73:
-        ci0 r14 = (ci0) Class.forName("androidx.media3.datasource.rtmp.RtmpDataSource").getConstructor(null).newInstance(null);     // Catch: Exception -> L29 ClassNotFoundException -> L32
-        this.t = r14;     // Catch: Exception -> L29 ClassNotFoundException -> L32
-        o(r14);     // Catch: Exception -> L29 ClassNotFoundException -> L32
-    L34:
-        if (this.t != null) goto L36;
-        this.t = r13;
-    L32:
-        l93.q0("DefaultDataSource", "Attempting to play RTMP stream without depending on the RTMP extension");
-    L29:
-        e = move-exception;
-        nz2.s("Error instantiating RTMP extension", e);
-        return 0;
-    L38:
-        if ("udp".equals(r2) == false) goto L44;
-        if (this.u != null) goto L42;
-        c15 r15 = new c15();
-        this.u = r15;
-        o(r15);
-    L42:
-        this.x = this.u;
-        goto L72
-    L44:
-        if ("data".equals(r2) == false) goto L50;
-        if (this.v != null) goto L48;
-        ai0 r16 = new ai0(false);
-        this.v = r16;
-        o(r16);
-    L48:
-        this.x = this.v;
-        goto L72
-    L50:
-        if ("rawresource".equals(r2) == true) goto L56;
-        if ("android.resource".equals(r2) == true) goto L56;
-        this.x = r13;
-    L56:
-        if (this.w != null) goto L58;
-        ru3 r17 = new ru3(r6);
-        this.w = r17;
-        o(r17);
-    L58:
-        this.x = this.w;
-        goto L72
-    L20:
-        if (this.s != null) goto L22;
-        ad0 r18 = new ad0(r6);
-        this.s = r18;
-        o(r18);
-    L22:
-        this.x = this.s;
-        goto L72
-    L5:
-        r0 = false;
-        goto L6
+    public final long b(ii0 ii0Var) {
+        rr2.w(this.x == null);
+        Uri uri = ii0Var.a;
+        String scheme = uri.getScheme();
+        String str = f35.a;
+        String scheme2 = uri.getScheme();
+        boolean zIsEmpty = TextUtils.isEmpty(scheme2);
+        Context context = this.n;
+        if (zIsEmpty || Objects.equals(scheme2, "file")) {
+            String path = uri.getPath();
+            if (path == null || !path.startsWith("/android_asset/")) {
+                if (this.q == null) {
+                    t61 t61Var = new t61(false);
+                    this.q = t61Var;
+                    o(t61Var);
+                }
+                this.x = this.q;
+            } else {
+                if (this.r == null) {
+                    ek ekVar = new ek(context);
+                    this.r = ekVar;
+                    o(ekVar);
+                }
+                this.x = this.r;
+            }
+        } else if ("asset".equals(scheme)) {
+            if (this.r == null) {
+                ek ekVar2 = new ek(context);
+                this.r = ekVar2;
+                o(ekVar2);
+            }
+            this.x = this.r;
+        } else if ("content".equals(scheme)) {
+            if (this.s == null) {
+                ad0 ad0Var = new ad0(context);
+                this.s = ad0Var;
+                o(ad0Var);
+            }
+            this.x = this.s;
+        } else {
+            boolean zEquals = "rtmp".equals(scheme);
+            ci0 ci0Var = this.p;
+            if (zEquals) {
+                if (this.t == null) {
+                    try {
+                        ci0 ci0Var2 = (ci0) Class.forName("androidx.media3.datasource.rtmp.RtmpDataSource").getConstructor(null).newInstance(null);
+                        this.t = ci0Var2;
+                        o(ci0Var2);
+                    } catch (ClassNotFoundException unused) {
+                        l93.q0("DefaultDataSource", "Attempting to play RTMP stream without depending on the RTMP extension");
+                    } catch (Exception e) {
+                        nz2.s("Error instantiating RTMP extension", e);
+                        return 0L;
+                    }
+                    if (this.t == null) {
+                        this.t = ci0Var;
+                    }
+                }
+                this.x = this.t;
+            } else if ("udp".equals(scheme)) {
+                if (this.u == null) {
+                    c15 c15Var = new c15();
+                    this.u = c15Var;
+                    o(c15Var);
+                }
+                this.x = this.u;
+            } else if ("data".equals(scheme)) {
+                if (this.v == null) {
+                    ai0 ai0Var = new ai0(false);
+                    this.v = ai0Var;
+                    o(ai0Var);
+                }
+                this.x = this.v;
+            } else if ("rawresource".equals(scheme) || "android.resource".equals(scheme)) {
+                if (this.w == null) {
+                    ru3 ru3Var = new ru3(context);
+                    this.w = ru3Var;
+                    o(ru3Var);
+                }
+                this.x = this.w;
+            } else {
+                this.x = ci0Var;
+            }
+        }
+        return this.x.b(ii0Var);
     }
 
     @Override // defpackage.ci0
-    public final void c(rw4 r2) {
-        r2.getClass();
-        this.p.c(r2);
-        this.o.add(r2);
-        p(this.q, r2);
-        p(this.r, r2);
-        p(this.s, r2);
-        p(this.t, r2);
-        p(this.u, r2);
-        p(this.v, r2);
-        p(this.w, r2);
+    public final void c(rw4 rw4Var) {
+        rw4Var.getClass();
+        this.p.c(rw4Var);
+        this.o.add(rw4Var);
+        p(this.q, rw4Var);
+        p(this.r, rw4Var);
+        p(this.s, rw4Var);
+        p(this.t, rw4Var);
+        p(this.u, rw4Var);
+        p(this.v, rw4Var);
+        p(this.w, rw4Var);
     }
 
     @Override // defpackage.ci0
     public final void close() {
-        ci0 r0 = this.x;
-        if (r0 != null) goto L12;
-        return;
-    L12:
-        r0.close();     // Catch: Throwable -> L8
-        this.x = null;
-        return;
-    L8:
-        th = move-exception;
-        this.x = null;
-        throw th;
+        ci0 ci0Var = this.x;
+        if (ci0Var != null) {
+            try {
+                ci0Var.close();
+            } finally {
+                this.x = null;
+            }
+        }
     }
 
     @Override // defpackage.ci0
     public final Map j() {
-        ci0 r0 = this.x;
-        if (r0 != null) goto L7;
-        return Collections.EMPTY_MAP;
-    L7:
-        return r0.j();
+        ci0 ci0Var = this.x;
+        return ci0Var == null ? Collections.EMPTY_MAP : ci0Var.j();
     }
 
     @Override // defpackage.ci0
     public final Uri m() {
-        ci0 r0 = this.x;
-        if (r0 != null) goto L7;
-        return null;
-    L7:
-        return r0.m();
+        ci0 ci0Var = this.x;
+        if (ci0Var == null) {
+            return null;
+        }
+        return ci0Var.m();
     }
 
-    public final void o(ci0 r4) {
-        int r0 = 0;
-    L3:
-        ArrayList r1 = this.o;
-        if (r0 >= r1.size()) goto L6;
-        r4.c((rw4) r1.get(r0));
-        r0 = r0 + 1;
-        goto L3
+    public final void o(ci0 ci0Var) {
+        int i = 0;
+        while (true) {
+            ArrayList arrayList = this.o;
+            if (i >= arrayList.size()) {
+                return;
+            }
+            ci0Var.c((rw4) arrayList.get(i));
+            i++;
+        }
     }
 
     @Override // defpackage.wh0
-    public final int read(byte[] r1, int r2, int r3) {
-        ci0 r0 = this.x;
-        r0.getClass();
-        return r0.read(r1, r2, r3);
+    public final int read(byte[] bArr, int i, int i2) {
+        ci0 ci0Var = this.x;
+        ci0Var.getClass();
+        return ci0Var.read(bArr, i, i2);
     }
 }

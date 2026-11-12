@@ -11,22 +11,21 @@ public final class kx1 extends FilterOutputStream {
     public InputStream n;
     public final Object o;
 
-    public kx1(ByteArrayOutputStream r1) {
-        super(r1);
+    public kx1(ByteArrayOutputStream byteArrayOutputStream) {
+        super(byteArrayOutputStream);
         this.o = new Object();
     }
 
     public final InputStream b() {
-        Object r0 = this.o;
-        monitor-enter(r0);
-    L7:
-        th = move-exception;
-        throw th;
-    L5:
-        if (this.n != null) goto L9;
-        this.n = new ByteArrayInputStream(((ByteArrayOutputStream) ((FilterOutputStream) this).out).toByteArray());     // Catch: Throwable -> L7
-    L9:
-        monitor-exit(r0);     // Catch: Throwable -> L7
+        synchronized (this.o) {
+            try {
+                if (this.n == null) {
+                    this.n = new ByteArrayInputStream(((ByteArrayOutputStream) ((FilterOutputStream) this).out).toByteArray());
+                }
+            } catch (Throwable th) {
+                throw th;
+            }
+        }
         return this.n;
     }
 }

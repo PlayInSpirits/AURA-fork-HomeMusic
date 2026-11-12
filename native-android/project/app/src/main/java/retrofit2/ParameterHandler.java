@@ -6,6 +6,8 @@ import defpackage.tl1;
 import defpackage.tz3;
 import defpackage.vz2;
 import defpackage.xa3;
+import java.io.IOException;
+import java.lang.reflect.Array;
 import java.lang.reflect.Method;
 import java.util.Iterator;
 import java.util.Map;
@@ -22,22 +24,22 @@ abstract class ParameterHandler<T> {
         private final Method method;
         private final int p;
 
-        public Body(Method r1, int r2, Converter<T, tz3> r3) {
-            this.method = r1;
-            this.p = r2;
-            this.converter = r3;
+        public Body(Method method, int i, Converter<T, tz3> converter) {
+            this.method = method;
+            this.p = i;
+            this.converter = converter;
         }
 
         @Override // retrofit2.ParameterHandler
-        public void apply(RequestBuilder r5, @Nullable T r6) {
-            if (r6 == null) goto L11;
-            r5.setBody(this.converter.convert(r6));
-            return;
-        L7:
-            e = move-exception;
-            throw Utils.parameterError(this.method, e, this.p, "Unable to convert " + r6 + " to RequestBody", new Object[0]);
-        L11:
-            throw Utils.parameterError(this.method, this.p, "Body parameter value must not be null.", new Object[0]);
+        public void apply(RequestBuilder requestBuilder, @Nullable T t) {
+            if (t == null) {
+                throw Utils.parameterError(this.method, this.p, "Body parameter value must not be null.", new Object[0]);
+            }
+            try {
+                requestBuilder.setBody(this.converter.convert(t));
+            } catch (IOException e) {
+                throw Utils.parameterError(this.method, e, this.p, "Unable to convert " + t + " to RequestBody", new Object[0]);
+            }
         }
     }
 
@@ -47,22 +49,20 @@ abstract class ParameterHandler<T> {
         private final String name;
         private final Converter<T, String> valueConverter;
 
-        public Field(String r2, Converter<T, String> r3, boolean r4) {
-            Objects.requireNonNull(r2, "name == null");
-            this.name = r2;
-            this.valueConverter = r3;
-            this.encoded = r4;
+        public Field(String str, Converter<T, String> converter, boolean z) {
+            Objects.requireNonNull(str, "name == null");
+            this.name = str;
+            this.valueConverter = converter;
+            this.encoded = z;
         }
 
         @Override // retrofit2.ParameterHandler
-        public void apply(RequestBuilder r2, @Nullable T r3) {
-            if (r3 == null) goto L9;
-            String r4 = this.valueConverter.convert(r3);
-            if (r4 != null) goto L7;
-            return;
-        L7:
-            r2.addFormField(this.name, r4, this.encoded);
-            return;
+        public void apply(RequestBuilder requestBuilder, @Nullable T t) {
+            String strConvert;
+            if (t == null || (strConvert = this.valueConverter.convert(t)) == null) {
+                return;
+            }
+            requestBuilder.addFormField(this.name, strConvert, this.encoded);
         }
     }
 
@@ -73,42 +73,33 @@ abstract class ParameterHandler<T> {
         private final int p;
         private final Converter<T, String> valueConverter;
 
-        public FieldMap(Method r1, int r2, Converter<T, String> r3, boolean r4) {
-            this.method = r1;
-            this.p = r2;
-            this.valueConverter = r3;
-            this.encoded = r4;
-        }
-
-        public void apply(RequestBuilder r7, @Nullable Map<String, T> r8) {
-            if (r8 == null) goto L22;
-            Iterator<Map.Entry<String, T>> r9 = r8.entrySet().iterator();
-        L6:
-            if (r9.hasNext() == false) goto L20;
-            Map.Entry<String, T> r1 = r9.next();
-            String r2 = r1.getKey();
-            if (r2 == null) goto L19;
-            T r3 = r1.getValue();
-            if (r3 == null) goto L17;
-            String r4 = this.valueConverter.convert(r3);
-            if (r4 == null) goto L15;
-            r7.addFormField(r2, r4, this.encoded);
-            goto L6
-        L15:
-            throw Utils.parameterError(this.method, this.p, "Field map value '" + r3 + "' converted to null by " + this.valueConverter.getClass().getName() + " for key '" + r2 + "'.", new Object[0]);
-        L17:
-            throw Utils.parameterError(this.method, this.p, xa3.h("Field map contained null value for key '", r2, "'."), new Object[0]);
-        L19:
-            throw Utils.parameterError(this.method, this.p, "Field map contained null key.", new Object[0]);
-        L20:
-            return;
-        L22:
-            throw Utils.parameterError(this.method, this.p, "Field map was null.", new Object[0]);
+        public FieldMap(Method method, int i, Converter<T, String> converter, boolean z) {
+            this.method = method;
+            this.p = i;
+            this.valueConverter = converter;
+            this.encoded = z;
         }
 
         @Override // retrofit2.ParameterHandler
-        public /* bridge */ /* synthetic */ void apply(RequestBuilder r1, @Nullable Object r2) {
-            apply(r1, (Map) r2);
+        public void apply(RequestBuilder requestBuilder, @Nullable Map<String, T> map) {
+            if (map == null) {
+                throw Utils.parameterError(this.method, this.p, "Field map was null.", new Object[0]);
+            }
+            for (Map.Entry<String, T> entry : map.entrySet()) {
+                String key = entry.getKey();
+                if (key == null) {
+                    throw Utils.parameterError(this.method, this.p, "Field map contained null key.", new Object[0]);
+                }
+                T value = entry.getValue();
+                if (value == null) {
+                    throw Utils.parameterError(this.method, this.p, xa3.h("Field map contained null value for key '", key, "'."), new Object[0]);
+                }
+                String strConvert = this.valueConverter.convert(value);
+                if (strConvert == null) {
+                    throw Utils.parameterError(this.method, this.p, "Field map value '" + value + "' converted to null by " + this.valueConverter.getClass().getName() + " for key '" + key + "'.", new Object[0]);
+                }
+                requestBuilder.addFormField(key, strConvert, this.encoded);
+            }
         }
     }
 
@@ -118,22 +109,20 @@ abstract class ParameterHandler<T> {
         private final String name;
         private final Converter<T, String> valueConverter;
 
-        public Header(String r2, Converter<T, String> r3, boolean r4) {
-            Objects.requireNonNull(r2, "name == null");
-            this.name = r2;
-            this.valueConverter = r3;
-            this.allowUnsafeNonAsciiValues = r4;
+        public Header(String str, Converter<T, String> converter, boolean z) {
+            Objects.requireNonNull(str, "name == null");
+            this.name = str;
+            this.valueConverter = converter;
+            this.allowUnsafeNonAsciiValues = z;
         }
 
         @Override // retrofit2.ParameterHandler
-        public void apply(RequestBuilder r2, @Nullable T r3) {
-            if (r3 == null) goto L9;
-            String r4 = this.valueConverter.convert(r3);
-            if (r4 != null) goto L7;
-            return;
-        L7:
-            r2.addHeader(this.name, r4, this.allowUnsafeNonAsciiValues);
-            return;
+        public void apply(RequestBuilder requestBuilder, @Nullable T t) {
+            String strConvert;
+            if (t == null || (strConvert = this.valueConverter.convert(t)) == null) {
+                return;
+            }
+            requestBuilder.addHeader(this.name, strConvert, this.allowUnsafeNonAsciiValues);
         }
     }
 
@@ -144,38 +133,29 @@ abstract class ParameterHandler<T> {
         private final int p;
         private final Converter<T, String> valueConverter;
 
-        public HeaderMap(Method r1, int r2, Converter<T, String> r3, boolean r4) {
-            this.method = r1;
-            this.p = r2;
-            this.valueConverter = r3;
-            this.allowUnsafeNonAsciiValues = r4;
-        }
-
-        public void apply(RequestBuilder r5, @Nullable Map<String, T> r6) {
-            if (r6 == null) goto L18;
-            Iterator<Map.Entry<String, T>> r7 = r6.entrySet().iterator();
-        L6:
-            if (r7.hasNext() == false) goto L16;
-            Map.Entry<String, T> r1 = r7.next();
-            String r2 = r1.getKey();
-            if (r2 == null) goto L15;
-            T r3 = r1.getValue();
-            if (r3 == null) goto L13;
-            r5.addHeader(r2, this.valueConverter.convert(r3), this.allowUnsafeNonAsciiValues);
-            goto L6
-        L13:
-            throw Utils.parameterError(this.method, this.p, xa3.h("Header map contained null value for key '", r2, "'."), new Object[0]);
-        L15:
-            throw Utils.parameterError(this.method, this.p, "Header map contained null key.", new Object[0]);
-        L16:
-            return;
-        L18:
-            throw Utils.parameterError(this.method, this.p, "Header map was null.", new Object[0]);
+        public HeaderMap(Method method, int i, Converter<T, String> converter, boolean z) {
+            this.method = method;
+            this.p = i;
+            this.valueConverter = converter;
+            this.allowUnsafeNonAsciiValues = z;
         }
 
         @Override // retrofit2.ParameterHandler
-        public /* bridge */ /* synthetic */ void apply(RequestBuilder r1, @Nullable Object r2) {
-            apply(r1, (Map) r2);
+        public void apply(RequestBuilder requestBuilder, @Nullable Map<String, T> map) {
+            if (map == null) {
+                throw Utils.parameterError(this.method, this.p, "Header map was null.", new Object[0]);
+            }
+            for (Map.Entry<String, T> entry : map.entrySet()) {
+                String key = entry.getKey();
+                if (key == null) {
+                    throw Utils.parameterError(this.method, this.p, "Header map contained null key.", new Object[0]);
+                }
+                T value = entry.getValue();
+                if (value == null) {
+                    throw Utils.parameterError(this.method, this.p, xa3.h("Header map contained null value for key '", key, "'."), new Object[0]);
+                }
+                requestBuilder.addHeader(key, this.valueConverter.convert(value), this.allowUnsafeNonAsciiValues);
+            }
         }
     }
 
@@ -184,23 +164,17 @@ abstract class ParameterHandler<T> {
         private final Method method;
         private final int p;
 
-        public Headers(Method r1, int r2) {
-            this.method = r1;
-            this.p = r2;
-        }
-
-        /* JADX INFO: renamed from: apply, reason: avoid collision after fix types in other method */
-        public void apply2(RequestBuilder r2, @Nullable tl1 r3) {
-            if (r3 == null) goto L6;
-            r2.addHeaders(r3);
-            return;
-        L6:
-            throw Utils.parameterError(this.method, this.p, "Headers parameter must not be null.", new Object[0]);
+        public Headers(Method method, int i) {
+            this.method = method;
+            this.p = i;
         }
 
         @Override // retrofit2.ParameterHandler
-        public /* bridge */ /* synthetic */ void apply(RequestBuilder r1, @Nullable tl1 r2) {
-            apply2(r1, r2);
+        public void apply(RequestBuilder requestBuilder, @Nullable tl1 tl1Var) {
+            if (tl1Var == null) {
+                throw Utils.parameterError(this.method, this.p, "Headers parameter must not be null.", new Object[0]);
+            }
+            requestBuilder.addHeaders(tl1Var);
         }
     }
 
@@ -211,23 +185,23 @@ abstract class ParameterHandler<T> {
         private final Method method;
         private final int p;
 
-        public Part(Method r1, int r2, tl1 r3, Converter<T, tz3> r4) {
-            this.method = r1;
-            this.p = r2;
-            this.headers = r3;
-            this.converter = r4;
+        public Part(Method method, int i, tl1 tl1Var, Converter<T, tz3> converter) {
+            this.method = method;
+            this.p = i;
+            this.headers = tl1Var;
+            this.converter = converter;
         }
 
         @Override // retrofit2.ParameterHandler
-        public void apply(RequestBuilder r4, @Nullable T r5) {
-            if (r5 != null) goto L10;
-            return;
-        L10:
-            r4.addPart(this.headers, this.converter.convert(r5));
-            return;
-        L7:
-            e = move-exception;
-            throw Utils.parameterError(this.method, this.p, "Unable to convert " + r5 + " to RequestBody", new Object[]{e});
+        public void apply(RequestBuilder requestBuilder, @Nullable T t) {
+            if (t == null) {
+                return;
+            }
+            try {
+                requestBuilder.addPart(this.headers, this.converter.convert(t));
+            } catch (IOException e) {
+                throw Utils.parameterError(this.method, this.p, "Unable to convert " + t + " to RequestBody", e);
+            }
         }
     }
 
@@ -238,38 +212,29 @@ abstract class ParameterHandler<T> {
         private final String transferEncoding;
         private final Converter<T, tz3> valueConverter;
 
-        public PartMap(Method r1, int r2, Converter<T, tz3> r3, String r4) {
-            this.method = r1;
-            this.p = r2;
-            this.valueConverter = r3;
-            this.transferEncoding = r4;
-        }
-
-        public void apply(RequestBuilder r7, @Nullable Map<String, T> r8) {
-            if (r8 == null) goto L18;
-            Iterator<Map.Entry<String, T>> r9 = r8.entrySet().iterator();
-        L6:
-            if (r9.hasNext() == false) goto L16;
-            Map.Entry<String, T> r1 = r9.next();
-            String r2 = r1.getKey();
-            if (r2 == null) goto L15;
-            T r3 = r1.getValue();
-            if (r3 == null) goto L13;
-            r7.addPart(h12.G(new String[]{"Content-Disposition", xa3.h("form-data; name=\"", r2, "\""), "Content-Transfer-Encoding", this.transferEncoding}), this.valueConverter.convert(r3));
-            goto L6
-        L13:
-            throw Utils.parameterError(this.method, this.p, xa3.h("Part map contained null value for key '", r2, "'."), new Object[0]);
-        L15:
-            throw Utils.parameterError(this.method, this.p, "Part map contained null key.", new Object[0]);
-        L16:
-            return;
-        L18:
-            throw Utils.parameterError(this.method, this.p, "Part map was null.", new Object[0]);
+        public PartMap(Method method, int i, Converter<T, tz3> converter, String str) {
+            this.method = method;
+            this.p = i;
+            this.valueConverter = converter;
+            this.transferEncoding = str;
         }
 
         @Override // retrofit2.ParameterHandler
-        public /* bridge */ /* synthetic */ void apply(RequestBuilder r1, @Nullable Object r2) {
-            apply(r1, (Map) r2);
+        public void apply(RequestBuilder requestBuilder, @Nullable Map<String, T> map) {
+            if (map == null) {
+                throw Utils.parameterError(this.method, this.p, "Part map was null.", new Object[0]);
+            }
+            for (Map.Entry<String, T> entry : map.entrySet()) {
+                String key = entry.getKey();
+                if (key == null) {
+                    throw Utils.parameterError(this.method, this.p, "Part map contained null key.", new Object[0]);
+                }
+                T value = entry.getValue();
+                if (value == null) {
+                    throw Utils.parameterError(this.method, this.p, xa3.h("Part map contained null value for key '", key, "'."), new Object[0]);
+                }
+                requestBuilder.addPart(h12.G("Content-Disposition", xa3.h("form-data; name=\"", key, "\""), "Content-Transfer-Encoding", this.transferEncoding), this.valueConverter.convert(value));
+            }
         }
     }
 
@@ -281,22 +246,21 @@ abstract class ParameterHandler<T> {
         private final int p;
         private final Converter<T, String> valueConverter;
 
-        public Path(Method r1, int r2, String r3, Converter<T, String> r4, boolean r5) {
-            this.method = r1;
-            this.p = r2;
-            Objects.requireNonNull(r3, "name == null");
-            this.name = r3;
-            this.valueConverter = r4;
-            this.encoded = r5;
+        public Path(Method method, int i, String str, Converter<T, String> converter, boolean z) {
+            this.method = method;
+            this.p = i;
+            Objects.requireNonNull(str, "name == null");
+            this.name = str;
+            this.valueConverter = converter;
+            this.encoded = z;
         }
 
         @Override // retrofit2.ParameterHandler
-        public void apply(RequestBuilder r3, @Nullable T r4) {
-            if (r4 == null) goto L6;
-            r3.addPathParam(this.name, this.valueConverter.convert(r4), this.encoded);
-            return;
-        L6:
-            throw Utils.parameterError(this.method, this.p, b11.q(new StringBuilder("Path parameter \""), this.name, "\" value must not be null."), new Object[0]);
+        public void apply(RequestBuilder requestBuilder, @Nullable T t) {
+            if (t == null) {
+                throw Utils.parameterError(this.method, this.p, b11.q(new StringBuilder("Path parameter \""), this.name, "\" value must not be null."), new Object[0]);
+            }
+            requestBuilder.addPathParam(this.name, this.valueConverter.convert(t), this.encoded);
         }
     }
 
@@ -306,22 +270,20 @@ abstract class ParameterHandler<T> {
         private final String name;
         private final Converter<T, String> valueConverter;
 
-        public Query(String r2, Converter<T, String> r3, boolean r4) {
-            Objects.requireNonNull(r2, "name == null");
-            this.name = r2;
-            this.valueConverter = r3;
-            this.encoded = r4;
+        public Query(String str, Converter<T, String> converter, boolean z) {
+            Objects.requireNonNull(str, "name == null");
+            this.name = str;
+            this.valueConverter = converter;
+            this.encoded = z;
         }
 
         @Override // retrofit2.ParameterHandler
-        public void apply(RequestBuilder r2, @Nullable T r3) {
-            if (r3 == null) goto L9;
-            String r4 = this.valueConverter.convert(r3);
-            if (r4 != null) goto L7;
-            return;
-        L7:
-            r2.addQueryParam(this.name, r4, this.encoded);
-            return;
+        public void apply(RequestBuilder requestBuilder, @Nullable T t) {
+            String strConvert;
+            if (t == null || (strConvert = this.valueConverter.convert(t)) == null) {
+                return;
+            }
+            requestBuilder.addQueryParam(this.name, strConvert, this.encoded);
         }
     }
 
@@ -332,42 +294,33 @@ abstract class ParameterHandler<T> {
         private final int p;
         private final Converter<T, String> valueConverter;
 
-        public QueryMap(Method r1, int r2, Converter<T, String> r3, boolean r4) {
-            this.method = r1;
-            this.p = r2;
-            this.valueConverter = r3;
-            this.encoded = r4;
-        }
-
-        public void apply(RequestBuilder r7, @Nullable Map<String, T> r8) {
-            if (r8 == null) goto L22;
-            Iterator<Map.Entry<String, T>> r9 = r8.entrySet().iterator();
-        L6:
-            if (r9.hasNext() == false) goto L20;
-            Map.Entry<String, T> r1 = r9.next();
-            String r2 = r1.getKey();
-            if (r2 == null) goto L19;
-            T r3 = r1.getValue();
-            if (r3 == null) goto L17;
-            String r4 = this.valueConverter.convert(r3);
-            if (r4 == null) goto L15;
-            r7.addQueryParam(r2, r4, this.encoded);
-            goto L6
-        L15:
-            throw Utils.parameterError(this.method, this.p, "Query map value '" + r3 + "' converted to null by " + this.valueConverter.getClass().getName() + " for key '" + r2 + "'.", new Object[0]);
-        L17:
-            throw Utils.parameterError(this.method, this.p, xa3.h("Query map contained null value for key '", r2, "'."), new Object[0]);
-        L19:
-            throw Utils.parameterError(this.method, this.p, "Query map contained null key.", new Object[0]);
-        L20:
-            return;
-        L22:
-            throw Utils.parameterError(this.method, this.p, "Query map was null", new Object[0]);
+        public QueryMap(Method method, int i, Converter<T, String> converter, boolean z) {
+            this.method = method;
+            this.p = i;
+            this.valueConverter = converter;
+            this.encoded = z;
         }
 
         @Override // retrofit2.ParameterHandler
-        public /* bridge */ /* synthetic */ void apply(RequestBuilder r1, @Nullable Object r2) {
-            apply(r1, (Map) r2);
+        public void apply(RequestBuilder requestBuilder, @Nullable Map<String, T> map) {
+            if (map == null) {
+                throw Utils.parameterError(this.method, this.p, "Query map was null", new Object[0]);
+            }
+            for (Map.Entry<String, T> entry : map.entrySet()) {
+                String key = entry.getKey();
+                if (key == null) {
+                    throw Utils.parameterError(this.method, this.p, "Query map contained null key.", new Object[0]);
+                }
+                T value = entry.getValue();
+                if (value == null) {
+                    throw Utils.parameterError(this.method, this.p, xa3.h("Query map contained null value for key '", key, "'."), new Object[0]);
+                }
+                String strConvert = this.valueConverter.convert(value);
+                if (strConvert == null) {
+                    throw Utils.parameterError(this.method, this.p, "Query map value '" + value + "' converted to null by " + this.valueConverter.getClass().getName() + " for key '" + key + "'.", new Object[0]);
+                }
+                requestBuilder.addQueryParam(key, strConvert, this.encoded);
+            }
         }
     }
 
@@ -376,41 +329,17 @@ abstract class ParameterHandler<T> {
         private final boolean encoded;
         private final Converter<T, String> nameConverter;
 
-        public QueryName(Converter<T, String> r1, boolean r2) {
-            this.nameConverter = r1;
-            this.encoded = r2;
+        public QueryName(Converter<T, String> converter, boolean z) {
+            this.nameConverter = converter;
+            this.encoded = z;
         }
 
         @Override // retrofit2.ParameterHandler
-        public void apply(RequestBuilder r2, @Nullable T r3) {
-            if (r3 != null) goto L4;
-            return;
-        L4:
-            r2.addQueryParam(this.nameConverter.convert(r3), null, this.encoded);
-        }
-    }
-
-    /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
-    public static final class RawPart extends ParameterHandler<vz2> {
-        static final RawPart INSTANCE = null;
-
-        static {
-            INSTANCE = new RawPart();
-        }
-
-        private RawPart() {
-        }
-
-        @Override // retrofit2.ParameterHandler
-        public /* bridge */ /* synthetic */ void apply(RequestBuilder r1, @Nullable vz2 r2) {
-            apply2(r1, r2);
-        }
-
-        /* JADX INFO: renamed from: apply, reason: avoid collision after fix types in other method */
-        public void apply2(RequestBuilder r1, @Nullable vz2 r2) {
-            if (r2 == null) goto L5;
-            r1.addPart(r2);
-            return;
+        public void apply(RequestBuilder requestBuilder, @Nullable T t) {
+            if (t == null) {
+                return;
+            }
+            requestBuilder.addQueryParam(this.nameConverter.convert(t), null, this.encoded);
         }
     }
 
@@ -419,18 +348,17 @@ abstract class ParameterHandler<T> {
         private final Method method;
         private final int p;
 
-        public RelativeUrl(Method r1, int r2) {
-            this.method = r1;
-            this.p = r2;
+        public RelativeUrl(Method method, int i) {
+            this.method = method;
+            this.p = i;
         }
 
         @Override // retrofit2.ParameterHandler
-        public void apply(RequestBuilder r2, @Nullable Object r3) {
-            if (r3 == null) goto L6;
-            r2.setRelativeUrl(r3);
-            return;
-        L6:
-            throw Utils.parameterError(this.method, this.p, "@Url parameter is null.", new Object[0]);
+        public void apply(RequestBuilder requestBuilder, @Nullable Object obj) {
+            if (obj == null) {
+                throw Utils.parameterError(this.method, this.p, "@Url parameter is null.", new Object[0]);
+            }
+            requestBuilder.setRelativeUrl(obj);
         }
     }
 
@@ -438,26 +366,61 @@ abstract class ParameterHandler<T> {
     public static final class Tag<T> extends ParameterHandler<T> {
         final Class<T> cls;
 
-        public Tag(Class<T> r1) {
-            this.cls = r1;
+        public Tag(Class<T> cls) {
+            this.cls = cls;
         }
 
         @Override // retrofit2.ParameterHandler
-        public void apply(RequestBuilder r1, @Nullable T r2) {
-            r1.addTag(this.cls, r2);
+        public void apply(RequestBuilder requestBuilder, @Nullable T t) {
+            requestBuilder.addTag(this.cls, t);
         }
     }
 
-    public ParameterHandler() {
-    }
-
-    public abstract void apply(RequestBuilder r1, @Nullable T r2);
+    public abstract void apply(RequestBuilder requestBuilder, @Nullable T t);
 
     public final ParameterHandler<Object> array() {
-        return new AnonymousClass2(this);
+        return new ParameterHandler<Object>() { // from class: retrofit2.ParameterHandler.2
+            /* JADX WARN: Multi-variable type inference failed */
+            @Override // retrofit2.ParameterHandler
+            public void apply(RequestBuilder requestBuilder, @Nullable Object obj) {
+                if (obj == null) {
+                    return;
+                }
+                int length = Array.getLength(obj);
+                for (int i = 0; i < length; i++) {
+                    ParameterHandler.this.apply(requestBuilder, Array.get(obj, i));
+                }
+            }
+        };
     }
 
     public final ParameterHandler<Iterable<T>> iterable() {
-        return new AnonymousClass1(this);
+        return new ParameterHandler<Iterable<T>>() { // from class: retrofit2.ParameterHandler.1
+            @Override // retrofit2.ParameterHandler
+            public void apply(RequestBuilder requestBuilder, @Nullable Iterable<T> iterable) {
+                if (iterable == null) {
+                    return;
+                }
+                Iterator<T> it = iterable.iterator();
+                while (it.hasNext()) {
+                    ParameterHandler.this.apply(requestBuilder, it.next());
+                }
+            }
+        };
+    }
+
+    /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
+    public static final class RawPart extends ParameterHandler<vz2> {
+        static final RawPart INSTANCE = new RawPart();
+
+        private RawPart() {
+        }
+
+        @Override // retrofit2.ParameterHandler
+        public void apply(RequestBuilder requestBuilder, @Nullable vz2 vz2Var) {
+            if (vz2Var != null) {
+                requestBuilder.addPart(vz2Var);
+            }
+        }
     }
 }

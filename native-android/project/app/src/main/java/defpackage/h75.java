@@ -11,25 +11,25 @@ public final class h75 {
     public int c;
     public int d;
 
-    public h75(View r1) {
-        this.a = r1;
+    public h75(View view) {
+        this.a = view;
     }
 
     public final void a() {
-        int r0 = this.d;
-        View r1 = this.a;
-        int r2 = r0 - (r1.getTop() - this.b);
-        WeakHashMap r3 = j65.a;
-        r1.offsetTopAndBottom(r2);
-        r1.offsetLeftAndRight(0 - (r1.getLeft() - this.c));
+        int i = this.d;
+        View view = this.a;
+        int top = i - (view.getTop() - this.b);
+        WeakHashMap weakHashMap = j65.a;
+        view.offsetTopAndBottom(top);
+        view.offsetLeftAndRight(0 - (view.getLeft() - this.c));
     }
 
-    public final boolean b(int r2) {
-        if (this.d == r2) goto L6;
-        this.d = r2;
+    public final boolean b(int i) {
+        if (this.d == i) {
+            return false;
+        }
+        this.d = i;
         a();
         return true;
-    L6:
-        return false;
     }
 }

@@ -12,18 +12,18 @@ public final class gb4 extends AbstractSet {
     public final /* synthetic */ Set n;
     public final /* synthetic */ Set o;
 
-    public gb4(Set r1, Set r2) {
-        this.n = r1;
-        this.o = r2;
+    public gb4(Set set, Set set2) {
+        this.n = set;
+        this.o = set2;
     }
 
     @Override // java.util.AbstractCollection, java.util.Collection, java.util.Set
-    public final boolean add(Object r1) {
+    public final boolean add(Object obj) {
         throw new UnsupportedOperationException();
     }
 
     @Override // java.util.AbstractCollection, java.util.Collection, java.util.Set
-    public final boolean addAll(Collection r1) {
+    public final boolean addAll(Collection collection) {
         throw new UnsupportedOperationException();
     }
 
@@ -33,25 +33,13 @@ public final class gb4 extends AbstractSet {
     }
 
     @Override // java.util.AbstractCollection, java.util.Collection, java.util.Set
-    public final boolean contains(Object r2) {
-        if (this.n.contains(r2) == true) goto L5;
-        return false;
-    L5:
-        if (this.o.contains(r2) == false) goto L10;
-        return true;
-    L10:
-        return false;
+    public final boolean contains(Object obj) {
+        return this.n.contains(obj) && this.o.contains(obj);
     }
 
     @Override // java.util.AbstractCollection, java.util.Collection, java.util.Set
-    public final boolean containsAll(Collection r2) {
-        if (this.n.containsAll(r2) == true) goto L5;
-        return false;
-    L5:
-        if (this.o.containsAll(r2) == false) goto L10;
-        return true;
-    L10:
-        return false;
+    public final boolean containsAll(Collection collection) {
+        return this.n.containsAll(collection) && this.o.containsAll(collection);
     }
 
     @Override // java.util.AbstractCollection, java.util.Collection, java.util.Set
@@ -65,31 +53,29 @@ public final class gb4 extends AbstractSet {
     }
 
     @Override // java.util.AbstractCollection, java.util.Collection, java.util.Set
-    public final boolean remove(Object r1) {
+    public final boolean remove(Object obj) {
         throw new UnsupportedOperationException();
     }
 
     @Override // java.util.AbstractSet, java.util.AbstractCollection, java.util.Collection, java.util.Set
-    public final boolean removeAll(Collection r1) {
+    public final boolean removeAll(Collection collection) {
         throw new UnsupportedOperationException();
     }
 
     @Override // java.util.AbstractCollection, java.util.Collection, java.util.Set
-    public final boolean retainAll(Collection r1) {
+    public final boolean retainAll(Collection collection) {
         throw new UnsupportedOperationException();
     }
 
     @Override // java.util.AbstractCollection, java.util.Collection, java.util.Set
     public final int size() {
-        Iterator r0 = this.n.iterator();
-        int r1 = 0;
-    L4:
-        if (r0.hasNext() == false) goto L8;
-        Object r2 = r0.next();
-        if (this.o.contains(r2) == false) goto L4;
-        r1 = r1 + 1;
-        goto L4
-    L8:
-        return r1;
+        Iterator it = this.n.iterator();
+        int i = 0;
+        while (it.hasNext()) {
+            if (this.o.contains(it.next())) {
+                i++;
+            }
+        }
+        return i;
     }
 }

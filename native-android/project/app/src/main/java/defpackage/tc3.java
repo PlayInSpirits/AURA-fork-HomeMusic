@@ -12,77 +12,73 @@ public final class tc3 extends db2 {
     public final /* synthetic */ int q;
     public final /* synthetic */ xg0 r;
 
-    public /* synthetic */ tc3(xg0 r1, Context r2, int r3) {
-        this.q = r3;
-        this.r = r1;
-        super(r2);
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public /* synthetic */ tc3(xg0 xg0Var, Context context, int i) {
+        super(context);
+        this.q = i;
+        this.r = xg0Var;
     }
 
     @Override // defpackage.db2
-    public final float d(DisplayMetrics r2) {
-        switch(this.q) {
-            case 0: goto L7;
-            default: goto L4;
-        };
-    L4:
-        int r1 = r2.densityDpi;
-    L6:
-        return 100.0f / r1;
-    L7:
-        r1 = r2.densityDpi;
-        goto L6
+    public final float d(DisplayMetrics displayMetrics) {
+        int i;
+        switch (this.q) {
+            case 0:
+                i = displayMetrics.densityDpi;
+                break;
+            default:
+                i = displayMetrics.densityDpi;
+                break;
+        }
+        return 100.0f / i;
     }
 
     @Override // defpackage.db2
-    public int e(int r2) {
-        switch(this.q) {
-            case 0: goto L7;
-            default: goto L5;
-        };
-    L5:
-        return super.e(r2);
-    L7:
-        return Math.min(100, super.e(r2));
+    public int e(int i) {
+        switch (this.q) {
+            case 0:
+                return Math.min(100, super.e(i));
+            default:
+                return super.e(i);
+        }
     }
 
     @Override // defpackage.db2
-    public final void h(View r8, ww3 r9) {
-        int r0 = this.q;
-        DecelerateInterpolator r1 = this.j;
-        xg0 r5 = this.r;
-        switch(r0) {
-            case 0: goto L11;
-            default: goto L4;
-        };
-    L4:
-        RecyclerView r2 = r5.a;
-        if (r2 == null) goto L16;
-        int[] r10 = r5.b(r2.getLayoutManager(), r8);
-        int r3 = r10[0];
-        int r11 = r10[1];
-        int r7 = (int) Math.ceil(((double) e(Math.max(Math.abs(r3), Math.abs(r11)))) / 0.3356d);
-        if (r7 <= 0) goto L15;
-        r9.a = r3;
-        r9.b = r11;
-        r9.c = r7;
-        r9.e = r1;
-        r9.f = true;
-        return;
-    L15:
-        return;
-    L16:
-        return;
-    L11:
-        int[] r12 = r5.b(r5.a.getLayoutManager(), r8);
-        int r4 = r12[0];
-        int r13 = r12[1];
-        int r14 = (int) Math.ceil(((double) e(Math.max(Math.abs(r4), Math.abs(r13)))) / 0.3356d);
-        if (r14 <= 0) goto L17;
-        r9.a = r4;
-        r9.b = r13;
-        r9.c = r14;
-        r9.e = r1;
-        r9.f = true;
-        return;
+    public final void h(View view, ww3 ww3Var) {
+        int i = this.q;
+        DecelerateInterpolator decelerateInterpolator = this.j;
+        xg0 xg0Var = this.r;
+        switch (i) {
+            case 0:
+                int[] iArrB = xg0Var.b(xg0Var.a.getLayoutManager(), view);
+                int i2 = iArrB[0];
+                int i3 = iArrB[1];
+                int iCeil = (int) Math.ceil(((double) e(Math.max(Math.abs(i2), Math.abs(i3)))) / 0.3356d);
+                if (iCeil > 0) {
+                    ww3Var.a = i2;
+                    ww3Var.b = i3;
+                    ww3Var.c = iCeil;
+                    ww3Var.e = decelerateInterpolator;
+                    ww3Var.f = true;
+                }
+                break;
+            default:
+                RecyclerView recyclerView = xg0Var.a;
+                if (recyclerView != null) {
+                    int[] iArrB2 = xg0Var.b(recyclerView.getLayoutManager(), view);
+                    int i4 = iArrB2[0];
+                    int i5 = iArrB2[1];
+                    int iCeil2 = (int) Math.ceil(((double) e(Math.max(Math.abs(i4), Math.abs(i5)))) / 0.3356d);
+                    if (iCeil2 > 0) {
+                        ww3Var.a = i4;
+                        ww3Var.b = i5;
+                        ww3Var.c = iCeil2;
+                        ww3Var.e = decelerateInterpolator;
+                        ww3Var.f = true;
+                    }
+                    break;
+                }
+                break;
+        }
     }
 }

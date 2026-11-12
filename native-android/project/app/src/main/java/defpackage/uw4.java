@@ -5,5 +5,5 @@ import android.content.Context;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public interface uw4 extends f42 {
-    q04 a(Context r1, q04 r2, int r3, int r4);
+    q04 a(Context context, q04 q04Var, int i, int i2);
 }

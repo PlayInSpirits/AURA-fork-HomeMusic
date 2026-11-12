@@ -5,8 +5,8 @@ package defpackage;
 public final class w14 extends u22 {
     public final x22 u;
 
-    public w14(x22 r1) {
-        this.u = r1;
+    public w14(x22 x22Var) {
+        this.u = x22Var;
     }
 
     @Override // defpackage.u22
@@ -15,14 +15,14 @@ public final class w14 extends u22 {
     }
 
     @Override // defpackage.u22
-    public final void s(Throwable r2) {
-        Object r3 = q().H();
-        boolean r0 = r3 instanceof a70;
-        x22 r1 = this.u;
-        if (r0 == false) goto L6;
-        r1.resumeWith(kb4.o(((a70) r3).a));
-        return;
-    L6:
-        r1.resumeWith(zz1.M(r3));
+    public final void s(Throwable th) {
+        Object objH = q().H();
+        boolean z = objH instanceof a70;
+        x22 x22Var = this.u;
+        if (z) {
+            x22Var.resumeWith(kb4.o(((a70) objH).a));
+        } else {
+            x22Var.resumeWith(zz1.M(objH));
+        }
     }
 }

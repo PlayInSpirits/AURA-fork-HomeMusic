@@ -5,50 +5,29 @@ package defpackage;
 public final class xs4 {
     public final String a;
     public String b;
-    public boolean c;
-    public rd3 d;
+    public boolean c = false;
+    public rd3 d = null;
 
-    public xs4(String r1, String r2) {
-        this.a = r1;
-        this.b = r2;
-        this.c = false;
-        this.d = null;
+    public xs4(String str, String str2) {
+        this.a = str;
+        this.b = str2;
     }
 
-    public final boolean equals(Object r5) {
-        if (this != r5) goto L6;
-        return true;
-    L6:
-        if ((r5 instanceof xs4) == true) goto L8;
-        return false;
-    L8:
-        xs4 r6 = (xs4) r5;
-        if (h12.c(this.a, r6.a) == true) goto L12;
-        return false;
-    L12:
-        if (h12.c(this.b, r6.b) == true) goto L15;
-        return false;
-    L15:
-        if (this.c == r6.c) goto L18;
-        return false;
-    L18:
-        if (h12.c(this.d, r6.d) == true) goto L20;
-        return false;
-    L20:
-        return true;
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof xs4)) {
+            return false;
+        }
+        xs4 xs4Var = (xs4) obj;
+        return h12.c(this.a, xs4Var.a) && h12.c(this.b, xs4Var.b) && this.c == xs4Var.c && h12.c(this.d, xs4Var.d);
     }
 
     public final int hashCode() {
-        int r0 = this.a.hashCode() * 31;
-        int r1 = xa3.c(f34.e(this.b, r0, 31), 31, this.c);
-        rd3 r3 = this.d;
-        if (r3 != null) goto L5;
-        int r4 = 0;
-    L7:
-        return r1 + r4;
-    L5:
-        r4 = r3.hashCode();
-        goto L7
+        int iC = xa3.c(f34.e(this.b, this.a.hashCode() * 31, 31), 31, this.c);
+        rd3 rd3Var = this.d;
+        return iC + (rd3Var == null ? 0 : rd3Var.hashCode());
     }
 
     public final String toString() {

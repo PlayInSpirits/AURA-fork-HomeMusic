@@ -5,93 +5,77 @@ import java.nio.ByteBuffer;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class k05 {
-    public static final ThreadLocal d = null;
+    public static final ThreadLocal d = new ThreadLocal();
     public final int a;
     public final na4 b;
-    public volatile int c;
+    public volatile int c = 0;
 
-    static {
-        d = new ThreadLocal();
+    public k05(na4 na4Var, int i) {
+        this.b = na4Var;
+        this.a = i;
     }
 
-    public k05(na4 r2, int r3) {
-        this.c = 0;
-        this.b = r2;
-        this.a = r3;
-    }
-
-    public final int a(int r3) {
-        vv2 r2 = b();
-        int r0 = r2.a(16);
-        if (r0 == 0) goto L6;
-        ByteBuffer r1 = (ByteBuffer) r2.q;
-        int r4 = r0 + r2.n;
-        int r5 = r3 * 4;
-        return r1.getInt(r5 + ((r1.getInt(r4) + r4) + 4));
-    L6:
-        return 0;
+    public final int a(int i) {
+        vv2 vv2VarB = b();
+        int iA = vv2VarB.a(16);
+        if (iA == 0) {
+            return 0;
+        }
+        ByteBuffer byteBuffer = (ByteBuffer) vv2VarB.q;
+        int i2 = iA + vv2VarB.n;
+        return byteBuffer.getInt((i * 4) + byteBuffer.getInt(i2) + i2 + 4);
     }
 
     public final vv2 b() {
-        ThreadLocal r0 = d;
-        vv2 r1 = (vv2) r0.get();
-        if (r1 != null) goto L5;
-        r1 = new vv2();
-        r0.set(r1);
-    L5:
-        wv2 r2 = (wv2) this.b.n;
-        int r3 = r2.a(6);
-        if (r3 == 0) goto L12;
-        int r4 = r3 + r2.n;
-        int r5 = (((ByteBuffer) r2.q).getInt(r4) + r4) + 4;
-        int r6 = (this.a * 4) + r5;
-        int r7 = ((ByteBuffer) r2.q).getInt(r6) + r6;
-        ByteBuffer r8 = (ByteBuffer) r2.q;
-        r1.q = r8;
-        if (r8 == null) goto L11;
-        r1.n = r7;
-        int r9 = r7 - r8.getInt(r7);
-        r1.o = r9;
-        r1.p = ((ByteBuffer) r1.q).getShort(r9);
-        return r1;
-    L11:
-        r1.n = 0;
-        r1.o = 0;
-        r1.p = 0;
-    L12:
-        return r1;
+        ThreadLocal threadLocal = d;
+        vv2 vv2Var = (vv2) threadLocal.get();
+        if (vv2Var == null) {
+            vv2Var = new vv2();
+            threadLocal.set(vv2Var);
+        }
+        wv2 wv2Var = (wv2) this.b.n;
+        int iA = wv2Var.a(6);
+        if (iA != 0) {
+            int i = iA + wv2Var.n;
+            int i2 = (this.a * 4) + ((ByteBuffer) wv2Var.q).getInt(i) + i + 4;
+            int i3 = ((ByteBuffer) wv2Var.q).getInt(i2) + i2;
+            ByteBuffer byteBuffer = (ByteBuffer) wv2Var.q;
+            vv2Var.q = byteBuffer;
+            if (byteBuffer != null) {
+                vv2Var.n = i3;
+                int i4 = i3 - byteBuffer.getInt(i3);
+                vv2Var.o = i4;
+                vv2Var.p = ((ByteBuffer) vv2Var.q).getShort(i4);
+                return vv2Var;
+            }
+            vv2Var.n = 0;
+            vv2Var.o = 0;
+            vv2Var.p = 0;
+        }
+        return vv2Var;
     }
 
     public final String toString() {
-        StringBuilder r0 = new StringBuilder();
-        r0.append(super.toString());
-        r0.append(", id:");
-        vv2 r1 = b();
-        int r2 = r1.a(4);
-        int r3 = 0;
-        if (r2 == 0) goto L5;
-        int r4 = ((ByteBuffer) r1.q).getInt(r2 + r1.n);
-    L6:
-        r0.append(Integer.toHexString(r4));
-        r0.append(", codepoints:");
-        vv2 r5 = b();
-        int r6 = r5.a(16);
-        if (r6 == 0) goto L9;
-        int r7 = r6 + r5.n;
-        int r8 = ((ByteBuffer) r5.q).getInt(((ByteBuffer) r5.q).getInt(r7) + r7);
-    L10:
-        if (r3 >= r8) goto L13;
-        r0.append(Integer.toHexString(a(r3)));
-        r0.append(" ");
-        r3 = r3 + 1;
-        goto L10
-    L13:
-        return r0.toString();
-    L9:
-        r8 = 0;
-        goto L10
-    L5:
-        r4 = 0;
-        goto L6
+        int i;
+        StringBuilder sb = new StringBuilder();
+        sb.append(super.toString());
+        sb.append(", id:");
+        vv2 vv2VarB = b();
+        int iA = vv2VarB.a(4);
+        sb.append(Integer.toHexString(iA != 0 ? ((ByteBuffer) vv2VarB.q).getInt(iA + vv2VarB.n) : 0));
+        sb.append(", codepoints:");
+        vv2 vv2VarB2 = b();
+        int iA2 = vv2VarB2.a(16);
+        if (iA2 != 0) {
+            int i2 = iA2 + vv2VarB2.n;
+            i = ((ByteBuffer) vv2VarB2.q).getInt(((ByteBuffer) vv2VarB2.q).getInt(i2) + i2);
+        } else {
+            i = 0;
+        }
+        for (int i3 = 0; i3 < i; i3++) {
+            sb.append(Integer.toHexString(a(i3)));
+            sb.append(" ");
+        }
+        return sb.toString();
     }
 }

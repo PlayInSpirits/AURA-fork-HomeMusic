@@ -7,15 +7,11 @@ import java.util.Arrays;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class pk4 implements Parcelable {
-    public static final Parcelable.Creator<pk4> CREATOR = null;
+    public static final Parcelable.Creator<pk4> CREATOR = new j84(5);
     public int n;
     public int o;
     public int[] p;
     public boolean q;
-
-    static {
-        CREATOR = new j84(5);
-    }
 
     @Override // android.os.Parcelable
     public final int describeContents() {
@@ -27,18 +23,16 @@ public final class pk4 implements Parcelable {
     }
 
     @Override // android.os.Parcelable
-    public final void writeToParcel(Parcel r2, int r3) {
-        r2.writeInt(this.n);
-        r2.writeInt(this.o);
-        r2.writeInt(this.q ? 1 : 0);
-        int[] r4 = this.p;
-        if (r4 != null) goto L5;
-    L8:
-        r2.writeInt(0);
-        return;
-    L5:
-        if (r4.length <= 0) goto L8;
-        r2.writeInt(r4.length);
-        r2.writeIntArray(this.p);
+    public final void writeToParcel(Parcel parcel, int i) {
+        parcel.writeInt(this.n);
+        parcel.writeInt(this.o);
+        parcel.writeInt(this.q ? 1 : 0);
+        int[] iArr = this.p;
+        if (iArr == null || iArr.length <= 0) {
+            parcel.writeInt(0);
+        } else {
+            parcel.writeInt(iArr.length);
+            parcel.writeIntArray(this.p);
+        }
     }
 }

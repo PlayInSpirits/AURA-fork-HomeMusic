@@ -23,25 +23,25 @@ public final class u13 {
     public final int r;
     public final int s;
 
-    public u13(int r1, int r2, int r3, int r4, int r5, int r6, float r7, int r8, int r9, boolean r10, boolean r11, int r12, int r13, int r14, boolean r15, int r16, int r17, int r18, int r19) {
-        this.a = r1;
-        this.b = r2;
-        this.c = r3;
-        this.d = r4;
-        this.e = r5;
-        this.f = r6;
-        this.g = r7;
-        this.h = r8;
-        this.i = r9;
-        this.j = r10;
-        this.k = r11;
-        this.l = r12;
-        this.m = r13;
-        this.n = r14;
-        this.o = r15;
-        this.p = r16;
-        this.q = r17;
-        this.r = r18;
-        this.s = r19;
+    public u13(int i, int i2, int i3, int i4, int i5, int i6, float f, int i7, int i8, boolean z, boolean z2, int i9, int i10, int i11, boolean z3, int i12, int i13, int i14, int i15) {
+        this.a = i;
+        this.b = i2;
+        this.c = i3;
+        this.d = i4;
+        this.e = i5;
+        this.f = i6;
+        this.g = f;
+        this.h = i7;
+        this.i = i8;
+        this.j = z;
+        this.k = z2;
+        this.l = i9;
+        this.m = i10;
+        this.n = i11;
+        this.o = z3;
+        this.p = i12;
+        this.q = i13;
+        this.r = i14;
+        this.s = i15;
     }
 }

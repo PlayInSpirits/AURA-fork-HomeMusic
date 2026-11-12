@@ -9,21 +9,22 @@ import android.service.media.MediaBrowserService;
 public final class rj2 extends qj2 {
     public final /* synthetic */ sj2 o;
 
-    public rj2(sj2 r1, Context r2) {
-        this.o = r1;
-        super(r1, r2);
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public rj2(sj2 sj2Var, Context context) {
+        super(sj2Var, context);
+        this.o = sj2Var;
     }
 
     @Override // android.service.media.MediaBrowserService
-    public final void onLoadChildren(String r5, MediaBrowserService.Result r6, Bundle r7) {
-        Bundle r8 = f35.n(r7);
-        sj2 r4 = this.o;
-        pn2 r0 = r4.s;
-        oj2 r1 = r0.p;
-        pj2 r9 = new pj2(r4, r5, new om1(7, r6), r8);
-        r0.s = r1;
-        r0.d(r5, r9, r8);
-        r0.s = null;
-        r0.s = null;
+    public final void onLoadChildren(String str, MediaBrowserService.Result result, Bundle bundle) {
+        Bundle bundleN = f35.n(bundle);
+        sj2 sj2Var = this.o;
+        pn2 pn2Var = sj2Var.s;
+        oj2 oj2Var = pn2Var.p;
+        pj2 pj2Var = new pj2(sj2Var, str, new om1(7, result), bundleN);
+        pn2Var.s = oj2Var;
+        pn2Var.d(str, pj2Var, bundleN);
+        pn2Var.s = null;
+        pn2Var.s = null;
     }
 }

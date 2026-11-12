@@ -29,125 +29,42 @@ public final class sm1 {
     public final long s;
     public final String t;
 
-    public sm1(String r2, Uri r3, Uri r4, long r5, long r7, long r9, long r11, ArrayList r13, boolean r14, long r15, long r17, ArrayList r19, ArrayList r20, ArrayList r21, boolean r22, String r23, String r24, long r25, long r27, String r29) {
-        if (r3 == null) goto L5;
-        if (r4 == null) goto L5;
-    L8:
-        boolean r0 = false;
-    L10:
-        rr2.l(r0);
-        this.a = r2;
-        this.b = r3;
-        this.c = r4;
-        this.d = r5;
-        this.e = r7;
-        this.f = r9;
-        this.g = r11;
-        this.h = r13;
-        this.i = r14;
-        this.j = r15;
-        this.k = r17;
-        this.l = yw1.k(r19);
-        this.m = yw1.k(r20);
-        this.n = yw1.q(new n7(14), r21);
-        this.o = r22;
-        this.p = r23;
-        this.q = r24;
-        this.r = r25;
-        this.s = r27;
-        this.t = r29;
-        return;
-    L5:
-        if (r3 != null) goto L9;
-        if (r4 == null) goto L8;
-    L9:
-        r0 = true;
-        goto L10
+    public sm1(String str, Uri uri, Uri uri2, long j, long j2, long j3, long j4, ArrayList arrayList, boolean z, long j5, long j6, ArrayList arrayList2, ArrayList arrayList3, ArrayList arrayList4, boolean z2, String str2, String str3, long j7, long j8, String str4) {
+        rr2.l((uri == null || uri2 == null) && !(uri == null && uri2 == null));
+        this.a = str;
+        this.b = uri;
+        this.c = uri2;
+        this.d = j;
+        this.e = j2;
+        this.f = j3;
+        this.g = j4;
+        this.h = arrayList;
+        this.i = z;
+        this.j = j5;
+        this.k = j6;
+        this.l = yw1.k(arrayList2);
+        this.m = yw1.k(arrayList3);
+        this.n = yw1.q(new n7(14), arrayList4);
+        this.o = z2;
+        this.p = str2;
+        this.q = str3;
+        this.r = j7;
+        this.s = j8;
+        this.t = str4;
     }
 
-    public final boolean equals(Object r5) {
-        if (this != r5) goto L5;
-        return true;
-    L5:
-        if ((r5 instanceof sm1) == false) goto L71;
-        sm1 r6 = (sm1) r5;
-        if (this.d == r6.d) goto L10;
-        return false;
-    L10:
-        if (this.e == r6.e) goto L12;
-        return false;
-    L12:
-        if (this.f == r6.f) goto L14;
-        return false;
-    L14:
-        if (this.g == r6.g) goto L16;
-        return false;
-    L16:
-        if (this.i == r6.i) goto L18;
-        return false;
-    L18:
-        if (this.j == r6.j) goto L20;
-        return false;
-    L20:
-        if (this.k == r6.k) goto L22;
-        return false;
-    L22:
-        if (this.o == r6.o) goto L24;
-        return false;
-    L24:
-        if (this.r == r6.r) goto L26;
-        return false;
-    L26:
-        if (this.s == r6.s) goto L28;
-        return false;
-    L28:
-        if (Objects.equals(this.a, r6.a) == true) goto L30;
-        return false;
-    L30:
-        if (Objects.equals(this.b, r6.b) == true) goto L32;
-        return false;
-    L32:
-        if (Objects.equals(this.c, r6.c) == true) goto L34;
-        return false;
-    L34:
-        if (Objects.equals(this.h, r6.h) == true) goto L36;
-        return false;
-    L36:
-        if (Objects.equals(this.l, r6.l) == true) goto L38;
-        return false;
-    L38:
-        if (Objects.equals(this.m, r6.m) == true) goto L40;
-        return false;
-    L40:
-        if (Objects.equals(this.n, r6.n) == true) goto L42;
-        return false;
-    L42:
-        if (Objects.equals(this.p, r6.p) == true) goto L44;
-        return false;
-    L44:
-        if (Objects.equals(this.q, r6.q) == true) goto L46;
-        return false;
-    L46:
-        if (Objects.equals(this.t, r6.t) == false) goto L70;
-        return true;
-    L70:
-        return false;
-    L71:
-        return false;
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof sm1)) {
+            return false;
+        }
+        sm1 sm1Var = (sm1) obj;
+        return this.d == sm1Var.d && this.e == sm1Var.e && this.f == sm1Var.f && this.g == sm1Var.g && this.i == sm1Var.i && this.j == sm1Var.j && this.k == sm1Var.k && this.o == sm1Var.o && this.r == sm1Var.r && this.s == sm1Var.s && Objects.equals(this.a, sm1Var.a) && Objects.equals(this.b, sm1Var.b) && Objects.equals(this.c, sm1Var.c) && Objects.equals(this.h, sm1Var.h) && Objects.equals(this.l, sm1Var.l) && Objects.equals(this.m, sm1Var.m) && Objects.equals(this.n, sm1Var.n) && Objects.equals(this.p, sm1Var.p) && Objects.equals(this.q, sm1Var.q) && Objects.equals(this.t, sm1Var.t);
     }
 
     public final int hashCode() {
-        Long r6 = Long.valueOf(this.d);
-        Long r7 = Long.valueOf(this.e);
-        Long r8 = Long.valueOf(this.f);
-        Long r9 = Long.valueOf(this.g);
-        Boolean r11 = Boolean.valueOf(this.i);
-        Long r12 = Long.valueOf(this.j);
-        Long r13 = Long.valueOf(this.k);
-        Boolean r17 = Boolean.valueOf(this.o);
-        Long r20 = Long.valueOf(this.r);
-        Long r21 = Long.valueOf(this.s);
-        String r1 = this.t;
-        return Objects.hash(new Object[]{this.a, this.b, this.c, r6, r7, r8, r9, this.h, r11, r12, r13, this.l, this.m, this.n, r17, this.p, this.q, r20, r21, r1});
+        return Objects.hash(this.a, this.b, this.c, Long.valueOf(this.d), Long.valueOf(this.e), Long.valueOf(this.f), Long.valueOf(this.g), this.h, Boolean.valueOf(this.i), Long.valueOf(this.j), Long.valueOf(this.k), this.l, this.m, this.n, Boolean.valueOf(this.o), this.p, this.q, Long.valueOf(this.r), Long.valueOf(this.s), this.t);
     }
 }

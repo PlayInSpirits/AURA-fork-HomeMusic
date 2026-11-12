@@ -6,13 +6,10 @@ public final class g82 implements kl4 {
     public final zd3 n;
     public int o;
 
-    static {
-    }
-
-    public g82(int r4) {
-        int r0 = (r4 / 30) * 30;
-        this.n = new zd3(gb.g0(Math.max(r0 - 100, 0), r0 + 130), rv2.D);
-        this.o = r4;
+    public g82(int i) {
+        int i2 = (i / 30) * 30;
+        this.n = new zd3(gb.g0(Math.max(i2 - 100, 0), i2 + 130), rv2.D);
+        this.o = i;
     }
 
     @Override // defpackage.kl4

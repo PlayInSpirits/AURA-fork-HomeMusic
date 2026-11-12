@@ -10,21 +10,20 @@ import android.text.style.UpdateAppearance;
 public final class wb4 extends CharacterStyle implements UpdateAppearance {
     public final pv n;
     public final float o;
-    public final zd3 p;
+    public final zd3 p = uc5.B(new qf4(9205357640488583168L));
     public final dp0 q;
 
-    public wb4(pv r3, float r4) {
-        this.n = r3;
-        this.o = r4;
-        this.p = uc5.B(new qf4(9205357640488583168L));
-        wc r5 = new wc(24, this);
-        z05 r6 = ph4.a;
-        this.q = new dp0(r5, null);
+    public wb4(pv pvVar, float f) {
+        this.n = pvVar;
+        this.o = f;
+        wc wcVar = new wc(24, this);
+        z05 z05Var = ph4.a;
+        this.q = new dp0(wcVar, null);
     }
 
     @Override // android.text.style.CharacterStyle
-    public final void updateDrawState(TextPaint r2) {
-        gh0.C(r2, this.o);
-        r2.setShader((Shader) this.q.getValue());
+    public final void updateDrawState(TextPaint textPaint) {
+        gh0.C(textPaint, this.o);
+        textPaint.setShader((Shader) this.q.getValue());
     }
 }

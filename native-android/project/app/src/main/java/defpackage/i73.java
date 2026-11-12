@@ -9,36 +9,34 @@ public final class i73 extends zg0 {
     public final /* synthetic */ int q;
     public final /* synthetic */ b13 r;
 
-    public /* synthetic */ i73(b13 r1, int r2) {
-        this.q = r2;
-        this.r = r1;
+    public /* synthetic */ i73(b13 b13Var, int i) {
+        this.q = i;
+        this.r = b13Var;
     }
 
     @Override // defpackage.wq4
-    public final void c(Object r1, cx4 r2) {
-        int r3 = this.q;
-        b13 r0 = this.r;
-        switch(r3) {
-            case 0: goto L6;
-            default: goto L4;
-        };
-    L4:
-        r0.setValue((Bitmap) r1);
-        return;
-    L6:
-        r0.setValue((Bitmap) r1);
+    public final void c(Object obj, cx4 cx4Var) {
+        int i = this.q;
+        b13 b13Var = this.r;
+        switch (i) {
+            case 0:
+                b13Var.setValue((Bitmap) obj);
+                break;
+            default:
+                b13Var.setValue((Bitmap) obj);
+                break;
+        }
     }
 
     @Override // defpackage.wq4
-    public final void m(Drawable r1) {
-        switch(this.q) {
-            case 0: goto L6;
-            default: goto L4;
-        };
-    L4:
-        this.r.setValue(null);
-        return;
-    L6:
-        this.r.setValue(null);
+    public final void m(Drawable drawable) {
+        switch (this.q) {
+            case 0:
+                this.r.setValue(null);
+                break;
+            default:
+                this.r.setValue(null);
+                break;
+        }
     }
 }

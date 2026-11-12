@@ -1,6 +1,7 @@
 package defpackage;
 
 import java.io.EOFException;
+import java.io.IOException;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
@@ -18,162 +19,151 @@ public final class fm0 implements l83 {
     public long x;
     public long y;
 
-    public fm0(im4 r3, long r4, long r6, long r8, long r10, boolean r12) {
-        if (r4 >= 0) goto L5;
-    L7:
-        boolean r0 = false;
-    L8:
-        rr2.l(r0);
-        this.q = r3;
-        this.o = r4;
-        this.p = r6;
-        if (r8 == (r6 - r4)) goto L13;
-        if (r12 == true) goto L13;
-        this.r = 0;
-    L14:
+    public fm0(im4 im4Var, long j, long j2, long j3, long j4, boolean z) {
+        rr2.l(j >= 0 && j2 > j);
+        this.q = im4Var;
+        this.o = j;
+        this.p = j2;
+        if (j3 == j2 - j || z) {
+            this.s = j4;
+            this.r = 4;
+        } else {
+            this.r = 0;
+        }
         this.n = new k83();
-        return;
-    L13:
-        this.s = r10;
-        this.r = 4;
-        goto L14
-    L5:
-        if (r6 <= r4) goto L7;
-        r0 = true;
-        goto L8
     }
 
+    /* JADX WARN: Code duplicated, block: B:43:0x00c1 A[RETURN] */
+    /* JADX WARN: Code duplicated, block: B:44:0x00c2  */
     @Override // defpackage.l83
-    public final long b(l51 r28) {
-        int r2 = this.r;
-        long r5 = this.p;
-        k83 r8 = this.n;
-        if (r2 == 0) goto L51;
-        if (r2 == 1) goto L54;
-        if (r2 == 2) goto L14;
-        if (r2 == 3) goto L12;
-        if (r2 != 4) goto L10;
-        return -1;
-    L10:
-        tb4.a();
-        return 0;
-    L12:
-        long r19 = 2;
-    L45:
-        r8.b(r28, -1);
-        r8.a(r28, false);
-        if (r8.b > this.u) goto L47;
-        r28.l(r8.d + r8.e);
-        this.v = r28.getPosition();
-        this.x = r8.b;
-        goto L45
-    L47:
-        r28.k();
-        this.r = 4;
-        return -(this.x + r19);
-    L14:
-        if (this.v != this.w) goto L17;
-        long r4 = -1;
-    L16:
-        r19 = 2;
-    L42:
-        if (r4 == (-1)) goto L44;
-        return r4;
-    L44:
-        this.r = 3;
-        goto L45
-    L17:
-        long r3 = r28.getPosition();
-        if (r8.b(r28, this.w) == true) goto L24;
-        r4 = this.v;
-        if (r4 != r3) goto L16;
-        mj0.i("No ogg page can be found.");
-        return 0;
-    L24:
-        r8.a(r28, false);
-        r28.k();
-        long r6 = this.u;
-        long r13 = r8.b;
-        long r7 = r6 - r13;
-        r19 = 2;
-        int r9 = r8.d + r8.e;
-        if (0 > r7) goto L30;
-        if (r7 >= 72000) goto L30;
-        r4 = -1;
-    L30:
-        if (r7 >= 0) goto L32;
-        this.w = r3;
-        this.y = r13;
-    L33:
-        long r10 = this.w;
-        long r14 = this.v;
-        if ((r10 - r14) >= 100000) goto L36;
-        this.w = r14;
-        r4 = r14;
-        goto L42
-    L36:
-        long r11 = r9;
-        if (r7 > 0) goto L39;
-        long r15 = 2;
-    L40:
-        long r16 = r28.getPosition() - (r11 * r15);
-        long r12 = this.w;
-        long r17 = this.v;
-        r4 = f35.k((((r12 - r17) * r7) / (this.y - this.x)) + r16, r17, r12 - 1);
-        goto L42
-    L39:
-        r15 = 1;
-        goto L40
-    L32:
-        this.v = r28.getPosition() + ((long) r9);
-        this.x = r8.b;
-    L54:
-        r8.a = 0;
-        r8.b = 0;
-        r8.c = 0;
-        r8.d = 0;
-        r8.e = 0;
-        if (r8.b(r28, -1) == false) goto L71;
-        r8.a(r28, false);
-        r28.l(r8.d + r8.e);
-        long r18 = r8.b;
-    L58:
-        if ((r8.a & 4) == 4) goto L68;
-        if (r8.b(r28, -1) == false) goto L68;
-        if (r28.getPosition() >= r5) goto L68;
-        if (r8.a(r28, true) == false) goto L68;
-        r28.l(r8.d + r8.e);     // Catch: EOFException -> L72
-        r18 = r8.b;
-    L68:
-        this.s = r18;
+    public final long b(l51 l51Var) throws IOException {
+        long j;
+        long jK;
+        int i = this.r;
+        long j2 = this.p;
+        k83 k83Var = this.n;
+        if (i == 0) {
+            long position = l51Var.getPosition();
+            this.t = position;
+            this.r = 1;
+            long j3 = j2 - 65307;
+            if (j3 > position) {
+                return j3;
+            }
+        } else if (i != 1) {
+            if (i == 2) {
+                if (this.v == this.w) {
+                    jK = -1;
+                } else {
+                    long position2 = l51Var.getPosition();
+                    if (k83Var.b(l51Var, this.w)) {
+                        k83Var.a(l51Var, false);
+                        l51Var.k();
+                        long j4 = this.u;
+                        long j5 = k83Var.b;
+                        long j6 = j4 - j5;
+                        j = 2;
+                        int i2 = k83Var.d + k83Var.e;
+                        if (0 > j6 || j6 >= 72000) {
+                            if (j6 < 0) {
+                                this.w = position2;
+                                this.y = j5;
+                            } else {
+                                this.v = l51Var.getPosition() + ((long) i2);
+                                this.x = k83Var.b;
+                            }
+                            long j7 = this.w;
+                            long j8 = this.v;
+                            if (j7 - j8 < 100000) {
+                                this.w = j8;
+                                jK = j8;
+                            } else {
+                                long position3 = l51Var.getPosition() - (((long) i2) * (j6 <= 0 ? 2L : 1L));
+                                long j9 = this.w;
+                                long j10 = this.v;
+                                jK = f35.k((((j9 - j10) * j6) / (this.y - this.x)) + position3, j10, j9 - 1);
+                            }
+                        } else {
+                            jK = -1;
+                        }
+                    } else {
+                        jK = this.v;
+                        if (jK == position2) {
+                            mj0.i("No ogg page can be found.");
+                            return 0L;
+                        }
+                    }
+                    if (jK != -1) {
+                        return jK;
+                    }
+                    this.r = 3;
+                }
+                j = 2;
+                if (jK != -1) {
+                    return jK;
+                }
+                this.r = 3;
+            } else {
+                if (i != 3) {
+                    if (i == 4) {
+                        return -1L;
+                    }
+                    tb4.a();
+                    return 0L;
+                }
+                j = 2;
+            }
+            while (true) {
+                k83Var.b(l51Var, -1L);
+                k83Var.a(l51Var, false);
+                if (k83Var.b > this.u) {
+                    l51Var.k();
+                    this.r = 4;
+                    return -(this.x + j);
+                }
+                l51Var.l(k83Var.d + k83Var.e);
+                this.v = l51Var.getPosition();
+                this.x = k83Var.b;
+            }
+        }
+        k83Var.a = 0;
+        k83Var.b = 0L;
+        k83Var.c = 0;
+        k83Var.d = 0;
+        k83Var.e = 0;
+        if (!k83Var.b(l51Var, -1L)) {
+            throw new EOFException();
+        }
+        k83Var.a(l51Var, false);
+        l51Var.l(k83Var.d + k83Var.e);
+        long j11 = k83Var.b;
+        while ((k83Var.a & 4) != 4 && k83Var.b(l51Var, -1L) && l51Var.getPosition() < j2 && k83Var.a(l51Var, true)) {
+            try {
+                l51Var.l(k83Var.d + k83Var.e);
+                j11 = k83Var.b;
+            } catch (EOFException unused) {
+            }
+        }
+        this.s = j11;
         this.r = 4;
         return this.t;
-    L71:
-        throw new EOFException();
-    L51:
-        long r20 = r28.getPosition();
-        this.t = r20;
-        this.r = 1;
-        long r110 = r5 - 65307;
-        if (r110 <= r20) goto L54;
-        return r110;
     }
 
     @Override // defpackage.l83
     public final m84 e() {
-        if (this.s != 0) goto L5;
+        if (this.s != 0) {
+            return new em0(this);
+        }
         return null;
-    L5:
-        return new em0(this);
     }
 
     @Override // defpackage.l83
-    public final void g(long r11) {
-        this.u = f35.k(r11, 0, this.s - 1);
+    public final void g(long j) {
+        this.u = f35.k(j, 0L, this.s - 1);
         this.r = 2;
         this.v = this.o;
         this.w = this.p;
-        this.x = 0;
+        this.x = 0L;
         this.y = this.s;
     }
 }

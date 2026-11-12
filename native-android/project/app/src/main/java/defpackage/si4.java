@@ -8,23 +8,22 @@ public final /* synthetic */ class si4 implements Runnable {
     public final /* synthetic */ int n;
     public final /* synthetic */ SongListPageFragment o;
 
-    public /* synthetic */ si4(SongListPageFragment r1, int r2) {
-        this.n = r2;
-        this.o = r1;
+    public /* synthetic */ si4(SongListPageFragment songListPageFragment, int i) {
+        this.n = i;
+        this.o = songListPageFragment;
     }
 
     @Override // java.lang.Runnable
     public final void run() {
-        int r0 = this.n;
-        SongListPageFragment r1 = this.o;
-        switch(r0) {
-            case 0: goto L6;
-            default: goto L4;
-        };
-    L4:
-        r1.k0(r1.p0.u);
-        return;
-    L6:
-        r1.i0();
+        int i = this.n;
+        SongListPageFragment songListPageFragment = this.o;
+        switch (i) {
+            case 0:
+                songListPageFragment.i0();
+                break;
+            default:
+                songListPageFragment.k0(songListPageFragment.p0.u);
+                break;
+        }
     }
 }

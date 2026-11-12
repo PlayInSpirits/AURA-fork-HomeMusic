@@ -8,56 +8,51 @@ public final class fv3 extends n14 {
     public final Object p;
     public final fw q;
 
-    public /* synthetic */ fv3(Object r1, long r2, fw r4, int r5) {
-        this.n = r5;
-        this.p = r1;
-        this.o = r2;
-        this.q = r4;
+    public /* synthetic */ fv3(Object obj, long j, fw fwVar, int i) {
+        this.n = i;
+        this.p = obj;
+        this.o = j;
+        this.q = fwVar;
     }
 
     @Override // defpackage.n14
     public final long contentLength() {
-        switch(this.n) {
-            case 0: goto L7;
-            default: goto L5;
-        };
-    L5:
-        return this.o;
-    L7:
+        switch (this.n) {
+            case 0:
+                break;
+        }
         return this.o;
     }
 
     @Override // defpackage.n14
     public final hu2 contentType() {
-        int r0 = this.n;
-        Object r1 = this.p;
-        switch(r0) {
-            case 0: goto L6;
-            default: goto L5;
-        };
-    L6:
-        String r2 = (String) r1;
-        if (r2 == null) goto L13;
-        return ve5.a(r2);
-    L14:
-        return null;
-    L13:
-        return null;
-    L5:
-        return (hu2) r1;
+        int i = this.n;
+        Object obj = this.p;
+        switch (i) {
+            case 0:
+                String str = (String) obj;
+                if (str == null) {
+                    return null;
+                }
+                try {
+                    return ve5.a(str);
+                } catch (IllegalArgumentException unused) {
+                    return null;
+                }
+            default:
+                return (hu2) obj;
+        }
     }
 
     @Override // defpackage.n14
     public final fw source() {
-        int r0 = this.n;
-        fw r1 = this.q;
-        switch(r0) {
-            case 0: goto L6;
-            default: goto L4;
-        };
-    L4:
-        return r1;
-    L6:
-        return (xu3) r1;
+        int i = this.n;
+        fw fwVar = this.q;
+        switch (i) {
+            case 0:
+                return (xu3) fwVar;
+            default:
+                return fwVar;
+        }
     }
 }

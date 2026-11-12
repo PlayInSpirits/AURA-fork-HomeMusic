@@ -9,8 +9,8 @@ public final class ha2 {
     public ez d;
 
     public ha2() {
-        pz1 r0 = new pz1(2);
-        this.a = r0;
-        this.b = r0;
+        pz1 pz1Var = new pz1(2);
+        this.a = pz1Var;
+        this.b = pz1Var;
     }
 }

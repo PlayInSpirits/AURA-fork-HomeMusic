@@ -9,9 +9,10 @@ import java.util.SortedSet;
 public class l1 extends g1 implements SortedSet {
     public final /* synthetic */ sz2 p;
 
-    public l1(sz2 r1, SortedMap r2) {
-        this.p = r1;
-        super(r1, r2);
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public l1(sz2 sz2Var, SortedMap sortedMap) {
+        super(sz2Var, sortedMap);
+        this.p = sz2Var;
     }
 
     public SortedMap a() {
@@ -28,9 +29,8 @@ public class l1 extends g1 implements SortedSet {
         return a().firstKey();
     }
 
-    public SortedSet headSet(Object r3) {
-        SortedMap r4 = a().headMap(r3);
-        return new l1(this.p, r4);
+    public SortedSet headSet(Object obj) {
+        return new l1(this.p, a().headMap(obj));
     }
 
     @Override // java.util.SortedSet
@@ -38,13 +38,11 @@ public class l1 extends g1 implements SortedSet {
         return a().lastKey();
     }
 
-    public SortedSet subSet(Object r3, Object r4) {
-        SortedMap r5 = a().subMap(r3, r4);
-        return new l1(this.p, r5);
+    public SortedSet subSet(Object obj, Object obj2) {
+        return new l1(this.p, a().subMap(obj, obj2));
     }
 
-    public SortedSet tailSet(Object r3) {
-        SortedMap r4 = a().tailMap(r3);
-        return new l1(this.p, r4);
+    public SortedSet tailSet(Object obj) {
+        return new l1(this.p, a().tailMap(obj));
     }
 }

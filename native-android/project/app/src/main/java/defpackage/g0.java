@@ -5,28 +5,25 @@ package defpackage;
 public final class g0 extends Throwable {
     public final /* synthetic */ int n;
 
-    public /* synthetic */ g0(int r1, String r2) {
-        this.n = r1;
-        super(r2);
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public /* synthetic */ g0(int i, String str) {
+        super(str);
+        this.n = i;
     }
 
     @Override // java.lang.Throwable
     public final synchronized Throwable fillInStackTrace() {
-        int r0 = this.n;
-        monitor-enter(this);
-        switch(r0) {
-            case 0: goto L9;
-            case 1: goto L7;
-            default: goto L5;
-        };
-    L5:
-        monitor-exit(this);
-        return this;
-    L7:
-        monitor-exit(this);
-        return this;
-    L9:
-        monitor-exit(this);
-        return this;
+        int i = this.n;
+        synchronized (this) {
+            switch (i) {
+                case 0:
+                    break;
+                case 1:
+                    break;
+                default:
+                    break;
+            }
+            return this;
+        }
     }
 }

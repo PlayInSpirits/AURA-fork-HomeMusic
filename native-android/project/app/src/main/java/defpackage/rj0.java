@@ -8,9 +8,9 @@ public final class rj0 {
     public final long c;
     public long d;
 
-    public rj0(qh3 r1, long r2, long r4) {
-        this.a = r1;
-        this.b = r2;
-        this.c = r4;
+    public rj0(qh3 qh3Var, long j, long j2) {
+        this.a = qh3Var;
+        this.b = j;
+        this.c = j2;
     }
 }

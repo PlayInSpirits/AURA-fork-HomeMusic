@@ -12,7 +12,4 @@ public class RadioBrowserCountry {
 
     @ka4("stationcount")
     public int stationCount;
-
-    public RadioBrowserCountry() {
-    }
 }

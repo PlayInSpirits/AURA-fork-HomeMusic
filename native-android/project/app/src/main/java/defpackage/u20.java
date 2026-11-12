@@ -20,63 +20,46 @@ public final class u20 {
     public long[] m;
     public int[] n;
 
-    public u20(int r12, fo r13, wv4 r14) {
-        int r0 = r13.d;
-        this.a = r13;
-        int r1 = r13.a();
-        boolean r3 = true;
-        if (r1 == 1) goto L7;
-        if (r1 == 2) goto L7;
-        r3 = false;
-    L7:
-        rr2.l(r3);
-        if (r1 != 2) goto L10;
-        int r4 = 1667497984;
-    L11:
-        int r15 = (((r12 % 10) + 48) << 8) | ((r12 / 10) + 48);
-        this.c = r4 | r15;
-        long r6 = ((long) r13.b) * 1000000;
-        long r8 = r13.c;
-        String r16 = f35.a;
-        this.e = f35.a0(r0, r6, r8, RoundingMode.DOWN);
-        this.b = r14;
-        if (r1 != 2) goto L14;
-        int r17 = r15 | 1650720768;
-    L15:
-        this.d = r17;
-        this.l = -1;
+    public u20(int i, fo foVar, wv4 wv4Var) {
+        int i2 = foVar.d;
+        this.a = foVar;
+        int iA = foVar.a();
+        boolean z = true;
+        if (iA != 1 && iA != 2) {
+            z = false;
+        }
+        rr2.l(z);
+        int i3 = (((i % 10) + 48) << 8) | ((i / 10) + 48);
+        this.c = (iA == 2 ? 1667497984 : 1651965952) | i3;
+        long j = ((long) foVar.b) * 1000000;
+        long j2 = foVar.c;
+        String str = f35.a;
+        this.e = f35.a0(i2, j, j2, RoundingMode.DOWN);
+        this.b = wv4Var;
+        this.d = iA == 2 ? i3 | 1650720768 : -1;
+        this.l = -1L;
         this.m = new long[512];
         this.n = new int[512];
-        this.f = r0;
-        return;
-    L14:
-        r17 = -1;
-        goto L15
-    L10:
-        r4 = 1651965952;
-        goto L11
+        this.f = i2;
     }
 
-    public final o84 a(int r8) {
-        return new o84((this.e / this.f) * this.n[r8], this.m[r8]);
+    public final o84 a(int i) {
+        return new o84((this.e / ((long) this.f)) * ((long) this.n[i]), this.m[i]);
     }
 
-    public final l84 b(long r5) {
-        if (this.k != 0) goto L6;
-        o84 r6 = new o84(0, this.l);
-        return new l84(r6, r6);
-    L6:
-        int r7 = (int) (r5 / (this.e / this.f));
-        int r8 = f35.e(this.n, r7, true, true);
-        if (this.n[r8] != r7) goto L10;
-        o84 r4 = a(r8);
-        return new l84(r4, r4);
-    L10:
-        o84 r9 = a(r8);
-        int r10 = r8 + 1;
-        if (r10 >= this.m.length) goto L15;
-        return new l84(r9, a(r10));
-    L15:
-        return new l84(r9, r9);
+    public final l84 b(long j) {
+        if (this.k == 0) {
+            o84 o84Var = new o84(0L, this.l);
+            return new l84(o84Var, o84Var);
+        }
+        int i = (int) (j / (this.e / ((long) this.f)));
+        int iE = f35.e(this.n, i, true, true);
+        if (this.n[iE] == i) {
+            o84 o84VarA = a(iE);
+            return new l84(o84VarA, o84VarA);
+        }
+        o84 o84VarA2 = a(iE);
+        int i2 = iE + 1;
+        return i2 < this.m.length ? new l84(o84VarA2, a(i2)) : new l84(o84VarA2, o84VarA2);
     }
 }

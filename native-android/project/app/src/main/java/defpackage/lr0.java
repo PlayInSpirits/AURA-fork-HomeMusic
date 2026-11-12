@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.RemoteCallbackList;
+import android.os.RemoteException;
 import android.text.TextUtils;
 import android.util.Log;
 import java.io.File;
@@ -12,9 +13,9 @@ import java.io.IOException;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.CancellationException;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.LinkedBlockingDeque;
@@ -30,192 +31,173 @@ public final class lr0 implements wq0, s21, kg1, er2 {
     public Object q;
     public Object r;
 
-    public lr0(r34 r1, gr4 r2) {
-        r2.getClass();
-        this.o = r1;
-        this.p = r2;
+    public lr0(r34 r34Var, gr4 gr4Var) {
+        gr4Var.getClass();
+        this.o = r34Var;
+        this.p = gr4Var;
         this.n = Long.MIN_VALUE;
         this.q = new CopyOnWriteArrayList();
         this.r = new LinkedBlockingDeque();
     }
 
     @Override // defpackage.er2
-    public void B(int r1, za4 r2, boolean r3, boolean r4, int r5) {
-        ls2 r0 = (ls2) this.r;
-        r0.P(r0.g.s);
+    public void B(int i, za4 za4Var, boolean z, boolean z2, int i2) {
+        ls2 ls2Var = (ls2) this.r;
+        ls2Var.P(ls2Var.g.s);
     }
 
     @Override // defpackage.wq0
-    public void M(f42 r8, ns3 r9) {
-        String r2 = ((qr2) this.o).m(r8);
-        rm3 r3 = (rm3) this.q;
-        monitor-enter(r3);
-        yq0 r4 = (yq0) ((HashMap) r3.n).get(r2);     // Catch: Throwable -> L14
-        if (r4 != null) goto L19;
-        zg5 r5 = (zg5) r3.o;     // Catch: Throwable -> L14
-        ArrayDeque r6 = (ArrayDeque) r5.n;     // Catch: Throwable -> L14
-        monitor-enter(r6);     // Catch: Throwable -> L14
-        r4 = (yq0) ((ArrayDeque) r5.n).poll();     // Catch: Throwable -> L16
-        monitor-exit(r6);     // Catch: Throwable -> L16
-        if (r4 != null) goto L12;
-        r4 = new yq0();     // Catch: Throwable -> L14
-    L12:
-        ((HashMap) r3.n).put(r2, r4);     // Catch: Throwable -> L14
-        goto L19
-    L16:
-        th = move-exception;
-        throw th;     // Catch: Throwable -> L14
-    L19:
-        r4.b++;     // Catch: Throwable -> L14
-        monitor-exit(r3);     // Catch: Throwable -> L14
-        r4.a.lock();
-    L26:
-        th = move-exception;
-        ((rm3) this.q).M(r2);
-        throw th;
-    L23:
-        if (Log.isLoggable("DiskLruCacheWrapper", 2) == false) goto L66;
-        Log.v("DiskLruCacheWrapper", "Put: Obtained: " + r2 + " for for Key: " + r8);     // Catch: Throwable -> L26
-    L66:
-        kr0 r10 = f();     // Catch: Throwable -> L26 IOException -> L41
-        if (r10.s(r2) == null) goto L32;
-    L30:
-        ((rm3) this.q).M(r2);
-        return;
-    L32:
-        ll r11 = r10.n(r2);     // Catch: Throwable -> L26 IOException -> L41
-        if (r11 == null) goto L49;
-    L43:
-        th = move-exception;
-        if (r11.o == false) goto L69;
-    L47:
-        throw th;     // Catch: Throwable -> L26 IOException -> L41
-    L69:
-        r11.a();     // Catch: Throwable -> L26 IOException -> L59
-        goto L47
-    L35:
-        if (((c11) r9.o).i(r9.p, r11.g(), (db3) r9.q) == false) goto L38;
-        kr0.b((kr0) r11.r, r11, true);     // Catch: Throwable -> L43
-        r11.o = true;     // Catch: Throwable -> L43
-    L38:
-        if (r11.o == true) goto L30;
-        r11.a();     // Catch: Throwable -> L26 IOException -> L58
-        goto L30
-    L49:
-        throw new IllegalStateException("Had two simultaneous puts for: ".concat(r2));     // Catch: Throwable -> L26 IOException -> L41
-    L41:
-        e = move-exception;
-        if (Log.isLoggable("DiskLruCacheWrapper", 5) == false) goto L30;
-        Log.w("DiskLruCacheWrapper", "Unable to put to disk cache", e);     // Catch: Throwable -> L26
-    L14:
-        th = move-exception;
-        throw th;
+    public void M(f42 f42Var, ns3 ns3Var) {
+        yq0 yq0Var;
+        String strM = ((qr2) this.o).m(f42Var);
+        rm3 rm3Var = (rm3) this.q;
+        synchronized (rm3Var) {
+            yq0Var = (yq0) ((HashMap) rm3Var.n).get(strM);
+            if (yq0Var == null) {
+                zg5 zg5Var = (zg5) rm3Var.o;
+                synchronized (((ArrayDeque) zg5Var.n)) {
+                    yq0Var = (yq0) ((ArrayDeque) zg5Var.n).poll();
+                }
+                if (yq0Var == null) {
+                    yq0Var = new yq0();
+                }
+                ((HashMap) rm3Var.n).put(strM, yq0Var);
+            }
+            yq0Var.b++;
+        }
+        yq0Var.a.lock();
+        try {
+            if (Log.isLoggable("DiskLruCacheWrapper", 2)) {
+                Log.v("DiskLruCacheWrapper", "Put: Obtained: " + strM + " for for Key: " + f42Var);
+            }
+            try {
+                kr0 kr0VarF = f();
+                if (kr0VarF.s(strM) == null) {
+                    ll llVarN = kr0VarF.n(strM);
+                    if (llVarN == null) {
+                        throw new IllegalStateException("Had two simultaneous puts for: ".concat(strM));
+                    }
+                    try {
+                        if (((c11) ns3Var.o).i(ns3Var.p, llVarN.g(), (db3) ns3Var.q)) {
+                            kr0.b((kr0) llVarN.r, llVarN, true);
+                            llVarN.o = true;
+                        }
+                        if (!llVarN.o) {
+                            try {
+                                llVarN.a();
+                            } catch (IOException unused) {
+                            }
+                        }
+                    } catch (Throwable th) {
+                        if (!llVarN.o) {
+                            try {
+                                llVarN.a();
+                            } catch (IOException unused2) {
+                            }
+                        }
+                        throw th;
+                    }
+                }
+            } catch (IOException e) {
+                if (Log.isLoggable("DiskLruCacheWrapper", 5)) {
+                    Log.w("DiskLruCacheWrapper", "Unable to put to disk cache", e);
+                }
+            }
+            ((rm3) this.q).M(strM);
+        } catch (Throwable th2) {
+            ((rm3) this.q).M(strM);
+            throw th2;
+        }
     }
 
     @Override // defpackage.s21
-    public cv3 a() {
-        r34 r0 = (r34) this.o;
-        CopyOnWriteArrayList r1 = (CopyOnWriteArrayList) this.q;
-        IOException r3 = null;
-    L65:
-    L10:
-        th = move-exception;
-        b();
-        throw th;
-    L4:
-        if (r1.isEmpty() == false) goto L13;
-        if (r0.m(null) == true) goto L13;
-        b();
-        r3.getClass();
-        throw r3;
-    L13:
-        if (r0.isCanceled() == true) goto L62;
-        rm2 r4 = ((gr4) this.p).a;     // Catch: Throwable -> L10
-        long r5 = System.nanoTime();     // Catch: Throwable -> L10
-        long r6 = this.n - r5;     // Catch: Throwable -> L10
-        if (r1.isEmpty() == false) goto L17;
-    L20:
-        p34 r7 = g();     // Catch: Throwable -> L10
-        long r8 = 250000000;
-        this.n = r5 + 250000000;     // Catch: Throwable -> L10
-    L21:
-        if (r7 != null) goto L31;
-        TimeUnit r9 = TimeUnit.NANOSECONDS;     // Catch: Throwable -> L10
-        if (r1.isEmpty() == false) goto L25;
-    L24:
-        r7 = null;
-    L29:
-        if (r7 != null) goto L31;
-    L25:
-        p34 r10 = (p34) ((LinkedBlockingDeque) this.r).poll(r8, r9);     // Catch: Throwable -> L10
-        if (r10 == null) goto L24;
-        r1.remove(r10.a);     // Catch: Throwable -> L10
-        r7 = r10;
-    L31:
-        q34 r11 = r7.a;     // Catch: Throwable -> L10
-        boolean r12 = false;
-        if (r7.b == null) goto L34;
-    L36:
-        boolean r13 = false;
-    L37:
-        if (r13 == false) goto L50;
-        b();     // Catch: Throwable -> L10
-        if (r11.c() == true) goto L42;
-        r7 = r11.g();     // Catch: Throwable -> L10
-    L42:
-        if (r7.b == null) goto L44;
-    L46:
-        if (r12 == false) goto L50;
-        cv3 r2 = r7.a.e();     // Catch: Throwable -> L10
-        b();
-        return r2;
-    L44:
-        if (r7.c != null) goto L46;
-        r12 = true;
-    L50:
-        Throwable r14 = r7.c;     // Catch: Throwable -> L10
-        if (r14 != null) goto L53;
-    L58:
-        q34 r15 = r7.b;     // Catch: Throwable -> L10
-        if (r15 == null) goto L65;
-        r0.v().addFirst(r15);     // Catch: Throwable -> L10
-        goto L65
-    L53:
-        if ((r14 instanceof IOException) == false) goto L57;
-        if (r3 != null) goto L56;
-        r3 = (IOException) r14;     // Catch: Throwable -> L10
-        goto L58
-    L56:
-        j51.d(r3, r14);     // Catch: Throwable -> L10
-        goto L58
-    L57:
-        throw r14;     // Catch: Throwable -> L10
-    L34:
-        if (r7.c != null) goto L36;
-        r13 = true;
-        goto L37
-    L17:
-        if (r6 <= 0) goto L20;
-        r8 = r6;
-        r7 = null;
-        goto L21
-    L62:
-        throw new IOException("Canceled");     // Catch: Throwable -> L10
+    public cv3 a() throws IOException {
+        p34 p34VarG;
+        long j;
+        p34 p34Var;
+        r34 r34Var = (r34) this.o;
+        CopyOnWriteArrayList copyOnWriteArrayList = (CopyOnWriteArrayList) this.q;
+        IOException iOException = null;
+        while (true) {
+            try {
+                if (copyOnWriteArrayList.isEmpty() && !r34Var.m(null)) {
+                    b();
+                    iOException.getClass();
+                    throw iOException;
+                }
+                if (r34Var.isCanceled()) {
+                    throw new IOException("Canceled");
+                }
+                rm2 rm2Var = ((gr4) this.p).a;
+                long jNanoTime = System.nanoTime();
+                long j2 = this.n - jNanoTime;
+                if (copyOnWriteArrayList.isEmpty() || j2 <= 0) {
+                    p34VarG = g();
+                    j = 250000000;
+                    this.n = jNanoTime + 250000000;
+                } else {
+                    j = j2;
+                    p34VarG = null;
+                }
+                if (p34VarG == null) {
+                    TimeUnit timeUnit = TimeUnit.NANOSECONDS;
+                    if (copyOnWriteArrayList.isEmpty() || (p34Var = (p34) ((LinkedBlockingDeque) this.r).poll(j, timeUnit)) == null) {
+                        p34VarG = null;
+                    } else {
+                        copyOnWriteArrayList.remove(p34Var.a);
+                        p34VarG = p34Var;
+                    }
+                    if (p34VarG == null) {
+                    }
+                }
+                q34 q34Var = p34VarG.a;
+                boolean z = false;
+                if (p34VarG.b == null && p34VarG.c == null) {
+                    b();
+                    if (!q34Var.c()) {
+                        p34VarG = q34Var.g();
+                    }
+                    if (p34VarG.b == null && p34VarG.c == null) {
+                        z = true;
+                    }
+                    if (z) {
+                        cv3 cv3VarE = p34VarG.a.e();
+                        b();
+                        return cv3VarE;
+                    }
+                }
+                Throwable th = p34VarG.c;
+                if (th != null) {
+                    if (!(th instanceof IOException)) {
+                        throw th;
+                    }
+                    if (iOException == null) {
+                        iOException = (IOException) th;
+                    } else {
+                        j51.d(iOException, th);
+                    }
+                }
+                q34 q34Var2 = p34VarG.b;
+                if (q34Var2 != null) {
+                    r34Var.v().addFirst(q34Var2);
+                }
+            } catch (Throwable th2) {
+                b();
+                throw th2;
+            }
+        }
     }
 
     public void b() {
-        CopyOnWriteArrayList r0 = (CopyOnWriteArrayList) this.q;
-        Iterator r1 = r0.iterator();
-    L4:
-        if (r1.hasNext() == false) goto L9;
-        q34 r2 = (q34) r1.next();
-        r2.cancel();
-        q34 r3 = r2.d();
-        if (r3 == null) goto L4;
-        ((r34) this.o).v().addLast(r3);
-        goto L4
-    L9:
-        r0.clear();
+        CopyOnWriteArrayList<q34> copyOnWriteArrayList = (CopyOnWriteArrayList) this.q;
+        for (q34 q34Var : copyOnWriteArrayList) {
+            q34Var.cancel();
+            q34 q34VarD = q34Var.d();
+            if (q34VarD != null) {
+                ((r34) this.o).v().addLast(q34VarD);
+            }
+        }
+        copyOnWriteArrayList.clear();
     }
 
     @Override // defpackage.er2
@@ -228,446 +210,347 @@ public final class lr0 implements wq0, s21, kg1, er2 {
     }
 
     public synchronized kr0 f() {
-        monitor-enter(this);
-    L6:
-        th = move-exception;
-        throw th;
-    L4:
-        if (((kr0) this.r) != null) goto L8;
-        this.r = kr0.v((File) this.p, this.n);     // Catch: Throwable -> L6
-    L8:
-        kr0 r0 = (kr0) this.r;     // Catch: Throwable -> L6
-        monitor-exit(this);
-        return r0;
+        try {
+            if (((kr0) this.r) == null) {
+                this.r = kr0.v((File) this.p, this.n);
+            }
+        } catch (Throwable th) {
+            throw th;
+        }
+        return (kr0) this.r;
     }
 
     public p34 g() {
-        r34 r0 = (r34) this.o;
-        if (r0.m(null) == true) goto L18;
-    L17:
+        q34 x51Var;
+        r34 r34Var = (r34) this.o;
+        if (r34Var.m(null)) {
+            try {
+                x51Var = r34Var.w();
+            } catch (Throwable th) {
+                x51Var = new x51(th);
+            }
+            if (x51Var.c()) {
+                return new p34(x51Var, (Throwable) null, 6);
+            }
+            if (x51Var instanceof x51) {
+                return ((x51) x51Var).a;
+            }
+            ((CopyOnWriteArrayList) this.q).add(x51Var);
+            ((gr4) this.p).e().d(new z51(ze5.c + " connect " + r34Var.n().h.i(), x51Var, this), 0L);
+        }
         return null;
-    L18:
-        q34 r2 = r0.w();     // Catch: Throwable -> L6
-    L9:
-        if (r2.c() == false) goto L13;
-        return new p34(r2, null, 6);
-    L13:
-        if ((r2 instanceof x51) == true) goto L15;
-        ((CopyOnWriteArrayList) this.q).add(r2);
-        ((gr4) this.p).e().d(new z51(ze5.c + " connect " + r0.n().h.i(), r2, this), 0);
-        goto L17
-    L15:
-        return ((x51) r2).a;
-    L6:
-        th = move-exception;
-        r2 = new x51(th);
-        goto L9
     }
 
     @Override // defpackage.kg1
-    public void h(Object r8) {
-        Bitmap r5 = (Bitmap) r8;
-        ls2 r9 = (ls2) ((lr0) this.r).r;
-        if (this == r9.s) goto L5;
-        return;
-    L5:
-        ls2.F(r9.m, f92.n((do2) this.o, (String) this.p, (Uri) this.q, this.n, r5));
-        tn2 r7 = r9.g;
-        f35.W(r7.o, new sr2(r7, 1));
+    public void h(Object obj) {
+        Bitmap bitmap = (Bitmap) obj;
+        ls2 ls2Var = (ls2) ((lr0) this.r).r;
+        if (this != ls2Var.s) {
+            return;
+        }
+        ls2.F(ls2Var.m, f92.n((do2) this.o, (String) this.p, (Uri) this.q, this.n, bitmap));
+        tn2 tn2Var = ls2Var.g;
+        f35.W(tn2Var.o, new sr2(tn2Var, 1));
     }
 
     public void j() {
-        ls2 r8 = (ls2) this.r;
-        al3 r7 = r8.g.s;
-        if (r7.F().a != 0) goto L5;
-        is2 r0 = null;
-    L16:
-        r8.p = r0;
-        qr2 r9 = r8.m;
-        if (r0 == null) goto L19;
-        ((kr2) r9.o).a.setPlaybackToRemote(r0.a());
-        return;
-    L19:
-        if (r7.S0(21) == false) goto L21;
-        il r1 = r7.D();
-    L22:
-        ((kr2) r9.o).a.setPlaybackToLocal(r1.c());
-        return;
-    L21:
-        r1 = il.i;
-        goto L22
-    L5:
-        mi3 r2 = r7.o();
-        int r3 = 0;
-        if (r2.a.a(new int[]{26, 34}) == true) goto L8;
-        int r4 = 0;
-    L12:
-        Handler r6 = new Handler(r7.b.U0());
-        if (r7.S0(23) == false) goto L15;
-        r3 = r7.j();
-    L15:
-        hp0 r5 = r7.F();
-        int r10 = r4;
-        r0 = new is2(r10, r5.c, r3, r5.d, r6, r7);
-        goto L16
-    L8:
-        if (r2.a.a(new int[]{25, 33}) == false) goto L10;
-        r4 = 2;
-        goto L12
-    L10:
-        r4 = 1;
-        goto L12
+        int i;
+        is2 is2Var;
+        ls2 ls2Var = (ls2) this.r;
+        al3 al3Var = ls2Var.g.s;
+        if (al3Var.F().a == 0) {
+            is2Var = null;
+        } else {
+            mi3 mi3VarO = al3Var.o();
+            if (mi3VarO.a.a(26, 34)) {
+                i = mi3VarO.a.a(25, 33) ? 2 : 1;
+            } else {
+                i = 0;
+            }
+            Handler handler = new Handler(al3Var.b.U0());
+            int iJ = al3Var.S0(23) ? al3Var.j() : 0;
+            hp0 hp0VarF = al3Var.F();
+            is2Var = new is2(i, hp0VarF.c, iJ, hp0VarF.d, handler, al3Var);
+        }
+        ls2Var.p = is2Var;
+        qr2 qr2Var = ls2Var.m;
+        if (is2Var == null) {
+            ((kr2) qr2Var.o).a.setPlaybackToLocal((al3Var.S0(21) ? al3Var.D() : il.i).c());
+        } else {
+            ((kr2) qr2Var.o).a.setPlaybackToRemote(is2Var.a());
+        }
     }
 
     @Override // defpackage.er2
-    public void k(List r1, int r2) {
-        ls2 r0 = (ls2) this.r;
-        r0.P(r0.g.s);
+    public void k(List list, int i) {
+        ls2 ls2Var = (ls2) this.r;
+        ls2Var.P(ls2Var.g.s);
     }
 
     @Override // defpackage.er2
-    public void l(int r3, va4 r4) {
-        Bundle r5 = Bundle.EMPTY;
-        boolean r0 = r5.isEmpty();
-        Bundle r1 = r4.c;
-        if (r0 == false) goto L6;
-        r5 = r1;
-    L9:
-        qr2 r2 = ((ls2) this.r).m;
-        String r6 = r4.b;
-        r2.getClass();
-        if (TextUtils.isEmpty(r6) == true) goto L13;
-        ((kr2) r2.o).a.sendSessionEvent(r6, r5);
-        return;
-    L13:
-        kf2.n("event cannot be null or empty");
-        return;
-    L6:
-        if (r1.isEmpty() == true) goto L9;
-        Bundle r7 = new Bundle(r1);
-        r7.putAll(r5);
-        r5 = r7;
-        goto L9
+    public void l(int i, va4 va4Var) {
+        Bundle bundle = Bundle.EMPTY;
+        boolean zIsEmpty = bundle.isEmpty();
+        Bundle bundle2 = va4Var.c;
+        if (zIsEmpty) {
+            bundle = bundle2;
+        } else if (!bundle2.isEmpty()) {
+            Bundle bundle3 = new Bundle(bundle2);
+            bundle3.putAll(bundle);
+            bundle = bundle3;
+        }
+        qr2 qr2Var = ((ls2) this.r).m;
+        String str = va4Var.b;
+        qr2Var.getClass();
+        if (TextUtils.isEmpty(str)) {
+            kf2.n("event cannot be null or empty");
+        } else {
+            ((kr2) qr2Var.o).a.sendSessionEvent(str, bundle);
+        }
     }
 
     @Override // defpackage.wq0
-    public File m(f42 r5) {
-        String r0 = ((qr2) this.o).m(r5);
-        if (Log.isLoggable("DiskLruCacheWrapper", 2) == false) goto L15;
-        Log.v("DiskLruCacheWrapper", "Get: Obtained: " + r0 + " for for Key: " + r5);
-    L15:
-        d34 r4 = f().s(r0);     // Catch: IOException -> L9
-        if (r4 == null) goto L17;
-        return ((File[]) r4.o)[0];
-    L17:
-        return null;
-    L9:
-        e = move-exception;
-        if (Log.isLoggable("DiskLruCacheWrapper", 5) == false) goto L18;
-        Log.w("DiskLruCacheWrapper", "Unable to get from disk cache", e);
-        return null;
-    L18:
-        return null;
+    public File m(f42 f42Var) {
+        String strM = ((qr2) this.o).m(f42Var);
+        if (Log.isLoggable("DiskLruCacheWrapper", 2)) {
+            Log.v("DiskLruCacheWrapper", "Get: Obtained: " + strM + " for for Key: " + f42Var);
+        }
+        try {
+            d34 d34VarS = f().s(strM);
+            if (d34VarS != null) {
+                return ((File[]) d34VarS.o)[0];
+            }
+            return null;
+        } catch (IOException e) {
+            if (!Log.isLoggable("DiskLruCacheWrapper", 5)) {
+                return null;
+            }
+            Log.w("DiskLruCacheWrapper", "Unable to get from disk cache", e);
+            return null;
+        }
     }
 
-    public void n(gn2 r2) {
+    public void n(gn2 gn2Var) {
         x();
-        ls2 r1 = (ls2) this.r;
-        qr2 r0 = r1.m;
-        if (r2 != null) goto L5;
-        ((kr2) r0.o).a.setRatingType(0);
-    L6:
-        r1.P(r1.g.s);
-        return;
-    L5:
-        int r3 = f92.w(r2.d.i);
-        ((kr2) r0.o).a.setRatingType(r3);
-        goto L6
+        ls2 ls2Var = (ls2) this.r;
+        qr2 qr2Var = ls2Var.m;
+        if (gn2Var == null) {
+            ((kr2) qr2Var.o).a.setRatingType(0);
+        } else {
+            ((kr2) qr2Var.o).a.setRatingType(f92.w(gn2Var.d.i));
+        }
+        ls2Var.P(ls2Var.g.s);
     }
 
     @Override // defpackage.kg1
-    public void o(Throwable r2) {
-        if (this == ((ls2) ((lr0) this.r).r).s) goto L5;
-        return;
-    L5:
-        l93.q0("MediaSessionLegacyStub", "Failed to load bitmap: " + r2.getMessage());
+    public void o(Throwable th) {
+        if (this != ((ls2) ((lr0) this.r).r).s) {
+            return;
+        }
+        l93.q0("MediaSessionLegacyStub", "Failed to load bitmap: " + th.getMessage());
     }
 
-    public void p(int r3, al3 r4, al3 r5) {
-        ls2 r6 = (ls2) this.r;
-        cu4 r0 = r5.Z0();
-        if (r4 != null) goto L5;
-    L6:
-        w(r0);
-    L8:
-        if (r5.S0(18) == false) goto L10;
-        do2 r1 = r5.g0();
-    L11:
-        if (r4 != null) goto L13;
-    L18:
-        q(r1);
-    L19:
-        do2 r2 = r5.a1();
-        if (r4 != null) goto L22;
-    L23:
-        x();
-    L24:
-        if (r4 != null) goto L26;
-    L27:
-        u(r5.D0());
-    L28:
-        if (r4 != null) goto L30;
-    L31:
-        s(r5.h());
-    L32:
-        r5.F();
+    /* JADX WARN: Code duplicated, block: B:18:0x003b  */
+    public void p(int i, al3 al3Var, al3 al3Var2) {
+        ls2 ls2Var = (ls2) this.r;
+        cu4 cu4VarZ0 = al3Var2.Z0();
+        if (al3Var == null || !Objects.equals(al3Var.Z0(), cu4VarZ0)) {
+            w(cu4VarZ0);
+        }
+        do2 do2VarG0 = al3Var2.S0(18) ? al3Var2.g0() : do2.K;
+        if (al3Var == null) {
+            q(do2VarG0);
+        } else {
+            if (!Objects.equals(al3Var.S0(18) ? al3Var.g0() : do2.K, do2VarG0)) {
+                q(do2VarG0);
+            }
+        }
+        do2 do2VarA1 = al3Var2.a1();
+        if (al3Var == null || !Objects.equals(al3Var.a1(), do2VarA1)) {
+            x();
+        }
+        if (al3Var == null || al3Var.D0() != al3Var2.D0()) {
+            u(al3Var2.D0());
+        }
+        if (al3Var == null || al3Var.h() != al3Var2.h()) {
+            s(al3Var2.h());
+        }
+        al3Var2.F();
         j();
-        if (r5.S0(20) == false) goto L35;
-        int r7 = 4;
-    L37:
-        if (r6.t == r7) goto L39;
-        r6.t = r7;
-        ((kr2) r6.m.o).a.setFlags(r7 | 3);
-    L39:
-        gn2 r8 = r5.Y0();
-        if (r4 != null) goto L42;
-    L46:
-        n(r8);
-        return;
-    L42:
-        if (Objects.equals(r4.Y0(), r8) == false) goto L46;
-        r6.P(r5);
-        return;
-    L35:
-        r7 = 0;
-        goto L37
-    L30:
-        if (r4.h() == r5.h()) goto L32;
-    L26:
-        if (r4.D0() == r5.D0()) goto L28;
-    L22:
-        if (Objects.equals(r4.a1(), r2) == true) goto L24;
-    L13:
-        if (r4.S0(18) == false) goto L15;
-        do2 r9 = r4.g0();
-    L17:
-        if (Objects.equals(r9, r1) == true) goto L19;
-    L15:
-        r9 = do2.K;
-        goto L17
-    L10:
-        r1 = do2.K;
-        goto L11
-    L5:
-        if (Objects.equals(r4.Z0(), r0) == true) goto L8;
-        goto L6
+        int i2 = al3Var2.S0(20) ? 4 : 0;
+        if (ls2Var.t != i2) {
+            ls2Var.t = i2;
+            ((kr2) ls2Var.m.o).a.setFlags(i2 | 3);
+        }
+        gn2 gn2VarY0 = al3Var2.Y0();
+        if (al3Var == null || !Objects.equals(al3Var.Y0(), gn2VarY0)) {
+            n(gn2VarY0);
+        } else {
+            ls2Var.P(al3Var2);
+        }
     }
 
-    public void q(do2 r4) {
-        ls2 r3 = (ls2) this.r;
-        qr2 r0 = r3.m;
-        CharSequence r1 = ((xk2) ((wo0) r0.p).n).a.getQueueTitle();
-        CharSequence r5 = r4.a;
-        if (TextUtils.equals(r1, r5) == true) goto L12;
-        al3 r2 = r3.g.s;
-        if (r3.z.a(17) == true) goto L7;
-    L9:
-        r5 = null;
-    L10:
-        ((kr2) r0.o).a.setQueueTitle(r5);
-        return;
-    L7:
-        if (r2.o().a(17) == false) goto L9;
+    public void q(do2 do2Var) {
+        ls2 ls2Var = (ls2) this.r;
+        qr2 qr2Var = ls2Var.m;
+        CharSequence queueTitle = ((xk2) ((wo0) qr2Var.p).n).a.getQueueTitle();
+        CharSequence charSequence = do2Var.a;
+        if (TextUtils.equals(queueTitle, charSequence)) {
+            return;
+        }
+        al3 al3Var = ls2Var.g.s;
+        if (!ls2Var.z.a(17) || !al3Var.o().a(17)) {
+            charSequence = null;
+        }
+        ((kr2) qr2Var.o).a.setQueueTitle(charSequence);
     }
 
-    public void s(int r6) {
-        qr2 r5 = ((ls2) this.r).m;
-        int r7 = f92.p(r6);
-        kr2 r8 = (kr2) r5.o;
-        if (r8.j == r7) goto L25;
-        r8.j = r7;
-        Object r0 = r8.d;
-        monitor-enter(r0);
-    L13:
-        th = move-exception;
-        throw th;
-    L7:
-        int r1 = r8.f.beginBroadcast() - 1;
-    L8:
-        RemoteCallbackList r2 = r8.f;
-        if (r1 < 0) goto L20;
-        ((lu1) r2.getBroadcastItem(r1)).f(r7);     // Catch: Throwable -> L13 SecurityException -> L15 Throwable -> L17
-    L19:
-        r1 = r1 - 1;     // Catch: Throwable -> L13
-    L17:
-        e = move-exception;
-        l93.G("MediaSessionCompat", "Dead object in setRepeatMode.", e);     // Catch: Throwable -> L13
-        goto L19
-    L20:
-        r2.finishBroadcast();     // Catch: Throwable -> L13
-        monitor-exit(r0);     // Catch: Throwable -> L13
-        return;
+    public void s(int i) {
+        qr2 qr2Var = ((ls2) this.r).m;
+        int iP = f92.p(i);
+        kr2 kr2Var = (kr2) qr2Var.o;
+        if (kr2Var.j != iP) {
+            kr2Var.j = iP;
+            synchronized (kr2Var.d) {
+                int iBeginBroadcast = kr2Var.f.beginBroadcast() - 1;
+                while (true) {
+                    RemoteCallbackList remoteCallbackList = kr2Var.f;
+                    if (iBeginBroadcast >= 0) {
+                        try {
+                            ((lu1) remoteCallbackList.getBroadcastItem(iBeginBroadcast)).f(iP);
+                        } catch (RemoteException | SecurityException e) {
+                            l93.G("MediaSessionCompat", "Dead object in setRepeatMode.", e);
+                        }
+                        iBeginBroadcast--;
+                    } else {
+                        remoteCallbackList.finishBroadcast();
+                    }
+                }
+            }
+        }
     }
 
     @Override // defpackage.er2
-    public void t(int r2, mi3 r3) {
-        ls2 r1 = (ls2) this.r;
-        al3 r4 = r1.g.s;
-        if (r4.S0(20) == false) goto L5;
-        int r5 = 4;
-    L7:
-        if (r1.t == r5) goto L9;
-        r1.t = r5;
-        ((kr2) r1.m.o).a.setFlags(r5 | 3);
-    L9:
-        r1.P(r4);
-        return;
-    L5:
-        r5 = 0;
-        goto L7
+    public void t(int i, mi3 mi3Var) {
+        ls2 ls2Var = (ls2) this.r;
+        al3 al3Var = ls2Var.g.s;
+        int i2 = al3Var.S0(20) ? 4 : 0;
+        if (ls2Var.t != i2) {
+            ls2Var.t = i2;
+            ((kr2) ls2Var.m.o).a.setFlags(i2 | 3);
+        }
+        ls2Var.P(al3Var);
     }
 
-    public void u(boolean r6) {
-        qr2 r5 = ((ls2) this.r).m;
-        jx1 r0 = f92.a;
-        kr2 r7 = (kr2) r5.o;
-        if (r7.k == r6) goto L25;
-        r7.k = r6 ? 1 : 0;
-        Object r1 = r7.d;
-        monitor-enter(r1);
-    L13:
-        th = move-exception;
-        throw th;
-    L7:
-        int r2 = r7.f.beginBroadcast() - 1;
-    L8:
-        RemoteCallbackList r3 = r7.f;
-        if (r2 < 0) goto L20;
-        ((lu1) r3.getBroadcastItem(r2)).c0(r6 ? 1 : 0);     // Catch: Throwable -> L13 SecurityException -> L15 Throwable -> L17
-    L19:
-        r2 = r2 - 1;     // Catch: Throwable -> L13
-    L17:
-        e = move-exception;
-        l93.G("MediaSessionCompat", "Dead object in setShuffleMode.", e);     // Catch: Throwable -> L13
-        goto L19
-    L20:
-        r3.finishBroadcast();     // Catch: Throwable -> L13
-        monitor-exit(r1);     // Catch: Throwable -> L13
-        return;
+    public void u(boolean z) {
+        qr2 qr2Var = ((ls2) this.r).m;
+        jx1 jx1Var = f92.a;
+        kr2 kr2Var = (kr2) qr2Var.o;
+        if (kr2Var.k != z) {
+            kr2Var.k = z ? 1 : 0;
+            synchronized (kr2Var.d) {
+                int iBeginBroadcast = kr2Var.f.beginBroadcast() - 1;
+                while (true) {
+                    RemoteCallbackList remoteCallbackList = kr2Var.f;
+                    if (iBeginBroadcast >= 0) {
+                        try {
+                            ((lu1) remoteCallbackList.getBroadcastItem(iBeginBroadcast)).c0(z ? 1 : 0);
+                        } catch (RemoteException | SecurityException e) {
+                            l93.G("MediaSessionCompat", "Dead object in setShuffleMode.", e);
+                        }
+                        iBeginBroadcast--;
+                    } else {
+                        remoteCallbackList.finishBroadcast();
+                    }
+                }
+            }
+        }
     }
 
-    public void w(cu4 r1) {
-        y(r1);
+    public void w(cu4 cu4Var) {
+        y(cu4Var);
         x();
     }
 
     public void x() {
-        ls2 r1 = (ls2) this.r;
-        tn2 r0 = r1.g;
-        al3 r2 = r0.s;
-        gn2 r3 = r2.Y0();
-        do2 r4 = r2.a1();
-        long r7 = -9223372036854775807L;
-        if (r2.S0(16) == false) goto L8;
-        if (r2.V0() == false) goto L8;
-    L10:
-        if (r3 == null) goto L13;
-        String r5 = r3.a;
-    L12:
-        String r6 = r5;
-        if (r3 == null) goto L19;
-        Uri r8 = r3.f.a;
-        if (r8 == null) goto L19;
-        Uri r9 = r8;
-    L21:
-        if (Objects.equals((do2) this.o, r4) == true) goto L23;
-    L29:
-        this.p = r6;
-        this.q = r9;
-        this.o = r4;
-        this.n = r7;
-        ic2 r10 = r0.m.i(r4);
-        if (r10 == null) goto L41;
-        r1.s = null;
-        k91 r11 = (k91) r10;
-        if (r11.isDone() == true) goto L44;
-        lr0 r12 = new lr0();
-        r12.r = this;
-        r12.o = r4;
-        r12.p = r6;
-        r12.q = r9;
-        r12.n = r7;
-        r1.s = r12;
-        Handler r13 = r0.l;
-        Objects.requireNonNull(r13);
-        r11.f(new lg1(0, r10, r12), new ym(r13, 1));
-        goto L41
-    L44:
-        Bitmap r14 = (Bitmap) hw.j(r10);     // Catch: ExecutionException -> L35 Throwable -> L37
-    L42:
-        ls2.F(r1.m, f92.n(r4, r6, r9, r7, r14));
-        return;
-    L37:
-        e = move-exception;
-        l93.q0("MediaSessionLegacyStub", "Failed to load bitmap: " + e.getMessage());
-    L41:
-        r14 = null;
-        goto L42
-    L23:
-        if (Objects.equals((String) this.p, r6) == false) goto L29;
-        if (Objects.equals((Uri) this.q, r9) == false) goto L29;
-        if (this.n != r7) goto L29;
-        return;
-    L19:
-        r9 = null;
-        goto L21
-    L13:
-        r5 = "";
-    L8:
-        if (r2.S0(16) == false) goto L10;
-        r7 = r2.getDuration();
-        goto L10
+        Bitmap bitmap;
+        Uri uri;
+        ls2 ls2Var = (ls2) this.r;
+        tn2 tn2Var = ls2Var.g;
+        al3 al3Var = tn2Var.s;
+        gn2 gn2VarY0 = al3Var.Y0();
+        do2 do2VarA1 = al3Var.a1();
+        long duration = -9223372036854775807L;
+        if ((!al3Var.S0(16) || !al3Var.V0()) && al3Var.S0(16)) {
+            duration = al3Var.getDuration();
+        }
+        String str = gn2VarY0 != null ? gn2VarY0.a : "";
+        Uri uri2 = (gn2VarY0 == null || (uri = gn2VarY0.f.a) == null) ? null : uri;
+        if (Objects.equals((do2) this.o, do2VarA1) && Objects.equals((String) this.p, str) && Objects.equals((Uri) this.q, uri2) && this.n == duration) {
+            return;
+        }
+        this.p = str;
+        this.q = uri2;
+        this.o = do2VarA1;
+        this.n = duration;
+        ic2 ic2VarI = tn2Var.m.i(do2VarA1);
+        if (ic2VarI != null) {
+            ls2Var.s = null;
+            k91 k91Var = (k91) ic2VarI;
+            if (k91Var.isDone()) {
+                try {
+                    bitmap = (Bitmap) hw.j(ic2VarI);
+                } catch (CancellationException | ExecutionException e) {
+                    l93.q0("MediaSessionLegacyStub", "Failed to load bitmap: " + e.getMessage());
+                    bitmap = null;
+                }
+            } else {
+                lr0 lr0Var = new lr0();
+                lr0Var.r = this;
+                lr0Var.o = do2VarA1;
+                lr0Var.p = str;
+                lr0Var.q = uri2;
+                lr0Var.n = duration;
+                ls2Var.s = lr0Var;
+                Handler handler = tn2Var.l;
+                Objects.requireNonNull(handler);
+                k91Var.f(new lg1(0, ic2VarI, lr0Var), new ym(handler, 1));
+            }
+            bitmap = null;
+        } else {
+            bitmap = null;
+        }
+        ls2.F(ls2Var.m, f92.n(do2VarA1, str, uri2, duration, bitmap));
     }
 
-    public void y(cu4 r13) {
-        ls2 r0 = (ls2) this.r;
-        tn2 r1 = r0.g;
-        al3 r2 = r1.s;
-        if (r0.z.a(17) == true) goto L5;
-    L22:
-        ls2.E(r0.m, null);
-        return;
-    L5:
-        if (r2.o().a(17) == false) goto L22;
-        if (r13.p() == true) goto L22;
-        jx1 r3 = f92.a;
-        ArrayList r9 = new ArrayList();
-        bu4 r4 = new bu4();
-        int r5 = 0;
-        int r6 = 0;
-    L11:
-        if (r6 >= r13.o()) goto L13;
-        r9.add(r13.m(r6, r4, 0).b);
-        r6 = r6 + 1;
-        goto L11
-    L13:
-        ArrayList r10 = new ArrayList();
-        t6 r7 = new t6(this, new AtomicInteger(0), r9, r10, 21);
-    L15:
-        if (r5 >= r9.size()) goto L21;
-        byte[] r12 = ((gn2) r9.get(r5)).d.k;
-        if (r12 != null) goto L19;
-        r10.add(null);
-        r7.run();
-    L20:
-        r5 = r5 + 1;
-        goto L15
-    L19:
-        ic2 r14 = r1.m.j(r12);
-        r10.add(r14);
-        Handler r15 = r1.l;
-        Objects.requireNonNull(r15);
-        ((k91) r14).f(r7, new ym(r15, 1));
-        goto L20
+    public void y(cu4 cu4Var) {
+        ls2 ls2Var = (ls2) this.r;
+        tn2 tn2Var = ls2Var.g;
+        al3 al3Var = tn2Var.s;
+        if (!ls2Var.z.a(17) || !al3Var.o().a(17) || cu4Var.p()) {
+            ls2.E(ls2Var.m, null);
+            return;
+        }
+        jx1 jx1Var = f92.a;
+        ArrayList arrayList = new ArrayList();
+        bu4 bu4Var = new bu4();
+        for (int i = 0; i < cu4Var.o(); i++) {
+            arrayList.add(cu4Var.m(i, bu4Var, 0L).b);
+        }
+        ArrayList arrayList2 = new ArrayList();
+        t6 t6Var = new t6(this, new AtomicInteger(0), arrayList, arrayList2, 21);
+        for (int i2 = 0; i2 < arrayList.size(); i2++) {
+            byte[] bArr = ((gn2) arrayList.get(i2)).d.k;
+            if (bArr == null) {
+                arrayList2.add(null);
+                t6Var.run();
+            } else {
+                ic2 ic2VarJ = tn2Var.m.j(bArr);
+                arrayList2.add(ic2VarJ);
+                Handler handler = tn2Var.l;
+                Objects.requireNonNull(handler);
+                ((k91) ic2VarJ).f(t6Var, new ym(handler, 1));
+            }
+        }
     }
 }

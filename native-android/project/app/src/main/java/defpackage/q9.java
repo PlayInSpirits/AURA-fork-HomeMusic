@@ -16,70 +16,31 @@ public final class q9 {
     public final long i;
     public final long j;
 
-    public q9(long r1, cu4 r3, int r4, mt2 r5, long r6, cu4 r8, int r9, mt2 r10, long r11, long r13) {
-        this.a = r1;
-        this.b = r3;
-        this.c = r4;
-        this.d = r5;
-        this.e = r6;
-        this.f = r8;
-        this.g = r9;
-        this.h = r10;
-        this.i = r11;
-        this.j = r13;
+    public q9(long j, cu4 cu4Var, int i, mt2 mt2Var, long j2, cu4 cu4Var2, int i2, mt2 mt2Var2, long j3, long j4) {
+        this.a = j;
+        this.b = cu4Var;
+        this.c = i;
+        this.d = mt2Var;
+        this.e = j2;
+        this.f = cu4Var2;
+        this.g = i2;
+        this.h = mt2Var2;
+        this.i = j3;
+        this.j = j4;
     }
 
-    public final boolean equals(Object r5) {
-        if (this == r5) goto L32;
-        if (r5 != null) goto L6;
-        return false;
-    L6:
-        if (q9.class != r5.getClass()) goto L43;
-        q9 r6 = (q9) r5;
-        if (this.a == r6.a) goto L11;
-        return false;
-    L11:
-        if (this.c == r6.c) goto L13;
-        return false;
-    L13:
-        if (this.e == r6.e) goto L15;
-        return false;
-    L15:
-        if (this.g == r6.g) goto L17;
-        return false;
-    L17:
-        if (this.i == r6.i) goto L19;
-        return false;
-    L19:
-        if (this.j == r6.j) goto L21;
-        return false;
-    L21:
-        if (this.b.equals(r6.b) == true) goto L23;
-        return false;
-    L23:
-        if (Objects.equals(this.d, r6.d) == true) goto L25;
-        return false;
-    L25:
-        if (Objects.equals(this.f, r6.f) == true) goto L27;
-        return false;
-    L27:
-        if (Objects.equals(this.h, r6.h) == false) goto L42;
-        return true;
-    L42:
-        return false;
-    L43:
-        return false;
-    L32:
-        return true;
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || q9.class != obj.getClass()) {
+            return false;
+        }
+        q9 q9Var = (q9) obj;
+        return this.a == q9Var.a && this.c == q9Var.c && this.e == q9Var.e && this.g == q9Var.g && this.i == q9Var.i && this.j == q9Var.j && this.b.equals(q9Var.b) && Objects.equals(this.d, q9Var.d) && Objects.equals(this.f, q9Var.f) && Objects.equals(this.h, q9Var.h);
     }
 
     public final int hashCode() {
-        Long r2 = Long.valueOf(this.a);
-        Integer r4 = Integer.valueOf(this.c);
-        Long r6 = Long.valueOf(this.e);
-        Integer r8 = Integer.valueOf(this.g);
-        Long r10 = Long.valueOf(this.i);
-        Long r11 = Long.valueOf(this.j);
-        return Objects.hash(new Object[]{r2, this.b, r4, this.d, r6, this.f, r8, this.h, r10, r11});
+        return Objects.hash(Long.valueOf(this.a), this.b, Integer.valueOf(this.c), this.d, Long.valueOf(this.e), this.f, Integer.valueOf(this.g), this.h, Long.valueOf(this.i), Long.valueOf(this.j));
     }
 }

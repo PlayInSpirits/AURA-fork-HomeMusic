@@ -8,7 +8,7 @@ import android.os.Bundle;
 /* JADX INFO: loaded from: classes.dex */
 public final class mr2 extends lr2 {
     @Override // defpackage.kr2
-    public final MediaSession a(Context r1, String r2, Bundle r3) {
-        return ek2.i(r1, r2, r3);
+    public final MediaSession a(Context context, String str, Bundle bundle) {
+        return ek2.i(context, str, bundle);
     }
 }

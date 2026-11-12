@@ -20,314 +20,231 @@ public final class hg4 {
     public int m;
     public boolean n;
 
-    public hg4(ig4 r3) {
-        this.a = r3;
-        this.b = r3.n;
-        int r0 = r3.o;
-        this.c = r0;
-        this.d = r3.p;
-        this.e = r3.q;
-        this.h = r0;
+    public hg4(ig4 ig4Var) {
+        this.a = ig4Var;
+        this.b = ig4Var.n;
+        int i = ig4Var.o;
+        this.c = i;
+        this.d = ig4Var.p;
+        this.e = ig4Var.q;
+        this.h = i;
         this.i = -1;
         this.j = new o02();
     }
 
-    public final mg1 a(int r3) {
-        ArrayList r0 = this.a.v;
-        int r2 = kg4.e(r0, r3, this.c);
-        if (r2 >= 0) goto L7;
-        mg1 r1 = new mg1(r3);
-        r0.add(-(r2 + 1), r1);
-        return r1;
-    L7:
-        return (mg1) r0.get(r2);
+    public final mg1 a(int i) {
+        ArrayList arrayList = this.a.v;
+        int iE = kg4.e(arrayList, i, this.c);
+        if (iE >= 0) {
+            return (mg1) arrayList.get(iE);
+        }
+        mg1 mg1Var = new mg1(i);
+        arrayList.add(-(iE + 1), mg1Var);
+        return mg1Var;
     }
 
-    public final Object b(int[] r3, int r4) {
-        int r5 = r4 * 5;
-        int r0 = r3[r5 + 1];
-        if ((268435456 & r0) == 0) goto L11;
-        Object[] r2 = this.d;
-        if (r5 < r3.length) goto L7;
-        int r6 = r3.length;
-    L9:
-        return r2[r6];
-    L7:
-        r6 = r3[r5 + 4] + Integer.bitCount(r0 >> 29);
-        goto L9
-    L11:
+    public final Object b(int[] iArr, int i) {
+        int i2 = i * 5;
+        int i3 = iArr[i2 + 1];
+        if ((268435456 & i3) != 0) {
+            return this.d[i2 >= iArr.length ? iArr.length : iArr[i2 + 4] + Integer.bitCount(i3 >> 29)];
+        }
         return j80.a;
     }
 
     public final void c() {
         this.f = true;
-        ig4 r0 = this.a;
-        if (r0.r > 0) goto L6;
-        l80.a("Unexpected reader close()");
-    L6:
-        r0.r--;
+        ig4 ig4Var = this.a;
+        if (ig4Var.r <= 0) {
+            l80.a("Unexpected reader close()");
+        }
+        ig4Var.r--;
         this.d = new Object[0];
     }
 
-    public final boolean d(int r2) {
-        int[] r1 = this.b;
-        if ((r1[(r2 * 5) + 1] & 67108864) == 0) goto L5;
-        return true;
-    L5:
-        return false;
+    public final boolean d(int i) {
+        return (this.b[(i * 5) + 1] & 67108864) != 0;
     }
 
     public final void e() {
-        if (this.k == 0) goto L5;
-        return;
-    L5:
-        if (this.g == this.h) goto L8;
-        l80.a("endGroup() not called at the end of a group");
-    L8:
-        int r0 = (this.i * 5) + 2;
-        int[] r1 = this.b;
-        int r2 = r1[r0];
-        this.i = r2;
-        int r3 = this.c;
-        if (r2 >= 0) goto L11;
-        int r4 = r3;
-    L12:
-        this.h = r4;
-        int r5 = this.j.b();
-        if (r5 >= 0) goto L16;
-        this.l = 0;
-        this.m = 0;
-        return;
-    L16:
-        this.l = r5;
-        if (r2 < (r3 - 1)) goto L19;
-        int r6 = this.e;
-    L20:
-        this.m = r6;
-        return;
-    L19:
-        r6 = r1[((r2 + 1) * 5) + 4];
-        goto L20
-    L11:
-        r4 = r1[(r2 * 5) + 3] + r2;
-        goto L12
+        if (this.k == 0) {
+            if (this.g != this.h) {
+                l80.a("endGroup() not called at the end of a group");
+            }
+            int i = (this.i * 5) + 2;
+            int[] iArr = this.b;
+            int i2 = iArr[i];
+            this.i = i2;
+            int i3 = this.c;
+            this.h = i2 < 0 ? i3 : iArr[(i2 * 5) + 3] + i2;
+            int iB = this.j.b();
+            if (iB < 0) {
+                this.l = 0;
+                this.m = 0;
+            } else {
+                this.l = iB;
+                this.m = i2 >= i3 + (-1) ? this.e : iArr[((i2 + 1) * 5) + 4];
+            }
+        }
     }
 
     public final Object f() {
-        int r0 = this.g;
-        if (r0 >= this.h) goto L7;
-        return b(this.b, r0);
-    L7:
+        int i = this.g;
+        if (i < this.h) {
+            return b(this.b, i);
+        }
         return 0;
     }
 
     public final int g() {
-        int r0 = this.g;
-        if (r0 >= this.h) goto L6;
-        int[] r2 = this.b;
-        return r2[r0 * 5];
-    L6:
-        return 0;
+        int i = this.g;
+        if (i >= this.h) {
+            return 0;
+        }
+        return this.b[i * 5];
     }
 
-    public final Object h(int r4, int r5) {
-        int[] r0 = this.b;
-        int r1 = kg4.b(r0, r4);
-        int r6 = r4 + 1;
-        if (r6 >= this.c) goto L5;
-        int r7 = r0[(r6 * 5) + 4];
-    L6:
-        int r2 = r1 + r5;
-        if (r2 >= r7) goto L11;
-        return this.d[r2];
-    L11:
-        return j80.a;
-    L5:
-        r7 = this.e;
-        goto L6
+    public final Object h(int i, int i2) {
+        int[] iArr = this.b;
+        int iB = kg4.b(iArr, i);
+        int i3 = i + 1;
+        int i4 = iB + i2;
+        return i4 < (i3 < this.c ? iArr[(i3 * 5) + 4] : this.e) ? this.d[i4] : j80.a;
     }
 
-    public final int i(int r1) {
-        int[] r0 = this.b;
-        return r0[r1 * 5];
+    public final int i(int i) {
+        return this.b[i * 5];
     }
 
-    public final boolean j(int r2) {
-        int[] r1 = this.b;
-        if ((r1[(r2 * 5) + 1] & 134217728) == 0) goto L5;
-        return true;
-    L5:
-        return false;
+    public final boolean j(int i) {
+        return (this.b[(i * 5) + 1] & 134217728) != 0;
     }
 
-    public final boolean k(int r2) {
-        int[] r1 = this.b;
-        if ((r1[(r2 * 5) + 1] & 536870912) == 0) goto L5;
-        return true;
-    L5:
-        return false;
+    public final boolean k(int i) {
+        return (this.b[(i * 5) + 1] & 536870912) != 0;
     }
 
-    public final boolean l(int r2) {
-        int[] r1 = this.b;
-        if ((r1[(r2 * 5) + 1] & 1073741824) == 0) goto L5;
-        return true;
-    L5:
-        return false;
+    public final boolean l(int i) {
+        return (this.b[(i * 5) + 1] & 1073741824) != 0;
     }
 
     public final Object m() {
-        if (this.k > 0) goto L9;
-        int r0 = this.l;
-        if (r0 >= this.m) goto L9;
+        int i;
+        if (this.k > 0 || (i = this.l) >= this.m) {
+            this.n = false;
+            return j80.a;
+        }
         this.n = true;
-        Object[] r1 = this.d;
-        this.l = r0 + 1;
-        return r1[r0];
-    L9:
-        this.n = false;
-        return j80.a;
+        Object[] objArr = this.d;
+        this.l = i + 1;
+        return objArr[i];
     }
 
-    public final Object n(int r4) {
-        int r5 = r4 * 5;
-        int[] r1 = this.b;
-        int r0 = r1[r5 + 1] & 1073741824;
-        if (r0 == 0) goto L9;
-        if (r0 == 0) goto L8;
-        return this.d[r1[r5 + 4]];
-    L8:
-        return j80.a;
-    L9:
+    public final Object n(int i) {
+        int i2 = i * 5;
+        int[] iArr = this.b;
+        int i3 = iArr[i2 + 1] & 1073741824;
+        if (i3 != 0) {
+            return i3 != 0 ? this.d[iArr[i2 + 4]] : j80.a;
+        }
         return null;
     }
 
-    public final int o(int r1) {
-        int[] r0 = this.b;
-        return r0[(r1 * 5) + 1] & 67108863;
+    public final int o(int i) {
+        return this.b[(i * 5) + 1] & 67108863;
     }
 
-    public final Object p(int[] r3, int r4) {
-        int r5 = r4 * 5;
-        int r0 = r3[r5 + 1];
-        if ((536870912 & r0) == 0) goto L6;
-        Object[] r2 = this.d;
-        int r6 = r3[r5 + 4];
-        return r2[Integer.bitCount(r0 >> 30) + r6];
-    L6:
-        return null;
+    public final Object p(int[] iArr, int i) {
+        int i2 = i * 5;
+        int i3 = iArr[i2 + 1];
+        if ((536870912 & i3) == 0) {
+            return null;
+        }
+        return this.d[Integer.bitCount(i3 >> 30) + iArr[i2 + 4]];
     }
 
-    public final int q(int r1) {
-        int[] r0 = this.b;
-        return r0[(r1 * 5) + 2];
+    public final int q(int i) {
+        return this.b[(i * 5) + 2];
     }
 
-    public final void r(int r4) {
-        if (this.k == 0) goto L6;
-        l80.a("Cannot reposition while in an empty region");
-    L6:
-        this.g = r4;
-        int[] r0 = this.b;
-        int r1 = this.c;
-        if (r4 >= r1) goto L9;
-        int r5 = r0[(r4 * 5) + 2];
-    L11:
-        if (r5 == this.i) goto L18;
-        this.i = r5;
-        if (r5 >= 0) goto L15;
-        this.h = r1;
-    L16:
-        this.l = 0;
-        this.m = 0;
-        return;
-    L15:
-        this.h = r0[(r5 * 5) + 3] + r5;
-        goto L16
-    L18:
-        return;
-    L9:
-        r5 = -1;
-        goto L11
+    public final void r(int i) {
+        if (this.k != 0) {
+            l80.a("Cannot reposition while in an empty region");
+        }
+        this.g = i;
+        int[] iArr = this.b;
+        int i2 = this.c;
+        int i3 = i < i2 ? iArr[(i * 5) + 2] : -1;
+        if (i3 != this.i) {
+            this.i = i3;
+            if (i3 < 0) {
+                this.h = i2;
+            } else {
+                this.h = iArr[(i3 * 5) + 3] + i3;
+            }
+            this.l = 0;
+            this.m = 0;
+        }
     }
 
     public final int s() {
-        if (this.k == 0) goto L6;
-        l80.a("Cannot skip while in an empty region");
-    L6:
-        int r0 = this.g;
-        int r1 = r0 * 5;
-        int[] r3 = this.b;
-        int r2 = r3[r1 + 1];
-        if ((1073741824 & r2) == 0) goto L9;
-        int r4 = 1;
-    L10:
-        this.g = r3[r1 + 3] + r0;
-        return r4;
-    L9:
-        r4 = r2 & 67108863;
-        goto L10
+        if (this.k != 0) {
+            l80.a("Cannot skip while in an empty region");
+        }
+        int i = this.g;
+        int i2 = i * 5;
+        int[] iArr = this.b;
+        int i3 = iArr[i2 + 1];
+        int i4 = (1073741824 & i3) != 0 ? 1 : i3 & 67108863;
+        this.g = iArr[i2 + 3] + i;
+        return i4;
     }
 
     public final void t() {
-        if (this.k != 0) goto L5;
-        boolean r0 = true;
-    L6:
-        if (r0 == true) goto L8;
-        l80.a("Cannot skip the enclosing group while in an empty region");
-    L8:
+        if (!(this.k == 0)) {
+            l80.a("Cannot skip the enclosing group while in an empty region");
+        }
         this.g = this.h;
         this.l = 0;
         this.m = 0;
-        return;
-    L5:
-        r0 = false;
-        goto L6
     }
 
     public final String toString() {
-        int r0 = this.g;
-        int r1 = g();
-        int r2 = this.i;
-        int r6 = this.h;
-        StringBuilder r3 = b11.t("SlotReader(current=", ", key=", r0, r1, ", parent=");
-        r3.append(r2);
-        r3.append(", end=");
-        r3.append(r6);
-        r3.append(")");
-        return r3.toString();
+        int i = this.g;
+        int iG = g();
+        int i2 = this.i;
+        int i3 = this.h;
+        StringBuilder sbT = b11.t("SlotReader(current=", ", key=", i, iG, ", parent=");
+        sbT.append(i2);
+        sbT.append(", end=");
+        sbT.append(i3);
+        sbT.append(")");
+        return sbT.toString();
     }
 
     public final void u() {
-        if (this.k > 0) goto L19;
-        int r0 = this.i;
-        int r1 = this.g;
-        int r2 = r1 * 5;
-        int[] r4 = this.b;
-        if (r4[r2 + 2] == r0) goto L8;
-        oo3.a("Invalid slot table detected");
-    L8:
-        int r3 = this.l;
-        int r5 = this.m;
-        o02 r6 = this.j;
-        if (r3 != 0) goto L12;
-        if (r5 != 0) goto L12;
-        r6.c(-1);
-    L13:
-        this.i = r1;
-        this.h = r4[r2 + 3] + r1;
-        int r7 = r1 + 1;
-        this.g = r7;
-        this.l = kg4.b(r4, r1);
-        if (r1 < (this.c - 1)) goto L16;
-        int r8 = this.e;
-    L17:
-        this.m = r8;
-        return;
-    L16:
-        r8 = r4[(r7 * 5) + 4];
-    L12:
-        r6.c(r3);
-        goto L13
+        if (this.k <= 0) {
+            int i = this.i;
+            int i2 = this.g;
+            int i3 = i2 * 5;
+            int[] iArr = this.b;
+            if (iArr[i3 + 2] != i) {
+                oo3.a("Invalid slot table detected");
+            }
+            int i4 = this.l;
+            int i5 = this.m;
+            o02 o02Var = this.j;
+            if (i4 == 0 && i5 == 0) {
+                o02Var.c(-1);
+            } else {
+                o02Var.c(i4);
+            }
+            this.i = i2;
+            this.h = iArr[i3 + 3] + i2;
+            int i6 = i2 + 1;
+            this.g = i6;
+            this.l = kg4.b(iArr, i2);
+            this.m = i2 >= this.c + (-1) ? this.e : iArr[(i6 * 5) + 4];
+        }
     }
 }

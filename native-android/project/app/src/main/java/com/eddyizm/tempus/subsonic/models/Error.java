@@ -7,9 +7,6 @@ public final class Error {
     private Integer code;
     private String message;
 
-    public Error() {
-    }
-
     public final Integer getCode() {
         return this.code;
     }
@@ -18,11 +15,11 @@ public final class Error {
         return this.message;
     }
 
-    public final void setCode(Integer r1) {
-        this.code = r1;
+    public final void setCode(Integer num) {
+        this.code = num;
     }
 
-    public final void setMessage(String r1) {
-        this.message = r1;
+    public final void setMessage(String str) {
+        this.message = str;
     }
 }

@@ -8,11 +8,12 @@ public final class ta4 extends hd {
     public final pz1 c;
     public final t24 d;
 
-    public ta4(Application r4) {
-        r4.getClass();
-        super(r4);
-        pz1 r5 = new pz1(20);
-        this.c = r5;
-        this.d = ((s24) ((na4) r5.o).n).i().a(new String[]{"server"}, new o54(14));
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public ta4(Application application) {
+        super(application);
+        application.getClass();
+        pz1 pz1Var = new pz1(20);
+        this.c = pz1Var;
+        this.d = ((s24) ((na4) pz1Var.o).n).i().a(new String[]{"server"}, new o54(14));
     }
 }

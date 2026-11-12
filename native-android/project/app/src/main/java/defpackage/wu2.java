@@ -8,20 +8,18 @@ public final class wu2 implements MenuItem.OnActionExpandListener {
     public final MenuItem.OnActionExpandListener a;
     public final /* synthetic */ xu2 b;
 
-    public wu2(xu2 r1, MenuItem.OnActionExpandListener r2) {
-        this.b = r1;
-        this.a = r2;
+    public wu2(xu2 xu2Var, MenuItem.OnActionExpandListener onActionExpandListener) {
+        this.b = xu2Var;
+        this.a = onActionExpandListener;
     }
 
     @Override // android.view.MenuItem.OnActionExpandListener
-    public final boolean onMenuItemActionCollapse(MenuItem r2) {
-        MenuItem r3 = this.b.h(r2);
-        return this.a.onMenuItemActionCollapse(r3);
+    public final boolean onMenuItemActionCollapse(MenuItem menuItem) {
+        return this.a.onMenuItemActionCollapse(this.b.h(menuItem));
     }
 
     @Override // android.view.MenuItem.OnActionExpandListener
-    public final boolean onMenuItemActionExpand(MenuItem r2) {
-        MenuItem r3 = this.b.h(r2);
-        return this.a.onMenuItemActionExpand(r3);
+    public final boolean onMenuItemActionExpand(MenuItem menuItem) {
+        return this.a.onMenuItemActionExpand(this.b.h(menuItem));
     }
 }

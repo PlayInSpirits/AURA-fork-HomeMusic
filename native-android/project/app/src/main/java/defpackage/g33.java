@@ -8,25 +8,24 @@ import java.io.Serializable;
 public class g33 extends h33 {
     public final Class r;
 
-    public g33(Class r3) {
+    public g33(Class cls) {
         super(true);
-        if (Serializable.class.isAssignableFrom(r3) == true) goto L5;
-        nz2.h(r3, " does not implement Serializable.");
-        throw null;
-    L5:
-        if (r3.isEnum() == true) goto L8;
-        this.r = r3;
-        return;
-    L8:
-        nz2.h(r3, " is an Enum. You should use EnumType instead.");
-        throw null;
+        if (!Serializable.class.isAssignableFrom(cls)) {
+            nz2.h(cls, " does not implement Serializable.");
+            throw null;
+        }
+        if (cls.isEnum()) {
+            nz2.h(cls, " is an Enum. You should use EnumType instead.");
+            throw null;
+        }
+        this.r = cls;
     }
 
     @Override // defpackage.h33
-    public final Object a(String r1, Bundle r2) {
-        r2.getClass();
-        r1.getClass();
-        return (Serializable) r2.get(r1);
+    public final Object a(String str, Bundle bundle) {
+        bundle.getClass();
+        str.getClass();
+        return (Serializable) bundle.get(str);
     }
 
     @Override // defpackage.h33
@@ -35,32 +34,28 @@ public class g33 extends h33 {
     }
 
     @Override // defpackage.h33
-    public /* bridge */ /* synthetic */ Object d(String r1) {
-        return g(r1);
+    public final void e(Bundle bundle, String str, Object obj) {
+        Serializable serializable = (Serializable) obj;
+        str.getClass();
+        serializable.getClass();
+        this.r.cast(serializable);
+        bundle.putSerializable(str, serializable);
+    }
+
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof g33)) {
+            return false;
+        }
+        return h12.c(this.r, ((g33) obj).r);
     }
 
     @Override // defpackage.h33
-    public final void e(Bundle r1, String r2, Object r3) {
-        Serializable r4 = (Serializable) r3;
-        r2.getClass();
-        r4.getClass();
-        this.r.cast(r4);
-        r1.putSerializable(r2, r4);
-    }
-
-    public final boolean equals(Object r2) {
-        if (this != r2) goto L6;
-        return true;
-    L6:
-        if ((r2 instanceof g33) == true) goto L9;
-        return false;
-    L9:
-        Class r3 = ((g33) r2).r;
-        return h12.c(this.r, r3);
-    }
-
-    public Serializable g(String r1) {
-        r1.getClass();
+    /* JADX INFO: renamed from: g, reason: merged with bridge method [inline-methods] */
+    public Serializable d(String str) {
+        str.getClass();
         throw new UnsupportedOperationException("Serializables don't support default values.");
     }
 
@@ -68,13 +63,13 @@ public class g33 extends h33 {
         return this.r.hashCode();
     }
 
-    public g33(int r1, Class r2) {
+    public g33(int i, Class cls) {
         super(false);
-        if (Serializable.class.isAssignableFrom(r2) == false) goto L6;
-        this.r = r2;
-        return;
-    L6:
-        nz2.h(r2, " does not implement Serializable.");
-        throw null;
+        if (Serializable.class.isAssignableFrom(cls)) {
+            this.r = cls;
+        } else {
+            nz2.h(cls, " does not implement Serializable.");
+            throw null;
+        }
     }
 }

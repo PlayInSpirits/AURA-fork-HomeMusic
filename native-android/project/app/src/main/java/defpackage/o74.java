@@ -9,33 +9,21 @@ import com.google.android.material.search.SearchView;
 public final /* synthetic */ class o74 implements b85, r83 {
     public final /* synthetic */ SearchView n;
 
-    public /* synthetic */ o74(SearchView r1) {
-        this.n = r1;
+    public /* synthetic */ o74(SearchView searchView) {
+        this.n = searchView;
     }
 
     @Override // defpackage.b85
-    public pb5 m(View r4, pb5 r5, c85 r6) {
-        MaterialToolbar r3 = this.n.t;
-        boolean r7 = vr1.z(r3);
-        if (r7 == false) goto L5;
-        int r0 = r6.c;
-    L6:
-        if (r7 == false) goto L8;
-        int r8 = r6.a;
-    L9:
-        r3.setPadding(r5.b() + r0, r6.b, r5.c() + r8, r6.d);
-        return r5;
-    L8:
-        r8 = r6.c;
-        goto L9
-    L5:
-        r0 = r6.a;
-        goto L6
+    public pb5 m(View view, pb5 pb5Var, c85 c85Var) {
+        MaterialToolbar materialToolbar = this.n.t;
+        boolean z = vr1.z(materialToolbar);
+        materialToolbar.setPadding(pb5Var.b() + (z ? c85Var.c : c85Var.a), c85Var.b, pb5Var.c() + (z ? c85Var.a : c85Var.c), c85Var.d);
+        return pb5Var;
     }
 
     @Override // defpackage.r83
-    public pb5 x(View r1, pb5 r2) {
-        SearchView.e(this.n, r2);
-        return r2;
+    public pb5 x(View view, pb5 pb5Var) {
+        SearchView.e(this.n, pb5Var);
+        return pb5Var;
     }
 }

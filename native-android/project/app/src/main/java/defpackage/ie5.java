@@ -8,28 +8,24 @@ public final class ie5 implements View.OnClickListener {
     public final /* synthetic */ int n;
     public final /* synthetic */ ke5 o;
 
-    public ie5(ke5 r1, int r2) {
-        this.o = r1;
-        this.n = r2;
+    public ie5(ke5 ke5Var, int i) {
+        this.o = ke5Var;
+        this.n = i;
     }
 
     @Override // android.view.View.OnClickListener
-    public final void onClick(View r4) {
-        nh2 r5 = this.o.q;
-        int r0 = r5.p0.o;
-        ix2 r3 = ix2.b(this.n, r0);
-        dy r1 = r5.o0;
-        ix2 r2 = r1.o;
-        ix2 r6 = r1.n;
-        if (r3.a(r6) >= 0) goto L6;
-        r3 = r6;
-    L8:
-        r5.i0(r3);
-        r5.j0(1);
-        return;
-    L6:
-        if (r3.a(r2) <= 0) goto L8;
-        r3 = r2;
-        goto L8
+    public final void onClick(View view) {
+        nh2 nh2Var = this.o.q;
+        ix2 ix2VarB = ix2.b(this.n, nh2Var.p0.o);
+        dy dyVar = nh2Var.o0;
+        ix2 ix2Var = dyVar.o;
+        ix2 ix2Var2 = dyVar.n;
+        if (ix2VarB.compareTo(ix2Var2) < 0) {
+            ix2VarB = ix2Var2;
+        } else if (ix2VarB.compareTo(ix2Var) > 0) {
+            ix2VarB = ix2Var;
+        }
+        nh2Var.i0(ix2VarB);
+        nh2Var.j0(1);
     }
 }

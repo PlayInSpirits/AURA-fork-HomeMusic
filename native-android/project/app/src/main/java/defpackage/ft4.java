@@ -6,6 +6,6 @@ import android.text.TextWatcher;
 /* JADX INFO: loaded from: classes.dex */
 public abstract class ft4 implements TextWatcher {
     @Override // android.text.TextWatcher
-    public void onTextChanged(CharSequence r1, int r2, int r3, int r4) {
+    public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
     }
 }

@@ -8,7 +8,7 @@ import android.graphics.PorterDuff;
 public interface lu4 {
     ColorStateList getSupportButtonTintList();
 
-    void setSupportButtonTintList(ColorStateList r1);
+    void setSupportButtonTintList(ColorStateList colorStateList);
 
-    void setSupportButtonTintMode(PorterDuff.Mode r1);
+    void setSupportButtonTintMode(PorterDuff.Mode mode);
 }

@@ -12,28 +12,24 @@ import java.util.RandomAccess;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class qb2 extends v1 implements RandomAccess, Serializable {
-    public static final qb2 q = null;
+    public static final qb2 q;
     public Object[] n;
     public int o;
     public boolean p;
 
     static {
-        qb2 r0 = new qb2(0);
-        r0.p = true;
-        q = r0;
+        qb2 qb2Var = new qb2(0);
+        qb2Var.p = true;
+        q = qb2Var;
     }
 
-    public qb2(int r1) {
-        if (r1 < 0) goto L6;
-        this.n = new Object[r1];
-        return;
-    L6:
-        kf2.n("capacity must be non-negative.");
-        throw null;
-    }
-
-    public static final /* synthetic */ int d(qb2 r0) {
-        return ((AbstractList) r0).modCount;
+    public qb2(int i) {
+        if (i >= 0) {
+            this.n = new Object[i];
+        } else {
+            kf2.n("capacity must be non-negative.");
+            throw null;
+        }
     }
 
     @Override // defpackage.v1
@@ -42,46 +38,40 @@ public final class qb2 extends v1 implements RandomAccess, Serializable {
     }
 
     @Override // java.util.AbstractList, java.util.List
-    public final void add(int r3, Object r4) {
+    public final void add(int i, Object obj) {
         g();
-        int r0 = this.o;
-        if (r3 < 0) goto L7;
-        if (r3 > r0) goto L7;
+        int i2 = this.o;
+        if (i < 0 || i > i2) {
+            kf2.h(xa3.e(i, i2, "index: ", ", size: "));
+            return;
+        }
         ((AbstractList) this).modCount++;
-        h(r3, 1);
-        this.n[r3] = r4;
-        return;
-    L7:
-        kf2.h(xa3.e(r3, r0, "index: ", ", size: "));
+        h(i, 1);
+        this.n[i] = obj;
     }
 
     @Override // java.util.AbstractList, java.util.List
-    public final boolean addAll(int r3, Collection r4) {
-        r4.getClass();
+    public final boolean addAll(int i, Collection collection) {
+        collection.getClass();
         g();
-        int r0 = this.o;
-        if (r3 < 0) goto L10;
-        if (r3 > r0) goto L10;
-        int r1 = r4.size();
-        e(r3, r4, r1);
-        if (r1 <= 0) goto L9;
-        return true;
-    L9:
-        return false;
-    L10:
-        kf2.h(xa3.e(r3, r0, "index: ", ", size: "));
-        return false;
+        int i2 = this.o;
+        if (i < 0 || i > i2) {
+            kf2.h(xa3.e(i, i2, "index: ", ", size: "));
+            return false;
+        }
+        int size = collection.size();
+        e(i, collection, size);
+        return size > 0;
     }
 
     @Override // defpackage.v1
-    public final Object b(int r3) {
+    public final Object b(int i) {
         g();
-        int r0 = this.o;
-        if (r3 < 0) goto L7;
-        if (r3 >= r0) goto L7;
-        return i(r3);
-    L7:
-        kf2.h(xa3.e(r3, r0, "index: ", ", size: "));
+        int i2 = this.o;
+        if (i >= 0 && i < i2) {
+            return i(i);
+        }
+        kf2.h(xa3.e(i, i2, "index: ", ", size: "));
         return null;
     }
 
@@ -91,147 +81,117 @@ public final class qb2 extends v1 implements RandomAccess, Serializable {
         j(0, this.o);
     }
 
-    public final void e(int r5, Collection r6, int r7) {
+    public final void e(int i, Collection collection, int i2) {
         ((AbstractList) this).modCount++;
-        h(r5, r7);
-        Iterator r8 = r6.iterator();
-        int r0 = 0;
-    L3:
-        if (r0 >= r7) goto L5;
-        this.n[r5 + r0] = r8.next();
-        r0 = r0 + 1;
-        goto L3
+        h(i, i2);
+        Iterator it = collection.iterator();
+        for (int i3 = 0; i3 < i2; i3++) {
+            this.n[i + i3] = it.next();
+        }
     }
 
     @Override // java.util.AbstractList, java.util.Collection, java.util.List
-    public final boolean equals(Object r6) {
-        if (r6 != this) goto L4;
-        return true;
-    L4:
-        if ((r6 instanceof List) == false) goto L14;
-        List r7 = (List) r6;
-        Object[] r0 = this.n;
-        int r5 = this.o;
-        if (r5 != r7.size()) goto L14;
-        int r2 = 0;
-    L9:
-        if (r2 >= r5) goto L19;
-        if (h12.c(r0[r2], r7.get(r2)) == false) goto L14;
-        r2 = r2 + 1;
-        goto L9
-    L19:
-        return true;
-    L14:
+    public final boolean equals(Object obj) {
+        if (obj == this) {
+            return true;
+        }
+        if (obj instanceof List) {
+            List list = (List) obj;
+            Object[] objArr = this.n;
+            int i = this.o;
+            if (i == list.size()) {
+                for (int i2 = 0; i2 < i; i2++) {
+                    if (h12.c(objArr[i2], list.get(i2))) {
+                    }
+                }
+                return true;
+            }
+        }
         return false;
     }
 
-    public final void f(int r3, Object r4) {
+    public final void f(int i, Object obj) {
         ((AbstractList) this).modCount++;
-        h(r3, 1);
-        this.n[r3] = r4;
+        h(i, 1);
+        this.n[i] = obj;
     }
 
     public final void g() {
-        if (this.p == true) goto L6;
-        return;
-    L6:
-        throw new UnsupportedOperationException();
+        if (this.p) {
+            throw new UnsupportedOperationException();
+        }
     }
 
     @Override // java.util.AbstractList, java.util.List
-    public final Object get(int r3) {
-        int r0 = this.o;
-        if (r3 < 0) goto L7;
-        if (r3 >= r0) goto L7;
-        return this.n[r3];
-    L7:
-        kf2.h(xa3.e(r3, r0, "index: ", ", size: "));
+    public final Object get(int i) {
+        int i2 = this.o;
+        if (i >= 0 && i < i2) {
+            return this.n[i];
+        }
+        kf2.h(xa3.e(i, i2, "index: ", ", size: "));
         return null;
     }
 
-    public final void h(int r6, int r7) {
-        int r0 = this.o + r7;
-        if (r0 < 0) goto L18;
-        Object[] r1 = this.n;
-        if (r0 <= r1.length) goto L15;
-        int r2 = r1.length;
-        int r3 = r2 + (r2 >> 1);
-        if ((r3 - r0) >= 0) goto L10;
-        r3 = r0;
-    L10:
-        if ((r3 - 2147483639) <= 0) goto L14;
-        if (r0 <= 2147483639) goto L13;
-        r3 = Integer.MAX_VALUE;
-        goto L14
-    L13:
-        r3 = 2147483639;
-    L14:
-        this.n = Arrays.copyOf(r1, r3);
-    L15:
-        Object[] r4 = this.n;
-        ti.Z(r6 + r7, r6, this.o, r4, r4);
-        this.o += r7;
-        return;
-    L18:
-        throw new OutOfMemoryError();
+    public final void h(int i, int i2) {
+        int i3 = this.o + i2;
+        if (i3 < 0) {
+            throw new OutOfMemoryError();
+        }
+        Object[] objArr = this.n;
+        if (i3 > objArr.length) {
+            int length = objArr.length;
+            int i4 = length + (length >> 1);
+            if (i4 - i3 < 0) {
+                i4 = i3;
+            }
+            if (i4 - 2147483639 > 0) {
+                i4 = i3 > 2147483639 ? Integer.MAX_VALUE : 2147483639;
+            }
+            this.n = Arrays.copyOf(objArr, i4);
+        }
+        Object[] objArr2 = this.n;
+        ti.Z(i + i2, i, this.o, objArr2, objArr2);
+        this.o += i2;
     }
 
     @Override // java.util.AbstractList, java.util.Collection, java.util.List
     public final int hashCode() {
-        Object[] r0 = this.n;
-        int r5 = this.o;
-        int r1 = 1;
-        int r3 = 0;
-    L3:
-        if (r3 >= r5) goto L9;
-        Object r4 = r0[r3];
-        int r2 = r1 * 31;
-        if (r4 == null) goto L7;
-        int r6 = r4.hashCode();
-    L8:
-        r1 = r2 + r6;
-        r3 = r3 + 1;
-        goto L3
-    L7:
-        r6 = 0;
-        goto L8
-    L9:
-        return r1;
+        Object[] objArr = this.n;
+        int i = this.o;
+        int iHashCode = 1;
+        for (int i2 = 0; i2 < i; i2++) {
+            Object obj = objArr[i2];
+            iHashCode = (iHashCode * 31) + (obj != null ? obj.hashCode() : 0);
+        }
+        return iHashCode;
     }
 
-    public final Object i(int r5) {
+    public final Object i(int i) {
         ((AbstractList) this).modCount++;
-        Object[] r0 = this.n;
-        Object r1 = r0[r5];
-        ti.Z(r5, r5 + 1, this.o, r0, r0);
-        Object[] r6 = this.n;
-        int r2 = this.o - 1;
-        r6.getClass();
-        r6[r2] = null;
+        Object[] objArr = this.n;
+        Object obj = objArr[i];
+        ti.Z(i, i + 1, this.o, objArr, objArr);
+        Object[] objArr2 = this.n;
+        int i2 = this.o - 1;
+        objArr2.getClass();
+        objArr2[i2] = null;
         this.o--;
-        return r1;
+        return obj;
     }
 
     @Override // java.util.AbstractList, java.util.List
-    public final int indexOf(Object r3) {
-        int r0 = 0;
-    L4:
-        if (r0 >= this.o) goto L9;
-        if (h12.c(this.n[r0], r3) == true) goto L7;
-        r0 = r0 + 1;
-        goto L4
-    L7:
-        return r0;
-    L9:
+    public final int indexOf(Object obj) {
+        for (int i = 0; i < this.o; i++) {
+            if (h12.c(this.n[i], obj)) {
+                return i;
+            }
+        }
         return -1;
     }
 
     @Override // java.util.AbstractCollection, java.util.Collection, java.util.List
     public final boolean isEmpty() {
-        if (this.o != 0) goto L6;
-        return true;
-    L6:
-        return false;
+        return this.o == 0;
     }
 
     @Override // java.util.AbstractList, java.util.AbstractCollection, java.util.Collection, java.lang.Iterable, java.util.List
@@ -239,143 +199,130 @@ public final class qb2 extends v1 implements RandomAccess, Serializable {
         return listIterator(0);
     }
 
-    public final void j(int r4, int r5) {
-        if (r5 <= 0) goto L4;
-        ((AbstractList) this).modCount++;
-    L4:
-        Object[] r0 = this.n;
-        ti.Z(r4, r4 + r5, this.o, r0, r0);
-        Object[] r6 = this.n;
-        int r1 = this.o;
-        xl.I(r6, r1 - r5, r1);
-        this.o -= r5;
+    public final void j(int i, int i2) {
+        if (i2 > 0) {
+            ((AbstractList) this).modCount++;
+        }
+        Object[] objArr = this.n;
+        ti.Z(i, i + i2, this.o, objArr, objArr);
+        Object[] objArr2 = this.n;
+        int i3 = this.o;
+        xl.I(objArr2, i3 - i2, i3);
+        this.o -= i2;
     }
 
-    public final int k(int r6, int r7, Collection r8, boolean r9) {
-        int r0 = 0;
-        int r1 = 0;
-    L3:
-        Object[] r2 = this.n;
-        if (r0 >= r7) goto L9;
-        int r3 = r6 + r0;
-        if (r8.contains(r2[r3]) == r9) goto L7;
-        r0 = r0 + 1;
-        goto L3
-    L7:
-        Object[] r4 = this.n;
-        r0 = r0 + 1;
-        r4[r1 + r6] = r4[r3];
-        r1 = r1 + 1;
-        goto L3
-    L9:
-        int r10 = r7 - r1;
-        ti.Z(r6 + r1, r7 + r6, this.o, r2, r2);
-        Object[] r11 = this.n;
-        int r12 = this.o;
-        xl.I(r11, r12 - r10, r12);
-        if (r10 <= 0) goto L12;
-        ((AbstractList) this).modCount++;
-    L12:
-        this.o -= r10;
-        return r10;
+    public final int k(int i, int i2, Collection collection, boolean z) {
+        Object[] objArr;
+        int i3 = 0;
+        int i4 = 0;
+        while (true) {
+            objArr = this.n;
+            if (i3 >= i2) {
+                break;
+            }
+            int i5 = i + i3;
+            if (collection.contains(objArr[i5]) == z) {
+                Object[] objArr2 = this.n;
+                i3++;
+                objArr2[i4 + i] = objArr2[i5];
+                i4++;
+            } else {
+                i3++;
+            }
+        }
+        int i6 = i2 - i4;
+        ti.Z(i + i4, i2 + i, this.o, objArr, objArr);
+        Object[] objArr3 = this.n;
+        int i7 = this.o;
+        xl.I(objArr3, i7 - i6, i7);
+        if (i6 > 0) {
+            ((AbstractList) this).modCount++;
+        }
+        this.o -= i6;
+        return i6;
     }
 
     @Override // java.util.AbstractList, java.util.List
-    public final int lastIndexOf(Object r3) {
-        int r0 = this.o - 1;
-    L3:
-        if (r0 < 0) goto L8;
-        if (h12.c(this.n[r0], r3) == true) goto L6;
-        r0 = r0 - 1;
-        goto L3
-    L6:
-        return r0;
-    L8:
+    public final int lastIndexOf(Object obj) {
+        for (int i = this.o - 1; i >= 0; i--) {
+            if (h12.c(this.n[i], obj)) {
+                return i;
+            }
+        }
         return -1;
     }
 
     @Override // java.util.AbstractList, java.util.List
-    public final ListIterator listIterator(int r3) {
-        int r0 = this.o;
-        if (r3 < 0) goto L7;
-        if (r3 > r0) goto L7;
-        return new dm1(this, r3);
-    L7:
-        kf2.h(xa3.e(r3, r0, "index: ", ", size: "));
+    public final ListIterator listIterator(int i) {
+        int i2 = this.o;
+        if (i >= 0 && i <= i2) {
+            return new dm1(this, i);
+        }
+        kf2.h(xa3.e(i, i2, "index: ", ", size: "));
         return null;
     }
 
     @Override // java.util.AbstractCollection, java.util.Collection, java.util.List
-    public final boolean remove(Object r1) {
+    public final boolean remove(Object obj) {
         g();
-        int r2 = indexOf(r1);
-        if (r2 < 0) goto L5;
-        b(r2);
-    L5:
-        if (r2 < 0) goto L8;
-        return true;
-    L8:
-        return false;
+        int iIndexOf = indexOf(obj);
+        if (iIndexOf >= 0) {
+            b(iIndexOf);
+        }
+        return iIndexOf >= 0;
     }
 
     @Override // java.util.AbstractCollection, java.util.Collection, java.util.List
-    public final boolean removeAll(Collection r3) {
-        r3.getClass();
+    public final boolean removeAll(Collection collection) {
+        collection.getClass();
         g();
-        if (k(0, this.o, r3, false) <= 0) goto L6;
-        return true;
-    L6:
-        return false;
+        return k(0, this.o, collection, false) > 0;
     }
 
     @Override // java.util.AbstractCollection, java.util.Collection, java.util.List
-    public final boolean retainAll(Collection r4) {
-        r4.getClass();
+    public final boolean retainAll(Collection collection) {
+        collection.getClass();
         g();
-        if (k(0, this.o, r4, true) <= 0) goto L5;
-        return true;
-    L5:
-        return false;
+        return k(0, this.o, collection, true) > 0;
     }
 
     @Override // java.util.AbstractList, java.util.List
-    public final Object set(int r2, Object r3) {
+    public final Object set(int i, Object obj) {
         g();
-        int r0 = this.o;
-        if (r2 < 0) goto L7;
-        if (r2 >= r0) goto L7;
-        Object[] r1 = this.n;
-        Object r4 = r1[r2];
-        r1[r2] = r3;
-        return r4;
-    L7:
-        kf2.h(xa3.e(r2, r0, "index: ", ", size: "));
-        return null;
+        int i2 = this.o;
+        if (i < 0 || i >= i2) {
+            kf2.h(xa3.e(i, i2, "index: ", ", size: "));
+            return null;
+        }
+        Object[] objArr = this.n;
+        Object obj2 = objArr[i];
+        objArr[i] = obj;
+        return obj2;
     }
 
     @Override // java.util.AbstractList, java.util.List
-    public final List subList(int r8, int r9) {
-        h12.g(r8, r9, this.o);
-        return new pb2(this.n, r8, r9 - r8, null, this);
+    public final List subList(int i, int i2) {
+        h12.g(i, i2, this.o);
+        return new pb2(this.n, i, i2 - i, null, this);
     }
 
     @Override // java.util.AbstractCollection, java.util.Collection, java.util.List
-    public final Object[] toArray(Object[] r5) {
-        r5.getClass();
-        int r0 = r5.length;
-        int r1 = this.o;
-        Object[] r2 = this.n;
-        if (r0 >= r1) goto L6;
-        Object[] r4 = Arrays.copyOfRange(r2, 0, r1, r5.getClass());
-        r4.getClass();
-        return r4;
-    L6:
-        ti.Z(0, 0, r1, r2, r5);
-        int r6 = this.o;
-        if (r6 >= r5.length) goto L9;
-        r5[r6] = null;
-    L9:
-        return r5;
+    public final Object[] toArray(Object[] objArr) {
+        objArr.getClass();
+        int length = objArr.length;
+        int i = this.o;
+        Object[] objArr2 = this.n;
+        if (length < i) {
+            Object[] objArrCopyOfRange = Arrays.copyOfRange(objArr2, 0, i, objArr.getClass());
+            objArrCopyOfRange.getClass();
+            return objArrCopyOfRange;
+        }
+        ti.Z(0, 0, i, objArr2, objArr);
+        int i2 = this.o;
+        if (i2 < objArr.length) {
+            objArr[i2] = null;
+        }
+        return objArr;
     }
 
     @Override // java.util.AbstractCollection
@@ -389,12 +336,12 @@ public final class qb2 extends v1 implements RandomAccess, Serializable {
     }
 
     @Override // java.util.AbstractList, java.util.AbstractCollection, java.util.Collection, java.util.List
-    public final boolean add(Object r4) {
+    public final boolean add(Object obj) {
         g();
-        int r0 = this.o;
+        int i = this.o;
         ((AbstractList) this).modCount++;
-        h(r0, 1);
-        this.n[r0] = r4;
+        h(i, 1);
+        this.n[i] = obj;
         return true;
     }
 
@@ -404,14 +351,11 @@ public final class qb2 extends v1 implements RandomAccess, Serializable {
     }
 
     @Override // java.util.AbstractCollection, java.util.Collection, java.util.List
-    public final boolean addAll(Collection r3) {
-        r3.getClass();
+    public final boolean addAll(Collection collection) {
+        collection.getClass();
         g();
-        int r0 = r3.size();
-        e(this.o, r3, r0);
-        if (r0 <= 0) goto L6;
-        return true;
-    L6:
-        return false;
+        int size = collection.size();
+        e(this.o, collection, size);
+        return size > 0;
     }
 }

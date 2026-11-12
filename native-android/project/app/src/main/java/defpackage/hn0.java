@@ -6,20 +6,14 @@ public final class hn0 implements Comparable {
     public final boolean n;
     public final boolean o;
 
-    public hn0(tb1 r3, int r4) {
-        boolean r0 = true;
-        if ((r3.e & 1) != 0) goto L6;
-        r0 = false;
-    L6:
-        this.n = r0;
-        this.o = kq.n(r4, false);
+    public hn0(tb1 tb1Var, int i) {
+        this.n = (tb1Var.e & 1) != 0;
+        this.o = kq.n(i, false);
     }
 
     @Override // java.lang.Comparable
-    public final int compareTo(Object r4) {
-        hn0 r5 = (hn0) r4;
-        boolean r0 = this.o;
-        boolean r1 = r5.o;
-        return v60.a.c(r0, r1).c(this.n, r5.n).e();
+    public final int compareTo(Object obj) {
+        hn0 hn0Var = (hn0) obj;
+        return v60.a.c(this.o, hn0Var.o).c(this.n, hn0Var.n).e();
     }
 }

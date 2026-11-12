@@ -9,12 +9,12 @@ public final class y84 extends w34 {
     public final byte[] x;
     public final ux y;
 
-    public y84(x84 r2, lx r3, w84 r4, byte[] r5) {
-        this.u = r2;
-        this.v = r3;
-        this.w = r4;
-        this.x = r5;
-        this.y = new ux(r3, r2.o, r5, r4);
+    public y84(x84 x84Var, lx lxVar, w84 w84Var, byte[] bArr) {
+        this.u = x84Var;
+        this.v = lxVar;
+        this.w = w84Var;
+        this.x = bArr;
+        this.y = new ux(lxVar, x84Var.o, bArr, w84Var);
     }
 
     @Override // defpackage.w34
@@ -23,14 +23,14 @@ public final class y84 extends w34 {
     }
 
     @Override // defpackage.w34
-    public final Object c() {
+    public final Object c() throws Exception {
         this.y.a();
-        w84 r7 = this.w;
-        if (r7 == null) goto L7;
-        r7.r++;
-        r7.n.b(r7.o, r7.q, r7.a());
-        return null;
-    L7:
+        w84 w84Var = this.w;
+        if (w84Var == null) {
+            return null;
+        }
+        w84Var.r++;
+        w84Var.n.b(w84Var.o, w84Var.q, w84Var.a());
         return null;
     }
 }

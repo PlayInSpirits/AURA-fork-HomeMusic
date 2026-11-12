@@ -11,8 +11,8 @@ public final class zg4 extends wd0 {
     public int s;
 
     @Override // defpackage.jp
-    public final Object invokeSuspend(Object r8) {
-        this.r = r8;
+    public final Object invokeSuspend(Object obj) {
+        this.r = obj;
         this.s |= Integer.MIN_VALUE;
         return su3.d(null, 0.0f, 0.0f, null, null, null, this);
     }

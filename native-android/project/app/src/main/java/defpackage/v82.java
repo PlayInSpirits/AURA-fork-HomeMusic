@@ -6,35 +6,26 @@ public final /* synthetic */ class v82 implements gf1 {
     public final /* synthetic */ int n;
     public final /* synthetic */ x82 o;
 
-    public /* synthetic */ v82(x82 r1, int r2) {
-        this.n = r2;
-        this.o = r1;
+    public /* synthetic */ v82(x82 x82Var, int i) {
+        this.n = i;
+        this.o = x82Var;
     }
 
     @Override // defpackage.gf1
     public final Object invoke() {
-        int r0 = this.n;
-        x82 r4 = this.o;
-        switch(r0) {
-            case 0: goto L14;
-            case 1: goto L11;
-            default: goto L4;
-        };
-    L4:
-        lm0 r1 = r4.C.a;
-        if (r1.m().e != hb3.n) goto L8;
-        long r2 = r1.m().i() & 4294967295L;
-    L7:
-        int r3 = (int) r2;
-        lm0 r5 = r4.C.a;
-        return Float.valueOf(r3 - ((-r5.m().f) + r5.m().d));
-    L8:
-        r2 = r1.m().i() >> 32;
-        goto L7
-    L11:
-        lm0 r6 = r4.C.a;
-        return Float.valueOf(ed3.a(r6.m(), r6.n()));
-    L14:
-        return Float.valueOf(e35.t(r4.C.a));
+        int i = this.n;
+        x82 x82Var = this.o;
+        switch (i) {
+            case 0:
+                return Float.valueOf(e35.t(x82Var.C.a));
+            case 1:
+                lm0 lm0Var = x82Var.C.a;
+                return Float.valueOf(ed3.a(lm0Var.m(), lm0Var.n()));
+            default:
+                lm0 lm0Var2 = x82Var.C.a;
+                int i2 = (int) (lm0Var2.m().e == hb3.n ? lm0Var2.m().i() & 4294967295L : lm0Var2.m().i() >> 32);
+                lm0 lm0Var3 = x82Var.C.a;
+                return Float.valueOf(i2 - ((-lm0Var3.m().f) + lm0Var3.m().d));
+        }
     }
 }

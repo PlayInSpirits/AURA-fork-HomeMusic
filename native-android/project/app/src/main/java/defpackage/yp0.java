@@ -7,9 +7,9 @@ public final class yp0 {
     public int b;
     public final boolean c;
 
-    public yp0(int r1, int r2, boolean r3) {
-        this.a = r1;
-        this.b = r2;
-        this.c = r3;
+    public yp0(int i, int i2, boolean z) {
+        this.a = i;
+        this.b = i2;
+        this.c = z;
     }
 }

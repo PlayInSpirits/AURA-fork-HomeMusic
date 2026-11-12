@@ -3,7 +3,7 @@ package defpackage;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class my4 {
-    public final byte[] a;
+    public final byte[] a = new byte[10];
     public boolean b;
     public int c;
     public long d;
@@ -11,73 +11,49 @@ public final class my4 {
     public int f;
     public int g;
 
-    public my4() {
-        this.a = new byte[10];
+    public final void a(wv4 wv4Var, vv4 vv4Var) {
+        if (this.c > 0) {
+            wv4Var.a(this.d, this.e, this.f, this.g, vv4Var);
+            this.c = 0;
+        }
     }
 
-    public final void a(wv4 r9, vv4 r10) {
-        if (this.c <= 0) goto L6;
-        r9.a(this.d, this.e, this.f, this.g, r10);
-        this.c = 0;
-        return;
+    public final void b(wv4 wv4Var, long j, int i, int i2, int i3, vv4 vv4Var) {
+        rr2.v("TrueHD chunk samples must be contiguous in the sample queue.", this.g <= i2 + i3);
+        if (this.b) {
+            int i4 = this.c;
+            int i5 = i4 + 1;
+            this.c = i5;
+            if (i4 == 0) {
+                this.d = j;
+                this.e = i;
+                this.f = 0;
+            }
+            this.f += i2;
+            this.g = i3;
+            if (i5 >= 16) {
+                a(wv4Var, vv4Var);
+            }
+        }
     }
 
-    public final void b(wv4 r4, long r5, int r7, int r8, int r9, vv4 r10) {
-        if (this.g > (r8 + r9)) goto L5;
-        boolean r0 = true;
-    L6:
-        rr2.v("TrueHD chunk samples must be contiguous in the sample queue.", r0);
-        if (this.b == false) goto L17;
-        int r1 = this.c;
-        int r2 = r1 + 1;
-        this.c = r2;
-        if (r1 != 0) goto L12;
-        this.d = r5;
-        this.e = r7;
-        this.f = 0;
-    L12:
-        this.f += r8;
-        this.g = r9;
-        if (r2 < 16) goto L16;
-        a(r4, r10);
-        return;
-    L16:
-        return;
-    L17:
-        return;
-    L5:
-        r0 = false;
-        goto L6
-    }
-
-    public final void c(l51 r8) {
-        if (this.b == true) goto L25;
-        byte[] r1 = this.a;
-        int r2 = 0;
-        r8.n(r1, 0, 10);
-        r8.k();
-        if (r1[4] == (-8)) goto L8;
-    L21:
-        if (r2 != 0) goto L23;
-        return;
-    L23:
+    public final void c(l51 l51Var) {
+        if (this.b) {
+            return;
+        }
+        byte[] bArr = this.a;
+        int i = 0;
+        l51Var.n(bArr, 0, 10);
+        l51Var.k();
+        if (bArr[4] == -8 && bArr[5] == 114 && bArr[6] == 111) {
+            byte b = bArr[7];
+            if ((b & 254) == 186) {
+                i = 40 << ((bArr[((b & 255) == 187 ? 1 : 0) != 0 ? '\t' : '\b'] >> 4) & 7);
+            }
+        }
+        if (i == 0) {
+            return;
+        }
         this.b = true;
-        return;
-    L8:
-        if (r1[5] != 114) goto L21;
-        if (r1[6] != 111) goto L21;
-        byte r3 = r1[7];
-        if ((r3 & 254) != 186) goto L21;
-        if ((r3 & 255) != 187) goto L17;
-        r2 = 1;
-    L17:
-        if (r2 == 0) goto L19;
-        char r4 = '\t';
-    L20:
-        r2 = 40 << ((r1[r4] >> 4) & 7);
-        goto L21
-    L19:
-        r4 = '\b';
-        goto L20
     }
 }

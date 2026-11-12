@@ -13,44 +13,38 @@ public final class i20 extends ViewOutlineProvider {
     public final /* synthetic */ int a;
     public final /* synthetic */ Object b;
 
-    public /* synthetic */ i20(int r1, Object r2) {
-        this.a = r1;
-        this.b = r2;
+    public /* synthetic */ i20(int i, Object obj) {
+        this.a = i;
+        this.b = obj;
     }
 
     @Override // android.view.ViewOutlineProvider
-    public final void getOutline(View r8, Outline r9) {
-        int r10 = this.a;
-        Object r7 = this.b;
-        switch(r10) {
-            case 0: goto L14;
-            case 1: goto L8;
-            default: goto L4;
-        };
-    L4:
-        Path r11 = ((oc4) r7).e;
-        if (r11.isEmpty() == true) goto L19;
-        l3.u(r9, r11);
-        return;
-    L19:
-        return;
-    L8:
-        nc4 r12 = (nc4) r7;
-        if (r12.c != null) goto L11;
-        return;
-    L11:
-        if (r12.d.isEmpty() == true) goto L21;
-        RectF r13 = r12.d;
-        r9.setRoundRect((int) r13.left, (int) r13.top, (int) r13.right, (int) r13.bottom, r12.g);
-        return;
-    L21:
-        return;
-    L14:
-        k20 r14 = ((Chip) r7).r;
-        if (r14 == null) goto L17;
-        r14.getOutline(r9);
-        return;
-    L17:
-        r9.setAlpha(0.0f);
+    public final void getOutline(View view, Outline outline) {
+        int i = this.a;
+        Object obj = this.b;
+        switch (i) {
+            case 0:
+                k20 k20Var = ((Chip) obj).r;
+                if (k20Var == null) {
+                    outline.setAlpha(0.0f);
+                } else {
+                    k20Var.getOutline(outline);
+                }
+                break;
+            case 1:
+                nc4 nc4Var = (nc4) obj;
+                if (nc4Var.c != null && !nc4Var.d.isEmpty()) {
+                    RectF rectF = nc4Var.d;
+                    outline.setRoundRect((int) rectF.left, (int) rectF.top, (int) rectF.right, (int) rectF.bottom, nc4Var.g);
+                    break;
+                }
+                break;
+            default:
+                Path path = ((oc4) obj).e;
+                if (!path.isEmpty()) {
+                    outline.setPath(path);
+                }
+                break;
+        }
     }
 }

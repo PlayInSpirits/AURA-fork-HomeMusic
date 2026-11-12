@@ -8,11 +8,12 @@ public final class eh1 extends cx3 {
     public final ie1 u;
     public final /* synthetic */ ej v;
 
-    public eh1(ej r2, ie1 r3) {
-        this.v = r2;
-        LinearLayout r4 = r3.a;
-        super(r4);
-        this.u = r3;
-        r4.setOnClickListener(new p6(16, this));
+    /* JADX WARN: Illegal instructions before constructor call */
+    public eh1(ej ejVar, ie1 ie1Var) {
+        this.v = ejVar;
+        LinearLayout linearLayout = ie1Var.a;
+        super(linearLayout);
+        this.u = ie1Var;
+        linearLayout.setOnClickListener(new p6(16, this));
     }
 }

@@ -16,41 +16,29 @@ public final class s12 {
     public final hd5 g;
     public final Object h;
 
-    public s12(s24 r11, HashMap r12, HashMap r13, String... r14) {
-        this.a = r11;
-        int r1 = 1;
-        Class<s12> r3 = s12.class;
-        String r4 = "notifyInvalidatedObservers";
-        String r5 = "notifyInvalidatedObservers(Ljava/util/Set;)V";
-        jy4 r8 = new jy4(r11, r12, r13, r14, r11.j, new q(r1, this, r3, r4, r5, 0, 6));
-        this.b = r8;
+    public s12(s24 s24Var, HashMap map, HashMap map2, String... strArr) {
+        this.a = s24Var;
+        jy4 jy4Var = new jy4(s24Var, map, map2, strArr, s24Var.j, new q(1, this, s12.class, "notifyInvalidatedObservers", "notifyInvalidatedObservers(Ljava/util/Set;)V", 0, 6));
+        this.b = jy4Var;
         this.c = new LinkedHashMap();
         this.d = new ReentrantLock();
         this.e = new e90(this, 22);
         this.f = new e90(this, 23);
-        this.g = new hd5(r11);
+        this.g = new hd5(s24Var);
         this.h = new Object();
-        r8.k = new wc(9, this);
+        jy4Var.k = new wc(9, this);
     }
 
-    public final t24 a(String[] r3, if1 r4) {
-        this.b.g(r3);
-        hd5 r2 = this.g;
-        r2.getClass();
-        return new t24((s24) r2.o, r2, r3, r4);
+    public final t24 a(String[] strArr, if1 if1Var) {
+        this.b.g(strArr);
+        hd5 hd5Var = this.g;
+        hd5Var.getClass();
+        return new t24((s24) hd5Var.o, hd5Var, strArr, if1Var);
     }
 
-    public final Object b(ep4 r3) {
-        s24 r0 = this.a;
-        if (r0.m() == true) goto L5;
-    L7:
-        Object r2 = this.b.f(r3);
-        if (r2 != xe0.n) goto L11;
-        return r2;
-    L11:
-        return j15.a;
-    L5:
-        if (r0.q() == true) goto L7;
-        goto L7
+    public final Object b(ep4 ep4Var) {
+        Object objF;
+        s24 s24Var = this.a;
+        return ((!s24Var.m() || s24Var.q()) && (objF = this.b.f(ep4Var)) == xe0.n) ? objF : j15.a;
     }
 }

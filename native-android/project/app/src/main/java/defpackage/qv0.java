@@ -8,8 +8,8 @@ import android.view.ViewParent;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public abstract class qv0 extends ViewGroup {
-    public final void a(jz r1, View r2, long r3) {
-        super.drawChild(ba.a(r1), r2, r3);
+    public final void a(jz jzVar, View view, long j) {
+        super.drawChild(ba.a(jzVar), view, j);
     }
 
     @Override // android.view.View
@@ -22,16 +22,16 @@ public abstract class qv0 extends ViewGroup {
     }
 
     @Override // android.view.ViewGroup, android.view.ViewParent
-    public final ViewParent invalidateChildInParent(int[] r1, Rect r2) {
+    public final ViewParent invalidateChildInParent(int[] iArr, Rect rect) {
         return null;
     }
 
     @Override // android.view.ViewGroup, android.view.View
-    public final void onLayout(boolean r1, int r2, int r3, int r4, int r5) {
+    public final void onLayout(boolean z, int i, int i2, int i3, int i4) {
     }
 
     @Override // android.view.View
-    public final void onMeasure(int r1, int r2) {
+    public final void onMeasure(int i, int i2) {
         setMeasuredDimension(0, 0);
     }
 

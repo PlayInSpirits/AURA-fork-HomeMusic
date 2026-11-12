@@ -5,8 +5,8 @@ package defpackage;
 public final class th5 extends bb3 {
     public final zr3 n;
 
-    public th5(zr3 r1) {
-        this.n = r1;
+    public th5(zr3 zr3Var) {
+        this.n = zr3Var;
     }
 
     @Override // defpackage.bb3
@@ -19,11 +19,11 @@ public final class th5 extends bb3 {
         return true;
     }
 
-    public final boolean equals(Object r2) {
-        if ((r2 instanceof th5) == true) goto L5;
+    public final boolean equals(Object obj) {
+        if (obj instanceof th5) {
+            return this.n.equals(((th5) obj).n);
+        }
         return false;
-    L5:
-        return this.n.equals(((th5) r2).n);
     }
 
     public final int hashCode() {

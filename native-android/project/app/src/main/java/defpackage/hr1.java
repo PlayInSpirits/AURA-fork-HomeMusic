@@ -10,7 +10,6 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.util.Iterator;
 import java.util.Map;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
@@ -22,23 +21,21 @@ public final class hr1 implements sh0 {
     public InputStream q;
     public volatile boolean r;
 
-    static {
+    public hr1(qi1 qi1Var, int i) {
+        this.n = qi1Var;
+        this.o = i;
     }
 
-    public hr1(qi1 r1, int r2) {
-        this.n = r1;
-        this.o = r2;
-    }
-
-    public static int b(HttpURLConnection r2) {
-        return r2.getResponseCode();
-    L4:
-        e = move-exception;
-        if (Log.isLoggable("HttpUrlFetcher", 3) == false) goto L12;
-        Log.d("HttpUrlFetcher", "Failed to get a response code", e);
-        return -1;
-    L12:
-        return -1;
+    public static int b(HttpURLConnection httpURLConnection) {
+        try {
+            return httpURLConnection.getResponseCode();
+        } catch (IOException e) {
+            if (!Log.isLoggable("HttpUrlFetcher", 3)) {
+                return -1;
+            }
+            Log.d("HttpUrlFetcher", "Failed to get a response code", e);
+            return -1;
+        }
     }
 
     @Override // defpackage.sh0
@@ -48,18 +45,18 @@ public final class hr1 implements sh0 {
 
     @Override // defpackage.sh0
     public final void c() {
-        InputStream r0 = this.q;
-        if (r0 != null) goto L11;
-    L5:
-        HttpURLConnection r1 = this.p;
-        if (r1 == null) goto L8;
-        r1.disconnect();
-    L8:
+        InputStream inputStream = this.q;
+        if (inputStream != null) {
+            try {
+                inputStream.close();
+            } catch (IOException unused) {
+            }
+        }
+        HttpURLConnection httpURLConnection = this.p;
+        if (httpURLConnection != null) {
+            httpURLConnection.disconnect();
+        }
         this.p = null;
-        return;
-    L11:
-        r0.close();     // Catch: IOException -> L10
-        goto L5
     }
 
     @Override // defpackage.sh0
@@ -68,32 +65,22 @@ public final class hr1 implements sh0 {
     }
 
     @Override // defpackage.sh0
-    public final void d(eq3 r9, rh0 r10) {
-        qi1 r11 = this.n;
-        int r2 = ee2.b;
-        long r3 = SystemClock.elapsedRealtimeNanos();
-        r10.f(f(r11.d(), 0, null, r11.b.a()));     // Catch: Throwable -> L8 IOException -> L10
-    L5:
-        if (Log.isLoggable("HttpUrlFetcher", 2) == false) goto L26;
-        Log.v("HttpUrlFetcher", "Finished http url fetcher fetch in " + ee2.a(r3));
-        return;
-    L26:
-        return;
-    L8:
-        th = move-exception;
-        if (Log.isLoggable("HttpUrlFetcher", 2) == false) goto L23;
-        Log.v("HttpUrlFetcher", "Finished http url fetcher fetch in " + ee2.a(r3));
-    L23:
-        throw th;
-    L10:
-        e = move-exception;
-        if (Log.isLoggable("HttpUrlFetcher", 3) == false) goto L15;
-        Log.d("HttpUrlFetcher", "Failed to load data for url", e);     // Catch: Throwable -> L8
-    L15:
-        r10.b(e);     // Catch: Throwable -> L8
-        if (Log.isLoggable("HttpUrlFetcher", 2) == false) goto L27;
-        Log.v("HttpUrlFetcher", "Finished http url fetcher fetch in " + ee2.a(r3));
-        return;
+    public final void d(eq3 eq3Var, rh0 rh0Var) {
+        qi1 qi1Var = this.n;
+        int i = ee2.b;
+        long jElapsedRealtimeNanos = SystemClock.elapsedRealtimeNanos();
+        try {
+            rh0Var.f(f(qi1Var.d(), 0, null, qi1Var.b.a()));
+        } catch (IOException e) {
+            if (Log.isLoggable("HttpUrlFetcher", 3)) {
+                Log.d("HttpUrlFetcher", "Failed to load data for url", e);
+            }
+            rh0Var.b(e);
+        } finally {
+            if (Log.isLoggable("HttpUrlFetcher", 2)) {
+                Log.v("HttpUrlFetcher", "Finished http url fetcher fetch in " + ee2.a(jElapsedRealtimeNanos));
+            }
+        }
     }
 
     @Override // defpackage.sh0
@@ -101,79 +88,80 @@ public final class hr1 implements sh0 {
         return 2;
     }
 
-    public final InputStream f(URL r8, int r9, URL r10, Map r11) {
-        if (r9 >= 5) goto L63;
-        if (r10 != null) goto L70;
-    L10:
-        int r12 = this.o;
-        HttpURLConnection r3 = (HttpURLConnection) r8.openConnection();     // Catch: IOException -> L59
-        Iterator r4 = r11.entrySet().iterator();
-    L14:
-        if (r4.hasNext() == false) goto L16;
-        Map.Entry r5 = (Map.Entry) r4.next();
-        r3.addRequestProperty((String) r5.getKey(), (String) r5.getValue());
-        goto L14
-    L16:
-        r3.setConnectTimeout(r12);
-        r3.setReadTimeout(r12);
-        r3.setUseCaches(false);
-        r3.setDoInput(true);
-        r3.setInstanceFollowRedirects(false);
-        this.p = r3;
-        r3.connect();     // Catch: IOException -> L56
-        this.q = this.p.getInputStream();     // Catch: IOException -> L56
-        if (this.r == false) goto L21;
-        return null;
-    L21:
-        int r0 = b(this.p);
-        int r6 = r0 / 100;
-        if (r6 != 2) goto L37;
-        HttpURLConnection r13 = this.p;
-    L27:
-        e = move-exception;
-        throw new HttpException(b(r13), e, "Failed to obtain InputStream");
-    L25:
-        if (TextUtils.isEmpty(r13.getContentEncoding()) == false) goto L30;
-        this.q = new md0(r13.getInputStream(), r13.getContentLength());     // Catch: IOException -> L27
-    L34:
-        return this.q;
-    L30:
-        if (Log.isLoggable("HttpUrlFetcher", 3) == false) goto L32;
-        Log.d("HttpUrlFetcher", "Got non empty content encoding: " + r13.getContentEncoding());     // Catch: IOException -> L27
-    L32:
-        this.q = r13.getInputStream();     // Catch: IOException -> L27
-        goto L34
-    L37:
-        if (r6 != 3) goto L48;
-        String r1 = this.p.getHeaderField("Location");
-        if (TextUtils.isEmpty(r1) == true) goto L47;
-        URL r2 = new URL(r8, r1);     // Catch: MalformedURLException -> L43
-        c();
-        return f(r2, r9 + 1, r8, r11);
-    L43:
-        e = move-exception;
-        throw new HttpException(r0, e, xa3.g("Bad redirect url: ", r1));
-    L47:
-        throw new HttpException(r0, null, "Received empty or null redirect url");
-    L48:
-        if (r0 == (-1)) goto L50;
-    L53:
-        e = move-exception;
-        throw new HttpException(r0, e, "Failed to get a response message");
-    L52:
-        throw new HttpException(r0, null, this.p.getResponseMessage());     // Catch: IOException -> L53
-    L50:
-        throw new HttpException(r0, null, "Http request failed");
-    L56:
-        e = move-exception;
-        throw new HttpException(b(this.p), e, "Failed to connect or obtain data");
-    L59:
-        e = move-exception;
-        throw new HttpException(0, e, "URL.openConnection threw");
-    L70:
-        if (r8.toURI().equals(r10.toURI()) == false) goto L10;
-        throw new HttpException(-1, null, "In re-direct loop");     // Catch: URISyntaxException -> L64
-    L63:
-        throw new HttpException(-1, null, "Too many (> 5) redirects!");
+    public final InputStream f(URL url, int i, URL url2, Map map) throws HttpException {
+        if (i >= 5) {
+            throw new HttpException(-1, null, "Too many (> 5) redirects!");
+        }
+        if (url2 != null) {
+            try {
+                if (url.toURI().equals(url2.toURI())) {
+                    throw new HttpException(-1, null, "In re-direct loop");
+                }
+            } catch (URISyntaxException unused) {
+            }
+        }
+        int i2 = this.o;
+        try {
+            HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+            for (Map.Entry entry : map.entrySet()) {
+                httpURLConnection.addRequestProperty((String) entry.getKey(), (String) entry.getValue());
+            }
+            httpURLConnection.setConnectTimeout(i2);
+            httpURLConnection.setReadTimeout(i2);
+            httpURLConnection.setUseCaches(false);
+            httpURLConnection.setDoInput(true);
+            httpURLConnection.setInstanceFollowRedirects(false);
+            this.p = httpURLConnection;
+            try {
+                httpURLConnection.connect();
+                this.q = this.p.getInputStream();
+                if (this.r) {
+                    return null;
+                }
+                int iB = b(this.p);
+                int i3 = iB / 100;
+                if (i3 == 2) {
+                    HttpURLConnection httpURLConnection2 = this.p;
+                    try {
+                        if (TextUtils.isEmpty(httpURLConnection2.getContentEncoding())) {
+                            this.q = new md0(httpURLConnection2.getInputStream(), httpURLConnection2.getContentLength());
+                        } else {
+                            if (Log.isLoggable("HttpUrlFetcher", 3)) {
+                                Log.d("HttpUrlFetcher", "Got non empty content encoding: " + httpURLConnection2.getContentEncoding());
+                            }
+                            this.q = httpURLConnection2.getInputStream();
+                        }
+                        return this.q;
+                    } catch (IOException e) {
+                        throw new HttpException(b(httpURLConnection2), e, "Failed to obtain InputStream");
+                    }
+                }
+                if (i3 != 3) {
+                    if (iB == -1) {
+                        throw new HttpException(iB, null, "Http request failed");
+                    }
+                    try {
+                        throw new HttpException(iB, null, this.p.getResponseMessage());
+                    } catch (IOException e2) {
+                        throw new HttpException(iB, e2, "Failed to get a response message");
+                    }
+                }
+                String headerField = this.p.getHeaderField("Location");
+                if (TextUtils.isEmpty(headerField)) {
+                    throw new HttpException(iB, null, "Received empty or null redirect url");
+                }
+                try {
+                    URL url3 = new URL(url, headerField);
+                    c();
+                    return f(url3, i + 1, url, map);
+                } catch (MalformedURLException e3) {
+                    throw new HttpException(iB, e3, xa3.g("Bad redirect url: ", headerField));
+                }
+            } catch (IOException e4) {
+                throw new HttpException(b(this.p), e4, "Failed to connect or obtain data");
+            }
+        } catch (IOException e5) {
+            throw new HttpException(0, e5, "URL.openConnection threw");
+        }
     }
 }

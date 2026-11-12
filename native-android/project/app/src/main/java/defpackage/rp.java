@@ -9,231 +9,211 @@ import java.lang.reflect.WildcardType;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.HashSet;
+import org.chromium.support_lib_boundary.WebSettingsBoundaryInterface;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public abstract class rp {
     public Object a;
 
-    public rp(int r2) {
-        switch(r2) {
-            case 1: goto L11;
-            case 2: goto L3;
-            case 3: goto L9;
-            case 4: goto L7;
-            case 5: goto L3;
-            case 6: goto L5;
-            default: goto L3;
-        };
-    L3:
-        this.a = new ArrayDeque(20);
-        return;
-    L5:
-        this.a = new HashSet();
-        return;
-    L7:
-        this.a = new Object();
-        return;
-    L9:
-        this.a = new kd4();
-        return;
-    L11:
-        this.a = new ArrayList();
+    public rp(int i) {
+        switch (i) {
+            case 1:
+                this.a = new ArrayList();
+                break;
+            case 2:
+            case 5:
+            default:
+                this.a = new ArrayDeque(20);
+                break;
+            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
+                this.a = new kd4();
+                break;
+            case 4:
+                this.a = new Object();
+                break;
+            case 6:
+                this.a = new HashSet();
+                break;
+        }
     }
 
-    public boolean a(int r8, tg1 r9, Object r10) {
-        ArrayList r0 = r9.a;
-        if (r0 != null) goto L6;
-        b(r8, r9, null);
-        return true;
-    L6:
-        int r2 = r0.size();
-        int r4 = 0;
-    L7:
-        if (r4 >= r2) goto L22;
-        Object r5 = r0.get(r4);
-        if ((r5 instanceof mg1) == false) goto L15;
-        if (r5 != r10) goto L20;
-        b(0, r9, r5);
-        return true;
-    L20:
-        r4 = r4 + 1;
-        goto L7
-    L15:
-        if ((r5 instanceof tg1) == false) goto L21;
-        if (a(r8, (tg1) r5, r10) == false) goto L20;
-        b(0, r9, r5);
-        return true;
-    L21:
-        mj0.g(r5, "Unexpected child source info ");
-    L22:
+    public boolean a(int i, tg1 tg1Var, Object obj) {
+        ArrayList arrayList = tg1Var.a;
+        if (arrayList == null) {
+            b(i, tg1Var, null);
+            return true;
+        }
+        int size = arrayList.size();
+        for (int i2 = 0; i2 < size; i2++) {
+            Object obj2 = arrayList.get(i2);
+            if (!(obj2 instanceof mg1)) {
+                if (!(obj2 instanceof tg1)) {
+                    mj0.g(obj2, "Unexpected child source info ");
+                    break;
+                }
+                if (a(i, (tg1) obj2, obj)) {
+                    b(0, tg1Var, obj2);
+                    return true;
+                }
+            } else if (obj2 == obj) {
+                b(0, tg1Var, obj2);
+                return true;
+            }
+        }
         return false;
     }
 
-    public void b(int r1, tg1 r2, Object r3) {
-        d80 r4 = new d80(r1, null, null);
-        ((ArrayList) this.a).add(r4);
+    public void b(int i, tg1 tg1Var, Object obj) {
+        ((ArrayList) this.a).add(new d80(i, null, null));
     }
 
-    public abstract void c(gc r1);
+    public abstract void c(gc gcVar);
 
     public kd4 d() {
-        kd4 r9 = (kd4) this.a;
-        int r0 = r9.f;
-        int[] r1 = r9.b;
-        if (r0 == 1) goto L5;
-        int r6 = r9.e;
-        r1[0] = r6;
-        int r7 = r9.d;
-        r1[1] = r7;
-        r1[2] = r7;
-        r1[3] = r6;
-    L6:
-        float[] r2 = r9.a;
-        if (r0 == 1) goto L10;
-        r2[0] = Math.max(((1.0f - r9.k) - r9.l) / 2.0f, 0.0f);
-        r2[1] = Math.max(((1.0f - r9.k) - 0.001f) / 2.0f, 0.0f);
-        r2[2] = Math.min(((r9.k + 1.0f) + 0.001f) / 2.0f, 1.0f);
-        r2[3] = Math.min(((r9.k + 1.0f) + r9.l) / 2.0f, 1.0f);
-        return r9;
-    L10:
-        r2[0] = 0.0f;
-        r2[1] = Math.min(r9.k, 1.0f);
-        r2[2] = Math.min(r9.k + r9.l, 1.0f);
-        r2[3] = 1.0f;
-        return r9;
-    L5:
-        int r8 = r9.d;
-        r1[0] = r8;
-        r1[1] = r8;
-        int r10 = r9.e;
-        r1[2] = r10;
-        r1[3] = r10;
-        goto L6
+        kd4 kd4Var = (kd4) this.a;
+        int i = kd4Var.f;
+        int[] iArr = kd4Var.b;
+        if (i != 1) {
+            int i2 = kd4Var.e;
+            iArr[0] = i2;
+            int i3 = kd4Var.d;
+            iArr[1] = i3;
+            iArr[2] = i3;
+            iArr[3] = i2;
+        } else {
+            int i4 = kd4Var.d;
+            iArr[0] = i4;
+            iArr[1] = i4;
+            int i5 = kd4Var.e;
+            iArr[2] = i5;
+            iArr[3] = i5;
+        }
+        float[] fArr = kd4Var.a;
+        if (i != 1) {
+            fArr[0] = Math.max(((1.0f - kd4Var.k) - kd4Var.l) / 2.0f, 0.0f);
+            fArr[1] = Math.max(((1.0f - kd4Var.k) - 0.001f) / 2.0f, 0.0f);
+            fArr[2] = Math.min(((kd4Var.k + 1.0f) + 0.001f) / 2.0f, 1.0f);
+            fArr[3] = Math.min(((kd4Var.k + 1.0f) + kd4Var.l) / 2.0f, 1.0f);
+            return kd4Var;
+        }
+        fArr[0] = 0.0f;
+        fArr[1] = Math.min(kd4Var.k, 1.0f);
+        fArr[2] = Math.min(kd4Var.k + kd4Var.l, 1.0f);
+        fArr[3] = 1.0f;
+        return kd4Var;
     }
 
-    public abstract void e(y94 r1);
+    public abstract void e(y94 y94Var);
 
     public abstract void f();
 
-    public rp g(TypedArray r14) {
-        kd4 r0 = (kd4) this.a;
-        if (r14.hasValue(3) == false) goto L6;
-        r0.n = r14.getBoolean(3, r0.n);
-    L6:
-        if (r14.hasValue(0) == false) goto L9;
-        r0.o = r14.getBoolean(0, r0.o);
-    L9:
-        if (r14.hasValue(1) == false) goto L12;
-        r0.e = (((int) (Math.min(1.0f, Math.max(0.0f, r14.getFloat(1, 0.3f))) * 255.0f)) << 24) | (r0.e & 16777215);
-    L12:
-        if (r14.hasValue(11) == false) goto L15;
-        r0.d = (((int) (Math.min(1.0f, Math.max(0.0f, r14.getFloat(11, 1.0f))) * 255.0f)) << 24) | (16777215 & r0.d);
-    L15:
-        if (r14.hasValue(7) == false) goto L22;
-        long r4 = r14.getInt(7, (int) r0.s);
-        if (r4 < 0) goto L19;
-        r0.s = r4;
-        goto L22
-    L19:
-        kf2.n(b11.k("Given a negative duration: ", r4));
-        return null;
-    L22:
-        if (r14.hasValue(14) == false) goto L25;
-        r0.q = r14.getInt(14, r0.q);
-    L25:
-        if (r14.hasValue(15) == false) goto L32;
-        long r5 = r14.getInt(15, (int) r0.t);
-        if (r5 < 0) goto L29;
-        r0.t = r5;
-        goto L32
-    L29:
-        kf2.n(b11.k("Given a negative repeat delay: ", r5));
-        return null;
-    L32:
-        if (r14.hasValue(16) == false) goto L35;
-        r0.r = r14.getInt(16, r0.r);
-    L35:
-        if (r14.hasValue(5) == false) goto L46;
-        int r6 = r14.getInt(5, r0.c);
-        if (r6 != 1) goto L39;
-        r0.c = 1;
-        goto L46
-    L39:
-        if (r6 == 2) goto L43;
-        if (r6 == 3) goto L42;
-        r0.c = 0;
-        goto L46
-    L42:
-        r0.c = 3;
-        goto L46
-    L43:
-        r0.c = 2;
-    L46:
-        if (r14.hasValue(17) == false) goto L52;
-        if (r14.getInt(17, r0.f) == 1) goto L50;
-        r0.f = 0;
-        goto L52
-    L50:
-        r0.f = 1;
-    L52:
-        if (r14.hasValue(6) == false) goto L59;
-        float r1 = r14.getFloat(6, r0.l);
-        if (r1 < 0.0f) goto L56;
-        r0.l = r1;
-        goto L59
-    L56:
-        tb4.f("Given invalid dropoff value: ", r1);
-        return null;
-    L59:
-        if (r14.hasValue(9) == false) goto L66;
-        int r2 = r14.getDimensionPixelSize(9, r0.g);
-        if (r2 < 0) goto L63;
-        r0.g = r2;
-        goto L66
-    L63:
-        kf2.n(f34.f(r2, "Given invalid width: "));
-        return null;
-    L66:
-        if (r14.hasValue(8) == false) goto L73;
-        int r3 = r14.getDimensionPixelSize(8, r0.h);
-        if (r3 < 0) goto L70;
-        r0.h = r3;
-        goto L73
-    L70:
-        kf2.n(f34.f(r3, "Given invalid height: "));
-        return null;
-    L73:
-        if (r14.hasValue(13) == false) goto L80;
-        float r7 = r14.getFloat(13, r0.k);
-        if (r7 < 0.0f) goto L77;
-        r0.k = r7;
-        goto L80
-    L77:
-        tb4.f("Given invalid intensity value: ", r7);
-        return null;
-    L80:
-        if (r14.hasValue(19) == false) goto L87;
-        float r8 = r14.getFloat(19, r0.i);
-        if (r8 < 0.0f) goto L84;
-        r0.i = r8;
-        goto L87
-    L84:
-        tb4.f("Given invalid width ratio: ", r8);
-        return null;
-    L87:
-        if (r14.hasValue(10) == false) goto L94;
-        float r9 = r14.getFloat(10, r0.j);
-        if (r9 < 0.0f) goto L91;
-        r0.j = r9;
-        goto L94
-    L91:
-        tb4.f("Given invalid height ratio: ", r9);
-        return null;
-    L94:
-        if (r14.hasValue(18) == false) goto L97;
-        r0.m = r14.getFloat(18, r0.m);
-    L97:
+    public rp g(TypedArray typedArray) {
+        kd4 kd4Var = (kd4) this.a;
+        if (typedArray.hasValue(3)) {
+            kd4Var.n = typedArray.getBoolean(3, kd4Var.n);
+        }
+        if (typedArray.hasValue(0)) {
+            kd4Var.o = typedArray.getBoolean(0, kd4Var.o);
+        }
+        if (typedArray.hasValue(1)) {
+            kd4Var.e = (((int) (Math.min(1.0f, Math.max(0.0f, typedArray.getFloat(1, 0.3f))) * 255.0f)) << 24) | (kd4Var.e & 16777215);
+        }
+        if (typedArray.hasValue(11)) {
+            kd4Var.d = (((int) (Math.min(1.0f, Math.max(0.0f, typedArray.getFloat(11, 1.0f))) * 255.0f)) << 24) | (16777215 & kd4Var.d);
+        }
+        if (typedArray.hasValue(7)) {
+            long j = typedArray.getInt(7, (int) kd4Var.s);
+            if (j < 0) {
+                kf2.n(b11.k("Given a negative duration: ", j));
+                return null;
+            }
+            kd4Var.s = j;
+        }
+        if (typedArray.hasValue(14)) {
+            kd4Var.q = typedArray.getInt(14, kd4Var.q);
+        }
+        if (typedArray.hasValue(15)) {
+            long j2 = typedArray.getInt(15, (int) kd4Var.t);
+            if (j2 < 0) {
+                kf2.n(b11.k("Given a negative repeat delay: ", j2));
+                return null;
+            }
+            kd4Var.t = j2;
+        }
+        if (typedArray.hasValue(16)) {
+            kd4Var.r = typedArray.getInt(16, kd4Var.r);
+        }
+        if (typedArray.hasValue(5)) {
+            int i = typedArray.getInt(5, kd4Var.c);
+            if (i == 1) {
+                kd4Var.c = 1;
+            } else if (i == 2) {
+                kd4Var.c = 2;
+            } else if (i != 3) {
+                kd4Var.c = 0;
+            } else {
+                kd4Var.c = 3;
+            }
+        }
+        if (typedArray.hasValue(17)) {
+            if (typedArray.getInt(17, kd4Var.f) != 1) {
+                kd4Var.f = 0;
+            } else {
+                kd4Var.f = 1;
+            }
+        }
+        if (typedArray.hasValue(6)) {
+            float f = typedArray.getFloat(6, kd4Var.l);
+            if (f < 0.0f) {
+                tb4.f("Given invalid dropoff value: ", f);
+                return null;
+            }
+            kd4Var.l = f;
+        }
+        if (typedArray.hasValue(9)) {
+            int dimensionPixelSize = typedArray.getDimensionPixelSize(9, kd4Var.g);
+            if (dimensionPixelSize < 0) {
+                kf2.n(f34.f(dimensionPixelSize, "Given invalid width: "));
+                return null;
+            }
+            kd4Var.g = dimensionPixelSize;
+        }
+        if (typedArray.hasValue(8)) {
+            int dimensionPixelSize2 = typedArray.getDimensionPixelSize(8, kd4Var.h);
+            if (dimensionPixelSize2 < 0) {
+                kf2.n(f34.f(dimensionPixelSize2, "Given invalid height: "));
+                return null;
+            }
+            kd4Var.h = dimensionPixelSize2;
+        }
+        if (typedArray.hasValue(13)) {
+            float f2 = typedArray.getFloat(13, kd4Var.k);
+            if (f2 < 0.0f) {
+                tb4.f("Given invalid intensity value: ", f2);
+                return null;
+            }
+            kd4Var.k = f2;
+        }
+        if (typedArray.hasValue(19)) {
+            float f3 = typedArray.getFloat(19, kd4Var.i);
+            if (f3 < 0.0f) {
+                tb4.f("Given invalid width ratio: ", f3);
+                return null;
+            }
+            kd4Var.i = f3;
+        }
+        if (typedArray.hasValue(10)) {
+            float f4 = typedArray.getFloat(10, kd4Var.j);
+            if (f4 < 0.0f) {
+                tb4.f("Given invalid height ratio: ", f4);
+                return null;
+            }
+            kd4Var.j = f4;
+        }
+        if (typedArray.hasValue(18)) {
+            kd4Var.m = typedArray.getFloat(18, kd4Var.m);
+        }
         return j();
     }
 
@@ -245,78 +225,64 @@ public abstract class rp {
 
     public abstract rp j();
 
-    public void k(xn3 r3) {
-        ArrayDeque r2 = (ArrayDeque) this.a;
-        if (r2.size() >= 20) goto L6;
-        r2.offer(r3);
-        return;
+    public void k(xn3 xn3Var) {
+        ArrayDeque arrayDeque = (ArrayDeque) this.a;
+        if (arrayDeque.size() < 20) {
+            arrayDeque.offer(xn3Var);
+        }
     }
 
-    public void l(int r1, Object r2, tg1 r3, Object r4) {
-        if (h12.c(r2, j80.a) == true) goto L5;
-        return;
-    L5:
-        b(r1, r3, null);
+    public void l(int i, Object obj, tg1 tg1Var, Object obj2) {
+        if (h12.c(obj, j80.a)) {
+            b(i, tg1Var, null);
+        }
     }
 
-    public abstract if1 m(y94 r1);
+    public abstract if1 m(y94 y94Var);
 
-    public abstract void n(y00 r1);
+    public abstract void n(y00 y00Var);
 
-    public void o(Type... r6) {
-        HashSet r0 = (HashSet) this.a;
-        int r1 = r6.length;
-        int r2 = 0;
-    L3:
-        if (r2 >= r1) goto L31;
-        Type r3 = r6[r2];
-        if (r3 == null) goto L30;
-        if (r0.add(r3) == false) goto L30;
-    L12:
-        th = move-exception;
-        r0.remove(r3);
-        throw th;
-    L10:
-        if ((r3 instanceof TypeVariable) == false) goto L15;
-        s((TypeVariable) r3);     // Catch: Throwable -> L12
-        goto L30
-    L15:
-        if ((r3 instanceof WildcardType) == false) goto L18;
-        t((WildcardType) r3);     // Catch: Throwable -> L12
-        goto L30
-    L18:
-        if ((r3 instanceof ParameterizedType) == false) goto L21;
-        r((ParameterizedType) r3);     // Catch: Throwable -> L12
-        goto L30
-    L21:
-        if ((r3 instanceof Class) == false) goto L24;
-        p((Class) r3);     // Catch: Throwable -> L12
-        goto L30
-    L24:
-        if ((r3 instanceof GenericArrayType) == false) goto L27;
-        q((GenericArrayType) r3);     // Catch: Throwable -> L12
-        goto L30
-    L27:
-        throw new AssertionError("Unknown type: " + r3);     // Catch: Throwable -> L12
-    L30:
-        r2 = r2 + 1;
-        goto L3
+    public void o(Type... typeArr) {
+        HashSet hashSet = (HashSet) this.a;
+        for (Type type : typeArr) {
+            if (type != null && hashSet.add(type)) {
+                try {
+                    if (type instanceof TypeVariable) {
+                        s((TypeVariable) type);
+                    } else if (type instanceof WildcardType) {
+                        t((WildcardType) type);
+                    } else if (type instanceof ParameterizedType) {
+                        r((ParameterizedType) type);
+                    } else if (type instanceof Class) {
+                        p((Class) type);
+                    } else {
+                        if (!(type instanceof GenericArrayType)) {
+                            throw new AssertionError("Unknown type: " + type);
+                        }
+                        q((GenericArrayType) type);
+                    }
+                } catch (Throwable th) {
+                    hashSet.remove(type);
+                    throw th;
+                }
+            }
+        }
     }
 
-    public void p(Class r1) {
+    public void p(Class cls) {
     }
 
-    public void q(GenericArrayType r1) {
+    public void q(GenericArrayType genericArrayType) {
     }
 
-    public void r(ParameterizedType r1) {
+    public void r(ParameterizedType parameterizedType) {
     }
 
-    public abstract void s(TypeVariable r1);
+    public abstract void s(TypeVariable typeVariable);
 
-    public abstract void t(WildcardType r1);
+    public abstract void t(WildcardType wildcardType);
 
-    public rp(wv4 r1) {
-        this.a = r1;
+    public rp(wv4 wv4Var) {
+        this.a = wv4Var;
     }
 }

@@ -8,9 +8,9 @@ import java.lang.reflect.InvocationHandler;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public interface WebViewProviderBoundaryInterface {
-    InvocationHandler addDocumentStartJavaScript(String r1, String[] r2);
+    InvocationHandler addDocumentStartJavaScript(String str, String[] strArr);
 
-    void addWebMessageListener(String r1, String[] r2, InvocationHandler r3);
+    void addWebMessageListener(String str, String[] strArr, InvocationHandler invocationHandler);
 
     InvocationHandler[] createWebMessageChannel();
 
@@ -24,17 +24,17 @@ public interface WebViewProviderBoundaryInterface {
 
     InvocationHandler getWebViewRendererClient();
 
-    void insertVisualStateCallback(long r1, InvocationHandler r3);
+    void insertVisualStateCallback(long j, InvocationHandler invocationHandler);
 
     boolean isAudioMuted();
 
-    void postMessageToMainFrame(InvocationHandler r1, Uri r2);
+    void postMessageToMainFrame(InvocationHandler invocationHandler, Uri uri);
 
-    void removeWebMessageListener(String r1);
+    void removeWebMessageListener(String str);
 
-    void setAudioMuted(boolean r1);
+    void setAudioMuted(boolean z);
 
-    void setProfile(String r1);
+    void setProfile(String str);
 
-    void setWebViewRendererClient(InvocationHandler r1);
+    void setWebViewRendererClient(InvocationHandler invocationHandler);
 }

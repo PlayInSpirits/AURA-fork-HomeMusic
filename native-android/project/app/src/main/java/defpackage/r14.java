@@ -5,8 +5,8 @@ package defpackage;
 public abstract class r14 extends q14 implements gg1 {
     public final int n;
 
-    public r14(vd0 r1) {
-        super(r1);
+    public r14(vd0 vd0Var) {
+        super(vd0Var);
         this.n = 2;
     }
 
@@ -17,10 +17,10 @@ public abstract class r14 extends q14 implements gg1 {
 
     @Override // defpackage.jp
     public final String toString() {
-        if (getCompletion() != null) goto L7;
+        if (getCompletion() != null) {
+            return super.toString();
+        }
         kx3.a.getClass();
         return lx3.a(this);
-    L7:
-        return super.toString();
     }
 }

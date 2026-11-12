@@ -2,6 +2,7 @@ package defpackage;
 
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -16,103 +17,172 @@ public final class et0 extends cx3 {
     public final lv4 u;
     public final /* synthetic */ ft0 v;
 
-    public et0(ft0 r4, lv4 r5) {
-        this.v = r4;
-        ConstraintLayout r6 = (ConstraintLayout) r5.n;
-        super(r6);
-        this.u = r5;
-        final int r1 = 1;
-        ((TextView) r5.s).setSelected(true);
-        ((TextView) r5.r).setSelected(true);
-        final int r2 = 0;
-        r6.setOnClickListener(new dt0(this, r2));
-        r6.setOnLongClickListener(new q6(9, this));
-        ((FrameLayout) r5.q).setOnClickListener(new dt0(this, r1));
+    /* JADX WARN: Illegal instructions before constructor call */
+    public et0(ft0 ft0Var, lv4 lv4Var) {
+        this.v = ft0Var;
+        ConstraintLayout constraintLayout = (ConstraintLayout) lv4Var.n;
+        super(constraintLayout);
+        this.u = lv4Var;
+        final int i = 1;
+        ((TextView) lv4Var.s).setSelected(true);
+        ((TextView) lv4Var.r).setSelected(true);
+        final int i2 = 0;
+        constraintLayout.setOnClickListener(new View.OnClickListener(this) { // from class: dt0
+            public final /* synthetic */ et0 o;
+
+            {
+                this.o = this;
+            }
+
+            @Override // android.view.View.OnClickListener
+            public final void onClick(View view) {
+                int i3 = i2;
+                et0 et0Var = this.o;
+                switch (i3) {
+                    case 0:
+                        Bundle bundle = new Bundle();
+                        ft0 ft0Var2 = et0Var.v;
+                        String str = ft0Var2.r;
+                        DownloadFragment downloadFragment = ft0Var2.q;
+                        str.getClass();
+                        switch (str) {
+                            case "download_type_artist":
+                                bundle.putString("download_type_artist", ((Child) ft0Var2.w.get(et0Var.c())).getArtistId());
+                                downloadFragment.onArtistClick(bundle);
+                                break;
+                            case "download_type_year":
+                                bundle.putString("download_type_year", ((Child) ft0Var2.w.get(et0Var.c())).getYear().toString());
+                                downloadFragment.onYearClick(bundle);
+                                break;
+                            case "download_type_playlist":
+                                if (ft0Var2.w.get(et0Var.c()) instanceof Download) {
+                                    bundle.putString("download_type_playlist", ((Download) ft0Var2.w.get(et0Var.c())).getPlaylistId());
+                                    downloadFragment.onPlaylistClick(bundle);
+                                    break;
+                                }
+                                break;
+                            case "download_type_album":
+                                bundle.putString("download_type_album", ((Child) ft0Var2.w.get(et0Var.c())).getAlbumId());
+                                downloadFragment.onAlbumClick(bundle);
+                                break;
+                            case "download_type_genre":
+                                bundle.putString("download_type_genre", ((Child) ft0Var2.w.get(et0Var.c())).getGenre());
+                                downloadFragment.onGenreClick(bundle);
+                                break;
+                            case "download_type_track":
+                                bundle.putParcelableArrayList("TRACKS_OBJECT", new ArrayList<>(ft0Var2.w));
+                                bundle.putInt("ITEM_POSITION", et0Var.c());
+                                downloadFragment.onMediaClick(bundle);
+                                break;
+                        }
+                        break;
+                    default:
+                        et0Var.s();
+                        break;
+                }
+            }
+        });
+        constraintLayout.setOnLongClickListener(new q6(9, this));
+        ((FrameLayout) lv4Var.q).setOnClickListener(new View.OnClickListener(this) { // from class: dt0
+            public final /* synthetic */ et0 o;
+
+            {
+                this.o = this;
+            }
+
+            @Override // android.view.View.OnClickListener
+            public final void onClick(View view) {
+                int i3 = i;
+                et0 et0Var = this.o;
+                switch (i3) {
+                    case 0:
+                        Bundle bundle = new Bundle();
+                        ft0 ft0Var2 = et0Var.v;
+                        String str = ft0Var2.r;
+                        DownloadFragment downloadFragment = ft0Var2.q;
+                        str.getClass();
+                        switch (str) {
+                            case "download_type_artist":
+                                bundle.putString("download_type_artist", ((Child) ft0Var2.w.get(et0Var.c())).getArtistId());
+                                downloadFragment.onArtistClick(bundle);
+                                break;
+                            case "download_type_year":
+                                bundle.putString("download_type_year", ((Child) ft0Var2.w.get(et0Var.c())).getYear().toString());
+                                downloadFragment.onYearClick(bundle);
+                                break;
+                            case "download_type_playlist":
+                                if (ft0Var2.w.get(et0Var.c()) instanceof Download) {
+                                    bundle.putString("download_type_playlist", ((Download) ft0Var2.w.get(et0Var.c())).getPlaylistId());
+                                    downloadFragment.onPlaylistClick(bundle);
+                                    break;
+                                }
+                                break;
+                            case "download_type_album":
+                                bundle.putString("download_type_album", ((Child) ft0Var2.w.get(et0Var.c())).getAlbumId());
+                                downloadFragment.onAlbumClick(bundle);
+                                break;
+                            case "download_type_genre":
+                                bundle.putString("download_type_genre", ((Child) ft0Var2.w.get(et0Var.c())).getGenre());
+                                downloadFragment.onGenreClick(bundle);
+                                break;
+                            case "download_type_track":
+                                bundle.putParcelableArrayList("TRACKS_OBJECT", new ArrayList<>(ft0Var2.w));
+                                bundle.putInt("ITEM_POSITION", et0Var.c());
+                                downloadFragment.onMediaClick(bundle);
+                                break;
+                        }
+                        break;
+                    default:
+                        et0Var.s();
+                        break;
+                }
+            }
+        });
     }
 
     public final boolean s() {
-        ArrayList r0 = new ArrayList();
-        Bundle r1 = new Bundle();
-        ft0 r2 = this.v;
-        DownloadFragment r3 = r2.q;
-        if ("download_type_track".equals(r2.r) == false) goto L6;
-        r1.putParcelable("TRACK_OBJECT", (Parcelable) r2.w.get(c()));
-        r3.onMediaLongClick(r1);
+        ArrayList arrayList = new ArrayList();
+        Bundle bundle = new Bundle();
+        ft0 ft0Var = this.v;
+        DownloadFragment downloadFragment = ft0Var.q;
+        if ("download_type_track".equals(ft0Var.r)) {
+            bundle.putParcelable("TRACK_OBJECT", (Parcelable) ft0Var.w.get(c()));
+            downloadFragment.onMediaLongClick(bundle);
+            return true;
+        }
+        String str = ft0Var.r;
+        str.getClass();
+        switch (str) {
+            case "download_type_artist":
+                arrayList.addAll(ft0.q("download_type_artist", ((Child) ft0Var.w.get(c())).getArtistId(), ft0Var.u));
+                break;
+            case "download_type_year":
+                arrayList.addAll(ft0.q("download_type_year", ((Child) ft0Var.w.get(c())).getYear().toString(), ft0Var.u));
+                break;
+            case "download_type_playlist":
+                if (ft0Var.w.get(c()) instanceof Download) {
+                    arrayList.addAll(ft0.q("download_type_playlist", ((Download) ft0Var.w.get(c())).getPlaylistId(), ft0Var.u));
+                    break;
+                }
+                break;
+            case "download_type_album":
+                arrayList.addAll(ft0.q("download_type_album", ((Child) ft0Var.w.get(c())).getAlbumId(), ft0Var.u));
+                break;
+            case "download_type_genre":
+                arrayList.addAll(ft0.q("download_type_genre", ((Child) ft0Var.w.get(c())).getGenre(), ft0Var.u));
+                break;
+            case "download_type_track":
+                arrayList.add((Child) ft0Var.w.get(c()));
+                break;
+        }
+        if (arrayList.isEmpty()) {
+            return false;
+        }
+        bundle.putParcelableArrayList("download_group", new ArrayList<>(arrayList));
+        lv4 lv4Var = this.u;
+        bundle.putString("download_group_title", ((TextView) lv4Var.s).getText().toString());
+        bundle.putString("download_group_subtitle", ((TextView) lv4Var.r).getText().toString());
+        downloadFragment.onDownloadGroupLongClick(bundle);
         return true;
-    L6:
-        String r4 = r2.r;
-        r4.getClass();
-        byte r14 = -1;
-        switch(r4.hashCode()) {
-            case -2125974859: goto L30;
-            case -940056789: goto L26;
-            case 155496896: goto L22;
-            case 901055809: goto L18;
-            case 906399829: goto L14;
-            case 918779933: goto L10;
-            default: goto L33;
-        };
-    L33:
-        switch(r14) {
-            case 0: goto L42;
-            case 1: goto L41;
-            case 2: goto L39;
-            case 3: goto L37;
-            case 4: goto L36;
-            case 5: goto L35;
-            default: goto L44;
-        };
-    L35:
-        r0.add((Child) r2.w.get(c()));
-        goto L44
-    L36:
-        r0.addAll(ft0.q("download_type_genre", ((Child) r2.w.get(c())).getGenre(), r2.u));
-        goto L44
-    L37:
-        r0.addAll(ft0.q("download_type_album", ((Child) r2.w.get(c())).getAlbumId(), r2.u));
-        goto L44
-    L41:
-        r0.addAll(ft0.q("download_type_year", ((Child) r2.w.get(c())).getYear().toString(), r2.u));
-        goto L44
-    L42:
-        r0.addAll(ft0.q("download_type_artist", ((Child) r2.w.get(c())).getArtistId(), r2.u));
-        goto L44
-    L39:
-        if ((r2.w.get(c()) instanceof Download) == false) goto L44;
-        r0.addAll(ft0.q("download_type_playlist", ((Download) r2.w.get(c())).getPlaylistId(), r2.u));
-    L44:
-        if (r0.isEmpty() == false) goto L46;
-        return false;
-    L46:
-        r1.putParcelableArrayList("download_group", new ArrayList(r0));
-        lv4 r15 = this.u;
-        r1.putString("download_group_title", ((TextView) r15.s).getText().toString());
-        r1.putString("download_group_subtitle", ((TextView) r15.r).getText().toString());
-        r3.onDownloadGroupLongClick(r1);
-        return true;
-    L10:
-        if (r4.equals("download_type_track") == false) goto L33;
-        r14 = 5;
-        goto L33
-    L14:
-        if (r4.equals("download_type_genre") == false) goto L33;
-        r14 = 4;
-        goto L33
-    L18:
-        if (r4.equals("download_type_album") == false) goto L33;
-        r14 = 3;
-        goto L33
-    L22:
-        if (r4.equals("download_type_playlist") == false) goto L33;
-        r14 = 2;
-        goto L33
-    L26:
-        if (r4.equals("download_type_year") == false) goto L33;
-        r14 = 1;
-        goto L33
-    L30:
-        if (r4.equals("download_type_artist") == false) goto L33;
-        r14 = 0;
-        goto L33
     }
 }

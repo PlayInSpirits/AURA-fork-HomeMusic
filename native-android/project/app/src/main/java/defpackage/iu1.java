@@ -11,81 +11,71 @@ public final class iu1 implements ju1 {
     public IBinder e;
 
     @Override // defpackage.ju1
-    public final void C(int r3, Bundle r4) {
-        Parcel r0 = Parcel.obtain();
-        r0.writeInterfaceToken("androidx.media3.session.IMediaController");     // Catch: Throwable -> L6
-        r0.writeInt(r3);     // Catch: Throwable -> L6
-        gh0.L(r0, r4);     // Catch: Throwable -> L6
-        this.e.transact(3008, r0, null, 1);     // Catch: Throwable -> L6
-        r0.recycle();
-        return;
-    L6:
-        th = move-exception;
-        r0.recycle();
-        throw th;
+    public final void C(int i, Bundle bundle) {
+        Parcel parcelObtain = Parcel.obtain();
+        try {
+            parcelObtain.writeInterfaceToken("androidx.media3.session.IMediaController");
+            parcelObtain.writeInt(i);
+            gh0.L(parcelObtain, bundle);
+            this.e.transact(3008, parcelObtain, null, 1);
+        } finally {
+            parcelObtain.recycle();
+        }
     }
 
     @Override // defpackage.ju1
-    public final void E(int r3, Bundle r4, Bundle r5) {
-        Bundle r6 = Bundle.EMPTY;
-        Parcel r0 = Parcel.obtain();
-        r0.writeInterfaceToken("androidx.media3.session.IMediaController");     // Catch: Throwable -> L6
-        r0.writeInt(r3);     // Catch: Throwable -> L6
-        gh0.L(r0, r4);     // Catch: Throwable -> L6
-        gh0.L(r0, r6);     // Catch: Throwable -> L6
-        this.e.transact(3005, r0, null, 1);     // Catch: Throwable -> L6
-        r0.recycle();
-        return;
-    L6:
-        th = move-exception;
-        r0.recycle();
-        throw th;
+    public final void E(int i, Bundle bundle, Bundle bundle2) {
+        Bundle bundle3 = Bundle.EMPTY;
+        Parcel parcelObtain = Parcel.obtain();
+        try {
+            parcelObtain.writeInterfaceToken("androidx.media3.session.IMediaController");
+            parcelObtain.writeInt(i);
+            gh0.L(parcelObtain, bundle);
+            gh0.L(parcelObtain, bundle3);
+            this.e.transact(3005, parcelObtain, null, 1);
+        } finally {
+            parcelObtain.recycle();
+        }
     }
 
     @Override // defpackage.ju1
-    public final void I(int r3, Bundle r4, Bundle r5) {
-        Parcel r0 = Parcel.obtain();
-        r0.writeInterfaceToken("androidx.media3.session.IMediaController");     // Catch: Throwable -> L6
-        r0.writeInt(r3);     // Catch: Throwable -> L6
-        gh0.L(r0, r4);     // Catch: Throwable -> L6
-        gh0.L(r0, r5);     // Catch: Throwable -> L6
-        this.e.transact(3013, r0, null, 1);     // Catch: Throwable -> L6
-        r0.recycle();
-        return;
-    L6:
-        th = move-exception;
-        r0.recycle();
-        throw th;
+    public final void I(int i, Bundle bundle, Bundle bundle2) {
+        Parcel parcelObtain = Parcel.obtain();
+        try {
+            parcelObtain.writeInterfaceToken("androidx.media3.session.IMediaController");
+            parcelObtain.writeInt(i);
+            gh0.L(parcelObtain, bundle);
+            gh0.L(parcelObtain, bundle2);
+            this.e.transact(3013, parcelObtain, null, 1);
+        } finally {
+            parcelObtain.recycle();
+        }
     }
 
     @Override // defpackage.ju1
-    public final void I0(int r3, Bundle r4) {
-        Parcel r0 = Parcel.obtain();
-        r0.writeInterfaceToken("androidx.media3.session.IMediaController");     // Catch: Throwable -> L6
-        r0.writeInt(r3);     // Catch: Throwable -> L6
-        gh0.L(r0, r4);     // Catch: Throwable -> L6
-        this.e.transact(3002, r0, null, 1);     // Catch: Throwable -> L6
-        r0.recycle();
-        return;
-    L6:
-        th = move-exception;
-        r0.recycle();
-        throw th;
+    public final void I0(int i, Bundle bundle) {
+        Parcel parcelObtain = Parcel.obtain();
+        try {
+            parcelObtain.writeInterfaceToken("androidx.media3.session.IMediaController");
+            parcelObtain.writeInt(i);
+            gh0.L(parcelObtain, bundle);
+            this.e.transact(3002, parcelObtain, null, 1);
+        } finally {
+            parcelObtain.recycle();
+        }
     }
 
     @Override // defpackage.ju1
-    public final void O(int r3, Bundle r4) {
-        Parcel r0 = Parcel.obtain();
-        r0.writeInterfaceToken("androidx.media3.session.IMediaController");     // Catch: Throwable -> L6
-        r0.writeInt(r3);     // Catch: Throwable -> L6
-        gh0.L(r0, r4);     // Catch: Throwable -> L6
-        this.e.transact(3003, r0, null, 1);     // Catch: Throwable -> L6
-        r0.recycle();
-        return;
-    L6:
-        th = move-exception;
-        r0.recycle();
-        throw th;
+    public final void O(int i, Bundle bundle) {
+        Parcel parcelObtain = Parcel.obtain();
+        try {
+            parcelObtain.writeInterfaceToken("androidx.media3.session.IMediaController");
+            parcelObtain.writeInt(i);
+            gh0.L(parcelObtain, bundle);
+            this.e.transact(3003, parcelObtain, null, 1);
+        } finally {
+            parcelObtain.recycle();
+        }
     }
 
     @Override // android.os.IInterface
@@ -95,138 +85,120 @@ public final class iu1 implements ju1 {
 
     @Override // defpackage.ju1
     public final void c() {
-        Parcel r0 = Parcel.obtain();
-        r0.writeInterfaceToken("androidx.media3.session.IMediaController");     // Catch: Throwable -> L6
-        r0.writeInt(0);     // Catch: Throwable -> L6
-        this.e.transact(3006, r0, null, 1);     // Catch: Throwable -> L6
-        r0.recycle();
-        return;
-    L6:
-        th = move-exception;
-        r0.recycle();
-        throw th;
+        Parcel parcelObtain = Parcel.obtain();
+        try {
+            parcelObtain.writeInterfaceToken("androidx.media3.session.IMediaController");
+            parcelObtain.writeInt(0);
+            this.e.transact(3006, parcelObtain, null, 1);
+        } finally {
+            parcelObtain.recycle();
+        }
     }
 
     @Override // defpackage.ju1
-    public final void e(int r4) {
-        Parcel r0 = Parcel.obtain();
-        r0.writeInterfaceToken("androidx.media3.session.IMediaController");     // Catch: Throwable -> L6
-        r0.writeInt(r4);     // Catch: Throwable -> L6
-        this.e.transact(3011, r0, null, 1);     // Catch: Throwable -> L6
-        r0.recycle();
-        return;
-    L6:
-        th = move-exception;
-        r0.recycle();
-        throw th;
+    public final void e(int i) {
+        Parcel parcelObtain = Parcel.obtain();
+        try {
+            parcelObtain.writeInterfaceToken("androidx.media3.session.IMediaController");
+            parcelObtain.writeInt(i);
+            this.e.transact(3011, parcelObtain, null, 1);
+        } finally {
+            parcelObtain.recycle();
+        }
     }
 
     @Override // defpackage.ju1
-    public final void i(int r3, int r4, int r5) {
-        Parcel r0 = Parcel.obtain();
-        r0.writeInterfaceToken("androidx.media3.session.IMediaController");     // Catch: Throwable -> L6
-        r0.writeInt(r3);     // Catch: Throwable -> L6
-        r0.writeInt(r4);     // Catch: Throwable -> L6
-        r0.writeInt(r5);     // Catch: Throwable -> L6
-        this.e.transact(3018, r0, null, 1);     // Catch: Throwable -> L6
-        r0.recycle();
-        return;
-    L6:
-        th = move-exception;
-        r0.recycle();
-        throw th;
+    public final void i(int i, int i2, int i3) {
+        Parcel parcelObtain = Parcel.obtain();
+        try {
+            parcelObtain.writeInterfaceToken("androidx.media3.session.IMediaController");
+            parcelObtain.writeInt(i);
+            parcelObtain.writeInt(i2);
+            parcelObtain.writeInt(i3);
+            this.e.transact(3018, parcelObtain, null, 1);
+        } finally {
+            parcelObtain.recycle();
+        }
     }
 
     @Override // defpackage.ju1
-    public final void n(List r3, int r4) {
-        Parcel r0 = Parcel.obtain();
-        r0.writeInterfaceToken("androidx.media3.session.IMediaController");     // Catch: Throwable -> L6
-        r0.writeInt(r4);     // Catch: Throwable -> L6
-        gh0.b(r0, r3);     // Catch: Throwable -> L6
-        this.e.transact(3016, r0, null, 1);     // Catch: Throwable -> L6
-        r0.recycle();
-        return;
-    L6:
-        th = move-exception;
-        r0.recycle();
-        throw th;
+    public final void n(List list, int i) {
+        Parcel parcelObtain = Parcel.obtain();
+        try {
+            parcelObtain.writeInterfaceToken("androidx.media3.session.IMediaController");
+            parcelObtain.writeInt(i);
+            gh0.b(parcelObtain, list);
+            this.e.transact(3016, parcelObtain, null, 1);
+        } finally {
+            parcelObtain.recycle();
+        }
     }
 
     @Override // defpackage.ju1
-    public final void r(int r3, Bundle r4) {
-        Parcel r0 = Parcel.obtain();
-        r0.writeInterfaceToken("androidx.media3.session.IMediaController");     // Catch: Throwable -> L6
-        r0.writeInt(r3);     // Catch: Throwable -> L6
-        gh0.L(r0, r4);     // Catch: Throwable -> L6
-        this.e.transact(3001, r0, null, 1);     // Catch: Throwable -> L6
-        r0.recycle();
-        return;
-    L6:
-        th = move-exception;
-        r0.recycle();
-        throw th;
+    public final void r(int i, Bundle bundle) {
+        Parcel parcelObtain = Parcel.obtain();
+        try {
+            parcelObtain.writeInterfaceToken("androidx.media3.session.IMediaController");
+            parcelObtain.writeInt(i);
+            gh0.L(parcelObtain, bundle);
+            this.e.transact(3001, parcelObtain, null, 1);
+        } finally {
+            parcelObtain.recycle();
+        }
     }
 
     @Override // defpackage.ju1
-    public final void s0(List r3, int r4) {
-        Parcel r0 = Parcel.obtain();
-        r0.writeInterfaceToken("androidx.media3.session.IMediaController");     // Catch: Throwable -> L6
-        r0.writeInt(r4);     // Catch: Throwable -> L6
-        gh0.b(r0, r3);     // Catch: Throwable -> L6
-        this.e.transact(3004, r0, null, 1);     // Catch: Throwable -> L6
-        r0.recycle();
-        return;
-    L6:
-        th = move-exception;
-        r0.recycle();
-        throw th;
+    public final void s0(List list, int i) {
+        Parcel parcelObtain = Parcel.obtain();
+        try {
+            parcelObtain.writeInterfaceToken("androidx.media3.session.IMediaController");
+            parcelObtain.writeInt(i);
+            gh0.b(parcelObtain, list);
+            this.e.transact(3004, parcelObtain, null, 1);
+        } finally {
+            parcelObtain.recycle();
+        }
     }
 
     @Override // defpackage.ju1
-    public final void u0(int r3, Bundle r4, boolean r5) {
-        Parcel r0 = Parcel.obtain();
-        r0.writeInterfaceToken("androidx.media3.session.IMediaController");     // Catch: Throwable -> L6
-        r0.writeInt(r3);     // Catch: Throwable -> L6
-        gh0.L(r0, r4);     // Catch: Throwable -> L6
-        r0.writeInt(r5 ? 1 : 0);     // Catch: Throwable -> L6
-        this.e.transact(3007, r0, null, 1);     // Catch: Throwable -> L6
-        r0.recycle();
-        return;
-    L6:
-        th = move-exception;
-        r0.recycle();
-        throw th;
+    public final void u0(int i, Bundle bundle, boolean z) {
+        Parcel parcelObtain = Parcel.obtain();
+        try {
+            parcelObtain.writeInterfaceToken("androidx.media3.session.IMediaController");
+            parcelObtain.writeInt(i);
+            gh0.L(parcelObtain, bundle);
+            parcelObtain.writeInt(z ? 1 : 0);
+            this.e.transact(3007, parcelObtain, null, 1);
+        } finally {
+            parcelObtain.recycle();
+        }
     }
 
     @Override // defpackage.ju1
-    public final void w0(int r2, String r3, int r4, Bundle r5) {
-        Parcel r6 = Parcel.obtain();
-        r6.writeInterfaceToken("androidx.media3.session.IMediaController");     // Catch: Throwable -> L6
-        r6.writeInt(r2);     // Catch: Throwable -> L6
-        r6.writeString(r3);     // Catch: Throwable -> L6
-        r6.writeInt(Integer.MAX_VALUE);     // Catch: Throwable -> L6
-        gh0.L(r6, r5);     // Catch: Throwable -> L6
-        this.e.transact(4001, r6, null, 1);     // Catch: Throwable -> L6
-        r6.recycle();
-        return;
-    L6:
-        th = move-exception;
-        r6.recycle();
-        throw th;
+    public final void w0(int i, String str, int i2, Bundle bundle) {
+        Parcel parcelObtain = Parcel.obtain();
+        try {
+            parcelObtain.writeInterfaceToken("androidx.media3.session.IMediaController");
+            parcelObtain.writeInt(i);
+            parcelObtain.writeString(str);
+            parcelObtain.writeInt(Integer.MAX_VALUE);
+            gh0.L(parcelObtain, bundle);
+            this.e.transact(4001, parcelObtain, null, 1);
+        } finally {
+            parcelObtain.recycle();
+        }
     }
 
     @Override // defpackage.ju1
-    public final void z(int r3, Bundle r4) {
-        Parcel r0 = Parcel.obtain();
-        r0.writeInterfaceToken("androidx.media3.session.IMediaController");     // Catch: Throwable -> L6
-        r0.writeInt(r3);     // Catch: Throwable -> L6
-        gh0.L(r0, r4);     // Catch: Throwable -> L6
-        this.e.transact(3009, r0, null, 1);     // Catch: Throwable -> L6
-        r0.recycle();
-        return;
-    L6:
-        th = move-exception;
-        r0.recycle();
-        throw th;
+    public final void z(int i, Bundle bundle) {
+        Parcel parcelObtain = Parcel.obtain();
+        try {
+            parcelObtain.writeInterfaceToken("androidx.media3.session.IMediaController");
+            parcelObtain.writeInt(i);
+            gh0.L(parcelObtain, bundle);
+            this.e.transact(3009, parcelObtain, null, 1);
+        } finally {
+            parcelObtain.recycle();
+        }
     }
 }

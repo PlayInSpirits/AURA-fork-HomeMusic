@@ -6,10 +6,11 @@ public final class h21 extends j21 {
     public final cz p;
     public final /* synthetic */ l21 q;
 
-    public h21(l21 r1, long r2, cz r4) {
-        this.q = r1;
-        super(r2);
-        this.p = r4;
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public h21(l21 l21Var, long j, cz czVar) {
+        super(j);
+        this.q = l21Var;
+        this.p = czVar;
     }
 
     @Override // java.lang.Runnable

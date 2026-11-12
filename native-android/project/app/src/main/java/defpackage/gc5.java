@@ -3,24 +3,38 @@ package defpackage;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public abstract /* synthetic */ class gc5 {
-    public static final /* synthetic */ int[] a = null;
+    public static final /* synthetic */ int[] a;
 
     static {
-        int[] r0 = new int[q92.values().length];
-        r0[q92.ON_CREATE.ordinal()] = 1;     // Catch: NoSuchFieldError -> L12
-    L21:
-        r0[q92.ON_START.ordinal()] = 2;     // Catch: NoSuchFieldError -> L13
-    L31:
-        r0[q92.ON_STOP.ordinal()] = 3;     // Catch: NoSuchFieldError -> L14
-    L23:
-        r0[q92.ON_DESTROY.ordinal()] = 4;     // Catch: NoSuchFieldError -> L15
-    L25:
-        r0[q92.ON_PAUSE.ordinal()] = 5;     // Catch: NoSuchFieldError -> L16
-    L19:
-        r0[q92.ON_RESUME.ordinal()] = 6;     // Catch: NoSuchFieldError -> L17
-    L27:
-        r0[q92.ON_ANY.ordinal()] = 7;     // Catch: NoSuchFieldError -> L18
-    L10:
-        a = r0;
+        int[] iArr = new int[q92.values().length];
+        try {
+            iArr[q92.ON_CREATE.ordinal()] = 1;
+        } catch (NoSuchFieldError unused) {
+        }
+        try {
+            iArr[q92.ON_START.ordinal()] = 2;
+        } catch (NoSuchFieldError unused2) {
+        }
+        try {
+            iArr[q92.ON_STOP.ordinal()] = 3;
+        } catch (NoSuchFieldError unused3) {
+        }
+        try {
+            iArr[q92.ON_DESTROY.ordinal()] = 4;
+        } catch (NoSuchFieldError unused4) {
+        }
+        try {
+            iArr[q92.ON_PAUSE.ordinal()] = 5;
+        } catch (NoSuchFieldError unused5) {
+        }
+        try {
+            iArr[q92.ON_RESUME.ordinal()] = 6;
+        } catch (NoSuchFieldError unused6) {
+        }
+        try {
+            iArr[q92.ON_ANY.ordinal()] = 7;
+        } catch (NoSuchFieldError unused7) {
+        }
+        a = iArr;
     }
 }

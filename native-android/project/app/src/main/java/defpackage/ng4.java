@@ -7,35 +7,30 @@ import java.util.ArrayList;
 public final class ng4 implements pv2 {
     public final ArrayList a;
 
-    public ng4(ArrayList r7) {
-        this.a = r7;
-        boolean r1 = false;
-        if (r7.isEmpty() == true) goto L12;
-        long r2 = ((mg4) r7.get(0)).b;
-        int r6 = 1;
-    L7:
-        if (r6 >= r7.size()) goto L12;
-        if (((mg4) r7.get(r6)).a < r2) goto L10;
-        r2 = ((mg4) r7.get(r6)).b;
-        r6 = r6 + 1;
-        goto L7
-    L10:
-        r1 = true;
-    L12:
-        rr2.l(!r1);
+    public ng4(ArrayList arrayList) {
+        this.a = arrayList;
+        boolean z = false;
+        if (!arrayList.isEmpty()) {
+            long j = ((mg4) arrayList.get(0)).b;
+            for (int i = 1; i < arrayList.size(); i++) {
+                if (((mg4) arrayList.get(i)).a < j) {
+                    z = true;
+                    break;
+                }
+                j = ((mg4) arrayList.get(i)).b;
+            }
+        }
+        rr2.l(!z);
     }
 
-    public final boolean equals(Object r3) {
-        if (this != r3) goto L5;
-        return true;
-    L5:
-        if (r3 != null) goto L7;
-        return false;
-    L7:
-        if (ng4.class == r3.getClass()) goto L10;
-        return false;
-    L10:
-        return this.a.equals(((ng4) r3).a);
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || ng4.class != obj.getClass()) {
+            return false;
+        }
+        return this.a.equals(((ng4) obj).a);
     }
 
     public final int hashCode() {

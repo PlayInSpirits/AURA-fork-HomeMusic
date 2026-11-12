@@ -13,53 +13,45 @@ import android.view.SubMenu;
 public class jv2 extends b3 implements Menu {
     public final qu2 c;
 
-    public jv2(Context r1, qu2 r2) {
-        super(r1);
-        if (r2 == null) goto L6;
-        this.c = r2;
-        return;
-    L6:
-        kf2.n("Wrapped Object can not be null.");
-        throw null;
+    public jv2(Context context, qu2 qu2Var) {
+        super(context);
+        if (qu2Var != null) {
+            this.c = qu2Var;
+        } else {
+            kf2.n("Wrapped Object can not be null.");
+            throw null;
+        }
     }
 
     @Override // android.view.Menu
-    public final MenuItem add(CharSequence r3) {
-        return h(this.c.a(0, 0, 0, r3));
+    public final MenuItem add(CharSequence charSequence) {
+        return h(this.c.a(0, 0, 0, charSequence));
     }
 
     @Override // android.view.Menu
-    public final int addIntentOptions(int r12, int r13, int r14, ComponentName r15, Intent[] r16, Intent r17, int r18, MenuItem[] r19) {
-        if (r19 == null) goto L6;
-        MenuItem[] r1 = new MenuItem[r19.length];
-    L5:
-        MenuItem[] r10 = r1;
-        int r110 = this.c.addIntentOptions(r12, r13, r14, r15, r16, r17, r18, r10);
-        if (r10 == null) goto L12;
-        int r111 = r10.length;
-        int r112 = 0;
-    L10:
-        if (r112 >= r111) goto L12;
-        r19[r112] = h(r10[r112]);
-        r112 = r112 + 1;
-    L12:
-        return r110;
-    L6:
-        r1 = null;
-        goto L5
+    public final int addIntentOptions(int i, int i2, int i3, ComponentName componentName, Intent[] intentArr, Intent intent, int i4, MenuItem[] menuItemArr) {
+        MenuItem[] menuItemArr2 = menuItemArr != null ? new MenuItem[menuItemArr.length] : null;
+        int iAddIntentOptions = this.c.addIntentOptions(i, i2, i3, componentName, intentArr, intent, i4, menuItemArr2);
+        if (menuItemArr2 != null) {
+            int length = menuItemArr2.length;
+            for (int i5 = 0; i5 < length; i5++) {
+                menuItemArr[i5] = h(menuItemArr2[i5]);
+            }
+        }
+        return iAddIntentOptions;
     }
 
     @Override // android.view.Menu
-    public final SubMenu addSubMenu(CharSequence r2) {
-        return this.c.addSubMenu(0, 0, 0, r2);
+    public final SubMenu addSubMenu(CharSequence charSequence) {
+        return this.c.addSubMenu(0, 0, 0, charSequence);
     }
 
     @Override // android.view.Menu
     public final void clear() {
-        yd4 r0 = (yd4) this.b;
-        if (r0 == null) goto L5;
-        r0.clear();
-    L5:
+        yd4 yd4Var = (yd4) this.b;
+        if (yd4Var != null) {
+            yd4Var.clear();
+        }
         this.c.clear();
     }
 
@@ -69,13 +61,13 @@ public class jv2 extends b3 implements Menu {
     }
 
     @Override // android.view.Menu
-    public final MenuItem findItem(int r2) {
-        return h(this.c.findItem(r2));
+    public final MenuItem findItem(int i) {
+        return h(this.c.findItem(i));
     }
 
     @Override // android.view.Menu
-    public final MenuItem getItem(int r2) {
-        return h(this.c.getItem(r2));
+    public final MenuItem getItem(int i) {
+        return h(this.c.getItem(i));
     }
 
     @Override // android.view.Menu
@@ -84,70 +76,76 @@ public class jv2 extends b3 implements Menu {
     }
 
     @Override // android.view.Menu
-    public final boolean isShortcutKey(int r1, KeyEvent r2) {
-        return this.c.isShortcutKey(r1, r2);
+    public final boolean isShortcutKey(int i, KeyEvent keyEvent) {
+        return this.c.isShortcutKey(i, keyEvent);
     }
 
     @Override // android.view.Menu
-    public final boolean performIdentifierAction(int r1, int r2) {
-        return this.c.performIdentifierAction(r1, r2);
+    public final boolean performIdentifierAction(int i, int i2) {
+        return this.c.performIdentifierAction(i, i2);
     }
 
     @Override // android.view.Menu
-    public final boolean performShortcut(int r1, KeyEvent r2, int r3) {
-        return this.c.performShortcut(r1, r2, r3);
+    public final boolean performShortcut(int i, KeyEvent keyEvent, int i2) {
+        return this.c.performShortcut(i, keyEvent, i2);
     }
 
     @Override // android.view.Menu
-    public final void removeGroup(int r4) {
-        if (((yd4) this.b) == null) goto L12;
-        int r0 = 0;
-    L6:
-        yd4 r1 = (yd4) this.b;
-        if (r0 >= r1.p) goto L12;
-        if (((oo4) r1.f(r0)).getGroupId() != r4) goto L11;
-        ((yd4) this.b).h(r0);
-        r0 = r0 - 1;
-    L11:
-        r0 = r0 + 1;
-    L12:
-        this.c.removeGroup(r4);
+    public final void removeGroup(int i) {
+        if (((yd4) this.b) != null) {
+            int i2 = 0;
+            while (true) {
+                yd4 yd4Var = (yd4) this.b;
+                if (i2 >= yd4Var.p) {
+                    break;
+                }
+                if (((oo4) yd4Var.f(i2)).getGroupId() == i) {
+                    ((yd4) this.b).h(i2);
+                    i2--;
+                }
+                i2++;
+            }
+        }
+        this.c.removeGroup(i);
     }
 
     @Override // android.view.Menu
-    public final void removeItem(int r4) {
-        if (((yd4) this.b) == null) goto L12;
-        int r0 = 0;
-    L6:
-        yd4 r1 = (yd4) this.b;
-        if (r0 >= r1.p) goto L12;
-        if (((oo4) r1.f(r0)).getItemId() == r4) goto L10;
-        r0 = r0 + 1;
-        goto L6
-    L10:
-        ((yd4) this.b).h(r0);
-    L12:
-        this.c.removeItem(r4);
+    public final void removeItem(int i) {
+        if (((yd4) this.b) != null) {
+            int i2 = 0;
+            while (true) {
+                yd4 yd4Var = (yd4) this.b;
+                if (i2 >= yd4Var.p) {
+                    break;
+                }
+                if (((oo4) yd4Var.f(i2)).getItemId() == i) {
+                    ((yd4) this.b).h(i2);
+                    break;
+                }
+                i2++;
+            }
+        }
+        this.c.removeItem(i);
     }
 
     @Override // android.view.Menu
-    public final void setGroupCheckable(int r1, boolean r2, boolean r3) {
-        this.c.setGroupCheckable(r1, r2, r3);
+    public final void setGroupCheckable(int i, boolean z, boolean z2) {
+        this.c.setGroupCheckable(i, z, z2);
     }
 
     @Override // android.view.Menu
-    public final void setGroupEnabled(int r1, boolean r2) {
-        this.c.setGroupEnabled(r1, r2);
+    public final void setGroupEnabled(int i, boolean z) {
+        this.c.setGroupEnabled(i, z);
     }
 
     @Override // android.view.Menu
-    public final void setGroupVisible(int r1, boolean r2) {
-        this.c.setGroupVisible(r1, r2);
+    public final void setGroupVisible(int i, boolean z) {
+        this.c.setGroupVisible(i, z);
     }
 
     @Override // android.view.Menu
-    public final void setQwertyMode(boolean r1) {
-        this.c.setQwertyMode(r1);
+    public final void setQwertyMode(boolean z) {
+        this.c.setQwertyMode(z);
     }
 
     @Override // android.view.Menu
@@ -156,32 +154,32 @@ public class jv2 extends b3 implements Menu {
     }
 
     @Override // android.view.Menu
-    public final SubMenu addSubMenu(int r1) {
-        return this.c.addSubMenu(r1);
+    public final SubMenu addSubMenu(int i) {
+        return this.c.addSubMenu(i);
     }
 
     @Override // android.view.Menu
-    public final SubMenu addSubMenu(int r1, int r2, int r3, CharSequence r4) {
-        return this.c.addSubMenu(r1, r2, r3, r4);
+    public final SubMenu addSubMenu(int i, int i2, int i3, CharSequence charSequence) {
+        return this.c.addSubMenu(i, i2, i3, charSequence);
     }
 
     @Override // android.view.Menu
-    public final SubMenu addSubMenu(int r1, int r2, int r3, int r4) {
-        return this.c.addSubMenu(r1, r2, r3, r4);
+    public final SubMenu addSubMenu(int i, int i2, int i3, int i4) {
+        return this.c.addSubMenu(i, i2, i3, i4);
     }
 
     @Override // android.view.Menu
-    public final MenuItem add(int r2) {
-        return h(this.c.add(r2));
+    public final MenuItem add(int i) {
+        return h(this.c.add(i));
     }
 
     @Override // android.view.Menu
-    public final MenuItem add(int r2, int r3, int r4, CharSequence r5) {
-        return h(this.c.a(r2, r3, r4, r5));
+    public final MenuItem add(int i, int i2, int i3, CharSequence charSequence) {
+        return h(this.c.a(i, i2, i3, charSequence));
     }
 
     @Override // android.view.Menu
-    public final MenuItem add(int r2, int r3, int r4, int r5) {
-        return h(this.c.add(r2, r3, r4, r5));
+    public final MenuItem add(int i, int i2, int i3, int i4) {
+        return h(this.c.add(i, i2, i3, i4));
     }
 }

@@ -8,10 +8,10 @@ public final class qm0 {
     public final int c;
     public final int d;
 
-    public qm0(int r1, int r2, int r3, int r4) {
-        this.a = r1;
-        this.b = r2;
-        this.c = r3;
-        this.d = r4;
+    public qm0(int i, int i2, int i3, int i4) {
+        this.a = i;
+        this.b = i2;
+        this.c = i3;
+        this.d = i4;
     }
 }

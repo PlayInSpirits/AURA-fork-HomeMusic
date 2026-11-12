@@ -9,8 +9,8 @@ public final class xg3 {
     public final String b;
     public sp2 c;
 
-    public xg3(MediaRouter.RouteInfo r1, String r2) {
-        this.a = r1;
-        this.b = r2;
+    public xg3(MediaRouter.RouteInfo routeInfo, String str) {
+        this.a = routeInfo;
+        this.b = str;
     }
 }

@@ -11,9 +11,9 @@ public final class dp4 extends wd0 {
     public int s;
 
     @Override // defpackage.jp
-    public final Object invokeSuspend(Object r7) {
-        this.r = r7;
+    public final Object invokeSuspend(Object obj) {
+        this.r = obj;
         this.s |= Integer.MIN_VALUE;
-        return j51.e(null, null, 0, null, this);
+        return j51.e(null, null, 0L, null, this);
     }
 }

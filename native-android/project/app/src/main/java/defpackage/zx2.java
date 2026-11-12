@@ -18,137 +18,115 @@ import java.util.ArrayList;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class zx2 {
-    public final yd4 a;
-    public final yd4 b;
+    public final yd4 a = new yd4(0);
+    public final yd4 b = new yd4(0);
 
-    public zx2() {
-        this.a = new yd4(0);
-        this.b = new yd4(0);
+    public static zx2 a(Context context, TypedArray typedArray, int i) {
+        int resourceId;
+        if (!typedArray.hasValue(i) || (resourceId = typedArray.getResourceId(i, 0)) == 0) {
+            return null;
+        }
+        return b(context, resourceId);
     }
 
-    public static zx2 a(Context r1, TypedArray r2, int r3) {
-        if (r2.hasValue(r3) == false) goto L8;
-        int r4 = r2.getResourceId(r3, 0);
-        if (r4 != 0) goto L7;
-        return null;
-    L7:
-        return b(r1, r4);
-    L8:
-        return null;
+    public static zx2 b(Context context, int i) {
+        try {
+            Animator animatorLoadAnimator = AnimatorInflater.loadAnimator(context, i);
+            if (animatorLoadAnimator instanceof AnimatorSet) {
+                return c(((AnimatorSet) animatorLoadAnimator).getChildAnimations());
+            }
+            if (animatorLoadAnimator == null) {
+                return null;
+            }
+            ArrayList arrayList = new ArrayList();
+            arrayList.add(animatorLoadAnimator);
+            return c(arrayList);
+        } catch (Exception e) {
+            Log.w("MotionSpec", "Can't load animation resource ID #0x" + Integer.toHexString(i), e);
+            return null;
+        }
     }
 
-    public static zx2 b(Context r3, int r4) {
-        Animator r5 = AnimatorInflater.loadAnimator(r3, r4);     // Catch: Exception -> L7
-        if ((r5 instanceof AnimatorSet) == true) goto L6;
-        if (r5 == null) goto L12;
-        ArrayList r1 = new ArrayList();     // Catch: Exception -> L7
-        r1.add(r5);     // Catch: Exception -> L7
-        return c(r1);
-    L12:
-        return null;
-    L6:
-        return c(((AnimatorSet) r5).getChildAnimations());
-    L7:
-        e = move-exception;
-        Log.w("MotionSpec", "Can't load animation resource ID #0x" + Integer.toHexString(r4), e);
-        return null;
+    public static zx2 c(ArrayList arrayList) {
+        zx2 zx2Var = new zx2();
+        int size = arrayList.size();
+        for (int i = 0; i < size; i++) {
+            Animator animator = (Animator) arrayList.get(i);
+            if (!(animator instanceof ObjectAnimator)) {
+                mj0.l(animator, "Animator must be an ObjectAnimator: ");
+                return null;
+            }
+            ObjectAnimator objectAnimator = (ObjectAnimator) animator;
+            zx2Var.h(objectAnimator.getPropertyName(), objectAnimator.getValues());
+            String propertyName = objectAnimator.getPropertyName();
+            long startDelay = objectAnimator.getStartDelay();
+            long duration = objectAnimator.getDuration();
+            TimeInterpolator interpolator = objectAnimator.getInterpolator();
+            if ((interpolator instanceof AccelerateDecelerateInterpolator) || interpolator == null) {
+                interpolator = yd.b;
+            } else if (interpolator instanceof AccelerateInterpolator) {
+                interpolator = yd.c;
+            } else if (interpolator instanceof DecelerateInterpolator) {
+                interpolator = yd.d;
+            }
+            ay2 ay2Var = new ay2();
+            ay2Var.d = 0;
+            ay2Var.e = 1;
+            ay2Var.a = startDelay;
+            ay2Var.b = duration;
+            ay2Var.c = interpolator;
+            ay2Var.d = objectAnimator.getRepeatCount();
+            ay2Var.e = objectAnimator.getRepeatMode();
+            zx2Var.a.put(propertyName, ay2Var);
+        }
+        return zx2Var;
     }
 
-    public static zx2 c(ArrayList r13) {
-        zx2 r0 = new zx2();
-        int r1 = r13.size();
-        int r3 = 0;
-    L3:
-        if (r3 >= r1) goto L20;
-        Animator r4 = (Animator) r13.get(r3);
-        if ((r4 instanceof ObjectAnimator) == false) goto L18;
-        ObjectAnimator r5 = (ObjectAnimator) r4;
-        r0.h(r5.getPropertyName(), r5.getValues());
-        String r6 = r5.getPropertyName();
-        long r7 = r5.getStartDelay();
-        long r9 = r5.getDuration();
-        TimeInterpolator r11 = r5.getInterpolator();
-        if ((r11 instanceof AccelerateDecelerateInterpolator) == true) goto L16;
-        if (r11 == null) goto L16;
-        if ((r11 instanceof AccelerateInterpolator) == false) goto L14;
-        r11 = yd.c;
-    L17:
-        ay2 r8 = new ay2();
-        r8.d = 0;
-        r8.e = 1;
-        r8.a = r7;
-        r8.b = r9;
-        r8.c = r11;
-        r8.d = r5.getRepeatCount();
-        r8.e = r5.getRepeatMode();
-        r0.a.put(r6, r8);
-        r3 = r3 + 1;
-        goto L3
-    L14:
-        if ((r11 instanceof DecelerateInterpolator) == false) goto L17;
-        r11 = yd.d;
-    L16:
-        r11 = yd.b;
-        goto L17
-    L18:
-        mj0.l(r4, "Animator must be an ObjectAnimator: ");
-        return null;
-    L20:
-        return r0;
+    public final ObjectAnimator d(String str, Object obj, Property property) {
+        ObjectAnimator objectAnimatorOfPropertyValuesHolder = ObjectAnimator.ofPropertyValuesHolder(obj, e(str));
+        objectAnimatorOfPropertyValuesHolder.setProperty(property);
+        f(str).a(objectAnimatorOfPropertyValuesHolder);
+        return objectAnimatorOfPropertyValuesHolder;
     }
 
-    public final ObjectAnimator d(String r2, Object r3, Property r4) {
-        ObjectAnimator r5 = ObjectAnimator.ofPropertyValuesHolder(r3, e(r2));
-        r5.setProperty(r4);
-        f(r2).a(r5);
-        return r5;
+    public final PropertyValuesHolder[] e(String str) {
+        if (!g(str)) {
+            nz2.c();
+            return null;
+        }
+        PropertyValuesHolder[] propertyValuesHolderArr = (PropertyValuesHolder[]) this.b.get(str);
+        PropertyValuesHolder[] propertyValuesHolderArr2 = new PropertyValuesHolder[propertyValuesHolderArr.length];
+        for (int i = 0; i < propertyValuesHolderArr.length; i++) {
+            propertyValuesHolderArr2[i] = propertyValuesHolderArr[i].clone();
+        }
+        return propertyValuesHolderArr2;
     }
 
-    public final PropertyValuesHolder[] e(String r3) {
-        if (g(r3) == false) goto L9;
-        PropertyValuesHolder[] r2 = (PropertyValuesHolder[]) this.b.get(r3);
-        PropertyValuesHolder[] r4 = new PropertyValuesHolder[r2.length];
-        int r0 = 0;
-    L6:
-        if (r0 >= r2.length) goto L8;
-        r4[r0] = r2[r0].clone();
-        r0 = r0 + 1;
-        goto L6
-    L8:
-        return r4;
-    L9:
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj instanceof zx2) {
+            return this.a.equals(((zx2) obj).a);
+        }
+        return false;
+    }
+
+    public final ay2 f(String str) {
+        yd4 yd4Var = this.a;
+        if (yd4Var.get(str) != null) {
+            return (ay2) yd4Var.get(str);
+        }
         nz2.c();
         return null;
     }
 
-    public final boolean equals(Object r2) {
-        if (this != r2) goto L6;
-        return true;
-    L6:
-        if ((r2 instanceof zx2) == true) goto L10;
-        return false;
-    L10:
-        return this.a.equals(((zx2) r2).a);
+    public final boolean g(String str) {
+        return this.b.get(str) != null;
     }
 
-    public final ay2 f(String r2) {
-        yd4 r1 = this.a;
-        if (r1.get(r2) != null) goto L5;
-        nz2.c();
-        return null;
-    L5:
-        return (ay2) r1.get(r2);
-    }
-
-    public final boolean g(String r1) {
-        if (this.b.get(r1) == null) goto L6;
-        return true;
-    L6:
-        return false;
-    }
-
-    public final void h(String r1, PropertyValuesHolder[] r2) {
-        this.b.put(r1, r2);
+    public final void h(String str, PropertyValuesHolder[] propertyValuesHolderArr) {
+        this.b.put(str, propertyValuesHolderArr);
     }
 
     public final int hashCode() {

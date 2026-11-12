@@ -5,8 +5,8 @@ package defpackage;
 public final class ld0 {
     public final kd0 a;
 
-    public ld0(kd0 r1) {
-        this.a = r1;
+    public ld0(kd0 kd0Var) {
+        this.a = kd0Var;
     }
 
     public final String toString() {

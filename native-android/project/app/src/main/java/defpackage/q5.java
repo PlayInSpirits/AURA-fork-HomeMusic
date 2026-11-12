@@ -12,165 +12,125 @@ import java.util.LinkedHashMap;
 public final class q5 extends su3 {
     public final /* synthetic */ int g;
 
-    public /* synthetic */ q5(int r1) {
-        this.g = r1;
+    public /* synthetic */ q5(int i) {
+        this.g = i;
     }
 
     @Override // defpackage.su3
-    public final Object B(Intent r6, int r7) {
-        boolean r2 = false;
-        switch(this.g) {
-            case 0: goto L22;
-            case 1: goto L8;
-            case 2: goto L7;
-            default: goto L5;
-        };
-    L8:
-        if (r6 == null) goto L21;
-        if (r7 != (-1)) goto L21;
-        int[] r5 = r6.getIntArrayExtra("androidx.activity.result.contract.extra.PERMISSION_GRANT_RESULTS");
-        if (r5 == null) goto L53;
-        int r8 = r5.length;
-        int r9 = 0;
-    L14:
-        if (r9 >= r8) goto L53;
-        if (r5[r9] == 0) goto L17;
-        r9 = r9 + 1;
-        goto L14
-    L17:
-        r2 = true;
-    L53:
-        return Boolean.valueOf(r2);
-    L21:
-        return Boolean.FALSE;
-    L22:
-        if (r7 != (-1)) goto L45;
-        if (r6 == null) goto L45;
-        String[] r10 = r6.getStringArrayExtra("androidx.activity.result.contract.extra.PERMISSIONS");
-        int[] r11 = r6.getIntArrayExtra("androidx.activity.result.contract.extra.PERMISSION_GRANT_RESULTS");
-        if (r11 == null) goto L45;
-        if (r10 == null) goto L45;
-        ArrayList r12 = new ArrayList(r11.length);
-        int r0 = r11.length;
-        int r1 = 0;
-    L31:
-        if (r1 >= r0) goto L37;
-        if (r11[r1] != 0) goto L35;
-        boolean r4 = true;
-    L36:
-        r12.add(Boolean.valueOf(r4));
-        r1 = r1 + 1;
-        goto L31
-    L35:
-        r4 = false;
-        goto L36
-    L37:
-        ArrayList r13 = ti.i0(r10);
-        Iterator r14 = r13.iterator();
-        Iterator r3 = r12.iterator();
-        ArrayList r15 = new ArrayList(Math.min(r40.k0(r13, 10), r40.k0(r12, 10)));
-    L39:
-        if (r14.hasNext() == false) goto L54;
-        if (r3.hasNext() == false) goto L54;
-        r15.add(new kd3(r14.next(), r3.next()));
-    L54:
-        return lg2.Z(r15);
-    L45:
-        return v01.n;
-    L5:
-        return new o5(r6, r7);
-    L7:
-        return new o5(r6, r7);
+    public final Object B(Intent intent, int i) {
+        boolean z = false;
+        switch (this.g) {
+            case 0:
+                if (i == -1 && intent != null) {
+                    String[] stringArrayExtra = intent.getStringArrayExtra("androidx.activity.result.contract.extra.PERMISSIONS");
+                    int[] intArrayExtra = intent.getIntArrayExtra("androidx.activity.result.contract.extra.PERMISSION_GRANT_RESULTS");
+                    if (intArrayExtra != null && stringArrayExtra != null) {
+                        ArrayList arrayList = new ArrayList(intArrayExtra.length);
+                        for (int i2 : intArrayExtra) {
+                            arrayList.add(Boolean.valueOf(i2 == 0));
+                        }
+                        ArrayList arrayListI0 = ti.i0(stringArrayExtra);
+                        Iterator it = arrayListI0.iterator();
+                        Iterator it2 = arrayList.iterator();
+                        ArrayList arrayList2 = new ArrayList(Math.min(r40.k0(arrayListI0, 10), r40.k0(arrayList, 10)));
+                        while (it.hasNext() && it2.hasNext()) {
+                            arrayList2.add(new kd3(it.next(), it2.next()));
+                        }
+                        return lg2.Z(arrayList2);
+                    }
+                }
+                return v01.n;
+            case 1:
+                if (intent == null || i != -1) {
+                    return Boolean.FALSE;
+                }
+                int[] intArrayExtra2 = intent.getIntArrayExtra("androidx.activity.result.contract.extra.PERMISSION_GRANT_RESULTS");
+                if (intArrayExtra2 != null) {
+                    for (int i3 : intArrayExtra2) {
+                        if (i3 == 0) {
+                            z = true;
+                        }
+                    }
+                }
+                return Boolean.valueOf(z);
+            case 2:
+                return new o5(intent, i);
+            default:
+                return new o5(intent, i);
+        }
     }
 
     @Override // defpackage.su3
-    public final Intent n(nc1 r4, Object r5) {
-        switch(this.g) {
-            case 0: goto L19;
-            case 1: goto L17;
-            case 2: goto L15;
-            default: goto L4;
-        };
-    L4:
-        p02 r6 = (p02) r5;
-        Intent r3 = new Intent("androidx.activity.result.contract.action.INTENT_SENDER_REQUEST");
-        Intent r7 = r6.o;
-        if (r7 == null) goto L11;
-        Bundle r1 = r7.getBundleExtra("androidx.activity.result.contract.extra.ACTIVITY_OPTIONS_BUNDLE");
-        if (r1 == null) goto L11;
-        r3.putExtra("androidx.activity.result.contract.extra.ACTIVITY_OPTIONS_BUNDLE", r1);
-        r7.removeExtra("androidx.activity.result.contract.extra.ACTIVITY_OPTIONS_BUNDLE");
-        if (r7.getBooleanExtra("androidx.fragment.extra.ACTIVITY_OPTIONS_BUNDLE", false) == false) goto L11;
-        r6 = new p02(r6.n, null, r6.p, r6.q);
-    L11:
-        r3.putExtra("androidx.activity.result.contract.extra.INTENT_SENDER_REQUEST", r6);
-        if (ld1.I(2) == false) goto L14;
-        Log.v("FragmentManager", "CreateIntent created the following intent: " + r3);
-    L14:
-        return r3;
-    L15:
-        Intent r8 = (Intent) r5;
-        r8.getClass();
-        return r8;
-    L17:
-        String r9 = (String) r5;
-        r9.getClass();
-        Intent r10 = new Intent("androidx.activity.result.contract.action.REQUEST_PERMISSIONS").putExtra("androidx.activity.result.contract.extra.PERMISSIONS", new String[]{r9});
-        r10.getClass();
-        return r10;
-    L19:
-        String[] r11 = (String[]) r5;
-        r11.getClass();
-        Intent r12 = new Intent("androidx.activity.result.contract.action.REQUEST_PERMISSIONS").putExtra("androidx.activity.result.contract.extra.PERMISSIONS", r11);
-        r12.getClass();
-        return r12;
+    public final Intent n(nc1 nc1Var, Object obj) {
+        Bundle bundleExtra;
+        switch (this.g) {
+            case 0:
+                String[] strArr = (String[]) obj;
+                strArr.getClass();
+                Intent intentPutExtra = new Intent("androidx.activity.result.contract.action.REQUEST_PERMISSIONS").putExtra("androidx.activity.result.contract.extra.PERMISSIONS", strArr);
+                intentPutExtra.getClass();
+                return intentPutExtra;
+            case 1:
+                String str = (String) obj;
+                str.getClass();
+                Intent intentPutExtra2 = new Intent("androidx.activity.result.contract.action.REQUEST_PERMISSIONS").putExtra("androidx.activity.result.contract.extra.PERMISSIONS", new String[]{str});
+                intentPutExtra2.getClass();
+                return intentPutExtra2;
+            case 2:
+                Intent intent = (Intent) obj;
+                intent.getClass();
+                return intent;
+            default:
+                p02 p02Var = (p02) obj;
+                Intent intent2 = new Intent("androidx.activity.result.contract.action.INTENT_SENDER_REQUEST");
+                Intent intent3 = p02Var.o;
+                if (intent3 != null && (bundleExtra = intent3.getBundleExtra("androidx.activity.result.contract.extra.ACTIVITY_OPTIONS_BUNDLE")) != null) {
+                    intent2.putExtra("androidx.activity.result.contract.extra.ACTIVITY_OPTIONS_BUNDLE", bundleExtra);
+                    intent3.removeExtra("androidx.activity.result.contract.extra.ACTIVITY_OPTIONS_BUNDLE");
+                    if (intent3.getBooleanExtra("androidx.fragment.extra.ACTIVITY_OPTIONS_BUNDLE", false)) {
+                        p02Var = new p02(p02Var.n, null, p02Var.p, p02Var.q);
+                    }
+                }
+                intent2.putExtra("androidx.activity.result.contract.extra.INTENT_SENDER_REQUEST", p02Var);
+                if (ld1.I(2)) {
+                    Log.v("FragmentManager", "CreateIntent created the following intent: " + intent2);
+                }
+                return intent2;
+        }
     }
 
     @Override // defpackage.su3
-    public zh0 w(nc1 r6, Object r7) {
-        switch(this.g) {
-            case 0: goto L10;
-            case 1: goto L6;
-            default: goto L5;
-        };
-    L6:
-        String r8 = (String) r7;
-        r8.getClass();
-        if (ud3.c(r6, r8) == 0) goto L9;
-        return null;
-    L9:
-        return new zh0(3, Boolean.TRUE);
-    L10:
-        String[] r9 = (String[]) r7;
-        r9.getClass();
-        if (r9.length == 0) goto L30;
-        int r5 = r9.length;
-        int r0 = 0;
-        int r3 = 0;
-    L14:
-        if (r3 >= r5) goto L18;
-        if (ud3.c(r6, r9[r3]) != 0) goto L31;
-        r3 = r3 + 1;
-        goto L14
-    L31:
-        return null;
-    L18:
-        int r10 = lg2.W(r9.length);
-        if (r10 >= 16) goto L21;
-        r10 = 16;
-    L21:
-        LinkedHashMap r11 = new LinkedHashMap(r10);
-        int r12 = r9.length;
-    L22:
-        if (r0 >= r12) goto L25;
-        r11.put(r9[r0], Boolean.TRUE);
-        r0 = r0 + 1;
-        goto L22
-    L25:
-        return new zh0(3, r11);
-    L30:
-        return new zh0(3, v01.n);
-    L5:
-        return super.w(r6, r7);
+    public zh0 w(nc1 nc1Var, Object obj) {
+        switch (this.g) {
+            case 0:
+                String[] strArr = (String[]) obj;
+                strArr.getClass();
+                if (strArr.length == 0) {
+                    return new zh0(3, v01.n);
+                }
+                for (String str : strArr) {
+                    if (ud3.c(nc1Var, str) != 0) {
+                        return null;
+                    }
+                }
+                int iW = lg2.W(strArr.length);
+                if (iW < 16) {
+                    iW = 16;
+                }
+                LinkedHashMap linkedHashMap = new LinkedHashMap(iW);
+                for (String str2 : strArr) {
+                    linkedHashMap.put(str2, Boolean.TRUE);
+                }
+                return new zh0(3, linkedHashMap);
+            case 1:
+                String str3 = (String) obj;
+                str3.getClass();
+                if (ud3.c(nc1Var, str3) == 0) {
+                    return new zh0(3, Boolean.TRUE);
+                }
+                return null;
+            default:
+                return super.w(nc1Var, obj);
+        }
     }
 }

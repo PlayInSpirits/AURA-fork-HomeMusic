@@ -7,33 +7,28 @@ import android.net.ConnectivityManager;
 public final class p53 implements jb0 {
     public final ConnectivityManager a;
 
-    public p53(ConnectivityManager r1) {
-        this.a = r1;
+    public p53(ConnectivityManager connectivityManager) {
+        this.a = connectivityManager;
     }
 
     @Override // defpackage.jb0
-    public final boolean a(dd5 r1) {
-        if (c(r1) == true) goto L5;
-        return false;
-    L5:
+    public final boolean a(dd5 dd5Var) {
+        if (!c(dd5Var)) {
+            return false;
+        }
         kf2.o("isCurrentlyConstrained() must never be called onNetworkRequestConstraintController. isCurrentlyConstrained() is called only on older platforms where NetworkRequest isn't supported");
         return false;
     }
 
     @Override // defpackage.jb0
-    public final ny b(mc0 r4) {
-        r4.getClass();
-        r r0 = new r(r4, this, null, 9);
-        wv r1 = wv.n;
-        return new ny(r0, q01.n, -2, r1);
+    public final ny b(mc0 mc0Var) {
+        mc0Var.getClass();
+        return new ny(new r(mc0Var, this, null, 9), q01.n, -2, wv.n);
     }
 
     @Override // defpackage.jb0
-    public final boolean c(dd5 r1) {
-        r1.getClass();
-        if (r1.j.a() == null) goto L6;
-        return true;
-    L6:
-        return false;
+    public final boolean c(dd5 dd5Var) {
+        dd5Var.getClass();
+        return dd5Var.j.a() != null;
     }
 }

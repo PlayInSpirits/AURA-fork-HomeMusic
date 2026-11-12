@@ -6,42 +6,32 @@ public final class b32 {
     public final Integer a;
     public final Object b;
 
-    public b32(Integer r1, Object r2) {
-        this.a = r1;
-        this.b = r2;
+    public b32(Integer num, Object obj) {
+        this.a = num;
+        this.b = obj;
     }
 
-    public final boolean equals(Object r3) {
-        if (this != r3) goto L5;
-        return true;
-    L5:
-        if ((r3 instanceof b32) == false) goto L16;
-        b32 r4 = (b32) r3;
-        if (this.a.equals(r4.a) == true) goto L11;
-        return false;
-    L11:
-        if (h12.c(this.b, r4.b) == true) goto L14;
-        return false;
-    L14:
-        return true;
-    L16:
-        return false;
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof b32)) {
+            return false;
+        }
+        b32 b32Var = (b32) obj;
+        return this.a.equals(b32Var.a) && h12.c(this.b, b32Var.b);
     }
 
     public final int hashCode() {
-        int r0 = this.a.hashCode() * 31;
-        Object r2 = this.b;
-        if ((r2 instanceof Enum) == false) goto L5;
-        int r3 = ((Enum) r2).ordinal();
-    L9:
-        return r3 + r0;
-    L5:
-        if (r2 == null) goto L7;
-        r3 = r2.hashCode();
-        goto L9
-    L7:
-        r3 = 0;
-        goto L9
+        int iHashCode;
+        int iHashCode2 = this.a.hashCode() * 31;
+        Object obj = this.b;
+        if (obj instanceof Enum) {
+            iHashCode = ((Enum) obj).ordinal();
+        } else {
+            iHashCode = obj != null ? obj.hashCode() : 0;
+        }
+        return iHashCode + iHashCode2;
     }
 
     public final String toString() {

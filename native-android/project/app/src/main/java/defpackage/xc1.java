@@ -32,28 +32,28 @@ public final class xc1 {
     public final RecyclerView u;
     public final SwipeRefreshLayout v;
 
-    public xc1(CoordinatorLayout r1, LinearLayout r2, TextView r3, RecyclerView r4, LinearLayout r5, TextView r6, RecyclerView r7, LinearLayout r8, TextView r9, RecyclerView r10, LinearLayout r11, LinearLayout r12, LinearLayout r13, TextView r14, LinearLayout r15, LinearLayout r16, LinearLayout r17, TextView r18, RecyclerView r19, LinearLayout r20, TextView r21, RecyclerView r22, SwipeRefreshLayout r23) {
-        this.a = r1;
-        this.b = r2;
-        this.c = r3;
-        this.d = r4;
-        this.e = r5;
-        this.f = r6;
-        this.g = r7;
-        this.h = r8;
-        this.i = r9;
-        this.j = r10;
-        this.k = r11;
-        this.l = r12;
-        this.m = r13;
-        this.n = r14;
-        this.o = r15;
-        this.p = r16;
-        this.q = r17;
-        this.r = r18;
-        this.s = r20;
-        this.t = r21;
-        this.u = r22;
-        this.v = r23;
+    public xc1(CoordinatorLayout coordinatorLayout, LinearLayout linearLayout, TextView textView, RecyclerView recyclerView, LinearLayout linearLayout2, TextView textView2, RecyclerView recyclerView2, LinearLayout linearLayout3, TextView textView3, RecyclerView recyclerView3, LinearLayout linearLayout4, LinearLayout linearLayout5, LinearLayout linearLayout6, TextView textView4, LinearLayout linearLayout7, LinearLayout linearLayout8, LinearLayout linearLayout9, TextView textView5, RecyclerView recyclerView4, LinearLayout linearLayout10, TextView textView6, RecyclerView recyclerView5, SwipeRefreshLayout swipeRefreshLayout) {
+        this.a = coordinatorLayout;
+        this.b = linearLayout;
+        this.c = textView;
+        this.d = recyclerView;
+        this.e = linearLayout2;
+        this.f = textView2;
+        this.g = recyclerView2;
+        this.h = linearLayout3;
+        this.i = textView3;
+        this.j = recyclerView3;
+        this.k = linearLayout4;
+        this.l = linearLayout5;
+        this.m = linearLayout6;
+        this.n = textView4;
+        this.o = linearLayout7;
+        this.p = linearLayout8;
+        this.q = linearLayout9;
+        this.r = textView5;
+        this.s = linearLayout10;
+        this.t = textView6;
+        this.u = recyclerView5;
+        this.v = swipeRefreshLayout;
     }
 }

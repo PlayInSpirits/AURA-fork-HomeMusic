@@ -10,17 +10,13 @@ public final class ArtistInfo2 extends ArtistInfoBase {
     public static final int $stable = 8;
 
     @ka4("similarArtist")
-    private List<SimilarArtistID3> similarArtists;
-
-    public ArtistInfo2() {
-        this.similarArtists = u01.n;
-    }
+    private List<SimilarArtistID3> similarArtists = u01.n;
 
     public final List<SimilarArtistID3> getSimilarArtists() {
         return this.similarArtists;
     }
 
-    public final void setSimilarArtists(List<SimilarArtistID3> r1) {
-        this.similarArtists = r1;
+    public final void setSimilarArtists(List<SimilarArtistID3> list) {
+        this.similarArtists = list;
     }
 }

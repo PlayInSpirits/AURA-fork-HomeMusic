@@ -11,124 +11,130 @@ public final class kn3 {
     public final gp3 b;
     public int c;
 
-    public kn3(List r12, gp3 r13) {
-        this.a = r12;
-        this.b = r13;
-        int r14 = Build.VERSION.SDK_INT;
-        if (r14 < 29) goto L7;
-        MotionEvent r0 = a();
-        if (r0 == null) goto L7;
-        ek2.x(r0);
-    L7:
-        MotionEvent r1 = a();
-        if (r1 == null) goto L10;
-        r1.getButtonState();
-    L10:
-        MotionEvent r2 = a();
-        if (r2 == null) goto L13;
-        r2.getMetaState();
-    L13:
-        MotionEvent r3 = a();
-        int r4 = 0;
-        if (r3 != null) goto L16;
-        int r15 = r12.size();
-    L68:
-        if (r4 >= r15) goto L56;
-        on3 r5 = (on3) r12.get(r4);
-        if (gi1.i(r5) == true) goto L44;
-        if (gi1.g(r5) == true) goto L51;
-        r4 = r4 + 1;
-    L51:
-        r4 = 1;
-    L76:
-        this.c = r4;
-        return;
-    L44:
-        r4 = 2;
-    L56:
-        r4 = 3;
-        goto L76
-    L16:
-        if (r14 >= 34) goto L18;
-    L20:
-        boolean r6 = false;
-    L22:
-        if (r14 >= 34) goto L24;
-    L26:
-        boolean r16 = false;
-    L27:
-        int r17 = r3.getActionMasked();
-        if (r17 != 0) goto L30;
-        if (r6 == true) goto L46;
-        if (r16 == false) goto L51;
-        if (r16 == true) goto L51;
-    L48:
-        r4 = 7;
-    L46:
-        r4 = 10;
-        goto L76
-    L30:
-        if (r17 != 1) goto L32;
-        if (r6 == true) goto L39;
-        if (r16 == false) goto L44;
-        if (r16 == true) goto L44;
-    L41:
-        r4 = 9;
-    L39:
-        r4 = 12;
-        goto L76
-    L32:
-        if (r17 == 2) goto L52;
-        switch(r17) {
-            case 5: goto L45;
-            case 6: goto L38;
-            case 7: goto L52;
-            case 8: goto L37;
-            case 9: goto L36;
-            case 10: goto L35;
-            default: goto L76;
-        };
-    L35:
-        r4 = 5;
-        goto L76
-    L36:
-        r4 = 4;
-        goto L76
-    L37:
-        r4 = 6;
-        goto L76
-    L38:
-        if (r6 == true) goto L39;
-        if (r16 == true) goto L41;
-        if (r16 == false) goto L44;
-    L43:
-        r4 = 8;
-        goto L76
-    L45:
-        if (r6 == true) goto L46;
-        if (r16 == true) goto L48;
-        if (r16 == false) goto L51;
-    L52:
-        if (r6 == false) goto L54;
-        r4 = 11;
-        goto L76
-    L54:
-        if (r16 == false) goto L56;
-    L24:
-        if (ek2.x(r3) != 5) goto L26;
-        r16 = true;
-        goto L27
-    L18:
-        if (ek2.x(r3) != 3) goto L20;
-        r6 = true;
-        goto L22
+    /* JADX WARN: Code duplicated, block: B:39:0x006e  */
+    /* JADX WARN: Code duplicated, block: B:41:0x0073  */
+    /* JADX WARN: Code duplicated, block: B:43:0x0078  */
+    /* JADX WARN: Code duplicated, block: B:44:0x007a  */
+    /* JADX WARN: Code duplicated, block: B:46:0x007e  */
+    /* JADX WARN: Code duplicated, block: B:48:0x0082  */
+    /* JADX WARN: Code duplicated, block: B:51:0x0087  */
+    /* JADX WARN: Code duplicated, block: B:52:0x0089 A[DONT_INVERT] */
+    /* JADX WARN: Code duplicated, block: B:53:0x008b  */
+    /* JADX WARN: Code duplicated, block: B:54:0x008e A[DONT_INVERT] */
+    /* JADX WARN: Code duplicated, block: B:56:0x0091  */
+    public kn3(List list, gp3 gp3Var) {
+        MotionEvent motionEventA;
+        this.a = list;
+        this.b = gp3Var;
+        int i = Build.VERSION.SDK_INT;
+        if (i >= 29 && (motionEventA = a()) != null) {
+            motionEventA.getClassification();
+        }
+        MotionEvent motionEventA2 = a();
+        if (motionEventA2 != null) {
+            motionEventA2.getButtonState();
+        }
+        MotionEvent motionEventA3 = a();
+        if (motionEventA3 != null) {
+            motionEventA3.getMetaState();
+        }
+        MotionEvent motionEventA4 = a();
+        int i2 = 0;
+        if (motionEventA4 != null) {
+            boolean z = i >= 34 && motionEventA4.getClassification() == 3;
+            boolean z2 = i >= 34 && motionEventA4.getClassification() == 5;
+            int actionMasked = motionEventA4.getActionMasked();
+            if (actionMasked != 0) {
+                if (actionMasked != 1) {
+                    if (actionMasked != 2) {
+                        switch (actionMasked) {
+                            case 5:
+                                if (z) {
+                                    i2 = 10;
+                                } else if (z2) {
+                                    i2 = 7;
+                                } else if (!z2) {
+                                    i2 = 1;
+                                } else {
+                                    i2 = 8;
+                                }
+                                break;
+                            case 6:
+                                if (z) {
+                                    i2 = 12;
+                                } else if (z2) {
+                                    i2 = 9;
+                                } else if (!z2) {
+                                    i2 = 2;
+                                } else {
+                                    i2 = 8;
+                                }
+                                break;
+                            case 7:
+                                if (z) {
+                                    i2 = 11;
+                                } else if (!z2) {
+                                    i2 = 3;
+                                } else {
+                                    i2 = 8;
+                                }
+                                break;
+                            case 8:
+                                i2 = 6;
+                                break;
+                            case 9:
+                                i2 = 4;
+                                break;
+                            case 10:
+                                i2 = 5;
+                                break;
+                        }
+                    } else if (z) {
+                        i2 = 11;
+                    } else if (!z2) {
+                        i2 = 8;
+                    } else {
+                        i2 = 3;
+                    }
+                } else if (z) {
+                    i2 = 12;
+                } else if (!z2 || z2) {
+                    i2 = 2;
+                } else {
+                    i2 = 9;
+                }
+            } else if (z) {
+                i2 = 10;
+            } else if (!z2 || z2) {
+                i2 = 1;
+            } else {
+                i2 = 7;
+            }
+        } else {
+            int size = list.size();
+            while (true) {
+                if (i2 < size) {
+                    on3 on3Var = (on3) list.get(i2);
+                    if (gi1.i(on3Var)) {
+                        i2 = 2;
+                    } else if (gi1.g(on3Var)) {
+                        i2 = 1;
+                    } else {
+                        i2++;
+                    }
+                } else {
+                    i2 = 3;
+                }
+            }
+        }
+        this.c = i2;
     }
 
     public final MotionEvent a() {
-        gp3 r0 = this.b;
-        if (r0 != null) goto L5;
+        gp3 gp3Var = this.b;
+        if (gp3Var != null) {
+            return (MotionEvent) ((rf2) gp3Var.p).o;
+        }
         return null;
-    L5:
-        return (MotionEvent) ((rf2) r0.p).o;
     }
 }

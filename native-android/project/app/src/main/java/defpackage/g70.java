@@ -10,68 +10,61 @@ public final /* synthetic */ class g70 implements d93 {
     public final /* synthetic */ int a;
     public final /* synthetic */ nc1 b;
 
-    public /* synthetic */ g70(nc1 r1, int r2) {
-        this.a = r2;
-        this.b = r1;
+    public /* synthetic */ g70(nc1 nc1Var, int i) {
+        this.a = i;
+        this.b = nc1Var;
     }
 
     @Override // defpackage.d93
-    public final void a(l70 r10) {
-        int r0 = this.a;
-        nc1 r9 = this.b;
-        switch(r0) {
-            case 0: goto L6;
-            default: goto L4;
-        };
-    L4:
-        mc1 r11 = (mc1) r9.H.o;
-        r11.D.b(r11, r11, null);
-        return;
-    L6:
-        r10.getClass();
-        Bundle r12 = ((rm3) r9.q.p).A("android:support:activity-result");
-        if (r12 == null) goto L26;
-        j70 r13 = r9.u;
-        LinkedHashMap r1 = r13.b;
-        LinkedHashMap r2 = r13.a;
-        Bundle r3 = r13.g;
-        ArrayList<Integer> r4 = r12.getIntegerArrayList("KEY_COMPONENT_ACTIVITY_REGISTERED_RCS");
-        ArrayList<String> r5 = r12.getStringArrayList("KEY_COMPONENT_ACTIVITY_REGISTERED_KEYS");
-        if (r5 == null) goto L31;
-        if (r4 == null) goto L32;
-        ArrayList<String> r6 = r12.getStringArrayList("KEY_COMPONENT_ACTIVITY_LAUNCHED_KEYS");
-        if (r6 == null) goto L15;
-        r13.d.addAll(r6);
-    L15:
-        Bundle r14 = r12.getBundle("KEY_COMPONENT_ACTIVITY_PENDING_RESULT");
-        if (r14 == null) goto L18;
-        r3.putAll(r14);
-    L18:
-        int r15 = r5.size();
-        int r7 = 0;
-    L19:
-        if (r7 >= r15) goto L33;
-        String r8 = r5.get(r7);
-        if (r1.containsKey(r8) == false) goto L25;
-        Integer r16 = (Integer) r1.remove(r8);
-        if (r3.containsKey(r8) == true) goto L25;
-        jz4.f(r2).remove(r16);
-    L25:
-        Integer r17 = r4.get(r7);
-        r17.getClass();
-        int r18 = r17.intValue();
-        String r19 = r5.get(r7);
-        r19.getClass();
-        String r20 = r19;
-        r2.put(Integer.valueOf(r18), r20);
-        r13.b.put(r20, Integer.valueOf(r18));
-        r7 = r7 + 1;
-        goto L19
-    L33:
-        return;
-    L32:
-        return;
-    L31:
-        return;
+    public final void a(l70 l70Var) {
+        int i = this.a;
+        nc1 nc1Var = this.b;
+        switch (i) {
+            case 0:
+                l70Var.getClass();
+                Bundle bundleA = ((rm3) nc1Var.q.p).A("android:support:activity-result");
+                if (bundleA != null) {
+                    j70 j70Var = nc1Var.u;
+                    LinkedHashMap linkedHashMap = j70Var.b;
+                    LinkedHashMap linkedHashMap2 = j70Var.a;
+                    Bundle bundle = j70Var.g;
+                    ArrayList<Integer> integerArrayList = bundleA.getIntegerArrayList("KEY_COMPONENT_ACTIVITY_REGISTERED_RCS");
+                    ArrayList<String> stringArrayList = bundleA.getStringArrayList("KEY_COMPONENT_ACTIVITY_REGISTERED_KEYS");
+                    if (stringArrayList != null && integerArrayList != null) {
+                        ArrayList<String> stringArrayList2 = bundleA.getStringArrayList("KEY_COMPONENT_ACTIVITY_LAUNCHED_KEYS");
+                        if (stringArrayList2 != null) {
+                            j70Var.d.addAll(stringArrayList2);
+                        }
+                        Bundle bundle2 = bundleA.getBundle("KEY_COMPONENT_ACTIVITY_PENDING_RESULT");
+                        if (bundle2 != null) {
+                            bundle.putAll(bundle2);
+                        }
+                        int size = stringArrayList.size();
+                        for (int i2 = 0; i2 < size; i2++) {
+                            String str = stringArrayList.get(i2);
+                            if (linkedHashMap.containsKey(str)) {
+                                Integer num = (Integer) linkedHashMap.remove(str);
+                                if (!bundle.containsKey(str)) {
+                                    jz4.f(linkedHashMap2).remove(num);
+                                }
+                            }
+                            Integer num2 = integerArrayList.get(i2);
+                            num2.getClass();
+                            int iIntValue = num2.intValue();
+                            String str2 = stringArrayList.get(i2);
+                            str2.getClass();
+                            String str3 = str2;
+                            linkedHashMap2.put(Integer.valueOf(iIntValue), str3);
+                            j70Var.b.put(str3, Integer.valueOf(iIntValue));
+                        }
+                        break;
+                    }
+                }
+                break;
+            default:
+                mc1 mc1Var = (mc1) nc1Var.H.o;
+                mc1Var.D.b(mc1Var, mc1Var, null);
+                break;
+        }
     }
 }

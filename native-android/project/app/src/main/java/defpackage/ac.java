@@ -7,7 +7,7 @@ import android.content.res.Configuration;
 /* JADX INFO: loaded from: classes.dex */
 public final class ac implements ComponentCallbacks2 {
     @Override // android.content.ComponentCallbacks
-    public final void onConfigurationChanged(Configuration r1) {
+    public final void onConfigurationChanged(Configuration configuration) {
     }
 
     @Override // android.content.ComponentCallbacks
@@ -15,6 +15,6 @@ public final class ac implements ComponentCallbacks2 {
     }
 
     @Override // android.content.ComponentCallbacks2
-    public final void onTrimMemory(int r1) {
+    public final void onTrimMemory(int i) {
     }
 }

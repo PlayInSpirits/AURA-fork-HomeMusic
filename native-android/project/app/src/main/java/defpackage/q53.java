@@ -8,39 +8,26 @@ public final class q53 {
     public final boolean c;
     public final boolean d;
 
-    public q53(boolean r1, boolean r2, boolean r3, boolean r4) {
-        this.a = r1;
-        this.b = r2;
-        this.c = r3;
-        this.d = r4;
+    public q53(boolean z, boolean z2, boolean z3, boolean z4) {
+        this.a = z;
+        this.b = z2;
+        this.c = z3;
+        this.d = z4;
     }
 
-    public final boolean equals(Object r5) {
-        if (this != r5) goto L6;
-        return true;
-    L6:
-        if ((r5 instanceof q53) == true) goto L8;
-        return false;
-    L8:
-        q53 r6 = (q53) r5;
-        if (this.a == r6.a) goto L12;
-        return false;
-    L12:
-        if (this.b == r6.b) goto L15;
-        return false;
-    L15:
-        if (this.c == r6.c) goto L18;
-        return false;
-    L18:
-        if (this.d == r6.d) goto L20;
-        return false;
-    L20:
-        return true;
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof q53)) {
+            return false;
+        }
+        q53 q53Var = (q53) obj;
+        return this.a == q53Var.a && this.b == q53Var.b && this.c == q53Var.c && this.d == q53Var.d;
     }
 
     public final int hashCode() {
-        int r0 = xa3.c(xa3.c(Boolean.hashCode(this.a) * 31, 31, this.b), 31, this.c);
-        return Boolean.hashCode(this.d) + r0;
+        return Boolean.hashCode(this.d) + xa3.c(xa3.c(Boolean.hashCode(this.a) * 31, 31, this.b), 31, this.c);
     }
 
     public final String toString() {

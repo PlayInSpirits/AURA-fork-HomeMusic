@@ -10,35 +10,35 @@ public abstract class qz0 {
     public final Object b;
     public final Object c;
 
-    public qz0(mw3 r2) {
+    public qz0(mw3 mw3Var) {
         this.a = Integer.MIN_VALUE;
         this.c = new Rect();
-        this.b = r2;
+        this.b = mw3Var;
     }
 
-    public static qz0 b(mw3 r1, int r2) {
-        if (r2 == 0) goto L10;
-        int r0 = 1;
-        if (r2 == 1) goto L6;
+    public static qz0 b(mw3 mw3Var, int i) {
+        if (i == 0) {
+            return new ib3(mw3Var, 0);
+        }
+        int i2 = 1;
+        if (i == 1) {
+            return new ib3(mw3Var, i2);
+        }
         kf2.n("invalid orientation");
         return null;
-    L6:
-        return new ib3(r1, r0);
-    L10:
-        return new ib3(r1, 0);
     }
 
-    public abstract void a(x34 r1);
+    public abstract void a(x34 x34Var);
 
-    public abstract void c(x34 r1);
+    public abstract void c(x34 x34Var);
 
-    public abstract int d(View r1);
+    public abstract int d(View view);
 
-    public abstract int e(View r1);
+    public abstract int e(View view);
 
-    public abstract int f(View r1);
+    public abstract int f(View view);
 
-    public abstract int g(View r1);
+    public abstract int g(View view);
 
     public abstract int h();
 
@@ -54,31 +54,31 @@ public abstract class qz0 {
 
     public abstract int n();
 
-    public abstract int o(View r1);
+    public abstract int o(View view);
 
-    public abstract int p(View r1);
+    public abstract int p(View view);
 
-    public abstract void q(int r1);
+    public abstract void q(int i);
 
-    public abstract void r(x34 r1);
+    public abstract void r(x34 x34Var);
 
-    public abstract void s(x34 r1);
+    public abstract void s(x34 x34Var);
 
-    public abstract void t(x34 r1);
+    public abstract void t(x34 x34Var);
 
-    public abstract void u(x34 r1);
+    public abstract void u(x34 x34Var);
 
-    public abstract u24 v(x34 r1);
+    public abstract u24 v(x34 x34Var);
 
-    public qz0(int r1, String r2, String r3) {
-        this.a = r1;
-        this.b = r2;
-        this.c = r3;
+    public qz0(int i, String str, String str2) {
+        this.a = i;
+        this.b = str;
+        this.c = str2;
     }
 
-    public qz0(sz0 r2) {
+    public qz0(sz0 sz0Var) {
         this.a = 0;
         this.c = new wk0();
-        this.b = r2;
+        this.b = sz0Var;
     }
 }

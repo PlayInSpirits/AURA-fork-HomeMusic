@@ -7,8 +7,8 @@ public final class lf2 implements xn3 {
     public int b;
     public Class c;
 
-    public lf2(mf2 r1) {
-        this.a = r1;
+    public lf2(mf2 mf2Var) {
+        this.a = mf2Var;
     }
 
     @Override // defpackage.xn3
@@ -16,26 +16,20 @@ public final class lf2 implements xn3 {
         this.a.k(this);
     }
 
-    public final boolean equals(Object r4) {
-        if ((r4 instanceof lf2) == false) goto L10;
-        lf2 r5 = (lf2) r4;
-        if (this.b != r5.b) goto L10;
-        if (this.c != r5.c) goto L10;
-        return true;
-    L10:
+    public final boolean equals(Object obj) {
+        if (obj instanceof lf2) {
+            lf2 lf2Var = (lf2) obj;
+            if (this.b == lf2Var.b && this.c == lf2Var.c) {
+                return true;
+            }
+        }
         return false;
     }
 
     public final int hashCode() {
-        int r0 = this.b * 31;
-        Class r1 = this.c;
-        if (r1 == null) goto L5;
-        int r2 = r1.hashCode();
-    L7:
-        return r0 + r2;
-    L5:
-        r2 = 0;
-        goto L7
+        int i = this.b * 31;
+        Class cls = this.c;
+        return i + (cls != null ? cls.hashCode() : 0);
     }
 
     public final String toString() {

@@ -17,78 +17,76 @@ public abstract class f64 extends FrameLayout {
     public boolean t;
 
     @Override // android.view.View
-    public final void draw(Canvas r9) {
-        Rect r0 = this.p;
-        super.draw(r9);
-        int r1 = getWidth();
-        int r2 = getHeight();
-        if (this.o != null) goto L5;
-        return;
-    L5:
-        if (this.n == null) goto L21;
-        int r3 = r9.save();
-        r9.translate(getScrollX(), getScrollY());
-        if (this.q == false) goto L10;
-        r0.set(0, 0, r1, this.o.top);
-        this.n.setBounds(r0);
-        this.n.draw(r9);
-    L10:
-        if (this.r == false) goto L13;
-        r0.set(0, r2 - this.o.bottom, r1, r2);
-        this.n.setBounds(r0);
-        this.n.draw(r9);
-    L13:
-        if (this.s == false) goto L16;
-        Rect r4 = this.o;
-        r0.set(0, r4.top, r4.left, r2 - r4.bottom);
-        this.n.setBounds(r0);
-        this.n.draw(r9);
-    L16:
-        if (this.t == false) goto L18;
-        Rect r5 = this.o;
-        r0.set(r1 - r5.right, r5.top, r1, r2 - r5.bottom);
-        this.n.setBounds(r0);
-        this.n.draw(r9);
-    L18:
-        r9.restoreToCount(r3);
-        return;
+    public final void draw(Canvas canvas) {
+        Rect rect = this.p;
+        super.draw(canvas);
+        int width = getWidth();
+        int height = getHeight();
+        if (this.o == null || this.n == null) {
+            return;
+        }
+        int iSave = canvas.save();
+        canvas.translate(getScrollX(), getScrollY());
+        if (this.q) {
+            rect.set(0, 0, width, this.o.top);
+            this.n.setBounds(rect);
+            this.n.draw(canvas);
+        }
+        if (this.r) {
+            rect.set(0, height - this.o.bottom, width, height);
+            this.n.setBounds(rect);
+            this.n.draw(canvas);
+        }
+        if (this.s) {
+            Rect rect2 = this.o;
+            rect.set(0, rect2.top, rect2.left, height - rect2.bottom);
+            this.n.setBounds(rect);
+            this.n.draw(canvas);
+        }
+        if (this.t) {
+            Rect rect3 = this.o;
+            rect.set(width - rect3.right, rect3.top, width, height - rect3.bottom);
+            this.n.setBounds(rect);
+            this.n.draw(canvas);
+        }
+        canvas.restoreToCount(iSave);
     }
 
     @Override // android.view.ViewGroup, android.view.View
     public void onAttachedToWindow() {
         super.onAttachedToWindow();
-        Drawable r0 = this.n;
-        if (r0 == null) goto L6;
-        r0.setCallback(this);
-        return;
+        Drawable drawable = this.n;
+        if (drawable != null) {
+            drawable.setCallback(this);
+        }
     }
 
     @Override // android.view.ViewGroup, android.view.View
     public void onDetachedFromWindow() {
         super.onDetachedFromWindow();
-        Drawable r1 = this.n;
-        if (r1 == null) goto L6;
-        r1.setCallback(null);
-        return;
+        Drawable drawable = this.n;
+        if (drawable != null) {
+            drawable.setCallback(null);
+        }
     }
 
-    public void setDrawBottomInsetForeground(boolean r1) {
-        this.r = r1;
+    public void setDrawBottomInsetForeground(boolean z) {
+        this.r = z;
     }
 
-    public void setDrawLeftInsetForeground(boolean r1) {
-        this.s = r1;
+    public void setDrawLeftInsetForeground(boolean z) {
+        this.s = z;
     }
 
-    public void setDrawRightInsetForeground(boolean r1) {
-        this.t = r1;
+    public void setDrawRightInsetForeground(boolean z) {
+        this.t = z;
     }
 
-    public void setDrawTopInsetForeground(boolean r1) {
-        this.q = r1;
+    public void setDrawTopInsetForeground(boolean z) {
+        this.q = z;
     }
 
-    public void setScrimInsetForeground(Drawable r1) {
-        this.n = r1;
+    public void setScrimInsetForeground(Drawable drawable) {
+        this.n = drawable;
     }
 }

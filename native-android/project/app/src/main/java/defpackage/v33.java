@@ -7,43 +7,38 @@ public abstract class v33 {
     public boolean b;
 
     public final void a() {
-        bq4 r0 = this.a;
-        if (r0 != null) goto L5;
-        kf2.o("This input is not added to any dispatcher.");
-        return;
-    L5:
-        if (this.b == true) goto L7;
-        r0.g(this, null);
-    L7:
-        w33 r1 = (w33) r0.o;
-        ss2 r2 = (ss2) r0.n;
-        r1.getClass();
-        if (equals(r1.h) == true) goto L10;
-    L20:
+        bq4 bq4Var = this.a;
+        if (bq4Var == null) {
+            kf2.o("This input is not added to any dispatcher.");
+            return;
+        }
+        if (!this.b) {
+            bq4Var.g(this, null);
+        }
+        w33 w33Var = (w33) bq4Var.o;
+        ss2 ss2Var = (ss2) bq4Var.n;
+        w33Var.getClass();
+        if (equals(w33Var.h) && -1 == w33Var.g) {
+            u83 u83VarC = w33Var.f;
+            if (u83VarC == null) {
+                u83VarC = w33Var.c(-1);
+            }
+            w33Var.f = null;
+            w33Var.g = 0;
+            w33Var.h = null;
+            if (u83VarC == null) {
+                ((a93) ss2Var.o).a.run();
+            } else {
+                u83VarC.d.a();
+            }
+            nl4 nl4Var = w33Var.a;
+            x33 x33Var = x33.p;
+            nl4Var.getClass();
+            nl4Var.j(null, x33Var);
+        }
         this.b = false;
-        return;
-    L10:
-        if ((-1) != r1.g) goto L20;
-        u83 r3 = r1.f;
-        if (r3 != null) goto L15;
-        r3 = r1.c(-1);
-    L15:
-        r1.f = null;
-        r1.g = 0;
-        r1.h = null;
-        if (r3 != null) goto L18;
-        ((a93) r2.o).a.run();
-    L19:
-        nl4 r4 = r1.a;
-        x33 r5 = x33.p;
-        r4.getClass();
-        r4.j(null, r5);
-        goto L20
-    L18:
-        r3.d.a();
-        goto L19
     }
 
-    public void b(boolean r1) {
+    public void b(boolean z) {
     }
 }

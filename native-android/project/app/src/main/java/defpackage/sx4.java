@@ -5,34 +5,27 @@ package defpackage;
 final class sx4 extends gx2 {
     public final q82 a;
 
-    public sx4(q82 r1) {
-        this.a = r1;
+    public sx4(q82 q82Var) {
+        this.a = q82Var;
     }
 
     @Override // defpackage.gx2
     public final cx2 d() {
-        tx4 r0 = new tx4();
-        r0.B = this.a;
-        return r0;
+        tx4 tx4Var = new tx4();
+        tx4Var.B = this.a;
+        return tx4Var;
     }
 
     @Override // defpackage.gx2
-    public final void e(cx2 r1) {
-        q82 r0 = this.a;
-        ((tx4) r1).B = r0;
+    public final void e(cx2 cx2Var) {
+        ((tx4) cx2Var).B = this.a;
     }
 
-    public final boolean equals(Object r4) {
-        if (this != r4) goto L6;
-        return true;
-    L6:
-        if ((r4 instanceof sx4) == true) goto L9;
-        return false;
-    L9:
-        if (h12.c(this.a, ((sx4) r4).a) == true) goto L11;
-        return false;
-    L11:
-        return true;
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        return (obj instanceof sx4) && h12.c(this.a, ((sx4) obj).a);
     }
 
     public final int hashCode() {

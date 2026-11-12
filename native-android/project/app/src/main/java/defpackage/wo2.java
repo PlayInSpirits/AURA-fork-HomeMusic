@@ -17,158 +17,123 @@ public final class wo2 extends oq2 {
     public final Object b;
     public final Object c;
 
-    public /* synthetic */ wo2(int r1, Object r2, Object r3) {
-        this.a = r1;
-        this.b = r2;
-        this.c = r3;
+    public /* synthetic */ wo2(int i, Object obj, Object obj2) {
+        this.a = i;
+        this.b = obj;
+        this.c = obj2;
     }
 
     @Override // defpackage.oq2
     public void e() {
-        switch(this.a) {
-            case 1: goto L5;
-            default: goto L4;
-        };
-    L4:
-        return;
-    L5:
-        hd5 r0 = ((s25) this.b).w;
-        if (r0 == null) goto L11;
-        MediaService r1 = (MediaService) r0.o;
-        g25 r5 = (g25) this.c;
-        q25 r2 = r1.x;
-        f25 r3 = (f25) r0.p;
-        Looper r4 = r1.getMainLooper();
-        r4.getClass();
-        q25 r6 = new q25(r3, r5, r4, r1);
-        r1.x = r6;
-        r1.q(r6);
-        r1.s(r1.p().a(), r6);
-        if (r2 == null) goto L12;
-        r2.A1();
-        return;
-    L12:
-        return;
+        switch (this.a) {
+            case 1:
+                hd5 hd5Var = ((s25) this.b).w;
+                if (hd5Var != null) {
+                    MediaService mediaService = (MediaService) hd5Var.o;
+                    g25 g25Var = (g25) this.c;
+                    q25 q25Var = mediaService.x;
+                    f25 f25Var = (f25) hd5Var.p;
+                    Looper mainLooper = mediaService.getMainLooper();
+                    mainLooper.getClass();
+                    q25 q25Var2 = new q25(f25Var, g25Var, mainLooper, mediaService);
+                    mediaService.x = q25Var2;
+                    mediaService.q(q25Var2);
+                    mediaService.s(mediaService.p().a(), q25Var2);
+                    if (q25Var != null) {
+                        q25Var.A1();
+                    }
+                }
+                break;
+        }
     }
 
     @Override // defpackage.oq2
-    public void f(int r6) {
-        switch(this.a) {
-            case 0: goto L5;
-            default: goto L4;
-        };
-    L4:
-        return;
-    L5:
-        String r0 = (String) this.b;
-        if (r0 == null) goto L25;
-        vo2 r5 = (vo2) this.c;
-        if (r5 == null) goto L28;
-        Messenger r1 = r5.h;
-        MediaRouter2.RoutingController r2 = r5.g;
-        if (r2 != null) goto L13;
-        return;
-    L13:
-        if (to2.w(r2) == true) goto L27;
-        if (r1 == null) goto L29;
-        int r3 = r5.l.getAndIncrement();
-        Message r4 = Message.obtain();
-        r4.what = 7;
-        r4.arg1 = r3;
-        Bundle r7 = new Bundle();
-        r7.putInt("volume", r6);
-        r7.putString("routeId", r0);
-        r4.setData(r7);
-        r4.replyTo = r5.i;
-        r1.send(r4);     // Catch: RemoteException -> L19 DeadObjectException -> L22
-        goto L31
-    L30:
-        return;
-    L19:
-        e = move-exception;
-        Log.e("MR2Provider", "Could not send control request to service.", e);
-        return;
-    L31:
-        return;
-    L29:
-        return;
-    L27:
-        return;
-    L28:
-        return;
+    public void f(int i) {
+        vo2 vo2Var;
+        switch (this.a) {
+            case 0:
+                String str = (String) this.b;
+                if (str != null && (vo2Var = (vo2) this.c) != null) {
+                    Messenger messenger = vo2Var.h;
+                    MediaRouter2.RoutingController routingController = vo2Var.g;
+                    if (routingController != null && !routingController.isReleased() && messenger != null) {
+                        int andIncrement = vo2Var.l.getAndIncrement();
+                        Message messageObtain = Message.obtain();
+                        messageObtain.what = 7;
+                        messageObtain.arg1 = andIncrement;
+                        Bundle bundle = new Bundle();
+                        bundle.putInt("volume", i);
+                        bundle.putString("routeId", str);
+                        messageObtain.setData(bundle);
+                        messageObtain.replyTo = vo2Var.i;
+                        try {
+                            messenger.send(messageObtain);
+                        } catch (DeadObjectException unused) {
+                            return;
+                        } catch (RemoteException e) {
+                            Log.e("MR2Provider", "Could not send control request to service.", e);
+                            return;
+                        }
+                        break;
+                    }
+                }
+                break;
+        }
     }
 
     @Override // defpackage.oq2
-    public void h(int r3) {
-        switch(this.a) {
-            case 1: goto L6;
-            default: goto L4;
-        };
-    L4:
-        super.h(r3);
-        return;
-    L6:
-        hd5 r4 = ((s25) this.b).w;
-        if (r4 == null) goto L16;
-        g25 r2 = (g25) this.c;
-        MediaService r5 = (MediaService) r4.o;
-        q25 r0 = r5.x;
-        if (r0 != null) goto L12;
-        return;
-    L12:
-        if (h12.c(r0.k, r2) == false) goto L18;
-        r5.x = null;
-        r5.s(r0, r5.o());
-        r0.A1();
-        return;
-    L18:
-        return;
+    public void h(int i) {
+        switch (this.a) {
+            case 1:
+                hd5 hd5Var = ((s25) this.b).w;
+                if (hd5Var != null) {
+                    g25 g25Var = (g25) this.c;
+                    MediaService mediaService = (MediaService) hd5Var.o;
+                    q25 q25Var = mediaService.x;
+                    if (q25Var != null && h12.c(q25Var.k, g25Var)) {
+                        mediaService.x = null;
+                        mediaService.s(q25Var, mediaService.o());
+                        q25Var.A1();
+                    }
+                }
+                break;
+            default:
+                super.h(i);
+                break;
+        }
     }
 
     @Override // defpackage.oq2
-    public void i(int r6) {
-        switch(this.a) {
-            case 0: goto L5;
-            default: goto L4;
-        };
-    L4:
-        return;
-    L5:
-        String r0 = (String) this.b;
-        if (r0 == null) goto L25;
-        vo2 r5 = (vo2) this.c;
-        if (r5 == null) goto L28;
-        Messenger r1 = r5.h;
-        MediaRouter2.RoutingController r2 = r5.g;
-        if (r2 != null) goto L13;
-        return;
-    L13:
-        if (to2.w(r2) == true) goto L27;
-        if (r1 == null) goto L29;
-        int r3 = r5.l.getAndIncrement();
-        Message r4 = Message.obtain();
-        r4.what = 8;
-        r4.arg1 = r3;
-        Bundle r7 = new Bundle();
-        r7.putInt("volume", r6);
-        r7.putString("routeId", r0);
-        r4.setData(r7);
-        r4.replyTo = r5.i;
-        r1.send(r4);     // Catch: RemoteException -> L19 DeadObjectException -> L22
-        goto L31
-    L30:
-        return;
-    L19:
-        e = move-exception;
-        Log.e("MR2Provider", "Could not send control request to service.", e);
-        return;
-    L31:
-        return;
-    L29:
-        return;
-    L27:
-        return;
-    L28:
-        return;
+    public void i(int i) {
+        vo2 vo2Var;
+        switch (this.a) {
+            case 0:
+                String str = (String) this.b;
+                if (str != null && (vo2Var = (vo2) this.c) != null) {
+                    Messenger messenger = vo2Var.h;
+                    MediaRouter2.RoutingController routingController = vo2Var.g;
+                    if (routingController != null && !routingController.isReleased() && messenger != null) {
+                        int andIncrement = vo2Var.l.getAndIncrement();
+                        Message messageObtain = Message.obtain();
+                        messageObtain.what = 8;
+                        messageObtain.arg1 = andIncrement;
+                        Bundle bundle = new Bundle();
+                        bundle.putInt("volume", i);
+                        bundle.putString("routeId", str);
+                        messageObtain.setData(bundle);
+                        messageObtain.replyTo = vo2Var.i;
+                        try {
+                            messenger.send(messageObtain);
+                        } catch (DeadObjectException unused) {
+                            return;
+                        } catch (RemoteException e) {
+                            Log.e("MR2Provider", "Could not send control request to service.", e);
+                            return;
+                        }
+                        break;
+                    }
+                }
+                break;
+        }
     }
 }

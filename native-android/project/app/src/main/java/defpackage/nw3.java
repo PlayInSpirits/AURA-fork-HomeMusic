@@ -13,36 +13,36 @@ public class nw3 extends ViewGroup.MarginLayoutParams {
     public boolean c;
     public boolean d;
 
-    public nw3(Context r1, AttributeSet r2) {
-        super(r1, r2);
+    public nw3(Context context, AttributeSet attributeSet) {
+        super(context, attributeSet);
         this.b = new Rect();
         this.c = true;
         this.d = false;
     }
 
-    public nw3(int r1, int r2) {
-        super(r1, r2);
+    public nw3(int i, int i2) {
+        super(i, i2);
         this.b = new Rect();
         this.c = true;
         this.d = false;
     }
 
-    public nw3(ViewGroup.MarginLayoutParams r1) {
-        super(r1);
+    public nw3(ViewGroup.MarginLayoutParams marginLayoutParams) {
+        super(marginLayoutParams);
         this.b = new Rect();
         this.c = true;
         this.d = false;
     }
 
-    public nw3(ViewGroup.LayoutParams r1) {
-        super(r1);
+    public nw3(ViewGroup.LayoutParams layoutParams) {
+        super(layoutParams);
         this.b = new Rect();
         this.c = true;
         this.d = false;
     }
 
-    public nw3(nw3 r1) {
-        super(r1);
+    public nw3(nw3 nw3Var) {
+        super((ViewGroup.LayoutParams) nw3Var);
         this.b = new Rect();
         this.c = true;
         this.d = false;

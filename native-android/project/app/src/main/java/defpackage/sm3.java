@@ -5,20 +5,20 @@ package defpackage;
 public final class sm3 extends bc1 {
     public final bu4 f;
 
-    public sm3(cu4 r1) {
-        super(r1);
+    public sm3(cu4 cu4Var) {
+        super(cu4Var);
         this.f = new bu4();
     }
 
     @Override // defpackage.bc1, defpackage.cu4
-    public final zt4 f(int r12, zt4 r13, boolean r14) {
-        cu4 r0 = this.e;
-        zt4 r1 = r0.f(r12, r13, r14);
-        if (r0.m(r1.c, this.f, 0).a() == false) goto L6;
-        r1.i(r13.a, r13.b, r13.c, r13.d, r13.e, z5.f, true);
-        return r1;
-    L6:
-        r1.f = true;
-        return r1;
+    public final zt4 f(int i, zt4 zt4Var, boolean z) {
+        cu4 cu4Var = this.e;
+        zt4 zt4VarF = cu4Var.f(i, zt4Var, z);
+        if (cu4Var.m(zt4VarF.c, this.f, 0L).a()) {
+            zt4VarF.i(zt4Var.a, zt4Var.b, zt4Var.c, zt4Var.d, zt4Var.e, z5.f, true);
+            return zt4VarF;
+        }
+        zt4VarF.f = true;
+        return zt4VarF;
     }
 }

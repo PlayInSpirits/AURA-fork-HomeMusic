@@ -9,124 +9,135 @@ public final class vf4 extends cx2 implements u62 {
     public float E;
     public boolean F;
 
+    /* JADX WARN: Code duplicated, block: B:23:0x0041  */
     @Override // defpackage.u62
-    public final vi2 r(cf2 r7, pi2 r8, long r9) {
-        int r2 = 0;
-        if (Float.isNaN(this.D) == true) goto L7;
-        int r0 = r7.V(this.D);
-        if (r0 >= 0) goto L9;
-        r0 = 0;
-    L9:
-        if (Float.isNaN(this.E) == true) goto L13;
-        int r3 = r7.V(this.E);
-        if (r3 >= 0) goto L15;
-        r3 = 0;
-    L15:
-        if (Float.isNaN(this.B) == true) goto L23;
-        int r4 = r7.V(this.B);
-        if (r4 >= 0) goto L19;
-        r4 = 0;
-    L19:
-        if (r4 <= r0) goto L21;
-        r4 = r0;
-    L21:
-        if (r4 == Integer.MAX_VALUE) goto L23;
-    L25:
-        if (Float.isNaN(this.C) == true) goto L33;
-        int r5 = r7.V(this.C);
-        if (r5 >= 0) goto L29;
-        r5 = 0;
-    L29:
-        if (r5 <= r3) goto L31;
-        r5 = r3;
-    L31:
-        if (r5 == Integer.MAX_VALUE) goto L33;
-        r2 = r5;
-    L33:
-        long r1 = qc0.a(r4, r0, r2, r3);
-        if (this.F == false) goto L61;
-        int r6 = nc0.j(r9);
-        int r10 = nc0.h(r9);
-        int r11 = nc0.i(r9);
-        int r12 = nc0.g(r9);
-        int r13 = nc0.j(r1);
-        if (r13 >= r6) goto L38;
-        r13 = r6;
-    L38:
-        if (r13 <= r10) goto L40;
-        r13 = r10;
-    L40:
-        int r14 = nc0.h(r1);
-        if (r14 < r6) goto L44;
-        r6 = r14;
-    L44:
-        if (r6 > r10) goto L47;
-        r10 = r6;
-    L47:
-        int r15 = nc0.i(r1);
-        if (r15 >= r11) goto L50;
-        r15 = r11;
-    L50:
-        if (r15 <= r12) goto L52;
-        r15 = r12;
-    L52:
-        int r16 = nc0.g(r1);
-        if (r16 < r11) goto L56;
-        r11 = r16;
-    L56:
-        if (r11 > r12) goto L59;
-        r12 = r11;
-    L59:
-        long r17 = qc0.a(r13, r10, r15, r12);
-    L85:
-        jg3 r18 = r8.r(r17);
-        return r7.v(r18.n, r18.o, v01.n, new la(r18, 5));
-    L61:
-        if (Float.isNaN(this.B) == true) goto L63;
-        int r19 = nc0.j(r1);
-    L67:
-        if (Float.isNaN(this.D) == true) goto L69;
-        int r20 = nc0.h(r1);
-    L73:
-        if (Float.isNaN(this.C) == true) goto L75;
-        int r21 = nc0.i(r1);
-    L79:
-        if (Float.isNaN(this.E) == true) goto L81;
-        int r22 = nc0.g(r1);
-    L84:
-        r17 = qc0.a(r19, r20, r21, r22);
-        goto L85
-    L81:
-        r22 = nc0.g(r9);
-        int r23 = nc0.i(r1);
-        if (r22 >= r23) goto L84;
-        r22 = r23;
-        goto L84
-    L75:
-        r21 = nc0.i(r9);
-        int r24 = nc0.g(r1);
-        if (r21 <= r24) goto L79;
-        r21 = r24;
-        goto L79
-    L69:
-        r20 = nc0.h(r9);
-        int r25 = nc0.j(r1);
-        if (r20 >= r25) goto L73;
-        r20 = r25;
-        goto L73
-    L63:
-        r19 = nc0.j(r9);
-        int r26 = nc0.h(r1);
-        if (r19 <= r26) goto L67;
-        r19 = r26;
-    L23:
-        r4 = 0;
-        goto L25
-    L13:
-        r3 = Integer.MAX_VALUE;
-        goto L15
-    L7:
-        r0 = Integer.MAX_VALUE;
-        goto L9
+    public final vi2 r(cf2 cf2Var, pi2 pi2Var, long j) {
+        int iV;
+        int iV2;
+        int iV3;
+        int iJ;
+        int iH;
+        int i;
+        int iG;
+        long jA;
+        int i2 = 0;
+        if (Float.isNaN(this.D)) {
+            iV = Integer.MAX_VALUE;
+        } else {
+            iV = cf2Var.V(this.D);
+            if (iV < 0) {
+                iV = 0;
+            }
+        }
+        if (Float.isNaN(this.E)) {
+            iV2 = Integer.MAX_VALUE;
+        } else {
+            iV2 = cf2Var.V(this.E);
+            if (iV2 < 0) {
+                iV2 = 0;
+            }
+        }
+        if (Float.isNaN(this.B)) {
+            iV3 = 0;
+        } else {
+            iV3 = cf2Var.V(this.B);
+            if (iV3 < 0) {
+                iV3 = 0;
+            }
+            if (iV3 > iV) {
+                iV3 = iV;
+            }
+            if (iV3 == Integer.MAX_VALUE) {
+                iV3 = 0;
+            }
+        }
+        if (!Float.isNaN(this.C)) {
+            int iV4 = cf2Var.V(this.C);
+            if (iV4 < 0) {
+                iV4 = 0;
+            }
+            if (iV4 > iV2) {
+                iV4 = iV2;
+            }
+            if (iV4 != Integer.MAX_VALUE) {
+                i2 = iV4;
+            }
+        }
+        long jA2 = qc0.a(iV3, iV, i2, iV2);
+        if (this.F) {
+            int iJ2 = nc0.j(j);
+            int iH2 = nc0.h(j);
+            int i3 = nc0.i(j);
+            int iG2 = nc0.g(j);
+            int iJ3 = nc0.j(jA2);
+            if (iJ3 < iJ2) {
+                iJ3 = iJ2;
+            }
+            if (iJ3 > iH2) {
+                iJ3 = iH2;
+            }
+            int iH3 = nc0.h(jA2);
+            if (iH3 >= iJ2) {
+                iJ2 = iH3;
+            }
+            if (iJ2 <= iH2) {
+                iH2 = iJ2;
+            }
+            int i4 = nc0.i(jA2);
+            if (i4 < i3) {
+                i4 = i3;
+            }
+            if (i4 > iG2) {
+                i4 = iG2;
+            }
+            int iG3 = nc0.g(jA2);
+            if (iG3 >= i3) {
+                i3 = iG3;
+            }
+            if (i3 <= iG2) {
+                iG2 = i3;
+            }
+            jA = qc0.a(iJ3, iH2, i4, iG2);
+        } else {
+            if (Float.isNaN(this.B)) {
+                iJ = nc0.j(j);
+                int iH4 = nc0.h(jA2);
+                if (iJ > iH4) {
+                    iJ = iH4;
+                }
+            } else {
+                iJ = nc0.j(jA2);
+            }
+            if (Float.isNaN(this.D)) {
+                iH = nc0.h(j);
+                int iJ4 = nc0.j(jA2);
+                if (iH < iJ4) {
+                    iH = iJ4;
+                }
+            } else {
+                iH = nc0.h(jA2);
+            }
+            if (Float.isNaN(this.C)) {
+                i = nc0.i(j);
+                int iG4 = nc0.g(jA2);
+                if (i > iG4) {
+                    i = iG4;
+                }
+            } else {
+                i = nc0.i(jA2);
+            }
+            if (Float.isNaN(this.E)) {
+                iG = nc0.g(j);
+                int i5 = nc0.i(jA2);
+                if (iG < i5) {
+                    iG = i5;
+                }
+            } else {
+                iG = nc0.g(jA2);
+            }
+            jA = qc0.a(iJ, iH, i, iG);
+        }
+        jg3 jg3VarR = pi2Var.r(jA);
+        return cf2Var.v(jg3VarR.n, jg3VarR.o, v01.n, new la(jg3VarR, 5));
     }
 }

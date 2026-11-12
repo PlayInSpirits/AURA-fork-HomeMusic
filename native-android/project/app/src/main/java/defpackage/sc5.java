@@ -14,7 +14,7 @@ import java.util.List;
 public final class sc5 {
     public static sc5 k;
     public static sc5 l;
-    public static final Object m = null;
+    public static final Object m;
     public final Context a;
     public final r90 b;
     public final WorkDatabase c;
@@ -22,7 +22,7 @@ public final class sc5 {
     public final List e;
     public final pq3 f;
     public final rv1 g;
-    public boolean h;
+    public boolean h = false;
     public BroadcastReceiver.PendingResult i;
     public final z40 j;
 
@@ -34,131 +34,125 @@ public final class sc5 {
     }
 
     /* JADX WARN: Type inference failed for: r4v4, types: [java.io.Serializable, java.lang.Object, java.lang.String[]] */
-    public sc5(Context r13, final r90 r14, bq4 r15, final WorkDatabase r16, final List r17, pq3 r18, z40 r19) {
-        int r6 = 0;
-        this.h = false;
-        Context r7 = r13.getApplicationContext();
-        if (r7.isDeviceProtectedStorage() == true) goto L18;
-        cx r8 = new cx(r14.h);
-        Object r9 = cx.c;
-        monitor-enter(r9);
-    L9:
-        th = move-exception;
-        throw th;
-    L7:
-        if (cx.d != null) goto L11;
-        cx.d = r8;     // Catch: Throwable -> L9
-    L11:
-        monitor-exit(r9);     // Catch: Throwable -> L9
-        this.a = r7;
-        this.d = r15;
-        this.c = r16;
-        this.f = r18;
-        this.j = r19;
-        this.b = r14;
-        this.e = r17;
-        pe0 r10 = (pe0) r15.o;
-        r10.getClass();
-        td0 r11 = te5.a(r10);
-        int r12 = 1;
-        this.g = new rv1(r16, 1);
-        final ia4 r20 = (ia4) r15.n;
-        String r110 = c64.a;
-        r18.a(new b64(r20, r17, r14, r16));
-        r15.h(new lb1(r7, this));
-        String r0 = i15.a;
-        if (nq3.a(r7, r14) == false) goto L22;
-        fd5 r1 = r16.A();
-        r1.getClass();
-        w24 r2 = w24.b(0, "SELECT COUNT(*) > 0 FROM workspec WHERE state NOT IN (2, 3, 5) LIMIT 1");
-        WorkDatabase_Impl r3 = r1.a;
-        ed5 r4 = new ed5(r1, r2);
-        x r5 = new x(9, r4);
-        s12 r21 = r3.i();
-        String[] r22 = (String[]) Arrays.copyOf(new String[]{"workspec"}, 1);
-        jy4 r23 = r21.b;
-        kd3 r24 = r23.g(r22);
-        ?? r25 = (String[]) r24.n;
-        int[] r26 = (int[]) r24.o;
-        r25.getClass();
-        r26.getClass();
-        vd0 r111 = null;
-        int r27 = 2;
-        fu.G(r11, null, null, new ac0(new x81(ya4.m(ya4.e(new x81(new j91(ya4.e(new gc0(r12, new x70(r23, r26, r25, r111, 7)), -1), r3, r5), new g15(4, null), r6), -1)), new h15(r7, null), r27), r111, r27), 3);
-        return;
-    L22:
-        return;
-    L18:
-        kf2.o("Cannot initialize WorkManager in direct boot mode");
-        throw null;
+    public sc5(Context context, final r90 r90Var, bq4 bq4Var, final WorkDatabase workDatabase, final List list, pq3 pq3Var, z40 z40Var) {
+        int i = 0;
+        Context applicationContext = context.getApplicationContext();
+        if (applicationContext.isDeviceProtectedStorage()) {
+            kf2.o("Cannot initialize WorkManager in direct boot mode");
+            throw null;
+        }
+        cx cxVar = new cx(r90Var.h);
+        synchronized (cx.c) {
+            try {
+                if (cx.d == null) {
+                    cx.d = cxVar;
+                }
+            } catch (Throwable th) {
+                throw th;
+            }
+        }
+        this.a = applicationContext;
+        this.d = bq4Var;
+        this.c = workDatabase;
+        this.f = pq3Var;
+        this.j = z40Var;
+        this.b = r90Var;
+        this.e = list;
+        pe0 pe0Var = (pe0) bq4Var.o;
+        pe0Var.getClass();
+        td0 td0VarA = te5.a(pe0Var);
+        int i2 = 1;
+        this.g = new rv1(workDatabase, 1);
+        final ia4 ia4Var = (ia4) bq4Var.n;
+        String str = c64.a;
+        pq3Var.a(new w21() { // from class: b64
+            @Override // defpackage.w21
+            public final void b(rc5 rc5Var, boolean z) {
+                ia4Var.execute(new t6(list, rc5Var, r90Var, workDatabase, 28));
+            }
+        });
+        bq4Var.h(new lb1(applicationContext, this));
+        String str2 = i15.a;
+        if (nq3.a(applicationContext, r90Var)) {
+            fd5 fd5VarA = workDatabase.A();
+            fd5VarA.getClass();
+            w24 w24VarB = w24.b(0, "SELECT COUNT(*) > 0 FROM workspec WHERE state NOT IN (2, 3, 5) LIMIT 1");
+            WorkDatabase_Impl workDatabase_Impl = fd5VarA.a;
+            x xVar = new x(9, new ed5(fd5VarA, w24VarB));
+            s12 s12VarI = workDatabase_Impl.i();
+            String[] strArr = (String[]) Arrays.copyOf(new String[]{"workspec"}, 1);
+            jy4 jy4Var = s12VarI.b;
+            kd3 kd3VarG = jy4Var.g(strArr);
+            ?? r4 = (String[]) kd3VarG.n;
+            int[] iArr = (int[]) kd3VarG.o;
+            r4.getClass();
+            iArr.getClass();
+            vd0 vd0Var = null;
+            int i3 = 2;
+            fu.G(td0VarA, null, null, new ac0(new x81(ya4.m(ya4.e(new x81(new j91(ya4.e(new gc0(i2, new x70(jy4Var, iArr, r4, vd0Var, 7)), -1), workDatabase_Impl, xVar), new g15(4, null), i), -1)), new h15(applicationContext, null), i3), vd0Var, i3), 3);
+        }
     }
 
-    public static sc5 b(Context r2) {
-        Object r0 = m;
-        monitor-enter(r0);
-        monitor-enter(r0);     // Catch: Throwable -> L16
-        sc5 r1 = k;     // Catch: Throwable -> L9
-        if (r1 == null) goto L11;
-        monitor-exit(r0);     // Catch: Throwable -> L9
-    L13:
-        if (r1 == null) goto L18;
-        monitor-exit(r0);     // Catch: Throwable -> L16
-        return r1;
-    L18:
-        r2.getApplicationContext();     // Catch: Throwable -> L16
-        throw new IllegalStateException("WorkManager is not initialized properly.  You have explicitly disabled WorkManagerInitializer in your manifest, have not manually called WorkManager#initialize at this point, and your Application does not implement Configuration.Provider.");     // Catch: Throwable -> L16
-    L11:
-        r1 = l;     // Catch: Throwable -> L9
-        monitor-exit(r0);     // Catch: Throwable -> L9
-    L9:
-        th = move-exception;
-        throw th;     // Catch: Throwable -> L16
-    L16:
-        th = move-exception;
-        throw th;
+    public static sc5 b(Context context) {
+        sc5 sc5Var;
+        Object obj = m;
+        synchronized (obj) {
+            try {
+                synchronized (obj) {
+                    try {
+                        sc5Var = k;
+                        if (sc5Var == null) {
+                            sc5Var = l;
+                        }
+                    } catch (Throwable th) {
+                        throw th;
+                    }
+                }
+                return sc5Var;
+            } catch (Throwable th2) {
+                throw th2;
+            }
+        }
+        if (sc5Var != null) {
+            return sc5Var;
+        }
+        context.getApplicationContext();
+        throw new IllegalStateException("WorkManager is not initialized properly.  You have explicitly disabled WorkManagerInitializer in your manifest, have not manually called WorkManager#initialize at this point, and your Application does not implement Configuration.Provider.");
     }
 
-    public final rv2 a(String r7, kf3 r8) {
-        return new mc5(this, r7, 2, Collections.singletonList(r8), 0).a();
+    public final rv2 a(String str, kf3 kf3Var) {
+        return new mc5(this, str, 2, Collections.singletonList(kf3Var), 0).a();
     }
 
     public final void c() {
-        Object r0 = m;
-        monitor-enter(r0);
-        this.h = true;     // Catch: Throwable -> L8
-        BroadcastReceiver.PendingResult r1 = this.i;     // Catch: Throwable -> L8
-        if (r1 == null) goto L10;
-        r1.finish();     // Catch: Throwable -> L8
-        this.i = null;     // Catch: Throwable -> L8
-    L10:
-        monitor-exit(r0);     // Catch: Throwable -> L8
-        return;
-    L8:
-        th = move-exception;
-        throw th;
+        synchronized (m) {
+            try {
+                this.h = true;
+                BroadcastReceiver.PendingResult pendingResult = this.i;
+                if (pendingResult != null) {
+                    pendingResult.finish();
+                    this.i = null;
+                }
+            } catch (Throwable th) {
+                throw th;
+            }
+        }
     }
 
     public final void d() {
-        i80 r0 = this.b.m;
-        e25 r2 = new e25(4, this);
-        r0.getClass();
-        boolean r4 = xl.y();
-        if (r4 == true) goto L13;
-    L5:
-        r2.invoke();     // Catch: Throwable -> L9
-        if (r4 == false) goto L15;
-        Trace.endSection();
-        return;
-    L15:
-        return;
-    L9:
-        th = move-exception;
-        if (r4 == false) goto L12;
-        Trace.endSection();
-    L12:
-        throw th;
-    L13:
-        Trace.beginSection(xl.N("ReschedulingWork"));     // Catch: Throwable -> L9
-        goto L5
+        i80 i80Var = this.b.m;
+        e25 e25Var = new e25(4, this);
+        i80Var.getClass();
+        boolean zY = xl.y();
+        if (zY) {
+            try {
+                Trace.beginSection(xl.N("ReschedulingWork"));
+            } finally {
+                if (zY) {
+                    Trace.endSection();
+                }
+            }
+        }
+        e25Var.invoke();
     }
 }

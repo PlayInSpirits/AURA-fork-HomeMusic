@@ -9,7 +9,7 @@ public interface m84 {
         return false;
     }
 
-    l84 e(long r1);
+    l84 e(long j);
 
     long g();
 }

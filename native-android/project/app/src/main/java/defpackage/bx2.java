@@ -4,12 +4,12 @@ package defpackage;
 /* JADX INFO: loaded from: classes.dex */
 public interface bx2 extends dx2 {
     @Override // defpackage.dx2
-    default boolean a(if1 r1) {
-        return ((Boolean) r1.invoke(this)).booleanValue();
+    default boolean a(if1 if1Var) {
+        return ((Boolean) if1Var.invoke(this)).booleanValue();
     }
 
     @Override // defpackage.dx2
-    default Object b(wf1 r1, Object r2) {
-        return r1.invoke(r2, this);
+    default Object b(wf1 wf1Var, Object obj) {
+        return wf1Var.invoke(obj, this);
     }
 }

@@ -11,41 +11,39 @@ public final /* synthetic */ class ct1 implements Runnable {
     public final /* synthetic */ String p;
     public final /* synthetic */ Context q;
 
-    public /* synthetic */ ct1(SmartSession r1, String r2, Context r3, int r4) {
-        this.n = r4;
-        this.o = r1;
-        this.p = r2;
-        this.q = r3;
+    public /* synthetic */ ct1(SmartSession smartSession, String str, Context context, int i) {
+        this.n = i;
+        this.o = smartSession;
+        this.p = str;
+        this.q = context;
     }
 
     @Override // java.lang.Runnable
     public final void run() {
-        int r0 = this.n;
-        Context r1 = this.q;
-        String r2 = this.p;
-        SmartSession r5 = this.o;
-        switch(r0) {
-            case 0: goto L16;
-            default: goto L18;
-        };
-    L16:
-        Object r3 = rr1.t(r5.getId(), r2);     // Catch: Throwable -> L12
-    L14:
-        io1.b.post(new t6(r3, r5, r2, r1));
-        return;
-    L12:
-        th = move-exception;
-        r3 = new s14(th);
-        goto L14
-    L18:
-        rr1.u(r5.getId(), r2);     // Catch: Throwable -> L6
-        Object r6 = j15.a;     // Catch: Throwable -> L6
-    L8:
-        io1.b.post(new ws1(3, r6, r1));
-        return;
-    L6:
-        th = move-exception;
-        r6 = new s14(th);
-        goto L8
+        Object s14Var;
+        Object s14Var2;
+        int i = this.n;
+        Context context = this.q;
+        String str = this.p;
+        SmartSession smartSession = this.o;
+        switch (i) {
+            case 0:
+                try {
+                    s14Var2 = rr1.t(smartSession.getId(), str);
+                } catch (Throwable th) {
+                    s14Var2 = new s14(th);
+                }
+                io1.b.post(new t6(s14Var2, smartSession, str, context));
+                break;
+            default:
+                try {
+                    rr1.u(smartSession.getId(), str);
+                    s14Var = j15.a;
+                } catch (Throwable th2) {
+                    s14Var = new s14(th2);
+                }
+                io1.b.post(new ws1(3, s14Var, context));
+                break;
+        }
     }
 }

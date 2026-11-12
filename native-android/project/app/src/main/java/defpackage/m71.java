@@ -11,61 +11,47 @@ public final class m71 {
     public long d;
     public long e;
     public long f;
-    public final boolean[] g;
+    public final boolean[] g = new boolean[15];
     public int h;
 
-    public m71() {
-        this.g = new boolean[15];
-    }
-
     public final boolean a() {
-        if (this.d > 15) goto L5;
-        return false;
-    L5:
-        if (this.h != 0) goto L10;
-        return true;
-    L10:
-        return false;
+        return this.d > 15 && this.h == 0;
     }
 
-    public final void b(long r11) {
-        long r0 = this.d;
-        if (r0 != 0) goto L6;
-        this.a = r11;
-    L16:
+    public final void b(long j) {
+        long j2 = this.d;
+        if (j2 == 0) {
+            this.a = j;
+        } else if (j2 == 1) {
+            long j3 = j - this.a;
+            this.b = j3;
+            this.f = j3;
+            this.e = 1L;
+        } else {
+            long j4 = j - this.c;
+            int i = (int) (j2 % 15);
+            long jAbs = Math.abs(j4 - this.b);
+            boolean[] zArr = this.g;
+            if (jAbs <= 1000000) {
+                this.e++;
+                this.f += j4;
+                if (zArr[i]) {
+                    zArr[i] = false;
+                    this.h--;
+                }
+            } else if (!zArr[i]) {
+                zArr[i] = true;
+                this.h++;
+            }
+        }
         this.d++;
-        this.c = r11;
-        return;
-    L6:
-        if (r0 != 1) goto L8;
-        long r1 = r11 - this.a;
-        this.b = r1;
-        this.f = r1;
-        this.e = 1;
-        goto L16
-    L8:
-        long r5 = r11 - this.c;
-        int r2 = (int) (r0 % 15);
-        long r3 = Math.abs(r5 - this.b);
-        boolean[] r4 = this.g;
-        if (r3 > 1000000) goto L14;
-        this.e++;
-        this.f += r5;
-        if (r4[r2] == false) goto L16;
-        r4[r2] = false;
-        this.h--;
-        goto L16
-    L14:
-        if (r4[r2] == true) goto L16;
-        r4[r2] = true;
-        this.h++;
-        goto L16
+        this.c = j;
     }
 
     public final void c() {
-        this.d = 0;
-        this.e = 0;
-        this.f = 0;
+        this.d = 0L;
+        this.e = 0L;
+        this.f = 0L;
         this.h = 0;
         Arrays.fill(this.g, false);
     }

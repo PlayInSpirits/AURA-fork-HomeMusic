@@ -12,44 +12,38 @@ public final class qc implements ny4 {
     public final X509TrustManager a;
     public final Method b;
 
-    public qc(X509TrustManager r1, Method r2) {
-        r1.getClass();
-        this.a = r1;
-        this.b = r2;
+    public qc(X509TrustManager x509TrustManager, Method method) {
+        x509TrustManager.getClass();
+        this.a = x509TrustManager;
+        this.b = method;
     }
 
     @Override // defpackage.ny4
-    public final X509Certificate a(X509Certificate r2) {
-        Object r1 = this.b.invoke(this.a, new Object[]{r2});     // Catch: InvocationTargetException -> L4 IllegalAccessException -> L6
-        r1.getClass();     // Catch: InvocationTargetException -> L4 IllegalAccessException -> L6
-        return ((TrustAnchor) r1).getTrustedCert();
-    L6:
-        e = move-exception;
-        throw new AssertionError("unable to get issues and signature", e);
-    L4:
-        return null;
+    public final X509Certificate a(X509Certificate x509Certificate) {
+        try {
+            Object objInvoke = this.b.invoke(this.a, x509Certificate);
+            objInvoke.getClass();
+            return ((TrustAnchor) objInvoke).getTrustedCert();
+        } catch (IllegalAccessException e) {
+            throw new AssertionError("unable to get issues and signature", e);
+        } catch (InvocationTargetException unused) {
+            return null;
+        }
     }
 
-    public final boolean equals(Object r3) {
-        if (this != r3) goto L5;
-        return true;
-    L5:
-        if ((r3 instanceof qc) == false) goto L16;
-        qc r4 = (qc) r3;
-        if (h12.c(this.a, r4.a) == true) goto L11;
-        return false;
-    L11:
-        if (this.b.equals(r4.b) == true) goto L14;
-        return false;
-    L14:
-        return true;
-    L16:
-        return false;
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof qc)) {
+            return false;
+        }
+        qc qcVar = (qc) obj;
+        return h12.c(this.a, qcVar.a) && this.b.equals(qcVar.b);
     }
 
     public final int hashCode() {
-        int r0 = this.a.hashCode() * 31;
-        return this.b.hashCode() + r0;
+        return this.b.hashCode() + (this.a.hashCode() * 31);
     }
 
     public final String toString() {

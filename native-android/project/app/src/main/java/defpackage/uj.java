@@ -8,23 +8,22 @@ public final class uj implements StarCallback {
     public final /* synthetic */ int n;
     public final /* synthetic */ wj o;
 
-    public /* synthetic */ uj(wj r1, int r2) {
-        this.n = r2;
-        this.o = r1;
+    public /* synthetic */ uj(wj wjVar, int i) {
+        this.n = i;
+        this.o = wjVar;
     }
 
     @Override // com.eddyizm.tempus.interfaces.StarCallback
     public final void onError() {
-        int r0 = this.n;
-        wj r3 = this.o;
-        switch(r0) {
-            case 0: goto L6;
-            default: goto L4;
-        };
-    L4:
-        r3.d.J(null, null, true, r3.e.getId());
-        return;
-    L6:
-        r3.d.J(null, null, false, r3.e.getId());
+        int i = this.n;
+        wj wjVar = this.o;
+        switch (i) {
+            case 0:
+                wjVar.d.J(null, null, false, wjVar.e.getId());
+                break;
+            default:
+                wjVar.d.J(null, null, true, wjVar.e.getId());
+                break;
+        }
     }
 }

@@ -8,31 +8,24 @@ public final class qs3 {
     public final Uri a;
     public final long b;
 
-    public qs3(Uri r1, long r2) {
-        this.a = r1;
-        this.b = r2;
+    public qs3(Uri uri, long j) {
+        this.a = uri;
+        this.b = j;
     }
 
-    public final boolean equals(Object r3) {
-        if (this != r3) goto L5;
-        return true;
-    L5:
-        if ((r3 instanceof qs3) == false) goto L16;
-        qs3 r4 = (qs3) r3;
-        if (this.a.equals(r4.a) == true) goto L11;
-        return false;
-    L11:
-        if (this.b == r4.b) goto L14;
-        return false;
-    L14:
-        return true;
-    L16:
-        return false;
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof qs3)) {
+            return false;
+        }
+        qs3 qs3Var = (qs3) obj;
+        return this.a.equals(qs3Var.a) && this.b == qs3Var.b;
     }
 
     public final int hashCode() {
-        int r0 = this.a.hashCode() * 31;
-        return Long.hashCode(this.b) + r0;
+        return Long.hashCode(this.b) + (this.a.hashCode() * 31);
     }
 
     public final String toString() {

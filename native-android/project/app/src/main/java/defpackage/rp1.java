@@ -6,22 +6,17 @@ public final class rp1 {
     public final wf1 a;
     public final /* synthetic */ int b;
 
-    public rp1(int r1, wf1 r2) {
-        this.b = r1;
-        this.a = r2;
+    public rp1(int i, wf1 wf1Var) {
+        this.b = i;
+        this.a = wf1Var;
     }
 
-    public final float a(float r7, q62 r8, q62 r9) {
-        switch(this.b) {
-            case 0: goto L6;
-            default: goto L4;
-        };
-    L4:
-        float r6 = ((int) (r8.k() & 4294967295L)) / 2.0f;
-        long r4 = Float.floatToRawIntBits(r7);
-        return Float.intBitsToFloat((int) (r9.z(r8, (((long) Float.floatToRawIntBits(r6)) & 4294967295L) | (r4 << 32)) >> 32));
-    L6:
-        long r5 = Float.floatToRawIntBits(((int) (r8.k() >> 32)) / 2.0f);
-        return Float.intBitsToFloat((int) (r9.z(r8, (((long) Float.floatToRawIntBits(r7)) & 4294967295L) | (r5 << 32)) & 4294967295L));
+    public final float a(float f, q62 q62Var, q62 q62Var2) {
+        switch (this.b) {
+            case 0:
+                return Float.intBitsToFloat((int) (q62Var2.z(q62Var, (((long) Float.floatToRawIntBits(f)) & 4294967295L) | (Float.floatToRawIntBits(((int) (q62Var.k() >> 32)) / 2.0f) << 32)) & 4294967295L));
+            default:
+                return Float.intBitsToFloat((int) (q62Var2.z(q62Var, (((long) Float.floatToRawIntBits(((int) (q62Var.k() & 4294967295L)) / 2.0f)) & 4294967295L) | (Float.floatToRawIntBits(f) << 32)) >> 32));
+        }
     }
 }

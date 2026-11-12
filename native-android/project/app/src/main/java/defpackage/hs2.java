@@ -7,77 +7,62 @@ public final /* synthetic */ class hs2 implements Runnable {
     public final /* synthetic */ al3 o;
     public final /* synthetic */ int p;
 
-    public /* synthetic */ hs2(al3 r1, int r2, int r3) {
-        this.n = r3;
-        this.o = r1;
-        this.p = r2;
+    public /* synthetic */ hs2(al3 al3Var, int i, int i2) {
+        this.n = i2;
+        this.o = al3Var;
+        this.p = i;
     }
 
     @Override // java.lang.Runnable
     public final void run() {
-        int r0 = this.n;
-        int r2 = this.p;
-        al3 r4 = this.o;
-        switch(r0) {
-            case 0: goto L41;
-            default: goto L5;
-        };
-    L5:
-        if (r4.S0(26) == true) goto L10;
-        if (r4.S0(34) == true) goto L10;
-        return;
-    L10:
-        if (r2 == (-100)) goto L36;
-        if (r2 == (-1)) goto L32;
-        if (r2 == 1) goto L28;
-        if (r2 == 100) goto L24;
-        if (r2 == 101) goto L20;
-        xa3.m(r2, "onAdjustVolume: Ignoring unknown direction: ", "VolumeProviderCompat");
-        return;
-    L20:
-        if (r4.S0(34) == false) goto L22;
-        r4.E(1, !r4.b1());
-        return;
-    L22:
-        r4.q0(!r4.b1());
-        return;
-    L24:
-        if (r4.S0(34) == false) goto L26;
-        r4.E(1, false);
-        return;
-    L26:
-        r4.q0(false);
-        return;
-    L28:
-        if (r4.S0(34) == false) goto L30;
-        r4.J(1);
-        return;
-    L30:
-        r4.C0();
-        return;
-    L32:
-        if (r4.S0(34) == false) goto L34;
-        r4.d0(1);
-        return;
-    L34:
-        r4.G();
-        return;
-    L36:
-        if (r4.S0(34) == false) goto L38;
-        r4.E(1, true);
-        return;
-    L38:
-        r4.q0(true);
-        return;
-    L41:
-        if (r4.S0(25) == true) goto L46;
-        if (r4.S0(33) == true) goto L46;
-        return;
-    L46:
-        if (r4.S0(33) == false) goto L48;
-        r4.H(r2, 1);
-        return;
-    L48:
-        r4.G0(r2);
+        int i = this.n;
+        int i2 = this.p;
+        al3 al3Var = this.o;
+        switch (i) {
+            case 0:
+                if (al3Var.S0(25) || al3Var.S0(33)) {
+                    if (!al3Var.S0(33)) {
+                        al3Var.G0(i2);
+                    } else {
+                        al3Var.H(i2, 1);
+                    }
+                }
+                break;
+            default:
+                if (al3Var.S0(26) || al3Var.S0(34)) {
+                    if (i2 == -100) {
+                        if (!al3Var.S0(34)) {
+                            al3Var.q0(true);
+                        } else {
+                            al3Var.E(1, true);
+                        }
+                    } else if (i2 == -1) {
+                        if (!al3Var.S0(34)) {
+                            al3Var.G();
+                        } else {
+                            al3Var.d0(1);
+                        }
+                    } else if (i2 == 1) {
+                        if (!al3Var.S0(34)) {
+                            al3Var.C0();
+                        } else {
+                            al3Var.J(1);
+                        }
+                    } else if (i2 == 100) {
+                        if (!al3Var.S0(34)) {
+                            al3Var.q0(false);
+                        } else {
+                            al3Var.E(1, false);
+                        }
+                    } else if (i2 != 101) {
+                        xa3.m(i2, "onAdjustVolume: Ignoring unknown direction: ", "VolumeProviderCompat");
+                    } else if (!al3Var.S0(34)) {
+                        al3Var.q0(!al3Var.b1());
+                    } else {
+                        al3Var.E(1, !al3Var.b1());
+                    }
+                }
+                break;
+        }
     }
 }

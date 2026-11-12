@@ -9,10 +9,10 @@ public final class hk0 {
     public final Object d;
     public int e;
 
-    public hk0(long r1, boolean r3, long r4, Object r6) {
-        this.a = r1;
-        this.b = r3;
-        this.c = r4;
-        this.d = r6;
+    public hk0(long j, boolean z, long j2, Object obj) {
+        this.a = j;
+        this.b = z;
+        this.c = j2;
+        this.d = obj;
     }
 }

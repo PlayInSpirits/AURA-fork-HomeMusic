@@ -6,15 +6,15 @@ import java.io.Serializable;
 /* JADX INFO: loaded from: classes.dex */
 public final class to3 implements ro3, Serializable {
     @Override // defpackage.ro3
-    public final boolean apply(Object r1) {
-        return Object.class.equals(r1);
+    public final boolean apply(Object obj) {
+        return Object.class.equals(obj);
     }
 
-    public final boolean equals(Object r1) {
-        if ((r1 instanceof to3) == true) goto L5;
+    public final boolean equals(Object obj) {
+        if (obj instanceof to3) {
+            return Object.class.equals(Object.class);
+        }
         return false;
-    L5:
-        return Object.class.equals(Object.class);
     }
 
     public final int hashCode() {

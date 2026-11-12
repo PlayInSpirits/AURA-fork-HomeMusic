@@ -9,27 +9,60 @@ public final class o61 implements Runnable {
     public final i61 o;
     public final Favorite p;
 
-    public /* synthetic */ o61(i61 r1, Favorite r2, int r3) {
-        this.n = r3;
-        this.o = r1;
-        this.p = r2;
+    public /* synthetic */ o61(i61 i61Var, Favorite favorite, int i) {
+        this.n = i;
+        this.o = i61Var;
+        this.p = favorite;
     }
 
     @Override // java.lang.Runnable
     public final void run() {
-        int r0 = this.n;
-        final Favorite r1 = this.p;
-        final i61 r5 = this.o;
-        final int r2 = 1;
-        final int r3 = 0;
-        switch(r0) {
-            case 0: goto L6;
-            default: goto L4;
-        };
-    L4:
-        xl.E((s24) r5.o, false, true, new g61(r5, r1, r3));
-        return;
-    L6:
-        xl.E((s24) r5.o, false, true, new g61(r5, r1, r2));
+        int i = this.n;
+        final Favorite favorite = this.p;
+        final i61 i61Var = this.o;
+        final int i2 = 1;
+        final int i3 = 0;
+        switch (i) {
+            case 0:
+                xl.E((s24) i61Var.o, false, true, new if1() { // from class: g61
+                    @Override // defpackage.if1
+                    public final Object invoke(Object obj) {
+                        int i4 = i2;
+                        Favorite favorite2 = favorite;
+                        i61 i61Var2 = i61Var;
+                        x34 x34Var = (x34) obj;
+                        switch (i4) {
+                            case 0:
+                                ((q20) i61Var2.p).I(x34Var, favorite2);
+                                break;
+                            default:
+                                ((h61) i61Var2.q).y(x34Var, favorite2);
+                                break;
+                        }
+                        return null;
+                    }
+                });
+                break;
+            default:
+                xl.E((s24) i61Var.o, false, true, new if1() { // from class: g61
+                    @Override // defpackage.if1
+                    public final Object invoke(Object obj) {
+                        int i4 = i3;
+                        Favorite favorite2 = favorite;
+                        i61 i61Var2 = i61Var;
+                        x34 x34Var = (x34) obj;
+                        switch (i4) {
+                            case 0:
+                                ((q20) i61Var2.p).I(x34Var, favorite2);
+                                break;
+                            default:
+                                ((h61) i61Var2.q).y(x34Var, favorite2);
+                                break;
+                        }
+                        return null;
+                    }
+                });
+                break;
+        }
     }
 }

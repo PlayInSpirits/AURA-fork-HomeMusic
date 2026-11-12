@@ -8,8 +8,8 @@ public class wm3 extends hd {
     public final hh3 c;
     public final k03 d;
 
-    public wm3(Application r2) {
-        super(r2);
+    public wm3(Application application) {
+        super(application);
         this.d = new k03(null);
         this.c = new hh3(1);
     }

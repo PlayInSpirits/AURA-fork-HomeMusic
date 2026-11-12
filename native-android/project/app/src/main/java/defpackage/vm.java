@@ -15,37 +15,33 @@ public final class vm {
     public long h;
     public long i;
 
-    public vm(AudioTrack r2, d34 r3) {
-        this.a = new um(r2);
-        this.b = r2.getSampleRate();
-        this.c = r3;
+    public vm(AudioTrack audioTrack, d34 d34Var) {
+        this.a = new um(audioTrack);
+        this.b = audioTrack.getSampleRate();
+        this.c = d34Var;
         a(0);
     }
 
-    public final void a(int r7) {
-        this.d = r7;
-        if (r7 != 0) goto L5;
-        this.g = 0;
-        this.h = -1;
-        this.i = -9223372036854775807L;
-        this.e = System.nanoTime() / 1000;
-        this.f = 10000;
-        return;
-    L5:
-        if (r7 != 1) goto L7;
-        this.f = 10000;
-        return;
-    L7:
-        if (r7 != 2) goto L9;
-    L16:
-        this.f = 10000000;
-        return;
-    L9:
-        if (r7 == 3) goto L16;
-        if (r7 != 4) goto L14;
-        this.f = 500000;
-        return;
-    L14:
-        tb4.a();
+    public final void a(int i) {
+        this.d = i;
+        if (i == 0) {
+            this.g = 0L;
+            this.h = -1L;
+            this.i = -9223372036854775807L;
+            this.e = System.nanoTime() / 1000;
+            this.f = 10000L;
+            return;
+        }
+        if (i == 1) {
+            this.f = 10000L;
+            return;
+        }
+        if (i == 2 || i == 3) {
+            this.f = 10000000L;
+        } else if (i == 4) {
+            this.f = 500000L;
+        } else {
+            tb4.a();
+        }
     }
 }

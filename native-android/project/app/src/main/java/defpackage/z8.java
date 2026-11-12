@@ -11,20 +11,20 @@ public final class z8 implements AdapterView.OnItemClickListener {
     public final /* synthetic */ d9 o;
     public final /* synthetic */ a9 p;
 
-    public z8(a9 r1, AlertController$RecycleListView r2, d9 r3) {
-        this.p = r1;
-        this.n = r2;
-        this.o = r3;
+    public z8(a9 a9Var, AlertController$RecycleListView alertController$RecycleListView, d9 d9Var) {
+        this.p = a9Var;
+        this.n = alertController$RecycleListView;
+        this.o = d9Var;
     }
 
     @Override // android.widget.AdapterView.OnItemClickListener
-    public final void onItemClick(AdapterView r1, View r2, int r3, long r4) {
-        a9 r5 = this.p;
-        boolean[] r6 = r5.t;
-        AlertController$RecycleListView r7 = this.n;
-        if (r6 == null) goto L5;
-        r6[r3] = r7.isItemChecked(r3);
-    L5:
-        r5.x.onClick(this.o.b, r3, r7.isItemChecked(r3));
+    public final void onItemClick(AdapterView adapterView, View view, int i, long j) {
+        a9 a9Var = this.p;
+        boolean[] zArr = a9Var.t;
+        AlertController$RecycleListView alertController$RecycleListView = this.n;
+        if (zArr != null) {
+            zArr[i] = alertController$RecycleListView.isItemChecked(i);
+        }
+        a9Var.x.onClick(this.o.b, i, alertController$RecycleListView.isItemChecked(i));
     }
 }

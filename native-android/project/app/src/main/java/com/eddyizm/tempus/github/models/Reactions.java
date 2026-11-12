@@ -39,80 +39,48 @@ public final class Reactions {
     @ka4("url")
     private String url;
 
-    public /* synthetic */ Reactions(String r2, Integer r3, Integer r4, Integer r5, Integer r6, Integer r7, Integer r8, Integer r9, Integer r10, Integer r11, int r12, xj0 r13) {
-        if ((r12 & 1) == 0) goto L6;
-        r2 = null;
-    L6:
-        if ((r12 & 2) == 0) goto L9;
-        r3 = null;
-    L9:
-        if ((r12 & 4) == 0) goto L12;
-        r4 = null;
-    L12:
-        if ((r12 & 8) == 0) goto L15;
-        r5 = null;
-    L15:
-        if ((r12 & 16) == 0) goto L18;
-        r6 = null;
-    L18:
-        if ((r12 & 32) == 0) goto L21;
-        r7 = null;
-    L21:
-        if ((r12 & 64) == 0) goto L24;
-        r8 = null;
-    L24:
-        if ((r12 & 128) == 0) goto L27;
-        r9 = null;
-    L27:
-        if ((r12 & 256) == 0) goto L30;
-        r10 = null;
-    L30:
-        if ((r12 & 512) == 0) goto L32;
-        r11 = null;
-    L32:
-        this(r2, r3, r4, r5, r6, r7, r8, r9, r10, r11);
+    public /* synthetic */ Reactions(String str, Integer num, Integer num2, Integer num3, Integer num4, Integer num5, Integer num6, Integer num7, Integer num8, Integer num9, int i, xj0 xj0Var) {
+        this((i & 1) != 0 ? null : str, (i & 2) != 0 ? null : num, (i & 4) != 0 ? null : num2, (i & 8) != 0 ? null : num3, (i & 16) != 0 ? null : num4, (i & 32) != 0 ? null : num5, (i & 64) != 0 ? null : num6, (i & 128) != 0 ? null : num7, (i & 256) != 0 ? null : num8, (i & 512) != 0 ? null : num9);
     }
 
-    public static /* synthetic */ Reactions copy$default(Reactions r0, String r1, Integer r2, Integer r3, Integer r4, Integer r5, Integer r6, Integer r7, Integer r8, Integer r9, Integer r10, int r11, Object r12) {
-        if ((r11 & 1) == 0) goto L6;
-        r1 = r0.url;
-    L6:
-        if ((r11 & 2) == 0) goto L9;
-        r2 = r0.totalCount;
-    L9:
-        if ((r11 & 4) == 0) goto L12;
-        r3 = r0.like;
-    L12:
-        if ((r11 & 8) == 0) goto L15;
-        r4 = r0.dislike;
-    L15:
-        if ((r11 & 16) == 0) goto L18;
-        r5 = r0.laugh;
-    L18:
-        if ((r11 & 32) == 0) goto L21;
-        r6 = r0.hooray;
-    L21:
-        if ((r11 & 64) == 0) goto L24;
-        r7 = r0.confused;
-    L24:
-        if ((r11 & 128) == 0) goto L27;
-        r8 = r0.heart;
-    L27:
-        if ((r11 & 256) == 0) goto L30;
-        r9 = r0.rocket;
-    L30:
-        if ((r11 & 512) == 0) goto L32;
-        r10 = r0.eyes;
-    L32:
-        Integer r13 = r9;
-        Integer r14 = r10;
-        Integer r15 = r7;
-        Integer r16 = r8;
-        Integer r17 = r5;
-        Integer r18 = r6;
-        Integer r19 = r3;
-        Integer r20 = r4;
-        return r0.copy(r1, r2, r19, r20, r17, r18, r15, r16, r13, r14);
+    public static /* synthetic */ Reactions copy$default(Reactions reactions, String str, Integer num, Integer num2, Integer num3, Integer num4, Integer num5, Integer num6, Integer num7, Integer num8, Integer num9, int i, Object obj) {
+        if ((i & 1) != 0) {
+            str = reactions.url;
+        }
+        if ((i & 2) != 0) {
+            num = reactions.totalCount;
+        }
+        if ((i & 4) != 0) {
+            num2 = reactions.like;
+        }
+        if ((i & 8) != 0) {
+            num3 = reactions.dislike;
+        }
+        if ((i & 16) != 0) {
+            num4 = reactions.laugh;
+        }
+        if ((i & 32) != 0) {
+            num5 = reactions.hooray;
+        }
+        if ((i & 64) != 0) {
+            num6 = reactions.confused;
+        }
+        if ((i & 128) != 0) {
+            num7 = reactions.heart;
+        }
+        if ((i & 256) != 0) {
+            num8 = reactions.rocket;
+        }
+        if ((i & 512) != 0) {
+            num9 = reactions.eyes;
+        }
+        Integer num10 = num8;
+        Integer num11 = num9;
+        Integer num12 = num6;
+        Integer num13 = num7;
+        Integer num14 = num4;
+        Integer num15 = num5;
+        return reactions.copy(str, num, num2, num3, num14, num15, num12, num13, num10, num11);
     }
 
     public final String component1() {
@@ -155,49 +123,19 @@ public final class Reactions {
         return this.rocket;
     }
 
-    public final Reactions copy(String r1, Integer r2, Integer r3, Integer r4, Integer r5, Integer r6, Integer r7, Integer r8, Integer r9, Integer r10) {
-        return new Reactions(r1, r2, r3, r4, r5, r6, r7, r8, r9, r10);
+    public final Reactions copy(String str, Integer num, Integer num2, Integer num3, Integer num4, Integer num5, Integer num6, Integer num7, Integer num8, Integer num9) {
+        return new Reactions(str, num, num2, num3, num4, num5, num6, num7, num8, num9);
     }
 
-    public boolean equals(Object r5) {
-        if (this != r5) goto L6;
-        return true;
-    L6:
-        if ((r5 instanceof Reactions) == true) goto L8;
-        return false;
-    L8:
-        Reactions r6 = (Reactions) r5;
-        if (h12.c(this.url, r6.url) == true) goto L12;
-        return false;
-    L12:
-        if (h12.c(this.totalCount, r6.totalCount) == true) goto L15;
-        return false;
-    L15:
-        if (h12.c(this.like, r6.like) == true) goto L18;
-        return false;
-    L18:
-        if (h12.c(this.dislike, r6.dislike) == true) goto L21;
-        return false;
-    L21:
-        if (h12.c(this.laugh, r6.laugh) == true) goto L24;
-        return false;
-    L24:
-        if (h12.c(this.hooray, r6.hooray) == true) goto L27;
-        return false;
-    L27:
-        if (h12.c(this.confused, r6.confused) == true) goto L30;
-        return false;
-    L30:
-        if (h12.c(this.heart, r6.heart) == true) goto L33;
-        return false;
-    L33:
-        if (h12.c(this.rocket, r6.rocket) == true) goto L36;
-        return false;
-    L36:
-        if (h12.c(this.eyes, r6.eyes) == true) goto L38;
-        return false;
-    L38:
-        return true;
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof Reactions)) {
+            return false;
+        }
+        Reactions reactions = (Reactions) obj;
+        return h12.c(this.url, reactions.url) && h12.c(this.totalCount, reactions.totalCount) && h12.c(this.like, reactions.like) && h12.c(this.dislike, reactions.dislike) && h12.c(this.laugh, reactions.laugh) && h12.c(this.hooray, reactions.hooray) && h12.c(this.confused, reactions.confused) && h12.c(this.heart, reactions.heart) && h12.c(this.rocket, reactions.rocket) && h12.c(this.eyes, reactions.eyes);
     }
 
     public final Integer getConfused() {
@@ -241,154 +179,86 @@ public final class Reactions {
     }
 
     public int hashCode() {
-        String r0 = this.url;
-        int r1 = 0;
-        if (r0 != null) goto L5;
-        int r2 = 0;
-    L6:
-        int r3 = r2 * 31;
-        Integer r4 = this.totalCount;
-        if (r4 != null) goto L9;
-        int r5 = 0;
-    L10:
-        int r6 = (r3 + r5) * 31;
-        Integer r7 = this.like;
-        if (r7 != null) goto L13;
-        int r8 = 0;
-    L14:
-        int r9 = (r6 + r8) * 31;
-        Integer r10 = this.dislike;
-        if (r10 != null) goto L17;
-        int r11 = 0;
-    L18:
-        int r12 = (r9 + r11) * 31;
-        Integer r13 = this.laugh;
-        if (r13 != null) goto L21;
-        int r14 = 0;
-    L22:
-        int r15 = (r12 + r14) * 31;
-        Integer r16 = this.hooray;
-        if (r16 != null) goto L25;
-        int r17 = 0;
-    L26:
-        int r18 = (r15 + r17) * 31;
-        Integer r19 = this.confused;
-        if (r19 != null) goto L29;
-        int r20 = 0;
-    L30:
-        int r21 = (r18 + r20) * 31;
-        Integer r22 = this.heart;
-        if (r22 != null) goto L33;
-        int r23 = 0;
-    L34:
-        int r24 = (r21 + r23) * 31;
-        Integer r25 = this.rocket;
-        if (r25 != null) goto L37;
-        int r26 = 0;
-    L38:
-        int r27 = (r24 + r26) * 31;
-        Integer r28 = this.eyes;
-        if (r28 == null) goto L43;
-        r1 = r28.hashCode();
-    L43:
-        return r27 + r1;
-    L37:
-        r26 = r25.hashCode();
-        goto L38
-    L33:
-        r23 = r22.hashCode();
-        goto L34
-    L29:
-        r20 = r19.hashCode();
-        goto L30
-    L25:
-        r17 = r16.hashCode();
-        goto L26
-    L21:
-        r14 = r13.hashCode();
-        goto L22
-    L17:
-        r11 = r10.hashCode();
-        goto L18
-    L13:
-        r8 = r7.hashCode();
-        goto L14
-    L9:
-        r5 = r4.hashCode();
-        goto L10
-    L5:
-        r2 = r0.hashCode();
-        goto L6
+        String str = this.url;
+        int iHashCode = (str == null ? 0 : str.hashCode()) * 31;
+        Integer num = this.totalCount;
+        int iHashCode2 = (iHashCode + (num == null ? 0 : num.hashCode())) * 31;
+        Integer num2 = this.like;
+        int iHashCode3 = (iHashCode2 + (num2 == null ? 0 : num2.hashCode())) * 31;
+        Integer num3 = this.dislike;
+        int iHashCode4 = (iHashCode3 + (num3 == null ? 0 : num3.hashCode())) * 31;
+        Integer num4 = this.laugh;
+        int iHashCode5 = (iHashCode4 + (num4 == null ? 0 : num4.hashCode())) * 31;
+        Integer num5 = this.hooray;
+        int iHashCode6 = (iHashCode5 + (num5 == null ? 0 : num5.hashCode())) * 31;
+        Integer num6 = this.confused;
+        int iHashCode7 = (iHashCode6 + (num6 == null ? 0 : num6.hashCode())) * 31;
+        Integer num7 = this.heart;
+        int iHashCode8 = (iHashCode7 + (num7 == null ? 0 : num7.hashCode())) * 31;
+        Integer num8 = this.rocket;
+        int iHashCode9 = (iHashCode8 + (num8 == null ? 0 : num8.hashCode())) * 31;
+        Integer num9 = this.eyes;
+        return iHashCode9 + (num9 != null ? num9.hashCode() : 0);
     }
 
-    public final void setConfused(Integer r1) {
-        this.confused = r1;
+    public final void setConfused(Integer num) {
+        this.confused = num;
     }
 
-    public final void setDislike(Integer r1) {
-        this.dislike = r1;
+    public final void setDislike(Integer num) {
+        this.dislike = num;
     }
 
-    public final void setEyes(Integer r1) {
-        this.eyes = r1;
+    public final void setEyes(Integer num) {
+        this.eyes = num;
     }
 
-    public final void setHeart(Integer r1) {
-        this.heart = r1;
+    public final void setHeart(Integer num) {
+        this.heart = num;
     }
 
-    public final void setHooray(Integer r1) {
-        this.hooray = r1;
+    public final void setHooray(Integer num) {
+        this.hooray = num;
     }
 
-    public final void setLaugh(Integer r1) {
-        this.laugh = r1;
+    public final void setLaugh(Integer num) {
+        this.laugh = num;
     }
 
-    public final void setLike(Integer r1) {
-        this.like = r1;
+    public final void setLike(Integer num) {
+        this.like = num;
     }
 
-    public final void setRocket(Integer r1) {
-        this.rocket = r1;
+    public final void setRocket(Integer num) {
+        this.rocket = num;
     }
 
-    public final void setTotalCount(Integer r1) {
-        this.totalCount = r1;
+    public final void setTotalCount(Integer num) {
+        this.totalCount = num;
     }
 
-    public final void setUrl(String r1) {
-        this.url = r1;
+    public final void setUrl(String str) {
+        this.url = str;
     }
 
     public String toString() {
         return "Reactions(url=" + this.url + ", totalCount=" + this.totalCount + ", like=" + this.like + ", dislike=" + this.dislike + ", laugh=" + this.laugh + ", hooray=" + this.hooray + ", confused=" + this.confused + ", heart=" + this.heart + ", rocket=" + this.rocket + ", eyes=" + this.eyes + ")";
     }
 
-    public Reactions(String r1, Integer r2, Integer r3, Integer r4, Integer r5, Integer r6, Integer r7, Integer r8, Integer r9, Integer r10) {
-        this.url = r1;
-        this.totalCount = r2;
-        this.like = r3;
-        this.dislike = r4;
-        this.laugh = r5;
-        this.hooray = r6;
-        this.confused = r7;
-        this.heart = r8;
-        this.rocket = r9;
-        this.eyes = r10;
+    public Reactions(String str, Integer num, Integer num2, Integer num3, Integer num4, Integer num5, Integer num6, Integer num7, Integer num8, Integer num9) {
+        this.url = str;
+        this.totalCount = num;
+        this.like = num2;
+        this.dislike = num3;
+        this.laugh = num4;
+        this.hooray = num5;
+        this.confused = num6;
+        this.heart = num7;
+        this.rocket = num8;
+        this.eyes = num9;
     }
 
     public Reactions() {
-        String r1 = null;
-        Integer r2 = null;
-        Integer r3 = null;
-        Integer r4 = null;
-        Integer r5 = null;
-        Integer r6 = null;
-        Integer r7 = null;
-        Integer r8 = null;
-        Integer r9 = null;
-        Integer r10 = null;
-        this(r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, 1023, null);
+        this(null, null, null, null, null, null, null, null, null, null, 1023, null);
     }
 }

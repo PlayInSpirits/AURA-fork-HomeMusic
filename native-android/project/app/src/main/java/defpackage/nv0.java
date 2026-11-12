@@ -5,58 +5,52 @@ package defpackage;
 public final class nv0 extends ep4 implements xf1 {
     public final /* synthetic */ int o;
 
-    public /* synthetic */ nv0(int r1, vd0 r2, int r3) {
-        this.o = r3;
-        super(r1, r2);
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public /* synthetic */ nv0(int i, vd0 vd0Var, int i2) {
+        super(i, vd0Var);
+        this.o = i2;
     }
 
     @Override // defpackage.xf1
-    public final Object a(Object r3, Object r4, Object r5) {
-        int r2 = this.o;
-        j15 r0 = j15.a;
-        int r1 = 3;
-        switch(r2) {
-            case 0: goto L10;
-            case 1: goto L8;
-            default: goto L4;
-        };
-    L4:
-        if (r3 != null) goto L6;
-        long r6 = ((g83) r4).a;
-        new nv0(r1, (vd0) r5, 2).invokeSuspend(r0);
-        return r0;
-    L6:
-        kf2.k();
-        return null;
-    L8:
-        we0 r7 = (we0) r3;
-        ((Number) r4).floatValue();
-        new nv0(r1, (vd0) r5, 1).invokeSuspend(r0);
-        return r0;
-    L10:
-        we0 r8 = (we0) r3;
-        long r9 = ((g83) r4).a;
-        new nv0(r1, (vd0) r5, 0).invokeSuspend(r0);
-        return r0;
+    public final Object a(Object obj, Object obj2, Object obj3) {
+        int i = this.o;
+        j15 j15Var = j15.a;
+        int i2 = 3;
+        switch (i) {
+            case 0:
+                long j = ((g83) obj2).a;
+                new nv0(i2, (vd0) obj3, 0).invokeSuspend(j15Var);
+                return j15Var;
+            case 1:
+                ((Number) obj2).floatValue();
+                new nv0(i2, (vd0) obj3, 1).invokeSuspend(j15Var);
+                return j15Var;
+            default:
+                if (obj != null) {
+                    kf2.k();
+                    return null;
+                }
+                long j2 = ((g83) obj2).a;
+                new nv0(i2, (vd0) obj3, 2).invokeSuspend(j15Var);
+                return j15Var;
+        }
     }
 
     @Override // defpackage.jp
-    public final Object invokeSuspend(Object r2) {
-        int r1 = this.o;
-        j15 r0 = j15.a;
-        switch(r1) {
-            case 0: goto L8;
-            case 1: goto L6;
-            default: goto L4;
-        };
-    L4:
-        kb4.X(r2);
-        return r0;
-    L6:
-        kb4.X(r2);
-        return r0;
-    L8:
-        kb4.X(r2);
-        return r0;
+    public final Object invokeSuspend(Object obj) {
+        int i = this.o;
+        j15 j15Var = j15.a;
+        switch (i) {
+            case 0:
+                kb4.X(obj);
+                break;
+            case 1:
+                kb4.X(obj);
+                break;
+            default:
+                kb4.X(obj);
+                break;
+        }
+        return j15Var;
     }
 }

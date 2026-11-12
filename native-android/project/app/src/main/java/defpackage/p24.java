@@ -22,395 +22,348 @@ public final class p24 {
     public final fa0 f;
     public we1 g;
 
-    public p24(li0 r10, qz0 r11) {
-        r24 r0 = r10.g;
-        ro4 r1 = r10.c;
-        String r4 = r10.b;
-        this.c = r10;
-        this.d = r11;
-        List r2 = r10.e;
-        if (r2 != null) goto L5;
-        r2 = u01.n;
-    L5:
-        this.e = r2;
-        y34 r3 = r10.t;
-        boolean r8 = true;
-        if (r3 != null) goto L11;
-        if (r1 == null) goto L9;
-        Context r5 = r10.a;
-        r5.getClass();
-        this.f = new qo4(new pz1(r1.c(new y10(r5, r4, new o24(this, r11.a), false, false))));
-    L29:
-        if (r0 == r24.p) goto L32;
-        r8 = false;
-    L32:
-        so4 r9 = c();
-        if (r9 == null) goto L36;
-        r9.setWriteAheadLoggingEnabled(r8);
-        return;
-    L36:
-        return;
-    L9:
-        kf2.n("SQLiteManager was constructed with both null driver and open helper factory!");
-        throw null;
-    L11:
-        if (r4 != null) goto L13;
-        ia0 r12 = new ia0(new rf2(this, r3));
-    L27:
-        this.f = r12;
-        goto L29
-    L13:
-        rf2 r13 = new rf2(this, r3);
-        int r14 = r0.ordinal();
-        if (r14 == 1) goto L19;
-        if (r14 != 2) goto L18;
-        int r15 = 4;
-    L20:
-        int r6 = r0.ordinal();
-        if (r6 == 1) goto L26;
-        if (r6 == 2) goto L26;
-        throw new IllegalStateException(("Can't get max number of writers for journal mode '" + r0 + '\'').toString());
-    L26:
-        r12 = new ia0(r13, r4, r15);
-        goto L27
-    L18:
-        throw new IllegalStateException(("Can't get max number of reader for journal mode '" + r0 + '\'').toString());
-    L19:
-        r15 = 1;
-        goto L20
+    public p24(li0 li0Var, qz0 qz0Var) {
+        int i;
+        ia0 ia0Var;
+        r24 r24Var = li0Var.g;
+        ro4 ro4Var = li0Var.c;
+        String str = li0Var.b;
+        this.c = li0Var;
+        this.d = qz0Var;
+        List list = li0Var.e;
+        this.e = list == null ? u01.n : list;
+        y34 y34Var = li0Var.t;
+        if (y34Var != null) {
+            if (str == null) {
+                ia0Var = new ia0(new rf2(this, y34Var));
+            } else {
+                rf2 rf2Var = new rf2(this, y34Var);
+                int iOrdinal = r24Var.ordinal();
+                if (iOrdinal == 1) {
+                    i = 1;
+                } else {
+                    if (iOrdinal != 2) {
+                        throw new IllegalStateException(("Can't get max number of reader for journal mode '" + r24Var + '\'').toString());
+                    }
+                    i = 4;
+                }
+                int iOrdinal2 = r24Var.ordinal();
+                if (iOrdinal2 != 1 && iOrdinal2 != 2) {
+                    throw new IllegalStateException(("Can't get max number of writers for journal mode '" + r24Var + '\'').toString());
+                }
+                ia0Var = new ia0(rf2Var, str, i);
+            }
+            this.f = ia0Var;
+        } else {
+            if (ro4Var == null) {
+                kf2.n("SQLiteManager was constructed with both null driver and open helper factory!");
+                throw null;
+            }
+            Context context = li0Var.a;
+            context.getClass();
+            this.f = new qo4(new pz1(ro4Var.c(new y10(context, str, new o24(this, qz0Var.a), false, false))));
+        }
+        boolean z = r24Var == r24.p;
+        so4 so4VarC = c();
+        if (so4VarC != null) {
+            so4VarC.setWriteAheadLoggingEnabled(z);
+        }
     }
 
-    public static final void a(p24 r5, x34 r6) {
-        qz0 r0 = r5.d;
-        li0 r2 = r5.c;
-        r24 r3 = r2.g;
-        r24 r4 = r24.p;
-        if (r3 != r4) goto L5;
-        h12.n(r6, "PRAGMA journal_mode = WAL");
-    L7:
-        if (r2.g != r4) goto L9;
-        h12.n(r6, "PRAGMA synchronous = NORMAL");
-    L10:
-        b(r6);
-        z34 r7 = r6.U("PRAGMA user_version");
-        r7.O();     // Catch: Throwable -> L33
-        int r8 = (int) r7.getLong(0);
-        ud3.e(r7, null);
-        int r1 = r0.a;
-        if (r8 == r1) goto L31;
-        h12.n(r6, "BEGIN EXCLUSIVE TRANSACTION");
-        if (r8 != 0) goto L19;
-        r5.d(r6);     // Catch: Throwable -> L17
-    L20:
-        h12.n(r6, "PRAGMA user_version = " + r1);     // Catch: Throwable -> L17
-        Object r9 = j15.a;     // Catch: Throwable -> L17
-    L24:
-        if ((r9 instanceof s14) == true) goto L26;
-        j15 r10 = (j15) r9;
-        h12.n(r6, "END TRANSACTION");
-    L26:
-        Throwable r11 = bb3.a(r9);
-        if (r11 == null) goto L31;
-        h12.n(r6, "ROLLBACK TRANSACTION");
-        throw r11;
-    L19:
-        r5.e(r6, r8, r1);     // Catch: Throwable -> L17
-    L17:
-        th = move-exception;
-        r9 = new s14(th);
-    L31:
-        r5.f(r6);
-        return;
-    L33:
-        th = move-exception;
-        throw th;     // Catch: Throwable -> L35
-    L35:
-        th = move-exception;
-        ud3.e(r7, th);
-        throw th;
-    L9:
-        h12.n(r6, "PRAGMA synchronous = FULL");
-        goto L10
-    L5:
-        h12.n(r6, "PRAGMA journal_mode = TRUNCATE");
-        goto L7
+    public static final void a(p24 p24Var, x34 x34Var) throws Throwable {
+        Object s14Var;
+        qz0 qz0Var = p24Var.d;
+        li0 li0Var = p24Var.c;
+        r24 r24Var = li0Var.g;
+        r24 r24Var2 = r24.p;
+        if (r24Var == r24Var2) {
+            h12.n(x34Var, "PRAGMA journal_mode = WAL");
+        } else {
+            h12.n(x34Var, "PRAGMA journal_mode = TRUNCATE");
+        }
+        if (li0Var.g == r24Var2) {
+            h12.n(x34Var, "PRAGMA synchronous = NORMAL");
+        } else {
+            h12.n(x34Var, "PRAGMA synchronous = FULL");
+        }
+        b(x34Var);
+        z34 z34VarU = x34Var.U("PRAGMA user_version");
+        try {
+            z34VarU.O();
+            int i = (int) z34VarU.getLong(0);
+            ud3.e(z34VarU, null);
+            int i2 = qz0Var.a;
+            if (i != i2) {
+                h12.n(x34Var, "BEGIN EXCLUSIVE TRANSACTION");
+                try {
+                    if (i == 0) {
+                        p24Var.d(x34Var);
+                    } else {
+                        p24Var.e(x34Var, i, i2);
+                    }
+                    h12.n(x34Var, "PRAGMA user_version = " + i2);
+                    s14Var = j15.a;
+                } catch (Throwable th) {
+                    s14Var = new s14(th);
+                }
+                if (!(s14Var instanceof s14)) {
+                    h12.n(x34Var, "END TRANSACTION");
+                }
+                Throwable thA = bb3.a(s14Var);
+                if (thA != null) {
+                    h12.n(x34Var, "ROLLBACK TRANSACTION");
+                    throw thA;
+                }
+            }
+            p24Var.f(x34Var);
+        } catch (Throwable th2) {
+            try {
+                throw th2;
+            } catch (Throwable th3) {
+                ud3.e(z34VarU, th2);
+                throw th3;
+            }
+        }
     }
 
-    public static void b(x34 r5) {
-        z34 r0 = r5.U("PRAGMA busy_timeout");
-        r0.O();     // Catch: Throwable -> L8
-        long r1 = r0.getLong(0);     // Catch: Throwable -> L8
-        ud3.e(r0, null);
-        if (r1 >= 3000) goto L17;
-        h12.n(r5, "PRAGMA busy_timeout = 3000");
-        return;
-    L17:
-        return;
-    L8:
-        th = move-exception;
-        throw th;     // Catch: Throwable -> L10
-    L10:
-        th = move-exception;
-        ud3.e(r0, th);
-        throw th;
+    public static void b(x34 x34Var) {
+        z34 z34VarU = x34Var.U("PRAGMA busy_timeout");
+        try {
+            z34VarU.O();
+            long j = z34VarU.getLong(0);
+            ud3.e(z34VarU, null);
+            if (j < 3000) {
+                h12.n(x34Var, "PRAGMA busy_timeout = 3000");
+            }
+        } catch (Throwable th) {
+            try {
+                throw th;
+            } catch (Throwable th2) {
+                ud3.e(z34VarU, th);
+                throw th2;
+            }
+        }
     }
 
     public final so4 c() {
-        fa0 r2 = this.f;
-        if ((r2 instanceof qo4) == false) goto L5;
-        qo4 r3 = (qo4) r2;
-    L6:
-        if (r3 != null) goto L8;
+        fa0 fa0Var = this.f;
+        qo4 qo4Var = fa0Var instanceof qo4 ? (qo4) fa0Var : null;
+        if (qo4Var != null) {
+            return (so4) qo4Var.n.o;
+        }
         return null;
-    L8:
-        return (so4) r3.n.o;
-    L5:
-        r3 = null;
-        goto L6
     }
 
-    public final void d(x34 r8) {
-        r8.getClass();
-        z34 r0 = r8.U("SELECT count(*) FROM sqlite_master WHERE name != 'android_metadata'");
-        boolean r2 = false;
-        if (r0.O() == false) goto L11;
-        if (r0.getLong(0) != 0) goto L11;
-        r2 = true;
-    L11:
-        ud3.e(r0, null);
-        qz0 r1 = this.d;
-        r1.a(r8);
-        if (r2 == true) goto L18;
-        u24 r3 = r1.v(r8);
-        if (r3.a == true) goto L18;
-        throw new IllegalStateException(("Pre-packaged database has an invalid schema: " + r3.b).toString());
-    L18:
-        h12.n(r8, "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)");
-        h12.n(r8, "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '" + ((String) r1.b) + "')");
-        r1.r(r8);
-        Iterator r7 = this.e.iterator();
-    L20:
-        if (r7.hasNext() == false) goto L24;
-        ((m30) r7.next()).getClass();
-        if ((r8 instanceof po4) == false) goto L20;
-        ((po4) r8).n.getClass();
-        goto L20
-    L24:
-        return;
-    L9:
-        th = move-exception;
-        throw th;     // Catch: Throwable -> L26
-    L26:
-        th = move-exception;
-        ud3.e(r0, th);
-        throw th;
+    public final void d(x34 x34Var) {
+        x34Var.getClass();
+        z34 z34VarU = x34Var.U("SELECT count(*) FROM sqlite_master WHERE name != 'android_metadata'");
+        try {
+            boolean z = false;
+            if (z34VarU.O() && z34VarU.getLong(0) == 0) {
+                z = true;
+            }
+            ud3.e(z34VarU, null);
+            qz0 qz0Var = this.d;
+            qz0Var.a(x34Var);
+            if (!z) {
+                u24 u24VarV = qz0Var.v(x34Var);
+                if (!u24VarV.a) {
+                    throw new IllegalStateException(("Pre-packaged database has an invalid schema: " + u24VarV.b).toString());
+                }
+            }
+            h12.n(x34Var, "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)");
+            h12.n(x34Var, "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '" + ((String) qz0Var.b) + "')");
+            qz0Var.r(x34Var);
+            Iterator it = this.e.iterator();
+            while (it.hasNext()) {
+                ((m30) it.next()).getClass();
+                if (x34Var instanceof po4) {
+                    ((po4) x34Var).n.getClass();
+                }
+            }
+        } catch (Throwable th) {
+            try {
+                throw th;
+            } catch (Throwable th2) {
+                ud3.e(z34VarU, th);
+                throw th2;
+            }
+        }
     }
 
-    public final void e(x34 r5, int r6, int r7) {
-        r5.getClass();
-        li0 r0 = this.c;
-        List r1 = si0.u(r0.d, r6, r7);
-        qz0 r2 = this.d;
-        if (r1 == null) goto L15;
-        r2.u(r5);
-        Iterator r4 = r1.iterator();
-    L6:
-        if (r4.hasNext() == false) goto L8;
-        ((jw2) r4.next()).b(r5);
-        goto L6
-    L8:
-        u24 r8 = r2.v(r5);
-        if (r8.a == false) goto L13;
-        r2.t(r5);
-        h12.n(r5, "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)");
-        h12.n(r5, "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '" + ((String) r2.b) + "')");
-        return;
-    L13:
-        throw new IllegalStateException(("Migration didn't properly handle: " + r8.b).toString());
-    L15:
-        if (si0.B(r0, r6, r7) == true) goto L52;
-        if (r0.s == false) goto L42;
-        z34 r9 = r5.U("SELECT name, type FROM sqlite_master WHERE type = 'table' OR type = 'view'");
-        qb2 r10 = gb.r();     // Catch: Throwable -> L28
-    L21:
-        if (r9.O() == false) goto L30;
-        String r3 = r9.D(0);     // Catch: Throwable -> L28
-        if (xm4.k0(r3, "sqlite_", false) == true) goto L21;
-        if (r3.equals("android_metadata") == true) goto L21;
-        r10.add(new kd3(r3, Boolean.valueOf(h12.c(r9.D(1), "view"))));     // Catch: Throwable -> L28
-        goto L21
-    L30:
-        qb2 r11 = gb.f(r10);     // Catch: Throwable -> L28
-        ud3.e(r9, null);
-        ListIterator r12 = r11.listIterator(0);
-    L32:
-        dm1 r13 = (dm1) r12;
-        if (r13.hasNext() == false) goto L43;
-        kd3 r14 = (kd3) r13.next();
-        String r15 = (String) r14.n;
-        if (((Boolean) r14.o).booleanValue() == true) goto L36;
-        h12.n(r5, "DROP TABLE IF EXISTS " + r15);
-        goto L32
-    L36:
-        h12.n(r5, "DROP VIEW IF EXISTS " + r15);
-    L43:
-        Iterator r16 = this.e.iterator();
-    L45:
-        if (r16.hasNext() == false) goto L49;
-        ((m30) r16.next()).getClass();
-        if ((r5 instanceof po4) == false) goto L45;
-        ((po4) r5).n.getClass();
-        goto L45
-    L49:
-        r2.a(r5);
-        return;
-    L28:
-        th = move-exception;
-        throw th;     // Catch: Throwable -> L39
-    L39:
-        th = move-exception;
-        ud3.e(r9, th);
-        throw th;
-    L42:
-        r2.c(r5);
-        goto L43
-    L52:
-        throw new IllegalStateException(("A migration from " + r6 + " to " + r7 + " was required but not found. Please provide the necessary Migration path via RoomDatabase.Builder.addMigration(...) or allow for destructive migrations via one of the RoomDatabase.Builder.fallbackToDestructiveMigration* functions.").toString());
+    public final void e(x34 x34Var, int i, int i2) {
+        x34Var.getClass();
+        li0 li0Var = this.c;
+        List listU = si0.u(li0Var.d, i, i2);
+        qz0 qz0Var = this.d;
+        if (listU != null) {
+            qz0Var.u(x34Var);
+            Iterator it = listU.iterator();
+            while (it.hasNext()) {
+                ((jw2) it.next()).b(x34Var);
+            }
+            u24 u24VarV = qz0Var.v(x34Var);
+            if (!u24VarV.a) {
+                throw new IllegalStateException(("Migration didn't properly handle: " + u24VarV.b).toString());
+            }
+            qz0Var.t(x34Var);
+            h12.n(x34Var, "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)");
+            h12.n(x34Var, "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '" + ((String) qz0Var.b) + "')");
+            return;
+        }
+        if (si0.B(li0Var, i, i2)) {
+            throw new IllegalStateException(("A migration from " + i + " to " + i2 + " was required but not found. Please provide the necessary Migration path via RoomDatabase.Builder.addMigration(...) or allow for destructive migrations via one of the RoomDatabase.Builder.fallbackToDestructiveMigration* functions.").toString());
+        }
+        if (li0Var.s) {
+            z34 z34VarU = x34Var.U("SELECT name, type FROM sqlite_master WHERE type = 'table' OR type = 'view'");
+            try {
+                qb2 qb2VarR = gb.r();
+                while (z34VarU.O()) {
+                    String strD = z34VarU.D(0);
+                    if (!xm4.k0(strD, "sqlite_", false) && !strD.equals("android_metadata")) {
+                        qb2VarR.add(new kd3(strD, Boolean.valueOf(h12.c(z34VarU.D(1), "view"))));
+                    }
+                }
+                qb2 qb2VarF = gb.f(qb2VarR);
+                ud3.e(z34VarU, null);
+                ListIterator listIterator = qb2VarF.listIterator(0);
+                while (true) {
+                    dm1 dm1Var = (dm1) listIterator;
+                    if (!dm1Var.hasNext()) {
+                        break;
+                    }
+                    kd3 kd3Var = (kd3) dm1Var.next();
+                    String str = (String) kd3Var.n;
+                    if (((Boolean) kd3Var.o).booleanValue()) {
+                        h12.n(x34Var, "DROP VIEW IF EXISTS " + str);
+                    } else {
+                        h12.n(x34Var, "DROP TABLE IF EXISTS " + str);
+                    }
+                }
+            } catch (Throwable th) {
+                try {
+                    throw th;
+                } catch (Throwable th2) {
+                    ud3.e(z34VarU, th);
+                    throw th2;
+                }
+            }
+        } else {
+            qz0Var.c(x34Var);
+        }
+        Iterator it2 = this.e.iterator();
+        while (it2.hasNext()) {
+            ((m30) it2.next()).getClass();
+            if (x34Var instanceof po4) {
+                ((po4) x34Var).n.getClass();
+            }
+        }
+        qz0Var.a(x34Var);
     }
 
-    public final void f(x34 r10) {
-        r10.getClass();
-        z34 r1 = r10.U("SELECT 1 FROM sqlite_master WHERE type = 'table' AND name = 'room_master_table'");
-    L9:
-        th = move-exception;
-        throw th;     // Catch: Throwable -> L58
-    L58:
-        th = move-exception;
-        ud3.e(r1, th);
-        throw th;
-    L4:
-        if (r1.O() == false) goto L11;
-        if (r1.getLong(0) == 0) goto L11;
-        boolean r2 = true;
-    L12:
-        ud3.e(r1, null);
-        qz0 r3 = this.d;
-        if (r2 == false) goto L33;
-        z34 r0 = r10.U("SELECT identity_hash FROM room_master_table WHERE id = 42 LIMIT 1");
-    L19:
-        th = move-exception;
-        throw th;     // Catch: Throwable -> L30
-    L30:
-        th = move-exception;
-        ud3.e(r0, th);
-        throw th;
-    L16:
-        if (r0.O() == false) goto L21;
-        String r4 = r0.D(0);     // Catch: Throwable -> L19
-    L22:
-        ud3.e(r0, null);
-        if (((String) r3.b).equals(r4) == false) goto L25;
-    L47:
-        r3.s(r10);
-        Iterator r5 = this.e.iterator();
-    L49:
-        if (r5.hasNext() == false) goto L53;
-        m30 r6 = (m30) r5.next();
-        r6.getClass();
-        if ((r10 instanceof po4) == false) goto L49;
-        r6.a(((po4) r10).n);
-        goto L49
-    L53:
-        this.a = true;
-        return;
-    L25:
-        if (((String) r3.c).equals(r4) == true) goto L47;
-        throw new IllegalStateException(("Room cannot verify the data integrity. Looks like you've changed schema but forgot to update the version number. You can simply fix this by increasing the version number. Expected identity hash: " + ((String) r3.b) + ", found: " + r4).toString());
-    L21:
-        r4 = null;
-        goto L22
-    L33:
-        h12.n(r10, "BEGIN EXCLUSIVE TRANSACTION");
-        u24 r7 = r3.v(r10);     // Catch: Throwable -> L37
-        if (r7.a == false) goto L40;
-        r3.t(r10);     // Catch: Throwable -> L37
-        h12.n(r10, "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)");     // Catch: Throwable -> L37
-        h12.n(r10, "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '" + ((String) r3.b) + "')");     // Catch: Throwable -> L37
-        Object r8 = j15.a;     // Catch: Throwable -> L37
-    L43:
-        if ((r8 instanceof s14) == true) goto L45;
-        j15 r9 = (j15) r8;
-        h12.n(r10, "END TRANSACTION");
-    L45:
-        Throwable r11 = bb3.a(r8);
-        if (r11 == null) goto L47;
-        h12.n(r10, "ROLLBACK TRANSACTION");
-        throw r11;
-    L40:
-        throw new IllegalStateException(("Pre-packaged database has an invalid schema: " + r7.b).toString());     // Catch: Throwable -> L37
-    L37:
-        th = move-exception;
-        r8 = new s14(th);
-    L11:
-        r2 = false;
-        goto L12
+    public final void f(x34 x34Var) throws Throwable {
+        Object s14Var;
+        x34Var.getClass();
+        z34 z34VarU = x34Var.U("SELECT 1 FROM sqlite_master WHERE type = 'table' AND name = 'room_master_table'");
+        try {
+            boolean z = z34VarU.O() && z34VarU.getLong(0) != 0;
+            ud3.e(z34VarU, null);
+            qz0 qz0Var = this.d;
+            if (z) {
+                z34 z34VarU2 = x34Var.U("SELECT identity_hash FROM room_master_table WHERE id = 42 LIMIT 1");
+                try {
+                    String strD = z34VarU2.O() ? z34VarU2.D(0) : null;
+                    ud3.e(z34VarU2, null);
+                    if (!((String) qz0Var.b).equals(strD) && !((String) qz0Var.c).equals(strD)) {
+                        throw new IllegalStateException(("Room cannot verify the data integrity. Looks like you've changed schema but forgot to update the version number. You can simply fix this by increasing the version number. Expected identity hash: " + ((String) qz0Var.b) + ", found: " + strD).toString());
+                    }
+                } catch (Throwable th) {
+                    try {
+                        throw th;
+                    } catch (Throwable th2) {
+                        ud3.e(z34VarU2, th);
+                        throw th2;
+                    }
+                }
+            } else {
+                h12.n(x34Var, "BEGIN EXCLUSIVE TRANSACTION");
+                try {
+                    u24 u24VarV = qz0Var.v(x34Var);
+                    if (!u24VarV.a) {
+                        throw new IllegalStateException(("Pre-packaged database has an invalid schema: " + u24VarV.b).toString());
+                    }
+                    qz0Var.t(x34Var);
+                    h12.n(x34Var, "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)");
+                    h12.n(x34Var, "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '" + ((String) qz0Var.b) + "')");
+                    s14Var = j15.a;
+                    if (!(s14Var instanceof s14)) {
+                        h12.n(x34Var, "END TRANSACTION");
+                    }
+                    Throwable thA = bb3.a(s14Var);
+                    if (thA != null) {
+                        h12.n(x34Var, "ROLLBACK TRANSACTION");
+                        throw thA;
+                    }
+                } catch (Throwable th3) {
+                    s14Var = new s14(th3);
+                }
+            }
+            qz0Var.s(x34Var);
+            for (m30 m30Var : this.e) {
+                m30Var.getClass();
+                if (x34Var instanceof po4) {
+                    m30Var.a(((po4) x34Var).n);
+                }
+            }
+            this.a = true;
+        } catch (Throwable th4) {
+            try {
+                throw th4;
+            } catch (Throwable th5) {
+                ud3.e(z34VarU, th4);
+                throw th5;
+            }
+        }
     }
 
-    public p24(li0 r25, kl3 r26) {
-        r24 r8 = r25.g;
-        this.c = r25;
+    public p24(li0 li0Var, kl3 kl3Var) {
+        r24 r24Var = li0Var.g;
+        this.c = li0Var;
         this.d = new n24(-1, "", "");
-        List r2 = r25.e;
-        u01 r3 = u01.n;
-        if (r2 != null) goto L5;
-        List r4 = r3;
-    L6:
-        this.e = r4;
-        kl3 r5 = new kl3(3, this);
-        if (r2 != null) goto L9;
-        r2 = r3;
-    L9:
-        ArrayList r6 = q40.F0(new m30(r5), r2);
-        Context r7 = r25.a;
-        String r9 = r25.b;
-        ro4 r10 = r25.c;
-        pz1 r11 = r25.d;
-        boolean r12 = r25.f;
-        Executor r13 = r25.h;
-        Executor r14 = r25.i;
-        Intent r15 = r25.j;
-        boolean r16 = r25.k;
-        boolean r17 = r25.l;
-        Set r18 = r25.m;
-        String r19 = r25.n;
-        File r20 = r25.o;
-        Callable r21 = r25.p;
-        List r22 = r25.q;
-        List r23 = r25.r;
-        boolean r24 = r25.s;
-        y34 r27 = r25.t;
-        ne0 r1 = r25.u;
-        r7.getClass();
-        r11.getClass();
-        r13.getClass();
-        r14.getClass();
-        r22.getClass();
-        r23.getClass();
-        this.f = new qo4(new pz1((so4) r26.invoke(new li0(r7, r9, r10, r11, r6, r12, r8, r13, r14, r15, r16, r17, r18, r19, r20, r21, r22, r23, r24, r27, r1))));
-        if (r8 != r24.p) goto L12;
-        boolean r28 = true;
-    L13:
-        so4 r0 = c();
-        if (r0 == null) goto L17;
-        r0.setWriteAheadLoggingEnabled(r28);
-        return;
-    L17:
-        return;
-    L12:
-        r28 = false;
-        goto L13
-    L5:
-        r4 = r2;
-        goto L6
+        List list = li0Var.e;
+        u01 u01Var = u01.n;
+        this.e = list == null ? u01Var : list;
+        ArrayList arrayListF0 = q40.F0(new m30(new kl3(3, this)), list == null ? u01Var : list);
+        Context context = li0Var.a;
+        String str = li0Var.b;
+        ro4 ro4Var = li0Var.c;
+        pz1 pz1Var = li0Var.d;
+        boolean z = li0Var.f;
+        Executor executor = li0Var.h;
+        Executor executor2 = li0Var.i;
+        Intent intent = li0Var.j;
+        boolean z2 = li0Var.k;
+        boolean z3 = li0Var.l;
+        Set set = li0Var.m;
+        String str2 = li0Var.n;
+        File file = li0Var.o;
+        Callable callable = li0Var.p;
+        List list2 = li0Var.q;
+        List list3 = li0Var.r;
+        boolean z4 = li0Var.s;
+        y34 y34Var = li0Var.t;
+        ne0 ne0Var = li0Var.u;
+        context.getClass();
+        pz1Var.getClass();
+        executor.getClass();
+        executor2.getClass();
+        list2.getClass();
+        list3.getClass();
+        this.f = new qo4(new pz1((so4) kl3Var.invoke(new li0(context, str, ro4Var, pz1Var, arrayListF0, z, r24Var, executor, executor2, intent, z2, z3, set, str2, file, callable, list2, list3, z4, y34Var, ne0Var))));
+        boolean z5 = r24Var == r24.p;
+        so4 so4VarC = c();
+        if (so4VarC != null) {
+            so4VarC.setWriteAheadLoggingEnabled(z5);
+        }
     }
 }

@@ -5,18 +5,14 @@ package defpackage;
 public final class on {
     public final int a;
 
-    public /* synthetic */ on(int r1) {
-        this.a = r1;
+    public /* synthetic */ on(int i) {
+        this.a = i;
     }
 
-    public final boolean equals(Object r2) {
-        if ((r2 instanceof on) == false) goto L11;
-        int r3 = ((on) r2).a;
-        if (this.a == r3) goto L9;
-        return false;
-    L9:
-        return true;
-    L11:
+    public final boolean equals(Object obj) {
+        if (obj instanceof on) {
+            return this.a == ((on) obj).a;
+        }
         return false;
     }
 

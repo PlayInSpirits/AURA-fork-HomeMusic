@@ -9,8 +9,8 @@ import java.util.logging.Logger;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class gr4 {
-    public static final Logger k = null;
-    public static final gr4 l = null;
+    public static final Logger k;
+    public static final gr4 l;
     public final rm2 a;
     public final Logger b;
     public final ReentrantLock c;
@@ -23,211 +23,207 @@ public final class gr4 {
     public final g5 j;
 
     static {
-        Logger r0 = Logger.getLogger(gr4.class.getName());
-        r0.getClass();
-        k = r0;
+        Logger logger = Logger.getLogger(gr4.class.getName());
+        logger.getClass();
+        k = logger;
         l = new gr4(new rm2(new ye5(b11.q(new StringBuilder(), ze5.c, " TaskRunner"), true)));
     }
 
-    public gr4(rm2 r2) {
-        Logger r0 = k;
-        r0.getClass();
-        this.a = r2;
-        this.b = r0;
-        ReentrantLock r3 = new ReentrantLock();
-        this.c = r3;
-        Condition r4 = r3.newCondition();
-        r4.getClass();
-        this.d = r4;
+    public gr4(rm2 rm2Var) {
+        Logger logger = k;
+        logger.getClass();
+        this.a = rm2Var;
+        this.b = logger;
+        ReentrantLock reentrantLock = new ReentrantLock();
+        this.c = reentrantLock;
+        Condition conditionNewCondition = reentrantLock.newCondition();
+        conditionNewCondition.getClass();
+        this.d = conditionNewCondition;
         this.e = 10000;
         this.h = new ArrayList();
         this.i = new ArrayList();
         this.j = new g5(29, this);
     }
 
-    public static final void a(gr4 r6, ar4 r7) {
-        ReentrantLock r0 = r6.c;
-        Thread r1 = Thread.currentThread();
-        String r2 = r1.getName();
-        r1.setName(r7.a);
-        long r3 = r7.a();     // Catch: Throwable -> L11
-        r0.lock();
-        r6.b(r7, r3);     // Catch: Throwable -> L8
-        r0.unlock();
-        r1.setName(r2);
-        return;
-    L8:
-        th = move-exception;
-        r0.unlock();
-        throw th;
-    L11:
-        th = move-exception;
-        r0.lock();
-        r6.b(r7, -1);     // Catch: Throwable -> L16
-        r0.unlock();
-        r1.setName(r2);
-        throw th;
-    L16:
-        th = move-exception;
-        r0.unlock();
-        throw th;
+    public static final void a(gr4 gr4Var, ar4 ar4Var) {
+        ReentrantLock reentrantLock = gr4Var.c;
+        Thread threadCurrentThread = Thread.currentThread();
+        String name = threadCurrentThread.getName();
+        threadCurrentThread.setName(ar4Var.a);
+        try {
+            long jA = ar4Var.a();
+            reentrantLock.lock();
+            try {
+                gr4Var.b(ar4Var, jA);
+                reentrantLock.unlock();
+                threadCurrentThread.setName(name);
+            } catch (Throwable th) {
+                reentrantLock.unlock();
+                throw th;
+            }
+        } catch (Throwable th2) {
+            reentrantLock.lock();
+            try {
+                gr4Var.b(ar4Var, -1L);
+                reentrantLock.unlock();
+                threadCurrentThread.setName(name);
+                throw th2;
+            } catch (Throwable th3) {
+                reentrantLock.unlock();
+                throw th3;
+            }
+        }
     }
 
-    public final void b(ar4 r5, long r6) {
-        tl1 r0 = ze5.a;
-        fr4 r1 = r5.c;
-        r1.getClass();
-        if (r1.d != r5) goto L14;
-        boolean r2 = r1.f;
-        r1.f = false;
-        r1.d = null;
-        this.h.remove(r1);
-        if (r6 == (-1)) goto L11;
-        if (r2 == true) goto L11;
-        if (r1.c == true) goto L11;
-        r1.f(r5, r6, true);
-    L11:
-        if (r1.e.isEmpty() == true) goto L16;
-        this.i.add(r1);
-        return;
-    L16:
-        return;
-    L14:
-        kf2.o("Check failed.");
+    public final void b(ar4 ar4Var, long j) {
+        tl1 tl1Var = ze5.a;
+        fr4 fr4Var = ar4Var.c;
+        fr4Var.getClass();
+        if (fr4Var.d != ar4Var) {
+            kf2.o("Check failed.");
+            return;
+        }
+        boolean z = fr4Var.f;
+        fr4Var.f = false;
+        fr4Var.d = null;
+        this.h.remove(fr4Var);
+        if (j != -1 && !z && !fr4Var.c) {
+            fr4Var.f(ar4Var, j, true);
+        }
+        if (fr4Var.e.isEmpty()) {
+            return;
+        }
+        this.i.add(fr4Var);
     }
 
     public final ar4 c() {
-        tl1 r0 = ze5.a;
-    L3:
-        ArrayList r1 = this.i;
-        if (r1.isEmpty() == true) goto L5;
-        long r4 = System.nanoTime();
-        int r2 = r1.size();
-        long r7 = Long.MAX_VALUE;
-        int r10 = 0;
-        ar4 r9 = null;
-    L8:
-        if (r10 >= r2) goto L16;
-        Object r14 = r1.get(r10);
-        r10 = r10 + 1;
-        ar4 r15 = (ar4) ((fr4) r14).e.get(0);
-        long r16 = r4;
-        ar4 r17 = null;
-        long r3 = Math.max(0, r15.d - r16);
-        if (r3 <= 0) goto L13;
-        r7 = Math.min(r3, r7);
-    L12:
-        r4 = r16;
-        goto L8
-    L13:
-        if (r9 != null) goto L14;
-        r9 = r15;
-        goto L12
-    L14:
-        boolean r5 = true;
-    L17:
-        ArrayList r6 = this.h;
-        if (r9 != null) goto L19;
-        boolean r8 = this.f;
-        Condition r11 = this.d;
-        if (r8 == true) goto L30;
-        this.f = true;
-        this.g = r16 + r7;
-        tl1 r12 = ze5.a;     // Catch: Throwable -> L38 InterruptedException -> L41
-        if (r7 <= 0) goto L40;
-        r11.awaitNanos(r7);     // Catch: Throwable -> L38 InterruptedException -> L41
-    L40:
-        this.f = false;
-    L41:
-        tl1 r13 = ze5.a;     // Catch: Throwable -> L38
-        int r18 = r6.size() - 1;     // Catch: Throwable -> L38
-    L43:
-        if ((-1) >= r18) goto L45;
-        ((fr4) r6.get(r18)).b();     // Catch: Throwable -> L38
-        r18 = r18 - 1;     // Catch: Throwable -> L38
-        goto L43
-    L45:
-        int r19 = r1.size() - 1;     // Catch: Throwable -> L38
-    L46:
-        if ((-1) >= r19) goto L40;
-        fr4 r20 = (fr4) r1.get(r19);     // Catch: Throwable -> L38
-        r20.b();     // Catch: Throwable -> L38
-        if (r20.e.isEmpty() == false) goto L50;
-        r1.remove(r19);     // Catch: Throwable -> L38
-    L50:
-        r19 = r19 - 1;
-    L38:
-        th = move-exception;
-        this.f = false;
-        throw th;
-    L30:
-        if (r7 >= (this.g - r16)) goto L70;
-        r11.signal();
-        return r17;
-    L70:
-        return r17;
-    L19:
-        tl1 r21 = ze5.a;
-        r9.d = -1;
-        fr4 r22 = r9.c;
-        r22.getClass();
-        r22.e.remove(r9);
-        r1.remove(r22);
-        r22.d = r9;
-        r6.add(r22);
-        if (r5 == false) goto L22;
-    L25:
-        g5 r23 = this.j;
-        r23.getClass();
-        ((ThreadPoolExecutor) this.a.o).execute(r23);
-    L26:
-        return r9;
-    L22:
-        if (this.f == true) goto L26;
-        if (r1.isEmpty() == true) goto L26;
-    L16:
-        r16 = r4;
-        r17 = null;
-        r5 = false;
-        goto L17
-    L5:
-        return null;
+        long j;
+        ar4 ar4Var;
+        boolean z;
+        tl1 tl1Var = ze5.a;
+        while (true) {
+            ArrayList arrayList = this.i;
+            if (arrayList.isEmpty()) {
+                return null;
+            }
+            long jNanoTime = System.nanoTime();
+            int size = arrayList.size();
+            long jMin = Long.MAX_VALUE;
+            int i = 0;
+            ar4 ar4Var2 = null;
+            while (true) {
+                if (i >= size) {
+                    j = jNanoTime;
+                    ar4Var = null;
+                    z = false;
+                    break;
+                }
+                Object obj = arrayList.get(i);
+                i++;
+                ar4 ar4Var3 = (ar4) ((fr4) obj).e.get(0);
+                j = jNanoTime;
+                ar4Var = null;
+                long jMax = Math.max(0L, ar4Var3.d - j);
+                if (jMax > 0) {
+                    jMin = Math.min(jMax, jMin);
+                } else {
+                    if (ar4Var2 != null) {
+                        z = true;
+                        break;
+                    }
+                    ar4Var2 = ar4Var3;
+                }
+                jNanoTime = j;
+            }
+            ArrayList arrayList2 = this.h;
+            if (ar4Var2 != null) {
+                tl1 tl1Var2 = ze5.a;
+                ar4Var2.d = -1L;
+                fr4 fr4Var = ar4Var2.c;
+                fr4Var.getClass();
+                fr4Var.e.remove(ar4Var2);
+                arrayList.remove(fr4Var);
+                fr4Var.d = ar4Var2;
+                arrayList2.add(fr4Var);
+                if (z || (!this.f && !arrayList.isEmpty())) {
+                    g5 g5Var = this.j;
+                    g5Var.getClass();
+                    ((ThreadPoolExecutor) this.a.o).execute(g5Var);
+                }
+                return ar4Var2;
+            }
+            boolean z2 = this.f;
+            Condition condition = this.d;
+            if (z2) {
+                if (jMin >= this.g - j) {
+                    return ar4Var;
+                }
+                condition.signal();
+                return ar4Var;
+            }
+            this.f = true;
+            this.g = j + jMin;
+            try {
+                try {
+                    tl1 tl1Var3 = ze5.a;
+                    if (jMin > 0) {
+                        condition.awaitNanos(jMin);
+                    }
+                } catch (InterruptedException unused) {
+                    tl1 tl1Var4 = ze5.a;
+                    for (int size2 = arrayList2.size() - 1; -1 < size2; size2--) {
+                        ((fr4) arrayList2.get(size2)).b();
+                    }
+                    for (int size3 = arrayList.size() - 1; -1 < size3; size3--) {
+                        fr4 fr4Var2 = (fr4) arrayList.get(size3);
+                        fr4Var2.b();
+                        if (fr4Var2.e.isEmpty()) {
+                            arrayList.remove(size3);
+                        }
+                    }
+                }
+                this.f = false;
+            } catch (Throwable th) {
+                this.f = false;
+                throw th;
+            }
+        }
     }
 
-    public final void d(fr4 r3) {
-        r3.getClass();
-        tl1 r0 = ze5.a;
-        if (r3.d != null) goto L11;
-        boolean r1 = r3.e.isEmpty();
-        ArrayList r2 = this.i;
-        if (r1 == true) goto L9;
-        byte[] r4 = xe5.a;
-        r2.getClass();
-        if (r2.contains(r3) == true) goto L11;
-        r2.add(r3);
-        goto L11
-    L9:
-        r2.remove(r3);
-    L11:
-        if (this.f == false) goto L14;
-        this.d.signal();
-        return;
-    L14:
-        g5 r5 = this.j;
-        r5.getClass();
-        ((ThreadPoolExecutor) this.a.o).execute(r5);
+    public final void d(fr4 fr4Var) {
+        fr4Var.getClass();
+        tl1 tl1Var = ze5.a;
+        if (fr4Var.d == null) {
+            boolean zIsEmpty = fr4Var.e.isEmpty();
+            ArrayList arrayList = this.i;
+            if (zIsEmpty) {
+                arrayList.remove(fr4Var);
+            } else {
+                byte[] bArr = xe5.a;
+                arrayList.getClass();
+                if (!arrayList.contains(fr4Var)) {
+                    arrayList.add(fr4Var);
+                }
+            }
+        }
+        if (this.f) {
+            this.d.signal();
+            return;
+        }
+        g5 g5Var = this.j;
+        g5Var.getClass();
+        ((ThreadPoolExecutor) this.a.o).execute(g5Var);
     }
 
     public final fr4 e() {
-        ReentrantLock r0 = this.c;
-        r0.lock();
-        int r1 = this.e;     // Catch: Throwable -> L6
-        this.e = r1 + 1;     // Catch: Throwable -> L6
-        r0.unlock();
-        return new fr4(this, f34.f(r1, "Q"));
-    L6:
-        th = move-exception;
-        r0.unlock();
-        throw th;
+        ReentrantLock reentrantLock = this.c;
+        reentrantLock.lock();
+        try {
+            int i = this.e;
+            this.e = i + 1;
+            return new fr4(this, f34.f(i, "Q"));
+        } finally {
+            reentrantLock.unlock();
+        }
     }
 }

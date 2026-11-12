@@ -5,8 +5,8 @@ import java.util.Iterator;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class qi5 extends gi5 {
-    public static final Object[] v = null;
-    public static final qi5 w = null;
+    public static final Object[] v;
+    public static final qi5 w;
     public final transient Object[] q;
     public final transient int r;
     public final transient Object[] s;
@@ -14,25 +14,25 @@ public final class qi5 extends gi5 {
     public final transient int u;
 
     static {
-        Object[] r5 = new Object[0];
-        v = r5;
-        w = new qi5(0, 0, 0, r5, r5);
+        Object[] objArr = new Object[0];
+        v = objArr;
+        w = new qi5(0, 0, 0, objArr, objArr);
     }
 
-    public qi5(int r1, int r2, int r3, Object[] r4, Object[] r5) {
-        this.q = r4;
-        this.r = r1;
-        this.s = r5;
-        this.t = r2;
-        this.u = r3;
+    public qi5(int i, int i2, int i3, Object[] objArr, Object[] objArr2) {
+        this.q = objArr;
+        this.r = i;
+        this.s = objArr2;
+        this.t = i2;
+        this.u = i3;
     }
 
     @Override // defpackage.wh5
-    public final int a(Object[] r3) {
-        Object[] r0 = this.q;
-        int r2 = this.u;
-        System.arraycopy(r0, 0, r3, 0, r2);
-        return r2;
+    public final int a(Object[] objArr) {
+        Object[] objArr2 = this.q;
+        int i = this.u;
+        System.arraycopy(objArr2, 0, objArr, 0, i);
+        return i;
     }
 
     @Override // defpackage.wh5
@@ -41,26 +41,26 @@ public final class qi5 extends gi5 {
     }
 
     @Override // java.util.AbstractCollection, java.util.Collection, java.util.Set
-    public final boolean contains(Object r6) {
-        if (r6 == null) goto L15;
-        Object[] r0 = this.s;
-        if (r0.length == 0) goto L19;
-        int r1 = (int) (((long) Integer.rotateLeft((int) (((long) r6.hashCode()) * (-862048943)), 15)) * 461845907);
-    L7:
-        int r2 = r1 & this.t;
-        Object r3 = r0[r2];
-        if (r3 == null) goto L20;
-        if (r3.equals(r6) == true) goto L12;
-        r1 = r2 + 1;
-        goto L7
-    L12:
-        return true;
-    L20:
-        return false;
-    L19:
-        return false;
-    L15:
-        return false;
+    public final boolean contains(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        Object[] objArr = this.s;
+        if (objArr.length == 0) {
+            return false;
+        }
+        int iRotateLeft = (int) (((long) Integer.rotateLeft((int) (((long) obj.hashCode()) * (-862048943)), 15)) * 461845907);
+        while (true) {
+            int i = iRotateLeft & this.t;
+            Object obj2 = objArr[i];
+            if (obj2 == null) {
+                return false;
+            }
+            if (obj2.equals(obj)) {
+                return true;
+            }
+            iRotateLeft = i + 1;
+        }
     }
 
     @Override // defpackage.wh5
@@ -70,7 +70,7 @@ public final class qi5 extends gi5 {
 
     @Override // defpackage.wh5
     public final o15 e() {
-        return i().k(0);
+        return i().listIterator(0);
     }
 
     @Override // defpackage.wh5
@@ -85,13 +85,12 @@ public final class qi5 extends gi5 {
 
     @Override // java.util.AbstractCollection, java.util.Collection, java.lang.Iterable, java.util.Set
     public final /* synthetic */ Iterator iterator() {
-        return i().k(0);
+        return i().listIterator(0);
     }
 
     @Override // defpackage.gi5
     public final ei5 j() {
-        Object[] r0 = this.q;
-        return ei5.i(this.u, r0);
+        return ei5.i(this.u, this.q);
     }
 
     @Override // java.util.AbstractCollection, java.util.Collection, java.util.Set

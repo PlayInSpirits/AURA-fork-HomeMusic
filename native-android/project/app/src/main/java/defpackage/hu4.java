@@ -8,9 +8,9 @@ public final class hu4 extends wd0 {
     public int p;
 
     @Override // defpackage.jp
-    public final Object invokeSuspend(Object r3) {
-        this.o = r3;
+    public final Object invokeSuspend(Object obj) {
+        this.o = obj;
         this.p |= Integer.MIN_VALUE;
-        return gb.j0(0, null, this);
+        return gb.j0(0L, null, this);
     }
 }

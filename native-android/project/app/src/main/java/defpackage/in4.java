@@ -9,5 +9,5 @@ public interface in4 {
 
     boolean d();
 
-    boolean e(bt2 r1);
+    boolean e(bt2 bt2Var);
 }

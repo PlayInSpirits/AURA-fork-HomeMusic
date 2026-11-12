@@ -7,27 +7,20 @@ import android.os.Parcelable;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class b51 extends k {
-    public static final Parcelable.Creator<b51> CREATOR = null;
+    public static final Parcelable.Creator<b51> CREATOR = new qh4(3);
     public final yd4 p;
 
-    static {
-        CREATOR = new qh4(3);
-    }
-
-    public b51(Parcel r6, ClassLoader r7) {
-        super(r6, r7);
-        int r8 = r6.readInt();
-        String[] r0 = new String[r8];
-        r6.readStringArray(r0);
-        Bundle[] r1 = new Bundle[r8];
-        r6.readTypedArray(r1, Bundle.CREATOR);
-        this.p = new yd4(r8);
-        int r9 = 0;
-    L3:
-        if (r9 >= r8) goto L5;
-        this.p.put(r0[r9], r1[r9]);
-        r9 = r9 + 1;
-        goto L3
+    public b51(Parcel parcel, ClassLoader classLoader) {
+        super(parcel, classLoader);
+        int i = parcel.readInt();
+        String[] strArr = new String[i];
+        parcel.readStringArray(strArr);
+        Bundle[] bundleArr = new Bundle[i];
+        parcel.readTypedArray(bundleArr, Bundle.CREATOR);
+        this.p = new yd4(i);
+        for (int i2 = 0; i2 < i; i2++) {
+            this.p.put(strArr[i2], bundleArr[i2]);
+        }
     }
 
     public final String toString() {
@@ -35,27 +28,23 @@ public final class b51 extends k {
     }
 
     @Override // defpackage.k, android.os.Parcelable
-    public final void writeToParcel(Parcel r6, int r7) {
-        super.writeToParcel(r6, r7);
-        yd4 r5 = this.p;
-        int r8 = r5.p;
-        r6.writeInt(r8);
-        String[] r0 = new String[r8];
-        Bundle[] r1 = new Bundle[r8];
-        int r3 = 0;
-    L3:
-        if (r3 >= r8) goto L5;
-        r0[r3] = (String) r5.f(r3);
-        r1[r3] = (Bundle) r5.j(r3);
-        r3 = r3 + 1;
-        goto L3
-    L5:
-        r6.writeStringArray(r0);
-        r6.writeTypedArray(r1, 0);
+    public final void writeToParcel(Parcel parcel, int i) {
+        super.writeToParcel(parcel, i);
+        yd4 yd4Var = this.p;
+        int i2 = yd4Var.p;
+        parcel.writeInt(i2);
+        String[] strArr = new String[i2];
+        Bundle[] bundleArr = new Bundle[i2];
+        for (int i3 = 0; i3 < i2; i3++) {
+            strArr[i3] = (String) yd4Var.f(i3);
+            bundleArr[i3] = (Bundle) yd4Var.j(i3);
+        }
+        parcel.writeStringArray(strArr);
+        parcel.writeTypedArray(bundleArr, 0);
     }
 
-    public b51(Parcelable r2) {
-        super(r2);
+    public b51(Parcelable parcelable) {
+        super(parcelable);
         this.p = new yd4(0);
     }
 }

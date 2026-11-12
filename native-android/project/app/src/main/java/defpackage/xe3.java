@@ -8,48 +8,35 @@ public final class xe3 extends bf3 {
     public final float e;
     public final float f;
 
-    public xe3(float r2, float r3, float r4, float r5) {
+    public xe3(float f, float f2, float f3, float f4) {
         super(2);
-        this.c = r2;
-        this.d = r3;
-        this.e = r4;
-        this.f = r5;
+        this.c = f;
+        this.d = f2;
+        this.e = f3;
+        this.f = f4;
     }
 
-    public final boolean equals(Object r5) {
-        if (this != r5) goto L6;
-        return true;
-    L6:
-        if ((r5 instanceof xe3) == true) goto L8;
-        return false;
-    L8:
-        xe3 r6 = (xe3) r5;
-        if (Float.compare(this.c, r6.c) == 0) goto L12;
-        return false;
-    L12:
-        if (Float.compare(this.d, r6.d) == 0) goto L15;
-        return false;
-    L15:
-        if (Float.compare(this.e, r6.e) == 0) goto L18;
-        return false;
-    L18:
-        if (Float.compare(this.f, r6.f) == 0) goto L20;
-        return false;
-    L20:
-        return true;
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof xe3)) {
+            return false;
+        }
+        xe3 xe3Var = (xe3) obj;
+        return Float.compare(this.c, xe3Var.c) == 0 && Float.compare(this.d, xe3Var.d) == 0 && Float.compare(this.e, xe3Var.e) == 0 && Float.compare(this.f, xe3Var.f) == 0;
     }
 
     public final int hashCode() {
-        int r0 = b11.d(b11.d(Float.hashCode(this.c) * 31, this.d, 31), this.e, 31);
-        return Float.hashCode(this.f) + r0;
+        return Float.hashCode(this.f) + b11.d(b11.d(Float.hashCode(this.c) * 31, this.d, 31), this.e, 31);
     }
 
     public final String toString() {
-        StringBuilder r0 = b11.r("RelativeReflectiveCurveTo(dx1=", this.c, ", dy1=", this.d, ", dx2=");
-        r0.append(this.e);
-        r0.append(", dy2=");
-        r0.append(this.f);
-        r0.append(")");
-        return r0.toString();
+        StringBuilder sbR = b11.r("RelativeReflectiveCurveTo(dx1=", this.c, ", dy1=", this.d, ", dx2=");
+        sbR.append(this.e);
+        sbR.append(", dy2=");
+        sbR.append(this.f);
+        sbR.append(")");
+        return sbR.toString();
     }
 }

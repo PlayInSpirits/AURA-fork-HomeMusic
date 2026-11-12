@@ -10,39 +10,33 @@ public final class cx1 extends o15 {
     public Object p;
     public o15 q;
 
-    public cx1(zw1 r2) {
+    public cx1(zw1 zw1Var) {
         super(0);
-        ly3 r3 = r2.r;
-        jx1 r0 = r3.n;
-        if (r0 != null) goto L5;
-        r0 = r3.c();
-        r3.n = r0;
-    L5:
-        this.o = r0.h();
+        ly3 ly3Var = zw1Var.r;
+        jx1 jx1VarC = ly3Var.n;
+        if (jx1VarC == null) {
+            jx1VarC = ly3Var.c();
+            ly3Var.n = jx1VarC;
+        }
+        this.o = jx1VarC.iterator();
         this.p = null;
         this.q = j22.r;
     }
 
     @Override // java.util.Iterator
     public final boolean hasNext() {
-        if (this.q.hasNext() == false) goto L5;
-        return true;
-    L5:
-        if (this.o.hasNext() == true) goto L11;
-        return false;
-    L11:
-        return true;
+        return this.q.hasNext() || this.o.hasNext();
     }
 
     @Override // java.util.Iterator
     public final Object next() {
-        if (this.q.hasNext() == true) goto L5;
-        Map.Entry r0 = (Map.Entry) this.o.next();
-        this.p = r0.getKey();
-        this.q = ((rw1) r0.getValue()).h();
-    L5:
-        Object r1 = this.p;
-        Objects.requireNonNull(r1);
-        return new sw1(r1, this.q.next());
+        if (!this.q.hasNext()) {
+            Map.Entry entry = (Map.Entry) this.o.next();
+            this.p = entry.getKey();
+            this.q = ((rw1) entry.getValue()).iterator();
+        }
+        Object obj = this.p;
+        Objects.requireNonNull(obj);
+        return new sw1(obj, this.q.next());
     }
 }

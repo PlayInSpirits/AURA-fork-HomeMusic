@@ -11,20 +11,20 @@ import retrofit2.http.QueryMap;
 /* JADX INFO: loaded from: classes.dex */
 public interface hn3 {
     @GET("deletePodcastChannel")
-    Call<ApiResponse> a(@QueryMap Map<String, String> r1, @Query("id") String r2);
+    Call<ApiResponse> a(@QueryMap Map<String, String> map, @Query("id") String str);
 
     @GET("downloadPodcastEpisode")
-    Call<ApiResponse> b(@QueryMap Map<String, String> r1, @Query("id") String r2);
+    Call<ApiResponse> b(@QueryMap Map<String, String> map, @Query("id") String str);
 
     @GET("getPodcasts")
-    Call<ApiResponse> c(@QueryMap Map<String, String> r1, @Query("includeEpisodes") boolean r2, @Query("id") String r3);
+    Call<ApiResponse> c(@QueryMap Map<String, String> map, @Query("includeEpisodes") boolean z, @Query("id") String str);
 
     @GET("createPodcastChannel")
-    Call<ApiResponse> d(@QueryMap Map<String, String> r1, @Query("url") String r2);
+    Call<ApiResponse> d(@QueryMap Map<String, String> map, @Query("url") String str);
 
     @GET("deletePodcastEpisode")
-    Call<ApiResponse> e(@QueryMap Map<String, String> r1, @Query("id") String r2);
+    Call<ApiResponse> e(@QueryMap Map<String, String> map, @Query("id") String str);
 
     @GET("getNewestPodcasts")
-    Call<ApiResponse> f(@QueryMap Map<String, String> r1, @Query("count") int r2);
+    Call<ApiResponse> f(@QueryMap Map<String, String> map, @Query("count") int i);
 }

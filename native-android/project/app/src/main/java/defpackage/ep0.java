@@ -10,53 +10,46 @@ import android.view.ViewParent;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public abstract class ep0 {
-    public static final ThreadLocal a = null;
-    public static final ThreadLocal b = null;
+    public static final ThreadLocal a = new ThreadLocal();
+    public static final ThreadLocal b = new ThreadLocal();
 
-    static {
-        a = new ThreadLocal();
-        b = new ThreadLocal();
+    public static void a(ViewGroup viewGroup, View view, Rect rect) {
+        rect.set(0, 0, view.getWidth(), view.getHeight());
+        c(viewGroup, view, rect);
     }
 
-    public static void a(ViewGroup r3, View r4, Rect r5) {
-        r5.set(0, 0, r4.getWidth(), r4.getHeight());
-        c(r3, r4, r5);
+    public static void b(ViewParent viewParent, View view, Matrix matrix) {
+        Object parent = view.getParent();
+        if ((parent instanceof View) && parent != viewParent) {
+            View view2 = (View) parent;
+            b(viewParent, view2, matrix);
+            matrix.preTranslate(-view2.getScrollX(), -view2.getScrollY());
+        }
+        matrix.preTranslate(view.getLeft(), view.getTop());
+        if (view.getMatrix().isIdentity()) {
+            return;
+        }
+        matrix.preConcat(view.getMatrix());
     }
 
-    public static void b(ViewParent r2, View r3, Matrix r4) {
-        Object r0 = r3.getParent();
-        if ((r0 instanceof View) == false) goto L6;
-        if (r0 == r2) goto L6;
-        View r1 = (View) r0;
-        b(r2, r1, r4);
-        r4.preTranslate(-r1.getScrollX(), -r1.getScrollY());
-    L6:
-        r4.preTranslate(r3.getLeft(), r3.getTop());
-        if (r3.getMatrix().isIdentity() == true) goto L10;
-        r4.preConcat(r3.getMatrix());
-        return;
-    }
-
-    public static void c(ViewGroup r3, View r4, Rect r5) {
-        ThreadLocal r0 = a;
-        Matrix r1 = (Matrix) r0.get();
-        if (r1 != null) goto L5;
-        r1 = new Matrix();
-        r0.set(r1);
-    L6:
-        b(r3, r4, r1);
-        ThreadLocal r6 = b;
-        RectF r7 = (RectF) r6.get();
-        if (r7 != null) goto L9;
-        r7 = new RectF();
-        r6.set(r7);
-    L9:
-        r7.set(r5);
-        r1.mapRect(r7);
-        r5.set((int) (r7.left + 0.5f), (int) (r7.top + 0.5f), (int) (r7.right + 0.5f), (int) (r7.bottom + 0.5f));
-        return;
-    L5:
-        r1.reset();
-        goto L6
+    public static void c(ViewGroup viewGroup, View view, Rect rect) {
+        ThreadLocal threadLocal = a;
+        Matrix matrix = (Matrix) threadLocal.get();
+        if (matrix == null) {
+            matrix = new Matrix();
+            threadLocal.set(matrix);
+        } else {
+            matrix.reset();
+        }
+        b(viewGroup, view, matrix);
+        ThreadLocal threadLocal2 = b;
+        RectF rectF = (RectF) threadLocal2.get();
+        if (rectF == null) {
+            rectF = new RectF();
+            threadLocal2.set(rectF);
+        }
+        rectF.set(rect);
+        matrix.mapRect(rectF);
+        rect.set((int) (rectF.left + 0.5f), (int) (rectF.top + 0.5f), (int) (rectF.right + 0.5f), (int) (rectF.bottom + 0.5f));
     }
 }

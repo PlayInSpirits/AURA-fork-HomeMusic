@@ -8,104 +8,72 @@ public final class k34 implements ac4 {
     public final lu0 c;
     public final lu0 d;
 
-    public k34(lu0 r1, lu0 r2, lu0 r3, lu0 r4) {
-        this.a = r1;
-        this.b = r2;
-        this.c = r3;
-        this.d = r4;
+    public k34(lu0 lu0Var, lu0 lu0Var2, lu0 lu0Var3, lu0 lu0Var4) {
+        this.a = lu0Var;
+        this.b = lu0Var2;
+        this.c = lu0Var3;
+        this.d = lu0Var4;
     }
 
     @Override // defpackage.ac4
-    public final ya4 a(long r30, r62 r32, oo0 r33) {
-        float r5 = this.a.a(r30, r33);
-        float r6 = this.b.a(r30, r33);
-        float r7 = this.c.a(r30, r33);
-        float r0 = this.d.a(r30, r33);
-        float r8 = Math.min(Float.intBitsToFloat((int) ((r30 >> 32) & 2147483647L)), Float.intBitsToFloat((int) (r30 & 2147483647L)));
-        float r9 = r5 + r0;
-        if (r9 <= r8) goto L5;
-        float r10 = r8 / r9;
-        r5 = r5 * r10;
-        r0 = r0 * r10;
-    L5:
-        float r11 = r6 + r7;
-        if (r11 <= r8) goto L9;
-        float r12 = r8 / r11;
-        r6 = r6 * r12;
-        r7 = r7 * r12;
-    L9:
-        if (r5 >= 0.0f) goto L11;
-    L17:
-        StringBuilder r13 = b11.r("Corner size in Px can't be negative(topStart = ", r5, ", topEnd = ", r6, ", bottomEnd = ");
-        r13.append(r7);
-        r13.append(", bottomStart = ");
-        r13.append(r0);
-        r13.append(")!");
-        fz1.a(r13.toString());
-    L19:
-        if ((((r5 + r6) + r7) + r0) == 0.0f) goto L21;
-        wv3 r1 = bu.d(0, r30);
-        r62 r2 = r62.n;
-        if (r32 != r2) goto L25;
-        float r14 = r5;
-    L26:
-        long r21 = (Float.floatToRawIntBits(r14) << 32) | (Float.floatToRawIntBits(r14) & 4294967295L);
-        if (r32 != r2) goto L29;
-        r5 = r6;
-    L29:
-        long r23 = (Float.floatToRawIntBits(r5) << 32) | (((long) Float.floatToRawIntBits(r5)) & 4294967295L);
-        if (r32 != r2) goto L32;
-        float r15 = r7;
-    L33:
-        long r25 = (Float.floatToRawIntBits(r15) << 32) | (((long) Float.floatToRawIntBits(r15)) & 4294967295L);
-        if (r32 == r2) goto L38;
-        r0 = r7;
-    L38:
-        return new ob3(new g34(r1.a, r1.b, r1.c, r1.d, r21, r23, r25, (Float.floatToRawIntBits(r0) << 32) | (((long) Float.floatToRawIntBits(r0)) & 4294967295L)));
-    L32:
-        r15 = r0;
-        goto L33
-    L25:
-        r14 = r6;
-        goto L26
-    L21:
-        return new nb3(bu.d(0, r30));
-    L11:
-        if (r6 < 0.0f) goto L17;
-        if (r7 < 0.0f) goto L17;
-        if (r0 < 0.0f) goto L17;
-        goto L17
+    public final ya4 a(long j, r62 r62Var, oo0 oo0Var) {
+        float fA = this.a.a(j, oo0Var);
+        float fA2 = this.b.a(j, oo0Var);
+        float fA3 = this.c.a(j, oo0Var);
+        float fA4 = this.d.a(j, oo0Var);
+        float fMin = Math.min(Float.intBitsToFloat((int) ((j >> 32) & 2147483647L)), Float.intBitsToFloat((int) (j & 2147483647L)));
+        float f = fA + fA4;
+        if (f > fMin) {
+            float f2 = fMin / f;
+            fA *= f2;
+            fA4 *= f2;
+        }
+        float f3 = fA2 + fA3;
+        if (f3 > fMin) {
+            float f4 = fMin / f3;
+            fA2 *= f4;
+            fA3 *= f4;
+        }
+        if (fA < 0.0f || fA2 < 0.0f || fA3 < 0.0f || fA4 < 0.0f) {
+            StringBuilder sbR = b11.r("Corner size in Px can't be negative(topStart = ", fA, ", topEnd = ", fA2, ", bottomEnd = ");
+            sbR.append(fA3);
+            sbR.append(", bottomStart = ");
+            sbR.append(fA4);
+            sbR.append(")!");
+            fz1.a(sbR.toString());
+        }
+        if (fA + fA2 + fA3 + fA4 == 0.0f) {
+            return new nb3(bu.d(0L, j));
+        }
+        wv3 wv3VarD = bu.d(0L, j);
+        r62 r62Var2 = r62.n;
+        float f5 = r62Var == r62Var2 ? fA : fA2;
+        long jFloatToRawIntBits = (((long) Float.floatToRawIntBits(f5)) << 32) | (((long) Float.floatToRawIntBits(f5)) & 4294967295L);
+        if (r62Var == r62Var2) {
+            fA = fA2;
+        }
+        long jFloatToRawIntBits2 = (((long) Float.floatToRawIntBits(fA)) << 32) | (((long) Float.floatToRawIntBits(fA)) & 4294967295L);
+        float f6 = r62Var == r62Var2 ? fA3 : fA4;
+        long jFloatToRawIntBits3 = (((long) Float.floatToRawIntBits(f6)) << 32) | (((long) Float.floatToRawIntBits(f6)) & 4294967295L);
+        if (r62Var != r62Var2) {
+            fA4 = fA3;
+        }
+        return new ob3(new g34(wv3VarD.a, wv3VarD.b, wv3VarD.c, wv3VarD.d, jFloatToRawIntBits, jFloatToRawIntBits2, jFloatToRawIntBits3, (((long) Float.floatToRawIntBits(fA4)) << 32) | (((long) Float.floatToRawIntBits(fA4)) & 4294967295L)));
     }
 
-    public final boolean equals(Object r3) {
-        if (this != r3) goto L5;
-        return true;
-    L5:
-        if ((r3 instanceof k34) == false) goto L22;
-        k34 r4 = (k34) r3;
-        lu0 r0 = r4.a;
-        if (this.a.equals(r0) == true) goto L11;
-        return false;
-    L11:
-        if (this.b.equals(r4.b) == true) goto L14;
-        return false;
-    L14:
-        if (this.c.equals(r4.c) == true) goto L17;
-        return false;
-    L17:
-        if (this.d.equals(r4.d) == true) goto L20;
-        return false;
-    L20:
-        return true;
-    L22:
-        return false;
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof k34)) {
+            return false;
+        }
+        k34 k34Var = (k34) obj;
+        return this.a.equals(k34Var.a) && this.b.equals(k34Var.b) && this.c.equals(k34Var.c) && this.d.equals(k34Var.d);
     }
 
     public final int hashCode() {
-        int r0 = this.a.hashCode() * 31;
-        int r1 = (this.b.hashCode() + r0) * 31;
-        int r2 = (this.c.hashCode() + r1) * 31;
-        return this.d.hashCode() + r2;
+        return this.d.hashCode() + ((this.c.hashCode() + ((this.b.hashCode() + (this.a.hashCode() * 31)) * 31)) * 31);
     }
 
     public final String toString() {

@@ -1,6 +1,7 @@
 package defpackage;
 
 import android.os.Bundle;
+import android.view.View;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import com.eddyizm.tempus.subsonic.models.Artist;
 
@@ -10,24 +11,103 @@ public final class a03 extends cx3 {
     public final z12 u;
     public final /* synthetic */ b03 v;
 
-    public a03(b03 r4, z12 r5) {
-        this.v = r4;
-        ConstraintLayout r6 = r5.a;
-        super(r6);
-        this.u = r5;
-        final int r1 = 1;
-        r5.e.setSelected(true);
-        final int r2 = 0;
-        r6.setOnClickListener(new zz2(this, r2));
-        r5.c.setOnClickListener(new zz2(this, r1));
-        final int r0 = 2;
-        r5.d.setOnClickListener(new zz2(this, r0));
+    /* JADX WARN: Illegal instructions before constructor call */
+    public a03(b03 b03Var, z12 z12Var) {
+        this.v = b03Var;
+        ConstraintLayout constraintLayout = z12Var.a;
+        super(constraintLayout);
+        this.u = z12Var;
+        final int i = 1;
+        z12Var.e.setSelected(true);
+        final int i2 = 0;
+        constraintLayout.setOnClickListener(new View.OnClickListener(this) { // from class: zz2
+            public final /* synthetic */ a03 o;
+
+            {
+                this.o = this;
+            }
+
+            @Override // android.view.View.OnClickListener
+            public final void onClick(View view) {
+                int i3 = i2;
+                a03 a03Var = this.o;
+                switch (i3) {
+                    case 0:
+                        a03Var.s();
+                        break;
+                    case 1:
+                        a03Var.s();
+                        break;
+                    default:
+                        Bundle bundle = new Bundle();
+                        b03 b03Var2 = a03Var.v;
+                        bundle.putString("MUSIC_DIRECTORY_ID", ((Artist) b03Var2.r.get(a03Var.c())).getId());
+                        b03Var2.q.onMusicIndexPlay(bundle);
+                        break;
+                }
+            }
+        });
+        z12Var.c.setOnClickListener(new View.OnClickListener(this) { // from class: zz2
+            public final /* synthetic */ a03 o;
+
+            {
+                this.o = this;
+            }
+
+            @Override // android.view.View.OnClickListener
+            public final void onClick(View view) {
+                int i3 = i;
+                a03 a03Var = this.o;
+                switch (i3) {
+                    case 0:
+                        a03Var.s();
+                        break;
+                    case 1:
+                        a03Var.s();
+                        break;
+                    default:
+                        Bundle bundle = new Bundle();
+                        b03 b03Var2 = a03Var.v;
+                        bundle.putString("MUSIC_DIRECTORY_ID", ((Artist) b03Var2.r.get(a03Var.c())).getId());
+                        b03Var2.q.onMusicIndexPlay(bundle);
+                        break;
+                }
+            }
+        });
+        final int i3 = 2;
+        z12Var.d.setOnClickListener(new View.OnClickListener(this) { // from class: zz2
+            public final /* synthetic */ a03 o;
+
+            {
+                this.o = this;
+            }
+
+            @Override // android.view.View.OnClickListener
+            public final void onClick(View view) {
+                int i4 = i3;
+                a03 a03Var = this.o;
+                switch (i4) {
+                    case 0:
+                        a03Var.s();
+                        break;
+                    case 1:
+                        a03Var.s();
+                        break;
+                    default:
+                        Bundle bundle = new Bundle();
+                        b03 b03Var2 = a03Var.v;
+                        bundle.putString("MUSIC_DIRECTORY_ID", ((Artist) b03Var2.r.get(a03Var.c())).getId());
+                        b03Var2.q.onMusicIndexPlay(bundle);
+                        break;
+                }
+            }
+        });
     }
 
     public final void s() {
-        Bundle r0 = new Bundle();
-        b03 r1 = this.v;
-        r0.putString("MUSIC_DIRECTORY_ID", ((Artist) r1.r.get(c())).getId());
-        r1.q.onMusicIndexClick(r0);
+        Bundle bundle = new Bundle();
+        b03 b03Var = this.v;
+        bundle.putString("MUSIC_DIRECTORY_ID", ((Artist) b03Var.r.get(c())).getId());
+        b03Var.q.onMusicIndexClick(bundle);
     }
 }

@@ -9,45 +9,36 @@ import java.util.HashSet;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class x63 {
-    public static final Object c = null;
     public static String d;
-    public static HashSet e;
-    public static final Object f = null;
     public static w63 g;
     public final Context a;
     public final NotificationManager b;
+    public static final Object c = new Object();
+    public static HashSet e = new HashSet();
+    public static final Object f = new Object();
 
-    static {
-        c = new Object();
-        e = new HashSet();
-        f = new Object();
+    public x63(Context context) {
+        this.a = context;
+        this.b = (NotificationManager) context.getSystemService("notification");
     }
 
-    public x63(Context r2) {
-        this.a = r2;
-        this.b = (NotificationManager) r2.getSystemService("notification");
-    }
-
-    public final void a(int r5, Notification r6) {
-        Bundle r0 = r6.extras;
-        if (r0 != null) goto L5;
-    L19:
-        this.b.notify(null, r5, r6);
-        return;
-    L5:
-        if (r0.getBoolean("android.support.useSideChannel") == false) goto L19;
-        t63 r1 = new t63(this.a.getPackageName(), r5, r6);
-        Object r2 = f;
-        monitor-enter(r2);
-    L11:
-        th = move-exception;
-        throw th;
-    L9:
-        if (g != null) goto L13;
-        g = new w63(this.a.getApplicationContext());     // Catch: Throwable -> L11
-    L13:
-        g.o.obtainMessage(0, r1).sendToTarget();     // Catch: Throwable -> L11
-        monitor-exit(r2);     // Catch: Throwable -> L11
-        this.b.cancel(null, r5);
+    public final void a(int i, Notification notification) {
+        Bundle bundle = notification.extras;
+        if (bundle == null || !bundle.getBoolean("android.support.useSideChannel")) {
+            this.b.notify(null, i, notification);
+            return;
+        }
+        t63 t63Var = new t63(this.a.getPackageName(), i, notification);
+        synchronized (f) {
+            try {
+                if (g == null) {
+                    g = new w63(this.a.getApplicationContext());
+                }
+                g.o.obtainMessage(0, t63Var).sendToTarget();
+            } catch (Throwable th) {
+                throw th;
+            }
+        }
+        this.b.cancel(null, i);
     }
 }

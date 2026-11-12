@@ -9,32 +9,31 @@ public final /* synthetic */ class rs2 implements gt2, ht2, wc0 {
     public final /* synthetic */ int o;
     public final /* synthetic */ int p;
 
-    public /* synthetic */ rs2(kt2 r1, int r2, int r3) {
-        this.n = r1;
-        this.o = r2;
-        this.p = r3;
+    public /* synthetic */ rs2(kt2 kt2Var, int i, int i2) {
+        this.n = kt2Var;
+        this.o = i;
+        this.p = i2;
     }
 
     @Override // defpackage.wc0
-    public void accept(Object r2) {
-        al3 r3 = (al3) r2;
-        kt2 r4 = this.n;
-        ((tn2) r4.e.get()).getClass();
-        jt2 r5 = r4.j;
-        if (r5 == null) goto L6;
-        r5.setFixedSize(this.o, this.p);
-        return;
+    public void accept(Object obj) {
+        kt2 kt2Var = this.n;
+        ((tn2) kt2Var.e.get()).getClass();
+        jt2 jt2Var = kt2Var.j;
+        if (jt2Var != null) {
+            jt2Var.setFixedSize(this.o, this.p);
+        }
     }
 
     @Override // defpackage.ht2
-    public void b(al3 r3, fr2 r4, List r5) {
-        kt2 r0 = this.n;
-        r3.L(r0.L0(r4, r3, this.o), r0.L0(r4, r3, this.p), r5);
+    public void b(al3 al3Var, fr2 fr2Var, List list) {
+        kt2 kt2Var = this.n;
+        al3Var.L(kt2Var.L0(fr2Var, al3Var, this.o), kt2Var.L0(fr2Var, al3Var, this.p), list);
     }
 
     @Override // defpackage.gt2
-    public void e(al3 r3, fr2 r4) {
-        kt2 r0 = this.n;
-        r3.P(r0.L0(r4, r3, this.o), r0.L0(r4, r3, this.p));
+    public void e(al3 al3Var, fr2 fr2Var) {
+        kt2 kt2Var = this.n;
+        al3Var.P(kt2Var.L0(fr2Var, al3Var, this.o), kt2Var.L0(fr2Var, al3Var, this.p));
     }
 }

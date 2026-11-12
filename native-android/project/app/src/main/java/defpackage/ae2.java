@@ -6,95 +6,94 @@ import sun.misc.Unsafe;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public class ae2 {
-    public static final /* synthetic */ AtomicReferenceFieldUpdater a = null;
-    public static final /* synthetic */ long b = 0;
-    private volatile /* synthetic */ Object _cur$volatile;
+    public static final /* synthetic */ AtomicReferenceFieldUpdater a = AtomicReferenceFieldUpdater.newUpdater(ae2.class, Object.class, "_cur$volatile");
+    public static final /* synthetic */ long b = dz.a.objectFieldOffset(ae2.class.getDeclaredField("_cur$volatile"));
+    private volatile /* synthetic */ Object _cur$volatile = new ce2(8, false);
 
-    static {
-        a = AtomicReferenceFieldUpdater.newUpdater(ae2.class, Object.class, "_cur$volatile");
-        b = dz.a.objectFieldOffset(ae2.class.getDeclaredField("_cur$volatile"));
-    }
-
-    public ae2() {
-        this._cur$volatile = new ce2(8, false);
-    }
-
-    public final boolean a(Runnable r10) {
-    L2:
-        a.getClass();
-        Unsafe r0 = dz.a;
-        long r1 = b;
-        ce2 r7 = (ce2) r0.getObjectVolatile(this, r1);
-        int r2 = r7.a(r10);
-        if (r2 == 0) goto L18;
-        if (r2 != 1) goto L6;
-        ce2 r8 = r7.d();
-    L11:
-        Unsafe r3 = dz.a;
-        ae2 r4 = this;
-        if (r3.compareAndSwapObject(r4, b, r7, r8) == true) goto L16;
-        if (r3.getObjectVolatile(r4, r1) != r7) goto L16;
-        ae2 this = r4;
-    L16:
-        this = r4;
-        goto L2
-    L6:
-        if (r2 == 2) goto L8;
-        r4 = this;
-        goto L16
-    L8:
-        return false;
-    L18:
-        return true;
+    public final boolean a(Runnable runnable) {
+        ae2 ae2Var;
+        while (true) {
+            a.getClass();
+            Unsafe unsafe = dz.a;
+            long j = b;
+            ce2 ce2Var = (ce2) unsafe.getObjectVolatile(this, j);
+            int iA = ce2Var.a(runnable);
+            if (iA == 0) {
+                return true;
+            }
+            if (iA == 1) {
+                ce2 ce2VarD = ce2Var.d();
+                while (true) {
+                    Unsafe unsafe2 = dz.a;
+                    ae2Var = this;
+                    if (unsafe2.compareAndSwapObject(ae2Var, b, ce2Var, ce2VarD) || unsafe2.getObjectVolatile(ae2Var, j) != ce2Var) {
+                        break;
+                    }
+                    this = ae2Var;
+                }
+            } else {
+                if (iA == 2) {
+                    return false;
+                }
+                ae2Var = this;
+            }
+            this = ae2Var;
+        }
     }
 
     public final void b() {
-    L2:
-        a.getClass();
-        Unsafe r0 = dz.a;
-        long r1 = b;
-        ce2 r7 = (ce2) r0.getObjectVolatile(this, r1);
-        if (r7.c() == true) goto L4;
-        ce2 r8 = r7.d();
-    L6:
-        Unsafe r3 = dz.a;
-        ae2 r4 = this;
-        if (r3.compareAndSwapObject(r4, b, r7, r8) == true) goto L11;
-        if (r3.getObjectVolatile(r4, r1) != r7) goto L11;
-        ae2 this = r4;
-    L11:
-        this = r4;
-        goto L2
+        ae2 ae2Var;
+        while (true) {
+            a.getClass();
+            Unsafe unsafe = dz.a;
+            long j = b;
+            ce2 ce2Var = (ce2) unsafe.getObjectVolatile(this, j);
+            if (ce2Var.c()) {
+                return;
+            }
+            ce2 ce2VarD = ce2Var.d();
+            while (true) {
+                Unsafe unsafe2 = dz.a;
+                ae2Var = this;
+                if (unsafe2.compareAndSwapObject(ae2Var, b, ce2Var, ce2VarD) || unsafe2.getObjectVolatile(ae2Var, j) != ce2Var) {
+                    break;
+                } else {
+                    this = ae2Var;
+                }
+            }
+            this = ae2Var;
+        }
     }
 
     public final int c() {
         a.getClass();
-        ce2 r4 = (ce2) dz.a.getObjectVolatile(this, b);
-        r4.getClass();
-        long r0 = ce2.f.get(r4);
-        int r5 = (int) (1073741823 & r0);
-        return 1073741823 & (((int) ((r0 & 1152921503533105152L) >> 30)) - r5);
+        ce2 ce2Var = (ce2) dz.a.getObjectVolatile(this, b);
+        ce2Var.getClass();
+        long j = ce2.f.get(ce2Var);
+        return 1073741823 & (((int) ((j & 1152921503533105152L) >> 30)) - ((int) (1073741823 & j)));
     }
 
     public final Object d() {
-    L2:
-        a.getClass();
-        Unsafe r0 = dz.a;
-        long r1 = b;
-        ce2 r7 = (ce2) r0.getObjectVolatile(this, r1);
-        Object r2 = r7.e();
-        if (r2 != ce2.g) goto L4;
-        ce2 r8 = r7.d();
-    L6:
-        Unsafe r3 = dz.a;
-        ae2 r4 = this;
-        if (r3.compareAndSwapObject(r4, b, r7, r8) == true) goto L11;
-        if (r3.getObjectVolatile(r4, r1) != r7) goto L11;
-        ae2 this = r4;
-    L11:
-        this = r4;
-        goto L2
-    L4:
-        return r2;
+        ae2 ae2Var;
+        while (true) {
+            a.getClass();
+            Unsafe unsafe = dz.a;
+            long j = b;
+            ce2 ce2Var = (ce2) unsafe.getObjectVolatile(this, j);
+            Object objE = ce2Var.e();
+            if (objE != ce2.g) {
+                return objE;
+            }
+            ce2 ce2VarD = ce2Var.d();
+            while (true) {
+                Unsafe unsafe2 = dz.a;
+                ae2Var = this;
+                if (unsafe2.compareAndSwapObject(ae2Var, b, ce2Var, ce2VarD) || unsafe2.getObjectVolatile(ae2Var, j) != ce2Var) {
+                    break;
+                }
+                this = ae2Var;
+            }
+            this = ae2Var;
+        }
     }
 }

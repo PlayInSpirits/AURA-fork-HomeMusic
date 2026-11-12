@@ -7,19 +7,16 @@ import android.animation.TimeInterpolator;
 public final class d24 implements TimeInterpolator {
     public final TimeInterpolator a;
 
-    public d24(TimeInterpolator r1) {
-        this.a = r1;
+    public d24(TimeInterpolator timeInterpolator) {
+        this.a = timeInterpolator;
     }
 
-    public static TimeInterpolator a(boolean r0, TimeInterpolator r1) {
-        if (r0 == false) goto L5;
-        return r1;
-    L5:
-        return new d24(r1);
+    public static TimeInterpolator a(boolean z, TimeInterpolator timeInterpolator) {
+        return z ? timeInterpolator : new d24(timeInterpolator);
     }
 
     @Override // android.animation.TimeInterpolator
-    public final float getInterpolation(float r1) {
-        return 1.0f - this.a.getInterpolation(r1);
+    public final float getInterpolation(float f) {
+        return 1.0f - this.a.getInterpolation(f);
     }
 }

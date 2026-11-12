@@ -10,10 +10,10 @@ public final class ut1 {
     public final Child b;
     public final gn2 c;
 
-    public ut1(WaveTrack r1, Child r2, gn2 r3) {
-        r1.getClass();
-        this.a = r1;
-        this.b = r2;
-        this.c = r3;
+    public ut1(WaveTrack waveTrack, Child child, gn2 gn2Var) {
+        waveTrack.getClass();
+        this.a = waveTrack;
+        this.b = child;
+        this.c = gn2Var;
     }
 }

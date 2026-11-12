@@ -8,45 +8,39 @@ public abstract class v0 extends o15 implements ListIterator {
     public final int o;
     public int p;
 
-    public v0(int r2, int r3) {
+    public v0(int i, int i2) {
         super(0);
-        rr2.t(r3, r2);
-        this.o = r2;
-        this.p = r3;
+        rr2.t(i2, i);
+        this.o = i;
+        this.p = i2;
     }
 
-    public abstract Object a(int r1);
+    public abstract Object a(int i);
 
     @Override // java.util.ListIterator
-    public final void add(Object r1) {
+    public final void add(Object obj) {
         throw new UnsupportedOperationException();
     }
 
     @Override // java.util.Iterator, java.util.ListIterator
     public final boolean hasNext() {
-        if (this.p >= this.o) goto L6;
-        return true;
-    L6:
-        return false;
+        return this.p < this.o;
     }
 
     @Override // java.util.ListIterator
     public final boolean hasPrevious() {
-        if (this.p <= 0) goto L6;
-        return true;
-    L6:
-        return false;
+        return this.p > 0;
     }
 
     @Override // java.util.Iterator, java.util.ListIterator
     public final Object next() {
-        if (hasNext() == false) goto L6;
-        int r0 = this.p;
-        this.p = r0 + 1;
-        return a(r0);
-    L6:
-        tb4.k();
-        return null;
+        if (!hasNext()) {
+            tb4.k();
+            return null;
+        }
+        int i = this.p;
+        this.p = i + 1;
+        return a(i);
     }
 
     @Override // java.util.ListIterator
@@ -56,13 +50,13 @@ public abstract class v0 extends o15 implements ListIterator {
 
     @Override // java.util.ListIterator
     public final Object previous() {
-        if (hasPrevious() == false) goto L6;
-        int r0 = this.p - 1;
-        this.p = r0;
-        return a(r0);
-    L6:
-        tb4.k();
-        return null;
+        if (!hasPrevious()) {
+            tb4.k();
+            return null;
+        }
+        int i = this.p - 1;
+        this.p = i;
+        return a(i);
     }
 
     @Override // java.util.ListIterator
@@ -71,7 +65,7 @@ public abstract class v0 extends o15 implements ListIterator {
     }
 
     @Override // java.util.ListIterator
-    public final void set(Object r1) {
+    public final void set(Object obj) {
         throw new UnsupportedOperationException();
     }
 }

@@ -5,7 +5,6 @@ import defpackage.gb;
 import defpackage.u01;
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
@@ -14,59 +13,51 @@ public final class HubLikedSongs {
     public static final int $stable = 8;
     private List<HubLikedSong> songs;
 
-    public HubLikedSongs() {
-    }
-
-    public final List<Child> children(String r10) {
-        r10.getClass();
-        List<HubLikedSong> r0 = this.songs;
-        u01 r1 = u01.n;
-        if (r0 != null) goto L5;
-        r0 = r1;
-    L5:
-        ArrayList r2 = new ArrayList();
-        Iterator<T> r3 = r0.iterator();
-        int r4 = 0;
-        int r5 = 0;
-    L7:
-        if (r3.hasNext() == false) goto L19;
-        Object r6 = r3.next();
-        int r7 = r5 + 1;
-        if (r5 < 0) goto L17;
-        HubLikedSong r8 = (HubLikedSong) r6;
-        List<HubLikedSong> r9 = this.songs;
-        if (r9 != null) goto L13;
-        r9 = r1;
-    L13:
-        Child r11 = r8.child(r10, r9.size() - r5);
-        if (r11 == null) goto L16;
-        r2.add(r11);
-    L16:
-        r5 = r7;
-        goto L7
-    L17:
-        gb.c0();
-        throw null;
-    L19:
-        HashSet r12 = new HashSet();
-        ArrayList r13 = new ArrayList();
-        int r14 = r2.size();
-    L20:
-        if (r4 >= r14) goto L24;
-        Object r15 = r2.get(r4);
-        r4 = r4 + 1;
-        if (r12.add(((Child) r15).getId()) == false) goto L20;
-        r13.add(r15);
-        goto L20
-    L24:
-        return r13;
+    public final List<Child> children(String str) {
+        str.getClass();
+        List<HubLikedSong> list = this.songs;
+        u01 u01Var = u01.n;
+        if (list == null) {
+            list = u01Var;
+        }
+        ArrayList arrayList = new ArrayList();
+        int i = 0;
+        int i2 = 0;
+        for (Object obj : list) {
+            int i3 = i2 + 1;
+            if (i2 < 0) {
+                gb.c0();
+                throw null;
+            }
+            HubLikedSong hubLikedSong = (HubLikedSong) obj;
+            List<HubLikedSong> list2 = this.songs;
+            if (list2 == null) {
+                list2 = u01Var;
+            }
+            Child child = hubLikedSong.child(str, list2.size() - i2);
+            if (child != null) {
+                arrayList.add(child);
+            }
+            i2 = i3;
+        }
+        HashSet hashSet = new HashSet();
+        ArrayList arrayList2 = new ArrayList();
+        int size = arrayList.size();
+        while (i < size) {
+            Object obj2 = arrayList.get(i);
+            i++;
+            if (hashSet.add(((Child) obj2).getId())) {
+                arrayList2.add(obj2);
+            }
+        }
+        return arrayList2;
     }
 
     public final List<HubLikedSong> getSongs() {
         return this.songs;
     }
 
-    public final void setSongs(List<HubLikedSong> r1) {
-        this.songs = r1;
+    public final void setSongs(List<HubLikedSong> list) {
+        this.songs = list;
     }
 }

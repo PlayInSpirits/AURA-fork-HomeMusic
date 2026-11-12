@@ -9,23 +9,21 @@ import java.nio.ByteOrder;
 public final class tw implements yh0, fl0 {
     public final ByteBuffer n;
 
-    public tw(int r1, ByteBuffer r2) {
-        switch(r1) {
-            case 1: goto L5;
-            default: goto L3;
-        };
-    L3:
-        this.n = r2;
-        return;
-    L5:
-        this.n = r2;
-        r2.order(ByteOrder.BIG_ENDIAN);
+    public tw(int i, ByteBuffer byteBuffer) {
+        switch (i) {
+            case 1:
+                this.n = byteBuffer;
+                byteBuffer.order(ByteOrder.BIG_ENDIAN);
+                break;
+            default:
+                this.n = byteBuffer;
+                break;
+        }
     }
 
     @Override // defpackage.fl0
     public int b() {
-        int r0 = d() << 8;
-        return d() | r0;
+        return d() | (d() << 8);
     }
 
     @Override // defpackage.yh0
@@ -33,37 +31,37 @@ public final class tw implements yh0, fl0 {
     }
 
     @Override // defpackage.fl0
-    public short d() {
-        ByteBuffer r2 = this.n;
-        if (r2.remaining() < 1) goto L7;
-        return (short) (r2.get() & 255);
-    L7:
+    public short d() throws DefaultImageHeaderParser$Reader$EndOfFileException {
+        ByteBuffer byteBuffer = this.n;
+        if (byteBuffer.remaining() >= 1) {
+            return (short) (byteBuffer.get() & 255);
+        }
         throw new DefaultImageHeaderParser$Reader$EndOfFileException();
     }
 
     @Override // defpackage.fl0
-    public int e(int r2, byte[] r3) {
-        ByteBuffer r1 = this.n;
-        int r4 = Math.min(r2, r1.remaining());
-        if (r4 != 0) goto L6;
-        return -1;
-    L6:
-        r1.get(r3, 0, r4);
-        return r4;
+    public int e(int i, byte[] bArr) {
+        ByteBuffer byteBuffer = this.n;
+        int iMin = Math.min(i, byteBuffer.remaining());
+        if (iMin == 0) {
+            return -1;
+        }
+        byteBuffer.get(bArr, 0, iMin);
+        return iMin;
     }
 
     @Override // defpackage.yh0
     public Object l() {
-        ByteBuffer r1 = this.n;
-        r1.position(0);
-        return r1;
+        ByteBuffer byteBuffer = this.n;
+        byteBuffer.position(0);
+        return byteBuffer;
     }
 
     @Override // defpackage.fl0
-    public long skip(long r3) {
-        ByteBuffer r2 = this.n;
-        int r4 = (int) Math.min(r2.remaining(), r3);
-        r2.position(r2.position() + r4);
-        return r4;
+    public long skip(long j) {
+        ByteBuffer byteBuffer = this.n;
+        int iMin = (int) Math.min(byteBuffer.remaining(), j);
+        byteBuffer.position(byteBuffer.position() + iMin);
+        return iMin;
     }
 }

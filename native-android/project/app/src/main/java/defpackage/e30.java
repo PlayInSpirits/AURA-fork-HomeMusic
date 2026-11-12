@@ -7,7 +7,7 @@ import android.graphics.RectF;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class e30 {
-    public final RectF a;
+    public final RectF a = new RectF();
     public final Paint b;
     public final Paint c;
     public final Paint d;
@@ -30,29 +30,28 @@ public final class e30 {
     public int u;
 
     public e30() {
-        this.a = new RectF();
-        Paint r0 = new Paint();
-        this.b = r0;
-        Paint r1 = new Paint();
-        this.c = r1;
-        Paint r2 = new Paint();
-        this.d = r2;
+        Paint paint = new Paint();
+        this.b = paint;
+        Paint paint2 = new Paint();
+        this.c = paint2;
+        Paint paint3 = new Paint();
+        this.d = paint3;
         this.e = 0.0f;
         this.f = 0.0f;
         this.g = 0.0f;
         this.h = 5.0f;
         this.p = 1.0f;
         this.t = 255;
-        r0.setStrokeCap(Paint.Cap.SQUARE);
-        r0.setAntiAlias(true);
-        r0.setStyle(Paint.Style.STROKE);
-        r1.setStyle(Paint.Style.FILL);
-        r1.setAntiAlias(true);
-        r2.setColor(0);
+        paint.setStrokeCap(Paint.Cap.SQUARE);
+        paint.setAntiAlias(true);
+        paint.setStyle(Paint.Style.STROKE);
+        paint2.setStyle(Paint.Style.FILL);
+        paint2.setAntiAlias(true);
+        paint3.setColor(0);
     }
 
-    public final void a(int r2) {
-        this.j = r2;
-        this.u = this.i[r2];
+    public final void a(int i) {
+        this.j = i;
+        this.u = this.i[i];
     }
 }

@@ -16,47 +16,45 @@ public final class ha5 extends d5 implements ou2 {
     public WeakReference s;
     public final /* synthetic */ ia5 t;
 
-    public ha5(ia5 r1, Context r2, rm3 r3) {
-        this.t = r1;
-        this.p = r2;
-        this.r = r3;
-        qu2 r4 = new qu2(r2);
-        r4.l = 1;
-        this.q = r4;
-        r4.e = this;
+    public ha5(ia5 ia5Var, Context context, rm3 rm3Var) {
+        this.t = ia5Var;
+        this.p = context;
+        this.r = rm3Var;
+        qu2 qu2Var = new qu2(context);
+        qu2Var.l = 1;
+        this.q = qu2Var;
+        qu2Var.e = this;
     }
 
     @Override // defpackage.d5
     public final void a() {
-        ia5 r0 = this.t;
-        if (r0.l == this) goto L6;
-        return;
-    L6:
-        if (r0.s == false) goto L8;
-        r0.m = this;
-        r0.n = this.r;
-    L9:
+        ia5 ia5Var = this.t;
+        if (ia5Var.l != this) {
+            return;
+        }
+        if (ia5Var.s) {
+            ia5Var.m = this;
+            ia5Var.n = this.r;
+        } else {
+            this.r.H(this);
+        }
         this.r = null;
-        r0.u0(false);
-        ActionBarContextView r3 = r0.i;
-        if (r3.x != null) goto L12;
-        r3.e();
-    L12:
-        r0.f.setHideOnContentScrollEnabled(r0.x);
-        r0.l = null;
-        return;
-    L8:
-        this.r.H(this);
-        goto L9
+        ia5Var.u0(false);
+        ActionBarContextView actionBarContextView = ia5Var.i;
+        if (actionBarContextView.x == null) {
+            actionBarContextView.e();
+        }
+        ia5Var.f.setHideOnContentScrollEnabled(ia5Var.x);
+        ia5Var.l = null;
     }
 
     @Override // defpackage.d5
     public final View b() {
-        WeakReference r0 = this.s;
-        if (r0 != null) goto L5;
+        WeakReference weakReference = this.s;
+        if (weakReference != null) {
+            return (View) weakReference.get();
+        }
         return null;
-    L5:
-        return (View) r0.get();
     }
 
     @Override // defpackage.d5
@@ -81,18 +79,16 @@ public final class ha5 extends d5 implements ou2 {
 
     @Override // defpackage.d5
     public final void g() {
-        if (this.t.l == this) goto L5;
-        return;
-    L5:
-        qu2 r0 = this.q;
-        r0.y();
-        this.r.I(this, r0);     // Catch: Throwable -> L9
-        r0.x();
-        return;
-    L9:
-        th = move-exception;
-        r0.x();
-        throw th;
+        if (this.t.l != this) {
+            return;
+        }
+        qu2 qu2Var = this.q;
+        qu2Var.y();
+        try {
+            this.r.I(this, qu2Var);
+        } finally {
+            qu2Var.x();
+        }
     }
 
     @Override // defpackage.d5
@@ -101,55 +97,55 @@ public final class ha5 extends d5 implements ou2 {
     }
 
     @Override // defpackage.d5
-    public final void i(View r2) {
-        this.t.i.setCustomView(r2);
-        this.s = new WeakReference(r2);
+    public final void i(View view) {
+        this.t.i.setCustomView(view);
+        this.s = new WeakReference(view);
     }
 
     @Override // defpackage.d5
-    public final void j(int r2) {
-        k(this.t.d.getResources().getString(r2));
+    public final void j(int i) {
+        k(this.t.d.getResources().getString(i));
     }
 
     @Override // defpackage.d5
-    public final void k(CharSequence r1) {
-        this.t.i.setSubtitle(r1);
+    public final void k(CharSequence charSequence) {
+        this.t.i.setSubtitle(charSequence);
     }
 
     @Override // defpackage.d5
-    public final void l(int r2) {
-        n(this.t.d.getResources().getString(r2));
+    public final void l(int i) {
+        n(this.t.d.getResources().getString(i));
     }
 
     @Override // defpackage.ou2
-    public final boolean m(qu2 r1, MenuItem r2) {
-        rm3 r3 = this.r;
-        if (r3 != null) goto L5;
+    public final boolean m(qu2 qu2Var, MenuItem menuItem) {
+        rm3 rm3Var = this.r;
+        if (rm3Var != null) {
+            return ((bq4) rm3Var.n).q(this, menuItem);
+        }
         return false;
-    L5:
-        return ((bq4) r3.n).q(this, r2);
     }
 
     @Override // defpackage.d5
-    public final void n(CharSequence r1) {
-        this.t.i.setTitle(r1);
+    public final void n(CharSequence charSequence) {
+        this.t.i.setTitle(charSequence);
     }
 
     @Override // defpackage.d5
-    public final void o(boolean r1) {
-        this.o = r1;
-        this.t.i.setTitleOptional(r1);
+    public final void o(boolean z) {
+        this.o = z;
+        this.t.i.setTitleOptional(z);
     }
 
     @Override // defpackage.ou2
-    public final void y(qu2 r1) {
-        if (this.r == null) goto L10;
+    public final void y(qu2 qu2Var) {
+        if (this.r == null) {
+            return;
+        }
         g();
-        y4 r0 = this.t.i.q;
-        if (r0 == null) goto L9;
-        r0.n();
-        return;
-    L9:
-        return;
+        y4 y4Var = this.t.i.q;
+        if (y4Var != null) {
+            y4Var.n();
+        }
     }
 }

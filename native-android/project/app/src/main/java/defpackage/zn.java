@@ -9,11 +9,10 @@ public final class zn {
     public long d;
     public int e;
 
-    public static long a(long r4, long r6) {
-        if (r6 != 0) goto L5;
-        return r4;
-    L5:
-        long r5 = r4 / 4;
-        return r5 + ((r6 / 4) * 3);
+    public static long a(long j, long j2) {
+        if (j2 == 0) {
+            return j;
+        }
+        return (j / 4) + ((j2 / 4) * 3);
     }
 }

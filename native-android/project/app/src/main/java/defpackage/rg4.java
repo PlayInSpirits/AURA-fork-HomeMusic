@@ -9,8 +9,8 @@ public final class rg4 {
     public int b;
     public boolean c;
 
-    public rg4(int r2, br r3) {
-        this.a = new WeakReference(r3);
-        this.b = r2;
+    public rg4(int i, br brVar) {
+        this.a = new WeakReference(brVar);
+        this.b = i;
     }
 }

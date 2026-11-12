@@ -6,20 +6,14 @@ public final class s10 extends q10 {
     public final char n;
     public final char o;
 
-    public s10(char r1, char r2) {
-        this.n = r1;
-        this.o = r2;
+    public s10(char c, char c2) {
+        this.n = c;
+        this.o = c2;
     }
 
     @Override // defpackage.u10
-    public final boolean c(char r2) {
-        if (r2 != this.n) goto L5;
-        return true;
-    L5:
-        if (r2 == this.o) goto L11;
-        return false;
-    L11:
-        return true;
+    public final boolean c(char c) {
+        return c == this.n || c == this.o;
     }
 
     public final String toString() {

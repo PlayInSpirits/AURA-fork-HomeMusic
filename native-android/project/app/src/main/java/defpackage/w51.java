@@ -12,41 +12,40 @@ public final class w51 implements ValueAnimator.AnimatorUpdateListener {
     public final View c;
     public final Object d;
 
-    public w51(ActionMenuView r2, ActionMenuView r3) {
+    public w51(ActionMenuView actionMenuView, ActionMenuView actionMenuView2) {
         this.a = 0;
-        this.b = r2;
-        this.c = r3;
+        this.b = actionMenuView;
+        this.c = actionMenuView2;
         this.d = new float[2];
     }
 
     @Override // android.animation.ValueAnimator.AnimatorUpdateListener
-    public final void onAnimationUpdate(ValueAnimator r4) {
-        int r0 = this.a;
-        View r1 = this.c;
-        View r2 = this.b;
-        Object r3 = this.d;
-        switch(r0) {
-            case 0: goto L6;
-            default: goto L4;
-        };
-    L4:
-        ((jq4) r3).c(r2, r1, r4.getAnimatedFraction());
-        return;
-    L6:
-        float[] r5 = (float[]) r3;
-        zz1.g(((Float) r4.getAnimatedValue()).floatValue(), r5);
-        if (r2 == null) goto L9;
-        r2.setAlpha(r5[0]);
-    L9:
-        if (r1 == null) goto L12;
-        r1.setAlpha(r5[1]);
-        return;
+    public final void onAnimationUpdate(ValueAnimator valueAnimator) {
+        int i = this.a;
+        View view = this.c;
+        View view2 = this.b;
+        Object obj = this.d;
+        switch (i) {
+            case 0:
+                float[] fArr = (float[]) obj;
+                zz1.g(((Float) valueAnimator.getAnimatedValue()).floatValue(), fArr);
+                if (view2 != null) {
+                    view2.setAlpha(fArr[0]);
+                }
+                if (view != null) {
+                    view.setAlpha(fArr[1]);
+                }
+                break;
+            default:
+                ((jq4) obj).c(view2, view, valueAnimator.getAnimatedFraction());
+                break;
+        }
     }
 
-    public w51(jq4 r2, View r3, View r4) {
+    public w51(jq4 jq4Var, View view, View view2) {
         this.a = 1;
-        this.d = r2;
-        this.b = r3;
-        this.c = r4;
+        this.d = jq4Var;
+        this.b = view;
+        this.c = view2;
     }
 }

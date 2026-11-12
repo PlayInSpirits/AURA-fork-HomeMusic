@@ -9,21 +9,21 @@ import java.lang.reflect.Method;
 public abstract class jp implements vd0, ye0, Serializable {
     private final vd0<Object> completion;
 
-    public jp(vd0 r1) {
-        this.completion = r1;
+    public jp(vd0 vd0Var) {
+        this.completion = vd0Var;
     }
 
-    public vd0<j15> create(vd0<?> r1) {
-        r1.getClass();
+    public vd0<j15> create(vd0<?> vd0Var) {
+        vd0Var.getClass();
         throw new UnsupportedOperationException("create(Continuation) has not been overridden");
     }
 
     public ye0 getCallerFrame() {
-        vd0<Object> r1 = this.completion;
-        if ((r1 instanceof ye0) == true) goto L5;
+        vd0<Object> vd0Var = this.completion;
+        if (vd0Var instanceof ye0) {
+            return (ye0) vd0Var;
+        }
         return null;
-    L5:
-        return (ye0) r1;
     }
 
     public final vd0<Object> getCompletion() {
@@ -31,77 +31,55 @@ public abstract class jp implements vd0, ye0, Serializable {
     }
 
     public StackTraceElement getStackTraceElement() {
-        ri0 r0 = (ri0) getClass().getAnnotation(ri0.class);
-        String r1 = null;
-        if (r0 != null) goto L6;
-    L7:
-        return null;
-    L6:
-        if (r0.v() < 1) goto L7;
-        int r2 = -1;
-        Field r4 = getClass().getDeclaredField("label");     // Catch: Exception -> L18
-        r4.setAccessible(true);     // Catch: Exception -> L18
-        Object r5 = r4.get(this);     // Catch: Exception -> L18
-        if ((r5 instanceof Integer) == false) goto L12;
-        Integer r6 = (Integer) r5;     // Catch: Exception -> L18
-    L13:
-        if (r6 == null) goto L16;
-        int r7 = r6.intValue();     // Catch: Exception -> L18
-    L17:
-        int r8 = r7 - 1;
-    L19:
-        if (r8 < 0) goto L22;
-        r2 = r0.l()[r8];
-    L22:
-        i61 r3 = ya4.b;
-        i61 r9 = ya4.c;
-        if (r9 == null) goto L53;
-    L27:
-        if (r9 == r3) goto L46;
-        Method r10 = (Method) r9.o;
-        if (r10 == null) goto L46;
-        Object r12 = r10.invoke(getClass(), null);
-        if (r12 == null) goto L46;
-        Method r11 = (Method) r9.p;
-        if (r11 == null) goto L46;
-        Object r13 = r11.invoke(r12, null);
-        if (r13 == null) goto L46;
-        Method r14 = (Method) r9.q;
-        if (r14 == null) goto L42;
-        Object r15 = r14.invoke(r13, null);
-    L44:
-        if ((r15 instanceof String) == false) goto L46;
-        r1 = (String) r15;
-        goto L46
-    L42:
-        r15 = null;
-    L46:
-        if (r1 != null) goto L48;
-        String r16 = r0.c();
-    L50:
-        return new StackTraceElement(r16, r0.m(), r0.f(), r2);
-    L48:
-        r16 = r1 + '/' + r0.c();
-        goto L50
-    L53:
-        i61 r17 = new i61(Class.class.getDeclaredMethod("getModule", null), getClass().getClassLoader().loadClass("java.lang.Module").getDeclaredMethod("getDescriptor", null), getClass().getClassLoader().loadClass("java.lang.module.ModuleDescriptor").getDeclaredMethod("name", null), false, 8);     // Catch: Exception -> L26
-        ya4.c = r17;     // Catch: Exception -> L26
-        r9 = r17;
-    L26:
-        ya4.c = r3;
-        r9 = r3;
-        goto L27
-    L16:
-        r7 = 0;
-        goto L17
-    L12:
-        r6 = null;
-    L18:
-        r8 = -1;
-        goto L19
+        int iIntValue;
+        String strC;
+        Method method;
+        Object objInvoke;
+        Method method2;
+        Object objInvoke2;
+        ri0 ri0Var = (ri0) getClass().getAnnotation(ri0.class);
+        String str = null;
+        if (ri0Var == null || ri0Var.v() < 1) {
+            return null;
+        }
+        try {
+            Field declaredField = getClass().getDeclaredField("label");
+            declaredField.setAccessible(true);
+            Object obj = declaredField.get(this);
+            Integer num = obj instanceof Integer ? (Integer) obj : null;
+            iIntValue = (num != null ? num.intValue() : 0) - 1;
+        } catch (Exception unused) {
+            iIntValue = -1;
+        }
+        int i = iIntValue >= 0 ? ri0Var.l()[iIntValue] : -1;
+        i61 i61Var = ya4.b;
+        i61 i61Var2 = ya4.c;
+        if (i61Var2 == null) {
+            try {
+                i61 i61Var3 = new i61(Class.class.getDeclaredMethod("getModule", null), getClass().getClassLoader().loadClass("java.lang.Module").getDeclaredMethod("getDescriptor", null), getClass().getClassLoader().loadClass("java.lang.module.ModuleDescriptor").getDeclaredMethod("name", null), false, 8);
+                ya4.c = i61Var3;
+                i61Var2 = i61Var3;
+            } catch (Exception unused2) {
+                ya4.c = i61Var;
+                i61Var2 = i61Var;
+            }
+        }
+        if (i61Var2 != i61Var && (method = (Method) i61Var2.o) != null && (objInvoke = method.invoke(getClass(), null)) != null && (method2 = (Method) i61Var2.p) != null && (objInvoke2 = method2.invoke(objInvoke, null)) != null) {
+            Method method3 = (Method) i61Var2.q;
+            Object objInvoke3 = method3 != null ? method3.invoke(objInvoke2, null) : null;
+            if (objInvoke3 instanceof String) {
+                str = (String) objInvoke3;
+            }
+        }
+        if (str == null) {
+            strC = ri0Var.c();
+        } else {
+            strC = str + '/' + ri0Var.c();
+        }
+        return new StackTraceElement(strC, ri0Var.m(), ri0Var.f(), i);
     }
 
-    public abstract Object invokeSuspend(Object r1);
+    public abstract Object invokeSuspend(Object obj);
 
     public void releaseIntercepted() {
     }
@@ -111,41 +89,41 @@ public abstract class jp implements vd0, ye0, Serializable {
     /* JADX WARN: Type inference failed for: r2v4 */
     /* JADX WARN: Type inference failed for: r2v5 */
     @Override // defpackage.vd0
-    public final void resumeWith(Object r3) {
-    L2:
-        jp r2 = (jp) r2;
-        vd0<Object> r0 = r2.completion;
-        r0.getClass();
-        r3 = r2.invokeSuspend(r3);     // Catch: Throwable -> L6
-        if (r3 == xe0.n) goto L5;
-    L8:
-        r2.releaseIntercepted();
-        if ((r0 instanceof jp) == false) goto L11;
-        ?? r4 = r0;
-        goto L2
-    L11:
-        r0.resumeWith(r3);
-        return;
-    L5:
-        return;
-    L6:
-        th = move-exception;
-        r3 = new s14(th);
-        goto L8
+    public final void resumeWith(Object obj) {
+        ?? r2 = this;
+        while (true) {
+            jp jpVar = (jp) r2;
+            vd0<Object> vd0Var = jpVar.completion;
+            vd0Var.getClass();
+            try {
+                obj = jpVar.invokeSuspend(obj);
+                if (obj == xe0.n) {
+                    return;
+                }
+            } catch (Throwable th) {
+                obj = new s14(th);
+            }
+            jpVar.releaseIntercepted();
+            if (!(vd0Var instanceof jp)) {
+                vd0Var.resumeWith(obj);
+                return;
+            }
+            r2 = vd0Var;
+        }
     }
 
     public String toString() {
-        StringBuilder r0 = new StringBuilder("Continuation at ");
-        Object r1 = getStackTraceElement();
-        if (r1 != null) goto L5;
-        r1 = getClass().getName();
-    L5:
-        r0.append(r1);
-        return r0.toString();
+        StringBuilder sb = new StringBuilder("Continuation at ");
+        Object stackTraceElement = getStackTraceElement();
+        if (stackTraceElement == null) {
+            stackTraceElement = getClass().getName();
+        }
+        sb.append(stackTraceElement);
+        return sb.toString();
     }
 
-    public vd0<j15> create(Object r1, vd0<?> r2) {
-        r2.getClass();
+    public vd0<j15> create(Object obj, vd0<?> vd0Var) {
+        vd0Var.getClass();
         throw new UnsupportedOperationException("create(Any?;Continuation) has not been overridden");
     }
 }

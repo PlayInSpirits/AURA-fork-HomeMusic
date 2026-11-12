@@ -7,8 +7,8 @@ import java.util.Objects;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class jn1 implements wv4 {
-    public static final tb1 f = null;
-    public static final tb1 g = null;
+    public static final tb1 f;
+    public static final tb1 g;
     public final wv4 a;
     public final tb1 b;
     public tb1 c;
@@ -16,100 +16,94 @@ public final class jn1 implements wv4 {
     public int e;
 
     static {
-        sb1 r0 = new sb1();
-        r0.m = lw2.m("application/id3");
-        f = new tb1(r0);
-        sb1 r1 = new sb1();
-        r1.m = lw2.m("application/x-emsg");
-        g = new tb1(r1);
+        sb1 sb1Var = new sb1();
+        sb1Var.m = lw2.m("application/id3");
+        f = new tb1(sb1Var);
+        sb1 sb1Var2 = new sb1();
+        sb1Var2.m = lw2.m("application/x-emsg");
+        g = new tb1(sb1Var2);
     }
 
-    public jn1(wv4 r1, int r2) {
-        this.a = r1;
-        if (r2 != 1) goto L5;
-        this.b = f;
-    L10:
+    public jn1(wv4 wv4Var, int i) {
+        this.a = wv4Var;
+        if (i == 1) {
+            this.b = f;
+        } else {
+            if (i != 3) {
+                kf2.n(f34.f(i, "Unknown metadataType: "));
+                throw null;
+            }
+            this.b = g;
+        }
         this.d = new byte[0];
         this.e = 0;
-        return;
-    L5:
-        if (r2 != 3) goto L7;
-        this.b = g;
-        goto L10
-    L7:
-        kf2.n(f34.f(r2, "Unknown metadataType: "));
-        throw null;
     }
 
     @Override // defpackage.wv4
-    public final void a(long r4, int r6, int r7, int r8, vv4 r9) {
+    public final void a(long j, int i, int i2, int i3, vv4 vv4Var) {
         this.c.getClass();
-        int r0 = this.e - r8;
-        be3 r1 = new be3(Arrays.copyOfRange(this.d, r0 - r7, r0));
-        byte[] r10 = this.d;
-        System.arraycopy(r10, r0, r10, 0, r8);
-        this.e = r8;
-        String r11 = this.c.n;
-        tb1 r12 = this.b;
-        String r2 = r12.n;
-        String r13 = r12.n;
-        if (Objects.equals(r11, r2) == false) goto L6;
-    L12:
-        int r14 = r1.a();
-        wv4 r3 = this.a;
-        r3.e(r14, r1);
-        r3.a(r4, r6, r14, 0, r9);
-        return;
-    L6:
-        if ("application/x-emsg".equals(this.c.n) == false) goto L16;
-        m21 r15 = wh.O(r1);
-        tb1 r5 = r15.a();
-        if (r5 != null) goto L10;
-    L14:
-        l93.q0("HlsSampleStreamWrapper", "Ignoring EMSG. Expected it to contain wrapped " + r13 + " but actual wrapped format: " + r15.a());
-        return;
-    L10:
-        if (Objects.equals(r13, r5.n) == false) goto L14;
-        byte[] r16 = r15.c();
-        r16.getClass();
-        r1 = new be3(r16);
-        goto L12
-    L16:
-        l93.q0("HlsSampleStreamWrapper", "Ignoring sample for unsupported format: " + this.c.n);
+        int i4 = this.e - i3;
+        be3 be3Var = new be3(Arrays.copyOfRange(this.d, i4 - i2, i4));
+        byte[] bArr = this.d;
+        System.arraycopy(bArr, i4, bArr, 0, i3);
+        this.e = i3;
+        String str = this.c.n;
+        tb1 tb1Var = this.b;
+        String str2 = tb1Var.n;
+        String str3 = tb1Var.n;
+        if (!Objects.equals(str, str2)) {
+            if (!"application/x-emsg".equals(this.c.n)) {
+                l93.q0("HlsSampleStreamWrapper", "Ignoring sample for unsupported format: " + this.c.n);
+                return;
+            }
+            m21 m21VarO = wh.O(be3Var);
+            tb1 tb1VarA = m21VarO.a();
+            if (tb1VarA == null || !Objects.equals(str3, tb1VarA.n)) {
+                l93.q0("HlsSampleStreamWrapper", "Ignoring EMSG. Expected it to contain wrapped " + str3 + " but actual wrapped format: " + m21VarO.a());
+                return;
+            }
+            byte[] bArrC = m21VarO.c();
+            bArrC.getClass();
+            be3Var = new be3(bArrC);
+        }
+        int iA = be3Var.a();
+        wv4 wv4Var = this.a;
+        wv4Var.e(iA, be3Var);
+        wv4Var.a(j, i, iA, 0, vv4Var);
     }
 
     @Override // defpackage.wv4
-    public final void b(be3 r3, int r4, int r5) {
-        int r6 = this.e + r4;
-        byte[] r0 = this.d;
-        if (r0.length >= r6) goto L5;
-        this.d = Arrays.copyOf(r0, (r6 / 2) + r6);
-    L5:
-        r3.k(this.d, this.e, r4);
-        this.e += r4;
+    public final void b(be3 be3Var, int i, int i2) {
+        int i3 = this.e + i;
+        byte[] bArr = this.d;
+        if (bArr.length < i3) {
+            this.d = Arrays.copyOf(bArr, (i3 / 2) + i3);
+        }
+        be3Var.k(this.d, this.e, i);
+        this.e += i;
     }
 
     @Override // defpackage.wv4
-    public final int c(wh0 r4, int r5, boolean r6) {
-        int r0 = this.e + r5;
-        byte[] r1 = this.d;
-        if (r1.length >= r0) goto L5;
-        this.d = Arrays.copyOf(r1, (r0 / 2) + r0);
-    L5:
-        int r7 = r4.read(this.d, this.e, r5);
-        if (r7 != (-1)) goto L11;
-        if (r6 == false) goto L10;
-        return -1;
-    L10:
+    public final int c(wh0 wh0Var, int i, boolean z) throws EOFException {
+        int i2 = this.e + i;
+        byte[] bArr = this.d;
+        if (bArr.length < i2) {
+            this.d = Arrays.copyOf(bArr, (i2 / 2) + i2);
+        }
+        int i3 = wh0Var.read(this.d, this.e, i);
+        if (i3 != -1) {
+            this.e += i3;
+            return i3;
+        }
+        if (z) {
+            return -1;
+        }
         throw new EOFException();
-    L11:
-        this.e += r7;
-        return r7;
     }
 
     @Override // defpackage.wv4
-    public final void g(tb1 r1) {
-        this.c = r1;
+    public final void g(tb1 tb1Var) {
+        this.c = tb1Var;
         this.a.g(this.b);
     }
 }

@@ -7,7 +7,7 @@ import android.graphics.Bitmap;
 public final class cc {
     public final Bitmap a;
 
-    public cc(Bitmap r1) {
-        this.a = r1;
+    public cc(Bitmap bitmap) {
+        this.a = bitmap;
     }
 }

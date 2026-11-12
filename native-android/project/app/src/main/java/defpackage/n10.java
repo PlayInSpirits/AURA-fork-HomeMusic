@@ -6,27 +6,21 @@ public final class n10 extends u10 {
     public final u10 n;
     public final u10 o;
 
-    public n10(u10 r1, u10 r2) {
-        r1.getClass();
-        this.n = r1;
-        r2.getClass();
-        this.o = r2;
+    public n10(u10 u10Var, u10 u10Var2) {
+        u10Var.getClass();
+        this.n = u10Var;
+        u10Var2.getClass();
+        this.o = u10Var2;
     }
 
     @Override // defpackage.ro3
-    public final boolean apply(Object r1) {
-        return c(((Character) r1).charValue());
+    public final boolean apply(Object obj) {
+        return c(((Character) obj).charValue());
     }
 
     @Override // defpackage.u10
-    public final boolean c(char r2) {
-        if (this.n.c(r2) == true) goto L5;
-        return false;
-    L5:
-        if (this.o.c(r2) == false) goto L10;
-        return true;
-    L10:
-        return false;
+    public final boolean c(char c) {
+        return this.n.c(c) && this.o.c(c);
     }
 
     public final String toString() {

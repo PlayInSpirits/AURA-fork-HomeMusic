@@ -8,29 +8,27 @@ import java.util.concurrent.TimeUnit;
 /* JADX INFO: loaded from: classes.dex */
 public final class ry implements ic2 {
     public final WeakReference n;
-    public final qy o;
+    public final qy o = new qy(this);
 
-    public ry(oy r2) {
-        this.o = new qy(this);
-        this.n = new WeakReference(r2);
+    public ry(oy oyVar) {
+        this.n = new WeakReference(oyVar);
     }
 
     @Override // java.util.concurrent.Future
-    public final boolean cancel(boolean r2) {
-        oy r0 = (oy) this.n.get();
-        boolean r1 = this.o.cancel(r2);
-        if (r1 == false) goto L6;
-        if (r0 == null) goto L6;
-        r0.a = null;
-        r0.b = null;
-        r0.c.j(null);
-    L6:
-        return r1;
+    public final boolean cancel(boolean z) {
+        oy oyVar = (oy) this.n.get();
+        boolean zCancel = this.o.cancel(z);
+        if (zCancel && oyVar != null) {
+            oyVar.a = null;
+            oyVar.b = null;
+            oyVar.c.j(null);
+        }
+        return zCancel;
     }
 
     @Override // defpackage.ic2
-    public final void f(Runnable r1, Executor r2) {
-        this.o.f(r1, r2);
+    public final void f(Runnable runnable, Executor executor) {
+        this.o.f(runnable, executor);
     }
 
     @Override // java.util.concurrent.Future
@@ -53,7 +51,7 @@ public final class ry implements ic2 {
     }
 
     @Override // java.util.concurrent.Future
-    public final Object get(long r1, TimeUnit r3) {
-        return this.o.get(r1, r3);
+    public final Object get(long j, TimeUnit timeUnit) {
+        return this.o.get(j, timeUnit);
     }
 }

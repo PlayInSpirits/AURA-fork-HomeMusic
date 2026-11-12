@@ -12,122 +12,108 @@ import java.util.WeakHashMap;
 /* JADX INFO: loaded from: classes.dex */
 public final class dx3 extends z2 {
     public final ex3 q;
-    public final WeakHashMap r;
+    public final WeakHashMap r = new WeakHashMap();
 
-    public dx3(ex3 r2) {
-        this.r = new WeakHashMap();
-        this.q = r2;
+    public dx3(ex3 ex3Var) {
+        this.q = ex3Var;
     }
 
     @Override // defpackage.z2
-    public final boolean a(View r2, AccessibilityEvent r3) {
-        z2 r0 = (z2) this.r.get(r2);
-        if (r0 == null) goto L7;
-        return r0.a(r2, r3);
-    L7:
-        return this.n.dispatchPopulateAccessibilityEvent(r2, r3);
+    public final boolean a(View view, AccessibilityEvent accessibilityEvent) {
+        z2 z2Var = (z2) this.r.get(view);
+        return z2Var != null ? z2Var.a(view, accessibilityEvent) : this.n.dispatchPopulateAccessibilityEvent(view, accessibilityEvent);
     }
 
     @Override // defpackage.z2
-    public final zh0 b(View r2) {
-        z2 r0 = (z2) this.r.get(r2);
-        if (r0 == null) goto L7;
-        return r0.b(r2);
-    L7:
-        return super.b(r2);
+    public final zh0 b(View view) {
+        z2 z2Var = (z2) this.r.get(view);
+        return z2Var != null ? z2Var.b(view) : super.b(view);
     }
 
     @Override // defpackage.z2
-    public final void c(View r2, AccessibilityEvent r3) {
-        z2 r0 = (z2) this.r.get(r2);
-        if (r0 == null) goto L6;
-        r0.c(r2, r3);
-        return;
-    L6:
-        super.c(r2, r3);
+    public final void c(View view, AccessibilityEvent accessibilityEvent) {
+        z2 z2Var = (z2) this.r.get(view);
+        if (z2Var != null) {
+            z2Var.c(view, accessibilityEvent);
+        } else {
+            super.c(view, accessibilityEvent);
+        }
     }
 
     @Override // defpackage.z2
-    public final void d(View r5, v3 r6) {
-        AccessibilityNodeInfo r0 = r6.a;
-        ex3 r1 = this.q;
-        RecyclerView r2 = r1.q;
-        RecyclerView r3 = r1.q;
-        boolean r4 = r2.Q();
-        View.AccessibilityDelegate r7 = this.n;
-        if (r4 == false) goto L5;
-    L12:
-        r7.onInitializeAccessibilityNodeInfo(r5, r0);
-        return;
-    L5:
-        if (r3.getLayoutManager() == null) goto L12;
-        r3.getLayoutManager().Y(r5, r6);
-        z2 r8 = (z2) this.r.get(r5);
-        if (r8 == null) goto L10;
-        r8.d(r5, r6);
-        return;
-    L10:
-        r7.onInitializeAccessibilityNodeInfo(r5, r0);
+    public final void d(View view, v3 v3Var) {
+        AccessibilityNodeInfo accessibilityNodeInfo = v3Var.a;
+        ex3 ex3Var = this.q;
+        RecyclerView recyclerView = ex3Var.q;
+        RecyclerView recyclerView2 = ex3Var.q;
+        boolean zQ = recyclerView.Q();
+        View.AccessibilityDelegate accessibilityDelegate = this.n;
+        if (zQ || recyclerView2.getLayoutManager() == null) {
+            accessibilityDelegate.onInitializeAccessibilityNodeInfo(view, accessibilityNodeInfo);
+            return;
+        }
+        recyclerView2.getLayoutManager().Y(view, v3Var);
+        z2 z2Var = (z2) this.r.get(view);
+        if (z2Var != null) {
+            z2Var.d(view, v3Var);
+        } else {
+            accessibilityDelegate.onInitializeAccessibilityNodeInfo(view, accessibilityNodeInfo);
+        }
     }
 
     @Override // defpackage.z2
-    public final void e(View r2, AccessibilityEvent r3) {
-        z2 r0 = (z2) this.r.get(r2);
-        if (r0 == null) goto L6;
-        r0.e(r2, r3);
-        return;
-    L6:
-        super.e(r2, r3);
+    public final void e(View view, AccessibilityEvent accessibilityEvent) {
+        z2 z2Var = (z2) this.r.get(view);
+        if (z2Var != null) {
+            z2Var.e(view, accessibilityEvent);
+        } else {
+            super.e(view, accessibilityEvent);
+        }
     }
 
     @Override // defpackage.z2
-    public final boolean f(ViewGroup r2, View r3, AccessibilityEvent r4) {
-        z2 r0 = (z2) this.r.get(r2);
-        if (r0 == null) goto L7;
-        return r0.f(r2, r3, r4);
-    L7:
-        return this.n.onRequestSendAccessibilityEvent(r2, r3, r4);
+    public final boolean f(ViewGroup viewGroup, View view, AccessibilityEvent accessibilityEvent) {
+        z2 z2Var = (z2) this.r.get(viewGroup);
+        return z2Var != null ? z2Var.f(viewGroup, view, accessibilityEvent) : this.n.onRequestSendAccessibilityEvent(viewGroup, view, accessibilityEvent);
     }
 
     @Override // defpackage.z2
-    public final boolean g(View r3, int r4, Bundle r5) {
-        ex3 r0 = this.q;
-        RecyclerView r1 = r0.q;
-        RecyclerView r2 = r0.q;
-        if (r1.Q() == true) goto L18;
-        if (r2.getLayoutManager() == null) goto L18;
-        z2 r6 = (z2) this.r.get(r3);
-        if (r6 == null) goto L12;
-        if (r6.g(r3, r4, r5) == true) goto L19;
-    L15:
-        hm2 r7 = r2.getLayoutManager().b.p;
+    public final boolean g(View view, int i, Bundle bundle) {
+        ex3 ex3Var = this.q;
+        RecyclerView recyclerView = ex3Var.q;
+        RecyclerView recyclerView2 = ex3Var.q;
+        if (recyclerView.Q() || recyclerView2.getLayoutManager() == null) {
+            return super.g(view, i, bundle);
+        }
+        z2 z2Var = (z2) this.r.get(view);
+        if (z2Var != null) {
+            if (z2Var.g(view, i, bundle)) {
+                return true;
+            }
+        } else if (super.g(view, i, bundle)) {
+            return true;
+        }
+        hm2 hm2Var = recyclerView2.getLayoutManager().b.p;
         return false;
-    L19:
-        return true;
-    L12:
-        if (super.g(r3, r4, r5) == false) goto L15;
-        return true;
-    L18:
-        return super.g(r3, r4, r5);
     }
 
     @Override // defpackage.z2
-    public final void h(View r2, int r3) {
-        z2 r0 = (z2) this.r.get(r2);
-        if (r0 == null) goto L6;
-        r0.h(r2, r3);
-        return;
-    L6:
-        super.h(r2, r3);
+    public final void h(View view, int i) {
+        z2 z2Var = (z2) this.r.get(view);
+        if (z2Var != null) {
+            z2Var.h(view, i);
+        } else {
+            super.h(view, i);
+        }
     }
 
     @Override // defpackage.z2
-    public final void i(View r2, AccessibilityEvent r3) {
-        z2 r0 = (z2) this.r.get(r2);
-        if (r0 == null) goto L6;
-        r0.i(r2, r3);
-        return;
-    L6:
-        super.i(r2, r3);
+    public final void i(View view, AccessibilityEvent accessibilityEvent) {
+        z2 z2Var = (z2) this.r.get(view);
+        if (z2Var != null) {
+            z2Var.i(view, accessibilityEvent);
+        } else {
+            super.i(view, accessibilityEvent);
+        }
     }
 }

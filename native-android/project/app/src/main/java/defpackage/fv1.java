@@ -9,201 +9,266 @@ import java.util.TimeZone;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public abstract class fv1 {
-    public static final TimeZone a = null;
+    public static final TimeZone a = TimeZone.getTimeZone("UTC");
 
-    static {
-        a = TimeZone.getTimeZone("UTC");
+    public static boolean a(String str, int i, char c) {
+        return i < str.length() && str.charAt(i) == c;
     }
 
-    public static boolean a(String r1, int r2, char r3) {
-        if (r2 < r1.length()) goto L5;
-        return false;
-    L5:
-        if (r1.charAt(r2) != r3) goto L10;
-        return true;
-    L10:
-        return false;
+    /* JADX WARN: Code duplicated, block: B:101:0x0202  */
+    /* JADX WARN: Code duplicated, block: B:103:0x0208  */
+    /* JADX WARN: Code duplicated, block: B:66:0x00fa A[Catch: IllegalArgumentException -> 0x00bc, NumberFormatException -> 0x00bf, IndexOutOfBoundsException -> 0x00c2, TRY_LEAVE, TryCatch #2 {IndexOutOfBoundsException -> 0x00c2, NumberFormatException -> 0x00bf, IllegalArgumentException -> 0x00bc, blocks: (B:3:0x0004, B:5:0x0017, B:6:0x0019, B:8:0x0025, B:9:0x0027, B:11:0x0037, B:13:0x003d, B:17:0x0055, B:19:0x0065, B:20:0x0067, B:22:0x0073, B:23:0x0076, B:25:0x007c, B:29:0x0086, B:34:0x0096, B:36:0x009e, B:37:0x00a2, B:39:0x00a8, B:44:0x00b5, B:53:0x00c9, B:64:0x00f4, B:66:0x00fa, B:92:0x01ac, B:74:0x010c, B:75:0x0127, B:76:0x0128, B:80:0x0145, B:82:0x0152, B:85:0x015b, B:87:0x017a, B:90:0x0189, B:91:0x01ab, B:79:0x0134, B:94:0x01dd, B:95:0x01e4, B:57:0x00d9, B:58:0x00dc, B:52:0x00c5), top: B:106:0x0004 }] */
+    /* JADX WARN: Code duplicated, block: B:69:0x0102  */
+    /* JADX WARN: Code duplicated, block: B:70:0x0105  */
+    /* JADX WARN: Code duplicated, block: B:78:0x0133  */
+    /* JADX WARN: Code duplicated, block: B:79:0x0134 A[Catch: IllegalArgumentException -> 0x00bc, NumberFormatException -> 0x00bf, IndexOutOfBoundsException -> 0x00c2, TryCatch #2 {IndexOutOfBoundsException -> 0x00c2, NumberFormatException -> 0x00bf, IllegalArgumentException -> 0x00bc, blocks: (B:3:0x0004, B:5:0x0017, B:6:0x0019, B:8:0x0025, B:9:0x0027, B:11:0x0037, B:13:0x003d, B:17:0x0055, B:19:0x0065, B:20:0x0067, B:22:0x0073, B:23:0x0076, B:25:0x007c, B:29:0x0086, B:34:0x0096, B:36:0x009e, B:37:0x00a2, B:39:0x00a8, B:44:0x00b5, B:53:0x00c9, B:64:0x00f4, B:66:0x00fa, B:92:0x01ac, B:74:0x010c, B:75:0x0127, B:76:0x0128, B:80:0x0145, B:82:0x0152, B:85:0x015b, B:87:0x017a, B:90:0x0189, B:91:0x01ab, B:79:0x0134, B:94:0x01dd, B:95:0x01e4, B:57:0x00d9, B:58:0x00dc, B:52:0x00c5), top: B:106:0x0004 }] */
+    /* JADX WARN: Code duplicated, block: B:94:0x01dd A[Catch: IllegalArgumentException -> 0x00bc, NumberFormatException -> 0x00bf, IndexOutOfBoundsException -> 0x00c2, TryCatch #2 {IndexOutOfBoundsException -> 0x00c2, NumberFormatException -> 0x00bf, IllegalArgumentException -> 0x00bc, blocks: (B:3:0x0004, B:5:0x0017, B:6:0x0019, B:8:0x0025, B:9:0x0027, B:11:0x0037, B:13:0x003d, B:17:0x0055, B:19:0x0065, B:20:0x0067, B:22:0x0073, B:23:0x0076, B:25:0x007c, B:29:0x0086, B:34:0x0096, B:36:0x009e, B:37:0x00a2, B:39:0x00a8, B:44:0x00b5, B:53:0x00c9, B:64:0x00f4, B:66:0x00fa, B:92:0x01ac, B:74:0x010c, B:75:0x0127, B:76:0x0128, B:80:0x0145, B:82:0x0152, B:85:0x015b, B:87:0x017a, B:90:0x0189, B:91:0x01ab, B:79:0x0134, B:94:0x01dd, B:95:0x01e4, B:57:0x00d9, B:58:0x00dc, B:52:0x00c5), top: B:106:0x0004 }] */
+    /* JADX WARN: Code duplicated, block: B:97:0x01e7  */
+    /* JADX WARN: Code duplicated, block: B:98:0x01e9  */
+    /* JADX WARN: Instruction removed from duplicated block: B:103:0x0208, please report this as an issue */
+    /* JADX WARN: Instruction removed from duplicated block: B:79:0x0134, please report this as an issue */
+    /* JADX WARN: Instruction removed from duplicated block: B:98:0x01e9, please report this as an issue */
+    public static Date b(String str, ParsePosition parsePosition) throws ParseException {
+        String str2;
+        String message;
+        int i;
+        int i2;
+        int iC;
+        int iC2;
+        char cCharAt;
+        TimeZone timeZone;
+        String strSubstring;
+        int length;
+        String str3;
+        String id;
+        char cCharAt2;
+        int length2;
+        try {
+            int index = parsePosition.getIndex();
+            int i3 = index + 4;
+            int iC3 = c(str, index, i3);
+            if (a(str, i3, '-')) {
+                i3 = index + 5;
+            }
+            int i4 = i3 + 2;
+            int iC4 = c(str, i3, i4);
+            if (a(str, i4, '-')) {
+                i4 = i3 + 3;
+            }
+            int i5 = i4 + 2;
+            int iC5 = c(str, i4, i5);
+            boolean zA = a(str, i5, 'T');
+            if (!zA && str.length() <= i5) {
+                GregorianCalendar gregorianCalendar = new GregorianCalendar(iC3, iC4 - 1, iC5);
+                gregorianCalendar.setLenient(false);
+                parsePosition.setIndex(i5);
+                return gregorianCalendar.getTime();
+            }
+            if (zA) {
+                int i6 = i4 + 5;
+                int iC6 = c(str, i4 + 3, i6);
+                if (a(str, i6, ':')) {
+                    i6 = i4 + 6;
+                }
+                int i7 = i6 + 2;
+                int iC7 = c(str, i6, i7);
+                if (a(str, i7, ':')) {
+                    i7 = i6 + 3;
+                }
+                if (str.length() <= i7 || (cCharAt2 = str.charAt(i7)) == 'Z' || cCharAt2 == '+' || cCharAt2 == '-') {
+                    i5 = i7;
+                    i = iC6;
+                    i2 = iC7;
+                } else {
+                    int i8 = i7 + 2;
+                    iC2 = c(str, i7, i8);
+                    if (iC2 > 59 && iC2 < 63) {
+                        iC2 = 59;
+                    }
+                    if (a(str, i8, '.')) {
+                        int i9 = i7 + 3;
+                        int i10 = i7 + 4;
+                        while (true) {
+                            if (i10 >= str.length()) {
+                                length2 = str.length();
+                                break;
+                            }
+                            char cCharAt3 = str.charAt(i10);
+                            if (cCharAt3 >= '0' && cCharAt3 <= '9') {
+                                i10++;
+                            }
+                            length2 = i10;
+                            break;
+                        }
+                        int iMin = Math.min(length2, i7 + 6);
+                        iC = c(str, i9, iMin);
+                        int i11 = iMin - i9;
+                        if (i11 == 1) {
+                            iC *= 100;
+                        } else if (i11 == 2) {
+                            iC *= 10;
+                        }
+                        i = iC6;
+                        i5 = length2;
+                        i2 = iC7;
+                    } else {
+                        i = iC6;
+                        i5 = i8;
+                        i2 = iC7;
+                        iC = 0;
+                    }
+                }
+                if (str.length() > i5) {
+                    throw new IllegalArgumentException("No time zone indicator");
+                }
+                cCharAt = str.charAt(i5);
+                timeZone = a;
+                if (cCharAt == 'Z') {
+                    length = i5 + 1;
+                } else {
+                    if (cCharAt == '+' && cCharAt != '-') {
+                        throw new IndexOutOfBoundsException("Invalid time zone indicator '" + cCharAt + "'");
+                    }
+                    strSubstring = str.substring(i5);
+                    if (strSubstring.length() >= 5) {
+                        strSubstring = strSubstring + "00";
+                    }
+                    length = i5 + strSubstring.length();
+                    if (!"+0000".equals(strSubstring) && !"+00:00".equals(strSubstring)) {
+                        str3 = "GMT" + strSubstring;
+                        timeZone = TimeZone.getTimeZone(str3);
+                        id = timeZone.getID();
+                        if (!id.equals(str3) && !id.replace(":", "").equals(str3)) {
+                            throw new IndexOutOfBoundsException("Mismatching time zone indicator: " + str3 + " given, resolves to " + timeZone.getID());
+                        }
+                    }
+                }
+                GregorianCalendar gregorianCalendar2 = new GregorianCalendar(timeZone);
+                gregorianCalendar2.setLenient(false);
+                gregorianCalendar2.set(1, iC3);
+                gregorianCalendar2.set(2, iC4 - 1);
+                gregorianCalendar2.set(5, iC5);
+                gregorianCalendar2.set(11, i);
+                gregorianCalendar2.set(12, i2);
+                gregorianCalendar2.set(13, iC2);
+                gregorianCalendar2.set(14, iC);
+                parsePosition.setIndex(length);
+                return gregorianCalendar2.getTime();
+            }
+            i = 0;
+            i2 = 0;
+            iC = 0;
+            iC2 = 0;
+            if (str.length() > i5) {
+                throw new IllegalArgumentException("No time zone indicator");
+            }
+            cCharAt = str.charAt(i5);
+            timeZone = a;
+            if (cCharAt == 'Z') {
+                length = i5 + 1;
+            } else {
+                if (cCharAt == '+') {
+                }
+                strSubstring = str.substring(i5);
+                if (strSubstring.length() >= 5) {
+                    strSubstring = strSubstring + "00";
+                }
+                length = i5 + strSubstring.length();
+                if (!"+0000".equals(strSubstring)) {
+                    str3 = "GMT" + strSubstring;
+                    timeZone = TimeZone.getTimeZone(str3);
+                    id = timeZone.getID();
+                    if (!id.equals(str3)) {
+                        throw new IndexOutOfBoundsException("Mismatching time zone indicator: " + str3 + " given, resolves to " + timeZone.getID());
+                    }
+                }
+            }
+            GregorianCalendar gregorianCalendar3 = new GregorianCalendar(timeZone);
+            gregorianCalendar3.setLenient(false);
+            gregorianCalendar3.set(1, iC3);
+            gregorianCalendar3.set(2, iC4 - 1);
+            gregorianCalendar3.set(5, iC5);
+            gregorianCalendar3.set(11, i);
+            gregorianCalendar3.set(12, i2);
+            gregorianCalendar3.set(13, iC2);
+            gregorianCalendar3.set(14, iC);
+            parsePosition.setIndex(length);
+            return gregorianCalendar3.getTime();
+        } catch (IndexOutOfBoundsException e) {
+            e = e;
+            if (str == null) {
+                str2 = null;
+            } else {
+                str2 = "\"" + str + '\"';
+            }
+            message = e.getMessage();
+            if (message != null || message.isEmpty()) {
+                message = "(" + e.getClass().getName() + ")";
+            }
+            ParseException parseException = new ParseException("Failed to parse date [" + str2 + "]: " + message, parsePosition.getIndex());
+            parseException.initCause(e);
+            throw parseException;
+        } catch (NumberFormatException e2) {
+            e = e2;
+            if (str == null) {
+                str2 = null;
+            } else {
+                str2 = "\"" + str + '\"';
+            }
+            message = e.getMessage();
+            if (message != null) {
+                message = "(" + e.getClass().getName() + ")";
+            } else {
+                message = "(" + e.getClass().getName() + ")";
+            }
+            ParseException parseException2 = new ParseException("Failed to parse date [" + str2 + "]: " + message, parsePosition.getIndex());
+            parseException2.initCause(e);
+            throw parseException2;
+        } catch (IllegalArgumentException e3) {
+            e = e3;
+            if (str == null) {
+                str2 = null;
+            } else {
+                str2 = "\"" + str + '\"';
+            }
+            message = e.getMessage();
+            if (message != null) {
+                message = "(" + e.getClass().getName() + ")";
+            } else {
+                message = "(" + e.getClass().getName() + ")";
+            }
+            ParseException parseException3 = new ParseException("Failed to parse date [" + str2 + "]: " + message, parsePosition.getIndex());
+            parseException3.initCause(e);
+            throw parseException3;
+        }
     }
 
-    public static Date b(String r17, ParsePosition r18) {
-        int r0 = r18.getIndex();     // Catch: IllegalArgumentException -> L46 NumberFormatException -> L48 IndexOutOfBoundsException -> L50
-        int r3 = r0 + 4;     // Catch: IllegalArgumentException -> L46 NumberFormatException -> L48 IndexOutOfBoundsException -> L50
-        int r4 = c(r17, r0, r3);     // Catch: IllegalArgumentException -> L46 NumberFormatException -> L48 IndexOutOfBoundsException -> L50
-        if (a(r17, r3, '-') == false) goto L6;
-        r3 = r0 + 5;     // Catch: IllegalArgumentException -> L46 NumberFormatException -> L48 IndexOutOfBoundsException -> L50
-    L6:
-        int r1 = r3 + 2;     // Catch: IllegalArgumentException -> L46 NumberFormatException -> L48 IndexOutOfBoundsException -> L50
-        int r6 = c(r17, r3, r1);     // Catch: IllegalArgumentException -> L46 NumberFormatException -> L48 IndexOutOfBoundsException -> L50
-        if (a(r17, r1, '-') == false) goto L9;
-        r1 = r3 + 3;     // Catch: IllegalArgumentException -> L46 NumberFormatException -> L48 IndexOutOfBoundsException -> L50
-    L9:
-        int r5 = r1 + 2;     // Catch: IllegalArgumentException -> L46 NumberFormatException -> L48 IndexOutOfBoundsException -> L50
-        int r8 = c(r17, r1, r5);     // Catch: IllegalArgumentException -> L46 NumberFormatException -> L48 IndexOutOfBoundsException -> L50
-        boolean r9 = a(r17, r5, 'T');     // Catch: IllegalArgumentException -> L46 NumberFormatException -> L48 IndexOutOfBoundsException -> L50
-        if (r9 == true) goto L16;
-        if (r17.length() > r5) goto L16;
-        GregorianCalendar r2 = new GregorianCalendar(r4, r6 - 1, r8);     // Catch: IllegalArgumentException -> L46 NumberFormatException -> L48 IndexOutOfBoundsException -> L50
-        r2.setLenient(false);     // Catch: IllegalArgumentException -> L46 NumberFormatException -> L48 IndexOutOfBoundsException -> L50
-        r18.setIndex(r5);     // Catch: IllegalArgumentException -> L46 NumberFormatException -> L48 IndexOutOfBoundsException -> L50
-        return r2.getTime();
-    L16:
-        if (r9 == false) goto L63;
-        int r10 = r1 + 5;     // Catch: IllegalArgumentException -> L46 NumberFormatException -> L48 IndexOutOfBoundsException -> L50
-        int r7 = c(r17, r1 + 3, r10);     // Catch: IllegalArgumentException -> L46 NumberFormatException -> L48 IndexOutOfBoundsException -> L50
-        if (a(r17, r10, ':') == false) goto L20;
-        r10 = r1 + 6;     // Catch: IllegalArgumentException -> L46 NumberFormatException -> L48 IndexOutOfBoundsException -> L50
-    L20:
-        int r11 = r10 + 2;     // Catch: IllegalArgumentException -> L46 NumberFormatException -> L48 IndexOutOfBoundsException -> L50
-        int r16 = c(r17, r10, r11);     // Catch: IllegalArgumentException -> L46 NumberFormatException -> L48 IndexOutOfBoundsException -> L50
-        if (a(r17, r11, ':') == false) goto L24;
-        r11 = r10 + 3;     // Catch: IllegalArgumentException -> L46 NumberFormatException -> L48 IndexOutOfBoundsException -> L50
-    L24:
-        if (r17.length() <= r11) goto L61;
-        char r12 = r17.charAt(r11);     // Catch: IllegalArgumentException -> L46 NumberFormatException -> L48 IndexOutOfBoundsException -> L50
-        if (r12 == 'Z') goto L61;
-        if (r12 == '+') goto L61;
-        if (r12 == '-') goto L61;
-        int r13 = r11 + 2;     // Catch: IllegalArgumentException -> L46 NumberFormatException -> L48 IndexOutOfBoundsException -> L50
-        int r15 = c(r17, r11, r13);     // Catch: IllegalArgumentException -> L46 NumberFormatException -> L48 IndexOutOfBoundsException -> L50
-        if (r15 <= 59) goto L35;
-        if (r15 >= 63) goto L35;
-        r15 = 59;
-    L35:
-        if (a(r17, r13, '.') == false) goto L60;
-        int r14 = r11 + 3;     // Catch: IllegalArgumentException -> L46 NumberFormatException -> L48 IndexOutOfBoundsException -> L50
-        int r19 = r11 + 4;     // Catch: IllegalArgumentException -> L46 NumberFormatException -> L48 IndexOutOfBoundsException -> L50
-    L38:
-        if (r19 >= r17.length()) goto L52;
-        char r20 = r17.charAt(r19);     // Catch: IllegalArgumentException -> L46 NumberFormatException -> L48 IndexOutOfBoundsException -> L50
-        if (r20 < '0') goto L45;
-        if (r20 > '9') goto L45;
-        r19 = r19 + 1;     // Catch: IllegalArgumentException -> L46 NumberFormatException -> L48 IndexOutOfBoundsException -> L50
-    L45:
-        int r21 = r19;
-    L53:
-        int r22 = Math.min(r21, r11 + 6);     // Catch: IllegalArgumentException -> L46 NumberFormatException -> L48 IndexOutOfBoundsException -> L50
-        int r23 = c(r17, r14, r22);     // Catch: IllegalArgumentException -> L46 NumberFormatException -> L48 IndexOutOfBoundsException -> L50
-        int r24 = r22 - r14;     // Catch: IllegalArgumentException -> L46 NumberFormatException -> L48 IndexOutOfBoundsException -> L50
-        if (r24 == 1) goto L58;
-        if (r24 != 2) goto L59;
-        r23 = r23 * 10;     // Catch: IllegalArgumentException -> L46 NumberFormatException -> L48 IndexOutOfBoundsException -> L50
-    L59:
-        int r25 = r7;
-        r5 = r21;
-        int r26 = r16;
-    L65:
-        if (r17.length() <= r5) goto L95;
-        char r27 = r17.charAt(r5);     // Catch: IllegalArgumentException -> L46 NumberFormatException -> L48 IndexOutOfBoundsException -> L50
-        TimeZone r110 = a;
-        if (r27 != 'Z') goto L70;
-        int r28 = r5 + 1;
-    L92:
-        GregorianCalendar r29 = new GregorianCalendar(r110);     // Catch: IllegalArgumentException -> L46 NumberFormatException -> L48 IndexOutOfBoundsException -> L50
-        r29.setLenient(false);     // Catch: IllegalArgumentException -> L46 NumberFormatException -> L48 IndexOutOfBoundsException -> L50
-        r29.set(1, r4);     // Catch: IllegalArgumentException -> L46 NumberFormatException -> L48 IndexOutOfBoundsException -> L50
-        r29.set(2, r6 - 1);     // Catch: IllegalArgumentException -> L46 NumberFormatException -> L48 IndexOutOfBoundsException -> L50
-        r29.set(5, r8);     // Catch: IllegalArgumentException -> L46 NumberFormatException -> L48 IndexOutOfBoundsException -> L50
-        r29.set(11, r25);     // Catch: IllegalArgumentException -> L46 NumberFormatException -> L48 IndexOutOfBoundsException -> L50
-        r29.set(12, r26);     // Catch: IllegalArgumentException -> L46 NumberFormatException -> L48 IndexOutOfBoundsException -> L50
-        r29.set(13, r15);     // Catch: IllegalArgumentException -> L46 NumberFormatException -> L48 IndexOutOfBoundsException -> L50
-        r29.set(14, r23);     // Catch: IllegalArgumentException -> L46 NumberFormatException -> L48 IndexOutOfBoundsException -> L50
-        r18.setIndex(r28);     // Catch: IllegalArgumentException -> L46 NumberFormatException -> L48 IndexOutOfBoundsException -> L50
-        return r29.getTime();
-    L70:
-        if (r27 != '+') goto L72;
-    L76:
-        String r30 = r17.substring(r5);     // Catch: IllegalArgumentException -> L46 NumberFormatException -> L48 IndexOutOfBoundsException -> L50
-        if (r30.length() >= 5) goto L80;
-        r30 = r30 + "00";     // Catch: IllegalArgumentException -> L46 NumberFormatException -> L48 IndexOutOfBoundsException -> L50
-    L80:
-        r28 = r5 + r30.length();     // Catch: IllegalArgumentException -> L46 NumberFormatException -> L48 IndexOutOfBoundsException -> L50
-        if ("+0000".equals(r30) == true) goto L92;
-        if ("+00:00".equals(r30) == true) goto L92;
-        String r31 = "GMT" + r30;     // Catch: IllegalArgumentException -> L46 NumberFormatException -> L48 IndexOutOfBoundsException -> L50
-        r110 = TimeZone.getTimeZone(r31);     // Catch: IllegalArgumentException -> L46 NumberFormatException -> L48 IndexOutOfBoundsException -> L50
-        String r111 = r110.getID();     // Catch: IllegalArgumentException -> L46 NumberFormatException -> L48 IndexOutOfBoundsException -> L50
-        if (r111.equals(r31) == true) goto L92;
-        if (r111.replace(":", "").equals(r31) == true) goto L92;
-        throw new IndexOutOfBoundsException("Mismatching time zone indicator: " + r31 + " given, resolves to " + r110.getID());     // Catch: IllegalArgumentException -> L46 NumberFormatException -> L48 IndexOutOfBoundsException -> L50
-    L72:
-        if (r27 == '-') goto L76;
-        throw new IndexOutOfBoundsException("Invalid time zone indicator '" + r27 + "'");     // Catch: IllegalArgumentException -> L46 NumberFormatException -> L48 IndexOutOfBoundsException -> L50
-    L95:
-        throw new IllegalArgumentException("No time zone indicator");     // Catch: IllegalArgumentException -> L46 NumberFormatException -> L48 IndexOutOfBoundsException -> L50
-    L58:
-        r23 = r23 * 100;     // Catch: IllegalArgumentException -> L46 NumberFormatException -> L48 IndexOutOfBoundsException -> L50
-        goto L59
-    L52:
-        r21 = r17.length();     // Catch: IllegalArgumentException -> L46 NumberFormatException -> L48 IndexOutOfBoundsException -> L50
-        goto L53
-    L60:
-        r25 = r7;
-        r5 = r13;
-        r26 = r16;
-        r23 = 0;
-    L61:
-        r5 = r11;
-        r25 = r7;
-        r26 = r16;
-    L62:
-        r23 = 0;
-        r15 = 0;
-        goto L65
-    L63:
-        r25 = 0;
-        r26 = 0;
-    L50:
-        e = e;
-    L96:
-        if (r17 != null) goto L98;
-        String r32 = null;
-    L99:
-        String r33 = e.getMessage();
-        if (r33 != null) goto L102;
-    L103:
-        r33 = "(" + e.getClass().getName() + ")";
-    L104:
-        ParseException r34 = new ParseException("Failed to parse date [" + r32 + "]: " + r33, r18.getIndex());
-        r34.initCause(e);
-        throw r34;
-    L102:
-        if (r33.isEmpty() == false) goto L104;
-    L98:
-        r32 = "\"" + r17 + '\"';
-    L48:
-        e = e;
-    L46:
-        e = e;
-        goto L96
-    }
-
-    public static int c(String r5, int r6, int r7) {
-        if (r6 < 0) goto L23;
-        if (r7 > r5.length()) goto L23;
-        if (r6 > r7) goto L23;
-        if (r6 >= r7) goto L13;
-        int r2 = r6 + 1;
-        int r3 = Character.digit(r5.charAt(r6), 10);
-        if (r3 < 0) goto L12;
-        int r4 = -r3;
-    L14:
-        if (r2 >= r7) goto L21;
-        int r8 = r2 + 1;
-        int r9 = Character.digit(r5.charAt(r2), 10);
-        if (r9 < 0) goto L19;
-        r4 = (r4 * 10) - r9;
-        r2 = r8;
-        goto L14
-    L19:
-        throw new NumberFormatException("Invalid number: ".concat(r5.substring(r6, r7)));
-    L21:
-        return -r4;
-    L12:
-        throw new NumberFormatException("Invalid number: ".concat(r5.substring(r6, r7)));
-    L13:
-        r4 = 0;
-        r2 = r6;
-    L23:
-        throw new NumberFormatException(r5);
+    public static int c(String str, int i, int i2) {
+        int i3;
+        int i4;
+        if (i < 0 || i2 > str.length() || i > i2) {
+            throw new NumberFormatException(str);
+        }
+        if (i < i2) {
+            i4 = i + 1;
+            int iDigit = Character.digit(str.charAt(i), 10);
+            if (iDigit < 0) {
+                throw new NumberFormatException("Invalid number: ".concat(str.substring(i, i2)));
+            }
+            i3 = -iDigit;
+        } else {
+            i3 = 0;
+            i4 = i;
+        }
+        while (i4 < i2) {
+            int i5 = i4 + 1;
+            int iDigit2 = Character.digit(str.charAt(i4), 10);
+            if (iDigit2 < 0) {
+                throw new NumberFormatException("Invalid number: ".concat(str.substring(i, i2)));
+            }
+            i3 = (i3 * 10) - iDigit2;
+            i4 = i5;
+        }
+        return -i3;
     }
 }

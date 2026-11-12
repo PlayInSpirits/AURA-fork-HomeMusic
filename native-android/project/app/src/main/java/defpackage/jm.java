@@ -7,29 +7,28 @@ public final /* synthetic */ class jm implements Runnable {
     public final /* synthetic */ xc5 o;
     public final /* synthetic */ Exception p;
 
-    public /* synthetic */ jm(xc5 r1, Exception r2, int r3) {
-        this.n = r3;
-        this.o = r1;
-        this.p = r2;
+    public /* synthetic */ jm(xc5 xc5Var, Exception exc, int i) {
+        this.n = i;
+        this.o = xc5Var;
+        this.p = exc;
     }
 
     @Override // java.lang.Runnable
     public final void run() {
-        int r0 = this.n;
-        Exception r1 = this.p;
-        xc5 r2 = this.o;
-        switch(r0) {
-            case 0: goto L6;
-            default: goto L4;
-        };
-    L4:
-        qm r3 = (qm) r2.p;
-        String r4 = f35.a;
-        r3.g(r1);
-        return;
-    L6:
-        qm r5 = (qm) r2.p;
-        String r6 = f35.a;
-        r5.I(r1);
+        int i = this.n;
+        Exception exc = this.p;
+        xc5 xc5Var = this.o;
+        switch (i) {
+            case 0:
+                qm qmVar = (qm) xc5Var.p;
+                String str = f35.a;
+                qmVar.I(exc);
+                break;
+            default:
+                qm qmVar2 = (qm) xc5Var.p;
+                String str2 = f35.a;
+                qmVar2.g(exc);
+                break;
+        }
     }
 }

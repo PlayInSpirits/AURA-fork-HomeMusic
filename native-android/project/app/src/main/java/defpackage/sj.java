@@ -11,50 +11,44 @@ public final class sj implements a83 {
     public final /* synthetic */ int a;
     public final /* synthetic */ ArtistPageFragment b;
 
-    public /* synthetic */ sj(ArtistPageFragment r1, int r2) {
-        this.a = r2;
-        this.b = r1;
+    public /* synthetic */ sj(ArtistPageFragment artistPageFragment, int i) {
+        this.a = i;
+        this.b = artistPageFragment;
     }
 
     @Override // defpackage.a83
-    public final void b(Object r7) {
-        int r0 = this.a;
-        ArtistPageFragment r5 = this.b;
-        switch(r0) {
-            case 0: goto L10;
-            default: goto L4;
-        };
-    L4:
-        List r8 = (List) r7;
-        if (r8 != null) goto L7;
-        return;
-    L7:
-        if (r8.isEmpty() == true) goto L17;
-        bo2.q(r5.t0, r8, 0, "artist");
-        ((au) r5.m0.V.n).d(true);
-        wj r9 = r5.n0;
-        pa r1 = r9.c;
-        ArtistID3 r10 = r9.e;
-        r1.getClass();
-        new xi4(2).o(r10.getId(), fb0.n, 30).j(this);
-        return;
-    L17:
-        return;
-    L10:
-        List r11 = (List) r7;
-        if (r11 != null) goto L13;
-        return;
-    L13:
-        if (r11.isEmpty() == true) goto L19;
-        bo2.q(r5.t0, r11, 0, "artist");
-        ((au) r5.m0.V.n).d(true);
-        wj r12 = r5.n0;
-        pa r2 = r12.c;
-        ArtistID3 r13 = r12.e;
-        r2.getClass();
-        k03 r3 = new k03();
-        App.f(false).c().i(r13.getId()).enqueue(new r20(r2, r13, r3, 2));
-        r3.j(this);
-        return;
+    public final void b(Object obj) {
+        int i = this.a;
+        ArtistPageFragment artistPageFragment = this.b;
+        switch (i) {
+            case 0:
+                List list = (List) obj;
+                if (list != null && !list.isEmpty()) {
+                    bo2.q(artistPageFragment.t0, list, 0, "artist");
+                    ((au) artistPageFragment.m0.V.n).d(true);
+                    wj wjVar = artistPageFragment.n0;
+                    pa paVar = wjVar.c;
+                    ArtistID3 artistID3 = wjVar.e;
+                    paVar.getClass();
+                    k03 k03Var = new k03();
+                    App.f(false).c().i(artistID3.getId()).enqueue(new r20(paVar, artistID3, k03Var, 2));
+                    k03Var.j(this);
+                    break;
+                }
+                break;
+            default:
+                List list2 = (List) obj;
+                if (list2 != null && !list2.isEmpty()) {
+                    bo2.q(artistPageFragment.t0, list2, 0, "artist");
+                    ((au) artistPageFragment.m0.V.n).d(true);
+                    wj wjVar2 = artistPageFragment.n0;
+                    pa paVar2 = wjVar2.c;
+                    ArtistID3 artistID4 = wjVar2.e;
+                    paVar2.getClass();
+                    new xi4(2).o(artistID4.getId(), fb0.n, 30).j(this);
+                    break;
+                }
+                break;
+        }
     }
 }

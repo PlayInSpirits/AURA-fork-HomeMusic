@@ -8,11 +8,11 @@ public final class y22 extends u22 {
     public final d20 w;
     public final Object x;
 
-    public y22(a32 r1, z22 r2, d20 r3, Object r4) {
-        this.u = r1;
-        this.v = r2;
-        this.w = r3;
-        this.x = r4;
+    public y22(a32 a32Var, z22 z22Var, d20 d20Var, Object obj) {
+        this.u = a32Var;
+        this.v = z22Var;
+        this.w = d20Var;
+        this.x = obj;
     }
 
     @Override // defpackage.u22
@@ -21,24 +21,18 @@ public final class y22 extends u22 {
     }
 
     @Override // defpackage.u22
-    public final void s(Throwable r6) {
-        d20 r7 = this.w;
-        d20 r0 = a32.V(r7);
-        a32 r1 = this.u;
-        z22 r2 = this.v;
-        Object r5 = this.x;
-        if (r0 != null) goto L5;
-    L7:
-        r2.n.e(new sb2(2), 2);
-        d20 r8 = a32.V(r7);
-        if (r8 != null) goto L10;
-    L12:
-        r1.l(r1.B(r2, r5));
-        return;
-    L10:
-        if (r1.i0(r2, r8, r5) == false) goto L12;
-        return;
-    L5:
-        if (r1.i0(r2, r0, r5) == false) goto L7;
+    public final void s(Throwable th) {
+        d20 d20Var = this.w;
+        d20 d20VarV = a32.V(d20Var);
+        a32 a32Var = this.u;
+        z22 z22Var = this.v;
+        Object obj = this.x;
+        if (d20VarV == null || !a32Var.i0(z22Var, d20VarV, obj)) {
+            z22Var.n.e(new sb2(2), 2);
+            d20 d20VarV2 = a32.V(d20Var);
+            if (d20VarV2 == null || !a32Var.i0(z22Var, d20VarV2, obj)) {
+                a32Var.l(a32Var.B(z22Var, obj));
+            }
+        }
     }
 }

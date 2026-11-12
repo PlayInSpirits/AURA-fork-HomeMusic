@@ -9,14 +9,15 @@ import android.view.View;
 public final class wy0 extends View {
     public final /* synthetic */ mr n;
 
-    public wy0(mr r1, Context r2) {
-        this.n = r1;
-        super(r2);
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public wy0(mr mrVar, Context context) {
+        super(context);
+        this.n = mrVar;
     }
 
     @Override // android.view.View
-    public final void onConfigurationChanged(Configuration r1) {
-        r1.getClass();
+    public final void onConfigurationChanged(Configuration configuration) {
+        configuration.getClass();
         this.n.run();
     }
 }

@@ -6,9 +6,9 @@ public final class zz {
     public final wz a;
     public final k2 b;
 
-    public zz(wz r1, k2 r2) {
-        r1.getClass();
-        this.a = r1;
-        this.b = r2;
+    public zz(wz wzVar, k2 k2Var) {
+        wzVar.getClass();
+        this.a = wzVar;
+        this.b = k2Var;
     }
 }

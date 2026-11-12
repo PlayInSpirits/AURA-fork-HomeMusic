@@ -4,27 +4,22 @@ package defpackage;
 /* JADX INFO: loaded from: classes.dex */
 public final class sc2 {
     public final Object a;
-    public xk0 b;
+    public xk0 b = new xk0(2);
     public boolean c;
     public boolean d;
 
-    public sc2(Object r2) {
-        this.a = r2;
-        this.b = new xk0(2);
+    public sc2(Object obj) {
+        this.a = obj;
     }
 
-    public final boolean equals(Object r3) {
-        if (this != r3) goto L5;
-        return true;
-    L5:
-        if (r3 != null) goto L7;
-        return false;
-    L7:
-        if (sc2.class != r3.getClass()) goto L13;
-        Object r4 = ((sc2) r3).a;
-        return this.a.equals(r4);
-    L13:
-        return false;
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || sc2.class != obj.getClass()) {
+            return false;
+        }
+        return this.a.equals(((sc2) obj).a);
     }
 
     public final int hashCode() {

@@ -7,14 +7,15 @@ public final class m63 extends wd0 {
     public final /* synthetic */ ir2 o;
     public int p;
 
-    public m63(ir2 r1, wd0 r2) {
-        this.o = r1;
-        super(r2);
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public m63(ir2 ir2Var, wd0 wd0Var) {
+        super(wd0Var);
+        this.o = ir2Var;
     }
 
     @Override // defpackage.jp
-    public final Object invokeSuspend(Object r2) {
-        this.n = r2;
+    public final Object invokeSuspend(Object obj) {
+        this.n = obj;
         this.p |= Integer.MIN_VALUE;
         return this.o.D(null, this);
     }

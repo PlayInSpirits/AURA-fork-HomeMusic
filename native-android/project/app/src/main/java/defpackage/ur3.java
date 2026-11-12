@@ -5,10 +5,6 @@ import android.util.SparseArray;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class ur3 implements k51 {
-    public final iu4 a;
-    public final SparseArray b;
-    public final be3 c;
-    public final sr3 d;
     public boolean e;
     public boolean f;
     public boolean g;
@@ -16,327 +12,273 @@ public final class ur3 implements k51 {
     public r71 i;
     public m51 j;
     public boolean k;
-
-    static {
-    }
-
-    public ur3() {
-        this.a = new iu4(0);
-        this.c = new be3(4096);
-        this.b = new SparseArray();
-        this.d = new sr3(0);
-    }
+    public final iu4 a = new iu4(0);
+    public final be3 c = new be3(4096);
+    public final SparseArray b = new SparseArray();
+    public final sr3 d = new sr3(0);
 
     @Override // defpackage.k51
     public final void a() {
     }
 
     @Override // defpackage.k51
-    public final int b(l51 r29, t71 r30) {
+    public final int b(l51 l51Var, t71 t71Var) {
+        char c;
+        int i;
+        mz0 vk1Var;
+        long j;
         this.j.getClass();
-        long r13 = r29.getLength();
-        long r7 = -9223372036854775807L;
-        sr3 r10 = this.d;
-        if (r13 == (-1)) goto L51;
-        char r16 = 3;
-        if (r10.d == true) goto L53;
-        iu4 r0 = r10.b;
-        be3 r3 = r10.c;
-        if (r10.f == true) goto L23;
-        long r4 = r29.getLength();
-        int r1 = (int) Math.min(20000, r4);
-        long r5 = r4 - ((long) r1);
-        if (r29.getPosition() == r5) goto L12;
-        r30.a = r5;
-        return 1;
-    L12:
-        r3.K(r1);
-        r29.k();
-        r29.n(r3.a, 0, r1);
-        int r2 = r3.b;
-        int r6 = r3.c - 4;
-    L13:
-        if (r6 < r2) goto L20;
-        if (sr3.b(r6, r3.a) != 442) goto L19;
-        r3.N(r6 + 4);
-        long r8 = sr3.c(r3);
-        if (r8 == (-9223372036854775807L)) goto L19;
-        r7 = r8;
-    L19:
-        r6 = r6 - 1;
-    L20:
-        r10.h = r7;
-        r10.f = true;
+        long length = l51Var.getLength();
+        long j2 = -9223372036854775807L;
+        sr3 sr3Var = this.d;
+        if (length != -1) {
+            c = 3;
+            if (!sr3Var.d) {
+                iu4 iu4Var = sr3Var.b;
+                be3 be3Var = sr3Var.c;
+                if (!sr3Var.f) {
+                    long length2 = l51Var.getLength();
+                    int iMin = (int) Math.min(20000L, length2);
+                    long j3 = length2 - ((long) iMin);
+                    if (l51Var.getPosition() != j3) {
+                        t71Var.a = j3;
+                        return 1;
+                    }
+                    be3Var.K(iMin);
+                    l51Var.k();
+                    l51Var.n(be3Var.a, 0, iMin);
+                    int i2 = be3Var.b;
+                    for (int i3 = be3Var.c - 4; i3 >= i2; i3--) {
+                        if (sr3.b(i3, be3Var.a) == 442) {
+                            be3Var.N(i3 + 4);
+                            long jC = sr3.c(be3Var);
+                            if (jC != -9223372036854775807L) {
+                                j2 = jC;
+                                break;
+                            }
+                        }
+                    }
+                    sr3Var.h = j2;
+                    sr3Var.f = true;
+                    return 0;
+                }
+                if (sr3Var.h == -9223372036854775807L) {
+                    sr3Var.a(l51Var);
+                    return 0;
+                }
+                if (sr3Var.e) {
+                    long j4 = sr3Var.g;
+                    if (j4 == -9223372036854775807L) {
+                        sr3Var.a(l51Var);
+                        return 0;
+                    }
+                    sr3Var.i = iu4Var.c(sr3Var.h) - iu4Var.b(j4);
+                    sr3Var.a(l51Var);
+                    return 0;
+                }
+                int iMin2 = (int) Math.min(20000L, l51Var.getLength());
+                if (l51Var.getPosition() != 0) {
+                    t71Var.a = 0L;
+                    return 1;
+                }
+                be3Var.K(iMin2);
+                l51Var.k();
+                l51Var.n(be3Var.a, 0, iMin2);
+                int i4 = be3Var.c;
+                for (int i5 = be3Var.b; i5 < i4 - 3; i5++) {
+                    if (sr3.b(i5, be3Var.a) == 442) {
+                        be3Var.N(i5 + 4);
+                        long jC2 = sr3.c(be3Var);
+                        if (jC2 != -9223372036854775807L) {
+                            j = jC2;
+                            sr3Var.g = j;
+                            sr3Var.e = true;
+                            return 0;
+                        }
+                    }
+                }
+                j = -9223372036854775807L;
+                sr3Var.g = j;
+                sr3Var.e = true;
+                return 0;
+            }
+        } else {
+            c = 3;
+        }
+        if (this.k) {
+            i = 4;
+        } else {
+            this.k = true;
+            long j5 = sr3Var.i;
+            if (j5 != -9223372036854775807L) {
+                i = 4;
+                r71 r71Var = new r71(new pa(18), new xc5(sr3Var.b), j5, j5 + 1, 0L, length, 188L, 1000);
+                this.i = r71Var;
+                this.j.w(r71Var.a);
+            } else {
+                i = 4;
+                this.j.w(new bo(j5));
+            }
+        }
+        r71 r71Var2 = this.i;
+        if (r71Var2 != null && r71Var2.c != null) {
+            return r71Var2.b(l51Var, t71Var);
+        }
+        l51Var.k();
+        long jF = length != -1 ? length - l51Var.f() : -1L;
+        if (jF != -1 && jF < 4) {
+            return -1;
+        }
+        be3 be3Var2 = this.c;
+        if (!l51Var.e(be3Var2.a, 0, i, true)) {
+            return -1;
+        }
+        be3Var2.N(0);
+        int iM = be3Var2.m();
+        if (iM == 441) {
+            return -1;
+        }
+        if (iM == 442) {
+            l51Var.n(be3Var2.a, 0, 10);
+            be3Var2.N(9);
+            l51Var.l((be3Var2.A() & 7) + 14);
+            return 0;
+        }
+        if (iM == 443) {
+            l51Var.n(be3Var2.a, 0, 2);
+            be3Var2.N(0);
+            l51Var.l(be3Var2.H() + 6);
+            return 0;
+        }
+        if (((iM & (-256)) >> 8) != 1) {
+            l51Var.l(1);
+            return 0;
+        }
+        int i6 = iM & 255;
+        SparseArray sparseArray = this.b;
+        tr3 tr3Var = (tr3) sparseArray.get(i6);
+        if (!this.e) {
+            if (tr3Var == null) {
+                if (i6 == 189) {
+                    vk1Var = new s2("video/mp2p");
+                    this.f = true;
+                    this.h = l51Var.getPosition();
+                } else if ((iM & 224) == 192) {
+                    vk1Var = new vy2(0, null, "video/mp2p");
+                    this.f = true;
+                    this.h = l51Var.getPosition();
+                } else if ((iM & 240) == 224) {
+                    vk1Var = new vk1(null, "video/mp2p");
+                    this.g = true;
+                    this.h = l51Var.getPosition();
+                } else {
+                    vk1Var = null;
+                }
+                if (vk1Var != null) {
+                    vk1Var.f(this.j, new sy4(i6, 256));
+                    tr3Var = new tr3(vk1Var, this.a);
+                    sparseArray.put(i6, tr3Var);
+                }
+            }
+            if (l51Var.getPosition() > ((this.f && this.g) ? this.h + 8192 : 1048576L)) {
+                this.e = true;
+                this.j.p();
+            }
+        }
+        l51Var.n(be3Var2.a, 0, 2);
+        be3Var2.N(0);
+        int iH = be3Var2.H() + 6;
+        if (tr3Var == null) {
+            l51Var.l(iH);
+            return 0;
+        }
+        be3Var2.K(iH);
+        l51Var.readFully(be3Var2.a, 0, iH);
+        be3Var2.N(6);
+        mz0 mz0Var = tr3Var.a;
+        h00 h00Var = tr3Var.c;
+        be3Var2.k(h00Var.b, 0, 3);
+        h00Var.q(0);
+        h00Var.t(8);
+        tr3Var.d = h00Var.h();
+        tr3Var.e = h00Var.h();
+        h00Var.t(6);
+        be3Var2.k(h00Var.b, 0, h00Var.i(8));
+        h00Var.q(0);
+        iu4 iu4Var2 = tr3Var.b;
+        tr3Var.g = 0L;
+        if (tr3Var.d) {
+            h00Var.t(4);
+            long jI = ((long) h00Var.i(3)) << 30;
+            h00Var.t(1);
+            long jI2 = jI | ((long) (h00Var.i(15) << 15));
+            h00Var.t(1);
+            long jI3 = jI2 | ((long) h00Var.i(15));
+            h00Var.t(1);
+            if (!tr3Var.f && tr3Var.e) {
+                h00Var.t(4);
+                long jI4 = ((long) h00Var.i(3)) << 30;
+                h00Var.t(1);
+                long jI5 = jI4 | ((long) (h00Var.i(15) << 15));
+                h00Var.t(1);
+                long jI6 = jI5 | ((long) h00Var.i(15));
+                h00Var.t(1);
+                iu4Var2.b(jI6);
+                tr3Var.f = true;
+            }
+            tr3Var.g = iu4Var2.b(jI3);
+        }
+        mz0Var.e(4, tr3Var.g);
+        mz0Var.a(be3Var2);
+        mz0Var.d(false);
+        be3Var2.M(be3Var2.a.length);
         return 0;
-    L23:
-        if (r10.h != (-9223372036854775807L)) goto L27;
-        r10.a(r29);
-        return 0;
-    L27:
-        if (r10.e == true) goto L44;
-        int r9 = (int) Math.min(20000, r29.getLength());
-        if (r29.getPosition() == 0) goto L32;
-        r30.a = 0;
-        return 1;
-    L32:
-        r3.K(r9);
-        r29.k();
-        r29.n(r3.a, 0, r9);
-        int r11 = r3.b;
-        int r12 = r3.c;
-    L34:
-        if (r11 >= (r12 - 3)) goto L41;
-        if (sr3.b(r11, r3.a) != 442) goto L40;
-        r3.N(r11 + 4);
-        long r14 = sr3.c(r3);
-        if (r14 == (-9223372036854775807L)) goto L40;
-        long r15 = r14;
-    L42:
-        r10.g = r15;
-        r10.e = true;
-        return 0;
-    L40:
-        r11 = r11 + 1;
-        goto L34
-    L41:
-        r15 = -9223372036854775807L;
-        goto L42
-    L44:
-        long r17 = r10.g;
-        if (r17 != (-9223372036854775807L)) goto L48;
-        r10.a(r29);
-        return 0;
-    L48:
-        r10.i = r0.c(r10.h) - r0.b(r17);
-        r10.a(r29);
-        return 0;
-    L53:
-        if (this.k == true) goto L58;
-        this.k = true;
-        long r18 = r10.i;
-        if (r18 == (-9223372036854775807L)) goto L57;
-        int r19 = 4;
-        r71 r20 = new r71(new pa(18), new xc5(r10.b), r18, r18 + 1, 0, r13, 188, 1000);
-        this.i = r20;
-        this.j.w(r20.a);
-    L59:
-        r71 r21 = this.i;
-        if (r21 != null) goto L62;
-    L65:
-        r29.k();
-        if (r13 == (-1)) goto L68;
-        long r110 = r13 - r29.f();
-    L70:
-        if (r110 != (-1)) goto L72;
-    L74:
-        be3 r22 = this.c;
-        if (r29.e(r22.a, 0, r19, true) == false) goto L140;
-        r22.N(0);
-        int r23 = r22.m();
-        if (r23 != 441) goto L82;
-        return -1;
-    L82:
-        if (r23 != 442) goto L86;
-        r29.n(r22.a, 0, 10);
-        r22.N(9);
-        r29.l((r22.A() & 7) + 14);
-        return 0;
-    L86:
-        if (r23 != 443) goto L90;
-        r29.n(r22.a, 0, 2);
-        r22.N(0);
-        r29.l(r22.H() + 6);
-        return 0;
-    L90:
-        if (((r23 & (-256)) >> 8) == 1) goto L93;
-        r29.l(1);
-        return 0;
-    L93:
-        int r24 = r23 & 255;
-        SparseArray r111 = this.b;
-        tr3 r112 = (tr3) r111.get(r24);
-        if (this.e == true) goto L117;
-        if (r112 != null) goto L109;
-        if (r24 != 189) goto L100;
-        mz0 r25 = new s2("video/mp2p");
-        this.f = true;
-        this.h = r29.getPosition();
-    L106:
-        if (r25 == null) goto L109;
-        r25.f(this.j, new sy4(r24, 256));
-        r112 = new tr3(r25, this.a);
-        r111.put(r24, r112);
-        goto L109
-    L100:
-        if ((r23 & 224) != 192) goto L103;
-        r25 = new vy2(0, null, "video/mp2p");
-        this.f = true;
-        this.h = r29.getPosition();
-        goto L106
-    L103:
-        if ((r23 & 240) != 224) goto L105;
-        r25 = new vk1(null, "video/mp2p");
-        this.g = true;
-        this.h = r29.getPosition();
-        goto L106
-    L105:
-        r25 = null;
-    L109:
-        if (this.f == true) goto L111;
-    L113:
-        long r26 = 1048576;
-    L115:
-        if (r29.getPosition() <= r26) goto L117;
-        this.e = true;
-        this.j.p();
-        goto L117
-    L111:
-        if (this.g == false) goto L113;
-        r26 = this.h + 8192;
-    L117:
-        r29.n(r22.a, 0, 2);
-        r22.N(0);
-        int r27 = r22.H() + 6;
-        if (r112 != null) goto L121;
-        r29.l(r27);
-        return 0;
-    L121:
-        r22.K(r27);
-        r29.readFully(r22.a, 0, r27);
-        r22.N(6);
-        mz0 r28 = r112.a;
-        h00 r31 = r112.c;
-        r22.k(r31.b, 0, 3);
-        r31.q(0);
-        r31.t(8);
-        r112.d = r31.h();
-        r112.e = r31.h();
-        r31.t(6);
-        r22.k(r31.b, 0, r31.i(8));
-        r31.q(0);
-        iu4 r32 = r112.b;
-        r112.g = 0;
-        if (r112.d == false) goto L129;
-        r31.t(4);
-        long r33 = ((long) r31.i(3)) << 30;
-        r31.t(1);
-        long r34 = r33 | ((long) (r31.i(15) << 15));
-        r31.t(1);
-        long r35 = r34 | ((long) r31.i(15));
-        r31.t(1);
-        if (r112.f == false) goto L126;
-    L128:
-        r112.g = r32.b(r35);
-        goto L129
-    L126:
-        if (r112.e == false) goto L128;
-        r31.t(4);
-        long r113 = ((long) r31.i(3)) << 30;
-        r31.t(1);
-        long r114 = r113 | ((long) (r31.i(15) << 15));
-        r31.t(1);
-        long r36 = r114 | ((long) r31.i(15));
-        r31.t(1);
-        r32.b(r36);
-        r112.f = true;
-    L129:
-        r28.e(4, r112.g);
-        r28.a(r22);
-        r28.d(false);
-        r22.M(r22.a.length);
-        return 0;
-    L140:
-        return -1;
-    L72:
-        if (r110 >= 4) goto L74;
-        return -1;
-    L68:
-        r110 = -1;
-        goto L70
-    L62:
-        if (r21.c == null) goto L65;
-        return r21.b(r29, r30);
-    L57:
-        r19 = 4;
-        this.j.w(new bo(r18));
-        goto L59
-    L58:
-        r19 = 4;
-        goto L59
-    L51:
-        r16 = 3;
-        goto L53
     }
 
     @Override // defpackage.k51
-    public final boolean c(l51 r9) {
-        byte[] r0 = new byte[14];
-        rk0 r10 = (rk0) r9;
-        r10.e(r0, 0, 14, false);
-        if (442 == (((((r0[0] & 255) << 24) | ((r0[1] & 255) << 16)) | ((r0[2] & 255) << 8)) | (r0[3] & 255))) goto L6;
-    L23:
+    public final boolean c(l51 l51Var) {
+        byte[] bArr = new byte[14];
+        rk0 rk0Var = (rk0) l51Var;
+        rk0Var.e(bArr, 0, 14, false);
+        if (442 == (((bArr[0] & 255) << 24) | ((bArr[1] & 255) << 16) | ((bArr[2] & 255) << 8) | (bArr[3] & 255)) && (bArr[4] & 196) == 68 && (bArr[6] & 4) == 4 && (bArr[8] & 4) == 4 && (bArr[9] & 1) == 1 && (bArr[12] & 3) == 3) {
+            rk0Var.o(bArr[13] & 7, false);
+            rk0Var.e(bArr, 0, 3, false);
+            if (1 == (((bArr[0] & 255) << 16) | ((bArr[1] & 255) << 8) | (bArr[2] & 255))) {
+                return true;
+            }
+        }
         return false;
-    L6:
-        if ((r0[4] & 196) != 68) goto L23;
-        if ((r0[6] & 4) != 4) goto L23;
-        if ((r0[8] & 4) != 4) goto L23;
-        if ((r0[9] & 1) != 1) goto L23;
-        if ((r0[12] & 3) != 3) goto L23;
-        r10.o(r0[13] & 7, false);
-        r10.e(r0, 0, 3, false);
-        if (1 != ((((r0[0] & 255) << 16) | ((r0[1] & 255) << 8)) | (r0[2] & 255))) goto L23;
-        return true;
     }
 
     @Override // defpackage.k51
-    public final void d(long r8, long r10) {
-        SparseArray r9 = this.b;
-        iu4 r11 = this.a;
-        monitor-enter(r11);
-        long r0 = r11.b;     // Catch: Throwable -> L30
-        monitor-exit(r11);
-        boolean r1 = true;
-        if (r0 != (-9223372036854775807L)) goto L9;
-        boolean r2 = true;
-    L10:
-        if (r2 == true) goto L20;
-        long r5 = r11.d();
-        if (r5 != (-9223372036854775807L)) goto L14;
-    L18:
-        r1 = false;
-    L19:
-        r2 = r1;
-        goto L20
-    L14:
-        if (r5 == 0) goto L18;
-        if (r5 == r10) goto L18;
-    L20:
-        if (r2 == false) goto L22;
-        r11.f(r10);
-    L22:
-        r71 r7 = this.i;
-        if (r7 == null) goto L25;
-        r7.d(r10);
-    L25:
-        int r12 = 0;
-    L27:
-        if (r12 >= r9.size()) goto L29;
-        tr3 r13 = (tr3) r9.valueAt(r12);
-        r13.f = false;
-        r13.a.c();
-        r12 = r12 + 1;
-        goto L27
-    L29:
-        return;
-    L9:
-        r2 = false;
-    L30:
-        th = move-exception;
-        throw th;
+    public final void d(long j, long j2) {
+        long j3;
+        SparseArray sparseArray = this.b;
+        iu4 iu4Var = this.a;
+        synchronized (iu4Var) {
+            j3 = iu4Var.b;
+        }
+        boolean z = j3 == -9223372036854775807L;
+        if (!z) {
+            long jD = iu4Var.d();
+            z = (jD == -9223372036854775807L || jD == 0 || jD == j2) ? false : true;
+        }
+        if (z) {
+            iu4Var.f(j2);
+        }
+        r71 r71Var = this.i;
+        if (r71Var != null) {
+            r71Var.d(j2);
+        }
+        for (int i = 0; i < sparseArray.size(); i++) {
+            tr3 tr3Var = (tr3) sparseArray.valueAt(i);
+            tr3Var.f = false;
+            tr3Var.a.c();
+        }
     }
 
     @Override // defpackage.k51
-    public final void f(m51 r1) {
-        this.j = r1;
+    public final void f(m51 m51Var) {
+        this.j = m51Var;
     }
 }

@@ -10,21 +10,20 @@ public final class dc4 extends jc4 {
     public final /* synthetic */ ArrayList c;
     public final /* synthetic */ Matrix d;
 
-    public dc4(ArrayList r1, Matrix r2) {
-        this.c = r1;
-        this.d = r2;
+    public dc4(ArrayList arrayList, Matrix matrix) {
+        this.c = arrayList;
+        this.d = matrix;
     }
 
     @Override // defpackage.jc4
-    public final void a(Matrix r5, yb4 r6, int r7, Canvas r8) {
-        ArrayList r9 = this.c;
-        int r0 = r9.size();
-        int r1 = 0;
-    L3:
-        if (r1 >= r0) goto L5;
-        Object r2 = r9.get(r1);
-        r1 = r1 + 1;
-        ((jc4) r2).a(this.d, r6, r7, r8);
-        goto L3
+    public final void a(Matrix matrix, yb4 yb4Var, int i, Canvas canvas) {
+        ArrayList arrayList = this.c;
+        int size = arrayList.size();
+        int i2 = 0;
+        while (i2 < size) {
+            Object obj = arrayList.get(i2);
+            i2++;
+            ((jc4) obj).a(this.d, yb4Var, i, canvas);
+        }
     }
 }

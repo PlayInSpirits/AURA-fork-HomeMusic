@@ -10,43 +10,41 @@ public final class ga5 extends si0 {
     public final /* synthetic */ int g;
     public final /* synthetic */ ia5 h;
 
-    public /* synthetic */ ga5(ia5 r1, int r2) {
-        this.g = r2;
-        this.h = r1;
+    public /* synthetic */ ga5(ia5 ia5Var, int i) {
+        this.g = i;
+        this.h = ia5Var;
     }
 
     @Override // defpackage.u75
     public final void c() {
-        int r0 = this.g;
-        ia5 r3 = this.h;
-        switch(r0) {
-            case 0: goto L7;
-            default: goto L4;
-        };
-    L4:
-        r3.v = null;
-        r3.g.requestLayout();
-        return;
-    L7:
-        if (r3.r == false) goto L11;
-        View r1 = r3.j;
-        if (r1 == null) goto L11;
-        r1.setTranslationY(0.0f);
-        r3.g.setTranslationY(0.0f);
-    L11:
-        r3.g.setVisibility(8);
-        r3.g.setTransitioning(false);
-        r3.v = null;
-        rm3 r2 = r3.n;
-        if (r2 == null) goto L14;
-        r2.H(r3.m);
-        r3.m = null;
-        r3.n = null;
-    L14:
-        ActionBarOverlayLayout r4 = r3.f;
-        if (r4 == null) goto L18;
-        WeakHashMap r5 = j65.a;
-        r4.requestApplyInsets();
-        return;
+        View view;
+        int i = this.g;
+        ia5 ia5Var = this.h;
+        switch (i) {
+            case 0:
+                if (ia5Var.r && (view = ia5Var.j) != null) {
+                    view.setTranslationY(0.0f);
+                    ia5Var.g.setTranslationY(0.0f);
+                }
+                ia5Var.g.setVisibility(8);
+                ia5Var.g.setTransitioning(false);
+                ia5Var.v = null;
+                rm3 rm3Var = ia5Var.n;
+                if (rm3Var != null) {
+                    rm3Var.H(ia5Var.m);
+                    ia5Var.m = null;
+                    ia5Var.n = null;
+                }
+                ActionBarOverlayLayout actionBarOverlayLayout = ia5Var.f;
+                if (actionBarOverlayLayout != null) {
+                    WeakHashMap weakHashMap = j65.a;
+                    actionBarOverlayLayout.requestApplyInsets();
+                }
+                break;
+            default:
+                ia5Var.v = null;
+                ia5Var.g.requestLayout();
+                break;
+        }
     }
 }

@@ -10,13 +10,13 @@ public final class ls implements m84 {
     public final long e;
     public final long f;
 
-    public ls(ns r1, long r2, long r4, long r6, long r8, long r10) {
-        this.a = r1;
-        this.b = r2;
-        this.c = r4;
-        this.d = r6;
-        this.e = r8;
-        this.f = r10;
+    public ls(ns nsVar, long j, long j2, long j3, long j4, long j5) {
+        this.a = nsVar;
+        this.b = j;
+        this.c = j2;
+        this.d = j3;
+        this.e = j4;
+        this.f = j5;
     }
 
     @Override // defpackage.m84
@@ -25,12 +25,9 @@ public final class ls implements m84 {
     }
 
     @Override // defpackage.m84
-    public final l84 e(long r14) {
-        long r1 = this.a.e(r14);
-        long r9 = this.e;
-        long r11 = this.f;
-        o84 r2 = new o84(r14, ms.a(r1, 0, this.c, this.d, r9, r11));
-        return new l84(r2, r2);
+    public final l84 e(long j) {
+        o84 o84Var = new o84(j, ms.a(this.a.e(j), 0L, this.c, this.d, this.e, this.f));
+        return new l84(o84Var, o84Var);
     }
 
     @Override // defpackage.m84

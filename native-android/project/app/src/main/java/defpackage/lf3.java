@@ -8,51 +8,36 @@ import java.util.Set;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class lf3 extends AbstractMap implements Map, a42 {
-    public tv1 n;
+    public tv1 n = new tv1();
     public xx4 o;
     public Object p;
     public int q;
     public int r;
     public mf3 s;
 
-    public lf3(mf3 r2) {
-        this.n = new tv1();
-        this.o = r2.n;
-        this.r = r2.o;
-        this.s = r2;
+    public lf3(mf3 mf3Var) {
+        this.o = mf3Var.n;
+        this.r = mf3Var.o;
+        this.s = mf3Var;
     }
 
     public final mf3 a() {
-        xx4 r0 = this.o;
-        mf3 r1 = this.s;
-        if (r0 == r1.n) goto L6;
-        this.n = new tv1();
-        r1 = new mf3(this.o, this.r);
-    L6:
-        this.s = r1;
-        return r1;
+        xx4 xx4Var = this.o;
+        mf3 mf3Var = this.s;
+        if (xx4Var != mf3Var.n) {
+            this.n = new tv1();
+            mf3Var = new mf3(this.o, this.r);
+        }
+        this.s = mf3Var;
+        return mf3Var;
     }
 
-    public final boolean b(Object r3) {
-        xx4 r2 = this.o;
-        if (r3 == null) goto L5;
-        int r1 = r3.hashCode();
-    L7:
-        return r2.d(r1, 0, r3);
-    L5:
-        r1 = 0;
-        goto L7
+    public final boolean b(Object obj) {
+        return this.o.d(obj != null ? obj.hashCode() : 0, 0, obj);
     }
 
-    public final Object c(Object r3) {
-        xx4 r2 = this.o;
-        if (r3 == null) goto L5;
-        int r1 = r3.hashCode();
-    L7:
-        return r2.g(r1, 0, r3);
-    L5:
-        r1 = 0;
-        goto L7
+    public final Object c(Object obj) {
+        return this.o.g(obj != null ? obj.hashCode() : 0, 0, obj);
     }
 
     @Override // java.util.AbstractMap, java.util.Map
@@ -62,40 +47,33 @@ public final class lf3 extends AbstractMap implements Map, a42 {
     }
 
     @Override // java.util.AbstractMap, java.util.Map
-    public final /* bridge */ boolean containsKey(Object r2) {
-        if ((r2 instanceof qr3) == true) goto L7;
+    public final /* bridge */ boolean containsKey(Object obj) {
+        if (obj instanceof qr3) {
+            return b((qr3) obj);
+        }
         return false;
-    L7:
-        return b((qr3) r2);
     }
 
     @Override // java.util.AbstractMap, java.util.Map
-    public final /* bridge */ boolean containsValue(Object r2) {
-        if ((r2 instanceof j35) == true) goto L7;
+    public final /* bridge */ boolean containsValue(Object obj) {
+        if (obj instanceof j35) {
+            return super.containsValue((j35) obj);
+        }
         return false;
-    L7:
-        return super.containsValue((j35) r2);
     }
 
-    public final Object d(Object r4) {
+    public final Object d(Object obj) {
         this.p = null;
-        xx4 r0 = this.o;
-        if (r4 == null) goto L5;
-        int r2 = r4.hashCode();
-    L6:
-        xx4 r5 = r0.n(r2, r4, 0, this);
-        if (r5 != null) goto L9;
-        r5 = xx4.e;
-    L9:
-        this.o = r5;
+        xx4 xx4VarN = this.o.n(obj != null ? obj.hashCode() : 0, obj, 0, this);
+        if (xx4VarN == null) {
+            xx4VarN = xx4.e;
+        }
+        this.o = xx4VarN;
         return this.p;
-    L5:
-        r2 = 0;
-        goto L6
     }
 
-    public final void e(int r1) {
-        this.r = r1;
+    public final void e(int i) {
+        this.r = i;
         this.q++;
     }
 
@@ -105,19 +83,16 @@ public final class lf3 extends AbstractMap implements Map, a42 {
     }
 
     @Override // java.util.AbstractMap, java.util.Map
-    public final /* bridge */ Object get(Object r2) {
-        if ((r2 instanceof qr3) == true) goto L7;
+    public final /* bridge */ Object get(Object obj) {
+        if (obj instanceof qr3) {
+            return (j35) c((qr3) obj);
+        }
         return null;
-    L7:
-        return (j35) c((qr3) r2);
     }
 
     @Override // java.util.Map
-    public final /* bridge */ Object getOrDefault(Object r2, Object r3) {
-        if ((r2 instanceof qr3) == true) goto L6;
-        return r3;
-    L6:
-        return (j35) super.getOrDefault((qr3) r2, (j35) r3);
+    public final /* bridge */ Object getOrDefault(Object obj, Object obj2) {
+        return !(obj instanceof qr3) ? obj2 : (j35) super.getOrDefault((qr3) obj, (j35) obj2);
     }
 
     @Override // java.util.AbstractMap, java.util.Map
@@ -126,79 +101,50 @@ public final class lf3 extends AbstractMap implements Map, a42 {
     }
 
     @Override // java.util.AbstractMap, java.util.Map
-    public final Object put(Object r8, Object r9) {
+    public final Object put(Object obj, Object obj2) {
         this.p = null;
-        xx4 r1 = this.o;
-        if (r8 == null) goto L6;
-        int r0 = r8.hashCode();
-    L7:
-        this.o = r1.l(r0, r8, r9, 0, this);
+        this.o = this.o.l(obj != null ? obj.hashCode() : 0, obj, obj2, 0, this);
         return this.p;
-    L6:
-        r0 = 0;
-        goto L7
     }
 
     @Override // java.util.AbstractMap, java.util.Map
-    public final void putAll(Map r6) {
-        nf3 r1 = null;
-        if ((r6 instanceof nf3) == false) goto L5;
-        nf3 r0 = (nf3) r6;
-    L6:
-        if (r0 == null) goto L8;
-        r1 = r0;
-    L14:
-        if (r1 == null) goto L19;
-        no0 r7 = new no0();
-        r7.a = 0;
-        int r2 = this.r;
-        xx4 r3 = this.o;
-        xx4 r4 = r1.n;
-        r4.getClass();
-        this.o = r3.m(r4, 0, r7, this);
-        int r5 = (r1.o + r2) - r7.a;
-        if (r2 == r5) goto L21;
-        e(r5);
-        return;
-    L21:
-        return;
-    L19:
-        super.putAll(r6);
-        return;
-    L8:
-        if ((r6 instanceof lf3) == false) goto L10;
-        lf3 r8 = (lf3) r6;
-    L11:
-        if (r8 == null) goto L14;
-        r1 = r8.a();
-        goto L14
-    L10:
-        r8 = null;
-        goto L11
-    L5:
-        r0 = null;
-        goto L6
+    public final void putAll(Map map) {
+        nf3 nf3VarA = null;
+        nf3 nf3Var = map instanceof nf3 ? (nf3) map : null;
+        if (nf3Var == null) {
+            lf3 lf3Var = map instanceof lf3 ? (lf3) map : null;
+            if (lf3Var != null) {
+                nf3VarA = lf3Var.a();
+            }
+        } else {
+            nf3VarA = nf3Var;
+        }
+        if (nf3VarA == null) {
+            super.putAll(map);
+            return;
+        }
+        no0 no0Var = new no0();
+        no0Var.a = 0;
+        int i = this.r;
+        xx4 xx4Var = this.o;
+        xx4 xx4Var2 = nf3VarA.n;
+        xx4Var2.getClass();
+        this.o = xx4Var.m(xx4Var2, 0, no0Var, this);
+        int i2 = (nf3VarA.o + i) - no0Var.a;
+        if (i != i2) {
+            e(i2);
+        }
     }
 
     @Override // java.util.Map
-    public final boolean remove(Object r9, Object r10) {
-        int r0 = this.r;
-        xx4 r1 = this.o;
-        if (r9 == null) goto L5;
-        int r2 = r9.hashCode();
-    L6:
-        xx4 r8 = r1.o(r2, r9, r10, 0, this);
-        if (r8 != null) goto L9;
-        r8 = xx4.e;
-    L9:
-        this.o = r8;
-        if (r0 == this.r) goto L13;
-        return true;
-    L13:
-        return false;
-    L5:
-        r2 = 0;
-        goto L6
+    public final boolean remove(Object obj, Object obj2) {
+        int i = this.r;
+        xx4 xx4VarO = this.o.o(obj != null ? obj.hashCode() : 0, obj, obj2, 0, this);
+        if (xx4VarO == null) {
+            xx4VarO = xx4.e;
+        }
+        this.o = xx4VarO;
+        return i != this.r;
     }
 
     @Override // java.util.AbstractMap, java.util.Map
@@ -212,10 +158,10 @@ public final class lf3 extends AbstractMap implements Map, a42 {
     }
 
     @Override // java.util.AbstractMap, java.util.Map
-    public final /* bridge */ Object remove(Object r2) {
-        if ((r2 instanceof qr3) == true) goto L7;
+    public final /* bridge */ Object remove(Object obj) {
+        if (obj instanceof qr3) {
+            return (j35) d((qr3) obj);
+        }
         return null;
-    L7:
-        return (j35) d((qr3) r2);
     }
 }

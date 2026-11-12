@@ -6,15 +6,13 @@ import android.content.res.Resources;
 /* JADX INFO: loaded from: classes.dex */
 public final /* synthetic */ class oa extends ig1 implements xf1 {
     @Override // defpackage.xf1
-    public final Object a(Object r5, Object r6, Object r7) {
-        if (r5 != null) goto L6;
-        ra r4 = (ra) this.receiver;
-        Resources r1 = r4.getContext().getResources();
-        ro0 r3 = new ro0(r1.getDisplayMetrics().density, r1.getConfiguration().fontScale);
-        t70 r2 = new t70(r3, ((qf4) r6).a, (if1) r7);
-        return Boolean.valueOf(bb.a.a(r4, null, r2));
-    L6:
-        kf2.k();
-        return null;
+    public final Object a(Object obj, Object obj2, Object obj3) {
+        if (obj != null) {
+            kf2.k();
+            return null;
+        }
+        ra raVar = (ra) this.receiver;
+        Resources resources = raVar.getContext().getResources();
+        return Boolean.valueOf(bb.a.a(raVar, null, new t70(new ro0(resources.getDisplayMetrics().density, resources.getConfiguration().fontScale), ((qf4) obj2).a, (if1) obj3)));
     }
 }

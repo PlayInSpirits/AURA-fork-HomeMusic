@@ -7,8 +7,8 @@ import android.widget.TextView;
 public final class je5 extends cx3 {
     public final TextView u;
 
-    public je5(TextView r1) {
-        super(r1);
-        this.u = r1;
+    public je5(TextView textView) {
+        super(textView);
+        this.u = textView;
     }
 }

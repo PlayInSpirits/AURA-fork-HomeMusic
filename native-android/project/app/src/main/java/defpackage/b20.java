@@ -5,8 +5,8 @@ package defpackage;
 public final class b20 extends u22 {
     public final cz u;
 
-    public b20(cz r1) {
-        this.u = r1;
+    public b20(cz czVar) {
+        this.u = czVar;
     }
 
     @Override // defpackage.u22
@@ -15,24 +15,17 @@ public final class b20 extends u22 {
     }
 
     @Override // defpackage.u22
-    public final void s(Throwable r2) {
-        a32 r3 = q();
-        cz r1 = this.u;
-        Throwable r4 = r1.o(r3);
-        if (r1.y() == true) goto L5;
-        boolean r0 = false;
-    L6:
-        if (r0 == true) goto L13;
-        r1.r(r4);
-        if (r1.y() == true) goto L12;
-        r1.m();
-        return;
-    L12:
-        return;
-    L13:
-        return;
-    L5:
-        r0 = ((mr0) r1.q).n(r4);
-        goto L6
+    public final void s(Throwable th) {
+        a32 a32VarQ = q();
+        cz czVar = this.u;
+        Throwable thO = czVar.o(a32VarQ);
+        if (!czVar.y() ? false : ((mr0) czVar.q).n(thO)) {
+            return;
+        }
+        czVar.r(thO);
+        if (czVar.y()) {
+            return;
+        }
+        czVar.m();
     }
 }

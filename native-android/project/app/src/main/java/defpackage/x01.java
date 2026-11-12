@@ -4,6 +4,6 @@ package defpackage;
 /* JADX INFO: loaded from: classes.dex */
 public final class x01 extends cx2 implements g94 {
     @Override // defpackage.g94
-    public final void c0(q94 r1) {
+    public final void c0(q94 q94Var) {
     }
 }

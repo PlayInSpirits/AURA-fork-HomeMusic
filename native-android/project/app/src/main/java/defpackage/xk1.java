@@ -12,27 +12,21 @@ public final class xk1 {
     public long g;
     public long h;
 
-    public xk1(wv4 r1) {
-        this.a = r1;
+    public xk1(wv4 wv4Var) {
+        this.a = wv4Var;
     }
 
-    public final void a(byte[] r3, int r4, int r5) {
-        if (this.c == false) goto L14;
-        int r1 = this.f;
-        int r0 = (r4 + 1) - r1;
-        if (r0 < r5) goto L7;
-        this.f = (r5 - r4) + r1;
-        return;
-    L7:
-        if (((r3[r0] & 192) >> 6) != 0) goto L9;
-        boolean r6 = true;
-    L10:
-        this.d = r6;
-        this.c = false;
-        return;
-    L9:
-        r6 = false;
-        goto L10
+    public final void a(byte[] bArr, int i, int i2) {
+        if (this.c) {
+            int i3 = this.f;
+            int i4 = (i + 1) - i3;
+            if (i4 >= i2) {
+                this.f = (i2 - i) + i3;
+            } else {
+                this.d = ((bArr[i4] & 192) >> 6) == 0;
+                this.c = false;
+            }
+        }
     }
 
     /* JADX WARN: Type inference fix 'apply assigned field type' failed
@@ -45,26 +39,13 @@ public final class xk1 {
     	at jadx.core.dex.visitors.typeinference.FixTypesVisitor.applyFieldType(FixTypesVisitor.java:309)
     	at jadx.core.dex.visitors.typeinference.FixTypesVisitor.visit(FixTypesVisitor.java:94)
      */
-    public final void b(int r10, long r11, boolean r13) {
-        if (this.h == (-9223372036854775807L)) goto L5;
-        boolean r0 = true;
-    L6:
-        rr2.w(r0);
-        if (this.e != 182) goto L13;
-        if (r13 == false) goto L13;
-        if (this.b == false) goto L13;
-        int r6 = (int) (r11 - this.g);
-        boolean r5 = this.d;
-        long r3 = this.h;
-        this.a.a(r3, r5 ? 1 : 0, r6, r10, null);
-    L13:
-        if (this.e == 179) goto L16;
-        this.g = r11;
-        return;
-    L16:
-        return;
-    L5:
-        r0 = false;
-        goto L6
+    public final void b(int i, long j, boolean z) {
+        rr2.w(this.h != -9223372036854775807L);
+        if (this.e == 182 && z && this.b) {
+            this.a.a(this.h, this.d ? 1 : 0, (int) (j - this.g), i, null);
+        }
+        if (this.e != 179) {
+            this.g = j;
+        }
     }
 }

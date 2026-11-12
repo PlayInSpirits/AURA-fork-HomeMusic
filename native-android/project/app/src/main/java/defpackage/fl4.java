@@ -6,21 +6,22 @@ public final class fl4 extends xb1 {
     public final /* synthetic */ m84 b;
     public final /* synthetic */ e20 c;
 
-    public fl4(e20 r1, m84 r2, m84 r3) {
-        this.c = r1;
-        this.b = r3;
-        super(r2);
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public fl4(e20 e20Var, m84 m84Var, m84 m84Var2) {
+        super(m84Var);
+        this.c = e20Var;
+        this.b = m84Var2;
     }
 
     @Override // defpackage.xb1, defpackage.m84
-    public final l84 e(long r9) {
-        l84 r10 = this.b.e(r9);
-        o84 r1 = r10.a;
-        long r2 = r1.a;
-        long r4 = r1.b;
-        long r6 = this.c.o;
-        o84 r0 = new o84(r2, r4 + r6);
-        o84 r11 = r10.b;
-        return new l84(r0, new o84(r11.a, r11.b + r6));
+    public final l84 e(long j) {
+        l84 l84VarE = this.b.e(j);
+        o84 o84Var = l84VarE.a;
+        long j2 = o84Var.a;
+        long j3 = o84Var.b;
+        long j4 = this.c.o;
+        o84 o84Var2 = new o84(j2, j3 + j4);
+        o84 o84Var3 = l84VarE.b;
+        return new l84(o84Var2, new o84(o84Var3.a, o84Var3.b + j4));
     }
 }

@@ -11,84 +11,70 @@ import java.util.concurrent.atomic.AtomicBoolean;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class so implements Application.ActivityLifecycleCallbacks, ComponentCallbacks2 {
-    public static final so r = null;
-    public final AtomicBoolean n;
-    public final AtomicBoolean o;
-    public final ArrayList p;
-    public boolean q;
+    public static final so r = new so();
+    public final AtomicBoolean n = new AtomicBoolean();
+    public final AtomicBoolean o = new AtomicBoolean();
+    public final ArrayList p = new ArrayList();
+    public boolean q = false;
 
-    static {
-        r = new so();
-    }
-
-    public so() {
-        this.n = new AtomicBoolean();
-        this.o = new AtomicBoolean();
-        this.p = new ArrayList();
-        this.q = false;
-    }
-
-    public final void a(boolean r7) {
-        so r0 = r;
-        monitor-enter(r0);
-        ArrayList r6 = this.p;     // Catch: Throwable -> L7
-        int r1 = r6.size();     // Catch: Throwable -> L7
-        int r2 = 0;
-    L5:
-        if (r2 >= r1) goto L9;
-        Object r3 = r6.get(r2);     // Catch: Throwable -> L7
-        r2 = r2 + 1;     // Catch: Throwable -> L7
-        zw2 r4 = ((ff5) r3).a.A;     // Catch: Throwable -> L7
-        r4.sendMessage(r4.obtainMessage(1, Boolean.valueOf(r7)));     // Catch: Throwable -> L7
-        goto L5
-    L9:
-        monitor-exit(r0);     // Catch: Throwable -> L7
-        return;
-    L7:
-        th = move-exception;
-        throw th;
+    public final void a(boolean z) {
+        synchronized (r) {
+            try {
+                ArrayList arrayList = this.p;
+                int size = arrayList.size();
+                int i = 0;
+                while (i < size) {
+                    Object obj = arrayList.get(i);
+                    i++;
+                    zw2 zw2Var = ((ff5) obj).a.A;
+                    zw2Var.sendMessage(zw2Var.obtainMessage(1, Boolean.valueOf(z)));
+                }
+            } catch (Throwable th) {
+                throw th;
+            }
+        }
     }
 
     @Override // android.app.Application.ActivityLifecycleCallbacks
-    public final void onActivityCreated(Activity r3, Bundle r4) {
-        boolean r5 = this.n.compareAndSet(true, false);
+    public final void onActivityCreated(Activity activity, Bundle bundle) {
+        boolean zCompareAndSet = this.n.compareAndSet(true, false);
         this.o.set(true);
-        if (r5 == false) goto L6;
-        a(false);
-        return;
+        if (zCompareAndSet) {
+            a(false);
+        }
     }
 
     @Override // android.app.Application.ActivityLifecycleCallbacks
-    public final void onActivityDestroyed(Activity r1) {
+    public final void onActivityDestroyed(Activity activity) {
     }
 
     @Override // android.app.Application.ActivityLifecycleCallbacks
-    public final void onActivityPaused(Activity r1) {
+    public final void onActivityPaused(Activity activity) {
     }
 
     @Override // android.app.Application.ActivityLifecycleCallbacks
-    public final void onActivityResumed(Activity r4) {
-        boolean r5 = this.n.compareAndSet(true, false);
+    public final void onActivityResumed(Activity activity) {
+        boolean zCompareAndSet = this.n.compareAndSet(true, false);
         this.o.set(true);
-        if (r5 == false) goto L6;
-        a(false);
-        return;
+        if (zCompareAndSet) {
+            a(false);
+        }
     }
 
     @Override // android.app.Application.ActivityLifecycleCallbacks
-    public final void onActivitySaveInstanceState(Activity r1, Bundle r2) {
+    public final void onActivitySaveInstanceState(Activity activity, Bundle bundle) {
     }
 
     @Override // android.app.Application.ActivityLifecycleCallbacks
-    public final void onActivityStarted(Activity r1) {
+    public final void onActivityStarted(Activity activity) {
     }
 
     @Override // android.app.Application.ActivityLifecycleCallbacks
-    public final void onActivityStopped(Activity r1) {
+    public final void onActivityStopped(Activity activity) {
     }
 
     @Override // android.content.ComponentCallbacks
-    public final void onConfigurationChanged(Configuration r1) {
+    public final void onConfigurationChanged(Configuration configuration) {
     }
 
     @Override // android.content.ComponentCallbacks
@@ -96,13 +82,10 @@ public final class so implements Application.ActivityLifecycleCallbacks, Compone
     }
 
     @Override // android.content.ComponentCallbacks2
-    public final void onTrimMemory(int r3) {
-        if (r3 == 20) goto L5;
-        return;
-    L5:
-        if (this.n.compareAndSet(false, true) == false) goto L9;
-        this.o.set(true);
-        a(true);
-        return;
+    public final void onTrimMemory(int i) {
+        if (i == 20 && this.n.compareAndSet(false, true)) {
+            this.o.set(true);
+            a(true);
+        }
     }
 }

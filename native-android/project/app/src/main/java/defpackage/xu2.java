@@ -19,14 +19,14 @@ public final class xu2 extends b3 implements MenuItem {
     public final oo4 c;
     public Method d;
 
-    public xu2(Context r1, oo4 r2) {
-        super(r1);
-        if (r2 == null) goto L6;
-        this.c = r2;
-        return;
-    L6:
-        kf2.n("Wrapped Object can not be null.");
-        throw null;
+    public xu2(Context context, oo4 oo4Var) {
+        super(context);
+        if (oo4Var != null) {
+            this.c = oo4Var;
+        } else {
+            kf2.n("Wrapped Object can not be null.");
+            throw null;
+        }
     }
 
     @Override // android.view.MenuItem
@@ -41,20 +41,17 @@ public final class xu2 extends b3 implements MenuItem {
 
     @Override // android.view.MenuItem
     public final ActionProvider getActionProvider() {
-        e5 r1 = this.c.b();
-        if ((r1 instanceof uu2) == true) goto L5;
+        e5 e5VarB = this.c.b();
+        if (e5VarB instanceof uu2) {
+            return ((uu2) e5VarB).d;
+        }
         return null;
-    L5:
-        return ((uu2) r1).d;
     }
 
     @Override // android.view.MenuItem
     public final View getActionView() {
-        View r1 = this.c.getActionView();
-        if ((r1 instanceof vu2) == true) goto L5;
-        return r1;
-    L5:
-        return (View) ((vu2) r1).n;
+        View actionView = this.c.getActionView();
+        return actionView instanceof vu2 ? (View) ((vu2) actionView).n : actionView;
     }
 
     @Override // android.view.MenuItem
@@ -173,186 +170,174 @@ public final class xu2 extends b3 implements MenuItem {
     }
 
     @Override // android.view.MenuItem
-    public final MenuItem setActionProvider(ActionProvider r3) {
-        uu2 r0 = new uu2(this, (Context) this.a, r3);
-        if (r3 != null) goto L6;
-        r0 = null;
-    L6:
-        this.c.a(r0);
+    public final MenuItem setActionProvider(ActionProvider actionProvider) {
+        uu2 uu2Var = new uu2(this, (Context) this.a, actionProvider);
+        if (actionProvider == null) {
+            uu2Var = null;
+        }
+        this.c.a(uu2Var);
         return this;
     }
 
     @Override // android.view.MenuItem
-    public final MenuItem setActionView(int r3) {
-        oo4 r0 = this.c;
-        r0.setActionView(r3);
-        View r4 = r0.getActionView();
-        if ((r4 instanceof CollapsibleActionView) == false) goto L5;
-        r0.setActionView(new vu2(r4));
-    L5:
+    public final MenuItem setActionView(int i) {
+        oo4 oo4Var = this.c;
+        oo4Var.setActionView(i);
+        View actionView = oo4Var.getActionView();
+        if (actionView instanceof CollapsibleActionView) {
+            oo4Var.setActionView(new vu2(actionView));
+        }
         return this;
     }
 
     @Override // android.view.MenuItem
-    public final MenuItem setAlphabeticShortcut(char r2) {
-        this.c.setAlphabeticShortcut(r2);
+    public final MenuItem setAlphabeticShortcut(char c) {
+        this.c.setAlphabeticShortcut(c);
         return this;
     }
 
     @Override // android.view.MenuItem
-    public final MenuItem setCheckable(boolean r2) {
-        this.c.setCheckable(r2);
+    public final MenuItem setCheckable(boolean z) {
+        this.c.setCheckable(z);
         return this;
     }
 
     @Override // android.view.MenuItem
-    public final MenuItem setChecked(boolean r2) {
-        this.c.setChecked(r2);
+    public final MenuItem setChecked(boolean z) {
+        this.c.setChecked(z);
         return this;
     }
 
     @Override // android.view.MenuItem
-    public final MenuItem setContentDescription(CharSequence r2) {
-        this.c.setContentDescription(r2);
+    public final MenuItem setContentDescription(CharSequence charSequence) {
+        this.c.setContentDescription(charSequence);
         return this;
     }
 
     @Override // android.view.MenuItem
-    public final MenuItem setEnabled(boolean r2) {
-        this.c.setEnabled(r2);
+    public final MenuItem setEnabled(boolean z) {
+        this.c.setEnabled(z);
         return this;
     }
 
     @Override // android.view.MenuItem
-    public final MenuItem setIcon(Drawable r2) {
-        this.c.setIcon(r2);
+    public final MenuItem setIcon(Drawable drawable) {
+        this.c.setIcon(drawable);
         return this;
     }
 
     @Override // android.view.MenuItem
-    public final MenuItem setIconTintList(ColorStateList r2) {
-        this.c.setIconTintList(r2);
+    public final MenuItem setIconTintList(ColorStateList colorStateList) {
+        this.c.setIconTintList(colorStateList);
         return this;
     }
 
     @Override // android.view.MenuItem
-    public final MenuItem setIconTintMode(PorterDuff.Mode r2) {
-        this.c.setIconTintMode(r2);
+    public final MenuItem setIconTintMode(PorterDuff.Mode mode) {
+        this.c.setIconTintMode(mode);
         return this;
     }
 
     @Override // android.view.MenuItem
-    public final MenuItem setIntent(Intent r2) {
-        this.c.setIntent(r2);
+    public final MenuItem setIntent(Intent intent) {
+        this.c.setIntent(intent);
         return this;
     }
 
     @Override // android.view.MenuItem
-    public final MenuItem setNumericShortcut(char r2) {
-        this.c.setNumericShortcut(r2);
+    public final MenuItem setNumericShortcut(char c) {
+        this.c.setNumericShortcut(c);
         return this;
     }
 
     @Override // android.view.MenuItem
-    public final MenuItem setOnActionExpandListener(MenuItem.OnActionExpandListener r2) {
-        if (r2 == null) goto L4;
-        wu2 r0 = new wu2(this, r2);
-    L5:
-        this.c.setOnActionExpandListener(r0);
-        return this;
-    L4:
-        r0 = null;
-        goto L5
-    }
-
-    @Override // android.view.MenuItem
-    public final MenuItem setOnMenuItemClickListener(MenuItem.OnMenuItemClickListener r2) {
-        if (r2 == null) goto L4;
-        lo4 r0 = new lo4(this, r2);
-    L5:
-        this.c.setOnMenuItemClickListener(r0);
-        return this;
-    L4:
-        r0 = null;
-        goto L5
-    }
-
-    @Override // android.view.MenuItem
-    public final MenuItem setShortcut(char r2, char r3) {
-        this.c.setShortcut(r2, r3);
+    public final MenuItem setOnActionExpandListener(MenuItem.OnActionExpandListener onActionExpandListener) {
+        this.c.setOnActionExpandListener(onActionExpandListener != null ? new wu2(this, onActionExpandListener) : null);
         return this;
     }
 
     @Override // android.view.MenuItem
-    public final void setShowAsAction(int r1) {
-        this.c.setShowAsAction(r1);
-    }
-
-    @Override // android.view.MenuItem
-    public final MenuItem setShowAsActionFlags(int r2) {
-        this.c.setShowAsActionFlags(r2);
+    public final MenuItem setOnMenuItemClickListener(MenuItem.OnMenuItemClickListener onMenuItemClickListener) {
+        this.c.setOnMenuItemClickListener(onMenuItemClickListener != null ? new lo4(this, onMenuItemClickListener) : null);
         return this;
     }
 
     @Override // android.view.MenuItem
-    public final MenuItem setTitle(CharSequence r2) {
-        this.c.setTitle(r2);
+    public final MenuItem setShortcut(char c, char c2) {
+        this.c.setShortcut(c, c2);
         return this;
     }
 
     @Override // android.view.MenuItem
-    public final MenuItem setTitleCondensed(CharSequence r2) {
-        this.c.setTitleCondensed(r2);
+    public final void setShowAsAction(int i) {
+        this.c.setShowAsAction(i);
+    }
+
+    @Override // android.view.MenuItem
+    public final MenuItem setShowAsActionFlags(int i) {
+        this.c.setShowAsActionFlags(i);
         return this;
     }
 
     @Override // android.view.MenuItem
-    public final MenuItem setTooltipText(CharSequence r2) {
-        this.c.setTooltipText(r2);
+    public final MenuItem setTitle(CharSequence charSequence) {
+        this.c.setTitle(charSequence);
         return this;
     }
 
     @Override // android.view.MenuItem
-    public final MenuItem setVisible(boolean r1) {
-        return this.c.setVisible(r1);
-    }
-
-    @Override // android.view.MenuItem
-    public final MenuItem setAlphabeticShortcut(char r2, int r3) {
-        this.c.setAlphabeticShortcut(r2, r3);
+    public final MenuItem setTitleCondensed(CharSequence charSequence) {
+        this.c.setTitleCondensed(charSequence);
         return this;
     }
 
     @Override // android.view.MenuItem
-    public final MenuItem setIcon(int r2) {
-        this.c.setIcon(r2);
+    public final MenuItem setTooltipText(CharSequence charSequence) {
+        this.c.setTooltipText(charSequence);
         return this;
     }
 
     @Override // android.view.MenuItem
-    public final MenuItem setNumericShortcut(char r2, int r3) {
-        this.c.setNumericShortcut(r2, r3);
+    public final MenuItem setVisible(boolean z) {
+        return this.c.setVisible(z);
+    }
+
+    @Override // android.view.MenuItem
+    public final MenuItem setAlphabeticShortcut(char c, int i) {
+        this.c.setAlphabeticShortcut(c, i);
         return this;
     }
 
     @Override // android.view.MenuItem
-    public final MenuItem setShortcut(char r2, char r3, int r4, int r5) {
-        this.c.setShortcut(r2, r3, r4, r5);
+    public final MenuItem setIcon(int i) {
+        this.c.setIcon(i);
         return this;
     }
 
     @Override // android.view.MenuItem
-    public final MenuItem setTitle(int r2) {
-        this.c.setTitle(r2);
+    public final MenuItem setNumericShortcut(char c, int i) {
+        this.c.setNumericShortcut(c, i);
         return this;
     }
 
     @Override // android.view.MenuItem
-    public final MenuItem setActionView(View r2) {
-        if ((r2 instanceof CollapsibleActionView) == false) goto L5;
-        r2 = new vu2(r2);
-    L5:
-        this.c.setActionView(r2);
+    public final MenuItem setShortcut(char c, char c2, int i, int i2) {
+        this.c.setShortcut(c, c2, i, i2);
+        return this;
+    }
+
+    @Override // android.view.MenuItem
+    public final MenuItem setTitle(int i) {
+        this.c.setTitle(i);
+        return this;
+    }
+
+    @Override // android.view.MenuItem
+    public final MenuItem setActionView(View view) {
+        if (view instanceof CollapsibleActionView) {
+            view = new vu2(view);
+        }
+        this.c.setActionView(view);
         return this;
     }
 }

@@ -9,22 +9,24 @@ public final class zy extends h12 {
     public final yy f;
     public boolean g;
 
-    public zy(yy r1, Typeface r2) {
-        this.e = r2;
-        this.f = r1;
+    public zy(yy yyVar, Typeface typeface) {
+        this.e = typeface;
+        this.f = yyVar;
     }
 
     @Override // defpackage.h12
-    public final void H(int r1) {
-        if (this.g == true) goto L6;
+    public final void H(int i) {
+        if (this.g) {
+            return;
+        }
         this.f.j(this.e);
-        return;
     }
 
     @Override // defpackage.h12
-    public final void I(Typeface r1, boolean r2) {
-        if (this.g == true) goto L6;
-        this.f.j(r1);
-        return;
+    public final void I(Typeface typeface, boolean z) {
+        if (this.g) {
+            return;
+        }
+        this.f.j(typeface);
     }
 }

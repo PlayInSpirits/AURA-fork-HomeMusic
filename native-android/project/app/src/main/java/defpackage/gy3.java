@@ -5,25 +5,21 @@ import java.util.Objects;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class gy3 extends yw1 {
-    public static final gy3 r = null;
+    public static final gy3 r = new gy3(0, new Object[0]);
     public final transient Object[] p;
     public final transient int q;
 
-    static {
-        r = new gy3(0, new Object[0]);
-    }
-
-    public gy3(int r1, Object[] r2) {
-        this.p = r2;
-        this.q = r1;
+    public gy3(int i, Object[] objArr) {
+        this.p = objArr;
+        this.q = i;
     }
 
     @Override // defpackage.yw1, defpackage.rw1
-    public final int b(int r3, Object[] r4) {
-        Object[] r0 = this.p;
-        int r2 = this.q;
-        System.arraycopy(r0, 0, r4, r3, r2);
-        return r3 + r2;
+    public final int b(int i, Object[] objArr) {
+        Object[] objArr2 = this.p;
+        int i2 = this.q;
+        System.arraycopy(objArr2, 0, objArr, i, i2);
+        return i + i2;
     }
 
     @Override // defpackage.rw1
@@ -47,11 +43,11 @@ public final class gy3 extends yw1 {
     }
 
     @Override // java.util.List
-    public final Object get(int r2) {
-        rr2.q(r2, this.q);
-        Object r1 = this.p[r2];
-        Objects.requireNonNull(r1);
-        return r1;
+    public final Object get(int i) {
+        rr2.q(i, this.q);
+        Object obj = this.p[i];
+        Objects.requireNonNull(obj);
+        return obj;
     }
 
     @Override // java.util.AbstractCollection, java.util.Collection, java.util.List

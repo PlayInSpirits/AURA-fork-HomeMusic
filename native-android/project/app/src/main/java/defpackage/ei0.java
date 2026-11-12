@@ -9,9 +9,11 @@ import androidx.work.impl.WorkDatabase_Impl;
 import com.eddyizm.tempus.subsonic.base.ApiResponse;
 import com.eddyizm.tempus.subsonic.models.Child;
 import com.eddyizm.tempus.subsonic.models.SubsonicResponse;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.concurrent.Callable;
+import org.chromium.support_lib_boundary.WebSettingsBoundaryInterface;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
@@ -20,269 +22,239 @@ public final /* synthetic */ class ei0 implements Callable {
     public final /* synthetic */ Object b;
     public final /* synthetic */ Object c;
 
-    public /* synthetic */ ei0(int r1, Object r2, Object r3) {
-        this.a = r1;
-        this.b = r2;
-        this.c = r3;
+    public /* synthetic */ ei0(int i, Object obj, Object obj2) {
+        this.a = i;
+        this.b = obj;
+        this.c = obj2;
     }
 
     /* JADX WARN: Multi-variable type inference failed */
     @Override // java.util.concurrent.Callable
-    public final Object call() {
-        int r0 = this.a;
-        int r3 = 0;
-        boolean r4 = false;
-        r4 = false;
-        r4 = false;
-        r4 = false;
-        r4 = false;
-        r4 = false;
-        r4 = false;
-        r4 = false;
-        Object r5 = null;
-        Object r6 = this.c;
-        Object r12 = this.b;
-        switch(r0) {
-            case 0: goto L132;
-            case 1: goto L112;
-            case 2: goto L92;
-            case 3: goto L70;
-            default: goto L4;
-        };
-    L4:
-        pd5 r13 = (pd5) r12;
-        td5 r7 = (td5) r6;
-        String r1 = r7.c;
-        fd5 r2 = r7.i;
-        if ((r13 instanceof nd5) == false) goto L57;
-        nc2 r14 = ((nd5) r13).a;
-        int r8 = r2.g(r1);
-        yc5 r9 = r7.h.z();
-        WorkDatabase_Impl r10 = (WorkDatabase_Impl) r9.n;
-        r10.b();
-        aq4 r11 = (aq4) r9.o;
-        df1 r15 = r11.a();
-        r15.h(1, r1);
-        r10.c();     // Catch: Throwable -> L48
-        r15.b();     // Catch: Throwable -> L50
-        r10.t();     // Catch: Throwable -> L50
-        r10.o();     // Catch: Throwable -> L48
-        r11.h(r15);
-        if (r8 == 0) goto L163;
-        if (r8 != 2) goto L46;
-        dd5 r16 = r7.a;
-        String r17 = r7.l;
-        if ((r14 instanceof mc2) == false) goto L38;
-        String r18 = ud5.a;
-        cx.f().g(r18, "Worker result SUCCESS for " + r17);
-        if (r16.d() == false) goto L19;
-        r7.c();
-        goto L163
-    L19:
-        r2.n(3, r1);
-        oh0 r19 = ((mc2) r14).a;
-        r19.getClass();
-        r2.m(r1, r19);
-        r7.f.getClass();
-        long r20 = System.currentTimeMillis();
-        wo0 r110 = r7.j;
-        ArrayList r21 = r110.w(r1);
-        int r22 = r21.size();
-        int r23 = 0;
-    L20:
-        if (r23 >= r22) goto L163;
-        Object r24 = r21.get(r23);
-        r23 = r23 + 1;
-        String r25 = (String) r24;
-        if (r2.g(r25) != 5) goto L20;
-        w24 r26 = w24.b(1, "SELECT COUNT(*)=0 FROM dependency WHERE work_spec_id=? AND prerequisite_id IN (SELECT id FROM workspec WHERE state!=2)");
-        r26.h(1, r25);
-        WorkDatabase_Impl r111 = (WorkDatabase_Impl) r110.n;
-        r111.b();
-        Cursor r112 = xl.H(r111, r26);
-    L29:
-        th = move-exception;
-        r112.close();
-        r26.j();
-        throw th;
-    L25:
-        if (r112.moveToFirst() == false) goto L31;
-        if (r112.getInt(0) == 0) goto L31;
-        Object[] r113 = true;
-    L32:
-        r112.close();
-        r26.j();
-        if (r113 == false) goto L20;
-        cx.f().g(ud5.a, "Setting status to enqueued for ".concat(r25));
-        r2.n(1, r25);
-        r2.l(r25, r20);
-    L31:
-        r113 = false;
-        goto L32
-    L38:
-        if ((r14 instanceof lc2) == false) goto L41;
-        String r114 = ud5.a;
-        cx.f().g(r114, "Worker result RETRY for " + r17);
-        r7.b(-256);
-    L40:
-        r4 = true;
-        goto L163
-    L41:
-        String r27 = ud5.a;
-        cx.f().g(r27, "Worker result FAILURE for " + r17);
-        if (r16.d() == false) goto L44;
-        r7.c();
-        goto L163
-    L44:
-        r7.d(r14);
-        goto L163
-    L46:
-        if (f34.c(r8) == true) goto L163;
-        r7.b(-512);
-    L163:
-        return Boolean.valueOf(r4);
-    L50:
-        th = move-exception;
-        r10.o();     // Catch: Throwable -> L48
-        throw th;     // Catch: Throwable -> L48
-    L48:
-        th = move-exception;
-        r11.h(r15);
-        throw th;
-    L57:
-        if ((r13 instanceof md5) == false) goto L60;
-        r7.d(((md5) r13).a);
-        goto L163
-    L60:
-        if ((r13 instanceof od5) == false) goto L68;
-        int r115 = ((od5) r13).a;
-        int r28 = r2.g(r1);
-        if (r28 != 0) goto L64;
-    L66:
-        String r116 = ud5.a;
-        cx r29 = cx.f();
-        StringBuilder r30 = xa3.j("Status for ", r1, " is ");
-        r30.append(f34.q(r28));
-        r30.append(" ; not doing any work");
-        r29.b(r116, r30.toString());
-        goto L163
-    L64:
-        if (f34.c(r28) == true) goto L66;
-        String r31 = ud5.a;
-        cx r32 = cx.f();
-        StringBuilder r33 = xa3.j("Status for ", r1, " is ");
-        r33.append(f34.q(r28));
-        r33.append("; not doing any work and rescheduling for later execution");
-        r32.b(r31, r33.toString());
-        r2.n(1, r1);
-        r2.o(r115, r1);
-        r2.j(r1, -1);
-        goto L40
-    L68:
-        er1.n();
-        return null;
-    L70:
-        String r117 = (String) r12;
-        f25 r34 = (f25) r6;
-        r34.getClass();
-        o83 r35 = (o83) r34.b.getValue();     // Catch: Exception -> L83
-        nz3 r36 = new nz3();     // Catch: Exception -> L83
-        r36.d(r117);     // Catch: Exception -> L83
-        oz3 r37 = new oz3(r36);     // Catch: Exception -> L83
-        r35.getClass();     // Catch: Exception -> L83
-        k14 r38 = new bv3(r35, r37).c();     // Catch: Exception -> L83
-        n14 r39 = r38.t;     // Catch: Throwable -> L78
-        if (r38.C == true) goto L76;
-    L74:
-        String r40 = null;
-    L81:
-        r38.close();     // Catch: Exception -> L83
-        r5 = r40;
-    L91:
-        return new kd3(r117, r5);
-    L76:
-        if (r39.source().G(1048577) == false) goto L80;
-        Log.w("UpnpControlPoint", "description is over 1048576 bytes, ignoring it: ".concat(r117));     // Catch: Throwable -> L78
-        goto L74
-    L80:
-        r40 = r39.string();     // Catch: Throwable -> L78
-    L78:
-        th = move-exception;
-        throw th;     // Catch: Throwable -> L86
-    L86:
-        th = move-exception;
-        q05.h(r38, th);     // Catch: Exception -> L83
-        throw th;     // Catch: Exception -> L83
-    L83:
-        e = move-exception;
-        Log.w("UpnpControlPoint", "GET failed: " + r117, e);
-        goto L91
-    L92:
-        String r41 = (String) r6;
-        ApiResponse r118 = (ApiResponse) ((gp3) r12).m(r41).execute().body();     // Catch: Throwable -> L99
-        if (r118 == null) goto L101;
-        SubsonicResponse r119 = r118.getSubsonicResponse();     // Catch: Throwable -> L99
-        if (r119 == null) goto L101;
-        Object r120 = r119.getSong();     // Catch: Throwable -> L99
-    L103:
-        Throwable r42 = bb3.a(r120);
-        if (r42 == null) goto L107;
-        Log.w("HubPlayer", "getSong(" + r41 + ")", r42);
-    L107:
-        if ((r120 instanceof s14) == true) goto L111;
-        r5 = r120;
-    L111:
-        return (Child) r5;
-    L101:
-        r120 = null;
-    L99:
-        th = move-exception;
-        r120 = new s14(th);
-        goto L103
-    L112:
-        fi0 r121 = (fi0) r12;
-        Uri r43 = (Uri) r6;
-        ci0 r44 = r121.o.m();
-        int r45 = r121.p;
-        boolean r122 = r121.q;
-        zj0 r46 = (zj0) r44;     // Catch: Throwable -> L129
-        r46.b(new ii0(r43, 0, -1));     // Catch: Throwable -> L129
-        byte[] r47 = new byte[1024];     // Catch: Throwable -> L129
-        int r48 = 0;
-    L115:
-        if (r3 == (-1)) goto L122;
-        if (r48 != r47.length) goto L119;
-        r47 = Arrays.copyOf(r47, r47.length * 2);     // Catch: Throwable -> L129
-    L119:
-        r3 = r46.read(r47, r48, r47.length - r48);     // Catch: Throwable -> L129
-        if (r3 == (-1)) goto L115;
-        r48 = r48 + r3;     // Catch: Throwable -> L129
-        goto L115
-    L122:
-        byte[] r49 = Arrays.copyOf(r47, r48);     // Catch: Throwable -> L129
-        Bitmap r50 = gb.s(r49, r49.length, r45);     // Catch: Throwable -> L129
-        if (r122 == true) goto L125;
-    L127:
-        r46.close();
-        return r50;
-    L125:
-        if (Build.VERSION.SDK_INT < 31) goto L127;
-        r50 = db.c(r50);     // Catch: Throwable -> L129
-    L129:
-        th = move-exception;
-        ((zj0) r44).close();
-        throw th;
-    L132:
-        fi0 r123 = (fi0) r12;
-        byte[] r51 = (byte[]) r6;
-        boolean r52 = r123.q;
-        Bitmap r124 = gb.s(r51, r51.length, r123.p);
-        if (r52 == true) goto L135;
-        return r124;
-    L135:
-        if (Build.VERSION.SDK_INT >= 31) goto L137;
-        return r124;
-    L137:
-        return db.c(r124);
+    public final Object call() throws IOException {
+        Object s14Var;
+        SubsonicResponse subsonicResponse;
+        String strString;
+        int i = this.a;
+        int i2 = 0;
+        z = false;
+        z = false;
+        z = false;
+        z = false;
+        z = false;
+        z = false;
+        z = false;
+        boolean z = false;
+        Object obj = null;
+        Object obj2 = this.c;
+        Object obj3 = this.b;
+        switch (i) {
+            case 0:
+                fi0 fi0Var = (fi0) obj3;
+                byte[] bArr = (byte[]) obj2;
+                boolean z2 = fi0Var.q;
+                Bitmap bitmapS = gb.s(bArr, bArr.length, fi0Var.p);
+                return (!z2 || Build.VERSION.SDK_INT < 31) ? bitmapS : bitmapS.asShared();
+            case 1:
+                fi0 fi0Var2 = (fi0) obj3;
+                Uri uri = (Uri) obj2;
+                ci0 ci0VarM = fi0Var2.o.m();
+                int i3 = fi0Var2.p;
+                boolean z3 = fi0Var2.q;
+                try {
+                    zj0 zj0Var = (zj0) ci0VarM;
+                    zj0Var.b(new ii0(uri, 0L, -1L));
+                    byte[] bArrCopyOf = new byte[1024];
+                    int i4 = 0;
+                    while (i2 != -1) {
+                        if (i4 == bArrCopyOf.length) {
+                            bArrCopyOf = Arrays.copyOf(bArrCopyOf, bArrCopyOf.length * 2);
+                        }
+                        i2 = zj0Var.read(bArrCopyOf, i4, bArrCopyOf.length - i4);
+                        if (i2 != -1) {
+                            i4 += i2;
+                        }
+                    }
+                    byte[] bArrCopyOf2 = Arrays.copyOf(bArrCopyOf, i4);
+                    Bitmap bitmapS2 = gb.s(bArrCopyOf2, bArrCopyOf2.length, i3);
+                    if (z3 && Build.VERSION.SDK_INT >= 31) {
+                        bitmapS2 = bitmapS2.asShared();
+                        break;
+                    }
+                    return bitmapS2;
+                } finally {
+                    ((zj0) ci0VarM).close();
+                }
+            case 2:
+                String str = (String) obj2;
+                try {
+                    ApiResponse apiResponse = (ApiResponse) ((gp3) obj3).m(str).execute().body();
+                    s14Var = (apiResponse != null && (subsonicResponse = apiResponse.getSubsonicResponse()) != null) ? subsonicResponse.getSong() : null;
+                    break;
+                } catch (Throwable th) {
+                    s14Var = new s14(th);
+                }
+                Throwable thA = bb3.a(s14Var);
+                if (thA != null) {
+                    Log.w("HubPlayer", "getSong(" + str + ")", thA);
+                }
+                return (Child) (s14Var instanceof s14 ? null : s14Var);
+            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
+                String str2 = (String) obj3;
+                f25 f25Var = (f25) obj2;
+                f25Var.getClass();
+                try {
+                    o83 o83Var = (o83) f25Var.b.getValue();
+                    nz3 nz3Var = new nz3();
+                    nz3Var.d(str2);
+                    oz3 oz3Var = new oz3(nz3Var);
+                    o83Var.getClass();
+                    k14 k14VarC = new bv3(o83Var, oz3Var).c();
+                    try {
+                        n14 n14Var = k14VarC.t;
+                        if (!k14VarC.C) {
+                            strString = null;
+                        } else if (n14Var.source().G(1048577L)) {
+                            Log.w("UpnpControlPoint", "description is over 1048576 bytes, ignoring it: ".concat(str2));
+                            strString = null;
+                        } else {
+                            strString = n14Var.string();
+                        }
+                        k14VarC.close();
+                        obj = strString;
+                    } catch (Throwable th2) {
+                        try {
+                            throw th2;
+                        } catch (Throwable th3) {
+                            q05.h(k14VarC, th2);
+                            throw th3;
+                        }
+                    }
+                } catch (Exception e) {
+                    Log.w("UpnpControlPoint", "GET failed: " + str2, e);
+                }
+                return new kd3(str2, obj);
+            default:
+                pd5 pd5Var = (pd5) obj3;
+                td5 td5Var = (td5) obj2;
+                String str3 = td5Var.c;
+                fd5 fd5Var = td5Var.i;
+                if (pd5Var instanceof nd5) {
+                    nc2 nc2Var = ((nd5) pd5Var).a;
+                    int iG = fd5Var.g(str3);
+                    yc5 yc5VarZ = td5Var.h.z();
+                    WorkDatabase_Impl workDatabase_Impl = (WorkDatabase_Impl) yc5VarZ.n;
+                    workDatabase_Impl.b();
+                    aq4 aq4Var = (aq4) yc5VarZ.o;
+                    df1 df1VarA = aq4Var.a();
+                    df1VarA.h(1, str3);
+                    try {
+                        workDatabase_Impl.c();
+                        try {
+                            df1VarA.b();
+                            workDatabase_Impl.t();
+                            workDatabase_Impl.o();
+                            aq4Var.h(df1VarA);
+                            if (iG != 0) {
+                                if (iG == 2) {
+                                    dd5 dd5Var = td5Var.a;
+                                    String str4 = td5Var.l;
+                                    if (nc2Var instanceof mc2) {
+                                        cx.f().g(ud5.a, "Worker result SUCCESS for " + str4);
+                                        if (dd5Var.d()) {
+                                            td5Var.c();
+                                        } else {
+                                            fd5Var.n(3, str3);
+                                            oh0 oh0Var = ((mc2) nc2Var).a;
+                                            oh0Var.getClass();
+                                            fd5Var.m(str3, oh0Var);
+                                            td5Var.f.getClass();
+                                            long jCurrentTimeMillis = System.currentTimeMillis();
+                                            wo0 wo0Var = td5Var.j;
+                                            ArrayList arrayListW = wo0Var.w(str3);
+                                            int size = arrayListW.size();
+                                            int i5 = 0;
+                                            while (i5 < size) {
+                                                Object obj4 = arrayListW.get(i5);
+                                                i5++;
+                                                String str5 = (String) obj4;
+                                                if (fd5Var.g(str5) == 5) {
+                                                    w24 w24VarB = w24.b(1, "SELECT COUNT(*)=0 FROM dependency WHERE work_spec_id=? AND prerequisite_id IN (SELECT id FROM workspec WHERE state!=2)");
+                                                    w24VarB.h(1, str5);
+                                                    WorkDatabase_Impl workDatabase_Impl2 = (WorkDatabase_Impl) wo0Var.n;
+                                                    workDatabase_Impl2.b();
+                                                    Cursor cursorH = xl.H(workDatabase_Impl2, w24VarB);
+                                                    try {
+                                                        Object[] objArr = cursorH.moveToFirst() && cursorH.getInt(0) != 0;
+                                                        cursorH.close();
+                                                        w24VarB.j();
+                                                        if (objArr != false) {
+                                                            cx.f().g(ud5.a, "Setting status to enqueued for ".concat(str5));
+                                                            fd5Var.n(1, str5);
+                                                            fd5Var.l(str5, jCurrentTimeMillis);
+                                                        }
+                                                    } catch (Throwable th4) {
+                                                        cursorH.close();
+                                                        w24VarB.j();
+                                                        throw th4;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    } else if (nc2Var instanceof lc2) {
+                                        cx.f().g(ud5.a, "Worker result RETRY for " + str4);
+                                        td5Var.b(-256);
+                                        z = true;
+                                    } else {
+                                        cx.f().g(ud5.a, "Worker result FAILURE for " + str4);
+                                        if (dd5Var.d()) {
+                                            td5Var.c();
+                                        } else {
+                                            td5Var.d(nc2Var);
+                                        }
+                                    }
+                                } else if (!f34.c(iG)) {
+                                    td5Var.b(-512);
+                                    z = true;
+                                }
+                            }
+                        } catch (Throwable th5) {
+                            workDatabase_Impl.o();
+                            throw th5;
+                        }
+                    } catch (Throwable th6) {
+                        aq4Var.h(df1VarA);
+                        throw th6;
+                    }
+                } else if (pd5Var instanceof md5) {
+                    td5Var.d(((md5) pd5Var).a);
+                } else {
+                    if (!(pd5Var instanceof od5)) {
+                        er1.n();
+                        return null;
+                    }
+                    int i6 = ((od5) pd5Var).a;
+                    int iG2 = fd5Var.g(str3);
+                    if (iG2 == 0 || f34.c(iG2)) {
+                        String str6 = ud5.a;
+                        cx cxVarF = cx.f();
+                        StringBuilder sbJ = xa3.j("Status for ", str3, " is ");
+                        sbJ.append(f34.q(iG2));
+                        sbJ.append(" ; not doing any work");
+                        cxVarF.b(str6, sbJ.toString());
+                    } else {
+                        String str7 = ud5.a;
+                        cx cxVarF2 = cx.f();
+                        StringBuilder sbJ2 = xa3.j("Status for ", str3, " is ");
+                        sbJ2.append(f34.q(iG2));
+                        sbJ2.append("; not doing any work and rescheduling for later execution");
+                        cxVarF2.b(str7, sbJ2.toString());
+                        fd5Var.n(1, str3);
+                        fd5Var.o(i6, str3);
+                        fd5Var.j(str3, -1L);
+                        z = true;
+                    }
+                }
+                return Boolean.valueOf(z);
+        }
     }
 }

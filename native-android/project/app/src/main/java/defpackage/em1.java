@@ -14,27 +14,27 @@ public final class em1 implements List, x32 {
     public final int o;
     public final /* synthetic */ fm1 p;
 
-    public em1(fm1 r1, int r2, int r3) {
-        this.p = r1;
-        this.n = r2;
-        this.o = r3;
+    public em1(fm1 fm1Var, int i, int i2) {
+        this.p = fm1Var;
+        this.n = i;
+        this.o = i2;
     }
 
     @Override // java.util.List
-    public final /* bridge */ /* synthetic */ void add(int r1, Object r2) {
+    public final /* bridge */ /* synthetic */ void add(int i, Object obj) {
         throw new UnsupportedOperationException("Operation is not supported for read-only collection");
     }
 
     @Override // java.util.List
-    public final boolean addAll(int r1, Collection r2) {
+    public final boolean addAll(int i, Collection collection) {
         throw new UnsupportedOperationException("Operation is not supported for read-only collection");
     }
 
-    public final /* bridge */ /* synthetic */ void addFirst(Object r1) {
+    public final /* bridge */ /* synthetic */ void addFirst(Object obj) {
         throw new UnsupportedOperationException("Operation is not supported for read-only collection");
     }
 
-    public final /* bridge */ /* synthetic */ void addLast(Object r1) {
+    public final /* bridge */ /* synthetic */ void addLast(Object obj) {
         throw new UnsupportedOperationException("Operation is not supported for read-only collection");
     }
 
@@ -44,108 +44,94 @@ public final class em1 implements List, x32 {
     }
 
     @Override // java.util.List, java.util.Collection
-    public final boolean contains(Object r3) {
-        if ((r3 instanceof cx2) == true) goto L6;
-        return false;
-    L6:
-        if (indexOf((cx2) r3) == (-1)) goto L9;
-        return true;
-    L9:
-        return false;
+    public final boolean contains(Object obj) {
+        return (obj instanceof cx2) && indexOf((cx2) obj) != -1;
     }
 
     @Override // java.util.List, java.util.Collection
-    public final boolean containsAll(Collection r2) {
-        Iterator r3 = r2.iterator();
-    L4:
-        if (r3.hasNext() == false) goto L9;
-        if (contains((cx2) r3.next()) == true) goto L4;
-        return false;
-    L9:
+    public final boolean containsAll(Collection collection) {
+        Iterator it = collection.iterator();
+        while (it.hasNext()) {
+            if (!contains((cx2) it.next())) {
+                return false;
+            }
+        }
         return true;
     }
 
     @Override // java.util.List
-    public final Object get(int r2) {
-        Object r1 = this.p.n.f(r2 + this.n);
-        r1.getClass();
-        return (cx2) r1;
+    public final Object get(int i) {
+        Object objF = this.p.n.f(i + this.n);
+        objF.getClass();
+        return (cx2) objF;
     }
 
     @Override // java.util.List
-    public final int indexOf(Object r5) {
-        if ((r5 instanceof cx2) == false) goto L18;
-        cx2 r6 = (cx2) r5;
-        int r0 = this.n;
-        int r1 = this.o;
-        if (r0 > r1) goto L14;
-        int r2 = r0;
-    L9:
-        if (h12.c(this.p.n.f(r2), r6) == true) goto L11;
-        if (r2 == r1) goto L19;
-        r2 = r2 + 1;
-        goto L9
-    L19:
-        return -1;
-    L11:
-        return r2 - r0;
-    L14:
-        return -1;
-    L18:
-        return -1;
+    public final int indexOf(Object obj) {
+        if (!(obj instanceof cx2)) {
+            return -1;
+        }
+        cx2 cx2Var = (cx2) obj;
+        int i = this.n;
+        int i2 = this.o;
+        if (i > i2) {
+            return -1;
+        }
+        int i3 = i;
+        while (!h12.c(this.p.n.f(i3), cx2Var)) {
+            if (i3 == i2) {
+                return -1;
+            }
+            i3++;
+        }
+        return i3 - i;
     }
 
     @Override // java.util.List, java.util.Collection
     public final boolean isEmpty() {
-        if (size() != 0) goto L6;
-        return true;
-    L6:
-        return false;
+        return size() == 0;
     }
 
     @Override // java.util.List, java.util.Collection, java.lang.Iterable
     public final Iterator iterator() {
-        int r1 = this.n;
-        int r2 = this.o;
-        return new dm1(this.p, r1, r1, r2);
+        int i = this.n;
+        return new dm1(this.p, i, i, this.o);
     }
 
     @Override // java.util.List
-    public final int lastIndexOf(Object r4) {
-        if ((r4 instanceof cx2) == false) goto L17;
-        cx2 r5 = (cx2) r4;
-        int r0 = this.o;
-        int r1 = this.n;
-        if (r1 <= r0) goto L8;
-        return -1;
-    L8:
-        if (h12.c(this.p.n.f(r0), r5) == true) goto L10;
-        if (r0 == r1) goto L18;
-        r0 = r0 - 1;
-        goto L8
-    L18:
-        return -1;
-    L10:
-        return r0 - r1;
-    L17:
-        return -1;
+    public final int lastIndexOf(Object obj) {
+        if (!(obj instanceof cx2)) {
+            return -1;
+        }
+        cx2 cx2Var = (cx2) obj;
+        int i = this.o;
+        int i2 = this.n;
+        if (i2 > i) {
+            return -1;
+        }
+        while (!h12.c(this.p.n.f(i), cx2Var)) {
+            if (i == i2) {
+                return -1;
+            }
+            i--;
+        }
+        return i - i2;
     }
 
     @Override // java.util.List
-    public final ListIterator listIterator(int r4) {
-        int r1 = this.n;
-        int r2 = this.o;
-        fm1 r3 = this.p;
-        return new dm1(r3, r4 + r1, r1, r2);
+    public final ListIterator listIterator(int i) {
+        int i2 = this.n;
+        int i3 = this.o;
+        return new dm1(this.p, i + i2, i2, i3);
     }
 
     @Override // java.util.List
-    public final /* bridge */ /* synthetic */ Object remove(int r1) {
+    public final /* bridge */ /* synthetic */ Object remove(int i) {
         throw new UnsupportedOperationException("Operation is not supported for read-only collection");
     }
 
     @Override // java.util.List, java.util.Collection
-    public final boolean removeAll(Collection r1) {
+    public final boolean removeAll(Collection collection) {
         throw new UnsupportedOperationException("Operation is not supported for read-only collection");
     }
 
@@ -158,17 +144,17 @@ public final class em1 implements List, x32 {
     }
 
     @Override // java.util.List
-    public final void replaceAll(UnaryOperator r1) {
+    public final void replaceAll(UnaryOperator unaryOperator) {
         throw new UnsupportedOperationException("Operation is not supported for read-only collection");
     }
 
     @Override // java.util.List, java.util.Collection
-    public final boolean retainAll(Collection r1) {
+    public final boolean retainAll(Collection collection) {
         throw new UnsupportedOperationException("Operation is not supported for read-only collection");
     }
 
     @Override // java.util.List
-    public final /* bridge */ /* synthetic */ Object set(int r1, Object r2) {
+    public final /* bridge */ /* synthetic */ Object set(int i, Object obj) {
         throw new UnsupportedOperationException("Operation is not supported for read-only collection");
     }
 
@@ -178,15 +164,14 @@ public final class em1 implements List, x32 {
     }
 
     @Override // java.util.List
-    public final void sort(Comparator r1) {
+    public final void sort(Comparator comparator) {
         throw new UnsupportedOperationException("Operation is not supported for read-only collection");
     }
 
     @Override // java.util.List
-    public final List subList(int r3, int r4) {
-        int r1 = this.n;
-        fm1 r2 = this.p;
-        return new em1(r2, r3 + r1, r1 + r4);
+    public final List subList(int i, int i2) {
+        int i3 = this.n;
+        return new em1(this.p, i + i3, i3 + i2);
     }
 
     @Override // java.util.List, java.util.Collection
@@ -195,29 +180,28 @@ public final class em1 implements List, x32 {
     }
 
     @Override // java.util.List, java.util.Collection
-    public final Object[] toArray(Object[] r1) {
-        return zz1.J(this, r1);
+    public final Object[] toArray(Object[] objArr) {
+        return zz1.J(this, objArr);
     }
 
     @Override // java.util.List, java.util.Collection
-    public final /* bridge */ /* synthetic */ boolean add(Object r1) {
+    public final /* bridge */ /* synthetic */ boolean add(Object obj) {
         throw new UnsupportedOperationException("Operation is not supported for read-only collection");
     }
 
     @Override // java.util.List, java.util.Collection
-    public final boolean addAll(Collection r1) {
+    public final boolean addAll(Collection collection) {
         throw new UnsupportedOperationException("Operation is not supported for read-only collection");
     }
 
     @Override // java.util.List, java.util.Collection
-    public final boolean remove(Object r1) {
+    public final boolean remove(Object obj) {
         throw new UnsupportedOperationException("Operation is not supported for read-only collection");
     }
 
     @Override // java.util.List
     public final ListIterator listIterator() {
-        int r1 = this.n;
-        int r2 = this.o;
-        return new dm1(this.p, r1, r1, r2);
+        int i = this.n;
+        return new dm1(this.p, i, i, this.o);
     }
 }

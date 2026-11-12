@@ -17,7 +17,6 @@ import android.util.Log;
 import android.util.SparseBooleanArray;
 import android.view.KeyEvent;
 import android.view.ViewConfiguration;
-import androidx.media3.common.PlaybackException;
 import androidx.media3.exoplayer.ExoPlayer;
 import androidx.media3.session.MediaLibraryService;
 import com.eddyizm.tempus.homemusic.a;
@@ -29,13 +28,15 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
+import java.util.concurrent.CancellationException;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class tn2 {
-    public static final ab4 H = null;
-    public static final go4 I = null;
+    public static final ab4 H = new ab4(1);
+    public static final go4 I = au0.L(new di0(4));
     public final yw1 A;
     public final Bundle B;
     public final kn2 C;
@@ -43,7 +44,7 @@ public final class tn2 {
     public final nl1 E;
     public final nl1 F;
     public final int G;
-    public final Object a;
+    public final Object a = new Object();
     public final Uri b;
     public final wr2 c;
     public final cj2 d;
@@ -70,1148 +71,1016 @@ public final class tn2 {
     public boolean y;
     public final yw1 z;
 
-    static {
-        H = new ab4(1);
-        I = au0.L(new di0(4));
-    }
-
-    public tn2(kn2 r22, MediaService r23, ExoPlayer r24, PendingIntent r25, yw1 r26, yw1 r27, yw1 r28, pq r29, Bundle r30, Bundle r31, x7 r32) {
-        this.a = new Object();
+    public tn2(kn2 kn2Var, MediaService mediaService, ExoPlayer exoPlayer, PendingIntent pendingIntent, yw1 yw1Var, yw1 yw1Var2, yw1 yw1Var3, pq pqVar, Bundle bundle, Bundle bundle2, x7 x7Var) {
         l93.K("MediaSessionImpl", "Init " + Integer.toHexString(System.identityHashCode(this)) + " [AndroidXMedia3/1.9.2] [" + f35.a + "]");
-        this.k = r22;
-        this.f = r23;
+        this.k = kn2Var;
+        this.f = mediaService;
         this.i = "";
-        this.t = r25;
-        this.z = r26;
-        this.A = r27;
-        this.q = r28;
-        this.e = r29;
-        this.B = r31;
-        this.m = r32;
+        this.t = pendingIntent;
+        this.z = yw1Var;
+        this.A = yw1Var2;
+        this.q = yw1Var3;
+        this.e = pqVar;
+        this.B = bundle2;
+        this.m = x7Var;
         this.p = true;
-        kt2 r14 = new kt2(this);
-        this.g = r14;
+        kt2 kt2Var = new kt2(this);
+        this.g = kt2Var;
         this.o = new Handler(Looper.getMainLooper());
-        Looper r2 = ((i41) r24).u;
-        Handler r3 = new Handler(r2);
-        this.l = r3;
+        Looper looper = ((i41) exoPlayer).u;
+        Handler handler = new Handler(looper);
+        this.l = handler;
         this.r = lk3.H;
-        this.c = new wr2(this, r2);
-        this.d = new cj2(this, r2);
-        Uri r4 = new Uri.Builder().scheme(tn2.class.getName()).appendPath("").appendPath(String.valueOf(SystemClock.elapsedRealtime())).build();
-        this.b = r4;
-        ls2 r0 = new ls2(this, r4, r3, r30, r26, r27, dr2.e, dr2.f, r31);
-        this.h = r0;
-        this.j = new cb4(Process.myUid(), 1009002300, 8, r23.getPackageName(), r14, r30, ((kr2) r0.m.o).c.o);
-        al3 r1 = new al3(r24);
-        this.s = r1;
-        f35.W(r3, new ws1(28, this, r1));
+        this.c = new wr2(this, looper);
+        this.d = new cj2(this, looper);
+        Uri uriBuild = new Uri.Builder().scheme(tn2.class.getName()).appendPath("").appendPath(String.valueOf(SystemClock.elapsedRealtime())).build();
+        this.b = uriBuild;
+        ls2 ls2Var = new ls2(this, uriBuild, handler, bundle, yw1Var, yw1Var2, dr2.e, dr2.f, bundle2);
+        this.h = ls2Var;
+        this.j = new cb4(Process.myUid(), 1009002300, 8, mediaService.getPackageName(), kt2Var, bundle, ((kr2) ls2Var.m.o).c.o);
+        al3 al3Var = new al3(exoPlayer);
+        this.s = al3Var;
+        f35.W(handler, new ws1(28, this, al3Var));
         this.n = new sr2(this, 2);
-        f35.W(r3, new sr2(this, 3));
-        this.C = r22;
-        this.D = r29;
+        f35.W(handler, new sr2(this, 3));
+        this.C = kn2Var;
+        this.D = pqVar;
         this.G = 2;
         this.E = new nl1();
         this.F = new nl1();
     }
 
-    public static Object E(Future r2) {
-        rr2.w(r2.isDone());
-        return r2.get();
-    L5:
-        e = move-exception;
-        l93.r0("MediaSessionImpl", "Library operation failed", e);
-        return null;
+    public static Object E(Future future) {
+        rr2.w(future.isDone());
+        try {
+            return future.get();
+        } catch (InterruptedException | CancellationException | ExecutionException e) {
+            l93.r0("MediaSessionImpl", "Library operation failed", e);
+            return null;
+        }
     }
 
-    public static void G(int r2, m92 r3) {
-        if (r3.a != 0) goto L9;
-        yw1 r4 = (yw1) r3.c;
-        r4.getClass();
-        if (r4.size() <= r2) goto L10;
-        nz2.d(r4.size(), r2, ", pageSize=", "Invalid size=");
-        return;
-    L10:
-        return;
+    public static void G(int i, m92 m92Var) {
+        if (m92Var.a == 0) {
+            yw1 yw1Var = (yw1) m92Var.c;
+            yw1Var.getClass();
+            if (yw1Var.size() <= i) {
+                return;
+            }
+            nz2.d(yw1Var.size(), i, ", pageSize=", "Invalid size=");
+        }
     }
 
-    public static void a(tn2 r8) {
-        Object r1 = r8.a;
-        monitor-enter(r1);
-    L8:
-        th = move-exception;
-        throw th;
-    L5:
-        if (r8.x == false) goto L10;
-        monitor-exit(r1);     // Catch: Throwable -> L8
-        return;
-    L10:
-        monitor-exit(r1);     // Catch: Throwable -> L8
-        za4 r3 = r8.s.X0();
-        if (r8.c.hasMessages(1) == false) goto L14;
-    L23:
-        r8.C();
-        return;
-    L14:
-        if (ju2.a(r3, r8.r.c) == false) goto L23;
-        na4 r0 = r8.g.f;
-        yw1 r2 = r0.u();
-        int r4 = 0;
-    L17:
-        if (r4 >= r2.size()) goto L27;
-        fr2 r5 = (fr2) r2.get(r4);
-        r0.A(r5);
-        r8.e(r5, new tr2(r3, r0.H(r5, 16), r0.H(r5, 17), r5));
-        r4 = r4 + 1;
-        goto L17
-    L27:
-        r8.h.i.B(0, r3, true, true, 0);     // Catch: RemoteException -> L21
-    L21:
-        e = move-exception;
-        l93.G("MediaSessionImpl", "Exception in using media1 API", e);
-        goto L23
+    public static void a(tn2 tn2Var) {
+        synchronized (tn2Var.a) {
+            try {
+                if (tn2Var.x) {
+                    return;
+                }
+                za4 za4VarX0 = tn2Var.s.X0();
+                if (!tn2Var.c.hasMessages(1) && ju2.a(za4VarX0, tn2Var.r.c)) {
+                    na4 na4Var = tn2Var.g.f;
+                    yw1 yw1VarU = na4Var.u();
+                    for (int i = 0; i < yw1VarU.size(); i++) {
+                        fr2 fr2Var = (fr2) yw1VarU.get(i);
+                        na4Var.A(fr2Var);
+                        tn2Var.e(fr2Var, new tr2(za4VarX0, na4Var.H(fr2Var, 16), na4Var.H(fr2Var, 17), fr2Var));
+                    }
+                    try {
+                        tn2Var.h.i.B(0, za4VarX0, true, true, 0);
+                    } catch (RemoteException e) {
+                        l93.G("MediaSessionImpl", "Exception in using media1 API", e);
+                    }
+                }
+                tn2Var.C();
+            } catch (Throwable th) {
+                throw th;
+            }
+        }
     }
 
-    public static void b(tn2 r0, Runnable r1) {
-        f35.W(r0.l, r1);
+    public static void b(tn2 tn2Var, Runnable runnable) {
+        f35.W(tn2Var.l, runnable);
     }
 
-    public static boolean m(fr2 r1) {
-        if (r1 != null) goto L4;
-        return false;
-    L4:
-        if (Objects.equals(r1.a.a.a, "com.android.systemui") == false) goto L9;
-        return true;
-    L9:
-        return false;
+    public static boolean m(fr2 fr2Var) {
+        return fr2Var != null && Objects.equals(fr2Var.a.a.a, "com.android.systemui");
     }
 
     public final void A() {
-        StringBuilder r1 = new StringBuilder("Release ");
-        r1.append(Integer.toHexString(System.identityHashCode(this)));
-        r1.append(" [AndroidXMedia3/1.9.2] [");
-        r1.append(f35.a);
-        r1.append("] [");
-        HashSet r2 = hn2.a;
-        monitor-enter(hn2.class);
-        String r3 = hn2.b;     // Catch: Throwable -> L61
-        monitor-exit(hn2.class);
-        r1.append(r3);
-        r1.append("]");
-        l93.K("MediaSessionImpl", r1.toString());
-        Object r0 = this.a;
-        monitor-enter(r0);
-    L12:
-        th = move-exception;
-        throw th;
-    L9:
-        if (this.x == false) goto L14;
-        monitor-exit(r0);     // Catch: Throwable -> L12
-        return;
-    L14:
-        this.x = true;     // Catch: Throwable -> L12
-        monitor-exit(r0);     // Catch: Throwable -> L12
-        cj2 r4 = this.d;
-        qo2 r5 = (qo2) r4.b;
-        if (r5 == null) goto L19;
-        r4.removeCallbacks(r5);
-        r4.b = null;
-    L19:
-        this.l.removeCallbacksAndMessages(null);
-        int r6 = 0;
-        f35.W(this.l, new sr2(this, r6));     // Catch: Exception -> L22
-    L24:
-        ls2 r7 = this.h;
-        ComponentName r8 = r7.o;
-        tn2 r9 = r7.g;
-        qr2 r10 = r7.m;
-        int r11 = Build.VERSION.SDK_INT;
-        if (r11 >= 31) goto L29;
-        if (r8 != null) goto L28;
-        ((kr2) r10.o).a.setMediaButtonReceiver(null);
-        goto L29
-    L28:
-        Intent r12 = new Intent("android.intent.action.MEDIA_BUTTON", r9.b);
-        r12.setComponent(r8);
-        PendingIntent r13 = PendingIntent.getBroadcast(r9.f, 0, r12, ls2.A);
-        ((kr2) r10.o).a.setMediaButtonReceiver(r13);
-    L29:
-        v9 r14 = r7.n;
-        if (r14 == null) goto L32;
-        r9.f.unregisterReceiver(r14);
-    L32:
-        w9 r15 = r7.l;
-        if (r15 != null) goto L35;
-    L38:
-        kr2 r16 = (kr2) r10.o;
-        MediaSession r17 = r16.a;
-        r16.f.kill();
-        if (r11 == 27) goto L64;
-    L46:
-        r17.setCallback(null);
-        r16.b.e.clear();
-        r17.release();
-        kt2 r18 = this.g;
-        Set r19 = r18.g;
-        na4 r20 = r18.f;
-        yw1 r21 = r20.u();
-        int r22 = r21.size();
-    L47:
-        if (r6 >= r22) goto L51;
-        Object r23 = r21.get(r6);
-        r6 = r6 + 1;
-        fr2 r24 = (fr2) r23;
-        r20.N(r24);
-        er2 r25 = r24.d;
-        if (r25 == null) goto L47;
-        r25.c();
-        goto L47
-    L51:
-        Iterator r26 = r19.iterator();
-    L53:
-        if (r26.hasNext() == false) goto L57;
-        er2 r27 = ((fr2) r26.next()).d;
-        if (r27 == null) goto L53;
-        r27.c();
-        goto L53
-    L57:
-        r19.clear();
-        r18.e.clear();
-        return;
-    L64:
-        Field r28 = r17.getClass().getDeclaredField("mCallback");     // Catch: Exception -> L44
-        r28.setAccessible(true);     // Catch: Exception -> L44
-        Handler r29 = (Handler) r28.get(r17);     // Catch: Exception -> L44
-        if (r29 == null) goto L46;
-        r29.removeCallbacksAndMessages(null);     // Catch: Exception -> L44
-    L44:
-        e = move-exception;
-        l93.r0("MediaSessionCompat", "Exception happened while accessing MediaSession.mCallback.", e);
-        goto L46
-    L35:
-        if (r15.f.getAndSet(true) == true) goto L38;
-        r15.c.execute(new u9(r15, 0));
-    L22:
-        e = move-exception;
-        l93.r0("MediaSessionImpl", "Exception thrown while closing", e);
-    L61:
-        th = move-exception;
-        throw th;
+        String str;
+        StringBuilder sb = new StringBuilder("Release ");
+        sb.append(Integer.toHexString(System.identityHashCode(this)));
+        sb.append(" [AndroidXMedia3/1.9.2] [");
+        sb.append(f35.a);
+        sb.append("] [");
+        HashSet hashSet = hn2.a;
+        synchronized (hn2.class) {
+            str = hn2.b;
+        }
+        sb.append(str);
+        sb.append("]");
+        l93.K("MediaSessionImpl", sb.toString());
+        synchronized (this.a) {
+            try {
+                if (this.x) {
+                    return;
+                }
+                this.x = true;
+                cj2 cj2Var = this.d;
+                qo2 qo2Var = (qo2) cj2Var.b;
+                if (qo2Var != null) {
+                    cj2Var.removeCallbacks(qo2Var);
+                    cj2Var.b = null;
+                }
+                this.l.removeCallbacksAndMessages(null);
+                int i = 0;
+                try {
+                    f35.W(this.l, new sr2(this, i));
+                } catch (Exception e) {
+                    l93.r0("MediaSessionImpl", "Exception thrown while closing", e);
+                }
+                ls2 ls2Var = this.h;
+                ComponentName componentName = ls2Var.o;
+                tn2 tn2Var = ls2Var.g;
+                qr2 qr2Var = ls2Var.m;
+                int i2 = Build.VERSION.SDK_INT;
+                if (i2 < 31) {
+                    if (componentName == null) {
+                        ((kr2) qr2Var.o).a.setMediaButtonReceiver(null);
+                    } else {
+                        Intent intent = new Intent("android.intent.action.MEDIA_BUTTON", tn2Var.b);
+                        intent.setComponent(componentName);
+                        ((kr2) qr2Var.o).a.setMediaButtonReceiver(PendingIntent.getBroadcast(tn2Var.f, 0, intent, ls2.A));
+                    }
+                }
+                v9 v9Var = ls2Var.n;
+                if (v9Var != null) {
+                    tn2Var.f.unregisterReceiver(v9Var);
+                }
+                w9 w9Var = ls2Var.l;
+                if (w9Var != null && !w9Var.f.getAndSet(true)) {
+                    w9Var.c.execute(new u9(w9Var, 0));
+                }
+                kr2 kr2Var = (kr2) qr2Var.o;
+                MediaSession mediaSession = kr2Var.a;
+                kr2Var.f.kill();
+                if (i2 == 27) {
+                    try {
+                        Field declaredField = mediaSession.getClass().getDeclaredField("mCallback");
+                        declaredField.setAccessible(true);
+                        Handler handler = (Handler) declaredField.get(mediaSession);
+                        if (handler != null) {
+                            handler.removeCallbacksAndMessages(null);
+                        }
+                    } catch (Exception e2) {
+                        l93.r0("MediaSessionCompat", "Exception happened while accessing MediaSession.mCallback.", e2);
+                    }
+                }
+                mediaSession.setCallback(null);
+                kr2Var.b.e.clear();
+                mediaSession.release();
+                kt2 kt2Var = this.g;
+                Set set = kt2Var.g;
+                na4 na4Var = kt2Var.f;
+                yw1 yw1VarU = na4Var.u();
+                int size = yw1VarU.size();
+                while (i < size) {
+                    Object obj = yw1VarU.get(i);
+                    i++;
+                    fr2 fr2Var = (fr2) obj;
+                    na4Var.N(fr2Var);
+                    er2 er2Var = fr2Var.d;
+                    if (er2Var != null) {
+                        er2Var.c();
+                    }
+                }
+                Iterator it = set.iterator();
+                while (it.hasNext()) {
+                    er2 er2Var2 = ((fr2) it.next()).d;
+                    if (er2Var2 != null) {
+                        er2Var2.c();
+                    }
+                }
+                set.clear();
+                kt2Var.e.clear();
+            } catch (Throwable th) {
+                throw th;
+            }
+        }
     }
 
-    public final fr2 B(fr2 r2) {
-        if (this.y == true) goto L5;
-    L8:
-        return r2;
-    L5:
-        if (m(r2) == false) goto L8;
-        fr2 r1 = g();
-        r1.getClass();
-        return r1;
+    public final fr2 B(fr2 fr2Var) {
+        if (!this.y || !m(fr2Var)) {
+            return fr2Var;
+        }
+        fr2 fr2VarG = g();
+        fr2VarG.getClass();
+        return fr2VarG;
     }
 
     public final void C() {
         this.l.removeCallbacks(this.n);
     }
 
-    public final void D(al3 r44, al3 r45) {
-        ls2 r4 = this.h;
-        this.s = r45;
-        if (r44 == null) goto L5;
-        xr2 r0 = this.u;
-        r0.getClass();
-        r44.r0(r0);
-    L5:
-        xr2 r1 = new xr2(this, r45);
-        r45.v(r1);
-        this.u = r1;
-        int r5 = 0;
-        r4.i.p(0, r44, r45);     // Catch: RemoteException -> L8
-    L10:
-        if (r44 != null) goto L12;
-        ((kr2) r4.m.o).a.setActive(true);
-    L12:
-        PlaybackException r7 = r45.U();
-        za4 r9 = r45.X0();
-        pi3 r10 = r45.W0();
-        pi3 r11 = r45.W0();
-        qh3 r13 = r45.i();
-        int r14 = r45.h();
-        boolean r15 = r45.D0();
-        s55 r16 = r45.z();
-        cu4 r17 = r45.Z0();
-        if (r45.S0(18) == false) goto L16;
-        do2 r2 = r45.g0();
-    L15:
-        do2 r19 = r2;
-        if (r45.S0(22) == false) goto L21;
-        float r3 = r45.B();
-    L20:
-        float r20 = r3;
-        if (r45.S0(21) == false) goto L26;
-        il r6 = r45.D();
-    L25:
-        il r22 = r6;
-        if (r45.S0(28) == false) goto L31;
-        jg0 r8 = r45.i0();
-    L30:
-        jg0 r24 = r8;
-        hp0 r25 = r45.F();
-        if (r45.S0(23) == false) goto L35;
-        r5 = r45.j();
-    L35:
-        int r26 = r5;
-        boolean r27 = r45.b1();
-        boolean r28 = r45.q();
-        int r30 = r45.v0();
-        int r31 = r45.g();
-        boolean r32 = r45.h0();
-        boolean r33 = r45.f();
-        do2 r34 = r45.a1();
-        long r35 = r45.O0();
-        long r37 = r45.X();
-        long r39 = r45.u();
-        if (r45.S0(30) == false) goto L39;
-        jw4 r12 = r45.e0();
-    L38:
-        jw4 r41 = r12;
-        this.r = new lk3(r7, 0, r9, r10, r11, 0, r13, r14, r15, r16, r17, 0, r19, r20, 1.0f, r22, 0, r24, r25, r26, r27, r28, 1, r30, r31, r32, r33, r34, r35, r37, r39, r41, r45.E0());
-        h(r45.o());
-        return;
-    L39:
-        r12 = jw4.b;
-        goto L38
-    L31:
-        r8 = jg0.d;
-        goto L30
-    L26:
-        r6 = il.i;
-        goto L25
-    L21:
-        r3 = 1.0f;
-        goto L20
-    L16:
-        r2 = do2.K;
-    L8:
-        e = move-exception;
-        l93.G("MediaSessionImpl", "Exception in using media1 API", e);
-        goto L10
+    public final void D(al3 al3Var, al3 al3Var2) {
+        ls2 ls2Var = this.h;
+        this.s = al3Var2;
+        if (al3Var != null) {
+            xr2 xr2Var = this.u;
+            xr2Var.getClass();
+            al3Var.r0(xr2Var);
+        }
+        xr2 xr2Var2 = new xr2(this, al3Var2);
+        al3Var2.v(xr2Var2);
+        this.u = xr2Var2;
+        try {
+            ls2Var.i.p(0, al3Var, al3Var2);
+        } catch (RemoteException e) {
+            l93.G("MediaSessionImpl", "Exception in using media1 API", e);
+        }
+        if (al3Var == null) {
+            ((kr2) ls2Var.m.o).a.setActive(true);
+        }
+        this.r = new lk3(al3Var2.U(), 0, al3Var2.X0(), al3Var2.W0(), al3Var2.W0(), 0, al3Var2.i(), al3Var2.h(), al3Var2.D0(), al3Var2.z(), al3Var2.Z0(), 0, al3Var2.S0(18) ? al3Var2.g0() : do2.K, al3Var2.S0(22) ? al3Var2.B() : 1.0f, 1.0f, al3Var2.S0(21) ? al3Var2.D() : il.i, 0, al3Var2.S0(28) ? al3Var2.i0() : jg0.d, al3Var2.F(), al3Var2.S0(23) ? al3Var2.j() : 0, al3Var2.b1(), al3Var2.q(), 1, al3Var2.v0(), al3Var2.g(), al3Var2.h0(), al3Var2.f(), al3Var2.a1(), al3Var2.O0(), al3Var2.X(), al3Var2.u(), al3Var2.S0(30) ? al3Var2.e0() : jw4.b, al3Var2.E0());
+        h(al3Var2.o());
     }
 
     public final void F() {
-        if (Looper.myLooper() != this.l.getLooper()) goto L5;
-        return;
-    L5:
+        if (Looper.myLooper() == this.l.getLooper()) {
+            return;
+        }
         kf2.o("Player callback method is called from a wrong thread. See javadoc of MediaSession for details.");
     }
 
-    public final boolean c(KeyEvent r8, boolean r9, boolean r10) {
-        fr2 r4 = this.k.a.g();
-        r4.getClass();
-        int r11 = r8.getKeyCode();
-        if (r11 == 85) goto L5;
-        if (r11 == 79) goto L5;
-    L7:
-        int r12 = 1;
-        if (r11 == 79) goto L29;
-        if (r11 != 126) goto L12;
-        y90 r13 = new y90(this, r4, 9);
-    L32:
-        b41 r1 = new b41(this, r10, r4, r13, 3);
-        f35.W(this.l, r1);
+    /* JADX WARN: Code duplicated, block: B:24:0x0049  */
+    /* JADX WARN: Code duplicated, block: B:25:0x0050  */
+    /* JADX WARN: Code duplicated, block: B:28:0x0065  */
+    /* JADX WARN: Code duplicated, block: B:30:0x006d  */
+    /* JADX WARN: Code duplicated, block: B:31:0x0074  */
+    public final boolean c(KeyEvent keyEvent, boolean z, boolean z2) {
+        y90 y90Var;
+        fr2 fr2VarG = this.k.a.g();
+        fr2VarG.getClass();
+        int keyCode = keyEvent.getKeyCode();
+        if ((keyCode == 85 || keyCode == 79) && z) {
+            keyCode = 87;
+        }
+        int i = 1;
+        if (keyCode == 79) {
+            if (!this.s.q()) {
+                y90Var = new y90(this, fr2VarG, 7);
+            } else {
+                y90Var = new y90(this, fr2VarG, 8);
+            }
+        } else if (keyCode == 126) {
+            y90Var = new y90(this, fr2VarG, 9);
+        } else if (keyCode == 127) {
+            y90Var = new y90(this, fr2VarG, i);
+        } else if (keyCode == 272) {
+            y90Var = new y90(this, fr2VarG, 2);
+        } else if (keyCode != 273) {
+            switch (keyCode) {
+                case 85:
+                    if (!this.s.q()) {
+                        y90Var = new y90(this, fr2VarG, 8);
+                    } else {
+                        y90Var = new y90(this, fr2VarG, 7);
+                    }
+                    break;
+                case 86:
+                    y90Var = new y90(this, fr2VarG, 6);
+                    break;
+                case 87:
+                    y90Var = new y90(this, fr2VarG, 2);
+                    break;
+                case 88:
+                    y90Var = new y90(this, fr2VarG, 3);
+                    break;
+                case 89:
+                    y90Var = new y90(this, fr2VarG, 5);
+                    break;
+                case 90:
+                    y90Var = new y90(this, fr2VarG, 4);
+                    break;
+                default:
+                    return false;
+            }
+        } else {
+            y90Var = new y90(this, fr2VarG, 3);
+        }
+        f35.W(this.l, new b41(this, z2, fr2VarG, y90Var, 3));
         return true;
-    L12:
-        if (r11 != 127) goto L14;
-        r13 = new y90(this, r4, r12);
-        goto L32
-    L14:
-        if (r11 != 272) goto L16;
-    L25:
-        r13 = new y90(this, r4, 2);
-        goto L32
-    L16:
-        if (r11 == 273) goto L24;
-        switch(r11) {
-            case 85: goto L29;
-            case 86: goto L23;
-            case 87: goto L25;
-            case 88: goto L24;
-            case 89: goto L22;
-            case 90: goto L20;
-            default: goto L18;
-        };
-    L18:
-        return false;
-    L20:
-        r13 = new y90(this, r4, 4);
-        goto L32
-    L22:
-        r13 = new y90(this, r4, 5);
-        goto L32
-    L23:
-        r13 = new y90(this, r4, 6);
-    L24:
-        r13 = new y90(this, r4, 3);
-    L29:
-        if (this.s.q() == false) goto L31;
-        r13 = new y90(this, r4, 7);
-        goto L32
-    L31:
-        r13 = new y90(this, r4, 8);
-    L5:
-        if (r9 == false) goto L7;
-        r11 = 87;
-        goto L7
     }
 
-    public final ic2 d(fr2 r5, yr2 r6) {
-        kt2 r0 = this.g;
-        yk r2 = r0.f.C(r5);     // Catch: RemoteException -> L6 DeadObjectException -> L19
-        if (r2 == null) goto L9;
-        ea4 r4 = r2.j(H);     // Catch: RemoteException -> L6 DeadObjectException -> L19
-        int r3 = r4.u;     // Catch: RemoteException -> L6 DeadObjectException -> L19
-        ic2 r7 = r4;
-    L13:
-        er2 r8 = r5.d;     // Catch: RemoteException -> L6 DeadObjectException -> L19
-        if (r8 == null) goto L16;
-        r6.f(r8, r3);     // Catch: RemoteException -> L6 DeadObjectException -> L19
-    L16:
-        return r7;
-    L9:
-        if (j(r5) == false) goto L11;
-        r3 = 0;
-        r7 = new mw1(new ab4(0));     // Catch: RemoteException -> L6 DeadObjectException -> L19
-        goto L13
-    L11:
-        return new mw1(new ab4(-100));
-    L19:
-        r0.f.N(r5);
-        return new mw1(new ab4(-100));
-    L6:
-        e = move-exception;
-        l93.r0("MediaSessionImpl", "Exception in " + r5, e);
-        return new mw1(new ab4(-1));
+    public final ic2 d(fr2 fr2Var, yr2 yr2Var) {
+        int i;
+        ic2 mw1Var;
+        kt2 kt2Var = this.g;
+        try {
+            yk ykVarC = kt2Var.f.C(fr2Var);
+            if (ykVarC != null) {
+                ea4 ea4VarJ = ykVarC.j(H);
+                i = ea4VarJ.u;
+                mw1Var = ea4VarJ;
+            } else {
+                if (!j(fr2Var)) {
+                    return new mw1(new ab4(-100));
+                }
+                i = 0;
+                mw1Var = new mw1(new ab4(0));
+            }
+            er2 er2Var = fr2Var.d;
+            if (er2Var != null) {
+                yr2Var.f(er2Var, i);
+            }
+            return mw1Var;
+        } catch (DeadObjectException unused) {
+            kt2Var.f.N(fr2Var);
+            return new mw1(new ab4(-100));
+        } catch (RemoteException e) {
+            l93.r0("MediaSessionImpl", "Exception in " + fr2Var, e);
+            return new mw1(new ab4(-1));
+        }
     }
 
-    public final void e(fr2 r3, yr2 r4) {
-        kt2 r0 = this.g;
-        yk r1 = r0.f.C(r3);     // Catch: RemoteException -> L6 DeadObjectException -> L17
-        if (r1 == null) goto L9;
-        int r2 = r1.s();     // Catch: RemoteException -> L6 DeadObjectException -> L17
-    L12:
-        er2 r5 = r3.d;     // Catch: RemoteException -> L6 DeadObjectException -> L17
-        if (r5 == null) goto L22;
-        r4.f(r5, r2);     // Catch: RemoteException -> L6 DeadObjectException -> L17
-        return;
-    L22:
-        return;
-    L9:
-        if (j(r3) == false) goto L21;
-        r2 = 0;
-        goto L12
-    L21:
-        return;
-    L17:
-        r0.f.N(r3);
-        return;
-    L6:
-        e = move-exception;
-        l93.r0("MediaSessionImpl", "Exception in " + r3, e);
+    public final void e(fr2 fr2Var, yr2 yr2Var) {
+        int iS;
+        kt2 kt2Var = this.g;
+        try {
+            yk ykVarC = kt2Var.f.C(fr2Var);
+            if (ykVarC != null) {
+                iS = ykVarC.s();
+            } else if (!j(fr2Var)) {
+                return;
+            } else {
+                iS = 0;
+            }
+            er2 er2Var = fr2Var.d;
+            if (er2Var != null) {
+                yr2Var.f(er2Var, iS);
+            }
+        } catch (DeadObjectException unused) {
+            kt2Var.f.N(fr2Var);
+        } catch (RemoteException e) {
+            l93.r0("MediaSessionImpl", "Exception in " + fr2Var, e);
+        }
     }
 
-    public final void f(yr2 r7) {
-        yw1 r2 = this.g.f.u();
-        int r4 = 0;
-    L4:
-        if (r4 >= r2.size()) goto L23;
-        e((fr2) r2.get(r4), r7);
-        r4 = r4 + 1;
-        goto L4
-    L23:
-        r7.f(this.h.i, 0);     // Catch: RemoteException -> L8
-    L10:
-        Object r3 = this.a;
-        monitor-enter(r3);
-        pn2 r6 = this.w;     // Catch: Throwable -> L20
-        monitor-exit(r3);     // Catch: Throwable -> L20
-        if (r6 == null) goto L29;
-        r7.f(r6.y, 0);     // Catch: RemoteException -> L17
-        return;
-    L17:
-        e = move-exception;
-        l93.G("MediaSessionImpl", "Exception in using media1 API", e);
-        return;
-    L29:
-        return;
-    L20:
-        th = move-exception;
-        throw th;
-    L8:
-        e = move-exception;
-        l93.G("MediaSessionImpl", "Exception in using media1 API", e);
-        goto L10
+    public final void f(yr2 yr2Var) {
+        pn2 pn2Var;
+        yw1 yw1VarU = this.g.f.u();
+        for (int i = 0; i < yw1VarU.size(); i++) {
+            e((fr2) yw1VarU.get(i), yr2Var);
+        }
+        try {
+            yr2Var.f(this.h.i, 0);
+        } catch (RemoteException e) {
+            l93.G("MediaSessionImpl", "Exception in using media1 API", e);
+        }
+        synchronized (this.a) {
+            pn2Var = this.w;
+        }
+        if (pn2Var != null) {
+            try {
+                yr2Var.f(pn2Var.y, 0);
+            } catch (RemoteException e2) {
+                l93.G("MediaSessionImpl", "Exception in using media1 API", e2);
+            }
+        }
     }
 
     public final fr2 g() {
-        yw1 r0 = this.g.f.u();
-        int r1 = 0;
-    L4:
-        if (r1 >= r0.size()) goto L9;
-        fr2 r2 = (fr2) r0.get(r1);
-        if (k(r2) == true) goto L7;
-        r1 = r1 + 1;
-        goto L4
-    L7:
-        return r2;
-    L9:
+        yw1 yw1VarU = this.g.f.u();
+        for (int i = 0; i < yw1VarU.size(); i++) {
+            fr2 fr2Var = (fr2) yw1VarU.get(i);
+            if (k(fr2Var)) {
+                return fr2Var;
+            }
+        }
         return null;
     }
 
-    public final void h(mi3 r3) {
+    public final void h(mi3 mi3Var) {
         this.c.a(false, false);
-        f(new km2(r3));
-        lr0 r4 = this.h.i;     // Catch: RemoteException -> L5
-        hp0 r2 = this.r.s;     // Catch: RemoteException -> L5
-        r4.j();     // Catch: RemoteException -> L5
-        return;
-    L5:
-        e = move-exception;
-        l93.G("MediaSessionImpl", "Exception in using media1 API", e);
+        f(new km2(mi3Var));
+        try {
+            lr0 lr0Var = this.h.i;
+            hp0 hp0Var = this.r.s;
+            lr0Var.j();
+        } catch (RemoteException e) {
+            l93.G("MediaSessionImpl", "Exception in using media1 API", e);
+        }
     }
 
-    public final void i(fr2 r7, boolean r8) {
-        if (u() == false) goto L31;
-        int r1 = 0;
-        if (this.s.S0(16) == true) goto L8;
-    L10:
-        boolean r0 = false;
-    L12:
-        if (this.s.S0(31) == false) goto L14;
-    L17:
-        boolean r3 = true;
-    L18:
-        fr2 r9 = B(r7);
-        SparseBooleanArray r4 = new SparseBooleanArray();
-        rr2.w(!false);
-        r4.append(1, true);
-        rr2.w(true);
-        mi3 r5 = new mi3(new w71(r4));
-        if (r0 == true) goto L24;
-        if (r3 == false) goto L24;
-        this.e.getClass();
-        UnsupportedOperationException r2 = new UnsupportedOperationException();
-        lw1 r6 = new lw1();
-        r6.m(r2);
-        ll r10 = new ll(this, r9, r8, r5);
-        r6.f(new lg1(r1, r6, r10), new rn2(this, 2));
-        return;
-    L24:
-        if (r0 == true) goto L26;
-        l93.q0("MediaSessionImpl", "Play requested without current MediaItem, but playback resumption prevented by missing available commands");
-    L26:
-        f35.I(this.s);
-        if (r8 == false) goto L30;
-        v(r9, r5);
-        return;
-    L30:
-        return;
-    L14:
-        if (this.s.S0(20) == true) goto L17;
-        r3 = false;
-        goto L18
-    L8:
-        if (this.s.a() == null) goto L10;
-        r0 = true;
-        goto L12
+    public final void i(fr2 fr2Var, boolean z) {
+        if (u()) {
+            int i = 0;
+            boolean z2 = this.s.S0(16) && this.s.a() != null;
+            boolean z3 = this.s.S0(31) || this.s.S0(20);
+            fr2 fr2VarB = B(fr2Var);
+            SparseBooleanArray sparseBooleanArray = new SparseBooleanArray();
+            rr2.w(!false);
+            sparseBooleanArray.append(1, true);
+            rr2.w(true);
+            mi3 mi3Var = new mi3(new w71(sparseBooleanArray));
+            if (z2 || !z3) {
+                if (!z2) {
+                    l93.q0("MediaSessionImpl", "Play requested without current MediaItem, but playback resumption prevented by missing available commands");
+                }
+                f35.I(this.s);
+                if (z) {
+                    v(fr2VarB, mi3Var);
+                    return;
+                }
+                return;
+            }
+            this.e.getClass();
+            UnsupportedOperationException unsupportedOperationException = new UnsupportedOperationException();
+            lw1 lw1Var = new lw1();
+            lw1Var.m(unsupportedOperationException);
+            lw1Var.f(new lg1(i, lw1Var, new ll(this, fr2VarB, z, mi3Var)), new rn2(this, 2));
+        }
     }
 
-    public final boolean j(fr2 r2) {
-        if (this.g.f.F(r2) == false) goto L5;
-        return true;
-    L5:
-        if (this.h.f.F(r2) == true) goto L25;
-        Object r0 = this.a;
-        monitor-enter(r0);
-        pn2 r1 = this.w;     // Catch: Throwable -> L17
-        monitor-exit(r0);     // Catch: Throwable -> L17
-        if (r1 != null) goto L13;
-        return false;
-    L13:
-        if (r1.x.F(r2) == true) goto L26;
-        return false;
-    L26:
-        return true;
-    L17:
-        th = move-exception;
-        throw th;
-    L25:
-        return true;
+    public final boolean j(fr2 fr2Var) {
+        pn2 pn2Var;
+        if (this.g.f.F(fr2Var) || this.h.f.F(fr2Var)) {
+            return true;
+        }
+        synchronized (this.a) {
+            pn2Var = this.w;
+        }
+        return pn2Var != null && pn2Var.x.F(fr2Var);
     }
 
-    public final boolean k(fr2 r2) {
-        if (Objects.equals(r2.a.a.a, this.f.getPackageName()) == true) goto L5;
-    L10:
-        return false;
-    L5:
-        if (r2.b == 0) goto L10;
-        if (new Bundle(r2.e).getBoolean("androidx.media3.session.MediaNotificationManager", false) == false) goto L10;
-        return true;
+    public final boolean k(fr2 fr2Var) {
+        return Objects.equals(fr2Var.a.a.a, this.f.getPackageName()) && fr2Var.b != 0 && new Bundle(fr2Var.e).getBoolean("androidx.media3.session.MediaNotificationManager", false);
     }
 
     public final boolean l() {
-        Object r0 = this.a;
-        monitor-enter(r0);
-        boolean r1 = this.x;     // Catch: Throwable -> L7
-        monitor-exit(r0);     // Catch: Throwable -> L7
-        return r1;
-    L7:
-        th = move-exception;
-        throw th;
+        boolean z;
+        synchronized (this.a) {
+            z = this.x;
+        }
+        return z;
     }
 
-    public final void n(fr2 r7, m92 r8) {
-        int r0 = this.G;
-        if (r0 != 0) goto L5;
-        return;
-    L5:
-        if (r7.b != 0) goto L39;
-        int r9 = r8.a;
-        ls2 r6 = this.h;
-        if (r9 != (-102)) goto L10;
-    L11:
-        boolean r1 = true;
-        if (r0 == 1) goto L15;
-        r1 = false;
-    L15:
-        r6.getClass();
-        jn2 r2 = r8.e;
-        xa4 r10 = r8.f;
-        int r3 = f92.g(r9);
-        bk r4 = r6.u;
-        if (r4 != null) goto L18;
-    L20:
-        if (r10 == null) goto L22;
-        String r5 = r10.b;
-    L23:
-        Bundle r11 = Bundle.EMPTY;
-        if (r2 == null) goto L28;
-        Bundle r12 = r2.a;
-        if (r12.containsKey("android.media.extras.ERROR_RESOLUTION_ACTION_INTENT") == false) goto L28;
-        r11 = r12;
-    L30:
-        r6.u = new bk(r1, r3, r5, r11);
-        r6.P(r6.g.s);
-    L31:
-        if (r9 == 0) goto L33;
-        return;
-    L33:
-        if (r6.u == null) goto L38;
-        r6.u = null;
-        r6.P(r6.g.s);
-        return;
-    L38:
-        return;
-    L28:
-        if (r10 == null) goto L30;
-        r11 = r10.c;
-        goto L30
-    L22:
-        r5 = "no error message provided";
-        goto L23
-    L18:
-        if (r4.o != r3) goto L20;
-    L10:
-        if (r9 != (-105)) goto L31;
+    /* JADX WARN: Code duplicated, block: B:28:0x0045 A[DONT_INVERT] */
+    /* JADX WARN: Code duplicated, block: B:29:0x0047  */
+    public final void n(fr2 fr2Var, m92 m92Var) {
+        int i = this.G;
+        if (i == 0 || fr2Var.b != 0) {
+            return;
+        }
+        int i2 = m92Var.a;
+        ls2 ls2Var = this.h;
+        if (i2 == -102 || i2 == -105) {
+            boolean z = i == 1;
+            ls2Var.getClass();
+            jn2 jn2Var = m92Var.e;
+            xa4 xa4Var = m92Var.f;
+            int iG = f92.g(i2);
+            bk bkVar = ls2Var.u;
+            if (bkVar == null || bkVar.o != iG) {
+                String str = xa4Var != null ? xa4Var.b : "no error message provided";
+                Bundle bundle = Bundle.EMPTY;
+                if (jn2Var != null) {
+                    Bundle bundle2 = jn2Var.a;
+                    if (bundle2.containsKey("android.media.extras.ERROR_RESOLUTION_ACTION_INTENT")) {
+                        bundle = bundle2;
+                    } else if (xa4Var != null) {
+                        bundle = xa4Var.c;
+                    }
+                } else if (xa4Var != null) {
+                    bundle = xa4Var.c;
+                }
+                ls2Var.u = new bk(z, iG, str, bundle);
+                ls2Var.P(ls2Var.g.s);
+            }
+        }
+        if (i2 != 0 || ls2Var.u == null) {
+            return;
+        }
+        ls2Var.u = null;
+        ls2Var.P(ls2Var.g.s);
     }
 
-    public final mw1 o(fr2 r2, List r3) {
-        kn2 r0 = this.k;
-        fr2 r4 = B(r2);
-        return this.e.d(r0, r4, r3);
+    public final mw1 o(fr2 fr2Var, List list) {
+        return this.e.d(this.k, B(fr2Var), list);
     }
 
-    public final dr2 p(fr2 r9) {
-        yw1 r1 = null;
-        if (this.y == true) goto L5;
-    L19:
-        pq r0 = this.e;
-        kn2 r2 = this.k;
-        r0.getClass();
-        r2.getClass();
-        int r5 = 1;
-        if (r0.p != null) goto L22;
-    L25:
-        Log.d("BaseSessionCallback", "onConnect: remove and add listener");
-        if (r0.p == null) goto L28;
-        r2.a().r0(r0.o);
-    L28:
-        r0.p = r2;
-        r2.a().v(r0.o);
-        n61.e = new mq(r0, r5);
-    L29:
-        int r6 = 0;
-        if (r2.a.k(r9) == false) goto L32;
-    L37:
-        mi3 r3 = dr2.f;
-        wa4 r4 = r0.s;
-        r4.getClass();
-        qi3 r7 = r2.a();
-        r7.getClass();
-        dr2 r8 = new dr2(r4, r3, null, yw1.k(r0.a(r7, false)));
-    L39:
-        if (k(r9) == false) goto L64;
-        this.y = true;
-        yw1 r10 = r8.d;
-        if (r10 != null) goto L44;
-        r10 = this.k.a.A;
-    L44:
-        boolean r11 = r10.isEmpty();
-        ls2 r12 = this.h;
-        if (r11 == false) goto L51;
-        yw1 r13 = r8.c;
-        if (r13 != null) goto L50;
-        r13 = this.k.a.z;
-    L50:
-        r12.w = r13;
-    L52:
-        ls2 r14 = this.h;
-        wa4 r15 = r8.a;
-        mi3 r16 = r8.b;
-        if (r14.z.a(17) != r16.a(17)) goto L56;
-        r5 = 0;
-    L56:
-        r14.y = r15;
-        r14.z = r16;
-        if (r14.x.isEmpty() == true) goto L59;
-        r14.O();
-    L59:
-        tn2 r17 = r14.g;
-        if (r5 == 0) goto L63;
-        f35.W(r17.l, new ds2(r14, r17.s, r6));
-        return r8;
-    L63:
-        r14.P(r17.s);
-        goto L64
-    L51:
-        r12.x = r10;
-        r12.O();
-    L64:
-        return r8;
-    L32:
-        if (r2.b(r9) == true) goto L37;
-        r2.a.getClass();
-        if (r9.a.a.a.equals("com.google.android.projection.gearhead") == true) goto L37;
-        wa4 r18 = dr2.e;
-        r18.getClass();
-        HashSet r19 = new HashSet(r18.a);
-        r19.add(new va4("com.eddyizm.tempus.PLAY_NEXT_FIXUP", Bundle.EMPTY));
-        r8 = new dr2(new wa4(r19), dr2.f, null, null);
-        goto L39
-    L22:
-        if (r2.b(r9) == true) goto L25;
-        r2.a.getClass();
-        if (r9.a.a.a.equals("com.google.android.projection.gearhead") == false) goto L29;
-    L5:
-        if (m(r9) == false) goto L19;
-        ls2 r20 = this.h;
-        r20.getClass();
-        wa4 r21 = dr2.e;
-        wa4 r22 = r20.y;
-        r22.getClass();
-        mi3 r23 = r20.z;
-        r23.getClass();
-        if (r20.x.isEmpty() == true) goto L12;
-        yw1 r24 = r20.x;
-        if (r24 != null) goto L11;
-        yw1 r25 = null;
-    L18:
-        return new dr2(r22, r23, r1, r25);
-    L11:
-        r25 = yw1.k(r24);
-        goto L18
-    L12:
-        yw1 r26 = r20.w;
-        if (r26 != null) goto L15;
-        yw1 r27 = null;
-    L16:
-        r1 = r27;
-        r25 = null;
-        goto L18
-    L15:
-        r27 = yw1.k(r26);
-        goto L16
+    /* JADX WARN: Code duplicated, block: B:25:0x006a  */
+    /* JADX WARN: Code duplicated, block: B:27:0x0075  */
+    /* JADX WARN: Code duplicated, block: B:37:0x00d6  */
+    public final dr2 p(fr2 fr2Var) {
+        dr2 dr2Var;
+        yw1 yw1VarK;
+        yw1 yw1VarK2 = null;
+        if (this.y && m(fr2Var)) {
+            ls2 ls2Var = this.h;
+            ls2Var.getClass();
+            wa4 wa4Var = dr2.e;
+            wa4 wa4Var2 = ls2Var.y;
+            wa4Var2.getClass();
+            mi3 mi3Var = ls2Var.z;
+            mi3Var.getClass();
+            if (ls2Var.x.isEmpty()) {
+                yw1 yw1Var = ls2Var.w;
+                yw1VarK2 = yw1Var == null ? null : yw1.k(yw1Var);
+                yw1VarK = null;
+            } else {
+                yw1 yw1Var2 = ls2Var.x;
+                yw1VarK = yw1Var2 == null ? null : yw1.k(yw1Var2);
+            }
+            return new dr2(wa4Var2, mi3Var, yw1VarK2, yw1VarK);
+        }
+        pq pqVar = this.e;
+        kn2 kn2Var = this.k;
+        pqVar.getClass();
+        kn2Var.getClass();
+        int i = 1;
+        if (pqVar.p == null || kn2Var.b(fr2Var)) {
+            Log.d("BaseSessionCallback", "onConnect: remove and add listener");
+            if (pqVar.p != null) {
+                kn2Var.a().r0(pqVar.o);
+            }
+            pqVar.p = kn2Var;
+            kn2Var.a().v(pqVar.o);
+            n61.e = new mq(pqVar, i);
+        } else {
+            kn2Var.a.getClass();
+            if (fr2Var.a.a.a.equals("com.google.android.projection.gearhead")) {
+                Log.d("BaseSessionCallback", "onConnect: remove and add listener");
+                if (pqVar.p != null) {
+                    kn2Var.a().r0(pqVar.o);
+                }
+                pqVar.p = kn2Var;
+                kn2Var.a().v(pqVar.o);
+                n61.e = new mq(pqVar, i);
+            }
+        }
+        int i2 = 0;
+        if (kn2Var.a.k(fr2Var) || kn2Var.b(fr2Var)) {
+            mi3 mi3Var2 = dr2.f;
+            wa4 wa4Var3 = pqVar.s;
+            wa4Var3.getClass();
+            qi3 qi3VarA = kn2Var.a();
+            qi3VarA.getClass();
+            dr2Var = new dr2(wa4Var3, mi3Var2, null, yw1.k(pqVar.a(qi3VarA, false)));
+        } else {
+            kn2Var.a.getClass();
+            if (fr2Var.a.a.a.equals("com.google.android.projection.gearhead")) {
+                mi3 mi3Var3 = dr2.f;
+                wa4 wa4Var4 = pqVar.s;
+                wa4Var4.getClass();
+                qi3 qi3VarA2 = kn2Var.a();
+                qi3VarA2.getClass();
+                dr2Var = new dr2(wa4Var4, mi3Var3, null, yw1.k(pqVar.a(qi3VarA2, false)));
+            } else {
+                wa4 wa4Var5 = dr2.e;
+                wa4Var5.getClass();
+                HashSet hashSet = new HashSet(wa4Var5.a);
+                hashSet.add(new va4("com.eddyizm.tempus.PLAY_NEXT_FIXUP", Bundle.EMPTY));
+                dr2Var = new dr2(new wa4(hashSet), dr2.f, null, null);
+            }
+        }
+        if (k(fr2Var)) {
+            this.y = true;
+            yw1 yw1Var3 = dr2Var.d;
+            if (yw1Var3 == null) {
+                yw1Var3 = this.k.a.A;
+            }
+            boolean zIsEmpty = yw1Var3.isEmpty();
+            ls2 ls2Var2 = this.h;
+            if (zIsEmpty) {
+                yw1 yw1Var4 = dr2Var.c;
+                if (yw1Var4 == null) {
+                    yw1Var4 = this.k.a.z;
+                }
+                ls2Var2.w = yw1Var4;
+            } else {
+                ls2Var2.x = yw1Var3;
+                ls2Var2.O();
+            }
+            ls2 ls2Var3 = this.h;
+            wa4 wa4Var6 = dr2Var.a;
+            mi3 mi3Var4 = dr2Var.b;
+            i = ls2Var3.z.a(17) == mi3Var4.a(17) ? 0 : 1;
+            ls2Var3.y = wa4Var6;
+            ls2Var3.z = mi3Var4;
+            if (!ls2Var3.x.isEmpty()) {
+                ls2Var3.O();
+            }
+            tn2 tn2Var = ls2Var3.g;
+            if (i != 0) {
+                f35.W(tn2Var.l, new ds2(ls2Var3, tn2Var.s, i2));
+                return dr2Var;
+            }
+            ls2Var3.P(tn2Var.s);
+        }
+        return dr2Var;
     }
 
-    public final ic2 q(fr2 r10, va4 r11, Bundle r12) {
-        fr2 r13 = B(r10);
-        pq r0 = this.e;
-        r0.getClass();
-        MediaService r1 = r0.b;
-        kn2 r9 = this.k;
-        r9.getClass();
-        r13.getClass();
-        r12.getClass();
-        String r14 = r11.b;
-        Log.d("BaseSessionCallback", "onCustomCommand: " + r14);
-        int r4 = 1;
-        int r5 = 0;
-        switch(r14.hashCode()) {
-            case -1023607354: goto L62;
-            case -395959765: goto L57;
-            case 192214611: goto L42;
-            case 610148995: goto L39;
-            case 758402520: goto L27;
-            case 935679408: goto L17;
-            case 935692670: goto L14;
-            case 935692917: goto L11;
-            case 2035641462: goto L6;
-            default: goto L64;
-        };
-    L6:
-        if (r14.equals("android.media3.session.demo.SHUFFLE_OFF") == false) goto L64;
-        r9.a().s(false);
-        r0.f(r9, false);
-        return new mw1(new ab4(0));
-    L11:
-        if (r14.equals("android.media3.session.demo.REPEAT_ONE") == false) goto L64;
-    L19:
-        int r15 = r9.a().h();
-        if (r15 == 0) goto L24;
-        if (r15 == 1) goto L23;
+    /* JADX WARN: Can't fix incorrect switch cases order, some code will duplicate */
+    /* JADX WARN: Code restructure failed: missing block: B:11:0x005b, code lost:
+    
+        if (r11.equals("android.media3.session.demo.REPEAT_ONE") == false) goto L63;
+     */
+    /* JADX WARN: Code restructure failed: missing block: B:14:0x0065, code lost:
+    
+        if (r11.equals("android.media3.session.demo.REPEAT_OFF") == false) goto L63;
+     */
+    /* JADX WARN: Code restructure failed: missing block: B:17:0x006f, code lost:
+    
+        if (r11.equals("android.media3.session.demo.REPEAT_ALL") == false) goto L63;
+     */
+    /* JADX WARN: Code restructure failed: missing block: B:19:0x0073, code lost:
+    
+        r10 = r9.a().h();
+     */
+    /* JADX WARN: Code restructure failed: missing block: B:20:0x007b, code lost:
+    
+        if (r10 == 0) goto L24;
+     */
+    /* JADX WARN: Code restructure failed: missing block: B:21:0x007d, code lost:
+    
+        if (r10 == 1) goto L23;
+     */
+    /* JADX WARN: Code restructure failed: missing block: B:22:0x007f, code lost:
+    
         r4 = 0;
-        goto L24
-    L23:
+     */
+    /* JADX WARN: Code restructure failed: missing block: B:23:0x0081, code lost:
+    
         r4 = 2;
-    L24:
+     */
+    /* JADX WARN: Code restructure failed: missing block: B:24:0x0082, code lost:
+    
         r9.a().p0(r4);
         r0.f(r9, false);
-        return new mw1(new ab4(0));
-    L14:
-        if (r14.equals("android.media3.session.demo.REPEAT_OFF") == true) goto L19;
-    L17:
-        if (r14.equals("android.media3.session.demo.REPEAT_ALL") == true) goto L19;
-    L27:
-        if (r14.equals("android.media3.session.demo.SHUFFLE_ON") == false) goto L64;
-        qi3 r16 = a.h();
-        if (r16 != null) goto L33;
-    L34:
-        r9.a().s(true);
-    L36:
-        r0.f(r9, false);
-        return new mw1(new ab4(0));
-    L33:
-        if (a.b == null) goto L34;
-        io1.b.post(new at1(r16, r5));
-        goto L36
-    L39:
-        if (r14.equals("android.media3.session.demo.HEART_OFF") == false) goto L64;
-    L59:
-        qi3 r17 = r9.a();
-        r17.getClass();
-        boolean r18 = pq.c(r17);
+     */
+    /* JADX WARN: Code restructure failed: missing block: B:25:0x0096, code lost:
+    
+        return new defpackage.mw1(new defpackage.ab4(0));
+     */
+    /* JADX WARN: Code restructure failed: missing block: B:39:0x00d2, code lost:
+    
+        if (r11.equals("android.media3.session.demo.HEART_OFF") == false) goto L63;
+     */
+    /* JADX WARN: Code restructure failed: missing block: B:57:0x0165, code lost:
+    
+        if (r11.equals("android.media3.session.demo.HEART_ON") == false) goto L63;
+     */
+    /* JADX WARN: Code restructure failed: missing block: B:59:0x0168, code lost:
+    
+        r11 = r9.a();
+        r11.getClass();
+        r11 = defpackage.pq.c(r11);
         r0.f(r9, true);
-        vl1 r19 = new vl1(!r18);
-        gn2 r110 = r9.a().a();
-        r110.getClass();
-        String r111 = r110.a;
-        r111.getClass();
-        return r0.e(r9, r13, r111, r19);
-    L42:
-        if (r14.equals("android.media3.session.demo.INSTANT_MIX_ON") == false) goto L64;
-        if (bo2.c.get() == false) goto L47;
-    L53:
-        Log.d("BaseSessionCallback", "onCustomCommand: onInstantMix not usable");
-    L54:
-        r0.f(r9, false);
-        return new mw1(new ab4(0));
-    L47:
-        if (ud3.T() == false) goto L53;
-        Log.d("BaseSessionCallback", "onCustomCommand: start onInstantMix");
-        k6 r112 = new k6(11, r0, r9);
-        qi3 r113 = r9.a();
-        r113.getClass();
-        gn2 r114 = r113.a();
-        int r2 = r113.o0();
-        int r115 = r113.Q0();
-        int r3 = r115 - 1;
-        if (r2 < 0) goto L52;
-        if (r2 >= r3) goto L52;
-        Log.d("BaseMediaService", "onInstantMix: remove range from " + r2 + " to " + r3);
-        bo2.k(r1, r2 + 1, r115);
-    L52:
-        Log.d("BaseMediaService", "onInstantMix: start Continuous Play with " + r114);
-        bo2.c(r114, r1, new vp(r112, r5));
-        goto L54
-    L57:
-        if (r14.equals("android.media3.session.demo.HEART_ON") == true) goto L59;
-    L62:
-        if (r14.equals("com.eddyizm.tempus.PLAY_NEXT_FIXUP") == false) goto L64;
-        r1.a(r12.getInt("play_next_insert_pos", -1), r12.getInt("play_next_count", 0), r12.getInt("play_next_target_count", -1));
-        return new mw1(new ab4(0));
-    L64:
-        return new mw1(new ab4(new xa4(-6, r14)));
+        r12 = new defpackage.vl1(!r11);
+        r11 = r9.a().a();
+        r11.getClass();
+        r11 = r11.a;
+        r11.getClass();
+     */
+    /* JADX WARN: Code restructure failed: missing block: B:60:0x0190, code lost:
+    
+        return r0.e(r9, r10, r11, r12);
+     */
+    /* JADX WARN: Failed to restore switch over string. Please report as a decompilation issue */
+    /*
+        Code decompiled incorrectly, please refer to instructions dump.
+    */
+    public final ic2 q(fr2 fr2Var, va4 va4Var, Bundle bundle) {
+        fr2 fr2VarB = B(fr2Var);
+        pq pqVar = this.e;
+        pqVar.getClass();
+        MediaService mediaService = pqVar.b;
+        kn2 kn2Var = this.k;
+        kn2Var.getClass();
+        fr2VarB.getClass();
+        bundle.getClass();
+        String str = va4Var.b;
+        Log.d("BaseSessionCallback", "onCustomCommand: " + str);
+        int i = 1;
+        int i2 = 0;
+        switch (str.hashCode()) {
+            case -1023607354:
+                if (str.equals("com.eddyizm.tempus.PLAY_NEXT_FIXUP")) {
+                    mediaService.a(bundle.getInt("play_next_insert_pos", -1), bundle.getInt("play_next_count", 0), bundle.getInt("play_next_target_count", -1));
+                    return new mw1(new ab4(0));
+                }
+                return new mw1(new ab4(new xa4(-6, str)));
+            case -395959765:
+                break;
+            case 192214611:
+                if (str.equals("android.media3.session.demo.INSTANT_MIX_ON")) {
+                    if (bo2.c.get() || !ud3.T()) {
+                        Log.d("BaseSessionCallback", "onCustomCommand: onInstantMix not usable");
+                    } else {
+                        Log.d("BaseSessionCallback", "onCustomCommand: start onInstantMix");
+                        k6 k6Var = new k6(11, pqVar, kn2Var);
+                        qi3 qi3VarA = kn2Var.a();
+                        qi3VarA.getClass();
+                        gn2 gn2VarA = qi3VarA.a();
+                        int iO0 = qi3VarA.o0();
+                        int iQ0 = qi3VarA.Q0();
+                        int i3 = iQ0 - 1;
+                        if (iO0 >= 0 && iO0 < i3) {
+                            Log.d("BaseMediaService", "onInstantMix: remove range from " + iO0 + " to " + i3);
+                            bo2.k(mediaService, iO0 + 1, iQ0);
+                        }
+                        Log.d("BaseMediaService", "onInstantMix: start Continuous Play with " + gn2VarA);
+                        bo2.c(gn2VarA, mediaService, new vp(k6Var, i2));
+                    }
+                    pqVar.f(kn2Var, false);
+                    return new mw1(new ab4(0));
+                }
+                return new mw1(new ab4(new xa4(-6, str)));
+            case 610148995:
+                break;
+            case 758402520:
+                if (str.equals("android.media3.session.demo.SHUFFLE_ON")) {
+                    qi3 qi3VarH = a.h();
+                    if (qi3VarH == null || a.b == null) {
+                        kn2Var.a().s(true);
+                    } else {
+                        io1.b.post(new at1(qi3VarH, i2));
+                    }
+                    pqVar.f(kn2Var, false);
+                    return new mw1(new ab4(0));
+                }
+                return new mw1(new ab4(new xa4(-6, str)));
+            case 935679408:
+                break;
+            case 935692670:
+                break;
+            case 935692917:
+                break;
+            case 2035641462:
+                if (str.equals("android.media3.session.demo.SHUFFLE_OFF")) {
+                    kn2Var.a().s(false);
+                    pqVar.f(kn2Var, false);
+                    return new mw1(new ab4(0));
+                }
+                return new mw1(new ab4(new xa4(-6, str)));
+            default:
+                return new mw1(new ab4(new xa4(-6, str)));
+        }
     }
 
-    public final ic2 r(fr2 r8, String r9, int r10, jn2 r11) {
-        boolean r12 = Objects.equals(r9, "androidx.media3.session.recent.root");
-        int r0 = 0;
-        pq r1 = this.D;
-        if (r12 == true) goto L5;
-        B(r8);
-        r1.getClass();
-        mw1 r3 = new mw1(m92.b(-6));
-        r3.f(new qn2(this, r3, r8, r10, 0), new rn2(this, r0));
-        return r3;
-    L5:
-        if (this.h.o == null) goto L16;
-        if (this.s.g() != 1) goto L13;
-        lb4 r13 = new lb4();
-        if (this.y == false) goto L11;
-        g().getClass();
-    L11:
-        r1.getClass();
-        UnsupportedOperationException r7 = new UnsupportedOperationException();
-        lw1 r14 = new lw1();
-        r14.m(r7);
-        r14.f(new lg1(r0, r14, new gp3(14, r13, r11)), gq0.n);
-        return r13;
-    L13:
-        um2 r15 = new um2();
-        vw1 r16 = yw1.o;
-        gy3 r17 = gy3.r;
-        List r18 = Collections.EMPTY_LIST;
-        gy3 r19 = gy3.r;
-        zm2 r20 = new zm2();
-        cn2 r6 = cn2.d;
-        co2 r21 = new co2();
-        r21.q = Boolean.FALSE;
-        r21.r = Boolean.TRUE;
-        do2 r5 = new do2(r21);
-        return new mw1(m92.c(yw1.o(new gn2("androidx.media3.session.recent.item", new wm2(r15), null, new an2(r20), r5, r6)), r11));
-    L16:
-        return new mw1(m92.b(-6));
+    public final ic2 r(fr2 fr2Var, String str, int i, jn2 jn2Var) {
+        boolean zEquals = Objects.equals(str, "androidx.media3.session.recent.root");
+        int i2 = 0;
+        pq pqVar = this.D;
+        if (!zEquals) {
+            B(fr2Var);
+            pqVar.getClass();
+            mw1 mw1Var = new mw1(m92.b(-6));
+            mw1Var.f(new qn2(this, mw1Var, fr2Var, i, 0), new rn2(this, i2));
+            return mw1Var;
+        }
+        if (this.h.o == null) {
+            return new mw1(m92.b(-6));
+        }
+        if (this.s.g() == 1) {
+            lb4 lb4Var = new lb4();
+            if (this.y) {
+                g().getClass();
+            }
+            pqVar.getClass();
+            UnsupportedOperationException unsupportedOperationException = new UnsupportedOperationException();
+            lw1 lw1Var = new lw1();
+            lw1Var.m(unsupportedOperationException);
+            lw1Var.f(new lg1(i2, lw1Var, new gp3(14, lb4Var, jn2Var)), gq0.n);
+            return lb4Var;
+        }
+        um2 um2Var = new um2();
+        vw1 vw1Var = yw1.o;
+        gy3 gy3Var = gy3.r;
+        List list = Collections.EMPTY_LIST;
+        gy3 gy3Var2 = gy3.r;
+        zm2 zm2Var = new zm2();
+        cn2 cn2Var = cn2.d;
+        co2 co2Var = new co2();
+        co2Var.q = Boolean.FALSE;
+        co2Var.r = Boolean.TRUE;
+        return new mw1(m92.c(yw1.o(new gn2("androidx.media3.session.recent.item", new wm2(um2Var), null, new an2(zm2Var), new do2(co2Var), cn2Var)), jn2Var));
     }
 
-    public final mw1 s(fr2 r13, jn2 r14) {
-        if (r14 != null) goto L5;
-    L14:
-        B(r13);
-        this.D.getClass();
-        return new mw1(m92.b(-6));
-    L5:
-        if (r14.b == false) goto L14;
-        if (m(r13) == false) goto L14;
-        if (this.h.o == null) goto L13;
-        um2 r0 = new um2();
-        vw1 r1 = yw1.o;
-        gy3 r2 = gy3.r;
-        List r3 = Collections.EMPTY_LIST;
-        gy3 r4 = gy3.r;
-        zm2 r5 = new zm2();
-        cn2 r11 = cn2.d;
-        co2 r6 = new co2();
-        r6.q = Boolean.TRUE;
-        r6.r = Boolean.FALSE;
-        do2 r10 = new do2(r6);
-        gn2 r7 = new gn2("androidx.media3.session.recent.root", new wm2(r0), null, new an2(r5), r10, r11);
-        m92.d(r7);
-        return new mw1(new m92(0, SystemClock.elapsedRealtime(), r14, null, r7, 2));
-    L13:
-        return new mw1(m92.b(-6));
+    public final mw1 s(fr2 fr2Var, jn2 jn2Var) {
+        if (jn2Var == null || !jn2Var.b || !m(fr2Var)) {
+            B(fr2Var);
+            this.D.getClass();
+            return new mw1(m92.b(-6));
+        }
+        if (this.h.o == null) {
+            return new mw1(m92.b(-6));
+        }
+        um2 um2Var = new um2();
+        vw1 vw1Var = yw1.o;
+        gy3 gy3Var = gy3.r;
+        List list = Collections.EMPTY_LIST;
+        gy3 gy3Var2 = gy3.r;
+        zm2 zm2Var = new zm2();
+        cn2 cn2Var = cn2.d;
+        co2 co2Var = new co2();
+        co2Var.q = Boolean.TRUE;
+        co2Var.r = Boolean.FALSE;
+        gn2 gn2Var = new gn2("androidx.media3.session.recent.root", new wm2(um2Var), null, new an2(zm2Var), new do2(co2Var), cn2Var);
+        m92.d(gn2Var);
+        return new mw1(new m92(0, SystemClock.elapsedRealtime(), jn2Var, null, gn2Var, 2));
     }
 
-    public final boolean t(fr2 r11, Intent r12) {
-        int r0 = r11.b;
-        Bundle r1 = r12.getExtras();
-        qo2 r2 = null;
-        if (r1 != null) goto L5;
-    L7:
-        KeyEvent r3 = null;
-    L8:
-        ComponentName r4 = r12.getComponent();
-        if (Objects.equals(r12.getAction(), "android.intent.action.MEDIA_BUTTON") == false) goto L72;
-        MediaService r5 = this.f;
-        if (r4 != null) goto L13;
-    L14:
-        if (r3 == null) goto L72;
-        F();
-        this.e.getClass();
-        int r7 = 1;
-        if (r3.getAction() == 0) goto L30;
-        int r10 = r3.getKeyCode();
-        if (r10 != 79) goto L21;
-    L71:
-        return true;
-    L21:
-        if (r10 == 126) goto L71;
-        if (r10 == 127) goto L71;
-        if (r10 == 272) goto L71;
-        if (r10 == 273) goto L71;
-        switch(r10) {
-            case 85: goto L71;
-            case 86: goto L71;
-            case 87: goto L71;
-            case 88: goto L71;
-            case 89: goto L71;
-            case 90: goto L71;
-            default: goto L72;
-        };
-    L30:
-        int r6 = r3.getKeyCode();
-        boolean r8 = r5.getPackageManager().hasSystemFeature("android.software.leanback");
-        cj2 r9 = this.d;
-        if (r6 == 79) goto L38;
-        if (r6 == 85) goto L38;
-        qo2 r13 = (qo2) r9.b;
-        if (r13 == null) goto L36;
-        r9.removeCallbacks(r13);
-        qo2 r14 = (qo2) r9.b;
-        r9.b = null;
-        r2 = r14;
-    L36:
-        if (r2 == null) goto L55;
-        f35.W(r9, r2);
-    L55:
-        boolean r15 = false;
-    L57:
-        if (this.y == true) goto L67;
-        ls2 r16 = this.h;
-        if (r6 == 85) goto L61;
-        if (r6 == 79) goto L61;
-    L64:
-        if (r0 == 0) goto L72;
-        ((xk2) ((wo0) r16.m.p).n).a.dispatchMediaButtonEvent(r3);
-        return true;
-    L61:
-        if (r15 == false) goto L64;
-        r16.z();
-        return true;
-    L67:
-        boolean r17 = r12.getBooleanExtra("androidx.media3.session.NOTIFICATION_DISMISSED_EVENT_KEY", false);
-        if (r3.getRepeatCount() > 0) goto L71;
-        if (c(r3, r15, r17) == false) goto L72;
-    L38:
-        if (r8 == true) goto L50;
-        if (r0 != 0) goto L50;
-        if (r3.getRepeatCount() != 0) goto L50;
-        qo2 r18 = (qo2) r9.b;
-        if (r18 == null) goto L48;
-        if (r18 == null) goto L47;
-        r9.removeCallbacks(r18);
-        r9.b = null;
-    L47:
-        r15 = true;
-        goto L57
-    L48:
-        qo2 r19 = new qo2(r9, r11, r3, r7);
-        r9.b = r19;
-        r9.postDelayed(r19, ViewConfiguration.getDoubleTapTimeout());
-        return true;
-    L50:
-        qo2 r110 = (qo2) r9.b;
-        if (r110 == null) goto L53;
-        r9.removeCallbacks(r110);
-        qo2 r111 = (qo2) r9.b;
-        r9.b = null;
-        r2 = r111;
-    L53:
-        if (r2 == null) goto L55;
-        f35.W(r9, r2);
-        goto L55
-    L13:
-        if (Objects.equals(r4.getPackageName(), r5.getPackageName()) == true) goto L14;
-    L72:
+    /* JADX WARN: Code duplicated, block: B:58:0x00dc  */
+    /* JADX WARN: Code duplicated, block: B:65:0x00ea  */
+    /* JADX WARN: Code duplicated, block: B:67:0x00fa  */
+    public final boolean t(fr2 fr2Var, Intent intent) {
+        boolean z;
+        ls2 ls2Var;
+        int i = fr2Var.b;
+        Bundle extras = intent.getExtras();
+        qo2 qo2Var = null;
+        KeyEvent keyEvent = (extras == null || !extras.containsKey("android.intent.extra.KEY_EVENT")) ? null : (KeyEvent) extras.getParcelable("android.intent.extra.KEY_EVENT");
+        ComponentName component = intent.getComponent();
+        if (Objects.equals(intent.getAction(), "android.intent.action.MEDIA_BUTTON")) {
+            MediaService mediaService = this.f;
+            if ((component == null || Objects.equals(component.getPackageName(), mediaService.getPackageName())) && keyEvent != null) {
+                F();
+                this.e.getClass();
+                int i2 = 1;
+                if (keyEvent.getAction() != 0) {
+                    int keyCode = keyEvent.getKeyCode();
+                    if (keyCode != 79 && keyCode != 126 && keyCode != 127 && keyCode != 272 && keyCode != 273) {
+                        switch (keyCode) {
+                        }
+                    }
+                    return true;
+                }
+                int keyCode2 = keyEvent.getKeyCode();
+                boolean zHasSystemFeature = mediaService.getPackageManager().hasSystemFeature("android.software.leanback");
+                cj2 cj2Var = this.d;
+                if (keyCode2 == 79 || keyCode2 == 85) {
+                    if (!zHasSystemFeature && i == 0 && keyEvent.getRepeatCount() == 0) {
+                        qo2 qo2Var2 = (qo2) cj2Var.b;
+                        if (qo2Var2 == null) {
+                            qo2 qo2Var3 = new qo2(cj2Var, fr2Var, keyEvent, i2);
+                            cj2Var.b = qo2Var3;
+                            cj2Var.postDelayed(qo2Var3, ViewConfiguration.getDoubleTapTimeout());
+                            return true;
+                        }
+                        if (qo2Var2 != null) {
+                            cj2Var.removeCallbacks(qo2Var2);
+                            cj2Var.b = null;
+                        }
+                        z = true;
+                    } else {
+                        qo2 qo2Var4 = (qo2) cj2Var.b;
+                        if (qo2Var4 != null) {
+                            cj2Var.removeCallbacks(qo2Var4);
+                            qo2 qo2Var5 = (qo2) cj2Var.b;
+                            cj2Var.b = null;
+                            qo2Var = qo2Var5;
+                        }
+                        if (qo2Var != null) {
+                            f35.W(cj2Var, qo2Var);
+                        }
+                    }
+                    if (!this.y) {
+                        boolean booleanExtra = intent.getBooleanExtra("androidx.media3.session.NOTIFICATION_DISMISSED_EVENT_KEY", false);
+                        if (keyEvent.getRepeatCount() <= 0 || c(keyEvent, z, booleanExtra)) {
+                            return true;
+                        }
+                    } else {
+                        ls2Var = this.h;
+                        if ((keyCode2 != 85 || keyCode2 == 79) && z) {
+                            ls2Var.z();
+                            return true;
+                        }
+                        if (i != 0) {
+                            ((xk2) ((wo0) ls2Var.m.p).n).a.dispatchMediaButtonEvent(keyEvent);
+                            return true;
+                        }
+                    }
+                } else {
+                    qo2 qo2Var6 = (qo2) cj2Var.b;
+                    if (qo2Var6 != null) {
+                        cj2Var.removeCallbacks(qo2Var6);
+                        qo2 qo2Var7 = (qo2) cj2Var.b;
+                        cj2Var.b = null;
+                        qo2Var = qo2Var7;
+                    }
+                    if (qo2Var != null) {
+                        f35.W(cj2Var, qo2Var);
+                    }
+                }
+                z = false;
+                if (!this.y) {
+                    boolean booleanExtra2 = intent.getBooleanExtra("androidx.media3.session.NOTIFICATION_DISMISSED_EVENT_KEY", false);
+                    if (keyEvent.getRepeatCount() <= 0) {
+                    }
+                    return true;
+                }
+                ls2Var = this.h;
+                if (keyCode2 != 85) {
+                    ls2Var.z();
+                    return true;
+                }
+                ls2Var.z();
+                return true;
+                if (i != 0) {
+                    ((xk2) ((wo0) ls2Var.m.p).n).a.dispatchMediaButtonEvent(keyEvent);
+                    return true;
+                }
+            }
+        }
         return false;
-    L5:
-        if (r1.containsKey("android.intent.extra.KEY_EVENT") == false) goto L7;
-        r3 = (KeyEvent) r1.getParcelable("android.intent.extra.KEY_EVENT");
-        goto L8
     }
 
     public final boolean u() {
-        if (Looper.myLooper() == Looper.getMainLooper()) goto L10;
-        lb4 r0 = new lb4();
-        ws1 r1 = new ws1(29, this, r0);
-        this.o.post(r1);
-        return ((Boolean) r0.get()).booleanValue();
-    L7:
-        e = move-exception;
-        throw new IllegalStateException(e);
-    L10:
-        rm2 r2 = this.v;
-        if (r2 == null) goto L21;
-        MediaLibraryService r3 = (MediaLibraryService) r2.o;
-        int r4 = Build.VERSION.SDK_INT;
-        if (r4 < 31) goto L21;
-        if (r4 >= 33) goto L21;
-        int r5 = MediaLibraryService.t;
-        if (r3.d().x == true) goto L21;
-        return r3.k(this.k, true);
-    L21:
+        if (Looper.myLooper() != Looper.getMainLooper()) {
+            lb4 lb4Var = new lb4();
+            this.o.post(new ws1(29, this, lb4Var));
+            try {
+                return ((Boolean) lb4Var.get()).booleanValue();
+            } catch (InterruptedException | ExecutionException e) {
+                throw new IllegalStateException(e);
+            }
+        }
+        rm2 rm2Var = this.v;
+        if (rm2Var != null) {
+            MediaLibraryService mediaLibraryService = (MediaLibraryService) rm2Var.o;
+            int i = Build.VERSION.SDK_INT;
+            if (i >= 31 && i < 33) {
+                int i2 = MediaLibraryService.t;
+                if (!mediaLibraryService.d().x) {
+                    return mediaLibraryService.k(this.k, true);
+                }
+            }
+        }
         return true;
     }
 
-    public final void v(fr2 r4, mi3 r5) {
-        fr2 r6 = B(r4);
+    public final void v(fr2 fr2Var, mi3 mi3Var) {
+        fr2 fr2VarB = B(fr2Var);
         this.e.getClass();
-        kn2 r3 = this.k;
-        r3.getClass();
-        r6.getClass();
-        r5.getClass();
-        w71 r7 = r5.a;
-        if (r7.a(new int[]{9, 8, 7, 6}) == true) goto L5;
-        return;
-    L5:
-        if (r7.a(new int[]{1, 3}) == true) goto L19;
-        qi3 r8 = r3.a();
-        r8.getClass();
-        if (r8.a() != null) goto L10;
-        return;
-    L10:
-        if (r8.q() == false) goto L13;
-        return;
-    L13:
-        if (r8.g() != 1) goto L15;
-        r8.b();
-    L15:
-        r8.m0();
-        return;
+        kn2 kn2Var = this.k;
+        kn2Var.getClass();
+        fr2VarB.getClass();
+        mi3Var.getClass();
+        w71 w71Var = mi3Var.a;
+        if (!w71Var.a(9, 8, 7, 6) || w71Var.a(1, 3)) {
+            return;
+        }
+        qi3 qi3VarA = kn2Var.a();
+        qi3VarA.getClass();
+        if (qi3VarA.a() == null || qi3VarA.q()) {
+            return;
+        }
+        if (qi3VarA.g() == 1) {
+            qi3VarA.b();
+        }
+        qi3VarA.m0();
     }
 
-    public final mw1 w(fr2 r4) {
-        B(r4);
+    public final mw1 w(fr2 fr2Var) {
+        B(fr2Var);
         this.D.getClass();
-        mw1 r1 = new mw1(m92.b(-6));
-        r1.f(new sn2(this, r1, r4, 1), new rn2(this, 0));
-        return r1;
+        mw1 mw1Var = new mw1(m92.b(-6));
+        mw1Var.f(new sn2(this, mw1Var, fr2Var, 1), new rn2(this, 0));
+        return mw1Var;
     }
 
-    public final lb4 x(fr2 r2, List r3, final int r4, final long r5) {
-        fr2 r6 = B(r2);
-        pq r0 = this.e;
-        r0.getClass();
-        return f35.h0(r0.d(this.k, r6, r3), new cr2(r4, r5));
+    public final lb4 x(fr2 fr2Var, List list, final int i, final long j) {
+        fr2 fr2VarB = B(fr2Var);
+        pq pqVar = this.e;
+        pqVar.getClass();
+        return f35.h0(pqVar.d(this.k, fr2VarB, list), new mk() { // from class: cr2
+            @Override // defpackage.mk
+            public final ic2 apply(Object obj) {
+                return new mw1(new gr2((List) obj, i, j));
+            }
+        });
     }
 
-    public final lb4 y(fr2 r11, String r12, jn2 r13) {
-        er2 r0 = r11.d;
-        r0.getClass();
-        this.F.j(r0, r12);
-        this.E.j(r12, r11);
-        fr2 r5 = B(r11);
+    public final lb4 y(fr2 fr2Var, String str, jn2 jn2Var) {
+        er2 er2Var = fr2Var.d;
+        er2Var.getClass();
+        this.F.j(er2Var, str);
+        this.E.j(str, fr2Var);
+        fr2 fr2VarB = B(fr2Var);
         this.D.getClass();
-        mw1 r2 = new mw1(m92.b(-6));
-        kn2 r6 = this.C;
-        lb4 r3 = f35.h0(r2, new dg0(r5, r6, r12, r13, 5));
-        r3.f(new t6(this, r3, r11, r12, 16), new rn2(this, 1));
-        return r3;
+        lb4 lb4VarH0 = f35.h0(new mw1(m92.b(-6)), new dg0(fr2VarB, this.C, str, jn2Var, 5));
+        lb4VarH0.f(new t6(this, lb4VarH0, fr2Var, str, 16), new rn2(this, 1));
+        return lb4VarH0;
     }
 
-    public final mw1 z(fr2 r10, String r11) {
-        B(r10);
+    public final mw1 z(fr2 fr2Var, String str) {
+        B(fr2Var);
         this.D.getClass();
-        mw1 r0 = new mw1(new m92(0, SystemClock.elapsedRealtime(), null, null, null, 1));
-        r0.f(new v6(this, r10, r11, 28), new rn2(this, 0));
-        return r0;
+        mw1 mw1Var = new mw1(new m92(0, SystemClock.elapsedRealtime(), null, null, null, 1));
+        mw1Var.f(new v6(this, fr2Var, str, 28), new rn2(this, 0));
+        return mw1Var;
     }
 }

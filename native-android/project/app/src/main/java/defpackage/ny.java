@@ -6,55 +6,60 @@ public final class ny extends z00 {
     public final wf1 q;
     public final wf1 r;
 
-    public ny(wf1 r1, ne0 r2, int r3, wv r4) {
-        super(r2, r3, r4);
-        this.q = r1;
-        this.r = r1;
+    public ny(wf1 wf1Var, ne0 ne0Var, int i, wv wvVar) {
+        super(ne0Var, i, wvVar);
+        this.q = wf1Var;
+        this.r = wf1Var;
     }
 
+    /* JADX WARN: Code duplicated, block: B:7:0x0013  */
     @Override // defpackage.z00
-    public final Object b(rq3 r6, vd0 r7) {
-        if ((r7 instanceof my) == false) goto L7;
-        my r0 = (my) r7;
-        int r1 = r0.q;
-        if ((r1 & Integer.MIN_VALUE) == 0) goto L7;
-        r0.q = r1 - Integer.MIN_VALUE;
-    L8:
-        Object r8 = r0.o;
-        int r2 = r0.q;
-        j15 r3 = j15.a;
-        if (r2 == 0) goto L14;
-        if (r2 != 1) goto L12;
-        r6 = r0.n;
-        kb4.X(r8);
-    L21:
-        if (r6.s.C() == false) goto L23;
-        return r3;
-    L23:
+    public final Object b(rq3 rq3Var, vd0 vd0Var) {
+        my myVar;
+        if (vd0Var instanceof my) {
+            myVar = (my) vd0Var;
+            int i = myVar.q;
+            if ((i & Integer.MIN_VALUE) != 0) {
+                myVar.q = i - Integer.MIN_VALUE;
+            } else {
+                myVar = new my(this, (wd0) vd0Var);
+            }
+        } else {
+            myVar = new my(this, (wd0) vd0Var);
+        }
+        Object obj = myVar.o;
+        int i2 = myVar.q;
+        j15 j15Var = j15.a;
+        if (i2 == 0) {
+            kb4.X(obj);
+            myVar.n = rq3Var;
+            myVar.q = 1;
+            Object objInvoke = this.q.invoke(rq3Var, myVar);
+            xe0 xe0Var = xe0.n;
+            if (objInvoke != xe0Var) {
+                objInvoke = j15Var;
+            }
+            if (objInvoke == xe0Var) {
+                return xe0Var;
+            }
+        } else {
+            if (i2 != 1) {
+                kf2.o("call to 'resume' before 'invoke' with coroutine");
+                return null;
+            }
+            rq3Var = myVar.n;
+            kb4.X(obj);
+        }
+        if (rq3Var.s.C()) {
+            return j15Var;
+        }
         kf2.o("'awaitClose { yourCallbackOrListener.cancel() }' should be used in the end of callbackFlow block.\nOtherwise, a callback/listener may leak in case of external cancellation.\nSee callbackFlow API documentation for the details.");
         return null;
-    L12:
-        kf2.o("call to 'resume' before 'invoke' with coroutine");
-        return null;
-    L14:
-        kb4.X(r8);
-        r0.n = r6;
-        r0.q = 1;
-        Object r5 = this.q.invoke(r6, r0);
-        xe0 r9 = xe0.n;
-        if (r5 == r9) goto L18;
-        r5 = r3;
-    L18:
-        if (r5 != r9) goto L21;
-        return r9;
-    L7:
-        r0 = new my(this, (wd0) r7);
-        goto L8
     }
 
     @Override // defpackage.z00
-    public final z00 d(ne0 r2, int r3, wv r4) {
-        return new ny(this.r, r2, r3, r4);
+    public final z00 d(ne0 ne0Var, int i, wv wvVar) {
+        return new ny(this.r, ne0Var, i, wvVar);
     }
 
     @Override // defpackage.z00

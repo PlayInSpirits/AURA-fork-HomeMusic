@@ -10,486 +10,373 @@ public class yd4 {
     public Object[] o;
     public int p;
 
-    public yd4(int r2) {
-        if (r2 != 0) goto L5;
-        int[] r0 = su3.a;
-    L6:
-        this.n = r0;
-        if (r2 != 0) goto L9;
-        Object[] r3 = su3.c;
-    L10:
-        this.o = r3;
-        return;
-    L9:
-        r3 = new Object[r2 << 1];
-        goto L10
-    L5:
-        r0 = new int[r2];
-        goto L6
+    public yd4(int i) {
+        this.n = i == 0 ? su3.a : new int[i];
+        this.o = i == 0 ? su3.c : new Object[i << 1];
     }
 
-    public final int a(Object r5) {
-        int r0 = this.p * 2;
-        Object[] r4 = this.o;
-        if (r5 != null) goto L11;
-        int r6 = 1;
-    L5:
-        if (r6 >= r0) goto L18;
-        if (r4[r6] == null) goto L9;
-        r6 = r6 + 2;
-        goto L5
-    L9:
-        return r6 >> 1;
-    L18:
-        return -1;
-    L11:
-        int r2 = 1;
-    L12:
-        if (r2 >= r0) goto L24;
-        if (r5.equals(r4[r2]) == true) goto L16;
-        r2 = r2 + 2;
-        goto L12
-    L16:
-        return r2 >> 1;
-    L24:
+    public final int a(Object obj) {
+        int i = this.p * 2;
+        Object[] objArr = this.o;
+        if (obj == null) {
+            for (int i2 = 1; i2 < i; i2 += 2) {
+                if (objArr[i2] == null) {
+                    return i2 >> 1;
+                }
+            }
+            return -1;
+        }
+        for (int i3 = 1; i3 < i; i3 += 2) {
+            if (obj.equals(objArr[i3])) {
+                return i3 >> 1;
+            }
+        }
         return -1;
     }
 
-    public final void b(int r4) {
-        int r0 = this.p;
-        int[] r1 = this.n;
-        if (r1.length >= r4) goto L6;
-        this.n = Arrays.copyOf(r1, r4);
-        this.o = Arrays.copyOf(this.o, r4 * 2);
-    L6:
-        if (this.p != r0) goto L8;
-        return;
-    L8:
+    public final void b(int i) {
+        int i2 = this.p;
+        int[] iArr = this.n;
+        if (iArr.length < i) {
+            this.n = Arrays.copyOf(iArr, i);
+            this.o = Arrays.copyOf(this.o, i * 2);
+        }
+        if (this.p == i2) {
+            return;
+        }
         kf2.c();
     }
 
-    public final int c(int r6, Object r7) {
-        int r0 = this.p;
-        if (r0 != 0) goto L6;
-        return -1;
-    L6:
-        int r1 = su3.h(r0, r6, this.n);
-        if (r1 >= 0) goto L10;
-    L11:
-        return r1;
-    L10:
-        if (h12.c(r7, this.o[r1 << 1]) == true) goto L11;
-        int r2 = r1 + 1;
-    L13:
-        if (r2 >= r0) goto L20;
-        if (this.n[r2] != r6) goto L20;
-        if (h12.c(r7, this.o[r2 << 1]) == true) goto L18;
-        r2 = r2 + 1;
-        goto L13
-    L18:
-        return r2;
-    L20:
-        int r3 = r1 - 1;
-    L21:
-        if (r3 < 0) goto L29;
-        if (this.n[r3] != r6) goto L29;
-        if (h12.c(r7, this.o[r3 << 1]) == true) goto L26;
-        r3 = r3 - 1;
-        goto L21
-    L26:
-        return r3;
-    L29:
-        return ~r2;
+    public final int c(int i, Object obj) {
+        int i2 = this.p;
+        if (i2 == 0) {
+            return -1;
+        }
+        int iH = su3.h(i2, i, this.n);
+        if (iH < 0 || h12.c(obj, this.o[iH << 1])) {
+            return iH;
+        }
+        int i3 = iH + 1;
+        while (i3 < i2 && this.n[i3] == i) {
+            if (h12.c(obj, this.o[i3 << 1])) {
+                return i3;
+            }
+            i3++;
+        }
+        for (int i4 = iH - 1; i4 >= 0 && this.n[i4] == i; i4--) {
+            if (h12.c(obj, this.o[i4 << 1])) {
+                return i4;
+            }
+        }
+        return ~i3;
     }
 
     public void clear() {
-        if (this.p <= 0) goto L6;
-        this.n = su3.a;
-        this.o = su3.c;
-        this.p = 0;
-    L6:
-        if (this.p > 0) goto L8;
-        return;
-    L8:
+        if (this.p > 0) {
+            this.n = su3.a;
+            this.o = su3.c;
+            this.p = 0;
+        }
+        if (this.p <= 0) {
+            return;
+        }
         kf2.c();
     }
 
-    public boolean containsKey(Object r1) {
-        if (d(r1) < 0) goto L6;
-        return true;
-    L6:
-        return false;
+    public boolean containsKey(Object obj) {
+        return d(obj) >= 0;
     }
 
-    public boolean containsValue(Object r1) {
-        if (a(r1) < 0) goto L6;
-        return true;
-    L6:
-        return false;
+    public boolean containsValue(Object obj) {
+        return a(obj) >= 0;
     }
 
-    public final int d(Object r2) {
-        if (r2 != null) goto L6;
-        return e();
-    L6:
-        return c(r2.hashCode(), r2);
+    public final int d(Object obj) {
+        return obj == null ? e() : c(obj.hashCode(), obj);
     }
 
     public final int e() {
-        int r0 = this.p;
-        if (r0 != 0) goto L6;
-        return -1;
-    L6:
-        int r1 = su3.h(r0, 0, this.n);
-        if (r1 >= 0) goto L10;
-    L11:
-        return r1;
-    L10:
-        if (this.o[r1 << 1] == null) goto L11;
-        int r2 = r1 + 1;
-    L13:
-        if (r2 >= r0) goto L20;
-        if (this.n[r2] != 0) goto L20;
-        if (this.o[r2 << 1] == null) goto L18;
-        r2 = r2 + 1;
-        goto L13
-    L18:
-        return r2;
-    L20:
-        int r3 = r1 - 1;
-    L21:
-        if (r3 < 0) goto L29;
-        if (this.n[r3] != 0) goto L29;
-        if (this.o[r3 << 1] == null) goto L26;
-        r3 = r3 - 1;
-        goto L21
-    L26:
-        return r3;
-    L29:
-        return ~r2;
+        int i = this.p;
+        if (i == 0) {
+            return -1;
+        }
+        int iH = su3.h(i, 0, this.n);
+        if (iH < 0 || this.o[iH << 1] == null) {
+            return iH;
+        }
+        int i2 = iH + 1;
+        while (i2 < i && this.n[i2] == 0) {
+            if (this.o[i2 << 1] == null) {
+                return i2;
+            }
+            i2++;
+        }
+        for (int i3 = iH - 1; i3 >= 0 && this.n[i3] == 0; i3--) {
+            if (this.o[i3 << 1] == null) {
+                return i3;
+            }
+        }
+        return ~i2;
     }
 
-    public final boolean equals(Object r8) {
-        if (this != r8) goto L44;
-        return true;
-    L44:
-        if ((r8 instanceof yd4) == false) goto L25;
-        int r2 = this.p;     // Catch: Throwable -> L43
-        if (r2 == ((yd4) r8).p) goto L11;
-        return false;
-    L11:
-        yd4 r9 = (yd4) r8;     // Catch: Throwable -> L43
-        int r3 = 0;
-    L12:
-        if (r3 >= r2) goto L23;
-        Object r4 = f(r3);     // Catch: Throwable -> L43
-        Object r5 = j(r3);     // Catch: Throwable -> L43
-        Object r6 = r9.get(r4);     // Catch: Throwable -> L43
-        if (r5 != null) goto L20;
-        if (r6 != null) goto L18;
-        if (r9.containsKey(r4) == false) goto L18;
-    L22:
-        r3 = r3 + 1;     // Catch: Throwable -> L43
-    L18:
-        return false;
-    L20:
-        if (r5.equals(r6) == true) goto L22;
-        return false;
-    L23:
-        return true;
-    L25:
-        if ((r8 instanceof Map) == false) goto L42;
-        if (this.p == ((Map) r8).size()) goto L29;
-        return false;
-    L29:
-        int r7 = this.p;     // Catch: Throwable -> L43
-        int r10 = 0;
-    L30:
-        if (r10 >= r7) goto L41;
-        Object r11 = f(r10);     // Catch: Throwable -> L43
-        Object r12 = j(r10);     // Catch: Throwable -> L43
-        Object r13 = ((Map) r8).get(r11);     // Catch: Throwable -> L43
-        if (r12 != null) goto L38;
-        if (r13 != null) goto L36;
-        if (((Map) r8).containsKey(r11) == false) goto L36;
-    L40:
-        r10 = r10 + 1;
-    L36:
-        return false;
-    L38:
-        if (r12.equals(r13) == true) goto L40;
-        return false;
-    L41:
-        return true;
-    L42:
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        try {
+            if (obj instanceof yd4) {
+                int i = this.p;
+                if (i != ((yd4) obj).p) {
+                    return false;
+                }
+                yd4 yd4Var = (yd4) obj;
+                for (int i2 = 0; i2 < i; i2++) {
+                    Object objF = f(i2);
+                    Object objJ = j(i2);
+                    Object obj2 = yd4Var.get(objF);
+                    if (objJ == null) {
+                        if (obj2 != null || !yd4Var.containsKey(objF)) {
+                            return false;
+                        }
+                    } else if (!objJ.equals(obj2)) {
+                        return false;
+                    }
+                }
+                return true;
+            }
+            if (!(obj instanceof Map) || this.p != ((Map) obj).size()) {
+                return false;
+            }
+            int i3 = this.p;
+            for (int i4 = 0; i4 < i3; i4++) {
+                Object objF2 = f(i4);
+                Object objJ2 = j(i4);
+                Object obj3 = ((Map) obj).get(objF2);
+                if (objJ2 == null) {
+                    if (obj3 != null || !((Map) obj).containsKey(objF2)) {
+                        return false;
+                    }
+                } else if (!objJ2.equals(obj3)) {
+                    return false;
+                }
+            }
+            return true;
+        } catch (ClassCastException | NullPointerException unused) {
+        }
         return false;
     }
 
-    public final Object f(int r4) {
-        boolean r0 = false;
-        if (r4 >= 0) goto L5;
-    L7:
-        if (r0 == true) goto L9;
-        kf2.n(f34.f(r4, "Expected index to be within 0..size()-1, but was "));
+    public final Object f(int i) {
+        boolean z = false;
+        if (i >= 0 && i < this.p) {
+            z = true;
+        }
+        if (z) {
+            return this.o[i << 1];
+        }
+        kf2.n(f34.f(i, "Expected index to be within 0..size()-1, but was "));
         return null;
-    L9:
-        return this.o[r4 << 1];
-    L5:
-        if (r4 >= this.p) goto L7;
-        r0 = true;
-        goto L7
     }
 
-    public void g(oi r5) {
-        int r0 = r5.p;
-        b(this.p + r0);
-        int r2 = 0;
-        if (this.p != 0) goto L7;
-        if (r0 <= 0) goto L9;
-        ti.Y(0, 0, r0, r5.n, this.n);
-        int r3 = r0 << 1;
-        ti.Z(0, 0, r3, r5.o, this.o);
-        this.p = r0;
-        return;
-    L9:
-        return;
-    L7:
-        if (r2 >= r0) goto L11;
-        put(r5.f(r2), r5.j(r2));
-        r2 = r2 + 1;
-        goto L7
+    public void g(oi oiVar) {
+        int i = oiVar.p;
+        b(this.p + i);
+        if (this.p != 0) {
+            for (int i2 = 0; i2 < i; i2++) {
+                put(oiVar.f(i2), oiVar.j(i2));
+            }
+        } else if (i > 0) {
+            ti.Y(0, 0, i, oiVar.n, this.n);
+            ti.Z(0, 0, i << 1, oiVar.o, this.o);
+            this.p = i;
+        }
     }
 
-    public Object get(Object r1) {
-        int r2 = d(r1);
-        if (r2 >= 0) goto L5;
+    public Object get(Object obj) {
+        int iD = d(obj);
+        if (iD >= 0) {
+            return this.o[(iD << 1) + 1];
+        }
         return null;
-    L5:
-        return this.o[(r2 << 1) + 1];
     }
 
-    public final Object getOrDefault(Object r1, Object r2) {
-        int r3 = d(r1);
-        if (r3 >= 0) goto L5;
-        return r2;
-    L5:
-        return this.o[(r3 << 1) + 1];
+    public final Object getOrDefault(Object obj, Object obj2) {
+        int iD = d(obj);
+        return iD >= 0 ? this.o[(iD << 1) + 1] : obj2;
     }
 
-    public Object h(int r11) {
-        if (r11 < 0) goto L33;
-        int r1 = this.p;
-        if (r11 >= r1) goto L33;
-        Object[] r2 = this.o;
-        int r3 = r11 << 1;
-        Object r4 = r2[r3 + 1];
-        if (r1 > 1) goto L10;
-        clear();
-        return r4;
-    L10:
-        int r6 = r1 - 1;
-        int[] r7 = this.n;
-        int r9 = 8;
-        if (r7.length > 8) goto L13;
-    L24:
-        if (r11 >= r6) goto L26;
-        int r5 = r11 + 1;
-        ti.Y(r11, r5, r1, r7, r7);
-        Object[] r12 = this.o;
-        ti.Z(r3, r5 << 1, r1 << 1, r12, r12);
-    L26:
-        Object[] r13 = this.o;
-        int r8 = r6 << 1;
-        r13[r8] = null;
-        r13[r8 + 1] = null;
-    L28:
-        if (r1 != this.p) goto L31;
-        this.p = r6;
-        return r4;
-    L31:
+    public Object h(int i) {
+        int i2;
+        if (i < 0 || i >= (i2 = this.p)) {
+            kf2.n(f34.f(i, "Expected index to be within 0..size()-1, but was "));
+            return null;
+        }
+        Object[] objArr = this.o;
+        int i3 = i << 1;
+        Object obj = objArr[i3 + 1];
+        if (i2 <= 1) {
+            clear();
+            return obj;
+        }
+        int i4 = i2 - 1;
+        int[] iArr = this.n;
+        if (iArr.length <= 8 || i2 >= iArr.length / 3) {
+            if (i < i4) {
+                int i5 = i + 1;
+                ti.Y(i, i5, i2, iArr, iArr);
+                Object[] objArr2 = this.o;
+                ti.Z(i3, i5 << 1, i2 << 1, objArr2, objArr2);
+            }
+            Object[] objArr3 = this.o;
+            int i6 = i4 << 1;
+            objArr3[i6] = null;
+            objArr3[i6 + 1] = null;
+        } else {
+            int i7 = i2 > 8 ? i2 + (i2 >> 1) : 8;
+            this.n = Arrays.copyOf(iArr, i7);
+            this.o = Arrays.copyOf(this.o, i7 << 1);
+            if (i2 != this.p) {
+                kf2.c();
+                return null;
+            }
+            if (i > 0) {
+                ti.Y(0, 0, i, iArr, this.n);
+                ti.Z(0, 0, i3, objArr, this.o);
+            }
+            if (i < i4) {
+                int i8 = i + 1;
+                ti.Y(i, i8, i2, iArr, this.n);
+                ti.Z(i3, i8 << 1, i2 << 1, objArr, this.o);
+            }
+        }
+        if (i2 == this.p) {
+            this.p = i4;
+            return obj;
+        }
         kf2.c();
-        return null;
-    L13:
-        if (r1 >= (r7.length / 3)) goto L24;
-        if (r1 <= 8) goto L16;
-        r9 = r1 + (r1 >> 1);
-    L16:
-        this.n = Arrays.copyOf(r7, r9);
-        this.o = Arrays.copyOf(this.o, r9 << 1);
-        if (r1 != this.p) goto L22;
-        if (r11 <= 0) goto L20;
-        ti.Y(0, 0, r11, r7, this.n);
-        ti.Z(0, 0, r3, r2, this.o);
-    L20:
-        if (r11 >= r6) goto L28;
-        int r10 = r11 + 1;
-        ti.Y(r11, r10, r1, r7, this.n);
-        ti.Z(r3, r10 << 1, r1 << 1, r2, this.o);
-        goto L28
-    L22:
-        kf2.c();
-        return null;
-    L33:
-        kf2.n(f34.f(r11, "Expected index to be within 0..size()-1, but was "));
         return null;
     }
 
     public int hashCode() {
-        int[] r0 = this.n;
-        Object[] r1 = this.o;
-        int r8 = this.p;
-        int r3 = 1;
-        int r4 = 0;
-        int r5 = 0;
-    L3:
-        if (r4 >= r8) goto L9;
-        Object r6 = r1[r3];
-        int r7 = r0[r4];
-        if (r6 == null) goto L7;
-        int r9 = r6.hashCode();
-    L8:
-        r5 = r5 + (r9 ^ r7);
-        r4 = r4 + 1;
-        r3 = r3 + 2;
-        goto L3
-    L7:
-        r9 = 0;
-        goto L8
-    L9:
-        return r5;
+        int[] iArr = this.n;
+        Object[] objArr = this.o;
+        int i = this.p;
+        int i2 = 1;
+        int i3 = 0;
+        int iHashCode = 0;
+        while (i3 < i) {
+            Object obj = objArr[i2];
+            iHashCode += (obj != null ? obj.hashCode() : 0) ^ iArr[i3];
+            i3++;
+            i2 += 2;
+        }
+        return iHashCode;
     }
 
-    public Object i(int r4, Object r5) {
-        boolean r0 = false;
-        if (r4 >= 0) goto L5;
-    L7:
-        if (r0 == false) goto L10;
-        int r6 = (r4 << 1) + 1;
-        Object[] r3 = this.o;
-        Object r1 = r3[r6];
-        r3[r6] = r5;
-        return r1;
-    L10:
-        kf2.n(f34.f(r4, "Expected index to be within 0..size()-1, but was "));
-        return null;
-    L5:
-        if (r4 >= this.p) goto L7;
-        r0 = true;
-        goto L7
+    public Object i(int i, Object obj) {
+        boolean z = false;
+        if (i >= 0 && i < this.p) {
+            z = true;
+        }
+        if (!z) {
+            kf2.n(f34.f(i, "Expected index to be within 0..size()-1, but was "));
+            return null;
+        }
+        int i2 = (i << 1) + 1;
+        Object[] objArr = this.o;
+        Object obj2 = objArr[i2];
+        objArr[i2] = obj;
+        return obj2;
     }
 
     public final boolean isEmpty() {
-        if (this.p > 0) goto L6;
-        return true;
-    L6:
-        return false;
+        return this.p <= 0;
     }
 
-    public final Object j(int r4) {
-        boolean r0 = false;
-        if (r4 >= 0) goto L5;
-    L7:
-        if (r0 == true) goto L9;
-        kf2.n(f34.f(r4, "Expected index to be within 0..size()-1, but was "));
+    public final Object j(int i) {
+        boolean z = false;
+        if (i >= 0 && i < this.p) {
+            z = true;
+        }
+        if (z) {
+            return this.o[(i << 1) + 1];
+        }
+        kf2.n(f34.f(i, "Expected index to be within 0..size()-1, but was "));
         return null;
-    L9:
-        return this.o[(r4 << 1) + 1];
-    L5:
-        if (r4 >= this.p) goto L7;
-        r0 = true;
-        goto L7
     }
 
-    public Object put(Object r9, Object r10) {
-        int r0 = this.p;
-        if (r9 == null) goto L5;
-        int r1 = r9.hashCode();
-    L6:
-        if (r9 == null) goto L8;
-        int r2 = c(r1, r9);
-    L9:
-        if (r2 < 0) goto L12;
-        int r11 = (r2 << 1) + 1;
-        Object[] r8 = this.o;
-        Object r3 = r8[r11];
-        r8[r11] = r10;
-        return r3;
-    L12:
-        int r4 = ~r2;
-        int[] r5 = this.n;
-        if (r0 < r5.length) goto L26;
-        int r6 = 8;
-        if (r0 < 8) goto L18;
-        r6 = (r0 >> 1) + r0;
-    L21:
-        this.n = Arrays.copyOf(r5, r6);
-        this.o = Arrays.copyOf(this.o, r6 << 1);
-        if (r0 == this.p) goto L26;
+    public Object put(Object obj, Object obj2) {
+        int i = this.p;
+        int iHashCode = obj != null ? obj.hashCode() : 0;
+        int iC = obj != null ? c(iHashCode, obj) : e();
+        if (iC >= 0) {
+            int i2 = (iC << 1) + 1;
+            Object[] objArr = this.o;
+            Object obj3 = objArr[i2];
+            objArr[i2] = obj2;
+            return obj3;
+        }
+        int i3 = ~iC;
+        int[] iArr = this.n;
+        if (i >= iArr.length) {
+            int i4 = 8;
+            if (i >= 8) {
+                i4 = (i >> 1) + i;
+            } else if (i < 4) {
+                i4 = 4;
+            }
+            this.n = Arrays.copyOf(iArr, i4);
+            this.o = Arrays.copyOf(this.o, i4 << 1);
+            if (i != this.p) {
+                kf2.c();
+                return null;
+            }
+        }
+        if (i3 < i) {
+            int[] iArr2 = this.n;
+            int i5 = i3 + 1;
+            ti.Y(i5, i3, i, iArr2, iArr2);
+            Object[] objArr2 = this.o;
+            ti.Z(i5 << 1, i3 << 1, this.p << 1, objArr2, objArr2);
+        }
+        int i6 = this.p;
+        if (i == i6) {
+            int[] iArr3 = this.n;
+            if (i3 < iArr3.length) {
+                iArr3[i3] = iHashCode;
+                Object[] objArr3 = this.o;
+                int i7 = i3 << 1;
+                objArr3[i7] = obj;
+                objArr3[i7 + 1] = obj2;
+                this.p = i6 + 1;
+                return null;
+            }
+        }
         kf2.c();
         return null;
-    L18:
-        if (r0 >= 4) goto L21;
-        r6 = 4;
-    L26:
-        if (r4 >= r0) goto L28;
-        int[] r7 = this.n;
-        int r12 = r4 + 1;
-        ti.Y(r12, r4, r0, r7, r7);
-        Object[] r13 = this.o;
-        ti.Z(r12 << 1, r4 << 1, this.p << 1, r13, r13);
-    L28:
-        int r14 = this.p;
-        if (r0 != r14) goto L34;
-        int[] r15 = this.n;
-        if (r4 >= r15.length) goto L34;
-        r15[r4] = r1;
-        Object[] r16 = this.o;
-        int r17 = r4 << 1;
-        r16[r17] = r9;
-        r16[r17 + 1] = r10;
-        this.p = r14 + 1;
-        return null;
-    L34:
-        kf2.c();
-        return null;
-    L8:
-        r2 = e();
-        goto L9
-    L5:
-        r1 = 0;
-        goto L6
     }
 
-    public final Object putIfAbsent(Object r2, Object r3) {
-        Object r0 = get(r2);
-        if (r0 == null) goto L5;
-        return r0;
-    L5:
-        return put(r2, r3);
+    public final Object putIfAbsent(Object obj, Object obj2) {
+        Object obj3 = get(obj);
+        return obj3 == null ? put(obj, obj2) : obj3;
     }
 
-    public final boolean remove(Object r2, Object r3) {
-        int r4 = d(r2);
-        if (r4 >= 0) goto L5;
-        return false;
-    L5:
-        if (h12.c(r3, j(r4)) == false) goto L10;
-        h(r4);
+    public final boolean remove(Object obj, Object obj2) {
+        int iD = d(obj);
+        if (iD < 0 || !h12.c(obj2, j(iD))) {
+            return false;
+        }
+        h(iD);
         return true;
-    L10:
-        return false;
     }
 
-    public final boolean replace(Object r2, Object r3, Object r4) {
-        int r5 = d(r2);
-        if (r5 >= 0) goto L5;
-        return false;
-    L5:
-        if (h12.c(r3, j(r5)) == false) goto L10;
-        i(r5, r4);
+    public final boolean replace(Object obj, Object obj2, Object obj3) {
+        int iD = d(obj);
+        if (iD < 0 || !h12.c(obj2, j(iD))) {
+            return false;
+        }
+        i(iD, obj3);
         return true;
-    L10:
-        return false;
     }
 
     public final int size() {
@@ -497,53 +384,47 @@ public class yd4 {
     }
 
     public final String toString() {
-        if (isEmpty() == false) goto L6;
-        return "{}";
-    L6:
-        StringBuilder r1 = new StringBuilder(this.p * 28);
-        r1.append('{');
-        int r0 = this.p;
-        int r2 = 0;
-    L7:
-        if (r2 >= r0) goto L19;
-        if (r2 <= 0) goto L10;
-        r1.append(", ");
-    L10:
-        Object r3 = f(r2);
-        if (r3 == r1) goto L13;
-        r1.append(r3);
-    L14:
-        r1.append('=');
-        Object r4 = j(r2);
-        if (r4 == r1) goto L17;
-        r1.append(r4);
-    L18:
-        r2 = r2 + 1;
-        goto L7
-    L17:
-        r1.append("(this Map)");
-        goto L18
-    L13:
-        r1.append("(this Map)");
-        goto L14
-    L19:
-        r1.append('}');
-        return r1.toString();
+        if (isEmpty()) {
+            return "{}";
+        }
+        StringBuilder sb = new StringBuilder(this.p * 28);
+        sb.append('{');
+        int i = this.p;
+        for (int i2 = 0; i2 < i; i2++) {
+            if (i2 > 0) {
+                sb.append(", ");
+            }
+            Object objF = f(i2);
+            if (objF != sb) {
+                sb.append(objF);
+            } else {
+                sb.append("(this Map)");
+            }
+            sb.append('=');
+            Object objJ = j(i2);
+            if (objJ != sb) {
+                sb.append(objJ);
+            } else {
+                sb.append("(this Map)");
+            }
+        }
+        sb.append('}');
+        return sb.toString();
     }
 
-    public Object remove(Object r1) {
-        int r2 = d(r1);
-        if (r2 >= 0) goto L5;
+    public Object remove(Object obj) {
+        int iD = d(obj);
+        if (iD >= 0) {
+            return h(iD);
+        }
         return null;
-    L5:
-        return h(r2);
     }
 
-    public final Object replace(Object r1, Object r2) {
-        int r3 = d(r1);
-        if (r3 >= 0) goto L5;
+    public final Object replace(Object obj, Object obj2) {
+        int iD = d(obj);
+        if (iD >= 0) {
+            return i(iD, obj2);
+        }
         return null;
-    L5:
-        return i(r3, r2);
     }
 }

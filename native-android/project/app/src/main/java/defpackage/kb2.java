@@ -6,17 +6,16 @@ import java.util.Iterator;
 /* JADX INFO: loaded from: classes.dex */
 public final class kb2 implements Iterator {
     public mb2 n;
-    public mb2 o;
+    public mb2 o = null;
     public int p;
     public final /* synthetic */ nb2 q;
     public final /* synthetic */ int r;
 
-    public kb2(nb2 r1, int r2) {
-        this.r = r2;
-        this.q = r1;
-        this.n = r1.s.q;
-        this.o = null;
-        this.p = r1.r;
+    public kb2(nb2 nb2Var, int i) {
+        this.r = i;
+        this.q = nb2Var;
+        this.n = nb2Var.s.q;
+        this.p = nb2Var.r;
     }
 
     public final Object a() {
@@ -24,51 +23,46 @@ public final class kb2 implements Iterator {
     }
 
     public final mb2 b() {
-        mb2 r0 = this.n;
-        nb2 r1 = this.q;
-        if (r0 != r1.s) goto L5;
-        tb4.k();
-        return null;
-    L5:
-        if (r1.r != this.p) goto L8;
-        this.n = r0.q;
-        this.o = r0;
-        return r0;
-    L8:
-        kf2.c();
-        return null;
+        mb2 mb2Var = this.n;
+        nb2 nb2Var = this.q;
+        if (mb2Var == nb2Var.s) {
+            tb4.k();
+            return null;
+        }
+        if (nb2Var.r != this.p) {
+            kf2.c();
+            return null;
+        }
+        this.n = mb2Var.q;
+        this.o = mb2Var;
+        return mb2Var;
     }
 
     @Override // java.util.Iterator
     public final boolean hasNext() {
-        if (this.n == this.q.s) goto L6;
-        return true;
-    L6:
-        return false;
+        return this.n != this.q.s;
     }
 
     @Override // java.util.Iterator
     public Object next() {
-        switch(this.r) {
-            case 1: goto L7;
-            default: goto L5;
-        };
-    L5:
-        return a();
-    L7:
-        return b().s;
+        switch (this.r) {
+            case 1:
+                return b().s;
+            default:
+                return a();
+        }
     }
 
     @Override // java.util.Iterator
     public final void remove() {
-        mb2 r0 = this.o;
-        if (r0 == null) goto L6;
-        nb2 r2 = this.q;
-        r2.c(r0, true);
+        mb2 mb2Var = this.o;
+        if (mb2Var == null) {
+            tb4.a();
+            return;
+        }
+        nb2 nb2Var = this.q;
+        nb2Var.c(mb2Var, true);
         this.o = null;
-        this.p = r2.r;
-        return;
-    L6:
-        tb4.a();
+        this.p = nb2Var.r;
     }
 }

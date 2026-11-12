@@ -10,9 +10,9 @@ public interface j4 {
 
     Context h();
 
-    void q(Drawable r1, int r2);
+    void q(Drawable drawable, int i);
 
     Drawable t();
 
-    void u(int r1);
+    void u(int i);
 }

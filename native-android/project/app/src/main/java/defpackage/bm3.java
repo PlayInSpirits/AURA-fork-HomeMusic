@@ -7,11 +7,11 @@ import java.util.function.ToLongFunction;
 /* JADX INFO: loaded from: classes.dex */
 public final /* synthetic */ class bm3 implements ToLongFunction {
     @Override // java.util.function.ToLongFunction
-    public final long applyAsLong(Object r1) {
-        Child r2 = (Child) r1;
-        if (r2.getDuration() != null) goto L5;
-        return 0;
-    L5:
-        return r2.getDuration().intValue();
+    public final long applyAsLong(Object obj) {
+        Child child = (Child) obj;
+        if (child.getDuration() != null) {
+            return child.getDuration().intValue();
+        }
+        return 0L;
     }
 }

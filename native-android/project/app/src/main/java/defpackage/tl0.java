@@ -5,6 +5,7 @@ import android.widget.FrameLayout;
 import java.util.HashMap;
 import java.util.List;
 import java.util.WeakHashMap;
+import org.chromium.support_lib_boundary.WebSettingsBoundaryInterface;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
@@ -13,145 +14,124 @@ public final class tl0 implements w92 {
     public final Object o;
     public final Object p;
 
-    public tl0(aa2 r3) {
+    public tl0(aa2 aa2Var) {
         this.n = 5;
-        this.o = r3;
-        l30 r0 = l30.c;
-        Class<?> r4 = r3.getClass();
-        j30 r1 = (j30) r0.a.get(r4);
-        if (r1 != null) goto L6;
-        r1 = r0.a(r4, null);
-    L6:
-        this.p = r1;
+        this.o = aa2Var;
+        l30 l30Var = l30.c;
+        Class<?> cls = aa2Var.getClass();
+        j30 j30Var = (j30) l30Var.a.get(cls);
+        this.p = j30Var == null ? l30Var.a(cls, null) : j30Var;
     }
 
     @Override // defpackage.w92
-    public final void b(ba2 r4, q92 r5) {
-        int r0 = this.n;
-        Object r1 = this.o;
-        Object r2 = this.p;
-        switch(r0) {
-            case 0: goto L32;
-            case 1: goto L25;
-            case 2: goto L22;
-            case 3: goto L18;
-            case 4: goto L6;
-            default: goto L4;
-        };
-    L4:
-        HashMap r3 = ((j30) r2).a;
-        j30.a((List) r3.get(r5), r4, r5, r1);
-        j30.a((List) r3.get(q92.ON_ANY), r4, r5, r1);
-        return;
-    L6:
-        u83 r6 = (u83) r1;
-        int r7 = z83.a[r5.ordinal()];
-        if (r7 != 1) goto L9;
-        r6.b(true);
-        return;
-    L9:
-        if (r7 != 2) goto L11;
-        r6.b(false);
-        return;
-    L11:
-        if (r7 != 3) goto L48;
-        r6.a();
-        ((ea2) r2).f(this);
-        return;
-    L48:
-        return;
-    L25:
-        ke1 r8 = (ke1) r1;
-        ee1 r9 = (ee1) r2;
-        if (r9.r.N() == true) goto L52;
-        r4.h().f(this);
-        FrameLayout r10 = (FrameLayout) r8.a;
-        WeakHashMap r11 = j65.a;
-        if (r10.isAttachedToWindow() == false) goto L51;
-        r9.u(r8);
-        return;
-    L51:
-        return;
-    L52:
-        return;
-    L32:
-        rl0 r12 = (rl0) r1;
-        switch(sl0.a[r5.ordinal()]) {
-            case 1: goto L41;
-            case 2: goto L40;
-            case 3: goto L39;
-            case 4: goto L38;
-            case 5: goto L37;
-            case 6: goto L36;
-            case 7: goto L35;
-            default: goto L34;
-        };
-    L34:
-        er1.n();
-        return;
-    L35:
-        kf2.n("ON_ANY must not been send by anybody");
-        return;
-    L36:
-        r12.onDestroy(r4);
-    L42:
-        w92 r13 = (w92) r2;
-        if (r13 == null) goto L55;
-        r13.b(r4, r5);
-        return;
-    L55:
-        return;
-    L37:
-        r12.onStop(r4);
-        goto L42
-    L38:
-        r12.getClass();
-        goto L42
-    L39:
-        r12.j(r4);
-        goto L42
-    L40:
-        r12.onStart(r4);
-        goto L42
-    L41:
-        r12.getClass();
-        goto L42
-    L18:
-        if (r5 != q92.ON_START) goto L49;
-        ((ea2) r1).f(this);
-        ((rm3) r2).P();
-        return;
-    L49:
-        return;
-    L22:
-        if (r5 != q92.ON_DESTROY) goto L50;
-        ((Handler) r1).removeCallbacks((g5) r2);
-        r4.h().f(this);
-        return;
+    public final void b(ba2 ba2Var, q92 q92Var) {
+        int i = this.n;
+        Object obj = this.o;
+        Object obj2 = this.p;
+        switch (i) {
+            case 0:
+                rl0 rl0Var = (rl0) obj;
+                switch (sl0.a[q92Var.ordinal()]) {
+                    case 1:
+                        rl0Var.getClass();
+                        break;
+                    case 2:
+                        rl0Var.onStart(ba2Var);
+                        break;
+                    case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
+                        rl0Var.j(ba2Var);
+                        break;
+                    case 4:
+                        rl0Var.getClass();
+                        break;
+                    case 5:
+                        rl0Var.onStop(ba2Var);
+                        break;
+                    case 6:
+                        rl0Var.onDestroy(ba2Var);
+                        break;
+                    case 7:
+                        kf2.n("ON_ANY must not been send by anybody");
+                        break;
+                    default:
+                        er1.n();
+                        break;
+                }
+                w92 w92Var = (w92) obj2;
+                if (w92Var != null) {
+                    w92Var.b(ba2Var, q92Var);
+                }
+                break;
+            case 1:
+                ke1 ke1Var = (ke1) obj;
+                ee1 ee1Var = (ee1) obj2;
+                if (!ee1Var.r.N()) {
+                    ba2Var.h().f(this);
+                    FrameLayout frameLayout = (FrameLayout) ke1Var.a;
+                    WeakHashMap weakHashMap = j65.a;
+                    if (frameLayout.isAttachedToWindow()) {
+                        ee1Var.u(ke1Var);
+                    }
+                    break;
+                }
+                break;
+            case 2:
+                if (q92Var == q92.ON_DESTROY) {
+                    ((Handler) obj).removeCallbacks((g5) obj2);
+                    ba2Var.h().f(this);
+                }
+                break;
+            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
+                if (q92Var == q92.ON_START) {
+                    ((ea2) obj).f(this);
+                    ((rm3) obj2).P();
+                }
+                break;
+            case 4:
+                u83 u83Var = (u83) obj;
+                int i2 = z83.a[q92Var.ordinal()];
+                if (i2 == 1) {
+                    u83Var.b(true);
+                    break;
+                } else if (i2 == 2) {
+                    u83Var.b(false);
+                    break;
+                } else if (i2 == 3) {
+                    u83Var.a();
+                    ((ea2) obj2).f(this);
+                    break;
+                }
+                break;
+            default:
+                HashMap map = ((j30) obj2).a;
+                j30.a((List) map.get(q92Var), ba2Var, q92Var, obj);
+                j30.a((List) map.get(q92.ON_ANY), ba2Var, q92Var, obj);
+                break;
+        }
     }
 
-    public tl0(rl0 r2, w92 r3) {
+    public tl0(rl0 rl0Var, w92 w92Var) {
         this.n = 0;
-        r2.getClass();
-        this.o = r2;
-        this.p = r3;
+        rl0Var.getClass();
+        this.o = rl0Var;
+        this.p = w92Var;
     }
 
-    public /* synthetic */ tl0(int r1, Object r2, Object r3) {
-        this.n = r1;
-        this.o = r2;
-        this.p = r3;
+    public /* synthetic */ tl0(int i, Object obj, Object obj2) {
+        this.n = i;
+        this.o = obj;
+        this.p = obj2;
     }
 
-    public tl0(u83 r1, a93 r2, ea2 r3) {
+    public tl0(u83 u83Var, a93 a93Var, ea2 ea2Var) {
         this.n = 4;
-        this.o = r1;
-        this.p = r3;
+        this.o = u83Var;
+        this.p = ea2Var;
     }
 
-    public tl0(ee1 r2, ke1 r3) {
+    public tl0(ee1 ee1Var, ke1 ke1Var) {
         this.n = 1;
-        this.p = r2;
-        this.o = r3;
+        this.p = ee1Var;
+        this.o = ke1Var;
     }
 }

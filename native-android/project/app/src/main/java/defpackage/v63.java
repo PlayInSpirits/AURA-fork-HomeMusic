@@ -7,15 +7,12 @@ import java.util.ArrayDeque;
 /* JADX INFO: loaded from: classes.dex */
 public final class v63 {
     public final ComponentName a;
-    public boolean b;
     public yu1 c;
-    public final ArrayDeque d;
-    public int e;
+    public boolean b = false;
+    public final ArrayDeque d = new ArrayDeque();
+    public int e = 0;
 
-    public v63(ComponentName r3) {
-        this.b = false;
-        this.d = new ArrayDeque();
-        this.e = 0;
-        this.a = r3;
+    public v63(ComponentName componentName) {
+        this.a = componentName;
     }
 }

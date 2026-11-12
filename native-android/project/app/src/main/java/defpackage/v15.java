@@ -4,7 +4,7 @@ package defpackage;
 /* JADX INFO: loaded from: classes.dex */
 public final class v15 extends w15 {
     @Override // defpackage.w15
-    public final Object a(Class r3) {
-        throw new UnsupportedOperationException("Cannot allocate " + r3 + ". Usage of JDK sun.misc.Unsafe is enabled, but it could not be used. Make sure your runtime is configured correctly.");
+    public final Object a(Class cls) {
+        throw new UnsupportedOperationException("Cannot allocate " + cls + ". Usage of JDK sun.misc.Unsafe is enabled, but it could not be used. Make sure your runtime is configured correctly.");
     }
 }

@@ -9,37 +9,27 @@ public final class qw2 implements q84 {
     public final long[] b;
     public final long c;
 
-    public qw2(long r3, long[] r5, long[] r6) {
-        this.a = r5;
-        this.b = r6;
-        if (r3 != (-9223372036854775807L)) goto L6;
-        r3 = f35.Q(r6[r6.length - 1]);
-    L6:
-        this.c = r3;
+    public qw2(long j, long[] jArr, long[] jArr2) {
+        this.a = jArr;
+        this.b = jArr2;
+        this.c = j == -9223372036854775807L ? f35.Q(jArr2[jArr2.length - 1]) : j;
     }
 
-    public static Pair h(long r10, long[] r12, long[] r13) {
-        int r1 = f35.f(r12, r10, true);
-        long r2 = r12[r1];
-        long r4 = r13[r1];
-        int r3 = r1 + 1;
-        if (r3 == r12.length) goto L5;
-        long r6 = r12[r3];
-        long r14 = r13[r3];
-        if (r6 != r2) goto L9;
-        double r0 = 0.0d;
-    L11:
-        return Pair.create(Long.valueOf(r10), Long.valueOf(((long) (r0 * (r14 - r4))) + r4));
-    L9:
-        r0 = (r10 - r2) / (r6 - r2);
-        goto L11
-    L5:
-        return Pair.create(Long.valueOf(r2), Long.valueOf(r4));
+    public static Pair h(long j, long[] jArr, long[] jArr2) {
+        int iF = f35.f(jArr, j, true);
+        long j2 = jArr[iF];
+        long j3 = jArr2[iF];
+        int i = iF + 1;
+        if (i == jArr.length) {
+            return Pair.create(Long.valueOf(j2), Long.valueOf(j3));
+        }
+        long j4 = jArr[i];
+        return Pair.create(Long.valueOf(j), Long.valueOf(((long) ((j4 == j2 ? 0.0d : (j - j2) / (j4 - j2)) * (jArr2[i] - j3))) + j3));
     }
 
     @Override // defpackage.q84
     public final long a() {
-        return -1;
+        return -1L;
     }
 
     @Override // defpackage.m84
@@ -48,15 +38,15 @@ public final class qw2 implements q84 {
     }
 
     @Override // defpackage.q84
-    public final long c(long r2) {
-        return f35.Q(((Long) h(r2, this.a, this.b).second).longValue());
+    public final long c(long j) {
+        return f35.Q(((Long) h(j, this.a, this.b).second).longValue());
     }
 
     @Override // defpackage.m84
-    public final l84 e(long r7) {
-        Pair r6 = h(f35.i0(f35.k(r7, 0, this.c)), this.b, this.a);
-        o84 r2 = new o84(f35.Q(((Long) r6.first).longValue()), ((Long) r6.second).longValue());
-        return new l84(r2, r2);
+    public final l84 e(long j) {
+        Pair pairH = h(f35.i0(f35.k(j, 0L, this.c)), this.b, this.a);
+        o84 o84Var = new o84(f35.Q(((Long) pairH.first).longValue()), ((Long) pairH.second).longValue());
+        return new l84(o84Var, o84Var);
     }
 
     @Override // defpackage.q84

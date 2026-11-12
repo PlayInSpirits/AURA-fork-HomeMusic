@@ -8,26 +8,20 @@ import java.util.Arrays;
 public final class m implements ke0 {
     public final float a;
 
-    public m(float r1) {
-        this.a = r1;
+    public m(float f) {
+        this.a = f;
     }
 
     @Override // defpackage.ke0
-    public final float a(RectF r1) {
+    public final float a(RectF rectF) {
         return this.a;
     }
 
-    public final boolean equals(Object r4) {
-        if (this != r4) goto L6;
-        return true;
-    L6:
-        if ((r4 instanceof m) == true) goto L9;
-        return false;
-    L9:
-        if (this.a != ((m) r4).a) goto L11;
-        return true;
-    L11:
-        return false;
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        return (obj instanceof m) && this.a == ((m) obj).a;
     }
 
     public final int hashCode() {

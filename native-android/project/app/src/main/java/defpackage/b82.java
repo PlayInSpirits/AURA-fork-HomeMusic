@@ -8,9 +8,9 @@ public final class b82 {
     public r70 c;
     public final /* synthetic */ c82 d;
 
-    public b82(c82 r1, int r2, Object r3) {
-        this.d = r1;
-        this.a = r3;
-        this.b = r2;
+    public b82(c82 c82Var, int i, Object obj) {
+        this.d = c82Var;
+        this.a = obj;
+        this.b = i;
     }
 }

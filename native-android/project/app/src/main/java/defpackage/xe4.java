@@ -5,8 +5,8 @@ package defpackage;
 public final class xe4 extends wn4 {
     public final /* synthetic */ ho0 u;
 
-    public xe4(ho0 r1) {
-        this.u = r1;
+    public xe4(ho0 ho0Var) {
+        this.u = ho0Var;
     }
 
     @Override // defpackage.dj0

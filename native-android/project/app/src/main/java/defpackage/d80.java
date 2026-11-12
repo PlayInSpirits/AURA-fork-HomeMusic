@@ -6,42 +6,29 @@ public final class d80 {
     public final int a;
     public final Integer b;
 
-    public d80(int r1, gb r2, Integer r3) {
-        this.a = r1;
-        this.b = r3;
+    public d80(int i, gb gbVar, Integer num) {
+        this.a = i;
+        this.b = num;
     }
 
-    public final boolean equals(Object r5) {
-        if (this != r5) goto L6;
-        return true;
-    L6:
-        if ((r5 instanceof d80) == true) goto L8;
-        return false;
-    L8:
-        d80 r6 = (d80) r5;
-        if (this.a == r6.a) goto L12;
-        return false;
-    L12:
-        if (h12.c(null, null) == true) goto L15;
-        return false;
-    L15:
-        if (h12.c(this.b, r6.b) == true) goto L17;
-        return false;
-    L17:
-        return true;
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof d80)) {
+            return false;
+        }
+        d80 d80Var = (d80) obj;
+        return this.a == d80Var.a && h12.c(null, null) && h12.c(this.b, d80Var.b);
     }
 
     public final int hashCode() {
-        int r1 = 0;
-        int r0 = ((Integer.hashCode(this.a) * 31) + 0) * 31;
-        Integer r2 = this.b;
-        if (r2 == null) goto L7;
-        r1 = r2.hashCode();
-    L7:
-        return r0 + r1;
+        int iHashCode = ((Integer.hashCode(this.a) * 31) + 0) * 31;
+        Integer num = this.b;
+        return iHashCode + (num != null ? num.hashCode() : 0);
     }
 
     public final String toString() {
-        return "ComposeStackTraceFrame(groupKey=" + this.a + ", sourceInfo=null, groupOffset=" + this.b + ")";
+        return "ComposeStackTraceFrame(groupKey=" + this.a + ", sourceInfo=" + ((Object) null) + ", groupOffset=" + this.b + ")";
     }
 }

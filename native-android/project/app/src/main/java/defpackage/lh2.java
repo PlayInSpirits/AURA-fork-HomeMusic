@@ -12,78 +12,58 @@ import java.util.Calendar;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class lh2 extends kw3 {
-    public final Calendar a;
-    public final Calendar b;
+    public final Calendar a = a35.e(null);
+    public final Calendar b = a35.e(null);
     public final /* synthetic */ nh2 c;
 
-    public lh2(nh2 r2) {
-        this.c = r2;
-        this.a = a35.e(null);
-        this.b = a35.e(null);
+    public lh2(nh2 nh2Var) {
+        this.c = nh2Var;
     }
 
     @Override // defpackage.kw3
-    public final void g(Canvas r24, RecyclerView r25) {
-        lh2 r0 = this;
-        if ((r25.getAdapter() instanceof ke5) == true) goto L5;
-        return;
-    L5:
-        if ((r25.getLayoutManager() instanceof GridLayoutManager) == false) goto L41;
-        ke5 r1 = (ke5) r25.getAdapter();
-        GridLayoutManager r2 = (GridLayoutManager) r25.getLayoutManager();
-        nh2 r3 = r0.c;
-        r3.n0.getClass();
-        ArrayList r4 = new ArrayList();
-        int r5 = r4.size();
-        int r7 = 0;
-    L8:
-        if (r7 >= r5) goto L42;
-        Object r8 = r4.get(r7);
-        r7 = r7 + 1;
-        ld3 r9 = (ld3) r8;
-        Object r10 = r9.a;
-        Object r11 = r9.b;
-        if (r10 == null) goto L30;
-        if (r11 == null) goto L8;
-        long r12 = ((Long) r10).longValue();
-        Calendar r13 = r0.a;
-        r13.setTimeInMillis(r12);
-        long r14 = ((Long) r11).longValue();
-        Calendar r15 = r0.b;
-        r15.setTimeInMillis(r14);
-        int r16 = r13.get(1) - r1.q.o0.n.p;
-        int r17 = r15.get(1) - r1.q.o0.n.p;
-        View r18 = r2.q(r16);
-        View r19 = r2.q(r17);
-        int r110 = r2.F;
-        int r20 = r16 / r110;
-        int r21 = r17 / r110;
-        int r111 = r20;
-    L14:
-        if (r111 > r21) goto L30;
-        View r112 = r2.q(r2.F * r111);
-        if (r112 == null) goto L29;
-        int r113 = r112.getTop() + ((Rect) ((c6) r3.r0.d).b).top;
-        int r114 = r112.getBottom() - ((Rect) ((c6) r3.r0.d).b).bottom;
-        if (r111 != r20) goto L22;
-        if (r18 == null) goto L22;
-        int r115 = (r18.getWidth() / 2) + r18.getLeft();
-    L23:
-        if (r111 != r21) goto L27;
-        if (r19 == null) goto L27;
-        int r116 = (r19.getWidth() / 2) + r19.getLeft();
-    L28:
-        r24.drawRect(r115, r113, r116, r114, (Paint) r3.r0.h);
-    L27:
-        r116 = r25.getWidth();
-    L22:
-        r115 = 0;
-    L29:
-        r111 = r111 + 1;
-    L30:
-        r0 = this;
-        goto L8
-    L42:
-        return;
+    public final void g(Canvas canvas, RecyclerView recyclerView) {
+        lh2 lh2Var = this;
+        if ((recyclerView.getAdapter() instanceof ke5) && (recyclerView.getLayoutManager() instanceof GridLayoutManager)) {
+            ke5 ke5Var = (ke5) recyclerView.getAdapter();
+            GridLayoutManager gridLayoutManager = (GridLayoutManager) recyclerView.getLayoutManager();
+            nh2 nh2Var = lh2Var.c;
+            nh2Var.n0.getClass();
+            ArrayList arrayList = new ArrayList();
+            int size = arrayList.size();
+            int i = 0;
+            while (i < size) {
+                Object obj = arrayList.get(i);
+                i++;
+                ld3 ld3Var = (ld3) obj;
+                Object obj2 = ld3Var.a;
+                Object obj3 = ld3Var.b;
+                if (obj2 != null) {
+                    if (obj3 != null) {
+                        long jLongValue = ((Long) obj2).longValue();
+                        Calendar calendar = lh2Var.a;
+                        calendar.setTimeInMillis(jLongValue);
+                        long jLongValue2 = ((Long) obj3).longValue();
+                        Calendar calendar2 = lh2Var.b;
+                        calendar2.setTimeInMillis(jLongValue2);
+                        int i2 = calendar.get(1) - ke5Var.q.o0.n.p;
+                        int i3 = calendar2.get(1) - ke5Var.q.o0.n.p;
+                        View viewQ = gridLayoutManager.q(i2);
+                        View viewQ2 = gridLayoutManager.q(i3);
+                        int i4 = gridLayoutManager.F;
+                        int i5 = i2 / i4;
+                        int i6 = i3 / i4;
+                        for (int i7 = i5; i7 <= i6; i7++) {
+                            View viewQ3 = gridLayoutManager.q(gridLayoutManager.F * i7);
+                            if (viewQ3 != null) {
+                                int top = viewQ3.getTop() + ((Rect) ((c6) nh2Var.r0.d).b).top;
+                                int bottom = viewQ3.getBottom() - ((Rect) ((c6) nh2Var.r0.d).b).bottom;
+                                canvas.drawRect((i7 != i5 || viewQ == null) ? 0 : (viewQ.getWidth() / 2) + viewQ.getLeft(), top, (i7 != i6 || viewQ2 == null) ? recyclerView.getWidth() : (viewQ2.getWidth() / 2) + viewQ2.getLeft(), bottom, (Paint) nh2Var.r0.h);
+                            }
+                        }
+                    }
+                }
+                lh2Var = this;
+            }
+        }
     }
 }

@@ -6,20 +6,20 @@ public final class ae extends ce {
     public float a;
     public float b;
 
-    public ae(float r1, float r2) {
-        this.a = r1;
-        this.b = r2;
+    public ae(float f, float f2) {
+        this.a = f;
+        this.b = f2;
     }
 
     @Override // defpackage.ce
-    public final float a(int r2) {
-        if (r2 == 0) goto L10;
-        if (r2 == 1) goto L8;
-        return 0.0f;
-    L8:
+    public final float a(int i) {
+        if (i == 0) {
+            return this.a;
+        }
+        if (i != 1) {
+            return 0.0f;
+        }
         return this.b;
-    L10:
-        return this.a;
     }
 
     @Override // defpackage.ce
@@ -33,34 +33,27 @@ public final class ae extends ce {
     }
 
     @Override // defpackage.ce
-    public final void d(int r2, float r3) {
-        if (r2 != 0) goto L4;
-        this.a = r3;
-        return;
-    L4:
-        if (r2 == 1) goto L6;
-        return;
-    L6:
-        this.b = r3;
+    public final void d(int i, float f) {
+        if (i == 0) {
+            this.a = f;
+        } else {
+            if (i != 1) {
+                return;
+            }
+            this.b = f;
+        }
     }
 
-    public final boolean equals(Object r3) {
-        if ((r3 instanceof ae) == false) goto L10;
-        ae r4 = (ae) r3;
-        if (r4.a == this.a) goto L7;
-        return false;
-    L7:
-        if (r4.b != this.b) goto L13;
-        return true;
-    L13:
-        return false;
-    L10:
-        return false;
+    public final boolean equals(Object obj) {
+        if (!(obj instanceof ae)) {
+            return false;
+        }
+        ae aeVar = (ae) obj;
+        return aeVar.a == this.a && aeVar.b == this.b;
     }
 
     public final int hashCode() {
-        int r0 = Float.hashCode(this.a) * 31;
-        return Float.hashCode(this.b) + r0;
+        return Float.hashCode(this.b) + (Float.hashCode(this.a) * 31);
     }
 
     public final String toString() {

@@ -5,69 +5,68 @@ package defpackage;
 public abstract class qr3 {
     public final c92 a;
 
-    public qr3(gf1 r2) {
-        this.a = new c92(r2);
+    public qr3(gf1 gf1Var) {
+        this.a = new c92(gf1Var);
     }
 
-    public abstract rr3 a(Object r1);
+    public abstract rr3 a(Object obj);
 
     public j35 b() {
         return this.a;
     }
 
-    public final rr3 c(if1 r8) {
-        return new rr3(this, null, false, null, r8, false);
+    public final rr3 c(if1 if1Var) {
+        return new rr3(this, null, false, null, if1Var, false);
     }
 
+    /* JADX WARN: Code duplicated, block: B:14:0x0034 A[PHI: r7
+  0x0034: PHI (r7v2 java.lang.Object) = (r7v6 java.lang.Object), (r7v7 java.lang.Object) binds: [B:18:0x003e, B:13:0x0032] A[DONT_GENERATE, DONT_INLINE]] */
     /* JADX WARN: Multi-variable type inference failed */
-    public final j35 d(rr3 r6, j35 r7) {
-        if1 r5 = r6.d;
-        Object r0 = r6.f;
-        boolean r1 = r6.e;
-        ny0 r3 = 0;
-        r3 = 0;
-        r3 = 0;
-        r3 = 0;
-        r3 = 0;
-        r3 = 0;
-        if ((r7 instanceof ny0) == false) goto L7;
-        if (r1 == false) goto L20;
-        r3 = (ny0) r7;
-        r3.a.setValue(r6.a());
-    L20:
-        if (r3 != 0) goto L32;
-        if (r1 == false) goto L27;
-        rv2 r8 = r6.c;
-        if (r8 != null) goto L26;
-        r8 = rv2.D;
-    L26:
-        return new ny0(new zd3(r0, r8));
-    L27:
-        if (r5 == null) goto L31;
-        return new m90(r5);
-    L31:
-        return new xl4(r6.a());
-    L32:
-        return r3;
-    L7:
-        if ((r7 instanceof xl4) == false) goto L16;
-        if (r6.b == true) goto L11;
-        if (r0 == null) goto L20;
-    L11:
-        if (r1 == true) goto L20;
-        xl4 r9 = (xl4) r7;
-        boolean r2 = h12.c(r6.a(), r9.a);
-        Object r10 = r9;
-        if (r2 == false) goto L20;
-    L14:
-        r3 = r10;
-        goto L20
-    L16:
-        if ((r7 instanceof m90) == false) goto L20;
-        m90 r11 = (m90) r7;
-        if1 r4 = r11.a;
-        r10 = r11;
-        if (r5 != r4) goto L20;
-        goto L20
+    public final j35 d(rr3 rr3Var, j35 j35Var) {
+        m90 m90Var;
+        Object obj;
+        xl4 xl4Var;
+        if1 if1Var = rr3Var.d;
+        Object obj2 = rr3Var.f;
+        boolean z = rr3Var.e;
+        ny0 ny0Var = 0;
+        ny0Var = 0;
+        ny0Var = 0;
+        ny0Var = 0;
+        ny0Var = 0;
+        ny0Var = 0;
+        if (j35Var instanceof ny0) {
+            if (z) {
+                ny0Var = (ny0) j35Var;
+                ny0Var.a.setValue(rr3Var.a());
+            }
+        } else if (j35Var instanceof xl4) {
+            if ((rr3Var.b || obj2 != null) && !z) {
+                xl4Var = (xl4) j35Var;
+                if (h12.c(rr3Var.a(), xl4Var.a)) {
+                    obj = m90Var;
+                    obj = xl4Var;
+                    ny0Var = obj;
+                }
+            }
+        } else if (j35Var instanceof m90) {
+            m90Var = (m90) j35Var;
+            if (if1Var == m90Var.a) {
+                obj = m90Var;
+                obj = xl4Var;
+                ny0Var = obj;
+            }
+        }
+        if (ny0Var != 0) {
+            return ny0Var;
+        }
+        if (!z) {
+            return if1Var != null ? new m90(if1Var) : new xl4(rr3Var.a());
+        }
+        rv2 rv2Var = rr3Var.c;
+        if (rv2Var == null) {
+            rv2Var = rv2.D;
+        }
+        return new ny0(new zd3(obj2, rv2Var));
     }
 }

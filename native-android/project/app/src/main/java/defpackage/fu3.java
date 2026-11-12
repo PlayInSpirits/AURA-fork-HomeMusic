@@ -6,27 +6,25 @@ public final /* synthetic */ class fu3 implements Runnable {
     public final /* synthetic */ int n;
     public final /* synthetic */ gu3 o;
 
-    public /* synthetic */ fu3(gu3 r1, int r2) {
-        this.n = r2;
-        this.o = r1;
+    public /* synthetic */ fu3(gu3 gu3Var, int i) {
+        this.n = i;
+        this.o = gu3Var;
     }
 
     @Override // java.lang.Runnable
     public final void run() {
-        int r0 = this.n;
-        gu3 r1 = this.o;
-        switch(r0) {
-            case 0: goto L8;
-            case 1: goto L6;
-            default: goto L4;
-        };
-    L4:
-        r1.f.k(Boolean.TRUE);
-        return;
-    L6:
-        r1.f.k(Boolean.TRUE);
-        return;
-    L8:
-        r1.f.k(Boolean.TRUE);
+        int i = this.n;
+        gu3 gu3Var = this.o;
+        switch (i) {
+            case 0:
+                gu3Var.f.k(Boolean.TRUE);
+                break;
+            case 1:
+                gu3Var.f.k(Boolean.TRUE);
+                break;
+            default:
+                gu3Var.f.k(Boolean.TRUE);
+                break;
+        }
     }
 }

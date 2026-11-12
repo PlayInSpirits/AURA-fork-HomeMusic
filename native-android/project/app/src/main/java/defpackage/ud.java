@@ -6,8 +6,8 @@ public final class ud {
     public final Float a;
     public final xd b;
 
-    public ud(Float r1, xd r2) {
-        this.a = r1;
-        this.b = r2;
+    public ud(Float f, xd xdVar) {
+        this.a = f;
+        this.b = xdVar;
     }
 }

@@ -7,8 +7,8 @@ import java.math.BigInteger;
 public final class em0 implements m84 {
     public final /* synthetic */ fm0 a;
 
-    public em0(fm0 r1) {
-        this.a = r1;
+    public em0(fm0 fm0Var) {
+        this.a = fm0Var;
     }
 
     @Override // defpackage.m84
@@ -17,20 +17,19 @@ public final class em0 implements m84 {
     }
 
     @Override // defpackage.m84
-    public final l84 e(long r13) {
-        fm0 r12 = this.a;
-        long r0 = (((long) r12.q.i) * r13) / 1000000;
-        long r2 = r12.o;
-        BigInteger r1 = BigInteger.valueOf(r0);
-        long r4 = r12.p;
-        o84 r3 = new o84(r13, f35.k((r1.multiply(BigInteger.valueOf(r4 - r2)).divide(BigInteger.valueOf(r12.s)).longValue() + r2) - 30000, r12.o, r4 - 1));
-        return new l84(r3, r3);
+    public final l84 e(long j) {
+        fm0 fm0Var = this.a;
+        long j2 = (((long) fm0Var.q.i) * j) / 1000000;
+        long j3 = fm0Var.o;
+        BigInteger bigIntegerValueOf = BigInteger.valueOf(j2);
+        long j4 = fm0Var.p;
+        o84 o84Var = new o84(j, f35.k((bigIntegerValueOf.multiply(BigInteger.valueOf(j4 - j3)).divide(BigInteger.valueOf(fm0Var.s)).longValue() + j3) - 30000, fm0Var.o, j4 - 1));
+        return new l84(o84Var, o84Var);
     }
 
     @Override // defpackage.m84
     public final long g() {
-        fm0 r5 = this.a;
-        im4 r0 = r5.q;
-        return (r5.s * 1000000) / ((long) r0.i);
+        fm0 fm0Var = this.a;
+        return (fm0Var.s * 1000000) / ((long) fm0Var.q.i);
     }
 }

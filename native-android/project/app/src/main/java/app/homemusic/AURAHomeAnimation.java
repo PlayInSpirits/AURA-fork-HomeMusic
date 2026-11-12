@@ -7,15 +7,15 @@ import defpackage.kc1;
 
 /* JADX INFO: loaded from: classes.dex */
 public final class AURAHomeAnimation {
-    public static void stop(kc1 r2) {
-        View r0 = r2.T;
-        if (r0 == null) goto L9;
-        View r1 = r0.findViewById(R.id.fragment_home_nested_scroll_view);
-        if (r1 == null) goto L9;
-        Drawable r3 = r1.getBackground();
-        if ((r3 instanceof AnimationDrawable) == false) goto L9;
-        ((AnimationDrawable) r3).stop();
-    L9:
+    public static void stop(kc1 kc1Var) {
+        View viewFindViewById;
+        View view = kc1Var.T;
+        if (view != null && (viewFindViewById = view.findViewById(R.id.fragment_home_nested_scroll_view)) != null) {
+            Drawable background = viewFindViewById.getBackground();
+            if (background instanceof AnimationDrawable) {
+                ((AnimationDrawable) background).stop();
+            }
+        }
         AURAVersion.waveButton = null;
     }
 }

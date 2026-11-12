@@ -17,110 +17,105 @@ public final /* synthetic */ class ts1 implements Runnable {
     public final /* synthetic */ vb4 o;
     public final /* synthetic */ Preference p;
 
-    public /* synthetic */ ts1(vb4 r1, Preference r2, int r3) {
-        this.n = r3;
-        this.o = r1;
-        this.p = r2;
+    public /* synthetic */ ts1(vb4 vb4Var, Preference preference, int i) {
+        this.n = i;
+        this.o = vb4Var;
+        this.p = preference;
     }
 
     @Override // java.lang.Runnable
     public final void run() {
-        int r0 = this.n;
-        long r1 = 0;
-        int r4 = 1;
-        Preference r5 = this.p;
-        vb4 r6 = this.o;
-        switch(r0) {
-            case 0: goto L49;
-            case 1: goto L13;
-            default: goto L53;
-        };
-    L13:
-        Context r15 = r6.Z();
-        ly4 r2 = uc5.Y(r15, 1);
-        ly4 r7 = uc5.Y(r15, 7);
-        String r8 = r15.getString(R.string.homemusic_settings_traffic_summary, new Object[]{r2.n, r2.o, r2.p, r7.n, r7.o, r7.p});
-        r8.getClass();
-        lp1 r3 = lp1.a;
-        Object r9 = App.a().getSystemService("netstats");     // Catch: Throwable -> L18
-        r9.getClass();     // Catch: Throwable -> L18
-        NetworkStatsManager r10 = (NetworkStatsManager) r9;     // Catch: Throwable -> L18
-        long r12 = System.currentTimeMillis();     // Catch: Throwable -> L18
-        Calendar r11 = Calendar.getInstance();     // Catch: Throwable -> L18
-        r11.setTimeInMillis(r12);     // Catch: Throwable -> L18
-        r11.add(6, -6);     // Catch: Throwable -> L18
-        r11.set(11, 0);     // Catch: Throwable -> L18
-        r11.set(12, 0);     // Catch: Throwable -> L18
-        r11.set(13, 0);     // Catch: Throwable -> L18
-        r11.set(14, 0);     // Catch: Throwable -> L18
-        NetworkStats r13 = r10.queryDetailsForUid(0, null, r11.getTimeInMillis(), r12, Process.myUid());     // Catch: Throwable -> L18
-        r13.getClass();     // Catch: Throwable -> L18
-        NetworkStats.Bucket r14 = new NetworkStats.Bucket();     // Catch: Throwable -> L18
-    L16:
-        if (r13.hasNextBucket() == false) goto L20;
-        r13.getNextBucket(r14);     // Catch: Throwable -> L18
-        r1 = r1 + (r14.getRxBytes() + r14.getTxBytes());     // Catch: Throwable -> L18
-        goto L16
-    L20:
-        r13.close();     // Catch: Throwable -> L18
-        Object r16 = Long.valueOf(r1);     // Catch: Throwable -> L18
-    L23:
-        Throwable r17 = bb3.a(r16);
-        if (r17 == null) goto L26;
-        Log.d("HomeTrafficStats", "system statistics: " + r17);
-    L26:
-        String r18 = null;
-        if ((r16 instanceof s14) == false) goto L29;
-        r16 = null;
-    L29:
-        Long r19 = (Long) r16;
-        if (r19 == null) goto L36;
-        long r20 = r19.longValue();
-        if (r20 < 1073741824) goto L34;
-        String r21 = r15.getString(R.string.homemusic_size_gb, new Object[]{Double.valueOf(r20 / 1.073741824E9d)});
-        r21.getClass();
-    L35:
-        r18 = r15.getString(R.string.homemusic_settings_traffic_system, new Object[]{r21});
-        goto L36
-    L34:
-        r21 = r15.getString(R.string.homemusic_size_mb, new Object[]{Double.valueOf(r20 / 1048576.0d)});
-        r21.getClass();
-    L36:
-        if (r18 != null) goto L38;
-        r18 = "";
-    L38:
-        io1.b.post(new v6(r6, r5, r8.concat(r18), 15));
-        return;
-    L18:
-        th = move-exception;
-        r16 = new s14(th);
-        goto L23
-    L49:
-        Object r22 = gi1.v();     // Catch: Throwable -> L42
-    L44:
-        Object r23 = new kd3(0, 0L);
-        if ((r22 instanceof s14) == false) goto L47;
-        r22 = r23;
-    L47:
-        kd3 r24 = (kd3) r22;
-        io1.b.post(new us1(this.o, ((Number) r24.n).intValue(), this.p, ((Number) r24.o).longValue()));
-        return;
-    L42:
-        th = move-exception;
-        r22 = new s14(th);
-        goto L44
-    L53:
-        Object r110 = Boolean.valueOf(rr1.h().isAdmin());     // Catch: Throwable -> L6
-    L8:
-        Object r25 = Boolean.FALSE;
-        if ((r110 instanceof s14) == false) goto L11;
-        r110 = r25;
-    L11:
-        io1.b.post(new bs1(r6, ((Boolean) r110).booleanValue(), r5, r4));
-        return;
-    L6:
-        th = move-exception;
-        r110 = new s14(th);
-        goto L8
+        Object s14Var;
+        Object s14Var2;
+        Object s14Var3;
+        String string;
+        int i = this.n;
+        long rxBytes = 0;
+        int i2 = 1;
+        Preference preference = this.p;
+        vb4 vb4Var = this.o;
+        switch (i) {
+            case 0:
+                try {
+                    s14Var2 = gi1.v();
+                } catch (Throwable th) {
+                    s14Var2 = new s14(th);
+                }
+                Object kd3Var = new kd3(0, 0L);
+                if (s14Var2 instanceof s14) {
+                    s14Var2 = kd3Var;
+                }
+                kd3 kd3Var2 = (kd3) s14Var2;
+                io1.b.post(new us1(this.o, ((Number) kd3Var2.n).intValue(), this.p, ((Number) kd3Var2.o).longValue()));
+                break;
+            case 1:
+                Context contextZ = vb4Var.Z();
+                ly4 ly4VarY = uc5.Y(contextZ, 1);
+                ly4 ly4VarY2 = uc5.Y(contextZ, 7);
+                String string2 = contextZ.getString(R.string.homemusic_settings_traffic_summary, ly4VarY.n, ly4VarY.o, ly4VarY.p, ly4VarY2.n, ly4VarY2.o, ly4VarY2.p);
+                string2.getClass();
+                lp1 lp1Var = lp1.a;
+                try {
+                    Object systemService = App.a().getSystemService("netstats");
+                    systemService.getClass();
+                    NetworkStatsManager networkStatsManager = (NetworkStatsManager) systemService;
+                    long jCurrentTimeMillis = System.currentTimeMillis();
+                    Calendar calendar = Calendar.getInstance();
+                    calendar.setTimeInMillis(jCurrentTimeMillis);
+                    calendar.add(6, -6);
+                    calendar.set(11, 0);
+                    calendar.set(12, 0);
+                    calendar.set(13, 0);
+                    calendar.set(14, 0);
+                    NetworkStats networkStatsQueryDetailsForUid = networkStatsManager.queryDetailsForUid(0, null, calendar.getTimeInMillis(), jCurrentTimeMillis, Process.myUid());
+                    networkStatsQueryDetailsForUid.getClass();
+                    NetworkStats.Bucket bucket = new NetworkStats.Bucket();
+                    while (networkStatsQueryDetailsForUid.hasNextBucket()) {
+                        networkStatsQueryDetailsForUid.getNextBucket(bucket);
+                        rxBytes += bucket.getRxBytes() + bucket.getTxBytes();
+                    }
+                    networkStatsQueryDetailsForUid.close();
+                    s14Var3 = Long.valueOf(rxBytes);
+                } catch (Throwable th2) {
+                    s14Var3 = new s14(th2);
+                }
+                Throwable thA = bb3.a(s14Var3);
+                if (thA != null) {
+                    Log.d("HomeTrafficStats", "system statistics: " + thA);
+                }
+                String string3 = null;
+                if (s14Var3 instanceof s14) {
+                    s14Var3 = null;
+                }
+                Long l = (Long) s14Var3;
+                if (l != null) {
+                    long jLongValue = l.longValue();
+                    if (jLongValue >= 1073741824) {
+                        string = contextZ.getString(R.string.homemusic_size_gb, Double.valueOf(jLongValue / 1.073741824E9d));
+                        string.getClass();
+                    } else {
+                        string = contextZ.getString(R.string.homemusic_size_mb, Double.valueOf(jLongValue / 1048576.0d));
+                        string.getClass();
+                    }
+                    string3 = contextZ.getString(R.string.homemusic_settings_traffic_system, string);
+                }
+                if (string3 == null) {
+                    string3 = "";
+                }
+                io1.b.post(new v6(vb4Var, preference, string2.concat(string3), 15));
+                break;
+            default:
+                try {
+                    s14Var = Boolean.valueOf(rr1.h().isAdmin());
+                } catch (Throwable th3) {
+                    s14Var = new s14(th3);
+                }
+                Object obj = Boolean.FALSE;
+                if (s14Var instanceof s14) {
+                    s14Var = obj;
+                }
+                io1.b.post(new bs1(vb4Var, ((Boolean) s14Var).booleanValue(), preference, i2));
+                break;
+        }
     }
 }

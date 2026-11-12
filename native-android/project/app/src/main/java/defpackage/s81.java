@@ -6,10 +6,10 @@ import kotlinx.coroutines.flow.internal.ChildCancelledException;
 /* JADX INFO: loaded from: classes.dex */
 public final class s81 extends e64 {
     @Override // defpackage.a32
-    public final boolean y(Throwable r2) {
-        if ((r2 instanceof ChildCancelledException) == false) goto L7;
-        return true;
-    L7:
-        return o(r2);
+    public final boolean y(Throwable th) {
+        if (th instanceof ChildCancelledException) {
+            return true;
+        }
+        return o(th);
     }
 }

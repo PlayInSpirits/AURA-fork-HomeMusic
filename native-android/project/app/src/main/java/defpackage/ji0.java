@@ -9,47 +9,40 @@ public final class ji0 implements vw2 {
     public final /* synthetic */ int a;
     public final Object b;
 
-    public ji0(int r4) {
-        this.a = r4;
-        switch(r4) {
-            case 1: goto L11;
-            case 2: goto L6;
-            default: goto L4;
-        };
-    L4:
-        this.b = new i80(21);
-        return;
-    L6:
-        n83 r5 = new n83();
-        TimeUnit r2 = TimeUnit.MILLISECONDS;
-        r5.b(2500, r2);
-        r5.z = ze5.b(2500, r2);
-        SSLSocketFactory r0 = x30.b;
-        if (r0 == null) goto L9;
-        r5.c(r0, x30.a);
-    L9:
-        this.b = new o83(r5);
-        return;
-    L11:
-        this.b = new si1(11);
+    public ji0(int i) {
+        this.a = i;
+        switch (i) {
+            case 1:
+                this.b = new si1(11);
+                break;
+            case 2:
+                n83 n83Var = new n83();
+                TimeUnit timeUnit = TimeUnit.MILLISECONDS;
+                n83Var.b(2500L, timeUnit);
+                n83Var.z = ze5.b(2500L, timeUnit);
+                SSLSocketFactory sSLSocketFactory = x30.b;
+                if (sSLSocketFactory != null) {
+                    n83Var.c(sSLSocketFactory, x30.a);
+                }
+                this.b = new o83(n83Var);
+                break;
+            default:
+                this.b = new i80(21);
+                break;
+        }
     }
 
     @Override // defpackage.vw2
-    public final uw2 a(na4 r2) {
-        int r3 = this.a;
-        Object r1 = this.b;
-        switch(r3) {
-            case 0: goto L8;
-            case 1: goto L7;
-            default: goto L4;
-        };
-    L4:
-        int r0 = 3;
-        return new mw(r0, (o83) r1);
-    L8:
-        int r4 = 1;
-        return new mw(r4, (i80) r1);
-    L7:
-        return new ar1((si1) r1);
+    public final uw2 a(na4 na4Var) {
+        int i = this.a;
+        Object obj = this.b;
+        switch (i) {
+            case 0:
+                return new mw(1, (i80) obj);
+            case 1:
+                return new ar1((si1) obj);
+            default:
+                return new mw(3, (o83) obj);
+        }
     }
 }

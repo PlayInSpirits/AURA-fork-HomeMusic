@@ -5,21 +5,15 @@ package defpackage;
 public final class k93 {
     public final String a;
 
-    public k93(String r1) {
-        this.a = r1;
+    public k93(String str) {
+        this.a = str;
     }
 
-    public final boolean equals(Object r2) {
-        if (this != r2) goto L5;
-        return true;
-    L5:
-        if ((r2 instanceof k93) == true) goto L8;
-        return false;
-    L8:
-        if (this.a.equals(((k93) r2).a) == true) goto L11;
-        return false;
-    L11:
-        return true;
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        return (obj instanceof k93) && this.a.equals(((k93) obj).a);
     }
 
     public final int hashCode() {

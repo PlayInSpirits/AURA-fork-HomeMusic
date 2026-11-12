@@ -7,9 +7,9 @@ public final class qi2 {
     public final boolean b;
     public final boolean c;
 
-    public qi2(c72 r1, boolean r2, boolean r3) {
-        this.a = r1;
-        this.b = r2;
-        this.c = r3;
+    public qi2(c72 c72Var, boolean z, boolean z2) {
+        this.a = c72Var;
+        this.b = z;
+        this.c = z2;
     }
 }

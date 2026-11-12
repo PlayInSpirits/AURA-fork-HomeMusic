@@ -15,24 +15,24 @@ public final class pg1 extends u80 {
     public final zd3 f;
     public final /* synthetic */ rg1 g;
 
-    public pg1(rg1 r1, long r2, boolean r4, boolean r5, zg5 r6) {
-        this.g = r1;
-        this.a = r2;
-        this.b = r4;
-        this.c = r5;
-        x03 r3 = w54.a;
+    public pg1(rg1 rg1Var, long j, boolean z, boolean z2, zg5 zg5Var) {
+        this.g = rg1Var;
+        this.a = j;
+        this.b = z;
+        this.c = z2;
+        x03 x03Var = w54.a;
         this.e = new x03();
         this.f = new zd3(mf3.q, rv2.A);
     }
 
     @Override // defpackage.u80
-    public final void a(z80 r1, wf1 r2) {
-        this.g.b.a(r1, r2);
+    public final void a(z80 z80Var, wf1 wf1Var) {
+        this.g.b.a(z80Var, wf1Var);
     }
 
     @Override // defpackage.u80
-    public final x03 b(z80 r1, md4 r2, wf1 r3) {
-        return this.g.b.b(r1, r2, r3);
+    public final x03 b(z80 z80Var, md4 md4Var, wf1 wf1Var) {
+        return this.g.b.b(z80Var, md4Var, wf1Var);
     }
 
     @Override // defpackage.u80
@@ -81,50 +81,50 @@ public final class pg1 extends u80 {
     }
 
     @Override // defpackage.u80
-    public final void l(z80 r3) {
-        rg1 r2 = this.g;
-        r2.b.l(r2.h);
-        r2.b.l(r3);
+    public final void l(z80 z80Var) {
+        rg1 rg1Var = this.g;
+        rg1Var.b.l(rg1Var.h);
+        rg1Var.b.l(z80Var);
     }
 
     @Override // defpackage.u80
-    public final iy2 m(jy2 r1) {
-        return this.g.b.m(r1);
+    public final iy2 m(jy2 jy2Var) {
+        return this.g.b.m(jy2Var);
     }
 
     @Override // defpackage.u80
-    public final x03 n(z80 r1, md4 r2, x03 r3) {
-        return this.g.b.n(r1, r2, r3);
+    public final x03 n(z80 z80Var, md4 md4Var, x03 x03Var) {
+        return this.g.b.n(z80Var, md4Var, x03Var);
     }
 
     @Override // defpackage.u80
-    public final void o(Set r2) {
-        HashSet r0 = this.d;
-        if (r0 != null) goto L5;
-        r0 = new HashSet();
-        this.d = r0;
-    L5:
-        r0.add(r2);
+    public final void o(Set set) {
+        HashSet hashSet = this.d;
+        if (hashSet == null) {
+            hashSet = new HashSet();
+            this.d = hashSet;
+        }
+        hashSet.add(set);
     }
 
     @Override // defpackage.u80
-    public final void p(rg1 r1) {
-        this.e.a(r1);
+    public final void p(rg1 rg1Var) {
+        this.e.a(rg1Var);
     }
 
     @Override // defpackage.u80
-    public final void q(lv3 r1) {
-        this.g.b.q(r1);
+    public final void q(lv3 lv3Var) {
+        this.g.b.q(lv3Var);
     }
 
     @Override // defpackage.u80
-    public final void r(z80 r1) {
-        this.g.b.r(r1);
+    public final void r(z80 z80Var) {
+        this.g.b.r(z80Var);
     }
 
     @Override // defpackage.u80
-    public final ez s(wc r1) {
-        return this.g.b.s(r1);
+    public final ez s(wc wcVar) {
+        return this.g.b.s(wcVar);
     }
 
     @Override // defpackage.u80
@@ -133,60 +133,69 @@ public final class pg1 extends u80 {
     }
 
     @Override // defpackage.u80
-    public final void u(rg1 r4) {
-        HashSet r0 = this.d;
-        if (r0 == null) goto L8;
-        Iterator r1 = r0.iterator();
-    L6:
-        if (r1.hasNext() == false) goto L8;
-        Set r2 = (Set) r1.next();
-        r4.getClass();
-        r2.remove(r4.t());
-    L8:
-        if (r4 == null) goto L12;
-        this.e.l(r4);
-        return;
+    public final void u(rg1 rg1Var) {
+        HashSet<Set> hashSet = this.d;
+        if (hashSet != null) {
+            for (Set set : hashSet) {
+                rg1Var.getClass();
+                set.remove(rg1Var.t());
+            }
+        }
+        if (rg1Var != null) {
+            this.e.l(rg1Var);
+        }
     }
 
     @Override // defpackage.u80
-    public final void v(z80 r1) {
-        this.g.b.v(r1);
+    public final void v(z80 z80Var) {
+        this.g.b.v(z80Var);
     }
 
+    /* JADX WARN: Code duplicated, block: B:21:0x0061 A[DONT_INVERT] */
+    /* JADX WARN: Code duplicated, block: B:22:0x0063 A[LOOP:0: B:9:0x0017->B:22:0x0063, LOOP_END] */
+    /* JADX WARN: Code duplicated, block: B:26:0x0066 A[EDGE_INSN: B:26:0x0066->B:23:0x0066 BREAK  A[LOOP:0: B:9:0x0017->B:22:0x0063], SYNTHETIC] */
     public final void w() {
-        x03 r0 = this.e;
-        if (r0.h() == false) goto L30;
-        HashSet r15 = this.d;
-        if (r15 == null) goto L23;
-        Object[] r1 = r0.b;
-        long[] r2 = r0.a;
-        int r3 = r2.length - 2;
-        if (r3 < 0) goto L23;
-        int r5 = 0;
-    L9:
-        long r6 = r2[r5];
-        if (((((~r6) << 7) & r6) & (-9187201950435737472L)) == (-9187201950435737472L)) goto L21;
-        int r8 = 8 - ((~(r5 - r3)) >>> 31);
-        int r10 = 0;
-    L12:
-        if (r10 >= r8) goto L20;
-        if ((255 & r6) >= 128) goto L19;
-        rg1 r11 = (rg1) r1[(r5 << 3) + r10];
-        Iterator r12 = r15.iterator();
-    L17:
-        if (r12.hasNext() == false) goto L19;
-        ((Set) r12.next()).remove(r11.t());
-    L19:
-        r6 = r6 >> 8;
-        r10 = r10 + 1;
-        goto L12
-    L20:
-        if (r8 != 8) goto L23;
-    L21:
-        if (r5 == r3) goto L23;
-        r5 = r5 + 1;
-    L23:
-        r0.b();
-        return;
+        x03 x03Var = this.e;
+        if (x03Var.h()) {
+            HashSet hashSet = this.d;
+            if (hashSet != null) {
+                Object[] objArr = x03Var.b;
+                long[] jArr = x03Var.a;
+                int length = jArr.length - 2;
+                if (length >= 0) {
+                    int i = 0;
+                    while (true) {
+                        long j = jArr[i];
+                        if ((((~j) << 7) & j & (-9187201950435737472L)) == -9187201950435737472L) {
+                            if (i != length) {
+                                break;
+                                break;
+                            }
+                            i++;
+                        } else {
+                            int i2 = 8 - ((~(i - length)) >>> 31);
+                            for (int i3 = 0; i3 < i2; i3++) {
+                                if ((255 & j) < 128) {
+                                    rg1 rg1Var = (rg1) objArr[(i << 3) + i3];
+                                    Iterator it = hashSet.iterator();
+                                    while (it.hasNext()) {
+                                        ((Set) it.next()).remove(rg1Var.t());
+                                    }
+                                }
+                                j >>= 8;
+                            }
+                            if (i2 != 8) {
+                                break;
+                            } else if (i != length) {
+                                break;
+                            } else {
+                                i++;
+                            }
+                        }
+                    }
+                }
+            }
+            x03Var.b();
+        }
     }
 }

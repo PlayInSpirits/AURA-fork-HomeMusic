@@ -9,23 +9,22 @@ public final /* synthetic */ class ay0 implements BiFunction {
     public final /* synthetic */ Function a;
     public final /* synthetic */ d64 b;
 
-    public /* synthetic */ ay0(Function r1, d64 r2) {
-        this.a = r1;
-        this.b = r2;
+    public /* synthetic */ ay0(Function function, d64 d64Var) {
+        this.a = function;
+        this.b = d64Var;
     }
 
     @Override // java.util.function.BiFunction
-    public final Object apply(Object r6, Object r7) {
-        Double r8 = (Double) r6;
-        Double r9 = (Double) r7;
-        Function r0 = this.a;
-        if (r0 == null) goto L13;
-        d64 r5 = this.b;
-        if (r0.apply(r5) == null) goto L13;
-        if (((gy0) r0.apply(r5)).e == null) goto L13;
-        if (((gy0) r0.apply(r5)).e.apply(r5) == null) goto L13;
-        return Double.valueOf(gy0.b(r9.doubleValue(), 7.0d));
-    L13:
-        return Double.valueOf(gy0.b(r9.doubleValue(), Math.max(7.0d, r8.doubleValue())));
+    public final Object apply(Object obj, Object obj2) {
+        Double d = (Double) obj;
+        Double d2 = (Double) obj2;
+        Function function = this.a;
+        if (function != null) {
+            d64 d64Var = this.b;
+            if (function.apply(d64Var) != null && ((gy0) function.apply(d64Var)).e != null && ((gy0) function.apply(d64Var)).e.apply(d64Var) != null) {
+                return Double.valueOf(gy0.b(d2.doubleValue(), 7.0d));
+            }
+        }
+        return Double.valueOf(gy0.b(d2.doubleValue(), Math.max(7.0d, d.doubleValue())));
     }
 }

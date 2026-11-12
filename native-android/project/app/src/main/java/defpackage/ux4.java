@@ -9,26 +9,22 @@ public final class ux4 implements cz4 {
     public final boolean o;
     public final g32 p;
 
-    public ux4(g32 r1, TypeToken r2, boolean r3) {
-        this.p = r1;
-        this.n = r2;
-        this.o = r3;
+    public ux4(g32 g32Var, TypeToken typeToken, boolean z) {
+        this.p = g32Var;
+        this.n = typeToken;
+        this.o = z;
     }
 
     @Override // defpackage.cz4
-    public final bz4 a(nk1 r10, TypeToken r11) {
-        TypeToken r1 = this.n;
-        if (r1 != null) goto L5;
-        r11.getRawType();
-        throw null;
-    L5:
-        if (r1.equals(r11) == true) goto L13;
-        if (this.o == true) goto L9;
-    L11:
+    public final bz4 a(nk1 nk1Var, TypeToken typeToken) {
+        TypeToken typeToken2 = this.n;
+        if (typeToken2 == null) {
+            typeToken.getRawType();
+            throw null;
+        }
+        if (typeToken2.equals(typeToken) || (this.o && typeToken2.getType() == typeToken.getRawType())) {
+            return new vx4(this.p, nk1Var, typeToken, this, true);
+        }
         return null;
-    L9:
-        if (r1.getType() != r11.getRawType()) goto L11;
-    L13:
-        return new vx4(this.p, r10, r11, this, true);
     }
 }

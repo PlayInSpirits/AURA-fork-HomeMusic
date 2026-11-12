@@ -9,11 +9,11 @@ public final class xw1 extends a1 {
     public final int o;
     public final int p;
 
-    public xw1(y1 r1, int r2, int r3) {
-        this.n = r1;
-        this.o = r2;
-        uo.j(r2, r3, r1.a());
-        this.p = r3 - r2;
+    public xw1(y1 y1Var, int i, int i2) {
+        this.n = y1Var;
+        this.o = i;
+        uo.j(i, i2, y1Var.a());
+        this.p = i2 - i;
     }
 
     @Override // defpackage.y
@@ -22,17 +22,15 @@ public final class xw1 extends a1 {
     }
 
     @Override // java.util.List
-    public final Object get(int r2) {
-        uo.e(r2, this.p);
-        int r0 = this.o + r2;
-        return this.n.get(r0);
+    public final Object get(int i) {
+        uo.e(i, this.p);
+        return this.n.get(this.o + i);
     }
 
     @Override // defpackage.a1, java.util.List
-    public final List subList(int r3, int r4) {
-        uo.j(r3, r4, this.p);
-        int r1 = this.o;
-        y1 r2 = this.n;
-        return new xw1(r2, r3 + r1, r1 + r4);
+    public final List subList(int i, int i2) {
+        uo.j(i, i2, this.p);
+        int i3 = this.o;
+        return new xw1(this.n, i + i3, i3 + i2);
     }
 }

@@ -15,49 +15,46 @@ public final class eh implements Runnable {
     public final Object p;
     public final Object q;
 
-    public eh(v14 r2, int r3, Bundle r4) {
+    public eh(v14 v14Var, int i, Bundle bundle) {
         this.n = 2;
-        this.q = r2;
-        this.o = r3;
-        this.p = r4;
+        this.q = v14Var;
+        this.o = i;
+        this.p = bundle;
     }
 
     @Override // java.lang.Runnable
     public final void run() {
-        int r0 = this.n;
-        int r1 = this.o;
-        Object r2 = this.q;
-        Object r3 = this.p;
-        switch(r0) {
-            case 0: goto L10;
-            case 1: goto L8;
-            case 2: goto L6;
-            default: goto L4;
-        };
-    L4:
-        ((tp4) r3).a((Intent) r2, r1);
-        return;
-    L6:
-        ((v14) r2).a(r1, (Bundle) r3);
-        return;
-    L8:
-        ((BottomSheetBehavior) r2).M((View) r3, r1, false);
-        return;
-    L10:
-        ((TextView) r3).setTypeface((Typeface) r2, r1);
+        int i = this.n;
+        int i2 = this.o;
+        Object obj = this.q;
+        Object obj2 = this.p;
+        switch (i) {
+            case 0:
+                ((TextView) obj2).setTypeface((Typeface) obj, i2);
+                break;
+            case 1:
+                ((BottomSheetBehavior) obj).M((View) obj2, i2, false);
+                break;
+            case 2:
+                ((v14) obj).a(i2, (Bundle) obj2);
+                break;
+            default:
+                ((tp4) obj2).a((Intent) obj, i2);
+                break;
+        }
     }
 
-    public /* synthetic */ eh(Object r1, Object r2, int r3, int r4) {
-        this.n = r4;
-        this.p = r1;
-        this.q = r2;
-        this.o = r3;
+    public /* synthetic */ eh(Object obj, Object obj2, int i, int i2) {
+        this.n = i2;
+        this.p = obj;
+        this.q = obj2;
+        this.o = i;
     }
 
-    public eh(BottomSheetBehavior r2, View r3, int r4) {
+    public eh(BottomSheetBehavior bottomSheetBehavior, View view, int i) {
         this.n = 1;
-        this.q = r2;
-        this.p = r3;
-        this.o = r4;
+        this.q = bottomSheetBehavior;
+        this.p = view;
+        this.o = i;
     }
 }

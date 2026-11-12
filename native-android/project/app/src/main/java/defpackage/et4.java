@@ -12,49 +12,46 @@ import android.widget.TextView;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class et4 {
-    public static ld0 a(View r9, ld0 r10) {
-        if (Log.isLoggable("ReceiveContent", 3) == false) goto L5;
-        Log.d("ReceiveContent", "onReceive: " + r10);
-    L5:
-        kd0 r0 = r10.a;
-        if (r0.u() != 2) goto L8;
-        return r10;
-    L8:
-        ClipData r11 = r0.f();
-        int r1 = r0.r();
-        TextView r12 = (TextView) r9;
-        Editable r2 = (Editable) r12.getText();
-        Context r13 = r12.getContext();
-        int r3 = 0;
-        boolean r4 = false;
-    L10:
-        if (r3 >= r11.getItemCount()) goto L22;
-        ClipData.Item r5 = r11.getItemAt(r3);
-        if ((r1 & 1) == 0) goto L16;
-        CharSequence r6 = r5.coerceToText(r13);
-        if ((r6 instanceof Spanned) == false) goto L17;
-        r6 = r6.toString();
-    L17:
-        if (r6 == null) goto L21;
-        if (r4 == true) goto L20;
-        int r7 = Selection.getSelectionStart(r2);
-        int r8 = Selection.getSelectionEnd(r2);
-        int r14 = Math.max(0, Math.min(r7, r8));
-        int r15 = Math.max(0, Math.max(r7, r8));
-        Selection.setSelection(r2, r15);
-        r2.replace(r14, r15, r6);
-        r4 = true;
-        goto L21
-    L20:
-        r2.insert(Selection.getSelectionEnd(r2), "\n");
-        r2.insert(Selection.getSelectionEnd(r2), r6);
-    L21:
-        r3 = r3 + 1;
-        goto L10
-    L16:
-        r6 = r5.coerceToStyledText(r13);
-        goto L17
-    L22:
+    public static ld0 a(View view, ld0 ld0Var) {
+        CharSequence charSequenceCoerceToStyledText;
+        if (Log.isLoggable("ReceiveContent", 3)) {
+            Log.d("ReceiveContent", "onReceive: " + ld0Var);
+        }
+        kd0 kd0Var = ld0Var.a;
+        if (kd0Var.u() == 2) {
+            return ld0Var;
+        }
+        ClipData clipDataF = kd0Var.f();
+        int iR = kd0Var.r();
+        TextView textView = (TextView) view;
+        Editable editable = (Editable) textView.getText();
+        Context context = textView.getContext();
+        boolean z = false;
+        for (int i = 0; i < clipDataF.getItemCount(); i++) {
+            ClipData.Item itemAt = clipDataF.getItemAt(i);
+            if ((iR & 1) != 0) {
+                charSequenceCoerceToStyledText = itemAt.coerceToText(context);
+                if (charSequenceCoerceToStyledText instanceof Spanned) {
+                    charSequenceCoerceToStyledText = charSequenceCoerceToStyledText.toString();
+                }
+            } else {
+                charSequenceCoerceToStyledText = itemAt.coerceToStyledText(context);
+            }
+            if (charSequenceCoerceToStyledText != null) {
+                if (z) {
+                    editable.insert(Selection.getSelectionEnd(editable), "\n");
+                    editable.insert(Selection.getSelectionEnd(editable), charSequenceCoerceToStyledText);
+                } else {
+                    int selectionStart = Selection.getSelectionStart(editable);
+                    int selectionEnd = Selection.getSelectionEnd(editable);
+                    int iMax = Math.max(0, Math.min(selectionStart, selectionEnd));
+                    int iMax2 = Math.max(0, Math.max(selectionStart, selectionEnd));
+                    Selection.setSelection(editable, iMax2);
+                    editable.replace(iMax, iMax2, charSequenceCoerceToStyledText);
+                    z = true;
+                }
+            }
+        }
         return null;
     }
 }

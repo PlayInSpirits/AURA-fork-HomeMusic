@@ -9,55 +9,55 @@ public final class wu3 implements ew {
     public final tv o;
     public boolean p;
 
-    public wu3(of4 r1) {
-        r1.getClass();
-        this.n = r1;
+    public wu3(of4 of4Var) {
+        of4Var.getClass();
+        this.n = of4Var;
         this.o = new tv();
     }
 
     @Override // defpackage.ew
-    public final ew A(yw r2) {
-        r2.getClass();
-        if (this.p == true) goto L6;
-        this.o.X(r2);
+    public final ew A(yw ywVar) {
+        ywVar.getClass();
+        if (this.p) {
+            kf2.o("closed");
+            return null;
+        }
+        this.o.X(ywVar);
         b();
         return this;
-    L6:
-        kf2.o("closed");
-        return null;
     }
 
     @Override // defpackage.ew
-    public final ew C(long r2) {
-        if (this.p == true) goto L6;
-        this.o.a0(r2);
+    public final ew C(long j) {
+        if (this.p) {
+            kf2.o("closed");
+            return null;
+        }
+        this.o.a0(j);
         b();
         return this;
-    L6:
-        kf2.o("closed");
-        return null;
     }
 
     @Override // defpackage.of4
-    public final void L(tv r2, long r3) {
-        r2.getClass();
-        if (this.p == true) goto L6;
-        this.o.L(r2, r3);
-        b();
-        return;
-    L6:
-        kf2.o("closed");
+    public final void L(tv tvVar, long j) {
+        tvVar.getClass();
+        if (this.p) {
+            kf2.o("closed");
+        } else {
+            this.o.L(tvVar, j);
+            b();
+        }
     }
 
     @Override // defpackage.ew
-    public final ew Q(long r2) {
-        if (this.p == true) goto L6;
-        this.o.Z(r2);
+    public final ew Q(long j) {
+        if (this.p) {
+            kf2.o("closed");
+            return null;
+        }
+        this.o.Z(j);
         b();
         return this;
-    L6:
-        kf2.o("closed");
-        return null;
     }
 
     @Override // defpackage.ew
@@ -66,60 +66,56 @@ public final class wu3 implements ew {
     }
 
     public final ew b() {
-        if (this.p == true) goto L8;
-        tv r0 = this.o;
-        long r1 = r0.j();
-        if (r1 <= 0) goto L7;
-        this.n.L(r0, r1);
-    L7:
+        if (this.p) {
+            kf2.o("closed");
+            return null;
+        }
+        tv tvVar = this.o;
+        long j = tvVar.j();
+        if (j > 0) {
+            this.n.L(tvVar, j);
+        }
         return this;
-    L8:
-        kf2.o("closed");
-        return null;
     }
 
     @Override // defpackage.of4, java.io.Closeable, java.lang.AutoCloseable
     public final void close() {
-        of4 r0 = this.n;
-        if (this.p == false) goto L21;
-        return;
-    L21:
-        tv r1 = this.o;     // Catch: Throwable -> L8
-        long r2 = r1.o;     // Catch: Throwable -> L8
-        if (r2 <= 0) goto L10;
-        r0.L(r1, r2);     // Catch: Throwable -> L8
-    L10:
+        of4 of4Var = this.n;
+        if (this.p) {
+            return;
+        }
+        tv tvVar = this.o;
+        long j = tvVar.o;
+        if (j > 0) {
+            of4Var.L(tvVar, j);
+        }
         th = null;
-    L23:
-        r0.close();     // Catch: Throwable -> L13
-    L16:
+        try {
+            of4Var.close();
+        } catch (Throwable th) {
+            if (th == null) {
+                th = th;
+            }
+        }
         this.p = true;
-        if (th == null) goto L25;
-        throw th;
-    L25:
-        return;
-    L13:
-        th = move-exception;
-        if (th != null) goto L16;
-        th = th;
-    L8:
-        th = th;
-        goto L23
+        if (th != null) {
+            throw th;
+        }
     }
 
     @Override // defpackage.ew, defpackage.of4, java.io.Flushable
     public final void flush() {
-        if (this.p == true) goto L9;
-        tv r0 = this.o;
-        long r1 = r0.o;
-        of4 r5 = this.n;
-        if (r1 <= 0) goto L7;
-        r5.L(r0, r1);
-    L7:
-        r5.flush();
-        return;
-    L9:
-        kf2.o("closed");
+        if (this.p) {
+            kf2.o("closed");
+            return;
+        }
+        tv tvVar = this.o;
+        long j = tvVar.o;
+        of4 of4Var = this.n;
+        if (j > 0) {
+            of4Var.L(tvVar, j);
+        }
+        of4Var.flush();
     }
 
     @Override // java.nio.channels.Channel
@@ -128,17 +124,17 @@ public final class wu3 implements ew {
     }
 
     @Override // defpackage.ew
-    public final long p(ej4 r7) {
-        r7.getClass();
-        long r0 = 0;
-    L3:
-        long r2 = r7.read(this.o, 8192);
-        if (r2 == (-1)) goto L6;
-        r0 = r0 + r2;
-        b();
-        goto L3
-    L6:
-        return r0;
+    public final long p(ej4 ej4Var) {
+        ej4Var.getClass();
+        long j = 0;
+        while (true) {
+            long j2 = ej4Var.read(this.o, 8192L);
+            if (j2 == -1) {
+                return j;
+            }
+            j += j2;
+            b();
+        }
     }
 
     @Override // defpackage.of4
@@ -151,83 +147,82 @@ public final class wu3 implements ew {
     }
 
     @Override // defpackage.ew
-    public final ew write(byte[] r4) {
-        r4.getClass();
-        if (this.p == true) goto L6;
-        int r1 = r4.length;
-        this.o.m78write(r4, 0, r1);
+    public final ew write(byte[] bArr) {
+        bArr.getClass();
+        if (this.p) {
+            kf2.o("closed");
+            return null;
+        }
+        this.o.m78write(bArr, 0, bArr.length);
         b();
         return this;
-    L6:
-        kf2.o("closed");
-        return null;
     }
 
     @Override // defpackage.ew
-    public final ew writeByte(int r2) {
-        if (this.p == true) goto L6;
-        this.o.Y(r2);
+    public final ew writeByte(int i) {
+        if (this.p) {
+            kf2.o("closed");
+            return null;
+        }
+        this.o.Y(i);
         b();
         return this;
-    L6:
-        kf2.o("closed");
-        return null;
     }
 
     @Override // defpackage.ew
-    public final ew writeInt(int r2) {
-        if (this.p == true) goto L6;
-        this.o.b0(r2);
+    public final ew writeInt(int i) {
+        if (this.p) {
+            kf2.o("closed");
+            return null;
+        }
+        this.o.b0(i);
         b();
         return this;
-    L6:
-        kf2.o("closed");
-        return null;
     }
 
     @Override // defpackage.ew
-    public final ew writeShort(int r2) {
-        if (this.p == true) goto L6;
-        this.o.c0(r2);
+    public final ew writeShort(int i) {
+        if (this.p) {
+            kf2.o("closed");
+            return null;
+        }
+        this.o.c0(i);
         b();
         return this;
-    L6:
-        kf2.o("closed");
-        return null;
     }
 
     @Override // defpackage.ew
-    public final ew y(String r2) {
-        r2.getClass();
-        if (this.p == true) goto L6;
-        this.o.d0(r2);
+    public final ew y(String str) {
+        str.getClass();
+        if (this.p) {
+            kf2.o("closed");
+            return null;
+        }
+        this.o.d0(str);
         b();
         return this;
-    L6:
-        kf2.o("closed");
-        return null;
     }
 
     @Override // java.nio.channels.WritableByteChannel
-    public final int write(ByteBuffer r2) {
-        r2.getClass();
-        if (this.p == true) goto L6;
-        int r3 = this.o.write(r2);
-        b();
-        return r3;
-    L6:
+    public final int write(ByteBuffer byteBuffer) {
+        byteBuffer.getClass();
+        if (!this.p) {
+            int iWrite = this.o.write(byteBuffer);
+            b();
+            return iWrite;
+        }
         kf2.o("closed");
         return 0;
     }
 
     @Override // defpackage.ew
-    public final ew write(byte[] r2, int r3, int r4) {
-        r2.getClass();
-        if (this.p == true) goto L6;
-        this.o.m78write(r2, r3, r4);
-        b();
-        return this;
-    L6:
+    public final ew write(byte[] bArr, int i, int i2) {
+        bArr.getClass();
+        if (!this.p) {
+            this.o.m78write(bArr, i, i2);
+            b();
+            return this;
+        }
         kf2.o("closed");
         return null;
     }

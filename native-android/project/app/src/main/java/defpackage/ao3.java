@@ -6,36 +6,32 @@ public final class ao3 implements qu3, yn3 {
     public final /* synthetic */ int a;
     public final /* synthetic */ Object b;
 
-    public /* synthetic */ ao3(int r1, Object r2) {
-        this.a = r1;
-        this.b = r2;
+    public /* synthetic */ ao3(int i, Object obj) {
+        this.a = i;
+        this.b = obj;
     }
 
     @Override // defpackage.yn3
-    public final Object b(String r2, if1 r3, wd0 r4) {
-        int r0 = this.a;
-        Object r1 = this.b;
-        switch(r0) {
-            case 0: goto L7;
-            default: goto L5;
-        };
-    L5:
-        return ((uo4) r1).b(r2, r3, r4);
-    L7:
-        return ((go3) r1).b(r2, r3, r4);
+    public final Object b(String str, if1 if1Var, wd0 wd0Var) {
+        int i = this.a;
+        Object obj = this.b;
+        switch (i) {
+            case 0:
+                return ((go3) obj).b(str, if1Var, wd0Var);
+            default:
+                return ((uo4) obj).b(str, if1Var, wd0Var);
+        }
     }
 
     @Override // defpackage.qu3
     public final x34 c() {
-        int r0 = this.a;
-        Object r1 = this.b;
-        switch(r0) {
-            case 0: goto L7;
-            default: goto L5;
-        };
-    L5:
-        return ((uo4) r1).a;
-    L7:
-        return ((go3) r1).a;
+        int i = this.a;
+        Object obj = this.b;
+        switch (i) {
+            case 0:
+                return ((go3) obj).a;
+            default:
+                return ((uo4) obj).a;
+        }
     }
 }

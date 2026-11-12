@@ -10,325 +10,189 @@ public final /* synthetic */ class il3 implements if1 {
     public final /* synthetic */ ml3 o;
     public final /* synthetic */ String p;
 
-    public /* synthetic */ il3(ml3 r1, String r2, int r3) {
-        this.n = r3;
-        this.o = r1;
-        this.p = r2;
+    public /* synthetic */ il3(ml3 ml3Var, String str, int i) {
+        this.n = i;
+        this.o = ml3Var;
+        this.p = str;
     }
 
     @Override // defpackage.if1
-    public final Object invoke(Object r25) {
-        int r1 = this.n;
-        String r15 = this.p;
-        ml3 r0 = this.o;
-        switch(r1) {
-            case 0: goto L83;
-            default: goto L4;
-        };
-    L4:
-        Object r13 = r0.c;
-        z34 r2 = ((x34) r25).U("SELECT p.*, (pp.playlistId IS NOT NULL) AS isPinned FROM playlist p LEFT JOIN pinned_playlist pp ON p.id = pp.playlistId ORDER BY CASE WHEN ? = 'ORDER_BY_RANDOM' THEN RANDOM() END ASC, CASE WHEN ? = 'ORDER_BY_PINNED' THEN pp.playlistId IS NOT NULL END DESC, CASE WHEN ? = 'ORDER_BY_NAME' THEN p.name END ASC, CASE WHEN ? = 'ORDER_BY_DATE' THEN p.created END DESC, CASE WHEN ? = 'ORDER_BY_SONGS' THEN p.songCount END DESC, CASE WHEN ? = 'ORDER_BY_LAST_PLAYED' THEN p.lastPlayed END DESC, CASE WHEN ? = 'ORDER_BY_LAST_UPDATED' THEN p.changed END DESC, CASE WHEN ? = 'ORDER_BY_BOTH' THEN MAX(p.lastPlayed, IFNULL(p.changed, 0)) END DESC");
-        if (r15 != null) goto L9;
-        r2.e(1);     // Catch: Throwable -> L7
-    L10:
-        if (r15 != null) goto L12;
-        r2.e(2);     // Catch: Throwable -> L7
-    L13:
-        if (r15 != null) goto L15;
-        r2.e(3);     // Catch: Throwable -> L7
-    L16:
-        if (r15 != null) goto L18;
-        r2.e(4);     // Catch: Throwable -> L7
-    L19:
-        if (r15 != null) goto L21;
-        r2.e(5);     // Catch: Throwable -> L7
-    L22:
-        if (r15 != null) goto L24;
-        r2.e(6);     // Catch: Throwable -> L7
-    L25:
-        if (r15 != null) goto L27;
-        r2.e(7);     // Catch: Throwable -> L7
-    L28:
-        if (r15 != null) goto L30;
-        r2.e(8);     // Catch: Throwable -> L7
-    L31:
-        int r12 = rr2.E(r2, "id");     // Catch: Throwable -> L7
-        int r11 = rr2.E(r2, "name");     // Catch: Throwable -> L7
-        int r10 = rr2.E(r2, "duration");     // Catch: Throwable -> L7
-        int r9 = rr2.E(r2, "coverArt");     // Catch: Throwable -> L7
-        int r8 = rr2.E(r2, "comment");     // Catch: Throwable -> L7
-        int r7 = rr2.E(r2, "owner");     // Catch: Throwable -> L7
-        int r6 = rr2.E(r2, "isUniversal");     // Catch: Throwable -> L7
-        int r5 = rr2.E(r2, "songCount");     // Catch: Throwable -> L7
-        int r4 = rr2.E(r2, "created");     // Catch: Throwable -> L7
-        int r3 = rr2.E(r2, "changed");     // Catch: Throwable -> L7
-        int r14 = rr2.E(r2, "lastPlayed");     // Catch: Throwable -> L7
-        int r16 = rr2.E(r2, "allowedUsers");     // Catch: Throwable -> L7
-        ArrayList r17 = new ArrayList();     // Catch: Throwable -> L7
-    L32:
-        if (r2.O() == false) goto L79;
-        if (r2.isNull(r12) == false) goto L37;
-        String r19 = null;
-    L39:
-        if (r2.isNull(r11) == false) goto L41;
-        String r20 = null;
-    L42:
-        long r21 = r2.getLong(r10);     // Catch: Throwable -> L7
-        if (r2.isNull(r9) == false) goto L45;
-        String r23 = null;
-    L46:
-        Playlist r18 = new Playlist(r19, r20, r21, r23);     // Catch: Throwable -> L7
-        if (r2.isNull(r8) == false) goto L49;
-        String r22 = null;
-    L50:
-        r18.setComment(r22);     // Catch: Throwable -> L7
-        if (r2.isNull(r7) == false) goto L53;
-        String r24 = null;
-    L54:
-        r18.setOwner(r24);     // Catch: Throwable -> L7
-        if (r2.isNull(r6) == false) goto L57;
-        Integer r26 = null;
-    L58:
-        if (r26 != null) goto L61;
-        Boolean r27 = null;
-    L65:
-        r18.setUniversal(r27);     // Catch: Throwable -> L7
-        r18.setSongCount((int) r2.getLong(r5));     // Catch: Throwable -> L7
-        if (r2.isNull(r4) == false) goto L68;
-        Long r28 = null;
-    L69:
-        r18.setCreated(i80.B(r28));     // Catch: Throwable -> L7
-        if (r2.isNull(r3) == false) goto L72;
-        Long r29 = null;
-    L73:
-        r18.setChanged(i80.B(r29));     // Catch: Throwable -> L7
-        r18.setLastPlayed(r2.getLong(r14));     // Catch: Throwable -> L7
-        if (r2.isNull(r16) == false) goto L76;
-        String r30 = null;
-    L77:
-        r18.setAllowedUsers(((si1) r0.d).E(r30));     // Catch: Throwable -> L7
-        r17.add(r18);     // Catch: Throwable -> L7
-        r8 = r8;
-        r7 = r7;
-        goto L32
-    L76:
-        r30 = r2.D(r16);     // Catch: Throwable -> L7
-        goto L77
-    L72:
-        r29 = Long.valueOf(r2.getLong(r3));     // Catch: Throwable -> L7
-        goto L73
-    L68:
-        r28 = Long.valueOf(r2.getLong(r4));     // Catch: Throwable -> L7
-        goto L69
-    L61:
-        if (r26.intValue() == 0) goto L63;
-        boolean r31 = true;
-    L64:
-        r27 = Boolean.valueOf(r31);     // Catch: Throwable -> L7
-        goto L65
-    L63:
-        r31 = false;
-        goto L64
-    L57:
-        r26 = Integer.valueOf((int) r2.getLong(r6));     // Catch: Throwable -> L7
-        goto L58
-    L53:
-        r24 = r2.D(r7);     // Catch: Throwable -> L7
-        goto L54
-    L49:
-        r22 = r2.D(r8);     // Catch: Throwable -> L7
-        goto L50
-    L45:
-        r23 = r2.D(r9);     // Catch: Throwable -> L7
-        goto L46
-    L41:
-        r20 = r2.D(r11);     // Catch: Throwable -> L7
-        goto L42
-    L37:
-        r19 = r2.D(r12);     // Catch: Throwable -> L7
-        goto L39
-    L79:
-        r2.close();
-        return r17;
-    L30:
-        r2.r(8, r15);     // Catch: Throwable -> L7
-        goto L31
-    L27:
-        r2.r(7, r15);     // Catch: Throwable -> L7
-        goto L28
-    L24:
-        r2.r(6, r15);     // Catch: Throwable -> L7
-        goto L25
-    L21:
-        r2.r(5, r15);     // Catch: Throwable -> L7
-        goto L22
-    L18:
-        r2.r(4, r15);     // Catch: Throwable -> L7
-        goto L19
-    L15:
-        r2.r(3, r15);     // Catch: Throwable -> L7
-        goto L16
-    L12:
-        r2.r(2, r15);     // Catch: Throwable -> L7
-        goto L13
-    L9:
-        r2.r(1, r15);     // Catch: Throwable -> L7
-    L7:
-        th = move-exception;
-        r2.close();
-        throw th;
-    L83:
-        Object r110 = r0.c;
-        z34 r32 = ((x34) r25).U("SELECT p.*, (pp.playlistId IS NOT NULL) AS isPinned FROM playlist p LEFT JOIN pinned_playlist pp ON p.id = pp.playlistId ORDER BY CASE WHEN ? = 'ORDER_BY_RANDOM' THEN RANDOM() END ASC, CASE WHEN ? = 'ORDER_BY_PINNED' THEN pp.playlistId IS NOT NULL END DESC, CASE WHEN ? = 'ORDER_BY_NAME' THEN p.name END ASC, CASE WHEN ? = 'ORDER_BY_DATE' THEN p.created END DESC, CASE WHEN ? = 'ORDER_BY_SONGS' THEN p.songCount END DESC, CASE WHEN ? = 'ORDER_BY_LAST_PLAYED' THEN p.lastPlayed END DESC, CASE WHEN ? = 'ORDER_BY_LAST_UPDATED' THEN p.changed END DESC, CASE WHEN ? = 'ORDER_BY_BOTH' THEN MAX(p.lastPlayed, IFNULL(p.changed, 0)) END DESC LIMIT ?");
-        if (r15 == null) goto L86;
-        r32.r(1, r15);     // Catch: Throwable -> L87
-    L90:
-        if (r15 != null) goto L92;
-        r32.e(2);     // Catch: Throwable -> L87
-    L93:
-        if (r15 != null) goto L95;
-        r32.e(3);     // Catch: Throwable -> L87
-    L96:
-        if (r15 != null) goto L98;
-        r32.e(4);     // Catch: Throwable -> L87
-    L99:
-        if (r15 != null) goto L101;
-        r32.e(5);     // Catch: Throwable -> L87
-    L102:
-        if (r15 != null) goto L104;
-        r32.e(6);     // Catch: Throwable -> L87
-    L105:
-        if (r15 != null) goto L107;
-        r32.e(7);     // Catch: Throwable -> L87
-    L108:
-        if (r15 != null) goto L110;
-        r32.e(8);     // Catch: Throwable -> L87
-    L111:
-        r32.c(9, 20);     // Catch: Throwable -> L87
-        int r33 = rr2.E(r32, "id");     // Catch: Throwable -> L87
-        int r34 = rr2.E(r32, "name");     // Catch: Throwable -> L87
-        int r111 = rr2.E(r32, "duration");     // Catch: Throwable -> L87
-        int r35 = rr2.E(r32, "coverArt");     // Catch: Throwable -> L87
-        int r36 = rr2.E(r32, "comment");     // Catch: Throwable -> L87
-        int r37 = rr2.E(r32, "owner");     // Catch: Throwable -> L87
-        int r38 = rr2.E(r32, "isUniversal");     // Catch: Throwable -> L87
-        int r39 = rr2.E(r32, "songCount");     // Catch: Throwable -> L87
-        int r40 = rr2.E(r32, "created");     // Catch: Throwable -> L87
-        int r112 = rr2.E(r32, "changed");     // Catch: Throwable -> L87
-        int r113 = rr2.E(r32, "lastPlayed");     // Catch: Throwable -> L87
-        int r114 = rr2.E(r32, "allowedUsers");     // Catch: Throwable -> L87
-        ArrayList r115 = new ArrayList();     // Catch: Throwable -> L87
-    L112:
-        if (r32.O() == false) goto L159;
-        if (r32.isNull(r33) == false) goto L117;
-        String r116 = null;
-    L119:
-        if (r32.isNull(r34) == false) goto L121;
-        String r210 = null;
-    L122:
-        long r211 = r32.getLong(r111);     // Catch: Throwable -> L87
-        if (r32.isNull(r35) == false) goto L125;
-        String r212 = null;
-    L126:
-        Playlist r117 = new Playlist(r116, r210, r211, r212);     // Catch: Throwable -> L87
-        if (r32.isNull(r36) == false) goto L129;
-        String r41 = null;
-    L130:
-        r117.setComment(r41);     // Catch: Throwable -> L87
-        if (r32.isNull(r37) == false) goto L133;
-        String r42 = null;
-    L134:
-        r117.setOwner(r42);     // Catch: Throwable -> L87
-        if (r32.isNull(r38) == false) goto L137;
-        Integer r43 = null;
-    L138:
-        if (r43 != null) goto L141;
-        Boolean r44 = null;
-    L145:
-        r117.setUniversal(r44);     // Catch: Throwable -> L87
-        r117.setSongCount((int) r32.getLong(r39));     // Catch: Throwable -> L87
-        if (r32.isNull(r40) == false) goto L148;
-        Long r45 = null;
-    L149:
-        r117.setCreated(i80.B(r45));     // Catch: Throwable -> L87
-        if (r32.isNull(r112) == false) goto L152;
-        Long r46 = null;
-    L153:
-        r117.setChanged(i80.B(r46));     // Catch: Throwable -> L87
-        r117.setLastPlayed(r32.getLong(r113));     // Catch: Throwable -> L87
-        if (r32.isNull(r114) == false) goto L156;
-        String r47 = null;
-    L157:
-        r117.setAllowedUsers(((si1) r0.d).E(r47));     // Catch: Throwable -> L87
-        r115.add(r117);     // Catch: Throwable -> L87
-        r33 = r33;
-        r34 = r34;
-        goto L112
-    L156:
-        r47 = r32.D(r114);     // Catch: Throwable -> L87
-        goto L157
-    L152:
-        r46 = Long.valueOf(r32.getLong(r112));     // Catch: Throwable -> L87
-        goto L153
-    L148:
-        r45 = Long.valueOf(r32.getLong(r40));     // Catch: Throwable -> L87
-        goto L149
-    L141:
-        if (r43.intValue() == 0) goto L143;
-        boolean r48 = true;
-    L144:
-        r44 = Boolean.valueOf(r48);     // Catch: Throwable -> L87
-        goto L145
-    L143:
-        r48 = false;
-        goto L144
-    L137:
-        r43 = Integer.valueOf((int) r32.getLong(r38));     // Catch: Throwable -> L87
-        goto L138
-    L133:
-        r42 = r32.D(r37);     // Catch: Throwable -> L87
-        goto L134
-    L129:
-        r41 = r32.D(r36);     // Catch: Throwable -> L87
-        goto L130
-    L125:
-        r212 = r32.D(r35);     // Catch: Throwable -> L87
-        goto L126
-    L121:
-        r210 = r32.D(r34);     // Catch: Throwable -> L87
-        goto L122
-    L117:
-        r116 = r32.D(r33);     // Catch: Throwable -> L87
-        goto L119
-    L159:
-        r32.close();
-        return r115;
-    L110:
-        r32.r(8, r15);     // Catch: Throwable -> L87
-        goto L111
-    L107:
-        r32.r(7, r15);     // Catch: Throwable -> L87
-        goto L108
-    L104:
-        r32.r(6, r15);     // Catch: Throwable -> L87
-        goto L105
-    L101:
-        r32.r(5, r15);     // Catch: Throwable -> L87
-        goto L102
-    L98:
-        r32.r(4, r15);     // Catch: Throwable -> L87
-        goto L99
-    L95:
-        r32.r(3, r15);     // Catch: Throwable -> L87
-        goto L96
-    L92:
-        r32.r(2, r15);     // Catch: Throwable -> L87
-        goto L93
-    L86:
-        r32.e(1);     // Catch: Throwable -> L87
-    L87:
-        th = move-exception;
-        r32.close();
-        throw th;
+    public final Object invoke(Object obj) throws Exception {
+        Boolean boolValueOf;
+        Boolean boolValueOf2;
+        int i = this.n;
+        String str = this.p;
+        ml3 ml3Var = this.o;
+        switch (i) {
+            case 0:
+                Object obj2 = ml3Var.c;
+                z34 z34VarU = ((x34) obj).U("SELECT p.*, (pp.playlistId IS NOT NULL) AS isPinned FROM playlist p LEFT JOIN pinned_playlist pp ON p.id = pp.playlistId ORDER BY CASE WHEN ? = 'ORDER_BY_RANDOM' THEN RANDOM() END ASC, CASE WHEN ? = 'ORDER_BY_PINNED' THEN pp.playlistId IS NOT NULL END DESC, CASE WHEN ? = 'ORDER_BY_NAME' THEN p.name END ASC, CASE WHEN ? = 'ORDER_BY_DATE' THEN p.created END DESC, CASE WHEN ? = 'ORDER_BY_SONGS' THEN p.songCount END DESC, CASE WHEN ? = 'ORDER_BY_LAST_PLAYED' THEN p.lastPlayed END DESC, CASE WHEN ? = 'ORDER_BY_LAST_UPDATED' THEN p.changed END DESC, CASE WHEN ? = 'ORDER_BY_BOTH' THEN MAX(p.lastPlayed, IFNULL(p.changed, 0)) END DESC LIMIT ?");
+                try {
+                    if (str == null) {
+                        z34VarU.e(1);
+                    } else {
+                        z34VarU.r(1, str);
+                    }
+                    if (str == null) {
+                        z34VarU.e(2);
+                    } else {
+                        z34VarU.r(2, str);
+                    }
+                    if (str == null) {
+                        z34VarU.e(3);
+                    } else {
+                        z34VarU.r(3, str);
+                    }
+                    if (str == null) {
+                        z34VarU.e(4);
+                    } else {
+                        z34VarU.r(4, str);
+                    }
+                    if (str == null) {
+                        z34VarU.e(5);
+                    } else {
+                        z34VarU.r(5, str);
+                    }
+                    if (str == null) {
+                        z34VarU.e(6);
+                    } else {
+                        z34VarU.r(6, str);
+                    }
+                    if (str == null) {
+                        z34VarU.e(7);
+                    } else {
+                        z34VarU.r(7, str);
+                    }
+                    if (str == null) {
+                        z34VarU.e(8);
+                    } else {
+                        z34VarU.r(8, str);
+                    }
+                    z34VarU.c(9, 20L);
+                    int iE = rr2.E(z34VarU, "id");
+                    int iE2 = rr2.E(z34VarU, "name");
+                    int iE3 = rr2.E(z34VarU, "duration");
+                    int iE4 = rr2.E(z34VarU, "coverArt");
+                    int iE5 = rr2.E(z34VarU, "comment");
+                    int iE6 = rr2.E(z34VarU, "owner");
+                    int iE7 = rr2.E(z34VarU, "isUniversal");
+                    int iE8 = rr2.E(z34VarU, "songCount");
+                    int iE9 = rr2.E(z34VarU, "created");
+                    int iE10 = rr2.E(z34VarU, "changed");
+                    int iE11 = rr2.E(z34VarU, "lastPlayed");
+                    int iE12 = rr2.E(z34VarU, "allowedUsers");
+                    ArrayList arrayList = new ArrayList();
+                    while (z34VarU.O()) {
+                        Playlist playlist = new Playlist(z34VarU.isNull(iE) ? null : z34VarU.D(iE), z34VarU.isNull(iE2) ? null : z34VarU.D(iE2), z34VarU.getLong(iE3), z34VarU.isNull(iE4) ? null : z34VarU.D(iE4));
+                        playlist.setComment(z34VarU.isNull(iE5) ? null : z34VarU.D(iE5));
+                        playlist.setOwner(z34VarU.isNull(iE6) ? null : z34VarU.D(iE6));
+                        Integer numValueOf = z34VarU.isNull(iE7) ? null : Integer.valueOf((int) z34VarU.getLong(iE7));
+                        if (numValueOf == null) {
+                            boolValueOf = null;
+                        } else {
+                            boolValueOf = Boolean.valueOf(numValueOf.intValue() != 0);
+                        }
+                        playlist.setUniversal(boolValueOf);
+                        playlist.setSongCount((int) z34VarU.getLong(iE8));
+                        playlist.setCreated(i80.B(z34VarU.isNull(iE9) ? null : Long.valueOf(z34VarU.getLong(iE9))));
+                        playlist.setChanged(i80.B(z34VarU.isNull(iE10) ? null : Long.valueOf(z34VarU.getLong(iE10))));
+                        playlist.setLastPlayed(z34VarU.getLong(iE11));
+                        playlist.setAllowedUsers(((si1) ml3Var.d).E(z34VarU.isNull(iE12) ? null : z34VarU.D(iE12)));
+                        arrayList.add(playlist);
+                        iE = iE;
+                        iE2 = iE2;
+                        break;
+                    }
+                    z34VarU.close();
+                    return arrayList;
+                } catch (Throwable th) {
+                    z34VarU.close();
+                    throw th;
+                }
+            default:
+                Object obj3 = ml3Var.c;
+                z34 z34VarU2 = ((x34) obj).U("SELECT p.*, (pp.playlistId IS NOT NULL) AS isPinned FROM playlist p LEFT JOIN pinned_playlist pp ON p.id = pp.playlistId ORDER BY CASE WHEN ? = 'ORDER_BY_RANDOM' THEN RANDOM() END ASC, CASE WHEN ? = 'ORDER_BY_PINNED' THEN pp.playlistId IS NOT NULL END DESC, CASE WHEN ? = 'ORDER_BY_NAME' THEN p.name END ASC, CASE WHEN ? = 'ORDER_BY_DATE' THEN p.created END DESC, CASE WHEN ? = 'ORDER_BY_SONGS' THEN p.songCount END DESC, CASE WHEN ? = 'ORDER_BY_LAST_PLAYED' THEN p.lastPlayed END DESC, CASE WHEN ? = 'ORDER_BY_LAST_UPDATED' THEN p.changed END DESC, CASE WHEN ? = 'ORDER_BY_BOTH' THEN MAX(p.lastPlayed, IFNULL(p.changed, 0)) END DESC");
+                try {
+                    if (str == null) {
+                        z34VarU2.e(1);
+                    } else {
+                        z34VarU2.r(1, str);
+                    }
+                    if (str == null) {
+                        z34VarU2.e(2);
+                    } else {
+                        z34VarU2.r(2, str);
+                    }
+                    if (str == null) {
+                        z34VarU2.e(3);
+                    } else {
+                        z34VarU2.r(3, str);
+                    }
+                    if (str == null) {
+                        z34VarU2.e(4);
+                    } else {
+                        z34VarU2.r(4, str);
+                    }
+                    if (str == null) {
+                        z34VarU2.e(5);
+                    } else {
+                        z34VarU2.r(5, str);
+                    }
+                    if (str == null) {
+                        z34VarU2.e(6);
+                    } else {
+                        z34VarU2.r(6, str);
+                    }
+                    if (str == null) {
+                        z34VarU2.e(7);
+                    } else {
+                        z34VarU2.r(7, str);
+                    }
+                    if (str == null) {
+                        z34VarU2.e(8);
+                    } else {
+                        z34VarU2.r(8, str);
+                    }
+                    int iE13 = rr2.E(z34VarU2, "id");
+                    int iE14 = rr2.E(z34VarU2, "name");
+                    int iE15 = rr2.E(z34VarU2, "duration");
+                    int iE16 = rr2.E(z34VarU2, "coverArt");
+                    int iE17 = rr2.E(z34VarU2, "comment");
+                    int iE18 = rr2.E(z34VarU2, "owner");
+                    int iE19 = rr2.E(z34VarU2, "isUniversal");
+                    int iE20 = rr2.E(z34VarU2, "songCount");
+                    int iE21 = rr2.E(z34VarU2, "created");
+                    int iE22 = rr2.E(z34VarU2, "changed");
+                    int iE23 = rr2.E(z34VarU2, "lastPlayed");
+                    int iE24 = rr2.E(z34VarU2, "allowedUsers");
+                    ArrayList arrayList2 = new ArrayList();
+                    while (z34VarU2.O()) {
+                        Playlist playlist2 = new Playlist(z34VarU2.isNull(iE13) ? null : z34VarU2.D(iE13), z34VarU2.isNull(iE14) ? null : z34VarU2.D(iE14), z34VarU2.getLong(iE15), z34VarU2.isNull(iE16) ? null : z34VarU2.D(iE16));
+                        playlist2.setComment(z34VarU2.isNull(iE17) ? null : z34VarU2.D(iE17));
+                        playlist2.setOwner(z34VarU2.isNull(iE18) ? null : z34VarU2.D(iE18));
+                        Integer numValueOf2 = z34VarU2.isNull(iE19) ? null : Integer.valueOf((int) z34VarU2.getLong(iE19));
+                        if (numValueOf2 == null) {
+                            boolValueOf2 = null;
+                        } else {
+                            boolValueOf2 = Boolean.valueOf(numValueOf2.intValue() != 0);
+                        }
+                        playlist2.setUniversal(boolValueOf2);
+                        playlist2.setSongCount((int) z34VarU2.getLong(iE20));
+                        playlist2.setCreated(i80.B(z34VarU2.isNull(iE21) ? null : Long.valueOf(z34VarU2.getLong(iE21))));
+                        playlist2.setChanged(i80.B(z34VarU2.isNull(iE22) ? null : Long.valueOf(z34VarU2.getLong(iE22))));
+                        playlist2.setLastPlayed(z34VarU2.getLong(iE23));
+                        playlist2.setAllowedUsers(((si1) ml3Var.d).E(z34VarU2.isNull(iE24) ? null : z34VarU2.D(iE24)));
+                        arrayList2.add(playlist2);
+                        iE17 = iE17;
+                        iE18 = iE18;
+                        break;
+                    }
+                    z34VarU2.close();
+                    return arrayList2;
+                } catch (Throwable th2) {
+                    z34VarU2.close();
+                    throw th2;
+                }
+        }
     }
 }

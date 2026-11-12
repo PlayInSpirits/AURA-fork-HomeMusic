@@ -10,8 +10,8 @@ import retrofit2.http.QueryMap;
 /* JADX INFO: loaded from: classes.dex */
 public interface gq4 {
     @GET("getOpenSubsonicExtensions")
-    Call<ApiResponse> a(@QueryMap Map<String, String> r1);
+    Call<ApiResponse> a(@QueryMap Map<String, String> map);
 
     @GET("ping")
-    Call<ApiResponse> b(@QueryMap Map<String, String> r1);
+    Call<ApiResponse> b(@QueryMap Map<String, String> map);
 }

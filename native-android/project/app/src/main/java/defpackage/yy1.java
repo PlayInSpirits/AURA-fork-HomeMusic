@@ -8,5 +8,5 @@ import java.util.List;
 public interface yy1 {
     List a();
 
-    Object b(Context r1);
+    Object b(Context context);
 }

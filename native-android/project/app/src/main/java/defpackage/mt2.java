@@ -9,62 +9,49 @@ public final class mt2 {
     public final long d;
     public final int e;
 
-    public mt2(Object r1, int r2, int r3, long r4, int r6) {
-        this.a = r1;
-        this.b = r2;
-        this.c = r3;
-        this.d = r4;
-        this.e = r6;
+    public mt2(Object obj, int i, int i2, long j, int i3) {
+        this.a = obj;
+        this.b = i;
+        this.c = i2;
+        this.d = j;
+        this.e = i3;
     }
 
-    public final mt2 a(Object r9) {
-        if (this.a.equals(r9) == false) goto L5;
-        return this;
-    L5:
-        long r5 = this.d;
-        int r7 = this.e;
-        return new mt2(r9, this.b, this.c, r5, r7);
+    public final mt2 a(Object obj) {
+        if (this.a.equals(obj)) {
+            return this;
+        }
+        return new mt2(obj, this.b, this.c, this.d, this.e);
     }
 
     public final boolean b() {
-        if (this.b == (-1)) goto L6;
-        return true;
-    L6:
-        return false;
+        return this.b != -1;
     }
 
-    public final boolean equals(Object r8) {
-        if (this != r8) goto L6;
-        return true;
-    L6:
-        if ((r8 instanceof mt2) == true) goto L8;
-        return false;
-    L8:
-        mt2 r9 = (mt2) r8;
-        if (this.a.equals(r9.a) == true) goto L11;
-    L19:
-        return false;
-    L11:
-        if (this.b != r9.b) goto L19;
-        if (this.c != r9.c) goto L19;
-        if (this.d != r9.d) goto L19;
-        if (this.e != r9.e) goto L19;
-        return true;
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof mt2)) {
+            return false;
+        }
+        mt2 mt2Var = (mt2) obj;
+        return this.a.equals(mt2Var.a) && this.b == mt2Var.b && this.c == mt2Var.c && this.d == mt2Var.d && this.e == mt2Var.e;
     }
 
     public final int hashCode() {
         return ((((((((this.a.hashCode() + 527) * 31) + this.b) * 31) + this.c) * 31) + ((int) this.d)) * 31) + this.e;
     }
 
-    public mt2(long r8, Object r10) {
-        this(r10, -1, -1, r8, -1);
+    public mt2(long j, Object obj) {
+        this(obj, -1, -1, j, -1);
     }
 
-    public mt2(Object r8, long r9, int r11) {
-        this(r8, -1, -1, r9, r11);
+    public mt2(Object obj, long j, int i) {
+        this(obj, -1, -1, j, i);
     }
 
-    public mt2(Object r3) {
-        this(-1, r3);
+    public mt2(Object obj) {
+        this(-1L, obj);
     }
 }

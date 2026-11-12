@@ -8,43 +8,27 @@ public final class kd3 implements Serializable {
     public final Object n;
     public final Object o;
 
-    public kd3(Object r1, Object r2) {
-        this.n = r1;
-        this.o = r2;
+    public kd3(Object obj, Object obj2) {
+        this.n = obj;
+        this.o = obj2;
     }
 
-    public final boolean equals(Object r5) {
-        if (this != r5) goto L6;
-        return true;
-    L6:
-        if ((r5 instanceof kd3) == true) goto L8;
-        return false;
-    L8:
-        kd3 r6 = (kd3) r5;
-        if (h12.c(this.n, r6.n) == true) goto L12;
-        return false;
-    L12:
-        if (h12.c(this.o, r6.o) == true) goto L14;
-        return false;
-    L14:
-        return true;
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof kd3)) {
+            return false;
+        }
+        kd3 kd3Var = (kd3) obj;
+        return h12.c(this.n, kd3Var.n) && h12.c(this.o, kd3Var.o);
     }
 
     public final int hashCode() {
-        int r0 = 0;
-        Object r1 = this.n;
-        if (r1 != null) goto L5;
-        int r2 = 0;
-    L6:
-        int r3 = r2 * 31;
-        Object r4 = this.o;
-        if (r4 == null) goto L11;
-        r0 = r4.hashCode();
-    L11:
-        return r3 + r0;
-    L5:
-        r2 = r1.hashCode();
-        goto L6
+        Object obj = this.n;
+        int iHashCode = (obj == null ? 0 : obj.hashCode()) * 31;
+        Object obj2 = this.o;
+        return iHashCode + (obj2 != null ? obj2.hashCode() : 0);
     }
 
     public final String toString() {

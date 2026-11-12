@@ -12,29 +12,25 @@ public final class yj5 extends ak5 {
     public final int n;
     public final ji5 o;
 
-    public yj5(ji5 r4) {
-        r4.getClass();
-        this.o = r4;
-        o15 r5 = r4.a().e();
-        int r0 = 0;
-    L4:
-        if (r5.hasNext() == false) goto L11;
-        Map.Entry r1 = (Map.Entry) r5.next();
-        int r2 = ((ak5) r1.getKey()).b();
-        if (r0 >= r2) goto L8;
-        r0 = r2;
-    L8:
-        int r3 = ((ak5) r1.getValue()).b();
-        if (r0 >= r3) goto L4;
-        r0 = r3;
-        goto L4
-    L11:
-        int r6 = r0 + 1;
-        this.n = r6;
-        if (r6 > 8) goto L15;
-        return;
-    L15:
-        throw new zzhf("Exceeded cutoff limit for max depth of cbor value");
+    public yj5(ji5 ji5Var) throws zzhf {
+        ji5Var.getClass();
+        this.o = ji5Var;
+        o15 o15VarE = ji5Var.entrySet().e();
+        int i = 0;
+        while (o15VarE.hasNext()) {
+            Map.Entry entry = (Map.Entry) o15VarE.next();
+            int iB = ((ak5) entry.getKey()).b();
+            i = i < iB ? iB : i;
+            int iB2 = ((ak5) entry.getValue()).b();
+            if (i < iB2) {
+                i = iB2;
+            }
+        }
+        int i2 = i + 1;
+        this.n = i2;
+        if (i2 > 8) {
+            throw new zzhf("Exceeded cutoff limit for max depth of cbor value");
+        }
     }
 
     @Override // defpackage.ak5
@@ -48,48 +44,44 @@ public final class yj5 extends ak5 {
     }
 
     @Override // java.lang.Comparable
-    public final int compareTo(Object r5) {
-        ak5 r6 = (ak5) r5;
-        int r0 = r6.a();
-        int r1 = ak5.d((byte) -96);
-        if (r1 != r0) goto L5;
-        ji5 r7 = ((yj5) r6).o;
-        ji5 r4 = this.o;
-        if (r4.q.size() != r7.q.size()) goto L9;
-        o15 r8 = r4.a().e();
-        o15 r9 = r7.a().e();
-    L12:
-        if (r8.hasNext() == false) goto L14;
-    L18:
-        Map.Entry r2 = (Map.Entry) r8.next();
-        Map.Entry r3 = (Map.Entry) r9.next();
-        int r10 = ((ak5) r2.getKey()).compareTo((ak5) r3.getKey());
-        if (r10 != 0) goto L20;
-        int r11 = ((ak5) r2.getValue()).compareTo((ak5) r3.getValue());
-        if (r11 == 0) goto L12;
-        return r11;
-    L20:
-        return r10;
-    L14:
-        if (r9.hasNext() == true) goto L18;
-        return 0;
-    L9:
-        return r4.q.size() - r7.q.size();
-    L5:
-        return r1 - r6.a();
+    public final int compareTo(Object obj) {
+        int iCompareTo;
+        ak5 ak5Var = (ak5) obj;
+        int iA = ak5Var.a();
+        int iD = ak5.d((byte) -96);
+        if (iD != iA) {
+            return iD - ak5Var.a();
+        }
+        ji5 ji5Var = ((yj5) ak5Var).o;
+        ji5 ji5Var2 = this.o;
+        if (ji5Var2.q.size() != ji5Var.q.size()) {
+            return ji5Var2.q.size() - ji5Var.q.size();
+        }
+        o15 o15VarE = ji5Var2.entrySet().e();
+        o15 o15VarE2 = ji5Var.entrySet().e();
+        do {
+            if (!o15VarE.hasNext() && !o15VarE2.hasNext()) {
+                return 0;
+            }
+            Map.Entry entry = (Map.Entry) o15VarE.next();
+            Map.Entry entry2 = (Map.Entry) o15VarE2.next();
+            int iCompareTo2 = ((ak5) entry.getKey()).compareTo((ak5) entry2.getKey());
+            if (iCompareTo2 != 0) {
+                return iCompareTo2;
+            }
+            iCompareTo = ((ak5) entry.getValue()).compareTo((ak5) entry2.getValue());
+        } while (iCompareTo == 0);
+        return iCompareTo;
     }
 
-    public final boolean equals(Object r4) {
-        if (this != r4) goto L6;
-        return true;
-    L6:
-        if (r4 != null) goto L9;
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj != null && yj5.class == obj.getClass()) {
+            return this.o.equals(((yj5) obj).o);
+        }
         return false;
-    L9:
-        if (yj5.class == r4.getClass()) goto L12;
-        return false;
-    L12:
-        return this.o.equals(((yj5) r4).o);
     }
 
     public final int hashCode() {
@@ -97,25 +89,24 @@ public final class yj5 extends ak5 {
     }
 
     public final String toString() {
-        ji5 r5 = this.o;
-        if (r5.isEmpty() == false) goto L6;
-        return "{}";
-    L6:
-        LinkedHashMap r0 = new LinkedHashMap();
-        o15 r6 = r5.a().e();
-    L8:
-        if (r6.hasNext() == false) goto L10;
-        Map.Entry r1 = (Map.Entry) r6.next();
-        r0.put(((ak5) r1.getKey()).toString().replace("\n", "\n  "), ((ak5) r1.getValue()).toString().replace("\n", "\n  "));
-        goto L8
-    L10:
-        z45 r7 = new z45(8);
-        StringBuilder r2 = new StringBuilder("{\n  ");
-        uo.V(r2, r0.entrySet().iterator(), r7);     // Catch: IOException -> L14
-        r2.append("\n}");
-        return r2.toString();
-    L14:
-        e = move-exception;
-        throw new AssertionError(e);
+        ji5 ji5Var = this.o;
+        if (ji5Var.isEmpty()) {
+            return "{}";
+        }
+        LinkedHashMap linkedHashMap = new LinkedHashMap();
+        o15 o15VarE = ji5Var.entrySet().e();
+        while (o15VarE.hasNext()) {
+            Map.Entry entry = (Map.Entry) o15VarE.next();
+            linkedHashMap.put(((ak5) entry.getKey()).toString().replace("\n", "\n  "), ((ak5) entry.getValue()).toString().replace("\n", "\n  "));
+        }
+        z45 z45Var = new z45(8);
+        StringBuilder sb = new StringBuilder("{\n  ");
+        try {
+            uo.V(sb, linkedHashMap.entrySet().iterator(), z45Var);
+            sb.append("\n}");
+            return sb.toString();
+        } catch (IOException e) {
+            throw new AssertionError(e);
+        }
     }
 }

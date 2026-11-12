@@ -10,71 +10,62 @@ import android.view.View;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class mv4 extends GestureDetector.SimpleOnGestureListener implements View.OnTouchListener, jb3 {
-    public final PointF n;
-    public final PointF o;
     public final rj4 p;
-    public final float q;
     public final GestureDetector r;
-    public volatile float s;
+    public final PointF n = new PointF();
+    public final PointF o = new PointF();
+    public final float q = 25.0f;
+    public volatile float s = 3.1415927f;
 
-    public mv4(Context r2, rj4 r3) {
-        this.n = new PointF();
-        this.o = new PointF();
-        this.p = r3;
-        this.q = 25.0f;
-        this.r = new GestureDetector(r2, this);
-        this.s = 3.1415927f;
+    public mv4(Context context, rj4 rj4Var) {
+        this.p = rj4Var;
+        this.r = new GestureDetector(context, this);
     }
 
     @Override // defpackage.jb3
-    public final void a(float r1, float[] r2) {
-        this.s = -r1;
+    public final void a(float f, float[] fArr) {
+        this.s = -f;
     }
 
     @Override // android.view.GestureDetector.SimpleOnGestureListener, android.view.GestureDetector.OnGestureListener
-    public final boolean onDown(MotionEvent r2) {
-        float r0 = r2.getX();
-        float r3 = r2.getY();
-        this.n.set(r0, r3);
+    public final boolean onDown(MotionEvent motionEvent) {
+        this.n.set(motionEvent.getX(), motionEvent.getY());
         return true;
     }
 
     @Override // android.view.GestureDetector.SimpleOnGestureListener, android.view.GestureDetector.OnGestureListener
-    public final boolean onScroll(MotionEvent r15, MotionEvent r16, float r17, float r18) {
-        float r0 = (r16.getX() - this.n.x) / this.q;
-        float r1 = r16.getY();
-        PointF r2 = this.n;
-        float r3 = (r1 - r2.y) / this.q;
-        r2.set(r16.getX(), r16.getY());
-        double r4 = this.s;
-        float r5 = (float) Math.cos(r4);
-        float r6 = (float) Math.sin(r4);
-        PointF r7 = this.o;
-        r7.x -= (r5 * r0) - (r6 * r3);
-        float r8 = ((r5 * r3) + (r6 * r0)) + r7.y;
-        r7.y = r8;
-        r7.y = Math.max(-45.0f, Math.min(45.0f, r8));
-        rj4 r9 = this.p;
-        PointF r14 = this.o;
-        monitor-enter(r9);
-        float r10 = r14.y;     // Catch: Throwable -> L8
-        r9.t = r10;     // Catch: Throwable -> L8
-        Matrix.setRotateM(r9.r, 0, -r10, (float) Math.cos(r9.u), (float) Math.sin(r9.u), 0.0f);     // Catch: Throwable -> L8
-        Matrix.setRotateM(r9.s, 0, -r14.x, 0.0f, 1.0f, 0.0f);     // Catch: Throwable -> L8
-        monitor-exit(r9);
+    public final boolean onScroll(MotionEvent motionEvent, MotionEvent motionEvent2, float f, float f2) {
+        float x = (motionEvent2.getX() - this.n.x) / this.q;
+        float y = motionEvent2.getY();
+        PointF pointF = this.n;
+        float f3 = (y - pointF.y) / this.q;
+        pointF.set(motionEvent2.getX(), motionEvent2.getY());
+        double d = this.s;
+        float fCos = (float) Math.cos(d);
+        float fSin = (float) Math.sin(d);
+        PointF pointF2 = this.o;
+        pointF2.x -= (fCos * x) - (fSin * f3);
+        float f4 = (fCos * f3) + (fSin * x) + pointF2.y;
+        pointF2.y = f4;
+        pointF2.y = Math.max(-45.0f, Math.min(45.0f, f4));
+        rj4 rj4Var = this.p;
+        PointF pointF3 = this.o;
+        synchronized (rj4Var) {
+            float f5 = pointF3.y;
+            rj4Var.t = f5;
+            Matrix.setRotateM(rj4Var.r, 0, -f5, (float) Math.cos(rj4Var.u), (float) Math.sin(rj4Var.u), 0.0f);
+            Matrix.setRotateM(rj4Var.s, 0, -pointF3.x, 0.0f, 1.0f, 0.0f);
+        }
         return true;
-    L8:
-        th = move-exception;
-        throw th;
     }
 
     @Override // android.view.GestureDetector.SimpleOnGestureListener, android.view.GestureDetector.OnGestureListener
-    public final boolean onSingleTapUp(MotionEvent r1) {
+    public final boolean onSingleTapUp(MotionEvent motionEvent) {
         return this.p.x.performClick();
     }
 
     @Override // android.view.View.OnTouchListener
-    public final boolean onTouch(View r1, MotionEvent r2) {
-        return this.r.onTouchEvent(r2);
+    public final boolean onTouch(View view, MotionEvent motionEvent) {
+        return this.r.onTouchEvent(motionEvent);
     }
 }

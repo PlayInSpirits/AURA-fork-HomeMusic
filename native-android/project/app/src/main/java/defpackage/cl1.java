@@ -17,8 +17,8 @@ public final class cl1 {
     public long l;
     public boolean m;
 
-    public cl1(wv4 r1) {
-        this.a = r1;
+    public cl1(wv4 wv4Var) {
+        this.a = wv4Var;
     }
 
     /* JADX WARN: Type inference fix 'apply assigned field type' failed
@@ -31,17 +31,16 @@ public final class cl1 {
     	at jadx.core.dex.visitors.typeinference.FixTypesVisitor.applyFieldType(FixTypesVisitor.java:309)
     	at jadx.core.dex.visitors.typeinference.FixTypesVisitor.visit(FixTypesVisitor.java:94)
      */
-    public final void a(int r10) {
-        long r1 = this.l;
-        if (r1 == (-9223372036854775807L)) goto L9;
-        long r3 = this.b;
-        long r5 = this.k;
-        if (r3 == r5) goto L10;
-        boolean r4 = this.m;
-        int r6 = (int) (r3 - r5);
-        this.a.a(r1, r4 ? 1 : 0, r6, r10, null);
-        return;
-    L10:
-        return;
+    public final void a(int i) {
+        long j = this.l;
+        if (j != -9223372036854775807L) {
+            long j2 = this.b;
+            long j3 = this.k;
+            if (j2 == j3) {
+                return;
+            }
+            int i2 = (int) (j2 - j3);
+            this.a.a(j, this.m ? 1 : 0, i2, i, null);
+        }
     }
 }

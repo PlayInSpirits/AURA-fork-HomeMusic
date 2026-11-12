@@ -9,10 +9,11 @@ public final class u8 extends cx3 {
     public final ss0 u;
     public final /* synthetic */ v8 v;
 
-    public u8(v8 r2, ss0 r3) {
-        this.v = r2;
-        super((ConstraintLayout) r3.n);
-        this.u = r3;
-        ((TextView) r3.p).setOnClickListener(new p6(3, this));
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public u8(v8 v8Var, ss0 ss0Var) {
+        super((ConstraintLayout) ss0Var.n);
+        this.v = v8Var;
+        this.u = ss0Var;
+        ((TextView) ss0Var.p).setOnClickListener(new p6(3, this));
     }
 }

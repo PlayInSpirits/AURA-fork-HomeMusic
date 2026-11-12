@@ -11,29 +11,22 @@ import java.util.regex.Pattern;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class x95 implements k51 {
-    public static final Pattern i = null;
-    public static final Pattern j = null;
+    public static final Pattern i = Pattern.compile("LOCAL:([^,]+)");
+    public static final Pattern j = Pattern.compile("MPEGTS:(-?\\d+)");
     public final String a;
     public final iu4 b;
-    public final be3 c;
     public final xn4 d;
     public final boolean e;
     public m51 f;
-    public byte[] g;
     public int h;
+    public final be3 c = new be3();
+    public byte[] g = new byte[1024];
 
-    static {
-        i = Pattern.compile("LOCAL:([^,]+)");
-        j = Pattern.compile("MPEGTS:(-?\\d+)");
-    }
-
-    public x95(String r1, iu4 r2, xn4 r3, boolean r4) {
-        this.a = r1;
-        this.b = r2;
-        this.c = new be3();
-        this.g = new byte[1024];
-        this.d = r3;
-        this.e = r4;
+    public x95(String str, iu4 iu4Var, xn4 xn4Var, boolean z) {
+        this.a = str;
+        this.b = iu4Var;
+        this.d = xn4Var;
+        this.e = z;
     }
 
     @Override // defpackage.k51
@@ -41,128 +34,130 @@ public final class x95 implements k51 {
     }
 
     @Override // defpackage.k51
-    public final int b(l51 r18, t71 r19) {
+    public final int b(l51 l51Var, t71 t71Var) throws ParserException {
+        String strN;
         this.f.getClass();
-        int r1 = (int) r18.getLength();
-        int r2 = this.h;
-        byte[] r3 = this.g;
-        if (r2 != r3.length) goto L8;
-        if (r1 == (-1)) goto L6;
-        int r4 = r1;
-    L7:
-        this.g = Arrays.copyOf(r3, (r4 * 3) / 2);
-        goto L8
-    L6:
-        r4 = r3.length;
-    L8:
-        byte[] r5 = this.g;
-        int r6 = this.h;
-        int r7 = r18.read(r5, r6, r5.length - r6);
-        if (r7 == (-1)) goto L15;
-        int r8 = this.h + r7;
-        this.h = r8;
-        if (r1 == (-1)) goto L13;
-        if (r8 == r1) goto L15;
-        return 0;
-    L13:
-        return 0;
-    L15:
-        be3 r9 = new be3(this.g);
-        y95.d(r9);
-        String r10 = r9.n(StandardCharsets.UTF_8);
-        long r11 = 0;
-        long r12 = 0;
-    L16:
-        Matcher r13 = null;
-        if (TextUtils.isEmpty(r10) == true) goto L30;
-        if (r10.startsWith("X-TIMESTAMP-MAP") == false) goto L29;
-        Matcher r14 = i.matcher(r10);
-        if (r14.find() == false) goto L28;
-        Matcher r15 = j.matcher(r10);
-        if (r15.find() == false) goto L26;
-        String r16 = r14.group(1);
-        r16.getClass();
-        r12 = y95.c(r16);
-        String r17 = r15.group(1);
-        r17.getClass();
-        long r110 = Long.parseLong(r17);
-        String r20 = f35.a;
-        r11 = f35.a0(r110, 1000000, 90000, RoundingMode.DOWN);
-        goto L29
-    L26:
-        throw ParserException.a(null, "X-TIMESTAMP-MAP doesn't contain media timestamp: ".concat(r10));
-    L28:
-        throw ParserException.a(null, "X-TIMESTAMP-MAP doesn't contain local timestamp: ".concat(r10));
-    L29:
-        r10 = r9.n(StandardCharsets.UTF_8);
-    L30:
-        String r21 = r9.n(StandardCharsets.UTF_8);
-        if (r21 == null) goto L42;
-        if (y95.a.matcher(r21).matches() == true) goto L34;
-        Matcher r22 = w95.a.matcher(r21);
-        if (r22.matches() == false) goto L30;
-        r13 = r22;
-    L34:
-        String r23 = r9.n(StandardCharsets.UTF_8);
-        if (r23 == null) goto L30;
-        if (r23.isEmpty() == true) goto L30;
-    L42:
-        if (r13 != null) goto L45;
-        g(0);
-        return -1;
-    L45:
-        String r24 = r13.group(1);
-        r24.getClass();
-        long r25 = y95.c(r24);
-        String r26 = f35.a;
-        long r27 = this.b.b(f35.a0((r11 + r25) - r12, 90000, 1000000, RoundingMode.DOWN) % 8589934592L);
-        wv4 r28 = g(r27 - r25);
-        byte[] r29 = this.g;
-        int r30 = this.h;
-        be3 r31 = this.c;
-        r31.L(r30, r29);
-        r28.e(this.h, r31);
-        r28.a(r27, 1, this.h, 0, null);
-        return -1;
+        int length = (int) l51Var.getLength();
+        int i2 = this.h;
+        byte[] bArr = this.g;
+        if (i2 == bArr.length) {
+            this.g = Arrays.copyOf(bArr, ((length != -1 ? length : bArr.length) * 3) / 2);
+        }
+        byte[] bArr2 = this.g;
+        int i3 = this.h;
+        int i4 = l51Var.read(bArr2, i3, bArr2.length - i3);
+        if (i4 != -1) {
+            int i5 = this.h + i4;
+            this.h = i5;
+            if (length == -1 || i5 != length) {
+                return 0;
+            }
+        }
+        be3 be3Var = new be3(this.g);
+        y95.d(be3Var);
+        String strN2 = be3Var.n(StandardCharsets.UTF_8);
+        long jA0 = 0;
+        long jC = 0;
+        while (true) {
+            Matcher matcher = null;
+            if (TextUtils.isEmpty(strN2)) {
+                while (true) {
+                    String strN3 = be3Var.n(StandardCharsets.UTF_8);
+                    if (strN3 == null) {
+                        break;
+                    }
+                    if (y95.a.matcher(strN3).matches()) {
+                        do {
+                            strN = be3Var.n(StandardCharsets.UTF_8);
+                            if (strN == null) {
+                                break;
+                            }
+                        } while (!strN.isEmpty());
+                    } else {
+                        Matcher matcher2 = w95.a.matcher(strN3);
+                        if (matcher2.matches()) {
+                            matcher = matcher2;
+                            break;
+                        }
+                    }
+                }
+                if (matcher == null) {
+                    g(0L);
+                    return -1;
+                }
+                String strGroup = matcher.group(1);
+                strGroup.getClass();
+                long jC2 = y95.c(strGroup);
+                String str = f35.a;
+                long jB = this.b.b(f35.a0((jA0 + jC2) - jC, 90000L, 1000000L, RoundingMode.DOWN) % 8589934592L);
+                wv4 wv4VarG = g(jB - jC2);
+                byte[] bArr3 = this.g;
+                int i6 = this.h;
+                be3 be3Var2 = this.c;
+                be3Var2.L(i6, bArr3);
+                wv4VarG.e(this.h, be3Var2);
+                wv4VarG.a(jB, 1, this.h, 0, null);
+                return -1;
+            }
+            if (strN2.startsWith("X-TIMESTAMP-MAP")) {
+                Matcher matcher3 = i.matcher(strN2);
+                if (!matcher3.find()) {
+                    throw ParserException.a(null, "X-TIMESTAMP-MAP doesn't contain local timestamp: ".concat(strN2));
+                }
+                Matcher matcher4 = j.matcher(strN2);
+                if (!matcher4.find()) {
+                    throw ParserException.a(null, "X-TIMESTAMP-MAP doesn't contain media timestamp: ".concat(strN2));
+                }
+                String strGroup2 = matcher3.group(1);
+                strGroup2.getClass();
+                jC = y95.c(strGroup2);
+                String strGroup3 = matcher4.group(1);
+                strGroup3.getClass();
+                long j2 = Long.parseLong(strGroup3);
+                String str2 = f35.a;
+                jA0 = f35.a0(j2, 1000000L, 90000L, RoundingMode.DOWN);
+            }
+            strN2 = be3Var.n(StandardCharsets.UTF_8);
+        }
     }
 
     @Override // defpackage.k51
-    public final boolean c(l51 r6) {
-        rk0 r7 = (rk0) r6;
-        r7.e(this.g, 0, 6, false);
-        byte[] r0 = this.g;
-        be3 r3 = this.c;
-        r3.L(6, r0);
-        if (y95.a(r3) == false) goto L6;
-        return true;
-    L6:
-        r7.e(this.g, 6, 3, false);
-        r3.L(9, this.g);
-        return y95.a(r3);
+    public final boolean c(l51 l51Var) {
+        rk0 rk0Var = (rk0) l51Var;
+        rk0Var.e(this.g, 0, 6, false);
+        byte[] bArr = this.g;
+        be3 be3Var = this.c;
+        be3Var.L(6, bArr);
+        if (y95.a(be3Var)) {
+            return true;
+        }
+        rk0Var.e(this.g, 6, 3, false);
+        be3Var.L(9, this.g);
+        return y95.a(be3Var);
     }
 
     @Override // defpackage.k51
-    public final void d(long r1, long r3) {
+    public final void d(long j2, long j3) {
         throw new IllegalStateException();
     }
 
     @Override // defpackage.k51
-    public final void f(m51 r3) {
-        if (this.e == false) goto L5;
-        r3 = new ll(r3, this.d);
-    L5:
-        this.f = r3;
-        r3.w(new bo(-9223372036854775807L));
+    public final void f(m51 m51Var) {
+        if (this.e) {
+            m51Var = new ll(m51Var, this.d);
+        }
+        this.f = m51Var;
+        m51Var.w(new bo(-9223372036854775807L));
     }
 
-    public final wv4 g(long r4) {
-        wv4 r0 = this.f.t(0, 3);
-        sb1 r1 = new sb1();
-        r1.m = lw2.m("text/vtt");
-        r1.d = this.a;
-        r1.r = r4;
-        f34.l(r1, r0);
+    public final wv4 g(long j2) {
+        wv4 wv4VarT = this.f.t(0, 3);
+        sb1 sb1Var = new sb1();
+        sb1Var.m = lw2.m("text/vtt");
+        sb1Var.d = this.a;
+        sb1Var.r = j2;
+        f34.l(sb1Var, wv4VarT);
         this.f.p();
-        return r0;
+        return wv4VarT;
     }
 }

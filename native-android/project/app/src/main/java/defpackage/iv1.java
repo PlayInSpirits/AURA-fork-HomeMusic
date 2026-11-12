@@ -14,161 +14,139 @@ public final class iv1 implements pv2 {
     public final boolean e;
     public final int f;
 
-    public iv1(int r2, int r3, String r4, String r5, String r6, boolean r7) {
-        if (r3 == (-1)) goto L7;
-        if (r3 > 0) goto L7;
-        boolean r0 = false;
-    L8:
-        rr2.l(r0);
-        this.a = r2;
-        this.b = r4;
-        this.c = r5;
-        this.d = r6;
-        this.e = r7;
-        this.f = r3;
-        return;
-    L7:
-        r0 = true;
-        goto L8
+    public iv1(int i, int i2, String str, String str2, String str3, boolean z) {
+        rr2.l(i2 == -1 || i2 > 0);
+        this.a = i;
+        this.b = str;
+        this.c = str2;
+        this.d = str3;
+        this.e = z;
+        this.f = i2;
     }
 
-    public static iv1 d(Map r14) {
-        List r2 = (List) r14.get("icy-br");
-        boolean r4 = true;
-        int r6 = -1;
-        if (r2 == null) goto L14;
-        String r3 = (String) r2.get(0);
-        int r7 = Integer.parseInt(r3) * 1000;
-        if (r7 <= 0) goto L50;
-        boolean r1 = true;
-    L11:
-        int r8 = r7;
-    L15:
-        List r5 = (List) r14.get("icy-genre");
-        if (r5 == null) goto L18;
-        String r10 = (String) r5.get(0);
-        r1 = true;
-    L19:
-        List r9 = (List) r14.get("icy-name");
-        if (r9 == null) goto L22;
-        String r11 = (String) r9.get(0);
-        r1 = true;
-    L23:
-        List r12 = (List) r14.get("icy-url");
-        if (r12 == null) goto L26;
-        String r13 = (String) r12.get(0);
-        r1 = true;
-    L27:
-        List r15 = (List) r14.get("icy-pub");
-        if (r15 == null) goto L30;
-        boolean r16 = ((String) r15.get(0)).equals("1");
-        r1 = true;
-    L31:
-        List r17 = (List) r14.get("icy-metaint");
-        if (r17 == null) goto L40;
-        String r18 = (String) r17.get(0);
-        int r19 = Integer.parseInt(r18);     // Catch: NumberFormatException -> L46
-        if (r19 <= 0) goto L52;
-        r6 = r19;
-    L39:
-        r1 = r4;
-        goto L40
-    L52:
-        l93.q0("IcyHeaders", "Invalid metadata interval: " + r18);     // Catch: NumberFormatException -> L41
-        r4 = r1;
-    L41:
-        r6 = r19;
-    L42:
-        xa3.s("Invalid metadata interval: ", r18, "IcyHeaders");
-    L40:
-        int r20 = r6;
-        if (r1 == true) goto L45;
+    public static iv1 d(Map map) {
+        boolean z;
+        int i;
+        String str;
+        String str2;
+        String str3;
+        boolean zEquals;
+        int i2;
+        List list = (List) map.get("icy-br");
+        boolean z2 = true;
+        int i3 = -1;
+        if (list != null) {
+            String str4 = (String) list.get(0);
+            try {
+                i2 = Integer.parseInt(str4) * 1000;
+                if (i2 > 0) {
+                    z = true;
+                } else {
+                    try {
+                        l93.q0("IcyHeaders", "Invalid bitrate: " + str4);
+                        z = false;
+                        i2 = -1;
+                    } catch (NumberFormatException unused) {
+                        xa3.s("Invalid bitrate header: ", str4, "IcyHeaders");
+                        z = false;
+                    }
+                }
+            } catch (NumberFormatException unused2) {
+                i2 = -1;
+            }
+            i = i2;
+        } else {
+            z = false;
+            i = -1;
+        }
+        List list2 = (List) map.get("icy-genre");
+        if (list2 != null) {
+            str = (String) list2.get(0);
+            z = true;
+        } else {
+            str = null;
+        }
+        List list3 = (List) map.get("icy-name");
+        if (list3 != null) {
+            str2 = (String) list3.get(0);
+            z = true;
+        } else {
+            str2 = null;
+        }
+        List list4 = (List) map.get("icy-url");
+        if (list4 != null) {
+            str3 = (String) list4.get(0);
+            z = true;
+        } else {
+            str3 = null;
+        }
+        List list5 = (List) map.get("icy-pub");
+        if (list5 != null) {
+            zEquals = ((String) list5.get(0)).equals("1");
+            z = true;
+        } else {
+            zEquals = false;
+        }
+        List list6 = (List) map.get("icy-metaint");
+        if (list6 != null) {
+            String str5 = (String) list6.get(0);
+            try {
+                int i4 = Integer.parseInt(str5);
+                if (i4 > 0) {
+                    i3 = i4;
+                } else {
+                    try {
+                        l93.q0("IcyHeaders", "Invalid metadata interval: " + str5);
+                        z2 = z;
+                    } catch (NumberFormatException unused3) {
+                        i3 = i4;
+                        xa3.s("Invalid metadata interval: ", str5, "IcyHeaders");
+                    }
+                }
+                z = z2;
+            } catch (NumberFormatException unused4) {
+            }
+        }
+        int i5 = i3;
+        if (z) {
+            return new iv1(i, i5, str, str2, str3, zEquals);
+        }
         return null;
-    L45:
-        return new iv1(r8, r20, r10, r11, r13, r16);
-    L30:
-        r16 = false;
-        goto L31
-    L26:
-        r13 = null;
-        goto L27
-    L22:
-        r11 = null;
-        goto L23
-    L18:
-        r10 = null;
-        goto L19
-    L50:
-        l93.q0("IcyHeaders", "Invalid bitrate: " + r3);     // Catch: NumberFormatException -> L47
-        r1 = false;
-        r7 = -1;
-    L13:
-        xa3.s("Invalid bitrate header: ", r3, "IcyHeaders");
-        r1 = false;
-    L12:
-        r7 = -1;
-        goto L13
-    L14:
-        r1 = false;
-        r8 = -1;
-        goto L15
     }
 
     @Override // defpackage.pv2
-    public final void b(co2 r2) {
-        String r0 = this.c;
-        if (r0 == null) goto L5;
-        r2.F = r0;
-    L5:
-        String r1 = this.b;
-        if (r1 == null) goto L9;
-        r2.D = r1;
-        return;
+    public final void b(co2 co2Var) {
+        String str = this.c;
+        if (str != null) {
+            co2Var.F = str;
+        }
+        String str2 = this.b;
+        if (str2 != null) {
+            co2Var.D = str2;
+        }
     }
 
-    public final boolean equals(Object r5) {
-        if (this != r5) goto L6;
-        return true;
-    L6:
-        if (r5 != null) goto L8;
-    L23:
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj != null && iv1.class == obj.getClass()) {
+            iv1 iv1Var = (iv1) obj;
+            if (this.a == iv1Var.a && Objects.equals(this.b, iv1Var.b) && Objects.equals(this.c, iv1Var.c) && Objects.equals(this.d, iv1Var.d) && this.e == iv1Var.e && this.f == iv1Var.f) {
+                return true;
+            }
+        }
         return false;
-    L8:
-        if (iv1.class != r5.getClass()) goto L23;
-        iv1 r6 = (iv1) r5;
-        if (this.a != r6.a) goto L23;
-        if (Objects.equals(this.b, r6.b) == false) goto L23;
-        if (Objects.equals(this.c, r6.c) == false) goto L23;
-        if (Objects.equals(this.d, r6.d) == false) goto L23;
-        if (this.e != r6.e) goto L23;
-        if (this.f != r6.f) goto L23;
-        return true;
     }
 
     public final int hashCode() {
-        int r0 = (527 + this.a) * 31;
-        int r1 = 0;
-        String r2 = this.b;
-        if (r2 == null) goto L5;
-        int r3 = r2.hashCode();
-    L6:
-        int r4 = (r0 + r3) * 31;
-        String r5 = this.c;
-        if (r5 == null) goto L9;
-        int r6 = r5.hashCode();
-    L10:
-        int r7 = (r4 + r6) * 31;
-        String r8 = this.d;
-        if (r8 == null) goto L14;
-        r1 = r8.hashCode();
-    L14:
-        return ((((r7 + r1) * 31) + (this.e ? 1 : 0)) * 31) + this.f;
-    L9:
-        r6 = 0;
-        goto L10
-    L5:
-        r3 = 0;
-        goto L6
+        int i = (527 + this.a) * 31;
+        String str = this.b;
+        int iHashCode = (i + (str != null ? str.hashCode() : 0)) * 31;
+        String str2 = this.c;
+        int iHashCode2 = (iHashCode + (str2 != null ? str2.hashCode() : 0)) * 31;
+        String str3 = this.d;
+        return ((((iHashCode2 + (str3 != null ? str3.hashCode() : 0)) * 31) + (this.e ? 1 : 0)) * 31) + this.f;
     }
 
     public final String toString() {

@@ -11,64 +11,57 @@ public class uc0 implements o73 {
     public final /* synthetic */ int n;
     public final String o;
 
-    public uc0(String r2) {
+    public uc0(String str) {
         this.n = 2;
-        r2.getClass();
-        this.o = r2;
+        str.getClass();
+        this.o = str;
     }
 
     @Override // defpackage.o73
     public Object A() {
-        int r0 = this.n;
-        String r1 = this.o;
-        switch(r0) {
-            case 0: goto L7;
-            default: goto L5;
-        };
-    L5:
-        throw new JsonIOException(r1);
-    L7:
-        throw new JsonIOException(r1);
+        int i = this.n;
+        String str = this.o;
+        switch (i) {
+            case 0:
+                throw new JsonIOException(str);
+            default:
+                throw new JsonIOException(str);
+        }
     }
 
-    public void a(StringBuilder r2, Iterator r3) {
-    L10:
-        e = move-exception;
-        throw new AssertionError(e);
-    L3:
-        if (r3.hasNext() == false) goto L9;
-        r2.append(c(r3.next()));     // Catch: IOException -> L10
-    L6:
-        if (r3.hasNext() == false) goto L17;
-        r2.append(this.o);     // Catch: IOException -> L10
-        r2.append(c(r3.next()));     // Catch: IOException -> L10
-        goto L6
-    L17:
-        return;
+    public void a(StringBuilder sb, Iterator it) {
+        try {
+            if (it.hasNext()) {
+                sb.append(c(it.next()));
+                while (it.hasNext()) {
+                    sb.append((CharSequence) this.o);
+                    sb.append(c(it.next()));
+                }
+            }
+        } catch (IOException e) {
+            throw new AssertionError(e);
+        }
     }
 
-    public String b(Iterable r2) {
-        Iterator r3 = r2.iterator();
-        StringBuilder r0 = new StringBuilder();
-        a(r0, r3);
-        return r0.toString();
+    public String b(Iterable iterable) {
+        Iterator it = iterable.iterator();
+        StringBuilder sb = new StringBuilder();
+        a(sb, it);
+        return sb.toString();
     }
 
-    public CharSequence c(Object r1) {
-        Objects.requireNonNull(r1);
-        if ((r1 instanceof CharSequence) == false) goto L7;
-        return (CharSequence) r1;
-    L7:
-        return r1.toString();
+    public CharSequence c(Object obj) {
+        Objects.requireNonNull(obj);
+        return obj instanceof CharSequence ? (CharSequence) obj : obj.toString();
     }
 
-    public /* synthetic */ uc0(int r1, String r2) {
-        this.n = r1;
-        this.o = r2;
+    public /* synthetic */ uc0(int i, String str) {
+        this.n = i;
+        this.o = str;
     }
 
-    public uc0(uc0 r2) {
+    public uc0(uc0 uc0Var) {
         this.n = 2;
-        this.o = r2.o;
+        this.o = uc0Var.o;
     }
 }

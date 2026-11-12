@@ -11,32 +11,29 @@ public final /* synthetic */ class l74 implements View.OnClickListener {
     public final /* synthetic */ SearchFragment o;
     public final /* synthetic */ String p;
 
-    public /* synthetic */ l74(SearchFragment r1, String r2, int r3) {
-        this.n = r3;
-        this.o = r1;
-        this.p = r2;
+    public /* synthetic */ l74(SearchFragment searchFragment, String str, int i) {
+        this.n = i;
+        this.o = searchFragment;
+        this.p = str;
     }
 
     @Override // android.view.View.OnClickListener
-    public final void onClick(View r5) {
-        int r6 = this.n;
-        String r0 = this.p;
-        SearchFragment r4 = this.o;
-        switch(r6) {
-            case 0: goto L8;
-            case 1: goto L6;
-            default: goto L4;
-        };
-    L4:
-        r4.h0(r0);
-        return;
-    L6:
-        rm2 r7 = r4.n0.c;
-        RecentSearch r1 = new RecentSearch(r0, 0);
-        new Thread(new e84((jv3) r7.o, r1, 0)).start();
-        r4.i0();
-        return;
-    L8:
-        r4.h0(r0);
+    public final void onClick(View view) {
+        int i = this.n;
+        String str = this.p;
+        SearchFragment searchFragment = this.o;
+        switch (i) {
+            case 0:
+                searchFragment.h0(str);
+                break;
+            case 1:
+                rm2 rm2Var = searchFragment.n0.c;
+                new Thread(new e84((jv3) rm2Var.o, new RecentSearch(str, 0L), 0)).start();
+                searchFragment.i0();
+                break;
+            default:
+                searchFragment.h0(str);
+                break;
+        }
     }
 }

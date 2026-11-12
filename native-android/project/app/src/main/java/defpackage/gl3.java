@@ -10,8 +10,8 @@ public class gl3 extends hd {
     public final k03 d;
     public ArrayList e;
 
-    public gl3(Application r2) {
-        super(r2);
+    public gl3(Application application) {
+        super(application);
         this.d = new k03(null);
         this.e = new ArrayList();
         this.c = new mm3();

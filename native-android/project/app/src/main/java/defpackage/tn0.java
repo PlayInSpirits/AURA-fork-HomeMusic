@@ -21,11 +21,11 @@ public final class tn0 implements r55 {
     public Executor i;
     public c55 j;
 
-    public tn0(e55 r3, f55 r4, vp4 r5) {
-        this.a = r3;
-        this.b = r4;
-        r3.l = r5;
-        this.c = new l55(new gp3(6, this), r3, r4);
+    public tn0(e55 e55Var, f55 f55Var, vp4 vp4Var) {
+        this.a = e55Var;
+        this.b = f55Var;
+        e55Var.l = vp4Var;
+        this.c = new l55(new gp3(6, this), e55Var, f55Var);
         this.d = new ArrayDeque();
         this.f = new tb1(new sb1());
         this.g = -9223372036854775807L;
@@ -40,42 +40,36 @@ public final class tn0 implements r55 {
 
     @Override // defpackage.r55
     public final Surface b() {
-        Surface r0 = this.e;
-        r0.getClass();
-        return r0;
+        Surface surface = this.e;
+        surface.getClass();
+        return surface;
     }
 
     @Override // defpackage.r55
     public final boolean c() {
-        l55 r4 = this.c;
-        long r0 = r4.j;
-        if (r0 != (-9223372036854775807L)) goto L5;
-        return false;
-    L5:
-        if (r4.i != r0) goto L10;
-        return true;
-    L10:
-        return false;
+        l55 l55Var = this.c;
+        long j = l55Var.j;
+        return j != -9223372036854775807L && l55Var.i == j;
     }
 
     @Override // defpackage.r55
     public final void d() {
         this.b.b();
-        e55 r3 = this.a;
-        r3.d = false;
-        r3.i = -9223372036854775807L;
-        k55 r4 = r3.b;
-        r4.d = false;
-        g55 r0 = r4.c;
-        if (r0 == null) goto L5;
-        r0.b();
-    L5:
-        r4.a();
+        e55 e55Var = this.a;
+        e55Var.d = false;
+        e55Var.i = -9223372036854775807L;
+        k55 k55Var = e55Var.b;
+        k55Var.d = false;
+        g55 g55Var = k55Var.c;
+        if (g55Var != null) {
+            g55Var.b();
+        }
+        k55Var.a();
     }
 
     @Override // defpackage.r55
-    public final void e(float r1) {
-        this.a.h(r1);
+    public final void e(float f) {
+        this.a.h(f);
     }
 
     @Override // defpackage.r55
@@ -85,78 +79,59 @@ public final class tn0 implements r55 {
     }
 
     @Override // defpackage.r55
-    public final void g(tb1 r11, long r12, int r14, List r15) {
-        rr2.w(r15.isEmpty());
-        int r16 = r11.u;
-        int r0 = r11.v;
-        tb1 r1 = this.f;
-        int r2 = r1.u;
-        l55 r7 = this.c;
-        if (r16 == r2) goto L5;
-    L6:
-        tu r3 = r7.d;
-        long r8 = r7.h;
-        if (r8 != (-9223372036854775807L)) goto L9;
-        long r9 = 0;
-    L10:
-        r3.a(r9, new s55(r16, r0));
-    L11:
-        float r17 = r11.y;
-        if (r17 == this.f.y) goto L14;
-        this.a.f(r17);
-    L14:
-        this.f = r11;
-        if (r12 != this.g) goto L17;
-        return;
-    L17:
-        if (r7.f.p != 0) goto L19;
-        r7.b.e(r14);
-        r7.l = r12;
-    L24:
-        this.g = r12;
-        return;
-    L19:
-        tu r13 = r7.e;
-        long r18 = r7.h;
-        if (r18 != (-9223372036854775807L)) goto L22;
-        long r19 = -4611686018427387904L;
-    L23:
-        r13.a(r19, Long.valueOf(r12));
-        goto L24
-    L22:
-        r19 = r18 + 1;
-        goto L23
-    L9:
-        r9 = r8 + 1;
-        goto L10
-    L5:
-        if (r0 == r1.v) goto L11;
-        goto L6
+    public final void g(tb1 tb1Var, long j, int i, List list) {
+        rr2.w(list.isEmpty());
+        int i2 = tb1Var.u;
+        int i3 = tb1Var.v;
+        tb1 tb1Var2 = this.f;
+        int i4 = tb1Var2.u;
+        l55 l55Var = this.c;
+        if (i2 != i4 || i3 != tb1Var2.v) {
+            tu tuVar = l55Var.d;
+            long j2 = l55Var.h;
+            tuVar.a(j2 == -9223372036854775807L ? 0L : j2 + 1, new s55(i2, i3));
+        }
+        float f = tb1Var.y;
+        if (f != this.f.y) {
+            this.a.f(f);
+        }
+        this.f = tb1Var;
+        if (j != this.g) {
+            if (l55Var.f.p == 0) {
+                l55Var.b.e(i);
+                l55Var.l = j;
+            } else {
+                tu tuVar2 = l55Var.e;
+                long j3 = l55Var.h;
+                tuVar2.a(j3 == -9223372036854775807L ? -4611686018427387904L : j3 + 1, Long.valueOf(j));
+            }
+            this.g = j;
+        }
     }
 
     @Override // defpackage.r55
-    public final void h(long r1) {
+    public final void h(long j) {
         throw new UnsupportedOperationException();
     }
 
     @Override // defpackage.r55
     public final void i() {
-        l55 r4 = this.c;
-        if (r4.h != (-9223372036854775807L)) goto L5;
-        r4.h = Long.MIN_VALUE;
-        r4.i = Long.MIN_VALUE;
-    L5:
-        r4.j = r4.h;
+        l55 l55Var = this.c;
+        if (l55Var.h == -9223372036854775807L) {
+            l55Var.h = Long.MIN_VALUE;
+            l55Var.i = Long.MIN_VALUE;
+        }
+        l55Var.j = l55Var.h;
     }
 
     @Override // defpackage.r55
-    public final void j(int r2) {
-        k55 r1 = this.a.b;
-        if (r1.j != r2) goto L5;
-        return;
-    L5:
-        r1.j = r2;
-        r1.d(true);
+    public final void j(int i) {
+        k55 k55Var = this.a.b;
+        if (k55Var.j == i) {
+            return;
+        }
+        k55Var.j = i;
+        k55Var.d(true);
     }
 
     @Override // defpackage.r55
@@ -166,137 +141,119 @@ public final class tn0 implements r55 {
     }
 
     @Override // defpackage.r55
-    public final void l(kk2 r1) {
-        this.h = r1;
+    public final void l(kk2 kk2Var) {
+        this.h = kk2Var;
         this.i = gq0.n;
     }
 
     @Override // defpackage.r55
-    public final boolean m(long r9, lk2 r11) {
-        this.d.add(r11);
-        l55 r12 = this.c;
-        uu r0 = r12.f;
-        int r1 = r0.p;
-        long[] r2 = (long[]) r0.r;
-        if (r1 != r2.length) goto L9;
-        int r3 = r2.length << 1;
-        if (r3 < 0) goto L7;
-        long[] r5 = new long[r3];
-        int r6 = r2.length;
-        int r7 = r0.n;
-        int r8 = r6 - r7;
-        System.arraycopy(r2, r7, r5, 0, r8);
-        System.arraycopy((long[]) r0.r, 0, r5, r8, r7);
-        r0.n = 0;
-        r0.o = r0.p - 1;
-        r0.r = r5;
-        r0.q = r3 - 1;
-        goto L9
-    L7:
-        tb4.a();
-        return false;
-    L9:
-        int r4 = (r0.o + 1) & r0.q;
-        r0.o = r4;
-        ((long[]) r0.r)[r4] = r9;
-        r0.p++;
-        r12.h = r9;
-        r12.j = -9223372036854775807L;
+    public final boolean m(long j, lk2 lk2Var) {
+        this.d.add(lk2Var);
+        l55 l55Var = this.c;
+        uu uuVar = l55Var.f;
+        int i = uuVar.p;
+        long[] jArr = (long[]) uuVar.r;
+        if (i == jArr.length) {
+            int length = jArr.length << 1;
+            if (length < 0) {
+                tb4.a();
+                return false;
+            }
+            long[] jArr2 = new long[length];
+            int length2 = jArr.length;
+            int i2 = uuVar.n;
+            int i3 = length2 - i2;
+            System.arraycopy(jArr, i2, jArr2, 0, i3);
+            System.arraycopy((long[]) uuVar.r, 0, jArr2, i3, i2);
+            uuVar.n = 0;
+            uuVar.o = uuVar.p - 1;
+            uuVar.r = jArr2;
+            uuVar.q = length - 1;
+        }
+        int i4 = (uuVar.o + 1) & uuVar.q;
+        uuVar.o = i4;
+        ((long[]) uuVar.r)[i4] = j;
+        uuVar.p++;
+        l55Var.h = j;
+        l55Var.j = -9223372036854775807L;
         this.i.execute(new a0(21, this));
         return true;
     }
 
     @Override // defpackage.r55
-    public final boolean n(tb1 r1) {
+    public final boolean n(tb1 tb1Var) {
         return true;
     }
 
     @Override // defpackage.r55
-    public final void o(boolean r8) {
-        if (r8 == false) goto L5;
-        e55 r9 = this.a;
-        r9.b.b();
-        r9.h = -9223372036854775807L;
-        r9.f = -9223372036854775807L;
-        r9.e = Math.min(r9.e, 1);
-        r9.i = -9223372036854775807L;
-    L5:
+    public final void o(boolean z) {
+        if (z) {
+            e55 e55Var = this.a;
+            e55Var.b.b();
+            e55Var.h = -9223372036854775807L;
+            e55Var.f = -9223372036854775807L;
+            e55Var.e = Math.min(e55Var.e, 1);
+            e55Var.i = -9223372036854775807L;
+        }
         this.b.b();
-        l55 r10 = this.c;
-        tu r3 = r10.d;
-        uu r4 = r10.f;
-        boolean r5 = false;
-        r4.n = 0;
-        r4.o = -1;
-        r4.p = 0;
-        r10.h = -9223372036854775807L;
-        r10.i = -9223372036854775807L;
-        r10.j = -9223372036854775807L;
-        tu r0 = r10.e;
-        if (r0.h() <= 0) goto L17;
-        if (r0.h() <= 0) goto L10;
-        boolean r1 = true;
-    L11:
-        rr2.l(r1);
-    L13:
-        if (r0.h() <= 1) goto L15;
-        r0.e();
-        goto L13
-    L15:
-        Object r2 = r0.e();
-        r2.getClass();
-        r10.l = ((Long) r2).longValue();
-        goto L17
-    L10:
-        r1 = false;
-    L17:
-        if (r3.h() > 0) goto L19;
-    L26:
+        l55 l55Var = this.c;
+        tu tuVar = l55Var.d;
+        uu uuVar = l55Var.f;
+        uuVar.n = 0;
+        uuVar.o = -1;
+        uuVar.p = 0;
+        l55Var.h = -9223372036854775807L;
+        l55Var.i = -9223372036854775807L;
+        l55Var.j = -9223372036854775807L;
+        tu tuVar2 = l55Var.e;
+        if (tuVar2.h() > 0) {
+            rr2.l(tuVar2.h() > 0);
+            while (tuVar2.h() > 1) {
+                tuVar2.e();
+            }
+            Object objE = tuVar2.e();
+            objE.getClass();
+            l55Var.l = ((Long) objE).longValue();
+        }
+        if (tuVar.h() > 0) {
+            rr2.l(tuVar.h() > 0);
+            while (tuVar.h() > 1) {
+                tuVar.e();
+            }
+            Object objE2 = tuVar.e();
+            objE2.getClass();
+            tuVar.a(0L, (s55) objE2);
+        }
         this.d.clear();
-        return;
-    L19:
-        if (r3.h() <= 0) goto L21;
-        r5 = true;
-    L21:
-        rr2.l(r5);
-    L23:
-        if (r3.h() <= 1) goto L25;
-        r3.e();
-        goto L23
-    L25:
-        Object r11 = r3.e();
-        r11.getClass();
-        r3.a(0, (s55) r11);
-        goto L26
     }
 
     @Override // defpackage.r55
-    public final void p(List r1) {
+    public final void p(List list) {
         throw new UnsupportedOperationException();
     }
 
     @Override // defpackage.r55
-    public final void q(long r2, long r4) {
-        this.c.a(r2, r4);     // Catch: ExoPlaybackException -> L4
-        return;
-    L4:
-        e = move-exception;
-        throw new VideoSink$VideoSinkException(e, this.f);
+    public final void q(long j, long j2) throws VideoSink$VideoSinkException {
+        try {
+            this.c.a(j, j2);
+        } catch (ExoPlaybackException e) {
+            throw new VideoSink$VideoSinkException(e, this.f);
+        }
     }
 
     @Override // defpackage.r55
-    public final void r(boolean r1) {
-        this.a.c(r1);
+    public final void r(boolean z) {
+        this.a.c(z);
     }
 
     @Override // defpackage.r55
-    public final boolean s(boolean r1) {
-        return this.a.b(r1);
+    public final boolean s(boolean z) {
+        return this.a.b(z);
     }
 
     @Override // defpackage.r55
-    public final void t(c55 r1) {
-        this.j = r1;
+    public final void t(c55 c55Var) {
+        this.j = c55Var;
     }
 
     @Override // defpackage.r55
@@ -305,9 +262,9 @@ public final class tn0 implements r55 {
     }
 
     @Override // defpackage.r55
-    public final void v(Surface r1, pf4 r2) {
-        this.e = r1;
-        this.a.g(r1);
+    public final void v(Surface surface, pf4 pf4Var) {
+        this.e = surface;
+        this.a.g(surface);
     }
 
     @Override // defpackage.r55
@@ -317,9 +274,9 @@ public final class tn0 implements r55 {
 
     @Override // defpackage.r55
     public final void x() {
-        e55 r1 = this.a;
-        if (r1.e != 0) goto L6;
-        r1.e = 1;
-        return;
+        e55 e55Var = this.a;
+        if (e55Var.e == 0) {
+            e55Var.e = 1;
+        }
     }
 }

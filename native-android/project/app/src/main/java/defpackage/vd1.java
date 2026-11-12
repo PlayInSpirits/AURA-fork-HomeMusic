@@ -6,8 +6,8 @@ public final class vd1 {
     public final /* synthetic */ d23 a;
     public final /* synthetic */ rd1 b;
 
-    public vd1(d23 r1, rd1 r2) {
-        this.a = r1;
-        this.b = r2;
+    public vd1(d23 d23Var, rd1 rd1Var) {
+        this.a = d23Var;
+        this.b = rd1Var;
     }
 }

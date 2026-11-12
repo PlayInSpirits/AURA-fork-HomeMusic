@@ -6,27 +6,20 @@ public final class sy1 extends ep4 implements wf1 {
     public /* synthetic */ float o;
 
     @Override // defpackage.jp
-    public final vd0 create(Object r2, vd0 r3) {
-        sy1 r1 = new sy1(2, r3);
-        r1.o = ((Number) r2).floatValue();
-        return r1;
+    public final vd0 create(Object obj, vd0 vd0Var) {
+        sy1 sy1Var = new sy1(2, vd0Var);
+        sy1Var.o = ((Number) obj).floatValue();
+        return sy1Var;
     }
 
     @Override // defpackage.wf1
-    public final Object invoke(Object r1, Object r2) {
-        Float r3 = Float.valueOf(((Number) r1).floatValue());
-        return ((sy1) create(r3, (vd0) r2)).invokeSuspend(j15.a);
+    public final Object invoke(Object obj, Object obj2) {
+        return ((sy1) create(Float.valueOf(((Number) obj).floatValue()), (vd0) obj2)).invokeSuspend(j15.a);
     }
 
     @Override // defpackage.jp
-    public final Object invokeSuspend(Object r1) {
-        kb4.X(r1);
-        if (this.o <= 0.0f) goto L5;
-        boolean r0 = true;
-    L7:
-        return Boolean.valueOf(r0);
-    L5:
-        r0 = false;
-        goto L7
+    public final Object invokeSuspend(Object obj) {
+        kb4.X(obj);
+        return Boolean.valueOf(this.o > 0.0f);
     }
 }

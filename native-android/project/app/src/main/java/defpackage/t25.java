@@ -8,23 +8,19 @@ public final class t25 implements vw2 {
     public final /* synthetic */ int a;
     public final ContentResolver b;
 
-    public /* synthetic */ t25(ContentResolver r1, int r2) {
-        this.a = r2;
-        this.b = r1;
+    public /* synthetic */ t25(ContentResolver contentResolver, int i) {
+        this.a = i;
+        this.b = contentResolver;
     }
 
     @Override // defpackage.vw2
-    public final uw2 a(na4 r1) {
-        switch(this.a) {
-            case 0: goto L9;
-            case 1: goto L7;
-            default: goto L5;
-        };
-    L5:
-        return new u25(this);
-    L7:
-        return new u25(this);
-    L9:
+    public final uw2 a(na4 na4Var) {
+        switch (this.a) {
+            case 0:
+                break;
+            case 1:
+                break;
+        }
         return new u25(this);
     }
 }

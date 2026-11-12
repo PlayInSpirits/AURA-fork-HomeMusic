@@ -11,17 +11,17 @@ import retrofit2.http.QueryMap;
 /* JADX INFO: loaded from: classes.dex */
 public interface w8 {
     @GET("getRandomSongs")
-    Call<ApiResponse> a(@QueryMap Map<String, String> r1, @Query("size") int r2, @Query("fromYear") Integer r3, @Query("toYear") Integer r4, @Query("genre") String r5, @Query("musicFolderId") String r6);
+    Call<ApiResponse> a(@QueryMap Map<String, String> map, @Query("size") int i, @Query("fromYear") Integer num, @Query("toYear") Integer num2, @Query("genre") String str, @Query("musicFolderId") String str2);
 
     @GET("getAlbumList2")
-    Call<ApiResponse> b(@QueryMap Map<String, String> r1, @Query("type") String r2, @Query("size") int r3, @Query("offset") int r4, @Query("fromYear") Integer r5, @Query("toYear") Integer r6, @Query("musicFolderId") String r7);
+    Call<ApiResponse> b(@QueryMap Map<String, String> map, @Query("type") String str, @Query("size") int i, @Query("offset") int i2, @Query("fromYear") Integer num, @Query("toYear") Integer num2, @Query("musicFolderId") String str2);
 
     @GET("getRandomSongs")
-    Call<ApiResponse> c(@QueryMap Map<String, String> r1, @Query("size") int r2, @Query("fromYear") Integer r3, @Query("toYear") Integer r4, @Query("musicFolderId") String r5);
+    Call<ApiResponse> c(@QueryMap Map<String, String> map, @Query("size") int i, @Query("fromYear") Integer num, @Query("toYear") Integer num2, @Query("musicFolderId") String str);
 
     @GET("getStarred2")
-    Call<ApiResponse> d(@QueryMap Map<String, String> r1);
+    Call<ApiResponse> d(@QueryMap Map<String, String> map);
 
     @GET("getSongsByGenre")
-    Call<ApiResponse> e(@QueryMap Map<String, String> r1, @Query("genre") String r2, @Query("count") int r3, @Query("offset") int r4, @Query("musicFolderId") String r5);
+    Call<ApiResponse> e(@QueryMap Map<String, String> map, @Query("genre") String str, @Query("count") int i, @Query("offset") int i2, @Query("musicFolderId") String str2);
 }

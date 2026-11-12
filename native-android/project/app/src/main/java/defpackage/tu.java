@@ -10,145 +10,94 @@ public final class tu {
     public Object c;
     public Object d;
 
-    public tu(int r7, int r8, float[] r9, float[] r10) {
-        this.a = r7;
-        if ((((long) r9.length) * 2) != (((long) r10.length) * 3)) goto L5;
-        boolean r11 = true;
-    L6:
-        rr2.l(r11);
-        this.c = r9;
-        this.d = r10;
-        this.b = r8;
-        return;
-    L5:
-        r11 = false;
-        goto L6
+    public tu(int i, int i2, float[] fArr, float[] fArr2) {
+        this.a = i;
+        rr2.l(((long) fArr.length) * 2 == ((long) fArr2.length) * 3);
+        this.c = fArr;
+        this.d = fArr2;
+        this.b = i2;
     }
 
-    public synchronized void a(long r5, Object r7) {
-        monitor-enter(this);
-        int r0 = this.b;     // Catch: Throwable -> L11
-        if (r0 > 0) goto L6;
-    L8:
-        c();     // Catch: Throwable -> L11
-        int r1 = this.a;     // Catch: Throwable -> L11
-        int r2 = this.b;     // Catch: Throwable -> L11
-        Object[] r3 = (Object[]) this.d;     // Catch: Throwable -> L11
-        int r4 = (r1 + r2) % r3.length;     // Catch: Throwable -> L11
-        ((long[]) this.c)[r4] = r5;     // Catch: Throwable -> L11
-        r3[r4] = r7;     // Catch: Throwable -> L11
-        this.b = r2 + 1;     // Catch: Throwable -> L11
-        monitor-exit(this);
-        return;
-    L6:
-        if (r5 > ((long[]) this.c)[((this.a + r0) - 1) % ((Object[]) this.d).length]) goto L8;
-        b();     // Catch: Throwable -> L11
-    L11:
-        th = move-exception;
-        throw th;
+    public synchronized void a(long j, Object obj) {
+        int i = this.b;
+        if (i > 0) {
+            if (j <= ((long[]) this.c)[((this.a + i) - 1) % ((Object[]) this.d).length]) {
+                b();
+            }
+        }
+        c();
+        int i2 = this.a;
+        int i3 = this.b;
+        Object[] objArr = (Object[]) this.d;
+        int length = (i2 + i3) % objArr.length;
+        ((long[]) this.c)[length] = j;
+        objArr[length] = obj;
+        this.b = i3 + 1;
     }
 
     public synchronized void b() {
-        monitor-enter(this);
-        this.a = 0;     // Catch: Throwable -> L7
-        this.b = 0;     // Catch: Throwable -> L7
-        Arrays.fill((Object[]) this.d, null);     // Catch: Throwable -> L7
-        monitor-exit(this);
-        return;
-    L7:
-        th = move-exception;
-        throw th;
+        this.a = 0;
+        this.b = 0;
+        Arrays.fill((Object[]) this.d, (Object) null);
     }
 
     public void c() {
-        int r0 = ((Object[]) this.d).length;
-        if (this.b >= r0) goto L5;
-        return;
-    L5:
-        int r1 = r0 * 2;
-        long[] r2 = new long[r1];
-        Object[] r3 = new Object[r1];
-        int r4 = this.a;
-        int r5 = r0 - r4;
-        System.arraycopy((long[]) this.c, r4, r2, 0, r5);
-        System.arraycopy((Object[]) this.d, this.a, r3, 0, r5);
-        int r6 = this.a;
-        if (r6 <= 0) goto L8;
-        System.arraycopy((long[]) this.c, 0, r2, r5, r6);
-        System.arraycopy((Object[]) this.d, 0, r3, r5, this.a);
-    L8:
-        this.c = r2;
-        this.d = r3;
+        int length = ((Object[]) this.d).length;
+        if (this.b < length) {
+            return;
+        }
+        int i = length * 2;
+        long[] jArr = new long[i];
+        Object[] objArr = new Object[i];
+        int i2 = this.a;
+        int i3 = length - i2;
+        System.arraycopy((long[]) this.c, i2, jArr, 0, i3);
+        System.arraycopy((Object[]) this.d, this.a, objArr, 0, i3);
+        int i4 = this.a;
+        if (i4 > 0) {
+            System.arraycopy((long[]) this.c, 0, jArr, i3, i4);
+            System.arraycopy((Object[]) this.d, 0, objArr, i3, this.a);
+        }
+        this.c = jArr;
+        this.d = objArr;
         this.a = 0;
     }
 
-    public Object d(boolean r8, long r9) {
-        Object r0 = null;
-        long r1 = Long.MAX_VALUE;
-    L4:
-        if (this.b <= 0) goto L12;
-        long r3 = r9 - ((long[]) this.c)[this.a];
-        if (r3 >= 0) goto L11;
-        if (r8 == true) goto L12;
-        if ((-r3) >= r1) goto L12;
-    L11:
-        r0 = g();
-        r1 = r3;
-    L12:
-        return r0;
+    public Object d(boolean z, long j) {
+        Object objG = null;
+        long j2 = Long.MAX_VALUE;
+        while (this.b > 0) {
+            long j3 = j - ((long[]) this.c)[this.a];
+            if (j3 < 0 && (z || (-j3) >= j2)) {
+                break;
+            }
+            objG = g();
+            j2 = j3;
+        }
+        return objG;
     }
 
     public synchronized Object e() {
-        monitor-enter(this);
-    L9:
-        th = move-exception;
-        throw th;
-    L4:
-        if (this.b != 0) goto L6;
-        Object r0 = null;
-    L7:
-        monitor-exit(this);
-        return r0;
-    L6:
-        r0 = g();     // Catch: Throwable -> L9
-        goto L7
+        return this.b == 0 ? null : g();
     }
 
-    public synchronized Object f(long r2) {
-        monitor-enter(this);
-        Object r3 = d(true, r2);     // Catch: Throwable -> L7
-        monitor-exit(this);
-        return r3;
-    L7:
-        th = move-exception;
-        throw th;
+    public synchronized Object f(long j) {
+        return d(true, j);
     }
 
     public Object g() {
-        if (this.b <= 0) goto L5;
-        boolean r0 = true;
-    L6:
-        rr2.w(r0);
-        Object[] r1 = (Object[]) this.d;
-        int r2 = this.a;
-        Object r3 = r1[r2];
-        r1[r2] = null;
-        this.a = (r2 + 1) % r1.length;
+        rr2.w(this.b > 0);
+        Object[] objArr = (Object[]) this.d;
+        int i = this.a;
+        Object obj = objArr[i];
+        objArr[i] = null;
+        this.a = (i + 1) % objArr.length;
         this.b--;
-        return r3;
-    L5:
-        r0 = false;
-        goto L6
+        return obj;
     }
 
     public synchronized int h() {
-        monitor-enter(this);
-        int r0 = this.b;     // Catch: Throwable -> L6
-        monitor-exit(this);
-        return r0;
-    L6:
-        th = move-exception;
-        throw th;
+        return this.b;
     }
 
     public tu() {
@@ -156,17 +105,16 @@ public final class tu {
         this.d = new Object[10];
     }
 
-    public tu(int r1, int r2) {
-        switch(r2) {
-            case 2: goto L5;
-            default: goto L3;
-        };
-    L3:
-        this.c = new qv4[r1];
-        this.b = 0;
-        return;
-    L5:
-        this.b = -1;
-        this.a = r1;
+    public tu(int i, int i2) {
+        switch (i2) {
+            case 2:
+                this.b = -1;
+                this.a = i;
+                break;
+            default:
+                this.c = new qv4[i];
+                this.b = 0;
+                break;
+        }
     }
 }

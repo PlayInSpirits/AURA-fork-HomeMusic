@@ -7,8 +7,8 @@ public final class hc0 extends wd0 {
     public int o;
 
     @Override // defpackage.jp
-    public final Object invokeSuspend(Object r2) {
-        this.n = r2;
+    public final Object invokeSuspend(Object obj) {
+        this.n = obj;
         this.o |= Integer.MIN_VALUE;
         return ic0.a(null, null, this);
     }

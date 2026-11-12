@@ -6,22 +6,20 @@ public final /* synthetic */ class g24 implements ks0 {
     public final /* synthetic */ int n;
     public final /* synthetic */ k24 o;
 
-    public /* synthetic */ g24(k24 r1, int r2) {
-        this.n = r2;
-        this.o = r1;
+    public /* synthetic */ g24(k24 k24Var, int i) {
+        this.n = i;
+        this.o = k24Var;
     }
 
     @Override // defpackage.ks0
-    public final double b(double r9) {
-        int r0 = this.n;
-        k24 r8 = this.o;
-        switch(r0) {
-            case 0: goto L7;
-            default: goto L5;
-        };
-    L5:
-        return r8.n.b(gb.k(r9, r8.e, r8.f));
-    L7:
-        return gb.k(r8.k.b(r9), r8.e, r8.f);
+    public final double b(double d) {
+        int i = this.n;
+        k24 k24Var = this.o;
+        switch (i) {
+            case 0:
+                return gb.k(k24Var.k.b(d), k24Var.e, k24Var.f);
+            default:
+                return k24Var.n.b(gb.k(d, k24Var.e, k24Var.f));
+        }
     }
 }

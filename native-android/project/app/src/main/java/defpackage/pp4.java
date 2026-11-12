@@ -8,23 +8,23 @@ import java.lang.ref.WeakReference;
 public final class pp4 extends rz0 {
     public final WeakReference n;
 
-    public pp4(SwitchCompat r2) {
-        this.n = new WeakReference(r2);
+    public pp4(SwitchCompat switchCompat) {
+        this.n = new WeakReference(switchCompat);
     }
 
     @Override // defpackage.rz0
     public final void a() {
-        SwitchCompat r0 = (SwitchCompat) this.n.get();
-        if (r0 == null) goto L6;
-        r0.c();
-        return;
+        SwitchCompat switchCompat = (SwitchCompat) this.n.get();
+        if (switchCompat != null) {
+            switchCompat.c();
+        }
     }
 
     @Override // defpackage.rz0
     public final void b() {
-        SwitchCompat r0 = (SwitchCompat) this.n.get();
-        if (r0 == null) goto L6;
-        r0.c();
-        return;
+        SwitchCompat switchCompat = (SwitchCompat) this.n.get();
+        if (switchCompat != null) {
+            switchCompat.c();
+        }
     }
 }

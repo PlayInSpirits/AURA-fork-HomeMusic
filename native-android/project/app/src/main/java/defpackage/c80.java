@@ -8,8 +8,8 @@ public final class c80 {
     public final List a;
     public final boolean b;
 
-    public c80(List r1, boolean r2) {
-        this.a = r1;
-        this.b = r2;
+    public c80(List list, boolean z) {
+        this.a = list;
+        this.b = z;
     }
 }

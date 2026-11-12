@@ -9,31 +9,29 @@ public final class oa4 implements Runnable {
     public final na4 o;
     public final Server p;
 
-    public /* synthetic */ oa4(na4 r1, Server r2, int r3) {
-        this.n = r3;
-        this.o = r1;
-        this.p = r2;
+    public /* synthetic */ oa4(na4 na4Var, Server server, int i) {
+        this.n = i;
+        this.o = na4Var;
+        this.p = server;
     }
 
     @Override // java.lang.Runnable
     public final void run() {
-        int r0 = this.n;
-        Server r1 = this.p;
-        na4 r6 = this.o;
-        int r2 = 1;
-        int r3 = 0;
-        switch(r0) {
-            case 0: goto L8;
-            case 1: goto L6;
-            default: goto L4;
-        };
-    L4:
-        xl.E((s24) r6.n, false, true, new ma4(r6, r1, 2));
-        return;
-    L6:
-        xl.E((s24) r6.n, false, true, new ma4(r6, r1, r3));
-        return;
-    L8:
-        xl.E((s24) r6.n, false, true, new ma4(r6, r1, r2));
+        int i = this.n;
+        Server server = this.p;
+        na4 na4Var = this.o;
+        int i2 = 1;
+        int i3 = 0;
+        switch (i) {
+            case 0:
+                xl.E((s24) na4Var.n, false, true, new ma4(na4Var, server, i2));
+                break;
+            case 1:
+                xl.E((s24) na4Var.n, false, true, new ma4(na4Var, server, i3));
+                break;
+            default:
+                xl.E((s24) na4Var.n, false, true, new ma4(na4Var, server, 2));
+                break;
+        }
     }
 }

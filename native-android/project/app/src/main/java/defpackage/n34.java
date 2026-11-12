@@ -8,53 +8,31 @@ import java.security.MessageDigest;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class n34 extends bt {
-    public static final byte[] c = null;
+    public static final byte[] c = "com.bumptech.glide.load.resource.bitmap.RoundedCorners".getBytes(f42.a);
     public final int b;
 
-    static {
-        c = "com.bumptech.glide.load.resource.bitmap.RoundedCorners".getBytes(f42.a);
-    }
-
-    public n34(int r3) {
-        if (r3 <= 0) goto L5;
-        boolean r0 = true;
-    L6:
-        h12.d("roundingRadius must be greater than 0.", r0);
-        this.b = r3;
-        return;
-    L5:
-        r0 = false;
-        goto L6
+    public n34(int i) {
+        h12.d("roundingRadius must be greater than 0.", i > 0);
+        this.b = i;
     }
 
     @Override // defpackage.f42
-    public final void b(MessageDigest r2) {
-        r2.update(c);
-        r2.update(ByteBuffer.allocate(4).putInt(this.b).array());
+    public final void b(MessageDigest messageDigest) {
+        messageDigest.update(c);
+        messageDigest.update(ByteBuffer.allocate(4).putInt(this.b).array());
     }
 
     @Override // defpackage.bt
-    public final Bitmap c(zs r1, Bitmap r2, int r3, int r4) {
-        Paint r5 = xw4.a;
-        int r0 = this.b;
-        if (r0 <= 0) goto L5;
-        boolean r6 = true;
-    L6:
-        h12.d("roundingRadius must be greater than 0.", r6);
-        return xw4.c(r1, r2, new cx(r0));
-    L5:
-        r6 = false;
-        goto L6
+    public final Bitmap c(zs zsVar, Bitmap bitmap, int i, int i2) {
+        Paint paint = xw4.a;
+        int i3 = this.b;
+        h12.d("roundingRadius must be greater than 0.", i3 > 0);
+        return xw4.c(zsVar, bitmap, new cx(i3));
     }
 
     @Override // defpackage.f42
-    public final boolean equals(Object r3) {
-        if ((r3 instanceof n34) == true) goto L5;
-    L8:
-        return false;
-    L5:
-        if (this.b != ((n34) r3).b) goto L8;
-        return true;
+    public final boolean equals(Object obj) {
+        return (obj instanceof n34) && this.b == ((n34) obj).b;
     }
 
     @Override // defpackage.f42

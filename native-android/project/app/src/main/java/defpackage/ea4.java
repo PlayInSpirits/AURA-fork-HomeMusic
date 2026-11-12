@@ -6,9 +6,9 @@ public final class ea4 extends u0 {
     public final int u;
     public final Object v;
 
-    public ea4(int r1, Object r2) {
-        this.u = r1;
-        this.v = r2;
+    public ea4(int i, Object obj) {
+        this.u = i;
+        this.v = obj;
     }
 
     public final void q() {

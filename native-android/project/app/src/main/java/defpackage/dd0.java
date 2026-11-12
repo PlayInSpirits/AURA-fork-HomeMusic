@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.CancellationException;
+import org.chromium.support_lib_boundary.WebSettingsBoundaryInterface;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
@@ -15,176 +16,166 @@ public final /* synthetic */ class dd0 implements if1 {
     public final /* synthetic */ Object p;
     public final /* synthetic */ Object q;
 
-    public /* synthetic */ dd0(gd0 r1, b25 r2, s22 r3, e74 r4) {
+    public /* synthetic */ dd0(gd0 gd0Var, b25 b25Var, s22 s22Var, e74 e74Var) {
         this.n = 0;
-        this.o = r1;
-        this.p = r3;
-        this.q = r4;
+        this.o = gd0Var;
+        this.p = s22Var;
+        this.q = e74Var;
     }
 
+    /* JADX WARN: Code duplicated, block: B:48:0x011d A[DONT_INVERT] */
+    /* JADX WARN: Code duplicated, block: B:49:0x011f A[LOOP:0: B:36:0x00d9->B:49:0x011f, LOOP_END] */
+    /* JADX WARN: Code duplicated, block: B:77:0x0136 A[SYNTHETIC] */
     @Override // defpackage.if1
-    public final Object invoke(Object r15) {
-        int r0 = this.n;
-        boolean r1 = false;
-        j15 r5 = j15.a;
-        Object r6 = this.q;
-        Object r7 = this.p;
-        Object r14 = this.o;
-        switch(r0) {
-            case 0: goto L68;
-            case 1: goto L64;
-            case 2: goto L55;
-            case 3: goto L27;
-            case 4: goto L19;
-            case 5: goto L14;
-            default: goto L4;
-        };
-    L4:
-        jx3 r8 = (jx3) r7;
-        lu2 r9 = (lu2) r6;
-        ad2 r16 = (ad2) ((if1) r14).invoke(r15);
-        Object r17 = r8.n;
-        if (r17 == r16) goto L13;
-        if (r17 == null) goto L10;
-        ku2 r18 = (ku2) r9.l.b((ad2) r17);
-        if (r18 == null) goto L10;
-        r18.a.j(r18);
-    L10:
-        r8.n = r16;
-        if (r16 == null) goto L13;
-        r9.l(r16, new ht1(new kl3(13, r9), 2));
-    L13:
-        return r5;
-    L14:
-        w44 r19 = (w44) r14;
-        a54 r10 = (a54) r6;
-        yr0 r110 = (yr0) r15;
-        w03 r111 = r19.o;
-        if (r111.b(r7) == true) goto L17;
-        r19.n.remove(r7);
-        r111.l(r7, r10);
-        return new v44(r19, r7, r10);
-    L17:
-        nz2.k(r7, " was used multiple times ", "Key ");
-        return null;
-    L19:
-        String r112 = (String) r14;
-        Context r11 = (Context) r7;
-        b13 r12 = (b13) r6;
-        ((yr0) r15).getClass();
-        if (r112 != null) goto L22;
-    L25:
-        r12.setValue(null);
-        return new j73();
-    L22:
-        if (r112.length() == 0) goto L25;
-        String r113 = wg0.b(ud3.t(), r112);
-        wq4 r114 = new i73(r12, 1);
-        vz3 r115 = (vz3) a.c(r11).g().P(r113).e(wg0.b);
-        r115.J(r114, null, r115, fh0.g);
-        return new vy1(3, r11, r114);
-    L27:
-        kz2 r13 = (kz2) r7;
-        jx3 r20 = (jx3) r6;
-        if (((Set) r14).contains(r15) == false) goto L54;
-        Object r116 = r13.b.g(r15);
-        if (r116 == null) goto L54;
-        if ((r116 instanceof x03) == false) goto L50;
-        x03 r117 = (x03) r116;
-        Object[] r118 = r117.b;
-        long[] r119 = r117.a;
-        int r2 = r119.length - 2;
-        if (r2 < 0) goto L54;
-        int r3 = 0;
-    L36:
-        long r4 = r119[r3];
-        if (((((~r4) << 7) & r4) & (-9187201950435737472L)) == (-9187201950435737472L)) goto L48;
-        int r21 = 8 - ((~(r3 - r2)) >>> 31);
-        int r22 = 0;
-    L39:
-        if (r22 >= r21) goto L47;
-        if ((255 & r4) >= 128) goto L46;
-        y94 r120 = (y94) r118[(r3 << 3) + r22];
-        if (r20.n != null) goto L45;
-        r20.n = new ArrayList();
-    L45:
-        ((List) r20.n).add(r120);
-    L46:
-        r4 = r4 >> 8;
-        r22 = r22 + 1;
-        goto L39
-    L47:
-        if (r21 != 8) goto L54;
-    L48:
-        if (r3 == r2) goto L54;
-        r3 = r3 + 1;
-        goto L36
-    L50:
-        y94 r121 = (y94) r116;
-        if (r20.n != null) goto L53;
-        r20.n = new ArrayList();
-    L53:
-        ((List) r20.n).add(r121);
-    L54:
-        return r5;
-    L55:
-        ey r23 = (ey) r7;
-        if1 r24 = (if1) r6;
-        ba1 r122 = (ba1) r15;
-        if (h12.c(r122, (ba1) r14) == true) goto L83;
-        if (h12.c(r122, (ba1) r23.c) == true) goto L62;
-        r1 = ((Boolean) r24.invoke(r122)).booleanValue();
-        goto L83
-    L62:
-        kf2.o("Focus search landed at the root.");
-        return null;
-    L83:
-        return Boolean.valueOf(r1);
-    L64:
-        gx3 r123 = (gx3) r14;
-        vd r124 = (vd) r15;
-        float r25 = ((Number) r124.e.getValue()).floatValue() - r123.n;
-        float r26 = ((c74) r7).a(r25);
-        r123.n = ((Number) r124.e.getValue()).floatValue();
-        ((gx3) r6).n = ((Number) ((if1) r124.a.p).invoke(r124.f)).floatValue();
-        if (Math.abs(r25 - r26) <= 0.5f) goto L67;
-        r124.a();
-    L67:
-        return r5;
-    L68:
-        gd0 r125 = (gd0) r14;
-        s22 r27 = (s22) r7;
-        e74 r28 = (e74) r6;
-        float r126 = ((Float) r15).floatValue();
-        if (r125.D == false) goto L71;
-        float r29 = 1.0f;
-    L72:
-        g74 r127 = r125.C;
-        long r30 = r127.f(r127.i(r29 * r126));
-        g74 r31 = r28.a;
-        float r128 = r127.h(r127.f(r31.d(r31.k, r30, 1))) * r29;
-        if (Math.abs(r128) >= Math.abs(r126)) goto L75;
-        CancellationException r129 = new CancellationException(xa3.f("Scroll animation cancelled because scroll was not consumed (", r128, " < ", r126, ")"));
-        r129.initCause(null);
-        r27.f(r129);
-    L75:
-        return r5;
-    L71:
-        r29 = -1.0f;
-        goto L72
+    public final Object invoke(Object obj) {
+        Object objG;
+        int i = this.n;
+        boolean zBooleanValue = false;
+        j15 j15Var = j15.a;
+        Object obj2 = this.q;
+        Object obj3 = this.p;
+        Object obj4 = this.o;
+        switch (i) {
+            case 0:
+                gd0 gd0Var = (gd0) obj4;
+                s22 s22Var = (s22) obj3;
+                e74 e74Var = (e74) obj2;
+                float fFloatValue = ((Float) obj).floatValue();
+                float f = gd0Var.D ? 1.0f : -1.0f;
+                g74 g74Var = gd0Var.C;
+                long jF = g74Var.f(g74Var.i(f * fFloatValue));
+                g74 g74Var2 = e74Var.a;
+                float fH = g74Var.h(g74Var.f(g74Var2.d(g74Var2.k, jF, 1))) * f;
+                if (Math.abs(fH) < Math.abs(fFloatValue)) {
+                    CancellationException cancellationException = new CancellationException(xa3.f("Scroll animation cancelled because scroll was not consumed (", fH, " < ", fFloatValue, ")"));
+                    cancellationException.initCause(null);
+                    s22Var.f(cancellationException);
+                }
+                return j15Var;
+            case 1:
+                gx3 gx3Var = (gx3) obj4;
+                vd vdVar = (vd) obj;
+                float fFloatValue2 = ((Number) vdVar.e.getValue()).floatValue() - gx3Var.n;
+                float fA = ((c74) obj3).a(fFloatValue2);
+                gx3Var.n = ((Number) vdVar.e.getValue()).floatValue();
+                ((gx3) obj2).n = ((Number) ((if1) vdVar.a.p).invoke(vdVar.f)).floatValue();
+                if (Math.abs(fFloatValue2 - fA) > 0.5f) {
+                    vdVar.a();
+                }
+                return j15Var;
+            case 2:
+                ey eyVar = (ey) obj3;
+                if1 if1Var = (if1) obj2;
+                ba1 ba1Var = (ba1) obj;
+                if (!h12.c(ba1Var, (ba1) obj4)) {
+                    if (h12.c(ba1Var, (ba1) eyVar.c)) {
+                        kf2.o("Focus search landed at the root.");
+                        return null;
+                    }
+                    zBooleanValue = ((Boolean) if1Var.invoke(ba1Var)).booleanValue();
+                }
+                return Boolean.valueOf(zBooleanValue);
+            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
+                kz2 kz2Var = (kz2) obj3;
+                jx3 jx3Var = (jx3) obj2;
+                if (((Set) obj4).contains(obj) && (objG = kz2Var.b.g(obj)) != null) {
+                    if (objG instanceof x03) {
+                        x03 x03Var = (x03) objG;
+                        Object[] objArr = x03Var.b;
+                        long[] jArr = x03Var.a;
+                        int length = jArr.length - 2;
+                        if (length >= 0) {
+                            int i2 = 0;
+                            while (true) {
+                                long j = jArr[i2];
+                                if ((((~j) << 7) & j & (-9187201950435737472L)) != -9187201950435737472L) {
+                                    int i3 = 8 - ((~(i2 - length)) >>> 31);
+                                    for (int i4 = 0; i4 < i3; i4++) {
+                                        if ((255 & j) < 128) {
+                                            y94 y94Var = (y94) objArr[(i2 << 3) + i4];
+                                            if (jx3Var.n == null) {
+                                                jx3Var.n = new ArrayList();
+                                            }
+                                            ((List) jx3Var.n).add(y94Var);
+                                        }
+                                        j >>= 8;
+                                    }
+                                    if (i3 == 8) {
+                                        if (i2 != length) {
+                                            i2++;
+                                        }
+                                    }
+                                } else if (i2 != length) {
+                                    i2++;
+                                }
+                            }
+                        }
+                    } else {
+                        y94 y94Var2 = (y94) objG;
+                        if (jx3Var.n == null) {
+                            jx3Var.n = new ArrayList();
+                        }
+                        ((List) jx3Var.n).add(y94Var2);
+                    }
+                }
+                return j15Var;
+            case 4:
+                String str = (String) obj4;
+                Context context = (Context) obj3;
+                b13 b13Var = (b13) obj2;
+                ((yr0) obj).getClass();
+                if (str == null || str.length() == 0) {
+                    b13Var.setValue(null);
+                    return new j73();
+                }
+                String strB = wg0.b(ud3.t(), str);
+                wq4 i73Var = new i73(b13Var, 1);
+                vz3 vz3Var = (vz3) a.c(context).g().P(strB).e(wg0.b);
+                vz3Var.J(i73Var, null, vz3Var, fh0.g);
+                return new vy1(3, context, i73Var);
+            case 5:
+                w44 w44Var = (w44) obj4;
+                a54 a54Var = (a54) obj2;
+                w03 w03Var = w44Var.o;
+                if (w03Var.b(obj3)) {
+                    nz2.k(obj3, " was used multiple times ", "Key ");
+                    return null;
+                }
+                w44Var.n.remove(obj3);
+                w03Var.l(obj3, a54Var);
+                return new v44(w44Var, obj3, a54Var);
+            default:
+                jx3 jx3Var2 = (jx3) obj3;
+                lu2 lu2Var = (lu2) obj2;
+                ad2 ad2Var = (ad2) ((if1) obj4).invoke(obj);
+                Object obj5 = jx3Var2.n;
+                if (obj5 != ad2Var) {
+                    if (obj5 != null) {
+                        ku2 ku2Var = (ku2) lu2Var.l.b((ad2) obj5);
+                        if (ku2Var != null) {
+                            ku2Var.a.j(ku2Var);
+                        }
+                    }
+                    jx3Var2.n = ad2Var;
+                    if (ad2Var != null) {
+                        lu2Var.l(ad2Var, new ht1(new kl3(13, lu2Var), 2));
+                    }
+                }
+                return j15Var;
+        }
     }
 
-    public /* synthetic */ dd0(gx3 r1, c74 r2, gx3 r3, uk0 r4) {
+    public /* synthetic */ dd0(gx3 gx3Var, c74 c74Var, gx3 gx3Var2, uk0 uk0Var) {
         this.n = 1;
-        this.o = r1;
-        this.p = r2;
-        this.q = r3;
+        this.o = gx3Var;
+        this.p = c74Var;
+        this.q = gx3Var2;
     }
 
-    public /* synthetic */ dd0(Object r1, Object r2, Object r3, int r4) {
-        this.n = r4;
-        this.o = r1;
-        this.p = r2;
-        this.q = r3;
+    public /* synthetic */ dd0(Object obj, Object obj2, Object obj3, int i) {
+        this.n = i;
+        this.o = obj;
+        this.p = obj2;
+        this.q = obj3;
     }
 }

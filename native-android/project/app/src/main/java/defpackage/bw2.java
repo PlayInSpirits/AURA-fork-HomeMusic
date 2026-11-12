@@ -4,8 +4,4 @@ package defpackage;
 /* JADX INFO: loaded from: classes.dex */
 public final /* synthetic */ class bw2 {
     public final /* synthetic */ hw2 a;
-
-    public /* synthetic */ bw2(hw2 r1) {
-        this.a = r1;
-    }
 }

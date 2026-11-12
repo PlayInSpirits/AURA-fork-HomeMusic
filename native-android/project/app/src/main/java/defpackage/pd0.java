@@ -3,11 +3,10 @@ package defpackage;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class pd0 {
-    public static final /* synthetic */ pd0 a = null;
-    public static final nb b = null;
+    public static final /* synthetic */ pd0 a = new pd0();
+    public static final nb b;
 
     static {
-        a = new pd0();
         h12.a("username");
         b = h12.a("password");
         h12.a("emailAddress");

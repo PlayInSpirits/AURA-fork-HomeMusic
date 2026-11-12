@@ -8,95 +8,93 @@ import java.io.IOException;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class ew2 implements Handler.Callback {
-    public final dw2 n;
+    public final dw2 n = new dw2(this);
     public bq o;
     public no2 p;
     public cu4 q;
     public boolean r;
     public final /* synthetic */ fw2 s;
 
-    public ew2(fw2 r1) {
-        this.s = r1;
-        this.n = new dw2(this);
+    public ew2(fw2 fw2Var) {
+        this.s = fw2Var;
     }
 
     @Override // android.os.Handler.Callback
-    public final boolean handleMessage(Message r6) {
-        if (this.r == false) goto L5;
-        return true;
-    L5:
-        int r0 = r6.what;
-        if (r0 == 1) goto L52;
-        if (r0 != 2) goto L9;
-        no2 r7 = this.p;     // Catch: IOException -> L38
-        if (r7 != null) goto L40;
-        bq r8 = this.o;     // Catch: IOException -> L38
-        r8.getClass();     // Catch: IOException -> L38
-        r8.j();     // Catch: IOException -> L38
-    L41:
-        this.s.c.h(2, 100);     // Catch: IOException -> L38
-        return true;
-    L40:
-        r7.h();     // Catch: IOException -> L38
-    L38:
-        e = move-exception;
-        hw2 r1 = this.s.e.a;
-        monitor-enter(r1.p);
-        lb4 r2 = r1.r;     // Catch: Throwable -> L49
-        r2.getClass();     // Catch: Throwable -> L49
-        r2.m(e);     // Catch: Throwable -> L49
-        this.s.a();
-        return true;
-    L49:
-        th = move-exception;
-        throw th;
-    L9:
-        if (r0 != 3) goto L11;
-        no2 r5 = this.p;
-        r5.getClass();
-        od2 r9 = new od2();
-        r9.a = 0;
-        r5.o(new pd2(r9));
-        return true;
-    L11:
-        if (r0 == 4) goto L15;
-        return false;
-    L15:
-        if (this.p == null) goto L17;
-        bq r10 = this.o;
-        r10.getClass();
-        r10.n(this.p);
-    L17:
-        bq r11 = this.o;
-        if (r11 == null) goto L20;
-        r11.o(this.n);
-    L20:
+    public final boolean handleMessage(Message message) {
+        if (this.r) {
+            return true;
+        }
+        int i = message.what;
+        if (i == 1) {
+            bq bqVarD = this.s.a.d((gn2) message.obj);
+            this.o = bqVarD;
+            bqVarD.k(this.n, null, ik3.c);
+            this.s.c.g(2);
+            return true;
+        }
+        if (i == 2) {
+            try {
+                no2 no2Var = this.p;
+                if (no2Var == null) {
+                    bq bqVar = this.o;
+                    bqVar.getClass();
+                    bqVar.j();
+                } else {
+                    no2Var.h();
+                }
+                this.s.c.h(2, 100);
+                return true;
+            } catch (IOException e) {
+                hw2 hw2Var = this.s.e.a;
+                synchronized (hw2Var.p) {
+                    lb4 lb4Var = hw2Var.r;
+                    lb4Var.getClass();
+                    lb4Var.m(e);
+                    this.s.a();
+                    return true;
+                }
+            }
+        }
+        if (i == 3) {
+            no2 no2Var2 = this.p;
+            no2Var2.getClass();
+            od2 od2Var = new od2();
+            od2Var.a = 0L;
+            no2Var2.o(new pd2(od2Var));
+            return true;
+        }
+        if (i != 4) {
+            return false;
+        }
+        if (this.p != null) {
+            bq bqVar2 = this.o;
+            bqVar2.getClass();
+            bqVar2.n(this.p);
+        }
+        bq bqVar3 = this.o;
+        if (bqVar3 != null) {
+            bqVar3.o(this.n);
+        }
         this.s.c.e();
-        gw2 r12 = fw2.g;
-        monitor-enter(r12);
-        int r3 = r12.c - 1;     // Catch: Throwable -> L25
-        r12.c = r3;     // Catch: Throwable -> L25
-        if (r3 != 0) goto L27;
-        HandlerThread r4 = r12.b;     // Catch: Throwable -> L25
-        r4.getClass();     // Catch: Throwable -> L25
-        r4.quit();     // Catch: Throwable -> L25
-        r12.b = null;     // Catch: Throwable -> L25
-        r12.a.clear();     // Catch: Throwable -> L25
-    L28:
-        monitor-exit(r12);
+        gw2 gw2Var = fw2.g;
+        synchronized (gw2Var) {
+            try {
+                int i2 = gw2Var.c - 1;
+                gw2Var.c = i2;
+                if (i2 == 0) {
+                    HandlerThread handlerThread = gw2Var.b;
+                    handlerThread.getClass();
+                    handlerThread.quit();
+                    gw2Var.b = null;
+                    gw2Var.a.clear();
+                } else {
+                    gw2Var.a();
+                }
+            } catch (Throwable th) {
+                throw th;
+            }
+        }
         this.r = true;
-        return true;
-    L27:
-        r12.a();     // Catch: Throwable -> L25
-    L25:
-        th = move-exception;
-        throw th;
-    L52:
-        gn2 r13 = (gn2) r6.obj;
-        bq r14 = this.s.a.d(r13);
-        this.o = r14;
-        r14.k(this.n, null, ik3.c);
-        this.s.c.g(2);
         return true;
     }
 }

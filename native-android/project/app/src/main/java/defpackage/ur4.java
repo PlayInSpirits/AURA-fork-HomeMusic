@@ -5,40 +5,29 @@ package defpackage;
 public final class ur4 {
     public final int a;
 
-    public /* synthetic */ ur4(int r1) {
-        this.a = r1;
+    public static String a(int i) {
+        if (i == 1) {
+            return "Ltr";
+        }
+        if (i == 2) {
+            return "Rtl";
+        }
+        if (i == 3) {
+            return "Content";
+        }
+        if (i == 4) {
+            return "ContentOrLtr";
+        }
+        if (i == 5) {
+            return "ContentOrRtl";
+        }
+        return i == 0 ? "Unspecified" : "Invalid";
     }
 
-    public static String a(int r1) {
-        if (r1 != 1) goto L7;
-        return "Ltr";
-    L7:
-        if (r1 != 2) goto L11;
-        return "Rtl";
-    L11:
-        if (r1 != 3) goto L15;
-        return "Content";
-    L15:
-        if (r1 != 4) goto L19;
-        return "ContentOrLtr";
-    L19:
-        if (r1 != 5) goto L22;
-        return "ContentOrRtl";
-    L22:
-        if (r1 != 0) goto L25;
-        return "Unspecified";
-    L25:
-        return "Invalid";
-    }
-
-    public final boolean equals(Object r2) {
-        if ((r2 instanceof ur4) == false) goto L11;
-        int r3 = ((ur4) r2).a;
-        if (this.a == r3) goto L9;
-        return false;
-    L9:
-        return true;
-    L11:
+    public final boolean equals(Object obj) {
+        if (obj instanceof ur4) {
+            return this.a == ((ur4) obj).a;
+        }
         return false;
     }
 

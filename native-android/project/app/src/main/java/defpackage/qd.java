@@ -15,350 +15,317 @@ import android.graphics.drawable.Animatable;
 import android.graphics.drawable.AnimatedVectorDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
+import java.io.IOException;
 import java.util.ArrayList;
 import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class qd extends q35 implements Animatable {
-    public final od o;
     public final Context p;
-    public l4 q;
-    public ArrayList r;
-    public final nd s;
+    public l4 q = null;
+    public ArrayList r = null;
+    public final nd s = new nd(this);
+    public final od o = new od();
 
-    public qd(Context r2) {
-        this.q = null;
-        this.r = null;
-        this.s = new nd(this);
-        this.p = r2;
-        this.o = new od();
+    public qd(Context context) {
+        this.p = context;
     }
 
     @Override // defpackage.q35, android.graphics.drawable.Drawable
-    public final void applyTheme(Resources.Theme r1) {
-        Drawable r0 = this.n;
-        if (r0 == null) goto L6;
-        r0.applyTheme(r1);
-        return;
+    public final void applyTheme(Resources.Theme theme) {
+        Drawable drawable = this.n;
+        if (drawable != null) {
+            drawable.applyTheme(theme);
+        }
     }
 
     @Override // android.graphics.drawable.Drawable
     public final boolean canApplyTheme() {
-        Drawable r0 = this.n;
-        if (r0 != null) goto L5;
+        Drawable drawable = this.n;
+        if (drawable != null) {
+            return drawable.canApplyTheme();
+        }
         return false;
-    L5:
-        return r0.canApplyTheme();
     }
 
     @Override // android.graphics.drawable.Drawable
-    public final void draw(Canvas r3) {
-        Drawable r0 = this.n;
-        if (r0 == null) goto L6;
-        r0.draw(r3);
-        return;
-    L6:
-        od r1 = this.o;
-        r1.a.draw(r3);
-        if (r1.b.isStarted() == false) goto L10;
-        invalidateSelf();
-        return;
+    public final void draw(Canvas canvas) {
+        Drawable drawable = this.n;
+        if (drawable != null) {
+            drawable.draw(canvas);
+            return;
+        }
+        od odVar = this.o;
+        odVar.a.draw(canvas);
+        if (odVar.b.isStarted()) {
+            invalidateSelf();
+        }
     }
 
     @Override // android.graphics.drawable.Drawable
     public final int getAlpha() {
-        Drawable r0 = this.n;
-        if (r0 == null) goto L7;
-        return r0.getAlpha();
-    L7:
-        return this.o.a.getAlpha();
+        Drawable drawable = this.n;
+        return drawable != null ? drawable.getAlpha() : this.o.a.getAlpha();
     }
 
     @Override // android.graphics.drawable.Drawable
     public final int getChangingConfigurations() {
-        Drawable r0 = this.n;
-        if (r0 != null) goto L5;
-        int r1 = super.getChangingConfigurations();
+        Drawable drawable = this.n;
+        if (drawable != null) {
+            return drawable.getChangingConfigurations();
+        }
+        int changingConfigurations = super.getChangingConfigurations();
         this.o.getClass();
-        return r1;
-    L5:
-        return r0.getChangingConfigurations();
+        return changingConfigurations;
     }
 
     @Override // android.graphics.drawable.Drawable
     public final ColorFilter getColorFilter() {
-        Drawable r0 = this.n;
-        if (r0 == null) goto L7;
-        return r0.getColorFilter();
-    L7:
-        return this.o.a.getColorFilter();
+        Drawable drawable = this.n;
+        return drawable != null ? drawable.getColorFilter() : this.o.a.getColorFilter();
     }
 
     @Override // android.graphics.drawable.Drawable
     public final Drawable.ConstantState getConstantState() {
-        if (this.n == null) goto L6;
-        int r1 = 0;
-        return new pd(r1, this.n.getConstantState());
-    L6:
-        return null;
+        if (this.n == null) {
+            return null;
+        }
+        return new pd(0, this.n.getConstantState());
     }
 
     @Override // android.graphics.drawable.Drawable
     public final int getIntrinsicHeight() {
-        Drawable r0 = this.n;
-        if (r0 == null) goto L7;
-        return r0.getIntrinsicHeight();
-    L7:
-        return this.o.a.getIntrinsicHeight();
+        Drawable drawable = this.n;
+        return drawable != null ? drawable.getIntrinsicHeight() : this.o.a.getIntrinsicHeight();
     }
 
     @Override // android.graphics.drawable.Drawable
     public final int getIntrinsicWidth() {
-        Drawable r0 = this.n;
-        if (r0 == null) goto L7;
-        return r0.getIntrinsicWidth();
-    L7:
-        return this.o.a.getIntrinsicWidth();
+        Drawable drawable = this.n;
+        return drawable != null ? drawable.getIntrinsicWidth() : this.o.a.getIntrinsicWidth();
     }
 
     @Override // android.graphics.drawable.Drawable
     public final int getOpacity() {
-        Drawable r0 = this.n;
-        if (r0 == null) goto L7;
-        return r0.getOpacity();
-    L7:
-        return this.o.a.getOpacity();
+        Drawable drawable = this.n;
+        return drawable != null ? drawable.getOpacity() : this.o.a.getOpacity();
     }
 
     @Override // android.graphics.drawable.Drawable
-    public final void inflate(Resources r9, XmlPullParser r10, AttributeSet r11, Resources.Theme r12) {
-        Drawable r0 = this.n;
-        if (r0 == null) goto L6;
-        r0.inflate(r9, r10, r11, r12);
-        return;
-    L6:
-        int r1 = r10.getEventType();
-        int r2 = r10.getDepth() + 1;
-    L7:
-        od r3 = this.o;
-        if (r1 == 1) goto L39;
-        if (r10.getDepth() >= r2) goto L14;
-        if (r1 == 3) goto L39;
-    L14:
-        if (r1 != 2) goto L37;
-        String r4 = r10.getName();
-        if ("animated-vector".equals(r4) == false) goto L25;
-        TypedArray r5 = gi1.O(r9, r12, r11, fh0.e);
-        int r6 = r5.getResourceId(0, 0);
-        if (r6 == 0) goto L23;
-        z35 r7 = new z35();
-        ThreadLocal r8 = g14.a;
-        r7.n = r9.getDrawable(r6, r12);
-        new y35(r7.n.getConstantState());
-        r7.s = false;
-        r7.setCallback(this.s);
-        z35 r13 = r3.a;
-        if (r13 == null) goto L22;
-        r13.setCallback(null);
-    L22:
-        r3.a = r7;
-    L23:
-        r5.recycle();
-        goto L37
-    L25:
-        if ("target".equals(r4) == false) goto L37;
-        TypedArray r14 = r9.obtainAttributes(r11, fh0.f);
-        String r15 = r14.getString(0);
-        int r16 = r14.getResourceId(1, 0);
-        if (r16 == 0) goto L36;
-        Context r17 = this.p;
-        if (r17 == null) goto L34;
-        Animator r18 = AnimatorInflater.loadAnimator(r17, r16);
-        r18.setTarget(r3.a.o.b.o.get(r15));
-        if (r3.c != null) goto L33;
-        r3.c = new ArrayList();
-        r3.d = new oi(0);
-    L33:
-        r3.c.add(r18);
-        r3.d.put(r18, r15);
-        goto L36
-    L34:
-        r14.recycle();
-        kf2.o("Context can't be null when inflating animators");
-        return;
-    L36:
-        r14.recycle();
-    L37:
-        r1 = r10.next();
-    L39:
-        if (r3.b != null) goto L41;
-        r3.b = new AnimatorSet();
-    L41:
-        r3.b.playTogether(r3.c);
+    public final void inflate(Resources resources, XmlPullParser xmlPullParser, AttributeSet attributeSet, Resources.Theme theme) throws XmlPullParserException, IOException {
+        od odVar;
+        Drawable drawable = this.n;
+        if (drawable != null) {
+            drawable.inflate(resources, xmlPullParser, attributeSet, theme);
+            return;
+        }
+        int eventType = xmlPullParser.getEventType();
+        int depth = xmlPullParser.getDepth() + 1;
+        while (true) {
+            odVar = this.o;
+            if (eventType == 1 || (xmlPullParser.getDepth() < depth && eventType == 3)) {
+                break;
+            }
+            if (eventType == 2) {
+                String name = xmlPullParser.getName();
+                if ("animated-vector".equals(name)) {
+                    TypedArray typedArrayO = gi1.O(resources, theme, attributeSet, fh0.e);
+                    int resourceId = typedArrayO.getResourceId(0, 0);
+                    if (resourceId != 0) {
+                        z35 z35Var = new z35();
+                        ThreadLocal threadLocal = g14.a;
+                        z35Var.n = resources.getDrawable(resourceId, theme);
+                        new y35(z35Var.n.getConstantState());
+                        z35Var.s = false;
+                        z35Var.setCallback(this.s);
+                        z35 z35Var2 = odVar.a;
+                        if (z35Var2 != null) {
+                            z35Var2.setCallback(null);
+                        }
+                        odVar.a = z35Var;
+                    }
+                    typedArrayO.recycle();
+                } else if ("target".equals(name)) {
+                    TypedArray typedArrayObtainAttributes = resources.obtainAttributes(attributeSet, fh0.f);
+                    String string = typedArrayObtainAttributes.getString(0);
+                    int resourceId2 = typedArrayObtainAttributes.getResourceId(1, 0);
+                    if (resourceId2 != 0) {
+                        Context context = this.p;
+                        if (context == null) {
+                            typedArrayObtainAttributes.recycle();
+                            kf2.o("Context can't be null when inflating animators");
+                            return;
+                        }
+                        Animator animatorLoadAnimator = AnimatorInflater.loadAnimator(context, resourceId2);
+                        animatorLoadAnimator.setTarget(odVar.a.o.b.o.get(string));
+                        if (odVar.c == null) {
+                            odVar.c = new ArrayList();
+                            odVar.d = new oi(0);
+                        }
+                        odVar.c.add(animatorLoadAnimator);
+                        odVar.d.put(animatorLoadAnimator, string);
+                    }
+                    typedArrayObtainAttributes.recycle();
+                } else {
+                    continue;
+                }
+            }
+            eventType = xmlPullParser.next();
+        }
+        if (odVar.b == null) {
+            odVar.b = new AnimatorSet();
+        }
+        odVar.b.playTogether(odVar.c);
     }
 
     @Override // android.graphics.drawable.Drawable
     public final boolean isAutoMirrored() {
-        Drawable r0 = this.n;
-        if (r0 == null) goto L7;
-        return r0.isAutoMirrored();
-    L7:
-        return this.o.a.isAutoMirrored();
+        Drawable drawable = this.n;
+        return drawable != null ? drawable.isAutoMirrored() : this.o.a.isAutoMirrored();
     }
 
     @Override // android.graphics.drawable.Animatable
     public final boolean isRunning() {
-        Drawable r0 = this.n;
-        if (r0 == null) goto L7;
-        return ((AnimatedVectorDrawable) r0).isRunning();
-    L7:
-        return this.o.b.isRunning();
+        Drawable drawable = this.n;
+        return drawable != null ? ((AnimatedVectorDrawable) drawable).isRunning() : this.o.b.isRunning();
     }
 
     @Override // android.graphics.drawable.Drawable
     public final boolean isStateful() {
-        Drawable r0 = this.n;
-        if (r0 == null) goto L7;
-        return r0.isStateful();
-    L7:
-        return this.o.a.isStateful();
+        Drawable drawable = this.n;
+        return drawable != null ? drawable.isStateful() : this.o.a.isStateful();
     }
 
     @Override // android.graphics.drawable.Drawable
     public final Drawable mutate() {
-        Drawable r0 = this.n;
-        if (r0 == null) goto L5;
-        r0.mutate();
-    L5:
+        Drawable drawable = this.n;
+        if (drawable != null) {
+            drawable.mutate();
+        }
         return this;
     }
 
     @Override // android.graphics.drawable.Drawable
-    public final void onBoundsChange(Rect r2) {
-        Drawable r0 = this.n;
-        if (r0 == null) goto L6;
-        r0.setBounds(r2);
-        return;
-    L6:
-        this.o.a.setBounds(r2);
+    public final void onBoundsChange(Rect rect) {
+        Drawable drawable = this.n;
+        if (drawable != null) {
+            drawable.setBounds(rect);
+        } else {
+            this.o.a.setBounds(rect);
+        }
     }
 
     @Override // defpackage.q35, android.graphics.drawable.Drawable
-    public final boolean onLevelChange(int r2) {
-        Drawable r0 = this.n;
-        if (r0 == null) goto L7;
-        return r0.setLevel(r2);
-    L7:
-        return this.o.a.setLevel(r2);
+    public final boolean onLevelChange(int i) {
+        Drawable drawable = this.n;
+        return drawable != null ? drawable.setLevel(i) : this.o.a.setLevel(i);
     }
 
     @Override // android.graphics.drawable.Drawable
-    public final boolean onStateChange(int[] r2) {
-        Drawable r0 = this.n;
-        if (r0 == null) goto L7;
-        return r0.setState(r2);
-    L7:
-        return this.o.a.setState(r2);
+    public final boolean onStateChange(int[] iArr) {
+        Drawable drawable = this.n;
+        return drawable != null ? drawable.setState(iArr) : this.o.a.setState(iArr);
     }
 
     @Override // android.graphics.drawable.Drawable
-    public final void setAlpha(int r2) {
-        Drawable r0 = this.n;
-        if (r0 == null) goto L6;
-        r0.setAlpha(r2);
-        return;
-    L6:
-        this.o.a.setAlpha(r2);
+    public final void setAlpha(int i) {
+        Drawable drawable = this.n;
+        if (drawable != null) {
+            drawable.setAlpha(i);
+        } else {
+            this.o.a.setAlpha(i);
+        }
     }
 
     @Override // android.graphics.drawable.Drawable
-    public final void setAutoMirrored(boolean r2) {
-        Drawable r0 = this.n;
-        if (r0 == null) goto L6;
-        r0.setAutoMirrored(r2);
-        return;
-    L6:
-        this.o.a.setAutoMirrored(r2);
+    public final void setAutoMirrored(boolean z) {
+        Drawable drawable = this.n;
+        if (drawable != null) {
+            drawable.setAutoMirrored(z);
+        } else {
+            this.o.a.setAutoMirrored(z);
+        }
     }
 
     @Override // android.graphics.drawable.Drawable
-    public final void setColorFilter(ColorFilter r2) {
-        Drawable r0 = this.n;
-        if (r0 == null) goto L6;
-        r0.setColorFilter(r2);
-        return;
-    L6:
-        this.o.a.setColorFilter(r2);
+    public final void setColorFilter(ColorFilter colorFilter) {
+        Drawable drawable = this.n;
+        if (drawable != null) {
+            drawable.setColorFilter(colorFilter);
+        } else {
+            this.o.a.setColorFilter(colorFilter);
+        }
     }
 
     @Override // android.graphics.drawable.Drawable
-    public final void setTint(int r2) {
-        Drawable r0 = this.n;
-        if (r0 == null) goto L6;
-        r0.setTint(r2);
-        return;
-    L6:
-        this.o.a.setTint(r2);
+    public final void setTint(int i) {
+        Drawable drawable = this.n;
+        if (drawable != null) {
+            drawable.setTint(i);
+        } else {
+            this.o.a.setTint(i);
+        }
     }
 
     @Override // android.graphics.drawable.Drawable
-    public final void setTintList(ColorStateList r2) {
-        Drawable r0 = this.n;
-        if (r0 == null) goto L6;
-        r0.setTintList(r2);
-        return;
-    L6:
-        this.o.a.setTintList(r2);
+    public final void setTintList(ColorStateList colorStateList) {
+        Drawable drawable = this.n;
+        if (drawable != null) {
+            drawable.setTintList(colorStateList);
+        } else {
+            this.o.a.setTintList(colorStateList);
+        }
     }
 
     @Override // android.graphics.drawable.Drawable
-    public final void setTintMode(PorterDuff.Mode r2) {
-        Drawable r0 = this.n;
-        if (r0 == null) goto L6;
-        r0.setTintMode(r2);
-        return;
-    L6:
-        this.o.a.setTintMode(r2);
+    public final void setTintMode(PorterDuff.Mode mode) {
+        Drawable drawable = this.n;
+        if (drawable != null) {
+            drawable.setTintMode(mode);
+        } else {
+            this.o.a.setTintMode(mode);
+        }
     }
 
     @Override // android.graphics.drawable.Drawable
-    public final boolean setVisible(boolean r2, boolean r3) {
-        Drawable r0 = this.n;
-        if (r0 != null) goto L5;
-        this.o.a.setVisible(r2, r3);
-        return super.setVisible(r2, r3);
-    L5:
-        return r0.setVisible(r2, r3);
+    public final boolean setVisible(boolean z, boolean z2) {
+        Drawable drawable = this.n;
+        if (drawable != null) {
+            return drawable.setVisible(z, z2);
+        }
+        this.o.a.setVisible(z, z2);
+        return super.setVisible(z, z2);
     }
 
     @Override // android.graphics.drawable.Animatable
     public final void start() {
-        Drawable r0 = this.n;
-        if (r0 == null) goto L6;
-        ((AnimatedVectorDrawable) r0).start();
-        return;
-    L6:
-        od r1 = this.o;
-        if (r1.b.isStarted() == false) goto L9;
-        return;
-    L9:
-        r1.b.start();
+        Drawable drawable = this.n;
+        if (drawable != null) {
+            ((AnimatedVectorDrawable) drawable).start();
+            return;
+        }
+        od odVar = this.o;
+        if (odVar.b.isStarted()) {
+            return;
+        }
+        odVar.b.start();
         invalidateSelf();
     }
 
     @Override // android.graphics.drawable.Animatable
     public final void stop() {
-        Drawable r0 = this.n;
-        if (r0 == null) goto L6;
-        ((AnimatedVectorDrawable) r0).stop();
-        return;
-    L6:
-        this.o.b.end();
+        Drawable drawable = this.n;
+        if (drawable != null) {
+            ((AnimatedVectorDrawable) drawable).stop();
+        } else {
+            this.o.b.end();
+        }
     }
 
     @Override // android.graphics.drawable.Drawable
-    public final void inflate(Resources r2, XmlPullParser r3, AttributeSet r4) {
-        inflate(r2, r3, r4, null);
+    public final void inflate(Resources resources, XmlPullParser xmlPullParser, AttributeSet attributeSet) throws XmlPullParserException, IOException {
+        inflate(resources, xmlPullParser, attributeSet, null);
     }
 }

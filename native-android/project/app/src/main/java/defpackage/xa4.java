@@ -6,74 +6,68 @@ import java.util.Objects;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class xa4 {
-    public static final String d = null;
-    public static final String e = null;
-    public static final String f = null;
+    public static final String d;
+    public static final String e;
+    public static final String f;
     public final int a;
     public final String b;
     public final Bundle c;
 
     static {
-        String r0 = f35.a;
+        String str = f35.a;
         d = Integer.toString(0, 36);
         e = Integer.toString(1, 36);
         f = Integer.toString(2, 36);
     }
 
-    public xa4(String r2, int r3, Bundle r4) {
-        boolean r0 = true;
-        if (r3 < 0) goto L7;
-        if (r3 == 1) goto L7;
-        r0 = false;
-    L7:
-        rr2.l(r0);
-        this.a = r3;
-        this.b = r2;
-        this.c = r4;
+    public xa4(String str, int i, Bundle bundle) {
+        boolean z = true;
+        if (i >= 0 && i != 1) {
+            z = false;
+        }
+        rr2.l(z);
+        this.a = i;
+        this.b = str;
+        this.c = bundle;
     }
 
-    public static xa4 a(Bundle r3) {
-        int r0 = r3.getInt(d, 1000);
-        String r1 = r3.getString(e, "");
-        Bundle r4 = f35.n(r3.getBundle(f));
-        if (r4 != null) goto L6;
-        r4 = Bundle.EMPTY;
-    L6:
-        return new xa4(r1, r0, r4);
+    public static xa4 a(Bundle bundle) {
+        int i = bundle.getInt(d, 1000);
+        String string = bundle.getString(e, "");
+        Bundle bundleN = f35.n(bundle.getBundle(f));
+        if (bundleN == null) {
+            bundleN = Bundle.EMPTY;
+        }
+        return new xa4(string, i, bundleN);
     }
 
     public final Bundle b() {
-        Bundle r0 = new Bundle();
-        r0.putInt(d, this.a);
-        r0.putString(e, this.b);
-        Bundle r3 = this.c;
-        if (r3.isEmpty() == true) goto L5;
-        r0.putBundle(f, r3);
-    L5:
-        return r0;
+        Bundle bundle = new Bundle();
+        bundle.putInt(d, this.a);
+        bundle.putString(e, this.b);
+        Bundle bundle2 = this.c;
+        if (!bundle2.isEmpty()) {
+            bundle.putBundle(f, bundle2);
+        }
+        return bundle;
     }
 
-    public final boolean equals(Object r5) {
-        if (this != r5) goto L6;
-        return true;
-    L6:
-        if ((r5 instanceof xa4) == true) goto L8;
-        return false;
-    L8:
-        xa4 r6 = (xa4) r5;
-        if (this.a == r6.a) goto L11;
-    L13:
-        return false;
-    L11:
-        if (Objects.equals(this.b, r6.b) == false) goto L13;
-        return true;
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof xa4)) {
+            return false;
+        }
+        xa4 xa4Var = (xa4) obj;
+        return this.a == xa4Var.a && Objects.equals(this.b, xa4Var.b);
     }
 
     public final int hashCode() {
-        return Objects.hash(new Object[]{Integer.valueOf(this.a), this.b});
+        return Objects.hash(Integer.valueOf(this.a), this.b);
     }
 
-    public xa4(int r2, String r3) {
-        this(r3, r2, Bundle.EMPTY);
+    public xa4(int i, String str) {
+        this(str, i, Bundle.EMPTY);
     }
 }

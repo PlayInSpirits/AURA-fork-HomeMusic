@@ -8,15 +8,16 @@ public final class b74 extends wd0 {
     public final /* synthetic */ g74 p;
     public int q;
 
-    public b74(g74 r1, wd0 r2) {
-        this.p = r1;
-        super(r2);
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public b74(g74 g74Var, wd0 wd0Var) {
+        super(wd0Var);
+        this.p = g74Var;
     }
 
     @Override // defpackage.jp
-    public final Object invokeSuspend(Object r3) {
-        this.o = r3;
+    public final Object invokeSuspend(Object obj) {
+        this.o = obj;
         this.q |= Integer.MIN_VALUE;
-        return this.p.a(0, this);
+        return this.p.a(0L, this);
     }
 }

@@ -8,65 +8,65 @@ import androidx.media3.decoder.ffmpeg.b;
 public final class aj0 implements rm {
     public final /* synthetic */ b n;
 
-    public aj0(b r1) {
-        this.n = r1;
+    public aj0(b bVar) {
+        this.n = bVar;
     }
 
     @Override // defpackage.rm
-    public final void a(long r4) {
-        b r3 = this.n;
-        r3.d0 = true;
-        xc5 r5 = r3.F;
-        Handler r0 = (Handler) r5.o;
-        if (r0 == null) goto L6;
-        r0.post(new mm(r5, r4, 0));
-        return;
+    public final void a(long j) {
+        b bVar = this.n;
+        bVar.d0 = true;
+        xc5 xc5Var = bVar.F;
+        Handler handler = (Handler) xc5Var.o;
+        if (handler != null) {
+            handler.post(new mm(xc5Var, j, 0));
+        }
     }
 
     @Override // defpackage.rm
-    public final void b(int r4) {
-        xc5 r3 = this.n.F;
-        Handler r0 = (Handler) r3.o;
-        if (r0 == null) goto L6;
-        r0.post(new ul(r4, 1, r3));
-        return;
+    public final void b(int i) {
+        xc5 xc5Var = this.n.F;
+        Handler handler = (Handler) xc5Var.o;
+        if (handler != null) {
+            handler.post(new ul(i, 1, xc5Var));
+        }
     }
 
     @Override // defpackage.rm
-    public final void d(boolean r4) {
-        xc5 r3 = this.n.F;
-        Handler r0 = (Handler) r3.o;
-        if (r0 == null) goto L6;
-        r0.post(new pm(r3, r4, 0));
-        return;
+    public final void d(boolean z) {
+        xc5 xc5Var = this.n.F;
+        Handler handler = (Handler) xc5Var.o;
+        if (handler != null) {
+            handler.post(new pm(xc5Var, z, 0));
+        }
     }
 
     @Override // defpackage.rm
-    public final void f(pa r4) {
-        xc5 r3 = this.n.F;
-        Handler r0 = (Handler) r3.o;
-        if (r0 == null) goto L6;
-        r0.post(new nm(r3, r4, 0));
-        return;
+    public final void f(pa paVar) {
+        xc5 xc5Var = this.n.F;
+        Handler handler = (Handler) xc5Var.o;
+        if (handler != null) {
+            handler.post(new nm(xc5Var, paVar, 0));
+        }
     }
 
     @Override // defpackage.rm
-    public final void g(Exception r4) {
-        l93.G("DecoderAudioRenderer", "Audio sink error", r4);
-        xc5 r3 = this.n.F;
-        Handler r0 = (Handler) r3.o;
-        if (r0 == null) goto L6;
-        r0.post(new jm(r3, r4, 1));
-        return;
+    public final void g(Exception exc) {
+        l93.G("DecoderAudioRenderer", "Audio sink error", exc);
+        xc5 xc5Var = this.n.F;
+        Handler handler = (Handler) xc5Var.o;
+        if (handler != null) {
+            handler.post(new jm(xc5Var, exc, 1));
+        }
     }
 
     @Override // defpackage.rm
-    public final void j(pa r4) {
-        xc5 r3 = this.n.F;
-        Handler r0 = (Handler) r3.o;
-        if (r0 == null) goto L6;
-        r0.post(new nm(r3, r4, 1));
-        return;
+    public final void j(pa paVar) {
+        xc5 xc5Var = this.n.F;
+        Handler handler = (Handler) xc5Var.o;
+        if (handler != null) {
+            handler.post(new nm(xc5Var, paVar, 1));
+        }
     }
 
     @Override // defpackage.rm
@@ -75,12 +75,12 @@ public final class aj0 implements rm {
     }
 
     @Override // defpackage.rm
-    public final void q(int r9, long r10, long r12) {
-        xc5 r1 = this.n.F;
-        Handler r8 = (Handler) r1.o;
-        if (r8 == null) goto L6;
-        r8.post(new lm(r1, r9, r10, r12, 0));
-        return;
+    public final void q(int i, long j, long j2) {
+        xc5 xc5Var = this.n.F;
+        Handler handler = (Handler) xc5Var.o;
+        if (handler != null) {
+            handler.post(new lm(xc5Var, i, j, j2, 0));
+        }
     }
 
     @Override // defpackage.rm

@@ -6,47 +6,34 @@ import java.util.Locale;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class wd2 {
-    public static final wd2 b = null;
+    public static final wd2 b = new wd2(new xd2(new LocaleList(new Locale[0])));
     public final xd2 a;
 
-    static {
-        b = new wd2(new xd2(new LocaleList(new Locale[0])));
+    public wd2(xd2 xd2Var) {
+        this.a = xd2Var;
     }
 
-    public wd2(xd2 r1) {
-        this.a = r1;
-    }
-
-    public static wd2 a(String r4) {
-        if (r4 == null) goto L12;
-        if (r4.isEmpty() == true) goto L12;
-        String[] r5 = r4.split(",", -1);
-        int r0 = r5.length;
-        Locale[] r1 = new Locale[r0];
-        int r2 = 0;
-    L7:
-        if (r2 >= r0) goto L10;
-        r1[r2] = Locale.forLanguageTag(r5[r2]);
-        r2 = r2 + 1;
-        goto L7
-    L10:
-        return new wd2(new xd2(new LocaleList(r1)));
-    L12:
-        return b;
+    public static wd2 a(String str) {
+        if (str == null || str.isEmpty()) {
+            return b;
+        }
+        String[] strArrSplit = str.split(",", -1);
+        int length = strArrSplit.length;
+        Locale[] localeArr = new Locale[length];
+        for (int i = 0; i < length; i++) {
+            localeArr[i] = Locale.forLanguageTag(strArrSplit[i]);
+        }
+        return new wd2(new xd2(new LocaleList(localeArr)));
     }
 
     public final int b() {
         return this.a.a.size();
     }
 
-    public final boolean equals(Object r2) {
-        if ((r2 instanceof wd2) == false) goto L8;
-        xd2 r3 = ((wd2) r2).a;
-        if (this.a.equals(r3) == false) goto L10;
-        return true;
-    L10:
-        return false;
-    L8:
+    public final boolean equals(Object obj) {
+        if (obj instanceof wd2) {
+            return this.a.equals(((wd2) obj).a);
+        }
         return false;
     }
 

@@ -9,37 +9,36 @@ public final class SmartRec extends WaveTrack {
     private String after;
     private int slot;
 
-    public SmartRec() {
-    }
-
     public final String getAfter() {
         return this.after;
     }
 
     public final String getQueueId() {
-        String r0 = getSongId();
-        if (r0 != null) goto L13;
-        String r2 = getRef();
-        r0 = null;
-        if (r2 == null) goto L13;
-        if (qm4.u0(r2) == false) goto L10;
-        r2 = null;
-    L10:
-        if (r2 == null) goto L13;
-        return "hub:".concat(r2);
-    L13:
-        return r0;
+        String songId = getSongId();
+        if (songId == null) {
+            String ref = getRef();
+            songId = null;
+            if (ref != null) {
+                if (qm4.u0(ref)) {
+                    ref = null;
+                }
+                if (ref != null) {
+                    return "hub:".concat(ref);
+                }
+            }
+        }
+        return songId;
     }
 
     public final int getSlot() {
         return this.slot;
     }
 
-    public final void setAfter(String r1) {
-        this.after = r1;
+    public final void setAfter(String str) {
+        this.after = str;
     }
 
-    public final void setSlot(int r1) {
-        this.slot = r1;
+    public final void setSlot(int i) {
+        this.slot = i;
     }
 }

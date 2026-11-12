@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.PopupMenu;
 import android.widget.SearchView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -17,12 +18,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import app.homemusic.R;
 import com.eddyizm.tempus.interfaces.ClickCallback;
 import com.eddyizm.tempus.ui.activity.MainActivity;
+import com.eddyizm.tempus.ui.fragment.PlaylistCatalogueFragment;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.appbar.MaterialToolbar;
 import defpackage.b11;
 import defpackage.b75;
 import defpackage.bq4;
-import defpackage.cl3;
 import defpackage.d8;
 import defpackage.dl3;
 import defpackage.e75;
@@ -55,22 +56,19 @@ public class PlaylistCatalogueFragment extends kc1 implements ClickCallback {
     public dl3 n0;
     public q7 o0;
 
-    public PlaylistCatalogueFragment() {
-    }
-
     @Override // defpackage.kc1
-    public final void F(Bundle r1) {
-        super.F(r1);
+    public final void F(Bundle bundle) {
+        super.F(bundle);
         d0();
     }
 
     @Override // defpackage.kc1
-    public final void G(Menu r2, MenuInflater r3) {
-        r3.inflate(R.menu.toolbar_menu, r2);
-        SearchView r4 = (SearchView) r2.findItem(R.id.action_search).getActionView();
-        r4.setImeOptions(6);
-        r4.setOnQueryTextListener(new w7(this, r4, 3));
-        r4.setPadding(-32, 0, 0, 0);
+    public final void G(Menu menu, MenuInflater menuInflater) {
+        menuInflater.inflate(R.menu.toolbar_menu, menu);
+        SearchView searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
+        searchView.setImeOptions(6);
+        searchView.setOnQueryTextListener(new w7(this, searchView, 3));
+        searchView.setPadding(-32, 0, 0, 0);
     }
 
     /* JADX WARN: Type inference fix 'apply assigned field type' failed
@@ -84,93 +82,140 @@ public class PlaylistCatalogueFragment extends kc1 implements ClickCallback {
     	at jadx.core.dex.visitors.typeinference.FixTypesVisitor.visit(FixTypesVisitor.java:94)
      */
     @Override // defpackage.kc1
-    public final View H(LayoutInflater r9, ViewGroup r10, Bundle r11) {
-        this.m0 = (MainActivity) l();
-        final int r0 = 0;
-        View r12 = r9.inflate(R.layout.fragment_playlist_catalogue, r10, false);
-        int r13 = R.id.album_info_sector;
-        ConstraintLayout r3 = (ConstraintLayout) uo.s(r12, R.id.album_info_sector);
-        if (r3 == null) goto L44;
-        r13 = R.id.app_bar_layout;
-        AppBarLayout r4 = (AppBarLayout) uo.s(r12, R.id.app_bar_layout);
-        if (r4 == null) goto L44;
-        r13 = R.id.playlist_catalogue_recycler_view;
-        RecyclerView r5 = (RecyclerView) uo.s(r12, R.id.playlist_catalogue_recycler_view);
-        if (r5 == null) goto L44;
-        r13 = R.id.playlist_list_sort_image_view;
-        Button r6 = (Button) uo.s(r12, R.id.playlist_list_sort_image_view);
-        if (r6 == null) goto L44;
-        r13 = R.id.toolbar;
-        MaterialToolbar r7 = (MaterialToolbar) uo.s(r12, R.id.toolbar);
-        if (r7 == null) goto L44;
-        LinearLayout r2 = (LinearLayout) r12;
-        this.l0 = new rc1(r2, r3, r4, r5, r6, r7);
-        nc1 r14 = X();
-        e75 r15 = r14.d();
-        b75 r1 = gh0.r(r14);
-        bq4 r8 = new bq4(r15, r1, b11.e(r14, r1));
-        i30 r16 = kx3.a(dl3.class);
-        String r17 = r16.b();
-        if (r17 == null) goto L42;
-        this.n0 = (dl3) r8.l(r16, "androidx.lifecycle.ViewModelProvider.DefaultKey:".concat(r17));
-        Bundle r18 = this.s;
-        if (r18 != null) goto L23;
-        MainActivity r19 = this.m0;
-        if (r19 == null) goto L21;
-        v23 r20 = r19.T;
-        if (r20 == null) goto L21;
-        r20.o();
-    L21:
-        return r2;
-    L23:
-        if (r18.getString("ALL") == null) goto L26;
-        this.n0.getClass();
-    L28:
-        this.m0.o(this.l0.e);
-        final int r110 = 1;
-        if (this.m0.n() == null) goto L31;
-        this.m0.n().f0(true);
-        this.m0.n().g0();
-    L31:
-        this.l0.e.setNavigationOnClickListener(new cl3(this, r0));
-        this.l0.b.a(new u7(8, this));
-        RecyclerView r21 = this.l0.c;
-        Context r111 = r21.getContext();
-        ut4 r22 = ut4.c();
-        if (r22.h == true) goto L34;
-        r22.b(r111);
-    L34:
-        int r23 = r22.b;
-        r21.setLayoutManager(new GridLayoutManager(r23));
-        ut4 r24 = ut4.c();
-        if (r24.h == true) goto L37;
-        r24.b(r111);
-    L37:
-        r21.i(new ek1(r23, r24.c));
-        r21.setHasFixedSize(true);
-        int r112 = (int) (16.0f * r21.getResources().getDisplayMetrics().density);
-        r21.setPaddingRelative(r112, r21.getPaddingTop(), r112, r21.getPaddingBottom());
-        q7 r113 = new q7(this, true);
-        r21.setAdapter(r113);
-        this.o0 = r113;
-        dl3 r25 = this.n0;
-        le1 r114 = v();
-        k03 r26 = r25.e;
-        if (r26.d() != null) goto L40;
-        r25.c.d(-1, false).e(r114, new g7(r26, 0));
-    L40:
-        this.l0.c.setOnTouchListener(new s7(6, this));
-        this.l0.d.setOnClickListener(new cl3(this, r110));
-        return r2;
-    L26:
-        if (r18.getString("DOWNLOADED") == null) goto L28;
-        this.n0.getClass();
-        goto L28
-    L42:
-        kf2.n("Local and anonymous classes can not be ViewModels");
-        return null;
-    L44:
-        nz2.n("Missing required view with ID: ".concat(r12.getResources().getResourceName(r13)));
+    public final View H(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
+        v23 v23Var;
+        this.m0 = (MainActivity) e();
+        final int i = 0;
+        View viewInflate = layoutInflater.inflate(R.layout.fragment_playlist_catalogue, viewGroup, false);
+        int i2 = R.id.album_info_sector;
+        ConstraintLayout constraintLayout = (ConstraintLayout) uo.s(viewInflate, R.id.album_info_sector);
+        if (constraintLayout != null) {
+            i2 = R.id.app_bar_layout;
+            AppBarLayout appBarLayout = (AppBarLayout) uo.s(viewInflate, R.id.app_bar_layout);
+            if (appBarLayout != null) {
+                i2 = R.id.playlist_catalogue_recycler_view;
+                RecyclerView recyclerView = (RecyclerView) uo.s(viewInflate, R.id.playlist_catalogue_recycler_view);
+                if (recyclerView != null) {
+                    i2 = R.id.playlist_list_sort_image_view;
+                    Button button = (Button) uo.s(viewInflate, R.id.playlist_list_sort_image_view);
+                    if (button != null) {
+                        i2 = R.id.toolbar;
+                        MaterialToolbar materialToolbar = (MaterialToolbar) uo.s(viewInflate, R.id.toolbar);
+                        if (materialToolbar != null) {
+                            LinearLayout linearLayout = (LinearLayout) viewInflate;
+                            this.l0 = new rc1(linearLayout, constraintLayout, appBarLayout, recyclerView, button, materialToolbar);
+                            nc1 nc1VarX = X();
+                            e75 e75VarD = nc1VarX.d();
+                            b75 b75VarR = gh0.r(nc1VarX);
+                            bq4 bq4Var = new bq4(e75VarD, b75VarR, b11.e(nc1VarX, b75VarR));
+                            i30 i30VarA = kx3.a(dl3.class);
+                            String strB = i30VarA.b();
+                            if (strB == null) {
+                                kf2.n("Local and anonymous classes can not be ViewModels");
+                                return null;
+                            }
+                            this.n0 = (dl3) bq4Var.l(i30VarA, "androidx.lifecycle.ViewModelProvider.DefaultKey:".concat(strB));
+                            Bundle bundle2 = this.s;
+                            if (bundle2 == null) {
+                                MainActivity mainActivity = this.m0;
+                                if (mainActivity != null && (v23Var = mainActivity.T) != null) {
+                                    v23Var.o();
+                                }
+                                return linearLayout;
+                            }
+                            if (bundle2.getString("ALL") != null || bundle2.getString("DOWNLOADED") != null) {
+                                this.n0.getClass();
+                            }
+                            this.m0.o(this.l0.e);
+                            final int i3 = 1;
+                            if (this.m0.n() != null) {
+                                this.m0.n().f0(true);
+                                this.m0.n().g0();
+                            }
+                            this.l0.e.setNavigationOnClickListener(new View.OnClickListener(this) { // from class: cl3
+                                public final /* synthetic */ PlaylistCatalogueFragment o;
+
+                                {
+                                    this.o = this;
+                                }
+
+                                @Override // android.view.View.OnClickListener
+                                public final void onClick(View view) {
+                                    int i4 = i;
+                                    PlaylistCatalogueFragment playlistCatalogueFragment = this.o;
+                                    switch (i4) {
+                                        case 0:
+                                            playlistCatalogueFragment.h0(view);
+                                            playlistCatalogueFragment.m0.T.o();
+                                            break;
+                                        default:
+                                            PopupMenu popupMenu = new PopupMenu(playlistCatalogueFragment.Z(), view);
+                                            popupMenu.getMenuInflater().inflate(R.menu.sort_playlist_popup_menu, popupMenu.getMenu());
+                                            popupMenu.setOnMenuItemClickListener(new v7(7, playlistCatalogueFragment));
+                                            popupMenu.show();
+                                            break;
+                                    }
+                                }
+                            });
+                            this.l0.b.a(new u7(8, this));
+                            RecyclerView recyclerView2 = this.l0.c;
+                            Context context = recyclerView2.getContext();
+                            ut4 ut4VarC = ut4.c();
+                            if (!ut4VarC.h) {
+                                ut4VarC.b(context);
+                            }
+                            int i4 = ut4VarC.b;
+                            recyclerView2.setLayoutManager(new GridLayoutManager(i4));
+                            ut4 ut4VarC2 = ut4.c();
+                            if (!ut4VarC2.h) {
+                                ut4VarC2.b(context);
+                            }
+                            recyclerView2.i(new ek1(i4, ut4VarC2.c));
+                            recyclerView2.setHasFixedSize(true);
+                            int i5 = (int) (16.0f * recyclerView2.getResources().getDisplayMetrics().density);
+                            recyclerView2.setPaddingRelative(i5, recyclerView2.getPaddingTop(), i5, recyclerView2.getPaddingBottom());
+                            q7 q7Var = new q7(this, true);
+                            recyclerView2.setAdapter(q7Var);
+                            this.o0 = q7Var;
+                            dl3 dl3Var = this.n0;
+                            le1 le1VarV = v();
+                            k03 k03Var = dl3Var.e;
+                            if (k03Var.d() == null) {
+                                dl3Var.c.d(-1, false).e(le1VarV, new g7(k03Var, 0));
+                            }
+                            this.l0.c.setOnTouchListener(new s7(6, this));
+                            this.l0.d.setOnClickListener(new View.OnClickListener(this) { // from class: cl3
+                                public final /* synthetic */ PlaylistCatalogueFragment o;
+
+                                {
+                                    this.o = this;
+                                }
+
+                                @Override // android.view.View.OnClickListener
+                                public final void onClick(View view) {
+                                    int i6 = i3;
+                                    PlaylistCatalogueFragment playlistCatalogueFragment = this.o;
+                                    switch (i6) {
+                                        case 0:
+                                            playlistCatalogueFragment.h0(view);
+                                            playlistCatalogueFragment.m0.T.o();
+                                            break;
+                                        default:
+                                            PopupMenu popupMenu = new PopupMenu(playlistCatalogueFragment.Z(), view);
+                                            popupMenu.getMenuInflater().inflate(R.menu.sort_playlist_popup_menu, popupMenu.getMenu());
+                                            popupMenu.setOnMenuItemClickListener(new v7(7, playlistCatalogueFragment));
+                                            popupMenu.show();
+                                            break;
+                                    }
+                                }
+                            });
+                            return linearLayout;
+                        }
+                    }
+                }
+            }
+        }
+        nz2.n("Missing required view with ID: ".concat(viewInflate.getResources().getResourceName(i2)));
         return null;
     }
 
@@ -181,23 +226,23 @@ public class PlaylistCatalogueFragment extends kc1 implements ClickCallback {
     }
 
     @Override // defpackage.kc1
-    public final void T(View r3, Bundle r4) {
+    public final void T(View view, Bundle bundle) {
         this.n0.f.e(v(), new d8(17, this));
     }
 
-    public final void h0(View r2) {
-        ((InputMethodManager) this.m0.getSystemService("input_method")).hideSoftInputFromWindow(r2.getWindowToken(), 0);
+    public final void h0(View view) {
+        ((InputMethodManager) this.m0.getSystemService("input_method")).hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
     @Override // com.eddyizm.tempus.interfaces.ClickCallback
-    public final void onPlaylistClick(Bundle r4) {
-        r4.putBoolean("is_offline", false);
-        gb.x(a0()).m(R.id.playlistPageFragment, r4, null);
+    public final void onPlaylistClick(Bundle bundle) {
+        bundle.putBoolean("is_offline", false);
+        gb.x(a0()).m(R.id.playlistPageFragment, bundle, null);
         h0(a0());
     }
 
     @Override // com.eddyizm.tempus.interfaces.ClickCallback
-    public final void onPlaylistLongClick(Bundle r3) {
-        gb.x(a0()).m(R.id.playlistRowBottomSheetDialog, r3, null);
+    public final void onPlaylistLongClick(Bundle bundle) {
+        gb.x(a0()).m(R.id.playlistRowBottomSheetDialog, bundle, null);
     }
 }

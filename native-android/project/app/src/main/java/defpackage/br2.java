@@ -7,35 +7,32 @@ import android.media.MediaRouter;
 public final class br2 extends MediaRouter.VolumeCallback {
     public final vg3 a;
 
-    public br2(vg3 r1) {
-        this.a = r1;
+    public br2(vg3 vg3Var) {
+        this.a = vg3Var;
     }
 
     @Override // android.media.MediaRouter.VolumeCallback
-    public final void onVolumeSetRequest(MediaRouter.RouteInfo r1, int r2) {
+    public final void onVolumeSetRequest(MediaRouter.RouteInfo routeInfo, int i) {
         this.a.getClass();
-        yg3 r0 = vg3.m(r1);
-        if (r0 == null) goto L6;
-        r0.a.j(r2);
-        return;
+        yg3 yg3VarM = vg3.m(routeInfo);
+        if (yg3VarM != null) {
+            yg3VarM.a.j(i);
+        }
     }
 
     @Override // android.media.MediaRouter.VolumeCallback
-    public final void onVolumeUpdateRequest(MediaRouter.RouteInfo r1, int r2) {
+    public final void onVolumeUpdateRequest(MediaRouter.RouteInfo routeInfo, int i) {
+        oq2 oq2VarF;
         this.a.getClass();
-        yg3 r0 = vg3.m(r1);
-        if (r0 == null) goto L10;
-        wq2 r3 = r0.a;
-        r3.getClass();
-        yq2.b();
-        if (r2 == 0) goto L11;
-        oq2 r4 = yq2.c().f(r3);
-        if (r4 == null) goto L12;
-        r4.i(r2);
-        return;
-    L12:
-        return;
-    L11:
-        return;
+        yg3 yg3VarM = vg3.m(routeInfo);
+        if (yg3VarM != null) {
+            wq2 wq2Var = yg3VarM.a;
+            wq2Var.getClass();
+            yq2.b();
+            if (i == 0 || (oq2VarF = yq2.c().f(wq2Var)) == null) {
+                return;
+            }
+            oq2VarF.i(i);
+        }
     }
 }

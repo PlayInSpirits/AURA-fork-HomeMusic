@@ -7,17 +7,16 @@ import java.lang.reflect.Method;
 public final class u15 extends w15 {
     public final /* synthetic */ Method b;
 
-    public u15(Method r1) {
-        this.b = r1;
+    public u15(Method method) {
+        this.b = method;
     }
 
     @Override // defpackage.w15
-    public final Object a(Class r2) {
-        String r0 = mf4.b(r2);
-        if (r0 != null) goto L7;
-        Method r1 = this.b;
-        return r1.invoke(null, new Object[]{r2, Object.class});
-    L7:
-        throw new AssertionError("UnsafeAllocator is used for non-instantiable type: ".concat(r0));
+    public final Object a(Class cls) {
+        String strB = mf4.b(cls);
+        if (strB != null) {
+            throw new AssertionError("UnsafeAllocator is used for non-instantiable type: ".concat(strB));
+        }
+        return this.b.invoke(null, cls, Object.class);
     }
 }

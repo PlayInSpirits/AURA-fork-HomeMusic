@@ -16,50 +16,33 @@ public final class LyricsCache {
     private String title;
     private long updatedAt;
 
-    public /* synthetic */ LyricsCache(String r2, String r3, String r4, String r5, String r6, long r7, int r9, xj0 r10) {
-        if ((r9 & 2) == 0) goto L6;
-        r3 = null;
-    L6:
-        if ((r9 & 4) == 0) goto L9;
-        r4 = null;
-    L9:
-        if ((r9 & 8) == 0) goto L12;
-        r5 = null;
-    L12:
-        if ((r9 & 16) == 0) goto L15;
-        r6 = null;
-    L15:
-        if ((r9 & 32) == 0) goto L17;
-        r7 = System.currentTimeMillis();
-    L17:
-        this(r2, r3, r4, r5, r6, r7);
+    public /* synthetic */ LyricsCache(String str, String str2, String str3, String str4, String str5, long j, int i, xj0 xj0Var) {
+        this(str, (i & 2) != 0 ? null : str2, (i & 4) != 0 ? null : str3, (i & 8) != 0 ? null : str4, (i & 16) != 0 ? null : str5, (i & 32) != 0 ? System.currentTimeMillis() : j);
     }
 
-    public static /* synthetic */ LyricsCache copy$default(LyricsCache r0, String r1, String r2, String r3, String r4, String r5, long r6, int r8, Object r9) {
-        if ((r8 & 1) == 0) goto L6;
-        r1 = r0.songId;
-    L6:
-        if ((r8 & 2) == 0) goto L9;
-        r2 = r0.artist;
-    L9:
-        if ((r8 & 4) == 0) goto L12;
-        r3 = r0.title;
-    L12:
-        if ((r8 & 8) == 0) goto L15;
-        r4 = r0.lyrics;
-    L15:
-        if ((r8 & 16) == 0) goto L18;
-        r5 = r0.structuredLyrics;
-    L18:
-        if ((r8 & 32) == 0) goto L20;
-        r6 = r0.updatedAt;
-    L20:
-        long r10 = r6;
-        String r7 = r4;
-        String r11 = r5;
-        String r12 = r3;
-        String r13 = r1;
-        return r0.copy(r13, r2, r12, r7, r11, r10);
+    public static /* synthetic */ LyricsCache copy$default(LyricsCache lyricsCache, String str, String str2, String str3, String str4, String str5, long j, int i, Object obj) {
+        if ((i & 1) != 0) {
+            str = lyricsCache.songId;
+        }
+        if ((i & 2) != 0) {
+            str2 = lyricsCache.artist;
+        }
+        if ((i & 4) != 0) {
+            str3 = lyricsCache.title;
+        }
+        if ((i & 8) != 0) {
+            str4 = lyricsCache.lyrics;
+        }
+        if ((i & 16) != 0) {
+            str5 = lyricsCache.structuredLyrics;
+        }
+        if ((i & 32) != 0) {
+            j = lyricsCache.updatedAt;
+        }
+        long j2 = j;
+        String str6 = str5;
+        String str7 = str3;
+        return lyricsCache.copy(str, str2, str7, str4, str6, j2);
     }
 
     public final String component1() {
@@ -86,38 +69,20 @@ public final class LyricsCache {
         return this.updatedAt;
     }
 
-    public final LyricsCache copy(String r1, String r2, String r3, String r4, String r5, long r6) {
-        r1.getClass();
-        return new LyricsCache(r1, r2, r3, r4, r5, r6);
+    public final LyricsCache copy(String str, String str2, String str3, String str4, String str5, long j) {
+        str.getClass();
+        return new LyricsCache(str, str2, str3, str4, str5, j);
     }
 
-    public boolean equals(Object r6) {
-        if (this != r6) goto L6;
-        return true;
-    L6:
-        if ((r6 instanceof LyricsCache) == true) goto L8;
-        return false;
-    L8:
-        LyricsCache r7 = (LyricsCache) r6;
-        if (h12.c(this.songId, r7.songId) == true) goto L12;
-        return false;
-    L12:
-        if (h12.c(this.artist, r7.artist) == true) goto L15;
-        return false;
-    L15:
-        if (h12.c(this.title, r7.title) == true) goto L18;
-        return false;
-    L18:
-        if (h12.c(this.lyrics, r7.lyrics) == true) goto L21;
-        return false;
-    L21:
-        if (h12.c(this.structuredLyrics, r7.structuredLyrics) == true) goto L24;
-        return false;
-    L24:
-        if (this.updatedAt == r7.updatedAt) goto L26;
-        return false;
-    L26:
-        return true;
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof LyricsCache)) {
+            return false;
+        }
+        LyricsCache lyricsCache = (LyricsCache) obj;
+        return h12.c(this.songId, lyricsCache.songId) && h12.c(this.artist, lyricsCache.artist) && h12.c(this.title, lyricsCache.title) && h12.c(this.lyrics, lyricsCache.lyrics) && h12.c(this.structuredLyrics, lyricsCache.structuredLyrics) && this.updatedAt == lyricsCache.updatedAt;
     }
 
     public final String getArtist() {
@@ -145,127 +110,95 @@ public final class LyricsCache {
     }
 
     public int hashCode() {
-        int r0 = this.songId.hashCode() * 31;
-        String r1 = this.artist;
-        int r2 = 0;
-        if (r1 != null) goto L5;
-        int r3 = 0;
-    L6:
-        int r4 = (r0 + r3) * 31;
-        String r5 = this.title;
-        if (r5 != null) goto L9;
-        int r6 = 0;
-    L10:
-        int r7 = (r4 + r6) * 31;
-        String r8 = this.lyrics;
-        if (r8 != null) goto L13;
-        int r9 = 0;
-    L14:
-        int r10 = (r7 + r9) * 31;
-        String r11 = this.structuredLyrics;
-        if (r11 == null) goto L19;
-        r2 = r11.hashCode();
-    L19:
-        return Long.hashCode(this.updatedAt) + ((r10 + r2) * 31);
-    L13:
-        r9 = r8.hashCode();
-        goto L14
-    L9:
-        r6 = r5.hashCode();
-        goto L10
-    L5:
-        r3 = r1.hashCode();
-        goto L6
+        int iHashCode = this.songId.hashCode() * 31;
+        String str = this.artist;
+        int iHashCode2 = (iHashCode + (str == null ? 0 : str.hashCode())) * 31;
+        String str2 = this.title;
+        int iHashCode3 = (iHashCode2 + (str2 == null ? 0 : str2.hashCode())) * 31;
+        String str3 = this.lyrics;
+        int iHashCode4 = (iHashCode3 + (str3 == null ? 0 : str3.hashCode())) * 31;
+        String str4 = this.structuredLyrics;
+        return Long.hashCode(this.updatedAt) + ((iHashCode4 + (str4 != null ? str4.hashCode() : 0)) * 31);
     }
 
-    public final void setArtist(String r1) {
-        this.artist = r1;
+    public final void setArtist(String str) {
+        this.artist = str;
     }
 
-    public final void setLyrics(String r1) {
-        this.lyrics = r1;
+    public final void setLyrics(String str) {
+        this.lyrics = str;
     }
 
-    public final void setSongId(String r1) {
-        r1.getClass();
-        this.songId = r1;
+    public final void setSongId(String str) {
+        str.getClass();
+        this.songId = str;
     }
 
-    public final void setStructuredLyrics(String r1) {
-        this.structuredLyrics = r1;
+    public final void setStructuredLyrics(String str) {
+        this.structuredLyrics = str;
     }
 
-    public final void setTitle(String r1) {
-        this.title = r1;
+    public final void setTitle(String str) {
+        this.title = str;
     }
 
-    public final void setUpdatedAt(long r1) {
-        this.updatedAt = r1;
+    public final void setUpdatedAt(long j) {
+        this.updatedAt = j;
     }
 
     public String toString() {
-        String r0 = this.songId;
-        String r1 = this.artist;
-        String r2 = this.title;
-        String r3 = this.lyrics;
-        String r4 = this.structuredLyrics;
-        long r5 = this.updatedAt;
-        StringBuilder r9 = b11.u("LyricsCache(songId=", r0, ", artist=", r1, ", title=");
-        f34.n(r9, r2, ", lyrics=", r3, ", structuredLyrics=");
-        r9.append(r4);
-        r9.append(", updatedAt=");
-        r9.append(r5);
-        r9.append(")");
-        return r9.toString();
+        String str = this.songId;
+        String str2 = this.artist;
+        String str3 = this.title;
+        String str4 = this.lyrics;
+        String str5 = this.structuredLyrics;
+        long j = this.updatedAt;
+        StringBuilder sbU = b11.u("LyricsCache(songId=", str, ", artist=", str2, ", title=");
+        f34.n(sbU, str3, ", lyrics=", str4, ", structuredLyrics=");
+        sbU.append(str5);
+        sbU.append(", updatedAt=");
+        sbU.append(j);
+        sbU.append(")");
+        return sbU.toString();
     }
 
-    public LyricsCache(String r11, String r12) {
-        r11.getClass();
-        String r3 = null;
-        String r4 = null;
-        String r5 = null;
-        long r6 = 0;
-        this(r11, r12, r3, r4, r5, r6, 60, null);
+    /* JADX WARN: 'this' call moved to the top of the method (can break code semantics) */
+    public LyricsCache(String str, String str2) {
+        this(str, str2, null, null, null, 0L, 60, null);
+        str.getClass();
     }
 
-    public LyricsCache(String r11, String r12, String r13) {
-        r11.getClass();
-        String r4 = null;
-        String r5 = null;
-        long r6 = 0;
-        this(r11, r12, r13, r4, r5, r6, 56, null);
+    /* JADX WARN: 'this' call moved to the top of the method (can break code semantics) */
+    public LyricsCache(String str, String str2, String str3) {
+        this(str, str2, str3, null, null, 0L, 56, null);
+        str.getClass();
     }
 
-    public LyricsCache(String r11, String r12, String r13, String r14) {
-        r11.getClass();
-        String r5 = null;
-        long r6 = 0;
-        this(r11, r12, r13, r14, r5, r6, 48, null);
+    /* JADX WARN: 'this' call moved to the top of the method (can break code semantics) */
+    public LyricsCache(String str, String str2, String str3, String str4) {
+        this(str, str2, str3, str4, null, 0L, 48, null);
+        str.getClass();
     }
 
-    public LyricsCache(String r11, String r12, String r13, String r14, String r15) {
-        r11.getClass();
-        long r6 = 0;
-        this(r11, r12, r13, r14, r15, r6, 32, null);
+    /* JADX WARN: 'this' call moved to the top of the method (can break code semantics) */
+    public LyricsCache(String str, String str2, String str3, String str4, String str5) {
+        this(str, str2, str3, str4, str5, 0L, 32, null);
+        str.getClass();
     }
 
-    public LyricsCache(String r1, String r2, String r3, String r4, String r5, long r6) {
-        r1.getClass();
-        this.songId = r1;
-        this.artist = r2;
-        this.title = r3;
-        this.lyrics = r4;
-        this.structuredLyrics = r5;
-        this.updatedAt = r6;
+    public LyricsCache(String str, String str2, String str3, String str4, String str5, long j) {
+        str.getClass();
+        this.songId = str;
+        this.artist = str2;
+        this.title = str3;
+        this.lyrics = str4;
+        this.structuredLyrics = str5;
+        this.updatedAt = j;
     }
 
-    public LyricsCache(String r11) {
-        r11.getClass();
-        String r2 = null;
-        String r3 = null;
-        String r4 = null;
-        String r5 = null;
-        long r6 = 0;
-        this(r11, r2, r3, r4, r5, r6, 62, null);
+    /* JADX WARN: 'this' call moved to the top of the method (can break code semantics) */
+    public LyricsCache(String str) {
+        this(str, null, null, null, null, 0L, 62, null);
+        str.getClass();
     }
 }

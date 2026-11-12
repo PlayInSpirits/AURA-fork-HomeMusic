@@ -10,18 +10,18 @@ public final class hi implements Collection, x32 {
     public final Object[] n;
     public final boolean o;
 
-    public hi(Object[] r1, boolean r2) {
-        this.n = r1;
-        this.o = r2;
+    public hi(Object[] objArr, boolean z) {
+        this.n = objArr;
+        this.o = z;
     }
 
     @Override // java.util.Collection
-    public final boolean add(Object r1) {
+    public final boolean add(Object obj) {
         throw new UnsupportedOperationException("Operation is not supported for read-only collection");
     }
 
     @Override // java.util.Collection
-    public final boolean addAll(Collection r1) {
+    public final boolean addAll(Collection collection) {
         throw new UnsupportedOperationException("Operation is not supported for read-only collection");
     }
 
@@ -31,36 +31,29 @@ public final class hi implements Collection, x32 {
     }
 
     @Override // java.util.Collection
-    public final boolean contains(Object r1) {
-        if (ti.m0(this.n, r1) < 0) goto L6;
-        return true;
-    L6:
-        return false;
+    public final boolean contains(Object obj) {
+        return ti.m0(this.n, obj) >= 0;
     }
 
     @Override // java.util.Collection
-    public final boolean containsAll(Collection r3) {
-        r3.getClass();
-        Collection r4 = r3;
-        if (r4.isEmpty() == true) goto L13;
-        Iterator r5 = r4.iterator();
-    L7:
-        if (r5.hasNext() == false) goto L18;
-        Object r0 = r5.next();
-        if (ti.m0(this.n, r0) >= 0) goto L7;
-        return false;
-    L18:
-        return true;
-    L13:
+    public final boolean containsAll(Collection collection) {
+        collection.getClass();
+        Collection collection2 = collection;
+        if (collection2.isEmpty()) {
+            return true;
+        }
+        Iterator it = collection2.iterator();
+        while (it.hasNext()) {
+            if (ti.m0(this.n, it.next()) < 0) {
+                return false;
+            }
+        }
         return true;
     }
 
     @Override // java.util.Collection
     public final boolean isEmpty() {
-        if (this.n.length != 0) goto L6;
-        return true;
-    L6:
-        return false;
+        return this.n.length == 0;
     }
 
     @Override // java.util.Collection, java.lang.Iterable
@@ -69,17 +62,17 @@ public final class hi implements Collection, x32 {
     }
 
     @Override // java.util.Collection
-    public final boolean remove(Object r1) {
+    public final boolean remove(Object obj) {
         throw new UnsupportedOperationException("Operation is not supported for read-only collection");
     }
 
     @Override // java.util.Collection
-    public final boolean removeAll(Collection r1) {
+    public final boolean removeAll(Collection collection) {
         throw new UnsupportedOperationException("Operation is not supported for read-only collection");
     }
 
     @Override // java.util.Collection
-    public final boolean retainAll(Collection r1) {
+    public final boolean retainAll(Collection collection) {
         throw new UnsupportedOperationException("Operation is not supported for read-only collection");
     }
 
@@ -90,20 +83,18 @@ public final class hi implements Collection, x32 {
 
     @Override // java.util.Collection
     public final Object[] toArray() {
-        Object[] r0 = this.n;
-        if (this.o == true) goto L5;
-    L7:
-        Object[] r2 = Arrays.copyOf(r0, r0.length, Object[].class);
-        r2.getClass();
-        return r2;
-    L5:
-        if (r0.getClass().equals(Object[].class) == false) goto L7;
-        return r0;
+        Object[] objArr = this.n;
+        if (this.o && objArr.getClass().equals(Object[].class)) {
+            return objArr;
+        }
+        Object[] objArrCopyOf = Arrays.copyOf(objArr, objArr.length, Object[].class);
+        objArrCopyOf.getClass();
+        return objArrCopyOf;
     }
 
     @Override // java.util.Collection
-    public final Object[] toArray(Object[] r1) {
-        r1.getClass();
-        return zz1.J(this, r1);
+    public final Object[] toArray(Object[] objArr) {
+        objArr.getClass();
+        return zz1.J(this, objArr);
     }
 }

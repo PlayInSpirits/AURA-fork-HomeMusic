@@ -10,41 +10,25 @@ public final class vv4 {
     public final int c;
     public final int d;
 
-    public vv4(int r1, int r2, int r3, byte[] r4) {
-        this.a = r1;
-        this.b = r4;
-        this.c = r2;
-        this.d = r3;
+    public vv4(int i, int i2, int i3, byte[] bArr) {
+        this.a = i;
+        this.b = bArr;
+        this.c = i2;
+        this.d = i3;
     }
 
-    public final boolean equals(Object r3) {
-        if (this == r3) goto L20;
-        if (r3 != null) goto L6;
-        return false;
-    L6:
-        if (vv4.class != r3.getClass()) goto L25;
-        vv4 r4 = (vv4) r3;
-        if (this.a == r4.a) goto L11;
-        return false;
-    L11:
-        if (this.c == r4.c) goto L13;
-        return false;
-    L13:
-        if (this.d == r4.d) goto L15;
-        return false;
-    L15:
-        if (Arrays.equals(this.b, r4.b) == false) goto L24;
-        return true;
-    L24:
-        return false;
-    L25:
-        return false;
-    L20:
-        return true;
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || vv4.class != obj.getClass()) {
+            return false;
+        }
+        vv4 vv4Var = (vv4) obj;
+        return this.a == vv4Var.a && this.c == vv4Var.c && this.d == vv4Var.d && Arrays.equals(this.b, vv4Var.b);
     }
 
     public final int hashCode() {
-        int r0 = this.a * 31;
-        return ((((Arrays.hashCode(this.b) + r0) * 31) + this.c) * 31) + this.d;
+        return ((((Arrays.hashCode(this.b) + (this.a * 31)) * 31) + this.c) * 31) + this.d;
     }
 }

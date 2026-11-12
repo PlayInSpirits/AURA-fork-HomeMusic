@@ -5,7 +5,7 @@ package defpackage;
 public final class dc3 {
     public final lm0 a;
 
-    public dc3(lm0 r1) {
-        this.a = r1;
+    public dc3(lm0 lm0Var) {
+        this.a = lm0Var;
     }
 }

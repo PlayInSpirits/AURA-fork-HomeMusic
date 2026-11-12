@@ -12,14 +12,8 @@ public final enum xz4 extends zz4 {
     }
 
     @Override // defpackage.ro3
-    public final boolean apply(Object r1) {
-        TypeToken r2 = (TypeToken) r1;
-        if ((TypeToken.access$500(r2) instanceof TypeVariable) == false) goto L5;
-        return false;
-    L5:
-        if ((TypeToken.access$500(r2) instanceof WildcardType) == true) goto L10;
-        return true;
-    L10:
-        return false;
+    public final boolean apply(Object obj) {
+        TypeToken typeToken = (TypeToken) obj;
+        return ((typeToken.runtimeType instanceof TypeVariable) || (typeToken.runtimeType instanceof WildcardType)) ? false : true;
     }
 }

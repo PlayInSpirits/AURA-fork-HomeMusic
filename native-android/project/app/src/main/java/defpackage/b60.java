@@ -11,58 +11,59 @@ public final class b60 extends ep4 implements wf1 {
     public final /* synthetic */ AtomicInteger r;
     public final /* synthetic */ aw s;
 
-    public b60(p81[] r1, int r2, AtomicInteger r3, aw r4, vd0 r5) {
-        this.p = r1;
-        this.q = r2;
-        this.r = r3;
-        this.s = r4;
-        super(2, r5);
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public b60(p81[] p81VarArr, int i, AtomicInteger atomicInteger, aw awVar, vd0 vd0Var) {
+        super(2, vd0Var);
+        this.p = p81VarArr;
+        this.q = i;
+        this.r = atomicInteger;
+        this.s = awVar;
     }
 
     @Override // defpackage.jp
-    public final vd0 create(Object r7, vd0 r8) {
-        AtomicInteger r3 = this.r;
-        aw r4 = this.s;
-        return new b60(this.p, this.q, r3, r4, r8);
+    public final vd0 create(Object obj, vd0 vd0Var) {
+        return new b60(this.p, this.q, this.r, this.s, vd0Var);
     }
 
     @Override // defpackage.wf1
-    public final Object invoke(Object r1, Object r2) {
-        return ((b60) create((we0) r1, (vd0) r2)).invokeSuspend(j15.a);
+    public final Object invoke(Object obj, Object obj2) {
+        return ((b60) create((we0) obj, (vd0) obj2)).invokeSuspend(j15.a);
     }
 
     @Override // defpackage.jp
-    public final Object invokeSuspend(Object r7) {
-        int r0 = this.o;
-        AtomicInteger r2 = this.r;
-        aw r3 = this.s;
-        if (r0 == 0) goto L11;
-        if (r0 != 1) goto L9;
-        kb4.X(r7);     // Catch: Throwable -> L7
-    L16:
-        if (r2.decrementAndGet() != 0) goto L20;
-        r3.j(null);
-    L20:
-        return j15.a;
-    L9:
-        kf2.o("call to 'resume' before 'invoke' with coroutine");
-        return null;
-    L11:
-        kb4.X(r7);
-        p81[] r8 = this.p;     // Catch: Throwable -> L7
-        int r1 = this.q;     // Catch: Throwable -> L7
-        p81 r9 = r8[r1];     // Catch: Throwable -> L7
-        a60 r5 = new a60(r3, r1);     // Catch: Throwable -> L7
-        this.o = 1;     // Catch: Throwable -> L7
-        Object r6 = r9.a(r5, this);     // Catch: Throwable -> L7
-        xe0 r10 = xe0.n;
-        if (r6 != r10) goto L16;
-        return r10;
-    L7:
-        th = move-exception;
-        if (r2.decrementAndGet() != 0) goto L24;
-        r3.j(null);
-    L24:
-        throw th;
+    public final Object invokeSuspend(Object obj) {
+        int i = this.o;
+        AtomicInteger atomicInteger = this.r;
+        aw awVar = this.s;
+        try {
+            if (i == 0) {
+                kb4.X(obj);
+                p81[] p81VarArr = this.p;
+                int i2 = this.q;
+                p81 p81Var = p81VarArr[i2];
+                a60 a60Var = new a60(awVar, i2);
+                this.o = 1;
+                Object objA = p81Var.a(a60Var, this);
+                xe0 xe0Var = xe0.n;
+                if (objA == xe0Var) {
+                    return xe0Var;
+                }
+            } else {
+                if (i != 1) {
+                    kf2.o("call to 'resume' before 'invoke' with coroutine");
+                    return null;
+                }
+                kb4.X(obj);
+            }
+            if (atomicInteger.decrementAndGet() == 0) {
+                awVar.j(null);
+            }
+            return j15.a;
+        } catch (Throwable th) {
+            if (atomicInteger.decrementAndGet() == 0) {
+                awVar.j(null);
+            }
+            throw th;
+        }
     }
 }

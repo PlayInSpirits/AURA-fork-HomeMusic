@@ -12,59 +12,33 @@ public final class qw4 extends p80 {
     public kr3 n;
     public int o;
 
-    public qw4(gn2 r3, kx r4, jr3 r5) {
-        r3.getClass();
-        this.k = r3;
-        this.l = r5;
+    public qw4(gn2 gn2Var, kx kxVar, jr3 jr3Var) {
+        int i;
+        gn2Var.getClass();
+        this.k = gn2Var;
+        this.l = jr3Var;
         this.m = -9223372036854775807L;
         this.o = 1;
-        Bundle r6 = r3.d.I;
-        bn2 r7 = r3.b;
-        String r8 = null;
-        if (r7 == null) goto L5;
-        Uri r9 = r7.a;
-    L6:
-        if (r9 == null) goto L8;
-        String r0 = r9.getScheme();
-    L10:
-        if (h12.c(r0, "content") == true) goto L23;
-        if (r9 == null) goto L14;
-        r8 = r9.getScheme();
-    L14:
-        if (h12.c(r8, "file") == true) goto L27;
-        if (r6 != null) goto L18;
-        return;
-    L18:
-        if (r6.containsKey("duration") == false) goto L25;
-        int r10 = r6.getInt("duration");
-        if (r10 <= 0) goto L26;
-        this.m = f35.Q(((long) r10) * 1000);
-        return;
-    L26:
-        return;
-    L25:
-        return;
-    L27:
-        return;
-    L23:
-        return;
-    L8:
-        r0 = null;
-        goto L10
-    L5:
-        r9 = null;
-        goto L6
+        Bundle bundle = gn2Var.d.I;
+        bn2 bn2Var = gn2Var.b;
+        Uri uri = bn2Var != null ? bn2Var.a : null;
+        if (h12.c(uri != null ? uri.getScheme() : null, "content")) {
+            return;
+        }
+        if (!h12.c(uri != null ? uri.getScheme() : null, "file") && bundle != null && bundle.containsKey("duration") && (i = bundle.getInt("duration")) > 0) {
+            this.m = f35.Q(((long) i) * 1000);
+        }
     }
 
     @Override // defpackage.bq
-    public final no2 b(mt2 r7, n9 r8, long r9) {
-        r8.getClass();
-        kr3 r3 = this.n;
-        if (r3 != null) goto L5;
+    public final no2 b(mt2 mt2Var, n9 n9Var, long j) {
+        n9Var.getClass();
+        kr3 kr3Var = this.n;
+        if (kr3Var != null) {
+            return new pw4(this, kr3Var.b(mt2Var, n9Var, j), kr3Var, mt2Var, n9Var);
+        }
         kf2.o("Source not ready");
         return null;
-    L5:
-        return new pw4(this, r3.b(r7, r8, r9), r3, r7, r8);
     }
 
     @Override // defpackage.bq
@@ -73,24 +47,24 @@ public final class qw4 extends p80 {
     }
 
     @Override // defpackage.bq
-    public final void l(rw4 r2) {
-        this.j = r2;
+    public final void l(rw4 rw4Var) {
+        this.j = rw4Var;
         this.i = f35.p(null);
-        kr3 r3 = this.l.f(this.k);
-        this.n = r3;
-        x(0, r3);
+        kr3 kr3VarD = this.l.d(this.k);
+        this.n = kr3VarD;
+        x(0, kr3VarD);
     }
 
     @Override // defpackage.bq
-    public final void n(no2 r2) {
-        r2.getClass();
-        pw4 r3 = (pw4) r2;
-        r3.o.n(r3.n);
-        Integer r1 = r3.u;
-        if (r1 == null) goto L5;
-        r3.y.y(Integer.valueOf(r1.intValue()));
-    L5:
-        r3.u = null;
+    public final void n(no2 no2Var) {
+        no2Var.getClass();
+        pw4 pw4Var = (pw4) no2Var;
+        pw4Var.o.n(pw4Var.n);
+        Integer num = pw4Var.u;
+        if (num != null) {
+            pw4Var.y.y(Integer.valueOf(num.intValue()));
+        }
+        pw4Var.u = null;
     }
 
     @Override // defpackage.p80, defpackage.bq
@@ -100,26 +74,21 @@ public final class qw4 extends p80 {
     }
 
     @Override // defpackage.p80
-    public final mt2 t(Object r1, mt2 r2) {
-        Integer r3 = (Integer) r1;
-        r2.getClass();
-        return r2;
+    public final mt2 t(Object obj, mt2 mt2Var) {
+        mt2Var.getClass();
+        return mt2Var;
     }
 
     @Override // defpackage.p80
-    public final void w(Object r3, bq r4, cu4 r5) {
-        Integer r6 = (Integer) r3;
-        r5.getClass();
-        if (r6 != null) goto L6;
-        return;
-    L6:
-        if (r6.intValue() == 0) goto L8;
-        return;
-    L8:
-        long r0 = this.m;
-        if (r0 == (-9223372036854775807L)) goto L11;
-        r5 = new sv2(1, r0, r5);
-    L11:
-        m(r5);
+    public final void w(Object obj, bq bqVar, cu4 cu4Var) {
+        Integer num = (Integer) obj;
+        cu4Var.getClass();
+        if (num != null && num.intValue() == 0) {
+            long j = this.m;
+            if (j != -9223372036854775807L) {
+                cu4Var = new sv2(1, j, cu4Var);
+            }
+            m(cu4Var);
+        }
     }
 }

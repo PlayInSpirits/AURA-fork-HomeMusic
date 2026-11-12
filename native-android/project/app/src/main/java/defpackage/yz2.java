@@ -1,6 +1,7 @@
 package defpackage;
 
 import android.os.Bundle;
+import android.view.View;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import com.eddyizm.tempus.subsonic.models.Child;
 import com.eddyizm.tempus.ui.fragment.DirectoryFragment;
@@ -12,32 +13,117 @@ public final class yz2 extends cx3 {
     public final z12 u;
     public final /* synthetic */ zd0 v;
 
-    public yz2(zd0 r4, z12 r5) {
-        this.v = r4;
-        ConstraintLayout r6 = r5.a;
-        super(r6);
-        this.u = r5;
-        final int r1 = 1;
-        r5.e.setSelected(true);
-        final int r2 = 0;
-        r6.setOnClickListener(new xz2(this, r2));
-        r6.setOnLongClickListener(new q6(13, this));
-        r5.c.setOnClickListener(new xz2(this, r1));
-        final int r0 = 2;
-        r5.d.setOnClickListener(new xz2(this, r0));
+    /* JADX WARN: Illegal instructions before constructor call */
+    public yz2(zd0 zd0Var, z12 z12Var) {
+        this.v = zd0Var;
+        ConstraintLayout constraintLayout = z12Var.a;
+        super(constraintLayout);
+        this.u = z12Var;
+        final int i = 1;
+        z12Var.e.setSelected(true);
+        final int i2 = 0;
+        constraintLayout.setOnClickListener(new View.OnClickListener(this) { // from class: xz2
+            public final /* synthetic */ yz2 o;
+
+            {
+                this.o = this;
+            }
+
+            @Override // android.view.View.OnClickListener
+            public final void onClick(View view) {
+                int i3 = i2;
+                yz2 yz2Var = this.o;
+                switch (i3) {
+                    case 0:
+                        yz2Var.s();
+                        break;
+                    case 1:
+                        yz2Var.s();
+                        break;
+                    default:
+                        zd0 zd0Var2 = yz2Var.v;
+                        if (((Child) zd0Var2.r.get(yz2Var.c())).isDir()) {
+                            Bundle bundle = new Bundle();
+                            bundle.putString("MUSIC_DIRECTORY_ID", ((Child) zd0Var2.r.get(yz2Var.c())).getId());
+                            ((DirectoryFragment) zd0Var2.s).onMusicDirectoryPlay(bundle);
+                        }
+                        break;
+                }
+            }
+        });
+        constraintLayout.setOnLongClickListener(new q6(13, this));
+        z12Var.c.setOnClickListener(new View.OnClickListener(this) { // from class: xz2
+            public final /* synthetic */ yz2 o;
+
+            {
+                this.o = this;
+            }
+
+            @Override // android.view.View.OnClickListener
+            public final void onClick(View view) {
+                int i3 = i;
+                yz2 yz2Var = this.o;
+                switch (i3) {
+                    case 0:
+                        yz2Var.s();
+                        break;
+                    case 1:
+                        yz2Var.s();
+                        break;
+                    default:
+                        zd0 zd0Var2 = yz2Var.v;
+                        if (((Child) zd0Var2.r.get(yz2Var.c())).isDir()) {
+                            Bundle bundle = new Bundle();
+                            bundle.putString("MUSIC_DIRECTORY_ID", ((Child) zd0Var2.r.get(yz2Var.c())).getId());
+                            ((DirectoryFragment) zd0Var2.s).onMusicDirectoryPlay(bundle);
+                        }
+                        break;
+                }
+            }
+        });
+        final int i3 = 2;
+        z12Var.d.setOnClickListener(new View.OnClickListener(this) { // from class: xz2
+            public final /* synthetic */ yz2 o;
+
+            {
+                this.o = this;
+            }
+
+            @Override // android.view.View.OnClickListener
+            public final void onClick(View view) {
+                int i4 = i3;
+                yz2 yz2Var = this.o;
+                switch (i4) {
+                    case 0:
+                        yz2Var.s();
+                        break;
+                    case 1:
+                        yz2Var.s();
+                        break;
+                    default:
+                        zd0 zd0Var2 = yz2Var.v;
+                        if (((Child) zd0Var2.r.get(yz2Var.c())).isDir()) {
+                            Bundle bundle = new Bundle();
+                            bundle.putString("MUSIC_DIRECTORY_ID", ((Child) zd0Var2.r.get(yz2Var.c())).getId());
+                            ((DirectoryFragment) zd0Var2.s).onMusicDirectoryPlay(bundle);
+                        }
+                        break;
+                }
+            }
+        });
     }
 
     public final void s() {
-        Bundle r0 = new Bundle();
-        zd0 r1 = this.v;
-        DirectoryFragment r2 = (DirectoryFragment) r1.s;
-        if (((Child) r1.r.get(c())).isDir() == false) goto L6;
-        r0.putString("MUSIC_DIRECTORY_ID", ((Child) r1.r.get(c())).getId());
-        r2.onMusicDirectoryClick(r0);
-        return;
-    L6:
-        r0.putParcelableArrayList("TRACKS_OBJECT", new ArrayList(r1.r));
-        r0.putInt("ITEM_POSITION", c());
-        r2.onMediaClick(r0);
+        Bundle bundle = new Bundle();
+        zd0 zd0Var = this.v;
+        DirectoryFragment directoryFragment = (DirectoryFragment) zd0Var.s;
+        if (((Child) zd0Var.r.get(c())).isDir()) {
+            bundle.putString("MUSIC_DIRECTORY_ID", ((Child) zd0Var.r.get(c())).getId());
+            directoryFragment.onMusicDirectoryClick(bundle);
+        } else {
+            bundle.putParcelableArrayList("TRACKS_OBJECT", new ArrayList<>(zd0Var.r));
+            bundle.putInt("ITEM_POSITION", c());
+            directoryFragment.onMediaClick(bundle);
+        }
     }
 }

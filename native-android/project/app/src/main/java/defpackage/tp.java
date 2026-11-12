@@ -11,62 +11,45 @@ public final /* synthetic */ class tp implements Callable {
     public final /* synthetic */ int a;
     public final /* synthetic */ Object b;
 
-    public /* synthetic */ tp(int r1, Object r2) {
-        this.a = r1;
-        this.b = r2;
+    public /* synthetic */ tp(int i, Object obj) {
+        this.a = i;
+        this.b = obj;
     }
 
     @Override // java.util.concurrent.Callable
     public final Object call() {
-        int r0 = this.a;
-        int r1 = 0;
-        Object r7 = this.b;
-        switch(r0) {
-            case 0: goto L16;
-            case 1: goto L6;
-            default: goto L4;
-        };
-    L4:
-        boolean r2 = LanReceiverService.y;
-        return ((gf1) r7).invoke();
-    L6:
-        WorkDatabase r8 = ((rv1) r7).a;
-        Long r3 = r8.w().l("next_alarm_manager_id");
-        if (r3 == null) goto L9;
-        int r4 = (int) r3.longValue();
-    L11:
-        if (r4 == Integer.MAX_VALUE) goto L14;
-        r1 = r4 + 1;
-    L14:
-        r8.w().n(new fp3("next_alarm_manager_id", Long.valueOf(r1)));
-        return Integer.valueOf(r4);
-    L9:
-        r4 = 0;
-        goto L11
-    L16:
-        ArrayList r9 = (ArrayList) r7;
-        ArrayList r5 = new ArrayList();
-        int r6 = r9.size();
-    L17:
-        if (r1 >= r6) goto L24;
-        Object r10 = r9.get(r1);
-        r1 = r1 + 1;
-        kd3 r11 = (kd3) r10;
-        int r12 = ((Number) r11.n).intValue();
-        Object r13 = r11.o;
-        r13.getClass();
-        gn2 r14 = (gn2) r13;
-        gn2 r15 = gi1.J(r14);
-        if (h12.c(r15.f.a, r14.f.a) == true) goto L21;
-        kd3 r16 = new kd3(Integer.valueOf(r12), r15);
-    L22:
-        if (r16 == null) goto L17;
-        r5.add(r16);
-        goto L17
-    L21:
-        r16 = null;
-        goto L22
-    L24:
-        return r5;
+        int i = this.a;
+        int i2 = 0;
+        Object obj = this.b;
+        switch (i) {
+            case 0:
+                ArrayList arrayList = (ArrayList) obj;
+                ArrayList arrayList2 = new ArrayList();
+                int size = arrayList.size();
+                while (i2 < size) {
+                    Object obj2 = arrayList.get(i2);
+                    i2++;
+                    kd3 kd3Var = (kd3) obj2;
+                    int iIntValue = ((Number) kd3Var.n).intValue();
+                    Object obj3 = kd3Var.o;
+                    obj3.getClass();
+                    gn2 gn2Var = (gn2) obj3;
+                    gn2 gn2VarJ = gi1.J(gn2Var);
+                    kd3 kd3Var2 = !h12.c(gn2VarJ.f.a, gn2Var.f.a) ? new kd3(Integer.valueOf(iIntValue), gn2VarJ) : null;
+                    if (kd3Var2 != null) {
+                        arrayList2.add(kd3Var2);
+                    }
+                }
+                return arrayList2;
+            case 1:
+                WorkDatabase workDatabase = ((rv1) obj).a;
+                Long l = workDatabase.w().l("next_alarm_manager_id");
+                int iLongValue = l != null ? (int) l.longValue() : 0;
+                workDatabase.w().n(new fp3("next_alarm_manager_id", Long.valueOf(iLongValue != Integer.MAX_VALUE ? iLongValue + 1 : 0)));
+                return Integer.valueOf(iLongValue);
+            default:
+                boolean z = LanReceiverService.y;
+                return ((gf1) obj).invoke();
+        }
     }
 }

@@ -10,14 +10,14 @@ public final class tw3 {
     public int b;
     public Set c;
 
-    public final sw3 a(int r2) {
-        SparseArray r1 = this.a;
-        sw3 r0 = (sw3) r1.get(r2);
-        if (r0 != null) goto L6;
-        sw3 r3 = new sw3();
-        r1.put(r2, r3);
-        return r3;
-    L6:
-        return r0;
+    public final sw3 a(int i) {
+        SparseArray sparseArray = this.a;
+        sw3 sw3Var = (sw3) sparseArray.get(i);
+        if (sw3Var != null) {
+            return sw3Var;
+        }
+        sw3 sw3Var2 = new sw3();
+        sparseArray.put(i, sw3Var2);
+        return sw3Var2;
     }
 }

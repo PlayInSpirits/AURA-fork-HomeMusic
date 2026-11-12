@@ -20,94 +20,39 @@ public final class f45 extends d45 {
     public final float y;
     public final float z;
 
-    public f45(String r1, List r2, int r3, uo r4, float r5, uo r6, float r7, float r8, int r9, int r10, float r11, float r12, float r13, float r14) {
-        this.n = r1;
-        this.o = r2;
-        this.p = r3;
-        this.q = r4;
-        this.r = r5;
-        this.s = r6;
-        this.t = r7;
-        this.u = r8;
-        this.v = r9;
-        this.w = r10;
-        this.x = r11;
-        this.y = r12;
-        this.z = r13;
-        this.A = r14;
+    public f45(String str, List list, int i, uo uoVar, float f, uo uoVar2, float f2, float f3, int i2, int i3, float f4, float f5, float f6, float f7) {
+        this.n = str;
+        this.o = list;
+        this.p = i;
+        this.q = uoVar;
+        this.r = f;
+        this.s = uoVar2;
+        this.t = f2;
+        this.u = f3;
+        this.v = i2;
+        this.w = i3;
+        this.x = f4;
+        this.y = f5;
+        this.z = f6;
+        this.A = f7;
     }
 
-    public final boolean equals(Object r3) {
-        if (this == r3) goto L44;
-        if (r3 != null) goto L6;
-        return false;
-    L6:
-        if (f45.class != r3.getClass()) goto L55;
-        f45 r4 = (f45) r3;
-        if (this.n.equals(r4.n) == true) goto L12;
-        return false;
-    L12:
-        if (h12.c(this.q, r4.q) == true) goto L15;
-        return false;
-    L15:
-        if (this.r == r4.r) goto L17;
-        return false;
-    L17:
-        if (h12.c(this.s, r4.s) == true) goto L20;
-        return false;
-    L20:
-        if (this.t == r4.t) goto L22;
-        return false;
-    L22:
-        if (this.u == r4.u) goto L24;
-        return false;
-    L24:
-        if (this.v == r4.v) goto L26;
-        return false;
-    L26:
-        if (this.w == r4.w) goto L28;
-        return false;
-    L28:
-        if (this.x == r4.x) goto L30;
-        return false;
-    L30:
-        if (this.y == r4.y) goto L32;
-        return false;
-    L32:
-        if (this.z == r4.z) goto L34;
-        return false;
-    L34:
-        if (this.A == r4.A) goto L36;
-        return false;
-    L36:
-        if (this.p == r4.p) goto L38;
-        return false;
-    L38:
-        if (h12.c(this.o, r4.o) == false) goto L59;
-        return true;
-    L59:
-        return false;
-    L55:
-        return false;
-    L44:
-        return true;
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || f45.class != obj.getClass()) {
+            return false;
+        }
+        f45 f45Var = (f45) obj;
+        return this.n.equals(f45Var.n) && h12.c(this.q, f45Var.q) && this.r == f45Var.r && h12.c(this.s, f45Var.s) && this.t == f45Var.t && this.u == f45Var.u && this.v == f45Var.v && this.w == f45Var.w && this.x == f45Var.x && this.y == f45Var.y && this.z == f45Var.z && this.A == f45Var.A && this.p == f45Var.p && h12.c(this.o, f45Var.o);
     }
 
     public final int hashCode() {
-        int r2 = (this.o.hashCode() + (this.n.hashCode() * 31)) * 31;
-        int r0 = 0;
-        uo r3 = this.q;
-        if (r3 == null) goto L5;
-        int r4 = r3.hashCode();
-    L6:
-        int r5 = b11.d((r2 + r4) * 31, this.r, 31);
-        uo r6 = this.s;
-        if (r6 == null) goto L10;
-        r0 = r6.hashCode();
-    L10:
-        return Integer.hashCode(this.p) + b11.d(b11.d(b11.d(b11.d(f34.d(this.w, f34.d(this.v, b11.d(b11.d((r5 + r0) * 31, this.t, 31), this.u, 31), 31), 31), this.x, 31), this.y, 31), this.z, 31), this.A, 31);
-    L5:
-        r4 = 0;
-        goto L6
+        int iHashCode = (this.o.hashCode() + (this.n.hashCode() * 31)) * 31;
+        uo uoVar = this.q;
+        int iD = b11.d((iHashCode + (uoVar != null ? uoVar.hashCode() : 0)) * 31, this.r, 31);
+        uo uoVar2 = this.s;
+        return Integer.hashCode(this.p) + b11.d(b11.d(b11.d(b11.d(f34.d(this.w, f34.d(this.v, b11.d(b11.d((iD + (uoVar2 != null ? uoVar2.hashCode() : 0)) * 31, this.t, 31), this.u, 31), 31), 31), this.x, 31), this.y, 31), this.z, 31), this.A, 31);
     }
 }

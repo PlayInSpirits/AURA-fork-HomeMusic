@@ -8,9 +8,6 @@ public final class HubMixToday {
     private HubMix mix;
     private boolean onboarding;
 
-    public HubMixToday() {
-    }
-
     public final boolean getBuilding() {
         return this.building;
     }
@@ -23,15 +20,15 @@ public final class HubMixToday {
         return this.onboarding;
     }
 
-    public final void setBuilding(boolean r1) {
-        this.building = r1;
+    public final void setBuilding(boolean z) {
+        this.building = z;
     }
 
-    public final void setMix(HubMix r1) {
-        this.mix = r1;
+    public final void setMix(HubMix hubMix) {
+        this.mix = hubMix;
     }
 
-    public final void setOnboarding(boolean r1) {
-        this.onboarding = r1;
+    public final void setOnboarding(boolean z) {
+        this.onboarding = z;
     }
 }

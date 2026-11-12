@@ -9,32 +9,26 @@ public final class op0 extends fu {
     public final /* synthetic */ fc1 A;
     public final /* synthetic */ pp0 B;
 
-    public op0(pp0 r1, fc1 r2) {
-        this.B = r1;
-        this.A = r2;
+    public op0(pp0 pp0Var, fc1 fc1Var) {
+        this.B = pp0Var;
+        this.A = fc1Var;
     }
 
     @Override // defpackage.fu
-    public final View H(int r3) {
-        fc1 r0 = this.A;
-        if (r0.I() == true) goto L5;
-        Dialog r2 = this.B.w0;
-        if (r2 != null) goto L9;
+    public final View H(int i) {
+        fc1 fc1Var = this.A;
+        if (fc1Var.I()) {
+            return fc1Var.H(i);
+        }
+        Dialog dialog = this.B.w0;
+        if (dialog != null) {
+            return dialog.findViewById(i);
+        }
         return null;
-    L9:
-        return r2.findViewById(r3);
-    L5:
-        return r0.H(r3);
     }
 
     @Override // defpackage.fu
     public final boolean I() {
-        if (this.A.I() == false) goto L5;
-        return true;
-    L5:
-        if (this.B.A0 == true) goto L11;
-        return false;
-    L11:
-        return true;
+        return this.A.I() || this.B.A0;
     }
 }

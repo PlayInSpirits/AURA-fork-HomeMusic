@@ -8,83 +8,99 @@ public final class f74 extends ep4 implements wf1 {
     public /* synthetic */ long q;
     public final /* synthetic */ g74 r;
 
-    public f74(g74 r1, vd0 r2) {
-        this.r = r1;
-        super(2, r2);
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public f74(g74 g74Var, vd0 vd0Var) {
+        super(2, vd0Var);
+        this.r = g74Var;
     }
 
     @Override // defpackage.jp
-    public final vd0 create(Object r2, vd0 r3) {
-        f74 r0 = new f74(this.r, r3);
-        r0.q = ((k45) r2).a;
-        return r0;
+    public final vd0 create(Object obj, vd0 vd0Var) {
+        f74 f74Var = new f74(this.r, vd0Var);
+        f74Var.q = ((k45) obj).a;
+        return f74Var;
     }
 
     @Override // defpackage.wf1
-    public final Object invoke(Object r3, Object r4) {
-        long r0 = ((k45) r3).a;
-        g74 r2 = this.r;
-        f74 r5 = new f74(r2, (vd0) r4);
-        r5.q = r0;
-        return r5.invokeSuspend(j15.a);
+    public final Object invoke(Object obj, Object obj2) {
+        long j = ((k45) obj).a;
+        f74 f74Var = new f74(this.r, (vd0) obj2);
+        f74Var.q = j;
+        return f74Var.invokeSuspend(j15.a);
     }
 
+    /* JADX WARN: Code duplicated, block: B:22:0x006e  */
     @Override // defpackage.jp
-    public final Object invokeSuspend(Object r15) {
-        int r0 = this.p;
-        g74 r4 = this.r;
-        xe0 r5 = xe0.n;
-        if (r0 == 0) goto L12;
-        if (r0 == 1) goto L11;
-        if (r0 == 2) goto L10;
-        if (r0 != 3) goto L8;
-        long r1 = this.o;
-        long r2 = this.q;
-        kb4.X(r15);
-    L24:
-        return new k45(k45.d(r2, k45.d(r1, ((k45) r15).a)));
-    L8:
-        kf2.o("call to 'resume' before 'invoke' with coroutine");
-        return null;
-    L10:
-        long r3 = this.o;
-        long r6 = this.q;
-        kb4.X(r15);
-    L19:
-        long r11 = ((k45) r15).a;
-        na4 r8 = r4.f;
-        long r9 = k45.d(r3, r11);
-        this.q = r6;
-        this.o = r11;
-        this.p = 3;
-        r15 = r8.l(r9, r11, this);
-        if (r15 != r5) goto L22;
-    L21:
-        return r5;
-    L22:
-        r2 = r6;
-        r1 = r11;
-        goto L24
-    L11:
-        r6 = this.q;
-        kb4.X(r15);
-    L15:
-        long r10 = k45.d(r6, ((k45) r15).a);
-        this.q = r6;
-        this.o = r10;
+    public final Object invokeSuspend(Object obj) {
+        long j;
+        long j2;
+        long j3;
+        long j4;
+        long j5;
+        int i = this.p;
+        g74 g74Var = this.r;
+        xe0 xe0Var = xe0.n;
+        if (i == 0) {
+            kb4.X(obj);
+            j = this.q;
+            na4 na4Var = g74Var.f;
+            this.q = j;
+            this.p = 1;
+            obj = na4Var.m(j, this);
+            if (obj != xe0Var) {
+            }
+            return xe0Var;
+        }
+        if (i == 1) {
+            j = this.q;
+            kb4.X(obj);
+        } else {
+            if (i == 2) {
+                j2 = this.o;
+                j = this.q;
+                kb4.X(obj);
+                j3 = ((k45) obj).a;
+                na4 na4Var2 = g74Var.f;
+                long jD = k45.d(j2, j3);
+                this.q = j;
+                this.o = j3;
+                this.p = 3;
+                obj = na4Var2.l(jD, j3, this);
+                if (obj != xe0Var) {
+                    j4 = j;
+                    j5 = j3;
+                }
+                return xe0Var;
+            }
+            if (i != 3) {
+                kf2.o("call to 'resume' before 'invoke' with coroutine");
+                return null;
+            }
+            j5 = this.o;
+            j4 = this.q;
+            kb4.X(obj);
+        }
+        return new k45(k45.d(j4, k45.d(j5, ((k45) obj).a)));
+        long jD2 = k45.d(j, ((k45) obj).a);
+        this.q = j;
+        this.o = jD2;
         this.p = 2;
-        r15 = r4.a(r10, this);
-        if (r15 == r5) goto L21;
-        r3 = r10;
-        goto L19
-    L12:
-        kb4.X(r15);
-        r6 = this.q;
-        na4 r16 = r4.f;
-        this.q = r6;
-        this.p = 1;
-        r15 = r16.m(r6, this);
-        if (r15 != r5) goto L15;
-        goto L15
+        obj = g74Var.a(jD2, this);
+        if (obj != xe0Var) {
+            j2 = jD2;
+            j3 = ((k45) obj).a;
+            na4 na4Var3 = g74Var.f;
+            long jD3 = k45.d(j2, j3);
+            this.q = j;
+            this.o = j3;
+            this.p = 3;
+            obj = na4Var3.l(jD3, j3, this);
+            if (obj != xe0Var) {
+                j4 = j;
+                j5 = j3;
+                return new k45(k45.d(j4, k45.d(j5, ((k45) obj).a)));
+            }
+        }
+        return xe0Var;
     }
 }

@@ -5,13 +5,14 @@ package defpackage;
 public final class lh extends kh {
     public final /* synthetic */ mh r;
 
-    public lh(mh r1) {
-        this.r = r1;
-        super(r1);
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public lh(mh mhVar) {
+        super(mhVar);
+        this.r = mhVar;
     }
 
     @Override // defpackage.zg5, defpackage.jh
-    public final void h(int r1, float r2) {
-        mh.f(this.r, r1, r2);
+    public final void h(int i, float f) {
+        super/*android.widget.TextView*/.setLineHeight(i, f);
     }
 }

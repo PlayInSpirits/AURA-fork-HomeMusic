@@ -6,7 +6,7 @@ import java.util.function.IntBinaryOperator;
 /* JADX INFO: loaded from: classes.dex */
 public final /* synthetic */ class ak implements IntBinaryOperator {
     @Override // java.util.function.IntBinaryOperator
-    public final int applyAsInt(int r1, int r2) {
-        return Integer.sum(r1, r2);
+    public final int applyAsInt(int i, int i2) {
+        return Integer.sum(i, i2);
     }
 }

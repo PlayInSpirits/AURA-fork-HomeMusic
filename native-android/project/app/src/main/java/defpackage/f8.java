@@ -15,8 +15,8 @@ public class f8 extends hd {
     public k03 g;
     public final int h;
 
-    public f8(Application r2) {
-        super(r2);
+    public f8(Application application) {
+        super(application);
         this.h = SmartPlan.MAX_QUEUE;
         this.c = new rv2(27);
     }

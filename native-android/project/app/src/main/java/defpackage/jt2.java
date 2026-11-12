@@ -12,16 +12,16 @@ public final class jt2 implements SurfaceHolder {
     public final Rect b;
     public SurfaceHolder.Callback c;
 
-    public jt2(Surface r2, int r3, int r4) {
-        Rect r0 = new Rect();
-        this.b = r0;
-        this.a = r2;
-        r0.set(0, 0, r3, r4);
+    public jt2(Surface surface, int i, int i2) {
+        Rect rect = new Rect();
+        this.b = rect;
+        this.a = surface;
+        rect.set(0, 0, i, i2);
     }
 
     @Override // android.view.SurfaceHolder
-    public final void addCallback(SurfaceHolder.Callback r1) {
-        this.c = r1;
+    public final void addCallback(SurfaceHolder.Callback callback) {
+        this.c = callback;
     }
 
     @Override // android.view.SurfaceHolder
@@ -45,27 +45,27 @@ public final class jt2 implements SurfaceHolder {
     }
 
     @Override // android.view.SurfaceHolder
-    public final void removeCallback(SurfaceHolder.Callback r2) {
-        if (this.c != r2) goto L6;
-        this.c = null;
-        return;
+    public final void removeCallback(SurfaceHolder.Callback callback) {
+        if (this.c == callback) {
+            this.c = null;
+        }
     }
 
     @Override // android.view.SurfaceHolder
-    public final void setFixedSize(int r3, int r4) {
-        this.b.set(0, 0, r3, r4);
-        SurfaceHolder.Callback r0 = this.c;
-        if (r0 == null) goto L6;
-        r0.surfaceChanged(this, 1, r3, r4);
-        return;
+    public final void setFixedSize(int i, int i2) {
+        this.b.set(0, 0, i, i2);
+        SurfaceHolder.Callback callback = this.c;
+        if (callback != null) {
+            callback.surfaceChanged(this, 1, i, i2);
+        }
     }
 
     @Override // android.view.SurfaceHolder
-    public final void setFormat(int r1) {
+    public final void setFormat(int i) {
     }
 
     @Override // android.view.SurfaceHolder
-    public final void setKeepScreenOn(boolean r1) {
+    public final void setKeepScreenOn(boolean z) {
     }
 
     @Override // android.view.SurfaceHolder
@@ -73,20 +73,20 @@ public final class jt2 implements SurfaceHolder {
     }
 
     @Override // android.view.SurfaceHolder
-    public final void setType(int r1) {
+    public final void setType(int i) {
     }
 
     @Override // android.view.SurfaceHolder
-    public final void unlockCanvasAndPost(Canvas r1) {
+    public final void unlockCanvasAndPost(Canvas canvas) {
     }
 
     @Override // android.view.SurfaceHolder
-    public final Canvas lockCanvas(Rect r1) {
+    public final Canvas lockCanvas(Rect rect) {
         throw new UnsupportedOperationException();
     }
 
-    public jt2(Surface r2) {
+    public jt2(Surface surface) {
         this.b = new Rect();
-        this.a = r2;
+        this.a = surface;
     }
 }

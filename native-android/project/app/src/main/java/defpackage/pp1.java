@@ -5,7 +5,7 @@ package defpackage;
 public final class pp1 {
     public final wf1 a;
 
-    public pp1(wf1 r1) {
-        this.a = r1;
+    public pp1(wf1 wf1Var) {
+        this.a = wf1Var;
     }
 }

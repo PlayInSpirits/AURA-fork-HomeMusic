@@ -10,17 +10,10 @@ public final class ry2 {
     public int e;
     public tb1 f;
 
-    public ry2(pv4 r1, xv4 r2, wv4 r3) {
-        this.a = r1;
-        this.b = r2;
-        this.c = r3;
-        if ("audio/true-hd".equals(r1.g.n) == false) goto L5;
-        my4 r4 = new my4();
-    L6:
-        this.d = r4;
-        return;
-    L5:
-        r4 = null;
-        goto L6
+    public ry2(pv4 pv4Var, xv4 xv4Var, wv4 wv4Var) {
+        this.a = pv4Var;
+        this.b = xv4Var;
+        this.c = wv4Var;
+        this.d = "audio/true-hd".equals(pv4Var.g.n) ? new my4() : null;
     }
 }

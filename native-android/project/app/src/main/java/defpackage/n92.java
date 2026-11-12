@@ -20,8 +20,8 @@ public class n92 extends hd {
     public String m;
     public int n;
 
-    public n92(Application r2) {
-        super(r2);
+    public n92(Application application) {
+        super(application);
         this.h = new k03(null);
         new k03(null);
         this.i = new k03(null);
@@ -38,34 +38,34 @@ public class n92 extends hd {
     }
 
     public final boolean c() {
-        String r0 = ud3.k();
-        if (Objects.equals(r0, this.m) == false) goto L6;
-        return false;
-    L6:
-        this.m = r0;
+        String strK = ud3.k();
+        if (Objects.equals(strK, this.m)) {
+            return false;
+        }
+        this.m = strK;
         this.n++;
         this.j.k(null);
         this.k.k(null);
         return true;
     }
 
-    public final void d(le1 r6) {
+    public final void d(le1 le1Var) {
         this.d.getClass();
-        rv2.m("random", 10, null, null).e(r6, new mp1(this, this.n, this.j, 1));
+        rv2.m("random", 10, null, null).e(le1Var, new mp1(this, this.n, this.j, 1));
     }
 
-    public final void e(le1 r6) {
-        pa r0 = this.e;
-        r0.getClass();
-        k03 r1 = new k03();
-        App.f(false).c().j().enqueue(new qr2(3, r0, r1));
-        r1.e(r6, new mp1(this, this.n, this.k, 1));
+    public final void e(le1 le1Var) {
+        pa paVar = this.e;
+        paVar.getClass();
+        k03 k03Var = new k03();
+        App.f(false).c().j().enqueue(new qr2(3, paVar, k03Var));
+        k03Var.e(le1Var, new mp1(this, this.n, this.k, 1));
     }
 
-    public final void f(le1 r4) {
-        k03 r0 = this.g.d(10, true);
-        k03 r3 = this.i;
-        Objects.requireNonNull(r3);
-        r0.e(r4, new g7(r3, 0));
+    public final void f(le1 le1Var) {
+        k03 k03VarD = this.g.d(10, true);
+        k03 k03Var = this.i;
+        Objects.requireNonNull(k03Var);
+        k03VarD.e(le1Var, new g7(k03Var, 0));
     }
 }

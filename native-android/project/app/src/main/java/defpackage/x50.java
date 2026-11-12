@@ -10,86 +10,79 @@ public final /* synthetic */ class x50 implements if1 {
     public final /* synthetic */ Object r;
     public final /* synthetic */ Object s;
 
-    public /* synthetic */ x50(jg3[] r2, y50 r3, int r4, cf2 r5, int[] r6) {
+    public /* synthetic */ x50(jg3[] jg3VarArr, y50 y50Var, int i, cf2 cf2Var, int[] iArr) {
         this.n = 0;
-        this.p = r2;
-        this.q = r3;
-        this.o = r4;
-        this.r = r5;
-        this.s = r6;
+        this.p = jg3VarArr;
+        this.q = y50Var;
+        this.o = i;
+        this.r = cf2Var;
+        this.s = iArr;
     }
 
     @Override // defpackage.if1
-    public final Object invoke(Object r13) {
-        int r0 = this.n;
-        Object r2 = this.s;
-        int r3 = this.o;
-        Object r4 = this.r;
-        Object r5 = this.q;
-        Object r12 = this.p;
-        switch(r0) {
-            case 0: goto L22;
-            case 1: goto L13;
-            default: goto L4;
-        };
-    L4:
-        ba1 r6 = (ba1) r5;
-        wv3 r7 = (wv3) r4;
-        dd0 r8 = (dd0) r2;
-        es r14 = (es) r13;
-        if (((ba1) r12) != ((ey) ((ra) j51.P(r6)).getFocusOwner()).f()) goto L28;
-        boolean r15 = kb4.R(r3, r8, r6, r7);
-        Boolean r1 = Boolean.valueOf(r15);
-        if (r15 == true) goto L12;
-        if (r14.a() == false) goto L12;
-        return null;
-    L12:
-        return r1;
-    L28:
-        return Boolean.TRUE;
-    L13:
-        ba1 r9 = (ba1) r5;
-        ba1 r10 = (ba1) r4;
-        dd0 r11 = (dd0) r2;
-        es r16 = (es) r13;
-        if (((ba1) r12) != ((ey) ((ra) j51.P(r9)).getFocusOwner()).f()) goto L30;
-        boolean r17 = zz1.H(r9, r10, r3, r11);
-        Boolean r18 = Boolean.valueOf(r17);
-        if (r17 == true) goto L21;
-        if (r16.a() == false) goto L21;
-        return null;
-    L21:
-        return r18;
-    L30:
-        return Boolean.TRUE;
-    L22:
-        jg3[] r19 = (jg3[]) r12;
-        y50 r20 = (y50) r5;
-        cf2 r21 = (cf2) r4;
-        int[] r22 = (int[]) r2;
-        ig3 r110 = (ig3) r13;
-        int r23 = r19.length;
-        int r24 = 0;
-        int r25 = 0;
-    L23:
-        if (r24 >= r23) goto L26;
-        jg3 r26 = r19[r24];
-        r26.getClass();
-        r26.t();
-        ig3.f(r110, r26, r20.a.a(r26.n, r3, r21.getLayoutDirection()), r22[r25]);
-        r24 = r24 + 1;
-        r25 = r25 + 1;
-        goto L23
-    L26:
-        return j15.a;
+    public final Object invoke(Object obj) {
+        int i = this.n;
+        Object obj2 = this.s;
+        int i2 = this.o;
+        Object obj3 = this.r;
+        Object obj4 = this.q;
+        Object obj5 = this.p;
+        switch (i) {
+            case 0:
+                jg3[] jg3VarArr = (jg3[]) obj5;
+                y50 y50Var = (y50) obj4;
+                cf2 cf2Var = (cf2) obj3;
+                int[] iArr = (int[]) obj2;
+                ig3 ig3Var = (ig3) obj;
+                int length = jg3VarArr.length;
+                int i3 = 0;
+                int i4 = 0;
+                while (i3 < length) {
+                    jg3 jg3Var = jg3VarArr[i3];
+                    jg3Var.getClass();
+                    jg3Var.t();
+                    ig3.f(ig3Var, jg3Var, y50Var.a.a(jg3Var.n, i2, cf2Var.getLayoutDirection()), iArr[i4]);
+                    i3++;
+                    i4++;
+                }
+                return j15.a;
+            case 1:
+                ba1 ba1Var = (ba1) obj4;
+                ba1 ba1Var2 = (ba1) obj3;
+                dd0 dd0Var = (dd0) obj2;
+                es esVar = (es) obj;
+                if (((ba1) obj5) != ((ey) ((ra) j51.P(ba1Var)).getFocusOwner()).f()) {
+                    return Boolean.TRUE;
+                }
+                boolean zH = zz1.H(ba1Var, ba1Var2, i2, dd0Var);
+                Boolean boolValueOf = Boolean.valueOf(zH);
+                if (zH || !esVar.a()) {
+                    return boolValueOf;
+                }
+                return null;
+            default:
+                ba1 ba1Var3 = (ba1) obj4;
+                wv3 wv3Var = (wv3) obj3;
+                dd0 dd0Var2 = (dd0) obj2;
+                es esVar2 = (es) obj;
+                if (((ba1) obj5) != ((ey) ((ra) j51.P(ba1Var3)).getFocusOwner()).f()) {
+                    return Boolean.TRUE;
+                }
+                boolean zR = kb4.R(i2, dd0Var2, ba1Var3, wv3Var);
+                Boolean boolValueOf2 = Boolean.valueOf(zR);
+                if (zR || !esVar2.a()) {
+                    return boolValueOf2;
+                }
+                return null;
+        }
     }
 
-    public /* synthetic */ x50(ba1 r1, ba1 r2, Object r3, int r4, dd0 r5, int r6) {
-        this.n = r6;
-        this.p = r1;
-        this.q = r2;
-        this.r = r3;
-        this.o = r4;
-        this.s = r5;
+    public /* synthetic */ x50(ba1 ba1Var, ba1 ba1Var2, Object obj, int i, dd0 dd0Var, int i2) {
+        this.n = i2;
+        this.p = ba1Var;
+        this.q = ba1Var2;
+        this.r = obj;
+        this.o = i;
+        this.s = dd0Var;
     }
 }

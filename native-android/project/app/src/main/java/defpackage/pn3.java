@@ -7,9 +7,9 @@ public final class pn3 {
     public final long b;
     public final boolean c;
 
-    public pn3(long r1, long r3, boolean r5) {
-        this.a = r1;
-        this.b = r3;
-        this.c = r5;
+    public pn3(long j, long j2, boolean z) {
+        this.a = j;
+        this.b = j2;
+        this.c = z;
     }
 }

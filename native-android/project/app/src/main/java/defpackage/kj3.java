@@ -11,12 +11,12 @@ public final class kj3 extends cx3 {
     public final TextView u;
     public final View v;
 
-    public kj3(View r3) {
-        super(r3);
-        if (Build.VERSION.SDK_INT >= 26) goto L5;
-        r3.setFocusable(true);
-    L5:
-        this.u = (TextView) r3.findViewById(R.id.exo_text);
-        this.v = r3.findViewById(R.id.exo_check);
+    public kj3(View view) {
+        super(view);
+        if (Build.VERSION.SDK_INT < 26) {
+            view.setFocusable(true);
+        }
+        this.u = (TextView) view.findViewById(R.id.exo_text);
+        this.v = view.findViewById(R.id.exo_check);
     }
 }

@@ -14,19 +14,19 @@ public final class am {
     public boolean g;
     public int h;
 
-    public am(am r2) {
-        this.a = r2.a;
-        this.b = r2.b;
-        this.c = r2.c;
-        this.d = r2.d;
-        this.e = r2.e;
-        this.f = r2.f;
-        this.g = r2.g;
-        this.h = r2.h;
+    public am(am amVar) {
+        this.a = amVar.a;
+        this.b = amVar.b;
+        this.c = amVar.c;
+        this.d = amVar.d;
+        this.e = amVar.e;
+        this.f = amVar.f;
+        this.g = amVar.g;
+        this.h = amVar.h;
     }
 
-    public am(tb1 r1) {
-        this.a = r1;
+    public am(tb1 tb1Var) {
+        this.a = tb1Var;
         this.b = il.i;
         this.e = 0;
         this.f = -1;

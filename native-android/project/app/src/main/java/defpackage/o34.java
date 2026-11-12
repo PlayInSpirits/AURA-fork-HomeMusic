@@ -11,89 +11,65 @@ public final class o34 {
     public final Proxy b;
     public final InetSocketAddress c;
 
-    public o34(f6 r1, Proxy r2, InetSocketAddress r3) {
-        r1.getClass();
-        r3.getClass();
-        this.a = r1;
-        this.b = r2;
-        this.c = r3;
+    public o34(f6 f6Var, Proxy proxy, InetSocketAddress inetSocketAddress) {
+        f6Var.getClass();
+        inetSocketAddress.getClass();
+        this.a = f6Var;
+        this.b = proxy;
+        this.c = inetSocketAddress;
     }
 
-    public final boolean equals(Object r3) {
-        if ((r3 instanceof o34) == false) goto L12;
-        o34 r4 = (o34) r3;
-        if (h12.c(r4.a, this.a) == true) goto L7;
-        return false;
-    L7:
-        if (r4.b.equals(this.b) == true) goto L9;
-        return false;
-    L9:
-        if (h12.c(r4.c, this.c) == false) goto L16;
-        return true;
-    L16:
-        return false;
-    L12:
-        return false;
+    public final boolean equals(Object obj) {
+        if (!(obj instanceof o34)) {
+            return false;
+        }
+        o34 o34Var = (o34) obj;
+        return h12.c(o34Var.a, this.a) && o34Var.b.equals(this.b) && h12.c(o34Var.c, this.c);
     }
 
     public final int hashCode() {
-        int r0 = (this.a.hashCode() + 527) * 31;
-        int r1 = (this.b.hashCode() + r0) * 31;
-        return this.c.hashCode() + r1;
+        return this.c.hashCode() + ((this.b.hashCode() + ((this.a.hashCode() + 527) * 31)) * 31);
     }
 
     public final String toString() {
-        StringBuilder r0 = new StringBuilder();
-        f6 r1 = this.a;
-        gr1 r2 = r1.h;
-        gr1 r3 = r1.h;
-        String r4 = r2.d;
-        InetSocketAddress r5 = this.c;
-        InetAddress r6 = r5.getAddress();
-        if (r6 == null) goto L7;
-        String r7 = r6.getHostAddress();
-        if (r7 == null) goto L7;
-        String r8 = ue5.b(r7);
-    L9:
-        if (qm4.n0(r4, ':') == false) goto L11;
-        r0.append("[");
-        r0.append(r4);
-        r0.append("]");
-    L13:
-        if (r3.e == r5.getPort()) goto L15;
-    L16:
-        r0.append(":");
-        r0.append(r3.e);
-    L18:
-        if (r4.equals(r8) == true) goto L31;
-        if (this.b.equals(Proxy.NO_PROXY) == false) goto L22;
-        r0.append(" at ");
-    L23:
-        if (r8 != null) goto L26;
-        r0.append("<unresolved>");
-    L29:
-        r0.append(":");
-        r0.append(r5.getPort());
-        goto L31
-    L26:
-        if (qm4.n0(r8, ':') == false) goto L28;
-        r0.append("[");
-        r0.append(r8);
-        r0.append("]");
-        goto L29
-    L28:
-        r0.append(r8);
-        goto L29
-    L22:
-        r0.append(" via proxy ");
-    L31:
-        return r0.toString();
-    L15:
-        if (r4.equals(r8) == false) goto L18;
-    L11:
-        r0.append(r4);
-    L7:
-        r8 = null;
-        goto L9
+        String hostAddress;
+        StringBuilder sb = new StringBuilder();
+        f6 f6Var = this.a;
+        gr1 gr1Var = f6Var.h;
+        gr1 gr1Var2 = f6Var.h;
+        String str = gr1Var.d;
+        InetSocketAddress inetSocketAddress = this.c;
+        InetAddress address = inetSocketAddress.getAddress();
+        String strB = (address == null || (hostAddress = address.getHostAddress()) == null) ? null : ue5.b(hostAddress);
+        if (qm4.n0(str, ':')) {
+            sb.append("[");
+            sb.append(str);
+            sb.append("]");
+        } else {
+            sb.append(str);
+        }
+        if (gr1Var2.e != inetSocketAddress.getPort() || str.equals(strB)) {
+            sb.append(":");
+            sb.append(gr1Var2.e);
+        }
+        if (!str.equals(strB)) {
+            if (this.b.equals(Proxy.NO_PROXY)) {
+                sb.append(" at ");
+            } else {
+                sb.append(" via proxy ");
+            }
+            if (strB == null) {
+                sb.append("<unresolved>");
+            } else if (qm4.n0(strB, ':')) {
+                sb.append("[");
+                sb.append(strB);
+                sb.append("]");
+            } else {
+                sb.append(strB);
+            }
+            sb.append(":");
+            sb.append(inetSocketAddress.getPort());
+        }
+        return sb.toString();
     }
 }

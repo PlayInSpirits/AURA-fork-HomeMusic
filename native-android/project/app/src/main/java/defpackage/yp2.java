@@ -15,14 +15,15 @@ public final class yp2 extends cx3 {
     public final TextView x;
     public final /* synthetic */ zp2 y;
 
-    public yp2(zp2 r3, View r4) {
-        this.y = r3;
-        super(r4);
-        this.u = r4;
-        this.v = (ImageView) r4.findViewById(R.id.mr_picker_route_icon);
-        ProgressBar r0 = (ProgressBar) r4.findViewById(R.id.mr_picker_route_progress_bar);
-        this.w = r0;
-        this.x = (TextView) r4.findViewById(R.id.mr_picker_route_name);
-        fu.M(r3.w.v, r0);
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public yp2(zp2 zp2Var, View view) {
+        super(view);
+        this.y = zp2Var;
+        this.u = view;
+        this.v = (ImageView) view.findViewById(R.id.mr_picker_route_icon);
+        ProgressBar progressBar = (ProgressBar) view.findViewById(R.id.mr_picker_route_progress_bar);
+        this.w = progressBar;
+        this.x = (TextView) view.findViewById(R.id.mr_picker_route_name);
+        fu.M(zp2Var.w.v, progressBar);
     }
 }

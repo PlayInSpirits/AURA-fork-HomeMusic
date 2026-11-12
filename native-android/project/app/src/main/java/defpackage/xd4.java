@@ -8,12 +8,13 @@ public final class xd4 extends cx3 {
     public final qp4 u;
     public final /* synthetic */ s6 v;
 
-    public xd4(s6 r2, qp4 r3) {
-        this.v = r2;
-        ConstraintLayout r4 = (ConstraintLayout) r3.a;
-        super(r4);
-        this.u = r3;
-        r4.setOnClickListener(new bj3(15, this));
-        r4.setOnLongClickListener(new q6(22, this));
+    /* JADX WARN: Illegal instructions before constructor call */
+    public xd4(s6 s6Var, qp4 qp4Var) {
+        this.v = s6Var;
+        ConstraintLayout constraintLayout = (ConstraintLayout) qp4Var.a;
+        super(constraintLayout);
+        this.u = qp4Var;
+        constraintLayout.setOnClickListener(new bj3(15, this));
+        constraintLayout.setOnLongClickListener(new q6(22, this));
     }
 }

@@ -16,129 +16,101 @@ public final class d64 {
     public final tu4 i;
     public final tu4 j;
 
-    public d64(ol1 r21, boolean r22, double r23) {
-        tu4 r2 = tu4.a(r21.a, r21.b);
-        double r3 = r21.a;
-        double r5 = r21.b;
-        tu4 r4 = tu4.a(r3, Math.max(r5 - 32.0d, r5 * 0.5d));
-        ss0 r6 = new ss0(r21);
-        int r7 = (int) Math.round(r21.a);
-        ol1 r8 = (ol1) r6.y().get(r7);
-        double r9 = r6.A(r8);
-        ArrayList r10 = new ArrayList();
-        r10.add(r8);
-        int r13 = 0;
-        double r14 = 0.0d;
-    L4:
-        if (r13 >= 360) goto L9;
-        int r11 = (r7 + r13) % 360;
-        if (r11 >= 0) goto L8;
-        r11 = r11 + 360;
-    L8:
-        double r12 = r6.A((ol1) r6.y().get(r11));
-        r14 = r14 + Math.abs(r12 - r9);
-        r13 = r13 + 1;
-        r9 = r12;
-        goto L4
-    L9:
-        double r15 = r14 / 6.0d;
-        double r16 = r6.A(r8);
-        int r17 = 1;
-        double r18 = 0.0d;
-    L10:
-        int r19 = 6;
-        if (r10.size() >= 6) goto L34;
-        int r110 = (r7 + r17) % 360;
-        if (r110 >= 0) goto L15;
-        r110 = r110 + 360;
-    L15:
-        ol1 r111 = (ol1) r6.y().get(r110);
-        double r112 = r6.A(r111);
-        r18 = Math.abs(r112 - r16) + r18;
-        if (r18 < (((double) r10.size()) * r15)) goto L18;
-        boolean r20 = true;
-    L19:
-        int r24 = 1;
-    L20:
-        if (r20 == false) goto L28;
-        if (r10.size() >= r19) goto L28;
-        r10.add(r111);
-        ArrayList r113 = r10;
-        if (r18 < (((double) (r10.size() + r24)) * r15)) goto L26;
-        r20 = true;
-    L27:
-        r24 = r24 + 1;
-        r10 = r113;
-        r19 = 6;
-        goto L20
-    L26:
-        r20 = false;
-    L28:
-        ArrayList r114 = r10;
-        r17 = r17 + 1;
-        if (r17 > 360) goto L31;
-        r10 = r114;
-        r16 = r112;
-    L31:
-        if (r114.size() >= 6) goto L35;
-        r114.add(r111);
-    L35:
-        ArrayList r25 = new ArrayList();
-        r25.add(r21);
-        int r26 = (int) Math.floor(1.0d);
-        int r27 = 1;
-    L37:
-        if (r27 >= (r26 + 1)) goto L45;
-        int r28 = 0 - r27;
-    L39:
-        if (r28 >= 0) goto L42;
-        r28 = r28 + r114.size();
-        goto L39
-    L42:
-        if (r28 < r114.size()) goto L44;
-        r28 = r28 % r114.size();
-    L44:
-        r25.add(0, (ol1) r114.get(r28));
-        r27 = r27 + 1;
-        goto L37
-    L45:
-        int r29 = 3 - r26;
-        int r30 = 1;
-    L46:
-        if (r30 >= r29) goto L54;
-        int r31 = r30;
-    L48:
-        if (r31 >= 0) goto L51;
-        r31 = r31 + r114.size();
-        goto L48
-    L51:
-        if (r31 < r114.size()) goto L53;
-        r31 = r31 % r114.size();
-    L53:
-        r25.add((ol1) r114.get(r31));
-        r30 = r30 + 1;
-        goto L46
-    L54:
-        ol1 r32 = vr1.q((ol1) r25.get(2));
-        tu4 r33 = new tu4(r32.a, r32.b);
-        tu4 r34 = tu4.a(r21.a, r21.b / 8.0d);
-        tu4 r35 = tu4.a(r21.a, (r21.b / 8.0d) + 4.0d);
-        this.a = r21;
+    public d64(ol1 ol1Var, boolean z, double d) {
+        ArrayList arrayList;
+        tu4 tu4VarA = tu4.a(ol1Var.a, ol1Var.b);
+        double d2 = ol1Var.a;
+        double d3 = ol1Var.b;
+        tu4 tu4VarA2 = tu4.a(d2, Math.max(d3 - 32.0d, d3 * 0.5d));
+        ss0 ss0Var = new ss0(ol1Var);
+        int iRound = (int) Math.round(ol1Var.a);
+        ol1 ol1Var2 = (ol1) ss0Var.y().get(iRound);
+        double dA = ss0Var.A(ol1Var2);
+        ArrayList arrayList2 = new ArrayList();
+        arrayList2.add(ol1Var2);
+        int i = 0;
+        double dAbs = 0.0d;
+        while (i < 360) {
+            int i2 = (iRound + i) % 360;
+            if (i2 < 0) {
+                i2 += 360;
+            }
+            double dA2 = ss0Var.A((ol1) ss0Var.y().get(i2));
+            dAbs += Math.abs(dA2 - dA);
+            i++;
+            dA = dA2;
+        }
+        double d4 = dAbs / 6.0d;
+        double dA3 = ss0Var.A(ol1Var2);
+        int i3 = 1;
+        double dAbs2 = 0.0d;
+        while (true) {
+            if (arrayList2.size() >= 6) {
+                arrayList = arrayList2;
+                break;
+            }
+            int i4 = (iRound + i3) % 360;
+            ol1 ol1Var3 = (ol1) ss0Var.y().get(i4 < 0 ? i4 + 360 : i4);
+            double dA4 = ss0Var.A(ol1Var3);
+            dAbs2 = Math.abs(dA4 - dA3) + dAbs2;
+            boolean z2 = dAbs2 >= ((double) arrayList2.size()) * d4;
+            int i5 = 1;
+            for (int i6 = 6; z2 && arrayList2.size() < i6; i6 = 6) {
+                arrayList2.add(ol1Var3);
+                ArrayList arrayList3 = arrayList2;
+                z2 = dAbs2 >= ((double) (arrayList2.size() + i5)) * d4;
+                i5++;
+                arrayList2 = arrayList3;
+            }
+            arrayList = arrayList2;
+            i3++;
+            if (i3 > 360) {
+                while (arrayList.size() < 6) {
+                    arrayList.add(ol1Var3);
+                }
+                break;
+            } else {
+                arrayList2 = arrayList;
+                dA3 = dA4;
+            }
+        }
+        ArrayList arrayList4 = new ArrayList();
+        arrayList4.add(ol1Var);
+        int iFloor = (int) Math.floor(1.0d);
+        for (int i7 = 1; i7 < iFloor + 1; i7++) {
+            int size = 0 - i7;
+            while (size < 0) {
+                size += arrayList.size();
+            }
+            if (size >= arrayList.size()) {
+                size %= arrayList.size();
+            }
+            arrayList4.add(0, (ol1) arrayList.get(size));
+        }
+        int i8 = 3 - iFloor;
+        for (int i9 = 1; i9 < i8; i9++) {
+            int size2 = i9;
+            while (size2 < 0) {
+                size2 += arrayList.size();
+            }
+            if (size2 >= arrayList.size()) {
+                size2 %= arrayList.size();
+            }
+            arrayList4.add((ol1) arrayList.get(size2));
+        }
+        ol1 ol1VarQ = vr1.q((ol1) arrayList4.get(2));
+        tu4 tu4Var = new tu4(ol1VarQ.a, ol1VarQ.b);
+        tu4 tu4VarA3 = tu4.a(ol1Var.a, ol1Var.b / 8.0d);
+        tu4 tu4VarA4 = tu4.a(ol1Var.a, (ol1Var.b / 8.0d) + 4.0d);
+        this.a = ol1Var;
         this.b = 7;
-        this.c = r22;
-        this.d = r23;
-        this.e = r2;
-        this.f = r4;
-        this.g = r33;
-        this.h = r34;
-        this.i = r35;
+        this.c = z;
+        this.d = d;
+        this.e = tu4VarA;
+        this.f = tu4VarA2;
+        this.g = tu4Var;
+        this.h = tu4VarA3;
+        this.i = tu4VarA4;
         this.j = tu4.a(25.0d, 84.0d);
-        return;
-    L18:
-        r20 = false;
-        goto L19
-    L34:
-        r114 = r10;
-        goto L35
     }
 }

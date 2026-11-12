@@ -11,46 +11,42 @@ public abstract class pw1 extends qw1 {
     public int b;
     public boolean c;
 
-    public pw1(int r2) {
-        uc5.f(r2, "initialCapacity");
-        this.a = new Object[r2];
+    public pw1(int i) {
+        uc5.f(i, "initialCapacity");
+        this.a = new Object[i];
         this.b = 0;
     }
 
-    public final void c(Object r4) {
-        r4.getClass();
+    public final void c(Object obj) {
+        obj.getClass();
         e(1);
-        Object[] r0 = this.a;
-        int r1 = this.b;
-        this.b = r1 + 1;
-        r0[r1] = r4;
+        Object[] objArr = this.a;
+        int i = this.b;
+        this.b = i + 1;
+        objArr[i] = obj;
     }
 
-    public final void d(Iterable r3) {
-        if ((r3 instanceof Collection) == false) goto L8;
-        Collection r0 = (Collection) r3;
-        e(r0.size());
-        if ((r0 instanceof rw1) == false) goto L8;
-        Object[] r4 = this.a;
-        this.b = ((rw1) r0).b(this.b, r4);
-        return;
-    L8:
-        Iterator r5 = r3.iterator();
-    L10:
-        if (r5.hasNext() == false) goto L12;
-        a(r5.next());
-        goto L10
+    public final void d(Iterable iterable) {
+        if (iterable instanceof Collection) {
+            Collection collection = (Collection) iterable;
+            e(collection.size());
+            if (collection instanceof rw1) {
+                this.b = ((rw1) collection).b(this.b, this.a);
+                return;
+            }
+        }
+        Iterator it = iterable.iterator();
+        while (it.hasNext()) {
+            a(it.next());
+        }
     }
 
-    public final void e(int r4) {
-        Object[] r0 = this.a;
-        int r5 = qw1.b(r0.length, this.b + r4);
-        if (r5 <= r0.length) goto L5;
-    L8:
-        this.a = Arrays.copyOf(this.a, r5);
-        this.c = false;
-        return;
-    L5:
-        if (this.c == true) goto L8;
+    public final void e(int i) {
+        Object[] objArr = this.a;
+        int iB = qw1.b(objArr.length, this.b + i);
+        if (iB > objArr.length || this.c) {
+            this.a = Arrays.copyOf(this.a, iB);
+            this.c = false;
+        }
     }
 }

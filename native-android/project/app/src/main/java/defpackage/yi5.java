@@ -14,8 +14,8 @@ import com.google.android.gms.common.api.Status;
 public final class yi5 extends Binder implements IInterface {
     public final /* synthetic */ cr4 e;
 
-    public yi5(cr4 r1) {
-        this.e = r1;
+    public yi5(cr4 cr4Var) {
+        this.e = cr4Var;
         attachInterface(this, "com.google.android.gms.fido.fido2.internal.regular.IFido2AppCallbacks");
     }
 
@@ -25,36 +25,24 @@ public final class yi5 extends Binder implements IInterface {
     }
 
     @Override // android.os.Binder
-    public final boolean onTransact(int r3, Parcel r4, Parcel r5, int r6) {
-        if (r3 > 16777215) goto L5;
-        r4.enforceInterface(getInterfaceDescriptor());
-    L8:
-        if (r3 != 1) goto L23;
-        Parcelable.Creator<Status> r7 = Status.CREATOR;
-        int r8 = ai5.a;
-        Parcelable r9 = null;
-        if (r4.readInt() != 0) goto L12;
-        Status r10 = null;
-    L13:
-        Status r11 = r10;
-        Parcelable.Creator r12 = PendingIntent.CREATOR;
-        if (r4.readInt() == 0) goto L17;
-        r9 = (Parcelable) r12.createFromParcel(r4);
-    L17:
-        PendingIntent r13 = (PendingIntent) r9;
-        int r14 = r4.dataAvail();
-        if (r14 > 0) goto L22;
-        g12.R(r11, r13, this.e);
-        return true;
-    L22:
-        throw new BadParcelableException(f34.f(r14, "Parcel data not fully consumed, unread size: "));
-    L12:
-        r10 = r7.createFromParcel(r4);
-        goto L13
-    L23:
-        return false;
-    L5:
-        if (super.onTransact(r3, r4, r5, r6) == false) goto L8;
+    public final boolean onTransact(int i, Parcel parcel, Parcel parcel2, int i2) {
+        if (i <= 16777215) {
+            parcel.enforceInterface(getInterfaceDescriptor());
+        } else if (super.onTransact(i, parcel, parcel2, i2)) {
+            return true;
+        }
+        if (i != 1) {
+            return false;
+        }
+        Parcelable.Creator<Status> creator = Status.CREATOR;
+        int i3 = ai5.a;
+        Status statusCreateFromParcel = parcel.readInt() == 0 ? null : creator.createFromParcel(parcel);
+        PendingIntent pendingIntent = (PendingIntent) (parcel.readInt() != 0 ? (Parcelable) PendingIntent.CREATOR.createFromParcel(parcel) : null);
+        int iDataAvail = parcel.dataAvail();
+        if (iDataAvail > 0) {
+            throw new BadParcelableException(f34.f(iDataAvail, "Parcel data not fully consumed, unread size: "));
+        }
+        g12.R(statusCreateFromParcel, pendingIntent, this.e);
         return true;
     }
 }

@@ -14,6 +14,7 @@ import androidx.media3.exoplayer.ExoPlaybackException;
 import androidx.media3.ui.DefaultTimeBar;
 import androidx.recyclerview.widget.RecyclerView;
 import app.homemusic.R;
+import com.eddyizm.tempus.homemusic.WaveRetry;
 import com.eddyizm.tempus.model.Download;
 import com.eddyizm.tempus.ui.fragment.AlbumPageFragment;
 import com.eddyizm.tempus.ui.fragment.ArtistPageFragment;
@@ -23,10 +24,10 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.skydoves.colorpickerview.ColorPickerView;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.WeakHashMap;
 import java.util.concurrent.ConcurrentHashMap;
+import org.chromium.support_lib_boundary.WebSettingsBoundaryInterface;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
@@ -34,11 +35,15 @@ public final /* synthetic */ class a0 implements Runnable {
     public final /* synthetic */ int n;
     public final /* synthetic */ Object o;
 
-    public /* synthetic */ a0(q41 r1, int r2) {
+    public /* synthetic */ a0(q41 q41Var, int i) {
         this.n = 28;
-        this.o = r1;
+        this.o = q41Var;
     }
 
+    /* JADX WARN: Code duplicated, block: B:168:0x033e  */
+    /* JADX WARN: Code duplicated, block: B:171:0x0347 A[DONT_INVERT] */
+    /* JADX WARN: Code duplicated, block: B:172:0x0349 A[Catch: all -> 0x0378, LOOP:2: B:159:0x02f1->B:172:0x0349, LOOP_END, TryCatch #9 {all -> 0x0378, blocks: (B:156:0x02e3, B:159:0x02f1, B:161:0x0301, B:163:0x030b, B:165:0x0314, B:167:0x0323, B:169:0x0340, B:172:0x0349, B:173:0x034d, B:175:0x035f, B:179:0x0374, B:180:0x0377, B:174:0x0352), top: B:267:0x02e3, inners: #6 }] */
+    /* JADX WARN: Code duplicated, block: B:290:0x034d A[SYNTHETIC] */
     /* JADX WARN: Multi-variable type inference failed */
     /* JADX WARN: Type inference failed for: r3v1, types: [int] */
     /* JADX WARN: Type inference failed for: r3v2 */
@@ -52,448 +57,404 @@ public final /* synthetic */ class a0 implements Runnable {
     /* JADX WARN: Type inference failed for: r4v6 */
     @Override // java.lang.Runnable
     public final void run() {
-        int r1 = this.n;
-        int r5 = 2;
-        int r7 = 3;
-        boolean r9 = true;
-        int r10 = 0;
-        Object r0 = this.o;
-        switch(r1) {
-            case 0: goto L248;
-            case 1: goto L207;
-            case 2: goto L205;
-            case 3: goto L196;
-            case 4: goto L184;
-            case 5: goto L152;
-            case 6: goto L150;
-            case 7: goto L123;
-            case 8: goto L119;
-            case 9: goto L117;
-            case 10: goto L115;
-            case 11: goto L113;
-            case 12: goto L111;
-            case 13: goto L107;
-            case 14: goto L105;
-            case 15: goto L103;
-            case 16: goto L101;
-            case 17: goto L97;
-            case 18: goto L89;
-            case 19: goto L87;
-            case 20: goto L85;
-            case 21: goto L83;
-            case 22: goto L81;
-            case 23: goto L79;
-            case 24: goto L77;
-            case 25: goto L28;
-            case 26: goto L26;
-            case 27: goto L17;
-            case 28: goto L15;
-            default: goto L4;
-        };
-    L4:
-        sk3 r2 = (sk3) r0;
-        monitor-enter(r2);     // Catch: ExoPlaybackException -> L12
-        monitor-exit(r2);     // Catch: ExoPlaybackException -> L12
-        r2.a.c(r2.c, r2.d);     // Catch: Throwable -> L9
-        r2.a(true);     // Catch: ExoPlaybackException -> L12
-        return;
-    L9:
-        th = move-exception;
-        r2.a(true);     // Catch: ExoPlaybackException -> L12
-        throw th;     // Catch: ExoPlaybackException -> L12
-    L12:
-        e = move-exception;
-        l93.G("ExoPlayerImplInternal", "Unexpected error delivering message on external thread.", e);
-        er1.m(e);
-        return;
-    L15:
-        nj0 r3 = ((q41) r0).K;
-        r3.b0(r3.W(), 1034, new oi0(15));
-        return;
-    L17:
-        i41 r4 = (i41) r0;
-        c6 r6 = r4.D;
-        Context r8 = r4.f;
-        String r11 = f35.a;
-        int r12 = xl.n(r8).generateAudioSessionId();
-        if (r12 != (-1)) goto L21;
-        r12 = 0;
-    L21:
-        Integer r13 = Integer.valueOf(r12);
-        r6.f = r13;
-        wo r14 = new wo(r6, r13, r10);
-        yp4 r15 = (yp4) r6.c;
-        if (r15.a.getLooper().getThread().isAlive() == false) goto L295;
-        r15.d(r14);
-        return;
-    L295:
-        return;
-    L26:
-        ix0 r16 = (ix0) r0;
-        boolean r17 = r16.h.isPopupShowing();
-        r16.s(r17);
-        r16.m = r17;
-        return;
-    L28:
-        bu0 r18 = (bu0) r0;
-        r18.getClass();
-        if (ud3.o() != null) goto L31;
-        r18.f.i(-1);
-        return;
-    L31:
-        lg1 r19 = new lg1(10, (ss0) r18.c.o);
-        Thread r20 = new Thread(r19);
-        r20.start();
-        r20.join();     // Catch: InterruptedException -> L34
-    L36:
-        List r21 = (List) r19.p;
-        if (r21 != null) goto L39;
-    L75:
-        r18.f.i(0);
-        return;
-    L39:
-        if (r21.isEmpty() == true) goto L75;
-        ArrayList r22 = new ArrayList();
-        Iterator r23 = r21.iterator();
-    L43:
-        if (r23.hasNext() == false) goto L62;
-        Download r24 = (Download) r23.next();
-        String r25 = r24.getDownloadUri();
-        if (r25 == null) goto L43;
-        if (r25.isEmpty() == true) goto L43;
-        Uri r26 = Uri.parse(r25);
-        if (r26.getScheme() == null) goto L43;
-        if (r26.getScheme().equalsIgnoreCase("content") == false) goto L43;
-        Application r27 = r18.b;     // Catch: SecurityException -> L56
-        r27.getClass();     // Catch: SecurityException -> L56
-        af4 r28 = new af4();     // Catch: SecurityException -> L56
-        r28.b = r27;     // Catch: SecurityException -> L56
-        r28.c = r26;     // Catch: SecurityException -> L56
-    L57:
-        if (r28 == null) goto L60;
-        if (r28.b() == true) goto L43;
-    L60:
-        r22.add(r24);
-    L56:
-        r28 = null;
-        goto L57
-    L62:
-        if (r22.isEmpty() == true) goto L74;
-        ArrayList r29 = new ArrayList();
-        int r30 = r22.size();
-    L64:
-        if (r10 >= r30) goto L73;
-        Object r31 = r22.get(r10);
-        r10 = r10 + 1;
-        Download r32 = (Download) r31;
-        r29.add(r32.getId());
-        ConcurrentHashMap r33 = g51.a;
-        monitor-enter(g51.class);
-        String r34 = g51.a(r32.getArtist(), r32.getTitle(), r32.getAlbum());     // Catch: Throwable -> L70
-        g51.a.remove(r34);     // Catch: Throwable -> L70
-        j51.K(r34);     // Catch: Throwable -> L70
-        monitor-exit(g51.class);
-    L70:
-        th = move-exception;
-        throw th;
-    L73:
-        new Thread(new lg1(9, (ss0) r18.c.o, r29)).start();
-        g51.i();
-        r18.f.i(Integer.valueOf(r29.size()));
-        return;
-    L74:
-        r18.f.i(0);
-        return;
-    L34:
-        e = move-exception;
-        e.printStackTrace();
-        goto L36
-    L77:
-        ((la0) r0).d();
-        return;
-    L79:
-        ((zd0) r0).d();
-        return;
-    L81:
-        DirectoryFragment r35 = (DirectoryFragment) r0;
-        Toast.makeText(r35.Z(), r35.s(R.string.folder_play_no_songs), 0).show();
-        return;
-    L83:
-        ((tn0) r0).h.d();
-        return;
-    L85:
-        int r36 = DefaultTimeBar.f0;
-        ((DefaultTimeBar) r0).d(false);
-        return;
-    L87:
-        ((ik0) r0).d(null);
-        return;
-    L89:
-        jk0 r37 = (jk0) r0;
-        if (r37.p == true) goto L299;
-        pw0 r38 = r37.o;
-        if (r38 == null) goto L95;
-        r38.d(r37.n);
-    L95:
-        r37.q.n.remove(r37);
-        r37.p = true;
-        return;
-    L299:
-        return;
-    L97:
-        tj0 r39 = (tj0) r0;
-        if (r39.a0 < 300000) goto L300;
-        r39.n.n();
-        r39.a0 = 0;
-        return;
-    L300:
-        return;
-    L101:
-        nj0 r40 = (nj0) r0;
-        r40.b0(r40.W(), 1028, new jj0(r5));
-        r40.s.d();
-        return;
-    L103:
-        CredentialProviderCreatePublicKeyCredentialController.$r8$lambda$5hlDM94MjJzc7w2nd16ozsS7vqI((CredentialProviderCreatePublicKeyCredentialController) r0);
-        return;
-    L105:
-        n70.a((n70) r0);
-        return;
-    L107:
-        i70 r41 = (i70) r0;
-        Runnable r42 = r41.o;
-        if (r42 == null) goto L301;
-        r42.run();
-        r41.o = null;
-        return;
-    L301:
-        return;
-    L111:
-        ColorPickerView r43 = (ColorPickerView) r0;
-        int r44 = ColorPickerView.H;
-        r43.a(r43.getColor());
-        r43.f(r43.p);
-        return;
-    L113:
-        ((s30) r0).s(true);
-        return;
-    L115:
-        au r45 = (au) r0;
-        r45.g = null;
-        ((BottomSheetBehavior) r45.b).J(4);
-        return;
-    L117:
-        ((tc2) r0).f(-1, new kf2(6));
-        return;
-    L119:
-        kl r46 = (kl) r0;
-        if (r46.c.o == false) goto L302;
-        r46.a.n.w1(3, false);
-        return;
-    L302:
-        return;
-    L123:
-        cl r47 = (cl) r0;
-        Object r48 = r47.a;
-        monitor-enter(r48);
-    L129:
-        th = move-exception;
-        throw th;
-    L126:
-        if (r47.m == false) goto L131;
-        monitor-exit(r48);     // Catch: Throwable -> L129
-        return;
-    L131:
-        long r49 = r47.l - 1;     // Catch: Throwable -> L129
-        r47.l = r49;     // Catch: Throwable -> L129
-        if (r49 <= 0) goto L135;
-        monitor-exit(r48);     // Catch: Throwable -> L129
-        return;
-    L135:
-        if (r49 >= 0) goto L145;
-        IllegalStateException r50 = new IllegalStateException();     // Catch: Throwable -> L129
-        Object r51 = r47.a;     // Catch: Throwable -> L129
-        monitor-enter(r51);     // Catch: Throwable -> L129
-        r47.n = r50;     // Catch: Throwable -> L142
-        monitor-exit(r51);     // Catch: Throwable -> L142
-        monitor-exit(r48);     // Catch: Throwable -> L129
-        return;
-    L142:
-        th = move-exception;
-        throw th;     // Catch: Throwable -> L129
-    L145:
-        r47.a();     // Catch: Throwable -> L129
-        monitor-exit(r48);     // Catch: Throwable -> L129
-        return;
-    L150:
-        ArtistPageFragment r52 = (ArtistPageFragment) r0;
-        r52.l0.k.setVisibility(0);
-        r52.l0.p.setVisibility(8);
-        r52.l0.s.setVisibility(8);
-        r52.l0.r.setVisibility(8);
-        r52.l0.q.setVisibility(0);
-        r52.l0.t.setVisibility(8);
-        return;
-    L152:
-        lb r53 = (lb) r0;
-        boolean r54 = r53.e();
-        ra r55 = r53.n;
-        if (r54 == false) goto L306;
-        Trace.beginSection("ContentCapture:changeChecker");
-        r55.q(true);     // Catch: Throwable -> L181
-        i03 r56 = r53.x;     // Catch: Throwable -> L181
-        int[] r57 = r56.b;     // Catch: Throwable -> L181
-        long[] r58 = r56.a;     // Catch: Throwable -> L181
-        int r59 = r58.length - 2;     // Catch: Throwable -> L181
-        if (r59 < 0) goto L173;
-        int r60 = 0;
-    L159:
-        long r61 = r58[r60];     // Catch: Throwable -> L181
-        if (((((~r61) << 7) & r61) & (-9187201950435737472L)) == (-9187201950435737472L)) goto L171;
-        int r62 = 8 - ((~(r60 - r59)) >>> 31);     // Catch: Throwable -> L181
-        int r110 = r10;
-    L162:
-        if (r110 >= r62) goto L170;
-        if ((255 & r61) >= 128) goto L169;
-        int r111 = r57[(r60 << 3) + r110];     // Catch: Throwable -> L181
-        if (r53.d().a(r111) == true) goto L169;
-        r53.q.add(new yc0(r111, r53.w, zc0.o, null));     // Catch: Throwable -> L181
-        r53.u.d(j15.a);     // Catch: Throwable -> L181
-    L169:
-        r61 = r61 >> 8;     // Catch: Throwable -> L181
-        r110 = r110 + 1;     // Catch: Throwable -> L181
-        goto L162
-    L170:
-        if (r62 != 8) goto L173;
-    L171:
-        if (r60 == r59) goto L173;
-        r60 = r60 + 1;     // Catch: Throwable -> L181
-        r10 = 0;
-    L173:
-        Trace.beginSection("ContentCapture:sendAppearEvents");     // Catch: Throwable -> L181
-        r53.g(r55.getSemanticsOwner().a(), r53.y);     // Catch: Throwable -> L178
-        Trace.endSection();     // Catch: Throwable -> L181
-        r53.c(r53.d());     // Catch: Throwable -> L181
-        r53.l();     // Catch: Throwable -> L181
-        r53.z = false;     // Catch: Throwable -> L181
-        Trace.endSection();
-        return;
-    L178:
-        th = move-exception;
-        Trace.endSection();     // Catch: Throwable -> L181
-        throw th;     // Catch: Throwable -> L181
-    L181:
-        th = move-exception;
-        Trace.endSection();
-        throw th;
-    L306:
-        return;
-    L184:
-        ya r63 = (ya) r0;
-        Trace.beginSection("Compose:semantics:measureAndLayout");
-        r63.q.q(true);     // Catch: Throwable -> L193
-        Trace.endSection();
-        Trace.beginSection("Compose:semantics:checkForSemanticsChanges");
-        r63.n();     // Catch: Throwable -> L190
-        Trace.endSection();
-        r63.V = false;
-        return;
-    L190:
-        th = move-exception;
-        Trace.endSection();
-        throw th;
-    L193:
-        th = move-exception;
-        Trace.endSection();
-        throw th;
-    L196:
-        AlbumPageFragment r64 = (AlbumPageFragment) r0;
-        if (r64.l0 == null) goto L307;
-        int r65 = (int) r64.r().getDimension(R.dimen.bottom_sheet_behavior_peek_height);
-        View r66 = r64.X().getWindow().getDecorView();
-        WeakHashMap r67 = j65.a;
-        pb5 r68 = b65.a(r66);
-        if (r68 != null) goto L202;
-        int r112 = 0;
-    L203:
-        RecyclerView r69 = (RecyclerView) r64.l0.q;
-        r69.setPadding(r69.getPaddingLeft(), ((RecyclerView) r64.l0.q).getPaddingTop(), ((RecyclerView) r64.l0.q).getPaddingRight(), r112 + r65);
-        return;
-    L202:
-        r112 = r68.a.h(519).d;
-        goto L203
-    L307:
-        return;
-    L205:
-        ((AlbumBottomSheetDialog) r0).o0();
-        return;
-    L207:
-        Activity r70 = (Activity) r0;
-        if (r70.isFinishing() == true) goto L308;
-        Handler r71 = n5.g;
-        Method r72 = n5.f;
-        Application r73 = Build.VERSION.SDK_INT;
-        if (r73 < 28) goto L212;
-        r70.recreate();
-        return;
-    L212:
-        m5 r74 = 27;
-        if (r73 == 26) goto L215;
-        if (r73 == 27) goto L215;
-    L218:
-        if (n5.e == null) goto L220;
-    L264:
-        Object r113 = n5.c.get(r70);     // Catch: Throwable -> L250
-        if (r113 == null) goto L246;
-        Object r75 = n5.b.get(r70);     // Catch: Throwable -> L250
-        if (r75 == null) goto L246;
-        r73 = r70.getApplication();     // Catch: Throwable -> L250
-        r74 = new m5(r70);     // Catch: Throwable -> L250
-        r73.registerActivityLifecycleCallbacks(r74);     // Catch: Throwable -> L250
-        r71.post(new lg1(r5, r74, r113));     // Catch: Throwable -> L250
-        if (r73 == 26) goto L265;
-        if (r73 == 27) goto L265;
-        r9 = false;
-    L265:
-        if (r9 == true) goto L268;
-        r70.recreate();     // Catch: Throwable -> L238
-    L243:
-        r71.post(new lg1(r7, r73, r74));     // Catch: Throwable -> L250
-        return;
-    L268:
-        Boolean r114 = Boolean.FALSE;     // Catch: Throwable -> L240
-        r72.invoke(r75, new Object[]{r113, null, null, 0, r114, null, null, r114, r114});     // Catch: Throwable -> L238
-    L240:
-        th = th;
-        ?? r76 = r73;
-        ?? r77 = r74;
-    L244:
-        r71.post(new lg1(r7, r76, r77));     // Catch: Throwable -> L250
-        throw th;     // Catch: Throwable -> L250
-    L238:
-        th = th;
-        r76 = r73;
-        r77 = r74;
-    L246:
-        r70.recreate();
-        return;
-    L220:
-        if (n5.d != null) goto L264;
-    L215:
-        if (r72 != null) goto L218;
-    L308:
-        return;
-    L248:
-        ((b0) r0).b();
+        Object obj;
+        ?? r4;
+        ?? r3;
+        af4 af4Var;
+        int i = this.n;
+        int i2 = 2;
+        int i3 = 3;
+        boolean z = true;
+        int i4 = 0;
+        Object obj2 = this.o;
+        switch (i) {
+            case 0:
+                ((b0) obj2).b();
+                return;
+            case 1:
+                Activity activity = (Activity) obj2;
+                if (activity.isFinishing()) {
+                    return;
+                }
+                Handler handler = n5.g;
+                Method method = n5.f;
+                Application application = Build.VERSION.SDK_INT;
+                if (application >= 28) {
+                    activity.recreate();
+                    return;
+                }
+                m5 m5Var = 27;
+                if (((application != 26 && application != 27) || method != null) && (n5.e != null || n5.d != null)) {
+                    try {
+                        Object obj3 = n5.c.get(activity);
+                        if (obj3 != null && (obj = n5.b.get(activity)) != null) {
+                            application = activity.getApplication();
+                            m5Var = new m5(activity);
+                            application.registerActivityLifecycleCallbacks(m5Var);
+                            handler.post(new lg1(i2, m5Var, obj3));
+                            if (application != 26 && application != 27) {
+                                z = false;
+                            }
+                            try {
+                                if (z) {
+                                    try {
+                                        Boolean bool = Boolean.FALSE;
+                                        method.invoke(obj, obj3, null, null, 0, bool, null, null, bool, bool);
+                                    } catch (Throwable th) {
+                                        th = th;
+                                        r3 = application;
+                                        r4 = m5Var;
+                                        handler.post(new lg1(i3, (Object) r3, (Object) r4));
+                                        throw th;
+                                    }
+                                } else {
+                                    activity.recreate();
+                                }
+                                handler.post(new lg1(i3, application, m5Var));
+                                return;
+                            } catch (Throwable th2) {
+                                th = th2;
+                                r3 = application;
+                                r4 = m5Var;
+                            }
+                        }
+                    } catch (Throwable unused) {
+                    }
+                }
+                activity.recreate();
+                return;
+            case 2:
+                ((AlbumBottomSheetDialog) obj2).o0();
+                return;
+            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
+                AlbumPageFragment albumPageFragment = (AlbumPageFragment) obj2;
+                if (albumPageFragment.l0 == null) {
+                    return;
+                }
+                int dimension = (int) albumPageFragment.r().getDimension(R.dimen.bottom_sheet_behavior_peek_height);
+                View decorView = albumPageFragment.X().getWindow().getDecorView();
+                WeakHashMap weakHashMap = j65.a;
+                pb5 pb5VarA = b65.a(decorView);
+                int i5 = pb5VarA == null ? 0 : pb5VarA.a.h(519).d;
+                RecyclerView recyclerView = (RecyclerView) albumPageFragment.l0.q;
+                recyclerView.setPadding(recyclerView.getPaddingLeft(), ((RecyclerView) albumPageFragment.l0.q).getPaddingTop(), ((RecyclerView) albumPageFragment.l0.q).getPaddingRight(), i5 + dimension);
+                return;
+            case 4:
+                ya yaVar = (ya) obj2;
+                Trace.beginSection("Compose:semantics:measureAndLayout");
+                try {
+                    yaVar.q.q(true);
+                    Trace.endSection();
+                    Trace.beginSection("Compose:semantics:checkForSemanticsChanges");
+                    try {
+                        yaVar.n();
+                        Trace.endSection();
+                        yaVar.V = false;
+                        return;
+                    } catch (Throwable th3) {
+                        Trace.endSection();
+                        throw th3;
+                    }
+                } catch (Throwable th4) {
+                    Trace.endSection();
+                    throw th4;
+                }
+            case 5:
+                lb lbVar = (lb) obj2;
+                boolean zE = lbVar.e();
+                ra raVar = lbVar.n;
+                if (zE) {
+                    Trace.beginSection("ContentCapture:changeChecker");
+                    try {
+                        raVar.q(true);
+                        i03 i03Var = lbVar.x;
+                        int[] iArr = i03Var.b;
+                        long[] jArr = i03Var.a;
+                        int length = jArr.length - 2;
+                        if (length >= 0) {
+                            int i6 = 0;
+                            while (true) {
+                                long j = jArr[i6];
+                                if ((((~j) << 7) & j & (-9187201950435737472L)) != -9187201950435737472L) {
+                                    int i7 = 8 - ((~(i6 - length)) >>> 31);
+                                    for (int i8 = i4; i8 < i7; i8++) {
+                                        if ((255 & j) < 128) {
+                                            int i9 = iArr[(i6 << 3) + i8];
+                                            if (!lbVar.d().a(i9)) {
+                                                lbVar.q.add(new yc0(i9, lbVar.w, zc0.o, null));
+                                                lbVar.u.d(j15.a);
+                                            }
+                                        }
+                                        j >>= 8;
+                                    }
+                                    if (i7 == 8) {
+                                        if (i6 != length) {
+                                            i6++;
+                                            i4 = 0;
+                                        }
+                                    }
+                                } else if (i6 != length) {
+                                    i6++;
+                                    i4 = 0;
+                                }
+                            }
+                        }
+                        Trace.beginSection("ContentCapture:sendAppearEvents");
+                        try {
+                            lbVar.g(raVar.getSemanticsOwner().a(), lbVar.y);
+                            Trace.endSection();
+                            lbVar.c(lbVar.d());
+                            lbVar.l();
+                            lbVar.z = false;
+                            return;
+                        } finally {
+                            Trace.endSection();
+                        }
+                    } catch (Throwable th5) {
+                        Trace.endSection();
+                        throw th5;
+                    }
+                }
+                return;
+            case 6:
+                ArtistPageFragment artistPageFragment = (ArtistPageFragment) obj2;
+                artistPageFragment.l0.k.setVisibility(0);
+                artistPageFragment.l0.p.setVisibility(8);
+                artistPageFragment.l0.s.setVisibility(8);
+                artistPageFragment.l0.r.setVisibility(8);
+                artistPageFragment.l0.q.setVisibility(0);
+                artistPageFragment.l0.t.setVisibility(8);
+                return;
+            case 7:
+                cl clVar = (cl) obj2;
+                synchronized (clVar.a) {
+                    try {
+                        if (clVar.m) {
+                            return;
+                        }
+                        long j2 = clVar.l - 1;
+                        clVar.l = j2;
+                        if (j2 > 0) {
+                            return;
+                        }
+                        if (j2 >= 0) {
+                            clVar.a();
+                            return;
+                        }
+                        IllegalStateException illegalStateException = new IllegalStateException();
+                        synchronized (clVar.a) {
+                            clVar.n = illegalStateException;
+                            break;
+                        }
+                        return;
+                    } catch (Throwable th6) {
+                        throw th6;
+                    }
+                }
+            case 8:
+                kl klVar = (kl) obj2;
+                if (klVar.c.o) {
+                    klVar.a.n.w1(3, false);
+                    return;
+                }
+                return;
+            case 9:
+                ((tc2) obj2).f(-1, new kf2(6));
+                return;
+            case 10:
+                au auVar = (au) obj2;
+                auVar.g = null;
+                ((BottomSheetBehavior) auVar.b).J(4);
+                return;
+            case 11:
+                ((s30) obj2).s(true);
+                return;
+            case 12:
+                ColorPickerView colorPickerView = (ColorPickerView) obj2;
+                int i10 = ColorPickerView.H;
+                colorPickerView.a(colorPickerView.getColor());
+                colorPickerView.f(colorPickerView.p);
+                return;
+            case 13:
+                i70 i70Var = (i70) obj2;
+                Runnable runnable = i70Var.o;
+                if (runnable != null) {
+                    runnable.run();
+                    i70Var.o = null;
+                    return;
+                }
+                return;
+            case 14:
+                n70.a((n70) obj2);
+                return;
+            case 15:
+                CredentialProviderCreatePublicKeyCredentialController.handleResponse$lambda$0((CredentialProviderCreatePublicKeyCredentialController) obj2);
+                return;
+            case WaveRetry.MAX_FAILURES /* 16 */:
+                nj0 nj0Var = (nj0) obj2;
+                nj0Var.b0(nj0Var.W(), 1028, new jj0(i2));
+                nj0Var.s.d();
+                return;
+            case 17:
+                tj0 tj0Var = (tj0) obj2;
+                if (tj0Var.a0 >= 300000) {
+                    tj0Var.n.n();
+                    tj0Var.a0 = 0L;
+                    return;
+                }
+                return;
+            case 18:
+                jk0 jk0Var = (jk0) obj2;
+                if (jk0Var.p) {
+                    return;
+                }
+                pw0 pw0Var = jk0Var.o;
+                if (pw0Var != null) {
+                    pw0Var.d(jk0Var.n);
+                }
+                jk0Var.q.n.remove(jk0Var);
+                jk0Var.p = true;
+                return;
+            case 19:
+                ((ik0) obj2).d(null);
+                return;
+            case 20:
+                int i11 = DefaultTimeBar.f0;
+                ((DefaultTimeBar) obj2).d(false);
+                return;
+            case 21:
+                ((tn0) obj2).h.d();
+                return;
+            case 22:
+                DirectoryFragment directoryFragment = (DirectoryFragment) obj2;
+                Toast.makeText(directoryFragment.Z(), directoryFragment.s(R.string.folder_play_no_songs), 0).show();
+                return;
+            case 23:
+                ((zd0) obj2).d();
+                return;
+            case 24:
+                ((la0) obj2).d();
+                return;
+            case 25:
+                bu0 bu0Var = (bu0) obj2;
+                bu0Var.getClass();
+                if (ud3.o() == null) {
+                    bu0Var.f.i(-1);
+                    return;
+                }
+                lg1 lg1Var = new lg1(10, (ss0) bu0Var.c.o);
+                Thread thread = new Thread(lg1Var);
+                thread.start();
+                try {
+                    thread.join();
+                    break;
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                List<Download> list = (List) lg1Var.p;
+                if (list == null || list.isEmpty()) {
+                    bu0Var.f.i(0);
+                    return;
+                }
+                ArrayList arrayList = new ArrayList();
+                for (Download download : list) {
+                    String downloadUri = download.getDownloadUri();
+                    if (downloadUri != null && !downloadUri.isEmpty()) {
+                        Uri uri = Uri.parse(downloadUri);
+                        if (uri.getScheme() != null && uri.getScheme().equalsIgnoreCase("content")) {
+                            try {
+                                Application application2 = bu0Var.b;
+                                application2.getClass();
+                                af4Var = new af4();
+                                af4Var.b = application2;
+                                af4Var.c = uri;
+                            } catch (SecurityException unused2) {
+                                af4Var = null;
+                            }
+                            if (af4Var == null || !af4Var.b()) {
+                                arrayList.add(download);
+                            }
+                            break;
+                        }
+                    }
+                }
+                if (arrayList.isEmpty()) {
+                    bu0Var.f.i(0);
+                    return;
+                }
+                ArrayList arrayList2 = new ArrayList();
+                int size = arrayList.size();
+                while (i4 < size) {
+                    Object obj4 = arrayList.get(i4);
+                    i4++;
+                    Download download2 = (Download) obj4;
+                    arrayList2.add(download2.getId());
+                    ConcurrentHashMap concurrentHashMap = g51.a;
+                    synchronized (g51.class) {
+                        String strA = g51.a(download2.getArtist(), download2.getTitle(), download2.getAlbum());
+                        g51.a.remove(strA);
+                        j51.K(strA);
+                        break;
+                    }
+                }
+                new Thread(new lg1(9, (ss0) bu0Var.c.o, arrayList2)).start();
+                g51.i();
+                bu0Var.f.i(Integer.valueOf(arrayList2.size()));
+                return;
+            case 26:
+                ix0 ix0Var = (ix0) obj2;
+                boolean zIsPopupShowing = ix0Var.h.isPopupShowing();
+                ix0Var.s(zIsPopupShowing);
+                ix0Var.m = zIsPopupShowing;
+                return;
+            case 27:
+                i41 i41Var = (i41) obj2;
+                c6 c6Var = i41Var.D;
+                Context context = i41Var.f;
+                String str = f35.a;
+                int iGenerateAudioSessionId = xl.n(context).generateAudioSessionId();
+                if (iGenerateAudioSessionId == -1) {
+                    iGenerateAudioSessionId = 0;
+                }
+                Integer numValueOf = Integer.valueOf(iGenerateAudioSessionId);
+                c6Var.f = numValueOf;
+                wo woVar = new wo(c6Var, numValueOf, i4);
+                yp4 yp4Var = (yp4) c6Var.c;
+                if (yp4Var.a.getLooper().getThread().isAlive()) {
+                    yp4Var.d(woVar);
+                    return;
+                }
+                return;
+            case 28:
+                nj0 nj0Var2 = ((q41) obj2).K;
+                nj0Var2.b0(nj0Var2.W(), 1034, new oi0(15));
+                return;
+            default:
+                sk3 sk3Var = (sk3) obj2;
+                try {
+                    synchronized (sk3Var) {
+                    }
+                    try {
+                        sk3Var.a.c(sk3Var.c, sk3Var.d);
+                        return;
+                    } finally {
+                        sk3Var.a(true);
+                    }
+                } catch (ExoPlaybackException e2) {
+                    l93.G("ExoPlayerImplInternal", "Unexpected error delivering message on external thread.", e2);
+                    er1.m(e2);
+                    return;
+                }
+        }
     }
 
-    public /* synthetic */ a0(int r1, Object r2) {
-        this.n = r1;
-        this.o = r2;
+    public /* synthetic */ a0(int i, Object obj) {
+        this.n = i;
+        this.o = obj;
     }
 
-    public /* synthetic */ a0(q41 r1, sk3 r2) {
+    public /* synthetic */ a0(q41 q41Var, sk3 sk3Var) {
         this.n = 29;
-        this.o = r2;
+        this.o = sk3Var;
     }
 }

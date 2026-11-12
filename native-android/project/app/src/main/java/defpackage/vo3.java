@@ -8,7 +8,7 @@ public final enum vo3 extends zo3 {
     }
 
     @Override // defpackage.ro3
-    public final boolean apply(Object r1) {
+    public final boolean apply(Object obj) {
         return true;
     }
 

@@ -8,7 +8,7 @@ import java.util.Map;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public abstract class jy implements u32, Serializable {
-    public static final Object NO_RECEIVER = null;
+    public static final Object NO_RECEIVER = iy.n;
     private final boolean isTopLevel;
     private final String name;
     private final Class owner;
@@ -16,36 +16,32 @@ public abstract class jy implements u32, Serializable {
     private transient u32 reflected;
     private final String signature;
 
-    static {
-        NO_RECEIVER = iy.n;
-    }
-
-    public jy(Object r1, Class r2, String r3, String r4, boolean r5) {
-        this.receiver = r1;
-        this.owner = r2;
-        this.name = r3;
-        this.signature = r4;
-        this.isTopLevel = r5;
+    public jy(Object obj, Class cls, String str, String str2, boolean z) {
+        this.receiver = obj;
+        this.owner = cls;
+        this.name = str;
+        this.signature = str2;
+        this.isTopLevel = z;
     }
 
     @Override // defpackage.u32
-    public Object call(Object... r1) {
-        return getReflected().call(r1);
+    public Object call(Object... objArr) {
+        return getReflected().call(objArr);
     }
 
     @Override // defpackage.u32
-    public Object callBy(Map r1) {
-        return getReflected().callBy(r1);
+    public Object callBy(Map map) {
+        return getReflected().callBy(map);
     }
 
     public u32 compute() {
-        u32 r0 = this.reflected;
-        if (r0 != null) goto L6;
-        u32 r1 = computeReflected();
-        this.reflected = r1;
-        return r1;
-    L6:
-        return r0;
+        u32 u32Var = this.reflected;
+        if (u32Var != null) {
+            return u32Var;
+        }
+        u32 u32VarComputeReflected = computeReflected();
+        this.reflected = u32VarComputeReflected;
+        return u32VarComputeReflected;
     }
 
     public abstract u32 computeReflected();
@@ -64,15 +60,15 @@ public abstract class jy implements u32, Serializable {
     }
 
     public v32 getOwner() {
-        Class r0 = this.owner;
-        if (r0 != null) goto L7;
-        return null;
-    L7:
-        if (this.isTopLevel == false) goto L11;
+        Class cls = this.owner;
+        if (cls == null) {
+            return null;
+        }
+        if (!this.isTopLevel) {
+            return kx3.a(cls);
+        }
         kx3.a.getClass();
-        return new zb3(r0);
-    L11:
-        return kx3.a(r0);
+        return new zb3(cls);
     }
 
     @Override // defpackage.u32

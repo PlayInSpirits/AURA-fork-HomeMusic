@@ -7,51 +7,47 @@ public final /* synthetic */ class jl3 implements if1 {
     public final /* synthetic */ long o;
     public final /* synthetic */ String p;
 
-    public /* synthetic */ jl3(int r1, long r2, String r4) {
-        this.n = r1;
-        this.o = r2;
-        this.p = r4;
+    public /* synthetic */ jl3(int i, long j, String str) {
+        this.n = i;
+        this.o = j;
+        this.p = str;
     }
 
     @Override // defpackage.if1
-    public final Object invoke(Object r8) {
-        int r0 = this.n;
-        String r4 = this.p;
-        long r5 = this.o;
-        x34 r9 = (x34) r8;
-        switch(r0) {
-            case 0: goto L16;
-            default: goto L4;
-        };
-    L4:
-        z34 r7 = r9.U("UPDATE queue SET last_play=? WHERE id=?");
-        r7.c(1, r5);     // Catch: Throwable -> L8
-        if (r4 != null) goto L10;
-        r7.e(2);     // Catch: Throwable -> L8
-    L11:
-        r7.O();     // Catch: Throwable -> L8
-        r7.close();
-        return null;
-    L10:
-        r7.r(2, r4);     // Catch: Throwable -> L8
-    L8:
-        th = move-exception;
-        r7.close();
-        throw th;
-    L16:
-        z34 r10 = r9.U("UPDATE playlist SET lastPlayed = ? WHERE id = ?");
-        r10.c(1, r5);     // Catch: Throwable -> L20
-        if (r4 != null) goto L22;
-        r10.e(2);     // Catch: Throwable -> L20
-    L23:
-        r10.O();     // Catch: Throwable -> L20
-        r10.close();
-        return null;
-    L22:
-        r10.r(2, r4);     // Catch: Throwable -> L20
-    L20:
-        th = move-exception;
-        r10.close();
-        throw th;
+    public final Object invoke(Object obj) throws Exception {
+        int i = this.n;
+        String str = this.p;
+        long j = this.o;
+        x34 x34Var = (x34) obj;
+        switch (i) {
+            case 0:
+                z34 z34VarU = x34Var.U("UPDATE playlist SET lastPlayed = ? WHERE id = ?");
+                try {
+                    z34VarU.c(1, j);
+                    if (str == null) {
+                        z34VarU.e(2);
+                    } else {
+                        z34VarU.r(2, str);
+                    }
+                    z34VarU.O();
+                    return null;
+                } finally {
+                    z34VarU.close();
+                }
+            default:
+                z34 z34VarU2 = x34Var.U("UPDATE queue SET last_play=? WHERE id=?");
+                try {
+                    z34VarU2.c(1, j);
+                    if (str == null) {
+                        z34VarU2.e(2);
+                    } else {
+                        z34VarU2.r(2, str);
+                    }
+                    z34VarU2.O();
+                    return null;
+                } finally {
+                    z34VarU2.close();
+                }
+        }
     }
 }

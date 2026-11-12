@@ -11,48 +11,32 @@ public final class ej0 {
     public final int d;
     public final int e;
 
-    public ej0(String r3, tb1 r4, tb1 r5, int r6, int r7) {
-        if (r6 == 0) goto L7;
-        if (r7 == 0) goto L7;
-        boolean r1 = false;
-    L8:
-        rr2.l(r1);
-        rr2.l(true ^ TextUtils.isEmpty(r3));
-        this.a = r3;
-        r4.getClass();
-        this.b = r4;
-        r5.getClass();
-        this.c = r5;
-        this.d = r6;
-        this.e = r7;
-        return;
-    L7:
-        r1 = true;
-        goto L8
+    public ej0(String str, tb1 tb1Var, tb1 tb1Var2, int i, int i2) {
+        rr2.l(i == 0 || i2 == 0);
+        rr2.l(true ^ TextUtils.isEmpty(str));
+        this.a = str;
+        tb1Var.getClass();
+        this.b = tb1Var;
+        tb1Var2.getClass();
+        this.c = tb1Var2;
+        this.d = i;
+        this.e = i2;
     }
 
-    public final boolean equals(Object r5) {
-        if (this != r5) goto L6;
-        return true;
-    L6:
-        if (r5 != null) goto L8;
-    L21:
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj != null && ej0.class == obj.getClass()) {
+            ej0 ej0Var = (ej0) obj;
+            if (this.d == ej0Var.d && this.e == ej0Var.e && this.a.equals(ej0Var.a) && this.b.equals(ej0Var.b) && this.c.equals(ej0Var.c)) {
+                return true;
+            }
+        }
         return false;
-    L8:
-        if (ej0.class != r5.getClass()) goto L21;
-        ej0 r6 = (ej0) r5;
-        if (this.d != r6.d) goto L21;
-        if (this.e != r6.e) goto L21;
-        if (this.a.equals(r6.a) == false) goto L21;
-        if (this.b.equals(r6.b) == false) goto L21;
-        if (this.c.equals(r6.c) == false) goto L21;
-        return true;
     }
 
     public final int hashCode() {
-        int r0 = (((527 + this.d) * 31) + this.e) * 31;
-        int r1 = f34.e(this.a, r0, 31);
-        int r2 = (this.b.hashCode() + r1) * 31;
-        return this.c.hashCode() + r2;
+        return this.c.hashCode() + ((this.b.hashCode() + f34.e(this.a, (((527 + this.d) * 31) + this.e) * 31, 31)) * 31);
     }
 }

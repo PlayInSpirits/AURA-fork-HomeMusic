@@ -7,9 +7,9 @@ public final class lk2 {
     public final /* synthetic */ int b;
     public final /* synthetic */ ok2 c;
 
-    public lk2(ok2 r1, ak2 r2, int r3, long r4) {
-        this.c = r1;
-        this.a = r2;
-        this.b = r3;
+    public lk2(ok2 ok2Var, ak2 ak2Var, int i, long j) {
+        this.c = ok2Var;
+        this.a = ak2Var;
+        this.b = i;
     }
 }

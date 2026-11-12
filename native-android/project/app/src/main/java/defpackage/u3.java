@@ -7,24 +7,20 @@ import android.view.accessibility.AccessibilityNodeInfo;
 public final class u3 {
     public final Object a;
 
-    public /* synthetic */ u3(Object r1) {
-        this.a = r1;
+    public /* synthetic */ u3(Object obj) {
+        this.a = obj;
     }
 
-    public static u3 a(int r1, int r2, int r3, int r4, boolean r5, boolean r6) {
-        return new u3(AccessibilityNodeInfo.CollectionItemInfo.obtain(r1, r2, r3, r4, r5, r6));
+    public static u3 a(int i, int i2, int i3, int i4, boolean z, boolean z2) {
+        return new u3(AccessibilityNodeInfo.CollectionItemInfo.obtain(i, i2, i3, i4, z, z2));
     }
 
     public Object b() {
-        if (au0.F != null) goto L5;
-        au0.F = new jh5();
-    L5:
-        Object r1 = au0.E;
-        monitor-enter(r1);
-        monitor-exit(r1);     // Catch: Throwable -> L10
+        if (au0.F == null) {
+            au0.F = new jh5();
+        }
+        synchronized (au0.E) {
+        }
         throw new IllegalStateException("Must call PhenotypeContext.setContext() first");
-    L10:
-        th = move-exception;
-        throw th;
     }
 }

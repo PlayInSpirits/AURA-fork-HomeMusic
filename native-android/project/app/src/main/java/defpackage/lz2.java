@@ -11,48 +11,43 @@ import java.util.List;
 public final class lz2 implements uw4 {
     public final List b;
 
-    public lz2(uw4... r2) {
-        if (r2.length == 0) goto L6;
-        this.b = Arrays.asList(r2);
-        return;
-    L6:
-        kf2.n("MultiTransformation must contain at least one Transformation");
-        throw null;
+    public lz2(uw4... uw4VarArr) {
+        if (uw4VarArr.length != 0) {
+            this.b = Arrays.asList(uw4VarArr);
+        } else {
+            kf2.n("MultiTransformation must contain at least one Transformation");
+            throw null;
+        }
     }
 
     @Override // defpackage.uw4
-    public final q04 a(Context r4, q04 r5, int r6, int r7) {
-        Iterator r3 = this.b.iterator();
-        q04 r0 = r5;
-    L4:
-        if (r3.hasNext() == false) goto L13;
-        q04 r1 = ((uw4) r3.next()).a(r4, r0, r6, r7);
-        if (r0 == null) goto L12;
-        if (r0.equals(r5) == true) goto L12;
-        if (r0.equals(r1) == true) goto L12;
-        r0.b();
-    L12:
-        r0 = r1;
-        goto L4
-    L13:
-        return r0;
+    public final q04 a(Context context, q04 q04Var, int i, int i2) {
+        Iterator it = this.b.iterator();
+        q04 q04Var2 = q04Var;
+        while (it.hasNext()) {
+            q04 q04VarA = ((uw4) it.next()).a(context, q04Var2, i, i2);
+            if (q04Var2 != null && !q04Var2.equals(q04Var) && !q04Var2.equals(q04VarA)) {
+                q04Var2.b();
+            }
+            q04Var2 = q04VarA;
+        }
+        return q04Var2;
     }
 
     @Override // defpackage.f42
-    public final void b(MessageDigest r2) {
-        Iterator r1 = this.b.iterator();
-    L4:
-        if (r1.hasNext() == false) goto L6;
-        ((uw4) r1.next()).b(r2);
-        goto L4
+    public final void b(MessageDigest messageDigest) {
+        Iterator it = this.b.iterator();
+        while (it.hasNext()) {
+            ((uw4) it.next()).b(messageDigest);
+        }
     }
 
     @Override // defpackage.f42
-    public final boolean equals(Object r2) {
-        if ((r2 instanceof lz2) == true) goto L5;
+    public final boolean equals(Object obj) {
+        if (obj instanceof lz2) {
+            return this.b.equals(((lz2) obj).b);
+        }
         return false;
-    L5:
-        return this.b.equals(((lz2) r2).b);
     }
 
     @Override // defpackage.f42

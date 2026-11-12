@@ -10,8 +10,8 @@ public final class ff1 {
     public boolean b;
     public final ArrayList c;
 
-    public ff1(Executor r1, c70 r2) {
-        r1.getClass();
+    public ff1(Executor executor, c70 c70Var) {
+        executor.getClass();
         this.a = new Object();
         this.c = new ArrayList();
     }

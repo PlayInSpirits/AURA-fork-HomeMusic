@@ -19,271 +19,216 @@ import java.util.WeakHashMap;
 public final class rf implements r83, fv2 {
     public final /* synthetic */ bg n;
 
-    public /* synthetic */ rf(bg r1) {
-        this.n = r1;
+    public /* synthetic */ rf(bg bgVar) {
+        this.n = bgVar;
     }
 
     @Override // defpackage.fv2
-    public void a(qu2 r9, boolean r10) {
-        qu2 r0 = r9.k();
-        int r1 = 0;
-        if (r0 == r9) goto L5;
-        boolean r3 = true;
-    L6:
-        if (r3 == false) goto L8;
-        r9 = r0;
-    L8:
-        bg r8 = this.n;
-        ag[] r4 = r8.Y;
-        if (r4 == null) goto L11;
-        int r5 = r4.length;
-    L12:
-        if (r1 >= r5) goto L19;
-        ag r6 = r4[r1];
-        if (r6 == null) goto L18;
-        if (r6.h != r9) goto L18;
-    L20:
-        if (r6 == null) goto L31;
-        if (r3 == false) goto L24;
-        r8.u(r6.a, r6, r0);
-        r8.w(r6, true);
-        return;
-    L24:
-        r8.w(r6, r10);
-        return;
-    L31:
-        return;
-    L18:
-        r1 = r1 + 1;
-        goto L12
-    L19:
-        r6 = null;
-        goto L20
-    L11:
-        r5 = 0;
-        goto L12
-    L5:
-        r3 = false;
-        goto L6
+    public void a(qu2 qu2Var, boolean z) {
+        ag agVar;
+        qu2 qu2VarK = qu2Var.k();
+        int i = 0;
+        boolean z2 = qu2VarK != qu2Var;
+        if (z2) {
+            qu2Var = qu2VarK;
+        }
+        bg bgVar = this.n;
+        ag[] agVarArr = bgVar.Y;
+        int length = agVarArr != null ? agVarArr.length : 0;
+        while (true) {
+            if (i < length) {
+                agVar = agVarArr[i];
+                if (agVar != null && agVar.h == qu2Var) {
+                    break;
+                } else {
+                    i++;
+                }
+            } else {
+                agVar = null;
+                break;
+            }
+        }
+        if (agVar != null) {
+            if (!z2) {
+                bgVar.w(agVar, z);
+            } else {
+                bgVar.u(agVar.a, agVar, qu2VarK);
+                bgVar.w(agVar, true);
+            }
+        }
     }
 
     @Override // defpackage.fv2
-    public boolean w(qu2 r2) {
-        if (r2 != r2.k()) goto L13;
-        bg r1 = this.n;
-        if (r1.S == false) goto L14;
-        Window.Callback r0 = r1.y.getCallback();
-        if (r0 != null) goto L9;
-        return true;
-    L9:
-        if (r1.d0 == true) goto L16;
-        r0.onMenuOpened(108, r2);
-        return true;
-    L16:
-        return true;
-    L14:
-        return true;
-    L13:
+    public boolean w(qu2 qu2Var) {
+        Window.Callback callback;
+        if (qu2Var != qu2Var.k()) {
+            return true;
+        }
+        bg bgVar = this.n;
+        if (!bgVar.S || (callback = bgVar.y.getCallback()) == null || bgVar.d0) {
+            return true;
+        }
+        callback.onMenuOpened(108, qu2Var);
         return true;
     }
 
     @Override // defpackage.r83
-    public pb5 x(View r17, pb5 r18) {
-        int r3 = r18.d();
-        bg r4 = this.n;
-        Context r5 = r4.x;
-        int r6 = r18.d();
-        ActionBarContextView r0 = r4.H;
-        if (r0 != null) goto L5;
-    L80:
-        int r7 = 0;
-        int r8 = 8;
-        boolean r1 = false;
-    L81:
-        View r9 = r4.P;
-        if (r9 == null) goto L86;
-        if (r1 == false) goto L85;
-        r8 = r7;
-    L85:
-        r9.setVisibility(r8);
-    L86:
-        if (r3 == r6) goto L107;
-        int r2 = r18.b();
-        int r10 = r18.c();
-        int r11 = r18.a();
-        int r12 = Build.VERSION.SDK_INT;
-        if (r12 < 36) goto L91;
-        bb5 r13 = new ab5(r18);
-    L106:
-        r13.h(vz1.b(r2, r6, r10, r11));
-        pb5 r14 = r13.b();
-    L108:
-        WeakHashMap r15 = j65.a;
-        WindowInsets r16 = r14.f();
-        if (r16 == null) goto L118;
-        WindowInsets r19 = r17.onApplyWindowInsets(r16);
-        if (r19.equals(r16) == false) goto L113;
-        return r14;
-    L113:
-        return pb5.g(r19, r17);
-    L118:
-        return r14;
-    L91:
-        if (r12 < 35) goto L94;
-        r13 = new za5(r18);
-        goto L106
-    L94:
-        if (r12 < 34) goto L97;
-        r13 = new ya5(r18);
-        goto L106
-    L97:
-        if (r12 < 31) goto L100;
-        r13 = new xa5(r18);
-        goto L106
-    L100:
-        if (r12 < 30) goto L103;
-        r13 = new wa5(r18);
-        goto L106
-    L103:
-        if (r12 < 29) goto L105;
-        r13 = new va5(r18);
-        goto L106
-    L105:
-        r13 = new ua5(r18);
-        goto L106
-    L107:
-        r14 = r18;
-        goto L108
-    L5:
-        if ((r0.getLayoutParams() instanceof ViewGroup.MarginLayoutParams) == false) goto L80;
-        ViewGroup.MarginLayoutParams r110 = (ViewGroup.MarginLayoutParams) r4.H.getLayoutParams();
-        boolean r111 = true;
-        if (r4.H.isShown() == true) goto L9;
-        r8 = 8;
-        r7 = 0;
-        if (r110.topMargin == 0) goto L77;
-        r110.topMargin = 0;
-        r1 = false;
-    L78:
-        if (r111 == false) goto L81;
-        r4.H.setLayoutParams(r110);
-        goto L81
-    L77:
-        r1 = false;
-        r111 = false;
-        goto L78
-    L9:
-        if (r4.p0 != null) goto L11;
-        r4.p0 = new Rect();
-        r4.q0 = new Rect();
-    L11:
-        Rect r112 = r4.p0;
-        Rect r20 = r4.q0;
-        r112.set(r18.b(), r18.d(), r18.c(), r18.a());
-        ViewGroup r21 = r4.N;
-        if (Build.VERSION.SDK_INT < 29) goto L15;
-        boolean r113 = e85.a;
-        a85.a(r21, r112, r20);
-    L28:
-        int r22 = r112.top;
-        int r23 = r112.left;
-        int r24 = r112.right;
-        ViewGroup r25 = r4.N;
-        WeakHashMap r114 = j65.a;
-        pb5 r26 = b65.a(r25);
-        if (r26 != null) goto L31;
-        int r115 = 0;
-    L32:
-        if (r26 != null) goto L34;
-        int r27 = 0;
-    L36:
-        if (r110.topMargin == r22) goto L38;
-    L43:
-        r110.topMargin = r22;
-        r110.leftMargin = r23;
-        r110.rightMargin = r24;
-        boolean r28 = true;
-    L44:
-        if (r22 > 0) goto L46;
-    L48:
-        r8 = 8;
-        View r29 = r4.P;
-        if (r29 == null) goto L57;
-        ViewGroup.MarginLayoutParams r30 = (ViewGroup.MarginLayoutParams) r29.getLayoutParams();
-        int r116 = r30.height;
-        int r117 = r110.topMargin;
-        if (r116 == r117) goto L53;
-    L56:
-        r30.height = r117;
-        r30.leftMargin = r115;
-        r30.rightMargin = r27;
-        r4.P.setLayoutParams(r30);
-        goto L57
-    L53:
-        if (r30.leftMargin != r115) goto L56;
-        if (r30.rightMargin != r27) goto L56;
-    L57:
-        View r31 = r4.P;
-        if (r31 != null) goto L61;
-        r111 = false;
-    L61:
-        if (r111 == false) goto L70;
-        if (r31.getVisibility() == 0) goto L70;
-        View r32 = r4.P;
-        if ((r32.getWindowSystemUiVisibility() & 8192) == 0) goto L67;
-        int r33 = r5.getColor(R.color.abc_decor_view_status_guard_light);
-    L68:
-        r32.setBackgroundColor(r33);
-        goto L70
-    L67:
-        r33 = r5.getColor(R.color.abc_decor_view_status_guard);
-    L70:
-        if (r4.U == true) goto L73;
-        if (r111 == false) goto L73;
-        r6 = 0;
-    L73:
-        r7 = 0;
-        r1 = r111;
-        r111 = r28;
-        goto L78
-    L46:
-        if (r4.P != null) goto L48;
-        View r34 = new View(r5);
-        r4.P = r34;
-        r8 = 8;
-        r34.setVisibility(8);
-        FrameLayout.LayoutParams r35 = new FrameLayout.LayoutParams(-1, r110.topMargin, 51);
-        r35.leftMargin = r115;
-        r35.rightMargin = r27;
-        r4.N.addView(r4.P, -1, r35);
-        goto L57
-    L38:
-        if (r110.leftMargin != r23) goto L43;
-        if (r110.rightMargin != r24) goto L43;
-        r28 = false;
-        goto L44
-    L34:
-        r27 = r26.c();
-        goto L36
-    L31:
-        r115 = r26.b();
-        goto L32
-    L15:
-        if (e85.a == true) goto L22;
-        e85.a = true;
-        Method r36 = View.class.getDeclaredMethod("computeFitSystemWindows", new Class[]{Rect.class, Rect.class});     // Catch: NoSuchMethodException -> L21
-        e85.b = r36;     // Catch: NoSuchMethodException -> L21
-        if (r36.isAccessible() == true) goto L22;
-        e85.b.setAccessible(true);     // Catch: NoSuchMethodException -> L21
-    L21:
-        Log.d("ViewUtils", "Could not find method computeFitSystemWindows. Oh well.");
-    L22:
-        Method r37 = e85.b;
-        if (r37 == null) goto L28;
-        r37.invoke(r21, new Object[]{r112, r20});     // Catch: Exception -> L26
-    L26:
-        e = move-exception;
-        Log.d("ViewUtils", "Could not invoke computeFitSystemWindows", e);
-        goto L28
+    public pb5 x(View view, pb5 pb5Var) {
+        int i;
+        int i2;
+        boolean z;
+        pb5 pb5VarB;
+        bb5 va5Var;
+        boolean z2;
+        int iD = pb5Var.d();
+        bg bgVar = this.n;
+        Context context = bgVar.x;
+        int iD2 = pb5Var.d();
+        ActionBarContextView actionBarContextView = bgVar.H;
+        if (actionBarContextView == null || !(actionBarContextView.getLayoutParams() instanceof ViewGroup.MarginLayoutParams)) {
+            i = 0;
+            i2 = 8;
+            z = false;
+        } else {
+            ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) bgVar.H.getLayoutParams();
+            boolean z3 = true;
+            if (bgVar.H.isShown()) {
+                if (bgVar.p0 == null) {
+                    bgVar.p0 = new Rect();
+                    bgVar.q0 = new Rect();
+                }
+                Rect rect = bgVar.p0;
+                Rect rect2 = bgVar.q0;
+                rect.set(pb5Var.b(), pb5Var.d(), pb5Var.c(), pb5Var.a());
+                ViewGroup viewGroup = bgVar.N;
+                if (Build.VERSION.SDK_INT >= 29) {
+                    boolean z4 = e85.a;
+                    a85.a(viewGroup, rect, rect2);
+                } else {
+                    if (!e85.a) {
+                        e85.a = true;
+                        try {
+                            Method declaredMethod = View.class.getDeclaredMethod("computeFitSystemWindows", Rect.class, Rect.class);
+                            e85.b = declaredMethod;
+                            if (!declaredMethod.isAccessible()) {
+                                e85.b.setAccessible(true);
+                            }
+                        } catch (NoSuchMethodException unused) {
+                            Log.d("ViewUtils", "Could not find method computeFitSystemWindows. Oh well.");
+                        }
+                    }
+                    Method method = e85.b;
+                    if (method != null) {
+                        try {
+                            method.invoke(viewGroup, rect, rect2);
+                        } catch (Exception e) {
+                            Log.d("ViewUtils", "Could not invoke computeFitSystemWindows", e);
+                        }
+                    }
+                }
+                int i3 = rect.top;
+                int i4 = rect.left;
+                int i5 = rect.right;
+                ViewGroup viewGroup2 = bgVar.N;
+                WeakHashMap weakHashMap = j65.a;
+                pb5 pb5VarA = b65.a(viewGroup2);
+                int iB = pb5VarA == null ? 0 : pb5VarA.b();
+                int iC = pb5VarA == null ? 0 : pb5VarA.c();
+                if (marginLayoutParams.topMargin == i3 && marginLayoutParams.leftMargin == i4 && marginLayoutParams.rightMargin == i5) {
+                    z2 = false;
+                } else {
+                    marginLayoutParams.topMargin = i3;
+                    marginLayoutParams.leftMargin = i4;
+                    marginLayoutParams.rightMargin = i5;
+                    z2 = true;
+                }
+                if (i3 <= 0 || bgVar.P != null) {
+                    i2 = 8;
+                    View view2 = bgVar.P;
+                    if (view2 != null) {
+                        ViewGroup.MarginLayoutParams marginLayoutParams2 = (ViewGroup.MarginLayoutParams) view2.getLayoutParams();
+                        int i6 = marginLayoutParams2.height;
+                        int i7 = marginLayoutParams.topMargin;
+                        if (i6 != i7 || marginLayoutParams2.leftMargin != iB || marginLayoutParams2.rightMargin != iC) {
+                            marginLayoutParams2.height = i7;
+                            marginLayoutParams2.leftMargin = iB;
+                            marginLayoutParams2.rightMargin = iC;
+                            bgVar.P.setLayoutParams(marginLayoutParams2);
+                        }
+                    }
+                } else {
+                    View view3 = new View(context);
+                    bgVar.P = view3;
+                    i2 = 8;
+                    view3.setVisibility(8);
+                    FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(-1, marginLayoutParams.topMargin, 51);
+                    layoutParams.leftMargin = iB;
+                    layoutParams.rightMargin = iC;
+                    bgVar.N.addView(bgVar.P, -1, layoutParams);
+                }
+                View view4 = bgVar.P;
+                z3 = view4 != null;
+                if (z3 && view4.getVisibility() != 0) {
+                    View view5 = bgVar.P;
+                    view5.setBackgroundColor((view5.getWindowSystemUiVisibility() & 8192) != 0 ? context.getColor(R.color.abc_decor_view_status_guard_light) : context.getColor(R.color.abc_decor_view_status_guard));
+                }
+                if (!bgVar.U && z3) {
+                    iD2 = 0;
+                }
+                i = 0;
+                z = z3;
+                z3 = z2;
+            } else {
+                i2 = 8;
+                i = 0;
+                if (marginLayoutParams.topMargin != 0) {
+                    marginLayoutParams.topMargin = 0;
+                    z = false;
+                } else {
+                    z = false;
+                    z3 = false;
+                }
+            }
+            if (z3) {
+                bgVar.H.setLayoutParams(marginLayoutParams);
+            }
+        }
+        View view6 = bgVar.P;
+        if (view6 != null) {
+            if (z) {
+                i2 = i;
+            }
+            view6.setVisibility(i2);
+        }
+        if (iD != iD2) {
+            int iB2 = pb5Var.b();
+            int iC2 = pb5Var.c();
+            int iA = pb5Var.a();
+            int i8 = Build.VERSION.SDK_INT;
+            if (i8 >= 36) {
+                va5Var = new ab5(pb5Var);
+            } else if (i8 >= 35) {
+                va5Var = new za5(pb5Var);
+            } else if (i8 >= 34) {
+                va5Var = new ya5(pb5Var);
+            } else if (i8 >= 31) {
+                va5Var = new xa5(pb5Var);
+            } else if (i8 >= 30) {
+                va5Var = new wa5(pb5Var);
+            } else {
+                va5Var = i8 >= 29 ? new va5(pb5Var) : new ua5(pb5Var);
+            }
+            va5Var.h(vz1.b(iB2, iD2, iC2, iA));
+            pb5VarB = va5Var.b();
+        } else {
+            pb5VarB = pb5Var;
+        }
+        WeakHashMap weakHashMap2 = j65.a;
+        WindowInsets windowInsetsF = pb5VarB.f();
+        if (windowInsetsF == null) {
+            return pb5VarB;
+        }
+        WindowInsets windowInsetsOnApplyWindowInsets = view.onApplyWindowInsets(windowInsetsF);
+        return !windowInsetsOnApplyWindowInsets.equals(windowInsetsF) ? pb5.g(windowInsetsOnApplyWindowInsets, view) : pb5VarB;
     }
 }

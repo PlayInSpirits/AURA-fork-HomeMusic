@@ -7,8 +7,8 @@ import java.io.Serializable;
 public final class si5 extends oi5 implements Serializable {
     public final oi5 n;
 
-    public si5(oi5 r1) {
-        this.n = r1;
+    public si5(oi5 oi5Var) {
+        this.n = oi5Var;
     }
 
     @Override // defpackage.oi5
@@ -17,19 +17,19 @@ public final class si5 extends oi5 implements Serializable {
     }
 
     @Override // java.util.Comparator
-    public final int compare(Object r1, Object r2) {
-        return this.n.compare(r2, r1);
+    public final int compare(Object obj, Object obj2) {
+        return this.n.compare(obj2, obj);
     }
 
     @Override // java.util.Comparator
-    public final boolean equals(Object r2) {
-        if (r2 != this) goto L6;
-        return true;
-    L6:
-        if ((r2 instanceof si5) == true) goto L8;
+    public final boolean equals(Object obj) {
+        if (obj == this) {
+            return true;
+        }
+        if (obj instanceof si5) {
+            return this.n.equals(((si5) obj).n);
+        }
         return false;
-    L8:
-        return this.n.equals(((si5) r2).n);
     }
 
     public final int hashCode() {

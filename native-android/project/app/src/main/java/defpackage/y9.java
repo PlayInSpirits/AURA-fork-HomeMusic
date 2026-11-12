@@ -15,70 +15,48 @@ public final class y9 extends vn implements t91 {
     public final j03 t;
     public boolean u;
 
-    public y9(qr2 r1, l94 r2, ra r3, yv3 r4, String r5) {
-        this.n = r1;
-        this.o = r2;
-        this.p = r3;
-        this.q = r4;
-        this.r = r5;
+    public y9(qr2 qr2Var, l94 l94Var, ra raVar, yv3 yv3Var, String str) {
+        this.n = qr2Var;
+        this.o = l94Var;
+        this.p = raVar;
+        this.q = yv3Var;
+        this.r = str;
         new Rect();
-        j3.o(r3);
-        hg3 r6 = bu.l(r3);
-        if (r6 == null) goto L5;
-        AutofillId r7 = tn.f(r6.o);
-    L6:
-        if (r7 == null) goto L10;
-        this.s = r7;
+        raVar.setImportantForAutofill(1);
+        hg3 hg3VarL = bu.l(raVar);
+        AutofillId autofillIdF = hg3VarL != null ? tn.f(hg3VarL.o) : null;
+        if (autofillIdF == null) {
+            throw xa3.l("Required value was null.");
+        }
+        this.s = autofillIdF;
         this.t = new j03();
-        return;
-    L10:
-        throw xa3.l("Required value was null.");
-    L5:
-        r7 = null;
-        goto L6
     }
 
     @Override // defpackage.t91
-    public final void a(ba1 r10, ba1 r11) {
-        ra r0 = this.p;
-        qr2 r1 = this.n;
-        if (r10 == null) goto L11;
-        c72 r12 = j51.O(r10);
-        if (r12 == null) goto L11;
-        e94 r3 = r12.v();
-        if (r3 == null) goto L11;
-        if (jz4.c(r3) != true) goto L11;
-        int r13 = r12.o;
-        gm0.u(r1.k(), r0, r13);
-    L11:
-        if (r11 == null) goto L24;
-        c72 r14 = j51.O(r11);
-        if (r14 == null) goto L25;
-        e94 r15 = r14.v();
-        if (r15 != null) goto L17;
-        return;
-    L17:
-        if (jz4.c(r15) != true) goto L27;
-        int r16 = r14.o;
-        yv3 r9 = this.q;
-        c72 r17 = (c72) r9.a.b(r16);
-        if (r17 != null) goto L21;
-        return;
-    L21:
-        if (r17.t == (-4)) goto L29;
-        ue1 r4 = r9.c;
-        int r18 = r9.e(r17);
-        long[] r19 = (long[]) r4.p;
-        long r5 = r19[r18];
-        long r6 = r19[r18 + 1];
-        Rect r7 = new Rect((int) (r5 >> 32), (int) r5, (int) (r6 >> 32), (int) r6);
-        rg3.n(r1.k(), r0, r16, r7);
-        return;
-    L29:
-        return;
-    L27:
-        return;
-    L25:
-        return;
+    public final void a(ba1 ba1Var, ba1 ba1Var2) {
+        c72 c72VarO;
+        e94 e94VarV;
+        c72 c72VarO2;
+        e94 e94VarV2;
+        ra raVar = this.p;
+        qr2 qr2Var = this.n;
+        if (ba1Var != null && (c72VarO2 = j51.O(ba1Var)) != null && (e94VarV2 = c72VarO2.v()) != null && jz4.c(e94VarV2)) {
+            qr2Var.k().notifyViewExited(raVar, c72VarO2.o);
+        }
+        if (ba1Var2 == null || (c72VarO = j51.O(ba1Var2)) == null || (e94VarV = c72VarO.v()) == null || !jz4.c(e94VarV)) {
+            return;
+        }
+        int i = c72VarO.o;
+        yv3 yv3Var = this.q;
+        c72 c72Var = (c72) yv3Var.a.b(i);
+        if (c72Var == null || c72Var.t == -4) {
+            return;
+        }
+        ue1 ue1Var = yv3Var.c;
+        int iE = yv3Var.e(c72Var);
+        long[] jArr = (long[]) ue1Var.p;
+        long j = jArr[iE];
+        long j2 = jArr[iE + 1];
+        qr2Var.k().notifyViewEntered(raVar, i, new Rect((int) (j >> 32), (int) j, (int) (j2 >> 32), (int) j2));
     }
 }

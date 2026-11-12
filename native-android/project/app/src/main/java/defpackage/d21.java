@@ -14,29 +14,26 @@ public class d21 extends DialogFragment {
     public DialogInterface.OnCancelListener o;
     public AlertDialog p;
 
-    public d21() {
-    }
-
     @Override // android.app.DialogFragment, android.content.DialogInterface.OnCancelListener
-    public final void onCancel(DialogInterface r1) {
-        DialogInterface.OnCancelListener r0 = this.o;
-        if (r0 == null) goto L6;
-        r0.onCancel(r1);
-        return;
+    public final void onCancel(DialogInterface dialogInterface) {
+        DialogInterface.OnCancelListener onCancelListener = this.o;
+        if (onCancelListener != null) {
+            onCancelListener.onCancel(dialogInterface);
+        }
     }
 
     @Override // android.app.DialogFragment
-    public final Dialog onCreateDialog(Bundle r2) {
-        Dialog r3 = this.n;
-        if (r3 != null) goto L9;
+    public final Dialog onCreateDialog(Bundle bundle) {
+        Dialog dialog = this.n;
+        if (dialog != null) {
+            return dialog;
+        }
         setShowsDialog(false);
-        if (this.p != null) goto L8;
-        Activity r0 = getActivity();
-        ji2.m(r0);
-        this.p = new AlertDialog.Builder(r0).create();
-    L8:
+        if (this.p == null) {
+            Activity activity = getActivity();
+            ji2.m(activity);
+            this.p = new AlertDialog.Builder(activity).create();
+        }
         return this.p;
-    L9:
-        return r3;
     }
 }

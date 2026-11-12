@@ -6,41 +6,36 @@ import java.util.concurrent.locks.LockSupport;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public abstract class e12 extends AtomicReference implements Runnable {
-    public static final wz0 n = null;
-    public static final wz0 o = null;
+    public static final wz0 n;
+    public static final wz0 o;
 
     static {
-        int r1 = 1;
-        n = new wz0(r1);
-        o = new wz0(r1);
+        int i = 1;
+        n = new wz0(i);
+        o = new wz0(i);
     }
 
-    public abstract void a(Throwable r1);
+    public abstract void a(Throwable th);
 
-    public abstract void b(Object r1);
+    public abstract void b(Object obj);
 
     public final void c() {
-        wz0 r0 = o;
-        wz0 r1 = n;
-        Runnable r2 = (Runnable) get();
-        if ((r2 instanceof Thread) == false) goto L16;
-        d12 r3 = new d12(this);
-        d12.a(r3, Thread.currentThread());
-        if (compareAndSet(r2, r3) == false) goto L19;
-        ((Thread) r2).interrupt();     // Catch: Throwable -> L11
-        if (((Runnable) getAndSet(r1)) != r0) goto L20;
-        LockSupport.unpark((Thread) r2);
-        return;
-    L20:
-        return;
-    L11:
-        th = move-exception;
-        if (((Runnable) getAndSet(r1)) != r0) goto L15;
-        LockSupport.unpark((Thread) r2);
-    L15:
-        throw th;
-    L19:
-        return;
+        wz0 wz0Var = o;
+        wz0 wz0Var2 = n;
+        Runnable runnable = (Runnable) get();
+        if (runnable instanceof Thread) {
+            d12 d12Var = new d12(this);
+            d12.a(d12Var, Thread.currentThread());
+            if (compareAndSet(runnable, d12Var)) {
+                try {
+                    ((Thread) runnable).interrupt();
+                } finally {
+                    if (((Runnable) getAndSet(wz0Var2)) == wz0Var) {
+                        LockSupport.unpark((Thread) runnable);
+                    }
+                }
+            }
+        }
     }
 
     public abstract boolean d();
@@ -49,107 +44,93 @@ public abstract class e12 extends AtomicReference implements Runnable {
 
     public abstract String f();
 
-    public final void g(Thread r9) {
-        Runnable r0 = (Runnable) get();
-        d12 r2 = null;
-        boolean r3 = false;
-        int r4 = 0;
-    L3:
-        boolean r5 = r0 instanceof d12;
-        wz0 r6 = o;
-        if (r5 == true) goto L10;
-        if (r0 == r6) goto L10;
-        if (r3 == false) goto L30;
-        r9.interrupt();
-        return;
-    L30:
-        return;
-    L10:
-        if (r5 == false) goto L12;
-        r2 = (d12) r0;
-    L12:
-        r4 = r4 + 1;
-        if (r4 <= 1000) goto L24;
-        if (r0 == r6) goto L18;
-        if (compareAndSet(r0, r6) == true) goto L18;
-    L25:
-        r0 = (Runnable) get();
-    L18:
-        if (Thread.interrupted() == true) goto L22;
-        if (r3 == true) goto L22;
-        r3 = false;
-    L23:
-        LockSupport.park(r2);
-    L22:
-        r3 = true;
-        goto L23
-    L24:
-        Thread.yield();
-        goto L25
+    public final void g(Thread thread) {
+        Runnable runnable = (Runnable) get();
+        d12 d12Var = null;
+        boolean z = false;
+        int i = 0;
+        while (true) {
+            boolean z2 = runnable instanceof d12;
+            wz0 wz0Var = o;
+            if (!z2 && runnable != wz0Var) {
+                break;
+            }
+            if (z2) {
+                d12Var = (d12) runnable;
+            }
+            i++;
+            if (i <= 1000) {
+                Thread.yield();
+            } else if (runnable == wz0Var || compareAndSet(runnable, wz0Var)) {
+                z = Thread.interrupted() || z;
+                LockSupport.park(d12Var);
+            }
+            runnable = (Runnable) get();
+        }
+        if (z) {
+            thread.interrupt();
+        }
     }
 
     @Override // java.lang.Runnable
     public final void run() {
-        Thread r0 = Thread.currentThread();
-        Object r1 = null;
-        if (compareAndSet(null, r0) == false) goto L38;
-        boolean r2 = d();
-        wz0 r3 = n;
-        if (r2 == true) goto L26;
-        r1 = e();     // Catch: Throwable -> L9
-    L9:
-        th = move-exception;
-    L18:
-        th = move-exception;
-        if (compareAndSet(r0, r3) == true) goto L22;
-        g(r0);
-    L22:
-        if (r2 == true) goto L24;
-        b(null);
-    L24:
-        throw th;
-    L11:
-        if ((th instanceof InterruptedException) == false) goto L14;
-        Thread.currentThread().interrupt();     // Catch: Throwable -> L18
-    L14:
-        if (compareAndSet(r0, r3) == true) goto L16;
-        g(r0);
-    L16:
-        if (r2 == true) goto L35;
-        a(th);
-        return;
-    L35:
-        return;
-    L26:
-        if (compareAndSet(r0, r3) == true) goto L28;
-        g(r0);
-    L28:
-        if (r2 == true) goto L37;
-        b(r1);
-        return;
-    L37:
-        return;
+        Thread threadCurrentThread = Thread.currentThread();
+        Object objE = null;
+        if (compareAndSet(null, threadCurrentThread)) {
+            boolean zD = d();
+            wz0 wz0Var = n;
+            if (!zD) {
+                try {
+                    objE = e();
+                } catch (Throwable th) {
+                    try {
+                        if (th instanceof InterruptedException) {
+                            Thread.currentThread().interrupt();
+                        }
+                        if (!compareAndSet(threadCurrentThread, wz0Var)) {
+                            g(threadCurrentThread);
+                        }
+                        if (zD) {
+                            return;
+                        }
+                        a(th);
+                        return;
+                    } catch (Throwable th2) {
+                        if (!compareAndSet(threadCurrentThread, wz0Var)) {
+                            g(threadCurrentThread);
+                        }
+                        if (!zD) {
+                            b(null);
+                        }
+                        throw th2;
+                    }
+                }
+            }
+            if (!compareAndSet(threadCurrentThread, wz0Var)) {
+                g(threadCurrentThread);
+            }
+            if (zD) {
+                return;
+            }
+            b(objE);
+        }
     }
 
     @Override // java.util.concurrent.atomic.AtomicReference
     public final String toString() {
-        Runnable r0 = (Runnable) get();
-        if (r0 != n) goto L6;
-        String r1 = "running=[DONE]";
-    L12:
-        StringBuilder r2 = b11.s(r1, ", ");
-        r2.append(f());
-        return r2.toString();
-    L6:
-        if ((r0 instanceof d12) == false) goto L9;
-        r1 = "running=[INTERRUPTED]";
-        goto L12
-    L9:
-        if ((r0 instanceof Thread) == false) goto L11;
-        r1 = "running=[RUNNING ON " + ((Thread) r0).getName() + "]";
-        goto L12
-    L11:
-        r1 = "running=[NOT STARTED YET]";
-        goto L12
+        String str;
+        Runnable runnable = (Runnable) get();
+        if (runnable == n) {
+            str = "running=[DONE]";
+        } else if (runnable instanceof d12) {
+            str = "running=[INTERRUPTED]";
+        } else if (runnable instanceof Thread) {
+            str = "running=[RUNNING ON " + ((Thread) runnable).getName() + "]";
+        } else {
+            str = "running=[NOT STARTED YET]";
+        }
+        StringBuilder sbS = b11.s(str, ", ");
+        sbS.append(f());
+        return sbS.toString();
     }
 }

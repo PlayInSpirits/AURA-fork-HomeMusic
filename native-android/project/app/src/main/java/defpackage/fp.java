@@ -15,52 +15,40 @@ public abstract class fp implements im {
     public boolean h;
 
     public fp() {
-        ByteBuffer r0 = im.a;
-        this.f = r0;
-        this.g = r0;
-        gm r1 = gm.e;
-        this.d = r1;
-        this.e = r1;
-        this.b = r1;
-        this.c = r1;
+        ByteBuffer byteBuffer = im.a;
+        this.f = byteBuffer;
+        this.g = byteBuffer;
+        gm gmVar = gm.e;
+        this.d = gmVar;
+        this.e = gmVar;
+        this.b = gmVar;
+        this.c = gmVar;
     }
 
-    public abstract gm a(gm r1);
+    public abstract gm a(gm gmVar);
 
     @Override // defpackage.im
     public boolean b() {
-        if (this.e == gm.e) goto L6;
-        return true;
-    L6:
-        return false;
+        return this.e != gm.e;
     }
 
     @Override // defpackage.im
     public boolean c() {
-        if (this.h == true) goto L5;
-        return false;
-    L5:
-        if (this.g != im.a) goto L10;
-        return true;
-    L10:
-        return false;
+        return this.h && this.g == im.a;
     }
 
     @Override // defpackage.im
     public ByteBuffer d() {
-        ByteBuffer r0 = this.g;
+        ByteBuffer byteBuffer = this.g;
         this.g = im.a;
-        return r0;
+        return byteBuffer;
     }
 
     @Override // defpackage.im
-    public final gm f(gm r1) {
-        this.d = r1;
-        this.e = a(r1);
-        if (b() == false) goto L7;
-        return this.e;
-    L7:
-        return gm.e;
+    public final gm f(gm gmVar) {
+        this.d = gmVar;
+        this.e = a(gmVar);
+        return b() ? this.e : gm.e;
     }
 
     @Override // defpackage.im
@@ -87,29 +75,28 @@ public abstract class fp implements im {
     public void k() {
     }
 
-    public final ByteBuffer l(int r2) {
-        if (this.f.capacity() >= r2) goto L5;
-        this.f = ByteBuffer.allocateDirect(r2).order(ByteOrder.nativeOrder());
-    L6:
-        ByteBuffer r3 = this.f;
-        this.g = r3;
-        return r3;
-    L5:
-        this.f.clear();
-        goto L6
+    public final ByteBuffer l(int i) {
+        if (this.f.capacity() < i) {
+            this.f = ByteBuffer.allocateDirect(i).order(ByteOrder.nativeOrder());
+        } else {
+            this.f.clear();
+        }
+        ByteBuffer byteBuffer = this.f;
+        this.g = byteBuffer;
+        return byteBuffer;
     }
 
     @Override // defpackage.im
     public final void reset() {
-        ByteBuffer r0 = im.a;
-        this.g = r0;
+        ByteBuffer byteBuffer = im.a;
+        this.g = byteBuffer;
         this.h = false;
-        this.f = r0;
-        gm r1 = gm.e;
-        this.d = r1;
-        this.e = r1;
-        this.b = r1;
-        this.c = r1;
+        this.f = byteBuffer;
+        gm gmVar = gm.e;
+        this.d = gmVar;
+        this.e = gmVar;
+        this.b = gmVar;
+        this.c = gmVar;
         k();
     }
 }

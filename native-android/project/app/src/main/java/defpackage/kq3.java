@@ -15,79 +15,72 @@ public final class kq3 extends o01 {
     public static final class a extends o01 {
         final /* synthetic */ lq3 this$0;
 
-        public a(lq3 r1) {
-            this.this$0 = r1;
+        public a(lq3 lq3Var) {
+            this.this$0 = lq3Var;
         }
 
         @Override // android.app.Application.ActivityLifecycleCallbacks
-        public void onActivityPostResumed(Activity r1) {
-            r1.getClass();
+        public void onActivityPostResumed(Activity activity) {
+            activity.getClass();
             this.this$0.a();
         }
 
         @Override // android.app.Application.ActivityLifecycleCallbacks
-        public void onActivityPostStarted(Activity r2) {
-            r2.getClass();
-            lq3 r1 = this.this$0;
-            int r3 = r1.n + 1;
-            r1.n = r3;
-            if (r3 == 1) goto L5;
-            return;
-        L5:
-            if (r1.q == false) goto L9;
-            r1.s.d(q92.ON_START);
-            r1.q = false;
-            return;
+        public void onActivityPostStarted(Activity activity) {
+            activity.getClass();
+            lq3 lq3Var = this.this$0;
+            int i = lq3Var.n + 1;
+            lq3Var.n = i;
+            if (i == 1 && lq3Var.q) {
+                lq3Var.s.d(q92.ON_START);
+                lq3Var.q = false;
+            }
         }
     }
 
-    public kq3(lq3 r1) {
-        this.this$0 = r1;
+    public kq3(lq3 lq3Var) {
+        this.this$0 = lq3Var;
     }
 
     @Override // defpackage.o01, android.app.Application.ActivityLifecycleCallbacks
-    public void onActivityCreated(Activity r2, Bundle r3) {
-        r2.getClass();
-        if (Build.VERSION.SDK_INT >= 29) goto L6;
-        int r4 = mz3.o;
-        Fragment r5 = r2.getFragmentManager().findFragmentByTag("androidx.lifecycle.LifecycleDispatcher.report_fragment_tag");
-        r5.getClass();
-        si1 r1 = this.this$0.u;
-        ((mz3) r5).n = r1;
-        return;
+    public void onActivityCreated(Activity activity, Bundle bundle) {
+        activity.getClass();
+        if (Build.VERSION.SDK_INT < 29) {
+            int i = mz3.o;
+            Fragment fragmentFindFragmentByTag = activity.getFragmentManager().findFragmentByTag("androidx.lifecycle.LifecycleDispatcher.report_fragment_tag");
+            fragmentFindFragmentByTag.getClass();
+            ((mz3) fragmentFindFragmentByTag).n = this.this$0.u;
+        }
     }
 
     @Override // defpackage.o01, android.app.Application.ActivityLifecycleCallbacks
-    public void onActivityPaused(Activity r3) {
-        r3.getClass();
-        lq3 r2 = this.this$0;
-        int r4 = r2.o - 1;
-        r2.o = r4;
-        if (r4 != 0) goto L6;
-        Handler r5 = r2.r;
-        r5.getClass();
-        r5.postDelayed(r2.t, 700);
-        return;
+    public void onActivityPaused(Activity activity) {
+        activity.getClass();
+        lq3 lq3Var = this.this$0;
+        int i = lq3Var.o - 1;
+        lq3Var.o = i;
+        if (i == 0) {
+            Handler handler = lq3Var.r;
+            handler.getClass();
+            handler.postDelayed(lq3Var.t, 700L);
+        }
     }
 
     @Override // android.app.Application.ActivityLifecycleCallbacks
-    public void onActivityPreCreated(Activity r1, Bundle r2) {
-        r1.getClass();
-        yh.l(r1, new a(this.this$0));
+    public void onActivityPreCreated(Activity activity, Bundle bundle) {
+        activity.getClass();
+        yh.l(activity, new a(this.this$0));
     }
 
     @Override // defpackage.o01, android.app.Application.ActivityLifecycleCallbacks
-    public void onActivityStopped(Activity r2) {
-        r2.getClass();
-        lq3 r1 = this.this$0;
-        int r3 = r1.n - 1;
-        r1.n = r3;
-        if (r3 == 0) goto L5;
-        return;
-    L5:
-        if (r1.p == false) goto L9;
-        r1.s.d(q92.ON_STOP);
-        r1.q = true;
-        return;
+    public void onActivityStopped(Activity activity) {
+        activity.getClass();
+        lq3 lq3Var = this.this$0;
+        int i = lq3Var.n - 1;
+        lq3Var.n = i;
+        if (i == 0 && lq3Var.p) {
+            lq3Var.s.d(q92.ON_STOP);
+            lq3Var.q = true;
+        }
     }
 }

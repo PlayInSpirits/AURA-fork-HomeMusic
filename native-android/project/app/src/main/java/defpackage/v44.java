@@ -9,27 +9,27 @@ public final class v44 implements xr0 {
     public final /* synthetic */ Object b;
     public final /* synthetic */ a54 c;
 
-    public v44(w44 r1, Object r2, a54 r3) {
-        this.a = r1;
-        this.b = r2;
-        this.c = r3;
+    public v44(w44 w44Var, Object obj, a54 a54Var) {
+        this.a = w44Var;
+        this.b = obj;
+        this.c = a54Var;
     }
 
     @Override // defpackage.xr0
     public final void a() {
-        w44 r0 = this.a;
-        w03 r1 = r0.o;
-        Object r2 = this.b;
-        Object r3 = r1.j(r2);
-        a54 r4 = this.c;
-        if (r3 != r4) goto L10;
-        Map r5 = r0.n;
-        Map r6 = r4.c();
-        if (r6.isEmpty() == false) goto L8;
-        r5.remove(r2);
-        return;
-    L8:
-        r5.put(r2, r6);
-        return;
+        w44 w44Var = this.a;
+        w03 w03Var = w44Var.o;
+        Object obj = this.b;
+        Object objJ = w03Var.j(obj);
+        a54 a54Var = this.c;
+        if (objJ == a54Var) {
+            Map map = w44Var.n;
+            Map mapC = a54Var.c();
+            if (mapC.isEmpty()) {
+                map.remove(obj);
+            } else {
+                map.put(obj, mapC);
+            }
+        }
     }
 }

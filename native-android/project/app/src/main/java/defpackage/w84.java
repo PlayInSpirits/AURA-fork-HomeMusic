@@ -9,34 +9,30 @@ public final class w84 implements tx {
     public long q;
     public int r;
 
-    public w84(kt0 r1, long r2, int r4, long r5, int r7) {
-        this.n = r1;
-        this.o = r2;
-        this.p = r4;
-        this.q = r5;
-        this.r = r7;
+    public w84(kt0 kt0Var, long j, int i, long j2, int i2) {
+        this.n = kt0Var;
+        this.o = j;
+        this.p = i;
+        this.q = j2;
+        this.r = i2;
     }
 
     public final float a() {
-        long r2 = this.o;
-        if (r2 != (-1)) goto L5;
-    L8:
-        int r0 = this.p;
-        if (r0 != 0) goto L11;
+        long j = this.o;
+        if (j != -1 && j != 0) {
+            return f35.U(this.q, j);
+        }
+        int i = this.p;
+        if (i != 0) {
+            return f35.U(this.r, i);
+        }
         return -1.0f;
-    L11:
-        return f35.U(this.r, r0);
-    L5:
-        if (r2 == 0) goto L8;
-        return f35.U(this.q, r2);
     }
 
     @Override // defpackage.tx
-    public final void b(long r7, long r9, long r11) {
-        long r3 = this.q + r11;
-        this.q = r3;
-        long r1 = this.o;
-        float r5 = a();
-        this.n.b(r1, r3, r5);
+    public final void b(long j, long j2, long j3) {
+        long j4 = this.q + j3;
+        this.q = j4;
+        this.n.b(this.o, j4, a());
     }
 }

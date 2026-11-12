@@ -7,13 +7,13 @@ import java.util.WeakHashMap;
 /* JADX INFO: loaded from: classes.dex */
 public final class z75 implements View.OnAttachStateChangeListener {
     @Override // android.view.View.OnAttachStateChangeListener
-    public final void onViewAttachedToWindow(View r1) {
-        r1.removeOnAttachStateChangeListener(this);
-        WeakHashMap r0 = j65.a;
-        r1.requestApplyInsets();
+    public final void onViewAttachedToWindow(View view) {
+        view.removeOnAttachStateChangeListener(this);
+        WeakHashMap weakHashMap = j65.a;
+        view.requestApplyInsets();
     }
 
     @Override // android.view.View.OnAttachStateChangeListener
-    public final void onViewDetachedFromWindow(View r1) {
+    public final void onViewDetachedFromWindow(View view) {
     }
 }

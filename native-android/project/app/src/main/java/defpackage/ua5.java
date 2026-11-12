@@ -21,76 +21,73 @@ public final class ua5 extends bb5 {
     }
 
     private static WindowInsets j() {
-        if (h == false) goto L33;
-    L9:
-        Field r0 = g;
-        if (r0 == null) goto L18;
-        WindowInsets r1 = (WindowInsets) r0.get(null);     // Catch: ReflectiveOperationException -> L15
-        if (r1 == null) goto L18;
-        return new WindowInsets(r1);
-    L15:
-        e = move-exception;
-        Log.i("WindowInsetsCompat", "Could not get value from WindowInsets.CONSUMED field", e);
-    L18:
-        if (j == false) goto L31;
-    L24:
-        Constructor r2 = i;
-        if (r2 != null) goto L35;
-    L30:
+        if (!h) {
+            try {
+                g = WindowInsets.class.getDeclaredField("CONSUMED");
+            } catch (ReflectiveOperationException e) {
+                Log.i("WindowInsetsCompat", "Could not retrieve WindowInsets.CONSUMED field", e);
+            }
+            h = true;
+        }
+        Field field = g;
+        if (field != null) {
+            try {
+                WindowInsets windowInsets = (WindowInsets) field.get(null);
+                if (windowInsets != null) {
+                    return new WindowInsets(windowInsets);
+                }
+            } catch (ReflectiveOperationException e2) {
+                Log.i("WindowInsetsCompat", "Could not get value from WindowInsets.CONSUMED field", e2);
+            }
+        }
+        if (!j) {
+            try {
+                i = WindowInsets.class.getConstructor(Rect.class);
+            } catch (ReflectiveOperationException e3) {
+                Log.i("WindowInsetsCompat", "Could not retrieve WindowInsets(Rect) constructor", e3);
+            }
+            j = true;
+        }
+        Constructor constructor = i;
+        if (constructor != null) {
+            try {
+                return (WindowInsets) constructor.newInstance(new Rect());
+            } catch (ReflectiveOperationException e4) {
+                Log.i("WindowInsetsCompat", "Could not invoke WindowInsets(Rect) constructor", e4);
+            }
+        }
         return null;
-    L35:
-        return (WindowInsets) r2.newInstance(new Object[]{new Rect()});
-    L28:
-        e = move-exception;
-        Log.i("WindowInsetsCompat", "Could not invoke WindowInsets(Rect) constructor", e);
-        goto L30
-    L31:
-        i = WindowInsets.class.getConstructor(new Class[]{Rect.class});     // Catch: ReflectiveOperationException -> L21
-    L23:
-        j = true;
-    L21:
-        e = move-exception;
-        Log.i("WindowInsetsCompat", "Could not retrieve WindowInsets(Rect) constructor", e);
-        goto L23
-    L33:
-        g = WindowInsets.class.getDeclaredField("CONSUMED");     // Catch: ReflectiveOperationException -> L6
-    L8:
-        h = true;
-    L6:
-        e = move-exception;
-        Log.i("WindowInsetsCompat", "Could not retrieve WindowInsets.CONSUMED field", e);
-        goto L8
     }
 
     @Override // defpackage.bb5
     public pb5 b() {
         a();
-        pb5 r0 = pb5.g(this.e, null);
-        vz1[] r2 = this.b;
-        mb5 r3 = r0.a;
-        r3.v(r2);
-        r3.x(this.f);
-        r3.u(null);
-        r3.z(this.c);
-        r3.A(this.d);
-        return r0;
+        pb5 pb5VarG = pb5.g(this.e, null);
+        vz1[] vz1VarArr = this.b;
+        mb5 mb5Var = pb5VarG.a;
+        mb5Var.v(vz1VarArr);
+        mb5Var.x(this.f);
+        mb5Var.u(null);
+        mb5Var.z(this.c);
+        mb5Var.A(this.d);
+        return pb5VarG;
     }
 
     @Override // defpackage.bb5
-    public void f(vz1 r1) {
-        this.f = r1;
+    public void f(vz1 vz1Var) {
+        this.f = vz1Var;
     }
 
     @Override // defpackage.bb5
-    public void h(vz1 r5) {
-        WindowInsets r0 = this.e;
-        if (r0 == null) goto L6;
-        this.e = r0.replaceSystemWindowInsets(r5.a, r5.b, r5.c, r5.d);
-        return;
+    public void h(vz1 vz1Var) {
+        WindowInsets windowInsets = this.e;
+        if (windowInsets != null) {
+            this.e = windowInsets.replaceSystemWindowInsets(vz1Var.a, vz1Var.b, vz1Var.c, vz1Var.d);
+        }
     }
 
-    public ua5(pb5 r1) {
-        super(r1);
-        this.e = r1.f();
+    public ua5(pb5 pb5Var) {
+        super(pb5Var);
+        this.e = pb5Var.f();
     }
 }

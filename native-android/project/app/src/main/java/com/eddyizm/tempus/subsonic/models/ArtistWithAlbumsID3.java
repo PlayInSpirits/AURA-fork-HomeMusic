@@ -12,7 +12,7 @@ import java.util.List;
 /* JADX INFO: loaded from: classes.dex */
 public final class ArtistWithAlbumsID3 extends ArtistID3 implements Parcelable {
     public static final int $stable = 8;
-    public static final Parcelable.Creator<ArtistWithAlbumsID3> CREATOR = null;
+    public static final Parcelable.Creator<ArtistWithAlbumsID3> CREATOR = new w4(7);
 
     @ka4("album")
     private List<? extends AlbumID3> albums;
@@ -20,14 +20,10 @@ public final class ArtistWithAlbumsID3 extends ArtistID3 implements Parcelable {
     @ka4("appearsOn")
     private List<? extends AlbumID3> appearsOn;
 
-    static {
-        CREATOR = new w4(7);
-    }
-
-    public ArtistWithAlbumsID3(List<? extends AlbumID3> r9, List<? extends AlbumID3> r10) {
+    public ArtistWithAlbumsID3(List<? extends AlbumID3> list, List<? extends AlbumID3> list2) {
         super(null, null, null, 0, null, 31, null);
-        this.albums = r9;
-        this.appearsOn = r10;
+        this.albums = list;
+        this.appearsOn = list2;
     }
 
     @Override // com.eddyizm.tempus.subsonic.models.ArtistID3, android.os.Parcelable
@@ -43,58 +39,47 @@ public final class ArtistWithAlbumsID3 extends ArtistID3 implements Parcelable {
         return this.appearsOn;
     }
 
-    public final void setAlbums(List<? extends AlbumID3> r1) {
-        this.albums = r1;
+    public final void setAlbums(List<? extends AlbumID3> list) {
+        this.albums = list;
     }
 
-    public final void setAppearsOn(List<? extends AlbumID3> r1) {
-        this.appearsOn = r1;
+    public final void setAppearsOn(List<? extends AlbumID3> list) {
+        this.appearsOn = list;
     }
 
     @Override // com.eddyizm.tempus.subsonic.models.ArtistID3, android.os.Parcelable
-    public final void writeToParcel(Parcel r5, int r6) {
-        r5.getClass();
-        List<? extends AlbumID3> r0 = this.albums;
-        if (r0 != null) goto L5;
-        r5.writeInt(0);
-    L9:
-        List<? extends AlbumID3> r4 = this.appearsOn;
-        if (r4 != null) goto L13;
-        r5.writeInt(0);
-        return;
-    L13:
-        r5.writeInt(1);
-        r5.writeInt(r4.size());
-        Iterator<? extends AlbumID3> r7 = r4.iterator();
-    L15:
-        if (r7.hasNext() == false) goto L17;
-        r5.writeParcelable(r7.next(), r6);
-        goto L15
-    L17:
-        return;
-    L5:
-        r5.writeInt(1);
-        r5.writeInt(r0.size());
-        Iterator<? extends AlbumID3> r1 = r0.iterator();
-    L7:
-        if (r1.hasNext() == false) goto L9;
-        r5.writeParcelable(r1.next(), r6);
-        goto L7
+    public final void writeToParcel(Parcel parcel, int i) {
+        parcel.getClass();
+        List<? extends AlbumID3> list = this.albums;
+        if (list == null) {
+            parcel.writeInt(0);
+        } else {
+            parcel.writeInt(1);
+            parcel.writeInt(list.size());
+            Iterator<? extends AlbumID3> it = list.iterator();
+            while (it.hasNext()) {
+                parcel.writeParcelable(it.next(), i);
+            }
+        }
+        List<? extends AlbumID3> list2 = this.appearsOn;
+        if (list2 == null) {
+            parcel.writeInt(0);
+            return;
+        }
+        parcel.writeInt(1);
+        parcel.writeInt(list2.size());
+        Iterator<? extends AlbumID3> it2 = list2.iterator();
+        while (it2.hasNext()) {
+            parcel.writeParcelable(it2.next(), i);
+        }
     }
 
     /* JADX WARN: Multi-variable type inference failed */
     public ArtistWithAlbumsID3() {
-        Object[] r0 = 0 == true ? 1 : 0;
-        this(null, r0, 3, 0 == true ? 1 : 0);
+        this(null, 0 == true ? 1 : 0, 3, 0 == true ? 1 : 0);
     }
 
-    public /* synthetic */ ArtistWithAlbumsID3(List r2, List r3, int r4, xj0 r5) {
-        if ((r4 & 1) == 0) goto L6;
-        r2 = null;
-    L6:
-        if ((r4 & 2) == 0) goto L8;
-        r3 = null;
-    L8:
-        this(r2, r3);
+    public /* synthetic */ ArtistWithAlbumsID3(List list, List list2, int i, xj0 xj0Var) {
+        this((i & 1) != 0 ? null : list, (i & 2) != 0 ? null : list2);
     }
 }

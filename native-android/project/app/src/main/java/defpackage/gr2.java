@@ -9,31 +9,24 @@ public final class gr2 {
     public final int b;
     public final long c;
 
-    public gr2(List r1, int r2, long r3) {
-        this.a = yw1.k(r1);
-        this.b = r2;
-        this.c = r3;
+    public gr2(List list, int i, long j) {
+        this.a = yw1.k(list);
+        this.b = i;
+        this.c = j;
     }
 
-    public final boolean equals(Object r6) {
-        if (this != r6) goto L6;
-        return true;
-    L6:
-        if ((r6 instanceof gr2) == true) goto L8;
-        return false;
-    L8:
-        gr2 r7 = (gr2) r6;
-        if (this.a.equals(r7.a) == true) goto L11;
-    L15:
-        return false;
-    L11:
-        if (this.b != r7.b) goto L15;
-        if (this.c != r7.c) goto L15;
-        return true;
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof gr2)) {
+            return false;
+        }
+        gr2 gr2Var = (gr2) obj;
+        return this.a.equals(gr2Var.a) && this.b == gr2Var.b && this.c == gr2Var.c;
     }
 
     public final int hashCode() {
-        int r0 = ((this.a.hashCode() * 31) + this.b) * 31;
-        return si0.z(this.c) + r0;
+        return si0.z(this.c) + (((this.a.hashCode() * 31) + this.b) * 31);
     }
 }

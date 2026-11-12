@@ -36,43 +36,43 @@ public final class pc1 {
     public final View p;
     public final View q;
 
-    public pc1(LinearLayout r1, TextView r2, ImageView r3, ConstraintLayout r4, TextView r5, TextView r6, TextView r7, FrameLayout r8, Button r9, Button r10, TextView r11, TextView r12, TextView r13, MaterialToolbar r14, View r15, RecyclerView r16, View r17) {
-        this.b = r1;
-        this.c = r2;
-        this.j = r3;
-        this.a = r4;
-        this.d = r5;
-        this.e = r6;
-        this.f = r7;
-        this.k = r8;
-        this.l = r9;
-        this.m = r10;
-        this.g = r11;
-        this.h = r12;
-        this.i = r13;
-        this.n = r14;
-        this.o = r15;
-        this.q = r16;
-        this.p = r17;
+    public pc1(LinearLayout linearLayout, TextView textView, ImageView imageView, ConstraintLayout constraintLayout, TextView textView2, TextView textView3, TextView textView4, FrameLayout frameLayout, Button button, Button button2, TextView textView5, TextView textView6, TextView textView7, MaterialToolbar materialToolbar, View view, RecyclerView recyclerView, View view2) {
+        this.b = linearLayout;
+        this.c = textView;
+        this.j = imageView;
+        this.a = constraintLayout;
+        this.d = textView2;
+        this.e = textView3;
+        this.f = textView4;
+        this.k = frameLayout;
+        this.l = button;
+        this.m = button2;
+        this.g = textView5;
+        this.h = textView6;
+        this.i = textView7;
+        this.n = materialToolbar;
+        this.o = view;
+        this.q = recyclerView;
+        this.p = view2;
     }
 
-    public pc1(ConstraintLayout r1, MaterialButton r2, MaterialButton r3, MaterialButton r4, TextInputEditText r5, TextInputLayout r6, MaterialSwitch r7, TextInputEditText r8, TextInputLayout r9, MaterialSwitch r10, TextInputEditText r11, TextInputEditText r12, MaterialSwitch r13, TextInputEditText r14, TextInputEditText r15, AutoCompleteTextView r16, MaterialButton r17) {
-        this.a = r1;
-        this.b = r2;
-        this.c = r3;
-        this.d = r4;
-        this.e = r5;
-        this.f = r6;
-        this.g = r7;
-        this.h = r8;
-        this.i = r9;
-        this.j = r10;
-        this.k = r11;
-        this.l = r12;
-        this.m = r13;
-        this.n = r14;
-        this.o = r15;
-        this.p = r16;
-        this.q = r17;
+    public pc1(ConstraintLayout constraintLayout, MaterialButton materialButton, MaterialButton materialButton2, MaterialButton materialButton3, TextInputEditText textInputEditText, TextInputLayout textInputLayout, MaterialSwitch materialSwitch, TextInputEditText textInputEditText2, TextInputLayout textInputLayout2, MaterialSwitch materialSwitch2, TextInputEditText textInputEditText3, TextInputEditText textInputEditText4, MaterialSwitch materialSwitch3, TextInputEditText textInputEditText5, TextInputEditText textInputEditText6, AutoCompleteTextView autoCompleteTextView, MaterialButton materialButton4) {
+        this.a = constraintLayout;
+        this.b = materialButton;
+        this.c = materialButton2;
+        this.d = materialButton3;
+        this.e = textInputEditText;
+        this.f = textInputLayout;
+        this.g = materialSwitch;
+        this.h = textInputEditText2;
+        this.i = textInputLayout2;
+        this.j = materialSwitch2;
+        this.k = textInputEditText3;
+        this.l = textInputEditText4;
+        this.m = materialSwitch3;
+        this.n = textInputEditText5;
+        this.o = textInputEditText6;
+        this.p = autoCompleteTextView;
+        this.q = materialButton4;
     }
 }

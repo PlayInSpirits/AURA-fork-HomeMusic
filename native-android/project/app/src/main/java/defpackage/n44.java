@@ -6,8 +6,8 @@ public final class n44 {
     public final tb1 a;
     public final vw0 b;
 
-    public n44(tb1 r1, vw0 r2) {
-        this.a = r1;
-        this.b = r2;
+    public n44(tb1 tb1Var, vw0 vw0Var) {
+        this.a = tb1Var;
+        this.b = vw0Var;
     }
 }

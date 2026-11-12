@@ -5,123 +5,97 @@ import android.text.Layout;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class v95 {
-    public long a;
-    public long b;
     public CharSequence c;
-    public int d;
-    public float e;
-    public int f;
-    public int g;
-    public float h;
-    public int i;
-    public float j;
-    public int k;
+    public long a = 0;
+    public long b = 0;
+    public int d = 2;
+    public float e = -3.4028235E38f;
+    public int f = 1;
+    public int g = 0;
+    public float h = -3.4028235E38f;
+    public int i = Integer.MIN_VALUE;
+    public float j = 1.0f;
+    public int k = Integer.MIN_VALUE;
 
-    public v95() {
-        this.a = 0;
-        this.b = 0;
-        this.d = 2;
-        this.e = -3.4028235E38f;
-        this.f = 1;
-        this.g = 0;
-        this.h = -3.4028235E38f;
-        this.i = Integer.MIN_VALUE;
-        this.j = 1.0f;
-        this.k = Integer.MIN_VALUE;
-    }
-
+    /* JADX WARN: Code duplicated, block: B:20:0x0032  */
+    /* JADX WARN: Code duplicated, block: B:21:0x0034  */
+    /* JADX WARN: Code duplicated, block: B:29:0x0050  */
+    /* JADX WARN: Code duplicated, block: B:31:0x0056  */
+    /* JADX WARN: Code duplicated, block: B:39:0x006c  */
     public final hg0 a() {
-        float r0 = this.h;
-        float r1 = -3.4028235E38f;
-        if (r0 != (-3.4028235E38f)) goto L11;
-        int r2 = this.d;
-        if (r2 == 4) goto L10;
-        if (r2 == 5) goto L9;
-        r0 = 0.5f;
-        goto L11
-    L9:
-        r0 = 1.0f;
-        goto L11
-    L10:
-        r0 = 0.0f;
-    L11:
-        int r3 = this.i;
-        if (r3 != Integer.MIN_VALUE) goto L22;
-        int r4 = this.d;
-        if (r4 == 1) goto L21;
-        if (r4 == 3) goto L20;
-        if (r4 == 4) goto L21;
-        if (r4 == 5) goto L20;
-        r3 = 1;
-    L20:
-        r3 = 2;
-    L21:
-        r3 = 0;
-    L22:
-        hg0 r8 = new hg0();
-        int r12 = this.d;
-        if (r12 == 1) goto L31;
-        if (r12 == 2) goto L30;
-        if (r12 == 3) goto L29;
-        if (r12 == 4) goto L31;
-        if (r12 == 5) goto L29;
-        xa3.m(r12, "Unknown textAlignment: ", "WebvttCueParser");
-        Layout.Alignment r6 = null;
-    L32:
-        r8.c = r6;
-        float r7 = this.e;
-        int r9 = this.f;
-        if (r7 == (-3.4028235E38f)) goto L40;
-        if (r9 != 0) goto L40;
-        if (r7 >= 0.0f) goto L38;
-    L39:
-        r1 = 1.0f;
-    L44:
-        r8.e = r1;
-        r8.f = r9;
-        r8.g = this.g;
-        r8.h = r0;
-        r8.i = r3;
-        float r5 = this.j;
-        if (r3 == 0) goto L55;
-        if (r3 == 1) goto L52;
-        if (r3 == 2) goto L56;
-        kf2.o(String.valueOf(r3));
-        return null;
-    L56:
-        r8.l = Math.min(r5, r0);
-        r8.p = this.k;
-        CharSequence r14 = this.c;
-        if (r14 == null) goto L59;
-        r8.a = r14;
-        r8.b = null;
-    L59:
-        return r8;
-    L52:
-        if (r0 > 0.5f) goto L54;
-        r0 = r0 * 2.0f;
-        goto L56
-    L54:
-        r0 = (1.0f - r0) * 2.0f;
-        goto L56
-    L55:
-        r0 = 1.0f - r0;
-        goto L56
-    L38:
-        if (r7 > 1.0f) goto L39;
-    L40:
-        if (r7 == (-3.4028235E38f)) goto L42;
-        r1 = r7;
-        goto L44
-    L42:
-        if (r9 != 0) goto L44;
-    L29:
-        r6 = Layout.Alignment.ALIGN_OPPOSITE;
-        goto L32
-    L30:
-        r6 = Layout.Alignment.ALIGN_CENTER;
-    L31:
-        r6 = Layout.Alignment.ALIGN_NORMAL;
-        goto L32
+        Layout.Alignment alignment;
+        float f = this.h;
+        float f2 = -3.4028235E38f;
+        if (f == -3.4028235E38f) {
+            int i = this.d;
+            if (i != 4) {
+                f = i != 5 ? 0.5f : 1.0f;
+            } else {
+                f = 0.0f;
+            }
+        }
+        int i2 = this.i;
+        if (i2 == Integer.MIN_VALUE) {
+            int i3 = this.d;
+            if (i3 == 1) {
+                i2 = 0;
+            } else if (i3 == 3) {
+                i2 = 2;
+            } else if (i3 == 4) {
+                i2 = 0;
+            } else if (i3 != 5) {
+                i2 = 1;
+            } else {
+                i2 = 2;
+            }
+        }
+        hg0 hg0Var = new hg0();
+        int i4 = this.d;
+        if (i4 == 1) {
+            alignment = Layout.Alignment.ALIGN_NORMAL;
+        } else if (i4 == 2) {
+            alignment = Layout.Alignment.ALIGN_CENTER;
+        } else if (i4 == 3) {
+            alignment = Layout.Alignment.ALIGN_OPPOSITE;
+        } else if (i4 == 4) {
+            alignment = Layout.Alignment.ALIGN_NORMAL;
+        } else if (i4 != 5) {
+            xa3.m(i4, "Unknown textAlignment: ", "WebvttCueParser");
+            alignment = null;
+        } else {
+            alignment = Layout.Alignment.ALIGN_OPPOSITE;
+        }
+        hg0Var.c = alignment;
+        float f3 = this.e;
+        int i5 = this.f;
+        if (f3 != -3.4028235E38f && i5 == 0 && (f3 < 0.0f || f3 > 1.0f)) {
+            f2 = 1.0f;
+        } else if (f3 != -3.4028235E38f) {
+            f2 = f3;
+        } else if (i5 == 0) {
+            f2 = 1.0f;
+        }
+        hg0Var.e = f2;
+        hg0Var.f = i5;
+        hg0Var.g = this.g;
+        hg0Var.h = f;
+        hg0Var.i = i2;
+        float f4 = this.j;
+        if (i2 == 0) {
+            f = 1.0f - f;
+        } else if (i2 == 1) {
+            f = f <= 0.5f ? f * 2.0f : (1.0f - f) * 2.0f;
+        } else if (i2 != 2) {
+            kf2.o(String.valueOf(i2));
+            return null;
+        }
+        hg0Var.l = Math.min(f4, f);
+        hg0Var.p = this.k;
+        CharSequence charSequence = this.c;
+        if (charSequence != null) {
+            hg0Var.a = charSequence;
+            hg0Var.b = null;
+        }
+        return hg0Var;
     }
 }

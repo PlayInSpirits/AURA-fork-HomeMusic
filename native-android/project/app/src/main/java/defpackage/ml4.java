@@ -12,14 +12,15 @@ public final class ml4 extends wd0 {
     public final /* synthetic */ nl4 t;
     public int u;
 
-    public ml4(nl4 r1, vd0 r2) {
-        this.t = r1;
-        super(r2);
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public ml4(nl4 nl4Var, vd0 vd0Var) {
+        super(vd0Var);
+        this.t = nl4Var;
     }
 
     @Override // defpackage.jp
-    public final Object invokeSuspend(Object r2) {
-        this.s = r2;
+    public final Object invokeSuspend(Object obj) {
+        this.s = obj;
         this.u |= Integer.MIN_VALUE;
         this.t.a(null, this);
         return xe0.n;

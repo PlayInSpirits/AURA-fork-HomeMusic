@@ -18,67 +18,67 @@ public final class qb0 {
     public boolean[] k;
     public int l;
 
-    public final void a(int r4, float r5) {
-        int r0 = this.f;
-        int[] r1 = this.d;
-        if (r0 < r1.length) goto L5;
-        this.d = Arrays.copyOf(r1, r1.length * 2);
-        float[] r2 = this.e;
-        this.e = Arrays.copyOf(r2, r2.length * 2);
-    L5:
-        int[] r3 = this.d;
-        int r6 = this.f;
-        r3[r6] = r4;
-        float[] r7 = this.e;
-        this.f = r6 + 1;
-        r7[r6] = r5;
+    public final void a(int i, float f) {
+        int i2 = this.f;
+        int[] iArr = this.d;
+        if (i2 >= iArr.length) {
+            this.d = Arrays.copyOf(iArr, iArr.length * 2);
+            float[] fArr = this.e;
+            this.e = Arrays.copyOf(fArr, fArr.length * 2);
+        }
+        int[] iArr2 = this.d;
+        int i3 = this.f;
+        iArr2[i3] = i;
+        float[] fArr2 = this.e;
+        this.f = i3 + 1;
+        fArr2[i3] = f;
     }
 
-    public final void b(int r4, int r5) {
-        int r0 = this.c;
-        int[] r1 = this.a;
-        if (r0 < r1.length) goto L5;
-        this.a = Arrays.copyOf(r1, r1.length * 2);
-        int[] r2 = this.b;
-        this.b = Arrays.copyOf(r2, r2.length * 2);
-    L5:
-        int[] r3 = this.a;
-        int r6 = this.c;
-        r3[r6] = r4;
-        int[] r7 = this.b;
-        this.c = r6 + 1;
-        r7[r6] = r5;
+    public final void b(int i, int i2) {
+        int i3 = this.c;
+        int[] iArr = this.a;
+        if (i3 >= iArr.length) {
+            this.a = Arrays.copyOf(iArr, iArr.length * 2);
+            int[] iArr2 = this.b;
+            this.b = Arrays.copyOf(iArr2, iArr2.length * 2);
+        }
+        int[] iArr3 = this.a;
+        int i4 = this.c;
+        iArr3[i4] = i;
+        int[] iArr4 = this.b;
+        this.c = i4 + 1;
+        iArr4[i4] = i2;
     }
 
-    public final void c(int r4, String r5) {
-        int r0 = this.i;
-        int[] r1 = this.g;
-        if (r0 < r1.length) goto L5;
-        this.g = Arrays.copyOf(r1, r1.length * 2);
-        String[] r2 = this.h;
-        this.h = (String[]) Arrays.copyOf(r2, r2.length * 2);
-    L5:
-        int[] r3 = this.g;
-        int r6 = this.i;
-        r3[r6] = r4;
-        String[] r7 = this.h;
-        this.i = r6 + 1;
-        r7[r6] = r5;
+    public final void c(int i, String str) {
+        int i2 = this.i;
+        int[] iArr = this.g;
+        if (i2 >= iArr.length) {
+            this.g = Arrays.copyOf(iArr, iArr.length * 2);
+            String[] strArr = this.h;
+            this.h = (String[]) Arrays.copyOf(strArr, strArr.length * 2);
+        }
+        int[] iArr2 = this.g;
+        int i3 = this.i;
+        iArr2[i3] = i;
+        String[] strArr2 = this.h;
+        this.i = i3 + 1;
+        strArr2[i3] = str;
     }
 
-    public final void d(int r4, boolean r5) {
-        int r0 = this.l;
-        int[] r1 = this.j;
-        if (r0 < r1.length) goto L5;
-        this.j = Arrays.copyOf(r1, r1.length * 2);
-        boolean[] r2 = this.k;
-        this.k = Arrays.copyOf(r2, r2.length * 2);
-    L5:
-        int[] r3 = this.j;
-        int r6 = this.l;
-        r3[r6] = r4;
-        boolean[] r7 = this.k;
-        this.l = r6 + 1;
-        r7[r6] = r5;
+    public final void d(int i, boolean z) {
+        int i2 = this.l;
+        int[] iArr = this.j;
+        if (i2 >= iArr.length) {
+            this.j = Arrays.copyOf(iArr, iArr.length * 2);
+            boolean[] zArr = this.k;
+            this.k = Arrays.copyOf(zArr, zArr.length * 2);
+        }
+        int[] iArr2 = this.j;
+        int i3 = this.l;
+        iArr2[i3] = i;
+        boolean[] zArr2 = this.k;
+        this.l = i3 + 1;
+        zArr2[i3] = z;
     }
 }

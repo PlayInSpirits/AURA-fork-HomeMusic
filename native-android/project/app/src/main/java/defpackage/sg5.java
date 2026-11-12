@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
@@ -19,67 +18,56 @@ import java.util.Set;
 public final class sg5 extends a {
     public final GoogleSignInOptions L;
 
-    public sg5(Context r15, Looper r16, ml3 r17, GoogleSignInOptions r18, gf5 r19, gf5 r20) {
-        super(r15, r16, 91, r17, r19, r20, 0);
-        Set r110 = (Set) r17.b;
-        if (r18 == null) goto L5;
-        mj1 r2 = new mj1();
-        r2.a = new HashSet();
-        r2.h = new HashMap();
-        r2.a = new HashSet(r18.o);
-        r2.b = r18.r;
-        r2.c = r18.s;
-        r2.d = r18.q;
-        r2.e = r18.t;
-        r2.f = r18.p;
-        r2.g = r18.u;
-        r2.h = GoogleSignInOptions.c(r18.v);
-        r2.i = r18.w;
-    L6:
-        r2.i = mg5.a();
-        if (r110.isEmpty() == true) goto L12;
-        Iterator r111 = r110.iterator();
-    L10:
-        if (r111.hasNext() == false) goto L12;
-        Scope r0 = (Scope) r111.next();
-        HashSet r4 = r2.a;
-        r4.add(r0);
-        r4.addAll(Arrays.asList(new Scope[0]));
-    L12:
-        HashSet r112 = r2.a;
-        if (r112.contains(GoogleSignInOptions.A) == false) goto L18;
-        Scope r1 = GoogleSignInOptions.z;
-        if (r112.contains(r1) == false) goto L18;
-        r112.remove(r1);
-    L18:
-        if (r2.d == true) goto L20;
-    L24:
-        this.L = new GoogleSignInOptions(3, new ArrayList(r112), r2.f, r2.d, r2.b, r2.c, r2.e, r2.g, r2.h, r2.i);
-        return;
-    L20:
-        if (r2.f != null) goto L22;
-    L23:
-        r112.add(GoogleSignInOptions.y);
-        goto L24
-    L22:
-        if (r112.isEmpty() == true) goto L24;
-    L5:
-        r2 = new mj1();
-        r2.a = new HashSet();
-        r2.h = new HashMap();
-        goto L6
+    public sg5(Context context, Looper looper, ml3 ml3Var, GoogleSignInOptions googleSignInOptions, gf5 gf5Var, gf5 gf5Var2) {
+        mj1 mj1Var;
+        super(context, looper, 91, ml3Var, gf5Var, gf5Var2, 0);
+        Set<Scope> set = (Set) ml3Var.b;
+        if (googleSignInOptions != null) {
+            mj1Var = new mj1();
+            mj1Var.a = new HashSet();
+            mj1Var.h = new HashMap();
+            mj1Var.a = new HashSet(googleSignInOptions.o);
+            mj1Var.b = googleSignInOptions.r;
+            mj1Var.c = googleSignInOptions.s;
+            mj1Var.d = googleSignInOptions.q;
+            mj1Var.e = googleSignInOptions.t;
+            mj1Var.f = googleSignInOptions.p;
+            mj1Var.g = googleSignInOptions.u;
+            mj1Var.h = GoogleSignInOptions.c(googleSignInOptions.v);
+            mj1Var.i = googleSignInOptions.w;
+        } else {
+            mj1Var = new mj1();
+            mj1Var.a = new HashSet();
+            mj1Var.h = new HashMap();
+        }
+        mj1Var.i = mg5.a();
+        if (!set.isEmpty()) {
+            for (Scope scope : set) {
+                HashSet hashSet = mj1Var.a;
+                hashSet.add(scope);
+                hashSet.addAll(Arrays.asList(new Scope[0]));
+            }
+        }
+        HashSet hashSet2 = mj1Var.a;
+        if (hashSet2.contains(GoogleSignInOptions.A)) {
+            Scope scope2 = GoogleSignInOptions.z;
+            if (hashSet2.contains(scope2)) {
+                hashSet2.remove(scope2);
+            }
+        }
+        if (mj1Var.d && (mj1Var.f == null || !hashSet2.isEmpty())) {
+            hashSet2.add(GoogleSignInOptions.y);
+        }
+        this.L = new GoogleSignInOptions(3, new ArrayList(hashSet2), mj1Var.f, mj1Var.d, mj1Var.b, mj1Var.c, mj1Var.e, mj1Var.g, mj1Var.h, mj1Var.i);
     }
 
     @Override // com.google.android.gms.common.internal.a
-    public final IInterface a(IBinder r3) {
-        if (r3 != null) goto L5;
-        return null;
-    L5:
-        IInterface r0 = r3.queryLocalInterface("com.google.android.gms.auth.api.signin.internal.ISignInService");
-        if ((r0 instanceof bh5) == false) goto L10;
-        return (bh5) r0;
-    L10:
-        return new bh5(r3, "com.google.android.gms.auth.api.signin.internal.ISignInService", 1);
+    public final IInterface a(IBinder iBinder) {
+        if (iBinder == null) {
+            return null;
+        }
+        IInterface iInterfaceQueryLocalInterface = iBinder.queryLocalInterface("com.google.android.gms.auth.api.signin.internal.ISignInService");
+        return iInterfaceQueryLocalInterface instanceof bh5 ? (bh5) iInterfaceQueryLocalInterface : new bh5(iBinder, "com.google.android.gms.auth.api.signin.internal.ISignInService", 1);
     }
 
     @Override // com.google.android.gms.common.internal.a

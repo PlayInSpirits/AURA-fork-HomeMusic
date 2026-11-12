@@ -5,8 +5,8 @@ package defpackage;
 public abstract class xb1 implements m84 {
     public final m84 a;
 
-    public xb1(m84 r1) {
-        this.a = r1;
+    public xb1(m84 m84Var) {
+        this.a = m84Var;
     }
 
     @Override // defpackage.m84
@@ -20,8 +20,8 @@ public abstract class xb1 implements m84 {
     }
 
     @Override // defpackage.m84
-    public l84 e(long r1) {
-        return this.a.e(r1);
+    public l84 e(long j) {
+        return this.a.e(j);
     }
 
     @Override // defpackage.m84

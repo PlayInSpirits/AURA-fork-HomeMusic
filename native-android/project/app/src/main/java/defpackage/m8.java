@@ -10,25 +10,24 @@ public final class m8 implements StarCallback {
     public final /* synthetic */ AlbumID3 o;
     public final /* synthetic */ n8 p;
 
-    public /* synthetic */ m8(n8 r1, AlbumID3 r2, int r3) {
-        this.n = r3;
-        this.p = r1;
-        this.o = r2;
+    public /* synthetic */ m8(n8 n8Var, AlbumID3 albumID3, int i) {
+        this.n = i;
+        this.p = n8Var;
+        this.o = albumID3;
     }
 
     @Override // com.eddyizm.tempus.interfaces.StarCallback
     public final void onError() {
-        int r0 = this.n;
-        AlbumID3 r1 = this.o;
-        n8 r3 = this.p;
-        switch(r0) {
-            case 0: goto L6;
-            default: goto L4;
-        };
-    L4:
-        r3.e.J(null, r1.getId(), true, null);
-        return;
-    L6:
-        r3.e.J(null, r1.getId(), false, null);
+        int i = this.n;
+        AlbumID3 albumID3 = this.o;
+        n8 n8Var = this.p;
+        switch (i) {
+            case 0:
+                n8Var.e.J(null, albumID3.getId(), false, null);
+                break;
+            default:
+                n8Var.e.J(null, albumID3.getId(), true, null);
+                break;
+        }
     }
 }

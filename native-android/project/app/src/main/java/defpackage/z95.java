@@ -6,37 +6,30 @@ public final class z95 {
     public final float a;
     public final float b;
 
-    public z95(float r1, float r2) {
-        this.a = r1;
-        this.b = r2;
+    public z95(float f, float f2) {
+        this.a = f;
+        this.b = f2;
     }
 
     public final float[] a() {
-        float r0 = this.a;
-        float r4 = this.b;
-        return new float[]{r0 / r4, 1.0f, ((1.0f - r0) - r4) / r4};
+        float f = this.a;
+        float f2 = this.b;
+        return new float[]{f / f2, 1.0f, ((1.0f - f) - f2) / f2};
     }
 
-    public final boolean equals(Object r5) {
-        if (this != r5) goto L6;
-        return true;
-    L6:
-        if ((r5 instanceof z95) == true) goto L8;
-        return false;
-    L8:
-        z95 r6 = (z95) r5;
-        if (Float.compare(this.a, r6.a) == 0) goto L12;
-        return false;
-    L12:
-        if (Float.compare(this.b, r6.b) == 0) goto L14;
-        return false;
-    L14:
-        return true;
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof z95)) {
+            return false;
+        }
+        z95 z95Var = (z95) obj;
+        return Float.compare(this.a, z95Var.a) == 0 && Float.compare(this.b, z95Var.b) == 0;
     }
 
     public final int hashCode() {
-        int r0 = Float.hashCode(this.a) * 31;
-        return Float.hashCode(this.b) + r0;
+        return Float.hashCode(this.b) + (Float.hashCode(this.a) * 31);
     }
 
     public final String toString() {

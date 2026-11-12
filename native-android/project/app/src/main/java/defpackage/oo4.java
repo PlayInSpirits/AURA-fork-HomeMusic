@@ -7,7 +7,7 @@ import android.view.MenuItem;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public interface oo4 extends MenuItem {
-    oo4 a(e5 r1);
+    oo4 a(e5 e5Var);
 
     e5 b();
 
@@ -30,23 +30,23 @@ public interface oo4 extends MenuItem {
     CharSequence getTooltipText();
 
     @Override // android.view.MenuItem
-    MenuItem setAlphabeticShortcut(char r1, int r2);
+    MenuItem setAlphabeticShortcut(char c, int i);
 
     @Override // android.view.MenuItem
-    oo4 setContentDescription(CharSequence r1);
+    oo4 setContentDescription(CharSequence charSequence);
 
     @Override // android.view.MenuItem
-    MenuItem setIconTintList(ColorStateList r1);
+    MenuItem setIconTintList(ColorStateList colorStateList);
 
     @Override // android.view.MenuItem
-    MenuItem setIconTintMode(PorterDuff.Mode r1);
+    MenuItem setIconTintMode(PorterDuff.Mode mode);
 
     @Override // android.view.MenuItem
-    MenuItem setNumericShortcut(char r1, int r2);
+    MenuItem setNumericShortcut(char c, int i);
 
     @Override // android.view.MenuItem
-    MenuItem setShortcut(char r1, char r2, int r3, int r4);
+    MenuItem setShortcut(char c, char c2, int i, int i2);
 
     @Override // android.view.MenuItem
-    oo4 setTooltipText(CharSequence r1);
+    oo4 setTooltipText(CharSequence charSequence);
 }

@@ -7,9 +7,9 @@ public final class pf5 {
     public final int b;
     public final dj1 c;
 
-    public pf5(cg5 r1, int r2, dj1 r3) {
-        this.a = r1;
-        this.b = r2;
-        this.c = r3;
+    public pf5(cg5 cg5Var, int i, dj1 dj1Var) {
+        this.a = cg5Var;
+        this.b = i;
+        this.c = dj1Var;
     }
 }

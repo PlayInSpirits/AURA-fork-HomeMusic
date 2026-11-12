@@ -7,15 +7,15 @@ import com.google.gson.reflect.TypeToken;
 public final class v73 implements cz4 {
     public final /* synthetic */ int n;
 
-    public v73(int r1) {
-        this.n = r1;
+    public v73(int i) {
+        this.n = i;
     }
 
     @Override // defpackage.cz4
-    public final bz4 a(nk1 r2, TypeToken r3) {
-        if (r3.getRawType() == Object.class) goto L5;
+    public final bz4 a(nk1 nk1Var, TypeToken typeToken) {
+        if (typeToken.getRawType() == Object.class) {
+            return new w73(nk1Var, this.n);
+        }
         return null;
-    L5:
-        return new w73(r2, this.n);
     }
 }

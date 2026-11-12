@@ -7,9 +7,9 @@ import android.database.sqlite.SQLiteStatement;
 public final class df1 extends cf1 implements vo4 {
     public final SQLiteStatement o;
 
-    public df1(SQLiteStatement r1) {
-        super(r1);
-        this.o = r1;
+    public df1(SQLiteStatement sQLiteStatement) {
+        super(sQLiteStatement);
+        this.o = sQLiteStatement;
     }
 
     public final int b() {

@@ -4,9 +4,9 @@ package defpackage;
 /* JADX INFO: loaded from: classes.dex */
 public interface o62 extends yi2, eo0 {
     @Override // defpackage.yi2
-    default void a(long r1) {
+    default void a(long j) {
     }
 
-    default void e(q62 r1) {
+    default void e(q62 q62Var) {
     }
 }

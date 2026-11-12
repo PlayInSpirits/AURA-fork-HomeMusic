@@ -7,8 +7,8 @@ import android.view.View;
 public final class vc implements dj4 {
     public final View a;
 
-    public vc(View r1) {
-        this.a = r1;
+    public vc(View view) {
+        this.a = view;
     }
 
     @Override // defpackage.dj4

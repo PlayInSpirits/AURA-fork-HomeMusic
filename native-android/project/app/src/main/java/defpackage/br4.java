@@ -6,8 +6,8 @@ public abstract class br4 implements Runnable {
     public long n;
     public boolean o;
 
-    public br4(boolean r1, long r2) {
-        this.n = r2;
-        this.o = r1;
+    public br4(boolean z, long j) {
+        this.n = j;
+        this.o = z;
     }
 }

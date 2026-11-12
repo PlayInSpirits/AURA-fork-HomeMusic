@@ -1,5 +1,6 @@
 package defpackage;
 
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.nio.charset.Charset;
@@ -12,44 +13,42 @@ public final class l14 extends Reader {
     public boolean p;
     public InputStreamReader q;
 
-    public l14(fw r1, Charset r2) {
-        r1.getClass();
-        r2.getClass();
-        this.n = r1;
-        this.o = r2;
+    public l14(fw fwVar, Charset charset) {
+        fwVar.getClass();
+        charset.getClass();
+        this.n = fwVar;
+        this.o = charset;
     }
 
     @Override // java.io.Reader, java.io.Closeable, java.lang.AutoCloseable
-    public final void close() {
+    public final void close() throws IOException {
+        j15 j15Var;
         this.p = true;
-        InputStreamReader r0 = this.q;
-        if (r0 == null) goto L5;
-        r0.close();
-        j15 r1 = j15.a;
-    L6:
-        if (r1 != null) goto L9;
-        this.n.close();
-        return;
-    L9:
-        return;
-    L5:
-        r1 = null;
-        goto L6
+        InputStreamReader inputStreamReader = this.q;
+        if (inputStreamReader != null) {
+            inputStreamReader.close();
+            j15Var = j15.a;
+        } else {
+            j15Var = null;
+        }
+        if (j15Var == null) {
+            this.n.close();
+        }
     }
 
     @Override // java.io.Reader
-    public final int read(char[] r5, int r6, int r7) {
-        r5.getClass();
-        if (this.p == true) goto L9;
-        InputStreamReader r0 = this.q;
-        if (r0 != null) goto L8;
-        fw r1 = this.n;
-        r0 = new InputStreamReader(r1.V(), ze5.g(r1, this.o));
-        this.q = r0;
-    L8:
-        return r0.read(r5, r6, r7);
-    L9:
-        mj0.i("Stream closed");
-        return 0;
+    public final int read(char[] cArr, int i, int i2) throws IOException {
+        cArr.getClass();
+        if (this.p) {
+            mj0.i("Stream closed");
+            return 0;
+        }
+        InputStreamReader inputStreamReader = this.q;
+        if (inputStreamReader == null) {
+            fw fwVar = this.n;
+            inputStreamReader = new InputStreamReader(fwVar.V(), ze5.g(fwVar, this.o));
+            this.q = inputStreamReader;
+        }
+        return inputStreamReader.read(cArr, i, i2);
     }
 }

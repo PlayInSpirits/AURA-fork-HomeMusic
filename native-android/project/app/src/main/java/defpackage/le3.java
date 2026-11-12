@@ -5,22 +5,16 @@ package defpackage;
 public final class le3 extends bf3 {
     public final float c;
 
-    public le3(float r2) {
+    public le3(float f) {
         super(3);
-        this.c = r2;
+        this.c = f;
     }
 
-    public final boolean equals(Object r4) {
-        if (this != r4) goto L6;
-        return true;
-    L6:
-        if ((r4 instanceof le3) == true) goto L9;
-        return false;
-    L9:
-        if (Float.compare(this.c, ((le3) r4).c) == 0) goto L11;
-        return false;
-    L11:
-        return true;
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        return (obj instanceof le3) && Float.compare(this.c, ((le3) obj).c) == 0;
     }
 
     public final int hashCode() {

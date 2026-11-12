@@ -7,20 +7,14 @@ public final class a40 implements q44 {
     public boolean o;
     public final /* synthetic */ b40 p;
 
-    public a40(b40 r1, q44 r2) {
-        this.p = r1;
-        this.n = r2;
+    public a40(b40 b40Var, q44 q44Var) {
+        this.p = b40Var;
+        this.n = q44Var;
     }
 
     @Override // defpackage.q44
     public final boolean c() {
-        if (this.p.a() == false) goto L5;
-        return false;
-    L5:
-        if (this.n.c() == false) goto L10;
-        return true;
-    L10:
-        return false;
+        return !this.p.a() && this.n.c();
     }
 
     @Override // defpackage.q44
@@ -29,61 +23,52 @@ public final class a40 implements q44 {
     }
 
     @Override // defpackage.q44
-    public final int t(gp3 r12, cj0 r13, int r14) {
-        b40 r0 = this.p;
-        if (r0.a() == false) goto L6;
-        return -3;
-    L6:
-        if (this.o == false) goto L9;
-        r13.o = 4;
-        return -4;
-    L9:
-        long r5 = r0.q();
-        int r15 = this.n.t(r12, r13, r14);
-        if (r15 != (-5)) goto L24;
-        tb1 r11 = (tb1) r12.p;
-        r11.getClass();
-        int r16 = r11.J;
-        int r17 = r11.I;
-        if (r17 != 0) goto L17;
-        if (r16 != 0) goto L17;
+    public final int t(gp3 gp3Var, cj0 cj0Var, int i) {
+        b40 b40Var = this.p;
+        if (b40Var.a()) {
+            return -3;
+        }
+        if (this.o) {
+            cj0Var.o = 4;
+            return -4;
+        }
+        long jQ = b40Var.q();
+        int iT = this.n.t(gp3Var, cj0Var, i);
+        if (iT != -5) {
+            long j = b40Var.t;
+            if (j == Long.MIN_VALUE || ((iT != -4 || cj0Var.t < j) && !(iT == -3 && jQ == Long.MIN_VALUE && !cj0Var.s))) {
+                return iT;
+            }
+            cj0Var.r();
+            cj0Var.o = 4;
+            this.o = true;
+            return -4;
+        }
+        tb1 tb1Var = (tb1) gp3Var.p;
+        tb1Var.getClass();
+        int i2 = tb1Var.J;
+        int i3 = tb1Var.I;
+        if (i3 == 0 && i2 == 0) {
+            return -5;
+        }
+        if (b40Var.s != 0) {
+            i3 = 0;
+        }
+        if (b40Var.t != Long.MIN_VALUE) {
+            i2 = 0;
+        }
+        sb1 sb1VarA = tb1Var.a();
+        sb1VarA.H = i3;
+        sb1VarA.I = i2;
+        gp3Var.p = new tb1(sb1VarA);
         return -5;
-    L17:
-        if (r0.s == 0) goto L20;
-        r17 = 0;
-    L20:
-        if (r0.t == Long.MIN_VALUE) goto L22;
-        r16 = 0;
-    L22:
-        sb1 r18 = r11.a();
-        r18.H = r17;
-        r18.I = r16;
-        r12.p = new tb1(r18);
-        return -5;
-    L24:
-        long r1 = r0.t;
-        if (r1 == Long.MIN_VALUE) goto L36;
-        if (r15 == (-4)) goto L28;
-    L29:
-        if (r15 != (-3)) goto L36;
-        if (r5 != Long.MIN_VALUE) goto L36;
-        if (r13.s == true) goto L36;
-    L34:
-        r13.r();
-        r13.o = 4;
-        this.o = true;
-        return -4;
-    L28:
-        if (r13.t >= r1) goto L34;
-    L36:
-        return r15;
     }
 
     @Override // defpackage.q44
-    public final int u(long r2) {
-        if (this.p.a() == false) goto L7;
-        return -3;
-    L7:
-        return this.n.u(r2);
+    public final int u(long j) {
+        if (this.p.a()) {
+            return -3;
+        }
+        return this.n.u(j);
     }
 }

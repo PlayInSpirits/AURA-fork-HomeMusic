@@ -12,144 +12,120 @@ public abstract class q35 extends Drawable {
     public Drawable n;
 
     @Override // android.graphics.drawable.Drawable
-    public void applyTheme(Resources.Theme r1) {
-        Drawable r0 = this.n;
-        if (r0 == null) goto L6;
-        r0.applyTheme(r1);
-        return;
+    public void applyTheme(Resources.Theme theme) {
+        Drawable drawable = this.n;
+        if (drawable != null) {
+            drawable.applyTheme(theme);
+        }
     }
 
     @Override // android.graphics.drawable.Drawable
     public final void clearColorFilter() {
-        Drawable r0 = this.n;
-        if (r0 == null) goto L6;
-        r0.clearColorFilter();
-        return;
-    L6:
-        super.clearColorFilter();
+        Drawable drawable = this.n;
+        if (drawable != null) {
+            drawable.clearColorFilter();
+        } else {
+            super.clearColorFilter();
+        }
     }
 
     @Override // android.graphics.drawable.Drawable
     public final Drawable getCurrent() {
-        Drawable r0 = this.n;
-        if (r0 == null) goto L7;
-        return r0.getCurrent();
-    L7:
-        return super.getCurrent();
+        Drawable drawable = this.n;
+        return drawable != null ? drawable.getCurrent() : super.getCurrent();
     }
 
     @Override // android.graphics.drawable.Drawable
     public final int getMinimumHeight() {
-        Drawable r0 = this.n;
-        if (r0 == null) goto L7;
-        return r0.getMinimumHeight();
-    L7:
-        return super.getMinimumHeight();
+        Drawable drawable = this.n;
+        return drawable != null ? drawable.getMinimumHeight() : super.getMinimumHeight();
     }
 
     @Override // android.graphics.drawable.Drawable
     public final int getMinimumWidth() {
-        Drawable r0 = this.n;
-        if (r0 == null) goto L7;
-        return r0.getMinimumWidth();
-    L7:
-        return super.getMinimumWidth();
+        Drawable drawable = this.n;
+        return drawable != null ? drawable.getMinimumWidth() : super.getMinimumWidth();
     }
 
     @Override // android.graphics.drawable.Drawable
-    public final boolean getPadding(Rect r2) {
-        Drawable r0 = this.n;
-        if (r0 == null) goto L7;
-        return r0.getPadding(r2);
-    L7:
-        return super.getPadding(r2);
+    public final boolean getPadding(Rect rect) {
+        Drawable drawable = this.n;
+        return drawable != null ? drawable.getPadding(rect) : super.getPadding(rect);
     }
 
     @Override // android.graphics.drawable.Drawable
     public final int[] getState() {
-        Drawable r0 = this.n;
-        if (r0 == null) goto L7;
-        return r0.getState();
-    L7:
-        return super.getState();
+        Drawable drawable = this.n;
+        return drawable != null ? drawable.getState() : super.getState();
     }
 
     @Override // android.graphics.drawable.Drawable
     public final Region getTransparentRegion() {
-        Drawable r0 = this.n;
-        if (r0 == null) goto L7;
-        return r0.getTransparentRegion();
-    L7:
-        return super.getTransparentRegion();
+        Drawable drawable = this.n;
+        return drawable != null ? drawable.getTransparentRegion() : super.getTransparentRegion();
     }
 
     @Override // android.graphics.drawable.Drawable
     public final void jumpToCurrentState() {
-        Drawable r0 = this.n;
-        if (r0 == null) goto L6;
-        r0.jumpToCurrentState();
-        return;
+        Drawable drawable = this.n;
+        if (drawable != null) {
+            drawable.jumpToCurrentState();
+        }
     }
 
     @Override // android.graphics.drawable.Drawable
-    public boolean onLevelChange(int r2) {
-        Drawable r0 = this.n;
-        if (r0 == null) goto L7;
-        return r0.setLevel(r2);
-    L7:
-        return super.onLevelChange(r2);
+    public boolean onLevelChange(int i) {
+        Drawable drawable = this.n;
+        return drawable != null ? drawable.setLevel(i) : super.onLevelChange(i);
     }
 
     @Override // android.graphics.drawable.Drawable
-    public final void setChangingConfigurations(int r2) {
-        Drawable r0 = this.n;
-        if (r0 == null) goto L6;
-        r0.setChangingConfigurations(r2);
-        return;
-    L6:
-        super.setChangingConfigurations(r2);
+    public final void setChangingConfigurations(int i) {
+        Drawable drawable = this.n;
+        if (drawable != null) {
+            drawable.setChangingConfigurations(i);
+        } else {
+            super.setChangingConfigurations(i);
+        }
     }
 
     @Override // android.graphics.drawable.Drawable
-    public final void setColorFilter(int r2, PorterDuff.Mode r3) {
-        Drawable r0 = this.n;
-        if (r0 == null) goto L6;
-        r0.setColorFilter(r2, r3);
-        return;
-    L6:
-        super.setColorFilter(r2, r3);
+    public final void setColorFilter(int i, PorterDuff.Mode mode) {
+        Drawable drawable = this.n;
+        if (drawable != null) {
+            drawable.setColorFilter(i, mode);
+        } else {
+            super.setColorFilter(i, mode);
+        }
     }
 
     @Override // android.graphics.drawable.Drawable
-    public final void setFilterBitmap(boolean r1) {
-        Drawable r0 = this.n;
-        if (r0 == null) goto L6;
-        r0.setFilterBitmap(r1);
-        return;
+    public final void setFilterBitmap(boolean z) {
+        Drawable drawable = this.n;
+        if (drawable != null) {
+            drawable.setFilterBitmap(z);
+        }
     }
 
     @Override // android.graphics.drawable.Drawable
-    public final void setHotspot(float r1, float r2) {
-        Drawable r0 = this.n;
-        if (r0 == null) goto L6;
-        r0.setHotspot(r1, r2);
-        return;
+    public final void setHotspot(float f, float f2) {
+        Drawable drawable = this.n;
+        if (drawable != null) {
+            drawable.setHotspot(f, f2);
+        }
     }
 
     @Override // android.graphics.drawable.Drawable
-    public final void setHotspotBounds(int r1, int r2, int r3, int r4) {
-        Drawable r0 = this.n;
-        if (r0 == null) goto L6;
-        r0.setHotspotBounds(r1, r2, r3, r4);
-        return;
+    public final void setHotspotBounds(int i, int i2, int i3, int i4) {
+        Drawable drawable = this.n;
+        if (drawable != null) {
+            drawable.setHotspotBounds(i, i2, i3, i4);
+        }
     }
 
     @Override // android.graphics.drawable.Drawable
-    public final boolean setState(int[] r2) {
-        Drawable r0 = this.n;
-        if (r0 == null) goto L7;
-        return r0.setState(r2);
-    L7:
-        return super.setState(r2);
+    public final boolean setState(int[] iArr) {
+        Drawable drawable = this.n;
+        return drawable != null ? drawable.setState(iArr) : super.setState(iArr);
     }
 }

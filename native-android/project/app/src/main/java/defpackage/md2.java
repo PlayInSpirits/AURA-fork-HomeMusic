@@ -6,19 +6,17 @@ import com.google.android.gms.auth.api.signin.internal.SignInHubActivity;
 /* JADX INFO: loaded from: classes.dex */
 public final class md2 implements a83 {
     public final h95 a;
-    public boolean b;
+    public boolean b = false;
 
-    public md2(og5 r1, h95 r2) {
-        this.b = false;
-        this.a = r2;
+    public md2(og5 og5Var, h95 h95Var) {
+        this.a = h95Var;
     }
 
     @Override // defpackage.a83
-    public final void b(Object r3) {
-        Void r4 = (Void) r3;
-        SignInHubActivity r5 = (SignInHubActivity) this.a.n;
-        r5.setResult(r5.P, r5.Q);
-        r5.finish();
+    public final void b(Object obj) {
+        SignInHubActivity signInHubActivity = (SignInHubActivity) this.a.n;
+        signInHubActivity.setResult(signInHubActivity.P, signInHubActivity.Q);
+        signInHubActivity.finish();
         this.b = true;
     }
 

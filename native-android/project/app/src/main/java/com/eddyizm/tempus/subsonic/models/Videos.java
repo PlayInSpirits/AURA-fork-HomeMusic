@@ -8,14 +8,11 @@ public final class Videos {
     public static final int $stable = 8;
     private List<? extends Child> videos;
 
-    public Videos() {
-    }
-
     public final List<Child> getVideos() {
         return this.videos;
     }
 
-    public final void setVideos(List<? extends Child> r1) {
-        this.videos = r1;
+    public final void setVideos(List<? extends Child> list) {
+        this.videos = list;
     }
 }

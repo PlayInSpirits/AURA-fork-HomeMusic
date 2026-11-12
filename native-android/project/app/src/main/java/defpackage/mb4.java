@@ -7,17 +7,17 @@ import com.eddyizm.tempus.interfaces.ScanCallback;
 public final class mb4 implements ScanCallback {
     public final /* synthetic */ pz1 n;
 
-    public mb4(pz1 r1) {
-        this.n = r1;
+    public mb4(pz1 pz1Var) {
+        this.n = pz1Var;
     }
 
     @Override // com.eddyizm.tempus.interfaces.ScanCallback
-    public final void onError(Exception r1) {
-        this.n.onError(r1);
+    public final void onError(Exception exc) {
+        this.n.onError(exc);
     }
 
     @Override // com.eddyizm.tempus.interfaces.ScanCallback
-    public final void onSuccess(boolean r1, long r2) {
-        this.n.onSuccess(r1, r2);
+    public final void onSuccess(boolean z, long j) {
+        this.n.onSuccess(z, j);
     }
 }

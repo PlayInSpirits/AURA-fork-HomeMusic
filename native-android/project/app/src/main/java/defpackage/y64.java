@@ -6,31 +6,32 @@ public final class y64 extends ep4 implements wf1 {
     public /* synthetic */ Object o;
     public final /* synthetic */ long p;
 
-    public y64(long r1, vd0 r3) {
-        this.p = r1;
-        super(2, r3);
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public y64(long j, vd0 vd0Var) {
+        super(2, vd0Var);
+        this.p = j;
     }
 
     @Override // defpackage.jp
-    public final vd0 create(Object r4, vd0 r5) {
-        y64 r0 = new y64(this.p, r5);
-        r0.o = r4;
-        return r0;
+    public final vd0 create(Object obj, vd0 vd0Var) {
+        y64 y64Var = new y64(this.p, vd0Var);
+        y64Var.o = obj;
+        return y64Var;
     }
 
     @Override // defpackage.wf1
-    public final Object invoke(Object r1, Object r2) {
-        y64 r0 = (y64) create((e74) r1, (vd0) r2);
-        j15 r3 = j15.a;
-        r0.invokeSuspend(r3);
-        return r3;
+    public final Object invoke(Object obj, Object obj2) {
+        y64 y64Var = (y64) create((e74) obj, (vd0) obj2);
+        j15 j15Var = j15.a;
+        y64Var.invokeSuspend(j15Var);
+        return j15Var;
     }
 
     @Override // defpackage.jp
-    public final Object invokeSuspend(Object r4) {
-        kb4.X(r4);
-        g74 r5 = ((e74) this.o).a;
-        r5.d(r5.k, this.p, 1);
+    public final Object invokeSuspend(Object obj) {
+        kb4.X(obj);
+        g74 g74Var = ((e74) this.o).a;
+        g74Var.d(g74Var.k, this.p, 1);
         return j15.a;
     }
 }

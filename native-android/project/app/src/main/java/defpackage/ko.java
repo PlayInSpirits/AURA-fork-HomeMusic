@@ -5,5 +5,5 @@ package defpackage;
 public abstract class ko {
     public abstract void a();
 
-    public abstract void b(Throwable r1);
+    public abstract void b(Throwable th);
 }

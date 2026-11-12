@@ -6,8 +6,8 @@ public final class wr0 implements vy3 {
     public final if1 n;
     public xr0 o;
 
-    public wr0(if1 r1) {
-        this.n = r1;
+    public wr0(if1 if1Var) {
+        this.n = if1Var;
     }
 
     @Override // defpackage.vy3
@@ -16,10 +16,10 @@ public final class wr0 implements vy3 {
 
     @Override // defpackage.vy3
     public final void c() {
-        xr0 r0 = this.o;
-        if (r0 == null) goto L5;
-        r0.a();
-    L5:
+        xr0 xr0Var = this.o;
+        if (xr0Var != null) {
+            xr0Var.a();
+        }
         this.o = null;
     }
 

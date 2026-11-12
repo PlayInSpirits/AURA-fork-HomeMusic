@@ -10,56 +10,55 @@ public final class nc {
     public RectF b;
     public float[] c;
 
-    public nc(Path r1) {
-        this.a = r1;
+    public nc(Path path) {
+        this.a = path;
     }
 
-    public static void a(nc r2, nc r3) {
-        r2.a.addPath(r3.a, Float.intBitsToFloat(0), Float.intBitsToFloat(0));
+    public static void a(nc ncVar, nc ncVar2) {
+        ncVar.a.addPath(ncVar2.a, Float.intBitsToFloat(0), Float.intBitsToFloat(0));
     }
 
-    public static void b(nc r14, g34 r15) {
-        if (r14.b != null) goto L5;
-        r14.b = new RectF();
-    L5:
-        RectF r0 = r14.b;
-        r0.getClass();
-        float r1 = r15.a;
-        long r2 = r15.h;
-        long r4 = r15.g;
-        long r6 = r15.f;
-        long r8 = r15.e;
-        r0.set(r1, r15.b, r15.c, r15.d);
-        if (r14.c != null) goto L8;
-        r14.c = new float[8];
-    L8:
-        float[] r16 = r14.c;
-        r16.getClass();
-        r16[0] = Float.intBitsToFloat((int) (r8 >> 32));
-        r16[1] = Float.intBitsToFloat((int) (r8 & 4294967295L));
-        r16[2] = Float.intBitsToFloat((int) (r6 >> 32));
-        r16[3] = Float.intBitsToFloat((int) (r6 & 4294967295L));
-        r16[4] = Float.intBitsToFloat((int) (r4 >> 32));
-        r16[5] = Float.intBitsToFloat((int) (r4 & 4294967295L));
-        r16[6] = Float.intBitsToFloat((int) (r2 >> 32));
-        r16[7] = Float.intBitsToFloat((int) (r2 & 4294967295L));
-        Path r17 = r14.a;
-        RectF r3 = r14.b;
-        r3.getClass();
-        float[] r18 = r14.c;
-        r18.getClass();
-        int r5 = fe3.n.ordinal();
-        if (r5 == 0) goto L14;
-        if (r5 != 1) goto L12;
-        Path.Direction r7 = Path.Direction.CW;
-    L15:
-        r17.addRoundRect(r3, r18, r7);
-        return;
-    L12:
-        er1.n();
-        return;
-    L14:
-        r7 = Path.Direction.CCW;
-        goto L15
+    public static void b(nc ncVar, g34 g34Var) {
+        Path.Direction direction;
+        if (ncVar.b == null) {
+            ncVar.b = new RectF();
+        }
+        RectF rectF = ncVar.b;
+        rectF.getClass();
+        float f = g34Var.a;
+        long j = g34Var.h;
+        long j2 = g34Var.g;
+        long j3 = g34Var.f;
+        long j4 = g34Var.e;
+        rectF.set(f, g34Var.b, g34Var.c, g34Var.d);
+        if (ncVar.c == null) {
+            ncVar.c = new float[8];
+        }
+        float[] fArr = ncVar.c;
+        fArr.getClass();
+        fArr[0] = Float.intBitsToFloat((int) (j4 >> 32));
+        fArr[1] = Float.intBitsToFloat((int) (j4 & 4294967295L));
+        fArr[2] = Float.intBitsToFloat((int) (j3 >> 32));
+        fArr[3] = Float.intBitsToFloat((int) (j3 & 4294967295L));
+        fArr[4] = Float.intBitsToFloat((int) (j2 >> 32));
+        fArr[5] = Float.intBitsToFloat((int) (j2 & 4294967295L));
+        fArr[6] = Float.intBitsToFloat((int) (j >> 32));
+        fArr[7] = Float.intBitsToFloat((int) (j & 4294967295L));
+        Path path = ncVar.a;
+        RectF rectF2 = ncVar.b;
+        rectF2.getClass();
+        float[] fArr2 = ncVar.c;
+        fArr2.getClass();
+        int iOrdinal = fe3.n.ordinal();
+        if (iOrdinal == 0) {
+            direction = Path.Direction.CCW;
+        } else {
+            if (iOrdinal != 1) {
+                er1.n();
+                return;
+            }
+            direction = Path.Direction.CW;
+        }
+        path.addRoundRect(rectF2, fArr2, direction);
     }
 }

@@ -61,11 +61,11 @@ public final class mi2 {
     public int y;
     public boolean z;
 
-    public final byte[] a(String r2) {
-        byte[] r1 = this.l;
-        if (r1 == null) goto L6;
-        return r1;
-    L6:
-        throw ParserException.a(null, "Missing CodecPrivate for codec " + r2);
+    public final byte[] a(String str) throws ParserException {
+        byte[] bArr = this.l;
+        if (bArr != null) {
+            return bArr;
+        }
+        throw ParserException.a(null, "Missing CodecPrivate for codec " + str);
     }
 }

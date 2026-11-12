@@ -4,22 +4,15 @@ package defpackage;
 /* JADX INFO: loaded from: classes.dex */
 public final class wb3 {
     public final pp3 a;
-    public final k52 b;
-    public final k52 c;
-    public final k52 d;
-    public final k52 e;
-    public final k52 f;
-    public final k52 g;
-    public final k52 h;
+    public final k52 b = new k52(18);
+    public final k52 c = new k52(19);
+    public final k52 d = new k52(20);
+    public final k52 e = new k52(21);
+    public final k52 f = new k52(22);
+    public final k52 g = new k52(23);
+    public final k52 h = new k52(24);
 
-    public wb3(ja r2) {
-        this.a = new pp3(r2);
-        this.b = new k52(18);
-        this.c = new k52(19);
-        this.d = new k52(20);
-        this.e = new k52(21);
-        this.f = new k52(22);
-        this.g = new k52(23);
-        this.h = new k52(24);
+    public wb3(ja jaVar) {
+        this.a = new pp3(jaVar);
     }
 }

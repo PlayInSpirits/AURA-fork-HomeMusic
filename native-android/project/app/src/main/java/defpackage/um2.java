@@ -4,13 +4,9 @@ package defpackage;
 /* JADX INFO: loaded from: classes.dex */
 public final class um2 {
     public long a;
-    public long b;
+    public long b = Long.MIN_VALUE;
     public boolean c;
     public boolean d;
     public boolean e;
     public boolean f;
-
-    public um2() {
-        this.b = Long.MIN_VALUE;
-    }
 }

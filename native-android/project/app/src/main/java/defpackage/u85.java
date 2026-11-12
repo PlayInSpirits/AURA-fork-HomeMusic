@@ -5,8 +5,8 @@ package defpackage;
 public final class u85 {
     public final t85 a;
 
-    public u85(t85 r1) {
-        this.a = r1;
+    public u85(t85 t85Var) {
+        this.a = t85Var;
     }
 
     public final String toString() {

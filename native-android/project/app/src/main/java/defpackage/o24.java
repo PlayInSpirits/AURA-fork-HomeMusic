@@ -5,33 +5,32 @@ package defpackage;
 public final class o24 extends uv {
     public final /* synthetic */ p24 p;
 
-    public o24(p24 r1, int r2) {
-        this.p = r1;
-        super(r2, 3);
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public o24(p24 p24Var, int i) {
+        super(i, 3);
+        this.p = p24Var;
     }
 
     @Override // defpackage.uv
-    public final void l(we1 r2) {
-        po4 r0 = new po4(r2);
-        this.p.d(r0);
+    public final void l(we1 we1Var) {
+        this.p.d(new po4(we1Var));
     }
 
     @Override // defpackage.uv
-    public final void o(we1 r1, int r2, int r3) {
-        q(r1, r2, r3);
+    public final void o(we1 we1Var, int i, int i2) {
+        q(we1Var, i, i2);
     }
 
     @Override // defpackage.uv
-    public final void p(we1 r2) {
-        po4 r0 = new po4(r2);
-        p24 r1 = this.p;
-        r1.f(r0);
-        r1.g = r2;
+    public final void p(we1 we1Var) throws Throwable {
+        po4 po4Var = new po4(we1Var);
+        p24 p24Var = this.p;
+        p24Var.f(po4Var);
+        p24Var.g = we1Var;
     }
 
     @Override // defpackage.uv
-    public final void q(we1 r2, int r3, int r4) {
-        po4 r0 = new po4(r2);
-        this.p.e(r0, r3, r4);
+    public final void q(we1 we1Var, int i, int i2) {
+        this.p.e(new po4(we1Var), i, i2);
     }
 }

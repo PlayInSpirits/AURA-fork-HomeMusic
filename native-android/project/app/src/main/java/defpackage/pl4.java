@@ -7,6 +7,6 @@ import android.animation.AnimatorListenerAdapter;
 /* JADX INFO: loaded from: classes.dex */
 public final class pl4 extends AnimatorListenerAdapter {
     @Override // android.animation.AnimatorListenerAdapter, android.animation.Animator.AnimatorListener
-    public final void onAnimationEnd(Animator r1) {
+    public final void onAnimationEnd(Animator animator) {
     }
 }

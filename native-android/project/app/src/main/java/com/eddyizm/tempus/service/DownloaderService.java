@@ -9,12 +9,5 @@ public class DownloaderService extends vt0 {
     public static volatile float w;
     public static volatile int x;
     public static volatile int y;
-    public static final ConcurrentHashMap z = null;
-
-    static {
-        z = new ConcurrentHashMap();
-    }
-
-    public DownloaderService() {
-    }
+    public static final ConcurrentHashMap z = new ConcurrentHashMap();
 }

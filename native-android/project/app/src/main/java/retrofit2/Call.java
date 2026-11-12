@@ -11,7 +11,7 @@ public interface Call<T> extends Cloneable {
     /* JADX INFO: renamed from: clone */
     Call<T> mo76clone();
 
-    void enqueue(Callback<T> r1);
+    void enqueue(Callback<T> callback);
 
     Response<T> execute();
 

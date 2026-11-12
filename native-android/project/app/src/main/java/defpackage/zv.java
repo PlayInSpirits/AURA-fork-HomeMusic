@@ -7,19 +7,17 @@ public final class zv extends wd0 {
     public final /* synthetic */ aw o;
     public int p;
 
-    public zv(aw r1, wd0 r2) {
-        this.o = r1;
-        super(r2);
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public zv(aw awVar, wd0 wd0Var) {
+        super(wd0Var);
+        this.o = awVar;
     }
 
     @Override // defpackage.jp
-    public final Object invokeSuspend(Object r7) {
-        this.n = r7;
+    public final Object invokeSuspend(Object obj) {
+        this.n = obj;
         this.p |= Integer.MIN_VALUE;
-        Object r6 = this.o.J(null, 0, 0, this);
-        if (r6 != xe0.n) goto L6;
-        return r6;
-    L6:
-        return new j10(r6);
+        Object objJ = this.o.J(null, 0, 0L, this);
+        return objJ == xe0.n ? objJ : new j10(objJ);
     }
 }

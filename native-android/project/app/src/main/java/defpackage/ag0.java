@@ -12,31 +12,29 @@ import android.util.Log;
 public final class ag0 implements OutcomeReceiver {
     public final /* synthetic */ wo0 a;
 
-    public ag0(wo0 r1, bg0 r2) {
-        this.a = r1;
+    public ag0(wo0 wo0Var, bg0 bg0Var) {
+        this.a = wo0Var;
     }
 
-    public final void onError(Throwable r3) {
-        GetCredentialException r4 = bn.l(r3);
-        r4.getClass();
+    public final void onError(Throwable th) {
+        GetCredentialException getCredentialExceptionL = bn.l(th);
+        getCredentialExceptionL.getClass();
         Log.i("CredManProvService", "GetCredentialResponse error returned from framework");
-        String r0 = bn.s(r4);
-        r0.getClass();
-        androidx.credentials.exceptions.GetCredentialException r5 = rr2.T(bn.B(r4), r0);
-        this.a.F(r5);
+        String type = getCredentialExceptionL.getType();
+        type.getClass();
+        this.a.F(rr2.T(getCredentialExceptionL.getMessage(), type));
     }
 
-    public final void onResult(Object r3) {
-        GetCredentialResponse r4 = bn.o(r3);
-        r4.getClass();
+    public final void onResult(Object obj) {
+        GetCredentialResponse getCredentialResponseO = bn.o(obj);
+        getCredentialResponseO.getClass();
         Log.i("CredManProvService", "GetCredentialResponse returned from framework");
-        Credential r5 = bn.f(r4);
-        r5.getClass();
-        String r1 = bn.r(r5);
-        r1.getClass();
-        Bundle r6 = bn.q(r5);
-        r6.getClass();
-        mh1 r0 = new mh1(gb.p(r1, r6));
-        this.a.G(r0);
+        Credential credential = getCredentialResponseO.getCredential();
+        credential.getClass();
+        String type = credential.getType();
+        type.getClass();
+        Bundle data = credential.getData();
+        data.getClass();
+        this.a.G(new mh1(gb.p(type, data)));
     }
 }

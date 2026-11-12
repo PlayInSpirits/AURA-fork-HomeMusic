@@ -9,39 +9,33 @@ public final class ff4 implements jd2 {
     public final yl4 b;
     public byte[] c;
 
-    public ff4(ci0 r2, ii0 r3) {
+    public ff4(ci0 ci0Var, ii0 ii0Var) {
         ed2.g.getAndIncrement();
-        this.a = r3;
-        this.b = new yl4(r2);
+        this.a = ii0Var;
+        this.b = new yl4(ci0Var);
     }
 
     @Override // defpackage.jd2
     public final void a() {
-        yl4 r2 = this.b;
-        r2.o = 0;
-        r2.b(this.a);     // Catch: Throwable -> L9
-        int r0 = 0;
-    L5:
-        if (r0 == (-1)) goto L16;
-        int r1 = (int) r2.o;     // Catch: Throwable -> L9
-        byte[] r3 = this.c;     // Catch: Throwable -> L9
-        if (r3 != null) goto L12;
-        this.c = new byte[1024];     // Catch: Throwable -> L9
-    L14:
-        byte[] r4 = this.c;     // Catch: Throwable -> L9
-        r0 = r2.read(r4, r1, r4.length - r1);     // Catch: Throwable -> L9
-        goto L5
-    L12:
-        if (r1 != r3.length) goto L14;
-        this.c = Arrays.copyOf(r3, r3.length * 2);     // Catch: Throwable -> L9
-        goto L14
-    L16:
-        fu.k(r2);
-        return;
-    L9:
-        th = move-exception;
-        fu.k(r2);
-        throw th;
+        yl4 yl4Var = this.b;
+        yl4Var.o = 0L;
+        try {
+            yl4Var.b(this.a);
+            int i = 0;
+            while (i != -1) {
+                int i2 = (int) yl4Var.o;
+                byte[] bArr = this.c;
+                if (bArr == null) {
+                    this.c = new byte[1024];
+                } else if (i2 == bArr.length) {
+                    this.c = Arrays.copyOf(bArr, bArr.length * 2);
+                }
+                byte[] bArr2 = this.c;
+                i = yl4Var.read(bArr2, i2, bArr2.length - i2);
+            }
+        } finally {
+            fu.k(yl4Var);
+        }
     }
 
     @Override // defpackage.jd2

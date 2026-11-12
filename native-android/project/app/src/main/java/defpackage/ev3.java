@@ -15,73 +15,70 @@ public final class ev3 {
     public final int h;
     public int i;
 
-    public ev3(bv3 r1, ArrayList r2, int r3, y10 r4, oz3 r5, int r6, int r7, int r8) {
-        r5.getClass();
-        this.a = r1;
-        this.b = r2;
-        this.c = r3;
-        this.d = r4;
-        this.e = r5;
-        this.f = r6;
-        this.g = r7;
-        this.h = r8;
+    public ev3(bv3 bv3Var, ArrayList arrayList, int i, y10 y10Var, oz3 oz3Var, int i2, int i3, int i4) {
+        oz3Var.getClass();
+        this.a = bv3Var;
+        this.b = arrayList;
+        this.c = i;
+        this.d = y10Var;
+        this.e = oz3Var;
+        this.f = i2;
+        this.g = i3;
+        this.h = i4;
     }
 
-    public static ev3 a(ev3 r9, int r10, y10 r11, oz3 r12, int r13) {
-        if ((r13 & 1) == 0) goto L5;
-        r10 = r9.c;
-    L5:
-        int r3 = r10;
-        if ((r13 & 2) == 0) goto L8;
-        r11 = r9.d;
-    L8:
-        y10 r4 = r11;
-        if ((r13 & 4) == 0) goto L11;
-        r12 = r9.e;
-    L11:
-        oz3 r5 = r12;
-        int r6 = r9.f;
-        int r7 = r9.g;
-        int r8 = r9.h;
-        r5.getClass();
-        return new ev3(r9.a, r9.b, r3, r4, r5, r6, r7, r8);
+    public static ev3 a(ev3 ev3Var, int i, y10 y10Var, oz3 oz3Var, int i2) {
+        if ((i2 & 1) != 0) {
+            i = ev3Var.c;
+        }
+        int i3 = i;
+        if ((i2 & 2) != 0) {
+            y10Var = ev3Var.d;
+        }
+        y10 y10Var2 = y10Var;
+        if ((i2 & 4) != 0) {
+            oz3Var = ev3Var.e;
+        }
+        oz3 oz3Var2 = oz3Var;
+        int i4 = ev3Var.f;
+        int i5 = ev3Var.g;
+        int i6 = ev3Var.h;
+        oz3Var2.getClass();
+        return new ev3(ev3Var.a, ev3Var.b, i3, y10Var2, oz3Var2, i4, i5, i6);
     }
 
-    public final k14 b(oz3 r10) {
-        r10.getClass();
-        ArrayList r0 = this.b;
-        int r1 = r0.size();
-        int r3 = this.c;
-        if (r3 >= r1) goto L28;
+    public final k14 b(oz3 oz3Var) {
+        oz3Var.getClass();
+        ArrayList arrayList = this.b;
+        int size = arrayList.size();
+        int i = this.c;
+        if (i >= size) {
+            kf2.o("Check failed.");
+            return null;
+        }
         this.i++;
-        y10 r5 = this.d;
-        if (r5 != null) goto L7;
-    L15:
-        int r7 = r3 + 1;
-        ev3 r9 = a(this, r7, null, r10, 58);
-        r02 r11 = (r02) r0.get(r3);
-        k14 r4 = r11.a(r9);
-        if (r4 == null) goto L27;
-        if (r5 != null) goto L19;
-    L25:
-        return r4;
-    L19:
-        if (r7 >= r0.size()) goto L25;
-        if (r9.i == 1) goto L25;
-        nz2.z(r11, " must call proceed() exactly once", "network interceptor ");
-        return null;
-    L27:
-        throw new NullPointerException("interceptor " + r11 + " returned null");
-    L7:
-        if (((s21) r5.e).d().f(r10.a) == true) goto L9;
-        nz2.z(r0.get(r3 - 1), " must retain the same host and port", "network interceptor ");
-        return null;
-    L9:
-        if (this.i == 1) goto L15;
-        nz2.z(r0.get(r3 - 1), " must call proceed() exactly once", "network interceptor ");
-        return null;
-    L28:
-        kf2.o("Check failed.");
+        y10 y10Var = this.d;
+        if (y10Var != null) {
+            if (!((s21) y10Var.e).d().f(oz3Var.a)) {
+                nz2.z(arrayList.get(i - 1), " must retain the same host and port", "network interceptor ");
+                return null;
+            }
+            if (this.i != 1) {
+                nz2.z(arrayList.get(i - 1), " must call proceed() exactly once", "network interceptor ");
+                return null;
+            }
+        }
+        int i2 = i + 1;
+        ev3 ev3VarA = a(this, i2, null, oz3Var, 58);
+        r02 r02Var = (r02) arrayList.get(i);
+        k14 k14VarA = r02Var.a(ev3VarA);
+        if (k14VarA == null) {
+            throw new NullPointerException("interceptor " + r02Var + " returned null");
+        }
+        if (y10Var == null || i2 >= arrayList.size() || ev3VarA.i == 1) {
+            return k14VarA;
+        }
+        nz2.z(r02Var, " must call proceed() exactly once", "network interceptor ");
         return null;
     }
 }

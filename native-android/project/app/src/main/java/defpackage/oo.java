@@ -12,24 +12,18 @@ public final class oo {
     public final int d;
     public final long e;
 
-    public oo(BackEvent r7) {
-        r7.getClass();
-        float r0 = bn.b(r7);
-        float r1 = bn.z(r7);
-        float r2 = bn.D(r7);
-        int r3 = bn.d(r7);
-        if (Build.VERSION.SDK_INT < 36) goto L5;
-        long r4 = no.b(r7);
-    L6:
-        this.a = r0;
-        this.b = r1;
-        this.c = r2;
-        this.d = r3;
-        this.e = r4;
-        return;
-    L5:
-        r4 = 0;
-        goto L6
+    public oo(BackEvent backEvent) {
+        backEvent.getClass();
+        float touchX = backEvent.getTouchX();
+        float touchY = backEvent.getTouchY();
+        float progress = backEvent.getProgress();
+        int swipeEdge = backEvent.getSwipeEdge();
+        long frameTimeMillis = Build.VERSION.SDK_INT >= 36 ? backEvent.getFrameTimeMillis() : 0L;
+        this.a = touchX;
+        this.b = touchY;
+        this.c = progress;
+        this.d = swipeEdge;
+        this.e = frameTimeMillis;
     }
 
     public final String toString() {

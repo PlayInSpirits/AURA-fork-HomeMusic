@@ -5,18 +5,10 @@ package defpackage;
 public final class hr {
     public final float a;
 
-    public /* synthetic */ hr(float r1) {
-        this.a = r1;
-    }
-
-    public final boolean equals(Object r2) {
-        if ((r2 instanceof hr) == false) goto L11;
-        float r3 = ((hr) r2).a;
-        if (Float.compare(this.a, r3) == 0) goto L9;
-        return false;
-    L9:
-        return true;
-    L11:
+    public final boolean equals(Object obj) {
+        if (obj instanceof hr) {
+            return Float.compare(this.a, ((hr) obj).a) == 0;
+        }
         return false;
     }
 

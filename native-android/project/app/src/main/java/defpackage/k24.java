@@ -1,11 +1,12 @@
 package defpackage;
 
 import java.util.Arrays;
+import org.chromium.support_lib_boundary.WebSettingsBoundaryInterface;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class k24 extends p50 {
-    public static final nz2 r = null;
+    public static final nz2 r = new nz2(23);
     public final z95 d;
     public final float e;
     public final float f;
@@ -21,177 +22,233 @@ public final class k24 extends p50 {
     public final g24 p;
     public final boolean q;
 
-    static {
-        r = new nz2(23);
-    }
-
+    /* JADX WARN: Code duplicated, block: B:42:0x01eb  */
+    /* JADX WARN: Code duplicated, block: B:45:0x01f0  */
+    /* JADX WARN: Code duplicated, block: B:47:0x01f3  */
+    /* JADX WARN: Code duplicated, block: B:53:0x0211  */
+    /* JADX WARN: Code duplicated, block: B:56:0x021a  */
+    /* JADX WARN: Code duplicated, block: B:63:0x022e  */
+    /* JADX WARN: Code duplicated, block: B:65:0x0246  */
+    /* JADX WARN: Code duplicated, block: B:68:0x0260  */
+    /* JADX WARN: Code duplicated, block: B:77:0x0211 A[SYNTHETIC] */
+    /* JADX WARN: Code duplicated, block: B:80:0x0263 A[ADDED_TO_REGION, REMOVE, SYNTHETIC] */
+    /* JADX WARN: Code duplicated, block: B:82:0x0260 A[SYNTHETIC] */
     /* JADX WARN: Multi-variable type inference failed */
-    public k24(String r36, float[] r37, z95 r38, float[] r39, ks0 r40, ks0 r41, float r42, float r43, sw4 r44, int r45) {
-        super(r45, 12884901888L, r36);
-        this.d = r38;
-        this.e = r42;
-        this.f = r43;
-        this.g = r44;
-        this.k = r40;
-        int r10 = 1;
-        this.l = new j24(this, r10);
-        int r11 = 0;
-        this.m = new g24(this, r11);
-        this.n = r41;
-        this.o = new j24(this, r11);
-        this.p = new g24(this, r10);
-        if (r37.length == 6) goto L10;
-        if (r37.length == 9) goto L10;
-        kf2.n("The color space's primaries must be defined as an array of 6 floats in xyY or 9 floats in XYZ");
-        throw null;
-    L10:
-        if (r42 >= r43) goto L74;
-        float[] r9 = new float[6];
-        if (r37.length != 9) goto L14;
-        float r15 = r37[0];
-        float r22 = r37[1];
-        float r23 = (r15 + r22) + r37[2];
-        r9[0] = r15 / r23;
-        r9[1] = r22 / r23;
-        float r16 = r37[3];
-        float r24 = r37[4];
-        float r25 = (r16 + r24) + r37[5];
-        r9[2] = r16 / r25;
-        r9[3] = r24 / r25;
-        float r17 = r37[6];
-        float r26 = r37[7];
-        float r27 = (r17 + r26) + r37[8];
-        r9[4] = r17 / r27;
-        r9[5] = r26 / r27;
-    L15:
-        this.h = r9;
-        if (r39 != null) goto L18;
-        float r3 = r9[0];
-        float r12 = r9[1];
-        float r18 = r9[2];
-        float r28 = r9[3];
-        float r29 = r9[4];
-        float r210 = r9[5];
-        float r310 = 1.0f;
-        float r1 = r38.a;
-        char r46 = 1;
-        float r13 = r38.b;
-        float r211 = 1.0f - r3;
-        float r212 = r211 / r12;
-        float r213 = 1.0f - r18;
-        float r214 = 1.0f - r29;
-        float r31 = (1.0f - r1) / r13;
-        float r32 = r3 / r12;
-        float r33 = (r18 / r28) - r32;
-        float r2 = (r1 / r13) - r32;
-        float r215 = (r213 / r28) - r212;
-        float r34 = (r29 / r210) - r32;
-        float r35 = (((r31 - r212) * r33) - (r2 * r215)) / ((((r214 / r210) - r212) * r33) - (r215 * r34));
-        float r4 = (r2 - (r34 * r35)) / r33;
-        float r14 = (1.0f - r4) - r35;
-        float r216 = r14 / r12;
-        float r217 = r4 / r28;
-        float r30 = r35 / r210;
-        this.i = new float[]{r3 * r216, r14, (r211 - r12) * r216, r18 * r217, r4, (r213 - r28) * r217, r29 * r30, r35, (r214 - r210) * r30};
-    L21:
+    public k24(String str, float[] fArr, z95 z95Var, float[] fArr2, ks0 ks0Var, ks0 ks0Var2, float f, float f2, sw4 sw4Var, int i) {
+        char c;
+        float f3;
+        float f4;
+        boolean z;
+        float[] fArr3;
+        k24 k24Var;
+        double d;
+        int i2;
+        super(i, 12884901888L, str);
+        this.d = z95Var;
+        this.e = f;
+        this.f = f2;
+        this.g = sw4Var;
+        this.k = ks0Var;
+        int i3 = 1;
+        this.l = new j24(this, i3);
+        int i4 = 0;
+        this.m = new g24(this, i4);
+        this.n = ks0Var2;
+        this.o = new j24(this, i4);
+        this.p = new g24(this, i3);
+        if (fArr.length != 6 && fArr.length != 9) {
+            kf2.n("The color space's primaries must be defined as an array of 6 floats in xyY or 9 floats in XYZ");
+            throw null;
+        }
+        if (f >= f2) {
+            kf2.n(xa3.f("Invalid range: min=", f, ", max=", f2, "; min must be strictly < max"));
+            throw null;
+        }
+        float[] fArr4 = new float[6];
+        if (fArr.length == 9) {
+            float f5 = fArr[0];
+            float f6 = fArr[1];
+            float f7 = f5 + f6 + fArr[2];
+            fArr4[0] = f5 / f7;
+            fArr4[1] = f6 / f7;
+            float f8 = fArr[3];
+            float f9 = fArr[4];
+            float f10 = f8 + f9 + fArr[5];
+            fArr4[2] = f8 / f10;
+            fArr4[3] = f9 / f10;
+            float f11 = fArr[6];
+            float f12 = fArr[7];
+            float f13 = f11 + f12 + fArr[8];
+            fArr4[4] = f11 / f13;
+            fArr4[5] = f12 / f13;
+        } else {
+            System.arraycopy(fArr, 0, fArr4, 0, 6);
+        }
+        this.h = fArr4;
+        if (fArr2 == null) {
+            float f14 = fArr4[0];
+            float f15 = fArr4[1];
+            float f16 = fArr4[2];
+            float f17 = fArr4[3];
+            float f18 = fArr4[4];
+            float f19 = fArr4[5];
+            f3 = 1.0f;
+            float f20 = z95Var.a;
+            c = 1;
+            float f21 = z95Var.b;
+            float f22 = 1.0f - f14;
+            float f23 = f22 / f15;
+            float f24 = 1.0f - f16;
+            float f25 = 1.0f - f18;
+            float f26 = (1.0f - f20) / f21;
+            float f27 = f14 / f15;
+            float f28 = (f16 / f17) - f27;
+            float f29 = (f20 / f21) - f27;
+            float f30 = (f24 / f17) - f23;
+            float f31 = (f18 / f19) - f27;
+            float f32 = (((f26 - f23) * f28) - (f29 * f30)) / ((((f25 / f19) - f23) * f28) - (f30 * f31));
+            float f33 = (f29 - (f31 * f32)) / f28;
+            float f34 = (1.0f - f33) - f32;
+            float f35 = f34 / f15;
+            float f36 = f33 / f17;
+            float f37 = f32 / f19;
+            this.i = new float[]{f14 * f35, f34, (f22 - f15) * f35, f16 * f36, f33, (f24 - f17) * f36, f18 * f37, f32, (f25 - f19) * f37};
+        } else {
+            c = 1;
+            f3 = 1.0f;
+            if (fArr2.length != 9) {
+                kf2.n(f34.f(fArr2.length, "Transform must have 9 entries! Has "));
+                throw null;
+            }
+            this.i = fArr2;
+        }
         this.j = uo.w(this.i);
-        float r5 = gi1.e(r9);
-        float[] r6 = s50.a;
-        if ((r5 / gi1.e(s50.b)) <= 0.9f) goto L38;
-        float[] r7 = s50.a;
-        float r19 = r9[0];
-        float r110 = r7[0];
-        float r111 = r9[r46];
-        float r112 = r7[r46];
-        float r113 = r9[2];
-        float r114 = r7[2];
-        float r218 = r9[3];
-        float r219 = r7[3];
-        float r220 = r9[4];
-        float r221 = r7[4];
-        float r222 = r9[5];
-        float r8 = r7[5];
-        float r311 = 0.0f;
-        float[] r20 = new float[6];
-        r20[0] = r19 - r110;
-        r20[r46] = r111 - r112;
-        r20[2] = r113 - r114;
-        r20[3] = r218 - r219;
-        r20[4] = r220 - r221;
-        r20[5] = r222 - r8;
-        float r115 = r20[0];
-        float r116 = r20[r46];
-        if ((((r112 - r8) * r115) - ((r110 - r221) * r116)) >= 0.0f) goto L26;
-    L39:
-        int r21 = (r42 > r311 ? 1 : (r42 == r311 ? 0 : -1));
-    L40:
-        if (r45 == 0) goto L68;
-        float[] r47 = s50.a;
-        if (r9 == r47) goto L54;
-        int r48 = 0;
-    L46:
-        if (r48 >= 6) goto L54;
-        if (Float.compare(r9[r48], r47[r48]) == 0) goto L52;
-        if (Math.abs(r9[r48] - r47[r48]) <= 0.001f) goto L52;
-    L69:
-        boolean r117 = 0;
-    L70:
-        this.q = r117;
-        return;
-    L52:
-        r48 = r48 + 1;
-    L54:
-        if (uo.l(r38, wr1.d) == false) goto L69;
-        if (r42 != r311) goto L69;
-        if (r43 != r310) goto L69;
-        float[] r49 = s50.a;
-        k24 r50 = s50.e;
-        double r51 = 0.0d;
-    L62:
-        if (r51 > 1.0d) goto L68;
-        if (Math.abs(r40.b(r51) - r50.k.b(r51)) > 0.001d) goto L69;
-        if (Math.abs(r41.b(r51) - r50.n.b(r51)) > 0.001d) goto L69;
-        r51 = r51 + 0.00392156862745098d;
-    L68:
-        r117 = r46;
-        goto L70
-    L26:
-        if ((((r110 - r114) * r116) - ((r112 - r219) * r115)) < 0.0f) goto L39;
-        float r118 = r20[2];
-        float r119 = r20[3];
-        if ((((r219 - r112) * r118) - ((r114 - r110) * r119)) < 0.0f) goto L39;
-        if ((((r114 - r221) * r119) - ((r219 - r8) * r118)) < 0.0f) goto L39;
-        float r120 = r20[4];
-        float r52 = r20[5];
-        if ((((r8 - r219) * r120) - ((r221 - r114) * r52)) < 0.0f) goto L39;
-        if ((((r221 - r110) * r52) - ((r8 - r112) * r120)) < 0.0f) goto L39;
-    L38:
-        r311 = 0.0f;
-        goto L39
-    L18:
-        r46 = 1;
-        r310 = 1.0f;
-        if (r39.length != 9) goto L72;
-        this.i = r39;
-        goto L21
-    L72:
-        kf2.n(f34.f(r39.length, "Transform must have 9 entries! Has "));
-        throw null;
-    L14:
-        System.arraycopy(r37, 0, r9, 0, 6);
-        goto L15
-    L74:
-        kf2.n(xa3.f("Invalid range: min=", r42, ", max=", r43, "; min must be strictly < max"));
-        throw null;
+        float fE = gi1.e(fArr4);
+        float[] fArr5 = s50.a;
+        if (fE / gi1.e(s50.b) > 0.9f) {
+            float[] fArr6 = s50.a;
+            float f38 = fArr4[0];
+            float f39 = fArr6[0];
+            float f40 = fArr4[c];
+            float f41 = fArr6[c];
+            float f42 = fArr4[2];
+            float f43 = fArr6[2];
+            float f44 = fArr4[3];
+            float f45 = fArr6[3];
+            float f46 = fArr4[4];
+            float f47 = fArr6[4];
+            float f48 = fArr4[5];
+            float f49 = fArr6[5];
+            f4 = 0.0f;
+            float[] fArr7 = new float[6];
+            fArr7[0] = f38 - f39;
+            fArr7[c] = f40 - f41;
+            fArr7[2] = f42 - f43;
+            fArr7[3] = f44 - f45;
+            fArr7[4] = f46 - f47;
+            fArr7[5] = f48 - f49;
+            float f50 = fArr7[0];
+            float f51 = fArr7[c];
+            if (((f41 - f49) * f50) - ((f39 - f47) * f51) >= 0.0f && ((f39 - f43) * f51) - ((f41 - f45) * f50) >= 0.0f) {
+                float f52 = fArr7[2];
+                float f53 = fArr7[3];
+                if (((f45 - f41) * f52) - ((f43 - f39) * f53) >= 0.0f && ((f43 - f47) * f53) - ((f45 - f49) * f52) >= 0.0f) {
+                    float f54 = fArr7[4];
+                    float f55 = fArr7[5];
+                    if (((f49 - f45) * f54) - ((f47 - f43) * f55) < 0.0f || ((f47 - f39) * f55) - ((f49 - f41) * f54) < 0.0f) {
+                    }
+                }
+            }
+            if (i != 0) {
+                fArr3 = s50.a;
+                if (fArr4 == fArr3) {
+                    i2 = 0;
+                    while (true) {
+                        if (i2 < 6) {
+                            if (Float.compare(fArr4[i2], fArr3[i2]) != 0 || Math.abs(fArr4[i2] - fArr3[i2]) <= 0.001f) {
+                                i2++;
+                            }
+                        } else if (uo.l(z95Var, wr1.d)) {
+                            float[] fArr8 = s50.a;
+                            k24Var = s50.e;
+                            d = 0.0d;
+                            while (true) {
+                                if (d <= 1.0d) {
+                                    z = c;
+                                } else if (Math.abs(ks0Var.b(d) - k24Var.k.b(d)) > 0.001d) {
+                                }
+                                d += 0.00392156862745098d;
+                            }
+                        }
+                    }
+                } else if (uo.l(z95Var, wr1.d) && f == f4 && f2 == f3) {
+                    float[] fArr9 = s50.a;
+                    k24Var = s50.e;
+                    d = 0.0d;
+                    while (true) {
+                        if (d <= 1.0d) {
+                            z = c;
+                        } else if (Math.abs(ks0Var.b(d) - k24Var.k.b(d)) > 0.001d && Math.abs(ks0Var2.b(d) - k24Var.n.b(d)) <= 0.001d) {
+                            d += 0.00392156862745098d;
+                        }
+                    }
+                }
+                z = 0;
+            } else {
+                z = c;
+            }
+            this.q = z;
+        }
+        f4 = 0.0f;
+        int i5 = (f > f4 ? 1 : (f == f4 ? 0 : -1));
+        if (i != 0) {
+            fArr3 = s50.a;
+            if (fArr4 == fArr3) {
+                i2 = 0;
+                while (true) {
+                    if (i2 < 6) {
+                        if (Float.compare(fArr4[i2], fArr3[i2]) != 0) {
+                        }
+                        i2++;
+                    } else if (uo.l(z95Var, wr1.d)) {
+                        float[] fArr10 = s50.a;
+                        k24Var = s50.e;
+                        d = 0.0d;
+                        while (true) {
+                            if (d <= 1.0d) {
+                                z = c;
+                            } else if (Math.abs(ks0Var.b(d) - k24Var.k.b(d)) > 0.001d) {
+                            }
+                            d += 0.00392156862745098d;
+                        }
+                    }
+                }
+            } else if (uo.l(z95Var, wr1.d)) {
+                float[] fArr11 = s50.a;
+                k24Var = s50.e;
+                d = 0.0d;
+                while (true) {
+                    if (d <= 1.0d) {
+                        z = c;
+                    } else if (Math.abs(ks0Var.b(d) - k24Var.k.b(d)) > 0.001d) {
+                    }
+                    d += 0.00392156862745098d;
+                }
+            }
+            z = 0;
+        } else {
+            z = c;
+        }
+        this.q = z;
     }
 
     @Override // defpackage.p50
-    public final float a(int r1) {
+    public final float a(int i) {
         return this.f;
     }
 
     @Override // defpackage.p50
-    public final float b(int r1) {
+    public final float b(int i) {
         return this.e;
     }
 
@@ -201,189 +258,473 @@ public final class k24 extends p50 {
     }
 
     @Override // defpackage.p50
-    public final long d(float r4, float r5, float r6) {
-        double r0 = r4;
-        g24 r7 = this.p;
-        float r1 = (float) r7.b(r0);
-        float r8 = (float) r7.b(r5);
-        float r9 = (float) r7.b(r6);
-        float[] r3 = this.i;
-        if (r3.length >= 9) goto L6;
-        return 0;
-    L6:
-        float r10 = (r3[6] * r9) + ((r3[3] * r8) + (r3[0] * r1));
-        float r11 = (r3[7] * r9) + ((r3[4] * r8) + (r3[1] * r1));
-        return (Float.floatToRawIntBits(r10) << 32) | (4294967295L & Float.floatToRawIntBits(r11));
+    public final long d(float f, float f2, float f3) {
+        double d = f;
+        g24 g24Var = this.p;
+        float fB = (float) g24Var.b(d);
+        float fB2 = (float) g24Var.b(f2);
+        float fB3 = (float) g24Var.b(f3);
+        float[] fArr = this.i;
+        if (fArr.length < 9) {
+            return 0L;
+        }
+        return (((long) Float.floatToRawIntBits((fArr[6] * fB3) + ((fArr[3] * fB2) + (fArr[0] * fB)))) << 32) | (4294967295L & ((long) Float.floatToRawIntBits((fArr[7] * fB3) + (fArr[4] * fB2) + (fArr[1] * fB))));
     }
 
     @Override // defpackage.p50
-    public final float e(float r4, float r5, float r6) {
-        double r0 = r4;
-        g24 r7 = this.p;
-        float r1 = (float) r7.b(r0);
-        float r8 = (float) r7.b(r5);
-        float r9 = (float) r7.b(r6);
-        float[] r3 = this.i;
-        return (r3[8] * r9) + ((r3[5] * r8) + (r3[2] * r1));
+    public final float e(float f, float f2, float f3) {
+        double d = f;
+        g24 g24Var = this.p;
+        float fB = (float) g24Var.b(d);
+        float fB2 = (float) g24Var.b(f2);
+        float fB3 = (float) g24Var.b(f3);
+        float[] fArr = this.i;
+        return (fArr[8] * fB3) + (fArr[5] * fB2) + (fArr[2] * fB);
     }
 
     @Override // defpackage.p50
-    public final boolean equals(Object r5) {
-        if (this != r5) goto L6;
-        return true;
-    L6:
-        if (r5 != null) goto L8;
-    L36:
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || k24.class != obj.getClass() || !super.equals(obj)) {
+            return false;
+        }
+        k24 k24Var = (k24) obj;
+        if (Float.compare(k24Var.e, this.e) != 0 || Float.compare(k24Var.f, this.f) != 0 || !h12.c(this.d, k24Var.d) || !Arrays.equals(this.h, k24Var.h)) {
+            return false;
+        }
+        sw4 sw4Var = k24Var.g;
+        sw4 sw4Var2 = this.g;
+        if (sw4Var2 != null) {
+            return h12.c(sw4Var2, sw4Var);
+        }
+        if (sw4Var == null) {
+            return true;
+        }
+        if (h12.c(this.k, k24Var.k)) {
+            return h12.c(this.n, k24Var.n);
+        }
         return false;
-    L8:
-        if (k24.class != r5.getClass()) goto L36;
-        if (super.equals(r5) == true) goto L13;
-        return false;
-    L13:
-        k24 r6 = (k24) r5;
-        if (Float.compare(r6.e, this.e) == 0) goto L17;
-        return false;
-    L17:
-        if (Float.compare(r6.f, this.f) == 0) goto L20;
-        return false;
-    L20:
-        if (h12.c(this.d, r6.d) == true) goto L23;
-        return false;
-    L23:
-        if (Arrays.equals(this.h, r6.h) == true) goto L25;
-        return false;
-    L25:
-        sw4 r2 = r6.g;
-        sw4 r3 = this.g;
-        if (r3 != null) goto L28;
-        if (r2 != null) goto L32;
-        return true;
-    L32:
-        if (h12.c(this.k, r6.k) == true) goto L35;
-        return false;
-    L35:
-        return h12.c(this.n, r6.n);
-    L28:
-        return h12.c(r3, r2);
     }
 
     @Override // defpackage.p50
-    public final long f(float r5, float r6, float r7, float r8, p50 r9) {
-        float[] r1 = this.j;
-        float r0 = (r1[6] * r7) + ((r1[3] * r6) + (r1[0] * r5));
-        float r2 = (r1[7] * r7) + ((r1[4] * r6) + (r1[1] * r5));
-        float r10 = (r1[8] * r7) + ((r1[5] * r6) + (r1[2] * r5));
-        g24 r4 = this.m;
-        return e35.a((float) r4.b(r0), (float) r4.b(r2), (float) r4.b(r10), r8, r9);
+    public final long f(float f, float f2, float f3, float f4, p50 p50Var) {
+        float[] fArr = this.j;
+        float f5 = (fArr[6] * f3) + (fArr[3] * f2) + (fArr[0] * f);
+        float f6 = (fArr[7] * f3) + (fArr[4] * f2) + (fArr[1] * f);
+        float f7 = (fArr[8] * f3) + (fArr[5] * f2) + (fArr[2] * f);
+        g24 g24Var = this.m;
+        return e35.a((float) g24Var.b(f5), (float) g24Var.b(f6), (float) g24Var.b(f7), f4, p50Var);
     }
 
     @Override // defpackage.p50
     public final int hashCode() {
-        int r0 = (Arrays.hashCode(this.h) + ((this.d.hashCode() + (super.hashCode() * 31)) * 31)) * 31;
-        float r1 = this.e;
-        int r4 = 0;
-        if (r1 != 0.0f) goto L5;
-        int r2 = 0;
-    L6:
-        int r3 = (r0 + r2) * 31;
-        float r5 = this.f;
-        if (r5 != 0.0f) goto L9;
-        int r6 = 0;
-    L10:
-        int r7 = (r3 + r6) * 31;
-        sw4 r8 = this.g;
-        if (r8 == null) goto L13;
-        r4 = r8.hashCode();
-    L13:
-        int r9 = r7 + r4;
-        if (r8 != null) goto L17;
-        int r10 = this.k.hashCode();
-        return this.n.hashCode() + ((r10 + (r9 * 31)) * 31);
-    L17:
-        return r9;
-    L9:
-        r6 = Float.floatToIntBits(r5);
-        goto L10
-    L5:
-        r2 = Float.floatToIntBits(r1);
-        goto L6
+        int iHashCode = (Arrays.hashCode(this.h) + ((this.d.hashCode() + (super.hashCode() * 31)) * 31)) * 31;
+        float f = this.e;
+        int iFloatToIntBits = (iHashCode + (f == 0.0f ? 0 : Float.floatToIntBits(f))) * 31;
+        float f2 = this.f;
+        int iFloatToIntBits2 = (iFloatToIntBits + (f2 == 0.0f ? 0 : Float.floatToIntBits(f2))) * 31;
+        sw4 sw4Var = this.g;
+        int iHashCode2 = iFloatToIntBits2 + (sw4Var != null ? sw4Var.hashCode() : 0);
+        if (sw4Var != null) {
+            return iHashCode2;
+        }
+        return this.n.hashCode() + ((this.k.hashCode() + (iHashCode2 * 31)) * 31);
     }
 
-    public k24(String r19, float[] r20, z95 r21, final sw4 r22, int r23) {
-        double r0 = r22.a;
-        final int r5 = 0;
-        final int r6 = 1;
-        if (r0 != (-3.0d)) goto L5;
-        boolean r4 = true;
-    L6:
-        double r7 = r22.g;
-        double r10 = r22.f;
-        if (r4 == false) goto L9;
-        double r16 = -3.0d;
-        final int r2 = 4;
-        ks0 r8 = new i24(r22, r2);
-    L19:
-        if (r0 != r16) goto L23;
-        ks0 r1 = new i24(r22, r5);
-    L31:
-        this(r19, r20, r21, null, r8, r1, 0.0f, 1.0f, r22, r23);
-        return;
-    L23:
-        if (r0 != (-2.0d)) goto L26;
-        r1 = new i24(r22, r6);
-        goto L31
-    L26:
-        if (r10 == 0.0d) goto L28;
-    L30:
-        final int r3 = 3;
-        r1 = new i24(r22, r3);
-        goto L31
-    L28:
-        if (r7 != 0.0d) goto L30;
-        final int r9 = 2;
-        r1 = new i24(r22, r9);
-        goto L31
-    L9:
-        r16 = -3.0d;
-        if (r0 != (-2.0d)) goto L13;
-        final int r11 = 5;
-        r8 = new i24(r22, r11);
-        goto L19
-    L13:
-        if (r10 == 0.0d) goto L15;
-    L17:
-        final int r12 = 7;
-        r8 = new i24(r22, r12);
-        goto L19
-    L15:
-        if (r7 != 0.0d) goto L17;
-        final int r13 = 6;
-        r8 = new i24(r22, r13);
-        goto L19
-    L5:
-        r4 = false;
-        goto L6
+    public k24(String str, float[] fArr, z95 z95Var, final sw4 sw4Var, int i) {
+        double d;
+        ks0 ks0Var;
+        ks0 ks0Var2;
+        double d2 = sw4Var.a;
+        final int i2 = 0;
+        final int i3 = 1;
+        boolean z = d2 == -3.0d;
+        double d3 = sw4Var.g;
+        double d4 = sw4Var.f;
+        if (z) {
+            d = -3.0d;
+            final int i4 = 4;
+            ks0Var = new ks0() { // from class: i24
+                @Override // defpackage.ks0
+                public final double b(double d5) {
+                    int i5 = i4;
+                    sw4 sw4Var2 = sw4Var;
+                    switch (i5) {
+                        case 0:
+                            float[] fArr2 = s50.a;
+                            return s50.a(sw4Var2, d5);
+                        case 1:
+                            float[] fArr3 = s50.a;
+                            return s50.c(sw4Var2, d5);
+                        case 2:
+                            double d6 = sw4Var2.b;
+                            return d5 >= sw4Var2.e ? Math.pow((d6 * d5) + sw4Var2.c, sw4Var2.a) : sw4Var2.d * d5;
+                        case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
+                            double d7 = sw4Var2.b;
+                            double d8 = sw4Var2.c;
+                            double d9 = sw4Var2.d;
+                            return d5 >= sw4Var2.e ? Math.pow((d7 * d5) + d8, sw4Var2.a) + sw4Var2.f : (d9 * d5) + sw4Var2.g;
+                        case 4:
+                            float[] fArr4 = s50.a;
+                            return s50.b(sw4Var2, d5);
+                        case 5:
+                            float[] fArr5 = s50.a;
+                            return s50.d(sw4Var2, d5);
+                        case 6:
+                            double d10 = sw4Var2.b;
+                            double d11 = sw4Var2.c;
+                            double d12 = sw4Var2.d;
+                            return d5 >= sw4Var2.e * d12 ? (Math.pow(d5, 1.0d / sw4Var2.a) - d11) / d10 : d5 / d12;
+                        default:
+                            double d13 = sw4Var2.b;
+                            double d14 = sw4Var2.c;
+                            double d15 = sw4Var2.d;
+                            return d5 >= sw4Var2.e * d15 ? (Math.pow(d5 - sw4Var2.f, 1.0d / sw4Var2.a) - d14) / d13 : (d5 - sw4Var2.g) / d15;
+                    }
+                }
+            };
+        } else {
+            d = -3.0d;
+            if (d2 == -2.0d) {
+                final int i5 = 5;
+                ks0Var = new ks0() { // from class: i24
+                    @Override // defpackage.ks0
+                    public final double b(double d5) {
+                        int i6 = i5;
+                        sw4 sw4Var2 = sw4Var;
+                        switch (i6) {
+                            case 0:
+                                float[] fArr2 = s50.a;
+                                return s50.a(sw4Var2, d5);
+                            case 1:
+                                float[] fArr3 = s50.a;
+                                return s50.c(sw4Var2, d5);
+                            case 2:
+                                double d6 = sw4Var2.b;
+                                return d5 >= sw4Var2.e ? Math.pow((d6 * d5) + sw4Var2.c, sw4Var2.a) : sw4Var2.d * d5;
+                            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
+                                double d7 = sw4Var2.b;
+                                double d8 = sw4Var2.c;
+                                double d9 = sw4Var2.d;
+                                return d5 >= sw4Var2.e ? Math.pow((d7 * d5) + d8, sw4Var2.a) + sw4Var2.f : (d9 * d5) + sw4Var2.g;
+                            case 4:
+                                float[] fArr4 = s50.a;
+                                return s50.b(sw4Var2, d5);
+                            case 5:
+                                float[] fArr5 = s50.a;
+                                return s50.d(sw4Var2, d5);
+                            case 6:
+                                double d10 = sw4Var2.b;
+                                double d11 = sw4Var2.c;
+                                double d12 = sw4Var2.d;
+                                return d5 >= sw4Var2.e * d12 ? (Math.pow(d5, 1.0d / sw4Var2.a) - d11) / d10 : d5 / d12;
+                            default:
+                                double d13 = sw4Var2.b;
+                                double d14 = sw4Var2.c;
+                                double d15 = sw4Var2.d;
+                                return d5 >= sw4Var2.e * d15 ? (Math.pow(d5 - sw4Var2.f, 1.0d / sw4Var2.a) - d14) / d13 : (d5 - sw4Var2.g) / d15;
+                        }
+                    }
+                };
+            } else if (d4 == 0.0d && d3 == 0.0d) {
+                final int i6 = 6;
+                ks0Var = new ks0() { // from class: i24
+                    @Override // defpackage.ks0
+                    public final double b(double d5) {
+                        int i7 = i6;
+                        sw4 sw4Var2 = sw4Var;
+                        switch (i7) {
+                            case 0:
+                                float[] fArr2 = s50.a;
+                                return s50.a(sw4Var2, d5);
+                            case 1:
+                                float[] fArr3 = s50.a;
+                                return s50.c(sw4Var2, d5);
+                            case 2:
+                                double d6 = sw4Var2.b;
+                                return d5 >= sw4Var2.e ? Math.pow((d6 * d5) + sw4Var2.c, sw4Var2.a) : sw4Var2.d * d5;
+                            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
+                                double d7 = sw4Var2.b;
+                                double d8 = sw4Var2.c;
+                                double d9 = sw4Var2.d;
+                                return d5 >= sw4Var2.e ? Math.pow((d7 * d5) + d8, sw4Var2.a) + sw4Var2.f : (d9 * d5) + sw4Var2.g;
+                            case 4:
+                                float[] fArr4 = s50.a;
+                                return s50.b(sw4Var2, d5);
+                            case 5:
+                                float[] fArr5 = s50.a;
+                                return s50.d(sw4Var2, d5);
+                            case 6:
+                                double d10 = sw4Var2.b;
+                                double d11 = sw4Var2.c;
+                                double d12 = sw4Var2.d;
+                                return d5 >= sw4Var2.e * d12 ? (Math.pow(d5, 1.0d / sw4Var2.a) - d11) / d10 : d5 / d12;
+                            default:
+                                double d13 = sw4Var2.b;
+                                double d14 = sw4Var2.c;
+                                double d15 = sw4Var2.d;
+                                return d5 >= sw4Var2.e * d15 ? (Math.pow(d5 - sw4Var2.f, 1.0d / sw4Var2.a) - d14) / d13 : (d5 - sw4Var2.g) / d15;
+                        }
+                    }
+                };
+            } else {
+                final int i7 = 7;
+                ks0Var = new ks0() { // from class: i24
+                    @Override // defpackage.ks0
+                    public final double b(double d5) {
+                        int i8 = i7;
+                        sw4 sw4Var2 = sw4Var;
+                        switch (i8) {
+                            case 0:
+                                float[] fArr2 = s50.a;
+                                return s50.a(sw4Var2, d5);
+                            case 1:
+                                float[] fArr3 = s50.a;
+                                return s50.c(sw4Var2, d5);
+                            case 2:
+                                double d6 = sw4Var2.b;
+                                return d5 >= sw4Var2.e ? Math.pow((d6 * d5) + sw4Var2.c, sw4Var2.a) : sw4Var2.d * d5;
+                            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
+                                double d7 = sw4Var2.b;
+                                double d8 = sw4Var2.c;
+                                double d9 = sw4Var2.d;
+                                return d5 >= sw4Var2.e ? Math.pow((d7 * d5) + d8, sw4Var2.a) + sw4Var2.f : (d9 * d5) + sw4Var2.g;
+                            case 4:
+                                float[] fArr4 = s50.a;
+                                return s50.b(sw4Var2, d5);
+                            case 5:
+                                float[] fArr5 = s50.a;
+                                return s50.d(sw4Var2, d5);
+                            case 6:
+                                double d10 = sw4Var2.b;
+                                double d11 = sw4Var2.c;
+                                double d12 = sw4Var2.d;
+                                return d5 >= sw4Var2.e * d12 ? (Math.pow(d5, 1.0d / sw4Var2.a) - d11) / d10 : d5 / d12;
+                            default:
+                                double d13 = sw4Var2.b;
+                                double d14 = sw4Var2.c;
+                                double d15 = sw4Var2.d;
+                                return d5 >= sw4Var2.e * d15 ? (Math.pow(d5 - sw4Var2.f, 1.0d / sw4Var2.a) - d14) / d13 : (d5 - sw4Var2.g) / d15;
+                        }
+                    }
+                };
+            }
+        }
+        if (d2 == d) {
+            ks0Var2 = new ks0() { // from class: i24
+                @Override // defpackage.ks0
+                public final double b(double d5) {
+                    int i8 = i2;
+                    sw4 sw4Var2 = sw4Var;
+                    switch (i8) {
+                        case 0:
+                            float[] fArr2 = s50.a;
+                            return s50.a(sw4Var2, d5);
+                        case 1:
+                            float[] fArr3 = s50.a;
+                            return s50.c(sw4Var2, d5);
+                        case 2:
+                            double d6 = sw4Var2.b;
+                            return d5 >= sw4Var2.e ? Math.pow((d6 * d5) + sw4Var2.c, sw4Var2.a) : sw4Var2.d * d5;
+                        case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
+                            double d7 = sw4Var2.b;
+                            double d8 = sw4Var2.c;
+                            double d9 = sw4Var2.d;
+                            return d5 >= sw4Var2.e ? Math.pow((d7 * d5) + d8, sw4Var2.a) + sw4Var2.f : (d9 * d5) + sw4Var2.g;
+                        case 4:
+                            float[] fArr4 = s50.a;
+                            return s50.b(sw4Var2, d5);
+                        case 5:
+                            float[] fArr5 = s50.a;
+                            return s50.d(sw4Var2, d5);
+                        case 6:
+                            double d10 = sw4Var2.b;
+                            double d11 = sw4Var2.c;
+                            double d12 = sw4Var2.d;
+                            return d5 >= sw4Var2.e * d12 ? (Math.pow(d5, 1.0d / sw4Var2.a) - d11) / d10 : d5 / d12;
+                        default:
+                            double d13 = sw4Var2.b;
+                            double d14 = sw4Var2.c;
+                            double d15 = sw4Var2.d;
+                            return d5 >= sw4Var2.e * d15 ? (Math.pow(d5 - sw4Var2.f, 1.0d / sw4Var2.a) - d14) / d13 : (d5 - sw4Var2.g) / d15;
+                    }
+                }
+            };
+        } else if (d2 == -2.0d) {
+            ks0Var2 = new ks0() { // from class: i24
+                @Override // defpackage.ks0
+                public final double b(double d5) {
+                    int i8 = i3;
+                    sw4 sw4Var2 = sw4Var;
+                    switch (i8) {
+                        case 0:
+                            float[] fArr2 = s50.a;
+                            return s50.a(sw4Var2, d5);
+                        case 1:
+                            float[] fArr3 = s50.a;
+                            return s50.c(sw4Var2, d5);
+                        case 2:
+                            double d6 = sw4Var2.b;
+                            return d5 >= sw4Var2.e ? Math.pow((d6 * d5) + sw4Var2.c, sw4Var2.a) : sw4Var2.d * d5;
+                        case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
+                            double d7 = sw4Var2.b;
+                            double d8 = sw4Var2.c;
+                            double d9 = sw4Var2.d;
+                            return d5 >= sw4Var2.e ? Math.pow((d7 * d5) + d8, sw4Var2.a) + sw4Var2.f : (d9 * d5) + sw4Var2.g;
+                        case 4:
+                            float[] fArr4 = s50.a;
+                            return s50.b(sw4Var2, d5);
+                        case 5:
+                            float[] fArr5 = s50.a;
+                            return s50.d(sw4Var2, d5);
+                        case 6:
+                            double d10 = sw4Var2.b;
+                            double d11 = sw4Var2.c;
+                            double d12 = sw4Var2.d;
+                            return d5 >= sw4Var2.e * d12 ? (Math.pow(d5, 1.0d / sw4Var2.a) - d11) / d10 : d5 / d12;
+                        default:
+                            double d13 = sw4Var2.b;
+                            double d14 = sw4Var2.c;
+                            double d15 = sw4Var2.d;
+                            return d5 >= sw4Var2.e * d15 ? (Math.pow(d5 - sw4Var2.f, 1.0d / sw4Var2.a) - d14) / d13 : (d5 - sw4Var2.g) / d15;
+                    }
+                }
+            };
+        } else if (d4 == 0.0d && d3 == 0.0d) {
+            final int i8 = 2;
+            ks0Var2 = new ks0() { // from class: i24
+                @Override // defpackage.ks0
+                public final double b(double d5) {
+                    int i9 = i8;
+                    sw4 sw4Var2 = sw4Var;
+                    switch (i9) {
+                        case 0:
+                            float[] fArr2 = s50.a;
+                            return s50.a(sw4Var2, d5);
+                        case 1:
+                            float[] fArr3 = s50.a;
+                            return s50.c(sw4Var2, d5);
+                        case 2:
+                            double d6 = sw4Var2.b;
+                            return d5 >= sw4Var2.e ? Math.pow((d6 * d5) + sw4Var2.c, sw4Var2.a) : sw4Var2.d * d5;
+                        case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
+                            double d7 = sw4Var2.b;
+                            double d8 = sw4Var2.c;
+                            double d9 = sw4Var2.d;
+                            return d5 >= sw4Var2.e ? Math.pow((d7 * d5) + d8, sw4Var2.a) + sw4Var2.f : (d9 * d5) + sw4Var2.g;
+                        case 4:
+                            float[] fArr4 = s50.a;
+                            return s50.b(sw4Var2, d5);
+                        case 5:
+                            float[] fArr5 = s50.a;
+                            return s50.d(sw4Var2, d5);
+                        case 6:
+                            double d10 = sw4Var2.b;
+                            double d11 = sw4Var2.c;
+                            double d12 = sw4Var2.d;
+                            return d5 >= sw4Var2.e * d12 ? (Math.pow(d5, 1.0d / sw4Var2.a) - d11) / d10 : d5 / d12;
+                        default:
+                            double d13 = sw4Var2.b;
+                            double d14 = sw4Var2.c;
+                            double d15 = sw4Var2.d;
+                            return d5 >= sw4Var2.e * d15 ? (Math.pow(d5 - sw4Var2.f, 1.0d / sw4Var2.a) - d14) / d13 : (d5 - sw4Var2.g) / d15;
+                    }
+                }
+            };
+        } else {
+            final int i9 = 3;
+            ks0Var2 = new ks0() { // from class: i24
+                @Override // defpackage.ks0
+                public final double b(double d5) {
+                    int i10 = i9;
+                    sw4 sw4Var2 = sw4Var;
+                    switch (i10) {
+                        case 0:
+                            float[] fArr2 = s50.a;
+                            return s50.a(sw4Var2, d5);
+                        case 1:
+                            float[] fArr3 = s50.a;
+                            return s50.c(sw4Var2, d5);
+                        case 2:
+                            double d6 = sw4Var2.b;
+                            return d5 >= sw4Var2.e ? Math.pow((d6 * d5) + sw4Var2.c, sw4Var2.a) : sw4Var2.d * d5;
+                        case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
+                            double d7 = sw4Var2.b;
+                            double d8 = sw4Var2.c;
+                            double d9 = sw4Var2.d;
+                            return d5 >= sw4Var2.e ? Math.pow((d7 * d5) + d8, sw4Var2.a) + sw4Var2.f : (d9 * d5) + sw4Var2.g;
+                        case 4:
+                            float[] fArr4 = s50.a;
+                            return s50.b(sw4Var2, d5);
+                        case 5:
+                            float[] fArr5 = s50.a;
+                            return s50.d(sw4Var2, d5);
+                        case 6:
+                            double d10 = sw4Var2.b;
+                            double d11 = sw4Var2.c;
+                            double d12 = sw4Var2.d;
+                            return d5 >= sw4Var2.e * d12 ? (Math.pow(d5, 1.0d / sw4Var2.a) - d11) / d10 : d5 / d12;
+                        default:
+                            double d13 = sw4Var2.b;
+                            double d14 = sw4Var2.c;
+                            double d15 = sw4Var2.d;
+                            return d5 >= sw4Var2.e * d15 ? (Math.pow(d5 - sw4Var2.f, 1.0d / sw4Var2.a) - d14) / d13 : (d5 - sw4Var2.g) / d15;
+                    }
+                }
+            };
+        }
+        this(str, fArr, z95Var, null, ks0Var, ks0Var2, 0.0f, 1.0f, sw4Var, i);
     }
 
-    public k24(String r18, float[] r19, z95 r20, final double r21, float r23, float r24, int r25) {
-        ks0 r3 = r;
-        if (r21 != 1.0d) goto L5;
-        ks0 r11 = r3;
-    L6:
-        if (r21 != 1.0d) goto L8;
-    L7:
-        ks0 r12 = r3;
-        double r4 = 1.0d;
-        double r5 = 0.0d;
-        this(r18, r19, r20, null, r11, r12, r23, r24, new sw4(r21, r4, r5, 0.0d, 0.0d), r25);
-        return;
-    L8:
-        final int r0 = 1;
-        r3 = new h24(r21, r0);
-        goto L7
-    L5:
-        final int r6 = 0;
-        r11 = new h24(r21, r6);
-        goto L6
+    /* JADX WARN: Illegal instructions before constructor call */
+    public k24(String str, float[] fArr, z95 z95Var, final double d, float f, float f2, int i) {
+        ks0 ks0Var;
+        ks0 ks0Var2 = r;
+        if (d == 1.0d) {
+            ks0Var = ks0Var2;
+        } else {
+            final int i2 = 0;
+            ks0Var = new ks0() { // from class: h24
+                @Override // defpackage.ks0
+                public final double b(double d2) {
+                    switch (i2) {
+                        case 0:
+                            if (d2 < 0.0d) {
+                                d2 = 0.0d;
+                            }
+                            return Math.pow(d2, 1.0d / d);
+                        default:
+                            if (d2 < 0.0d) {
+                                d2 = 0.0d;
+                            }
+                            return Math.pow(d2, d);
+                    }
+                }
+            };
+        }
+        if (d != 1.0d) {
+            final int i3 = 1;
+            ks0Var2 = new ks0() { // from class: h24
+                @Override // defpackage.ks0
+                public final double b(double d2) {
+                    switch (i3) {
+                        case 0:
+                            if (d2 < 0.0d) {
+                                d2 = 0.0d;
+                            }
+                            return Math.pow(d2, 1.0d / d);
+                        default:
+                            if (d2 < 0.0d) {
+                                d2 = 0.0d;
+                            }
+                            return Math.pow(d2, d);
+                    }
+                }
+            };
+        }
+        ks0 ks0Var3 = ks0Var2;
+        this(str, fArr, z95Var, null, ks0Var, ks0Var3, f, f2, new sw4(d, 1.0d, 0.0d, 0.0d, 0.0d), i);
     }
 }

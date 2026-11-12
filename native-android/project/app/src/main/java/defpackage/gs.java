@@ -5,21 +5,15 @@ package defpackage;
 public final class gs {
     public final float a;
 
-    public gs(float r1) {
-        this.a = r1;
+    public gs(float f) {
+        this.a = f;
     }
 
-    public final boolean equals(Object r4) {
-        if (this != r4) goto L6;
-        return true;
-    L6:
-        if ((r4 instanceof gs) == true) goto L9;
-        return false;
-    L9:
-        if (Float.compare(this.a, ((gs) r4).a) == 0) goto L11;
-        return false;
-    L11:
-        return true;
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        return (obj instanceof gs) && Float.compare(this.a, ((gs) obj).a) == 0;
     }
 
     public final int hashCode() {

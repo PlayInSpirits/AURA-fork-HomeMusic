@@ -5,12 +5,12 @@ package defpackage;
 public final class hv3 implements t85 {
     public final cz n;
 
-    public hv3(cz r1) {
-        this.n = r1;
+    public hv3(cz czVar) {
+        this.n = czVar;
     }
 
     @Override // defpackage.t85
-    public final void a(u84 r1, int r2) {
-        this.n.a(r1, r2);
+    public final void a(u84 u84Var, int i) {
+        this.n.a(u84Var, i);
     }
 }

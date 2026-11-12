@@ -8,14 +8,11 @@ public final class NowPlaying {
     public static final int $stable = 8;
     private List<NowPlayingEntry> entries;
 
-    public NowPlaying() {
-    }
-
     public final List<NowPlayingEntry> getEntries() {
         return this.entries;
     }
 
-    public final void setEntries(List<NowPlayingEntry> r1) {
-        this.entries = r1;
+    public final void setEntries(List<NowPlayingEntry> list) {
+        this.entries = list;
     }
 }

@@ -18,7 +18,7 @@ import org.json.JSONObject;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class xr3 extends h2 {
-    public static final Parcelable.Creator<xr3> CREATOR = null;
+    public static final Parcelable.Creator<xr3> CREATOR = new ch5(13);
     public final as3 n;
     public final cs3 o;
     public final byte[] p;
@@ -33,408 +33,389 @@ public final class xr3 extends h2 {
     public final String y;
     public final ResultReceiver z;
 
-    static {
-        CREATOR = new ch5(13);
-    }
-
-    public xr3(as3 r1, cs3 r2, byte[] r3, ArrayList r4, Double r5, ArrayList r6, nn r7, Integer r8, su4 r9, String r10, gn r11, String r12, ResultReceiver r13) {
-        this.z = r13;
-        if (r12 != null) goto L22;
-        ji2.m(r1);
-        this.n = r1;
-        ji2.m(r2);
-        this.o = r2;
-        ji2.m(r3);
-        this.p = r3;
-        ji2.m(r4);
-        this.q = r4;
-        this.r = r5;
-        this.s = r6;
-        this.t = r7;
-        this.u = r8;
-        this.v = r9;
-        if (r10 != null) goto L20;
-        this.w = null;
-    L18:
-        this.x = r11;
+    public xr3(as3 as3Var, cs3 cs3Var, byte[] bArr, ArrayList arrayList, Double d, ArrayList arrayList2, nn nnVar, Integer num, su4 su4Var, String str, gn gnVar, String str2, ResultReceiver resultReceiver) {
+        this.z = resultReceiver;
+        if (str2 != null) {
+            try {
+                xr3 xr3VarB = b(new JSONObject(str2));
+                this.n = xr3VarB.n;
+                this.o = xr3VarB.o;
+                this.p = xr3VarB.p;
+                this.q = xr3VarB.q;
+                this.r = xr3VarB.r;
+                this.s = xr3VarB.s;
+                this.t = xr3VarB.t;
+                this.u = xr3VarB.u;
+                this.v = xr3VarB.v;
+                this.w = xr3VarB.w;
+                this.x = xr3VarB.x;
+                this.y = str2;
+                return;
+            } catch (JSONException e) {
+                throw new IllegalArgumentException(e);
+            }
+        }
+        ji2.m(as3Var);
+        this.n = as3Var;
+        ji2.m(cs3Var);
+        this.o = cs3Var;
+        ji2.m(bArr);
+        this.p = bArr;
+        ji2.m(arrayList);
+        this.q = arrayList;
+        this.r = d;
+        this.s = arrayList2;
+        this.t = nnVar;
+        this.u = num;
+        this.v = su4Var;
+        if (str != null) {
+            try {
+                this.w = hl.a(str);
+            } catch (AttestationConveyancePreference$UnsupportedAttestationConveyancePreferenceException e2) {
+                throw new IllegalArgumentException(e2);
+            }
+        } else {
+            this.w = null;
+        }
+        this.x = gnVar;
         this.y = null;
-        return;
-    L20:
-        this.w = hl.a(r10);     // Catch: AttestationConveyancePreference$UnsupportedAttestationConveyancePreferenceException -> L14
-    L14:
-        e = move-exception;
-        throw new IllegalArgumentException(e);
-    L22:
-        xr3 r14 = b(new JSONObject(r12));     // Catch: JSONException -> L7
-        this.n = r14.n;
-        this.o = r14.o;
-        this.p = r14.p;
-        this.q = r14.q;
-        this.r = r14.r;
-        this.s = r14.s;
-        this.t = r14.t;
-        this.u = r14.u;
-        this.v = r14.v;
-        this.w = r14.w;
-        this.x = r14.x;
-        this.y = r12;
-        return;
-    L7:
-        e = move-exception;
-        throw new IllegalArgumentException(e);
     }
 
-    public static xr3 b(JSONObject r32) {
-        JSONObject r1 = r32.getJSONObject("rp");
-        String r2 = "id";
-        String r3 = r1.getString("id");
-        String r5 = r1.getString("name");
-        if (r1.has("icon") == false) goto L5;
-        String r4 = r1.optString("icon");
-    L6:
-        as3 r10 = new as3(r3, r5, r4);
-        JSONObject r6 = r32.getJSONObject("user");
-        byte[] r7 = ya4.k(r6.getString("id"));
-        String r8 = r6.getString("name");
-        String r9 = r6.optString("displayName");
-        if (r6.has("icon") == false) goto L9;
-        String r11 = r6.optString("icon");
-    L10:
-        cs3 r12 = new cs3(r8, r11, r9, r7);
-        byte[] r13 = ya4.k(r32.getString("challenge"));
-        ji2.m(r13);
-        JSONArray r14 = r32.getJSONArray("pubKeyCredParams");
-        ArrayList r15 = new ArrayList();
-        int r16 = 0;
-    L12:
-        if (r16 >= r14.length()) goto L22;
-        JSONObject r17 = r14.getJSONObject(r16);
-        bb3 r18 = new th5(new zr3(r17.getInt("alg"), r17.getString("type")));     // Catch: IllegalArgumentException -> L16
-    L18:
-        if (r18.d() == false) goto L20;
-        r15.add(r18.c());
-    L20:
-        r16 = r16 + 1;
-    L16:
-        r18 = oh5.n;
-        goto L18
-    L22:
-        if (r32.has("timeout") == false) goto L24;
-        Double r19 = Double.valueOf(r32.getDouble("timeout") / 1000.0d);
-    L25:
-        int r20 = 11;
-        if (r32.has("excludeCredentials") == false) goto L52;
-        JSONArray r21 = r32.getJSONArray("excludeCredentials");
-        ArrayList r22 = new ArrayList();
-        int r23 = 0;
-    L29:
-        if (r23 >= r21.length()) goto L51;
-        JSONObject r24 = r21.getJSONObject(r23);
-        Parcelable.Creator<yr3> r110 = yr3.CREATOR;
-        String r111 = r24.getString("type");
-        byte[] r25 = Base64.decode(r24.getString(r2), r20);
-        if (r24.has("transports") == false) goto L49;
-        JSONArray r26 = r24.getJSONArray("transports");
-        if (r26 == null) goto L49;
-        HashSet r27 = new HashSet(r26.length());
-        int r28 = 0;
-    L37:
-        if (r28 >= r26.length()) goto L48;
-        String r29 = r26.getString(r28);
-        if (r29 != null) goto L41;
-    L46:
-        String r210 = r2;
-    L47:
-        r28 = r28 + 1;
-        r2 = r210;
-        goto L37
-    L41:
-        if (r29.isEmpty() == true) goto L46;
-        r210 = r2;
-        r27.add(Transport.a(r29));     // Catch: Transport.UnsupportedTransportException -> L45
-    L45:
-        Log.w("Transport", "Ignoring unrecognized transport ".concat(r29));
-        goto L47
-    L48:
-        String r211 = r2;
-        ArrayList r30 = new ArrayList(r27);
-    L50:
-        r22.add(new yr3(r111, r25, r30));
-        r23 = r23 + 1;
-        r21 = r21;
-        r2 = r211;
-        r20 = 11;
-    L49:
-        r211 = r2;
-        r30 = null;
-        goto L50
-    L51:
-        ArrayList r112 = r22;
-    L54:
-        if (r32.has("authenticatorSelection") == false) goto L72;
-        JSONObject r31 = r32.getJSONObject("authenticatorSelection");
-        if (r31.has("authenticatorAttachment") == false) goto L58;
-        String r33 = r31.optString("authenticatorAttachment");
-    L60:
-        if (r31.has("residentKey") == false) goto L62;
-        String r34 = r31.optString("residentKey");
-    L64:
-        if (r31.has("requireResidentKey") == false) goto L66;
-        Boolean r35 = Boolean.valueOf(r31.optBoolean("requireResidentKey"));
-    L68:
-        if (r31.has("userVerification") == false) goto L70;
-        String r36 = r31.optString("userVerification");
-    L71:
-        nn r37 = new nn(r33, r35, r36, r34);
-    L74:
-        if (r32.has("extensions") == false) goto L135;
-        JSONObject r38 = r32.getJSONObject("extensions");
-        if (r38.has("fidoAppIdExtension") == false) goto L78;
-        s61 r39 = new s61(r38.getJSONObject("fidoAppIdExtension").getString("appid"));
-    L80:
-        if (r38.has("appid") == false) goto L82;
-        r39 = new s61(r38.getString("appid"));
-    L82:
-        s61 r212 = r39;
-        if (r38.has("prf") == true) goto L85;
-        int r40 = 0;
-        if (r38.has("prfAlreadyHashed") == false) goto L93;
-        mh5 r41 = mh5.b(r38.getJSONObject("prfAlreadyHashed"), true);
-    L87:
-        mh5 r213 = r41;
-    L95:
-        if (r38.has("cableAuthenticationExtension") == false) goto L101;
-        JSONArray r42 = r38.getJSONArray("cableAuthenticationExtension");
-        ArrayList r43 = new ArrayList();
-    L98:
-        if (r40 >= r42.length()) goto L100;
-        JSONObject r44 = r42.getJSONObject(r40);
-        r43.add(new qk5(r44.getLong("version"), Base64.decode(r44.getString("clientEid"), 11), Base64.decode(r44.getString("authenticatorEid"), 11), Base64.decode(r44.getString("sessionPreKey"), 11)));
-        r40 = r40 + 1;
-        goto L98
-    L100:
-        rk5 r214 = new rk5(r43);
-    L103:
-        if (r38.has("userVerificationMethodExtension") == false) goto L105;
-        y25 r215 = new y25(r38.getJSONObject("userVerificationMethodExtension").getBoolean("uvm"));
-    L107:
-        if (r38.has("google_multiAssertionExtension") == false) goto L109;
-        wk5 r216 = new wk5(r38.getJSONObject("google_multiAssertionExtension").getBoolean("requestForMultiAssertion"));
-    L111:
-        if (r38.has("google_sessionIdExtension") == false) goto L113;
-        gh5 r217 = new gh5(r38.getJSONObject("google_sessionIdExtension").getInt("sessionId"));
-    L115:
-        if (r38.has("google_silentVerificationExtension") == false) goto L117;
-        hh5 r218 = new hh5(r38.getJSONObject("google_silentVerificationExtension").getBoolean("silentVerification"));
-    L119:
-        if (r38.has("devicePublicKeyExtension") == false) goto L121;
-        r38.getJSONObject("devicePublicKeyExtension").getBoolean("devicePublicKey");
-        uk5 r219 = new uk5();
-    L123:
-        if (r38.has("google_tunnelServerIdExtension") == false) goto L125;
-        kh5 r220 = new kh5(r38.getJSONObject("google_tunnelServerIdExtension").getString("tunnelServerId"));
-    L127:
-        if (r38.has("google_thirdPartyPaymentExtension") == false) goto L129;
-        pj1 r221 = new pj1(r38.getJSONObject("google_thirdPartyPaymentExtension").getBoolean("thirdPartyPayment"));
-    L131:
-        if (r38.has("txAuthSimple") == false) goto L133;
-        nh5 r310 = new nh5(r38.getString("txAuthSimple"));
-    L134:
-        gn r222 = new gn(r212, r214, r215, r216, r217, r218, r219, r220, r221, r213, r310, null);
-    L137:
-        if (r32.has("attestation") == true) goto L151;
-        hl r0 = null;
-    L144:
-        if (r0 != null) goto L146;
-        String r113 = null;
-    L148:
-        return new xr3(r10, r12, r13, r15, r19, r112, r37, null, null, r113, r222, null, null);
-    L146:
-        r113 = r0.n;
-        goto L148
-    L151:
-        r0 = hl.a(r32.getString("attestation"));     // Catch: AttestationConveyancePreference$UnsupportedAttestationConveyancePreferenceException -> L140
-    L140:
-        e = move-exception;
-        Log.w("PKCCreationOptions", "Invalid AttestationConveyancePreference", e);
-        r0 = hl.o;
-        goto L144
-    L133:
-        r310 = null;
-        goto L134
-    L129:
-        r221 = null;
-        goto L131
-    L125:
-        r220 = null;
-        goto L127
-    L121:
-        r219 = null;
-        goto L123
-    L117:
-        r218 = null;
-        goto L119
-    L113:
-        r217 = null;
-        goto L115
-    L109:
-        r216 = null;
-        goto L111
-    L105:
-        r215 = null;
-        goto L107
-    L101:
-        r214 = null;
-        goto L103
-    L93:
-        r213 = null;
-        goto L95
-    L85:
-        if (r38.has("prfAlreadyHashed") == true) goto L89;
-        r40 = 0;
-        r41 = mh5.b(r38.getJSONObject("prf"), false);
-        goto L87
-    L89:
-        throw new JSONException("both prf and prfAlreadyHashed extensions found");
-    L78:
-        r39 = null;
-        goto L80
-    L135:
-        r222 = null;
-        goto L137
-    L70:
-        r36 = null;
-        goto L71
-    L66:
-        r35 = null;
-        goto L68
-    L62:
-        r34 = null;
-        goto L64
-    L58:
-        r33 = null;
-        goto L60
-    L72:
-        r37 = null;
-        goto L74
-    L52:
-        r112 = null;
-        goto L54
-    L24:
-        r19 = null;
-        goto L25
-    L9:
-        r11 = null;
-        goto L10
-    L5:
-        r4 = null;
-        goto L6
+    /* JADX WARN: Code duplicated, block: B:101:0x025e  */
+    /* JADX WARN: Code duplicated, block: B:104:0x0268  */
+    /* JADX WARN: Code duplicated, block: B:105:0x027a  */
+    /* JADX WARN: Code duplicated, block: B:108:0x0284  */
+    /* JADX WARN: Code duplicated, block: B:109:0x0296  */
+    /* JADX WARN: Code duplicated, block: B:112:0x02a0  */
+    /* JADX WARN: Code duplicated, block: B:113:0x02b3  */
+    /* JADX WARN: Code duplicated, block: B:116:0x02bd  */
+    /* JADX WARN: Code duplicated, block: B:117:0x02cf  */
+    /* JADX WARN: Code duplicated, block: B:120:0x02d9  */
+    /* JADX WARN: Code duplicated, block: B:121:0x02ea  */
+    /* JADX WARN: Code duplicated, block: B:124:0x02f4  */
+    /* JADX WARN: Code duplicated, block: B:125:0x0306  */
+    /* JADX WARN: Code duplicated, block: B:128:0x0310  */
+    /* JADX WARN: Code duplicated, block: B:129:0x0322  */
+    /* JADX WARN: Code duplicated, block: B:132:0x032c  */
+    /* JADX WARN: Code duplicated, block: B:133:0x0338  */
+    /* JADX WARN: Code duplicated, block: B:96:0x0210  */
+    /* JADX WARN: Code duplicated, block: B:99:0x021f A[LOOP:3: B:97:0x0219->B:99:0x021f, LOOP_END] */
+    public static xr3 b(JSONObject jSONObject) throws JSONException {
+        ArrayList arrayList;
+        nn nnVar;
+        gn gnVar;
+        hl hlVarA;
+        int i;
+        mh5 mh5Var;
+        mh5 mh5VarB;
+        rk5 rk5Var;
+        y25 y25Var;
+        wk5 wk5Var;
+        gh5 gh5Var;
+        hh5 hh5Var;
+        uk5 uk5Var;
+        kh5 kh5Var;
+        pj1 pj1Var;
+        nh5 nh5Var;
+        JSONArray jSONArray;
+        ArrayList arrayList2;
+        String str;
+        ArrayList arrayList3;
+        JSONArray jSONArray2;
+        String str2;
+        bb3 th5Var;
+        JSONObject jSONObject2 = jSONObject.getJSONObject("rp");
+        String str3 = "id";
+        as3 as3Var = new as3(jSONObject2.getString("id"), jSONObject2.getString("name"), jSONObject2.has("icon") ? jSONObject2.optString("icon") : null);
+        JSONObject jSONObject3 = jSONObject.getJSONObject("user");
+        cs3 cs3Var = new cs3(jSONObject3.getString("name"), jSONObject3.has("icon") ? jSONObject3.optString("icon") : null, jSONObject3.optString("displayName"), ya4.k(jSONObject3.getString("id")));
+        byte[] bArrK = ya4.k(jSONObject.getString("challenge"));
+        ji2.m(bArrK);
+        JSONArray jSONArray3 = jSONObject.getJSONArray("pubKeyCredParams");
+        ArrayList arrayList4 = new ArrayList();
+        for (int i2 = 0; i2 < jSONArray3.length(); i2++) {
+            JSONObject jSONObject4 = jSONArray3.getJSONObject(i2);
+            try {
+                th5Var = new th5(new zr3(jSONObject4.getInt("alg"), jSONObject4.getString("type")));
+            } catch (IllegalArgumentException unused) {
+                th5Var = oh5.n;
+            }
+            if (th5Var.d()) {
+                arrayList4.add(th5Var.c());
+            }
+        }
+        Double dValueOf = jSONObject.has("timeout") ? Double.valueOf(jSONObject.getDouble("timeout") / 1000.0d) : null;
+        int i3 = 11;
+        if (jSONObject.has("excludeCredentials")) {
+            JSONArray jSONArray4 = jSONObject.getJSONArray("excludeCredentials");
+            ArrayList arrayList5 = new ArrayList();
+            int i4 = 0;
+            while (i4 < jSONArray4.length()) {
+                JSONObject jSONObject5 = jSONArray4.getJSONObject(i4);
+                Parcelable.Creator<yr3> creator = yr3.CREATOR;
+                String string = jSONObject5.getString("type");
+                byte[] bArrDecode = Base64.decode(jSONObject5.getString(str3), i3);
+                if (!jSONObject5.has("transports") || (jSONArray2 = jSONObject5.getJSONArray("transports")) == null) {
+                    str = str3;
+                    arrayList3 = null;
+                } else {
+                    HashSet hashSet = new HashSet(jSONArray2.length());
+                    int i5 = 0;
+                    while (i5 < jSONArray2.length()) {
+                        String string2 = jSONArray2.getString(i5);
+                        if (string2 == null || string2.isEmpty()) {
+                            str2 = str3;
+                        } else {
+                            str2 = str3;
+                            try {
+                                hashSet.add(Transport.a(string2));
+                            } catch (Transport.UnsupportedTransportException unused2) {
+                                Log.w("Transport", "Ignoring unrecognized transport ".concat(string2));
+                            }
+                        }
+                        i5++;
+                        str3 = str2;
+                    }
+                    str = str3;
+                    arrayList3 = new ArrayList(hashSet);
+                }
+                arrayList5.add(new yr3(string, bArrDecode, arrayList3));
+                i4++;
+                jSONArray4 = jSONArray4;
+                str3 = str;
+                i3 = 11;
+            }
+            arrayList = arrayList5;
+        } else {
+            arrayList = null;
+        }
+        if (jSONObject.has("authenticatorSelection")) {
+            JSONObject jSONObject6 = jSONObject.getJSONObject("authenticatorSelection");
+            nnVar = new nn(jSONObject6.has("authenticatorAttachment") ? jSONObject6.optString("authenticatorAttachment") : null, jSONObject6.has("requireResidentKey") ? Boolean.valueOf(jSONObject6.optBoolean("requireResidentKey")) : null, jSONObject6.has("userVerification") ? jSONObject6.optString("userVerification") : null, jSONObject6.has("residentKey") ? jSONObject6.optString("residentKey") : null);
+        } else {
+            nnVar = null;
+        }
+        if (jSONObject.has("extensions")) {
+            JSONObject jSONObject7 = jSONObject.getJSONObject("extensions");
+            s61 s61Var = jSONObject7.has("fidoAppIdExtension") ? new s61(jSONObject7.getJSONObject("fidoAppIdExtension").getString("appid")) : null;
+            if (jSONObject7.has("appid")) {
+                s61Var = new s61(jSONObject7.getString("appid"));
+            }
+            s61 s61Var2 = s61Var;
+            if (!jSONObject7.has("prf")) {
+                i = 0;
+                if (jSONObject7.has("prfAlreadyHashed")) {
+                    mh5VarB = mh5.b(jSONObject7.getJSONObject("prfAlreadyHashed"), true);
+                } else {
+                    mh5Var = null;
+                }
+                if (jSONObject7.has("cableAuthenticationExtension")) {
+                    jSONArray = jSONObject7.getJSONArray("cableAuthenticationExtension");
+                    arrayList2 = new ArrayList();
+                    while (i < jSONArray.length()) {
+                        JSONObject jSONObject8 = jSONArray.getJSONObject(i);
+                        arrayList2.add(new qk5(jSONObject8.getLong("version"), Base64.decode(jSONObject8.getString("clientEid"), 11), Base64.decode(jSONObject8.getString("authenticatorEid"), 11), Base64.decode(jSONObject8.getString("sessionPreKey"), 11)));
+                        i++;
+                    }
+                    rk5Var = new rk5(arrayList2);
+                } else {
+                    rk5Var = null;
+                }
+                if (jSONObject7.has("userVerificationMethodExtension")) {
+                    y25Var = new y25(jSONObject7.getJSONObject("userVerificationMethodExtension").getBoolean("uvm"));
+                } else {
+                    y25Var = null;
+                }
+                if (jSONObject7.has("google_multiAssertionExtension")) {
+                    wk5Var = new wk5(jSONObject7.getJSONObject("google_multiAssertionExtension").getBoolean("requestForMultiAssertion"));
+                } else {
+                    wk5Var = null;
+                }
+                if (jSONObject7.has("google_sessionIdExtension")) {
+                    gh5Var = new gh5(jSONObject7.getJSONObject("google_sessionIdExtension").getInt("sessionId"));
+                } else {
+                    gh5Var = null;
+                }
+                if (jSONObject7.has("google_silentVerificationExtension")) {
+                    hh5Var = new hh5(jSONObject7.getJSONObject("google_silentVerificationExtension").getBoolean("silentVerification"));
+                } else {
+                    hh5Var = null;
+                }
+                if (jSONObject7.has("devicePublicKeyExtension")) {
+                    jSONObject7.getJSONObject("devicePublicKeyExtension").getBoolean("devicePublicKey");
+                    uk5Var = new uk5();
+                } else {
+                    uk5Var = null;
+                }
+                if (jSONObject7.has("google_tunnelServerIdExtension")) {
+                    kh5Var = new kh5(jSONObject7.getJSONObject("google_tunnelServerIdExtension").getString("tunnelServerId"));
+                } else {
+                    kh5Var = null;
+                }
+                if (jSONObject7.has("google_thirdPartyPaymentExtension")) {
+                    pj1Var = new pj1(jSONObject7.getJSONObject("google_thirdPartyPaymentExtension").getBoolean("thirdPartyPayment"));
+                } else {
+                    pj1Var = null;
+                }
+                if (jSONObject7.has("txAuthSimple")) {
+                    nh5Var = new nh5(jSONObject7.getString("txAuthSimple"));
+                } else {
+                    nh5Var = null;
+                }
+                gnVar = new gn(s61Var2, rk5Var, y25Var, wk5Var, gh5Var, hh5Var, uk5Var, kh5Var, pj1Var, mh5Var, nh5Var, null);
+            } else {
+                if (jSONObject7.has("prfAlreadyHashed")) {
+                    throw new JSONException("both prf and prfAlreadyHashed extensions found");
+                }
+                i = 0;
+                mh5VarB = mh5.b(jSONObject7.getJSONObject("prf"), false);
+            }
+            mh5Var = mh5VarB;
+            if (jSONObject7.has("cableAuthenticationExtension")) {
+                jSONArray = jSONObject7.getJSONArray("cableAuthenticationExtension");
+                arrayList2 = new ArrayList();
+                while (i < jSONArray.length()) {
+                    JSONObject jSONObject9 = jSONArray.getJSONObject(i);
+                    arrayList2.add(new qk5(jSONObject9.getLong("version"), Base64.decode(jSONObject9.getString("clientEid"), 11), Base64.decode(jSONObject9.getString("authenticatorEid"), 11), Base64.decode(jSONObject9.getString("sessionPreKey"), 11)));
+                    i++;
+                }
+                rk5Var = new rk5(arrayList2);
+            } else {
+                rk5Var = null;
+            }
+            if (jSONObject7.has("userVerificationMethodExtension")) {
+                y25Var = new y25(jSONObject7.getJSONObject("userVerificationMethodExtension").getBoolean("uvm"));
+            } else {
+                y25Var = null;
+            }
+            if (jSONObject7.has("google_multiAssertionExtension")) {
+                wk5Var = new wk5(jSONObject7.getJSONObject("google_multiAssertionExtension").getBoolean("requestForMultiAssertion"));
+            } else {
+                wk5Var = null;
+            }
+            if (jSONObject7.has("google_sessionIdExtension")) {
+                gh5Var = new gh5(jSONObject7.getJSONObject("google_sessionIdExtension").getInt("sessionId"));
+            } else {
+                gh5Var = null;
+            }
+            if (jSONObject7.has("google_silentVerificationExtension")) {
+                hh5Var = new hh5(jSONObject7.getJSONObject("google_silentVerificationExtension").getBoolean("silentVerification"));
+            } else {
+                hh5Var = null;
+            }
+            if (jSONObject7.has("devicePublicKeyExtension")) {
+                jSONObject7.getJSONObject("devicePublicKeyExtension").getBoolean("devicePublicKey");
+                uk5Var = new uk5();
+            } else {
+                uk5Var = null;
+            }
+            if (jSONObject7.has("google_tunnelServerIdExtension")) {
+                kh5Var = new kh5(jSONObject7.getJSONObject("google_tunnelServerIdExtension").getString("tunnelServerId"));
+            } else {
+                kh5Var = null;
+            }
+            if (jSONObject7.has("google_thirdPartyPaymentExtension")) {
+                pj1Var = new pj1(jSONObject7.getJSONObject("google_thirdPartyPaymentExtension").getBoolean("thirdPartyPayment"));
+            } else {
+                pj1Var = null;
+            }
+            if (jSONObject7.has("txAuthSimple")) {
+                nh5Var = new nh5(jSONObject7.getString("txAuthSimple"));
+            } else {
+                nh5Var = null;
+            }
+            gnVar = new gn(s61Var2, rk5Var, y25Var, wk5Var, gh5Var, hh5Var, uk5Var, kh5Var, pj1Var, mh5Var, nh5Var, null);
+        } else {
+            gnVar = null;
+        }
+        if (jSONObject.has("attestation")) {
+            try {
+                hlVarA = hl.a(jSONObject.getString("attestation"));
+            } catch (AttestationConveyancePreference$UnsupportedAttestationConveyancePreferenceException e) {
+                Log.w("PKCCreationOptions", "Invalid AttestationConveyancePreference", e);
+                hlVarA = hl.o;
+            }
+        } else {
+            hlVarA = null;
+        }
+        return new xr3(as3Var, cs3Var, bArrK, arrayList4, dValueOf, arrayList, nnVar, null, null, hlVarA == null ? null : hlVarA.n, gnVar, null, null);
     }
 
-    public final boolean equals(Object r6) {
-        if ((r6 instanceof xr3) == true) goto L5;
+    public final boolean equals(Object obj) {
+        List list;
+        if (!(obj instanceof xr3)) {
+            return false;
+        }
+        xr3 xr3Var = (xr3) obj;
+        List list2 = xr3Var.q;
+        List list3 = xr3Var.s;
+        if (au0.n(this.n, xr3Var.n) && au0.n(this.o, xr3Var.o) && Arrays.equals(this.p, xr3Var.p) && au0.n(this.r, xr3Var.r)) {
+            List list4 = this.q;
+            if (list4.containsAll(list2) && list2.containsAll(list4) && ((((list = this.s) == null && list3 == null) || (list != null && list3 != null && list.containsAll(list3) && list3.containsAll(list))) && au0.n(this.t, xr3Var.t) && au0.n(this.u, xr3Var.u) && au0.n(this.v, xr3Var.v) && au0.n(this.w, xr3Var.w) && au0.n(this.x, xr3Var.x) && au0.n(this.y, xr3Var.y))) {
+                return true;
+            }
+        }
         return false;
-    L5:
-        xr3 r7 = (xr3) r6;
-        List r0 = r7.q;
-        List r2 = r7.s;
-        if (au0.n(this.n, r7.n) == true) goto L8;
-    L40:
-        return false;
-    L8:
-        if (au0.n(this.o, r7.o) == false) goto L40;
-        if (Arrays.equals(this.p, r7.p) == false) goto L40;
-        if (au0.n(this.r, r7.r) == false) goto L40;
-        List r3 = this.q;
-        if (r3.containsAll(r0) == false) goto L40;
-        if (r0.containsAll(r3) == false) goto L40;
-        List r1 = this.s;
-        if (r1 != null) goto L20;
-        if (r2 != null) goto L20;
-    L27:
-        if (au0.n(this.t, r7.t) == false) goto L40;
-        if (au0.n(this.u, r7.u) == false) goto L40;
-        if (au0.n(this.v, r7.v) == false) goto L40;
-        if (au0.n(this.w, r7.w) == false) goto L40;
-        if (au0.n(this.x, r7.x) == false) goto L40;
-        if (au0.n(this.y, r7.y) == false) goto L40;
-        return true;
-    L20:
-        if (r1 == null) goto L40;
-        if (r2 == null) goto L40;
-        if (r1.containsAll(r2) == false) goto L40;
-        if (r2.containsAll(r1) == false) goto L40;
-        goto L40
     }
 
     public final int hashCode() {
-        Integer r3 = Integer.valueOf(Arrays.hashCode(this.p));
-        gn r11 = this.x;
-        String r12 = this.y;
-        return Arrays.hashCode(new Object[]{this.n, this.o, r3, this.q, this.r, this.s, this.t, this.u, this.v, this.w, r11, r12});
+        return Arrays.hashCode(new Object[]{this.n, this.o, Integer.valueOf(Arrays.hashCode(this.p)), this.q, this.r, this.s, this.t, this.u, this.v, this.w, this.x, this.y});
     }
 
     public final String toString() {
-        String r0 = String.valueOf(this.n);
-        String r1 = String.valueOf(this.o);
-        String r2 = ya4.n(this.p);
-        String r3 = String.valueOf(this.q);
-        String r4 = String.valueOf(this.s);
-        String r5 = String.valueOf(this.t);
-        String r6 = String.valueOf(this.v);
-        String r7 = String.valueOf(this.w);
-        String r8 = String.valueOf(this.x);
-        StringBuilder r9 = b11.u("PublicKeyCredentialCreationOptions{\n rp=", r0, ", \n user=", r1, ", \n challenge=");
-        f34.n(r9, r2, ", \n parameters=", r3, ", \n timeoutSeconds=");
-        r9.append(this.r);
-        r9.append(", \n excludeList=");
-        r9.append(r4);
-        r9.append(", \n authenticatorSelection=");
-        r9.append(r5);
-        r9.append(", \n requestId=");
-        r9.append(this.u);
-        r9.append(", \n tokenBinding=");
-        r9.append(r6);
-        r9.append(", \n attestationConveyancePreference=");
-        r9.append(r7);
-        r9.append(", \n authenticationExtensions=");
-        r9.append(r8);
-        r9.append("}");
-        return r9.toString();
+        String strValueOf = String.valueOf(this.n);
+        String strValueOf2 = String.valueOf(this.o);
+        String strN = ya4.n(this.p);
+        String strValueOf3 = String.valueOf(this.q);
+        String strValueOf4 = String.valueOf(this.s);
+        String strValueOf5 = String.valueOf(this.t);
+        String strValueOf6 = String.valueOf(this.v);
+        String strValueOf7 = String.valueOf(this.w);
+        String strValueOf8 = String.valueOf(this.x);
+        StringBuilder sbU = b11.u("PublicKeyCredentialCreationOptions{\n rp=", strValueOf, ", \n user=", strValueOf2, ", \n challenge=");
+        f34.n(sbU, strN, ", \n parameters=", strValueOf3, ", \n timeoutSeconds=");
+        sbU.append(this.r);
+        sbU.append(", \n excludeList=");
+        sbU.append(strValueOf4);
+        sbU.append(", \n authenticatorSelection=");
+        sbU.append(strValueOf5);
+        sbU.append(", \n requestId=");
+        sbU.append(this.u);
+        sbU.append(", \n tokenBinding=");
+        sbU.append(strValueOf6);
+        sbU.append(", \n attestationConveyancePreference=");
+        sbU.append(strValueOf7);
+        sbU.append(", \n authenticationExtensions=");
+        sbU.append(strValueOf8);
+        sbU.append("}");
+        return sbU.toString();
     }
 
     @Override // android.os.Parcelable
-    public final void writeToParcel(Parcel r6, int r7) {
-        int r0 = ud3.R0(r6, 20293);
-        ud3.M0(r6, 2, this.n, r7);
-        ud3.M0(r6, 3, this.o, r7);
-        ud3.L0(r6, 4, this.p);
-        ud3.Q0(r6, 5, this.q);
-        Double r3 = this.r;
-        if (r3 == null) goto L6;
-        ud3.T0(r6, 6, 8);
-        r6.writeDouble(r3.doubleValue());
-    L6:
-        ud3.Q0(r6, 7, this.s);
-        ud3.M0(r6, 8, this.t, r7);
-        Integer r1 = this.u;
-        if (r1 == null) goto L10;
-        ud3.T0(r6, 9, 4);
-        r6.writeInt(r1.intValue());
-    L10:
-        ud3.M0(r6, 10, this.v, r7);
-        hl r2 = this.w;
-        if (r2 != null) goto L13;
-        String r4 = null;
-    L14:
-        ud3.O0(r6, 11, r4);
-        ud3.M0(r6, 12, this.x, r7);
-        ud3.O0(r6, 13, this.y);
-        ud3.M0(r6, 14, this.z, r7);
-        ud3.S0(r6, r0);
-        return;
-    L13:
-        r4 = r2.n;
-        goto L14
+    public final void writeToParcel(Parcel parcel, int i) {
+        int iR0 = ud3.R0(parcel, 20293);
+        ud3.M0(parcel, 2, this.n, i);
+        ud3.M0(parcel, 3, this.o, i);
+        ud3.L0(parcel, 4, this.p);
+        ud3.Q0(parcel, 5, this.q);
+        Double d = this.r;
+        if (d != null) {
+            ud3.T0(parcel, 6, 8);
+            parcel.writeDouble(d.doubleValue());
+        }
+        ud3.Q0(parcel, 7, this.s);
+        ud3.M0(parcel, 8, this.t, i);
+        Integer num = this.u;
+        if (num != null) {
+            ud3.T0(parcel, 9, 4);
+            parcel.writeInt(num.intValue());
+        }
+        ud3.M0(parcel, 10, this.v, i);
+        hl hlVar = this.w;
+        ud3.O0(parcel, 11, hlVar == null ? null : hlVar.n);
+        ud3.M0(parcel, 12, this.x, i);
+        ud3.O0(parcel, 13, this.y);
+        ud3.M0(parcel, 14, this.z, i);
+        ud3.S0(parcel, iR0);
     }
 }

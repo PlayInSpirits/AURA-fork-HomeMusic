@@ -16,67 +16,68 @@ public final /* synthetic */ class f52 implements Runnable {
     public final /* synthetic */ int n;
     public final /* synthetic */ LanReceiverService o;
 
-    public /* synthetic */ f52(LanReceiverService r1, int r2) {
-        this.n = r2;
-        this.o = r1;
+    public /* synthetic */ f52(LanReceiverService lanReceiverService, int i) {
+        this.n = i;
+        this.o = lanReceiverService;
     }
 
     @Override // java.lang.Runnable
     public final void run() {
-        int r0 = this.n;
-        LanReceiverService r6 = this.o;
-        switch(r0) {
-            case 0: goto L6;
-            default: goto L4;
-        };
-    L4:
-        boolean r1 = LanReceiverService.y;
-        r6.stopSelf();
-        return;
-    L6:
-        boolean r2 = LanReceiverService.y;
-        int r3 = 1;
-        ServerSocket r4 = fz0.j0.e().getServerSocketFactory().createServerSocket(0);     // Catch: Exception -> L10
-        r4.getClass();     // Catch: Exception -> L10
-        SSLServerSocket r5 = (SSLServerSocket) r4;     // Catch: Exception -> L10
-        r5.setNeedClientAuth(true);     // Catch: Exception -> L10
-        r6.r = r5;     // Catch: Exception -> L10
-        if (r6.o == true) goto L12;
-        r5.close();     // Catch: Exception -> L10
-        return;
-    L12:
-        NsdManager r7 = r6.t;     // Catch: Exception -> L10
-        if (r7 == null) goto L21;
-        NsdServiceInfo r8 = new NsdServiceInfo();     // Catch: Exception -> L10
-        r8.setServiceName("Tempus ".concat(kb4.M(r6)));     // Catch: Exception -> L10
-        r8.setServiceType("_tempus-lan._tcp.");     // Catch: Exception -> L10
-        r8.setPort(r5.getLocalPort());     // Catch: Exception -> L10
-        r7.registerService(r8, 1, r6.x);     // Catch: Exception -> L10
-    L16:
-        if (r6.o == false) goto L36;
-        Socket r9 = r5.accept();     // Catch: Exception -> L10
-        r9.getClass();     // Catch: Exception -> L10
-        SSLSocket r10 = (SSLSocket) r9;     // Catch: Exception -> L10
-        r10.setSoTimeout(15000);     // Catch: Exception -> L10
-        r6.s.add(r10);     // Catch: Exception -> L10
-        r6.p.execute(new ws1(8, r6, r10));     // Catch: Exception -> L10 RejectedExecutionException -> L20
-    L20:
-        r6.s.remove(r10);     // Catch: Exception -> L10
-        r10.close();     // Catch: Exception -> L10
-        goto L16
-    L36:
-        return;
-    L21:
-        h12.Q("nsd");     // Catch: Exception -> L10
-        throw null;     // Catch: Exception -> L10
-    L10:
-        e = move-exception;
-        w42.a.a("Receiver listener failed", e);
-        if (r6.o == false) goto L35;
-        String r11 = r6.getString(R.string.lan_connection_error);
-        r11.getClass();
-        LanReceiverService.z = r11;
-        r6.n.post(new f52(r6, r3));
-        return;
+        int i = this.n;
+        LanReceiverService lanReceiverService = this.o;
+        switch (i) {
+            case 0:
+                boolean z = LanReceiverService.y;
+                int i2 = 1;
+                try {
+                    ServerSocket serverSocketCreateServerSocket = fz0.j0.e().getServerSocketFactory().createServerSocket(0);
+                    serverSocketCreateServerSocket.getClass();
+                    SSLServerSocket sSLServerSocket = (SSLServerSocket) serverSocketCreateServerSocket;
+                    sSLServerSocket.setNeedClientAuth(true);
+                    lanReceiverService.r = sSLServerSocket;
+                    if (!lanReceiverService.o) {
+                        sSLServerSocket.close();
+                        return;
+                    }
+                    NsdManager nsdManager = lanReceiverService.t;
+                    if (nsdManager == null) {
+                        h12.Q("nsd");
+                        throw null;
+                    }
+                    NsdServiceInfo nsdServiceInfo = new NsdServiceInfo();
+                    nsdServiceInfo.setServiceName("Tempus ".concat(kb4.M(lanReceiverService)));
+                    nsdServiceInfo.setServiceType("_tempus-lan._tcp.");
+                    nsdServiceInfo.setPort(sSLServerSocket.getLocalPort());
+                    nsdManager.registerService(nsdServiceInfo, 1, lanReceiverService.x);
+                    while (lanReceiverService.o) {
+                        Socket socketAccept = sSLServerSocket.accept();
+                        socketAccept.getClass();
+                        SSLSocket sSLSocket = (SSLSocket) socketAccept;
+                        sSLSocket.setSoTimeout(15000);
+                        lanReceiverService.s.add(sSLSocket);
+                        try {
+                            lanReceiverService.p.execute(new ws1(8, lanReceiverService, sSLSocket));
+                        } catch (RejectedExecutionException unused) {
+                            lanReceiverService.s.remove(sSLSocket);
+                            sSLSocket.close();
+                        }
+                    }
+                    return;
+                } catch (Exception e) {
+                    w42.a.a("Receiver listener failed", e);
+                    if (lanReceiverService.o) {
+                        String string = lanReceiverService.getString(R.string.lan_connection_error);
+                        string.getClass();
+                        LanReceiverService.z = string;
+                        lanReceiverService.n.post(new f52(lanReceiverService, i2));
+                        return;
+                    }
+                    return;
+                }
+            default:
+                boolean z2 = LanReceiverService.y;
+                lanReceiverService.stopSelf();
+                return;
+        }
     }
 }

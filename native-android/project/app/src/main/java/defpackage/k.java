@@ -6,24 +6,17 @@ import android.os.Parcelable;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public abstract class k implements Parcelable {
-    public static final Parcelable.Creator<k> CREATOR = null;
-    public static final j o = null;
     public final Parcelable n;
+    public static final j o = new j();
+    public static final Parcelable.Creator<k> CREATOR = new yd3(1);
 
-    static {
-        o = new j();
-        CREATOR = new yd3(1);
-    }
-
-    public k(Parcelable r3) {
-        if (r3 != null) goto L5;
-        kf2.n("superState must not be null");
-        throw null;
-    L5:
-        if (r3 != o) goto L8;
-        r3 = null;
-    L8:
-        this.n = r3;
+    public k(Parcelable parcelable) {
+        if (parcelable != null) {
+            this.n = parcelable == o ? null : parcelable;
+        } else {
+            kf2.n("superState must not be null");
+            throw null;
+        }
     }
 
     @Override // android.os.Parcelable
@@ -32,19 +25,16 @@ public abstract class k implements Parcelable {
     }
 
     @Override // android.os.Parcelable
-    public void writeToParcel(Parcel r1, int r2) {
-        r1.writeParcelable(this.n, r2);
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeParcelable(this.n, i);
     }
 
     public k() {
         this.n = null;
     }
 
-    public k(Parcel r1, ClassLoader r2) {
-        Parcelable r3 = r1.readParcelable(r2);
-        if (r3 != null) goto L6;
-        r3 = o;
-    L6:
-        this.n = r3;
+    public k(Parcel parcel, ClassLoader classLoader) {
+        Parcelable parcelable = parcel.readParcelable(classLoader);
+        this.n = parcelable == null ? o : parcelable;
     }
 }

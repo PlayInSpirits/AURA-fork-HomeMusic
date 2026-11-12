@@ -11,83 +11,76 @@ import androidx.work.impl.WorkDatabase;
 import androidx.work.impl.WorkDatabase_Impl;
 import androidx.work.impl.background.systemjob.SystemJobService;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Set;
+import java.util.concurrent.Callable;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class dq4 implements a64 {
-    public static final String s = null;
+    public static final String s = cx.i("SystemJobScheduler");
     public final Context n;
     public final JobScheduler o;
     public final cq4 p;
     public final WorkDatabase q;
     public final r90 r;
 
-    static {
-        s = cx.i("SystemJobScheduler");
+    public dq4(Context context, WorkDatabase workDatabase, r90 r90Var) {
+        JobScheduler jobSchedulerA = w22.a(context);
+        cq4 cq4Var = new cq4(context, r90Var.d, r90Var.l);
+        this.n = context;
+        this.o = jobSchedulerA;
+        this.p = cq4Var;
+        this.q = workDatabase;
+        this.r = r90Var;
     }
 
-    public dq4(Context r5, WorkDatabase r6, r90 r7) {
-        JobScheduler r0 = w22.a(r5);
-        cq4 r1 = new cq4(r5, r7.d, r7.l);
-        this.n = r5;
-        this.o = r0;
-        this.p = r1;
-        this.q = r6;
-        this.r = r7;
+    public static void a(JobScheduler jobScheduler, int i) {
+        try {
+            jobScheduler.cancel(i);
+        } catch (Throwable th) {
+            cx.f().e(s, String.format(Locale.getDefault(), "Exception while trying to cancel job (%d)", Integer.valueOf(i)), th);
+        }
     }
 
-    public static void a(JobScheduler r3, int r4) {
-        r3.cancel(r4);     // Catch: Throwable -> L4
-        return;
-    L4:
-        th = move-exception;
-        cx r0 = cx.f();
-        String r5 = String.format(Locale.getDefault(), "Exception while trying to cancel job (%d)", new Object[]{Integer.valueOf(r4)});
-        r0.e(s, r5, th);
+    public static ArrayList b(Context context, JobScheduler jobScheduler) {
+        List<JobInfo> allPendingJobs;
+        String str = w22.a;
+        jobScheduler.getClass();
+        try {
+            allPendingJobs = jobScheduler.getAllPendingJobs();
+            allPendingJobs.getClass();
+        } catch (Throwable th) {
+            cx.f().e(w22.a, "getAllPendingJobs() is not reliable on this device.", th);
+            allPendingJobs = null;
+        }
+        if (allPendingJobs == null) {
+            return null;
+        }
+        ArrayList arrayList = new ArrayList(allPendingJobs.size());
+        ComponentName componentName = new ComponentName(context, (Class<?>) SystemJobService.class);
+        for (JobInfo jobInfo : allPendingJobs) {
+            if (componentName.equals(jobInfo.getService())) {
+                arrayList.add(jobInfo);
+            }
+        }
+        return arrayList;
     }
 
-    public static ArrayList b(Context r4, JobScheduler r5) {
-        String r0 = w22.a;
-        r5.getClass();
-        List<JobInfo> r6 = r5.getAllPendingJobs();     // Catch: Throwable -> L5
-        r6.getClass();     // Catch: Throwable -> L5
-    L7:
-        if (r6 != null) goto L9;
-        return null;
-    L9:
-        ArrayList r1 = new ArrayList(r6.size());
-        ComponentName r2 = new ComponentName(r4, SystemJobService.class);
-        Iterator<JobInfo> r7 = r6.iterator();
-    L11:
-        if (r7.hasNext() == false) goto L15;
-        JobInfo r8 = r7.next();
-        if (r2.equals(r8.getService()) == false) goto L11;
-        r1.add(r8);
-        goto L11
-    L15:
-        return r1;
-    L5:
-        th = move-exception;
-        cx.f().e(w22.a, "getAllPendingJobs() is not reliable on this device.", th);
-        r6 = null;
-        goto L7
-    }
-
-    public static rc5 f(JobInfo r3) {
-        PersistableBundle r4 = r3.getExtras();
-        if (r4 != null) goto L11;
-        return null;
-    L11:
-        if (r4.containsKey("EXTRA_WORK_SPEC_ID") == false) goto L13;
-        return new rc5(r4.getInt("EXTRA_WORK_SPEC_GENERATION", 0), r4.getString("EXTRA_WORK_SPEC_ID"));
-    L13:
-        return null;
-    L14:
-        return null;
+    public static rc5 f(JobInfo jobInfo) {
+        PersistableBundle extras = jobInfo.getExtras();
+        if (extras == null) {
+            return null;
+        }
+        try {
+            if (extras.containsKey("EXTRA_WORK_SPEC_ID")) {
+                return new rc5(extras.getInt("EXTRA_WORK_SPEC_GENERATION", 0), extras.getString("EXTRA_WORK_SPEC_ID"));
+            }
+            return null;
+        } catch (NullPointerException unused) {
+            return null;
+        }
     }
 
     @Override // defpackage.a64
@@ -96,328 +89,270 @@ public final class dq4 implements a64 {
     }
 
     @Override // defpackage.a64
-    public final void d(String r9) {
-        Context r0 = this.n;
-        JobScheduler r1 = this.o;
-        ArrayList r2 = b(r0, r1);
-        int r3 = 0;
-        if (r2 != null) goto L5;
-        ArrayList r4 = null;
-    L13:
-        if (r4 != null) goto L15;
-        return;
-    L15:
-        if (r4.isEmpty() == true) goto L44;
-        int r5 = r4.size();
-    L17:
-        if (r3 >= r5) goto L19;
-        Object r6 = r4.get(r3);
-        r3 = r3 + 1;
-        a(r1, ((Integer) r6).intValue());
-        goto L17
-    L19:
-        bq4 r8 = this.q.x();
-        WorkDatabase_Impl r7 = (WorkDatabase_Impl) r8.n;
-        r7.b();
-        aq4 r10 = (aq4) r8.q;
-        df1 r11 = r10.a();
-        r11.h(1, r9);
-        r7.c();     // Catch: Throwable -> L25
-        r11.b();     // Catch: Throwable -> L27
-        r7.t();     // Catch: Throwable -> L27
-        r7.o();     // Catch: Throwable -> L25
-        r10.h(r11);
-        return;
-    L27:
-        th = move-exception;
-        r7.o();     // Catch: Throwable -> L25
-        throw th;     // Catch: Throwable -> L25
-    L25:
-        th = move-exception;
-        r10.h(r11);
-        throw th;
-    L44:
-        return;
-    L5:
-        ArrayList r12 = new ArrayList(2);
-        int r13 = r2.size();
-        int r14 = 0;
-    L6:
-        if (r14 >= r13) goto L12;
-        Object r15 = r2.get(r14);
-        r14 = r14 + 1;
-        JobInfo r16 = (JobInfo) r15;
-        rc5 r17 = f(r16);
-        if (r17 == null) goto L6;
-        if (r9.equals(r17.a) == false) goto L6;
-        r12.add(Integer.valueOf(r16.getId()));
-        goto L6
-    L12:
-        r4 = r12;
-        goto L13
+    public final void d(String str) {
+        ArrayList arrayList;
+        Context context = this.n;
+        JobScheduler jobScheduler = this.o;
+        ArrayList arrayListB = b(context, jobScheduler);
+        int i = 0;
+        if (arrayListB == null) {
+            arrayList = null;
+        } else {
+            ArrayList arrayList2 = new ArrayList(2);
+            int size = arrayListB.size();
+            int i2 = 0;
+            while (i2 < size) {
+                Object obj = arrayListB.get(i2);
+                i2++;
+                JobInfo jobInfo = (JobInfo) obj;
+                rc5 rc5VarF = f(jobInfo);
+                if (rc5VarF != null && str.equals(rc5VarF.a)) {
+                    arrayList2.add(Integer.valueOf(jobInfo.getId()));
+                }
+            }
+            arrayList = arrayList2;
+        }
+        if (arrayList == null || arrayList.isEmpty()) {
+            return;
+        }
+        int size2 = arrayList.size();
+        while (i < size2) {
+            Object obj2 = arrayList.get(i);
+            i++;
+            a(jobScheduler, ((Integer) obj2).intValue());
+        }
+        bq4 bq4VarX = this.q.x();
+        WorkDatabase_Impl workDatabase_Impl = (WorkDatabase_Impl) bq4VarX.n;
+        workDatabase_Impl.b();
+        aq4 aq4Var = (aq4) bq4VarX.q;
+        df1 df1VarA = aq4Var.a();
+        df1VarA.h(1, str);
+        try {
+            workDatabase_Impl.c();
+            try {
+                df1VarA.b();
+                workDatabase_Impl.t();
+                workDatabase_Impl.o();
+                aq4Var.h(df1VarA);
+            } catch (Throwable th) {
+                workDatabase_Impl.o();
+                throw th;
+            }
+        } catch (Throwable th2) {
+            aq4Var.h(df1VarA);
+            throw th2;
+        }
     }
 
     @Override // defpackage.a64
-    public final void e(dd5... r12) {
-        r90 r0 = this.r;
-        WorkDatabase r2 = this.q;
-        int r3 = 0;
-        final rv1 r1 = new rv1(r2, 0);
-        int r4 = r12.length;
-    L3:
-        if (r3 >= r4) goto L26;
-        dd5 r5 = r12[r3];
-        r2.c();
-        fd5 r6 = r2.A();     // Catch: Throwable -> L10
-        String r7 = r5.a;     // Catch: Throwable -> L10
-        dd5 r8 = r6.h(r7);     // Catch: Throwable -> L10
-        String r9 = s;
-        if (r8 != null) goto L13;
-        cx.f().k(r9, "Skipping scheduling " + r7 + " because it's no longer in the DB");     // Catch: Throwable -> L10
-        r2.t();     // Catch: Throwable -> L10
-    L9:
-        r2.o();
-        r3 = r3 + 1;
-        goto L3
-    L13:
-        if (r8.b == 1) goto L15;
-        cx.f().k(r9, "Skipping scheduling " + r7 + " because it is no longer enqueued");     // Catch: Throwable -> L10
-        r2.t();     // Catch: Throwable -> L10
-        goto L9
-    L15:
-        rc5 r10 = q05.m(r5);     // Catch: Throwable -> L10
-        zp4 r11 = r2.x().k(r10);     // Catch: Throwable -> L10
-        if (r11 == null) goto L18;
-        int r13 = r11.c;     // Catch: Throwable -> L10
-    L19:
-        if (r11 != null) goto L21;
-        r2.x().n(new zp4(r10.a, r10.b, r13));     // Catch: Throwable -> L10
-    L21:
-        g(r5, r13);     // Catch: Throwable -> L10
-        r2.t();     // Catch: Throwable -> L10
-        goto L9
-    L18:
-        r0.getClass();     // Catch: Throwable -> L10
-        final int r14 = r0.i;     // Catch: Throwable -> L10
-        Object r15 = r1.a.r(new qv1(r1, r14));     // Catch: Throwable -> L10
-        r15.getClass();     // Catch: Throwable -> L10
-        r13 = ((Number) r15).intValue();     // Catch: Throwable -> L10
-    L10:
-        th = move-exception;
-        r2.o();
-        throw th;
+    public final void e(dd5... dd5VarArr) {
+        int iIntValue;
+        r90 r90Var = this.r;
+        WorkDatabase workDatabase = this.q;
+        final rv1 rv1Var = new rv1(workDatabase, 0);
+        for (dd5 dd5Var : dd5VarArr) {
+            workDatabase.c();
+            try {
+                fd5 fd5VarA = workDatabase.A();
+                String str = dd5Var.a;
+                dd5 dd5VarH = fd5VarA.h(str);
+                String str2 = s;
+                if (dd5VarH == null) {
+                    cx.f().k(str2, "Skipping scheduling " + str + " because it's no longer in the DB");
+                    workDatabase.t();
+                } else if (dd5VarH.b != 1) {
+                    cx.f().k(str2, "Skipping scheduling " + str + " because it is no longer enqueued");
+                    workDatabase.t();
+                } else {
+                    rc5 rc5VarM = q05.m(dd5Var);
+                    zp4 zp4VarK = workDatabase.x().k(rc5VarM);
+                    if (zp4VarK != null) {
+                        iIntValue = zp4VarK.c;
+                    } else {
+                        r90Var.getClass();
+                        final int i = r90Var.i;
+                        Object objR = rv1Var.a.r(new Callable() { // from class: qv1
+                            @Override // java.util.concurrent.Callable
+                            public final Object call() {
+                                WorkDatabase workDatabase2 = rv1Var.a;
+                                Long l = workDatabase2.w().l("next_job_scheduler_id");
+                                int i2 = 0;
+                                int iLongValue = l != null ? (int) l.longValue() : 0;
+                                workDatabase2.w().n(new fp3("next_job_scheduler_id", Long.valueOf(iLongValue == Integer.MAX_VALUE ? 0 : iLongValue + 1)));
+                                if (iLongValue < 0 || iLongValue > i) {
+                                    workDatabase2.w().n(new fp3("next_job_scheduler_id", 1L));
+                                } else {
+                                    i2 = iLongValue;
+                                }
+                                return Integer.valueOf(i2);
+                            }
+                        });
+                        objR.getClass();
+                        iIntValue = ((Number) objR).intValue();
+                    }
+                    if (zp4VarK == null) {
+                        workDatabase.x().n(new zp4(rc5VarM.a, rc5VarM.b, iIntValue));
+                    }
+                    g(dd5Var, iIntValue);
+                    workDatabase.t();
+                }
+                workDatabase.o();
+            } catch (Throwable th) {
+                workDatabase.o();
+                throw th;
+            }
+        }
     }
 
-    public final void g(dd5 r17, int r18) {
-        cq4 r3 = this.p;
-        r3.getClass();
-        mc0 r4 = r17.j;
-        PersistableBundle r5 = new PersistableBundle();
-        String r6 = r17.a;
-        r5.putString("EXTRA_WORK_SPEC_ID", r6);
-        r5.putInt("EXTRA_WORK_SPEC_GENERATION", r17.t);
-        r5.putBoolean("EXTRA_IS_PERIODIC", r17.d());
-        JobInfo.Builder r7 = new JobInfo.Builder(r18, r3.a);
-        boolean r8 = r4.c;
-        Set r9 = r4.i;
-        JobInfo.Builder r10 = r7.setRequiresCharging(r8);
-        boolean r11 = r4.d;
-        JobInfo.Builder r12 = r10.setRequiresDeviceIdle(r11).setExtras(r5);
-        NetworkRequest r13 = r4.a();
-        int r14 = Build.VERSION.SDK_INT;
-        if (r14 < 28) goto L6;
-        if (r13 == null) goto L6;
-        r12.getClass();
-        vl4.j(r12, r13);
-    L27:
-        if (r11 == false) goto L29;
-    L33:
-        long r15 = r17.a();
-        r3.b.getClass();
-        long r16 = Math.max(r15 - System.currentTimeMillis(), 0);
-        if (r14 > 28) goto L37;
-        r12.setMinimumLatency(r16);
-    L45:
-        if (r9.isEmpty() == true) goto L51;
-        Iterator r19 = r9.iterator();
-    L48:
-        if (r19.hasNext() == false) goto L50;
-        lc0 r20 = (lc0) r19.next();
-        r12.addTriggerContentUri(new JobInfo.TriggerContentUri(r20.a, r20.b ? 1 : 0));
-        goto L48
-    L50:
-        r12.setTriggerContentUpdateDelay(r4.g);
-        r12.setTriggerContentMaxDelay(r4.h);
-    L51:
-        r12.setPersisted(false);
-        int r21 = Build.VERSION.SDK_INT;
-        if (r21 < 26) goto L55;
-        rg3.i(r12, r4.e);
-        rg3.q(r12, r4.f);
-    L55:
-        if (r17.k <= 0) goto L57;
-        boolean r22 = true;
-    L59:
-        if (r16 <= 0) goto L61;
-        boolean r23 = true;
-    L63:
-        if (r21 < 31) goto L70;
-        if (r17.q == false) goto L70;
-        if (r22 == true) goto L70;
-        if (r23 == true) goto L70;
-        go2.k(r12);
-    L70:
-        if (r21 < 35) goto L74;
-        String r24 = r17.x;
-        if (r24 == null) goto L74;
-        vk.d(r12, r24);
-    L74:
-        JobInfo r25 = r12.build();
-        String r26 = s;
-        cx.f().b(r26, "Scheduling work ID " + r6 + "Job ID " + r18);
-    L89:
-        e = e;
-        int r27 = 0;
-    L88:
-        IllegalStateException r2 = e;
-        String r0 = w22.a;
-        Context r28 = this.n;
-        r28.getClass();
-        WorkDatabase r1 = this.q;
-        r1.getClass();
-        r90 r29 = this.r;
-        r29.getClass();
-        int r30 = Build.VERSION.SDK_INT;
-        if (r30 < 31) goto L97;
-        int r31 = 150;
-    L98:
-        int r32 = r1.A().f().size();
-        String r33 = "<faulty JobScheduler failed to getPendingJobs>";
-        if (r30 < 34) goto L121;
-        JobScheduler r34 = w22.a(r28);
-        String r110 = null;
-        List<JobInfo> r35 = r34.getAllPendingJobs();     // Catch: Throwable -> L103
-        r35.getClass();     // Catch: Throwable -> L103
-    L105:
-        if (r35 == null) goto L125;
-        ArrayList r36 = b(r28, r34);
-        if (r36 == null) goto L109;
-        int r37 = r35.size() - r36.size();
-    L110:
-        if (r37 != 0) goto L112;
-        String r38 = null;
-    L113:
-        Object r39 = r28.getSystemService("jobscheduler");
-        r39.getClass();
-        ArrayList r40 = b(r28, (JobScheduler) r39);
-        if (r40 == null) goto L116;
-        int r111 = r40.size();
-    L117:
-        if (r111 == 0) goto L120;
-        r110 = r111 + " from WorkManager in the default namespace";
-    L120:
-        r33 = q40.B0(ti.i0(new String[]{r35.size() + " jobs in \"androidx.work.systemjobscheduler\" namespace", r38, r110}), ",\n", null, null, null, 62);
-        goto L125
-    L116:
-        r111 = r27;
-        goto L117
-    L112:
-        r38 = r37 + " of which are not owned by WorkManager";
-        goto L113
-    L109:
-        r37 = r27;
-    L125:
-        String r41 = "JobScheduler " + r31 + " job limit exceeded.\nIn JobScheduler there are " + r33 + ".\nThere are " + r32 + " jobs tracked by WorkManager's database;\nthe Configuration limit is " + r29.k + '.';
-        cx.f().d(r26, r41);
-        mj0.j(r41, r2);
-        return;
-    L103:
-        th = move-exception;
-        cx.f().e(w22.a, "getAllPendingJobs() is not reliable on this device.", th);
-        r35 = null;
-        goto L105
-    L121:
-        ArrayList r42 = b(r28, w22.a(r28));
-        if (r42 == null) goto L125;
-        r33 = r42.size() + " jobs from WorkManager";
-        goto L125
-    L97:
-        r31 = 100;
-    L85:
-        th = move-exception;
-        cx.f().e(r26, "Unable to schedule " + r17, th);
-        return;
-    L76:
-        if (this.o.schedule(r25) != 0) goto L91;
-        cx.f().k(r26, "Unable to schedule work ID " + r6);     // Catch: Throwable -> L85 IllegalStateException -> L89
-        if (r17.q == false) goto L134;
-        if (r17.r != 1) goto L135;
-        r27 = 0;
-        r17.q = false;     // Catch: Throwable -> L85 IllegalStateException -> L87
-        cx.f().b(r26, "Scheduling a non-expedited job (work ID " + r6 + ")");     // Catch: Throwable -> L85 IllegalStateException -> L87
-        g(r17, r18);     // Catch: Throwable -> L85 IllegalStateException -> L87
-        return;
-    L87:
-        e = e;
-        goto L88
-    L135:
-        return;
-    L134:
-        return;
-    L91:
-        return;
-    L61:
-        r23 = false;
-        goto L63
-    L57:
-        r22 = false;
-        goto L59
-    L37:
-        if (r16 <= 0) goto L40;
-        r12.setMinimumLatency(r16);
-        goto L45
-    L40:
-        if (r17.q == true) goto L45;
-        if (r3.c == false) goto L45;
-        vl4.e(r12);
-        goto L45
-    L29:
-        if (r17.l != 2) goto L31;
-        int r43 = 0;
-    L32:
-        r12.setBackoffCriteria(r17.m, r43);
-        goto L33
-    L31:
-        r43 = 1;
-    L6:
-        int r44 = r4.a;
-        if (r14 >= 30) goto L9;
-    L11:
-        int r112 = xa3.w(r44);
-        if (r112 == 0) goto L25;
-        if (r112 == 1) goto L23;
-        if (r112 == 2) goto L24;
-        int r113 = 3;
-        if (r112 == 3) goto L26;
-        r113 = 4;
-        if (r112 != 4) goto L22;
-        if (r14 >= 26) goto L26;
-    L22:
-        cx.f().b(cq4.d, "API version too low. Cannot convert network type value ".concat(b11.y(r44)));
-    L26:
-        r12.setRequiredNetworkType(r113);
-        goto L27
-    L24:
-        r113 = 2;
-    L23:
-        r113 = 1;
-        goto L26
-    L25:
-        r113 = 0;
-        goto L26
-    L9:
-        if (r44 != 6) goto L11;
-        vl4.f(r12, new NetworkRequest.Builder().addCapability(25).build());
-        goto L27
+    public final void g(dd5 dd5Var, int i) {
+        int i2;
+        int i3;
+        List<JobInfo> allPendingJobs;
+        String str;
+        cq4 cq4Var = this.p;
+        cq4Var.getClass();
+        mc0 mc0Var = dd5Var.j;
+        PersistableBundle persistableBundle = new PersistableBundle();
+        String str2 = dd5Var.a;
+        persistableBundle.putString("EXTRA_WORK_SPEC_ID", str2);
+        persistableBundle.putInt("EXTRA_WORK_SPEC_GENERATION", dd5Var.t);
+        persistableBundle.putBoolean("EXTRA_IS_PERIODIC", dd5Var.d());
+        JobInfo.Builder builder = new JobInfo.Builder(i, cq4Var.a);
+        boolean z = mc0Var.c;
+        Set<lc0> set = mc0Var.i;
+        JobInfo.Builder requiresCharging = builder.setRequiresCharging(z);
+        boolean z2 = mc0Var.d;
+        JobInfo.Builder extras = requiresCharging.setRequiresDeviceIdle(z2).setExtras(persistableBundle);
+        NetworkRequest networkRequestA = mc0Var.a();
+        int i4 = Build.VERSION.SDK_INT;
+        if (i4 < 28 || networkRequestA == null) {
+            int i5 = mc0Var.a;
+            if (i4 < 30 || i5 != 6) {
+                int iW = xa3.w(i5);
+                if (iW == 0) {
+                    i2 = 0;
+                } else if (iW == 1) {
+                    i2 = 1;
+                } else if (iW != 2) {
+                    i2 = 3;
+                    if (iW != 3) {
+                        i2 = 4;
+                        if (iW != 4 || i4 < 26) {
+                            cx.f().b(cq4.d, "API version too low. Cannot convert network type value ".concat(b11.y(i5)));
+                            i2 = 1;
+                        }
+                    }
+                } else {
+                    i2 = 2;
+                }
+                extras.setRequiredNetworkType(i2);
+            } else {
+                extras.setRequiredNetwork(new NetworkRequest.Builder().addCapability(25).build());
+            }
+        } else {
+            extras.getClass();
+            extras.setRequiredNetwork(networkRequestA);
+        }
+        if (!z2) {
+            extras.setBackoffCriteria(dd5Var.m, dd5Var.l == 2 ? 0 : 1);
+        }
+        long jA = dd5Var.a();
+        cq4Var.b.getClass();
+        long jMax = Math.max(jA - System.currentTimeMillis(), 0L);
+        if (i4 <= 28 || jMax > 0) {
+            extras.setMinimumLatency(jMax);
+        } else if (!dd5Var.q && cq4Var.c) {
+            extras.setImportantWhileForeground(true);
+        }
+        if (!set.isEmpty()) {
+            for (lc0 lc0Var : set) {
+                extras.addTriggerContentUri(new JobInfo.TriggerContentUri(lc0Var.a, lc0Var.b ? 1 : 0));
+            }
+            extras.setTriggerContentUpdateDelay(mc0Var.g);
+            extras.setTriggerContentMaxDelay(mc0Var.h);
+        }
+        extras.setPersisted(false);
+        int i6 = Build.VERSION.SDK_INT;
+        if (i6 >= 26) {
+            extras.setRequiresBatteryNotLow(mc0Var.e);
+            extras.setRequiresStorageNotLow(mc0Var.f);
+        }
+        boolean z3 = dd5Var.k > 0;
+        boolean z4 = jMax > 0;
+        if (i6 >= 31 && dd5Var.q && !z3 && !z4) {
+            extras.setExpedited(true);
+        }
+        if (i6 >= 35 && (str = dd5Var.x) != null) {
+            extras.setTraceTag(str);
+        }
+        JobInfo jobInfoBuild = extras.build();
+        String str3 = s;
+        cx.f().b(str3, "Scheduling work ID " + str2 + "Job ID " + i);
+        try {
+            try {
+                if (this.o.schedule(jobInfoBuild) != 0) {
+                    return;
+                }
+                cx.f().k(str3, "Unable to schedule work ID " + str2);
+                if (!dd5Var.q || dd5Var.r != 1) {
+                    return;
+                }
+                i3 = 0;
+                try {
+                    dd5Var.q = false;
+                    cx.f().b(str3, "Scheduling a non-expedited job (work ID " + str2 + ")");
+                    g(dd5Var, i);
+                    return;
+                } catch (IllegalStateException e) {
+                    e = e;
+                }
+            } catch (IllegalStateException e2) {
+                e = e2;
+                i3 = 0;
+            }
+        } catch (Throwable th) {
+            cx.f().e(str3, "Unable to schedule " + dd5Var, th);
+            return;
+        }
+        IllegalStateException illegalStateException = e;
+        String str4 = w22.a;
+        Context context = this.n;
+        context.getClass();
+        WorkDatabase workDatabase = this.q;
+        workDatabase.getClass();
+        r90 r90Var = this.r;
+        r90Var.getClass();
+        int i7 = Build.VERSION.SDK_INT;
+        int i8 = i7 >= 31 ? 150 : 100;
+        int size = workDatabase.A().f().size();
+        String strB0 = "<faulty JobScheduler failed to getPendingJobs>";
+        if (i7 >= 34) {
+            JobScheduler jobSchedulerA = w22.a(context);
+            try {
+                allPendingJobs = jobSchedulerA.getAllPendingJobs();
+                allPendingJobs.getClass();
+            } catch (Throwable th2) {
+                cx.f().e(w22.a, "getAllPendingJobs() is not reliable on this device.", th2);
+                allPendingJobs = null;
+            }
+            if (allPendingJobs != null) {
+                ArrayList arrayListB = b(context, jobSchedulerA);
+                int size2 = arrayListB != null ? allPendingJobs.size() - arrayListB.size() : i3;
+                String str5 = size2 == 0 ? null : size2 + " of which are not owned by WorkManager";
+                Object systemService = context.getSystemService("jobscheduler");
+                systemService.getClass();
+                ArrayList arrayListB2 = b(context, (JobScheduler) systemService);
+                int size3 = arrayListB2 != null ? arrayListB2.size() : i3;
+                strB0 = q40.B0(ti.i0(new String[]{allPendingJobs.size() + " jobs in \"androidx.work.systemjobscheduler\" namespace", str5, size3 != 0 ? size3 + " from WorkManager in the default namespace" : null}), ",\n", null, null, null, 62);
+            }
+        } else {
+            ArrayList arrayListB3 = b(context, w22.a(context));
+            if (arrayListB3 != null) {
+                strB0 = arrayListB3.size() + " jobs from WorkManager";
+            }
+        }
+        String str6 = "JobScheduler " + i8 + " job limit exceeded.\nIn JobScheduler there are " + strB0 + ".\nThere are " + size + " jobs tracked by WorkManager's database;\nthe Configuration limit is " + r90Var.k + '.';
+        cx.f().d(str3, str6);
+        mj0.j(str6, illegalStateException);
     }
 }

@@ -13,109 +13,125 @@ import java.util.concurrent.atomic.AtomicReference;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public abstract class vw {
-    public static final AtomicReference a = null;
+    public static final AtomicReference a = new AtomicReference();
 
-    static {
-        a = new AtomicReference();
+    public static MappedByteBuffer a(File file) throws Throwable {
+        Throwable th;
+        RandomAccessFile randomAccessFile;
+        FileChannel fileChannel = null;
+        try {
+            long length = file.length();
+            if (length > 2147483647L) {
+                throw new IOException("File too large to map into memory");
+            }
+            if (length == 0) {
+                throw new IOException("File unsuitable for memory mapping");
+            }
+            randomAccessFile = new RandomAccessFile(file, "r");
+            try {
+                FileChannel channel = randomAccessFile.getChannel();
+                try {
+                    MappedByteBuffer mappedByteBufferLoad = channel.map(FileChannel.MapMode.READ_ONLY, 0L, length).load();
+                    try {
+                        channel.close();
+                    } catch (IOException unused) {
+                    }
+                    try {
+                        randomAccessFile.close();
+                    } catch (IOException unused2) {
+                    }
+                    return mappedByteBufferLoad;
+                } catch (Throwable th2) {
+                    th = th2;
+                    fileChannel = channel;
+                    if (fileChannel != null) {
+                        try {
+                            fileChannel.close();
+                        } catch (IOException unused3) {
+                        }
+                    }
+                    if (randomAccessFile == null) {
+                        throw th;
+                    }
+                    try {
+                        randomAccessFile.close();
+                        throw th;
+                    } catch (IOException unused4) {
+                        throw th;
+                    }
+                }
+            } catch (Throwable th3) {
+                th = th3;
+            }
+        } catch (Throwable th4) {
+            th = th4;
+            randomAccessFile = null;
+        }
     }
 
-    public static MappedByteBuffer a(File r9) {
-        FileChannel r1 = null;
-        long r6 = r9.length();     // Catch: Throwable -> L17
-        if (r6 > 2147483647L) goto L22;
-        if (r6 == 0) goto L20;
-        RandomAccessFile r8 = new RandomAccessFile(r9, "r");     // Catch: Throwable -> L17
-        FileChannel r2 = r8.getChannel();     // Catch: Throwable -> L15
-        MappedByteBuffer r10 = r2.map(FileChannel.MapMode.READ_ONLY, 0, r6).load();     // Catch: Throwable -> L13
-        r2.close();     // Catch: IOException -> L28
-    L39:
-        r8.close();     // Catch: IOException -> L29
-    L12:
-        return r10;
-    L13:
-        th = move-exception;
-        Throwable r11 = th;
-        r1 = r2;
-    L23:
-        if (r1 != null) goto L41;
-    L25:
-        if (r8 == null) goto L45;
-        r8.close();     // Catch: IOException -> L31
-        throw r11;
-    L46:
-        throw r11;
-    L45:
-        throw r11;
-    L41:
-        r1.close();     // Catch: IOException -> L30
-    L15:
-        th = move-exception;
-        r11 = th;
-        goto L23
-    L20:
-        throw new IOException("File unsuitable for memory mapping");     // Catch: Throwable -> L17
-    L22:
-        throw new IOException("File too large to map into memory");     // Catch: Throwable -> L17
-    L17:
-        th = move-exception;
-        r11 = th;
-        r8 = null;
-        goto L23
+    public static ByteBuffer b(InputStream inputStream) throws IOException {
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream(16384);
+        AtomicReference atomicReference = a;
+        byte[] bArr = (byte[]) atomicReference.getAndSet(null);
+        if (bArr == null) {
+            bArr = new byte[16384];
+        }
+        while (true) {
+            int i = inputStream.read(bArr);
+            if (i < 0) {
+                atomicReference.set(bArr);
+                byte[] byteArray = byteArrayOutputStream.toByteArray();
+                return c(ByteBuffer.allocateDirect(byteArray.length).put(byteArray));
+            }
+            byteArrayOutputStream.write(bArr, 0, i);
+        }
     }
 
-    public static ByteBuffer b(InputStream r5) {
-        ByteArrayOutputStream r0 = new ByteArrayOutputStream(16384);
-        AtomicReference r3 = a;
-        byte[] r2 = (byte[]) r3.getAndSet(null);
-        if (r2 != null) goto L5;
-        r2 = new byte[16384];
-    L5:
-        int r1 = r5.read(r2);
-        if (r1 < 0) goto L8;
-        r0.write(r2, 0, r1);
-        goto L5
-    L8:
-        r3.set(r2);
-        byte[] r6 = r0.toByteArray();
-        return c(ByteBuffer.allocateDirect(r6.length).put(r6));
+    public static ByteBuffer c(ByteBuffer byteBuffer) {
+        return (ByteBuffer) byteBuffer.position(0);
     }
 
-    public static ByteBuffer c(ByteBuffer r1) {
-        return (ByteBuffer) r1.position(0);
-    }
-
-    public static void d(ByteBuffer r3, File r4) {
-        c(r3);
-        FileChannel r0 = null;
-        RandomAccessFile r1 = new RandomAccessFile(r4, "rw");     // Catch: Throwable -> L10
-        r0 = r1.getChannel();     // Catch: Throwable -> L8
-        r0.write(r3);     // Catch: Throwable -> L8
-        r0.force(false);     // Catch: Throwable -> L8
-        r0.close();     // Catch: Throwable -> L8
-        r1.close();     // Catch: Throwable -> L8
-        r0.close();     // Catch: IOException -> L17
-    L27:
-        r1.close();     // Catch: IOException -> L18
-        return;
-    L33:
-        return;
-    L8:
-        th = th;
-    L12:
-        if (r0 != null) goto L31;
-    L14:
-        if (r1 == null) goto L34;
-        r1.close();     // Catch: IOException -> L20
-        throw th;
-    L35:
-        throw th;
-    L34:
-        throw th;
-    L31:
-        r0.close();     // Catch: IOException -> L19
-    L10:
-        th = th;
-        r1 = null;
-        goto L12
+    public static void d(ByteBuffer byteBuffer, File file) throws Throwable {
+        RandomAccessFile randomAccessFile;
+        c(byteBuffer);
+        FileChannel channel = null;
+        try {
+            randomAccessFile = new RandomAccessFile(file, "rw");
+            try {
+                channel = randomAccessFile.getChannel();
+                channel.write(byteBuffer);
+                channel.force(false);
+                channel.close();
+                randomAccessFile.close();
+                try {
+                    channel.close();
+                } catch (IOException unused) {
+                }
+                try {
+                    randomAccessFile.close();
+                } catch (IOException unused2) {
+                }
+            } catch (Throwable th) {
+                th = th;
+                if (channel != null) {
+                    try {
+                        channel.close();
+                    } catch (IOException unused3) {
+                    }
+                }
+                if (randomAccessFile == null) {
+                    throw th;
+                }
+                try {
+                    randomAccessFile.close();
+                    throw th;
+                } catch (IOException unused4) {
+                    throw th;
+                }
+            }
+        } catch (Throwable th2) {
+            th = th2;
+            randomAccessFile = null;
+        }
     }
 }

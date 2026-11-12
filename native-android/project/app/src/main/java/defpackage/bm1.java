@@ -9,12 +9,12 @@ public final class bm1 {
     public final long d;
     public final long e;
 
-    public bm1(long r1, long r3, float r5, long r6, long r8) {
-        this.a = r1;
-        this.b = r3;
-        this.c = r5;
-        this.d = r6;
-        this.e = r8;
+    public bm1(long j, long j2, float f, long j3, long j4) {
+        this.a = j;
+        this.b = j2;
+        this.c = f;
+        this.d = j3;
+        this.e = j4;
     }
 
     public final String toString() {

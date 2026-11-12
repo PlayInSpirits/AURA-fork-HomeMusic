@@ -22,46 +22,42 @@ public final class k14 implements Closeable {
     public final long y;
     public final y10 z;
 
-    public k14(oz3 r1, pr3 r2, String r3, int r4, jl1 r5, tl1 r6, n14 r7, k14 r8, k14 r9, k14 r10, long r11, long r13, y10 r15, gf1 r16) {
-        r1.getClass();
-        r2.getClass();
-        r3.getClass();
-        r7.getClass();
-        r16.getClass();
-        this.n = r1;
-        this.o = r2;
-        this.p = r3;
-        this.q = r4;
-        this.r = r5;
-        this.s = r6;
-        this.t = r7;
-        this.u = r8;
-        this.v = r9;
-        this.w = r10;
-        this.x = r11;
-        this.y = r13;
-        this.z = r15;
-        this.A = r16;
-        boolean r12 = false;
-        if (200 <= r4) goto L5;
-    L7:
-        this.C = r12;
-        return;
-    L5:
-        if (r4 >= 300) goto L7;
-        r12 = true;
-        goto L7
+    public k14(oz3 oz3Var, pr3 pr3Var, String str, int i, jl1 jl1Var, tl1 tl1Var, n14 n14Var, k14 k14Var, k14 k14Var2, k14 k14Var3, long j, long j2, y10 y10Var, gf1 gf1Var) {
+        oz3Var.getClass();
+        pr3Var.getClass();
+        str.getClass();
+        n14Var.getClass();
+        gf1Var.getClass();
+        this.n = oz3Var;
+        this.o = pr3Var;
+        this.p = str;
+        this.q = i;
+        this.r = jl1Var;
+        this.s = tl1Var;
+        this.t = n14Var;
+        this.u = k14Var;
+        this.v = k14Var2;
+        this.w = k14Var3;
+        this.x = j;
+        this.y = j2;
+        this.z = y10Var;
+        this.A = gf1Var;
+        boolean z = false;
+        if (200 <= i && i < 300) {
+            z = true;
+        }
+        this.C = z;
     }
 
     public final ix b() {
-        ix r0 = this.B;
-        if (r0 != null) goto L6;
-        int r1 = ix.n;
-        ix r2 = au0.O(this.s);
-        this.B = r2;
-        return r2;
-    L6:
-        return r0;
+        ix ixVar = this.B;
+        if (ixVar != null) {
+            return ixVar;
+        }
+        int i = ix.n;
+        ix ixVarO = au0.O(this.s);
+        this.B = ixVarO;
+        return ixVarO;
     }
 
     @Override // java.io.Closeable, java.lang.AutoCloseable
@@ -70,25 +66,25 @@ public final class k14 implements Closeable {
     }
 
     public final j14 f() {
-        j14 r0 = new j14();
-        r0.c = -1;
-        r0.g = xe5.e;
-        r0.n = gq1.q;
-        r0.a = this.n;
-        r0.b = this.o;
-        r0.c = this.q;
-        r0.d = this.p;
-        r0.e = this.r;
-        r0.f = this.s.d();
-        r0.g = this.t;
-        r0.h = this.u;
-        r0.i = this.v;
-        r0.j = this.w;
-        r0.k = this.x;
-        r0.l = this.y;
-        r0.m = this.z;
-        r0.n = this.A;
-        return r0;
+        j14 j14Var = new j14();
+        j14Var.c = -1;
+        j14Var.g = xe5.e;
+        j14Var.n = gq1.q;
+        j14Var.a = this.n;
+        j14Var.b = this.o;
+        j14Var.c = this.q;
+        j14Var.d = this.p;
+        j14Var.e = this.r;
+        j14Var.f = this.s.d();
+        j14Var.g = this.t;
+        j14Var.h = this.u;
+        j14Var.i = this.v;
+        j14Var.j = this.w;
+        j14Var.k = this.x;
+        j14Var.l = this.y;
+        j14Var.m = this.z;
+        j14Var.n = this.A;
+        return j14Var;
     }
 
     public final String toString() {

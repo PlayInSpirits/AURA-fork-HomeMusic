@@ -9,257 +9,243 @@ import android.view.ViewGroup;
 public final class ib3 extends qz0 {
     public final /* synthetic */ int d;
 
-    public /* synthetic */ ib3(mw3 r1, int r2) {
-        this.d = r2;
-        super(r1);
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public /* synthetic */ ib3(mw3 mw3Var, int i) {
+        super(mw3Var);
+        this.d = i;
     }
 
     @Override // defpackage.qz0
-    public final int d(View r2) {
-        int r0 = this.d;
-        Object r1 = this.b;
-        switch(r0) {
-            case 0: goto L7;
-            default: goto L4;
-        };
-    L4:
-        nw3 r3 = (nw3) r2.getLayoutParams();
-        ((mw3) r1).getClass();
-        int r4 = mw3.y(r2);
-        int r5 = ((ViewGroup.MarginLayoutParams) r3).bottomMargin;
-    L6:
-        return r4 + r5;
-    L7:
-        nw3 r6 = (nw3) r2.getLayoutParams();
-        ((mw3) r1).getClass();
-        r4 = mw3.B(r2);
-        r5 = ((ViewGroup.MarginLayoutParams) r6).rightMargin;
-        goto L6
+    public final int d(View view) {
+        int iB;
+        int i;
+        int i2 = this.d;
+        Object obj = this.b;
+        switch (i2) {
+            case 0:
+                nw3 nw3Var = (nw3) view.getLayoutParams();
+                ((mw3) obj).getClass();
+                iB = mw3.B(view);
+                i = ((ViewGroup.MarginLayoutParams) nw3Var).rightMargin;
+                break;
+            default:
+                nw3 nw3Var2 = (nw3) view.getLayoutParams();
+                ((mw3) obj).getClass();
+                iB = mw3.y(view);
+                i = ((ViewGroup.MarginLayoutParams) nw3Var2).bottomMargin;
+                break;
+        }
+        return iB + i;
     }
 
     @Override // defpackage.qz0
-    public final int e(View r3) {
-        int r0 = this.d;
-        Object r2 = this.b;
-        switch(r0) {
-            case 0: goto L7;
-            default: goto L4;
-        };
-    L4:
-        nw3 r1 = (nw3) r3.getLayoutParams();
-        ((mw3) r2).getClass();
-        Rect r4 = ((nw3) r3.getLayoutParams()).b;
-        int r5 = ((r3.getMeasuredHeight() + r4.top) + r4.bottom) + ((ViewGroup.MarginLayoutParams) r1).topMargin;
-        int r6 = ((ViewGroup.MarginLayoutParams) r1).bottomMargin;
-    L6:
-        return r5 + r6;
-    L7:
-        nw3 r7 = (nw3) r3.getLayoutParams();
-        ((mw3) r2).getClass();
-        Rect r8 = ((nw3) r3.getLayoutParams()).b;
-        r5 = ((r3.getMeasuredWidth() + r8.left) + r8.right) + ((ViewGroup.MarginLayoutParams) r7).leftMargin;
-        r6 = ((ViewGroup.MarginLayoutParams) r7).rightMargin;
-        goto L6
+    public final int e(View view) {
+        int measuredWidth;
+        int i;
+        int i2 = this.d;
+        Object obj = this.b;
+        switch (i2) {
+            case 0:
+                nw3 nw3Var = (nw3) view.getLayoutParams();
+                ((mw3) obj).getClass();
+                Rect rect = ((nw3) view.getLayoutParams()).b;
+                measuredWidth = view.getMeasuredWidth() + rect.left + rect.right + ((ViewGroup.MarginLayoutParams) nw3Var).leftMargin;
+                i = ((ViewGroup.MarginLayoutParams) nw3Var).rightMargin;
+                break;
+            default:
+                nw3 nw3Var2 = (nw3) view.getLayoutParams();
+                ((mw3) obj).getClass();
+                Rect rect2 = ((nw3) view.getLayoutParams()).b;
+                measuredWidth = view.getMeasuredHeight() + rect2.top + rect2.bottom + ((ViewGroup.MarginLayoutParams) nw3Var2).topMargin;
+                i = ((ViewGroup.MarginLayoutParams) nw3Var2).bottomMargin;
+                break;
+        }
+        return measuredWidth + i;
     }
 
     @Override // defpackage.qz0
-    public final int f(View r3) {
-        int r0 = this.d;
-        Object r2 = this.b;
-        switch(r0) {
-            case 0: goto L7;
-            default: goto L4;
-        };
-    L4:
-        nw3 r1 = (nw3) r3.getLayoutParams();
-        ((mw3) r2).getClass();
-        Rect r4 = ((nw3) r3.getLayoutParams()).b;
-        int r5 = ((r3.getMeasuredWidth() + r4.left) + r4.right) + ((ViewGroup.MarginLayoutParams) r1).leftMargin;
-        int r6 = ((ViewGroup.MarginLayoutParams) r1).rightMargin;
-    L6:
-        return r5 + r6;
-    L7:
-        nw3 r7 = (nw3) r3.getLayoutParams();
-        ((mw3) r2).getClass();
-        Rect r8 = ((nw3) r3.getLayoutParams()).b;
-        r5 = ((r3.getMeasuredHeight() + r8.top) + r8.bottom) + ((ViewGroup.MarginLayoutParams) r7).topMargin;
-        r6 = ((ViewGroup.MarginLayoutParams) r7).bottomMargin;
-        goto L6
+    public final int f(View view) {
+        int measuredHeight;
+        int i;
+        int i2 = this.d;
+        Object obj = this.b;
+        switch (i2) {
+            case 0:
+                nw3 nw3Var = (nw3) view.getLayoutParams();
+                ((mw3) obj).getClass();
+                Rect rect = ((nw3) view.getLayoutParams()).b;
+                measuredHeight = view.getMeasuredHeight() + rect.top + rect.bottom + ((ViewGroup.MarginLayoutParams) nw3Var).topMargin;
+                i = ((ViewGroup.MarginLayoutParams) nw3Var).bottomMargin;
+                break;
+            default:
+                nw3 nw3Var2 = (nw3) view.getLayoutParams();
+                ((mw3) obj).getClass();
+                Rect rect2 = ((nw3) view.getLayoutParams()).b;
+                measuredHeight = view.getMeasuredWidth() + rect2.left + rect2.right + ((ViewGroup.MarginLayoutParams) nw3Var2).leftMargin;
+                i = ((ViewGroup.MarginLayoutParams) nw3Var2).rightMargin;
+                break;
+        }
+        return measuredHeight + i;
     }
 
     @Override // defpackage.qz0
-    public final int g(View r2) {
-        int r0 = this.d;
-        Object r1 = this.b;
-        switch(r0) {
-            case 0: goto L7;
-            default: goto L4;
-        };
-    L4:
-        nw3 r3 = (nw3) r2.getLayoutParams();
-        ((mw3) r1).getClass();
-        int r4 = mw3.C(r2);
-        int r5 = ((ViewGroup.MarginLayoutParams) r3).topMargin;
-    L6:
-        return r4 - r5;
-    L7:
-        nw3 r6 = (nw3) r2.getLayoutParams();
-        ((mw3) r1).getClass();
-        r4 = mw3.A(r2);
-        r5 = ((ViewGroup.MarginLayoutParams) r6).leftMargin;
-        goto L6
+    public final int g(View view) {
+        int iA;
+        int i;
+        int i2 = this.d;
+        Object obj = this.b;
+        switch (i2) {
+            case 0:
+                nw3 nw3Var = (nw3) view.getLayoutParams();
+                ((mw3) obj).getClass();
+                iA = mw3.A(view);
+                i = ((ViewGroup.MarginLayoutParams) nw3Var).leftMargin;
+                break;
+            default:
+                nw3 nw3Var2 = (nw3) view.getLayoutParams();
+                ((mw3) obj).getClass();
+                iA = mw3.C(view);
+                i = ((ViewGroup.MarginLayoutParams) nw3Var2).topMargin;
+                break;
+        }
+        return iA - i;
     }
 
     @Override // defpackage.qz0
     public final int h() {
-        switch(this.d) {
-            case 0: goto L7;
-            default: goto L5;
-        };
-    L5:
-        return ((mw3) this.b).o;
-    L7:
-        return ((mw3) this.b).n;
+        switch (this.d) {
+            case 0:
+                return ((mw3) this.b).n;
+            default:
+                return ((mw3) this.b).o;
+        }
     }
 
     @Override // defpackage.qz0
     public final int i() {
-        int r0 = this.d;
-        Object r1 = this.b;
-        switch(r0) {
-            case 0: goto L7;
-            default: goto L4;
-        };
-    L4:
-        mw3 r2 = (mw3) r1;
-        int r3 = r2.o;
-        int r4 = r2.E();
-    L6:
-        return r3 - r4;
-    L7:
-        mw3 r5 = (mw3) r1;
-        r3 = r5.n;
-        r4 = r5.G();
-        goto L6
+        int i;
+        int iG;
+        int i2 = this.d;
+        Object obj = this.b;
+        switch (i2) {
+            case 0:
+                mw3 mw3Var = (mw3) obj;
+                i = mw3Var.n;
+                iG = mw3Var.G();
+                break;
+            default:
+                mw3 mw3Var2 = (mw3) obj;
+                i = mw3Var2.o;
+                iG = mw3Var2.E();
+                break;
+        }
+        return i - iG;
     }
 
     @Override // defpackage.qz0
     public final int j() {
-        switch(this.d) {
-            case 0: goto L7;
-            default: goto L5;
-        };
-    L5:
-        return ((mw3) this.b).E();
-    L7:
-        return ((mw3) this.b).G();
+        switch (this.d) {
+            case 0:
+                return ((mw3) this.b).G();
+            default:
+                return ((mw3) this.b).E();
+        }
     }
 
     @Override // defpackage.qz0
     public final int k() {
-        switch(this.d) {
-            case 0: goto L7;
-            default: goto L5;
-        };
-    L5:
-        return ((mw3) this.b).m;
-    L7:
-        return ((mw3) this.b).l;
+        switch (this.d) {
+            case 0:
+                return ((mw3) this.b).l;
+            default:
+                return ((mw3) this.b).m;
+        }
     }
 
     @Override // defpackage.qz0
     public final int l() {
-        switch(this.d) {
-            case 0: goto L7;
-            default: goto L5;
-        };
-    L5:
-        return ((mw3) this.b).l;
-    L7:
-        return ((mw3) this.b).m;
+        switch (this.d) {
+            case 0:
+                return ((mw3) this.b).m;
+            default:
+                return ((mw3) this.b).l;
+        }
     }
 
     @Override // defpackage.qz0
     public final int m() {
-        switch(this.d) {
-            case 0: goto L7;
-            default: goto L5;
-        };
-    L5:
-        return ((mw3) this.b).H();
-    L7:
-        return ((mw3) this.b).F();
+        switch (this.d) {
+            case 0:
+                return ((mw3) this.b).F();
+            default:
+                return ((mw3) this.b).H();
+        }
     }
 
     @Override // defpackage.qz0
     public final int n() {
-        int r0 = this.d;
-        Object r2 = this.b;
-        switch(r0) {
-            case 0: goto L7;
-            default: goto L4;
-        };
-    L4:
-        mw3 r3 = (mw3) r2;
-        int r1 = r3.o - r3.H();
-        int r4 = r3.E();
-    L6:
-        return r1 - r4;
-    L7:
-        mw3 r5 = (mw3) r2;
-        r1 = r5.n - r5.F();
-        r4 = r5.G();
-        goto L6
+        int iF;
+        int iG;
+        int i = this.d;
+        Object obj = this.b;
+        switch (i) {
+            case 0:
+                mw3 mw3Var = (mw3) obj;
+                iF = mw3Var.n - mw3Var.F();
+                iG = mw3Var.G();
+                break;
+            default:
+                mw3 mw3Var2 = (mw3) obj;
+                iF = mw3Var2.o - mw3Var2.H();
+                iG = mw3Var2.E();
+                break;
+        }
+        return iF - iG;
     }
 
     @Override // defpackage.qz0
-    public final int o(View r3) {
-        int r0 = this.d;
-        Object r1 = this.c;
-        Object r2 = this.b;
-        switch(r0) {
-            case 0: goto L6;
-            default: goto L4;
-        };
-    L4:
-        Rect r4 = (Rect) r1;
-        ((mw3) r2).L(r3, r4);
-        return r4.bottom;
-    L6:
-        Rect r5 = (Rect) r1;
-        ((mw3) r2).L(r3, r5);
-        return r5.right;
+    public final int o(View view) {
+        int i = this.d;
+        Object obj = this.c;
+        Object obj2 = this.b;
+        switch (i) {
+            case 0:
+                Rect rect = (Rect) obj;
+                ((mw3) obj2).L(view, rect);
+                return rect.right;
+            default:
+                Rect rect2 = (Rect) obj;
+                ((mw3) obj2).L(view, rect2);
+                return rect2.bottom;
+        }
     }
 
     @Override // defpackage.qz0
-    public final int p(View r3) {
-        int r0 = this.d;
-        Object r1 = this.c;
-        Object r2 = this.b;
-        switch(r0) {
-            case 0: goto L6;
-            default: goto L4;
-        };
-    L4:
-        Rect r4 = (Rect) r1;
-        ((mw3) r2).L(r3, r4);
-        return r4.top;
-    L6:
-        Rect r5 = (Rect) r1;
-        ((mw3) r2).L(r3, r5);
-        return r5.left;
+    public final int p(View view) {
+        int i = this.d;
+        Object obj = this.c;
+        Object obj2 = this.b;
+        switch (i) {
+            case 0:
+                Rect rect = (Rect) obj;
+                ((mw3) obj2).L(view, rect);
+                return rect.left;
+            default:
+                Rect rect2 = (Rect) obj;
+                ((mw3) obj2).L(view, rect2);
+                return rect2.top;
+        }
     }
 
     @Override // defpackage.qz0
-    public final void q(int r2) {
-        switch(this.d) {
-            case 0: goto L6;
-            default: goto L4;
-        };
-    L4:
-        ((mw3) this.b).R(r2);
-        return;
-    L6:
-        ((mw3) this.b).Q(r2);
+    public final void q(int i) {
+        switch (this.d) {
+            case 0:
+                ((mw3) this.b).Q(i);
+                break;
+            default:
+                ((mw3) this.b).R(i);
+                break;
+        }
     }
 }

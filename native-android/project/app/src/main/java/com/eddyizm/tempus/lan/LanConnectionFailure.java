@@ -7,8 +7,8 @@ import defpackage.r42;
 public final class LanConnectionFailure extends Exception {
     public final r42 n;
 
-    public LanConnectionFailure(r42 r1, Exception r2) {
-        super(r2);
-        this.n = r1;
+    public LanConnectionFailure(r42 r42Var, Exception exc) {
+        super(exc);
+        this.n = r42Var;
     }
 }

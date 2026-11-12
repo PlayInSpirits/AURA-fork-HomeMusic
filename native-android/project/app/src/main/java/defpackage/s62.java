@@ -7,42 +7,31 @@ public final class s62 {
     public final int b;
     public final boolean c;
 
-    public s62(int r1, int r2, boolean r3) {
-        this.a = r1;
-        this.b = r2;
-        this.c = r3;
+    public s62(int i, int i2, boolean z) {
+        this.a = i;
+        this.b = i2;
+        this.c = z;
     }
 
-    public final boolean equals(Object r5) {
-        if (this != r5) goto L6;
-        return true;
-    L6:
-        if ((r5 instanceof s62) == true) goto L8;
-        return false;
-    L8:
-        s62 r6 = (s62) r5;
-        if (this.a == r6.a) goto L12;
-        return false;
-    L12:
-        if (this.b == r6.b) goto L15;
-        return false;
-    L15:
-        if (this.c == r6.c) goto L17;
-        return false;
-    L17:
-        return true;
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof s62)) {
+            return false;
+        }
+        s62 s62Var = (s62) obj;
+        return this.a == s62Var.a && this.b == s62Var.b && this.c == s62Var.c;
     }
 
     public final int hashCode() {
-        int r0 = Integer.hashCode(this.a) * 31;
-        int r1 = f34.d(this.b, r0, 31);
-        return Boolean.hashCode(this.c) + r1;
+        return Boolean.hashCode(this.c) + f34.d(this.b, Integer.hashCode(this.a) * 31, 31);
     }
 
     public final String toString() {
-        StringBuilder r0 = b11.t("BidiRun(start=", ", end=", this.a, this.b, ", isRtl=");
-        r0.append(this.c);
-        r0.append(")");
-        return r0.toString();
+        StringBuilder sbT = b11.t("BidiRun(start=", ", end=", this.a, this.b, ", isRtl=");
+        sbT.append(this.c);
+        sbT.append(")");
+        return sbT.toString();
     }
 }

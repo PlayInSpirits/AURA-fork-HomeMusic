@@ -6,48 +6,36 @@ public final class q45 implements Comparable {
     public final String n;
 
     public q45() {
-        if ("1.15.0".matches("\\d+(\\.\\d+)*") == false) goto L6;
-        this.n = "1.15.0";
-        return;
-    L6:
-        kf2.n("Invalid version format");
-        throw null;
+        if ("1.15.0".matches("\\d+(\\.\\d+)*")) {
+            this.n = "1.15.0";
+        } else {
+            kf2.n("Invalid version format");
+            throw null;
+        }
     }
 
     @Override // java.lang.Comparable
-    public final int compareTo(Object r6) {
-        q45 r7 = (q45) r6;
-        if (r7 == null) goto L19;
-        String[] r5 = this.n.split("\\.");
-        String[] r8 = r7.n.split("\\.");
-        int r0 = Math.max(r5.length, r8.length);
-        int r2 = 0;
-    L6:
-        if (r2 >= r0) goto L22;
-        if (r2 >= r5.length) goto L10;
-        int r3 = Integer.parseInt(r5[r2]);
-    L12:
-        if (r2 >= r8.length) goto L14;
-        int r4 = Integer.parseInt(r8[r2]);
-    L15:
-        if (r3 < r4) goto L16;
-        if (r3 > r4) goto L26;
-        r2 = r2 + 1;
-        goto L6
-    L26:
-        return 1;
-    L16:
-        return -1;
-    L14:
-        r4 = 0;
-        goto L15
-    L10:
-        r3 = 0;
-        goto L12
-    L22:
+    public final int compareTo(Object obj) {
+        q45 q45Var = (q45) obj;
+        if (q45Var == null) {
+            return 1;
+        }
+        String[] strArrSplit = this.n.split("\\.");
+        String[] strArrSplit2 = q45Var.n.split("\\.");
+        int iMax = Math.max(strArrSplit.length, strArrSplit2.length);
+        int i = 0;
+        while (i < iMax) {
+            int i2 = i < strArrSplit.length ? Integer.parseInt(strArrSplit[i]) : 0;
+            int i3 = i < strArrSplit2.length ? Integer.parseInt(strArrSplit2[i]) : 0;
+            if (i2 < i3) {
+                return -1;
+            }
+            if (i2 > i3) {
+                return 1;
+            }
+            i++;
+        }
         return 0;
-    L19:
-        return 1;
     }
 
     public final String toString() {

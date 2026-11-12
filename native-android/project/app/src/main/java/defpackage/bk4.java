@@ -6,17 +6,15 @@ public final class bk4 {
     public float a;
     public double b;
 
-    public final long a(float r7, float r8, long r9) {
-        float r10 = r7 - this.a;
-        double r11 = r9 / 1000.0d;
-        double r0 = this.b;
-        double r12 = r10;
-        double r4 = (r0 * r12) + ((double) r8);
-        double r1 = (-r0) * r11;
-        double r13 = (r11 * r4) + r12;
-        double r14 = Math.exp(r1) * r13;
-        double r15 = (Math.exp(r1) * r4) + ((Math.exp(r1) * r13) * (-this.b));
-        long r16 = Float.floatToRawIntBits((float) (r14 + ((double) this.a)));
-        return (((long) Float.floatToRawIntBits((float) r15)) & 4294967295L) | (r16 << 32);
+    public final long a(float f, float f2, long j) {
+        float f3 = f - this.a;
+        double d = j / 1000.0d;
+        double d2 = this.b;
+        double d3 = f3;
+        double d4 = (d2 * d3) + ((double) f2);
+        double d5 = (-d2) * d;
+        double d6 = (d * d4) + d3;
+        double dExp = Math.exp(d5) * d6;
+        return (((long) Float.floatToRawIntBits((float) ((Math.exp(d5) * d4) + (Math.exp(d5) * d6 * (-this.b))))) & 4294967295L) | (Float.floatToRawIntBits((float) (dExp + ((double) this.a))) << 32);
     }
 }

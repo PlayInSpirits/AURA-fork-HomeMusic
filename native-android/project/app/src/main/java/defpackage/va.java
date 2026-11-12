@@ -10,12 +10,12 @@ public final class va {
     public final int e;
     public final long f;
 
-    public va(i94 r1, int r2, int r3, int r4, int r5, long r6) {
-        this.a = r1;
-        this.b = r2;
-        this.c = r3;
-        this.d = r4;
-        this.e = r5;
-        this.f = r6;
+    public va(i94 i94Var, int i, int i2, int i3, int i4, long j) {
+        this.a = i94Var;
+        this.b = i;
+        this.c = i2;
+        this.d = i3;
+        this.e = i4;
+        this.f = j;
     }
 }

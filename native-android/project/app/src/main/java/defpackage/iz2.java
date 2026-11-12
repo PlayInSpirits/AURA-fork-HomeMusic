@@ -5,7 +5,7 @@ package defpackage;
 public final class iz2 implements jz2 {
     public final y94 a;
 
-    public iz2(y94 r1) {
-        this.a = r1;
+    public iz2(y94 y94Var) {
+        this.a = y94Var;
     }
 }

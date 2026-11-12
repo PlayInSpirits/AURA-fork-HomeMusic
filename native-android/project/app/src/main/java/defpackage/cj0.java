@@ -7,7 +7,7 @@ import java.nio.ByteBuffer;
 /* JADX INFO: loaded from: classes.dex */
 public class cj0 extends uv {
     public tb1 p;
-    public final fg0 q;
+    public final fg0 q = new fg0();
     public ByteBuffer r;
     public boolean s;
     public long t;
@@ -19,74 +19,67 @@ public class cj0 extends uv {
         hn2.a("media3.decoder");
     }
 
-    public cj0(int r2, int r3) {
-        this.q = new fg0();
-        this.v = r2;
-        this.w = r3;
+    public cj0(int i, int i2) {
+        this.v = i;
+        this.w = i2;
     }
 
     public void r() {
         this.o = 0;
-        ByteBuffer r1 = this.r;
-        if (r1 == null) goto L5;
-        r1.clear();
-    L5:
-        ByteBuffer r2 = this.u;
-        if (r2 == null) goto L8;
-        r2.clear();
-    L8:
+        ByteBuffer byteBuffer = this.r;
+        if (byteBuffer != null) {
+            byteBuffer.clear();
+        }
+        ByteBuffer byteBuffer2 = this.u;
+        if (byteBuffer2 != null) {
+            byteBuffer2.clear();
+        }
         this.s = false;
     }
 
-    public final ByteBuffer s(int r5) {
-        int r1 = this.v;
-        if (r1 != 1) goto L7;
-        return ByteBuffer.allocate(r5);
-    L7:
-        if (r1 == 2) goto L9;
-        ByteBuffer r4 = this.r;
-        if (r4 != null) goto L13;
-        int r6 = 0;
-    L15:
-        throw new DecoderInputBuffer$InsufficientCapacityException(b11.n("Buffer too small (", " < ", r6, r5, ")"));
-    L13:
-        r6 = r4.capacity();
-        goto L15
-    L9:
-        return ByteBuffer.allocateDirect(r5);
+    public final ByteBuffer s(int i) {
+        int i2 = this.v;
+        if (i2 == 1) {
+            return ByteBuffer.allocate(i);
+        }
+        if (i2 == 2) {
+            return ByteBuffer.allocateDirect(i);
+        }
+        ByteBuffer byteBuffer = this.r;
+        throw new DecoderInputBuffer$InsufficientCapacityException(b11.n("Buffer too small (", " < ", byteBuffer == null ? 0 : byteBuffer.capacity(), i, ")"));
     }
 
-    public final void t(int r4) {
-        int r5 = r4 + this.w;
-        ByteBuffer r0 = this.r;
-        if (r0 != null) goto L6;
-        this.r = s(r5);
-        return;
-    L6:
-        int r1 = r0.capacity();
-        int r2 = r0.position();
-        int r6 = r5 + r2;
-        if (r1 < r6) goto L10;
-        this.r = r0;
-        return;
-    L10:
-        ByteBuffer r7 = s(r6);
-        r7.order(r0.order());
-        if (r2 <= 0) goto L13;
-        r0.flip();
-        r7.put(r0);
-    L13:
-        this.r = r7;
+    public final void t(int i) {
+        int i2 = i + this.w;
+        ByteBuffer byteBuffer = this.r;
+        if (byteBuffer == null) {
+            this.r = s(i2);
+            return;
+        }
+        int iCapacity = byteBuffer.capacity();
+        int iPosition = byteBuffer.position();
+        int i3 = i2 + iPosition;
+        if (iCapacity >= i3) {
+            this.r = byteBuffer;
+            return;
+        }
+        ByteBuffer byteBufferS = s(i3);
+        byteBufferS.order(byteBuffer.order());
+        if (iPosition > 0) {
+            byteBuffer.flip();
+            byteBufferS.put(byteBuffer);
+        }
+        this.r = byteBufferS;
     }
 
     public final void u() {
-        ByteBuffer r0 = this.r;
-        if (r0 == null) goto L5;
-        r0.flip();
-    L5:
-        ByteBuffer r1 = this.u;
-        if (r1 == null) goto L9;
-        r1.flip();
-        return;
+        ByteBuffer byteBuffer = this.r;
+        if (byteBuffer != null) {
+            byteBuffer.flip();
+        }
+        ByteBuffer byteBuffer2 = this.u;
+        if (byteBuffer2 != null) {
+            byteBuffer2.flip();
+        }
     }
 }

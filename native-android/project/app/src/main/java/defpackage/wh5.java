@@ -10,31 +10,25 @@ import java.util.Spliterators;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public abstract class wh5 extends AbstractCollection implements Serializable {
-    public static final Object[] n = null;
+    public static final Object[] n = new Object[0];
 
-    static {
-        n = new Object[0];
-    }
-
-    public int a(Object[] r4) {
-        o15 r3 = e();
-        int r0 = 0;
-    L4:
-        if (r3.hasNext() == false) goto L6;
-        r4[r0] = r3.next();
-        r0 = r0 + 1;
-        goto L4
-    L6:
-        return r0;
+    public int a(Object[] objArr) {
+        o15 o15VarE = e();
+        int i = 0;
+        while (o15VarE.hasNext()) {
+            objArr[i] = o15VarE.next();
+            i++;
+        }
+        return i;
     }
 
     @Override // java.util.AbstractCollection, java.util.Collection
-    public final boolean add(Object r1) {
+    public final boolean add(Object obj) {
         throw new UnsupportedOperationException();
     }
 
     @Override // java.util.AbstractCollection, java.util.Collection
-    public final boolean addAll(Collection r1) {
+    public final boolean addAll(Collection collection) {
         throw new UnsupportedOperationException();
     }
 
@@ -58,17 +52,17 @@ public abstract class wh5 extends AbstractCollection implements Serializable {
     }
 
     @Override // java.util.AbstractCollection, java.util.Collection
-    public final boolean remove(Object r1) {
+    public final boolean remove(Object obj) {
         throw new UnsupportedOperationException();
     }
 
     @Override // java.util.AbstractCollection, java.util.Collection
-    public final boolean removeAll(Collection r1) {
+    public final boolean removeAll(Collection collection) {
         throw new UnsupportedOperationException();
     }
 
     @Override // java.util.AbstractCollection, java.util.Collection
-    public final boolean retainAll(Collection r1) {
+    public final boolean retainAll(Collection collection) {
         throw new UnsupportedOperationException();
     }
 
@@ -78,26 +72,24 @@ public abstract class wh5 extends AbstractCollection implements Serializable {
     }
 
     @Override // java.util.AbstractCollection, java.util.Collection
-    public final Object[] toArray(Object[] r4) {
-        r4.getClass();
-        int r0 = size();
-        int r1 = r4.length;
-        if (r1 >= r0) goto L11;
-        Object[] r2 = f();
-        if (r2 != null) goto L10;
-        if (r1 == 0) goto L8;
-        r4 = Arrays.copyOf(r4, 0);
-    L8:
-        r4 = Arrays.copyOf(r4, r0);
-    L13:
-        a(r4);
-        return r4;
-    L10:
-        return Arrays.copyOfRange(r2, d(), b(), r4.getClass());
-    L11:
-        if (r1 <= r0) goto L13;
-        r4[r0] = null;
-        goto L13
+    public final Object[] toArray(Object[] objArr) {
+        objArr.getClass();
+        int size = size();
+        int length = objArr.length;
+        if (length < size) {
+            Object[] objArrF = f();
+            if (objArrF != null) {
+                return Arrays.copyOfRange(objArrF, d(), b(), objArr.getClass());
+            }
+            if (length != 0) {
+                objArr = Arrays.copyOf(objArr, 0);
+            }
+            objArr = Arrays.copyOf(objArr, size);
+        } else if (length > size) {
+            objArr[size] = null;
+        }
+        a(objArr);
+        return objArr;
     }
 
     @Override // java.util.AbstractCollection, java.util.Collection

@@ -11,29 +11,28 @@ public final /* synthetic */ class wt2 implements Runnable {
     public final /* synthetic */ ed2 q;
     public final /* synthetic */ un2 r;
 
-    public /* synthetic */ wt2(zt2 r1, Pair r2, ed2 r3, un2 r4, int r5) {
-        this.n = r5;
-        this.o = r1;
-        this.p = r2;
-        this.q = r3;
-        this.r = r4;
+    public /* synthetic */ wt2(zt2 zt2Var, Pair pair, ed2 ed2Var, un2 un2Var, int i) {
+        this.n = i;
+        this.o = zt2Var;
+        this.p = pair;
+        this.q = ed2Var;
+        this.r = un2Var;
     }
 
     @Override // java.lang.Runnable
     public final void run() {
-        int r0 = this.n;
-        un2 r1 = this.r;
-        ed2 r2 = this.q;
-        Pair r3 = this.p;
-        zt2 r4 = this.o;
-        switch(r0) {
-            case 0: goto L6;
-            default: goto L4;
-        };
-    L4:
-        ((nj0) r4.o.i).w(((Integer) r3.first).intValue(), (mt2) r3.second, r2, r1);
-        return;
-    L6:
-        ((nj0) r4.o.i).u(((Integer) r3.first).intValue(), (mt2) r3.second, r2, r1);
+        int i = this.n;
+        un2 un2Var = this.r;
+        ed2 ed2Var = this.q;
+        Pair pair = this.p;
+        zt2 zt2Var = this.o;
+        switch (i) {
+            case 0:
+                ((nj0) zt2Var.o.i).u(((Integer) pair.first).intValue(), (mt2) pair.second, ed2Var, un2Var);
+                break;
+            default:
+                ((nj0) zt2Var.o.i).w(((Integer) pair.first).intValue(), (mt2) pair.second, ed2Var, un2Var);
+                break;
+        }
     }
 }

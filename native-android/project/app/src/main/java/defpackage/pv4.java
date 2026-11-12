@@ -16,24 +16,22 @@ public final class pv4 {
     public final int k;
     public final qv4[] l;
 
-    public pv4(int r1, int r2, long r3, long r5, long r7, long r9, tb1 r11, int r12, qv4[] r13, int r14, long[] r15, long[] r16) {
-        this.a = r1;
-        this.b = r2;
-        this.c = r3;
-        this.d = r5;
-        this.e = r7;
-        this.f = r9;
-        this.g = r11;
-        this.h = r12;
-        this.l = r13;
-        this.k = r14;
-        this.i = r15;
-        this.j = r16;
+    public pv4(int i, int i2, long j, long j2, long j3, long j4, tb1 tb1Var, int i3, qv4[] qv4VarArr, int i4, long[] jArr, long[] jArr2) {
+        this.a = i;
+        this.b = i2;
+        this.c = j;
+        this.d = j2;
+        this.e = j3;
+        this.f = j4;
+        this.g = tb1Var;
+        this.h = i3;
+        this.l = qv4VarArr;
+        this.k = i4;
+        this.i = jArr;
+        this.j = jArr2;
     }
 
-    public final pv4 a(tb1 r18) {
-        long[] r15 = this.i;
-        long[] r2 = this.j;
-        return new pv4(this.a, this.b, this.c, this.d, this.e, this.f, r18, this.h, this.l, this.k, r15, r2);
+    public final pv4 a(tb1 tb1Var) {
+        return new pv4(this.a, this.b, this.c, this.d, this.e, this.f, tb1Var, this.h, this.l, this.k, this.i, this.j);
     }
 }

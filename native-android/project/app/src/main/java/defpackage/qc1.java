@@ -15,53 +15,51 @@ public final class qc1 extends AnimationSet implements Runnable {
     public boolean q;
     public boolean r;
 
-    public qc1(Animation r2, ViewGroup r3, View r4) {
+    public qc1(Animation animation, ViewGroup viewGroup, View view) {
         super(false);
         this.r = true;
-        this.n = r3;
-        this.o = r4;
-        addAnimation(r2);
-        r3.post(this);
+        this.n = viewGroup;
+        this.o = view;
+        addAnimation(animation);
+        viewGroup.post(this);
     }
 
     @Override // android.view.animation.AnimationSet, android.view.animation.Animation
-    public final boolean getTransformation(long r3, Transformation r5) {
+    public final boolean getTransformation(long j, Transformation transformation) {
         this.r = true;
-        if (this.p == false) goto L7;
-        return !this.q;
-    L7:
-        if (super.getTransformation(r3, r5) == true) goto L9;
-        this.p = true;
-        h93.a(this.n, this);
-    L9:
+        if (this.p) {
+            return !this.q;
+        }
+        if (!super.getTransformation(j, transformation)) {
+            this.p = true;
+            h93.a(this.n, this);
+        }
         return true;
     }
 
     @Override // java.lang.Runnable
     public final void run() {
-        boolean r0 = this.p;
-        ViewGroup r1 = this.n;
-        if (r0 == false) goto L5;
-    L8:
-        r1.endViewTransition(this.o);
-        this.q = true;
-        return;
-    L5:
-        if (this.r == false) goto L8;
-        this.r = false;
-        r1.post(this);
+        boolean z = this.p;
+        ViewGroup viewGroup = this.n;
+        if (z || !this.r) {
+            viewGroup.endViewTransition(this.o);
+            this.q = true;
+        } else {
+            this.r = false;
+            viewGroup.post(this);
+        }
     }
 
     @Override // android.view.animation.Animation
-    public final boolean getTransformation(long r3, Transformation r5, float r6) {
+    public final boolean getTransformation(long j, Transformation transformation, float f) {
         this.r = true;
-        if (this.p == false) goto L7;
-        return !this.q;
-    L7:
-        if (super.getTransformation(r3, r5, r6) == true) goto L9;
-        this.p = true;
-        h93.a(this.n, this);
-    L9:
+        if (this.p) {
+            return !this.q;
+        }
+        if (!super.getTransformation(j, transformation, f)) {
+            this.p = true;
+            h93.a(this.n, this);
+        }
         return true;
     }
 }

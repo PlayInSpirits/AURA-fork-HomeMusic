@@ -6,29 +6,20 @@ public final class dd2 {
     public final int a;
     public final long b;
 
-    public dd2(int r3, long r4) {
-        if (r4 < 0) goto L5;
-        boolean r0 = true;
-    L6:
-        rr2.l(r0);
-        this.a = r3;
-        this.b = r4;
-        return;
-    L5:
-        r0 = false;
-        goto L6
+    public dd2(int i, long j) {
+        rr2.l(j >= 0);
+        this.a = i;
+        this.b = j;
     }
 
-    public static dd2 a(l51 r3, be3 r4) {
-        r3.n(r4.a, 0, 8);
-        r4.N(0);
-        int r5 = r4.m();
-        long r0 = r4.r();
-        return new dd2(r5, r0, false);
+    public static dd2 a(l51 l51Var, be3 be3Var) {
+        l51Var.n(be3Var.a, 0, 8);
+        be3Var.N(0);
+        return new dd2(be3Var.m(), be3Var.r(), false);
     }
 
-    public /* synthetic */ dd2(int r1, long r2, boolean r4) {
-        this.a = r1;
-        this.b = r2;
+    public /* synthetic */ dd2(int i, long j, boolean z) {
+        this.a = i;
+        this.b = j;
     }
 }

@@ -9,14 +9,15 @@ public final class fv0 extends wd0 {
     public final /* synthetic */ z64 q;
     public int r;
 
-    public fv0(z64 r1, wd0 r2) {
-        this.q = r1;
-        super(r2);
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public fv0(z64 z64Var, wd0 wd0Var) {
+        super(wd0Var);
+        this.q = z64Var;
     }
 
     @Override // defpackage.jp
-    public final Object invokeSuspend(Object r2) {
-        this.p = r2;
+    public final Object invokeSuspend(Object obj) {
+        this.p = obj;
         this.r |= Integer.MIN_VALUE;
         return z64.u0(this.q, null, this);
     }

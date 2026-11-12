@@ -12,23 +12,20 @@ public final class Playlists {
     @ka4("playlist")
     private List<? extends Playlist> playlists;
 
-    public /* synthetic */ Playlists(List r1, int r2, xj0 r3) {
-        if ((r2 & 1) == 0) goto L5;
-        r1 = null;
-    L5:
-        this(r1);
+    public /* synthetic */ Playlists(List list, int i, xj0 xj0Var) {
+        this((i & 1) != 0 ? null : list);
     }
 
     public final List<Playlist> getPlaylists() {
         return this.playlists;
     }
 
-    public final void setPlaylists(List<? extends Playlist> r1) {
-        this.playlists = r1;
+    public final void setPlaylists(List<? extends Playlist> list) {
+        this.playlists = list;
     }
 
-    public Playlists(List<? extends Playlist> r1) {
-        this.playlists = r1;
+    public Playlists(List<? extends Playlist> list) {
+        this.playlists = list;
     }
 
     /* JADX WARN: Multi-variable type inference failed */

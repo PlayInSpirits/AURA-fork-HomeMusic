@@ -9,6 +9,7 @@ import com.google.android.material.sidesheet.SideSheetBehavior;
 import java.util.List;
 import java.util.concurrent.CancellationException;
 import java.util.concurrent.ExecutionException;
+import org.chromium.support_lib_boundary.WebSettingsBoundaryInterface;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
@@ -17,159 +18,146 @@ public final /* synthetic */ class q31 implements qc2, r83, lm2, wc0, f4 {
     public final /* synthetic */ int o;
     public final /* synthetic */ Object p;
 
-    public /* synthetic */ q31(int r1, va4 r2, Bundle r3) {
+    public /* synthetic */ q31(int i, va4 va4Var, Bundle bundle) {
         this.n = 4;
-        this.o = r1;
-        this.p = r2;
+        this.o = i;
+        this.p = va4Var;
     }
 
     @Override // defpackage.wc0
-    public void accept(Object r4) {
-        fr2 r0 = (fr2) this.p;
-        int r3 = this.o;
-        m92 r5 = (m92) ((ic2) r4).get();     // Catch: InterruptedException -> L5 ExecutionException -> L7 CancellationException -> L9
-        rr2.s(r5, "LibraryResult must not be null");     // Catch: InterruptedException -> L5 ExecutionException -> L7 CancellationException -> L9
-    L18:
-        er2 r2 = r0.d;     // Catch: RemoteException -> L15
-        r2.getClass();     // Catch: RemoteException -> L15
-        r2.r(r3, r5);     // Catch: RemoteException -> L15
-        return;
-    L15:
-        e = move-exception;
-        l93.r0("MediaSessionStub", "Failed to send result to browser " + r0, e);
-        return;
-    L5:
-        e = e;
-    L11:
-        l93.r0("MediaSessionStub", "Library operation failed", e);
-        r5 = m92.b(-1);
-    L9:
-        e = move-exception;
-        l93.r0("MediaSessionStub", "Library operation cancelled", e);
-        r5 = m92.b(1);
-    L7:
-        e = e;
-        goto L11
+    public void accept(Object obj) {
+        m92 m92VarB;
+        fr2 fr2Var = (fr2) this.p;
+        int i = this.o;
+        try {
+            m92VarB = (m92) ((ic2) obj).get();
+            rr2.s(m92VarB, "LibraryResult must not be null");
+        } catch (InterruptedException e) {
+            e = e;
+            l93.r0("MediaSessionStub", "Library operation failed", e);
+            m92VarB = m92.b(-1);
+        } catch (CancellationException e2) {
+            l93.r0("MediaSessionStub", "Library operation cancelled", e2);
+            m92VarB = m92.b(1);
+        } catch (ExecutionException e3) {
+            e = e3;
+            l93.r0("MediaSessionStub", "Library operation failed", e);
+            m92VarB = m92.b(-1);
+        }
+        try {
+            er2 er2Var = fr2Var.d;
+            er2Var.getClass();
+            er2Var.r(i, m92VarB);
+        } catch (RemoteException e4) {
+            l93.r0("MediaSessionStub", "Failed to send result to browser " + fr2Var, e4);
+        }
     }
 
     @Override // defpackage.lm2
-    public void c(bm2 r13) {
-        int r0 = this.n;
-        gq0 r2 = gq0.n;
-        int r3 = 6;
-        boolean r4 = false;
-        Object r6 = this.p;
-        int r12 = this.o;
-        switch(r0) {
-            case 2: goto L23;
-            case 3: goto L12;
-            default: goto L4;
-        };
-    L4:
-        va4 r7 = (va4) r6;
-        if (r13.Y() == false) goto L34;
-        sk2 r1 = r13.f1();
-        r1.getClass();
-        if (Looper.myLooper() != r1.f.getLooper()) goto L10;
-        r4 = true;
-    L10:
-        rr2.w(r4);
-        mw1 r5 = r1.e.y(r7);
-        r5.f(new gk(r13, r5, r12, r3), r2);
-        return;
-    L34:
-        return;
-    L12:
-        List r8 = (List) r6;
-        if (r13.Y() == false) goto L35;
-        gy3 r9 = r13.u;
-        gy3 r10 = r13.v;
-        r13.s = yw1.k(r8);
-        gy3 r11 = bm2.u1(r13.t, r8, r13.w, r13.z, r13.I);
-        r13.u = r11;
-        r13.v = bm2.t1(r11, r8, r13.I, r13.w, r13.z);
-        boolean r14 = r13.u.equals(r9);
-        r13.v.equals(r10);
-        sk2 r15 = r13.f1();
-        r15.getClass();
-        if (Looper.myLooper() != r15.f.getLooper()) goto L18;
-        r4 = true;
-    L18:
-        rr2.w(r4);
-        qk2 r16 = r15.e;
-        r16.getClass();
-        mw1 r17 = new mw1(new ab4(-6));
-        if (r14 == true) goto L21;
-        r16.u();
-    L21:
-        r17.f(new gk(r13, r17, r12, r3), r2);
-        return;
-    L35:
-        return;
-    L23:
-        yw1 r18 = (yw1) r6;
-        if (r13.Y() == false) goto L36;
-        gy3 r19 = r13.u;
-        gy3 r20 = r13.v;
-        r13.t = yw1.k(r18);
-        gy3 r21 = bm2.u1(r18, r13.s, r13.w, r13.z, r13.I);
-        r13.u = r21;
-        r13.v = bm2.t1(r21, r13.s, r13.I, r13.w, r13.z);
-        boolean r22 = r13.u.equals(r19);
-        r13.v.equals(r20);
-        sk2 r23 = r13.f1();
-        r23.getClass();
-        if (Looper.myLooper() != r23.f.getLooper()) goto L29;
-        r4 = true;
-    L29:
-        rr2.w(r4);
-        qk2 r24 = r23.e;
-        r24.getClass();
-        mw1 r25 = new mw1(new ab4(-6));
-        if (r22 == true) goto L32;
-        r24.u();
-    L32:
-        r25.f(new gk(r13, r25, r12, r3), r2);
-        return;
+    public void c(bm2 bm2Var) {
+        int i = this.n;
+        gq0 gq0Var = gq0.n;
+        int i2 = 6;
+        Object obj = this.p;
+        int i3 = this.o;
+        switch (i) {
+            case 2:
+                yw1 yw1Var = (yw1) obj;
+                if (bm2Var.Y()) {
+                    gy3 gy3Var = bm2Var.u;
+                    gy3 gy3Var2 = bm2Var.v;
+                    bm2Var.t = yw1.k(yw1Var);
+                    gy3 gy3VarU1 = bm2.u1(yw1Var, bm2Var.s, bm2Var.w, bm2Var.z, bm2Var.I);
+                    bm2Var.u = gy3VarU1;
+                    bm2Var.v = bm2.t1(gy3VarU1, bm2Var.s, bm2Var.I, bm2Var.w, bm2Var.z);
+                    boolean zEquals = bm2Var.u.equals(gy3Var);
+                    bm2Var.v.equals(gy3Var2);
+                    sk2 sk2VarF1 = bm2Var.f1();
+                    sk2VarF1.getClass();
+                    rr2.w(Looper.myLooper() == sk2VarF1.f.getLooper());
+                    qk2 qk2Var = sk2VarF1.e;
+                    qk2Var.getClass();
+                    mw1 mw1Var = new mw1(new ab4(-6));
+                    if (!zEquals) {
+                        qk2Var.u();
+                    }
+                    mw1Var.f(new gk(bm2Var, mw1Var, i3, i2), gq0Var);
+                    break;
+                }
+                break;
+            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
+                List list = (List) obj;
+                if (bm2Var.Y()) {
+                    gy3 gy3Var3 = bm2Var.u;
+                    gy3 gy3Var4 = bm2Var.v;
+                    bm2Var.s = yw1.k(list);
+                    gy3 gy3VarU2 = bm2.u1(bm2Var.t, list, bm2Var.w, bm2Var.z, bm2Var.I);
+                    bm2Var.u = gy3VarU2;
+                    bm2Var.v = bm2.t1(gy3VarU2, list, bm2Var.I, bm2Var.w, bm2Var.z);
+                    boolean zEquals2 = bm2Var.u.equals(gy3Var3);
+                    bm2Var.v.equals(gy3Var4);
+                    sk2 sk2VarF2 = bm2Var.f1();
+                    sk2VarF2.getClass();
+                    rr2.w(Looper.myLooper() == sk2VarF2.f.getLooper());
+                    qk2 qk2Var2 = sk2VarF2.e;
+                    qk2Var2.getClass();
+                    mw1 mw1Var2 = new mw1(new ab4(-6));
+                    if (!zEquals2) {
+                        qk2Var2.u();
+                    }
+                    mw1Var2.f(new gk(bm2Var, mw1Var2, i3, i2), gq0Var);
+                    break;
+                }
+                break;
+            default:
+                va4 va4Var = (va4) obj;
+                if (bm2Var.Y()) {
+                    sk2 sk2VarF3 = bm2Var.f1();
+                    sk2VarF3.getClass();
+                    rr2.w(Looper.myLooper() == sk2VarF3.f.getLooper());
+                    mw1 mw1VarY = sk2VarF3.e.y(va4Var);
+                    mw1VarY.f(new gk(bm2Var, mw1VarY, i3, i2), gq0Var);
+                    break;
+                }
+                break;
+        }
     }
 
     @Override // defpackage.f4
-    public boolean h(View r1) {
+    public boolean h(View view) {
         ((SideSheetBehavior) this.p).w(this.o);
         return true;
     }
 
     @Override // defpackage.qc2
-    public void invoke(Object r2) {
-        switch(this.n) {
-            case 0: goto L6;
-            default: goto L4;
-        };
-    L4:
-        ((oi3) r2).I(((pe4) this.p).w, this.o);
-        return;
-    L6:
-        ((oi3) r2).I(((ph3) this.p).a, this.o);
+    public void invoke(Object obj) {
+        switch (this.n) {
+            case 0:
+                ((oi3) obj).I(((ph3) this.p).a, this.o);
+                break;
+            default:
+                ((oi3) obj).I(((pe4) this.p).w, this.o);
+                break;
+        }
     }
 
     @Override // defpackage.r83
-    public pb5 x(View r4, pb5 r5) {
-        ViewGroup.MarginLayoutParams r0 = (ViewGroup.MarginLayoutParams) this.p;
-        int r1 = r5.a.h(2).d;
-        r0.bottomMargin = this.o + r1;
-        r4.setLayoutParams(r0);
-        return r5;
+    public pb5 x(View view, pb5 pb5Var) {
+        ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) this.p;
+        marginLayoutParams.bottomMargin = this.o + pb5Var.a.h(2).d;
+        view.setLayoutParams(marginLayoutParams);
+        return pb5Var;
     }
 
-    public /* synthetic */ q31(int r1, gy3 r2, int r3) {
-        this.n = r3;
-        this.o = r1;
-        this.p = r2;
+    public /* synthetic */ q31(int i, gy3 gy3Var, int i2) {
+        this.n = i2;
+        this.o = i;
+        this.p = gy3Var;
     }
 
-    public /* synthetic */ q31(int r1, int r2, Object r3) {
-        this.n = r2;
-        this.p = r3;
-        this.o = r1;
+    public /* synthetic */ q31(int i, int i2, Object obj) {
+        this.n = i2;
+        this.p = obj;
+        this.o = i;
     }
 }

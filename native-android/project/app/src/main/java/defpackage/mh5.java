@@ -5,6 +5,7 @@ import android.os.Parcelable;
 import android.util.Base64;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
@@ -14,240 +15,181 @@ import org.json.JSONObject;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class mh5 extends h2 {
-    public static final Parcelable.Creator<mh5> CREATOR = null;
-    public static final byte[] o = null;
+    public static final Parcelable.Creator<mh5> CREATOR = new ch5(12);
+    public static final byte[] o = "WebAuthn PRF\u0000".getBytes(StandardCharsets.UTF_8);
     public final byte[][] n;
 
-    static {
-        CREATOR = new ch5(12);
-        o = "WebAuthn PRF\u0000".getBytes(StandardCharsets.UTF_8);
+    public mh5(byte[][] bArr) {
+        ji2.i(bArr != null);
+        ji2.i(1 == ((bArr.length & 1) ^ 1));
+        int i = 0;
+        while (i < bArr.length) {
+            ji2.i(i == 0 || bArr[i] != null);
+            int i2 = i + 1;
+            ji2.i(bArr[i2] != null);
+            int length = bArr[i2].length;
+            ji2.i(length == 32 || length == 64);
+            i += 2;
+        }
+        this.n = bArr;
     }
 
-    public mh5(byte[][] r6) {
-        if (r6 == null) goto L5;
-        boolean r2 = true;
-    L6:
-        ji2.i(r2);
-        if (1 == ((r6.length & 1) ^ 1)) goto L9;
-        boolean r3 = false;
-    L10:
-        ji2.i(r3);
-        int r4 = 0;
-    L12:
-        if (r4 >= r6.length) goto L29;
-        if (r4 != 0) goto L15;
-    L16:
-        boolean r5 = true;
-    L18:
-        ji2.i(r5);
-        int r7 = r4 + 1;
-        if (r6[r7] == null) goto L21;
-        boolean r8 = true;
-    L22:
-        ji2.i(r8);
-        int r9 = r6[r7].length;
-        if (r9 != 32) goto L25;
-    L26:
-        boolean r10 = true;
-    L28:
-        ji2.i(r10);
-        r4 = r4 + 2;
-        goto L12
-    L25:
-        if (r9 == 64) goto L26;
-        r10 = false;
-        goto L28
-    L21:
-        r8 = false;
-        goto L22
-    L15:
-        if (r6[r4] != null) goto L16;
-        r5 = false;
-        goto L18
-    L29:
-        this.n = r6;
-        return;
-    L9:
-        r3 = true;
-        goto L10
-    L5:
-        r2 = false;
-        goto L6
+    public static mh5 b(JSONObject jSONObject, boolean z) throws JSONException {
+        ArrayList arrayList = new ArrayList();
+        try {
+            if (jSONObject.has("eval")) {
+                arrayList.add(null);
+                if (z) {
+                    arrayList.add(e(jSONObject.getJSONObject("eval")));
+                } else {
+                    arrayList.add(f(jSONObject.getJSONObject("eval")));
+                }
+            }
+            if (jSONObject.has("evalByCredential")) {
+                JSONObject jSONObject2 = jSONObject.getJSONObject("evalByCredential");
+                Iterator<String> itKeys = jSONObject2.keys();
+                while (itKeys.hasNext()) {
+                    String next = itKeys.next();
+                    arrayList.add(ya4.k(next));
+                    if (z) {
+                        arrayList.add(e(jSONObject2.getJSONObject(next)));
+                    } else {
+                        arrayList.add(f(jSONObject2.getJSONObject(next)));
+                    }
+                }
+            }
+            return new mh5((byte[][]) arrayList.toArray(new byte[0][]));
+        } catch (IllegalArgumentException unused) {
+            throw new JSONException("invalid base64url value");
+        }
     }
 
-    public static mh5 b(JSONObject r4, boolean r5) {
-        ArrayList r2 = new ArrayList();
-        if (r4.has("eval") == false) goto L10;
-        r2.add(null);     // Catch: IllegalArgumentException -> L21
-        if (r5 == false) goto L8;
-        r2.add(e(r4.getJSONObject("eval")));     // Catch: IllegalArgumentException -> L21
-        goto L10
-    L8:
-        r2.add(f(r4.getJSONObject("eval")));     // Catch: IllegalArgumentException -> L21
-    L10:
-        if (r4.has("evalByCredential") == false) goto L20;
-        JSONObject r6 = r4.getJSONObject("evalByCredential");     // Catch: IllegalArgumentException -> L21
-        Iterator<String> r0 = r6.keys();     // Catch: IllegalArgumentException -> L21
-    L12:
-        if (r0.hasNext() == false) goto L20;
-        String r1 = r0.next();     // Catch: IllegalArgumentException -> L21
-        r2.add(ya4.k(r1));     // Catch: IllegalArgumentException -> L21
-        if (r5 == true) goto L16;
-        r2.add(f(r6.getJSONObject(r1)));     // Catch: IllegalArgumentException -> L21
-        goto L12
-    L16:
-        r2.add(e(r6.getJSONObject(r1)));     // Catch: IllegalArgumentException -> L21
-    L20:
-        return new mh5((byte[][]) r2.toArray(new byte[0][]));
-    L22:
-        throw new JSONException("invalid base64url value");
+    public static JSONObject c(byte[] bArr) throws JSONException {
+        JSONObject jSONObject = new JSONObject();
+        if (bArr.length == 32) {
+            jSONObject.put("first", Base64.encodeToString(bArr, 11));
+            return jSONObject;
+        }
+        jSONObject.put("first", Base64.encodeToString(bArr, 0, 32, 11));
+        jSONObject.put("second", Base64.encodeToString(bArr, 32, 32, 11));
+        return jSONObject;
     }
 
-    public static JSONObject c(byte[] r5) {
-        JSONObject r0 = new JSONObject();
-        if (r5.length != 32) goto L6;
-        r0.put("first", Base64.encodeToString(r5, 11));
-        return r0;
-    L6:
-        r0.put("first", Base64.encodeToString(r5, 0, 32, 11));
-        r0.put("second", Base64.encodeToString(r5, 32, 32, 11));
-        return r0;
+    public static byte[] d(byte[] bArr) {
+        i iVar;
+        int i = ej5.a;
+        gj5 gj5Var = dj5.a;
+        int i2 = gj5Var.H;
+        MessageDigest messageDigest = gj5Var.G;
+        if (gj5Var.I) {
+            try {
+                iVar = new i((MessageDigest) messageDigest.clone(), i2);
+            } catch (CloneNotSupportedException unused) {
+                try {
+                    iVar = new i(MessageDigest.getInstance(messageDigest.getAlgorithm()), i2);
+                } catch (NoSuchAlgorithmException e) {
+                    throw new AssertionError(e);
+                }
+            }
+        } else {
+            iVar = new i(MessageDigest.getInstance(messageDigest.getAlgorithm()), i2);
+        }
+        MessageDigest messageDigest2 = (MessageDigest) iVar.c;
+        byte[] bArr2 = o;
+        bArr2.getClass();
+        int length = bArr2.length;
+        if (iVar.b) {
+            kf2.o("Cannot re-use a Hasher after calling hash() on it");
+            return null;
+        }
+        messageDigest2.update(bArr2, 0, length);
+        bArr.getClass();
+        int length2 = bArr.length;
+        if (iVar.b) {
+            kf2.o("Cannot re-use a Hasher after calling hash() on it");
+            return null;
+        }
+        messageDigest2.update(bArr, 0, length2);
+        if (iVar.b) {
+            kf2.o("Cannot re-use a Hasher after calling hash() on it");
+            return null;
+        }
+        iVar.b = true;
+        int i3 = iVar.a;
+        return (byte[]) (i3 == messageDigest2.getDigestLength() ? new bj5(messageDigest2.digest()) : new bj5(Arrays.copyOf(messageDigest2.digest(), i3))).o.clone();
     }
 
-    public static byte[] d(byte[] r7) {
-        int r0 = ej5.a;
-        gj5 r1 = dj5.a;
-        int r2 = r1.H;
-        MessageDigest r3 = r1.G;
-        if (r1.I == false) goto L31;
-        i r4 = new i((MessageDigest) r3.clone(), r2);     // Catch: CloneNotSupportedException -> L30
-    L9:
-        MessageDigest r5 = (MessageDigest) r4.c;
-        byte[] r6 = o;
-        r6.getClass();
-        int r8 = r6.length;
-        if (r4.b == true) goto L25;
-        r5.update(r6, 0, r8);
-        r7.getClass();
-        int r9 = r7.length;
-        if (r4.b == true) goto L23;
-        r5.update(r7, 0, r9);
-        if (r4.b == true) goto L21;
-        r4.b = true;
-        int r10 = r4.a;
-        if (r10 != r5.getDigestLength()) goto L18;
-        bj5 r11 = new bj5(r5.digest());
-    L20:
-        return (byte[]) r11.o.clone();
-    L18:
-        r11 = new bj5(Arrays.copyOf(r5.digest(), r10));
-        goto L20
-    L21:
-        kf2.o("Cannot re-use a Hasher after calling hash() on it");
-        return null;
-    L23:
-        kf2.o("Cannot re-use a Hasher after calling hash() on it");
-        return null;
-    L25:
-        kf2.o("Cannot re-use a Hasher after calling hash() on it");
-        return null;
-    L31:
-        r4 = new i(MessageDigest.getInstance(r3.getAlgorithm()), r2);
-    L27:
-        e = move-exception;
-        throw new AssertionError(e);
-    }
-
-    public static byte[] e(JSONObject r5) {
-        byte[] r0 = ya4.k(r5.getString("first"));
-        if (r0.length != 32) goto L14;
-        if (r5.has("second") == true) goto L7;
-        return r0;
-    L7:
-        byte[] r6 = ya4.k(r5.getString("second"));
-        if (r6.length != 32) goto L12;
-        return kb4.c0(new byte[][]{r0, r6});
-    L12:
-        throw new JSONException("hashed PRF value with wrong length");
-    L14:
+    public static byte[] e(JSONObject jSONObject) throws JSONException {
+        byte[] bArrK = ya4.k(jSONObject.getString("first"));
+        if (bArrK.length != 32) {
+            throw new JSONException("hashed PRF value with wrong length");
+        }
+        if (!jSONObject.has("second")) {
+            return bArrK;
+        }
+        byte[] bArrK2 = ya4.k(jSONObject.getString("second"));
+        if (bArrK2.length == 32) {
+            return kb4.c0(bArrK, bArrK2);
+        }
         throw new JSONException("hashed PRF value with wrong length");
     }
 
-    public static byte[] f(JSONObject r3) {
-        byte[] r0 = d(ya4.k(r3.getString("first")));
-        if (r3.has("second") == true) goto L6;
-        return r0;
-    L6:
-        return kb4.c0(new byte[][]{r0, d(ya4.k(r3.getString("second")))});
+    public static byte[] f(JSONObject jSONObject) {
+        byte[] bArrD = d(ya4.k(jSONObject.getString("first")));
+        return !jSONObject.has("second") ? bArrD : kb4.c0(bArrD, d(ya4.k(jSONObject.getString("second"))));
     }
 
-    public final boolean equals(Object r2) {
-        if ((r2 instanceof mh5) == true) goto L7;
+    public final boolean equals(Object obj) {
+        if (obj instanceof mh5) {
+            return Arrays.deepEquals(this.n, ((mh5) obj).n);
+        }
         return false;
-    L7:
-        return Arrays.deepEquals(this.n, ((mh5) r2).n);
     }
 
     public final int hashCode() {
-        byte[][] r4 = this.n;
-        int r0 = r4.length;
-        int r1 = 0;
-        int r2 = 0;
-    L3:
-        if (r1 >= r0) goto L8;
-        byte[] r3 = r4[r1];
-        if (r3 == null) goto L7;
-        r2 = r2 ^ Arrays.hashCode(new Object[]{r3});
-    L7:
-        r1 = r1 + 1;
-        goto L3
-    L8:
-        return r2;
+        int iHashCode = 0;
+        for (byte[] bArr : this.n) {
+            if (bArr != null) {
+                iHashCode ^= Arrays.hashCode(new Object[]{bArr});
+            }
+        }
+        return iHashCode;
     }
 
     public final String toString() {
-        byte[][] r6 = this.n;
-        JSONObject r1 = new JSONObject();     // Catch: JSONException -> L9
-        int r2 = 0;
-        JSONObject r3 = null;
-    L5:
-        if (r2 >= r6.length) goto L15;
-        if (r6[r2] != null) goto L11;
-        r1.put("eval", c(r6[r2 + 1]));     // Catch: JSONException -> L9
-    L14:
-        r2 = r2 + 2;     // Catch: JSONException -> L9
-        goto L5
-    L11:
-        if (r3 != null) goto L13;
-        r3 = new JSONObject();     // Catch: JSONException -> L9
-        r1.put("evalByCredential", r3);     // Catch: JSONException -> L9
-    L13:
-        r3.put(ya4.n(r6[r2]), c(r6[r2 + 1]));     // Catch: JSONException -> L9
-        goto L14
-    L15:
-        return "PrfExtension{" + r1.toString() + "}";
-    L9:
-        e = move-exception;
-        return xa3.h("PrfExtension{Exception:", e.getMessage(), "}");
+        byte[][] bArr = this.n;
+        try {
+            JSONObject jSONObject = new JSONObject();
+            JSONObject jSONObject2 = null;
+            for (int i = 0; i < bArr.length; i += 2) {
+                if (bArr[i] == null) {
+                    jSONObject.put("eval", c(bArr[i + 1]));
+                } else {
+                    if (jSONObject2 == null) {
+                        jSONObject2 = new JSONObject();
+                        jSONObject.put("evalByCredential", jSONObject2);
+                    }
+                    jSONObject2.put(ya4.n(bArr[i]), c(bArr[i + 1]));
+                }
+            }
+            return "PrfExtension{" + jSONObject.toString() + "}";
+        } catch (JSONException e) {
+            return xa3.h("PrfExtension{Exception:", e.getMessage(), "}");
+        }
     }
 
     @Override // android.os.Parcelable
-    public final void writeToParcel(Parcel r5, int r6) {
-        int r7 = ud3.R0(r5, 20293);
-        byte[][] r4 = this.n;
-        if (r4 == null) goto L9;
-        int r0 = ud3.R0(r5, 1);
-        int r1 = r4.length;
-        r5.writeInt(r1);
-        int r2 = 0;
-    L6:
-        if (r2 >= r1) goto L8;
-        r5.writeByteArray(r4[r2]);
-        r2 = r2 + 1;
-        goto L6
-    L8:
-        ud3.S0(r5, r0);
-    L9:
-        ud3.S0(r5, r7);
+    public final void writeToParcel(Parcel parcel, int i) {
+        int iR0 = ud3.R0(parcel, 20293);
+        byte[][] bArr = this.n;
+        if (bArr != null) {
+            int iR1 = ud3.R0(parcel, 1);
+            parcel.writeInt(bArr.length);
+            for (byte[] bArr2 : bArr) {
+                parcel.writeByteArray(bArr2);
+            }
+            ud3.S0(parcel, iR1);
+        }
+        ud3.S0(parcel, iR0);
     }
 }

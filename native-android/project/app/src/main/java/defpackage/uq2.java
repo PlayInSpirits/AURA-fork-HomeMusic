@@ -5,7 +5,6 @@ import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.Iterator;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
@@ -18,122 +17,99 @@ public final class uq2 {
     public final wq2 f;
     public final ArrayList g;
     public final WeakReference h;
-    public boolean i;
-    public boolean j;
+    public boolean i = false;
+    public boolean j = false;
 
-    public uq2(ui1 r2, wq2 r3, oq2 r4, int r5, boolean r6, wq2 r7, Collection r8) {
-        this.i = false;
-        this.j = false;
-        this.h = new WeakReference(r2);
-        this.e = r3;
-        this.a = r4;
-        this.b = r5;
-        this.c = r6;
-        this.d = r2.c;
-        this.f = r7;
-        if (r8 != null) goto L5;
-        ArrayList r9 = null;
-    L6:
-        this.g = r9;
-        r2.a.postDelayed(new qa1(20, this), 15000);
-        return;
-    L5:
-        r9 = new ArrayList(r8);
-        goto L6
+    public uq2(ui1 ui1Var, wq2 wq2Var, oq2 oq2Var, int i, boolean z, wq2 wq2Var2, Collection collection) {
+        this.h = new WeakReference(ui1Var);
+        this.e = wq2Var;
+        this.a = oq2Var;
+        this.b = i;
+        this.c = z;
+        this.d = ui1Var.c;
+        this.f = wq2Var2;
+        this.g = collection == null ? null : new ArrayList(collection);
+        ui1Var.a.postDelayed(new qa1(20, this), 15000L);
     }
 
     public final void a() {
-        if (this.i == false) goto L5;
-        return;
-    L5:
-        if (this.j == true) goto L13;
+        if (this.i || this.j) {
+            return;
+        }
         this.j = true;
-        oq2 r1 = this.a;
-        if (r1 == null) goto L12;
-        r1.h(0);
-        r1.d();
-        return;
-    L12:
-        return;
+        oq2 oq2Var = this.a;
+        if (oq2Var != null) {
+            oq2Var.h(0);
+            oq2Var.d();
+        }
     }
 
     public final void b() {
+        tq2 tq2VarA;
         yq2.b();
-        if (this.i == false) goto L5;
-        return;
-    L5:
-        if (this.j == true) goto L46;
-        WeakReference r0 = this.h;
-        ui1 r1 = (ui1) r0.get();
-        if (r1 != null) goto L10;
-    L40:
-        a();
-        return;
-    L10:
-        if (r1.e != this) goto L40;
+        if (this.i || this.j) {
+            return;
+        }
+        WeakReference weakReference = this.h;
+        ui1 ui1Var = (ui1) weakReference.get();
+        if (ui1Var == null || ui1Var.e != this) {
+            a();
+            return;
+        }
         this.i = true;
-        r1.e = null;
-        ui1 r2 = (ui1) r0.get();
-        wq2 r3 = this.d;
-        int r4 = this.b;
-        if (r2 == null) goto L27;
-        HashMap r5 = r2.b;
-        if (r2.c != r3) goto L27;
-        Message r6 = r2.a.obtainMessage(263, r3);
-        r6.arg1 = r4;
-        r6.sendToTarget();
-        oq2 r7 = r2.d;
-        if (r7 == null) goto L20;
-        r7.h(r4);
-        r2.d.d();
-    L20:
-        if (r5.isEmpty() == true) goto L26;
-        Iterator r8 = r5.values().iterator();
-    L23:
-        if (r8.hasNext() == false) goto L25;
-        oq2 r9 = (oq2) r8.next();
-        r9.h(r4);
-        r9.d();
-        goto L23
-    L25:
-        r5.clear();
-    L26:
-        r2.d = null;
-    L27:
-        ui1 r10 = (ui1) r0.get();
-        if (r10 == null) goto L47;
-        wq2 r11 = this.e;
-        r10.c = r11;
-        r10.d = this.a;
-        ri1 r12 = r10.a;
-        boolean r13 = this.c;
-        wq2 r14 = this.f;
-        if (r14 != null) goto L33;
-        r12.getClass();
-        Message r15 = r12.obtainMessage(262, new ti1(r3, r11, r13));
-        r15.arg1 = r4;
-        r15.sendToTarget();
-    L34:
-        r10.b.clear();
-        r10.h();
-        r10.l();
-        ArrayList r16 = this.g;
-        if (r16 == null) goto L44;
-        tq2 r17 = r10.c.a();
-        if (r17 == null) goto L45;
-        r17.o(r16);
-        return;
-    L45:
-        return;
-    L44:
-        return;
-    L33:
-        r12.getClass();
-        Message r18 = r12.obtainMessage(264, new ti1(r14, r11, r13));
-        r18.arg1 = r4;
-        r18.sendToTarget();
-        goto L34
-    L47:
-        return;
+        ui1Var.e = null;
+        ui1 ui1Var2 = (ui1) weakReference.get();
+        wq2 wq2Var = this.d;
+        int i = this.b;
+        if (ui1Var2 != null) {
+            HashMap map = ui1Var2.b;
+            if (ui1Var2.c == wq2Var) {
+                Message messageObtainMessage = ui1Var2.a.obtainMessage(263, wq2Var);
+                messageObtainMessage.arg1 = i;
+                messageObtainMessage.sendToTarget();
+                oq2 oq2Var = ui1Var2.d;
+                if (oq2Var != null) {
+                    oq2Var.h(i);
+                    ui1Var2.d.d();
+                }
+                if (!map.isEmpty()) {
+                    for (oq2 oq2Var2 : map.values()) {
+                        oq2Var2.h(i);
+                        oq2Var2.d();
+                    }
+                    map.clear();
+                }
+                ui1Var2.d = null;
+            }
+        }
+        ui1 ui1Var3 = (ui1) weakReference.get();
+        if (ui1Var3 == null) {
+            return;
+        }
+        wq2 wq2Var2 = this.e;
+        ui1Var3.c = wq2Var2;
+        ui1Var3.d = this.a;
+        ri1 ri1Var = ui1Var3.a;
+        boolean z = this.c;
+        wq2 wq2Var3 = this.f;
+        if (wq2Var3 == null) {
+            ri1Var.getClass();
+            Message messageObtainMessage2 = ri1Var.obtainMessage(262, new ti1(wq2Var, wq2Var2, z));
+            messageObtainMessage2.arg1 = i;
+            messageObtainMessage2.sendToTarget();
+        } else {
+            ri1Var.getClass();
+            Message messageObtainMessage3 = ri1Var.obtainMessage(264, new ti1(wq2Var3, wq2Var2, z));
+            messageObtainMessage3.arg1 = i;
+            messageObtainMessage3.sendToTarget();
+        }
+        ui1Var3.b.clear();
+        ui1Var3.h();
+        ui1Var3.l();
+        ArrayList arrayList = this.g;
+        if (arrayList == null || (tq2VarA = ui1Var3.c.a()) == null) {
+            return;
+        }
+        tq2VarA.o(arrayList);
     }
 }

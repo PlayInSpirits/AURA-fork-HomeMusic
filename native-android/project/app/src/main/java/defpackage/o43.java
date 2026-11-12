@@ -9,34 +9,33 @@ import java.util.Objects;
 public final class o43 implements gw0 {
     public final /* synthetic */ NavigationView a;
 
-    public o43(NavigationView r1) {
-        this.a = r1;
+    public o43(NavigationView navigationView) {
+        this.a = navigationView;
     }
 
     @Override // defpackage.gw0
-    public final void a(float r1) {
+    public final void a(float f) {
     }
 
     @Override // defpackage.gw0
-    public final void b(View r3) {
-        NavigationView r2 = this.a;
-        if (r3 != r2) goto L6;
-        qp4 r4 = r2.G;
-        Objects.requireNonNull(r4);
-        r3.post(new qa1(23, r4));
-        return;
+    public final void b(View view) {
+        NavigationView navigationView = this.a;
+        if (view == navigationView) {
+            qp4 qp4Var = navigationView.G;
+            Objects.requireNonNull(qp4Var);
+            view.post(new qa1(23, qp4Var));
+        }
     }
 
     @Override // defpackage.gw0
-    public final void c(View r1) {
-        NavigationView r0 = this.a;
-        if (r1 != r0) goto L8;
-        qp4 r2 = r0.G;
-        ah2 r3 = (ah2) r2.a;
-        if (r3 == null) goto L9;
-        r3.c((View) r2.c);
-        return;
-    L9:
-        return;
+    public final void c(View view) {
+        NavigationView navigationView = this.a;
+        if (view == navigationView) {
+            qp4 qp4Var = navigationView.G;
+            ah2 ah2Var = (ah2) qp4Var.a;
+            if (ah2Var != null) {
+                ah2Var.c((View) qp4Var.c);
+            }
+        }
     }
 }

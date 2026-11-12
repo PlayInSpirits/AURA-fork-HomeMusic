@@ -15,80 +15,49 @@ public final class dg3 implements pv2 {
     public final int g;
     public final byte[] h;
 
-    public dg3(int r1, String r2, String r3, int r4, int r5, int r6, int r7, byte[] r8) {
-        this.a = r1;
-        this.b = r2;
-        this.c = r3;
-        this.d = r4;
-        this.e = r5;
-        this.f = r6;
-        this.g = r7;
-        this.h = r8;
+    public dg3(int i, String str, String str2, int i2, int i3, int i4, int i5, byte[] bArr) {
+        this.a = i;
+        this.b = str;
+        this.c = str2;
+        this.d = i2;
+        this.e = i3;
+        this.f = i4;
+        this.g = i5;
+        this.h = bArr;
     }
 
-    public static dg3 d(be3 r10) {
-        int r1 = r10.m();
-        String r2 = lw2.m(r10.y(r10.m(), StandardCharsets.US_ASCII));
-        String r3 = r10.y(r10.m(), StandardCharsets.UTF_8);
-        int r4 = r10.m();
-        int r5 = r10.m();
-        int r6 = r10.m();
-        int r7 = r10.m();
-        int r0 = r10.m();
-        byte[] r8 = new byte[r0];
-        r10.k(r8, 0, r0);
-        return new dg3(r1, r2, r3, r4, r5, r6, r7, r8);
+    public static dg3 d(be3 be3Var) {
+        int iM = be3Var.m();
+        String strM = lw2.m(be3Var.y(be3Var.m(), StandardCharsets.US_ASCII));
+        String strY = be3Var.y(be3Var.m(), StandardCharsets.UTF_8);
+        int iM2 = be3Var.m();
+        int iM3 = be3Var.m();
+        int iM4 = be3Var.m();
+        int iM5 = be3Var.m();
+        int iM6 = be3Var.m();
+        byte[] bArr = new byte[iM6];
+        be3Var.k(bArr, 0, iM6);
+        return new dg3(iM, strM, strY, iM2, iM3, iM4, iM5, bArr);
     }
 
     @Override // defpackage.pv2
-    public final void b(co2 r2) {
-        byte[] r0 = this.h;
-        r2.a(this.a, r0);
+    public final void b(co2 co2Var) {
+        co2Var.a(this.a, this.h);
     }
 
-    public final boolean equals(Object r3) {
-        if (this == r3) goto L28;
-        if (r3 != null) goto L6;
-        return false;
-    L6:
-        if (dg3.class != r3.getClass()) goto L37;
-        dg3 r4 = (dg3) r3;
-        if (this.a == r4.a) goto L11;
-        return false;
-    L11:
-        if (this.b.equals(r4.b) == true) goto L13;
-        return false;
-    L13:
-        if (this.c.equals(r4.c) == true) goto L15;
-        return false;
-    L15:
-        if (this.d == r4.d) goto L17;
-        return false;
-    L17:
-        if (this.e == r4.e) goto L19;
-        return false;
-    L19:
-        if (this.f == r4.f) goto L21;
-        return false;
-    L21:
-        if (this.g == r4.g) goto L23;
-        return false;
-    L23:
-        if (Arrays.equals(this.h, r4.h) == false) goto L36;
-        return true;
-    L36:
-        return false;
-    L37:
-        return false;
-    L28:
-        return true;
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || dg3.class != obj.getClass()) {
+            return false;
+        }
+        dg3 dg3Var = (dg3) obj;
+        return this.a == dg3Var.a && this.b.equals(dg3Var.b) && this.c.equals(dg3Var.c) && this.d == dg3Var.d && this.e == dg3Var.e && this.f == dg3Var.f && this.g == dg3Var.g && Arrays.equals(this.h, dg3Var.h);
     }
 
     public final int hashCode() {
-        int r0 = (527 + this.a) * 31;
-        int r1 = f34.e(this.b, r0, 31);
-        int r2 = (((((((f34.e(this.c, r1, 31) + this.d) * 31) + this.e) * 31) + this.f) * 31) + this.g) * 31;
-        return Arrays.hashCode(this.h) + r2;
+        return Arrays.hashCode(this.h) + ((((((((f34.e(this.c, f34.e(this.b, (527 + this.a) * 31, 31), 31) + this.d) * 31) + this.e) * 31) + this.f) * 31) + this.g) * 31);
     }
 
     public final String toString() {

@@ -9,24 +9,21 @@ public final class tq4 implements aa4 {
     public final Object b;
     public final if1 c;
 
-    public /* synthetic */ tq4(Object r1, if1 r2, int r3) {
-        this.a = r3;
-        this.b = r1;
-        this.c = r2;
+    public /* synthetic */ tq4(Object obj, if1 if1Var, int i) {
+        this.a = i;
+        this.b = obj;
+        this.c = if1Var;
     }
 
     @Override // defpackage.aa4
     public final Iterator iterator() {
-        switch(this.a) {
-            case 0: goto L9;
-            case 1: goto L7;
-            default: goto L5;
-        };
-    L5:
-        return new bh1(this);
-    L7:
-        return new zw4(this);
-    L9:
-        return new g71(this);
+        switch (this.a) {
+            case 0:
+                return new g71(this);
+            case 1:
+                return new zw4(this);
+            default:
+                return new bh1(this);
+        }
     }
 }

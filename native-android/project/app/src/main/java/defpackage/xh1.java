@@ -10,36 +10,35 @@ import java.security.MessageDigest;
 public final class xh1 implements uw4 {
     public final uw4 b;
 
-    public xh1(uw4 r2) {
-        h12.f(r2, "Argument must not be null");
-        this.b = r2;
+    public xh1(uw4 uw4Var) {
+        h12.f(uw4Var, "Argument must not be null");
+        this.b = uw4Var;
     }
 
     @Override // defpackage.uw4
-    public final q04 a(Context r5, q04 r6, int r7, int r8) {
-        vh1 r0 = (vh1) r6.get();
-        at r3 = new at(a.a(r5).n, ((bi1) r0.n.b).l);
-        uw4 r4 = this.b;
-        q04 r9 = r4.a(r5, r3, r7, r8);
-        if (r3 == r9) goto L5;
-        r3.b();
-    L5:
-        Bitmap r10 = (Bitmap) r9.get();
-        ((bi1) r0.n.b).c(r4, r10);
-        return r6;
+    public final q04 a(Context context, q04 q04Var, int i, int i2) {
+        vh1 vh1Var = (vh1) q04Var.get();
+        at atVar = new at(a.a(context).n, ((bi1) vh1Var.n.b).l);
+        uw4 uw4Var = this.b;
+        q04 q04VarA = uw4Var.a(context, atVar, i, i2);
+        if (atVar != q04VarA) {
+            atVar.b();
+        }
+        ((bi1) vh1Var.n.b).c(uw4Var, (Bitmap) q04VarA.get());
+        return q04Var;
     }
 
     @Override // defpackage.f42
-    public final void b(MessageDigest r1) {
-        this.b.b(r1);
+    public final void b(MessageDigest messageDigest) {
+        this.b.b(messageDigest);
     }
 
     @Override // defpackage.f42
-    public final boolean equals(Object r2) {
-        if ((r2 instanceof xh1) == true) goto L5;
+    public final boolean equals(Object obj) {
+        if (obj instanceof xh1) {
+            return this.b.equals(((xh1) obj).b);
+        }
         return false;
-    L5:
-        return this.b.equals(((xh1) r2).b);
     }
 
     @Override // defpackage.f42

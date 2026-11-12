@@ -6,25 +6,20 @@ public final class d6 {
     public final long a;
     public final long b;
 
-    public d6(long r1, long r3) {
-        this.a = r1;
-        this.b = r3;
+    public d6(long j, long j2) {
+        this.a = j;
+        this.b = j2;
     }
 
-    public final boolean equals(Object r8) {
-        if (this != r8) goto L6;
-        return true;
-    L6:
-        if ((r8 instanceof d6) == true) goto L8;
-        return false;
-    L8:
-        d6 r9 = (d6) r8;
-        if (this.a == r9.a) goto L11;
-    L13:
-        return false;
-    L11:
-        if (this.b != r9.b) goto L13;
-        return true;
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof d6)) {
+            return false;
+        }
+        d6 d6Var = (d6) obj;
+        return this.a == d6Var.a && this.b == d6Var.b;
     }
 
     public final int hashCode() {

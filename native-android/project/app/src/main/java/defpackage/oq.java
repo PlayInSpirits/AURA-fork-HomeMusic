@@ -5,44 +5,44 @@ package defpackage;
 public final class oq implements oi3 {
     public final /* synthetic */ pq n;
 
-    public oq(pq r1) {
-        this.n = r1;
+    public oq(pq pqVar) {
+        this.n = pqVar;
     }
 
     @Override // defpackage.oi3
-    public final void F(do2 r2) {
-        r2.getClass();
-        pq r1 = this.n;
-        kn2 r3 = r1.p;
-        if (r3 == null) goto L6;
-        r1.f(r3, false);
-        return;
+    public final void F(do2 do2Var) {
+        do2Var.getClass();
+        pq pqVar = this.n;
+        kn2 kn2Var = pqVar.p;
+        if (kn2Var != null) {
+            pqVar.f(kn2Var, false);
+        }
     }
 
     @Override // defpackage.oi3
-    public final void f(int r2) {
-        pq r1 = this.n;
-        kn2 r3 = r1.p;
-        if (r3 == null) goto L6;
-        r1.f(r3, false);
-        return;
+    public final void f(int i) {
+        pq pqVar = this.n;
+        kn2 kn2Var = pqVar.p;
+        if (kn2Var != null) {
+            pqVar.f(kn2Var, false);
+        }
     }
 
     @Override // defpackage.oi3
-    public final void t(int r1, gn2 r2) {
-        pq r0 = this.n;
-        kn2 r3 = r0.p;
-        if (r3 == null) goto L6;
-        r0.f(r3, false);
-        return;
+    public final void t(int i, gn2 gn2Var) {
+        pq pqVar = this.n;
+        kn2 kn2Var = pqVar.p;
+        if (kn2Var != null) {
+            pqVar.f(kn2Var, false);
+        }
     }
 
     @Override // defpackage.oi3
-    public final void x(boolean r2) {
-        pq r1 = this.n;
-        kn2 r3 = r1.p;
-        if (r3 == null) goto L6;
-        r1.f(r3, false);
-        return;
+    public final void x(boolean z) {
+        pq pqVar = this.n;
+        kn2 kn2Var = pqVar.p;
+        if (kn2Var != null) {
+            pqVar.f(kn2Var, false);
+        }
     }
 }

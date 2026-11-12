@@ -1,14 +1,13 @@
 package defpackage;
 
 import android.graphics.Path;
-import android.graphics.PathMeasure;
 import java.util.List;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class he3 extends i35 {
     public uo b;
-    public float c;
+    public float c = 1.0f;
     public List d;
     public float e;
     public float f;
@@ -29,8 +28,7 @@ public final class he3 extends i35 {
     public final r72 u;
 
     public he3() {
-        this.c = 1.0f;
-        int r1 = c45.a;
+        int i = c45.a;
         this.d = u01.n;
         this.e = 1.0f;
         this.h = 0;
@@ -39,110 +37,85 @@ public final class he3 extends i35 {
         this.l = 1.0f;
         this.n = true;
         this.o = true;
-        nc r0 = pc.a();
-        this.r = r0;
-        this.s = r0;
-        rd2 r2 = new rd2(4);
-        this.u = rr2.K(b92.n, r2);
+        nc ncVarA = pc.a();
+        this.r = ncVarA;
+        this.s = ncVarA;
+        this.u = rr2.K(b92.n, new rd2(4));
     }
 
     @Override // defpackage.i35
-    public final void a(sv0 r14) {
-        if (this.n == false) goto L6;
-        gh0.E(this.d, this.r);
-        e();
-    L8:
+    public final void a(sv0 sv0Var) {
+        sv0 sv0Var2;
+        if (this.n) {
+            gh0.E(this.d, this.r);
+            e();
+        } else if (this.p) {
+            e();
+        }
         this.n = false;
         this.p = false;
-        uo r3 = this.b;
-        if (r3 == null) goto L11;
-        sv0 r1 = r14;
-        sv0.I(r1, this.s, r3, this.c, null, 56);
-    L12:
-        uo r9 = this.g;
-        if (r9 == null) goto L22;
-        ym4 r15 = this.q;
-        if (this.o == true) goto L19;
-        if (r15 == null) goto L19;
-    L18:
-        ym4 r11 = r15;
-        sv0 r7 = r1;
-        sv0.I(r7, this.s, r9, this.e, r11, 48);
-        return;
-    L19:
-        r15 = new ym4(this.f, this.j, this.h, this.i);
-        this.q = r15;
-        this.o = false;
-        goto L18
-    L22:
-        return;
-    L11:
-        r1 = r14;
-        goto L12
-    L6:
-        if (this.p == false) goto L8;
-        e();
-        goto L8
+        uo uoVar = this.b;
+        if (uoVar != null) {
+            sv0Var2 = sv0Var;
+            sv0.I(sv0Var2, this.s, uoVar, this.c, null, 56);
+        } else {
+            sv0Var2 = sv0Var;
+        }
+        uo uoVar2 = this.g;
+        if (uoVar2 != null) {
+            ym4 ym4Var = this.q;
+            if (this.o || ym4Var == null) {
+                ym4Var = new ym4(this.f, this.j, this.h, this.i);
+                this.q = ym4Var;
+                this.o = false;
+            }
+            sv0.I(sv0Var2, this.s, uoVar2, this.e, ym4Var, 48);
+        }
     }
 
     public final void e() {
-        float r0 = this.k;
-        nc r2 = this.r;
-        if (r0 != 0.0f) goto L9;
-        if (this.l != 1.0f) goto L9;
-        this.s = r2;
-        return;
-    L9:
-        if (h12.c(this.s, r2) == false) goto L11;
-        this.s = pc.a();
-    L20:
-        r72 r1 = this.u;
-        PathMeasure r5 = ((oc) r1.getValue()).a;
-        if (r2 == null) goto L23;
-        Path r3 = r2.a;
-    L24:
-        r5.setPath(r3, false);
-        float r4 = ((oc) r1.getValue()).a.getLength();
-        float r6 = this.k;
-        float r7 = this.m;
-        float r8 = ((r6 + r7) % 1.0f) * r4;
-        float r9 = ((this.l + r7) % 1.0f) * r4;
-        if (r8 <= r9) goto L32;
-        nc r10 = this.t;
-        if (r10 != null) goto L30;
-        r10 = pc.a();
-        this.t = r10;
-    L30:
-        Path r11 = r10.a;
-        r11.reset();
-        ((oc) r1.getValue()).a(r8, r4, r10);
-        nc.a(this.s, r10);
-        r11.reset();
-        ((oc) r1.getValue()).a(0.0f, r9, r10);
-        nc.a(this.s, r10);
-        return;
-    L32:
-        ((oc) r1.getValue()).a(r8, r9, this.s);
-        return;
-    L23:
-        r3 = null;
-        goto L24
-    L11:
-        Path.FillType r12 = this.s.a.getFillType();
-        Path.FillType r13 = Path.FillType.EVEN_ODD;
-        if (r12 != r13) goto L14;
-        boolean r14 = true;
-    L15:
-        this.s.a.rewind();
-        Path r15 = this.s.a;
-        if (r14 == true) goto L19;
-        r13 = Path.FillType.WINDING;
-    L19:
-        r15.setFillType(r13);
-        goto L20
-    L14:
-        r14 = false;
-        goto L15
+        float f = this.k;
+        nc ncVar = this.r;
+        if (f == 0.0f && this.l == 1.0f) {
+            this.s = ncVar;
+            return;
+        }
+        if (h12.c(this.s, ncVar)) {
+            this.s = pc.a();
+        } else {
+            Path.FillType fillType = this.s.a.getFillType();
+            Path.FillType fillType2 = Path.FillType.EVEN_ODD;
+            boolean z = fillType == fillType2;
+            this.s.a.rewind();
+            Path path = this.s.a;
+            if (!z) {
+                fillType2 = Path.FillType.WINDING;
+            }
+            path.setFillType(fillType2);
+        }
+        r72 r72Var = this.u;
+        ((oc) r72Var.getValue()).a.setPath(ncVar != null ? ncVar.a : null, false);
+        float length = ((oc) r72Var.getValue()).a.getLength();
+        float f2 = this.k;
+        float f3 = this.m;
+        float f4 = ((f2 + f3) % 1.0f) * length;
+        float f5 = ((this.l + f3) % 1.0f) * length;
+        if (f4 <= f5) {
+            ((oc) r72Var.getValue()).a(f4, f5, this.s);
+            return;
+        }
+        nc ncVarA = this.t;
+        if (ncVarA == null) {
+            ncVarA = pc.a();
+            this.t = ncVarA;
+        }
+        Path path2 = ncVarA.a;
+        path2.reset();
+        ((oc) r72Var.getValue()).a(f4, length, ncVarA);
+        nc.a(this.s, ncVarA);
+        path2.reset();
+        ((oc) r72Var.getValue()).a(0.0f, f5, ncVarA);
+        nc.a(this.s, ncVarA);
     }
 
     public final String toString() {

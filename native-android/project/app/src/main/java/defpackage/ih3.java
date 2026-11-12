@@ -11,65 +11,46 @@ import java.util.UUID;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class ih3 {
-    public static String a(long r3) {
-        SimpleDateFormat r0 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.US);
-        r0.setTimeZone(TimeZone.getTimeZone("UTC"));
-        String r4 = r0.format(new Date(r3));
-        r4.getClass();
-        return r4;
+    public static String a(long j) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.US);
+        simpleDateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
+        String str = simpleDateFormat.format(new Date(j));
+        str.getClass();
+        return str;
     }
 
-    public static PlayEvent b(String r30, String r31, String r32, long r33, Long r35, Long r36, String r37, String r38, String r39, Long r40, String r41, Map r42, String r43, String r44) {
-        r30.getClass();
-        r31.getClass();
-        boolean r1 = xm4.k0(r31, "hub:", false);
-        String r5 = UUID.randomUUID().toString();
-        r5.getClass();
-        String r6 = a(r33);
-        Double r3 = null;
-        if (r1 == false) goto L5;
-        String r8 = qm4.z0(r31, "hub:");
-    L6:
-        if (r1 == false) goto L8;
-        String r9 = null;
-    L10:
-        if (r35 == null) goto L15;
-        long r12 = r35.longValue();
-        if (r12 >= 0) goto L14;
-        r12 = 0;
-    L14:
-        Double r2 = Double.valueOf(r12 / 1000.0d);
-    L16:
-        if (r36 == null) goto L24;
-        if (r36.longValue() <= 0) goto L20;
-        Long r4 = r36;
-    L21:
-        if (r4 == null) goto L24;
-        r3 = Double.valueOf(r4.longValue() / 1000.0d);
-        goto L24
-    L20:
-        r4 = null;
-    L24:
-        return new PlayEvent(r5, r6, r30, r8, r9, r2, r3, r37, r32, null, null, null, null, null, false, r41, r38, r39, r40, r42, null, r43, r44, 1080832, null);
-    L15:
-        r2 = null;
-        goto L16
-    L8:
-        r9 = r31;
-        goto L10
-    L5:
-        r8 = null;
-        goto L6
+    public static PlayEvent b(String str, String str2, String str3, long j, Long l, Long l2, String str4, String str5, String str6, Long l3, String str7, Map map, String str8, String str9) {
+        Double dValueOf;
+        str.getClass();
+        str2.getClass();
+        boolean zK0 = xm4.k0(str2, "hub:", false);
+        String string = UUID.randomUUID().toString();
+        string.getClass();
+        String strA = a(j);
+        Double dValueOf2 = null;
+        String strZ0 = zK0 ? qm4.z0(str2, "hub:") : null;
+        String str10 = zK0 ? null : str2;
+        if (l != null) {
+            long jLongValue = l.longValue();
+            if (jLongValue < 0) {
+                jLongValue = 0;
+            }
+            dValueOf = Double.valueOf(jLongValue / 1000.0d);
+        } else {
+            dValueOf = null;
+        }
+        if (l2 != null) {
+            Long l4 = l2.longValue() > 0 ? l2 : null;
+            if (l4 != null) {
+                dValueOf2 = Double.valueOf(l4.longValue() / 1000.0d);
+            }
+        }
+        return new PlayEvent(string, strA, str, strZ0, str10, dValueOf, dValueOf2, str4, str3, null, null, null, null, null, false, str7, str5, str6, l3, map, null, str8, str9, 1080832, null);
     }
 
-    public static /* synthetic */ PlayEvent c(ih3 r16, String r17, String r18, String r19, long r20, String r22, int r23) {
-        if ((r23 & 64) == 0) goto L5;
-        String r8 = null;
-    L6:
-        r16.getClass();
-        return b(r17, r18, r19, r20, null, null, r8, null, null, null, null, null, null, null);
-    L5:
-        r8 = r22;
-        goto L6
+    public static /* synthetic */ PlayEvent c(ih3 ih3Var, String str, String str2, String str3, long j, String str4, int i) {
+        String str5 = (i & 64) != 0 ? null : str4;
+        ih3Var.getClass();
+        return b(str, str2, str3, j, null, null, str5, null, null, null, null, null, null, null);
     }
 }

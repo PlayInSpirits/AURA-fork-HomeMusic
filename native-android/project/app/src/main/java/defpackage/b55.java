@@ -17,29 +17,21 @@ import java.util.concurrent.TimeUnit;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class b55 implements t04 {
-    public static final ab3 d = null;
-    public static final ab3 e = null;
-    public static final xi4 f = null;
-    public static final List g = null;
+    public static final ab3 d = new ab3("com.bumptech.glide.load.resource.bitmap.VideoBitmapDecode.TargetFrame", -1L, new h45());
+    public static final ab3 e = new ab3("com.bumptech.glide.load.resource.bitmap.VideoBitmapDecode.FrameOption", 2, new oz4(2));
+    public static final xi4 f = new xi4(29);
+    public static final List g = Collections.unmodifiableList(Arrays.asList("TP1A", "TD1A.220804.031"));
     public final y45 a;
     public final zs b;
-    public final xi4 c;
+    public final xi4 c = f;
 
-    static {
-        d = new ab3("com.bumptech.glide.load.resource.bitmap.VideoBitmapDecode.TargetFrame", -1L, new h45());
-        e = new ab3("com.bumptech.glide.load.resource.bitmap.VideoBitmapDecode.FrameOption", 2, new oz4(2));
-        f = new xi4(29);
-        g = Collections.unmodifiableList(Arrays.asList(new String[]{"TP1A", "TD1A.220804.031"}));
-    }
-
-    public b55(zs r1, y45 r2) {
-        this.b = r1;
-        this.a = r2;
-        this.c = f;
+    public b55(zs zsVar, y45 y45Var) {
+        this.b = zsVar;
+        this.a = y45Var;
     }
 
     @Override // defpackage.t04
-    public final boolean a(Object r1, db3 r2) {
+    public final boolean a(Object obj, db3 db3Var) {
         return true;
     }
 
@@ -55,195 +47,280 @@ public final class b55 implements t04 {
     	at jadx.core.dex.visitors.typeinference.FixTypesVisitor.visit(FixTypesVisitor.java:94)
      */
     @Override // defpackage.t04
-    public final q04 b(Object r16, int r17, int r18, db3 r19) {
-        TimeUnit r9 = TimeUnit.DAYS;
-        long r3 = ((Long) r19.c(d)).longValue();
-        if (r3 < 0) goto L5;
-    L9:
-        int r2 = (Integer) r19.c(e);
-        if (r2 != null) goto L12;
-        r2 = 2;
-    L12:
-        gu0 r1 = (gu0) r19.c(gu0.g);
-        if (r1 != null) goto L15;
-        r1 = gu0.f;
-    L15:
-        gu0 r8 = r1;
+    public final q04 b(Object obj, int i, int i2, db3 db3Var) throws Exception {
+        boolean zIsTerminated;
+        boolean zIsTerminated2;
+        TimeUnit timeUnit = TimeUnit.DAYS;
+        long jLongValue = ((Long) db3Var.c(d)).longValue();
+        if (jLongValue < 0 && jLongValue != -1) {
+            kf2.n(b11.k("Requested frame must be non-negative, or DEFAULT_FRAME, given: ", jLongValue));
+            return null;
+        }
+        int i3 = (Integer) db3Var.c(e);
+        if (i3 == null) {
+            i3 = 2;
+        }
+        gu0 gu0Var = (gu0) db3Var.c(gu0.g);
+        if (gu0Var == null) {
+            gu0Var = gu0.f;
+        }
+        gu0 gu0Var2 = gu0Var;
         this.c.getClass();
-        Integer r4 = r2;
-        MediaMetadataRetriever r5 = new MediaMetadataRetriever();
-        boolean r13 = false;
-        this.a.f(r5, r16);     // Catch: Throwable -> L41
-        Bitmap r6 = c(r16, r5, r3, r4.intValue(), r17, r18, r8);     // Catch: Throwable -> L41
-        if (Build.VERSION.SDK_INT >= 29) goto L20;
-        r5.release();
-    L40:
-        return at.c(this.b, r6);
-    L20:
-        if ((r5 instanceof AutoCloseable) == false) goto L23;
-        r5.close();
-        goto L40
-    L23:
-        if ((r5 instanceof ExecutorService) == false) goto L37;
-        ExecutorService r7 = (ExecutorService) r5;
-        if (r7 == ForkJoinPool.commonPool()) goto L40;
-        boolean r10 = r7.isTerminated();
-        if (r10 == true) goto L40;
-        r7.shutdown();
-    L30:
-        if (r10 == true) goto L35;
-        r10 = r7.awaitTermination(1, r9);     // Catch: InterruptedException -> L33
-    L33:
-        if (r13 == true) goto L30;
-        r7.shutdownNow();
-        r13 = true;
-        goto L30
-    L35:
-        if (r13 == false) goto L40;
-        Thread.currentThread().interrupt();
-        goto L40
-    L37:
-        r5.release();
-    L41:
-        th = move-exception;
-        if (Build.VERSION.SDK_INT >= 29) goto L45;
-        r5.release();
-    L63:
-        throw th;
-    L45:
-        if ((r5 instanceof AutoCloseable) == false) goto L47;
-        r5.close();
-        goto L63
-    L47:
-        if ((r5 instanceof ExecutorService) == false) goto L60;
-        ExecutorService r11 = (ExecutorService) r5;
-        if (r11 == ForkJoinPool.commonPool()) goto L63;
-        boolean r12 = r11.isTerminated();
-        if (r12 == true) goto L63;
-        r11.shutdown();
-    L53:
-        if (r12 == true) goto L58;
-        r12 = r11.awaitTermination(1, r9);     // Catch: InterruptedException -> L56
-    L56:
-        if (r13 == true) goto L53;
-        r11.shutdownNow();
-        r13 = true;
-        goto L53
-    L58:
-        if (r13 == false) goto L63;
-        Thread.currentThread().interrupt();
-        goto L63
-    L60:
-        r5.release();
-        goto L63
-    L5:
-        if (r3 == (-1)) goto L9;
-        kf2.n(b11.k("Requested frame must be non-negative, or DEFAULT_FRAME, given: ", r3));
-        return null;
+        Integer num = i3;
+        MediaMetadataRetriever mediaMetadataRetriever = new MediaMetadataRetriever();
+        boolean z = false;
+        try {
+            this.a.f(mediaMetadataRetriever, obj);
+            Bitmap bitmapC = c(obj, mediaMetadataRetriever, jLongValue, num.intValue(), i, i2, gu0Var2);
+            if (Build.VERSION.SDK_INT < 29) {
+                mediaMetadataRetriever.release();
+            } else if (mediaMetadataRetriever instanceof AutoCloseable) {
+                mediaMetadataRetriever.close();
+            } else if (mediaMetadataRetriever instanceof ExecutorService) {
+                ExecutorService executorService = (ExecutorService) mediaMetadataRetriever;
+                if (executorService != ForkJoinPool.commonPool() && !(zIsTerminated2 = executorService.isTerminated())) {
+                    executorService.shutdown();
+                    while (!zIsTerminated2) {
+                        try {
+                            zIsTerminated2 = executorService.awaitTermination(1L, timeUnit);
+                        } catch (InterruptedException unused) {
+                            if (!z) {
+                                executorService.shutdownNow();
+                                z = true;
+                            }
+                        }
+                    }
+                    if (z) {
+                        Thread.currentThread().interrupt();
+                    }
+                }
+            } else {
+                mediaMetadataRetriever.release();
+            }
+            return at.c(this.b, bitmapC);
+        } catch (Throwable th) {
+            if (Build.VERSION.SDK_INT < 29) {
+                mediaMetadataRetriever.release();
+            } else if (mediaMetadataRetriever instanceof AutoCloseable) {
+                mediaMetadataRetriever.close();
+            } else if (mediaMetadataRetriever instanceof ExecutorService) {
+                ExecutorService executorService2 = (ExecutorService) mediaMetadataRetriever;
+                if (executorService2 != ForkJoinPool.commonPool() && !(zIsTerminated = executorService2.isTerminated())) {
+                    executorService2.shutdown();
+                    while (!zIsTerminated) {
+                        try {
+                            zIsTerminated = executorService2.awaitTermination(1L, timeUnit);
+                        } catch (InterruptedException unused2) {
+                            if (!z) {
+                                executorService2.shutdownNow();
+                                z = true;
+                            }
+                        }
+                    }
+                    if (z) {
+                        Thread.currentThread().interrupt();
+                    }
+                }
+            } else {
+                mediaMetadataRetriever.release();
+            }
+            throw th;
+        }
     }
 
-    public final Bitmap c(Object r14, MediaMetadataRetriever r15, long r16, int r18, int r19, int r20, gu0 r21) {
-        String r0 = Build.DEVICE;
-        Bitmap r8 = null;
-        if (r0 == null) goto L35;
-        if (r0.matches(".+_cheets|cheets_.+") == false) goto L35;
-    L21:
-        th = th;
-        MediaExtractor r5 = null;
-    L93:
-    L27:
-        th = move-exception;
-        if (r5 == null) goto L33;
-        r5.release();
-    L33:
-        throw th;
-    L24:
-        if (Log.isLoggable("VideoDecoder", 3) == false) goto L29;
-        Log.d("VideoDecoder", "Exception trying to extract track info for a webm video on CrOS.", th);     // Catch: Throwable -> L27
-    L29:
-        if (r5 == null) goto L35;
-    L20:
-        r5.release();
-        goto L35
-    L8:
-        if ("video/webm".equals(r15.extractMetadata(12)) == false) goto L35;
-        r5 = new MediaExtractor();     // Catch: Throwable -> L21
-        this.a.c(r5, r14);     // Catch: Throwable -> L18
-        int r1 = r5.getTrackCount();     // Catch: Throwable -> L18
-        int r6 = 0;
-    L12:
-        if (r6 >= r1) goto L20;
-        if ("video/x-vnd.on2.vp8".equals(r5.getTrackFormat(r6).getString("mime")) == true) goto L16;
-        r6 = r6 + 1;
-        goto L12
-    L16:
-        r5.release();
-        kf2.o("Cannot decode VP8 video on CrOS.");
-        return null;
-    L18:
-        th = th;
-    L35:
-        if (Build.VERSION.SDK_INT >= 27) goto L37;
-    L53:
-        if (r8 != null) goto L56;
-        r8 = r15.getFrameAtTime(r16, r18);
-    L56:
-        if (Build.MODEL.startsWith("Pixel") == true) goto L58;
-    L65:
-        int r2 = Build.VERSION.SDK_INT;
-        if (r2 < 30) goto L83;
-        if (r2 >= 33) goto L83;
-    L87:
-        String r3 = r15.extractMetadata(36);     // Catch: NumberFormatException -> L80
-        String r4 = r15.extractMetadata(35);     // Catch: NumberFormatException -> L80
-        int r7 = Integer.parseInt(r3);     // Catch: NumberFormatException -> L80
-        int r9 = Integer.parseInt(r4);     // Catch: NumberFormatException -> L80
-        if (r7 == 7) goto L72;
-        if (r7 != 6) goto L83;
-    L72:
-        if (r9 != 6) goto L83;
-        if (Math.abs(Integer.parseInt(r15.extractMetadata(24))) != 180) goto L83;
-        if (Log.isLoggable("VideoDecoder", 3) == false) goto L79;
-        Log.d("VideoDecoder", "Applying HDR 180 deg thumbnail correction");
-    L79:
-        Matrix r10 = new Matrix();
-        r10.postRotate(180.0f, r8.getWidth() / 2.0f, r8.getHeight() / 2.0f);
-        r8 = Bitmap.createBitmap(r8, 0, 0, r8.getWidth(), r8.getHeight(), r10, true);
-    L81:
-        if (Log.isLoggable("VideoDecoder", 3) == false) goto L83;
-        Log.d("VideoDecoder", "Exception trying to extract HDR transfer function or rotation");
-    L83:
-        if (r8 == null) goto L86;
-        return r8;
-    L86:
+    /* JADX WARN: Code duplicated, block: B:46:0x00a9  */
+    /* JADX WARN: Code duplicated, block: B:54:0x00d5  */
+    /* JADX WARN: Code duplicated, block: B:65:0x0104  */
+    /* JADX WARN: Code duplicated, block: B:67:0x010a A[ADDED_TO_REGION] */
+    /* JADX WARN: Code duplicated, block: B:71:0x0124 A[ADDED_TO_REGION] */
+    /* JADX WARN: Code duplicated, block: B:72:0x0126 A[ADDED_TO_REGION] */
+    /* JADX WARN: Code duplicated, block: B:78:0x013e  */
+    /* JADX WARN: Code duplicated, block: B:84:0x0183 A[RETURN] */
+    /* JADX WARN: Code duplicated, block: B:85:0x0184  */
+    public final Bitmap c(Object obj, MediaMetadataRetriever mediaMetadataRetriever, long j, int i, int i2, int i3, gu0 gu0Var) {
+        int i4;
+        int i5;
+        int i6;
+        int i7;
+        int i8;
+        MediaExtractor mediaExtractor;
+        String str = Build.DEVICE;
+        Bitmap bitmapCreateBitmap = null;
+        if (str != null && str.matches(".+_cheets|cheets_.+")) {
+            try {
+                if ("video/webm".equals(mediaMetadataRetriever.extractMetadata(12))) {
+                    mediaExtractor = new MediaExtractor();
+                    try {
+                        this.a.c(mediaExtractor, obj);
+                        int trackCount = mediaExtractor.getTrackCount();
+                        for (int i9 = 0; i9 < trackCount; i9++) {
+                            if ("video/x-vnd.on2.vp8".equals(mediaExtractor.getTrackFormat(i9).getString("mime"))) {
+                                mediaExtractor.release();
+                                kf2.o("Cannot decode VP8 video on CrOS.");
+                                return null;
+                            }
+                        }
+                    } catch (Throwable th) {
+                        th = th;
+                        try {
+                            if (Log.isLoggable("VideoDecoder", 3)) {
+                                Log.d("VideoDecoder", "Exception trying to extract track info for a webm video on CrOS.", th);
+                            }
+                            if (mediaExtractor != null) {
+                            }
+                            if (Build.VERSION.SDK_INT >= 27) {
+                                try {
+                                    i6 = Integer.parseInt(mediaMetadataRetriever.extractMetadata(18));
+                                    i7 = Integer.parseInt(mediaMetadataRetriever.extractMetadata(19));
+                                    i8 = Integer.parseInt(mediaMetadataRetriever.extractMetadata(24));
+                                    if (i8 != 90) {
+                                        i7 = i6;
+                                        i6 = i7;
+                                    } else {
+                                        i7 = i6;
+                                        i6 = i7;
+                                    }
+                                    float fB = gu0Var.b(i6, i7, i2, i3);
+                                    bitmapCreateBitmap = mediaMetadataRetriever.getScaledFrameAtTime(j, i, Math.round(i6 * fB), Math.round(fB * i7));
+                                } catch (Throwable th2) {
+                                    if (Log.isLoggable("VideoDecoder", 3)) {
+                                        Log.d("VideoDecoder", "Exception trying to decode a scaled frame on oreo+, falling back to a fullsize frame", th2);
+                                    }
+                                }
+                            }
+                            if (bitmapCreateBitmap == null) {
+                                bitmapCreateBitmap = mediaMetadataRetriever.getFrameAtTime(j, i);
+                            }
+                            if (Build.MODEL.startsWith("Pixel")) {
+                                i4 = Build.VERSION.SDK_INT;
+                                if (i4 >= 30) {
+                                    try {
+                                        String strExtractMetadata = mediaMetadataRetriever.extractMetadata(36);
+                                        String strExtractMetadata2 = mediaMetadataRetriever.extractMetadata(35);
+                                        i5 = Integer.parseInt(strExtractMetadata);
+                                        int i10 = Integer.parseInt(strExtractMetadata2);
+                                        if (i5 != 7) {
+                                            if (Log.isLoggable("VideoDecoder", 3)) {
+                                                Log.d("VideoDecoder", "Applying HDR 180 deg thumbnail correction");
+                                            }
+                                            Matrix matrix = new Matrix();
+                                            matrix.postRotate(180.0f, bitmapCreateBitmap.getWidth() / 2.0f, bitmapCreateBitmap.getHeight() / 2.0f);
+                                            bitmapCreateBitmap = Bitmap.createBitmap(bitmapCreateBitmap, 0, 0, bitmapCreateBitmap.getWidth(), bitmapCreateBitmap.getHeight(), matrix, true);
+                                        } else {
+                                            if (Log.isLoggable("VideoDecoder", 3)) {
+                                                Log.d("VideoDecoder", "Applying HDR 180 deg thumbnail correction");
+                                            }
+                                            Matrix matrix2 = new Matrix();
+                                            matrix2.postRotate(180.0f, bitmapCreateBitmap.getWidth() / 2.0f, bitmapCreateBitmap.getHeight() / 2.0f);
+                                            bitmapCreateBitmap = Bitmap.createBitmap(bitmapCreateBitmap, 0, 0, bitmapCreateBitmap.getWidth(), bitmapCreateBitmap.getHeight(), matrix2, true);
+                                        }
+                                    } catch (NumberFormatException unused) {
+                                        if (Log.isLoggable("VideoDecoder", 3)) {
+                                            Log.d("VideoDecoder", "Exception trying to extract HDR transfer function or rotation");
+                                        }
+                                    }
+                                }
+                            } else {
+                                i4 = Build.VERSION.SDK_INT;
+                                if (i4 >= 30) {
+                                    String strExtractMetadata3 = mediaMetadataRetriever.extractMetadata(36);
+                                    String strExtractMetadata4 = mediaMetadataRetriever.extractMetadata(35);
+                                    i5 = Integer.parseInt(strExtractMetadata3);
+                                    int i11 = Integer.parseInt(strExtractMetadata4);
+                                    if (i5 != 7) {
+                                        if (Log.isLoggable("VideoDecoder", 3)) {
+                                            Log.d("VideoDecoder", "Applying HDR 180 deg thumbnail correction");
+                                        }
+                                        Matrix matrix3 = new Matrix();
+                                        matrix3.postRotate(180.0f, bitmapCreateBitmap.getWidth() / 2.0f, bitmapCreateBitmap.getHeight() / 2.0f);
+                                        bitmapCreateBitmap = Bitmap.createBitmap(bitmapCreateBitmap, 0, 0, bitmapCreateBitmap.getWidth(), bitmapCreateBitmap.getHeight(), matrix3, true);
+                                    } else {
+                                        if (Log.isLoggable("VideoDecoder", 3)) {
+                                            Log.d("VideoDecoder", "Applying HDR 180 deg thumbnail correction");
+                                        }
+                                        Matrix matrix4 = new Matrix();
+                                        matrix4.postRotate(180.0f, bitmapCreateBitmap.getWidth() / 2.0f, bitmapCreateBitmap.getHeight() / 2.0f);
+                                        bitmapCreateBitmap = Bitmap.createBitmap(bitmapCreateBitmap, 0, 0, bitmapCreateBitmap.getWidth(), bitmapCreateBitmap.getHeight(), matrix4, true);
+                                    }
+                                }
+                            }
+                            if (bitmapCreateBitmap != null) {
+                                return bitmapCreateBitmap;
+                            }
+                            throw new a55("MediaMetadataRetriever failed to retrieve a frame without throwing, check the adb logs for .*MetadataRetriever.* prior to this exception for details");
+                        } catch (Throwable th3) {
+                            if (mediaExtractor != null) {
+                                mediaExtractor.release();
+                            }
+                            throw th3;
+                        }
+                    }
+                    mediaExtractor.release();
+                }
+            } catch (Throwable th4) {
+                th = th4;
+                mediaExtractor = null;
+            }
+        }
+        if (Build.VERSION.SDK_INT >= 27 && i2 != Integer.MIN_VALUE && i3 != Integer.MIN_VALUE && gu0Var != gu0.e) {
+            i6 = Integer.parseInt(mediaMetadataRetriever.extractMetadata(18));
+            i7 = Integer.parseInt(mediaMetadataRetriever.extractMetadata(19));
+            i8 = Integer.parseInt(mediaMetadataRetriever.extractMetadata(24));
+            if (i8 != 90 || i8 == 270) {
+                i7 = i6;
+                i6 = i7;
+            }
+            float fB2 = gu0Var.b(i6, i7, i2, i3);
+            bitmapCreateBitmap = mediaMetadataRetriever.getScaledFrameAtTime(j, i, Math.round(i6 * fB2), Math.round(fB2 * i7));
+        }
+        if (bitmapCreateBitmap == null) {
+            bitmapCreateBitmap = mediaMetadataRetriever.getFrameAtTime(j, i);
+        }
+        if (Build.MODEL.startsWith("Pixel") || Build.VERSION.SDK_INT != 33) {
+            i4 = Build.VERSION.SDK_INT;
+            if (i4 >= 30 && i4 < 33) {
+                String strExtractMetadata5 = mediaMetadataRetriever.extractMetadata(36);
+                String strExtractMetadata6 = mediaMetadataRetriever.extractMetadata(35);
+                i5 = Integer.parseInt(strExtractMetadata5);
+                int i12 = Integer.parseInt(strExtractMetadata6);
+                if ((i5 != 7 || i5 == 6) && i12 == 6 && Math.abs(Integer.parseInt(mediaMetadataRetriever.extractMetadata(24))) == 180) {
+                    if (Log.isLoggable("VideoDecoder", 3)) {
+                        Log.d("VideoDecoder", "Applying HDR 180 deg thumbnail correction");
+                    }
+                    Matrix matrix5 = new Matrix();
+                    matrix5.postRotate(180.0f, bitmapCreateBitmap.getWidth() / 2.0f, bitmapCreateBitmap.getHeight() / 2.0f);
+                    bitmapCreateBitmap = Bitmap.createBitmap(bitmapCreateBitmap, 0, 0, bitmapCreateBitmap.getWidth(), bitmapCreateBitmap.getHeight(), matrix5, true);
+                }
+            }
+        } else {
+            Iterator it = g.iterator();
+            do {
+                if (it.hasNext()) {
+                }
+            } while (!Build.ID.startsWith((String) it.next()));
+            String strExtractMetadata7 = mediaMetadataRetriever.extractMetadata(36);
+            String strExtractMetadata8 = mediaMetadataRetriever.extractMetadata(35);
+            i5 = Integer.parseInt(strExtractMetadata7);
+            int i13 = Integer.parseInt(strExtractMetadata8);
+            if (i5 != 7) {
+                if (Log.isLoggable("VideoDecoder", 3)) {
+                    Log.d("VideoDecoder", "Applying HDR 180 deg thumbnail correction");
+                }
+                Matrix matrix6 = new Matrix();
+                matrix6.postRotate(180.0f, bitmapCreateBitmap.getWidth() / 2.0f, bitmapCreateBitmap.getHeight() / 2.0f);
+                bitmapCreateBitmap = Bitmap.createBitmap(bitmapCreateBitmap, 0, 0, bitmapCreateBitmap.getWidth(), bitmapCreateBitmap.getHeight(), matrix6, true);
+            } else {
+                if (Log.isLoggable("VideoDecoder", 3)) {
+                    Log.d("VideoDecoder", "Applying HDR 180 deg thumbnail correction");
+                }
+                Matrix matrix7 = new Matrix();
+                matrix7.postRotate(180.0f, bitmapCreateBitmap.getWidth() / 2.0f, bitmapCreateBitmap.getHeight() / 2.0f);
+                bitmapCreateBitmap = Bitmap.createBitmap(bitmapCreateBitmap, 0, 0, bitmapCreateBitmap.getWidth(), bitmapCreateBitmap.getHeight(), matrix7, true);
+            }
+        }
+        if (bitmapCreateBitmap != null) {
+            return bitmapCreateBitmap;
+        }
         throw new a55("MediaMetadataRetriever failed to retrieve a frame without throwing, check the adb logs for .*MetadataRetriever.* prior to this exception for details");
-    L58:
-        if (Build.VERSION.SDK_INT != 33) goto L65;
-        Iterator r11 = g.iterator();
-    L61:
-        if (r11.hasNext() == false) goto L83;
-        if (Build.ID.startsWith((String) r11.next()) == false) goto L61;
-    L37:
-        if (r19 == Integer.MIN_VALUE) goto L53;
-        if (r20 == Integer.MIN_VALUE) goto L53;
-        if (r21 == gu0.e) goto L53;
-        int r12 = Integer.parseInt(r15.extractMetadata(18));     // Catch: Throwable -> L49
-        int r13 = Integer.parseInt(r15.extractMetadata(19));     // Catch: Throwable -> L49
-        int r17 = Integer.parseInt(r15.extractMetadata(24));     // Catch: Throwable -> L49
-        if (r17 != 90) goto L45;
-    L46:
-        r13 = r12;
-        r12 = r13;
-    L47:
-        float r22 = r21.b(r12, r13, r19, r20);     // Catch: Throwable -> L49
-        r8 = un.a(r15, r16, r18, Math.round(r12 * r22), Math.round(r22 * r13));     // Catch: Throwable -> L49
-        goto L53
-    L45:
-        if (r17 != 270) goto L47;
-    L49:
-        th = move-exception;
-        if (Log.isLoggable("VideoDecoder", 3) == false) goto L53;
-        Log.d("VideoDecoder", "Exception trying to decode a scaled frame on oreo+, falling back to a fullsize frame", th);
-        goto L53
     }
 }

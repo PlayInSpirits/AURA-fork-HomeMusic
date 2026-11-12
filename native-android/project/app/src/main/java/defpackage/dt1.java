@@ -10,10 +10,10 @@ public final class dt1 {
     public final Child b;
     public final gn2 c;
 
-    public dt1(SmartRec r1, Child r2, gn2 r3) {
-        r1.getClass();
-        this.a = r1;
-        this.b = r2;
-        this.c = r3;
+    public dt1(SmartRec smartRec, Child child, gn2 gn2Var) {
+        smartRec.getClass();
+        this.a = smartRec;
+        this.b = child;
+        this.c = gn2Var;
     }
 }

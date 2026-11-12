@@ -11,16 +11,17 @@ import java.io.IOException;
 final class ParcelFileDescriptorRewinder$InternalRewinder {
     public final ParcelFileDescriptor a;
 
-    public ParcelFileDescriptorRewinder$InternalRewinder(ParcelFileDescriptor r1) {
-        this.a = r1;
+    public ParcelFileDescriptorRewinder$InternalRewinder(ParcelFileDescriptor parcelFileDescriptor) {
+        this.a = parcelFileDescriptor;
     }
 
-    public ParcelFileDescriptor rewind() {
-        ParcelFileDescriptor r4 = this.a;
-        Os.lseek(r4.getFileDescriptor(), 0, OsConstants.SEEK_SET);     // Catch: ErrnoException -> L5
-        return r4;
-    L5:
-        e = move-exception;
-        throw new IOException(e);
+    public ParcelFileDescriptor rewind() throws IOException {
+        ParcelFileDescriptor parcelFileDescriptor = this.a;
+        try {
+            Os.lseek(parcelFileDescriptor.getFileDescriptor(), 0L, OsConstants.SEEK_SET);
+            return parcelFileDescriptor;
+        } catch (ErrnoException e) {
+            throw new IOException(e);
+        }
     }
 }

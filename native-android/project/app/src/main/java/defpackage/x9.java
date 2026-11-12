@@ -9,21 +9,15 @@ public final class x9 implements sn {
     public final wn b;
     public final AutofillId c;
 
-    public x9(ra r1, wn r2) {
-        this.a = r1;
-        this.b = r2;
-        j3.o(r1);
-        hg3 r3 = bu.l(r1);
-        if (r3 == null) goto L5;
-        AutofillId r4 = tn.f(r3.o);
-    L6:
-        if (r4 == null) goto L10;
-        this.c = r4;
-        return;
-    L10:
-        throw xa3.l("Required value was null.");
-    L5:
-        r4 = null;
-        goto L6
+    public x9(ra raVar, wn wnVar) {
+        this.a = raVar;
+        this.b = wnVar;
+        raVar.setImportantForAutofill(1);
+        hg3 hg3VarL = bu.l(raVar);
+        AutofillId autofillIdF = hg3VarL != null ? tn.f(hg3VarL.o) : null;
+        if (autofillIdF == null) {
+            throw xa3.l("Required value was null.");
+        }
+        this.c = autofillIdF;
     }
 }

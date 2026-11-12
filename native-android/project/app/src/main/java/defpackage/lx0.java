@@ -4,10 +4,9 @@ package defpackage;
 /* JADX INFO: loaded from: classes.dex */
 public final class lx0 {
     public final or1 a;
-    public final ii b;
+    public final ii b = new ii();
 
-    public lx0(or1 r1) {
-        this.a = r1;
-        this.b = new ii();
+    public lx0(or1 or1Var) {
+        this.a = or1Var;
     }
 }

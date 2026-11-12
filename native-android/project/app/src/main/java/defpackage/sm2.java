@@ -5,29 +5,23 @@ import android.net.Uri;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class sm2 {
-    public static final String b = null;
+    public static final String b;
     public final Uri a;
 
     static {
-        String r0 = f35.a;
+        String str = f35.a;
         b = Integer.toString(0, 36);
     }
 
-    public sm2(rm2 r1) {
-        this.a = (Uri) r1.o;
+    public sm2(rm2 rm2Var) {
+        this.a = (Uri) rm2Var.o;
     }
 
-    public final boolean equals(Object r2) {
-        if (this != r2) goto L5;
-        return true;
-    L5:
-        if ((r2 instanceof sm2) == true) goto L8;
-        return false;
-    L8:
-        if (this.a.equals(((sm2) r2).a) == false) goto L11;
-        return true;
-    L11:
-        return false;
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        return (obj instanceof sm2) && this.a.equals(((sm2) obj).a);
     }
 
     public final int hashCode() {

@@ -1,31 +1,33 @@
 package defpackage;
 
+/* JADX WARN: Failed to restore enum class, 'enum' modifier and super class removed */
+/* JADX WARN: Unknown enum class pattern. Please report as an issue! */
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
-public final enum y62 extends Enum {
-    public static final y62 n = null;
-    public static final y62 o = null;
-    public static final y62 p = null;
-    public static final y62 q = null;
-    public static final y62 r = null;
-    public static final /* synthetic */ y62[] s = null;
+public final class y62 {
+    public static final y62 n;
+    public static final y62 o;
+    public static final y62 p;
+    public static final y62 q;
+    public static final y62 r;
+    public static final /* synthetic */ y62[] s;
 
     static {
-        y62 r0 = new y62("Measuring", 0);
-        n = r0;
-        y62 r1 = new y62("LookaheadMeasuring", 1);
-        o = r1;
-        y62 r2 = new y62("LayingOut", 2);
-        p = r2;
-        y62 r3 = new y62("LookaheadLayingOut", 3);
-        q = r3;
-        y62 r4 = new y62("Idle", 4);
-        r = r4;
-        s = new y62[]{r0, r1, r2, r3, r4};
+        y62 y62Var = new y62("Measuring", 0);
+        n = y62Var;
+        y62 y62Var2 = new y62("LookaheadMeasuring", 1);
+        o = y62Var2;
+        y62 y62Var3 = new y62("LayingOut", 2);
+        p = y62Var3;
+        y62 y62Var4 = new y62("LookaheadLayingOut", 3);
+        q = y62Var4;
+        y62 y62Var5 = new y62("Idle", 4);
+        r = y62Var5;
+        s = new y62[]{y62Var, y62Var2, y62Var3, y62Var4, y62Var5};
     }
 
-    public static y62 valueOf(String r1) {
-        return (y62) Enum.valueOf(y62.class, r1);
+    public static y62 valueOf(String str) {
+        return (y62) Enum.valueOf(y62.class, str);
     }
 
     public static y62[] values() {

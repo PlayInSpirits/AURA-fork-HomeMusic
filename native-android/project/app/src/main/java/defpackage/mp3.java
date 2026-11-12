@@ -10,31 +10,21 @@ public final class mp3 {
     public final int b;
     public final String c;
 
-    public mp3(Preference r2) {
-        this.c = r2.getClass().getName();
-        this.a = r2.S;
-        this.b = r2.T;
+    public mp3(Preference preference) {
+        this.c = preference.getClass().getName();
+        this.a = preference.S;
+        this.b = preference.T;
     }
 
-    public final boolean equals(Object r3) {
-        if ((r3 instanceof mp3) == false) goto L17;
-        mp3 r4 = (mp3) r3;
-        if (this.a == r4.a) goto L8;
-        return false;
-    L8:
-        if (this.b == r4.b) goto L10;
-        return false;
-    L10:
-        if (TextUtils.equals(this.c, r4.c) == false) goto L16;
-        return true;
-    L16:
-        return false;
-    L17:
-        return false;
+    public final boolean equals(Object obj) {
+        if (!(obj instanceof mp3)) {
+            return false;
+        }
+        mp3 mp3Var = (mp3) obj;
+        return this.a == mp3Var.a && this.b == mp3Var.b && TextUtils.equals(this.c, mp3Var.c);
     }
 
     public final int hashCode() {
-        int r0 = (((527 + this.a) * 31) + this.b) * 31;
-        return this.c.hashCode() + r0;
+        return this.c.hashCode() + ((((527 + this.a) * 31) + this.b) * 31);
     }
 }

@@ -5,16 +5,13 @@ package defpackage;
 public final class l95 extends te {
     @Override // defpackage.ue
     public final boolean b() {
-        if (super.b() == true) goto L6;
-    L12:
+        if (super.b() && g12.C("MULTI_PROCESS")) {
+            int i = j95.a;
+            if (m95.a.b()) {
+                return n95.a.getStatics().isMultiProcessEnabled();
+            }
+            er1.l("This method is not supported by the current version of the framework and the current WebView APK");
+        }
         return false;
-    L6:
-        if (g12.C("MULTI_PROCESS") == false) goto L12;
-        int r1 = j95.a;
-        if (m95.a.b() == true) goto L10;
-        er1.l("This method is not supported by the current version of the framework and the current WebView APK");
-        goto L12
-    L10:
-        return n95.a.getStatics().isMultiProcessEnabled();
     }
 }

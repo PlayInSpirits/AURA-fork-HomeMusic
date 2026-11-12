@@ -2,6 +2,7 @@ package defpackage;
 
 import android.media.session.MediaSession;
 import android.os.Handler;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
@@ -12,53 +13,42 @@ public final /* synthetic */ class w52 implements Runnable {
     public final /* synthetic */ MediaSession p;
     public final /* synthetic */ int q;
 
-    public /* synthetic */ w52(x52 r1, MediaSession r2, int r3, int r4) {
-        this.n = r4;
-        this.o = r1;
-        this.p = r2;
-        this.q = r3;
+    public /* synthetic */ w52(x52 x52Var, MediaSession mediaSession, int i, int i2) {
+        this.n = i2;
+        this.o = x52Var;
+        this.p = mediaSession;
+        this.q = i;
     }
 
     @Override // java.lang.Runnable
-    public final void run() {
-        int r0 = this.n;
-        int r3 = this.q;
-        MediaSession r4 = this.p;
-        x52 r5 = this.o;
-        switch(r0) {
-            case 0: goto L14;
-            default: goto L5;
-        };
-    L5:
-        if (z52.b == r5) goto L7;
-        return;
-    L7:
-        if (z52.a != r4) goto L25;
-        Handler r6 = u52.a;
-        if (u52.c().b == false) goto L26;
-        JSONObject r7 = new JSONObject().put("command", "device_volume").put("level", gb.m(r3, 0, u52.c().n));
-        r7.getClass();
-        u52.p(r7, new k52(3));
-        return;
-    L26:
-        return;
-    L25:
-        return;
-    L14:
-        if (z52.b == r5) goto L16;
-        return;
-    L16:
-        if (z52.a != r4) goto L28;
-        Handler r8 = u52.a;
-        if (u52.c().b == true) goto L20;
-        return;
-    L20:
-        if (gb.P(new Integer[]{1, -1}).contains(Integer.valueOf(r3)) == false) goto L30;
-        JSONObject r9 = new JSONObject().put("command", "device_volume").put("direction", r3);
-        r9.getClass();
-        u52.p(r9, new k52(4));
-        return;
-    L30:
-        return;
+    public final void run() throws JSONException {
+        int i = this.n;
+        int i2 = this.q;
+        MediaSession mediaSession = this.p;
+        x52 x52Var = this.o;
+        switch (i) {
+            case 0:
+                if (z52.b == x52Var && z52.a == mediaSession) {
+                    Handler handler = u52.a;
+                    if (u52.c().b && gb.P(1, -1).contains(Integer.valueOf(i2))) {
+                        JSONObject jSONObjectPut = new JSONObject().put("command", "device_volume").put("direction", i2);
+                        jSONObjectPut.getClass();
+                        u52.p(jSONObjectPut, new k52(4));
+                        break;
+                    }
+                }
+                break;
+            default:
+                if (z52.b == x52Var && z52.a == mediaSession) {
+                    Handler handler2 = u52.a;
+                    if (u52.c().b) {
+                        JSONObject jSONObjectPut2 = new JSONObject().put("command", "device_volume").put("level", gb.m(i2, 0, u52.c().n));
+                        jSONObjectPut2.getClass();
+                        u52.p(jSONObjectPut2, new k52(3));
+                        break;
+                    }
+                }
+                break;
+        }
     }
 }

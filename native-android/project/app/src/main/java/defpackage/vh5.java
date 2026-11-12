@@ -8,25 +8,25 @@ import java.util.Comparator;
 public final class vh5 extends oi5 implements Serializable {
     public final Comparator n;
 
-    public vh5(Comparator r1) {
-        r1.getClass();
-        this.n = r1;
+    public vh5(Comparator comparator) {
+        comparator.getClass();
+        this.n = comparator;
     }
 
     @Override // java.util.Comparator
-    public final int compare(Object r1, Object r2) {
-        return this.n.compare(r1, r2);
+    public final int compare(Object obj, Object obj2) {
+        return this.n.compare(obj, obj2);
     }
 
     @Override // java.util.Comparator
-    public final boolean equals(Object r2) {
-        if (r2 != this) goto L6;
-        return true;
-    L6:
-        if ((r2 instanceof vh5) == true) goto L8;
+    public final boolean equals(Object obj) {
+        if (obj == this) {
+            return true;
+        }
+        if (obj instanceof vh5) {
+            return this.n.equals(((vh5) obj).n);
+        }
         return false;
-    L8:
-        return this.n.equals(((vh5) r2).n);
     }
 
     public final int hashCode() {

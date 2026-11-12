@@ -10,11 +10,8 @@ import defpackage.kc1;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public class LandingFragment extends kc1 {
-    public LandingFragment() {
-    }
-
     @Override // defpackage.kc1
-    public final View H(LayoutInflater r1, ViewGroup r2, Bundle r3) {
-        return r1.inflate(R.layout.fragment_landing, r2, false);
+    public final View H(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
+        return layoutInflater.inflate(R.layout.fragment_landing, viewGroup, false);
     }
 }

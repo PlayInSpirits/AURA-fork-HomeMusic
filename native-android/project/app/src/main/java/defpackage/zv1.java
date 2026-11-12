@@ -7,6 +7,6 @@ import androidx.media3.exoplayer.image.ImageOutput;
 /* JADX INFO: loaded from: classes.dex */
 public final class zv1 implements ImageOutput {
     @Override // androidx.media3.exoplayer.image.ImageOutput
-    public final void onImageAvailable(long r1, Bitmap r3) {
+    public final void onImageAvailable(long j, Bitmap bitmap) {
     }
 }

@@ -9,17 +9,13 @@ public final class a00 {
     public final boolean b;
     public final l61 c;
 
-    public a00(String r4, boolean r5, boolean r6, String r7, String r8, boolean r9) {
-        this.a = r4;
-        this.b = r5;
-        HashMap r10 = n61.a;
-        monitor-enter(n61.class);
-        n61.b.putIfAbsent(n61.e(1, r4), Boolean.valueOf(r5));     // Catch: Throwable -> L8
-        monitor-exit(n61.class);
-        this.c = n61.h(1, r4, r6, r7, !r9);
-        return;
-    L8:
-        th = move-exception;
-        throw th;
+    public a00(String str, boolean z, boolean z2, String str2, String str3, boolean z3) {
+        this.a = str;
+        this.b = z;
+        HashMap map = n61.a;
+        synchronized (n61.class) {
+            n61.b.putIfAbsent(n61.e(1, str), Boolean.valueOf(z));
+        }
+        this.c = n61.h(1, str, z2, str2, !z3);
     }
 }

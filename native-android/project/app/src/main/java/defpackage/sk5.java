@@ -9,9 +9,9 @@ public final class sk5 implements IInterface {
     public final IBinder e;
     public final String f;
 
-    public sk5(IBinder r1, String r2) {
-        this.e = r1;
-        this.f = r2;
+    public sk5(IBinder iBinder, String str) {
+        this.e = iBinder;
+        this.f = str;
     }
 
     @Override // android.os.IInterface

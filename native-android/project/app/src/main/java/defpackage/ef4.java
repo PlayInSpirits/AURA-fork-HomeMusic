@@ -9,17 +9,18 @@ public final class ef4 implements q44 {
     public boolean o;
     public final /* synthetic */ gf4 p;
 
-    public ef4(gf4 r1) {
-        this.p = r1;
+    public ef4(gf4 gf4Var) {
+        this.p = gf4Var;
     }
 
     public final void a() {
-        if (this.o == true) goto L6;
-        gf4 r0 = this.p;
-        ue1 r1 = r0.r;
-        r1.i(new bt2(r1, new un2(1, lw2.h(r0.w.n), r0.w, 0, null, f35.i0(0), -9223372036854775807L)));
+        if (this.o) {
+            return;
+        }
+        gf4 gf4Var = this.p;
+        ue1 ue1Var = gf4Var.r;
+        ue1Var.i(new bt2(ue1Var, new un2(1, lw2.h(gf4Var.w.n), gf4Var.w, 0, null, f35.i0(0L), -9223372036854775807L)));
         this.o = true;
-        return;
     }
 
     @Override // defpackage.q44
@@ -28,77 +29,67 @@ public final class ef4 implements q44 {
     }
 
     @Override // defpackage.q44
-    public final void s() {
-        gf4 r2 = this.p;
-        if (r2.x == true) goto L15;
-        i61 r3 = r2.v;
-        IOException r0 = (IOException) r3.q;
-        if (r0 != null) goto L14;
-        id2 r4 = (id2) r3.p;
-        if (r4 == null) goto L16;
-        int r1 = r4.n;
-        IOException r5 = r4.r;
-        if (r5 != null) goto L11;
-        return;
-    L11:
-        if (r4.s <= r1) goto L18;
-        throw r5;
-    L18:
-        return;
-    L16:
-        return;
-    L14:
-        throw r0;
+    public final void s() throws IOException {
+        gf4 gf4Var = this.p;
+        if (gf4Var.x) {
+            return;
+        }
+        i61 i61Var = gf4Var.v;
+        IOException iOException = (IOException) i61Var.q;
+        if (iOException != null) {
+            throw iOException;
+        }
+        id2 id2Var = (id2) i61Var.p;
+        if (id2Var != null) {
+            int i = id2Var.n;
+            IOException iOException2 = id2Var.r;
+            if (iOException2 != null && id2Var.s > i) {
+                throw iOException2;
+            }
+        }
     }
 
     @Override // defpackage.q44
-    public final int t(gp3 r10, cj0 r11, int r12) {
+    public final int t(gp3 gp3Var, cj0 cj0Var, int i) {
         a();
-        gf4 r0 = this.p;
-        boolean r1 = r0.y;
-        if (r1 == true) goto L5;
-    L7:
-        int r3 = this.n;
-        if (r3 != 2) goto L12;
-        r11.a(4);
+        gf4 gf4Var = this.p;
+        boolean z = gf4Var.y;
+        if (z && gf4Var.z == null) {
+            this.n = 2;
+        }
+        int i2 = this.n;
+        if (i2 == 2) {
+            cj0Var.a(4);
+            return -4;
+        }
+        if ((i & 2) != 0 || i2 == 0) {
+            gp3Var.p = gf4Var.w;
+            this.n = 1;
+            return -5;
+        }
+        if (!z) {
+            return -3;
+        }
+        gf4Var.z.getClass();
+        cj0Var.a(1);
+        cj0Var.t = 0L;
+        if ((i & 4) == 0) {
+            cj0Var.t(gf4Var.A);
+            cj0Var.r.put(gf4Var.z, 0, gf4Var.A);
+        }
+        if ((i & 1) == 0) {
+            this.n = 2;
+        }
         return -4;
-    L12:
-        if ((r12 & 2) != 0) goto L25;
-        if (r3 == 0) goto L25;
-        if (r1 == true) goto L18;
-        return -3;
-    L18:
-        r0.z.getClass();
-        r11.a(1);
-        r11.t = 0;
-        if ((r12 & 4) != 0) goto L22;
-        r11.t(r0.A);
-        r11.r.put(r0.z, 0, r0.A);
-    L22:
-        if ((r12 & 1) != 0) goto L24;
-        this.n = 2;
-    L24:
-        return -4;
-    L25:
-        r10.p = r0.w;
-        this.n = 1;
-        return -5;
-    L5:
-        if (r0.z != null) goto L7;
-        this.n = 2;
-        goto L7
     }
 
     @Override // defpackage.q44
-    public final int u(long r3) {
+    public final int u(long j) {
         a();
-        if (r3 > 0) goto L5;
-        return 0;
-    L5:
-        if (this.n == 2) goto L10;
+        if (j <= 0 || this.n == 2) {
+            return 0;
+        }
         this.n = 2;
         return 1;
-    L10:
-        return 0;
     }
 }

@@ -7,115 +7,90 @@ import java.util.regex.Matcher;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public abstract class ve5 {
-    public static final ux3 a = null;
-    public static final ux3 b = null;
+    public static final ux3 a = new ux3("([a-zA-Z0-9-!#$%&'*+.^_`{|}~]+)/([a-zA-Z0-9-!#$%&'*+.^_`{|}~]+)");
+    public static final ux3 b = new ux3(";\\s*(?:([a-zA-Z0-9-!#$%&'*+.^_`{|}~]+)=(?:([a-zA-Z0-9-!#$%&'*+.^_`{|}~]+)|\"([^\"]*)\"))?");
 
-    static {
-        a = new ux3("([a-zA-Z0-9-!#$%&'*+.^_`{|}~]+)/([a-zA-Z0-9-!#$%&'*+.^_`{|}~]+)");
-        b = new ux3(";\\s*(?:([a-zA-Z0-9-!#$%&'*+.^_`{|}~]+)=(?:([a-zA-Z0-9-!#$%&'*+.^_`{|}~]+)|\"([^\"]*)\"))?");
-    }
-
-    public static final hu2 a(String r13) {
-        r13.getClass();
-        byte[] r0 = xe5.a;
-        ux3 r1 = a;
-        r1.getClass();
-        Matcher r2 = r1.n.matcher(r13);
-        r2.getClass();
-        if (r2.find(0) == true) goto L5;
-        jv3 r3 = null;
-    L6:
-        if (r3 == null) goto L10;
-        Matcher r4 = (Matcher) r3.n;
-        if (gb.g0(r4.start(), r4.end()).n != 0) goto L10;
-    L12:
-        if (r3 == null) goto L57;
-        if (((tg2) r3.p) != null) goto L16;
-        r3.p = new tg2(r3);
-    L16:
-        tg2 r5 = (tg2) r3.p;
-        r5.getClass();
-        String r6 = (String) r5.get(1);
-        Locale r7 = Locale.ROOT;
-        String r8 = r6.toLowerCase(r7);
-        r8.getClass();
-        if (((tg2) r3.p) != null) goto L19;
-        r3.p = new tg2(r3);
-    L19:
-        tg2 r9 = (tg2) r3.p;
-        r9.getClass();
-        String r10 = ((String) r9.get(2)).toLowerCase(r7);
-        r10.getClass();
-        ArrayList r11 = new ArrayList();
-        Matcher r12 = (Matcher) r3.n;
-        int r14 = gb.g0(r12.start(), r12.end()).o;
-    L20:
-        int r15 = r14 + 1;
-        if (r15 >= r13.length()) goto L55;
-        ux3 r16 = b;
-        r16.getClass();
-        Matcher r17 = r16.n.matcher(r13);
-        r17.getClass();
-        if (r17.find(r15) == true) goto L25;
-        jv3 r18 = null;
-    L26:
-        if (r18 == null) goto L30;
-        Matcher r19 = (Matcher) r18.n;
-        if (gb.g0(r19.start(), r19.end()).n != r15) goto L30;
-    L31:
-        if (r18 == null) goto L53;
-        Matcher r20 = (Matcher) r18.n;
-        ug2 r21 = (ug2) r18.o;
-        sg2 r110 = r21.b(1);
-        if (r110 == null) goto L35;
-        String r111 = r110.a;
-    L36:
-        if (r111 == null) goto L37;
-        sg2 r112 = r21.b(2);
-        if (r112 == null) goto L41;
-        String r113 = r112.a;
-    L42:
-        if (r113 != null) goto L45;
-        sg2 r22 = r21.b(3);
-        r22.getClass();
-        r113 = r22.a;
-    L51:
-        r11.add(r111);
-        r11.add(r113);
-        r14 = gb.g0(r20.start(), r20.end()).o;
-        goto L20
-    L45:
-        if (xm4.k0(r113, "'", false) == false) goto L51;
-        if (xm4.e0(r113, "'", false) == false) goto L51;
-        if (r113.length() <= 2) goto L51;
-        r113 = r113.substring(1, r113.length() - 1);
-        goto L51
-    L41:
-        r113 = null;
-        goto L42
-    L37:
-        r14 = gb.g0(r20.start(), r20.end()).o;
-        goto L20
-    L35:
-        r111 = null;
-        goto L36
-    L53:
-        throw new IllegalArgumentException(("Parameter is not formatted correctly: \"" + r13.substring(r15) + "\" for: \"" + r13 + '\"').toString());
-    L30:
-        r18 = null;
-        goto L31
-    L25:
-        r18 = new jv3(r17, r13);
-        goto L26
-    L55:
-        return new hu2(r13, r8, r10, (String[]) r11.toArray(new String[0]));
-    L57:
-        throw new IllegalArgumentException("No subtype found for: \"" + r13 + '\"');
-    L10:
-        r3 = null;
-        goto L12
-    L5:
-        r3 = new jv3(r2, r13);
-        goto L6
+    /* JADX WARN: Code duplicated, block: B:10:0x0039  */
+    /* JADX WARN: Code duplicated, block: B:30:0x00d4  */
+    public static final hu2 a(String str) {
+        str.getClass();
+        byte[] bArr = xe5.a;
+        ux3 ux3Var = a;
+        ux3Var.getClass();
+        Matcher matcher = ux3Var.n.matcher(str);
+        matcher.getClass();
+        jv3 jv3Var = !matcher.find(0) ? null : new jv3(matcher, str);
+        if (jv3Var == null) {
+            jv3Var = null;
+        } else {
+            Matcher matcher2 = (Matcher) jv3Var.n;
+            if (gb.g0(matcher2.start(), matcher2.end()).n != 0) {
+                jv3Var = null;
+            }
+        }
+        if (jv3Var == null) {
+            throw new IllegalArgumentException("No subtype found for: \"" + str + '\"');
+        }
+        if (((tg2) jv3Var.p) == null) {
+            jv3Var.p = new tg2(jv3Var);
+        }
+        tg2 tg2Var = (tg2) jv3Var.p;
+        tg2Var.getClass();
+        String str2 = (String) tg2Var.get(1);
+        Locale locale = Locale.ROOT;
+        String lowerCase = str2.toLowerCase(locale);
+        lowerCase.getClass();
+        if (((tg2) jv3Var.p) == null) {
+            jv3Var.p = new tg2(jv3Var);
+        }
+        tg2 tg2Var2 = (tg2) jv3Var.p;
+        tg2Var2.getClass();
+        String lowerCase2 = ((String) tg2Var2.get(2)).toLowerCase(locale);
+        lowerCase2.getClass();
+        ArrayList arrayList = new ArrayList();
+        Matcher matcher3 = (Matcher) jv3Var.n;
+        int i = gb.g0(matcher3.start(), matcher3.end()).o;
+        while (true) {
+            int i2 = i + 1;
+            if (i2 >= str.length()) {
+                return new hu2(str, lowerCase, lowerCase2, (String[]) arrayList.toArray(new String[0]));
+            }
+            ux3 ux3Var2 = b;
+            ux3Var2.getClass();
+            Matcher matcher4 = ux3Var2.n.matcher(str);
+            matcher4.getClass();
+            jv3 jv3Var2 = !matcher4.find(i2) ? null : new jv3(matcher4, str);
+            if (jv3Var2 == null) {
+                jv3Var2 = null;
+            } else {
+                Matcher matcher5 = (Matcher) jv3Var2.n;
+                if (gb.g0(matcher5.start(), matcher5.end()).n != i2) {
+                    jv3Var2 = null;
+                }
+            }
+            if (jv3Var2 == null) {
+                throw new IllegalArgumentException(("Parameter is not formatted correctly: \"" + str.substring(i2) + "\" for: \"" + str + '\"').toString());
+            }
+            Matcher matcher6 = (Matcher) jv3Var2.n;
+            ug2 ug2Var = (ug2) jv3Var2.o;
+            sg2 sg2VarB = ug2Var.b(1);
+            String str3 = sg2VarB != null ? sg2VarB.a : null;
+            if (str3 == null) {
+                i = gb.g0(matcher6.start(), matcher6.end()).o;
+            } else {
+                sg2 sg2VarB2 = ug2Var.b(2);
+                String strSubstring = sg2VarB2 != null ? sg2VarB2.a : null;
+                if (strSubstring == null) {
+                    sg2 sg2VarB3 = ug2Var.b(3);
+                    sg2VarB3.getClass();
+                    strSubstring = sg2VarB3.a;
+                } else if (xm4.k0(strSubstring, "'", false) && xm4.e0(strSubstring, "'", false) && strSubstring.length() > 2) {
+                    strSubstring = strSubstring.substring(1, strSubstring.length() - 1);
+                }
+                arrayList.add(str3);
+                arrayList.add(strSubstring);
+                i = gb.g0(matcher6.start(), matcher6.end()).o;
+            }
+        }
     }
 }

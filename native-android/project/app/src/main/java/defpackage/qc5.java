@@ -13,9 +13,9 @@ public final class qc5 {
         cx.i("WMFgUpdater");
     }
 
-    public qc5(WorkDatabase r1, pq3 r2, bq4 r3) {
-        this.b = r2;
-        this.a = r3;
-        this.c = r1.A();
+    public qc5(WorkDatabase workDatabase, pq3 pq3Var, bq4 bq4Var) {
+        this.b = pq3Var;
+        this.a = bq4Var;
+        this.c = workDatabase.A();
     }
 }

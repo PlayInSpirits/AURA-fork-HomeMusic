@@ -8,14 +8,15 @@ public final class df3 extends wd0 {
     public final /* synthetic */ ed p;
     public int q;
 
-    public df3(ed r1, wd0 r2) {
-        this.p = r1;
-        super(r2);
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public df3(ed edVar, wd0 wd0Var) {
+        super(wd0Var);
+        this.p = edVar;
     }
 
     @Override // defpackage.jp
-    public final Object invokeSuspend(Object r2) {
-        this.o = r2;
+    public final Object invokeSuspend(Object obj) {
+        this.o = obj;
         this.q |= Integer.MIN_VALUE;
         return this.p.a(null, this);
     }

@@ -14,55 +14,47 @@ public final /* synthetic */ class xd0 implements Consumer {
     public final /* synthetic */ Object b;
     public final /* synthetic */ Object c;
 
-    public /* synthetic */ xd0(int r1, Object r2, Object r3) {
-        this.a = r1;
-        this.b = r2;
-        this.c = r3;
+    public /* synthetic */ xd0(int i, Object obj, Object obj2) {
+        this.a = i;
+        this.b = obj;
+        this.c = obj2;
     }
 
     @Override // java.util.function.Consumer
-    public final void accept(Object r6) {
-        int r0 = this.a;
-        int r1 = 0;
-        Object r2 = this.c;
-        Object r5 = this.b;
-        switch(r0) {
-            case 0: goto L8;
-            case 1: goto L6;
-            default: goto L4;
-        };
-    L4:
-        PlaylistRowBottomSheetDialog r7 = (PlaylistRowBottomSheetDialog) r5;
-        i51.b((MainActivity) r2, (Child) r6, r7.C0.getId(), r7.C0.getName(), false);
-        return;
-    L6:
-        ((BiConsumer) r5).accept((MainActivity) r2, (List) r6);
-        return;
-    L8:
-        yd0 r8 = (yd0) r5;
-        sp3 r3 = (sp3) r2;
-        List r9 = (List) r6;
-        if (r9 != null) goto L11;
-    L22:
-        r8.s(r3);
-        return;
-    L11:
-        if (r9.isEmpty() == true) goto L22;
-        int r4 = 0;
-    L15:
-        if (r4 >= r9.size()) goto L20;
-        if (r3.a.equals(((Child) r9.get(r4)).getId()) == true) goto L18;
-        r4 = r4 + 1;
-        goto L15
-    L18:
-        long r10 = r3.b;
-        ((Child) r9.get(r4)).setType(r3.h);
-        r1 = r4;
-    L21:
-        bo2.p((bl2) r8.v.s, r9, r1, r10);
-        return;
-    L20:
-        r10 = 0;
-        goto L21
+    public final void accept(Object obj) {
+        long j;
+        int i = this.a;
+        int i2 = 0;
+        Object obj2 = this.c;
+        Object obj3 = this.b;
+        switch (i) {
+            case 0:
+                yd0 yd0Var = (yd0) obj3;
+                sp3 sp3Var = (sp3) obj2;
+                List list = (List) obj;
+                if (list == null || list.isEmpty()) {
+                    yd0Var.s(sp3Var);
+                } else {
+                    for (int i3 = 0; i3 < list.size(); i3++) {
+                        if (sp3Var.a.equals(((Child) list.get(i3)).getId())) {
+                            j = sp3Var.b;
+                            ((Child) list.get(i3)).setType(sp3Var.h);
+                            i2 = i3;
+                            bo2.p((bl2) yd0Var.v.s, list, i2, j);
+                        }
+                        break;
+                    }
+                    j = 0;
+                    bo2.p((bl2) yd0Var.v.s, list, i2, j);
+                }
+                break;
+            case 1:
+                ((BiConsumer) obj3).accept((MainActivity) obj2, (List) obj);
+                break;
+            default:
+                PlaylistRowBottomSheetDialog playlistRowBottomSheetDialog = (PlaylistRowBottomSheetDialog) obj3;
+                i51.b((MainActivity) obj2, (Child) obj, playlistRowBottomSheetDialog.C0.getId(), playlistRowBottomSheetDialog.C0.getName(), false);
+                break;
+        }
     }
 }

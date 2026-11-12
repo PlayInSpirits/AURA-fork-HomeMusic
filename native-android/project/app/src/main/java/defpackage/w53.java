@@ -11,7 +11,7 @@ public final class w53 extends ko {
     }
 
     @Override // defpackage.ko
-    public final void b(Throwable r1) {
-        throw r1;
+    public final void b(Throwable th) throws Throwable {
+        throw th;
     }
 }

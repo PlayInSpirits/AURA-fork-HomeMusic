@@ -15,488 +15,430 @@ import java.util.Set;
 
 /* JADX INFO: loaded from: classes.dex */
 public abstract class q40 extends v40 {
-    public static /* synthetic */ void A0(ArrayList r7, StringBuilder r8) {
-        z0(r7, r8, "\n", "", "", "...", null);
+    public static String B0(Iterable iterable, String str, String str2, String str3, if1 if1Var, int i) {
+        if ((i & 1) != 0) {
+            str = ", ";
+        }
+        String str4 = str;
+        String str5 = (i & 2) != 0 ? "" : str2;
+        String str6 = (i & 4) != 0 ? "" : str3;
+        if ((i & 32) != 0) {
+            if1Var = null;
+        }
+        iterable.getClass();
+        StringBuilder sb = new StringBuilder();
+        z0(iterable, sb, str4, str5, str6, "...", if1Var);
+        return sb.toString();
     }
 
-    public static String B0(Iterable r7, String r8, String r9, String r10, if1 r11, int r12) {
-        if ((r12 & 1) == 0) goto L5;
-        r8 = ", ";
-    L5:
-        String r2 = r8;
-        if ((r12 & 2) == 0) goto L8;
-        String r3 = "";
-    L10:
-        if ((r12 & 4) == 0) goto L12;
-        String r4 = "";
-    L14:
-        if ((r12 & 32) == 0) goto L16;
-        r11 = null;
-    L16:
-        r7.getClass();
-        StringBuilder r1 = new StringBuilder();
-        z0(r7, r1, r2, r3, r4, "...", r11);
-        return r1.toString();
-    L12:
-        r4 = r10;
-        goto L14
-    L8:
-        r3 = r9;
-        goto L10
-    }
-
-    public static Object C0(List r1) {
-        r1.getClass();
-        if (r1.isEmpty() == false) goto L5;
+    public static Object C0(List list) {
+        list.getClass();
+        if (!list.isEmpty()) {
+            return list.get(list.size() - 1);
+        }
         kf2.m("List is empty.");
         return null;
-    L5:
-        return r1.get(r1.size() - 1);
     }
 
-    public static Object D0(List r1) {
-        r1.getClass();
-        if (r1.isEmpty() == false) goto L7;
-        return null;
-    L7:
-        return r1.get(r1.size() - 1);
+    public static Object D0(List list) {
+        list.getClass();
+        if (list.isEmpty()) {
+            return null;
+        }
+        return list.get(list.size() - 1);
     }
 
-    public static Comparable E0(ArrayList r3) {
-        Iterator r4 = r3.iterator();
-        if (r4.hasNext() == true) goto L6;
-        return null;
-    L6:
-        Comparable r0 = (Comparable) r4.next();
-    L8:
-        if (r4.hasNext() == false) goto L12;
-        Comparable r1 = (Comparable) r4.next();
-        if (r0.compareTo(r1) >= 0) goto L8;
-        r0 = r1;
-        goto L8
-    L12:
-        return r0;
+    public static Comparable E0(ArrayList arrayList) {
+        Iterator it = arrayList.iterator();
+        if (!it.hasNext()) {
+            return null;
+        }
+        Comparable comparable = (Comparable) it.next();
+        while (it.hasNext()) {
+            Comparable comparable2 = (Comparable) it.next();
+            if (comparable.compareTo(comparable2) < 0) {
+                comparable = comparable2;
+            }
+        }
+        return comparable;
     }
 
-    public static ArrayList F0(Object r2, Collection r3) {
-        r3.getClass();
-        ArrayList r0 = new ArrayList(r3.size() + 1);
-        r0.addAll(r3);
-        r0.add(r2);
-        return r0;
+    public static ArrayList F0(Object obj, Collection collection) {
+        collection.getClass();
+        ArrayList arrayList = new ArrayList(collection.size() + 1);
+        arrayList.addAll(collection);
+        arrayList.add(obj);
+        return arrayList;
     }
 
-    public static ArrayList G0(Collection r3, Iterable r4) {
-        r3.getClass();
-        r4.getClass();
-        if ((r4 instanceof Collection) == false) goto L6;
-        int r1 = r3.size();
-        Collection r5 = (Collection) r4;
-        ArrayList r0 = new ArrayList(r5.size() + r1);
-        r0.addAll(r3);
-        r0.addAll(r5);
-        return r0;
-    L6:
-        ArrayList r2 = new ArrayList(r3);
-        v40.n0(r4, r2);
-        return r2;
+    public static ArrayList G0(Collection collection, Iterable iterable) {
+        collection.getClass();
+        iterable.getClass();
+        if (!(iterable instanceof Collection)) {
+            ArrayList arrayList = new ArrayList(collection);
+            v40.n0(iterable, arrayList);
+            return arrayList;
+        }
+        Collection collection2 = (Collection) iterable;
+        ArrayList arrayList2 = new ArrayList(collection2.size() + collection.size());
+        arrayList2.addAll(collection);
+        arrayList2.addAll(collection2);
+        return arrayList2;
     }
 
-    public static List H0(Iterable r2) {
-        r2.getClass();
-        if ((r2 instanceof Collection) == true) goto L5;
-    L8:
-        List r3 = S0(r2);
-        Collections.reverse(r3);
-        return r3;
-    L5:
-        if (((Collection) r2).size() > 1) goto L8;
-        return Q0(r2);
+    public static List H0(Iterable iterable) {
+        iterable.getClass();
+        if ((iterable instanceof Collection) && ((Collection) iterable).size() <= 1) {
+            return Q0(iterable);
+        }
+        List listS0 = S0(iterable);
+        Collections.reverse(listS0);
+        return listS0;
     }
 
-    public static Object I0(List r3) {
-        int r0 = r3.size();
-        if (r0 != 0) goto L5;
-        kf2.m("List is empty.");
-        return null;
-    L5:
-        if (r0 == 1) goto L7;
+    public static Object I0(List list) {
+        int size = list.size();
+        if (size == 0) {
+            kf2.m("List is empty.");
+            return null;
+        }
+        if (size == 1) {
+            return list.get(0);
+        }
         kf2.n("List has more than one element.");
         return null;
-    L7:
-        return r3.get(0);
     }
 
-    public static List J0(Iterable r3) {
-        r3.getClass();
-        if ((r3 instanceof Collection) == false) goto L13;
-        Collection r0 = (Collection) r3;
-        if (r0.size() <= 1) goto L7;
-        Object[] r4 = r0.toArray(new Comparable[0]);
-        Comparable[] r1 = (Comparable[]) r4;
-        r1.getClass();
-        if (r1.length <= 1) goto L11;
-        Arrays.sort(r1);
-    L11:
-        r4.getClass();
-        List r5 = Arrays.asList(r4);
-        r5.getClass();
-        return r5;
-    L7:
-        return Q0(r3);
-    L13:
-        List r6 = S0(r3);
-        u40.l0(r6);
-        return r6;
+    public static List J0(Iterable iterable) {
+        iterable.getClass();
+        if (!(iterable instanceof Collection)) {
+            List listS0 = S0(iterable);
+            u40.l0(listS0);
+            return listS0;
+        }
+        Collection collection = (Collection) iterable;
+        if (collection.size() <= 1) {
+            return Q0(iterable);
+        }
+        Object[] array = collection.toArray(new Comparable[0]);
+        Comparable[] comparableArr = (Comparable[]) array;
+        comparableArr.getClass();
+        if (comparableArr.length > 1) {
+            Arrays.sort(comparableArr);
+        }
+        array.getClass();
+        List listAsList = Arrays.asList(array);
+        listAsList.getClass();
+        return listAsList;
     }
 
-    public static List K0(Iterable r3, Comparator r4) {
-        r3.getClass();
-        if ((r3 instanceof Collection) == false) goto L13;
-        Collection r0 = (Collection) r3;
-        if (r0.size() <= 1) goto L7;
-        Object[] r5 = r0.toArray(new Object[0]);
-        r5.getClass();
-        if (r5.length <= 1) goto L11;
-        Arrays.sort(r5, r4);
-    L11:
-        List r6 = Arrays.asList(r5);
-        r6.getClass();
-        return r6;
-    L7:
-        return Q0(r3);
-    L13:
-        List r7 = S0(r3);
-        u40.m0(r7, r4);
-        return r7;
+    public static List K0(Iterable iterable, Comparator comparator) {
+        iterable.getClass();
+        if (!(iterable instanceof Collection)) {
+            List listS0 = S0(iterable);
+            u40.m0(listS0, comparator);
+            return listS0;
+        }
+        Collection collection = (Collection) iterable;
+        if (collection.size() <= 1) {
+            return Q0(iterable);
+        }
+        Object[] array = collection.toArray(new Object[0]);
+        array.getClass();
+        if (array.length > 1) {
+            Arrays.sort(array, comparator);
+        }
+        List listAsList = Arrays.asList(array);
+        listAsList.getClass();
+        return listAsList;
     }
 
-    public static List L0(List r4, int r5) {
-        r4.getClass();
-        if (r5 < 0) goto L22;
-        if (r5 != 0) goto L8;
-        return u01.n;
-    L8:
-        if (r5 < r4.size()) goto L12;
-        return Q0(r4);
-    L12:
-        if (r5 == 1) goto L14;
-        ArrayList r1 = new ArrayList(r5);
-        Iterator r6 = r4.iterator();
-        int r2 = 0;
-    L17:
-        if (r6.hasNext() == false) goto L21;
-        r1.add(r6.next());
-        r2 = r2 + 1;
-        if (r2 != r5) goto L17;
-    L21:
-        return gb.R(r1);
-    L14:
-        return gb.O(v0(r4));
-    L22:
-        kf2.e(b11.j(r5, "Requested element count ", " is less than zero."));
-        return null;
+    public static List L0(List list, int i) {
+        list.getClass();
+        if (i < 0) {
+            kf2.e(b11.j(i, "Requested element count ", " is less than zero."));
+            return null;
+        }
+        if (i == 0) {
+            return u01.n;
+        }
+        if (i >= list.size()) {
+            return Q0(list);
+        }
+        if (i == 1) {
+            return gb.O(v0(list));
+        }
+        ArrayList arrayList = new ArrayList(i);
+        Iterator it = list.iterator();
+        int i2 = 0;
+        while (it.hasNext()) {
+            arrayList.add(it.next());
+            i2++;
+            if (i2 == i) {
+                break;
+            }
+        }
+        return gb.R(arrayList);
     }
 
-    public static List M0(List r3, int r4) {
-        if (r4 < 0) goto L24;
-        if (r4 == 0) goto L5;
-        int r0 = r3.size();
-        if (r4 < r0) goto L11;
-        return Q0(r3);
-    L11:
-        if (r4 == 1) goto L13;
-        ArrayList r1 = new ArrayList(r4);
-        if ((r3 instanceof RandomAccess) == false) goto L19;
-        int r5 = r0 - r4;
-    L17:
-        if (r5 >= r0) goto L23;
-        r1.add(r3.get(r5));
-        r5 = r5 + 1;
-    L23:
-        return r1;
-    L19:
-        ListIterator r6 = r3.listIterator(r0 - r4);
-    L21:
-        if (r6.hasNext() == false) goto L23;
-        r1.add(r6.next());
-        goto L21
-    L13:
-        return gb.O(C0(r3));
-    L5:
-        return u01.n;
-    L24:
-        kf2.e(b11.j(r4, "Requested element count ", " is less than zero."));
-        return null;
+    public static List M0(List list, int i) {
+        if (i < 0) {
+            kf2.e(b11.j(i, "Requested element count ", " is less than zero."));
+            return null;
+        }
+        if (i == 0) {
+            return u01.n;
+        }
+        int size = list.size();
+        if (i >= size) {
+            return Q0(list);
+        }
+        if (i == 1) {
+            return gb.O(C0(list));
+        }
+        ArrayList arrayList = new ArrayList(i);
+        if (list instanceof RandomAccess) {
+            for (int i2 = size - i; i2 < size; i2++) {
+                arrayList.add(list.get(i2));
+            }
+        } else {
+            ListIterator listIterator = list.listIterator(size - i);
+            while (listIterator.hasNext()) {
+                arrayList.add(listIterator.next());
+            }
+        }
+        return arrayList;
     }
 
-    public static boolean[] N0(List r4) {
-        r4.getClass();
-        boolean[] r0 = new boolean[r4.size()];
-        Iterator r5 = r4.iterator();
-        int r1 = 0;
-    L4:
-        if (r5.hasNext() == false) goto L6;
-        r0[r1] = ((Boolean) r5.next()).booleanValue();
-        r1 = r1 + 1;
-        goto L4
-    L6:
-        return r0;
+    public static boolean[] N0(List list) {
+        list.getClass();
+        boolean[] zArr = new boolean[list.size()];
+        Iterator it = list.iterator();
+        int i = 0;
+        while (it.hasNext()) {
+            zArr[i] = ((Boolean) it.next()).booleanValue();
+            i++;
+        }
+        return zArr;
     }
 
-    public static final void O0(Iterable r1, AbstractCollection r2) {
-        r1.getClass();
-        Iterator r3 = r1.iterator();
-    L4:
-        if (r3.hasNext() == false) goto L6;
-        r2.add(r3.next());
-        goto L4
+    public static final void O0(Iterable iterable, AbstractCollection abstractCollection) {
+        iterable.getClass();
+        Iterator it = iterable.iterator();
+        while (it.hasNext()) {
+            abstractCollection.add(it.next());
+        }
     }
 
-    public static int[] P0(List r4) {
-        r4.getClass();
-        int[] r0 = new int[r4.size()];
-        Iterator r5 = r4.iterator();
-        int r1 = 0;
-    L4:
-        if (r5.hasNext() == false) goto L6;
-        r0[r1] = ((Number) r5.next()).intValue();
-        r1 = r1 + 1;
-        goto L4
-    L6:
-        return r0;
+    public static int[] P0(List list) {
+        list.getClass();
+        int[] iArr = new int[list.size()];
+        Iterator it = list.iterator();
+        int i = 0;
+        while (it.hasNext()) {
+            iArr[i] = ((Number) it.next()).intValue();
+            i++;
+        }
+        return iArr;
     }
 
-    public static List Q0(Iterable r3) {
-        r3.getClass();
-        if ((r3 instanceof Collection) == false) goto L19;
-        Collection r0 = (Collection) r3;
-        int r1 = r0.size();
-        if (r1 == 0) goto L17;
-        if (r1 == 1) goto L11;
-        return new ArrayList(r0);
-    L11:
-        if ((r3 instanceof List) == false) goto L13;
-        Object r4 = ((List) r3).get(0);
-    L15:
-        return gb.O(r4);
-    L13:
-        r4 = r0.iterator().next();
-        goto L15
-    L17:
-        return u01.n;
-    L19:
-        return gb.R(S0(r3));
+    public static List Q0(Iterable iterable) {
+        iterable.getClass();
+        if (!(iterable instanceof Collection)) {
+            return gb.R(S0(iterable));
+        }
+        Collection collection = (Collection) iterable;
+        int size = collection.size();
+        if (size == 0) {
+            return u01.n;
+        }
+        if (size != 1) {
+            return new ArrayList(collection);
+        }
+        return gb.O(iterable instanceof List ? ((List) iterable).get(0) : collection.iterator().next());
     }
 
-    public static ArrayList R0(Collection r1) {
-        r1.getClass();
-        return new ArrayList(r1);
+    public static ArrayList R0(Collection collection) {
+        collection.getClass();
+        return new ArrayList(collection);
     }
 
-    public static final List S0(Iterable r1) {
-        r1.getClass();
-        if ((r1 instanceof Collection) == true) goto L5;
-        ArrayList r0 = new ArrayList();
-        O0(r1, r0);
-        return r0;
-    L5:
-        return new ArrayList((Collection) r1);
+    public static final List S0(Iterable iterable) {
+        iterable.getClass();
+        if (iterable instanceof Collection) {
+            return new ArrayList((Collection) iterable);
+        }
+        ArrayList arrayList = new ArrayList();
+        O0(iterable, arrayList);
+        return arrayList;
     }
 
-    public static Set T0(Iterable r3) {
-        r3.getClass();
-        if ((r3 instanceof Collection) == false) goto L15;
-        Collection r0 = (Collection) r3;
-        int r2 = r0.size();
-        if (r2 == 0) goto L22;
-        if (r2 == 1) goto L10;
-        LinkedHashSet r1 = new LinkedHashSet(lg2.W(r0.size()));
-        O0(r3, r1);
-        return r1;
-    L10:
-        if ((r3 instanceof List) == false) goto L12;
-        Object r4 = ((List) r3).get(0);
-    L14:
-        return kb4.S(r4);
-    L12:
-        r4 = r0.iterator().next();
-    L22:
+    public static Set T0(Iterable iterable) {
+        iterable.getClass();
+        if (iterable instanceof Collection) {
+            Collection collection = (Collection) iterable;
+            int size = collection.size();
+            if (size != 0) {
+                if (size == 1) {
+                    return kb4.S(iterable instanceof List ? ((List) iterable).get(0) : collection.iterator().next());
+                }
+                LinkedHashSet linkedHashSet = new LinkedHashSet(lg2.W(collection.size()));
+                O0(iterable, linkedHashSet);
+                return linkedHashSet;
+            }
+        } else {
+            LinkedHashSet linkedHashSet2 = new LinkedHashSet();
+            O0(iterable, linkedHashSet2);
+            int size2 = linkedHashSet2.size();
+            if (size2 != 0) {
+                return size2 != 1 ? linkedHashSet2 : kb4.S(linkedHashSet2.iterator().next());
+            }
+        }
         return z01.n;
-    L15:
-        LinkedHashSet r5 = new LinkedHashSet();
-        O0(r3, r5);
-        int r6 = r5.size();
-        if (r6 == 0) goto L22;
-        if (r6 == 1) goto L20;
-        return r5;
-    L20:
-        return kb4.S(r5.iterator().next());
     }
 
-    public static boolean s0(Iterable r3, Object r4) {
-        r3.getClass();
-        if ((r3 instanceof Collection) == false) goto L7;
-        return ((Collection) r3).contains(r4);
-    L7:
-        if ((r3 instanceof List) == false) goto L9;
-        int r5 = ((List) r3).indexOf(r4);
-    L21:
-        if (r5 < 0) goto L24;
-        return true;
-    L24:
-        return false;
-    L9:
-        Iterator r6 = r3.iterator();
-        int r0 = 0;
-    L11:
-        if (r6.hasNext() == false) goto L20;
-        Object r2 = r6.next();
-        if (r0 < 0) goto L18;
-        if (h12.c(r4, r2) == true) goto L16;
-        r0 = r0 + 1;
-        goto L11
-    L16:
-        r5 = r0;
-        goto L21
-    L18:
-        gb.c0();
-        throw null;
-    L20:
-        r5 = -1;
-        goto L21
+    public static boolean s0(Iterable iterable, Object obj) {
+        int iIndexOf;
+        iterable.getClass();
+        if (iterable instanceof Collection) {
+            return ((Collection) iterable).contains(obj);
+        }
+        if (iterable instanceof List) {
+            iIndexOf = ((List) iterable).indexOf(obj);
+        } else {
+            int i = 0;
+            for (Object obj2 : iterable) {
+                if (i < 0) {
+                    gb.c0();
+                    throw null;
+                }
+                if (h12.c(obj, obj2)) {
+                    iIndexOf = i;
+                } else {
+                    i++;
+                }
+            }
+            iIndexOf = -1;
+        }
+        return iIndexOf >= 0;
     }
 
-    public static List t0(ArrayList r1) {
-        return Q0(new LinkedHashSet(r1));
+    public static List t0(ArrayList arrayList) {
+        return Q0(new LinkedHashSet(arrayList));
     }
 
-    public static List u0(Iterable r3, int r4) {
-        if (r4 < 0) goto L51;
-        if (r4 != 0) goto L8;
-        return Q0(r3);
-    L8:
-        if ((r3 instanceof Collection) == false) goto L41;
-        int r1 = ((Collection) r3).size() - r4;
-        if (r1 > 0) goto L14;
-        return u01.n;
-    L14:
-        if (r1 == 1) goto L16;
-        ArrayList r0 = new ArrayList(r1);
-        if ((r3 instanceof List) == true) goto L32;
-    L42:
-        Iterator r5 = r3.iterator();
-        int r2 = 0;
-    L44:
-        if (r5.hasNext() == false) goto L50;
-        Object r6 = r5.next();
-        if (r2 >= r4) goto L47;
-        r2 = r2 + 1;
-        goto L44
-    L47:
-        r0.add(r6);
-        goto L44
-    L50:
-        return gb.R(r0);
-    L32:
-        if ((r3 instanceof RandomAccess) == false) goto L36;
-        List r7 = (List) r3;
-        int r8 = r7.size();
-    L34:
-        if (r4 >= r8) goto L40;
-        r0.add(r7.get(r4));
-        r4 = r4 + 1;
-    L40:
-        return r0;
-    L36:
-        ListIterator r9 = ((List) r3).listIterator(r4);
-    L38:
-        if (r9.hasNext() == false) goto L40;
-        r0.add(r9.next());
-        goto L38
-    L16:
-        if ((r3 instanceof List) == false) goto L18;
-        Object r10 = C0((List) r3);
-    L26:
-        return gb.O(r10);
-    L18:
-        Iterator r11 = r3.iterator();
-        if (r11.hasNext() == false) goto L27;
-        Object r12 = r11.next();
-    L22:
-        if (r11.hasNext() == false) goto L24;
-        r12 = r11.next();
-        goto L22
-    L24:
-        r10 = r12;
-        goto L26
-    L27:
+    public static List u0(Iterable iterable, int i) {
+        ArrayList arrayList;
+        Object objC0;
+        if (i < 0) {
+            kf2.e(b11.j(i, "Requested element count ", " is less than zero."));
+            return null;
+        }
+        if (i == 0) {
+            return Q0(iterable);
+        }
+        if (iterable instanceof Collection) {
+            int size = ((Collection) iterable).size() - i;
+            if (size <= 0) {
+                return u01.n;
+            }
+            if (size == 1) {
+                if (iterable instanceof List) {
+                    objC0 = C0((List) iterable);
+                } else {
+                    Iterator it = iterable.iterator();
+                    if (!it.hasNext()) {
+                        kf2.m("Collection is empty.");
+                        return null;
+                    }
+                    Object next = it.next();
+                    while (it.hasNext()) {
+                        next = it.next();
+                    }
+                    objC0 = next;
+                }
+                return gb.O(objC0);
+            }
+            arrayList = new ArrayList(size);
+            if (iterable instanceof List) {
+                if (iterable instanceof RandomAccess) {
+                    List list = (List) iterable;
+                    int size2 = list.size();
+                    while (i < size2) {
+                        arrayList.add(list.get(i));
+                        i++;
+                    }
+                } else {
+                    ListIterator listIterator = ((List) iterable).listIterator(i);
+                    while (listIterator.hasNext()) {
+                        arrayList.add(listIterator.next());
+                    }
+                }
+                return arrayList;
+            }
+        } else {
+            arrayList = new ArrayList();
+        }
+        int i2 = 0;
+        for (Object obj : iterable) {
+            if (i2 >= i) {
+                arrayList.add(obj);
+            } else {
+                i2++;
+            }
+        }
+        return gb.R(arrayList);
+    }
+
+    public static Object v0(Iterable iterable) {
+        iterable.getClass();
+        if (iterable instanceof List) {
+            return w0((List) iterable);
+        }
+        Iterator it = iterable.iterator();
+        if (it.hasNext()) {
+            return it.next();
+        }
         kf2.m("Collection is empty.");
         return null;
-    L41:
-        r0 = new ArrayList();
-        goto L42
-    L51:
-        kf2.e(b11.j(r4, "Requested element count ", " is less than zero."));
-        return null;
     }
 
-    public static Object v0(Iterable r1) {
-        r1.getClass();
-        if ((r1 instanceof List) == true) goto L5;
-        Iterator r2 = r1.iterator();
-        if (r2.hasNext() == true) goto L9;
-        kf2.m("Collection is empty.");
-        return null;
-    L9:
-        return r2.next();
-    L5:
-        return w0((List) r1);
-    }
-
-    public static Object w0(List r1) {
-        r1.getClass();
-        if (r1.isEmpty() == false) goto L5;
+    public static Object w0(List list) {
+        list.getClass();
+        if (!list.isEmpty()) {
+            return list.get(0);
+        }
         kf2.m("List is empty.");
         return null;
-    L5:
-        return r1.get(0);
     }
 
-    public static Object x0(List r1) {
-        r1.getClass();
-        if (r1.isEmpty() == false) goto L7;
-        return null;
-    L7:
-        return r1.get(0);
+    public static Object x0(List list) {
+        list.getClass();
+        if (list.isEmpty()) {
+            return null;
+        }
+        return list.get(0);
     }
 
-    public static Object y0(List r1, int r2) {
-        r1.getClass();
-        if (r2 >= 0) goto L5;
-        return null;
-    L5:
-        if (r2 < r1.size()) goto L7;
-        return null;
-    L7:
-        return r1.get(r2);
+    public static Object y0(List list, int i) {
+        list.getClass();
+        if (i < 0 || i >= list.size()) {
+            return null;
+        }
+        return list.get(i);
     }
 
-    public static final void z0(Iterable r1, StringBuilder r2, CharSequence r3, CharSequence r4, CharSequence r5, CharSequence r6, if1 r7) {
-        r1.getClass();
-        r2.append(r4);
-        Iterator r8 = r1.iterator();
-        int r9 = 0;
-    L4:
-        if (r8.hasNext() == false) goto L9;
-        Object r10 = r8.next();
-        r9 = r9 + 1;
-        if (r9 <= 1) goto L8;
-        r2.append(r3);
-    L8:
-        si0.j(r2, r10, r7);
-        goto L4
-    L9:
-        r2.append(r5);
+    public static final void z0(Iterable iterable, StringBuilder sb, CharSequence charSequence, CharSequence charSequence2, CharSequence charSequence3, CharSequence charSequence4, if1 if1Var) {
+        iterable.getClass();
+        sb.append(charSequence2);
+        int i = 0;
+        for (Object obj : iterable) {
+            i++;
+            if (i > 1) {
+                sb.append(charSequence);
+            }
+            si0.j(sb, obj, if1Var);
+        }
+        sb.append(charSequence3);
     }
 }

@@ -10,9 +10,9 @@ public final class wj0 implements ua0 {
     public final Context n;
     public final b04 o;
 
-    public wj0(Context r1, b04 r2) {
-        this.n = r1.getApplicationContext();
-        this.o = r2;
+    public wj0(Context context, b04 b04Var) {
+        this.n = context.getApplicationContext();
+        this.o = b04Var;
     }
 
     @Override // defpackage.z92
@@ -21,35 +21,25 @@ public final class wj0 implements ua0 {
 
     @Override // defpackage.z92
     public final void j() {
-        mf4 r0 = mf4.f(this.n);
-        b04 r2 = this.o;
-        monitor-enter(r0);
-        ((HashSet) r0.q).remove(r2);     // Catch: Throwable -> L12
-        if (r0.o == true) goto L7;
-    L10:
-        monitor-exit(r0);
-        return;
-    L7:
-        if (((HashSet) r0.q).isEmpty() == false) goto L10;
-        ll r3 = (ll) r0.p;     // Catch: Throwable -> L12
-        ((ConnectivityManager) ((sd0) r3.q).get()).unregisterNetworkCallback((oy1) r3.r);     // Catch: Throwable -> L12
-        r0.o = false;     // Catch: Throwable -> L12
-    L12:
-        th = move-exception;
-        throw th;
+        mf4 mf4VarF = mf4.f(this.n);
+        b04 b04Var = this.o;
+        synchronized (mf4VarF) {
+            ((HashSet) mf4VarF.q).remove(b04Var);
+            if (mf4VarF.o && ((HashSet) mf4VarF.q).isEmpty()) {
+                ll llVar = (ll) mf4VarF.p;
+                ((ConnectivityManager) ((sd0) llVar.q).get()).unregisterNetworkCallback((oy1) llVar.r);
+                mf4VarF.o = false;
+            }
+        }
     }
 
     @Override // defpackage.z92
     public final void n() {
-        mf4 r0 = mf4.f(this.n);
-        b04 r2 = this.o;
-        monitor-enter(r0);
-        ((HashSet) r0.q).add(r2);     // Catch: Throwable -> L7
-        r0.g();     // Catch: Throwable -> L7
-        monitor-exit(r0);
-        return;
-    L7:
-        th = move-exception;
-        throw th;
+        mf4 mf4VarF = mf4.f(this.n);
+        b04 b04Var = this.o;
+        synchronized (mf4VarF) {
+            ((HashSet) mf4VarF.q).add(b04Var);
+            mf4VarF.g();
+        }
     }
 }

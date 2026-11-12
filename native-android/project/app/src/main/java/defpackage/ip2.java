@@ -22,183 +22,149 @@ public final class ip2 implements ViewTreeObserver.OnGlobalLayoutListener {
     public final /* synthetic */ boolean n;
     public final /* synthetic */ qp2 o;
 
-    public ip2(qp2 r1, boolean r2) {
-        this.o = r1;
-        this.n = r2;
+    public ip2(qp2 qp2Var, boolean z) {
+        this.o = qp2Var;
+        this.n = z;
     }
 
     @Override // android.view.ViewTreeObserver.OnGlobalLayoutListener
     public final void onGlobalLayout() {
-        qp2 r1 = this.o;
-        r1.G.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-        if (r1.r0 == false) goto L6;
-        r1.s0 = true;
-        return;
-    L6:
-        wq2 r2 = r1.w;
-        int r4 = r1.N.getLayoutParams().height;
-        qp2.r(r1.N, -1);
-        r1.x(r1.l());
-        View r5 = r1.getWindow().getDecorView();
-        r5.measure(View.MeasureSpec.makeMeasureSpec(r1.getWindow().getAttributes().width, 1073741824), 0);
-        qp2.r(r1.N, r4);
-        if ((r1.H.getDrawable() instanceof BitmapDrawable) == false) goto L15;
-        Bitmap r6 = ((BitmapDrawable) r1.H.getDrawable()).getBitmap();
-        if (r6 == null) goto L15;
-        int r7 = r1.o(r6.getWidth(), r6.getHeight());
-        ImageView r8 = r1.H;
-        if (r6.getWidth() < r6.getHeight()) goto L13;
-        ImageView.ScaleType r9 = ImageView.ScaleType.FIT_XY;
-    L14:
-        r8.setScaleType(r9);
-    L16:
-        int r10 = r1.p(r1.l());
-        int r11 = r1.T.size();
-        if (r1.q() == false) goto L19;
-        int r12 = Collections.unmodifiableList(r2.v).size() * r1.b0;
-    L20:
-        if (r11 <= 0) goto L22;
-        r12 = r12 + r1.d0;
-    L22:
-        int r13 = Math.min(r12, r1.c0);
-        if (r1.q0 == true) goto L26;
-        r13 = 0;
-    L26:
-        int r14 = Math.max(r7, r13) + r10;
-        Rect r15 = new Rect();
-        r5.getWindowVisibleDisplayFrame(r15);
-        int r16 = r15.height() - (r1.F.getMeasuredHeight() - r1.G.getMeasuredHeight());
-        if (r7 <= 0) goto L31;
-        if (r14 > r16) goto L31;
-        r1.H.setVisibility(0);
-        qp2.r(r1.H, r7);
-    L35:
-        if (r1.l() == false) goto L38;
-        if (r14 > r16) goto L38;
-        r1.O.setVisibility(0);
-    L40:
-        if (r1.O.getVisibility() != 0) goto L42;
-        boolean r17 = true;
-    L43:
-        r1.x(r17);
-        if (r1.O.getVisibility() != 0) goto L46;
-        boolean r18 = true;
-    L47:
-        int r19 = r1.p(r18);
-        int r20 = Math.max(r7, r13) + r19;
-        if (r20 <= r16) goto L50;
-        r13 = r13 - (r20 - r16);
-    L51:
-        r1.N.clearAnimation();
-        r1.R.clearAnimation();
-        r1.G.clearAnimation();
-        LinearLayout r21 = r1.N;
-        boolean r0 = this.n;
-        if (r0 == false) goto L54;
-        r1.k(r21, r19);
-        r1.k(r1.R, r13);
-        r1.k(r1.G, r16);
-    L55:
-        qp2.r(r1.E, r15.height());
-        List r3 = Collections.unmodifiableList(r2.v);
-        boolean r22 = r3.isEmpty();
-        ArrayList r23 = r1.T;
-        if (r22 == false) goto L60;
-        r23.clear();
-        r1.S.notifyDataSetChanged();
-        return;
-    L60:
-        if (new HashSet(r23).equals(new HashSet(r3)) == false) goto L63;
-        r1.S.notifyDataSetChanged();
-        return;
-    L63:
-        if (r0 == false) goto L68;
-        OverlayListView r24 = r1.R;
-        pp2 r25 = r1.S;
-        HashMap r26 = new HashMap();
-        int r27 = r24.getFirstVisiblePosition();
-        int r110 = 0;
-    L66:
-        if (r110 >= r24.getChildCount()) goto L69;
-        Object r111 = r25.getItem(r27 + r110);
-        View r112 = r24.getChildAt(r110);
-        r26.put(r111, new Rect(r112.getLeft(), r112.getTop(), r112.getRight(), r112.getBottom()));
-        r110 = r110 + 1;
-    L69:
-        if (r0 == false) goto L74;
-        Context r28 = r1.x;
-        OverlayListView r29 = r1.R;
-        pp2 r30 = r1.S;
-        HashMap r31 = new HashMap();
-        int r113 = r29.getFirstVisiblePosition();
-        int r114 = 0;
-    L72:
-        if (r114 >= r29.getChildCount()) goto L75;
-        Object r115 = r30.getItem(r113 + r114);
-        View r116 = r29.getChildAt(r114);
-        Bitmap r32 = Bitmap.createBitmap(r116.getWidth(), r116.getHeight(), Bitmap.Config.ARGB_8888);
-        r116.draw(new Canvas(r32));
-        r31.put(r115, new BitmapDrawable(r28.getResources(), r32));
-        r114 = r114 + 1;
-    L75:
-        ArrayList r33 = r1.T;
-        HashSet r34 = new HashSet(r3);
-        r34.removeAll(r33);
-        r1.U = r34;
-        HashSet r35 = new HashSet(r1.T);
-        r35.removeAll(r3);
-        r1.V = r35;
-        r1.T.addAll(0, r1.U);
-        r1.T.removeAll(r1.V);
-        r1.S.notifyDataSetChanged();
-        if (r0 == true) goto L78;
-    L83:
-        r1.U = null;
-        r1.V = null;
-        return;
-    L78:
-        if (r1.q0 == false) goto L83;
-        if ((r1.V.size() + r1.U.size()) <= 0) goto L83;
-        r1.R.setEnabled(false);
-        r1.R.requestLayout();
-        r1.r0 = true;
-        r1.R.getViewTreeObserver().addOnGlobalLayoutListener(new kp2(r1, r26, r31));
-        return;
-    L74:
-        r31 = null;
-        goto L75
-    L68:
-        r26 = null;
-        goto L69
-    L54:
-        qp2.r(r21, r19);
-        qp2.r(r1.R, r13);
-        qp2.r(r1.G, r16);
-        goto L55
-    L50:
-        r16 = r20;
-        goto L51
-    L46:
-        r18 = false;
-        goto L47
-    L42:
-        r17 = false;
-    L38:
-        r1.O.setVisibility(8);
-    L31:
-        if ((r1.N.getMeasuredHeight() + r1.R.getLayoutParams().height) < r1.G.getMeasuredHeight()) goto L33;
-        r1.H.setVisibility(8);
-    L33:
-        r14 = r13 + r10;
-        r7 = 0;
-        goto L35
-    L19:
-        r12 = 0;
-        goto L20
-    L13:
-        r9 = ImageView.ScaleType.FIT_CENTER;
-    L15:
-        r7 = 0;
-        goto L16
+        int iO;
+        HashMap map;
+        HashMap map2;
+        Bitmap bitmap;
+        qp2 qp2Var = this.o;
+        qp2Var.G.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+        if (qp2Var.r0) {
+            qp2Var.s0 = true;
+            return;
+        }
+        wq2 wq2Var = qp2Var.w;
+        int i = qp2Var.N.getLayoutParams().height;
+        qp2.r(qp2Var.N, -1);
+        qp2Var.x(qp2Var.l());
+        View decorView = qp2Var.getWindow().getDecorView();
+        decorView.measure(View.MeasureSpec.makeMeasureSpec(qp2Var.getWindow().getAttributes().width, 1073741824), 0);
+        qp2.r(qp2Var.N, i);
+        if (!(qp2Var.H.getDrawable() instanceof BitmapDrawable) || (bitmap = ((BitmapDrawable) qp2Var.H.getDrawable()).getBitmap()) == null) {
+            iO = 0;
+        } else {
+            iO = qp2Var.o(bitmap.getWidth(), bitmap.getHeight());
+            qp2Var.H.setScaleType(bitmap.getWidth() >= bitmap.getHeight() ? ImageView.ScaleType.FIT_XY : ImageView.ScaleType.FIT_CENTER);
+        }
+        int iP = qp2Var.p(qp2Var.l());
+        int size = qp2Var.T.size();
+        int size2 = qp2Var.q() ? Collections.unmodifiableList(wq2Var.v).size() * qp2Var.b0 : 0;
+        if (size > 0) {
+            size2 += qp2Var.d0;
+        }
+        int iMin = Math.min(size2, qp2Var.c0);
+        if (!qp2Var.q0) {
+            iMin = 0;
+        }
+        int iMax = Math.max(iO, iMin) + iP;
+        Rect rect = new Rect();
+        decorView.getWindowVisibleDisplayFrame(rect);
+        int iHeight = rect.height() - (qp2Var.F.getMeasuredHeight() - qp2Var.G.getMeasuredHeight());
+        if (iO <= 0 || iMax > iHeight) {
+            if (qp2Var.N.getMeasuredHeight() + qp2Var.R.getLayoutParams().height >= qp2Var.G.getMeasuredHeight()) {
+                qp2Var.H.setVisibility(8);
+            }
+            iMax = iMin + iP;
+            iO = 0;
+        } else {
+            qp2Var.H.setVisibility(0);
+            qp2.r(qp2Var.H, iO);
+        }
+        if (!qp2Var.l() || iMax > iHeight) {
+            qp2Var.O.setVisibility(8);
+        } else {
+            qp2Var.O.setVisibility(0);
+        }
+        qp2Var.x(qp2Var.O.getVisibility() == 0);
+        int iP2 = qp2Var.p(qp2Var.O.getVisibility() == 0);
+        int iMax2 = Math.max(iO, iMin) + iP2;
+        if (iMax2 > iHeight) {
+            iMin -= iMax2 - iHeight;
+        } else {
+            iHeight = iMax2;
+        }
+        qp2Var.N.clearAnimation();
+        qp2Var.R.clearAnimation();
+        qp2Var.G.clearAnimation();
+        LinearLayout linearLayout = qp2Var.N;
+        boolean z = this.n;
+        if (z) {
+            qp2Var.k(linearLayout, iP2);
+            qp2Var.k(qp2Var.R, iMin);
+            qp2Var.k(qp2Var.G, iHeight);
+        } else {
+            qp2.r(linearLayout, iP2);
+            qp2.r(qp2Var.R, iMin);
+            qp2.r(qp2Var.G, iHeight);
+        }
+        qp2.r(qp2Var.E, rect.height());
+        List listUnmodifiableList = Collections.unmodifiableList(wq2Var.v);
+        boolean zIsEmpty = listUnmodifiableList.isEmpty();
+        ArrayList arrayList = qp2Var.T;
+        if (zIsEmpty) {
+            arrayList.clear();
+            qp2Var.S.notifyDataSetChanged();
+            return;
+        }
+        if (new HashSet(arrayList).equals(new HashSet(listUnmodifiableList))) {
+            qp2Var.S.notifyDataSetChanged();
+            return;
+        }
+        if (z) {
+            OverlayListView overlayListView = qp2Var.R;
+            pp2 pp2Var = qp2Var.S;
+            map = new HashMap();
+            int firstVisiblePosition = overlayListView.getFirstVisiblePosition();
+            for (int i2 = 0; i2 < overlayListView.getChildCount(); i2++) {
+                Object item = pp2Var.getItem(firstVisiblePosition + i2);
+                View childAt = overlayListView.getChildAt(i2);
+                map.put(item, new Rect(childAt.getLeft(), childAt.getTop(), childAt.getRight(), childAt.getBottom()));
+            }
+        } else {
+            map = null;
+        }
+        if (z) {
+            Context context = qp2Var.x;
+            OverlayListView overlayListView2 = qp2Var.R;
+            pp2 pp2Var2 = qp2Var.S;
+            map2 = new HashMap();
+            int firstVisiblePosition2 = overlayListView2.getFirstVisiblePosition();
+            for (int i3 = 0; i3 < overlayListView2.getChildCount(); i3++) {
+                Object item2 = pp2Var2.getItem(firstVisiblePosition2 + i3);
+                View childAt2 = overlayListView2.getChildAt(i3);
+                Bitmap bitmapCreateBitmap = Bitmap.createBitmap(childAt2.getWidth(), childAt2.getHeight(), Bitmap.Config.ARGB_8888);
+                childAt2.draw(new Canvas(bitmapCreateBitmap));
+                map2.put(item2, new BitmapDrawable(context.getResources(), bitmapCreateBitmap));
+            }
+        } else {
+            map2 = null;
+        }
+        ArrayList arrayList2 = qp2Var.T;
+        HashSet hashSet = new HashSet(listUnmodifiableList);
+        hashSet.removeAll(arrayList2);
+        qp2Var.U = hashSet;
+        HashSet hashSet2 = new HashSet(qp2Var.T);
+        hashSet2.removeAll(listUnmodifiableList);
+        qp2Var.V = hashSet2;
+        qp2Var.T.addAll(0, qp2Var.U);
+        qp2Var.T.removeAll(qp2Var.V);
+        qp2Var.S.notifyDataSetChanged();
+        if (z && qp2Var.q0) {
+            if (qp2Var.V.size() + qp2Var.U.size() > 0) {
+                qp2Var.R.setEnabled(false);
+                qp2Var.R.requestLayout();
+                qp2Var.r0 = true;
+                qp2Var.R.getViewTreeObserver().addOnGlobalLayoutListener(new kp2(qp2Var, map, map2));
+                return;
+            }
+        }
+        qp2Var.U = null;
+        qp2Var.V = null;
     }
 }

@@ -10,56 +10,43 @@ import java.util.WeakHashMap;
 public final class m40 implements af {
     public final /* synthetic */ CollapsingToolbarLayout a;
 
-    public m40(CollapsingToolbarLayout r1) {
-        this.a = r1;
+    public m40(CollapsingToolbarLayout collapsingToolbarLayout) {
+        this.a = collapsingToolbarLayout;
     }
 
     @Override // defpackage.af
-    public final void a(int r12) {
-        CollapsingToolbarLayout r11 = this.a;
-        k40 r0 = r11.x;
-        r11.L = r12;
-        pb5 r1 = r11.N;
-        if (r1 == null) goto L5;
-        int r2 = r1.d();
-    L6:
-        int r3 = r11.getChildCount();
-        int r4 = 0;
-    L7:
-        if (r4 >= r3) goto L16;
-        View r5 = r11.getChildAt(r4);
-        l40 r6 = (l40) r5.getLayoutParams();
-        h75 r7 = CollapsingToolbarLayout.b(r5);
-        int r8 = r6.a;
-        if (r8 != 1) goto L11;
-        r7.b(su3.l(-r12, 0, ((r11.getHeight() - CollapsingToolbarLayout.b(r5).b) - r5.getHeight()) - ((FrameLayout.LayoutParams) ((l40) r5.getLayoutParams())).bottomMargin));
-    L15:
-        r4 = r4 + 1;
-        goto L7
-    L11:
-        if (r8 != 2) goto L15;
-        r7.b(Math.round((-r12) * r6.b));
-        goto L15
-    L16:
-        r11.d();
-        if (r11.C == null) goto L20;
-        if (r2 <= 0) goto L20;
-        WeakHashMap r9 = j65.a;
-        r11.postInvalidateOnAnimation();
-    L20:
-        int r10 = r11.getHeight();
-        WeakHashMap r13 = j65.a;
-        int r14 = (r10 - r11.getMinimumHeight()) - r2;
-        float r15 = r10 - r11.getScrimVisibleHeightTrigger();
-        float r16 = r14;
-        float r17 = Math.min(1.0f, r15 / r16);
-        r0.d = r17;
-        r0.e = xa3.a(1.0f, r17, 0.5f, r17);
-        r0.f = r11.L + r14;
-        r0.p(Math.abs(r12) / r16);
-        return;
-    L5:
-        r2 = 0;
-        goto L6
+    public final void a(int i) {
+        CollapsingToolbarLayout collapsingToolbarLayout = this.a;
+        k40 k40Var = collapsingToolbarLayout.x;
+        collapsingToolbarLayout.L = i;
+        pb5 pb5Var = collapsingToolbarLayout.N;
+        int iD = pb5Var != null ? pb5Var.d() : 0;
+        int childCount = collapsingToolbarLayout.getChildCount();
+        for (int i2 = 0; i2 < childCount; i2++) {
+            View childAt = collapsingToolbarLayout.getChildAt(i2);
+            l40 l40Var = (l40) childAt.getLayoutParams();
+            h75 h75VarB = CollapsingToolbarLayout.b(childAt);
+            int i3 = l40Var.a;
+            if (i3 == 1) {
+                h75VarB.b(su3.l(-i, 0, ((collapsingToolbarLayout.getHeight() - CollapsingToolbarLayout.b(childAt).b) - childAt.getHeight()) - ((FrameLayout.LayoutParams) ((l40) childAt.getLayoutParams())).bottomMargin));
+            } else if (i3 == 2) {
+                h75VarB.b(Math.round((-i) * l40Var.b));
+            }
+        }
+        collapsingToolbarLayout.d();
+        if (collapsingToolbarLayout.C != null && iD > 0) {
+            WeakHashMap weakHashMap = j65.a;
+            collapsingToolbarLayout.postInvalidateOnAnimation();
+        }
+        int height = collapsingToolbarLayout.getHeight();
+        WeakHashMap weakHashMap2 = j65.a;
+        int minimumHeight = (height - collapsingToolbarLayout.getMinimumHeight()) - iD;
+        float scrimVisibleHeightTrigger = height - collapsingToolbarLayout.getScrimVisibleHeightTrigger();
+        float f = minimumHeight;
+        float fMin = Math.min(1.0f, scrimVisibleHeightTrigger / f);
+        k40Var.d = fMin;
+        k40Var.e = xa3.a(1.0f, fMin, 0.5f, fMin);
+        k40Var.f = collapsingToolbarLayout.L + minimumHeight;
+        k40Var.p(Math.abs(i) / f);
     }
 }

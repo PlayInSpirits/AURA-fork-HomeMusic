@@ -6,65 +6,52 @@ import java.util.ArrayList;
 /* JADX INFO: loaded from: classes.dex */
 public abstract class kp implements ci0 {
     public final boolean n;
-    public final ArrayList o;
+    public final ArrayList o = new ArrayList(1);
     public int p;
     public ii0 q;
 
-    public kp(boolean r2) {
-        this.n = r2;
-        this.o = new ArrayList(1);
+    public kp(boolean z) {
+        this.n = z;
     }
 
     @Override // defpackage.ci0
-    public final void c(rw4 r3) {
-        r3.getClass();
-        ArrayList r0 = this.o;
-        if (r0.contains(r3) == true) goto L6;
-        r0.add(r3);
+    public final void c(rw4 rw4Var) {
+        rw4Var.getClass();
+        ArrayList arrayList = this.o;
+        if (arrayList.contains(rw4Var)) {
+            return;
+        }
+        arrayList.add(rw4Var);
         this.p++;
-        return;
     }
 
-    public final void o(int r5) {
-        ii0 r0 = this.q;
-        String r1 = f35.a;
-        int r2 = 0;
-    L4:
-        if (r2 >= this.p) goto L6;
-        ((rw4) this.o.get(r2)).a(this, r0, this.n, r5);
-        r2 = r2 + 1;
-        goto L4
+    public final void o(int i) {
+        ii0 ii0Var = this.q;
+        String str = f35.a;
+        for (int i2 = 0; i2 < this.p; i2++) {
+            ((rw4) this.o.get(i2)).a(this, ii0Var, this.n, i);
+        }
     }
 
     public final void p() {
-        ii0 r0 = this.q;
-        String r1 = f35.a;
-        int r2 = 0;
-    L4:
-        if (r2 >= this.p) goto L6;
-        ((rw4) this.o.get(r2)).c(this, r0, this.n);
-        r2 = r2 + 1;
-        goto L4
-    L6:
+        ii0 ii0Var = this.q;
+        String str = f35.a;
+        for (int i = 0; i < this.p; i++) {
+            ((rw4) this.o.get(i)).c(this, ii0Var, this.n);
+        }
         this.q = null;
     }
 
-    public final void q(ii0 r3) {
-        int r0 = 0;
-    L4:
-        if (r0 >= this.p) goto L6;
-        ((rw4) this.o.get(r0)).d(this, r3);
-        r0 = r0 + 1;
-        goto L4
+    public final void q(ii0 ii0Var) {
+        for (int i = 0; i < this.p; i++) {
+            ((rw4) this.o.get(i)).d(this, ii0Var);
+        }
     }
 
-    public final void r(ii0 r4) {
-        this.q = r4;
-        int r0 = 0;
-    L4:
-        if (r0 >= this.p) goto L6;
-        ((rw4) this.o.get(r0)).b(this, r4, this.n);
-        r0 = r0 + 1;
-        goto L4
+    public final void r(ii0 ii0Var) {
+        this.q = ii0Var;
+        for (int i = 0; i < this.p; i++) {
+            ((rw4) this.o.get(i)).b(this, ii0Var, this.n);
+        }
     }
 }

@@ -6,19 +6,18 @@ public final class k0 implements Runnable {
     public final u0 n;
     public final ic2 o;
 
-    public k0(u0 r1, ic2 r2) {
-        this.n = r1;
-        this.o = r2;
+    public k0(u0 u0Var, ic2 ic2Var) {
+        this.n = u0Var;
+        this.o = ic2Var;
     }
 
     @Override // java.lang.Runnable
     public final void run() {
-        if (this.n.n != this) goto L10;
-        Object r0 = u0.h(this.o);
-        if (u0.s.h(this.n, this, r0) == false) goto L9;
-        u0.d(this.n, false);
-        return;
-    L9:
-        return;
+        if (this.n.n != this) {
+            return;
+        }
+        if (u0.s.h(this.n, this, u0.h(this.o))) {
+            u0.d(this.n, false);
+        }
     }
 }

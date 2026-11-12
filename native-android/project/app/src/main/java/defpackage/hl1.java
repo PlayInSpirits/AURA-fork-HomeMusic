@@ -8,15 +8,16 @@ public final class hl1 extends q42 implements gf1 {
     public final /* synthetic */ int n;
     public final /* synthetic */ List o;
 
-    public /* synthetic */ hl1(List r1, int r2) {
-        this.n = r2;
-        this.o = r1;
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public /* synthetic */ hl1(List list, int i) {
         super(0);
+        this.n = i;
+        this.o = list;
     }
 
     @Override // defpackage.gf1
     public final Object invoke() {
-        int r0 = this.n;
+        int i = this.n;
         return this.o;
     }
 }

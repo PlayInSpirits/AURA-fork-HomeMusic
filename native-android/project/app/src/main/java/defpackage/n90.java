@@ -8,24 +8,22 @@ public final /* synthetic */ class n90 implements ThreadFactory {
     public final /* synthetic */ int a;
     public final /* synthetic */ String b;
 
-    public /* synthetic */ n90(int r1, String r2) {
-        this.a = r1;
-        this.b = r2;
+    public /* synthetic */ n90(int i, String str) {
+        this.a = i;
+        this.b = str;
     }
 
     @Override // java.util.concurrent.ThreadFactory
-    public final Thread newThread(Runnable r2) {
-        int r0 = this.a;
-        String r1 = this.b;
-        switch(r0) {
-            case 0: goto L6;
-            default: goto L5;
-        };
-    L6:
-        Thread r3 = new Thread(r2, r1);
-        r3.setPriority(10);
-        return r3;
-    L5:
-        return new Thread(r2, r1);
+    public final Thread newThread(Runnable runnable) {
+        int i = this.a;
+        String str = this.b;
+        switch (i) {
+            case 0:
+                Thread thread = new Thread(runnable, str);
+                thread.setPriority(10);
+                return thread;
+            default:
+                return new Thread(runnable, str);
+        }
     }
 }

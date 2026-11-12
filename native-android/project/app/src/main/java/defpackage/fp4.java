@@ -9,78 +9,53 @@ public final class fp4 extends gx2 {
     public final Object b;
     public final PointerInputEventHandler c;
 
-    public fp4(Object r1, uo r2, PointerInputEventHandler r3, int r4) {
-        if ((r4 & 2) == 0) goto L5;
-        r2 = null;
-    L5:
-        this.a = r1;
-        this.b = r2;
-        this.c = r3;
+    public fp4(Object obj, uo uoVar, PointerInputEventHandler pointerInputEventHandler, int i) {
+        uoVar = (i & 2) != 0 ? null : uoVar;
+        this.a = obj;
+        this.b = uoVar;
+        this.c = pointerInputEventHandler;
     }
 
     @Override // defpackage.gx2
     public final cx2 d() {
-        Object r1 = this.b;
-        PointerInputEventHandler r2 = this.c;
-        return new ip4(this.a, r1, r2);
+        return new ip4(this.a, this.b, this.c);
     }
 
     @Override // defpackage.gx2
-    public final void e(cx2 r5) {
-        ip4 r6 = (ip4) r5;
-        Object r0 = r6.B;
-        Object r1 = this.a;
-        boolean r2 = true;
-        boolean r3 = !h12.c(r0, r1);
-        r6.B = r1;
-        Object r4 = r6.C;
-        Object r7 = this.b;
-        if (h12.c(r4, r7) == true) goto L5;
-        r3 = true;
-    L5:
-        r6.C = r7;
-        Class<?> r8 = r6.D.getClass();
-        PointerInputEventHandler r9 = this.c;
-        if (r8 != r9.getClass()) goto L9;
-        r2 = r3;
-    L9:
-        if (r2 == false) goto L11;
-        r6.r0();
-    L11:
-        r6.D = r9;
+    public final void e(cx2 cx2Var) {
+        ip4 ip4Var = (ip4) cx2Var;
+        Object obj = ip4Var.B;
+        Object obj2 = this.a;
+        boolean z = !h12.c(obj, obj2);
+        ip4Var.B = obj2;
+        Object obj3 = ip4Var.C;
+        Object obj4 = this.b;
+        if (!h12.c(obj3, obj4)) {
+            z = true;
+        }
+        ip4Var.C = obj4;
+        Class<?> cls = ip4Var.D.getClass();
+        PointerInputEventHandler pointerInputEventHandler = this.c;
+        if (cls == pointerInputEventHandler.getClass() ? z : true) {
+            ip4Var.r0();
+        }
+        ip4Var.D = pointerInputEventHandler;
     }
 
-    public final boolean equals(Object r3) {
-        if (this != r3) goto L5;
-        return true;
-    L5:
-        if ((r3 instanceof fp4) == false) goto L20;
-        fp4 r4 = (fp4) r3;
-        Object r0 = r4.a;
-        if (this.a.equals(r0) == true) goto L11;
-        return false;
-    L11:
-        if (h12.c(this.b, r4.b) == true) goto L14;
-        return false;
-    L14:
-        if (this.c != r4.c) goto L17;
-        return true;
-    L17:
-        return false;
-    L20:
-        return false;
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof fp4)) {
+            return false;
+        }
+        fp4 fp4Var = (fp4) obj;
+        return this.a.equals(fp4Var.a) && h12.c(this.b, fp4Var.b) && this.c == fp4Var.c;
     }
 
     public final int hashCode() {
-        int r0 = this.a.hashCode() * 31;
-        Object r1 = this.b;
-        if (r1 == null) goto L5;
-        int r2 = r1.hashCode();
-    L6:
-        int r3 = this.c.hashCode();
-        return r3 + ((r0 + r2) * 961);
-    L5:
-        r2 = 0;
-        goto L6
+        int iHashCode = this.a.hashCode() * 31;
+        Object obj = this.b;
+        return this.c.hashCode() + ((iHashCode + (obj != null ? obj.hashCode() : 0)) * 961);
     }
 }

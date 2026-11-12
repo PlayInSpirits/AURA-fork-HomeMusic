@@ -6,7 +6,7 @@ import android.window.OnBackInvokedCallback;
 /* JADX INFO: loaded from: classes.dex */
 public final class ch2 extends ah2 {
     @Override // defpackage.ah2
-    public final OnBackInvokedCallback a(zg2 r2) {
-        return new bh2(this, r2);
+    public final OnBackInvokedCallback a(zg2 zg2Var) {
+        return new bh2(this, zg2Var);
     }
 }

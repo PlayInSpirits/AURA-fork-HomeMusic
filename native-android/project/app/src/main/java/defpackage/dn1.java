@@ -10,11 +10,11 @@ public abstract class dn1 {
     public final List b;
     public final boolean c;
 
-    public dn1(String r1, List r2, boolean r3) {
-        this.a = r1;
-        this.b = Collections.unmodifiableList(r2);
-        this.c = r3;
+    public dn1(String str, List list, boolean z) {
+        this.a = str;
+        this.b = Collections.unmodifiableList(list);
+        this.c = z;
     }
 
-    public abstract Object a(List r1);
+    public abstract Object a(List list);
 }

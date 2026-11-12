@@ -6,6 +6,7 @@ import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.atomic.AtomicReference;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
@@ -21,325 +22,462 @@ public final class ea2 {
     public r92 h;
     public final nl4 i;
 
-    public ea2(ba2 r3, boolean r4) {
+    public ea2(ba2 ba2Var, boolean z) {
         new AtomicReference(null);
-        this.a = r4;
+        this.a = z;
         this.b = new c12();
-        this.c = new h95(r3);
+        this.c = new h95(ba2Var);
         this.g = new ArrayList();
-        r92 r5 = r92.o;
-        this.h = r5;
-        this.i = ya4.a(r5);
+        r92 r92Var = r92.o;
+        this.h = r92Var;
+        this.i = ya4.a(r92Var);
     }
 
-    public final void a(aa2 r10) {
-        r10.getClass();
+    public final void a(aa2 aa2Var) {
+        w92 tl0Var;
+        da2 da2Var;
+        ba2 ba2Var;
+        q92 q92Var;
+        aa2Var.getClass();
         c("addObserver");
-        r92 r0 = this.h;
-        r92 r1 = r92.n;
-        if (r0 == r1) goto L6;
-        r1 = r92.o;
-    L6:
-        da2 r2 = new da2();
-        r2.a = r1;
-        HashMap r3 = ka2.a;
-        boolean r4 = r10 instanceof w92;
-        boolean r5 = r10 instanceof rl0;
-        int r6 = 2;
-        boolean r7 = false;
-        if (r4 == false) goto L10;
-        if (r5 == false) goto L10;
-        w92 r8 = new tl0((rl0) r10, (w92) r10);
-    L26:
-        r2.b = r8;
-        c12 r9 = this.b;
-        r9.getClass();
-        w03 r11 = (w03) r9.o;
-        b61 r12 = (b61) r11.g(r10);
-        if (r12 == null) goto L29;
-        da2 r13 = r12.o;
-    L34:
-        if (r13 != null) goto L69;
-        ba2 r14 = (ba2) ((WeakReference) this.c.n).get();
-        if (r14 != null) goto L40;
-        return;
-    L40:
-        if (this.d == 0) goto L42;
-    L43:
-        r7 = true;
-    L44:
-        r92 r15 = b(r10);
-        this.d++;
-    L46:
-        if (r2.a.compareTo(r15) >= 0) goto L62;
-        c12 r16 = this.b;
-        r16.getClass();
-        if (((w03) r16.o).c(r10) == false) goto L62;
-        r92 r17 = r2.a;
-        ArrayList r18 = this.g;
-        r18.add(r17);
-        o92 r19 = q92.Companion;
-        r92 r20 = r2.a;
-        r19.getClass();
-        r20.getClass();
-        int r21 = r20.ordinal();
-        if (r21 == 1) goto L57;
-        if (r21 != 2) goto L53;
-        q92 r22 = q92.ON_START;
-    L58:
-        if (r22 == null) goto L60;
-        r2.a(r14, r22);
-        v40.r0(r18);
-        r15 = b(r10);
-        goto L46
-    L60:
-        nz2.x(r2.a, "no event up from ");
-        return;
-    L53:
-        if (r21 == 3) goto L55;
-        r22 = null;
-        goto L58
-    L55:
-        r22 = q92.ON_RESUME;
-        goto L58
-    L57:
-        r22 = q92.ON_CREATE;
-    L62:
-        if (r7 == true) goto L64;
-        h();
-    L64:
-        this.d--;
-        return;
-    L42:
-        if (this.e == false) goto L44;
-    L69:
-        return;
-    L29:
-        b61 r23 = new b61(r10, r2);
-        r11.l(r10, r23);
-        b61 r24 = (b61) r9.q;
-        if (r24 != null) goto L32;
-        r9.p = r23;
-        r9.q = r23;
-    L33:
-        r13 = null;
-        goto L34
-    L32:
-        r24.p = r23;
-        r23.q = r24;
-        r9.q = r23;
-    L10:
-        if (r5 == false) goto L12;
-        r8 = new tl0((rl0) r10, null);
-        goto L26
-    L12:
-        if (r4 == false) goto L14;
-        r8 = (w92) r10;
-        goto L26
-    L14:
-        Class<?> r25 = r10.getClass();
-        if (ka2.b(r25) != 2) goto L25;
-        Object r26 = ka2.b.get(r25);
-        r26.getClass();
-        List r27 = (List) r26;
-        if (r27.size() == 1) goto L23;
-        int r28 = r27.size();
-        ah1[] r29 = new ah1[r28];
-        if (r28 > 0) goto L21;
-        r8 = new vv3(r6, r29);
-        goto L26
-    L21:
-        ka2.a((Constructor) r27.get(0), r10);
-        throw null;
-    L23:
-        ka2.a((Constructor) r27.get(0), r10);
-        throw null;
-    L25:
-        r8 = new tl0(r10);
-        goto L26
+        r92 r92Var = this.h;
+        r92 r92Var2 = r92.n;
+        if (r92Var != r92Var2) {
+            r92Var2 = r92.o;
+        }
+        da2 da2Var2 = new da2();
+        da2Var2.a = r92Var2;
+        HashMap map = ka2.a;
+        boolean z = aa2Var instanceof w92;
+        boolean z2 = aa2Var instanceof rl0;
+        int i = 2;
+        if (z && z2) {
+            tl0Var = new tl0((rl0) aa2Var, (w92) aa2Var);
+        } else if (z2) {
+            tl0Var = new tl0((rl0) aa2Var, (w92) null);
+        } else if (z) {
+            tl0Var = (w92) aa2Var;
+        } else {
+            Class<?> cls = aa2Var.getClass();
+            if (ka2.b(cls) == 2) {
+                Object obj = ka2.b.get(cls);
+                obj.getClass();
+                List list = (List) obj;
+                if (list.size() == 1) {
+                    ka2.a((Constructor) list.get(0), aa2Var);
+                    throw null;
+                }
+                int size = list.size();
+                ah1[] ah1VarArr = new ah1[size];
+                if (size > 0) {
+                    ka2.a((Constructor) list.get(0), aa2Var);
+                    throw null;
+                }
+                tl0Var = new vv3(i, ah1VarArr);
+            } else {
+                tl0Var = new tl0(aa2Var);
+            }
+        }
+        da2Var2.b = tl0Var;
+        c12 c12Var = this.b;
+        c12Var.getClass();
+        w03 w03Var = (w03) c12Var.o;
+        b61 b61Var = (b61) w03Var.g(aa2Var);
+        if (b61Var != null) {
+            da2Var = b61Var.o;
+        } else {
+            b61 b61Var2 = new b61(aa2Var, da2Var2);
+            w03Var.l(aa2Var, b61Var2);
+            b61 b61Var3 = (b61) c12Var.q;
+            if (b61Var3 == null) {
+                c12Var.p = b61Var2;
+                c12Var.q = b61Var2;
+            } else {
+                b61Var3.p = b61Var2;
+                b61Var2.q = b61Var3;
+                c12Var.q = b61Var2;
+            }
+            da2Var = null;
+        }
+        if (da2Var == null && (ba2Var = (ba2) ((WeakReference) this.c.n).get()) != null) {
+            boolean z3 = this.d != 0 || this.e;
+            r92 r92VarB = b(aa2Var);
+            this.d++;
+            while (da2Var2.a.compareTo(r92VarB) < 0) {
+                c12 c12Var2 = this.b;
+                c12Var2.getClass();
+                if (!((w03) c12Var2.o).c(aa2Var)) {
+                    break;
+                }
+                r92 r92Var3 = da2Var2.a;
+                ArrayList arrayList = this.g;
+                arrayList.add(r92Var3);
+                o92 o92Var = q92.Companion;
+                r92 r92Var4 = da2Var2.a;
+                o92Var.getClass();
+                r92Var4.getClass();
+                int iOrdinal = r92Var4.ordinal();
+                if (iOrdinal == 1) {
+                    q92Var = q92.ON_CREATE;
+                } else if (iOrdinal != 2) {
+                    q92Var = iOrdinal != 3 ? null : q92.ON_RESUME;
+                } else {
+                    q92Var = q92.ON_START;
+                }
+                if (q92Var == null) {
+                    nz2.x(da2Var2.a, "no event up from ");
+                    return;
+                } else {
+                    da2Var2.a(ba2Var, q92Var);
+                    v40.r0(arrayList);
+                    r92VarB = b(aa2Var);
+                }
+            }
+            if (!z3) {
+                h();
+            }
+            this.d--;
+        }
     }
 
-    public final r92 b(aa2 r4) {
-        c12 r0 = this.b;
-        r0.getClass();
-        r4.getClass();
-        b61 r5 = (b61) ((w03) r0.o).g(r4);
-        r92 r1 = null;
-        if (r5 == null) goto L5;
-        b61 r6 = r5.q;
-    L6:
-        if (r6 == null) goto L8;
-        r92 r7 = r6.o.a;
-    L9:
-        ArrayList r2 = this.g;
-        if (r2.isEmpty() == true) goto L12;
-        r1 = (r92) r2.get(r2.size() - 1);
-    L12:
-        r92 r3 = this.h;
-        if (r7 != null) goto L15;
-    L17:
-        r7 = r3;
-    L18:
-        if (r1 != null) goto L20;
-    L22:
-        return r7;
-    L20:
-        if (r1.compareTo(r7) >= 0) goto L22;
-        return r1;
-    L15:
-        if (r7.compareTo(r3) >= 0) goto L17;
-    L8:
-        r7 = null;
-        goto L9
-    L5:
-        r6 = null;
-        goto L6
+    public final r92 b(aa2 aa2Var) {
+        c12 c12Var = this.b;
+        c12Var.getClass();
+        aa2Var.getClass();
+        b61 b61Var = (b61) ((w03) c12Var.o).g(aa2Var);
+        b61 b61Var2 = b61Var != null ? b61Var.q : null;
+        r92 r92Var = b61Var2 != null ? b61Var2.o.a : null;
+        ArrayList arrayList = this.g;
+        r92 r92Var2 = arrayList.isEmpty() ? null : (r92) arrayList.get(arrayList.size() - 1);
+        r92 r92Var3 = this.h;
+        if (r92Var == null || r92Var.compareTo(r92Var3) >= 0) {
+            r92Var = r92Var3;
+        }
+        return (r92Var2 == null || r92Var2.compareTo(r92Var) >= 0) ? r92Var : r92Var2;
     }
 
-    public final void c(String r2) {
-        if (this.a == false) goto L9;
-        ei.V().j.getClass();
-        if (Looper.getMainLooper().getThread() != Thread.currentThread()) goto L7;
-        return;
-    L7:
-        nz2.f(xa3.h("Method ", r2, " must be called on the main thread"));
-        return;
+    public final void c(String str) {
+        if (this.a) {
+            ei.V().j.getClass();
+            if (Looper.getMainLooper().getThread() == Thread.currentThread()) {
+                return;
+            }
+            nz2.f(xa3.h("Method ", str, " must be called on the main thread"));
+        }
     }
 
-    public final void d(q92 r2) {
-        r2.getClass();
+    public final void d(q92 q92Var) {
+        q92Var.getClass();
         c("handleLifecycleEvent");
-        e(r2.a());
+        e(q92Var.a());
     }
 
-    public final void e(r92 r5) {
-        if (this.h == r5) goto L28;
-        ba2 r0 = (ba2) ((WeakReference) this.c.n).get();
-        r92 r1 = this.h;
-        r92 r2 = r92.o;
-        r92 r3 = r92.n;
-        if (r1 != r2) goto L11;
-        if (r5 != r3) goto L11;
-        throw new IllegalStateException(("State must be at least '" + r92.p + "' to be moved to '" + r5 + "' in component " + r0).toString());
-    L11:
-        if (r1 != r3) goto L16;
-        if (r1 == r5) goto L16;
-        throw new IllegalStateException(("State is '" + r3 + "' and cannot be moved to `" + r5 + "` in component " + r0).toString());
-    L16:
-        this.h = r5;
-        if (this.e == false) goto L19;
-    L25:
-        this.f = true;
-        return;
-    L19:
-        if (this.d != 0) goto L25;
+    public final void e(r92 r92Var) {
+        if (this.h == r92Var) {
+            return;
+        }
+        ba2 ba2Var = (ba2) ((WeakReference) this.c.n).get();
+        r92 r92Var2 = this.h;
+        r92 r92Var3 = r92.o;
+        r92 r92Var4 = r92.n;
+        if (r92Var2 == r92Var3 && r92Var == r92Var4) {
+            throw new IllegalStateException(("State must be at least '" + r92.p + "' to be moved to '" + r92Var + "' in component " + ba2Var).toString());
+        }
+        if (r92Var2 == r92Var4 && r92Var2 != r92Var) {
+            throw new IllegalStateException(("State is '" + r92Var4 + "' and cannot be moved to `" + r92Var + "` in component " + ba2Var).toString());
+        }
+        this.h = r92Var;
+        if (this.e || this.d != 0) {
+            this.f = true;
+            return;
+        }
         this.e = true;
         h();
         this.e = false;
-        if (this.h != r3) goto L27;
-        this.b = new c12();
-        return;
-    L27:
-        return;
+        if (this.h == r92Var4) {
+            this.b = new c12();
+        }
     }
 
-    public final void f(aa2 r3) {
-        r3.getClass();
+    public final void f(aa2 aa2Var) {
+        aa2Var.getClass();
         c("removeObserver");
-        c12 r2 = this.b;
-        r2.getClass();
-        b61 r4 = (b61) ((w03) r2.o).j(r3);
-        if (r4 != null) goto L5;
-        return;
-    L5:
-        b61 r0 = r4.q;
-        b61 r1 = r4.p;
-        if (r0 != null) goto L8;
-        r2.p = r1;
-    L9:
-        b61 r5 = r4.p;
-        if (r5 != null) goto L12;
-        r2.q = r0;
-    L13:
-        r4.r = true;
-        return;
-    L12:
-        r5.q = r0;
-        goto L13
-    L8:
-        r0.p = r1;
-        goto L9
+        c12 c12Var = this.b;
+        c12Var.getClass();
+        b61 b61Var = (b61) ((w03) c12Var.o).j(aa2Var);
+        if (b61Var == null) {
+            return;
+        }
+        b61 b61Var2 = b61Var.q;
+        b61 b61Var3 = b61Var.p;
+        if (b61Var2 == null) {
+            c12Var.p = b61Var3;
+        } else {
+            b61Var2.p = b61Var3;
+        }
+        b61 b61Var4 = b61Var.p;
+        if (b61Var4 == null) {
+            c12Var.q = b61Var2;
+        } else {
+            b61Var4.q = b61Var2;
+        }
+        b61Var.r = true;
     }
 
-    public final void g(r92 r2) {
-        r2.getClass();
+    public final void g(r92 r92Var) {
+        r92Var.getClass();
         c("setCurrentState");
-        e(r2);
+        e(r92Var);
     }
 
     public final void h() {
-        Object r0 = ((WeakReference) this.c.n).get();
-        if (r0 == null) goto L45;
-        final ba2 r1 = (ba2) r0;
-    L5:
-        c12 r2 = this.b;
-        final int r3 = 0;
-        if (((w03) r2.o).e == 0) goto L16;
-        b61 r4 = (b61) r2.p;
-        if (r4 == null) goto L43;
-        r92 r5 = r4.o.a;
-        b61 r6 = (b61) r2.q;
-        if (r6 == null) goto L41;
-        r92 r7 = r6.o.a;
-        if (r5 == r7) goto L15;
-    L18:
-        this.f = false;
-        r92 r8 = this.h;
-        if (r4 == null) goto L39;
-        if (r8.compareTo(r5) >= 0) goto L28;
-        c12 r9 = this.b;
-        if1 r10 = new ca2(this, r1, r3);
-        r9.getClass();
-        b61 r11 = (b61) r9.q;
-    L23:
-        if (r11 == null) goto L28;
-        if (r11.r == true) goto L27;
-        r10.invoke(r11);
-    L27:
-        r11 = r11.q;
-    L28:
-        b61 r12 = (b61) this.b.q;
-        if (this.f == true) goto L5;
-        if (r12 == null) goto L5;
-        if (this.h.compareTo(r12.o.a) <= 0) goto L5;
-        c12 r13 = this.b;
-        final int r14 = 1;
-        if1 r15 = new ca2(this, r1, r14);
-        r13.getClass();
-        b61 r16 = (b61) r13.p;
-    L34:
-        if (r16 == null) goto L5;
-        if (r16.r == true) goto L38;
-        r15.invoke(r16);
-    L38:
-        r16 = r16.p;
-        goto L34
-    L39:
-        kf2.m("Collection is empty.");
-        return;
-    L15:
-        if (this.h != r7) goto L18;
-    L41:
-        kf2.m("Collection is empty.");
-        return;
-    L43:
-        kf2.m("Collection is empty.");
-        return;
-    L16:
+        Object obj = ((WeakReference) this.c.n).get();
+        if (obj == null) {
+            kf2.o("LifecycleOwner of this LifecycleRegistry is already garbage collected. It is too late to change lifecycle state.");
+            return;
+        }
+        final ba2 ba2Var = (ba2) obj;
+        while (true) {
+            c12 c12Var = this.b;
+            final int i = 0;
+            if (((w03) c12Var.o).e == 0) {
+                break;
+            }
+            b61 b61Var = (b61) c12Var.p;
+            if (b61Var == null) {
+                kf2.m("Collection is empty.");
+                return;
+            }
+            r92 r92Var = b61Var.o.a;
+            b61 b61Var2 = (b61) c12Var.q;
+            if (b61Var2 == null) {
+                kf2.m("Collection is empty.");
+                return;
+            }
+            r92 r92Var2 = b61Var2.o.a;
+            if (r92Var == r92Var2 && this.h == r92Var2) {
+                break;
+            }
+            this.f = false;
+            r92 r92Var3 = this.h;
+            if (b61Var == null) {
+                kf2.m("Collection is empty.");
+                return;
+            }
+            if (r92Var3.compareTo(r92Var) < 0) {
+                c12 c12Var2 = this.b;
+                if1 if1Var = new if1(this) { // from class: ca2
+                    public final /* synthetic */ ea2 o;
+
+                    {
+                        this.o = this;
+                    }
+
+                    @Override // defpackage.if1
+                    public final Object invoke(Object obj2) {
+                        q92 q92Var;
+                        q92 q92Var2;
+                        int i2 = i;
+                        j15 j15Var = j15.a;
+                        ba2 ba2Var2 = ba2Var;
+                        ea2 ea2Var = this.o;
+                        Map.Entry entry = (Map.Entry) obj2;
+                        switch (i2) {
+                            case 0:
+                                entry.getClass();
+                                aa2 aa2Var = (aa2) entry.getKey();
+                                da2 da2Var = (da2) entry.getValue();
+                                while (true) {
+                                    r92 r92Var4 = da2Var.a;
+                                    r92 r92Var5 = ea2Var.h;
+                                    ArrayList arrayList = ea2Var.g;
+                                    if (r92Var4.compareTo(r92Var5) <= 0 || ea2Var.f) {
+                                        return j15Var;
+                                    }
+                                    c12 c12Var3 = ea2Var.b;
+                                    c12Var3.getClass();
+                                    aa2Var.getClass();
+                                    if (!((w03) c12Var3.o).c(aa2Var)) {
+                                        return j15Var;
+                                    }
+                                    o92 o92Var = q92.Companion;
+                                    r92 r92Var6 = da2Var.a;
+                                    o92Var.getClass();
+                                    r92Var6.getClass();
+                                    int iOrdinal = r92Var6.ordinal();
+                                    if (iOrdinal == 2) {
+                                        q92Var = q92.ON_DESTROY;
+                                    } else if (iOrdinal != 3) {
+                                        q92Var = iOrdinal != 4 ? null : q92.ON_PAUSE;
+                                    } else {
+                                        q92Var = q92.ON_STOP;
+                                    }
+                                    if (q92Var == null) {
+                                        nz2.u(da2Var.a, "no event down from ");
+                                        return null;
+                                    }
+                                    arrayList.add(q92Var.a());
+                                    da2Var.a(ba2Var2, q92Var);
+                                    v40.r0(arrayList);
+                                }
+                                break;
+                            default:
+                                entry.getClass();
+                                aa2 aa2Var2 = (aa2) entry.getKey();
+                                da2 da2Var2 = (da2) entry.getValue();
+                                while (true) {
+                                    r92 r92Var7 = da2Var2.a;
+                                    r92 r92Var8 = ea2Var.h;
+                                    ArrayList arrayList2 = ea2Var.g;
+                                    if (r92Var7.compareTo(r92Var8) >= 0 || ea2Var.f) {
+                                        return j15Var;
+                                    }
+                                    c12 c12Var4 = ea2Var.b;
+                                    c12Var4.getClass();
+                                    aa2Var2.getClass();
+                                    if (!((w03) c12Var4.o).c(aa2Var2)) {
+                                        return j15Var;
+                                    }
+                                    arrayList2.add(da2Var2.a);
+                                    o92 o92Var2 = q92.Companion;
+                                    r92 r92Var9 = da2Var2.a;
+                                    o92Var2.getClass();
+                                    r92Var9.getClass();
+                                    int iOrdinal2 = r92Var9.ordinal();
+                                    if (iOrdinal2 == 1) {
+                                        q92Var2 = q92.ON_CREATE;
+                                    } else if (iOrdinal2 != 2) {
+                                        q92Var2 = iOrdinal2 != 3 ? null : q92.ON_RESUME;
+                                    } else {
+                                        q92Var2 = q92.ON_START;
+                                    }
+                                    if (q92Var2 == null) {
+                                        nz2.u(da2Var2.a, "no event up from ");
+                                        return null;
+                                    }
+                                    da2Var2.a(ba2Var2, q92Var2);
+                                    v40.r0(arrayList2);
+                                }
+                                break;
+                        }
+                    }
+                };
+                c12Var2.getClass();
+                for (b61 b61Var3 = (b61) c12Var2.q; b61Var3 != null; b61Var3 = b61Var3.q) {
+                    if (!b61Var3.r) {
+                        if1Var.invoke(b61Var3);
+                    }
+                }
+            }
+            b61 b61Var4 = (b61) this.b.q;
+            if (!this.f && b61Var4 != null && this.h.compareTo(b61Var4.o.a) > 0) {
+                c12 c12Var3 = this.b;
+                final int i2 = 1;
+                if1 if1Var2 = new if1(this) { // from class: ca2
+                    public final /* synthetic */ ea2 o;
+
+                    {
+                        this.o = this;
+                    }
+
+                    @Override // defpackage.if1
+                    public final Object invoke(Object obj2) {
+                        q92 q92Var;
+                        q92 q92Var2;
+                        int i3 = i2;
+                        j15 j15Var = j15.a;
+                        ba2 ba2Var2 = ba2Var;
+                        ea2 ea2Var = this.o;
+                        Map.Entry entry = (Map.Entry) obj2;
+                        switch (i3) {
+                            case 0:
+                                entry.getClass();
+                                aa2 aa2Var = (aa2) entry.getKey();
+                                da2 da2Var = (da2) entry.getValue();
+                                while (true) {
+                                    r92 r92Var4 = da2Var.a;
+                                    r92 r92Var5 = ea2Var.h;
+                                    ArrayList arrayList = ea2Var.g;
+                                    if (r92Var4.compareTo(r92Var5) <= 0 || ea2Var.f) {
+                                        return j15Var;
+                                    }
+                                    c12 c12Var4 = ea2Var.b;
+                                    c12Var4.getClass();
+                                    aa2Var.getClass();
+                                    if (!((w03) c12Var4.o).c(aa2Var)) {
+                                        return j15Var;
+                                    }
+                                    o92 o92Var = q92.Companion;
+                                    r92 r92Var6 = da2Var.a;
+                                    o92Var.getClass();
+                                    r92Var6.getClass();
+                                    int iOrdinal = r92Var6.ordinal();
+                                    if (iOrdinal == 2) {
+                                        q92Var = q92.ON_DESTROY;
+                                    } else if (iOrdinal != 3) {
+                                        q92Var = iOrdinal != 4 ? null : q92.ON_PAUSE;
+                                    } else {
+                                        q92Var = q92.ON_STOP;
+                                    }
+                                    if (q92Var == null) {
+                                        nz2.u(da2Var.a, "no event down from ");
+                                        return null;
+                                    }
+                                    arrayList.add(q92Var.a());
+                                    da2Var.a(ba2Var2, q92Var);
+                                    v40.r0(arrayList);
+                                }
+                                break;
+                            default:
+                                entry.getClass();
+                                aa2 aa2Var2 = (aa2) entry.getKey();
+                                da2 da2Var2 = (da2) entry.getValue();
+                                while (true) {
+                                    r92 r92Var7 = da2Var2.a;
+                                    r92 r92Var8 = ea2Var.h;
+                                    ArrayList arrayList2 = ea2Var.g;
+                                    if (r92Var7.compareTo(r92Var8) >= 0 || ea2Var.f) {
+                                        return j15Var;
+                                    }
+                                    c12 c12Var5 = ea2Var.b;
+                                    c12Var5.getClass();
+                                    aa2Var2.getClass();
+                                    if (!((w03) c12Var5.o).c(aa2Var2)) {
+                                        return j15Var;
+                                    }
+                                    arrayList2.add(da2Var2.a);
+                                    o92 o92Var2 = q92.Companion;
+                                    r92 r92Var9 = da2Var2.a;
+                                    o92Var2.getClass();
+                                    r92Var9.getClass();
+                                    int iOrdinal2 = r92Var9.ordinal();
+                                    if (iOrdinal2 == 1) {
+                                        q92Var2 = q92.ON_CREATE;
+                                    } else if (iOrdinal2 != 2) {
+                                        q92Var2 = iOrdinal2 != 3 ? null : q92.ON_RESUME;
+                                    } else {
+                                        q92Var2 = q92.ON_START;
+                                    }
+                                    if (q92Var2 == null) {
+                                        nz2.u(da2Var2.a, "no event up from ");
+                                        return null;
+                                    }
+                                    da2Var2.a(ba2Var2, q92Var2);
+                                    v40.r0(arrayList2);
+                                }
+                                break;
+                        }
+                    }
+                };
+                c12Var3.getClass();
+                for (b61 b61Var5 = (b61) c12Var3.p; b61Var5 != null; b61Var5 = b61Var5.p) {
+                    if (!b61Var5.r) {
+                        if1Var2.invoke(b61Var5);
+                    }
+                }
+            }
+        }
         this.f = false;
         this.i.i(this.h);
-        return;
-    L45:
-        kf2.o("LifecycleOwner of this LifecycleRegistry is already garbage collected. It is too late to change lifecycle state.");
     }
 }

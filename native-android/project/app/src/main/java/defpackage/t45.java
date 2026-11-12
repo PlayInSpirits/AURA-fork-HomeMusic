@@ -15,77 +15,71 @@ public final class t45 extends s45 {
     public int j;
     public int k;
 
-    public t45(Parcel r9) {
-        this(r9, r9.dataPosition(), r9.dataSize(), "", new oi(0), new oi(0), new oi(0));
+    public t45(Parcel parcel) {
+        this(parcel, parcel.dataPosition(), parcel.dataSize(), "", new oi(0), new oi(0), new oi(0));
     }
 
     @Override // defpackage.s45
     public final t45 a() {
-        Parcel r1 = this.e;
-        int r2 = r1.dataPosition();
-        int r3 = this.j;
-        if (r3 != this.f) goto L5;
-        r3 = this.g;
-    L5:
-        String r4 = b11.q(new StringBuilder(), this.h, "  ");
-        oi r6 = this.b;
-        oi r7 = this.c;
-        return new t45(r1, r2, r3, r4, this.a, r6, r7);
+        Parcel parcel = this.e;
+        int iDataPosition = parcel.dataPosition();
+        int i = this.j;
+        if (i == this.f) {
+            i = this.g;
+        }
+        return new t45(parcel, iDataPosition, i, b11.q(new StringBuilder(), this.h, "  "), this.a, this.b, this.c);
     }
 
     @Override // defpackage.s45
-    public final boolean e(int r4) {
-    L2:
-        int r0 = this.j;
-        int r1 = this.k;
-        if (r0 >= this.g) goto L10;
-        if (r1 == r4) goto L18;
-        if (String.valueOf(r1).compareTo(String.valueOf(r4)) > 0) goto L19;
-        int r2 = this.j;
-        Parcel r3 = this.e;
-        r3.setDataPosition(r2);
-        int r5 = r3.readInt();
-        this.k = r3.readInt();
-        this.j += r5;
-        goto L2
-    L19:
-        return false;
-    L18:
-        return true;
-    L10:
-        if (r1 != r4) goto L13;
-        return true;
-    L13:
-        return false;
+    public final boolean e(int i) {
+        while (true) {
+            int i2 = this.j;
+            int i3 = this.k;
+            if (i2 >= this.g) {
+                return i3 == i;
+            }
+            if (i3 == i) {
+                return true;
+            }
+            if (String.valueOf(i3).compareTo(String.valueOf(i)) > 0) {
+                return false;
+            }
+            int i4 = this.j;
+            Parcel parcel = this.e;
+            parcel.setDataPosition(i4);
+            int i5 = parcel.readInt();
+            this.k = parcel.readInt();
+            this.j += i5;
+        }
     }
 
     @Override // defpackage.s45
-    public final void i(int r6) {
-        int r0 = this.i;
-        SparseIntArray r1 = this.d;
-        Parcel r2 = this.e;
-        if (r0 < 0) goto L5;
-        int r3 = r1.get(r0);
-        int r4 = r2.dataPosition();
-        r2.setDataPosition(r3);
-        r2.writeInt(r4 - r3);
-        r2.setDataPosition(r4);
-    L5:
-        this.i = r6;
-        r1.put(r6, r2.dataPosition());
-        r2.writeInt(0);
-        r2.writeInt(r6);
+    public final void i(int i) {
+        int i2 = this.i;
+        SparseIntArray sparseIntArray = this.d;
+        Parcel parcel = this.e;
+        if (i2 >= 0) {
+            int i3 = sparseIntArray.get(i2);
+            int iDataPosition = parcel.dataPosition();
+            parcel.setDataPosition(i3);
+            parcel.writeInt(iDataPosition - i3);
+            parcel.setDataPosition(iDataPosition);
+        }
+        this.i = i;
+        sparseIntArray.put(i, parcel.dataPosition());
+        parcel.writeInt(0);
+        parcel.writeInt(i);
     }
 
-    public t45(Parcel r1, int r2, int r3, String r4, oi r5, oi r6, oi r7) {
-        super(r5, r6, r7);
+    public t45(Parcel parcel, int i, int i2, String str, oi oiVar, oi oiVar2, oi oiVar3) {
+        super(oiVar, oiVar2, oiVar3);
         this.d = new SparseIntArray();
         this.i = -1;
         this.k = -1;
-        this.e = r1;
-        this.f = r2;
-        this.g = r3;
-        this.j = r2;
-        this.h = r4;
+        this.e = parcel;
+        this.f = i;
+        this.g = i2;
+        this.j = i;
+        this.h = str;
     }
 }

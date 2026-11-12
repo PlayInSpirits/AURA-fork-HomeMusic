@@ -12,134 +12,120 @@ public final class bw3 implements Runnable {
     public final /* synthetic */ int n;
     public final /* synthetic */ RecyclerView o;
 
-    public /* synthetic */ bw3(RecyclerView r1, int r2) {
-        this.n = r2;
-        this.o = r1;
+    public /* synthetic */ bw3(RecyclerView recyclerView, int i) {
+        this.n = i;
+        this.o = recyclerView;
     }
 
+    /* JADX WARN: Code duplicated, block: B:43:0x011c  */
     @Override // java.lang.Runnable
     public final void run() {
-        int r1 = this.n;
-        RecyclerView r0 = this.o;
-        switch(r1) {
-            case 0: goto L47;
-            default: goto L4;
-        };
-    L4:
-        jw3 r2 = r0.c0;
-        if (r2 == null) goto L43;
-        pl0 r3 = (pl0) r2;
-        long r4 = r3.d;
-        ArrayList r6 = r3.h;
-        boolean r7 = r6.isEmpty();
-        ArrayList r8 = r3.j;
-        boolean r9 = r8.isEmpty();
-        ArrayList r10 = r3.k;
-        boolean r11 = r10.isEmpty();
-        ArrayList r12 = r3.i;
-        boolean r13 = r12.isEmpty();
-        if (r7 == false) goto L12;
-        if (r9 == false) goto L12;
-        if (r13 == false) goto L12;
-        if (r11 == true) goto L43;
-    L12:
-        int r14 = r6.size();
-        int r15 = 0;
-    L13:
-        if (r15 >= r14) goto L15;
-        Object r16 = r6.get(r15);
-        r15 = r15 + 1;
-        cx3 r5 = (cx3) r16;
-        View r17 = r5.a;
-        ArrayList r18 = r6;
-        ViewPropertyAnimator r19 = r17.animate();
-        r3.q.add(r5);
-        r19.setDuration(r4).alpha(0.0f).setListener(new kl0(r3, r5, r19, r17)).start();
-        r6 = r18;
-        r7 = r7;
-        r9 = r9;
-        goto L13
-    L15:
-        boolean r110 = r7;
-        boolean r111 = r9;
-        r6.clear();
-        if (r111 == true) goto L21;
-        ArrayList r20 = new ArrayList();
-        r20.addAll(r8);
-        r3.m.add(r20);
-        r8.clear();
-        jl0 r21 = new jl0(r3, r20, 0);
-        if (r110 == true) goto L20;
-        View r22 = ((ol0) r20.get(0)).a.a;
-        WeakHashMap r23 = j65.a;
-        r22.postOnAnimationDelayed(r21, r4);
-        goto L21
-    L20:
-        r21.run();
-    L21:
-        if (r11 == true) goto L26;
-        ArrayList r24 = new ArrayList();
-        r24.addAll(r10);
-        r3.n.add(r24);
-        r10.clear();
-        jl0 r25 = new jl0(r3, r24, 1);
-        if (r110 == true) goto L25;
-        View r26 = ((nl0) r24.get(0)).a.a;
-        WeakHashMap r27 = j65.a;
-        r26.postOnAnimationDelayed(r25, r4);
-        goto L26
-    L25:
-        r25.run();
-    L26:
-        if (r13 == true) goto L43;
-        ArrayList r28 = new ArrayList();
-        r28.addAll(r12);
-        r3.l.add(r28);
-        r12.clear();
-        jl0 r29 = new jl0(r3, r28, 2);
-        if (r110 == false) goto L33;
-        if (r111 == false) goto L33;
-        if (r11 == false) goto L33;
-        r29.run();
-    L33:
-        long r30 = 0;
-        if (r110 == false) goto L37;
-        r4 = 0;
-    L37:
-        if (r111 == true) goto L39;
-        long r31 = r3.e;
-    L40:
-        if (r11 == true) goto L42;
-        r30 = r3.f;
-    L42:
-        long r32 = Math.max(r31, r30) + r4;
-        boolean r33 = false;
-        View r34 = ((cx3) r28.get(0)).a;
-        WeakHashMap r35 = j65.a;
-        r34.postOnAnimationDelayed(r29, r32);
-    L44:
-        r0.A0 = r33;
-        return;
-    L39:
-        r31 = 0;
-    L43:
-        r33 = false;
-        goto L44
-    L47:
-        if (r0.H == true) goto L49;
-        return;
-    L49:
-        if (r0.isLayoutRequested() == false) goto L52;
-        return;
-    L52:
-        if (r0.F == true) goto L55;
-        r0.requestLayout();
-        return;
-    L55:
-        if (r0.K == false) goto L57;
-        r0.J = true;
-        return;
-    L57:
-        r0.p();
+        boolean z;
+        int i = this.n;
+        RecyclerView recyclerView = this.o;
+        switch (i) {
+            case 0:
+                if (recyclerView.H && !recyclerView.isLayoutRequested()) {
+                    if (!recyclerView.F) {
+                        recyclerView.requestLayout();
+                    } else if (!recyclerView.K) {
+                        recyclerView.p();
+                    } else {
+                        recyclerView.J = true;
+                    }
+                    break;
+                }
+                break;
+            default:
+                jw3 jw3Var = recyclerView.c0;
+                if (jw3Var != null) {
+                    pl0 pl0Var = (pl0) jw3Var;
+                    long j = pl0Var.d;
+                    ArrayList arrayList = pl0Var.h;
+                    boolean zIsEmpty = arrayList.isEmpty();
+                    ArrayList arrayList2 = pl0Var.j;
+                    boolean zIsEmpty2 = arrayList2.isEmpty();
+                    ArrayList arrayList3 = pl0Var.k;
+                    boolean zIsEmpty3 = arrayList3.isEmpty();
+                    ArrayList arrayList4 = pl0Var.i;
+                    boolean zIsEmpty4 = arrayList4.isEmpty();
+                    if (zIsEmpty && zIsEmpty2 && zIsEmpty4 && zIsEmpty3) {
+                        z = false;
+                    } else {
+                        int size = arrayList.size();
+                        int i2 = 0;
+                        while (i2 < size) {
+                            Object obj = arrayList.get(i2);
+                            i2++;
+                            cx3 cx3Var = (cx3) obj;
+                            View view = cx3Var.a;
+                            ArrayList arrayList5 = arrayList;
+                            ViewPropertyAnimator viewPropertyAnimatorAnimate = view.animate();
+                            pl0Var.q.add(cx3Var);
+                            viewPropertyAnimatorAnimate.setDuration(j).alpha(0.0f).setListener(new kl0(pl0Var, cx3Var, viewPropertyAnimatorAnimate, view)).start();
+                            arrayList = arrayList5;
+                            zIsEmpty = zIsEmpty;
+                            zIsEmpty2 = zIsEmpty2;
+                        }
+                        boolean z2 = zIsEmpty;
+                        boolean z3 = zIsEmpty2;
+                        arrayList.clear();
+                        if (!z3) {
+                            ArrayList arrayList6 = new ArrayList();
+                            arrayList6.addAll(arrayList2);
+                            pl0Var.m.add(arrayList6);
+                            arrayList2.clear();
+                            jl0 jl0Var = new jl0(pl0Var, arrayList6, 0);
+                            if (z2) {
+                                jl0Var.run();
+                            } else {
+                                View view2 = ((ol0) arrayList6.get(0)).a.a;
+                                WeakHashMap weakHashMap = j65.a;
+                                view2.postOnAnimationDelayed(jl0Var, j);
+                            }
+                        }
+                        if (!zIsEmpty3) {
+                            ArrayList arrayList7 = new ArrayList();
+                            arrayList7.addAll(arrayList3);
+                            pl0Var.n.add(arrayList7);
+                            arrayList3.clear();
+                            jl0 jl0Var2 = new jl0(pl0Var, arrayList7, 1);
+                            if (z2) {
+                                jl0Var2.run();
+                            } else {
+                                View view3 = ((nl0) arrayList7.get(0)).a.a;
+                                WeakHashMap weakHashMap2 = j65.a;
+                                view3.postOnAnimationDelayed(jl0Var2, j);
+                            }
+                        }
+                        if (zIsEmpty4) {
+                            z = false;
+                        } else {
+                            ArrayList arrayList8 = new ArrayList();
+                            arrayList8.addAll(arrayList4);
+                            pl0Var.l.add(arrayList8);
+                            arrayList4.clear();
+                            jl0 jl0Var3 = new jl0(pl0Var, arrayList8, 2);
+                            if (z2 && z3 && zIsEmpty3) {
+                                jl0Var3.run();
+                                z = false;
+                            } else {
+                                if (z2) {
+                                    j = 0;
+                                }
+                                long jMax = Math.max(!z3 ? pl0Var.e : 0L, zIsEmpty3 ? 0L : pl0Var.f) + j;
+                                z = false;
+                                View view4 = ((cx3) arrayList8.get(0)).a;
+                                WeakHashMap weakHashMap3 = j65.a;
+                                view4.postOnAnimationDelayed(jl0Var3, jMax);
+                            }
+                        }
+                    }
+                } else {
+                    z = false;
+                }
+                recyclerView.A0 = z;
+                break;
+        }
     }
 }

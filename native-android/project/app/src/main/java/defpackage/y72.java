@@ -7,16 +7,14 @@ public final class y72 implements es {
     public final /* synthetic */ jx3 b;
     public final /* synthetic */ int c;
 
-    public y72(z72 r1, jx3 r2, int r3) {
-        this.a = r1;
-        this.b = r2;
-        this.c = r3;
+    public y72(z72 z72Var, jx3 jx3Var, int i) {
+        this.a = z72Var;
+        this.b = jx3Var;
+        this.c = i;
     }
 
     @Override // defpackage.es
     public final boolean a() {
-        v72 r0 = (v72) this.b.n;
-        int r1 = this.c;
-        return this.a.q0(r0, r1);
+        return this.a.q0((v72) this.b.n, this.c);
     }
 }

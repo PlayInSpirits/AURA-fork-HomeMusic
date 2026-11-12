@@ -5,19 +5,18 @@ package defpackage;
 public final class mf2 extends rp {
     public final /* synthetic */ int b;
 
-    public /* synthetic */ mf2(int r1) {
-        this.b = r1;
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public /* synthetic */ mf2(int i) {
         super(0);
+        this.b = i;
     }
 
     public final xn3 u() {
-        switch(this.b) {
-            case 0: goto L7;
-            default: goto L5;
-        };
-    L5:
-        return new sf4(this);
-    L7:
-        return new lf2(this);
+        switch (this.b) {
+            case 0:
+                return new lf2(this);
+            default:
+                return new sf4(this);
+        }
     }
 }

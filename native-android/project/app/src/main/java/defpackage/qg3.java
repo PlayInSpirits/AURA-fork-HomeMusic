@@ -1,14 +1,16 @@
 package defpackage;
 
 import android.util.Log;
+import java.io.IOException;
 import java.lang.reflect.Method;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.security.GeneralSecurityException;
+import java.security.KeyStore;
+import java.security.NoSuchAlgorithmException;
 import java.security.Security;
 import java.security.cert.X509Certificate;
 import java.util.Arrays;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
@@ -24,197 +26,431 @@ import javax.net.ssl.X509TrustManager;
 /* JADX INFO: loaded from: classes.dex */
 public class qg3 {
     public static volatile qg3 a;
-    public static final Logger b = null;
+    public static final Logger b;
 
+    /* JADX WARN: Code duplicated, block: B:26:0x0071 A[PHI: r2
+  0x0071: PHI (r2v3 qg3) = (r2v1 qg3), (r2v4 qg3) binds: [B:65:0x0147, B:25:0x006e] A[DONT_GENERATE, DONT_INLINE]] */
+    /* JADX WARN: Code duplicated, block: B:35:0x0095  */
+    /* JADX WARN: Code duplicated, block: B:37:0x00a7  */
+    /* JADX WARN: Code duplicated, block: B:39:0x00ab  */
+    /* JADX WARN: Code duplicated, block: B:40:0x00b1  */
+    /* JADX WARN: Code duplicated, block: B:43:0x00b6  */
+    /* JADX WARN: Code duplicated, block: B:45:0x00c8  */
+    /* JADX WARN: Code duplicated, block: B:47:0x00cc  */
+    /* JADX WARN: Code duplicated, block: B:48:0x00d2  */
+    /* JADX WARN: Code duplicated, block: B:51:0x00d7  */
+    /* JADX WARN: Code duplicated, block: B:53:0x00db  */
+    /* JADX WARN: Code duplicated, block: B:54:0x00e1  */
+    /* JADX WARN: Code duplicated, block: B:57:0x00e5  */
+    /* JADX WARN: Code duplicated, block: B:62:0x00fb  */
+    /* JADX WARN: Code duplicated, block: B:67:0x014b  */
     static {
-        qg3 r2 = null;
-        if (au0.J() == false) goto L28;
-        Iterator r0 = dc.b.entrySet().iterator();
-    L6:
-        if (r0.hasNext() == false) goto L18;
-        Map.Entry r3 = (Map.Entry) r0.next();
-        String r4 = (String) r3.getKey();
-        String r5 = (String) r3.getValue();
-        Logger r6 = Logger.getLogger(r4);
-        if (dc.a.add(r6) == false) goto L6;
-        r6.setUseParentHandlers(false);
-        if (Log.isLoggable(r5, 3) == false) goto L13;
-        Level r7 = Level.FINE;
-    L16:
-        r6.setLevel(r7);
-        r6.addHandler(ec.a);
-        goto L6
-    L13:
-        if (Log.isLoggable(r5, 4) == false) goto L15;
-        r7 = Level.INFO;
-        goto L16
-    L15:
-        r7 = Level.WARNING;
-        goto L16
-    L18:
-        if (s9.d == false) goto L20;
-        qg3 r1 = new s9();
-    L21:
-        if (r1 == null) goto L23;
-    L68:
-        a = r1;
+        qg3 qg3Var;
+        String property;
+        qg3 q22Var = null;
+        if (au0.J()) {
+            for (Map.Entry entry : dc.b.entrySet()) {
+                String str = (String) entry.getKey();
+                String str2 = (String) entry.getValue();
+                Logger logger = Logger.getLogger(str);
+                if (dc.a.add(logger)) {
+                    logger.setUseParentHandlers(false);
+                    logger.setLevel(Log.isLoggable(str2, 3) ? Level.FINE : Log.isLoggable(str2, 4) ? Level.INFO : Level.WARNING);
+                    logger.addHandler(ec.a);
+                }
+            }
+            qg3Var = s9.d ? new s9() : null;
+            if (qg3Var == null) {
+                q22Var = rc.d ? new rc() : null;
+                q22Var.getClass();
+                qg3Var = q22Var;
+            }
+        } else if ("Conscrypt".equals(Security.getProviders()[0].getName())) {
+            qg3Var = bb0.d ? new bb0() : null;
+            if (qg3Var == null) {
+                if (!"BC".equals(Security.getProviders()[0].getName())) {
+                    if (cu.d) {
+                        qg3Var = new cu();
+                    } else {
+                        qg3Var = null;
+                    }
+                    if (qg3Var == null) {
+                        if ("OpenJSSE".equals(Security.getProviders()[0].getName())) {
+                            if (m93.d) {
+                                qg3Var = new m93();
+                            } else {
+                                qg3Var = null;
+                            }
+                            if (qg3Var == null) {
+                                if (r22.c) {
+                                    qg3Var = new r22();
+                                } else {
+                                    qg3Var = null;
+                                }
+                                if (qg3Var == null) {
+                                    property = System.getProperty("java.specification.version", "unknown");
+                                    property.getClass();
+                                    if (Integer.parseInt(property) < 9) {
+                                        Class<?> cls = Class.forName("org.eclipse.jetty.alpn.ALPN", true, null);
+                                        Class<?> cls2 = Class.forName("org.eclipse.jetty.alpn.ALPN$Provider", true, null);
+                                        Class<?> cls3 = Class.forName("org.eclipse.jetty.alpn.ALPN$ClientProvider", true, null);
+                                        Class<?> cls4 = Class.forName("org.eclipse.jetty.alpn.ALPN$ServerProvider", true, null);
+                                        Method method = cls.getMethod("put", SSLSocket.class, cls2);
+                                        Method method2 = cls.getMethod("get", SSLSocket.class);
+                                        Method method3 = cls.getMethod("remove", SSLSocket.class);
+                                        method.getClass();
+                                        method2.getClass();
+                                        method3.getClass();
+                                        cls3.getClass();
+                                        cls4.getClass();
+                                        q22Var = new q22(method, method2, method3, cls3, cls4);
+                                    }
+                                    if (q22Var != null) {
+                                        qg3Var = q22Var;
+                                    } else {
+                                        qg3Var = new qg3();
+                                    }
+                                }
+                            }
+                        } else {
+                            if (r22.c) {
+                                qg3Var = new r22();
+                            } else {
+                                qg3Var = null;
+                            }
+                            if (qg3Var == null) {
+                                property = System.getProperty("java.specification.version", "unknown");
+                                property.getClass();
+                                if (Integer.parseInt(property) < 9) {
+                                    Class<?> cls5 = Class.forName("org.eclipse.jetty.alpn.ALPN", true, null);
+                                    Class<?> cls6 = Class.forName("org.eclipse.jetty.alpn.ALPN$Provider", true, null);
+                                    Class<?> cls7 = Class.forName("org.eclipse.jetty.alpn.ALPN$ClientProvider", true, null);
+                                    Class<?> cls8 = Class.forName("org.eclipse.jetty.alpn.ALPN$ServerProvider", true, null);
+                                    Method method4 = cls5.getMethod("put", SSLSocket.class, cls6);
+                                    Method method5 = cls5.getMethod("get", SSLSocket.class);
+                                    Method method6 = cls5.getMethod("remove", SSLSocket.class);
+                                    method4.getClass();
+                                    method5.getClass();
+                                    method6.getClass();
+                                    cls7.getClass();
+                                    cls8.getClass();
+                                    q22Var = new q22(method4, method5, method6, cls7, cls8);
+                                }
+                                if (q22Var != null) {
+                                    qg3Var = q22Var;
+                                } else {
+                                    qg3Var = new qg3();
+                                }
+                            }
+                        }
+                    }
+                } else if ("OpenJSSE".equals(Security.getProviders()[0].getName())) {
+                    if (r22.c) {
+                        qg3Var = new r22();
+                    } else {
+                        qg3Var = null;
+                    }
+                    if (qg3Var == null) {
+                        property = System.getProperty("java.specification.version", "unknown");
+                        property.getClass();
+                        if (Integer.parseInt(property) < 9) {
+                            Class<?> cls9 = Class.forName("org.eclipse.jetty.alpn.ALPN", true, null);
+                            Class<?> cls10 = Class.forName("org.eclipse.jetty.alpn.ALPN$Provider", true, null);
+                            Class<?> cls11 = Class.forName("org.eclipse.jetty.alpn.ALPN$ClientProvider", true, null);
+                            Class<?> cls12 = Class.forName("org.eclipse.jetty.alpn.ALPN$ServerProvider", true, null);
+                            Method method7 = cls9.getMethod("put", SSLSocket.class, cls10);
+                            Method method8 = cls9.getMethod("get", SSLSocket.class);
+                            Method method9 = cls9.getMethod("remove", SSLSocket.class);
+                            method7.getClass();
+                            method8.getClass();
+                            method9.getClass();
+                            cls11.getClass();
+                            cls12.getClass();
+                            q22Var = new q22(method7, method8, method9, cls11, cls12);
+                        }
+                        if (q22Var != null) {
+                            qg3Var = q22Var;
+                        } else {
+                            qg3Var = new qg3();
+                        }
+                    }
+                } else {
+                    if (m93.d) {
+                        qg3Var = new m93();
+                    } else {
+                        qg3Var = null;
+                    }
+                    if (qg3Var == null) {
+                        if (r22.c) {
+                            qg3Var = new r22();
+                        } else {
+                            qg3Var = null;
+                        }
+                        if (qg3Var == null) {
+                            property = System.getProperty("java.specification.version", "unknown");
+                            property.getClass();
+                            if (Integer.parseInt(property) < 9) {
+                                Class<?> cls13 = Class.forName("org.eclipse.jetty.alpn.ALPN", true, null);
+                                Class<?> cls14 = Class.forName("org.eclipse.jetty.alpn.ALPN$Provider", true, null);
+                                Class<?> cls15 = Class.forName("org.eclipse.jetty.alpn.ALPN$ClientProvider", true, null);
+                                Class<?> cls16 = Class.forName("org.eclipse.jetty.alpn.ALPN$ServerProvider", true, null);
+                                Method method10 = cls13.getMethod("put", SSLSocket.class, cls14);
+                                Method method11 = cls13.getMethod("get", SSLSocket.class);
+                                Method method12 = cls13.getMethod("remove", SSLSocket.class);
+                                method10.getClass();
+                                method11.getClass();
+                                method12.getClass();
+                                cls15.getClass();
+                                cls16.getClass();
+                                q22Var = new q22(method10, method11, method12, cls15, cls16);
+                            }
+                            if (q22Var != null) {
+                                qg3Var = q22Var;
+                            } else {
+                                qg3Var = new qg3();
+                            }
+                        }
+                    }
+                }
+            }
+        } else if (!"BC".equals(Security.getProviders()[0].getName())) {
+            if (cu.d) {
+                qg3Var = new cu();
+            } else {
+                qg3Var = null;
+            }
+            if (qg3Var == null) {
+                if ("OpenJSSE".equals(Security.getProviders()[0].getName())) {
+                    if (r22.c) {
+                        qg3Var = new r22();
+                    } else {
+                        qg3Var = null;
+                    }
+                    if (qg3Var == null) {
+                        property = System.getProperty("java.specification.version", "unknown");
+                        property.getClass();
+                        if (Integer.parseInt(property) < 9) {
+                            Class<?> cls17 = Class.forName("org.eclipse.jetty.alpn.ALPN", true, null);
+                            Class<?> cls18 = Class.forName("org.eclipse.jetty.alpn.ALPN$Provider", true, null);
+                            Class<?> cls19 = Class.forName("org.eclipse.jetty.alpn.ALPN$ClientProvider", true, null);
+                            Class<?> cls110 = Class.forName("org.eclipse.jetty.alpn.ALPN$ServerProvider", true, null);
+                            Method method13 = cls17.getMethod("put", SSLSocket.class, cls18);
+                            Method method14 = cls17.getMethod("get", SSLSocket.class);
+                            Method method15 = cls17.getMethod("remove", SSLSocket.class);
+                            method13.getClass();
+                            method14.getClass();
+                            method15.getClass();
+                            cls19.getClass();
+                            cls110.getClass();
+                            q22Var = new q22(method13, method14, method15, cls19, cls110);
+                        }
+                        if (q22Var != null) {
+                            qg3Var = q22Var;
+                        } else {
+                            qg3Var = new qg3();
+                        }
+                    }
+                } else {
+                    if (m93.d) {
+                        qg3Var = new m93();
+                    } else {
+                        qg3Var = null;
+                    }
+                    if (qg3Var == null) {
+                        if (r22.c) {
+                            qg3Var = new r22();
+                        } else {
+                            qg3Var = null;
+                        }
+                        if (qg3Var == null) {
+                            property = System.getProperty("java.specification.version", "unknown");
+                            property.getClass();
+                            if (Integer.parseInt(property) < 9) {
+                                Class<?> cls111 = Class.forName("org.eclipse.jetty.alpn.ALPN", true, null);
+                                Class<?> cls112 = Class.forName("org.eclipse.jetty.alpn.ALPN$Provider", true, null);
+                                Class<?> cls113 = Class.forName("org.eclipse.jetty.alpn.ALPN$ClientProvider", true, null);
+                                Class<?> cls114 = Class.forName("org.eclipse.jetty.alpn.ALPN$ServerProvider", true, null);
+                                Method method16 = cls111.getMethod("put", SSLSocket.class, cls112);
+                                Method method17 = cls111.getMethod("get", SSLSocket.class);
+                                Method method18 = cls111.getMethod("remove", SSLSocket.class);
+                                method16.getClass();
+                                method17.getClass();
+                                method18.getClass();
+                                cls113.getClass();
+                                cls114.getClass();
+                                q22Var = new q22(method16, method17, method18, cls113, cls114);
+                            }
+                            if (q22Var != null) {
+                                qg3Var = q22Var;
+                            } else {
+                                qg3Var = new qg3();
+                            }
+                        }
+                    }
+                }
+            }
+        } else if ("OpenJSSE".equals(Security.getProviders()[0].getName())) {
+            if (r22.c) {
+                qg3Var = new r22();
+            } else {
+                qg3Var = null;
+            }
+            if (qg3Var == null) {
+                property = System.getProperty("java.specification.version", "unknown");
+                try {
+                    property.getClass();
+                    if (Integer.parseInt(property) < 9) {
+                        try {
+                            Class<?> cls115 = Class.forName("org.eclipse.jetty.alpn.ALPN", true, null);
+                            Class<?> cls116 = Class.forName("org.eclipse.jetty.alpn.ALPN$Provider", true, null);
+                            Class<?> cls117 = Class.forName("org.eclipse.jetty.alpn.ALPN$ClientProvider", true, null);
+                            Class<?> cls118 = Class.forName("org.eclipse.jetty.alpn.ALPN$ServerProvider", true, null);
+                            Method method19 = cls115.getMethod("put", SSLSocket.class, cls116);
+                            Method method110 = cls115.getMethod("get", SSLSocket.class);
+                            Method method111 = cls115.getMethod("remove", SSLSocket.class);
+                            method19.getClass();
+                            method110.getClass();
+                            method111.getClass();
+                            cls117.getClass();
+                            cls118.getClass();
+                            q22Var = new q22(method19, method110, method111, cls117, cls118);
+                        } catch (ClassNotFoundException | NoSuchMethodException unused) {
+                        }
+                    }
+                } catch (NumberFormatException unused2) {
+                }
+                if (q22Var != null) {
+                    qg3Var = q22Var;
+                } else {
+                    qg3Var = new qg3();
+                }
+            }
+        } else {
+            if (m93.d) {
+                qg3Var = new m93();
+            } else {
+                qg3Var = null;
+            }
+            if (qg3Var == null) {
+                if (r22.c) {
+                    qg3Var = new r22();
+                } else {
+                    qg3Var = null;
+                }
+                if (qg3Var == null) {
+                    property = System.getProperty("java.specification.version", "unknown");
+                    property.getClass();
+                    if (Integer.parseInt(property) < 9) {
+                        Class<?> cls119 = Class.forName("org.eclipse.jetty.alpn.ALPN", true, null);
+                        Class<?> cls1110 = Class.forName("org.eclipse.jetty.alpn.ALPN$Provider", true, null);
+                        Class<?> cls1111 = Class.forName("org.eclipse.jetty.alpn.ALPN$ClientProvider", true, null);
+                        Class<?> cls1112 = Class.forName("org.eclipse.jetty.alpn.ALPN$ServerProvider", true, null);
+                        Method method112 = cls119.getMethod("put", SSLSocket.class, cls1110);
+                        Method method113 = cls119.getMethod("get", SSLSocket.class);
+                        Method method114 = cls119.getMethod("remove", SSLSocket.class);
+                        method112.getClass();
+                        method113.getClass();
+                        method114.getClass();
+                        cls1111.getClass();
+                        cls1112.getClass();
+                        q22Var = new q22(method112, method113, method114, cls1111, cls1112);
+                    }
+                    if (q22Var != null) {
+                        qg3Var = q22Var;
+                    } else {
+                        qg3Var = new qg3();
+                    }
+                }
+            }
+        }
+        a = qg3Var;
         b = Logger.getLogger(o83.class.getName());
-        return;
-    L23:
-        if (rc.d == false) goto L25;
-        r2 = new rc();
-    L25:
-        r2.getClass();
-    L26:
-        r1 = r2;
-        goto L68
-    L20:
-        r1 = null;
-        goto L21
-    L28:
-        if ("Conscrypt".equals(Security.getProviders()[0].getName()) == false) goto L36;
-        if (bb0.d == false) goto L32;
-        r1 = new bb0();
-    L33:
-        if (r1 == null) goto L36;
-    L32:
-        r1 = null;
-    L36:
-        if ("BC".equals(Security.getProviders()[0].getName()) == false) goto L44;
-        if (cu.d == false) goto L40;
-        r1 = new cu();
-    L41:
-        if (r1 == null) goto L44;
-    L40:
-        r1 = null;
-    L44:
-        if ("OpenJSSE".equals(Security.getProviders()[0].getName()) == false) goto L52;
-        if (m93.d == false) goto L48;
-        r1 = new m93();
-    L49:
-        if (r1 == null) goto L52;
-    L48:
-        r1 = null;
-    L52:
-        if (r22.c == false) goto L54;
-        r1 = new r22();
-    L55:
-        if (r1 != null) goto L68;
-        String r8 = System.getProperty("java.specification.version", "unknown");
-        r8.getClass();     // Catch: NumberFormatException -> L71
-        if (Integer.parseInt(r8) < 9) goto L72;
-    L65:
-        if (r2 != null) goto L26;
-        r1 = new qg3();
-    L72:
-        Class<?> r9 = Class.forName("org.eclipse.jetty.alpn.ALPN", true, null);     // Catch: Throwable -> L70
-        Class<?> r10 = Class.forName("org.eclipse.jetty.alpn.ALPN$Provider", true, null);     // Catch: Throwable -> L70
-        Class<?> r11 = Class.forName("org.eclipse.jetty.alpn.ALPN$ClientProvider", true, null);     // Catch: Throwable -> L70
-        Class<?> r12 = Class.forName("org.eclipse.jetty.alpn.ALPN$ServerProvider", true, null);     // Catch: Throwable -> L70
-        Method r13 = r9.getMethod("put", new Class[]{SSLSocket.class, r10});     // Catch: Throwable -> L70
-        Method r14 = r9.getMethod("get", new Class[]{SSLSocket.class});     // Catch: Throwable -> L70
-        Method r15 = r9.getMethod("remove", new Class[]{SSLSocket.class});     // Catch: Throwable -> L70
-        r13.getClass();     // Catch: Throwable -> L70
-        r14.getClass();     // Catch: Throwable -> L70
-        r15.getClass();     // Catch: Throwable -> L70
-        r11.getClass();     // Catch: Throwable -> L70
-        r12.getClass();     // Catch: Throwable -> L70
-        r2 = new q22(r13, r14, r15, r11, r12);     // Catch: Throwable -> L70
-        goto L65
-    L54:
-        r1 = null;
-        goto L55
     }
 
-    public static void i(String r1, int r2, Throwable r3) {
-        if (r2 != 5) goto L5;
-        Level r4 = Level.WARNING;
-    L6:
-        b.log(r4, r1, r3);
-        return;
-    L5:
-        r4 = Level.INFO;
-        goto L6
+    public static void i(String str, int i, Throwable th) {
+        b.log(i == 5 ? Level.WARNING : Level.INFO, str, th);
     }
 
-    public void a(SSLSocket r1) {
+    public void a(SSLSocket sSLSocket) {
     }
 
-    public rr2 b(X509TrustManager r2) {
-        r2.getClass();
-        return new jr(c(r2));
+    public rr2 b(X509TrustManager x509TrustManager) {
+        x509TrustManager.getClass();
+        return new jr(c(x509TrustManager));
     }
 
-    public ny4 c(X509TrustManager r2) {
-        r2.getClass();
-        X509Certificate[] r3 = r2.getAcceptedIssuers();
-        r3.getClass();
-        return new or((X509Certificate[]) Arrays.copyOf(r3, r3.length));
+    public ny4 c(X509TrustManager x509TrustManager) {
+        x509TrustManager.getClass();
+        X509Certificate[] acceptedIssuers = x509TrustManager.getAcceptedIssuers();
+        acceptedIssuers.getClass();
+        return new or((X509Certificate[]) Arrays.copyOf(acceptedIssuers, acceptedIssuers.length));
     }
 
-    public void d(SSLSocket r1, String r2, List r3) {
-        r3.getClass();
+    public void d(SSLSocket sSLSocket, String str, List list) {
+        list.getClass();
     }
 
-    public void e(Socket r1, InetSocketAddress r2, int r3) {
-        r2.getClass();
-        r1.connect(r2, r3);
+    public void e(Socket socket, InetSocketAddress inetSocketAddress, int i) throws IOException {
+        inetSocketAddress.getClass();
+        socket.connect(inetSocketAddress, i);
     }
 
-    public String f(SSLSocket r1) {
+    public String f(SSLSocket sSLSocket) {
         return null;
     }
 
     public Object g() {
-        if (b.isLoggable(Level.FINE) == true) goto L5;
+        if (b.isLoggable(Level.FINE)) {
+            return new Throwable("response.body().close()");
+        }
         return null;
-    L5:
-        return new Throwable("response.body().close()");
     }
 
-    public boolean h(String r1) {
-        r1.getClass();
+    public boolean h(String str) {
+        str.getClass();
         return true;
     }
 
-    public void j(Object r1, String r2) {
-        if (r1 != null) goto L4;
-        r2 = r2.concat(" To see where this was allocated, set the OkHttpClient logger level to FINE: Logger.getLogger(OkHttpClient.class.getName()).setLevel(Level.FINE);");
-    L4:
-        i(r2, 5, (Throwable) r1);
+    public void j(Object obj, String str) {
+        if (obj == null) {
+            str = str.concat(" To see where this was allocated, set the OkHttpClient logger level to FINE: Logger.getLogger(OkHttpClient.class.getName()).setLevel(Level.FINE);");
+        }
+        i(str, 5, (Throwable) obj);
     }
 
-    public SSLContext k() {
-        SSLContext r0 = SSLContext.getInstance("TLS");
-        r0.getClass();
-        return r0;
+    public SSLContext k() throws NoSuchAlgorithmException {
+        SSLContext sSLContext = SSLContext.getInstance("TLS");
+        sSLContext.getClass();
+        return sSLContext;
     }
 
-    public SSLSocketFactory l(X509TrustManager r3) {
-        SSLContext r2 = k();     // Catch: GeneralSecurityException -> L4
-        r2.init(null, new TrustManager[]{r3}, null);     // Catch: GeneralSecurityException -> L4
-        SSLSocketFactory r4 = r2.getSocketFactory();     // Catch: GeneralSecurityException -> L4
-        r4.getClass();     // Catch: GeneralSecurityException -> L4
-        return r4;
-    L4:
-        e = move-exception;
-        throw new AssertionError("No System TLS: " + e, e);
+    public SSLSocketFactory l(X509TrustManager x509TrustManager) {
+        try {
+            SSLContext sSLContextK = k();
+            sSLContextK.init(null, new TrustManager[]{x509TrustManager}, null);
+            SSLSocketFactory socketFactory = sSLContextK.getSocketFactory();
+            socketFactory.getClass();
+            return socketFactory;
+        } catch (GeneralSecurityException e) {
+            throw new AssertionError("No System TLS: " + e, e);
+        }
     }
 
     public X509TrustManager m() {
-        TrustManagerFactory r3 = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
-        r3.init(null);
-        TrustManager[] r4 = r3.getTrustManagers();
-        r4.getClass();
-        if (r4.length != 1) goto L8;
-        TrustManager r1 = r4[0];
-        if ((r1 instanceof X509TrustManager) == false) goto L8;
-        r1.getClass();
-        return (X509TrustManager) r1;
-    L8:
-        String r5 = Arrays.toString(r4);
-        r5.getClass();
-        nz2.f("Unexpected default trust managers: ".concat(r5));
+        TrustManagerFactory trustManagerFactory = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
+        trustManagerFactory.init((KeyStore) null);
+        TrustManager[] trustManagers = trustManagerFactory.getTrustManagers();
+        trustManagers.getClass();
+        if (trustManagers.length == 1) {
+            TrustManager trustManager = trustManagers[0];
+            if (trustManager instanceof X509TrustManager) {
+                trustManager.getClass();
+                return (X509TrustManager) trustManager;
+            }
+        }
+        String string = Arrays.toString(trustManagers);
+        string.getClass();
+        nz2.f("Unexpected default trust managers: ".concat(string));
         return null;
     }
 

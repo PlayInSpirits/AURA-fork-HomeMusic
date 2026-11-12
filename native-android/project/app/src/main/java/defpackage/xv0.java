@@ -4,20 +4,14 @@ package defpackage;
 /* JADX INFO: loaded from: classes.dex */
 public final class xv0 extends jx4 {
     public static xv0 b() {
-        xv0 r0 = new xv0();
-        r0.n = new d34(23, false);
-        return r0;
+        xv0 xv0Var = new xv0();
+        xv0Var.n = new d34(23, false);
+        return xv0Var;
     }
 
     @Override // defpackage.jx4
-    public final boolean equals(Object r2) {
-        if ((r2 instanceof xv0) == true) goto L5;
-        return false;
-    L5:
-        if (super.equals(r2) == false) goto L10;
-        return true;
-    L10:
-        return false;
+    public final boolean equals(Object obj) {
+        return (obj instanceof xv0) && super.equals(obj);
     }
 
     public final int hashCode() {

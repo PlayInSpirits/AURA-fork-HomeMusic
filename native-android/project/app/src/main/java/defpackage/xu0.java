@@ -6,8 +6,8 @@ public final class xu0 extends av0 {
     public final long a;
     public final boolean b;
 
-    public xu0(boolean r1, long r2) {
-        this.a = r2;
-        this.b = r1;
+    public xu0(boolean z, long j) {
+        this.a = j;
+        this.b = z;
     }
 }

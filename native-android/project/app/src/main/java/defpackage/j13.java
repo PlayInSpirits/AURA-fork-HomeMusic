@@ -14,26 +14,25 @@ public final class j13 extends ep4 implements wf1 {
     public final /* synthetic */ r w;
     public final /* synthetic */ sm0 x;
 
-    public j13(h13 r1, k13 r2, r r3, sm0 r4, vd0 r5) {
-        this.u = r1;
-        this.v = r2;
-        this.w = r3;
-        this.x = r4;
-        super(2, r5);
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public j13(h13 h13Var, k13 k13Var, r rVar, sm0 sm0Var, vd0 vd0Var) {
+        super(2, vd0Var);
+        this.u = h13Var;
+        this.v = k13Var;
+        this.w = rVar;
+        this.x = sm0Var;
     }
 
     @Override // defpackage.jp
-    public final vd0 create(Object r7, vd0 r8) {
-        r r3 = this.w;
-        sm0 r4 = this.x;
-        j13 r0 = new j13(this.u, this.v, r3, r4, r8);
-        r0.t = r7;
-        return r0;
+    public final vd0 create(Object obj, vd0 vd0Var) {
+        j13 j13Var = new j13(this.u, this.v, this.w, this.x, vd0Var);
+        j13Var.t = obj;
+        return j13Var;
     }
 
     @Override // defpackage.wf1
-    public final Object invoke(Object r1, Object r2) {
-        return ((j13) create((we0) r1, (vd0) r2)).invokeSuspend(j15.a);
+    public final Object invoke(Object obj, Object obj2) {
+        return ((j13) create((we0) obj, (vd0) obj2)).invokeSuspend(j15.a);
     }
 
     /*  JADX ERROR: JadxRuntimeException in pass: ConstInlineVisitor
@@ -47,29 +46,6 @@ public final class j13 extends ep4 implements wf1 {
         */
     @Override // defpackage.jp
     public final java.lang.Object invokeSuspend(java.lang.Object r10) {
-        /*  JADX ERROR: Simple mode code generation failed
-            jadx.core.utils.exceptions.CodegenException: Error generate insn: 0x0000: IGET (r0v0 ?? I:int) = (r9v0 'this' ?? I:j13 A[IMMUTABLE_TYPE, THIS]) A[DECLARE_VAR] (LINE:1) j13.s int in method: j13.invokeSuspend(java.lang.Object):java.lang.Object, file: classes.dex
-            	at jadx.core.codegen.InsnGen.makeInsn(InsnGen.java:310)
-            	at jadx.core.codegen.InsnGen.makeInsn(InsnGen.java:273)
-            	at jadx.core.codegen.MethodGen.generateSimpleCode(MethodGen.java:348)
-            	at jadx.core.codegen.MethodGen.addSimpleMethodCode(MethodGen.java:316)
-            	at jadx.core.codegen.MethodGen.addInstructions(MethodGen.java:279)
-            	at jadx.core.codegen.ClassGen.addMethodCode(ClassGen.java:420)
-            	at jadx.core.codegen.ClassGen.addMethod(ClassGen.java:345)
-            	at jadx.core.codegen.ClassGen.lambda$addInnerClsAndMethods$3(ClassGen.java:299)
-            	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:183)
-            	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-            	at java.base/java.util.stream.SortedOps$RefSortingSink.end(SortedOps.java:395)
-            	at java.base/java.util.stream.Sink$ChainedReference.end(Sink.java:258)
-            Caused by: java.lang.NullPointerException: Cannot invoke "jadx.core.dex.instructions.args.ArgType.getPrimitiveType()" because "type" is null
-            	at jadx.core.codegen.ClassGen.useType(ClassGen.java:564)
-            	at jadx.core.codegen.InsnGen.useType(InsnGen.java:269)
-            	at jadx.core.codegen.InsnGen.declareVar(InsnGen.java:166)
-            	at jadx.core.codegen.InsnGen.declareVar(InsnGen.java:159)
-            	at jadx.core.codegen.InsnGen.assignVar(InsnGen.java:152)
-            	at jadx.core.codegen.InsnGen.makeInsn(InsnGen.java:299)
-            	... 11 more
-            */
         /*
             Method dump skipped, instruction units count: 243
             To view this dump add '--comments-level debug' option

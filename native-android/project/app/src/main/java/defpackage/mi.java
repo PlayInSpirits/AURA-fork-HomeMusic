@@ -7,113 +7,99 @@ import java.util.Map;
 /* JADX INFO: loaded from: classes.dex */
 public final class mi implements Iterator, Map.Entry {
     public int n;
-    public int o;
+    public int o = -1;
     public boolean p;
     public final /* synthetic */ oi q;
 
-    public mi(oi r1) {
-        this.q = r1;
-        this.n = r1.p - 1;
-        this.o = -1;
+    public mi(oi oiVar) {
+        this.q = oiVar;
+        this.n = oiVar.p - 1;
     }
 
     @Override // java.util.Map.Entry
-    public final boolean equals(Object r5) {
-        if (this.p == true) goto L5;
-        kf2.o("This container does not support retaining Map.Entry objects");
-        return false;
-    L5:
-        if ((r5 instanceof Map.Entry) == false) goto L13;
-        Map.Entry r6 = (Map.Entry) r5;
-        Object r0 = r6.getKey();
-        int r2 = this.o;
-        oi r3 = this.q;
-        if (h12.c(r0, r3.f(r2)) == false) goto L13;
-        if (h12.c(r6.getValue(), r3.j(this.o)) == false) goto L13;
-        return true;
-    L13:
+    public final boolean equals(Object obj) {
+        if (!this.p) {
+            kf2.o("This container does not support retaining Map.Entry objects");
+            return false;
+        }
+        if (obj instanceof Map.Entry) {
+            Map.Entry entry = (Map.Entry) obj;
+            Object key = entry.getKey();
+            int i = this.o;
+            oi oiVar = this.q;
+            if (h12.c(key, oiVar.f(i)) && h12.c(entry.getValue(), oiVar.j(this.o))) {
+                return true;
+            }
+        }
         return false;
     }
 
     @Override // java.util.Map.Entry
     public final Object getKey() {
-        if (this.p == true) goto L5;
+        if (this.p) {
+            return this.q.f(this.o);
+        }
         kf2.o("This container does not support retaining Map.Entry objects");
         return null;
-    L5:
-        return this.q.f(this.o);
     }
 
     @Override // java.util.Map.Entry
     public final Object getValue() {
-        if (this.p == true) goto L5;
+        if (this.p) {
+            return this.q.j(this.o);
+        }
         kf2.o("This container does not support retaining Map.Entry objects");
         return null;
-    L5:
-        return this.q.j(this.o);
     }
 
     @Override // java.util.Iterator
     public final boolean hasNext() {
-        if (this.o >= this.n) goto L6;
-        return true;
-    L6:
-        return false;
+        return this.o < this.n;
     }
 
     @Override // java.util.Map.Entry
     public final int hashCode() {
-        int r1 = 0;
-        if (this.p == false) goto L13;
-        int r0 = this.o;
-        oi r2 = this.q;
-        Object r3 = r2.f(r0);
-        Object r4 = r2.j(this.o);
-        if (r3 != null) goto L7;
-        int r5 = 0;
-    L8:
-        if (r4 == null) goto L12;
-        r1 = r4.hashCode();
-    L12:
-        return r5 ^ r1;
-    L7:
-        r5 = r3.hashCode();
-        goto L8
-    L13:
-        kf2.o("This container does not support retaining Map.Entry objects");
-        return 0;
+        if (!this.p) {
+            kf2.o("This container does not support retaining Map.Entry objects");
+            return 0;
+        }
+        int i = this.o;
+        oi oiVar = this.q;
+        Object objF = oiVar.f(i);
+        Object objJ = oiVar.j(this.o);
+        return (objF == null ? 0 : objF.hashCode()) ^ (objJ != null ? objJ.hashCode() : 0);
     }
 
     @Override // java.util.Iterator
     public final Object next() {
-        if (hasNext() == false) goto L6;
+        if (!hasNext()) {
+            tb4.k();
+            return null;
+        }
         this.o++;
         this.p = true;
         return this;
-    L6:
-        tb4.k();
-        return null;
     }
 
     @Override // java.util.Iterator
     public final void remove() {
-        if (this.p == false) goto L6;
+        if (!this.p) {
+            tb4.a();
+            return;
+        }
         this.q.h(this.o);
         this.o--;
         this.n--;
         this.p = false;
-        return;
-    L6:
-        tb4.a();
     }
 
     @Override // java.util.Map.Entry
-    public final Object setValue(Object r2) {
-        if (this.p == true) goto L5;
+    public final Object setValue(Object obj) {
+        if (this.p) {
+            return this.q.i(this.o, obj);
+        }
         kf2.o("This container does not support retaining Map.Entry objects");
         return null;
-    L5:
-        return this.q.i(this.o, r2);
     }
 
     public final String toString() {

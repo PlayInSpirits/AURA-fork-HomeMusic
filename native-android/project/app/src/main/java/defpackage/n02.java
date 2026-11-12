@@ -5,29 +5,18 @@ package defpackage;
 public final class n02 {
     public final long a;
 
-    public /* synthetic */ n02(long r1) {
-        this.a = r1;
+    public static final boolean a(long j, long j2) {
+        return j == j2;
     }
 
-    public static final boolean a(long r0, long r2) {
-        if (r0 != r2) goto L6;
-        return true;
-    L6:
-        return false;
+    public static String b(long j) {
+        return ((int) (j >> 32)) + " x " + ((int) (j & 4294967295L));
     }
 
-    public static String b(long r3) {
-        return ((int) (r3 >> 32)) + " x " + ((int) (r3 & 4294967295L));
-    }
-
-    public final boolean equals(Object r3) {
-        if ((r3 instanceof n02) == false) goto L11;
-        long r0 = ((n02) r3).a;
-        if (this.a == r0) goto L9;
-        return false;
-    L9:
-        return true;
-    L11:
+    public final boolean equals(Object obj) {
+        if (obj instanceof n02) {
+            return this.a == ((n02) obj).a;
+        }
         return false;
     }
 

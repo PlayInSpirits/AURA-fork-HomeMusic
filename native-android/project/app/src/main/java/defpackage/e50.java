@@ -4,8 +4,4 @@ package defpackage;
 /* JADX INFO: loaded from: classes.dex */
 public final /* synthetic */ class e50 implements h50 {
     public final /* synthetic */ jx3 a;
-
-    public /* synthetic */ e50(jx3 r1) {
-        this.a = r1;
-    }
 }

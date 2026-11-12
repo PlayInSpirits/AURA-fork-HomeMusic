@@ -8,32 +8,29 @@ import java.io.OutputStream;
 public final class z14 extends BufferedOutputStream {
     public boolean n;
 
-    public final void b(OutputStream r2) {
+    public final void b(OutputStream outputStream) {
         rr2.w(this.n);
-        ((BufferedOutputStream) this).out = r2;
+        ((BufferedOutputStream) this).out = outputStream;
         ((BufferedOutputStream) this).count = 0;
         this.n = false;
     }
 
     @Override // java.io.FilterOutputStream, java.io.OutputStream, java.io.Closeable, java.lang.AutoCloseable
-    public final void close() {
+    public final void close() throws Throwable {
         this.n = true;
-        flush();     // Catch: Throwable -> L5
+        flush();
         th = null;
-    L17:
-        ((BufferedOutputStream) this).out.close();     // Catch: Throwable -> L8
-    L11:
-        if (th != null) goto L13;
-        return;
-    L13:
-        String r1 = f35.a;
+        try {
+            ((BufferedOutputStream) this).out.close();
+        } catch (Throwable th) {
+            if (th == null) {
+                th = th;
+            }
+        }
+        if (th == null) {
+            return;
+        }
+        String str = f35.a;
         throw th;
-    L8:
-        th = move-exception;
-        if (th != null) goto L11;
-        th = th;
-    L5:
-        th = th;
-        goto L17
     }
 }

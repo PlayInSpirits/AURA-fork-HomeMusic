@@ -9,57 +9,57 @@ public final class vx4 extends ja4 {
     public final nk1 b;
     public final TypeToken c;
     public final cz4 d;
-    public final si1 e;
+    public final si1 e = new si1(29, this);
     public final boolean f;
     public volatile bz4 g;
 
-    public vx4(g32 r3, nk1 r4, TypeToken r5, ux4 r6, boolean r7) {
-        this.e = new si1(29, this);
-        this.a = r3;
-        this.b = r4;
-        this.c = r5;
-        this.d = r6;
-        this.f = r7;
+    public vx4(g32 g32Var, nk1 nk1Var, TypeToken typeToken, ux4 ux4Var, boolean z) {
+        this.a = g32Var;
+        this.b = nk1Var;
+        this.c = typeToken;
+        this.d = ux4Var;
+        this.f = z;
     }
 
     @Override // defpackage.bz4
-    public final Object a(l32 r4) {
-        g32 r0 = this.a;
-        if (r0 != null) goto L10;
-        bz4 r1 = this.g;
-        if (r1 != null) goto L9;
-        r1 = this.b.h(this.d, this.c);
-        this.g = r1;
-    L9:
-        return r1.a(r4);
-    L10:
-        h32 r5 = fh0.q(r4);
-        if (this.f == false) goto L17;
-        r5.getClass();
-        if ((r5 instanceof i32) == false) goto L17;
-        return null;
-    L17:
-        return r0.a(r5, this.c.getType(), this.e);
+    public final Object a(l32 l32Var) {
+        g32 g32Var = this.a;
+        if (g32Var == null) {
+            bz4 bz4VarH = this.g;
+            if (bz4VarH == null) {
+                bz4VarH = this.b.h(this.d, this.c);
+                this.g = bz4VarH;
+            }
+            return bz4VarH.a(l32Var);
+        }
+        h32 h32VarQ = fh0.q(l32Var);
+        if (this.f) {
+            h32VarQ.getClass();
+            if (h32VarQ instanceof i32) {
+                return null;
+            }
+        }
+        return g32Var.a(h32VarQ, this.c.getType(), this.e);
     }
 
     @Override // defpackage.bz4
-    public final void b(q32 r4, Object r5) {
-        bz4 r0 = this.g;
-        if (r0 != null) goto L6;
-        r0 = this.b.h(this.d, this.c);
-        this.g = r0;
-    L6:
-        r0.b(r4, r5);
+    public final void b(q32 q32Var, Object obj) {
+        bz4 bz4VarH = this.g;
+        if (bz4VarH == null) {
+            bz4VarH = this.b.h(this.d, this.c);
+            this.g = bz4VarH;
+        }
+        bz4VarH.b(q32Var, obj);
     }
 
     @Override // defpackage.ja4
     public final bz4 c() {
-        bz4 r0 = this.g;
-        if (r0 == null) goto L5;
-        return r0;
-    L5:
-        bz4 r1 = this.b.h(this.d, this.c);
-        this.g = r1;
-        return r1;
+        bz4 bz4Var = this.g;
+        if (bz4Var != null) {
+            return bz4Var;
+        }
+        bz4 bz4VarH = this.b.h(this.d, this.c);
+        this.g = bz4VarH;
+        return bz4VarH;
     }
 }

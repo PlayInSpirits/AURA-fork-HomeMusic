@@ -12,9 +12,6 @@ public final class IndexID3 {
     private List<? extends ArtistID3> artists;
     private String name;
 
-    public IndexID3() {
-    }
-
     public final List<ArtistID3> getArtists() {
         return this.artists;
     }
@@ -23,11 +20,11 @@ public final class IndexID3 {
         return this.name;
     }
 
-    public final void setArtists(List<? extends ArtistID3> r1) {
-        this.artists = r1;
+    public final void setArtists(List<? extends ArtistID3> list) {
+        this.artists = list;
     }
 
-    public final void setName(String r1) {
-        this.name = r1;
+    public final void setName(String str) {
+        this.name = str;
     }
 }

@@ -18,74 +18,70 @@ public abstract class nb1 extends za2 {
     public final boolean G;
     public boolean H;
 
-    public nb1(Context r9, AttributeSet r10, int r11) {
-        super(r9, r10, r11);
+    public nb1(Context context, AttributeSet attributeSet, int i) {
+        super(context, attributeSet, i);
         this.D = new Rect();
         this.E = new Rect();
         this.F = 119;
         this.G = true;
         this.H = false;
-        uc5.c(r9, r10, r11, 0);
-        int[] r4 = ht3.r;
-        uc5.g(r9, r10, r4, r11, 0, new int[0]);
-        TypedArray r12 = r9.obtainStyledAttributes(r10, r4, r11, 0);
-        this.F = r12.getInt(1, this.F);
-        Drawable r13 = r12.getDrawable(0);
-        if (r13 == null) goto L5;
-        setForeground(r13);
-    L5:
-        this.G = r12.getBoolean(2, true);
-        r12.recycle();
+        uc5.c(context, attributeSet, i, 0);
+        int[] iArr = ht3.r;
+        uc5.g(context, attributeSet, iArr, i, 0, new int[0]);
+        TypedArray typedArrayObtainStyledAttributes = context.obtainStyledAttributes(attributeSet, iArr, i, 0);
+        this.F = typedArrayObtainStyledAttributes.getInt(1, this.F);
+        Drawable drawable = typedArrayObtainStyledAttributes.getDrawable(0);
+        if (drawable != null) {
+            setForeground(drawable);
+        }
+        this.G = typedArrayObtainStyledAttributes.getBoolean(2, true);
+        typedArrayObtainStyledAttributes.recycle();
     }
 
     @Override // android.view.View
-    public final void draw(Canvas r8) {
-        super.draw(r8);
-        Drawable r0 = this.C;
-        if (r0 != null) goto L5;
-        return;
-    L5:
-        if (this.H == false) goto L11;
-        this.H = false;
-        int r2 = getRight() - getLeft();
-        int r3 = getBottom() - getTop();
-        boolean r4 = this.G;
-        Rect r5 = this.D;
-        if (r4 == false) goto L9;
-        r5.set(0, 0, r2, r3);
-    L10:
-        int r1 = this.F;
-        int r6 = r0.getIntrinsicWidth();
-        int r7 = r0.getIntrinsicHeight();
-        Rect r9 = this.E;
-        Gravity.apply(r1, r6, r7, r5, r9);
-        r0.setBounds(r9);
-        goto L11
-    L9:
-        r5.set(getPaddingLeft(), getPaddingTop(), r2 - getPaddingRight(), r3 - getPaddingBottom());
-    L11:
-        r0.draw(r8);
+    public final void draw(Canvas canvas) {
+        super.draw(canvas);
+        Drawable drawable = this.C;
+        if (drawable != null) {
+            if (this.H) {
+                this.H = false;
+                int right = getRight() - getLeft();
+                int bottom = getBottom() - getTop();
+                boolean z = this.G;
+                Rect rect = this.D;
+                if (z) {
+                    rect.set(0, 0, right, bottom);
+                } else {
+                    rect.set(getPaddingLeft(), getPaddingTop(), right - getPaddingRight(), bottom - getPaddingBottom());
+                }
+                int i = this.F;
+                int intrinsicWidth = drawable.getIntrinsicWidth();
+                int intrinsicHeight = drawable.getIntrinsicHeight();
+                Rect rect2 = this.E;
+                Gravity.apply(i, intrinsicWidth, intrinsicHeight, rect, rect2);
+                drawable.setBounds(rect2);
+            }
+            drawable.draw(canvas);
+        }
     }
 
     @Override // android.view.View
-    public final void drawableHotspotChanged(float r1, float r2) {
-        super.drawableHotspotChanged(r1, r2);
-        Drawable r0 = this.C;
-        if (r0 == null) goto L6;
-        r0.setHotspot(r1, r2);
-        return;
+    public final void drawableHotspotChanged(float f, float f2) {
+        super.drawableHotspotChanged(f, f2);
+        Drawable drawable = this.C;
+        if (drawable != null) {
+            drawable.setHotspot(f, f2);
+        }
     }
 
     @Override // android.view.ViewGroup, android.view.View
     public final void drawableStateChanged() {
         super.drawableStateChanged();
-        Drawable r0 = this.C;
-        if (r0 != null) goto L5;
-        return;
-    L5:
-        if (r0.isStateful() == false) goto L9;
+        Drawable drawable = this.C;
+        if (drawable == null || !drawable.isStateful()) {
+            return;
+        }
         this.C.setState(getDrawableState());
-        return;
     }
 
     @Override // android.view.View
@@ -101,82 +97,70 @@ public abstract class nb1 extends za2 {
     @Override // android.view.ViewGroup, android.view.View
     public final void jumpDrawablesToCurrentState() {
         super.jumpDrawablesToCurrentState();
-        Drawable r0 = this.C;
-        if (r0 == null) goto L6;
-        r0.jumpToCurrentState();
-        return;
+        Drawable drawable = this.C;
+        if (drawable != null) {
+            drawable.jumpToCurrentState();
+        }
     }
 
     @Override // defpackage.za2, android.view.ViewGroup, android.view.View
-    public final void onLayout(boolean r1, int r2, int r3, int r4, int r5) {
-        super.onLayout(r1, r2, r3, r4, r5);
-        this.H = r1 | this.H;
+    public final void onLayout(boolean z, int i, int i2, int i3, int i4) {
+        super.onLayout(z, i, i2, i3, i4);
+        this.H = z | this.H;
     }
 
     @Override // android.view.View
-    public final void onSizeChanged(int r1, int r2, int r3, int r4) {
-        super.onSizeChanged(r1, r2, r3, r4);
+    public final void onSizeChanged(int i, int i2, int i3, int i4) {
+        super.onSizeChanged(i, i2, i3, i4);
         this.H = true;
     }
 
     @Override // android.view.View
-    public void setForeground(Drawable r3) {
-        Drawable r0 = this.C;
-        if (r0 == r3) goto L17;
-        if (r0 == null) goto L6;
-        r0.setCallback(null);
-        unscheduleDrawable(this.C);
-    L6:
-        this.C = r3;
-        this.H = true;
-        if (r3 == null) goto L14;
-        setWillNotDraw(false);
-        r3.setCallback(this);
-        if (r3.isStateful() == false) goto L12;
-        r3.setState(getDrawableState());
-    L12:
-        if (this.F != 119) goto L15;
-        r3.getPadding(new Rect());
-    L15:
-        requestLayout();
-        invalidate();
-        return;
-    L14:
-        setWillNotDraw(true);
-        goto L15
+    public void setForeground(Drawable drawable) {
+        Drawable drawable2 = this.C;
+        if (drawable2 != drawable) {
+            if (drawable2 != null) {
+                drawable2.setCallback(null);
+                unscheduleDrawable(this.C);
+            }
+            this.C = drawable;
+            this.H = true;
+            if (drawable != null) {
+                setWillNotDraw(false);
+                drawable.setCallback(this);
+                if (drawable.isStateful()) {
+                    drawable.setState(getDrawableState());
+                }
+                if (this.F == 119) {
+                    drawable.getPadding(new Rect());
+                }
+            } else {
+                setWillNotDraw(true);
+            }
+            requestLayout();
+            invalidate();
+        }
     }
 
     @Override // android.view.View
-    public void setForegroundGravity(int r2) {
-        if (this.F != r2) goto L5;
-        return;
-    L5:
-        if ((8388615 & r2) != 0) goto L8;
-        r2 = r2 | 8388611;
-    L8:
-        if ((r2 & 112) != 0) goto L10;
-        r2 = r2 | 48;
-    L10:
-        this.F = r2;
-        if (r2 == 119) goto L13;
-    L15:
-        requestLayout();
-        return;
-    L13:
-        if (this.C == null) goto L15;
-        Rect r3 = new Rect();
-        this.C.getPadding(r3);
-        goto L15
+    public void setForegroundGravity(int i) {
+        if (this.F != i) {
+            if ((8388615 & i) == 0) {
+                i |= 8388611;
+            }
+            if ((i & 112) == 0) {
+                i |= 48;
+            }
+            this.F = i;
+            if (i == 119 && this.C != null) {
+                this.C.getPadding(new Rect());
+            }
+            requestLayout();
+        }
     }
 
     @Override // android.view.View
-    public final boolean verifyDrawable(Drawable r2) {
-        if (super.verifyDrawable(r2) == false) goto L5;
-        return true;
-    L5:
-        if (r2 == this.C) goto L11;
-        return false;
-    L11:
-        return true;
+    public final boolean verifyDrawable(Drawable drawable) {
+        return super.verifyDrawable(drawable) || drawable == this.C;
     }
 }

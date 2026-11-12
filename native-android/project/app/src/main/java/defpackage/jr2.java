@@ -16,23 +16,22 @@ public final class jr2 extends Binder implements qu1 {
     public static final /* synthetic */ int f = 0;
     public final WeakReference e;
 
-    public jr2(kr2 r2) {
+    public jr2(kr2 kr2Var) {
         attachInterface(this, "android.support.v4.media.session.IMediaSession");
-        this.e = new WeakReference(r2);
+        this.e = new WeakReference(kr2Var);
     }
 
     @Override // defpackage.qu1
     public final int V() {
-        kr2 r0 = (kr2) this.e.get();
-        if (r0 != null) goto L5;
+        kr2 kr2Var = (kr2) this.e.get();
+        if (kr2Var != null) {
+            return kr2Var.k;
+        }
         return -1;
-    L5:
-        return r0.k;
     }
 
     @Override // defpackage.qu1
     public final boolean Y() {
-        kr2 r0 = (kr2) this.e.get();
         return false;
     }
 
@@ -42,207 +41,180 @@ public final class jr2 extends Binder implements qu1 {
     }
 
     @Override // defpackage.qu1
-    public final void b0(lu1 r2) {
-        kr2 r1 = (kr2) this.e.get();
-        if (r1 == null) goto L13;
-        if (r2 == null) goto L16;
-        r1.f.unregister(r2);
+    public final void b0(lu1 lu1Var) {
+        kr2 kr2Var = (kr2) this.e.get();
+        if (kr2Var == null || lu1Var == null) {
+            return;
+        }
+        kr2Var.f.unregister(lu1Var);
         Binder.getCallingPid();
         Binder.getCallingUid();
-        Object r3 = r1.d;
-        monitor-enter(r3);
-        monitor-exit(r3);     // Catch: Throwable -> L10
-        return;
-    L10:
-        th = move-exception;
-        throw th;
-    L16:
-        return;
+        synchronized (kr2Var.d) {
+        }
     }
 
     @Override // defpackage.qu1
     public final ei3 g() {
-        kr2 r0 = (kr2) this.e.get();
-        if (r0 == null) goto L37;
-        ei3 r1 = r0.g;
-        eo2 r2 = r0.i;
-        if (r1 == null) goto L36;
-        float r3 = r1.q;
-        long r4 = r1.u;
-        int r5 = r1.n;
-        long r6 = r1.o;
-        long r8 = -1;
-        if (r6 == (-1)) goto L36;
-        if (r5 == 3) goto L16;
-        if (r5 == 4) goto L16;
-        if (r5 != 5) goto L36;
-    L16:
-        if (r4 <= 0) goto L36;
-        long r23 = SystemClock.elapsedRealtime();
-        long r7 = ((long) (r3 * (r23 - r4))) + r6;
-        if (r2 == null) goto L23;
-        if (r2.n.containsKey("android.media.metadata.DURATION") == false) goto L23;
-        r8 = r2.a("android.media.metadata.DURATION");
-    L23:
-        if (r8 < 0) goto L28;
-        if (r7 <= r8) goto L28;
-        long r14 = r8;
-    L31:
-        ArrayList r9 = new ArrayList();
-        long r10 = r1.p;
-        long r11 = r1.r;
-        int r12 = r1.s;
-        CharSequence r13 = r1.t;
-        List r15 = r1.v;
-        if (r15 == null) goto L35;
-        r9.addAll(r15);
-    L35:
-        return new ei3(r1.n, r14, r10, r1.q, r11, r12, r13, r23, r9, r1.w, r1.x);
-    L28:
-        if (r7 >= 0) goto L30;
-        r14 = 0;
-        goto L31
-    L30:
-        r14 = r7;
-    L36:
-        return r1;
-    L37:
-        return null;
+        long j;
+        kr2 kr2Var = (kr2) this.e.get();
+        if (kr2Var == null) {
+            return null;
+        }
+        ei3 ei3Var = kr2Var.g;
+        eo2 eo2Var = kr2Var.i;
+        if (ei3Var != null) {
+            float f2 = ei3Var.q;
+            long j2 = ei3Var.u;
+            int i = ei3Var.n;
+            long j3 = ei3Var.o;
+            long jA = -1;
+            if (j3 != -1 && ((i == 3 || i == 4 || i == 5) && j2 > 0)) {
+                long jElapsedRealtime = SystemClock.elapsedRealtime();
+                long j4 = ((long) (f2 * (jElapsedRealtime - j2))) + j3;
+                if (eo2Var != null && eo2Var.n.containsKey("android.media.metadata.DURATION")) {
+                    jA = eo2Var.a("android.media.metadata.DURATION");
+                }
+                if (jA < 0 || j4 <= jA) {
+                    j = j4 < 0 ? 0L : j4;
+                } else {
+                    j = jA;
+                }
+                ArrayList arrayList = new ArrayList();
+                long j5 = ei3Var.p;
+                long j6 = ei3Var.r;
+                int i2 = ei3Var.s;
+                CharSequence charSequence = ei3Var.t;
+                List list = ei3Var.v;
+                if (list != null) {
+                    arrayList.addAll(list);
+                }
+                return new ei3(ei3Var.n, j, j5, ei3Var.q, j6, i2, charSequence, jElapsedRealtime, arrayList, ei3Var.w, ei3Var.x);
+            }
+        }
+        return ei3Var;
     }
 
     @Override // defpackage.qu1
     public final int h() {
-        kr2 r0 = (kr2) this.e.get();
-        if (r0 != null) goto L5;
+        kr2 kr2Var = (kr2) this.e.get();
+        if (kr2Var != null) {
+            return kr2Var.j;
+        }
         return -1;
-    L5:
-        return r0.j;
     }
 
     @Override // defpackage.qu1
-    public final void l0(lu1 r5) {
-        kr2 r4 = (kr2) this.e.get();
-        if (r4 == null) goto L13;
-        if (r5 == null) goto L16;
-        ms2 r2 = new ms2("android.media.session.MediaController", Binder.getCallingPid(), Binder.getCallingUid());
-        r4.f.register(r5, r2);
-        Object r6 = r4.d;
-        monitor-enter(r6);
-        monitor-exit(r6);     // Catch: Throwable -> L10
-        return;
-    L10:
-        th = move-exception;
-        throw th;
-    L16:
-        return;
+    public final void l0(lu1 lu1Var) {
+        kr2 kr2Var = (kr2) this.e.get();
+        if (kr2Var == null || lu1Var == null) {
+            return;
+        }
+        kr2Var.f.register(lu1Var, new ms2("android.media.session.MediaController", Binder.getCallingPid(), Binder.getCallingUid()));
+        synchronized (kr2Var.d) {
+        }
     }
 
     @Override // android.os.Binder
-    public final boolean onTransact(int r6, Parcel r7, Parcel r8, int r9) {
-        lu1 r2 = null;
-        Bundle r3 = null;
-        r3 = null;
-        lu1 r4 = null;
-        if (r6 != 3) goto L5;
-        r7.enforceInterface("android.support.v4.media.session.IMediaSession");
-        IBinder r10 = r7.readStrongBinder();
-        if (r10 == null) goto L65;
-        IInterface r11 = r10.queryLocalInterface("android.support.v4.media.session.IMediaControllerCallback");
-        if (r11 != null) goto L62;
-    L64:
-        ku1 r5 = new ku1();
-        r5.e = r10;
-        r2 = r5;
-        goto L65
-    L62:
-        if ((r11 instanceof lu1) == false) goto L64;
-        r2 = (lu1) r11;
-    L65:
-        l0(r2);
-        r8.getClass();
-        r8.writeNoException();
+    public final boolean onTransact(int i, Parcel parcel, Parcel parcel2, int i2) {
+        Bundle bundle;
+        lu1 lu1Var = null;
+        bundle = null;
+        Bundle bundle2 = null;
+        lu1 lu1Var2 = null;
+        if (i == 3) {
+            parcel.enforceInterface("android.support.v4.media.session.IMediaSession");
+            IBinder strongBinder = parcel.readStrongBinder();
+            if (strongBinder != null) {
+                IInterface iInterfaceQueryLocalInterface = strongBinder.queryLocalInterface("android.support.v4.media.session.IMediaControllerCallback");
+                if (iInterfaceQueryLocalInterface == null || !(iInterfaceQueryLocalInterface instanceof lu1)) {
+                    ku1 ku1Var = new ku1();
+                    ku1Var.e = strongBinder;
+                    lu1Var = ku1Var;
+                } else {
+                    lu1Var = (lu1) iInterfaceQueryLocalInterface;
+                }
+            }
+            l0(lu1Var);
+            parcel2.getClass();
+            parcel2.writeNoException();
+            return true;
+        }
+        if (i == 4) {
+            parcel.enforceInterface("android.support.v4.media.session.IMediaSession");
+            IBinder strongBinder2 = parcel.readStrongBinder();
+            if (strongBinder2 != null) {
+                IInterface iInterfaceQueryLocalInterface2 = strongBinder2.queryLocalInterface("android.support.v4.media.session.IMediaControllerCallback");
+                if (iInterfaceQueryLocalInterface2 == null || !(iInterfaceQueryLocalInterface2 instanceof lu1)) {
+                    ku1 ku1Var2 = new ku1();
+                    ku1Var2.e = strongBinder2;
+                    lu1Var2 = ku1Var2;
+                } else {
+                    lu1Var2 = (lu1) iInterfaceQueryLocalInterface2;
+                }
+            }
+            b0(lu1Var2);
+            parcel2.getClass();
+            parcel2.writeNoException();
+            return true;
+        }
+        if (i == 28) {
+            parcel.enforceInterface("android.support.v4.media.session.IMediaSession");
+            ei3 ei3VarG = g();
+            parcel2.getClass();
+            parcel2.writeNoException();
+            if (ei3VarG == null) {
+                parcel2.writeInt(0);
+                return true;
+            }
+            parcel2.writeInt(1);
+            ei3VarG.writeToParcel(parcel2, 1);
+            return true;
+        }
+        if (i == 37) {
+            parcel.enforceInterface("android.support.v4.media.session.IMediaSession");
+            int iH = h();
+            parcel2.getClass();
+            parcel2.writeNoException();
+            parcel2.writeInt(iH);
+            return true;
+        }
+        if (i == 45) {
+            parcel.enforceInterface("android.support.v4.media.session.IMediaSession");
+            Y();
+            parcel2.getClass();
+            parcel2.writeNoException();
+            parcel2.writeInt(0);
+            return true;
+        }
+        if (i == 47) {
+            parcel.enforceInterface("android.support.v4.media.session.IMediaSession");
+            int iV = V();
+            parcel2.getClass();
+            parcel2.writeNoException();
+            parcel2.writeInt(iV);
+            return true;
+        }
+        if (i != 50) {
+            if (i != 1598968902) {
+                return super.onTransact(i, parcel, parcel2, i2);
+            }
+            parcel2.getClass();
+            parcel2.writeString("android.support.v4.media.session.IMediaSession");
+            return true;
+        }
+        parcel.enforceInterface("android.support.v4.media.session.IMediaSession");
+        kr2 kr2Var = (kr2) this.e.get();
+        if (kr2Var != null && (bundle = kr2Var.e) != null) {
+            bundle2 = new Bundle(bundle);
+        }
+        parcel2.getClass();
+        parcel2.writeNoException();
+        if (bundle2 == null) {
+            parcel2.writeInt(0);
+            return true;
+        }
+        parcel2.writeInt(1);
+        bundle2.writeToParcel(parcel2, 1);
         return true;
-    L5:
-        if (r6 != 4) goto L7;
-        r7.enforceInterface("android.support.v4.media.session.IMediaSession");
-        IBinder r12 = r7.readStrongBinder();
-        if (r12 == null) goto L54;
-        IInterface r13 = r12.queryLocalInterface("android.support.v4.media.session.IMediaControllerCallback");
-        if (r13 != null) goto L51;
-    L53:
-        ku1 r14 = new ku1();
-        r14.e = r12;
-        r4 = r14;
-        goto L54
-    L51:
-        if ((r13 instanceof lu1) == false) goto L53;
-        r4 = (lu1) r13;
-    L54:
-        b0(r4);
-        r8.getClass();
-        r8.writeNoException();
-        return true;
-    L7:
-        if (r6 != 28) goto L9;
-        r7.enforceInterface("android.support.v4.media.session.IMediaSession");
-        ei3 r15 = g();
-        r8.getClass();
-        r8.writeNoException();
-        if (r15 == null) goto L43;
-        r8.writeInt(1);
-        r15.writeToParcel(r8, 1);
-        return true;
-    L43:
-        r8.writeInt(0);
-        return true;
-    L9:
-        if (r6 != 37) goto L11;
-        r7.enforceInterface("android.support.v4.media.session.IMediaSession");
-        int r16 = h();
-        r8.getClass();
-        r8.writeNoException();
-        r8.writeInt(r16);
-        return true;
-    L11:
-        if (r6 != 45) goto L13;
-        r7.enforceInterface("android.support.v4.media.session.IMediaSession");
-        Y();
-        r8.getClass();
-        r8.writeNoException();
-        r8.writeInt(0);
-        return true;
-    L13:
-        if (r6 != 47) goto L15;
-        r7.enforceInterface("android.support.v4.media.session.IMediaSession");
-        int r17 = V();
-        r8.getClass();
-        r8.writeNoException();
-        r8.writeInt(r17);
-        return true;
-    L15:
-        if (r6 != 50) goto L17;
-        r7.enforceInterface("android.support.v4.media.session.IMediaSession");
-        kr2 r18 = (kr2) this.e.get();
-        if (r18 == null) goto L27;
-        Bundle r19 = r18.e;
-        if (r19 == null) goto L27;
-        r3 = new Bundle(r19);
-    L27:
-        r8.getClass();
-        r8.writeNoException();
-        if (r3 == null) goto L31;
-        r8.writeInt(1);
-        r3.writeToParcel(r8, 1);
-        return true;
-    L31:
-        r8.writeInt(0);
-        return true;
-    L17:
-        if (r6 != 1598968902) goto L19;
-        r8.getClass();
-        r8.writeString("android.support.v4.media.session.IMediaSession");
-        return true;
-    L19:
-        return super.onTransact(r6, r7, r8, r9);
     }
 }

@@ -6,8 +6,8 @@ public final class nv2 {
     public final mt2 a;
     public final no2 b;
 
-    public nv2(mt2 r1, no2 r2) {
-        this.a = r1;
-        this.b = r2;
+    public nv2(mt2 mt2Var, no2 no2Var) {
+        this.a = mt2Var;
+        this.b = no2Var;
     }
 }

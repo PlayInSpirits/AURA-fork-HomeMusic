@@ -6,9 +6,9 @@ public final class qv implements as4 {
     public final pv n;
     public final float o;
 
-    public qv(pv r1, float r2) {
-        this.n = r1;
-        this.o = r2;
+    public qv(pv pvVar, float f) {
+        this.n = pvVar;
+        this.o = f;
     }
 
     @Override // defpackage.as4
@@ -18,25 +18,19 @@ public final class qv implements as4 {
 
     @Override // defpackage.as4
     public final long c() {
-        int r2 = x40.h;
+        int i = x40.h;
         return x40.g;
     }
 
-    public final boolean equals(Object r5) {
-        if (this != r5) goto L6;
-        return true;
-    L6:
-        if ((r5 instanceof qv) == true) goto L8;
-        return false;
-    L8:
-        qv r6 = (qv) r5;
-        if (h12.c(this.n, r6.n) == true) goto L12;
-        return false;
-    L12:
-        if (Float.compare(this.o, r6.o) == 0) goto L14;
-        return false;
-    L14:
-        return true;
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof qv)) {
+            return false;
+        }
+        qv qvVar = (qv) obj;
+        return h12.c(this.n, qvVar.n) && Float.compare(this.o, qvVar.o) == 0;
     }
 
     @Override // defpackage.as4
@@ -45,8 +39,7 @@ public final class qv implements as4 {
     }
 
     public final int hashCode() {
-        int r0 = this.n.hashCode() * 31;
-        return Float.hashCode(this.o) + r0;
+        return Float.hashCode(this.o) + (this.n.hashCode() * 31);
     }
 
     public final String toString() {

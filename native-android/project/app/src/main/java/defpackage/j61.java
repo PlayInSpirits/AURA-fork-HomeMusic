@@ -7,31 +7,15 @@ import java.util.function.BiFunction;
 public final /* synthetic */ class j61 implements BiFunction {
     public final /* synthetic */ int a;
 
-    public /* synthetic */ j61(int r1) {
-        this.a = r1;
-    }
-
     @Override // java.util.function.BiFunction
-    public final Object apply(Object r1, Object r2) {
-        switch(this.a) {
-            case 0: goto L8;
-            case 1: goto L7;
-            default: goto L5;
-        };
-    L8:
-        Boolean r3 = (Boolean) r2;
-        if (((Boolean) r1).booleanValue() == false) goto L11;
-    L14:
-        boolean r0 = true;
-    L16:
-        return Boolean.valueOf(r0);
-    L11:
-        if (r3.booleanValue() == true) goto L14;
-        r0 = false;
-        goto L16
-    L5:
-        return (Integer) nt1.n.invoke(r1, r2);
-    L7:
-        return (Integer) mt1.n.invoke(r1, r2);
+    public final Object apply(Object obj, Object obj2) {
+        switch (this.a) {
+            case 0:
+                return Boolean.valueOf(((Boolean) obj).booleanValue() || ((Boolean) obj2).booleanValue());
+            case 1:
+                return (Integer) mt1.n.invoke(obj, obj2);
+            default:
+                return (Integer) nt1.n.invoke(obj, obj2);
+        }
     }
 }

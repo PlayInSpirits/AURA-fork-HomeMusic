@@ -11,94 +11,76 @@ import android.widget.TextView;
 public final class i01 extends hw {
     public final TextView j;
     public final c01 k;
-    public boolean l;
+    public boolean l = true;
 
-    public i01(TextView r2) {
-        this.j = r2;
-        this.l = true;
-        this.k = new c01(r2);
+    public i01(TextView textView) {
+        this.j = textView;
+        this.k = new c01(textView);
     }
 
     @Override // defpackage.hw
-    public final void J(boolean r2) {
-        if (r2 == false) goto L5;
-        TextView r3 = this.j;
-        r3.setTransformationMethod(R(r3.getTransformationMethod()));
-        return;
+    public final void J(boolean z) {
+        if (z) {
+            TextView textView = this.j;
+            textView.setTransformationMethod(R(textView.getTransformationMethod()));
+        }
     }
 
     @Override // defpackage.hw
-    public final void K(boolean r2) {
-        this.l = r2;
-        TextView r3 = this.j;
-        r3.setTransformationMethod(R(r3.getTransformationMethod()));
-        r3.setFilters(k(r3.getFilters()));
+    public final void K(boolean z) {
+        this.l = z;
+        TextView textView = this.j;
+        textView.setTransformationMethod(R(textView.getTransformationMethod()));
+        textView.setFilters(k(textView.getFilters()));
     }
 
     @Override // defpackage.hw
-    public final TransformationMethod R(TransformationMethod r1) {
-        if (this.l == false) goto L13;
-        if ((r1 instanceof m01) == false) goto L8;
-        return r1;
-    L8:
-        if ((r1 instanceof PasswordTransformationMethod) == false) goto L11;
-        return r1;
-    L11:
-        return new m01(r1);
-    L13:
-        if ((r1 instanceof m01) == true) goto L15;
-        return r1;
-    L15:
-        return ((m01) r1).n;
+    public final TransformationMethod R(TransformationMethod transformationMethod) {
+        if (this.l) {
+            return ((transformationMethod instanceof m01) || (transformationMethod instanceof PasswordTransformationMethod)) ? transformationMethod : new m01(transformationMethod);
+        }
+        return transformationMethod instanceof m01 ? ((m01) transformationMethod).n : transformationMethod;
     }
 
     @Override // defpackage.hw
-    public final InputFilter[] k(InputFilter[] r7) {
-        int r1 = 0;
-        if (this.l == true) goto L21;
-        SparseArray r6 = new SparseArray(1);
-        int r0 = 0;
-    L6:
-        if (r0 >= r7.length) goto L12;
-        InputFilter r2 = r7[r0];
-        if ((r2 instanceof c01) == false) goto L10;
-        r6.put(r0, r2);
-    L10:
-        r0 = r0 + 1;
-        goto L6
-    L12:
-        if (r6.size() != 0) goto L14;
-        return r7;
-    L14:
-        int r3 = r7.length;
-        InputFilter[] r4 = new InputFilter[r7.length - r6.size()];
-        int r5 = 0;
-    L15:
-        if (r1 >= r3) goto L20;
-        if (r6.indexOfKey(r1) >= 0) goto L19;
-        r4[r5] = r7[r1];
-        r5 = r5 + 1;
-    L19:
-        r1 = r1 + 1;
-        goto L15
-    L20:
-        return r4;
-    L21:
-        int r8 = r7.length;
-        int r9 = 0;
-    L22:
-        c01 r10 = this.k;
-        if (r9 >= r8) goto L28;
-        if (r7[r9] == r10) goto L26;
-        r9 = r9 + 1;
-        goto L22
-    L26:
-        return r7;
-    L28:
-        InputFilter[] r11 = new InputFilter[r7.length + 1];
-        System.arraycopy(r7, 0, r11, 0, r8);
-        r11[r8] = r10;
-        return r11;
+    public final InputFilter[] k(InputFilter[] inputFilterArr) {
+        if (!this.l) {
+            SparseArray sparseArray = new SparseArray(1);
+            for (int i = 0; i < inputFilterArr.length; i++) {
+                InputFilter inputFilter = inputFilterArr[i];
+                if (inputFilter instanceof c01) {
+                    sparseArray.put(i, inputFilter);
+                }
+            }
+            if (sparseArray.size() == 0) {
+                return inputFilterArr;
+            }
+            int length = inputFilterArr.length;
+            InputFilter[] inputFilterArr2 = new InputFilter[inputFilterArr.length - sparseArray.size()];
+            int i2 = 0;
+            for (int i3 = 0; i3 < length; i3++) {
+                if (sparseArray.indexOfKey(i3) < 0) {
+                    inputFilterArr2[i2] = inputFilterArr[i3];
+                    i2++;
+                }
+            }
+            return inputFilterArr2;
+        }
+        int length2 = inputFilterArr.length;
+        int i4 = 0;
+        while (true) {
+            c01 c01Var = this.k;
+            if (i4 >= length2) {
+                InputFilter[] inputFilterArr3 = new InputFilter[inputFilterArr.length + 1];
+                System.arraycopy(inputFilterArr, 0, inputFilterArr3, 0, length2);
+                inputFilterArr3[length2] = c01Var;
+                return inputFilterArr3;
+            }
+            if (inputFilterArr[i4] == c01Var) {
+                return inputFilterArr;
+            }
+            i4++;
+        }
     }
 
     @Override // defpackage.hw

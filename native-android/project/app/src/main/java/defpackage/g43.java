@@ -6,8 +6,8 @@ public final class g43 implements f43 {
     public final int a;
     public final int b;
 
-    public g43(int r1, int r2) {
-        this.a = r1;
-        this.b = r2;
+    public g43(int i, int i2) {
+        this.a = i;
+        this.b = i2;
     }
 }

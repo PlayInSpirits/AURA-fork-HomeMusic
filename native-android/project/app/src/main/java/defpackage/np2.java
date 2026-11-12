@@ -9,13 +9,13 @@ public final class np2 implements IBinder.DeathRecipient {
     public final /* synthetic */ int a;
     public final /* synthetic */ dg b;
 
-    public np2(dg r1, int r2) {
-        this.a = r2;
-        this.b = r1;
+    public np2(dg dgVar, int i) {
+        this.a = i;
+        this.b = dgVar;
         new uk2(this);
     }
 
-    public final void a(PlaybackStateCompat r1) {
+    public final void a(PlaybackStateCompat playbackStateCompat) {
     }
 
     @Override // android.os.IBinder.DeathRecipient

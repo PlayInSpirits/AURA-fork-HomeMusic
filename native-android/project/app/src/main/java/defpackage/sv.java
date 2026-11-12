@@ -7,8 +7,8 @@ import java.io.OutputStream;
 public final class sv extends OutputStream {
     public final /* synthetic */ tv n;
 
-    public sv(tv r1) {
-        this.n = r1;
+    public sv(tv tvVar) {
+        this.n = tvVar;
     }
 
     @Override // java.io.OutputStream, java.io.Closeable, java.lang.AutoCloseable
@@ -24,13 +24,13 @@ public final class sv extends OutputStream {
     }
 
     @Override // java.io.OutputStream
-    public final void write(byte[] r1, int r2, int r3) {
-        r1.getClass();
-        this.n.m78write(r1, r2, r3);
+    public final void write(byte[] bArr, int i, int i2) {
+        bArr.getClass();
+        this.n.m78write(bArr, i, i2);
     }
 
     @Override // java.io.OutputStream
-    public final void write(int r1) {
-        this.n.Y(r1);
+    public final void write(int i) {
+        this.n.Y(i);
     }
 }

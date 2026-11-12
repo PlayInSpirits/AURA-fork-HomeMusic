@@ -13,8 +13,8 @@ public class y7 extends hd {
     public int e;
     public int f;
 
-    public y7(Application r2) {
-        super(r2);
+    public y7(Application application) {
+        super(application);
         this.c = new k03(new ArrayList());
         this.d = new k03(Boolean.TRUE);
         this.e = 0;
@@ -22,10 +22,10 @@ public class y7 extends hd {
     }
 
     public final void c() {
-        zg5 r0 = new zg5(this);
-        int r1 = this.e;
-        this.e = r1 + 1;
-        int r6 = SmartPlan.MAX_QUEUE * r1;
-        App.f(false).a().q("alphabeticalByName", SmartPlan.MAX_QUEUE, r6, null, null).enqueue(new x7(r6, 0, r0));
+        zg5 zg5Var = new zg5(this);
+        int i = this.e;
+        this.e = i + 1;
+        int i2 = SmartPlan.MAX_QUEUE * i;
+        App.f(false).a().q("alphabeticalByName", SmartPlan.MAX_QUEUE, i2, null, null).enqueue(new x7(i2, 0, zg5Var));
     }
 }

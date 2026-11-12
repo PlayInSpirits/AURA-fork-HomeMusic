@@ -4,6 +4,6 @@ package defpackage;
 /* JADX INFO: loaded from: classes.dex */
 public final class la1 extends d0 implements qe0 {
     @Override // defpackage.qe0
-    public final void n(ne0 r1, Throwable r2) {
+    public final void n(ne0 ne0Var, Throwable th) {
     }
 }

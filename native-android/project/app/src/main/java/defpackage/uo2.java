@@ -8,11 +8,11 @@ import android.media.MediaRouter2$ControllerCallback;
 public final class uo2 extends MediaRouter2$ControllerCallback {
     public final /* synthetic */ zo2 a;
 
-    public uo2(zo2 r1) {
-        this.a = r1;
+    public uo2(zo2 zo2Var) {
+        this.a = zo2Var;
     }
 
-    public final void onControllerUpdated(MediaRouter2.RoutingController r1) {
-        this.a.j(r1);
+    public final void onControllerUpdated(MediaRouter2.RoutingController routingController) {
+        this.a.j(routingController);
     }
 }

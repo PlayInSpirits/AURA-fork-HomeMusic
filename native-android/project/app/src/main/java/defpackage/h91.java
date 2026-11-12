@@ -27,166 +27,131 @@ public abstract class h91 extends ViewGroup {
     }
 
     @Override // android.view.ViewGroup, android.view.View
-    public final void onLayout(boolean r11, int r12, int r13, int r14, int r15) {
-        if (getChildCount() != 0) goto L6;
-        this.q = 0;
-        return;
-    L6:
+    public final void onLayout(boolean z, int i, int i2, int i3, int i4) {
+        int marginEnd;
+        int marginStart;
+        if (getChildCount() == 0) {
+            this.q = 0;
+            return;
+        }
         this.q = 1;
-        WeakHashMap r16 = j65.a;
-        if (getLayoutDirection() != 1) goto L9;
-        boolean r17 = true;
-    L10:
-        if (r17 == false) goto L12;
-        int r0 = getPaddingRight();
-    L13:
-        if (r17 == false) goto L15;
-        int r1 = getPaddingLeft();
-    L16:
-        int r2 = getPaddingTop();
-        int r18 = (r14 - r12) - r1;
-        int r3 = 0;
-        int r4 = r0;
-        int r19 = r2;
-    L18:
-        if (r3 >= getChildCount()) goto L36;
-        View r5 = getChildAt(r3);
-        if (r5.getVisibility() != 8) goto L22;
-        r5.setTag(R.id.row_index_key, -1);
-    L35:
-        r3 = r3 + 1;
-        goto L18
-    L22:
-        ViewGroup.LayoutParams r6 = r5.getLayoutParams();
-        if ((r6 instanceof ViewGroup.MarginLayoutParams) == false) goto L25;
-        ViewGroup.MarginLayoutParams r7 = (ViewGroup.MarginLayoutParams) r6;
-        int r8 = r7.getMarginStart();
-        int r9 = r7.getMarginEnd();
-    L26:
-        int r10 = r5.getMeasuredWidth() + (r4 + r8);
-        if (this.p == true) goto L30;
-        if (r10 <= r18) goto L30;
-        r19 = this.n + r2;
-        this.q++;
-        r4 = r0;
-    L30:
-        r5.setTag(R.id.row_index_key, Integer.valueOf(this.q - 1));
-        int r20 = r4 + r8;
-        int r21 = r5.getMeasuredWidth() + r20;
-        int r22 = r5.getMeasuredHeight() + r19;
-        if (r17 == false) goto L33;
-        r5.layout(r18 - r21, r19, (r18 - r4) - r8, r22);
-    L34:
-        r4 = r4 + ((r5.getMeasuredWidth() + (r8 + r9)) + this.o);
-        r2 = r22;
-        goto L35
-    L33:
-        r5.layout(r20, r19, r21, r22);
-        goto L34
-    L25:
-        r9 = 0;
-        r8 = 0;
-        goto L26
-    L36:
-        return;
-    L15:
-        r1 = getPaddingRight();
-        goto L16
-    L12:
-        r0 = getPaddingLeft();
-        goto L13
-    L9:
-        r17 = false;
-        goto L10
+        WeakHashMap weakHashMap = j65.a;
+        boolean z2 = getLayoutDirection() == 1;
+        int paddingRight = z2 ? getPaddingRight() : getPaddingLeft();
+        int paddingLeft = z2 ? getPaddingLeft() : getPaddingRight();
+        int paddingTop = getPaddingTop();
+        int i5 = (i3 - i) - paddingLeft;
+        int measuredWidth = paddingRight;
+        int i6 = paddingTop;
+        for (int i7 = 0; i7 < getChildCount(); i7++) {
+            View childAt = getChildAt(i7);
+            if (childAt.getVisibility() == 8) {
+                childAt.setTag(R.id.row_index_key, -1);
+            } else {
+                ViewGroup.LayoutParams layoutParams = childAt.getLayoutParams();
+                if (layoutParams instanceof ViewGroup.MarginLayoutParams) {
+                    ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) layoutParams;
+                    marginStart = marginLayoutParams.getMarginStart();
+                    marginEnd = marginLayoutParams.getMarginEnd();
+                } else {
+                    marginEnd = 0;
+                    marginStart = 0;
+                }
+                int measuredWidth2 = childAt.getMeasuredWidth() + measuredWidth + marginStart;
+                if (!this.p && measuredWidth2 > i5) {
+                    i6 = this.n + paddingTop;
+                    this.q++;
+                    measuredWidth = paddingRight;
+                }
+                childAt.setTag(R.id.row_index_key, Integer.valueOf(this.q - 1));
+                int i8 = measuredWidth + marginStart;
+                int measuredWidth3 = childAt.getMeasuredWidth() + i8;
+                int measuredHeight = childAt.getMeasuredHeight() + i6;
+                if (z2) {
+                    childAt.layout(i5 - measuredWidth3, i6, (i5 - measuredWidth) - marginStart, measuredHeight);
+                } else {
+                    childAt.layout(i8, i6, measuredWidth3, measuredHeight);
+                }
+                measuredWidth += childAt.getMeasuredWidth() + marginStart + marginEnd + this.o;
+                paddingTop = measuredHeight;
+            }
+        }
     }
 
     @Override // android.view.View
-    public final void onMeasure(int r20, int r21) {
-        int r1 = View.MeasureSpec.getSize(r20);
-        int r2 = View.MeasureSpec.getMode(r20);
-        int r3 = View.MeasureSpec.getSize(r21);
-        int r4 = View.MeasureSpec.getMode(r21);
-        if (r2 == Integer.MIN_VALUE) goto L7;
-        if (r2 == 1073741824) goto L7;
-        int r7 = Integer.MAX_VALUE;
-    L8:
-        int r8 = getPaddingLeft();
-        int r9 = getPaddingTop();
-        int r10 = r7 - getPaddingRight();
-        int r11 = r9;
-        int r12 = 0;
-        int r13 = 0;
-    L10:
-        if (r12 >= getChildCount()) goto L31;
-        View r14 = getChildAt(r12);
-        if (r14.getVisibility() == 8) goto L30;
-        measureChild(r14, r20, r21);
-        ViewGroup.LayoutParams r5 = r14.getLayoutParams();
-        if ((r5 instanceof ViewGroup.MarginLayoutParams) == false) goto L17;
-        ViewGroup.MarginLayoutParams r6 = (ViewGroup.MarginLayoutParams) r5;
-        int r15 = r6.leftMargin;
-        int r16 = r6.rightMargin;
-    L18:
-        int r18 = r16;
-        if ((r14.getMeasuredWidth() + (r8 + r15)) > r10) goto L21;
-    L23:
-        int r17 = r14.getMeasuredWidth() + (r8 + r15);
-        int r19 = r14.getMeasuredHeight() + r11;
-        if (r17 <= r13) goto L26;
-        r13 = r17;
-    L26:
-        int r22 = ((r14.getMeasuredWidth() + (r15 + r18)) + this.o) + r8;
-        if (r12 != (getChildCount() - 1)) goto L29;
-        r13 = r13 + r18;
-    L29:
-        r8 = r22;
-        r9 = r19;
-        goto L30
-    L21:
-        if (((ChipGroup) this).p == true) goto L23;
-        r8 = getPaddingLeft();
-        r11 = r9 + this.n;
-        goto L23
-    L17:
-        r16 = 0;
-        r15 = 0;
-    L30:
-        r12 = r12 + 1;
-        goto L10
-    L31:
-        int r23 = getPaddingRight() + r13;
-        int r24 = getPaddingBottom() + r9;
-        if (r2 == Integer.MIN_VALUE) goto L36;
-        int r25 = 1073741824;
-        if (r2 == 1073741824) goto L37;
-        r1 = r23;
-    L37:
-        if (r4 == Integer.MIN_VALUE) goto L40;
-        if (r4 == r25) goto L41;
-        r3 = r24;
-    L41:
-        setMeasuredDimension(r1, r3);
-        return;
-    L40:
-        r3 = Math.min(r24, r3);
-        goto L41
-    L36:
-        r25 = 1073741824;
-        r1 = Math.min(r23, r1);
-    L7:
-        r7 = r1;
-        goto L8
+    public final void onMeasure(int i, int i2) {
+        int i3;
+        int i4;
+        int i5;
+        int size = View.MeasureSpec.getSize(i);
+        int mode = View.MeasureSpec.getMode(i);
+        int size2 = View.MeasureSpec.getSize(i2);
+        int mode2 = View.MeasureSpec.getMode(i2);
+        int i6 = (mode == Integer.MIN_VALUE || mode == 1073741824) ? size : Integer.MAX_VALUE;
+        int paddingLeft = getPaddingLeft();
+        int paddingTop = getPaddingTop();
+        int paddingRight = i6 - getPaddingRight();
+        int i7 = paddingTop;
+        int i8 = 0;
+        for (int i9 = 0; i9 < getChildCount(); i9++) {
+            View childAt = getChildAt(i9);
+            if (childAt.getVisibility() != 8) {
+                measureChild(childAt, i, i2);
+                ViewGroup.LayoutParams layoutParams = childAt.getLayoutParams();
+                if (layoutParams instanceof ViewGroup.MarginLayoutParams) {
+                    ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) layoutParams;
+                    i5 = marginLayoutParams.leftMargin;
+                    i4 = marginLayoutParams.rightMargin;
+                } else {
+                    i4 = 0;
+                    i5 = 0;
+                }
+                int i10 = i4;
+                if (childAt.getMeasuredWidth() + paddingLeft + i5 > paddingRight && !((ChipGroup) this).p) {
+                    paddingLeft = getPaddingLeft();
+                    i7 = paddingTop + this.n;
+                }
+                int measuredWidth = childAt.getMeasuredWidth() + paddingLeft + i5;
+                int measuredHeight = childAt.getMeasuredHeight() + i7;
+                if (measuredWidth > i8) {
+                    i8 = measuredWidth;
+                }
+                int measuredWidth2 = childAt.getMeasuredWidth() + i5 + i10 + this.o + paddingLeft;
+                if (i9 == getChildCount() - 1) {
+                    i8 += i10;
+                }
+                paddingLeft = measuredWidth2;
+                paddingTop = measuredHeight;
+            }
+        }
+        int paddingRight2 = getPaddingRight() + i8;
+        int paddingBottom = getPaddingBottom() + paddingTop;
+        if (mode != Integer.MIN_VALUE) {
+            i3 = 1073741824;
+            if (mode != 1073741824) {
+                size = paddingRight2;
+            }
+        } else {
+            i3 = 1073741824;
+            size = Math.min(paddingRight2, size);
+        }
+        if (mode2 == Integer.MIN_VALUE) {
+            size2 = Math.min(paddingBottom, size2);
+        } else if (mode2 != i3) {
+            size2 = paddingBottom;
+        }
+        setMeasuredDimension(size, size2);
     }
 
-    public void setItemSpacing(int r1) {
-        this.o = r1;
+    public void setItemSpacing(int i) {
+        this.o = i;
     }
 
-    public void setLineSpacing(int r1) {
-        this.n = r1;
+    public void setLineSpacing(int i) {
+        this.n = i;
     }
 
-    public void setSingleLine(boolean r1) {
-        this.p = r1;
+    public void setSingleLine(boolean z) {
+        this.p = z;
     }
 }

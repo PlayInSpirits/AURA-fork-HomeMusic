@@ -7,10 +7,10 @@ public final class eo implements ao {
     public final int b;
     public final int c;
 
-    public eo(int r1, int r2, int r3) {
-        this.a = r1;
-        this.b = r2;
-        this.c = r3;
+    public eo(int i, int i2, int i3) {
+        this.a = i;
+        this.b = i2;
+        this.c = i3;
     }
 
     @Override // defpackage.ao

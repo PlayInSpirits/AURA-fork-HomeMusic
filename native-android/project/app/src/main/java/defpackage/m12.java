@@ -13,84 +13,69 @@ public final class m12 extends AbstractList implements RandomAccess, Serializabl
     public final int o;
     public final int p;
 
-    public m12(int r1, int r2, int[] r3) {
-        this.n = r3;
-        this.o = r1;
-        this.p = r2;
+    public m12(int i, int i2, int[] iArr) {
+        this.n = iArr;
+        this.o = i;
+        this.p = i2;
     }
 
     @Override // java.util.AbstractCollection, java.util.Collection, java.util.List
-    public final boolean contains(Object r3) {
-        if ((r3 instanceof Integer) == false) goto L8;
-        int r4 = ((Integer) r3).intValue();
-        int r0 = this.o;
-        int r1 = this.p;
-        if (jz4.y(this.n, r4, r0, r1) == (-1)) goto L10;
-        return true;
-    L10:
-        return false;
-    L8:
+    public final boolean contains(Object obj) {
+        if (obj instanceof Integer) {
+            return jz4.y(this.n, ((Integer) obj).intValue(), this.o, this.p) != -1;
+        }
         return false;
     }
 
     @Override // java.util.AbstractList, java.util.Collection, java.util.List
-    public final boolean equals(Object r8) {
-        if (r8 != this) goto L6;
+    public final boolean equals(Object obj) {
+        if (obj == this) {
+            return true;
+        }
+        if (!(obj instanceof m12)) {
+            return super.equals(obj);
+        }
+        m12 m12Var = (m12) obj;
+        int size = size();
+        if (m12Var.size() != size) {
+            return false;
+        }
+        for (int i = 0; i < size; i++) {
+            if (this.n[this.o + i] != m12Var.n[m12Var.o + i]) {
+                return false;
+            }
+        }
         return true;
-    L6:
-        if ((r8 instanceof m12) == false) goto L18;
-        m12 r9 = (m12) r8;
-        int r1 = size();
-        if (r9.size() == r1) goto L10;
-        return false;
-    L10:
-        int r2 = 0;
-    L11:
-        if (r2 >= r1) goto L16;
-        if (this.n[this.o + r2] != r9.n[r9.o + r2]) goto L14;
-        r2 = r2 + 1;
-        goto L11
-    L14:
-        return false;
-    L16:
-        return true;
-    L18:
-        return super.equals(r8);
     }
 
     @Override // java.util.AbstractList, java.util.List
-    public final Object get(int r2) {
-        rr2.q(r2, size());
-        int r0 = this.o + r2;
-        return Integer.valueOf(this.n[r0]);
+    public final Object get(int i) {
+        rr2.q(i, size());
+        return Integer.valueOf(this.n[this.o + i]);
     }
 
     @Override // java.util.AbstractList, java.util.Collection, java.util.List
     public final int hashCode() {
-        int r0 = 1;
-        int r1 = this.o;
-    L4:
-        if (r1 >= this.p) goto L6;
-        r0 = (r0 * 31) + this.n[r1];
-        r1 = r1 + 1;
-        goto L4
-    L6:
-        return r0;
+        int i = 1;
+        for (int i2 = this.o; i2 < this.p; i2++) {
+            i = (i * 31) + this.n[i2];
+        }
+        return i;
     }
 
     @Override // java.util.AbstractList, java.util.List
-    public final int indexOf(Object r3) {
-        if ((r3 instanceof Integer) == false) goto L8;
-        int r4 = ((Integer) r3).intValue();
-        int r0 = this.p;
-        int[] r1 = this.n;
-        int r2 = this.o;
-        int r5 = jz4.y(r1, r4, r2, r0);
-        if (r5 >= 0) goto L7;
-        return -1;
-    L7:
-        return r5 - r2;
-    L8:
+    public final int indexOf(Object obj) {
+        if (!(obj instanceof Integer)) {
+            return -1;
+        }
+        int iIntValue = ((Integer) obj).intValue();
+        int i = this.p;
+        int[] iArr = this.n;
+        int i2 = this.o;
+        int iY = jz4.y(iArr, iIntValue, i2, i);
+        if (iY >= 0) {
+            return iY - i2;
+        }
         return -1;
     }
 
@@ -100,34 +85,36 @@ public final class m12 extends AbstractList implements RandomAccess, Serializabl
     }
 
     @Override // java.util.AbstractList, java.util.List
-    public final int lastIndexOf(Object r5) {
-        if ((r5 instanceof Integer) == false) goto L15;
-        int r6 = ((Integer) r5).intValue();
-        int r0 = this.p;
-    L5:
-        r0 = r0 - 1;
-        int r2 = this.o;
-        if (r0 < r2) goto L11;
-        if (this.n[r0] != r6) goto L5;
-    L12:
-        if (r0 < 0) goto L15;
-        return r0 - r2;
-    L11:
-        r0 = -1;
-    L15:
+    public final int lastIndexOf(Object obj) {
+        int i;
+        if (obj instanceof Integer) {
+            int iIntValue = ((Integer) obj).intValue();
+            int i2 = this.p;
+            do {
+                i2--;
+                i = this.o;
+                if (i2 < i) {
+                    i2 = -1;
+                    break;
+                }
+            } while (this.n[i2] != iIntValue);
+            if (i2 >= 0) {
+                return i2 - i;
+            }
+        }
         return -1;
     }
 
     @Override // java.util.AbstractList, java.util.List
-    public final Object set(int r2, Object r3) {
-        Integer r4 = (Integer) r3;
-        rr2.q(r2, size());
-        int r0 = this.o + r2;
-        int[] r1 = this.n;
-        int r5 = r1[r0];
-        r4.getClass();
-        r1[r0] = r4.intValue();
-        return Integer.valueOf(r5);
+    public final Object set(int i, Object obj) {
+        Integer num = (Integer) obj;
+        rr2.q(i, size());
+        int i2 = this.o + i;
+        int[] iArr = this.n;
+        int i3 = iArr[i2];
+        num.getClass();
+        iArr[i2] = num.intValue();
+        return Integer.valueOf(i3);
     }
 
     @Override // java.util.AbstractCollection, java.util.Collection, java.util.List
@@ -136,30 +123,30 @@ public final class m12 extends AbstractList implements RandomAccess, Serializabl
     }
 
     @Override // java.util.AbstractList, java.util.List
-    public final List subList(int r3, int r4) {
-        rr2.u(r3, r4, size());
-        if (r3 == r4) goto L5;
-        int r1 = this.o;
-        return new m12(r3 + r1, r1 + r4, this.n);
-    L5:
-        return Collections.EMPTY_LIST;
+    public final List subList(int i, int i2) {
+        rr2.u(i, i2, size());
+        if (i == i2) {
+            return Collections.EMPTY_LIST;
+        }
+        int i3 = this.o;
+        return new m12(i + i3, i3 + i2, this.n);
     }
 
     @Override // java.util.AbstractCollection
     public final String toString() {
-        StringBuilder r0 = new StringBuilder(size() * 5);
-        r0.append('[');
-        int[] r1 = this.n;
-        int r2 = this.o;
-        r0.append(r1[r2]);
-    L3:
-        r2 = r2 + 1;
-        if (r2 >= this.p) goto L6;
-        r0.append(", ");
-        r0.append(r1[r2]);
-        goto L3
-    L6:
-        r0.append(']');
-        return r0.toString();
+        StringBuilder sb = new StringBuilder(size() * 5);
+        sb.append('[');
+        int[] iArr = this.n;
+        int i = this.o;
+        sb.append(iArr[i]);
+        while (true) {
+            i++;
+            if (i >= this.p) {
+                sb.append(']');
+                return sb.toString();
+            }
+            sb.append(", ");
+            sb.append(iArr[i]);
+        }
     }
 }

@@ -8,14 +8,15 @@ public final class e0 extends wd0 {
     public final /* synthetic */ gc0 p;
     public int q;
 
-    public e0(gc0 r1, vd0 r2) {
-        this.p = r1;
-        super(r2);
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public e0(gc0 gc0Var, vd0 vd0Var) {
+        super(vd0Var);
+        this.p = gc0Var;
     }
 
     @Override // defpackage.jp
-    public final Object invokeSuspend(Object r2) {
-        this.o = r2;
+    public final Object invokeSuspend(Object obj) {
+        this.o = obj;
         this.q |= Integer.MIN_VALUE;
         return this.p.a(null, this);
     }

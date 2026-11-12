@@ -20,8 +20,8 @@ public final class kc0 extends jc0 {
     public WeakReference I0;
     public final HashSet J0;
     public final kr K0;
-    public ArrayList p0;
-    public final qp4 q0;
+    public ArrayList p0 = new ArrayList();
+    public final qp4 q0 = new qp4(this);
     public final xo0 r0;
     public int s0;
     public nr3 t0;
@@ -33,19 +33,17 @@ public final class kc0 extends jc0 {
     public int z0;
 
     public kc0() {
-        this.p0 = new ArrayList();
-        this.q0 = new qp4(this);
-        xo0 r0 = new xo0();
-        r0.b = true;
-        r0.c = true;
-        r0.f = new ArrayList();
+        xo0 xo0Var = new xo0();
+        xo0Var.b = true;
+        xo0Var.c = true;
+        xo0Var.f = new ArrayList();
         new ArrayList();
-        r0.h = null;
-        r0.i = new kr();
-        r0.g = new ArrayList();
-        r0.d = this;
-        r0.e = this;
-        this.r0 = r0;
+        xo0Var.h = null;
+        xo0Var.i = new kr();
+        xo0Var.g = new ArrayList();
+        xo0Var.d = this;
+        xo0Var.e = this;
+        this.r0 = xo0Var;
         this.t0 = null;
         this.u0 = false;
         this.v0 = new eb2();
@@ -64,148 +62,96 @@ public final class kc0 extends jc0 {
         this.K0 = new kr();
     }
 
-    public static void R(jc0 r9, nr3 r10, kr r11) {
-        if (r10 != null) goto L4;
-        return;
-    L4:
-        int r0 = r9.f0;
-        int[] r1 = r9.t;
-        if (r0 != 8) goto L7;
-    L91:
-        r11.e = 0;
-        r11.f = 0;
-        return;
-    L7:
-        if ((r9 instanceof pk1) == true) goto L91;
-        if ((r9 instanceof ep) == true) goto L91;
-        int[] r2 = r9.o0;
-        r11.a = r2[0];
-        boolean r3 = true;
-        r11.b = r2[1];
-        r11.c = r9.o();
-        r11.d = r9.i();
-        r11.i = false;
-        r11.j = 0;
-        if (r11.a != 3) goto L14;
-        boolean r4 = true;
-    L16:
-        if (r11.b != 3) goto L18;
-        boolean r5 = true;
-    L20:
-        if (r4 == true) goto L22;
-    L24:
-        boolean r6 = false;
-    L25:
-        if (r5 == true) goto L27;
-    L29:
-        boolean r7 = false;
-    L31:
-        if (r4 == true) goto L33;
-    L43:
-        if (r5 == false) goto L56;
-        if (r9.r(1) == false) goto L56;
-        if (r9.s != 0) goto L56;
-        if (r7 == true) goto L56;
-        r11.b = 2;
-        if (r4 == true) goto L52;
-    L54:
-        r5 = false;
-        goto L56
-    L52:
-        if (r9.r != 0) goto L54;
-        r11.b = 1;
-    L56:
-        if (r9.y() == false) goto L59;
-        r11.a = 1;
-        r4 = false;
-    L59:
-        if (r9.z() == false) goto L62;
-        r11.b = 1;
-        r5 = false;
-    L62:
-        if (r6 == true) goto L64;
-    L72:
-        if (r7 == true) goto L74;
-    L85:
-        r10.d(r9, r11);
-        r9.K(r11.e);
-        r9.H(r11.f);
-        r9.E = r11.h;
-        int r12 = r11.g;
-        r9.Z = r12;
-        if (r12 > 0) goto L89;
-        r3 = false;
-    L89:
-        r9.E = r3;
-        r11.j = 0;
-        return;
-    L74:
-        if (r1[1] != 4) goto L76;
-        r11.b = 1;
-        goto L85
-    L76:
-        if (r4 == true) goto L85;
-        if (r11.a != 1) goto L80;
-        int r8 = r11.c;
-    L81:
-        r11.b = 1;
-        int r13 = r9.W;
-        float r14 = r9.V;
-        if (r13 != (-1)) goto L84;
-        r11.d = (int) (r8 / r14);
-        goto L85
-    L84:
-        r11.d = (int) (r14 * r8);
-        goto L85
-    L80:
-        r11.b = 2;
-        r10.d(r9, r11);
-        r8 = r11.e;
-        goto L81
-    L64:
-        if (r1[0] != 4) goto L66;
-        r11.a = 1;
-        goto L72
-    L66:
-        if (r5 == true) goto L72;
-        if (r11.b != 1) goto L70;
-        int r15 = r11.d;
-    L71:
-        r11.a = 1;
-        r11.c = (int) (r9.V * r15);
-        goto L72
-    L70:
-        r11.a = 2;
-        r10.d(r9, r11);
-        r15 = r11.f;
-        goto L71
-    L33:
-        if (r9.r(0) == false) goto L43;
-        if (r9.r != 0) goto L43;
-        if (r6 == true) goto L43;
-        r11.a = 2;
-        if (r5 == true) goto L40;
-    L42:
-        r4 = false;
-        goto L43
-    L40:
-        if (r9.s != 0) goto L42;
-        r11.a = 1;
-        goto L42
-    L27:
-        if (r9.V <= 0.0f) goto L29;
-        r7 = true;
-        goto L31
-    L22:
-        if (r9.V <= 0.0f) goto L24;
-        r6 = true;
-        goto L25
-    L18:
-        r5 = false;
-        goto L20
-    L14:
-        r4 = false;
-        goto L16
+    public static void R(jc0 jc0Var, nr3 nr3Var, kr krVar) {
+        int i;
+        int i2;
+        if (nr3Var == null) {
+            return;
+        }
+        int i3 = jc0Var.f0;
+        int[] iArr = jc0Var.t;
+        if (i3 == 8 || (jc0Var instanceof pk1) || (jc0Var instanceof ep)) {
+            krVar.e = 0;
+            krVar.f = 0;
+            return;
+        }
+        int[] iArr2 = jc0Var.o0;
+        krVar.a = iArr2[0];
+        krVar.b = iArr2[1];
+        krVar.c = jc0Var.o();
+        krVar.d = jc0Var.i();
+        krVar.i = false;
+        krVar.j = 0;
+        boolean z = krVar.a == 3;
+        boolean z2 = krVar.b == 3;
+        boolean z3 = z && jc0Var.V > 0.0f;
+        boolean z4 = z2 && jc0Var.V > 0.0f;
+        if (z && jc0Var.r(0) && jc0Var.r == 0 && !z3) {
+            krVar.a = 2;
+            if (z2 && jc0Var.s == 0) {
+                krVar.a = 1;
+            }
+            z = false;
+        }
+        if (z2 && jc0Var.r(1) && jc0Var.s == 0 && !z4) {
+            krVar.b = 2;
+            if (z && jc0Var.r == 0) {
+                krVar.b = 1;
+            }
+            z2 = false;
+        }
+        if (jc0Var.y()) {
+            krVar.a = 1;
+            z = false;
+        }
+        if (jc0Var.z()) {
+            krVar.b = 1;
+            z2 = false;
+        }
+        if (z3) {
+            if (iArr[0] == 4) {
+                krVar.a = 1;
+            } else if (!z2) {
+                if (krVar.b == 1) {
+                    i2 = krVar.d;
+                } else {
+                    krVar.a = 2;
+                    nr3Var.d(jc0Var, krVar);
+                    i2 = krVar.f;
+                }
+                krVar.a = 1;
+                krVar.c = (int) (jc0Var.V * i2);
+            }
+        }
+        if (z4) {
+            if (iArr[1] == 4) {
+                krVar.b = 1;
+            } else if (!z) {
+                if (krVar.a == 1) {
+                    i = krVar.c;
+                } else {
+                    krVar.b = 2;
+                    nr3Var.d(jc0Var, krVar);
+                    i = krVar.e;
+                }
+                krVar.b = 1;
+                int i4 = jc0Var.W;
+                float f = jc0Var.V;
+                if (i4 == -1) {
+                    krVar.d = (int) (i / f);
+                } else {
+                    krVar.d = (int) (f * i);
+                }
+            }
+        }
+        nr3Var.d(jc0Var, krVar);
+        jc0Var.K(krVar.e);
+        jc0Var.H(krVar.f);
+        jc0Var.E = krVar.h;
+        int i5 = krVar.g;
+        jc0Var.Z = i5;
+        jc0Var.E = i5 > 0;
+        krVar.j = 0;
     }
 
     @Override // defpackage.jc0
@@ -218,307 +164,301 @@ public final class kc0 extends jc0 {
     }
 
     @Override // defpackage.jc0
-    public final void C(yc5 r4) {
-        super.C(r4);
-        int r0 = this.p0.size();
-        int r1 = 0;
-    L3:
-        if (r1 >= r0) goto L5;
-        ((jc0) this.p0.get(r1)).C(r4);
-        r1 = r1 + 1;
-        goto L3
+    public final void C(yc5 yc5Var) {
+        super.C(yc5Var);
+        int size = this.p0.size();
+        for (int i = 0; i < size; i++) {
+            ((jc0) this.p0.get(i)).C(yc5Var);
+        }
     }
 
     @Override // defpackage.jc0
-    public final void L(boolean r4, boolean r5) {
-        super.L(r4, r5);
-        int r0 = this.p0.size();
-        int r1 = 0;
-    L3:
-        if (r1 >= r0) goto L5;
-        ((jc0) this.p0.get(r1)).L(r4, r5);
-        r1 = r1 + 1;
-        goto L3
+    public final void L(boolean z, boolean z2) {
+        super.L(z, z2);
+        int size = this.p0.size();
+        for (int i = 0; i < size; i++) {
+            ((jc0) this.p0.get(i)).L(z, z2);
+        }
     }
 
-    public final void N(jc0 r6, int r7) {
-        if (r7 != 0) goto L9;
-        int r8 = this.y0 + 1;
-        p00[] r1 = this.B0;
-        if (r8 < r1.length) goto L7;
-        this.B0 = (p00[]) Arrays.copyOf(r1, r1.length * 2);
-    L7:
-        p00[] r9 = this.B0;
-        int r2 = this.y0;
-        r9[r2] = new p00(r6, 0, this.u0);
-        this.y0 = r2 + 1;
-        return;
-    L9:
-        if (r7 != 1) goto L15;
-        int r10 = this.z0 + 1;
-        p00[] r3 = this.A0;
-        if (r10 < r3.length) goto L13;
-        this.A0 = (p00[]) Arrays.copyOf(r3, r3.length * 2);
-    L13:
-        p00[] r11 = this.A0;
-        int r4 = this.z0;
-        r11[r4] = new p00(r6, 1, this.u0);
-        this.z0 = r4 + 1;
-        return;
+    public final void N(jc0 jc0Var, int i) {
+        if (i == 0) {
+            int i2 = this.y0 + 1;
+            p00[] p00VarArr = this.B0;
+            if (i2 >= p00VarArr.length) {
+                this.B0 = (p00[]) Arrays.copyOf(p00VarArr, p00VarArr.length * 2);
+            }
+            p00[] p00VarArr2 = this.B0;
+            int i3 = this.y0;
+            p00VarArr2[i3] = new p00(jc0Var, 0, this.u0);
+            this.y0 = i3 + 1;
+            return;
+        }
+        if (i == 1) {
+            int i4 = this.z0 + 1;
+            p00[] p00VarArr3 = this.A0;
+            if (i4 >= p00VarArr3.length) {
+                this.A0 = (p00[]) Arrays.copyOf(p00VarArr3, p00VarArr3.length * 2);
+            }
+            p00[] p00VarArr4 = this.A0;
+            int i5 = this.z0;
+            p00VarArr4[i5] = new p00(jc0Var, 1, this.u0);
+            this.z0 = i5 + 1;
+        }
     }
 
-    public final void O(eb2 r13) {
-        boolean r0 = S(64);
-        b(r13, r0);
-        int r1 = this.p0.size();
-        int r3 = 0;
-        boolean r4 = false;
-    L4:
-        if (r3 >= r1) goto L10;
-        jc0 r6 = (jc0) this.p0.get(r3);
-        boolean[] r7 = r6.R;
-        r7[0] = false;
-        r7[1] = false;
-        if ((r6 instanceof ep) == false) goto L8;
-        r4 = true;
-    L8:
-        r3 = r3 + 1;
-        goto L4
-    L10:
-        if (r4 == false) goto L34;
-        int r5 = 0;
-    L12:
-        if (r5 >= r1) goto L34;
-        jc0 r8 = (jc0) this.p0.get(r5);
-        if ((r8 instanceof ep) == false) goto L33;
-        ep r9 = (ep) r8;
-        int r10 = 0;
-    L17:
-        if (r10 >= r9.q0) goto L33;
-        jc0 r11 = r9.p0[r10];
-        if (r9.s0 == false) goto L21;
-    L23:
-        int r12 = r9.r0;
-        if (r12 == 0) goto L31;
-        if (r12 == 1) goto L31;
-        if (r12 != 2) goto L29;
-    L30:
-        r11.R[1] = true;
-    L32:
-        r10 = r10 + 1;
-        goto L17
-    L29:
-        if (r12 != 3) goto L32;
-    L31:
-        r11.R[0] = true;
-        goto L32
-    L21:
-        if (r11.c() == true) goto L23;
-    L33:
-        r5 = r5 + 1;
-    L34:
-        HashSet r14 = this.J0;
-        r14.clear();
-        int r15 = 0;
-    L35:
-        if (r15 >= r1) goto L41;
-        jc0 r16 = (jc0) this.p0.get(r15);
-        r16.getClass();
-        if ((r16 instanceof pk1) == false) goto L39;
-        r16.b(r13, r0);
-    L39:
-        r15 = r15 + 1;
-    L41:
-        if (r14.size() <= 0) goto L54;
-        int r17 = r14.size();
-        Iterator r18 = r14.iterator();
-        if (r18.hasNext() == true) goto L51;
-        if (r17 != r14.size()) goto L41;
-        Iterator r19 = r14.iterator();
-    L48:
-        if (r19.hasNext() == false) goto L50;
-        ((jc0) r19.next()).b(r13, r0);
-        goto L48
-    L50:
-        r14.clear();
-        goto L41
-    L51:
-        ((jc0) r18.next()).getClass();
-        kf2.k();
-        return;
-    L54:
-        if (eb2.q == false) goto L69;
-        HashSet r20 = new HashSet();
-        int r21 = 0;
-    L56:
-        if (r21 >= r1) goto L62;
-        jc0 r22 = (jc0) this.p0.get(r21);
-        r22.getClass();
-        if ((r22 instanceof pk1) == true) goto L60;
-        r20.add(r22);
-    L60:
-        r21 = r21 + 1;
-        goto L56
-    L62:
-        if (this.o0[0] != 2) goto L64;
-        int r110 = 0;
-    L65:
-        kc0 r23 = this;
-        eb2 r24 = r13;
-        r23.a(this, r24, r20, r110, false);
-        Iterator r111 = r20.iterator();
-    L67:
-        if (r111.hasNext() == false) goto L88;
-        jc0 r112 = (jc0) r111.next();
-        uo.h(r23, r24, r112);
-        r112.b(r24, r0);
-    L88:
-        if (r23.y0 <= 0) goto L91;
-        l93.f(r23, r24, null, 0);
-    L91:
-        if (r23.z0 <= 0) goto L123;
-        l93.f(r23, r24, null, 1);
-        return;
-    L123:
-        return;
-    L64:
-        r110 = 1;
-        goto L65
-    L69:
-        r23 = this;
-        r24 = r13;
-        int r113 = 0;
-    L70:
-        if (r113 >= r1) goto L88;
-        jc0 r114 = (jc0) r23.p0.get(r113);
-        if ((r114 instanceof kc0) == false) goto L83;
-        int[] r25 = r114.o0;
-        int r26 = r25[0];
-        int r27 = r25[1];
-        if (r26 != 2) goto L76;
-        r114.I(1);
-    L76:
-        if (r27 != 2) goto L78;
-        r114.J(1);
-    L78:
-        r114.b(r24, r0);
-        if (r26 != 2) goto L81;
-        r114.I(r26);
-    L81:
-        if (r27 != 2) goto L86;
-        r114.J(r27);
-    L86:
-        r113 = r113 + 1;
-        goto L70
-    L83:
-        uo.h(r23, r24, r114);
-        if ((r114 instanceof pk1) == true) goto L86;
-        r114.b(r24, r0);
-        goto L86
+    public final void O(eb2 eb2Var) {
+        kc0 kc0Var;
+        eb2 eb2Var2;
+        boolean zS = S(64);
+        b(eb2Var, zS);
+        int size = this.p0.size();
+        boolean z = false;
+        for (int i = 0; i < size; i++) {
+            jc0 jc0Var = (jc0) this.p0.get(i);
+            boolean[] zArr = jc0Var.R;
+            zArr[0] = false;
+            zArr[1] = false;
+            if (jc0Var instanceof ep) {
+                z = true;
+            }
+        }
+        if (z) {
+            for (int i2 = 0; i2 < size; i2++) {
+                jc0 jc0Var2 = (jc0) this.p0.get(i2);
+                if (jc0Var2 instanceof ep) {
+                    ep epVar = (ep) jc0Var2;
+                    for (int i3 = 0; i3 < epVar.q0; i3++) {
+                        jc0 jc0Var3 = epVar.p0[i3];
+                        if (epVar.s0 || jc0Var3.c()) {
+                            int i4 = epVar.r0;
+                            if (i4 == 0 || i4 == 1) {
+                                jc0Var3.R[0] = true;
+                            } else if (i4 == 2 || i4 == 3) {
+                                jc0Var3.R[1] = true;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        HashSet hashSet = this.J0;
+        hashSet.clear();
+        for (int i5 = 0; i5 < size; i5++) {
+            jc0 jc0Var4 = (jc0) this.p0.get(i5);
+            jc0Var4.getClass();
+            if (jc0Var4 instanceof pk1) {
+                jc0Var4.b(eb2Var, zS);
+            }
+        }
+        while (hashSet.size() > 0) {
+            int size2 = hashSet.size();
+            Iterator it = hashSet.iterator();
+            if (it.hasNext()) {
+                ((jc0) it.next()).getClass();
+                kf2.k();
+                return;
+            } else if (size2 == hashSet.size()) {
+                Iterator it2 = hashSet.iterator();
+                while (it2.hasNext()) {
+                    ((jc0) it2.next()).b(eb2Var, zS);
+                }
+                hashSet.clear();
+            }
+        }
+        if (eb2.q) {
+            HashSet<jc0> hashSet2 = new HashSet();
+            for (int i6 = 0; i6 < size; i6++) {
+                jc0 jc0Var5 = (jc0) this.p0.get(i6);
+                jc0Var5.getClass();
+                if (!(jc0Var5 instanceof pk1)) {
+                    hashSet2.add(jc0Var5);
+                }
+            }
+            kc0Var = this;
+            eb2Var2 = eb2Var;
+            kc0Var.a(this, eb2Var2, hashSet2, this.o0[0] == 2 ? 0 : 1, false);
+            for (jc0 jc0Var6 : hashSet2) {
+                uo.h(kc0Var, eb2Var2, jc0Var6);
+                jc0Var6.b(eb2Var2, zS);
+            }
+        } else {
+            kc0Var = this;
+            eb2Var2 = eb2Var;
+            for (int i7 = 0; i7 < size; i7++) {
+                jc0 jc0Var7 = (jc0) kc0Var.p0.get(i7);
+                if (jc0Var7 instanceof kc0) {
+                    int[] iArr = jc0Var7.o0;
+                    int i8 = iArr[0];
+                    int i9 = iArr[1];
+                    if (i8 == 2) {
+                        jc0Var7.I(1);
+                    }
+                    if (i9 == 2) {
+                        jc0Var7.J(1);
+                    }
+                    jc0Var7.b(eb2Var2, zS);
+                    if (i8 == 2) {
+                        jc0Var7.I(i8);
+                    }
+                    if (i9 == 2) {
+                        jc0Var7.J(i9);
+                    }
+                } else {
+                    uo.h(kc0Var, eb2Var2, jc0Var7);
+                    if (!(jc0Var7 instanceof pk1)) {
+                        jc0Var7.b(eb2Var2, zS);
+                    }
+                }
+            }
+        }
+        if (kc0Var.y0 > 0) {
+            l93.f(kc0Var, eb2Var2, null, 0);
+        }
+        if (kc0Var.z0 > 0) {
+            l93.f(kc0Var, eb2Var2, null, 1);
+        }
     }
 
-    public final boolean P(int r14, boolean r15) {
-        xo0 r13 = this.r0;
-        ArrayList r0 = (ArrayList) r13.f;
-        kc0 r1 = (kc0) r13.d;
-        boolean r2 = false;
-        int r3 = r1.h(0);
-        int r5 = r1.h(1);
-        int r6 = r1.p();
-        int r7 = r1.q();
-        if (r15 == true) goto L5;
-    L21:
-        int[] r16 = r1.o0;
-        if (r14 != 0) goto L28;
-        int r17 = r16[0];
-        if (r17 == 1) goto L26;
-        if (r17 == 4) goto L26;
-    L32:
-        boolean r18 = false;
-    L34:
-        r13.g();
-        int r19 = r0.size();
-        int r8 = 0;
-    L35:
-        if (r8 >= r19) goto L45;
-        Object r9 = r0.get(r8);
-        r8 = r8 + 1;
-        ba5 r10 = (ba5) r9;
-        if (r10.f != r14) goto L35;
-        if (r10.b != r1) goto L44;
-        if (r10.g == false) goto L35;
-    L44:
-        r10.e();
-        goto L35
-    L45:
-        int r110 = r0.size();
-        int r11 = 0;
-    L46:
-        if (r11 >= r110) goto L65;
-        Object r12 = r0.get(r11);
-        r11 = r11 + 1;
-        ba5 r20 = (ba5) r12;
-        if (r20.f != r14) goto L46;
-        if (r18 == true) goto L55;
-        if (r20.b == r1) goto L46;
-    L55:
-        if (r20.h.j == false) goto L66;
-        if (r20.i.j == false) goto L66;
-        if ((r20 instanceof q00) == true) goto L46;
-        if (r20.e.j == true) goto L46;
-    L66:
-        r1.I(r3);
-        r1.J(r5);
-        return r2;
-    L65:
-        r2 = true;
-    L26:
-        int r111 = r1.o() + r6;
-        r1.d.i.d(r111);
-        r1.d.e.d(r111 - r6);
-    L27:
-        r18 = true;
-        goto L34
-    L28:
-        int r112 = r16[1];
-        if (r112 == 1) goto L33;
-        if (r112 != 4) goto L32;
-    L33:
-        int r113 = r1.i() + r7;
-        r1.e.i.d(r113);
-        r1.e.e.d(r113 - r7);
-        goto L27
-    L5:
-        if (r3 == 2) goto L7;
-        if (r5 != 2) goto L21;
-    L7:
-        int r21 = r0.size();
-        int r114 = 0;
-    L8:
-        if (r114 >= r21) goto L14;
-        Object r115 = r0.get(r114);
-        r114 = r114 + 1;
-        ba5 r116 = (ba5) r115;
-        if (r116.f != r14) goto L8;
-        if (r116.k() == true) goto L8;
-        r15 = false;
-    L14:
-        if (r14 != 0) goto L18;
-        if (r15 == false) goto L21;
-        if (r3 != 2) goto L21;
-        r1.I(1);
-        r1.K(r13.d(r1, 0));
-        r1.d.e.d(r1.o());
-        goto L21
-    L18:
-        if (r15 == false) goto L21;
-        if (r5 != 2) goto L21;
-        r1.J(1);
-        r1.H(r13.d(r1, 1));
-        r1.e.e.d(r1.i());
-        goto L21
+    /* JADX WARN: Code duplicated, block: B:32:0x009a  */
+    public final boolean P(int i, boolean z) {
+        boolean z2;
+        xo0 xo0Var = this.r0;
+        ArrayList arrayList = (ArrayList) xo0Var.f;
+        kc0 kc0Var = (kc0) xo0Var.d;
+        boolean z3 = false;
+        int iH = kc0Var.h(0);
+        int iH2 = kc0Var.h(1);
+        int iP = kc0Var.p();
+        int iQ = kc0Var.q();
+        if (z && (iH == 2 || iH2 == 2)) {
+            int size = arrayList.size();
+            int i2 = 0;
+            while (i2 < size) {
+                Object obj = arrayList.get(i2);
+                i2++;
+                ba5 ba5Var = (ba5) obj;
+                if (ba5Var.f == i && !ba5Var.k()) {
+                    z = false;
+                    break;
+                }
+            }
+            if (i == 0) {
+                if (z && iH == 2) {
+                    kc0Var.I(1);
+                    kc0Var.K(xo0Var.d(kc0Var, 0));
+                    kc0Var.d.e.d(kc0Var.o());
+                }
+            } else if (z && iH2 == 2) {
+                kc0Var.J(1);
+                kc0Var.H(xo0Var.d(kc0Var, 1));
+                kc0Var.e.e.d(kc0Var.i());
+            }
+        }
+        int[] iArr = kc0Var.o0;
+        if (i == 0) {
+            int i3 = iArr[0];
+            if (i3 == 1 || i3 == 4) {
+                int iO = kc0Var.o() + iP;
+                kc0Var.d.i.d(iO);
+                kc0Var.d.e.d(iO - iP);
+                z2 = true;
+            } else {
+                z2 = false;
+            }
+        } else {
+            int i4 = iArr[1];
+            if (i4 == 1 || i4 == 4) {
+                int i5 = kc0Var.i() + iQ;
+                kc0Var.e.i.d(i5);
+                kc0Var.e.e.d(i5 - iQ);
+                z2 = true;
+            } else {
+                z2 = false;
+            }
+        }
+        xo0Var.g();
+        int size2 = arrayList.size();
+        int i6 = 0;
+        while (i6 < size2) {
+            Object obj2 = arrayList.get(i6);
+            i6++;
+            ba5 ba5Var2 = (ba5) obj2;
+            if (ba5Var2.f == i && (ba5Var2.b != kc0Var || ba5Var2.g)) {
+                ba5Var2.e();
+            }
+        }
+        int size3 = arrayList.size();
+        int i7 = 0;
+        while (i7 < size3) {
+            Object obj3 = arrayList.get(i7);
+            i7++;
+            ba5 ba5Var3 = (ba5) obj3;
+            if (ba5Var3.f == i && (z2 || ba5Var3.b != kc0Var)) {
+                if (!ba5Var3.h.j || !ba5Var3.i.j || (!(ba5Var3 instanceof q00) && !ba5Var3.e.j)) {
+                    kc0Var.I(iH);
+                    kc0Var.J(iH2);
+                    return z3;
+                }
+            }
+        }
+        z3 = true;
+        kc0Var.I(iH);
+        kc0Var.J(iH2);
+        return z3;
     }
 
+    /* JADX WARN: Code duplicated, block: B:332:0x05d1  */
+    /* JADX WARN: Code duplicated, block: B:334:0x05da  */
+    /* JADX WARN: Code duplicated, block: B:342:0x05f4  */
+    /* JADX WARN: Code duplicated, block: B:343:0x05fb  */
+    /* JADX WARN: Code duplicated, block: B:349:0x060f  */
+    /* JADX WARN: Code duplicated, block: B:355:0x0628  */
+    /* JADX WARN: Code duplicated, block: B:358:0x062e  */
+    /* JADX WARN: Code duplicated, block: B:360:0x0636 A[ADDED_TO_REGION] */
+    /* JADX WARN: Code duplicated, block: B:362:0x063f  */
+    /* JADX WARN: Code duplicated, block: B:363:0x0644  */
+    /* JADX WARN: Code duplicated, block: B:368:0x0652  */
+    /* JADX WARN: Code duplicated, block: B:372:0x065d  */
+    /* JADX WARN: Code duplicated, block: B:375:0x0668 A[ADDED_TO_REGION] */
+    /* JADX WARN: Code duplicated, block: B:377:0x066e  */
+    /* JADX WARN: Code duplicated, block: B:380:0x0676  */
+    /* JADX WARN: Code duplicated, block: B:384:0x067d  */
+    /* JADX WARN: Code duplicated, block: B:387:0x0687  */
+    /* JADX WARN: Code duplicated, block: B:389:0x0693  */
+    /* JADX WARN: Code duplicated, block: B:393:0x06a4  */
+    /* JADX WARN: Code duplicated, block: B:396:0x06b6 A[Catch: Exception -> 0x06c4, LOOP:12: B:395:0x06b4->B:396:0x06b6, LOOP_END, TryCatch #6 {Exception -> 0x06c4, blocks: (B:394:0x06a8, B:396:0x06b6, B:399:0x06cd), top: B:533:0x06a8 }] */
+    /* JADX WARN: Code duplicated, block: B:404:0x06da A[Catch: Exception -> 0x0703, TRY_LEAVE, TryCatch #7 {Exception -> 0x0703, blocks: (B:402:0x06d4, B:404:0x06da), top: B:535:0x06d4 }] */
+    /* JADX WARN: Code duplicated, block: B:420:0x0707  */
+    /* JADX WARN: Code duplicated, block: B:423:0x070f A[Catch: Exception -> 0x06f7, TryCatch #3 {Exception -> 0x06f7, blocks: (B:409:0x06f0, B:421:0x070b, B:423:0x070f, B:425:0x0715, B:426:0x072f, B:428:0x0733, B:430:0x0739, B:434:0x074f, B:437:0x075a, B:439:0x075e, B:441:0x0764), top: B:527:0x06f0 }] */
+    /* JADX WARN: Code duplicated, block: B:428:0x0733 A[Catch: Exception -> 0x06f7, TryCatch #3 {Exception -> 0x06f7, blocks: (B:409:0x06f0, B:421:0x070b, B:423:0x070f, B:425:0x0715, B:426:0x072f, B:428:0x0733, B:430:0x0739, B:434:0x074f, B:437:0x075a, B:439:0x075e, B:441:0x0764), top: B:527:0x06f0 }] */
+    /* JADX WARN: Code duplicated, block: B:439:0x075e A[Catch: Exception -> 0x06f7, TryCatch #3 {Exception -> 0x06f7, blocks: (B:409:0x06f0, B:421:0x070b, B:423:0x070f, B:425:0x0715, B:426:0x072f, B:428:0x0733, B:430:0x0739, B:434:0x074f, B:437:0x075a, B:439:0x075e, B:441:0x0764), top: B:527:0x06f0 }] */
+    /* JADX WARN: Code duplicated, block: B:453:0x0789  */
+    /* JADX WARN: Code duplicated, block: B:460:0x07b4  */
+    /* JADX WARN: Code duplicated, block: B:462:0x07cd  */
+    /* JADX WARN: Code duplicated, block: B:464:0x07e1  */
+    /* JADX WARN: Code duplicated, block: B:466:0x07e5  */
+    /* JADX WARN: Code duplicated, block: B:469:0x07f1  */
+    /* JADX WARN: Code duplicated, block: B:471:0x07f8 A[LOOP:15: B:470:0x07f6->B:471:0x07f8, LOOP_END] */
+    /* JADX WARN: Code duplicated, block: B:475:0x080b A[ADDED_TO_REGION] */
+    /* JADX WARN: Code duplicated, block: B:480:0x0818 A[LOOP:14: B:479:0x0816->B:480:0x0818, LOOP_END] */
+    /* JADX WARN: Code duplicated, block: B:483:0x084d  */
+    /* JADX WARN: Code duplicated, block: B:487:0x085f  */
+    /* JADX WARN: Code duplicated, block: B:492:0x087f  */
+    /* JADX WARN: Code duplicated, block: B:493:0x088b  */
+    /* JADX WARN: Code duplicated, block: B:496:0x089e  */
+    /* JADX WARN: Code duplicated, block: B:497:0x08a6  */
+    /* JADX WARN: Code duplicated, block: B:499:0x08aa  */
+    /* JADX WARN: Code duplicated, block: B:501:0x08b1 A[ADDED_TO_REGION] */
+    /* JADX WARN: Code duplicated, block: B:504:0x08b9  */
+    /* JADX WARN: Code duplicated, block: B:507:0x08c7 A[ADDED_TO_REGION] */
+    /* JADX WARN: Code duplicated, block: B:512:0x08de  */
+    /* JADX WARN: Code duplicated, block: B:514:0x08e2  */
+    /* JADX WARN: Code duplicated, block: B:518:0x08f3  */
+    /* JADX WARN: Code duplicated, block: B:535:0x06d4 A[EXC_TOP_SPLITTER, SYNTHETIC] */
+    /* JADX WARN: Code duplicated, block: B:582:0x0698 A[SYNTHETIC] */
+    /* JADX WARN: Code duplicated, block: B:585:0x08e3 A[SYNTHETIC] */
+    /* JADX WARN: Code duplicated, block: B:62:0x012c  */
     /* JADX WARN: Multi-variable type inference failed */
     /* JADX WARN: Type inference failed for: r0v100 */
     /* JADX WARN: Type inference failed for: r0v101 */
@@ -568,922 +508,2297 @@ public final class kc0 extends jc0 {
     /* JADX WARN: Type inference failed for: r9v12 */
     /* JADX WARN: Type inference failed for: r9v9 */
     public final void Q() {
-        boolean[] r2 = uo.r;
+        ?? r21;
+        int i;
+        int i2;
+        int i3;
+        int i4;
+        hb0 hb0Var;
+        hb0 hb0Var2;
+        boolean z;
+        boolean z2;
+        char c;
+        boolean z3;
+        int i5;
+        int i6;
+        boolean zS;
+        ?? r12;
+        int i7;
+        boolean z4;
+        boolean z5;
+        int i8;
+        hb0 hb0Var3;
+        boolean z6;
+        boolean z7;
+        int i9;
+        boolean z8;
+        int iMax;
+        ?? r9;
+        ?? r17;
+        boolean z9;
+        int iMax2;
+        ?? r0;
+        boolean z10;
+        boolean z11;
+        ?? r1;
+        int i10;
+        boolean z12;
+        ?? r2;
+        boolean z13;
+        ?? r3;
+        ?? r4;
+        int i11;
+        int iMax3;
+        int iMax4;
+        int iMax5;
+        int iMax6;
+        boolean zS2;
+        int size;
+        int i12;
+        boolean z14;
+        jc0 jc0Var;
+        boolean z15;
+        int i13;
+        WeakReference weakReference;
+        WeakReference weakReference2;
+        WeakReference weakReference3;
+        WeakReference weakReference4;
+        hb0 hb0Var4;
+        jc0 jc0Var2;
+        int i14;
+        int i15;
+        int i16;
+        int i17;
+        char c2;
+        aa5 aa5Var;
+        aa5 aa5Var2;
+        int i18;
+        int iO;
+        int size2;
+        int i19;
+        int i20;
+        aa5 aa5Var3;
+        int iB;
+        int iB2;
+        aa5 aa5Var4;
+        aa5 aa5Var5;
+        int i21;
+        boolean z16;
+        boolean[] zArr = uo.r;
         this.X = 0;
         this.Y = 0;
         this.D0 = false;
         this.E0 = false;
-        int r4 = this.p0.size();
-        int r0 = Math.max(0, o());
-        int r5 = Math.max(0, i());
-        int[] r6 = this.o0;
-        int r8 = r6[1];
-        int r9 = r6[0];
-        int r10 = this.s0;
-        hb0 r12 = this.I;
-        hb0 r13 = this.H;
-        if (r10 == 0) goto L5;
-    L145:
-        ?? r21 = r6;
-    L146:
-        eb2 r7 = this.v0;
-        if (r4 <= 2) goto L151;
-        if (r9 == 2) goto L153;
-        if (r8 != 2) goto L151;
-    L153:
-        if (uo.q(this.C0, 1024) == false) goto L151;
-        nr3 r11 = this.t0;
-        ArrayList r14 = this.p0;
-        int r15 = r14.size();
-        int r16 = 0;
-    L155:
-        if (r16 >= r15) goto L160;
-        jc0 r3 = (jc0) r14.get(r16);
-        ?? r17 = r21[0];
-        ?? r18 = r21[1];
-        int[] r19 = r3.o0;
-        int r24 = r16;
-        if (gi1.a0(r17, r18, r19[0], r19[1]) == false) goto L158;
-        r16 = r24 + 1;
-        goto L155
-    L158:
-        int r29 = r0;
-        int r25 = r4;
-        int r26 = r5;
-        int r28 = r8;
-        int r31 = r9;
-        hb0 r27 = r12;
-        hb0 r23 = r13;
-    L347:
-        r5 = r26;
-        int r20 = r28;
-        int r22 = r29;
-        int r30 = r31;
-    L365:
-        boolean r1 = false;
-    L367:
-        if (S(64) == false) goto L369;
-    L372:
-        boolean r32 = true;
-    L373:
-        r7.getClass();
-        r7.h = false;
-        if (this.C0 == 0) goto L377;
-        if (r32 == false) goto L377;
-        char r33 = 1;
-        r7.h = true;
-    L378:
-        ArrayList r34 = this.p0;
-        if (r21[0] != 2) goto L381;
-    L384:
-        boolean r35 = true;
-    L385:
+        int size3 = this.p0.size();
+        int iMax7 = Math.max(0, o());
+        int iMax8 = Math.max(0, i());
+        int[] iArr = this.o0;
+        int i22 = iArr[1];
+        int i23 = iArr[0];
+        int i24 = this.s0;
+        hb0 hb0Var5 = this.I;
+        hb0 hb0Var6 = this.H;
+        if (i24 == 0 && uo.q(this.C0, 1)) {
+            nr3 nr3Var = this.t0;
+            int i25 = iArr[0];
+            int i26 = iArr[1];
+            B();
+            ArrayList arrayList = this.p0;
+            int size4 = arrayList.size();
+            for (int i27 = 0; i27 < size4; i27++) {
+                ((jc0) arrayList.get(i27)).B();
+            }
+            boolean z17 = this.u0;
+            if (i25 == 1) {
+                F(0, o());
+            } else {
+                hb0Var6.i(0);
+                this.X = 0;
+            }
+            int i28 = 0;
+            boolean z18 = false;
+            boolean z19 = false;
+            while (i28 < size4) {
+                int i29 = i28;
+                jc0 jc0Var3 = (jc0) arrayList.get(i28);
+                int[] iArr2 = iArr;
+                if (jc0Var3 instanceof pk1) {
+                    pk1 pk1Var = (pk1) jc0Var3;
+                    z16 = z18;
+                    if (pk1Var.t0 == 1) {
+                        int i30 = pk1Var.q0;
+                        if (i30 != -1) {
+                            pk1Var.N(i30);
+                        } else if (pk1Var.r0 != -1 && y()) {
+                            pk1Var.N(o() - pk1Var.r0);
+                        } else if (y()) {
+                            pk1Var.N((int) ((pk1Var.p0 * o()) + 0.5f));
+                        }
+                        z16 = true;
+                    }
+                } else {
+                    z16 = z18;
+                    if ((jc0Var3 instanceof ep) && ((ep) jc0Var3).P() == 0) {
+                        z18 = z16;
+                        z19 = true;
+                    }
+                    i28 = i29 + 1;
+                    iArr = iArr2;
+                }
+                z18 = z16;
+                i28 = i29 + 1;
+                iArr = iArr2;
+            }
+            r21 = iArr;
+            if (z18) {
+                for (int i31 = 0; i31 < size4; i31 = i21 + 1) {
+                    jc0 jc0Var4 = (jc0) arrayList.get(i31);
+                    if (jc0Var4 instanceof pk1) {
+                        pk1 pk1Var2 = (pk1) jc0Var4;
+                        i21 = i31;
+                        if (pk1Var2.t0 == 1) {
+                            q05.p(0, pk1Var2, nr3Var, z17);
+                        }
+                    } else {
+                        i21 = i31;
+                    }
+                }
+            }
+            q05.p(0, this, nr3Var, z17);
+            if (z19) {
+                for (int i32 = 0; i32 < size4; i32++) {
+                    jc0 jc0Var5 = (jc0) arrayList.get(i32);
+                    if (jc0Var5 instanceof ep) {
+                        ep epVar = (ep) jc0Var5;
+                        if (epVar.P() == 0 && epVar.O()) {
+                            q05.p(1, epVar, nr3Var, z17);
+                        }
+                    }
+                }
+            }
+            if (i26 == 1) {
+                G(0, i());
+            } else {
+                hb0Var5.i(0);
+                this.Y = 0;
+            }
+            int i33 = 0;
+            boolean z20 = false;
+            boolean z21 = false;
+            while (i33 < size4) {
+                jc0 jc0Var6 = (jc0) arrayList.get(i33);
+                int i34 = i33;
+                if (jc0Var6 instanceof pk1) {
+                    pk1 pk1Var3 = (pk1) jc0Var6;
+                    if (pk1Var3.t0 == 0) {
+                        int i35 = pk1Var3.q0;
+                        if (i35 != -1) {
+                            pk1Var3.N(i35);
+                        } else if (pk1Var3.r0 != -1 && z()) {
+                            pk1Var3.N(i() - pk1Var3.r0);
+                        } else if (z()) {
+                            pk1Var3.N((int) ((pk1Var3.p0 * i()) + 0.5f));
+                        }
+                        z20 = true;
+                    }
+                } else if ((jc0Var6 instanceof ep) && ((ep) jc0Var6).P() == 1) {
+                    z21 = true;
+                }
+                i33 = i34 + 1;
+            }
+            if (z20) {
+                for (int i36 = 0; i36 < size4; i36++) {
+                    jc0 jc0Var7 = (jc0) arrayList.get(i36);
+                    if (jc0Var7 instanceof pk1) {
+                        pk1 pk1Var4 = (pk1) jc0Var7;
+                        if (pk1Var4.t0 == 0) {
+                            q05.C(1, pk1Var4, nr3Var);
+                        }
+                    }
+                }
+            }
+            q05.C(0, this, nr3Var);
+            if (z21) {
+                for (int i37 = 0; i37 < size4; i37++) {
+                    jc0 jc0Var8 = (jc0) arrayList.get(i37);
+                    if (jc0Var8 instanceof ep) {
+                        ep epVar2 = (ep) jc0Var8;
+                        if (epVar2.P() == 1 && epVar2.O()) {
+                            q05.C(1, epVar2, nr3Var);
+                        }
+                    }
+                }
+            }
+            for (int i38 = 0; i38 < size4; i38++) {
+                jc0 jc0Var9 = (jc0) arrayList.get(i38);
+                if (jc0Var9.x() && q05.g(jc0Var9)) {
+                    R(jc0Var9, nr3Var, q05.a);
+                    if (!(jc0Var9 instanceof pk1)) {
+                        q05.p(0, jc0Var9, nr3Var, z17);
+                        q05.C(0, jc0Var9, nr3Var);
+                    } else if (((pk1) jc0Var9).t0 == 0) {
+                        q05.C(0, jc0Var9, nr3Var);
+                    } else {
+                        q05.p(0, jc0Var9, nr3Var, z17);
+                    }
+                }
+            }
+            for (int i39 = 0; i39 < size3; i39++) {
+                jc0 jc0Var10 = (jc0) this.p0.get(i39);
+                if (jc0Var10.x() && !(jc0Var10 instanceof pk1) && !(jc0Var10 instanceof ep)) {
+                    int iH = jc0Var10.h(0);
+                    int iH2 = jc0Var10.h(1);
+                    if (iH != 3 || jc0Var10.r == 1 || iH2 != 3 || jc0Var10.s == 1) {
+                        R(jc0Var10, this.t0, new kr());
+                    }
+                }
+            }
+        } else {
+            r21 = iArr;
+        }
+        eb2 eb2Var = this.v0;
+        if (size3 <= 2 || !((i23 == 2 || i22 == 2) && uo.q(this.C0, 1024))) {
+            i = iMax7;
+            i2 = size3;
+            i3 = i22;
+            i4 = i23;
+            hb0Var = hb0Var5;
+            hb0Var2 = hb0Var6;
+        } else {
+            nr3 nr3Var2 = this.t0;
+            ArrayList arrayList2 = this.p0;
+            int size5 = arrayList2.size();
+            int i40 = 0;
+            while (true) {
+                if (i40 < size5) {
+                    jc0 jc0Var11 = (jc0) arrayList2.get(i40);
+                    ?? r5 = r21[0];
+                    ?? r6 = r21[1];
+                    int[] iArr3 = jc0Var11.o0;
+                    int i41 = i40;
+                    if (gi1.a0(r5, r6, iArr3[0], iArr3[1])) {
+                        i40 = i41 + 1;
+                    } else {
+                        i14 = iMax7;
+                        i2 = size3;
+                        i15 = iMax8;
+                        i16 = i22;
+                        i17 = i23;
+                        hb0Var = hb0Var5;
+                        hb0Var2 = hb0Var6;
+                    }
+                } else {
+                    i2 = size3;
+                    hb0Var = hb0Var5;
+                    hb0Var2 = hb0Var6;
+                    int i42 = 0;
+                    ArrayList arrayList3 = null;
+                    ArrayList arrayList4 = null;
+                    ArrayList arrayList5 = null;
+                    ArrayList arrayList6 = null;
+                    ArrayList arrayList7 = null;
+                    ArrayList arrayList8 = null;
+                    while (i42 < size5) {
+                        int i43 = i42;
+                        jc0 jc0Var12 = (jc0) arrayList2.get(i42);
+                        int i44 = iMax8;
+                        ?? r7 = r21[0];
+                        int i45 = i22;
+                        ?? r8 = r21[1];
+                        int i46 = iMax7;
+                        int[] iArr4 = jc0Var12.o0;
+                        int i47 = i23;
+                        if (!gi1.a0(r7, r8, iArr4[0], iArr4[1])) {
+                            R(jc0Var12, nr3Var2, this.K0);
+                        }
+                        boolean z22 = jc0Var12 instanceof pk1;
+                        if (z22) {
+                            pk1 pk1Var5 = (pk1) jc0Var12;
+                            if (pk1Var5.t0 == 0) {
+                                if (arrayList8 == null) {
+                                    arrayList8 = new ArrayList();
+                                }
+                                arrayList8.add(pk1Var5);
+                            }
+                            if (pk1Var5.t0 == 1) {
+                                if (arrayList3 == null) {
+                                    arrayList3 = new ArrayList();
+                                }
+                                arrayList3.add(pk1Var5);
+                            }
+                        }
+                        if (jc0Var12 instanceof ep) {
+                            if (jc0Var12 instanceof ep) {
+                                ep epVar3 = (ep) jc0Var12;
+                                if (epVar3.P() == 0) {
+                                    if (arrayList5 == null) {
+                                        arrayList5 = new ArrayList();
+                                    }
+                                    arrayList5.add(epVar3);
+                                }
+                                if (epVar3.P() == 1) {
+                                    if (arrayList7 == null) {
+                                        arrayList7 = new ArrayList();
+                                    }
+                                    arrayList7.add(epVar3);
+                                }
+                            } else {
+                                ep epVar4 = (ep) jc0Var12;
+                                if (arrayList5 == null) {
+                                    arrayList5 = new ArrayList();
+                                }
+                                arrayList5.add(epVar4);
+                                if (arrayList7 == null) {
+                                    arrayList7 = new ArrayList();
+                                }
+                                arrayList7.add(epVar4);
+                            }
+                        }
+                        if (jc0Var12.H.f == null && jc0Var12.J.f == null && !z22 && !(jc0Var12 instanceof ep)) {
+                            if (arrayList6 == null) {
+                                arrayList6 = new ArrayList();
+                            }
+                            arrayList6.add(jc0Var12);
+                        }
+                        if (jc0Var12.I.f == null && jc0Var12.K.f == null && jc0Var12.L.f == null && !z22 && !(jc0Var12 instanceof ep)) {
+                            if (arrayList4 == null) {
+                                arrayList4 = new ArrayList();
+                            }
+                            arrayList4.add(jc0Var12);
+                        }
+                        i42 = i43 + 1;
+                        iMax8 = i44;
+                        i22 = i45;
+                        iMax7 = i46;
+                        i23 = i47;
+                    }
+                    i14 = iMax7;
+                    i15 = iMax8;
+                    i16 = i22;
+                    i17 = i23;
+                    ArrayList arrayList9 = new ArrayList();
+                    if (arrayList3 != null) {
+                        int size6 = arrayList3.size();
+                        int i48 = 0;
+                        while (i48 < size6) {
+                            Object obj = arrayList3.get(i48);
+                            i48++;
+                            gi1.n((pk1) obj, 0, arrayList9, null);
+                        }
+                    }
+                    if (arrayList5 != null) {
+                        int size7 = arrayList5.size();
+                        int i49 = 0;
+                        while (i49 < size7) {
+                            Object obj2 = arrayList5.get(i49);
+                            i49++;
+                            ep epVar5 = (ep) obj2;
+                            aa5 aa5VarN = gi1.n(epVar5, 0, arrayList9, null);
+                            epVar5.N(0, aa5VarN, arrayList9);
+                            aa5VarN.a(arrayList9);
+                        }
+                    }
+                    HashSet hashSet = g(2).a;
+                    if (hashSet != null) {
+                        Iterator it = hashSet.iterator();
+                        while (it.hasNext()) {
+                            gi1.n(((hb0) it.next()).d, 0, arrayList9, null);
+                        }
+                    }
+                    HashSet hashSet2 = g(4).a;
+                    if (hashSet2 != null) {
+                        Iterator it2 = hashSet2.iterator();
+                        while (it2.hasNext()) {
+                            gi1.n(((hb0) it2.next()).d, 0, arrayList9, null);
+                        }
+                    }
+                    HashSet hashSet3 = g(7).a;
+                    if (hashSet3 != null) {
+                        Iterator it3 = hashSet3.iterator();
+                        while (it3.hasNext()) {
+                            gi1.n(((hb0) it3.next()).d, 0, arrayList9, null);
+                        }
+                    }
+                    if (arrayList6 != null) {
+                        int size8 = arrayList6.size();
+                        int i50 = 0;
+                        while (i50 < size8) {
+                            Object obj3 = arrayList6.get(i50);
+                            i50++;
+                            gi1.n((jc0) obj3, 0, arrayList9, null);
+                        }
+                    }
+                    if (arrayList8 != null) {
+                        int size9 = arrayList8.size();
+                        int i51 = 0;
+                        while (i51 < size9) {
+                            Object obj4 = arrayList8.get(i51);
+                            i51++;
+                            gi1.n((pk1) obj4, 1, arrayList9, null);
+                        }
+                    }
+                    if (arrayList7 != null) {
+                        int size10 = arrayList7.size();
+                        int i52 = 0;
+                        while (i52 < size10) {
+                            Object obj5 = arrayList7.get(i52);
+                            i52++;
+                            ep epVar6 = (ep) obj5;
+                            aa5 aa5VarN2 = gi1.n(epVar6, 1, arrayList9, null);
+                            epVar6.N(1, aa5VarN2, arrayList9);
+                            aa5VarN2.a(arrayList9);
+                        }
+                    }
+                    HashSet hashSet4 = g(3).a;
+                    if (hashSet4 != null) {
+                        Iterator it4 = hashSet4.iterator();
+                        while (it4.hasNext()) {
+                            gi1.n(((hb0) it4.next()).d, 1, arrayList9, null);
+                        }
+                    }
+                    HashSet hashSet5 = g(6).a;
+                    if (hashSet5 != null) {
+                        Iterator it5 = hashSet5.iterator();
+                        while (it5.hasNext()) {
+                            gi1.n(((hb0) it5.next()).d, 1, arrayList9, null);
+                        }
+                    }
+                    HashSet hashSet6 = g(5).a;
+                    if (hashSet6 != null) {
+                        Iterator it6 = hashSet6.iterator();
+                        while (it6.hasNext()) {
+                            gi1.n(((hb0) it6.next()).d, 1, arrayList9, null);
+                        }
+                    }
+                    HashSet hashSet7 = g(7).a;
+                    if (hashSet7 != null) {
+                        Iterator it7 = hashSet7.iterator();
+                        while (it7.hasNext()) {
+                            gi1.n(((hb0) it7.next()).d, 1, arrayList9, null);
+                        }
+                    }
+                    if (arrayList4 != null) {
+                        int size11 = arrayList4.size();
+                        int i53 = 0;
+                        while (i53 < size11) {
+                            Object obj6 = arrayList4.get(i53);
+                            i53++;
+                            gi1.n((jc0) obj6, 1, arrayList9, null);
+                        }
+                    }
+                    char c3 = 1;
+                    int i54 = 0;
+                    while (i54 < size5) {
+                        jc0 jc0Var13 = (jc0) arrayList2.get(i54);
+                        int[] iArr5 = jc0Var13.o0;
+                        if (iArr5[0] == 3 && iArr5[c3] == 3) {
+                            int i55 = jc0Var13.m0;
+                            int size12 = arrayList9.size();
+                            int i56 = 0;
+                            while (true) {
+                                if (i56 >= size12) {
+                                    aa5Var4 = null;
+                                    break;
+                                }
+                                aa5Var4 = (aa5) arrayList9.get(i56);
+                                if (i55 == aa5Var4.b) {
+                                    break;
+                                } else {
+                                    i56++;
+                                }
+                            }
+                            int i57 = jc0Var13.n0;
+                            int size13 = arrayList9.size();
+                            int i58 = 0;
+                            while (true) {
+                                if (i58 >= size13) {
+                                    aa5Var5 = null;
+                                    break;
+                                }
+                                aa5Var5 = (aa5) arrayList9.get(i58);
+                                if (i57 == aa5Var5.b) {
+                                    break;
+                                } else {
+                                    i58++;
+                                }
+                            }
+                            if (aa5Var4 != null && aa5Var5 != null) {
+                                aa5Var4.c(0, aa5Var5);
+                                aa5Var5.c = 2;
+                                arrayList9.remove(aa5Var4);
+                            }
+                        }
+                        i54++;
+                        c3 = 1;
+                    }
+                    if (arrayList9.size() > 1) {
+                        if (r21[0] == 2) {
+                            int size14 = arrayList9.size();
+                            int i59 = 0;
+                            int i60 = 0;
+                            aa5Var = null;
+                            while (i60 < size14) {
+                                Object obj7 = arrayList9.get(i60);
+                                i60++;
+                                aa5 aa5Var6 = (aa5) obj7;
+                                if (aa5Var6.c != 1 && (iB2 = aa5Var6.b(eb2Var, 0)) > i59) {
+                                    aa5Var = aa5Var6;
+                                    i59 = iB2;
+                                }
+                            }
+                            c2 = 1;
+                            if (aa5Var != null) {
+                                I(1);
+                                K(i59);
+                            }
+                            if (r21[c2] == 2) {
+                                size2 = arrayList9.size();
+                                i19 = 0;
+                                i20 = 0;
+                                aa5Var2 = null;
+                                while (i20 < size2) {
+                                    Object obj8 = arrayList9.get(i20);
+                                    i20++;
+                                    aa5Var3 = (aa5) obj8;
+                                    if (aa5Var3.c != 0 && (iB = aa5Var3.b(eb2Var, 1)) > i19) {
+                                        aa5Var2 = aa5Var3;
+                                        i19 = iB;
+                                    }
+                                }
+                                if (aa5Var2 != null) {
+                                    J(1);
+                                    H(i19);
+                                } else {
+                                    aa5Var2 = null;
+                                }
+                            } else {
+                                aa5Var2 = null;
+                            }
+                            if (aa5Var == null || aa5Var2 != null) {
+                                i4 = i17;
+                                if (i4 == 2) {
+                                    i18 = i14;
+                                    if (i18 < o() || i18 <= 0) {
+                                        iO = o();
+                                    } else {
+                                        K(i18);
+                                        this.D0 = true;
+                                    }
+                                    i3 = i16;
+                                    if (i3 == 2) {
+                                        iMax8 = i15;
+                                        if (iMax8 < i() || iMax8 <= 0) {
+                                            iMax8 = i();
+                                        } else {
+                                            H(iMax8);
+                                            this.E0 = true;
+                                        }
+                                    } else {
+                                        iMax8 = i15;
+                                    }
+                                    i = iO;
+                                    z = true;
+                                } else {
+                                    i18 = i14;
+                                }
+                                iO = i18;
+                                i3 = i16;
+                                if (i3 == 2) {
+                                    iMax8 = i15;
+                                    if (iMax8 < i()) {
+                                        iMax8 = i();
+                                    } else {
+                                        iMax8 = i();
+                                    }
+                                } else {
+                                    iMax8 = i15;
+                                }
+                                i = iO;
+                                z = true;
+                            }
+                            if (!S(64) || S(128)) {
+                                z2 = true;
+                            } else {
+                                z2 = false;
+                            }
+                            eb2Var.getClass();
+                            eb2Var.h = false;
+                            if (this.C0 == 0 && z2) {
+                                c = 1;
+                                eb2Var.h = true;
+                            } else {
+                                c = 1;
+                            }
+                            ArrayList arrayList10 = this.p0;
+                            if (r21[0] != 2 || r21[c] == 2) {
+                                z3 = true;
+                            } else {
+                                z3 = false;
+                            }
+                            this.y0 = 0;
+                            this.z0 = 0;
+                            i5 = i2;
+                            for (i6 = 0; i6 < i5; i6++) {
+                                jc0Var2 = (jc0) this.p0.get(i6);
+                                if (jc0Var2 instanceof kc0) {
+                                    ((kc0) jc0Var2).Q();
+                                }
+                            }
+                            zS = S(64);
+                            r12 = z;
+                            i7 = 0;
+                            z4 = true;
+                            while (z4) {
+                                i8 = i7 + 1;
+                                try {
+                                    eb2Var.t();
+                                    this.y0 = 0;
+                                    this.z0 = 0;
+                                    e(eb2Var);
+                                    for (i13 = 0; i13 < i5; i13++) {
+                                        ((jc0) this.p0.get(i13)).e(eb2Var);
+                                    }
+                                    O(eb2Var);
+                                    try {
+                                        weakReference = this.F0;
+                                        if (weakReference != null) {
+                                            try {
+                                                if (weakReference.get() != null) {
+                                                    hb0Var3 = hb0Var;
+                                                    try {
+                                                        try {
+                                                            z6 = z3;
+                                                            try {
+                                                                eb2Var.f(eb2Var.k((hb0) this.F0.get()), eb2Var.k(hb0Var3), 0, 5);
+                                                                this.F0 = null;
+                                                            } catch (Exception e) {
+                                                                e = e;
+                                                                z15 = true;
+                                                                e.printStackTrace();
+                                                                System.out.println("EXCEPTION : " + e);
+                                                                z7 = z15;
+                                                                if (z7) {
+                                                                    zArr[2] = false;
+                                                                    zS2 = S(64);
+                                                                    M(eb2Var, zS2);
+                                                                    size = this.p0.size();
+                                                                    i12 = 0;
+                                                                    z14 = false;
+                                                                    while (i12 < size) {
+                                                                        jc0Var = (jc0) this.p0.get(i12);
+                                                                        jc0Var.M(eb2Var, zS2);
+                                                                        boolean z23 = zS2;
+                                                                        int i61 = size;
+                                                                        if (jc0Var.h == -1) {
+                                                                            z14 = true;
+                                                                        } else {
+                                                                            z14 = true;
+                                                                        }
+                                                                        i12++;
+                                                                        zS2 = z23;
+                                                                        size = i61;
+                                                                        z14 = z14;
+                                                                    }
+                                                                    z8 = z14;
+                                                                } else {
+                                                                    M(eb2Var, zS);
+                                                                    for (i9 = 0; i9 < i5; i9++) {
+                                                                        ((jc0) this.p0.get(i9)).M(eb2Var, zS);
+                                                                    }
+                                                                    z8 = false;
+                                                                }
+                                                                if (z6) {
+                                                                    iMax3 = 0;
+                                                                    iMax4 = 0;
+                                                                    for (i11 = 0; i11 < i5; i11++) {
+                                                                        jc0 jc0Var14 = (jc0) this.p0.get(i11);
+                                                                        iMax4 = Math.max(iMax4, jc0Var14.o() + jc0Var14.X);
+                                                                        iMax3 = Math.max(iMax3, jc0Var14.i() + jc0Var14.Y);
+                                                                    }
+                                                                    iMax5 = Math.max(this.a0, iMax4);
+                                                                    iMax6 = Math.max(this.b0, iMax3);
+                                                                    z8 = z8;
+                                                                    r12 = r12;
+                                                                    if (i4 == 2) {
+                                                                        z8 = z8;
+                                                                        r12 = r12;
+                                                                        K(iMax5);
+                                                                        r21[0] = 2;
+                                                                        z8 = true;
+                                                                        r12 = 1;
+                                                                    }
+                                                                    if (i3 == 2) {
+                                                                        H(iMax6);
+                                                                        r21[1] = 2;
+                                                                        z8 = true;
+                                                                        r12 = 1;
+                                                                    }
+                                                                }
+                                                                iMax = Math.max(this.a0, o());
+                                                                if (iMax > o()) {
+                                                                    K(iMax);
+                                                                    r9 = 1;
+                                                                    r21[0] = 1;
+                                                                    z9 = true;
+                                                                    r17 = 1;
+                                                                } else {
+                                                                    r9 = 1;
+                                                                    r17 = r12;
+                                                                    z9 = z8;
+                                                                }
+                                                                iMax2 = Math.max(this.b0, i());
+                                                                if (iMax2 > i()) {
+                                                                    H(iMax2);
+                                                                    r21[r9] = r9;
+                                                                    r4 = r9;
+                                                                    z10 = r4 == true ? 1 : 0;
+                                                                } else {
+                                                                    r0 = r17;
+                                                                }
+                                                                if (r0 == 0) {
+                                                                    z10 = z9;
+                                                                    if (r21[0] == 2) {
+                                                                        r3 = r0;
+                                                                        z13 = z10;
+                                                                        if (o() > i) {
+                                                                            this.D0 = r9;
+                                                                            r21[0] = r9;
+                                                                            K(i);
+                                                                            ?? r10 = r9;
+                                                                            z13 = r10 == true ? 1 : 0;
+                                                                            r3 = r10;
+                                                                        }
+                                                                    }
+                                                                    r0 = r4;
+                                                                    r3 = r0;
+                                                                    r3 = r0;
+                                                                    z13 = z10;
+                                                                    z13 = z10;
+                                                                    r1 = r3;
+                                                                    r1 = r3;
+                                                                    z11 = z13;
+                                                                    z11 = z13;
+                                                                    if (r21[r9] != 2) {
+                                                                    }
+                                                                    if (i8 > i10) {
+                                                                        r1 = r3;
+                                                                        z11 = z13;
+                                                                        z12 = false;
+                                                                    } else {
+                                                                        r1 = r3;
+                                                                        z11 = z13;
+                                                                    }
+                                                                    r12 = r2;
+                                                                    i7 = i8;
+                                                                    z3 = z6;
+                                                                    hb0Var = hb0Var3;
+                                                                    z4 = z12;
+                                                                } else {
+                                                                    z10 = z9;
+                                                                    r0 = r4;
+                                                                    r1 = r0;
+                                                                    z11 = z10;
+                                                                }
+                                                                r1 = r3;
+                                                                z11 = z13;
+                                                                i10 = 8;
+                                                                r2 = r1;
+                                                                z12 = z11;
+                                                                if (i8 > i10) {
+                                                                    r1 = r3;
+                                                                    z11 = z13;
+                                                                    z12 = false;
+                                                                } else {
+                                                                    r1 = r3;
+                                                                    z11 = z13;
+                                                                }
+                                                                r12 = r2;
+                                                                i7 = i8;
+                                                                z3 = z6;
+                                                                hb0Var = hb0Var3;
+                                                                z4 = z12;
+                                                            }
+                                                        } catch (Exception e2) {
+                                                            e = e2;
+                                                            z6 = z3;
+                                                            z15 = true;
+                                                            e.printStackTrace();
+                                                            System.out.println("EXCEPTION : " + e);
+                                                            z7 = z15;
+                                                            if (z7) {
+                                                                zArr[2] = false;
+                                                                zS2 = S(64);
+                                                                M(eb2Var, zS2);
+                                                                size = this.p0.size();
+                                                                i12 = 0;
+                                                                z14 = false;
+                                                                while (i12 < size) {
+                                                                    jc0Var = (jc0) this.p0.get(i12);
+                                                                    jc0Var.M(eb2Var, zS2);
+                                                                    boolean z24 = zS2;
+                                                                    int i62 = size;
+                                                                    if (jc0Var.h == -1) {
+                                                                        z14 = true;
+                                                                    } else {
+                                                                        z14 = true;
+                                                                    }
+                                                                    i12++;
+                                                                    zS2 = z24;
+                                                                    size = i62;
+                                                                    z14 = z14;
+                                                                }
+                                                                z8 = z14;
+                                                            } else {
+                                                                M(eb2Var, zS);
+                                                                while (i9 < i5) {
+                                                                    ((jc0) this.p0.get(i9)).M(eb2Var, zS);
+                                                                }
+                                                                z8 = false;
+                                                            }
+                                                            if (z6) {
+                                                                iMax3 = 0;
+                                                                iMax4 = 0;
+                                                                while (i11 < i5) {
+                                                                    jc0 jc0Var15 = (jc0) this.p0.get(i11);
+                                                                    iMax4 = Math.max(iMax4, jc0Var15.o() + jc0Var15.X);
+                                                                    iMax3 = Math.max(iMax3, jc0Var15.i() + jc0Var15.Y);
+                                                                }
+                                                                iMax5 = Math.max(this.a0, iMax4);
+                                                                iMax6 = Math.max(this.b0, iMax3);
+                                                                z8 = z8;
+                                                                r12 = r12;
+                                                                if (i4 == 2) {
+                                                                    z8 = z8;
+                                                                    r12 = r12;
+                                                                    K(iMax5);
+                                                                    r21[0] = 2;
+                                                                    z8 = true;
+                                                                    r12 = 1;
+                                                                }
+                                                                if (i3 == 2) {
+                                                                    H(iMax6);
+                                                                    r21[1] = 2;
+                                                                    z8 = true;
+                                                                    r12 = 1;
+                                                                }
+                                                            }
+                                                            iMax = Math.max(this.a0, o());
+                                                            if (iMax > o()) {
+                                                                K(iMax);
+                                                                r9 = 1;
+                                                                r21[0] = 1;
+                                                                z9 = true;
+                                                                r17 = 1;
+                                                            } else {
+                                                                r9 = 1;
+                                                                r17 = r12;
+                                                                z9 = z8;
+                                                            }
+                                                            iMax2 = Math.max(this.b0, i());
+                                                            if (iMax2 > i()) {
+                                                                H(iMax2);
+                                                                r21[r9] = r9;
+                                                                r4 = r9;
+                                                                z10 = r4 == true ? 1 : 0;
+                                                            } else {
+                                                                r0 = r17;
+                                                            }
+                                                            if (r0 == 0) {
+                                                                z10 = z9;
+                                                                if (r21[0] == 2) {
+                                                                    r3 = r0;
+                                                                    z13 = z10;
+                                                                    if (o() > i) {
+                                                                        this.D0 = r9;
+                                                                        r21[0] = r9;
+                                                                        K(i);
+                                                                        ?? r11 = r9;
+                                                                        z13 = r11 == true ? 1 : 0;
+                                                                        r3 = r11;
+                                                                    }
+                                                                }
+                                                                r0 = r4;
+                                                                r3 = r0;
+                                                                r3 = r0;
+                                                                z13 = z10;
+                                                                z13 = z10;
+                                                                r1 = r3;
+                                                                r1 = r3;
+                                                                z11 = z13;
+                                                                z11 = z13;
+                                                                if (r21[r9] != 2) {
+                                                                }
+                                                                if (i8 > i10) {
+                                                                    r1 = r3;
+                                                                    z11 = z13;
+                                                                    z12 = false;
+                                                                } else {
+                                                                    r1 = r3;
+                                                                    z11 = z13;
+                                                                }
+                                                                r12 = r2;
+                                                                i7 = i8;
+                                                                z3 = z6;
+                                                                hb0Var = hb0Var3;
+                                                                z4 = z12;
+                                                            } else {
+                                                                z10 = z9;
+                                                                r0 = r4;
+                                                                r1 = r0;
+                                                                z11 = z10;
+                                                            }
+                                                            r1 = r3;
+                                                            z11 = z13;
+                                                            i10 = 8;
+                                                            r2 = r1;
+                                                            z12 = z11;
+                                                            if (i8 > i10) {
+                                                                r1 = r3;
+                                                                z11 = z13;
+                                                                z12 = false;
+                                                            } else {
+                                                                r1 = r3;
+                                                                z11 = z13;
+                                                            }
+                                                            r12 = r2;
+                                                            i7 = i8;
+                                                            z3 = z6;
+                                                            hb0Var = hb0Var3;
+                                                            z4 = z12;
+                                                        }
+                                                    } catch (Exception e3) {
+                                                        e = e3;
+                                                    }
+                                                } else {
+                                                    hb0Var3 = hb0Var;
+                                                    z6 = z3;
+                                                }
+                                                weakReference2 = this.H0;
+                                                if (weakReference2 != null && weakReference2.get() != null) {
+                                                    eb2Var.f(eb2Var.k(this.K), eb2Var.k((hb0) this.H0.get()), 0, 5);
+                                                    this.H0 = null;
+                                                }
+                                                weakReference3 = this.G0;
+                                                if (weakReference3 != null && weakReference3.get() != null) {
+                                                    hb0Var4 = hb0Var2;
+                                                    try {
+                                                        hb0Var2 = hb0Var4;
+                                                        eb2Var.f(eb2Var.k((hb0) this.G0.get()), eb2Var.k(hb0Var4), 0, 5);
+                                                        this.G0 = null;
+                                                    } catch (Exception e4) {
+                                                        e = e4;
+                                                        hb0Var2 = hb0Var4;
+                                                        z15 = true;
+                                                        e.printStackTrace();
+                                                        System.out.println("EXCEPTION : " + e);
+                                                        z7 = z15;
+                                                        if (z7) {
+                                                            zArr[2] = false;
+                                                            zS2 = S(64);
+                                                            M(eb2Var, zS2);
+                                                            size = this.p0.size();
+                                                            i12 = 0;
+                                                            z14 = false;
+                                                            while (i12 < size) {
+                                                                jc0Var = (jc0) this.p0.get(i12);
+                                                                jc0Var.M(eb2Var, zS2);
+                                                                boolean z25 = zS2;
+                                                                int i63 = size;
+                                                                if (jc0Var.h == -1) {
+                                                                    z14 = true;
+                                                                } else {
+                                                                    z14 = true;
+                                                                }
+                                                                i12++;
+                                                                zS2 = z25;
+                                                                size = i63;
+                                                                z14 = z14;
+                                                            }
+                                                            z8 = z14;
+                                                        } else {
+                                                            M(eb2Var, zS);
+                                                            while (i9 < i5) {
+                                                                ((jc0) this.p0.get(i9)).M(eb2Var, zS);
+                                                            }
+                                                            z8 = false;
+                                                        }
+                                                        if (z6) {
+                                                            iMax3 = 0;
+                                                            iMax4 = 0;
+                                                            while (i11 < i5) {
+                                                                jc0 jc0Var16 = (jc0) this.p0.get(i11);
+                                                                iMax4 = Math.max(iMax4, jc0Var16.o() + jc0Var16.X);
+                                                                iMax3 = Math.max(iMax3, jc0Var16.i() + jc0Var16.Y);
+                                                            }
+                                                            iMax5 = Math.max(this.a0, iMax4);
+                                                            iMax6 = Math.max(this.b0, iMax3);
+                                                            z8 = z8;
+                                                            r12 = r12;
+                                                            if (i4 == 2) {
+                                                                z8 = z8;
+                                                                r12 = r12;
+                                                                K(iMax5);
+                                                                r21[0] = 2;
+                                                                z8 = true;
+                                                                r12 = 1;
+                                                            }
+                                                            if (i3 == 2) {
+                                                                H(iMax6);
+                                                                r21[1] = 2;
+                                                                z8 = true;
+                                                                r12 = 1;
+                                                            }
+                                                        }
+                                                        iMax = Math.max(this.a0, o());
+                                                        if (iMax > o()) {
+                                                            K(iMax);
+                                                            r9 = 1;
+                                                            r21[0] = 1;
+                                                            z9 = true;
+                                                            r17 = 1;
+                                                        } else {
+                                                            r9 = 1;
+                                                            r17 = r12;
+                                                            z9 = z8;
+                                                        }
+                                                        iMax2 = Math.max(this.b0, i());
+                                                        if (iMax2 > i()) {
+                                                            H(iMax2);
+                                                            r21[r9] = r9;
+                                                            r4 = r9;
+                                                            z10 = r4 == true ? 1 : 0;
+                                                        } else {
+                                                            r0 = r17;
+                                                        }
+                                                        if (r0 == 0) {
+                                                            z10 = z9;
+                                                            if (r21[0] == 2) {
+                                                                r3 = r0;
+                                                                z13 = z10;
+                                                                if (o() > i) {
+                                                                    this.D0 = r9;
+                                                                    r21[0] = r9;
+                                                                    K(i);
+                                                                    ?? r13 = r9;
+                                                                    z13 = r13 == true ? 1 : 0;
+                                                                    r3 = r13;
+                                                                }
+                                                            }
+                                                            r0 = r4;
+                                                            r3 = r0;
+                                                            r3 = r0;
+                                                            z13 = z10;
+                                                            z13 = z10;
+                                                            r1 = r3;
+                                                            r1 = r3;
+                                                            z11 = z13;
+                                                            z11 = z13;
+                                                            if (r21[r9] != 2) {
+                                                            }
+                                                            if (i8 > i10) {
+                                                                r1 = r3;
+                                                                z11 = z13;
+                                                                z12 = false;
+                                                            } else {
+                                                                r1 = r3;
+                                                                z11 = z13;
+                                                            }
+                                                            r12 = r2;
+                                                            i7 = i8;
+                                                            z3 = z6;
+                                                            hb0Var = hb0Var3;
+                                                            z4 = z12;
+                                                        } else {
+                                                            z10 = z9;
+                                                            r0 = r4;
+                                                            r1 = r0;
+                                                            z11 = z10;
+                                                        }
+                                                        r1 = r3;
+                                                        z11 = z13;
+                                                        i10 = 8;
+                                                        r2 = r1;
+                                                        z12 = z11;
+                                                        if (i8 > i10) {
+                                                            r1 = r3;
+                                                            z11 = z13;
+                                                            z12 = false;
+                                                        } else {
+                                                            r1 = r3;
+                                                            z11 = z13;
+                                                        }
+                                                        r12 = r2;
+                                                        i7 = i8;
+                                                        z3 = z6;
+                                                        hb0Var = hb0Var3;
+                                                        z4 = z12;
+                                                    }
+                                                }
+                                                weakReference4 = this.I0;
+                                                if (weakReference4 == null && weakReference4.get() != null) {
+                                                    try {
+                                                        try {
+                                                            eb2Var.f(eb2Var.k(this.J), eb2Var.k((hb0) this.I0.get()), 0, 5);
+                                                            try {
+                                                                this.I0 = null;
+                                                            } catch (Exception e5) {
+                                                                e = e5;
+                                                                z15 = true;
+                                                                e.printStackTrace();
+                                                                System.out.println("EXCEPTION : " + e);
+                                                                z7 = z15;
+                                                            }
+                                                        } catch (Exception e6) {
+                                                            e = e6;
+                                                            z15 = true;
+                                                            e.printStackTrace();
+                                                            System.out.println("EXCEPTION : " + e);
+                                                            z7 = z15;
+                                                            if (z7) {
+                                                                zArr[2] = false;
+                                                                zS2 = S(64);
+                                                                M(eb2Var, zS2);
+                                                                size = this.p0.size();
+                                                                i12 = 0;
+                                                                z14 = false;
+                                                                while (i12 < size) {
+                                                                    jc0Var = (jc0) this.p0.get(i12);
+                                                                    jc0Var.M(eb2Var, zS2);
+                                                                    boolean z26 = zS2;
+                                                                    int i64 = size;
+                                                                    if (jc0Var.h == -1) {
+                                                                        z14 = true;
+                                                                    } else {
+                                                                        z14 = true;
+                                                                    }
+                                                                    i12++;
+                                                                    zS2 = z26;
+                                                                    size = i64;
+                                                                    z14 = z14;
+                                                                }
+                                                                z8 = z14;
+                                                            } else {
+                                                                M(eb2Var, zS);
+                                                                while (i9 < i5) {
+                                                                    ((jc0) this.p0.get(i9)).M(eb2Var, zS);
+                                                                }
+                                                                z8 = false;
+                                                            }
+                                                            if (z6) {
+                                                                iMax3 = 0;
+                                                                iMax4 = 0;
+                                                                while (i11 < i5) {
+                                                                    jc0 jc0Var17 = (jc0) this.p0.get(i11);
+                                                                    iMax4 = Math.max(iMax4, jc0Var17.o() + jc0Var17.X);
+                                                                    iMax3 = Math.max(iMax3, jc0Var17.i() + jc0Var17.Y);
+                                                                }
+                                                                iMax5 = Math.max(this.a0, iMax4);
+                                                                iMax6 = Math.max(this.b0, iMax3);
+                                                                z8 = z8;
+                                                                r12 = r12;
+                                                                if (i4 == 2) {
+                                                                    z8 = z8;
+                                                                    r12 = r12;
+                                                                    K(iMax5);
+                                                                    r21[0] = 2;
+                                                                    z8 = true;
+                                                                    r12 = 1;
+                                                                }
+                                                                if (i3 == 2) {
+                                                                    H(iMax6);
+                                                                    r21[1] = 2;
+                                                                    z8 = true;
+                                                                    r12 = 1;
+                                                                }
+                                                            }
+                                                            iMax = Math.max(this.a0, o());
+                                                            if (iMax > o()) {
+                                                                K(iMax);
+                                                                r9 = 1;
+                                                                r21[0] = 1;
+                                                                z9 = true;
+                                                                r17 = 1;
+                                                            } else {
+                                                                r9 = 1;
+                                                                r17 = r12;
+                                                                z9 = z8;
+                                                            }
+                                                            iMax2 = Math.max(this.b0, i());
+                                                            if (iMax2 > i()) {
+                                                                H(iMax2);
+                                                                r21[r9] = r9;
+                                                                r4 = r9;
+                                                                z10 = r4 == true ? 1 : 0;
+                                                            } else {
+                                                                r0 = r17;
+                                                            }
+                                                            if (r0 == 0) {
+                                                                z10 = z9;
+                                                                if (r21[0] == 2) {
+                                                                    r3 = r0;
+                                                                    z13 = z10;
+                                                                    if (o() > i) {
+                                                                        this.D0 = r9;
+                                                                        r21[0] = r9;
+                                                                        K(i);
+                                                                        ?? r14 = r9;
+                                                                        z13 = r14 == true ? 1 : 0;
+                                                                        r3 = r14;
+                                                                    }
+                                                                }
+                                                                r0 = r4;
+                                                                r3 = r0;
+                                                                r3 = r0;
+                                                                z13 = z10;
+                                                                z13 = z10;
+                                                                r1 = r3;
+                                                                r1 = r3;
+                                                                z11 = z13;
+                                                                z11 = z13;
+                                                                if (r21[r9] != 2) {
+                                                                }
+                                                                if (i8 > i10) {
+                                                                    r1 = r3;
+                                                                    z11 = z13;
+                                                                    z12 = false;
+                                                                } else {
+                                                                    r1 = r3;
+                                                                    z11 = z13;
+                                                                }
+                                                                r12 = r2;
+                                                                i7 = i8;
+                                                                z3 = z6;
+                                                                hb0Var = hb0Var3;
+                                                                z4 = z12;
+                                                            } else {
+                                                                z10 = z9;
+                                                                r0 = r4;
+                                                                r1 = r0;
+                                                                z11 = z10;
+                                                            }
+                                                            r1 = r3;
+                                                            z11 = z13;
+                                                            i10 = 8;
+                                                            r2 = r1;
+                                                            z12 = z11;
+                                                            if (i8 > i10) {
+                                                                r1 = r3;
+                                                                z11 = z13;
+                                                                z12 = false;
+                                                            } else {
+                                                                r1 = r3;
+                                                                z11 = z13;
+                                                            }
+                                                            r12 = r2;
+                                                            i7 = i8;
+                                                            z3 = z6;
+                                                            hb0Var = hb0Var3;
+                                                            z4 = z12;
+                                                        }
+                                                    } catch (Exception e7) {
+                                                        e = e7;
+                                                    }
+                                                }
+                                                eb2Var.p();
+                                                z7 = true;
+                                            } catch (Exception e8) {
+                                                e = e8;
+                                                hb0Var3 = hb0Var;
+                                            }
+                                        } else {
+                                            hb0Var3 = hb0Var;
+                                            z6 = z3;
+                                            weakReference2 = this.H0;
+                                            if (weakReference2 != null) {
+                                                eb2Var.f(eb2Var.k(this.K), eb2Var.k((hb0) this.H0.get()), 0, 5);
+                                                this.H0 = null;
+                                            }
+                                            weakReference3 = this.G0;
+                                            if (weakReference3 != null) {
+                                                hb0Var4 = hb0Var2;
+                                                hb0Var2 = hb0Var4;
+                                                eb2Var.f(eb2Var.k((hb0) this.G0.get()), eb2Var.k(hb0Var4), 0, 5);
+                                                this.G0 = null;
+                                            }
+                                            weakReference4 = this.I0;
+                                            if (weakReference4 == null) {
+                                            }
+                                            eb2Var.p();
+                                            z7 = true;
+                                        }
+                                    } catch (Exception e9) {
+                                        e = e9;
+                                        hb0Var3 = hb0Var;
+                                        z6 = z3;
+                                    }
+                                } catch (Exception e10) {
+                                    e = e10;
+                                    hb0Var3 = hb0Var;
+                                    z6 = z3;
+                                    z15 = z4;
+                                }
+                                if (z7) {
+                                    zArr[2] = false;
+                                    zS2 = S(64);
+                                    M(eb2Var, zS2);
+                                    size = this.p0.size();
+                                    i12 = 0;
+                                    z14 = false;
+                                    while (i12 < size) {
+                                        jc0Var = (jc0) this.p0.get(i12);
+                                        jc0Var.M(eb2Var, zS2);
+                                        boolean z27 = zS2;
+                                        int i65 = size;
+                                        if (jc0Var.h == -1 || jc0Var.i != -1) {
+                                            z14 = true;
+                                        }
+                                        i12++;
+                                        zS2 = z27;
+                                        size = i65;
+                                        z14 = z14;
+                                    }
+                                    z8 = z14;
+                                } else {
+                                    M(eb2Var, zS);
+                                    while (i9 < i5) {
+                                        ((jc0) this.p0.get(i9)).M(eb2Var, zS);
+                                    }
+                                    z8 = false;
+                                }
+                                if (z6 && i8 < 8 && zArr[2]) {
+                                    iMax3 = 0;
+                                    iMax4 = 0;
+                                    while (i11 < i5) {
+                                        jc0 jc0Var18 = (jc0) this.p0.get(i11);
+                                        iMax4 = Math.max(iMax4, jc0Var18.o() + jc0Var18.X);
+                                        iMax3 = Math.max(iMax3, jc0Var18.i() + jc0Var18.Y);
+                                    }
+                                    iMax5 = Math.max(this.a0, iMax4);
+                                    iMax6 = Math.max(this.b0, iMax3);
+                                    z8 = z8;
+                                    r12 = r12;
+                                    if (i4 == 2 && o() < iMax5) {
+                                        z8 = z8;
+                                        r12 = r12;
+                                        K(iMax5);
+                                        r21[0] = 2;
+                                        z8 = true;
+                                        r12 = 1;
+                                    }
+                                    if (i3 == 2 && i() < iMax6) {
+                                        H(iMax6);
+                                        r21[1] = 2;
+                                        z8 = true;
+                                        r12 = 1;
+                                    }
+                                }
+                                iMax = Math.max(this.a0, o());
+                                if (iMax > o()) {
+                                    K(iMax);
+                                    r9 = 1;
+                                    r21[0] = 1;
+                                    z9 = true;
+                                    r17 = 1;
+                                } else {
+                                    r9 = 1;
+                                    r17 = r12;
+                                    z9 = z8;
+                                }
+                                iMax2 = Math.max(this.b0, i());
+                                if (iMax2 > i()) {
+                                    H(iMax2);
+                                    r21[r9] = r9;
+                                    r4 = r9;
+                                    z10 = r4 == true ? 1 : 0;
+                                } else {
+                                    r0 = r17;
+                                }
+                                if (r0 == 0) {
+                                    z10 = z9;
+                                    if (r21[0] == 2 && i > 0) {
+                                        r3 = r0;
+                                        z13 = z10;
+                                        if (o() > i) {
+                                            this.D0 = r9;
+                                            r21[0] = r9;
+                                            K(i);
+                                            ?? r15 = r9;
+                                            z13 = r15 == true ? 1 : 0;
+                                            r3 = r15;
+                                        }
+                                    }
+                                    r0 = r4;
+                                    r3 = r0;
+                                    r3 = r0;
+                                    z13 = z10;
+                                    z13 = z10;
+                                    r1 = r3;
+                                    r1 = r3;
+                                    z11 = z13;
+                                    z11 = z13;
+                                    if (r21[r9] != 2 && iMax8 > 0 && i() > iMax8) {
+                                        this.E0 = r9;
+                                        r21[r9] = r9;
+                                        H(iMax8);
+                                        r2 = 1;
+                                        i10 = 8;
+                                        z12 = true;
+                                    }
+                                    if (i8 > i10) {
+                                        r1 = r3;
+                                        z11 = z13;
+                                        z12 = false;
+                                    } else {
+                                        r1 = r3;
+                                        z11 = z13;
+                                    }
+                                    r12 = r2;
+                                    i7 = i8;
+                                    z3 = z6;
+                                    hb0Var = hb0Var3;
+                                    z4 = z12;
+                                } else {
+                                    z10 = z9;
+                                    r0 = r4;
+                                    r1 = r0;
+                                    z11 = z10;
+                                }
+                                r1 = r3;
+                                z11 = z13;
+                                i10 = 8;
+                                r2 = r1;
+                                z12 = z11;
+                                if (i8 > i10) {
+                                    r1 = r3;
+                                    z11 = z13;
+                                    z12 = false;
+                                } else {
+                                    r1 = r3;
+                                    z11 = z13;
+                                }
+                                r12 = r2;
+                                i7 = i8;
+                                z3 = z6;
+                                hb0Var = hb0Var3;
+                                z4 = z12;
+                            }
+                            z5 = r12 == true ? 1 : 0;
+                            this.p0 = arrayList10;
+                            if (z5) {
+                                r21[0] = i4;
+                                r21[1] = i3;
+                            }
+                            C(eb2Var.m);
+                        }
+                        c2 = 1;
+                        aa5Var = null;
+                        if (r21[c2] == 2) {
+                            size2 = arrayList9.size();
+                            i19 = 0;
+                            i20 = 0;
+                            aa5Var2 = null;
+                            while (i20 < size2) {
+                                Object obj9 = arrayList9.get(i20);
+                                i20++;
+                                aa5Var3 = (aa5) obj9;
+                                if (aa5Var3.c != 0) {
+                                    aa5Var2 = aa5Var3;
+                                    i19 = iB;
+                                }
+                            }
+                            if (aa5Var2 != null) {
+                                J(1);
+                                H(i19);
+                            } else {
+                                aa5Var2 = null;
+                            }
+                        } else {
+                            aa5Var2 = null;
+                        }
+                        if (aa5Var == null) {
+                        }
+                        i4 = i17;
+                        if (i4 == 2) {
+                            i18 = i14;
+                            if (i18 < o()) {
+                            }
+                            iO = o();
+                            i3 = i16;
+                            if (i3 == 2) {
+                                iMax8 = i15;
+                                if (iMax8 < i()) {
+                                    iMax8 = i();
+                                } else {
+                                    iMax8 = i();
+                                }
+                            } else {
+                                iMax8 = i15;
+                            }
+                            i = iO;
+                            z = true;
+                            if (S(64)) {
+                                z2 = true;
+                            } else {
+                                z2 = true;
+                            }
+                            eb2Var.getClass();
+                            eb2Var.h = false;
+                            if (this.C0 == 0) {
+                                c = 1;
+                            } else {
+                                c = 1;
+                            }
+                            ArrayList arrayList11 = this.p0;
+                            if (r21[0] != 2) {
+                                z3 = true;
+                            } else {
+                                z3 = true;
+                            }
+                            this.y0 = 0;
+                            this.z0 = 0;
+                            i5 = i2;
+                            while (i6 < i5) {
+                                jc0Var2 = (jc0) this.p0.get(i6);
+                                if (jc0Var2 instanceof kc0) {
+                                    ((kc0) jc0Var2).Q();
+                                }
+                            }
+                            zS = S(64);
+                            r12 = z;
+                            i7 = 0;
+                            z4 = true;
+                            while (z4) {
+                                i8 = i7 + 1;
+                                eb2Var.t();
+                                this.y0 = 0;
+                                this.z0 = 0;
+                                e(eb2Var);
+                                while (i13 < i5) {
+                                    ((jc0) this.p0.get(i13)).e(eb2Var);
+                                }
+                                O(eb2Var);
+                                weakReference = this.F0;
+                                if (weakReference != null) {
+                                    if (weakReference.get() != null) {
+                                        hb0Var3 = hb0Var;
+                                        z6 = z3;
+                                        eb2Var.f(eb2Var.k((hb0) this.F0.get()), eb2Var.k(hb0Var3), 0, 5);
+                                        this.F0 = null;
+                                    } else {
+                                        hb0Var3 = hb0Var;
+                                        z6 = z3;
+                                    }
+                                    weakReference2 = this.H0;
+                                    if (weakReference2 != null) {
+                                        eb2Var.f(eb2Var.k(this.K), eb2Var.k((hb0) this.H0.get()), 0, 5);
+                                        this.H0 = null;
+                                    }
+                                    weakReference3 = this.G0;
+                                    if (weakReference3 != null) {
+                                        hb0Var4 = hb0Var2;
+                                        hb0Var2 = hb0Var4;
+                                        eb2Var.f(eb2Var.k((hb0) this.G0.get()), eb2Var.k(hb0Var4), 0, 5);
+                                        this.G0 = null;
+                                    }
+                                    weakReference4 = this.I0;
+                                    if (weakReference4 == null) {
+                                    }
+                                    eb2Var.p();
+                                    z7 = true;
+                                } else {
+                                    hb0Var3 = hb0Var;
+                                    z6 = z3;
+                                    weakReference2 = this.H0;
+                                    if (weakReference2 != null) {
+                                        eb2Var.f(eb2Var.k(this.K), eb2Var.k((hb0) this.H0.get()), 0, 5);
+                                        this.H0 = null;
+                                    }
+                                    weakReference3 = this.G0;
+                                    if (weakReference3 != null) {
+                                        hb0Var4 = hb0Var2;
+                                        hb0Var2 = hb0Var4;
+                                        eb2Var.f(eb2Var.k((hb0) this.G0.get()), eb2Var.k(hb0Var4), 0, 5);
+                                        this.G0 = null;
+                                    }
+                                    weakReference4 = this.I0;
+                                    if (weakReference4 == null) {
+                                    }
+                                    eb2Var.p();
+                                    z7 = true;
+                                }
+                                if (z7) {
+                                    zArr[2] = false;
+                                    zS2 = S(64);
+                                    M(eb2Var, zS2);
+                                    size = this.p0.size();
+                                    i12 = 0;
+                                    z14 = false;
+                                    while (i12 < size) {
+                                        jc0Var = (jc0) this.p0.get(i12);
+                                        jc0Var.M(eb2Var, zS2);
+                                        boolean z28 = zS2;
+                                        int i66 = size;
+                                        if (jc0Var.h == -1) {
+                                            z14 = true;
+                                        } else {
+                                            z14 = true;
+                                        }
+                                        i12++;
+                                        zS2 = z28;
+                                        size = i66;
+                                        z14 = z14;
+                                    }
+                                    z8 = z14;
+                                } else {
+                                    M(eb2Var, zS);
+                                    while (i9 < i5) {
+                                        ((jc0) this.p0.get(i9)).M(eb2Var, zS);
+                                    }
+                                    z8 = false;
+                                }
+                                if (z6) {
+                                    iMax3 = 0;
+                                    iMax4 = 0;
+                                    while (i11 < i5) {
+                                        jc0 jc0Var19 = (jc0) this.p0.get(i11);
+                                        iMax4 = Math.max(iMax4, jc0Var19.o() + jc0Var19.X);
+                                        iMax3 = Math.max(iMax3, jc0Var19.i() + jc0Var19.Y);
+                                    }
+                                    iMax5 = Math.max(this.a0, iMax4);
+                                    iMax6 = Math.max(this.b0, iMax3);
+                                    z8 = z8;
+                                    r12 = r12;
+                                    if (i4 == 2) {
+                                        z8 = z8;
+                                        r12 = r12;
+                                        K(iMax5);
+                                        r21[0] = 2;
+                                        z8 = true;
+                                        r12 = 1;
+                                    }
+                                    if (i3 == 2) {
+                                        H(iMax6);
+                                        r21[1] = 2;
+                                        z8 = true;
+                                        r12 = 1;
+                                    }
+                                }
+                                iMax = Math.max(this.a0, o());
+                                if (iMax > o()) {
+                                    K(iMax);
+                                    r9 = 1;
+                                    r21[0] = 1;
+                                    z9 = true;
+                                    r17 = 1;
+                                } else {
+                                    r9 = 1;
+                                    r17 = r12;
+                                    z9 = z8;
+                                }
+                                iMax2 = Math.max(this.b0, i());
+                                if (iMax2 > i()) {
+                                    H(iMax2);
+                                    r21[r9] = r9;
+                                    r4 = r9;
+                                    z10 = r4 == true ? 1 : 0;
+                                } else {
+                                    r0 = r17;
+                                }
+                                if (r0 == 0) {
+                                    z10 = z9;
+                                    if (r21[0] == 2) {
+                                        r3 = r0;
+                                        z13 = z10;
+                                        if (o() > i) {
+                                            this.D0 = r9;
+                                            r21[0] = r9;
+                                            K(i);
+                                            ?? r16 = r9;
+                                            z13 = r16 == true ? 1 : 0;
+                                            r3 = r16;
+                                        }
+                                    }
+                                    r0 = r4;
+                                    r3 = r0;
+                                    r3 = r0;
+                                    z13 = z10;
+                                    z13 = z10;
+                                    r1 = r3;
+                                    r1 = r3;
+                                    z11 = z13;
+                                    z11 = z13;
+                                    if (r21[r9] != 2) {
+                                    }
+                                    if (i8 > i10) {
+                                        r1 = r3;
+                                        z11 = z13;
+                                        z12 = false;
+                                    } else {
+                                        r1 = r3;
+                                        z11 = z13;
+                                    }
+                                    r12 = r2;
+                                    i7 = i8;
+                                    z3 = z6;
+                                    hb0Var = hb0Var3;
+                                    z4 = z12;
+                                } else {
+                                    z10 = z9;
+                                    r0 = r4;
+                                    r1 = r0;
+                                    z11 = z10;
+                                }
+                                r1 = r3;
+                                z11 = z13;
+                                i10 = 8;
+                                r2 = r1;
+                                z12 = z11;
+                                if (i8 > i10) {
+                                    r1 = r3;
+                                    z11 = z13;
+                                    z12 = false;
+                                } else {
+                                    r1 = r3;
+                                    z11 = z13;
+                                }
+                                r12 = r2;
+                                i7 = i8;
+                                z3 = z6;
+                                hb0Var = hb0Var3;
+                                z4 = z12;
+                            }
+                            z5 = r12 == true ? 1 : 0;
+                            this.p0 = arrayList11;
+                            if (z5) {
+                                r21[0] = i4;
+                                r21[1] = i3;
+                            }
+                            C(eb2Var.m);
+                        }
+                        i18 = i14;
+                        iO = i18;
+                        i3 = i16;
+                        if (i3 == 2) {
+                            iMax8 = i15;
+                            if (iMax8 < i()) {
+                                iMax8 = i();
+                            } else {
+                                iMax8 = i();
+                            }
+                        } else {
+                            iMax8 = i15;
+                        }
+                        i = iO;
+                        z = true;
+                        if (S(64)) {
+                            z2 = true;
+                        } else {
+                            z2 = true;
+                        }
+                        eb2Var.getClass();
+                        eb2Var.h = false;
+                        if (this.C0 == 0) {
+                            c = 1;
+                        } else {
+                            c = 1;
+                        }
+                        ArrayList arrayList12 = this.p0;
+                        if (r21[0] != 2) {
+                            z3 = true;
+                        } else {
+                            z3 = true;
+                        }
+                        this.y0 = 0;
+                        this.z0 = 0;
+                        i5 = i2;
+                        while (i6 < i5) {
+                            jc0Var2 = (jc0) this.p0.get(i6);
+                            if (jc0Var2 instanceof kc0) {
+                                ((kc0) jc0Var2).Q();
+                            }
+                        }
+                        zS = S(64);
+                        r12 = z;
+                        i7 = 0;
+                        z4 = true;
+                        while (z4) {
+                            i8 = i7 + 1;
+                            eb2Var.t();
+                            this.y0 = 0;
+                            this.z0 = 0;
+                            e(eb2Var);
+                            while (i13 < i5) {
+                                ((jc0) this.p0.get(i13)).e(eb2Var);
+                            }
+                            O(eb2Var);
+                            weakReference = this.F0;
+                            if (weakReference != null) {
+                                if (weakReference.get() != null) {
+                                    hb0Var3 = hb0Var;
+                                    z6 = z3;
+                                    eb2Var.f(eb2Var.k((hb0) this.F0.get()), eb2Var.k(hb0Var3), 0, 5);
+                                    this.F0 = null;
+                                } else {
+                                    hb0Var3 = hb0Var;
+                                    z6 = z3;
+                                }
+                                weakReference2 = this.H0;
+                                if (weakReference2 != null) {
+                                    eb2Var.f(eb2Var.k(this.K), eb2Var.k((hb0) this.H0.get()), 0, 5);
+                                    this.H0 = null;
+                                }
+                                weakReference3 = this.G0;
+                                if (weakReference3 != null) {
+                                    hb0Var4 = hb0Var2;
+                                    hb0Var2 = hb0Var4;
+                                    eb2Var.f(eb2Var.k((hb0) this.G0.get()), eb2Var.k(hb0Var4), 0, 5);
+                                    this.G0 = null;
+                                }
+                                weakReference4 = this.I0;
+                                if (weakReference4 == null) {
+                                }
+                                eb2Var.p();
+                                z7 = true;
+                            } else {
+                                hb0Var3 = hb0Var;
+                                z6 = z3;
+                                weakReference2 = this.H0;
+                                if (weakReference2 != null) {
+                                    eb2Var.f(eb2Var.k(this.K), eb2Var.k((hb0) this.H0.get()), 0, 5);
+                                    this.H0 = null;
+                                }
+                                weakReference3 = this.G0;
+                                if (weakReference3 != null) {
+                                    hb0Var4 = hb0Var2;
+                                    hb0Var2 = hb0Var4;
+                                    eb2Var.f(eb2Var.k((hb0) this.G0.get()), eb2Var.k(hb0Var4), 0, 5);
+                                    this.G0 = null;
+                                }
+                                weakReference4 = this.I0;
+                                if (weakReference4 == null) {
+                                }
+                                eb2Var.p();
+                                z7 = true;
+                            }
+                            if (z7) {
+                                zArr[2] = false;
+                                zS2 = S(64);
+                                M(eb2Var, zS2);
+                                size = this.p0.size();
+                                i12 = 0;
+                                z14 = false;
+                                while (i12 < size) {
+                                    jc0Var = (jc0) this.p0.get(i12);
+                                    jc0Var.M(eb2Var, zS2);
+                                    boolean z29 = zS2;
+                                    int i67 = size;
+                                    if (jc0Var.h == -1) {
+                                        z14 = true;
+                                    } else {
+                                        z14 = true;
+                                    }
+                                    i12++;
+                                    zS2 = z29;
+                                    size = i67;
+                                    z14 = z14;
+                                }
+                                z8 = z14;
+                            } else {
+                                M(eb2Var, zS);
+                                while (i9 < i5) {
+                                    ((jc0) this.p0.get(i9)).M(eb2Var, zS);
+                                }
+                                z8 = false;
+                            }
+                            if (z6) {
+                                iMax3 = 0;
+                                iMax4 = 0;
+                                while (i11 < i5) {
+                                    jc0 jc0Var110 = (jc0) this.p0.get(i11);
+                                    iMax4 = Math.max(iMax4, jc0Var110.o() + jc0Var110.X);
+                                    iMax3 = Math.max(iMax3, jc0Var110.i() + jc0Var110.Y);
+                                }
+                                iMax5 = Math.max(this.a0, iMax4);
+                                iMax6 = Math.max(this.b0, iMax3);
+                                z8 = z8;
+                                r12 = r12;
+                                if (i4 == 2) {
+                                    z8 = z8;
+                                    r12 = r12;
+                                    K(iMax5);
+                                    r21[0] = 2;
+                                    z8 = true;
+                                    r12 = 1;
+                                }
+                                if (i3 == 2) {
+                                    H(iMax6);
+                                    r21[1] = 2;
+                                    z8 = true;
+                                    r12 = 1;
+                                }
+                            }
+                            iMax = Math.max(this.a0, o());
+                            if (iMax > o()) {
+                                K(iMax);
+                                r9 = 1;
+                                r21[0] = 1;
+                                z9 = true;
+                                r17 = 1;
+                            } else {
+                                r9 = 1;
+                                r17 = r12;
+                                z9 = z8;
+                            }
+                            iMax2 = Math.max(this.b0, i());
+                            if (iMax2 > i()) {
+                                H(iMax2);
+                                r21[r9] = r9;
+                                r4 = r9;
+                                z10 = r4 == true ? 1 : 0;
+                            } else {
+                                r0 = r17;
+                            }
+                            if (r0 == 0) {
+                                z10 = z9;
+                                if (r21[0] == 2) {
+                                    r3 = r0;
+                                    z13 = z10;
+                                    if (o() > i) {
+                                        this.D0 = r9;
+                                        r21[0] = r9;
+                                        K(i);
+                                        ?? r18 = r9;
+                                        z13 = r18 == true ? 1 : 0;
+                                        r3 = r18;
+                                    }
+                                }
+                                r0 = r4;
+                                r3 = r0;
+                                r3 = r0;
+                                z13 = z10;
+                                z13 = z10;
+                                r1 = r3;
+                                r1 = r3;
+                                z11 = z13;
+                                z11 = z13;
+                                if (r21[r9] != 2) {
+                                }
+                                if (i8 > i10) {
+                                    r1 = r3;
+                                    z11 = z13;
+                                    z12 = false;
+                                } else {
+                                    r1 = r3;
+                                    z11 = z13;
+                                }
+                                r12 = r2;
+                                i7 = i8;
+                                z3 = z6;
+                                hb0Var = hb0Var3;
+                                z4 = z12;
+                            } else {
+                                z10 = z9;
+                                r0 = r4;
+                                r1 = r0;
+                                z11 = z10;
+                            }
+                            r1 = r3;
+                            z11 = z13;
+                            i10 = 8;
+                            r2 = r1;
+                            z12 = z11;
+                            if (i8 > i10) {
+                                r1 = r3;
+                                z11 = z13;
+                                z12 = false;
+                            } else {
+                                r1 = r3;
+                                z11 = z13;
+                            }
+                            r12 = r2;
+                            i7 = i8;
+                            z3 = z6;
+                            hb0Var = hb0Var3;
+                            z4 = z12;
+                        }
+                        z5 = r12 == true ? 1 : 0;
+                        this.p0 = arrayList12;
+                        if (z5) {
+                            r21[0] = i4;
+                            r21[1] = i3;
+                        }
+                        C(eb2Var.m);
+                    }
+                }
+                iMax8 = i15;
+                i3 = i16;
+                i = i14;
+                i4 = i17;
+            }
+        }
+        z = false;
+        if (S(64)) {
+            z2 = true;
+        } else {
+            z2 = true;
+        }
+        eb2Var.getClass();
+        eb2Var.h = false;
+        if (this.C0 == 0) {
+            c = 1;
+        } else {
+            c = 1;
+        }
+        ArrayList arrayList13 = this.p0;
+        if (r21[0] != 2) {
+            z3 = true;
+        } else {
+            z3 = true;
+        }
         this.y0 = 0;
         this.z0 = 0;
-        int r110 = r25;
-        int r111 = 0;
-    L386:
-        if (r111 >= r110) goto L391;
-        jc0 r112 = (jc0) this.p0.get(r111);
-        if ((r112 instanceof kc0) == false) goto L390;
-        ((kc0) r112).Q();
-    L390:
-        r111 = r111 + 1;
-        goto L386
-    L391:
-        boolean r113 = S(64);
-        ?? r210 = r1;
-        int r36 = 0;
-        boolean r114 = true;
-    L392:
-        if (r114 == false) goto L516;
-        int r115 = r36 + 1;
-        r7.t();     // Catch: Exception -> L397
-        this.y0 = 0;     // Catch: Exception -> L397
-        this.z0 = 0;     // Catch: Exception -> L397
-        e(r7);     // Catch: Exception -> L397
-        int r37 = 0;
-    L395:
-        if (r37 >= r110) goto L399;
-        ((jc0) this.p0.get(r37)).e(r7);     // Catch: Exception -> L397
-        r37 = r37 + 1;     // Catch: Exception -> L397
-        goto L395
-    L399:
-        O(r7);     // Catch: Exception -> L397
-        WeakReference r38 = this.F0;     // Catch: Exception -> L456
-        if (r38 != null) goto L535;
-    L420:
-        hb0 r116 = r27;
-        boolean r211 = r35;
-    L421:
-        WeakReference r39 = this.H0;     // Catch: Exception -> L410
-        if (r39 != null) goto L424;
-    L426:
-        WeakReference r40 = this.G0;     // Catch: Exception -> L410
-        if (r40 != null) goto L429;
-    L437:
-        WeakReference r41 = this.I0;     // Catch: Exception -> L410
-        if (r41 == null) goto L454;
-        if (r41.get() == null) goto L454;
-        r7.f(r7.k(this.J), r7.k((hb0) this.I0.get()), 0, 5);     // Catch: Exception -> L449
-        this.I0 = null;     // Catch: Exception -> L447
-    L447:
-        e = e;
-    L413:
-        boolean r117 = true;
-    L458:
-        e.printStackTrace();
-        System.out.println("EXCEPTION : " + e);
-        boolean r118 = r117;
-    L459:
-        if (r118 == false) goto L469;
-        r2[2] = false;
-        boolean r42 = S(64);
-        M(r7, r42);
-        int r43 = this.p0.size();
-        int r119 = 0;
-        boolean r120 = false;
-    L461:
-        if (r119 >= r43) goto L468;
-        jc0 r44 = (jc0) this.p0.get(r119);
-        r44.M(r7, r42);
-        boolean r212 = r42;
-        int r213 = r43;
-        if (r44.h == (-1)) goto L465;
-    L466:
-        r120 = true;
-    L467:
-        r119 = r119 + 1;
-        r42 = r212;
-        r43 = r213;
-        r120 = r120;
-        goto L461
-    L465:
-        if (r44.i == (-1)) goto L467;
-    L468:
-        boolean r121 = r120;
-    L474:
-        if (r211 == false) goto L490;
-        if (r115 >= 8) goto L490;
-        if (r2[2] == false) goto L490;
-        int r45 = 0;
-        int r46 = 0;
-        int r122 = 0;
-    L479:
-        if (r45 >= r110) goto L481;
-        jc0 r47 = (jc0) this.p0.get(r45);
-        int r214 = r45;
-        r122 = Math.max(r122, r47.o() + r47.X);
-        r46 = Math.max(r46, r47.i() + r47.Y);
-        r45 = r214 + 1;
-        goto L479
-    L481:
-        int r48 = Math.max(this.a0, r122);
-        int r49 = Math.max(this.b0, r46);
-        r121 = r121;
-        r210 = r210;
-        if (r30 != 2) goto L486;
-        r121 = r121;
-        r210 = r210;
-        if (o() >= r48) goto L486;
-        K(r48);
-        r21[0] = 2;
-        r121 = true;
-        r210 = 1;
-    L486:
-        if (r20 != 2) goto L490;
-        if (i() >= r49) goto L490;
-        H(r49);
-        r21[1] = 2;
-        r121 = true;
-        r210 = 1;
-    L490:
-        int r50 = Math.max(this.a0, o());
-        if (r50 <= o()) goto L493;
-        K(r50);
-        ?? r51 = 1;
-        r21[0] = 1;
-        boolean r123 = true;
-        ?? r124 = 1;
-    L494:
-        int r52 = Math.max(this.b0, i());
-        if (r52 <= i()) goto L497;
-        H(r52);
-        r21[r51] = r51;
-        ?? r53 = r51;
-        boolean r125 = r53 == true ? 1 : 0;
-        ?? r54 = r53;
-    L498:
-        if (r54 != 0) goto L512;
-        ?? r55 = r54;
-        r55 = r54;
-        boolean r126 = r125;
-        r126 = r125;
-        if (r21[0] != 2) goto L505;
-        if (r22 <= 0) goto L505;
-        r55 = r54;
-        r126 = r125;
-        if (o() <= r22) goto L505;
-        this.D0 = r51;
-        r21[0] = r51;
-        K(r22);
-        ?? r56 = r51;
-        r126 = r56 == true ? 1 : 0;
-        r55 = r56;
-    L505:
-        ?? r57 = r55;
-        r57 = r55;
-        boolean r127 = r126;
-        r127 = r126;
-        if (r21[r51] != 2) goto L511;
-        if (r5 <= 0) goto L511;
-        r57 = r55;
-        r127 = r126;
-        if (i() <= r5) goto L511;
-        this.E0 = r51;
-        r21[r51] = r51;
-        H(r5);
-        ?? r58 = 1;
-        int r59 = 8;
-        boolean r128 = true;
-    L513:
-        if (r115 <= r59) goto L515;
-        r128 = false;
-    L515:
-        r210 = r58;
-        r36 = r115;
-        r35 = r211;
-        r27 = r116;
-        r114 = r128;
-    L511:
-        r59 = 8;
-        r58 = r57;
-        r128 = r127;
-        goto L513
-    L512:
-        r57 = r54;
-        r127 = r125;
-        goto L511
-    L497:
-        r54 = r124;
-        r125 = r123;
-        goto L498
-    L493:
-        r51 = 1;
-        r124 = r210;
-        r123 = r121;
-        goto L494
-    L469:
-        M(r7, r113);
-        int r60 = 0;
-    L470:
-        if (r60 >= r110) goto L472;
-        ((jc0) this.p0.get(r60)).M(r7, r113);
-        r60 = r60 + 1;
-        goto L470
-    L472:
-        r121 = false;
-    L449:
-        e = e;
-    L451:
-        e = e;
-    L454:
-        r7.p();     // Catch: Exception -> L447
-        r118 = true;
-        goto L459
-    L429:
-        if (r40.get() == null) goto L437;
-        hb0 r61 = (hb0) this.G0.get();     // Catch: Exception -> L410
-        hb0 r62 = r23;
-        r23 = r62;
-        r7.f(r7.k(r61), r7.k(r62), 0, 5);     // Catch: Exception -> L410
-        this.G0 = null;     // Catch: Exception -> L410
-    L435:
-        e = e;
-        r23 = r62;
-        goto L413
-    L424:
-        if (r39.get() == null) goto L426;
-        r7.f(r7.k(this.K), r7.k((hb0) this.H0.get()), 0, 5);     // Catch: Exception -> L410
-        this.H0 = null;     // Catch: Exception -> L410
-        goto L426
-    L535:
-    L418:
-        e = e;
-        r116 = r27;
-    L417:
-        r211 = r35;
-        goto L413
-    L403:
-        if (r38.get() == null) goto L420;
-        hb0 r63 = (hb0) this.F0.get();     // Catch: Exception -> L418
-        r116 = r27;
-        r211 = r35;
-        r7.f(r7.k(r63), r7.k(r116), 0, 5);     // Catch: Exception -> L410
-        this.F0 = null;     // Catch: Exception -> L410
-    L410:
-        e = e;
-    L414:
-        e = e;
-    L416:
-        e = e;
-    L456:
-        e = e;
-        r116 = r27;
-        r211 = r35;
-    L397:
-        e = e;
-        r116 = r27;
-        r211 = r35;
-        r117 = r114;
-        goto L458
-    L516:
-        boolean r215 = r210 == true ? 1 : 0;
-        this.p0 = r34;
-        if (r215 == false) goto L519;
-        r21[0] = r30;
-        r21[1] = r20;
-    L519:
-        C(r7.m);
-        return;
-    L381:
-        if (r21[r33] == 2) goto L384;
-        r35 = false;
-    L377:
-        r33 = 1;
-        goto L378
-    L369:
-        if (S(128) == true) goto L372;
-        r32 = false;
-        goto L373
-    L160:
-        r25 = r4;
-        r27 = r12;
-        r23 = r13;
-        int r64 = 0;
-        ArrayList r65 = null;
-        ArrayList r66 = null;
-        ArrayList r67 = null;
-        ArrayList r129 = null;
-        ArrayList r130 = null;
-        ArrayList r131 = null;
-    L161:
-        if (r64 >= r15) goto L221;
-        int r216 = r64;
-        jc0 r68 = (jc0) r14.get(r64);
-        int r217 = r5;
-        ?? r69 = r21[0];
-        int r218 = r8;
-        ?? r70 = r21[1];
-        int r219 = r0;
-        int[] r71 = r68.o0;
-        int r310 = r9;
-        if (gi1.a0(r69, r70, r71[0], r71[1]) == true) goto L165;
-        R(r68, r11, this.K0);
-    L165:
-        boolean r72 = r68 instanceof pk1;
-        if (r72 == false) goto L178;
-        pk1 r73 = (pk1) r68;
-        if (r73.t0 != 0) goto L173;
-        if (r131 != null) goto L171;
-        r131 = new ArrayList();
-    L171:
-        r131.add(r73);
-    L173:
-        if (r73.t0 != 1) goto L178;
-        if (r65 != null) goto L176;
-        r65 = new ArrayList();
-    L176:
-        r65.add(r73);
-    L178:
-        if ((r68 instanceof ep) == false) goto L199;
-        if ((r68 instanceof ep) == false) goto L191;
-        ep r74 = (ep) r68;
-        if (r74.P() != 0) goto L187;
-        if (r67 != null) goto L185;
-        r67 = new ArrayList();
-    L185:
-        r67.add(r74);
-    L187:
-        if (r74.P() != 1) goto L199;
-        if (r130 != null) goto L190;
-        r130 = new ArrayList();
-    L190:
-        r130.add(r74);
-        goto L199
-    L191:
-        ep r75 = (ep) r68;
-        if (r67 != null) goto L194;
-        r67 = new ArrayList();
-    L194:
-        r67.add(r75);
-        if (r130 != null) goto L197;
-        r130 = new ArrayList();
-    L197:
-        r130.add(r75);
-    L199:
-        if (r68.H.f != null) goto L209;
-        if (r68.J.f != null) goto L209;
-        if (r72 == true) goto L209;
-        if ((r68 instanceof ep) == true) goto L209;
-        if (r129 != null) goto L207;
-        r129 = new ArrayList();
-    L207:
-        r129.add(r68);
-    L209:
-        if (r68.I.f != null) goto L220;
-        if (r68.K.f != null) goto L220;
-        if (r68.L.f != null) goto L220;
-        if (r72 == true) goto L220;
-        if ((r68 instanceof ep) == true) goto L220;
-        if (r66 != null) goto L219;
-        r66 = new ArrayList();
-    L219:
-        r66.add(r68);
-    L220:
-        r64 = r216 + 1;
-        r5 = r217;
-        r8 = r218;
-        r0 = r219;
-        r9 = r310;
-        goto L161
-    L221:
-        r29 = r0;
-        r26 = r5;
-        r28 = r8;
-        r31 = r9;
-        ArrayList r76 = new ArrayList();
-        if (r65 == null) goto L226;
-        int r77 = r65.size();
-        int r78 = 0;
-    L224:
-        if (r78 >= r77) goto L226;
-        Object r79 = r65.get(r78);
-        r78 = r78 + 1;
-        gi1.n((pk1) r79, 0, r76, null);
-    L226:
-        if (r67 == null) goto L230;
-        int r80 = r67.size();
-        int r81 = 0;
-    L228:
-        if (r81 >= r80) goto L230;
-        Object r82 = r67.get(r81);
-        r81 = r81 + 1;
-        ep r83 = (ep) r82;
-        aa5 r84 = gi1.n(r83, 0, r76, null);
-        r83.N(0, r84, r76);
-        r84.a(r76);
-    L230:
-        HashSet r85 = g(2).a;
-        if (r85 == null) goto L236;
-        Iterator r86 = r85.iterator();
-    L234:
-        if (r86.hasNext() == false) goto L236;
-        gi1.n(((hb0) r86.next()).d, 0, r76, null);
-    L236:
-        HashSet r87 = g(4).a;
-        if (r87 == null) goto L242;
-        Iterator r88 = r87.iterator();
-    L240:
-        if (r88.hasNext() == false) goto L242;
-        gi1.n(((hb0) r88.next()).d, 0, r76, null);
-    L242:
-        HashSet r89 = g(7).a;
-        if (r89 == null) goto L248;
-        Iterator r90 = r89.iterator();
-    L246:
-        if (r90.hasNext() == false) goto L248;
-        gi1.n(((hb0) r90.next()).d, 0, r76, null);
-    L248:
-        if (r129 == null) goto L252;
-        int r91 = r129.size();
-        int r92 = 0;
-    L250:
-        if (r92 >= r91) goto L252;
-        Object r93 = r129.get(r92);
-        r92 = r92 + 1;
-        gi1.n((jc0) r93, 0, r76, null);
-    L252:
-        if (r131 == null) goto L256;
-        int r94 = r131.size();
-        int r95 = 0;
-    L254:
-        if (r95 >= r94) goto L256;
-        Object r96 = r131.get(r95);
-        r95 = r95 + 1;
-        gi1.n((pk1) r96, 1, r76, null);
-    L256:
-        if (r130 == null) goto L260;
-        int r97 = r130.size();
-        int r98 = 0;
-    L258:
-        if (r98 >= r97) goto L260;
-        Object r99 = r130.get(r98);
-        r98 = r98 + 1;
-        ep r100 = (ep) r99;
-        aa5 r101 = gi1.n(r100, 1, r76, null);
-        r100.N(1, r101, r76);
-        r101.a(r76);
-    L260:
-        HashSet r102 = g(3).a;
-        if (r102 == null) goto L266;
-        Iterator r103 = r102.iterator();
-    L264:
-        if (r103.hasNext() == false) goto L266;
-        gi1.n(((hb0) r103.next()).d, 1, r76, null);
-    L266:
-        HashSet r104 = g(6).a;
-        if (r104 == null) goto L272;
-        Iterator r105 = r104.iterator();
-    L270:
-        if (r105.hasNext() == false) goto L272;
-        gi1.n(((hb0) r105.next()).d, 1, r76, null);
-    L272:
-        HashSet r106 = g(5).a;
-        if (r106 == null) goto L278;
-        Iterator r107 = r106.iterator();
-    L276:
-        if (r107.hasNext() == false) goto L278;
-        gi1.n(((hb0) r107.next()).d, 1, r76, null);
-    L278:
-        HashSet r108 = g(7).a;
-        if (r108 == null) goto L284;
-        Iterator r109 = r108.iterator();
-    L282:
-        if (r109.hasNext() == false) goto L284;
-        gi1.n(((hb0) r109.next()).d, 1, r76, null);
-    L284:
-        if (r66 == null) goto L288;
-        int r132 = r66.size();
-        int r133 = 0;
-    L286:
-        if (r133 >= r132) goto L288;
-        Object r134 = r66.get(r133);
-        r133 = r133 + 1;
-        gi1.n((jc0) r134, 1, r76, null);
-    L288:
-        char r135 = 1;
-        int r136 = 0;
-    L289:
-        if (r136 >= r15) goto L313;
-        jc0 r137 = (jc0) r14.get(r136);
-        int[] r138 = r137.o0;
-        if (r138[0] != 3) goto L311;
-        if (r138[r135] != 3) goto L311;
-        int r139 = r137.m0;
-        int r140 = r76.size();
-        int r141 = 0;
-    L295:
-        if (r141 >= r140) goto L300;
-        aa5 r142 = (aa5) r76.get(r141);
-        if (r139 == r142.b) goto L301;
-        r141 = r141 + 1;
-    L301:
-        int r143 = r137.n0;
-        int r144 = r76.size();
-        int r145 = 0;
-    L302:
-        if (r145 >= r144) goto L307;
-        aa5 r146 = (aa5) r76.get(r145);
-        if (r143 == r146.b) goto L308;
-        r145 = r145 + 1;
-    L308:
-        if (r142 == null) goto L311;
-        if (r146 == null) goto L311;
-        r142.c(0, r146);
-        r146.c = 2;
-        r76.remove(r142);
-        goto L311
-    L307:
-        r146 = null;
-        goto L308
-    L300:
-        r142 = null;
-    L311:
-        r136 = r136 + 1;
-        r135 = 1;
-        goto L289
-    L313:
-        if (r76.size() <= 1) goto L347;
-        if (r21[0] != 2) goto L328;
-        int r147 = r76.size();
-        int r148 = 0;
-        int r149 = 0;
-        aa5 r150 = null;
-    L318:
-        if (r149 >= r147) goto L325;
-        Object r151 = r76.get(r149);
-        r149 = r149 + 1;
-        aa5 r152 = (aa5) r151;
-        if (r152.c == 1) goto L318;
-        int r153 = r152.b(r7, 0);
-        if (r153 <= r148) goto L318;
-        r150 = r152;
-        r148 = r153;
-        goto L318
-    L325:
-        char r154 = 1;
-        if (r150 == null) goto L329;
-        I(1);
-        K(r148);
-    L331:
-        if (r21[r154] != 2) goto L343;
-        int r155 = r76.size();
-        int r156 = 0;
-        int r157 = 0;
-        aa5 r158 = null;
-    L333:
-        if (r157 >= r155) goto L341;
-        Object r159 = r76.get(r157);
-        r157 = r157 + 1;
-        aa5 r160 = (aa5) r159;
-        if (r160.c == 0) goto L333;
-        int r161 = r160.b(r7, 1);
-        if (r161 <= r156) goto L333;
-        r158 = r160;
-        r156 = r161;
-        goto L333
-    L341:
-        if (r158 == null) goto L343;
-        J(1);
-        H(r156);
-    L344:
-        if (r150 != null) goto L346;
-        if (r158 == null) goto L347;
-    L346:
-        r30 = r31;
-        if (r30 != 2) goto L355;
-        int r162 = r29;
-        if (r162 >= o()) goto L353;
-        if (r162 <= 0) goto L353;
-        K(r162);
-        this.D0 = true;
-    L356:
-        int r163 = r162;
-    L354:
-        r20 = r28;
-        if (r20 != 2) goto L363;
-        r5 = r26;
-        if (r5 >= i()) goto L362;
-        if (r5 <= 0) goto L362;
-        H(r5);
-        this.E0 = true;
-    L364:
-        r22 = r163;
-        r1 = true;
-    L362:
-        r5 = i();
-        goto L364
-    L363:
-        r5 = r26;
-    L353:
-        r163 = o();
-        goto L354
-    L355:
-        r162 = r29;
-    L343:
-        r158 = null;
-    L329:
-        r150 = null;
-        goto L331
-    L328:
-        r154 = 1;
-    L151:
-        r22 = r0;
-        r25 = r4;
-        r20 = r8;
-        r30 = r9;
-        r27 = r12;
-        r23 = r13;
-        goto L365
-    L5:
-        if (uo.q(this.C0, 1) == false) goto L145;
-        nr3 r164 = this.t0;
-        int r165 = r6[0];
-        int r166 = r6[1];
-        B();
-        ArrayList r167 = this.p0;
-        int r168 = r167.size();
-        int r169 = 0;
-    L7:
-        if (r169 >= r168) goto L9;
-        ((jc0) r167.get(r169)).B();
-        r169 = r169 + 1;
-        goto L7
-    L9:
-        boolean r170 = this.u0;
-        if (r165 != 1) goto L12;
-        F(0, o());
-    L13:
-        int r171 = 0;
-        boolean r172 = false;
-        boolean r173 = false;
-    L15:
-        if (r171 >= r168) goto L39;
-        int r220 = r171;
-        jc0 r174 = (jc0) r167.get(r171);
-        int[] r221 = r6;
-        if ((r174 instanceof pk1) == false) goto L33;
-        pk1 r175 = (pk1) r174;
-        boolean r222 = r172;
-        if (r175.t0 != 1) goto L32;
-        int r176 = r175.q0;
-        if (r176 == (-1)) goto L24;
-        r175.N(r176);
-    L31:
-        r222 = true;
-        goto L32
-    L24:
-        if (r175.r0 == (-1)) goto L29;
-        if (y() == false) goto L29;
-        r175.N(o() - r175.r0);
-    L29:
-        if (y() == false) goto L31;
-        r175.N((int) ((r175.p0 * o()) + 0.5f));
-    L32:
-        r172 = r222;
-    L38:
-        r171 = r220 + 1;
-        r6 = r221;
-        goto L15
-    L33:
-        r222 = r172;
-        if ((r174 instanceof ep) == false) goto L32;
-        if (((ep) r174).P() != 0) goto L32;
-        r172 = r222;
-        r173 = true;
-        goto L38
-    L39:
-        r21 = r6;
-        if (r172 == false) goto L51;
-        int r177 = 0;
-    L42:
-        if (r177 >= r168) goto L51;
-        jc0 r178 = (jc0) r167.get(r177);
-        if ((r178 instanceof pk1) == false) goto L49;
-        pk1 r179 = (pk1) r178;
-        int r223 = r177;
-        if (r179.t0 != 1) goto L50;
-        q05.p(0, r179, r164, r170);
-    L50:
-        r177 = r223 + 1;
-        goto L42
-    L49:
-        r223 = r177;
-    L51:
-        q05.p(0, this, r164, r170);
-        if (r173 == false) goto L65;
-        int r180 = 0;
-    L54:
-        if (r180 >= r168) goto L65;
-        jc0 r181 = (jc0) r167.get(r180);
-        if ((r181 instanceof ep) == false) goto L63;
-        ep r182 = (ep) r181;
-        if (r182.P() != 0) goto L63;
-        if (r182.O() == false) goto L63;
-        q05.p(1, r182, r164, r170);
-    L63:
-        r180 = r180 + 1;
-    L65:
-        if (r166 != 1) goto L67;
-        G(0, i());
-    L68:
-        int r183 = 0;
-        boolean r184 = false;
-        boolean r185 = false;
-    L69:
-        if (r183 >= r168) goto L92;
-        jc0 r186 = (jc0) r167.get(r183);
-        int r187 = r183;
-        if ((r186 instanceof pk1) == false) goto L87;
-        pk1 r188 = (pk1) r186;
-        if (r188.t0 != 0) goto L91;
-        int r189 = r188.q0;
-        if (r189 == (-1)) goto L78;
-        r188.N(r189);
-    L85:
-        r184 = true;
-        goto L91
-    L78:
-        if (r188.r0 == (-1)) goto L83;
-        if (z() == false) goto L83;
-        r188.N(i() - r188.r0);
-    L83:
-        if (z() == false) goto L85;
-        r188.N((int) ((r188.p0 * i()) + 0.5f));
-    L91:
-        r183 = r187 + 1;
-        goto L69
-    L87:
-        if ((r186 instanceof ep) == false) goto L91;
-        if (((ep) r186).P() != 1) goto L91;
-        r185 = true;
-        goto L91
-    L92:
-        if (r184 == false) goto L101;
-        int r190 = 0;
-    L94:
-        if (r190 >= r168) goto L101;
-        jc0 r191 = (jc0) r167.get(r190);
-        if ((r191 instanceof pk1) == false) goto L100;
-        pk1 r192 = (pk1) r191;
-        if (r192.t0 != 0) goto L100;
-        q05.C(1, r192, r164);
-    L100:
-        r190 = r190 + 1;
-    L101:
-        q05.C(0, this, r164);
-        if (r185 == false) goto L113;
-        int r193 = 0;
-    L104:
-        if (r193 >= r168) goto L113;
-        jc0 r194 = (jc0) r167.get(r193);
-        if ((r194 instanceof ep) == false) goto L112;
-        ep r195 = (ep) r194;
-        if (r195.P() != 1) goto L112;
-        if (r195.O() == false) goto L112;
-        q05.C(1, r195, r164);
-    L112:
-        r193 = r193 + 1;
-    L113:
-        int r196 = 0;
-    L114:
-        if (r196 >= r168) goto L127;
-        jc0 r197 = (jc0) r167.get(r196);
-        if (r197.x() == false) goto L126;
-        if (q05.g(r197) == false) goto L126;
-        R(r197, r164, q05.a);
-        if ((r197 instanceof pk1) == true) goto L122;
-        q05.p(0, r197, r164, r170);
-        q05.C(0, r197, r164);
-        goto L126
-    L122:
-        if (((pk1) r197).t0 != 0) goto L124;
-        q05.C(0, r197, r164);
-        goto L126
-    L124:
-        q05.p(0, r197, r164, r170);
-    L126:
-        r196 = r196 + 1;
-        goto L114
-    L127:
-        int r198 = 0;
-    L128:
-        if (r198 >= r4) goto L146;
-        jc0 r199 = (jc0) this.p0.get(r198);
-        if (r199.x() == false) goto L144;
-        if ((r199 instanceof pk1) == true) goto L144;
-        if ((r199 instanceof ep) == true) goto L144;
-        int r200 = r199.h(0);
-        int r201 = r199.h(1);
-        if (r200 == 3) goto L138;
-    L143:
-        R(r199, this.t0, new kr());
-        goto L144
-    L138:
-        if (r199.r == 1) goto L143;
-        if (r201 != 3) goto L143;
-        if (r199.s == 1) goto L143;
-    L144:
-        r198 = r198 + 1;
-        goto L128
-    L67:
-        r12.i(0);
-        this.Y = 0;
-        goto L68
-    L12:
-        r13.i(0);
-        this.X = 0;
-        goto L13
+        i5 = i2;
+        while (i6 < i5) {
+            jc0Var2 = (jc0) this.p0.get(i6);
+            if (jc0Var2 instanceof kc0) {
+                ((kc0) jc0Var2).Q();
+            }
+        }
+        zS = S(64);
+        r12 = z;
+        i7 = 0;
+        z4 = true;
+        while (z4) {
+            i8 = i7 + 1;
+            eb2Var.t();
+            this.y0 = 0;
+            this.z0 = 0;
+            e(eb2Var);
+            while (i13 < i5) {
+                ((jc0) this.p0.get(i13)).e(eb2Var);
+            }
+            O(eb2Var);
+            weakReference = this.F0;
+            if (weakReference != null) {
+                if (weakReference.get() != null) {
+                    hb0Var3 = hb0Var;
+                    z6 = z3;
+                    eb2Var.f(eb2Var.k((hb0) this.F0.get()), eb2Var.k(hb0Var3), 0, 5);
+                    this.F0 = null;
+                } else {
+                    hb0Var3 = hb0Var;
+                    z6 = z3;
+                }
+                weakReference2 = this.H0;
+                if (weakReference2 != null) {
+                    eb2Var.f(eb2Var.k(this.K), eb2Var.k((hb0) this.H0.get()), 0, 5);
+                    this.H0 = null;
+                }
+                weakReference3 = this.G0;
+                if (weakReference3 != null) {
+                    hb0Var4 = hb0Var2;
+                    hb0Var2 = hb0Var4;
+                    eb2Var.f(eb2Var.k((hb0) this.G0.get()), eb2Var.k(hb0Var4), 0, 5);
+                    this.G0 = null;
+                }
+                weakReference4 = this.I0;
+                if (weakReference4 == null) {
+                }
+                eb2Var.p();
+                z7 = true;
+            } else {
+                hb0Var3 = hb0Var;
+                z6 = z3;
+                weakReference2 = this.H0;
+                if (weakReference2 != null) {
+                    eb2Var.f(eb2Var.k(this.K), eb2Var.k((hb0) this.H0.get()), 0, 5);
+                    this.H0 = null;
+                }
+                weakReference3 = this.G0;
+                if (weakReference3 != null) {
+                    hb0Var4 = hb0Var2;
+                    hb0Var2 = hb0Var4;
+                    eb2Var.f(eb2Var.k((hb0) this.G0.get()), eb2Var.k(hb0Var4), 0, 5);
+                    this.G0 = null;
+                }
+                weakReference4 = this.I0;
+                if (weakReference4 == null) {
+                }
+                eb2Var.p();
+                z7 = true;
+            }
+            if (z7) {
+                zArr[2] = false;
+                zS2 = S(64);
+                M(eb2Var, zS2);
+                size = this.p0.size();
+                i12 = 0;
+                z14 = false;
+                while (i12 < size) {
+                    jc0Var = (jc0) this.p0.get(i12);
+                    jc0Var.M(eb2Var, zS2);
+                    boolean z210 = zS2;
+                    int i68 = size;
+                    if (jc0Var.h == -1) {
+                        z14 = true;
+                    } else {
+                        z14 = true;
+                    }
+                    i12++;
+                    zS2 = z210;
+                    size = i68;
+                    z14 = z14;
+                }
+                z8 = z14;
+            } else {
+                M(eb2Var, zS);
+                while (i9 < i5) {
+                    ((jc0) this.p0.get(i9)).M(eb2Var, zS);
+                }
+                z8 = false;
+            }
+            if (z6) {
+                iMax3 = 0;
+                iMax4 = 0;
+                while (i11 < i5) {
+                    jc0 jc0Var111 = (jc0) this.p0.get(i11);
+                    iMax4 = Math.max(iMax4, jc0Var111.o() + jc0Var111.X);
+                    iMax3 = Math.max(iMax3, jc0Var111.i() + jc0Var111.Y);
+                }
+                iMax5 = Math.max(this.a0, iMax4);
+                iMax6 = Math.max(this.b0, iMax3);
+                z8 = z8;
+                r12 = r12;
+                if (i4 == 2) {
+                    z8 = z8;
+                    r12 = r12;
+                    K(iMax5);
+                    r21[0] = 2;
+                    z8 = true;
+                    r12 = 1;
+                }
+                if (i3 == 2) {
+                    H(iMax6);
+                    r21[1] = 2;
+                    z8 = true;
+                    r12 = 1;
+                }
+            }
+            iMax = Math.max(this.a0, o());
+            if (iMax > o()) {
+                K(iMax);
+                r9 = 1;
+                r21[0] = 1;
+                z9 = true;
+                r17 = 1;
+            } else {
+                r9 = 1;
+                r17 = r12;
+                z9 = z8;
+            }
+            iMax2 = Math.max(this.b0, i());
+            if (iMax2 > i()) {
+                H(iMax2);
+                r21[r9] = r9;
+                r4 = r9;
+                z10 = r4 == true ? 1 : 0;
+            } else {
+                r0 = r17;
+            }
+            if (r0 == 0) {
+                z10 = z9;
+                if (r21[0] == 2) {
+                    r3 = r0;
+                    z13 = z10;
+                    if (o() > i) {
+                        this.D0 = r9;
+                        r21[0] = r9;
+                        K(i);
+                        ?? r19 = r9;
+                        z13 = r19 == true ? 1 : 0;
+                        r3 = r19;
+                    }
+                }
+                r0 = r4;
+                r3 = r0;
+                r3 = r0;
+                z13 = z10;
+                z13 = z10;
+                r1 = r3;
+                r1 = r3;
+                z11 = z13;
+                z11 = z13;
+                if (r21[r9] != 2) {
+                }
+                if (i8 > i10) {
+                    r1 = r3;
+                    z11 = z13;
+                    z12 = false;
+                } else {
+                    r1 = r3;
+                    z11 = z13;
+                }
+                r12 = r2;
+                i7 = i8;
+                z3 = z6;
+                hb0Var = hb0Var3;
+                z4 = z12;
+            } else {
+                z10 = z9;
+                r0 = r4;
+                r1 = r0;
+                z11 = z10;
+            }
+            r1 = r3;
+            z11 = z13;
+            i10 = 8;
+            r2 = r1;
+            z12 = z11;
+            if (i8 > i10) {
+                r1 = r3;
+                z11 = z13;
+                z12 = false;
+            } else {
+                r1 = r3;
+                z11 = z13;
+            }
+            r12 = r2;
+            i7 = i8;
+            z3 = z6;
+            hb0Var = hb0Var3;
+            z4 = z12;
+        }
+        z5 = r12 == true ? 1 : 0;
+        this.p0 = arrayList13;
+        if (z5) {
+            r21[0] = i4;
+            r21[1] = i3;
+        }
+        C(eb2Var.m);
     }
 
-    public final boolean S(int r1) {
-        if ((this.C0 & r1) != r1) goto L6;
-        return true;
-    L6:
-        return false;
+    public final boolean S(int i) {
+        return (this.C0 & i) == i;
     }
 
     @Override // defpackage.jc0
-    public final void l(StringBuilder r4) {
-        r4.append(this.j + ":{\n");
-        StringBuilder r0 = new StringBuilder("  actualWidth:");
-        r0.append(this.T);
-        r4.append(r0.toString());
-        r4.append("\n");
-        r4.append("  actualHeight:" + this.U);
-        r4.append("\n");
-        ArrayList r3 = this.p0;
-        int r1 = r3.size();
-        int r2 = 0;
-    L3:
-        if (r2 >= r1) goto L5;
-        Object r5 = r3.get(r2);
-        r2 = r2 + 1;
-        ((jc0) r5).l(r4);
-        r4.append(",\n");
-        goto L3
-    L5:
-        r4.append("}");
+    public final void l(StringBuilder sb) {
+        sb.append(this.j + ":{\n");
+        StringBuilder sb2 = new StringBuilder("  actualWidth:");
+        sb2.append(this.T);
+        sb.append(sb2.toString());
+        sb.append("\n");
+        sb.append("  actualHeight:" + this.U);
+        sb.append("\n");
+        ArrayList arrayList = this.p0;
+        int size = arrayList.size();
+        int i = 0;
+        while (i < size) {
+            Object obj = arrayList.get(i);
+            i++;
+            ((jc0) obj).l(sb);
+            sb.append(",\n");
+        }
+        sb.append("}");
     }
 }

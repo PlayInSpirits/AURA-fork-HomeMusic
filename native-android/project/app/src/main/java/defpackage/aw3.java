@@ -14,114 +14,93 @@ public final class aw3 extends FilterInputStream {
     public int r;
     public final qj0 s;
 
-    public aw3(InputStream r2, qj0 r3) {
-        super(r2);
+    public aw3(InputStream inputStream, qj0 qj0Var) {
+        super(inputStream);
         this.q = -1;
-        this.s = r3;
-        this.n = (byte[]) r3.d(65536, byte[].class);
+        this.s = qj0Var;
+        this.n = (byte[]) qj0Var.d(65536, byte[].class);
     }
 
-    public static void j() {
+    public static void j() throws IOException {
         throw new IOException("BufferedInputStream is closed");
     }
 
     @Override // java.io.FilterInputStream, java.io.InputStream
     public final synchronized int available() {
-        monitor-enter(this);
-        InputStream r0 = ((FilterInputStream) this).in;     // Catch: Throwable -> L10
-        if (this.n == null) goto L12;
-        if (r0 == null) goto L12;
-        int r1 = (this.o - this.r) + r0.available();
-        monitor-exit(this);
-        return r1;
-    L12:
-        j();     // Catch: Throwable -> L10
-        throw null;     // Catch: Throwable -> L10
-    L10:
-        th = move-exception;
-        throw th;
+        InputStream inputStream;
+        inputStream = ((FilterInputStream) this).in;
+        if (this.n == null || inputStream == null) {
+            j();
+            throw null;
+        }
+        return (this.o - this.r) + inputStream.available();
     }
 
-    public final int b(InputStream r6, byte[] r7) {
-        int r0 = this.q;
-        if (r0 == (-1)) goto L25;
-        int r3 = this.r - r0;
-        int r4 = this.p;
-        if (r3 >= r4) goto L25;
-        if (r0 == 0) goto L9;
-    L17:
-        if (r0 <= 0) goto L19;
-        System.arraycopy(r7, r0, r7, 0, r7.length - r0);
-    L19:
-        int r1 = this.r - this.q;
-        this.r = r1;
-        this.q = 0;
-        this.o = 0;
-        int r8 = r6.read(r7, r1, r7.length - r1);
-        int r9 = this.r;
-        if (r8 <= 0) goto L23;
-        r9 = r9 + r8;
-    L23:
-        this.o = r9;
-        return r8;
-    L9:
-        if (r4 <= r7.length) goto L17;
-        if (this.o != r7.length) goto L17;
-        int r2 = r7.length * 2;
-        if (r2 > r4) goto L16;
-        r4 = r2;
-    L16:
-        byte[] r5 = (byte[]) this.s.d(r4, byte[].class);
-        System.arraycopy(r7, 0, r5, 0, r7.length);
-        this.n = r5;
-        this.s.h(r7);
-        r7 = r5;
-    L25:
-        int r10 = r6.read(r7);
-        if (r10 <= 0) goto L28;
-        this.q = -1;
-        this.r = 0;
-        this.o = r10;
-    L28:
-        return r10;
+    public final int b(InputStream inputStream, byte[] bArr) throws IOException {
+        int i = this.q;
+        if (i != -1) {
+            int i2 = this.r - i;
+            int i3 = this.p;
+            if (i2 < i3) {
+                if (i == 0 && i3 > bArr.length && this.o == bArr.length) {
+                    int length = bArr.length * 2;
+                    if (length <= i3) {
+                        i3 = length;
+                    }
+                    byte[] bArr2 = (byte[]) this.s.d(i3, byte[].class);
+                    System.arraycopy(bArr, 0, bArr2, 0, bArr.length);
+                    this.n = bArr2;
+                    this.s.h(bArr);
+                    bArr = bArr2;
+                } else if (i > 0) {
+                    System.arraycopy(bArr, i, bArr, 0, bArr.length - i);
+                }
+                int i4 = this.r - this.q;
+                this.r = i4;
+                this.q = 0;
+                this.o = 0;
+                int i5 = inputStream.read(bArr, i4, bArr.length - i4);
+                int i6 = this.r;
+                if (i5 > 0) {
+                    i6 += i5;
+                }
+                this.o = i6;
+                return i5;
+            }
+        }
+        int i7 = inputStream.read(bArr);
+        if (i7 > 0) {
+            this.q = -1;
+            this.r = 0;
+            this.o = i7;
+        }
+        return i7;
     }
 
     @Override // java.io.FilterInputStream, java.io.InputStream, java.io.Closeable, java.lang.AutoCloseable
-    public final void close() {
-        if (this.n == null) goto L5;
-        this.s.h(this.n);
-        this.n = null;
-    L5:
-        InputStream r0 = ((FilterInputStream) this).in;
+    public final void close() throws IOException {
+        if (this.n != null) {
+            this.s.h(this.n);
+            this.n = null;
+        }
+        InputStream inputStream = ((FilterInputStream) this).in;
         ((FilterInputStream) this).in = null;
-        if (r0 == null) goto L9;
-        r0.close();
-        return;
+        if (inputStream != null) {
+            inputStream.close();
+        }
     }
 
     public final synchronized void f() {
-        monitor-enter(this);
-    L7:
-        th = move-exception;
-        throw th;
-    L4:
-        if (this.n == null) goto L9;
-        this.s.h(this.n);     // Catch: Throwable -> L7
-        this.n = null;     // Catch: Throwable -> L7
-    L9:
-        monitor-exit(this);
+        if (this.n != null) {
+            this.s.h(this.n);
+            this.n = null;
+        }
     }
 
     @Override // java.io.FilterInputStream, java.io.InputStream
-    public final synchronized void mark(int r2) {
-        monitor-enter(this);
-        this.p = Math.max(this.p, r2);     // Catch: Throwable -> L6
-        this.q = this.r;     // Catch: Throwable -> L6
-        monitor-exit(this);
-        return;
-    L6:
-        th = move-exception;
-        throw th;
+    public final synchronized void mark(int i) {
+        this.p = Math.max(this.p, i);
+        this.q = this.r;
     }
 
     @Override // java.io.FilterInputStream, java.io.InputStream
@@ -130,203 +109,150 @@ public final class aw3 extends FilterInputStream {
     }
 
     @Override // java.io.FilterInputStream, java.io.InputStream
-    public final synchronized int read(byte[] r7, int r8, int r9) {
-        monitor-enter(this);
-        byte[] r0 = this.n;     // Catch: Throwable -> L23
-        if (r0 == null) goto L69;
-        if (r9 != 0) goto L10;
-        monitor-exit(this);
-        return 0;
-    L10:
-        InputStream r2 = ((FilterInputStream) this).in;     // Catch: Throwable -> L23
-        if (r2 == null) goto L67;
-        int r3 = this.r;     // Catch: Throwable -> L23
-        int r4 = this.o;     // Catch: Throwable -> L23
-        if (r3 >= r4) goto L27;
-        int r5 = r4 - r3;     // Catch: Throwable -> L23
-        if (r5 < r9) goto L17;
-        r5 = r9;
-    L17:
-        System.arraycopy(r0, r3, r7, r8, r5);     // Catch: Throwable -> L23
-        this.r += r5;     // Catch: Throwable -> L23
-        if (r5 != r9) goto L20;
-    L25:
-        monitor-exit(this);
-        return r5;
-    L20:
-        if (r2.available() == 0) goto L25;
-        r8 = r8 + r5;
-        int r6 = r9 - r5;
-    L28:
-        int r10 = -1;
-        if (this.q != (-1)) goto L40;
-        if (r6 < r0.length) goto L40;
-        int r11 = r2.read(r7, r8, r6);     // Catch: Throwable -> L23
-        if (r11 == (-1)) goto L34;
-    L57:
-        r6 = r6 - r11;
-        if (r6 == 0) goto L59;
-        if (r2.available() == 0) goto L63;
-        r8 = r8 + r11;
-        goto L28
-    L63:
-        int r12 = r9 - r6;
-        monitor-exit(this);
-        return r12;
-    L59:
-        monitor-exit(this);
-        return r9;
-    L34:
-        if (r6 == r9) goto L37;
-        r10 = r9 - r6;
-    L37:
-        monitor-exit(this);
-        return r10;
-    L40:
-        if (b(r2, r0) == (-1)) goto L41;
-        if (r0 == this.n) goto L53;
-        r0 = this.n;     // Catch: Throwable -> L23
-        if (r0 != null) goto L53;
-        j();     // Catch: Throwable -> L23
-        throw null;     // Catch: Throwable -> L23
-    L53:
-        int r13 = this.o;     // Catch: Throwable -> L23
-        int r14 = this.r;     // Catch: Throwable -> L23
-        r11 = r13 - r14;     // Catch: Throwable -> L23
-        if (r11 < r6) goto L56;
-        r11 = r6;
-    L56:
-        System.arraycopy(r0, r14, r7, r8, r11);     // Catch: Throwable -> L23
-        this.r += r11;     // Catch: Throwable -> L23
-        goto L57
-    L41:
-        if (r6 == r9) goto L44;
-        r10 = r9 - r6;
-    L44:
-        monitor-exit(this);
-        return r10;
-    L27:
-        r6 = r9;
-        goto L28
-    L67:
-        j();     // Catch: Throwable -> L23
-        throw null;     // Catch: Throwable -> L23
-    L69:
-        j();     // Catch: Throwable -> L23
-        throw null;     // Catch: Throwable -> L23
-    L23:
-        th = move-exception;
-        throw th;
+    public final synchronized int read(byte[] bArr, int i, int i2) {
+        int i3;
+        int i4;
+        byte[] bArr2 = this.n;
+        if (bArr2 == null) {
+            j();
+            throw null;
+        }
+        if (i2 == 0) {
+            return 0;
+        }
+        InputStream inputStream = ((FilterInputStream) this).in;
+        if (inputStream == null) {
+            j();
+            throw null;
+        }
+        int i5 = this.r;
+        int i6 = this.o;
+        if (i5 < i6) {
+            int i7 = i6 - i5;
+            if (i7 >= i2) {
+                i7 = i2;
+            }
+            System.arraycopy(bArr2, i5, bArr, i, i7);
+            this.r += i7;
+            if (i7 == i2 || inputStream.available() == 0) {
+                return i7;
+            }
+            i += i7;
+            i3 = i2 - i7;
+        } else {
+            i3 = i2;
+        }
+        while (true) {
+            if (this.q == -1 && i3 >= bArr2.length) {
+                i4 = inputStream.read(bArr, i, i3);
+                if (i4 == -1) {
+                    return i3 != i2 ? i2 - i3 : -1;
+                }
+            } else {
+                if (b(inputStream, bArr2) == -1) {
+                    return i3 != i2 ? i2 - i3 : -1;
+                }
+                if (bArr2 != this.n && (bArr2 = this.n) == null) {
+                    j();
+                    throw null;
+                }
+                int i8 = this.o;
+                int i9 = this.r;
+                i4 = i8 - i9;
+                if (i4 >= i3) {
+                    i4 = i3;
+                }
+                System.arraycopy(bArr2, i9, bArr, i, i4);
+                this.r += i4;
+            }
+            i3 -= i4;
+            if (i3 == 0) {
+                return i2;
+            }
+            if (inputStream.available() == 0) {
+                return i2 - i3;
+            }
+            i += i4;
+        }
     }
 
     @Override // java.io.FilterInputStream, java.io.InputStream
     public final synchronized void reset() {
-        monitor-enter(this);
-    L11:
-        th = move-exception;
-        throw th;
-    L5:
-        if (this.n == null) goto L16;
-        int r1 = this.q;     // Catch: Throwable -> L11
-        if ((-1) == r1) goto L14;
-        this.r = r1;     // Catch: Throwable -> L11
-        monitor-exit(this);
-        return;
-    L14:
-        throw new zv3("Mark has been invalidated, pos: " + this.r + " markLimit: " + this.p);     // Catch: Throwable -> L11
-    L16:
-        throw new IOException("Stream is closed");     // Catch: Throwable -> L11
+        if (this.n == null) {
+            throw new IOException("Stream is closed");
+        }
+        int i = this.q;
+        if (-1 == i) {
+            throw new zv3("Mark has been invalidated, pos: " + this.r + " markLimit: " + this.p);
+        }
+        this.r = i;
     }
 
     @Override // java.io.FilterInputStream, java.io.InputStream
-    public final synchronized long skip(long r11) {
-        monitor-enter(this);
-        if (r11 >= 1) goto L49;
-        monitor-exit(this);
-        return 0;
-    L49:
-        byte[] r0 = this.n;     // Catch: Throwable -> L16
-        if (r0 == null) goto L45;
-        InputStream r4 = ((FilterInputStream) this).in;     // Catch: Throwable -> L16
-        if (r4 == null) goto L43;
-        int r3 = this.o;     // Catch: Throwable -> L16
-        int r5 = this.r;     // Catch: Throwable -> L16
-        if ((r3 - r5) < r11) goto L18;
-        this.r = (int) (((long) r5) + r11);     // Catch: Throwable -> L16
-        monitor-exit(this);
-        return r11;
-    L18:
-        long r6 = ((long) r3) - ((long) r5);
-        this.r = r3;     // Catch: Throwable -> L16
-        if (this.q == (-1)) goto L37;
-        if (r11 > this.p) goto L37;
-        if (b(r4, r0) != (-1)) goto L27;
-        monitor-exit(this);
-        return r6;
-    L27:
-        int r1 = this.o;     // Catch: Throwable -> L16
-        int r2 = this.r;     // Catch: Throwable -> L16
-        if ((r1 - r2) < (r11 - r6)) goto L32;
-        this.r = (int) ((((long) r2) + r11) - r6);     // Catch: Throwable -> L16
-        monitor-exit(this);
-        return r11;
-    L32:
-        long r7 = (r6 + ((long) r1)) - ((long) r2);
-        this.r = r1;     // Catch: Throwable -> L16
-        monitor-exit(this);
-        return r7;
-    L37:
-        long r12 = r4.skip(r11 - r6);     // Catch: Throwable -> L16
-        if (r12 <= 0) goto L40;
-        this.q = -1;     // Catch: Throwable -> L16
-    L40:
-        long r8 = r6 + r12;
-        monitor-exit(this);
-        return r8;
-    L43:
-        j();     // Catch: Throwable -> L16
-        throw null;     // Catch: Throwable -> L16
-    L45:
-        j();     // Catch: Throwable -> L16
-        throw null;     // Catch: Throwable -> L16
-    L16:
-        th = move-exception;
-        throw th;
+    public final synchronized long skip(long j) {
+        if (j < 1) {
+            return 0L;
+        }
+        byte[] bArr = this.n;
+        if (bArr == null) {
+            j();
+            throw null;
+        }
+        InputStream inputStream = ((FilterInputStream) this).in;
+        if (inputStream == null) {
+            j();
+            throw null;
+        }
+        int i = this.o;
+        int i2 = this.r;
+        if (i - i2 >= j) {
+            this.r = (int) (((long) i2) + j);
+            return j;
+        }
+        long j2 = ((long) i) - ((long) i2);
+        this.r = i;
+        if (this.q == -1 || j > this.p) {
+            long jSkip = inputStream.skip(j - j2);
+            if (jSkip > 0) {
+                this.q = -1;
+            }
+            return j2 + jSkip;
+        }
+        if (b(inputStream, bArr) == -1) {
+            return j2;
+        }
+        int i3 = this.o;
+        int i4 = this.r;
+        if (i3 - i4 >= j - j2) {
+            this.r = (int) ((((long) i4) + j) - j2);
+            return j;
+        }
+        long j3 = (j2 + ((long) i3)) - ((long) i4);
+        this.r = i3;
+        return j3;
     }
 
     @Override // java.io.FilterInputStream, java.io.InputStream
     public final synchronized int read() {
-        monitor-enter(this);
-        byte[] r0 = this.n;     // Catch: Throwable -> L12
-        InputStream r1 = ((FilterInputStream) this).in;     // Catch: Throwable -> L12
-        if (r0 == null) goto L29;
-        if (r1 == null) goto L29;
-        if (this.r < this.o) goto L15;
-        if (b(r1, r0) != (-1)) goto L15;
-        monitor-exit(this);
-        return -1;
-    L15:
-        if (r0 == this.n) goto L21;
-        r0 = this.n;     // Catch: Throwable -> L12
-        if (r0 != null) goto L21;
-        j();     // Catch: Throwable -> L12
-        throw null;     // Catch: Throwable -> L12
-    L21:
-        int r2 = this.o;     // Catch: Throwable -> L12
-        int r3 = this.r;     // Catch: Throwable -> L12
-        if ((r2 - r3) <= 0) goto L27;
-        this.r = r3 + 1;     // Catch: Throwable -> L12
-        int r4 = r0[r3] & 255;
-        monitor-exit(this);
-        return r4;
-    L27:
-        monitor-exit(this);
-        return -1;
-    L29:
-        j();     // Catch: Throwable -> L12
-        throw null;     // Catch: Throwable -> L12
-    L12:
-        th = move-exception;
-        throw th;
+        byte[] bArr = this.n;
+        InputStream inputStream = ((FilterInputStream) this).in;
+        if (bArr != null && inputStream != null) {
+            if (this.r >= this.o && b(inputStream, bArr) == -1) {
+                return -1;
+            }
+            if (bArr != this.n && (bArr = this.n) == null) {
+                j();
+                throw null;
+            }
+            int i = this.o;
+            int i2 = this.r;
+            if (i - i2 <= 0) {
+                return -1;
+            }
+            this.r = i2 + 1;
+            return bArr[i2] & 255;
+        }
+        j();
+        throw null;
     }
 }

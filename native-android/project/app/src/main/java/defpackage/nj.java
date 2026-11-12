@@ -10,8 +10,8 @@ public class nj extends hd {
     public String e;
     public k03 f;
 
-    public nj(Application r2) {
-        super(r2);
+    public nj(Application application) {
+        super(application);
         this.c = new pa(12);
         this.d = new hg3(15);
     }

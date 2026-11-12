@@ -8,11 +8,11 @@ import android.view.animation.Interpolator;
 public final class ta5 {
     public sa5 a;
 
-    public ta5(int r3, Interpolator r4, long r5) {
-        if (Build.VERSION.SDK_INT < 30) goto L6;
-        this.a = new ra5(xq2.k(r3, r4, r5));
-        return;
-    L6:
-        this.a = new pa5(r3, r4, r5);
+    public ta5(int i, Interpolator interpolator, long j) {
+        if (Build.VERSION.SDK_INT >= 30) {
+            this.a = new ra5(xq2.k(i, interpolator, j));
+        } else {
+            this.a = new pa5(i, interpolator, j);
+        }
     }
 }

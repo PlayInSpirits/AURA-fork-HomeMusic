@@ -8,48 +8,52 @@ public final class kc5 extends ep4 implements xf1 {
     public /* synthetic */ Object[] q;
 
     @Override // defpackage.xf1
-    public final Object a(Object r2, Object r3, Object r4) {
-        kc5 r1 = new kc5(3, (vd0) r4);
-        r1.p = (q81) r2;
-        r1.q = (Object[]) r3;
-        return r1.invokeSuspend(j15.a);
+    public final Object a(Object obj, Object obj2, Object obj3) {
+        kc5 kc5Var = new kc5(3, (vd0) obj3);
+        kc5Var.p = (q81) obj;
+        kc5Var.q = (Object[]) obj2;
+        return kc5Var.invokeSuspend(j15.a);
     }
 
     @Override // defpackage.jp
-    public final Object invokeSuspend(Object r9) {
-        int r0 = this.o;
-        tc0 r1 = null;
-        if (r0 == 0) goto L8;
-        if (r0 != 1) goto L6;
-        kb4.X(r9);
-    L22:
+    public final Object invokeSuspend(Object obj) {
+        tc0 tc0Var;
+        int i = this.o;
+        tc0 tc0Var2 = null;
+        if (i == 0) {
+            kb4.X(obj);
+            q81 q81Var = this.p;
+            tc0[] tc0VarArr = (tc0[]) this.q;
+            int length = tc0VarArr.length;
+            int i2 = 0;
+            while (true) {
+                tc0Var = rc0.a;
+                if (i2 >= length) {
+                    break;
+                }
+                tc0 tc0Var3 = tc0VarArr[i2];
+                if (!h12.c(tc0Var3, tc0Var)) {
+                    tc0Var2 = tc0Var3;
+                    break;
+                }
+                i2++;
+            }
+            if (tc0Var2 != null) {
+                tc0Var = tc0Var2;
+            }
+            this.o = 1;
+            Object objB = q81Var.b(tc0Var, this);
+            xe0 xe0Var = xe0.n;
+            if (objB == xe0Var) {
+                return xe0Var;
+            }
+        } else {
+            if (i != 1) {
+                kf2.o("call to 'resume' before 'invoke' with coroutine");
+                return null;
+            }
+            kb4.X(obj);
+        }
         return j15.a;
-    L6:
-        kf2.o("call to 'resume' before 'invoke' with coroutine");
-        return null;
-    L8:
-        kb4.X(r9);
-        q81 r10 = this.p;
-        tc0[] r2 = (tc0[]) this.q;
-        int r3 = r2.length;
-        int r4 = 0;
-    L9:
-        tc0 r5 = rc0.a;
-        if (r4 >= r3) goto L15;
-        tc0 r6 = r2[r4];
-        if (h12.c(r6, r5) == false) goto L13;
-        r4 = r4 + 1;
-        goto L9
-    L13:
-        r1 = r6;
-    L15:
-        if (r1 == null) goto L18;
-        r5 = r1;
-    L18:
-        this.o = 1;
-        Object r8 = r10.b(r5, this);
-        xe0 r11 = xe0.n;
-        if (r8 != r11) goto L22;
-        return r11;
     }
 }

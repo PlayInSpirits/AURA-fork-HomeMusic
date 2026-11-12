@@ -7,49 +7,44 @@ import android.view.Choreographer;
 public final class yc extends ep4 implements wf1 {
     public final /* synthetic */ int o;
 
-    public /* synthetic */ yc(int r1, vd0 r2, int r3) {
-        this.o = r3;
-        super(r1, r2);
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public /* synthetic */ yc(int i, vd0 vd0Var, int i2) {
+        super(i, vd0Var);
+        this.o = i2;
     }
 
     @Override // defpackage.jp
-    public final vd0 create(Object r2, vd0 r3) {
-        switch(this.o) {
-            case 0: goto L7;
-            default: goto L5;
-        };
-    L5:
-        return new yc(2, r3, 1);
-    L7:
-        return new yc(2, r3, 0);
+    public final vd0 create(Object obj, vd0 vd0Var) {
+        switch (this.o) {
+            case 0:
+                return new yc(2, vd0Var, 0);
+            default:
+                return new yc(2, vd0Var, 1);
+        }
     }
 
     @Override // defpackage.wf1
-    public final Object invoke(Object r3, Object r4) {
-        int r0 = this.o;
-        j15 r1 = j15.a;
-        switch(r0) {
-            case 0: goto L7;
-            default: goto L4;
-        };
-    L4:
-        ((yc) create((q64) r3, (vd0) r4)).invokeSuspend(r1);
-        return r1;
-    L7:
-        return ((yc) create((we0) r3, (vd0) r4)).invokeSuspend(r1);
+    public final Object invoke(Object obj, Object obj2) {
+        int i = this.o;
+        j15 j15Var = j15.a;
+        switch (i) {
+            case 0:
+                return ((yc) create((we0) obj, (vd0) obj2)).invokeSuspend(j15Var);
+            default:
+                ((yc) create((q64) obj, (vd0) obj2)).invokeSuspend(j15Var);
+                return j15Var;
+        }
     }
 
     @Override // defpackage.jp
-    public final Object invokeSuspend(Object r1) {
-        switch(this.o) {
-            case 0: goto L6;
-            default: goto L4;
-        };
-    L4:
-        kb4.X(r1);
-        return j15.a;
-    L6:
-        kb4.X(r1);
-        return Choreographer.getInstance();
+    public final Object invokeSuspend(Object obj) {
+        switch (this.o) {
+            case 0:
+                kb4.X(obj);
+                return Choreographer.getInstance();
+            default:
+                kb4.X(obj);
+                return j15.a;
+        }
     }
 }

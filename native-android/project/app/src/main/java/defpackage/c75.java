@@ -6,19 +6,19 @@ public class c75 implements b75 {
     public static c75 a;
 
     @Override // defpackage.b75
-    public x65 a(Class r1) {
-        return bu.h(r1);
+    public x65 a(Class cls) {
+        return bu.h(cls);
     }
 
     @Override // defpackage.b75
-    public x65 b(Class r1, f03 r2) {
-        return a(r1);
+    public x65 b(Class cls, f03 f03Var) {
+        return a(cls);
     }
 
     @Override // defpackage.b75
-    public final x65 c(i30 r1, f03 r2) {
-        Class r3 = r1.n;
-        r3.getClass();
-        return b(r3, r2);
+    public final x65 c(i30 i30Var, f03 f03Var) {
+        Class cls = i30Var.n;
+        cls.getClass();
+        return b(cls, f03Var);
     }
 }

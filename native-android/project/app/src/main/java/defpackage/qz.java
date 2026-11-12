@@ -17,32 +17,31 @@ public final class qz extends kw3 {
     public final List b;
 
     public qz() {
-        Paint r0 = new Paint();
-        this.a = r0;
+        Paint paint = new Paint();
+        this.a = paint;
         this.b = Collections.unmodifiableList(new ArrayList());
-        r0.setStrokeWidth(5.0f);
-        r0.setColor(-65281);
+        paint.setStrokeWidth(5.0f);
+        paint.setColor(-65281);
     }
 
     @Override // defpackage.kw3
-    public final void h(Canvas r8, RecyclerView r9) {
-        float r0 = r9.getResources().getDimension(R.dimen.m3_carousel_debug_keyline_width);
-        Paint r6 = this.a;
-        r6.setStrokeWidth(r0);
-        Iterator r7 = this.b.iterator();
-    L4:
-        if (r7.hasNext() == false) goto L10;
-        ((k42) r7.next()).getClass();
-        r6.setColor(v50.c(-65281, 0.0f, -16776961));
-        if (((CarouselLayoutManager) r9.getLayoutManager()).G0() == false) goto L8;
-        Canvas r1 = r8;
-        r1.drawLine(0.0f, ((CarouselLayoutManager) r9.getLayoutManager()).q.i(), 0.0f, ((CarouselLayoutManager) r9.getLayoutManager()).q.f(), r6);
-    L9:
-        r8 = r1;
-        goto L4
-    L8:
-        r1 = r8;
-        r1.drawLine(((CarouselLayoutManager) r9.getLayoutManager()).q.g(), 0.0f, ((CarouselLayoutManager) r9.getLayoutManager()).q.h(), 0.0f, r6);
-        goto L9
+    public final void h(Canvas canvas, RecyclerView recyclerView) {
+        Canvas canvas2;
+        float dimension = recyclerView.getResources().getDimension(R.dimen.m3_carousel_debug_keyline_width);
+        Paint paint = this.a;
+        paint.setStrokeWidth(dimension);
+        Iterator it = this.b.iterator();
+        while (it.hasNext()) {
+            ((k42) it.next()).getClass();
+            paint.setColor(v50.c(-65281, 0.0f, -16776961));
+            if (((CarouselLayoutManager) recyclerView.getLayoutManager()).G0()) {
+                canvas2 = canvas;
+                canvas2.drawLine(0.0f, ((CarouselLayoutManager) recyclerView.getLayoutManager()).q.i(), 0.0f, ((CarouselLayoutManager) recyclerView.getLayoutManager()).q.f(), paint);
+            } else {
+                canvas2 = canvas;
+                canvas2.drawLine(((CarouselLayoutManager) recyclerView.getLayoutManager()).q.g(), 0.0f, ((CarouselLayoutManager) recyclerView.getLayoutManager()).q.h(), 0.0f, paint);
+            }
+            canvas = canvas2;
+        }
     }
 }

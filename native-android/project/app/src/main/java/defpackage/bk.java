@@ -27,191 +27,154 @@ public final class bk implements Callback {
     public Object q;
     public Object r;
 
-    public bk(Context r2) {
+    public bk(Context context) {
         this.n = 2;
-        this.q = r2;
+        this.q = context;
         this.r = new mj0(5);
-        go4 r3 = yl0.h;
+        go4 go4Var = yl0.h;
         this.o = R.string.default_notification_channel_name;
     }
 
     public static bk b() {
-        bk r0 = new bk();
-        r0.p = true;
-        r0.o = 0;
-        return r0;
+        bk bkVar = new bk();
+        bkVar.p = true;
+        bkVar.o = 0;
+        return bkVar;
     }
 
-    private final void d(Call r1, Throwable r2) {
+    private final void d(Call call, Throwable th) {
     }
 
-    private final void e(Call r1, Throwable r2) {
+    private final void e(Call call, Throwable th) {
     }
 
     public bk a() {
-        if (((zy3) this.q) == null) goto L5;
-        boolean r0 = true;
-    L6:
-        ji2.h("execute parameter required", r0);
+        ji2.h("execute parameter required", ((zy3) this.q) != null);
         return new bk(this, (p61[]) this.r, this.p, this.o);
-    L5:
-        r0 = false;
-        goto L6
     }
 
-    public void c(int r4) {
-        switch(this.n) {
-            case 1: goto L13;
-            default: goto L4;
-        };
-    L4:
-        SideSheetBehavior r0 = (SideSheetBehavior) this.r;
-        WeakReference r2 = r0.C;
-        if (r2 != null) goto L7;
-        return;
-    L7:
-        if (r2.get() == null) goto L24;
-        this.o = r4;
-        if (this.p == true) goto L23;
-        View r5 = (View) r0.C.get();
-        jq3 r1 = (jq3) this.q;
-        WeakHashMap r3 = j65.a;
-        r5.postOnAnimation(r1);
-        this.p = true;
-        return;
-    L23:
-        return;
-    L24:
-        return;
-    L13:
-        BottomSheetBehavior r6 = (BottomSheetBehavior) this.r;
-        WeakReference r7 = r6.h0;
-        if (r7 != null) goto L16;
-        return;
-    L16:
-        if (r7.get() == null) goto L27;
-        this.o = r4;
-        if (this.p == true) goto L26;
-        View r8 = (View) r6.h0.get();
-        g5 r9 = (g5) this.q;
-        WeakHashMap r10 = j65.a;
-        r8.postOnAnimation(r9);
-        this.p = true;
-        return;
-    L26:
-        return;
+    public void c(int i) {
+        switch (this.n) {
+            case 1:
+                BottomSheetBehavior bottomSheetBehavior = (BottomSheetBehavior) this.r;
+                WeakReference weakReference = bottomSheetBehavior.h0;
+                if (weakReference != null && weakReference.get() != null) {
+                    this.o = i;
+                    if (!this.p) {
+                        View view = (View) bottomSheetBehavior.h0.get();
+                        g5 g5Var = (g5) this.q;
+                        WeakHashMap weakHashMap = j65.a;
+                        view.postOnAnimation(g5Var);
+                        this.p = true;
+                    }
+                    break;
+                }
+                break;
+            default:
+                SideSheetBehavior sideSheetBehavior = (SideSheetBehavior) this.r;
+                WeakReference weakReference2 = sideSheetBehavior.C;
+                if (weakReference2 != null && weakReference2.get() != null) {
+                    this.o = i;
+                    if (!this.p) {
+                        View view2 = (View) sideSheetBehavior.C.get();
+                        jq3 jq3Var = (jq3) this.q;
+                        WeakHashMap weakHashMap2 = j65.a;
+                        view2.postOnAnimation(jq3Var);
+                        this.p = true;
+                    }
+                    break;
+                }
+                break;
+        }
     }
 
     @Override // retrofit2.Callback
-    public void onFailure(Call r1, Throwable r2) {
-        int r0 = this.n;
+    public void onFailure(Call call, Throwable th) {
+        int i = this.n;
     }
 
     @Override // retrofit2.Callback
-    public void onResponse(Call r6, Response r7) {
-        switch(this.n) {
-            case 0: goto L17;
-            default: goto L4;
-        };
-    L4:
-        k03 r8 = (k03) this.q;
-        if (r7.isSuccessful() == true) goto L7;
-        return;
-    L7:
-        if (r7.body() != null) goto L9;
-        return;
-    L9:
-        if (((ApiResponse) r7.body()).getSubsonicResponse().getPlaylists() != null) goto L11;
-        return;
-    L11:
-        if (((ApiResponse) r7.body()).getSubsonicResponse().getPlaylists().getPlaylists() == null) goto L33;
-        List<Playlist> r9 = ((ApiResponse) r7.body()).getSubsonicResponse().getPlaylists().getPlaylists();
-        int r4 = 11;
-        new Thread(new ur2(r4, (mm3) this.r, r9)).start();
-        if (this.p == false) goto L15;
-        Collections.shuffle(r9);
-        r8.k(r9.subList(0, Math.min(r9.size(), this.o)));
-        return;
-    L15:
-        r8.k(r9);
-        return;
-    L33:
-        return;
-    L17:
-        k03 r10 = (k03) this.q;
-        pa r1 = (pa) this.r;
-        if (r7.isSuccessful() == true) goto L20;
-        return;
-    L20:
-        if (r7.body() != null) goto L22;
-        return;
-    L22:
-        if (((ApiResponse) r7.body()).getSubsonicResponse().getStarred2() == null) goto L37;
-        List<ArtistID3> r11 = ((ApiResponse) r7.body()).getSubsonicResponse().getStarred2().getArtists();
-        if (r11 != null) goto L26;
-        return;
-    L26:
-        if (this.p == true) goto L28;
-        r1.x(r11, r10);
-        return;
-    L28:
-        Collections.shuffle(r11);
-        r1.x(r11.subList(0, Math.min(this.o, r11.size())), r10);
-        return;
+    public void onResponse(Call call, Response response) {
+        List<ArtistID3> artists;
+        switch (this.n) {
+            case 0:
+                k03 k03Var = (k03) this.q;
+                pa paVar = (pa) this.r;
+                if (response.isSuccessful() && response.body() != null && ((ApiResponse) response.body()).getSubsonicResponse().getStarred2() != null && (artists = ((ApiResponse) response.body()).getSubsonicResponse().getStarred2().getArtists()) != null) {
+                    if (!this.p) {
+                        paVar.x(artists, k03Var);
+                    } else {
+                        Collections.shuffle(artists);
+                        paVar.x(artists.subList(0, Math.min(this.o, artists.size())), k03Var);
+                    }
+                    break;
+                }
+                break;
+            default:
+                k03 k03Var2 = (k03) this.q;
+                if (response.isSuccessful() && response.body() != null && ((ApiResponse) response.body()).getSubsonicResponse().getPlaylists() != null && ((ApiResponse) response.body()).getSubsonicResponse().getPlaylists().getPlaylists() != null) {
+                    List<Playlist> playlists = ((ApiResponse) response.body()).getSubsonicResponse().getPlaylists().getPlaylists();
+                    new Thread(new ur2(11, (mm3) this.r, playlists)).start();
+                    if (!this.p) {
+                        k03Var2.k(playlists);
+                    } else {
+                        Collections.shuffle(playlists);
+                        k03Var2.k(playlists.subList(0, Math.min(playlists.size(), this.o)));
+                    }
+                    break;
+                }
+                break;
+        }
     }
 
-    public bk(bk r2, p61[] r3, boolean r4, int r5) {
+    public bk(bk bkVar, p61[] p61VarArr, boolean z, int i) {
         this.n = 8;
-        this.r = r2;
-        this.q = r3;
-        boolean r6 = false;
-        if (r3 == null) goto L6;
-        if (r4 == false) goto L6;
-        r6 = true;
-    L6:
-        this.p = r6;
-        this.o = r5;
+        this.r = bkVar;
+        this.q = p61VarArr;
+        boolean z2 = false;
+        if (p61VarArr != null && z) {
+            z2 = true;
+        }
+        this.p = z2;
+        this.o = i;
     }
 
-    public /* synthetic */ bk(Object r1, boolean r2, k03 r3, int r4, int r5) {
-        this.n = r5;
-        this.r = r1;
-        this.p = r2;
-        this.q = r3;
-        this.o = r4;
+    public /* synthetic */ bk(Object obj, boolean z, k03 k03Var, int i, int i2) {
+        this.n = i2;
+        this.r = obj;
+        this.p = z;
+        this.q = k03Var;
+        this.o = i;
     }
 
     public /* synthetic */ bk() {
         this.n = 7;
     }
 
-    public bk(SideSheetBehavior r2) {
+    public bk(SideSheetBehavior sideSheetBehavior) {
         this.n = 6;
-        this.r = r2;
+        this.r = sideSheetBehavior;
         this.q = new jq3(7, this);
     }
 
-    public bk(BottomSheetBehavior r2) {
+    public bk(BottomSheetBehavior bottomSheetBehavior) {
         this.n = 1;
-        this.r = r2;
+        this.r = bottomSheetBehavior;
         this.q = new g5(5, this);
     }
 
-    public bk(boolean r2, int r3, String r4, Bundle r5) {
+    public bk(boolean z, int i, String str, Bundle bundle) {
         this.n = 4;
-        this.p = r2;
-        this.o = r3;
-        this.q = r4;
-        if (r5 != null) goto L6;
-        r5 = Bundle.EMPTY;
-    L6:
-        this.r = r5;
+        this.p = z;
+        this.o = i;
+        this.q = str;
+        this.r = bundle == null ? Bundle.EMPTY : bundle;
     }
 
-    public bk(Context r2, ja r3) {
+    public bk(Context context, ja jaVar) {
         this.n = 3;
-        this.q = r3;
+        this.q = jaVar;
         this.o = 0;
-        this.r = new GestureDetector(r2, new ny1(this));
+        this.r = new GestureDetector(context, new ny1(this));
     }
 }

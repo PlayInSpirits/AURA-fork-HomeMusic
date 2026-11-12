@@ -13,20 +13,22 @@ public final class gj5 extends au0 implements Serializable {
     public final String J;
 
     public gj5() {
-        MessageDigest r0 = MessageDigest.getInstance("SHA-256");     // Catch: NoSuchAlgorithmException -> L10
-        this.G = r0;
-        this.H = r0.getDigestLength();
-        this.J = "Hashing.sha256()";
-        r0.clone();     // Catch: CloneNotSupportedException -> L7
-        boolean r1 = true;
-    L8:
-        this.I = r1;
-        return;
-    L7:
-        r1 = false;
-    L10:
-        e = move-exception;
-        throw new AssertionError(e);
+        boolean z;
+        try {
+            MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
+            this.G = messageDigest;
+            this.H = messageDigest.getDigestLength();
+            this.J = "Hashing.sha256()";
+            try {
+                messageDigest.clone();
+                z = true;
+            } catch (CloneNotSupportedException unused) {
+                z = false;
+            }
+            this.I = z;
+        } catch (NoSuchAlgorithmException e) {
+            throw new AssertionError(e);
+        }
     }
 
     public final String toString() {

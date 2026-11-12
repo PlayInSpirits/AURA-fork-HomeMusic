@@ -9,16 +9,16 @@ import android.widget.EditText;
 public final class by1 extends View.AccessibilityDelegate {
     public final /* synthetic */ cy1 a;
 
-    public by1(cy1 r1) {
-        this.a = r1;
+    public by1(cy1 cy1Var) {
+        this.a = cy1Var;
     }
 
     @Override // android.view.View.AccessibilityDelegate
-    public final void onInitializeAccessibilityNodeInfo(View r1, AccessibilityNodeInfo r2) {
-        super.onInitializeAccessibilityNodeInfo(r1, r2);
-        EditText r0 = this.a.h.getEditText();
-        if (r0 == null) goto L6;
-        r2.setLabeledBy(r0);
-        return;
+    public final void onInitializeAccessibilityNodeInfo(View view, AccessibilityNodeInfo accessibilityNodeInfo) {
+        super.onInitializeAccessibilityNodeInfo(view, accessibilityNodeInfo);
+        EditText editText = this.a.h.getEditText();
+        if (editText != null) {
+            accessibilityNodeInfo.setLabeledBy(editText);
+        }
     }
 }

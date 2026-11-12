@@ -14,129 +14,98 @@ public final class zq2 implements yj2 {
     public final Object q;
     public Object r;
 
-    public zq2(qa1 r3) {
+    public zq2(qa1 qa1Var) {
         this.q = new Handler(Looper.getMainLooper());
-        this.r = r3;
+        this.r = qa1Var;
     }
 
-    public void a(long r9) {
-        if (this.p == false) goto L10;
-        oh3 r0 = (oh3) this.r;
-        if (r0 == null) goto L10;
-        long r1 = r0.g;
-        long r3 = r9 - this.o;
-        if (r3 >= 0) goto L9;
-        r3 = 0;
-    L9:
-        r0.g = r1 + r3;
-    L10:
-        this.o = r9;
+    public void a(long j) {
+        oh3 oh3Var;
+        if (this.p && (oh3Var = (oh3) this.r) != null) {
+            long j2 = oh3Var.g;
+            long j3 = j - this.o;
+            if (j3 < 0) {
+                j3 = 0;
+            }
+            oh3Var.g = j2 + j3;
+        }
+        this.o = j;
     }
 
-    public void b(long r4, long r6, boolean r8) {
-        a(r6);
-        if (r4 >= 0) goto L5;
-        r4 = 0;
-    L5:
-        this.n = r4;
-        this.o = r6;
-        this.p = r8;
+    public void b(long j, long j2, boolean z) {
+        a(j2);
+        if (j < 0) {
+            j = 0;
+        }
+        this.n = j;
+        this.o = j2;
+        this.p = z;
     }
 
-    public void c(String r18, Long r19, long r20, boolean r22, String r23) {
-        oh3 r3 = (oh3) this.r;
-        if (r3 != null) goto L5;
-        return;
-    L5:
-        if (r19 != null) goto L7;
-    L9:
-        long r4 = e(r20);
-    L10:
-        a(r20);
-        long r6 = r3.b;
-        if (r22 == false) goto L13;
-    L18:
-        boolean r11 = true;
-    L19:
-        if (r22 == true) goto L21;
-    L23:
+    public void c(String str, Long l, long j, boolean z, String str2) {
+        String str3;
+        oh3 oh3Var = (oh3) this.r;
+        if (oh3Var == null) {
+            return;
+        }
+        long jE = (l == null || !h12.c(str, oh3Var.a)) ? e(j) : l.longValue();
+        a(j);
+        long j2 = oh3Var.b;
+        boolean z2 = z || (j2 > 0 && ((double) jE) >= ((double) j2) * 0.9d);
+        if (z && j2 > 0) {
+            jE = j2;
+        }
         this.r = null;
         this.p = false;
-        lc r0 = (lc) this.q;
-        if (r23 != null) goto L28;
-        if (r11 == false) goto L27;
-        String r7 = PlayEvent.FINISH;
-    L29:
-        r0.d(r7, r3, Long.valueOf(r4), Long.valueOf(r20));
-        return;
-    L27:
-        r7 = PlayEvent.SKIP;
-        goto L29
-    L28:
-        r7 = r23;
-        goto L29
-    L21:
-        if (r6 <= 0) goto L23;
-        r4 = r6;
-        goto L23
-    L13:
-        if (r6 > 0) goto L15;
-    L17:
-        r11 = false;
-        goto L19
-    L15:
-        if (r4 < (r6 * 0.9d)) goto L17;
-    L7:
-        if (h12.c(r18, r3.a) == false) goto L9;
-        r4 = r19.longValue();
-        goto L10
+        lc lcVar = (lc) this.q;
+        if (str2 == null) {
+            str3 = z2 ? PlayEvent.FINISH : PlayEvent.SKIP;
+        } else {
+            str3 = str2;
+        }
+        lcVar.d(str3, oh3Var, Long.valueOf(jE), Long.valueOf(j));
     }
 
     @Override // defpackage.yj2
-    public void d(qh3 r3) {
-        if (this.p == false) goto L5;
-        f(j());
-    L5:
-        this.r = r3;
+    public void d(qh3 qh3Var) {
+        if (this.p) {
+            f(j());
+        }
+        this.r = qh3Var;
     }
 
-    public long e(long r6) {
-        if (this.p == false) goto L6;
-        long r7 = r6 - this.o;
-        if (r7 < 0) goto L6;
-    L7:
-        long r3 = this.n + r7;
-        oh3 r5 = (oh3) this.r;
-        if (r5 == null) goto L10;
-        long r8 = r5.b;
-    L12:
-        if (r8 > 0) goto L14;
-    L16:
-        return r3;
-    L14:
-        if (r3 <= r8) goto L16;
-        return r8;
-    L10:
-        r8 = 0;
-    L6:
-        r7 = 0;
-        goto L7
+    /* JADX WARN: Code duplicated, block: B:6:0x000d  */
+    public long e(long j) {
+        long j2;
+        if (this.p) {
+            j2 = j - this.o;
+            if (j2 < 0) {
+                j2 = 0;
+            }
+        } else {
+            j2 = 0;
+        }
+        long j3 = this.n + j2;
+        oh3 oh3Var = (oh3) this.r;
+        long j4 = oh3Var != null ? oh3Var.b : 0L;
+        return (j4 <= 0 || j3 <= j4) ? j3 : j4;
     }
 
-    public void f(long r1) {
-        this.n = r1;
-        if (this.p == false) goto L6;
-        ((vp4) this.q).getClass();
-        this.o = SystemClock.elapsedRealtime();
-        return;
+    public void f(long j) {
+        this.n = j;
+        if (this.p) {
+            ((vp4) this.q).getClass();
+            this.o = SystemClock.elapsedRealtime();
+        }
     }
 
     public void g() {
-        if (this.p == true) goto L6;
+        if (this.p) {
+            return;
+        }
         ((vp4) this.q).getClass();
         this.o = SystemClock.elapsedRealtime();
         this.p = true;
-        return;
     }
 
     @Override // defpackage.yj2
@@ -146,28 +115,22 @@ public final class zq2 implements yj2 {
 
     @Override // defpackage.yj2
     public long j() {
-        long r0 = this.n;
-        if (this.p == false) goto L10;
+        long j = this.n;
+        if (!this.p) {
+            return j;
+        }
         ((vp4) this.q).getClass();
-        long r2 = SystemClock.elapsedRealtime() - this.o;
-        qh3 r6 = (qh3) this.r;
-        if (r6.a != 1.0f) goto L9;
-        long r3 = f35.Q(r2);
-    L8:
-        return r3 + r0;
-    L9:
-        r3 = r2 * ((long) r6.c);
-        goto L8
-    L10:
-        return r0;
+        long jElapsedRealtime = SystemClock.elapsedRealtime() - this.o;
+        qh3 qh3Var = (qh3) this.r;
+        return (qh3Var.a == 1.0f ? f35.Q(jElapsedRealtime) : jElapsedRealtime * ((long) qh3Var.c)) + j;
     }
 
-    public zq2(vp4 r1) {
-        this.q = r1;
+    public zq2(vp4 vp4Var) {
+        this.q = vp4Var;
         this.r = qh3.d;
     }
 
-    public zq2(lc r1) {
-        this.q = r1;
+    public zq2(lc lcVar) {
+        this.q = lcVar;
     }
 }

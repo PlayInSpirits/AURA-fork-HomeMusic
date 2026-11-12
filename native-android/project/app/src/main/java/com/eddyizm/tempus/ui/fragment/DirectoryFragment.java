@@ -22,6 +22,7 @@ import app.homemusic.R;
 import com.eddyizm.tempus.interfaces.ClickCallback;
 import com.eddyizm.tempus.service.MediaService;
 import com.eddyizm.tempus.ui.activity.MainActivity;
+import com.eddyizm.tempus.ui.fragment.DirectoryFragment;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.appbar.MaterialToolbar;
 import defpackage.a0;
@@ -48,7 +49,6 @@ import defpackage.le1;
 import defpackage.ml3;
 import defpackage.mq0;
 import defpackage.nc1;
-import defpackage.nq0;
 import defpackage.nz2;
 import defpackage.om0;
 import defpackage.oq0;
@@ -76,94 +76,135 @@ public class DirectoryFragment extends kc1 implements ClickCallback {
     public om0 q0;
     public MenuItem r0;
 
-    public DirectoryFragment() {
-    }
-
     @Override // defpackage.kc1
-    public final void F(Bundle r1) {
-        super.F(r1);
+    public final void F(Bundle bundle) {
+        super.F(bundle);
         d0();
     }
 
     @Override // defpackage.kc1
-    public final void G(Menu r2, MenuInflater r3) {
-        r3.inflate(R.menu.directory_page_menu, r2);
-        this.r0 = r2.getItem(0);
+    public final void G(Menu menu, MenuInflater menuInflater) {
+        menuInflater.inflate(R.menu.directory_page_menu, menu);
+        this.r0 = menu.getItem(0);
     }
 
     @Override // defpackage.kc1
-    public final View H(LayoutInflater r10, ViewGroup r11, Bundle r12) {
-        this.m0 = (MainActivity) l();
-        final int r0 = 0;
-        View r13 = r10.inflate(R.layout.fragment_directory, r11, false);
-        int r14 = R.id.app_bar_layout;
-        AppBarLayout r3 = (AppBarLayout) uo.s(r13, R.id.app_bar_layout);
-        if (r3 == null) goto L30;
-        r14 = R.id.directory_back_image_view;
-        Button r4 = (Button) uo.s(r13, R.id.directory_back_image_view);
-        if (r4 == null) goto L30;
-        r14 = R.id.directory_info_sector;
-        ConstraintLayout r5 = (ConstraintLayout) uo.s(r13, R.id.directory_info_sector);
-        if (r5 == null) goto L30;
-        r14 = R.id.directory_recycler_view;
-        RecyclerView r6 = (RecyclerView) uo.s(r13, R.id.directory_recycler_view);
-        if (r6 == null) goto L30;
-        r14 = R.id.directory_title_label;
-        TextView r7 = (TextView) uo.s(r13, R.id.directory_title_label);
-        if (r7 == null) goto L30;
-        r14 = R.id.toolbar;
-        MaterialToolbar r8 = (MaterialToolbar) uo.s(r13, R.id.toolbar);
-        if (r8 == null) goto L30;
-        LinearLayout r2 = (LinearLayout) r13;
-        this.l0 = new ml3(r2, r3, r4, r5, r6, r7, r8);
-        nc1 r15 = X();
-        e75 r16 = r15.d();
-        b75 r1 = gh0.r(r15);
-        bq4 r9 = new bq4(r16, r1, b11.e(r15, r1));
-        i30 r17 = kx3.a(rq0.class);
-        String r18 = r17.b();
-        if (r18 == null) goto L28;
-        this.n0 = (rq0) r9.l(r17, "androidx.lifecycle.ViewModelProvider.DefaultKey:".concat(r18));
-        this.q0 = new om0(5);
-        Bundle r19 = this.s;
-        MainActivity r110 = this.m0;
-        if (r19 != null) goto L23;
-        if (r110 == null) goto L22;
-        v23 r20 = r110.T;
-        if (r20 == null) goto L22;
-        r20.o();
-    L22:
-        return r2;
-    L23:
-        r110.o((MaterialToolbar) this.l0.f);
-        final int r111 = 1;
-        if (this.m0.n() == null) goto L26;
-        this.m0.n().f0(true);
-        this.m0.n().g0();
-    L26:
-        ((MaterialToolbar) this.l0.f).setNavigationOnClickListener(new nq0(this, r0));
-        ((Button) this.l0.b).setOnClickListener(new nq0(this, r111));
-        RecyclerView r112 = (RecyclerView) this.l0.d;
-        Z();
-        r112.setLayoutManager(new LinearLayoutManager(1));
-        ((RecyclerView) this.l0.d).setHasFixedSize(true);
-        zd0 r113 = new zd0(this);
-        this.o0 = r113;
-        ((RecyclerView) this.l0.d).setAdapter(r113);
-        le1 r114 = v();
-        zd0 r115 = this.o0;
-        Objects.requireNonNull(r115);
-        kb4.N(r114, new a0(23, r115));
-        rq0 r116 = this.n0;
-        String r117 = this.s.getString("MUSIC_DIRECTORY_ID");
-        r116.c.getClass();
-        om0.W(r117).e(v(), new d8(7, this));
-        return r2;
-    L28:
-        kf2.n("Local and anonymous classes can not be ViewModels");
-        return null;
-    L30:
-        nz2.n("Missing required view with ID: ".concat(r13.getResources().getResourceName(r14)));
+    public final View H(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
+        v23 v23Var;
+        this.m0 = (MainActivity) e();
+        final int i = 0;
+        View viewInflate = layoutInflater.inflate(R.layout.fragment_directory, viewGroup, false);
+        int i2 = R.id.app_bar_layout;
+        AppBarLayout appBarLayout = (AppBarLayout) uo.s(viewInflate, R.id.app_bar_layout);
+        if (appBarLayout != null) {
+            i2 = R.id.directory_back_image_view;
+            Button button = (Button) uo.s(viewInflate, R.id.directory_back_image_view);
+            if (button != null) {
+                i2 = R.id.directory_info_sector;
+                ConstraintLayout constraintLayout = (ConstraintLayout) uo.s(viewInflate, R.id.directory_info_sector);
+                if (constraintLayout != null) {
+                    i2 = R.id.directory_recycler_view;
+                    RecyclerView recyclerView = (RecyclerView) uo.s(viewInflate, R.id.directory_recycler_view);
+                    if (recyclerView != null) {
+                        i2 = R.id.directory_title_label;
+                        TextView textView = (TextView) uo.s(viewInflate, R.id.directory_title_label);
+                        if (textView != null) {
+                            i2 = R.id.toolbar;
+                            MaterialToolbar materialToolbar = (MaterialToolbar) uo.s(viewInflate, R.id.toolbar);
+                            if (materialToolbar != null) {
+                                LinearLayout linearLayout = (LinearLayout) viewInflate;
+                                this.l0 = new ml3(linearLayout, appBarLayout, button, constraintLayout, recyclerView, textView, materialToolbar);
+                                nc1 nc1VarX = X();
+                                e75 e75VarD = nc1VarX.d();
+                                b75 b75VarR = gh0.r(nc1VarX);
+                                bq4 bq4Var = new bq4(e75VarD, b75VarR, b11.e(nc1VarX, b75VarR));
+                                i30 i30VarA = kx3.a(rq0.class);
+                                String strB = i30VarA.b();
+                                if (strB == null) {
+                                    kf2.n("Local and anonymous classes can not be ViewModels");
+                                    return null;
+                                }
+                                this.n0 = (rq0) bq4Var.l(i30VarA, "androidx.lifecycle.ViewModelProvider.DefaultKey:".concat(strB));
+                                this.q0 = new om0(5);
+                                Bundle bundle2 = this.s;
+                                MainActivity mainActivity = this.m0;
+                                if (bundle2 == null) {
+                                    if (mainActivity != null && (v23Var = mainActivity.T) != null) {
+                                        v23Var.o();
+                                    }
+                                    return linearLayout;
+                                }
+                                mainActivity.o((MaterialToolbar) this.l0.f);
+                                final int i3 = 1;
+                                if (this.m0.n() != null) {
+                                    this.m0.n().f0(true);
+                                    this.m0.n().g0();
+                                }
+                                ((MaterialToolbar) this.l0.f).setNavigationOnClickListener(new View.OnClickListener(this) { // from class: nq0
+                                    public final /* synthetic */ DirectoryFragment o;
+
+                                    {
+                                        this.o = this;
+                                    }
+
+                                    @Override // android.view.View.OnClickListener
+                                    public final void onClick(View view) {
+                                        int i4 = i;
+                                        DirectoryFragment directoryFragment = this.o;
+                                        switch (i4) {
+                                            case 0:
+                                                directoryFragment.m0.T.o();
+                                                break;
+                                            default:
+                                                directoryFragment.m0.T.o();
+                                                break;
+                                        }
+                                    }
+                                });
+                                ((Button) this.l0.b).setOnClickListener(new View.OnClickListener(this) { // from class: nq0
+                                    public final /* synthetic */ DirectoryFragment o;
+
+                                    {
+                                        this.o = this;
+                                    }
+
+                                    @Override // android.view.View.OnClickListener
+                                    public final void onClick(View view) {
+                                        int i4 = i3;
+                                        DirectoryFragment directoryFragment = this.o;
+                                        switch (i4) {
+                                            case 0:
+                                                directoryFragment.m0.T.o();
+                                                break;
+                                            default:
+                                                directoryFragment.m0.T.o();
+                                                break;
+                                        }
+                                    }
+                                });
+                                RecyclerView recyclerView2 = (RecyclerView) this.l0.d;
+                                Z();
+                                recyclerView2.setLayoutManager(new LinearLayoutManager(1));
+                                ((RecyclerView) this.l0.d).setHasFixedSize(true);
+                                zd0 zd0Var = new zd0(this);
+                                this.o0 = zd0Var;
+                                ((RecyclerView) this.l0.d).setAdapter(zd0Var);
+                                le1 le1VarV = v();
+                                zd0 zd0Var2 = this.o0;
+                                Objects.requireNonNull(zd0Var2);
+                                kb4.N(le1VarV, new a0(23, zd0Var2));
+                                rq0 rq0Var = this.n0;
+                                String string = this.s.getString("MUSIC_DIRECTORY_ID");
+                                rq0Var.c.getClass();
+                                om0.W(string).e(v(), new d8(7, this));
+                                return linearLayout;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        nz2.n("Missing required view with ID: ".concat(viewInflate.getResources().getResourceName(i2)));
         return null;
     }
 
@@ -174,34 +215,32 @@ public class DirectoryFragment extends kc1 implements ClickCallback {
     }
 
     @Override // defpackage.kc1
-    public final boolean N(MenuItem r3) {
-        int r1 = 0;
-        if (r3.getItemId() != R.id.action_download_directory) goto L6;
-        new us0(new qq0(this), r1).m0(this.m0.k(), null);
+    public final boolean N(MenuItem menuItem) {
+        int i = 0;
+        if (menuItem.getItemId() != R.id.action_download_directory) {
+            return false;
+        }
+        new us0(new qq0(this), i).m0(this.m0.k(), null);
         return true;
-    L6:
-        return false;
     }
 
     @Override // defpackage.kc1
     public final void R() {
+        xc5 xc5Var;
         this.R = true;
-        Context r2 = Z();
-        cb4 r3 = new cb4(Z(), new ComponentName(Z(), MediaService.class));
-        Bundle r4 = Bundle.EMPTY;
-        aj2 r5 = new aj2();
-        Looper r6 = f35.x();
-        bl2 r7 = new bl2(r6);
-        if (r3.a.e() == false) goto L6;
-        fi0 r8 = new fi0(new x7(r2));
-        xc5 r0 = new xc5(4, r8);
-    L7:
-        b11.w(r7, new bj2(r2, r3, r4, r5, r6, r7, r0), new Handler(r6));
-        this.p0 = r7;
-        return;
-    L6:
-        r0 = null;
-        goto L7
+        Context contextZ = Z();
+        cb4 cb4Var = new cb4(Z(), new ComponentName(Z(), (Class<?>) MediaService.class));
+        Bundle bundle = Bundle.EMPTY;
+        aj2 aj2Var = new aj2();
+        Looper looperX = f35.x();
+        bl2 bl2Var = new bl2(looperX);
+        if (cb4Var.a.e()) {
+            xc5Var = new xc5(4, new fi0(new x7(contextZ)));
+        } else {
+            xc5Var = null;
+        }
+        b11.w(bl2Var, new bj2(contextZ, cb4Var, bundle, aj2Var, looperX, bl2Var, xc5Var), new Handler(looperX));
+        this.p0 = bl2Var;
     }
 
     @Override // defpackage.kc1
@@ -211,31 +250,31 @@ public class DirectoryFragment extends kc1 implements ClickCallback {
     }
 
     @Override // com.eddyizm.tempus.interfaces.ClickCallback
-    public final void onMediaClick(Bundle r3) {
-        bo2.o(this.p0, r3.getParcelableArrayList("TRACKS_OBJECT"), r3.getInt("ITEM_POSITION"));
+    public final void onMediaClick(Bundle bundle) {
+        bo2.o(this.p0, bundle.getParcelableArrayList("TRACKS_OBJECT"), bundle.getInt("ITEM_POSITION"));
     }
 
     @Override // com.eddyizm.tempus.interfaces.ClickCallback
-    public final void onMediaLongClick(Bundle r3) {
-        gb.x(a0()).m(R.id.songBottomSheetDialog, r3, null);
+    public final void onMediaLongClick(Bundle bundle) {
+        gb.x(a0()).m(R.id.songBottomSheetDialog, bundle, null);
     }
 
     @Override // com.eddyizm.tempus.interfaces.ClickCallback
-    public final void onMusicDirectoryClick(Bundle r3) {
-        gb.x(a0()).m(R.id.directoryFragment, r3, null);
+    public final void onMusicDirectoryClick(Bundle bundle) {
+        gb.x(a0()).m(R.id.directoryFragment, bundle, null);
     }
 
     @Override // com.eddyizm.tempus.interfaces.ClickCallback
-    public final void onMusicDirectoryPlay(Bundle r10) {
-        String r11 = r10.getString("MUSIC_DIRECTORY_ID");
-        if (r11 == null) goto L6;
-        Toast.makeText(Z(), s(R.string.folder_play_collecting), 0).show();
-        ArrayList r5 = new ArrayList();
-        AtomicInteger r6 = new AtomicInteger(0);
-        mq0 r7 = new mq0(this, r5, 0);
-        r6.incrementAndGet();
-        this.q0.getClass();
-        om0.W(r11).e(v(), new oq0(this, r5, r6, r7, 0));
-        return;
+    public final void onMusicDirectoryPlay(Bundle bundle) {
+        String string = bundle.getString("MUSIC_DIRECTORY_ID");
+        if (string != null) {
+            Toast.makeText(Z(), s(R.string.folder_play_collecting), 0).show();
+            ArrayList arrayList = new ArrayList();
+            AtomicInteger atomicInteger = new AtomicInteger(0);
+            mq0 mq0Var = new mq0(this, arrayList, 0);
+            atomicInteger.incrementAndGet();
+            this.q0.getClass();
+            om0.W(string).e(v(), new oq0(this, arrayList, atomicInteger, mq0Var, 0));
+        }
     }
 }

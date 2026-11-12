@@ -12,201 +12,194 @@ public final class ey4 extends ep4 implements wf1 {
     public /* synthetic */ Object q;
     public final /* synthetic */ jy4 r;
 
-    public /* synthetic */ ey4(jy4 r1, vd0 r2, int r3) {
-        this.o = r3;
-        this.r = r1;
-        super(2, r2);
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public /* synthetic */ ey4(jy4 jy4Var, vd0 vd0Var, int i) {
+        super(2, vd0Var);
+        this.o = i;
+        this.r = jy4Var;
     }
 
     @Override // defpackage.jp
-    public final vd0 create(Object r3, vd0 r4) {
-        int r0 = this.o;
-        jy4 r2 = this.r;
-        switch(r0) {
-            case 0: goto L8;
-            case 1: goto L6;
-            default: goto L4;
-        };
-    L4:
-        ey4 r1 = new ey4(r2, r4, 2);
-        r1.q = r3;
-        return r1;
-    L6:
-        ey4 r5 = new ey4(r2, r4, 1);
-        r5.q = r3;
-        return r5;
-    L8:
-        ey4 r6 = new ey4(r2, r4, 0);
-        r6.q = r3;
-        return r6;
+    public final vd0 create(Object obj, vd0 vd0Var) {
+        int i = this.o;
+        jy4 jy4Var = this.r;
+        switch (i) {
+            case 0:
+                ey4 ey4Var = new ey4(jy4Var, vd0Var, 0);
+                ey4Var.q = obj;
+                return ey4Var;
+            case 1:
+                ey4 ey4Var2 = new ey4(jy4Var, vd0Var, 1);
+                ey4Var2.q = obj;
+                return ey4Var2;
+            default:
+                ey4 ey4Var3 = new ey4(jy4Var, vd0Var, 2);
+                ey4Var3.q = obj;
+                return ey4Var3;
+        }
     }
 
     @Override // defpackage.wf1
-    public final Object invoke(Object r3, Object r4) {
-        int r0 = this.o;
-        j15 r1 = j15.a;
-        switch(r0) {
-            case 0: goto L9;
-            case 1: goto L7;
-            default: goto L5;
-        };
-    L5:
-        return ((ey4) create((mw4) r3, (vd0) r4)).invokeSuspend(r1);
-    L7:
-        return ((ey4) create((mw4) r3, (vd0) r4)).invokeSuspend(r1);
-    L9:
-        return ((ey4) create((ao3) r3, (vd0) r4)).invokeSuspend(r1);
+    public final Object invoke(Object obj, Object obj2) {
+        int i = this.o;
+        j15 j15Var = j15.a;
+        switch (i) {
+            case 0:
+                return ((ey4) create((ao3) obj, (vd0) obj2)).invokeSuspend(j15Var);
+            case 1:
+                return ((ey4) create((mw4) obj, (vd0) obj2)).invokeSuspend(j15Var);
+            default:
+                return ((ey4) create((mw4) obj, (vd0) obj2)).invokeSuspend(j15Var);
+        }
     }
 
     @Override // defpackage.jp
-    public final Object invokeSuspend(Object r22) {
-        int r1 = this.o;
-        lw4 r2 = lw4.o;
-        boolean r3 = false;
-        xe0 r6 = xe0.n;
-        boolean r7 = true;
-        jy4 r8 = this.r;
-        vd0 r9 = null;
-        switch(r1) {
-            case 0: goto L72;
-            case 1: goto L49;
-            default: goto L4;
-        };
-    L4:
-        int r4 = this.p;
-        j15 r10 = j15.a;
-        if (r4 == 0) goto L12;
-        if (r4 == 1) goto L11;
-        if (r4 != 2) goto L10;
-        kb4.X(r22);
-    L46:
-        return r10;
-    L10:
-        kf2.o("call to 'resume' before 'invoke' with coroutine");
-        return null;
-    L11:
-        mw4 r5 = (mw4) this.q;
-        kb4.X(r22);
-        Object r11 = r22;
-    L16:
-        if (((Boolean) r11).booleanValue() == true) goto L46;
-        ll r12 = r8.h;
-        long[] r13 = (long[]) r12.q;
-        ReentrantLock r14 = (ReentrantLock) r12.p;
-        r14.lock();
-    L33:
-        th = move-exception;
-        r14.unlock();
-        throw th;
-    L20:
-        if (r12.o == true) goto L22;
-        r14.unlock();
-        y73[] r15 = null;
-    L43:
-        if (r15 == null) goto L46;
-        iy4 r16 = new iy4(r15, r8, r5, null);
-        this.q = null;
-        this.p = 2;
-        if (r5.a(r2, r16, this) != r6) goto L46;
-        return r6;
-    L22:
-        r12.o = false;     // Catch: Throwable -> L33
-        int r17 = r13.length;     // Catch: Throwable -> L33
-        r15 = new y73[r17];     // Catch: Throwable -> L33
-        int r18 = 0;
-        boolean r19 = false;
-    L23:
-        if (r18 >= r17) goto L39;
-        if (r13[r18] <= 0) goto L27;
-        r3 = r7;
-    L27:
-        boolean[] r20 = (boolean[]) r12.r;     // Catch: Throwable -> L33
-        if (r3 == r20[r18]) goto L36;
-        r20[r18] = r3;     // Catch: Throwable -> L33
-        if (r3 == false) goto L35;
-        y73 r21 = y73.o;     // Catch: Throwable -> L33
-    L32:
-        r19 = true;
-    L37:
-        r15[r18] = r21;     // Catch: Throwable -> L33
-        r18 = r18 + 1;
-        r3 = false;
-        r7 = true;
-        goto L23
-    L35:
-        r21 = y73.p;     // Catch: Throwable -> L33
-        goto L32
-    L36:
-        r21 = y73.n;     // Catch: Throwable -> L33
-        goto L37
-    L39:
-        if (r19 == true) goto L42;
-        r15 = null;
-    L42:
-        r14.unlock();
-        goto L43
-    L12:
-        kb4.X(r22);
-        r5 = (mw4) this.q;
-        this.q = r5;
-        this.p = 1;
-        r11 = r5.d(this);
-        if (r11 != r6) goto L16;
-        return r6;
-    L49:
-        int r23 = this.p;
-        if (r23 != 0) goto L52;
-        kb4.X(r22);
-        mw4 r24 = (mw4) this.q;
-        this.q = r24;
-        this.p = 1;
-        Object r25 = r24.d(this);
-        if (r25 != r6) goto L63;
-        return r6;
-    L63:
-        if (((Boolean) r25).booleanValue() == true) goto L71;
-        ey4 r26 = new ey4(r8, r9, 0);     // Catch: SQLException -> L81
-        this.q = null;     // Catch: SQLException -> L81
-        this.p = 2;     // Catch: SQLException -> L81
-        Object r0 = r24.a(r2, r26, this);     // Catch: SQLException -> L81
-        if (r0 == r6) goto L91;
-    L68:
-        return (Set) r0;
-    L91:
-        return r6;
-    L52:
-        if (r23 != 1) goto L54;
-        r24 = (mw4) this.q;
-        kb4.X(r22);
-        r25 = r22;
-        goto L63
-    L54:
-        if (r23 != 2) goto L57;
-        kb4.X(r22);     // Catch: SQLException -> L81
-        r0 = r22;
-        goto L68
-    L57:
-        kf2.o("call to 'resume' before 'invoke' with coroutine");
-        return null;
-    L71:
-        return z01.n;
-    L72:
-        int r27 = this.p;
-        if (r27 == 0) goto L77;
-        if (r27 != 1) goto L76;
-        kb4.X(r22);
-        return r22;
-    L76:
-        kf2.o("call to 'resume' before 'invoke' with coroutine");
-        return null;
-    L77:
-        kb4.X(r22);
-        ao3 r28 = (ao3) this.q;
-        this.p = 1;
-        Object r29 = jy4.a(r8, r28, this);
-        if (r29 == r6) goto L80;
-        return r29;
-    L80:
-        return r6;
+    public final Object invokeSuspend(Object obj) {
+        mw4 mw4Var;
+        Object objD;
+        Object objA;
+        mw4 mw4Var2;
+        Object objD2;
+        y73[] y73VarArr;
+        y73 y73Var;
+        int i = this.o;
+        lw4 lw4Var = lw4.o;
+        boolean z = false;
+        xe0 xe0Var = xe0.n;
+        boolean z2 = true;
+        jy4 jy4Var = this.r;
+        vd0 vd0Var = null;
+        switch (i) {
+            case 0:
+                int i2 = this.p;
+                if (i2 != 0) {
+                    if (i2 == 1) {
+                        kb4.X(obj);
+                        return obj;
+                    }
+                    kf2.o("call to 'resume' before 'invoke' with coroutine");
+                    return null;
+                }
+                kb4.X(obj);
+                ao3 ao3Var = (ao3) this.q;
+                this.p = 1;
+                Object objA2 = jy4.a(jy4Var, ao3Var, this);
+                return objA2 == xe0Var ? xe0Var : objA2;
+            case 1:
+                int i3 = this.p;
+                try {
+                    if (i3 != 0) {
+                        if (i3 == 1) {
+                            mw4Var = (mw4) this.q;
+                            kb4.X(obj);
+                            objD = obj;
+                        } else {
+                            if (i3 != 2) {
+                                kf2.o("call to 'resume' before 'invoke' with coroutine");
+                                return null;
+                            }
+                            kb4.X(obj);
+                            objA = obj;
+                        }
+                        return (Set) objA;
+                    }
+                    kb4.X(obj);
+                    mw4Var = (mw4) this.q;
+                    this.q = mw4Var;
+                    this.p = 1;
+                    objD = mw4Var.d(this);
+                    if (objD == xe0Var) {
+                        return xe0Var;
+                    }
+                    if (!((Boolean) objD).booleanValue()) {
+                        ey4 ey4Var = new ey4(jy4Var, vd0Var, 0);
+                        this.q = null;
+                        this.p = 2;
+                        objA = mw4Var.a(lw4Var, ey4Var, this);
+                        if (objA == xe0Var) {
+                            return xe0Var;
+                        }
+                        return (Set) objA;
+                    }
+                } catch (SQLException unused) {
+                }
+                return z01.n;
+            default:
+                int i4 = this.p;
+                j15 j15Var = j15.a;
+                if (i4 != 0) {
+                    if (i4 == 1) {
+                        mw4Var2 = (mw4) this.q;
+                        kb4.X(obj);
+                        objD2 = obj;
+                    } else {
+                        if (i4 != 2) {
+                            kf2.o("call to 'resume' before 'invoke' with coroutine");
+                            return null;
+                        }
+                        kb4.X(obj);
+                    }
+                    return j15Var;
+                }
+                kb4.X(obj);
+                mw4Var2 = (mw4) this.q;
+                this.q = mw4Var2;
+                this.p = 1;
+                objD2 = mw4Var2.d(this);
+                if (objD2 == xe0Var) {
+                    return xe0Var;
+                }
+                if (!((Boolean) objD2).booleanValue()) {
+                    ll llVar = jy4Var.h;
+                    long[] jArr = (long[]) llVar.q;
+                    ReentrantLock reentrantLock = (ReentrantLock) llVar.p;
+                    reentrantLock.lock();
+                    try {
+                        if (llVar.o) {
+                            llVar.o = false;
+                            int length = jArr.length;
+                            y73VarArr = new y73[length];
+                            int i5 = 0;
+                            boolean z3 = false;
+                            while (i5 < length) {
+                                if (jArr[i5] > 0) {
+                                    z = z2;
+                                }
+                                boolean[] zArr = (boolean[]) llVar.r;
+                                if (z != zArr[i5]) {
+                                    zArr[i5] = z;
+                                    y73Var = z ? y73.o : y73.p;
+                                    z3 = true;
+                                } else {
+                                    y73Var = y73.n;
+                                }
+                                y73VarArr[i5] = y73Var;
+                                i5++;
+                                z = false;
+                                z2 = true;
+                            }
+                            if (!z3) {
+                                y73VarArr = null;
+                            }
+                            reentrantLock.unlock();
+                        } else {
+                            reentrantLock.unlock();
+                            y73VarArr = null;
+                        }
+                        if (y73VarArr != null) {
+                            iy4 iy4Var = new iy4(y73VarArr, jy4Var, mw4Var2, null);
+                            this.q = null;
+                            this.p = 2;
+                            if (mw4Var2.a(lw4Var, iy4Var, this) == xe0Var) {
+                                return xe0Var;
+                            }
+                        }
+                    } catch (Throwable th) {
+                        reentrantLock.unlock();
+                        throw th;
+                    }
+                }
+                return j15Var;
+        }
     }
 }

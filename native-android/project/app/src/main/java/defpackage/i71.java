@@ -9,15 +9,13 @@ public final class i71 implements ViewTreeObserver.OnDrawListener {
     public final /* synthetic */ View n;
     public final /* synthetic */ j71 o;
 
-    public i71(j71 r1, View r2) {
-        this.o = r1;
-        this.n = r2;
+    public i71(j71 j71Var, View view) {
+        this.o = j71Var;
+        this.n = view;
     }
 
     @Override // android.view.ViewTreeObserver.OnDrawListener
     public final void onDraw() {
-        boolean r2 = false;
-        lg1 r0 = new lg1(this, this, r2, 13);
-        e35.C().post(r0);
+        e35.C().post(new lg1(this, this, false, 13));
     }
 }

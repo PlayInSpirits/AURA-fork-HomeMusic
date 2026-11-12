@@ -18,103 +18,92 @@ import java.util.zip.ZipFile;
 /* JADX INFO: loaded from: classes.dex */
 public abstract class sg0 {
     public static Application a;
-    public static oz b;
+    public static oz b = new oz();
     public static WeakReference c;
 
     static {
-        b = new oz();
         new ArrayDeque(50);
         c = new WeakReference(null);
     }
 
-    public static String a(String r2) {
-        if (r2 != null) goto L4;
-        return "";
-    L4:
-        if (r2.length() == 0) goto L13;
-        char r0 = r2.charAt(0);
-        if (Character.isUpperCase(r0) == false) goto L10;
-        return r2;
-    L10:
-        return Character.toUpperCase(r0) + r2.substring(1);
-    L13:
-        return "";
+    public static String a(String str) {
+        if (str == null || str.length() == 0) {
+            return "";
+        }
+        char cCharAt = str.charAt(0);
+        if (Character.isUpperCase(cCharAt)) {
+            return str;
+        }
+        return Character.toUpperCase(cCharAt) + str.substring(1);
     }
 
-    public static String b(Context r7, Intent r8) {
-        Date r0 = new Date();
-        SimpleDateFormat r1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US);
-        ZipFile r4 = new ZipFile(r7.getPackageManager().getApplicationInfo(r7.getPackageName(), 0).sourceDir);     // Catch: Exception -> L5
-        long r5 = r4.getEntry("classes.dex").getTime();     // Catch: Exception -> L5
-        r4.close();     // Catch: Exception -> L5
-    L7:
-        if (r5 <= 631152000000L) goto L9;
-        String r3 = r1.format(new Date(r5));
-    L29:
-        String r9 = r7.getPackageManager().getPackageInfo(r7.getPackageName(), 0).versionName;     // Catch: Exception -> L12
-    L13:
-        String r10 = xa3.h("Build version: ", r9, " \n");
-        if (r3 == null) goto L16;
-        r10 = r10 + "Build date: " + r3 + " \n";
-    L16:
-        StringBuilder r11 = b11.s(r10, "Current date: ");
-        r11.append(r1.format(r0));
-        r11.append(" \n");
-        StringBuilder r12 = b11.s(r11.toString(), "Device: ");
-        String r2 = Build.MANUFACTURER;
-        String r6 = Build.MODEL;
-        if (r6.startsWith(r2) == false) goto L19;
-        String r13 = a(r6);
-    L20:
-        StringBuilder r14 = b11.s(b11.q(r12, r13, " \n"), "OS version: Android ");
-        r14.append(Build.VERSION.RELEASE);
-        r14.append(" (SDK ");
-        r14.append(Build.VERSION.SDK_INT);
-        r14.append(") \n \n");
-        StringBuilder r15 = xa3.i(r14.toString().concat("Stack trace:  \n"));
-        r15.append(r8.getStringExtra("cat.ereza.customactivityoncrash.EXTRA_STACK_TRACE"));
-        String r16 = r15.toString();
-        String r17 = r8.getStringExtra("cat.ereza.customactivityoncrash.EXTRA_ACTIVITY_LOG");
-        if (r17 == null) goto L23;
-        r16 = r16.concat("\nUser actions: \n").concat(r17);
-    L23:
-        String r18 = r8.getStringExtra("cat.ereza.customactivityoncrash.EXTRA_CUSTOM_CRASH_DATA");
-        if (r18 != null) goto L26;
-        return r16;
-    L26:
-        return r16.concat("\nAdditional data: \n").concat(r18);
-    L19:
-        r13 = a(r2) + " " + r6;
-    L12:
-        r9 = "Unknown";
-        goto L13
-    L9:
-        r3 = null;
-    L5:
-        r5 = 0;
-        goto L7
+    public static String b(Context context, Intent intent) {
+        long time;
+        String str;
+        String strA;
+        Date date = new Date();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US);
+        try {
+            ZipFile zipFile = new ZipFile(context.getPackageManager().getApplicationInfo(context.getPackageName(), 0).sourceDir);
+            time = zipFile.getEntry("classes.dex").getTime();
+            zipFile.close();
+        } catch (Exception unused) {
+            time = 0;
+        }
+        String str2 = time > 631152000000L ? simpleDateFormat.format(new Date(time)) : null;
+        try {
+            str = context.getPackageManager().getPackageInfo(context.getPackageName(), 0).versionName;
+        } catch (Exception unused2) {
+            str = "Unknown";
+        }
+        String strH = xa3.h("Build version: ", str, " \n");
+        if (str2 != null) {
+            strH = strH + "Build date: " + str2 + " \n";
+        }
+        StringBuilder sbS = b11.s(strH, "Current date: ");
+        sbS.append(simpleDateFormat.format(date));
+        sbS.append(" \n");
+        StringBuilder sbS2 = b11.s(sbS.toString(), "Device: ");
+        String str3 = Build.MANUFACTURER;
+        String str4 = Build.MODEL;
+        if (str4.startsWith(str3)) {
+            strA = a(str4);
+        } else {
+            strA = a(str3) + " " + str4;
+        }
+        StringBuilder sbS3 = b11.s(b11.q(sbS2, strA, " \n"), "OS version: Android ");
+        sbS3.append(Build.VERSION.RELEASE);
+        sbS3.append(" (SDK ");
+        sbS3.append(Build.VERSION.SDK_INT);
+        sbS3.append(") \n \n");
+        StringBuilder sbI = xa3.i(sbS3.toString().concat("Stack trace:  \n"));
+        sbI.append(intent.getStringExtra("cat.ereza.customactivityoncrash.EXTRA_STACK_TRACE"));
+        String string = sbI.toString();
+        String stringExtra = intent.getStringExtra("cat.ereza.customactivityoncrash.EXTRA_ACTIVITY_LOG");
+        if (stringExtra != null) {
+            string = string.concat("\nUser actions: \n").concat(stringExtra);
+        }
+        String stringExtra2 = intent.getStringExtra("cat.ereza.customactivityoncrash.EXTRA_CUSTOM_CRASH_DATA");
+        return stringExtra2 != null ? string.concat("\nAdditional data: \n").concat(stringExtra2) : string;
     }
 
-    public static oz c(Intent r4) {
-        oz r0 = (oz) r4.getSerializableExtra("cat.ereza.customactivityoncrash.EXTRA_CONFIG");
-        if (r0 != null) goto L5;
-    L7:
-        return r0;
-    L5:
-        if (r4.getStringExtra("cat.ereza.customactivityoncrash.EXTRA_STACK_TRACE") == null) goto L7;
-        Log.e("CustomActivityOnCrash", "The previous app process crashed. This is the stack trace of the crash:\n" + r4.getStringExtra("cat.ereza.customactivityoncrash.EXTRA_STACK_TRACE"));
-        goto L7
+    public static oz c(Intent intent) {
+        oz ozVar = (oz) intent.getSerializableExtra("cat.ereza.customactivityoncrash.EXTRA_CONFIG");
+        if (ozVar != null && intent.getStringExtra("cat.ereza.customactivityoncrash.EXTRA_STACK_TRACE") != null) {
+            Log.e("CustomActivityOnCrash", "The previous app process crashed. This is the stack trace of the crash:\n" + intent.getStringExtra("cat.ereza.customactivityoncrash.EXTRA_STACK_TRACE"));
+        }
+        return ozVar;
     }
 
-    public static void d(Activity r1, oz r2) {
-        Intent r0 = new Intent(r1, r2.p);
-        r0.addFlags(270565376);
-        if (r0.getComponent() == null) goto L5;
-        r0.setAction("android.intent.action.MAIN");
-        r0.addCategory("android.intent.category.LAUNCHER");
-    L5:
-        r1.finish();
-        r1.startActivity(r0);
+    public static void d(Activity activity, oz ozVar) {
+        Intent intent = new Intent(activity, (Class<?>) ozVar.p);
+        intent.addFlags(270565376);
+        if (intent.getComponent() != null) {
+            intent.setAction("android.intent.action.MAIN");
+            intent.addCategory("android.intent.category.LAUNCHER");
+        }
+        activity.finish();
+        activity.startActivity(intent);
         Process.killProcess(Process.myPid());
         System.exit(10);
     }

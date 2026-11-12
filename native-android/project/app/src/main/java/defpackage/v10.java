@@ -7,28 +7,29 @@ import java.text.CharacterIterator;
 public final class v10 implements CharacterIterator {
     public final CharSequence n;
     public final int o;
-    public int p;
+    public int p = 0;
 
-    public v10(CharSequence r1, int r2) {
-        this.n = r1;
-        this.o = r2;
-        this.p = 0;
+    public v10(CharSequence charSequence, int i) {
+        this.n = charSequence;
+        this.o = i;
     }
 
     @Override // java.text.CharacterIterator
     public final Object clone() {
-        return super.clone();
-    L5:
-        throw new InternalError();
+        try {
+            return super.clone();
+        } catch (CloneNotSupportedException unused) {
+            throw new InternalError();
+        }
     }
 
     @Override // java.text.CharacterIterator
     public final char current() {
-        int r0 = this.p;
-        if (r0 != this.o) goto L7;
-        return 65535;
-    L7:
-        return this.n.charAt(r0);
+        int i = this.p;
+        if (i == this.o) {
+            return (char) 65535;
+        }
+        return this.n.charAt(i);
     }
 
     @Override // java.text.CharacterIterator
@@ -54,47 +55,46 @@ public final class v10 implements CharacterIterator {
 
     @Override // java.text.CharacterIterator
     public final char last() {
-        int r0 = this.o;
-        if (r0 != 0) goto L6;
-        this.p = r0;
-        return 65535;
-    L6:
-        int r1 = r0 - 1;
-        this.p = r1;
-        return this.n.charAt(r1);
+        int i = this.o;
+        if (i == 0) {
+            this.p = i;
+            return (char) 65535;
+        }
+        int i2 = i - 1;
+        this.p = i2;
+        return this.n.charAt(i2);
     }
 
     @Override // java.text.CharacterIterator
     public final char next() {
-        int r0 = this.p + 1;
-        this.p = r0;
-        int r1 = this.o;
-        if (r0 < r1) goto L7;
-        this.p = r1;
-        return 65535;
-    L7:
-        return this.n.charAt(r0);
+        int i = this.p + 1;
+        this.p = i;
+        int i2 = this.o;
+        if (i < i2) {
+            return this.n.charAt(i);
+        }
+        this.p = i2;
+        return (char) 65535;
     }
 
     @Override // java.text.CharacterIterator
     public final char previous() {
-        int r0 = this.p;
-        if (r0 > 0) goto L6;
-        return 65535;
-    L6:
-        int r1 = r0 - 1;
-        this.p = r1;
-        return this.n.charAt(r1);
+        int i = this.p;
+        if (i <= 0) {
+            return (char) 65535;
+        }
+        int i2 = i - 1;
+        this.p = i2;
+        return this.n.charAt(i2);
     }
 
     @Override // java.text.CharacterIterator
-    public final char setIndex(int r2) {
-        if (r2 > this.o) goto L7;
-        if (r2 < 0) goto L7;
-        this.p = r2;
+    public final char setIndex(int i) {
+        if (i > this.o || i < 0) {
+            kf2.n("invalid position");
+            return (char) 0;
+        }
+        this.p = i;
         return current();
-    L7:
-        kf2.n("invalid position");
-        return 0;
     }
 }

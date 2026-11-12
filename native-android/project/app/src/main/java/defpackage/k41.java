@@ -5,18 +5,17 @@ package defpackage;
 public final class k41 {
     public final /* synthetic */ q41 a;
 
-    public k41(q41 r1) {
-        this.a = r1;
+    public k41(q41 q41Var) {
+        this.a = q41Var;
     }
 
     public final void a() {
-        q41 r1 = this.a;
-        if (r1.R == false) goto L6;
-        r1.Q.getClass();
-    L7:
-        r1.u.g(2);
-        return;
-    L6:
-        if (r1.h0 == true) goto L7;
+        q41 q41Var = this.a;
+        if (q41Var.R) {
+            q41Var.Q.getClass();
+        } else if (!q41Var.h0) {
+            return;
+        }
+        q41Var.u.g(2);
     }
 }

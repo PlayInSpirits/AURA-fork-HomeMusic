@@ -9,26 +9,24 @@ public final class g22 extends m91 {
     public final /* synthetic */ Iterable p;
     public final /* synthetic */ Object q;
 
-    public /* synthetic */ g22(Iterable r1, Object r2, int r3) {
-        this.o = r3;
-        this.p = r1;
-        this.q = r2;
+    public /* synthetic */ g22(Iterable iterable, Object obj, int i) {
+        this.o = i;
+        this.p = iterable;
+        this.q = obj;
     }
 
     @Override // java.lang.Iterable
     public final Iterator iterator() {
-        int r0 = this.o;
-        Object r1 = this.q;
-        Iterable r2 = this.p;
-        switch(r0) {
-            case 0: goto L6;
-            default: goto L5;
-        };
-    L6:
-        Iterator r3 = r2.iterator();
-        r3.getClass();
-        return new h22(r3, (ro3) r1);
-    L5:
-        return new i22(r2.iterator(), (ss2) r1);
+        int i = this.o;
+        Object obj = this.q;
+        Iterable iterable = this.p;
+        switch (i) {
+            case 0:
+                Iterator it = iterable.iterator();
+                it.getClass();
+                return new h22(it, (ro3) obj);
+            default:
+                return new i22(iterable.iterator(), (ss2) obj);
+        }
     }
 }

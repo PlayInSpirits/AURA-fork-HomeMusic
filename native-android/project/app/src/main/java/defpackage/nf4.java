@@ -5,9 +5,9 @@ package defpackage;
 public final class nf4 extends jx1 {
     public final transient Object q;
 
-    public nf4(Object r1) {
-        r1.getClass();
-        this.q = r1;
+    public nf4(Object obj) {
+        obj.getClass();
+        this.q = obj;
     }
 
     @Override // defpackage.jx1, defpackage.rw1
@@ -16,14 +16,14 @@ public final class nf4 extends jx1 {
     }
 
     @Override // defpackage.rw1
-    public final int b(int r1, Object[] r2) {
-        r2[r1] = this.q;
-        return r1 + 1;
+    public final int b(int i, Object[] objArr) {
+        objArr[i] = this.q;
+        return i + 1;
     }
 
     @Override // defpackage.rw1, java.util.AbstractCollection, java.util.Collection
-    public final boolean contains(Object r1) {
-        return this.q.equals(r1);
+    public final boolean contains(Object obj) {
+        return this.q.equals(obj);
     }
 
     @Override // defpackage.rw1
@@ -32,7 +32,8 @@ public final class nf4 extends jx1 {
     }
 
     @Override // defpackage.rw1
-    public final o15 h() {
+    /* JADX INFO: renamed from: h */
+    public final o15 iterator() {
         return new l22(this.q);
     }
 

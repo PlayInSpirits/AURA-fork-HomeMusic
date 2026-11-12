@@ -9,8 +9,8 @@ import app.homemusic.R;
 public final class gq2 extends cx3 {
     public final TextView u;
 
-    public gq2(View r2) {
-        super(r2);
-        this.u = (TextView) r2.findViewById(R.id.mr_cast_header_name);
+    public gq2(View view) {
+        super(view);
+        this.u = (TextView) view.findViewById(R.id.mr_cast_header_name);
     }
 }

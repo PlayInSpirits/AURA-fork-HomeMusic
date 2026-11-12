@@ -10,50 +10,45 @@ import java.util.concurrent.atomic.AtomicReference;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public abstract class a35 {
-    public static final AtomicReference a = null;
+    public static final AtomicReference a = new AtomicReference();
 
-    static {
-        a = new AtomicReference();
+    public static long a(long j) {
+        Calendar calendarE = e(null);
+        calendarE.setTimeInMillis(j);
+        return c(calendarE).getTimeInMillis();
     }
 
-    public static long a(long r1) {
-        Calendar r0 = e(null);
-        r0.setTimeInMillis(r1);
-        return c(r0).getTimeInMillis();
+    public static DateFormat b(String str, Locale locale) {
+        DateFormat instanceForSkeleton = DateFormat.getInstanceForSkeleton(str, locale);
+        instanceForSkeleton.setTimeZone(TimeZone.getTimeZone("UTC"));
+        instanceForSkeleton.setContext(DisplayContext.CAPITALIZATION_FOR_STANDALONE);
+        return instanceForSkeleton;
     }
 
-    public static DateFormat b(String r0, Locale r1) {
-        DateFormat r2 = DateFormat.getInstanceForSkeleton(r0, r1);
-        r2.setTimeZone(TimeZone.getTimeZone("UTC"));
-        r2.setContext(DisplayContext.CAPITALIZATION_FOR_STANDALONE);
-        return r2;
-    }
-
-    public static Calendar c(Calendar r4) {
-        Calendar r5 = e(r4);
-        Calendar r0 = e(null);
-        r0.set(r5.get(1), r5.get(2), r5.get(5));
-        return r0;
+    public static Calendar c(Calendar calendar) {
+        Calendar calendarE = e(calendar);
+        Calendar calendarE2 = e(null);
+        calendarE2.set(calendarE.get(1), calendarE.get(2), calendarE.get(5));
+        return calendarE2;
     }
 
     public static Calendar d() {
-        xt4 r0 = (xt4) a.get();
-        Calendar r1 = Calendar.getInstance();
-        r1.set(11, 0);
-        r1.set(12, 0);
-        r1.set(13, 0);
-        r1.set(14, 0);
-        r1.setTimeZone(java.util.TimeZone.getTimeZone("UTC"));
-        return r1;
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(11, 0);
+        calendar.set(12, 0);
+        calendar.set(13, 0);
+        calendar.set(14, 0);
+        calendar.setTimeZone(java.util.TimeZone.getTimeZone("UTC"));
+        return calendar;
     }
 
-    public static Calendar e(Calendar r3) {
-        Calendar r0 = Calendar.getInstance(java.util.TimeZone.getTimeZone("UTC"));
-        if (r3 != null) goto L6;
-        r0.clear();
-        return r0;
-    L6:
-        r0.setTimeInMillis(r3.getTimeInMillis());
-        return r0;
+    public static Calendar e(Calendar calendar) {
+        Calendar calendar2 = Calendar.getInstance(java.util.TimeZone.getTimeZone("UTC"));
+        if (calendar == null) {
+            calendar2.clear();
+            return calendar2;
+        }
+        calendar2.setTimeInMillis(calendar.getTimeInMillis());
+        return calendar2;
     }
 }

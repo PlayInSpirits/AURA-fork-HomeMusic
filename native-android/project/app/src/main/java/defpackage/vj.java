@@ -1,7 +1,6 @@
 package defpackage;
 
 import android.content.Context;
-import android.os.Build;
 import android.widget.Toast;
 import app.homemusic.R;
 import java.util.ArrayList;
@@ -16,101 +15,67 @@ import java.util.stream.Collectors;
 public final class vj implements dk, sz0, lm3 {
     public final Context n;
 
-    public vj(Context r1, int r2) {
-        switch(r2) {
-            case 2: goto L5;
-            default: goto L3;
-        };
-    L3:
-        r1.getClass();
-        this.n = r1;
-        return;
-    L5:
-        this.n = r1.getApplicationContext();
+    public vj(Context context, int i) {
+        switch (i) {
+            case 2:
+                this.n = context.getApplicationContext();
+                break;
+            default:
+                context.getClass();
+                this.n = context;
+                break;
+        }
     }
 
-    public static int b(tb1 r5) {
-        String r0 = r5.n;
-        if (r0 == null) goto L50;
-        if (lw2.j(r0) == false) goto L50;
-        String r6 = r5.n;
-        String r1 = f35.a;
-        r6.getClass();
-        byte r4 = -1;
-        switch(r6.hashCode()) {
-            case -1487656890: goto L35;
-            case -1487464693: goto L31;
-            case -1487464690: goto L27;
-            case -1487394660: goto L23;
-            case -1487018032: goto L19;
-            case -879272239: goto L15;
-            case -879258763: goto L11;
-            default: goto L38;
-        };
-    L38:
-        switch(r4) {
-            case 0: goto L44;
-            case 1: goto L41;
-            case 2: goto L41;
-            case 3: goto L46;
-            case 4: goto L46;
-            case 5: goto L46;
-            case 6: goto L46;
-            default: goto L48;
-        };
-    L41:
-        if (Build.VERSION.SDK_INT < 26) goto L48;
-    L44:
-        if (Build.VERSION.SDK_INT < 34) goto L48;
-    L46:
-        return kq.a(4, 0, 0, 0);
-    L48:
+    /* JADX WARN: Can't fix incorrect switch cases order, some code will duplicate */
+    /* JADX WARN: Code restructure failed: missing block: B:41:0x0073, code lost:
+    
+        if (android.os.Build.VERSION.SDK_INT >= 26) goto L45;
+     */
+    /* JADX WARN: Code restructure failed: missing block: B:44:0x007a, code lost:
+    
+        if (android.os.Build.VERSION.SDK_INT >= 34) goto L45;
+     */
+    /*
+        Code decompiled incorrectly, please refer to instructions dump.
+    */
+    public static int b(tb1 tb1Var) {
+        String str = tb1Var.n;
+        if (str == null || !lw2.j(str)) {
+            return kq.a(0, 0, 0, 0);
+        }
+        String str2 = tb1Var.n;
+        String str3 = f35.a;
+        str2.getClass();
+        switch (str2) {
+            case "image/avif":
+                break;
+            case "image/heic":
+            case "image/heif":
+                break;
+            case "image/jpeg":
+            case "image/webp":
+            case "image/bmp":
+            case "image/png":
+                return kq.a(4, 0, 0, 0);
+        }
         return kq.a(1, 0, 0, 0);
-    L11:
-        if (r6.equals("image/png") == false) goto L38;
-        r4 = 6;
-        goto L38
-    L15:
-        if (r6.equals("image/bmp") == false) goto L38;
-        r4 = 5;
-        goto L38
-    L19:
-        if (r6.equals("image/webp") == false) goto L38;
-        r4 = 4;
-        goto L38
-    L23:
-        if (r6.equals("image/jpeg") == false) goto L38;
-        r4 = 3;
-        goto L38
-    L27:
-        if (r6.equals("image/heif") == false) goto L38;
-        r4 = 2;
-        goto L38
-    L31:
-        if (r6.equals("image/heic") == false) goto L38;
-        r4 = 1;
-        goto L38
-    L35:
-        if (r6.equals("image/avif") == false) goto L38;
-        r4 = 0;
-    L50:
-        return kq.a(0, 0, 0, 0);
     }
 
     @Override // defpackage.sz0
-    public void a(bu r9) {
-        n90 r7 = new n90(0, "EmojiCompatInitializer");
-        LinkedBlockingDeque r6 = new LinkedBlockingDeque();
-        ThreadPoolExecutor r0 = new ThreadPoolExecutor(0, 1, 15, TimeUnit.SECONDS, r6, r7);
-        r0.allowCoreThreadTimeOut(true);
-        r0.execute(new v6(this, r9, r0, 9));
+    public void a(bu buVar) {
+        n90 n90Var = new n90(0, "EmojiCompatInitializer");
+        ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(0, 1, 15L, TimeUnit.SECONDS, new LinkedBlockingDeque(), n90Var);
+        threadPoolExecutor.allowCoreThreadTimeOut(true);
+        threadPoolExecutor.execute(new v6(this, buVar, threadPoolExecutor, 9));
     }
 
     @Override // defpackage.dk
-    public void e(ArrayList r4) {
-        if (r4.isEmpty() == true) goto L6;
-        au0.w(this.n).a(gi1.H(r4), (List) r4.stream().map(new hu3(6)).collect(Collectors.toList()), false);
-        return;
+    public void e(ArrayList arrayList) {
+        if (arrayList.isEmpty()) {
+            return;
+        }
+        au0.w(this.n).a(gi1.H(arrayList), (List) arrayList.stream().map(new hu3(6)).collect(Collectors.toList()), false);
     }
 
     @Override // defpackage.lm3
@@ -123,7 +88,7 @@ public final class vj implements dk, sz0, lm3 {
         Toast.makeText(this.n, R.string.playlist_editor_dialog_action_delete_success, 0).show();
     }
 
-    public /* synthetic */ vj(Context r1, byte r2) {
-        this.n = r1;
+    public /* synthetic */ vj(Context context, byte b) {
+        this.n = context;
     }
 }

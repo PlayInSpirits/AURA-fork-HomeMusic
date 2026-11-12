@@ -6,48 +6,39 @@ public final class kv implements if1 {
     public final /* synthetic */ int n;
     public final /* synthetic */ Object o;
 
-    public /* synthetic */ kv(int r1, Object r2) {
-        this.n = r1;
-        this.o = r2;
+    public /* synthetic */ kv(int i, Object obj) {
+        this.n = i;
+        this.o = obj;
     }
 
     @Override // defpackage.if1
-    public final Object invoke(Object r6) {
-        switch(this.n) {
-            case 0: goto L20;
-            case 1: goto L11;
-            case 2: goto L9;
-            default: goto L4;
-        };
-    L4:
-        Throwable r7 = (Throwable) r6;
-        hp4 r5 = (hp4) this.o;
-        cz r0 = r5.p;
-        if (r0 == null) goto L7;
-        r0.r(r7);
-    L7:
-        r5.p = null;
-        return j15.a;
-    L9:
-        Throwable r8 = (Throwable) r6;
-        cz r9 = (cz) this.o;
-        j15 r10 = j15.a;
-        r9.resumeWith(r10);
-        return r10;
-    L11:
-        gh4 r11 = (gh4) r6;
-        Object r1 = jh4.c;
-        monitor-enter(r1);
-        long r2 = jh4.e;     // Catch: Throwable -> L17
-        jh4.e = 1 + r2;     // Catch: Throwable -> L17
-        monitor-exit(r1);
-        return new uu3(r2, r11, (if1) this.o);
-    L17:
-        th = move-exception;
-        throw th;
-    L20:
-        Throwable r12 = (Throwable) r6;
-        ((ez) this.o).cancel();
-        return j15.a;
+    public final Object invoke(Object obj) {
+        long j;
+        switch (this.n) {
+            case 0:
+                ((ez) this.o).cancel();
+                return j15.a;
+            case 1:
+                gh4 gh4Var = (gh4) obj;
+                synchronized (jh4.c) {
+                    j = jh4.e;
+                    jh4.e = 1 + j;
+                }
+                return new uu3(j, gh4Var, (if1) this.o);
+            case 2:
+                cz czVar = (cz) this.o;
+                j15 j15Var = j15.a;
+                czVar.resumeWith(j15Var);
+                return j15Var;
+            default:
+                Throwable th = (Throwable) obj;
+                hp4 hp4Var = (hp4) this.o;
+                cz czVar2 = hp4Var.p;
+                if (czVar2 != null) {
+                    czVar2.r(th);
+                }
+                hp4Var.p = null;
+                return j15.a;
+        }
     }
 }

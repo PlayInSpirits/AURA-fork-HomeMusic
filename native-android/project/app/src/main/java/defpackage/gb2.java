@@ -6,39 +6,26 @@ public final class gb2 extends ib2 {
     public final String a;
     public final os4 b;
 
-    public gb2(String r1, os4 r2) {
-        this.a = r1;
-        this.b = r2;
+    public gb2(String str, os4 os4Var) {
+        this.a = str;
+        this.b = os4Var;
     }
 
-    public final boolean equals(Object r3) {
-        if (this != r3) goto L5;
-        return true;
-    L5:
-        if ((r3 instanceof gb2) == false) goto L16;
-        gb2 r4 = (gb2) r3;
-        String r0 = r4.a;
-        if (this.a.equals(r0) == true) goto L11;
-        return false;
-    L11:
-        if (h12.c(this.b, r4.b) == true) goto L14;
-        return false;
-    L14:
-        return true;
-    L16:
-        return false;
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof gb2)) {
+            return false;
+        }
+        gb2 gb2Var = (gb2) obj;
+        return this.a.equals(gb2Var.a) && h12.c(this.b, gb2Var.b);
     }
 
     public final int hashCode() {
-        int r0 = this.a.hashCode() * 31;
-        os4 r1 = this.b;
-        if (r1 == null) goto L5;
-        int r2 = r1.hashCode();
-    L7:
-        return (r0 + r2) * 31;
-    L5:
-        r2 = 0;
-        goto L7
+        int iHashCode = this.a.hashCode() * 31;
+        os4 os4Var = this.b;
+        return (iHashCode + (os4Var != null ? os4Var.hashCode() : 0)) * 31;
     }
 
     public final String toString() {

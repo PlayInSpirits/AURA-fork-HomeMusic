@@ -1,5 +1,7 @@
 package defpackage;
 
+import org.chromium.support_lib_boundary.WebSettingsBoundaryInterface;
+
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final /* synthetic */ class ps0 implements if1 {
@@ -7,129 +9,114 @@ public final /* synthetic */ class ps0 implements if1 {
     public final /* synthetic */ String o;
     public final /* synthetic */ String p;
 
-    public /* synthetic */ ps0(int r1, String r2, String r3) {
-        this.n = r1;
-        this.o = r2;
-        this.p = r3;
+    public /* synthetic */ ps0(int i, String str, String str2) {
+        this.n = i;
+        this.o = str;
+        this.p = str2;
     }
 
     @Override // defpackage.if1
-    public final Object invoke(Object r8) {
-        int r0 = this.n;
-        int r1 = 0;
-        boolean r2 = false;
-        Boolean r3 = null;
-        String r5 = this.p;
-        String r7 = this.o;
-        x34 r9 = (x34) r8;
-        switch(r0) {
-            case 0: goto L65;
-            case 1: goto L51;
-            case 2: goto L29;
-            case 3: goto L15;
-            default: goto L4;
-        };
-    L4:
-        z34 r10 = r9.U("INSERT OR IGNORE INTO synced_playlist (playlistId, serverId) VALUES (?, ?)");
-        if (r7 != null) goto L9;
-        r10.e(1);     // Catch: Throwable -> L7
-    L10:
-        r10.r(2, r5);     // Catch: Throwable -> L7
-        r10.O();     // Catch: Throwable -> L7
-        r10.close();
-        return null;
-    L9:
-        r10.r(1, r7);     // Catch: Throwable -> L7
-    L7:
-        th = move-exception;
-        r10.close();
-        throw th;
-    L15:
-        z34 r11 = r9.U("DELETE FROM synced_playlist WHERE playlistId = ? AND serverId = ?");
-        if (r7 != null) goto L20;
-        r11.e(1);     // Catch: Throwable -> L18
-    L21:
-        if (r5 != null) goto L23;
-        r11.e(2);     // Catch: Throwable -> L18
-    L24:
-        r11.O();     // Catch: Throwable -> L18
-        r11.close();
-        return null;
-    L23:
-        r11.r(2, r5);     // Catch: Throwable -> L18
-        goto L24
-    L20:
-        r11.r(1, r7);     // Catch: Throwable -> L18
-    L18:
-        th = move-exception;
-        r11.close();
-        throw th;
-    L29:
-        z34 r12 = r9.U("SELECT EXISTS(SELECT 1 FROM synced_playlist WHERE playlistId = ? AND serverId = ?)");
-        if (r7 != null) goto L34;
-        r12.e(1);     // Catch: Throwable -> L32
-    L35:
-        r12.r(2, r5);     // Catch: Throwable -> L32
-        if (r12.O() == true) goto L38;
-    L47:
-        r12.close();
-        return r3;
-    L38:
-        if (r12.isNull(0) == false) goto L40;
-        Integer r13 = null;
-    L41:
-        if (r13 == null) goto L47;
-        if (r13.intValue() == 0) goto L46;
-        r2 = true;
-    L46:
-        r3 = Boolean.valueOf(r2);     // Catch: Throwable -> L32
-        goto L47
-    L40:
-        r13 = Integer.valueOf((int) r12.getLong(0));     // Catch: Throwable -> L32
-        goto L41
-    L34:
-        r12.r(1, r7);     // Catch: Throwable -> L32
-    L32:
-        th = move-exception;
-        r12.close();
-        throw th;
-    L51:
-        z34 r14 = r9.U("UPDATE playlist SET name = ? WHERE id = ?");
-        if (r7 != null) goto L56;
-        r14.e(1);     // Catch: Throwable -> L54
-    L57:
-        if (r5 != null) goto L59;
-        r14.e(2);     // Catch: Throwable -> L54
-    L60:
-        r14.O();     // Catch: Throwable -> L54
-        r14.close();
-        return null;
-    L59:
-        r14.r(2, r5);     // Catch: Throwable -> L54
-        goto L60
-    L56:
-        r14.r(1, r7);     // Catch: Throwable -> L54
-    L54:
-        th = move-exception;
-        r14.close();
-        throw th;
-    L65:
-        z34 r15 = r9.U("SELECT COUNT(*) FROM download WHERE album_id = ? AND NULLIF(album_artist, '') IS NULL AND NULLIF(album, '') <> ? AND download_state = 1");
-        if (r7 != null) goto L70;
-        r15.e(1);     // Catch: Throwable -> L68
-    L71:
-        r15.r(2, r5);     // Catch: Throwable -> L68
-        if (r15.O() == false) goto L74;
-        r1 = (int) r15.getLong(0);     // Catch: Throwable -> L68
-    L74:
-        Integer r16 = Integer.valueOf(r1);     // Catch: Throwable -> L68
-        r15.close();
-        return r16;
-    L70:
-        r15.r(1, r7);     // Catch: Throwable -> L68
-    L68:
-        th = move-exception;
-        r15.close();
-        throw th;
+    public final Object invoke(Object obj) throws Exception {
+        int i = this.n;
+        Boolean boolValueOf = null;
+        String str = this.p;
+        String str2 = this.o;
+        x34 x34Var = (x34) obj;
+        switch (i) {
+            case 0:
+                z34 z34VarU = x34Var.U("SELECT COUNT(*) FROM download WHERE album_id = ? AND NULLIF(album_artist, '') IS NULL AND NULLIF(album, '') <> ? AND download_state = 1");
+                try {
+                    if (str2 == null) {
+                        z34VarU.e(1);
+                    } else {
+                        z34VarU.r(1, str2);
+                    }
+                    z34VarU.r(2, str);
+                    Integer numValueOf = Integer.valueOf(z34VarU.O() ? (int) z34VarU.getLong(0) : 0);
+                    z34VarU.close();
+                    return numValueOf;
+                } catch (Throwable th) {
+                    z34VarU.close();
+                    throw th;
+                }
+            case 1:
+                z34 z34VarU2 = x34Var.U("UPDATE playlist SET name = ? WHERE id = ?");
+                try {
+                    if (str2 == null) {
+                        z34VarU2.e(1);
+                    } else {
+                        z34VarU2.r(1, str2);
+                    }
+                    if (str == null) {
+                        z34VarU2.e(2);
+                    } else {
+                        z34VarU2.r(2, str);
+                    }
+                    z34VarU2.O();
+                    z34VarU2.close();
+                    return null;
+                } catch (Throwable th2) {
+                    z34VarU2.close();
+                    throw th2;
+                }
+            case 2:
+                z34 z34VarU3 = x34Var.U("SELECT EXISTS(SELECT 1 FROM synced_playlist WHERE playlistId = ? AND serverId = ?)");
+                try {
+                    if (str2 == null) {
+                        z34VarU3.e(1);
+                    } else {
+                        z34VarU3.r(1, str2);
+                    }
+                    z34VarU3.r(2, str);
+                    if (z34VarU3.O()) {
+                        Integer numValueOf2 = z34VarU3.isNull(0) ? null : Integer.valueOf((int) z34VarU3.getLong(0));
+                        if (numValueOf2 != null) {
+                            boolValueOf = Boolean.valueOf(numValueOf2.intValue() != 0);
+                            break;
+                        }
+                    }
+                    z34VarU3.close();
+                    return boolValueOf;
+                } catch (Throwable th3) {
+                    z34VarU3.close();
+                    throw th3;
+                }
+            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
+                z34 z34VarU4 = x34Var.U("DELETE FROM synced_playlist WHERE playlistId = ? AND serverId = ?");
+                try {
+                    if (str2 == null) {
+                        z34VarU4.e(1);
+                    } else {
+                        z34VarU4.r(1, str2);
+                    }
+                    if (str == null) {
+                        z34VarU4.e(2);
+                    } else {
+                        z34VarU4.r(2, str);
+                    }
+                    z34VarU4.O();
+                    z34VarU4.close();
+                    return null;
+                } catch (Throwable th4) {
+                    z34VarU4.close();
+                    throw th4;
+                }
+            default:
+                z34 z34VarU5 = x34Var.U("INSERT OR IGNORE INTO synced_playlist (playlistId, serverId) VALUES (?, ?)");
+                try {
+                    if (str2 == null) {
+                        z34VarU5.e(1);
+                    } else {
+                        z34VarU5.r(1, str2);
+                    }
+                    z34VarU5.r(2, str);
+                    z34VarU5.O();
+                    z34VarU5.close();
+                    return null;
+                } catch (Throwable th5) {
+                    z34VarU5.close();
+                    throw th5;
+                }
+        }
     }
 }

@@ -16,33 +16,33 @@ public class pu3 extends hd {
     public AlbumID3 g;
     public ArtistID3 h;
 
-    public pu3(Application r2) {
-        super(r2);
+    public pu3(Application application) {
+        super(application);
         this.c = new xi4(2);
         this.d = new rv2(27);
         this.e = new pa(12);
     }
 
-    public final void c(int r3) {
-        Child r0 = this.f;
-        if (r0 == null) goto L6;
-        String r1 = r0.getId();
-        this.c.getClass();
-        App.f(false).e().w(r3, r1).enqueue(new xi4(1));
-        return;
-    L6:
-        AlbumID3 r2 = this.g;
-        if (r2 == null) goto L10;
-        String r4 = r2.getId();
-        this.d.getClass();
-        App.f(false).e().w(r3, r4).enqueue(new rv2(26));
-        return;
-    L10:
-        ArtistID3 r5 = this.h;
-        if (r5 == null) goto L14;
-        String r6 = r5.getId();
-        this.e.getClass();
-        App.f(false).e().w(r3, r6).enqueue(new pa(11));
-        return;
+    public final void c(int i) {
+        Child child = this.f;
+        if (child != null) {
+            String id = child.getId();
+            this.c.getClass();
+            App.f(false).e().w(i, id).enqueue(new xi4(1));
+            return;
+        }
+        AlbumID3 albumID3 = this.g;
+        if (albumID3 != null) {
+            String id2 = albumID3.getId();
+            this.d.getClass();
+            App.f(false).e().w(i, id2).enqueue(new rv2(26));
+        } else {
+            ArtistID3 artistID3 = this.h;
+            if (artistID3 != null) {
+                String id3 = artistID3.getId();
+                this.e.getClass();
+                App.f(false).e().w(i, id3).enqueue(new pa(11));
+            }
+        }
     }
 }

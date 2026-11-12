@@ -13,94 +13,69 @@ public final class q90 {
     }
 
     public final synchronized void a() {
-        monitor-enter(this);
-    L13:
-    L7:
-        th = move-exception;
-        throw th;
-    L4:
-        if (this.b == true) goto L9;
-        this.a.getClass();     // Catch: Throwable -> L7
-        wait();     // Catch: Throwable -> L7
-        goto L13
-    L9:
-        monitor-exit(this);
+        while (!this.b) {
+            this.a.getClass();
+            wait();
+        }
     }
 
     public final synchronized void b() {
-        monitor-enter(this);
-        boolean r0 = false;
-    L19:
-    L8:
-        th = move-exception;
-        throw th;
-    L5:
-        if (this.b == true) goto L11;
-        this.a.getClass();     // Catch: Throwable -> L8 InterruptedException -> L10
-        wait();     // Catch: Throwable -> L8 InterruptedException -> L10
-    L10:
-        r0 = true;
-        goto L19
-    L11:
-        if (r0 == false) goto L13;
-        Thread.currentThread().interrupt();     // Catch: Throwable -> L8
-    L13:
-        monitor-exit(this);
+        boolean z = false;
+        while (!this.b) {
+            try {
+                this.a.getClass();
+                wait();
+            } catch (InterruptedException unused) {
+                z = true;
+            }
+        }
+        if (z) {
+            Thread.currentThread().interrupt();
+        }
     }
 
-    public final synchronized boolean c(long r5) {
-        monitor-enter(this);
-        if (r5 > 0) goto L10;
-        boolean r6 = this.b;     // Catch: Throwable -> L8
-        monitor-exit(this);
-        return r6;
-    L10:
-        this.a.getClass();     // Catch: Throwable -> L8
-        long r0 = SystemClock.elapsedRealtime();     // Catch: Throwable -> L8
-        long r7 = r5 + r0;     // Catch: Throwable -> L8
-        if (r7 >= r0) goto L13;
-        b();     // Catch: Throwable -> L8
-    L24:
-        boolean r8 = this.b;     // Catch: Throwable -> L8
-        monitor-exit(this);
-        return r8;
-    L13:
-        boolean r2 = false;
-    L15:
-        if (this.b == true) goto L22;
-        if (r0 >= r7) goto L22;
-        this.a.getClass();     // Catch: Throwable -> L8 InterruptedException -> L20
-        wait(r7 - r0);     // Catch: Throwable -> L8 InterruptedException -> L20
-    L21:
-        this.a.getClass();     // Catch: Throwable -> L8
-        r0 = SystemClock.elapsedRealtime();     // Catch: Throwable -> L8
-    L20:
-        r2 = true;
-    L22:
-        if (r2 == false) goto L24;
-        Thread.currentThread().interrupt();     // Catch: Throwable -> L8
-    L8:
-        th = move-exception;
-        throw th;
+    public final synchronized boolean c(long j) {
+        try {
+            if (j <= 0) {
+                return this.b;
+            }
+            this.a.getClass();
+            long jElapsedRealtime = SystemClock.elapsedRealtime();
+            long j2 = j + jElapsedRealtime;
+            if (j2 < jElapsedRealtime) {
+                b();
+            } else {
+                boolean z = false;
+                while (!this.b && jElapsedRealtime < j2) {
+                    try {
+                        this.a.getClass();
+                        wait(j2 - jElapsedRealtime);
+                    } catch (InterruptedException unused) {
+                        z = true;
+                    }
+                    this.a.getClass();
+                    jElapsedRealtime = SystemClock.elapsedRealtime();
+                }
+                if (z) {
+                    Thread.currentThread().interrupt();
+                }
+            }
+            return this.b;
+        } catch (Throwable th) {
+            throw th;
+        }
     }
 
     public final synchronized boolean d() {
-        monitor-enter(this);
-    L12:
-        th = move-exception;
-        throw th;
-    L4:
-        if (this.b == false) goto L9;
-        monitor-exit(this);
-        return false;
-    L9:
-        this.b = true;     // Catch: Throwable -> L12
-        notifyAll();     // Catch: Throwable -> L12
-        monitor-exit(this);
+        if (this.b) {
+            return false;
+        }
+        this.b = true;
+        notifyAll();
         return true;
     }
 
-    public q90(vp4 r1) {
-        this.a = r1;
+    public q90(vp4 vp4Var) {
+        this.a = vp4Var;
     }
 }

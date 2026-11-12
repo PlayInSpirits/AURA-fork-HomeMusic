@@ -7,22 +7,22 @@ import java.security.MessageDigest;
 public final class s73 implements f42 {
     public final Object b;
 
-    public s73(Object r2) {
-        h12.f(r2, "Argument must not be null");
-        this.b = r2;
+    public s73(Object obj) {
+        h12.f(obj, "Argument must not be null");
+        this.b = obj;
     }
 
     @Override // defpackage.f42
-    public final void b(MessageDigest r2) {
-        r2.update(this.b.toString().getBytes(f42.a));
+    public final void b(MessageDigest messageDigest) {
+        messageDigest.update(this.b.toString().getBytes(f42.a));
     }
 
     @Override // defpackage.f42
-    public final boolean equals(Object r2) {
-        if ((r2 instanceof s73) == true) goto L5;
+    public final boolean equals(Object obj) {
+        if (obj instanceof s73) {
+            return this.b.equals(((s73) obj).b);
+        }
         return false;
-    L5:
-        return this.b.equals(((s73) r2).b);
     }
 
     @Override // defpackage.f42

@@ -9,49 +9,45 @@ public final class wd5 implements t80, w92 {
     public final z80 o;
     public boolean p;
     public ea2 q;
-    public r70 r;
+    public r70 r = rr2.a;
 
-    public wd5(ra r1, z80 r2) {
-        this.n = r1;
-        this.o = r2;
-        this.r = rr2.a;
+    public wd5(ra raVar, z80 z80Var) {
+        this.n = raVar;
+        this.o = z80Var;
     }
 
     public final void a() {
-        if (this.p == true) goto L11;
-        this.p = true;
-        ra r0 = this.n;
-        r0.getView().setTag(R.id.wrapped_composition_tag, null);
-        ea2 r1 = this.q;
-        if (r1 == null) goto L7;
-        r1.f(this);
-    L7:
-        this.q = null;
-        bs0 r2 = r0.t;
-        if (r2 == null) goto L10;
-        r2.o.invoke();
-    L10:
-        r0.t = null;
-    L11:
+        if (!this.p) {
+            this.p = true;
+            ra raVar = this.n;
+            raVar.getView().setTag(R.id.wrapped_composition_tag, null);
+            ea2 ea2Var = this.q;
+            if (ea2Var != null) {
+                ea2Var.f(this);
+            }
+            this.q = null;
+            bs0 bs0Var = raVar.t;
+            if (bs0Var != null) {
+                bs0Var.o.invoke();
+            }
+            raVar.t = null;
+        }
         this.o.m();
     }
 
     @Override // defpackage.w92
-    public final void b(ba2 r1, q92 r2) {
-        if (r2 != q92.ON_DESTROY) goto L7;
-        a();
-        return;
-    L7:
-        if (r2 == q92.ON_CREATE) goto L9;
-        return;
-    L9:
-        if (this.p == true) goto L13;
-        c(this.r);
-        return;
+    public final void b(ba2 ba2Var, q92 q92Var) {
+        if (q92Var == q92.ON_DESTROY) {
+            a();
+        } else {
+            if (q92Var != q92.ON_CREATE || this.p) {
+                return;
+            }
+            c(this.r);
+        }
     }
 
-    public final void c(wf1 r3) {
-        z15 r0 = new z15(this, (r70) r3, 1);
-        this.n.setOnReadyForComposition(r0);
+    public final void c(wf1 wf1Var) {
+        this.n.setOnReadyForComposition(new z15(this, (r70) wf1Var, 1));
     }
 }

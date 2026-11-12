@@ -7,5 +7,5 @@ public interface wr4 {
 
     int[] getState();
 
-    boolean onStateChange(int[] r1);
+    boolean onStateChange(int[] iArr);
 }

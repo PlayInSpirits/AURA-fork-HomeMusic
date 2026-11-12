@@ -4,7 +4,7 @@ package defpackage;
 /* JADX INFO: loaded from: classes.dex */
 public final /* synthetic */ class v55 implements g93 {
     @Override // defpackage.g93
-    public final ld0 a(ld0 r1) {
-        return r1;
+    public final ld0 a(ld0 ld0Var) {
+        return ld0Var;
     }
 }

@@ -7,55 +7,41 @@ import java.util.List;
 public final class ys0 extends vq {
     public final /* synthetic */ int g;
 
-    public /* synthetic */ ys0(sv4 r1, int[] r2, int r3, int r4) {
-        this.g = r4;
-        super(r3, r1, r2);
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public /* synthetic */ ys0(sv4 sv4Var, int[] iArr, int i, int i2) {
+        super(i, sv4Var, iArr);
+        this.g = i2;
     }
 
-    private final void u(long r1, long r3, long r5, List r7, xj2[] r8) {
+    private final void u(long j, long j2, long j3, List list, xj2[] xj2VarArr) {
     }
 
-    private final void v(long r1, long r3, long r5, List r7, xj2[] r8) {
+    private final void v(long j, long j2, long j3, List list, xj2[] xj2VarArr) {
     }
 
     @Override // defpackage.t41
-    public final void b(long r1, long r3, long r5, List r7, xj2[] r8) {
-        int r0 = this.g;
+    public final void b(long j, long j2, long j3, List list, xj2[] xj2VarArr) {
+        int i = this.g;
     }
 
     @Override // defpackage.t41
     public final int d() {
-        switch(this.g) {
-            case 0: goto L6;
-            default: goto L4;
-        };
-    L4:
-        return 0;
-    L6:
+        switch (this.g) {
+        }
         return 0;
     }
 
     @Override // defpackage.t41
     public final int n() {
-        switch(this.g) {
-            case 0: goto L6;
-            default: goto L4;
-        };
-    L4:
-        return 0;
-    L6:
+        switch (this.g) {
+        }
         return 0;
     }
 
     @Override // defpackage.t41
     public final Object q() {
-        switch(this.g) {
-            case 0: goto L6;
-            default: goto L4;
-        };
-    L4:
-        return null;
-    L6:
+        switch (this.g) {
+        }
         return null;
     }
 }

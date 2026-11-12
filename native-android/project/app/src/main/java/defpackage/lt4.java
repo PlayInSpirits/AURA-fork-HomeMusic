@@ -6,111 +6,161 @@ import java.util.concurrent.atomic.AtomicIntegerFieldUpdater;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public class lt4 {
-    public static final /* synthetic */ AtomicIntegerFieldUpdater b = null;
+    public static final /* synthetic */ AtomicIntegerFieldUpdater b = AtomicIntegerFieldUpdater.newUpdater(lt4.class, "_size$volatile");
     private volatile /* synthetic */ int _size$volatile;
     public j21[] a;
 
-    static {
-        b = AtomicIntegerFieldUpdater.newUpdater(lt4.class, "_size$volatile");
+    public final void a(j21 j21Var) {
+        j21Var.d((k21) this);
+        j21[] j21VarArr = this.a;
+        AtomicIntegerFieldUpdater atomicIntegerFieldUpdater = b;
+        if (j21VarArr == null) {
+            j21VarArr = new j21[4];
+            this.a = j21VarArr;
+        } else if (atomicIntegerFieldUpdater.get(this) >= j21VarArr.length) {
+            j21VarArr = (j21[]) Arrays.copyOf(j21VarArr, atomicIntegerFieldUpdater.get(this) * 2);
+            this.a = j21VarArr;
+        }
+        int i = atomicIntegerFieldUpdater.get(this);
+        atomicIntegerFieldUpdater.set(this, i + 1);
+        j21VarArr[i] = j21Var;
+        j21Var.o = i;
+        c(i);
     }
 
-    public final void a(j21 r5) {
-        r5.d((k21) this);
-        j21[] r0 = this.a;
-        AtomicIntegerFieldUpdater r1 = b;
-        if (r0 != null) goto L6;
-        r0 = new j21[4];
-        this.a = r0;
-    L8:
-        int r2 = r1.get(this);
-        r1.set(this, r2 + 1);
-        r0[r2] = r5;
-        r5.o = r2;
-        c(r2);
-        return;
-    L6:
-        if (r1.get(this) < r0.length) goto L8;
-        r0 = (j21[]) Arrays.copyOf(r0, r1.get(this) * 2);
-        this.a = r0;
-        goto L8
+    /* JADX WARN: Code duplicated, block: B:12:0x0045  */
+    /* JADX WARN: Code duplicated, block: B:14:0x0052  */
+    /* JADX WARN: Code duplicated, block: B:17:0x0063  */
+    /* JADX WARN: Code duplicated, block: B:21:0x0075 A[LOOP:0: B:9:0x003a->B:21:0x0075, LOOP_END] */
+    /* JADX WARN: Code duplicated, block: B:24:0x007a A[EDGE_INSN: B:24:0x007a->B:22:0x007a BREAK  A[LOOP:0: B:9:0x003a->B:21:0x0075], SYNTHETIC] */
+    /* JADX WARN: Code duplicated, block: B:25:0x007a A[EDGE_INSN: B:25:0x007a->B:22:0x007a BREAK  A[LOOP:0: B:9:0x003a->B:21:0x0075], SYNTHETIC] */
+    /* JADX WARN: Code duplicated, block: B:26:? A[SYNTHETIC] */
+    public final j21 b(int i) {
+        int i2;
+        int i3;
+        Object[] objArr;
+        int i4;
+        Comparable comparable;
+        Comparable comparable2;
+        Comparable comparable3;
+        Object obj;
+        Object[] objArr2 = this.a;
+        objArr2.getClass();
+        AtomicIntegerFieldUpdater atomicIntegerFieldUpdater = b;
+        atomicIntegerFieldUpdater.set(this, atomicIntegerFieldUpdater.get(this) - 1);
+        if (i < atomicIntegerFieldUpdater.get(this)) {
+            d(i, atomicIntegerFieldUpdater.get(this));
+            int i5 = (i - 1) / 2;
+            if (i > 0) {
+                j21 j21Var = objArr2[i];
+                j21Var.getClass();
+                Object obj2 = objArr2[i5];
+                obj2.getClass();
+                if (j21Var.compareTo(obj2) < 0) {
+                    d(i, i5);
+                    c(i5);
+                } else {
+                    while (true) {
+                        i2 = i * 2;
+                        i3 = i2 + 1;
+                        if (i3 >= atomicIntegerFieldUpdater.get(this)) {
+                            break;
+                        }
+                        objArr = this.a;
+                        objArr.getClass();
+                        i4 = i2 + 2;
+                        if (i4 < atomicIntegerFieldUpdater.get(this)) {
+                            comparable3 = objArr[i4];
+                            comparable3.getClass();
+                            obj = objArr[i3];
+                            obj.getClass();
+                            if (comparable3.compareTo(obj) >= 0) {
+                                i4 = i3;
+                            }
+                        } else {
+                            i4 = i3;
+                        }
+                        comparable = objArr[i];
+                        comparable.getClass();
+                        comparable2 = objArr[i4];
+                        comparable2.getClass();
+                        if (comparable.compareTo(comparable2) <= 0) {
+                            break;
+                        }
+                        d(i, i4);
+                        i = i4;
+                    }
+                }
+            } else {
+                while (true) {
+                    i2 = i * 2;
+                    i3 = i2 + 1;
+                    if (i3 >= atomicIntegerFieldUpdater.get(this)) {
+                        break;
+                        break;
+                    }
+                    objArr = this.a;
+                    objArr.getClass();
+                    i4 = i2 + 2;
+                    if (i4 < atomicIntegerFieldUpdater.get(this)) {
+                        comparable3 = objArr[i4];
+                        comparable3.getClass();
+                        obj = objArr[i3];
+                        obj.getClass();
+                        if (comparable3.compareTo(obj) >= 0) {
+                            i4 = i3;
+                        }
+                    } else {
+                        i4 = i3;
+                    }
+                    comparable = objArr[i];
+                    comparable.getClass();
+                    comparable2 = objArr[i4];
+                    comparable2.getClass();
+                    if (comparable.compareTo(comparable2) <= 0) {
+                        break;
+                        break;
+                    }
+                    d(i, i4);
+                    i = i4;
+                }
+            }
+        }
+        j21 j21Var2 = objArr2[atomicIntegerFieldUpdater.get(this)];
+        j21Var2.getClass();
+        j21Var2.d(null);
+        j21Var2.o = -1;
+        objArr2[atomicIntegerFieldUpdater.get(this)] = null;
+        return j21Var2;
     }
 
-    public final j21 b(int r9) {
-        Object[] r0 = this.a;
-        r0.getClass();
-        AtomicIntegerFieldUpdater r1 = b;
-        r1.set(this, r1.get(this) - 1);
-        if (r9 >= r1.get(this)) goto L22;
-        d(r9, r1.get(this));
-        int r2 = (r9 - 1) / 2;
-        if (r9 <= 0) goto L9;
-        j21 r4 = r0[r9];
-        r4.getClass();
-        Object r5 = r0[r2];
-        r5.getClass();
-        if (r4.compareTo(r5) >= 0) goto L9;
-        d(r9, r2);
-        c(r2);
-    L9:
-        int r3 = r9 * 2;
-        int r6 = r3 + 1;
-        if (r6 >= r1.get(this)) goto L22;
-        Object[] r7 = this.a;
-        r7.getClass();
-        int r8 = r3 + 2;
-        if (r8 >= r1.get(this)) goto L17;
-        Comparable r10 = r7[r8];
-        r10.getClass();
-        Object r11 = r7[r6];
-        r11.getClass();
-        if (r10.compareTo(r11) >= 0) goto L17;
-    L18:
-        Comparable r12 = r7[r9];
-        r12.getClass();
-        Comparable r13 = r7[r8];
-        r13.getClass();
-        if (r12.compareTo(r13) <= 0) goto L22;
-        d(r9, r8);
-        r9 = r8;
-    L17:
-        r8 = r6;
-    L22:
-        j21 r14 = r0[r1.get(this)];
-        r14.getClass();
-        r14.d(null);
-        r14.o = -1;
-        r0[r1.get(this)] = null;
-        return r14;
+    public final void c(int i) {
+        while (i > 0) {
+            j21[] j21VarArr = this.a;
+            j21VarArr.getClass();
+            int i2 = (i - 1) / 2;
+            j21 j21Var = j21VarArr[i2];
+            j21Var.getClass();
+            j21 j21Var2 = j21VarArr[i];
+            j21Var2.getClass();
+            if (j21Var.compareTo(j21Var2) <= 0) {
+                return;
+            }
+            d(i, i2);
+            i = i2;
+        }
     }
 
-    public final void c(int r4) {
-    L2:
-        if (r4 <= 0) goto L6;
-        j21[] r0 = this.a;
-        r0.getClass();
-        int r1 = (r4 - 1) / 2;
-        j21 r2 = r0[r1];
-        r2.getClass();
-        j21 r3 = r0[r4];
-        r3.getClass();
-        if (r2.compareTo(r3) <= 0) goto L10;
-        d(r4, r1);
-        r4 = r1;
-        goto L2
-    L10:
-        return;
-    }
-
-    public final void d(int r3, int r4) {
-        j21[] r2 = this.a;
-        r2.getClass();
-        j21 r0 = r2[r4];
-        r0.getClass();
-        j21 r1 = r2[r3];
-        r1.getClass();
-        r2[r3] = r0;
-        r2[r4] = r1;
-        r0.o = r3;
-        r1.o = r4;
+    public final void d(int i, int i2) {
+        j21[] j21VarArr = this.a;
+        j21VarArr.getClass();
+        j21 j21Var = j21VarArr[i2];
+        j21Var.getClass();
+        j21 j21Var2 = j21VarArr[i];
+        j21Var2.getClass();
+        j21VarArr[i] = j21Var;
+        j21VarArr[i2] = j21Var2;
+        j21Var.o = i;
+        j21Var2.o = i2;
     }
 }

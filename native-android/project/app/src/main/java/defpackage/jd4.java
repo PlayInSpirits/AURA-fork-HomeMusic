@@ -7,45 +7,41 @@ import android.content.res.TypedArray;
 public final class jd4 extends rp {
     public final /* synthetic */ int b;
 
-    public jd4(int r1) {
-        this.b = r1;
-        switch(r1) {
-            case 1: goto L6;
-            default: goto L4;
-        };
-    L4:
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public jd4(int i) {
         super(3);
-        ((kd4) this.a).p = true;
-        return;
-    L6:
-        super(3);
+        this.b = i;
+        switch (i) {
+            case 1:
+                super(3);
+                break;
+            default:
+                ((kd4) this.a).p = true;
+                break;
+        }
     }
 
     @Override // defpackage.rp
-    public rp g(TypedArray r5) {
-        switch(this.b) {
-            case 1: goto L6;
-            default: goto L5;
-        };
-    L6:
-        kd4 r0 = (kd4) this.a;
-        super.g(r5);
-        if (r5.hasValue(2) == false) goto L10;
-        int r1 = r5.getColor(2, r0.e);
-        int r2 = r1 & 16777215;
-        r0.e = r2 | (r0.e & (-16777216));
-    L10:
-        if (r5.hasValue(12) == false) goto L12;
-        r0.d = r5.getColor(12, r0.d);
-    L12:
-        return this;
-    L5:
-        return super.g(r5);
+    public rp g(TypedArray typedArray) {
+        switch (this.b) {
+            case 1:
+                kd4 kd4Var = (kd4) this.a;
+                super.g(typedArray);
+                if (typedArray.hasValue(2)) {
+                    kd4Var.e = (typedArray.getColor(2, kd4Var.e) & 16777215) | (kd4Var.e & (-16777216));
+                }
+                if (typedArray.hasValue(12)) {
+                    kd4Var.d = typedArray.getColor(12, kd4Var.d);
+                }
+                return this;
+            default:
+                return super.g(typedArray);
+        }
     }
 
     @Override // defpackage.rp
     public final rp j() {
-        int r0 = this.b;
+        int i = this.b;
         return this;
     }
 }

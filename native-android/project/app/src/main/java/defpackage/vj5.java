@@ -7,8 +7,8 @@ import java.util.Arrays;
 public final class vj5 extends ak5 {
     public final boolean n;
 
-    public vj5(boolean r1) {
-        this.n = r1;
+    public vj5(boolean z) {
+        this.n = z;
     }
 
     @Override // defpackage.ak5
@@ -17,41 +17,21 @@ public final class vj5 extends ak5 {
     }
 
     @Override // java.lang.Comparable
-    public final /* bridge */ /* synthetic */ int compareTo(Object r4) {
-        ak5 r5 = (ak5) r4;
-        int r0 = r5.a();
-        int r1 = ak5.d((byte) -32);
-        if (r1 != r0) goto L5;
-        vj5 r6 = (vj5) r5;
-        int r2 = 21;
-        if (true == this.n) goto L9;
-        int r3 = 20;
-    L11:
-        if (true == r6.n) goto L14;
-        r2 = 20;
-    L14:
-        return r3 - r2;
-    L9:
-        r3 = 21;
-        goto L11
-    L5:
-        return r1 - r5.a();
+    public final /* bridge */ /* synthetic */ int compareTo(Object obj) {
+        ak5 ak5Var = (ak5) obj;
+        int iA = ak5Var.a();
+        int iD = ak5.d((byte) -32);
+        if (iD != iA) {
+            return iD - ak5Var.a();
+        }
+        return (true != this.n ? 20 : 21) - (true != ((vj5) ak5Var).n ? 20 : 21);
     }
 
-    public final boolean equals(Object r5) {
-        if (this != r5) goto L6;
-        return true;
-    L6:
-        if (r5 != null) goto L9;
-        return false;
-    L9:
-        if (vj5.class == r5.getClass()) goto L12;
-        return false;
-    L12:
-        if (this.n != ((vj5) r5).n) goto L14;
-        return true;
-    L14:
-        return false;
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        return obj != null && vj5.class == obj.getClass() && this.n == ((vj5) obj).n;
     }
 
     public final int hashCode() {

@@ -5,21 +5,15 @@ package defpackage;
 public final class jt4 implements me0 {
     public final ThreadLocal n;
 
-    public jt4(ThreadLocal r1) {
-        this.n = r1;
+    public jt4(ThreadLocal threadLocal) {
+        this.n = threadLocal;
     }
 
-    public final boolean equals(Object r4) {
-        if (this != r4) goto L6;
-        return true;
-    L6:
-        if ((r4 instanceof jt4) == true) goto L9;
-        return false;
-    L9:
-        if (h12.c(this.n, ((jt4) r4).n) == true) goto L11;
-        return false;
-    L11:
-        return true;
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        return (obj instanceof jt4) && h12.c(this.n, ((jt4) obj).n);
     }
 
     public final int hashCode() {

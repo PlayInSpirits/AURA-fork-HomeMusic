@@ -18,22 +18,22 @@ public final class nx4 extends AnimatorListenerAdapter implements bx4 {
     public final float h;
     public final float i;
 
-    public nx4(View r2, View r3, int r4, int r5, float r6, float r7) {
-        this.b = r2;
-        this.a = r3;
-        this.c = r4 - Math.round(r2.getTranslationX());
-        this.d = r5 - Math.round(r2.getTranslationY());
-        this.h = r6;
-        this.i = r7;
-        int[] r8 = (int[]) r3.getTag(R.id.transition_position);
-        this.e = r8;
-        if (r8 == null) goto L6;
-        r3.setTag(R.id.transition_position, null);
-        return;
+    public nx4(View view, View view2, int i, int i2, float f, float f2) {
+        this.b = view;
+        this.a = view2;
+        this.c = i - Math.round(view.getTranslationX());
+        this.d = i2 - Math.round(view.getTranslationY());
+        this.h = f;
+        this.i = f2;
+        int[] iArr = (int[]) view2.getTag(R.id.transition_position);
+        this.e = iArr;
+        if (iArr != null) {
+            view2.setTag(R.id.transition_position, null);
+        }
     }
 
     @Override // defpackage.bx4
-    public final void a(dx4 r1) {
+    public final void a(dx4 dx4Var) {
     }
 
     @Override // defpackage.bx4
@@ -41,12 +41,12 @@ public final class nx4 extends AnimatorListenerAdapter implements bx4 {
     }
 
     @Override // defpackage.bx4
-    public final void c(dx4 r3) {
-        float r0 = this.h;
-        View r1 = this.b;
-        r1.setTranslationX(r0);
-        r1.setTranslationY(this.i);
-        r3.u(this);
+    public final void c(dx4 dx4Var) {
+        float f = this.h;
+        View view = this.b;
+        view.setTranslationX(f);
+        view.setTranslationY(this.i);
+        dx4Var.u(this);
     }
 
     @Override // defpackage.bx4
@@ -58,32 +58,32 @@ public final class nx4 extends AnimatorListenerAdapter implements bx4 {
     }
 
     @Override // android.animation.AnimatorListenerAdapter, android.animation.Animator.AnimatorListener
-    public final void onAnimationCancel(Animator r4) {
-        if (this.e != null) goto L5;
-        this.e = new int[2];
-    L5:
-        int[] r5 = this.e;
-        float r0 = this.c;
-        View r1 = this.b;
-        r5[0] = Math.round(r1.getTranslationX() + r0);
-        this.e[1] = Math.round(r1.getTranslationY() + this.d);
+    public final void onAnimationCancel(Animator animator) {
+        if (this.e == null) {
+            this.e = new int[2];
+        }
+        int[] iArr = this.e;
+        float f = this.c;
+        View view = this.b;
+        iArr[0] = Math.round(view.getTranslationX() + f);
+        this.e[1] = Math.round(view.getTranslationY() + this.d);
         this.a.setTag(R.id.transition_position, this.e);
     }
 
     @Override // android.animation.AnimatorListenerAdapter, android.animation.Animator.AnimatorPauseListener
-    public final void onAnimationPause(Animator r2) {
-        View r3 = this.b;
-        this.f = r3.getTranslationX();
-        this.g = r3.getTranslationY();
-        r3.setTranslationX(this.h);
-        r3.setTranslationY(this.i);
+    public final void onAnimationPause(Animator animator) {
+        View view = this.b;
+        this.f = view.getTranslationX();
+        this.g = view.getTranslationY();
+        view.setTranslationX(this.h);
+        view.setTranslationY(this.i);
     }
 
     @Override // android.animation.AnimatorListenerAdapter, android.animation.Animator.AnimatorPauseListener
-    public final void onAnimationResume(Animator r2) {
-        float r3 = this.f;
-        View r0 = this.b;
-        r0.setTranslationX(r3);
-        r0.setTranslationY(this.g);
+    public final void onAnimationResume(Animator animator) {
+        float f = this.f;
+        View view = this.b;
+        view.setTranslationX(f);
+        view.setTranslationY(this.g);
     }
 }

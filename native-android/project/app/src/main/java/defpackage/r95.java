@@ -7,9 +7,9 @@ public final class r95 {
     public final long b;
     public final long c;
 
-    public r95(ig0 r1, long r2, long r4) {
-        this.a = r1;
-        this.b = r2;
-        this.c = r4;
+    public r95(ig0 ig0Var, long j, long j2) {
+        this.a = ig0Var;
+        this.b = j;
+        this.c = j2;
     }
 }

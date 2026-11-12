@@ -9,29 +9,27 @@ public final /* synthetic */ class x1 implements if1 {
     public final /* synthetic */ int n;
     public final /* synthetic */ Collection o;
 
-    public /* synthetic */ x1(int r1, Collection r2) {
-        this.n = r1;
-        this.o = r2;
+    public /* synthetic */ x1(int i, Collection collection) {
+        this.n = i;
+        this.o = collection;
     }
 
     @Override // defpackage.if1
-    public final Object invoke(Object r2) {
-        int r0 = this.n;
-        Collection<?> r1 = this.o;
-        switch(r0) {
-            case 0: goto L8;
-            case 1: goto L7;
-            default: goto L4;
-        };
-    L4:
-        boolean r3 = ((List) r2).retainAll(r1);
-    L6:
-        return Boolean.valueOf(r3);
-    L7:
-        r3 = r1.contains(r2);
-        goto L6
-    L8:
-        r3 = r1.contains(r2);
-        goto L6
+    public final Object invoke(Object obj) {
+        boolean zContains;
+        int i = this.n;
+        Collection<?> collection = this.o;
+        switch (i) {
+            case 0:
+                zContains = collection.contains(obj);
+                break;
+            case 1:
+                zContains = collection.contains(obj);
+                break;
+            default:
+                zContains = ((List) obj).retainAll(collection);
+                break;
+        }
+        return Boolean.valueOf(zContains);
     }
 }

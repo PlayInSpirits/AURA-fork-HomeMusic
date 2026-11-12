@@ -6,7 +6,7 @@ import java.util.concurrent.TimeUnit;
 /* JADX INFO: loaded from: classes.dex */
 public final class eu4 extends fu4 {
     @Override // defpackage.fu4
-    public final fu4 d(long r1) {
+    public final fu4 d(long j) {
         return this;
     }
 
@@ -15,8 +15,8 @@ public final class eu4 extends fu4 {
     }
 
     @Override // defpackage.fu4
-    public final fu4 g(long r1, TimeUnit r3) {
-        r3.getClass();
+    public final fu4 g(long j, TimeUnit timeUnit) {
+        timeUnit.getClass();
         return this;
     }
 }

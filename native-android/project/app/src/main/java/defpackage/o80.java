@@ -7,9 +7,9 @@ public final class o80 {
     public final m80 b;
     public final n80 c;
 
-    public o80(bq r1, m80 r2, n80 r3) {
-        this.a = r1;
-        this.b = r2;
-        this.c = r3;
+    public o80(bq bqVar, m80 m80Var, n80 n80Var) {
+        this.a = bqVar;
+        this.b = m80Var;
+        this.c = n80Var;
     }
 }

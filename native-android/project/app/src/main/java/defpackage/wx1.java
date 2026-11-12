@@ -9,8 +9,8 @@ public class wx1 extends hd {
     public final om0 c;
     public MusicFolder d;
 
-    public wx1(Application r2) {
-        super(r2);
+    public wx1(Application application) {
+        super(application);
         this.c = new om0(5);
     }
 }

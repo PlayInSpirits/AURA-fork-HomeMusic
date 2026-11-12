@@ -8,27 +8,25 @@ import android.text.style.MetricAffectingSpan;
 public final class i92 extends MetricAffectingSpan {
     public final float n;
 
-    public i92(float r1) {
-        this.n = r1;
+    public i92(float f) {
+        this.n = f;
     }
 
     @Override // android.text.style.CharacterStyle
-    public final void updateDrawState(TextPaint r3) {
-        float r0 = r3.getTextSize();
-        float r1 = r3.getTextScaleX() * r0;
-        if (r1 != 0.0f) goto L5;
-        return;
-    L5:
-        r3.setLetterSpacing(this.n / r1);
+    public final void updateDrawState(TextPaint textPaint) {
+        float textScaleX = textPaint.getTextScaleX() * textPaint.getTextSize();
+        if (textScaleX == 0.0f) {
+            return;
+        }
+        textPaint.setLetterSpacing(this.n / textScaleX);
     }
 
     @Override // android.text.style.MetricAffectingSpan
-    public final void updateMeasureState(TextPaint r3) {
-        float r0 = r3.getTextSize();
-        float r1 = r3.getTextScaleX() * r0;
-        if (r1 != 0.0f) goto L5;
-        return;
-    L5:
-        r3.setLetterSpacing(this.n / r1);
+    public final void updateMeasureState(TextPaint textPaint) {
+        float textScaleX = textPaint.getTextScaleX() * textPaint.getTextSize();
+        if (textScaleX == 0.0f) {
+            return;
+        }
+        textPaint.setLetterSpacing(this.n / textScaleX);
     }
 }

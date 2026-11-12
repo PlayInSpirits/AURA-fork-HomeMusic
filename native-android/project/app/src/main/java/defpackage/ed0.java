@@ -11,55 +11,55 @@ public final class ed0 extends ep4 implements wf1 {
     public final /* synthetic */ long t;
     public final /* synthetic */ s22 u;
 
-    public ed0(b25 r1, gd0 r2, fv r3, long r4, s22 r6, vd0 r7) {
-        this.q = r1;
-        this.r = r2;
-        this.s = r3;
-        this.t = r4;
-        this.u = r6;
-        super(2, r7);
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public ed0(b25 b25Var, gd0 gd0Var, fv fvVar, long j, s22 s22Var, vd0 vd0Var) {
+        super(2, vd0Var);
+        this.q = b25Var;
+        this.r = gd0Var;
+        this.s = fvVar;
+        this.t = j;
+        this.u = s22Var;
     }
 
     @Override // defpackage.jp
-    public final vd0 create(Object r9, vd0 r10) {
-        long r4 = this.t;
-        s22 r6 = this.u;
-        ed0 r0 = new ed0(this.q, this.r, this.s, r4, r6, r10);
-        r0.p = r9;
-        return r0;
+    public final vd0 create(Object obj, vd0 vd0Var) {
+        ed0 ed0Var = new ed0(this.q, this.r, this.s, this.t, this.u, vd0Var);
+        ed0Var.p = obj;
+        return ed0Var;
     }
 
     @Override // defpackage.wf1
-    public final Object invoke(Object r1, Object r2) {
-        return ((ed0) create((e74) r1, (vd0) r2)).invokeSuspend(j15.a);
+    public final Object invoke(Object obj, Object obj2) {
+        return ((ed0) create((e74) obj, (vd0) obj2)).invokeSuspend(j15.a);
     }
 
     @Override // defpackage.jp
-    public final Object invokeSuspend(Object r7) {
-        int r0 = this.o;
-        if (r0 == 0) goto L8;
-        if (r0 != 1) goto L6;
-        kb4.X(r7);
-    L12:
+    public final Object invokeSuspend(Object obj) {
+        int i = this.o;
+        if (i == 0) {
+            kb4.X(obj);
+            e74 e74Var = (e74) this.p;
+            long j = this.t;
+            gd0 gd0Var = this.r;
+            fv fvVar = this.s;
+            float fQ0 = gd0.q0(gd0Var, fvVar, j);
+            b25 b25Var = this.q;
+            b25Var.e = fQ0;
+            dd0 dd0Var = new dd0(gd0Var, b25Var, this.u, e74Var);
+            jo joVar = new jo(gd0Var, b25Var, fvVar, 2);
+            this.o = 1;
+            Object objA = b25Var.a(dd0Var, joVar, this);
+            xe0 xe0Var = xe0.n;
+            if (objA == xe0Var) {
+                return xe0Var;
+            }
+        } else {
+            if (i != 1) {
+                kf2.o("call to 'resume' before 'invoke' with coroutine");
+                return null;
+            }
+            kb4.X(obj);
+        }
         return j15.a;
-    L6:
-        kf2.o("call to 'resume' before 'invoke' with coroutine");
-        return null;
-    L8:
-        kb4.X(r7);
-        e74 r8 = (e74) this.p;
-        long r2 = this.t;
-        gd0 r1 = this.r;
-        fv r4 = this.s;
-        float r3 = gd0.q0(r1, r4, r2);
-        b25 r5 = this.q;
-        r5.e = r3;
-        dd0 r6 = new dd0(r1, r5, this.u, r8);
-        jo r9 = new jo(r1, r5, r4, 2);
-        this.o = 1;
-        Object r10 = r5.a(r6, r9, this);
-        xe0 r11 = xe0.n;
-        if (r10 != r11) goto L12;
-        return r11;
     }
 }

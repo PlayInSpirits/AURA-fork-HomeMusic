@@ -10,35 +10,26 @@ import java.util.Objects;
 public class ah2 {
     public OnBackInvokedCallback a;
 
-    public OnBackInvokedCallback a(zg2 r2) {
-        Objects.requireNonNull(r2);
-        return new vf(1, r2);
+    public OnBackInvokedCallback a(zg2 zg2Var) {
+        Objects.requireNonNull(zg2Var);
+        return new vf(1, zg2Var);
     }
 
-    public void b(zg2 r2, View r3, boolean r4) {
-        if (this.a != null) goto L14;
-        OnBackInvokedDispatcher r5 = n3.m(r3);
-        if (r5 != null) goto L8;
-        return;
-    L8:
-        OnBackInvokedCallback r6 = a(r2);
-        this.a = r6;
-        if (r4 == false) goto L11;
-        int r1 = 1000000;
-    L12:
-        n3.u(r5, r1, r6);
-        return;
-    L11:
-        r1 = 0;
-        goto L12
+    public void b(zg2 zg2Var, View view, boolean z) {
+        OnBackInvokedDispatcher onBackInvokedDispatcherFindOnBackInvokedDispatcher;
+        if (this.a == null && (onBackInvokedDispatcherFindOnBackInvokedDispatcher = view.findOnBackInvokedDispatcher()) != null) {
+            OnBackInvokedCallback onBackInvokedCallbackA = a(zg2Var);
+            this.a = onBackInvokedCallbackA;
+            onBackInvokedDispatcherFindOnBackInvokedDispatcher.registerOnBackInvokedCallback(z ? 1000000 : 0, onBackInvokedCallbackA);
+        }
     }
 
-    public void c(View r2) {
-        OnBackInvokedDispatcher r3 = n3.m(r2);
-        if (r3 != null) goto L5;
-        return;
-    L5:
-        n3.C(r3, this.a);
+    public void c(View view) {
+        OnBackInvokedDispatcher onBackInvokedDispatcherFindOnBackInvokedDispatcher = view.findOnBackInvokedDispatcher();
+        if (onBackInvokedDispatcherFindOnBackInvokedDispatcher == null) {
+            return;
+        }
+        onBackInvokedDispatcherFindOnBackInvokedDispatcher.unregisterOnBackInvokedCallback(this.a);
         this.a = null;
     }
 }

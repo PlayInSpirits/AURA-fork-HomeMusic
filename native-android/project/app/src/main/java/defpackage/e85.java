@@ -8,16 +8,9 @@ import java.lang.reflect.Method;
 public abstract class e85 {
     public static boolean a;
     public static Method b;
-    public static final boolean c = false;
+    public static final boolean c;
 
     static {
-        if (Build.VERSION.SDK_INT < 27) goto L5;
-        boolean r0 = true;
-    L6:
-        c = r0;
-        return;
-    L5:
-        r0 = false;
-        goto L6
+        c = Build.VERSION.SDK_INT >= 27;
     }
 }

@@ -8,24 +8,21 @@ public final class wy implements o63 {
     public final /* synthetic */ int a;
     public final Object b;
 
-    public /* synthetic */ wy(int r1, Object r2) {
-        this.a = r1;
-        this.b = r2;
+    public /* synthetic */ wy(int i, Object obj) {
+        this.a = i;
+        this.b = obj;
     }
 
     public final String toString() {
-        int r0 = this.a;
-        Object r2 = this.b;
-        switch(r0) {
-            case 0: goto L9;
-            case 1: goto L7;
-            default: goto L5;
-        };
-    L5:
-        return "DisposeOnCancel[" + ((as0) r2) + ']';
-    L7:
-        return "CancelHandler.UserSupplied[" + ((if1) r2).getClass().getSimpleName() + '@' + si0.x(this) + ']';
-    L9:
-        return "CancelFutureOnCancel[" + ((ScheduledFuture) r2) + ']';
+        int i = this.a;
+        Object obj = this.b;
+        switch (i) {
+            case 0:
+                return "CancelFutureOnCancel[" + ((ScheduledFuture) obj) + ']';
+            case 1:
+                return "CancelHandler.UserSupplied[" + ((if1) obj).getClass().getSimpleName() + '@' + si0.x(this) + ']';
+            default:
+                return "DisposeOnCancel[" + ((as0) obj) + ']';
+        }
     }
 }

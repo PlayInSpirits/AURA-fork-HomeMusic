@@ -9,14 +9,14 @@ public final class tr4 extends CharacterStyle {
     public final boolean a;
     public final boolean b;
 
-    public tr4(boolean r1, boolean r2) {
-        this.a = r1;
-        this.b = r2;
+    public tr4(boolean z, boolean z2) {
+        this.a = z;
+        this.b = z2;
     }
 
     @Override // android.text.style.CharacterStyle
-    public final void updateDrawState(TextPaint r2) {
-        r2.setUnderlineText(this.a);
-        r2.setStrikeThruText(this.b);
+    public final void updateDrawState(TextPaint textPaint) {
+        textPaint.setUnderlineText(this.a);
+        textPaint.setStrikeThruText(this.b);
     }
 }

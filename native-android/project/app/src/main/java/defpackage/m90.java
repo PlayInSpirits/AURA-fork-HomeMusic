@@ -5,26 +5,20 @@ package defpackage;
 public final class m90 implements j35 {
     public final if1 a;
 
-    public m90(if1 r1) {
-        this.a = r1;
+    public m90(if1 if1Var) {
+        this.a = if1Var;
     }
 
     @Override // defpackage.j35
-    public final Object a(mf3 r1) {
-        return this.a.invoke(r1);
+    public final Object a(mf3 mf3Var) {
+        return this.a.invoke(mf3Var);
     }
 
-    public final boolean equals(Object r4) {
-        if (this != r4) goto L6;
-        return true;
-    L6:
-        if ((r4 instanceof m90) == true) goto L9;
-        return false;
-    L9:
-        if (h12.c(this.a, ((m90) r4).a) == true) goto L11;
-        return false;
-    L11:
-        return true;
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        return (obj instanceof m90) && h12.c(this.a, ((m90) obj).a);
     }
 
     public final int hashCode() {

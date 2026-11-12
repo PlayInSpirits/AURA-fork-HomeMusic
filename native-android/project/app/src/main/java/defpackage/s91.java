@@ -9,26 +9,23 @@ public final class s91 {
     public final x03 d;
     public boolean e;
 
-    public s91(ey r1, ra r2) {
-        this.a = r1;
-        this.b = r2;
-        x03 r3 = w54.a;
+    public s91(ey eyVar, ra raVar) {
+        this.a = eyVar;
+        this.b = raVar;
+        x03 x03Var = w54.a;
         this.c = new x03();
         this.d = new x03();
     }
 
     public final void a() {
-        if (this.e == true) goto L10;
-        int r2 = 0;
-        Class<s91> r4 = s91.class;
-        String r5 = "invalidateNodes";
-        String r6 = "invalidateNodes()V";
-        na r1 = new na(r2, this, r4, r5, r6, 0, 1);
-        q03 r9 = this.b.C0;
-        if (r9.g(r1) >= 0) goto L8;
-        r9.a(r1);
-    L8:
+        if (this.e) {
+            return;
+        }
+        na naVar = new na(0, this, s91.class, "invalidateNodes", "invalidateNodes()V", 0, 1);
+        q03 q03Var = this.b.C0;
+        if (q03Var.g(naVar) < 0) {
+            q03Var.a(naVar);
+        }
         this.e = true;
-        return;
     }
 }

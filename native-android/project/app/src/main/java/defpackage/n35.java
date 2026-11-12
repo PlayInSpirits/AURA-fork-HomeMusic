@@ -3,6 +3,7 @@ package defpackage;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.os.Build;
+import android.util.DisplayMetrics;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
@@ -20,15 +21,15 @@ public final class n35 extends i35 {
     public float l;
     public final m35 m;
 
-    public n35(gk1 r4) {
-        this.b = r4;
-        r4.i = new m35(this, 0);
+    public n35(gk1 gk1Var) {
+        this.b = gk1Var;
+        gk1Var.i = new m35(this, 0);
         this.c = "";
         this.d = true;
         this.e = new pv0();
         this.f = new rd2(10);
         this.g = uc5.B(null);
-        this.i = uc5.B(new qf4(0));
+        this.i = uc5.B(new qf4(0L));
         this.j = 9205357640488583168L;
         this.k = 1.0f;
         this.l = 1.0f;
@@ -36,184 +37,331 @@ public final class n35 extends i35 {
     }
 
     @Override // defpackage.i35
-    public final void a(sv0 r3) {
-        e(r3, 1.0f, null);
+    public final void a(sv0 sv0Var) {
+        e(sv0Var, 1.0f, null);
     }
 
-    public final void e(sv0 r28, float r29, dt r30) {
-        gk1 r2 = this.b;
-        boolean r3 = r2.d;
-        int r4 = 3;
-        zd3 r6 = this.g;
-        if (r3 == true) goto L5;
-    L23:
-        int r5 = 0;
-    L24:
-        boolean r9 = this.d;
-        pv0 r11 = this.e;
-        if (r9 == false) goto L27;
-    L51:
-        if (r5 != 1) goto L57;
-        long r12 = r2.e;
-        int r7 = c45.a;
-        if (x40.d(r12) == 1.0f) goto L56;
-        r12 = x40.b(r12, 1.0f);
-    L56:
-        dt r8 = new dt(5, r12);
-    L58:
-        this.h = r8;
-        float r10 = Float.intBitsToFloat((int) (r28.P() >> 32));
-        zd3 r13 = this.i;
-        this.k = r10 / Float.intBitsToFloat((int) (((qf4) r13.getValue()).a >> 32));
-        this.l = Float.intBitsToFloat((int) (r28.P() & 4294967295L)) / Float.intBitsToFloat((int) (((qf4) r13.getValue()).a & 4294967295L));
-        long r14 = (((long) ((int) Math.ceil(Float.intBitsToFloat((int) (r28.P() >> 32))))) << 32) | (((long) ((int) Math.ceil(Float.intBitsToFloat((int) (r28.P() & 4294967295L))))) & 4294967295L);
-        r62 r15 = r28.getLayoutDirection();
-        cc r16 = r11.a;
-        aa r17 = r11.b;
-        if (r16 == null) goto L69;
-        if (r17 == null) goto L69;
-        int r18 = (int) (r14 >> 32);
-        Bitmap r19 = r16.a;
-        char r110 = ' ';
-        if (r18 > r19.getWidth()) goto L68;
-        r62 r20 = r15;
-        if (((int) (r14 & 4294967295L)) <= r19.getHeight()) goto L66;
-    L70:
-        int r21 = (int) (r14 >> r110);
-        int r22 = (int) (r14 & 4294967295L);
-        k24 r23 = s50.e;
-        Bitmap.Config r24 = fu.O(r5);
-        if (Build.VERSION.SDK_INT < 26) goto L73;
-        Bitmap r25 = j3.e(r21, r22, fu.O(r5), r50.a(r23));
-    L74:
-        r16 = new cc(r25);
-        Canvas r26 = ba.a;
-        r17 = new aa();
-        r17.a = new Canvas(r25);
-        r11.a = r16;
-        r11.b = r17;
-        r11.d = r5;
-    L75:
-        r11.c = r14;
-        mz r27 = r11.e;
-        long r31 = l93.o0(r14);
-        lz r32 = r27.n;
-        oo0 r33 = r32.a;
-        r62 r111 = r32.b;
-        jz r112 = r32.c;
-        long r1 = r32.d;
-        sv0 r113 = r28;
-        r32.a = r113;
-        r32.b = r20;
-        r32.c = r17;
-        r32.d = r31;
-        r17.e();
-        sv0.l(r27, x40.b, 0, 62);
-        this.m.invoke(r27);
-        r17.k();
-        lz r34 = r27.n;
-        r34.a = r33;
-        r34.b = r111;
-        r34.c = r112;
-        r34.d = r1;
-        r16.a.prepareToDraw();
-        this.d = false;
-        this.j = r113.P();
-    L76:
-        if (r30 == null) goto L79;
-        dt r210 = r30;
-    L83:
-        cc r0 = r11.a;
-        if (r0 != null) goto L87;
-        cz1.b("drawCachedImage must be invoked first before attempting to draw the result into another destination");
-    L87:
-        sv0.p(r113, r0, r11.c, 0, r29, r210, 0, 858);
-        return;
-    L79:
-        if (((dt) r6.getValue()) == null) goto L82;
-        dt r35 = (dt) r6.getValue();
-    L81:
-        r210 = r35;
-        goto L83
-    L82:
-        r35 = this.h;
-        goto L81
-    L73:
-        r25 = Bitmap.createBitmap(null, r21, r22, r24);
-        r25.setHasAlpha(true);
-        goto L74
-    L66:
-        if (r11.d != r5) goto L70;
-    L68:
-        r20 = r15;
-    L69:
-        r110 = ' ';
-        goto L68
-    L57:
-        r8 = null;
-        goto L58
-    L27:
-        if (qf4.a(this.j, r28.P()) == false) goto L51;
-        cc r36 = r11.a;
-        if (r36 == null) goto L48;
-        Bitmap.Config r37 = r36.a.getConfig();
-        r37.getClass();
-        if (r37 != Bitmap.Config.ALPHA_8) goto L34;
-        r4 = 1;
-    L49:
-        if (r5 != r4) goto L51;
-        r113 = r28;
-        goto L76
-    L34:
-        if (r37 != Bitmap.Config.RGB_565) goto L37;
-        r4 = 2;
-        goto L49
-    L37:
-        if (r37 == Bitmap.Config.ARGB_4444) goto L48;
-        int r114 = Build.VERSION.SDK_INT;
-        if (r114 >= 26) goto L42;
-    L44:
-        if (r114 < 26) goto L48;
-        if (r37 != j3.D()) goto L48;
-        r4 = 4;
-        goto L49
-    L42:
-        if (r37 != j3.d()) goto L44;
-    L48:
-        r4 = 0;
-        goto L49
-    L5:
-        if (r2.e == 16) goto L23;
-        dt r38 = (dt) r6.getValue();
-        int r39 = c45.a;
-        if ((r38 instanceof dt) == false) goto L13;
-        int r40 = r38.c;
-        if (r40 == 5) goto L15;
-        if (r40 != 3) goto L23;
-    L15:
-        if ((r30 instanceof dt) == false) goto L21;
-        int r41 = r30.c;
-        if (r41 == 5) goto L22;
-        if (r41 != 3) goto L23;
-    L22:
-        r5 = 1;
-        goto L24
-    L21:
-        if (r30 != null) goto L23;
-    L13:
-        if (r38 != null) goto L23;
-        goto L23
+    /* JADX WARN: Code duplicated, block: B:23:0x003d  */
+    /* JADX WARN: Code duplicated, block: B:48:0x0085  */
+    /* JADX WARN: Code duplicated, block: B:51:0x008c A[DONT_INVERT] */
+    /* JADX WARN: Code duplicated, block: B:52:0x008e  */
+    /* JADX WARN: Code duplicated, block: B:55:0x009d  */
+    /* JADX WARN: Code duplicated, block: B:57:0x00a7  */
+    /* JADX WARN: Code duplicated, block: B:69:0x013d  */
+    /* JADX WARN: Code duplicated, block: B:72:0x0150  */
+    /* JADX WARN: Code duplicated, block: B:73:0x015d  */
+    public final void e(sv0 sv0Var, float f, dt dtVar) {
+        int i;
+        dt dtVar2;
+        cc ccVar;
+        char c;
+        r62 r62Var;
+        int i2;
+        int i3;
+        k24 k24Var;
+        Bitmap.Config configO;
+        Bitmap bitmapCreateBitmap;
+        sv0 sv0Var2;
+        long jB;
+        dt dtVar3;
+        int i4;
+        int i5;
+        gk1 gk1Var = this.b;
+        boolean z = gk1Var.d;
+        int i6 = 3;
+        zd3 zd3Var = this.g;
+        if (!z || gk1Var.e == 16) {
+            i = 0;
+        } else {
+            dt dtVar4 = (dt) zd3Var.getValue();
+            int i7 = c45.a;
+            if (!(dtVar4 instanceof dt) ? dtVar4 == null : (i5 = dtVar4.c) == 5 || i5 == 3) {
+                i = 0;
+            } else if (!(dtVar instanceof dt) ? dtVar == null : (i4 = dtVar.c) == 5 || i4 == 3) {
+                i = 0;
+            } else {
+                i = 1;
+            }
+        }
+        boolean z2 = this.d;
+        pv0 pv0Var = this.e;
+        if (z2 || !qf4.a(this.j, sv0Var.P())) {
+            if (i == 1) {
+                jB = gk1Var.e;
+                int i8 = c45.a;
+                if (x40.d(jB) != 1.0f) {
+                    jB = x40.b(jB, 1.0f);
+                }
+                dtVar2 = new dt(5, jB);
+            } else {
+                dtVar2 = null;
+            }
+            this.h = dtVar2;
+            float fIntBitsToFloat = Float.intBitsToFloat((int) (sv0Var.P() >> 32));
+            zd3 zd3Var2 = this.i;
+            this.k = fIntBitsToFloat / Float.intBitsToFloat((int) (((qf4) zd3Var2.getValue()).a >> 32));
+            this.l = Float.intBitsToFloat((int) (sv0Var.P() & 4294967295L)) / Float.intBitsToFloat((int) (((qf4) zd3Var2.getValue()).a & 4294967295L));
+            long jCeil = (((long) ((int) Math.ceil(Float.intBitsToFloat((int) (sv0Var.P() >> 32))))) << 32) | (((long) ((int) Math.ceil(Float.intBitsToFloat((int) (sv0Var.P() & 4294967295L))))) & 4294967295L);
+            r62 layoutDirection = sv0Var.getLayoutDirection();
+            ccVar = pv0Var.a;
+            aa aaVar = pv0Var.b;
+            if (ccVar != null || aaVar == null) {
+                c = ' ';
+            } else {
+                int i9 = (int) (jCeil >> 32);
+                Bitmap bitmap = ccVar.a;
+                c = ' ';
+                if (i9 <= bitmap.getWidth()) {
+                    r62Var = layoutDirection;
+                    if (((int) (jCeil & 4294967295L)) > bitmap.getHeight() || pv0Var.d != i) {
+                    }
+                    pv0Var.c = jCeil;
+                    mz mzVar = pv0Var.e;
+                    long jO0 = l93.o0(jCeil);
+                    lz lzVar = mzVar.n;
+                    oo0 oo0Var = lzVar.a;
+                    r62 r62Var2 = lzVar.b;
+                    jz jzVar = lzVar.c;
+                    long j = lzVar.d;
+                    sv0Var2 = sv0Var;
+                    lzVar.a = sv0Var2;
+                    lzVar.b = r62Var;
+                    lzVar.c = aaVar;
+                    lzVar.d = jO0;
+                    aaVar.e();
+                    sv0.l(mzVar, x40.b, 0L, 62);
+                    this.m.invoke(mzVar);
+                    aaVar.k();
+                    lz lzVar2 = mzVar.n;
+                    lzVar2.a = oo0Var;
+                    lzVar2.b = r62Var2;
+                    lzVar2.c = jzVar;
+                    lzVar2.d = j;
+                    ccVar.a.prepareToDraw();
+                    this.d = false;
+                    this.j = sv0Var2.P();
+                }
+                i2 = (int) (jCeil >> c);
+                i3 = (int) (jCeil & 4294967295L);
+                k24Var = s50.e;
+                configO = fu.O(i);
+                if (Build.VERSION.SDK_INT >= 26) {
+                    bitmapCreateBitmap = Bitmap.createBitmap((DisplayMetrics) null, i2, i3, fu.O(i), true, r50.a(k24Var));
+                } else {
+                    bitmapCreateBitmap = Bitmap.createBitmap((DisplayMetrics) null, i2, i3, configO);
+                    bitmapCreateBitmap.setHasAlpha(true);
+                }
+                ccVar = new cc(bitmapCreateBitmap);
+                Canvas canvas = ba.a;
+                aaVar = new aa();
+                aaVar.a = new Canvas(bitmapCreateBitmap);
+                pv0Var.a = ccVar;
+                pv0Var.b = aaVar;
+                pv0Var.d = i;
+                pv0Var.c = jCeil;
+                mz mzVar2 = pv0Var.e;
+                long jO1 = l93.o0(jCeil);
+                lz lzVar3 = mzVar2.n;
+                oo0 oo0Var2 = lzVar3.a;
+                r62 r62Var3 = lzVar3.b;
+                jz jzVar2 = lzVar3.c;
+                long j2 = lzVar3.d;
+                sv0Var2 = sv0Var;
+                lzVar3.a = sv0Var2;
+                lzVar3.b = r62Var;
+                lzVar3.c = aaVar;
+                lzVar3.d = jO1;
+                aaVar.e();
+                sv0.l(mzVar2, x40.b, 0L, 62);
+                this.m.invoke(mzVar2);
+                aaVar.k();
+                lz lzVar4 = mzVar2.n;
+                lzVar4.a = oo0Var2;
+                lzVar4.b = r62Var3;
+                lzVar4.c = jzVar2;
+                lzVar4.d = j2;
+                ccVar.a.prepareToDraw();
+                this.d = false;
+                this.j = sv0Var2.P();
+            }
+            r62Var = layoutDirection;
+            i2 = (int) (jCeil >> c);
+            i3 = (int) (jCeil & 4294967295L);
+            k24Var = s50.e;
+            configO = fu.O(i);
+            if (Build.VERSION.SDK_INT >= 26) {
+                bitmapCreateBitmap = Bitmap.createBitmap((DisplayMetrics) null, i2, i3, fu.O(i), true, r50.a(k24Var));
+            } else {
+                bitmapCreateBitmap = Bitmap.createBitmap((DisplayMetrics) null, i2, i3, configO);
+                bitmapCreateBitmap.setHasAlpha(true);
+            }
+            ccVar = new cc(bitmapCreateBitmap);
+            Canvas canvas2 = ba.a;
+            aaVar = new aa();
+            aaVar.a = new Canvas(bitmapCreateBitmap);
+            pv0Var.a = ccVar;
+            pv0Var.b = aaVar;
+            pv0Var.d = i;
+            pv0Var.c = jCeil;
+            mz mzVar3 = pv0Var.e;
+            long jO2 = l93.o0(jCeil);
+            lz lzVar5 = mzVar3.n;
+            oo0 oo0Var3 = lzVar5.a;
+            r62 r62Var4 = lzVar5.b;
+            jz jzVar3 = lzVar5.c;
+            long j3 = lzVar5.d;
+            sv0Var2 = sv0Var;
+            lzVar5.a = sv0Var2;
+            lzVar5.b = r62Var;
+            lzVar5.c = aaVar;
+            lzVar5.d = jO2;
+            aaVar.e();
+            sv0.l(mzVar3, x40.b, 0L, 62);
+            this.m.invoke(mzVar3);
+            aaVar.k();
+            lz lzVar6 = mzVar3.n;
+            lzVar6.a = oo0Var3;
+            lzVar6.b = r62Var4;
+            lzVar6.c = jzVar3;
+            lzVar6.d = j3;
+            ccVar.a.prepareToDraw();
+            this.d = false;
+            this.j = sv0Var2.P();
+        } else {
+            cc ccVar2 = pv0Var.a;
+            if (ccVar2 != null) {
+                Bitmap.Config config = ccVar2.a.getConfig();
+                config.getClass();
+                if (config == Bitmap.Config.ALPHA_8) {
+                    i6 = 1;
+                } else if (config == Bitmap.Config.RGB_565) {
+                    i6 = 2;
+                } else if (config != Bitmap.Config.ARGB_4444) {
+                    int i10 = Build.VERSION.SDK_INT;
+                    if (i10 < 26 || config != Bitmap.Config.RGBA_F16) {
+                        if (i10 < 26 || config != Bitmap.Config.HARDWARE) {
+                            i6 = 0;
+                        } else {
+                            i6 = 4;
+                        }
+                    }
+                } else {
+                    i6 = 0;
+                }
+            } else {
+                i6 = 0;
+            }
+            if (i == i6) {
+                sv0Var2 = sv0Var;
+            } else {
+                if (i == 1) {
+                    jB = gk1Var.e;
+                    int i11 = c45.a;
+                    if (x40.d(jB) != 1.0f) {
+                        jB = x40.b(jB, 1.0f);
+                    }
+                    dtVar2 = new dt(5, jB);
+                } else {
+                    dtVar2 = null;
+                }
+                this.h = dtVar2;
+                float fIntBitsToFloat2 = Float.intBitsToFloat((int) (sv0Var.P() >> 32));
+                zd3 zd3Var3 = this.i;
+                this.k = fIntBitsToFloat2 / Float.intBitsToFloat((int) (((qf4) zd3Var3.getValue()).a >> 32));
+                this.l = Float.intBitsToFloat((int) (sv0Var.P() & 4294967295L)) / Float.intBitsToFloat((int) (((qf4) zd3Var3.getValue()).a & 4294967295L));
+                long jCeil2 = (((long) ((int) Math.ceil(Float.intBitsToFloat((int) (sv0Var.P() >> 32))))) << 32) | (((long) ((int) Math.ceil(Float.intBitsToFloat((int) (sv0Var.P() & 4294967295L))))) & 4294967295L);
+                r62 layoutDirection2 = sv0Var.getLayoutDirection();
+                ccVar = pv0Var.a;
+                aa aaVar2 = pv0Var.b;
+                if (ccVar != null) {
+                    c = ' ';
+                    r62Var = layoutDirection2;
+                    i2 = (int) (jCeil2 >> c);
+                    i3 = (int) (jCeil2 & 4294967295L);
+                    k24Var = s50.e;
+                    configO = fu.O(i);
+                    if (Build.VERSION.SDK_INT >= 26) {
+                        bitmapCreateBitmap = Bitmap.createBitmap((DisplayMetrics) null, i2, i3, fu.O(i), true, r50.a(k24Var));
+                    } else {
+                        bitmapCreateBitmap = Bitmap.createBitmap((DisplayMetrics) null, i2, i3, configO);
+                        bitmapCreateBitmap.setHasAlpha(true);
+                    }
+                    ccVar = new cc(bitmapCreateBitmap);
+                    Canvas canvas3 = ba.a;
+                    aaVar2 = new aa();
+                    aaVar2.a = new Canvas(bitmapCreateBitmap);
+                    pv0Var.a = ccVar;
+                    pv0Var.b = aaVar2;
+                    pv0Var.d = i;
+                } else {
+                    c = ' ';
+                    r62Var = layoutDirection2;
+                    i2 = (int) (jCeil2 >> c);
+                    i3 = (int) (jCeil2 & 4294967295L);
+                    k24Var = s50.e;
+                    configO = fu.O(i);
+                    if (Build.VERSION.SDK_INT >= 26) {
+                        bitmapCreateBitmap = Bitmap.createBitmap((DisplayMetrics) null, i2, i3, fu.O(i), true, r50.a(k24Var));
+                    } else {
+                        bitmapCreateBitmap = Bitmap.createBitmap((DisplayMetrics) null, i2, i3, configO);
+                        bitmapCreateBitmap.setHasAlpha(true);
+                    }
+                    ccVar = new cc(bitmapCreateBitmap);
+                    Canvas canvas4 = ba.a;
+                    aaVar2 = new aa();
+                    aaVar2.a = new Canvas(bitmapCreateBitmap);
+                    pv0Var.a = ccVar;
+                    pv0Var.b = aaVar2;
+                    pv0Var.d = i;
+                }
+                pv0Var.c = jCeil2;
+                mz mzVar4 = pv0Var.e;
+                long jO3 = l93.o0(jCeil2);
+                lz lzVar7 = mzVar4.n;
+                oo0 oo0Var4 = lzVar7.a;
+                r62 r62Var5 = lzVar7.b;
+                jz jzVar4 = lzVar7.c;
+                long j4 = lzVar7.d;
+                sv0Var2 = sv0Var;
+                lzVar7.a = sv0Var2;
+                lzVar7.b = r62Var;
+                lzVar7.c = aaVar2;
+                lzVar7.d = jO3;
+                aaVar2.e();
+                sv0.l(mzVar4, x40.b, 0L, 62);
+                this.m.invoke(mzVar4);
+                aaVar2.k();
+                lz lzVar8 = mzVar4.n;
+                lzVar8.a = oo0Var4;
+                lzVar8.b = r62Var5;
+                lzVar8.c = jzVar4;
+                lzVar8.d = j4;
+                ccVar.a.prepareToDraw();
+                this.d = false;
+                this.j = sv0Var2.P();
+            }
+        }
+        if (dtVar != null) {
+            dtVar3 = dtVar;
+        } else {
+            dtVar3 = ((dt) zd3Var.getValue()) != null ? (dt) zd3Var.getValue() : this.h;
+        }
+        cc ccVar3 = pv0Var.a;
+        if (ccVar3 == null) {
+            cz1.b("drawCachedImage must be invoked first before attempting to draw the result into another destination");
+        }
+        sv0.p(sv0Var2, ccVar3, pv0Var.c, 0L, f, dtVar3, 0, 858);
     }
 
     public final String toString() {
-        StringBuilder r0 = new StringBuilder("Params: \tname: ");
-        r0.append(this.c);
-        r0.append("\n\tviewportWidth: ");
-        zd3 r5 = this.i;
-        r0.append(Float.intBitsToFloat((int) (((qf4) r5.getValue()).a >> 32)));
-        r0.append("\n\tviewportHeight: ");
-        r0.append(Float.intBitsToFloat((int) (((qf4) r5.getValue()).a & 4294967295L)));
-        r0.append("\n");
-        return r0.toString();
+        StringBuilder sb = new StringBuilder("Params: \tname: ");
+        sb.append(this.c);
+        sb.append("\n\tviewportWidth: ");
+        zd3 zd3Var = this.i;
+        sb.append(Float.intBitsToFloat((int) (((qf4) zd3Var.getValue()).a >> 32)));
+        sb.append("\n\tviewportHeight: ");
+        sb.append(Float.intBitsToFloat((int) (((qf4) zd3Var.getValue()).a & 4294967295L)));
+        sb.append("\n");
+        return sb.toString();
     }
 }

@@ -10,13 +10,13 @@ public final class ie1 {
     public final LinearLayout a;
     public final TextView b;
 
-    public ie1(LinearLayout r1, TextView r2) {
-        this.a = r1;
-        this.b = r2;
+    public ie1(LinearLayout linearLayout, TextView textView) {
+        this.a = linearLayout;
+        this.b = textView;
     }
 
-    public ie1(AppBarLayout r1, TextView r2, LinearLayout r3) {
-        this.b = r2;
-        this.a = r3;
+    public ie1(AppBarLayout appBarLayout, TextView textView, LinearLayout linearLayout) {
+        this.b = textView;
+        this.a = linearLayout;
     }
 }

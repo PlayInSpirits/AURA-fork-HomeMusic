@@ -13,31 +13,31 @@ public final class w20 extends ImageView {
     @Override // android.view.View
     public final void onAnimationEnd() {
         super.onAnimationEnd();
-        Animation.AnimationListener r0 = this.n;
-        if (r0 == null) goto L6;
-        r0.onAnimationEnd(getAnimation());
-        return;
+        Animation.AnimationListener animationListener = this.n;
+        if (animationListener != null) {
+            animationListener.onAnimationEnd(getAnimation());
+        }
     }
 
     @Override // android.view.View
     public final void onAnimationStart() {
         super.onAnimationStart();
-        Animation.AnimationListener r0 = this.n;
-        if (r0 == null) goto L6;
-        r0.onAnimationStart(getAnimation());
-        return;
+        Animation.AnimationListener animationListener = this.n;
+        if (animationListener != null) {
+            animationListener.onAnimationStart(getAnimation());
+        }
     }
 
     @Override // android.widget.ImageView, android.view.View
-    public final void onMeasure(int r1, int r2) {
-        super.onMeasure(r1, r2);
+    public final void onMeasure(int i, int i2) {
+        super.onMeasure(i, i2);
     }
 
     @Override // android.view.View
-    public final void setBackgroundColor(int r2) {
-        if ((getBackground() instanceof ShapeDrawable) == false) goto L6;
-        ((ShapeDrawable) getBackground()).getPaint().setColor(r2);
-        this.o = r2;
-        return;
+    public final void setBackgroundColor(int i) {
+        if (getBackground() instanceof ShapeDrawable) {
+            ((ShapeDrawable) getBackground()).getPaint().setColor(i);
+            this.o = i;
+        }
     }
 }

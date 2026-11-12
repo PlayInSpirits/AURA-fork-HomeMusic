@@ -6,8 +6,8 @@ public final class of2 {
     public final Object a;
     public final int b;
 
-    public of2(int r1, Object r2) {
-        this.a = r2;
-        this.b = r1;
+    public of2(int i, Object obj) {
+        this.a = obj;
+        this.b = i;
     }
 }

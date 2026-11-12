@@ -8,8 +8,8 @@ import java.io.Closeable;
 public final class ek0 implements Closeable {
     public final Cursor n;
 
-    public ek0(Cursor r1) {
-        this.n = r1;
+    public ek0(Cursor cursor) {
+        this.n = cursor;
     }
 
     @Override // java.io.Closeable, java.lang.AutoCloseable

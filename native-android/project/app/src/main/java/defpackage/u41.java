@@ -13,8 +13,8 @@ public final class u41 extends Preference {
     }
 
     @Override // androidx.preference.Preference
-    public final void l(rp3 r1) {
-        super.l(r1);
-        r1.x = false;
+    public final void l(rp3 rp3Var) {
+        super.l(rp3Var);
+        rp3Var.x = false;
     }
 }

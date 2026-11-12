@@ -17,19 +17,19 @@ public final class Invocation {
     private final Method method;
     private final Class<?> service;
 
-    public Invocation(Class<?> r1, @Nullable Object r2, Method r3, List<?> r4) {
-        this.service = r1;
-        this.instance = r2;
-        this.method = r3;
-        this.arguments = Collections.unmodifiableList(r4);
+    public Invocation(Class<?> cls, @Nullable Object obj, Method method, List<?> list) {
+        this.service = cls;
+        this.instance = obj;
+        this.method = method;
+        this.arguments = Collections.unmodifiableList(list);
     }
 
-    public static <T> Invocation of(Class<T> r2, T r3, Method r4, List<?> r5) {
-        Objects.requireNonNull(r2, "service == null");
-        Objects.requireNonNull(r3, "instance == null");
-        Objects.requireNonNull(r4, "method == null");
-        Objects.requireNonNull(r5, "arguments == null");
-        return new Invocation(r2, r3, r4, new ArrayList(r5));
+    public static <T> Invocation of(Class<T> cls, T t, Method method, List<?> list) {
+        Objects.requireNonNull(cls, "service == null");
+        Objects.requireNonNull(t, "instance == null");
+        Objects.requireNonNull(method, "method == null");
+        Objects.requireNonNull(list, "arguments == null");
+        return new Invocation(cls, t, method, new ArrayList(list));
     }
 
     public List<?> arguments() {
@@ -50,13 +50,13 @@ public final class Invocation {
     }
 
     public String toString() {
-        return String.format("%s.%s() %s", new Object[]{this.service.getName(), this.method.getName(), this.arguments});
+        return String.format("%s.%s() %s", this.service.getName(), this.method.getName(), this.arguments);
     }
 
     @Deprecated
-    public static Invocation of(Method r3, List<?> r4) {
-        Objects.requireNonNull(r3, "method == null");
-        Objects.requireNonNull(r4, "arguments == null");
-        return new Invocation(r3.getDeclaringClass(), null, r3, new ArrayList(r4));
+    public static Invocation of(Method method, List<?> list) {
+        Objects.requireNonNull(method, "method == null");
+        Objects.requireNonNull(list, "arguments == null");
+        return new Invocation(method.getDeclaringClass(), null, method, new ArrayList(list));
     }
 }

@@ -10,48 +10,28 @@ public final class ub {
     public final long c;
     public final ac3 d;
 
-    public ub(Context r1, oo0 r2, long r3, ac3 r5) {
-        this.a = r1;
-        this.b = r2;
-        this.c = r3;
-        this.d = r5;
+    public ub(Context context, oo0 oo0Var, long j, ac3 ac3Var) {
+        this.a = context;
+        this.b = oo0Var;
+        this.c = j;
+        this.d = ac3Var;
     }
 
-    public final boolean equals(Object r8) {
-        if (this != r8) goto L5;
-        return true;
-    L5:
-        if (r8 == null) goto L7;
-        Class<?> r1 = r8.getClass();
-    L9:
-        if (ub.class.equals(r1) == true) goto L11;
-        return false;
-    L11:
-        r8.getClass();
-        ub r9 = (ub) r8;
-        if (h12.c(this.a, r9.a) == true) goto L15;
-        return false;
-    L15:
-        if (h12.c(this.b, r9.b) == true) goto L18;
-        return false;
-    L18:
-        if (x40.c(this.c, r9.c) == true) goto L21;
-        return false;
-    L21:
-        if (h12.c(this.d, r9.d) == true) goto L23;
-        return false;
-    L23:
-        return true;
-    L7:
-        r1 = null;
-        goto L9
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!ub.class.equals(obj != null ? obj.getClass() : null)) {
+            return false;
+        }
+        obj.getClass();
+        ub ubVar = (ub) obj;
+        return h12.c(this.a, ubVar.a) && h12.c(this.b, ubVar.b) && x40.c(this.c, ubVar.c) && h12.c(this.d, ubVar.d);
     }
 
     public final int hashCode() {
-        int r0 = this.a.hashCode() * 31;
-        int r2 = (this.b.hashCode() + r0) * 31;
-        int r1 = x40.h;
-        int r3 = xa3.b(r2, 31, this.c);
-        return this.d.hashCode() + r3;
+        int iHashCode = (this.b.hashCode() + (this.a.hashCode() * 31)) * 31;
+        int i = x40.h;
+        return this.d.hashCode() + xa3.b(iHashCode, 31, this.c);
     }
 }

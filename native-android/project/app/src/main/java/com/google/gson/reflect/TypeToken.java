@@ -20,181 +20,133 @@ public class TypeToken<T> {
     private final Class<? super T> rawType;
     private final Type type;
 
-    private TypeToken(Type r2) {
-        Objects.requireNonNull(r2);
-        Type r3 = gb.h(r2);
-        this.type = r3;
-        this.rawType = gb.G(r3);
-        this.hashCode = r3.hashCode();
+    private TypeToken(Type type) {
+        Objects.requireNonNull(type);
+        Type typeH = gb.h(type);
+        this.type = typeH;
+        this.rawType = gb.G(typeH);
+        this.hashCode = typeH.hashCode();
     }
 
-    private static AssertionError buildUnexpectedTypeError(Type r4, Class<?>... r5) {
-        StringBuilder r0 = new StringBuilder("Unexpected type. Expected one of: ");
-        int r1 = r5.length;
-        int r2 = 0;
-    L3:
-        if (r2 >= r1) goto L5;
-        r0.append(r5[r2].getName());
-        r0.append(", ");
-        r2 = r2 + 1;
-        goto L3
-    L5:
-        r0.append("but got: ");
-        r0.append(r4.getClass().getName());
-        r0.append(", for type token: ");
-        r0.append(r4.toString());
-        r0.append('.');
-        return new AssertionError(r0.toString());
+    private static AssertionError buildUnexpectedTypeError(Type type, Class<?>... clsArr) {
+        StringBuilder sb = new StringBuilder("Unexpected type. Expected one of: ");
+        for (Class<?> cls : clsArr) {
+            sb.append(cls.getName());
+            sb.append(", ");
+        }
+        sb.append("but got: ");
+        sb.append(type.getClass().getName());
+        sb.append(", for type token: ");
+        sb.append(type.toString());
+        sb.append('.');
+        return new AssertionError(sb.toString());
     }
 
-    public static TypeToken<?> get(Type r1) {
-        return new TypeToken(r1);
+    public static TypeToken<?> get(Type type) {
+        return new TypeToken<>(type);
     }
 
-    public static TypeToken<?> getArray(Type r3) {
-        return new TypeToken(new a(0, r3));
+    public static TypeToken<?> getArray(Type type) {
+        return new TypeToken<>(new a(0, type));
     }
 
-    public static TypeToken<?> getParameterized(Type r12, Type... r13) {
-        Objects.requireNonNull(r12);
-        Objects.requireNonNull(r13);
-        if ((r12 instanceof Class) == false) goto L20;
-        Class r0 = (Class) r12;
-        TypeVariable<Class<T>>[] r2 = r0.getTypeParameters();
-        int r3 = r2.length;
-        int r4 = r13.length;
-        if (r4 != r3) goto L19;
-        int r5 = 0;
-    L7:
-        if (r5 >= r3) goto L17;
-        Type r6 = r13[r5];
-        Class<?> r7 = gb.G(r6);
-        TypeVariable<Class<T>> r8 = r2[r5];
-        Type[] r9 = r8.getBounds();
-        int r10 = r9.length;
-        int r11 = 0;
-    L9:
-        if (r11 >= r10) goto L15;
-        if (gb.G(r9[r11]).isAssignableFrom(r7) == false) goto L14;
-        r11 = r11 + 1;
-        goto L9
-    L14:
-        throw new IllegalArgumentException("Type argument " + r6 + " does not satisfy bounds for type variable " + r8 + " declared by " + r12);
-    L15:
-        r5 = r5 + 1;
-        goto L7
-    L17:
-        return new TypeToken(new b(null, r12, r13));
-    L19:
-        throw new IllegalArgumentException(r0.getName() + " requires " + r3 + " type arguments, but got " + r4);
-    L20:
-        mj0.l(r12, "rawType must be of type Class, but was ");
-        return null;
+    public static TypeToken<?> getParameterized(Type type, Type... typeArr) {
+        Objects.requireNonNull(type);
+        Objects.requireNonNull(typeArr);
+        if (!(type instanceof Class)) {
+            mj0.l(type, "rawType must be of type Class, but was ");
+            return null;
+        }
+        Class cls = (Class) type;
+        TypeVariable<Class<T>>[] typeParameters = cls.getTypeParameters();
+        int length = typeParameters.length;
+        int length2 = typeArr.length;
+        if (length2 != length) {
+            throw new IllegalArgumentException(cls.getName() + " requires " + length + " type arguments, but got " + length2);
+        }
+        for (int i = 0; i < length; i++) {
+            Type type2 = typeArr[i];
+            Class<?> clsG = gb.G(type2);
+            TypeVariable<Class<T>> typeVariable = typeParameters[i];
+            for (Type type3 : typeVariable.getBounds()) {
+                if (!gb.G(type3).isAssignableFrom(clsG)) {
+                    throw new IllegalArgumentException("Type argument " + type2 + " does not satisfy bounds for type variable " + typeVariable + " declared by " + type);
+                }
+            }
+        }
+        return new TypeToken<>(new b((Type) null, type, typeArr));
     }
 
     private Type getTypeTokenTypeArgument() {
-        Type r3 = getClass().getGenericSuperclass();
-        if ((r3 instanceof ParameterizedType) == false) goto L8;
-        ParameterizedType r4 = (ParameterizedType) r3;
-        if (r4.getRawType() == TypeToken.class) goto L7;
-    L11:
+        Type genericSuperclass = getClass().getGenericSuperclass();
+        if (genericSuperclass instanceof ParameterizedType) {
+            ParameterizedType parameterizedType = (ParameterizedType) genericSuperclass;
+            if (parameterizedType.getRawType() == TypeToken.class) {
+                return gb.h(parameterizedType.getActualTypeArguments()[0]);
+            }
+        } else if (genericSuperclass == TypeToken.class) {
+            kf2.o("TypeToken must be created with a type argument: new TypeToken<...>() {}; When using code shrinkers (ProGuard, R8, ...) make sure that generic signatures are preserved.");
+            return null;
+        }
         kf2.o("Must only create direct subclasses of TypeToken");
         return null;
-    L7:
-        return gb.h(r4.getActualTypeArguments()[0]);
-    L8:
-        if (r3 != TypeToken.class) goto L11;
-        kf2.o("TypeToken must be created with a type argument: new TypeToken<...>() {}; When using code shrinkers (ProGuard, R8, ...) make sure that generic signatures are preserved.");
-        return null;
     }
 
-    private static boolean isAssignableFrom(Type r9, ParameterizedType r10, Map<String, Type> r11) {
-        int r0 = 0;
-        if (r9 != null) goto L6;
-        return false;
-    L6:
-        if (r10.equals(r9) == false) goto L8;
-        return true;
-    L8:
-        Class r1 = gb.G(r9);
-        if ((r9 instanceof ParameterizedType) == false) goto L11;
-        ParameterizedType r12 = (ParameterizedType) r9;
-    L12:
-        if (r12 == null) goto L24;
-        Type[] r3 = r12.getActualTypeArguments();
-        TypeVariable<Class<T>>[] r4 = r1.getTypeParameters();
-        int r5 = 0;
-    L15:
-        if (r5 >= r3.length) goto L22;
-        Type r6 = r3[r5];
-        TypeVariable<Class<T>> r7 = r4[r5];
-    L18:
-        if ((r6 instanceof TypeVariable) == false) goto L20;
-        r6 = r11.get(((TypeVariable) r6).getName());
-        goto L18
-    L20:
-        r11.put(r7.getName(), r6);
-        r5 = r5 + 1;
-        goto L15
-    L22:
-        if (typeEquals(r12, r10, r11) == false) goto L24;
-        return true;
-    L24:
-        Type[] r13 = r1.getGenericInterfaces();
-        int r8 = r13.length;
-    L25:
-        if (r0 >= r8) goto L31;
-        if (isAssignableFrom(r13[r0], r10, new HashMap(r11)) == true) goto L28;
-        r0 = r0 + 1;
-        goto L25
-    L28:
-        return true;
-    L31:
-        return isAssignableFrom(r1.getGenericSuperclass(), r10, new HashMap(r11));
-    L11:
-        r12 = null;
-        goto L12
+    private static boolean isAssignableFrom(Type type, ParameterizedType parameterizedType, Map<String, Type> map) {
+        if (type == null) {
+            return false;
+        }
+        if (parameterizedType.equals(type)) {
+            return true;
+        }
+        Class clsG = gb.G(type);
+        ParameterizedType parameterizedType2 = type instanceof ParameterizedType ? (ParameterizedType) type : null;
+        if (parameterizedType2 != null) {
+            Type[] actualTypeArguments = parameterizedType2.getActualTypeArguments();
+            TypeVariable<Class<T>>[] typeParameters = clsG.getTypeParameters();
+            for (int i = 0; i < actualTypeArguments.length; i++) {
+                Type type2 = actualTypeArguments[i];
+                TypeVariable<Class<T>> typeVariable = typeParameters[i];
+                while (type2 instanceof TypeVariable) {
+                    type2 = map.get(((TypeVariable) type2).getName());
+                }
+                map.put(typeVariable.getName(), type2);
+            }
+            if (typeEquals(parameterizedType2, parameterizedType, map)) {
+                return true;
+            }
+        }
+        for (Type type3 : clsG.getGenericInterfaces()) {
+            if (isAssignableFrom(type3, parameterizedType, new HashMap(map))) {
+                return true;
+            }
+        }
+        return isAssignableFrom(clsG.getGenericSuperclass(), parameterizedType, new HashMap(map));
     }
 
-    private static boolean matches(Type r1, Type r2, Map<String, Type> r3) {
-        if (r2.equals(r1) == false) goto L5;
-        return true;
-    L5:
-        if ((r1 instanceof TypeVariable) == true) goto L7;
-        return false;
-    L7:
-        if (r2.equals(r3.get(((TypeVariable) r1).getName())) == true) goto L14;
-        return false;
-    L14:
+    private static boolean matches(Type type, Type type2, Map<String, Type> map) {
+        if (type2.equals(type)) {
+            return true;
+        }
+        return (type instanceof TypeVariable) && type2.equals(map.get(((TypeVariable) type).getName()));
+    }
+
+    private static boolean typeEquals(ParameterizedType parameterizedType, ParameterizedType parameterizedType2, Map<String, Type> map) {
+        if (!parameterizedType.getRawType().equals(parameterizedType2.getRawType())) {
+            return false;
+        }
+        Type[] actualTypeArguments = parameterizedType.getActualTypeArguments();
+        Type[] actualTypeArguments2 = parameterizedType2.getActualTypeArguments();
+        for (int i = 0; i < actualTypeArguments.length; i++) {
+            if (!matches(actualTypeArguments[i], actualTypeArguments2[i], map)) {
+                return false;
+            }
+        }
         return true;
     }
 
-    private static boolean typeEquals(ParameterizedType r4, ParameterizedType r5, Map<String, Type> r6) {
-        if (r4.getRawType().equals(r5.getRawType()) == false) goto L13;
-        Type[] r7 = r4.getActualTypeArguments();
-        Type[] r8 = r5.getActualTypeArguments();
-        int r0 = 0;
-    L6:
-        if (r0 >= r7.length) goto L11;
-        if (matches(r7[r0], r8[r0], r6) == false) goto L9;
-        r0 = r0 + 1;
-        goto L6
-    L9:
-        return false;
-    L11:
-        return true;
-    L13:
-        return false;
-    }
-
-    public final boolean equals(Object r2) {
-        if ((r2 instanceof TypeToken) == true) goto L5;
-        return false;
-    L5:
-        if (gb.v(this.type, ((TypeToken) r2).type) == false) goto L10;
-        return true;
-    L10:
-        return false;
+    public final boolean equals(Object obj) {
+        return (obj instanceof TypeToken) && gb.v(this.type, ((TypeToken) obj).type);
     }
 
     public final Class<? super T> getRawType() {
@@ -213,46 +165,41 @@ public class TypeToken<T> {
         return gb.e0(this.type);
     }
 
-    public static <T> TypeToken<T> get(Class<T> r1) {
-        return new TypeToken(r1);
+    public static <T> TypeToken<T> get(Class<T> cls) {
+        return new TypeToken<>(cls);
     }
 
     public TypeToken() {
-        Type r0 = getTypeTokenTypeArgument();
-        this.type = r0;
-        this.rawType = gb.G(r0);
-        this.hashCode = r0.hashCode();
+        Type typeTokenTypeArgument = getTypeTokenTypeArgument();
+        this.type = typeTokenTypeArgument;
+        this.rawType = gb.G(typeTokenTypeArgument);
+        this.hashCode = typeTokenTypeArgument.hashCode();
     }
 
     @Deprecated
-    public boolean isAssignableFrom(Type r5) {
-        if (r5 != null) goto L6;
-        return false;
-    L6:
-        if (this.type.equals(r5) == false) goto L8;
-        return true;
-    L8:
-        Type r1 = this.type;
-        if ((r1 instanceof Class) == false) goto L13;
-        return this.rawType.isAssignableFrom(gb.G(r5));
-    L13:
-        if ((r1 instanceof ParameterizedType) == false) goto L17;
-        return isAssignableFrom(r5, (ParameterizedType) r1, new HashMap());
-    L17:
-        if ((r1 instanceof GenericArrayType) == false) goto L25;
-        if (this.rawType.isAssignableFrom(gb.G(r5)) == true) goto L21;
-    L23:
-        return false;
-    L21:
-        if (isAssignableFrom(r5, (GenericArrayType) this.type) == false) goto L23;
-        return true;
-    L25:
-        throw buildUnexpectedTypeError(r1, new Class[]{Class.class, ParameterizedType.class, GenericArrayType.class});
+    public boolean isAssignableFrom(Type type) {
+        if (type == null) {
+            return false;
+        }
+        if (this.type.equals(type)) {
+            return true;
+        }
+        Type type2 = this.type;
+        if (type2 instanceof Class) {
+            return this.rawType.isAssignableFrom(gb.G(type));
+        }
+        if (type2 instanceof ParameterizedType) {
+            return isAssignableFrom(type, (ParameterizedType) type2, new HashMap());
+        }
+        if (type2 instanceof GenericArrayType) {
+            return this.rawType.isAssignableFrom(gb.G(type)) && isAssignableFrom(type, (GenericArrayType) this.type);
+        }
+        throw buildUnexpectedTypeError(type2, Class.class, ParameterizedType.class, GenericArrayType.class);
     }
 
     @Deprecated
-    public boolean isAssignableFrom(TypeToken<?> r1) {
-        return isAssignableFrom(r1.getType());
+    public boolean isAssignableFrom(TypeToken<?> typeToken) {
+        return isAssignableFrom(typeToken.getType());
     }
 
     /* JADX WARN: Multi-variable type inference failed */
@@ -262,26 +209,24 @@ public class TypeToken<T> {
     /* JADX WARN: Type inference failed for: r1v5, types: [java.lang.reflect.Type] */
     /* JADX WARN: Type inference failed for: r1v8, types: [java.lang.reflect.Type] */
     /* JADX WARN: Type inference failed for: r1v9 */
-    private static boolean isAssignableFrom(Type r1, GenericArrayType r2) {
-        Type r3 = r2.getGenericComponentType();
-        if ((r3 instanceof ParameterizedType) == true) goto L5;
-        return true;
-    L5:
-        if ((r1 instanceof GenericArrayType) == false) goto L8;
-        r1 = ((GenericArrayType) r1).getGenericComponentType();
-    L14:
-        return isAssignableFrom(r1, (ParameterizedType) r3, new HashMap());
-    L8:
-        if ((r1 instanceof Class) == false) goto L14;
-        r1 = (Class) r1;
-    L11:
-        if (r1.isArray() == false) goto L14;
-        r1 = r1.getComponentType();
-        goto L11
+    private static boolean isAssignableFrom(Type type, GenericArrayType genericArrayType) {
+        Type genericComponentType = genericArrayType.getGenericComponentType();
+        if (!(genericComponentType instanceof ParameterizedType)) {
+            return true;
+        }
+        if (type instanceof GenericArrayType) {
+            type = ((GenericArrayType) type).getGenericComponentType();
+        } else if (type instanceof Class) {
+            type = (Class) type;
+            while (type.isArray()) {
+                type = type.getComponentType();
+            }
+        }
+        return isAssignableFrom(type, (ParameterizedType) genericComponentType, new HashMap());
     }
 
     @Deprecated
-    public boolean isAssignableFrom(Class<?> r1) {
-        return isAssignableFrom(r1);
+    public boolean isAssignableFrom(Class<?> cls) {
+        return isAssignableFrom((Type) cls);
     }
 }

@@ -6,8 +6,8 @@ public final class d03 {
     public final int a;
     public final long b;
 
-    public d03(int r1, long r2) {
-        this.a = r1;
-        this.b = r2;
+    public d03(int i, long j) {
+        this.a = i;
+        this.b = j;
     }
 }

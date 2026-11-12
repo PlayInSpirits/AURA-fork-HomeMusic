@@ -6,14 +6,14 @@ public final class d31 {
     public final long a;
     public final long b;
 
-    public d31(long r4, long r6) {
-        if (r6 != 0) goto L6;
-        this.a = 0;
-        this.b = 1;
-        return;
-    L6:
-        this.a = r4;
-        this.b = r6;
+    public d31(long j, long j2) {
+        if (j2 == 0) {
+            this.a = 0L;
+            this.b = 1L;
+        } else {
+            this.a = j;
+            this.b = j2;
+        }
     }
 
     public final String toString() {

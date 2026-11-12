@@ -8,37 +8,24 @@ import android.view.Window;
 /* JADX INFO: loaded from: classes.dex */
 public final class yy0 extends ez0 {
     @Override // defpackage.ez0
-    public void b(up4 r1, up4 r2, Window r3, View r4, boolean r5, boolean r6) {
-        r1.getClass();
-        r2.getClass();
-        r3.getClass();
-        r4.getClass();
-        l93.d0(r3, false);
-        if (r5 == false) goto L5;
-        int r0 = r1.b;
-    L6:
-        r3.setStatusBarColor(r0);
-        r3.setNavigationBarColor(r2.b);
-        om1 r7 = new om1(r4);
-        int r8 = Build.VERSION.SDK_INT;
-        if (r8 < 35) goto L10;
-        su3 r9 = new tb5(r3, r7);
-    L16:
-        r9.D(!r5);
-        return;
-    L10:
-        if (r8 < 30) goto L13;
-        r9 = new sb5(r3, r7);
-        goto L16
-    L13:
-        if (r8 < 26) goto L15;
-        r9 = new rb5(r3, r7);
-        goto L16
-    L15:
-        r9 = new qb5(r3, r7);
-        goto L16
-    L5:
-        r0 = r1.a;
-        goto L6
+    public void b(up4 up4Var, up4 up4Var2, Window window, View view, boolean z, boolean z2) {
+        su3 rb5Var;
+        up4Var.getClass();
+        up4Var2.getClass();
+        window.getClass();
+        view.getClass();
+        l93.d0(window, false);
+        window.setStatusBarColor(z ? up4Var.b : up4Var.a);
+        window.setNavigationBarColor(up4Var2.b);
+        om1 om1Var = new om1(view);
+        int i = Build.VERSION.SDK_INT;
+        if (i >= 35) {
+            rb5Var = new tb5(window, om1Var);
+        } else if (i >= 30) {
+            rb5Var = new sb5(window, om1Var);
+        } else {
+            rb5Var = i >= 26 ? new rb5(window, om1Var) : new qb5(window, om1Var);
+        }
+        rb5Var.D(!z);
     }
 }

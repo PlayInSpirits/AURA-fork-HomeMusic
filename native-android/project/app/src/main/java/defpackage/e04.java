@@ -13,119 +13,93 @@ import java.util.HashMap;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class e04 implements Handler.Callback {
-    public static final hh3 r = null;
+    public static final hh3 r = new hh3(15);
     public volatile c04 n;
     public final d04 o;
     public final pe1 p;
     public final rf2 q;
 
-    static {
-        r = new hh3(15);
+    public e04(d04 d04Var) {
+        d04Var = d04Var == null ? r : d04Var;
+        this.o = d04Var;
+        rf2 rf2Var = new rf2();
+        rf2Var.n = new HashMap();
+        rf2Var.o = d04Var;
+        this.q = rf2Var;
+        this.p = (ll1.f && ll1.e) ? new j71() : new om0(7);
     }
 
-    public e04(d04 r3) {
-        if (r3 != null) goto L6;
-        r3 = r;
-    L6:
-        this.o = r3;
-        rf2 r0 = new rf2();
-        r0.n = new HashMap();
-        r0.o = r3;
-        this.q = r0;
-        if (ll1.f == true) goto L9;
-    L12:
-        pe1 r4 = new om0(7);
-    L13:
-        this.p = r4;
-        return;
-    L9:
-        if (ll1.e == false) goto L12;
-        r4 = new j71();
-        goto L13
+    public static Activity a(Context context) {
+        if (context instanceof Activity) {
+            return (Activity) context;
+        }
+        if (context instanceof ContextWrapper) {
+            return a(((ContextWrapper) context).getBaseContext());
+        }
+        return null;
     }
 
-    public static Activity a(Context r1) {
-        if ((r1 instanceof Activity) == false) goto L7;
-        return (Activity) r1;
-    L7:
-        if ((r1 instanceof ContextWrapper) == true) goto L9;
-        return null;
-    L9:
-        return a(((ContextWrapper) r1).getBaseContext());
-    }
-
-    public final c04 b(Context r7) {
-        if (r7 != null) goto L5;
-        kf2.n("You cannot start a load on a null Context");
-        return null;
-    L5:
-        if (Looper.myLooper() != Looper.getMainLooper()) goto L40;
-        if ((r7 instanceof Application) == true) goto L40;
-        if ((r7 instanceof nc1) == false) goto L34;
-        nc1 r8 = (nc1) r7;
-        boolean r3 = false;
-        if (Looper.myLooper() != Looper.getMainLooper()) goto L13;
-        boolean r1 = true;
-    L14:
-        if (r1 == true) goto L18;
-        return b(r8.getApplicationContext());
-    L18:
-        if (r8.isDestroyed() == true) goto L31;
-        this.p.i(r8);
-        Activity r0 = a(r8);
-        if (r0 != null) goto L22;
-    L23:
-        r3 = true;
-    L24:
-        a r2 = a.a(r8.getApplicationContext());
-        rf2 r6 = this.q;
-        ea2 r4 = r8.n;
-        r8.k();
-        r6.getClass();
-        e35.m();
-        e35.m();
-        c04 r5 = (c04) ((HashMap) r6.n).get(r4);
-        if (r5 != null) goto L30;
-        y92 r9 = new y92(r4);
-        c04 r10 = ((d04) r6.o).a(r2, r9, new tv1(), r8);
-        ((HashMap) r6.n).put(r4, r10);
-        r9.f(new fa2(r6, r4));
-        if (r3 == false) goto L29;
-        r10.n();
-    L29:
-        return r10;
-    L30:
-        return r5;
-    L22:
-        if (r0.isFinishing() == true) goto L24;
-    L31:
-        kf2.n("You cannot start a load for a destroyed activity");
-        return null;
-    L13:
-        r1 = false;
-        goto L14
-    L34:
-        if ((r7 instanceof ContextWrapper) == false) goto L40;
-        ContextWrapper r11 = (ContextWrapper) r7;
-        if (r11.getBaseContext().getApplicationContext() == null) goto L40;
-        return b(r11.getBaseContext());
-    L40:
-        if (this.n != null) goto L52;
-        monitor-enter(this);
-    L45:
-        th = move-exception;
-        throw th;
-    L43:
-        if (this.n != null) goto L47;
-        this.n = this.o.a(a.a(r7.getApplicationContext()), new pa(8), new om0(23), r7.getApplicationContext());     // Catch: Throwable -> L45
-    L47:
-        monitor-exit(this);     // Catch: Throwable -> L45
-    L52:
+    public final c04 b(Context context) {
+        if (context == null) {
+            kf2.n("You cannot start a load on a null Context");
+            return null;
+        }
+        if (Looper.myLooper() == Looper.getMainLooper() && !(context instanceof Application)) {
+            if (context instanceof nc1) {
+                nc1 nc1Var = (nc1) context;
+                if (!(Looper.myLooper() == Looper.getMainLooper())) {
+                    return b(nc1Var.getApplicationContext());
+                }
+                if (nc1Var.isDestroyed()) {
+                    kf2.n("You cannot start a load for a destroyed activity");
+                    return null;
+                }
+                this.p.i(nc1Var);
+                Activity activityA = a(nc1Var);
+                boolean z = activityA == null || !activityA.isFinishing();
+                a aVarA = a.a(nc1Var.getApplicationContext());
+                rf2 rf2Var = this.q;
+                ea2 ea2Var = nc1Var.n;
+                nc1Var.k();
+                rf2Var.getClass();
+                e35.m();
+                e35.m();
+                c04 c04Var = (c04) ((HashMap) rf2Var.n).get(ea2Var);
+                if (c04Var != null) {
+                    return c04Var;
+                }
+                y92 y92Var = new y92(ea2Var);
+                c04 c04VarA = ((d04) rf2Var.o).a(aVarA, y92Var, new tv1(), nc1Var);
+                ((HashMap) rf2Var.n).put(ea2Var, c04VarA);
+                y92Var.f(new fa2(rf2Var, ea2Var));
+                if (z) {
+                    c04VarA.n();
+                }
+                return c04VarA;
+            }
+            if (context instanceof ContextWrapper) {
+                ContextWrapper contextWrapper = (ContextWrapper) context;
+                if (contextWrapper.getBaseContext().getApplicationContext() != null) {
+                    return b(contextWrapper.getBaseContext());
+                }
+            }
+        }
+        if (this.n == null) {
+            synchronized (this) {
+                try {
+                    if (this.n == null) {
+                        this.n = this.o.a(a.a(context.getApplicationContext()), new pa(8), new om0(23), context.getApplicationContext());
+                    }
+                } catch (Throwable th) {
+                    throw th;
+                }
+            }
+        }
         return this.n;
     }
 
     @Override // android.os.Handler.Callback
-    public final boolean handleMessage(Message r1) {
+    public final boolean handleMessage(Message message) {
         return false;
     }
 }

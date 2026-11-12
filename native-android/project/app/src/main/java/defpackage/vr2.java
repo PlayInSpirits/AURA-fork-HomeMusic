@@ -5,17 +5,17 @@ package defpackage;
 public final /* synthetic */ class vr2 implements yr2, it2 {
     public final /* synthetic */ yw1 n;
 
-    public /* synthetic */ vr2(yw1 r1) {
-        this.n = r1;
+    public /* synthetic */ vr2(yw1 yw1Var) {
+        this.n = yw1Var;
     }
 
     @Override // defpackage.yr2
-    public void f(er2 r1, int r2) {
-        r1.k(this.n, r2);
+    public void f(er2 er2Var, int i) {
+        er2Var.k(this.n, i);
     }
 
     @Override // defpackage.it2
-    public Object h(tn2 r1, fr2 r2, int r3) {
-        return r1.o(r2, this.n);
+    public Object h(tn2 tn2Var, fr2 fr2Var, int i) {
+        return tn2Var.o(fr2Var, this.n);
     }
 }

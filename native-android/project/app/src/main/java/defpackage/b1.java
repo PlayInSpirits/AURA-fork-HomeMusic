@@ -8,30 +8,24 @@ public abstract class b1 implements ListIterator, x32 {
     public int n;
     public int o;
 
-    public b1(int r1, int r2) {
-        this.n = r1;
-        this.o = r2;
+    public b1(int i, int i2) {
+        this.n = i;
+        this.o = i2;
     }
 
     @Override // java.util.ListIterator
-    public void add(Object r1) {
+    public void add(Object obj) {
         throw new UnsupportedOperationException("Operation is not supported for read-only collection");
     }
 
     @Override // java.util.ListIterator, java.util.Iterator
     public final boolean hasNext() {
-        if (this.n >= this.o) goto L6;
-        return true;
-    L6:
-        return false;
+        return this.n < this.o;
     }
 
     @Override // java.util.ListIterator
     public final boolean hasPrevious() {
-        if (this.n <= 0) goto L6;
-        return true;
-    L6:
-        return false;
+        return this.n > 0;
     }
 
     @Override // java.util.ListIterator
@@ -50,7 +44,7 @@ public abstract class b1 implements ListIterator, x32 {
     }
 
     @Override // java.util.ListIterator
-    public void set(Object r1) {
+    public void set(Object obj) {
         throw new UnsupportedOperationException("Operation is not supported for read-only collection");
     }
 }

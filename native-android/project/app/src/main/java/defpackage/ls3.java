@@ -9,29 +9,27 @@ public final /* synthetic */ class ls3 implements if1 {
     public final /* synthetic */ ns3 o;
     public final /* synthetic */ List p;
 
-    public /* synthetic */ ls3(ns3 r1, List r2, int r3) {
-        this.n = r3;
-        this.o = r1;
-        this.p = r2;
+    public /* synthetic */ ls3(ns3 ns3Var, List list, int i) {
+        this.n = i;
+        this.o = ns3Var;
+        this.p = list;
     }
 
     @Override // defpackage.if1
-    public final Object invoke(Object r5) {
-        int r0 = this.n;
-        List r1 = this.p;
-        ns3 r4 = this.o;
-        x34 r6 = (x34) r5;
-        switch(r0) {
-            case 0: goto L6;
-            default: goto L4;
-        };
-    L4:
-        ((q20) r4.p).H(r6, r1);
-        return null;
-    L6:
-        s24 r7 = (s24) r4.o;
-        xl.E(r7, false, true, new k52(29));
-        xl.E(r7, false, true, new ls3(r4, r1, 1));
-        return j15.a;
+    public final Object invoke(Object obj) {
+        int i = this.n;
+        List list = this.p;
+        ns3 ns3Var = this.o;
+        x34 x34Var = (x34) obj;
+        switch (i) {
+            case 0:
+                s24 s24Var = (s24) ns3Var.o;
+                xl.E(s24Var, false, true, new k52(29));
+                xl.E(s24Var, false, true, new ls3(ns3Var, list, 1));
+                return j15.a;
+            default:
+                ((q20) ns3Var.p).H(x34Var, list);
+                return null;
+        }
     }
 }

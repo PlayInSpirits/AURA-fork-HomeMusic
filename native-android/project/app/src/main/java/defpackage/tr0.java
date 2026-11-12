@@ -7,25 +7,22 @@ import android.view.DisplayCutout;
 public final class tr0 {
     public final DisplayCutout a;
 
-    public tr0(DisplayCutout r1) {
-        this.a = r1;
+    public tr0(DisplayCutout displayCutout) {
+        this.a = displayCutout;
     }
 
-    public final boolean equals(Object r3) {
-        if (this != r3) goto L5;
-        return true;
-    L5:
-        if (r3 != null) goto L7;
-        return false;
-    L7:
-        if (tr0.class == r3.getClass()) goto L10;
-        return false;
-    L10:
-        return this.a.equals(((tr0) r3).a);
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || tr0.class != obj.getClass()) {
+            return false;
+        }
+        return this.a.equals(((tr0) obj).a);
     }
 
     public final int hashCode() {
-        return sr0.D(this.a);
+        return this.a.hashCode();
     }
 
     public final String toString() {

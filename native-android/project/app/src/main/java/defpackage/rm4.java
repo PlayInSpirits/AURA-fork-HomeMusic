@@ -7,164 +7,139 @@ import java.util.List;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public abstract class rm4 extends si0 {
-    public static String b0(String r3) {
-        return fa4.d0(new tq4(new w40(2, r3), new rs0(19, "    "), 1), "\n", null, 62);
+    public static String b0(String str) {
+        return fa4.d0(new tq4(new w40(2, str), new rs0(19, "    "), 1), "\n", null, 62);
     }
 
-    public static String c0(String r11) {
-        List r0 = qm4.w0(r11);
-        ArrayList r1 = new ArrayList();
-        Iterator r2 = r0.iterator();
-    L4:
-        if (r2.hasNext() == false) goto L8;
-        Object r3 = r2.next();
-        if (qm4.u0((String) r3) == true) goto L4;
-        r1.add(r3);
-        goto L4
-    L8:
-        ArrayList r4 = new ArrayList(r40.k0(r1, 10));
-        int r5 = r1.size();
-        int r6 = 0;
-        int r7 = 0;
-    L9:
-        if (r7 >= r5) goto L21;
-        Object r8 = r1.get(r7);
-        r7 = r7 + 1;
-        String r9 = (String) r8;
-        int r10 = r9.length();
-        int r12 = 0;
-    L12:
-        if (r12 >= r10) goto L17;
-        if (ya4.y(r9.charAt(r12)) == false) goto L18;
-        r12 = r12 + 1;
-    L18:
-        if (r12 != (-1)) goto L20;
-        r12 = r9.length();
-    L20:
-        r4.add(Integer.valueOf(r12));
-        goto L9
-    L17:
-        r12 = -1;
-        goto L18
-    L21:
-        Iterator r13 = r4.iterator();
-        if (r13.hasNext() == true) goto L24;
-        Comparable r14 = null;
-    L30:
-        Integer r15 = (Integer) r14;
-        if (r15 == null) goto L33;
-        int r16 = r15.intValue();
-    L34:
-        int r17 = r11.length();
-        r0.size();
-        int r18 = r0.size() - 1;
-        ArrayList r19 = new ArrayList();
-        Iterator r20 = r0.iterator();
-    L36:
-        if (r20.hasNext() == false) goto L59;
-        Object r21 = r20.next();
-        int r22 = r6 + 1;
-        if (r6 < 0) goto L57;
-        String r23 = (String) r21;
-        if (r6 == 0) goto L43;
-        if (r6 == r18) goto L43;
-    L45:
-        r23.getClass();
-        if (r16 < 0) goto L55;
-        int r24 = r23.length();
-        if (r16 > r24) goto L51;
-        r24 = r16;
-    L51:
-        String r25 = r23.substring(r24);
-    L52:
-        if (r25 == null) goto L54;
-        r19.add(r25);
-    L54:
-        r6 = r22;
-        goto L36
-    L55:
-        kf2.e(b11.j(r16, "Requested character count ", " is less than zero."));
-        return null;
-    L43:
-        if (qm4.u0(r23) == false) goto L45;
-        r25 = null;
-        goto L52
-    L57:
-        gb.c0();
-        throw null;
-    L59:
-        StringBuilder r26 = new StringBuilder(r17);
-        q40.A0(r19, r26);
-        return r26.toString();
-    L33:
-        r16 = 0;
-        goto L34
-    L24:
-        r14 = (Comparable) r13.next();
-    L26:
-        if (r13.hasNext() == false) goto L30;
-        Comparable r27 = (Comparable) r13.next();
-        if (r14.compareTo(r27) <= 0) goto L26;
-        r14 = r27;
-        goto L26
+    public static String c0(String str) {
+        Comparable comparable;
+        String strSubstring;
+        List listW0 = qm4.w0(str);
+        ArrayList arrayList = new ArrayList();
+        for (Object obj : listW0) {
+            if (!qm4.u0((String) obj)) {
+                arrayList.add(obj);
+            }
+        }
+        ArrayList arrayList2 = new ArrayList(r40.k0(arrayList, 10));
+        int size = arrayList.size();
+        int i = 0;
+        int i2 = 0;
+        while (i2 < size) {
+            Object obj2 = arrayList.get(i2);
+            i2++;
+            String str2 = (String) obj2;
+            int length = str2.length();
+            int length2 = 0;
+            while (true) {
+                if (length2 >= length) {
+                    length2 = -1;
+                    break;
+                }
+                if (!ya4.y(str2.charAt(length2))) {
+                    break;
+                }
+                length2++;
+            }
+            if (length2 == -1) {
+                length2 = str2.length();
+            }
+            arrayList2.add(Integer.valueOf(length2));
+        }
+        Iterator it = arrayList2.iterator();
+        if (it.hasNext()) {
+            comparable = (Comparable) it.next();
+            while (it.hasNext()) {
+                Comparable comparable2 = (Comparable) it.next();
+                if (comparable.compareTo(comparable2) > 0) {
+                    comparable = comparable2;
+                }
+            }
+        } else {
+            comparable = null;
+        }
+        Integer num = (Integer) comparable;
+        int iIntValue = num != null ? num.intValue() : 0;
+        int length3 = str.length();
+        listW0.size();
+        int size2 = listW0.size() - 1;
+        ArrayList arrayList3 = new ArrayList();
+        for (Object obj3 : listW0) {
+            int i3 = i + 1;
+            if (i < 0) {
+                gb.c0();
+                throw null;
+            }
+            String str3 = (String) obj3;
+            if ((i == 0 || i == size2) && qm4.u0(str3)) {
+                strSubstring = null;
+            } else {
+                str3.getClass();
+                if (iIntValue < 0) {
+                    kf2.e(b11.j(iIntValue, "Requested character count ", " is less than zero."));
+                    return null;
+                }
+                int length4 = str3.length();
+                if (iIntValue <= length4) {
+                    length4 = iIntValue;
+                }
+                strSubstring = str3.substring(length4);
+            }
+            if (strSubstring != null) {
+                arrayList3.add(strSubstring);
+            }
+            i = i3;
+        }
+        StringBuilder sb = new StringBuilder(length3);
+        q40.z0(arrayList3, sb, "\n", "", "", "...", null);
+        return sb.toString();
     }
 
-    public static String d0(String r12) {
-        if (qm4.u0("|") == true) goto L37;
-        List r1 = qm4.w0(r12);
-        int r13 = r12.length();
-        r1.size();
-        int r3 = r1.size() - 1;
-        ArrayList r4 = new ArrayList();
-        Iterator r2 = r1.iterator();
-        int r6 = 0;
-    L6:
-        if (r2.hasNext() == false) goto L35;
-        Object r7 = r2.next();
-        int r8 = r6 + 1;
-        if (r6 < 0) goto L33;
-        String r9 = (String) r7;
-        if (r6 == 0) goto L13;
-        if (r6 == r3) goto L13;
-    L15:
-        int r10 = r9.length();
-        int r11 = 0;
-    L17:
-        if (r11 >= r10) goto L22;
-        if (ya4.y(r9.charAt(r11)) == false) goto L23;
-        r11 = r11 + 1;
-    L23:
-        if (r11 != (-1)) goto L26;
-    L24:
-        String r14 = null;
-    L28:
-        if (r14 == null) goto L30;
-        r9 = r14;
-    L30:
-        if (r9 == null) goto L32;
-        r4.add(r9);
-    L32:
-        r6 = r8;
-        goto L6
-    L26:
-        if (xm4.j0(r9, r11, "|", false) == false) goto L24;
-        r14 = r9.substring("|".length() + r11);
-        goto L28
-    L22:
-        r11 = -1;
-    L13:
-        if (qm4.u0(r9) == false) goto L15;
-        r9 = null;
-        goto L30
-    L33:
-        gb.c0();
-        throw null;
-    L35:
-        StringBuilder r0 = new StringBuilder(r13);
-        q40.A0(r4, r0);
-        return r0.toString();
-    L37:
-        kf2.n("marginPrefix must be non-blank string.");
-        return null;
+    public static String d0(String str) {
+        if (qm4.u0("|")) {
+            kf2.n("marginPrefix must be non-blank string.");
+            return null;
+        }
+        List listW0 = qm4.w0(str);
+        int length = str.length();
+        listW0.size();
+        int size = listW0.size() - 1;
+        ArrayList arrayList = new ArrayList();
+        int i = 0;
+        for (Object obj : listW0) {
+            int i2 = i + 1;
+            if (i < 0) {
+                gb.c0();
+                throw null;
+            }
+            String str2 = (String) obj;
+            if ((i == 0 || i == size) && qm4.u0(str2)) {
+                str2 = null;
+            } else {
+                int length2 = str2.length();
+                int i3 = 0;
+                while (true) {
+                    if (i3 >= length2) {
+                        i3 = -1;
+                        break;
+                    }
+                    if (!ya4.y(str2.charAt(i3))) {
+                        break;
+                    }
+                    i3++;
+                }
+                String strSubstring = (i3 != -1 && xm4.j0(str2, i3, "|", false)) ? str2.substring("|".length() + i3) : null;
+                if (strSubstring != null) {
+                    str2 = strSubstring;
+                }
+            }
+            if (str2 != null) {
+                arrayList.add(str2);
+            }
+            i = i2;
+        }
+        StringBuilder sb = new StringBuilder(length);
+        q40.z0(arrayList, sb, "\n", "", "", "...", null);
+        return sb.toString();
     }
 }

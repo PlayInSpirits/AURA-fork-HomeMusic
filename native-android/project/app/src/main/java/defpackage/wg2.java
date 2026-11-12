@@ -19,60 +19,52 @@ public final class wg2 extends ArrayAdapter {
     public ColorStateList o;
     public final /* synthetic */ xg2 p;
 
-    public wg2(xg2 r1, Context r2, int r3, String[] r4) {
-        this.p = r1;
-        super(r2, r3, r4);
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public wg2(xg2 xg2Var, Context context, int i, String[] strArr) {
+        super(context, i, strArr);
+        this.p = xg2Var;
         a();
     }
 
     public final void a() {
-        xg2 r0 = this.p;
-        ColorStateList r1 = r0.y;
-        ColorStateList r2 = null;
-        if (r1 == null) goto L5;
-        int[] r4 = {R.attr.state_pressed};
-        ColorStateList r5 = new ColorStateList(new int[][]{r4, new int[0]}, new int[]{r1.getColorForState(r4, 0), 0});
-    L6:
-        this.o = r5;
-        if (r0.x != 0) goto L9;
-    L11:
-        this.n = r2;
-        return;
-    L9:
-        if (r0.y == null) goto L11;
-        int[] r3 = {R.attr.state_hovered, -16842919};
-        int[] r6 = {R.attr.state_selected, -16842919};
-        int r7 = r0.y.getColorForState(r6, 0);
-        int r8 = r0.y.getColorForState(r3, 0);
-        r2 = new ColorStateList(new int[][]{r6, r3, new int[0]}, new int[]{v50.g(r7, r0.x), v50.g(r8, r0.x), r0.x});
-        goto L11
-    L5:
-        r5 = null;
-        goto L6
+        ColorStateList colorStateList;
+        xg2 xg2Var = this.p;
+        ColorStateList colorStateList2 = xg2Var.y;
+        ColorStateList colorStateList3 = null;
+        if (colorStateList2 != null) {
+            int[] iArr = {R.attr.state_pressed};
+            colorStateList = new ColorStateList(new int[][]{iArr, new int[0]}, new int[]{colorStateList2.getColorForState(iArr, 0), 0});
+        } else {
+            colorStateList = null;
+        }
+        this.o = colorStateList;
+        if (xg2Var.x != 0 && xg2Var.y != null) {
+            int[] iArr2 = {R.attr.state_hovered, -16842919};
+            int[] iArr3 = {R.attr.state_selected, -16842919};
+            colorStateList3 = new ColorStateList(new int[][]{iArr3, iArr2, new int[0]}, new int[]{v50.g(xg2Var.y.getColorForState(iArr3, 0), xg2Var.x), v50.g(xg2Var.y.getColorForState(iArr2, 0), xg2Var.x), xg2Var.x});
+        }
+        this.n = colorStateList3;
     }
 
     @Override // android.widget.ArrayAdapter, android.widget.Adapter
-    public final View getView(int r3, View r4, ViewGroup r5) {
-        View r6 = super.getView(r3, r4, r5);
-        if ((r6 instanceof TextView) == false) goto L13;
-        TextView r7 = (TextView) r6;
-        xg2 r8 = this.p;
-        Drawable r1 = null;
-        if (r8.getText().toString().contentEquals(r7.getText()) == true) goto L7;
-    L12:
-        WeakHashMap r2 = j65.a;
-        r7.setBackground(r1);
-        goto L13
-    L7:
-        if (r8.x == 0) goto L12;
-        ColorDrawable r0 = new ColorDrawable(r8.x);
-        if (this.o == null) goto L11;
-        r0.setTintList(this.n);
-        r1 = new RippleDrawable(this.o, r0, null);
-        goto L12
-    L11:
-        r1 = r0;
-    L13:
-        return r6;
+    public final View getView(int i, View view, ViewGroup viewGroup) {
+        View view2 = super.getView(i, view, viewGroup);
+        if (view2 instanceof TextView) {
+            TextView textView = (TextView) view2;
+            xg2 xg2Var = this.p;
+            Drawable rippleDrawable = null;
+            if (xg2Var.getText().toString().contentEquals(textView.getText()) && xg2Var.x != 0) {
+                ColorDrawable colorDrawable = new ColorDrawable(xg2Var.x);
+                if (this.o != null) {
+                    colorDrawable.setTintList(this.n);
+                    rippleDrawable = new RippleDrawable(this.o, colorDrawable, null);
+                } else {
+                    rippleDrawable = colorDrawable;
+                }
+            }
+            WeakHashMap weakHashMap = j65.a;
+            textView.setBackground(rippleDrawable);
+        }
+        return view2;
     }
 }

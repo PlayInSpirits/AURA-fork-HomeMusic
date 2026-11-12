@@ -9,12 +9,13 @@ public final class nl3 extends cx3 {
     public final z05 u;
     public final /* synthetic */ zd0 v;
 
-    public nl3(zd0 r2, z05 r3) {
-        this.v = r2;
-        ConstraintLayout r4 = (ConstraintLayout) r3.o;
-        super(r4);
-        this.u = r3;
-        ((TextView) r3.q).setSelected(true);
-        r4.setOnClickListener(new bj3(5, this));
+    /* JADX WARN: Illegal instructions before constructor call */
+    public nl3(zd0 zd0Var, z05 z05Var) {
+        this.v = zd0Var;
+        ConstraintLayout constraintLayout = (ConstraintLayout) z05Var.o;
+        super(constraintLayout);
+        this.u = z05Var;
+        ((TextView) z05Var.q).setSelected(true);
+        constraintLayout.setOnClickListener(new bj3(5, this));
     }
 }

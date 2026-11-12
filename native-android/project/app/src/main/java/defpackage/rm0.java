@@ -3,27 +3,27 @@ package defpackage;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class rm0 extends x21 {
-    public static final rm0 q = null;
+    public static final rm0 q;
     public ve0 p;
 
     static {
-        int r2 = ir4.c;
-        int r3 = ir4.d;
-        long r4 = ir4.e;
-        String r6 = ir4.a;
-        rm0 r0 = new rm0();
-        r0.p = new ve0(r2, r3, r4, r6);
-        q = r0;
+        int i = ir4.c;
+        int i2 = ir4.d;
+        long j = ir4.e;
+        String str = ir4.a;
+        rm0 rm0Var = new rm0();
+        rm0Var.p = new ve0(i, i2, j, str);
+        q = rm0Var;
     }
 
     @Override // defpackage.pe0
-    public final void W(ne0 r1, Runnable r2) {
-        ve0.j(this.p, r2, 6);
+    public final void W(ne0 ne0Var, Runnable runnable) {
+        ve0.j(this.p, runnable, 6);
     }
 
     @Override // defpackage.pe0
-    public final void X(ne0 r1, Runnable r2) {
-        ve0.j(this.p, r2, 2);
+    public final void X(ne0 ne0Var, Runnable runnable) {
+        ve0.j(this.p, runnable, 2);
     }
 
     @Override // java.io.Closeable, java.lang.AutoCloseable

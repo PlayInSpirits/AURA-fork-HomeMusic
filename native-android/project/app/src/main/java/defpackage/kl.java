@@ -11,17 +11,16 @@ public final class kl extends BroadcastReceiver {
     public final yp4 b;
     public final /* synthetic */ ll c;
 
-    public kl(ll r1, yp4 r2, d41 r3) {
-        this.c = r1;
-        this.b = r2;
-        this.a = r3;
+    public kl(ll llVar, yp4 yp4Var, d41 d41Var) {
+        this.c = llVar;
+        this.b = yp4Var;
+        this.a = d41Var;
     }
 
     @Override // android.content.BroadcastReceiver
-    public final void onReceive(Context r1, Intent r2) {
-        if ("android.media.AUDIO_BECOMING_NOISY".equals(r2.getAction()) == false) goto L6;
-        a0 r3 = new a0(8, this);
-        this.b.d(r3);
-        return;
+    public final void onReceive(Context context, Intent intent) {
+        if ("android.media.AUDIO_BECOMING_NOISY".equals(intent.getAction())) {
+            this.b.d(new a0(8, this));
+        }
     }
 }

@@ -7,12 +7,12 @@ import java.util.ArrayList;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class zj4 {
-    public static final xx0 n = null;
-    public static final xx0 o = null;
-    public static final xx0 p = null;
-    public static final xx0 q = null;
-    public static final xx0 r = null;
-    public static final xx0 s = null;
+    public static final xx0 n = new xx0();
+    public static final xx0 o = new xx0();
+    public static final xx0 p = new xx0();
+    public static final xx0 q = new xx0();
+    public static final xx0 r = new xx0();
+    public static final xx0 s = new xx0();
     public float a;
     public float b;
     public boolean c;
@@ -27,90 +27,64 @@ public final class zj4 {
     public float l;
     public boolean m;
 
-    static {
-        n = new xx0();
-        o = new xx0();
-        p = new xx0();
-        q = new xx0();
-        r = new xx0();
-        s = new xx0();
-    }
-
-    public zj4(gp0 r6) {
-        fp0 r0 = gp0.D;
+    public zj4(gp0 gp0Var) {
+        fp0 fp0Var = gp0.D;
         this.a = 0.0f;
         this.b = Float.MAX_VALUE;
         this.c = false;
         this.f = false;
-        this.g = 0;
+        this.g = 0L;
         this.i = new ArrayList();
         this.j = new ArrayList();
-        this.d = r6;
-        this.e = r0;
-        if (r0 != p) goto L5;
-    L19:
-        this.h = 0.1f;
-    L20:
+        this.d = gp0Var;
+        this.e = fp0Var;
+        if (fp0Var == p || fp0Var == q || fp0Var == r) {
+            this.h = 0.1f;
+        } else if (fp0Var == s || fp0Var == n || fp0Var == o) {
+            this.h = 0.00390625f;
+        } else {
+            this.h = 1.0f;
+        }
         this.k = null;
         this.l = Float.MAX_VALUE;
         this.m = false;
-        return;
-    L5:
-        if (r0 == q) goto L19;
-        if (r0 == r) goto L19;
-        if (r0 != s) goto L13;
-        this.h = 0.00390625f;
-        goto L20
-    L13:
-        if (r0 != n) goto L15;
-    L18:
-        this.h = 0.00390625f;
-        goto L20
-    L15:
-        if (r0 == o) goto L18;
-        this.h = 1.0f;
-        goto L20
     }
 
-    public final void a(float r3) {
+    public final void a(float f) {
         this.e.getClass();
-        gp0 r0 = this.d;
-        r0.B = r3 / 10000.0f;
-        r0.invalidateSelf();
-        int r4 = 0;
-    L3:
-        ArrayList r1 = this.j;
-        if (r4 >= r1.size()) goto L10;
-        if (r1.get(r4) != null) goto L8;
-        r4 = r4 + 1;
-        goto L3
-    L8:
-        r1.get(r4).getClass();
-        kf2.k();
-        return;
-    L10:
-        int r2 = r1.size() - 1;
-    L11:
-        if (r2 < 0) goto L16;
-        if (r1.get(r2) != null) goto L15;
-        r1.remove(r2);
-    L15:
-        r2 = r2 - 1;
-        goto L11
+        gp0 gp0Var = this.d;
+        gp0Var.B = f / 10000.0f;
+        gp0Var.invalidateSelf();
+        int i = 0;
+        while (true) {
+            ArrayList arrayList = this.j;
+            if (i >= arrayList.size()) {
+                for (int size = arrayList.size() - 1; size >= 0; size--) {
+                    if (arrayList.get(size) == null) {
+                        arrayList.remove(size);
+                    }
+                }
+                return;
+            }
+            if (arrayList.get(i) != null) {
+                arrayList.get(i).getClass();
+                kf2.k();
+                return;
+            }
+            i++;
+        }
     }
 
     public final void b() {
-        if (this.k.b > 0.0d) goto L5;
-        er1.l("Spring animations can only come to an end when there is damping");
-        return;
-    L5:
-        if (Looper.myLooper() != Looper.getMainLooper()) goto L11;
-        if (this.f == false) goto L14;
-        this.m = true;
-        return;
-    L14:
-        return;
-    L11:
-        throw new AndroidRuntimeException("Animations may only be started on the main thread");
+        if (this.k.b <= 0.0d) {
+            er1.l("Spring animations can only come to an end when there is damping");
+        } else {
+            if (Looper.myLooper() != Looper.getMainLooper()) {
+                throw new AndroidRuntimeException("Animations may only be started on the main thread");
+            }
+            if (this.f) {
+                this.m = true;
+            }
+        }
     }
 }

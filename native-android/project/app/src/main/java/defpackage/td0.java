@@ -5,8 +5,8 @@ package defpackage;
 public final class td0 implements we0 {
     public final ne0 n;
 
-    public td0(ne0 r1) {
-        this.n = r1;
+    public td0(ne0 ne0Var) {
+        this.n = ne0Var;
     }
 
     @Override // defpackage.we0

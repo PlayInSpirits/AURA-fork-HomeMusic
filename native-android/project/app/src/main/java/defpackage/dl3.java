@@ -12,21 +12,21 @@ public class dl3 extends hd {
     public final k03 e;
     public final lu2 f;
 
-    public dl3(Application r3) {
-        super(r3);
+    public dl3(Application application) {
+        super(application);
         this.c = new mm3();
-        k03 r4 = new k03("ORDER_BY_NAME");
-        this.d = r4;
+        k03 k03Var = new k03("ORDER_BY_NAME");
+        this.d = k03Var;
         this.e = new k03(null);
-        this.f = fu.N(r4, new x(29, this));
-        r4.k(ud3.s());
+        this.f = fu.N(k03Var, new x(29, this));
+        k03Var.k(ud3.s());
         this.c = new mm3();
     }
 
-    public final void c(String r3) {
-        Log.d("TempusLog", "ViewModel setSortOrder called with: ".concat(r3));
+    public final void c(String str) {
+        Log.d("TempusLog", "ViewModel setSortOrder called with: ".concat(str));
         App.b().getClass();
-        App.c().edit().putString("home_sort_playlists", r3).apply();
-        this.d.k(r3);
+        App.c().edit().putString("home_sort_playlists", str).apply();
+        this.d.k(str);
     }
 }

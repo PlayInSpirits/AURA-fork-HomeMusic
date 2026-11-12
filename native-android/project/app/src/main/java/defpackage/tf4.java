@@ -5,7 +5,6 @@ import android.os.Build;
 import java.util.ArrayDeque;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 import java.util.NavigableMap;
 import java.util.TreeMap;
@@ -13,180 +12,149 @@ import java.util.TreeMap;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class tf4 {
-    public static final Bitmap.Config[] d = null;
-    public static final Bitmap.Config[] e = null;
-    public static final Bitmap.Config[] f = null;
-    public static final Bitmap.Config[] g = null;
-    public static final Bitmap.Config[] h = null;
-    public final mf2 a;
-    public final hd5 b;
-    public final HashMap c;
+    public static final Bitmap.Config[] d;
+    public static final Bitmap.Config[] e;
+    public static final Bitmap.Config[] f;
+    public static final Bitmap.Config[] g;
+    public static final Bitmap.Config[] h;
+    public final mf2 a = new mf2(1);
+    public final hd5 b = new hd5(10);
+    public final HashMap c = new HashMap();
 
     static {
-        Bitmap.Config[] r0 = {Bitmap.Config.ARGB_8888, null};
-        if (Build.VERSION.SDK_INT < 26) goto L5;
-        r0 = (Bitmap.Config[]) Arrays.copyOf(r0, 3);
-        r0[r0.length - 1] = j3.d();
-    L5:
-        d = r0;
-        e = r0;
+        Bitmap.Config[] configArr = {Bitmap.Config.ARGB_8888, null};
+        if (Build.VERSION.SDK_INT >= 26) {
+            configArr = (Bitmap.Config[]) Arrays.copyOf(configArr, 3);
+            configArr[configArr.length - 1] = Bitmap.Config.RGBA_F16;
+        }
+        d = configArr;
+        e = configArr;
         f = new Bitmap.Config[]{Bitmap.Config.RGB_565};
         g = new Bitmap.Config[]{Bitmap.Config.ARGB_4444};
         h = new Bitmap.Config[]{Bitmap.Config.ALPHA_8};
     }
 
-    public tf4() {
-        this.a = new mf2(1);
-        this.b = new hd5(10);
-        this.c = new HashMap();
+    public static String c(int i, Bitmap.Config config) {
+        return "[" + i + "](" + config + ")";
     }
 
-    public static String c(int r2, Bitmap.Config r3) {
-        return "[" + r2 + "](" + r3 + ")";
+    public final void a(Integer num, Bitmap bitmap) {
+        NavigableMap navigableMapD = d(bitmap.getConfig());
+        Integer num2 = (Integer) navigableMapD.get(num);
+        if (num2 != null) {
+            if (num2.intValue() == 1) {
+                navigableMapD.remove(num);
+                return;
+            } else {
+                navigableMapD.put(num, Integer.valueOf(num2.intValue() - 1));
+                return;
+            }
+        }
+        StringBuilder sb = new StringBuilder("Tried to decrement empty size, size: ");
+        sb.append(num);
+        String strC = c(e35.v(bitmap), bitmap.getConfig());
+        sb.append(", removed: ");
+        sb.append(strC);
+        sb.append(", this: ");
+        sb.append(this);
+        throw new NullPointerException(sb.toString());
     }
 
-    public final void a(Integer r4, Bitmap r5) {
-        NavigableMap r0 = d(r5.getConfig());
-        Integer r1 = (Integer) r0.get(r4);
-        if (r1 != null) goto L5;
-        StringBuilder r2 = new StringBuilder("Tried to decrement empty size, size: ");
-        r2.append(r4);
-        String r6 = c(e35.v(r5), r5.getConfig());
-        r2.append(", removed: ");
-        r2.append(r6);
-        r2.append(", this: ");
-        r2.append(this);
-        throw new NullPointerException(r2.toString());
-    L5:
-        if (r1.intValue() != 1) goto L8;
-        r0.remove(r4);
-        return;
-    L8:
-        r0.put(r4, Integer.valueOf(r1.intValue() - 1));
+    public final Bitmap b(int i, int i2, Bitmap.Config config) {
+        Bitmap.Config[] configArr;
+        int iW = e35.w(config) * i * i2;
+        mf2 mf2Var = this.a;
+        xn3 xn3VarU = (xn3) ((ArrayDeque) mf2Var.a).poll();
+        if (xn3VarU == null) {
+            xn3VarU = mf2Var.u();
+        }
+        sf4 sf4Var = (sf4) xn3VarU;
+        sf4Var.b = iW;
+        sf4Var.c = config;
+        if (Build.VERSION.SDK_INT < 26 || !Bitmap.Config.RGBA_F16.equals(config)) {
+            int i3 = rf4.a[config.ordinal()];
+            if (i3 == 1) {
+                configArr = d;
+            } else if (i3 == 2) {
+                configArr = f;
+            } else if (i3 != 3) {
+                configArr = i3 != 4 ? new Bitmap.Config[]{config} : h;
+            } else {
+                configArr = g;
+            }
+        } else {
+            configArr = e;
+        }
+        for (Bitmap.Config config2 : configArr) {
+            Integer num = (Integer) d(config2).ceilingKey(Integer.valueOf(iW));
+            if (num != null && num.intValue() <= iW * 8) {
+                if (num.intValue() == iW && (config2 != null ? config2.equals(config) : config == null)) {
+                    break;
+                    break;
+                }
+                mf2Var.k(sf4Var);
+                int iIntValue = num.intValue();
+                xn3 xn3VarU2 = (xn3) ((ArrayDeque) mf2Var.a).poll();
+                if (xn3VarU2 == null) {
+                    xn3VarU2 = mf2Var.u();
+                }
+                sf4Var = (sf4) xn3VarU2;
+                sf4Var.b = iIntValue;
+                sf4Var.c = config2;
+                break;
+            }
+        }
+        Bitmap bitmap = (Bitmap) this.b.h(sf4Var);
+        if (bitmap != null) {
+            a(Integer.valueOf(sf4Var.b), bitmap);
+            bitmap.reconfigure(i, i2, config);
+        }
+        return bitmap;
     }
 
-    public final Bitmap b(int r11, int r12, Bitmap.Config r13) {
-        int r1 = e35.w(r13);
-        int r2 = r1 * (r11 * r12);
-        mf2 r0 = this.a;
-        xn3 r3 = (xn3) ((ArrayDeque) r0.a).poll();
-        if (r3 != null) goto L5;
-        r3 = r0.u();
-    L5:
-        sf4 r4 = (sf4) r3;
-        r4.b = r2;
-        r4.c = r13;
-        if (Build.VERSION.SDK_INT >= 26) goto L8;
-    L10:
-        int r5 = rf4.a[r13.ordinal()];
-        if (r5 != 1) goto L13;
-        Bitmap.Config[] r6 = d;
-    L23:
-        int r7 = r6.length;
-        int r8 = 0;
-    L24:
-        if (r8 >= r7) goto L41;
-        Bitmap.Config r9 = r6[r8];
-        Integer r10 = (Integer) d(r9).ceilingKey(Integer.valueOf(r2));
-        if (r10 == null) goto L40;
-        if (r10.intValue() > (r2 * 8)) goto L40;
-        if (r10.intValue() != r2) goto L36;
-        if (r9 != null) goto L35;
-        if (r13 == null) goto L41;
-    L35:
-        if (r9.equals(r13) == true) goto L41;
-    L36:
-        r0.k(r4);
-        int r14 = r10.intValue();
-        xn3 r15 = (xn3) ((ArrayDeque) r0.a).poll();
-        if (r15 != null) goto L39;
-        r15 = r0.u();
-    L39:
-        r4 = (sf4) r15;
-        r4.b = r14;
-        r4.c = r9;
-    L40:
-        r8 = r8 + 1;
-    L41:
-        Bitmap r16 = (Bitmap) this.b.h(r4);
-        if (r16 == null) goto L44;
-        a(Integer.valueOf(r4.b), r16);
-        r16.reconfigure(r11, r12, r13);
-    L44:
-        return r16;
-    L13:
-        if (r5 != 2) goto L15;
-        r6 = f;
-        goto L23
-    L15:
-        if (r5 != 3) goto L17;
-        r6 = g;
-        goto L23
-    L17:
-        if (r5 == 4) goto L19;
-        r6 = new Bitmap.Config[]{r13};
-        goto L23
-    L19:
-        r6 = h;
-        goto L23
-    L8:
-        if (j3.d().equals(r13) == false) goto L10;
-        r6 = e;
-        goto L23
+    public final NavigableMap d(Bitmap.Config config) {
+        HashMap map = this.c;
+        NavigableMap navigableMap = (NavigableMap) map.get(config);
+        if (navigableMap != null) {
+            return navigableMap;
+        }
+        TreeMap treeMap = new TreeMap();
+        map.put(config, treeMap);
+        return treeMap;
     }
 
-    public final NavigableMap d(Bitmap.Config r2) {
-        HashMap r1 = this.c;
-        NavigableMap r0 = (NavigableMap) r1.get(r2);
-        if (r0 != null) goto L6;
-        TreeMap r3 = new TreeMap();
-        r1.put(r2, r3);
-        return r3;
-    L6:
-        return r0;
-    }
-
-    public final void e(Bitmap r5) {
-        int r0 = e35.v(r5);
-        Bitmap.Config r1 = r5.getConfig();
-        mf2 r2 = this.a;
-        xn3 r3 = (xn3) ((ArrayDeque) r2.a).poll();
-        if (r3 != null) goto L5;
-        r3 = r2.u();
-    L5:
-        sf4 r4 = (sf4) r3;
-        r4.b = r0;
-        r4.c = r1;
-        this.b.k(r4, r5);
-        NavigableMap r6 = d(r5.getConfig());
-        Integer r7 = (Integer) r6.get(Integer.valueOf(r4.b));
-        Integer r8 = Integer.valueOf(r4.b);
-        int r9 = 1;
-        if (r7 == null) goto L9;
-        r9 = 1 + r7.intValue();
-    L9:
-        r6.put(r8, Integer.valueOf(r9));
+    public final void e(Bitmap bitmap) {
+        int iV = e35.v(bitmap);
+        Bitmap.Config config = bitmap.getConfig();
+        mf2 mf2Var = this.a;
+        xn3 xn3VarU = (xn3) ((ArrayDeque) mf2Var.a).poll();
+        if (xn3VarU == null) {
+            xn3VarU = mf2Var.u();
+        }
+        sf4 sf4Var = (sf4) xn3VarU;
+        sf4Var.b = iV;
+        sf4Var.c = config;
+        this.b.k(sf4Var, bitmap);
+        NavigableMap navigableMapD = d(bitmap.getConfig());
+        Integer num = (Integer) navigableMapD.get(Integer.valueOf(sf4Var.b));
+        navigableMapD.put(Integer.valueOf(sf4Var.b), Integer.valueOf(num != null ? 1 + num.intValue() : 1));
     }
 
     public final String toString() {
-        StringBuilder r0 = xa3.i("SizeConfigStrategy{groupedMap=");
-        r0.append(this.b);
-        r0.append(", sortedSizes=(");
-        HashMap r4 = this.c;
-        Iterator r1 = r4.entrySet().iterator();
-    L4:
-        if (r1.hasNext() == false) goto L7;
-        Map.Entry r2 = (Map.Entry) r1.next();
-        r0.append(r2.getKey());
-        r0.append('[');
-        r0.append(r2.getValue());
-        r0.append("], ");
-        goto L4
-    L7:
-        if (r4.isEmpty() == true) goto L9;
-        r0.replace(r0.length() - 2, r0.length(), "");
-    L9:
-        r0.append(")}");
-        return r0.toString();
+        StringBuilder sbI = xa3.i("SizeConfigStrategy{groupedMap=");
+        sbI.append(this.b);
+        sbI.append(", sortedSizes=(");
+        HashMap map = this.c;
+        for (Map.Entry entry : map.entrySet()) {
+            sbI.append(entry.getKey());
+            sbI.append('[');
+            sbI.append(entry.getValue());
+            sbI.append("], ");
+        }
+        if (!map.isEmpty()) {
+            sbI.replace(sbI.length() - 2, sbI.length(), "");
+        }
+        sbI.append(")}");
+        return sbI.toString();
     }
 }

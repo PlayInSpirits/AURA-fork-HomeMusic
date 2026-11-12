@@ -5,13 +5,13 @@ package defpackage;
 public final class rz3 extends tz3 {
     public final /* synthetic */ tz3 a;
 
-    public rz3(tz3 r1) {
-        this.a = r1;
+    public rz3(tz3 tz3Var) {
+        this.a = tz3Var;
     }
 
     @Override // defpackage.tz3
     public final long contentLength() {
-        return -1;
+        return -1L;
     }
 
     @Override // defpackage.tz3
@@ -25,18 +25,19 @@ public final class rz3 extends tz3 {
     }
 
     @Override // defpackage.tz3
-    public final void writeTo(ew r2) {
-        r2.getClass();
-        wu3 r3 = new wu3(new sk1(r2));
-        this.a.writeTo(r3);     // Catch: Throwable -> L6
-        r3.close();
-        return;
-    L6:
-        th = move-exception;
-        throw th;     // Catch: Throwable -> L8
-    L8:
-        th = move-exception;
-        q05.h(r3, th);
-        throw th;
+    public final void writeTo(ew ewVar) {
+        ewVar.getClass();
+        wu3 wu3Var = new wu3(new sk1(ewVar));
+        try {
+            this.a.writeTo(wu3Var);
+            wu3Var.close();
+        } catch (Throwable th) {
+            try {
+                throw th;
+            } catch (Throwable th2) {
+                q05.h(wu3Var, th);
+                throw th2;
+            }
+        }
     }
 }

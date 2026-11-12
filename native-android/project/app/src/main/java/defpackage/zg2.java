@@ -5,9 +5,9 @@ package defpackage;
 public interface zg2 {
     void a();
 
-    void b(oo r1);
+    void b(oo ooVar);
 
-    void c(oo r1);
+    void c(oo ooVar);
 
     void d();
 }

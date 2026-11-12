@@ -34,63 +34,63 @@ public final class up0 {
     public final View h;
     public final View i;
 
-    public up0(LinearLayout r1, LinearLayout r2, TextView r3, ImageButton r4, LinearProgressIndicator r5, MaterialButton r6, MaterialButton r7, TabLayout r8, FrameLayout r9) {
-        this.a = r1;
-        this.b = r2;
-        this.c = r3;
-        this.i = r4;
-        this.d = r5;
-        this.e = r6;
-        this.f = r7;
-        this.g = r8;
-        this.h = r9;
+    public up0(LinearLayout linearLayout, LinearLayout linearLayout2, TextView textView, ImageButton imageButton, LinearProgressIndicator linearProgressIndicator, MaterialButton materialButton, MaterialButton materialButton2, TabLayout tabLayout, FrameLayout frameLayout) {
+        this.a = linearLayout;
+        this.b = linearLayout2;
+        this.c = textView;
+        this.i = imageButton;
+        this.d = linearProgressIndicator;
+        this.e = materialButton;
+        this.f = materialButton2;
+        this.g = tabLayout;
+        this.h = frameLayout;
     }
 
-    public up0(LinearLayout r1, ConstraintLayout r2, AppBarLayout r3, TextView r4, TextView r5, RecyclerView r6, Button r7, Button r8, SwipeRefreshLayout r9, MaterialToolbar r10) {
-        this.a = r2;
-        this.b = r3;
-        this.c = r4;
-        this.d = r5;
-        this.e = r6;
-        this.f = r7;
-        this.g = r8;
-        this.h = r9;
-        this.i = r10;
+    public up0(LinearLayout linearLayout, ConstraintLayout constraintLayout, AppBarLayout appBarLayout, TextView textView, TextView textView2, RecyclerView recyclerView, Button button, Button button2, SwipeRefreshLayout swipeRefreshLayout, MaterialToolbar materialToolbar) {
+        this.a = constraintLayout;
+        this.b = appBarLayout;
+        this.c = textView;
+        this.d = textView2;
+        this.e = recyclerView;
+        this.f = button;
+        this.g = button2;
+        this.h = swipeRefreshLayout;
+        this.i = materialToolbar;
     }
 
-    public up0(LinearLayout r1, ConstraintLayout r2, ImageView r3, ImageView r4, RecyclerView r5, ImageView r6, LinearLayout r7, ProgressBar r8, TextView r9) {
-        this.a = r1;
-        this.c = r2;
-        this.d = r3;
-        this.e = r4;
-        this.f = r5;
-        this.g = r6;
-        this.b = r7;
-        this.h = r8;
-        this.i = r9;
+    public up0(LinearLayout linearLayout, ConstraintLayout constraintLayout, ImageView imageView, ImageView imageView2, RecyclerView recyclerView, ImageView imageView3, LinearLayout linearLayout2, ProgressBar progressBar, TextView textView) {
+        this.a = linearLayout;
+        this.c = constraintLayout;
+        this.d = imageView;
+        this.e = imageView2;
+        this.f = recyclerView;
+        this.g = imageView3;
+        this.b = linearLayout2;
+        this.h = progressBar;
+        this.i = textView;
     }
 
-    public up0(ConstraintLayout r1, LinearLayout r2, TextView r3, LinearLayout r4, LinearLayout r5, RecyclerView r6, TextView r7, RecyclerView r8, TextView r9, View r10) {
-        this.a = r2;
-        this.c = r3;
-        this.b = r4;
-        this.d = r5;
-        this.e = r6;
-        this.f = r7;
-        this.g = r8;
-        this.h = r9;
-        this.i = r10;
+    public up0(ConstraintLayout constraintLayout, LinearLayout linearLayout, TextView textView, LinearLayout linearLayout2, LinearLayout linearLayout3, RecyclerView recyclerView, TextView textView2, RecyclerView recyclerView2, TextView textView3, View view) {
+        this.a = linearLayout;
+        this.c = textView;
+        this.b = linearLayout2;
+        this.d = linearLayout3;
+        this.e = recyclerView;
+        this.f = textView2;
+        this.g = recyclerView2;
+        this.h = textView3;
+        this.i = view;
     }
 
-    public up0(LinearLayout r1, TextInputLayout r2, TextInputEditText r3, TextInputEditText r4, TextInputEditText r5, TextInputEditText r6, MaterialButtonToggleGroup r7, ImageButton r8, LinearLayout r9) {
-        this.a = r1;
-        this.c = r2;
-        this.d = r3;
-        this.e = r4;
-        this.f = r5;
-        this.g = r6;
-        this.h = r7;
-        this.i = r8;
-        this.b = r9;
+    public up0(LinearLayout linearLayout, TextInputLayout textInputLayout, TextInputEditText textInputEditText, TextInputEditText textInputEditText2, TextInputEditText textInputEditText3, TextInputEditText textInputEditText4, MaterialButtonToggleGroup materialButtonToggleGroup, ImageButton imageButton, LinearLayout linearLayout2) {
+        this.a = linearLayout;
+        this.c = textInputLayout;
+        this.d = textInputEditText;
+        this.e = textInputEditText2;
+        this.f = textInputEditText3;
+        this.g = textInputEditText4;
+        this.h = materialButtonToggleGroup;
+        this.i = imageButton;
+        this.b = linearLayout2;
     }
 }

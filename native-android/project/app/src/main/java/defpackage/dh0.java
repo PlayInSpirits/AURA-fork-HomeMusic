@@ -8,21 +8,21 @@ import android.graphics.drawable.Drawable;
 public final class dh0 extends ei2 {
     public final RectF r;
 
-    public dh0(dh0 r1) {
-        super(r1);
-        this.r = r1.r;
+    public dh0(dh0 dh0Var) {
+        super(dh0Var);
+        this.r = dh0Var.r;
     }
 
     @Override // defpackage.ei2, android.graphics.drawable.Drawable.ConstantState
     public final Drawable newDrawable() {
-        eh0 r0 = new eh0(this);
-        r0.K = this;
-        r0.invalidateSelf();
-        return r0;
+        eh0 eh0Var = new eh0(this);
+        eh0Var.K = this;
+        eh0Var.invalidateSelf();
+        return eh0Var;
     }
 
-    public dh0(bc4 r1, RectF r2) {
-        super(r1);
-        this.r = r2;
+    public dh0(bc4 bc4Var, RectF rectF) {
+        super(bc4Var);
+        this.r = rectF;
     }
 }

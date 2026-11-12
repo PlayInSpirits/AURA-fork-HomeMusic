@@ -10,58 +10,51 @@ import defpackage.xj0;
 /* JADX INFO: loaded from: classes.dex */
 public final class Download extends Child {
     public static final int $stable = 8;
-    public static final Parcelable.Creator<Download> CREATOR = null;
+    public static final Parcelable.Creator<Download> CREATOR = new w4(24);
     private int downloadState;
     private String downloadUri;
     private final String id;
     private String playlistId;
     private String playlistName;
 
-    static {
-        CREATOR = new w4(24);
-    }
-
-    public Download(Child r9) {
-        r9.getClass();
-        String r2 = null;
-        String r3 = null;
-        int r4 = 0;
-        String r5 = null;
-        this(r9.getId(), r2, r3, r4, r5, 30, null);
-        setParentId(r9.getParentId());
-        setDir(r9.isDir());
-        setTitle(r9.getTitle());
-        setAlbum(r9.getAlbum());
-        setArtist(r9.getArtist());
-        setTrack(r9.getTrack());
-        setYear(r9.getYear());
-        setGenre(r9.getGenre());
-        setCoverArtId(r9.getCoverArtId());
-        setSize(r9.getSize());
-        setContentType(r9.getContentType());
-        setSuffix(r9.getSuffix());
-        setTranscodedContentType(r9.getTranscodedContentType());
-        setTranscodedSuffix(r9.getTranscodedSuffix());
-        setDuration(r9.getDuration());
-        setBitrate(r9.getBitrate());
-        setSamplingRate(r9.getSamplingRate());
-        setBitDepth(r9.getBitDepth());
-        setPath(r9.getPath());
-        setVideo(r9.isVideo());
-        setUserRating(r9.getUserRating());
-        setAverageRating(r9.getAverageRating());
-        setPlayCount(r9.getPlayCount());
-        setDiscNumber(r9.getDiscNumber());
-        setCreated(r9.getCreated());
-        setStarred(r9.getStarred());
-        setAlbumId(r9.getAlbumId());
-        setArtistId(r9.getArtistId());
-        setType(r9.getType());
-        setBookmarkPosition(r9.getBookmarkPosition());
-        setOriginalWidth(r9.getOriginalWidth());
-        setOriginalHeight(r9.getOriginalHeight());
-        setReplayGain(r9.getReplayGain());
-        setAlbumArtist(r9.getAlbumArtist());
+    /* JADX WARN: 'this' call moved to the top of the method (can break code semantics) */
+    public Download(Child child) {
+        this(child.getId(), null, null, 0, null, 30, null);
+        child.getClass();
+        setParentId(child.getParentId());
+        setDir(child.isDir());
+        setTitle(child.getTitle());
+        setAlbum(child.getAlbum());
+        setArtist(child.getArtist());
+        setTrack(child.getTrack());
+        setYear(child.getYear());
+        setGenre(child.getGenre());
+        setCoverArtId(child.getCoverArtId());
+        setSize(child.getSize());
+        setContentType(child.getContentType());
+        setSuffix(child.getSuffix());
+        setTranscodedContentType(child.getTranscodedContentType());
+        setTranscodedSuffix(child.getTranscodedSuffix());
+        setDuration(child.getDuration());
+        setBitrate(child.getBitrate());
+        setSamplingRate(child.getSamplingRate());
+        setBitDepth(child.getBitDepth());
+        setPath(child.getPath());
+        setVideo(child.isVideo());
+        setUserRating(child.getUserRating());
+        setAverageRating(child.getAverageRating());
+        setPlayCount(child.getPlayCount());
+        setDiscNumber(child.getDiscNumber());
+        setCreated(child.getCreated());
+        setStarred(child.getStarred());
+        setAlbumId(child.getAlbumId());
+        setArtistId(child.getArtistId());
+        setType(child.getType());
+        setBookmarkPosition(child.getBookmarkPosition());
+        setOriginalWidth(child.getOriginalWidth());
+        setOriginalHeight(child.getOriginalHeight());
+        setReplayGain(child.getReplayGain());
+        setAlbumArtist(child.getAlbumArtist());
     }
 
     @Override // com.eddyizm.tempus.subsonic.models.Child, android.os.Parcelable
@@ -90,55 +83,44 @@ public final class Download extends Child {
         return this.playlistName;
     }
 
-    public final void setDownloadState(int r1) {
-        this.downloadState = r1;
+    public final void setDownloadState(int i) {
+        this.downloadState = i;
     }
 
-    public final void setDownloadUri(String r1) {
-        this.downloadUri = r1;
+    public final void setDownloadUri(String str) {
+        this.downloadUri = str;
     }
 
-    public final void setPlaylistId(String r1) {
-        this.playlistId = r1;
+    public final void setPlaylistId(String str) {
+        this.playlistId = str;
     }
 
-    public final void setPlaylistName(String r1) {
-        this.playlistName = r1;
+    public final void setPlaylistName(String str) {
+        this.playlistName = str;
     }
 
     @Override // com.eddyizm.tempus.subsonic.models.Child, android.os.Parcelable
-    public final void writeToParcel(Parcel r1, int r2) {
-        r1.getClass();
-        r1.writeString(this.id);
-        r1.writeString(this.playlistId);
-        r1.writeString(this.playlistName);
-        r1.writeInt(this.downloadState);
-        r1.writeString(this.downloadUri);
+    public final void writeToParcel(Parcel parcel, int i) {
+        parcel.getClass();
+        parcel.writeString(this.id);
+        parcel.writeString(this.playlistId);
+        parcel.writeString(this.playlistName);
+        parcel.writeInt(this.downloadState);
+        parcel.writeString(this.downloadUri);
     }
 
-    public /* synthetic */ Download(String r2, String r3, String r4, int r5, String r6, int r7, xj0 r8) {
-        if ((r7 & 2) == 0) goto L6;
-        r3 = null;
-    L6:
-        if ((r7 & 4) == 0) goto L9;
-        r4 = null;
-    L9:
-        if ((r7 & 8) == 0) goto L12;
-        r5 = 0;
-    L12:
-        if ((r7 & 16) == 0) goto L14;
-        r6 = null;
-    L14:
-        this(r2, r3, r4, r5, r6);
+    public /* synthetic */ Download(String str, String str2, String str3, int i, String str4, int i2, xj0 xj0Var) {
+        this(str, (i2 & 2) != 0 ? null : str2, (i2 & 4) != 0 ? null : str3, (i2 & 8) != 0 ? 0 : i, (i2 & 16) != 0 ? null : str4);
     }
 
-    public Download(String r40, String r41, String r42, int r43, String r44) {
-        r40.getClass();
-        super(r40, null, false, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, false, null, null, null, null, null, null, null, null, null, null, null, null, null, null, -2, 7, null);
-        this.id = r40;
-        this.playlistId = r41;
-        this.playlistName = r42;
-        this.downloadState = r43;
-        this.downloadUri = r44;
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public Download(String str, String str2, String str3, int i, String str4) {
+        super(str, null, false, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, false, null, null, null, null, null, null, null, null, null, null, null, null, null, null, -2, 7, null);
+        str.getClass();
+        this.id = str;
+        this.playlistId = str2;
+        this.playlistName = str3;
+        this.downloadState = i;
+        this.downloadUri = str4;
     }
 }

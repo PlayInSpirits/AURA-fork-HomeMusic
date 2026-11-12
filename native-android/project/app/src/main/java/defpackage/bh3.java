@@ -4,6 +4,6 @@ package defpackage;
 /* JADX INFO: loaded from: classes.dex */
 public interface bh3 {
     static {
-        ah3 r0 = ah3.a;
+        ah3 ah3Var = ah3.a;
     }
 }

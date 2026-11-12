@@ -12,61 +12,55 @@ public final class p51 extends AnimatorListenerAdapter {
     public final View b;
     public boolean c;
 
-    public p51(View r2) {
+    public p51(View view) {
         this.a = 1;
         this.c = false;
-        this.b = r2;
+        this.b = view;
     }
 
     @Override // android.animation.AnimatorListenerAdapter, android.animation.Animator.AnimatorListener
-    public final void onAnimationEnd(Animator r3) {
-        int r4 = this.a;
-        View r0 = this.b;
-        switch(r4) {
-            case 0: goto L9;
-            default: goto L4;
-        };
-    L4:
-        d85.a.R(r0, 1.0f);
-        if (this.c == false) goto L12;
-        r0.setLayerType(0, null);
-        return;
-    L12:
-        return;
-    L9:
-        if (this.c == true) goto L13;
-        r0.setVisibility(4);
-        return;
+    public final void onAnimationEnd(Animator animator) {
+        int i = this.a;
+        View view = this.b;
+        switch (i) {
+            case 0:
+                if (!this.c) {
+                    view.setVisibility(4);
+                }
+                break;
+            default:
+                d85.a.R(view, 1.0f);
+                if (this.c) {
+                    view.setLayerType(0, null);
+                }
+                break;
+        }
     }
 
     @Override // android.animation.AnimatorListenerAdapter, android.animation.Animator.AnimatorListener
-    public final void onAnimationStart(Animator r2) {
-        int r3 = this.a;
-        View r0 = this.b;
-        switch(r3) {
-            case 0: goto L11;
-            default: goto L4;
-        };
-    L4:
-        WeakHashMap r4 = j65.a;
-        if (r0.hasOverlappingRendering() == true) goto L7;
-        return;
-    L7:
-        if (r0.getLayerType() != 0) goto L15;
-        this.c = true;
-        r0.setLayerType(2, null);
-        return;
-    L15:
-        return;
-    L11:
-        if (this.c == false) goto L16;
-        r0.setVisibility(0);
-        return;
+    public final void onAnimationStart(Animator animator) {
+        int i = this.a;
+        View view = this.b;
+        switch (i) {
+            case 0:
+                if (this.c) {
+                    view.setVisibility(0);
+                }
+                break;
+            default:
+                WeakHashMap weakHashMap = j65.a;
+                if (view.hasOverlappingRendering() && view.getLayerType() == 0) {
+                    this.c = true;
+                    view.setLayerType(2, null);
+                    break;
+                }
+                break;
+        }
     }
 
-    public p51(View r2, boolean r3) {
+    public p51(View view, boolean z) {
         this.a = 0;
-        this.c = r3;
-        this.b = r2;
+        this.c = z;
+        this.b = view;
     }
 }

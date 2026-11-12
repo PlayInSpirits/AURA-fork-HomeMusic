@@ -8,72 +8,61 @@ public final class kn1 extends p44 {
     public final Map H;
     public ow0 I;
 
-    public kn1(n9 r1, ww0 r2, sw0 r3, Map r4) {
-        super(r1, r2, r3);
-        this.H = r4;
+    public kn1(n9 n9Var, ww0 ww0Var, sw0 sw0Var, Map map) {
+        super(n9Var, ww0Var, sw0Var);
+        this.H = map;
     }
 
     @Override // defpackage.p44
-    public final tb1 m(tb1 r11) {
-        ow0 r0 = this.I;
-        if (r0 != null) goto L6;
-        r0 = r11.r;
-    L6:
-        if (r0 == null) goto L10;
-        ow0 r1 = (ow0) this.H.get(r0.p);
-        if (r1 == null) goto L10;
-        r0 = r1;
-    L10:
-        qv2 r2 = r11.l;
-        qv2 r3 = null;
-        if (r2 != null) goto L13;
-    L12:
-        r2 = r3;
-    L38:
-        if (r0 == r11.r) goto L40;
-    L41:
-        sb1 r12 = r11.a();
-        r12.q = r0;
-        r12.k = r2;
-        r11 = new tb1(r12);
-    L43:
-        return super.m(r11);
-    L40:
-        if (r2 == r11.l) goto L43;
-    L13:
-        pv2[] r4 = r2.a;
-        int r5 = r4.length;
-        int r6 = 0;
-        int r7 = 0;
-    L15:
-        if (r7 >= r5) goto L22;
-        pv2 r8 = r4[r7];
-        if ((r8 instanceof hq3) == false) goto L21;
-        if ("com.apple.streaming.transportStreamTimestamp".equals(((hq3) r8).b) == false) goto L21;
-    L23:
-        if (r7 == (-1)) goto L38;
-        if (r5 == 1) goto L12;
-        pv2[] r9 = new pv2[r5 - 1];
-    L29:
-        if (r6 >= r5) goto L36;
-        if (r6 == r7) goto L35;
-        if (r6 >= r7) goto L33;
-        int r10 = r6;
-    L34:
-        r9[r10] = r4[r6];
-        goto L35
-    L33:
-        r10 = r6 - 1;
-    L35:
-        r6 = r6 + 1;
-        goto L29
-    L36:
-        r3 = new qv2(r9);
-    L21:
-        r7 = r7 + 1;
-        goto L15
-    L22:
-        r7 = -1;
-        goto L23
+    public final tb1 m(tb1 tb1Var) {
+        ow0 ow0Var;
+        ow0 ow0Var2 = this.I;
+        if (ow0Var2 == null) {
+            ow0Var2 = tb1Var.r;
+        }
+        if (ow0Var2 != null && (ow0Var = (ow0) this.H.get(ow0Var2.p)) != null) {
+            ow0Var2 = ow0Var;
+        }
+        qv2 qv2Var = tb1Var.l;
+        qv2 qv2Var2 = null;
+        if (qv2Var == null) {
+            qv2Var = qv2Var2;
+        } else {
+            pv2[] pv2VarArr = qv2Var.a;
+            int length = pv2VarArr.length;
+            int i = 0;
+            int i2 = 0;
+            while (true) {
+                if (i2 >= length) {
+                    i2 = -1;
+                    break;
+                }
+                pv2 pv2Var = pv2VarArr[i2];
+                if ((pv2Var instanceof hq3) && "com.apple.streaming.transportStreamTimestamp".equals(((hq3) pv2Var).b)) {
+                    break;
+                }
+                i2++;
+            }
+            if (i2 != -1) {
+                if (length != 1) {
+                    pv2[] pv2VarArr2 = new pv2[length - 1];
+                    while (i < length) {
+                        if (i != i2) {
+                            pv2VarArr2[i < i2 ? i : i - 1] = pv2VarArr[i];
+                        }
+                        i++;
+                    }
+                    qv2Var2 = new qv2(pv2VarArr2);
+                }
+                qv2Var = qv2Var2;
+            }
+        }
+        if (ow0Var2 != tb1Var.r || qv2Var != tb1Var.l) {
+            sb1 sb1VarA = tb1Var.a();
+            sb1VarA.q = ow0Var2;
+            sb1VarA.k = qv2Var;
+            tb1Var = new tb1(sb1VarA);
+        }
+        return super.m(tb1Var);
     }
 }

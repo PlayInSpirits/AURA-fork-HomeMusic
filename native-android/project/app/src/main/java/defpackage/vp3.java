@@ -1,6 +1,7 @@
 package defpackage;
 
 import android.os.Trace;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,12 +27,12 @@ public final class vp3 implements p82 {
     public boolean q;
     public final /* synthetic */ ll r;
 
-    public vp3(ll r1, int r2, rm3 r3, if1 r4) {
-        this.r = r1;
-        this.a = r2;
-        this.b = r3;
-        this.c = r4;
-        int r5 = hx2.b;
+    public vp3(ll llVar, int i, rm3 rm3Var, if1 if1Var) {
+        this.r = llVar;
+        this.a = i;
+        this.b = rm3Var;
+        this.c = if1Var;
+        int i2 = hx2.b;
         this.p = System.nanoTime() - hx2.a;
     }
 
@@ -41,463 +42,1046 @@ public final class vp3 implements p82 {
     }
 
     public final void b() {
-        in4 r0 = this.f;
-        if (r0 == null) goto L5;
-        r0.cancel();
-    L5:
+        in4 in4Var = this.f;
+        if (in4Var != null) {
+            in4Var.cancel();
+        }
         this.f = null;
-        jn4 r1 = this.e;
-        if (r1 == null) goto L8;
-        r1.a();
-    L8:
+        jn4 jn4Var = this.e;
+        if (jn4Var != null) {
+            jn4Var.a();
+        }
         this.e = null;
         this.l = null;
     }
 
-    public final boolean c(yn4 r3) {
-        if (this.r.o == true) goto L7;
-        return false;
-    L7:
-        if (this.m == false) goto L14;
-        Trace.beginSection("compose:lazy:prefetch:execute:urgent");
-        boolean r2 = d(r3);     // Catch: Throwable -> L11
-        Trace.endSection();
-    L15:
-        si0.R("compose:lazy:prefetch:execute:item", -1);
-        return r2;
-    L11:
-        th = move-exception;
-        Trace.endSection();
-        throw th;
-    L14:
-        r2 = d(r3);
-        goto L15
+    public final boolean c(yn4 yn4Var) {
+        boolean zD;
+        if (!this.r.o) {
+            return false;
+        }
+        if (this.m) {
+            Trace.beginSection("compose:lazy:prefetch:execute:urgent");
+            try {
+                zD = d(yn4Var);
+                Trace.endSection();
+            } catch (Throwable th) {
+                Trace.endSection();
+                throw th;
+            }
+        } else {
+            zD = d(yn4Var);
+        }
+        si0.R("compose:lazy:prefetch:execute:item", -1L);
+        return zD;
     }
 
     @Override // defpackage.p82
     public final void cancel() {
-        if (this.h == true) goto L6;
+        if (this.h) {
+            return;
+        }
         this.h = true;
         b();
-        return;
     }
 
-    public final boolean d(yn4 r19) {
-        int r1 = this.a;
-        long r2 = r1;
-        si0.R("compose:lazy:prefetch:execute:item", r2);
-        nc3 r5 = (nc3) ((c82) this.r.p).b.invoke();
-        if (this.h == true) goto L173;
-        int r6 = r5.b();
-        if (r1 < 0) goto L173;
-        if (r1 >= r6) goto L173;
-        Object r3 = r5.c(r1);
-        Object r7 = this.j;
-        if (r7 != null) goto L10;
-    L13:
-        rm3 r8 = this.b;
-        zn r9 = (zn) r8.o;
-        if (r9 != null) goto L20;
-        w03 r10 = (w03) r8.n;
-        Object r11 = r10.g(null);
-        Object r12 = r11;
-        if (r11 != null) goto L19;
-        zn r13 = new zn();
-        r13.e = -1;
-        r10.l(null, r13);
-        r12 = r13;
-    L19:
-        r9 = (zn) r12;
-        r8.o = r9;
-    L20:
-        e();
-        long r14 = r19.a();
-        this.n = r14;
-        int r15 = hx2.b;
-        this.p = System.nanoTime() - hx2.a;
-        this.o = 0;
-        si0.R("compose:lazy:prefetch:available_time_nanos", r14);
-        if (e() == true) goto L35;
-        if (g(this.n, r9.a + r9.b) == false) goto L31;
-        Trace.beginSection("compose:lazy:prefetch:compose");
-        f(r3, r9);     // Catch: Throwable -> L27
-        Trace.endSection();
-    L27:
-        th = move-exception;
-        Trace.endSection();
-        throw th;
-    L31:
-        if (e() == true) goto L35;
-    L148:
-        return true;
-    L35:
-        if (this.f == null) goto L49;
-        if (g(this.n, r9.c) == false) goto L148;
-        Trace.beginSection("compose:lazy:prefetch:apply");
-        in4 r4 = this.f;     // Catch: Throwable -> L45
-        if (r4 == null) goto L44;
-        this.e = r4.apply();     // Catch: Throwable -> L45
-        this.f = null;     // Catch: Throwable -> L45
-        this.i = true;     // Catch: Throwable -> L45
-        Trace.endSection();
-        h();
-        r9.c = zn.a(this.o, r9.c);
-        goto L49
-    L44:
-        throw new IllegalArgumentException("Nothing to apply!");     // Catch: Throwable -> L45
-    L45:
-        th = move-exception;
-        Trace.endSection();
-        throw th;
-    L49:
-        if (this.k == false) goto L51;
-    L65:
-        up3 r16 = this.l;
-        if (r16 == null) goto L117;
-        boolean r17 = this.m;
-        List[] r18 = r16.b;
-        int r110 = r16.c;
-        List r111 = r16.a;
-        if (r110 >= r111.size()) goto L117;
-        if (r16.f.h == false) goto L73;
-        fz1.c("Should not execute nested prefetch on canceled request");
-    L73:
-        Trace.beginSection("compose:lazy:prefetch:update_nested_prefetch_count");
-        int r112 = r111.size();     // Catch: Throwable -> L114
-        int r113 = 0;
-    L75:
-        if (r113 >= r112) goto L78;
-        ((q82) r111.get(r113)).getClass();     // Catch: Throwable -> L114
-        r113 = r113 + 1;
-        goto L75
-    L78:
-        Trace.endSection();
-        Trace.beginSection("compose:lazy:prefetch:nested");
-    L183:
-        if (r16.c >= r111.size()) goto L110;
-        if (r18[r16.c] == null) goto L85;
-    L93:
-        List r20 = r18[r16.c];     // Catch: Throwable -> L111
-        r20.getClass();     // Catch: Throwable -> L111
-    L95:
-        if (r16.d >= r20.size()) goto L108;
-        vp3 r114 = (vp3) r20.get(r16.d);     // Catch: Throwable -> L111
-        if (r17 == false) goto L103;
-        if (r114 == null) goto L100;
-        vp3 r115 = r114;
-    L101:
-        if (r115 == null) goto L103;
-        r115.m = true;     // Catch: Throwable -> L111
-        goto L103
-    L100:
-        r115 = null;
-    L103:
-        r16.e = true;     // Catch: Throwable -> L111
-        if (r114.c(r19) == true) goto L105;
-        r16.d++;     // Catch: Throwable -> L111
-        goto L95
-    L105:
-        Trace.endSection();
-        return true;
-    L108:
-        r16.d = 0;     // Catch: Throwable -> L111
-        r16.c++;     // Catch: Throwable -> L111
-        goto L183
-    L85:
-        if (r19.a() <= r12) goto L86;
-        int r116 = r16.c;     // Catch: Throwable -> L111
-        q82 r117 = (q82) r111.get(r116);     // Catch: Throwable -> L111
-        uc3 r118 = r117.a;     // Catch: Throwable -> L111
-        if (r118 != null) goto L91;
-        List r119 = u01.n;     // Catch: Throwable -> L111
-    L92:
-        r18[r116] = r119;     // Catch: Throwable -> L111
-        goto L93
-    L91:
-        o82 r21 = new o82(r117);     // Catch: Throwable -> L111
-        r118.invoke(r21);     // Catch: Throwable -> L111
-        ArrayList r22 = r21.a;     // Catch: Throwable -> L111
-        r117.e = r22.size();     // Catch: Throwable -> L111
-        r119 = r22;
-        goto L92
-    L86:
-        Trace.endSection();
-        return true;
-    L110:
-        Trace.endSection();
-    L111:
-        th = move-exception;
-        Trace.endSection();
-        throw th;
-    L114:
-        th = move-exception;
-        Trace.endSection();
-        throw th;
-    L117:
-        up3 r23 = this.l;
-        if (r23 != null) goto L120;
-    L124:
-        nc0 r24 = this.d;
-        if (this.g == true) goto L149;
-        if (r24 == null) goto L149;
-        if (g(this.n, r9.d) == false) goto L148;
-        Trace.beginSection("compose:lazy:prefetch:measure");
-        long r25 = r24.a;     // Catch: Throwable -> L145
-        if (this.h == false) goto L134;
-        fz1.a("Callers should check whether the request is still valid before calling performMeasure()");     // Catch: Throwable -> L145
-    L134:
-        if (this.g == false) goto L136;
-        fz1.a("Request was already measured!");     // Catch: Throwable -> L145
-    L136:
-        this.g = true;     // Catch: Throwable -> L145
-        jn4 r26 = this.e;     // Catch: Throwable -> L145
-        if (r26 == null) goto L141;
-        int r27 = r26.c();     // Catch: Throwable -> L145
-        int r28 = 0;
-    L139:
-        if (r28 >= r27) goto L142;
-        r26.d(r28, r25);     // Catch: Throwable -> L145
-        r28 = r28 + 1;     // Catch: Throwable -> L145
-    L142:
-        Trace.endSection();
-        h();
-        r9.d = zn.a(this.o, r9.d);
-        if1 r29 = this.c;
-        if (r29 == null) goto L149;
-        r29.invoke(this);
-        goto L149
-    L141:
-        fz1.b("performComposition() must be called before performMeasure()");     // Catch: Throwable -> L145
-        er1.a();     // Catch: Throwable -> L145
-    L145:
-        th = move-exception;
-        Trace.endSection();
-        throw th;
-    L149:
-        up3 r30 = this.l;
-        if (this.g == true) goto L152;
-        return false;
-    L152:
-        if (this.k == false) goto L193;
-        if (r30 == null) goto L194;
-        List r0 = r30.a;
-        int r31 = r0.size();
-        int r32 = Integer.MAX_VALUE;
-        int r33 = 0;
-    L155:
-        if (r33 >= r31) goto L157;
-        r32 = Math.min(r32, ((q82) r0.get(r33)).d);
-        r33 = r33 + 1;
-        goto L155
-    L157:
-        if (r32 != Integer.MAX_VALUE) goto L159;
-        r32 = 0;
-    L159:
-        int r34 = r9.e;
-        if (r34 != (-1)) goto L162;
-        int r35 = r32;
-    L163:
-        r9.e = r35;
-        int r36 = r0.size();
-        int r37 = Integer.MAX_VALUE;
-        int r38 = 0;
-    L164:
-        if (r38 >= r36) goto L166;
-        r37 = Math.min(r37, ((q82) r0.get(r38)).e);
-        r38 = r38 + 1;
-        goto L164
-    L166:
-        if (r37 != Integer.MAX_VALUE) goto L168;
-        r37 = 0;
-    L168:
-        if (r37 >= r32) goto L195;
-        r9.d = 0;
-        return false;
-    L195:
-        return false;
-    L162:
-        r35 = ((r34 * 3) + r32) / 4;
-        goto L163
-    L194:
-        return false;
-    L193:
-        return false;
-    L120:
-        if (r23.e != true) goto L124;
-        h();
-        si0.R("compose:lazy:prefetch:execute:item", r2);
-        up3 r39 = this.l;
-        if (r39 == null) goto L124;
-        r39.e = false;
-        goto L124
-    L51:
-        if (this.n <= r12) goto L148;
-        Trace.beginSection("compose:lazy:prefetch:resolve-nested");
-        jn4 r40 = this.e;     // Catch: Throwable -> L62
-        if (r40 == null) goto L59;
-        jx3 r41 = new jx3();     // Catch: Throwable -> L62
-        r40.b(new ea(2, r41));     // Catch: Throwable -> L62
-        List r42 = (List) r41.n;     // Catch: Throwable -> L62
-        if (r42 == null) goto L58;
-        up3 r43 = new up3(this, r42);     // Catch: Throwable -> L62
-    L60:
-        this.l = r43;     // Catch: Throwable -> L62
-        this.k = true;     // Catch: Throwable -> L62
-        Trace.endSection();
-    L58:
-        r43 = null;
-        goto L60
-    L59:
-        fz1.b("Should precompose before resolving nested prefetch states");     // Catch: Throwable -> L62
-        er1.a();     // Catch: Throwable -> L62
-    L62:
-        th = move-exception;
-        Trace.endSection();
-        throw th;
-    L10:
-        if (r3.equals(r7) == true) goto L13;
-        b();
-        return false;
-    L173:
+    /* JADX WARN: Code duplicated, block: B:100:0x01c5  */
+    /* JADX WARN: Code duplicated, block: B:102:0x01c8 A[Catch: all -> 0x01ed, TryCatch #5 {all -> 0x01ed, blocks: (B:79:0x016c, B:81:0x0174, B:83:0x017a, B:88:0x0186, B:90:0x0192, B:92:0x01a6, B:91:0x0195, B:93:0x01a8, B:94:0x01af, B:96:0x01b7, B:102:0x01c8, B:103:0x01ca, B:107:0x01d8, B:108:0x01de), top: B:183:0x016c }] */
+    /* JADX WARN: Code duplicated, block: B:107:0x01d8 A[Catch: all -> 0x01ed, LOOP:2: B:94:0x01af->B:107:0x01d8, LOOP_END, TRY_ENTER, TryCatch #5 {all -> 0x01ed, blocks: (B:79:0x016c, B:81:0x0174, B:83:0x017a, B:88:0x0186, B:90:0x0192, B:92:0x01a6, B:91:0x0195, B:93:0x01a8, B:94:0x01af, B:96:0x01b7, B:102:0x01c8, B:103:0x01ca, B:107:0x01d8, B:108:0x01de), top: B:183:0x016c }] */
+    /* JADX WARN: Code duplicated, block: B:119:0x01fb  */
+    /* JADX WARN: Code duplicated, block: B:123:0x0209  */
+    /* JADX WARN: Code duplicated, block: B:126:0x0212 A[ADDED_TO_REGION] */
+    /* JADX WARN: Code duplicated, block: B:129:0x021e  */
+    /* JADX WARN: Code duplicated, block: B:132:0x0229 A[Catch: all -> 0x026a, TryCatch #3 {all -> 0x026a, blocks: (B:130:0x0223, B:132:0x0229, B:133:0x022e, B:135:0x0232, B:136:0x0237, B:138:0x023d, B:140:0x0244, B:141:0x024a), top: B:180:0x0223 }] */
+    /* JADX WARN: Code duplicated, block: B:135:0x0232 A[Catch: all -> 0x026a, TryCatch #3 {all -> 0x026a, blocks: (B:130:0x0223, B:132:0x0229, B:133:0x022e, B:135:0x0232, B:136:0x0237, B:138:0x023d, B:140:0x0244, B:141:0x024a), top: B:180:0x0223 }] */
+    /* JADX WARN: Code duplicated, block: B:138:0x023d A[Catch: all -> 0x026a, TryCatch #3 {all -> 0x026a, blocks: (B:130:0x0223, B:132:0x0229, B:133:0x022e, B:135:0x0232, B:136:0x0237, B:138:0x023d, B:140:0x0244, B:141:0x024a), top: B:180:0x0223 }] */
+    /* JADX WARN: Code duplicated, block: B:140:0x0244 A[Catch: all -> 0x026a, LOOP:3: B:139:0x0242->B:140:0x0244, LOOP_END, TryCatch #3 {all -> 0x026a, blocks: (B:130:0x0223, B:132:0x0229, B:133:0x022e, B:135:0x0232, B:136:0x0237, B:138:0x023d, B:140:0x0244, B:141:0x024a), top: B:180:0x0223 }] */
+    /* JADX WARN: Code duplicated, block: B:141:0x024a A[Catch: all -> 0x026a, TRY_LEAVE, TryCatch #3 {all -> 0x026a, blocks: (B:130:0x0223, B:132:0x0229, B:133:0x022e, B:135:0x0232, B:136:0x0237, B:138:0x023d, B:140:0x0244, B:141:0x024a), top: B:180:0x0223 }] */
+    /* JADX WARN: Code duplicated, block: B:144:0x0266  */
+    /* JADX WARN: Code duplicated, block: B:151:0x0276  */
+    /* JADX WARN: Code duplicated, block: B:171:0x02cb A[ADDED_TO_REGION, ORIG_RETURN, RETURN] */
+    /* JADX WARN: Code duplicated, block: B:187:0x0182 A[SYNTHETIC] */
+    /* JADX WARN: Code duplicated, block: B:188:0x01d4 A[SYNTHETIC] */
+    /* JADX WARN: Code duplicated, block: B:50:0x00ec  */
+    /* JADX WARN: Code duplicated, block: B:52:0x00f2  */
+    /* JADX WARN: Code duplicated, block: B:55:0x00fb A[Catch: all -> 0x0128, TryCatch #2 {all -> 0x0128, blocks: (B:53:0x00f7, B:55:0x00fb, B:57:0x010f, B:60:0x0120, B:59:0x0117), top: B:178:0x00f7 }] */
+    /* JADX WARN: Code duplicated, block: B:57:0x010f A[Catch: all -> 0x0128, TryCatch #2 {all -> 0x0128, blocks: (B:53:0x00f7, B:55:0x00fb, B:57:0x010f, B:60:0x0120, B:59:0x0117), top: B:178:0x00f7 }] */
+    /* JADX WARN: Code duplicated, block: B:59:0x0117 A[Catch: all -> 0x0128, TryCatch #2 {all -> 0x0128, blocks: (B:53:0x00f7, B:55:0x00fb, B:57:0x010f, B:60:0x0120, B:59:0x0117), top: B:178:0x00f7 }] */
+    /* JADX WARN: Code duplicated, block: B:65:0x012d  */
+    /* JADX WARN: Code duplicated, block: B:67:0x0131  */
+    /* JADX WARN: Code duplicated, block: B:70:0x0141  */
+    /* JADX WARN: Code duplicated, block: B:72:0x0147  */
+    /* JADX WARN: Code duplicated, block: B:76:0x0158 A[Catch: all -> 0x01f2, TRY_LEAVE, TryCatch #0 {all -> 0x01f2, blocks: (B:74:0x0151, B:76:0x0158), top: B:175:0x0151 }] */
+    /* JADX WARN: Code duplicated, block: B:81:0x0174 A[Catch: all -> 0x01ed, TryCatch #5 {all -> 0x01ed, blocks: (B:79:0x016c, B:81:0x0174, B:83:0x017a, B:88:0x0186, B:90:0x0192, B:92:0x01a6, B:91:0x0195, B:93:0x01a8, B:94:0x01af, B:96:0x01b7, B:102:0x01c8, B:103:0x01ca, B:107:0x01d8, B:108:0x01de), top: B:183:0x016c }] */
+    /* JADX WARN: Code duplicated, block: B:83:0x017a A[Catch: all -> 0x01ed, TRY_LEAVE, TryCatch #5 {all -> 0x01ed, blocks: (B:79:0x016c, B:81:0x0174, B:83:0x017a, B:88:0x0186, B:90:0x0192, B:92:0x01a6, B:91:0x0195, B:93:0x01a8, B:94:0x01af, B:96:0x01b7, B:102:0x01c8, B:103:0x01ca, B:107:0x01d8, B:108:0x01de), top: B:183:0x016c }] */
+    /* JADX WARN: Code duplicated, block: B:88:0x0186 A[Catch: all -> 0x01ed, TRY_ENTER, TryCatch #5 {all -> 0x01ed, blocks: (B:79:0x016c, B:81:0x0174, B:83:0x017a, B:88:0x0186, B:90:0x0192, B:92:0x01a6, B:91:0x0195, B:93:0x01a8, B:94:0x01af, B:96:0x01b7, B:102:0x01c8, B:103:0x01ca, B:107:0x01d8, B:108:0x01de), top: B:183:0x016c }] */
+    /* JADX WARN: Code duplicated, block: B:90:0x0192 A[Catch: all -> 0x01ed, TryCatch #5 {all -> 0x01ed, blocks: (B:79:0x016c, B:81:0x0174, B:83:0x017a, B:88:0x0186, B:90:0x0192, B:92:0x01a6, B:91:0x0195, B:93:0x01a8, B:94:0x01af, B:96:0x01b7, B:102:0x01c8, B:103:0x01ca, B:107:0x01d8, B:108:0x01de), top: B:183:0x016c }] */
+    /* JADX WARN: Code duplicated, block: B:91:0x0195 A[Catch: all -> 0x01ed, TryCatch #5 {all -> 0x01ed, blocks: (B:79:0x016c, B:81:0x0174, B:83:0x017a, B:88:0x0186, B:90:0x0192, B:92:0x01a6, B:91:0x0195, B:93:0x01a8, B:94:0x01af, B:96:0x01b7, B:102:0x01c8, B:103:0x01ca, B:107:0x01d8, B:108:0x01de), top: B:183:0x016c }] */
+    /* JADX WARN: Code duplicated, block: B:96:0x01b7 A[Catch: all -> 0x01ed, TryCatch #5 {all -> 0x01ed, blocks: (B:79:0x016c, B:81:0x0174, B:83:0x017a, B:88:0x0186, B:90:0x0192, B:92:0x01a6, B:91:0x0195, B:93:0x01a8, B:94:0x01af, B:96:0x01b7, B:102:0x01c8, B:103:0x01ca, B:107:0x01d8, B:108:0x01de), top: B:183:0x016c }] */
+    /* JADX WARN: Code duplicated, block: B:98:0x01c1 A[DONT_INVERT] */
+    /* JADX WARN: Code duplicated, block: B:99:0x01c3  */
+    public final boolean d(yn4 yn4Var) {
+        up3 up3Var;
+        up3 up3Var2;
+        nc0 nc0Var;
+        long j;
+        jn4 jn4Var;
+        if1 if1Var;
+        int iC;
+        int i;
+        up3 up3Var3;
+        boolean z;
+        List[] listArr;
+        int i2;
+        List list;
+        int size;
+        int i3;
+        List list2;
+        vp3 vp3Var;
+        vp3 vp3Var2;
+        q82 q82Var;
+        uc3 uc3Var;
+        List list3;
+        jn4 jn4Var2;
+        Object obj;
+        int i4 = this.a;
+        long j2 = i4;
+        si0.R("compose:lazy:prefetch:execute:item", j2);
+        nc3 nc3Var = (nc3) ((c82) this.r.p).b.invoke();
+        if (!this.h) {
+            int iB = nc3Var.b();
+            if (i4 >= 0 && i4 < iB) {
+                Object objC = nc3Var.c(i4);
+                Object obj2 = this.j;
+                if (obj2 != null && !objC.equals(obj2)) {
+                    b();
+                    return false;
+                }
+                rm3 rm3Var = this.b;
+                zn znVar = (zn) rm3Var.o;
+                if (znVar == null) {
+                    w03 w03Var = (w03) rm3Var.n;
+                    Object objG = w03Var.g(null);
+                    if (objG == null) {
+                        obj = objG;
+                        zn znVar2 = new zn();
+                        znVar2.e = -1;
+                        w03Var.l(null, znVar2);
+                        obj = znVar2;
+                    }
+                    obj = objG;
+                    znVar = (zn) obj;
+                    rm3Var.o = znVar;
+                }
+                e();
+                long jA = yn4Var.a();
+                this.n = jA;
+                int i5 = hx2.b;
+                this.p = System.nanoTime() - hx2.a;
+                this.o = 0L;
+                si0.R("compose:lazy:prefetch:available_time_nanos", jA);
+                if (!e()) {
+                    if (g(this.n, znVar.a + znVar.b)) {
+                        Trace.beginSection("compose:lazy:prefetch:compose");
+                        try {
+                            f(objC, znVar);
+                            Trace.endSection();
+                        } catch (Throwable th) {
+                            Trace.endSection();
+                            throw th;
+                        }
+                    }
+                    if (e()) {
+                    }
+                    return true;
+                }
+                if (this.f == null) {
+                    if (this.k) {
+                        up3Var = this.l;
+                        if (up3Var != null) {
+                            z = this.m;
+                            listArr = up3Var.b;
+                            i2 = up3Var.c;
+                            list = up3Var.a;
+                            if (i2 < list.size()) {
+                                if (up3Var.f.h) {
+                                    fz1.c("Should not execute nested prefetch on canceled request");
+                                }
+                                Trace.beginSection("compose:lazy:prefetch:update_nested_prefetch_count");
+                                try {
+                                    size = list.size();
+                                    for (i3 = 0; i3 < size; i3++) {
+                                        ((q82) list.get(i3)).getClass();
+                                    }
+                                    Trace.endSection();
+                                    Trace.beginSection("compose:lazy:prefetch:nested");
+                                    while (up3Var.c < list.size()) {
+                                        try {
+                                            if (listArr[up3Var.c] == null) {
+                                                if (yn4Var.a() <= r12) {
+                                                    Trace.endSection();
+                                                    return true;
+                                                }
+                                                int i6 = up3Var.c;
+                                                q82Var = (q82) list.get(i6);
+                                                uc3Var = q82Var.a;
+                                                if (uc3Var == null) {
+                                                    list3 = u01.n;
+                                                } else {
+                                                    o82 o82Var = new o82(q82Var);
+                                                    uc3Var.invoke(o82Var);
+                                                    ArrayList arrayList = o82Var.a;
+                                                    q82Var.e = arrayList.size();
+                                                    list3 = arrayList;
+                                                }
+                                                listArr[i6] = list3;
+                                            }
+                                            list2 = listArr[up3Var.c];
+                                            list2.getClass();
+                                            while (up3Var.d < list2.size()) {
+                                                vp3Var = (vp3) list2.get(up3Var.d);
+                                                if (z) {
+                                                    if (vp3Var != null) {
+                                                        vp3Var2 = vp3Var;
+                                                    } else {
+                                                        vp3Var2 = null;
+                                                    }
+                                                    if (vp3Var2 != null) {
+                                                        vp3Var2.m = true;
+                                                    }
+                                                }
+                                                up3Var.e = true;
+                                                if (vp3Var.c(yn4Var)) {
+                                                    Trace.endSection();
+                                                    return true;
+                                                }
+                                                up3Var.d++;
+                                            }
+                                            up3Var.d = 0;
+                                            up3Var.c++;
+                                        } catch (Throwable th2) {
+                                            Trace.endSection();
+                                            throw th2;
+                                        }
+                                    }
+                                    Trace.endSection();
+                                } catch (Throwable th3) {
+                                    Trace.endSection();
+                                    throw th3;
+                                }
+                            }
+                        }
+                        up3Var2 = this.l;
+                        if (up3Var2 != null && up3Var2.e) {
+                            h();
+                            si0.R("compose:lazy:prefetch:execute:item", j2);
+                            up3Var3 = this.l;
+                            if (up3Var3 != null) {
+                                up3Var3.e = false;
+                            }
+                        }
+                        nc0Var = this.d;
+                        if (!this.g && nc0Var != null) {
+                            if (g(this.n, znVar.d)) {
+                                Trace.beginSection("compose:lazy:prefetch:measure");
+                                try {
+                                    j = nc0Var.a;
+                                    if (this.h) {
+                                        fz1.a("Callers should check whether the request is still valid before calling performMeasure()");
+                                    }
+                                    if (this.g) {
+                                        fz1.a("Request was already measured!");
+                                    }
+                                    this.g = true;
+                                    jn4Var = this.e;
+                                    if (jn4Var != null) {
+                                        iC = jn4Var.c();
+                                        for (i = 0; i < iC; i++) {
+                                            jn4Var.d(i, j);
+                                        }
+                                    } else {
+                                        fz1.b("performComposition() must be called before performMeasure()");
+                                        er1.a();
+                                    }
+                                    Trace.endSection();
+                                    h();
+                                    znVar.d = zn.a(this.o, znVar.d);
+                                    if1Var = this.c;
+                                    if (if1Var != null) {
+                                        if1Var.invoke(this);
+                                    }
+                                } catch (Throwable th4) {
+                                    Trace.endSection();
+                                    throw th4;
+                                }
+                            }
+                        }
+                        up3 up3Var4 = this.l;
+                        if (this.g || !this.k || up3Var4 == null) {
+                            return false;
+                        }
+                        List list4 = up3Var4.a;
+                        int size2 = list4.size();
+                        int iMin = Integer.MAX_VALUE;
+                        for (int i7 = 0; i7 < size2; i7++) {
+                            iMin = Math.min(iMin, ((q82) list4.get(i7)).d);
+                        }
+                        if (iMin == Integer.MAX_VALUE) {
+                            iMin = 0;
+                        }
+                        int i8 = znVar.e;
+                        znVar.e = i8 == -1 ? iMin : ((i8 * 3) + iMin) / 4;
+                        int size3 = list4.size();
+                        int iMin2 = Integer.MAX_VALUE;
+                        for (int i9 = 0; i9 < size3; i9++) {
+                            iMin2 = Math.min(iMin2, ((q82) list4.get(i9)).e);
+                        }
+                        if (iMin2 == Integer.MAX_VALUE) {
+                            iMin2 = 0;
+                        }
+                        if (iMin2 >= iMin) {
+                            return false;
+                        }
+                        znVar.d = 0L;
+                        return false;
+                    }
+                    if (this.n > r12) {
+                        Trace.beginSection("compose:lazy:prefetch:resolve-nested");
+                        try {
+                            jn4Var2 = this.e;
+                            if (jn4Var2 != null) {
+                                jx3 jx3Var = new jx3();
+                                jn4Var2.b(new ea(2, jx3Var));
+                                List list5 = (List) jx3Var.n;
+                                up3 up3Var5 = list5 != null ? new up3(this, list5) : null;
+                                this.l = up3Var5;
+                                this.k = true;
+                                Trace.endSection();
+                                up3Var = this.l;
+                                if (up3Var != null) {
+                                    z = this.m;
+                                    listArr = up3Var.b;
+                                    i2 = up3Var.c;
+                                    list = up3Var.a;
+                                    if (i2 < list.size()) {
+                                        if (up3Var.f.h) {
+                                            fz1.c("Should not execute nested prefetch on canceled request");
+                                        }
+                                        Trace.beginSection("compose:lazy:prefetch:update_nested_prefetch_count");
+                                        size = list.size();
+                                        while (i3 < size) {
+                                            ((q82) list.get(i3)).getClass();
+                                        }
+                                        Trace.endSection();
+                                        Trace.beginSection("compose:lazy:prefetch:nested");
+                                        while (up3Var.c < list.size()) {
+                                            if (listArr[up3Var.c] == null) {
+                                                if (yn4Var.a() <= r12) {
+                                                    Trace.endSection();
+                                                    return true;
+                                                }
+                                                int i10 = up3Var.c;
+                                                q82Var = (q82) list.get(i10);
+                                                uc3Var = q82Var.a;
+                                                if (uc3Var == null) {
+                                                    list3 = u01.n;
+                                                } else {
+                                                    o82 o82Var2 = new o82(q82Var);
+                                                    uc3Var.invoke(o82Var2);
+                                                    ArrayList arrayList2 = o82Var2.a;
+                                                    q82Var.e = arrayList2.size();
+                                                    list3 = arrayList2;
+                                                }
+                                                listArr[i10] = list3;
+                                            }
+                                            list2 = listArr[up3Var.c];
+                                            list2.getClass();
+                                            while (up3Var.d < list2.size()) {
+                                                vp3Var = (vp3) list2.get(up3Var.d);
+                                                if (z) {
+                                                    if (vp3Var != null) {
+                                                        vp3Var2 = vp3Var;
+                                                    } else {
+                                                        vp3Var2 = null;
+                                                    }
+                                                    if (vp3Var2 != null) {
+                                                        vp3Var2.m = true;
+                                                    }
+                                                }
+                                                up3Var.e = true;
+                                                if (vp3Var.c(yn4Var)) {
+                                                    Trace.endSection();
+                                                    return true;
+                                                }
+                                                up3Var.d++;
+                                            }
+                                            up3Var.d = 0;
+                                            up3Var.c++;
+                                        }
+                                        Trace.endSection();
+                                    }
+                                }
+                                up3Var2 = this.l;
+                                if (up3Var2 != null) {
+                                    h();
+                                    si0.R("compose:lazy:prefetch:execute:item", j2);
+                                    up3Var3 = this.l;
+                                    if (up3Var3 != null) {
+                                        up3Var3.e = false;
+                                    }
+                                }
+                                nc0Var = this.d;
+                                if (!this.g) {
+                                    if (g(this.n, znVar.d)) {
+                                        Trace.beginSection("compose:lazy:prefetch:measure");
+                                        j = nc0Var.a;
+                                        if (this.h) {
+                                            fz1.a("Callers should check whether the request is still valid before calling performMeasure()");
+                                        }
+                                        if (this.g) {
+                                            fz1.a("Request was already measured!");
+                                        }
+                                        this.g = true;
+                                        jn4Var = this.e;
+                                        if (jn4Var != null) {
+                                            iC = jn4Var.c();
+                                            while (i < iC) {
+                                                jn4Var.d(i, j);
+                                            }
+                                        } else {
+                                            fz1.b("performComposition() must be called before performMeasure()");
+                                            er1.a();
+                                        }
+                                        Trace.endSection();
+                                        h();
+                                        znVar.d = zn.a(this.o, znVar.d);
+                                        if1Var = this.c;
+                                        if (if1Var != null) {
+                                            if1Var.invoke(this);
+                                        }
+                                    }
+                                }
+                                up3 up3Var6 = this.l;
+                                if (this.g) {
+                                    return false;
+                                }
+                                return false;
+                            }
+                            fz1.b("Should precompose before resolving nested prefetch states");
+                            er1.a();
+                            this.l = up3Var5;
+                            this.k = true;
+                            Trace.endSection();
+                            up3Var = this.l;
+                            if (up3Var != null) {
+                                z = this.m;
+                                listArr = up3Var.b;
+                                i2 = up3Var.c;
+                                list = up3Var.a;
+                                if (i2 < list.size()) {
+                                    if (up3Var.f.h) {
+                                        fz1.c("Should not execute nested prefetch on canceled request");
+                                    }
+                                    Trace.beginSection("compose:lazy:prefetch:update_nested_prefetch_count");
+                                    size = list.size();
+                                    while (i3 < size) {
+                                        ((q82) list.get(i3)).getClass();
+                                    }
+                                    Trace.endSection();
+                                    Trace.beginSection("compose:lazy:prefetch:nested");
+                                    while (up3Var.c < list.size()) {
+                                        if (listArr[up3Var.c] == null) {
+                                            if (yn4Var.a() <= r12) {
+                                                Trace.endSection();
+                                                return true;
+                                            }
+                                            int i11 = up3Var.c;
+                                            q82Var = (q82) list.get(i11);
+                                            uc3Var = q82Var.a;
+                                            if (uc3Var == null) {
+                                                list3 = u01.n;
+                                            } else {
+                                                o82 o82Var3 = new o82(q82Var);
+                                                uc3Var.invoke(o82Var3);
+                                                ArrayList arrayList3 = o82Var3.a;
+                                                q82Var.e = arrayList3.size();
+                                                list3 = arrayList3;
+                                            }
+                                            listArr[i11] = list3;
+                                        }
+                                        list2 = listArr[up3Var.c];
+                                        list2.getClass();
+                                        while (up3Var.d < list2.size()) {
+                                            vp3Var = (vp3) list2.get(up3Var.d);
+                                            if (z) {
+                                                if (vp3Var != null) {
+                                                    vp3Var2 = vp3Var;
+                                                } else {
+                                                    vp3Var2 = null;
+                                                }
+                                                if (vp3Var2 != null) {
+                                                    vp3Var2.m = true;
+                                                }
+                                            }
+                                            up3Var.e = true;
+                                            if (vp3Var.c(yn4Var)) {
+                                                Trace.endSection();
+                                                return true;
+                                            }
+                                            up3Var.d++;
+                                        }
+                                        up3Var.d = 0;
+                                        up3Var.c++;
+                                    }
+                                    Trace.endSection();
+                                }
+                            }
+                            up3Var2 = this.l;
+                            if (up3Var2 != null) {
+                                h();
+                                si0.R("compose:lazy:prefetch:execute:item", j2);
+                                up3Var3 = this.l;
+                                if (up3Var3 != null) {
+                                    up3Var3.e = false;
+                                }
+                            }
+                            nc0Var = this.d;
+                            if (!this.g) {
+                                if (g(this.n, znVar.d)) {
+                                    Trace.beginSection("compose:lazy:prefetch:measure");
+                                    j = nc0Var.a;
+                                    if (this.h) {
+                                        fz1.a("Callers should check whether the request is still valid before calling performMeasure()");
+                                    }
+                                    if (this.g) {
+                                        fz1.a("Request was already measured!");
+                                    }
+                                    this.g = true;
+                                    jn4Var = this.e;
+                                    if (jn4Var != null) {
+                                        iC = jn4Var.c();
+                                        while (i < iC) {
+                                            jn4Var.d(i, j);
+                                        }
+                                    } else {
+                                        fz1.b("performComposition() must be called before performMeasure()");
+                                        er1.a();
+                                    }
+                                    Trace.endSection();
+                                    h();
+                                    znVar.d = zn.a(this.o, znVar.d);
+                                    if1Var = this.c;
+                                    if (if1Var != null) {
+                                        if1Var.invoke(this);
+                                    }
+                                }
+                            }
+                            up3 up3Var7 = this.l;
+                            if (this.g) {
+                                return false;
+                            }
+                            return false;
+                        } catch (Throwable th5) {
+                            Trace.endSection();
+                            throw th5;
+                        }
+                    }
+                } else if (g(this.n, znVar.c)) {
+                    Trace.beginSection("compose:lazy:prefetch:apply");
+                    try {
+                        in4 in4Var = this.f;
+                        if (in4Var == null) {
+                            throw new IllegalArgumentException("Nothing to apply!");
+                        }
+                        this.e = in4Var.apply();
+                        this.f = null;
+                        this.i = true;
+                        Trace.endSection();
+                        h();
+                        znVar.c = zn.a(this.o, znVar.c);
+                        if (this.k) {
+                            up3Var = this.l;
+                            if (up3Var != null) {
+                                z = this.m;
+                                listArr = up3Var.b;
+                                i2 = up3Var.c;
+                                list = up3Var.a;
+                                if (i2 < list.size()) {
+                                    if (up3Var.f.h) {
+                                        fz1.c("Should not execute nested prefetch on canceled request");
+                                    }
+                                    Trace.beginSection("compose:lazy:prefetch:update_nested_prefetch_count");
+                                    size = list.size();
+                                    while (i3 < size) {
+                                        ((q82) list.get(i3)).getClass();
+                                    }
+                                    Trace.endSection();
+                                    Trace.beginSection("compose:lazy:prefetch:nested");
+                                    while (up3Var.c < list.size()) {
+                                        if (listArr[up3Var.c] == null) {
+                                            if (yn4Var.a() <= r12) {
+                                                Trace.endSection();
+                                                return true;
+                                            }
+                                            int i12 = up3Var.c;
+                                            q82Var = (q82) list.get(i12);
+                                            uc3Var = q82Var.a;
+                                            if (uc3Var == null) {
+                                                list3 = u01.n;
+                                            } else {
+                                                o82 o82Var4 = new o82(q82Var);
+                                                uc3Var.invoke(o82Var4);
+                                                ArrayList arrayList4 = o82Var4.a;
+                                                q82Var.e = arrayList4.size();
+                                                list3 = arrayList4;
+                                            }
+                                            listArr[i12] = list3;
+                                        }
+                                        list2 = listArr[up3Var.c];
+                                        list2.getClass();
+                                        while (up3Var.d < list2.size()) {
+                                            vp3Var = (vp3) list2.get(up3Var.d);
+                                            if (z) {
+                                                if (vp3Var != null) {
+                                                    vp3Var2 = vp3Var;
+                                                } else {
+                                                    vp3Var2 = null;
+                                                }
+                                                if (vp3Var2 != null) {
+                                                    vp3Var2.m = true;
+                                                }
+                                            }
+                                            up3Var.e = true;
+                                            if (vp3Var.c(yn4Var)) {
+                                                Trace.endSection();
+                                                return true;
+                                            }
+                                            up3Var.d++;
+                                        }
+                                        up3Var.d = 0;
+                                        up3Var.c++;
+                                    }
+                                    Trace.endSection();
+                                }
+                            }
+                            up3Var2 = this.l;
+                            if (up3Var2 != null) {
+                                h();
+                                si0.R("compose:lazy:prefetch:execute:item", j2);
+                                up3Var3 = this.l;
+                                if (up3Var3 != null) {
+                                    up3Var3.e = false;
+                                }
+                            }
+                            nc0Var = this.d;
+                            if (!this.g) {
+                                if (g(this.n, znVar.d)) {
+                                    Trace.beginSection("compose:lazy:prefetch:measure");
+                                    j = nc0Var.a;
+                                    if (this.h) {
+                                        fz1.a("Callers should check whether the request is still valid before calling performMeasure()");
+                                    }
+                                    if (this.g) {
+                                        fz1.a("Request was already measured!");
+                                    }
+                                    this.g = true;
+                                    jn4Var = this.e;
+                                    if (jn4Var != null) {
+                                        iC = jn4Var.c();
+                                        while (i < iC) {
+                                            jn4Var.d(i, j);
+                                        }
+                                    } else {
+                                        fz1.b("performComposition() must be called before performMeasure()");
+                                        er1.a();
+                                    }
+                                    Trace.endSection();
+                                    h();
+                                    znVar.d = zn.a(this.o, znVar.d);
+                                    if1Var = this.c;
+                                    if (if1Var != null) {
+                                        if1Var.invoke(this);
+                                    }
+                                }
+                            }
+                            up3 up3Var8 = this.l;
+                            if (this.g) {
+                                return false;
+                            }
+                            return false;
+                        }
+                        if (this.n > r12) {
+                            Trace.beginSection("compose:lazy:prefetch:resolve-nested");
+                            jn4Var2 = this.e;
+                            if (jn4Var2 != null) {
+                                jx3 jx3Var2 = new jx3();
+                                jn4Var2.b(new ea(2, jx3Var2));
+                                List list6 = (List) jx3Var2.n;
+                                if (list6 != null) {
+                                }
+                                this.l = up3Var5;
+                                this.k = true;
+                                Trace.endSection();
+                                up3Var = this.l;
+                                if (up3Var != null) {
+                                    z = this.m;
+                                    listArr = up3Var.b;
+                                    i2 = up3Var.c;
+                                    list = up3Var.a;
+                                    if (i2 < list.size()) {
+                                        if (up3Var.f.h) {
+                                            fz1.c("Should not execute nested prefetch on canceled request");
+                                        }
+                                        Trace.beginSection("compose:lazy:prefetch:update_nested_prefetch_count");
+                                        size = list.size();
+                                        while (i3 < size) {
+                                            ((q82) list.get(i3)).getClass();
+                                        }
+                                        Trace.endSection();
+                                        Trace.beginSection("compose:lazy:prefetch:nested");
+                                        while (up3Var.c < list.size()) {
+                                            if (listArr[up3Var.c] == null) {
+                                                if (yn4Var.a() <= r12) {
+                                                    Trace.endSection();
+                                                    return true;
+                                                }
+                                                int i13 = up3Var.c;
+                                                q82Var = (q82) list.get(i13);
+                                                uc3Var = q82Var.a;
+                                                if (uc3Var == null) {
+                                                    list3 = u01.n;
+                                                } else {
+                                                    o82 o82Var5 = new o82(q82Var);
+                                                    uc3Var.invoke(o82Var5);
+                                                    ArrayList arrayList5 = o82Var5.a;
+                                                    q82Var.e = arrayList5.size();
+                                                    list3 = arrayList5;
+                                                }
+                                                listArr[i13] = list3;
+                                            }
+                                            list2 = listArr[up3Var.c];
+                                            list2.getClass();
+                                            while (up3Var.d < list2.size()) {
+                                                vp3Var = (vp3) list2.get(up3Var.d);
+                                                if (z) {
+                                                    if (vp3Var != null) {
+                                                        vp3Var2 = vp3Var;
+                                                    } else {
+                                                        vp3Var2 = null;
+                                                    }
+                                                    if (vp3Var2 != null) {
+                                                        vp3Var2.m = true;
+                                                    }
+                                                }
+                                                up3Var.e = true;
+                                                if (vp3Var.c(yn4Var)) {
+                                                    Trace.endSection();
+                                                    return true;
+                                                }
+                                                up3Var.d++;
+                                            }
+                                            up3Var.d = 0;
+                                            up3Var.c++;
+                                        }
+                                        Trace.endSection();
+                                    }
+                                }
+                                up3Var2 = this.l;
+                                if (up3Var2 != null) {
+                                    h();
+                                    si0.R("compose:lazy:prefetch:execute:item", j2);
+                                    up3Var3 = this.l;
+                                    if (up3Var3 != null) {
+                                        up3Var3.e = false;
+                                    }
+                                }
+                                nc0Var = this.d;
+                                if (!this.g) {
+                                    if (g(this.n, znVar.d)) {
+                                        Trace.beginSection("compose:lazy:prefetch:measure");
+                                        j = nc0Var.a;
+                                        if (this.h) {
+                                            fz1.a("Callers should check whether the request is still valid before calling performMeasure()");
+                                        }
+                                        if (this.g) {
+                                            fz1.a("Request was already measured!");
+                                        }
+                                        this.g = true;
+                                        jn4Var = this.e;
+                                        if (jn4Var != null) {
+                                            iC = jn4Var.c();
+                                            while (i < iC) {
+                                                jn4Var.d(i, j);
+                                            }
+                                        } else {
+                                            fz1.b("performComposition() must be called before performMeasure()");
+                                            er1.a();
+                                        }
+                                        Trace.endSection();
+                                        h();
+                                        znVar.d = zn.a(this.o, znVar.d);
+                                        if1Var = this.c;
+                                        if (if1Var != null) {
+                                            if1Var.invoke(this);
+                                        }
+                                    }
+                                }
+                                up3 up3Var9 = this.l;
+                                if (this.g) {
+                                    return false;
+                                }
+                                return false;
+                            }
+                            fz1.b("Should precompose before resolving nested prefetch states");
+                            er1.a();
+                            this.l = up3Var5;
+                            this.k = true;
+                            Trace.endSection();
+                            up3Var = this.l;
+                            if (up3Var != null) {
+                                z = this.m;
+                                listArr = up3Var.b;
+                                i2 = up3Var.c;
+                                list = up3Var.a;
+                                if (i2 < list.size()) {
+                                    if (up3Var.f.h) {
+                                        fz1.c("Should not execute nested prefetch on canceled request");
+                                    }
+                                    Trace.beginSection("compose:lazy:prefetch:update_nested_prefetch_count");
+                                    size = list.size();
+                                    while (i3 < size) {
+                                        ((q82) list.get(i3)).getClass();
+                                    }
+                                    Trace.endSection();
+                                    Trace.beginSection("compose:lazy:prefetch:nested");
+                                    while (up3Var.c < list.size()) {
+                                        if (listArr[up3Var.c] == null) {
+                                            if (yn4Var.a() <= r12) {
+                                                Trace.endSection();
+                                                return true;
+                                            }
+                                            int i14 = up3Var.c;
+                                            q82Var = (q82) list.get(i14);
+                                            uc3Var = q82Var.a;
+                                            if (uc3Var == null) {
+                                                list3 = u01.n;
+                                            } else {
+                                                o82 o82Var6 = new o82(q82Var);
+                                                uc3Var.invoke(o82Var6);
+                                                ArrayList arrayList6 = o82Var6.a;
+                                                q82Var.e = arrayList6.size();
+                                                list3 = arrayList6;
+                                            }
+                                            listArr[i14] = list3;
+                                        }
+                                        list2 = listArr[up3Var.c];
+                                        list2.getClass();
+                                        while (up3Var.d < list2.size()) {
+                                            vp3Var = (vp3) list2.get(up3Var.d);
+                                            if (z) {
+                                                if (vp3Var != null) {
+                                                    vp3Var2 = vp3Var;
+                                                } else {
+                                                    vp3Var2 = null;
+                                                }
+                                                if (vp3Var2 != null) {
+                                                    vp3Var2.m = true;
+                                                }
+                                            }
+                                            up3Var.e = true;
+                                            if (vp3Var.c(yn4Var)) {
+                                                Trace.endSection();
+                                                return true;
+                                            }
+                                            up3Var.d++;
+                                        }
+                                        up3Var.d = 0;
+                                        up3Var.c++;
+                                    }
+                                    Trace.endSection();
+                                }
+                            }
+                            up3Var2 = this.l;
+                            if (up3Var2 != null) {
+                                h();
+                                si0.R("compose:lazy:prefetch:execute:item", j2);
+                                up3Var3 = this.l;
+                                if (up3Var3 != null) {
+                                    up3Var3.e = false;
+                                }
+                            }
+                            nc0Var = this.d;
+                            if (!this.g) {
+                                if (g(this.n, znVar.d)) {
+                                    Trace.beginSection("compose:lazy:prefetch:measure");
+                                    j = nc0Var.a;
+                                    if (this.h) {
+                                        fz1.a("Callers should check whether the request is still valid before calling performMeasure()");
+                                    }
+                                    if (this.g) {
+                                        fz1.a("Request was already measured!");
+                                    }
+                                    this.g = true;
+                                    jn4Var = this.e;
+                                    if (jn4Var != null) {
+                                        iC = jn4Var.c();
+                                        while (i < iC) {
+                                            jn4Var.d(i, j);
+                                        }
+                                    } else {
+                                        fz1.b("performComposition() must be called before performMeasure()");
+                                        er1.a();
+                                    }
+                                    Trace.endSection();
+                                    h();
+                                    znVar.d = zn.a(this.o, znVar.d);
+                                    if1Var = this.c;
+                                    if (if1Var != null) {
+                                        if1Var.invoke(this);
+                                    }
+                                }
+                            }
+                            up3 up3Var10 = this.l;
+                            if (this.g) {
+                                return false;
+                            }
+                            return false;
+                        }
+                    } catch (Throwable th6) {
+                        Trace.endSection();
+                        throw th6;
+                    }
+                }
+                return true;
+            }
+        }
         b();
         return false;
     }
 
     public final boolean e() {
-        if (this.i == true) goto L11;
-        in4 r2 = this.f;
-        if (r2 != null) goto L7;
-        return false;
-    L7:
-        if (r2.d() == true) goto L11;
-        return false;
-    L11:
-        return true;
+        in4 in4Var;
+        return this.i || ((in4Var = this.f) != null && in4Var.d());
     }
 
-    public final void f(Object r5, zn r6) {
-        in4 r0 = this.f;
-        if (r0 != null) goto L10;
-        ll r1 = this.r;
-        wf1 r2 = ((c82) r1.p).a(this.a, r5);
-        o72 r3 = ((kn4) r1.q).a();
-        int r4 = 12;
-        if (r3.n.G() == true) goto L8;
-        in4 r7 = new xc5(r4, r3, r5);
-    L7:
-        r0 = r7;
-        this.f = r0;
-        this.j = r5;
-        goto L10
-    L8:
-        r3.k(r5, r2, true);
-        r7 = new hd5(r4, r3, r5);
-    L10:
+    public final void f(Object obj, zn znVar) throws IOException {
+        in4 hd5Var;
+        in4 in4Var = this.f;
+        if (in4Var == null) {
+            ll llVar = this.r;
+            wf1 wf1VarA = ((c82) llVar.p).a(this.a, obj);
+            o72 o72VarA = ((kn4) llVar.q).a();
+            int i = 12;
+            if (o72VarA.n.G()) {
+                o72VarA.k(obj, wf1VarA, true);
+                hd5Var = new hd5(i, o72VarA, obj);
+            } else {
+                hd5Var = new xc5(i, o72VarA, obj);
+            }
+            in4Var = hd5Var;
+            this.f = in4Var;
+            this.j = obj;
+        }
         this.q = false;
-    L12:
-        if (r0.d() == true) goto L16;
-        if (this.q == true) goto L16;
-        r0.e(new bt2(this, r6));
-    L16:
+        while (!in4Var.d() && !this.q) {
+            in4Var.e(new bt2(this, znVar));
+        }
         h();
-        boolean r8 = this.q;
-        long r9 = this.o;
-        if (r8 == false) goto L20;
-        r6.b = zn.a(r9, r6.b);
-        return;
-    L20:
-        r6.a = zn.a(r9, r6.a);
+        boolean z = this.q;
+        long j = this.o;
+        if (z) {
+            znVar.b = zn.a(j, znVar.b);
+        } else {
+            znVar.a = zn.a(j, znVar.a);
+        }
     }
 
-    public final boolean g(long r1, long r3) {
-        if (this.m == false) goto L6;
-        r3 = 0;
-    L6:
-        if (r1 <= r3) goto L9;
-        return true;
-    L9:
-        return false;
+    public final boolean g(long j, long j2) {
+        if (this.m) {
+            j2 = 0;
+        }
+        return j > j2;
     }
 
+    /* JADX WARN: Code duplicated, block: B:33:0x00a3  */
+    /* JADX WARN: Code duplicated, block: B:34:0x00a5  */
+    /* JADX WARN: Code duplicated, block: B:36:0x00ae  */
+    /* JADX WARN: Code duplicated, block: B:37:0x00b4  */
+    /* JADX WARN: Code duplicated, block: B:39:0x00bd  */
+    /* JADX WARN: Code duplicated, block: B:40:0x00c0  */
     public final void h() {
-        int r1 = hx2.b;
-        long r2 = System.nanoTime() - hx2.a;
-        long r3 = this.p;
-        long r13 = 0;
-        if (((r3 - 1) | 1) != Long.MAX_VALUE) goto L14;
-        if (r2 != r3) goto L9;
-        om0 r4 = mx0.n;
-    L7:
-        int r7 = 1;
-    L31:
-        long r5 = r13 >> r7;
-        om0 r6 = mx0.n;
-        if ((((int) r13) & r7) != 0) goto L35;
-        long r9 = r5;
-    L41:
-        this.o = r9;
-        long r8 = this.n - r9;
-        this.n = r8;
-        this.p = r2;
-        si0.R("compose:lazy:prefetch:available_time_nanos", r8);
-        return;
-    L35:
-        if (r5 <= 9223372036854L) goto L38;
-        r9 = Long.MAX_VALUE;
-        goto L41
-    L38:
-        if (r5 >= (-9223372036854L)) goto L40;
-        r9 = Long.MIN_VALUE;
-        goto L41
-    L40:
-        r9 = r5 * 1000000;
-        goto L41
-    L9:
-        if (r3 >= 0) goto L11;
-        long r10 = mx0.p;
-    L12:
-        r13 = ((-(r10 >> 1)) << 1) + ((long) (((int) r10) & 1));
-        int r11 = nx0.a;
-        goto L7
-    L11:
-        r10 = mx0.o;
-        goto L12
-    L14:
-        if ((1 | (r2 - 1)) == Long.MAX_VALUE) goto L16;
-        long r12 = r2 - r3;
-        r7 = 1;
-        long r14 = (~(r12 ^ r3)) & (r12 ^ r2);
-        ox0 r15 = ox0.o;
-        if (r14 >= 0) goto L30;
-        ox0 r16 = ox0.p;
-        if (r15.compareTo(r16) >= 0) goto L26;
-        long r17 = (r2 / 1000000) - (r3 / 1000000);
-        long r18 = (r2 % 1000000) - (r3 % 1000000);
-        om0 r19 = mx0.n;
-        r13 = mx0.b(e35.W(r17, r16), e35.W(r18, r15));
-        goto L31
-    L26:
-        if (r12 >= 0) goto L28;
-        long r20 = mx0.p;
-    L29:
-        r13 = ((-(r20 >> 1)) << 1) + ((long) (((int) r20) & 1));
-        int r21 = nx0.a;
-        goto L31
-    L28:
-        r20 = mx0.o;
-        goto L29
-    L30:
-        r13 = e35.W(r12, r15);
-        goto L31
-    L16:
-        if (r2 >= 0) goto L19;
-        long r22 = mx0.p;
-    L18:
-        r13 = r22;
-        goto L7
-    L19:
-        r22 = mx0.o;
-        goto L18
+        int i;
+        long j;
+        long j2;
+        int i2 = hx2.b;
+        long jNanoTime = System.nanoTime() - hx2.a;
+        long j3 = this.p;
+        long jW = 0;
+        if (((j3 - 1) | 1) != Long.MAX_VALUE) {
+            if ((1 | (jNanoTime - 1)) == Long.MAX_VALUE) {
+                jW = jNanoTime < 0 ? mx0.p : mx0.o;
+            } else {
+                long j4 = jNanoTime - j3;
+                i = 1;
+                long j5 = (~(j4 ^ j3)) & (j4 ^ jNanoTime);
+                ox0 ox0Var = ox0.NANOSECONDS;
+                if (j5 < 0) {
+                    ox0 ox0Var2 = ox0.MILLISECONDS;
+                    if (ox0Var.compareTo(ox0Var2) < 0) {
+                        long j6 = (jNanoTime / 1000000) - (j3 / 1000000);
+                        long j7 = (jNanoTime % 1000000) - (j3 % 1000000);
+                        om0 om0Var = mx0.n;
+                        jW = mx0.b(e35.W(j6, ox0Var2), e35.W(j7, ox0Var));
+                    } else {
+                        long j8 = j4 < 0 ? mx0.p : mx0.o;
+                        jW = ((-(j8 >> 1)) << 1) + ((long) (((int) j8) & 1));
+                        int i3 = nx0.a;
+                    }
+                } else {
+                    jW = e35.W(j4, ox0Var);
+                }
+            }
+            j = jW >> i;
+            om0 om0Var2 = mx0.n;
+            if ((((int) jW) & i) == 0) {
+                j2 = j;
+            } else if (j > 9223372036854L) {
+                j2 = Long.MAX_VALUE;
+            } else if (j < -9223372036854L) {
+                j2 = Long.MIN_VALUE;
+            } else {
+                j2 = j * 1000000;
+            }
+            this.o = j2;
+            long j9 = this.n - j2;
+            this.n = j9;
+            this.p = jNanoTime;
+            si0.R("compose:lazy:prefetch:available_time_nanos", j9);
+        }
+        if (jNanoTime == j3) {
+            om0 om0Var3 = mx0.n;
+        } else {
+            long j10 = j3 < 0 ? mx0.p : mx0.o;
+            jW = ((-(j10 >> 1)) << 1) + ((long) (((int) j10) & 1));
+            int i4 = nx0.a;
+        }
+        i = 1;
+        j = jW >> i;
+        om0 om0Var4 = mx0.n;
+        if ((((int) jW) & i) == 0) {
+            j2 = j;
+        } else if (j > 9223372036854L) {
+            j2 = Long.MAX_VALUE;
+        } else if (j < -9223372036854L) {
+            j2 = Long.MIN_VALUE;
+        } else {
+            j2 = j * 1000000;
+        }
+        this.o = j2;
+        long j11 = this.n - j2;
+        this.n = j11;
+        this.p = jNanoTime;
+        si0.R("compose:lazy:prefetch:available_time_nanos", j11);
     }
 
     public final String toString() {

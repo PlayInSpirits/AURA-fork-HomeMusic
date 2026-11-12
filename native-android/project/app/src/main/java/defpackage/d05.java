@@ -7,6 +7,7 @@ import android.graphics.Typeface;
 import android.graphics.fonts.Font;
 import android.graphics.fonts.FontFamily;
 import android.graphics.text.PositionedGlyphs;
+import android.graphics.text.TextRunShaper;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
@@ -18,276 +19,249 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Objects;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public abstract class d05 {
-    public static final vr1 a = null;
-    public static final fg4 b = null;
+    public static final vr1 a;
+    public static final fg4 b;
     public static Paint c;
 
     static {
         Trace.beginSection(xl.N("TypefaceCompat static init"));
-        int r0 = Build.VERSION.SDK_INT;
-        if (r0 < 31) goto L6;
-        a = new j05();
-    L20:
+        int i = Build.VERSION.SDK_INT;
+        if (i >= 31) {
+            a = new j05();
+        } else if (i >= 29) {
+            a = new i05();
+        } else if (i >= 28) {
+            a = new h05();
+        } else if (i >= 26) {
+            a = new g05();
+        } else {
+            Method method = f05.e;
+            if (method == null) {
+                Log.w("TypefaceCompatApi24Impl", "Unable to collect necessary private methods.Fallback to legacy implementation.");
+            }
+            if (method != null) {
+                a = new f05();
+            } else {
+                a = new e05();
+            }
+        }
         b = new fg4(16);
         c = null;
         Trace.endSection();
-        return;
-    L6:
-        if (r0 < 29) goto L9;
-        a = new i05();
-        goto L20
-    L9:
-        if (r0 < 28) goto L12;
-        a = new h05();
-        goto L20
-    L12:
-        if (r0 < 26) goto L14;
-        a = new g05();
-        goto L20
-    L14:
-        Method r1 = f05.e;
-        if (r1 != null) goto L17;
-        Log.w("TypefaceCompatApi24Impl", "Unable to collect necessary private methods.Fallback to legacy implementation.");
-    L17:
-        if (r1 == null) goto L19;
-        a = new f05();
-        goto L20
-    L19:
-        a = new e05();
-        goto L20
     }
 
-    public static Typeface a(Context r16, xa1 r17, Resources r18, int r19, String r20, int r21, int r22, au0 r23, boolean r24) {
-        int r5 = 19;
-        int r6 = -3;
-        if ((r17 instanceof ab1) == false) goto L108;
-        ab1 r0 = (ab1) r17;
-        String r7 = r0.d;
-        Typeface r9 = null;
-        int r10 = 1;
-        int r11 = 0;
-        if (TextUtils.isEmpty(r7) == true) goto L9;
-        Typeface r8 = c(r7);
-        if (r8 == null) goto L9;
-    L44:
-        if (r8 == null) goto L49;
-        if (r23 == null) goto L47;
-        new Handler(Looper.getMainLooper()).post(new ur2(r5, r23, r8));
-    L47:
-        b.l(b(r18, r19, r20, r21, r22), r8);
-        return r8;
-    L49:
-        if (r24 == true) goto L51;
-        if (r23 == null) goto L52;
-    L53:
-        boolean r3 = false;
-    L57:
-        if (r24 == false) goto L59;
-        int r12 = r0.b;
-    L60:
-        Handler r13 = new Handler(Looper.getMainLooper());
-        c05 r14 = new c05();
-        r14.n = r23;
-        ArrayList r1 = r0.a;
-        ok r2 = new ok(r13, 2);
-        wo0 r15 = new wo0(r14, r2);
-        int r25 = 6;
-        if (r3 == true) goto L63;
-        String r4 = wa1.a(r1, r22);
-        Typeface r26 = (Typeface) wa1.a.g(r4);
-        if (r26 == null) goto L89;
-        r2.execute(new lg1(r25, r14, r26));
-        r9 = r26;
-    L113:
-        if (r9 == null) goto L115;
-        b.l(b(r18, r19, r20, r21, r22), r9);
-    L115:
-        return r9;
-    L89:
-        ua1 r27 = new ua1(r11, r15);
-        Object r28 = wa1.c;
-        monitor-enter(r28);
-        yd4 r29 = wa1.d;     // Catch: Throwable -> L96
-        ArrayList r30 = (ArrayList) r29.get(r4);     // Catch: Throwable -> L96
-        if (r30 == null) goto L98;
-        r30.add(r27);     // Catch: Throwable -> L96
-        monitor-exit(r28);     // Catch: Throwable -> L96
-    L118:
-        goto L113
-    L98:
-        ArrayList r31 = new ArrayList();     // Catch: Throwable -> L96
-        r31.add(r27);     // Catch: Throwable -> L96
-        r29.put(r4, r31);     // Catch: Throwable -> L96
-        monitor-exit(r28);     // Catch: Throwable -> L96
-        ta1 r32 = new ta1(r4, r16, r1, r22, 1);
-        ThreadPoolExecutor r33 = wa1.b;
-        ua1 r34 = new ua1(r10, r4);
-        if (Looper.myLooper() != null) goto L103;
-        Handler r35 = new Handler(Looper.getMainLooper());
-    L104:
-        pb0 r36 = new pb0();
-        r36.o = r32;
-        r36.p = r34;
-        r36.q = r35;
-        r33.execute(r36);
-        goto L118
-    L103:
-        r35 = new Handler();
-    L96:
-        th = move-exception;
-        throw th;
-    L63:
-        if (r1.size() > 1) goto L84;
-        pa1 r37 = (pa1) r1.get(0);
-        fg4 r38 = wa1.a;
-        ArrayList r110 = new ArrayList(1);
-        Object r39 = new Object[]{r37}[0];
-        Objects.requireNonNull(r39);
-        r110.add(r39);
-        String r40 = wa1.a(Collections.unmodifiableList(r110), r22);
-        Typeface r111 = (Typeface) wa1.a.g(r40);
-        if (r111 == null) goto L67;
-        r2.execute(new lg1(r25, r14, r111));
-        r9 = r111;
-        goto L113
-    L67:
-        if (r12 != (-1)) goto L121;
-        Object[] r41 = {r37};
-        ArrayList r42 = new ArrayList(1);
-        Object r43 = r41[0];
-        Objects.requireNonNull(r43);
-        r42.add(r43);
-        va1 r44 = wa1.b(r40, r16, Collections.unmodifiableList(r42), r22);
-        r15.H(r44);
-        r9 = r44.a;
-        goto L113
-    L121:
-    L83:
-        ((ok) r15.o).execute(new rq(r6, r10, (c05) r15.n));
-        goto L113
-    L122:
-        va1 r45 = (va1) wa1.b.submit(new ta1(r40, r16, r37, r22, 0)).get(r12, TimeUnit.MILLISECONDS);     // Catch: InterruptedException -> L83
-        r15.H(r45);     // Catch: InterruptedException -> L83
-        r9 = r45.a;     // Catch: InterruptedException -> L83
-        goto L113
-    L74:
-        e = move-exception;
-        throw e;     // Catch: InterruptedException -> L83
-    L76:
-        e = move-exception;
-        throw new RuntimeException(e);     // Catch: InterruptedException -> L83
-    L79:
-        throw new InterruptedException("timeout");     // Catch: InterruptedException -> L83
-    L84:
-        kf2.n("Fallbacks with blocking fetches are not supported for performance reasons");
+    public static Typeface a(Context context, xa1 xa1Var, Resources resources, int i, String str, int i2, int i3, au0 au0Var, boolean z) {
+        Typeface typefaceE;
+        Typeface typefaceBuild;
+        FontFamily fontFamilyBuild;
+        int i4 = 19;
+        int i5 = -3;
+        if (xa1Var instanceof ab1) {
+            ab1 ab1Var = (ab1) xa1Var;
+            String str2 = ab1Var.d;
+            typefaceE = null;
+            int i6 = 1;
+            int i7 = 0;
+            if (TextUtils.isEmpty(str2) || (typefaceBuild = c(str2)) == null) {
+                ArrayList arrayList = ab1Var.a;
+                if (arrayList.size() != 1) {
+                    if (Build.VERSION.SDK_INT >= 31) {
+                        int i8 = 0;
+                        while (true) {
+                            if (i8 >= arrayList.size()) {
+                                Typeface.CustomFallbackBuilder customFallbackBuilderC = null;
+                                int i9 = 0;
+                                while (true) {
+                                    if (i9 < arrayList.size()) {
+                                        pa1 pa1Var = (pa1) arrayList.get(i9);
+                                        if (i9 == arrayList.size() - 1 && TextUtils.isEmpty(pa1Var.f)) {
+                                            customFallbackBuilderC.setSystemFallback(pa1Var.e);
+                                        } else {
+                                            String str3 = pa1Var.e;
+                                            String str4 = pa1Var.f;
+                                            Font fontD = d(c(str3));
+                                            if (fontD == null) {
+                                                Log.w("TypefaceCompat", "Unable identify the primary font for " + pa1Var.e + ". Falling back to provider font.");
+                                            } else {
+                                                if (TextUtils.isEmpty(str4)) {
+                                                    fontFamilyBuild = lm4.y(fontD).build();
+                                                } else {
+                                                    try {
+                                                        lm4.m();
+                                                        lm4.z();
+                                                        fontFamilyBuild = lm4.h(b05.c(fontD).setFontVariationSettings(str4).build()).build();
+                                                    } catch (IOException unused) {
+                                                        Log.e("TypefaceCompat", "Failed to clone Font instance. Fall back to provider font.");
+                                                    }
+                                                }
+                                                if (customFallbackBuilderC == null) {
+                                                    customFallbackBuilderC = lm4.c(fontFamilyBuild);
+                                                } else {
+                                                    customFallbackBuilderC.addCustomFallback(fontFamilyBuild);
+                                                }
+                                                i9++;
+                                            }
+                                        }
+                                    }
+                                    typefaceBuild = customFallbackBuilderC.build();
+                                    break;
+                                }
+                            }
+                            if (c(((pa1) arrayList.get(i8)).e) != null) {
+                                i8++;
+                            }
+                            typefaceBuild = null;
+                            break;
+                        }
+                    }
+                    typefaceBuild = null;
+                    break;
+                }
+                typefaceBuild = c(((pa1) arrayList.get(0)).e);
+            }
+            if (typefaceBuild != null) {
+                if (au0Var != null) {
+                    new Handler(Looper.getMainLooper()).post(new ur2(i4, au0Var, typefaceBuild));
+                }
+                b.l(b(resources, i, str, i2, i3), typefaceBuild);
+                return typefaceBuild;
+            }
+            boolean z2 = !z ? au0Var != null : ab1Var.c != 0;
+            int i10 = z ? ab1Var.b : -1;
+            Handler handler = new Handler(Looper.getMainLooper());
+            c05 c05Var = new c05();
+            c05Var.n = au0Var;
+            ArrayList arrayList2 = ab1Var.a;
+            ok okVar = new ok(handler, 2);
+            wo0 wo0Var = new wo0(c05Var, okVar);
+            int i11 = 6;
+            if (!z2) {
+                String strA = wa1.a(arrayList2, i3);
+                Typeface typeface = (Typeface) wa1.a.g(strA);
+                if (typeface != null) {
+                    okVar.execute(new lg1(i11, c05Var, typeface));
+                    typefaceE = typeface;
+                } else {
+                    ua1 ua1Var = new ua1(i7, wo0Var);
+                    synchronized (wa1.c) {
+                        try {
+                            yd4 yd4Var = wa1.d;
+                            ArrayList arrayList3 = (ArrayList) yd4Var.get(strA);
+                            if (arrayList3 != null) {
+                                arrayList3.add(ua1Var);
+                            } else {
+                                ArrayList arrayList4 = new ArrayList();
+                                arrayList4.add(ua1Var);
+                                yd4Var.put(strA, arrayList4);
+                                ta1 ta1Var = new ta1(strA, context, arrayList2, i3, 1);
+                                ThreadPoolExecutor threadPoolExecutor = wa1.b;
+                                ua1 ua1Var2 = new ua1(i6, strA);
+                                Handler handler2 = Looper.myLooper() == null ? new Handler(Looper.getMainLooper()) : new Handler();
+                                pb0 pb0Var = new pb0();
+                                pb0Var.o = ta1Var;
+                                pb0Var.p = ua1Var2;
+                                pb0Var.q = handler2;
+                                threadPoolExecutor.execute(pb0Var);
+                            }
+                        } catch (Throwable th) {
+                            throw th;
+                        }
+                    }
+                }
+            } else {
+                if (arrayList2.size() > 1) {
+                    kf2.n("Fallbacks with blocking fetches are not supported for performance reasons");
+                    return null;
+                }
+                pa1 pa1Var2 = (pa1) arrayList2.get(0);
+                fg4 fg4Var = wa1.a;
+                ArrayList arrayList5 = new ArrayList(1);
+                Object obj = new Object[]{pa1Var2}[0];
+                Objects.requireNonNull(obj);
+                arrayList5.add(obj);
+                String strA2 = wa1.a(Collections.unmodifiableList(arrayList5), i3);
+                Typeface typeface2 = (Typeface) wa1.a.g(strA2);
+                if (typeface2 != null) {
+                    okVar.execute(new lg1(i11, c05Var, typeface2));
+                    typefaceE = typeface2;
+                } else if (i10 == -1) {
+                    Object[] objArr = {pa1Var2};
+                    ArrayList arrayList6 = new ArrayList(1);
+                    Object obj2 = objArr[0];
+                    Objects.requireNonNull(obj2);
+                    arrayList6.add(obj2);
+                    va1 va1VarB = wa1.b(strA2, context, Collections.unmodifiableList(arrayList6), i3);
+                    wo0Var.H(va1VarB);
+                    typefaceE = va1VarB.a;
+                } else {
+                    try {
+                        try {
+                            try {
+                                va1 va1Var = (va1) wa1.b.submit(new ta1(strA2, context, pa1Var2, i3, 0)).get(i10, TimeUnit.MILLISECONDS);
+                                wo0Var.H(va1Var);
+                                typefaceE = va1Var.a;
+                            } catch (InterruptedException e) {
+                                throw e;
+                            }
+                        } catch (ExecutionException e2) {
+                            throw new RuntimeException(e2);
+                        } catch (TimeoutException unused2) {
+                            throw new InterruptedException("timeout");
+                        }
+                    } catch (InterruptedException unused3) {
+                        ((ok) wo0Var.o).execute(new rq(i5, i6, (c05) wo0Var.n));
+                    }
+                }
+            }
+        } else {
+            typefaceE = a.e(context, (ya1) xa1Var, resources, i3);
+            if (au0Var != null) {
+                if (typefaceE != null) {
+                    new Handler(Looper.getMainLooper()).post(new ur2(i4, au0Var, typefaceE));
+                } else {
+                    au0Var.e(-3);
+                }
+            }
+        }
+        if (typefaceE != null) {
+            b.l(b(resources, i, str, i2, i3), typefaceE);
+        }
+        return typefaceE;
+    }
+
+    public static String b(Resources resources, int i, String str, int i2, int i3) {
+        return resources.getResourcePackageName(i) + '-' + str + '-' + i2 + '-' + i + '-' + i3;
+    }
+
+    public static Typeface c(String str) {
+        if (str != null && !str.isEmpty()) {
+            Typeface typefaceCreate = Typeface.create(str, 0);
+            Typeface typefaceCreate2 = Typeface.create(Typeface.DEFAULT, 0);
+            if (typefaceCreate != null && !typefaceCreate.equals(typefaceCreate2)) {
+                return typefaceCreate;
+            }
+        }
         return null;
-    L59:
-        r12 = -1;
-    L52:
-        r3 = true;
-        goto L57
-    L51:
-        if (r0.c != 0) goto L53;
-    L9:
-        ArrayList r46 = r0.a;
-        if (r46.size() != 1) goto L13;
-        r8 = c(((pa1) r46.get(0)).e);
-        goto L44
-    L13:
-        if (Build.VERSION.SDK_INT >= 31) goto L15;
-    L14:
-        r8 = null;
-        goto L44
-    L15:
-        int r47 = 0;
-    L17:
-        if (r47 >= r46.size()) goto L22;
-        if (c(((pa1) r46.get(r47)).e) == null) goto L14;
-        r47 = r47 + 1;
-        goto L17
-    L22:
-        Typeface.CustomFallbackBuilder r112 = null;
-        int r48 = 0;
-    L24:
-        if (r48 >= r46.size()) goto L43;
-        pa1 r113 = (pa1) r46.get(r48);
-        if (r48 == (r46.size() - 1)) goto L28;
-    L30:
-        String r114 = r113.e;
-        String r115 = r113.f;
-        Font r116 = d(c(r114));
-        if (r116 == null) goto L32;
-        if (TextUtils.isEmpty(r115) == false) goto L116;
-        FontFamily r117 = lm4.i(lm4.y(r116));
-    L39:
-        if (r112 != null) goto L41;
-        r112 = lm4.c(r117);
-    L42:
-        r48 = r48 + 1;
-        goto L24
-    L41:
-        lm4.p(r112, r117);
-        goto L42
-    L116:
-        lm4.m();     // Catch: IOException -> L37
-        lm4.z();     // Catch: IOException -> L37
-        r117 = lm4.i(lm4.h(lm4.g(lm4.f(b05.c(r116), r115))));     // Catch: IOException -> L37
-    L37:
-        Log.e("TypefaceCompat", "Failed to clone Font instance. Fall back to provider font.");
-        goto L14
-    L32:
-        Log.w("TypefaceCompat", "Unable identify the primary font for " + r113.e + ". Falling back to provider font.");
-        goto L14
-    L28:
-        if (TextUtils.isEmpty(r113.f) == false) goto L30;
-        lm4.q(r112, r113.e);
-    L43:
-        r8 = lm4.d(r112);
-        goto L44
-    L108:
-        r9 = a.e(r16, (ya1) r17, r18, r22);
-        if (r23 == null) goto L113;
-        if (r9 == null) goto L112;
-        new Handler(Looper.getMainLooper()).post(new ur2(r5, r23, r9));
-        goto L113
-    L112:
-        r23.e(-3);
-        goto L113
     }
 
-    public static String b(Resources r1, int r2, String r3, int r4, int r5) {
-        return r1.getResourcePackageName(r2) + '-' + r3 + '-' + r4 + '-' + r2 + '-' + r5;
-    }
-
-    public static Typeface c(String r3) {
-        if (r3 != null) goto L5;
-    L12:
-        return null;
-    L5:
-        if (r3.isEmpty() == true) goto L12;
-        Typeface r4 = Typeface.create(r3, 0);
-        Typeface r1 = Typeface.create(Typeface.DEFAULT, 0);
-        if (r4 == null) goto L12;
-        if (r4.equals(r1) == true) goto L12;
-        return r4;
-    }
-
-    public static Font d(Typeface r2) {
-        if (c != null) goto L5;
-        c = new Paint();
-    L5:
+    public static Font d(Typeface typeface) {
+        if (c == null) {
+            c = new Paint();
+        }
         c.setTextSize(10.0f);
-        c.setTypeface(r2);
-        PositionedGlyphs r3 = go2.c(c);
-        if (b05.a(r3) != 0) goto L10;
-        return null;
-    L10:
-        return b05.d(r3);
+        c.setTypeface(typeface);
+        PositionedGlyphs positionedGlyphsShapeTextRun = TextRunShaper.shapeTextRun((CharSequence) " ", 0, 1, 0, 1, 0.0f, 0.0f, false, c);
+        if (positionedGlyphsShapeTextRun.glyphCount() == 0) {
+            return null;
+        }
+        return positionedGlyphsShapeTextRun.getFont(0);
     }
 }

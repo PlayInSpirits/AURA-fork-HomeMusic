@@ -17,33 +17,34 @@ import defpackage.u6;
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class HubSyncWorker extends Worker {
-    public HubSyncWorker(Context r1, WorkerParameters r2) {
-        r1.getClass();
-        r2.getClass();
-        super(r1, r2);
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public HubSyncWorker(Context context, WorkerParameters workerParameters) {
+        super(context, workerParameters);
+        context.getClass();
+        workerParameters.getClass();
     }
 
     @Override // androidx.work.Worker
     public final nc2 d() {
-        Context r3 = this.a;     // Catch: Exception -> L5
-        r3.getClass();     // Catch: Exception -> L5
-        gi1.j(r3);     // Catch: Exception -> L5
-    L16:
-        rs1.d.submit(new u6(7)).get();     // Catch: Throwable -> L9
-        Object r4 = j15.a;     // Catch: Throwable -> L9
-    L11:
-        Throwable r5 = bb3.a(r4);
-        if (r5 == null) goto L14;
-        Log.d("HubSyncWorker", "Play events: " + r5.getMessage());
-    L14:
+        Object s14Var;
+        try {
+            Context context = this.a;
+            context.getClass();
+            gi1.j(context);
+        } catch (Exception e) {
+            Log.d("HubSyncWorker", "Hub check failed: " + e.getMessage());
+        }
+        try {
+            rs1.d.submit(new u6(7)).get();
+            s14Var = j15.a;
+        } catch (Throwable th) {
+            s14Var = new s14(th);
+        }
+        Throwable thA = bb3.a(s14Var);
+        if (thA != null) {
+            Log.d("HubSyncWorker", "Play events: " + thA.getMessage());
+        }
         b00.a.e();
         return new mc2();
-    L9:
-        th = move-exception;
-        r4 = new s14(th);
-    L5:
-        e = move-exception;
-        Log.d("HubSyncWorker", "Hub check failed: " + e.getMessage());
-        goto L16
     }
 }

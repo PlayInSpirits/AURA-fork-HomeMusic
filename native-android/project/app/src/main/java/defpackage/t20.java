@@ -12,19 +12,19 @@ public final class t20 implements m84 {
     public final long[] e;
     public final long f;
 
-    public t20(int[] r3, long[] r4, long[] r5, long[] r6) {
-        this.b = r3;
-        this.c = r4;
-        this.d = r5;
-        this.e = r6;
-        int r7 = r3.length;
-        this.a = r7;
-        if (r7 <= 0) goto L6;
-        int r8 = r7 - 1;
-        this.f = r5[r8] + r6[r8];
-        return;
-    L6:
-        this.f = 0;
+    public t20(int[] iArr, long[] jArr, long[] jArr2, long[] jArr3) {
+        this.b = iArr;
+        this.c = jArr;
+        this.d = jArr2;
+        this.e = jArr3;
+        int length = iArr.length;
+        this.a = length;
+        if (length <= 0) {
+            this.f = 0L;
+        } else {
+            int i = length - 1;
+            this.f = jArr2[i] + jArr3[i];
+        }
     }
 
     @Override // defpackage.m84
@@ -33,18 +33,17 @@ public final class t20 implements m84 {
     }
 
     @Override // defpackage.m84
-    public final l84 e(long r10) {
-        long[] r0 = this.e;
-        int r2 = f35.f(r0, r10, true);
-        long r4 = r0[r2];
-        long[] r6 = this.c;
-        o84 r3 = new o84(r4, r6[r2]);
-        if (r4 >= r10) goto L10;
-        if (r2 == (this.a - 1)) goto L10;
-        int r5 = r2 + 1;
-        return new l84(r3, new o84(r0[r5], r6[r5]));
-    L10:
-        return new l84(r3, r3);
+    public final l84 e(long j) {
+        long[] jArr = this.e;
+        int iF = f35.f(jArr, j, true);
+        long j2 = jArr[iF];
+        long[] jArr2 = this.c;
+        o84 o84Var = new o84(j2, jArr2[iF]);
+        if (j2 >= j || iF == this.a - 1) {
+            return new l84(o84Var, o84Var);
+        }
+        int i = iF + 1;
+        return new l84(o84Var, new o84(jArr[i], jArr2[i]));
     }
 
     @Override // defpackage.m84

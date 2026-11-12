@@ -7,26 +7,24 @@ import java.util.Iterator;
 public abstract class m91 implements Iterable {
     public final bb3 n;
 
-    public m91(Iterable r2) {
-        r2.getClass();
-        this.n = new zp3(r2);
+    public m91(Iterable iterable) {
+        iterable.getClass();
+        this.n = new zp3(iterable);
     }
 
     public final String toString() {
-        Iterator r3 = ((Iterable) this.n.b(this)).iterator();
-        StringBuilder r0 = new StringBuilder("[");
-        boolean r1 = true;
-    L4:
-        if (r3.hasNext() == false) goto L8;
-        if (r1 == true) goto L7;
-        r0.append(", ");
-    L7:
-        r0.append(r3.next());
-        r1 = false;
-        goto L4
-    L8:
-        r0.append(']');
-        return r0.toString();
+        Iterator it = ((Iterable) this.n.b(this)).iterator();
+        StringBuilder sb = new StringBuilder("[");
+        boolean z = true;
+        while (it.hasNext()) {
+            if (!z) {
+                sb.append(", ");
+            }
+            sb.append(it.next());
+            z = false;
+        }
+        sb.append(']');
+        return sb.toString();
     }
 
     public m91() {

@@ -6,7 +6,6 @@ public final class f72 {
     public final c72 a;
     public boolean b;
     public boolean c;
-    public y62 d;
     public boolean e;
     public boolean f;
     public boolean g;
@@ -18,13 +17,12 @@ public final class f72 {
     public boolean m;
     public boolean n;
     public int o;
-    public final ti2 p;
     public if2 q;
+    public y62 d = y62.r;
+    public final ti2 p = new ti2(this);
 
-    public f72(c72 r1) {
-        this.a = r1;
-        this.d = y62.r;
-        this.p = new ti2(this);
+    public f72(c72 c72Var) {
+        this.a = c72Var;
     }
 
     public final f63 a() {
@@ -32,213 +30,148 @@ public final class f72 {
     }
 
     public final void b() {
-        y62 r0 = this.a.R.d;
-        y62 r1 = y62.p;
-        y62 r2 = y62.q;
-        if (r0 == r1) goto L6;
-        if (r0 == r2) goto L6;
-    L9:
-        if (r0 != r2) goto L18;
-        if2 r3 = this.q;
-        if (r3 != null) goto L13;
-    L16:
-        h(true);
-        return;
-    L13:
-        if (r3.G != true) goto L16;
-        i(true);
-        return;
-    L18:
-        return;
-    L6:
-        if (this.p.K == false) goto L8;
-        g(true);
-        goto L9
-    L8:
-        f(true);
-        goto L9
+        y62 y62Var = this.a.R.d;
+        y62 y62Var2 = y62.p;
+        y62 y62Var3 = y62.q;
+        if (y62Var == y62Var2 || y62Var == y62Var3) {
+            if (this.p.K) {
+                g(true);
+            } else {
+                f(true);
+            }
+        }
+        if (y62Var == y62Var3) {
+            if2 if2Var = this.q;
+            if (if2Var == null || !if2Var.G) {
+                h(true);
+            } else {
+                i(true);
+            }
+        }
     }
 
-    public final void c(long r4) {
-        if2 r3 = this.q;
-        if (r3 == null) goto L10;
-        f72 r0 = r3.s;
-        r0.d = y62.o;
-        c72 r1 = r0.a;
-        r0.e = false;
-        r3.I = r4;
-        wb3 r5 = ((ra) h12.L(r1)).getSnapshotObserver();
-        gf2 r6 = r3.J;
-        k52 r7 = r5.b;
-        r5.a.e(r1, r7, r6);
-        r0.f = true;
-        r0.g = true;
-        boolean r8 = h12.A(r1);
-        ti2 r9 = r0.p;
-        if (r8 == false) goto L7;
-        r9.F = true;
-        r9.G = true;
-    L8:
-        r0.d = y62.r;
-        return;
-    L7:
-        r9.E = true;
-        goto L8
+    public final void c(long j) {
+        if2 if2Var = this.q;
+        if (if2Var != null) {
+            f72 f72Var = if2Var.s;
+            f72Var.d = y62.o;
+            c72 c72Var = f72Var.a;
+            f72Var.e = false;
+            if2Var.I = j;
+            wb3 snapshotObserver = ((ra) h12.L(c72Var)).getSnapshotObserver();
+            gf2 gf2Var = if2Var.J;
+            snapshotObserver.a.e(c72Var, snapshotObserver.b, gf2Var);
+            f72Var.f = true;
+            f72Var.g = true;
+            boolean zA = h12.A(c72Var);
+            ti2 ti2Var = f72Var.p;
+            if (zA) {
+                ti2Var.F = true;
+                ti2Var.G = true;
+            } else {
+                ti2Var.E = true;
+            }
+            f72Var.d = y62.r;
+        }
     }
 
-    public final void d(int r4) {
-        int r0 = this.l;
-        this.l = r4;
-        boolean r1 = false;
-        if (r0 != 0) goto L5;
-        boolean r2 = true;
-    L6:
-        if (r4 != 0) goto L8;
-        r1 = true;
-    L8:
-        if (r2 == r1) goto L20;
-        c72 r3 = this.a.t();
-        if (r3 == null) goto L12;
-        f72 r5 = r3.R;
-    L13:
-        if (r5 == null) goto L21;
-        int r6 = r5.l;
-        if (r4 != 0) goto L18;
-        r5.d(r6 - 1);
-        return;
-    L18:
-        r5.d(r6 + 1);
-        return;
-    L21:
-        return;
-    L12:
-        r5 = null;
-        goto L13
-    L20:
-        return;
-    L5:
-        r2 = false;
-        goto L6
+    public final void d(int i) {
+        int i2 = this.l;
+        this.l = i;
+        if ((i2 == 0) != (i == 0)) {
+            c72 c72VarT = this.a.t();
+            f72 f72Var = c72VarT != null ? c72VarT.R : null;
+            if (f72Var != null) {
+                int i3 = f72Var.l;
+                if (i == 0) {
+                    f72Var.d(i3 - 1);
+                } else {
+                    f72Var.d(i3 + 1);
+                }
+            }
+        }
     }
 
-    public final void e(int r4) {
-        int r0 = this.o;
-        this.o = r4;
-        boolean r1 = false;
-        if (r0 != 0) goto L5;
-        boolean r2 = true;
-    L6:
-        if (r4 != 0) goto L8;
-        r1 = true;
-    L8:
-        if (r2 == r1) goto L20;
-        c72 r3 = this.a.t();
-        if (r3 == null) goto L12;
-        f72 r5 = r3.R;
-    L13:
-        if (r5 == null) goto L21;
-        int r6 = r5.o;
-        if (r4 != 0) goto L18;
-        r5.e(r6 - 1);
-        return;
-    L18:
-        r5.e(r6 + 1);
-        return;
-    L21:
-        return;
-    L12:
-        r5 = null;
-        goto L13
-    L20:
-        return;
-    L5:
-        r2 = false;
-        goto L6
+    public final void e(int i) {
+        int i2 = this.o;
+        this.o = i;
+        if ((i2 == 0) != (i == 0)) {
+            c72 c72VarT = this.a.t();
+            f72 f72Var = c72VarT != null ? c72VarT.R : null;
+            if (f72Var != null) {
+                int i3 = f72Var.o;
+                if (i == 0) {
+                    f72Var.e(i3 - 1);
+                } else {
+                    f72Var.e(i3 + 1);
+                }
+            }
+        }
     }
 
-    public final void f(boolean r2) {
-        if (this.k == r2) goto L15;
-        this.k = r2;
-        if (r2 == true) goto L7;
-    L10:
-        if (r2 == false) goto L12;
-        return;
-    L12:
-        if (this.j == true) goto L17;
-        d(this.l - 1);
-        return;
-    L17:
-        return;
-    L7:
-        if (this.j == true) goto L10;
-        d(this.l + 1);
-        return;
+    public final void f(boolean z) {
+        if (this.k != z) {
+            this.k = z;
+            if (z && !this.j) {
+                d(this.l + 1);
+            } else {
+                if (z || this.j) {
+                    return;
+                }
+                d(this.l - 1);
+            }
+        }
     }
 
-    public final void g(boolean r2) {
-        if (this.j == r2) goto L15;
-        this.j = r2;
-        if (r2 == true) goto L7;
-    L10:
-        if (r2 == false) goto L12;
-        return;
-    L12:
-        if (this.k == true) goto L17;
-        d(this.l - 1);
-        return;
-    L17:
-        return;
-    L7:
-        if (this.k == true) goto L10;
-        d(this.l + 1);
-        return;
+    public final void g(boolean z) {
+        if (this.j != z) {
+            this.j = z;
+            if (z && !this.k) {
+                d(this.l + 1);
+            } else {
+                if (z || this.k) {
+                    return;
+                }
+                d(this.l - 1);
+            }
+        }
     }
 
-    public final void h(boolean r2) {
-        if (this.n == r2) goto L15;
-        this.n = r2;
-        if (r2 == true) goto L7;
-    L10:
-        if (r2 == false) goto L12;
-        return;
-    L12:
-        if (this.m == true) goto L17;
-        e(this.o - 1);
-        return;
-    L17:
-        return;
-    L7:
-        if (this.m == true) goto L10;
-        e(this.o + 1);
-        return;
+    public final void h(boolean z) {
+        if (this.n != z) {
+            this.n = z;
+            if (z && !this.m) {
+                e(this.o + 1);
+            } else {
+                if (z || this.m) {
+                    return;
+                }
+                e(this.o - 1);
+            }
+        }
     }
 
-    public final void i(boolean r2) {
-        if (this.m == r2) goto L15;
-        this.m = r2;
-        if (r2 == true) goto L7;
-    L10:
-        if (r2 == false) goto L12;
-        return;
-    L12:
-        if (this.n == true) goto L17;
-        e(this.o - 1);
-        return;
-    L17:
-        return;
-    L7:
-        if (this.n == true) goto L10;
-        e(this.o + 1);
-        return;
+    public final void i(boolean z) {
+        if (this.m != z) {
+            this.m = z;
+            if (z && !this.n) {
+                e(this.o + 1);
+            } else {
+                if (z || this.n) {
+                    return;
+                }
+                e(this.o - 1);
+            }
+        }
     }
 
     public final void j() {
         this.p.s.a().t();
-        if2 r1 = this.q;
-        if (r1 == null) goto L6;
-        ef2 r2 = r1.s.a().y0();
-        r2.getClass();
-        r2.t();
-        return;
+        if2 if2Var = this.q;
+        if (if2Var != null) {
+            ef2 ef2VarY0 = if2Var.s.a().y0();
+            ef2VarY0.getClass();
+            ef2VarY0.t();
+        }
     }
 }

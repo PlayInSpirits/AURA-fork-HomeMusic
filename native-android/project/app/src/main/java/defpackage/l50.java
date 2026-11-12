@@ -6,8 +6,8 @@ public final class l50 {
     public final int a;
     public final String b;
 
-    public l50(int r1, String r2) {
-        this.a = r1;
-        this.b = r2;
+    public l50(int i, String str) {
+        this.a = i;
+        this.b = str;
     }
 }

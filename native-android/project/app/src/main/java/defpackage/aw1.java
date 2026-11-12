@@ -9,7 +9,7 @@ import com.bumptech.glide.load.ImageHeaderParser$ImageType;
 public interface aw1 {
     int c();
 
-    Bitmap i(BitmapFactory.Options r1);
+    Bitmap i(BitmapFactory.Options options);
 
     void k();
 

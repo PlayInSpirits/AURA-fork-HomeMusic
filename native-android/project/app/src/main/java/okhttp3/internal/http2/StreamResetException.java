@@ -8,9 +8,10 @@ import java.io.IOException;
 public final class StreamResetException extends IOException {
     public final b21 n;
 
-    public StreamResetException(b21 r3) {
-        r3.getClass();
-        super("stream was reset: " + r3);
-        this.n = r3;
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public StreamResetException(b21 b21Var) {
+        super("stream was reset: " + b21Var);
+        b21Var.getClass();
+        this.n = b21Var;
     }
 }

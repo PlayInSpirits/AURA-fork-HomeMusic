@@ -16,59 +16,45 @@ public final class sz4 {
         this.a = new oz4(0);
     }
 
-    public static void a(HashMap r1, Type r2, Type r3) {
-        if (r2.equals(r3) == false) goto L5;
-        return;
-    L5:
-        new lz4(r1, r3).o(new Type[]{r2});
+    public static void a(HashMap map, Type type, Type type2) {
+        if (type.equals(type2)) {
+            return;
+        }
+        new lz4(map, type2).o(type);
     }
 
-    public final Type b(Type r3) {
-        r3.getClass();
-        if ((r3 instanceof TypeVariable) == false) goto L7;
-        TypeVariable r4 = (TypeVariable) r3;
-        oz4 r2 = this.a;
-        r2.getClass();
-        return r2.a(r4, new nz4(r4, r2));
-    L7:
-        if ((r3 instanceof ParameterizedType) == false) goto L15;
-        ParameterizedType r5 = (ParameterizedType) r3;
-        Type r0 = r5.getOwnerType();
-        if (r0 != null) goto L11;
-        Type r1 = null;
-    L12:
-        Type r6 = b(r5.getRawType());
-        Class r7 = (Class) r6;
-        return b15.f(r1, r7, c(r5.getActualTypeArguments()));
-    L11:
-        r1 = b(r0);
-        goto L12
-    L15:
-        if ((r3 instanceof GenericArrayType) == false) goto L19;
-        return b15.d(b(((GenericArrayType) r3).getGenericComponentType()));
-    L19:
-        if ((r3 instanceof WildcardType) == false) goto L22;
-        WildcardType r8 = (WildcardType) r3;
-        Type[] r9 = r8.getLowerBounds();
-        Type[] r10 = r8.getUpperBounds();
-        return new c(c(r9), c(r10), 1);
-    L22:
-        return r3;
+    public final Type b(Type type) {
+        type.getClass();
+        if (type instanceof TypeVariable) {
+            TypeVariable typeVariable = (TypeVariable) type;
+            oz4 oz4Var = this.a;
+            oz4Var.getClass();
+            return oz4Var.a(typeVariable, new nz4(typeVariable, oz4Var));
+        }
+        if (type instanceof ParameterizedType) {
+            ParameterizedType parameterizedType = (ParameterizedType) type;
+            Type ownerType = parameterizedType.getOwnerType();
+            return b15.f(ownerType == null ? null : b(ownerType), (Class) b(parameterizedType.getRawType()), c(parameterizedType.getActualTypeArguments()));
+        }
+        if (type instanceof GenericArrayType) {
+            return b15.d(b(((GenericArrayType) type).getGenericComponentType()));
+        }
+        if (!(type instanceof WildcardType)) {
+            return type;
+        }
+        WildcardType wildcardType = (WildcardType) type;
+        return new c(c(wildcardType.getLowerBounds()), c(wildcardType.getUpperBounds()), 1);
     }
 
-    public final Type[] c(Type[] r4) {
-        Type[] r0 = new Type[r4.length];
-        int r1 = 0;
-    L4:
-        if (r1 >= r4.length) goto L6;
-        r0[r1] = b(r4[r1]);
-        r1 = r1 + 1;
-        goto L4
-    L6:
-        return r0;
+    public final Type[] c(Type[] typeArr) {
+        Type[] typeArr2 = new Type[typeArr.length];
+        for (int i = 0; i < typeArr.length; i++) {
+            typeArr2[i] = b(typeArr[i]);
+        }
+        return typeArr2;
     }
 
-    public sz4(oz4 r1) {
-        this.a = r1;
+    public sz4(oz4 oz4Var) {
+        this.a = oz4Var;
     }
 }

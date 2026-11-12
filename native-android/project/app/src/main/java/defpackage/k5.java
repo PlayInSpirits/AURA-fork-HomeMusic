@@ -8,184 +8,159 @@ import app.homemusic.R;
 import java.lang.ref.WeakReference;
 import java.util.Arrays;
 import java.util.Map;
+import org.chromium.support_lib_boundary.WebSettingsBoundaryInterface;
 
 /* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
 /* JADX INFO: loaded from: classes.dex */
 public final class k5 extends q42 implements if1 {
-    public static final k5 A = null;
-    public static final k5 B = null;
-    public static final k5 C = null;
-    public static final k5 o = null;
-    public static final k5 p = null;
-    public static final k5 q = null;
-    public static final k5 r = null;
-    public static final k5 s = null;
-    public static final k5 t = null;
-    public static final k5 u = null;
-    public static final k5 v = null;
-    public static final k5 w = null;
-    public static final k5 x = null;
-    public static final k5 y = null;
-    public static final k5 z = null;
+    public static final k5 A;
+    public static final k5 B;
+    public static final k5 C;
+    public static final k5 o;
+    public static final k5 p;
+    public static final k5 q;
+    public static final k5 r;
+    public static final k5 s;
+    public static final k5 t;
+    public static final k5 u;
+    public static final k5 v;
+    public static final k5 w;
+    public static final k5 x;
+    public static final k5 y;
+    public static final k5 z;
     public final /* synthetic */ int n;
 
     static {
-        int r1 = 1;
-        o = new k5(r1, 0);
-        p = new k5(r1, 1);
-        q = new k5(r1, 2);
-        r = new k5(r1, 3);
-        s = new k5(r1, 4);
-        t = new k5(r1, 5);
-        u = new k5(r1, 6);
-        v = new k5(r1, 7);
-        w = new k5(r1, 8);
-        x = new k5(r1, 9);
-        y = new k5(r1, 10);
-        z = new k5(r1, 11);
-        A = new k5(r1, 12);
-        B = new k5(r1, 13);
-        C = new k5(r1, 14);
+        int i = 1;
+        o = new k5(i, 0);
+        p = new k5(i, 1);
+        q = new k5(i, 2);
+        r = new k5(i, 3);
+        s = new k5(i, 4);
+        t = new k5(i, 5);
+        u = new k5(i, 6);
+        v = new k5(i, 7);
+        w = new k5(i, 8);
+        x = new k5(i, 9);
+        y = new k5(i, 10);
+        z = new k5(i, 11);
+        A = new k5(i, 12);
+        B = new k5(i, 13);
+        C = new k5(i, 14);
     }
 
-    public /* synthetic */ k5(int r1, int r2) {
-        this.n = r2;
-        super(r1);
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public /* synthetic */ k5(int i, int i2) {
+        super(i);
+        this.n = i2;
     }
 
     @Override // defpackage.if1
-    public final Object invoke(Object r9) {
-        int r8 = this.n;
-        j15 r0 = j15.a;
-        switch(r8) {
-            case 0: goto L61;
-            case 1: goto L56;
-            case 2: goto L54;
-            case 3: goto L52;
-            case 4: goto L48;
-            case 5: goto L42;
-            case 6: goto L36;
-            case 7: goto L34;
-            case 8: goto L27;
-            case 9: goto L23;
-            case 10: goto L21;
-            case 11: goto L17;
-            case 12: goto L13;
-            case 13: goto L6;
-            default: goto L4;
-        };
-    L4:
-        jb0 r10 = (jb0) r9;
-        r10.getClass();
-        return r10.getClass().getSimpleName();
-    L6:
-        View r11 = (View) r9;
-        r11.getClass();
-        Object r12 = r11.getTag(R.id.nav_controller_view_tag);
-        if ((r12 instanceof WeakReference) == false) goto L10;
-        return (v23) ((WeakReference) r12).get();
-    L10:
-        if ((r12 instanceof v23) == true) goto L12;
-        return null;
-    L12:
-        return (v23) r12;
-    L13:
-        View r13 = (View) r9;
-        r13.getClass();
-        Object r14 = r13.getParent();
-        if ((r14 instanceof View) == true) goto L16;
-        return null;
-    L16:
-        return (View) r14;
-    L17:
-        r23 r15 = (r23) r9;
-        r15.getClass();
-        if ((r15 instanceof t23) == false) goto L68;
-        t23 r16 = (t23) r15;
-        return r16.h(r16.y, r16, null, false);
-    L68:
-        return null;
-    L21:
-        r23 r17 = (r23) r9;
-        r17.getClass();
-        return r17.o;
-    L23:
-        Context r18 = (Context) r9;
-        r18.getClass();
-        if ((r18 instanceof Activity) == true) goto L26;
-        return null;
-    L26:
-        return (Activity) r18;
-    L27:
-        Context r19 = (Context) r9;
-        r19.getClass();
-        if ((r19 instanceof ContextWrapper) == false) goto L30;
-        ContextWrapper r20 = (ContextWrapper) r19;
-    L31:
-        if (r20 != null) goto L33;
-        return null;
-    L33:
-        return r20.getBaseContext();
-    L30:
-        r20 = null;
-        goto L31
-    L34:
-        r23 r21 = (r23) r9;
-        r21.getClass();
-        return Integer.valueOf(r21.u);
-    L36:
-        r23 r22 = (r23) r9;
-        r22.getClass();
-        t23 r23 = r22.o;
-        if (r23 != null) goto L39;
-        return null;
-    L39:
-        if (r23.y == r22.u) goto L41;
-        return null;
-    L41:
-        return r23;
-    L42:
-        r23 r24 = (r23) r9;
-        r24.getClass();
-        t23 r25 = r24.o;
-        if (r25 != null) goto L45;
-        return null;
-    L45:
-        if (r25.y == r24.u) goto L47;
-        return null;
-    L47:
-        return r25;
-    L48:
-        Context r26 = (Context) r9;
-        r26.getClass();
-        if ((r26 instanceof ContextWrapper) == true) goto L51;
-        return null;
-    L51:
-        return ((ContextWrapper) r26).getBaseContext();
-    L52:
-        sv0.l((sv0) r9, x40.f, 0, 126);
-        return r0;
-    L54:
-        sv0 r27 = (sv0) r9;
-        return r0;
-    L56:
-        Map.Entry r28 = (Map.Entry) r9;
-        r28.getClass();
-        String r29 = (String) r28.getKey();
-        Object r30 = r28.getValue();
-        StringBuilder r31 = b11.s(r29, " : ");
-        if ((r30 instanceof Object[]) == false) goto L59;
-        r30 = Arrays.toString((Object[]) r30);
-        r30.getClass();
-    L59:
-        r31.append(r30);
-        return r31.toString();
-    L61:
-        Context r32 = (Context) r9;
-        r32.getClass();
-        if ((r32 instanceof ContextWrapper) == true) goto L64;
-        return null;
-    L64:
-        return ((ContextWrapper) r32).getBaseContext();
+    public final Object invoke(Object obj) {
+        int i = this.n;
+        j15 j15Var = j15.a;
+        switch (i) {
+            case 0:
+                Context context = (Context) obj;
+                context.getClass();
+                if (context instanceof ContextWrapper) {
+                    return ((ContextWrapper) context).getBaseContext();
+                }
+                return null;
+            case 1:
+                Map.Entry entry = (Map.Entry) obj;
+                entry.getClass();
+                String str = (String) entry.getKey();
+                Object value = entry.getValue();
+                StringBuilder sbS = b11.s(str, " : ");
+                if (value instanceof Object[]) {
+                    value = Arrays.toString((Object[]) value);
+                    value.getClass();
+                }
+                sbS.append(value);
+                return sbS.toString();
+            case 2:
+                return j15Var;
+            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
+                sv0.l((sv0) obj, x40.f, 0L, 126);
+                return j15Var;
+            case 4:
+                Context context2 = (Context) obj;
+                context2.getClass();
+                if (context2 instanceof ContextWrapper) {
+                    return ((ContextWrapper) context2).getBaseContext();
+                }
+                return null;
+            case 5:
+                r23 r23Var = (r23) obj;
+                r23Var.getClass();
+                t23 t23Var = r23Var.o;
+                if (t23Var == null || t23Var.y != r23Var.u) {
+                    return null;
+                }
+                return t23Var;
+            case 6:
+                r23 r23Var2 = (r23) obj;
+                r23Var2.getClass();
+                t23 t23Var2 = r23Var2.o;
+                if (t23Var2 == null || t23Var2.y != r23Var2.u) {
+                    return null;
+                }
+                return t23Var2;
+            case 7:
+                r23 r23Var3 = (r23) obj;
+                r23Var3.getClass();
+                return Integer.valueOf(r23Var3.u);
+            case 8:
+                Context context3 = (Context) obj;
+                context3.getClass();
+                ContextWrapper contextWrapper = context3 instanceof ContextWrapper ? (ContextWrapper) context3 : null;
+                if (contextWrapper != null) {
+                    return contextWrapper.getBaseContext();
+                }
+                return null;
+            case 9:
+                Context context4 = (Context) obj;
+                context4.getClass();
+                if (context4 instanceof Activity) {
+                    return (Activity) context4;
+                }
+                return null;
+            case 10:
+                r23 r23Var4 = (r23) obj;
+                r23Var4.getClass();
+                return r23Var4.o;
+            case 11:
+                r23 r23Var5 = (r23) obj;
+                r23Var5.getClass();
+                if (!(r23Var5 instanceof t23)) {
+                    return null;
+                }
+                t23 t23Var3 = (t23) r23Var5;
+                return t23Var3.h(t23Var3.y, t23Var3, null, false);
+            case 12:
+                View view = (View) obj;
+                view.getClass();
+                Object parent = view.getParent();
+                if (parent instanceof View) {
+                    return (View) parent;
+                }
+                return null;
+            case 13:
+                View view2 = (View) obj;
+                view2.getClass();
+                Object tag = view2.getTag(R.id.nav_controller_view_tag);
+                if (tag instanceof WeakReference) {
+                    return (v23) ((WeakReference) tag).get();
+                }
+                if (tag instanceof v23) {
+                    return (v23) tag;
+                }
+                return null;
+            default:
+                jb0 jb0Var = (jb0) obj;
+                jb0Var.getClass();
+                return jb0Var.getClass().getSimpleName();
+        }
     }
 }

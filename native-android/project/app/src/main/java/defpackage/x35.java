@@ -34,7 +34,7 @@ public final class x35 extends Drawable.ConstantState {
     }
 
     @Override // android.graphics.drawable.Drawable.ConstantState
-    public final Drawable newDrawable(Resources r1) {
+    public final Drawable newDrawable(Resources resources) {
         return new z35(this);
     }
 }

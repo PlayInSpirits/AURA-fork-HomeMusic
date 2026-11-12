@@ -18,9 +18,6 @@ public final class HubFavoriteSubject {
     @ka4("target_type")
     private String targetType;
 
-    public HubFavoriteSubject() {
-    }
-
     public final List<String> getAliases() {
         return this.aliases;
     }
@@ -45,27 +42,27 @@ public final class HubFavoriteSubject {
         return this.targetType;
     }
 
-    public final void setAliases(List<String> r1) {
-        this.aliases = r1;
+    public final void setAliases(List<String> list) {
+        this.aliases = list;
     }
 
-    public final void setLiked(boolean r1) {
-        this.liked = r1;
+    public final void setLiked(boolean z) {
+        this.liked = z;
     }
 
-    public final void setNdId(String r1) {
-        this.ndId = r1;
+    public final void setNdId(String str) {
+        this.ndId = str;
     }
 
-    public final void setProvenance(String r1) {
-        this.provenance = r1;
+    public final void setProvenance(String str) {
+        this.provenance = str;
     }
 
-    public final void setRef(String r1) {
-        this.ref = r1;
+    public final void setRef(String str) {
+        this.ref = str;
     }
 
-    public final void setTargetType(String r1) {
-        this.targetType = r1;
+    public final void setTargetType(String str) {
+        this.targetType = str;
     }
 }

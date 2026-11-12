@@ -8,7 +8,7 @@ import defpackage.xj0;
 /* JADX INFO: loaded from: classes.dex */
 public final class InternetRadioStationCache {
     public static final int $stable = 8;
-    public static final a12 Companion = null;
+    public static final a12 Companion = new a12();
     public static final String SOURCE_LOCAL = "local";
     public static final String SOURCE_SUBSONIC = "subsonic";
     private String coverArtUrl;
@@ -18,34 +18,8 @@ public final class InternetRadioStationCache {
     private String source;
     private String streamUrl;
 
-    static {
-        Companion = new a12();
-    }
-
-    public /* synthetic */ InternetRadioStationCache(String r2, String r3, String r4, String r5, String r6, String r7, int r8, xj0 r9) {
-        if ((r8 & 1) == 0) goto L6;
-        r2 = "";
-    L6:
-        if ((r8 & 2) == 0) goto L9;
-        r3 = null;
-    L9:
-        if ((r8 & 4) == 0) goto L12;
-        r4 = null;
-    L12:
-        if ((r8 & 8) == 0) goto L15;
-        r5 = null;
-    L15:
-        if ((r8 & 16) == 0) goto L18;
-        r6 = SOURCE_SUBSONIC;
-    L18:
-        if ((r8 & 32) == 0) goto L20;
-        String r10 = null;
-    L21:
-        this(r2, r3, r4, r5, r6, r10);
-        return;
-    L20:
-        r10 = r7;
-        goto L21
+    public /* synthetic */ InternetRadioStationCache(String str, String str2, String str3, String str4, String str5, String str6, int i, xj0 xj0Var) {
+        this((i & 1) != 0 ? "" : str, (i & 2) != 0 ? null : str2, (i & 4) != 0 ? null : str3, (i & 8) != 0 ? null : str4, (i & 16) != 0 ? SOURCE_SUBSONIC : str5, (i & 32) != 0 ? null : str6);
     }
 
     public final String getCoverArtUrl() {
@@ -72,71 +46,60 @@ public final class InternetRadioStationCache {
         return this.streamUrl;
     }
 
-    public final void setCoverArtUrl(String r1) {
-        this.coverArtUrl = r1;
+    public final void setCoverArtUrl(String str) {
+        this.coverArtUrl = str;
     }
 
-    public final void setHomePageUrl(String r1) {
-        this.homePageUrl = r1;
+    public final void setHomePageUrl(String str) {
+        this.homePageUrl = str;
     }
 
-    public final void setId(String r1) {
-        r1.getClass();
-        this.id = r1;
+    public final void setId(String str) {
+        str.getClass();
+        this.id = str;
     }
 
-    public final void setName(String r1) {
-        this.name = r1;
+    public final void setName(String str) {
+        this.name = str;
     }
 
-    public final void setSource(String r1) {
-        r1.getClass();
-        this.source = r1;
+    public final void setSource(String str) {
+        str.getClass();
+        this.source = str;
     }
 
-    public final void setStreamUrl(String r1) {
-        this.streamUrl = r1;
+    public final void setStreamUrl(String str) {
+        this.streamUrl = str;
     }
 
     public final InternetRadioStation toInternetRadioStation() {
         return new InternetRadioStation(this.id, this.name, this.streamUrl, this.homePageUrl, this.coverArtUrl, this.source);
     }
 
-    public InternetRadioStationCache(String r1, String r2, String r3, String r4, String r5, String r6) {
-        r1.getClass();
-        r5.getClass();
-        this.id = r1;
-        this.name = r2;
-        this.streamUrl = r3;
-        this.homePageUrl = r4;
-        this.source = r5;
-        this.coverArtUrl = r6;
+    public InternetRadioStationCache(String str, String str2, String str3, String str4, String str5, String str6) {
+        str.getClass();
+        str5.getClass();
+        this.id = str;
+        this.name = str2;
+        this.streamUrl = str3;
+        this.homePageUrl = str4;
+        this.source = str5;
+        this.coverArtUrl = str6;
     }
 
     public InternetRadioStationCache() {
-        String r1 = null;
-        String r2 = null;
-        String r3 = null;
-        String r4 = null;
-        String r5 = null;
-        String r6 = null;
-        this(r1, r2, r3, r4, r5, r6, 63, null);
+        this(null, null, null, null, null, null, 63, null);
     }
 
-    public InternetRadioStationCache(InternetRadioStation r9) {
-        r9.getClass();
-        String r0 = r9.getId();
-        if (r0 != null) goto L5;
-        r0 = "";
-    L5:
-        String r2 = r0;
-        String r3 = r9.getName();
-        String r4 = r9.getStreamUrl();
-        String r5 = r9.getHomePageUrl();
-        String r1 = r9.getSource();
-        if (r1 != null) goto L8;
-        r1 = SOURCE_SUBSONIC;
-    L8:
-        this(r2, r3, r4, r5, r1, r9.getCoverArt());
+    /* JADX WARN: Illegal instructions before constructor call */
+    public InternetRadioStationCache(InternetRadioStation internetRadioStation) {
+        internetRadioStation.getClass();
+        String id = internetRadioStation.getId();
+        String str = id == null ? "" : id;
+        String name = internetRadioStation.getName();
+        String streamUrl = internetRadioStation.getStreamUrl();
+        String homePageUrl = internetRadioStation.getHomePageUrl();
+        String source = internetRadioStation.getSource();
+        this(str, name, streamUrl, homePageUrl, source == null ? SOURCE_SUBSONIC : source, internetRadioStation.getCoverArt());
     }
 }

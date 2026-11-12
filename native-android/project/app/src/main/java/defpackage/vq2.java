@@ -7,30 +7,29 @@ import java.util.ArrayList;
 /* JADX INFO: loaded from: classes.dex */
 public final class vq2 {
     public final qq2 a;
-    public final ArrayList b;
+    public final ArrayList b = new ArrayList();
     public final boolean c;
     public final om1 d;
     public xk0 e;
 
-    public vq2(qq2 r2, boolean r3) {
-        this.b = new ArrayList();
-        this.a = r2;
-        this.d = r2.o;
-        this.c = r3;
+    public vq2(qq2 qq2Var, boolean z) {
+        this.a = qq2Var;
+        this.d = qq2Var.o;
+        this.c = z;
     }
 
-    public final wq2 a(String r5) {
-        ArrayList r4 = this.b;
-        int r0 = r4.size();
-        int r1 = 0;
-    L3:
-        if (r1 >= r0) goto L7;
-        Object r2 = r4.get(r1);
-        r1 = r1 + 1;
-        wq2 r3 = (wq2) r2;
-        if (r3.b.equals(r5) == false) goto L3;
-        return r3;
-    L7:
+    public final wq2 a(String str) {
+        ArrayList arrayList = this.b;
+        int size = arrayList.size();
+        int i = 0;
+        while (i < size) {
+            Object obj = arrayList.get(i);
+            i++;
+            wq2 wq2Var = (wq2) obj;
+            if (wq2Var.b.equals(str)) {
+                return wq2Var;
+            }
+        }
         return null;
     }
 

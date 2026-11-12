@@ -6,13 +6,7 @@ public class g04 extends lq {
     public static g04 I;
 
     @Override // defpackage.lq
-    public final boolean equals(Object r2) {
-        if ((r2 instanceof g04) == true) goto L5;
-        return false;
-    L5:
-        if (super.equals(r2) == false) goto L10;
-        return true;
-    L10:
-        return false;
+    public final boolean equals(Object obj) {
+        return (obj instanceof g04) && super.equals(obj);
     }
 }

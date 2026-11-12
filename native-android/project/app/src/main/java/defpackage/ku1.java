@@ -14,51 +14,45 @@ public final class ku1 implements lu1 {
     }
 
     @Override // defpackage.lu1
-    public final void c0(int r4) {
-        Parcel r0 = Parcel.obtain();
-        r0.writeInterfaceToken("android.support.v4.media.session.IMediaControllerCallback");     // Catch: Throwable -> L7
-        r0.writeInt(r4);     // Catch: Throwable -> L7
-        if (this.e.transact(12, r0, null, 1) == true) goto L9;
-        int r3 = tk2.f;     // Catch: Throwable -> L7
-    L9:
-        r0.recycle();
-        return;
-    L7:
-        th = move-exception;
-        r0.recycle();
-        throw th;
+    public final void c0(int i) {
+        Parcel parcelObtain = Parcel.obtain();
+        try {
+            parcelObtain.writeInterfaceToken("android.support.v4.media.session.IMediaControllerCallback");
+            parcelObtain.writeInt(i);
+            if (!this.e.transact(12, parcelObtain, null, 1)) {
+                int i2 = tk2.f;
+            }
+        } finally {
+            parcelObtain.recycle();
+        }
     }
 
     @Override // defpackage.lu1
-    public final void f(int r4) {
-        Parcel r0 = Parcel.obtain();
-        r0.writeInterfaceToken("android.support.v4.media.session.IMediaControllerCallback");     // Catch: Throwable -> L7
-        r0.writeInt(r4);     // Catch: Throwable -> L7
-        if (this.e.transact(9, r0, null, 1) == true) goto L9;
-        int r3 = tk2.f;     // Catch: Throwable -> L7
-    L9:
-        r0.recycle();
-        return;
-    L7:
-        th = move-exception;
-        r0.recycle();
-        throw th;
+    public final void f(int i) {
+        Parcel parcelObtain = Parcel.obtain();
+        try {
+            parcelObtain.writeInterfaceToken("android.support.v4.media.session.IMediaControllerCallback");
+            parcelObtain.writeInt(i);
+            if (!this.e.transact(9, parcelObtain, null, 1)) {
+                int i2 = tk2.f;
+            }
+        } finally {
+            parcelObtain.recycle();
+        }
     }
 
     @Override // defpackage.lu1
-    public final void j(ei3 r4) {
-        Parcel r0 = Parcel.obtain();
-        r0.writeInterfaceToken("android.support.v4.media.session.IMediaControllerCallback");     // Catch: Throwable -> L7
-        r0.writeInt(1);     // Catch: Throwable -> L7
-        r4.writeToParcel(r0, 0);     // Catch: Throwable -> L7
-        if (this.e.transact(3, r0, null, 1) == true) goto L9;
-        int r3 = tk2.f;     // Catch: Throwable -> L7
-    L9:
-        r0.recycle();
-        return;
-    L7:
-        th = move-exception;
-        r0.recycle();
-        throw th;
+    public final void j(ei3 ei3Var) {
+        Parcel parcelObtain = Parcel.obtain();
+        try {
+            parcelObtain.writeInterfaceToken("android.support.v4.media.session.IMediaControllerCallback");
+            parcelObtain.writeInt(1);
+            ei3Var.writeToParcel(parcelObtain, 0);
+            if (!this.e.transact(3, parcelObtain, null, 1)) {
+                int i = tk2.f;
+            }
+        } finally {
+            parcelObtain.recycle();
+        }
     }
 }

@@ -5,29 +5,29 @@ package defpackage;
 public final /* synthetic */ class et2 implements it2, wc0 {
     public final /* synthetic */ j60 n;
 
-    public /* synthetic */ et2(j60 r1) {
-        this.n = r1;
+    public /* synthetic */ et2(j60 j60Var) {
+        this.n = j60Var;
     }
 
     @Override // defpackage.wc0
-    public void accept(Object r1) {
-        this.n.h((al3) r1);
+    public void accept(Object obj) {
+        this.n.h((al3) obj);
     }
 
     @Override // defpackage.it2
-    public Object h(tn2 r2, fr2 r3, int r4) {
-        Object r1 = this.n.j;
-        r1.getClass();
-        pq r5 = r2.e;
-        kn2 r0 = r2.k;
-        fr2 r6 = r2.B(r3);
-        r5.getClass();
-        r0.getClass();
-        r6.getClass();
-        gn2 r7 = r0.a().a();
-        r7.getClass();
-        String r8 = r7.a;
-        r8.getClass();
-        return r5.e(r0, r6, r8, (lu3) r1);
+    public Object h(tn2 tn2Var, fr2 fr2Var, int i) {
+        Object obj = this.n.j;
+        obj.getClass();
+        pq pqVar = tn2Var.e;
+        kn2 kn2Var = tn2Var.k;
+        fr2 fr2VarB = tn2Var.B(fr2Var);
+        pqVar.getClass();
+        kn2Var.getClass();
+        fr2VarB.getClass();
+        gn2 gn2VarA = kn2Var.a().a();
+        gn2VarA.getClass();
+        String str = gn2VarA.a;
+        str.getClass();
+        return pqVar.e(kn2Var, fr2VarB, str, (lu3) obj);
     }
 }

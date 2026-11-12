@@ -5,8 +5,8 @@ package defpackage;
 public final class yq3 extends w34 {
     public final /* synthetic */ zq3 u;
 
-    public yq3(zq3 r1) {
-        this.u = r1;
+    public yq3(zq3 zq3Var) {
+        this.u = zq3Var;
     }
 
     @Override // defpackage.w34
@@ -15,7 +15,7 @@ public final class yq3 extends w34 {
     }
 
     @Override // defpackage.w34
-    public final Object c() {
+    public final Object c() throws Exception {
         this.u.d.a();
         return null;
     }

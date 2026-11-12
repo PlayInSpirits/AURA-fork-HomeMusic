@@ -7,14 +7,15 @@ public final class ug4 extends wd0 {
     public final /* synthetic */ wg4 o;
     public int p;
 
-    public ug4(wg4 r1, wd0 r2) {
-        this.o = r1;
-        super(r2);
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public ug4(wg4 wg4Var, wd0 wd0Var) {
+        super(wd0Var);
+        this.o = wg4Var;
     }
 
     @Override // defpackage.jp
-    public final Object invokeSuspend(Object r3) {
-        this.n = r3;
+    public final Object invokeSuspend(Object obj) {
+        this.n = obj;
         this.p |= Integer.MIN_VALUE;
         return this.o.d(null, 0.0f, null, this);
     }

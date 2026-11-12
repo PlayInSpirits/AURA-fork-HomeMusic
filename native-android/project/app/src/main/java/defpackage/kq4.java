@@ -13,19 +13,14 @@ public final class kq4 {
     public TabLayout d;
     public mq4 e;
 
-    public final void a(CharSequence r2) {
-        if (TextUtils.isEmpty(null) == true) goto L5;
-    L7:
-        this.a = r2;
-        mq4 r1 = this.e;
-        if (r1 == null) goto L11;
-        r1.d();
-        return;
-    L11:
-        return;
-    L5:
-        if (TextUtils.isEmpty(r2) == true) goto L7;
-        this.e.setContentDescription(r2);
-        goto L7
+    public final void a(CharSequence charSequence) {
+        if (TextUtils.isEmpty(null) && !TextUtils.isEmpty(charSequence)) {
+            this.e.setContentDescription(charSequence);
+        }
+        this.a = charSequence;
+        mq4 mq4Var = this.e;
+        if (mq4Var != null) {
+            mq4Var.d();
+        }
     }
 }

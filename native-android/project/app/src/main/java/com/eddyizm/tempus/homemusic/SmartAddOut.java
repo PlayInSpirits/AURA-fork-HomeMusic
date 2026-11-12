@@ -11,9 +11,6 @@ public final class SmartAddOut {
     private String playlistId;
     private String status;
 
-    public SmartAddOut() {
-    }
-
     public final String getPlaylistId() {
         return this.playlistId;
     }
@@ -22,11 +19,11 @@ public final class SmartAddOut {
         return this.status;
     }
 
-    public final void setPlaylistId(String r1) {
-        this.playlistId = r1;
+    public final void setPlaylistId(String str) {
+        this.playlistId = str;
     }
 
-    public final void setStatus(String r1) {
-        this.status = r1;
+    public final void setStatus(String str) {
+        this.status = str;
     }
 }

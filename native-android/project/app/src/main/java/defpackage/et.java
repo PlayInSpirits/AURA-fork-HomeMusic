@@ -5,43 +5,36 @@ package defpackage;
 final class et extends gx2 {
     public final if1 a;
 
-    public et(if1 r1) {
-        this.a = r1;
+    public et(if1 if1Var) {
+        this.a = if1Var;
     }
 
     @Override // defpackage.gx2
     public final cx2 d() {
-        ft r0 = new ft();
-        r0.B = this.a;
-        return r0;
+        ft ftVar = new ft();
+        ftVar.B = this.a;
+        return ftVar;
     }
 
     @Override // defpackage.gx2
-    public final void e(cx2 r2) {
-        ft r3 = (ft) r2;
-        if1 r1 = this.a;
-        r3.B = r1;
-        if (r3.n.A == false) goto L10;
-        f63 r4 = j51.M(r3, 2).I;
-        if (r4 == null) goto L9;
-        r4.Y0(r1, true);
-        return;
-    L9:
-        return;
+    public final void e(cx2 cx2Var) {
+        f63 f63Var;
+        ft ftVar = (ft) cx2Var;
+        if1 if1Var = this.a;
+        ftVar.B = if1Var;
+        if (ftVar.n.A && (f63Var = j51.M(ftVar, 2).I) != null) {
+            f63Var.Y0(if1Var, true);
+        }
     }
 
-    public final boolean equals(Object r4) {
-        if (this != r4) goto L6;
-        return true;
-    L6:
-        if ((r4 instanceof et) == true) goto L8;
+    public final boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj instanceof et) {
+            return this.a == ((et) obj).a;
+        }
         return false;
-    L8:
-        if1 r5 = ((et) r4).a;
-        if (this.a == r5) goto L11;
-        return false;
-    L11:
-        return true;
     }
 
     public final int hashCode() {

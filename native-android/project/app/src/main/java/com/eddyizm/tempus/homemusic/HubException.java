@@ -7,14 +7,15 @@ import java.io.IOException;
 public final class HubException extends IOException {
     public final int n;
 
-    public HubException(int r1, String r2) {
-        r2.getClass();
-        super(r2);
-        this.n = r1;
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public HubException(int i, String str) {
+        super(str);
+        str.getClass();
+        this.n = i;
     }
 
-    public HubException(String r1) {
-        super(r1);
+    public HubException(String str) {
+        super(str);
         this.n = 0;
     }
 }

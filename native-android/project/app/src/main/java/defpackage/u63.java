@@ -9,8 +9,8 @@ public final class u63 {
     public final ComponentName a;
     public final IBinder b;
 
-    public u63(ComponentName r1, IBinder r2) {
-        this.a = r1;
-        this.b = r2;
+    public u63(ComponentName componentName, IBinder iBinder) {
+        this.a = componentName;
+        this.b = iBinder;
     }
 }

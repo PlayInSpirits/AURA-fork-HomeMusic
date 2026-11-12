@@ -13,28 +13,27 @@ public final class AURAWavePlaybackListener implements oi3 {
     private static qi3 trackedPlayer;
     private final qi3 player;
 
-    public AURAWavePlaybackListener(qi3 r1) {
-        this.player = r1;
+    public AURAWavePlaybackListener(qi3 qi3Var) {
+        this.player = qi3Var;
     }
 
-    public static void attach(qi3 r3) {
-        if (r3 == null) goto L13;
-        qi3 r0 = trackedPlayer;
-        if (r0 != r3) goto L7;
-        syncFromPlayer(r3);
-        return;
-    L7:
-        if (r0 == null) goto L11;
-        oi3 r1 = observer;
-        if (r1 == null) goto L11;
-        r0.r0(r1);
-    L11:
-        AURAWavePlaybackListener r2 = new AURAWavePlaybackListener(r3);
-        observer = r2;
-        trackedPlayer = r3;
-        r3.v(r2);
-        syncFromPlayer(r3);
-        return;
+    public static void attach(qi3 qi3Var) {
+        oi3 oi3Var;
+        if (qi3Var != null) {
+            qi3 qi3Var2 = trackedPlayer;
+            if (qi3Var2 == qi3Var) {
+                syncFromPlayer(qi3Var);
+                return;
+            }
+            if (qi3Var2 != null && (oi3Var = observer) != null) {
+                qi3Var2.r0(oi3Var);
+            }
+            AURAWavePlaybackListener aURAWavePlaybackListener = new AURAWavePlaybackListener(qi3Var);
+            observer = aURAWavePlaybackListener;
+            trackedPlayer = qi3Var;
+            qi3Var.v(aURAWavePlaybackListener);
+            syncFromPlayer(qi3Var);
+        }
     }
 
     public static void markBottomPlaybackInteraction() {
@@ -45,63 +44,55 @@ public final class AURAWavePlaybackListener implements oi3 {
         AURAVersion.waveStarted = false;
         AURAVersion.wavePending = false;
         AURAVersion.wavePlaying = false;
-        View r0 = AURAVersion.waveButton;
-        if (r0 == null) goto L6;
-        AURAWaveToggleClickListener.syncIcon(r0);
-        return;
+        View view = AURAVersion.waveButton;
+        if (view != null) {
+            AURAWaveToggleClickListener.syncIcon(view);
+        }
     }
 
     public static void syncCurrent() {
-        MediaService r0 = is3.c;
-        if (r0 == null) goto L8;
-        qi3 r1 = r0.b();
-        if (r1 == null) goto L9;
-        syncFromPlayer(r1);
-        return;
-    L9:
-        return;
+        qi3 qi3VarB;
+        MediaService mediaService = is3.c;
+        if (mediaService == null || (qi3VarB = mediaService.b()) == null) {
+            return;
+        }
+        syncFromPlayer(qi3VarB);
     }
 
-    public static void syncFromPlayer(qi3 r3) {
-        if (r3 != null) goto L4;
-        return;
-    L4:
-        if (r3.a() == null) goto L7;
-        AURAVersion.wavePlaying = r3.h0();
-    L10:
-        View r2 = AURAVersion.waveButton;
-        if (r2 == null) goto L15;
-        AURAWaveToggleClickListener.syncIcon(r2);
-        return;
-    L15:
-        return;
-    L7:
-        if (AURAVersion.wavePending == false) goto L9;
-        AURAVersion.wavePlaying = true;
-        goto L10
-    L9:
-        AURAVersion.wavePlaying = false;
-        AURAVersion.waveStarted = false;
-        goto L10
+    public static void syncFromPlayer(qi3 qi3Var) {
+        if (qi3Var != null) {
+            if (qi3Var.a() != null) {
+                AURAVersion.wavePlaying = qi3Var.h0();
+            } else if (AURAVersion.wavePending) {
+                AURAVersion.wavePlaying = true;
+            } else {
+                AURAVersion.wavePlaying = false;
+                AURAVersion.waveStarted = false;
+            }
+            View view = AURAVersion.waveButton;
+            if (view != null) {
+                AURAWaveToggleClickListener.syncIcon(view);
+            }
+        }
     }
 
     @Override // defpackage.oi3
-    public void V(boolean r2) {
+    public void V(boolean z) {
         syncFromPlayer(this.player);
     }
 
     @Override // defpackage.oi3
-    public void q(boolean r2) {
+    public void q(boolean z) {
         syncFromPlayer(this.player);
     }
 
     @Override // defpackage.oi3
-    public void t(int r2, gn2 r3) {
+    public void t(int i, gn2 gn2Var) {
         syncFromPlayer(this.player);
     }
 
     @Override // defpackage.oi3
-    public void v(int r2) {
+    public void v(int i) {
         syncFromPlayer(this.player);
     }
 }

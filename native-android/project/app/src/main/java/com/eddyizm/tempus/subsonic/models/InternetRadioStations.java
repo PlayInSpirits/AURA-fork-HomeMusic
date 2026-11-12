@@ -11,14 +11,11 @@ public final class InternetRadioStations {
     @ka4("internetRadioStation")
     private List<InternetRadioStation> internetRadioStations;
 
-    public InternetRadioStations() {
-    }
-
     public final List<InternetRadioStation> getInternetRadioStations() {
         return this.internetRadioStations;
     }
 
-    public final void setInternetRadioStations(List<InternetRadioStation> r1) {
-        this.internetRadioStations = r1;
+    public final void setInternetRadioStations(List<InternetRadioStation> list) {
+        this.internetRadioStations = list;
     }
 }

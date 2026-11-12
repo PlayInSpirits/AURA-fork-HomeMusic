@@ -10,62 +10,50 @@ public final class am4 implements Runnable {
     public final boolean p;
     public final int q;
 
-    public am4(pq3 r1, gl4 r2, boolean r3, int r4) {
-        r1.getClass();
-        r2.getClass();
-        this.n = r1;
-        this.o = r2;
-        this.p = r3;
-        this.q = r4;
+    public am4(pq3 pq3Var, gl4 gl4Var, boolean z, int i) {
+        pq3Var.getClass();
+        gl4Var.getClass();
+        this.n = pq3Var;
+        this.o = gl4Var;
+        this.p = z;
+        this.q = i;
     }
 
     @Override // java.lang.Runnable
     public final void run() {
-        boolean r0 = this.p;
-        pq3 r1 = this.n;
-        gl4 r2 = this.o;
-        if (r0 == false) goto L12;
-        int r3 = this.q;
-        r1.getClass();
-        String r4 = r2.a.a;
-        Object r5 = r1.k;
-        monitor-enter(r5);
-        td5 r6 = r1.b(r4);     // Catch: Throwable -> L9
-        monitor-exit(r5);     // Catch: Throwable -> L9
-        boolean r7 = pq3.d(r4, r6, r3);
-    L31:
-        cx.f().b(cx.i("StopWorkRunnable"), "StopWorkRunnable for " + this.o.a.a + "; Processor.stopWork = " + r7);
-        return;
-    L9:
-        th = move-exception;
-        throw th;
-    L12:
-        int r8 = this.q;
-        r1.getClass();
-        String r9 = r2.a.a;
-        Object r10 = r1.k;
-        monitor-enter(r10);
-    L19:
-        th = move-exception;
-        throw th;
-    L15:
-        if (r1.f.get(r9) == null) goto L21;
-        cx.f().b(pq3.l, "Ignored stopWork. WorkerWrapper " + r9 + " is in foreground");     // Catch: Throwable -> L19
-        monitor-exit(r10);     // Catch: Throwable -> L19
-    L18:
-        r7 = false;
-        goto L31
-    L21:
-        Set r11 = (Set) r1.h.get(r9);     // Catch: Throwable -> L19
-        if (r11 != null) goto L24;
-    L29:
-        monitor-exit(r10);     // Catch: Throwable -> L19
-        goto L18
-    L24:
-        if (r11.contains(r2) == false) goto L29;
-        td5 r12 = r1.b(r9);     // Catch: Throwable -> L19
-        monitor-exit(r10);     // Catch: Throwable -> L19
-        r7 = pq3.d(r9, r12, r8);
-        goto L31
+        boolean zD;
+        td5 td5VarB;
+        boolean z = this.p;
+        pq3 pq3Var = this.n;
+        gl4 gl4Var = this.o;
+        if (z) {
+            int i = this.q;
+            pq3Var.getClass();
+            String str = gl4Var.a.a;
+            synchronized (pq3Var.k) {
+                td5VarB = pq3Var.b(str);
+            }
+            zD = pq3.d(str, td5VarB, i);
+        } else {
+            int i2 = this.q;
+            pq3Var.getClass();
+            String str2 = gl4Var.a.a;
+            synchronized (pq3Var.k) {
+                try {
+                    if (pq3Var.f.get(str2) != null) {
+                        cx.f().b(pq3.l, "Ignored stopWork. WorkerWrapper " + str2 + " is in foreground");
+                    } else {
+                        Set set = (Set) pq3Var.h.get(str2);
+                        if (set != null && set.contains(gl4Var)) {
+                            zD = pq3.d(str2, pq3Var.b(str2), i2);
+                        }
+                    }
+                    zD = false;
+                } catch (Throwable th) {
+                    throw th;
+                }
+            }
+        }
+        cx.f().b(cx.i("StopWorkRunnable"), "StopWorkRunnable for " + this.o.a.a + "; Processor.stopWork = " + zD);
     }
 }

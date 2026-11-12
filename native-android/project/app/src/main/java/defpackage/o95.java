@@ -9,7 +9,7 @@ import org.chromium.support_lib_boundary.WebViewProviderBoundaryInterface;
 public interface o95 {
     String[] b();
 
-    WebViewProviderBoundaryInterface createWebView(WebView r1);
+    WebViewProviderBoundaryInterface createWebView(WebView webView);
 
     StaticsBoundaryInterface getStatics();
 }

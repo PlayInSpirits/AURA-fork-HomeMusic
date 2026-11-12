@@ -10,30 +10,18 @@ public final class d83 {
     public final String[] c;
     public final Set d;
 
-    public d83(q12 r1, int[] r2, String[] r3) {
-        r1.getClass();
-        r2.getClass();
-        r3.getClass();
-        this.a = r1;
-        this.b = r2;
-        this.c = r3;
-        if (r2.length == r3.length) goto L5;
-        kf2.o("Check failed.");
-        throw null;
-    L5:
-        if (r3.length != 0) goto L7;
-        boolean r4 = true;
-    L8:
-        if (r4 == true) goto L10;
-        Set r5 = kb4.S(r3[0]);
-    L11:
-        this.d = r5;
-        return;
-    L10:
-        r5 = z01.n;
-        goto L11
-    L7:
-        r4 = false;
-        goto L8
+    public d83(q12 q12Var, int[] iArr, String[] strArr) {
+        q12Var.getClass();
+        iArr.getClass();
+        strArr.getClass();
+        this.a = q12Var;
+        this.b = iArr;
+        this.c = strArr;
+        if (iArr.length == strArr.length) {
+            this.d = !(strArr.length == 0) ? kb4.S(strArr[0]) : z01.n;
+        } else {
+            kf2.o("Check failed.");
+            throw null;
+        }
     }
 }

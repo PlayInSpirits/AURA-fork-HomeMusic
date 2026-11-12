@@ -12,9 +12,9 @@ public final class gy2 extends wd0 {
     public int t;
 
     @Override // defpackage.jp
-    public final Object invokeSuspend(Object r9) {
-        this.s = r9;
+    public final Object invokeSuspend(Object obj) {
+        this.s = obj;
         this.t |= Integer.MIN_VALUE;
-        return hy2.F(null, null, null, null, null, 0, this);
+        return hy2.F(null, null, null, null, null, 0L, this);
     }
 }
