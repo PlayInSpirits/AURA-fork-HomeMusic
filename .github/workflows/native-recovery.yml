@@ -1,10 +1,6 @@
 name: Recover AURA native Android sources
 
 "on":
-  push:
-    branches: [native-v0.10.1]
-    paths:
-      - '.github/workflows/native-recovery.yml'
   workflow_dispatch:
 
 permissions:
@@ -85,36 +81,42 @@ jobs:
           printf 'AURA_AAPT=%s\n' "$(cygpath -w "$BUILD_TOOLS_DIR/aapt.exe")" >> "$GITHUB_ENV"
           echo "Java, Python and Android SDK found."
 
-      - name: Download and verify original and AURA APK baselines
+      - name: Load verified APK baselines from persistent runner cache
         run: |
           set -euo pipefail
+          source tools/aura-runner-cache.sh
           mkdir -p recovery/downloads recovery/jadx-original recovery/jadx-aura-0302 recovery/jadx-aura-0751 recovery/apktool-aura-0751 recovery/tools
-          curl.exe -fL --retry 3 --retry-delay 2 "https://github.com/justman-1/HomeMusic-public/releases/download/v1.14.7/HomeMusic.apk" -o recovery/downloads/HomeMusic-1.14.7.apk
-          curl.exe -fL --retry 3 --retry-delay 2 "https://github.com/PlayInSpirits/AURA-fork-HomeMusic/releases/download/v0.30.2/AURA-0.30.apk" -o recovery/downloads/AURA-0.30.2.apk
-          curl.exe -fL --retry 3 --retry-delay 2 "https://github.com/PlayInSpirits/AURA-fork-HomeMusic/releases/download/v0.75.1/AURA-0.75.apk" -o recovery/downloads/AURA-0.75.1.apk
-          curl.exe -fL --retry 3 "https://api.github.com/repos/PlayInSpirits/AURA-fork-HomeMusic/releases/tags/v0.75.1" -o recovery/downloads/release-v0.75.1.json
+
+          aura_cache_fetch "downloads/HomeMusic-1.14.7.apk" \
+            "https://github.com/justman-1/HomeMusic-public/releases/download/v1.14.7/HomeMusic.apk" \
+            "72176dcf191cdbf5a5ea8e99ecc1cb2017fbaf842386ab2ae1436b5537d9a852" \
+            "recovery/downloads/HomeMusic-1.14.7.apk"
+
+          aura_cache_fetch "downloads/AURA-0.30.2.apk" \
+            "https://github.com/PlayInSpirits/AURA-fork-HomeMusic/releases/download/v0.30.2/AURA-0.30.apk" \
+            "a568eef8504892850f5415e03106e0fb8246810168b923f1522761c12587413a" \
+            "recovery/downloads/AURA-0.30.2.apk"
+
+          aura_cache_fetch "downloads/AURA-0.75.1.apk" \
+            "https://github.com/PlayInSpirits/AURA-fork-HomeMusic/releases/download/v0.75.1/AURA-0.75.apk" \
+            "f6e62cb1b228f0cc67eaae5e05efcddc63c8c2c2a7084fb93923041260e7e4bc" \
+            "recovery/downloads/AURA-0.75.1.apk"
+
           "$AURA_PYTHON" - <<'PY'
           from hashlib import sha256
           from pathlib import Path
-          import json
-          release=json.loads(Path("recovery/downloads/release-v0.75.1.json").read_text(encoding="utf-8"))
-          asset=next((x for x in release.get("assets",[]) if x.get("name")=="AURA-0.75.apk"),None)
-          if not asset or not str(asset.get("digest","")).startswith("sha256:"):
-              raise SystemExit("GitHub release does not publish a SHA-256 digest for AURA-0.75.apk")
           expected = {
               "HomeMusic-1.14.7.apk": "72176dcf191cdbf5a5ea8e99ecc1cb2017fbaf842386ab2ae1436b5537d9a852",
               "AURA-0.30.2.apk": "a568eef8504892850f5415e03106e0fb8246810168b923f1522761c12587413a",
-              "AURA-0.75.1.apk": asset["digest"].removeprefix("sha256:"),
+              "AURA-0.75.1.apk": "f6e62cb1b228f0cc67eaae5e05efcddc63c8c2c2a7084fb93923041260e7e4bc",
           }
           root = Path("recovery/downloads")
           for name, wanted in expected.items():
               p = root / name
-              actual = sha256(p.read_bytes()).hexdigest().strip().lower()
-              wanted = wanted.strip().lower()
+              actual = sha256(p.read_bytes()).hexdigest()
               if actual != wanted:
-                  raise SystemExit(f"SHA-256 mismatch for {name}: actual={actual!r} expected={wanted!r} actual_len={len(actual)} expected_len={len(wanted)}")
-              print(f"Verified {name}: {actual} ({p.stat().st_size} bytes)")
-          print("AURA 0.75.1 digest source: GitHub release asset metadata")
+                  raise SystemExit(f"SHA-256 mismatch for {name}: {actual}")
+              print(f"Verified cached baseline {name}: {actual} ({p.stat().st_size} bytes)")
           PY
 
       - name: Verify installed AURA identity and signing certificate
@@ -156,7 +158,8 @@ jobs:
       - name: Download and verify JADX 1.5.6
         run: |
           set -euo pipefail
-          curl.exe -fL --retry 3 "https://github.com/skylot/jadx/releases/download/v1.5.6/jadx-1.5.6.zip" -o recovery/tools/jadx-1.5.6.zip
+          source tools/aura-runner-cache.sh
+          aura_cache_fetch "tools/jadx-1.5.6.zip" "https://github.com/skylot/jadx/releases/download/v1.5.6/jadx-1.5.6.zip" "545ea2be9c242511bc145755cf4bda2485ade42966e096f8b4d3da2a230e8974" "recovery/tools/jadx-1.5.6.zip"
           "$AURA_PYTHON" - <<'PY'
           from hashlib import sha256
           from pathlib import Path
@@ -217,7 +220,8 @@ jobs:
       - name: Decode latest AURA resources and Smali with Apktool
         run: |
           set -euo pipefail
-          curl.exe -fL --retry 3 "https://github.com/iBotPeaches/Apktool/releases/download/v3.0.3/apktool_3.0.3.jar" -o recovery/tools/apktool_3.0.3.jar
+          source tools/aura-runner-cache.sh
+          aura_cache_fetch "tools/apktool_3.0.3.jar" "https://github.com/iBotPeaches/Apktool/releases/download/v3.0.3/apktool_3.0.3.jar" "dbf930b076c6b9be08d57c449cacefc3bdd6b71ebd59b3066fc0e1f5b14f9423" "recovery/tools/apktool_3.0.3.jar"
           "$AURA_PYTHON" - <<'PY'
           from hashlib import sha256
           from pathlib import Path
@@ -233,9 +237,10 @@ jobs:
         continue-on-error: true
         run: |
           set -euo pipefail
+          source tools/aura-runner-cache.sh
           mkdir -p recovery/tools/dex2jar recovery/cfr-aura-0751
-          curl.exe -fL --retry 3 "https://github.com/pxb1988/dex2jar/releases/download/v2.4/dex-tools-v2.4.zip" -o recovery/tools/dex-tools-v2.4.zip
-          curl.exe -fL --retry 3 "https://github.com/leibnitz27/cfr/releases/download/0.152/cfr-0.152.jar" -o recovery/tools/cfr-0.152.jar
+          aura_cache_fetch "tools/dex-tools-v2.4.zip" "https://github.com/pxb1988/dex2jar/releases/download/v2.4/dex-tools-v2.4.zip" "ee7c45eb3c1d2474a6145d8d447e651a736a22d9664b6d3d3be5a5a817dda23a" "recovery/tools/dex-tools-v2.4.zip"
+          aura_cache_fetch "tools/cfr-0.152.jar" "https://github.com/leibnitz27/cfr/releases/download/0.152/cfr-0.152.jar" "8a85ada8cec494121246805a5562b82b" "recovery/tools/cfr-0.152.jar" md5
           "$AURA_PYTHON" - <<'PY'
           from hashlib import sha256,md5
           from pathlib import Path
