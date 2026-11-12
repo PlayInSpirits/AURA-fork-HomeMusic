@@ -94,11 +94,12 @@ jobs:
           import re
           import shutil
 
-          artifact = Path("recovery-input/recovery")
-          structured = artifact / "jadx-aura-0751" / "sources"
-          simple = artifact / "jadx-aura-0751-simple" / "sources"
-          cfr_root = artifact / "cfr-aura-0751"
-          gradle_export = artifact / "gradle-export-aura-0751"
+          recovery_root = Path("recovery-input/recovery")
+          artifact = recovery_root
+          structured = recovery_root / "jadx-aura-0751" / "sources"
+          simple = recovery_root / "jadx-aura-0751-simple" / "sources"
+          cfr_root = recovery_root / "cfr-aura-0751"
+          gradle_export = recovery_root / "gradle-export-aura-0751"
           project = Path("native-android/project")
           app_sources = project / "app/src/main/java"
 
@@ -298,7 +299,7 @@ jobs:
               "Do not publish a release until compile, signing compatibility, data preservation, and functional tests pass.\n"
           )
           (project / "RECOVERED-SOURCE-NOTICE.md").write_text(notice, encoding="utf-8")
-          inventory_path = artifact / "recovery-inventory.json"
+          inventory_path = recovery_root / "recovery-inventory.json"
           if inventory_path.is_file():
               shutil.copy2(inventory_path, project / "recovery-inventory.json")
           PY
