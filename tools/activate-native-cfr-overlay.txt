@@ -1,0 +1,1 @@
+One-time CFR overlay: apply clean, no-placeholder CFR Java classes a0/ad3/b31/c72/en1/ey/f22/f31 from saved Actions recovery artifact 43147516314. Preserve all existing manual source fixes and compile.
