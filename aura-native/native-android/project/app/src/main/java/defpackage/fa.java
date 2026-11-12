@@ -241,8 +241,8 @@ public final /* synthetic */ class fa implements gf1 {
                 if ((((cx2) w12Var.g).q & 8) != 0) {
                     for (cx2 cx2Var = (sq4) w12Var.f; cx2Var != null; cx2Var = cx2Var.r) {
                         if ((cx2Var.p & 8) != 0) {
-                            ?? C = cx2Var;
-                            ?? f13Var = 0;
+                            cx2 C = cx2Var;
+                            f13 f13Var = null;
                             while (C != 0) {
                                 if (C instanceof g94) {
                                     g94 g94Var = (g94) C;
