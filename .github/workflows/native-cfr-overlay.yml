@@ -1,0 +1,168 @@
+name: Apply targeted CFR source overlay
+
+"on":
+  push:
+    branches: [native-v0.10.1]
+    paths:
+      - 'tools/activate-native-cfr-overlay.txt'
+
+permissions:
+  actions: read
+  contents: write
+
+concurrency:
+  group: aura-native-cfr-overlay
+  cancel-in-progress: false
+
+jobs:
+  overlay-and-compile:
+    name: Apply saved CFR classes and compile on Windows runner
+    runs-on: [self-hosted, windows, x64]
+    defaults:
+      run:
+        working-directory: native
+        shell: 'C:\PROGRA~1\Git\bin\bash.exe --noprofile --norc -eo pipefail {0}'
+
+    steps:
+      - name: Checkout native migration branch
+        uses: actions/checkout@v4
+        with:
+          ref: native-v0.10.1
+          path: native
+          fetch-depth: 1
+
+      - name: Verify persistent JDK, Python, SDK and Gradle
+        run: |
+          set -euo pipefail
+          JAVA_HOME_UNIX="$(cygpath -u "$JAVA_HOME")"
+          [ -f "$JAVA_HOME_UNIX/bin/java.exe" ] || { echo "::error::JDK 17 is missing."; exit 1; }
+          "$JAVA_HOME_UNIX/bin/java.exe" -version
+
+          TOOL_CACHE="$(cygpath -u "$RUNNER_TOOL_CACHE")"
+          PYTHON="$TOOL_CACHE/aura-python-3.12.10/python.exe"
+          GRADLE="$TOOL_CACHE/aura-gradle-9.6.0/bin/gradle.bat"
+          [ -f "$PYTHON" ] || { echo "::error::Persistent Python 3.12 is missing."; exit 1; }
+          [ -f "$GRADLE" ] || { echo "::error::Persistent Gradle 9.6.0 is missing."; exit 1; }
+          "$PYTHON" --version
+
+          SDK_ROOT="$(cygpath -u "C:/Android")"
+          [ -f "$SDK_ROOT/platforms/android-37.0/android.jar" ] || { echo "::error::Android API 37 platform is missing."; exit 1; }
+          [ -f "$SDK_ROOT/build-tools/37.0.0/aapt.exe" ] || { echo "::error::Android Build Tools 37.0.0 are missing."; exit 1; }
+          printf 'AURA_PYTHON=%s\n' "$(cygpath -w "$PYTHON")" >> "$GITHUB_ENV"
+          printf 'ANDROID_HOME=C:/Android\nANDROID_SDK_ROOT=C:/Android\n' >> "$GITHUB_ENV"
+
+      - name: Check persistent recovery-artifact cache
+        id: artifact_cache
+        shell: pwsh
+        run: |
+          $cache = Join-Path $env:RUNNER_TOOL_CACHE 'aura-native-v0.10.1\recovery36'
+          if (Test-Path (Join-Path $cache 'cfr-aura-0751')) {
+            "hit=true" >> $env:GITHUB_OUTPUT
+            Write-Host "Recovery artifact cache hit: $cache"
+          } else {
+            "hit=false" >> $env:GITHUB_OUTPUT
+            Write-Host "Recovery artifact cache miss."
+          }
+
+      - name: Download saved recovery artifact (only on cache miss)
+        if: steps.artifact_cache.outputs.hit != 'true'
+        uses: actions/download-artifact@v4
+        with:
+          name: aura-native-recovery
+          path: native/recovery-input
+          github-token: \${{ secrets.GITHUB_TOKEN }}
+          repository: PlayInSpirits/AURA-fork-HomeMusic
+          run-id: 43147516314
+
+      - name: Persist recovery artifact outside the checkout
+        if: steps.artifact_cache.outputs.hit != 'true'
+        shell: pwsh
+        run: |
+          $source = Join-Path $env:GITHUB_WORKSPACE 'native\recovery-input\recovery'
+          $destination = Join-Path $env:RUNNER_TOOL_CACHE 'aura-native-v0.10.1\recovery36'
+          if (-not (Test-Path (Join-Path $source 'cfr-aura-0751'))) {
+            throw "CFR source directory is missing from the downloaded artifact."
+          }
+          New-Item -ItemType Directory -Force -Path $destination | Out-Null
+          Copy-Item -Path (Join-Path $source '*') -Destination $destination -Recurse -Force
+          Write-Host "Cached recovery artifact at $destination"
+
+      - name: Apply only the eight clean CFR classes
+        run: |
+          set -euo pipefail
+          CACHE_ROOT="$(cygpath -u "$RUNNER_TOOL_CACHE")/aura-native-v0.10.1/recovery36"
+          export AURA_RECOVERY_ROOT="$CACHE_ROOT"
+          "$AURA_PYTHON" - <<'PY'
+          from pathlib import Path
+          import re
+          import os
+
+          recovery = Path(os.environ["AURA_RECOVERY_ROOT"])
+          cfr_root = recovery / "cfr-aura-0751"
+          app_sources = Path("native-android/project/app/src/main/java")
+          targets = ["a0", "ad3", "b31", "c72", "en1", "ey", "f22", "f31"]
+
+          unresolved = re.compile(r"\?\?\s+[A-Za-z_$][\w$]*")
+          invalid_void = re.compile(r"\bvoid\s+var[\w$]*")
+          applied = []
+          for name in targets:
+              source = cfr_root / f"{name}.java"
+              destination = app_sources / "defpackage" / f"{name}.java"
+              if not source.is_file() or not destination.is_file():
+                  raise SystemExit(f"Required CFR/app source is missing: {name}")
+              candidate = source.read_text(encoding="utf-8", errors="replace")
+              if unresolved.search(candidate) or invalid_void.search(candidate):
+                  raise SystemExit(f"CFR output for {name} still contains unresolved Java declarations.")
+              if re.search(r"(?m)^package\s+", candidate):
+                  raise SystemExit(f"Unexpected package declaration in CFR default-package class {name}.")
+              candidate = "package defpackage;\n\n" + candidate
+              destination.write_text(candidate, encoding="utf-8", newline="\n")
+              applied.append(name)
+
+          print("Applied CFR classes:", ", ".join(applied))
+          PY
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config core.longpaths true
+          git add native-android/project/app/src/main/java/defpackage
+          if ! git diff --cached --quiet; then
+            git commit -m "Apply clean CFR fallbacks to unresolved native classes"
+            git push origin HEAD:native-v0.10.1
+          fi
+
+      - name: Compile :app:assembleDebug
+        run: |
+          set -euo pipefail
+          mkdir -p build-diagnostics
+          TOOL_CACHE="$(cygpath -u "$RUNNER_TOOL_CACHE")"
+          GRADLE_BAT="$(cygpath -w "$TOOL_CACHE/aura-gradle-9.6.0/bin/gradle.bat")"
+          PROJECT_WIN="$(cygpath -w "$PWD/native-android/project")"
+          LOG_WIN="$(cygpath -w "$PWD/build-diagnostics/gradle-build.log")"
+          set +e
+          powershell.exe -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command "& '$GRADLE_BAT' --no-daemon --stacktrace -p '$PROJECT_WIN' :app:assembleDebug *> '$LOG_WIN'; exit \$LASTEXITCODE"
+          BUILD_EXIT=$?
+          set -e
+          echo "$BUILD_EXIT" > build-diagnostics/gradle-build-exit-code.txt
+          cat build-diagnostics/gradle-build.log
+          if [ "$BUILD_EXIT" -ne 0 ]; then
+            echo "::error::Native AURA still has compiler errors; inspect the diagnostic artifact."
+            exit 1
+          fi
+          APK="$(find native-android/project/app/build/outputs/apk/debug -maxdepth 1 -type f -name '*.apk' | head -n 1)"
+          [ -n "$APK" ] || { echo "::error::No debug APK was produced."; exit 1; }
+          AAPT="$(cygpath -u "$ANDROID_HOME")/build-tools/37.0.0/aapt.exe"
+          "$AAPT" dump badging "$APK" | tee build-diagnostics/apk-badging.txt
+          grep -F "package: name='app.homemusic' versionCode='7502' versionName='v0.10.1'" build-diagnostics/apk-badging.txt
+
+      - name: Upload CFR-overlay build diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: aura-native-cfr-overlay-debug
+          path: |
+            native/native-android/project/app/build/outputs/apk/debug/*.apk
+            native/build-diagnostics/
+          if-no-files-found: warn
+          compression-level: 3
+          retention-days: 30
