@@ -372,7 +372,7 @@ public final class ls2 extends ir2 {
     /* JADX WARN: Type inference failed for: r23v2 */
     public final ei3 H(al3 al3Var) {
         long j;
-        ?? r23;
+        String r23;
         int i;
         int iG;
         String message;

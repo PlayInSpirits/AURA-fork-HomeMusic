@@ -174,7 +174,7 @@ public final class ky2 implements k51 {
         long j3;
         long position;
         long j4;
-        ?? r4;
+        boolean r4;
         int iF;
         int i2;
         int iM;

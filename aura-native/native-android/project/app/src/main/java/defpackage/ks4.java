@@ -67,13 +67,11 @@ public final class ks4 {
         int i15;
         int i16;
         long jA;
-        ?? r8;
-        boolean zIsFallbackLineSpacingEnabled;
+        boolean fallbackLineSpacing = false;
         int topPadding;
-        boolean zIsFallbackLineSpacingEnabled2;
         long jA2;
         int i17;
-        ?? r6;
+        Paint.FontMetricsInt r6;
         int i18;
         this.a = textPaint;
         this.b = truncateAt;
@@ -171,30 +169,28 @@ public final class ks4 {
                         BoringLayout boringLayout = (BoringLayout) layoutM;
                         i15 = 33;
                         if (Build.VERSION.SDK_INT >= 33) {
-                            zIsFallbackLineSpacingEnabled2 = boringLayout.isFallbackLineSpacingEnabled();
+                            fallbackLineSpacing = boringLayout.isFallbackLineSpacingEnabled();
                         } else {
-                            r8 = i10;
+                            fallbackLineSpacing = false;
                         }
                     } else {
                         i15 = 33;
                         StaticLayout staticLayout = (StaticLayout) layoutM;
                         int i20 = Build.VERSION.SDK_INT;
                         if (i20 >= 33) {
-                            zIsFallbackLineSpacingEnabled = staticLayout.isFallbackLineSpacingEnabled();
+                            fallbackLineSpacing = staticLayout.isFallbackLineSpacingEnabled();
                         } else if (i20 >= 28) {
-                            r8 = 1;
+                            fallbackLineSpacing = true;
                         } else {
-                            r8 = i10;
+                            fallbackLineSpacing = false;
                         }
                     }
-                    if (r8 != 0) {
-                        r8 = zIsFallbackLineSpacingEnabled;
+                    if (fallbackLineSpacing) {
                         th = null;
                         c = ' ';
                         j = 4294967295L;
                         i14 = 1;
                     } else {
-                        r8 = zIsFallbackLineSpacingEnabled;
                         TextPaint paint = layoutM.getPaint();
                         CharSequence text3 = layoutM.getText();
                         th = null;
@@ -204,10 +200,8 @@ public final class ks4 {
                         j = 4294967295L;
                         int i21 = rectU.top;
                         if (i21 < lineAscent) {
-                            r8 = zIsFallbackLineSpacingEnabled2;
                             topPadding = lineAscent - i21;
                         } else {
-                            r8 = zIsFallbackLineSpacingEnabled2;
                             topPadding = layoutM.getTopPadding();
                         }
                         i14 = 1;
@@ -222,12 +216,8 @@ public final class ks4 {
                 }
                 int i23 = i12 != 0 ? i10 : (int) (jA3 >> c);
                 if (i13 != 0) {
-                    r8 = zIsFallbackLineSpacingEnabled2;
-                    r8 = zIsFallbackLineSpacingEnabled2;
                     i16 = i10;
                 } else {
-                    r8 = zIsFallbackLineSpacingEnabled2;
-                    r8 = zIsFallbackLineSpacingEnabled2;
                     i16 = (int) (jA3 & j);
                 }
                 jA = ns4.a(i23, i16);
@@ -282,7 +272,7 @@ public final class ks4 {
                 fontMetricsInt.bottom = staticLayoutM.getLineBottom(i17);
                 r6 = fontMetricsInt;
             }
-            this.m = r6 != 0 ? ((Paint.FontMetricsInt) r6).bottom - ((int) (d(i19) - g(i19))) : i17;
+            this.m = r6 != null ? r6.bottom - ((int) (d(i19) - g(i19))) : i17;
             this.l = r6;
             Layout layout2 = this.e;
             this.i = vr1.t(layout2, i19, layout2.getPaint());

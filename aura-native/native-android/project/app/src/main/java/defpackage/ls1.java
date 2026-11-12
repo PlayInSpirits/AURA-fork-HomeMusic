@@ -42,7 +42,7 @@ public final /* synthetic */ class ls1 implements Runnable {
     @Override // java.lang.Runnable
     public final void run() {
         String strConcat;
-        ?? arrayList;
+        List arrayList;
         String strConcat2;
         boolean zBooleanValue;
         switch (this.n) {

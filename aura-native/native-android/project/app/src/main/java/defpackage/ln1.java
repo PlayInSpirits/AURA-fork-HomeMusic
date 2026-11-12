@@ -2299,8 +2299,8 @@ public final class ln1 implements hd2, kd2, da4, m51, o44 {
         boolean zContains = set.contains(numValueOf);
         HashSet hashSet = this.K;
         SparseIntArray sparseIntArray = this.L;
-        ?? kn1Var = 0;
-        kn1Var = 0;
+        kn1 kn1Var = null;
+        kn1Var = null;
         if (zContains) {
             rr2.l(set.contains(Integer.valueOf(i2)));
             int i3 = sparseIntArray.get(i2, -1);
@@ -2313,7 +2313,7 @@ public final class ln1 implements hd2, kd2, da4, m51, o44 {
         } else {
             int i4 = 0;
             while (true) {
-                ?? r1 = this.I;
+                kn1[] r1 = this.I;
                 if (i4 >= r1.length) {
                     break;
                 }
@@ -2324,7 +2324,7 @@ public final class ln1 implements hd2, kd2, da4, m51, o44 {
                 i4++;
             }
         }
-        if (kn1Var == 0) {
+        if (kn1Var == null) {
             if (this.h0) {
                 return y(i, i2);
             }
@@ -2352,7 +2352,7 @@ public final class ln1 implements hd2, kd2, da4, m51, o44 {
             iArrCopyOf[length] = i;
             kn1[] kn1VarArr = this.I;
             String str = f35.a;
-            ?? CopyOf = Arrays.copyOf(kn1VarArr, kn1VarArr.length + 1);
+            kn1[] CopyOf = Arrays.copyOf(kn1VarArr, kn1VarArr.length + 1);
             CopyOf[kn1VarArr.length] = kn1Var;
             this.I = (kn1[]) CopyOf;
             boolean[] zArrCopyOf = Arrays.copyOf(this.b0, i5);

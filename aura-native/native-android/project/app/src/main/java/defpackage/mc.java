@@ -153,7 +153,7 @@ public final class mc implements qd3 {
         zg3 zg3Var;
         CharSequence charSequence2;
         zg3 zg3Var2;
-        ?? obj4 = new Object();
+        mc obj4 = this;
         obj4.n = str;
         obj4.o = zs4Var;
         obj4.p = list;
