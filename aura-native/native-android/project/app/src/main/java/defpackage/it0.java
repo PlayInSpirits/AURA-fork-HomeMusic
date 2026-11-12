@@ -206,7 +206,7 @@ public final class it0 extends Handler {
     /* JADX WARN: Type inference failed for: r4v9 */
     @Override // android.os.Handler
     public final void handleMessage(Message message) {
-        ?? arrayList;
+        List arrayList;
         int i;
         int i2;
         ArrayList arrayList2;
