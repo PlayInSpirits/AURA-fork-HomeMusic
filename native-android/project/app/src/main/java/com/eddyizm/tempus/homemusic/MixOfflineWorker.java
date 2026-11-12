@@ -193,14 +193,10 @@ extends Worker {
                             var8_4.printStackTrace();
                             var8_3 = null;
                         }
-                        if (var8_3 == null) lbl-1000:
-                        // 2 sources
-
-                        {
+                        if (var8_3 == null) {
                             continue block11;
                         }
                         var12_8.e(gi1.G((Child)var8_3), (Download)var8_3);
-                        ** continue;
                     }
                     gi1.V((ow2)var11_6);
                     var1_1 = var2_15 = lg2.W(r40.k0(var9_7, 10));

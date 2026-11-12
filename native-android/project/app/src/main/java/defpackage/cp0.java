@@ -51,7 +51,7 @@ extends tl4 {
                         if (var7_6 != var9_7) break block8;
                     }
                     catch (Throwable var1_2) {
-                        ** break block10
+                        throw var1_2;
                     }
                     var3_9 = this.d;
                     var4_10 = var2_4.h();
@@ -74,12 +74,6 @@ extends tl4 {
             this.c = var2_4.g();
             this.d = var2_4.h();
             return var5_11;
-        }
-lbl-1000:
-        // 1 sources
-
-        {
-            throw var1_2;
         }
     }
 
