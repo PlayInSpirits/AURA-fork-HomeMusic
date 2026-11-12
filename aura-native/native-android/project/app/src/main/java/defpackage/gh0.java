@@ -471,7 +471,7 @@ public abstract class gh0 {
     /* JADX WARN: Type inference failed for: r9v4 */
     /* JADX WARN: Type inference failed for: r9v5 */
     public static final ArrayList H(hg4 hg4Var, int i2, Integer num) {
-        ?? tu3Var = new tu3(hg4Var);
+        tu3 tu3Var = new tu3(hg4Var);
         i2 = hg4Var.q(i2);
         mg1 mg1VarA = hg4Var.a(i2);
         while (i2 >= 0) {
@@ -793,7 +793,7 @@ public abstract class gh0 {
         if (lg4Var.w || lg4Var.p() == 0) {
             return u01.n;
         }
-        ?? tu3Var = new tu3(lg4Var);
+        tu3 tu3Var = new tu3(lg4Var);
         if (num2 != null) {
             iE = num2.intValue();
         } else {
