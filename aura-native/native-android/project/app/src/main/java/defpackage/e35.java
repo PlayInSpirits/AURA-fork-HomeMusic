@@ -309,7 +309,7 @@ public abstract class e35 {
                     boolean bl6;
                     Object object6;
                     block40: {
-                        void var0_3;
+                        Throwable var0_3;
                         block35: {
                             block39: {
                                 block37: {
@@ -330,6 +330,7 @@ public abstract class e35 {
                                                         break block34;
                                                     }
                                                     catch (Throwable throwable) {
+                                                        var0_3 = throwable;
                                                         break block35;
                                                     }
                                                 }
@@ -356,6 +357,7 @@ public abstract class e35 {
                                             e35.T((XmlPullParser)object);
                                         }
                                         catch (Throwable throwable) {
+                                            var0_3 = throwable;
                                             break block35;
                                         }
                                     }
@@ -1219,7 +1221,7 @@ lbl145:
     public static final void e(List list, int n16, boolean bl5, Uri uri, String string, boolean bl6, boolean bl7, if1 if12, gf1 gf12, rg1 object, int n17) {
         block42: {
             block31: {
-                void var21_31;
+                boolean var21_31;
                 float f16;
                 Object object2;
                 Object object3;
@@ -1244,7 +1246,7 @@ lbl145:
                                             block34: {
                                                 block33: {
                                                     block32: {
-                                                        void var21_22;
+                                                        boolean var21_22;
                                                         list.getClass();
                                                         ((rg1)object).S(321351878);
                                                         n29 = ((rg1)object).g(list) ? 4 : 2;
@@ -1257,11 +1259,7 @@ lbl145:
                                                         int n46 = ((rg1)object).g(if12) ? 0x800000 : 0x400000;
                                                         int n47 = ((rg1)object).g(gf12) ? 0x4000000 : 0x2000000;
                                                         n27 = n17 | n29 | n28 | n27 | n36 | n37 | n38 | n39 | n46 | n47;
-                                                        if ((0x2492493 & n27) != 0x2492492) {
-                                                            boolean n18 = true;
-                                                        } else {
-                                                            boolean bl9 = false;
-                                                        }
+                                                        var21_22 = (0x2492493 & n27) != 0x2492492;
                                                         if (!((rg1)object).K(n27 & 1, (boolean)var21_22)) break block31;
                                                         object5 = uc5.S(n16, (rg1)object);
                                                         b132 = uc5.S(if12, (rg1)object);
@@ -1374,11 +1372,7 @@ lbl145:
                         }
                         object5 = ji2.b;
                         object4 = q05.b(2);
-                        if (!bl5 && n28 > 1) {
-                            boolean bl20 = true;
-                        } else {
-                            boolean bl21 = false;
-                        }
+                        var21_31 = !bl5 && n28 > 1;
                         n29 = n27 == 256 ? 1 : 0;
                         int n37 = ((rg1)object).g(list);
                         object8 = ((rg1)object).H();
@@ -1420,17 +1414,13 @@ lbl145:
                                 int n27;
                                 block16: {
                                     block15: {
-                                        void var7_8;
+                                        boolean var7_8;
                                         ((rg1)object).S(1374447570);
                                         n27 = ((rg1)object).g(uri) ? 4 : 2;
                                         n26 = ((rg1)object).e(string) ? 32 : 16;
                                         n27 = n27 | n16 | n26;
                                         n26 = 1;
-                                        if ((n27 & 0x13) != 18) {
-                                            boolean n18 = true;
-                                        } else {
-                                            boolean bl5 = false;
-                                        }
+                                        var7_8 = (n27 & 0x13) != 18;
                                         if (!((rg1)object).K(n27 & 1, (boolean)var7_8)) break block14;
                                         object3 = ((Context)((rg1)object).i(hb.b)).getApplicationContext();
                                         int n18 = ((rg1)object).e(uri);
@@ -1509,17 +1499,13 @@ lbl145:
                         int n27;
                         block13: {
                             block12: {
-                                void var8_9;
+                                boolean var8_9;
                                 ((rg1)object).S(-299945073);
                                 n27 = ((rg1)object).e(string) ? 4 : 2;
                                 n26 = ((rg1)object).e(string2) ? 32 : 16;
                                 n17 = n27 | n16 | n26;
                                 n26 = 1;
-                                if ((n17 & 0x13) != 18) {
-                                    boolean n19 = true;
-                                } else {
-                                    boolean bl5 = false;
-                                }
+                                var8_9 = (n17 & 0x13) != 18;
                                 if (!((rg1)object).K(n17 & 1, (boolean)var8_9)) break block11;
                                 context = ((Context)((rg1)object).i(hb.b)).getApplicationContext();
                                 n18 = n17 & 0xE;
