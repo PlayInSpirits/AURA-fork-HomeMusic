@@ -27,14 +27,14 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: main
-          fetch-depth: 0
+          fetch-depth: 1
 
       - name: Checkout native-v0.10.1 source
         uses: actions/checkout@v4
         with:
           ref: native-v0.10.1
           path: source-native
-          fetch-depth: 0
+          fetch-depth: 1
 
       - name: Copy and verify every tracked file
         run: |
