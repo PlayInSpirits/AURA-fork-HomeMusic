@@ -703,14 +703,14 @@ public abstract class kb4 {
             return list;
         }
         List listT = t();
-        ?? arrayList = u01.n;
-        ?? r9 = list;
+        List arrayList = u01.n;
+        List r9 = list;
         if (list == null) {
             r9 = arrayList;
         }
         ArrayList arrayListP = P(r9, listT);
         boolean zIsEmpty = arrayListP.isEmpty();
-        ?? r10 = arrayListP;
+        List r10 = arrayListP;
         if (zIsEmpty) {
             if (str != null && !qm4.u0(str)) {
                 ArrayList arrayListE = e(listT);
