@@ -1,19 +1,30 @@
 package defpackage;
 
+/*
+ * Decompiled with CFR 0.152.
+ * 
+ * Could not load the following classes:
+ *  android.graphics.Bitmap
+ *  android.graphics.BitmapFactory
+ *  android.os.Bundle
+ *  android.text.Layout$Alignment
+ *  android.text.SpannableString
+ *  android.text.Spanned
+ *  android.text.SpannedString
+ *  android.text.TextUtils
+ */
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.text.Layout;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.SpannedString;
 import android.text.TextUtils;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Objects;
 
-/* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
-/* JADX INFO: loaded from: classes.dex */
 public final class ig0 {
     public static final String A;
     public static final String B;
@@ -56,7 +67,7 @@ public final class ig0 {
 
     static {
         new ig0("", null, null, null, -3.4028235E38f, Integer.MIN_VALUE, Integer.MIN_VALUE, -3.4028235E38f, Integer.MIN_VALUE, Integer.MIN_VALUE, -3.4028235E38f, -3.4028235E38f, -3.4028235E38f, false, -16777216, Integer.MIN_VALUE, 0.0f, 0);
-        String str = f35.a;
+        String string = f35.a;
         s = Integer.toString(0, 36);
         t = Integer.toString(17, 36);
         u = Integer.toString(1, 36);
@@ -79,166 +90,164 @@ public final class ig0 {
         L = Integer.toString(19, 36);
     }
 
-    public ig0(CharSequence charSequence, Layout.Alignment alignment, Layout.Alignment alignment2, Bitmap bitmap, float f, int i, int i2, float f2, int i3, int i4, float f3, float f4, float f5, boolean z2, int i5, int i6, float f6, int i7) {
+    public ig0(CharSequence charSequence, Layout.Alignment alignment, Layout.Alignment alignment2, Bitmap bitmap, float f16, int n16, int n17, float f17, int n18, int n19, float f18, float f19, float f26, boolean bl5, int n26, int n27, float f27, int n28) {
         if (charSequence == null) {
             bitmap.getClass();
         } else {
-            rr2.l(bitmap == null);
+            boolean bl6 = bitmap == null;
+            rr2.l(bl6);
         }
-        if (charSequence instanceof Spanned) {
-            this.a = SpannedString.valueOf(charSequence);
-        } else if (charSequence != null) {
-            this.a = charSequence.toString();
-        } else {
-            this.a = null;
-        }
+        this.a = charSequence instanceof Spanned ? SpannedString.valueOf((CharSequence)charSequence) : (charSequence != null ? charSequence.toString() : null);
         this.b = alignment;
         this.c = alignment2;
         this.d = bitmap;
-        this.e = f;
-        this.f = i;
-        this.g = i2;
-        this.h = f2;
-        this.i = i3;
-        this.j = f4;
-        this.k = f5;
-        this.l = z2;
-        this.m = i5;
-        this.n = i4;
-        this.o = f3;
-        this.p = i6;
-        this.q = f6;
-        this.r = i7;
+        this.e = f16;
+        this.f = n16;
+        this.g = n17;
+        this.h = f17;
+        this.i = n18;
+        this.j = f19;
+        this.k = f26;
+        this.l = bl5;
+        this.m = n26;
+        this.n = n19;
+        this.o = f18;
+        this.p = n27;
+        this.q = f27;
+        this.r = n28;
     }
 
-    /* JADX WARN: Code duplicated, block: B:42:0x0105  */
-    /* JADX WARN: Code duplicated, block: B:60:0x0151  */
-    /* JADX WARN: Multi-variable type inference failed */
-    /* JADX WARN: Type inference failed for: r1v1, types: [java.lang.CharSequence] */
-    /* JADX WARN: Type inference failed for: r1v2 */
-    /* JADX WARN: Type inference failed for: r1v3 */
-    /* JADX WARN: Type inference failed for: r1v31, types: [android.text.Spannable, android.text.SpannableString] */
-    /* JADX WARN: Type inference failed for: r7v0 */
-    /* JADX WARN: Type inference failed for: r7v1 */
-    /* JADX WARN: Type inference failed for: r7v2, types: [java.lang.CharSequence] */
-    /* JADX WARN: Type inference failed for: r7v3 */
     public static ig0 a(Bundle bundle) {
-        ?? r7;
-        Bitmap bitmapDecodeByteArray;
-        float f;
-        int i;
-        float f2;
-        int i2;
-        int i3;
-        ?? charSequence = bundle.getCharSequence(s);
-        boolean z2 = true;
-        if (charSequence != 0) {
-            ArrayList parcelableArrayList = bundle.getParcelableArrayList(t);
-            if (parcelableArrayList != null) {
-                charSequence = SpannableString.valueOf(charSequence);
-                int size = parcelableArrayList.size();
-                int i4 = 0;
-                while (i4 < size) {
-                    Object obj = parcelableArrayList.get(i4);
-                    i4++;
-                    Bundle bundle2 = (Bundle) obj;
-                    int i5 = bundle2.getInt(yg0.a);
-                    int i6 = bundle2.getInt(yg0.b);
-                    int i7 = bundle2.getInt(yg0.c);
-                    int i8 = bundle2.getInt(yg0.d, -1);
-                    Bundle bundle3 = bundle2.getBundle(yg0.e);
-                    if (i8 == 1) {
-                        bundle3.getClass();
-                        String string = bundle3.getString(u34.c);
-                        string.getClass();
-                        charSequence.setSpan(new u34(bundle3.getInt(u34.d), string), i5, i6, i7);
-                    } else if (i8 == 2) {
-                        bundle3.getClass();
-                        charSequence.setSpan(new zr4(bundle3.getInt(zr4.d), bundle3.getInt(zr4.e), bundle3.getInt(zr4.f)), i5, i6, i7);
-                    } else if (i8 == 3) {
-                        charSequence.setSpan(new tp1(), i5, i6, i7);
-                    } else if (i8 == 4) {
-                        bundle3.getClass();
-                        String string2 = bundle3.getString(p85.b);
-                        string2.getClass();
-                        charSequence.setSpan(new p85(string2), i5, i6, i7);
+        float f16;
+        float f17;
+        String string;
+        Object object;
+        int n16;
+        int n17;
+        int n18;
+        int n19;
+        int n26;
+        int n27;
+        CharSequence charSequence;
+        ArrayList arrayList;
+        Object object2 = bundle.getCharSequence(s);
+        boolean bl5 = true;
+        int n28 = 0;
+        if (object2 != null) {
+            arrayList = bundle.getParcelableArrayList(t);
+            charSequence = object2;
+            if (arrayList != null) {
+                object2 = SpannableString.valueOf((CharSequence)object2);
+                n27 = arrayList.size();
+                n26 = 0;
+                while (true) {
+                    charSequence = object2;
+                    if (n26 < n27) {
+                        charSequence = arrayList.get(n26);
+                        ++n26;
+                        charSequence = (Bundle)charSequence;
+                        n19 = charSequence.getInt(yg0.a);
+                        n18 = charSequence.getInt(yg0.b);
+                        n17 = charSequence.getInt(yg0.c);
+                        n16 = charSequence.getInt(yg0.d, -1);
+                        charSequence = charSequence.getBundle(yg0.e);
+                        if (n16 != 1) {
+                            if (n16 != 2) {
+                                if (n16 != 3) {
+                                    if (n16 != 4) continue;
+                                    charSequence.getClass();
+                                    charSequence = charSequence.getString(p85.b);
+                                    charSequence.getClass();
+                                    object2.setSpan((Object)new p85((String)charSequence), n19, n18, n17);
+                                    continue;
+                                }
+                                object2.setSpan(new Object(), n19, n18, n17);
+                                continue;
+                            }
+                            charSequence.getClass();
+                            object2.setSpan((Object)new zr4(charSequence.getInt(zr4.d), charSequence.getInt(zr4.e), charSequence.getInt(zr4.f)), n19, n18, n17);
+                            continue;
+                        }
+                        charSequence.getClass();
+                        object = charSequence.getString(u34.c);
+                        object.getClass();
+                        object2.setSpan((Object)new u34(charSequence.getInt(u34.d), (String)object), n19, n18, n17);
+                        continue;
                     }
+                    break;
                 }
             }
         } else {
-            charSequence = 0;
+            charSequence = null;
         }
-        Layout.Alignment alignment = (Layout.Alignment) bundle.getSerializable(u);
-        Layout.Alignment alignment2 = alignment != null ? alignment : null;
-        Layout.Alignment alignment3 = (Layout.Alignment) bundle.getSerializable(v);
-        Layout.Alignment alignment4 = alignment3 != null ? alignment3 : null;
-        Bitmap bitmap = (Bitmap) bundle.getParcelable(w);
-        if (bitmap != null) {
-            r7 = 0;
-            bitmapDecodeByteArray = bitmap;
+        if ((arrayList = (Layout.Alignment)bundle.getSerializable(u)) == null) {
+            arrayList = null;
+        }
+        object = (Layout.Alignment)bundle.getSerializable(v);
+        if (object == null) {
+            object = null;
+        }
+        object2 = (Bitmap)bundle.getParcelable(w);
+        if (object2 != null) {
+            charSequence = null;
         } else {
-            byte[] byteArray = bundle.getByteArray(x);
-            if (byteArray != null) {
-                bitmapDecodeByteArray = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
-                r7 = 0;
+            object2 = bundle.getByteArray(x);
+            if (object2 != null) {
+                object2 = BitmapFactory.decodeByteArray((byte[])object2, (int)0, (int)((Object)object2).length);
+                charSequence = null;
             } else {
-                r7 = charSequence;
-                bitmapDecodeByteArray = null;
+                object2 = null;
             }
         }
-        String str = y;
-        if (bundle.containsKey(str)) {
-            String str2 = z;
-            if (bundle.containsKey(str2)) {
-                f = bundle.getFloat(str);
-                i = bundle.getInt(str2);
-            } else {
-                f = -3.4028235E38f;
-                i = Integer.MIN_VALUE;
-            }
+        String string2 = y;
+        boolean bl6 = bundle.containsKey(string2);
+        float f18 = -3.4028235E38f;
+        n16 = Integer.MIN_VALUE;
+        if (bl6 && bundle.containsKey(string = z)) {
+            f17 = bundle.getFloat(string2);
+            n26 = bundle.getInt(string);
         } else {
-            f = -3.4028235E38f;
-            i = Integer.MIN_VALUE;
+            f17 = -3.4028235E38f;
+            n26 = Integer.MIN_VALUE;
         }
-        String str3 = A;
-        int i9 = bundle.containsKey(str3) ? bundle.getInt(str3) : Integer.MIN_VALUE;
-        String str4 = B;
-        float f3 = bundle.containsKey(str4) ? bundle.getFloat(str4) : -3.4028235E38f;
-        String str5 = C;
-        int i10 = bundle.containsKey(str5) ? bundle.getInt(str5) : Integer.MIN_VALUE;
-        String str6 = E;
-        if (bundle.containsKey(str6)) {
-            String str7 = D;
-            if (bundle.containsKey(str7)) {
-                f2 = bundle.getFloat(str6);
-                i2 = bundle.getInt(str7);
-            } else {
-                f2 = -3.4028235E38f;
-                i2 = Integer.MIN_VALUE;
-            }
+        string2 = A;
+        n27 = bundle.containsKey(string2) ? bundle.getInt(string2) : Integer.MIN_VALUE;
+        string2 = B;
+        float f19 = bundle.containsKey(string2) ? bundle.getFloat(string2) : -3.4028235E38f;
+        string2 = C;
+        n19 = bundle.containsKey(string2) ? bundle.getInt(string2) : Integer.MIN_VALUE;
+        string2 = E;
+        if (bundle.containsKey(string2) && bundle.containsKey(string = D)) {
+            f16 = bundle.getFloat(string2);
+            n17 = bundle.getInt(string);
         } else {
-            f2 = -3.4028235E38f;
-            i2 = Integer.MIN_VALUE;
+            f16 = -3.4028235E38f;
+            n17 = Integer.MIN_VALUE;
         }
-        String str8 = F;
-        float f4 = bundle.containsKey(str8) ? bundle.getFloat(str8) : -3.4028235E38f;
-        String str9 = G;
-        float f5 = bundle.containsKey(str9) ? bundle.getFloat(str9) : -3.4028235E38f;
-        String str10 = H;
-        if (bundle.containsKey(str10)) {
-            i3 = bundle.getInt(str10);
+        string2 = F;
+        float f26 = bundle.containsKey(string2) ? bundle.getFloat(string2) : -3.4028235E38f;
+        string2 = G;
+        if (bundle.containsKey(string2)) {
+            f18 = bundle.getFloat(string2);
+        }
+        if (bundle.containsKey(string2 = H)) {
+            n18 = bundle.getInt(string2);
         } else {
-            i3 = -16777216;
-            z2 = false;
+            n18 = -16777216;
+            bl5 = false;
         }
-        int i11 = i3;
-        boolean z3 = !bundle.getBoolean(I, false) ? false : z2;
-        String str11 = J;
-        int i12 = bundle.containsKey(str11) ? bundle.getInt(str11) : Integer.MIN_VALUE;
-        String str12 = K;
-        float f6 = bundle.containsKey(str12) ? bundle.getFloat(str12) : 0.0f;
-        String str13 = L;
-        return new ig0(r7, alignment2, alignment4, bitmapDecodeByteArray, f, i, i9, f3, i10, i2, f2, f4, f5, z3, i11, i12, f6, bundle.containsKey(str13) ? bundle.getInt(str13) : 0);
+        if (!bundle.getBoolean(I, false)) {
+            bl5 = false;
+        }
+        if (bundle.containsKey(string2 = J)) {
+            n16 = bundle.getInt(string2);
+        }
+        float f27 = bundle.containsKey(string2 = K) ? bundle.getFloat(string2) : 0.0f;
+        string2 = L;
+        if (bundle.containsKey(string2)) {
+            n28 = bundle.getInt(string2);
+        }
+        return new ig0(charSequence, (Layout.Alignment)arrayList, (Layout.Alignment)object, (Bitmap)object2, f17, n26, n27, f19, n19, n17, f16, f26, f18, bl5, n18, n16, f27, n28);
     }
 
     public final Bundle b() {
@@ -247,40 +256,49 @@ public final class ig0 {
         if (charSequence != null) {
             bundle.putCharSequence(s, charSequence);
             if (charSequence instanceof Spanned) {
-                Spanned spanned = (Spanned) charSequence;
-                String str = yg0.a;
-                ArrayList<? extends Parcelable> arrayList = new ArrayList<>();
-                for (u34 u34Var : (u34[]) spanned.getSpans(0, spanned.length(), u34.class)) {
-                    u34Var.getClass();
-                    Bundle bundle2 = new Bundle();
-                    bundle2.putString(u34.c, u34Var.a);
-                    bundle2.putInt(u34.d, u34Var.b);
-                    arrayList.add(yg0.a(spanned, u34Var, 1, bundle2));
+                Bundle bundle2;
+                p85[] p85Array;
+                charSequence = (Spanned)charSequence;
+                Object object2 = yg0.a;
+                object2 = new ArrayList();
+                int n16 = charSequence.length();
+                int n17 = 0;
+                for (u34 object3 : (Bundle)charSequence.getSpans(0, n16, u34.class)) {
+                    object3.getClass();
+                    p85Array = new Bundle();
+                    p85Array.putString(u34.c, object3.a);
+                    p85Array.putInt(u34.d, object3.b);
+                    ((ArrayList)object2).add(yg0.a((Spanned)charSequence, object3, 1, (Bundle)p85Array));
                 }
-                for (zr4 zr4Var : (zr4[]) spanned.getSpans(0, spanned.length(), zr4.class)) {
-                    zr4Var.getClass();
-                    Bundle bundle3 = new Bundle();
-                    bundle3.putInt(zr4.d, zr4Var.a);
-                    bundle3.putInt(zr4.e, zr4Var.b);
-                    bundle3.putInt(zr4.f, zr4Var.c);
-                    arrayList.add(yg0.a(spanned, zr4Var, 2, bundle3));
+                for (Bundle bundle3 : (p85[])charSequence.getSpans(0, charSequence.length(), zr4.class)) {
+                    bundle3.getClass();
+                    bundle2 = new Bundle();
+                    bundle2.putInt(zr4.d, bundle3.a);
+                    bundle2.putInt(zr4.e, bundle3.b);
+                    bundle2.putInt(zr4.f, bundle3.c);
+                    ((ArrayList)object2).add(yg0.a((Spanned)charSequence, bundle3, 2, bundle2));
                 }
-                for (tp1 tp1Var : (tp1[]) spanned.getSpans(0, spanned.length(), tp1.class)) {
-                    arrayList.add(yg0.a(spanned, tp1Var, 3, null));
+                tp1[] tp1Array = (tp1[])charSequence.getSpans(0, charSequence.length(), tp1.class);
+                int n18 = tp1Array.length;
+                for (n16 = 0; n16 < n18; ++n16) {
+                    ((ArrayList)object2).add(yg0.a((Spanned)charSequence, tp1Array[n16], 3, null));
                 }
-                for (p85 p85Var : (p85[]) spanned.getSpans(0, spanned.length(), p85.class)) {
-                    p85Var.getClass();
-                    Bundle bundle4 = new Bundle();
-                    bundle4.putString(p85.b, p85Var.a);
-                    arrayList.add(yg0.a(spanned, p85Var, 4, bundle4));
+                p85Array = (p85[])charSequence.getSpans(0, charSequence.length(), p85.class);
+                n18 = p85Array.length;
+                for (n16 = n17; n16 < n18; ++n16) {
+                    p85 p852 = p85Array[n16];
+                    p852.getClass();
+                    bundle2 = new Bundle();
+                    bundle2.putString(p85.b, p852.a);
+                    ((ArrayList)object2).add(yg0.a((Spanned)charSequence, p852, 4, bundle2));
                 }
-                if (!arrayList.isEmpty()) {
-                    bundle.putParcelableArrayList(t, arrayList);
+                if (!((ArrayList)object2).isEmpty()) {
+                    bundle.putParcelableArrayList(t, (ArrayList)object2);
                 }
             }
         }
-        bundle.putSerializable(u, this.b);
-        bundle.putSerializable(v, this.c);
+        bundle.putSerializable(u, (Serializable)this.b);
+        bundle.putSerializable(v, (Serializable)this.c);
         bundle.putFloat(y, this.e);
         bundle.putInt(z, this.f);
         bundle.putInt(A, this.g);
@@ -298,19 +316,17 @@ public final class ig0 {
         return bundle;
     }
 
-    public final boolean equals(Object obj) {
-        if (this == obj) {
+    public final boolean equals(Object object) {
+        if (this == object) {
             return true;
         }
-        if (obj != null && ig0.class == obj.getClass()) {
-            ig0 ig0Var = (ig0) obj;
-            if (TextUtils.equals(this.a, ig0Var.a) && this.b == ig0Var.b && this.c == ig0Var.c) {
-                Bitmap bitmap = ig0Var.d;
+        if (object != null && ig0.class == object.getClass()) {
+            object = (ig0)object;
+            if (TextUtils.equals((CharSequence)this.a, (CharSequence)((ig0)object).a) && this.b == ((ig0)object).b && this.c == ((ig0)object).c) {
+                Bitmap bitmap = ((ig0)object).d;
                 Bitmap bitmap2 = this.d;
-                if (bitmap2 != null ? !(bitmap == null || !bitmap2.sameAs(bitmap)) : bitmap == null) {
-                    if (this.e == ig0Var.e && this.f == ig0Var.f && this.g == ig0Var.g && this.h == ig0Var.h && this.i == ig0Var.i && this.j == ig0Var.j && this.k == ig0Var.k && this.l == ig0Var.l && this.m == ig0Var.m && this.n == ig0Var.n && this.o == ig0Var.o && this.p == ig0Var.p && this.q == ig0Var.q && this.r == ig0Var.r) {
-                        return true;
-                    }
+                if ((bitmap2 == null ? bitmap == null : bitmap != null && bitmap2.sameAs(bitmap)) && this.e == ((ig0)object).e && this.f == ((ig0)object).f && this.g == ((ig0)object).g && this.h == ((ig0)object).h && this.i == ((ig0)object).i && this.j == ((ig0)object).j && this.k == ((ig0)object).k && this.l == ((ig0)object).l && this.m == ((ig0)object).m && this.n == ((ig0)object).n && this.o == ((ig0)object).o && this.p == ((ig0)object).p && this.q == ((ig0)object).q && this.r == ((ig0)object).r) {
+                    return true;
                 }
             }
         }
@@ -318,6 +334,21 @@ public final class ig0 {
     }
 
     public final int hashCode() {
-        return Objects.hash(this.a, this.b, this.c, this.d, Float.valueOf(this.e), Integer.valueOf(this.f), Integer.valueOf(this.g), Float.valueOf(this.h), Integer.valueOf(this.i), Float.valueOf(this.j), Float.valueOf(this.k), Boolean.valueOf(this.l), Integer.valueOf(this.m), Integer.valueOf(this.n), Float.valueOf(this.o), Integer.valueOf(this.p), Float.valueOf(this.q), Integer.valueOf(this.r));
+        float f16 = this.e;
+        int n16 = this.f;
+        int n17 = this.g;
+        float f17 = this.h;
+        int n18 = this.i;
+        float f18 = this.j;
+        float f19 = this.k;
+        boolean bl5 = this.l;
+        int n19 = this.m;
+        int n26 = this.n;
+        float f26 = this.o;
+        int n27 = this.p;
+        float f27 = this.q;
+        int n28 = this.r;
+        return Objects.hash(this.a, this.b, this.c, this.d, Float.valueOf(f16), n16, n17, Float.valueOf(f17), n18, Float.valueOf(f18), Float.valueOf(f19), bl5, n19, n26, Float.valueOf(f26), n27, Float.valueOf(f27), n28);
     }
 }
+

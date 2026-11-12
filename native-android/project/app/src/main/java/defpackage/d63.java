@@ -1,188 +1,157 @@
 package defpackage;
 
-/* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
-/* JADX INFO: loaded from: classes.dex */
-public final class d63 implements e63 {
-    /* JADX WARN: Multi-variable type inference failed */
-    /* JADX WARN: Type inference failed for: r0v0 */
-    /* JADX WARN: Type inference failed for: r0v1 */
-    /* JADX WARN: Type inference failed for: r0v10 */
-    /* JADX WARN: Type inference failed for: r0v11 */
-    /* JADX WARN: Type inference failed for: r0v2 */
-    /* JADX WARN: Type inference failed for: r0v3, types: [f13] */
-    /* JADX WARN: Type inference failed for: r0v4 */
-    /* JADX WARN: Type inference failed for: r0v5 */
-    /* JADX WARN: Type inference failed for: r0v6, types: [f13] */
-    /* JADX WARN: Type inference failed for: r0v8 */
-    /* JADX WARN: Type inference failed for: r0v9 */
-    /* JADX WARN: Type inference failed for: r2v4 */
-    /* JADX WARN: Type inference failed for: r7v0, types: [cx2] */
-    /* JADX WARN: Type inference failed for: r7v1, types: [cx2] */
-    /* JADX WARN: Type inference failed for: r7v10 */
-    /* JADX WARN: Type inference failed for: r7v11 */
-    /* JADX WARN: Type inference failed for: r7v12 */
-    /* JADX WARN: Type inference failed for: r7v4 */
-    /* JADX WARN: Type inference failed for: r7v5, types: [cx2] */
-    /* JADX WARN: Type inference failed for: r7v6, types: [java.lang.Object] */
-    /* JADX WARN: Type inference failed for: r7v7 */
-    /* JADX WARN: Type inference failed for: r7v8 */
-    /* JADX WARN: Type inference failed for: r7v9 */
-    @Override // defpackage.e63
-    public final boolean a(cx2 cx2Var) {
-        ?? f13Var = 0;
+/*
+ * Decompiled with CFR 0.152.
+ */
+public final class d63
+implements e63 {
+    @Override
+    public final boolean a(cx2 cx22) {
+        cx2 cx23 = null;
+        cx2 cx24 = cx22;
+        cx22 = cx23;
         while (true) {
-            int i = 0;
-            if (cx2Var == 0) {
-                return false;
-            }
-            if (cx2Var instanceof rn3) {
-                if (((rn3) cx2Var).z()) {
+            int n16 = 0;
+            if (cx24 == null) break;
+            if (cx24 instanceof rn3) {
+                cx23 = cx22;
+                if (((rn3)((Object)cx24)).z()) {
                     return true;
                 }
-            } else if ((cx2Var.p & 16) != 0 && (cx2Var instanceof fo0)) {
-                cx2 cx2Var2 = ((fo0) cx2Var).C;
-                while (cx2Var2 != null) {
-                    if ((cx2Var2.p & 16) != 0) {
-                        i++;
-                        if (i == 1) {
-                            f13Var = f13Var;
-                            cx2Var = cx2Var;
-                            f13Var = f13Var;
-                            cx2Var = cx2Var2;
-                        } else {
-                            if (f13Var == 0) {
-                                f13Var = new f13(new cx2[16]);
-                            }
-                            if (cx2Var != 0) {
-                                f13Var.b(cx2Var);
-                                cx2Var = 0;
-                            }
-                            f13Var.b(cx2Var2);
-                        }
-                    } else {
-                        f13Var = f13Var;
-                        cx2Var = cx2Var;
-                    }
-                    cx2Var2 = cx2Var2.s;
-                    f13Var = f13Var;
-                    cx2Var = cx2Var;
-                }
-                if (i == 1) {
-                    f13Var = f13Var;
-                    cx2Var = cx2Var;
-                } else {
-                    f13Var = f13Var;
-                    cx2Var = cx2Var;
-                }
-            }
-            cx2Var = j51.c(f13Var);
-        }
-    }
-
-    @Override // defpackage.e63
-    public final int d() {
-        return 16;
-    }
-
-    @Override // defpackage.e63
-    public final void i(c72 c72Var, long j, fm1 fm1Var, int i, boolean z) {
-        c72Var.z(j, fm1Var, i, z);
-    }
-
-    /* JADX WARN: Multi-variable type inference failed */
-    /* JADX WARN: Type inference failed for: r2v0 */
-    /* JADX WARN: Type inference failed for: r2v1, types: [cx2] */
-    /* JADX WARN: Type inference failed for: r2v10 */
-    /* JADX WARN: Type inference failed for: r2v11 */
-    /* JADX WARN: Type inference failed for: r2v12 */
-    /* JADX WARN: Type inference failed for: r2v4 */
-    /* JADX WARN: Type inference failed for: r2v5, types: [cx2] */
-    /* JADX WARN: Type inference failed for: r2v6, types: [java.lang.Object] */
-    /* JADX WARN: Type inference failed for: r2v7 */
-    /* JADX WARN: Type inference failed for: r2v8 */
-    /* JADX WARN: Type inference failed for: r2v9 */
-    /* JADX WARN: Type inference failed for: r3v0 */
-    /* JADX WARN: Type inference failed for: r3v1 */
-    /* JADX WARN: Type inference failed for: r3v10 */
-    /* JADX WARN: Type inference failed for: r3v11 */
-    /* JADX WARN: Type inference failed for: r3v2 */
-    /* JADX WARN: Type inference failed for: r3v3, types: [f13] */
-    /* JADX WARN: Type inference failed for: r3v4 */
-    /* JADX WARN: Type inference failed for: r3v5 */
-    /* JADX WARN: Type inference failed for: r3v6, types: [f13] */
-    /* JADX WARN: Type inference failed for: r3v8 */
-    /* JADX WARN: Type inference failed for: r3v9 */
-    /* JADX WARN: Type inference failed for: r4v4 */
-    @Override // defpackage.e63
-    public final boolean k(fm1 fm1Var, c72 c72Var) {
-        f63 f63Var = (f63) c72Var.Q.e;
-        f63Var.getClass();
-        cx2 cx2VarD0 = f63Var.D0(g63.f(16));
-        if (cx2VarD0 != null && cx2VarD0.A) {
-            if (!cx2VarD0.n.A) {
-                cz1.b("visitLocalDescendants called on an unattached node");
-            }
-            cx2 cx2Var = cx2VarD0.n;
-            if ((cx2Var.q & 16) != 0) {
-                while (cx2Var != null) {
-                    if ((cx2Var.p & 16) != 0) {
-                        ?? C = cx2Var;
-                        ?? f13Var = 0;
-                        while (C != 0) {
-                            if (C instanceof rn3) {
-                                if (((rn3) C).X()) {
-                                    fm1Var.p = fm1Var.n.b - 1;
-                                    return true;
-                                }
-                            } else if ((C.p & 16) != 0 && (C instanceof fo0)) {
-                                cx2 cx2Var2 = ((fo0) C).C;
-                                int i = 0;
-                                while (cx2Var2 != null) {
-                                    if ((cx2Var2.p & 16) != 0) {
-                                        i++;
-                                        if (i == 1) {
-                                            C = C;
-                                            f13Var = f13Var;
-                                            f13Var = f13Var;
-                                            C = cx2Var2;
-                                        } else {
-                                            if (f13Var == 0) {
-                                                f13Var = new f13(new cx2[16]);
-                                            }
-                                            if (C != 0) {
-                                                f13Var.b(C);
-                                                C = 0;
-                                            }
-                                            f13Var.b(cx2Var2);
-                                        }
-                                    } else {
-                                        C = C;
-                                        f13Var = f13Var;
-                                    }
-                                    cx2Var2 = cx2Var2.s;
-                                    C = C;
-                                    f13Var = f13Var;
-                                }
-                                if (i == 1) {
-                                    C = C;
-                                    f13Var = f13Var;
+            } else {
+                cx23 = cx22;
+                if ((cx24.p & 0x10) != 0) {
+                    cx23 = cx22;
+                    if (cx24 instanceof fo0) {
+                        cx23 = ((fo0)cx24).C;
+                        while (cx23 != null) {
+                            Object object = cx22;
+                            int n17 = n16;
+                            cx2 cx25 = cx24;
+                            if ((cx23.p & 0x10) != 0) {
+                                n17 = n16 + 1;
+                                if (n17 == 1) {
+                                    cx25 = cx23;
+                                    object = cx22;
                                 } else {
-                                    C = C;
-                                    f13Var = f13Var;
+                                    object = cx22;
+                                    if (cx22 == null) {
+                                        object = new f13(new cx2[16]);
+                                    }
+                                    cx25 = cx24;
+                                    if (cx24 != null) {
+                                        ((f13)object).b(cx24);
+                                        cx25 = null;
+                                    }
+                                    ((f13)object).b(cx23);
                                 }
                             }
-                            C = j51.c(f13Var);
+                            cx23 = cx23.s;
+                            cx22 = object;
+                            n16 = n17;
+                            cx24 = cx25;
                         }
+                        cx23 = cx22;
+                        if (n16 == 1) continue;
                     }
-                    cx2Var = cx2Var.s;
                 }
             }
+            cx24 = j51.c((f13)((Object)cx23));
+            cx22 = cx23;
         }
         return false;
     }
 
-    @Override // defpackage.e63
-    public final boolean m(c72 c72Var) {
+    @Override
+    public final int d() {
+        return 16;
+    }
+
+    @Override
+    public final void i(c72 c722, long l16, fm1 fm12, int n16, boolean bl5) {
+        c722.z(l16, fm12, n16, bl5);
+    }
+
+    /*
+     * Enabled force condition propagation
+     * Lifted jumps to return sites
+     */
+    @Override
+    public final boolean k(fm1 fm12, c72 object) {
+        object = (f63)((c72)object).Q.e;
+        object.getClass();
+        object = ((f63)object).D0(g63.f(16));
+        if (object == null || !((cx2)object).A) return false;
+        if (!((cx2)object).n.A) {
+            cz1.b("visitLocalDescendants called on an unattached node");
+        }
+        cx2 cx22 = ((cx2)object).n;
+        if ((cx22.q & 0x10) == 0) return false;
+        while (cx22 != null) {
+            if ((cx22.p & 0x10) != 0) {
+                cx2 cx23 = cx22;
+                object = null;
+                while (cx23 != null) {
+                    Object object2;
+                    if (cx23 instanceof rn3) {
+                        object2 = object;
+                        if (((rn3)((Object)cx23)).X()) {
+                            fm12.p = fm12.n.b - 1;
+                            return true;
+                        }
+                    } else {
+                        object2 = object;
+                        if ((cx23.p & 0x10) != 0) {
+                            object2 = object;
+                            if (cx23 instanceof fo0) {
+                                object2 = ((fo0)cx23).C;
+                                int n16 = 0;
+                                while (object2 != null) {
+                                    Object object3 = cx23;
+                                    Object object4 = object;
+                                    int n17 = n16;
+                                    if ((((cx2)object2).p & 0x10) != 0) {
+                                        n17 = n16 + 1;
+                                        if (n17 == 1) {
+                                            object3 = object2;
+                                            object4 = object;
+                                        } else {
+                                            object3 = object;
+                                            if (object == null) {
+                                                object3 = new f13(new cx2[16]);
+                                            }
+                                            object = cx23;
+                                            if (cx23 != null) {
+                                                ((f13)object3).b(cx23);
+                                                object = null;
+                                            }
+                                            ((f13)object3).b(object2);
+                                            object4 = object3;
+                                            object3 = object;
+                                        }
+                                    }
+                                    object2 = ((cx2)object2).s;
+                                    cx23 = object3;
+                                    object = object4;
+                                    n16 = n17;
+                                }
+                                object2 = object;
+                                if (n16 == 1) continue;
+                            }
+                        }
+                    }
+                    cx23 = j51.c((f13)object2);
+                    object = object2;
+                }
+            }
+            cx22 = cx22.s;
+        }
+        return false;
+    }
+
+    @Override
+    public final boolean m(c72 c722) {
         return true;
     }
 }
+

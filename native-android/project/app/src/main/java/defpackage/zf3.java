@@ -1,19 +1,21 @@
 package defpackage;
 
-/* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
-/* JADX INFO: loaded from: classes.dex */
-public final class zf3 extends b1 {
+/*
+ * Decompiled with CFR 0.152.
+ */
+public final class zf3
+extends b1 {
     public final xf3 p;
     public int q;
     public wx4 r;
     public int s;
 
-    public zf3(xf3 xf3Var, int i) {
-        super(i, xf3Var.u);
-        this.p = xf3Var;
-        this.q = xf3Var.f();
+    public zf3(xf3 xf32, int n16) {
+        super(n16, xf32.u);
+        this.p = xf32;
+        this.q = xf32.f();
         this.s = -1;
-        b();
+        this.b();
     }
 
     public final void a() {
@@ -23,137 +25,136 @@ public final class zf3 extends b1 {
         kf2.c();
     }
 
-    @Override // defpackage.b1, java.util.ListIterator
-    public final void add(Object obj) {
-        a();
-        int i = this.n;
-        xf3 xf3Var = this.p;
-        xf3Var.add(i, obj);
-        this.n++;
-        this.o = xf3Var.a();
-        this.q = xf3Var.f();
+    @Override
+    public final void add(Object object) {
+        this.a();
+        int n16 = this.n++;
+        xf3 xf32 = this.p;
+        xf32.add(n16, object);
+        this.o = xf32.a();
+        this.q = xf32.f();
         this.s = -1;
-        b();
+        this.b();
     }
 
-    /* JADX WARN: Type inference failed for: r0v4 */
-    /* JADX WARN: Type inference failed for: r0v5, types: [boolean, int] */
-    /* JADX WARN: Type inference failed for: r0v6 */
     public final void b() {
-        xf3 xf3Var = this.p;
-        Object[] objArr = xf3Var.s;
-        if (objArr == null) {
+        int n16;
+        x32 x322 = this.p;
+        Object[] objectArray = ((xf3)x322).s;
+        if (objectArray == null) {
             this.r = null;
             return;
         }
-        int i = (xf3Var.u - 1) & (-32);
-        int i2 = this.n;
-        if (i2 > i) {
-            i2 = i;
+        int n17 = ((xf3)x322).u - 1 & 0xFFFFFFE0;
+        int n18 = n16 = this.n;
+        if (n16 > n17) {
+            n18 = n17;
         }
-        int i3 = (xf3Var.q / 5) + 1;
-        wx4 wx4Var = this.r;
-        if (wx4Var == null) {
-            this.r = new wx4(objArr, i2, i, i3);
+        n16 = ((xf3)x322).q / 5 + 1;
+        x322 = this.r;
+        if (x322 == null) {
+            this.r = new wx4(objectArray, n18, n17, n16);
             return;
         }
-        wx4Var.n = i2;
-        wx4Var.o = i;
-        wx4Var.p = i3;
-        if (wx4Var.q.length < i3) {
-            wx4Var.q = new Object[i3];
+        ((b1)x322).n = n18;
+        ((b1)x322).o = n17;
+        ((wx4)x322).p = n16;
+        if (((wx4)x322).q.length < n16) {
+            ((wx4)x322).q = new Object[n16];
         }
-        wx4Var.q[0] = objArr;
-        ?? r0 = i2 == i ? 1 : 0;
-        wx4Var.r = r0;
-        wx4Var.b(i2 - r0, 1);
+        Object[] objectArray2 = ((wx4)x322).q;
+        n16 = 0;
+        objectArray2[0] = objectArray;
+        if (n18 == n17) {
+            n16 = 1;
+        }
+        ((wx4)x322).r = n16;
+        ((wx4)x322).b(n18 - n16, 1);
     }
 
-    @Override // java.util.ListIterator, java.util.Iterator
+    @Override
     public final Object next() {
-        a();
-        if (!hasNext()) {
-            tb4.k();
-            return null;
+        this.a();
+        if (this.hasNext()) {
+            int n16;
+            this.s = n16 = this.n++;
+            Object[] objectArray = this.r;
+            Object[] objectArray2 = this.p;
+            if (objectArray == null) {
+                objectArray = objectArray2.t;
+                this.n = n16 + 1;
+                return objectArray[n16];
+            }
+            if (objectArray.hasNext()) {
+                return objectArray.next();
+            }
+            objectArray2 = objectArray2.t;
+            n16 = this.n;
+            this.n = n16 + 1;
+            return objectArray2[n16 - objectArray.o];
         }
-        int i = this.n;
-        this.s = i;
-        wx4 wx4Var = this.r;
-        xf3 xf3Var = this.p;
-        if (wx4Var == null) {
-            Object[] objArr = xf3Var.t;
-            this.n = i + 1;
-            return objArr[i];
-        }
-        if (wx4Var.hasNext()) {
-            this.n++;
-            return wx4Var.next();
-        }
-        Object[] objArr2 = xf3Var.t;
-        int i2 = this.n;
-        this.n = i2 + 1;
-        return objArr2[i2 - wx4Var.o];
+        tb4.k();
+        return null;
     }
 
-    @Override // java.util.ListIterator
     public final Object previous() {
-        a();
-        if (!hasPrevious()) {
-            tb4.k();
-            return null;
+        this.a();
+        if (this.hasPrevious()) {
+            int n16 = this.n;
+            this.s = n16 - 1;
+            Object[] objectArray = this.r;
+            xf3 xf32 = this.p;
+            if (objectArray == null) {
+                int n17;
+                objectArray = xf32.t;
+                this.n = n17 = n16 - 1;
+                return objectArray[n17];
+            }
+            int n18 = objectArray.o;
+            if (n16 > n18) {
+                objectArray = xf32.t;
+                this.n = --n16;
+                return objectArray[n16 - n18];
+            }
+            this.n = n16 - 1;
+            return objectArray.previous();
         }
-        int i = this.n;
-        this.s = i - 1;
-        wx4 wx4Var = this.r;
-        xf3 xf3Var = this.p;
-        if (wx4Var == null) {
-            Object[] objArr = xf3Var.t;
-            int i2 = i - 1;
-            this.n = i2;
-            return objArr[i2];
-        }
-        int i3 = wx4Var.o;
-        if (i <= i3) {
-            this.n = i - 1;
-            return wx4Var.previous();
-        }
-        Object[] objArr2 = xf3Var.t;
-        int i4 = i - 1;
-        this.n = i4;
-        return objArr2[i4 - i3];
+        tb4.k();
+        return null;
     }
 
-    @Override // defpackage.b1, java.util.ListIterator, java.util.Iterator
+    @Override
     public final void remove() {
-        a();
-        int i = this.s;
-        if (i == -1) {
-            tb4.a();
+        this.a();
+        int n16 = this.s;
+        if (n16 != -1) {
+            xf3 xf32 = this.p;
+            xf32.b(n16);
+            n16 = this.s;
+            if (n16 < this.n) {
+                this.n = n16;
+            }
+            this.o = xf32.a();
+            this.q = xf32.f();
+            this.s = -1;
+            this.b();
             return;
         }
-        xf3 xf3Var = this.p;
-        xf3Var.b(i);
-        int i2 = this.s;
-        if (i2 < this.n) {
-            this.n = i2;
-        }
-        this.o = xf3Var.a();
-        this.q = xf3Var.f();
-        this.s = -1;
-        b();
+        tb4.a();
     }
 
-    @Override // defpackage.b1, java.util.ListIterator
-    public final void set(Object obj) {
-        a();
-        int i = this.s;
-        if (i == -1) {
-            tb4.a();
+    @Override
+    public final void set(Object object) {
+        this.a();
+        int n16 = this.s;
+        if (n16 != -1) {
+            xf3 xf32 = this.p;
+            xf32.set(n16, object);
+            this.q = xf32.f();
+            this.b();
             return;
         }
-        xf3 xf3Var = this.p;
-        xf3Var.set(i, obj);
-        this.q = xf3Var.f();
-        b();
+        tb4.a();
     }
 }
+

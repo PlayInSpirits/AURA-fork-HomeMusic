@@ -1,5 +1,13 @@
 package defpackage;
 
+/*
+ * Decompiled with CFR 0.152.
+ * 
+ * Could not load the following classes:
+ *  android.content.Context
+ *  android.net.Uri
+ *  android.os.SystemClock
+ */
 import android.content.Context;
 import android.net.Uri;
 import android.os.SystemClock;
@@ -9,7 +17,6 @@ import com.eddyizm.tempus.model.Download;
 import com.eddyizm.tempus.subsonic.models.Child;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.text.Normalizer;
@@ -17,417 +24,176 @@ import java.util.Locale;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.regex.Pattern;
 
-/* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
-/* JADX INFO: loaded from: classes.dex */
 public abstract class i51 {
     public static final ExecutorService a = Executors.newSingleThreadExecutor();
     public static final ConcurrentHashMap.KeySetView b = ConcurrentHashMap.newKeySet();
 
     public static void a(Context context, Child child) {
-        b(context, child, null, null, false);
+        i51.b(context, child, null, null, false);
     }
 
-    public static void b(Context context, final Child child, final String str, final String str2, final boolean z) {
-        nt0 nt0Var;
-        if (context == null || child == null) {
+    /*
+     * Enabled aggressive block sorting
+     * Enabled unnecessary exception pruning
+     * Enabled aggressive exception aggregation
+     * Converted monitor instructions to comments
+     * Lifted jumps to return sites
+     */
+    public static void b(Context object, Child child, String string, String string2, boolean bl5) {
+        nt0 nt02;
+        if (object == null) return;
+        if (child == null) {
             return;
         }
-        final Context applicationContext = context.getApplicationContext();
-        final gn2 gn2VarG = gi1.G(child);
-        final String title = child.getTitle() != null ? child.getTitle() : child.getId();
-        if (z) {
-            nt0Var = new nt0(false);
+        Context context = object.getApplicationContext();
+        gn2 gn22 = gi1.G(child);
+        object = child.getTitle() != null ? child.getTitle() : child.getId();
+        if (bl5) {
+            nt02 = new nt0(false);
         } else {
             if (nt0.l == null) {
-                synchronized (nt0.class) {
-                    try {
-                        if (nt0.l == null) {
-                            nt0.l = new nt0(true);
-                        }
-                    } catch (Throwable th) {
-                        throw th;
-                    }
+                // MONITORENTER : nt0.class
+                if (nt0.l == null) {
+                    nt0.l = nt02 = new nt0(true);
                 }
             }
-            nt0Var = nt0.l;
+            nt02 = nt0.l;
         }
-        final nt0 nt0Var2 = nt0Var;
-        synchronized (nt0Var2.a) {
-            try {
-                nt0Var2.c++;
-                if (nt0Var2.g == 0) {
-                    nt0Var2.g = SystemClock.elapsedRealtime();
-                }
-                nt0Var2.d(applicationContext.getApplicationContext());
-            } catch (Throwable th2) {
-                throw th2;
-            }
+        Object object2 = nt02.a;
+        // MONITORENTER : object2
+        ++nt02.c;
+        if (nt02.g == 0L) {
+            nt02.g = SystemClock.elapsedRealtime();
         }
+        nt02.d(context.getApplicationContext());
+        // MONITOREXIT : object2
         b.add(child.getId());
-        a.execute(new Runnable() { // from class: h51
-            @Override // java.lang.Runnable
-            public final void run() {
-                Context context2 = applicationContext;
-                gn2 gn2Var = gn2VarG;
-                String str3 = title;
-                Child child2 = child;
-                String str4 = str;
-                String str5 = str2;
-                nt0 nt0Var3 = nt0Var2;
-                boolean z2 = z;
-                ConcurrentHashMap.KeySetView keySetView = i51.b;
-                try {
-                    i51.f(context2, gn2Var, str3, child2, str4, str5, nt0Var3, z2);
-                } finally {
-                    keySetView.remove(child2.getId());
-                }
-            }
-        });
+        a.execute(new h51(context, gn22, (String)object, child, string, string2, nt02, bl5));
     }
 
-    public static af4 c(af4 af4Var, String str) {
-        String strC;
-        String strD = d(str);
-        for (af4 af4Var2 : af4Var.g()) {
-            if (!af4Var2.e() && (strC = af4Var2.c()) != null && d(strC).equals(strD)) {
-                return af4Var2;
-            }
+    public static af4 c(af4 object, String string) {
+        string = i51.d(string);
+        for (af4 af42 : ((af4)object).g()) {
+            if (af42.e() || (object = af42.c()) == null || !i51.d((String)object).equals(string)) continue;
+            return af42;
         }
         return null;
     }
 
-    public static String d(String str) {
-        return Normalizer.normalize(h(str), Normalizer.Form.NFKD).replaceAll("\\p{InCombiningDiacriticalMarks}+", "").toLowerCase(Locale.ROOT);
+    public static String d(String string) {
+        return Normalizer.normalize(i51.h(string), Normalizer.Form.NFKD).replaceAll("\\p{InCombiningDiacriticalMarks}+", "").toLowerCase(Locale.ROOT);
     }
 
-    public static InputStream e(Context context, Uri uri, String str, HttpURLConnection httpURLConnection, File file) throws IOException {
-        switch (str) {
-            case "file":
-                if (file != null && file.exists()) {
-                    return new FileInputStream(file);
-                }
-                mj0.i("Missing source file");
+    public static InputStream e(Context object, Uri uri, String string, HttpURLConnection httpURLConnection, File file) {
+        int n16 = string.hashCode();
+        int n17 = -1;
+        switch (n16) {
+            default: {
+                break;
+            }
+            case 951530617: {
+                if (!string.equals("content")) break;
+                n17 = 3;
+                break;
+            }
+            case 99617003: {
+                if (!string.equals("https")) break;
+                n17 = 2;
+                break;
+            }
+            case 3213448: {
+                if (!string.equals("http")) break;
+                n17 = 1;
+                break;
+            }
+            case 3143036: {
+                if (!string.equals("file")) break;
+                n17 = 0;
+            }
+        }
+        switch (n17) {
+            default: {
+                mj0.i("Unsupported scheme ".concat(string));
                 return null;
-            case "http":
-            case "https":
+            }
+            case 3: {
+                object = object.getContentResolver().openInputStream(uri);
+                if (object != null) {
+                    return object;
+                }
+                mj0.i("Cannot open content stream");
+                return null;
+            }
+            case 1: 
+            case 2: {
                 if (httpURLConnection != null) {
                     return httpURLConnection.getInputStream();
                 }
                 mj0.i("Connection not initialized");
                 return null;
-            case "content":
-                InputStream inputStreamOpenInputStream = context.getContentResolver().openInputStream(uri);
-                if (inputStreamOpenInputStream != null) {
-                    return inputStreamOpenInputStream;
-                }
-                mj0.i("Cannot open content stream");
-                return null;
-            default:
-                mj0.i("Unsupported scheme ".concat(str));
-                return null;
+            }
+            case 0: 
         }
+        if (file != null && file.exists()) {
+            return new FileInputStream(file);
+        }
+        mj0.i("Missing source file");
+        return null;
     }
 
-    /* JADX WARN: Failed to calculate best type for var: r13v18 ??
-    jadx.core.utils.exceptions.JadxRuntimeException: Type update failed for variable: r13v18 ??, new type: long
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.apply(TypeUpdate.java:109)
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.apply(TypeUpdate.java:59)
-    	at jadx.core.dex.visitors.typeinference.FixTypesVisitor.calculateFromBounds(FixTypesVisitor.java:159)
-    	at jadx.core.dex.visitors.typeinference.FixTypesVisitor.setBestType(FixTypesVisitor.java:136)
-    	at jadx.core.dex.visitors.typeinference.FixTypesVisitor.deduceType(FixTypesVisitor.java:241)
-    	at jadx.core.dex.visitors.typeinference.FixTypesVisitor.tryDeduceTypes(FixTypesVisitor.java:224)
-    	at jadx.core.dex.visitors.typeinference.FixTypesVisitor.visit(FixTypesVisitor.java:94)
-    Caused by: java.lang.NullPointerException: Cannot invoke "jadx.core.dex.instructions.args.InsnArg.getType()" because "arg" is null
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.verifyType(TypeUpdate.java:210)
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.queueTypeUpdate(TypeUpdate.java:171)
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.sameFirstArgListener(TypeUpdate.java:454)
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.requestUpdate(TypeUpdate.java:310)
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.runUpdate(TypeUpdate.java:124)
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.apply(TypeUpdate.java:91)
-    	... 6 more
+    /*
+     * Exception decompiling
      */
-    /* JADX WARN: Failed to calculate best type for var: r13v18 ??
-    jadx.core.utils.exceptions.JadxRuntimeException: Type update failed for variable: r13v18 ??, new type: long
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.apply(TypeUpdate.java:109)
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.apply(TypeUpdate.java:59)
-    	at jadx.core.dex.visitors.typeinference.TypeInferenceVisitor.calculateFromBounds(TypeInferenceVisitor.java:147)
-    	at jadx.core.dex.visitors.typeinference.TypeInferenceVisitor.setBestType(TypeInferenceVisitor.java:125)
-    	at jadx.core.dex.visitors.typeinference.TypeInferenceVisitor.lambda$runTypePropagation$2(TypeInferenceVisitor.java:103)
-    	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-    	at jadx.core.dex.visitors.typeinference.TypeInferenceVisitor.runTypePropagation(TypeInferenceVisitor.java:103)
-    	at jadx.core.dex.visitors.typeinference.TypeInferenceVisitor.visit(TypeInferenceVisitor.java:75)
-    Caused by: java.lang.NullPointerException: Cannot invoke "jadx.core.dex.instructions.args.InsnArg.getType()" because "arg" is null
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.verifyType(TypeUpdate.java:210)
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.queueTypeUpdate(TypeUpdate.java:171)
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.sameFirstArgListener(TypeUpdate.java:454)
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.requestUpdate(TypeUpdate.java:310)
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.runUpdate(TypeUpdate.java:124)
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.apply(TypeUpdate.java:91)
-    	... 7 more
-     */
-    /* JADX WARN: Failed to calculate best type for var: r13v19 ??
-    jadx.core.utils.exceptions.JadxRuntimeException: Type update failed for variable: r13v19 ??, new type: long
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.apply(TypeUpdate.java:109)
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.apply(TypeUpdate.java:59)
-    	at jadx.core.dex.visitors.typeinference.TypeInferenceVisitor.calculateFromBounds(TypeInferenceVisitor.java:147)
-    	at jadx.core.dex.visitors.typeinference.TypeInferenceVisitor.setBestType(TypeInferenceVisitor.java:125)
-    	at jadx.core.dex.visitors.typeinference.TypeInferenceVisitor.lambda$runTypePropagation$2(TypeInferenceVisitor.java:103)
-    	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-    	at jadx.core.dex.visitors.typeinference.TypeInferenceVisitor.runTypePropagation(TypeInferenceVisitor.java:103)
-    	at jadx.core.dex.visitors.typeinference.TypeInferenceVisitor.visit(TypeInferenceVisitor.java:75)
-    Caused by: java.lang.NullPointerException: Cannot invoke "jadx.core.dex.instructions.args.InsnArg.getType()" because "arg" is null
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.verifyType(TypeUpdate.java:210)
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.queueTypeUpdate(TypeUpdate.java:171)
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.sameFirstArgListener(TypeUpdate.java:454)
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.requestUpdate(TypeUpdate.java:310)
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.runUpdate(TypeUpdate.java:124)
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.apply(TypeUpdate.java:91)
-    	... 7 more
-     */
-    /* JADX WARN: Failed to calculate best type for var: r13v20 ??
-    jadx.core.utils.exceptions.JadxRuntimeException: Type update failed for variable: r13v20 ??, new type: long
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.apply(TypeUpdate.java:109)
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.apply(TypeUpdate.java:59)
-    	at jadx.core.dex.visitors.typeinference.TypeInferenceVisitor.calculateFromBounds(TypeInferenceVisitor.java:147)
-    	at jadx.core.dex.visitors.typeinference.TypeInferenceVisitor.setBestType(TypeInferenceVisitor.java:125)
-    	at jadx.core.dex.visitors.typeinference.TypeInferenceVisitor.lambda$runTypePropagation$2(TypeInferenceVisitor.java:103)
-    	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-    	at jadx.core.dex.visitors.typeinference.TypeInferenceVisitor.runTypePropagation(TypeInferenceVisitor.java:103)
-    	at jadx.core.dex.visitors.typeinference.TypeInferenceVisitor.visit(TypeInferenceVisitor.java:75)
-    Caused by: java.lang.NullPointerException: Cannot invoke "jadx.core.dex.instructions.args.InsnArg.getType()" because "arg" is null
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.verifyType(TypeUpdate.java:210)
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.queueTypeUpdate(TypeUpdate.java:171)
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.sameFirstArgListener(TypeUpdate.java:454)
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.requestUpdate(TypeUpdate.java:310)
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.runUpdate(TypeUpdate.java:124)
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.apply(TypeUpdate.java:91)
-    	... 7 more
-     */
-    /* JADX WARN: Failed to calculate best type for var: r15v11 ??
-    jadx.core.utils.exceptions.JadxRuntimeException: Type update failed for variable: r15v11 ??, new type: long
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.apply(TypeUpdate.java:109)
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.apply(TypeUpdate.java:59)
-    	at jadx.core.dex.visitors.typeinference.TypeInferenceVisitor.calculateFromBounds(TypeInferenceVisitor.java:147)
-    	at jadx.core.dex.visitors.typeinference.TypeInferenceVisitor.setBestType(TypeInferenceVisitor.java:125)
-    	at jadx.core.dex.visitors.typeinference.TypeInferenceVisitor.lambda$runTypePropagation$2(TypeInferenceVisitor.java:103)
-    	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-    	at jadx.core.dex.visitors.typeinference.TypeInferenceVisitor.runTypePropagation(TypeInferenceVisitor.java:103)
-    	at jadx.core.dex.visitors.typeinference.TypeInferenceVisitor.visit(TypeInferenceVisitor.java:75)
-    Caused by: java.lang.NullPointerException: Cannot invoke "jadx.core.dex.instructions.args.InsnArg.getType()" because "arg" is null
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.verifyType(TypeUpdate.java:210)
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.queueTypeUpdate(TypeUpdate.java:171)
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.sameFirstArgListener(TypeUpdate.java:454)
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.requestUpdate(TypeUpdate.java:310)
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.runUpdate(TypeUpdate.java:124)
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.apply(TypeUpdate.java:91)
-    	... 7 more
-     */
-    /* JADX WARN: Failed to calculate best type for var: r15v12 ??
-    jadx.core.utils.exceptions.JadxRuntimeException: Type update failed for variable: r15v12 ??, new type: long
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.apply(TypeUpdate.java:109)
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.apply(TypeUpdate.java:59)
-    	at jadx.core.dex.visitors.typeinference.TypeInferenceVisitor.calculateFromBounds(TypeInferenceVisitor.java:147)
-    	at jadx.core.dex.visitors.typeinference.TypeInferenceVisitor.setBestType(TypeInferenceVisitor.java:125)
-    	at jadx.core.dex.visitors.typeinference.TypeInferenceVisitor.lambda$runTypePropagation$2(TypeInferenceVisitor.java:103)
-    	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-    	at jadx.core.dex.visitors.typeinference.TypeInferenceVisitor.runTypePropagation(TypeInferenceVisitor.java:103)
-    	at jadx.core.dex.visitors.typeinference.TypeInferenceVisitor.visit(TypeInferenceVisitor.java:75)
-    Caused by: java.lang.NullPointerException: Cannot invoke "jadx.core.dex.instructions.args.InsnArg.getType()" because "arg" is null
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.verifyType(TypeUpdate.java:210)
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.queueTypeUpdate(TypeUpdate.java:171)
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.sameFirstArgListener(TypeUpdate.java:454)
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.requestUpdate(TypeUpdate.java:310)
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.runUpdate(TypeUpdate.java:124)
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.apply(TypeUpdate.java:91)
-    	... 7 more
-     */
-    /* JADX WARN: Failed to calculate best type for var: r15v14 ??
-    jadx.core.utils.exceptions.JadxRuntimeException: Type update failed for variable: r15v14 ??, new type: long
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.apply(TypeUpdate.java:109)
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.apply(TypeUpdate.java:59)
-    	at jadx.core.dex.visitors.typeinference.TypeInferenceVisitor.calculateFromBounds(TypeInferenceVisitor.java:147)
-    	at jadx.core.dex.visitors.typeinference.TypeInferenceVisitor.setBestType(TypeInferenceVisitor.java:125)
-    	at jadx.core.dex.visitors.typeinference.TypeInferenceVisitor.lambda$runTypePropagation$2(TypeInferenceVisitor.java:103)
-    	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-    	at jadx.core.dex.visitors.typeinference.TypeInferenceVisitor.runTypePropagation(TypeInferenceVisitor.java:103)
-    	at jadx.core.dex.visitors.typeinference.TypeInferenceVisitor.visit(TypeInferenceVisitor.java:75)
-    Caused by: java.lang.NullPointerException: Cannot invoke "jadx.core.dex.instructions.args.InsnArg.getType()" because "arg" is null
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.verifyType(TypeUpdate.java:210)
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.queueTypeUpdate(TypeUpdate.java:171)
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.sameFirstArgListener(TypeUpdate.java:454)
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.requestUpdate(TypeUpdate.java:310)
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.runUpdate(TypeUpdate.java:124)
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.apply(TypeUpdate.java:91)
-    	... 7 more
-     */
-    /* JADX WARN: Failed to calculate best type for var: r15v15 ??
-    jadx.core.utils.exceptions.JadxRuntimeException: Type update failed for variable: r15v15 ??, new type: long
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.apply(TypeUpdate.java:109)
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.apply(TypeUpdate.java:59)
-    	at jadx.core.dex.visitors.typeinference.TypeInferenceVisitor.calculateFromBounds(TypeInferenceVisitor.java:147)
-    	at jadx.core.dex.visitors.typeinference.TypeInferenceVisitor.setBestType(TypeInferenceVisitor.java:125)
-    	at jadx.core.dex.visitors.typeinference.TypeInferenceVisitor.lambda$runTypePropagation$2(TypeInferenceVisitor.java:103)
-    	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-    	at jadx.core.dex.visitors.typeinference.TypeInferenceVisitor.runTypePropagation(TypeInferenceVisitor.java:103)
-    	at jadx.core.dex.visitors.typeinference.TypeInferenceVisitor.visit(TypeInferenceVisitor.java:75)
-    Caused by: java.lang.NullPointerException: Cannot invoke "jadx.core.dex.instructions.args.InsnArg.getType()" because "arg" is null
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.verifyType(TypeUpdate.java:210)
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.queueTypeUpdate(TypeUpdate.java:171)
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.sameFirstArgListener(TypeUpdate.java:454)
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.requestUpdate(TypeUpdate.java:310)
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.runUpdate(TypeUpdate.java:124)
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.apply(TypeUpdate.java:91)
-    	... 7 more
-     */
-    /* JADX WARN: Failed to calculate best type for var: r24v3 ??
-    jadx.core.utils.exceptions.JadxRuntimeException: Type update failed for variable: r24v3 ??, new type: long
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.apply(TypeUpdate.java:109)
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.apply(TypeUpdate.java:59)
-    	at jadx.core.dex.visitors.typeinference.TypeInferenceVisitor.calculateFromBounds(TypeInferenceVisitor.java:147)
-    	at jadx.core.dex.visitors.typeinference.TypeInferenceVisitor.setBestType(TypeInferenceVisitor.java:125)
-    	at jadx.core.dex.visitors.typeinference.TypeInferenceVisitor.lambda$runTypePropagation$2(TypeInferenceVisitor.java:103)
-    	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-    	at jadx.core.dex.visitors.typeinference.TypeInferenceVisitor.runTypePropagation(TypeInferenceVisitor.java:103)
-    	at jadx.core.dex.visitors.typeinference.TypeInferenceVisitor.visit(TypeInferenceVisitor.java:75)
-    Caused by: java.lang.NullPointerException: Cannot invoke "jadx.core.dex.instructions.args.InsnArg.getType()" because "arg" is null
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.verifyType(TypeUpdate.java:210)
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.queueTypeUpdate(TypeUpdate.java:171)
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.sameFirstArgListener(TypeUpdate.java:454)
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.requestUpdate(TypeUpdate.java:310)
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.runUpdate(TypeUpdate.java:124)
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.apply(TypeUpdate.java:91)
-    	... 7 more
-     */
-    /* JADX WARN: Failed to calculate best type for var: r2v13 ??
-    jadx.core.utils.exceptions.JadxRuntimeException: Type update failed for variable: r2v13 ??, new type: long
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.apply(TypeUpdate.java:109)
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.apply(TypeUpdate.java:59)
-    	at jadx.core.dex.visitors.typeinference.TypeInferenceVisitor.calculateFromBounds(TypeInferenceVisitor.java:147)
-    	at jadx.core.dex.visitors.typeinference.TypeInferenceVisitor.setBestType(TypeInferenceVisitor.java:125)
-    	at jadx.core.dex.visitors.typeinference.TypeInferenceVisitor.lambda$runTypePropagation$2(TypeInferenceVisitor.java:103)
-    	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-    	at jadx.core.dex.visitors.typeinference.TypeInferenceVisitor.runTypePropagation(TypeInferenceVisitor.java:103)
-    	at jadx.core.dex.visitors.typeinference.TypeInferenceVisitor.visit(TypeInferenceVisitor.java:75)
-    Caused by: java.lang.NullPointerException: Cannot invoke "jadx.core.dex.instructions.args.InsnArg.getType()" because "arg" is null
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.verifyType(TypeUpdate.java:210)
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.queueTypeUpdate(TypeUpdate.java:171)
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.sameFirstArgListener(TypeUpdate.java:454)
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.requestUpdate(TypeUpdate.java:310)
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.runUpdate(TypeUpdate.java:124)
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.apply(TypeUpdate.java:91)
-    	... 7 more
-     */
-    /* JADX WARN: Failed to calculate best type for var: r2v14 ??
-    jadx.core.utils.exceptions.JadxRuntimeException: Type update failed for variable: r2v14 ??, new type: long
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.apply(TypeUpdate.java:109)
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.apply(TypeUpdate.java:59)
-    	at jadx.core.dex.visitors.typeinference.TypeInferenceVisitor.calculateFromBounds(TypeInferenceVisitor.java:147)
-    	at jadx.core.dex.visitors.typeinference.TypeInferenceVisitor.setBestType(TypeInferenceVisitor.java:125)
-    	at jadx.core.dex.visitors.typeinference.TypeInferenceVisitor.lambda$runTypePropagation$2(TypeInferenceVisitor.java:103)
-    	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-    	at jadx.core.dex.visitors.typeinference.TypeInferenceVisitor.runTypePropagation(TypeInferenceVisitor.java:103)
-    	at jadx.core.dex.visitors.typeinference.TypeInferenceVisitor.visit(TypeInferenceVisitor.java:75)
-    Caused by: java.lang.NullPointerException: Cannot invoke "jadx.core.dex.instructions.args.InsnArg.getType()" because "arg" is null
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.verifyType(TypeUpdate.java:210)
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.queueTypeUpdate(TypeUpdate.java:171)
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.sameFirstArgListener(TypeUpdate.java:454)
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.requestUpdate(TypeUpdate.java:310)
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.runUpdate(TypeUpdate.java:124)
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.apply(TypeUpdate.java:91)
-    	... 7 more
-     */
-    /* JADX WARN: Failed to calculate best type for var: r6v8 ??
-    jadx.core.utils.exceptions.JadxRuntimeException: Type update failed for variable: r6v8 ??, new type: long
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.apply(TypeUpdate.java:109)
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.apply(TypeUpdate.java:59)
-    	at jadx.core.dex.visitors.typeinference.TypeInferenceVisitor.calculateFromBounds(TypeInferenceVisitor.java:147)
-    	at jadx.core.dex.visitors.typeinference.TypeInferenceVisitor.setBestType(TypeInferenceVisitor.java:125)
-    	at jadx.core.dex.visitors.typeinference.TypeInferenceVisitor.lambda$runTypePropagation$2(TypeInferenceVisitor.java:103)
-    	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-    	at jadx.core.dex.visitors.typeinference.TypeInferenceVisitor.runTypePropagation(TypeInferenceVisitor.java:103)
-    	at jadx.core.dex.visitors.typeinference.TypeInferenceVisitor.visit(TypeInferenceVisitor.java:75)
-    Caused by: java.lang.NullPointerException: Cannot invoke "jadx.core.dex.instructions.args.InsnArg.getType()" because "arg" is null
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.verifyType(TypeUpdate.java:210)
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.queueTypeUpdate(TypeUpdate.java:171)
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.sameFirstArgListener(TypeUpdate.java:454)
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.requestUpdate(TypeUpdate.java:310)
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.runUpdate(TypeUpdate.java:124)
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.apply(TypeUpdate.java:91)
-    	... 7 more
-     */
-    /* JADX WARN: Failed to calculate best type for var: r6v9 ??
-    jadx.core.utils.exceptions.JadxRuntimeException: Type update failed for variable: r6v9 ??, new type: long
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.apply(TypeUpdate.java:109)
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.apply(TypeUpdate.java:59)
-    	at jadx.core.dex.visitors.typeinference.TypeInferenceVisitor.calculateFromBounds(TypeInferenceVisitor.java:147)
-    	at jadx.core.dex.visitors.typeinference.TypeInferenceVisitor.setBestType(TypeInferenceVisitor.java:125)
-    	at jadx.core.dex.visitors.typeinference.TypeInferenceVisitor.lambda$runTypePropagation$2(TypeInferenceVisitor.java:103)
-    	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-    	at jadx.core.dex.visitors.typeinference.TypeInferenceVisitor.runTypePropagation(TypeInferenceVisitor.java:103)
-    	at jadx.core.dex.visitors.typeinference.TypeInferenceVisitor.visit(TypeInferenceVisitor.java:75)
-    Caused by: java.lang.NullPointerException: Cannot invoke "jadx.core.dex.instructions.args.InsnArg.getType()" because "arg" is null
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.verifyType(TypeUpdate.java:210)
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.queueTypeUpdate(TypeUpdate.java:171)
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.sameFirstArgListener(TypeUpdate.java:454)
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.requestUpdate(TypeUpdate.java:310)
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.runUpdate(TypeUpdate.java:124)
-    	at jadx.core.dex.visitors.typeinference.TypeUpdate.apply(TypeUpdate.java:91)
-    	... 7 more
-     */
-    /* JADX WARN: Unsupported multi-entry loop pattern (BACK_EDGE: B:323:? -> B:226:0x03f0). Please report as a decompilation issue!!! */
-    /*  JADX ERROR: Types fix failed
-        jadx.core.utils.exceptions.JadxRuntimeException: Type update failed for variable: r13v18 ??, new type: long
-        	at jadx.core.dex.visitors.typeinference.TypeUpdate.apply(TypeUpdate.java:109)
-        	at jadx.core.dex.visitors.typeinference.TypeUpdate.apply(TypeUpdate.java:59)
-        	at jadx.core.dex.visitors.typeinference.FixTypesVisitor.tryPossibleTypes(FixTypesVisitor.java:186)
-        	at jadx.core.dex.visitors.typeinference.FixTypesVisitor.deduceType(FixTypesVisitor.java:245)
-        	at jadx.core.dex.visitors.typeinference.FixTypesVisitor.tryDeduceTypes(FixTypesVisitor.java:224)
-        	at jadx.core.dex.visitors.typeinference.FixTypesVisitor.visit(FixTypesVisitor.java:94)
-        Caused by: java.lang.NullPointerException: Cannot invoke "jadx.core.dex.instructions.args.InsnArg.getType()" because "arg" is null
-        	at jadx.core.dex.visitors.typeinference.TypeUpdate.verifyType(TypeUpdate.java:210)
-        	at jadx.core.dex.visitors.typeinference.TypeUpdate.queueTypeUpdate(TypeUpdate.java:171)
-        	at jadx.core.dex.visitors.typeinference.TypeUpdate.sameFirstArgListener(TypeUpdate.java:454)
-        	at jadx.core.dex.visitors.typeinference.TypeUpdate.requestUpdate(TypeUpdate.java:310)
-        	at jadx.core.dex.visitors.typeinference.TypeUpdate.runUpdate(TypeUpdate.java:124)
-        	at jadx.core.dex.visitors.typeinference.TypeUpdate.apply(TypeUpdate.java:91)
-        	... 5 more
-        */
-    public static void f(android.content.Context r29, defpackage.gn2 r30, java.lang.String r31, com.eddyizm.tempus.subsonic.models.Child r32, java.lang.String r33, java.lang.String r34, defpackage.nt0 r35, boolean r36) {
+    public static void f(Context var0, gn2 var1_5, String var2_8, Child var3_15, String var4_23, String var5_25, nt0 var6_30, boolean var7_31) {
         /*
-            Method dump skipped, instruction units count: 1293
-            To view this dump add '--comments-level debug' option
-        */
-        throw new UnsupportedOperationException("Method not decompiled: defpackage.i51.f(android.content.Context, gn2, java.lang.String, com.eddyizm.tempus.subsonic.models.Child, java.lang.String, java.lang.String, nt0, boolean):void");
+         * This method has failed to decompile.  When submitting a bug report, please provide this stack trace, and (if you hold appropriate legal rights) the relevant class file.
+         * 
+         * org.benf.cfr.reader.util.ConfusedCFRException: Back jump on a try block [egrp 2[TRYBLOCK] [6, 5 : 660->676)] java.lang.Throwable
+         *     at org.benf.cfr.reader.bytecode.analysis.opgraph.Op02WithProcessedDataAndRefs.insertExceptionBlocks(Op02WithProcessedDataAndRefs.java:2283)
+         *     at org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysisInner(CodeAnalyser.java:415)
+         *     at org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysisOrWrapFail(CodeAnalyser.java:278)
+         *     at org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysis(CodeAnalyser.java:201)
+         *     at org.benf.cfr.reader.entities.attributes.AttributeCode.analyse(AttributeCode.java:94)
+         *     at org.benf.cfr.reader.entities.Method.analyse(Method.java:531)
+         *     at org.benf.cfr.reader.entities.ClassFile.analyseMid(ClassFile.java:1055)
+         *     at org.benf.cfr.reader.entities.ClassFile.analyseTop(ClassFile.java:942)
+         *     at org.benf.cfr.reader.Driver.doJarVersionTypes(Driver.java:257)
+         *     at org.benf.cfr.reader.Driver.doJar(Driver.java:139)
+         *     at org.benf.cfr.reader.CfrDriverImpl.analyse(CfrDriverImpl.java:76)
+         *     at org.benf.cfr.reader.Main.main(Main.java:54)
+         */
+        throw new IllegalStateException("Decompilation failed");
     }
 
-    public static void g(Child child, Uri uri, String str, String str2) {
-        if (child == null) {
+    public static void g(Child object, Uri uri, String string, String string2) {
+        if (object == null) {
             return;
         }
-        Download download = new Download(child);
-        Pattern pattern = e03.a;
+        Download download = new Download((Child)object);
+        object = e03.a;
         if (xa3.u("audio_transcode_download", false) && !xa3.u("audio_transcode_download_priority", false)) {
-            String strL = e03.l();
-            String string = "0";
-            if (!e03.l().equals("raw")) {
-                App.b().getClass();
-                string = App.c().getString("max_bitrate_download", "0");
-                string.getClass();
+            String string3 = e03.l();
+            boolean bl5 = e03.l().equals("raw");
+            object = "0";
+            if (!bl5) {
+                ((Object)((Object)App.b())).getClass();
+                object = App.c().getString("max_bitrate_download", "0");
+                object.getClass();
             }
-            e03.a(download, strL, string);
+            e03.a(download, string3, (String)object);
         }
         download.setDownloadState(1);
-        download.setPlaylistId(str);
-        download.setPlaylistName(str2);
+        download.setPlaylistId(string);
+        download.setPlaylistName(string2);
         if (uri != null) {
             download.setDownloadUri(uri.toString());
         }
         new Thread(new lg1(11, AppDatabase.y().w(), download)).start();
     }
 
-    public static String h(String str) {
-        return str.replaceAll("[\\/:*?\\\"<>|]", "_").replaceAll("\\s+", " ").trim();
+    public static String h(String string) {
+        return string.replaceAll("[\\/:*?\\\"<>|]", "_").replaceAll("\\s+", " ").trim();
     }
 }
+

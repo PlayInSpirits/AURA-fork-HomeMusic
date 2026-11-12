@@ -1,11 +1,13 @@
 package defpackage;
 
+/*
+ * Decompiled with CFR 0.152.
+ */
 import java.util.ArrayList;
 import java.util.List;
 
-/* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
-/* JADX INFO: loaded from: classes.dex */
-public final class a63 extends i63 {
+public final class a63
+extends i63 {
     public final cx2 c;
     public final te2 d;
     public final xe2 e;
@@ -15,659 +17,573 @@ public final class a63 extends i63 {
     public boolean i;
     public boolean j;
 
-    public a63(cx2 cx2Var) {
-        this.c = cx2Var;
-        te2 te2Var = new te2();
-        te2Var.c = new long[2];
-        this.d = te2Var;
+    public a63(cx2 object) {
+        this.c = object;
+        object = new te2();
+        ((te2)object).c = new long[2];
+        this.d = object;
         this.e = new xe2(2);
         this.i = true;
         this.j = true;
     }
 
-    /* JADX WARN: Code duplicated, block: B:151:0x02e7  */
-    /* JADX WARN: Multi-variable type inference failed */
-    /* JADX WARN: Type inference failed for: r10v9 */
-    /* JADX WARN: Type inference failed for: r1v4, types: [java.util.List] */
-    /* JADX WARN: Type inference failed for: r5v0, types: [cx2] */
-    /* JADX WARN: Type inference failed for: r5v1, types: [cx2] */
-    /* JADX WARN: Type inference failed for: r5v38 */
-    /* JADX WARN: Type inference failed for: r5v39, types: [cx2] */
-    /* JADX WARN: Type inference failed for: r5v40, types: [java.lang.Object] */
-    /* JADX WARN: Type inference failed for: r5v41 */
-    /* JADX WARN: Type inference failed for: r5v42 */
-    /* JADX WARN: Type inference failed for: r5v43 */
-    /* JADX WARN: Type inference failed for: r5v44 */
-    /* JADX WARN: Type inference failed for: r5v45 */
-    /* JADX WARN: Type inference failed for: r5v46 */
-    /* JADX WARN: Type inference failed for: r5v7, types: [java.util.List] */
-    /* JADX WARN: Type inference failed for: r6v22 */
-    /* JADX WARN: Type inference failed for: r6v6 */
-    /* JADX WARN: Type inference failed for: r6v7, types: [int] */
-    /* JADX WARN: Type inference failed for: r8v0 */
-    /* JADX WARN: Type inference failed for: r8v1 */
-    /* JADX WARN: Type inference failed for: r8v18 */
-    /* JADX WARN: Type inference failed for: r8v19, types: [f13] */
-    /* JADX WARN: Type inference failed for: r8v20 */
-    /* JADX WARN: Type inference failed for: r8v21 */
-    /* JADX WARN: Type inference failed for: r8v22, types: [f13] */
-    /* JADX WARN: Type inference failed for: r8v24 */
-    /* JADX WARN: Type inference failed for: r8v25 */
-    /* JADX WARN: Type inference failed for: r8v26 */
-    /* JADX WARN: Type inference failed for: r8v27 */
-    @Override // defpackage.i63
-    public final boolean a(xe2 xe2Var, q62 q62Var, gp3 gp3Var, boolean z) {
-        te2 te2Var;
-        xe2 xe2Var2;
-        Object obj;
-        boolean z2;
-        boolean z3;
-        kn3 kn3Var;
-        int i;
-        int i2;
-        boolean z4;
-        boolean zA = super.a(xe2Var, q62Var, gp3Var, z);
-        ?? C = this.c;
-        boolean z5 = true;
-        if (C.A) {
-            ?? f13Var = 0;
-            while (C != 0) {
-                if (C instanceof rn3) {
-                    this.f = j51.M((rn3) C, 16);
-                } else if ((C.p & 16) != 0 && (C instanceof fo0)) {
-                    cx2 cx2Var = ((fo0) C).C;
-                    int i3 = 0;
-                    while (cx2Var != null) {
-                        if ((cx2Var.p & 16) != 0) {
-                            i3++;
-                            if (i3 == 1) {
-                                C = C;
-                                f13Var = f13Var;
-                                f13Var = f13Var;
-                                C = cx2Var;
+    @Override
+    public final boolean a(xe2 object, q62 object2, gp3 object3, boolean bl5) {
+        boolean bl6;
+        block41: {
+            boolean bl7;
+            long l16;
+            long l17;
+            int n16;
+            int n17;
+            Object object4;
+            Object object5;
+            boolean bl8;
+            boolean bl9;
+            block40: {
+                int n18;
+                int n19;
+                Object object6;
+                Object object7;
+                Object object8;
+                block43: {
+                    block42: {
+                        bl9 = super.a((xe2)object, (q62)object2, (gp3)object3, bl5);
+                        object8 = this.c;
+                        bl8 = ((cx2)object8).A;
+                        bl6 = true;
+                        if (!bl8) break block42;
+                        object5 = null;
+                        while (object8 != null) {
+                            if (object8 instanceof rn3) {
+                                this.f = j51.M((rn3)object8, 16);
+                                object4 = object5;
                             } else {
-                                if (f13Var == 0) {
-                                    f13Var = new f13(new cx2[16]);
+                                object4 = object5;
+                                if ((((cx2)object8).p & 0x10) != 0) {
+                                    object4 = object5;
+                                    if (object8 instanceof fo0) {
+                                        object4 = ((fo0)object8).C;
+                                        n17 = 0;
+                                        while (object4 != null) {
+                                            object7 = object8;
+                                            object6 = object5;
+                                            n16 = n17;
+                                            if ((((cx2)object4).p & 0x10) != 0) {
+                                                n16 = n17 + 1;
+                                                if (n16 == 1) {
+                                                    object7 = object4;
+                                                    object6 = object5;
+                                                } else {
+                                                    object7 = object5;
+                                                    if (object5 == null) {
+                                                        object7 = new f13(new cx2[16]);
+                                                    }
+                                                    object5 = object8;
+                                                    if (object8 != null) {
+                                                        ((f13)object7).b(object8);
+                                                        object5 = null;
+                                                    }
+                                                    ((f13)object7).b(object4);
+                                                    object6 = object7;
+                                                    object7 = object5;
+                                                }
+                                            }
+                                            object4 = ((cx2)object4).s;
+                                            object8 = object7;
+                                            object5 = object6;
+                                            n17 = n16;
+                                        }
+                                        object4 = object5;
+                                        if (n17 == 1) continue;
+                                    }
                                 }
-                                if (C != 0) {
-                                    f13Var.b(C);
-                                    C = 0;
-                                }
-                                f13Var.b(cx2Var);
                             }
-                        } else {
-                            C = C;
-                            f13Var = f13Var;
+                            object8 = j51.c(object4);
+                            object5 = object4;
                         }
-                        cx2Var = cx2Var.s;
-                        C = C;
-                        f13Var = f13Var;
+                        if (this.f != null) break block43;
                     }
-                    if (i3 == 1) {
-                        C = C;
-                        f13Var = f13Var;
-                    } else {
-                        C = C;
-                        f13Var = f13Var;
-                    }
+                    return true;
                 }
-                C = j51.c(f13Var);
-            }
-            if (this.f != null) {
-                int iH = xe2Var.h();
-                int i4 = 0;
+                n17 = ((xe2)object).h();
+                n16 = 0;
                 while (true) {
-                    te2Var = this.d;
-                    xe2Var2 = this.e;
-                    if (i4 >= iH) {
-                        break;
-                    }
-                    long jE = xe2Var.e(i4);
-                    on3 on3Var = (on3) xe2Var.i(i4);
-                    if (te2Var.c(jE)) {
-                        boolean z6 = z5;
-                        long j = on3Var.g;
-                        long j2 = on3Var.c;
-                        if ((((j & 9223372034707292159L) + 36028792732385279L) & (-9223372034707292160L)) == 0 && (((j2 & 9223372034707292159L) + 36028792732385279L) & (-9223372034707292160L)) == 0) {
-                            z4 = z6;
-                            ArrayList arrayList = new ArrayList(on3Var.b().size());
-                            List listB = on3Var.b();
-                            int size = listB.size();
-                            int i5 = 0;
-                            while (i5 < size) {
-                                List list = listB;
-                                bm1 bm1Var = (bm1) listB.get(i5);
-                                xe2 xe2Var3 = xe2Var2;
-                                long j3 = jE;
-                                long j4 = bm1Var.b;
-                                if ((((j4 & 9223372034707292159L) + 36028792732385279L) & (-9223372034707292160L)) == 0) {
-                                    long j5 = bm1Var.a;
-                                    f63 f63Var = this.f;
-                                    f63Var.getClass();
-                                    arrayList.add(new bm1(j5, f63Var.A(q62Var, j4), bm1Var.c, bm1Var.d, bm1Var.e));
-                                }
-                                i5++;
-                                size = size;
-                                listB = list;
-                                xe2Var2 = xe2Var3;
-                                jE = j3;
-                                on3Var = on3Var;
+                    object8 = this.d;
+                    object4 = this.e;
+                    if (n16 >= n17) break;
+                    l17 = ((xe2)object).e(n16);
+                    object5 = (on3)((xe2)object).i(n16);
+                    if (((te2)object8).c(l17)) {
+                        long l18 = ((on3)object5).g;
+                        l16 = ((on3)object5).c;
+                        if (((l18 & 0x7FFFFFFF7FFFFFFFL) + 0x7FFFFF007FFFFFL & 0x8000000080000000L) == 0L && ((l16 & 0x7FFFFFFF7FFFFFFFL) + 0x7FFFFF007FFFFFL & 0x8000000080000000L) == 0L) {
+                            long l19;
+                            long l26;
+                            object7 = new ArrayList<bm1>(((on3)object5).b().size());
+                            object8 = ((on3)object5).b();
+                            n19 = object8.size();
+                            for (n18 = 0; n18 < n19; ++n18) {
+                                object6 = (bm1)object8.get(n18);
+                                l26 = ((bm1)object6).b;
+                                if (((l26 & 0x7FFFFFFF7FFFFFFFL) + 0x7FFFFF007FFFFFL & 0x8000000080000000L) != 0L) continue;
+                                l19 = ((bm1)object6).a;
+                                f63 f632 = this.f;
+                                f632.getClass();
+                                ((ArrayList)object7).add(new bm1(l19, f632.A((q62)object2, l26), ((bm1)object6).c, ((bm1)object6).d, ((bm1)object6).e));
                             }
-                            xe2 xe2Var4 = xe2Var2;
-                            long j6 = jE;
-                            f63 f63Var2 = this.f;
-                            f63Var2.getClass();
-                            long jA = f63Var2.A(q62Var, j);
-                            f63 f63Var3 = this.f;
-                            f63Var3.getClass();
-                            on3 on3Var2 = new on3(on3Var.a, on3Var.b, f63Var3.A(q62Var, j2), on3Var.d, on3Var.e, on3Var.f, jA, on3Var.h, on3Var.i, arrayList, on3Var.j, on3Var.k, on3Var.l, on3Var.n);
-                            on3 on3Var3 = on3Var.q;
-                            if (on3Var3 == null) {
-                                on3Var3 = on3Var;
+                            object8 = this.f;
+                            object8.getClass();
+                            l18 = ((f63)object8).A((q62)object2, l18);
+                            object8 = this.f;
+                            object8.getClass();
+                            l26 = ((f63)object8).A((q62)object2, l16);
+                            l16 = ((on3)object5).a;
+                            long l27 = ((on3)object5).b;
+                            bl8 = ((on3)object5).d;
+                            long l28 = ((on3)object5).f;
+                            bl7 = ((on3)object5).h;
+                            n19 = ((on3)object5).i;
+                            l19 = ((on3)object5).j;
+                            object6 = new on3(l16, l27, l26, bl8, ((on3)object5).e, l28, l18, bl7, n19, (ArrayList)object7, l19, ((on3)object5).k, ((on3)object5).l, ((on3)object5).n);
+                            object8 = object7 = ((on3)object5).q;
+                            if (object7 == null) {
+                                object8 = object5;
                             }
-                            on3Var2.q = on3Var3;
-                            on3 on3Var4 = on3Var.q;
-                            if (on3Var4 != null) {
-                                on3Var = on3Var4;
+                            ((on3)object6).q = object8;
+                            object8 = ((on3)object5).q;
+                            if (object8 != null) {
+                                object5 = object8;
                             }
-                            on3Var2.q = on3Var;
-                            xe2Var4.f(j6, on3Var2);
-                        } else {
-                            z4 = z6;
+                            ((on3)object6).q = object5;
+                            ((xe2)object4).f(l17, object6);
                         }
-                    } else {
-                        z4 = z5;
                     }
-                    i4++;
-                    z5 = z4;
-                    iH = iH;
-                    zA = zA;
+                    ++n16;
                 }
-                boolean z7 = zA;
-                boolean z8 = z5;
-                if (xe2Var2.d()) {
-                    te2Var.b = 0;
+                if (((xe2)object4).d()) {
+                    ((te2)object8).b = 0;
                     this.a.g();
-                    return z8;
+                    return bl6;
                 }
-                int i6 = te2Var.b;
-                while (true) {
-                    i6--;
-                    if (-1 >= i6) {
-                        break;
+                for (n17 = ((te2)object8).b - 1; -1 < n17; --n17) {
+                    if (((xe2)object).c(((te2)object8).c[n17]) >= 0 || n17 >= (n18 = ((te2)object8).b)) continue;
+                    n16 = n17;
+                    while (n16 < n18 - 1) {
+                        object2 = ((te2)object8).c;
+                        n19 = n16 + 1;
+                        object2[n16] = object2[n19];
+                        n16 = n19;
                     }
-                    if (xe2Var.c(te2Var.c[i6]) < 0 && i6 < (i2 = te2Var.b)) {
-                        int i7 = i2 - 1;
-                        int i8 = i6;
-                        while (i8 < i7) {
-                            long[] jArr = te2Var.c;
-                            int i9 = i8 + 1;
-                            jArr[i8] = jArr[i9];
-                            i8 = i9;
-                        }
-                        te2Var.b--;
-                    }
+                    --((te2)object8).b;
                 }
-                ArrayList arrayList2 = new ArrayList(xe2Var2.h());
-                int iH2 = xe2Var2.h();
-                for (int i10 = 0; i10 < iH2; i10++) {
-                    arrayList2.add(xe2Var2.i(i10));
+                object5 = new ArrayList(((xe2)object4).h());
+                n16 = ((xe2)object4).h();
+                for (n17 = 0; n17 < n16; ++n17) {
+                    ((ArrayList)object5).add(((xe2)object4).i(n17));
                 }
-                kn3 kn3Var2 = new kn3(arrayList2, gp3Var);
-                int size2 = arrayList2.size();
-                int i11 = 0;
-                while (true) {
-                    if (i11 >= size2) {
-                        obj = null;
-                        break;
+                object2 = new kn3((List)object5, (gp3)object3);
+                n16 = ((ArrayList)object5).size();
+                for (n17 = 0; n17 < n16; ++n17) {
+                    object = ((ArrayList)object5).get(n17);
+                    if (!((gp3)object3).c(((on3)object).a)) {
+                        continue;
                     }
-                    obj = arrayList2.get(i11);
-                    if (gp3Var.c(((on3) obj).a)) {
-                        break;
-                    }
-                    i11++;
+                    break block40;
                 }
-                on3 on3Var5 = (on3) obj;
-                if (on3Var5 != null) {
-                    boolean z9 = on3Var5.d;
-                    if (z) {
-                        z2 = false;
-                        if (!this.i && (z9 || on3Var5.h)) {
-                            f63 f63Var4 = this.f;
-                            f63Var4.getClass();
-                            long j7 = f63Var4.p;
-                            long j8 = on3Var5.c;
-                            float fIntBitsToFloat = Float.intBitsToFloat((int) (j8 >> 32));
-                            float fIntBitsToFloat2 = Float.intBitsToFloat((int) (j8 & 4294967295L));
-                            int i12 = (int) (j7 >> 32);
-                            this.i = !((fIntBitsToFloat2 > ((float) ((int) (j7 & 4294967295L))) ? z8 : false) | (fIntBitsToFloat > ((float) i12) ? z8 : false) | (fIntBitsToFloat < 0.0f ? z8 : false) | (fIntBitsToFloat2 < 0.0f ? z8 : false));
-                        }
-                    } else {
-                        z2 = false;
-                        this.i = false;
+                object = null;
+            }
+            object3 = (on3)object;
+            if (object3 != null) {
+                boolean bl10 = ((on3)object3).d;
+                if (!bl5) {
+                    this.i = false;
+                } else if (!this.i && (bl10 || ((on3)object3).h)) {
+                    object = this.f;
+                    object.getClass();
+                    l16 = ((jg3)object).p;
+                    l17 = ((on3)object3).c;
+                    float f16 = Float.intBitsToFloat((int)(l17 >> 32));
+                    float f17 = Float.intBitsToFloat((int)(l17 & 0xFFFFFFFFL));
+                    n16 = (int)(l16 >> 32);
+                    n17 = (int)(l16 & 0xFFFFFFFFL);
+                    bl5 = f16 < 0.0f ? bl6 : false;
+                    bl8 = f16 > (float)n16 ? bl6 : false;
+                    bl7 = f17 < 0.0f ? bl6 : false;
+                    boolean bl11 = f17 > (float)n17 ? bl6 : false;
+                    this.i = (bl11 | (bl8 | bl5 | bl7)) ^ true;
+                }
+                bl8 = this.i;
+                bl5 = this.h;
+                n17 = 5;
+                if (bl8 != bl5 && ((n16 = ((kn3)object2).c) == 3 || n16 == 4 || n16 == 5)) {
+                    if (bl8) {
+                        n17 = 4;
                     }
-                    boolean z10 = this.i;
-                    boolean z11 = this.h;
-                    if (z10 == z11 || !((i = kn3Var2.c) == 3 || i == 4 || i == 5)) {
-                        int i13 = kn3Var2.c;
-                        if (i13 == 4 && z11 && !this.j) {
-                            kn3Var2.c = 3;
-                        } else if (i13 == 5 && z10 && z9) {
-                            kn3Var2.c = 3;
-                        }
-                    } else {
-                        kn3Var2.c = z10 ? 4 : 5;
-                    }
+                    ((kn3)object2).c = n17;
                 } else {
-                    z2 = false;
+                    n17 = ((kn3)object2).c;
+                    if (n17 == 4 && bl5 && !this.j) {
+                        ((kn3)object2).c = 3;
+                    } else if (n17 == 5 && bl8 && bl10) {
+                        ((kn3)object2).c = 3;
+                    }
                 }
-                if (!z7 && kn3Var2.c == 3 && (kn3Var = this.g) != null) {
-                    ?? r1 = kn3Var.a;
-                    int size3 = r1.size();
-                    ?? r5 = kn3Var2.a;
-                    if (size3 != r5.size()) {
-                        z3 = z8;
-                        break;
+            }
+            if (!bl9 && ((kn3)object2).c == 3 && (object = this.g) != null && (n17 = (object5 = ((kn3)object).a).size()) == (object = ((kn3)object2).a).size()) {
+                n16 = object.size();
+                for (n17 = 0; n17 < n16; ++n17) {
+                    object3 = (on3)object5.get(n17);
+                    object4 = (on3)object.get(n17);
+                    if (g83.b(((on3)object3).c, ((on3)object4).c)) {
+                        continue;
                     }
-                    int size4 = r5.size();
-                    ?? r6 = z2;
-                    while (true) {
-                        if (r6 >= size4) {
-                            z3 = z2;
-                            break;
+                    break block41;
+                }
+                bl6 = false;
+            }
+        }
+        this.g = object2;
+        return bl6;
+    }
+
+    @Override
+    public final void b(gp3 gp32) {
+        super.b(gp32);
+        kn3 kn32 = this.g;
+        if (kn32 == null) {
+            return;
+        }
+        this.h = this.i;
+        List list = kn32.a;
+        int n16 = list.size();
+        boolean bl5 = false;
+        for (int i16 = 0; i16 < n16; ++i16) {
+            on3 on32 = (on3)list.get(i16);
+            boolean bl6 = on32.d;
+            long l16 = on32.a;
+            boolean bl7 = gp32.c(l16);
+            boolean bl8 = this.i;
+            if ((bl6 || bl7) && (bl6 || bl8)) continue;
+            this.d.e(l16);
+        }
+        this.i = false;
+        if (kn32.c == 5) {
+            bl5 = true;
+        }
+        this.j = bl5;
+    }
+
+    public final void c() {
+        int n16;
+        Object object = this.a;
+        Object object2 = ((f13)object).n;
+        int n17 = ((f13)object).p;
+        for (n16 = 0; n16 < n17; ++n16) {
+            ((a63)object2[n16]).c();
+        }
+        Object object3 = this.c;
+        object = null;
+        while (object3 != null) {
+            if (object3 instanceof rn3) {
+                ((rn3)object3).t();
+                object2 = object;
+            } else {
+                object2 = object;
+                if ((object3.p & 0x10) != 0) {
+                    object2 = object;
+                    if (object3 instanceof fo0) {
+                        object2 = ((fo0)object3).C;
+                        n17 = 0;
+                        while (object2 != null) {
+                            Object object4 = object;
+                            n16 = n17;
+                            Object object5 = object3;
+                            if ((object2.p & 0x10) != 0) {
+                                n16 = n17 + 1;
+                                if (n16 == 1) {
+                                    object5 = object2;
+                                    object4 = object;
+                                } else {
+                                    object4 = object;
+                                    if (object == null) {
+                                        object4 = new f13(new cx2[16]);
+                                    }
+                                    object5 = object3;
+                                    if (object3 != null) {
+                                        object4.b(object3);
+                                        object5 = null;
+                                    }
+                                    object4.b(object2);
+                                }
+                            }
+                            object2 = object2.s;
+                            object = object4;
+                            n17 = n16;
+                            object3 = object5;
                         }
-                        if (!g83.b(((on3) r1.get(r6)).c, ((on3) r5.get(r6)).c)) {
-                            z3 = z8;
-                            break;
-                        }
-                        r6++;
+                        object2 = object;
+                        if (n17 == 1) continue;
                     }
+                }
+            }
+            object3 = j51.c((f13)object2);
+            object = object2;
+        }
+    }
+
+    public final boolean d(gp3 gp32) {
+        xe2 xe22 = this.e;
+        boolean bl5 = xe22.d();
+        boolean bl6 = false;
+        int n16 = 0;
+        if (bl5) {
+            bl5 = bl6;
+        } else {
+            Object object = this.c;
+            if (!((cx2)object).A) {
+                bl5 = bl6;
+            } else {
+                Object object2 = ((cx2)object).u;
+                bl5 = object2 != null && (object2 = object2.H) != null ? object2.H() : false;
+                if (!bl5) {
+                    bl5 = bl6;
                 } else {
-                    z3 = z8;
-                    break;
+                    int n17;
+                    int n18;
+                    Object object3;
+                    kn3 kn32 = this.g;
+                    kn32.getClass();
+                    object2 = this.f;
+                    object2.getClass();
+                    long l16 = object2.p;
+                    Object object4 = object;
+                    object2 = null;
+                    while (object4 != null) {
+                        if (object4 instanceof rn3) {
+                            ((rn3)object4).n(kn32, ln3.p, l16);
+                            object3 = object2;
+                        } else {
+                            object3 = object2;
+                            if ((((cx2)object4).p & 0x10) != 0) {
+                                object3 = object2;
+                                if (object4 instanceof fo0) {
+                                    object3 = ((fo0)object4).C;
+                                    n18 = 0;
+                                    while (object3 != null) {
+                                        Object object5 = object4;
+                                        Object object6 = object2;
+                                        n17 = n18;
+                                        if ((((cx2)object3).p & 0x10) != 0) {
+                                            n17 = n18 + 1;
+                                            if (n17 == 1) {
+                                                object5 = object3;
+                                                object6 = object2;
+                                            } else {
+                                                object5 = object2;
+                                                if (object2 == null) {
+                                                    object5 = new f13(new cx2[16]);
+                                                }
+                                                object2 = object4;
+                                                if (object4 != null) {
+                                                    object5.b(object4);
+                                                    object2 = null;
+                                                }
+                                                object5.b(object3);
+                                                object6 = object5;
+                                                object5 = object2;
+                                            }
+                                        }
+                                        object3 = ((cx2)object3).s;
+                                        object4 = object5;
+                                        object2 = object6;
+                                        n18 = n17;
+                                    }
+                                    object3 = object2;
+                                    if (n18 == 1) continue;
+                                }
+                            }
+                        }
+                        object4 = j51.c((f13)object3);
+                        object2 = object3;
+                    }
+                    if (((cx2)object).A) {
+                        object2 = this.a;
+                        object3 = object2.n;
+                        n18 = object2.p;
+                        for (n17 = n16; n17 < n18; ++n17) {
+                            ((a63)object3[n17]).d(gp32);
+                        }
+                    }
+                    bl5 = true;
                 }
-                this.g = kn3Var2;
-                return z3;
+            }
+        }
+        this.b(gp32);
+        xe22.a();
+        this.f = null;
+        return bl5;
+    }
+
+    public final boolean e(gp3 object, boolean bl5) {
+        int n16;
+        Object object2;
+        int n17;
+        Object object3;
+        Object object4;
+        cx2 cx22;
+        block29: {
+            block28: {
+                boolean bl6;
+                if (this.e.d()) break block28;
+                cx22 = this.c;
+                if (cx22.A && (bl6 = (object4 = cx22.u) != null && (object4 = ((f63)object4).H) != null ? ((c72)object4).H() : false)) break block29;
+            }
+            return false;
+        }
+        kn3 kn32 = this.g;
+        kn32.getClass();
+        object4 = this.f;
+        object4.getClass();
+        long l16 = ((jg3)object4).p;
+        Object object5 = cx22;
+        object4 = null;
+        while (object5 != null) {
+            if (object5 instanceof rn3) {
+                ((rn3)object5).n(kn32, ln3.n, l16);
+                object3 = object4;
+            } else {
+                object3 = object4;
+                if ((((cx2)object5).p & 0x10) != 0) {
+                    object3 = object4;
+                    if (object5 instanceof fo0) {
+                        object3 = ((fo0)object5).C;
+                        n17 = 0;
+                        while (object3 != null) {
+                            object2 = object5;
+                            Object object6 = object4;
+                            n16 = n17;
+                            if ((((cx2)object3).p & 0x10) != 0) {
+                                n16 = n17 + 1;
+                                if (n16 == 1) {
+                                    object2 = object3;
+                                    object6 = object4;
+                                } else {
+                                    object2 = object4;
+                                    if (object4 == null) {
+                                        object2 = new f13(new cx2[16]);
+                                    }
+                                    object4 = object5;
+                                    if (object5 != null) {
+                                        ((f13)object2).b(object5);
+                                        object4 = null;
+                                    }
+                                    ((f13)object2).b(object3);
+                                    object6 = object2;
+                                    object2 = object4;
+                                }
+                            }
+                            object3 = ((cx2)object3).s;
+                            object5 = object2;
+                            object4 = object6;
+                            n17 = n16;
+                        }
+                        object3 = object4;
+                        if (n17 == 1) continue;
+                    }
+                }
+            }
+            object5 = j51.c((f13)object3);
+            object4 = object3;
+        }
+        if (cx22.A) {
+            object3 = this.a;
+            object4 = ((f13)object3).n;
+            n16 = ((f13)object3).p;
+            for (n17 = 0; n17 < n16; ++n17) {
+                object3 = (a63)object4[n17];
+                this.f.getClass();
+                ((a63)object3).e((gp3)object, bl5);
+            }
+        }
+        if (cx22.A) {
+            object = null;
+            object3 = cx22;
+            while (object3 != null) {
+                if (object3 instanceof rn3) {
+                    ((rn3)object3).n(kn32, ln3.o, l16);
+                    object4 = object;
+                } else {
+                    object4 = object;
+                    if ((((cx2)object3).p & 0x10) != 0) {
+                        object4 = object;
+                        if (object3 instanceof fo0) {
+                            object4 = ((fo0)object3).C;
+                            n17 = 0;
+                            while (object4 != null) {
+                                object5 = object3;
+                                object2 = object;
+                                n16 = n17;
+                                if ((((cx2)object4).p & 0x10) != 0) {
+                                    n16 = n17 + 1;
+                                    if (n16 == 1) {
+                                        object5 = object4;
+                                        object2 = object;
+                                    } else {
+                                        object5 = object;
+                                        if (object == null) {
+                                            object5 = new f13(new cx2[16]);
+                                        }
+                                        object = object3;
+                                        if (object3 != null) {
+                                            ((f13)object5).b(object3);
+                                            object = null;
+                                        }
+                                        ((f13)object5).b(object4);
+                                        object2 = object5;
+                                        object5 = object;
+                                    }
+                                }
+                                object4 = ((cx2)object4).s;
+                                object3 = object5;
+                                object = object2;
+                                n17 = n16;
+                            }
+                            object4 = object;
+                            if (n17 == 1) continue;
+                        }
+                    }
+                }
+                object3 = j51.c((f13)object4);
+                object = object4;
             }
         }
         return true;
     }
 
-    @Override // defpackage.i63
-    public final void b(gp3 gp3Var) {
-        super.b(gp3Var);
-        kn3 kn3Var = this.g;
-        if (kn3Var == null) {
-            return;
+    public final void f(long l16, q03 q032) {
+        Object[] objectArray = this.d;
+        if (objectArray.c(l16) && q032.g(this) < 0) {
+            objectArray.e(l16);
+            this.e.g(l16);
         }
-        this.h = this.i;
-        List list = kn3Var.a;
-        int size = list.size();
-        for (int i = 0; i < size; i++) {
-            on3 on3Var = (on3) list.get(i);
-            boolean z = on3Var.d;
-            long j = on3Var.a;
-            boolean zC = gp3Var.c(j);
-            boolean z2 = this.i;
-            if ((!z && !zC) || (!z && !z2)) {
-                this.d.e(j);
-            }
-        }
-        this.i = false;
-        this.j = kn3Var.c == 5;
-    }
-
-    /* JADX WARN: Multi-variable type inference failed */
-    /* JADX WARN: Type inference failed for: r1v1 */
-    /* JADX WARN: Type inference failed for: r1v10 */
-    /* JADX WARN: Type inference failed for: r1v11 */
-    /* JADX WARN: Type inference failed for: r1v12 */
-    /* JADX WARN: Type inference failed for: r1v2 */
-    /* JADX WARN: Type inference failed for: r1v3 */
-    /* JADX WARN: Type inference failed for: r1v4, types: [f13] */
-    /* JADX WARN: Type inference failed for: r1v5 */
-    /* JADX WARN: Type inference failed for: r1v6 */
-    /* JADX WARN: Type inference failed for: r1v7, types: [f13] */
-    /* JADX WARN: Type inference failed for: r1v9 */
-    /* JADX WARN: Type inference failed for: r3v6 */
-    /* JADX WARN: Type inference failed for: r8v1, types: [cx2] */
-    /* JADX WARN: Type inference failed for: r8v10 */
-    /* JADX WARN: Type inference failed for: r8v11 */
-    /* JADX WARN: Type inference failed for: r8v12 */
-    /* JADX WARN: Type inference failed for: r8v2, types: [cx2] */
-    /* JADX WARN: Type inference failed for: r8v4 */
-    /* JADX WARN: Type inference failed for: r8v5, types: [cx2] */
-    /* JADX WARN: Type inference failed for: r8v6, types: [java.lang.Object] */
-    /* JADX WARN: Type inference failed for: r8v7 */
-    /* JADX WARN: Type inference failed for: r8v8 */
-    /* JADX WARN: Type inference failed for: r8v9 */
-    public final void c() {
-        f13 f13Var = this.a;
-        Object[] objArr = f13Var.n;
-        int i = f13Var.p;
-        for (int i2 = 0; i2 < i; i2++) {
-            ((a63) objArr[i2]).c();
-        }
-        ?? C = this.c;
-        ?? f13Var2 = 0;
-        while (C != 0) {
-            if (C instanceof rn3) {
-                ((rn3) C).t();
-            } else if ((C.p & 16) != 0 && (C instanceof fo0)) {
-                cx2 cx2Var = ((fo0) C).C;
-                int i3 = 0;
-                f13Var2 = f13Var2;
-                C = C;
-                while (cx2Var != null) {
-                    if ((cx2Var.p & 16) != 0) {
-                        i3++;
-                        if (i3 == 1) {
-                            f13Var2 = f13Var2;
-                            C = cx2Var;
-                        } else {
-                            if (f13Var2 == 0) {
-                                f13Var2 = new f13(new cx2[16]);
-                            }
-                            if (C != 0) {
-                                f13Var2.b(C);
-                                C = 0;
-                            }
-                            f13Var2.b(cx2Var);
-                        }
-                    }
-                    cx2Var = cx2Var.s;
-                    f13Var2 = f13Var2;
-                    C = C;
-                }
-                if (i3 == 1) {
-                }
-            }
-            C = j51.c(f13Var2);
-        }
-    }
-
-    /* JADX WARN: Multi-variable type inference failed */
-    /* JADX WARN: Type inference failed for: r10v4 */
-    /* JADX WARN: Type inference failed for: r7v0 */
-    /* JADX WARN: Type inference failed for: r7v1, types: [cx2] */
-    /* JADX WARN: Type inference failed for: r7v10 */
-    /* JADX WARN: Type inference failed for: r7v11 */
-    /* JADX WARN: Type inference failed for: r7v3 */
-    /* JADX WARN: Type inference failed for: r7v4, types: [cx2] */
-    /* JADX WARN: Type inference failed for: r7v5, types: [java.lang.Object] */
-    /* JADX WARN: Type inference failed for: r7v6 */
-    /* JADX WARN: Type inference failed for: r7v7 */
-    /* JADX WARN: Type inference failed for: r7v8 */
-    /* JADX WARN: Type inference failed for: r7v9 */
-    /* JADX WARN: Type inference failed for: r8v0 */
-    /* JADX WARN: Type inference failed for: r8v1 */
-    /* JADX WARN: Type inference failed for: r8v10 */
-    /* JADX WARN: Type inference failed for: r8v11 */
-    /* JADX WARN: Type inference failed for: r8v2 */
-    /* JADX WARN: Type inference failed for: r8v3, types: [f13] */
-    /* JADX WARN: Type inference failed for: r8v4 */
-    /* JADX WARN: Type inference failed for: r8v5 */
-    /* JADX WARN: Type inference failed for: r8v6, types: [f13] */
-    /* JADX WARN: Type inference failed for: r8v8 */
-    /* JADX WARN: Type inference failed for: r8v9 */
-    public final boolean d(gp3 gp3Var) {
-        c72 c72Var;
-        xe2 xe2Var = this.e;
-        boolean z = false;
-        z = false;
-        z = false;
-        if (!xe2Var.d()) {
-            cx2 cx2Var = this.c;
-            if (cx2Var.A) {
-                f63 f63Var = cx2Var.u;
-                if ((f63Var == null || (c72Var = f63Var.H) == null) ? false : c72Var.H()) {
-                    kn3 kn3Var = this.g;
-                    kn3Var.getClass();
-                    f63 f63Var2 = this.f;
-                    f63Var2.getClass();
-                    long j = f63Var2.p;
-                    ?? C = cx2Var;
-                    ?? f13Var = 0;
-                    while (C != 0) {
-                        if (C instanceof rn3) {
-                            ((rn3) C).n(kn3Var, ln3.p, j);
-                        } else if ((C.p & 16) != 0 && (C instanceof fo0)) {
-                            cx2 cx2Var2 = ((fo0) C).C;
-                            int i = 0;
-                            while (cx2Var2 != null) {
-                                if ((cx2Var2.p & 16) != 0) {
-                                    i++;
-                                    if (i == 1) {
-                                        C = C;
-                                        f13Var = f13Var;
-                                        f13Var = f13Var;
-                                        C = cx2Var2;
-                                    } else {
-                                        if (f13Var == 0) {
-                                            f13Var = new f13(new cx2[16]);
-                                        }
-                                        if (C != 0) {
-                                            f13Var.b(C);
-                                            C = 0;
-                                        }
-                                        f13Var.b(cx2Var2);
-                                    }
-                                } else {
-                                    C = C;
-                                    f13Var = f13Var;
-                                }
-                                cx2Var2 = cx2Var2.s;
-                                C = C;
-                                f13Var = f13Var;
-                            }
-                            if (i == 1) {
-                                C = C;
-                                f13Var = f13Var;
-                            } else {
-                                C = C;
-                                f13Var = f13Var;
-                            }
-                        }
-                        C = j51.c(f13Var);
-                    }
-                    if (cx2Var.A) {
-                        f13 f13Var2 = this.a;
-                        Object[] objArr = f13Var2.n;
-                        int i2 = f13Var2.p;
-                        for (int i3 = 0; i3 < i2; i3++) {
-                            ((a63) objArr[i3]).d(gp3Var);
-                        }
-                    }
-                    z = true;
-                }
-            }
-        }
-        b(gp3Var);
-        xe2Var.a();
-        this.f = null;
-        return z;
-    }
-
-    /* JADX WARN: Multi-variable type inference failed */
-    /* JADX WARN: Type inference failed for: r0v10 */
-    /* JADX WARN: Type inference failed for: r0v11 */
-    /* JADX WARN: Type inference failed for: r0v12 */
-    /* JADX WARN: Type inference failed for: r0v13 */
-    /* JADX WARN: Type inference failed for: r0v2, types: [cx2] */
-    /* JADX WARN: Type inference failed for: r0v3, types: [cx2] */
-    /* JADX WARN: Type inference failed for: r0v5 */
-    /* JADX WARN: Type inference failed for: r0v6, types: [cx2] */
-    /* JADX WARN: Type inference failed for: r0v7, types: [java.lang.Object] */
-    /* JADX WARN: Type inference failed for: r0v8 */
-    /* JADX WARN: Type inference failed for: r0v9 */
-    /* JADX WARN: Type inference failed for: r10v7 */
-    /* JADX WARN: Type inference failed for: r13v10 */
-    /* JADX WARN: Type inference failed for: r13v11 */
-    /* JADX WARN: Type inference failed for: r13v12 */
-    /* JADX WARN: Type inference failed for: r13v13 */
-    /* JADX WARN: Type inference failed for: r13v2 */
-    /* JADX WARN: Type inference failed for: r13v3 */
-    /* JADX WARN: Type inference failed for: r13v4 */
-    /* JADX WARN: Type inference failed for: r13v5, types: [f13] */
-    /* JADX WARN: Type inference failed for: r13v6 */
-    /* JADX WARN: Type inference failed for: r13v7 */
-    /* JADX WARN: Type inference failed for: r13v8, types: [f13] */
-    /* JADX WARN: Type inference failed for: r14v6 */
-    /* JADX WARN: Type inference failed for: r6v0 */
-    /* JADX WARN: Type inference failed for: r6v1, types: [cx2] */
-    /* JADX WARN: Type inference failed for: r6v10, types: [cx2] */
-    /* JADX WARN: Type inference failed for: r6v11, types: [java.lang.Object] */
-    /* JADX WARN: Type inference failed for: r6v12 */
-    /* JADX WARN: Type inference failed for: r6v13 */
-    /* JADX WARN: Type inference failed for: r6v14 */
-    /* JADX WARN: Type inference failed for: r6v15 */
-    /* JADX WARN: Type inference failed for: r6v16 */
-    /* JADX WARN: Type inference failed for: r6v17 */
-    /* JADX WARN: Type inference failed for: r6v9 */
-    /* JADX WARN: Type inference failed for: r7v0 */
-    /* JADX WARN: Type inference failed for: r7v1 */
-    /* JADX WARN: Type inference failed for: r7v10 */
-    /* JADX WARN: Type inference failed for: r7v11 */
-    /* JADX WARN: Type inference failed for: r7v12 */
-    /* JADX WARN: Type inference failed for: r7v3 */
-    /* JADX WARN: Type inference failed for: r7v4, types: [f13] */
-    /* JADX WARN: Type inference failed for: r7v5 */
-    /* JADX WARN: Type inference failed for: r7v6 */
-    /* JADX WARN: Type inference failed for: r7v7, types: [f13] */
-    /* JADX WARN: Type inference failed for: r7v9 */
-    public final boolean e(gp3 gp3Var, boolean z) {
-        c72 c72Var;
-        if (!this.e.d()) {
-            ?? C = this.c;
-            if (C.A) {
-                f63 f63Var = C.u;
-                if ((f63Var == null || (c72Var = f63Var.H) == null) ? false : c72Var.H()) {
-                    kn3 kn3Var = this.g;
-                    kn3Var.getClass();
-                    f63 f63Var2 = this.f;
-                    f63Var2.getClass();
-                    long j = f63Var2.p;
-                    ?? C2 = C;
-                    ?? f13Var = 0;
-                    while (C2 != 0) {
-                        if (C2 instanceof rn3) {
-                            ((rn3) C2).n(kn3Var, ln3.n, j);
-                        } else if ((C2.p & 16) != 0 && (C2 instanceof fo0)) {
-                            cx2 cx2Var = ((fo0) C2).C;
-                            int i = 0;
-                            while (cx2Var != null) {
-                                if ((cx2Var.p & 16) != 0) {
-                                    i++;
-                                    if (i == 1) {
-                                        C2 = C2;
-                                        f13Var = f13Var;
-                                        f13Var = f13Var;
-                                        C2 = cx2Var;
-                                    } else {
-                                        if (f13Var == 0) {
-                                            f13Var = new f13(new cx2[16]);
-                                        }
-                                        if (C2 != 0) {
-                                            f13Var.b(C2);
-                                            C2 = 0;
-                                        }
-                                        f13Var.b(cx2Var);
-                                    }
-                                } else {
-                                    C2 = C2;
-                                    f13Var = f13Var;
-                                }
-                                cx2Var = cx2Var.s;
-                                C2 = C2;
-                                f13Var = f13Var;
-                            }
-                            if (i == 1) {
-                                C2 = C2;
-                                f13Var = f13Var;
-                            } else {
-                                C2 = C2;
-                                f13Var = f13Var;
-                            }
-                        }
-                        C2 = j51.c(f13Var);
-                    }
-                    if (C.A) {
-                        f13 f13Var2 = this.a;
-                        Object[] objArr = f13Var2.n;
-                        int i2 = f13Var2.p;
-                        for (int i3 = 0; i3 < i2; i3++) {
-                            a63 a63Var = (a63) objArr[i3];
-                            this.f.getClass();
-                            a63Var.e(gp3Var, z);
-                        }
-                    }
-                    if (C.A) {
-                        ?? f13Var3 = 0;
-                        while (C != 0) {
-                            if (C instanceof rn3) {
-                                ((rn3) C).n(kn3Var, ln3.o, j);
-                            } else if ((C.p & 16) != 0 && (C instanceof fo0)) {
-                                cx2 cx2Var2 = ((fo0) C).C;
-                                int i4 = 0;
-                                while (cx2Var2 != null) {
-                                    if ((cx2Var2.p & 16) != 0) {
-                                        i4++;
-                                        if (i4 == 1) {
-                                            C = C;
-                                            f13Var3 = f13Var3;
-                                            f13Var3 = f13Var3;
-                                            C = cx2Var2;
-                                        } else {
-                                            if (f13Var3 == 0) {
-                                                f13Var3 = new f13(new cx2[16]);
-                                            }
-                                            if (C != 0) {
-                                                f13Var3.b(C);
-                                                C = 0;
-                                            }
-                                            f13Var3.b(cx2Var2);
-                                        }
-                                    } else {
-                                        C = C;
-                                        f13Var3 = f13Var3;
-                                    }
-                                    cx2Var2 = cx2Var2.s;
-                                    C = C;
-                                    f13Var3 = f13Var3;
-                                }
-                                if (i4 == 1) {
-                                    C = C;
-                                    f13Var3 = f13Var3;
-                                } else {
-                                    C = C;
-                                    f13Var3 = f13Var3;
-                                }
-                            }
-                            C = j51.c(f13Var3);
-                        }
-                    }
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
-    public final void f(long j, q03 q03Var) {
-        te2 te2Var = this.d;
-        if (te2Var.c(j) && q03Var.g(this) < 0) {
-            te2Var.e(j);
-            this.e.g(j);
-        }
-        f13 f13Var = this.a;
-        Object[] objArr = f13Var.n;
-        int i = f13Var.p;
-        for (int i2 = 0; i2 < i; i2++) {
-            ((a63) objArr[i2]).f(j, q03Var);
+        f13 f132 = this.a;
+        objectArray = f132.n;
+        int n16 = f132.p;
+        for (int i16 = 0; i16 < n16; ++i16) {
+            ((a63)objectArray[i16]).f(l16, q032);
         }
     }
 
     public final String toString() {
-        return "Node(modifierNode=" + this.c + ", children=" + this.a + ", pointerIds=" + this.d + ")";
+        StringBuilder stringBuilder = new StringBuilder("Node(modifierNode=");
+        stringBuilder.append(this.c);
+        stringBuilder.append(", children=");
+        stringBuilder.append(this.a);
+        stringBuilder.append(", pointerIds=");
+        stringBuilder.append(this.d);
+        stringBuilder.append(")");
+        return stringBuilder.toString();
     }
 }
+

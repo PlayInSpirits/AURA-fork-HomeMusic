@@ -1,321 +1,359 @@
 package defpackage;
 
-import com.eddyizm.tempus.homemusic.WaveRetry;
+/*
+ * Decompiled with CFR 0.152.
+ */
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import org.chromium.support_lib_boundary.WebSettingsBoundaryInterface;
 
-/* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
-/* JADX INFO: loaded from: classes.dex */
-public final /* synthetic */ class d60 implements wf1 {
-    public final /* synthetic */ int n;
+public final class d60
+implements wf1 {
+    public final int n;
 
-    public /* synthetic */ d60(int i) {
+    public /* synthetic */ d60(int n16) {
         this.n = 15;
     }
 
-    /* JADX WARN: Code duplicated, block: B:167:0x01ba A[SYNTHETIC] */
-    /* JADX WARN: Code duplicated, block: B:45:0x01b5 A[DONT_INVERT] */
-    /* JADX WARN: Code duplicated, block: B:46:0x01b7 A[LOOP:1: B:33:0x0170->B:46:0x01b7, LOOP_END] */
-    /* JADX WARN: Multi-variable type inference failed */
-    /* JADX WARN: Type inference failed for: r1v24 */
-    /* JADX WARN: Type inference failed for: r1v25, types: [cx2] */
-    /* JADX WARN: Type inference failed for: r1v29 */
-    /* JADX WARN: Type inference failed for: r1v30, types: [cx2] */
-    /* JADX WARN: Type inference failed for: r1v31, types: [java.lang.Object] */
-    /* JADX WARN: Type inference failed for: r1v32 */
-    /* JADX WARN: Type inference failed for: r1v33 */
-    /* JADX WARN: Type inference failed for: r1v34 */
-    /* JADX WARN: Type inference failed for: r1v35 */
-    /* JADX WARN: Type inference failed for: r1v82 */
-    /* JADX WARN: Type inference failed for: r1v83 */
-    /* JADX WARN: Type inference failed for: r7v10, types: [f13] */
-    /* JADX WARN: Type inference failed for: r7v11 */
-    /* JADX WARN: Type inference failed for: r7v12 */
-    /* JADX WARN: Type inference failed for: r7v13, types: [f13] */
-    /* JADX WARN: Type inference failed for: r7v24 */
-    /* JADX WARN: Type inference failed for: r7v25 */
-    /* JADX WARN: Type inference failed for: r7v26 */
-    /* JADX WARN: Type inference failed for: r7v27 */
-    /* JADX WARN: Type inference failed for: r7v7 */
-    /* JADX WARN: Type inference failed for: r7v8 */
-    /* JADX WARN: Type inference failed for: r7v9 */
-    /* JADX WARN: Type inference failed for: r8v8 */
-    @Override // defpackage.wf1
-    public final Object invoke(Object obj, Object obj2) {
-        e60 e60Var;
-        int i = this.n;
-        j15 j15Var = j15.a;
-        switch (i) {
-            case 0:
-                String str = (String) obj;
-                le0 le0Var = (le0) obj2;
-                str.getClass();
-                le0Var.getClass();
-                if (str.length() == 0) {
-                    return le0Var.toString();
-                }
-                return str + ", " + le0Var;
-            case 1:
-                StringBuilder sb = (StringBuilder) obj;
-                bx2 bx2Var = (bx2) obj2;
-                if (sb.length() > 1) {
-                    sb.append(", ");
-                }
-                sb.append(bx2Var);
-                return sb;
-            case 2:
-                rg1 rg1Var = (rg1) obj;
-                int iIntValue = ((Integer) obj2).intValue();
-                if (!rg1Var.K(iIntValue & 1, (iIntValue & 3) != 2)) {
-                    rg1Var.N();
-                }
-                return j15Var;
-            case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
-                rg1 rg1Var2 = (rg1) obj;
-                int iIntValue2 = ((Integer) obj2).intValue();
-                if (!rg1Var2.K(iIntValue2 & 1, (iIntValue2 & 3) != 2)) {
-                    rg1Var2.N();
-                }
-                return j15Var;
-            case 4:
-                ((c72) ((e80) obj)).d0((dx2) obj2);
-                return j15Var;
-            case 5:
-                c90 c90Var = (c90) obj2;
-                c72 c72Var = (c72) ((e80) obj);
-                c72Var.M = c90Var;
-                w12 w12Var = c72Var.Q;
-                wl4 wl4Var = g90.h;
-                mf3 mf3Var = (mf3) c90Var;
-                mf3Var.getClass();
-                c72Var.a0((oo0) vr1.C(mf3Var, wl4Var));
-                mf3 mf3Var2 = (mf3) c90Var;
-                r62 r62Var = (r62) vr1.C(mf3Var2, g90.n);
-                if (c72Var.K != r62Var) {
-                    c72Var.K = r62Var;
-                    c72Var.D();
-                    c72 c72VarT = c72Var.t();
-                    if (c72VarT != null) {
-                        c72VarT.B();
-                    } else {
-                        ub3 ub3Var = c72Var.A;
-                        if (ub3Var != null) {
-                            ((ra) ub3Var).invalidate();
-                        }
-                    }
-                    c72Var.C();
-                    for (cx2 cx2Var = (cx2) w12Var.g; cx2Var != null; cx2Var = cx2Var.s) {
-                        cx2Var.C();
-                    }
-                }
-                c72Var.e0((m65) vr1.C(mf3Var2, g90.t));
-                cx2 cx2Var2 = (cx2) w12Var.g;
-                if ((cx2Var2.q & 32768) != 0) {
-                    while (cx2Var2 != null) {
-                        if ((cx2Var2.p & 32768) != 0) {
-                            ?? C = cx2Var2;
-                            ?? f13Var = 0;
-                            while (C != 0) {
-                                if (C instanceof a90) {
-                                    cx2 cx2Var3 = ((cx2) ((a90) C)).n;
-                                    if (cx2Var3.A) {
-                                        g63.c(cx2Var3);
-                                    } else {
-                                        cx2Var3.w = true;
-                                    }
-                                } else if ((C.p & 32768) != 0 && (C instanceof fo0)) {
-                                    cx2 cx2Var4 = ((fo0) C).C;
-                                    int i2 = 0;
-                                    while (cx2Var4 != null) {
-                                        if ((cx2Var4.p & 32768) != 0) {
-                                            i2++;
-                                            if (i2 == 1) {
-                                                C = C;
-                                                f13Var = f13Var;
-                                                f13Var = f13Var;
-                                                C = cx2Var4;
-                                            } else {
-                                                if (f13Var == 0) {
-                                                    f13Var = new f13(new cx2[16]);
-                                                }
-                                                if (C != 0) {
-                                                    f13Var.b(C);
-                                                    C = 0;
-                                                }
-                                                f13Var.b(cx2Var4);
-                                            }
-                                        } else {
-                                            C = C;
-                                            f13Var = f13Var;
-                                        }
-                                        cx2Var4 = cx2Var4.s;
-                                        C = C;
-                                        f13Var = f13Var;
-                                    }
-                                    if (i2 == 1) {
-                                        C = C;
-                                        f13Var = f13Var;
-                                    } else {
-                                        C = C;
-                                        f13Var = f13Var;
-                                    }
-                                }
-                                C = j51.c(f13Var);
-                            }
-                        }
-                        if ((cx2Var2.q & 32768) != 0) {
-                            cx2Var2 = cx2Var2.s;
-                        }
-                    }
-                }
-                return j15Var;
-            case 6:
-                ui2 ui2Var = (ui2) obj2;
-                c72 c72Var2 = (c72) ((e80) obj);
-                if (!h12.c(c72Var2.I, ui2Var)) {
-                    c72Var2.I = ui2Var;
-                    c72Var2.D();
-                }
-                return j15Var;
-            case 7:
-                ((Integer) obj2).getClass();
-                ((c72) ((e80) obj)).getClass();
-                return j15Var;
-            case 8:
-                return ((dx2) obj).c((bx2) obj2);
-            case 9:
-                ne0 ne0Var = (ne0) obj;
-                le0 le0Var2 = (le0) obj2;
-                ne0Var.getClass();
-                le0Var2.getClass();
-                ne0 ne0VarU = ne0Var.u(le0Var2.getKey());
-                q01 q01Var = q01.n;
-                if (ne0VarU == q01Var) {
-                    return le0Var2;
-                }
-                fz0 fz0Var = fz0.R;
-                pe0 pe0Var = (pe0) ne0VarU.K(fz0Var);
-                if (pe0Var == null) {
-                    e60Var = new e60(le0Var2, ne0VarU);
-                } else {
-                    ne0 ne0VarU2 = ne0VarU.u(fz0Var);
-                    if (ne0VarU2 == q01Var) {
-                        return new e60(pe0Var, le0Var2);
-                    }
-                    e60Var = new e60(pe0Var, new e60(le0Var2, ne0VarU2));
-                }
-                return e60Var;
-            case 10:
-                Boolean bool = (Boolean) obj;
-                bool.booleanValue();
-                return bool;
-            case 11:
-                return ((ne0) obj).J((le0) obj2);
-            case 12:
-                return ((ne0) obj).J((le0) obj2);
-            case 13:
-                lm0 lm0Var = (lm0) obj2;
-                return gb.P(Integer.valueOf(lm0Var.k()), Float.valueOf(gb.l(lm0Var.l(), -0.5f, 0.5f)), Integer.valueOf(lm0Var.n()));
-            case 14:
-                Map mapC = ((z82) obj2).c();
-                if (mapC.isEmpty()) {
-                    return null;
-                }
-                return mapC;
-            case 15:
-                ((Integer) obj2).getClass();
-                e35.d(xl.O(1), (rg1) obj);
-                return j15Var;
-            case WaveRetry.MAX_FAILURES /* 16 */:
-                return Integer.valueOf(((Integer) obj).intValue() + 1);
-            case 17:
-                w44 w44Var = (w44) obj2;
-                Map map = w44Var.n;
-                w03 w03Var = w44Var.o;
-                Object[] objArr = w03Var.b;
-                Object[] objArr2 = w03Var.c;
-                long[] jArr = w03Var.a;
-                int length = jArr.length - 2;
-                if (length >= 0) {
-                    int i3 = 0;
-                    while (true) {
-                        long j = jArr[i3];
-                        if ((((~j) << 7) & j & (-9187201950435737472L)) != -9187201950435737472L) {
-                            int i4 = 8 - ((~(i3 - length)) >>> 31);
-                            for (int i5 = 0; i5 < i4; i5++) {
-                                if ((255 & j) < 128) {
-                                    int i6 = (i3 << 3) + i5;
-                                    Object obj3 = objArr[i6];
-                                    Map mapC2 = ((x44) objArr2[i6]).c();
-                                    if (mapC2.isEmpty()) {
-                                        map.remove(obj3);
-                                    } else {
-                                        map.put(obj3, mapC2);
-                                    }
-                                }
-                                j >>= 8;
-                            }
-                            if (i4 == 8) {
-                                if (i3 != length) {
-                                    i3++;
-                                }
-                            }
-                        } else if (i3 != length) {
-                            i3++;
-                        }
-                    }
-                }
-                if (map.isEmpty()) {
-                    return null;
-                }
-                return map;
-            case 18:
-                he heVar = (he) obj2;
-                return gb.d(heVar.o, s54.a(heVar.n, s54.a, (t44) obj));
-            case 19:
-                return Integer.valueOf(((sr4) obj2).a);
-            case 20:
-                bs4 bs4Var = (bs4) obj2;
-                return gb.d(Float.valueOf(bs4Var.a), Float.valueOf(bs4Var.b));
-            case 21:
-                t44 t44Var = (t44) obj;
-                cs4 cs4Var = (cs4) obj2;
-                bt4 bt4Var = new bt4(cs4Var.a);
-                r54 r54Var = s54.v;
-                return gb.d(s54.a(bt4Var, r54Var, t44Var), s54.a(new bt4(cs4Var.b), r54Var, t44Var));
-            case 22:
-                return Integer.valueOf(((gb1) obj2).n);
-            case 23:
-                hb2 hb2Var = (hb2) obj2;
-                return gb.d(hb2Var.a, s54.a(hb2Var.b, s54.i, (t44) obj));
-            case 24:
-                return Float.valueOf(((hr) obj2).a);
-            case 25:
-                t44 t44Var2 = (t44) obj;
-                List list = (List) obj2;
-                ArrayList arrayList = new ArrayList(list.size());
-                int size = list.size();
-                for (int i7 = 0; i7 < size; i7++) {
-                    arrayList.add(s54.a((ge) list.get(i7), s54.b, t44Var2));
-                }
-                return arrayList;
-            case 26:
-                ss4 ss4Var = (ss4) obj2;
-                return gb.d(Integer.valueOf((int) (ss4Var.a >> 32)), Integer.valueOf((int) (ss4Var.a & 4294967295L)));
-            case 27:
-                t44 t44Var3 = (t44) obj;
-                xb4 xb4Var = (xb4) obj2;
-                return gb.d(s54.a(new x40(xb4Var.a), s54.p, t44Var3), s54.a(new g83(xb4Var.b), s54.x, t44Var3), Float.valueOf(xb4Var.c));
-            case 28:
-                return Integer.valueOf(((mr4) obj2).a);
-            default:
-                return Integer.valueOf(((ur4) obj2).a);
-        }
+    public /* synthetic */ d60(int n16, byte by) {
+        this.n = n16;
     }
 
-    public /* synthetic */ d60(int i, byte b) {
-        this.n = i;
+    @Override
+    public final Object invoke(Object object, Object object2) {
+        int n16 = this.n;
+        Object object3 = null;
+        Object object4 = null;
+        boolean bl5 = false;
+        boolean bl6 = false;
+        Object object5 = j15.a;
+        switch (n16) {
+            default: {
+                object = (t44)object;
+                return ((ur4)object2).a;
+            }
+            case 28: {
+                object = (t44)object;
+                return ((mr4)object2).a;
+            }
+            case 27: {
+                object = (t44)object;
+                object2 = (xb4)object2;
+                return gb.d(s54.a(new x40(object2.a), s54.p, (t44)object), s54.a(new g83(object2.b), s54.x, (t44)object), Float.valueOf(object2.c));
+            }
+            case 26: {
+                object = (t44)object;
+                object = (ss4)object2;
+                return gb.d((int)(((ss4)object).a >> 32), (int)(((ss4)object).a & 0xFFFFFFFFL));
+            }
+            case 25: {
+                int n17;
+                object = (t44)object;
+                object4 = (List)object2;
+                object2 = new ArrayList(object4.size());
+                n16 = object4.size();
+                for (n17 = 0; n17 < n16; ++n17) {
+                    object2.add(s54.a((ge)object4.get(n17), s54.b, (t44)object));
+                }
+                return object2;
+            }
+            case 24: {
+                object = (t44)object;
+                return Float.valueOf(((hr)object2).a);
+            }
+            case 23: {
+                object = (t44)object;
+                object2 = (hb2)object2;
+                return gb.d(object2.a, s54.a(object2.b, s54.i, (t44)object));
+            }
+            case 22: {
+                object = (t44)object;
+                return ((gb1)object2).n;
+            }
+            case 21: {
+                object = (t44)object;
+                object3 = object2;
+                object2 = new bt4(((cs4)object3).a);
+                object4 = s54.v;
+                return gb.d(s54.a(object2, (m54)object4, (t44)object), s54.a(new bt4(((cs4)object3).b), (m54)object4, (t44)object));
+            }
+            case 20: {
+                object = (t44)object;
+                object = (bs4)object2;
+                return gb.d(Float.valueOf(((bs4)object).a), Float.valueOf(((bs4)object).b));
+            }
+            case 19: {
+                object = (t44)object;
+                return ((sr4)object2).a;
+            }
+            case 18: {
+                object = (t44)object;
+                object2 = (he)object2;
+                return gb.d(object2.o, s54.a(object2.n, s54.a, (t44)object));
+            }
+            case 17: {
+                int n17;
+                object = (t44)object;
+                object2 = (w44)object2;
+                object = object2.n;
+                Object object6 = object2.o;
+                object3 = ((w03)object6).b;
+                object2 = ((w03)object6).c;
+                long[] lArray = ((w03)object6).a;
+                int n18 = lArray.length - 2;
+                if (n18 >= 0) {
+                    n17 = 0;
+                    while (true) {
+                        long l16;
+                        if ((((l16 = lArray[n17]) ^ 0xFFFFFFFFFFFFFFFFL) << 7 & l16 & 0x8080808080808080L) != -9187201950435737472L) {
+                            int n19 = 8 - (~(n17 - n18) >>> 31);
+                            for (n16 = 0; n16 < n19; ++n16) {
+                                if ((0xFFL & l16) < 128L) {
+                                    int n26 = (n17 << 3) + n16;
+                                    object6 = object3[n26];
+                                    object5 = ((x44)object2[n26]).c();
+                                    if (object5.isEmpty()) {
+                                        object.remove(object6);
+                                    } else {
+                                        object.put(object6, object5);
+                                    }
+                                }
+                                l16 >>= 8;
+                            }
+                            if (n19 != 8) break;
+                        }
+                        if (n17 == n18) break;
+                        ++n17;
+                    }
+                }
+                if (object.isEmpty()) {
+                    object = object4;
+                }
+                return object;
+            }
+            case 16: {
+                int n17 = (Integer)object;
+                object = (le0)object2;
+                return n17 + 1;
+            }
+            case 15: {
+                object = (rg1)object;
+                ((Integer)object2).getClass();
+                e35.d(xl.O(1), (rg1)object);
+                return object5;
+            }
+            case 14: {
+                object = (t44)object;
+                object = ((z82)object2).c();
+                if (object.isEmpty()) {
+                    object = object3;
+                }
+                return object;
+            }
+            case 13: {
+                object = (t44)object;
+                object = (lm0)object2;
+                return gb.P(((ad3)object).k(), Float.valueOf(gb.l(((ad3)object).l(), -0.5f, 0.5f)), ((lm0)object).n());
+            }
+            case 12: {
+                return ((ne0)object).J((le0)object2);
+            }
+            case 11: {
+                return ((ne0)object).J((le0)object2);
+            }
+            case 10: {
+                object = (Boolean)object;
+                ((Boolean)object).booleanValue();
+                object2 = (le0)object2;
+                return object;
+            }
+            case 9: {
+                object4 = (ne0)object;
+                object = (le0)object2;
+                object4.getClass();
+                object.getClass();
+                object3 = object4.u(object.getKey());
+                object4 = q01.n;
+                if (object3 != object4) {
+                    fz0 fz02 = fz0.R;
+                    object2 = (pe0)object3.K(fz02);
+                    object = object2 == null ? new e60((le0)object, (ne0)object3) : ((object3 = object3.u(fz02)) == object4 ? new e60((le0)object2, (ne0)object) : new e60((le0)object2, new e60((le0)object, (ne0)object3)));
+                }
+                return object;
+            }
+            case 8: {
+                return ((dx2)object).c((bx2)object2);
+            }
+            case 7: {
+                object = (e80)object;
+                ((Integer)object2).getClass();
+                ((c72)object).getClass();
+                return object5;
+            }
+            case 6: {
+                object = (e80)object;
+                object2 = (ui2)object2;
+                object = (c72)object;
+                if (!h12.c(((c72)object).I, object2)) {
+                    ((c72)object).I = object2;
+                    ((c72)object).D();
+                }
+                return object5;
+            }
+            case 5: {
+                int n17;
+                object4 = (e80)object;
+                object = (c90)object2;
+                object4 = (c72)object4;
+                ((c72)object4).M = object;
+                object2 = ((c72)object4).Q;
+                Object object7 = g90.h;
+                object3 = (mf3)object;
+                object3.getClass();
+                ((c72)object4).a0((oo0)vr1.C((mf3)object3, (qr3)object7));
+                object7 = g90.n;
+                object3 = (mf3)object;
+                object = (r62)((Object)vr1.C((mf3)object3, (qr3)object7));
+                if (((c72)object4).K != object) {
+                    ((c72)object4).K = object;
+                    ((c72)object4).D();
+                    object = ((c72)object4).t();
+                    if (object != null) {
+                        ((c72)object).B();
+                    } else {
+                        object = ((c72)object4).A;
+                        if (object != null) {
+                            ((ra)object).invalidate();
+                        }
+                    }
+                    ((c72)object4).C();
+                    object = (cx2)object2.g;
+                    while (object != null) {
+                        object.C();
+                        object = ((cx2)object).s;
+                    }
+                }
+                ((c72)object4).e0((m65)vr1.C((mf3)object3, g90.t));
+                object2 = (cx2)object2.g;
+                if ((object2.q & 0x8000) != 0) {
+                    while (object2 != null) {
+                        if ((object2.p & 0x8000) != 0) {
+                            object3 = object2;
+                            object = null;
+                            while (object3 != null) {
+                                if (object3 instanceof a90) {
+                                    object4 = ((cx2)((Object)((a90)object3))).n;
+                                    if (((cx2)object4).A) {
+                                        g63.c((cx2)object4);
+                                        object4 = object;
+                                    } else {
+                                        ((cx2)object4).w = true;
+                                        object4 = object;
+                                    }
+                                } else {
+                                    object4 = object;
+                                    if ((((cx2)object3).p & 0x8000) != 0) {
+                                        object4 = object;
+                                        if (object3 instanceof fo0) {
+                                            object4 = ((fo0)object3).C;
+                                            n17 = 0;
+                                            while (object4 != null) {
+                                                object7 = object3;
+                                                Object object8 = object;
+                                                n16 = n17;
+                                                if ((((cx2)object4).p & 0x8000) != 0) {
+                                                    n16 = n17 + 1;
+                                                    if (n16 == 1) {
+                                                        object7 = object4;
+                                                        object8 = object;
+                                                    } else {
+                                                        object7 = object;
+                                                        if (object == null) {
+                                                            object7 = new f13(new cx2[16]);
+                                                        }
+                                                        object = object3;
+                                                        if (object3 != null) {
+                                                            ((f13)object7).b(object3);
+                                                            object = null;
+                                                        }
+                                                        ((f13)object7).b(object4);
+                                                        object8 = object7;
+                                                        object7 = object;
+                                                    }
+                                                }
+                                                object4 = ((cx2)object4).s;
+                                                object3 = object7;
+                                                object = object8;
+                                                n17 = n16;
+                                            }
+                                            object4 = object;
+                                            if (n17 == 1) continue;
+                                        }
+                                    }
+                                }
+                                object3 = j51.c((f13)object4);
+                                object = object4;
+                            }
+                        }
+                        if ((object2.q & 0x8000) == 0) break;
+                        object2 = object2.s;
+                    }
+                }
+                return object5;
+            }
+            case 4: {
+                object = (e80)object;
+                object2 = (dx2)object2;
+                ((c72)object).d0((dx2)object2);
+                return object5;
+            }
+            case 3: {
+                object = (rg1)object;
+                int n17 = (Integer)object2;
+                bl6 = bl5;
+                if ((n17 & 3) != 2) {
+                    bl6 = true;
+                }
+                if (!((rg1)object).K(n17 & 1, bl6)) {
+                    ((rg1)object).N();
+                }
+                return object5;
+            }
+            case 2: {
+                object = (rg1)object;
+                int n17 = (Integer)object2;
+                if ((n17 & 3) != 2) {
+                    bl6 = true;
+                }
+                if (!((rg1)object).K(n17 & 1, bl6)) {
+                    ((rg1)object).N();
+                }
+                return object5;
+            }
+            case 1: {
+                object = (StringBuilder)object;
+                object2 = (bx2)object2;
+                if (((StringBuilder)object).length() > 1) {
+                    ((StringBuilder)object).append(", ");
+                }
+                ((StringBuilder)object).append(object2);
+                return object;
+            }
+            case 0: 
+        }
+        object = (String)object;
+        object2 = (le0)object2;
+        object.getClass();
+        object2.getClass();
+        if (((String)object).length() == 0) {
+            object = object2.toString();
+        } else {
+            object4 = new StringBuilder();
+            ((StringBuilder)object4).append((String)object);
+            ((StringBuilder)object4).append(", ");
+            ((StringBuilder)object4).append(object2);
+            object = ((StringBuilder)object4).toString();
+        }
+        return object;
     }
 }
+

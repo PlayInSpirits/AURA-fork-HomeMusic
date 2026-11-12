@@ -1,8 +1,11 @@
 package defpackage;
 
-/* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
-/* JADX INFO: loaded from: classes.dex */
-public final class tt4 implements wz3, pz3 {
+/*
+ * Decompiled with CFR 0.152.
+ */
+public final class tt4
+implements wz3,
+pz3 {
     public final wz3 a;
     public final Object b;
     public volatile cf4 c;
@@ -11,228 +14,329 @@ public final class tt4 implements wz3, pz3 {
     public int f = 3;
     public boolean g;
 
-    public tt4(Object obj, wz3 wz3Var) {
-        this.b = obj;
-        this.a = wz3Var;
+    public tt4(Object object, wz3 wz32) {
+        this.b = object;
+        this.a = wz32;
     }
 
-    @Override // defpackage.wz3, defpackage.pz3
+    /*
+     * Enabled aggressive block sorting
+     * Enabled unnecessary exception pruning
+     * Enabled aggressive exception aggregation
+     */
+    @Override
     public final boolean a() {
-        boolean z;
-        synchronized (this.b) {
+        Object object = this.b;
+        synchronized (object) {
             try {
-                z = this.d.a() || this.c.a();
-            } catch (Throwable th) {
-                throw th;
+                if (this.d.a()) return true;
+                if (!this.c.a()) return false;
+                return true;
             }
+            catch (Throwable throwable) {}
+            throw throwable;
         }
-        return z;
     }
 
-    @Override // defpackage.wz3
-    public final void b(pz3 pz3Var) {
-        synchronized (this.b) {
-            try {
-                if (!pz3Var.equals(this.c)) {
-                    this.f = 5;
-                    return;
+    /*
+     * Enabled aggressive block sorting
+     * Enabled unnecessary exception pruning
+     * Enabled aggressive exception aggregation
+     */
+    @Override
+    public final void b(pz3 object) {
+        Object object2 = this.b;
+        synchronized (object2) {
+            Throwable throwable2;
+            block5: {
+                try {
+                    if (!object.equals(this.c)) {
+                        this.f = 5;
+                        return;
+                    }
+                }
+                catch (Throwable throwable2) {
+                    break block5;
                 }
                 this.e = 5;
-                wz3 wz3Var = this.a;
-                if (wz3Var != null) {
-                    wz3Var.b(this);
+                object = this.a;
+                if (object != null) {
+                    object.b(this);
                 }
-            } catch (Throwable th) {
-                throw th;
+                return;
             }
+            throw throwable2;
         }
     }
 
-    @Override // defpackage.pz3
+    /*
+     * Enabled aggressive block sorting
+     * Enabled unnecessary exception pruning
+     * Enabled aggressive exception aggregation
+     */
+    @Override
     public final void c() {
-        synchronized (this.b) {
-            try {
-                if (!b11.c(this.f)) {
-                    this.f = 2;
-                    this.d.c();
+        Object object = this.b;
+        synchronized (object) {
+            Throwable throwable2;
+            block5: {
+                block4: {
+                    try {
+                        if (b11.c(this.f)) break block4;
+                        this.f = 2;
+                        this.d.c();
+                    }
+                    catch (Throwable throwable2) {
+                        break block5;
+                    }
                 }
                 if (!b11.c(this.e)) {
                     this.e = 2;
                     this.c.c();
                 }
-            } catch (Throwable th) {
-                throw th;
+                return;
             }
+            throw throwable2;
         }
     }
 
-    @Override // defpackage.pz3
+    /*
+     * Enabled aggressive block sorting
+     * Enabled unnecessary exception pruning
+     * Enabled aggressive exception aggregation
+     */
+    @Override
     public final void clear() {
-        synchronized (this.b) {
+        Object object = this.b;
+        synchronized (object) {
             this.g = false;
             this.e = 3;
             this.f = 3;
             this.d.clear();
             this.c.clear();
+            return;
         }
     }
 
-    @Override // defpackage.pz3
+    /*
+     * Enabled aggressive block sorting
+     * Enabled unnecessary exception pruning
+     * Enabled aggressive exception aggregation
+     */
+    @Override
     public final boolean d() {
-        boolean z;
-        synchronized (this.b) {
-            z = this.e == 4;
+        Object object = this.b;
+        synchronized (object) {
+            if (this.e != 4) return false;
+            return true;
         }
-        return z;
     }
 
-    @Override // defpackage.pz3
-    public final boolean e(pz3 pz3Var) {
-        if (!(pz3Var instanceof tt4)) {
-            return false;
-        }
-        tt4 tt4Var = (tt4) pz3Var;
-        if (this.c == null) {
-            if (tt4Var.c != null) {
-                return false;
+    @Override
+    public final boolean e(pz3 pz32) {
+        if (pz32 instanceof tt4) {
+            pz32 = (tt4)pz32;
+            if ((this.c == null ? ((tt4)pz32).c == null : this.c.e(((tt4)pz32).c)) && (this.d == null ? ((tt4)pz32).d == null : this.d.e(((tt4)pz32).d))) {
+                return true;
             }
-        } else if (!this.c.e(tt4Var.c)) {
-            return false;
         }
-        if (this.d == null) {
-            return tt4Var.d == null;
-        }
-        return this.d.e(tt4Var.d);
+        return false;
     }
 
-    @Override // defpackage.wz3
-    public final void f(pz3 pz3Var) {
-        synchronized (this.b) {
-            try {
-                if (pz3Var.equals(this.d)) {
-                    this.f = 4;
-                    return;
+    /*
+     * Enabled aggressive block sorting
+     * Enabled unnecessary exception pruning
+     * Enabled aggressive exception aggregation
+     */
+    @Override
+    public final void f(pz3 object) {
+        Object object2 = this.b;
+        synchronized (object2) {
+            Throwable throwable2;
+            block6: {
+                try {
+                    if (object.equals(this.d)) {
+                        this.f = 4;
+                        return;
+                    }
+                }
+                catch (Throwable throwable2) {
+                    break block6;
                 }
                 this.e = 4;
-                wz3 wz3Var = this.a;
-                if (wz3Var != null) {
-                    wz3Var.f(this);
+                object = this.a;
+                if (object != null) {
+                    object.f(this);
                 }
                 if (!b11.c(this.f)) {
                     this.d.clear();
                 }
-            } catch (Throwable th) {
-                throw th;
+                return;
             }
+            throw throwable2;
         }
     }
 
-    @Override // defpackage.wz3
-    public final boolean g(pz3 pz3Var) {
-        boolean z;
-        synchronized (this.b) {
+    /*
+     * Enabled aggressive block sorting
+     * Enabled unnecessary exception pruning
+     * Enabled aggressive exception aggregation
+     */
+    @Override
+    public final boolean g(pz3 pz32) {
+        Object object = this.b;
+        synchronized (object) {
             try {
-                wz3 wz3Var = this.a;
-                z = (wz3Var == null || wz3Var.g(this)) && pz3Var.equals(this.c) && this.e != 2;
-            } catch (Throwable th) {
-                throw th;
-            }
-        }
-        return z;
-    }
-
-    /* JADX WARN: Multi-variable type inference failed */
-    /* JADX WARN: Type inference failed for: r2v2, types: [wz3] */
-    /* JADX WARN: Type inference failed for: r2v4 */
-    /* JADX WARN: Type inference failed for: r2v5 */
-    @Override // defpackage.wz3
-    public final wz3 getRoot() {
-        ?? root;
-        synchronized (this.b) {
-            try {
-                wz3 wz3Var = this.a;
-                this = this;
-                if (wz3Var != null) {
-                    root = wz3Var.getRoot();
+                wz3 wz32 = this.a;
+                if (wz32 != null) {
+                    if (!wz32.g(this)) return false;
                 }
-            } catch (Throwable th) {
-                throw th;
+                if (!pz32.equals(this.c)) return false;
+                if (this.e == 2) return false;
+                return true;
             }
+            catch (Throwable throwable) {}
+            throw throwable;
         }
-        return root;
     }
 
-    @Override // defpackage.wz3
-    public final boolean h(pz3 pz3Var) {
-        boolean z;
-        synchronized (this.b) {
+    /*
+     * Enabled aggressive block sorting
+     * Enabled unnecessary exception pruning
+     * Enabled aggressive exception aggregation
+     */
+    @Override
+    public final wz3 getRoot() {
+        Object object = this.b;
+        synchronized (object) {
             try {
-                wz3 wz3Var = this.a;
-                z = (wz3Var == null || wz3Var.h(this)) && pz3Var.equals(this.c) && !a();
-            } catch (Throwable th) {
-                throw th;
+                wz3 wz32 = this.a;
+                wz3 wz33 = this;
+                if (wz32 == null) return wz33;
+                return wz32.getRoot();
             }
+            catch (Throwable throwable) {}
+            throw throwable;
         }
-        return z;
     }
 
-    @Override // defpackage.wz3
-    public final boolean i(pz3 pz3Var) {
-        boolean z;
-        synchronized (this.b) {
+    /*
+     * Enabled aggressive block sorting
+     * Enabled unnecessary exception pruning
+     * Enabled aggressive exception aggregation
+     */
+    @Override
+    public final boolean h(pz3 pz32) {
+        Object object = this.b;
+        synchronized (object) {
             try {
-                wz3 wz3Var = this.a;
-                z = (wz3Var == null || wz3Var.i(this)) && (pz3Var.equals(this.c) || this.e != 4);
-            } catch (Throwable th) {
-                throw th;
+                wz3 wz32 = this.a;
+                if (wz32 != null) {
+                    if (!wz32.h(this)) return false;
+                }
+                if (!pz32.equals(this.c)) return false;
+                if (this.a()) return false;
+                return true;
             }
+            catch (Throwable throwable) {}
+            throw throwable;
         }
-        return z;
     }
 
-    @Override // defpackage.pz3
+    /*
+     * Enabled aggressive block sorting
+     * Enabled unnecessary exception pruning
+     * Enabled aggressive exception aggregation
+     */
+    @Override
+    public final boolean i(pz3 pz32) {
+        Object object = this.b;
+        synchronized (object) {
+            try {
+                wz3 wz32 = this.a;
+                if (wz32 != null) {
+                    if (!wz32.i(this)) return false;
+                }
+                if (pz32.equals(this.c)) return true;
+                if (this.e == 4) return false;
+                return true;
+            }
+            catch (Throwable throwable) {}
+            throw throwable;
+        }
+    }
+
+    /*
+     * Enabled aggressive block sorting
+     * Enabled unnecessary exception pruning
+     * Enabled aggressive exception aggregation
+     */
+    @Override
     public final boolean isRunning() {
-        boolean z;
-        synchronized (this.b) {
-            z = true;
-            if (this.e != 1) {
-                z = false;
-            }
+        Object object = this.b;
+        synchronized (object) {
+            int n16 = this.e;
+            boolean bl5 = true;
+            if (n16 != 1) return false;
+            return bl5;
         }
-        return z;
     }
 
-    @Override // defpackage.pz3
+    /*
+     * Enabled aggressive block sorting
+     * Enabled unnecessary exception pruning
+     * Enabled aggressive exception aggregation
+     */
+    @Override
     public final boolean j() {
-        boolean z;
-        synchronized (this.b) {
-            z = this.e == 3;
+        Object object = this.b;
+        synchronized (object) {
+            if (this.e != 3) return false;
+            return true;
         }
-        return z;
     }
 
-    @Override // defpackage.pz3
+    /*
+     * Enabled aggressive block sorting
+     * Enabled unnecessary exception pruning
+     * Enabled aggressive exception aggregation
+     */
+    @Override
     public final void k() {
-        synchronized (this.b) {
-            try {
-                this.g = true;
-                try {
-                    if (this.e != 4 && this.f != 1) {
-                        this.f = 1;
-                        this.d.k();
+        Object object = this.b;
+        synchronized (object) {
+            Throwable throwable3;
+            block7: {
+                Throwable throwable22;
+                block9: {
+                    block8: {
+                        try {
+                            this.g = true;
+                        }
+                        catch (Throwable throwable3) {
+                            break block7;
+                        }
+                        try {
+                            if (this.e == 4 || this.f == 1) break block8;
+                            this.f = 1;
+                            this.d.k();
+                        }
+                        catch (Throwable throwable22) {
+                            break block9;
+                        }
                     }
                     if (this.g && this.e != 1) {
                         this.e = 1;
                         this.c.k();
                     }
                     this.g = false;
-                } catch (Throwable th) {
-                    this.g = false;
-                    throw th;
+                    return;
                 }
-            } catch (Throwable th2) {
-                throw th2;
+                this.g = false;
+                throw throwable22;
             }
+            throw throwable3;
         }
     }
 }
+

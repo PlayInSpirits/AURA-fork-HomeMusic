@@ -1,193 +1,212 @@
 package defpackage;
 
-/* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
-/* JADX INFO: loaded from: classes.dex */
-public abstract class fo0 extends cx2 {
+/*
+ * Decompiled with CFR 0.152.
+ */
+public abstract class fo0
+extends cx2 {
     public final int B = g63.d(this);
     public cx2 C;
 
-    @Override // defpackage.cx2
+    @Override
     public final void g0() {
         super.g0();
-        for (cx2 cx2Var = this.C; cx2Var != null; cx2Var = cx2Var.s) {
-            cx2Var.p0(this.u);
-            if (!cx2Var.A) {
-                cx2Var.g0();
+        cx2 cx22 = this.C;
+        while (cx22 != null) {
+            cx22.p0(this.u);
+            if (!cx22.A) {
+                cx22.g0();
             }
+            cx22 = cx22.s;
         }
     }
 
-    @Override // defpackage.cx2
+    @Override
     public final void h0() {
-        for (cx2 cx2Var = this.C; cx2Var != null; cx2Var = cx2Var.s) {
-            cx2Var.h0();
+        cx2 cx22 = this.C;
+        while (cx22 != null) {
+            cx22.h0();
+            cx22 = cx22.s;
         }
         super.h0();
     }
 
-    @Override // defpackage.cx2
+    @Override
     public final void l0() {
         super.l0();
-        for (cx2 cx2Var = this.C; cx2Var != null; cx2Var = cx2Var.s) {
-            cx2Var.l0();
+        cx2 cx22 = this.C;
+        while (cx22 != null) {
+            cx22.l0();
+            cx22 = cx22.s;
         }
     }
 
-    @Override // defpackage.cx2
+    @Override
     public final void m0() {
-        for (cx2 cx2Var = this.C; cx2Var != null; cx2Var = cx2Var.s) {
-            cx2Var.m0();
+        cx2 cx22 = this.C;
+        while (cx22 != null) {
+            cx22.m0();
+            cx22 = cx22.s;
         }
         super.m0();
     }
 
-    @Override // defpackage.cx2
+    @Override
     public final void n0() {
         super.n0();
-        for (cx2 cx2Var = this.C; cx2Var != null; cx2Var = cx2Var.s) {
-            cx2Var.n0();
+        cx2 cx22 = this.C;
+        while (cx22 != null) {
+            cx22.n0();
+            cx22 = cx22.s;
         }
     }
 
-    @Override // defpackage.cx2
-    public final void o0(cx2 cx2Var) {
-        this.n = cx2Var;
-        for (cx2 cx2Var2 = this.C; cx2Var2 != null; cx2Var2 = cx2Var2.s) {
-            cx2Var2.o0(cx2Var);
+    @Override
+    public final void o0(cx2 cx22) {
+        this.n = cx22;
+        cx2 cx23 = this.C;
+        while (cx23 != null) {
+            cx23.o0(cx22);
+            cx23 = cx23.s;
         }
     }
 
-    @Override // defpackage.cx2
-    public final void p0(f63 f63Var) {
-        this.u = f63Var;
-        for (cx2 cx2Var = this.C; cx2Var != null; cx2Var = cx2Var.s) {
-            cx2Var.p0(f63Var);
+    @Override
+    public final void p0(f63 f632) {
+        this.u = f632;
+        cx2 cx22 = this.C;
+        while (cx22 != null) {
+            cx22.p0(f632);
+            cx22 = cx22.s;
         }
     }
 
-    public final eo0 q0(eo0 eo0Var) {
-        cx2 cx2Var = ((cx2) eo0Var).n;
-        if (cx2Var != eo0Var) {
-            cx2 cx2Var2 = eo0Var instanceof cx2 ? (cx2) eo0Var : null;
-            cx2 cx2Var3 = cx2Var2 != null ? cx2Var2.r : null;
-            if (cx2Var != this.n || !h12.c(cx2Var3, this)) {
+    public final eo0 q0(eo0 eo02) {
+        cx2 cx22 = ((cx2)eo02).n;
+        if (cx22 != eo02) {
+            cx2 cx23 = eo02 instanceof cx2 ? (cx2)eo02 : null;
+            cx23 = cx23 != null ? cx23.r : null;
+            if (cx22 != this.n || !h12.c(cx23, this)) {
                 kf2.o("Cannot delegate to an already delegated node");
                 return null;
             }
         } else {
-            if (cx2Var.A) {
+            Object object;
+            int n16;
+            if (cx22.A) {
                 cz1.b("Cannot delegate to an already attached node");
             }
-            cx2Var.o0(this.n);
-            int i = this.p;
-            int iE = g63.e(cx2Var);
-            cx2Var.p = iE;
-            int i2 = this.p;
-            int i3 = iE & 2;
-            if (i3 != 0 && (i2 & 2) != 0 && !(this instanceof u62)) {
-                cz1.b("Delegating to multiple LayoutModifierNodes without the delegating node implementing LayoutModifierNode itself is not allowed.\nDelegating Node: " + this + "\nDelegate Node: " + cx2Var);
+            cx22.o0(this.n);
+            int n17 = this.p;
+            cx22.p = n16 = g63.e(cx22);
+            int n18 = this.p;
+            int n19 = n16 & 2;
+            if (n19 != 0 && (n18 & 2) != 0 && !(this instanceof u62)) {
+                object = new StringBuilder("Delegating to multiple LayoutModifierNodes without the delegating node implementing LayoutModifierNode itself is not allowed.\nDelegating Node: ");
+                ((StringBuilder)object).append(this);
+                ((StringBuilder)object).append("\nDelegate Node: ");
+                ((StringBuilder)object).append(cx22);
+                cz1.b(((StringBuilder)object).toString());
             }
-            cx2Var.s = this.C;
-            this.C = cx2Var;
-            cx2Var.r = this;
-            s0(iE | this.p, false);
+            cx22.s = this.C;
+            this.C = cx22;
+            cx22.r = this;
+            this.s0(n16 | this.p, false);
             if (this.A) {
-                if (i3 == 0 || (i & 2) != 0) {
-                    p0(this.u);
-                } else {
-                    w12 w12Var = j51.O(this).Q;
+                if (n19 != 0 && (n17 & 2) == 0) {
+                    object = j51.O((eo0)this).Q;
                     this.n.p0(null);
-                    w12Var.g();
+                    ((w12)object).g();
+                } else {
+                    this.p0(this.u);
                 }
-                cx2Var.g0();
-                cx2Var.m0();
-                if (!cx2Var.A) {
+                cx22.g0();
+                cx22.m0();
+                if (!cx22.A) {
                     cz1.b("autoInvalidateInsertedNode called on unattached node");
                 }
-                g63.a(cx2Var, -1, 1);
+                g63.a(cx22, -1, 1);
             }
         }
-        return eo0Var;
+        return eo02;
     }
 
-    public final void r0(eo0 eo0Var) {
-        cx2 cx2Var = null;
-        for (cx2 cx2Var2 = this.C; cx2Var2 != null; cx2Var2 = cx2Var2.s) {
-            if (cx2Var2 == eo0Var) {
-                boolean z = cx2Var2.A;
-                if (z) {
-                    p03 p03Var = g63.a;
-                    if (!z) {
+    public final void r0(eo0 object) {
+        cx2 cx22 = this.C;
+        cx2 cx23 = null;
+        while (cx22 != null) {
+            if (cx22 == object) {
+                boolean bl5 = cx22.A;
+                if (bl5) {
+                    object = g63.a;
+                    if (!bl5) {
                         cz1.b("autoInvalidateRemovedNode called on unattached node");
                     }
-                    g63.a(cx2Var2, -1, 2);
-                    cx2Var2.n0();
-                    cx2Var2.h0();
+                    g63.a(cx22, -1, 2);
+                    cx22.n0();
+                    cx22.h0();
                 }
-                cx2Var2.o0(cx2Var2);
-                cx2Var2.q = 0;
-                cx2 cx2Var3 = cx2Var2.s;
-                if (cx2Var == null) {
-                    this.C = cx2Var3;
+                cx22.o0(cx22);
+                cx22.q = 0;
+                object = cx22.s;
+                if (cx23 == null) {
+                    this.C = object;
                 } else {
-                    cx2Var.s = cx2Var3;
+                    cx23.s = object;
                 }
-                cx2Var2.s = null;
-                cx2Var2.r = null;
-                int i = this.p;
-                int iE = g63.e(this);
-                s0(iE, true);
-                if (this.A && (i & 2) != 0 && (iE & 2) == 0) {
-                    w12 w12Var = j51.O(this).Q;
+                cx22.s = null;
+                cx22.r = null;
+                int n16 = this.p;
+                int n17 = g63.e(this);
+                this.s0(n17, true);
+                if (this.A && (n16 & 2) != 0 && (n17 & 2) == 0) {
+                    object = j51.O((eo0)this).Q;
                     this.n.p0(null);
-                    w12Var.g();
-                    return;
+                    ((w12)object).g();
                 }
                 return;
             }
-            cx2Var = cx2Var2;
+            cx2 cx24 = cx22.s;
+            cx23 = cx22;
+            cx22 = cx24;
         }
-        mj0.g(eo0Var, "Could not find delegate: ");
+        mj0.g(object, "Could not find delegate: ");
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
-    /* JADX WARN: Type inference failed for: r2v1, types: [cx2] */
-    /* JADX WARN: Type inference failed for: r2v2, types: [cx2] */
-    /* JADX WARN: Type inference failed for: r2v5 */
-    /* JADX WARN: Type inference failed for: r2v6 */
-    /* JADX WARN: Type inference failed for: r2v7 */
-    /* JADX WARN: Type inference failed for: r2v8 */
-    public final void s0(int i, boolean z) {
-        cx2 cx2Var;
-        int i2 = this.p;
-        this.p = i;
-        if (i2 != i) {
-            cx2 cx2Var2 = this.n;
-            if (cx2Var2 == this) {
-                this.q = i;
+    public final void s0(int n16, boolean bl5) {
+        int n17 = this.p;
+        this.p = n16;
+        if (n17 != n16) {
+            cx2 cx22 = this.n;
+            if (cx22 == this) {
+                this.q = n16;
             }
-            boolean z2 = this.A;
-            ?? r2 = this;
-            if (z2) {
-                while (r2 != 0) {
-                    i |= r2.p;
-                    r2.p = i;
-                    if (r2 == cx2Var2) {
-                        break;
-                    } else {
-                        r2 = r2.r;
+            if (this.A) {
+                n17 = n16;
+                cx2 cx23 = this;
+                while (true) {
+                    n16 = n17;
+                    if (cx23 == null) break;
+                    cx23.p = n17 |= cx23.p;
+                    n16 = n17;
+                    if (cx23 == cx22) break;
+                    cx23 = cx23.r;
+                }
+                n17 = n16;
+                if (bl5) {
+                    n17 = n16;
+                    if (cx23 == cx22) {
+                        cx22.p = n17 = g63.e(cx22);
                     }
                 }
-                if (z && r2 == cx2Var2) {
-                    i = g63.e(cx2Var2);
-                    cx2Var2.p = i;
-                }
-                int i3 = i | ((r2 == 0 || (cx2Var = r2.s) == null) ? 0 : cx2Var.q);
-                for (?? r3 = r2; r3 != 0; r3 = r3.r) {
-                    i3 |= r3.p;
-                    r3.q = i3;
+                n16 = cx23 != null && (cx22 = cx23.s) != null ? cx22.q : 0;
+                n16 = n17 | n16;
+                while (cx23 != null) {
+                    cx23.q = n16 |= cx23.p;
+                    cx23 = cx23.r;
                 }
             }
         }
     }
 }
+

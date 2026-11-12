@@ -1,5 +1,22 @@
 package defpackage;
 
+/*
+ * Decompiled with CFR 0.152.
+ * 
+ * Could not load the following classes:
+ *  android.content.Context
+ *  android.content.res.Configuration
+ *  android.graphics.Typeface
+ *  android.graphics.drawable.Drawable
+ *  android.os.Build$VERSION
+ *  android.util.Base64
+ *  android.util.TypedValue
+ *  android.view.Display
+ *  android.view.MotionEvent
+ *  android.view.RoundedCorner
+ *  android.view.ViewStructure
+ *  android.view.autofill.AutofillId
+ */
 import android.content.Context;
 import android.content.res.Configuration;
 import android.graphics.Typeface;
@@ -12,10 +29,7 @@ import android.view.MotionEvent;
 import android.view.RoundedCorner;
 import android.view.ViewStructure;
 import android.view.autofill.AutofillId;
-import android.view.autofill.AutofillValue;
 import androidx.media3.common.ParserException;
-import com.eddyizm.tempus.homemusic.SmartSession;
-import java.io.IOException;
 import java.lang.reflect.Array;
 import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;
@@ -29,1383 +43,1809 @@ import java.util.logging.Logger;
 import javax.net.ssl.SSLPeerUnverifiedException;
 import javax.net.ssl.SSLSession;
 
-/* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
-/* JADX INFO: loaded from: classes.dex */
 public abstract class zz1 {
     public static Context a;
     public static Boolean b;
-    public static final Object[] c = new Object[0];
-    public static final f01 d = new f01(1, "COMPLETING_ALREADY");
-    public static final f01 e = new f01(1, "COMPLETING_WAITING_CHILDREN");
-    public static final f01 f = new f01(1, "COMPLETING_RETRY");
-    public static final f01 g = new f01(1, "TOO_LATE_TO_CANCEL");
-    public static final f01 h = new f01(1, "SEALED");
-    public static final n01 i = new n01(false);
-    public static final n01 j = new n01(true);
-    public static final p94 k = new p94("TestTagsAsResourceId", false, new m94(6));
-    public static final p94 l = new p94("AccessibilityClassName", true, new n54(28));
-    public static final p94 m = new p94("CredentialRequest", false, new m94(7));
+    public static final Object[] c;
+    public static final f01 d;
+    public static final f01 e;
+    public static final f01 f;
+    public static final f01 g;
+    public static final f01 h;
+    public static final n01 i;
+    public static final n01 j;
+    public static final p94 k;
+    public static final p94 l;
+    public static final p94 m;
 
-    public static final long A(ey1 ey1Var, hb3 hb3Var, dy1 dy1Var, boolean z) {
-        float fIntBitsToFloat;
-        long jFloatToRawIntBits;
-        long j2;
-        long j3 = ey1Var.g;
-        if (hb3Var != null) {
-            int i2 = dy1Var.a;
-            if (i2 == 1) {
-                fIntBitsToFloat = Float.intBitsToFloat((int) (j3 >> 32));
-            } else if (i2 == 2) {
-                fIntBitsToFloat = Float.intBitsToFloat((int) (j3 & 4294967295L));
+    static {
+        c = new Object[0];
+        d = new f01(1, "COMPLETING_ALREADY");
+        e = new f01(1, "COMPLETING_WAITING_CHILDREN");
+        f = new f01(1, "COMPLETING_RETRY");
+        g = new f01(1, "TOO_LATE_TO_CANCEL");
+        h = new f01(1, "SEALED");
+        i = new n01(false);
+        j = new n01(true);
+        k = new p94("TestTagsAsResourceId", false, new m94(6));
+        l = new p94("AccessibilityClassName", true, new n54(28));
+        m = new p94("CredentialRequest", false, new m94(7));
+    }
+
+    /*
+     * Enabled aggressive block sorting
+     */
+    public static final long A(ey1 ey12, hb3 hb32, dy1 dy12, boolean bl5) {
+        long l16;
+        block7: {
+            float f16;
+            long l17;
+            block9: {
+                int n16;
+                block8: {
+                    block6: {
+                        l17 = ey12.g;
+                        if (hb32 != null) break block6;
+                        l16 = l17;
+                        break block7;
+                    }
+                    n16 = dy12.a;
+                    if (n16 != 1) break block8;
+                    f16 = Float.intBitsToFloat((int)(l17 >> 32));
+                    break block9;
+                }
+                l16 = l17;
+                if (n16 != 2) break block7;
+                f16 = Float.intBitsToFloat((int)(l17 & 0xFFFFFFFFL));
             }
-            if (hb3Var == hb3.o) {
-                long jFloatToRawIntBits2 = Float.floatToRawIntBits(fIntBitsToFloat);
-                jFloatToRawIntBits = Float.floatToRawIntBits(0.0f);
-                j2 = jFloatToRawIntBits2 << 32;
+            if (hb32 == hb3.o) {
+                l16 = Float.floatToRawIntBits(f16);
+                l17 = Float.floatToRawIntBits(0.0f);
+                l16 <<= 32;
             } else {
-                long jFloatToRawIntBits3 = Float.floatToRawIntBits(0.0f);
-                jFloatToRawIntBits = Float.floatToRawIntBits(fIntBitsToFloat);
-                j2 = jFloatToRawIntBits3 << 32;
+                l16 = Float.floatToRawIntBits(0.0f);
+                l17 = Float.floatToRawIntBits(f16);
+                l16 <<= 32;
             }
-            j3 = j2 | (jFloatToRawIntBits & 4294967295L);
+            l16 |= l17 & 0xFFFFFFFFL;
         }
-        long jD = g83.d(B(ey1Var, hb3Var, dy1Var), j3);
-        if (z || !ey1Var.i) {
-            return jD;
+        l16 = g83.d(zz1.B(ey12, hb32, dy12), l16);
+        if (!bl5 && ey12.i) {
+            return 0L;
         }
-        return 0L;
+        return l16;
     }
 
-    public static final long B(ey1 ey1Var, hb3 hb3Var, dy1 dy1Var) {
-        float fIntBitsToFloat;
-        long jFloatToRawIntBits;
-        long j2;
-        if (hb3Var == null) {
-            return ey1Var.c;
+    /*
+     * Enabled force condition propagation
+     * Lifted jumps to return sites
+     */
+    public static final long B(ey1 ey12, hb3 hb32, dy1 dy12) {
+        long l16;
+        long l17;
+        float f16;
+        if (hb32 == null) {
+            return ey12.c;
         }
-        int i2 = dy1Var.a;
-        if (i2 == 1) {
-            fIntBitsToFloat = Float.intBitsToFloat((int) (ey1Var.c >> 32));
+        int n16 = dy12.a;
+        if (n16 == 1) {
+            f16 = Float.intBitsToFloat((int)(ey12.c >> 32));
         } else {
-            if (i2 != 2) {
-                return ey1Var.c;
-            }
-            fIntBitsToFloat = Float.intBitsToFloat((int) (ey1Var.c & 4294967295L));
+            if (n16 != 2) return ey12.c;
+            f16 = Float.intBitsToFloat((int)(ey12.c & 0xFFFFFFFFL));
         }
-        if (hb3Var == hb3.o) {
-            long jFloatToRawIntBits2 = Float.floatToRawIntBits(fIntBitsToFloat);
-            jFloatToRawIntBits = Float.floatToRawIntBits(0.0f);
-            j2 = jFloatToRawIntBits2 << 32;
-        } else {
-            long jFloatToRawIntBits3 = Float.floatToRawIntBits(0.0f);
-            jFloatToRawIntBits = Float.floatToRawIntBits(fIntBitsToFloat);
-            j2 = jFloatToRawIntBits3 << 32;
+        if (hb32 == hb3.o) {
+            l17 = Float.floatToRawIntBits(f16);
+            l16 = Float.floatToRawIntBits(0.0f);
+            l17 <<= 32;
+            return l17 | 0xFFFFFFFFL & l16;
         }
-        return j2 | (4294967295L & jFloatToRawIntBits);
+        l17 = Float.floatToRawIntBits(0.0f);
+        l16 = Float.floatToRawIntBits(f16);
+        l17 <<= 32;
+        return l17 | 0xFFFFFFFFL & l16;
     }
 
-    public static c05 C(be3 be3Var, boolean z, boolean z2) throws ParserException {
-        if (z) {
-            N(3, be3Var, false);
+    public static c05 C(be3 be32, boolean bl5, boolean bl6) {
+        int n16 = 0;
+        if (bl5) {
+            zz1.N(3, be32, false);
         }
-        be3Var.y((int) be3Var.r(), StandardCharsets.UTF_8);
-        long jR = be3Var.r();
-        String[] strArr = new String[(int) jR];
-        for (int i2 = 0; i2 < jR; i2++) {
-            strArr[i2] = be3Var.y((int) be3Var.r(), StandardCharsets.UTF_8);
+        be32.y((int)be32.r(), StandardCharsets.UTF_8);
+        long l16 = be32.r();
+        String[] stringArray = new String[(int)l16];
+        while ((long)n16 < l16) {
+            stringArray[n16] = be32.y((int)be32.r(), StandardCharsets.UTF_8);
+            ++n16;
         }
-        if (z2 && (be3Var.A() & 1) == 0) {
+        if (bl6 && (be32.A() & 1) == 0) {
             throw ParserException.a(null, "framing bit expected to be set");
         }
-        return new c05(strArr);
+        return new c05(stringArray);
     }
 
-    public static TypedValue D(Context context, int i2) {
+    public static TypedValue D(Context context, int n16) {
         TypedValue typedValue = new TypedValue();
-        if (context.getTheme().resolveAttribute(i2, typedValue, true)) {
+        if (context.getTheme().resolveAttribute(n16, typedValue, true)) {
             return typedValue;
         }
         return null;
     }
 
-    public static boolean E(Context context, int i2, boolean z) {
-        TypedValue typedValueD = D(context, i2);
-        if (typedValueD == null || typedValueD.type != 18) {
-            return z;
+    public static boolean E(Context context, int n16, boolean bl5) {
+        if ((context = zz1.D(context, n16)) != null && context.type == 18) {
+            return context.data != 0;
         }
-        return typedValueD.data != 0;
+        return bl5;
     }
 
-    public static TypedValue F(int i2, Context context, String str) {
-        TypedValue typedValueD = D(context, i2);
-        if (typedValueD != null) {
-            return typedValueD;
+    public static TypedValue F(int n16, Context context, String string) {
+        TypedValue typedValue = zz1.D(context, n16);
+        if (typedValue != null) {
+            return typedValue;
         }
-        throw new IllegalArgumentException(String.format("%1$s requires a value for the %2$s attribute to be set in your app theme. You can either set the attribute in your theme or update your theme to inherit from Theme.MaterialComponents (or a descendant).", str, context.getResources().getResourceName(i2)));
+        throw new IllegalArgumentException(String.format("%1$s requires a value for the %2$s attribute to be set in your app theme. You can either set the attribute in your theme or update your theme to inherit from Theme.MaterialComponents (or a descendant).", string, context.getResources().getResourceName(n16)));
     }
 
-    public static final int G(int i2) {
-        return ((i2 & 255) << 24) | (((-16777216) & i2) >>> 24) | ((16711680 & i2) >>> 8) | ((65280 & i2) << 8);
+    public static final int G(int n16) {
+        return (n16 & 0xFF) << 24 | ((0xFF000000 & n16) >>> 24 | (0xFF0000 & n16) >>> 8 | (0xFF00 & n16) << 8);
     }
 
-    /* JADX WARN: Code duplicated, block: B:100:0x014c  */
-    /* JADX WARN: Code duplicated, block: B:129:0x019e  */
-    /* JADX WARN: Code duplicated, block: B:158:0x014a A[SYNTHETIC] */
-    /* JADX WARN: Code duplicated, block: B:166:0x0187 A[SYNTHETIC] */
-    /* JADX WARN: Code duplicated, block: B:87:0x011f  */
-    /* JADX WARN: Code duplicated, block: B:90:0x012e  */
-    /* JADX WARN: Code duplicated, block: B:92:0x013a A[ADDED_TO_REGION, LOOP:6: B:92:0x013a->B:120:0x0187, LOOP_START, PHI: r13
-  0x013a: PHI (r13v13 cx2) = (r13v7 cx2), (r13v14 cx2) binds: [B:91:0x0138, B:120:0x0187] A[DONT_GENERATE, DONT_INLINE]] */
-    /* JADX WARN: Code duplicated, block: B:93:0x013c  */
-    /* JADX WARN: Code duplicated, block: B:95:0x0142  */
-    /* JADX WARN: Code duplicated, block: B:97:0x0146  */
-    public static final boolean H(ba1 ba1Var, ba1 ba1Var2, int i2, dd0 dd0Var) {
-        cx2 cx2Var;
-        cx2 cx2Var2;
-        c72 c72VarO;
-        w12 w12Var;
-        cx2 cx2VarC;
-        f13 f13Var;
-        if (ba1Var.v0() != z91.o) {
-            kf2.o("This function should only be used within a parent that has focus.");
-            return false;
-        }
-        Object[] objArr = new ba1[16];
-        if (!ba1Var.n.A) {
-            cz1.b("visitChildren called on an unattached node");
-        }
-        f13 f13Var2 = new f13(new cx2[16]);
-        cx2 cx2Var3 = ba1Var.n;
-        cx2 cx2Var4 = cx2Var3.s;
-        if (cx2Var4 == null) {
-            j51.b(f13Var2, cx2Var3);
-        } else {
-            f13Var2.b(cx2Var4);
-        }
-        int i3 = 0;
-        while (true) {
-            int i4 = f13Var2.p;
-            cx2Var = null;
-            if (i4 == 0) {
-                break;
-            }
-            cx2 cx2VarC2 = (cx2) f13Var2.k(i4 - 1);
-            if ((cx2VarC2.q & 1024) == 0) {
-                j51.b(f13Var2, cx2VarC2);
-            } else {
-                while (cx2VarC2 != null) {
-                    if ((cx2VarC2.p & 1024) != 0) {
-                        f13 f13Var3 = null;
-                        while (cx2VarC2 != null) {
-                            if (cx2VarC2 instanceof ba1) {
-                                ba1 ba1Var3 = (ba1) cx2VarC2;
-                                int i5 = i3 + 1;
-                                if (objArr.length < i5) {
-                                    int length = objArr.length;
-                                    Object[] objArr2 = new Object[Math.max(i5, length * 2)];
-                                    System.arraycopy(objArr, 0, objArr2, 0, length);
-                                    objArr = objArr2;
+    /*
+     * Unable to fully structure code
+     * Could not resolve type clashes
+     */
+    public static final boolean H(ba1 var0, ba1 var1_1, int var2_2, dd0 var3_3) {
+        block45: {
+            block48: {
+                block43: {
+                    block44: {
+                        block47: {
+                            block46: {
+                                if (var0.v0() != z91.o) break block45;
+                                var9_4 /* !! */  = new ba1[16];
+                                if (!var0.n.A) {
+                                    cz1.b("visitChildren called on an unattached node");
                                 }
-                                objArr[i3] = ba1Var3;
-                                i3 = i5;
-                            } else if ((cx2VarC2.p & 1024) != 0 && (cx2VarC2 instanceof fo0)) {
-                                int i6 = 0;
-                                for (cx2 cx2Var5 = ((fo0) cx2VarC2).C; cx2Var5 != null; cx2Var5 = cx2Var5.s) {
-                                    if ((cx2Var5.p & 1024) != 0) {
-                                        i6++;
-                                        if (i6 == 1) {
-                                            cx2VarC2 = cx2Var5;
-                                        } else {
-                                            if (f13Var3 == null) {
-                                                f13Var3 = new f13(new cx2[16]);
+                                var14_5 = new f13(new cx2[16]);
+                                var7_6 = var0.n;
+                                var8_7 /* !! */  = var7_6.s;
+                                if (var8_7 /* !! */  == null) {
+                                    j51.b(var14_5, (cx2)var7_6);
+lbl10:
+                                    // 2 sources
+
+                                    while (true) {
+                                        continue;
+                                        break;
+                                    }
+                                }
+                                var14_5.b(var8_7 /* !! */ );
+                                ** while (true)
+                                var5_8 = 0;
+                                block1: while (true) {
+                                    var4_9 = var14_5.p;
+                                    var13_14 = null;
+                                    if (var4_9 == 0) break;
+                                    var7_6 = (cx2)var14_5.k(var4_9 - 1);
+                                    var10_11 /* !! */  = var7_6;
+                                    if ((var7_6.q & 1024) == 0) {
+                                        j51.b(var14_5, (cx2)var7_6);
+                                        continue;
+                                    }
+                                    while (true) {
+                                        if (var10_11 /* !! */  == null) continue block1;
+                                        if ((var10_11 /* !! */ .p & 1024) != 0) {
+                                            var7_6 = null;
+                                            var4_9 = var5_8;
+                                            var8_7 /* !! */  = var9_4 /* !! */ ;
+                                            while (true) {
+                                                var9_4 /* !! */  = var8_7 /* !! */ ;
+                                                var5_8 = var4_9;
+                                                if (var10_11 /* !! */  == null) ** break;
+                                                if (var10_11 /* !! */  instanceof ba1) {
+                                                    var10_11 /* !! */  = (ba1)var10_11 /* !! */ ;
+                                                    var6_10 = var4_9 + 1;
+                                                    var9_4 /* !! */  = var8_7 /* !! */ ;
+                                                    if (var8_7 /* !! */ .length < var6_10) {
+                                                        var5_8 = var8_7 /* !! */ .length;
+                                                        var9_4 /* !! */  = new Object[Math.max(var6_10, var5_8 * 2)];
+                                                        System.arraycopy(var8_7 /* !! */ , 0, var9_4 /* !! */ , 0, var5_8);
+                                                    }
+                                                    var9_4 /* !! */ [var4_9] = var10_11 /* !! */ ;
+                                                    var11_12 = var9_4 /* !! */ ;
+                                                    var9_4 /* !! */  = var7_6;
+                                                } else {
+                                                    var11_12 = var8_7 /* !! */ ;
+                                                    var6_10 = var4_9;
+                                                    var9_4 /* !! */  = var7_6;
+                                                    if ((var10_11 /* !! */ .p & 1024) != 0) {
+                                                        var11_12 = var8_7 /* !! */ ;
+                                                        var6_10 = var4_9;
+                                                        var9_4 /* !! */  = var7_6;
+                                                        if (var10_11 /* !! */  instanceof fo0) {
+                                                            var9_4 /* !! */  = ((fo0)var10_11 /* !! */ ).C;
+                                                            var5_8 = 0;
+                                                            while (var9_4 /* !! */  != null) {
+                                                                var11_12 = var10_11 /* !! */ ;
+                                                                var12_13 /* !! */  = var7_6;
+                                                                var6_10 = var5_8;
+                                                                if ((var9_4 /* !! */ .p & 1024) != 0) {
+                                                                    var6_10 = var5_8 + 1;
+                                                                    if (var6_10 == 1) {
+                                                                        var11_12 = var9_4 /* !! */ ;
+                                                                        var12_13 /* !! */  = var7_6;
+                                                                    } else {
+                                                                        var11_12 = var7_6;
+                                                                        if (var7_6 == null) {
+                                                                            var11_12 = new f13(new cx2[16]);
+                                                                        }
+                                                                        var7_6 = var10_11 /* !! */ ;
+                                                                        if (var10_11 /* !! */  != null) {
+                                                                            var11_12.b(var10_11 /* !! */ );
+                                                                            var7_6 = null;
+                                                                        }
+                                                                        var11_12.b(var9_4 /* !! */ );
+                                                                        var12_13 /* !! */  = var11_12;
+                                                                        var11_12 = var7_6;
+                                                                    }
+                                                                }
+                                                                var9_4 /* !! */  = var9_4 /* !! */ .s;
+                                                                var10_11 /* !! */  = var11_12;
+                                                                var7_6 = var12_13 /* !! */ ;
+                                                                var5_8 = var6_10;
+                                                            }
+                                                            var11_12 = var8_7 /* !! */ ;
+                                                            var6_10 = var4_9;
+                                                            var9_4 /* !! */  = var7_6;
+                                                            if (var5_8 == 1) continue;
+                                                        }
+                                                    }
+                                                }
+                                                var10_11 /* !! */  = j51.c((f13)var9_4 /* !! */ );
+                                                var8_7 /* !! */  = var11_12;
+                                                var4_9 = var6_10;
+                                                var7_6 = var9_4 /* !! */ ;
                                             }
-                                            if (cx2VarC2 != null) {
-                                                f13Var3.b(cx2VarC2);
-                                                cx2VarC2 = null;
-                                            }
-                                            f13Var3.b(cx2Var5);
                                         }
+                                        var10_11 /* !! */  = var10_11 /* !! */ .s;
                                     }
+                                    break;
                                 }
-                                if (i6 == 1) {
+                                Arrays.sort(var9_4 /* !! */ , 0, var5_8, ca1.o);
+                                if (var2_2 != 1) break block46;
+                                var7_6 = gb.g0(0, var5_8);
+                                var4_9 = var7_6.n;
+                                var6_10 = var7_6.o;
+                                if (var4_9 > var6_10) break block43;
+                                var5_8 = 0;
+                                while (var5_8 == 0 || !te5.B((ba1)(var7_6 = var9_4 /* !! */ [var4_9])) || !zz1.o((ba1)var7_6, var3_3)) {
+                                    if (h12.c(var9_4 /* !! */ [var4_9], var1_1 /* !! */ )) {
+                                        var5_8 = 1;
+                                    }
+                                    if (var4_9 != var6_10) {
+                                        ++var4_9;
+                                        continue;
+                                    }
+                                    break block43;
+                                }
+                                break block47;
+                            }
+                            if (var2_2 != 2) break block48;
+                            var7_6 = gb.g0(0, var5_8);
+                            var6_10 = var7_6.n;
+                            var4_9 = var7_6.o;
+                            if (var6_10 <= var4_9) {
+                                var5_8 = 0;
+lbl114:
+                                // 2 sources
+
+                                while (true) {
+                                    if (var5_8 == 0 || !te5.B((ba1)(var7_6 = var9_4 /* !! */ [var4_9])) || !zz1.f((ba1)var7_6, var3_3)) break block44;
+                                    break;
                                 }
                             }
-                            cx2VarC2 = j51.c(f13Var3);
+                            break block43;
                         }
-                        break;
-                    }
-                    cx2VarC2 = cx2VarC2.s;
-                }
-            }
-        }
-        Arrays.sort(objArr, 0, i3, ca1.o);
-        if (i2 != 1) {
-            if (i2 != 2) {
-                kf2.o("This function should only be used for 1-D focus search");
-                return false;
-            }
-            j02 j02VarG0 = gb.g0(0, i3);
-            int i7 = j02VarG0.n;
-            int i8 = j02VarG0.o;
-            if (i7 <= i8) {
-                boolean z = false;
-                while (true) {
-                    if (z) {
-                        ba1 ba1Var4 = (ba1) objArr[i8];
-                        if (te5.B(ba1Var4) && f(ba1Var4, dd0Var)) {
-                            return true;
-                        }
-                    }
-                    if (h12.c(objArr[i8], ba1Var2)) {
-                        z = true;
-                    }
-                    if (i8 == i7) {
-                        break;
-                    }
-                    i8--;
-                }
-            }
-            if (i2 != 1) {
-                if (!ba1Var.n.A) {
-                    cz1.b("visitAncestors called on an unattached node");
-                }
-                cx2Var2 = ba1Var.n.r;
-                c72VarO = j51.O(ba1Var);
-                loop5: while (c72VarO != null) {
-                    if ((((cx2) c72VarO.Q.g).q & 1024) != 0) {
-                        while (cx2Var2 != null) {
-                            if ((cx2Var2.p & 1024) != 0) {
-                                cx2VarC = cx2Var2;
-                                f13Var = null;
-                                while (cx2VarC != null) {
-                                    if (cx2VarC instanceof ba1) {
-                                        cx2Var = cx2VarC;
-                                        break loop5;
-                                    }
-                                    if ((cx2VarC.p & 1024) == 0) {
-                                    }
-                                    cx2VarC = j51.c(f13Var);
-                                }
-                            }
-                            cx2Var2 = cx2Var2.r;
-                        }
-                    }
-                    c72VarO = c72VarO.t();
-                    if (c72VarO != null) {
-                    }
-                }
-                if (cx2Var != null) {
-                    return ((Boolean) dd0Var.invoke(ba1Var)).booleanValue();
-                }
-            }
-            return false;
-        }
-        j02 j02VarG1 = gb.g0(0, i3);
-        int i9 = j02VarG1.n;
-        int i10 = j02VarG1.o;
-        if (i9 <= i10) {
-            boolean z2 = false;
-            while (true) {
-                if (z2) {
-                    ba1 ba1Var5 = (ba1) objArr[i9];
-                    if (te5.B(ba1Var5) && o(ba1Var5, dd0Var)) {
                         return true;
                     }
-                }
-                if (h12.c(objArr[i9], ba1Var2)) {
-                    z2 = true;
-                }
-                if (i9 == i10) {
-                    break;
-                }
-                i9++;
-            }
-        }
-        if (i2 != 1 && ba1Var.s0().a) {
-            if (!ba1Var.n.A) {
-                cz1.b("visitAncestors called on an unattached node");
-            }
-            cx2Var2 = ba1Var.n.r;
-            c72VarO = j51.O(ba1Var);
-            loop5: while (c72VarO != null) {
-                if ((((cx2) c72VarO.Q.g).q & 1024) != 0) {
-                    while (cx2Var2 != null) {
-                        if ((cx2Var2.p & 1024) != 0) {
-                            cx2VarC = cx2Var2;
-                            f13Var = null;
-                            while (cx2VarC != null) {
-                                if (cx2VarC instanceof ba1) {
-                                    cx2Var = cx2VarC;
-                                    break loop5;
-                                }
-                                if ((cx2VarC.p & 1024) == 0 && (cx2VarC instanceof fo0)) {
-                                    int i11 = 0;
-                                    for (cx2 cx2Var6 = ((fo0) cx2VarC).C; cx2Var6 != null; cx2Var6 = cx2Var6.s) {
-                                        if ((cx2Var6.p & 1024) != 0) {
-                                            i11++;
-                                            if (i11 == 1) {
-                                                cx2VarC = cx2Var6;
-                                            } else {
-                                                if (f13Var == null) {
-                                                    f13Var = new f13(new cx2[16]);
-                                                }
-                                                if (cx2VarC != null) {
-                                                    f13Var.b(cx2VarC);
-                                                    cx2VarC = null;
-                                                }
-                                                f13Var.b(cx2Var6);
-                                            }
-                                        }
-                                    }
-                                    if (i11 == 1) {
-                                    }
-                                }
-                                cx2VarC = j51.c(f13Var);
-                            }
-                        }
-                        cx2Var2 = cx2Var2.r;
+                    if (h12.c(var9_4 /* !! */ [var4_9], var1_1 /* !! */ )) {
+                        var5_8 = 1;
+                    }
+                    if (var4_9 != var6_10) {
+                        --var4_9;
+                        ** continue;
                     }
                 }
-                c72VarO = c72VarO.t();
-                cx2Var2 = (c72VarO != null || (w12Var = c72VarO.Q) == null) ? null : (sq4) w12Var.f;
+                if (var2_2 != 1 && var0.s0().a) {
+                    if (!var0.n.A) {
+                        cz1.b("visitAncestors called on an unattached node");
+                    }
+                    var1_1 /* !! */  = var0.n.r;
+                    var11_12 = j51.O(var0);
+                    block7: while (true) {
+                        var7_6 = var13_14;
+                        if (var11_12 == null) break;
+                        if ((((cx2)var11_12.Q.g).q & 1024) != 0) {
+                            var8_7 /* !! */  = var1_1 /* !! */ ;
+                            while (var8_7 /* !! */  != null) {
+                                if ((var8_7 /* !! */ .p & 1024) != 0) {
+                                    var7_6 = var8_7 /* !! */ ;
+                                    var1_1 /* !! */  = null;
+                                    while (var7_6 != null) {
+                                        if (var7_6 instanceof ba1) break block7;
+                                        var9_4 /* !! */  = var1_1 /* !! */ ;
+                                        if ((var7_6.p & 1024) != 0) {
+                                            var9_4 /* !! */  = var1_1 /* !! */ ;
+                                            if (var7_6 instanceof fo0) {
+                                                var9_4 /* !! */  = ((fo0)var7_6).C;
+                                                var2_2 = 0;
+                                                while (var9_4 /* !! */  != null) {
+                                                    var10_11 /* !! */  = var7_6;
+                                                    var12_13 /* !! */  = var1_1 /* !! */ ;
+                                                    var4_9 = var2_2;
+                                                    if ((var9_4 /* !! */ .p & 1024) != 0) {
+                                                        var4_9 = var2_2 + 1;
+                                                        if (var4_9 == 1) {
+                                                            var10_11 /* !! */  = var9_4 /* !! */ ;
+                                                            var12_13 /* !! */  = var1_1 /* !! */ ;
+                                                        } else {
+                                                            var10_11 /* !! */  = var1_1 /* !! */ ;
+                                                            if (var1_1 /* !! */  == null) {
+                                                                var10_11 /* !! */  = new f13(new cx2[16]);
+                                                            }
+                                                            var1_1 /* !! */  = var7_6;
+                                                            if (var7_6 != null) {
+                                                                var10_11 /* !! */ .b(var7_6);
+                                                                var1_1 /* !! */  = null;
+                                                            }
+                                                            var10_11 /* !! */ .b(var9_4 /* !! */ );
+                                                            var12_13 /* !! */  = var10_11 /* !! */ ;
+                                                            var10_11 /* !! */  = var1_1 /* !! */ ;
+                                                        }
+                                                    }
+                                                    var9_4 /* !! */  = var9_4 /* !! */ .s;
+                                                    var7_6 = var10_11 /* !! */ ;
+                                                    var1_1 /* !! */  = var12_13 /* !! */ ;
+                                                    var2_2 = var4_9;
+                                                }
+                                                var9_4 /* !! */  = var1_1 /* !! */ ;
+                                                if (var2_2 == 1) continue;
+                                            }
+                                        }
+                                        var7_6 = j51.c((f13)var9_4 /* !! */ );
+                                        var1_1 /* !! */  = var9_4 /* !! */ ;
+                                    }
+                                }
+                                var8_7 /* !! */  = var8_7 /* !! */ .r;
+                            }
+                        }
+                        if ((var11_12 = var11_12.t()) != null && (var1_1 /* !! */  = var11_12.Q) != null) {
+                            var1_1 /* !! */  = (sq4)var1_1 /* !! */ .f;
+                            continue;
+                        }
+                        var1_1 /* !! */  = null;
+                    }
+                    if (var7_6 != null) {
+                        return (Boolean)var3_3.invoke(var0);
+                    }
+                }
+                return false;
             }
-            if (cx2Var != null) {
-                return ((Boolean) dd0Var.invoke(ba1Var)).booleanValue();
-            }
+            kf2.o("This function should only be used for 1-D focus search");
+            return false;
         }
+        kf2.o("This function should only be used within a parent that has focus.");
         return false;
     }
 
-    public static final Object[] I(Collection collection) {
-        collection.getClass();
-        int size = collection.size();
-        Object[] objArr = c;
-        if (size == 0) {
-            return objArr;
+    /*
+     * Enabled aggressive block sorting
+     */
+    public static final Object[] I(Collection objectArray) {
+        objectArray.getClass();
+        int n16 = objectArray.size();
+        Object[] objectArray2 = c;
+        if (n16 == 0) {
+            return objectArray2;
         }
-        Iterator it = collection.iterator();
-        if (!it.hasNext()) {
-            return objArr;
+        Iterator iterator = objectArray.iterator();
+        if (!iterator.hasNext()) {
+            return objectArray2;
         }
-        Object[] objArrCopyOf = new Object[size];
-        int i2 = 0;
+        objectArray2 = new Object[n16];
+        n16 = 0;
         while (true) {
-            int i3 = i2 + 1;
-            objArrCopyOf[i2] = it.next();
-            if (i3 >= objArrCopyOf.length) {
-                if (!it.hasNext()) {
-                    return objArrCopyOf;
+            int n17 = n16 + 1;
+            objectArray2[n16] = iterator.next();
+            if (n17 >= objectArray2.length) {
+                int n18;
+                if (!iterator.hasNext()) {
+                    return objectArray2;
                 }
-                int i4 = ((i3 * 3) + 1) >>> 1;
-                if (i4 <= i3) {
-                    i4 = 2147483645;
-                    if (i3 >= 2147483645) {
+                n16 = n18 = n17 * 3 + 1 >>> 1;
+                if (n18 <= n17) {
+                    n16 = 0x7FFFFFFD;
+                    if (n17 >= 0x7FFFFFFD) {
                         throw new OutOfMemoryError();
                     }
                 }
-                objArrCopyOf = Arrays.copyOf(objArrCopyOf, i4);
-            } else if (!it.hasNext()) {
-                return Arrays.copyOf(objArrCopyOf, i3);
+                objectArray = Arrays.copyOf(objectArray2, n16);
+            } else {
+                objectArray = objectArray2;
+                if (!iterator.hasNext()) {
+                    return Arrays.copyOf(objectArray2, n17);
+                }
             }
-            i2 = i3;
+            n16 = n17;
+            objectArray2 = objectArray;
         }
     }
 
-    public static final Object[] J(Collection collection, Object[] objArr) {
-        Object[] objArrCopyOf;
-        collection.getClass();
-        objArr.getClass();
-        int size = collection.size();
-        int i2 = 0;
-        if (size != 0) {
-            Iterator it = collection.iterator();
-            if (it.hasNext()) {
-                if (size <= objArr.length) {
-                    objArrCopyOf = objArr;
-                } else {
-                    Object objNewInstance = Array.newInstance(objArr.getClass().getComponentType(), size);
-                    objNewInstance.getClass();
-                    objArrCopyOf = (Object[]) objNewInstance;
+    /*
+     * Enabled aggressive block sorting
+     */
+    public static final Object[] J(Collection object, Object[] objectArray) {
+        object.getClass();
+        objectArray.getClass();
+        int n16 = object.size();
+        int n17 = 0;
+        if (n16 == 0) {
+            if (objectArray.length <= 0) return objectArray;
+            objectArray[0] = null;
+            return objectArray;
+        }
+        Iterator iterator = object.iterator();
+        if (!iterator.hasNext()) {
+            if (objectArray.length <= 0) return objectArray;
+            objectArray[0] = null;
+            return objectArray;
+        }
+        if (n16 <= objectArray.length) {
+            object = objectArray;
+        } else {
+            object = Array.newInstance(objectArray.getClass().getComponentType(), n16);
+            object.getClass();
+            object = (Object[])object;
+        }
+        while (true) {
+            T[] TArray;
+            n16 = n17 + 1;
+            object[n17] = iterator.next();
+            if (n16 >= ((Object)object).length) {
+                int n18;
+                if (!iterator.hasNext()) {
+                    return object;
                 }
-                while (true) {
-                    int i3 = i2 + 1;
-                    objArrCopyOf[i2] = it.next();
-                    if (i3 >= objArrCopyOf.length) {
-                        if (!it.hasNext()) {
-                            return objArrCopyOf;
-                        }
-                        int i4 = ((i3 * 3) + 1) >>> 1;
-                        if (i4 <= i3) {
-                            i4 = 2147483645;
-                            if (i3 >= 2147483645) {
-                                throw new OutOfMemoryError();
-                            }
-                        }
-                        objArrCopyOf = Arrays.copyOf(objArrCopyOf, i4);
-                    } else if (!it.hasNext()) {
-                        if (objArrCopyOf != objArr) {
-                            return Arrays.copyOf(objArrCopyOf, i3);
-                        }
-                        objArr[i3] = null;
-                        return objArr;
+                n17 = n18 = n16 * 3 + 1 >>> 1;
+                if (n18 <= n16) {
+                    n17 = 0x7FFFFFFD;
+                    if (n16 >= 0x7FFFFFFD) {
+                        throw new OutOfMemoryError();
                     }
-                    i2 = i3;
                 }
-            } else if (objArr.length > 0) {
-                objArr[0] = null;
+                TArray = Arrays.copyOf(object, n17);
+            } else {
+                TArray = object;
+                if (!iterator.hasNext()) {
+                    if (object != objectArray) return Arrays.copyOf(object, n16);
+                    objectArray[n16] = null;
+                    return objectArray;
+                }
             }
-        } else if (objArr.length > 0) {
-            objArr[0] = null;
-            return objArr;
+            n17 = n16;
+            object = TArray;
         }
-        return objArr;
     }
 
-    public static final String K(byte b2) {
-        char[] cArr = e35.d;
-        return new String(new char[]{cArr[(b2 >> 4) & 15], cArr[b2 & 15]});
+    public static final String K(byte by) {
+        char[] cArray = e35.d;
+        return new String(new char[]{cArray[by >> 4 & 0xF], cArray[by & 0xF]});
     }
 
-    public static final String L(int i2) {
-        if (i2 == 0) {
+    public static final String L(int n16) {
+        if (n16 == 0) {
             return "0";
         }
-        char[] cArr = e35.d;
-        int i3 = 0;
-        char[] cArr2 = {cArr[(i2 >> 28) & 15], cArr[(i2 >> 24) & 15], cArr[(i2 >> 20) & 15], cArr[(i2 >> 16) & 15], cArr[(i2 >> 12) & 15], cArr[(i2 >> 8) & 15], cArr[(i2 >> 4) & 15], cArr[i2 & 15]};
-        while (i3 < 8 && cArr2[i3] == '0') {
-            i3++;
+        char[] cArray = e35.d;
+        char c16 = cArray[n16 >> 28 & 0xF];
+        char c17 = cArray[n16 >> 24 & 0xF];
+        char c18 = cArray[n16 >> 20 & 0xF];
+        char c19 = cArray[n16 >> 16 & 0xF];
+        char c26 = cArray[n16 >> 12 & 0xF];
+        char c27 = cArray[n16 >> 8 & 0xF];
+        char c28 = cArray[n16 >> 4 & 0xF];
+        char c29 = cArray[n16 & 0xF];
+        cArray = new char[8];
+        cArray[0] = c16;
+        cArray[1] = c17;
+        cArray[2] = c18;
+        cArray[3] = c19;
+        cArray[4] = c26;
+        cArray[5] = c27;
+        cArray[6] = c28;
+        cArray[7] = c29;
+        for (n16 = 0; n16 < 8 && cArray[n16] == '0'; ++n16) {
         }
-        if (i3 < 0) {
-            kf2.h(b11.j(i3, "startIndex: ", ", endIndex: 8, size: 8"));
+        if (n16 >= 0) {
+            if (n16 <= 8) {
+                return new String(cArray, n16, 8 - n16);
+            }
+            kf2.n(b11.j(n16, "startIndex: ", " > endIndex: 8"));
             return null;
         }
-        if (i3 <= 8) {
-            return new String(cArr2, i3, 8 - i3);
-        }
-        kf2.n(b11.j(i3, "startIndex: ", " > endIndex: 8"));
+        kf2.h(b11.j(n16, "startIndex: ", ", endIndex: 8, size: 8"));
         return null;
     }
 
-    public static final Object M(Object obj) {
-        mx1 mx1Var;
-        nx1 nx1Var = obj instanceof nx1 ? (nx1) obj : null;
-        return (nx1Var == null || (mx1Var = nx1Var.a) == null) ? obj : mx1Var;
+    public static final Object M(Object object) {
+        Object object2 = object instanceof nx1 ? (nx1)object : null;
+        if (object2 != null && (object2 = ((nx1)object2).a) != null) {
+            return object2;
+        }
+        return object;
     }
 
-    public static boolean N(int i2, be3 be3Var, boolean z) throws ParserException {
-        if (be3Var.a() < 7) {
-            if (z) {
-                return false;
+    public static boolean N(int n16, be3 object, boolean bl5) {
+        block10: {
+            block8: {
+                block9: {
+                    block7: {
+                        if (((be3)object).a() >= 7) break block7;
+                        if (!bl5) {
+                            StringBuilder stringBuilder = new StringBuilder("too short header: ");
+                            stringBuilder.append(((be3)object).a());
+                            throw ParserException.a(null, stringBuilder.toString());
+                        }
+                        break block8;
+                    }
+                    if (((be3)object).A() == n16) break block9;
+                    if (!bl5) {
+                        object = new StringBuilder("expected header type ");
+                        ((StringBuilder)object).append(Integer.toHexString(n16));
+                        throw ParserException.a(null, ((StringBuilder)object).toString());
+                    }
+                    break block8;
+                }
+                if (((be3)object).A() == 118 && ((be3)object).A() == 111 && ((be3)object).A() == 114 && ((be3)object).A() == 98 && ((be3)object).A() == 105 && ((be3)object).A() == 115) {
+                    return true;
+                }
+                if (!bl5) break block10;
             }
-            throw ParserException.a(null, "too short header: " + be3Var.a());
-        }
-        if (be3Var.A() != i2) {
-            if (z) {
-                return false;
-            }
-            throw ParserException.a(null, "expected header type " + Integer.toHexString(i2));
-        }
-        if (be3Var.A() == 118 && be3Var.A() == 111 && be3Var.A() == 114 && be3Var.A() == 98 && be3Var.A() == 105 && be3Var.A() == 115) {
-            return true;
-        }
-        if (z) {
             return false;
         }
         throw ParserException.a(null, "expected characters 'vorbis'");
     }
 
-    public static final int a(cf2 cf2Var, pp1 pp1Var) {
-        cf2 cf2VarD0 = cf2Var.d0();
-        if (cf2VarD0 == null) {
-            cz1.b("Child of " + cf2Var + " cannot be null when calculating alignment line");
+    /*
+     * Enabled force condition propagation
+     * Lifted jumps to return sites
+     */
+    public static final int a(cf2 object, pp1 pp12) {
+        long l16;
+        cf2 cf22 = ((cf2)object).d0();
+        if (cf22 == null) {
+            StringBuilder stringBuilder = new StringBuilder("Child of ");
+            stringBuilder.append(object);
+            stringBuilder.append(" cannot be null when calculating alignment line");
+            cz1.b(stringBuilder.toString());
         }
-        if (cf2Var.h0().a().containsKey(pp1Var)) {
-            Integer num = (Integer) cf2Var.h0().a().get(pp1Var);
-            if (num != null) {
-                return num.intValue();
-            }
-        } else {
-            int iC0 = cf2VarD0.c0(pp1Var);
-            if (iC0 != Integer.MIN_VALUE) {
-                boolean z = cf2Var.A;
-                boolean z2 = cf2Var.B;
-                cf2VarD0.A = true;
-                cf2Var.B = true;
-                cf2Var.n0();
-                cf2VarD0.A = z;
-                cf2Var.B = z2;
-                return iC0 + ((int) (pp1Var instanceof pp1 ? cf2VarD0.j0() & 4294967295L : cf2VarD0.j0() >> 32));
-            }
+        if (((cf2)object).h0().a().containsKey(pp12)) {
+            if ((object = (Integer)((cf2)object).h0().a().get(pp12)) == null) return Integer.MIN_VALUE;
+            return (Integer)object;
         }
-        return Integer.MIN_VALUE;
-    }
-
-    public static final boolean b(ey1 ey1Var) {
-        return ey1Var.h && !ey1Var.d;
-    }
-
-    public static final void c(Logger logger, ar4 ar4Var, fr4 fr4Var, String str) {
-        logger.fine(fr4Var.b + ' ' + String.format("%-22s", Arrays.copyOf(new Object[]{str}, 1)) + ": " + ar4Var.a);
-    }
-
-    /* JADX WARN: Code duplicated, block: B:11:0x001c  */
-    public static final float d(ig3 ig3Var, boolean z, rp1[] rp1VarArr, float f2) {
-        float f3 = Float.NaN;
-        for (rp1 rp1Var : rp1VarArr) {
-            float fB = ig3Var.b(rp1Var);
-            if (Float.isNaN(f3)) {
-                f3 = fB;
-            } else if (z == (fB > f3)) {
-                f3 = fB;
-            }
+        int n16 = cf22.c0(pp12);
+        if (n16 == Integer.MIN_VALUE) {
+            return Integer.MIN_VALUE;
         }
-        return Float.isNaN(f3) ? f2 : f3;
+        boolean bl5 = ((cf2)object).A;
+        boolean bl6 = ((cf2)object).B;
+        cf22.A = true;
+        ((cf2)object).B = true;
+        ((cf2)object).n0();
+        cf22.A = bl5;
+        ((cf2)object).B = bl6;
+        if (pp12 instanceof pp1) {
+            l16 = cf22.j0() & 0xFFFFFFFFL;
+            return n16 + (int)l16;
+        }
+        l16 = cf22.j0() >> 32;
+        return n16 + (int)l16;
     }
 
-    public static final boolean e(int i2, int i3, int i4, byte[] bArr, byte[] bArr2) {
-        bArr.getClass();
-        bArr2.getClass();
-        for (int i5 = 0; i5 < i4; i5++) {
-            if (bArr[i5 + i2] != bArr2[i5 + i3]) {
-                return false;
-            }
+    public static final boolean b(ey1 ey12) {
+        return ey12.h && !ey12.d;
+    }
+
+    public static final void c(Logger logger, ar4 ar42, fr4 fr42, String string) {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(fr42.b);
+        stringBuilder.append(' ');
+        stringBuilder.append(String.format("%-22s", Arrays.copyOf(new Object[]{string}, 1)));
+        stringBuilder.append(": ");
+        stringBuilder.append(ar42.a);
+        logger.fine(stringBuilder.toString());
+    }
+
+    public static final float d(ig3 ig32, boolean bl5, rp1[] rp1Array, float f16) {
+        int n16 = rp1Array.length;
+        float f17 = Float.NaN;
+        for (int i16 = 0; i16 < n16; ++i16) {
+            boolean bl6;
+            float f18 = ig32.b(rp1Array[i16]);
+            if (!Float.isNaN(f17) && bl5 != (bl6 = f18 > f17)) continue;
+            f17 = f18;
+        }
+        if (Float.isNaN(f17)) {
+            return f16;
+        }
+        return f17;
+    }
+
+    public static final boolean e(int n16, int n17, int n18, byte[] byArray, byte[] byArray2) {
+        byArray.getClass();
+        byArray2.getClass();
+        for (int i16 = 0; i16 < n18; ++i16) {
+            if (byArray[i16 + n16] == byArray2[i16 + n17]) continue;
+            return false;
         }
         return true;
     }
 
-    /* JADX WARN: Code duplicated, block: B:38:0x0076 A[RETURN] */
-    public static final boolean f(ba1 ba1Var, dd0 dd0Var) {
-        int iOrdinal = ba1Var.v0().ordinal();
-        if (iOrdinal != 0) {
-            if (iOrdinal == 1) {
-                ba1 ba1VarS = te5.s(ba1Var);
-                if (ba1VarS == null) {
-                    kf2.o("ActiveParent must have a focusedChild");
-                    return false;
-                }
-                int iOrdinal2 = ba1VarS.v0().ordinal();
-                if (iOrdinal2 != 0) {
-                    if (iOrdinal2 == 1) {
-                        if (f(ba1VarS, dd0Var) || p(ba1Var, ba1VarS, 2, dd0Var) || (ba1VarS.s0().a && ((Boolean) dd0Var.invoke(ba1VarS)).booleanValue())) {
-                            return true;
+    public static final boolean f(ba1 ba12, dd0 dd02) {
+        block6: {
+            block11: {
+                ba1 ba13;
+                block12: {
+                    block10: {
+                        block9: {
+                            block13: {
+                                int n16;
+                                block7: {
+                                    block8: {
+                                        boolean bl5;
+                                        n16 = ba12.v0().ordinal();
+                                        if (n16 == 0) break block6;
+                                        if (n16 == 1) break block7;
+                                        if (n16 == 2) break block6;
+                                        if (n16 != 3) break block8;
+                                        if (!zz1.x(ba12, dd02) && !(bl5 = ba12.s0().a ? (Boolean)dd02.invoke(ba12) : false)) break block9;
+                                        break block10;
+                                    }
+                                    er1.n();
+                                    return false;
+                                }
+                                ba13 = te5.s(ba12);
+                                if (ba13 == null) break block11;
+                                n16 = ba13.v0().ordinal();
+                                if (n16 == 0) break block12;
+                                if (n16 == 1) break block13;
+                                if (n16 != 2) {
+                                    if (n16 != 3) {
+                                        er1.n();
+                                        return false;
+                                    }
+                                    kf2.o("ActiveParent must have a focusedChild");
+                                    return false;
+                                }
+                                break block12;
+                            }
+                            if (zz1.f(ba13, dd02) || zz1.p(ba12, ba13, 2, dd02) || ba13.s0().a && ((Boolean)dd02.invoke(ba13)).booleanValue()) break block10;
                         }
                         return false;
                     }
-                    if (iOrdinal2 != 2) {
-                        if (iOrdinal2 != 3) {
-                            er1.n();
-                            return false;
-                        }
-                        kf2.o("ActiveParent must have a focusedChild");
-                        return false;
-                    }
+                    return true;
                 }
-                return p(ba1Var, ba1VarS, 2, dd0Var);
+                return zz1.p(ba12, ba13, 2, dd02);
             }
-            if (iOrdinal != 2) {
-                if (iOrdinal != 3) {
+            kf2.o("ActiveParent must have a focusedChild");
+            return false;
+        }
+        return zz1.x(ba12, dd02);
+    }
+
+    public static void g(float f16, float[] fArray) {
+        if (f16 <= 0.5f) {
+            fArray[0] = 1.0f - f16 * 2.0f;
+            fArray[1] = 0.0f;
+            return;
+        }
+        fArray[0] = 0.0f;
+        fArray[1] = f16 * 2.0f - 1.0f;
+    }
+
+    public static final boolean h(ey1 ey12) {
+        return !ey12.h && ey12.d;
+    }
+
+    public static final void i(long l16, long l17, long l18) {
+        if ((l17 | l18) >= 0L && l17 <= l16 && l16 - l17 >= l18) {
+            return;
+        }
+        StringBuilder stringBuilder = new StringBuilder("size=");
+        stringBuilder.append(l16);
+        stringBuilder.append(" offset=");
+        stringBuilder.append(l17);
+        stringBuilder.append(" byteCount=");
+        stringBuilder.append(l18);
+        throw new ArrayIndexOutOfBoundsException(stringBuilder.toString());
+    }
+
+    public static long l(int n16, int n17, int n18, int n19) {
+        block6: {
+            int n26;
+            int n27;
+            block3: {
+                block5: {
+                    block4: {
+                        block2: {
+                            int n28 = 262142;
+                            n27 = Math.min(n18, 262142);
+                            n26 = Integer.MAX_VALUE;
+                            n18 = (n19 = n19 == Integer.MAX_VALUE ? Integer.MAX_VALUE : Math.min(n19, 262142)) == Integer.MAX_VALUE ? n27 : n19;
+                            if (n18 >= 8191) break block2;
+                            n18 = n28;
+                            break block3;
+                        }
+                        if (n18 >= Short.MAX_VALUE) break block4;
+                        n18 = 65534;
+                        break block3;
+                    }
+                    if (n18 >= 65535) break block5;
+                    n18 = 32766;
+                    break block3;
+                }
+                if (n18 >= 262143) break block6;
+                n18 = 8190;
+            }
+            n17 = n17 == Integer.MAX_VALUE ? n26 : Math.min(n18, n17);
+            return qc0.a(Math.min(n18, n16), n17, n27, n19);
+        }
+        qc0.i(n18);
+        er1.a();
+        return 0L;
+    }
+
+    public static long m(int n16, int n17, int n18, int n19) {
+        block6: {
+            int n26;
+            int n27;
+            block3: {
+                block5: {
+                    block4: {
+                        block2: {
+                            int n28 = 262142;
+                            n27 = Math.min(n16, 262142);
+                            n26 = Integer.MAX_VALUE;
+                            n16 = (n17 = n17 == Integer.MAX_VALUE ? Integer.MAX_VALUE : Math.min(n17, 262142)) == Integer.MAX_VALUE ? n27 : n17;
+                            if (n16 >= 8191) break block2;
+                            n16 = n28;
+                            break block3;
+                        }
+                        if (n16 >= Short.MAX_VALUE) break block4;
+                        n16 = 65534;
+                        break block3;
+                    }
+                    if (n16 >= 65535) break block5;
+                    n16 = 32766;
+                    break block3;
+                }
+                if (n16 >= 262143) break block6;
+                n16 = 8190;
+            }
+            n19 = n19 == Integer.MAX_VALUE ? n26 : Math.min(n16, n19);
+            return qc0.a(n27, n17, Math.min(n16, n18), n19);
+        }
+        qc0.i(n16);
+        er1.a();
+        return 0L;
+    }
+
+    public static final String n(long l16) {
+        String string = l16 <= -999500000L ? b11.p(new StringBuilder(), (l16 - 500000000L) / 1000000000L, " s ") : (l16 <= -999500L ? b11.p(new StringBuilder(), (l16 - 500000L) / 1000000L, " ms") : (l16 <= 0L ? b11.p(new StringBuilder(), (l16 - 500L) / 1000L, " \u00b5s") : (l16 < 999500L ? b11.p(new StringBuilder(), (l16 + 500L) / 1000L, " \u00b5s") : (l16 < 999500000L ? b11.p(new StringBuilder(), (l16 + 500000L) / 1000000L, " ms") : b11.p(new StringBuilder(), (l16 + 500000000L) / 1000000000L, " s ")))));
+        return String.format("%6s", Arrays.copyOf(new Object[]{string}, 1));
+    }
+
+    public static final boolean o(ba1 ba12, dd0 dd02) {
+        int n16 = ba12.v0().ordinal();
+        if (n16 != 0) {
+            if (n16 != 1) {
+                if (n16 != 2) {
+                    if (n16 == 3) {
+                        if (ba12.s0().a) {
+                            return (Boolean)dd02.invoke(ba12);
+                        }
+                        return zz1.y(ba12, dd02);
+                    }
                     er1.n();
                     return false;
                 }
-                if (!x(ba1Var, dd0Var)) {
-                    if (!(ba1Var.s0().a ? ((Boolean) dd0Var.invoke(ba1Var)).booleanValue() : false)) {
-                        return false;
+            } else {
+                ba1 ba13 = te5.s(ba12);
+                if (ba13 != null) {
+                    return zz1.o(ba13, dd02) || zz1.p(ba12, ba13, 1, dd02);
+                    {
                     }
-                }
-                return true;
-            }
-        }
-        return x(ba1Var, dd0Var);
-    }
-
-    public static void g(float f2, float[] fArr) {
-        if (f2 <= 0.5f) {
-            fArr[0] = 1.0f - (f2 * 2.0f);
-            fArr[1] = 0.0f;
-        } else {
-            fArr[0] = 0.0f;
-            fArr[1] = (f2 * 2.0f) - 1.0f;
-        }
-    }
-
-    public static final boolean h(ey1 ey1Var) {
-        return !ey1Var.h && ey1Var.d;
-    }
-
-    public static final void i(long j2, long j3, long j4) {
-        if ((j3 | j4) < 0 || j3 > j2 || j2 - j3 < j4) {
-            throw new ArrayIndexOutOfBoundsException("size=" + j2 + " offset=" + j3 + " byteCount=" + j4);
-        }
-    }
-
-    public static long l(int i2, int i3, int i4, int i5) {
-        int i6 = 262142;
-        int iMin = Math.min(i4, 262142);
-        int iMin2 = i5 == Integer.MAX_VALUE ? Integer.MAX_VALUE : Math.min(i5, 262142);
-        int i7 = iMin2 == Integer.MAX_VALUE ? iMin : iMin2;
-        if (i7 >= 8191) {
-            if (i7 < 32767) {
-                i6 = 65534;
-            } else if (i7 < 65535) {
-                i6 = 32766;
-            } else {
-                if (i7 >= 262143) {
-                    qc0.i(i7);
-                    er1.a();
-                    return 0L;
-                }
-                i6 = 8190;
-            }
-        }
-        return qc0.a(Math.min(i6, i2), i3 != Integer.MAX_VALUE ? Math.min(i6, i3) : Integer.MAX_VALUE, iMin, iMin2);
-    }
-
-    public static long m(int i2, int i3, int i4, int i5) {
-        int i6 = 262142;
-        int iMin = Math.min(i2, 262142);
-        int iMin2 = i3 == Integer.MAX_VALUE ? Integer.MAX_VALUE : Math.min(i3, 262142);
-        int i7 = iMin2 == Integer.MAX_VALUE ? iMin : iMin2;
-        if (i7 >= 8191) {
-            if (i7 < 32767) {
-                i6 = 65534;
-            } else if (i7 < 65535) {
-                i6 = 32766;
-            } else {
-                if (i7 >= 262143) {
-                    qc0.i(i7);
-                    er1.a();
-                    return 0L;
-                }
-                i6 = 8190;
-            }
-        }
-        return qc0.a(iMin, iMin2, Math.min(i6, i4), i5 != Integer.MAX_VALUE ? Math.min(i6, i5) : Integer.MAX_VALUE);
-    }
-
-    public static final String n(long j2) {
-        String strP;
-        if (j2 <= -999500000) {
-            strP = b11.p(new StringBuilder(), (j2 - 500000000) / 1000000000, " s ");
-        } else if (j2 <= -999500) {
-            strP = b11.p(new StringBuilder(), (j2 - 500000) / 1000000, " ms");
-        } else if (j2 <= 0) {
-            strP = b11.p(new StringBuilder(), (j2 - 500) / 1000, " µs");
-        } else if (j2 < 999500) {
-            strP = b11.p(new StringBuilder(), (j2 + 500) / 1000, " µs");
-        } else {
-            strP = j2 < 999500000 ? b11.p(new StringBuilder(), (j2 + 500000) / 1000000, " ms") : b11.p(new StringBuilder(), (j2 + 500000000) / 1000000000, " s ");
-        }
-        return String.format("%6s", Arrays.copyOf(new Object[]{strP}, 1));
-    }
-
-    public static final boolean o(ba1 ba1Var, dd0 dd0Var) {
-        int iOrdinal = ba1Var.v0().ordinal();
-        if (iOrdinal != 0) {
-            if (iOrdinal == 1) {
-                ba1 ba1VarS = te5.s(ba1Var);
-                if (ba1VarS != null) {
-                    return o(ba1VarS, dd0Var) || p(ba1Var, ba1VarS, 1, dd0Var);
                 }
                 kf2.o("ActiveParent must have a focusedChild");
                 return false;
             }
-            if (iOrdinal != 2) {
-                if (iOrdinal == 3) {
-                    return ba1Var.s0().a ? ((Boolean) dd0Var.invoke(ba1Var)).booleanValue() : y(ba1Var, dd0Var);
-                }
-                er1.n();
-                return false;
-            }
         }
-        return y(ba1Var, dd0Var);
+        return zz1.y(ba12, dd02);
     }
 
-    public static final boolean p(ba1 ba1Var, ba1 ba1Var2, int i2, dd0 dd0Var) {
-        if (H(ba1Var, ba1Var2, i2, dd0Var)) {
+    public static final boolean p(ba1 object, ba1 ba12, int n16, dd0 dd02) {
+        if (zz1.H((ba1)object, ba12, n16, dd02)) {
             return true;
         }
-        Boolean bool = (Boolean) uc5.U(ba1Var, i2, new x50(((ey) ((ra) j51.P(ba1Var)).getFocusOwner()).f(), ba1Var, ba1Var2, i2, dd0Var, 1));
-        if (bool != null) {
-            return bool.booleanValue();
+        if ((object = (Boolean)uc5.U((ba1)object, n16, new x50(((ey)((ra)j51.P((eo0)object)).getFocusOwner()).f(), (ba1)object, ba12, n16, dd02, 1))) != null) {
+            return (Boolean)object;
         }
         return false;
     }
 
-    public static jl1 q(SSLSession sSLSession) throws IOException {
-        List listF;
-        List listF2 = u01.n;
-        String cipherSuite = sSLSession.getCipherSuite();
-        if (cipherSuite == null) {
-            kf2.o("cipherSuite == null");
-            return null;
-        }
-        if (cipherSuite.equals("TLS_NULL_WITH_NULL_NULL") ? true : cipherSuite.equals("SSL_NULL_WITH_NULL_NULL")) {
-            mj0.i("cipherSuite == ".concat(cipherSuite));
-            return null;
-        }
-        v20 v20VarU = v20.b.u(cipherSuite);
-        String protocol = sSLSession.getProtocol();
-        if (protocol == null) {
-            kf2.o("tlsVersion == null");
-            return null;
-        }
-        if ("NONE".equals(protocol)) {
-            mj0.i("tlsVersion == NONE");
-            return null;
-        }
-        mu4.o.getClass();
-        mu4 mu4VarM = xi4.m(protocol);
-        try {
-            Certificate[] peerCertificates = sSLSession.getPeerCertificates();
-            listF = peerCertificates != null ? ze5.f(Arrays.copyOf(peerCertificates, peerCertificates.length)) : listF2;
-        } catch (SSLPeerUnverifiedException unused) {
-        }
-        Certificate[] localCertificates = sSLSession.getLocalCertificates();
-        if (localCertificates != null) {
-            listF2 = ze5.f(Arrays.copyOf(localCertificates, localCertificates.length));
-        }
-        return new jl1(mu4VarM, v20VarU, listF2, new hl1(listF, 1));
-    }
-
-    public static Drawable r(Context context, int i2) {
-        return c14.c().d(context, i2);
-    }
-
-    public static final cz s(vd0 vd0Var) {
-        if (!(vd0Var instanceof mr0)) {
-            return new cz(1, vd0Var);
-        }
-        cz czVarJ = ((mr0) vd0Var).j();
-        if (czVarJ != null) {
-            if (!czVarJ.C()) {
-                czVarJ = null;
+    /*
+     * WARNING - void declaration
+     * Enabled aggressive block sorting
+     * Enabled unnecessary exception pruning
+     * Enabled aggressive exception aggregation
+     */
+    public static jl1 q(SSLSession certificateArray) {
+        void var3_10;
+        void var2_3;
+        mu4 mu42;
+        v20 v202;
+        u01 u012;
+        block7: {
+            u012 = u01.n;
+            String string = certificateArray.getCipherSuite();
+            if (string == null) {
+                kf2.o("cipherSuite == null");
+                return null;
             }
-            if (czVarJ != null) {
-                return czVarJ;
+            boolean bl5 = string.equals("TLS_NULL_WITH_NULL_NULL") ? true : string.equals("SSL_NULL_WITH_NULL_NULL");
+            if (bl5) {
+                mj0.i("cipherSuite == ".concat(string));
+                return null;
             }
+            v202 = v20.b.u(string);
+            String string2 = certificateArray.getProtocol();
+            if (string2 == null) {
+                kf2.o("tlsVersion == null");
+                return null;
+            }
+            if ("NONE".equals(string2)) {
+                mj0.i("tlsVersion == NONE");
+                return null;
+            }
+            mu4.o.getClass();
+            mu42 = xi4.m(string2);
+            try {
+                Certificate[] certificateArray2 = certificateArray.getPeerCertificates();
+                if (certificateArray2 == null) break block7;
+                List list = ze5.f(Arrays.copyOf(certificateArray2, certificateArray2.length));
+            }
+            catch (SSLPeerUnverifiedException sSLPeerUnverifiedException) {}
         }
-        return new cz(2, vd0Var);
+        u01 u013 = u012;
+        certificateArray = certificateArray.getLocalCertificates();
+        if (certificateArray != null) {
+            List list = ze5.f(Arrays.copyOf(certificateArray, certificateArray.length));
+        }
+        return new jl1(mu42, v202, (List)var2_3, new hl1((List)var3_10, 1));
     }
 
-    public static j34 t(Display display, int i2) {
-        RoundedCorner roundedCorner;
-        int i3;
-        if (Build.VERSION.SDK_INT < 31 || (roundedCorner = display.getRoundedCorner(i2)) == null) {
-            return null;
+    public static Drawable r(Context context, int n16) {
+        return c14.c().d(context, n16);
+    }
+
+    public static final cz s(vd0 vd02) {
+        if (!(vd02 instanceof mr0)) {
+            return new cz(1, vd02);
         }
-        int position = roundedCorner.getPosition();
-        if (position != 0) {
-            i3 = 1;
-            if (position != 1) {
-                i3 = 2;
-                if (position != 2) {
-                    i3 = 3;
-                    if (position != 3) {
-                        kf2.n(f34.f(position, "Invalid position: "));
-                        return null;
+        cz cz5 = ((mr0)vd02).j();
+        if (cz5 != null) {
+            if (!cz5.C()) {
+                cz5 = null;
+            }
+            if (cz5 != null) {
+                return cz5;
+            }
+        }
+        return new cz(2, vd02);
+    }
+
+    public static j34 t(Display display, int n16) {
+        if (Build.VERSION.SDK_INT >= 31 && (display = hd0.n(display, n16)) != null) {
+            int n17 = go2.a((RoundedCorner)display);
+            if (n17 != 0) {
+                n16 = 1;
+                if (n17 != 1) {
+                    n16 = 2;
+                    if (n17 != 2) {
+                        n16 = 3;
+                        if (n17 != 3) {
+                            kf2.n(f34.f(n17, "Invalid position: "));
+                            return null;
+                        }
                     }
                 }
+            } else {
+                n16 = 0;
             }
-        } else {
-            i3 = 0;
+            return new j34(n16, go2.A((RoundedCorner)display), go2.b((RoundedCorner)display));
         }
-        return new j34(i3, roundedCorner.getRadius(), roundedCorner.getCenter());
+        return null;
     }
 
-    public static boolean u(MotionEvent motionEvent, int i2) {
-        return (motionEvent.getSource() & i2) == i2;
+    public static boolean u(MotionEvent motionEvent, int n16) {
+        return (motionEvent.getSource() & n16) == n16;
     }
 
     public static Typeface v(Configuration configuration, Typeface typeface) {
-        if (Build.VERSION.SDK_INT < 31 || configuration.fontWeightAdjustment == Integer.MAX_VALUE || configuration.fontWeightAdjustment == 0 || typeface == null) {
-            return null;
+        if (Build.VERSION.SDK_INT >= 31 && hd0.a(configuration) != Integer.MAX_VALUE && hd0.a(configuration) != 0 && typeface != null) {
+            int n16 = vl4.a(typeface);
+            return sr0.g(typeface, su3.l(hd0.a(configuration) + n16, 1, 1000), typeface.isItalic());
         }
-        return Typeface.create(typeface, su3.l(configuration.fontWeightAdjustment + typeface.getWeight(), 1, 1000), typeface.isItalic());
+        return null;
     }
 
-    public static qv2 w(List list) {
-        ArrayList arrayList = new ArrayList();
-        for (int i2 = 0; i2 < list.size(); i2++) {
-            String str = (String) list.get(i2);
-            String str2 = f35.a;
-            String[] strArrSplit = str.split("=", 2);
-            if (strArrSplit.length != 2) {
-                l93.q0("VorbisUtil", "Failed to parse Vorbis comment: ".concat(str));
-            } else if (strArrSplit[0].equals("METADATA_BLOCK_PICTURE")) {
+    public static qv2 w(List object) {
+        ArrayList<pv2> arrayList = new ArrayList<pv2>();
+        for (int i16 = 0; i16 < object.size(); ++i16) {
+            Object object2 = (String)object.get(i16);
+            Object object3 = f35.a;
+            object3 = ((String)object2).split("=", 2);
+            if (((String[])object3).length != 2) {
+                l93.q0("VorbisUtil", "Failed to parse Vorbis comment: ".concat((String)object2));
+                continue;
+            }
+            if (object3[0].equals("METADATA_BLOCK_PICTURE")) {
                 try {
-                    arrayList.add(dg3.d(new be3(Base64.decode(strArrSplit[1], 0))));
-                } catch (RuntimeException e2) {
-                    l93.r0("VorbisUtil", "Failed to parse vorbis picture", e2);
+                    object2 = Base64.decode((String)object3[1], (int)0);
+                    object3 = new be3((byte[])object2);
+                    arrayList.add(dg3.d((be3)object3));
                 }
-            } else {
-                arrayList.add(new r85(strArrSplit[0], strArrSplit[1]));
+                catch (RuntimeException runtimeException) {
+                    l93.r0("VorbisUtil", "Failed to parse vorbis picture", runtimeException);
+                }
+                continue;
             }
+            arrayList.add(new r85(object3[0], object3[1]));
         }
-        if (arrayList.isEmpty()) {
-            return null;
-        }
-        return new qv2(arrayList);
+        object = arrayList.isEmpty() ? null : new qv2(arrayList);
+        return object;
     }
 
-    public static final boolean x(ba1 ba1Var, dd0 dd0Var) {
-        Object[] objArr = new ba1[16];
-        if (!ba1Var.n.A) {
+    /*
+     * Unable to fully structure code
+     * Could not resolve type clashes
+     */
+    public static final boolean x(ba1 var0, dd0 var1_1) {
+        var6_2 /* !! */  = new ba1[16];
+        if (!var0 /* !! */ .n.A) {
             cz1.b("visitChildren called on an unattached node");
         }
-        f13 f13Var = new f13(new cx2[16]);
-        cx2 cx2Var = ba1Var.n;
-        cx2 cx2Var2 = cx2Var.s;
-        if (cx2Var2 == null) {
-            j51.b(f13Var, cx2Var);
-        } else {
-            f13Var.b(cx2Var2);
-        }
-        int i2 = 0;
-        while (true) {
-            int i3 = f13Var.p;
-            if (i3 == 0) {
-                break;
-            }
-            cx2 cx2VarC = (cx2) f13Var.k(i3 - 1);
-            if ((cx2VarC.q & 1024) == 0) {
-                j51.b(f13Var, cx2VarC);
-            } else {
-                while (cx2VarC != null) {
-                    if ((cx2VarC.p & 1024) != 0) {
-                        f13 f13Var2 = null;
-                        while (cx2VarC != null) {
-                            if (cx2VarC instanceof ba1) {
-                                ba1 ba1Var2 = (ba1) cx2VarC;
-                                int i4 = i2 + 1;
-                                if (objArr.length < i4) {
-                                    int length = objArr.length;
-                                    Object[] objArr2 = new Object[Math.max(i4, length * 2)];
-                                    System.arraycopy(objArr, 0, objArr2, 0, length);
-                                    objArr = objArr2;
-                                }
-                                objArr[i2] = ba1Var2;
-                                i2 = i4;
-                            } else if ((cx2VarC.p & 1024) != 0 && (cx2VarC instanceof fo0)) {
-                                int i5 = 0;
-                                for (cx2 cx2Var3 = ((fo0) cx2VarC).C; cx2Var3 != null; cx2Var3 = cx2Var3.s) {
-                                    if ((cx2Var3.p & 1024) != 0) {
-                                        i5++;
-                                        if (i5 == 1) {
-                                            cx2VarC = cx2Var3;
-                                        } else {
-                                            if (f13Var2 == null) {
-                                                f13Var2 = new f13(new cx2[16]);
-                                            }
-                                            if (cx2VarC != null) {
-                                                f13Var2.b(cx2VarC);
-                                                cx2VarC = null;
-                                            }
-                                            f13Var2.b(cx2Var3);
-                                        }
-                                    }
-                                }
-                                if (i5 == 1) {
-                                }
-                            }
-                            cx2VarC = j51.c(f13Var2);
-                        }
-                        break;
-                    }
-                    cx2VarC = cx2VarC.s;
-                }
-            }
-        }
-        Arrays.sort(objArr, 0, i2, ca1.o);
-        int i6 = i2 - 1;
-        if (i6 < objArr.length) {
-            while (i6 >= 0) {
-                ba1 ba1Var3 = (ba1) objArr[i6];
-                if (te5.B(ba1Var3) && f(ba1Var3, dd0Var)) {
-                    return true;
-                }
-                i6--;
-            }
-        }
-        return false;
-    }
+        var10_3 = new f13(new cx2[16]);
+        var5_4 = var0 /* !! */ .n;
+        var0 /* !! */  = var5_4.s;
+        if (var0 /* !! */  == null) {
+            j51.b(var10_3, (cx2)var5_4);
+lbl9:
+            // 2 sources
 
-    public static final boolean y(ba1 ba1Var, dd0 dd0Var) {
-        Object[] objArr = new ba1[16];
-        if (!ba1Var.n.A) {
-            cz1.b("visitChildren called on an unattached node");
-        }
-        f13 f13Var = new f13(new cx2[16]);
-        cx2 cx2Var = ba1Var.n;
-        cx2 cx2Var2 = cx2Var.s;
-        if (cx2Var2 == null) {
-            j51.b(f13Var, cx2Var);
-        } else {
-            f13Var.b(cx2Var2);
-        }
-        int i2 = 0;
-        while (true) {
-            int i3 = f13Var.p;
-            if (i3 == 0) {
+            while (true) {
+                var3_5 = 0;
                 break;
             }
-            cx2 cx2VarC = (cx2) f13Var.k(i3 - 1);
-            if ((cx2VarC.q & 1024) == 0) {
-                j51.b(f13Var, cx2VarC);
-            } else {
-                while (cx2VarC != null) {
-                    if ((cx2VarC.p & 1024) != 0) {
-                        f13 f13Var2 = null;
-                        while (cx2VarC != null) {
-                            if (cx2VarC instanceof ba1) {
-                                ba1 ba1Var2 = (ba1) cx2VarC;
-                                int i4 = i2 + 1;
-                                if (objArr.length < i4) {
-                                    int length = objArr.length;
-                                    Object[] objArr2 = new Object[Math.max(i4, length * 2)];
-                                    System.arraycopy(objArr, 0, objArr2, 0, length);
-                                    objArr = objArr2;
-                                }
-                                objArr[i2] = ba1Var2;
-                                i2 = i4;
-                            } else if ((cx2VarC.p & 1024) != 0 && (cx2VarC instanceof fo0)) {
-                                int i5 = 0;
-                                for (cx2 cx2Var3 = ((fo0) cx2VarC).C; cx2Var3 != null; cx2Var3 = cx2Var3.s) {
-                                    if ((cx2Var3.p & 1024) != 0) {
-                                        i5++;
-                                        if (i5 == 1) {
-                                            cx2VarC = cx2Var3;
-                                        } else {
-                                            if (f13Var2 == null) {
-                                                f13Var2 = new f13(new cx2[16]);
+        } else {
+            var10_3.b(var0 /* !! */ );
+            ** continue;
+        }
+        block1: while ((var2_6 = var10_3.p) != 0) {
+            var0 /* !! */  = (cx2)var10_3.k(var2_6 - 1);
+            var7_8 = var0 /* !! */ ;
+            if ((var0 /* !! */ .q & 1024) == 0) {
+                j51.b(var10_3, (cx2)var0 /* !! */ );
+                continue;
+            }
+            while (var7_8 != null) {
+                if ((var7_8.p & 1024) != 0) {
+                    var0 /* !! */  = null;
+                    var2_6 = var3_5;
+                    var5_4 = var6_2 /* !! */ ;
+                    while (true) {
+                        var6_2 /* !! */  = var5_4;
+                        var3_5 = var2_6;
+                        if (var7_8 == null) continue block1;
+                        if (var7_8 instanceof ba1) {
+                            var4_7 = var2_6 + 1;
+                            var6_2 /* !! */  = var5_4;
+                            if (var5_4.length < var4_7) {
+                                var3_5 = var5_4.length;
+                                var6_2 /* !! */  = new Object[Math.max(var4_7, var3_5 * 2)];
+                                System.arraycopy(var5_4, 0, var6_2 /* !! */ , 0, var3_5);
+                            }
+                            var6_2 /* !! */ [var2_6] = var7_8;
+                            var8_9 /* !! */  = var6_2 /* !! */ ;
+                            var6_2 /* !! */  = var0 /* !! */ ;
+                        } else {
+                            var8_9 /* !! */  = var5_4;
+                            var6_2 /* !! */  = var0 /* !! */ ;
+                            var4_7 = var2_6;
+                            if ((var7_8.p & 1024) != 0) {
+                                var8_9 /* !! */  = var5_4;
+                                var6_2 /* !! */  = var0 /* !! */ ;
+                                var4_7 = var2_6;
+                                if (var7_8 instanceof fo0) {
+                                    var6_2 /* !! */  = ((fo0)var7_8).C;
+                                    var3_5 = 0;
+                                    while (var6_2 /* !! */  != null) {
+                                        var8_9 /* !! */  = var7_8;
+                                        var9_10 /* !! */  = var0 /* !! */ ;
+                                        var4_7 = var3_5;
+                                        if ((var6_2 /* !! */ .p & 1024) != 0) {
+                                            var4_7 = var3_5 + 1;
+                                            if (var4_7 == 1) {
+                                                var8_9 /* !! */  = var6_2 /* !! */ ;
+                                                var9_10 /* !! */  = var0 /* !! */ ;
+                                            } else {
+                                                var8_9 /* !! */  = var0 /* !! */ ;
+                                                if (var0 /* !! */  == null) {
+                                                    var8_9 /* !! */  = new f13(new cx2[16]);
+                                                }
+                                                var0 /* !! */  = var7_8;
+                                                if (var7_8 != null) {
+                                                    var8_9 /* !! */ .b(var7_8);
+                                                    var0 /* !! */  = null;
+                                                }
+                                                var8_9 /* !! */ .b(var6_2 /* !! */ );
+                                                var9_10 /* !! */  = var8_9 /* !! */ ;
+                                                var8_9 /* !! */  = var0 /* !! */ ;
                                             }
-                                            if (cx2VarC != null) {
-                                                f13Var2.b(cx2VarC);
-                                                cx2VarC = null;
-                                            }
-                                            f13Var2.b(cx2Var3);
                                         }
+                                        var6_2 /* !! */  = var6_2 /* !! */ .s;
+                                        var7_8 = var8_9 /* !! */ ;
+                                        var0 /* !! */  = var9_10 /* !! */ ;
+                                        var3_5 = var4_7;
                                     }
-                                }
-                                if (i5 == 1) {
+                                    var8_9 /* !! */  = var5_4;
+                                    var6_2 /* !! */  = var0 /* !! */ ;
+                                    var4_7 = var2_6;
+                                    if (var3_5 == 1) continue;
                                 }
                             }
-                            cx2VarC = j51.c(f13Var2);
                         }
-                        break;
+                        var7_8 = j51.c((f13)var6_2 /* !! */ );
+                        var5_4 = var8_9 /* !! */ ;
+                        var0 /* !! */  = var6_2 /* !! */ ;
+                        var2_6 = var4_7;
                     }
-                    cx2VarC = cx2VarC.s;
                 }
+                var7_8 = var7_8.s;
             }
         }
-        Arrays.sort(objArr, 0, i2, ca1.o);
-        for (int i6 = 0; i6 < i2; i6++) {
-            ba1 ba1Var3 = (ba1) objArr[i6];
-            if (te5.B(ba1Var3) && o(ba1Var3, dd0Var)) {
+        Arrays.sort(var6_2 /* !! */ , 0, var3_5, ca1.o);
+        if (var2_6 < var6_2 /* !! */ .length) {
+            for (var2_6 = var3_5 - 1; var2_6 >= 0; --var2_6) {
+                var0 /* !! */  = var6_2 /* !! */ [var2_6];
+                if (!te5.B((ba1)var0 /* !! */ ) || !zz1.f((ba1)var0 /* !! */ , var1_1)) continue;
                 return true;
             }
         }
         return false;
     }
 
-    /* JADX WARN: Code duplicated, block: B:125:0x02ca  */
-    /* JADX WARN: Multi-variable type inference failed */
-    /* JADX WARN: Type inference failed for: r15v1 */
-    /* JADX WARN: Type inference failed for: r15v2, types: [boolean] */
-    /* JADX WARN: Type inference failed for: r15v3 */
-    /* JADX WARN: Type inference failed for: r1v11 */
-    /* JADX WARN: Type inference failed for: r1v13 */
-    /* JADX WARN: Type inference failed for: r1v6 */
-    /* JADX WARN: Type inference failed for: r1v7 */
-    /* JADX WARN: Type inference failed for: r1v8 */
-    /* JADX WARN: Type inference failed for: r1v9 */
-    /* JADX WARN: Type inference failed for: r38v0 */
-    /* JADX WARN: Type inference failed for: r38v1, types: [int] */
-    /* JADX WARN: Type inference failed for: r38v12 */
-    /* JADX WARN: Type inference failed for: r42v0, types: [android.view.ViewStructure] */
-    /* JADX WARN: Type inference failed for: r6v3, types: [boolean] */
-    /* JADX WARN: Type inference failed for: r6v31 */
-    /* JADX WARN: Type inference failed for: r6v32 */
-    /* JADX WARN: Type inference failed for: r6v33 */
-    /* JADX WARN: Type inference failed for: r6v4 */
-    /* JADX WARN: Type inference failed for: r6v8, types: [boolean] */
-    public static final void z(ViewStructure viewStructure, c72 c72Var, AutofillId autofillId, String str, yv3 yv3Var) {
-        ?? r38;
-        long j2;
-        long j3;
-        char c2;
-        long j4;
-        boolean zBooleanValue;
-        mb mbVar;
-        he heVar;
-        wb wbVar;
-        qu4 qu4Var;
-        boolean z;
-        qd0 qd0Var;
-        Boolean bool;
-        m24 m24Var;
-        boolean z2;
-        Integer num;
-        Object obj;
-        List list;
-        Integer numValueOf;
-        ?? r6;
-        ?? r7;
-        String[] strArrT;
-        String[] strArrT2;
-        CharSequence charSequenceI0;
-        w03 w03Var;
-        Object[] objArr;
-        int i2;
-        int i3;
-        Object[] objArr2;
-        w03 w03Var2;
-        boolean z3;
-        mb mbVar2;
-        qu4 qu4Var2;
-        he heVar2;
-        wb wbVar2;
-        boolean z4;
-        p94 p94Var = n94.a;
-        p94 p94Var2 = d94.a;
-        e94 e94VarV = c72Var.v();
-        int i4 = 8;
-        boolean z5 = true;
-        if (e94VarV == null || (w03Var2 = e94VarV.n) == null) {
-            r38 = 1;
-            j2 = 128;
-            j3 = 255;
-            c2 = 7;
-            j4 = -9187201950435737472L;
-            zBooleanValue = true;
-            mbVar = null;
-            heVar = null;
-            wbVar = null;
-            qu4Var = null;
-            z = false;
-            qd0Var = null;
-            bool = null;
-            m24Var = null;
-            z2 = false;
-            num = null;
-            obj = null;
+    /*
+     * Unable to fully structure code
+     * Could not resolve type clashes
+     */
+    public static final boolean y(ba1 var0, dd0 var1_1) {
+        var6_2 /* !! */  = new ba1[16];
+        if (!var0 /* !! */ .n.A) {
+            cz1.b("visitChildren called on an unattached node");
+        }
+        var10_3 = new f13(new cx2[16]);
+        var5_4 = var0 /* !! */ .n;
+        var0 /* !! */  = var5_4.s;
+        if (var0 /* !! */  == null) {
+            j51.b(var10_3, (cx2)var5_4);
+lbl9:
+            // 2 sources
+
+            while (true) {
+                var3_5 = 0;
+                break;
+            }
         } else {
-            j2 = 128;
-            Object[] objArr3 = w03Var2.b;
-            Object[] objArr4 = w03Var2.c;
-            long[] jArr = w03Var2.a;
-            j3 = 255;
-            int length = jArr.length - 2;
-            if (length >= 0) {
-                zBooleanValue = true;
-                int i5 = 0;
-                mbVar2 = null;
-                z = false;
-                qu4Var2 = null;
-                heVar2 = null;
-                wbVar2 = null;
-                qd0Var = null;
-                bool = null;
-                m24Var = null;
-                z2 = false;
-                num = null;
-                obj = null;
-                c2 = 7;
-                while (true) {
-                    long j5 = jArr[i5];
-                    j4 = -9187201950435737472L;
-                    if ((((~j5) << 7) & j5 & (-9187201950435737472L)) != -9187201950435737472L) {
-                        int i6 = 8 - ((~(i5 - length)) >>> 31);
-                        int i7 = 0;
-                        while (i7 < i6) {
-                            if ((j5 & 255) < 128) {
-                                int i8 = (i5 << 3) + i7;
-                                Object obj2 = objArr3[i8];
-                                Object obj3 = objArr4[i8];
-                                p94 p94Var3 = (p94) obj2;
-                                if (h12.c(p94Var3, n94.r)) {
-                                    obj3.getClass();
-                                    mbVar2 = (mb) obj3;
-                                } else if (h12.c(p94Var3, n94.a)) {
-                                    obj3.getClass();
-                                    String str2 = (String) q40.x0((List) obj3);
-                                    if (str2 != null) {
-                                        viewStructure.setContentDescription(str2);
+            var10_3.b(var0 /* !! */ );
+            ** continue;
+        }
+        block1: while ((var2_6 = var10_3.p) != 0) {
+            var7_8 /* !! */  = var0 /* !! */  = (cx2)var10_3.k(var2_6 - 1);
+            if ((var0 /* !! */ .q & 1024) == 0) {
+                j51.b(var10_3, var0 /* !! */ );
+                continue;
+            }
+            while (var7_8 /* !! */  != null) {
+                if ((var7_8 /* !! */ .p & 1024) != 0) {
+                    var0 /* !! */  = null;
+                    var2_6 = var3_5;
+                    var5_4 = var6_2 /* !! */ ;
+                    while (true) {
+                        var6_2 /* !! */  = var5_4;
+                        var3_5 = var2_6;
+                        if (var7_8 /* !! */  == null) continue block1;
+                        if (var7_8 /* !! */  instanceof ba1) {
+                            var4_7 = var2_6 + 1;
+                            var6_2 /* !! */  = var5_4;
+                            if (var5_4.length < var4_7) {
+                                var3_5 = var5_4.length;
+                                var6_2 /* !! */  = new Object[Math.max(var4_7, var3_5 * 2)];
+                                System.arraycopy(var5_4, 0, var6_2 /* !! */ , 0, var3_5);
+                            }
+                            var6_2 /* !! */ [var2_6] = var7_8 /* !! */ ;
+                            var8_9 /* !! */  = var0 /* !! */ ;
+                        } else {
+                            var6_2 /* !! */  = var5_4;
+                            var8_9 /* !! */  = var0 /* !! */ ;
+                            var4_7 = var2_6;
+                            if ((var7_8 /* !! */ .p & 1024) != 0) {
+                                var6_2 /* !! */  = var5_4;
+                                var8_9 /* !! */  = var0 /* !! */ ;
+                                var4_7 = var2_6;
+                                if (var7_8 /* !! */  instanceof fo0) {
+                                    var6_2 /* !! */  = ((fo0)var7_8 /* !! */ ).C;
+                                    var3_5 = 0;
+                                    while (var6_2 /* !! */  != null) {
+                                        var8_9 /* !! */  = var7_8 /* !! */ ;
+                                        var9_10 /* !! */  = var0 /* !! */ ;
+                                        var4_7 = var3_5;
+                                        if ((var6_2 /* !! */ .p & 1024) != 0) {
+                                            var4_7 = var3_5 + 1;
+                                            if (var4_7 == 1) {
+                                                var8_9 /* !! */  = var6_2 /* !! */ ;
+                                                var9_10 /* !! */  = var0 /* !! */ ;
+                                            } else {
+                                                var8_9 /* !! */  = var0 /* !! */ ;
+                                                if (var0 /* !! */  == null) {
+                                                    var8_9 /* !! */  = new f13(new cx2[16]);
+                                                }
+                                                var0 /* !! */  = var7_8 /* !! */ ;
+                                                if (var7_8 /* !! */  != null) {
+                                                    var8_9 /* !! */ .b(var7_8 /* !! */ );
+                                                    var0 /* !! */  = null;
+                                                }
+                                                var8_9 /* !! */ .b(var6_2 /* !! */ );
+                                                var9_10 /* !! */  = var8_9 /* !! */ ;
+                                                var8_9 /* !! */  = var0 /* !! */ ;
+                                            }
+                                        }
+                                        var6_2 /* !! */  = var6_2 /* !! */ .s;
+                                        var7_8 /* !! */  = var8_9 /* !! */ ;
+                                        var0 /* !! */  = var9_10 /* !! */ ;
+                                        var3_5 = var4_7;
                                     }
-                                } else if (h12.c(p94Var3, n94.q)) {
-                                    obj3.getClass();
-                                    qd0Var = (qd0) obj3;
-                                } else if (h12.c(p94Var3, n94.s)) {
-                                    obj3.getClass();
-                                    wbVar2 = (wb) obj3;
-                                } else if (h12.c(p94Var3, n94.D)) {
-                                    obj3.getClass();
-                                    heVar2 = (he) obj3;
-                                } else if (h12.c(p94Var3, n94.l)) {
-                                    obj3.getClass();
-                                    viewStructure.setFocused(((Boolean) obj3).booleanValue());
-                                } else if (h12.c(p94Var3, n94.N)) {
-                                    obj3.getClass();
-                                    num = (Integer) obj3;
-                                } else if (h12.c(p94Var3, n94.J)) {
-                                    z2 = z5;
-                                } else if (h12.c(p94Var3, n94.n)) {
-                                    obj3.getClass();
-                                    zBooleanValue = ((Boolean) obj3).booleanValue();
-                                } else if (h12.c(p94Var3, n94.w)) {
-                                    obj3.getClass();
-                                    m24Var = (m24) obj3;
-                                } else if (h12.c(p94Var3, n94.G)) {
-                                    obj3.getClass();
-                                    bool = (Boolean) obj3;
-                                } else if (h12.c(p94Var3, n94.H)) {
-                                    obj3.getClass();
-                                    qu4Var2 = (qu4) obj3;
-                                } else if (h12.c(p94Var3, d94.b)) {
-                                    viewStructure.setClickable(z5);
-                                } else if (h12.c(p94Var3, d94.c)) {
-                                    viewStructure.setLongClickable(z5);
-                                } else if (h12.c(p94Var3, d94.v)) {
-                                    viewStructure.setFocusable(z5);
-                                } else if (h12.c(p94Var3, d94.k)) {
-                                    z = z5;
+                                    var6_2 /* !! */  = var5_4;
+                                    var8_9 /* !! */  = var0 /* !! */ ;
+                                    var4_7 = var2_6;
+                                    if (var3_5 == 1) continue;
                                 }
-                                z4 = z5;
-                                if (Build.VERSION.SDK_INT >= 34 && h12.c(p94Var3, m)) {
-                                    obj = obj3;
-                                }
-                            } else {
-                                z4 = z5;
                             }
-                            j5 >>= 8;
-                            i7++;
-                            z5 = z4;
                         }
-                        z3 = z5;
-                        z3 = z3;
-                        if (i6 != 8) {
+                        var7_8 /* !! */  = j51.c((f13)var8_9 /* !! */ );
+                        var5_4 = var6_2 /* !! */ ;
+                        var0 /* !! */  = var8_9 /* !! */ ;
+                        var2_6 = var4_7;
+                    }
+                }
+                var7_8 /* !! */  = var7_8 /* !! */ .s;
+            }
+        }
+        Arrays.sort(var6_2 /* !! */ , 0, var3_5, ca1.o);
+        for (var2_6 = 0; var2_6 < var3_5; ++var2_6) {
+            var0 /* !! */  = var6_2 /* !! */ [var2_6];
+            if (!te5.B(var0 /* !! */ ) || !zz1.o(var0 /* !! */ , var1_1)) continue;
+            return true;
+        }
+        return false;
+    }
+
+    public static final void z(ViewStructure viewStructure, c72 c722, AutofillId object, String object2, yv3 object3) {
+        boolean bl5;
+        Object object4;
+        Object object5;
+        Object object6;
+        Object object7;
+        int n16;
+        Object object8;
+        int n17;
+        int n18;
+        Object object9;
+        int n19;
+        Object object10;
+        long[] lArray;
+        Object object11;
+        Object object12;
+        Object object13;
+        int n26;
+        Object object14;
+        block81: {
+            int n27;
+            Object object15;
+            Object[] objectArray;
+            Object object16;
+            int n28;
+            Object object17;
+            int n29;
+            object14 = n94.a;
+            object14 = d94.a;
+            object14 = c722.v();
+            int n36 = 8;
+            n26 = 1;
+            if (object14 != null && (object14 = object14.n) != null) {
+                Object object18;
+                Object object19;
+                Object object20;
+                block80: {
+                    Object[] objectArray2 = object14.b;
+                    Object[] objectArray3 = object14.c;
+                    long[] lArray2 = object14.a;
+                    int n37 = lArray2.length - 2;
+                    if (n37 >= 0) {
+                        boolean bl6 = true;
+                        n29 = 0;
+                        object17 = null;
+                        n28 = 0;
+                        object13 = null;
+                        object12 = null;
+                        object11 = null;
+                        lArray = null;
+                        object16 = null;
+                        object10 = null;
+                        n19 = 0;
+                        object14 = null;
+                        objectArray = null;
+                        while (true) {
+                            if ((((object9 = lArray2[n29]) ^ 0xFFFFFFFFFFFFFFFFL) << 7 & object9 & 0x8080808080808080L) != -9187201950435737472L) {
+                                int n38 = 8 - (~(n29 - n37) >>> 31);
+                                n18 = 0;
+                                n17 = n19;
+                                n19 = n28;
+                                for (n28 = n18; n28 < n38; ++n28) {
+                                    if ((object9 & 0xFFL) < 128L) {
+                                        n18 = (n29 << 3) + n28;
+                                        object8 = objectArray2[n18];
+                                        Object object21 = objectArray3[n18];
+                                        p94 p942 = (p94)object8;
+                                        if (h12.c(p942, n94.r)) {
+                                            object21.getClass();
+                                            object8 = (mb)object21;
+                                            n16 = n19;
+                                            object7 = object13;
+                                            object6 = object12;
+                                            object5 = object11;
+                                            object4 = lArray;
+                                            object15 = object16;
+                                            object20 = object10;
+                                            n18 = n17;
+                                            bl5 = bl6;
+                                            object19 = object14;
+                                        } else if (h12.c(p942, n94.a)) {
+                                            object21.getClass();
+                                            object18 = (String)q40.x0((List)object21);
+                                            object8 = object17;
+                                            n16 = n19;
+                                            object7 = object13;
+                                            object6 = object12;
+                                            object5 = object11;
+                                            object4 = lArray;
+                                            object15 = object16;
+                                            object20 = object10;
+                                            n18 = n17;
+                                            bl5 = bl6;
+                                            object19 = object14;
+                                            if (object18 != null) {
+                                                viewStructure.setContentDescription((CharSequence)object18);
+                                                object8 = object17;
+                                                n16 = n19;
+                                                object7 = object13;
+                                                object6 = object12;
+                                                object5 = object11;
+                                                object4 = lArray;
+                                                object15 = object16;
+                                                object20 = object10;
+                                                n18 = n17;
+                                                bl5 = bl6;
+                                                object19 = object14;
+                                            }
+                                        } else if (h12.c(p942, n94.q)) {
+                                            object21.getClass();
+                                            object4 = (qd0)object21;
+                                            object8 = object17;
+                                            n16 = n19;
+                                            object7 = object13;
+                                            object6 = object12;
+                                            object5 = object11;
+                                            object15 = object16;
+                                            object20 = object10;
+                                            n18 = n17;
+                                            bl5 = bl6;
+                                            object19 = object14;
+                                        } else if (h12.c(p942, n94.s)) {
+                                            object21.getClass();
+                                            object5 = (wb)object21;
+                                            object8 = object17;
+                                            n16 = n19;
+                                            object7 = object13;
+                                            object6 = object12;
+                                            object4 = lArray;
+                                            object15 = object16;
+                                            object20 = object10;
+                                            n18 = n17;
+                                            bl5 = bl6;
+                                            object19 = object14;
+                                        } else if (h12.c(p942, n94.D)) {
+                                            object21.getClass();
+                                            object6 = (he)object21;
+                                            object8 = object17;
+                                            n16 = n19;
+                                            object7 = object13;
+                                            object5 = object11;
+                                            object4 = lArray;
+                                            object15 = object16;
+                                            object20 = object10;
+                                            n18 = n17;
+                                            bl5 = bl6;
+                                            object19 = object14;
+                                        } else if (h12.c(p942, n94.l)) {
+                                            object21.getClass();
+                                            viewStructure.setFocused(((Boolean)object21).booleanValue());
+                                            object8 = object17;
+                                            n16 = n19;
+                                            object7 = object13;
+                                            object6 = object12;
+                                            object5 = object11;
+                                            object4 = lArray;
+                                            object15 = object16;
+                                            object20 = object10;
+                                            n18 = n17;
+                                            bl5 = bl6;
+                                            object19 = object14;
+                                        } else if (h12.c(p942, n94.N)) {
+                                            object21.getClass();
+                                            object19 = (Integer)object21;
+                                            object8 = object17;
+                                            n16 = n19;
+                                            object7 = object13;
+                                            object6 = object12;
+                                            object5 = object11;
+                                            object4 = lArray;
+                                            object15 = object16;
+                                            object20 = object10;
+                                            n18 = n17;
+                                            bl5 = bl6;
+                                        } else if (h12.c(p942, n94.J)) {
+                                            n18 = n26;
+                                            object8 = object17;
+                                            n16 = n19;
+                                            object7 = object13;
+                                            object6 = object12;
+                                            object5 = object11;
+                                            object4 = lArray;
+                                            object15 = object16;
+                                            object20 = object10;
+                                            bl5 = bl6;
+                                            object19 = object14;
+                                        } else if (h12.c(p942, n94.n)) {
+                                            object21.getClass();
+                                            bl5 = (Boolean)object21;
+                                            object8 = object17;
+                                            n16 = n19;
+                                            object7 = object13;
+                                            object6 = object12;
+                                            object5 = object11;
+                                            object4 = lArray;
+                                            object15 = object16;
+                                            object20 = object10;
+                                            n18 = n17;
+                                            object19 = object14;
+                                        } else if (h12.c(p942, n94.w)) {
+                                            object21.getClass();
+                                            object20 = (m24)object21;
+                                            object8 = object17;
+                                            n16 = n19;
+                                            object7 = object13;
+                                            object6 = object12;
+                                            object5 = object11;
+                                            object4 = lArray;
+                                            object15 = object16;
+                                            n18 = n17;
+                                            bl5 = bl6;
+                                            object19 = object14;
+                                        } else if (h12.c(p942, n94.G)) {
+                                            object21.getClass();
+                                            object15 = (Boolean)object21;
+                                            object8 = object17;
+                                            n16 = n19;
+                                            object7 = object13;
+                                            object6 = object12;
+                                            object5 = object11;
+                                            object4 = lArray;
+                                            object20 = object10;
+                                            n18 = n17;
+                                            bl5 = bl6;
+                                            object19 = object14;
+                                        } else if (h12.c(p942, n94.H)) {
+                                            object21.getClass();
+                                            object7 = (qu4)((Object)object21);
+                                            object8 = object17;
+                                            n16 = n19;
+                                            object6 = object12;
+                                            object5 = object11;
+                                            object4 = lArray;
+                                            object15 = object16;
+                                            object20 = object10;
+                                            n18 = n17;
+                                            bl5 = bl6;
+                                            object19 = object14;
+                                        } else if (h12.c(p942, d94.b)) {
+                                            viewStructure.setClickable(n26 != 0);
+                                            object8 = object17;
+                                            n16 = n19;
+                                            object7 = object13;
+                                            object6 = object12;
+                                            object5 = object11;
+                                            object4 = lArray;
+                                            object15 = object16;
+                                            object20 = object10;
+                                            n18 = n17;
+                                            bl5 = bl6;
+                                            object19 = object14;
+                                        } else if (h12.c(p942, d94.c)) {
+                                            viewStructure.setLongClickable(n26 != 0);
+                                            object8 = object17;
+                                            n16 = n19;
+                                            object7 = object13;
+                                            object6 = object12;
+                                            object5 = object11;
+                                            object4 = lArray;
+                                            object15 = object16;
+                                            object20 = object10;
+                                            n18 = n17;
+                                            bl5 = bl6;
+                                            object19 = object14;
+                                        } else if (h12.c(p942, d94.v)) {
+                                            viewStructure.setFocusable(n26 != 0);
+                                            object8 = object17;
+                                            n16 = n19;
+                                            object7 = object13;
+                                            object6 = object12;
+                                            object5 = object11;
+                                            object4 = lArray;
+                                            object15 = object16;
+                                            object20 = object10;
+                                            n18 = n17;
+                                            bl5 = bl6;
+                                            object19 = object14;
+                                        } else {
+                                            object8 = object17;
+                                            n16 = n19;
+                                            object7 = object13;
+                                            object6 = object12;
+                                            object5 = object11;
+                                            object4 = lArray;
+                                            object15 = object16;
+                                            object20 = object10;
+                                            n18 = n17;
+                                            bl5 = bl6;
+                                            object19 = object14;
+                                            if (h12.c(p942, d94.k)) {
+                                                n16 = n26;
+                                                object19 = object14;
+                                                bl5 = bl6;
+                                                n18 = n17;
+                                                object20 = object10;
+                                                object15 = object16;
+                                                object4 = lArray;
+                                                object5 = object11;
+                                                object6 = object12;
+                                                object7 = object13;
+                                                object8 = object17;
+                                            }
+                                        }
+                                        object17 = object8;
+                                        n19 = n16;
+                                        object13 = object7;
+                                        object12 = object6;
+                                        object11 = object5;
+                                        lArray = object4;
+                                        object16 = object15;
+                                        object10 = object20;
+                                        n17 = n18;
+                                        bl6 = bl5;
+                                        object14 = object19;
+                                        object18 = objectArray;
+                                        if (Build.VERSION.SDK_INT >= 34) {
+                                            object17 = object8;
+                                            n19 = n16;
+                                            object13 = object7;
+                                            object12 = object6;
+                                            object11 = object5;
+                                            lArray = object4;
+                                            object16 = object15;
+                                            object10 = object20;
+                                            n17 = n18;
+                                            bl6 = bl5;
+                                            object14 = object19;
+                                            object18 = objectArray;
+                                            if (h12.c(p942, m)) {
+                                                object18 = object21;
+                                                object17 = object8;
+                                                n19 = n16;
+                                                object13 = object7;
+                                                object12 = object6;
+                                                object11 = object5;
+                                                lArray = object4;
+                                                object16 = object15;
+                                                object10 = object20;
+                                                n17 = n18;
+                                                bl6 = bl5;
+                                                object14 = object19;
+                                            }
+                                        }
+                                    } else {
+                                        object18 = objectArray;
+                                    }
+                                    object9 >>= 8;
+                                    objectArray = object18;
+                                }
+                                n27 = n26;
+                                object18 = object17;
+                                n16 = n19;
+                                object19 = object13;
+                                object20 = object12;
+                                object15 = object11;
+                                object4 = lArray;
+                                object5 = object16;
+                                object6 = object10;
+                                n18 = n17;
+                                bl5 = bl6;
+                                object7 = object14;
+                                object8 = objectArray;
+                                n26 = n27;
+                                if (n38 != 8) break block80;
+                                n28 = n19;
+                                n19 = n17;
+                                n17 = n27;
+                            } else {
+                                n17 = n26;
+                            }
+                            object18 = object17;
+                            n16 = n28;
+                            object19 = object13;
+                            object20 = object12;
+                            object15 = object11;
+                            object4 = lArray;
+                            object5 = object16;
+                            object6 = object10;
+                            n18 = n19;
+                            bl5 = bl6;
+                            object7 = object14;
+                            object8 = objectArray;
+                            n26 = n17;
+                            if (n29 != n37) {
+                                ++n29;
+                                n26 = n17;
+                                continue;
+                            }
+                            break block80;
                             break;
                         }
-                    } else {
-                        z3 = z5 ? 1 : 0;
                     }
-                    if (i5 == length) {
-                        break;
-                    }
-                    i5++;
-                    z5 = z3 ? 1 : 0;
+                    n26 = 1;
+                    bl5 = true;
+                    object18 = null;
+                    n16 = 0;
+                    object19 = null;
+                    object20 = null;
+                    object15 = null;
+                    object4 = null;
+                    object5 = null;
+                    object6 = null;
+                    n18 = 0;
+                    object7 = null;
+                    object8 = null;
                 }
+                object13 = object18;
+                lArray = object19;
+                object12 = object20;
+                object11 = object15;
+                n17 = n26;
             } else {
-                z3 = true;
-                c2 = 7;
-                j4 = -9187201950435737472L;
-                zBooleanValue = true;
-                mbVar2 = null;
-                z = false;
-                qu4Var2 = null;
-                heVar2 = null;
-                wbVar2 = null;
-                qd0Var = null;
-                bool = null;
-                m24Var = null;
-                z2 = false;
-                num = null;
-                obj = null;
+                n17 = 1;
+                bl5 = true;
+                object13 = null;
+                object12 = null;
+                object11 = null;
+                lArray = null;
+                n16 = 0;
+                object4 = null;
+                object5 = null;
+                object6 = null;
+                n18 = 0;
+                object7 = null;
+                object8 = null;
             }
-            mbVar = mbVar2;
-            qu4Var = qu4Var2;
-            heVar = heVar2;
-            wbVar = wbVar2;
-            r38 = z3;
-        }
-        e94 e94VarV2 = c72Var.v();
-        if (e94VarV2 != null && e94VarV2.p && !e94VarV2.q) {
-            e94VarV2 = e94VarV2.b();
-            q03 q03Var = new q03(((c13) c72Var.n()).n.p);
-            q03Var.c(c72Var.n());
-            while (q03Var.i()) {
-                c72 c72Var2 = (c72) q03Var.k(q03Var.b - 1);
-                e94 e94VarV3 = c72Var2.v();
-                if (e94VarV3 != null && !e94VarV3.p) {
-                    e94VarV2.e(e94VarV3);
-                    if (!e94VarV3.q) {
-                        q03Var.c(c72Var2.n());
+            object10 = c722.v();
+            object14 = object10;
+            if (object10 != null) {
+                object14 = object10;
+                if (((e94)object10).p) {
+                    if (((e94)object10).q) {
+                        object14 = object10;
+                    } else {
+                        object10 = ((e94)object10).b();
+                        object16 = new q03(((c13)c722.n()).n.p);
+                        ((q03)object16).c(c722.n());
+                        while (true) {
+                            object14 = object10;
+                            if (!((q03)object16).i()) break;
+                            object14 = (c72)((q03)object16).k(((q03)object16).b - 1);
+                            object17 = object14.v();
+                            if (object17 == null || object17.p) continue;
+                            ((e94)object10).e((e94)object17);
+                            if (object17.q) continue;
+                            ((q03)object16).c(object14.n());
+                        }
                     }
                 }
             }
-        }
-        if (e94VarV2 == null || (w03Var = e94VarV2.n) == null) {
-            list = null;
-        } else {
-            Object[] objArr5 = w03Var.b;
-            Object[] objArr6 = w03Var.c;
-            long[] jArr2 = w03Var.a;
-            int length2 = jArr2.length - 2;
-            if (length2 >= 0) {
-                int i9 = 0;
-                list = null;
-                while (true) {
-                    long j6 = jArr2[i9];
-                    int i10 = i4;
-                    List list2 = list;
-                    if ((((~j6) << c2) & j6 & j4) != j4) {
-                        int i11 = 8 - ((~(i9 - length2)) >>> 31);
-                        list = list2;
-                        int i12 = 0;
-                        while (i12 < i11) {
-                            if ((j6 & j3) < j2) {
-                                int i13 = (i9 << 3) + i12;
-                                Object obj4 = objArr5[i13];
-                                Object obj5 = objArr6[i13];
-                                i3 = i12;
-                                p94 p94Var4 = (p94) obj4;
-                                objArr2 = objArr5;
-                                if (h12.c(p94Var4, n94.j)) {
-                                    viewStructure.setEnabled(false);
-                                } else if (h12.c(p94Var4, n94.z)) {
-                                    obj5.getClass();
-                                    list = (List) obj5;
+            if (object14 != null && (object14 = object14.n) != null) {
+                object10 = object14.b;
+                objectArray = object14.c;
+                object17 = object14.a;
+                n27 = ((long[])object17).length - 2;
+                if (n27 >= 0) {
+                    n26 = 0;
+                    object14 = null;
+                    n19 = n36;
+                    while (true) {
+                        if ((((object9 = object17[n26]) ^ 0xFFFFFFFFFFFFFFFFL) << 7 & object9 & 0x8080808080808080L) != -9187201950435737472L) {
+                            n29 = 8 - (~(n26 - n27) >>> 31);
+                            for (n28 = 0; n28 < n29; ++n28) {
+                                if ((object9 & 0xFFL) < 128L) {
+                                    n36 = (n26 << 3) + n28;
+                                    object15 = object10[n36];
+                                    object16 = objectArray[n36];
+                                    if (h12.c(object15 = (p94)object15, n94.j)) {
+                                        viewStructure.setEnabled(false);
+                                    } else if (h12.c(object15, n94.z)) {
+                                        object16.getClass();
+                                        object14 = (List)object16;
+                                    }
                                 }
-                            } else {
-                                i3 = i12;
-                                objArr2 = objArr5;
+                                object9 >>= n19;
                             }
-                            j6 >>= i10;
-                            i12 = i3 + 1;
-                            objArr5 = objArr2;
+                            object16 = object10;
+                            object10 = object14;
+                            if (n29 != n19) break block81;
+                        } else {
+                            object16 = object10;
                         }
-                        objArr = objArr5;
-                        i2 = i10;
-                        if (i11 != i2) {
-                            break;
+                        object10 = object14;
+                        if (n26 != n27) {
+                            ++n26;
+                            object10 = object16;
+                            continue;
                         }
-                    } else {
-                        objArr = objArr5;
-                        i2 = i10;
-                        list = list2;
-                    }
-                    if (i9 == length2) {
+                        break block81;
                         break;
                     }
-                    i9++;
-                    i4 = i2;
-                    jArr2 = jArr2;
-                    objArr5 = objArr;
-                }
-            } else {
-                list = null;
-            }
-        }
-        Integer numValueOf2 = Integer.valueOf(c72Var.o);
-        if (c72Var.t() == null) {
-            numValueOf2 = null;
-        }
-        int iIntValue = numValueOf2 != null ? numValueOf2.intValue() : -1;
-        viewStructure.setAutofillId(autofillId, iIntValue);
-        viewStructure.setId(iIntValue, str, null, null);
-        if (mbVar != null) {
-            numValueOf = Integer.valueOf(mbVar.a);
-        } else if (z) {
-            numValueOf = Integer.valueOf((int) r38);
-        } else {
-            numValueOf = qu4Var != null ? 2 : null;
-        }
-        if (numValueOf != null) {
-            viewStructure.setAutofillType(numValueOf.intValue());
-        }
-        if (heVar != null) {
-            String str3 = heVar.o;
-            if (str3.length() > 5000) {
-                if (Character.isHighSurrogate(str3.charAt(4999)) && Character.isLowSurrogate(str3.charAt(SmartSession.MAX_SONGS))) {
-                    charSequenceI0 = str3;
-                    charSequenceI0 = qm4.I0(4999, str3);
-                } else {
-                    charSequenceI0 = str3;
-                    charSequenceI0 = str3;
-                    charSequenceI0 = qm4.I0(SmartSession.MAX_SONGS, str3);
                 }
             }
-            charSequenceI0 = str3;
-            viewStructure.setAutofillValue(AutofillValue.forText(charSequenceI0));
+            object10 = null;
         }
-        if (wbVar != null) {
-            viewStructure.setAutofillValue(wbVar.a);
+        object14 = c722.o;
+        if (c722.t() == null) {
+            object14 = null;
         }
-        if (qd0Var != null && (strArrT2 = h12.t(qd0Var)) != null) {
-            viewStructure.setAutofillHints(strArrT2);
+        n19 = object14 != null ? object14.intValue() : -1;
+        j3.u(viewStructure, object, n19);
+        viewStructure.setId(n19, (String)object2, null, null);
+        object = object13 != null ? Integer.valueOf(object13.a) : (n16 != 0 ? Integer.valueOf(n17) : (lArray != null ? Integer.valueOf(2) : null));
+        if (object != null) {
+            tn.r(viewStructure, object.intValue());
         }
-        c72 c72Var3 = (c72) yv3Var.a.b(c72Var.o);
-        if (c72Var3 != null && c72Var3.t != -4) {
-            ue1 ue1Var = yv3Var.c;
-            int iE = yv3Var.e(c72Var3);
-            long[] jArr3 = (long[]) ue1Var.p;
-            long j7 = jArr3[iE];
-            long j8 = jArr3[iE + 1];
-            int i14 = (int) (j7 >> 32);
-            int i15 = (int) j7;
-            viewStructure.setDimens(i14, i15, 0, 0, ((int) (j8 >> 32)) - i14, ((int) j8) - i15);
-        }
-        if (bool != null) {
-            viewStructure.setSelected(bool.booleanValue());
-        }
-        if (qu4Var != null) {
-            ?? r8 = r38;
-            viewStructure.setCheckable(r8);
-            viewStructure.setChecked(qu4Var == qu4.n ? r8 == true ? 1 : 0 : false);
-            r7 = r8;
-        } else {
-            r6 = r38;
-            if (bool != null) {
-                r7 = r6;
-                viewStructure.setCheckable(r6);
-                viewStructure.setChecked(bool.booleanValue());
-                r7 = r6;
+        if (object12 != null) {
+            object = ((he)object12).o;
+            if (object.length() > 5000) {
+                object = Character.isHighSurrogate(object.charAt(4999)) && Character.isLowSurrogate(object.charAt(5000)) ? qm4.I0(4999, (String)object) : qm4.I0(5000, (String)object);
             }
+            j3.v(viewStructure, tn.g((CharSequence)object));
         }
-        r7 = r6;
+        if (object11 != null) {
+            j3.v(viewStructure, ((wb)object11).a);
+        }
+        if (object4 != null && (object = h12.t((qd0)object4)) != null) {
+            tn.s(viewStructure, (String[])object);
+        }
+        if ((object2 = (c72)((yv3)object3).a.b(n19 = c722.o)) != null && object2.t != -4) {
+            object = ((yv3)object3).c;
+            n19 = ((yv3)object3).e((c72)object2);
+            object = (long[])object.p;
+            object9 = object[n19];
+            AutofillId autofillId = object[n19 + 1];
+            n26 = (int)(object9 >> 32);
+            n19 = (int)object9;
+            viewStructure.setDimens(n26, n19, 0, 0, (int)(autofillId >> 32) - n26, (int)autofillId - n19);
+        }
+        if (object5 != null) {
+            viewStructure.setSelected(((Boolean)object5).booleanValue());
+        }
+        if (lArray != null) {
+            viewStructure.setCheckable(n17 != 0);
+            n19 = lArray == qu4.n ? n17 : 0;
+            viewStructure.setChecked(n19 != 0);
+        } else if (object5 != null) {
+            viewStructure.setCheckable(n17 != 0);
+            viewStructure.setChecked(((Boolean)object5).booleanValue());
+        }
         qd0.a.getClass();
-        String[] strArrT3 = h12.t(pd0.b);
-        strArrT3.getClass();
-        if (strArrT3.length == 0) {
-            kf2.m("Array is empty.");
+        object = h12.t(pd0.b);
+        object.getClass();
+        if (((AutofillId)object).length != 0) {
+            object = object[0];
+            n19 = object4 != null && (object2 = h12.t((qd0)object4)) != null && ti.m0(object2, object) >= 0 ? n17 : 0;
+            n19 = n18 == 0 && n19 == 0 ? 0 : n17;
+            if (n19 == 0 && !bl5) {
+                n17 = 0;
+            }
+            j3.w(viewStructure, n17 != 0);
+            n17 = ((f63)c722.Q.e).J0() ? 4 : 0;
+            viewStructure.setVisibility(n17);
+            if (object10 != null) {
+                n26 = object10.size();
+                object = "";
+                for (n17 = 0; n17 < n26; ++n17) {
+                    object2 = ((he)object10.get((int)n17)).o;
+                    object3 = new StringBuilder();
+                    ((StringBuilder)object3).append(object);
+                    ((StringBuilder)object3).append((String)object2);
+                    ((StringBuilder)object3).append("\n");
+                    object = ((StringBuilder)object3).toString();
+                }
+                viewStructure.setText((CharSequence)object);
+                viewStructure.setClassName("android.widget.TextView");
+            }
+            if (((c13)c722.n()).isEmpty() && object6 != null) {
+                viewStructure.setClassName("android.widget.ImageView");
+            }
+            if (n16 != 0) {
+                viewStructure.setClassName("android.widget.EditText");
+                if (Build.VERSION.SDK_INT >= 28 && object7 != null) {
+                    i3.s(viewStructure, ((Number)object7).intValue());
+                }
+                if (n19 != 0) {
+                    j3.t(viewStructure);
+                }
+            }
+            if (Build.VERSION.SDK_INT >= 35 && object8 != null) {
+                kf2.k();
+            }
             return;
         }
-        ?? r1 = (z2 || ((qd0Var == null || (strArrT = h12.t(qd0Var)) == null || ti.m0(strArrT, strArrT3[0]) < 0) ? 0 : r7) != 0) ? r7 : 0;
-        viewStructure.setDataIsSensitive((r1 != 0 || zBooleanValue) ? r7 : 0);
-        viewStructure.setVisibility(((f63) c72Var.Q.e).J0() ? 4 : 0);
-        if (list != null) {
-            int size = list.size();
-            String str4 = "";
-            for (int i16 = 0; i16 < size; i16++) {
-                str4 = ((Object) str4) + ((he) list.get(i16)).o + "\n";
-            }
-            viewStructure.setText(str4);
-            viewStructure.setClassName("android.widget.TextView");
-        }
-        if (((c13) c72Var.n()).isEmpty() && m24Var != null) {
-            viewStructure.setClassName("android.widget.ImageView");
-        }
-        if (z) {
-            viewStructure.setClassName("android.widget.EditText");
-            if (Build.VERSION.SDK_INT >= 28 && num != null) {
-                viewStructure.setMaxTextLength(num.intValue());
-            }
-            if (r1 != 0) {
-                viewStructure.setInputType(129);
-            }
-        }
-        if (Build.VERSION.SDK_INT < 35 || obj == null) {
-            return;
-        }
-        kf2.k();
+        kf2.m("Array is empty.");
     }
 
-    public qv2 j(uv2 uv2Var) {
-        ByteBuffer byteBuffer = uv2Var.r;
+    public qv2 j(uv2 uv22) {
+        ByteBuffer byteBuffer = uv22.r;
         byteBuffer.getClass();
-        rr2.l(byteBuffer.position() == 0 && byteBuffer.hasArray() && byteBuffer.arrayOffset() == 0);
-        return k(uv2Var, byteBuffer);
+        boolean bl5 = byteBuffer.position() == 0 && byteBuffer.hasArray() && byteBuffer.arrayOffset() == 0;
+        rr2.l(bl5);
+        return this.k(uv22, byteBuffer);
     }
 
-    public abstract qv2 k(uv2 uv2Var, ByteBuffer byteBuffer);
+    public abstract qv2 k(uv2 var1, ByteBuffer var2);
 }
+

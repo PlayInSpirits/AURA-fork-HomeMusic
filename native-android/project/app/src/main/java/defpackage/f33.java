@@ -1,66 +1,76 @@
 package defpackage;
 
+/*
+ * Decompiled with CFR 0.152.
+ * 
+ * Could not load the following classes:
+ *  android.os.Bundle
+ */
 import android.os.Bundle;
 import java.io.Serializable;
 
-/* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
-/* JADX INFO: loaded from: classes.dex */
-public final class f33 extends h33 {
+public final class f33
+extends h33 {
     public final Class r;
 
-    public f33(Class cls) {
+    public f33(Class clazz) {
         super(true);
-        if (!Serializable.class.isAssignableFrom(cls)) {
-            nz2.h(cls, " does not implement Serializable.");
-            throw null;
+        if (Serializable.class.isAssignableFrom(clazz)) {
+            try {
+                StringBuilder stringBuilder = new StringBuilder("[L");
+                stringBuilder.append(clazz.getName());
+                stringBuilder.append(';');
+                this.r = clazz = Class.forName(stringBuilder.toString());
+                return;
+            }
+            catch (ClassNotFoundException classNotFoundException) {
+                er1.m(classNotFoundException);
+                throw null;
+            }
         }
-        try {
-            this.r = Class.forName("[L" + cls.getName() + ';');
-        } catch (ClassNotFoundException e) {
-            er1.m(e);
-            throw null;
-        }
+        nz2.h(clazz, " does not implement Serializable.");
+        throw null;
     }
 
-    @Override // defpackage.h33
-    public final Object a(String str, Bundle bundle) {
+    @Override
+    public final Object a(String string, Bundle bundle) {
         bundle.getClass();
-        str.getClass();
-        return (Serializable[]) bundle.get(str);
+        string.getClass();
+        return (Serializable[])bundle.get(string);
     }
 
-    @Override // defpackage.h33
+    @Override
     public final String b() {
         return this.r.getName();
     }
 
-    @Override // defpackage.h33
-    public final Object d(String str) {
-        str.getClass();
+    @Override
+    public final Object d(String string) {
+        string.getClass();
         throw new UnsupportedOperationException("Arrays don't support default values.");
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
-    /* JADX WARN: Type inference failed for: r3v1, types: [java.io.Serializable, java.io.Serializable[], java.lang.Object] */
-    @Override // defpackage.h33
-    public final void e(Bundle bundle, String str, Object obj) {
-        ?? r3 = (Serializable[]) obj;
-        str.getClass();
-        this.r.cast(r3);
-        bundle.putSerializable(str, r3);
+    @Override
+    public final void e(Bundle bundle, String string, Object serializableArray) {
+        serializableArray = serializableArray;
+        string.getClass();
+        this.r.cast(serializableArray);
+        bundle.putSerializable(string, (Serializable)serializableArray);
     }
 
-    public final boolean equals(Object obj) {
-        if (this == obj) {
+    public final boolean equals(Object object) {
+        if (this == object) {
             return true;
         }
-        if (obj == null || !f33.class.equals(obj.getClass())) {
-            return false;
+        if (object != null && f33.class.equals(object.getClass())) {
+            object = (f33)object;
+            return h12.c(this.r, ((f33)object).r);
         }
-        return h12.c(this.r, ((f33) obj).r);
+        return false;
     }
 
     public final int hashCode() {
         return this.r.hashCode();
     }
 }
+

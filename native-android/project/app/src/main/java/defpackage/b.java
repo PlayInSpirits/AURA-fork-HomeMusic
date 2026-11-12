@@ -1,5 +1,8 @@
 package defpackage;
 
+/*
+ * Decompiled with CFR 0.152.
+ */
 import java.io.Serializable;
 import java.lang.reflect.Modifier;
 import java.lang.reflect.ParameterizedType;
@@ -7,151 +10,178 @@ import java.lang.reflect.Type;
 import java.util.Arrays;
 import java.util.Objects;
 
-/* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
-/* JADX INFO: loaded from: classes.dex */
-public final class b implements ParameterizedType, Serializable {
-    public final /* synthetic */ int n = 1;
+public final class b
+implements ParameterizedType,
+Serializable {
+    public final int n;
     public final Type o;
     public final Object p;
     public final Serializable q;
 
-    /* JADX WARN: Type inference failed for: r5v5, types: [java.io.Serializable, java.lang.reflect.Type[]] */
-    public b(Type type, Type type2, Type[] typeArr) {
+    public b(Type type2, Class clazz, Type[] typeArray) {
+        boolean bl5 = true;
+        this.n = 1;
+        clazz.getClass();
+        if (typeArray.length != clazz.getTypeParameters().length) {
+            bl5 = false;
+        }
+        rr2.l(bl5);
+        b15.b(typeArray, "type parameter");
+        this.o = type2;
+        this.q = clazz;
+        this.p = x05.p.c(typeArray);
+    }
+
+    public b(Type object, Type type2, Type[] typeArray) {
+        int n16;
+        int n17 = 0;
+        this.n = 0;
         Objects.requireNonNull(type2);
         if (type2 instanceof Class) {
-            Class cls = (Class) type2;
-            boolean z = true;
-            boolean z2 = Modifier.isStatic(cls.getModifiers()) || cls.getEnclosingClass() == null;
-            if (type == null && !z2) {
-                z = false;
+            Class clazz = (Class)type2;
+            boolean bl5 = Modifier.isStatic(clazz.getModifiers());
+            boolean bl6 = true;
+            n16 = !bl5 && clazz.getEnclosingClass() != null ? 0 : 1;
+            bl5 = bl6;
+            if (object == null) {
+                bl5 = n16 != 0 ? bl6 : false;
             }
-            vr1.d(z);
+            vr1.d(bl5);
         }
-        this.o = type == null ? null : gb.h(type);
+        object = object == null ? null : gb.h((Type)object);
+        this.o = object;
         this.p = gb.h(type2);
-        ?? r5 = (Type[]) typeArr.clone();
-        this.q = r5;
-        int length = r5.length;
-        for (int i = 0; i < length; i++) {
-            Objects.requireNonNull(((Type[]) this.q)[i]);
-            gb.i(((Type[]) this.q)[i]);
-            Type[] typeArr2 = (Type[]) this.q;
-            typeArr2[i] = gb.h(typeArr2[i]);
+        this.q = object = (Type[])typeArray.clone();
+        int n18 = ((Type[])object).length;
+        for (n16 = n17; n16 < n18; ++n16) {
+            Objects.requireNonNull(((Type[])this.q)[n16]);
+            gb.i(((Type[])this.q)[n16]);
+            object = (Type[])this.q;
+            object[n16] = gb.h(object[n16]);
         }
     }
 
-    public final boolean equals(Object obj) {
-        switch (this.n) {
-            case 0:
-                return (obj instanceof ParameterizedType) && gb.v(this, (ParameterizedType) obj);
-            default:
-                if (obj instanceof ParameterizedType) {
-                    ParameterizedType parameterizedType = (ParameterizedType) obj;
-                    if (((Class) this.q).equals(parameterizedType.getRawType()) && si0.s(this.o, parameterizedType.getOwnerType()) && Arrays.equals((Type[]) ((gy3) this.p).toArray(new Type[0]), parameterizedType.getActualTypeArguments())) {
-                        return true;
-                    }
+    public final boolean equals(Object object) {
+        int n16 = this.n;
+        boolean bl5 = true;
+        boolean bl6 = true;
+        switch (n16) {
+            default: {
+                if (!(object instanceof ParameterizedType && ((Class)this.q).equals((object = (ParameterizedType)object).getRawType()) && si0.s(this.o, object.getOwnerType()) && Arrays.equals((Type[])((gy3)this.p).toArray(new Type[0]), object.getActualTypeArguments()))) {
+                    bl6 = false;
                 }
-                return false;
+                return bl6;
+            }
+            case 0: 
         }
+        bl6 = object instanceof ParameterizedType && gb.v(this, (ParameterizedType)object) ? bl5 : false;
+        return bl6;
     }
 
-    @Override // java.lang.reflect.ParameterizedType
+    @Override
     public final Type[] getActualTypeArguments() {
         switch (this.n) {
-            case 0:
-                return (Type[]) ((Type[]) this.q).clone();
-            default:
-                return (Type[]) ((gy3) this.p).toArray(new Type[0]);
+            default: {
+                return (Type[])((gy3)this.p).toArray(new Type[0]);
+            }
+            case 0: 
         }
+        return (Type[])((Type[])this.q).clone();
     }
 
-    @Override // java.lang.reflect.ParameterizedType
+    @Override
     public final Type getOwnerType() {
         switch (this.n) {
-            case 0:
-                break;
+            default: {
+                return this.o;
+            }
+            case 0: 
         }
         return this.o;
     }
 
-    @Override // java.lang.reflect.ParameterizedType
+    @Override
     public final Type getRawType() {
         switch (this.n) {
-            case 0:
-                return (Type) this.p;
-            default:
-                return (Class) this.q;
+            default: {
+                return (Class)this.q;
+            }
+            case 0: 
         }
+        return (Type)this.p;
     }
 
     public final int hashCode() {
-        int i = this.n;
-        Object obj = this.q;
-        Object obj2 = this.p;
-        Type type = this.o;
-        switch (i) {
-            case 0:
-                return (Arrays.hashCode((Type[]) obj) ^ ((Type) obj2).hashCode()) ^ (type != null ? type.hashCode() : 0);
-            default:
-                return (((gy3) obj2).hashCode() ^ (type != null ? type.hashCode() : 0)) ^ ((Class) obj).hashCode();
+        int n16 = this.n;
+        Serializable serializable = this.q;
+        Object object = this.p;
+        int n17 = 0;
+        int n18 = 0;
+        Type type2 = this.o;
+        switch (n16) {
+            default: {
+                n17 = type2 == null ? n18 : type2.hashCode();
+                return ((gy3)object).hashCode() ^ n17 ^ ((Class)serializable).hashCode();
+            }
+            case 0: 
         }
+        n18 = Arrays.hashCode((Type[])serializable);
+        n16 = ((Type)object).hashCode();
+        if (type2 != null) {
+            n17 = type2.hashCode();
+        }
+        return n18 ^ n16 ^ n17;
     }
 
     public final String toString() {
-        int i = this.n;
-        int i2 = 1;
-        Object obj = this.p;
-        Object obj2 = this.q;
-        switch (i) {
-            case 0:
-                Type type = (Type) obj;
-                Type[] typeArr = (Type[]) obj2;
-                int length = typeArr.length;
-                if (length == 0) {
-                    return gb.e0(type);
-                }
-                StringBuilder sb = new StringBuilder((length + 1) * 30);
-                sb.append(gb.e0(type));
-                sb.append("<");
-                sb.append(gb.e0(typeArr[0]));
-                while (i2 < length) {
-                    sb.append(", ");
-                    sb.append(gb.e0(typeArr[i2]));
-                    i2++;
-                }
-                sb.append(">");
-                return sb.toString();
-            default:
-                StringBuilder sb2 = new StringBuilder();
+        int n16 = this.n;
+        Object object = this.p;
+        Object object2 = this.q;
+        switch (n16) {
+            default: {
+                Object object3;
+                StringBuilder stringBuilder = new StringBuilder();
                 Type type2 = this.o;
                 if (type2 != null) {
-                    x05 x05Var = x05.p;
-                    x05Var.getClass();
-                    if (!(x05Var instanceof v05)) {
-                        sb2.append(x05Var.b(type2));
-                        sb2.append('.');
+                    object3 = x05.p;
+                    ((Object)object3).getClass();
+                    if (!(object3 instanceof v05)) {
+                        stringBuilder.append(object3.b(type2));
+                        stringBuilder.append('.');
                     }
                 }
-                sb2.append(((Class) obj2).getName());
-                sb2.append('<');
-                c32 c32Var = b15.a;
-                gy3 gy3Var = (gy3) obj;
-                x05 x05Var2 = x05.p;
-                Objects.requireNonNull(x05Var2);
-                ss2 ss2Var = new ss2(23, x05Var2);
-                gy3Var.getClass();
-                sb2.append(c32Var.b(new g22(gy3Var, ss2Var, i2)));
-                sb2.append('>');
-                return sb2.toString();
+                stringBuilder.append(((Class)object2).getName());
+                stringBuilder.append('<');
+                object2 = b15.a;
+                object = (gy3)object;
+                object3 = x05.p;
+                Objects.requireNonNull(object3);
+                object3 = new ss2(23, object3);
+                object.getClass();
+                stringBuilder.append(((uc0)object2).b(new g22((Iterable)object, object3, 1)));
+                stringBuilder.append('>');
+                return stringBuilder.toString();
+            }
+            case 0: 
         }
-    }
-
-    public b(Type type, Class cls, Type[] typeArr) {
-        cls.getClass();
-        rr2.l(typeArr.length == cls.getTypeParameters().length);
-        b15.b(typeArr, "type parameter");
-        this.o = type;
-        this.q = cls;
-        this.p = x05.p.c(typeArr);
+        Object object4 = (Type)object;
+        object2 = (Type[])object2;
+        n16 = ((Type[])object2).length;
+        if (n16 == 0) {
+            object4 = gb.e0((Type)object4);
+        } else {
+            object = new StringBuilder((n16 + 1) * 30);
+            ((StringBuilder)object).append(gb.e0((Type)object4));
+            ((StringBuilder)object).append("<");
+            ((StringBuilder)object).append(gb.e0(object2[0]));
+            for (int i16 = 1; i16 < n16; ++i16) {
+                ((StringBuilder)object).append(", ");
+                ((StringBuilder)object).append(gb.e0((Type)object2[i16]));
+            }
+            ((StringBuilder)object).append(">");
+            object4 = ((StringBuilder)object).toString();
+        }
+        return object4;
     }
 }
+

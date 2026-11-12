@@ -1,16 +1,29 @@
 package defpackage;
 
+/*
+ * Decompiled with CFR 0.152.
+ * 
+ * Could not load the following classes:
+ *  android.os.IBinder
+ *  android.os.Trace
+ *  android.view.View
+ *  android.view.View$MeasureSpec
+ *  android.view.ViewGroup
+ *  android.view.ViewGroup$LayoutParams
+ *  android.view.ViewParent
+ */
 import android.os.IBinder;
 import android.os.Trace;
-import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import app.homemusic.R;
+import android.view.ViewParent;
 import java.lang.ref.WeakReference;
 
-/* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
-/* JADX INFO: loaded from: classes.dex */
-public abstract class b0 extends ViewGroup {
+/*
+ * Illegal identifiers - consider using --renameillegalidents true
+ */
+public abstract class b0
+extends ViewGroup {
     public WeakReference n;
     public IBinder o;
     public wd5 p;
@@ -27,18 +40,17 @@ public abstract class b0 extends ViewGroup {
     public static /* synthetic */ void getShowLayoutBounds$annotations() {
     }
 
-    private final void setParentContext(u80 u80Var) {
-        if (this.q != u80Var) {
-            this.q = u80Var;
-            if (u80Var != null) {
+    private final void setParentContext(u80 object) {
+        if (this.q != object) {
+            this.q = object;
+            if (object != null) {
                 this.n = null;
             }
-            wd5 wd5Var = this.p;
-            if (wd5Var != null) {
-                wd5Var.a();
+            if ((object = this.p) != null) {
+                ((wd5)object).a();
                 this.p = null;
-                if (isAttachedToWindow()) {
-                    e();
+                if (this.isAttachedToWindow()) {
+                    this.e();
                 }
             }
         }
@@ -51,37 +63,60 @@ public abstract class b0 extends ViewGroup {
         }
     }
 
-    public abstract void a(int i, rg1 rg1Var);
+    public abstract void a(int var1, rg1 var2);
 
-    @Override // android.view.ViewGroup
     public final void addView(View view) {
-        c();
+        this.c();
         super.addView(view);
     }
 
-    @Override // android.view.ViewGroup
-    public final boolean addViewInLayout(View view, int i, ViewGroup.LayoutParams layoutParams) {
-        c();
-        return super.addViewInLayout(view, i, layoutParams);
+    public final void addView(View view, int n16) {
+        this.c();
+        super.addView(view, n16);
+    }
+
+    public final void addView(View view, int n16, int n17) {
+        this.c();
+        super.addView(view, n16, n17);
+    }
+
+    public final void addView(View view, int n16, ViewGroup.LayoutParams layoutParams) {
+        this.c();
+        super.addView(view, n16, layoutParams);
+    }
+
+    public final void addView(View view, ViewGroup.LayoutParams layoutParams) {
+        this.c();
+        super.addView(view, layoutParams);
+    }
+
+    public final boolean addViewInLayout(View view, int n16, ViewGroup.LayoutParams layoutParams) {
+        this.c();
+        return super.addViewInLayout(view, n16, layoutParams);
+    }
+
+    public final boolean addViewInLayout(View view, int n16, ViewGroup.LayoutParams layoutParams, boolean bl5) {
+        this.c();
+        return super.addViewInLayout(view, n16, layoutParams, bl5);
     }
 
     public final void b() {
-        if (isAttachedToWindow()) {
-            setPreviousAttachedWindowToken(getWindowToken());
+        if (this.isAttachedToWindow()) {
+            this.setPreviousAttachedWindowToken(this.getWindowToken());
             if (this.r == null) {
-                ra raVar = null;
-                if (getChildCount() != 0) {
-                    View childAt = getChildAt(0);
-                    if (childAt instanceof ra) {
-                        raVar = (ra) childAt;
-                    }
+                Object object;
+                int n16 = this.getChildCount();
+                ra ra6 = null;
+                if (n16 != 0 && (object = this.getChildAt(0)) instanceof ra) {
+                    ra6 = (ra)object;
                 }
-                if (raVar != null) {
-                    raVar.setComposeViewContext(h(au0.p(this), raVar.getComposeViewContext()));
+                if (ra6 != null) {
+                    object = ra6.getComposeViewContext();
+                    ra6.setComposeViewContext(this.h(au0.p((View)this), (h80)object));
                 }
             }
-            if (getShouldCreateCompositionOnAttachedToWindow()) {
-                e();
+            if (this.getShouldCreateCompositionOnAttachedToWindow()) {
+                this.e();
             }
         }
     }
@@ -90,185 +125,148 @@ public abstract class b0 extends ViewGroup {
         if (this.u) {
             return;
         }
-        er1.l(xa3.h("Cannot add views to ", getClass().getSimpleName(), "; only Compose content is supported"));
+        er1.l(xa3.h("Cannot add views to ", ((Object)((Object)this)).getClass().getSimpleName(), "; only Compose content is supported"));
     }
 
     public final void d() {
-        View childAt = getChildAt(0);
-        ra raVar = childAt instanceof ra ? (ra) childAt : null;
-        if (raVar != null && raVar.P0) {
-            raVar.getComposeViewContext().b();
-            raVar.P0 = false;
+        Object object = this.getChildAt(0);
+        object = object instanceof ra ? (ra)object : null;
+        if (object != null && ((ra)object).P0) {
+            ((ra)object).getComposeViewContext().b();
+            ((ra)object).P0 = false;
         }
-        wd5 wd5Var = this.p;
-        if (wd5Var != null) {
-            wd5Var.a();
+        if ((object = this.p) != null) {
+            ((wd5)object).a();
         }
         this.p = null;
-        requestLayout();
+        this.requestLayout();
     }
 
+    /*
+     * Enabled aggressive block sorting
+     * Enabled unnecessary exception pruning
+     * Enabled aggressive exception aggregation
+     */
     public final void e() {
-        if (this.p == null) {
-            int i = 0;
-            try {
-                this.u = true;
-                Trace.beginSection("Compose:initializeView");
-                try {
-                    h80 h80VarF = this.r;
-                    if (h80VarF == null) {
-                        h80VarF = f();
-                    }
-                    this.p = zd5.a(this, h80VarF, new r70(1003123809, true, new z(i, this)));
-                    Trace.endSection();
-                    this.u = false;
-                } catch (Throwable th) {
-                    Trace.endSection();
-                    throw th;
+        Throwable throwable3;
+        Throwable throwable22;
+        block8: {
+            h80 h802;
+            Object object;
+            block7: {
+                if (this.p != null) {
+                    return;
                 }
-            } catch (Throwable th2) {
-                this.u = false;
-                throw th2;
+                try {
+                    this.u = true;
+                    Trace.beginSection((String)"Compose:initializeView");
+                }
+                catch (Throwable throwable22) {}
+                try {
+                    object = this.r;
+                    h802 = object;
+                    if (object != null) break block7;
+                    h802 = this.f();
+                }
+                catch (Throwable throwable3) {
+                    break block8;
+                }
             }
+            z z16 = new z(0, (Object)this);
+            object = new r70(1003123809, true, z16);
+            this.p = zd5.a(this, h802, (r70)object);
+            Trace.endSection();
+            this.u = false;
+            return;
         }
+        Trace.endSection();
+        throw throwable3;
+        this.u = false;
+        throw throwable22;
     }
 
-    /* JADX WARN: Code duplicated, block: B:4:0x0007  */
+    /*
+     * Enabled aggressive block sorting
+     */
     public final h80 f() {
-        h80 composeViewContext;
-        f75 f75Var;
-        f75 f75Var2 = null;
-        if (getChildCount() == 0) {
-            composeViewContext = null;
-        } else {
-            View childAt = getChildAt(0);
-            ra raVar = childAt instanceof ra ? (ra) childAt : null;
-            if (raVar != null) {
-                composeViewContext = raVar.getComposeViewContext();
-            } else {
-                composeViewContext = null;
-            }
+        Object object;
+        int n16 = this.getChildCount();
+        Object var6_2 = null;
+        h80 h802 = n16 != 0 && (object = (object = this.getChildAt(0)) instanceof ra ? (ra)object : null) != null ? ((ra)object).getComposeViewContext() : null;
+        View view = au0.p((View)this);
+        object = au0.q(view);
+        if (object != null) {
+            return this.h(view, (h80)object);
         }
-        View viewP = au0.p(this);
-        h80 h80VarQ = au0.q(viewP);
-        if (h80VarQ != null) {
-            return h(viewP, h80VarQ);
-        }
-        u80 u80VarG = g();
-        ba2 ba2VarU = j51.u(viewP);
-        if (ba2VarU == null) {
-            ba2VarU = composeViewContext != null ? composeViewContext.d() : null;
-            if (ba2VarU == null) {
+        u80 u802 = this.g();
+        Object object2 = object = j51.u(view);
+        if (object == null) {
+            object = h802 != null ? h802.d() : null;
+            if (object == null) {
                 kf2.o("Composed into the View which doesn't propagate ViewTreeLifecycleOwner!");
                 return null;
             }
+            object2 = object;
         }
-        ba2 ba2Var = ba2VarU;
-        j54 j54VarY = kb4.y(viewP);
-        if (j54VarY == null) {
-            if (composeViewContext != null) {
-                composeViewContext.g();
-                j54VarY = composeViewContext.e;
-                j54VarY.getClass();
+        Object object3 = object = kb4.y(view);
+        if (object == null) {
+            if (h802 != null) {
+                h802.g();
+                object = h802.e;
+                object.getClass();
             } else {
-                j54VarY = null;
+                object = null;
             }
-            if (j54VarY == null) {
+            if (object == null) {
                 kf2.o("Composed into the View which doesn't propagate ViewTreeSavedStateRegistryOwner!");
                 return null;
             }
+            object3 = object;
         }
-        j54 j54Var = j54VarY;
-        f75 f75VarO = gi1.o(viewP);
-        if (f75VarO == null) {
-            if (composeViewContext != null) {
-                composeViewContext.g();
-                f75Var2 = composeViewContext.f;
+        if ((object = gi1.o(view)) == null) {
+            object = var6_2;
+            if (h802 != null) {
+                h802.g();
+                object = h802.f;
             }
-            f75Var = f75Var2;
-        } else {
-            f75Var = f75VarO;
         }
-        h80 h80Var = new h80(au0.q(au0.p(viewP)), viewP, u80VarG, ba2Var, j54Var, f75Var);
-        viewP.setTag(R.id.androidx_compose_ui_view_compose_view_context, new WeakReference(h80Var));
-        return h80Var;
+        object = new h80(au0.q(au0.p(view)), view, u802, (ba2)object2, (j54)object3, (f75)object);
+        view.setTag(2131361997, new WeakReference<Object>(object));
+        return object;
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
-    /* JADX WARN: Type inference failed for: r0v0, types: [u80] */
-    /* JADX WARN: Type inference failed for: r0v1, types: [u80] */
-    /* JADX WARN: Type inference failed for: r0v12 */
-    /* JADX WARN: Type inference failed for: r0v14 */
-    /* JADX WARN: Type inference failed for: r0v15 */
-    /* JADX WARN: Type inference failed for: r0v16 */
-    /* JADX WARN: Type inference failed for: r0v17 */
-    /* JADX WARN: Type inference failed for: r0v2, types: [u80] */
-    /* JADX WARN: Type inference failed for: r0v3 */
-    /* JADX WARN: Type inference failed for: r0v4 */
-    /* JADX WARN: Type inference failed for: r0v5 */
-    /* JADX WARN: Type inference failed for: r0v7 */
-    /* JADX WARN: Type inference failed for: r0v8 */
-    /* JADX WARN: Type inference failed for: r0v9, types: [tv3] */
-    /* JADX WARN: Type inference failed for: r2v0 */
-    /* JADX WARN: Type inference failed for: r2v1, types: [java.lang.Object] */
-    /* JADX WARN: Type inference failed for: r2v2 */
-    /* JADX WARN: Type inference failed for: r3v11 */
-    /* JADX WARN: Type inference failed for: r3v12, types: [java.lang.Object] */
-    /* JADX WARN: Type inference failed for: r3v13 */
-    /* JADX WARN: Type inference failed for: r3v19 */
+    /*
+     * Exception decompiling
+     */
     public final u80 g() {
-        u80 u80Var;
-        ?? A = this.q;
-        if (A == 0) {
-            A = ic5.a(this);
-            if (A == 0) {
-                Object parent = getParent();
-                while (true) {
-                    if (A != 0 || !(parent instanceof View)) {
-                        A = A;
-                        break;
-                    }
-                    A = A;
-                    View view = (View) parent;
-                    u80 u80VarA = ic5.a(view);
-                    parent = au0.z(view);
-                    A = u80VarA;
-                }
-            }
-            ov3 ov3Var = ov3.o;
-            if (A != 0) {
-                ?? r3 = (!(A instanceof tv3) || ((ov3) ((tv3) A).u.getValue()).compareTo(ov3Var) > 0) ? A : 0;
-                if (r3 != 0) {
-                    this.n = new WeakReference(r3);
-                }
-            } else {
-                A = 0;
-            }
-            if (A == 0) {
-                WeakReference weakReference = this.n;
-                if (weakReference == null || (u80Var = (u80) weakReference.get()) == null || ((u80Var instanceof tv3) && ((ov3) ((tv3) u80Var).u.getValue()).compareTo(ov3Var) <= 0)) {
-                    A = u80Var;
-                    A = u80Var;
-                    A = 0;
-                }
-                if (A == 0) {
-                    A = ic5.b(this);
-                    ?? r2 = ((ov3) A.u.getValue()).compareTo(ov3Var) > 0 ? A : 0;
-                    if (r2 != 0) {
-                        this.n = new WeakReference(r2);
-                    }
-                }
-            }
-        }
-        return A;
+        /*
+         * This method has failed to decompile.  When submitting a bug report, please provide this stack trace, and (if you hold appropriate legal rights) the relevant class file.
+         * 
+         * org.benf.cfr.reader.util.ConfusedCFRException: Statement already marked as first in another block
+         *     at org.benf.cfr.reader.bytecode.analysis.opgraph.Op03SimpleStatement.markFirstStatementInBlock(Op03SimpleStatement.java:461)
+         *     at org.benf.cfr.reader.bytecode.analysis.opgraph.op3rewriters.Misc.markWholeBlock(Misc.java:251)
+         *     at org.benf.cfr.reader.bytecode.analysis.opgraph.op3rewriters.ConditionalRewriter.considerAsSimpleIf(ConditionalRewriter.java:673)
+         *     at org.benf.cfr.reader.bytecode.analysis.opgraph.op3rewriters.ConditionalRewriter.identifyNonjumpingConditionals(ConditionalRewriter.java:56)
+         *     at org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysisInner(CodeAnalyser.java:722)
+         *     at org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysisOrWrapFail(CodeAnalyser.java:278)
+         *     at org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysis(CodeAnalyser.java:201)
+         *     at org.benf.cfr.reader.entities.attributes.AttributeCode.analyse(AttributeCode.java:94)
+         *     at org.benf.cfr.reader.entities.Method.analyse(Method.java:531)
+         *     at org.benf.cfr.reader.entities.ClassFile.analyseMid(ClassFile.java:1055)
+         *     at org.benf.cfr.reader.entities.ClassFile.analyseTop(ClassFile.java:942)
+         *     at org.benf.cfr.reader.Driver.doJarVersionTypes(Driver.java:257)
+         *     at org.benf.cfr.reader.Driver.doJar(Driver.java:139)
+         *     at org.benf.cfr.reader.CfrDriverImpl.analyse(CfrDriverImpl.java:76)
+         *     at org.benf.cfr.reader.Main.main(Main.java:54)
+         */
+        throw new IllegalStateException("Decompilation failed");
     }
 
-    /* JADX INFO: renamed from: getAutoClearFocusBehavior-4UtRPd4, reason: not valid java name */
-    public final int m65getAutoClearFocusBehavior4UtRPd4() {
-        Object tag = getTag(R.id.auto_clear_focus_behavior_tag);
-        on onVar = tag instanceof on ? (on) tag : null;
-        if (onVar != null) {
-            return onVar.a;
+    public final int getAutoClearFocusBehavior-4UtRPd4() {
+        Object object = this.getTag(2131362053);
+        object = object instanceof on ? (on)object : null;
+        if (object != null) {
+            return ((on)object).a;
         }
         return 1;
     }
@@ -289,174 +287,142 @@ public abstract class b0 extends ViewGroup {
         return this.t;
     }
 
-    public final h80 h(View view, h80 h80Var) {
-        u80 u80VarG = g();
-        ba2 ba2VarU = j51.u(view);
-        f75 f75VarO = gi1.o(view);
-        j54 j54VarY = kb4.y(view);
-        if (u80VarG == h80Var.c() && ba2VarU == h80Var.d()) {
-            h80Var.g();
-            if (f75VarO == h80Var.f) {
-                h80Var.g();
-                j54 j54Var = h80Var.e;
-                j54Var.getClass();
-                if (j54VarY == j54Var) {
-                    return h80Var;
+    public final h80 h(View view, h80 h802) {
+        ba2 ba22;
+        u80 u802 = this.g();
+        ba2 ba23 = j51.u(view);
+        f75 f752 = gi1.o(view);
+        j54 j542 = kb4.y(view);
+        if (u802 == h802.c() && ba23 == h802.d()) {
+            h802.g();
+            if (f752 == h802.f) {
+                h802.g();
+                ba22 = h802.e;
+                ba22.getClass();
+                if (j542 == ba22) {
+                    return h802;
                 }
             }
         }
-        if (u80VarG.j() != h80Var.c().j()) {
-            d();
+        if (u802.j() != h802.c().j()) {
+            this.d();
         }
-        if (ba2VarU == null) {
-            ba2VarU = h80Var.d();
+        ba22 = ba23;
+        if (ba23 == null) {
+            ba22 = h802.d();
         }
-        ba2 ba2Var = ba2VarU;
-        if (j54VarY == null) {
-            h80Var.g();
-            j54VarY = h80Var.e;
-            j54VarY.getClass();
+        ba23 = j542;
+        if (j542 == null) {
+            h802.g();
+            ba23 = h802.e;
+            ba23.getClass();
         }
-        h80 h80Var2 = new h80(h80Var, view, u80VarG, ba2Var, j54VarY, f75VarO);
-        view.setTag(R.id.androidx_compose_ui_view_compose_view_context, new WeakReference(h80Var2));
-        return h80Var2;
+        h802 = new h80(h802, view, u802, ba22, (j54)ba23, f752);
+        view.setTag(2131361997, new WeakReference<h80>(h802));
+        return h802;
     }
 
-    @Override // android.view.ViewGroup
     public final boolean isTransitionGroup() {
         return !this.v || super.isTransitionGroup();
+        {
+        }
     }
 
-    @Override // android.view.ViewGroup, android.view.View
     public final void onAttachedToWindow() {
+        View view;
         super.onAttachedToWindow();
-        w03 w03Var = ic5.a;
-        Object objZ = au0.z(this);
-        View view = this;
-        while (objZ instanceof View) {
-            View view2 = (View) objZ;
-            if (view2.getId() == 16908290) {
-                break;
-            }
-            view = view2;
-            objZ = view2.getParent();
+        Object object = ic5.a;
+        ViewParent viewParent = au0.z((View)this);
+        object = this;
+        while (viewParent instanceof View && (view = (View)viewParent).getId() != 0x1020002) {
+            viewParent = view.getParent();
+            object = view;
         }
-        if (view.getParent() == null) {
-            getHandler().postAtFrontOfQueue(new a0(0, this));
-        } else {
-            b();
-        }
-    }
-
-    @Override // android.view.ViewGroup, android.view.View
-    public final void onLayout(boolean z, int i, int i2, int i3, int i4) {
-        View childAt = getChildAt(0);
-        if (childAt != null) {
-            childAt.layout(getPaddingLeft(), getPaddingTop(), (i3 - i) - getPaddingRight(), (i4 - i2) - getPaddingBottom());
-        }
-    }
-
-    @Override // android.view.View
-    public final void onMeasure(int i, int i2) {
-        e();
-        View childAt = getChildAt(0);
-        if (childAt == null) {
-            super.onMeasure(i, i2);
+        if (object.getParent() == null) {
+            this.getHandler().postAtFrontOfQueue((Runnable)new a0(0, (Object)this));
             return;
         }
-        childAt.measure(View.MeasureSpec.makeMeasureSpec(Math.max(0, (View.MeasureSpec.getSize(i) - getPaddingLeft()) - getPaddingRight()), View.MeasureSpec.getMode(i)), View.MeasureSpec.makeMeasureSpec(Math.max(0, (View.MeasureSpec.getSize(i2) - getPaddingTop()) - getPaddingBottom()), View.MeasureSpec.getMode(i2)));
-        setMeasuredDimension(getPaddingRight() + getPaddingLeft() + childAt.getMeasuredWidth(), getPaddingBottom() + getPaddingTop() + childAt.getMeasuredHeight());
+        this.b();
     }
 
-    @Override // android.view.View
-    public final void onRtlPropertiesChanged(int i) {
-        View childAt = getChildAt(0);
-        if (childAt != null) {
-            childAt.setLayoutDirection(i);
+    public final void onLayout(boolean bl5, int n16, int n17, int n18, int n19) {
+        View view = this.getChildAt(0);
+        if (view != null) {
+            view.layout(this.getPaddingLeft(), this.getPaddingTop(), n18 - n16 - this.getPaddingRight(), n19 - n17 - this.getPaddingBottom());
         }
     }
 
-    /* JADX INFO: renamed from: setAutoClearFocusBehavior-17tfJxM, reason: not valid java name */
-    public final void m66setAutoClearFocusBehavior17tfJxM(int i) {
-        setTag(R.id.auto_clear_focus_behavior_tag, new on(i));
+    public final void onMeasure(int n16, int n17) {
+        this.e();
+        View view = this.getChildAt(0);
+        if (view == null) {
+            super.onMeasure(n16, n17);
+            return;
+        }
+        int n18 = Math.max(0, View.MeasureSpec.getSize((int)n16) - this.getPaddingLeft() - this.getPaddingRight());
+        int n19 = Math.max(0, View.MeasureSpec.getSize((int)n17) - this.getPaddingTop() - this.getPaddingBottom());
+        view.measure(View.MeasureSpec.makeMeasureSpec((int)n18, (int)View.MeasureSpec.getMode((int)n16)), View.MeasureSpec.makeMeasureSpec((int)n19, (int)View.MeasureSpec.getMode((int)n17)));
+        n18 = view.getMeasuredWidth();
+        int n26 = this.getPaddingLeft();
+        n17 = this.getPaddingRight();
+        n16 = view.getMeasuredHeight();
+        n19 = this.getPaddingTop();
+        this.setMeasuredDimension(n17 + (n26 + n18), this.getPaddingBottom() + (n19 + n16));
     }
 
-    public final void setComposeViewContext$ui(h80 h80Var) {
-        if (this.r != h80Var) {
-            if (h80Var == null) {
-                d();
-            } else if (getChildCount() != 0) {
-                View childAt = getChildAt(0);
-                ra raVar = childAt instanceof ra ? (ra) childAt : null;
-                if (raVar != null) {
-                    if (raVar.getCoroutineContext() != h80Var.c().j()) {
-                        d();
-                    }
-                    raVar.setComposeViewContext(h80Var);
+    public final void onRtlPropertiesChanged(int n16) {
+        View view = this.getChildAt(0);
+        if (view != null) {
+            view.setLayoutDirection(n16);
+        }
+    }
+
+    public final void setAutoClearFocusBehavior-17tfJxM(int n16) {
+        this.setTag(2131362053, new on(n16));
+    }
+
+    public final void setComposeViewContext$ui(h80 h802) {
+        if (this.r != h802) {
+            Object object;
+            if (h802 == null) {
+                this.d();
+            } else if (this.getChildCount() != 0 && (object = (object = this.getChildAt(0)) instanceof ra ? (ra)object : null) != null) {
+                if (((ra)object).getCoroutineContext() != h802.c().j()) {
+                    this.d();
                 }
+                ((ra)object).setComposeViewContext(h802);
             }
-            this.r = h80Var;
+            this.r = h802;
         }
     }
 
-    public final void setParentCompositionContext(u80 u80Var) {
-        setParentContext(u80Var);
+    public final void setParentCompositionContext(u80 u802) {
+        this.setParentContext(u802);
     }
 
-    public final void setShowLayoutBounds(boolean z) {
-        this.t = z;
-        KeyEvent.Callback childAt = getChildAt(0);
-        if (childAt != null) {
-            ((ra) ((ub3) childAt)).setShowLayoutBounds(z);
+    public final void setShowLayoutBounds(boolean bl5) {
+        this.t = bl5;
+        View view = this.getChildAt(0);
+        if (view != null) {
+            ((ra)((ub3)view)).setShowLayoutBounds(bl5);
         }
     }
 
-    @Override // android.view.ViewGroup
-    public void setTransitionGroup(boolean z) {
-        super.setTransitionGroup(z);
+    public void setTransitionGroup(boolean bl5) {
+        super.setTransitionGroup(bl5);
         this.v = true;
     }
 
-    public final void setViewCompositionStrategy(l65 l65Var) {
-        gf1 gf1Var = this.s;
-        if (gf1Var != null) {
-            gf1Var.invoke();
+    public final void setViewCompositionStrategy(l65 l652) {
+        gf1 gf12 = this.s;
+        if (gf12 != null) {
+            gf12.invoke();
         }
-        this.s = l65Var.d(this);
+        this.s = l652.d(this);
     }
 
-    @Override // android.view.ViewGroup
     public final boolean shouldDelayChildPressedState() {
         return false;
     }
-
-    @Override // android.view.ViewGroup
-    public final void addView(View view, int i) {
-        c();
-        super.addView(view, i);
-    }
-
-    @Override // android.view.ViewGroup
-    public final boolean addViewInLayout(View view, int i, ViewGroup.LayoutParams layoutParams, boolean z) {
-        c();
-        return super.addViewInLayout(view, i, layoutParams, z);
-    }
-
-    @Override // android.view.ViewGroup
-    public final void addView(View view, int i, int i2) {
-        c();
-        super.addView(view, i, i2);
-    }
-
-    @Override // android.view.ViewGroup, android.view.ViewManager
-    public final void addView(View view, ViewGroup.LayoutParams layoutParams) {
-        c();
-        super.addView(view, layoutParams);
-    }
-
-    @Override // android.view.ViewGroup
-    public final void addView(View view, int i, ViewGroup.LayoutParams layoutParams) {
-        c();
-        super.addView(view, i, layoutParams);
-    }
 }
+

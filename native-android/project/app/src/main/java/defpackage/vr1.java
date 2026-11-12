@@ -1,6 +1,28 @@
 package defpackage;
 
-import android.R;
+/*
+ * Decompiled with CFR 0.152.
+ * 
+ * Could not load the following classes:
+ *  android.content.ContentResolver
+ *  android.content.Context
+ *  android.content.res.Resources
+ *  android.database.Cursor
+ *  android.graphics.Paint
+ *  android.graphics.PorterDuff$Mode
+ *  android.graphics.Rect
+ *  android.graphics.Typeface
+ *  android.net.Uri
+ *  android.os.Looper
+ *  android.text.Layout
+ *  android.util.DisplayMetrics
+ *  android.util.Log
+ *  android.util.TypedValue
+ *  android.view.View
+ *  android.view.View$OnAttachStateChangeListener
+ *  android.view.ViewGroup
+ *  android.webkit.MimeTypeMap
+ */
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.res.Resources;
@@ -12,30 +34,24 @@ import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Looper;
 import android.text.Layout;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.MimeTypeMap;
-import com.eddyizm.tempus.homemusic.WaveRetry;
-import com.google.android.gms.internal.fido.zzhf;
-import com.google.android.gms.internal.fido.zzhj;
+import java.io.Closeable;
 import java.io.File;
-import java.io.IOException;
 import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import java.util.TreeMap;
 import java.util.WeakHashMap;
 import java.util.concurrent.ConcurrentHashMap;
 
-/* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
-/* JADX INFO: loaded from: classes.dex */
 public abstract class vr1 {
     public static final f01 a = new f01(1, "RESUME_TOKEN");
     public static final byte[] b = new byte[4096];
@@ -44,708 +60,636 @@ public abstract class vr1 {
         new ConcurrentHashMap();
     }
 
-    /* JADX WARN: Code duplicated, block: B:41:0x0075  */
-    /* JADX WARN: Code duplicated, block: B:43:0x007b  */
-    /* JADX WARN: Code duplicated, block: B:45:0x0081  */
-    /* JADX WARN: Code duplicated, block: B:46:0x0089  */
-    /* JADX WARN: Code duplicated, block: B:49:0x0092  */
-    /* JADX WARN: Code duplicated, block: B:51:0x0098  */
-    /* JADX WARN: Code duplicated, block: B:52:0x00a8  */
-    /* JADX WARN: Code duplicated, block: B:56:0x00b0 A[PHI: r11
-  0x00b0: PHI (r11v6 java.lang.String) = (r11v5 java.lang.String), (r11v17 java.lang.String) binds: [B:48:0x0090, B:54:0x00ad] A[DONT_GENERATE, DONT_INLINE]] */
-    /* JADX WARN: Code duplicated, block: B:58:0x00b3  */
-    /* JADX WARN: Code duplicated, block: B:60:0x00b9  */
-    /* JADX WARN: Code duplicated, block: B:63:0x00bd  */
-    /* JADX WARN: Code duplicated, block: B:66:0x00c4  */
-    /* JADX WARN: Code duplicated, block: B:68:0x00ce  */
-    /* JADX WARN: Code duplicated, block: B:70:0x00d8  */
-    public static yc4 A(ContentResolver contentResolver, Uri uri, String str, String str2) {
-        ContentResolver contentResolver2;
-        Uri uri2;
-        Exception exc;
-        String strG0;
-        String lastPathSegment;
-        String type;
-        String extensionFromMimeType;
-        String str3;
-        String lowerCase;
-        Throwable th;
-        String str4;
-        uri.getClass();
-        long j = -1;
-        try {
-            contentResolver2 = contentResolver;
-            uri2 = uri;
-            try {
-                Cursor cursorQuery = contentResolver2.query(uri2, new String[]{"_display_name", "_size"}, null, null, null);
-                if (cursorQuery != null) {
-                    try {
-                        if (cursorQuery.moveToFirst()) {
-                            int columnIndex = cursorQuery.getColumnIndex("_display_name");
-                            int columnIndex2 = cursorQuery.getColumnIndex("_size");
-                            strG0 = columnIndex >= 0 ? cursorQuery.getString(columnIndex) : null;
-                            if (columnIndex2 >= 0) {
-                                try {
-                                    if (!cursorQuery.isNull(columnIndex2)) {
-                                        j = cursorQuery.getLong(columnIndex2);
-                                    }
-                                } catch (Throwable th2) {
-                                    str4 = strG0;
-                                    th = th2;
-                                    try {
-                                        throw th;
-                                    } catch (Throwable th3) {
+    /*
+     * Enabled aggressive block sorting
+     * Enabled unnecessary exception pruning
+     * Enabled aggressive exception aggregation
+     */
+    public static yc4 A(ContentResolver object, Uri object2, String string, String object3) {
+        long l16;
+        Object object4;
+        Object var12_4;
+        block44: {
+            block43: {
+                block42: {
+                    block41: {
+                        Object object5;
+                        block40: {
+                            block36: {
+                                long l17;
+                                block35: {
+                                    Cursor cursor;
+                                    block38: {
+                                        block39: {
+                                            block37: {
+                                                int n16;
+                                                object2.getClass();
+                                                var12_4 = null;
+                                                l17 = -1L;
+                                                try {
+                                                    cursor = object.query((Uri)object2, new String[]{"_display_name", "_size"}, null, null, null);
+                                                    if (cursor == null) break block35;
+                                                }
+                                                catch (Exception exception) {
+                                                    object4 = null;
+                                                    l16 = l17;
+                                                    break block36;
+                                                }
+                                                try {
+                                                    if (cursor.moveToFirst()) {
+                                                        int n17 = cursor.getColumnIndex("_display_name");
+                                                        n16 = cursor.getColumnIndex("_size");
+                                                        object5 = n17 >= 0 ? cursor.getString(n17) : null;
+                                                    }
+                                                    break block37;
+                                                }
+                                                catch (Throwable throwable) {
+                                                    object4 = null;
+                                                    break block38;
+                                                }
+                                                l16 = l17;
+                                                object4 = object5;
+                                                if (n16 >= 0) {
+                                                    l16 = l17;
+                                                    object4 = object5;
+                                                    try {
+                                                        if (!cursor.isNull(n16)) {
+                                                            l16 = cursor.getLong(n16);
+                                                            object4 = object5;
+                                                        }
+                                                        break block39;
+                                                    }
+                                                    catch (Throwable throwable) {
+                                                        object4 = object5;
+                                                        object5 = throwable;
+                                                        break block38;
+                                                    }
+                                                }
+                                                break block39;
+                                            }
+                                            object4 = null;
+                                            l16 = l17;
+                                        }
                                         try {
-                                            q05.h(cursorQuery, th);
-                                            throw th3;
-                                        } catch (Exception e) {
-                                            exc = e;
-                                            strG0 = str4;
-                                            Log.w("SharedFile", "Cannot query " + uri2, exc);
-                                            if (strG0 != null) {
-                                                lastPathSegment = uri2.getLastPathSegment();
-                                                if (lastPathSegment != null) {
-                                                    strG0 = qm4.G0(lastPathSegment, '/', lastPathSegment);
-                                                } else {
-                                                    strG0 = null;
-                                                }
-                                            } else {
-                                                lastPathSegment = uri2.getLastPathSegment();
-                                                if (lastPathSegment != null) {
-                                                    strG0 = qm4.G0(lastPathSegment, '/', lastPathSegment);
-                                                } else {
-                                                    strG0 = null;
-                                                }
-                                            }
-                                            type = contentResolver2.getType(uri2);
-                                            if (type == null) {
-                                                MimeTypeMap singleton = MimeTypeMap.getSingleton();
-                                                if (strG0 != null) {
-                                                    lowerCase = qm4.G0(strG0, '.', "").toLowerCase(Locale.ROOT);
-                                                    lowerCase.getClass();
-                                                } else {
-                                                    lowerCase = null;
-                                                }
-                                                type = singleton.getMimeTypeFromExtension(lowerCase);
-                                                if (type != null) {
-                                                    str = type;
-                                                }
-                                            } else {
-                                                str = type;
-                                            }
-                                            if (strG0 != null) {
-                                                str3 = qm4.u0(strG0) ? null : strG0;
-                                                if (str3 != null) {
-                                                    str2 = str3;
-                                                }
-                                            }
-                                            if (!qm4.n0(str2, '.')) {
-                                                extensionFromMimeType = (String) yc4.d.get(str);
-                                                if (extensionFromMimeType == null) {
-                                                    extensionFromMimeType = MimeTypeMap.getSingleton().getExtensionFromMimeType(str);
-                                                }
-                                                if (extensionFromMimeType != null) {
-                                                    str2 = b11.o(str2, ".", extensionFromMimeType);
-                                                }
-                                            }
-                                            return new yc4(str2, j, str);
+                                            cursor.close();
+                                            object5 = object4;
+                                            break block40;
+                                        }
+                                        catch (Exception exception) {
+                                            break block36;
+                                        }
+                                    }
+                                    try {
+                                        throw object5;
+                                    }
+                                    catch (Throwable throwable) {
+                                        try {
+                                            q05.h((Closeable)cursor, (Throwable)object5);
+                                            throw throwable;
+                                        }
+                                        catch (Exception exception) {
+                                            l16 = l17;
+                                            break block36;
                                         }
                                     }
                                 }
+                                object5 = null;
+                                l16 = l17;
+                                break block40;
                             }
-                        } else {
-                            strG0 = null;
+                            StringBuilder stringBuilder = new StringBuilder("Cannot query ");
+                            stringBuilder.append(object2);
+                            Log.w((String)"SharedFile", (String)stringBuilder.toString(), (Throwable)object5);
+                            object5 = object4;
                         }
-                        try {
-                            cursorQuery.close();
-                        } catch (Exception e2) {
-                            exc = e2;
-                            Log.w("SharedFile", "Cannot query " + uri2, exc);
-                        }
-                    } catch (Throwable th4) {
-                        th = th4;
-                        str4 = null;
+                        if (object5 == null) break block41;
+                        object4 = object5;
+                        if (!qm4.u0((CharSequence)object5)) break block42;
                     }
+                    object4 = (object4 = object2.getLastPathSegment()) != null ? qm4.G0((String)object4, '/', (String)object4) : null;
+                }
+                object = object2 = object.getType((Uri)object2);
+                if (object2 != null) break block43;
+                object2 = MimeTypeMap.getSingleton();
+                if (object4 != null) {
+                    object = qm4.G0((String)object4, '.', "").toLowerCase(Locale.ROOT);
+                    object.getClass();
                 } else {
-                    strG0 = null;
+                    object = null;
                 }
-            } catch (Exception e3) {
-                e = e3;
-                exc = e;
-                strG0 = null;
-                Log.w("SharedFile", "Cannot query " + uri2, exc);
-                if (strG0 != null) {
-                    lastPathSegment = uri2.getLastPathSegment();
-                    if (lastPathSegment != null) {
-                        strG0 = qm4.G0(lastPathSegment, '/', lastPathSegment);
-                    } else {
-                        strG0 = null;
-                    }
-                } else {
-                    lastPathSegment = uri2.getLastPathSegment();
-                    if (lastPathSegment != null) {
-                        strG0 = qm4.G0(lastPathSegment, '/', lastPathSegment);
-                    } else {
-                        strG0 = null;
-                    }
-                }
-                type = contentResolver2.getType(uri2);
-                if (type == null) {
-                    MimeTypeMap singleton2 = MimeTypeMap.getSingleton();
-                    if (strG0 != null) {
-                        lowerCase = qm4.G0(strG0, '.', "").toLowerCase(Locale.ROOT);
-                        lowerCase.getClass();
-                    } else {
-                        lowerCase = null;
-                    }
-                    type = singleton2.getMimeTypeFromExtension(lowerCase);
-                    if (type != null) {
-                        str = type;
-                    }
-                } else {
-                    str = type;
-                }
-                if (strG0 != null) {
-                    if (qm4.u0(strG0)) {
-                    }
-                    if (str3 != null) {
-                        str2 = str3;
-                    }
-                }
-                if (!qm4.n0(str2, '.')) {
-                    extensionFromMimeType = (String) yc4.d.get(str);
-                    if (extensionFromMimeType == null) {
-                        extensionFromMimeType = MimeTypeMap.getSingleton().getExtensionFromMimeType(str);
-                    }
-                    if (extensionFromMimeType != null) {
-                        str2 = b11.o(str2, ".", extensionFromMimeType);
-                    }
-                }
-                return new yc4(str2, j, str);
+                object = object2 = object2.getMimeTypeFromExtension((String)object);
+                if (object2 == null) break block44;
             }
-        } catch (Exception e4) {
-            e = e4;
-            contentResolver2 = contentResolver;
-            uri2 = uri;
+            string = object;
         }
-        if (strG0 != null || qm4.u0(strG0)) {
-            lastPathSegment = uri2.getLastPathSegment();
-            if (lastPathSegment != null) {
-                strG0 = qm4.G0(lastPathSegment, '/', lastPathSegment);
-            } else {
-                strG0 = null;
+        object = object3;
+        if (object4 != null) {
+            object = var12_4;
+            if (!qm4.u0((CharSequence)object4)) {
+                object = object4;
+            }
+            if (object == null) {
+                object = object3;
             }
         }
-        type = contentResolver2.getType(uri2);
-        if (type == null) {
-            MimeTypeMap singleton3 = MimeTypeMap.getSingleton();
-            if (strG0 != null) {
-                lowerCase = qm4.G0(strG0, '.', "").toLowerCase(Locale.ROOT);
-                lowerCase.getClass();
-            } else {
-                lowerCase = null;
+        object3 = object;
+        if (!qm4.n0((CharSequence)object, '.')) {
+            object2 = object3 = (String)yc4.d.get(string);
+            if (object3 == null) {
+                object2 = MimeTypeMap.getSingleton().getExtensionFromMimeType((String)string);
             }
-            type = singleton3.getMimeTypeFromExtension(lowerCase);
-            if (type != null) {
-                str = type;
-            }
-        } else {
-            str = type;
-        }
-        if (strG0 != null) {
-            if (qm4.u0(strG0)) {
-            }
-            if (str3 != null) {
-                str2 = str3;
+            object3 = object;
+            if (object2 != null) {
+                object3 = b11.o((String)object, ".", (String)object2);
             }
         }
-        if (!qm4.n0(str2, '.')) {
-            extensionFromMimeType = (String) yc4.d.get(str);
-            if (extensionFromMimeType == null) {
-                extensionFromMimeType = MimeTypeMap.getSingleton().getExtensionFromMimeType(str);
-            }
-            if (extensionFromMimeType != null) {
-                str2 = b11.o(str2, ".", extensionFromMimeType);
-            }
-        }
-        return new yc4(str2, j, str);
+        return new yc4((String)object3, l16, (String)string);
     }
 
-    public static PorterDuff.Mode B(int i, PorterDuff.Mode mode) {
-        if (i == 3) {
-            return PorterDuff.Mode.SRC_OVER;
-        }
-        if (i == 5) {
+    public static PorterDuff.Mode B(int n16, PorterDuff.Mode mode) {
+        if (n16 != 3) {
+            if (n16 != 5) {
+                if (n16 != 9) {
+                    switch (n16) {
+                        default: {
+                            return mode;
+                        }
+                        case 16: {
+                            return PorterDuff.Mode.ADD;
+                        }
+                        case 15: {
+                            return PorterDuff.Mode.SCREEN;
+                        }
+                        case 14: 
+                    }
+                    return PorterDuff.Mode.MULTIPLY;
+                }
+                return PorterDuff.Mode.SRC_ATOP;
+            }
             return PorterDuff.Mode.SRC_IN;
         }
-        if (i == 9) {
-            return PorterDuff.Mode.SRC_ATOP;
-        }
-        switch (i) {
-            case 14:
-                return PorterDuff.Mode.MULTIPLY;
-            case 15:
-                return PorterDuff.Mode.SCREEN;
-            case WaveRetry.MAX_FAILURES /* 16 */:
-                return PorterDuff.Mode.ADD;
-            default:
-                return mode;
-        }
+        return PorterDuff.Mode.SRC_OVER;
     }
 
-    public static final Object C(mf3 mf3Var, qr3 qr3Var) {
-        qr3Var.getClass();
-        Object objB = mf3Var.get(qr3Var);
-        if (objB == null) {
-            objB = qr3Var.b();
+    public static final Object C(mf3 mf32, qr3 qr32) {
+        Object object;
+        qr32.getClass();
+        Object object2 = object = mf32.get(qr32);
+        if (object == null) {
+            object2 = qr32.b();
         }
-        return ((j35) objB).a(mf3Var);
+        return ((j35)object2).a(mf32);
     }
 
-    public static int D(InputStream inputStream, byte[] bArr, int i, int i2) throws IOException {
-        if (i2 < 0 || i < 0 || i2 + i > bArr.length) {
-            throw new IndexOutOfBoundsException();
-        }
-        int i3 = 0;
-        while (i3 != i2) {
-            int i4 = inputStream.read(bArr, i + i3, i2 - i3);
-            if (i4 == -1) {
-                break;
+    public static int D(InputStream inputStream, byte[] byArray, int n16, int n17) {
+        if (n17 >= 0 && n16 >= 0 && n17 + n16 <= byArray.length) {
+            int n18;
+            int n19;
+            for (n18 = 0; n18 != n17 && (n19 = inputStream.read(byArray, n16 + n18, n17 - n18)) != -1; n18 += n19) {
             }
-            i3 += i4;
+            return n18;
         }
-        return i3;
+        throw new IndexOutOfBoundsException();
     }
 
+    /*
+     * Enabled force condition propagation
+     * Lifted jumps to return sites
+     */
     public static int E(InputStream inputStream) {
-        byte[] bArr = new byte[8];
-        if (inputStream.read(bArr) < 8) {
-            mj0.i("Could not read offset.");
+        byte[] byArray = new byte[8];
+        if (inputStream.read(byArray) >= 8) {
+            byte by = byArray[7];
+            int n16 = (((((((by & 0x7F) * 256 + (byArray[6] & 0xFF)) * 256 + (byArray[5] & 0xFF)) * 256 + (byArray[4] & 0xFF)) * 256 + (byArray[3] & 0xFF)) * 256 + (byArray[2] & 0xFF)) * 256 + (byArray[1] & 0xFF)) * 256 + (byArray[0] & 0xFF);
+            if (n16 >= 0) {
+                if ((by & 0x80) == 0) return n16;
+                return -n16;
+            }
+            mj0.i("Integer overflow: 64-bit offsets not supported.");
             return 0;
         }
-        byte b2 = bArr[7];
-        int i = ((((((((((((((b2 & 127) * 256) + (bArr[6] & 255)) * 256) + (bArr[5] & 255)) * 256) + (bArr[4] & 255)) * 256) + (bArr[3] & 255)) * 256) + (bArr[2] & 255)) * 256) + (bArr[1] & 255)) * 256) + (bArr[0] & 255);
-        if (i >= 0) {
-            return (b2 & 128) != 0 ? -i : i;
-        }
-        mj0.i("Integer overflow: 64-bit offsets not supported.");
+        mj0.i("Could not read offset.");
         return 0;
     }
 
-    public static final dx2 F(dx2 dx2Var, lm0 lm0Var, tb tbVar, boolean z, gd3 gd3Var, rm2 rm2Var, ec3 ec3Var) {
-        return dx2Var.c(au0.G(ax2.a, sp1.b, 1042431)).c(new r64(lm0Var, z, gd3Var, rm2Var, ec3Var, tbVar));
+    public static final dx2 F(dx2 dx22, lm0 lm02, tb tb6, boolean bl5, gd3 gd32, rm2 rm22, ec3 ec32) {
+        sp1 sp12 = sp1.b;
+        return dx22.c(au0.G(ax2.a, sp12, 1042431)).c(new r64(lm02, bl5, gd32, rm22, ec32, tb6));
     }
 
-    public static long G(InputStream inputStream, long j) throws IOException {
-        long j2 = j;
-        while (j2 > 0) {
-            long jSkip = inputStream.skip(j2);
-            if (jSkip == 0) {
+    public static long G(InputStream inputStream, long l16) {
+        long l17;
+        long l18 = l16;
+        while (true) {
+            l17 = l18;
+            if (l18 <= 0L) break;
+            l17 = inputStream.skip(l18);
+            if (l17 == 0L) {
+                l17 = l18;
                 break;
             }
-            j2 -= jSkip;
+            l18 -= l17;
         }
-        while (j2 > 0) {
-            int iD = D(inputStream, b, 0, (int) Math.min(j2, 4096L));
-            if (iD < 1) {
-                break;
-            }
-            j2 -= (long) iD;
+        while (l17 > 0L) {
+            int n16 = (int)Math.min(l17, 4096L);
+            if ((n16 = vr1.D(inputStream, b, 0, n16)) < 1) break;
+            l17 -= (long)n16;
         }
-        return j - j2;
+        return l16 - l17;
     }
 
-    public static String H(long j) {
-        return "PointerId(value=" + j + ")";
+    public static String H(long l16) {
+        StringBuilder stringBuilder = new StringBuilder("PointerId(value=");
+        stringBuilder.append(l16);
+        stringBuilder.append(")");
+        return stringBuilder.toString();
     }
 
-    public static final mf3 I(rr3[] rr3VarArr, mf3 mf3Var, mf3 mf3Var2) {
-        lf3 lf3Var = new lf3(mf3.q);
-        for (rr3 rr3Var : rr3VarArr) {
-            qr3 qr3Var = rr3Var.a;
-            if (rr3Var.g || !mf3Var.containsKey(qr3Var)) {
-                lf3Var.put(qr3Var, qr3Var.d(rr3Var, (j35) mf3Var2.get(qr3Var)));
-            }
+    public static final mf3 I(rr3[] rr3Array, mf3 mf32, mf3 mf33) {
+        lf3 lf32 = new lf3(mf3.q);
+        for (rr3 rr32 : rr3Array) {
+            qr3 qr32 = rr32.a;
+            if (!rr32.g && mf32.containsKey(qr32)) continue;
+            lf32.put(qr32, qr32.d(rr32, (j35)mf33.get(qr32)));
         }
-        return lf3Var.a();
+        return lf32.a();
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
-    /* JADX WARN: Type inference failed for: r6v0, types: [boolean] */
-    /* JADX WARN: Type inference failed for: r6v1, types: [int] */
-    /* JADX WARN: Type inference failed for: r6v6 */
-    public static final ak5 J(ck5 ck5Var) throws zzhj {
-        try {
-            bk5 bk5VarN = ck5Var.n();
-            if (bk5VarN == null) {
-                throw new zzhj("Parser being asked to parse an empty input stream");
-            }
-            try {
-                byte b2 = bk5VarN.b;
-                byte b3 = bk5VarN.a;
-                ?? r6 = 0;
-                if (b3 == -128) {
-                    long jB = ck5Var.b();
-                    if (jB > 1000) {
-                        throw new zzhj("Parser being asked to read a large CBOR array");
-                    }
-                    K(b2, jB);
-                    ak5[] ak5VarArr = new ak5[(int) jB];
-                    while (((long) r6) < jB) {
-                        ak5VarArr[r6] = J(ck5Var);
-                        r6++;
-                    }
-                    return new uj5(ei5.j(ak5VarArr));
-                }
-                try {
-                    if (b3 != -96) {
-                        if (b3 == -64) {
-                            throw new zzhj("Tags are currently unsupported");
-                        }
-                        if (b3 == -32) {
-                            return new vj5(ck5Var.q());
-                        }
-                        if (b3 == 0 || b3 == 32) {
-                            long jF = ck5Var.f();
-                            K(b2, jF > 0 ? jF : ~jF);
-                            return new xj5(jF);
-                        }
-                        if (b3 == 64) {
-                            ck5Var.v((byte) 64);
-                            byte[] bArrH = ck5Var.H();
-                            int length = bArrH.length;
-                            K(b2, length);
-                            return new wj5(rj5.i(length, bArrH));
-                        }
-                        if (b3 != 96) {
-                            throw new zzhj("Unidentifiable major type: " + ((b3 >> 5) & 7));
-                        }
-                        ck5Var.v((byte) 96);
-                        String str = new String(ck5Var.H(), StandardCharsets.UTF_8);
-                        K(b2, str.length());
-                        return new zj5(str);
-                    }
-                    long j = ck5Var.j();
-                    if (j > 1000) {
-                        throw new zzhj("Parser being asked to read a large CBOR map");
-                    }
-                    K(b2, j);
-                    int i = (int) j;
-                    qr2[] qr2VarArr = new qr2[i];
-                    ak5 ak5Var = null;
-                    int i2 = 0;
-                    while (i2 < j) {
-                        ak5 ak5VarJ = J(ck5Var);
-                        if (ak5Var != null && ak5VarJ.compareTo(ak5Var) <= 0) {
-                            throw new zzhf("Keys in CBOR Map not in strictly ascending natural order:\nPrevious key: " + ak5Var.toString() + "\nCurrent key: " + ak5VarJ.toString());
-                        }
-                        qr2VarArr[i2] = new qr2(ak5VarJ, J(ck5Var), r6, 22);
-                        i2++;
-                        ak5Var = ak5VarJ;
-                    }
-                    TreeMap treeMap = new TreeMap();
-                    for (int i3 = 0; i3 < i; i3++) {
-                        qr2 qr2Var = qr2VarArr[i3];
-                        if (treeMap.containsKey((ak5) qr2Var.o)) {
-                            throw new zzhf("Attempted to add duplicate key to canonical CBOR Map.");
-                        }
-                        treeMap.put((ak5) qr2Var.o, (ak5) qr2Var.p);
-                    }
-                    return new yj5(ji5.b(treeMap));
-                } catch (RuntimeException e) {
-                    e = e;
-                    throw new zzhj(e);
-                }
-            } catch (IOException | RuntimeException e2) {
-                e = e2;
-            }
-        } catch (IOException e3) {
-            throw new zzhj(e3);
-        }
+    /*
+     * Exception decompiling
+     */
+    public static final ak5 J(ck5 var0) {
+        /*
+         * This method has failed to decompile.  When submitting a bug report, please provide this stack trace, and (if you hold appropriate legal rights) the relevant class file.
+         * 
+         * org.benf.cfr.reader.util.ConfusedCFRException: Back jump on a try block [egrp 7[TRYBLOCK] [10 : 169->180)] java.lang.RuntimeException
+         *     at org.benf.cfr.reader.bytecode.analysis.opgraph.Op02WithProcessedDataAndRefs.insertExceptionBlocks(Op02WithProcessedDataAndRefs.java:2283)
+         *     at org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysisInner(CodeAnalyser.java:415)
+         *     at org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysisOrWrapFail(CodeAnalyser.java:278)
+         *     at org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysis(CodeAnalyser.java:201)
+         *     at org.benf.cfr.reader.entities.attributes.AttributeCode.analyse(AttributeCode.java:94)
+         *     at org.benf.cfr.reader.entities.Method.analyse(Method.java:531)
+         *     at org.benf.cfr.reader.entities.ClassFile.analyseMid(ClassFile.java:1055)
+         *     at org.benf.cfr.reader.entities.ClassFile.analyseTop(ClassFile.java:942)
+         *     at org.benf.cfr.reader.Driver.doJarVersionTypes(Driver.java:257)
+         *     at org.benf.cfr.reader.Driver.doJar(Driver.java:139)
+         *     at org.benf.cfr.reader.CfrDriverImpl.analyse(CfrDriverImpl.java:76)
+         *     at org.benf.cfr.reader.Main.main(Main.java:54)
+         */
+        throw new IllegalStateException("Decompilation failed");
     }
 
-    public static final void K(byte b2, long j) throws zzhf {
-        switch (b2) {
-            case 24:
-                if (j < 24) {
-                    tb4.b(j, " after add info could have been represented in 0 additional bytes, but used 1");
+    public static final void K(byte by, long l16) {
+        block6: {
+            switch (by) {
+                default: {
                     break;
                 }
-                break;
-            case 25:
-                if (j < 256) {
-                    tb4.b(j, " after add info could have been represented in 0-1 additional bytes, but used 2");
-                    break;
+                case 27: {
+                    if (l16 >= 0x100000000L) break;
+                    tb4.b(l16, " after add info could have been represented in 0-4 additional bytes, but used 8");
+                    return;
                 }
-                break;
-            case 26:
-                if (j < 65536) {
-                    tb4.b(j, " after add info could have been represented in 0-2 additional bytes, but used 4");
-                    break;
+                case 26: {
+                    if (l16 >= 65536L) break;
+                    tb4.b(l16, " after add info could have been represented in 0-2 additional bytes, but used 4");
+                    return;
                 }
-                break;
-            case 27:
-                if (j < 4294967296L) {
-                    tb4.b(j, " after add info could have been represented in 0-4 additional bytes, but used 8");
-                    break;
+                case 25: {
+                    if (l16 >= 256L) break;
+                    tb4.b(l16, " after add info could have been represented in 0-1 additional bytes, but used 2");
+                    return;
                 }
-                break;
+                case 24: {
+                    if (l16 < 24L) break block6;
+                }
+            }
+            return;
         }
+        tb4.b(l16, " after add info could have been represented in 0 additional bytes, but used 1");
     }
 
     public static Rect c(View view, View view2) {
-        int[] iArr = new int[2];
-        view2.getLocationOnScreen(iArr);
-        int i = iArr[0];
-        int i2 = iArr[1];
-        int[] iArr2 = new int[2];
-        view.getLocationOnScreen(iArr2);
-        int i3 = i - iArr2[0];
-        int i4 = i2 - iArr2[1];
-        return new Rect(i3, i4, view2.getWidth() + i3, view2.getHeight() + i4);
+        int[] nArray = new int[2];
+        view2.getLocationOnScreen(nArray);
+        int n16 = nArray[0];
+        int n17 = nArray[1];
+        nArray = new int[2];
+        view.getLocationOnScreen(nArray);
+        int n18 = nArray[0];
+        int n19 = nArray[1];
+        n18 = n16 - n18;
+        return new Rect(n18, n17 -= n19, view2.getWidth() + n18, view2.getHeight() + n17);
     }
 
-    public static void d(boolean z) {
-        if (z) {
+    public static void d(boolean bl5) {
+        if (bl5) {
             return;
         }
         nz2.c();
     }
 
-    public static final q24 i(Context context, Class cls, String str) {
+    public static final q24 i(Context context, Class clazz, String string) {
         context.getClass();
-        if (qm4.u0(str)) {
-            kf2.n("Cannot build a database with null or empty name. If you are trying to create an in memory database, use Room.inMemoryDatabaseBuilder");
+        if (!qm4.u0(string)) {
+            if (!string.equals(":memory:")) {
+                return new q24(context, clazz, string);
+            }
+            kf2.n("Cannot build a database with the special name ':memory:'. If you are trying to create an in memory database, use Room.inMemoryDatabaseBuilder");
             return null;
         }
-        if (!str.equals(":memory:")) {
-            return new q24(context, cls, str);
-        }
-        kf2.n("Cannot build a database with the special name ':memory:'. If you are trying to create an in memory database, use Room.inMemoryDatabaseBuilder");
+        kf2.n("Cannot build a database with null or empty name. If you are trying to create an in memory database, use Room.inMemoryDatabaseBuilder");
         return null;
     }
 
-    public static final boolean j(String str, String str2) {
-        str.getClass();
-        if (str.equals(str2)) {
-            return true;
-        }
-        if (str.length() != 0) {
-            int i = 0;
-            int i2 = 0;
-            int i3 = 0;
-            while (i < str.length()) {
-                char cCharAt = str.charAt(i);
-                int i4 = i3 + 1;
-                if (i3 != 0 || cCharAt == '(') {
-                    if (cCharAt == '(') {
-                        i2++;
-                    } else if (cCharAt == ')' && (i2 = i2 - 1) == 0 && i3 != str.length() - 1) {
-                    }
-                    i++;
-                    i3 = i4;
-                }
+    public static final boolean j(String string, String string2) {
+        block9: {
+            string.getClass();
+            if (string.equals(string2)) {
+                return true;
             }
-            if (i2 == 0) {
-                return h12.c(qm4.K0(str.substring(1, str.length() - 1)).toString(), str2);
+            if (string.length() != 0) {
+                int n16;
+                int n17 = 0;
+                int n18 = n16 = 0;
+                while (n17 < string.length()) {
+                    int n19 = string.charAt(n17);
+                    if (n18 == 0 && n19 != 40) break block9;
+                    if (n19 != 40) {
+                        if (n19 == 41) {
+                            n16 = n19 = n16 - 1;
+                            if (n19 == 0) {
+                                n16 = n19;
+                                if (n18 != string.length() - 1) {
+                                    break block9;
+                                }
+                            }
+                        }
+                    } else {
+                        ++n16;
+                    }
+                    ++n17;
+                    ++n18;
+                }
+                if (n16 == 0) {
+                    return h12.c(((Object)qm4.K0(string.substring(1, string.length() - 1))).toString(), string2);
+                }
             }
         }
         return false;
     }
 
-    public static void k(View view, b85 b85Var) {
-        WeakHashMap weakHashMap = j65.a;
-        int paddingStart = view.getPaddingStart();
-        int paddingTop = view.getPaddingTop();
-        int paddingEnd = view.getPaddingEnd();
-        int paddingBottom = view.getPaddingBottom();
-        c85 c85Var = new c85();
-        c85Var.a = paddingStart;
-        c85Var.b = paddingTop;
-        c85Var.c = paddingEnd;
-        c85Var.d = paddingBottom;
-        a65.c(view, new gp3(22, b85Var, c85Var));
+    public static void k(View view, b85 b852) {
+        Object object = j65.a;
+        int n16 = view.getPaddingStart();
+        int n17 = view.getPaddingTop();
+        int n18 = view.getPaddingEnd();
+        int n19 = view.getPaddingBottom();
+        object = new Object();
+        ((c85)object).a = n16;
+        ((c85)object).b = n17;
+        ((c85)object).c = n18;
+        ((c85)object).d = n19;
+        a65.c(view, new gp3(22, b852, object));
         if (view.isAttachedToWindow()) {
             view.requestApplyInsets();
-        } else {
-            view.addOnAttachStateChangeListener(new z75());
+            return;
         }
+        view.addOnAttachStateChangeListener((View.OnAttachStateChangeListener)new Object());
     }
 
-    public static float l(Context context, int i) {
-        return TypedValue.applyDimension(1, i, context.getResources().getDisplayMetrics());
+    public static float l(Context context, int n16) {
+        context = context.getResources();
+        return TypedValue.applyDimension((int)1, (float)n16, (DisplayMetrics)context.getDisplayMetrics());
     }
 
-    public static Map m(kk1 kk1Var) {
-        LinkedHashMap linkedHashMap = new LinkedHashMap();
-        Iterator itSourceIterator = kk1Var.sourceIterator();
-        while (itSourceIterator.hasNext()) {
-            Object objKeyOf = kk1Var.keyOf(itSourceIterator.next());
-            Object hx3Var = linkedHashMap.get(objKeyOf);
-            if (hx3Var == null && !linkedHashMap.containsKey(objKeyOf)) {
-                hx3Var = new hx3();
+    public static Map m(kk1 object4) {
+        LinkedHashMap<Object, Object> linkedHashMap = new LinkedHashMap<Object, Object>();
+        Iterator iterator = object4.sourceIterator();
+        while (iterator.hasNext()) {
+            Object object2 = object4.keyOf(iterator.next());
+            Object v16 = linkedHashMap.get(object2);
+            Object object3 = v16;
+            if (v16 == null) {
+                object3 = v16;
+                if (!linkedHashMap.containsKey(object2)) {
+                    object3 = new Object();
+                }
             }
-            hx3 hx3Var2 = (hx3) hx3Var;
-            hx3Var2.n++;
-            linkedHashMap.put(objKeyOf, hx3Var2);
+            object3 = (hx3)object3;
+            ++((hx3)object3).n;
+            linkedHashMap.put(object2, object3);
         }
-        for (Map.Entry entry : linkedHashMap.entrySet()) {
-            entry.getClass();
-            if ((entry instanceof x32) && !(entry instanceof z32)) {
-                jz4.M(entry, "kotlin.collections.MutableMap.MutableEntry");
+        for (Object object4 : (Iterable)linkedHashMap.entrySet()) {
+            object4.getClass();
+            if (object4 instanceof x32 && !(object4 instanceof z32)) {
+                jz4.M(object4, "kotlin.collections.MutableMap.MutableEntry");
                 throw null;
             }
-            entry.setValue(Integer.valueOf(((hx3) entry.getValue()).n));
+            object4.setValue(((hx3)object4.getValue()).n);
         }
         return jz4.f(linkedHashMap);
     }
 
-    public static final boolean n(long j, long j2) {
-        return j == j2;
+    public static final boolean n(long l16, long l17) {
+        return l16 == l17;
     }
 
-    public static boolean o(Object obj, Map map) {
-        if (map == obj) {
+    public static boolean o(Object object, Map map) {
+        if (map == object) {
             return true;
         }
-        if (obj instanceof Map) {
-            return map.entrySet().equals(((Map) obj).entrySet());
+        if (object instanceof Map) {
+            object = (Map)object;
+            return map.entrySet().equals(object.entrySet());
         }
         return false;
     }
 
-    public static ib1 p(ib1[] ib1VarArr, int i) {
-        int i2 = (i & 1) == 0 ? 400 : 700;
-        boolean z = (i & 2) != 0;
-        ib1 ib1Var = null;
-        int i3 = Integer.MAX_VALUE;
-        for (ib1 ib1Var2 : ib1VarArr) {
-            int iAbs = (Math.abs(ib1Var2.c - i2) * 2) + (ib1Var2.d == z ? 0 : 1);
-            if (ib1Var == null || i3 > iAbs) {
-                ib1Var = ib1Var2;
-                i3 = iAbs;
+    public static ib1 p(ib1[] ib1Array, int n16) {
+        int n17 = (n16 & 1) == 0 ? 400 : 700;
+        boolean bl5 = (n16 & 2) != 0;
+        int n18 = ib1Array.length;
+        ib1 ib12 = null;
+        int n19 = Integer.MAX_VALUE;
+        for (n16 = 0; n16 < n18; ++n16) {
+            int n26;
+            block4: {
+                int n27;
+                ib1 ib13;
+                block3: {
+                    ib13 = ib1Array[n16];
+                    n27 = Math.abs(ib13.c - n17);
+                    n26 = ib13.d == bl5 ? 0 : 1;
+                    n27 = n27 * 2 + n26;
+                    if (ib12 == null) break block3;
+                    n26 = n19;
+                    if (n19 <= n27) break block4;
+                }
+                ib12 = ib13;
+                n26 = n27;
             }
+            n19 = n26;
         }
-        return ib1Var;
+        return ib12;
     }
 
-    public static ol1 q(ol1 ol1Var) {
-        return (((((double) Math.round(ol1Var.a)) > 90.0d ? 1 : (((double) Math.round(ol1Var.a)) == 90.0d ? 0 : -1)) >= 0 && (((double) Math.round(ol1Var.a)) > 111.0d ? 1 : (((double) Math.round(ol1Var.a)) == 111.0d ? 0 : -1)) <= 0) && ((((double) Math.round(ol1Var.b)) > 16.0d ? 1 : (((double) Math.round(ol1Var.b)) == 16.0d ? 0 : -1)) > 0) && (((double) Math.round(ol1Var.c)) < 65.0d)) ? ol1.a(ol1Var.a, ol1Var.b, 70.0d) : ol1Var;
+    public static ol1 q(ol1 ol12) {
+        double d16 = Math.round(ol12.a);
+        boolean bl5 = false;
+        boolean bl6 = d16 >= 90.0 && (double)Math.round(ol12.a) <= 111.0;
+        boolean bl7 = (double)Math.round(ol12.b) > 16.0;
+        if ((double)Math.round(ol12.c) < 65.0) {
+            bl5 = true;
+        }
+        ol1 ol13 = ol12;
+        if (bl6) {
+            ol13 = ol12;
+            if (bl7) {
+                ol13 = ol12;
+                if (bl5) {
+                    ol13 = ol1.a(ol12.a, ol12.b, 70.0);
+                }
+            }
+        }
+        return ol13;
     }
 
     public static final String r(Collection collection) {
         collection.getClass();
-        return !collection.isEmpty() ? rm4.b0(q40.B0(collection, ",\n", "\n", "\n", null, 56)).concat("},") : " }";
+        if (!collection.isEmpty()) {
+            return rm4.b0(q40.B0(collection, ",\n", "\n", "\n", null, 56)).concat("},");
+        }
+        return " }";
     }
 
     public static ViewGroup s(View view) {
-        View rootView = view.getRootView();
-        ViewGroup viewGroup = (ViewGroup) rootView.findViewById(R.id.content);
+        View view2 = view.getRootView();
+        ViewGroup viewGroup = (ViewGroup)view2.findViewById(0x1020002);
         if (viewGroup != null) {
             return viewGroup;
         }
-        if (rootView == view || !(rootView instanceof ViewGroup)) {
-            return null;
+        if (view2 != view && view2 instanceof ViewGroup) {
+            return (ViewGroup)view2;
         }
-        return (ViewGroup) rootView;
+        return null;
     }
 
-    public static final float t(Layout layout, int i, Paint paint) {
-        float fAbs;
-        float width;
-        float lineLeft = layout.getLineLeft(i);
+    /*
+     * Enabled force condition propagation
+     * Lifted jumps to return sites
+     */
+    public static final float t(Layout layout, int n16, Paint paint) {
+        float f16 = layout.getLineLeft(n16);
         ThreadLocal threadLocal = ns4.a;
-        if (layout.getEllipsisCount(i) <= 0 || layout.getParagraphDirection(i) != 1 || lineLeft >= 0.0f) {
-            return 0.0f;
+        if (layout.getEllipsisCount(n16) <= 0 || layout.getParagraphDirection(n16) != 1 || !(f16 < 0.0f)) return 0.0f;
+        int n17 = layout.getLineStart(n16);
+        float f17 = layout.getPrimaryHorizontal(layout.getEllipsisStart(n16) + n17);
+        f17 = paint.measureText("\u2026") + (f17 - f16);
+        paint = layout.getParagraphAlignment(n16);
+        if ((n16 = paint == null ? -1 : qx1.a[paint.ordinal()]) == 1) {
+            f16 = Math.abs(f16);
+            f17 = ((float)layout.getWidth() - f17) / 2.0f;
+            return f17 + f16;
         }
-        float fMeasureText = paint.measureText("…") + (layout.getPrimaryHorizontal(layout.getEllipsisStart(i) + layout.getLineStart(i)) - lineLeft);
-        Layout.Alignment paragraphAlignment = layout.getParagraphAlignment(i);
-        if ((paragraphAlignment == null ? -1 : qx1.a[paragraphAlignment.ordinal()]) == 1) {
-            fAbs = Math.abs(lineLeft);
-            width = (layout.getWidth() - fMeasureText) / 2.0f;
-        } else {
-            fAbs = Math.abs(lineLeft);
-            width = layout.getWidth() - fMeasureText;
-        }
-        return width + fAbs;
+        f16 = Math.abs(f16);
+        f17 = (float)layout.getWidth() - f17;
+        return f17 + f16;
     }
 
-    public static final float u(Layout layout, int i, Paint paint) {
-        float width;
-        float width2;
+    /*
+     * Enabled force condition propagation
+     * Lifted jumps to return sites
+     */
+    public static final float u(Layout layout, int n16, Paint paint) {
         ThreadLocal threadLocal = ns4.a;
-        if (layout.getEllipsisCount(i) <= 0) {
-            return 0.0f;
+        if (layout.getEllipsisCount(n16) <= 0) return 0.0f;
+        int n17 = layout.getParagraphDirection(n16);
+        int n18 = -1;
+        if (n17 != -1) return 0.0f;
+        if (!((float)layout.getWidth() < layout.getLineRight(n16))) return 0.0f;
+        n17 = layout.getLineStart(n16);
+        float f16 = layout.getPrimaryHorizontal(layout.getEllipsisStart(n16) + n17);
+        float f17 = layout.getLineRight(n16);
+        f16 = paint.measureText("\u2026") + (f17 - f16);
+        paint = layout.getParagraphAlignment(n16);
+        if (paint != null) {
+            n18 = qx1.a[paint.ordinal()];
         }
-        if (layout.getParagraphDirection(i) != -1 || layout.getWidth() >= layout.getLineRight(i)) {
-            return 0.0f;
+        if (n18 == 1) {
+            f17 = (float)layout.getWidth() - layout.getLineRight(n16);
+            f16 = ((float)layout.getWidth() - f16) / 2.0f;
+            return f17 - f16;
         }
-        float fMeasureText = paint.measureText("…") + (layout.getLineRight(i) - layout.getPrimaryHorizontal(layout.getEllipsisStart(i) + layout.getLineStart(i)));
-        Layout.Alignment paragraphAlignment = layout.getParagraphAlignment(i);
-        if ((paragraphAlignment != null ? qx1.a[paragraphAlignment.ordinal()] : -1) == 1) {
-            width = layout.getWidth() - layout.getLineRight(i);
-            width2 = (layout.getWidth() - fMeasureText) / 2.0f;
-        } else {
-            width = layout.getWidth() - layout.getLineRight(i);
-            width2 = layout.getWidth() - fMeasureText;
-        }
-        return width - width2;
+        f17 = (float)layout.getWidth() - layout.getLineRight(n16);
+        f16 = (float)layout.getWidth() - f16;
+        return f17 - f16;
     }
 
-    public static ry v(py pyVar) {
-        oy oyVar = new oy();
-        oyVar.c = new n04();
-        ry ryVar = new ry(oyVar);
-        oyVar.b = ryVar;
-        oyVar.a = pyVar.getClass();
-        try {
-            Object objK = pyVar.k(oyVar);
-            if (objK == null) {
-                return ryVar;
-            }
-            oyVar.a = objK;
-            return ryVar;
-        } catch (Exception e) {
-            ryVar.o.i(e);
-            return ryVar;
-        }
-    }
-
-    public static final int w(Layout layout, int i, boolean z) {
-        if (i <= 0) {
-            return 0;
-        }
-        if (i >= layout.getText().length()) {
-            return layout.getLineCount() - 1;
-        }
-        int lineForOffset = layout.getLineForOffset(i);
-        int lineStart = layout.getLineStart(lineForOffset);
-        int lineEnd = layout.getLineEnd(lineForOffset);
-        if (lineStart == i || lineEnd == i) {
-            if (lineStart == i) {
-                if (z) {
-                    return lineForOffset - 1;
+    public static ry v(py object) {
+        Exception exception2;
+        ry ry5;
+        block4: {
+            block3: {
+                Object object2 = new Object();
+                ((oy)object2).c = new Object();
+                ((oy)object2).b = ry5 = new ry((oy)object2);
+                ((oy)object2).a = object.getClass();
+                try {
+                    object = object.k((oy)object2);
+                    if (object == null) break block3;
                 }
-            } else if (!z) {
-                return lineForOffset + 1;
+                catch (Exception exception2) {}
+                ((oy)object2).a = object;
+                return ry5;
+                break block4;
             }
+            return ry5;
         }
-        return lineForOffset;
+        ry5.o.i(exception2);
+        return ry5;
     }
 
-    public static final ed x(ne0 ne0Var) {
-        ed edVar = (ed) ne0Var.K(rv2.p);
-        if (edVar != null) {
-            return edVar;
+    public static final int w(Layout layout, int n16, boolean bl5) {
+        int n17;
+        block9: {
+            block7: {
+                block8: {
+                    if (n16 <= 0) {
+                        return 0;
+                    }
+                    if (n16 >= layout.getText().length()) {
+                        return layout.getLineCount() - 1;
+                    }
+                    n17 = layout.getLineForOffset(n16);
+                    int n18 = layout.getLineStart(n17);
+                    int n19 = layout.getLineEnd(n17);
+                    if (n18 != n16 && n19 != n16) break block7;
+                    if (n18 != n16) break block8;
+                    if (bl5) {
+                        return n17 - 1;
+                    }
+                    break block7;
+                }
+                if (!bl5) break block9;
+            }
+            return n17;
+        }
+        return n17 + 1;
+    }
+
+    public static final ed x(ne0 ne02) {
+        if ((ne02 = (ed)ne02.K(rv2.p)) != null) {
+            return ne02;
         }
         kf2.o("A MonotonicFrameClock is not available in this CoroutineContext. Callers should supply an appropriate MonotonicFrameClock using withContext.");
         return null;
     }
 
-    public static final void y(rg1 rg1Var, wf1 wf1Var) {
-        wf1Var.getClass();
-        jz4.j(2, wf1Var);
-        wf1Var.invoke(rg1Var, 1);
+    public static final void y(rg1 rg12, wf1 wf12) {
+        wf12.getClass();
+        jz4.j(2, wf12);
+        wf12.invoke(rg12, 1);
     }
 
     public static boolean z(View view) {
@@ -753,36 +697,45 @@ public abstract class vr1 {
         return view.getLayoutDirection() == 1;
     }
 
-    public me a(Context context, Looper looper, ml3 ml3Var, Object obj, gj1 gj1Var, hj1 hj1Var) {
-        return b(context, looper, ml3Var, obj, (gf5) gj1Var, (gf5) hj1Var);
+    public me a(Context context, Looper looper, ml3 ml32, Object object, gj1 gj12, hj1 hj12) {
+        return this.b(context, looper, ml32, object, (gf5)gj12, (gf5)hj12);
     }
 
-    public me b(Context context, Looper looper, ml3 ml3Var, Object obj, gf5 gf5Var, gf5 gf5Var2) {
+    public me b(Context context, Looper looper, ml3 ml32, Object object, gf5 gf52, gf5 gf53) {
         throw new UnsupportedOperationException("buildClient must be implemented");
     }
 
-    public abstract Typeface e(Context context, ya1 ya1Var, Resources resources, int i);
+    public abstract Typeface e(Context var1, ya1 var2, Resources var3, int var4);
 
-    public abstract Typeface f(Context context, ib1[] ib1VarArr, int i);
+    public abstract Typeface f(Context var1, ib1[] var2, int var3);
 
-    public Typeface g(Context context, List list, int i) {
+    public Typeface g(Context context, List list, int n16) {
         throw new IllegalStateException("createFromFontInfoWithFallback must only be called on API 29+");
     }
 
-    public Typeface h(Context context, Resources resources, int i, String str, int i2) {
-        File fileC = wr1.C(context);
-        if (fileC == null) {
+    public Typeface h(Context object, Resources resources, int n16, String string, int n17) {
+        block6: {
+            if ((object = wr1.C((Context)object)) == null) {
+                return null;
+            }
+            boolean bl5 = wr1.k((File)object, resources, n16);
+            if (bl5) break block6;
+            ((File)object).delete();
             return null;
         }
         try {
-            if (wr1.k(fileC, resources, i)) {
-                return Typeface.createFromFile(fileC.getPath());
-            }
+            resources = Typeface.createFromFile((String)((File)object).getPath());
+            return resources;
+        }
+        catch (Throwable throwable) {
+            throw throwable;
+        }
+        catch (RuntimeException runtimeException) {
             return null;
-        } catch (RuntimeException unused) {
-            return null;
-        } finally {
-            fileC.delete();
+        }
+        finally {
+            ((File)object).delete();
         }
     }
 }
+

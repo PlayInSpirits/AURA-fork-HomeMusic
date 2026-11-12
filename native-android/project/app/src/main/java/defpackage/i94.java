@@ -1,10 +1,11 @@
 package defpackage;
 
+/*
+ * Decompiled with CFR 0.152.
+ */
 import java.util.ArrayList;
 import java.util.List;
 
-/* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
-/* JADX INFO: loaded from: classes.dex */
 public final class i94 {
     public final cx2 a;
     public final boolean b;
@@ -13,447 +14,439 @@ public final class i94 {
     public i94 e;
     public final int f;
 
-    public i94(cx2 cx2Var, boolean z, c72 c72Var, e94 e94Var) {
-        this.a = cx2Var;
-        this.b = z;
-        this.c = c72Var;
-        this.d = e94Var;
-        this.f = c72Var.o;
+    public i94(cx2 cx22, boolean bl5, c72 c722, e94 e942) {
+        this.a = cx22;
+        this.b = bl5;
+        this.c = c722;
+        this.d = e942;
+        this.f = c722.o;
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
-    /* JADX WARN: Type inference failed for: r1v10, types: [cx2] */
-    /* JADX WARN: Type inference failed for: r1v11 */
-    /* JADX WARN: Type inference failed for: r1v12, types: [cx2] */
-    /* JADX WARN: Type inference failed for: r1v13, types: [java.lang.Object] */
-    /* JADX WARN: Type inference failed for: r1v14 */
-    /* JADX WARN: Type inference failed for: r1v15 */
-    /* JADX WARN: Type inference failed for: r1v16 */
-    /* JADX WARN: Type inference failed for: r1v17 */
-    /* JADX WARN: Type inference failed for: r1v18 */
-    /* JADX WARN: Type inference failed for: r1v19 */
-    /* JADX WARN: Type inference failed for: r1v2 */
-    /* JADX WARN: Type inference failed for: r1v3 */
-    /* JADX WARN: Type inference failed for: r1v9 */
-    /* JADX WARN: Type inference failed for: r5v0 */
-    /* JADX WARN: Type inference failed for: r5v1 */
-    /* JADX WARN: Type inference failed for: r5v10 */
-    /* JADX WARN: Type inference failed for: r5v11 */
-    /* JADX WARN: Type inference failed for: r5v2 */
-    /* JADX WARN: Type inference failed for: r5v3, types: [f13] */
-    /* JADX WARN: Type inference failed for: r5v4 */
-    /* JADX WARN: Type inference failed for: r5v5 */
-    /* JADX WARN: Type inference failed for: r5v6, types: [f13] */
-    /* JADX WARN: Type inference failed for: r5v8 */
-    /* JADX WARN: Type inference failed for: r5v9 */
-    /* JADX WARN: Type inference failed for: r6v1 */
-    /* JADX WARN: Type inference failed for: r6v7 */
-    public final wv3 a(f63 f63Var) {
-        ?? C;
-        i94 i94VarL = l();
-        if (i94VarL == null) {
-            return wv3.e;
+    public static /* synthetic */ List j(int n16, i94 i942) {
+        boolean bl5 = false;
+        boolean bl6 = (n16 & 1) != 0 ? i942.b ^ true : false;
+        if ((n16 & 2) == 0) {
+            bl5 = true;
         }
-        cx2 cx2Var = (cx2) i94VarL.c.Q.g;
-        if ((cx2Var.q & 8) == 0) {
-            C = 0;
-            break;
-        }
-        loop0: while (true) {
-            if (cx2Var != null) {
-                if ((cx2Var.p & 8) != 0) {
-                    C = cx2Var;
-                    ?? f13Var = 0;
-                    while (C != 0) {
-                        if (C instanceof g94) {
-                            if (((g94) C).c()) {
-                                break loop0;
-                            }
-                        } else if ((C.p & 8) != 0 && (C instanceof fo0)) {
-                            cx2 cx2Var2 = ((fo0) C).C;
-                            int i = 0;
-                            while (cx2Var2 != null) {
-                                if ((cx2Var2.p & 8) != 0) {
-                                    i++;
-                                    if (i == 1) {
-                                        C = C;
-                                        f13Var = f13Var;
-                                        f13Var = f13Var;
-                                        C = cx2Var2;
-                                    } else {
-                                        if (f13Var == 0) {
-                                            f13Var = new f13(new cx2[16]);
-                                        }
-                                        if (C != 0) {
-                                            f13Var.b(C);
-                                            C = 0;
-                                        }
-                                        f13Var.b(cx2Var2);
-                                    }
-                                } else {
-                                    C = C;
-                                    f13Var = f13Var;
+        return i942.i(bl6, bl5);
+    }
+
+    public final wv3 a(f63 f632) {
+        Object object;
+        eo0 eo02;
+        f63 f633;
+        i94 i942;
+        block18: {
+            i942 = this.l();
+            if (i942 == null) {
+                return wv3.e;
+            }
+            cx2 cx22 = (cx2)i942.c.Q.g;
+            int n16 = cx22.q;
+            f633 = null;
+            if ((n16 & 8) != 0) {
+                while (cx22 != null) {
+                    if ((cx22.p & 8) != 0) {
+                        eo02 = cx22;
+                        object = null;
+                        while (eo02 != null) {
+                            Object object2;
+                            if (eo02 instanceof g94) {
+                                object2 = object;
+                                if (eo02.c()) {
+                                    break block18;
                                 }
-                                cx2Var2 = cx2Var2.s;
-                                C = C;
-                                f13Var = f13Var;
-                            }
-                            if (i == 1) {
-                                C = C;
-                                f13Var = f13Var;
                             } else {
-                                C = C;
-                                f13Var = f13Var;
+                                object2 = object;
+                                if ((((cx2)eo02).p & 8) != 0) {
+                                    object2 = object;
+                                    if (eo02 instanceof fo0) {
+                                        object2 = ((fo0)eo02).C;
+                                        int n17 = 0;
+                                        while (object2 != null) {
+                                            Object object3 = eo02;
+                                            Object object4 = object;
+                                            n16 = n17;
+                                            if ((((cx2)object2).p & 8) != 0) {
+                                                n16 = n17 + 1;
+                                                if (n16 == 1) {
+                                                    object3 = object2;
+                                                    object4 = object;
+                                                } else {
+                                                    object3 = object;
+                                                    if (object == null) {
+                                                        object3 = new f13(new cx2[16]);
+                                                    }
+                                                    object = eo02;
+                                                    if (eo02 != null) {
+                                                        ((f13)object3).b(eo02);
+                                                        object = null;
+                                                    }
+                                                    ((f13)object3).b(object2);
+                                                    object4 = object3;
+                                                    object3 = object;
+                                                }
+                                            }
+                                            object2 = ((cx2)object2).s;
+                                            eo02 = object3;
+                                            object = object4;
+                                            n17 = n16;
+                                        }
+                                        object2 = object;
+                                        if (n17 == 1) continue;
+                                    }
+                                }
                             }
+                            eo02 = j51.c((f13)object2);
+                            object = object2;
                         }
-                        C = j51.c(f13Var);
                     }
-                }
-                if ((cx2Var.q & 8) != 0) {
-                    cx2Var = cx2Var.s;
+                    if ((cx22.q & 8) == 0) break;
+                    cx22 = cx22.s;
                 }
             }
-            C = 0;
-            break;
+            eo02 = null;
         }
-        g94 g94Var = (g94) C;
-        f63 f63VarM = g94Var != null ? j51.M(g94Var, 8) : null;
-        return f63VarM == null ? i94VarL.a(f63Var) : f63VarM.C(f63Var, true);
+        eo02 = (g94)eo02;
+        object = f633;
+        if (eo02 != null) {
+            object = j51.M(eo02, 8);
+        }
+        if (object == null) {
+            return i942.a(f632);
+        }
+        return ((f63)object).C(f632, true);
     }
 
-    public final i94 b(m24 m24Var, if1 if1Var) {
-        e94 e94Var = new e94();
-        e94Var.p = false;
-        e94Var.q = false;
-        if1Var.invoke(e94Var);
-        i94 i94Var = new i94(new h94(if1Var), false, new c72(this.f + (m24Var != null ? 1000000000 : 2000000000), true), e94Var);
-        i94Var.e = this;
-        return i94Var;
+    public final i94 b(m24 object, if1 object2) {
+        e94 e942 = new e94();
+        e942.p = false;
+        e942.q = false;
+        object2.invoke(e942);
+        object2 = new h94((if1)object2);
+        int n16 = this.f;
+        int n17 = object != null ? 1000000000 : 2000000000;
+        object = new i94((cx2)object2, false, new c72(n16 + n17, true), e942);
+        ((i94)object).e = this;
+        return object;
     }
 
-    public final void c(c72 c72Var, ArrayList arrayList) {
-        f13 f13VarX = c72Var.x();
-        Object[] objArr = f13VarX.n;
-        int i = f13VarX.p;
-        for (int i2 = 0; i2 < i; i2++) {
-            c72 c72Var2 = (c72) objArr[i2];
-            if (c72Var2.G() && !c72Var2.Z) {
-                if (c72Var2.Q.d(8)) {
-                    arrayList.add(hw.a(c72Var2, this.b));
-                } else {
-                    c(c72Var2, arrayList);
-                }
+    public final void c(c72 objectArray, ArrayList arrayList) {
+        Object object = objectArray.x();
+        objectArray = ((f13)object).n;
+        int n16 = ((f13)object).p;
+        for (int i16 = 0; i16 < n16; ++i16) {
+            object = (c72)objectArray[i16];
+            if (!((c72)object).G() || ((c72)object).Z) continue;
+            if (((c72)object).Q.d(8)) {
+                arrayList.add(hw.a((c72)object, this.b));
+                continue;
             }
+            this.c((c72)object, arrayList);
         }
     }
 
     public final f63 d() {
-        if (!o()) {
-            g94 g94VarF = f();
-            return g94VarF != null ? j51.M(g94VarF, 8) : (iz1) this.c.Q.d;
+        if (this.o()) {
+            i94 i942 = this.l();
+            if (i942 != null) {
+                return i942.d();
+            }
+            return null;
         }
-        i94 i94VarL = l();
-        if (i94VarL != null) {
-            return i94VarL.d();
+        g94 g942 = this.f();
+        if (g942 != null) {
+            return j51.M(g942, 8);
         }
-        return null;
+        return (iz1)this.c.Q.d;
     }
 
     public final void e(ArrayList arrayList, ArrayList arrayList2) {
-        r(arrayList, false);
-        int size = arrayList.size();
-        for (int size2 = arrayList.size(); size2 < size; size2++) {
-            i94 i94Var = (i94) arrayList.get(size2);
-            if (i94Var.p()) {
-                arrayList2.add(i94Var);
-            } else if (!i94Var.d.q) {
-                i94Var.e(arrayList, arrayList2);
+        this.r(arrayList, false);
+        int n16 = arrayList.size();
+        for (int i16 = arrayList.size(); i16 < n16; ++i16) {
+            i94 i942 = (i94)arrayList.get(i16);
+            if (i942.p()) {
+                arrayList2.add(i942);
+                continue;
             }
+            if (i942.d.q) continue;
+            i942.e(arrayList, arrayList2);
         }
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
-    /* JADX WARN: Type inference failed for: r0v10 */
-    /* JADX WARN: Type inference failed for: r0v11, types: [cx2] */
-    /* JADX WARN: Type inference failed for: r0v12, types: [java.lang.Object] */
-    /* JADX WARN: Type inference failed for: r0v13 */
-    /* JADX WARN: Type inference failed for: r0v14 */
-    /* JADX WARN: Type inference failed for: r0v15 */
-    /* JADX WARN: Type inference failed for: r0v16 */
-    /* JADX WARN: Type inference failed for: r0v17 */
-    /* JADX WARN: Type inference failed for: r0v20 */
-    /* JADX WARN: Type inference failed for: r0v21 */
-    /* JADX WARN: Type inference failed for: r0v22 */
-    /* JADX WARN: Type inference failed for: r0v23 */
-    /* JADX WARN: Type inference failed for: r0v24 */
-    /* JADX WARN: Type inference failed for: r0v25 */
-    /* JADX WARN: Type inference failed for: r0v26 */
-    /* JADX WARN: Type inference failed for: r0v27 */
-    /* JADX WARN: Type inference failed for: r0v28 */
-    /* JADX WARN: Type inference failed for: r0v29 */
-    /* JADX WARN: Type inference failed for: r0v30 */
-    /* JADX WARN: Type inference failed for: r0v31 */
-    /* JADX WARN: Type inference failed for: r0v32 */
-    /* JADX WARN: Type inference failed for: r0v33 */
-    /* JADX WARN: Type inference failed for: r0v8 */
-    /* JADX WARN: Type inference failed for: r0v9, types: [cx2] */
-    /* JADX WARN: Type inference failed for: r4v0 */
-    /* JADX WARN: Type inference failed for: r4v1 */
-    /* JADX WARN: Type inference failed for: r4v3 */
-    /* JADX WARN: Type inference failed for: r4v4 */
-    /* JADX WARN: Type inference failed for: r4v5 */
-    /* JADX WARN: Type inference failed for: r4v6 */
-    /* JADX WARN: Type inference failed for: r5v0 */
-    /* JADX WARN: Type inference failed for: r5v1 */
-    /* JADX WARN: Type inference failed for: r5v2 */
-    /* JADX WARN: Type inference failed for: r5v21 */
-    /* JADX WARN: Type inference failed for: r5v22 */
-    /* JADX WARN: Type inference failed for: r5v23 */
-    /* JADX WARN: Type inference failed for: r5v24 */
-    /* JADX WARN: Type inference failed for: r5v3, types: [f13] */
-    /* JADX WARN: Type inference failed for: r5v4 */
-    /* JADX WARN: Type inference failed for: r5v5 */
-    /* JADX WARN: Type inference failed for: r5v6, types: [f13] */
-    /* JADX WARN: Type inference failed for: r6v1 */
-    /* JADX WARN: Type inference failed for: r6v7 */
     public final g94 f() {
-        ?? C;
-        boolean z;
-        ?? r0;
-        boolean z2 = this.d.p;
-        ?? r4 = 0;
-        r4 = 0;
-        r4 = 0;
-        r4 = 0;
-        c72 c72Var = this.c;
-        if (!z2) {
-            cx2 cx2Var = (cx2) c72Var.Q.g;
-            if ((cx2Var.q & 8) != 0) {
-                loop3: while (cx2Var != null) {
-                    if ((cx2Var.p & 8) != 0) {
-                        C = cx2Var;
-                        ?? f13Var = 0;
-                        while (true) {
-                            if (C != 0) {
-                                if (C instanceof g94) {
-                                    if (((g94) C).c()) {
-                                        r4 = C;
-                                    }
-                                } else if ((C.p & 8) != 0 && (C instanceof fo0)) {
-                                    cx2 cx2Var2 = ((fo0) C).C;
-                                    int i = 0;
-                                    while (cx2Var2 != null) {
-                                        if ((cx2Var2.p & 8) != 0) {
-                                            i++;
-                                            if (i == 1) {
-                                                C = C;
-                                                f13Var = f13Var;
-                                                f13Var = f13Var;
-                                                C = cx2Var2;
-                                            } else {
-                                                if (f13Var == 0) {
-                                                    f13Var = new f13(new cx2[16]);
-                                                }
-                                                if (C != 0) {
-                                                    f13Var.b(C);
-                                                    C = 0;
-                                                }
-                                                f13Var.b(cx2Var2);
-                                            }
-                                        } else {
-                                            C = C;
-                                            f13Var = f13Var;
+        boolean bl5 = this.d.p;
+        Object object = null;
+        Object object2 = this.c;
+        if (bl5) {
+            cx2 cx22 = (cx2)((c72)object2).Q.g;
+            object2 = object;
+            if ((cx22.q & 8) != 0) {
+                Object object3 = null;
+                while (true) {
+                    object2 = object3;
+                    if (cx22 != null) {
+                        Object object4 = object3;
+                        if ((cx22.p & 8) != 0) {
+                            Object object5 = cx22;
+                            object2 = null;
+                            while (true) {
+                                int n16;
+                                Object object6;
+                                object4 = object3;
+                                if (object5 == null) break;
+                                if (object5 instanceof g94) {
+                                    object6 = (g94)object5;
+                                    object4 = object3;
+                                    if (object6.c()) {
+                                        if (object6.d0()) {
+                                            return object6;
                                         }
-                                        cx2Var2 = cx2Var2.s;
-                                        C = C;
-                                        f13Var = f13Var;
+                                        object4 = object3;
+                                        if (object3 == null) {
+                                            object4 = object6;
+                                        }
                                     }
-                                    if (i == 1) {
-                                        C = C;
-                                        f13Var = f13Var;
-                                    } else {
-                                        C = C;
-                                        f13Var = f13Var;
+                                    n16 = 0;
+                                    object6 = object4;
+                                } else {
+                                    n16 = 1;
+                                    object6 = object3;
+                                }
+                                object4 = object2;
+                                if (n16 != 0) {
+                                    object4 = object2;
+                                    if ((((cx2)object5).p & 8) != 0) {
+                                        object4 = object2;
+                                        if (object5 instanceof fo0) {
+                                            object3 = ((fo0)object5).C;
+                                            n16 = 0;
+                                            while (object3 != null) {
+                                                object4 = object5;
+                                                object = object2;
+                                                int n17 = n16;
+                                                if ((((cx2)object3).p & 8) != 0) {
+                                                    n17 = n16 + 1;
+                                                    if (n17 == 1) {
+                                                        object4 = object3;
+                                                        object = object2;
+                                                    } else {
+                                                        object4 = object2;
+                                                        if (object2 == null) {
+                                                            object4 = new f13(new cx2[16]);
+                                                        }
+                                                        object2 = object5;
+                                                        if (object5 != null) {
+                                                            ((f13)object4).b(object5);
+                                                            object2 = null;
+                                                        }
+                                                        ((f13)object4).b(object3);
+                                                        object = object4;
+                                                        object4 = object2;
+                                                    }
+                                                }
+                                                object3 = ((cx2)object3).s;
+                                                object5 = object4;
+                                                object2 = object;
+                                                n16 = n17;
+                                            }
+                                            object4 = object2;
+                                            if (n16 == 1) {
+                                                object3 = object6;
+                                                continue;
+                                            }
+                                        }
                                     }
                                 }
-                                C = j51.c(f13Var);
+                                object5 = j51.c((f13)object4);
+                                object3 = object6;
+                                object2 = object4;
                             }
                         }
+                        object2 = object4;
+                        if ((cx22.q & 8) != 0) {
+                            cx22 = cx22.s;
+                            object3 = object4;
+                            continue;
+                        }
                     }
-                    if ((cx2Var.q & 8) == 0) {
-                        break;
-                    }
-                    cx2Var = cx2Var.s;
+                    break;
                 }
             }
         } else {
-            cx2 cx2Var3 = (cx2) c72Var.Q.g;
-            if ((cx2Var3.q & 8) != 0) {
-                C = 0;
-                while (cx2Var3 != null) {
-                    if ((cx2Var3.p & 8) != 0) {
-                        cx2 cx2VarC = cx2Var3;
-                        f13 f13Var2 = null;
-                        while (cx2VarC != null) {
-                            if (cx2VarC instanceof g94) {
-                                g94 g94Var = (g94) cx2VarC;
-                                if (g94Var.c()) {
-                                    if (g94Var.d0()) {
-                                        r0 = C;
-                                        r0 = C;
-                                        return g94Var;
-                                    }
-                                    if (C == 0) {
-                                        r0 = g94Var;
-                                    }
+            cx2 cx23 = (cx2)((c72)object2).Q.g;
+            object2 = object;
+            if ((cx23.q & 8) != 0) {
+                block3: while (true) {
+                    object2 = object;
+                    if (cx23 == null) break;
+                    if ((cx23.p & 8) != 0) {
+                        cx2 cx24 = cx23;
+                        object2 = null;
+                        while (cx24 != null) {
+                            Object object7;
+                            if (cx24 instanceof g94) {
+                                object7 = object2;
+                                if (((g94)((Object)cx24)).c()) {
+                                    object2 = cx24;
+                                    break block3;
                                 }
-                                r0 = C;
-                                z = false;
-                                C = r0;
                             } else {
-                                z = true;
-                            }
-                            if (z) {
-                                C = C;
-                                if ((cx2VarC.p & 8) != 0 && (cx2VarC instanceof fo0)) {
-                                    int i2 = 0;
-                                    for (cx2 cx2Var4 = ((fo0) cx2VarC).C; cx2Var4 != null; cx2Var4 = cx2Var4.s) {
-                                        if ((cx2Var4.p & 8) != 0) {
-                                            i2++;
-                                            if (i2 == 1) {
-                                                cx2VarC = cx2Var4;
-                                            } else {
-                                                if (f13Var2 == null) {
-                                                    f13Var2 = new f13(new cx2[16]);
+                                object7 = object2;
+                                if ((cx24.p & 8) != 0) {
+                                    object7 = object2;
+                                    if (cx24 instanceof fo0) {
+                                        object7 = ((fo0)cx24).C;
+                                        int n18 = 0;
+                                        while (object7 != null) {
+                                            Object object8 = cx24;
+                                            Object object9 = object2;
+                                            int n19 = n18;
+                                            if ((((cx2)object7).p & 8) != 0) {
+                                                n19 = n18 + 1;
+                                                if (n19 == 1) {
+                                                    object8 = object7;
+                                                    object9 = object2;
+                                                } else {
+                                                    object8 = object2;
+                                                    if (object2 == null) {
+                                                        object8 = new f13(new cx2[16]);
+                                                    }
+                                                    object2 = cx24;
+                                                    if (cx24 != null) {
+                                                        ((f13)object8).b(cx24);
+                                                        object2 = null;
+                                                    }
+                                                    ((f13)object8).b(object7);
+                                                    object9 = object8;
+                                                    object8 = object2;
                                                 }
-                                                if (cx2VarC != null) {
-                                                    f13Var2.b(cx2VarC);
-                                                    cx2VarC = null;
-                                                }
-                                                f13Var2.b(cx2Var4);
                                             }
+                                            object7 = ((cx2)object7).s;
+                                            cx24 = object8;
+                                            object2 = object9;
+                                            n18 = n19;
                                         }
-                                    }
-                                    if (i2 == 1) {
+                                        object7 = object2;
+                                        if (n18 == 1) continue;
                                     }
                                 }
-                            } else {
-                                C = C;
                             }
-                            cx2VarC = j51.c(f13Var2);
+                            cx24 = j51.c((f13)object7);
+                            object2 = object7;
                         }
                     }
-                    if ((cx2Var3.q & 8) == 0) {
-                        break;
-                    }
-                    cx2Var3 = cx2Var3.s;
-                    C = C;
+                    object2 = object;
+                    if ((cx23.q & 8) == 0) break;
+                    cx23 = cx23.s;
                 }
-                r4 = C;
             }
         }
-        return (g94) r4;
+        return (g94)object2;
     }
 
     public final wv3 g() {
-        f63 f63VarD = d();
-        if (f63VarD != null) {
-            if (!f63VarD.A0().A) {
-                f63VarD = null;
+        f63 f632 = this.d();
+        if (f632 != null) {
+            if (!f632.A0().A) {
+                f632 = null;
             }
-            if (f63VarD != null) {
-                return wr1.n(f63VarD).C(f63VarD, true);
+            if (f632 != null) {
+                return wr1.n(f632).C(f632, true);
             }
         }
         return wv3.e;
     }
 
     public final wv3 h() {
-        f63 f63VarD = d();
-        if (f63VarD != null) {
-            if (!f63VarD.A0().A) {
-                f63VarD = null;
+        f63 f632 = this.d();
+        if (f632 != null) {
+            if (!f632.A0().A) {
+                f632 = null;
             }
-            if (f63VarD != null) {
-                return wr1.d(f63VarD, true);
+            if (f632 != null) {
+                return wr1.d(f632, true);
             }
         }
         return wv3.e;
     }
 
-    public final List i(boolean z, boolean z2) {
-        if (!z && this.d.q) {
+    public final List i(boolean bl5, boolean bl6) {
+        if (!bl5 && this.d.q) {
             return u01.n;
         }
         ArrayList arrayList = new ArrayList();
-        if (!p()) {
-            return r(arrayList, z2);
+        if (this.p()) {
+            ArrayList arrayList2 = new ArrayList();
+            this.e(arrayList, arrayList2);
+            return arrayList2;
         }
-        ArrayList arrayList2 = new ArrayList();
-        e(arrayList, arrayList2);
-        return arrayList2;
+        return this.r(arrayList, bl6);
     }
 
     public final e94 k() {
-        boolean zP = p();
-        e94 e94Var = this.d;
-        if (!zP) {
-            return e94Var;
+        boolean bl5 = this.p();
+        e94 e942 = this.d;
+        if (bl5) {
+            e942 = e942.b();
+            this.q(new ArrayList(), e942);
+            return e942;
         }
-        e94 e94VarB = e94Var.b();
-        q(new ArrayList(), e94VarB);
-        return e94VarB;
+        return e942;
     }
 
     public final i94 l() {
-        c72 c72VarT;
-        i94 i94Var = this.e;
-        if (i94Var != null) {
-            return i94Var;
-        }
-        c72 c72Var = this.c;
-        boolean z = this.b;
-        if (!z) {
-            c72VarT = null;
-            break;
-        }
-        c72VarT = c72Var.t();
-        while (true) {
-            if (c72VarT == null) {
-                c72VarT = null;
-                break;
+        Object object;
+        boolean bl5;
+        block8: {
+            Object object2 = this.e;
+            if (object2 != null) {
+                return object2;
             }
-            e94 e94VarV = c72VarT.v();
-            if (e94VarV != null && e94VarV.p) {
-                break;
-            }
-            c72VarT = c72VarT.t();
-        }
-        if (c72VarT == null) {
-            for (c72 c72VarT2 = c72Var.t(); c72VarT2 != null; c72VarT2 = c72VarT2.t()) {
-                if (c72VarT2.Q.d(8)) {
-                    c72VarT = c72VarT2;
+            c72 c722 = this.c;
+            bl5 = this.b;
+            if (bl5) {
+                for (object2 = c722.t(); object2 != null; object2 = ((c72)object2).t()) {
+                    object = ((c72)object2).v();
+                    if (object == null || !((e94)object).p) {
+                        continue;
+                    }
+                    break;
                 }
+            } else {
+                object2 = null;
             }
-            c72VarT = null;
+            object = object2;
+            if (object2 == null) {
+                for (object2 = c722.t(); object2 != null; object2 = ((c72)object2).t()) {
+                    if (!((c72)object2).Q.d(8)) continue;
+                    object = object2;
+                    break block8;
+                }
+                object = null;
+            }
         }
-        if (c72VarT == null) {
+        if (object == null) {
             return null;
         }
-        return hw.a(c72VarT, z);
+        return hw.a((c72)object, bl5);
     }
 
     public final wv3 m() {
-        eo0 eo0VarF = f();
-        if (eo0VarF == null) {
-            return ((iz1) this.c.Q.d).X0();
+        Object object;
+        Object object2 = this.f();
+        if (object2 == null) {
+            return ((iz1)this.c.Q.d).X0();
         }
-        cx2 cx2Var = ((cx2) eo0VarF).n;
-        Object objG = this.d.n.g(d94.b);
-        if (objG == null) {
-            objG = null;
+        cx2 cx22 = ((cx2)object2).n;
+        object2 = d94.b;
+        object2 = object = this.d.n.g(object2);
+        if (object == null) {
+            object2 = null;
         }
-        return fu.s(cx2Var, objG != null, true);
+        boolean bl5 = object2 != null;
+        return fu.s(cx22, bl5, true);
     }
 
     public final e94 n() {
@@ -468,50 +461,46 @@ public final class i94 {
         return this.b && this.d.p;
     }
 
-    public final void q(ArrayList arrayList, e94 e94Var) {
-        if (this.d.q) {
-            return;
-        }
-        r(arrayList, false);
-        int size = arrayList.size();
-        for (int size2 = arrayList.size(); size2 < size; size2++) {
-            i94 i94Var = (i94) arrayList.get(size2);
-            if (!i94Var.p()) {
-                e94Var.e(i94Var.d);
-                i94Var.q(arrayList, e94Var);
+    public final void q(ArrayList arrayList, e94 e942) {
+        if (!this.d.q) {
+            this.r(arrayList, false);
+            int n16 = arrayList.size();
+            for (int i16 = arrayList.size(); i16 < n16; ++i16) {
+                i94 i942 = (i94)arrayList.get(i16);
+                if (i942.p()) continue;
+                e942.e(i942.d);
+                i942.q(arrayList, e942);
             }
         }
     }
 
-    public final List r(ArrayList arrayList, boolean z) {
-        if (o()) {
+    public final List r(ArrayList arrayList, boolean bl5) {
+        if (this.o()) {
             return u01.n;
         }
-        c(this.c, arrayList);
-        if (z) {
-            e94 e94Var = this.d;
-            w03 w03Var = e94Var.n;
-            Object objG = w03Var.g(n94.w);
-            if (objG == null) {
-                objG = null;
+        this.c(this.c, arrayList);
+        if (bl5) {
+            Object object;
+            e94 e942 = this.d;
+            w03 w032 = e942.n;
+            Object object2 = object = w032.g(n94.w);
+            if (object == null) {
+                object2 = null;
             }
-            m24 m24Var = (m24) objG;
-            if (m24Var != null && e94Var.p && !arrayList.isEmpty()) {
-                arrayList.add(b(m24Var, new o54(m24Var)));
+            if ((object2 = (m24)object2) != null && e942.p && !arrayList.isEmpty()) {
+                arrayList.add(this.b((m24)object2, new o54((m24)object2)));
             }
-            p94 p94Var = n94.a;
-            if (w03Var.c(p94Var) && !arrayList.isEmpty() && e94Var.p) {
-                Object objG2 = w03Var.g(p94Var);
-                if (objG2 == null) {
-                    objG2 = null;
+            if (w032.c(object2 = n94.a) && !arrayList.isEmpty() && e942.p) {
+                object2 = object = w032.g(object2);
+                if (object == null) {
+                    object2 = null;
                 }
-                List list = (List) objG2;
-                String str = list != null ? (String) q40.x0(list) : null;
-                if (str != null) {
-                    arrayList.add(0, b(null, new rs0(18, str)));
+                if ((object2 = (object2 = (List)object2) != null ? (String)q40.x0((List)object2) : null) != null) {
+                    arrayList.add(0, this.b(null, new rs0(18, (String)object2)));
                 }
             }
         }
         return arrayList;
     }
 }
+

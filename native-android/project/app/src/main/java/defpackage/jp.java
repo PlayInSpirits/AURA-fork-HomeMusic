@@ -1,27 +1,38 @@
 package defpackage;
 
+/*
+ * Decompiled with CFR 0.152.
+ */
 import java.io.Serializable;
+import java.lang.reflect.AccessibleObject;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
-/* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
-/* JADX INFO: loaded from: classes.dex */
-public abstract class jp implements vd0, ye0, Serializable {
+public abstract class jp
+implements vd0,
+ye0,
+Serializable {
     private final vd0<Object> completion;
 
-    public jp(vd0 vd0Var) {
-        this.completion = vd0Var;
+    public jp(vd0 vd02) {
+        this.completion = vd02;
     }
 
-    public vd0<j15> create(vd0<?> vd0Var) {
-        vd0Var.getClass();
+    public vd0<j15> create(Object object, vd0<?> vd02) {
+        vd02.getClass();
+        throw new UnsupportedOperationException("create(Any?;Continuation) has not been overridden");
+    }
+
+    public vd0<j15> create(vd0<?> vd02) {
+        vd02.getClass();
         throw new UnsupportedOperationException("create(Continuation) has not been overridden");
     }
 
+    @Override
     public ye0 getCallerFrame() {
-        vd0<Object> vd0Var = this.completion;
-        if (vd0Var instanceof ye0) {
-            return (ye0) vd0Var;
+        vd0<Object> vd02 = this.completion;
+        if (vd02 instanceof ye0) {
+            return (ye0)((Object)vd02);
         }
         return null;
     }
@@ -31,99 +42,128 @@ public abstract class jp implements vd0, ye0, Serializable {
     }
 
     public StackTraceElement getStackTraceElement() {
-        int iIntValue;
-        String strC;
         Method method;
-        Object objInvoke;
-        Method method2;
-        Object objInvoke2;
-        ri0 ri0Var = (ri0) getClass().getAnnotation(ri0.class);
-        String str = null;
-        if (ri0Var == null || ri0Var.v() < 1) {
-            return null;
+        Object object;
+        int n16;
+        Object object2;
+        int n17;
+        Object var5_2;
+        ri0 ri02;
+        block19: {
+            block18: {
+                ri02 = this.getClass().getAnnotation(ri0.class);
+                var5_2 = null;
+                if (ri02 == null || ri02.v() < 1) {
+                    return null;
+                }
+                n17 = -1;
+                object2 = this.getClass().getDeclaredField("label");
+                ((AccessibleObject)object2).setAccessible(true);
+                object2 = ((Field)object2).get(this);
+                object2 = object2 instanceof Integer ? (Integer)object2 : null;
+                if (object2 == null) break block18;
+                try {
+                    n16 = (Integer)object2;
+                    break block19;
+                }
+                catch (Exception exception) {
+                    n16 = -1;
+                }
+            }
+            n16 = 0;
         }
-        try {
-            Field declaredField = getClass().getDeclaredField("label");
-            declaredField.setAccessible(true);
-            Object obj = declaredField.get(this);
-            Integer num = obj instanceof Integer ? (Integer) obj : null;
-            iIntValue = (num != null ? num.intValue() : 0) - 1;
-        } catch (Exception unused) {
-            iIntValue = -1;
-        }
-        int i = iIntValue >= 0 ? ri0Var.l()[iIntValue] : -1;
-        i61 i61Var = ya4.b;
-        i61 i61Var2 = ya4.c;
-        if (i61Var2 == null) {
+        --n16;
+        n16 = n16 < 0 ? n17 : ri02.l()[n16];
+        Object object3 = ya4.b;
+        object2 = object = ya4.c;
+        if (object == null) {
             try {
-                i61 i61Var3 = new i61(Class.class.getDeclaredMethod("getModule", null), getClass().getClassLoader().loadClass("java.lang.Module").getDeclaredMethod("getDescriptor", null), getClass().getClassLoader().loadClass("java.lang.module.ModuleDescriptor").getDeclaredMethod("name", null), false, 8);
-                ya4.c = i61Var3;
-                i61Var2 = i61Var3;
-            } catch (Exception unused2) {
-                ya4.c = i61Var;
-                i61Var2 = i61Var;
+                method = Class.class.getDeclaredMethod("getModule", null);
+                object = this.getClass().getClassLoader().loadClass("java.lang.Module").getDeclaredMethod("getDescriptor", null);
+                Method method2 = this.getClass().getClassLoader().loadClass("java.lang.module.ModuleDescriptor").getDeclaredMethod("name", null);
+                ya4.c = object2 = new i61(method, object, method2, false, 8);
+            }
+            catch (Exception exception) {
+                ya4.c = object3;
+                object2 = object3;
             }
         }
-        if (i61Var2 != i61Var && (method = (Method) i61Var2.o) != null && (objInvoke = method.invoke(getClass(), null)) != null && (method2 = (Method) i61Var2.p) != null && (objInvoke2 = method2.invoke(objInvoke, null)) != null) {
-            Method method3 = (Method) i61Var2.q;
-            Object objInvoke3 = method3 != null ? method3.invoke(objInvoke2, null) : null;
-            if (objInvoke3 instanceof String) {
-                str = (String) objInvoke3;
-            }
-        }
-        if (str == null) {
-            strC = ri0Var.c();
+        if (object2 == object3) {
+            object3 = var5_2;
         } else {
-            strC = str + '/' + ri0Var.c();
+            object = (Method)((i61)object2).o;
+            object3 = var5_2;
+            if (object != null) {
+                if ((object = ((Method)object).invoke(this.getClass(), null)) == null) {
+                    object3 = var5_2;
+                } else {
+                    method = (Method)((i61)object2).p;
+                    object3 = var5_2;
+                    if (method != null) {
+                        object3 = method.invoke(object, null);
+                        if (object3 == null) {
+                            object3 = var5_2;
+                        } else {
+                            object2 = (Method)((i61)object2).q;
+                            object2 = object2 != null ? ((Method)object2).invoke(object3, null) : null;
+                            object3 = var5_2;
+                            if (object2 instanceof String) {
+                                object3 = (String)object2;
+                            }
+                        }
+                    }
+                }
+            }
         }
-        return new StackTraceElement(strC, ri0Var.m(), ri0Var.f(), i);
+        if (object3 == null) {
+            object2 = ri02.c();
+        } else {
+            object2 = new StringBuilder();
+            ((StringBuilder)object2).append((String)object3);
+            ((StringBuilder)object2).append('/');
+            ((StringBuilder)object2).append(ri02.c());
+            object2 = ((StringBuilder)object2).toString();
+        }
+        return new StackTraceElement((String)object2, ri02.m(), ri02.f(), n16);
     }
 
-    public abstract Object invokeSuspend(Object obj);
+    public abstract Object invokeSuspend(Object var1);
 
     public void releaseIntercepted() {
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
-    /* JADX WARN: Type inference failed for: r2v1 */
-    /* JADX WARN: Type inference failed for: r2v4 */
-    /* JADX WARN: Type inference failed for: r2v5 */
-    @Override // defpackage.vd0
-    public final void resumeWith(Object obj) {
-        ?? r2 = this;
-        while (true) {
-            jp jpVar = (jp) r2;
-            vd0<Object> vd0Var = jpVar.completion;
-            vd0Var.getClass();
+    @Override
+    public final void resumeWith(Object object) {
+        vd0 vd02 = this;
+        do {
+            jp jp5 = vd02;
+            vd02 = jp5.completion;
+            vd02.getClass();
             try {
-                obj = jpVar.invokeSuspend(obj);
-                if (obj == xe0.n) {
+                Object object2 = jp5.invokeSuspend(object);
+                xe0 xe02 = xe0.n;
+                object = object2;
+                if (object2 == xe02) {
                     return;
                 }
-            } catch (Throwable th) {
-                obj = new s14(th);
             }
-            jpVar.releaseIntercepted();
-            if (!(vd0Var instanceof jp)) {
-                vd0Var.resumeWith(obj);
-                return;
+            catch (Throwable throwable) {
+                object = new s14(throwable);
             }
-            r2 = vd0Var;
-        }
+            jp5.releaseIntercepted();
+        } while (vd02 instanceof jp);
+        vd02.resumeWith(object);
     }
 
     public String toString() {
-        StringBuilder sb = new StringBuilder("Continuation at ");
-        Object stackTraceElement = getStackTraceElement();
+        StringBuilder stringBuilder = new StringBuilder("Continuation at ");
+        StackTraceElement stackTraceElement = this.getStackTraceElement();
+        Object object = stackTraceElement;
         if (stackTraceElement == null) {
-            stackTraceElement = getClass().getName();
+            object = this.getClass().getName();
         }
-        sb.append(stackTraceElement);
-        return sb.toString();
-    }
-
-    public vd0<j15> create(Object obj, vd0<?> vd0Var) {
-        vd0Var.getClass();
-        throw new UnsupportedOperationException("create(Any?;Continuation) has not been overridden");
+        stringBuilder.append(object);
+        return stringBuilder.toString();
     }
 }
+

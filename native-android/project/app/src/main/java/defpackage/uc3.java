@@ -1,94 +1,125 @@
 package defpackage;
 
-/* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
-/* JADX INFO: loaded from: classes.dex */
-public final /* synthetic */ class uc3 implements if1 {
-    public final /* synthetic */ int n;
-    public final /* synthetic */ ad3 o;
+/*
+ * Decompiled with CFR 0.152.
+ */
+import java.util.ArrayList;
 
-    public /* synthetic */ uc3(ad3 ad3Var, int i) {
-        this.n = i;
-        this.o = ad3Var;
+public final class uc3
+implements if1 {
+    public final int n;
+    public final ad3 o;
+
+    public /* synthetic */ uc3(ad3 ad32, int n16) {
+        this.n = n16;
+        this.o = ad32;
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
-    /* JADX WARN: Type inference failed for: r15v1, types: [java.lang.Float] */
-    /* JADX WARN: Type inference failed for: r15v2, types: [java.lang.Number] */
-    /* JADX WARN: Type inference failed for: r15v3, types: [java.lang.Long] */
-    @Override // defpackage.if1
-    public final Object invoke(Object obj) {
-        qc3 qc3Var;
-        int i = this.n;
-        j15 j15Var = j15.a;
-        qc3 qc3Var2 = null;
-        ad3 ad3Var = this.o;
-        switch (i) {
-            case 0:
-                ?? ValueOf = (Float) obj;
-                float fFloatValue = ValueOf.floatValue();
-                long jT = e35.t(ad3Var);
-                float f = ad3Var.i + fFloatValue;
-                long jM = ji2.M(f);
-                ad3Var.i = f - jM;
-                if (Math.abs(fFloatValue) >= 1.0E-4f) {
-                    long j = jT + jM;
-                    long jN = gb.n(j, ad3Var.h, ad3Var.g);
-                    boolean z = j != jN;
-                    long j2 = jN - jT;
-                    float f2 = j2;
-                    ad3Var.j = f2;
-                    if (Math.abs(j2) != 0) {
-                        ad3Var.E.setValue(Boolean.valueOf(f2 > 0.0f));
-                        ad3Var.F.setValue(Boolean.valueOf(f2 < 0.0f));
-                    }
-                    int i2 = (int) j2;
-                    int i3 = -i2;
-                    qc3 qc3VarH = ((qc3) ad3Var.m.getValue()).h(i3);
-                    if (qc3VarH == null || (qc3Var = ad3Var.b) == null) {
-                        qc3Var2 = qc3VarH;
-                    } else {
-                        qc3 qc3VarH2 = qc3Var.h(i3);
-                        if (qc3VarH2 != null) {
-                            ad3Var.b = qc3VarH2;
-                            qc3Var2 = qc3VarH;
+    /*
+     * Enabled aggressive block sorting
+     * Enabled unnecessary exception pruning
+     * Enabled aggressive exception aggregation
+     */
+    @Override
+    public final Object invoke(Object object) {
+        int n16;
+        long l16;
+        float f16;
+        Float f17;
+        Object object2;
+        Object object3;
+        j15 j152;
+        int n17;
+        block19: {
+            qc3 qc32;
+            block18: {
+                int n18;
+                n17 = this.n;
+                j152 = j15.a;
+                object3 = null;
+                object2 = this.o;
+                switch (n17) {
+                    default: {
+                        Object object4 = (o82)object;
+                        ch4 ch42 = ya4.t();
+                        object = ch42 != null ? ch42.e() : null;
+                        object3 = ya4.z(ch42);
+                        try {
+                            n17 = ((ad3)object2).e;
+                            Object object5 = ((o82)object4).b;
+                            object2 = ((q82)object5).c;
+                            if (object2 == null) {
+                                return j152;
+                            }
+                            object4 = ((o82)object4).a;
+                            object5 = ((q82)object5).b;
+                            vp3 vp32 = new vp3((ll)object2, n17, (rm3)object5, null);
+                            ((ArrayList)object4).add(vp32);
+                            return j152;
+                        }
+                        finally {
+                            ya4.H(ch42, (ch4)object3, (if1)object);
                         }
                     }
-                    if (qc3Var2 != null) {
-                        ad3Var.h(qc3Var2, ad3Var.a, true);
-                        ad3Var.A.setValue(j15Var);
-                    } else {
-                        nq nqVar = ad3Var.d;
-                        ad3 ad3Var2 = (ad3) nqVar.o;
-                        vd3 vd3Var = (vd3) nqVar.q;
-                        vd3Var.h(vd3Var.g() + (ad3Var2.p() != 0 ? i2 / ad3Var2.p() : 0.0f));
-                        c72 c72Var = (c72) ad3Var.x.getValue();
-                        if (c72Var != null) {
-                            c72Var.l();
-                        }
-                    }
-                    if (z) {
-                        ValueOf = Long.valueOf(j2);
-                    }
-                    fFloatValue = ValueOf.floatValue();
+                    case 0: 
                 }
-                return Float.valueOf(fFloatValue);
-            default:
-                o82 o82Var = (o82) obj;
-                ch4 ch4VarT = ya4.t();
-                if1 if1VarE = ch4VarT != null ? ch4VarT.e() : null;
-                ch4 ch4VarZ = ya4.z(ch4VarT);
-                try {
-                    int i4 = ad3Var.e;
-                    q82 q82Var = o82Var.b;
-                    ll llVar = q82Var.c;
-                    if (llVar != null) {
-                        o82Var.a.add(new vp3(llVar, i4, q82Var.b, null));
-                        break;
-                    }
-                    return j15Var;
-                } finally {
-                    ya4.H(ch4VarT, ch4VarZ, if1VarE);
+                f17 = (Float)object;
+                f16 = f17.floatValue();
+                long l17 = e35.t((ad3)object2);
+                float f18 = ((ad3)object2).i + f16;
+                l16 = ji2.M(f18);
+                ((ad3)object2).i = f18 - (float)l16;
+                if (Math.abs(f16) < 1.0E-4f) {
+                    return Float.valueOf(f16);
                 }
+                long l18 = l17 + l16;
+                l16 = gb.n(l18, ((ad3)object2).h, ((ad3)object2).g);
+                boolean bl5 = false;
+                n17 = l18 != l16 ? 1 : 0;
+                ((ad3)object2).j = f18 = (float)(l16 -= l17);
+                l17 = Math.abs(l16);
+                f16 = 0.0f;
+                if (l17 != 0L) {
+                    object = ((ad3)object2).E;
+                    boolean bl6 = f18 > 0.0f;
+                    ((zd3)object).setValue(bl6);
+                    object = ((ad3)object2).F;
+                    bl6 = bl5;
+                    if (f18 < 0.0f) {
+                        bl6 = true;
+                    }
+                    ((zd3)object).setValue(bl6);
+                }
+                if ((qc32 = ((qc3)(object = (qc3)((ad3)object2).m.getValue())).h(n18 = -(n16 = (int)l16))) == null || (object = ((ad3)object2).b) == null) break block18;
+                qc3 qc33 = ((qc3)object).h(n18);
+                object = object3;
+                if (qc33 == null) break block19;
+                ((ad3)object2).b = qc33;
+            }
+            object = qc32;
         }
+        if (object != null) {
+            ((ad3)object2).h((qc3)object, ((ad3)object2).a, true);
+            ((ad3)object2).A.setValue(j152);
+        } else {
+            object3 = ((ad3)object2).d;
+            object = (ad3)((nq)object3).o;
+            object3 = (vd3)((nq)object3).q;
+            if (((ad3)object).p() != 0) {
+                f16 = (float)n16 / (float)((ad3)object).p();
+            }
+            ((vd3)object3).h(((vd3)object3).g() + f16);
+            object = (c72)((ad3)object2).x.getValue();
+            if (object != null) {
+                ((c72)object).l();
+            }
+        }
+        object = f17;
+        if (n17 != 0) {
+            object = l16;
+        }
+        f16 = ((Number)object).floatValue();
+        return Float.valueOf(f16);
     }
 }
+

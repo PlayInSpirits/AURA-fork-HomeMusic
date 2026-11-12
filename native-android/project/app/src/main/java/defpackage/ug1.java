@@ -1,59 +1,51 @@
 package defpackage;
 
+/*
+ * Decompiled with CFR 0.152.
+ */
 import java.util.ArrayList;
 
-/* JADX INFO: compiled from: r8-map-id-c94d3a8396624b0fca5ed6d968a7de7d9963d9466fdd82d32aef401cc7c21189 */
-/* JADX INFO: loaded from: classes.dex */
-public final class ug1 implements gf1 {
-    public final /* synthetic */ vg1 n;
+public final class ug1
+implements gf1 {
+    public final vg1 n;
 
-    public ug1(vg1 vg1Var) {
-        this.n = vg1Var;
+    public ug1(vg1 vg12) {
+        this.n = vg12;
     }
 
-    /* JADX WARN: Multi-variable type inference failed */
-    /* JADX WARN: Type inference failed for: r4v1, types: [i42, java.lang.Object] */
-    /* JADX WARN: Type inference failed for: r4v2 */
-    /* JADX WARN: Type inference failed for: r4v3 */
-    /* JADX WARN: Type inference failed for: r4v4 */
-    /* JADX WARN: Type inference failed for: r5v3, types: [java.lang.Object[]] */
-    /* JADX WARN: Type inference failed for: r5v4, types: [java.lang.Object[]] */
-    /* JADX WARN: Type inference failed for: r8v3, types: [q03] */
-    /* JADX WARN: Type inference failed for: r9v2, types: [q03] */
-    @Override // defpackage.gf1
+    @Override
     public final Object invoke() {
         ArrayList arrayList = this.n.a;
-        w03 w03Var = new w03(arrayList.size());
-        int size = arrayList.size();
-        for (int i = 0; i < size; i++) {
-            ?? r4 = (i42) arrayList.get(i);
-            Object obj = r4.b;
-            int i2 = r4.a;
-            Object b32Var = obj != null ? new b32(Integer.valueOf(i2), r4.b) : Integer.valueOf(i2);
-            int iF = w03Var.f(b32Var);
-            boolean z = iF < 0;
-            Object obj2 = z ? null : w03Var.c[iF];
-            if (obj2 != null) {
-                if (obj2 instanceof q03) {
-                    ?? r8 = (q03) obj2;
-                    r8.a(r4);
-                    r4 = r8;
-                } else {
-                    Object[] objArr = t73.a;
-                    ?? q03Var = new q03(2);
-                    q03Var.a(obj2);
-                    q03Var.a(r4);
-                    r4 = q03Var;
-                }
-            }
-            if (z) {
-                int i3 = ~iF;
-                w03Var.b[i3] = b32Var;
-                w03Var.c[i3] = r4;
+        w03 w032 = new w03(arrayList.size());
+        int n16 = arrayList.size();
+        for (int i16 = 0; i16 < n16; ++i16) {
+            i42 i422 = (i42)arrayList.get(i16);
+            Object object = i422.b;
+            int n17 = i422.a;
+            Object object2 = object != null ? new b32(n17, i422.b) : Integer.valueOf(n17);
+            int n18 = w032.f(object2);
+            n17 = n18 < 0 ? 1 : 0;
+            if ((object = n17 != 0 ? null : w032.c[n18]) == null) {
+                object = i422;
+            } else if (object instanceof q03) {
+                object = (q03)object;
+                ((q03)object).a(i422);
             } else {
-                w03Var.c[iF] = r4;
+                Object object3 = t73.a;
+                object3 = new q03(2);
+                ((q03)object3).a(object);
+                ((q03)object3).a(i422);
+                object = object3;
             }
+            if (n17 != 0) {
+                n17 = ~n18;
+                w032.b[n17] = object2;
+                w032.c[n17] = object;
+                continue;
+            }
+            w032.c[n18] = object;
         }
-        return new mz2(w03Var);
+        return new mz2(w032);
     }
 }
+
