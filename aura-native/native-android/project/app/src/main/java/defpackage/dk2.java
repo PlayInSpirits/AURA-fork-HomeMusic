@@ -356,8 +356,9 @@ public final class dk2 {
                 throw new UnsupportedOperationException("Method not decompiled: defpackage.dk2.c(android.content.Context, tb1, boolean):boolean");
             }
         }
+    }
 
-        public final boolean d(tb1 tb1Var) {
+    public final boolean d(tb1 tb1Var) {
                 return (Objects.equals(tb1Var.n, "audio/flac") && tb1Var.H == 22 && Build.VERSION.SDK_INT < 34 && this.a.equals("c2.android.flac.decoder")) ? false : true;
             }
 
