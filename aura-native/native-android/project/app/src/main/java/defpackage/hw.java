@@ -254,15 +254,15 @@ public abstract class hw {
             throw new InvalidHeaderException(iE3, "output file length");
         }
         byteArrayInputStream.close();
-        ?? byteArrayInputStream2 = new ByteArrayInputStream(bArr2);
-        ?? byteArrayInputStream3 = new ByteArrayInputStream(bArr2);
-        ?? byteArrayInputStream4 = new ByteArrayInputStream(bArr2);
+        java.io.InputStream byteArrayInputStream2 = new ByteArrayInputStream(bArr2);
+        java.io.InputStream byteArrayInputStream3 = new ByteArrayInputStream(bArr2);
+        java.io.InputStream byteArrayInputStream4 = new ByteArrayInputStream(bArr2);
         try {
             byteArrayInputStream2.skip(32L);
             int i2 = iE + 32;
             byteArrayInputStream3.skip(i2);
             byteArrayInputStream4.skip(i2 + iE2);
-            ?? k90Var = new k90();
+            k90 k90Var = new k90();
             byteArrayInputStream2 = k90Var.a(byteArrayInputStream2);
             byteArrayInputStream3 = k90Var.a(byteArrayInputStream3);
             byteArrayInputStream4 = k90Var.a(byteArrayInputStream4);
