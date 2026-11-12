@@ -229,13 +229,84 @@ jobs:
           PY
           java -jar recovery/tools/apktool_3.0.3.jar d -f recovery/downloads/AURA-0.75.1.apk -o recovery/apktool-aura-0751
 
+      - name: Generate alternate Java reference with dex2jar and CFR
+        run: |
+          set -euo pipefail
+          mkdir -p recovery/tools/dex2jar recovery/cfr-aura-0751
+          curl.exe -fL --retry 3 "https://github.com/pxb1988/dex2jar/releases/download/v2.4/dex-tools-v2.4.zip" -o recovery/tools/dex-tools-v2.4.zip
+          curl.exe -fL --retry 3 "https://github.com/leibnitz27/cfr/releases/download/0.152/cfr-0.152.jar" -o recovery/tools/cfr-0.152.jar
+          "$AURA_PYTHON" - <<'PY'
+          from hashlib import sha256,md5
+          from pathlib import Path
+          dex=Path("recovery/tools/dex-tools-v2.4.zip")
+          cfr=Path("recovery/tools/cfr-0.152.jar")
+          expected_dex="ee7c45eb3c1d2474a6145d8d447e651a736a22d9664b6d3d3be5a5a817dda23a"
+          expected_cfr_md5="8a85ada8cec494121246805a5562b82b"
+          got_dex=sha256(dex.read_bytes()).hexdigest()
+          got_cfr_md5=md5(cfr.read_bytes()).hexdigest()
+          if got_dex != expected_dex:
+              raise SystemExit(f"dex2jar v2.4 SHA-256 mismatch: {got_dex}")
+          if got_cfr_md5 != expected_cfr_md5:
+              raise SystemExit(f"CFR 0.152 MD5 mismatch: {got_cfr_md5}")
+          if dex.stat().st_size != 19105975 or cfr.stat().st_size != 2162315:
+              raise SystemExit("Unexpected dex2jar or CFR release asset size.")
+          print("Verified dex2jar v2.4 SHA-256:",got_dex)
+          print("Verified CFR 0.152 official MD5:",got_cfr_md5)
+          PY
+
+          DEX2JAR_ZIP_WIN="$(cygpath -w "$PWD/recovery/tools/dex-tools-v2.4.zip")"
+          DEX2JAR_DIR_WIN="$(cygpath -w "$PWD/recovery/tools/dex2jar")"
+          powershell.exe -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command "Expand-Archive -LiteralPath '$DEX2JAR_ZIP_WIN' -DestinationPath '$DEX2JAR_DIR_WIN' -Force"
+          D2J_BAT_WIN="$(find recovery/tools/dex2jar -iname 'd2j-dex2jar.bat' -print -quit)"
+          [ -n "$D2J_BAT_WIN" ] || { echo "::error::d2j-dex2jar.bat is missing from verified dex2jar v2.4 archive."; exit 1; }
+          D2J_BAT_WIN="$(cygpath -w "$D2J_BAT_WIN")"
+          APK_WIN="$(cygpath -w "$PWD/recovery/downloads/AURA-0.75.1.apk")"
+          LOG_WIN="$(cygpath -w "$PWD/recovery/dex2jar-conversion.log")"
+          set +e
+          powershell.exe -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command "& '$D2J_BAT_WIN' -f '$APK_WIN' *> '$LOG_WIN'; exit \$LASTEXITCODE"
+          D2J_EXIT=$?
+          set -e
+          if [ "$D2J_EXIT" -ne 0 ]; then
+            cat recovery/dex2jar-conversion.log
+            echo "::error::dex2jar could not convert AURA 0.75.1 DEX to a Java archive."
+            exit 1
+          fi
+          cat recovery/dex2jar-conversion.log
+          DEX2JAR_JAR="$(find recovery/downloads -maxdepth 1 -type f -name '*dex2jar*.jar' -print -quit)"
+          [ -n "$DEX2JAR_JAR" ] || { echo "::error::dex2jar reported success but produced no JAR."; exit 1; }
+
+          CFR_JAR_WIN="$(cygpath -w "$PWD/recovery/tools/cfr-0.152.jar")"
+          DEX2JAR_JAR_WIN="$(cygpath -w "$PWD/$DEX2JAR_JAR")"
+          CFR_OUT_WIN="$(cygpath -w "$PWD/recovery/cfr-aura-0751")"
+          echo "Decompiling converted AURA JAR with CFR 0.152."
+          java -Xmx6g -jar "$CFR_JAR_WIN" "$DEX2JAR_JAR_WIN" --outputdir "$CFR_OUT_WIN" --silent true
+
+          "$AURA_PYTHON" - <<'PY'
+          from pathlib import Path
+          root=Path("recovery/cfr-aura-0751")
+          files=list(root.rglob("*.java"))
+          if not files:
+              raise SystemExit("CFR did not produce Java files.")
+          bad=[]
+          for p in files:
+              txt=p.read_text(encoding="utf-8",errors="replace")
+              count=txt.count("??")
+              if count:
+                  bad.append((count,p.relative_to(root).as_posix()))
+          print("CFR Java files:",len(files))
+          print("CFR unresolved '??' markers:",sum(n for n,_ in bad))
+          print("CFR files with unresolved markers:",len(bad))
+          for n,name in sorted(bad,reverse=True)[:25]:
+              print(f"  {n:3} {name}")
+          PY
+
       - name: Write recovery inventory
         run: |
           "$AURA_PYTHON" - <<'PY'
           from pathlib import Path
           import json
           root=Path("recovery")
-          result={"apk_baselines":{}, "jadx_sources":{}, "apktool_smali":0}
+          result={"apk_baselines":{}, "jadx_sources":{}, "cfr_java_files":0, "apktool_smali":0}
           for p in sorted((root/"downloads").glob("*.apk")):
               result["apk_baselines"][p.name]={"bytes":p.stat().st_size}
           for name in ("jadx-original","jadx-aura-0302","jadx-aura-0751"):
@@ -250,6 +321,7 @@ jobs:
                   "kotlin_files":kotlin_count,
                   "other_files":other_count
               }
+          result["cfr_java_files"]=sum(1 for p in (root/"cfr-aura-0751").rglob("*.java"))
           result["apktool_smali"]=sum(1 for p in (root/"apktool-aura-0751").rglob("*.smali"))
           gradle=root/"gradle-export-aura-0751"
           gradle_java=sum(1 for p in gradle.rglob("*.java"))
@@ -583,6 +655,9 @@ jobs:
             recovery/jadx-aura-0302/
             recovery/jadx-aura-0751/
             recovery/jadx-aura-0751-simple/
+            recovery/cfr-aura-0751/
+            recovery/dex2jar-conversion.log
+            recovery/downloads/*dex2jar*.jar
             recovery/apktool-aura-0751/
             recovery/gradle-export-aura-0751/
             recovery/recovery-inventory.json
