@@ -354,9 +354,9 @@ public class rm3 implements u74, f51, eg1, ak2 {
                 if ((cx2Var.q & 256) != 0) {
                     while (cx2Var != null) {
                         if ((cx2Var.p & 256) != 0) {
-                            ?? C = cx2Var;
-                            ?? f13Var = 0;
-                            while (C != 0) {
+                            cx2 C = cx2Var;
+                            f13 f13Var = null;
+                            while (C != null) {
                                 if (C instanceof vi1) {
                                     vi1 vi1Var = (vi1) C;
                                     vi1Var.L(j51.M(vi1Var, 256));
@@ -372,12 +372,12 @@ public class rm3 implements u74, f51, eg1, ak2 {
                                                 f13Var = f13Var;
                                                 C = cx2Var2;
                                             } else {
-                                                if (f13Var == 0) {
+                                                if (f13Var == null) {
                                                     f13Var = new f13(new cx2[16]);
                                                 }
-                                                if (C != 0) {
+                                                if (C != null) {
                                                     f13Var.b(C);
-                                                    C = 0;
+                                                    C = null;
                                                 }
                                                 f13Var.b(cx2Var2);
                                             }
