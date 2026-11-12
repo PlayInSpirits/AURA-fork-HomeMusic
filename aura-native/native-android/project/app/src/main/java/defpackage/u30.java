@@ -287,7 +287,7 @@ public final class u30 extends fo0 implements rn3, j42, g94, a90, b83, my1, ih1 
                     if (on3Var3.c()) {
                         z = z3;
                     } else {
-                        ?? r12 = on3Var3.i == i ? i : z3;
+                        int r12 = on3Var3.i == i ? 1 : 0;
                         long j4 = on3Var3.c;
                         char c2 = c;
                         float fIntBitsToFloat = Float.intBitsToFloat((int) (j4 >> c2));
