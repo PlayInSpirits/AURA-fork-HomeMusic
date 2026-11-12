@@ -1,1 +1,1 @@
-One-time import request (retry): verify and import all tracked files from native-v0.10.1 into main/aura-native/.
+Verified import retry after limiting checkout to the two required branches only.
