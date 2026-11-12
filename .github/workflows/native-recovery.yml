@@ -348,13 +348,13 @@ jobs:
           cp -a "$CMDLINE_TEMP/cmdline-tools/." "$SDK_ROOT_UNIX/cmdline-tools/latest/"
           SDK_MANAGER="$SDK_ROOT_UNIX/cmdline-tools/latest/bin/sdkmanager.bat"
 
-          if [ ! -f "$SDK_ROOT_UNIX/platforms/android-37/android.jar" ]; then
+          if [ ! -f "$SDK_ROOT_UNIX/platforms/android-37.0/android.jar" ]; then
             SDK_MANAGER_WIN="$(cygpath -w "$SDK_MANAGER")"
-            echo "Accepting Android SDK licenses and installing API 37 platform."
+            echo "Accepting Android SDK licenses and installing Android 17 API 37.0 platform."
             powershell.exe -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command "1..100 | ForEach-Object { 'y' } | & '$SDK_MANAGER_WIN' --sdk_root='$SDK_ROOT_WIN' --licenses; if (\$LASTEXITCODE -ne 0) { exit \$LASTEXITCODE }"
-            powershell.exe -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command "& '$SDK_MANAGER_WIN' --sdk_root='$SDK_ROOT_WIN' 'platforms;android-37' 'build-tools;36.0.0'; if (\$LASTEXITCODE -ne 0) { exit \$LASTEXITCODE }"
+            powershell.exe -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command "& '$SDK_MANAGER_WIN' --sdk_root='$SDK_ROOT_WIN' 'platforms;android-37.0' 'build-tools;37.0.0'; if (\$LASTEXITCODE -ne 0) { exit \$LASTEXITCODE }"
           fi
-          [ -f "$SDK_ROOT_UNIX/platforms/android-37/android.jar" ] || { echo "::error::Android SDK Platform 37 installation did not produce android.jar."; exit 1; }
+          [ -f "$SDK_ROOT_UNIX/platforms/android-37.0/android.jar" ] || { echo "::error::Android SDK Platform 37.0 installation did not produce android.jar."; exit 1; }
 
           GRADLE_VERSION="9.6.0"
           GRADLE_DIR="$PWD/recovery/tools/gradle-$GRADLE_VERSION"
