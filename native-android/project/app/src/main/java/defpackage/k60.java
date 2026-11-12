@@ -37,6 +37,10 @@ public final class k60 implements w21 {
         intent.putExtra("KEY_WORKSPEC_GENERATION", rc5Var.b);
     }
 
+    /* JADX WARN: Bottom block not found for handler: all -> 0x0389 */
+    /*
+        Code decompiled incorrectly, please refer to instructions dump.
+    */
     public final void a(Intent intent, int i, tp4 tp4Var) {
         List<gl4> listT;
         ArrayList arrayList;
@@ -216,20 +220,15 @@ public final class k60 implements w21 {
                 df1 df1VarA = aq4Var.a();
                 df1VarA.h(1, str7);
                 df1VarA.c(2, i7);
+                workDatabase_Impl.c();
                 try {
-                    workDatabase_Impl.c();
-                    try {
-                        df1VarA.b();
-                        workDatabase_Impl.t();
-                        workDatabase_Impl.o();
-                        aq4Var.h(df1VarA);
-                    } catch (Throwable th2) {
-                        workDatabase_Impl.o();
-                        throw th2;
-                    }
-                } catch (Throwable th3) {
+                    df1VarA.b();
+                    workDatabase_Impl.t();
+                    workDatabase_Impl.o();
                     aq4Var.h(df1VarA);
-                    throw th3;
+                } catch (Throwable th2) {
+                    workDatabase_Impl.o();
+                    throw th2;
                 }
             }
             tp4Var.b(rc5Var, false);

@@ -49,9 +49,9 @@ public final class yc5 implements aw1, kg1, Callback {
             jx1VarC = bx1Var.c();
             bx1Var.n = jx1VarC;
         }
-        o15 it = jx1VarC.iterator();
-        while (it.hasNext()) {
-            Map.Entry entry = (Map.Entry) it.next();
+        o15 o15VarH = jx1VarC.iterator();
+        while (o15VarH.hasNext()) {
+            Map.Entry entry = (Map.Entry) o15VarH.next();
             String str = (String) entry.getKey();
             String str2 = (String) entry.getValue();
             str.getClass();

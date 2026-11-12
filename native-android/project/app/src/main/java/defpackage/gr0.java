@@ -26,30 +26,26 @@ public final class gr0 extends ar4 {
             case 0:
                 jr0 jr0Var = (jr0) this.f;
                 synchronized (jr0Var) {
-                    try {
-                        if (jr0Var.z && !jr0Var.A) {
-                            try {
-                                jr0Var.M();
-                            } catch (IOException unused) {
-                                jr0Var.B = true;
-                            }
-                            try {
-                                if (jr0Var.s()) {
-                                    jr0Var.J();
-                                    jr0Var.w = 0;
-                                }
-                            } catch (IOException unused2) {
-                                jr0Var.C = true;
-                                wu3 wu3Var = jr0Var.u;
-                                if (wu3Var != null) {
-                                    xe5.b(wu3Var);
-                                }
-                                jr0Var.u = new wu3(new ct());
-                            }
-                            break;
+                    if (jr0Var.z && !jr0Var.A) {
+                        try {
+                            jr0Var.M();
+                        } catch (IOException unused) {
+                            jr0Var.B = true;
                         }
-                    } catch (Throwable th) {
-                        throw th;
+                        try {
+                            if (jr0Var.s()) {
+                                jr0Var.J();
+                                jr0Var.w = 0;
+                            }
+                        } catch (IOException unused2) {
+                            jr0Var.C = true;
+                            wu3 wu3Var = jr0Var.u;
+                            if (wu3Var != null) {
+                                xe5.b(wu3Var);
+                            }
+                            jr0Var.u = new wu3(new ct());
+                        }
+                        break;
                     }
                 }
                 return -1L;
