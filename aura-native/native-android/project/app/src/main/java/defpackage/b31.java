@@ -188,7 +188,7 @@ public final class b31 {
         InputStream inputStream;
         String str;
         byte b;
-        ?? r13;
+        java.io.Serializable r13;
         byte[] bArr = this.d;
         InputStream inputStream2 = null;
         try {
@@ -254,7 +254,7 @@ public final class b31 {
                         case WebSettingsBoundaryInterface.AttributionBehavior.APP_SOURCE_AND_APP_TRIGGER /* 3 */:
                             r13 = new int[i2];
                             while (length < i2) {
-                                r13[length] = a31Var.readUnsignedShort();
+                                ((int[]) r13)[length] = a31Var.readUnsignedShort();
                                 length++;
                             }
                             try {
@@ -267,7 +267,7 @@ public final class b31 {
                         case 4:
                             r13 = new long[i2];
                             while (length < i2) {
-                                r13[length] = ((long) a31Var.readInt()) & 4294967295L;
+                                ((long[]) r13)[length] = ((long) a31Var.readInt()) & 4294967295L;
                                 length++;
                             }
                             a31Var.close();
@@ -275,7 +275,7 @@ public final class b31 {
                         case 5:
                             r13 = new d31[i2];
                             while (length < i2) {
-                                r13[length] = new d31(((long) a31Var.readInt()) & 4294967295L, ((long) a31Var.readInt()) & 4294967295L);
+                                ((d31[]) r13)[length] = new d31(((long) a31Var.readInt()) & 4294967295L, ((long) a31Var.readInt()) & 4294967295L);
                                 length++;
                             }
                             a31Var.close();
@@ -283,7 +283,7 @@ public final class b31 {
                         case 8:
                             r13 = new int[i2];
                             while (length < i2) {
-                                r13[length] = a31Var.readShort();
+                                ((int[]) r13)[length] = a31Var.readShort();
                                 length++;
                             }
                             a31Var.close();
@@ -291,7 +291,7 @@ public final class b31 {
                         case 9:
                             r13 = new int[i2];
                             while (length < i2) {
-                                r13[length] = a31Var.readInt();
+                                ((int[]) r13)[length] = a31Var.readInt();
                                 length++;
                             }
                             a31Var.close();
@@ -299,7 +299,7 @@ public final class b31 {
                         case 10:
                             r13 = new d31[i2];
                             while (length < i2) {
-                                r13[length] = new d31(a31Var.readInt(), a31Var.readInt());
+                                ((d31[]) r13)[length] = new d31(a31Var.readInt(), a31Var.readInt());
                                 length++;
                             }
                             a31Var.close();
@@ -307,7 +307,7 @@ public final class b31 {
                         case 11:
                             r13 = new double[i2];
                             while (length < i2) {
-                                r13[length] = a31Var.readFloat();
+                                ((double[]) r13)[length] = a31Var.readFloat();
                                 length++;
                             }
                             a31Var.close();
@@ -315,7 +315,7 @@ public final class b31 {
                         case 12:
                             r13 = new double[i2];
                             while (length < i2) {
-                                r13[length] = a31Var.readDouble();
+                                ((double[]) r13)[length] = a31Var.readDouble();
                                 length++;
                             }
                             a31Var.close();
