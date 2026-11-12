@@ -29,6 +29,27 @@ jobs:
           ref: native-v0.10.1
           fetch-depth: 0
 
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.10'
+
+      - name: Verify existing Android SDK
+        run: |
+          set -euo pipefail
+          SDK_ROOT="C:/Android"
+          SDK_ROOT_UNIX="$(cygpath -u "$SDK_ROOT")"
+          [ -f "$SDK_ROOT_UNIX/platforms/android-37.0/android.jar" ] || { echo "::error::Android SDK Platform 37 is missing from C:\Android."; exit 1; }
+          [ -f "$SDK_ROOT_UNIX/build-tools/37.0.0/aapt.exe" ] || { echo "::error::Android Build Tools 37.0.0 are missing."; exit 1; }
+          printf 'ANDROID_HOME=%s\n' "$SDK_ROOT" >> "$GITHUB_ENV"
+          printf 'ANDROID_SDK_ROOT=%s\n' "$SDK_ROOT" >> "$GITHUB_ENV"
+
       - name: Download the already-created recovery artifact (run 36)
         uses: actions/download-artifact@v4
         with:
@@ -41,7 +62,9 @@ jobs:
       - name: Apply structured JADX plus safe CFR replacements to the project
         run: |
           set -euo pipefail
-          "$AURA_PYTHON" - <<'PY'
+          PYTHON_CMD="$(command -v python.exe || command -v python || true)"
+          [ -n "$PYTHON_CMD" ] || { echo "::error::Python 3.12 was not installed."; exit 1; }
+          "$PYTHON_CMD" - <<'PY'
           from pathlib import Path
           import json
           import re
