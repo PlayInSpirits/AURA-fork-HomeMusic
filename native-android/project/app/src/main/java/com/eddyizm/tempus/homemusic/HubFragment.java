@@ -470,9 +470,9 @@ public final class HubFragment extends kc1 {
                 xt1.b = new yr1(this, i3);
                 xt1.c = new es1(this, 0);
                 xt1.d = new es1(this, 1);
-                xt1.e = new zr1(this, 2);
+                xt1.e = new zr1(this, i2);
                 xt1.f = new yr1(this, i);
-                xt1.g = new zr1(this, 0);
+                xt1.g = new zr1(this, i);
                 MainActivity mainActivity2 = this.m0;
                 if (mainActivity2 == null) {
                     h12.Q("activity");
@@ -524,7 +524,7 @@ public final class HubFragment extends kc1 {
                     }
                     j0(strJ);
                 }
-                k03Var.e(v(), new wd1(new zr1(this, 1), 4));
+                k03Var.e(v(), new wd1(new zr1(this, i3), 4));
                 return;
             }
             fs1 fs1Var = (fs1) it.next();

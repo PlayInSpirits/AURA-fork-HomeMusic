@@ -20,7 +20,7 @@ public enum l04 implements Parcelable {
         this.n = str;
     }
 
-    public static l04 a(String str) throws ResidentKeyRequirement$UnsupportedResidentKeyRequirementException {
+    public static l04 a(String str) {
         for (l04 l04Var : values()) {
             if (str.equals(l04Var.n)) {
                 return l04Var;

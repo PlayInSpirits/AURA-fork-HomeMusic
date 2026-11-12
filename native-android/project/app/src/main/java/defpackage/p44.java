@@ -127,27 +127,31 @@ public class p44 implements wv4 {
                 return;
             }
             synchronized (this) {
-                if (this.p == 0) {
-                    z3 = j2 > this.u;
-                } else {
-                    synchronized (this) {
-                        long jMax = Math.max(this.u, n(this.s));
-                        if (jMax >= j2) {
-                            z3 = false;
-                        } else {
-                            int i7 = this.p;
-                            int iP = p(i7 - 1);
-                            while (i7 > this.s && this.n[iP] >= j2) {
-                                i7--;
-                                iP--;
-                                if (iP == -1) {
-                                    iP = this.i - 1;
+                try {
+                    if (this.p == 0) {
+                        z3 = j2 > this.u;
+                    } else {
+                        synchronized (this) {
+                            long jMax = Math.max(this.u, n(this.s));
+                            if (jMax >= j2) {
+                                z3 = false;
+                            } else {
+                                int i7 = this.p;
+                                int iP = p(i7 - 1);
+                                while (i7 > this.s && this.n[iP] >= j2) {
+                                    i7--;
+                                    iP--;
+                                    if (iP == -1) {
+                                        iP = this.i - 1;
+                                    }
                                 }
+                                k(this.q + i7);
+                                z3 = true;
                             }
-                            k(this.q + i7);
-                            z3 = true;
                         }
                     }
+                } catch (Throwable th) {
+                    throw th;
                 }
             }
             if (!z3) {
@@ -282,8 +286,8 @@ public class p44 implements wv4 {
                     this.r = 0;
                     this.i = i11;
                 }
-            } catch (Throwable th) {
-                throw th;
+            } catch (Throwable th2) {
+                throw th2;
             }
         }
     }
