@@ -261,19 +261,20 @@ jobs:
           [ -n "$D2J_BAT_WIN" ] || { echo "::error::d2j-dex2jar.bat is missing from verified dex2jar v2.4 archive."; exit 1; }
           D2J_BAT_WIN="$(cygpath -w "$D2J_BAT_WIN")"
           APK_WIN="$(cygpath -w "$PWD/recovery/downloads/AURA-0.75.1.apk")"
+          DEX2JAR_JAR="recovery/AURA-0.75.1-dex2jar.jar"
+          JAR_WIN="$(cygpath -w "$PWD/$DEX2JAR_JAR")"
           LOG_WIN="$(cygpath -w "$PWD/recovery/dex2jar-conversion.log")"
           set +e
-          powershell.exe -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command "& '$D2J_BAT_WIN' -f '$APK_WIN' *> '$LOG_WIN'; exit \$LASTEXITCODE"
+          cmd.exe /d /c "\"$D2J_BAT_WIN\" -f -o \"$JAR_WIN\" \"$APK_WIN\" > \"$LOG_WIN\" 2>&1"
           D2J_EXIT=$?
           set -e
           if [ "$D2J_EXIT" -ne 0 ]; then
             cat recovery/dex2jar-conversion.log
-            echo "::error::dex2jar could not convert AURA 0.75.1 DEX to a Java archive."
+            echo "::error::dex2jar could not convert AURA 0.75.1 DEX to a Java archive (exit $D2J_EXIT)."
             exit 1
           fi
           cat recovery/dex2jar-conversion.log
-          DEX2JAR_JAR="$(find recovery/downloads -maxdepth 1 -type f -name '*dex2jar*.jar' -print -quit)"
-          [ -n "$DEX2JAR_JAR" ] || { echo "::error::dex2jar reported success but produced no JAR."; exit 1; }
+          [ -s "$DEX2JAR_JAR" ] || { echo "::error::dex2jar reported success but did not create $DEX2JAR_JAR."; exit 1; }
 
           CFR_JAR_WIN="$(cygpath -w "$PWD/recovery/tools/cfr-0.152.jar")"
           DEX2JAR_JAR_WIN="$(cygpath -w "$PWD/$DEX2JAR_JAR")"
@@ -657,7 +658,8 @@ jobs:
             recovery/jadx-aura-0751-simple/
             recovery/cfr-aura-0751/
             recovery/dex2jar-conversion.log
-            recovery/downloads/*dex2jar*.jar
+            recovery/AURA-0.75.1-dex2jar.jar
+            recovery/cfr-aura-0751/
             recovery/apktool-aura-0751/
             recovery/gradle-export-aura-0751/
             recovery/recovery-inventory.json
