@@ -284,9 +284,8 @@ public abstract class ad3 implements a74 {
         int i;
         Object obj;
         boolean z7;
-        ?? r2;
-        ?? r10;
-        ?? r7;
+        boolean r2;
+        boolean r7;
         float f2;
         long jI;
         long jM;
@@ -455,18 +454,9 @@ public abstract class ad3 implements a74 {
             }
             this.m.setValue(qc3Var);
             this.C.setValue(Boolean.valueOf(qc3Var.m));
-            if (xi2Var != null) {
-                i2 = xi2Var.a;
-            } else {
-                r10 = r2;
-            }
-            if (r10 == 0 || i3 != 0) {
-                r10 = i2;
-                r7 = z4;
-            } else {
-                r7 = r2;
-            }
-            this.D.setValue(Boolean.valueOf((boolean) r7));
+            i2 = xi2Var != null ? xi2Var.a : 0;
+            r7 = (i2 != 0 || i3 != 0) ? z4 : r2;
+            this.D.setValue(Boolean.valueOf(r7));
             if (xi2Var != null) {
                 this.e = xi2Var.a;
             }
