@@ -1,0 +1,20 @@
+version: 3.0.3
+apkFileName: HomeMusic-original.apk
+usesFramework:
+  ids:
+  - 1
+sdkInfo:
+  minSdkVersion: 24
+  targetSdkVersion: 37
+versionInfo:
+  versionCode: 7501
+  versionName: "v0.75-1"
+resourcesInfo:
+  packageId: 127
+doNotCompress:
+- arsc
+- dex
+- png
+- so
+- assets/dexopt/baseline.prof
+- assets/dexopt/baseline.profm

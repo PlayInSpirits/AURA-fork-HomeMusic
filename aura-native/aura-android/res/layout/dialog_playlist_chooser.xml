@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.google.android.material.materialswitch.MaterialSwitch android:id="@id/playlist_dialog_chooser_visibility_switch" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12.0dp" android:checked="false" android:text="@string/playlist_chooser_dialog_visibility_switch_label" android:paddingStart="30.0dp" android:paddingEnd="30.0dp" android:showText="false" />
+    <TextView android:id="@id/playlist_dialog_chooser_visibility_summary" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dp" android:text="@string/playlist_chooser_dialog_visibility_summary_v2" android:paddingStart="30.0dp" android:paddingEnd="30.0dp" />
+    <TextView android:gravity="center" android:id="@id/no_playlists_created_text_view" android:paddingTop="16.0dp" android:visibility="gone" android:clipToPadding="false" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/playlist_chooser_dialog_empty" android:paddingStart="16.0dp" android:paddingEnd="16.0dp" style="@style/TitleMedium" />
+    <androidx.recyclerview.widget.RecyclerView android:id="@id/playlist_dialog_recycler_view" android:clipToPadding="false" android:layout_width="match_parent" android:layout_height="0.0dp" android:layout_marginTop="8.0dp" android:layout_weight="1.0" />
+    <LinearLayout android:gravity="center|bottom" android:orientation="horizontal" android:id="@id/button_bar" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dp" android:weightSum="2.0" style="?android:buttonBarStyle">
+        <Button android:layout_gravity="start" android:id="@id/playlist_chooser_dialog_create_button" android:layout_width="0.0dp" android:layout_height="wrap_content" android:text="@string/playlist_chooser_dialog_create_button" android:layout_weight="1.0" style="?android:buttonBarButtonStyle" />
+        <Button android:layout_gravity="end" android:id="@id/playlist_chooser_dialog_cancel_button" android:layout_width="0.0dp" android:layout_height="wrap_content" android:text="@string/playlist_chooser_dialog_cancel_button" android:layout_weight="1.0" android:layout_marginStart="8.0dp" style="?android:buttonBarButtonStyle" />
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="download_refresh_removed">
+        <item quantity="one">Removed %d missing download.</item>
+        <item quantity="other">Removed %d missing downloads.</item>
+    </plurals>
+    <plurals name="exo_controls_fastforward_by_amount_description">
+        <item quantity="one">Fast forward %d second</item>
+        <item quantity="other">Fast forward %d seconds</item>
+    </plurals>
+    <plurals name="exo_controls_rewind_by_amount_description">
+        <item quantity="one">Rewind %d second</item>
+        <item quantity="other">Rewind %d seconds</item>
+    </plurals>
+    <plurals name="home_sync_starred_albums_count">
+        <item quantity="one">%d album to sync</item>
+        <item quantity="other">%d albums to sync</item>
+    </plurals>
+    <plurals name="home_sync_starred_artists_count">
+        <item quantity="one">%d artist to sync</item>
+        <item quantity="other">%d artists to sync</item>
+    </plurals>
+    <plurals name="home_sync_starred_songs_count">
+        <item quantity="one">%d song needs sync</item>
+        <item quantity="other">%d songs need sync</item>
+    </plurals>
+    <plurals name="homemusic_mix_songs">
+        <item quantity="one">%d песня</item>
+        <item quantity="few">%d песни</item>
+        <item quantity="many">%d песен</item>
+        <item quantity="other">%d песни</item>
+    </plurals>
+    <plurals name="homemusic_selection_remove_title">
+        <item quantity="one">Удалить %d трек с телефона?</item>
+        <item quantity="few">Удалить %d трека с телефона?</item>
+        <item quantity="many">Удалить %d треков с телефона?</item>
+        <item quantity="other">Удалить %d трека с телефона?</item>
+    </plurals>
+    <plurals name="homemusic_selection_unliked">
+        <item quantity="one">%d трек убран из понравившихся</item>
+        <item quantity="few">%d трека убраны из понравившихся</item>
+        <item quantity="many">%d треков убрано из понравившихся</item>
+        <item quantity="other">%d трека убрано из понравившихся</item>
+    </plurals>
+    <plurals name="homemusic_share_sending_images">
+        <item quantity="one">Отправляю %d скриншот ассистенту…</item>
+        <item quantity="few">Отправляю %d скриншота ассистенту…</item>
+        <item quantity="many">Отправляю %d скриншотов ассистенту…</item>
+        <item quantity="other">Отправляю %d скриншота ассистенту…</item>
+    </plurals>
+    <plurals name="homemusic_tracks_count">
+        <item quantity="one">%d трек</item>
+        <item quantity="few">%d трека</item>
+        <item quantity="many">%d треков</item>
+        <item quantity="other">%d трека</item>
+    </plurals>
+    <plurals name="mtrl_badge_content_description">
+        <item quantity="one">%d new notification</item>
+        <item quantity="other">%d new notifications</item>
+    </plurals>
+    <plurals name="notification_tracks_downloaded">
+        <item quantity="one">1 track downloaded</item>
+        <item quantity="other">%d tracks downloaded</item>
+    </plurals>
+    <plurals name="notification_tracks_failed">
+        <item quantity="one">1 track failed</item>
+        <item quantity="other">%d tracks failed</item>
+    </plurals>
+    <plurals name="notification_tracks_saved">
+        <item quantity="one">1 track saved</item>
+        <item quantity="other">%d tracks saved</item>
+    </plurals>
+    <plurals name="playlist_sync_downloading">
+        <item quantity="one">Downloading %d track</item>
+        <item quantity="other">Downloading %d tracks</item>
+    </plurals>
+    <plurals name="songs_download_started">
+        <item quantity="one">Downloading %d song</item>
+        <item quantity="other">Downloading %d songs</item>
+    </plurals>
+</resources>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:icon="@drawable/ic_homemusic_select_all"
+        android:id="@+id/homemusic_selection_all"
+        android:title="@string/homemusic_selection_all"
+        app:showAsAction="always"/>
+    <item
+        android:icon="@drawable/ic_favorite"
+        android:id="@+id/homemusic_selection_like"
+        android:title="@string/homemusic_selection_unlike"
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/homemusic_selection_play"
+        android:title="@string/homemusic_selection_play"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/homemusic_selection_play_next"
+        android:title="@string/homemusic_selection_play_next"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/homemusic_selection_queue"
+        android:title="@string/homemusic_selection_queue"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/homemusic_selection_playlist"
+        android:title="@string/homemusic_selection_playlist"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/homemusic_selection_download"
+        android:title="@string/homemusic_selection_download"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/homemusic_selection_remove"
+        android:title="@string/homemusic_selection_remove"
+        app:showAsAction="never"/>
+</menu>

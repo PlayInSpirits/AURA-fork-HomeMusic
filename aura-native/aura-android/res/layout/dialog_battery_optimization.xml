@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/battery_optimization_primary" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12.0dp" android:layout_marginBottom="4.0dp" android:text="@string/activity_battery_optimizations_summary" android:layout_marginStart="24.0dp" android:layout_marginEnd="24.0dp" />
+    <TextView android:autoLink="web" android:id="@id/battery_optimization_secondary" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dp" android:text="@string/activity_battery_optimizations_conclusion" android:layout_marginStart="24.0dp" android:layout_marginEnd="24.0dp" />
+</LinearLayout>

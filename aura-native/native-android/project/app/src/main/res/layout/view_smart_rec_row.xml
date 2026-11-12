@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:id="@+id/player_smart_rec_row"
+    android:background="@drawable/bg_smart_rec_row"
+    android:visibility="gone"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="44dp"
+    android:paddingStart="12dp"
+    android:paddingEnd="4dp">
+    <TextView
+        android:textSize="13sp"
+        android:textColor="?attr/colorOnSecondaryContainer"
+        android:ellipsize="end"
+        android:id="@+id/player_smart_rec_label"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:maxLines="2"
+        android:layout_weight="1"/>
+    <ImageButton
+        android:id="@+id/player_smart_rec_add"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:src="@drawable/ic_add"
+        android:contentDescription="@string/homemusic_smart_add_playlist"
+        app:tint="?attr/colorPrimary"/>
+    <ImageButton
+        android:id="@+id/player_smart_rec_hide"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:src="@drawable/ic_minus"
+        android:contentDescription="@string/homemusic_smart_hide"
+        app:tint="?attr/colorOnSecondaryContainer"/>
+</LinearLayout>

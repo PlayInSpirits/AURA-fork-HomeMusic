@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="match_parent" android:baselineAligned="false"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/crash_info_fragment" android:layout_width="wrap_content" android:layout_height="match_parent" android:layout_weight="1.0">
+        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ui_crash" android:scaleType="centerInside" android:adjustViewBounds="true" android:maxWidth="240.0dp" android:maxHeight="240.0dp" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="match_parent" android:layout_weight="2.0" android:paddingStart="16.0dp" android:paddingEnd="16.0dp">
+        <TextView android:paddingTop="12.0dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ca_info_title" style="@style/LabelMedium" />
+        <TextView android:gravity="center_horizontal" android:paddingBottom="20.0dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/ca_info_description" android:paddingStart="56.0dp" android:paddingEnd="56.0dp" style="@style/LabelSmall" />
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <Button android:id="@id/crashInfoButtonClose" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ca_info_button_close" />
+            <Button android:id="@id/crashInfoButtonRestart" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ca_info_button_restart" android:layout_marginStart="8.0dp" />
+        </LinearLayout>
+        <TextView android:paddingTop="12.0dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ca_info_device_info" style="@style/LabelMedium" />
+        <TextView android:gravity="start" android:id="@id/crashInfoDeviceData" android:paddingBottom="20.0dp" android:scrollbars="vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="" android:paddingStart="70.0dp" android:paddingEnd="70.0dp" style="@style/LabelSmall" />
+    </LinearLayout>
+</LinearLayout>

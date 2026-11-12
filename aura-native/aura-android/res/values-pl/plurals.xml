@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="download_refresh_removed">
+        <item quantity="one">Usunięto %d brakujące pobranie.</item>
+        <item quantity="few">Usunięto %d brakujące pobrania</item>
+        <item quantity="many">Usunięto %d brakujących pobrań.</item>
+        <item quantity="other">Usunięto %d brakujących pobrań.</item>
+    </plurals>
+    <plurals name="exo_controls_fastforward_by_amount_description">
+        <item quantity="one">Przewiń do przodu o %d sekundę</item>
+        <item quantity="few">Przewiń do przodu o %d sekundy</item>
+        <item quantity="many">Przewiń do przodu o %d sekund</item>
+        <item quantity="other">Przewiń do przodu o %d sekundy</item>
+    </plurals>
+    <plurals name="exo_controls_rewind_by_amount_description">
+        <item quantity="one">Przewiń do tyłu o %d sekundę</item>
+        <item quantity="few">Przewiń do tyłu o %d sekundy</item>
+        <item quantity="many">Przewiń do tyłu o %d sekund</item>
+        <item quantity="other">Przewiń do tyłu o %d sekundy</item>
+    </plurals>
+    <plurals name="home_sync_starred_albums_count">
+        <item quantity="one">%d album do zsynchronizowania</item>
+        <item quantity="few">%d albumy do zsynchronizowania</item>
+        <item quantity="many">%d albumów do zsynchronizowania</item>
+        <item quantity="other">%d albumów do zsynchronizowania</item>
+    </plurals>
+    <plurals name="home_sync_starred_artists_count">
+        <item quantity="one">%d wykonawca do zsynchronizowania</item>
+        <item quantity="other">%d wykonawców do zsynchronizowania</item>
+    </plurals>
+    <plurals name="home_sync_starred_songs_count">
+        <item quantity="one">%d piosenka wymaga synchronizacji</item>
+        <item quantity="few">%d piosenki wymagają synchronizacji</item>
+        <item quantity="many">%d piosenek wymaga synchronizacji</item>
+        <item quantity="other">%d piosenek wymaga synchronizacji</item>
+    </plurals>
+    <plurals name="mtrl_badge_content_description">
+        <item quantity="one">%d nowe powiadomienie</item>
+        <item quantity="few">%d nowe powiadomienia</item>
+        <item quantity="many">%d nowych powiadomień</item>
+        <item quantity="other">%d nowego powiadomienia</item>
+    </plurals>
+    <plurals name="notification_tracks_downloaded">
+        <item quantity="one">Pobrano 1 utwór</item>
+        <item quantity="few">Pobrano %d utwory</item>
+        <item quantity="many">Pobrano %d utworów</item>
+        <item quantity="other">Pobrano %d utwory</item>
+    </plurals>
+    <plurals name="notification_tracks_failed">
+        <item quantity="one">1 utwór nieudany</item>
+        <item quantity="few">%d utwory nieudane</item>
+        <item quantity="many">%d utworów nieudanych</item>
+        <item quantity="other">%d utwory nieudane</item>
+    </plurals>
+    <plurals name="notification_tracks_saved">
+        <item quantity="one">1 track saved</item>
+        <item quantity="few">Usunięto %d brakujące pobrania</item>
+        <item quantity="many">Usunięto %d brakujących pobrań.</item>
+        <item quantity="other">%d tracks saved</item>
+    </plurals>
+    <plurals name="playlist_sync_downloading">
+        <item quantity="one">Pobieranie %d utworu</item>
+        <item quantity="other">Pobieranie %d utworów</item>
+    </plurals>
+    <plurals name="songs_download_started">
+        <item quantity="one">Pobieram %d piosenkę</item>
+        <item quantity="few">Pobieram %d piosenki</item>
+        <item quantity="many">Pobieram %d piosenek</item>
+        <item quantity="other">Pobieram %d piosenek</item>
+    </plurals>
+</resources>

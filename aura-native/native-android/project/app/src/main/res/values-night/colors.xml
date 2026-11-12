@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="dividerColor">#ff343448</color>
+    <color name="homemusic_danger">#f26b63</color>
+    <color name="lyricsTextColor">#dadada</color>
+    <color name="shadowsLyricsTextColor">#606060</color>
+    <color name="subtitleTextColor">#ffb9b5cf</color>
+    <color name="titleTextColor">#fff4f1ff</color>
+    <color name="widget_bg">#e51a1b2d</color>
+    <color name="widget_icon_tint">#ffffffff</color>
+    <color name="widget_icon_tint_active">#ffbdadff</color>
+    <color name="widget_subtitle">#ffc6c2d8</color>
+    <color name="widget_title">#ffffffff</color>
+</resources>

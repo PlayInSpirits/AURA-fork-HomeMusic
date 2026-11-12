@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:icon="@drawable/aura_nav_home" android:id="@id/homeFragment" android:title="@string/menu_home_label" app:contentDescription="@string/menu_home_label" />
+    <item android:icon="@drawable/aura_nav_library" android:id="@id/libraryFragment" android:title="@string/menu_library_label" app:contentDescription="@string/menu_library_label" />
+    <item android:icon="@drawable/aura_nav_hub" android:id="@id/hubFragment" android:title="@string/homemusic_menu_hub" app:contentDescription="@string/homemusic_menu_hub" />
+    <item android:icon="@drawable/aura_nav_download" android:id="@id/downloadFragment" android:title="@string/menu_download_label" app:contentDescription="@string/menu_download_label" />
+</menu>

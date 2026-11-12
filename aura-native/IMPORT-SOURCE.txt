@@ -1,0 +1,4 @@
+Imported from branch: native-v0.10.1
+Source commit: 0a779d70f8f7ed233ffbacfce6edbcd35f47b6e7
+Destination: main/aura-native/
+Original native-v0.10.1 branch is preserved.

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="download_refresh_removed">
+        <item quantity="one">%d téléchargement manquant retiré.</item>
+        <item quantity="other">%d téléchargements manquants retirés.</item>
+    </plurals>
+    <plurals name="exo_controls_fastforward_by_amount_description">
+        <item quantity="one">Avancer de %d seconde</item>
+        <item quantity="other">Avancer de %d secondes</item>
+    </plurals>
+    <plurals name="exo_controls_rewind_by_amount_description">
+        <item quantity="one">Revenir en arrière de %d seconde</item>
+        <item quantity="other">Revenir en arrière de %d secondes</item>
+    </plurals>
+    <plurals name="home_sync_starred_albums_count">
+        <item quantity="one">%d album à synchroniser</item>
+        <item quantity="other">%d albums à synchroniser</item>
+    </plurals>
+    <plurals name="home_sync_starred_artists_count">
+        <item quantity="one">%d artiste à synchroniser</item>
+        <item quantity="other">%d artistes à synchroniser</item>
+    </plurals>
+    <plurals name="home_sync_starred_songs_count">
+        <item quantity="one">%d titre doit être synchronisé</item>
+        <item quantity="other">%d titres doivent être synchronisés</item>
+    </plurals>
+    <plurals name="mtrl_badge_content_description">
+        <item quantity="one">%d nouvelle notification</item>
+        <item quantity="other">%d nouvelles notifications</item>
+    </plurals>
+    <plurals name="playlist_sync_downloading">
+        <item quantity="one">Téléchargement de %d titre en cours</item>
+        <item quantity="other">Téléchargement de %d titres en cours</item>
+    </plurals>
+    <plurals name="songs_download_started">
+        <item quantity="one">Téléchargement de %d titre</item>
+        <item quantity="other">Téléchargement de %d titres</item>
+    </plurals>
+</resources>

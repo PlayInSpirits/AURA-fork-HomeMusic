@@ -1,0 +1,357 @@
+name: Repair native project from saved AURA recovery artifact
+
+"on":
+  push:
+    branches: [native-v0.10.1]
+    paths:
+      - 'tools/activate-native-source-repair.txt'
+
+permissions:
+  actions: read
+  contents: write
+
+concurrency:
+  group: aura-native-source-repair
+  cancel-in-progress: false
+
+jobs:
+  repair-and-compile:
+    name: Apply saved CFR recovery and compile on Windows runner
+    runs-on: [self-hosted, windows, x64]
+    defaults:
+      run:
+        working-directory: native
+        shell: 'C:\PROGRA~1\Git\bin\bash.exe --noprofile --norc -eo pipefail {0}'
+
+    steps:
+      - name: Checkout native migration branch
+        uses: actions/checkout@v4
+        with:
+          ref: native-v0.10.1
+          path: native
+          fetch-depth: 1
+
+      - name: Use installed JDK 17 and persistent portable Python 3.12
+        run: |
+          set -euo pipefail
+
+          JAVA_HOME_UNIX=""
+          for candidate in "$JAVA_HOME" "C:/Program Files/Eclipse Adoptium/jdk-17.0.21.9-hotspot"; do
+            [ -n "$candidate" ] || continue
+            path="$(cygpath -u "$candidate" 2>/dev/null || printf '%s' "$candidate")"
+            if [ -f "$path/bin/java.exe" ]; then
+              JAVA_HOME_UNIX="$(cd "$path" && pwd -P)"
+              break
+            fi
+          done
+          [ -n "$JAVA_HOME_UNIX" ] || { echo "::error::Installed JDK 17 was not found on the runner."; exit 1; }
+          "$JAVA_HOME_UNIX/bin/java.exe" -version
+          printf 'JAVA_HOME=%s\n' "$(cygpath -w "$JAVA_HOME_UNIX")" >> "$GITHUB_ENV"
+          printf '%s\n' "$(cygpath -w "$JAVA_HOME_UNIX/bin")" >> "$GITHUB_PATH"
+
+          TOOL_CACHE_UNIX="$(cygpath -u "$RUNNER_TOOL_CACHE")"
+          PYTHON_DIR="$TOOL_CACHE_UNIX/aura-python-3.12.10"
+          PYTHON_ZIP="$(cygpath -u "$RUNNER_TEMP/python-3.12.10-embed-amd64.zip")"
+          mkdir -p "$PYTHON_DIR"
+          if [ ! -f "$PYTHON_DIR/python.exe" ]; then
+            curl.exe -fL --retry 3 "https://www.python.org/ftp/python/3.12.10/python-3.12.10-embed-amd64.zip" -o "$(cygpath -w "$PYTHON_ZIP")"
+            actual="$(md5sum "$PYTHON_ZIP" | awk '{print tolower($1)}')"
+            expected="fe8ef205f2e9c3ba44d0cf9954e1abd3"
+            [ "$actual" = "$expected" ] || { echo "::error::Portable Python 3.12.10 checksum mismatch: $actual"; exit 1; }
+            PYTHON_DIR_WIN="$(cygpath -w "$PYTHON_DIR")"
+            PYTHON_ZIP_WIN="$(cygpath -w "$PYTHON_ZIP")"
+            powershell.exe -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command "Expand-Archive -LiteralPath '$PYTHON_ZIP_WIN' -DestinationPath '$PYTHON_DIR_WIN' -Force; Add-Content -LiteralPath '$PYTHON_DIR_WIN\python312._pth' -Value 'import site'"
+          fi
+          PYTHON_BIN="$PYTHON_DIR/python.exe"
+          [ -f "$PYTHON_BIN" ] || { echo "::error::Persistent portable Python was not extracted."; exit 1; }
+          "$PYTHON_BIN" -c 'import sys; print(sys.version); raise SystemExit(0 if sys.version_info >= (3, 12) else 1)'
+          printf 'AURA_PYTHON=%s\n' "$(cygpath -w "$PYTHON_BIN")" >> "$GITHUB_ENV"
+      - name: Verify existing Android SDK
+        run: |
+          set -euo pipefail
+          SDK_ROOT="C:/Android"
+          SDK_ROOT_UNIX="$(cygpath -u "$SDK_ROOT")"
+          [ -f "$SDK_ROOT_UNIX/platforms/android-37.0/android.jar" ] || { echo "::error::Android SDK Platform 37 is missing from C:\Android."; exit 1; }
+          [ -f "$SDK_ROOT_UNIX/build-tools/37.0.0/aapt.exe" ] || { echo "::error::Android Build Tools 37.0.0 are missing."; exit 1; }
+          printf 'ANDROID_HOME=%s\n' "$SDK_ROOT" >> "$GITHUB_ENV"
+          printf 'ANDROID_SDK_ROOT=%s\n' "$SDK_ROOT" >> "$GITHUB_ENV"
+
+      - name: Download the already-created recovery artifact (run 36)
+        uses: actions/download-artifact@v4
+        with:
+          name: aura-native-recovery
+          path: native/recovery-input
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          repository: PlayInSpirits/AURA-fork-HomeMusic
+          run-id: 43147516314
+
+      - name: Apply structured JADX plus safe CFR replacements to the project
+        run: |
+          set -euo pipefail
+          "$AURA_PYTHON" - <<'PY'
+          from pathlib import Path
+          import json
+          import re
+          import shutil
+
+          recovery_root = Path("recovery-input/recovery")
+          artifact = recovery_root
+          structured = recovery_root / "jadx-aura-0751" / "sources"
+          simple = recovery_root / "jadx-aura-0751-simple" / "sources"
+          cfr_root = recovery_root / "cfr-aura-0751"
+          gradle_export = recovery_root / "gradle-export-aura-0751"
+          project = Path("native-android/project")
+          app_sources = project / "app/src/main/java"
+
+          for required in (structured, simple, cfr_root, gradle_export):
+              if not required.is_dir():
+                  raise SystemExit(f"Required saved recovery directory is missing: {required}")
+          java_files = list(structured.rglob("*.java"))
+          if len(java_files) < 6000:
+              raise SystemExit(f"Unexpectedly incomplete JADX source tree: {len(java_files)} Java files")
+
+          # Start from the independently decompiled structured JADX sources, not the
+          # JADX Gradle-export sources that contain additional broken type placeholders.
+          if app_sources.exists():
+              shutil.rmtree(app_sources)
+          shutil.copytree(structured, app_sources)
+
+          # Prefer CFR only where it produced Java without unresolved types or GOTO markers.
+          unresolved = re.compile(r"\?\?\s+[A-Za-z_$][\w$]*")
+          replaced = []
+          skipped = []
+          for src in java_files:
+              rel = src.relative_to(structured)
+              current = src.read_text(encoding="utf-8", errors="replace")
+              if not unresolved.search(current):
+                  continue
+              cfr_file = cfr_root / (rel.name if rel.parts[0] == "defpackage" else rel)
+              if not cfr_file.is_file():
+                  skipped.append((rel.as_posix(), "CFR counterpart missing"))
+                  continue
+              candidate = cfr_file.read_text(encoding="utf-8", errors="replace")
+              if unresolved.search(candidate) or re.search(r"\*\*\s*GOTO\b", candidate):
+                  skipped.append((rel.as_posix(), "CFR output still has unresolved control flow"))
+                  continue
+              if rel.parts[0] == "defpackage":
+                  candidate = "package defpackage;\n\n" + candidate
+              else:
+                  package_match = re.search(r"(?m)^package\s+[\w.]+\s*;", candidate)
+                  if package_match and "import defpackage.*;" not in candidate:
+                      candidate = (candidate[:package_match.end()] +
+                                   "\n\nimport defpackage.*;" +
+                                   candidate[package_match.end():])
+              if rel.as_posix() == "com/eddyizm/tempus/homemusic/MixOfflineWorker.java":
+                  old_ctor = ("        context.getClass();\n"
+                              "        workerParameters.getClass();\n"
+                              "        super(context, workerParameters);")
+                  new_ctor = ("        super(context, workerParameters);\n"
+                              "        context.getClass();\n"
+                              "        workerParameters.getClass();")
+                  if old_ctor not in candidate:
+                      raise SystemExit("CFR MixOfflineWorker constructor shape changed; refusing to patch blindly.")
+                  candidate = candidate.replace(old_ctor, new_ctor, 1)
+              src.write_text(candidate, encoding="utf-8", newline="\n")
+              replaced.append(rel.as_posix())
+
+          # Critical ordering fix: CFR edits above were applied to the recovery source tree.
+          # Copy that merged tree into the Gradle project only after CFR has finished.
+          shutil.rmtree(app_sources)
+          shutil.copytree(structured, app_sources)
+
+          def patch_source(relative, replacements):
+              path = app_sources / relative
+              if not path.is_file():
+                  raise SystemExit(f"Required app source is missing: {relative}")
+              text = path.read_text(encoding="utf-8")
+              if "??" not in text:
+                  return
+              for before, after, count in replacements:
+                  actual = text.count(before)
+                  if actual != count:
+                      raise SystemExit(f"{relative}: expected {count} occurrence(s) of {before!r}, found {actual}")
+                  text = text.replace(before, after, count)
+              path.write_text(text, encoding="utf-8", newline="\n")
+
+          patch_source("com/eddyizm/tempus/homemusic/WaveSession.java", [
+              ("?? I0;", "List I0;", 1)
+          ])
+          patch_source("com/eddyizm/tempus/homemusic/MixOfflineWorker.java", [
+              ("?? arrayList;", "List<Child> arrayList;", 1),
+              ("arrayList = 0;", "arrayList = null;", 1),
+              ("arrayList == 0", "arrayList == null", 1)
+          ])
+          patch_source("com/eddyizm/tempus/lan/LanReceiverService.java", [
+              ("import java.util.Iterator;", "import java.util.Iterator;\nimport java.util.List;", 1),
+              ("final ?? arrayList;", "final List arrayList;", 1)
+          ])
+          patch_source("com/eddyizm/tempus/ui/fragment/IndexFragment.java", [
+              ("?? arrayList;", "List arrayList;", 1)
+          ])
+
+          # Framework/AndroidX copies must come from the Android SDK/Maven, except Media3,
+          # which is absent from the original META-INF dependency markers and is retained.
+          android_root = app_sources / "android"
+          if android_root.is_dir():
+              for child in list(android_root.iterdir()):
+                  if child.name != "support":
+                      shutil.rmtree(child) if child.is_dir() else child.unlink()
+          androidx_root = app_sources / "androidx"
+          if androidx_root.is_dir():
+              shutil.rmtree(androidx_root)
+          material_root = app_sources / "com/google/android/material"
+          if material_root.is_dir():
+              shutil.rmtree(material_root)
+
+          media3 = gradle_export / "app/src/main/java/androidx/media3"
+          media3_target = app_sources / "androidx/media3"
+          if media3.is_dir():
+              shutil.copytree(media3, media3_target, dirs_exist_ok=True)
+
+          # Keep the runtime buffer-size calculation while making the interface Java 8 legal.
+          exoplayer = media3_target / "exoplayer/ExoPlayer.java"
+          if exoplayer.is_file():
+              source = exoplayer.read_text(encoding="utf-8")
+              illegal = (
+                  "    public static final int a;\n\n"
+                  "    static {\n"
+                  "        String str = f35.a;\n"
+                  "        String strU = rr2.U(Build.DEVICE);\n"
+                  "        a = (strU.contains(\"emulator\") || strU.contains(\"emu64a\") || strU.contains(\"emu64x\") || strU.contains(\"generic\")) ? 30000 : 10000;\n"
+                  "    }"
+              )
+              legal = (
+                  "    int a = getDefaultBufferSize();\n\n"
+                  "    static int getDefaultBufferSize() {\n"
+                  "        String str = f35.a;\n"
+                  "        String strU = rr2.U(Build.DEVICE);\n"
+                  "        return (strU.contains(\"emulator\") || strU.contains(\"emu64a\") || strU.contains(\"emu64x\") || strU.contains(\"generic\")) ? 30000 : 10000;\n"
+                  "    }"
+              )
+              if illegal in source:
+                  exoplayer.write_text(source.replace(illegal, legal, 1), encoding="utf-8", newline="\n")
+              elif "getDefaultBufferSize()" not in source:
+                  raise SystemExit("ExoPlayer interface initializer is not in a recognized state.")
+
+          # Rebuild dependency declarations from the embedded versions in the recovered APK.
+          meta = project / "app/src/main/META-INF"
+          dependencies = []
+          seen = set()
+          for marker in sorted(meta.glob("*.version")):
+              stem = marker.name[:-len(".version")]
+              version = marker.read_text(encoding="utf-8", errors="replace").strip()
+              if not re.fullmatch(r"[0-9]+(?:\.[0-9A-Za-z-]+){1,4}", version):
+                  continue
+              if stem.startswith("androidx.") or stem.startswith("com.google.android.material_"):
+                  group, artifact = stem.split("_", 1)
+              elif stem.startswith("kotlinx_coroutines_"):
+                  group, artifact = "org.jetbrains.kotlinx", "kotlinx-coroutines-" + stem[len("kotlinx_coroutines_"):]
+              else:
+                  continue
+              if (group, artifact) not in seen and artifact != "viewbinding":
+                  seen.add((group, artifact))
+                  dependencies.append((group, artifact, version))
+
+          app_build = project / "app/build.gradle"
+          build_text = app_build.read_text(encoding="utf-8")
+          dep_block = "dependencies {\n"
+          for group, artifact, version in sorted(dependencies):
+              dep_block += f"    implementation '{group}:{artifact}:{version}'\n"
+          dep_block += "}\n"
+          build_text, count = re.subn(r"(?s)dependencies\s*\{.*?\}", lambda _: dep_block, build_text, count=1)
+          if count != 1:
+              raise SystemExit("Could not reconstruct app dependency block.")
+          app_build.write_text(build_text, encoding="utf-8", newline="\n")
+
+          # AGP generates R.java. Do not retain decompiler copies.
+          removed_r = 0
+          for path in project.rglob("R.java"):
+              path.unlink()
+              removed_r += 1
+
+          remaining = []
+          for path in app_sources.rglob("*.java"):
+              content = path.read_text(encoding="utf-8", errors="replace")
+              markers = unresolved.findall(content)
+              if markers:
+                  remaining.append((len(markers), path.relative_to(app_sources).as_posix()))
+          print("Structured JADX Java files:", len(java_files))
+          print("CFR replacements applied:", len(replaced))
+          print("CFR replacements skipped:", len(skipped))
+          print("Remaining unresolved type markers:", sum(n for n, _ in remaining))
+          print("Remaining files with unresolved markers:", len(remaining))
+          for count, name in sorted(remaining, reverse=True)[:30]:
+              print(f"  {count:3} {name}")
+          print("Removed decompiled R.java files:", removed_r)
+
+          if not (project / "app/src/main/AndroidManifest.xml").is_file():
+              raise SystemExit("AndroidManifest.xml is missing.")
+          manifest = project / "app/src/main/AndroidManifest.xml"
+          manifest_text = manifest.read_text(encoding="utf-8")
+          manifest_text = re.sub(r'android:versionCode="[^"]+"', 'android:versionCode="7502"', manifest_text, count=1)
+          manifest_text = re.sub(r'android:versionName="[^"]+"', 'android:versionName="v0.10.1"', manifest_text, count=1)
+          manifest.write_text(manifest_text, encoding="utf-8", newline="\n")
+
+          notice = (
+              "# Recovered Android source baseline\n\n"
+              "Recovered from AURA 0.75.1 using JADX 1.5.6 structured output, selected CFR 0.152 replacements, "
+              "and Apktool Smali as the behavioral reference. This is reconstructed source, not the original author's Gradle project.\n\n"
+              "Do not publish a release until compile, signing compatibility, data preservation, and functional tests pass.\n"
+          )
+          (project / "RECOVERED-SOURCE-NOTICE.md").write_text(notice, encoding="utf-8")
+          inventory_path = recovery_root / "recovery-inventory.json"
+          if inventory_path.is_file():
+              shutil.copy2(inventory_path, project / "recovery-inventory.json")
+          PY
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config core.longpaths true
+          git add -f native-android/project
+          if ! git diff --cached --quiet; then
+            git commit -m "Apply CFR-repaired AURA sources to native project"
+            git push origin HEAD:native-v0.10.1
+          fi
+
+      - name: Compile :app:assembleDebug using persistent runner tools
+        run: |
+          set -euo pipefail
+          mkdir -p build-diagnostics
+          JAVA_HOME_UNIX="$(cygpath -u "$JAVA_HOME")"
+          JAVA_RUNTIME="$JAVA_HOME_UNIX/bin/java.exe"
+          "$JAVA_RUNTIME" -version
+
+          TOOL_CACHE="$(cygpath -u "$RUNNER_TOOL_CACHE")"
+          GRADLE_BAT="$(cygpath -w "$TOOL_CACHE/aura-gradle-9.6.0/bin/gradle.bat")"
+          [ -f "$TOOL_CACHE/aura-gradle-9.6.0/bin/gradle.bat" ] || { echo "::error::Persistent Gradle 9.6.0 is missing."; exit 1; }
+
+          PROJECT_WIN="$(cygpath -w "$PWD/native-android/project")"
+          LOG_WIN="$(cygpath -w "$PWD/build-diagnostics/gradle-build.log")"
+          set +e
+          powershell.exe -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command "& '$GRADLE_BAT' --no-daemon --stacktrace -p '$PROJECT_WIN' :app:assembleDebug *> '$LOG_WIN'; exit \$LASTEXITCODE"
+          BUILD_EXIT=$?
+          set -e
+          echo "$BUILD_EXIT" > build-diagnostics/gradle-build-exit-code.txt
+          cat build-diagnostics/gradle-build.log
+          if [ "$BUILD_EXIT" -ne 0 ]; then
+            echo "::error::Native AURA still has compiler errors; inspect the exact diagnostics artifact."
+            exit 1
+          fi
+
+          APK="$(find native-android/project/app/build/outputs/apk/debug -maxdepth 1 -type f -name '*.apk' | head -n 1)"
+          [ -n "$APK" ] || { echo "::error::Build completed without producing a debug APK."; exit 1; }
+          AAPT="$ANDROID_HOME/build-tools/37.0.0/aapt.exe"
+          "$AAPT" dump badging "$APK" | tee build-diagnostics/apk-badging.txt
+          grep -F "package: name='app.homemusic' versionCode='7502' versionName='v0.10.1'" build-diagnostics/apk-badging.txt
+
+      - name: Upload repaired source diagnostics and debug APK
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: aura-native-repaired-debug
+          path: |
+            native/native-android/project/app/build/outputs/apk/debug/*.apk
+            native/build-diagnostics/
+          if-no-files-found: warn
+          compression-level: 3
+          retention-days: 30

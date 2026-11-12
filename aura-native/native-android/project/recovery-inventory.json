@@ -1,0 +1,43 @@
+{
+  "apk_baselines": {
+    "AURA-0.30.2.apk": {
+      "bytes": 19546997
+    },
+    "AURA-0.75.1.apk": {
+      "bytes": 19667691
+    },
+    "HomeMusic-1.14.7.apk": {
+      "bytes": 15043681
+    }
+  },
+  "jadx_sources": {
+    "jadx-original": {
+      "java_files": 6786,
+      "kotlin_files": 0,
+      "other_files": 6786
+    },
+    "jadx-aura-0302": {
+      "java_files": 6786,
+      "kotlin_files": 0,
+      "other_files": 6786
+    },
+    "jadx-aura-0751": {
+      "java_files": 6791,
+      "kotlin_files": 0,
+      "other_files": 6791
+    }
+  },
+  "cfr_java_files": 7027,
+  "apktool_smali": 7200,
+  "gradle_export_aura_0751": {
+    "java_files": 6791,
+    "manifest_files": 1,
+    "resource_directories": 2,
+    "root_gradle_files_present": true,
+    "key_gradle_files": [
+      "app/build.gradle",
+      "build.gradle",
+      "settings.gradle"
+    ]
+  }
+}

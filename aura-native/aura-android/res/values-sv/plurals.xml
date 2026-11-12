@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="download_refresh_removed">
+        <item quantity="one">Tog bort %d saknad hämtning.</item>
+        <item quantity="other">Tog bort %d saknade hämtningar.</item>
+    </plurals>
+    <plurals name="exo_controls_fastforward_by_amount_description">
+        <item quantity="one">Spola framåt %d sekund</item>
+        <item quantity="other">Spola framåt %d sekunder</item>
+    </plurals>
+    <plurals name="exo_controls_rewind_by_amount_description">
+        <item quantity="one">Spola tillbaka %d sekund</item>
+        <item quantity="other">Spola tillbaka %d sekunder</item>
+    </plurals>
+    <plurals name="home_sync_starred_albums_count">
+        <item quantity="one">%d album att synkronisera</item>
+        <item quantity="other">%d album att synkronisera</item>
+    </plurals>
+    <plurals name="home_sync_starred_artists_count">
+        <item quantity="one">%d artist att synkronisera</item>
+        <item quantity="other">%d artister att synkronisera</item>
+    </plurals>
+    <plurals name="home_sync_starred_songs_count">
+        <item quantity="one">%d låt behöver synkroniseras</item>
+        <item quantity="other">%d låtar behöver synkroniseras</item>
+    </plurals>
+    <plurals name="mtrl_badge_content_description">
+        <item quantity="one">%d ny avisering</item>
+        <item quantity="other">%d nya aviseringar</item>
+    </plurals>
+    <plurals name="notification_tracks_downloaded">
+        <item quantity="one">1 låt hämtad</item>
+        <item quantity="other">%d låtar hämtade</item>
+    </plurals>
+    <plurals name="notification_tracks_failed">
+        <item quantity="one">Hämtningen av 1 låt misslyckades</item>
+        <item quantity="other">Hämtningen av %d låtar misslyckades</item>
+    </plurals>
+    <plurals name="notification_tracks_saved">
+        <item quantity="one">1 låt sparad</item>
+        <item quantity="other">%d låtar sparade</item>
+    </plurals>
+    <plurals name="playlist_sync_downloading">
+        <item quantity="one">Hämtar %d låt</item>
+        <item quantity="other">Hämtar %d låtar</item>
+    </plurals>
+    <plurals name="songs_download_started">
+        <item quantity="one">Hämtar %d låt</item>
+        <item quantity="other">Hämtar %d låtar</item>
+    </plurals>
+</resources>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="download_refresh_removed">
+        <item quantity="one">"S'ha suprimit %d baixada que faltava."</item>
+        <item quantity="other">"S'han suprimit %d baixades que faltaven."</item>
+    </plurals>
+    <plurals name="exo_controls_fastforward_by_amount_description">
+        <item quantity="one">Avança ràpidament %d segon</item>
+        <item quantity="other">Avança ràpidament %d segons</item>
+    </plurals>
+    <plurals name="exo_controls_rewind_by_amount_description">
+        <item quantity="one">Rebobina %d segon</item>
+        <item quantity="other">Rebobina %d segons</item>
+    </plurals>
+    <plurals name="home_sync_starred_albums_count">
+        <item quantity="one">Se sincronitzarà %d àlbum</item>
+        <item quantity="other">Se sincronitzaran %d àlbums</item>
+    </plurals>
+    <plurals name="home_sync_starred_artists_count">
+        <item quantity="one">Se sincronitzarà %d artista</item>
+        <item quantity="other">Se sincronitzaran %d artistes</item>
+    </plurals>
+    <plurals name="home_sync_starred_songs_count">
+        <item quantity="one">Cal sincronitzar %d cançó</item>
+        <item quantity="other">Cal sincronitzar %d cançons</item>
+    </plurals>
+    <plurals name="mtrl_badge_content_description">
+        <item quantity="one">%d notificació nova</item>
+        <item quantity="other">%d notificacions noves</item>
+    </plurals>
+    <plurals name="playlist_sync_downloading">
+        <item quantity="one">"S'està baixant %d pista"</item>
+        <item quantity="other">"S'estan baixant %d pistes"</item>
+    </plurals>
+    <plurals name="songs_download_started">
+        <item quantity="one">"S'està baixant %d cançó"</item>
+        <item quantity="other">"S'estan baixant %d cançons"</item>
+    </plurals>
+</resources>
