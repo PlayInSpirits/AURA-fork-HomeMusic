@@ -1,0 +1,1 @@
+One-time source repair: re-apply the saved AURA 0.75.1 JADX+CFR sources from Actions run 43147516314 after the CFR merge, then run :app:assembleDebug.
