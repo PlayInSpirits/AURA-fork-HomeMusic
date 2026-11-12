@@ -178,26 +178,18 @@ jg1 {
      * Enabled unnecessary exception pruning
      * Enabled aggressive exception aggregation
      */
-    public final Object i(dd4 object, bd4 vd02) {
-        vd02 = new cz(1, ya4.x(vd02));
-        ((cz)vd02).u();
+    public final Object i(dd4 waiter, bd4 continuation) {
+        cz signal = new cz(1, ya4.x(continuation));
+        signal.u();
         synchronized (this) {
-            try {
-                if (this.s((dd4)object) < 0L) {
-                    ((dd4)object).b = vd02;
-                } else {
-                    ((cz)vd02).resumeWith(j15.a);
-                }
-                // MONITOREXIT @DISABLED, blocks:[0, 1] lbl9 : MonitorExitStatement: MONITOREXIT : this
-                object = ((cz)vd02).q();
-                if (object == xe0.n) {
-                    return object;
-                }
-                return j15.a;
+            if (this.s(waiter) < 0L) {
+                waiter.b = signal;
+            } else {
+                signal.resumeWith(j15.a);
             }
-            catch (Throwable throwable) {}
-            throw throwable;
         }
+        Object result = signal.q();
+        return result == xe0.n ? result : j15.a;
     }
 
     public final void j() {
