@@ -131,7 +131,19 @@ jobs:
             echo "::error::Permanent AURA signing key secrets are unavailable; cannot approve update compatibility."
             exit 1
           fi
-          printf '%s' "$AURA_KEYSTORE_BASE64" | base64 --decode > recovery/aura-release-key.jks
+          "$AURA_PYTHON" - <<'PY'
+          import base64, os
+          from pathlib import Path
+          encoded="".join(os.environ["AURA_KEYSTORE_BASE64"].split())
+          try:
+              key=base64.b64decode(encoded,validate=True)
+          except Exception as e:
+              raise SystemExit("AURA keystore secret is not valid base64 after whitespace normalization.") from e
+          if len(key) < 1024:
+              raise SystemExit("Decoded AURA keystore is unexpectedly small.")
+          Path("recovery/aura-release-key.jks").write_bytes(key)
+          print("Decoded permanent AURA keystore securely for certificate comparison.")
+          PY
           SDK_ROOT_UNIX="$(cygpath -u "$ANDROID_HOME")"
           BUILD_TOOLS_DIR="$(find "$SDK_ROOT_UNIX/build-tools" -mindepth 1 -maxdepth 1 -type d | sort -V | tail -n 1)"
           APKSIGNER_JAR="$BUILD_TOOLS_DIR/lib/apksigner.jar"
