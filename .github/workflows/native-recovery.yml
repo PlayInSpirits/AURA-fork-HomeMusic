@@ -383,12 +383,65 @@ jobs:
               shutil.rmtree(app_sources)
           shutil.copytree(structured_sources,app_sources)
 
+          # CFR is an independent decompiler. Use it only where the structured JADX source
+          # contains unresolved inferred types and CFR's corresponding file is syntactically
+          # complete. The APK's default-package classes are mapped to the synthetic
+          # "defpackage" namespace used by JADX so named application packages can import them.
+          cfr_root=Path("recovery/cfr-aura-0751")
+          cfr_marker=re.compile(r"\?\?\s+[A-Za-z_$][\w$]*")
+          cfr_replaced=[]
+          cfr_skipped=[]
+          for source_file in structured_java:
+              relative=source_file.relative_to(structured_sources)
+              relative_name=relative.as_posix()
+              current=source_file.read_text(encoding="utf-8",errors="replace")
+              if not cfr_marker.search(current):
+                  continue
+              if relative.parts[0] == "defpackage":
+                  cfr_file=cfr_root/relative.name
+              else:
+                  cfr_file=cfr_root/relative
+              if not cfr_file.is_file():
+                  cfr_skipped.append((relative_name,"missing CFR counterpart"))
+                  continue
+              candidate=cfr_file.read_text(encoding="utf-8",errors="replace")
+              if cfr_marker.search(candidate) or re.search(r"\*\*\s*GOTO\b",candidate):
+                  cfr_skipped.append((relative_name,"CFR still contains unresolved control flow"))
+                  continue
+              if relative.parts[0] == "defpackage":
+                  candidate="package defpackage;\n\n"+candidate
+              else:
+                  package_match=re.search(r"(?m)^package\s+[\w.]+\s*;",candidate)
+                  if package_match and "import defpackage.*;" not in candidate:
+                      candidate=(candidate[:package_match.end()] +
+                                 "\n\nimport defpackage.*;" +
+                                 candidate[package_match.end():])
+              if relative_name == "com/eddyizm/tempus/homemusic/MixOfflineWorker.java":
+                  old_ctor=("        context.getClass();\n"
+                            "        workerParameters.getClass();\n"
+                            "        super(context, workerParameters);")
+                  new_ctor=("        super(context, workerParameters);\n"
+                            "        context.getClass();\n"
+                            "        workerParameters.getClass();")
+                  if old_ctor not in candidate:
+                      raise SystemExit("CFR MixOfflineWorker constructor did not match the expected Kotlin null-check pattern.")
+                  candidate=candidate.replace(old_ctor,new_ctor,1)
+              source_file.write_text(candidate,encoding="utf-8",newline="\n")
+              cfr_replaced.append(relative_name)
+          print("Replaced unresolved JADX Java sources with CFR:",len(cfr_replaced))
+          print("Skipped CFR replacements requiring Smali/manual repair:",len(cfr_skipped))
+          for name,reason in cfr_skipped[:30]:
+              print("  KEEP JADX:",name,"—",reason)
+
           # Restore four local type-inference failures directly from their control flow and Smali.
           def patch_source(relative, replacements):
               path=app_sources/relative
               if not path.is_file():
                   raise SystemExit(f"Source required for Smali-backed repair is missing: {relative}")
               content=path.read_text(encoding="utf-8")
+              if "??" not in content:
+                  print("Already repaired by CFR; skipping Smali placeholder patch:",relative)
+                  return
               for before,after,count in replacements:
                   actual=content.count(before)
                   if actual != count:
