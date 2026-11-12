@@ -326,11 +326,22 @@ jobs:
           if [ ! -f "$SDK_MANAGER" ]; then
             echo "Android command-line tools are missing; bootstrapping official Windows SDK tools."
             CMDLINE_TEMP="$RUNNER_TEMP/aura-commandline-tools"
-            CMDLINE_ZIP="$RUNNER_TEMP/commandlinetools-win-12266719_latest.zip"
+            CMDLINE_ZIP="$RUNNER_TEMP/commandlinetools-win-15859902_latest.zip"
             CMDLINE_TEMP="$(cygpath -u "$CMDLINE_TEMP")"
             CMDLINE_ZIP="$(cygpath -u "$CMDLINE_ZIP")"
             mkdir -p "$CMDLINE_TEMP" "$SDK_ROOT_UNIX/cmdline-tools/latest"
-            curl.exe -fL --retry 3 "https://dl.google.com/android/repository/commandlinetools-win-12266719_latest.zip" -o "$(cygpath -w "$CMDLINE_ZIP")"
+            curl.exe -fL --retry 3 "https://dl.google.com/android/repository/commandlinetools-win-15859902_latest.zip" -o "$(cygpath -w "$CMDLINE_ZIP")"
+            "$AURA_PYTHON" - "$CMDLINE_ZIP" <<'PY'
+          from hashlib import sha256
+          from pathlib import Path
+          import sys
+          p=Path(sys.argv[1])
+          actual=sha256(p.read_bytes()).hexdigest()
+          expected="90ae805d20434428bffcb699c290860f19bb5f66a67e6b330067e3de801fb04a"
+          if actual != expected:
+              raise SystemExit(f"Android command-line tools SHA-256 mismatch: {actual}")
+          print("Verified current Android command-line tools:",actual)
+          PY
             CMDLINE_TEMP_WIN="$(cygpath -w "$CMDLINE_TEMP")"
             powershell.exe -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command "Expand-Archive -LiteralPath '$(cygpath -w "$CMDLINE_ZIP")' -DestinationPath '$CMDLINE_TEMP_WIN' -Force"
             cp -a "$CMDLINE_TEMP/cmdline-tools/." "$SDK_ROOT_UNIX/cmdline-tools/latest/"
