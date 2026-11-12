@@ -1,1 +1,1 @@
-Verified import retry after limiting checkout to the two required branches only.
+Retry import using isolated Git repos and exact refs only.
