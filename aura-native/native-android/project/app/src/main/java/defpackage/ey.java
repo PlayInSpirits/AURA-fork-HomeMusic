@@ -631,9 +631,9 @@ public final class ey implements u91 {
                         size = i5;
                     }
                 }
-                ?? C = cx2Var2.n;
-                ?? f13Var4 = 0;
-                while (C != 0) {
+                cx2 C = cx2Var2.n;
+                f13 f13Var4 = null;
+                while (C != null) {
                     if (C instanceof j42) {
                     } else if ((C.p & 8192) != 0 && (C instanceof fo0)) {
                         cx2 cx2Var10 = ((fo0) C).C;
@@ -647,12 +647,12 @@ public final class ey implements u91 {
                                     f13Var4 = f13Var4;
                                     C = cx2Var10;
                                 } else {
-                                    if (f13Var4 == 0) {
+                                    if (f13Var4 == null) {
                                         f13Var4 = new f13(new cx2[16]);
                                     }
-                                    if (C != 0) {
+                                    if (C != null) {
                                         f13Var4.b(C);
-                                        C = 0;
+                                        C = null;
                                     }
                                     f13Var4.b(cx2Var10);
                                 }
@@ -678,9 +678,9 @@ public final class ey implements u91 {
                     Trace.endSection();
                     return true;
                 }
-                ?? C2 = cx2Var2.n;
-                ?? f13Var5 = 0;
-                while (C2 != 0) {
+                cx2 C2 = cx2Var2.n;
+                f13 f13Var5 = null;
+                while (C2 != null) {
                     if (C2 instanceof j42) {
                         if (((j42) C2).q(keyEvent)) {
                             Trace.endSection();
@@ -698,12 +698,12 @@ public final class ey implements u91 {
                                     f13Var5 = f13Var5;
                                     C2 = cx2Var11;
                                 } else {
-                                    if (f13Var5 == 0) {
+                                    if (f13Var5 == null) {
                                         f13Var5 = new f13(new cx2[16]);
                                     }
-                                    if (C2 != 0) {
+                                    if (C2 != null) {
                                         f13Var5.b(C2);
-                                        C2 = 0;
+                                        C2 = null;
                                     }
                                     f13Var5.b(cx2Var11);
                                 }
