@@ -139,7 +139,7 @@ jobs:
             apk_win="$(cygpath -w "$apk")"
             output_win="$(cygpath -w "$output")"
             echo "Decompiling $apk"
-            cmd.exe /d /s /c "\"$JADX_BAT\" --show-bad-code --no-res -d \"$output_win\" \"$apk_win\""
+            powershell.exe -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command "& '$JADX_BAT' --show-bad-code --no-res -d '$output_win' '$apk_win'; if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }"
           }
           decompile "recovery/downloads/HomeMusic-1.14.7.apk" "recovery/jadx-original"
           decompile "recovery/downloads/AURA-0.30.2.apk" "recovery/jadx-aura-0302"
@@ -171,10 +171,15 @@ jobs:
               result["apk_baselines"][p.name]={"bytes":p.stat().st_size}
           for name in ("jadx-original","jadx-aura-0302","jadx-aura-0751"):
               folder=root/name
+              java_count=sum(1 for p in folder.rglob("*.java"))
+              kotlin_count=sum(1 for p in folder.rglob("*.kt"))
+              other_count=sum(1 for p in folder.rglob("*") if p.is_file())
+              if java_count == 0:
+                  raise SystemExit(f"JADX produced no Java source files in {name}; refusing to upload an empty recovery.")
               result["jadx_sources"][name]={
-                  "java_files":sum(1 for p in folder.rglob("*.java")),
-                  "kotlin_files":sum(1 for p in folder.rglob("*.kt")),
-                  "other_files":sum(1 for p in folder.rglob("*") if p.is_file())
+                  "java_files":java_count,
+                  "kotlin_files":kotlin_count,
+                  "other_files":other_count
               }
           result["apktool_smali"]=sum(1 for p in (root/"apktool-aura-0751").rglob("*.smali"))
           (root/"recovery-inventory.json").write_text(json.dumps(result,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
