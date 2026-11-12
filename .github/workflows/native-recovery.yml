@@ -459,11 +459,11 @@ jobs:
           # serialize Gradle workers to avoid D8 heap exhaustion on this 16 GB Windows runner.
           gradle_properties=project/"gradle.properties"
           gradle_properties.write_text(
-              "org.gradle.jvmargs=-Xmx5g -XX:MaxMetaspaceSize=1g -Dfile.encoding=UTF-8\\n"
-              "org.gradle.workers.max=1\\n"
-              "org.gradle.parallel=false\\n"
-              "android.useAndroidX=true\\n"
-              "android.nonTransitiveRClass=true\\n",
+              "org.gradle.jvmargs=-Xmx5g -XX:MaxMetaspaceSize=1g -Dfile.encoding=UTF-8\n"
+              "org.gradle.workers.max=1\n"
+              "org.gradle.parallel=false\n"
+              "android.useAndroidX=true\n"
+              "android.nonTransitiveRClass=true\n",
               encoding="utf-8"
           )
           print("Configured Gradle heap=5g and single-worker compilation.")
