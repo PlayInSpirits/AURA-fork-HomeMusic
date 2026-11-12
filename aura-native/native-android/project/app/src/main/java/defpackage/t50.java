@@ -62,7 +62,7 @@ public abstract class t50 {
         if (!name.equals("selector")) {
             throw new XmlPullParserException(xmlPullParser.getPositionDescription() + ": invalid color state list tag " + name);
         }
-        ?? r4 = 1;
+        int r4 = 1;
         int depth2 = xmlPullParser.getDepth() + 1;
         Object[] objArr = new int[20][];
         int[] iArr = new int[20];
@@ -75,8 +75,8 @@ public abstract class t50 {
             }
             if (next == 2 && depth <= depth2 && xmlPullParser.getName().equals("item")) {
                 int[] iArr2 = mt3.a;
-                ?? ObtainAttributes = theme == null ? resources.obtainAttributes(attributeSet, iArr2) : theme.obtainStyledAttributes(attributeSet, iArr2, i, i);
-                int resourceId = ObtainAttributes.getResourceId(i, -1);
+                TypedArray obtainAttributes = theme == null ? resources.obtainAttributes(attributeSet, iArr2) : theme.obtainStyledAttributes(attributeSet, iArr2, i, i);
+                int resourceId = obtainAttributes.getResourceId(i, -1);
                 if (resourceId != -1) {
                     ThreadLocal threadLocal = a;
                     TypedValue typedValue2 = (TypedValue) threadLocal.get();
@@ -86,28 +86,28 @@ public abstract class t50 {
                     } else {
                         typedValue = typedValue2;
                     }
-                    resources.getValue(resourceId, typedValue, r4);
+                    resources.getValue(resourceId, typedValue, true);
                     int i3 = typedValue.type;
                     if (i3 < 28 || i3 > 31) {
                         try {
                             color = a(resources, resources.getXml(resourceId), theme).getDefaultColor();
                         } catch (Exception unused) {
-                            color = ObtainAttributes.getColor(i, -65281);
+                            color = obtainAttributes.getColor(i, -65281);
                         }
                     } else {
-                        color = ObtainAttributes.getColor(i, -65281);
+                        color = obtainAttributes.getColor(i, -65281);
                     }
                 } else {
-                    color = ObtainAttributes.getColor(i, -65281);
+                    color = obtainAttributes.getColor(i, -65281);
                 }
-                if (ObtainAttributes.hasValue(r4)) {
-                    f = ObtainAttributes.getFloat(r4, 1.0f);
+                if (obtainAttributes.hasValue(r4)) {
+                    f = obtainAttributes.getFloat(r4, 1.0f);
                 } else {
-                    f = ObtainAttributes.hasValue(3) ? ObtainAttributes.getFloat(3, 1.0f) : 1.0f;
+                    f = obtainAttributes.hasValue(3) ? obtainAttributes.getFloat(3, 1.0f) : 1.0f;
                 }
-                ?? r16 = r4;
-                float f2 = (Build.VERSION.SDK_INT < 31 || !ObtainAttributes.hasValue(2)) ? ObtainAttributes.getFloat(4, -1.0f) : ObtainAttributes.getFloat(2, -1.0f);
-                ObtainAttributes.recycle();
+                boolean r16 = r4 != 0;
+                float f2 = (Build.VERSION.SDK_INT < 31 || !obtainAttributes.hasValue(2)) ? obtainAttributes.getFloat(4, -1.0f) : obtainAttributes.getFloat(2, -1.0f);
+                obtainAttributes.recycle();
                 int attributeCount = attributeSet.getAttributeCount();
                 int[] iArr3 = new int[attributeCount];
                 int i4 = i;
@@ -126,7 +126,7 @@ public abstract class t50 {
                 }
                 int[] iArrTrimStateSet = StateSet.trimStateSet(iArr3, i5);
                 float f3 = 100.0f;
-                boolean z = (f2 < 0.0f || f2 > 100.0f) ? false : r16 == true ? 1 : 0;
+                boolean z = (f2 < 0.0f || f2 > 100.0f) ? false : r16;
                 if (f != 1.0f || z) {
                     int iL = su3.l((int) ((Color.alpha(color) * f) + 0.5f), 0, 255);
                     if (z) {
@@ -138,7 +138,7 @@ public abstract class t50 {
                             float fMin = f4 < 0.0f ? 0.0f : Math.min(360.0f, f4);
                             float f6 = 0.0f;
                             float f7 = f5;
-                            boolean z2 = r16 == true ? 1 : 0;
+                            boolean z2 = r16;
                             ty tyVar = null;
                             while (true) {
                                 if (Math.abs(f6 - f5) < 0.4f) {
@@ -170,8 +170,8 @@ public abstract class t50 {
                                     float fD = gi1.D(Color.red(iC));
                                     float fD2 = gi1.D(Color.green(iC));
                                     float fD3 = gi1.D(Color.blue(iC));
-                                    float[] fArr = gi1.d[r16 == true ? 1 : 0];
-                                    float f13 = ((fD3 * fArr[2]) + ((fD2 * fArr[r16 == true ? 1 : 0]) + (fD * fArr[0]))) / f3;
+                                    float[] fArr = gi1.d[r16];
+                                    float f13 = ((fD3 * fArr[2]) + ((fD2 * fArr[r16]) + (fD * fArr[0]))) / f3;
                                     float fCbrt = f13 <= 0.008856452f ? f13 * 903.2963f : (((float) Math.cbrt(f13)) * 116.0f) - 16.0f;
                                     float fAbs = Math.abs(f2 - fCbrt);
                                     if (fAbs < 0.2f) {
@@ -250,7 +250,7 @@ public abstract class t50 {
                 objArr[i2] = iArrTrimStateSet;
                 objArr = (int[][]) objArr;
                 i2 = i7;
-                r4 = r16 == true ? 1 : 0;
+                r4 = r16;
                 depth2 = depth2;
                 i = 0;
             } else {
