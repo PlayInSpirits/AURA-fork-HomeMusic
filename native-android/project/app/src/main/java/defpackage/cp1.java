@@ -1820,7 +1820,7 @@ public class cp1 extends kc1 implements ClickCallback {
             rm3 rm3VarB = App.f(false).b();
             rm3VarB.getClass();
             Log.d("BookmarksClient", "getBookmarks()");
-            ((mt) rm3VarB.o).c(((pn4) rm3VarB.n).f()).enqueue(new rm2(10, zo1Var));
+            ((mt) rm3VarB.o).c(((pn4) rm3VarB.n).f()).enqueue(new rm2(i4, zo1Var));
         }
         if (!this.n0.d("HOME_SECTOR_MADE_FOR_YOU")) {
             RecyclerView recyclerView3 = this.l0.c0;

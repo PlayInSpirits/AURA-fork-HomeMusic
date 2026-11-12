@@ -130,24 +130,28 @@ public final class ij1 implements Handler.Callback {
         Context context = this.r;
         ej1Var.getClass();
         synchronized (zz1.class) {
-            Context applicationContext = context.getApplicationContext();
-            Context context2 = zz1.a;
-            if (context2 == null || (bool = zz1.b) == null || context2 != applicationContext) {
-                zz1.b = null;
-                if (Build.VERSION.SDK_INT >= 26) {
-                    zz1.b = Boolean.valueOf(applicationContext.getPackageManager().isInstantApp());
-                } else {
-                    try {
-                        context.getClassLoader().loadClass("com.google.android.instantapps.supervisor.InstantAppsRuntime");
-                        zz1.b = Boolean.TRUE;
-                    } catch (ClassNotFoundException unused) {
-                        zz1.b = Boolean.FALSE;
+            try {
+                Context applicationContext = context.getApplicationContext();
+                Context context2 = zz1.a;
+                if (context2 == null || (bool = zz1.b) == null || context2 != applicationContext) {
+                    zz1.b = null;
+                    if (Build.VERSION.SDK_INT >= 26) {
+                        zz1.b = Boolean.valueOf(applicationContext.getPackageManager().isInstantApp());
+                    } else {
+                        try {
+                            context.getClassLoader().loadClass("com.google.android.instantapps.supervisor.InstantAppsRuntime");
+                            zz1.b = Boolean.TRUE;
+                        } catch (ClassNotFoundException unused) {
+                            zz1.b = Boolean.FALSE;
+                        }
                     }
+                    zz1.a = applicationContext;
+                    zBooleanValue = zz1.b.booleanValue();
+                } else {
+                    zBooleanValue = bool.booleanValue();
                 }
-                zz1.a = applicationContext;
-                zBooleanValue = zz1.b.booleanValue();
-            } else {
-                zBooleanValue = bool.booleanValue();
+            } catch (Throwable th) {
+                throw th;
             }
         }
         if (!zBooleanValue) {
