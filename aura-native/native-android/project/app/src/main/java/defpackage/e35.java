@@ -842,207 +842,78 @@ public abstract class e35 {
     /*
      * Unable to fully structure code
      */
-    public static final long a(float var0, float var1_1, float var2_2, float var3_3, p50 var4_4) {
-        var29_5 = var4_4.c();
-        var5_6 = 1.0f;
-        var6_7 = 0.0f;
-        var7_8 = 0.0f;
-        if (var29_5) {
-            if (var3_3 < 0.0f) {
-                var3_3 = 0.0f;
-            }
-            var6_7 = var3_3;
-            if (var3_3 > 1.0f) {
-                var6_7 = 1.0f;
-            }
-            var11_9 = (int)(var6_7 * 255.0f + 0.5f);
-            if (var0 < 0.0f) {
-                var0 = 0.0f;
-            }
-            var3_3 = var0;
-            if (var0 > 1.0f) {
-                var3_3 = 1.0f;
-            }
-            var9_11 = (int)(var3_3 * 255.0f + 0.5f);
-            var0 = var1_1 < 0.0f ? 0.0f : var1_1;
-            var1_1 = var0;
-            if (var0 > 1.0f) {
-                var1_1 = 1.0f;
-            }
-            var10_13 = (int)(var1_1 * 255.0f + 0.5f);
-            var0 = var2_2 < 0.0f ? var7_8 : var2_2;
-            if (var0 > 1.0f) {
-                var0 = var5_6;
-            }
-            var19_15 = var11_9 << 24 | var9_11 << 16 | var10_13 << 8 | (int)(var0 * 255.0f + 0.5f);
-            var9_11 = x40.h;
-            return var19_15 << 32;
+    public static final long a(float red, float green, float blue, float alpha, p50 colorSpace) {
+        if (colorSpace.c()) {
+            float a = Math.max(0.0f, Math.min(1.0f, alpha));
+            float r = Math.max(0.0f, Math.min(1.0f, red));
+            float g = Math.max(0.0f, Math.min(1.0f, green));
+            float b = Math.max(0.0f, Math.min(1.0f, blue));
+            int argb = ((int) (a * 255.0f + 0.5f) << 24)
+                    | ((int) (r * 255.0f + 0.5f) << 16)
+                    | ((int) (g * 255.0f + 0.5f) << 8)
+                    | (int) (b * 255.0f + 0.5f);
+            int ignored = x40.h;
+            return ((long) argb) << 32;
         }
-        if ((int)(var4_4.b >> 32) != 3) {
+
+        if ((int) (colorSpace.b >> 32) != 3) {
             bz1.a("Color only works with ColorSpaces with 3 components");
         }
-        var13_17 = var4_4.c;
-        if (var13_17 == -1) {
+        int colorSpaceId = colorSpace.c;
+        if (colorSpaceId == -1) {
             bz1.a("Unknown color space, please use a color space in ColorSpaces");
         }
-        var11_10 = 0;
-        var12_18 = 0;
-        var8_19 = var4_4.b(0);
-        var7_8 = var4_4.a(0);
-        if (var0 < var8_19) {
-            var0 = var8_19;
-        }
-        if (var0 > var7_8) {
-            var0 = var7_8;
-        }
-        var15_20 = Float.floatToRawIntBits(var0);
-        var14_21 = var15_20 >>> 31;
-        var10_14 = var15_20 >>> 23 & 255;
-        var9_12 = var15_20 & 0x7FFFFF;
-        if (var10_14 == 255) {
-            var9_12 = var9_12 != 0 ? 512 : 0;
-            var10_14 = 31;
-        } else if ((var10_14 -= 112) >= 31) {
-            var9_12 = 0;
-            var10_14 = 49;
-        } else if (var10_14 <= 0) {
-            if (var10_14 >= -10) {
-                var9_12 = var10_14 = (var9_12 | 0x800000) >> 1 - var10_14;
-                if ((var10_14 & 4096) != 0) {
-                    var9_12 = var10_14 + 8192;
-                }
-                var9_12 >>= 13;
-                var10_14 = 0;
-            } else {
-                var9_12 = 0;
-                var10_14 = 0;
-            }
-        } else {
-            var9_12 >>= 13;
-            if ((var15_20 & 4096) != 0) {
-                var9_12 = (var10_14 << 10 | var9_12) + 1 | var14_21 << 15;
-lbl68:
-                // 2 sources
 
-                while (true) {
-                    continue;
-                    break;
-                }
-            }
-        }
-        var9_12 |= var14_21 << 15 | var10_14 << 10;
-        ** while (true)
-        var14_21 = (short)var9_12;
-        var0 = var4_4.b(1);
-        var7_8 = var4_4.a(1);
-        if (!(var1_1 < var0)) {
-            var0 = var1_1;
-        }
-        if (var0 > var7_8) {
-            var0 = var7_8;
-        }
-        var16_22 = Float.floatToRawIntBits(var0);
-        var15_20 = var16_22 >>> 31;
-        var10_14 = var16_22 >>> 23 & 255;
-        var9_12 = var16_22 & 0x7FFFFF;
-        if (var10_14 == 255) {
-            var9_12 = var9_12 != 0 ? 512 : 0;
-            var10_14 = 31;
-        } else if ((var10_14 -= 112) >= 31) {
-            var9_12 = 0;
-            var10_14 = 49;
-        } else if (var10_14 <= 0) {
-            if (var10_14 >= -10) {
-                var9_12 = var10_14 = (var9_12 | 0x800000) >> 1 - var10_14;
-                if ((var10_14 & 4096) != 0) {
-                    var9_12 = var10_14 + 8192;
-                }
-                var9_12 >>= 13;
-                var10_14 = 0;
-            } else {
-                var9_12 = 0;
-                var10_14 = 0;
-            }
-        } else {
-            var9_12 >>= 13;
-            if ((var16_22 & 4096) != 0) {
-                var9_12 = (var10_14 << 10 | var9_12) + 1 | var15_20 << 15;
-lbl105:
-                // 2 sources
+        float r = Math.max(colorSpace.b(0), Math.min(colorSpace.a(0), red));
+        float g = Math.max(colorSpace.b(1), Math.min(colorSpace.a(1), green));
+        float b = Math.max(colorSpace.b(2), Math.min(colorSpace.a(2), blue));
+        float a = Math.max(0.0f, Math.min(1.0f, alpha));
 
-                while (true) {
-                    continue;
-                    break;
-                }
-            }
-        }
-        var9_12 |= var15_20 << 15 | var10_14 << 10;
-        ** while (true)
-        var15_20 = (short)var9_12;
-        var0 = var4_4.b(2);
-        var1_1 = var4_4.a(2);
-        if (!(var2_2 < var0)) {
-            var0 = var2_2;
-        }
-        if (var0 > var1_1) {
-            var0 = var1_1;
-        }
-        var18_23 = Float.floatToRawIntBits(var0);
-        var16_22 = var18_23 >>> 31;
-        var9_12 = var18_23 >>> 23 & 255;
-        var17_24 = 0x7FFFFF & var18_23;
-        if (var9_12 == 255) {
-            var9_12 = var12_18;
-            if (var17_24 != 0) {
-                var9_12 = 512;
-            }
-            var10_14 = 31;
+        long packed = ((long) colorSpaceId) & 63L;
+        packed |= (((long) packHalf(r)) & 65535L) << 48;
+        packed |= (((long) packHalf(g)) & 65535L) << 32;
+        packed |= (((long) packHalf(b)) & 65535L) << 16;
+        packed |= (((long) ((int) (a * 1023.0f + 0.5f))) & 1023L) << 6;
+        int ignored = x40.h;
+        return packed;
+    }
+
+    private static int packHalf(float value) {
+        int bits = Float.floatToRawIntBits(value);
+        int sign = bits >>> 31;
+        int exponent = (bits >>> 23) & 255;
+        int mantissa = bits & 0x7FFFFF;
+        int halfExponent;
+
+        if (exponent == 255) {
+            mantissa = mantissa == 0 ? 0 : 512;
+            halfExponent = 31;
         } else {
-            var10_14 = var9_12 - 112;
-            if (var10_14 >= 31) {
-                var9_12 = 0;
-                var10_14 = 49;
-            } else if (var10_14 <= 0) {
-                if (var10_14 >= -10) {
-                    var9_12 = var10_14 = (var17_24 | 0x800000) >> 1 - var10_14;
-                    if ((var10_14 & 4096) != 0) {
-                        var9_12 = var10_14 + 8192;
+            halfExponent = exponent - 112;
+            if (halfExponent >= 31) {
+                mantissa = 0;
+                halfExponent = 49;
+            } else if (halfExponent <= 0) {
+                if (halfExponent >= -10) {
+                    int shifted = (mantissa | 0x800000) >> (1 - halfExponent);
+                    if ((shifted & 4096) != 0) {
+                        shifted += 8192;
                     }
-                    var9_12 >>= 13;
-                    var10_14 = var11_10;
+                    mantissa = shifted >> 13;
+                    halfExponent = 0;
                 } else {
-                    var9_12 = 0;
-                    var10_14 = var11_10;
+                    mantissa = 0;
+                    halfExponent = 0;
                 }
             } else {
-                var9_12 = var17_24 >> 13;
-                if ((var18_23 & 4096) != 0) {
-                    var9_12 = (var10_14 << 10 | var9_12) + 1 | var16_22 << 15;
-lbl145:
-                    // 2 sources
-
-                    while (true) {
-                        continue;
-                        break;
-                    }
+                mantissa >>= 13;
+                if ((bits & 4096) != 0) {
+                    return ((((halfExponent << 10) | mantissa) + 1) | (sign << 15)) & 65535;
                 }
             }
         }
-        var9_12 |= var16_22 << 15 | var10_14 << 10;
-        ** while (true)
-        var10_14 = (short)var9_12;
-        var0 = var3_3 < 0.0f ? var6_7 : var3_3;
-        if (var0 > 1.0f) {
-            var0 = var5_6;
-        }
-        var9_12 = (int)(var0 * 1023.0f + 0.5f);
-        var27_25 = var14_21;
-        var25_26 = var15_20;
-        var19_16 = var10_14;
-        var21_27 = var9_12;
-        var23_28 = var13_17;
-        var9_12 = x40.h;
-        return var23_28 & 63L | ((var27_25 & 65535L) << 48 | (var25_26 & 65535L) << 32 | (65535L & var19_16) << 16 | (var21_27 & 1023L) << 6);
+
+        return (mantissa | (sign << 15) | (halfExponent << 10)) & 65535;
     }
 
     public static final long b(int n16) {
