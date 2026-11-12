@@ -190,10 +190,9 @@ public abstract class f35 {
     }
 
     /* JADX WARN: Code duplicated, block: B:76:0x00e1 A[RETURN] */
-    public static int J(Uri uri, String str) {
-        int i2;
-        if (str != null) {
-            switch (str) {
+    public static int J(Uri uri, String overrideMimeType) {
+        if (overrideMimeType != null) {
+            switch (overrideMimeType) {
                 case "application/x-mpegURL":
                     return 2;
                 case "application/vnd.ms-sstr+xml":
@@ -206,80 +205,36 @@ public abstract class f35 {
                     return 4;
             }
         }
-        String scheme = uri.getScheme();
-        if (scheme == null || (!rr2.A("rtsp", scheme) && !rr2.A("rtspt", scheme))) {
-            String lastPathSegment = uri.getLastPathSegment();
-            if (lastPathSegment != null) {
-                int iLastIndexOf = lastPathSegment.lastIndexOf(46);
-                if (iLastIndexOf >= 0) {
-                    String strU = rr2.U(lastPathSegment.substring(iLastIndexOf + 1));
-                    strU.getClass();
-                    switch (strU.hashCode()) {
-                        case 104579:
-                            if (strU.equals("ism")) {
-                            }
-                            break;
-                        case 108321:
-                            if (strU.equals("mpd")) {
-                            }
-                            break;
-                        case 3242057:
-                            if (strU.equals("isml")) {
-                            }
-                            break;
-                        case 3299913:
-                            if (strU.equals("m3u8")) {
-                            }
-                            break;
-                    }
-                    /*  JADX ERROR: Method code generation error
-                        java.lang.NullPointerException: Switch insn not found in header
-                        	at java.base/java.util.Objects.requireNonNull(Objects.java:235)
-                        	at jadx.core.codegen.RegionGen.makeSwitch(RegionGen.java:246)
-                        	at jadx.core.dex.regions.SwitchRegion.generate(SwitchRegion.java:90)
-                        	at jadx.core.codegen.RegionGen.makeRegion(RegionGen.java:66)
-                        	at jadx.core.dex.regions.Region.generate(Region.java:35)
-                        	at jadx.core.codegen.RegionGen.makeRegion(RegionGen.java:66)
-                        	at jadx.core.codegen.RegionGen.makeRegionIndent(RegionGen.java:83)
-                        	at jadx.core.codegen.RegionGen.makeIf(RegionGen.java:126)
-                        	at jadx.core.dex.regions.conditions.IfRegion.generate(IfRegion.java:90)
-                        	at jadx.core.codegen.RegionGen.makeRegion(RegionGen.java:66)
-                        	at jadx.core.dex.regions.Region.generate(Region.java:35)
-                        	at jadx.core.codegen.RegionGen.makeRegion(RegionGen.java:66)
-                        	at jadx.core.codegen.RegionGen.makeRegionIndent(RegionGen.java:83)
-                        	at jadx.core.codegen.RegionGen.makeIf(RegionGen.java:126)
-                        	at jadx.core.dex.regions.conditions.IfRegion.generate(IfRegion.java:90)
-                        	at jadx.core.codegen.RegionGen.makeRegion(RegionGen.java:66)
-                        	at jadx.core.dex.regions.Region.generate(Region.java:35)
-                        	at jadx.core.codegen.RegionGen.makeRegion(RegionGen.java:66)
-                        	at jadx.core.codegen.RegionGen.makeRegionIndent(RegionGen.java:83)
-                        	at jadx.core.codegen.RegionGen.makeIf(RegionGen.java:126)
-                        	at jadx.core.dex.regions.conditions.IfRegion.generate(IfRegion.java:90)
-                        	at jadx.core.codegen.RegionGen.makeRegion(RegionGen.java:66)
-                        	at jadx.core.dex.regions.Region.generate(Region.java:35)
-                        	at jadx.core.codegen.RegionGen.makeRegion(RegionGen.java:66)
-                        	at jadx.core.dex.regions.Region.generate(Region.java:35)
-                        	at jadx.core.codegen.RegionGen.makeRegion(RegionGen.java:66)
-                        	at jadx.core.dex.regions.Region.generate(Region.java:35)
-                        	at jadx.core.codegen.RegionGen.makeRegion(RegionGen.java:66)
-                        	at jadx.core.codegen.MethodGen.addRegionInsns(MethodGen.java:291)
-                        	at jadx.core.codegen.MethodGen.addInstructions(MethodGen.java:270)
-                        	at jadx.core.codegen.ClassGen.addMethodCode(ClassGen.java:420)
-                        	at jadx.core.codegen.ClassGen.addMethod(ClassGen.java:345)
-                        	at jadx.core.codegen.ClassGen.lambda$addInnerClsAndMethods$3(ClassGen.java:299)
-                        	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:183)
-                        	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-                        	at java.base/java.util.stream.SortedOps$RefSortingSink.end(SortedOps.java:395)
-                        	at java.base/java.util.stream.Sink$ChainedReference.end(Sink.java:258)
-                        */
-                    /*
-                        Method dump skipped, instruction units count: 286
-                        To view this dump add '--comments-level debug' option
-                    */
-                    throw new UnsupportedOperationException("Method not decompiled: defpackage.f35.J(android.net.Uri, java.lang.String):int");
-                }
 
-                public static boolean K(be3 be3Var, be3 be3Var2, Inflater inflater) {
+        String scheme = uri.getScheme();
+        if (scheme != null && (rr2.A("rtsp", scheme) || rr2.A("rtspt", scheme))) {
+            return 3;
+        }
+
+        String lastPathSegment = uri.getLastPathSegment();
+        if (lastPathSegment == null) {
+            return 4;
+        }
+        int dotIndex = lastPathSegment.lastIndexOf('.');
+        if (dotIndex < 0) {
+            return 4;
+        }
+
+        String extension = rr2.U(lastPathSegment.substring(dotIndex + 1));
+        switch (extension) {
+            case "mpd":
+                return 0;
+            case "ism":
+            case "isml":
+                return 1;
+            case "m3u8":
+                return 2;
+            default:
+                return 4;
+        }
+    }
+
+    public static boolean K(be3 be3Var, be3 be3Var2, Inflater inflater) {
                     if (be3Var.a() == 0) {
                         return false;
                     }
