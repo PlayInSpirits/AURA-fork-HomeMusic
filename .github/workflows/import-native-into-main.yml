@@ -23,69 +23,90 @@ jobs:
         shell: 'C:\\PROGRA~1\\Git\\bin\\bash.exe --noprofile --norc -eo pipefail {0}'
 
     steps:
-      - name: Checkout main
-        uses: actions/checkout@v4
-        with:
-          ref: main
-          fetch-depth: 1
-
-      - name: Checkout native-v0.10.1 source
-        uses: actions/checkout@v4
-        with:
-          ref: native-v0.10.1
-          path: source-native
-          fetch-depth: 1
-
-      - name: Copy and verify every tracked file
+      - name: Fetch only the exact main and native-v0.10.1 refs
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
           [ "$GITHUB_REF" = "refs/heads/main" ] || { echo "::error::Import must target main."; exit 1; }
-          SOURCE_SHA="$(git -C source-native rev-parse HEAD)"
+
+          AUTH_HEADER="AUTHORIZATION: basic $(printf 'x-access-token:%s' "$GH_TOKEN" | base64 | tr -d '\r\n')"
+          MAIN_DIR="$RUNNER_TEMP/aura-import-main"
+          SOURCE_DIR="$RUNNER_TEMP/aura-import-source"
+          rm -rf "$MAIN_DIR" "$SOURCE_DIR"
+          mkdir -p "$MAIN_DIR" "$SOURCE_DIR"
+
+          git -C "$MAIN_DIR" init -q
+          git -C "$MAIN_DIR" remote add origin "https://github.com/$GITHUB_REPOSITORY"
+          git -C "$MAIN_DIR" -c http.extraheader="$AUTH_HEADER" fetch --no-tags --depth=1 origin +refs/heads/main:refs/remotes/origin/main
+          git -C "$MAIN_DIR" checkout -q -B main refs/remotes/origin/main
+
+          git -C "$SOURCE_DIR" init -q
+          git -C "$SOURCE_DIR" remote add origin "https://github.com/$GITHUB_REPOSITORY"
+          git -C "$SOURCE_DIR" -c http.extraheader="$AUTH_HEADER" fetch --no-tags --depth=1 origin +refs/heads/native-v0.10.1:refs/remotes/origin/native-v0.10.1
+          git -C "$SOURCE_DIR" checkout -q -B native-v0.10.1 refs/remotes/origin/native-v0.10.1
+
+          echo "Main commit: $(git -C "$MAIN_DIR" rev-parse HEAD)"
+          echo "Source commit: $(git -C "$SOURCE_DIR" rev-parse HEAD)"
+          echo "Exact branch fetch completed without broad ref patterns."
+
+      - name: Copy and verify every tracked file
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          MAIN_DIR="$RUNNER_TEMP/aura-import-main"
+          SOURCE_DIR="$RUNNER_TEMP/aura-import-source"
+          AUTH_HEADER="AUTHORIZATION: basic $(printf 'x-access-token:%s' "$GH_TOKEN" | base64 | tr -d '\r\n')"
+
+          SOURCE_SHA="$(git -C "$SOURCE_DIR" rev-parse HEAD)"
           echo "Source branch: native-v0.10.1"
           echo "Source commit: $SOURCE_SHA"
-          TRACKED_COUNT="$(git -C source-native ls-files | wc -l | tr -d ' ')"
+          TRACKED_COUNT="$(git -C "$SOURCE_DIR" ls-files | wc -l | tr -d ' ')"
           echo "Tracked source files: $TRACKED_COUNT"
 
-          mkdir -p aura-native
-          cp -a source-native/. aura-native/
-          rm -rf aura-native/.git
+          rm -rf "$MAIN_DIR/aura-native"
+          mkdir -p "$MAIN_DIR/aura-native"
+          cp -a "$SOURCE_DIR"/. "$MAIN_DIR/aura-native"/
+          rm -rf "$MAIN_DIR/aura-native/.git"
 
           VERIFIED_COUNT=0
           while IFS= read -r -d '' FILE; do
-            if [ ! -e "aura-native/$FILE" ]; then
+            if [ ! -e "$MAIN_DIR/aura-native/$FILE" ] && [ ! -L "$MAIN_DIR/aura-native/$FILE" ]; then
               echo "::error::Missing copied file: $FILE"
               exit 1
             fi
-            if ! cmp -s "source-native/$FILE" "aura-native/$FILE"; then
+            if ! cmp -s "$SOURCE_DIR/$FILE" "$MAIN_DIR/aura-native/$FILE"; then
               echo "::error::Content mismatch: $FILE"
               exit 1
             fi
             VERIFIED_COUNT=$((VERIFIED_COUNT + 1))
-          done < <(git -C source-native ls-files -z)
+          done < <(git -C "$SOURCE_DIR" ls-files -z)
           echo "Verified byte-identical tracked files: $VERIFIED_COUNT"
           [ "$VERIFIED_COUNT" -eq "$TRACKED_COUNT" ] || { echo "::error::Tracked file count mismatch."; exit 1; }
 
-          TOO_LARGE="$(find aura-native -type f -size +99M -print || true)"
+          TOO_LARGE="$(find "$MAIN_DIR/aura-native" -type f -size +99M -print || true)"
           if [ -n "$TOO_LARGE" ]; then
             echo "::error::GitHub rejects individual files around 100 MB; oversized files need Git LFS:"
             printf '%s\n' "$TOO_LARGE"
             exit 1
           fi
 
-          printf 'Imported from branch: native-v0.10.1\nSource commit: %s\nDestination: main/aura-native/\nOriginal native-v0.10.1 branch is preserved.\n' "$SOURCE_SHA" > aura-native/IMPORT-SOURCE.txt
-          git add -f --all -- aura-native
-          if git diff --cached --quiet; then
+          printf 'Imported from branch: native-v0.10.1\nSource commit: %s\nDestination: main/aura-native/\nOriginal native-v0.10.1 branch is preserved.\n' "$SOURCE_SHA" > "$MAIN_DIR/aura-native/IMPORT-SOURCE.txt"
+          git -C "$MAIN_DIR" add -f --all -- aura-native
+          if git -C "$MAIN_DIR" diff --cached --quiet; then
             echo "The current copy is already present; no changes to commit."
             exit 0
           fi
-          git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" commit -m "Import complete native-v0.10.1 project under aura-native"
-          git push origin HEAD:refs/heads/main
+          git -C "$MAIN_DIR" -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" commit -m "Import complete native-v0.10.1 project under aura-native"
+          git -C "$MAIN_DIR" -c http.extraheader="$AUTH_HEADER" push origin HEAD:refs/heads/main
 
-      - name: Verify imported tree
-        if: success()
+      - name: Verify imported tree from the resulting checkout
         run: |
           set -euo pipefail
-          test -f aura-native/IMPORT-SOURCE.txt
-          test -d aura-native/native-android/project
-          test -f aura-native/.github/workflows/native-build.yml
+          MAIN_DIR="$RUNNER_TEMP/aura-import-main"
+          test -f "$MAIN_DIR/aura-native/IMPORT-SOURCE.txt"
+          test -f "$MAIN_DIR/aura-native/native-android/project/app/build.gradle"
+          test -f "$MAIN_DIR/aura-native/.github/workflows/native-build.yml"
           echo "Imported project structure verified."
+          cat "$MAIN_DIR/aura-native/IMPORT-SOURCE.txt"
