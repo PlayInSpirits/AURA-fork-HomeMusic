@@ -181,7 +181,7 @@ jobs:
             apk_win="$(cygpath -w "$apk")"
             output_win="$(cygpath -w "$output")"
             echo "Decompiling $apk"
-            powershell.exe -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command "& '$JADX_BAT' --show-bad-code --no-res -d '$output_win' '$apk_win'; if (\$LASTEXITCODE -ne 0) { Write-Warning 'JADX reported decompilation errors; preserving partial source for Smali cross-check.' }"
+            powershell.exe -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command "& '$JADX_BAT' --type-update-limit 100 --show-bad-code --no-res -d '$output_win' '$apk_win'; if (\$LASTEXITCODE -ne 0) { Write-Warning 'JADX reported decompilation errors; preserving partial source for Smali cross-check.' }"
           }
           decompile "recovery/downloads/HomeMusic-1.14.7.apk" "recovery/jadx-original"
           decompile "recovery/downloads/AURA-0.30.2.apk" "recovery/jadx-aura-0302"
@@ -194,7 +194,7 @@ jobs:
           APK_WIN="$(cygpath -w "$PWD/recovery/downloads/AURA-0.75.1.apk")"
           OUT_WIN="$(cygpath -w "$PWD/recovery/gradle-export-aura-0751")"
           mkdir -p recovery/gradle-export-aura-0751
-          powershell.exe -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command "& '$JADX_BAT' --show-bad-code --export-gradle --export-gradle-type android-app -d '$OUT_WIN' '$APK_WIN'; if (\$LASTEXITCODE -ne 0) { Write-Warning 'JADX Gradle export reported decompilation errors; preserving generated files.' }"
+          powershell.exe -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command "& '$JADX_BAT' --type-update-limit 100 --show-bad-code --export-gradle --export-gradle-type android-app -d '$OUT_WIN' '$APK_WIN'; if (\$LASTEXITCODE -ne 0) { Write-Warning 'JADX Gradle export reported decompilation errors; preserving generated files.' }"
 
       - name: Generate compile-oriented Java with JADX simple mode
         run: |
@@ -202,7 +202,7 @@ jobs:
           JADX_BAT="$(cygpath -w "$PWD/recovery/tools/jadx/bin/jadx.bat")"
           APK_WIN="$(cygpath -w "$PWD/recovery/downloads/AURA-0.75.1.apk")"
           OUT_WIN="$(cygpath -w "$PWD/recovery/jadx-aura-0751-simple")"
-          powershell.exe -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command "& '$JADX_BAT' --decompilation-mode simple --show-bad-code --no-res -d '$OUT_WIN' '$APK_WIN'; if (\$LASTEXITCODE -ne 0) { Write-Warning 'JADX simple mode reported per-method errors; preserving generated Java for compile test.' }"
+          powershell.exe -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command "& '$JADX_BAT' --type-update-limit 100 --decompilation-mode simple --show-bad-code --no-res -d '$OUT_WIN' '$APK_WIN'; if (\$LASTEXITCODE -ne 0) { Write-Warning 'JADX simple mode reported per-method errors; preserving generated Java for compile test.' }"
           "$AURA_PYTHON" - <<'PY'
           from pathlib import Path
           root=Path("recovery/jadx-aura-0751-simple/sources")
@@ -287,12 +287,23 @@ jobs:
 
           # Compile the normal structured Java export. JADX simple-mode output is retained as a
           # forensic reference only because it can emit goto-based pseudocode for hard methods.
-          structured_sources=Path("recovery/gradle-export-aura-0751/app/src/main/java")
+          structured_sources=Path("recovery/jadx-aura-0751/sources")
           simple_sources=Path("recovery/jadx-aura-0751-simple/sources")
           if not structured_sources.is_dir() or not any(structured_sources.rglob("*.java")):
               raise SystemExit("Structured JADX Java sources are missing.")
           if not simple_sources.is_dir() or not any(simple_sources.rglob("*.java")):
               raise SystemExit("JADX simple-mode reference sources are missing.")
+          structured_java=list(structured_sources.rglob("*.java"))
+          remaining_bad=[]
+          for source_file in structured_java:
+              text=source_file.read_text(encoding="utf-8",errors="replace")
+              if "??" in text:
+                  remaining_bad.append((text.count("??"),source_file.relative_to(structured_sources).as_posix()))
+          print("Structured JADX Java files:",len(structured_java))
+          print("Remaining unresolved type markers:",sum(n for n,_ in remaining_bad))
+          print("Files still needing Smali repair:",len(remaining_bad))
+          for n,name in sorted(remaining_bad,reverse=True)[:25]:
+              print(f"  {n:3} {name}")
           app_sources=project/"app/src/main/java"
           if app_sources.exists():
               shutil.rmtree(app_sources)
@@ -454,7 +465,7 @@ jobs:
               p.unlink()
           notice = (
               "# Recovered Android source baseline\n\n"
-              "This is a recovered Android project built from AURA 0.75.1 using JADX 1.5.6 simple-mode Java and Apktool resources; it is not the original author's source tree. "
+              "This is a recovered Android project built from AURA 0.75.1 using JADX 1.5.6 structured Java (type-update-limit 100) and Apktool resources; it is not the original author's source tree. "
               "Some methods may be partially decompiled and must be cross-checked against the accompanying Apktool Smali reference. AndroidX and Material sources are restored as Maven dependencies using embedded version markers.\n\n"
               "The application ID is preserved as app.homemusic; display version is v0.10.1 and versionCode is 7502. "
               "Do not publish a release from this baseline until Gradle builds, signature compatibility, data migration, and Hub/Navidrome acceptance tests pass.\n"
